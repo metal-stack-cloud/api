@@ -55,7 +55,7 @@ type Credentials struct {
 type Client interface {
 	Asset() v1.AssetServiceClient
 	Cluster() v1.ClusterServiceClient
-	// Health() v1.HealthServiceClient
+	Health() v1.HealthServiceClient
 	IP() v1.IPServiceClient
 	Payment() v1.PaymentServiceClient
 	Tenant() v1.TenantServiceClient
@@ -84,9 +84,9 @@ func (c GRPCClient) Cluster() v1.ClusterServiceClient {
 	return v1.NewClusterServiceClient(c.conn)
 }
 
-// func (c GRPCClient) Health() v1.HealthServiceClient {
-// 	return v1.NewHealthServiceClient(c.conn)
-// }
+func (c GRPCClient) Health() v1.HealthServiceClient {
+	return v1.NewHealthServiceClient(c.conn)
+}
 
 func (c GRPCClient) IP() v1.IPServiceClient {
 	return v1.NewIPServiceClient(c.conn)
