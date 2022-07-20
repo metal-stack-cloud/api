@@ -1,0 +1,44 @@
+name: build
+on:
+  push:
+    branches:
+      - "main"
+    tags:
+      - 'v*'
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: ${{ github.repository }}
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+
+    - name: Set up Go 1.18
+      uses: actions/setup-go@v2
+      with:
+        go-version: 1.18
+      id: go
+
+    - name: Check out code into the Go module directory
+      uses: actions/checkout@v2
+
+    - name: Lint
+      uses: golangci/golangci-lint-action@v2
+      with:
+        args: -p bugs -p unused --timeout=3m
+
+    - name: build and push npm package
+      uses: actions/setup-node@v3
+      with:
+        scope: '@metal-stack-cloud'
+    - run: |
+        cd js
+        npm install typescript
+        npm install
+    - uses: JS-DevTools/npm-publish@v1
+      with:
+        token: ${{ secrets.NPMJS_PUBLISH_TOKEN }}
+        access: public
+        package: js/package.json
