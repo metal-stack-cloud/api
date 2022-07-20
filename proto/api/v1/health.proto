@@ -1,0 +1,43 @@
+syntax = "proto3";
+
+package api.v1;
+
+option go_package = "./v1";
+
+service HealthService {
+  rpc Get(HealthServiceGetRequest) returns (HealthServiceGetResponse) {}
+}
+
+enum ServiceStatus {
+  SERVICE_STATUS_UNSPECIFIED = 0;
+  SERVICE_STATUS_DEGRADED = 1;
+  SERVICE_STATUS_UNHEALTHY = 2;
+  SERVICE_STATUS_HEALTHY = 3;
+}
+
+enum Service {
+  SERVICE_UNSPECIFIED = 0;
+  SERVICE_CLUSTER = 1;
+  SERVICE_VOLUME = 2;
+  SERVICE_MACHINES = 3;
+}
+
+message HealthStatus {
+  Service name = 1;
+  ServiceStatus status = 2;
+  string message = 3;
+}
+
+message PartitionHealth {
+  repeated HealthStatus service_status = 1;
+}
+
+message Health {
+  map<string, PartitionHealth> partition_status = 1;
+}
+
+message HealthServiceGetRequest {}
+
+message HealthServiceGetResponse {
+  Health health = 1;
+}
