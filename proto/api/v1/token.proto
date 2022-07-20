@@ -1,0 +1,39 @@
+syntax = "proto3";
+
+package api.v1;
+
+import "google/api/annotations.proto";
+import "google/protobuf/duration.proto";
+
+option go_package = "./v1";
+
+service TokenService {
+  rpc Create(TokenServiceCreateRequest) returns (TokenServiceCreateResponse) {
+    option (google.api.http) = {
+      post: "/api/v1/token"
+      body: "*"
+    };
+  }
+}
+
+// Tokens
+message TokenServiceCreateRequest {
+  string subject = 1;
+  repeated ProjectPermission permissions = 2;
+  repeated TokenRole roles = 3;
+  google.protobuf.Duration expires = 4;
+}
+
+message ProjectPermission {
+  string project = 1;
+  repeated string permissions = 2;
+}
+
+message TokenRole {
+  string subject = 1;
+  string role = 2;
+}
+
+message TokenServiceCreateResponse {
+  string token = 1;
+}

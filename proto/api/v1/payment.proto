@@ -1,0 +1,112 @@
+syntax = "proto3";
+
+package api.v1;
+
+import "api/v1/common.proto";
+import "validate/validate.proto";
+
+option go_package = "./v1";
+
+service PaymentService {
+  rpc CreateOrUpdateCustomer(PaymentServiceCreateOrUpdateCustomerRequest) returns (PaymentServiceCreateOrUpdateCustomerResponse) {
+    option (tenant_roles) = TENANT_ROLE_OWNER;
+  }
+  rpc GetCustomer(PaymentServiceGetCustomerRequest) returns (PaymentServiceGetCustomerResponse) {
+    option (tenant_roles) = TENANT_ROLE_OWNER;
+  }
+  rpc GetCustomerWithLogin(PaymentServiceGetCustomerWithLoginRequest) returns (PaymentServiceGetCustomerWithLoginResponse) {
+    option (tenant_roles) = TENANT_ROLE_OWNER;
+  }
+  rpc CheckIfCustomerExists(PaymentServiceCheckIfCustomerExistsRequest) returns (PaymentServiceCheckIfCustomerExistsResponse) {
+    option (tenant_roles) = TENANT_ROLE_OWNER;
+  }
+  rpc HasPaymentMethod(PaymentServiceHasPaymentMethodRequest) returns (PaymentServiceHasPaymentMethodResponse) {
+    option (project_roles) = PROJECT_ROLE_OWNER;
+    option (project_roles) = PROJECT_ROLE_EDITOR;
+  }
+  rpc DeletePaymentMethod(PaymentServiceDeletePaymentMethodRequest) returns (PaymentServiceDeletePaymentMethodResponse) {
+    option (project_roles) = PROJECT_ROLE_OWNER;
+  }
+}
+
+message PaymentCustomer {
+  string login = 1;
+  optional string name = 2;
+  optional string customer_id = 3;
+  string payment_method_id = 4;
+  string subscription_id = 5;
+  optional string email = 6;
+  optional Card card = 7;
+  repeated Price prices = 8;
+}
+
+message Card {
+  string brand = 1;
+  string country = 2;
+  uint64 exp_month = 3;
+  uint64 exp_year = 4;
+  string last_4 = 5;
+}
+
+message Price {
+  string name = 1;
+  double unit_amount_decimal = 2;
+  string currency = 3;
+}
+
+message PaymentServiceCreateOrUpdateCustomerRequest {
+  PaymentCustomer customer = 1;
+}
+
+message PaymentServiceCreateOrUpdateCustomerResponse {
+  PaymentCustomer customer = 1;
+}
+
+message PaymentServiceGetCustomerRequest {
+  string customer_id = 1;
+}
+
+message PaymentServiceGetCustomerResponse {
+  PaymentCustomer customer = 1;
+}
+
+message PaymentServiceGetCustomerWithLoginRequest {
+  string login = 1;
+}
+
+message PaymentServiceGetCustomerWithLoginResponse {
+  PaymentCustomer customer = 1;
+}
+
+message PaymentServiceCheckIfCustomerExistsRequest {
+  string login = 1;
+}
+
+message PaymentServiceCheckIfCustomerExistsResponse {
+  PaymentCustomer customer = 1;
+  bool exists = 2;
+}
+
+message PaymentServiceHasPaymentMethodRequest {
+  string login = 1 [(validate.rules).string = {
+    min_len: 2,
+    max_len: 128,
+  }];
+  string project = 2 [(validate.rules).string = {
+    min_len: 2,
+    max_len: 128,
+  }];
+}
+
+message PaymentServiceHasPaymentMethodResponse {
+  bool exists = 1;
+}
+
+message PaymentServiceDeletePaymentMethodRequest {
+  string login = 1 [(validate.rules).string = {
+    min_len: 2,
+    max_len: 128,
+  }];
+}
+
+message PaymentServiceDeletePaymentMethodResponse {}

@@ -1,0 +1,71 @@
+syntax = "proto3";
+
+package api.v1;
+
+import "google/api/annotations.proto";
+
+option go_package = "./v1";
+
+service AssetService {
+  rpc List(AssetServiceListRequest) returns (AssetServiceListResponse) {
+    option (google.api.http) = {
+      get: "/api/v1/asset"
+    };
+  }
+}
+
+// Types
+message Asset {
+  Region region = 1;
+  map<string, MachineType> machine_types = 2;
+  repeated Kubernetes kubernetes = 3;
+  string default_network = 4;
+}
+
+message Region {
+  string id = 1;
+  string name = 2;
+  string address = 3;
+  bool active = 4;
+  map<string, Partition> partitions = 5;
+  AssetDefaults defaults = 6;
+  repeated string networks = 7;
+}
+
+message Partition {
+  string id = 1;
+  string name = 2;
+  string address = 3;
+  bool active = 4;
+}
+
+message MachineType {
+  string id = 1;
+  string name = 2;
+  uint32 cpus = 3;
+  uint64 memory = 4;
+  uint64 storage = 5;
+}
+
+message Kubernetes {
+  string version = 1;
+}
+
+message AssetDefaults {
+  string machine_type = 1;
+  string kubernetes_version = 2;
+  uint32 worker_min = 3;
+  uint32 worker_max = 4;
+  uint32 maxsurge = 5;
+  uint32 maxunavailable = 6;
+  string partition = 7;
+}
+
+// Requests
+message AssetServiceListRequest {}
+
+// Responses
+message AssetServiceListResponse {
+  // assets maps region ids to assets
+  map<string, Asset> assets = 1;
+}

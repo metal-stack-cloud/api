@@ -1,0 +1,16 @@
+{
+  "name": "@metal-stack-cloud/api-server",
+  "version": "0.0.40",
+  "description": "metal-cloud api-server js client",
+  "main": "index.js",
+  "repository": "https://github.com/metal-stack-cloud/api-server.git",
+  "scripts": {
+    "build": "tsc",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "typescript": "^4.6.3"
+  }
+}

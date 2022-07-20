@@ -1,0 +1,86 @@
+syntax = "proto3";
+
+package api.v1;
+
+import "api/v1/common.proto";
+import "google/api/annotations.proto";
+import "google/protobuf/timestamp.proto";
+import "validate/validate.proto";
+
+option go_package = "./v1";
+
+service VolumeService {
+  rpc Get(VolumeServiceGetRequest) returns (VolumeServiceGetResponse) {
+    option (google.api.http) = {
+      get: "/api/v1/volume/{project}/{uuid}"
+    };
+    option (project_roles) = PROJECT_ROLE_OWNER;
+    option (project_roles) = PROJECT_ROLE_EDITOR;
+    option (project_roles) = PROJECT_ROLE_VIEWER;
+  }
+  rpc List(VolumeServiceListRequest) returns (VolumeServiceListResponse) {
+    option (google.api.http) = {
+      post: "/api/v1/volumes"
+      body: "*"
+    };
+    option (project_roles) = PROJECT_ROLE_OWNER;
+    option (project_roles) = PROJECT_ROLE_EDITOR;
+    option (project_roles) = PROJECT_ROLE_VIEWER;
+  }
+  rpc Delete(VolumeServiceDeleteRequest) returns (VolumeServiceDeleteResponse) {
+    option (google.api.http) = {
+      delete: "/api/v1/volume"
+      body: "*"
+    };
+    option (project_roles) = PROJECT_ROLE_OWNER;
+    option (project_roles) = PROJECT_ROLE_EDITOR;
+  }
+}
+
+// Types
+message Volume {
+  string uuid = 1;
+  string name = 2;
+  string project = 3;
+  string partition = 4; // partition is part of a region
+  string storage_class = 5;
+  uint64 size = 6;
+  uint64 usage = 7;
+  optional string attached_to = 8;
+  google.protobuf.Timestamp created_at = 10;
+  google.protobuf.Timestamp updated_at = 11;
+  google.protobuf.Timestamp deleted_at = 12;
+}
+
+// Requests
+message VolumeServiceGetRequest {
+  string uuid = 1 [(validate.rules).string.uuid = true];
+  string project = 2 [(validate.rules).string = {
+    min_len: 2,
+    max_len: 128
+  }];
+}
+message VolumeServiceListRequest {
+  string project = 2 [(validate.rules).string = {
+    min_len: 2,
+    max_len: 128
+  }];
+}
+message VolumeServiceDeleteRequest {
+  string uuid = 1 [(validate.rules).string.uuid = true];
+  string project = 2 [(validate.rules).string = {
+    min_len: 2,
+    max_len: 128
+  }];
+}
+
+// Responses
+message VolumeServiceGetResponse {
+  Volume volume = 1;
+}
+message VolumeServiceListResponse {
+  repeated Volume volumes = 1;
+}
+message VolumeServiceDeleteResponse {
+  Volume volume = 1;
+}

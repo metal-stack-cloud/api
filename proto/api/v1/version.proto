@@ -1,0 +1,34 @@
+syntax = "proto3";
+
+package api.v1;
+
+import "google/api/annotations.proto";
+
+option go_package = "./v1";
+
+service VersionService {
+  rpc Get(VersionServiceGetRequest) returns (VersionServiceGetResponse) {
+    option (google.api.http) = {
+      get: "/api/v1/version"
+    };
+  }
+}
+
+message Version {
+  // Version of the application
+  string version = 1;
+  // Revision of the application
+  string revision = 2;
+  // GitSHA1 of the application
+  string git_sha1 = 3;
+  // BuildDate of the application
+  string build_date = 4;
+}
+
+message VersionServiceGetRequest {}
+
+// Version
+
+message VersionServiceGetResponse {
+  Version version = 1;
+}

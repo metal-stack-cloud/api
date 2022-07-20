@@ -1,0 +1,163 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "api/v1/payment.proto",
+    "version": "version not set"
+  },
+  "tags": [
+    {
+      "name": "PaymentService"
+    }
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {},
+  "definitions": {
+    "protobufAny": {
+      "type": "object",
+      "properties": {
+        "@type": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": {}
+    },
+    "rpcStatus": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/protobufAny"
+          }
+        }
+      }
+    },
+    "v1Card": {
+      "type": "object",
+      "properties": {
+        "brand": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "expMonth": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "expYear": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "last4": {
+          "type": "string"
+        }
+      }
+    },
+    "v1PaymentCustomer": {
+      "type": "object",
+      "properties": {
+        "login": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "customerId": {
+          "type": "string"
+        },
+        "paymentMethodId": {
+          "type": "string"
+        },
+        "subscriptionId": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "card": {
+          "$ref": "#/definitions/v1Card"
+        },
+        "prices": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1Price"
+          }
+        }
+      }
+    },
+    "v1PaymentServiceCheckIfCustomerExistsResponse": {
+      "type": "object",
+      "properties": {
+        "customer": {
+          "$ref": "#/definitions/v1PaymentCustomer"
+        },
+        "exists": {
+          "type": "boolean"
+        }
+      }
+    },
+    "v1PaymentServiceCreateOrUpdateCustomerResponse": {
+      "type": "object",
+      "properties": {
+        "customer": {
+          "$ref": "#/definitions/v1PaymentCustomer"
+        }
+      }
+    },
+    "v1PaymentServiceDeletePaymentMethodResponse": {
+      "type": "object"
+    },
+    "v1PaymentServiceGetCustomerResponse": {
+      "type": "object",
+      "properties": {
+        "customer": {
+          "$ref": "#/definitions/v1PaymentCustomer"
+        }
+      }
+    },
+    "v1PaymentServiceGetCustomerWithLoginResponse": {
+      "type": "object",
+      "properties": {
+        "customer": {
+          "$ref": "#/definitions/v1PaymentCustomer"
+        }
+      }
+    },
+    "v1PaymentServiceHasPaymentMethodResponse": {
+      "type": "object",
+      "properties": {
+        "exists": {
+          "type": "boolean"
+        }
+      }
+    },
+    "v1Price": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "unitAmountDecimal": {
+          "type": "number",
+          "format": "double"
+        },
+        "currency": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

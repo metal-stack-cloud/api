@@ -1,0 +1,42 @@
+version: v1
+plugins:
+  # generate go structs for protocol buffer defination
+  - remote: buf.build/library/plugins/go:v1.27.1-1
+    out: ../go
+  # generate gRPC stubs in golang
+  - remote: buf.build/library/plugins/go-grpc:v1.1.0-2
+    out: ../go
+    opt:
+      - require_unimplemented_servers=false
+  # generate validate methods
+  - remote: buf.build/jirkad/plugins/protoc-gen-validate:v0.6.7
+    out: ../go
+    opt:
+      - lang=go
+  # generate reverse proxy from protocol definations
+  - remote: buf.build/grpc-ecosystem/plugins/grpc-gateway:v2.11.0-1
+    out: ../go
+    opt:
+      - allow_delete_body=true
+  # generate openapi documentation for api
+  - remote: buf.build/grpc-ecosystem/plugins/openapiv2:v2.11.0-1
+    out: ../openapiv2
+    opt:
+      - allow_delete_body=true
+  # generate typescript clients
+  - remote: buf.build/grpc/plugins/web:v1.3.1-2
+    out: ../js
+    opt:
+      - mode=grpcwebtext
+      - import_style=typescript
+  - remote: buf.build/grpc/plugins/web:v1.3.1-2
+    out: ../js
+    opt:
+      - mode=grpcwebtext
+      - import_style=commonjs
+  # generate javascript clients
+  - remote: buf.build/protocolbuffers/plugins/js:v3.20.1-1
+    out: ../js
+    opt:
+      - import_style=commonjs
+      - binary

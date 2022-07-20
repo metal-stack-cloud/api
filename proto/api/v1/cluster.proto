@@ -1,0 +1,226 @@
+syntax = "proto3";
+
+package api.v1;
+
+import "api/v1/common.proto";
+import "google/api/annotations.proto";
+import "google/protobuf/timestamp.proto";
+import "validate/validate.proto";
+
+option go_package = "./v1";
+
+service ClusterService {
+  rpc Create(ClusterServiceCreateRequest) returns (ClusterServiceCreateResponse) {
+    option (google.api.http) = {
+      post: "/api/v1/cluster"
+      body: "*"
+    };
+    option (project_roles) = PROJECT_ROLE_OWNER;
+    option (project_roles) = PROJECT_ROLE_EDITOR;
+  }
+  rpc Get(ClusterServiceGetRequest) returns (ClusterServiceGetResponse) {
+    option (google.api.http) = {
+      get: "/api/v1/cluster/{project}/{uuid}"
+    };
+    option (project_roles) = PROJECT_ROLE_OWNER;
+    option (project_roles) = PROJECT_ROLE_EDITOR;
+    option (project_roles) = PROJECT_ROLE_VIEWER;
+  }
+  rpc List(ClusterServiceListRequest) returns (ClusterServiceListResponse) {
+    option (google.api.http) = {
+      post: "/api/v1/clusters"
+      body: "*"
+    };
+    option (project_roles) = PROJECT_ROLE_OWNER;
+    option (project_roles) = PROJECT_ROLE_EDITOR;
+    option (project_roles) = PROJECT_ROLE_VIEWER;
+  }
+  rpc WatchStatus(ClusterServiceWatchStatusRequest) returns (stream ClusterServiceWatchStatusResponse) {
+    option (project_roles) = PROJECT_ROLE_OWNER;
+    option (project_roles) = PROJECT_ROLE_EDITOR;
+    option (project_roles) = PROJECT_ROLE_VIEWER;
+  }
+  rpc Delete(ClusterServiceDeleteRequest) returns (ClusterServiceDeleteResponse) {
+    option (google.api.http) = {
+      delete: "/api/v1/cluster"
+      body: "*"
+    };
+    option (project_roles) = PROJECT_ROLE_OWNER;
+    option (project_roles) = PROJECT_ROLE_EDITOR;
+  }
+  rpc Update(ClusterServiceUpdateRequest) returns (ClusterServiceUpdateResponse) {
+    option (google.api.http) = {
+      patch: "/api/v1/cluster"
+      body: "*"
+    };
+    option (project_roles) = PROJECT_ROLE_OWNER;
+    option (project_roles) = PROJECT_ROLE_EDITOR;
+  }
+  rpc GetCredentials(ClusterServiceGetCredentialsRequest) returns (ClusterServiceGetCredentialsResponse) {
+    option (google.api.http) = {
+      get: "/api/v1/cluster/credentials/{project}/{uuid}"
+    };
+    option (project_roles) = PROJECT_ROLE_OWNER;
+    option (project_roles) = PROJECT_ROLE_EDITOR;
+  }
+}
+
+// Types
+message Cluster {
+  string uuid = 1 [(validate.rules).string.uuid = true];
+  string name = 2 [(validate.rules).string = {
+    min_len: 2,
+    max_len: 12,
+  }];
+  string project = 3 [(validate.rules).string = {
+    min_len: 2,
+    max_len: 128,
+  }];
+  string partition = 4; // partition is part of a region
+  KubernetesSpec kubernetes = 5;
+  repeated Worker workers = 6;
+  Maintenance maintenance = 7;
+  google.protobuf.Timestamp created_at = 10;
+  google.protobuf.Timestamp updated_at = 11;
+  google.protobuf.Timestamp deleted_at = 12;
+  ClusterStatus status = 20;
+}
+
+message KubernetesSpec {
+  string version = 1 [(validate.rules).string = {
+    pattern: "[0-9]+.[0-9]+.[0-9]",
+    max_bytes: 8,
+  }];
+}
+
+message Maintenance {
+  optional bool kubernetes_autoupdate = 1;
+  optional bool machineimage_autoupdate = 2;
+}
+
+message Worker {
+  string name = 1 [(validate.rules).string = {
+    min_len: 2,
+    max_len: 128,
+  }];
+  string machine_type = 2 [(validate.rules).string = {
+    min_len: 2,
+    max_len: 128,
+  }];
+  uint32 minsize = 3 [(validate.rules).uint32.lt = 32];
+  uint32 maxsize = 4 [(validate.rules).uint32.lt = 64];
+  uint32 maxsurge = 5 [(validate.rules).uint32.lt = 64];
+  uint32 maxunavailable = 6 [(validate.rules).uint32.lt = 64];
+}
+
+message WorkerUpdate {
+  string name = 1 [(validate.rules).string = {
+    min_len: 2,
+    max_len: 128,
+  }];
+  optional string machine_type = 2 [(validate.rules).string = {
+    min_len: 2,
+    max_len: 128,
+  }];
+  optional uint32 minsize = 3 [(validate.rules).uint32.lt = 32];
+  optional uint32 maxsize = 4 [(validate.rules).uint32.lt = 64];
+  optional uint32 maxsurge = 5 [(validate.rules).uint32.lt = 64];
+  optional uint32 maxunavailable = 6 [(validate.rules).uint32.lt = 64];
+}
+
+// Requests
+message ClusterServiceGetRequest {
+  string uuid = 1 [(validate.rules).string.uuid = true];
+  string project = 2 [(validate.rules).string = {
+    min_len: 2,
+    max_len: 128,
+  }];
+}
+message ClusterServiceGetCredentialsRequest {
+  string uuid = 1 [(validate.rules).string.uuid = true];
+  string project = 2 [(validate.rules).string = {
+    min_len: 2,
+    max_len: 128,
+  }];
+}
+message ClusterServiceListRequest {
+  string project = 2 [(validate.rules).string = {
+    min_len: 2,
+    max_len: 128,
+  }];
+}
+message ClusterServiceCreateRequest {
+  string name = 2 [(validate.rules).string = {
+    min_len: 2,
+    max_len: 20,
+  }];
+  string project = 3 [(validate.rules).string = {
+    min_len: 2,
+    max_len: 128,
+  }];
+  string partition = 4; // partition is part of a region
+  KubernetesSpec kubernetes = 6;
+  repeated Worker workers = 7;
+  Maintenance maintenance = 8;
+}
+message ClusterServiceUpdateRequest {
+  string uuid = 1 [(validate.rules).string.uuid = true];
+
+  string project = 2 [(validate.rules).string = {
+    min_len: 2,
+    max_len: 128,
+  }];
+  optional KubernetesSpec kubernetes = 3;
+  repeated WorkerUpdate workers = 4;
+  optional Maintenance maintenance = 5;
+}
+message ClusterServiceDeleteRequest {
+  string uuid = 1 [(validate.rules).string.uuid = true];
+
+  string project = 2 [(validate.rules).string = {
+    min_len: 2,
+    max_len: 128,
+  }];
+}
+message ClusterServiceWatchStatusRequest {
+  optional string uuid = 1 [(validate.rules).string.uuid = true];
+  string project = 2 [(validate.rules).string = {
+    min_len: 2,
+    max_len: 128,
+  }];
+}
+
+message ClusterStatus {
+  string uuid = 1;
+  uint32 progress = 2;
+  string state = 3;
+  string type = 4;
+
+  string api_server_ready = 10;
+  string control_plane_ready = 11;
+  string nodes_ready = 12;
+  string system_components_ready = 13;
+}
+
+// Responses
+message ClusterServiceCreateResponse {
+  Cluster cluster = 1;
+}
+message ClusterServiceGetResponse {
+  Cluster cluster = 1;
+}
+message ClusterServiceGetCredentialsResponse {
+  string kubeconfig = 1;
+}
+message ClusterServiceDeleteResponse {
+  Cluster cluster = 1;
+}
+message ClusterServiceUpdateResponse {
+  Cluster cluster = 1;
+}
+message ClusterServiceListResponse {
+  repeated Cluster clusters = 1;
+}
+message ClusterServiceWatchStatusResponse {
+  ClusterStatus status = 1;
+}

@@ -1,0 +1,131 @@
+syntax = "proto3";
+
+package api.v1;
+
+import "api/v1/common.proto";
+import "google/api/annotations.proto";
+import "google/protobuf/timestamp.proto";
+import "validate/validate.proto";
+
+option go_package = "./v1";
+
+service IPService {
+  rpc Get(IPServiceGetRequest) returns (IPServiceGetResponse) {
+    option (google.api.http) = {
+      get: "/api/v1/ip/{project}/{uuid}"
+    };
+    option (project_roles) = PROJECT_ROLE_OWNER;
+    option (project_roles) = PROJECT_ROLE_EDITOR;
+    option (project_roles) = PROJECT_ROLE_VIEWER;
+  }
+  rpc Allocate(IPServiceAllocateRequest) returns (IPServiceAllocateResponse) {
+    option (google.api.http) = {
+      get: "/api/v1/ip/allocate/{project}"
+    };
+    option (project_roles) = PROJECT_ROLE_OWNER;
+    option (project_roles) = PROJECT_ROLE_EDITOR;
+  }
+  rpc Static(IPServiceStaticRequest) returns (IPServiceStaticResponse) {
+    option (google.api.http) = {
+      get: "/api/v1/ip/static/{project}/{uuid}"
+    };
+    option (project_roles) = PROJECT_ROLE_OWNER;
+    option (project_roles) = PROJECT_ROLE_EDITOR;
+  }
+  rpc List(IPServiceListRequest) returns (IPServiceListResponse) {
+    option (google.api.http) = {
+      post: "/api/v1/ips"
+      body: "*"
+    };
+    option (project_roles) = PROJECT_ROLE_OWNER;
+    option (project_roles) = PROJECT_ROLE_EDITOR;
+    option (project_roles) = PROJECT_ROLE_VIEWER;
+  }
+  rpc Delete(IPServiceDeleteRequest) returns (IPServiceDeleteResponse) {
+    option (google.api.http) = {
+      delete: "/api/v1/ip"
+      body: "*"
+    };
+    option (project_roles) = PROJECT_ROLE_OWNER;
+    option (project_roles) = PROJECT_ROLE_EDITOR;
+  }
+}
+
+// Types
+message IP {
+  string uuid = 1;
+  string ip = 2;
+  string name = 3;
+  string description = 4;
+  string network = 5;
+  string project = 6;
+  string type = 7;
+  repeated string tags = 8;
+  google.protobuf.Timestamp created_at = 10;
+  google.protobuf.Timestamp updated_at = 11;
+  google.protobuf.Timestamp deleted_at = 12;
+}
+
+// Requests
+message IPServiceGetRequest {
+  string uuid = 1 [(validate.rules).string.uuid = true];
+  string project = 2 [(validate.rules).string = {
+    min_len: 2,
+    max_len: 128
+  }];
+}
+message IPServiceAllocateRequest {
+  string project = 2 [(validate.rules).string = {
+    min_len: 2,
+    max_len: 128
+  }];
+  string name = 3 [(validate.rules).string = {
+    min_len: 2,
+    max_len: 128
+  }];
+  string description = 4 [(validate.rules).string = {
+    max_len: 128
+  }];
+  string network = 5 [(validate.rules).string = {
+    min_len: 2,
+    max_len: 128
+  }];
+  repeated string tags = 8 [(validate.rules).repeated.max_items = 100];
+}
+message IPServiceStaticRequest {
+  string uuid = 1 [(validate.rules).string.uuid = true];
+  string project = 2 [(validate.rules).string = {
+    min_len: 2,
+    max_len: 128
+  }];
+}
+message IPServiceListRequest {
+  string project = 2 [(validate.rules).string = {
+    min_len: 2,
+    max_len: 128
+  }];
+}
+message IPServiceDeleteRequest {
+  string uuid = 1 [(validate.rules).string.uuid = true];
+  string project = 2 [(validate.rules).string = {
+    min_len: 2,
+    max_len: 128
+  }];
+}
+
+// Responses
+message IPServiceGetResponse {
+  IP ip = 1;
+}
+message IPServiceAllocateResponse {
+  IP ip = 1;
+}
+message IPServiceStaticResponse {
+  IP ip = 1;
+}
+message IPServiceListResponse {
+  repeated IP ips = 1;
+}
+message IPServiceDeleteResponse {
+  IP ip = 1;
+}

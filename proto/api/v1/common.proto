@@ -1,0 +1,37 @@
+syntax = "proto3";
+
+package api.v1;
+
+import "google/protobuf/descriptor.proto";
+
+option go_package = "./v1";
+
+enum OAuthProvider {
+  O_AUTH_PROVIDER_UNSPECIFIED = 0;
+  O_AUTH_PROVIDER_GITHUB = 1;
+}
+
+enum Role {
+  ROLE_UNSPECIFIED = 0;
+  ROLE_MEMBER = 1;
+  ROLE_MAINTAINER = 2;
+  ROLE_ADMIN = 3;
+  ROLE_OWNER = 4;
+}
+
+enum TenantRole {
+  TENANT_ROLE_UNSPECIFIED = 0;
+  TENANT_ROLE_OWNER = 1;
+  TENANT_ROLE_EDITOR = 2;
+  TENANT_ROLE_VIEWER = 3;
+}
+enum ProjectRole {
+  PROJECT_ROLE_UNSPECIFIED = 0;
+  PROJECT_ROLE_OWNER = 1;
+  PROJECT_ROLE_EDITOR = 2;
+  PROJECT_ROLE_VIEWER = 3;
+}
+extend google.protobuf.MethodOptions {
+  repeated TenantRole tenant_roles = 51000;
+  repeated ProjectRole project_roles = 51001;
+}

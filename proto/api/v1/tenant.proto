@@ -1,0 +1,115 @@
+syntax = "proto3";
+
+package api.v1;
+
+import "api/v1/common.proto";
+import "google/api/annotations.proto";
+import "google/protobuf/timestamp.proto";
+
+option go_package = "./v1";
+
+service TenantService {
+  rpc Create(TenantServiceCreateRequest) returns (TenantServiceCreateResponse) {
+    option (google.api.http) = {
+      post: "/api/v1/tenant"
+      body: "*"
+    };
+    option (tenant_roles) = TENANT_ROLE_OWNER;
+    option (tenant_roles) = TENANT_ROLE_EDITOR;
+  }
+  // CreateOrUpdate should only be used from within the application
+  // will check if tenant already exists and updates if necessary, otherwise create a new tenant
+  rpc CreateOrUpdate(TenantServiceCreateOrUpdateRequest) returns (TenantServiceCreateOrUpdateResponse) {}
+
+  rpc Get(TenantServiceGetRequest) returns (TenantServiceGetResponse) {
+    option (google.api.http) = {
+      get: "/api/v1/tenant/{login}"
+    };
+    option (tenant_roles) = TENANT_ROLE_OWNER;
+    option (tenant_roles) = TENANT_ROLE_EDITOR;
+    option (tenant_roles) = TENANT_ROLE_VIEWER;
+  }
+  rpc Update(TenantServiceUpdateRequest) returns (TenantServiceUpdateResponse) {
+    option (google.api.http) = {
+      patch: "/api/v1/tenant"
+      body: "*"
+    };
+    option (tenant_roles) = TENANT_ROLE_OWNER;
+    option (tenant_roles) = TENANT_ROLE_EDITOR;
+  }
+  rpc Delete(TenantServiceDeleteRequest) returns (TenantServiceDeleteResponse) {
+    option (google.api.http) = {
+      delete: "/api/v1/tenant/{login}"
+    };
+    option (tenant_roles) = TENANT_ROLE_OWNER;
+    option (tenant_roles) = TENANT_ROLE_EDITOR;
+  }
+}
+
+// Tenant
+message Tenant {
+  // the login at the provider
+  string login = 1;
+  string name = 2;
+  string email = 3;
+  string avatar_url = 5;
+  OAuthProvider oauth_provider = 6;
+  PaymentDetails payment_details = 8;
+
+  google.protobuf.Timestamp created_at = 10;
+  google.protobuf.Timestamp updated_at = 11;
+  google.protobuf.Timestamp deleted_at = 12;
+}
+
+message PaymentDetails {
+  string customer_id = 1;
+  string payment_method_id = 2;
+  string subscription_id = 3;
+}
+
+message PaymentDetailsUpdate {
+  optional string customer_id = 1;
+  optional string payment_method_id = 2;
+  optional string subscription_id = 3;
+}
+
+// Requests
+message TenantServiceGetRequest {
+  string login = 1;
+}
+message TenantServiceCreateRequest {
+  Tenant tenant = 1;
+}
+message TenantServiceCreateOrUpdateRequest {
+  Tenant tenant = 1;
+}
+
+message TenantServiceUpdateRequest {
+  // the login at the provider
+  string login = 1;
+  optional string name = 2;
+  optional string email = 3;
+  optional string avatar_url = 5;
+  optional PaymentDetailsUpdate payment_details = 8;
+}
+
+message TenantServiceDeleteRequest {
+  string login = 1;
+}
+
+// Responses
+message TenantServiceGetResponse {
+  Tenant tenant = 1;
+}
+message TenantServiceCreateResponse {
+  Tenant tenant = 1;
+}
+message TenantServiceCreateOrUpdateResponse {
+  Tenant tenant = 1;
+}
+message TenantServiceUpdateResponse {
+  Tenant tenant = 1;
+}
+message TenantServiceDeleteResponse {
+  Tenant tenant = 1;
+}
