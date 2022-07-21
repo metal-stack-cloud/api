@@ -119,39 +119,6 @@ func New(ctx context.Context, config DialConfig) (Client, error) {
 		return nil, fmt.Errorf("user agent has to be specified")
 	}
 
-	if config.Credentials == nil {
-		return nil, fmt.Errorf("grpc credentials have to be specified")
-	}
-
-	certPool, err := x509.SystemCertPool()
-	if err != nil {
-		return nil, fmt.Errorf("failed to load system credentials: %w", err)
-	}
-
-	if config.Credentials.CAFile != "" {
-		ca, err := os.ReadFile(config.Credentials.CAFile)
-		if err != nil {
-			return nil, fmt.Errorf("could not read ca certificate: %w", err)
-		}
-
-		ok := certPool.AppendCertsFromPEM(ca)
-		if !ok {
-			return nil, fmt.Errorf("failed to append ca certs: %s", config.Credentials.CAFile)
-		}
-	}
-
-	clientCertificate, err := tls.LoadX509KeyPair(config.Credentials.Certfile, config.Credentials.Keyfile)
-	if err != nil {
-		return nil, fmt.Errorf("could not load client key pair: %w", err)
-	}
-
-	creds := credentials.NewTLS(&tls.Config{
-		ServerName:   config.Credentials.ServerName,
-		Certificates: []tls.Certificate{clientCertificate},
-		RootCAs:      certPool,
-		MinVersion:   tls.VersionTLS13,
-	})
-
 	log.Infow("connecting...",
 		"client", config.UserAgent,
 		"endpoint", config.Endpoint,
@@ -191,7 +158,6 @@ func New(ctx context.Context, config DialConfig) (Client, error) {
 
 	opts := []grpc.DialOption{
 		grpc.WithBlock(),
-		grpc.WithDisableRetry(),
 		grpc.WithUserAgent(config.UserAgent),
 		grpc.WithDefaultCallOptions(grpc.WaitForReady(true)),
 		grpc.WithUnaryInterceptor(grpc_middleware.ChainUnaryClient(interceptors...)),
@@ -205,7 +171,49 @@ func New(ctx context.Context, config DialConfig) (Client, error) {
 		}))
 	}
 
-	// Configure tls ca certificate based auth if credentials are given
+	certPool, err := x509.SystemCertPool()
+	if err != nil {
+		return nil, fmt.Errorf("failed to load system credentials: %w", err)
+	}
+
+	var (
+		certificates []tls.Certificate
+		serverName   string
+	)
+
+	if config.Credentials != nil {
+		serverName = config.Credentials.ServerName
+
+		if config.Credentials.CAFile != "" {
+			ca, err := os.ReadFile(config.Credentials.CAFile)
+			if err != nil {
+				return nil, fmt.Errorf("could not read ca certificate: %w", err)
+			}
+
+			ok := certPool.AppendCertsFromPEM(ca)
+			if !ok {
+				return nil, fmt.Errorf("failed to append ca certs: %s", config.Credentials.CAFile)
+			}
+		}
+
+		if config.Credentials.Certfile != "" && config.Credentials.Keyfile != "" {
+			clientCertificate, err := tls.LoadX509KeyPair(config.Credentials.Certfile, config.Credentials.Keyfile)
+			if err != nil {
+				return nil, fmt.Errorf("could not load client key pair: %w", err)
+			}
+
+			certificates = []tls.Certificate{clientCertificate}
+		}
+	}
+
+	creds := credentials.NewTLS(&tls.Config{
+		ServerName:   serverName,
+		Certificates: certificates,
+		RootCAs:      certPool,
+		ClientAuth:   tls.NoClientCert,
+		MinVersion:   tls.VersionTLS13,
+	})
+
 	switch config.Scheme {
 	case GRPCS:
 		log.Infof("connecting securely")
@@ -214,11 +222,7 @@ func New(ctx context.Context, config DialConfig) (Client, error) {
 		return nil, fmt.Errorf("unsupported scheme:%v", config.Scheme)
 	}
 
-	res.conn, err = grpc.DialContext(
-		ctx,
-		config.Endpoint,
-		opts...,
-	)
+	res.conn, err = grpc.DialContext(ctx, config.Endpoint, opts...)
 	if err != nil {
 		log.Errorw("failed to connect", "endpoint", config.Endpoint, "error", err.Error())
 		return nil, err
