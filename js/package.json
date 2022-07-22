@@ -1,9 +1,9 @@
 {
-  "name": "@metal-stack-cloud/api-server",
-  "version": "0.0.41",
-  "description": "metal-cloud api-server js client",
+  "name": "@metal-stack-cloud/api",
+  "version": "0.0.42",
+  "description": "metal-cloud api js client",
   "main": "index.js",
-  "repository": "https://github.com/metal-stack-cloud/api-server.git",
+  "repository": "https://github.com/metal-stack-cloud/api.git",
   "scripts": {
     "build": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1"

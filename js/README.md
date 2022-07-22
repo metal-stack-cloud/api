@@ -1,3 +1,3 @@
-# Metal-Cloud api-server JS and TS Package
+# Metal-Cloud api JS and TS Package
 
 TODO describe usage
