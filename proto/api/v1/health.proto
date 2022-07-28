@@ -22,18 +22,20 @@ enum Service {
   SERVICE_MACHINES = 3;
 }
 
+message Health {
+  repeated HealthStatus services = 1;
+}
+
 message HealthStatus {
   Service name = 1;
   ServiceStatus status = 2;
   string message = 3;
+  map<string, PartitionHealth> partitions = 4;
 }
 
 message PartitionHealth {
-  repeated HealthStatus service_status = 1;
-}
-
-message Health {
-  map<string, PartitionHealth> partition_status = 1;
+  ServiceStatus status = 1;
+  string message = 2;
 }
 
 message HealthServiceGetRequest {}

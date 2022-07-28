@@ -35,6 +35,138 @@ var (
 	_ = sort.Sort
 )
 
+// Validate checks the field values on Health with the rules defined in the
+// proto definition for this message. If any rules are violated, the first
+// error encountered is returned, or nil if there are no violations.
+func (m *Health) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on Health with the rules defined in the
+// proto definition for this message. If any rules are violated, the result is
+// a list of violation errors wrapped in HealthMultiError, or nil if none found.
+func (m *Health) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *Health) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	for idx, item := range m.GetServices() {
+		_, _ = idx, item
+
+		if all {
+			switch v := interface{}(item).(type) {
+			case interface{ ValidateAll() error }:
+				if err := v.ValidateAll(); err != nil {
+					errors = append(errors, HealthValidationError{
+						field:  fmt.Sprintf("Services[%v]", idx),
+						reason: "embedded message failed validation",
+						cause:  err,
+					})
+				}
+			case interface{ Validate() error }:
+				if err := v.Validate(); err != nil {
+					errors = append(errors, HealthValidationError{
+						field:  fmt.Sprintf("Services[%v]", idx),
+						reason: "embedded message failed validation",
+						cause:  err,
+					})
+				}
+			}
+		} else if v, ok := interface{}(item).(interface{ Validate() error }); ok {
+			if err := v.Validate(); err != nil {
+				return HealthValidationError{
+					field:  fmt.Sprintf("Services[%v]", idx),
+					reason: "embedded message failed validation",
+					cause:  err,
+				}
+			}
+		}
+
+	}
+
+	if len(errors) > 0 {
+		return HealthMultiError(errors)
+	}
+
+	return nil
+}
+
+// HealthMultiError is an error wrapping multiple validation errors returned by
+// Health.ValidateAll() if the designated constraints aren't met.
+type HealthMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m HealthMultiError) Error() string {
+	var msgs []string
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m HealthMultiError) AllErrors() []error { return m }
+
+// HealthValidationError is the validation error returned by Health.Validate if
+// the designated constraints aren't met.
+type HealthValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e HealthValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e HealthValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e HealthValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e HealthValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e HealthValidationError) ErrorName() string { return "HealthValidationError" }
+
+// Error satisfies the builtin error interface
+func (e HealthValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sHealth.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = HealthValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = HealthValidationError{}
+
 // Validate checks the field values on HealthStatus with the rules defined in
 // the proto definition for this message. If any rules are violated, the first
 // error encountered is returned, or nil if there are no violations.
@@ -62,6 +194,52 @@ func (m *HealthStatus) validate(all bool) error {
 	// no validation rules for Status
 
 	// no validation rules for Message
+
+	{
+		sorted_keys := make([]string, len(m.GetPartitions()))
+		i := 0
+		for key := range m.GetPartitions() {
+			sorted_keys[i] = key
+			i++
+		}
+		sort.Slice(sorted_keys, func(i, j int) bool { return sorted_keys[i] < sorted_keys[j] })
+		for _, key := range sorted_keys {
+			val := m.GetPartitions()[key]
+			_ = val
+
+			// no validation rules for Partitions[key]
+
+			if all {
+				switch v := interface{}(val).(type) {
+				case interface{ ValidateAll() error }:
+					if err := v.ValidateAll(); err != nil {
+						errors = append(errors, HealthStatusValidationError{
+							field:  fmt.Sprintf("Partitions[%v]", key),
+							reason: "embedded message failed validation",
+							cause:  err,
+						})
+					}
+				case interface{ Validate() error }:
+					if err := v.Validate(); err != nil {
+						errors = append(errors, HealthStatusValidationError{
+							field:  fmt.Sprintf("Partitions[%v]", key),
+							reason: "embedded message failed validation",
+							cause:  err,
+						})
+					}
+				}
+			} else if v, ok := interface{}(val).(interface{ Validate() error }); ok {
+				if err := v.Validate(); err != nil {
+					return HealthStatusValidationError{
+						field:  fmt.Sprintf("Partitions[%v]", key),
+						reason: "embedded message failed validation",
+						cause:  err,
+					}
+				}
+			}
+
+		}
+	}
 
 	if len(errors) > 0 {
 		return HealthStatusMultiError(errors)
@@ -162,39 +340,9 @@ func (m *PartitionHealth) validate(all bool) error {
 
 	var errors []error
 
-	for idx, item := range m.GetServiceStatus() {
-		_, _ = idx, item
+	// no validation rules for Status
 
-		if all {
-			switch v := interface{}(item).(type) {
-			case interface{ ValidateAll() error }:
-				if err := v.ValidateAll(); err != nil {
-					errors = append(errors, PartitionHealthValidationError{
-						field:  fmt.Sprintf("ServiceStatus[%v]", idx),
-						reason: "embedded message failed validation",
-						cause:  err,
-					})
-				}
-			case interface{ Validate() error }:
-				if err := v.Validate(); err != nil {
-					errors = append(errors, PartitionHealthValidationError{
-						field:  fmt.Sprintf("ServiceStatus[%v]", idx),
-						reason: "embedded message failed validation",
-						cause:  err,
-					})
-				}
-			}
-		} else if v, ok := interface{}(item).(interface{ Validate() error }); ok {
-			if err := v.Validate(); err != nil {
-				return PartitionHealthValidationError{
-					field:  fmt.Sprintf("ServiceStatus[%v]", idx),
-					reason: "embedded message failed validation",
-					cause:  err,
-				}
-			}
-		}
-
-	}
+	// no validation rules for Message
 
 	if len(errors) > 0 {
 		return PartitionHealthMultiError(errors)
@@ -273,150 +421,6 @@ var _ interface {
 	Cause() error
 	ErrorName() string
 } = PartitionHealthValidationError{}
-
-// Validate checks the field values on Health with the rules defined in the
-// proto definition for this message. If any rules are violated, the first
-// error encountered is returned, or nil if there are no violations.
-func (m *Health) Validate() error {
-	return m.validate(false)
-}
-
-// ValidateAll checks the field values on Health with the rules defined in the
-// proto definition for this message. If any rules are violated, the result is
-// a list of violation errors wrapped in HealthMultiError, or nil if none found.
-func (m *Health) ValidateAll() error {
-	return m.validate(true)
-}
-
-func (m *Health) validate(all bool) error {
-	if m == nil {
-		return nil
-	}
-
-	var errors []error
-
-	{
-		sorted_keys := make([]string, len(m.GetPartitionStatus()))
-		i := 0
-		for key := range m.GetPartitionStatus() {
-			sorted_keys[i] = key
-			i++
-		}
-		sort.Slice(sorted_keys, func(i, j int) bool { return sorted_keys[i] < sorted_keys[j] })
-		for _, key := range sorted_keys {
-			val := m.GetPartitionStatus()[key]
-			_ = val
-
-			// no validation rules for PartitionStatus[key]
-
-			if all {
-				switch v := interface{}(val).(type) {
-				case interface{ ValidateAll() error }:
-					if err := v.ValidateAll(); err != nil {
-						errors = append(errors, HealthValidationError{
-							field:  fmt.Sprintf("PartitionStatus[%v]", key),
-							reason: "embedded message failed validation",
-							cause:  err,
-						})
-					}
-				case interface{ Validate() error }:
-					if err := v.Validate(); err != nil {
-						errors = append(errors, HealthValidationError{
-							field:  fmt.Sprintf("PartitionStatus[%v]", key),
-							reason: "embedded message failed validation",
-							cause:  err,
-						})
-					}
-				}
-			} else if v, ok := interface{}(val).(interface{ Validate() error }); ok {
-				if err := v.Validate(); err != nil {
-					return HealthValidationError{
-						field:  fmt.Sprintf("PartitionStatus[%v]", key),
-						reason: "embedded message failed validation",
-						cause:  err,
-					}
-				}
-			}
-
-		}
-	}
-
-	if len(errors) > 0 {
-		return HealthMultiError(errors)
-	}
-
-	return nil
-}
-
-// HealthMultiError is an error wrapping multiple validation errors returned by
-// Health.ValidateAll() if the designated constraints aren't met.
-type HealthMultiError []error
-
-// Error returns a concatenation of all the error messages it wraps.
-func (m HealthMultiError) Error() string {
-	var msgs []string
-	for _, err := range m {
-		msgs = append(msgs, err.Error())
-	}
-	return strings.Join(msgs, "; ")
-}
-
-// AllErrors returns a list of validation violation errors.
-func (m HealthMultiError) AllErrors() []error { return m }
-
-// HealthValidationError is the validation error returned by Health.Validate if
-// the designated constraints aren't met.
-type HealthValidationError struct {
-	field  string
-	reason string
-	cause  error
-	key    bool
-}
-
-// Field function returns field value.
-func (e HealthValidationError) Field() string { return e.field }
-
-// Reason function returns reason value.
-func (e HealthValidationError) Reason() string { return e.reason }
-
-// Cause function returns cause value.
-func (e HealthValidationError) Cause() error { return e.cause }
-
-// Key function returns key value.
-func (e HealthValidationError) Key() bool { return e.key }
-
-// ErrorName returns error name.
-func (e HealthValidationError) ErrorName() string { return "HealthValidationError" }
-
-// Error satisfies the builtin error interface
-func (e HealthValidationError) Error() string {
-	cause := ""
-	if e.cause != nil {
-		cause = fmt.Sprintf(" | caused by: %v", e.cause)
-	}
-
-	key := ""
-	if e.key {
-		key = "key for "
-	}
-
-	return fmt.Sprintf(
-		"invalid %sHealth.%s: %s%s",
-		key,
-		e.field,
-		e.reason,
-		cause)
-}
-
-var _ error = HealthValidationError{}
-
-var _ interface {
-	Field() string
-	Reason() string
-	Key() bool
-	Cause() error
-	ErrorName() string
-} = HealthValidationError{}
 
 // Validate checks the field values on HealthServiceGetRequest with the rules
 // defined in the proto definition for this message. If any rules are

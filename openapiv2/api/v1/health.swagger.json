@@ -47,10 +47,10 @@
     "v1Health": {
       "type": "object",
       "properties": {
-        "partitionStatus": {
-          "type": "object",
-          "additionalProperties": {
-            "$ref": "#/definitions/v1PartitionHealth"
+        "services": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1HealthStatus"
           }
         }
       }
@@ -74,17 +74,23 @@
         },
         "message": {
           "type": "string"
+        },
+        "partitions": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/v1PartitionHealth"
+          }
         }
       }
     },
     "v1PartitionHealth": {
       "type": "object",
       "properties": {
-        "serviceStatus": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/v1HealthStatus"
-          }
+        "status": {
+          "$ref": "#/definitions/v1ServiceStatus"
+        },
+        "message": {
+          "type": "string"
         }
       }
     },
