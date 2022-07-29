@@ -1,0 +1,521 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "metal/api/v1/cluster.proto",
+    "version": "version not set"
+  },
+  "tags": [
+    {
+      "name": "ClusterService"
+    }
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/api/v1/cluster": {
+      "delete": {
+        "operationId": "ClusterService_Delete",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1ClusterServiceDeleteResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1ClusterServiceDeleteRequest"
+            }
+          }
+        ],
+        "tags": [
+          "ClusterService"
+        ]
+      },
+      "post": {
+        "operationId": "ClusterService_Create",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1ClusterServiceCreateResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1ClusterServiceCreateRequest"
+            }
+          }
+        ],
+        "tags": [
+          "ClusterService"
+        ]
+      },
+      "patch": {
+        "operationId": "ClusterService_Update",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1ClusterServiceUpdateResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1ClusterServiceUpdateRequest"
+            }
+          }
+        ],
+        "tags": [
+          "ClusterService"
+        ]
+      }
+    },
+    "/api/v1/cluster/credentials/{project}/{uuid}": {
+      "get": {
+        "operationId": "ClusterService_GetCredentials",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1ClusterServiceGetCredentialsResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "project",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "uuid",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "ClusterService"
+        ]
+      }
+    },
+    "/api/v1/cluster/{project}/{uuid}": {
+      "get": {
+        "operationId": "ClusterService_Get",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1ClusterServiceGetResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "project",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "uuid",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "ClusterService"
+        ]
+      }
+    },
+    "/api/v1/clusters": {
+      "post": {
+        "operationId": "ClusterService_List",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1ClusterServiceListResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1ClusterServiceListRequest"
+            }
+          }
+        ],
+        "tags": [
+          "ClusterService"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "protobufAny": {
+      "type": "object",
+      "properties": {
+        "@type": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": {}
+    },
+    "rpcStatus": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/protobufAny"
+          }
+        }
+      }
+    },
+    "v1Cluster": {
+      "type": "object",
+      "properties": {
+        "uuid": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "project": {
+          "type": "string"
+        },
+        "partition": {
+          "type": "string"
+        },
+        "kubernetes": {
+          "$ref": "#/definitions/v1KubernetesSpec"
+        },
+        "workers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1Worker"
+          }
+        },
+        "maintenance": {
+          "$ref": "#/definitions/v1Maintenance"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "deletedAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "status": {
+          "$ref": "#/definitions/v1ClusterStatus"
+        }
+      },
+      "title": "Types"
+    },
+    "v1ClusterServiceCreateRequest": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "project": {
+          "type": "string"
+        },
+        "partition": {
+          "type": "string"
+        },
+        "kubernetes": {
+          "$ref": "#/definitions/v1KubernetesSpec"
+        },
+        "workers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1Worker"
+          }
+        },
+        "maintenance": {
+          "$ref": "#/definitions/v1Maintenance"
+        }
+      }
+    },
+    "v1ClusterServiceCreateResponse": {
+      "type": "object",
+      "properties": {
+        "cluster": {
+          "$ref": "#/definitions/v1Cluster"
+        }
+      },
+      "title": "Responses"
+    },
+    "v1ClusterServiceDeleteRequest": {
+      "type": "object",
+      "properties": {
+        "uuid": {
+          "type": "string"
+        },
+        "project": {
+          "type": "string"
+        }
+      }
+    },
+    "v1ClusterServiceDeleteResponse": {
+      "type": "object",
+      "properties": {
+        "cluster": {
+          "$ref": "#/definitions/v1Cluster"
+        }
+      }
+    },
+    "v1ClusterServiceGetCredentialsResponse": {
+      "type": "object",
+      "properties": {
+        "kubeconfig": {
+          "type": "string"
+        }
+      }
+    },
+    "v1ClusterServiceGetResponse": {
+      "type": "object",
+      "properties": {
+        "cluster": {
+          "$ref": "#/definitions/v1Cluster"
+        }
+      }
+    },
+    "v1ClusterServiceListRequest": {
+      "type": "object",
+      "properties": {
+        "project": {
+          "type": "string"
+        }
+      }
+    },
+    "v1ClusterServiceListResponse": {
+      "type": "object",
+      "properties": {
+        "clusters": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1Cluster"
+          }
+        }
+      }
+    },
+    "v1ClusterServiceUpdateRequest": {
+      "type": "object",
+      "properties": {
+        "uuid": {
+          "type": "string"
+        },
+        "project": {
+          "type": "string"
+        },
+        "kubernetes": {
+          "$ref": "#/definitions/v1KubernetesSpec"
+        },
+        "workers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1WorkerUpdate"
+          }
+        },
+        "maintenance": {
+          "$ref": "#/definitions/v1Maintenance"
+        }
+      }
+    },
+    "v1ClusterServiceUpdateResponse": {
+      "type": "object",
+      "properties": {
+        "cluster": {
+          "$ref": "#/definitions/v1Cluster"
+        }
+      }
+    },
+    "v1ClusterServiceWatchStatusResponse": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "$ref": "#/definitions/v1ClusterStatus"
+        }
+      }
+    },
+    "v1ClusterStatus": {
+      "type": "object",
+      "properties": {
+        "uuid": {
+          "type": "string"
+        },
+        "progress": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "state": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "apiServerReady": {
+          "type": "string"
+        },
+        "controlPlaneReady": {
+          "type": "string"
+        },
+        "nodesReady": {
+          "type": "string"
+        },
+        "systemComponentsReady": {
+          "type": "string"
+        }
+      }
+    },
+    "v1KubernetesSpec": {
+      "type": "object",
+      "properties": {
+        "version": {
+          "type": "string"
+        }
+      }
+    },
+    "v1Maintenance": {
+      "type": "object",
+      "properties": {
+        "kubernetesAutoupdate": {
+          "type": "boolean"
+        },
+        "machineimageAutoupdate": {
+          "type": "boolean"
+        }
+      }
+    },
+    "v1Worker": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "machineType": {
+          "type": "string"
+        },
+        "minsize": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "maxsize": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "maxsurge": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "maxunavailable": {
+          "type": "integer",
+          "format": "int64"
+        }
+      }
+    },
+    "v1WorkerUpdate": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "machineType": {
+          "type": "string"
+        },
+        "minsize": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "maxsize": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "maxsurge": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "maxunavailable": {
+          "type": "integer",
+          "format": "int64"
+        }
+      }
+    }
+  }
+}

@@ -7,8 +7,6 @@ import "google/api/annotations.proto";
 import "google/protobuf/timestamp.proto";
 import "validate/validate.proto";
 
-option go_package = "./v1";
-
 service ClusterService {
   rpc Create(ClusterServiceCreateRequest) returns (ClusterServiceCreateResponse) {
     option (google.api.http) = {

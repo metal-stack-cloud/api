@@ -4,8 +4,6 @@ package api.v1;
 
 import "api/v1/common.proto";
 
-option go_package = "./v1";
-
 // User
 message User {
   // the login at the provider

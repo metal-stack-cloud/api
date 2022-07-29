@@ -2,8 +2,6 @@ syntax = "proto3";
 
 package api.v1;
 
-option go_package = "./v1";
-
 service HealthService {
   rpc Get(HealthServiceGetRequest) returns (HealthServiceGetResponse) {}
 }

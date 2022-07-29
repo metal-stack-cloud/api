@@ -4,8 +4,6 @@ package api.v1;
 
 import "google/protobuf/descriptor.proto";
 
-option go_package = "./v1";
-
 enum OAuthProvider {
   O_AUTH_PROVIDER_UNSPECIFIED = 0;
   O_AUTH_PROVIDER_GITHUB = 1;

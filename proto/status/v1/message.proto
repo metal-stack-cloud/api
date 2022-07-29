@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+package status.v1;
+
+import "google/protobuf/timestamp.proto";
+
+service MessageService {
+  rpc List(MessageServiceListRequest) returns (MessageServiceListResponse) {}
+}
+
+message MessageServiceListRequest {}
+
+message MessageServiceListResponse {
+  repeated Message items = 1;
+  repeated Message pinned_items = 2;
+}
+
+message Message {
+  string id = 1;
+  string text = 2;
+  MessageKind kind = 3;
+  google.protobuf.Timestamp timestamp = 4;
+}
+
+enum MessageKind {
+  MESSAGE_KIND_UNSPECIFIED = 0;
+  MESSAGE_KIND_INFO = 1;
+  MESSAGE_KIND_INCIDENT = 2;
+  MESSAGE_KIND_CHANGE = 3;
+  MESSAGE_KIND_RESOLVED = 4;
+  MESSAGE_KIND_UPDATE = 5;
+}

@@ -7,8 +7,6 @@ import "google/api/annotations.proto";
 import "google/protobuf/timestamp.proto";
 import "validate/validate.proto";
 
-option go_package = "./v1";
-
 service IPService {
   rpc Get(IPServiceGetRequest) returns (IPServiceGetResponse) {
     option (google.api.http) = {

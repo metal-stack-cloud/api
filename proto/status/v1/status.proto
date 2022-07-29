@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package status.v1;
+
+import "api/v1/health.proto";
+
+service StatusService {
+  rpc Get(StatusServiceGetRequest) returns (StatusServiceGetResponse) {}
+}
+
+message StatusServiceGetRequest {}
+
+message StatusServiceGetResponse {
+  api.v1.Health health = 1;
+  bool connection_broken = 2;
+  string api_version = 3;
+}

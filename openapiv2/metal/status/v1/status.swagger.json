@@ -1,0 +1,124 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "metal/status/v1/status.proto",
+    "version": "version not set"
+  },
+  "tags": [
+    {
+      "name": "StatusService"
+    }
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {},
+  "definitions": {
+    "protobufAny": {
+      "type": "object",
+      "properties": {
+        "@type": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": {}
+    },
+    "rpcStatus": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/protobufAny"
+          }
+        }
+      }
+    },
+    "v1Health": {
+      "type": "object",
+      "properties": {
+        "services": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1HealthStatus"
+          }
+        }
+      }
+    },
+    "v1HealthStatus": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "$ref": "#/definitions/v1Service"
+        },
+        "status": {
+          "$ref": "#/definitions/v1ServiceStatus"
+        },
+        "message": {
+          "type": "string"
+        },
+        "partitions": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/v1PartitionHealth"
+          }
+        }
+      }
+    },
+    "v1PartitionHealth": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "$ref": "#/definitions/v1ServiceStatus"
+        },
+        "message": {
+          "type": "string"
+        }
+      }
+    },
+    "v1Service": {
+      "type": "string",
+      "enum": [
+        "SERVICE_UNSPECIFIED",
+        "SERVICE_CLUSTER",
+        "SERVICE_VOLUME",
+        "SERVICE_MACHINES"
+      ],
+      "default": "SERVICE_UNSPECIFIED"
+    },
+    "v1ServiceStatus": {
+      "type": "string",
+      "enum": [
+        "SERVICE_STATUS_UNSPECIFIED",
+        "SERVICE_STATUS_DEGRADED",
+        "SERVICE_STATUS_UNHEALTHY",
+        "SERVICE_STATUS_HEALTHY"
+      ],
+      "default": "SERVICE_STATUS_UNSPECIFIED"
+    },
+    "v1StatusServiceGetResponse": {
+      "type": "object",
+      "properties": {
+        "health": {
+          "$ref": "#/definitions/v1Health"
+        },
+        "connectionBroken": {
+          "type": "boolean"
+        },
+        "apiVersion": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

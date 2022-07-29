@@ -6,8 +6,6 @@ import "api/v1/common.proto";
 import "google/api/annotations.proto";
 import "google/protobuf/timestamp.proto";
 
-option go_package = "./v1";
-
 service TenantService {
   rpc Create(TenantServiceCreateRequest) returns (TenantServiceCreateResponse) {
     option (google.api.http) = {

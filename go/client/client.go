@@ -16,7 +16,7 @@ import (
 	"google.golang.org/grpc/credentials"
 	"google.golang.org/grpc/keepalive"
 
-	v1 "github.com/metal-stack-cloud/api/go/v1"
+	v1 "github.com/metal-stack-cloud/api/go/api/v1"
 	"go.uber.org/zap"
 	"go.uber.org/zap/zapcore"
 )

@@ -4,8 +4,6 @@ package api.v1;
 
 import "google/api/annotations.proto";
 
-option go_package = "./v1";
-
 service AssetService {
   rpc List(AssetServiceListRequest) returns (AssetServiceListResponse) {
     option (google.api.http) = {
