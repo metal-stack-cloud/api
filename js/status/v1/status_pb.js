@@ -195,8 +195,9 @@ proto.status.v1.StatusServiceGetResponse.prototype.toObject = function(opt_inclu
 proto.status.v1.StatusServiceGetResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
     health: (f = msg.getHealth()) && api_v1_health_pb.Health.toObject(includeInstance, f),
-    connectionBroken: jspb.Message.getBooleanFieldWithDefault(msg, 2, false),
-    apiVersion: jspb.Message.getFieldWithDefault(msg, 3, "")
+    overallStatus: jspb.Message.getFieldWithDefault(msg, 2, 0),
+    connectionBroken: jspb.Message.getBooleanFieldWithDefault(msg, 3, false),
+    apiVersion: jspb.Message.getFieldWithDefault(msg, 4, "")
   };
 
   if (includeInstance) {
@@ -239,10 +240,14 @@ proto.status.v1.StatusServiceGetResponse.deserializeBinaryFromReader = function(
       msg.setHealth(value);
       break;
     case 2:
+      var value = /** @type {!proto.api.v1.ServiceStatus} */ (reader.readEnum());
+      msg.setOverallStatus(value);
+      break;
+    case 3:
       var value = /** @type {boolean} */ (reader.readBool());
       msg.setConnectionBroken(value);
       break;
-    case 3:
+    case 4:
       var value = /** @type {string} */ (reader.readString());
       msg.setApiVersion(value);
       break;
@@ -283,17 +288,24 @@ proto.status.v1.StatusServiceGetResponse.serializeBinaryToWriter = function(mess
       api_v1_health_pb.Health.serializeBinaryToWriter
     );
   }
+  f = message.getOverallStatus();
+  if (f !== 0.0) {
+    writer.writeEnum(
+      2,
+      f
+    );
+  }
   f = message.getConnectionBroken();
   if (f) {
     writer.writeBool(
-      2,
+      3,
       f
     );
   }
   f = message.getApiVersion();
   if (f.length > 0) {
     writer.writeString(
-      3,
+      4,
       f
     );
   }
@@ -338,11 +350,29 @@ proto.status.v1.StatusServiceGetResponse.prototype.hasHealth = function() {
 
 
 /**
- * optional bool connection_broken = 2;
+ * optional api.v1.ServiceStatus overall_status = 2;
+ * @return {!proto.api.v1.ServiceStatus}
+ */
+proto.status.v1.StatusServiceGetResponse.prototype.getOverallStatus = function() {
+  return /** @type {!proto.api.v1.ServiceStatus} */ (jspb.Message.getFieldWithDefault(this, 2, 0));
+};
+
+
+/**
+ * @param {!proto.api.v1.ServiceStatus} value
+ * @return {!proto.status.v1.StatusServiceGetResponse} returns this
+ */
+proto.status.v1.StatusServiceGetResponse.prototype.setOverallStatus = function(value) {
+  return jspb.Message.setProto3EnumField(this, 2, value);
+};
+
+
+/**
+ * optional bool connection_broken = 3;
  * @return {boolean}
  */
 proto.status.v1.StatusServiceGetResponse.prototype.getConnectionBroken = function() {
-  return /** @type {boolean} */ (jspb.Message.getBooleanFieldWithDefault(this, 2, false));
+  return /** @type {boolean} */ (jspb.Message.getBooleanFieldWithDefault(this, 3, false));
 };
 
 
@@ -351,16 +381,16 @@ proto.status.v1.StatusServiceGetResponse.prototype.getConnectionBroken = functio
  * @return {!proto.status.v1.StatusServiceGetResponse} returns this
  */
 proto.status.v1.StatusServiceGetResponse.prototype.setConnectionBroken = function(value) {
-  return jspb.Message.setProto3BooleanField(this, 2, value);
+  return jspb.Message.setProto3BooleanField(this, 3, value);
 };
 
 
 /**
- * optional string api_version = 3;
+ * optional string api_version = 4;
  * @return {string}
  */
 proto.status.v1.StatusServiceGetResponse.prototype.getApiVersion = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 4, ""));
 };
 
 
@@ -369,7 +399,7 @@ proto.status.v1.StatusServiceGetResponse.prototype.getApiVersion = function() {
  * @return {!proto.status.v1.StatusServiceGetResponse} returns this
  */
 proto.status.v1.StatusServiceGetResponse.prototype.setApiVersion = function(value) {
-  return jspb.Message.setProto3StringField(this, 3, value);
+  return jspb.Message.setProto3StringField(this, 4, value);
 };
 
 

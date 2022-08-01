@@ -17,6 +17,8 @@ import (
 	"unicode/utf8"
 
 	"google.golang.org/protobuf/types/known/anypb"
+
+	apiv1 "github.com/metal-stack-cloud/api/go/api/v1"
 )
 
 // ensure the imports are used
@@ -33,6 +35,8 @@ var (
 	_ = (*mail.Address)(nil)
 	_ = anypb.Any{}
 	_ = sort.Sort
+
+	_ = apiv1.ServiceStatus(0)
 )
 
 // Validate checks the field values on StatusServiceGetRequest with the rules
@@ -187,6 +191,8 @@ func (m *StatusServiceGetResponse) validate(all bool) error {
 			}
 		}
 	}
+
+	// no validation rules for OverallStatus
 
 	// no validation rules for ConnectionBroken
 

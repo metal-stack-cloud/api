@@ -59,6 +59,12 @@
         "timestamp": {
           "type": "string",
           "format": "date-time"
+        },
+        "replies": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1ReplyMessage"
+          }
         }
       }
     },
@@ -88,6 +94,24 @@
           "items": {
             "$ref": "#/definitions/v1Message"
           }
+        }
+      }
+    },
+    "v1ReplyMessage": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "text": {
+          "type": "string"
+        },
+        "kind": {
+          "$ref": "#/definitions/v1MessageKind"
+        },
+        "timestamp": {
+          "type": "string",
+          "format": "date-time"
         }
       }
     }

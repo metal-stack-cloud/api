@@ -363,6 +363,40 @@ func (m *Message) validate(all bool) error {
 		}
 	}
 
+	for idx, item := range m.GetReplies() {
+		_, _ = idx, item
+
+		if all {
+			switch v := interface{}(item).(type) {
+			case interface{ ValidateAll() error }:
+				if err := v.ValidateAll(); err != nil {
+					errors = append(errors, MessageValidationError{
+						field:  fmt.Sprintf("Replies[%v]", idx),
+						reason: "embedded message failed validation",
+						cause:  err,
+					})
+				}
+			case interface{ Validate() error }:
+				if err := v.Validate(); err != nil {
+					errors = append(errors, MessageValidationError{
+						field:  fmt.Sprintf("Replies[%v]", idx),
+						reason: "embedded message failed validation",
+						cause:  err,
+					})
+				}
+			}
+		} else if v, ok := interface{}(item).(interface{ Validate() error }); ok {
+			if err := v.Validate(); err != nil {
+				return MessageValidationError{
+					field:  fmt.Sprintf("Replies[%v]", idx),
+					reason: "embedded message failed validation",
+					cause:  err,
+				}
+			}
+		}
+
+	}
+
 	if len(errors) > 0 {
 		return MessageMultiError(errors)
 	}
@@ -439,3 +473,137 @@ var _ interface {
 	Cause() error
 	ErrorName() string
 } = MessageValidationError{}
+
+// Validate checks the field values on ReplyMessage with the rules defined in
+// the proto definition for this message. If any rules are violated, the first
+// error encountered is returned, or nil if there are no violations.
+func (m *ReplyMessage) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on ReplyMessage with the rules defined
+// in the proto definition for this message. If any rules are violated, the
+// result is a list of violation errors wrapped in ReplyMessageMultiError, or
+// nil if none found.
+func (m *ReplyMessage) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *ReplyMessage) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	// no validation rules for Id
+
+	// no validation rules for Text
+
+	// no validation rules for Kind
+
+	if all {
+		switch v := interface{}(m.GetTimestamp()).(type) {
+		case interface{ ValidateAll() error }:
+			if err := v.ValidateAll(); err != nil {
+				errors = append(errors, ReplyMessageValidationError{
+					field:  "Timestamp",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		case interface{ Validate() error }:
+			if err := v.Validate(); err != nil {
+				errors = append(errors, ReplyMessageValidationError{
+					field:  "Timestamp",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		}
+	} else if v, ok := interface{}(m.GetTimestamp()).(interface{ Validate() error }); ok {
+		if err := v.Validate(); err != nil {
+			return ReplyMessageValidationError{
+				field:  "Timestamp",
+				reason: "embedded message failed validation",
+				cause:  err,
+			}
+		}
+	}
+
+	if len(errors) > 0 {
+		return ReplyMessageMultiError(errors)
+	}
+
+	return nil
+}
+
+// ReplyMessageMultiError is an error wrapping multiple validation errors
+// returned by ReplyMessage.ValidateAll() if the designated constraints aren't met.
+type ReplyMessageMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m ReplyMessageMultiError) Error() string {
+	var msgs []string
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m ReplyMessageMultiError) AllErrors() []error { return m }
+
+// ReplyMessageValidationError is the validation error returned by
+// ReplyMessage.Validate if the designated constraints aren't met.
+type ReplyMessageValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e ReplyMessageValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e ReplyMessageValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e ReplyMessageValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e ReplyMessageValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e ReplyMessageValidationError) ErrorName() string { return "ReplyMessageValidationError" }
+
+// Error satisfies the builtin error interface
+func (e ReplyMessageValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sReplyMessage.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = ReplyMessageValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = ReplyMessageValidationError{}

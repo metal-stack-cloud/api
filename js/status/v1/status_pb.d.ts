@@ -23,6 +23,9 @@ export class StatusServiceGetResponse extends jspb.Message {
   hasHealth(): boolean;
   clearHealth(): StatusServiceGetResponse;
 
+  getOverallStatus(): api_v1_health_pb.ServiceStatus;
+  setOverallStatus(value: api_v1_health_pb.ServiceStatus): StatusServiceGetResponse;
+
   getConnectionBroken(): boolean;
   setConnectionBroken(value: boolean): StatusServiceGetResponse;
 
@@ -40,6 +43,7 @@ export class StatusServiceGetResponse extends jspb.Message {
 export namespace StatusServiceGetResponse {
   export type AsObject = {
     health?: api_v1_health_pb.Health.AsObject,
+    overallStatus: api_v1_health_pb.ServiceStatus,
     connectionBroken: boolean,
     apiVersion: string,
   }

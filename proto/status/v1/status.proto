@@ -12,6 +12,7 @@ message StatusServiceGetRequest {}
 
 message StatusServiceGetResponse {
   api.v1.Health health = 1;
-  bool connection_broken = 2;
-  string api_version = 3;
+  api.v1.ServiceStatus overall_status = 2;
+  bool connection_broken = 3;
+  string api_version = 4;
 }

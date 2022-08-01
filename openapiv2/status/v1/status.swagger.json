@@ -112,6 +112,9 @@
         "health": {
           "$ref": "#/definitions/v1Health"
         },
+        "overallStatus": {
+          "$ref": "#/definitions/v1ServiceStatus"
+        },
         "connectionBroken": {
           "type": "boolean"
         },
