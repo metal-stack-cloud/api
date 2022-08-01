@@ -10,15 +10,13 @@ import (
 
 	grpc_middleware "github.com/grpc-ecosystem/go-grpc-middleware"
 	grpc_zap "github.com/grpc-ecosystem/go-grpc-middleware/logging/zap"
+	"go.uber.org/zap"
+	"go.uber.org/zap/zapcore"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/backoff"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/credentials"
 	"google.golang.org/grpc/keepalive"
-
-	v1 "github.com/metal-stack-cloud/api/go/api/v1"
-	"go.uber.org/zap"
-	"go.uber.org/zap/zapcore"
 )
 
 // GRPCScheme the scheme to talk to the api endpoint
@@ -51,68 +49,7 @@ type Credentials struct {
 	CAFile string
 }
 
-// Client defines the client API
-type Client interface {
-	Asset() v1.AssetServiceClient
-	Cluster() v1.ClusterServiceClient
-	Health() v1.HealthServiceClient
-	IP() v1.IPServiceClient
-	Payment() v1.PaymentServiceClient
-	Tenant() v1.TenantServiceClient
-	Token() v1.TokenServiceClient
-	Version() v1.VersionServiceClient
-	Volume() v1.VolumeServiceClient
-	Close() error
-}
-
-// GRPCClient is a Client implementation with grpc transport.
-type GRPCClient struct {
-	conn *grpc.ClientConn
-	log  *zap.SugaredLogger
-}
-
-// Close the underlying connection
-func (c GRPCClient) Close() error {
-	return c.conn.Close()
-}
-
-func (c GRPCClient) Asset() v1.AssetServiceClient {
-	return v1.NewAssetServiceClient(c.conn)
-}
-
-func (c GRPCClient) Cluster() v1.ClusterServiceClient {
-	return v1.NewClusterServiceClient(c.conn)
-}
-
-func (c GRPCClient) Health() v1.HealthServiceClient {
-	return v1.NewHealthServiceClient(c.conn)
-}
-
-func (c GRPCClient) IP() v1.IPServiceClient {
-	return v1.NewIPServiceClient(c.conn)
-}
-
-func (c GRPCClient) Payment() v1.PaymentServiceClient {
-	return v1.NewPaymentServiceClient(c.conn)
-}
-
-func (c GRPCClient) Tenant() v1.TenantServiceClient {
-	return v1.NewTenantServiceClient(c.conn)
-}
-
-func (c GRPCClient) Token() v1.TokenServiceClient {
-	return v1.NewTokenServiceClient(c.conn)
-}
-
-func (c GRPCClient) Version() v1.VersionServiceClient {
-	return v1.NewVersionServiceClient(c.conn)
-}
-
-func (c GRPCClient) Volume() v1.VolumeServiceClient {
-	return v1.NewVolumeServiceClient(c.conn)
-}
-
-func New(ctx context.Context, config DialConfig) (Client, error) {
+func NewConn(ctx context.Context, config DialConfig) (*grpc.ClientConn, error) {
 	log := config.Log
 
 	if config.UserAgent == "" {
@@ -123,10 +60,6 @@ func New(ctx context.Context, config DialConfig) (Client, error) {
 		"client", config.UserAgent,
 		"endpoint", config.Endpoint,
 	)
-
-	res := &GRPCClient{
-		log: log,
-	}
 
 	zapOpts := []grpc_zap.Option{
 		grpc_zap.WithLevels(grpcToZapLevel),
@@ -222,13 +155,13 @@ func New(ctx context.Context, config DialConfig) (Client, error) {
 		return nil, fmt.Errorf("unsupported scheme:%v", config.Scheme)
 	}
 
-	res.conn, err = grpc.DialContext(ctx, config.Endpoint, opts...)
+	conn, err := grpc.DialContext(ctx, config.Endpoint, opts...)
 	if err != nil {
 		log.Errorw("failed to connect", "endpoint", config.Endpoint, "error", err.Error())
 		return nil, err
 	}
 
-	return res, nil
+	return conn, nil
 }
 
 type tokenAuth struct {
