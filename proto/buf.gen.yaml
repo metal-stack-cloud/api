@@ -7,7 +7,7 @@ managed:
       - buf.build/googleapis/googleapis
       - buf.build/envoyproxy/protoc-gen-validate
 plugins:
-  # generate go structs for protocol buffer defination
+  # generate go structs for protocol buffer definition
   - remote: buf.build/library/plugins/go:v1.27.1-1
     out: ../go
     opt: paths=source_relative
@@ -23,14 +23,14 @@ plugins:
     opt:
       - paths=source_relative
       - lang=go
-  # generate reverse proxy from protocol definations
-  - remote: buf.build/grpc-ecosystem/plugins/grpc-gateway:v2.11.0-1
+  # generate reverse proxy from protocol definitions
+  - remote: buf.build/grpc-ecosystem/plugins/grpc-gateway:v2.11.2-1
     out: ../go
     opt:
       - paths=source_relative
       - allow_delete_body=true
   # generate openapi documentation for api
-  - remote: buf.build/grpc-ecosystem/plugins/openapiv2:v2.11.0-1
+  - remote: buf.build/grpc-ecosystem/plugins/openapiv2:v2.11.2-1
     out: ../openapiv2
     opt:
       - allow_delete_body=true
