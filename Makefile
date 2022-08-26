@@ -17,5 +17,4 @@ protolint:
 
 .PHONY: npm-build
 npm-build:
-	$(MAKE) -C js build
-
+	docker run -it --rm -v ${PWD}:/work -w /work node:18-alpine sh -c "apk add make && make -C js build"
