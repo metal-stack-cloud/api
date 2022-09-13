@@ -8,6 +8,7 @@ all: proto npm-build
 
 .PHONY: proto
 proto: protolint
+	$(MAKE) -C go clean
 	$(MAKE) -C js clean
 	$(MAKE) -C proto protoc
 

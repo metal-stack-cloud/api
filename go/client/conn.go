@@ -50,25 +50,22 @@ type Credentials struct {
 }
 
 func NewConn(ctx context.Context, config DialConfig) (*grpc.ClientConn, error) {
-	log := config.Log
-
 	if config.UserAgent == "" {
 		return nil, fmt.Errorf("user agent has to be specified")
 	}
 
-	log.Infow("connecting...",
-		"client", config.UserAgent,
-		"endpoint", config.Endpoint,
-	)
-
 	zapOpts := []grpc_zap.Option{
 		grpc_zap.WithLevels(grpcToZapLevel),
 	}
-	interceptors := []grpc.UnaryClientInterceptor{
-		grpc_zap.UnaryClientInterceptor(log.Desugar(), zapOpts...),
-		grpc_zap.PayloadUnaryClientInterceptor(log.Desugar(),
-			func(context.Context, string) bool { return true },
-		),
+	interceptors := []grpc.UnaryClientInterceptor{}
+
+	if config.Log != nil {
+		interceptors = append(interceptors,
+			grpc_zap.UnaryClientInterceptor(config.Log.Desugar(), zapOpts...),
+			grpc_zap.PayloadUnaryClientInterceptor(config.Log.Desugar(),
+				func(context.Context, string) bool { return true },
+			),
+		)
 	}
 
 	// these are broadly in line with the expected server SLOs:
@@ -149,7 +146,9 @@ func NewConn(ctx context.Context, config DialConfig) (*grpc.ClientConn, error) {
 
 	switch config.Scheme {
 	case GRPCS:
-		log.Infof("connecting securely")
+		if config.Log != nil {
+			config.Log.Infof("connecting securely")
+		}
 		opts = append(opts, grpc.WithTransportCredentials(creds))
 	default:
 		return nil, fmt.Errorf("unsupported scheme:%v", config.Scheme)
@@ -157,7 +156,9 @@ func NewConn(ctx context.Context, config DialConfig) (*grpc.ClientConn, error) {
 
 	conn, err := grpc.DialContext(ctx, config.Endpoint, opts...)
 	if err != nil {
-		log.Errorw("failed to connect", "endpoint", config.Endpoint, "error", err.Error())
+		if config.Log != nil {
+			config.Log.Errorw("failed to connect", "endpoint", config.Endpoint, "error", err.Error())
+		}
 		return nil, err
 	}
 
