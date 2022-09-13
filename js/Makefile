@@ -4,7 +4,7 @@ install:
 
 .PHONY: clean
 clean:
-	rm -rf api google
+	rm -rf api status
 
 .PHONY: build
 build: install

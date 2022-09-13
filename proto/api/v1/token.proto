@@ -5,8 +5,6 @@ package api.v1;
 import "google/api/annotations.proto";
 import "google/protobuf/duration.proto";
 
-option go_package = "./v1";
-
 service TokenService {
   rpc Create(TokenServiceCreateRequest) returns (TokenServiceCreateResponse) {
     option (google.api.http) = {
