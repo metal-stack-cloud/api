@@ -112,6 +112,9 @@ export class IPServiceAllocateRequest extends jspb.Message {
   clearTagsList(): IPServiceAllocateRequest;
   addTags(value: string, index?: number): IPServiceAllocateRequest;
 
+  getStatic(): boolean;
+  setStatic(value: boolean): IPServiceAllocateRequest;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): IPServiceAllocateRequest.AsObject;
   static toObject(includeInstance: boolean, msg: IPServiceAllocateRequest): IPServiceAllocateRequest.AsObject;
@@ -127,6 +130,7 @@ export namespace IPServiceAllocateRequest {
     description: string,
     network: string,
     tagsList: Array<string>,
+    pb_static: boolean,
   }
 }
 

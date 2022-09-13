@@ -89,6 +89,7 @@ message IPServiceAllocateRequest {
     max_len: 128
   }];
   repeated string tags = 8 [(validate.rules).repeated.max_items = 100];
+  bool static = 9;
 }
 message IPServiceStaticRequest {
   string uuid = 1 [(validate.rules).string.uuid = true];

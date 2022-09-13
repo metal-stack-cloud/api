@@ -987,7 +987,8 @@ proto.api.v1.IPServiceAllocateRequest.toObject = function(includeInstance, msg) 
     name: jspb.Message.getFieldWithDefault(msg, 3, ""),
     description: jspb.Message.getFieldWithDefault(msg, 4, ""),
     network: jspb.Message.getFieldWithDefault(msg, 5, ""),
-    tagsList: (f = jspb.Message.getRepeatedField(msg, 8)) == null ? undefined : f
+    tagsList: (f = jspb.Message.getRepeatedField(msg, 8)) == null ? undefined : f,
+    pb_static: jspb.Message.getBooleanFieldWithDefault(msg, 9, false)
   };
 
   if (includeInstance) {
@@ -1043,6 +1044,10 @@ proto.api.v1.IPServiceAllocateRequest.deserializeBinaryFromReader = function(msg
     case 8:
       var value = /** @type {string} */ (reader.readString());
       msg.addTags(value);
+      break;
+    case 9:
+      var value = /** @type {boolean} */ (reader.readBool());
+      msg.setStatic(value);
       break;
     default:
       reader.skipField();
@@ -1105,6 +1110,13 @@ proto.api.v1.IPServiceAllocateRequest.serializeBinaryToWriter = function(message
   if (f.length > 0) {
     writer.writeRepeatedString(
       8,
+      f
+    );
+  }
+  f = message.getStatic();
+  if (f) {
+    writer.writeBool(
+      9,
       f
     );
   }
@@ -1217,6 +1229,24 @@ proto.api.v1.IPServiceAllocateRequest.prototype.addTags = function(value, opt_in
  */
 proto.api.v1.IPServiceAllocateRequest.prototype.clearTagsList = function() {
   return this.setTagsList([]);
+};
+
+
+/**
+ * optional bool static = 9;
+ * @return {boolean}
+ */
+proto.api.v1.IPServiceAllocateRequest.prototype.getStatic = function() {
+  return /** @type {boolean} */ (jspb.Message.getBooleanFieldWithDefault(this, 9, false));
+};
+
+
+/**
+ * @param {boolean} value
+ * @return {!proto.api.v1.IPServiceAllocateRequest} returns this
+ */
+proto.api.v1.IPServiceAllocateRequest.prototype.setStatic = function(value) {
+  return jspb.Message.setProto3BooleanField(this, 9, value);
 };
 
 

@@ -447,6 +447,8 @@ func (m *IPServiceAllocateRequest) validate(all bool) error {
 		errors = append(errors, err)
 	}
 
+	// no validation rules for Static
+
 	if len(errors) > 0 {
 		return IPServiceAllocateRequestMultiError(errors)
 	}
