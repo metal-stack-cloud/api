@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package admin.v1;
+
+import "api/v1/user.proto";
+
+service UserService {
+  rpc List(UserServiceListRequest) returns (UserServiceListResponse) {}
+  rpc Admit(UserServiceAdmitRequest) returns (UserServiceAdmitResponse) {}
+}
+
+message UserServiceListRequest {
+  optional string login = 1;
+  optional string name = 2;
+  optional string email = 3;
+  optional string organisation_id = 4;
+}
+message UserServiceListResponse {
+  repeated api.v1.User user = 1;
+}
+message UserServiceAdmitRequest {
+  string login = 1;
+}
+message UserServiceAdmitResponse {
+  api.v1.User user = 1;
+}
