@@ -7,6 +7,9 @@
   "tags": [
     {
       "name": "UserService"
+    },
+    {
+      "name": "OrganizationService"
     }
   ],
   "consumes": [
@@ -80,6 +83,25 @@
           "type": "array",
           "items": {
             "$ref": "#/definitions/v1Team"
+          }
+        }
+      }
+    },
+    "v1OrganizationServiceAdmitResponse": {
+      "type": "object",
+      "properties": {
+        "organization": {
+          "$ref": "#/definitions/v1Organization"
+        }
+      }
+    },
+    "v1OrganizationServiceListResponse": {
+      "type": "object",
+      "properties": {
+        "organization": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1Organization"
           }
         }
       }

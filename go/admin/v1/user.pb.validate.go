@@ -523,3 +523,498 @@ var _ interface {
 	Cause() error
 	ErrorName() string
 } = UserServiceAdmitResponseValidationError{}
+
+// Validate checks the field values on OrganizationServiceListRequest with the
+// rules defined in the proto definition for this message. If any rules are
+// violated, the first error encountered is returned, or nil if there are no violations.
+func (m *OrganizationServiceListRequest) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on OrganizationServiceListRequest with
+// the rules defined in the proto definition for this message. If any rules
+// are violated, the result is a list of violation errors wrapped in
+// OrganizationServiceListRequestMultiError, or nil if none found.
+func (m *OrganizationServiceListRequest) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *OrganizationServiceListRequest) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	if m.Id != nil {
+		// no validation rules for Id
+	}
+
+	if m.Login != nil {
+		// no validation rules for Login
+	}
+
+	if m.Name != nil {
+		// no validation rules for Name
+	}
+
+	if m.Email != nil {
+		// no validation rules for Email
+	}
+
+	if len(errors) > 0 {
+		return OrganizationServiceListRequestMultiError(errors)
+	}
+
+	return nil
+}
+
+// OrganizationServiceListRequestMultiError is an error wrapping multiple
+// validation errors returned by OrganizationServiceListRequest.ValidateAll()
+// if the designated constraints aren't met.
+type OrganizationServiceListRequestMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m OrganizationServiceListRequestMultiError) Error() string {
+	var msgs []string
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m OrganizationServiceListRequestMultiError) AllErrors() []error { return m }
+
+// OrganizationServiceListRequestValidationError is the validation error
+// returned by OrganizationServiceListRequest.Validate if the designated
+// constraints aren't met.
+type OrganizationServiceListRequestValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e OrganizationServiceListRequestValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e OrganizationServiceListRequestValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e OrganizationServiceListRequestValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e OrganizationServiceListRequestValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e OrganizationServiceListRequestValidationError) ErrorName() string {
+	return "OrganizationServiceListRequestValidationError"
+}
+
+// Error satisfies the builtin error interface
+func (e OrganizationServiceListRequestValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sOrganizationServiceListRequest.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = OrganizationServiceListRequestValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = OrganizationServiceListRequestValidationError{}
+
+// Validate checks the field values on OrganizationServiceListResponse with the
+// rules defined in the proto definition for this message. If any rules are
+// violated, the first error encountered is returned, or nil if there are no violations.
+func (m *OrganizationServiceListResponse) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on OrganizationServiceListResponse with
+// the rules defined in the proto definition for this message. If any rules
+// are violated, the result is a list of violation errors wrapped in
+// OrganizationServiceListResponseMultiError, or nil if none found.
+func (m *OrganizationServiceListResponse) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *OrganizationServiceListResponse) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	for idx, item := range m.GetOrganization() {
+		_, _ = idx, item
+
+		if all {
+			switch v := interface{}(item).(type) {
+			case interface{ ValidateAll() error }:
+				if err := v.ValidateAll(); err != nil {
+					errors = append(errors, OrganizationServiceListResponseValidationError{
+						field:  fmt.Sprintf("Organization[%v]", idx),
+						reason: "embedded message failed validation",
+						cause:  err,
+					})
+				}
+			case interface{ Validate() error }:
+				if err := v.Validate(); err != nil {
+					errors = append(errors, OrganizationServiceListResponseValidationError{
+						field:  fmt.Sprintf("Organization[%v]", idx),
+						reason: "embedded message failed validation",
+						cause:  err,
+					})
+				}
+			}
+		} else if v, ok := interface{}(item).(interface{ Validate() error }); ok {
+			if err := v.Validate(); err != nil {
+				return OrganizationServiceListResponseValidationError{
+					field:  fmt.Sprintf("Organization[%v]", idx),
+					reason: "embedded message failed validation",
+					cause:  err,
+				}
+			}
+		}
+
+	}
+
+	if len(errors) > 0 {
+		return OrganizationServiceListResponseMultiError(errors)
+	}
+
+	return nil
+}
+
+// OrganizationServiceListResponseMultiError is an error wrapping multiple
+// validation errors returned by OrganizationServiceListResponse.ValidateAll()
+// if the designated constraints aren't met.
+type OrganizationServiceListResponseMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m OrganizationServiceListResponseMultiError) Error() string {
+	var msgs []string
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m OrganizationServiceListResponseMultiError) AllErrors() []error { return m }
+
+// OrganizationServiceListResponseValidationError is the validation error
+// returned by OrganizationServiceListResponse.Validate if the designated
+// constraints aren't met.
+type OrganizationServiceListResponseValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e OrganizationServiceListResponseValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e OrganizationServiceListResponseValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e OrganizationServiceListResponseValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e OrganizationServiceListResponseValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e OrganizationServiceListResponseValidationError) ErrorName() string {
+	return "OrganizationServiceListResponseValidationError"
+}
+
+// Error satisfies the builtin error interface
+func (e OrganizationServiceListResponseValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sOrganizationServiceListResponse.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = OrganizationServiceListResponseValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = OrganizationServiceListResponseValidationError{}
+
+// Validate checks the field values on OrganizationServiceAdmitRequest with the
+// rules defined in the proto definition for this message. If any rules are
+// violated, the first error encountered is returned, or nil if there are no violations.
+func (m *OrganizationServiceAdmitRequest) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on OrganizationServiceAdmitRequest with
+// the rules defined in the proto definition for this message. If any rules
+// are violated, the result is a list of violation errors wrapped in
+// OrganizationServiceAdmitRequestMultiError, or nil if none found.
+func (m *OrganizationServiceAdmitRequest) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *OrganizationServiceAdmitRequest) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	// no validation rules for Id
+
+	if len(errors) > 0 {
+		return OrganizationServiceAdmitRequestMultiError(errors)
+	}
+
+	return nil
+}
+
+// OrganizationServiceAdmitRequestMultiError is an error wrapping multiple
+// validation errors returned by OrganizationServiceAdmitRequest.ValidateAll()
+// if the designated constraints aren't met.
+type OrganizationServiceAdmitRequestMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m OrganizationServiceAdmitRequestMultiError) Error() string {
+	var msgs []string
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m OrganizationServiceAdmitRequestMultiError) AllErrors() []error { return m }
+
+// OrganizationServiceAdmitRequestValidationError is the validation error
+// returned by OrganizationServiceAdmitRequest.Validate if the designated
+// constraints aren't met.
+type OrganizationServiceAdmitRequestValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e OrganizationServiceAdmitRequestValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e OrganizationServiceAdmitRequestValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e OrganizationServiceAdmitRequestValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e OrganizationServiceAdmitRequestValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e OrganizationServiceAdmitRequestValidationError) ErrorName() string {
+	return "OrganizationServiceAdmitRequestValidationError"
+}
+
+// Error satisfies the builtin error interface
+func (e OrganizationServiceAdmitRequestValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sOrganizationServiceAdmitRequest.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = OrganizationServiceAdmitRequestValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = OrganizationServiceAdmitRequestValidationError{}
+
+// Validate checks the field values on OrganizationServiceAdmitResponse with
+// the rules defined in the proto definition for this message. If any rules
+// are violated, the first error encountered is returned, or nil if there are
+// no violations.
+func (m *OrganizationServiceAdmitResponse) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on OrganizationServiceAdmitResponse with
+// the rules defined in the proto definition for this message. If any rules
+// are violated, the result is a list of violation errors wrapped in
+// OrganizationServiceAdmitResponseMultiError, or nil if none found.
+func (m *OrganizationServiceAdmitResponse) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *OrganizationServiceAdmitResponse) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	if all {
+		switch v := interface{}(m.GetOrganization()).(type) {
+		case interface{ ValidateAll() error }:
+			if err := v.ValidateAll(); err != nil {
+				errors = append(errors, OrganizationServiceAdmitResponseValidationError{
+					field:  "Organization",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		case interface{ Validate() error }:
+			if err := v.Validate(); err != nil {
+				errors = append(errors, OrganizationServiceAdmitResponseValidationError{
+					field:  "Organization",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		}
+	} else if v, ok := interface{}(m.GetOrganization()).(interface{ Validate() error }); ok {
+		if err := v.Validate(); err != nil {
+			return OrganizationServiceAdmitResponseValidationError{
+				field:  "Organization",
+				reason: "embedded message failed validation",
+				cause:  err,
+			}
+		}
+	}
+
+	if len(errors) > 0 {
+		return OrganizationServiceAdmitResponseMultiError(errors)
+	}
+
+	return nil
+}
+
+// OrganizationServiceAdmitResponseMultiError is an error wrapping multiple
+// validation errors returned by
+// OrganizationServiceAdmitResponse.ValidateAll() if the designated
+// constraints aren't met.
+type OrganizationServiceAdmitResponseMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m OrganizationServiceAdmitResponseMultiError) Error() string {
+	var msgs []string
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m OrganizationServiceAdmitResponseMultiError) AllErrors() []error { return m }
+
+// OrganizationServiceAdmitResponseValidationError is the validation error
+// returned by OrganizationServiceAdmitResponse.Validate if the designated
+// constraints aren't met.
+type OrganizationServiceAdmitResponseValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e OrganizationServiceAdmitResponseValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e OrganizationServiceAdmitResponseValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e OrganizationServiceAdmitResponseValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e OrganizationServiceAdmitResponseValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e OrganizationServiceAdmitResponseValidationError) ErrorName() string {
+	return "OrganizationServiceAdmitResponseValidationError"
+}
+
+// Error satisfies the builtin error interface
+func (e OrganizationServiceAdmitResponseValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sOrganizationServiceAdmitResponse.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = OrganizationServiceAdmitResponseValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = OrganizationServiceAdmitResponseValidationError{}

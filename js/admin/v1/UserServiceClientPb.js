@@ -28,7 +28,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.UserServiceClient = void 0;
+exports.OrganizationServiceClient = exports.UserServiceClient = void 0;
 // GENERATED CODE -- DO NOT EDIT!
 /* eslint-disable */
 // @ts-nocheck
@@ -71,3 +71,40 @@ var UserServiceClient = /** @class */ (function () {
     return UserServiceClient;
 }());
 exports.UserServiceClient = UserServiceClient;
+var OrganizationServiceClient = /** @class */ (function () {
+    function OrganizationServiceClient(hostname, credentials, options) {
+        this.methodDescriptorList = new grpcWeb.MethodDescriptor('/admin.v1.OrganizationService/List', grpcWeb.MethodType.UNARY, admin_v1_user_pb.OrganizationServiceListRequest, admin_v1_user_pb.OrganizationServiceListResponse, function (request) {
+            return request.serializeBinary();
+        }, admin_v1_user_pb.OrganizationServiceListResponse.deserializeBinary);
+        this.methodDescriptorAdmit = new grpcWeb.MethodDescriptor('/admin.v1.OrganizationService/Admit', grpcWeb.MethodType.UNARY, admin_v1_user_pb.OrganizationServiceAdmitRequest, admin_v1_user_pb.OrganizationServiceAdmitResponse, function (request) {
+            return request.serializeBinary();
+        }, admin_v1_user_pb.OrganizationServiceAdmitResponse.deserializeBinary);
+        if (!options)
+            options = {};
+        if (!credentials)
+            credentials = {};
+        options['format'] = 'text';
+        this.client_ = new grpcWeb.GrpcWebClientBase(options);
+        this.hostname_ = hostname;
+        this.credentials_ = credentials;
+        this.options_ = options;
+    }
+    OrganizationServiceClient.prototype.list = function (request, metadata, callback) {
+        if (callback !== undefined) {
+            return this.client_.rpcCall(this.hostname_ +
+                '/admin.v1.OrganizationService/List', request, metadata || {}, this.methodDescriptorList, callback);
+        }
+        return this.client_.unaryCall(this.hostname_ +
+            '/admin.v1.OrganizationService/List', request, metadata || {}, this.methodDescriptorList);
+    };
+    OrganizationServiceClient.prototype.admit = function (request, metadata, callback) {
+        if (callback !== undefined) {
+            return this.client_.rpcCall(this.hostname_ +
+                '/admin.v1.OrganizationService/Admit', request, metadata || {}, this.methodDescriptorAdmit, callback);
+        }
+        return this.client_.unaryCall(this.hostname_ +
+            '/admin.v1.OrganizationService/Admit', request, metadata || {}, this.methodDescriptorAdmit);
+    };
+    return OrganizationServiceClient;
+}());
+exports.OrganizationServiceClient = OrganizationServiceClient;

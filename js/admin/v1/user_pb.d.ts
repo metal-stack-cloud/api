@@ -119,3 +119,119 @@ export namespace UserServiceAdmitResponse {
   }
 }
 
+export class OrganizationServiceListRequest extends jspb.Message {
+  getId(): string;
+  setId(value: string): OrganizationServiceListRequest;
+  hasId(): boolean;
+  clearId(): OrganizationServiceListRequest;
+
+  getLogin(): string;
+  setLogin(value: string): OrganizationServiceListRequest;
+  hasLogin(): boolean;
+  clearLogin(): OrganizationServiceListRequest;
+
+  getName(): string;
+  setName(value: string): OrganizationServiceListRequest;
+  hasName(): boolean;
+  clearName(): OrganizationServiceListRequest;
+
+  getEmail(): string;
+  setEmail(value: string): OrganizationServiceListRequest;
+  hasEmail(): boolean;
+  clearEmail(): OrganizationServiceListRequest;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): OrganizationServiceListRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: OrganizationServiceListRequest): OrganizationServiceListRequest.AsObject;
+  static serializeBinaryToWriter(message: OrganizationServiceListRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): OrganizationServiceListRequest;
+  static deserializeBinaryFromReader(message: OrganizationServiceListRequest, reader: jspb.BinaryReader): OrganizationServiceListRequest;
+}
+
+export namespace OrganizationServiceListRequest {
+  export type AsObject = {
+    id?: string,
+    login?: string,
+    name?: string,
+    email?: string,
+  }
+
+  export enum IdCase { 
+    _ID_NOT_SET = 0,
+    ID = 1,
+  }
+
+  export enum LoginCase { 
+    _LOGIN_NOT_SET = 0,
+    LOGIN = 2,
+  }
+
+  export enum NameCase { 
+    _NAME_NOT_SET = 0,
+    NAME = 3,
+  }
+
+  export enum EmailCase { 
+    _EMAIL_NOT_SET = 0,
+    EMAIL = 4,
+  }
+}
+
+export class OrganizationServiceListResponse extends jspb.Message {
+  getOrganizationList(): Array<api_v1_user_pb.Organization>;
+  setOrganizationList(value: Array<api_v1_user_pb.Organization>): OrganizationServiceListResponse;
+  clearOrganizationList(): OrganizationServiceListResponse;
+  addOrganization(value?: api_v1_user_pb.Organization, index?: number): api_v1_user_pb.Organization;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): OrganizationServiceListResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: OrganizationServiceListResponse): OrganizationServiceListResponse.AsObject;
+  static serializeBinaryToWriter(message: OrganizationServiceListResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): OrganizationServiceListResponse;
+  static deserializeBinaryFromReader(message: OrganizationServiceListResponse, reader: jspb.BinaryReader): OrganizationServiceListResponse;
+}
+
+export namespace OrganizationServiceListResponse {
+  export type AsObject = {
+    organizationList: Array<api_v1_user_pb.Organization.AsObject>,
+  }
+}
+
+export class OrganizationServiceAdmitRequest extends jspb.Message {
+  getId(): string;
+  setId(value: string): OrganizationServiceAdmitRequest;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): OrganizationServiceAdmitRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: OrganizationServiceAdmitRequest): OrganizationServiceAdmitRequest.AsObject;
+  static serializeBinaryToWriter(message: OrganizationServiceAdmitRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): OrganizationServiceAdmitRequest;
+  static deserializeBinaryFromReader(message: OrganizationServiceAdmitRequest, reader: jspb.BinaryReader): OrganizationServiceAdmitRequest;
+}
+
+export namespace OrganizationServiceAdmitRequest {
+  export type AsObject = {
+    id: string,
+  }
+}
+
+export class OrganizationServiceAdmitResponse extends jspb.Message {
+  getOrganization(): api_v1_user_pb.Organization | undefined;
+  setOrganization(value?: api_v1_user_pb.Organization): OrganizationServiceAdmitResponse;
+  hasOrganization(): boolean;
+  clearOrganization(): OrganizationServiceAdmitResponse;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): OrganizationServiceAdmitResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: OrganizationServiceAdmitResponse): OrganizationServiceAdmitResponse.AsObject;
+  static serializeBinaryToWriter(message: OrganizationServiceAdmitResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): OrganizationServiceAdmitResponse;
+  static deserializeBinaryFromReader(message: OrganizationServiceAdmitResponse, reader: jspb.BinaryReader): OrganizationServiceAdmitResponse;
+}
+
+export namespace OrganizationServiceAdmitResponse {
+  export type AsObject = {
+    organization?: api_v1_user_pb.Organization.AsObject,
+  }
+}
+

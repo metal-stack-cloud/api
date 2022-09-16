@@ -123,3 +123,110 @@ export class UserServiceClient {
 
 }
 
+export class OrganizationServiceClient {
+  client_: grpcWeb.AbstractClientBase;
+  hostname_: string;
+  credentials_: null | { [index: string]: string; };
+  options_: null | { [index: string]: any; };
+
+  constructor (hostname: string,
+               credentials?: null | { [index: string]: string; },
+               options?: null | { [index: string]: any; }) {
+    if (!options) options = {};
+    if (!credentials) credentials = {};
+    options['format'] = 'text';
+
+    this.client_ = new grpcWeb.GrpcWebClientBase(options);
+    this.hostname_ = hostname;
+    this.credentials_ = credentials;
+    this.options_ = options;
+  }
+
+  methodDescriptorList = new grpcWeb.MethodDescriptor(
+    '/admin.v1.OrganizationService/List',
+    grpcWeb.MethodType.UNARY,
+    admin_v1_user_pb.OrganizationServiceListRequest,
+    admin_v1_user_pb.OrganizationServiceListResponse,
+    (request: admin_v1_user_pb.OrganizationServiceListRequest) => {
+      return request.serializeBinary();
+    },
+    admin_v1_user_pb.OrganizationServiceListResponse.deserializeBinary
+  );
+
+  list(
+    request: admin_v1_user_pb.OrganizationServiceListRequest,
+    metadata: grpcWeb.Metadata | null): Promise<admin_v1_user_pb.OrganizationServiceListResponse>;
+
+  list(
+    request: admin_v1_user_pb.OrganizationServiceListRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: admin_v1_user_pb.OrganizationServiceListResponse) => void): grpcWeb.ClientReadableStream<admin_v1_user_pb.OrganizationServiceListResponse>;
+
+  list(
+    request: admin_v1_user_pb.OrganizationServiceListRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: admin_v1_user_pb.OrganizationServiceListResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/admin.v1.OrganizationService/List',
+        request,
+        metadata || {},
+        this.methodDescriptorList,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/admin.v1.OrganizationService/List',
+    request,
+    metadata || {},
+    this.methodDescriptorList);
+  }
+
+  methodDescriptorAdmit = new grpcWeb.MethodDescriptor(
+    '/admin.v1.OrganizationService/Admit',
+    grpcWeb.MethodType.UNARY,
+    admin_v1_user_pb.OrganizationServiceAdmitRequest,
+    admin_v1_user_pb.OrganizationServiceAdmitResponse,
+    (request: admin_v1_user_pb.OrganizationServiceAdmitRequest) => {
+      return request.serializeBinary();
+    },
+    admin_v1_user_pb.OrganizationServiceAdmitResponse.deserializeBinary
+  );
+
+  admit(
+    request: admin_v1_user_pb.OrganizationServiceAdmitRequest,
+    metadata: grpcWeb.Metadata | null): Promise<admin_v1_user_pb.OrganizationServiceAdmitResponse>;
+
+  admit(
+    request: admin_v1_user_pb.OrganizationServiceAdmitRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: admin_v1_user_pb.OrganizationServiceAdmitResponse) => void): grpcWeb.ClientReadableStream<admin_v1_user_pb.OrganizationServiceAdmitResponse>;
+
+  admit(
+    request: admin_v1_user_pb.OrganizationServiceAdmitRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: admin_v1_user_pb.OrganizationServiceAdmitResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/admin.v1.OrganizationService/Admit',
+        request,
+        metadata || {},
+        this.methodDescriptorAdmit,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/admin.v1.OrganizationService/Admit',
+    request,
+    metadata || {},
+    this.methodDescriptorAdmit);
+  }
+
+}
+
