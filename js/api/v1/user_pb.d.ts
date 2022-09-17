@@ -74,6 +74,9 @@ export class Organization extends jspb.Message {
   clearTeamsList(): Organization;
   addTeams(value?: Team, index?: number): Team;
 
+  getAdmitted(): boolean;
+  setAdmitted(value: boolean): Organization;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): Organization.AsObject;
   static toObject(includeInstance: boolean, msg: Organization): Organization.AsObject;
@@ -92,6 +95,7 @@ export namespace Organization {
     avatarUrl: string,
     role: api_v1_common_pb.Role,
     teamsList: Array<Team.AsObject>,
+    admitted: boolean,
   }
 }
 

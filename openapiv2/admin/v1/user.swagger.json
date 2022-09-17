@@ -84,6 +84,9 @@
           "items": {
             "$ref": "#/definitions/v1Team"
           }
+        },
+        "admitted": {
+          "type": "boolean"
         }
       }
     },

@@ -25,6 +25,7 @@ message Organization {
   string avatar_url = 6;
   Role role = 7;
   repeated Team teams = 8;
+  bool admitted = 9;
 }
 
 message Team {
