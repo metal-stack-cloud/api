@@ -21,7 +21,7 @@ message UserServiceListRequest {
   optional string organisation_id = 4;
 }
 message UserServiceListResponse {
-  repeated api.v1.User user = 1;
+  repeated api.v1.User users = 1;
 }
 message UserServiceAdmitRequest {
   string login = 1;
@@ -38,7 +38,7 @@ message OrganizationServiceListRequest {
 }
 
 message OrganizationServiceListResponse {
-  repeated api.v1.Organization organization = 1;
+  repeated api.v1.Organization organizations = 1;
 }
 
 message OrganizationServiceAdmitRequest {

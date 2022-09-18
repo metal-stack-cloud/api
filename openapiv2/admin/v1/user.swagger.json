@@ -101,7 +101,7 @@
     "v1OrganizationServiceListResponse": {
       "type": "object",
       "properties": {
-        "organization": {
+        "organizations": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/v1Organization"
@@ -182,7 +182,7 @@
     "v1UserServiceListResponse": {
       "type": "object",
       "properties": {
-        "user": {
+        "users": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/v1User"

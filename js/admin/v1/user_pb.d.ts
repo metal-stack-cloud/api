@@ -62,10 +62,10 @@ export namespace UserServiceListRequest {
 }
 
 export class UserServiceListResponse extends jspb.Message {
-  getUserList(): Array<api_v1_user_pb.User>;
-  setUserList(value: Array<api_v1_user_pb.User>): UserServiceListResponse;
-  clearUserList(): UserServiceListResponse;
-  addUser(value?: api_v1_user_pb.User, index?: number): api_v1_user_pb.User;
+  getUsersList(): Array<api_v1_user_pb.User>;
+  setUsersList(value: Array<api_v1_user_pb.User>): UserServiceListResponse;
+  clearUsersList(): UserServiceListResponse;
+  addUsers(value?: api_v1_user_pb.User, index?: number): api_v1_user_pb.User;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): UserServiceListResponse.AsObject;
@@ -77,7 +77,7 @@ export class UserServiceListResponse extends jspb.Message {
 
 export namespace UserServiceListResponse {
   export type AsObject = {
-    userList: Array<api_v1_user_pb.User.AsObject>,
+    usersList: Array<api_v1_user_pb.User.AsObject>,
   }
 }
 
@@ -178,10 +178,10 @@ export namespace OrganizationServiceListRequest {
 }
 
 export class OrganizationServiceListResponse extends jspb.Message {
-  getOrganizationList(): Array<api_v1_user_pb.Organization>;
-  setOrganizationList(value: Array<api_v1_user_pb.Organization>): OrganizationServiceListResponse;
-  clearOrganizationList(): OrganizationServiceListResponse;
-  addOrganization(value?: api_v1_user_pb.Organization, index?: number): api_v1_user_pb.Organization;
+  getOrganizationsList(): Array<api_v1_user_pb.Organization>;
+  setOrganizationsList(value: Array<api_v1_user_pb.Organization>): OrganizationServiceListResponse;
+  clearOrganizationsList(): OrganizationServiceListResponse;
+  addOrganizations(value?: api_v1_user_pb.Organization, index?: number): api_v1_user_pb.Organization;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): OrganizationServiceListResponse.AsObject;
@@ -193,7 +193,7 @@ export class OrganizationServiceListResponse extends jspb.Message {
 
 export namespace OrganizationServiceListResponse {
   export type AsObject = {
-    organizationList: Array<api_v1_user_pb.Organization.AsObject>,
+    organizationsList: Array<api_v1_user_pb.Organization.AsObject>,
   }
 }
 

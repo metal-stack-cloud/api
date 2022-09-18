@@ -524,7 +524,7 @@ proto.admin.v1.UserServiceListResponse.prototype.toObject = function(opt_include
  */
 proto.admin.v1.UserServiceListResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
-    userList: jspb.Message.toObjectList(msg.getUserList(),
+    usersList: jspb.Message.toObjectList(msg.getUsersList(),
     api_v1_user_pb.User.toObject, includeInstance)
   };
 
@@ -565,7 +565,7 @@ proto.admin.v1.UserServiceListResponse.deserializeBinaryFromReader = function(ms
     case 1:
       var value = new api_v1_user_pb.User;
       reader.readMessage(value,api_v1_user_pb.User.deserializeBinaryFromReader);
-      msg.addUser(value);
+      msg.addUsers(value);
       break;
     default:
       reader.skipField();
@@ -596,7 +596,7 @@ proto.admin.v1.UserServiceListResponse.prototype.serializeBinary = function() {
  */
 proto.admin.v1.UserServiceListResponse.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
-  f = message.getUserList();
+  f = message.getUsersList();
   if (f.length > 0) {
     writer.writeRepeatedMessage(
       1,
@@ -608,10 +608,10 @@ proto.admin.v1.UserServiceListResponse.serializeBinaryToWriter = function(messag
 
 
 /**
- * repeated api.v1.User user = 1;
+ * repeated api.v1.User users = 1;
  * @return {!Array<!proto.api.v1.User>}
  */
-proto.admin.v1.UserServiceListResponse.prototype.getUserList = function() {
+proto.admin.v1.UserServiceListResponse.prototype.getUsersList = function() {
   return /** @type{!Array<!proto.api.v1.User>} */ (
     jspb.Message.getRepeatedWrapperField(this, api_v1_user_pb.User, 1));
 };
@@ -621,7 +621,7 @@ proto.admin.v1.UserServiceListResponse.prototype.getUserList = function() {
  * @param {!Array<!proto.api.v1.User>} value
  * @return {!proto.admin.v1.UserServiceListResponse} returns this
 */
-proto.admin.v1.UserServiceListResponse.prototype.setUserList = function(value) {
+proto.admin.v1.UserServiceListResponse.prototype.setUsersList = function(value) {
   return jspb.Message.setRepeatedWrapperField(this, 1, value);
 };
 
@@ -631,7 +631,7 @@ proto.admin.v1.UserServiceListResponse.prototype.setUserList = function(value) {
  * @param {number=} opt_index
  * @return {!proto.api.v1.User}
  */
-proto.admin.v1.UserServiceListResponse.prototype.addUser = function(opt_value, opt_index) {
+proto.admin.v1.UserServiceListResponse.prototype.addUsers = function(opt_value, opt_index) {
   return jspb.Message.addToRepeatedWrapperField(this, 1, opt_value, proto.api.v1.User, opt_index);
 };
 
@@ -640,8 +640,8 @@ proto.admin.v1.UserServiceListResponse.prototype.addUser = function(opt_value, o
  * Clears the list making it empty but non-null.
  * @return {!proto.admin.v1.UserServiceListResponse} returns this
  */
-proto.admin.v1.UserServiceListResponse.prototype.clearUserList = function() {
-  return this.setUserList([]);
+proto.admin.v1.UserServiceListResponse.prototype.clearUsersList = function() {
+  return this.setUsersList([]);
 };
 
 
@@ -1257,7 +1257,7 @@ proto.admin.v1.OrganizationServiceListResponse.prototype.toObject = function(opt
  */
 proto.admin.v1.OrganizationServiceListResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
-    organizationList: jspb.Message.toObjectList(msg.getOrganizationList(),
+    organizationsList: jspb.Message.toObjectList(msg.getOrganizationsList(),
     api_v1_user_pb.Organization.toObject, includeInstance)
   };
 
@@ -1298,7 +1298,7 @@ proto.admin.v1.OrganizationServiceListResponse.deserializeBinaryFromReader = fun
     case 1:
       var value = new api_v1_user_pb.Organization;
       reader.readMessage(value,api_v1_user_pb.Organization.deserializeBinaryFromReader);
-      msg.addOrganization(value);
+      msg.addOrganizations(value);
       break;
     default:
       reader.skipField();
@@ -1329,7 +1329,7 @@ proto.admin.v1.OrganizationServiceListResponse.prototype.serializeBinary = funct
  */
 proto.admin.v1.OrganizationServiceListResponse.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
-  f = message.getOrganizationList();
+  f = message.getOrganizationsList();
   if (f.length > 0) {
     writer.writeRepeatedMessage(
       1,
@@ -1341,10 +1341,10 @@ proto.admin.v1.OrganizationServiceListResponse.serializeBinaryToWriter = functio
 
 
 /**
- * repeated api.v1.Organization organization = 1;
+ * repeated api.v1.Organization organizations = 1;
  * @return {!Array<!proto.api.v1.Organization>}
  */
-proto.admin.v1.OrganizationServiceListResponse.prototype.getOrganizationList = function() {
+proto.admin.v1.OrganizationServiceListResponse.prototype.getOrganizationsList = function() {
   return /** @type{!Array<!proto.api.v1.Organization>} */ (
     jspb.Message.getRepeatedWrapperField(this, api_v1_user_pb.Organization, 1));
 };
@@ -1354,7 +1354,7 @@ proto.admin.v1.OrganizationServiceListResponse.prototype.getOrganizationList = f
  * @param {!Array<!proto.api.v1.Organization>} value
  * @return {!proto.admin.v1.OrganizationServiceListResponse} returns this
 */
-proto.admin.v1.OrganizationServiceListResponse.prototype.setOrganizationList = function(value) {
+proto.admin.v1.OrganizationServiceListResponse.prototype.setOrganizationsList = function(value) {
   return jspb.Message.setRepeatedWrapperField(this, 1, value);
 };
 
@@ -1364,7 +1364,7 @@ proto.admin.v1.OrganizationServiceListResponse.prototype.setOrganizationList = f
  * @param {number=} opt_index
  * @return {!proto.api.v1.Organization}
  */
-proto.admin.v1.OrganizationServiceListResponse.prototype.addOrganization = function(opt_value, opt_index) {
+proto.admin.v1.OrganizationServiceListResponse.prototype.addOrganizations = function(opt_value, opt_index) {
   return jspb.Message.addToRepeatedWrapperField(this, 1, opt_value, proto.api.v1.Organization, opt_index);
 };
 
@@ -1373,8 +1373,8 @@ proto.admin.v1.OrganizationServiceListResponse.prototype.addOrganization = funct
  * Clears the list making it empty but non-null.
  * @return {!proto.admin.v1.OrganizationServiceListResponse} returns this
  */
-proto.admin.v1.OrganizationServiceListResponse.prototype.clearOrganizationList = function() {
-  return this.setOrganizationList([]);
+proto.admin.v1.OrganizationServiceListResponse.prototype.clearOrganizationsList = function() {
+  return this.setOrganizationsList([]);
 };
 
 
