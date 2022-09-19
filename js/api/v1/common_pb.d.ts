@@ -26,3 +26,8 @@ export enum ProjectRole {
   PROJECT_ROLE_EDITOR = 2,
   PROJECT_ROLE_VIEWER = 3,
 }
+export enum AdminRole { 
+  ADMIN_ROLE_UNSPECIFIED = 0,
+  ADMIN_ROLE_EDITOR = 1,
+  ADMIN_ROLE_VIEWER = 2,
+}

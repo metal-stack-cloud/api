@@ -17,10 +17,12 @@ var global = (function() { return this || window || global || self || Function('
 
 var google_protobuf_descriptor_pb = require('google-protobuf/google/protobuf/descriptor_pb.js');
 goog.object.extend(proto, google_protobuf_descriptor_pb);
+goog.exportSymbol('proto.api.v1.AdminRole', null, global);
 goog.exportSymbol('proto.api.v1.OAuthProvider', null, global);
 goog.exportSymbol('proto.api.v1.ProjectRole', null, global);
 goog.exportSymbol('proto.api.v1.Role', null, global);
 goog.exportSymbol('proto.api.v1.TenantRole', null, global);
+goog.exportSymbol('proto.api.v1.adminRolesList', null, global);
 goog.exportSymbol('proto.api.v1.projectRolesList', null, global);
 goog.exportSymbol('proto.api.v1.tenantRolesList', null, global);
 /**
@@ -60,6 +62,15 @@ proto.api.v1.ProjectRole = {
   PROJECT_ROLE_OWNER: 1,
   PROJECT_ROLE_EDITOR: 2,
   PROJECT_ROLE_VIEWER: 3
+};
+
+/**
+ * @enum {number}
+ */
+proto.api.v1.AdminRole = {
+  ADMIN_ROLE_UNSPECIFIED: 0,
+  ADMIN_ROLE_EDITOR: 1,
+  ADMIN_ROLE_VIEWER: 2
 };
 
 
@@ -111,5 +122,30 @@ google_protobuf_descriptor_pb.MethodOptions.extensionsBinary[51001] = new jspb.E
 // This registers the extension field with the extended class, so that
 // toObject() will function correctly.
 google_protobuf_descriptor_pb.MethodOptions.extensions[51001] = proto.api.v1.projectRolesList;
+
+
+/**
+ * A tuple of {field number, class constructor} for the extension
+ * field named `adminRolesList`.
+ * @type {!jspb.ExtensionFieldInfo<!Array<!proto.api.v1.AdminRole>>}
+ */
+proto.api.v1.adminRolesList = new jspb.ExtensionFieldInfo(
+    51002,
+    {adminRolesList: 0},
+    null,
+     /** @type {?function((boolean|undefined),!jspb.Message=): !Object} */ (
+         null),
+    1);
+
+google_protobuf_descriptor_pb.MethodOptions.extensionsBinary[51002] = new jspb.ExtensionFieldBinaryInfo(
+    proto.api.v1.adminRolesList,
+    jspb.BinaryReader.prototype.readPackedEnum,
+    jspb.BinaryWriter.prototype.writePackedEnum,
+    undefined,
+    undefined,
+    true);
+// This registers the extension field with the extended class, so that
+// toObject() will function correctly.
+google_protobuf_descriptor_pb.MethodOptions.extensions[51002] = proto.api.v1.adminRolesList;
 
 goog.object.extend(exports, proto.api.v1);
