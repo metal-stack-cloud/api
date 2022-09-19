@@ -28,7 +28,8 @@ goog.exportSymbol('proto.api.v1.tenantRolesList', null, global);
  */
 proto.api.v1.OAuthProvider = {
   O_AUTH_PROVIDER_UNSPECIFIED: 0,
-  O_AUTH_PROVIDER_GITHUB: 1
+  O_AUTH_PROVIDER_GITHUB: 1,
+  O_AUTH_PROVIDER_AZURE: 2
 };
 
 /**
