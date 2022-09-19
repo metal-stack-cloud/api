@@ -10,7 +10,9 @@ all: proto npm-build
 proto: protolint
 	$(MAKE) -C go clean
 	$(MAKE) -C js clean
+	$(MAKE) -C openapiv2 clean
 	$(MAKE) -C proto protoc
+
 
 .PHONY: protolint
 protolint:

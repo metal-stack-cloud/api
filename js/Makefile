@@ -4,7 +4,7 @@ install:
 
 .PHONY: clean
 clean:
-	rm -rf api status
+	rm -rf api admin status
 
 .PHONY: build
 build: install
