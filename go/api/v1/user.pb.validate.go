@@ -100,8 +100,6 @@ func (m *User) validate(all bool) error {
 
 	}
 
-	// no validation rules for Admitted
-
 	if len(errors) > 0 {
 		return UserMultiError(errors)
 	}
@@ -248,8 +246,6 @@ func (m *Organization) validate(all bool) error {
 		}
 
 	}
-
-	// no validation rules for Admitted
 
 	if len(errors) > 0 {
 		return OrganizationMultiError(errors)

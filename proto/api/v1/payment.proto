@@ -36,6 +36,7 @@ message PaymentCustomer {
   optional string email = 6;
   optional Card card = 7;
   repeated Price prices = 8;
+  bool admitted = 9;
 }
 
 message Card {

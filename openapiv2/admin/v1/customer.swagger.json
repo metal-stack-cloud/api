@@ -114,6 +114,9 @@
           "items": {
             "$ref": "#/definitions/v1Price"
           }
+        },
+        "admitted": {
+          "type": "boolean"
         }
       }
     },

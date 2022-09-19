@@ -128,8 +128,7 @@ proto.api.v1.User.toObject = function(includeInstance, msg) {
     avatarUrl: jspb.Message.getFieldWithDefault(msg, 5, ""),
     oauthProvider: jspb.Message.getFieldWithDefault(msg, 6, 0),
     organizationsList: jspb.Message.toObjectList(msg.getOrganizationsList(),
-    proto.api.v1.Organization.toObject, includeInstance),
-    admitted: jspb.Message.getBooleanFieldWithDefault(msg, 8, false)
+    proto.api.v1.Organization.toObject, includeInstance)
   };
 
   if (includeInstance) {
@@ -190,10 +189,6 @@ proto.api.v1.User.deserializeBinaryFromReader = function(msg, reader) {
       var value = new proto.api.v1.Organization;
       reader.readMessage(value,proto.api.v1.Organization.deserializeBinaryFromReader);
       msg.addOrganizations(value);
-      break;
-    case 8:
-      var value = /** @type {boolean} */ (reader.readBool());
-      msg.setAdmitted(value);
       break;
     default:
       reader.skipField();
@@ -265,13 +260,6 @@ proto.api.v1.User.serializeBinaryToWriter = function(message, writer) {
       7,
       f,
       proto.api.v1.Organization.serializeBinaryToWriter
-    );
-  }
-  f = message.getAdmitted();
-  if (f) {
-    writer.writeBool(
-      8,
-      f
     );
   }
 };
@@ -405,24 +393,6 @@ proto.api.v1.User.prototype.clearOrganizationsList = function() {
 };
 
 
-/**
- * optional bool admitted = 8;
- * @return {boolean}
- */
-proto.api.v1.User.prototype.getAdmitted = function() {
-  return /** @type {boolean} */ (jspb.Message.getBooleanFieldWithDefault(this, 8, false));
-};
-
-
-/**
- * @param {boolean} value
- * @return {!proto.api.v1.User} returns this
- */
-proto.api.v1.User.prototype.setAdmitted = function(value) {
-  return jspb.Message.setProto3BooleanField(this, 8, value);
-};
-
-
 
 /**
  * List of repeated fields within this message type.
@@ -470,8 +440,7 @@ proto.api.v1.Organization.toObject = function(includeInstance, msg) {
     avatarUrl: jspb.Message.getFieldWithDefault(msg, 6, ""),
     role: jspb.Message.getFieldWithDefault(msg, 7, 0),
     teamsList: jspb.Message.toObjectList(msg.getTeamsList(),
-    proto.api.v1.Team.toObject, includeInstance),
-    admitted: jspb.Message.getBooleanFieldWithDefault(msg, 9, false)
+    proto.api.v1.Team.toObject, includeInstance)
   };
 
   if (includeInstance) {
@@ -540,10 +509,6 @@ proto.api.v1.Organization.deserializeBinaryFromReader = function(msg, reader) {
       var value = new proto.api.v1.Team;
       reader.readMessage(value,proto.api.v1.Team.deserializeBinaryFromReader);
       msg.addTeams(value);
-      break;
-    case 9:
-      var value = /** @type {boolean} */ (reader.readBool());
-      msg.setAdmitted(value);
       break;
     default:
       reader.skipField();
@@ -629,13 +594,6 @@ proto.api.v1.Organization.serializeBinaryToWriter = function(message, writer) {
       8,
       f,
       proto.api.v1.Team.serializeBinaryToWriter
-    );
-  }
-  f = message.getAdmitted();
-  if (f) {
-    writer.writeBool(
-      9,
-      f
     );
   }
 };
@@ -802,24 +760,6 @@ proto.api.v1.Organization.prototype.addTeams = function(opt_value, opt_index) {
  */
 proto.api.v1.Organization.prototype.clearTeamsList = function() {
   return this.setTeamsList([]);
-};
-
-
-/**
- * optional bool admitted = 9;
- * @return {boolean}
- */
-proto.api.v1.Organization.prototype.getAdmitted = function() {
-  return /** @type {boolean} */ (jspb.Message.getBooleanFieldWithDefault(this, 9, false));
-};
-
-
-/**
- * @param {boolean} value
- * @return {!proto.api.v1.Organization} returns this
- */
-proto.api.v1.Organization.prototype.setAdmitted = function(value) {
-  return jspb.Message.setProto3BooleanField(this, 9, value);
 };
 
 

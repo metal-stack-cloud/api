@@ -97,6 +97,8 @@ func (m *PaymentCustomer) validate(all bool) error {
 
 	}
 
+	// no validation rules for Admitted
+
 	if m.Name != nil {
 		// no validation rules for Name
 	}

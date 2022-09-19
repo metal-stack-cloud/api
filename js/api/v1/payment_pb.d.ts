@@ -39,6 +39,9 @@ export class PaymentCustomer extends jspb.Message {
   clearPricesList(): PaymentCustomer;
   addPrices(value?: Price, index?: number): Price;
 
+  getAdmitted(): boolean;
+  setAdmitted(value: boolean): PaymentCustomer;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): PaymentCustomer.AsObject;
   static toObject(includeInstance: boolean, msg: PaymentCustomer): PaymentCustomer.AsObject;
@@ -57,6 +60,7 @@ export namespace PaymentCustomer {
     email?: string,
     card?: Card.AsObject,
     pricesList: Array<Price.AsObject>,
+    admitted: boolean,
   }
 
   export enum NameCase { 
