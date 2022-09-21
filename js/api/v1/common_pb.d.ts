@@ -6,6 +6,7 @@ import * as google_protobuf_descriptor_pb from 'google-protobuf/google/protobuf/
 export enum OAuthProvider { 
   O_AUTH_PROVIDER_UNSPECIFIED = 0,
   O_AUTH_PROVIDER_GITHUB = 1,
+  O_AUTH_PROVIDER_AZURE = 2,
 }
 export enum Role { 
   ROLE_UNSPECIFIED = 0,

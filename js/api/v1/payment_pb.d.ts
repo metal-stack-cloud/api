@@ -39,6 +39,11 @@ export class PaymentCustomer extends jspb.Message {
   clearPricesList(): PaymentCustomer;
   addPrices(value?: Price, index?: number): Price;
 
+  getAddress(): Address | undefined;
+  setAddress(value?: Address): PaymentCustomer;
+  hasAddress(): boolean;
+  clearAddress(): PaymentCustomer;
+
   getAdmitted(): boolean;
   setAdmitted(value: boolean): PaymentCustomer;
 
@@ -60,6 +65,7 @@ export namespace PaymentCustomer {
     email?: string,
     card?: Card.AsObject,
     pricesList: Array<Price.AsObject>,
+    address?: Address.AsObject,
     admitted: boolean,
   }
 
@@ -141,6 +147,44 @@ export namespace Price {
     name: string,
     unitAmountDecimal: number,
     currency: string,
+  }
+}
+
+export class Address extends jspb.Message {
+  getLine1(): string;
+  setLine1(value: string): Address;
+
+  getLine2(): string;
+  setLine2(value: string): Address;
+
+  getPostalCode(): string;
+  setPostalCode(value: string): Address;
+
+  getCity(): string;
+  setCity(value: string): Address;
+
+  getState(): string;
+  setState(value: string): Address;
+
+  getCountry(): string;
+  setCountry(value: string): Address;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): Address.AsObject;
+  static toObject(includeInstance: boolean, msg: Address): Address.AsObject;
+  static serializeBinaryToWriter(message: Address, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): Address;
+  static deserializeBinaryFromReader(message: Address, reader: jspb.BinaryReader): Address;
+}
+
+export namespace Address {
+  export type AsObject = {
+    line1: string,
+    line2: string,
+    postalCode: string,
+    city: string,
+    state: string,
+    country: string,
   }
 }
 

@@ -7,6 +7,7 @@ import "google/protobuf/descriptor.proto";
 enum OAuthProvider {
   O_AUTH_PROVIDER_UNSPECIFIED = 0;
   O_AUTH_PROVIDER_GITHUB = 1;
+  O_AUTH_PROVIDER_AZURE = 2;
 }
 
 enum Role {
