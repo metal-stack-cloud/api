@@ -36,6 +36,7 @@ message PaymentCustomer {
   optional string email = 6;
   optional Card card = 7;
   repeated Price prices = 8;
+  Address address = 9;
 }
 
 message Card {
@@ -50,6 +51,15 @@ message Price {
   string name = 1;
   double unit_amount_decimal = 2;
   string currency = 3;
+}
+
+message Address {
+  string line1 = 1;
+  string line2 = 2;
+  string postal_code = 3;
+  string city = 4;
+  string state = 5;
+  string country = 6;
 }
 
 message PaymentServiceCreateOrUpdateCustomerRequest {

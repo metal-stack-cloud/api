@@ -169,7 +169,8 @@
       "type": "string",
       "enum": [
         "O_AUTH_PROVIDER_UNSPECIFIED",
-        "O_AUTH_PROVIDER_GITHUB"
+        "O_AUTH_PROVIDER_GITHUB",
+        "O_AUTH_PROVIDER_AZURE"
       ],
       "default": "O_AUTH_PROVIDER_UNSPECIFIED"
     },

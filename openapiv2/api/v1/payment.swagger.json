@@ -44,6 +44,29 @@
         }
       }
     },
+    "v1Address": {
+      "type": "object",
+      "properties": {
+        "line1": {
+          "type": "string"
+        },
+        "line2": {
+          "type": "string"
+        },
+        "postalCode": {
+          "type": "string"
+        },
+        "city": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        }
+      }
+    },
     "v1Card": {
       "type": "object",
       "properties": {
@@ -95,6 +118,9 @@
           "items": {
             "$ref": "#/definitions/v1Price"
           }
+        },
+        "address": {
+          "$ref": "#/definitions/v1Address"
         }
       }
     },
