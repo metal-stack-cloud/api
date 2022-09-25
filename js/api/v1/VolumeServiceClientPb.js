@@ -28,7 +28,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.VolumeServiceClient = void 0;
+exports.SnapshotServiceClient = exports.VolumeServiceClient = void 0;
 // GENERATED CODE -- DO NOT EDIT!
 /* eslint-disable */
 // @ts-nocheck
@@ -82,3 +82,51 @@ var VolumeServiceClient = /** @class */ (function () {
     return VolumeServiceClient;
 }());
 exports.VolumeServiceClient = VolumeServiceClient;
+var SnapshotServiceClient = /** @class */ (function () {
+    function SnapshotServiceClient(hostname, credentials, options) {
+        this.methodDescriptorGet = new grpcWeb.MethodDescriptor('/api.v1.SnapshotService/Get', grpcWeb.MethodType.UNARY, api_v1_volume_pb.SnapshotServiceGetRequest, api_v1_volume_pb.SnapshotServiceGetResponse, function (request) {
+            return request.serializeBinary();
+        }, api_v1_volume_pb.SnapshotServiceGetResponse.deserializeBinary);
+        this.methodDescriptorList = new grpcWeb.MethodDescriptor('/api.v1.SnapshotService/List', grpcWeb.MethodType.UNARY, api_v1_volume_pb.SnapshotServiceListRequest, api_v1_volume_pb.SnapshotServiceListResponse, function (request) {
+            return request.serializeBinary();
+        }, api_v1_volume_pb.SnapshotServiceListResponse.deserializeBinary);
+        this.methodDescriptorDelete = new grpcWeb.MethodDescriptor('/api.v1.SnapshotService/Delete', grpcWeb.MethodType.UNARY, api_v1_volume_pb.SnapshotServiceDeleteRequest, api_v1_volume_pb.SnapshotServiceDeleteResponse, function (request) {
+            return request.serializeBinary();
+        }, api_v1_volume_pb.SnapshotServiceDeleteResponse.deserializeBinary);
+        if (!options)
+            options = {};
+        if (!credentials)
+            credentials = {};
+        options['format'] = 'text';
+        this.client_ = new grpcWeb.GrpcWebClientBase(options);
+        this.hostname_ = hostname;
+        this.credentials_ = credentials;
+        this.options_ = options;
+    }
+    SnapshotServiceClient.prototype.get = function (request, metadata, callback) {
+        if (callback !== undefined) {
+            return this.client_.rpcCall(this.hostname_ +
+                '/api.v1.SnapshotService/Get', request, metadata || {}, this.methodDescriptorGet, callback);
+        }
+        return this.client_.unaryCall(this.hostname_ +
+            '/api.v1.SnapshotService/Get', request, metadata || {}, this.methodDescriptorGet);
+    };
+    SnapshotServiceClient.prototype.list = function (request, metadata, callback) {
+        if (callback !== undefined) {
+            return this.client_.rpcCall(this.hostname_ +
+                '/api.v1.SnapshotService/List', request, metadata || {}, this.methodDescriptorList, callback);
+        }
+        return this.client_.unaryCall(this.hostname_ +
+            '/api.v1.SnapshotService/List', request, metadata || {}, this.methodDescriptorList);
+    };
+    SnapshotServiceClient.prototype.delete = function (request, metadata, callback) {
+        if (callback !== undefined) {
+            return this.client_.rpcCall(this.hostname_ +
+                '/api.v1.SnapshotService/Delete', request, metadata || {}, this.methodDescriptorDelete, callback);
+        }
+        return this.client_.unaryCall(this.hostname_ +
+            '/api.v1.SnapshotService/Delete', request, metadata || {}, this.methodDescriptorDelete);
+    };
+    return SnapshotServiceClient;
+}());
+exports.SnapshotServiceClient = SnapshotServiceClient;
