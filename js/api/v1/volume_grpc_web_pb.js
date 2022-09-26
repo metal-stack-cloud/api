@@ -262,5 +262,240 @@ proto.api.v1.VolumeServicePromiseClient.prototype.delete =
 };
 
 
+/**
+ * @param {string} hostname
+ * @param {?Object} credentials
+ * @param {?grpc.web.ClientOptions} options
+ * @constructor
+ * @struct
+ * @final
+ */
+proto.api.v1.SnapshotServiceClient =
+    function(hostname, credentials, options) {
+  if (!options) options = {};
+  options.format = 'text';
+
+  /**
+   * @private @const {!grpc.web.GrpcWebClientBase} The client
+   */
+  this.client_ = new grpc.web.GrpcWebClientBase(options);
+
+  /**
+   * @private @const {string} The hostname
+   */
+  this.hostname_ = hostname;
+
+};
+
+
+/**
+ * @param {string} hostname
+ * @param {?Object} credentials
+ * @param {?grpc.web.ClientOptions} options
+ * @constructor
+ * @struct
+ * @final
+ */
+proto.api.v1.SnapshotServicePromiseClient =
+    function(hostname, credentials, options) {
+  if (!options) options = {};
+  options.format = 'text';
+
+  /**
+   * @private @const {!grpc.web.GrpcWebClientBase} The client
+   */
+  this.client_ = new grpc.web.GrpcWebClientBase(options);
+
+  /**
+   * @private @const {string} The hostname
+   */
+  this.hostname_ = hostname;
+
+};
+
+
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.api.v1.SnapshotServiceGetRequest,
+ *   !proto.api.v1.SnapshotServiceGetResponse>}
+ */
+const methodDescriptor_SnapshotService_Get = new grpc.web.MethodDescriptor(
+  '/api.v1.SnapshotService/Get',
+  grpc.web.MethodType.UNARY,
+  proto.api.v1.SnapshotServiceGetRequest,
+  proto.api.v1.SnapshotServiceGetResponse,
+  /**
+   * @param {!proto.api.v1.SnapshotServiceGetRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.api.v1.SnapshotServiceGetResponse.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.api.v1.SnapshotServiceGetRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.RpcError, ?proto.api.v1.SnapshotServiceGetResponse)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.api.v1.SnapshotServiceGetResponse>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.api.v1.SnapshotServiceClient.prototype.get =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/api.v1.SnapshotService/Get',
+      request,
+      metadata || {},
+      methodDescriptor_SnapshotService_Get,
+      callback);
+};
+
+
+/**
+ * @param {!proto.api.v1.SnapshotServiceGetRequest} request The
+ *     request proto
+ * @param {?Object<string, string>=} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.api.v1.SnapshotServiceGetResponse>}
+ *     Promise that resolves to the response
+ */
+proto.api.v1.SnapshotServicePromiseClient.prototype.get =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/api.v1.SnapshotService/Get',
+      request,
+      metadata || {},
+      methodDescriptor_SnapshotService_Get);
+};
+
+
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.api.v1.SnapshotServiceListRequest,
+ *   !proto.api.v1.SnapshotServiceListResponse>}
+ */
+const methodDescriptor_SnapshotService_List = new grpc.web.MethodDescriptor(
+  '/api.v1.SnapshotService/List',
+  grpc.web.MethodType.UNARY,
+  proto.api.v1.SnapshotServiceListRequest,
+  proto.api.v1.SnapshotServiceListResponse,
+  /**
+   * @param {!proto.api.v1.SnapshotServiceListRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.api.v1.SnapshotServiceListResponse.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.api.v1.SnapshotServiceListRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.RpcError, ?proto.api.v1.SnapshotServiceListResponse)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.api.v1.SnapshotServiceListResponse>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.api.v1.SnapshotServiceClient.prototype.list =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/api.v1.SnapshotService/List',
+      request,
+      metadata || {},
+      methodDescriptor_SnapshotService_List,
+      callback);
+};
+
+
+/**
+ * @param {!proto.api.v1.SnapshotServiceListRequest} request The
+ *     request proto
+ * @param {?Object<string, string>=} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.api.v1.SnapshotServiceListResponse>}
+ *     Promise that resolves to the response
+ */
+proto.api.v1.SnapshotServicePromiseClient.prototype.list =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/api.v1.SnapshotService/List',
+      request,
+      metadata || {},
+      methodDescriptor_SnapshotService_List);
+};
+
+
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.api.v1.SnapshotServiceDeleteRequest,
+ *   !proto.api.v1.SnapshotServiceDeleteResponse>}
+ */
+const methodDescriptor_SnapshotService_Delete = new grpc.web.MethodDescriptor(
+  '/api.v1.SnapshotService/Delete',
+  grpc.web.MethodType.UNARY,
+  proto.api.v1.SnapshotServiceDeleteRequest,
+  proto.api.v1.SnapshotServiceDeleteResponse,
+  /**
+   * @param {!proto.api.v1.SnapshotServiceDeleteRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.api.v1.SnapshotServiceDeleteResponse.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.api.v1.SnapshotServiceDeleteRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.RpcError, ?proto.api.v1.SnapshotServiceDeleteResponse)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.api.v1.SnapshotServiceDeleteResponse>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.api.v1.SnapshotServiceClient.prototype.delete =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/api.v1.SnapshotService/Delete',
+      request,
+      metadata || {},
+      methodDescriptor_SnapshotService_Delete,
+      callback);
+};
+
+
+/**
+ * @param {!proto.api.v1.SnapshotServiceDeleteRequest} request The
+ *     request proto
+ * @param {?Object<string, string>=} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.api.v1.SnapshotServiceDeleteResponse>}
+ *     Promise that resolves to the response
+ */
+proto.api.v1.SnapshotServicePromiseClient.prototype.delete =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/api.v1.SnapshotService/Delete',
+      request,
+      metadata || {},
+      methodDescriptor_SnapshotService_Delete);
+};
+
+
 module.exports = proto.api.v1;
 
