@@ -7,6 +7,9 @@
   "tags": [
     {
       "name": "VolumeService"
+    },
+    {
+      "name": "SnapshotService"
     }
   ],
   "consumes": [
@@ -16,6 +19,106 @@
     "application/json"
   ],
   "paths": {
+    "/api/v1/snapshot": {
+      "delete": {
+        "operationId": "SnapshotService_Delete",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1SnapshotServiceDeleteResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1SnapshotServiceDeleteRequest"
+            }
+          }
+        ],
+        "tags": [
+          "SnapshotService"
+        ]
+      }
+    },
+    "/api/v1/snapshot/{project}/{uuid}": {
+      "get": {
+        "operationId": "SnapshotService_Get",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1SnapshotServiceGetResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "project",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "uuid",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "SnapshotService"
+        ]
+      }
+    },
+    "/api/v1/snapshots": {
+      "post": {
+        "operationId": "SnapshotService_List",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1SnapshotServiceListResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1SnapshotServiceListRequest"
+            }
+          }
+        ],
+        "tags": [
+          "SnapshotService"
+        ]
+      }
+    },
     "/api/v1/volume": {
       "delete": {
         "operationId": "VolumeService_Delete",
@@ -145,6 +248,101 @@
         }
       }
     },
+    "v1Snapshot": {
+      "type": "object",
+      "properties": {
+        "uuid": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "project": {
+          "type": "string"
+        },
+        "partition": {
+          "type": "string"
+        },
+        "storageClass": {
+          "type": "string"
+        },
+        "size": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "usage": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "state": {
+          "type": "string"
+        },
+        "sourceVolumeUuid": {
+          "type": "string"
+        },
+        "sourceVolumeName": {
+          "type": "string"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "deletedAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "v1SnapshotServiceDeleteRequest": {
+      "type": "object",
+      "properties": {
+        "uuid": {
+          "type": "string"
+        },
+        "project": {
+          "type": "string"
+        }
+      }
+    },
+    "v1SnapshotServiceDeleteResponse": {
+      "type": "object",
+      "properties": {
+        "snapshot": {
+          "$ref": "#/definitions/v1Snapshot"
+        }
+      }
+    },
+    "v1SnapshotServiceGetResponse": {
+      "type": "object",
+      "properties": {
+        "snapshot": {
+          "$ref": "#/definitions/v1Snapshot"
+        }
+      }
+    },
+    "v1SnapshotServiceListRequest": {
+      "type": "object",
+      "properties": {
+        "project": {
+          "type": "string"
+        }
+      }
+    },
+    "v1SnapshotServiceListResponse": {
+      "type": "object",
+      "properties": {
+        "snapshots": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1Snapshot"
+          }
+        }
+      }
+    },
     "v1Volume": {
       "type": "object",
       "properties": {
@@ -171,7 +369,19 @@
           "type": "string",
           "format": "uint64"
         },
+        "state": {
+          "type": "string"
+        },
         "attachedTo": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "sourceSnapshotUuid": {
+          "type": "string"
+        },
+        "sourceSnapshotName": {
           "type": "string"
         },
         "createdAt": {

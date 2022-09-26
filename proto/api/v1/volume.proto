@@ -35,19 +35,68 @@ service VolumeService {
   }
 }
 
+service SnapshotService {
+  rpc Get(SnapshotServiceGetRequest) returns (SnapshotServiceGetResponse) {
+    option (google.api.http) = {
+      get: "/api/v1/snapshot/{project}/{uuid}"
+    };
+    option (project_roles) = PROJECT_ROLE_OWNER;
+    option (project_roles) = PROJECT_ROLE_EDITOR;
+    option (project_roles) = PROJECT_ROLE_VIEWER;
+  }
+  rpc List(SnapshotServiceListRequest) returns (SnapshotServiceListResponse) {
+    option (google.api.http) = {
+      post: "/api/v1/snapshots"
+      body: "*"
+    };
+    option (project_roles) = PROJECT_ROLE_OWNER;
+    option (project_roles) = PROJECT_ROLE_EDITOR;
+    option (project_roles) = PROJECT_ROLE_VIEWER;
+  }
+  rpc Delete(SnapshotServiceDeleteRequest) returns (SnapshotServiceDeleteResponse) {
+    option (google.api.http) = {
+      delete: "/api/v1/snapshot"
+      body: "*"
+    };
+    option (project_roles) = PROJECT_ROLE_OWNER;
+    option (project_roles) = PROJECT_ROLE_EDITOR;
+  }
+}
+
 // Types
 message Volume {
   string uuid = 1;
   string name = 2;
   string project = 3;
-  string partition = 4; // partition is part of a region
+  string partition = 4;
   string storage_class = 5;
   uint64 size = 6;
   uint64 usage = 7;
-  optional string attached_to = 8;
-  google.protobuf.Timestamp created_at = 10;
-  google.protobuf.Timestamp updated_at = 11;
-  google.protobuf.Timestamp deleted_at = 12;
+  string state = 8;
+  repeated string attached_to = 9;
+  string source_snapshot_uuid = 10;
+  string source_snapshot_name = 11;
+
+  google.protobuf.Timestamp created_at = 20;
+  google.protobuf.Timestamp updated_at = 21;
+  google.protobuf.Timestamp deleted_at = 22;
+}
+
+message Snapshot {
+  string uuid = 1;
+  string name = 2;
+  string project = 3;
+  string partition = 4;
+  string storage_class = 5;
+  uint64 size = 6;
+  uint64 usage = 7;
+  string state = 8;
+  string source_volume_uuid = 10;
+  string source_volume_name = 11;
+
+  google.protobuf.Timestamp created_at = 20;
+  google.protobuf.Timestamp updated_at = 21;
+  google.protobuf.Timestamp deleted_at = 22;
 }
 
 // Requests
@@ -72,6 +121,27 @@ message VolumeServiceDeleteRequest {
   }];
 }
 
+message SnapshotServiceGetRequest {
+  string uuid = 1 [(validate.rules).string.uuid = true];
+  string project = 2 [(validate.rules).string = {
+    min_len: 2,
+    max_len: 128
+  }];
+}
+message SnapshotServiceListRequest {
+  string project = 2 [(validate.rules).string = {
+    min_len: 2,
+    max_len: 128
+  }];
+}
+message SnapshotServiceDeleteRequest {
+  string uuid = 1 [(validate.rules).string.uuid = true];
+  string project = 2 [(validate.rules).string = {
+    min_len: 2,
+    max_len: 128
+  }];
+}
+
 // Responses
 message VolumeServiceGetResponse {
   Volume volume = 1;
@@ -81,4 +151,14 @@ message VolumeServiceListResponse {
 }
 message VolumeServiceDeleteResponse {
   Volume volume = 1;
+}
+
+message SnapshotServiceGetResponse {
+  Snapshot snapshot = 1;
+}
+message SnapshotServiceListResponse {
+  repeated Snapshot snapshots = 1;
+}
+message SnapshotServiceDeleteResponse {
+  Snapshot snapshot = 1;
 }
