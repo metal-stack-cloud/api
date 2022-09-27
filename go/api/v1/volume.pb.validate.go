@@ -73,6 +73,12 @@ func (m *Volume) validate(all bool) error {
 
 	// no validation rules for Usage
 
+	// no validation rules for State
+
+	// no validation rules for SourceSnapshotUuid
+
+	// no validation rules for SourceSnapshotName
+
 	if all {
 		switch v := interface{}(m.GetCreatedAt()).(type) {
 		case interface{ ValidateAll() error }:
@@ -160,10 +166,6 @@ func (m *Volume) validate(all bool) error {
 		}
 	}
 
-	if m.AttachedTo != nil {
-		// no validation rules for AttachedTo
-	}
-
 	if len(errors) > 0 {
 		return VolumeMultiError(errors)
 	}
@@ -240,6 +242,212 @@ var _ interface {
 	Cause() error
 	ErrorName() string
 } = VolumeValidationError{}
+
+// Validate checks the field values on Snapshot with the rules defined in the
+// proto definition for this message. If any rules are violated, the first
+// error encountered is returned, or nil if there are no violations.
+func (m *Snapshot) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on Snapshot with the rules defined in
+// the proto definition for this message. If any rules are violated, the
+// result is a list of violation errors wrapped in SnapshotMultiError, or nil
+// if none found.
+func (m *Snapshot) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *Snapshot) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	// no validation rules for Uuid
+
+	// no validation rules for Name
+
+	// no validation rules for Project
+
+	// no validation rules for Partition
+
+	// no validation rules for StorageClass
+
+	// no validation rules for Size
+
+	// no validation rules for Usage
+
+	// no validation rules for State
+
+	// no validation rules for SourceVolumeUuid
+
+	// no validation rules for SourceVolumeName
+
+	if all {
+		switch v := interface{}(m.GetCreatedAt()).(type) {
+		case interface{ ValidateAll() error }:
+			if err := v.ValidateAll(); err != nil {
+				errors = append(errors, SnapshotValidationError{
+					field:  "CreatedAt",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		case interface{ Validate() error }:
+			if err := v.Validate(); err != nil {
+				errors = append(errors, SnapshotValidationError{
+					field:  "CreatedAt",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		}
+	} else if v, ok := interface{}(m.GetCreatedAt()).(interface{ Validate() error }); ok {
+		if err := v.Validate(); err != nil {
+			return SnapshotValidationError{
+				field:  "CreatedAt",
+				reason: "embedded message failed validation",
+				cause:  err,
+			}
+		}
+	}
+
+	if all {
+		switch v := interface{}(m.GetUpdatedAt()).(type) {
+		case interface{ ValidateAll() error }:
+			if err := v.ValidateAll(); err != nil {
+				errors = append(errors, SnapshotValidationError{
+					field:  "UpdatedAt",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		case interface{ Validate() error }:
+			if err := v.Validate(); err != nil {
+				errors = append(errors, SnapshotValidationError{
+					field:  "UpdatedAt",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		}
+	} else if v, ok := interface{}(m.GetUpdatedAt()).(interface{ Validate() error }); ok {
+		if err := v.Validate(); err != nil {
+			return SnapshotValidationError{
+				field:  "UpdatedAt",
+				reason: "embedded message failed validation",
+				cause:  err,
+			}
+		}
+	}
+
+	if all {
+		switch v := interface{}(m.GetDeletedAt()).(type) {
+		case interface{ ValidateAll() error }:
+			if err := v.ValidateAll(); err != nil {
+				errors = append(errors, SnapshotValidationError{
+					field:  "DeletedAt",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		case interface{ Validate() error }:
+			if err := v.Validate(); err != nil {
+				errors = append(errors, SnapshotValidationError{
+					field:  "DeletedAt",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		}
+	} else if v, ok := interface{}(m.GetDeletedAt()).(interface{ Validate() error }); ok {
+		if err := v.Validate(); err != nil {
+			return SnapshotValidationError{
+				field:  "DeletedAt",
+				reason: "embedded message failed validation",
+				cause:  err,
+			}
+		}
+	}
+
+	if len(errors) > 0 {
+		return SnapshotMultiError(errors)
+	}
+
+	return nil
+}
+
+// SnapshotMultiError is an error wrapping multiple validation errors returned
+// by Snapshot.ValidateAll() if the designated constraints aren't met.
+type SnapshotMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m SnapshotMultiError) Error() string {
+	var msgs []string
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m SnapshotMultiError) AllErrors() []error { return m }
+
+// SnapshotValidationError is the validation error returned by
+// Snapshot.Validate if the designated constraints aren't met.
+type SnapshotValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e SnapshotValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e SnapshotValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e SnapshotValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e SnapshotValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e SnapshotValidationError) ErrorName() string { return "SnapshotValidationError" }
+
+// Error satisfies the builtin error interface
+func (e SnapshotValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sSnapshot.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = SnapshotValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = SnapshotValidationError{}
 
 // Validate checks the field values on VolumeServiceGetRequest with the rules
 // defined in the proto definition for this message. If any rules are
@@ -619,6 +827,386 @@ var _ interface {
 	Cause() error
 	ErrorName() string
 } = VolumeServiceDeleteRequestValidationError{}
+
+// Validate checks the field values on SnapshotServiceGetRequest with the rules
+// defined in the proto definition for this message. If any rules are
+// violated, the first error encountered is returned, or nil if there are no violations.
+func (m *SnapshotServiceGetRequest) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on SnapshotServiceGetRequest with the
+// rules defined in the proto definition for this message. If any rules are
+// violated, the result is a list of violation errors wrapped in
+// SnapshotServiceGetRequestMultiError, or nil if none found.
+func (m *SnapshotServiceGetRequest) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *SnapshotServiceGetRequest) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	if err := m._validateUuid(m.GetUuid()); err != nil {
+		err = SnapshotServiceGetRequestValidationError{
+			field:  "Uuid",
+			reason: "value must be a valid UUID",
+			cause:  err,
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
+	if l := utf8.RuneCountInString(m.GetProject()); l < 2 || l > 128 {
+		err := SnapshotServiceGetRequestValidationError{
+			field:  "Project",
+			reason: "value length must be between 2 and 128 runes, inclusive",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
+	if len(errors) > 0 {
+		return SnapshotServiceGetRequestMultiError(errors)
+	}
+
+	return nil
+}
+
+func (m *SnapshotServiceGetRequest) _validateUuid(uuid string) error {
+	if matched := _volume_uuidPattern.MatchString(uuid); !matched {
+		return errors.New("invalid uuid format")
+	}
+
+	return nil
+}
+
+// SnapshotServiceGetRequestMultiError is an error wrapping multiple validation
+// errors returned by SnapshotServiceGetRequest.ValidateAll() if the
+// designated constraints aren't met.
+type SnapshotServiceGetRequestMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m SnapshotServiceGetRequestMultiError) Error() string {
+	var msgs []string
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m SnapshotServiceGetRequestMultiError) AllErrors() []error { return m }
+
+// SnapshotServiceGetRequestValidationError is the validation error returned by
+// SnapshotServiceGetRequest.Validate if the designated constraints aren't met.
+type SnapshotServiceGetRequestValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e SnapshotServiceGetRequestValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e SnapshotServiceGetRequestValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e SnapshotServiceGetRequestValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e SnapshotServiceGetRequestValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e SnapshotServiceGetRequestValidationError) ErrorName() string {
+	return "SnapshotServiceGetRequestValidationError"
+}
+
+// Error satisfies the builtin error interface
+func (e SnapshotServiceGetRequestValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sSnapshotServiceGetRequest.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = SnapshotServiceGetRequestValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = SnapshotServiceGetRequestValidationError{}
+
+// Validate checks the field values on SnapshotServiceListRequest with the
+// rules defined in the proto definition for this message. If any rules are
+// violated, the first error encountered is returned, or nil if there are no violations.
+func (m *SnapshotServiceListRequest) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on SnapshotServiceListRequest with the
+// rules defined in the proto definition for this message. If any rules are
+// violated, the result is a list of violation errors wrapped in
+// SnapshotServiceListRequestMultiError, or nil if none found.
+func (m *SnapshotServiceListRequest) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *SnapshotServiceListRequest) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	if l := utf8.RuneCountInString(m.GetProject()); l < 2 || l > 128 {
+		err := SnapshotServiceListRequestValidationError{
+			field:  "Project",
+			reason: "value length must be between 2 and 128 runes, inclusive",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
+	if len(errors) > 0 {
+		return SnapshotServiceListRequestMultiError(errors)
+	}
+
+	return nil
+}
+
+// SnapshotServiceListRequestMultiError is an error wrapping multiple
+// validation errors returned by SnapshotServiceListRequest.ValidateAll() if
+// the designated constraints aren't met.
+type SnapshotServiceListRequestMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m SnapshotServiceListRequestMultiError) Error() string {
+	var msgs []string
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m SnapshotServiceListRequestMultiError) AllErrors() []error { return m }
+
+// SnapshotServiceListRequestValidationError is the validation error returned
+// by SnapshotServiceListRequest.Validate if the designated constraints aren't met.
+type SnapshotServiceListRequestValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e SnapshotServiceListRequestValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e SnapshotServiceListRequestValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e SnapshotServiceListRequestValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e SnapshotServiceListRequestValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e SnapshotServiceListRequestValidationError) ErrorName() string {
+	return "SnapshotServiceListRequestValidationError"
+}
+
+// Error satisfies the builtin error interface
+func (e SnapshotServiceListRequestValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sSnapshotServiceListRequest.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = SnapshotServiceListRequestValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = SnapshotServiceListRequestValidationError{}
+
+// Validate checks the field values on SnapshotServiceDeleteRequest with the
+// rules defined in the proto definition for this message. If any rules are
+// violated, the first error encountered is returned, or nil if there are no violations.
+func (m *SnapshotServiceDeleteRequest) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on SnapshotServiceDeleteRequest with the
+// rules defined in the proto definition for this message. If any rules are
+// violated, the result is a list of violation errors wrapped in
+// SnapshotServiceDeleteRequestMultiError, or nil if none found.
+func (m *SnapshotServiceDeleteRequest) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *SnapshotServiceDeleteRequest) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	if err := m._validateUuid(m.GetUuid()); err != nil {
+		err = SnapshotServiceDeleteRequestValidationError{
+			field:  "Uuid",
+			reason: "value must be a valid UUID",
+			cause:  err,
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
+	if l := utf8.RuneCountInString(m.GetProject()); l < 2 || l > 128 {
+		err := SnapshotServiceDeleteRequestValidationError{
+			field:  "Project",
+			reason: "value length must be between 2 and 128 runes, inclusive",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
+	if len(errors) > 0 {
+		return SnapshotServiceDeleteRequestMultiError(errors)
+	}
+
+	return nil
+}
+
+func (m *SnapshotServiceDeleteRequest) _validateUuid(uuid string) error {
+	if matched := _volume_uuidPattern.MatchString(uuid); !matched {
+		return errors.New("invalid uuid format")
+	}
+
+	return nil
+}
+
+// SnapshotServiceDeleteRequestMultiError is an error wrapping multiple
+// validation errors returned by SnapshotServiceDeleteRequest.ValidateAll() if
+// the designated constraints aren't met.
+type SnapshotServiceDeleteRequestMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m SnapshotServiceDeleteRequestMultiError) Error() string {
+	var msgs []string
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m SnapshotServiceDeleteRequestMultiError) AllErrors() []error { return m }
+
+// SnapshotServiceDeleteRequestValidationError is the validation error returned
+// by SnapshotServiceDeleteRequest.Validate if the designated constraints
+// aren't met.
+type SnapshotServiceDeleteRequestValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e SnapshotServiceDeleteRequestValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e SnapshotServiceDeleteRequestValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e SnapshotServiceDeleteRequestValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e SnapshotServiceDeleteRequestValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e SnapshotServiceDeleteRequestValidationError) ErrorName() string {
+	return "SnapshotServiceDeleteRequestValidationError"
+}
+
+// Error satisfies the builtin error interface
+func (e SnapshotServiceDeleteRequestValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sSnapshotServiceDeleteRequest.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = SnapshotServiceDeleteRequestValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = SnapshotServiceDeleteRequestValidationError{}
 
 // Validate checks the field values on VolumeServiceGetResponse with the rules
 // defined in the proto definition for this message. If any rules are
@@ -1018,3 +1606,403 @@ var _ interface {
 	Cause() error
 	ErrorName() string
 } = VolumeServiceDeleteResponseValidationError{}
+
+// Validate checks the field values on SnapshotServiceGetResponse with the
+// rules defined in the proto definition for this message. If any rules are
+// violated, the first error encountered is returned, or nil if there are no violations.
+func (m *SnapshotServiceGetResponse) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on SnapshotServiceGetResponse with the
+// rules defined in the proto definition for this message. If any rules are
+// violated, the result is a list of violation errors wrapped in
+// SnapshotServiceGetResponseMultiError, or nil if none found.
+func (m *SnapshotServiceGetResponse) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *SnapshotServiceGetResponse) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	if all {
+		switch v := interface{}(m.GetSnapshot()).(type) {
+		case interface{ ValidateAll() error }:
+			if err := v.ValidateAll(); err != nil {
+				errors = append(errors, SnapshotServiceGetResponseValidationError{
+					field:  "Snapshot",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		case interface{ Validate() error }:
+			if err := v.Validate(); err != nil {
+				errors = append(errors, SnapshotServiceGetResponseValidationError{
+					field:  "Snapshot",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		}
+	} else if v, ok := interface{}(m.GetSnapshot()).(interface{ Validate() error }); ok {
+		if err := v.Validate(); err != nil {
+			return SnapshotServiceGetResponseValidationError{
+				field:  "Snapshot",
+				reason: "embedded message failed validation",
+				cause:  err,
+			}
+		}
+	}
+
+	if len(errors) > 0 {
+		return SnapshotServiceGetResponseMultiError(errors)
+	}
+
+	return nil
+}
+
+// SnapshotServiceGetResponseMultiError is an error wrapping multiple
+// validation errors returned by SnapshotServiceGetResponse.ValidateAll() if
+// the designated constraints aren't met.
+type SnapshotServiceGetResponseMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m SnapshotServiceGetResponseMultiError) Error() string {
+	var msgs []string
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m SnapshotServiceGetResponseMultiError) AllErrors() []error { return m }
+
+// SnapshotServiceGetResponseValidationError is the validation error returned
+// by SnapshotServiceGetResponse.Validate if the designated constraints aren't met.
+type SnapshotServiceGetResponseValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e SnapshotServiceGetResponseValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e SnapshotServiceGetResponseValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e SnapshotServiceGetResponseValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e SnapshotServiceGetResponseValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e SnapshotServiceGetResponseValidationError) ErrorName() string {
+	return "SnapshotServiceGetResponseValidationError"
+}
+
+// Error satisfies the builtin error interface
+func (e SnapshotServiceGetResponseValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sSnapshotServiceGetResponse.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = SnapshotServiceGetResponseValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = SnapshotServiceGetResponseValidationError{}
+
+// Validate checks the field values on SnapshotServiceListResponse with the
+// rules defined in the proto definition for this message. If any rules are
+// violated, the first error encountered is returned, or nil if there are no violations.
+func (m *SnapshotServiceListResponse) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on SnapshotServiceListResponse with the
+// rules defined in the proto definition for this message. If any rules are
+// violated, the result is a list of violation errors wrapped in
+// SnapshotServiceListResponseMultiError, or nil if none found.
+func (m *SnapshotServiceListResponse) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *SnapshotServiceListResponse) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	for idx, item := range m.GetSnapshots() {
+		_, _ = idx, item
+
+		if all {
+			switch v := interface{}(item).(type) {
+			case interface{ ValidateAll() error }:
+				if err := v.ValidateAll(); err != nil {
+					errors = append(errors, SnapshotServiceListResponseValidationError{
+						field:  fmt.Sprintf("Snapshots[%v]", idx),
+						reason: "embedded message failed validation",
+						cause:  err,
+					})
+				}
+			case interface{ Validate() error }:
+				if err := v.Validate(); err != nil {
+					errors = append(errors, SnapshotServiceListResponseValidationError{
+						field:  fmt.Sprintf("Snapshots[%v]", idx),
+						reason: "embedded message failed validation",
+						cause:  err,
+					})
+				}
+			}
+		} else if v, ok := interface{}(item).(interface{ Validate() error }); ok {
+			if err := v.Validate(); err != nil {
+				return SnapshotServiceListResponseValidationError{
+					field:  fmt.Sprintf("Snapshots[%v]", idx),
+					reason: "embedded message failed validation",
+					cause:  err,
+				}
+			}
+		}
+
+	}
+
+	if len(errors) > 0 {
+		return SnapshotServiceListResponseMultiError(errors)
+	}
+
+	return nil
+}
+
+// SnapshotServiceListResponseMultiError is an error wrapping multiple
+// validation errors returned by SnapshotServiceListResponse.ValidateAll() if
+// the designated constraints aren't met.
+type SnapshotServiceListResponseMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m SnapshotServiceListResponseMultiError) Error() string {
+	var msgs []string
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m SnapshotServiceListResponseMultiError) AllErrors() []error { return m }
+
+// SnapshotServiceListResponseValidationError is the validation error returned
+// by SnapshotServiceListResponse.Validate if the designated constraints
+// aren't met.
+type SnapshotServiceListResponseValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e SnapshotServiceListResponseValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e SnapshotServiceListResponseValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e SnapshotServiceListResponseValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e SnapshotServiceListResponseValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e SnapshotServiceListResponseValidationError) ErrorName() string {
+	return "SnapshotServiceListResponseValidationError"
+}
+
+// Error satisfies the builtin error interface
+func (e SnapshotServiceListResponseValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sSnapshotServiceListResponse.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = SnapshotServiceListResponseValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = SnapshotServiceListResponseValidationError{}
+
+// Validate checks the field values on SnapshotServiceDeleteResponse with the
+// rules defined in the proto definition for this message. If any rules are
+// violated, the first error encountered is returned, or nil if there are no violations.
+func (m *SnapshotServiceDeleteResponse) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on SnapshotServiceDeleteResponse with
+// the rules defined in the proto definition for this message. If any rules
+// are violated, the result is a list of violation errors wrapped in
+// SnapshotServiceDeleteResponseMultiError, or nil if none found.
+func (m *SnapshotServiceDeleteResponse) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *SnapshotServiceDeleteResponse) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	if all {
+		switch v := interface{}(m.GetSnapshot()).(type) {
+		case interface{ ValidateAll() error }:
+			if err := v.ValidateAll(); err != nil {
+				errors = append(errors, SnapshotServiceDeleteResponseValidationError{
+					field:  "Snapshot",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		case interface{ Validate() error }:
+			if err := v.Validate(); err != nil {
+				errors = append(errors, SnapshotServiceDeleteResponseValidationError{
+					field:  "Snapshot",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		}
+	} else if v, ok := interface{}(m.GetSnapshot()).(interface{ Validate() error }); ok {
+		if err := v.Validate(); err != nil {
+			return SnapshotServiceDeleteResponseValidationError{
+				field:  "Snapshot",
+				reason: "embedded message failed validation",
+				cause:  err,
+			}
+		}
+	}
+
+	if len(errors) > 0 {
+		return SnapshotServiceDeleteResponseMultiError(errors)
+	}
+
+	return nil
+}
+
+// SnapshotServiceDeleteResponseMultiError is an error wrapping multiple
+// validation errors returned by SnapshotServiceDeleteResponse.ValidateAll()
+// if the designated constraints aren't met.
+type SnapshotServiceDeleteResponseMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m SnapshotServiceDeleteResponseMultiError) Error() string {
+	var msgs []string
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m SnapshotServiceDeleteResponseMultiError) AllErrors() []error { return m }
+
+// SnapshotServiceDeleteResponseValidationError is the validation error
+// returned by SnapshotServiceDeleteResponse.Validate if the designated
+// constraints aren't met.
+type SnapshotServiceDeleteResponseValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e SnapshotServiceDeleteResponseValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e SnapshotServiceDeleteResponseValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e SnapshotServiceDeleteResponseValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e SnapshotServiceDeleteResponseValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e SnapshotServiceDeleteResponseValidationError) ErrorName() string {
+	return "SnapshotServiceDeleteResponseValidationError"
+}
+
+// Error satisfies the builtin error interface
+func (e SnapshotServiceDeleteResponseValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sSnapshotServiceDeleteResponse.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = SnapshotServiceDeleteResponseValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = SnapshotServiceDeleteResponseValidationError{}
