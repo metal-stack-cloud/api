@@ -7,7 +7,3 @@ protolint:
 .PHONY: protoc
 protoc: protolint
 	buf generate -v
-
-PHONY: generate-docs
-generate-docs:
-	protoc --doc_out=../docs --doc_opt=json,docs.json --experimental_allow_proto3_optional $(wildcard ./api/v1/*.proto)

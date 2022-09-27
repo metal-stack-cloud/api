@@ -51,3 +51,9 @@ plugins:
     opt:
       - import_style=commonjs
       - binary
+
+  # generate json docs
+  - remote: buf.build/sawadashota/plugins/protoc-gen-doc:v1.5.1
+    out: ../docs
+    opt: json,docs.json
+   

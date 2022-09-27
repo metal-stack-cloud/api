@@ -597,6 +597,163 @@
       ]
     },
     {
+      "name": "api/v1/common.proto",
+      "description": "",
+      "package": "api.v1",
+      "hasEnums": true,
+      "hasExtensions": true,
+      "hasMessages": false,
+      "hasServices": false,
+      "enums": [
+        {
+          "name": "OAuthProvider",
+          "longName": "OAuthProvider",
+          "fullName": "api.v1.OAuthProvider",
+          "description": "",
+          "values": [
+            {
+              "name": "O_AUTH_PROVIDER_UNSPECIFIED",
+              "number": "0",
+              "description": ""
+            },
+            {
+              "name": "O_AUTH_PROVIDER_GITHUB",
+              "number": "1",
+              "description": ""
+            },
+            {
+              "name": "O_AUTH_PROVIDER_AZURE",
+              "number": "2",
+              "description": ""
+            }
+          ]
+        },
+        {
+          "name": "ProjectRole",
+          "longName": "ProjectRole",
+          "fullName": "api.v1.ProjectRole",
+          "description": "",
+          "values": [
+            {
+              "name": "PROJECT_ROLE_UNSPECIFIED",
+              "number": "0",
+              "description": ""
+            },
+            {
+              "name": "PROJECT_ROLE_OWNER",
+              "number": "1",
+              "description": ""
+            },
+            {
+              "name": "PROJECT_ROLE_EDITOR",
+              "number": "2",
+              "description": ""
+            },
+            {
+              "name": "PROJECT_ROLE_VIEWER",
+              "number": "3",
+              "description": ""
+            }
+          ]
+        },
+        {
+          "name": "Role",
+          "longName": "Role",
+          "fullName": "api.v1.Role",
+          "description": "",
+          "values": [
+            {
+              "name": "ROLE_UNSPECIFIED",
+              "number": "0",
+              "description": ""
+            },
+            {
+              "name": "ROLE_MEMBER",
+              "number": "1",
+              "description": ""
+            },
+            {
+              "name": "ROLE_MAINTAINER",
+              "number": "2",
+              "description": ""
+            },
+            {
+              "name": "ROLE_ADMIN",
+              "number": "3",
+              "description": ""
+            },
+            {
+              "name": "ROLE_OWNER",
+              "number": "4",
+              "description": ""
+            }
+          ]
+        },
+        {
+          "name": "TenantRole",
+          "longName": "TenantRole",
+          "fullName": "api.v1.TenantRole",
+          "description": "",
+          "values": [
+            {
+              "name": "TENANT_ROLE_UNSPECIFIED",
+              "number": "0",
+              "description": ""
+            },
+            {
+              "name": "TENANT_ROLE_OWNER",
+              "number": "1",
+              "description": ""
+            },
+            {
+              "name": "TENANT_ROLE_EDITOR",
+              "number": "2",
+              "description": ""
+            },
+            {
+              "name": "TENANT_ROLE_VIEWER",
+              "number": "3",
+              "description": ""
+            }
+          ]
+        }
+      ],
+      "extensions": [
+        {
+          "name": "project_roles",
+          "longName": ".google.protobuf.MethodOptions.project_roles",
+          "fullName": ".google.protobuf.MethodOptions.project_roles",
+          "description": "",
+          "label": "repeated",
+          "type": "ProjectRole",
+          "longType": "ProjectRole",
+          "fullType": "api.v1.ProjectRole",
+          "number": 51001,
+          "defaultValue": "",
+          "containingType": "MethodOptions",
+          "containingLongType": ".google.protobuf.MethodOptions",
+          "containingFullType": "google.protobuf.MethodOptions"
+        },
+        {
+          "name": "tenant_roles",
+          "longName": ".google.protobuf.MethodOptions.tenant_roles",
+          "fullName": ".google.protobuf.MethodOptions.tenant_roles",
+          "description": "",
+          "label": "repeated",
+          "type": "TenantRole",
+          "longType": "TenantRole",
+          "fullType": "api.v1.TenantRole",
+          "number": 51000,
+          "defaultValue": "",
+          "containingType": "MethodOptions",
+          "containingLongType": ".google.protobuf.MethodOptions",
+          "containingFullType": "google.protobuf.MethodOptions"
+        }
+      ],
+      "messages": [],
+      "services": []
+    },
+    {
       "name": "api/v1/cluster.proto",
       "description": "",
       "package": "api.v1",
@@ -2032,158 +2189,6 @@
       ]
     },
     {
-      "name": "api/v1/common.proto",
-      "description": "",
-      "package": "api.v1",
-      "hasEnums": true,
-      "hasExtensions": true,
-      "hasMessages": false,
-      "hasServices": false,
-      "enums": [
-        {
-          "name": "OAuthProvider",
-          "longName": "OAuthProvider",
-          "fullName": "api.v1.OAuthProvider",
-          "description": "",
-          "values": [
-            {
-              "name": "O_AUTH_PROVIDER_UNSPECIFIED",
-              "number": "0",
-              "description": ""
-            },
-            {
-              "name": "O_AUTH_PROVIDER_GITHUB",
-              "number": "1",
-              "description": ""
-            }
-          ]
-        },
-        {
-          "name": "ProjectRole",
-          "longName": "ProjectRole",
-          "fullName": "api.v1.ProjectRole",
-          "description": "",
-          "values": [
-            {
-              "name": "PROJECT_ROLE_UNSPECIFIED",
-              "number": "0",
-              "description": ""
-            },
-            {
-              "name": "PROJECT_ROLE_OWNER",
-              "number": "1",
-              "description": ""
-            },
-            {
-              "name": "PROJECT_ROLE_EDITOR",
-              "number": "2",
-              "description": ""
-            },
-            {
-              "name": "PROJECT_ROLE_VIEWER",
-              "number": "3",
-              "description": ""
-            }
-          ]
-        },
-        {
-          "name": "Role",
-          "longName": "Role",
-          "fullName": "api.v1.Role",
-          "description": "",
-          "values": [
-            {
-              "name": "ROLE_UNSPECIFIED",
-              "number": "0",
-              "description": ""
-            },
-            {
-              "name": "ROLE_MEMBER",
-              "number": "1",
-              "description": ""
-            },
-            {
-              "name": "ROLE_MAINTAINER",
-              "number": "2",
-              "description": ""
-            },
-            {
-              "name": "ROLE_ADMIN",
-              "number": "3",
-              "description": ""
-            },
-            {
-              "name": "ROLE_OWNER",
-              "number": "4",
-              "description": ""
-            }
-          ]
-        },
-        {
-          "name": "TenantRole",
-          "longName": "TenantRole",
-          "fullName": "api.v1.TenantRole",
-          "description": "",
-          "values": [
-            {
-              "name": "TENANT_ROLE_UNSPECIFIED",
-              "number": "0",
-              "description": ""
-            },
-            {
-              "name": "TENANT_ROLE_OWNER",
-              "number": "1",
-              "description": ""
-            },
-            {
-              "name": "TENANT_ROLE_EDITOR",
-              "number": "2",
-              "description": ""
-            },
-            {
-              "name": "TENANT_ROLE_VIEWER",
-              "number": "3",
-              "description": ""
-            }
-          ]
-        }
-      ],
-      "extensions": [
-        {
-          "name": "project_roles",
-          "longName": ".google.protobuf.MethodOptions.project_roles",
-          "fullName": ".google.protobuf.MethodOptions.project_roles",
-          "description": "",
-          "label": "repeated",
-          "type": "ProjectRole",
-          "longType": "ProjectRole",
-          "fullType": "api.v1.ProjectRole",
-          "number": 51001,
-          "defaultValue": "",
-          "containingType": "MethodOptions",
-          "containingLongType": ".google.protobuf.MethodOptions",
-          "containingFullType": "google.protobuf.MethodOptions"
-        },
-        {
-          "name": "tenant_roles",
-          "longName": ".google.protobuf.MethodOptions.tenant_roles",
-          "fullName": ".google.protobuf.MethodOptions.tenant_roles",
-          "description": "",
-          "label": "repeated",
-          "type": "TenantRole",
-          "longType": "TenantRole",
-          "fullType": "api.v1.TenantRole",
-          "number": 51000,
-          "defaultValue": "",
-          "containingType": "MethodOptions",
-          "containingLongType": ".google.protobuf.MethodOptions",
-          "containingFullType": "google.protobuf.MethodOptions"
-        }
-      ],
-      "messages": [],
-      "services": []
-    },
-    {
       "name": "api/v1/health.proto",
       "description": "",
       "package": "api.v1",
@@ -3217,6 +3222,90 @@
       "extensions": [],
       "messages": [
         {
+          "name": "Address",
+          "longName": "Address",
+          "fullName": "api.v1.Address",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "line1",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "line2",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "postal_code",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "city",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "state",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "country",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
           "name": "Card",
           "longName": "Card",
           "fullName": "api.v1.Card",
@@ -3389,6 +3478,18 @@
               "type": "Price",
               "longType": "Price",
               "fullType": "api.v1.Price",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "address",
+              "description": "",
+              "label": "",
+              "type": "Address",
+              "longType": "Address",
+              "fullType": "api.v1.Address",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
@@ -5562,6 +5663,365 @@
                   ]
                 }
               }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "status/v1/message.proto",
+      "description": "",
+      "package": "status.v1",
+      "hasEnums": true,
+      "hasExtensions": false,
+      "hasMessages": true,
+      "hasServices": true,
+      "enums": [
+        {
+          "name": "MessageKind",
+          "longName": "MessageKind",
+          "fullName": "status.v1.MessageKind",
+          "description": "",
+          "values": [
+            {
+              "name": "MESSAGE_KIND_UNSPECIFIED",
+              "number": "0",
+              "description": ""
+            },
+            {
+              "name": "MESSAGE_KIND_INFO",
+              "number": "1",
+              "description": ""
+            },
+            {
+              "name": "MESSAGE_KIND_INCIDENT",
+              "number": "2",
+              "description": ""
+            },
+            {
+              "name": "MESSAGE_KIND_CHANGE",
+              "number": "3",
+              "description": ""
+            },
+            {
+              "name": "MESSAGE_KIND_RESOLVED",
+              "number": "4",
+              "description": ""
+            },
+            {
+              "name": "MESSAGE_KIND_UPDATE",
+              "number": "5",
+              "description": ""
+            }
+          ]
+        }
+      ],
+      "extensions": [],
+      "messages": [
+        {
+          "name": "Message",
+          "longName": "Message",
+          "fullName": "status.v1.Message",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "id",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "text",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "kind",
+              "description": "",
+              "label": "",
+              "type": "MessageKind",
+              "longType": "MessageKind",
+              "fullType": "status.v1.MessageKind",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "timestamp",
+              "description": "",
+              "label": "",
+              "type": "Timestamp",
+              "longType": "google.protobuf.Timestamp",
+              "fullType": "google.protobuf.Timestamp",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "replies",
+              "description": "",
+              "label": "repeated",
+              "type": "ReplyMessage",
+              "longType": "ReplyMessage",
+              "fullType": "status.v1.ReplyMessage",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "MessageServiceListRequest",
+          "longName": "MessageServiceListRequest",
+          "fullName": "status.v1.MessageServiceListRequest",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": false,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": []
+        },
+        {
+          "name": "MessageServiceListResponse",
+          "longName": "MessageServiceListResponse",
+          "fullName": "status.v1.MessageServiceListResponse",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "items",
+              "description": "",
+              "label": "repeated",
+              "type": "Message",
+              "longType": "Message",
+              "fullType": "status.v1.Message",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "pinned_items",
+              "description": "",
+              "label": "repeated",
+              "type": "Message",
+              "longType": "Message",
+              "fullType": "status.v1.Message",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "ReplyMessage",
+          "longName": "ReplyMessage",
+          "fullName": "status.v1.ReplyMessage",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "id",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "text",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "kind",
+              "description": "",
+              "label": "",
+              "type": "MessageKind",
+              "longType": "MessageKind",
+              "fullType": "status.v1.MessageKind",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "timestamp",
+              "description": "",
+              "label": "",
+              "type": "Timestamp",
+              "longType": "google.protobuf.Timestamp",
+              "fullType": "google.protobuf.Timestamp",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        }
+      ],
+      "services": [
+        {
+          "name": "MessageService",
+          "longName": "MessageService",
+          "fullName": "status.v1.MessageService",
+          "description": "",
+          "methods": [
+            {
+              "name": "List",
+              "description": "",
+              "requestType": "MessageServiceListRequest",
+              "requestLongType": "MessageServiceListRequest",
+              "requestFullType": "status.v1.MessageServiceListRequest",
+              "requestStreaming": false,
+              "responseType": "MessageServiceListResponse",
+              "responseLongType": "MessageServiceListResponse",
+              "responseFullType": "status.v1.MessageServiceListResponse",
+              "responseStreaming": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "status/v1/status.proto",
+      "description": "",
+      "package": "status.v1",
+      "hasEnums": false,
+      "hasExtensions": false,
+      "hasMessages": true,
+      "hasServices": true,
+      "enums": [],
+      "extensions": [],
+      "messages": [
+        {
+          "name": "StatusServiceGetRequest",
+          "longName": "StatusServiceGetRequest",
+          "fullName": "status.v1.StatusServiceGetRequest",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": false,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": []
+        },
+        {
+          "name": "StatusServiceGetResponse",
+          "longName": "StatusServiceGetResponse",
+          "fullName": "status.v1.StatusServiceGetResponse",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "health",
+              "description": "",
+              "label": "",
+              "type": "Health",
+              "longType": "api.v1.Health",
+              "fullType": "api.v1.Health",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "overall_status",
+              "description": "",
+              "label": "",
+              "type": "ServiceStatus",
+              "longType": "api.v1.ServiceStatus",
+              "fullType": "api.v1.ServiceStatus",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "connection_broken",
+              "description": "",
+              "label": "",
+              "type": "bool",
+              "longType": "bool",
+              "fullType": "bool",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "api_version",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        }
+      ],
+      "services": [
+        {
+          "name": "StatusService",
+          "longName": "StatusService",
+          "fullName": "status.v1.StatusService",
+          "description": "",
+          "methods": [
+            {
+              "name": "Get",
+              "description": "",
+              "requestType": "StatusServiceGetRequest",
+              "requestLongType": "StatusServiceGetRequest",
+              "requestFullType": "status.v1.StatusServiceGetRequest",
+              "requestStreaming": false,
+              "responseType": "StatusServiceGetResponse",
+              "responseLongType": "StatusServiceGetResponse",
+              "responseFullType": "status.v1.StatusServiceGetResponse",
+              "responseStreaming": false
             }
           ]
         }
