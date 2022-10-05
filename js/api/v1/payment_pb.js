@@ -949,11 +949,11 @@ proto.api.v1.Card.deserializeBinaryFromReader = function(msg, reader) {
       msg.setCountry(value);
       break;
     case 3:
-      var value = /** @type {number} */ (reader.readUint64());
+      var value = /** @type {number} */ (reader.readInt64());
       msg.setExpMonth(value);
       break;
     case 4:
-      var value = /** @type {number} */ (reader.readUint64());
+      var value = /** @type {number} */ (reader.readInt64());
       msg.setExpYear(value);
       break;
     case 5:
@@ -1005,14 +1005,14 @@ proto.api.v1.Card.serializeBinaryToWriter = function(message, writer) {
   }
   f = message.getExpMonth();
   if (f !== 0) {
-    writer.writeUint64(
+    writer.writeInt64(
       3,
       f
     );
   }
   f = message.getExpYear();
   if (f !== 0) {
-    writer.writeUint64(
+    writer.writeInt64(
       4,
       f
     );
@@ -1064,7 +1064,7 @@ proto.api.v1.Card.prototype.setCountry = function(value) {
 
 
 /**
- * optional uint64 exp_month = 3;
+ * optional int64 exp_month = 3;
  * @return {number}
  */
 proto.api.v1.Card.prototype.getExpMonth = function() {
@@ -1082,7 +1082,7 @@ proto.api.v1.Card.prototype.setExpMonth = function(value) {
 
 
 /**
- * optional uint64 exp_year = 4;
+ * optional int64 exp_year = 4;
  * @return {number}
  */
 proto.api.v1.Card.prototype.getExpYear = function() {

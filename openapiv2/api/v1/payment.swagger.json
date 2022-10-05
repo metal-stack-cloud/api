@@ -78,11 +78,11 @@
         },
         "expMonth": {
           "type": "string",
-          "format": "uint64"
+          "format": "int64"
         },
         "expYear": {
           "type": "string",
-          "format": "uint64"
+          "format": "int64"
         },
         "last4": {
           "type": "string"
