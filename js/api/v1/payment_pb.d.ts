@@ -414,3 +414,47 @@ export namespace PaymentServiceDeletePaymentMethodResponse {
   }
 }
 
+export class PaymentServiceUpdateCustomerAddressRequest extends jspb.Message {
+  getLogin(): string;
+  setLogin(value: string): PaymentServiceUpdateCustomerAddressRequest;
+
+  getAddress(): Address | undefined;
+  setAddress(value?: Address): PaymentServiceUpdateCustomerAddressRequest;
+  hasAddress(): boolean;
+  clearAddress(): PaymentServiceUpdateCustomerAddressRequest;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): PaymentServiceUpdateCustomerAddressRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: PaymentServiceUpdateCustomerAddressRequest): PaymentServiceUpdateCustomerAddressRequest.AsObject;
+  static serializeBinaryToWriter(message: PaymentServiceUpdateCustomerAddressRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): PaymentServiceUpdateCustomerAddressRequest;
+  static deserializeBinaryFromReader(message: PaymentServiceUpdateCustomerAddressRequest, reader: jspb.BinaryReader): PaymentServiceUpdateCustomerAddressRequest;
+}
+
+export namespace PaymentServiceUpdateCustomerAddressRequest {
+  export type AsObject = {
+    login: string,
+    address?: Address.AsObject,
+  }
+}
+
+export class PaymentServiceUpdateCustomerAddressResponse extends jspb.Message {
+  getAddress(): Address | undefined;
+  setAddress(value?: Address): PaymentServiceUpdateCustomerAddressResponse;
+  hasAddress(): boolean;
+  clearAddress(): PaymentServiceUpdateCustomerAddressResponse;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): PaymentServiceUpdateCustomerAddressResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: PaymentServiceUpdateCustomerAddressResponse): PaymentServiceUpdateCustomerAddressResponse.AsObject;
+  static serializeBinaryToWriter(message: PaymentServiceUpdateCustomerAddressResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): PaymentServiceUpdateCustomerAddressResponse;
+  static deserializeBinaryFromReader(message: PaymentServiceUpdateCustomerAddressResponse, reader: jspb.BinaryReader): PaymentServiceUpdateCustomerAddressResponse;
+}
+
+export namespace PaymentServiceUpdateCustomerAddressResponse {
+  export type AsObject = {
+    address?: Address.AsObject,
+  }
+}
+

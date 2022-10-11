@@ -118,3 +118,12 @@ message PaymentServiceDeletePaymentMethodRequest {
 }
 
 message PaymentServiceDeletePaymentMethodResponse {}
+
+message PaymentServiceUpdateCustomerAddressRequest {
+  string login = 1;
+  Address address = 2;
+}
+
+message PaymentServiceUpdateCustomerAddressResponse {
+  Address address = 1;
+}

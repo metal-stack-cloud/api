@@ -2028,3 +2028,275 @@ var _ interface {
 	Cause() error
 	ErrorName() string
 } = PaymentServiceDeletePaymentMethodResponseValidationError{}
+
+// Validate checks the field values on
+// PaymentServiceUpdateCustomerAddressRequest with the rules defined in the
+// proto definition for this message. If any rules are violated, the first
+// error encountered is returned, or nil if there are no violations.
+func (m *PaymentServiceUpdateCustomerAddressRequest) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on
+// PaymentServiceUpdateCustomerAddressRequest with the rules defined in the
+// proto definition for this message. If any rules are violated, the result is
+// a list of violation errors wrapped in
+// PaymentServiceUpdateCustomerAddressRequestMultiError, or nil if none found.
+func (m *PaymentServiceUpdateCustomerAddressRequest) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *PaymentServiceUpdateCustomerAddressRequest) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	// no validation rules for Login
+
+	if all {
+		switch v := interface{}(m.GetAddress()).(type) {
+		case interface{ ValidateAll() error }:
+			if err := v.ValidateAll(); err != nil {
+				errors = append(errors, PaymentServiceUpdateCustomerAddressRequestValidationError{
+					field:  "Address",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		case interface{ Validate() error }:
+			if err := v.Validate(); err != nil {
+				errors = append(errors, PaymentServiceUpdateCustomerAddressRequestValidationError{
+					field:  "Address",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		}
+	} else if v, ok := interface{}(m.GetAddress()).(interface{ Validate() error }); ok {
+		if err := v.Validate(); err != nil {
+			return PaymentServiceUpdateCustomerAddressRequestValidationError{
+				field:  "Address",
+				reason: "embedded message failed validation",
+				cause:  err,
+			}
+		}
+	}
+
+	if len(errors) > 0 {
+		return PaymentServiceUpdateCustomerAddressRequestMultiError(errors)
+	}
+
+	return nil
+}
+
+// PaymentServiceUpdateCustomerAddressRequestMultiError is an error wrapping
+// multiple validation errors returned by
+// PaymentServiceUpdateCustomerAddressRequest.ValidateAll() if the designated
+// constraints aren't met.
+type PaymentServiceUpdateCustomerAddressRequestMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m PaymentServiceUpdateCustomerAddressRequestMultiError) Error() string {
+	var msgs []string
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m PaymentServiceUpdateCustomerAddressRequestMultiError) AllErrors() []error { return m }
+
+// PaymentServiceUpdateCustomerAddressRequestValidationError is the validation
+// error returned by PaymentServiceUpdateCustomerAddressRequest.Validate if
+// the designated constraints aren't met.
+type PaymentServiceUpdateCustomerAddressRequestValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e PaymentServiceUpdateCustomerAddressRequestValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e PaymentServiceUpdateCustomerAddressRequestValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e PaymentServiceUpdateCustomerAddressRequestValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e PaymentServiceUpdateCustomerAddressRequestValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e PaymentServiceUpdateCustomerAddressRequestValidationError) ErrorName() string {
+	return "PaymentServiceUpdateCustomerAddressRequestValidationError"
+}
+
+// Error satisfies the builtin error interface
+func (e PaymentServiceUpdateCustomerAddressRequestValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sPaymentServiceUpdateCustomerAddressRequest.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = PaymentServiceUpdateCustomerAddressRequestValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = PaymentServiceUpdateCustomerAddressRequestValidationError{}
+
+// Validate checks the field values on
+// PaymentServiceUpdateCustomerAddressResponse with the rules defined in the
+// proto definition for this message. If any rules are violated, the first
+// error encountered is returned, or nil if there are no violations.
+func (m *PaymentServiceUpdateCustomerAddressResponse) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on
+// PaymentServiceUpdateCustomerAddressResponse with the rules defined in the
+// proto definition for this message. If any rules are violated, the result is
+// a list of violation errors wrapped in
+// PaymentServiceUpdateCustomerAddressResponseMultiError, or nil if none found.
+func (m *PaymentServiceUpdateCustomerAddressResponse) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *PaymentServiceUpdateCustomerAddressResponse) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	if all {
+		switch v := interface{}(m.GetAddress()).(type) {
+		case interface{ ValidateAll() error }:
+			if err := v.ValidateAll(); err != nil {
+				errors = append(errors, PaymentServiceUpdateCustomerAddressResponseValidationError{
+					field:  "Address",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		case interface{ Validate() error }:
+			if err := v.Validate(); err != nil {
+				errors = append(errors, PaymentServiceUpdateCustomerAddressResponseValidationError{
+					field:  "Address",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		}
+	} else if v, ok := interface{}(m.GetAddress()).(interface{ Validate() error }); ok {
+		if err := v.Validate(); err != nil {
+			return PaymentServiceUpdateCustomerAddressResponseValidationError{
+				field:  "Address",
+				reason: "embedded message failed validation",
+				cause:  err,
+			}
+		}
+	}
+
+	if len(errors) > 0 {
+		return PaymentServiceUpdateCustomerAddressResponseMultiError(errors)
+	}
+
+	return nil
+}
+
+// PaymentServiceUpdateCustomerAddressResponseMultiError is an error wrapping
+// multiple validation errors returned by
+// PaymentServiceUpdateCustomerAddressResponse.ValidateAll() if the designated
+// constraints aren't met.
+type PaymentServiceUpdateCustomerAddressResponseMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m PaymentServiceUpdateCustomerAddressResponseMultiError) Error() string {
+	var msgs []string
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m PaymentServiceUpdateCustomerAddressResponseMultiError) AllErrors() []error { return m }
+
+// PaymentServiceUpdateCustomerAddressResponseValidationError is the validation
+// error returned by PaymentServiceUpdateCustomerAddressResponse.Validate if
+// the designated constraints aren't met.
+type PaymentServiceUpdateCustomerAddressResponseValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e PaymentServiceUpdateCustomerAddressResponseValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e PaymentServiceUpdateCustomerAddressResponseValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e PaymentServiceUpdateCustomerAddressResponseValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e PaymentServiceUpdateCustomerAddressResponseValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e PaymentServiceUpdateCustomerAddressResponseValidationError) ErrorName() string {
+	return "PaymentServiceUpdateCustomerAddressResponseValidationError"
+}
+
+// Error satisfies the builtin error interface
+func (e PaymentServiceUpdateCustomerAddressResponseValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sPaymentServiceUpdateCustomerAddressResponse.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = PaymentServiceUpdateCustomerAddressResponseValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = PaymentServiceUpdateCustomerAddressResponseValidationError{}
