@@ -184,6 +184,40 @@ export namespace Address {
   }
 }
 
+export class SubscriptionUsageItem extends jspb.Message {
+  getSubscriptionItemId(): string;
+  setSubscriptionItemId(value: string): SubscriptionUsageItem;
+
+  getSubscriptionItemName(): string;
+  setSubscriptionItemName(value: string): SubscriptionUsageItem;
+
+  getTotalUsage(): number;
+  setTotalUsage(value: number): SubscriptionUsageItem;
+
+  getPeriodStart(): number;
+  setPeriodStart(value: number): SubscriptionUsageItem;
+
+  getPeriodEnd(): number;
+  setPeriodEnd(value: number): SubscriptionUsageItem;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): SubscriptionUsageItem.AsObject;
+  static toObject(includeInstance: boolean, msg: SubscriptionUsageItem): SubscriptionUsageItem.AsObject;
+  static serializeBinaryToWriter(message: SubscriptionUsageItem, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): SubscriptionUsageItem;
+  static deserializeBinaryFromReader(message: SubscriptionUsageItem, reader: jspb.BinaryReader): SubscriptionUsageItem;
+}
+
+export namespace SubscriptionUsageItem {
+  export type AsObject = {
+    subscriptionItemId: string,
+    subscriptionItemName: string,
+    totalUsage: number,
+    periodStart: number,
+    periodEnd: number,
+  }
+}
+
 export class PaymentServiceCreateOrUpdateCustomerRequest extends jspb.Message {
   getCustomer(): PaymentCustomer | undefined;
   setCustomer(value?: PaymentCustomer): PaymentServiceCreateOrUpdateCustomerRequest;
@@ -411,6 +445,44 @@ export class PaymentServiceDeletePaymentMethodResponse extends jspb.Message {
 
 export namespace PaymentServiceDeletePaymentMethodResponse {
   export type AsObject = {
+  }
+}
+
+export class PaymentServiceGetUsageOfSubscriptionRequest extends jspb.Message {
+  getSubscriptionId(): string;
+  setSubscriptionId(value: string): PaymentServiceGetUsageOfSubscriptionRequest;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): PaymentServiceGetUsageOfSubscriptionRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: PaymentServiceGetUsageOfSubscriptionRequest): PaymentServiceGetUsageOfSubscriptionRequest.AsObject;
+  static serializeBinaryToWriter(message: PaymentServiceGetUsageOfSubscriptionRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): PaymentServiceGetUsageOfSubscriptionRequest;
+  static deserializeBinaryFromReader(message: PaymentServiceGetUsageOfSubscriptionRequest, reader: jspb.BinaryReader): PaymentServiceGetUsageOfSubscriptionRequest;
+}
+
+export namespace PaymentServiceGetUsageOfSubscriptionRequest {
+  export type AsObject = {
+    subscriptionId: string,
+  }
+}
+
+export class PaymentServiceGetUsageOfSubscriptionResponse extends jspb.Message {
+  getSubscriptionUsageTimesList(): Array<SubscriptionUsageItem>;
+  setSubscriptionUsageTimesList(value: Array<SubscriptionUsageItem>): PaymentServiceGetUsageOfSubscriptionResponse;
+  clearSubscriptionUsageTimesList(): PaymentServiceGetUsageOfSubscriptionResponse;
+  addSubscriptionUsageTimes(value?: SubscriptionUsageItem, index?: number): SubscriptionUsageItem;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): PaymentServiceGetUsageOfSubscriptionResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: PaymentServiceGetUsageOfSubscriptionResponse): PaymentServiceGetUsageOfSubscriptionResponse.AsObject;
+  static serializeBinaryToWriter(message: PaymentServiceGetUsageOfSubscriptionResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): PaymentServiceGetUsageOfSubscriptionResponse;
+  static deserializeBinaryFromReader(message: PaymentServiceGetUsageOfSubscriptionResponse, reader: jspb.BinaryReader): PaymentServiceGetUsageOfSubscriptionResponse;
+}
+
+export namespace PaymentServiceGetUsageOfSubscriptionResponse {
+  export type AsObject = {
+    subscriptionUsageTimesList: Array<SubscriptionUsageItem.AsObject>,
   }
 }
 

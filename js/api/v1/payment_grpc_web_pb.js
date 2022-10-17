@@ -441,5 +441,66 @@ proto.api.v1.PaymentServicePromiseClient.prototype.deletePaymentMethod =
 };
 
 
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.api.v1.PaymentServiceGetUsageOfSubscriptionRequest,
+ *   !proto.api.v1.PaymentServiceGetUsageOfSubscriptionResponse>}
+ */
+const methodDescriptor_PaymentService_GetUsageOfSubscription = new grpc.web.MethodDescriptor(
+  '/api.v1.PaymentService/GetUsageOfSubscription',
+  grpc.web.MethodType.UNARY,
+  proto.api.v1.PaymentServiceGetUsageOfSubscriptionRequest,
+  proto.api.v1.PaymentServiceGetUsageOfSubscriptionResponse,
+  /**
+   * @param {!proto.api.v1.PaymentServiceGetUsageOfSubscriptionRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.api.v1.PaymentServiceGetUsageOfSubscriptionResponse.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.api.v1.PaymentServiceGetUsageOfSubscriptionRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.RpcError, ?proto.api.v1.PaymentServiceGetUsageOfSubscriptionResponse)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.api.v1.PaymentServiceGetUsageOfSubscriptionResponse>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.api.v1.PaymentServiceClient.prototype.getUsageOfSubscription =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/api.v1.PaymentService/GetUsageOfSubscription',
+      request,
+      metadata || {},
+      methodDescriptor_PaymentService_GetUsageOfSubscription,
+      callback);
+};
+
+
+/**
+ * @param {!proto.api.v1.PaymentServiceGetUsageOfSubscriptionRequest} request The
+ *     request proto
+ * @param {?Object<string, string>=} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.api.v1.PaymentServiceGetUsageOfSubscriptionResponse>}
+ *     Promise that resolves to the response
+ */
+proto.api.v1.PaymentServicePromiseClient.prototype.getUsageOfSubscription =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/api.v1.PaymentService/GetUsageOfSubscription',
+      request,
+      metadata || {},
+      methodDescriptor_PaymentService_GetUsageOfSubscription);
+};
+
+
 module.exports = proto.api.v1;
 

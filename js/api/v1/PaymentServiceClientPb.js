@@ -54,6 +54,9 @@ var PaymentServiceClient = /** @class */ (function () {
         this.methodDescriptorDeletePaymentMethod = new grpcWeb.MethodDescriptor('/api.v1.PaymentService/DeletePaymentMethod', grpcWeb.MethodType.UNARY, api_v1_payment_pb.PaymentServiceDeletePaymentMethodRequest, api_v1_payment_pb.PaymentServiceDeletePaymentMethodResponse, function (request) {
             return request.serializeBinary();
         }, api_v1_payment_pb.PaymentServiceDeletePaymentMethodResponse.deserializeBinary);
+        this.methodDescriptorGetUsageOfSubscription = new grpcWeb.MethodDescriptor('/api.v1.PaymentService/GetUsageOfSubscription', grpcWeb.MethodType.UNARY, api_v1_payment_pb.PaymentServiceGetUsageOfSubscriptionRequest, api_v1_payment_pb.PaymentServiceGetUsageOfSubscriptionResponse, function (request) {
+            return request.serializeBinary();
+        }, api_v1_payment_pb.PaymentServiceGetUsageOfSubscriptionResponse.deserializeBinary);
         if (!options)
             options = {};
         if (!credentials)
@@ -111,6 +114,14 @@ var PaymentServiceClient = /** @class */ (function () {
         }
         return this.client_.unaryCall(this.hostname_ +
             '/api.v1.PaymentService/DeletePaymentMethod', request, metadata || {}, this.methodDescriptorDeletePaymentMethod);
+    };
+    PaymentServiceClient.prototype.getUsageOfSubscription = function (request, metadata, callback) {
+        if (callback !== undefined) {
+            return this.client_.rpcCall(this.hostname_ +
+                '/api.v1.PaymentService/GetUsageOfSubscription', request, metadata || {}, this.methodDescriptorGetUsageOfSubscription, callback);
+        }
+        return this.client_.unaryCall(this.hostname_ +
+            '/api.v1.PaymentService/GetUsageOfSubscription', request, metadata || {}, this.methodDescriptorGetUsageOfSubscription);
     };
     return PaymentServiceClient;
 }());
