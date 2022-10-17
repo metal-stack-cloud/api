@@ -25,6 +25,9 @@ service PaymentService {
   rpc DeletePaymentMethod(PaymentServiceDeletePaymentMethodRequest) returns (PaymentServiceDeletePaymentMethodResponse) {
     option (project_roles) = PROJECT_ROLE_OWNER;
   }
+  rpc GetUsageOfSubscription(PaymentServiceGetUsageOfSubscriptionRequest) returns (PaymentServiceGetUsageOfSubscriptionResponse) {
+    option (project_roles) = PROJECT_ROLE_OWNER;
+  }
 }
 
 message PaymentCustomer {
@@ -60,6 +63,14 @@ message Address {
   string city = 4;
   string state = 5;
   string country = 6;
+}
+
+message SubscriptionUsageItem {
+  string subscription_item_id = 1;
+  string subscription_item_name = 2;
+  int64 total_usage = 3;
+  int64 period_start = 4;
+  int64 period_end = 5;
 }
 
 message PaymentServiceCreateOrUpdateCustomerRequest {
@@ -118,3 +129,14 @@ message PaymentServiceDeletePaymentMethodRequest {
 }
 
 message PaymentServiceDeletePaymentMethodResponse {}
+
+message PaymentServiceGetUsageOfSubscriptionRequest {
+  string subscription_id = 1 [(validate.rules).string = {
+    min_len: 17,
+    max_len: 17,
+  }];
+}
+
+message PaymentServiceGetUsageOfSubscriptionResponse {
+  repeated SubscriptionUsageItem subscription_usage_times = 1;
+}
