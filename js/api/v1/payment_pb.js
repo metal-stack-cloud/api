@@ -3631,7 +3631,7 @@ proto.api.v1.PaymentServiceGetUsageOfSubscriptionRequest.prototype.toObject = fu
  */
 proto.api.v1.PaymentServiceGetUsageOfSubscriptionRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    subscriptionId: jspb.Message.getFieldWithDefault(msg, 1, "")
+    login: jspb.Message.getFieldWithDefault(msg, 1, "")
   };
 
   if (includeInstance) {
@@ -3670,7 +3670,7 @@ proto.api.v1.PaymentServiceGetUsageOfSubscriptionRequest.deserializeBinaryFromRe
     switch (field) {
     case 1:
       var value = /** @type {string} */ (reader.readString());
-      msg.setSubscriptionId(value);
+      msg.setLogin(value);
       break;
     default:
       reader.skipField();
@@ -3701,7 +3701,7 @@ proto.api.v1.PaymentServiceGetUsageOfSubscriptionRequest.prototype.serializeBina
  */
 proto.api.v1.PaymentServiceGetUsageOfSubscriptionRequest.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
-  f = message.getSubscriptionId();
+  f = message.getLogin();
   if (f.length > 0) {
     writer.writeString(
       1,
@@ -3712,10 +3712,10 @@ proto.api.v1.PaymentServiceGetUsageOfSubscriptionRequest.serializeBinaryToWriter
 
 
 /**
- * optional string subscription_id = 1;
+ * optional string login = 1;
  * @return {string}
  */
-proto.api.v1.PaymentServiceGetUsageOfSubscriptionRequest.prototype.getSubscriptionId = function() {
+proto.api.v1.PaymentServiceGetUsageOfSubscriptionRequest.prototype.getLogin = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
 };
 
@@ -3724,7 +3724,7 @@ proto.api.v1.PaymentServiceGetUsageOfSubscriptionRequest.prototype.getSubscripti
  * @param {string} value
  * @return {!proto.api.v1.PaymentServiceGetUsageOfSubscriptionRequest} returns this
  */
-proto.api.v1.PaymentServiceGetUsageOfSubscriptionRequest.prototype.setSubscriptionId = function(value) {
+proto.api.v1.PaymentServiceGetUsageOfSubscriptionRequest.prototype.setLogin = function(value) {
   return jspb.Message.setProto3StringField(this, 1, value);
 };
 
@@ -3768,7 +3768,7 @@ proto.api.v1.PaymentServiceGetUsageOfSubscriptionResponse.prototype.toObject = f
  */
 proto.api.v1.PaymentServiceGetUsageOfSubscriptionResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
-    subscriptionUsageTimesList: jspb.Message.toObjectList(msg.getSubscriptionUsageTimesList(),
+    subscriptionUsageItmesList: jspb.Message.toObjectList(msg.getSubscriptionUsageItmesList(),
     proto.api.v1.SubscriptionUsageItem.toObject, includeInstance)
   };
 
@@ -3809,7 +3809,7 @@ proto.api.v1.PaymentServiceGetUsageOfSubscriptionResponse.deserializeBinaryFromR
     case 1:
       var value = new proto.api.v1.SubscriptionUsageItem;
       reader.readMessage(value,proto.api.v1.SubscriptionUsageItem.deserializeBinaryFromReader);
-      msg.addSubscriptionUsageTimes(value);
+      msg.addSubscriptionUsageItmes(value);
       break;
     default:
       reader.skipField();
@@ -3840,7 +3840,7 @@ proto.api.v1.PaymentServiceGetUsageOfSubscriptionResponse.prototype.serializeBin
  */
 proto.api.v1.PaymentServiceGetUsageOfSubscriptionResponse.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
-  f = message.getSubscriptionUsageTimesList();
+  f = message.getSubscriptionUsageItmesList();
   if (f.length > 0) {
     writer.writeRepeatedMessage(
       1,
@@ -3852,10 +3852,10 @@ proto.api.v1.PaymentServiceGetUsageOfSubscriptionResponse.serializeBinaryToWrite
 
 
 /**
- * repeated SubscriptionUsageItem subscription_usage_times = 1;
+ * repeated SubscriptionUsageItem subscription_usage_itmes = 1;
  * @return {!Array<!proto.api.v1.SubscriptionUsageItem>}
  */
-proto.api.v1.PaymentServiceGetUsageOfSubscriptionResponse.prototype.getSubscriptionUsageTimesList = function() {
+proto.api.v1.PaymentServiceGetUsageOfSubscriptionResponse.prototype.getSubscriptionUsageItmesList = function() {
   return /** @type{!Array<!proto.api.v1.SubscriptionUsageItem>} */ (
     jspb.Message.getRepeatedWrapperField(this, proto.api.v1.SubscriptionUsageItem, 1));
 };
@@ -3865,7 +3865,7 @@ proto.api.v1.PaymentServiceGetUsageOfSubscriptionResponse.prototype.getSubscript
  * @param {!Array<!proto.api.v1.SubscriptionUsageItem>} value
  * @return {!proto.api.v1.PaymentServiceGetUsageOfSubscriptionResponse} returns this
 */
-proto.api.v1.PaymentServiceGetUsageOfSubscriptionResponse.prototype.setSubscriptionUsageTimesList = function(value) {
+proto.api.v1.PaymentServiceGetUsageOfSubscriptionResponse.prototype.setSubscriptionUsageItmesList = function(value) {
   return jspb.Message.setRepeatedWrapperField(this, 1, value);
 };
 
@@ -3875,7 +3875,7 @@ proto.api.v1.PaymentServiceGetUsageOfSubscriptionResponse.prototype.setSubscript
  * @param {number=} opt_index
  * @return {!proto.api.v1.SubscriptionUsageItem}
  */
-proto.api.v1.PaymentServiceGetUsageOfSubscriptionResponse.prototype.addSubscriptionUsageTimes = function(opt_value, opt_index) {
+proto.api.v1.PaymentServiceGetUsageOfSubscriptionResponse.prototype.addSubscriptionUsageItmes = function(opt_value, opt_index) {
   return jspb.Message.addToRepeatedWrapperField(this, 1, opt_value, proto.api.v1.SubscriptionUsageItem, opt_index);
 };
 
@@ -3884,8 +3884,8 @@ proto.api.v1.PaymentServiceGetUsageOfSubscriptionResponse.prototype.addSubscript
  * Clears the list making it empty but non-null.
  * @return {!proto.api.v1.PaymentServiceGetUsageOfSubscriptionResponse} returns this
  */
-proto.api.v1.PaymentServiceGetUsageOfSubscriptionResponse.prototype.clearSubscriptionUsageTimesList = function() {
-  return this.setSubscriptionUsageTimesList([]);
+proto.api.v1.PaymentServiceGetUsageOfSubscriptionResponse.prototype.clearSubscriptionUsageItmesList = function() {
+  return this.setSubscriptionUsageItmesList([]);
 };
 
 

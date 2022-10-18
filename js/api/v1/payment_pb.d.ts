@@ -449,8 +449,8 @@ export namespace PaymentServiceDeletePaymentMethodResponse {
 }
 
 export class PaymentServiceGetUsageOfSubscriptionRequest extends jspb.Message {
-  getSubscriptionId(): string;
-  setSubscriptionId(value: string): PaymentServiceGetUsageOfSubscriptionRequest;
+  getLogin(): string;
+  setLogin(value: string): PaymentServiceGetUsageOfSubscriptionRequest;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): PaymentServiceGetUsageOfSubscriptionRequest.AsObject;
@@ -462,15 +462,15 @@ export class PaymentServiceGetUsageOfSubscriptionRequest extends jspb.Message {
 
 export namespace PaymentServiceGetUsageOfSubscriptionRequest {
   export type AsObject = {
-    subscriptionId: string,
+    login: string,
   }
 }
 
 export class PaymentServiceGetUsageOfSubscriptionResponse extends jspb.Message {
-  getSubscriptionUsageTimesList(): Array<SubscriptionUsageItem>;
-  setSubscriptionUsageTimesList(value: Array<SubscriptionUsageItem>): PaymentServiceGetUsageOfSubscriptionResponse;
-  clearSubscriptionUsageTimesList(): PaymentServiceGetUsageOfSubscriptionResponse;
-  addSubscriptionUsageTimes(value?: SubscriptionUsageItem, index?: number): SubscriptionUsageItem;
+  getSubscriptionUsageItmesList(): Array<SubscriptionUsageItem>;
+  setSubscriptionUsageItmesList(value: Array<SubscriptionUsageItem>): PaymentServiceGetUsageOfSubscriptionResponse;
+  clearSubscriptionUsageItmesList(): PaymentServiceGetUsageOfSubscriptionResponse;
+  addSubscriptionUsageItmes(value?: SubscriptionUsageItem, index?: number): SubscriptionUsageItem;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): PaymentServiceGetUsageOfSubscriptionResponse.AsObject;
@@ -482,7 +482,7 @@ export class PaymentServiceGetUsageOfSubscriptionResponse extends jspb.Message {
 
 export namespace PaymentServiceGetUsageOfSubscriptionResponse {
   export type AsObject = {
-    subscriptionUsageTimesList: Array<SubscriptionUsageItem.AsObject>,
+    subscriptionUsageItmesList: Array<SubscriptionUsageItem.AsObject>,
   }
 }
 

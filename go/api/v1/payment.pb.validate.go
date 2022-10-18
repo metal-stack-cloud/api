@@ -2165,16 +2165,15 @@ func (m *PaymentServiceGetUsageOfSubscriptionRequest) validate(all bool) error {
 
 	var errors []error
 
-	if utf8.RuneCountInString(m.GetSubscriptionId()) != 17 {
+	if l := utf8.RuneCountInString(m.GetLogin()); l < 2 || l > 128 {
 		err := PaymentServiceGetUsageOfSubscriptionRequestValidationError{
-			field:  "SubscriptionId",
-			reason: "value length must be 17 runes",
+			field:  "Login",
+			reason: "value length must be between 2 and 128 runes, inclusive",
 		}
 		if !all {
 			return err
 		}
 		errors = append(errors, err)
-
 	}
 
 	if len(errors) > 0 {
@@ -2283,7 +2282,7 @@ func (m *PaymentServiceGetUsageOfSubscriptionResponse) validate(all bool) error 
 
 	var errors []error
 
-	for idx, item := range m.GetSubscriptionUsageTimes() {
+	for idx, item := range m.GetSubscriptionUsageItmes() {
 		_, _ = idx, item
 
 		if all {
@@ -2291,7 +2290,7 @@ func (m *PaymentServiceGetUsageOfSubscriptionResponse) validate(all bool) error 
 			case interface{ ValidateAll() error }:
 				if err := v.ValidateAll(); err != nil {
 					errors = append(errors, PaymentServiceGetUsageOfSubscriptionResponseValidationError{
-						field:  fmt.Sprintf("SubscriptionUsageTimes[%v]", idx),
+						field:  fmt.Sprintf("SubscriptionUsageItmes[%v]", idx),
 						reason: "embedded message failed validation",
 						cause:  err,
 					})
@@ -2299,7 +2298,7 @@ func (m *PaymentServiceGetUsageOfSubscriptionResponse) validate(all bool) error 
 			case interface{ Validate() error }:
 				if err := v.Validate(); err != nil {
 					errors = append(errors, PaymentServiceGetUsageOfSubscriptionResponseValidationError{
-						field:  fmt.Sprintf("SubscriptionUsageTimes[%v]", idx),
+						field:  fmt.Sprintf("SubscriptionUsageItmes[%v]", idx),
 						reason: "embedded message failed validation",
 						cause:  err,
 					})
@@ -2308,7 +2307,7 @@ func (m *PaymentServiceGetUsageOfSubscriptionResponse) validate(all bool) error 
 		} else if v, ok := interface{}(item).(interface{ Validate() error }); ok {
 			if err := v.Validate(); err != nil {
 				return PaymentServiceGetUsageOfSubscriptionResponseValidationError{
-					field:  fmt.Sprintf("SubscriptionUsageTimes[%v]", idx),
+					field:  fmt.Sprintf("SubscriptionUsageItmes[%v]", idx),
 					reason: "embedded message failed validation",
 					cause:  err,
 				}

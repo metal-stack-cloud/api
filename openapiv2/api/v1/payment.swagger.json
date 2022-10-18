@@ -165,7 +165,7 @@
     "v1PaymentServiceGetUsageOfSubscriptionResponse": {
       "type": "object",
       "properties": {
-        "subscriptionUsageTimes": {
+        "subscriptionUsageItmes": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/v1SubscriptionUsageItem"

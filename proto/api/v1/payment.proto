@@ -131,12 +131,12 @@ message PaymentServiceDeletePaymentMethodRequest {
 message PaymentServiceDeletePaymentMethodResponse {}
 
 message PaymentServiceGetUsageOfSubscriptionRequest {
-  string subscription_id = 1 [(validate.rules).string = {
-    min_len: 17,
-    max_len: 17,
+  string login = 1 [(validate.rules).string = {
+    min_len: 2,
+    max_len: 128,
   }];
 }
 
 message PaymentServiceGetUsageOfSubscriptionResponse {
-  repeated SubscriptionUsageItem subscription_usage_times = 1;
+  repeated SubscriptionUsageItem subscription_usage_itmes = 1;
 }
