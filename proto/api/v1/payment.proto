@@ -3,6 +3,7 @@ syntax = "proto3";
 package api.v1;
 
 import "api/v1/common.proto";
+import "google/protobuf/timestamp.proto";
 import "validate/validate.proto";
 
 service PaymentService {
@@ -23,6 +24,9 @@ service PaymentService {
     option (project_roles) = PROJECT_ROLE_EDITOR;
   }
   rpc DeletePaymentMethod(PaymentServiceDeletePaymentMethodRequest) returns (PaymentServiceDeletePaymentMethodResponse) {
+    option (project_roles) = PROJECT_ROLE_OWNER;
+  }
+  rpc GetSubscriptionUsage(PaymentServiceGetSubscriptionUsageRequest) returns (PaymentServiceGetSubscriptionUsageResponse) {
     option (project_roles) = PROJECT_ROLE_OWNER;
   }
 }
@@ -60,6 +64,14 @@ message Address {
   string city = 4;
   string state = 5;
   string country = 6;
+}
+
+message SubscriptionUsageItem {
+  string subscription_item_id = 1;
+  string subscription_item_name = 2;
+  int64 total_usage = 3;
+  google.protobuf.Timestamp period_start = 4;
+  google.protobuf.Timestamp period_end = 5;
 }
 
 message PaymentServiceCreateOrUpdateCustomerRequest {
@@ -118,3 +130,14 @@ message PaymentServiceDeletePaymentMethodRequest {
 }
 
 message PaymentServiceDeletePaymentMethodResponse {}
+
+message PaymentServiceGetSubscriptionUsageRequest {
+  string login = 1 [(validate.rules).string = {
+    min_len: 2,
+    max_len: 128,
+  }];
+}
+
+message PaymentServiceGetSubscriptionUsageResponse {
+  repeated SubscriptionUsageItem subscription_usage_items = 1;
+}

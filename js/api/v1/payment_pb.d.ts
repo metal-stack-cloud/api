@@ -1,6 +1,7 @@
 import * as jspb from 'google-protobuf'
 
 import * as api_v1_common_pb from '../../api/v1/common_pb';
+import * as google_protobuf_timestamp_pb from 'google-protobuf/google/protobuf/timestamp_pb';
 import * as validate_validate_pb from '../../validate/validate_pb';
 
 
@@ -181,6 +182,44 @@ export namespace Address {
     city: string,
     state: string,
     country: string,
+  }
+}
+
+export class SubscriptionUsageItem extends jspb.Message {
+  getSubscriptionItemId(): string;
+  setSubscriptionItemId(value: string): SubscriptionUsageItem;
+
+  getSubscriptionItemName(): string;
+  setSubscriptionItemName(value: string): SubscriptionUsageItem;
+
+  getTotalUsage(): number;
+  setTotalUsage(value: number): SubscriptionUsageItem;
+
+  getPeriodStart(): google_protobuf_timestamp_pb.Timestamp | undefined;
+  setPeriodStart(value?: google_protobuf_timestamp_pb.Timestamp): SubscriptionUsageItem;
+  hasPeriodStart(): boolean;
+  clearPeriodStart(): SubscriptionUsageItem;
+
+  getPeriodEnd(): google_protobuf_timestamp_pb.Timestamp | undefined;
+  setPeriodEnd(value?: google_protobuf_timestamp_pb.Timestamp): SubscriptionUsageItem;
+  hasPeriodEnd(): boolean;
+  clearPeriodEnd(): SubscriptionUsageItem;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): SubscriptionUsageItem.AsObject;
+  static toObject(includeInstance: boolean, msg: SubscriptionUsageItem): SubscriptionUsageItem.AsObject;
+  static serializeBinaryToWriter(message: SubscriptionUsageItem, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): SubscriptionUsageItem;
+  static deserializeBinaryFromReader(message: SubscriptionUsageItem, reader: jspb.BinaryReader): SubscriptionUsageItem;
+}
+
+export namespace SubscriptionUsageItem {
+  export type AsObject = {
+    subscriptionItemId: string,
+    subscriptionItemName: string,
+    totalUsage: number,
+    periodStart?: google_protobuf_timestamp_pb.Timestamp.AsObject,
+    periodEnd?: google_protobuf_timestamp_pb.Timestamp.AsObject,
   }
 }
 
@@ -411,6 +450,44 @@ export class PaymentServiceDeletePaymentMethodResponse extends jspb.Message {
 
 export namespace PaymentServiceDeletePaymentMethodResponse {
   export type AsObject = {
+  }
+}
+
+export class PaymentServiceGetSubscriptionUsageRequest extends jspb.Message {
+  getLogin(): string;
+  setLogin(value: string): PaymentServiceGetSubscriptionUsageRequest;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): PaymentServiceGetSubscriptionUsageRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: PaymentServiceGetSubscriptionUsageRequest): PaymentServiceGetSubscriptionUsageRequest.AsObject;
+  static serializeBinaryToWriter(message: PaymentServiceGetSubscriptionUsageRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): PaymentServiceGetSubscriptionUsageRequest;
+  static deserializeBinaryFromReader(message: PaymentServiceGetSubscriptionUsageRequest, reader: jspb.BinaryReader): PaymentServiceGetSubscriptionUsageRequest;
+}
+
+export namespace PaymentServiceGetSubscriptionUsageRequest {
+  export type AsObject = {
+    login: string,
+  }
+}
+
+export class PaymentServiceGetSubscriptionUsageResponse extends jspb.Message {
+  getSubscriptionUsageItemsList(): Array<SubscriptionUsageItem>;
+  setSubscriptionUsageItemsList(value: Array<SubscriptionUsageItem>): PaymentServiceGetSubscriptionUsageResponse;
+  clearSubscriptionUsageItemsList(): PaymentServiceGetSubscriptionUsageResponse;
+  addSubscriptionUsageItems(value?: SubscriptionUsageItem, index?: number): SubscriptionUsageItem;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): PaymentServiceGetSubscriptionUsageResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: PaymentServiceGetSubscriptionUsageResponse): PaymentServiceGetSubscriptionUsageResponse.AsObject;
+  static serializeBinaryToWriter(message: PaymentServiceGetSubscriptionUsageResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): PaymentServiceGetSubscriptionUsageResponse;
+  static deserializeBinaryFromReader(message: PaymentServiceGetSubscriptionUsageResponse, reader: jspb.BinaryReader): PaymentServiceGetSubscriptionUsageResponse;
+}
+
+export namespace PaymentServiceGetSubscriptionUsageResponse {
+  export type AsObject = {
+    subscriptionUsageItemsList: Array<SubscriptionUsageItem.AsObject>,
   }
 }
 

@@ -297,5 +297,48 @@ export class PaymentServiceClient {
     this.methodDescriptorDeletePaymentMethod);
   }
 
+  methodDescriptorGetSubscriptionUsage = new grpcWeb.MethodDescriptor(
+    '/api.v1.PaymentService/GetSubscriptionUsage',
+    grpcWeb.MethodType.UNARY,
+    api_v1_payment_pb.PaymentServiceGetSubscriptionUsageRequest,
+    api_v1_payment_pb.PaymentServiceGetSubscriptionUsageResponse,
+    (request: api_v1_payment_pb.PaymentServiceGetSubscriptionUsageRequest) => {
+      return request.serializeBinary();
+    },
+    api_v1_payment_pb.PaymentServiceGetSubscriptionUsageResponse.deserializeBinary
+  );
+
+  getSubscriptionUsage(
+    request: api_v1_payment_pb.PaymentServiceGetSubscriptionUsageRequest,
+    metadata: grpcWeb.Metadata | null): Promise<api_v1_payment_pb.PaymentServiceGetSubscriptionUsageResponse>;
+
+  getSubscriptionUsage(
+    request: api_v1_payment_pb.PaymentServiceGetSubscriptionUsageRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: api_v1_payment_pb.PaymentServiceGetSubscriptionUsageResponse) => void): grpcWeb.ClientReadableStream<api_v1_payment_pb.PaymentServiceGetSubscriptionUsageResponse>;
+
+  getSubscriptionUsage(
+    request: api_v1_payment_pb.PaymentServiceGetSubscriptionUsageRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: api_v1_payment_pb.PaymentServiceGetSubscriptionUsageResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/api.v1.PaymentService/GetSubscriptionUsage',
+        request,
+        metadata || {},
+        this.methodDescriptorGetSubscriptionUsage,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/api.v1.PaymentService/GetSubscriptionUsage',
+    request,
+    metadata || {},
+    this.methodDescriptorGetSubscriptionUsage);
+  }
+
 }
 

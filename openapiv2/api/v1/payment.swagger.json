@@ -162,6 +162,17 @@
         }
       }
     },
+    "v1PaymentServiceGetSubscriptionUsageResponse": {
+      "type": "object",
+      "properties": {
+        "subscriptionUsageItems": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1SubscriptionUsageItem"
+          }
+        }
+      }
+    },
     "v1PaymentServiceHasPaymentMethodResponse": {
       "type": "object",
       "properties": {
@@ -182,6 +193,29 @@
         },
         "currency": {
           "type": "string"
+        }
+      }
+    },
+    "v1SubscriptionUsageItem": {
+      "type": "object",
+      "properties": {
+        "subscriptionItemId": {
+          "type": "string"
+        },
+        "subscriptionItemName": {
+          "type": "string"
+        },
+        "totalUsage": {
+          "type": "string",
+          "format": "int64"
+        },
+        "periodStart": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "periodEnd": {
+          "type": "string",
+          "format": "date-time"
         }
       }
     }

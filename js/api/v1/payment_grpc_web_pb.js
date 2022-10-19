@@ -22,6 +22,8 @@ grpc.web = require('grpc-web');
 
 var api_v1_common_pb = require('../../api/v1/common_pb.js')
 
+var google_protobuf_timestamp_pb = require('google-protobuf/google/protobuf/timestamp_pb.js')
+
 var validate_validate_pb = require('../../validate/validate_pb.js')
 const proto = {};
 proto.api = {};
@@ -442,6 +444,67 @@ proto.api.v1.PaymentServicePromiseClient.prototype.deletePaymentMethod =
       request,
       metadata || {},
       methodDescriptor_PaymentService_DeletePaymentMethod);
+};
+
+
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.api.v1.PaymentServiceGetSubscriptionUsageRequest,
+ *   !proto.api.v1.PaymentServiceGetSubscriptionUsageResponse>}
+ */
+const methodDescriptor_PaymentService_GetSubscriptionUsage = new grpc.web.MethodDescriptor(
+  '/api.v1.PaymentService/GetSubscriptionUsage',
+  grpc.web.MethodType.UNARY,
+  proto.api.v1.PaymentServiceGetSubscriptionUsageRequest,
+  proto.api.v1.PaymentServiceGetSubscriptionUsageResponse,
+  /**
+   * @param {!proto.api.v1.PaymentServiceGetSubscriptionUsageRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.api.v1.PaymentServiceGetSubscriptionUsageResponse.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.api.v1.PaymentServiceGetSubscriptionUsageRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.RpcError, ?proto.api.v1.PaymentServiceGetSubscriptionUsageResponse)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.api.v1.PaymentServiceGetSubscriptionUsageResponse>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.api.v1.PaymentServiceClient.prototype.getSubscriptionUsage =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/api.v1.PaymentService/GetSubscriptionUsage',
+      request,
+      metadata || {},
+      methodDescriptor_PaymentService_GetSubscriptionUsage,
+      callback);
+};
+
+
+/**
+ * @param {!proto.api.v1.PaymentServiceGetSubscriptionUsageRequest} request The
+ *     request proto
+ * @param {?Object<string, string>=} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.api.v1.PaymentServiceGetSubscriptionUsageResponse>}
+ *     Promise that resolves to the response
+ */
+proto.api.v1.PaymentServicePromiseClient.prototype.getSubscriptionUsage =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/api.v1.PaymentService/GetSubscriptionUsage',
+      request,
+      metadata || {},
+      methodDescriptor_PaymentService_GetSubscriptionUsage);
 };
 
 

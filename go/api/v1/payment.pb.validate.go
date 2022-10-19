@@ -571,6 +571,172 @@ var _ interface {
 	ErrorName() string
 } = AddressValidationError{}
 
+// Validate checks the field values on SubscriptionUsageItem with the rules
+// defined in the proto definition for this message. If any rules are
+// violated, the first error encountered is returned, or nil if there are no violations.
+func (m *SubscriptionUsageItem) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on SubscriptionUsageItem with the rules
+// defined in the proto definition for this message. If any rules are
+// violated, the result is a list of violation errors wrapped in
+// SubscriptionUsageItemMultiError, or nil if none found.
+func (m *SubscriptionUsageItem) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *SubscriptionUsageItem) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	// no validation rules for SubscriptionItemId
+
+	// no validation rules for SubscriptionItemName
+
+	// no validation rules for TotalUsage
+
+	if all {
+		switch v := interface{}(m.GetPeriodStart()).(type) {
+		case interface{ ValidateAll() error }:
+			if err := v.ValidateAll(); err != nil {
+				errors = append(errors, SubscriptionUsageItemValidationError{
+					field:  "PeriodStart",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		case interface{ Validate() error }:
+			if err := v.Validate(); err != nil {
+				errors = append(errors, SubscriptionUsageItemValidationError{
+					field:  "PeriodStart",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		}
+	} else if v, ok := interface{}(m.GetPeriodStart()).(interface{ Validate() error }); ok {
+		if err := v.Validate(); err != nil {
+			return SubscriptionUsageItemValidationError{
+				field:  "PeriodStart",
+				reason: "embedded message failed validation",
+				cause:  err,
+			}
+		}
+	}
+
+	if all {
+		switch v := interface{}(m.GetPeriodEnd()).(type) {
+		case interface{ ValidateAll() error }:
+			if err := v.ValidateAll(); err != nil {
+				errors = append(errors, SubscriptionUsageItemValidationError{
+					field:  "PeriodEnd",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		case interface{ Validate() error }:
+			if err := v.Validate(); err != nil {
+				errors = append(errors, SubscriptionUsageItemValidationError{
+					field:  "PeriodEnd",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		}
+	} else if v, ok := interface{}(m.GetPeriodEnd()).(interface{ Validate() error }); ok {
+		if err := v.Validate(); err != nil {
+			return SubscriptionUsageItemValidationError{
+				field:  "PeriodEnd",
+				reason: "embedded message failed validation",
+				cause:  err,
+			}
+		}
+	}
+
+	if len(errors) > 0 {
+		return SubscriptionUsageItemMultiError(errors)
+	}
+
+	return nil
+}
+
+// SubscriptionUsageItemMultiError is an error wrapping multiple validation
+// errors returned by SubscriptionUsageItem.ValidateAll() if the designated
+// constraints aren't met.
+type SubscriptionUsageItemMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m SubscriptionUsageItemMultiError) Error() string {
+	var msgs []string
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m SubscriptionUsageItemMultiError) AllErrors() []error { return m }
+
+// SubscriptionUsageItemValidationError is the validation error returned by
+// SubscriptionUsageItem.Validate if the designated constraints aren't met.
+type SubscriptionUsageItemValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e SubscriptionUsageItemValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e SubscriptionUsageItemValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e SubscriptionUsageItemValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e SubscriptionUsageItemValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e SubscriptionUsageItemValidationError) ErrorName() string {
+	return "SubscriptionUsageItemValidationError"
+}
+
+// Error satisfies the builtin error interface
+func (e SubscriptionUsageItemValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sSubscriptionUsageItem.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = SubscriptionUsageItemValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = SubscriptionUsageItemValidationError{}
+
 // Validate checks the field values on
 // PaymentServiceCreateOrUpdateCustomerRequest with the rules defined in the
 // proto definition for this message. If any rules are violated, the first
@@ -2028,3 +2194,260 @@ var _ interface {
 	Cause() error
 	ErrorName() string
 } = PaymentServiceDeletePaymentMethodResponseValidationError{}
+
+// Validate checks the field values on
+// PaymentServiceGetSubscriptionUsageRequest with the rules defined in the
+// proto definition for this message. If any rules are violated, the first
+// error encountered is returned, or nil if there are no violations.
+func (m *PaymentServiceGetSubscriptionUsageRequest) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on
+// PaymentServiceGetSubscriptionUsageRequest with the rules defined in the
+// proto definition for this message. If any rules are violated, the result is
+// a list of violation errors wrapped in
+// PaymentServiceGetSubscriptionUsageRequestMultiError, or nil if none found.
+func (m *PaymentServiceGetSubscriptionUsageRequest) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *PaymentServiceGetSubscriptionUsageRequest) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	if l := utf8.RuneCountInString(m.GetLogin()); l < 2 || l > 128 {
+		err := PaymentServiceGetSubscriptionUsageRequestValidationError{
+			field:  "Login",
+			reason: "value length must be between 2 and 128 runes, inclusive",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
+	if len(errors) > 0 {
+		return PaymentServiceGetSubscriptionUsageRequestMultiError(errors)
+	}
+
+	return nil
+}
+
+// PaymentServiceGetSubscriptionUsageRequestMultiError is an error wrapping
+// multiple validation errors returned by
+// PaymentServiceGetSubscriptionUsageRequest.ValidateAll() if the designated
+// constraints aren't met.
+type PaymentServiceGetSubscriptionUsageRequestMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m PaymentServiceGetSubscriptionUsageRequestMultiError) Error() string {
+	var msgs []string
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m PaymentServiceGetSubscriptionUsageRequestMultiError) AllErrors() []error { return m }
+
+// PaymentServiceGetSubscriptionUsageRequestValidationError is the validation
+// error returned by PaymentServiceGetSubscriptionUsageRequest.Validate if the
+// designated constraints aren't met.
+type PaymentServiceGetSubscriptionUsageRequestValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e PaymentServiceGetSubscriptionUsageRequestValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e PaymentServiceGetSubscriptionUsageRequestValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e PaymentServiceGetSubscriptionUsageRequestValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e PaymentServiceGetSubscriptionUsageRequestValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e PaymentServiceGetSubscriptionUsageRequestValidationError) ErrorName() string {
+	return "PaymentServiceGetSubscriptionUsageRequestValidationError"
+}
+
+// Error satisfies the builtin error interface
+func (e PaymentServiceGetSubscriptionUsageRequestValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sPaymentServiceGetSubscriptionUsageRequest.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = PaymentServiceGetSubscriptionUsageRequestValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = PaymentServiceGetSubscriptionUsageRequestValidationError{}
+
+// Validate checks the field values on
+// PaymentServiceGetSubscriptionUsageResponse with the rules defined in the
+// proto definition for this message. If any rules are violated, the first
+// error encountered is returned, or nil if there are no violations.
+func (m *PaymentServiceGetSubscriptionUsageResponse) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on
+// PaymentServiceGetSubscriptionUsageResponse with the rules defined in the
+// proto definition for this message. If any rules are violated, the result is
+// a list of violation errors wrapped in
+// PaymentServiceGetSubscriptionUsageResponseMultiError, or nil if none found.
+func (m *PaymentServiceGetSubscriptionUsageResponse) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *PaymentServiceGetSubscriptionUsageResponse) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	for idx, item := range m.GetSubscriptionUsageItems() {
+		_, _ = idx, item
+
+		if all {
+			switch v := interface{}(item).(type) {
+			case interface{ ValidateAll() error }:
+				if err := v.ValidateAll(); err != nil {
+					errors = append(errors, PaymentServiceGetSubscriptionUsageResponseValidationError{
+						field:  fmt.Sprintf("SubscriptionUsageItems[%v]", idx),
+						reason: "embedded message failed validation",
+						cause:  err,
+					})
+				}
+			case interface{ Validate() error }:
+				if err := v.Validate(); err != nil {
+					errors = append(errors, PaymentServiceGetSubscriptionUsageResponseValidationError{
+						field:  fmt.Sprintf("SubscriptionUsageItems[%v]", idx),
+						reason: "embedded message failed validation",
+						cause:  err,
+					})
+				}
+			}
+		} else if v, ok := interface{}(item).(interface{ Validate() error }); ok {
+			if err := v.Validate(); err != nil {
+				return PaymentServiceGetSubscriptionUsageResponseValidationError{
+					field:  fmt.Sprintf("SubscriptionUsageItems[%v]", idx),
+					reason: "embedded message failed validation",
+					cause:  err,
+				}
+			}
+		}
+
+	}
+
+	if len(errors) > 0 {
+		return PaymentServiceGetSubscriptionUsageResponseMultiError(errors)
+	}
+
+	return nil
+}
+
+// PaymentServiceGetSubscriptionUsageResponseMultiError is an error wrapping
+// multiple validation errors returned by
+// PaymentServiceGetSubscriptionUsageResponse.ValidateAll() if the designated
+// constraints aren't met.
+type PaymentServiceGetSubscriptionUsageResponseMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m PaymentServiceGetSubscriptionUsageResponseMultiError) Error() string {
+	var msgs []string
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m PaymentServiceGetSubscriptionUsageResponseMultiError) AllErrors() []error { return m }
+
+// PaymentServiceGetSubscriptionUsageResponseValidationError is the validation
+// error returned by PaymentServiceGetSubscriptionUsageResponse.Validate if
+// the designated constraints aren't met.
+type PaymentServiceGetSubscriptionUsageResponseValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e PaymentServiceGetSubscriptionUsageResponseValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e PaymentServiceGetSubscriptionUsageResponseValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e PaymentServiceGetSubscriptionUsageResponseValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e PaymentServiceGetSubscriptionUsageResponseValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e PaymentServiceGetSubscriptionUsageResponseValidationError) ErrorName() string {
+	return "PaymentServiceGetSubscriptionUsageResponseValidationError"
+}
+
+// Error satisfies the builtin error interface
+func (e PaymentServiceGetSubscriptionUsageResponseValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sPaymentServiceGetSubscriptionUsageResponse.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = PaymentServiceGetSubscriptionUsageResponseValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = PaymentServiceGetSubscriptionUsageResponseValidationError{}
