@@ -24,7 +24,7 @@ type PaymentServiceClient interface {
 	CheckIfCustomerExists(ctx context.Context, in *PaymentServiceCheckIfCustomerExistsRequest, opts ...grpc.CallOption) (*PaymentServiceCheckIfCustomerExistsResponse, error)
 	HasPaymentMethod(ctx context.Context, in *PaymentServiceHasPaymentMethodRequest, opts ...grpc.CallOption) (*PaymentServiceHasPaymentMethodResponse, error)
 	DeletePaymentMethod(ctx context.Context, in *PaymentServiceDeletePaymentMethodRequest, opts ...grpc.CallOption) (*PaymentServiceDeletePaymentMethodResponse, error)
-	GetUsageOfSubscription(ctx context.Context, in *PaymentServiceGetUsageOfSubscriptionRequest, opts ...grpc.CallOption) (*PaymentServiceGetUsageOfSubscriptionResponse, error)
+	GetSubscriptionUsage(ctx context.Context, in *PaymentServiceGetSubscriptionUsageRequest, opts ...grpc.CallOption) (*PaymentServiceGetSubscriptionUsageResponse, error)
 }
 
 type paymentServiceClient struct {
@@ -89,9 +89,9 @@ func (c *paymentServiceClient) DeletePaymentMethod(ctx context.Context, in *Paym
 	return out, nil
 }
 
-func (c *paymentServiceClient) GetUsageOfSubscription(ctx context.Context, in *PaymentServiceGetUsageOfSubscriptionRequest, opts ...grpc.CallOption) (*PaymentServiceGetUsageOfSubscriptionResponse, error) {
-	out := new(PaymentServiceGetUsageOfSubscriptionResponse)
-	err := c.cc.Invoke(ctx, "/api.v1.PaymentService/GetUsageOfSubscription", in, out, opts...)
+func (c *paymentServiceClient) GetSubscriptionUsage(ctx context.Context, in *PaymentServiceGetSubscriptionUsageRequest, opts ...grpc.CallOption) (*PaymentServiceGetSubscriptionUsageResponse, error) {
+	out := new(PaymentServiceGetSubscriptionUsageResponse)
+	err := c.cc.Invoke(ctx, "/api.v1.PaymentService/GetSubscriptionUsage", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -108,7 +108,7 @@ type PaymentServiceServer interface {
 	CheckIfCustomerExists(context.Context, *PaymentServiceCheckIfCustomerExistsRequest) (*PaymentServiceCheckIfCustomerExistsResponse, error)
 	HasPaymentMethod(context.Context, *PaymentServiceHasPaymentMethodRequest) (*PaymentServiceHasPaymentMethodResponse, error)
 	DeletePaymentMethod(context.Context, *PaymentServiceDeletePaymentMethodRequest) (*PaymentServiceDeletePaymentMethodResponse, error)
-	GetUsageOfSubscription(context.Context, *PaymentServiceGetUsageOfSubscriptionRequest) (*PaymentServiceGetUsageOfSubscriptionResponse, error)
+	GetSubscriptionUsage(context.Context, *PaymentServiceGetSubscriptionUsageRequest) (*PaymentServiceGetSubscriptionUsageResponse, error)
 }
 
 // UnimplementedPaymentServiceServer should be embedded to have forward compatible implementations.
@@ -133,8 +133,8 @@ func (UnimplementedPaymentServiceServer) HasPaymentMethod(context.Context, *Paym
 func (UnimplementedPaymentServiceServer) DeletePaymentMethod(context.Context, *PaymentServiceDeletePaymentMethodRequest) (*PaymentServiceDeletePaymentMethodResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeletePaymentMethod not implemented")
 }
-func (UnimplementedPaymentServiceServer) GetUsageOfSubscription(context.Context, *PaymentServiceGetUsageOfSubscriptionRequest) (*PaymentServiceGetUsageOfSubscriptionResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetUsageOfSubscription not implemented")
+func (UnimplementedPaymentServiceServer) GetSubscriptionUsage(context.Context, *PaymentServiceGetSubscriptionUsageRequest) (*PaymentServiceGetSubscriptionUsageResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetSubscriptionUsage not implemented")
 }
 
 // UnsafePaymentServiceServer may be embedded to opt out of forward compatibility for this service.
@@ -256,20 +256,20 @@ func _PaymentService_DeletePaymentMethod_Handler(srv interface{}, ctx context.Co
 	return interceptor(ctx, in, info, handler)
 }
 
-func _PaymentService_GetUsageOfSubscription_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(PaymentServiceGetUsageOfSubscriptionRequest)
+func _PaymentService_GetSubscriptionUsage_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(PaymentServiceGetSubscriptionUsageRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(PaymentServiceServer).GetUsageOfSubscription(ctx, in)
+		return srv.(PaymentServiceServer).GetSubscriptionUsage(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/api.v1.PaymentService/GetUsageOfSubscription",
+		FullMethod: "/api.v1.PaymentService/GetSubscriptionUsage",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(PaymentServiceServer).GetUsageOfSubscription(ctx, req.(*PaymentServiceGetUsageOfSubscriptionRequest))
+		return srv.(PaymentServiceServer).GetSubscriptionUsage(ctx, req.(*PaymentServiceGetSubscriptionUsageRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -306,8 +306,8 @@ var PaymentService_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _PaymentService_DeletePaymentMethod_Handler,
 		},
 		{
-			MethodName: "GetUsageOfSubscription",
-			Handler:    _PaymentService_GetUsageOfSubscription_Handler,
+			MethodName: "GetSubscriptionUsage",
+			Handler:    _PaymentService_GetSubscriptionUsage_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

@@ -3749,9 +3749,9 @@
           ]
         },
         {
-          "name": "PaymentServiceGetUsageOfSubscriptionRequest",
-          "longName": "PaymentServiceGetUsageOfSubscriptionRequest",
-          "fullName": "api.v1.PaymentServiceGetUsageOfSubscriptionRequest",
+          "name": "PaymentServiceGetSubscriptionUsageRequest",
+          "longName": "PaymentServiceGetSubscriptionUsageRequest",
+          "fullName": "api.v1.PaymentServiceGetSubscriptionUsageRequest",
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
@@ -3785,9 +3785,9 @@
           ]
         },
         {
-          "name": "PaymentServiceGetUsageOfSubscriptionResponse",
-          "longName": "PaymentServiceGetUsageOfSubscriptionResponse",
-          "fullName": "api.v1.PaymentServiceGetUsageOfSubscriptionResponse",
+          "name": "PaymentServiceGetSubscriptionUsageResponse",
+          "longName": "PaymentServiceGetSubscriptionUsageResponse",
+          "fullName": "api.v1.PaymentServiceGetSubscriptionUsageResponse",
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
@@ -4093,15 +4093,15 @@
               "responseStreaming": false
             },
             {
-              "name": "GetUsageOfSubscription",
+              "name": "GetSubscriptionUsage",
               "description": "",
-              "requestType": "PaymentServiceGetUsageOfSubscriptionRequest",
-              "requestLongType": "PaymentServiceGetUsageOfSubscriptionRequest",
-              "requestFullType": "api.v1.PaymentServiceGetUsageOfSubscriptionRequest",
+              "requestType": "PaymentServiceGetSubscriptionUsageRequest",
+              "requestLongType": "PaymentServiceGetSubscriptionUsageRequest",
+              "requestFullType": "api.v1.PaymentServiceGetSubscriptionUsageRequest",
               "requestStreaming": false,
-              "responseType": "PaymentServiceGetUsageOfSubscriptionResponse",
-              "responseLongType": "PaymentServiceGetUsageOfSubscriptionResponse",
-              "responseFullType": "api.v1.PaymentServiceGetUsageOfSubscriptionResponse",
+              "responseType": "PaymentServiceGetSubscriptionUsageResponse",
+              "responseLongType": "PaymentServiceGetSubscriptionUsageResponse",
+              "responseFullType": "api.v1.PaymentServiceGetSubscriptionUsageResponse",
               "responseStreaming": false
             }
           ]

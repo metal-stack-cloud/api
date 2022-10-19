@@ -26,7 +26,7 @@ service PaymentService {
   rpc DeletePaymentMethod(PaymentServiceDeletePaymentMethodRequest) returns (PaymentServiceDeletePaymentMethodResponse) {
     option (project_roles) = PROJECT_ROLE_OWNER;
   }
-  rpc GetUsageOfSubscription(PaymentServiceGetUsageOfSubscriptionRequest) returns (PaymentServiceGetUsageOfSubscriptionResponse) {
+  rpc GetSubscriptionUsage(PaymentServiceGetSubscriptionUsageRequest) returns (PaymentServiceGetSubscriptionUsageResponse) {
     option (project_roles) = PROJECT_ROLE_OWNER;
   }
 }
@@ -131,13 +131,13 @@ message PaymentServiceDeletePaymentMethodRequest {
 
 message PaymentServiceDeletePaymentMethodResponse {}
 
-message PaymentServiceGetUsageOfSubscriptionRequest {
+message PaymentServiceGetSubscriptionUsageRequest {
   string login = 1 [(validate.rules).string = {
     min_len: 2,
     max_len: 128,
   }];
 }
 
-message PaymentServiceGetUsageOfSubscriptionResponse {
+message PaymentServiceGetSubscriptionUsageResponse {
   repeated SubscriptionUsageItem subscription_usage_items = 1;
 }

@@ -453,39 +453,39 @@ export namespace PaymentServiceDeletePaymentMethodResponse {
   }
 }
 
-export class PaymentServiceGetUsageOfSubscriptionRequest extends jspb.Message {
+export class PaymentServiceGetSubscriptionUsageRequest extends jspb.Message {
   getLogin(): string;
-  setLogin(value: string): PaymentServiceGetUsageOfSubscriptionRequest;
+  setLogin(value: string): PaymentServiceGetSubscriptionUsageRequest;
 
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): PaymentServiceGetUsageOfSubscriptionRequest.AsObject;
-  static toObject(includeInstance: boolean, msg: PaymentServiceGetUsageOfSubscriptionRequest): PaymentServiceGetUsageOfSubscriptionRequest.AsObject;
-  static serializeBinaryToWriter(message: PaymentServiceGetUsageOfSubscriptionRequest, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): PaymentServiceGetUsageOfSubscriptionRequest;
-  static deserializeBinaryFromReader(message: PaymentServiceGetUsageOfSubscriptionRequest, reader: jspb.BinaryReader): PaymentServiceGetUsageOfSubscriptionRequest;
+  toObject(includeInstance?: boolean): PaymentServiceGetSubscriptionUsageRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: PaymentServiceGetSubscriptionUsageRequest): PaymentServiceGetSubscriptionUsageRequest.AsObject;
+  static serializeBinaryToWriter(message: PaymentServiceGetSubscriptionUsageRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): PaymentServiceGetSubscriptionUsageRequest;
+  static deserializeBinaryFromReader(message: PaymentServiceGetSubscriptionUsageRequest, reader: jspb.BinaryReader): PaymentServiceGetSubscriptionUsageRequest;
 }
 
-export namespace PaymentServiceGetUsageOfSubscriptionRequest {
+export namespace PaymentServiceGetSubscriptionUsageRequest {
   export type AsObject = {
     login: string,
   }
 }
 
-export class PaymentServiceGetUsageOfSubscriptionResponse extends jspb.Message {
+export class PaymentServiceGetSubscriptionUsageResponse extends jspb.Message {
   getSubscriptionUsageItemsList(): Array<SubscriptionUsageItem>;
-  setSubscriptionUsageItemsList(value: Array<SubscriptionUsageItem>): PaymentServiceGetUsageOfSubscriptionResponse;
-  clearSubscriptionUsageItemsList(): PaymentServiceGetUsageOfSubscriptionResponse;
+  setSubscriptionUsageItemsList(value: Array<SubscriptionUsageItem>): PaymentServiceGetSubscriptionUsageResponse;
+  clearSubscriptionUsageItemsList(): PaymentServiceGetSubscriptionUsageResponse;
   addSubscriptionUsageItems(value?: SubscriptionUsageItem, index?: number): SubscriptionUsageItem;
 
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): PaymentServiceGetUsageOfSubscriptionResponse.AsObject;
-  static toObject(includeInstance: boolean, msg: PaymentServiceGetUsageOfSubscriptionResponse): PaymentServiceGetUsageOfSubscriptionResponse.AsObject;
-  static serializeBinaryToWriter(message: PaymentServiceGetUsageOfSubscriptionResponse, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): PaymentServiceGetUsageOfSubscriptionResponse;
-  static deserializeBinaryFromReader(message: PaymentServiceGetUsageOfSubscriptionResponse, reader: jspb.BinaryReader): PaymentServiceGetUsageOfSubscriptionResponse;
+  toObject(includeInstance?: boolean): PaymentServiceGetSubscriptionUsageResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: PaymentServiceGetSubscriptionUsageResponse): PaymentServiceGetSubscriptionUsageResponse.AsObject;
+  static serializeBinaryToWriter(message: PaymentServiceGetSubscriptionUsageResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): PaymentServiceGetSubscriptionUsageResponse;
+  static deserializeBinaryFromReader(message: PaymentServiceGetSubscriptionUsageResponse, reader: jspb.BinaryReader): PaymentServiceGetSubscriptionUsageResponse;
 }
 
-export namespace PaymentServiceGetUsageOfSubscriptionResponse {
+export namespace PaymentServiceGetSubscriptionUsageResponse {
   export type AsObject = {
     subscriptionUsageItemsList: Array<SubscriptionUsageItem.AsObject>,
   }

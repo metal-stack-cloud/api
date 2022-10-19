@@ -162,7 +162,7 @@
         }
       }
     },
-    "v1PaymentServiceGetUsageOfSubscriptionResponse": {
+    "v1PaymentServiceGetSubscriptionUsageResponse": {
       "type": "object",
       "properties": {
         "subscriptionUsageItems": {

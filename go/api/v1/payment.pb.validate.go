@@ -2196,23 +2196,23 @@ var _ interface {
 } = PaymentServiceDeletePaymentMethodResponseValidationError{}
 
 // Validate checks the field values on
-// PaymentServiceGetUsageOfSubscriptionRequest with the rules defined in the
+// PaymentServiceGetSubscriptionUsageRequest with the rules defined in the
 // proto definition for this message. If any rules are violated, the first
 // error encountered is returned, or nil if there are no violations.
-func (m *PaymentServiceGetUsageOfSubscriptionRequest) Validate() error {
+func (m *PaymentServiceGetSubscriptionUsageRequest) Validate() error {
 	return m.validate(false)
 }
 
 // ValidateAll checks the field values on
-// PaymentServiceGetUsageOfSubscriptionRequest with the rules defined in the
+// PaymentServiceGetSubscriptionUsageRequest with the rules defined in the
 // proto definition for this message. If any rules are violated, the result is
 // a list of violation errors wrapped in
-// PaymentServiceGetUsageOfSubscriptionRequestMultiError, or nil if none found.
-func (m *PaymentServiceGetUsageOfSubscriptionRequest) ValidateAll() error {
+// PaymentServiceGetSubscriptionUsageRequestMultiError, or nil if none found.
+func (m *PaymentServiceGetSubscriptionUsageRequest) ValidateAll() error {
 	return m.validate(true)
 }
 
-func (m *PaymentServiceGetUsageOfSubscriptionRequest) validate(all bool) error {
+func (m *PaymentServiceGetSubscriptionUsageRequest) validate(all bool) error {
 	if m == nil {
 		return nil
 	}
@@ -2220,7 +2220,7 @@ func (m *PaymentServiceGetUsageOfSubscriptionRequest) validate(all bool) error {
 	var errors []error
 
 	if l := utf8.RuneCountInString(m.GetLogin()); l < 2 || l > 128 {
-		err := PaymentServiceGetUsageOfSubscriptionRequestValidationError{
+		err := PaymentServiceGetSubscriptionUsageRequestValidationError{
 			field:  "Login",
 			reason: "value length must be between 2 and 128 runes, inclusive",
 		}
@@ -2231,20 +2231,20 @@ func (m *PaymentServiceGetUsageOfSubscriptionRequest) validate(all bool) error {
 	}
 
 	if len(errors) > 0 {
-		return PaymentServiceGetUsageOfSubscriptionRequestMultiError(errors)
+		return PaymentServiceGetSubscriptionUsageRequestMultiError(errors)
 	}
 
 	return nil
 }
 
-// PaymentServiceGetUsageOfSubscriptionRequestMultiError is an error wrapping
+// PaymentServiceGetSubscriptionUsageRequestMultiError is an error wrapping
 // multiple validation errors returned by
-// PaymentServiceGetUsageOfSubscriptionRequest.ValidateAll() if the designated
+// PaymentServiceGetSubscriptionUsageRequest.ValidateAll() if the designated
 // constraints aren't met.
-type PaymentServiceGetUsageOfSubscriptionRequestMultiError []error
+type PaymentServiceGetSubscriptionUsageRequestMultiError []error
 
 // Error returns a concatenation of all the error messages it wraps.
-func (m PaymentServiceGetUsageOfSubscriptionRequestMultiError) Error() string {
+func (m PaymentServiceGetSubscriptionUsageRequestMultiError) Error() string {
 	var msgs []string
 	for _, err := range m {
 		msgs = append(msgs, err.Error())
@@ -2253,12 +2253,12 @@ func (m PaymentServiceGetUsageOfSubscriptionRequestMultiError) Error() string {
 }
 
 // AllErrors returns a list of validation violation errors.
-func (m PaymentServiceGetUsageOfSubscriptionRequestMultiError) AllErrors() []error { return m }
+func (m PaymentServiceGetSubscriptionUsageRequestMultiError) AllErrors() []error { return m }
 
-// PaymentServiceGetUsageOfSubscriptionRequestValidationError is the validation
-// error returned by PaymentServiceGetUsageOfSubscriptionRequest.Validate if
-// the designated constraints aren't met.
-type PaymentServiceGetUsageOfSubscriptionRequestValidationError struct {
+// PaymentServiceGetSubscriptionUsageRequestValidationError is the validation
+// error returned by PaymentServiceGetSubscriptionUsageRequest.Validate if the
+// designated constraints aren't met.
+type PaymentServiceGetSubscriptionUsageRequestValidationError struct {
 	field  string
 	reason string
 	cause  error
@@ -2266,24 +2266,24 @@ type PaymentServiceGetUsageOfSubscriptionRequestValidationError struct {
 }
 
 // Field function returns field value.
-func (e PaymentServiceGetUsageOfSubscriptionRequestValidationError) Field() string { return e.field }
+func (e PaymentServiceGetSubscriptionUsageRequestValidationError) Field() string { return e.field }
 
 // Reason function returns reason value.
-func (e PaymentServiceGetUsageOfSubscriptionRequestValidationError) Reason() string { return e.reason }
+func (e PaymentServiceGetSubscriptionUsageRequestValidationError) Reason() string { return e.reason }
 
 // Cause function returns cause value.
-func (e PaymentServiceGetUsageOfSubscriptionRequestValidationError) Cause() error { return e.cause }
+func (e PaymentServiceGetSubscriptionUsageRequestValidationError) Cause() error { return e.cause }
 
 // Key function returns key value.
-func (e PaymentServiceGetUsageOfSubscriptionRequestValidationError) Key() bool { return e.key }
+func (e PaymentServiceGetSubscriptionUsageRequestValidationError) Key() bool { return e.key }
 
 // ErrorName returns error name.
-func (e PaymentServiceGetUsageOfSubscriptionRequestValidationError) ErrorName() string {
-	return "PaymentServiceGetUsageOfSubscriptionRequestValidationError"
+func (e PaymentServiceGetSubscriptionUsageRequestValidationError) ErrorName() string {
+	return "PaymentServiceGetSubscriptionUsageRequestValidationError"
 }
 
 // Error satisfies the builtin error interface
-func (e PaymentServiceGetUsageOfSubscriptionRequestValidationError) Error() string {
+func (e PaymentServiceGetSubscriptionUsageRequestValidationError) Error() string {
 	cause := ""
 	if e.cause != nil {
 		cause = fmt.Sprintf(" | caused by: %v", e.cause)
@@ -2295,14 +2295,14 @@ func (e PaymentServiceGetUsageOfSubscriptionRequestValidationError) Error() stri
 	}
 
 	return fmt.Sprintf(
-		"invalid %sPaymentServiceGetUsageOfSubscriptionRequest.%s: %s%s",
+		"invalid %sPaymentServiceGetSubscriptionUsageRequest.%s: %s%s",
 		key,
 		e.field,
 		e.reason,
 		cause)
 }
 
-var _ error = PaymentServiceGetUsageOfSubscriptionRequestValidationError{}
+var _ error = PaymentServiceGetSubscriptionUsageRequestValidationError{}
 
 var _ interface {
 	Field() string
@@ -2310,26 +2310,26 @@ var _ interface {
 	Key() bool
 	Cause() error
 	ErrorName() string
-} = PaymentServiceGetUsageOfSubscriptionRequestValidationError{}
+} = PaymentServiceGetSubscriptionUsageRequestValidationError{}
 
 // Validate checks the field values on
-// PaymentServiceGetUsageOfSubscriptionResponse with the rules defined in the
+// PaymentServiceGetSubscriptionUsageResponse with the rules defined in the
 // proto definition for this message. If any rules are violated, the first
 // error encountered is returned, or nil if there are no violations.
-func (m *PaymentServiceGetUsageOfSubscriptionResponse) Validate() error {
+func (m *PaymentServiceGetSubscriptionUsageResponse) Validate() error {
 	return m.validate(false)
 }
 
 // ValidateAll checks the field values on
-// PaymentServiceGetUsageOfSubscriptionResponse with the rules defined in the
+// PaymentServiceGetSubscriptionUsageResponse with the rules defined in the
 // proto definition for this message. If any rules are violated, the result is
 // a list of violation errors wrapped in
-// PaymentServiceGetUsageOfSubscriptionResponseMultiError, or nil if none found.
-func (m *PaymentServiceGetUsageOfSubscriptionResponse) ValidateAll() error {
+// PaymentServiceGetSubscriptionUsageResponseMultiError, or nil if none found.
+func (m *PaymentServiceGetSubscriptionUsageResponse) ValidateAll() error {
 	return m.validate(true)
 }
 
-func (m *PaymentServiceGetUsageOfSubscriptionResponse) validate(all bool) error {
+func (m *PaymentServiceGetSubscriptionUsageResponse) validate(all bool) error {
 	if m == nil {
 		return nil
 	}
@@ -2343,7 +2343,7 @@ func (m *PaymentServiceGetUsageOfSubscriptionResponse) validate(all bool) error 
 			switch v := interface{}(item).(type) {
 			case interface{ ValidateAll() error }:
 				if err := v.ValidateAll(); err != nil {
-					errors = append(errors, PaymentServiceGetUsageOfSubscriptionResponseValidationError{
+					errors = append(errors, PaymentServiceGetSubscriptionUsageResponseValidationError{
 						field:  fmt.Sprintf("SubscriptionUsageItems[%v]", idx),
 						reason: "embedded message failed validation",
 						cause:  err,
@@ -2351,7 +2351,7 @@ func (m *PaymentServiceGetUsageOfSubscriptionResponse) validate(all bool) error 
 				}
 			case interface{ Validate() error }:
 				if err := v.Validate(); err != nil {
-					errors = append(errors, PaymentServiceGetUsageOfSubscriptionResponseValidationError{
+					errors = append(errors, PaymentServiceGetSubscriptionUsageResponseValidationError{
 						field:  fmt.Sprintf("SubscriptionUsageItems[%v]", idx),
 						reason: "embedded message failed validation",
 						cause:  err,
@@ -2360,7 +2360,7 @@ func (m *PaymentServiceGetUsageOfSubscriptionResponse) validate(all bool) error 
 			}
 		} else if v, ok := interface{}(item).(interface{ Validate() error }); ok {
 			if err := v.Validate(); err != nil {
-				return PaymentServiceGetUsageOfSubscriptionResponseValidationError{
+				return PaymentServiceGetSubscriptionUsageResponseValidationError{
 					field:  fmt.Sprintf("SubscriptionUsageItems[%v]", idx),
 					reason: "embedded message failed validation",
 					cause:  err,
@@ -2371,20 +2371,20 @@ func (m *PaymentServiceGetUsageOfSubscriptionResponse) validate(all bool) error 
 	}
 
 	if len(errors) > 0 {
-		return PaymentServiceGetUsageOfSubscriptionResponseMultiError(errors)
+		return PaymentServiceGetSubscriptionUsageResponseMultiError(errors)
 	}
 
 	return nil
 }
 
-// PaymentServiceGetUsageOfSubscriptionResponseMultiError is an error wrapping
+// PaymentServiceGetSubscriptionUsageResponseMultiError is an error wrapping
 // multiple validation errors returned by
-// PaymentServiceGetUsageOfSubscriptionResponse.ValidateAll() if the
-// designated constraints aren't met.
-type PaymentServiceGetUsageOfSubscriptionResponseMultiError []error
+// PaymentServiceGetSubscriptionUsageResponse.ValidateAll() if the designated
+// constraints aren't met.
+type PaymentServiceGetSubscriptionUsageResponseMultiError []error
 
 // Error returns a concatenation of all the error messages it wraps.
-func (m PaymentServiceGetUsageOfSubscriptionResponseMultiError) Error() string {
+func (m PaymentServiceGetSubscriptionUsageResponseMultiError) Error() string {
 	var msgs []string
 	for _, err := range m {
 		msgs = append(msgs, err.Error())
@@ -2393,13 +2393,12 @@ func (m PaymentServiceGetUsageOfSubscriptionResponseMultiError) Error() string {
 }
 
 // AllErrors returns a list of validation violation errors.
-func (m PaymentServiceGetUsageOfSubscriptionResponseMultiError) AllErrors() []error { return m }
+func (m PaymentServiceGetSubscriptionUsageResponseMultiError) AllErrors() []error { return m }
 
-// PaymentServiceGetUsageOfSubscriptionResponseValidationError is the
-// validation error returned by
-// PaymentServiceGetUsageOfSubscriptionResponse.Validate if the designated
-// constraints aren't met.
-type PaymentServiceGetUsageOfSubscriptionResponseValidationError struct {
+// PaymentServiceGetSubscriptionUsageResponseValidationError is the validation
+// error returned by PaymentServiceGetSubscriptionUsageResponse.Validate if
+// the designated constraints aren't met.
+type PaymentServiceGetSubscriptionUsageResponseValidationError struct {
 	field  string
 	reason string
 	cause  error
@@ -2407,24 +2406,24 @@ type PaymentServiceGetUsageOfSubscriptionResponseValidationError struct {
 }
 
 // Field function returns field value.
-func (e PaymentServiceGetUsageOfSubscriptionResponseValidationError) Field() string { return e.field }
+func (e PaymentServiceGetSubscriptionUsageResponseValidationError) Field() string { return e.field }
 
 // Reason function returns reason value.
-func (e PaymentServiceGetUsageOfSubscriptionResponseValidationError) Reason() string { return e.reason }
+func (e PaymentServiceGetSubscriptionUsageResponseValidationError) Reason() string { return e.reason }
 
 // Cause function returns cause value.
-func (e PaymentServiceGetUsageOfSubscriptionResponseValidationError) Cause() error { return e.cause }
+func (e PaymentServiceGetSubscriptionUsageResponseValidationError) Cause() error { return e.cause }
 
 // Key function returns key value.
-func (e PaymentServiceGetUsageOfSubscriptionResponseValidationError) Key() bool { return e.key }
+func (e PaymentServiceGetSubscriptionUsageResponseValidationError) Key() bool { return e.key }
 
 // ErrorName returns error name.
-func (e PaymentServiceGetUsageOfSubscriptionResponseValidationError) ErrorName() string {
-	return "PaymentServiceGetUsageOfSubscriptionResponseValidationError"
+func (e PaymentServiceGetSubscriptionUsageResponseValidationError) ErrorName() string {
+	return "PaymentServiceGetSubscriptionUsageResponseValidationError"
 }
 
 // Error satisfies the builtin error interface
-func (e PaymentServiceGetUsageOfSubscriptionResponseValidationError) Error() string {
+func (e PaymentServiceGetSubscriptionUsageResponseValidationError) Error() string {
 	cause := ""
 	if e.cause != nil {
 		cause = fmt.Sprintf(" | caused by: %v", e.cause)
@@ -2436,14 +2435,14 @@ func (e PaymentServiceGetUsageOfSubscriptionResponseValidationError) Error() str
 	}
 
 	return fmt.Sprintf(
-		"invalid %sPaymentServiceGetUsageOfSubscriptionResponse.%s: %s%s",
+		"invalid %sPaymentServiceGetSubscriptionUsageResponse.%s: %s%s",
 		key,
 		e.field,
 		e.reason,
 		cause)
 }
 
-var _ error = PaymentServiceGetUsageOfSubscriptionResponseValidationError{}
+var _ error = PaymentServiceGetSubscriptionUsageResponseValidationError{}
 
 var _ interface {
 	Field() string
@@ -2451,4 +2450,4 @@ var _ interface {
 	Key() bool
 	Cause() error
 	ErrorName() string
-} = PaymentServiceGetUsageOfSubscriptionResponseValidationError{}
+} = PaymentServiceGetSubscriptionUsageResponseValidationError{}
