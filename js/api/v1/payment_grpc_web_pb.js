@@ -22,6 +22,8 @@ grpc.web = require('grpc-web');
 
 var api_v1_common_pb = require('../../api/v1/common_pb.js')
 
+var google_protobuf_timestamp_pb = require('google-protobuf/google/protobuf/timestamp_pb.js')
+
 var validate_validate_pb = require('../../validate/validate_pb.js')
 const proto = {};
 proto.api = {};

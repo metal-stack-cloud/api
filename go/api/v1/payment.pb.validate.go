@@ -599,9 +599,63 @@ func (m *SubscriptionUsageItem) validate(all bool) error {
 
 	// no validation rules for TotalUsage
 
-	// no validation rules for PeriodStart
+	if all {
+		switch v := interface{}(m.GetPeriodStart()).(type) {
+		case interface{ ValidateAll() error }:
+			if err := v.ValidateAll(); err != nil {
+				errors = append(errors, SubscriptionUsageItemValidationError{
+					field:  "PeriodStart",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		case interface{ Validate() error }:
+			if err := v.Validate(); err != nil {
+				errors = append(errors, SubscriptionUsageItemValidationError{
+					field:  "PeriodStart",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		}
+	} else if v, ok := interface{}(m.GetPeriodStart()).(interface{ Validate() error }); ok {
+		if err := v.Validate(); err != nil {
+			return SubscriptionUsageItemValidationError{
+				field:  "PeriodStart",
+				reason: "embedded message failed validation",
+				cause:  err,
+			}
+		}
+	}
 
-	// no validation rules for PeriodEnd
+	if all {
+		switch v := interface{}(m.GetPeriodEnd()).(type) {
+		case interface{ ValidateAll() error }:
+			if err := v.ValidateAll(); err != nil {
+				errors = append(errors, SubscriptionUsageItemValidationError{
+					field:  "PeriodEnd",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		case interface{ Validate() error }:
+			if err := v.Validate(); err != nil {
+				errors = append(errors, SubscriptionUsageItemValidationError{
+					field:  "PeriodEnd",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		}
+	} else if v, ok := interface{}(m.GetPeriodEnd()).(interface{ Validate() error }); ok {
+		if err := v.Validate(); err != nil {
+			return SubscriptionUsageItemValidationError{
+				field:  "PeriodEnd",
+				reason: "embedded message failed validation",
+				cause:  err,
+			}
+		}
+	}
 
 	if len(errors) > 0 {
 		return SubscriptionUsageItemMultiError(errors)
@@ -2282,7 +2336,7 @@ func (m *PaymentServiceGetUsageOfSubscriptionResponse) validate(all bool) error 
 
 	var errors []error
 
-	for idx, item := range m.GetSubscriptionUsageItmes() {
+	for idx, item := range m.GetSubscriptionUsageItems() {
 		_, _ = idx, item
 
 		if all {
@@ -2290,7 +2344,7 @@ func (m *PaymentServiceGetUsageOfSubscriptionResponse) validate(all bool) error 
 			case interface{ ValidateAll() error }:
 				if err := v.ValidateAll(); err != nil {
 					errors = append(errors, PaymentServiceGetUsageOfSubscriptionResponseValidationError{
-						field:  fmt.Sprintf("SubscriptionUsageItmes[%v]", idx),
+						field:  fmt.Sprintf("SubscriptionUsageItems[%v]", idx),
 						reason: "embedded message failed validation",
 						cause:  err,
 					})
@@ -2298,7 +2352,7 @@ func (m *PaymentServiceGetUsageOfSubscriptionResponse) validate(all bool) error 
 			case interface{ Validate() error }:
 				if err := v.Validate(); err != nil {
 					errors = append(errors, PaymentServiceGetUsageOfSubscriptionResponseValidationError{
-						field:  fmt.Sprintf("SubscriptionUsageItmes[%v]", idx),
+						field:  fmt.Sprintf("SubscriptionUsageItems[%v]", idx),
 						reason: "embedded message failed validation",
 						cause:  err,
 					})
@@ -2307,7 +2361,7 @@ func (m *PaymentServiceGetUsageOfSubscriptionResponse) validate(all bool) error 
 		} else if v, ok := interface{}(item).(interface{ Validate() error }); ok {
 			if err := v.Validate(); err != nil {
 				return PaymentServiceGetUsageOfSubscriptionResponseValidationError{
-					field:  fmt.Sprintf("SubscriptionUsageItmes[%v]", idx),
+					field:  fmt.Sprintf("SubscriptionUsageItems[%v]", idx),
 					reason: "embedded message failed validation",
 					cause:  err,
 				}

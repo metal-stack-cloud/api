@@ -1,6 +1,7 @@
 import * as jspb from 'google-protobuf'
 
 import * as api_v1_common_pb from '../../api/v1/common_pb';
+import * as google_protobuf_timestamp_pb from 'google-protobuf/google/protobuf/timestamp_pb';
 import * as validate_validate_pb from '../../validate/validate_pb';
 
 
@@ -194,11 +195,15 @@ export class SubscriptionUsageItem extends jspb.Message {
   getTotalUsage(): number;
   setTotalUsage(value: number): SubscriptionUsageItem;
 
-  getPeriodStart(): number;
-  setPeriodStart(value: number): SubscriptionUsageItem;
+  getPeriodStart(): google_protobuf_timestamp_pb.Timestamp | undefined;
+  setPeriodStart(value?: google_protobuf_timestamp_pb.Timestamp): SubscriptionUsageItem;
+  hasPeriodStart(): boolean;
+  clearPeriodStart(): SubscriptionUsageItem;
 
-  getPeriodEnd(): number;
-  setPeriodEnd(value: number): SubscriptionUsageItem;
+  getPeriodEnd(): google_protobuf_timestamp_pb.Timestamp | undefined;
+  setPeriodEnd(value?: google_protobuf_timestamp_pb.Timestamp): SubscriptionUsageItem;
+  hasPeriodEnd(): boolean;
+  clearPeriodEnd(): SubscriptionUsageItem;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): SubscriptionUsageItem.AsObject;
@@ -213,8 +218,8 @@ export namespace SubscriptionUsageItem {
     subscriptionItemId: string,
     subscriptionItemName: string,
     totalUsage: number,
-    periodStart: number,
-    periodEnd: number,
+    periodStart?: google_protobuf_timestamp_pb.Timestamp.AsObject,
+    periodEnd?: google_protobuf_timestamp_pb.Timestamp.AsObject,
   }
 }
 
@@ -467,10 +472,10 @@ export namespace PaymentServiceGetUsageOfSubscriptionRequest {
 }
 
 export class PaymentServiceGetUsageOfSubscriptionResponse extends jspb.Message {
-  getSubscriptionUsageItmesList(): Array<SubscriptionUsageItem>;
-  setSubscriptionUsageItmesList(value: Array<SubscriptionUsageItem>): PaymentServiceGetUsageOfSubscriptionResponse;
-  clearSubscriptionUsageItmesList(): PaymentServiceGetUsageOfSubscriptionResponse;
-  addSubscriptionUsageItmes(value?: SubscriptionUsageItem, index?: number): SubscriptionUsageItem;
+  getSubscriptionUsageItemsList(): Array<SubscriptionUsageItem>;
+  setSubscriptionUsageItemsList(value: Array<SubscriptionUsageItem>): PaymentServiceGetUsageOfSubscriptionResponse;
+  clearSubscriptionUsageItemsList(): PaymentServiceGetUsageOfSubscriptionResponse;
+  addSubscriptionUsageItems(value?: SubscriptionUsageItem, index?: number): SubscriptionUsageItem;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): PaymentServiceGetUsageOfSubscriptionResponse.AsObject;
@@ -482,7 +487,7 @@ export class PaymentServiceGetUsageOfSubscriptionResponse extends jspb.Message {
 
 export namespace PaymentServiceGetUsageOfSubscriptionResponse {
   export type AsObject = {
-    subscriptionUsageItmesList: Array<SubscriptionUsageItem.AsObject>,
+    subscriptionUsageItemsList: Array<SubscriptionUsageItem.AsObject>,
   }
 }
 

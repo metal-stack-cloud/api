@@ -17,6 +17,8 @@ var global = (function() { return this || window || global || self || Function('
 
 var api_v1_common_pb = require('../../api/v1/common_pb.js');
 goog.object.extend(proto, api_v1_common_pb);
+var google_protobuf_timestamp_pb = require('google-protobuf/google/protobuf/timestamp_pb.js');
+goog.object.extend(proto, google_protobuf_timestamp_pb);
 var validate_validate_pb = require('../../validate/validate_pb.js');
 goog.object.extend(proto, validate_validate_pb);
 goog.exportSymbol('proto.api.v1.Address', null, global);
@@ -1688,8 +1690,8 @@ proto.api.v1.SubscriptionUsageItem.toObject = function(includeInstance, msg) {
     subscriptionItemId: jspb.Message.getFieldWithDefault(msg, 1, ""),
     subscriptionItemName: jspb.Message.getFieldWithDefault(msg, 2, ""),
     totalUsage: jspb.Message.getFieldWithDefault(msg, 3, 0),
-    periodStart: jspb.Message.getFieldWithDefault(msg, 4, 0),
-    periodEnd: jspb.Message.getFieldWithDefault(msg, 5, 0)
+    periodStart: (f = msg.getPeriodStart()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
+    periodEnd: (f = msg.getPeriodEnd()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -1739,11 +1741,13 @@ proto.api.v1.SubscriptionUsageItem.deserializeBinaryFromReader = function(msg, r
       msg.setTotalUsage(value);
       break;
     case 4:
-      var value = /** @type {number} */ (reader.readInt64());
+      var value = new google_protobuf_timestamp_pb.Timestamp;
+      reader.readMessage(value,google_protobuf_timestamp_pb.Timestamp.deserializeBinaryFromReader);
       msg.setPeriodStart(value);
       break;
     case 5:
-      var value = /** @type {number} */ (reader.readInt64());
+      var value = new google_protobuf_timestamp_pb.Timestamp;
+      reader.readMessage(value,google_protobuf_timestamp_pb.Timestamp.deserializeBinaryFromReader);
       msg.setPeriodEnd(value);
       break;
     default:
@@ -1797,17 +1801,19 @@ proto.api.v1.SubscriptionUsageItem.serializeBinaryToWriter = function(message, w
     );
   }
   f = message.getPeriodStart();
-  if (f !== 0) {
-    writer.writeInt64(
+  if (f != null) {
+    writer.writeMessage(
       4,
-      f
+      f,
+      google_protobuf_timestamp_pb.Timestamp.serializeBinaryToWriter
     );
   }
   f = message.getPeriodEnd();
-  if (f !== 0) {
-    writer.writeInt64(
+  if (f != null) {
+    writer.writeMessage(
       5,
-      f
+      f,
+      google_protobuf_timestamp_pb.Timestamp.serializeBinaryToWriter
     );
   }
 };
@@ -1868,38 +1874,76 @@ proto.api.v1.SubscriptionUsageItem.prototype.setTotalUsage = function(value) {
 
 
 /**
- * optional int64 period_start = 4;
- * @return {number}
+ * optional google.protobuf.Timestamp period_start = 4;
+ * @return {?proto.google.protobuf.Timestamp}
  */
 proto.api.v1.SubscriptionUsageItem.prototype.getPeriodStart = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 4, 0));
+  return /** @type{?proto.google.protobuf.Timestamp} */ (
+    jspb.Message.getWrapperField(this, google_protobuf_timestamp_pb.Timestamp, 4));
 };
 
 
 /**
- * @param {number} value
+ * @param {?proto.google.protobuf.Timestamp|undefined} value
+ * @return {!proto.api.v1.SubscriptionUsageItem} returns this
+*/
+proto.api.v1.SubscriptionUsageItem.prototype.setPeriodStart = function(value) {
+  return jspb.Message.setWrapperField(this, 4, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
  * @return {!proto.api.v1.SubscriptionUsageItem} returns this
  */
-proto.api.v1.SubscriptionUsageItem.prototype.setPeriodStart = function(value) {
-  return jspb.Message.setProto3IntField(this, 4, value);
+proto.api.v1.SubscriptionUsageItem.prototype.clearPeriodStart = function() {
+  return this.setPeriodStart(undefined);
 };
 
 
 /**
- * optional int64 period_end = 5;
- * @return {number}
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.api.v1.SubscriptionUsageItem.prototype.hasPeriodStart = function() {
+  return jspb.Message.getField(this, 4) != null;
+};
+
+
+/**
+ * optional google.protobuf.Timestamp period_end = 5;
+ * @return {?proto.google.protobuf.Timestamp}
  */
 proto.api.v1.SubscriptionUsageItem.prototype.getPeriodEnd = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 5, 0));
+  return /** @type{?proto.google.protobuf.Timestamp} */ (
+    jspb.Message.getWrapperField(this, google_protobuf_timestamp_pb.Timestamp, 5));
 };
 
 
 /**
- * @param {number} value
+ * @param {?proto.google.protobuf.Timestamp|undefined} value
+ * @return {!proto.api.v1.SubscriptionUsageItem} returns this
+*/
+proto.api.v1.SubscriptionUsageItem.prototype.setPeriodEnd = function(value) {
+  return jspb.Message.setWrapperField(this, 5, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
  * @return {!proto.api.v1.SubscriptionUsageItem} returns this
  */
-proto.api.v1.SubscriptionUsageItem.prototype.setPeriodEnd = function(value) {
-  return jspb.Message.setProto3IntField(this, 5, value);
+proto.api.v1.SubscriptionUsageItem.prototype.clearPeriodEnd = function() {
+  return this.setPeriodEnd(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.api.v1.SubscriptionUsageItem.prototype.hasPeriodEnd = function() {
+  return jspb.Message.getField(this, 5) != null;
 };
 
 
@@ -3768,7 +3812,7 @@ proto.api.v1.PaymentServiceGetUsageOfSubscriptionResponse.prototype.toObject = f
  */
 proto.api.v1.PaymentServiceGetUsageOfSubscriptionResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
-    subscriptionUsageItmesList: jspb.Message.toObjectList(msg.getSubscriptionUsageItmesList(),
+    subscriptionUsageItemsList: jspb.Message.toObjectList(msg.getSubscriptionUsageItemsList(),
     proto.api.v1.SubscriptionUsageItem.toObject, includeInstance)
   };
 
@@ -3809,7 +3853,7 @@ proto.api.v1.PaymentServiceGetUsageOfSubscriptionResponse.deserializeBinaryFromR
     case 1:
       var value = new proto.api.v1.SubscriptionUsageItem;
       reader.readMessage(value,proto.api.v1.SubscriptionUsageItem.deserializeBinaryFromReader);
-      msg.addSubscriptionUsageItmes(value);
+      msg.addSubscriptionUsageItems(value);
       break;
     default:
       reader.skipField();
@@ -3840,7 +3884,7 @@ proto.api.v1.PaymentServiceGetUsageOfSubscriptionResponse.prototype.serializeBin
  */
 proto.api.v1.PaymentServiceGetUsageOfSubscriptionResponse.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
-  f = message.getSubscriptionUsageItmesList();
+  f = message.getSubscriptionUsageItemsList();
   if (f.length > 0) {
     writer.writeRepeatedMessage(
       1,
@@ -3852,10 +3896,10 @@ proto.api.v1.PaymentServiceGetUsageOfSubscriptionResponse.serializeBinaryToWrite
 
 
 /**
- * repeated SubscriptionUsageItem subscription_usage_itmes = 1;
+ * repeated SubscriptionUsageItem subscription_usage_items = 1;
  * @return {!Array<!proto.api.v1.SubscriptionUsageItem>}
  */
-proto.api.v1.PaymentServiceGetUsageOfSubscriptionResponse.prototype.getSubscriptionUsageItmesList = function() {
+proto.api.v1.PaymentServiceGetUsageOfSubscriptionResponse.prototype.getSubscriptionUsageItemsList = function() {
   return /** @type{!Array<!proto.api.v1.SubscriptionUsageItem>} */ (
     jspb.Message.getRepeatedWrapperField(this, proto.api.v1.SubscriptionUsageItem, 1));
 };
@@ -3865,7 +3909,7 @@ proto.api.v1.PaymentServiceGetUsageOfSubscriptionResponse.prototype.getSubscript
  * @param {!Array<!proto.api.v1.SubscriptionUsageItem>} value
  * @return {!proto.api.v1.PaymentServiceGetUsageOfSubscriptionResponse} returns this
 */
-proto.api.v1.PaymentServiceGetUsageOfSubscriptionResponse.prototype.setSubscriptionUsageItmesList = function(value) {
+proto.api.v1.PaymentServiceGetUsageOfSubscriptionResponse.prototype.setSubscriptionUsageItemsList = function(value) {
   return jspb.Message.setRepeatedWrapperField(this, 1, value);
 };
 
@@ -3875,7 +3919,7 @@ proto.api.v1.PaymentServiceGetUsageOfSubscriptionResponse.prototype.setSubscript
  * @param {number=} opt_index
  * @return {!proto.api.v1.SubscriptionUsageItem}
  */
-proto.api.v1.PaymentServiceGetUsageOfSubscriptionResponse.prototype.addSubscriptionUsageItmes = function(opt_value, opt_index) {
+proto.api.v1.PaymentServiceGetUsageOfSubscriptionResponse.prototype.addSubscriptionUsageItems = function(opt_value, opt_index) {
   return jspb.Message.addToRepeatedWrapperField(this, 1, opt_value, proto.api.v1.SubscriptionUsageItem, opt_index);
 };
 
@@ -3884,8 +3928,8 @@ proto.api.v1.PaymentServiceGetUsageOfSubscriptionResponse.prototype.addSubscript
  * Clears the list making it empty but non-null.
  * @return {!proto.api.v1.PaymentServiceGetUsageOfSubscriptionResponse} returns this
  */
-proto.api.v1.PaymentServiceGetUsageOfSubscriptionResponse.prototype.clearSubscriptionUsageItmesList = function() {
-  return this.setSubscriptionUsageItmesList([]);
+proto.api.v1.PaymentServiceGetUsageOfSubscriptionResponse.prototype.clearSubscriptionUsageItemsList = function() {
+  return this.setSubscriptionUsageItemsList([]);
 };
 
 

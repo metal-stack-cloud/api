@@ -165,7 +165,7 @@
     "v1PaymentServiceGetUsageOfSubscriptionResponse": {
       "type": "object",
       "properties": {
-        "subscriptionUsageItmes": {
+        "subscriptionUsageItems": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/v1SubscriptionUsageItem"
@@ -211,11 +211,11 @@
         },
         "periodStart": {
           "type": "string",
-          "format": "int64"
+          "format": "date-time"
         },
         "periodEnd": {
           "type": "string",
-          "format": "int64"
+          "format": "date-time"
         }
       }
     }

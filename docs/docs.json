@@ -3749,6 +3749,66 @@
           ]
         },
         {
+          "name": "PaymentServiceGetUsageOfSubscriptionRequest",
+          "longName": "PaymentServiceGetUsageOfSubscriptionRequest",
+          "fullName": "api.v1.PaymentServiceGetUsageOfSubscriptionRequest",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "login",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": "",
+              "options": {
+                "validate.rules": [
+                  {
+                    "name": "string.min_len",
+                    "value": 2
+                  },
+                  {
+                    "name": "string.max_len",
+                    "value": 128
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "PaymentServiceGetUsageOfSubscriptionResponse",
+          "longName": "PaymentServiceGetUsageOfSubscriptionResponse",
+          "fullName": "api.v1.PaymentServiceGetUsageOfSubscriptionResponse",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "subscription_usage_items",
+              "description": "",
+              "label": "repeated",
+              "type": "SubscriptionUsageItem",
+              "longType": "SubscriptionUsageItem",
+              "fullType": "api.v1.SubscriptionUsageItem",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
           "name": "PaymentServiceHasPaymentMethodRequest",
           "longName": "PaymentServiceHasPaymentMethodRequest",
           "fullName": "api.v1.PaymentServiceHasPaymentMethodRequest",
@@ -3879,6 +3939,78 @@
               "defaultValue": ""
             }
           ]
+        },
+        {
+          "name": "SubscriptionUsageItem",
+          "longName": "SubscriptionUsageItem",
+          "fullName": "api.v1.SubscriptionUsageItem",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "subscription_item_id",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "subscription_item_name",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "total_usage",
+              "description": "",
+              "label": "",
+              "type": "int64",
+              "longType": "int64",
+              "fullType": "int64",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "period_start",
+              "description": "",
+              "label": "",
+              "type": "Timestamp",
+              "longType": "google.protobuf.Timestamp",
+              "fullType": "google.protobuf.Timestamp",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "period_end",
+              "description": "",
+              "label": "",
+              "type": "Timestamp",
+              "longType": "google.protobuf.Timestamp",
+              "fullType": "google.protobuf.Timestamp",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
         }
       ],
       "services": [
@@ -3958,6 +4090,18 @@
               "responseType": "PaymentServiceDeletePaymentMethodResponse",
               "responseLongType": "PaymentServiceDeletePaymentMethodResponse",
               "responseFullType": "api.v1.PaymentServiceDeletePaymentMethodResponse",
+              "responseStreaming": false
+            },
+            {
+              "name": "GetUsageOfSubscription",
+              "description": "",
+              "requestType": "PaymentServiceGetUsageOfSubscriptionRequest",
+              "requestLongType": "PaymentServiceGetUsageOfSubscriptionRequest",
+              "requestFullType": "api.v1.PaymentServiceGetUsageOfSubscriptionRequest",
+              "requestStreaming": false,
+              "responseType": "PaymentServiceGetUsageOfSubscriptionResponse",
+              "responseLongType": "PaymentServiceGetUsageOfSubscriptionResponse",
+              "responseFullType": "api.v1.PaymentServiceGetUsageOfSubscriptionResponse",
               "responseStreaming": false
             }
           ]
