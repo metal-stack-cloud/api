@@ -29,6 +29,9 @@ service PaymentService {
   rpc GetSubscriptionUsage(PaymentServiceGetSubscriptionUsageRequest) returns (PaymentServiceGetSubscriptionUsageResponse) {
     option (project_roles) = PROJECT_ROLE_OWNER;
   }
+  rpc GetInvoices(PaymentServiceGetInvoicesRequest) returns (PaymentServiceGetInvoicesResponse) {
+    option (project_roles) = PROJECT_ROLE_OWNER;
+  }
 }
 
 message PaymentCustomer {
@@ -70,6 +73,13 @@ message SubscriptionUsageItem {
   string subscription_item_id = 1;
   string subscription_item_name = 2;
   int64 total_usage = 3;
+  google.protobuf.Timestamp period_start = 4;
+  google.protobuf.Timestamp period_end = 5;
+}
+
+message Invoice {
+  string invoice_id = 1;
+  string invoice_pdf = 2;
   google.protobuf.Timestamp period_start = 4;
   google.protobuf.Timestamp period_end = 5;
 }
@@ -140,4 +150,19 @@ message PaymentServiceGetSubscriptionUsageRequest {
 
 message PaymentServiceGetSubscriptionUsageResponse {
   repeated SubscriptionUsageItem subscription_usage_items = 1;
+}
+
+message PaymentServiceGetInvoicesRequest {
+  string login = 1 [(validate.rules).string = {
+    min_len: 2,
+    max_len: 128,
+  }];
+  string customer_id = 2 [(validate.rules).string = {
+    min_len: 18,
+    max_len: 18,
+  }];
+}
+
+message PaymentServiceGetInvoicesResponse {
+  repeated Invoice invoices = 1;
 }

@@ -61,6 +61,9 @@ var PaymentServiceClient = /** @class */ (function () {
         this.methodDescriptorGetSubscriptionUsage = new grpcWeb.MethodDescriptor('/api.v1.PaymentService/GetSubscriptionUsage', grpcWeb.MethodType.UNARY, api_v1_payment_pb.PaymentServiceGetSubscriptionUsageRequest, api_v1_payment_pb.PaymentServiceGetSubscriptionUsageResponse, function (request) {
             return request.serializeBinary();
         }, api_v1_payment_pb.PaymentServiceGetSubscriptionUsageResponse.deserializeBinary);
+        this.methodDescriptorGetInvoices = new grpcWeb.MethodDescriptor('/api.v1.PaymentService/GetInvoices', grpcWeb.MethodType.UNARY, api_v1_payment_pb.PaymentServiceGetInvoicesRequest, api_v1_payment_pb.PaymentServiceGetInvoicesResponse, function (request) {
+            return request.serializeBinary();
+        }, api_v1_payment_pb.PaymentServiceGetInvoicesResponse.deserializeBinary);
         if (!options)
             options = {};
         if (!credentials)
@@ -126,6 +129,14 @@ var PaymentServiceClient = /** @class */ (function () {
         }
         return this.client_.unaryCall(this.hostname_ +
             '/api.v1.PaymentService/GetSubscriptionUsage', request, metadata || {}, this.methodDescriptorGetSubscriptionUsage);
+    };
+    PaymentServiceClient.prototype.getInvoices = function (request, metadata, callback) {
+        if (callback !== undefined) {
+            return this.client_.rpcCall(this.hostname_ +
+                '/api.v1.PaymentService/GetInvoices', request, metadata || {}, this.methodDescriptorGetInvoices, callback);
+        }
+        return this.client_.unaryCall(this.hostname_ +
+            '/api.v1.PaymentService/GetInvoices', request, metadata || {}, this.methodDescriptorGetInvoices);
     };
     return PaymentServiceClient;
 }());

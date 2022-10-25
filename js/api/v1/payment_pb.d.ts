@@ -223,6 +223,40 @@ export namespace SubscriptionUsageItem {
   }
 }
 
+export class Invoice extends jspb.Message {
+  getInvoiceId(): string;
+  setInvoiceId(value: string): Invoice;
+
+  getInvoicePdf(): string;
+  setInvoicePdf(value: string): Invoice;
+
+  getPeriodStart(): google_protobuf_timestamp_pb.Timestamp | undefined;
+  setPeriodStart(value?: google_protobuf_timestamp_pb.Timestamp): Invoice;
+  hasPeriodStart(): boolean;
+  clearPeriodStart(): Invoice;
+
+  getPeriodEnd(): google_protobuf_timestamp_pb.Timestamp | undefined;
+  setPeriodEnd(value?: google_protobuf_timestamp_pb.Timestamp): Invoice;
+  hasPeriodEnd(): boolean;
+  clearPeriodEnd(): Invoice;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): Invoice.AsObject;
+  static toObject(includeInstance: boolean, msg: Invoice): Invoice.AsObject;
+  static serializeBinaryToWriter(message: Invoice, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): Invoice;
+  static deserializeBinaryFromReader(message: Invoice, reader: jspb.BinaryReader): Invoice;
+}
+
+export namespace Invoice {
+  export type AsObject = {
+    invoiceId: string,
+    invoicePdf: string,
+    periodStart?: google_protobuf_timestamp_pb.Timestamp.AsObject,
+    periodEnd?: google_protobuf_timestamp_pb.Timestamp.AsObject,
+  }
+}
+
 export class PaymentServiceCreateOrUpdateCustomerRequest extends jspb.Message {
   getCustomer(): PaymentCustomer | undefined;
   setCustomer(value?: PaymentCustomer): PaymentServiceCreateOrUpdateCustomerRequest;
@@ -488,6 +522,48 @@ export class PaymentServiceGetSubscriptionUsageResponse extends jspb.Message {
 export namespace PaymentServiceGetSubscriptionUsageResponse {
   export type AsObject = {
     subscriptionUsageItemsList: Array<SubscriptionUsageItem.AsObject>,
+  }
+}
+
+export class PaymentServiceGetInvoicesRequest extends jspb.Message {
+  getLogin(): string;
+  setLogin(value: string): PaymentServiceGetInvoicesRequest;
+
+  getCustomerId(): string;
+  setCustomerId(value: string): PaymentServiceGetInvoicesRequest;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): PaymentServiceGetInvoicesRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: PaymentServiceGetInvoicesRequest): PaymentServiceGetInvoicesRequest.AsObject;
+  static serializeBinaryToWriter(message: PaymentServiceGetInvoicesRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): PaymentServiceGetInvoicesRequest;
+  static deserializeBinaryFromReader(message: PaymentServiceGetInvoicesRequest, reader: jspb.BinaryReader): PaymentServiceGetInvoicesRequest;
+}
+
+export namespace PaymentServiceGetInvoicesRequest {
+  export type AsObject = {
+    login: string,
+    customerId: string,
+  }
+}
+
+export class PaymentServiceGetInvoicesResponse extends jspb.Message {
+  getInvoicesList(): Array<Invoice>;
+  setInvoicesList(value: Array<Invoice>): PaymentServiceGetInvoicesResponse;
+  clearInvoicesList(): PaymentServiceGetInvoicesResponse;
+  addInvoices(value?: Invoice, index?: number): Invoice;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): PaymentServiceGetInvoicesResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: PaymentServiceGetInvoicesResponse): PaymentServiceGetInvoicesResponse.AsObject;
+  static serializeBinaryToWriter(message: PaymentServiceGetInvoicesResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): PaymentServiceGetInvoicesResponse;
+  static deserializeBinaryFromReader(message: PaymentServiceGetInvoicesResponse, reader: jspb.BinaryReader): PaymentServiceGetInvoicesResponse;
+}
+
+export namespace PaymentServiceGetInvoicesResponse {
+  export type AsObject = {
+    invoicesList: Array<Invoice.AsObject>,
   }
 }
 
