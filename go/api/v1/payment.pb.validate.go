@@ -760,7 +760,7 @@ func (m *Invoice) validate(all bool) error {
 
 	// no validation rules for InvoiceId
 
-	// no validation rules for InvoicePdf
+	// no validation rules for PdfDownloadUrl
 
 	if all {
 		switch v := interface{}(m.GetPeriodStart()).(type) {

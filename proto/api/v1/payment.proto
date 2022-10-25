@@ -79,7 +79,7 @@ message SubscriptionUsageItem {
 
 message Invoice {
   string invoice_id = 1;
-  string invoice_pdf = 2;
+  string pdf_download_url = 2;
   google.protobuf.Timestamp period_start = 4;
   google.protobuf.Timestamp period_end = 5;
 }

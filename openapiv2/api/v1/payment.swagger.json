@@ -95,7 +95,7 @@
         "invoiceId": {
           "type": "string"
         },
-        "invoicePdf": {
+        "pdfDownloadUrl": {
           "type": "string"
         },
         "periodStart": {

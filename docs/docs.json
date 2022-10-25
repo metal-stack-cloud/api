@@ -3400,7 +3400,7 @@
               "defaultValue": ""
             },
             {
-              "name": "invoice_pdf",
+              "name": "pdf_download_url",
               "description": "",
               "label": "",
               "type": "string",

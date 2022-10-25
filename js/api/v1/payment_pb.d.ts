@@ -227,8 +227,8 @@ export class Invoice extends jspb.Message {
   getInvoiceId(): string;
   setInvoiceId(value: string): Invoice;
 
-  getInvoicePdf(): string;
-  setInvoicePdf(value: string): Invoice;
+  getPdfDownloadUrl(): string;
+  setPdfDownloadUrl(value: string): Invoice;
 
   getPeriodStart(): google_protobuf_timestamp_pb.Timestamp | undefined;
   setPeriodStart(value?: google_protobuf_timestamp_pb.Timestamp): Invoice;
@@ -251,7 +251,7 @@ export class Invoice extends jspb.Message {
 export namespace Invoice {
   export type AsObject = {
     invoiceId: string,
-    invoicePdf: string,
+    pdfDownloadUrl: string,
     periodStart?: google_protobuf_timestamp_pb.Timestamp.AsObject,
     periodEnd?: google_protobuf_timestamp_pb.Timestamp.AsObject,
   }

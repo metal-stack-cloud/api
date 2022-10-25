@@ -2046,7 +2046,7 @@ proto.api.v1.Invoice.prototype.toObject = function(opt_includeInstance) {
 proto.api.v1.Invoice.toObject = function(includeInstance, msg) {
   var f, obj = {
     invoiceId: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    invoicePdf: jspb.Message.getFieldWithDefault(msg, 2, ""),
+    pdfDownloadUrl: jspb.Message.getFieldWithDefault(msg, 2, ""),
     periodStart: (f = msg.getPeriodStart()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
     periodEnd: (f = msg.getPeriodEnd()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f)
   };
@@ -2091,7 +2091,7 @@ proto.api.v1.Invoice.deserializeBinaryFromReader = function(msg, reader) {
       break;
     case 2:
       var value = /** @type {string} */ (reader.readString());
-      msg.setInvoicePdf(value);
+      msg.setPdfDownloadUrl(value);
       break;
     case 4:
       var value = new google_protobuf_timestamp_pb.Timestamp;
@@ -2139,7 +2139,7 @@ proto.api.v1.Invoice.serializeBinaryToWriter = function(message, writer) {
       f
     );
   }
-  f = message.getInvoicePdf();
+  f = message.getPdfDownloadUrl();
   if (f.length > 0) {
     writer.writeString(
       2,
@@ -2184,10 +2184,10 @@ proto.api.v1.Invoice.prototype.setInvoiceId = function(value) {
 
 
 /**
- * optional string invoice_pdf = 2;
+ * optional string pdf_download_url = 2;
  * @return {string}
  */
-proto.api.v1.Invoice.prototype.getInvoicePdf = function() {
+proto.api.v1.Invoice.prototype.getPdfDownloadUrl = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
 };
 
@@ -2196,7 +2196,7 @@ proto.api.v1.Invoice.prototype.getInvoicePdf = function() {
  * @param {string} value
  * @return {!proto.api.v1.Invoice} returns this
  */
-proto.api.v1.Invoice.prototype.setInvoicePdf = function(value) {
+proto.api.v1.Invoice.prototype.setPdfDownloadUrl = function(value) {
   return jspb.Message.setProto3StringField(this, 2, value);
 };
 
