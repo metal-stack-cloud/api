@@ -758,7 +758,7 @@ func (m *Invoice) validate(all bool) error {
 
 	var errors []error
 
-	// no validation rules for InvoiceId
+	// no validation rules for Id
 
 	// no validation rules for PdfDownloadUrl
 

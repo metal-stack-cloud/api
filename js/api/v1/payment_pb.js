@@ -2045,7 +2045,7 @@ proto.api.v1.Invoice.prototype.toObject = function(opt_includeInstance) {
  */
 proto.api.v1.Invoice.toObject = function(includeInstance, msg) {
   var f, obj = {
-    invoiceId: jspb.Message.getFieldWithDefault(msg, 1, ""),
+    id: jspb.Message.getFieldWithDefault(msg, 1, ""),
     pdfDownloadUrl: jspb.Message.getFieldWithDefault(msg, 2, ""),
     periodStart: (f = msg.getPeriodStart()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
     periodEnd: (f = msg.getPeriodEnd()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f)
@@ -2087,7 +2087,7 @@ proto.api.v1.Invoice.deserializeBinaryFromReader = function(msg, reader) {
     switch (field) {
     case 1:
       var value = /** @type {string} */ (reader.readString());
-      msg.setInvoiceId(value);
+      msg.setId(value);
       break;
     case 2:
       var value = /** @type {string} */ (reader.readString());
@@ -2132,7 +2132,7 @@ proto.api.v1.Invoice.prototype.serializeBinary = function() {
  */
 proto.api.v1.Invoice.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
-  f = message.getInvoiceId();
+  f = message.getId();
   if (f.length > 0) {
     writer.writeString(
       1,
@@ -2166,10 +2166,10 @@ proto.api.v1.Invoice.serializeBinaryToWriter = function(message, writer) {
 
 
 /**
- * optional string invoice_id = 1;
+ * optional string id = 1;
  * @return {string}
  */
-proto.api.v1.Invoice.prototype.getInvoiceId = function() {
+proto.api.v1.Invoice.prototype.getId = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
 };
 
@@ -2178,7 +2178,7 @@ proto.api.v1.Invoice.prototype.getInvoiceId = function() {
  * @param {string} value
  * @return {!proto.api.v1.Invoice} returns this
  */
-proto.api.v1.Invoice.prototype.setInvoiceId = function(value) {
+proto.api.v1.Invoice.prototype.setId = function(value) {
   return jspb.Message.setProto3StringField(this, 1, value);
 };
 

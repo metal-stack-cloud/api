@@ -92,7 +92,7 @@
     "v1Invoice": {
       "type": "object",
       "properties": {
-        "invoiceId": {
+        "id": {
           "type": "string"
         },
         "pdfDownloadUrl": {

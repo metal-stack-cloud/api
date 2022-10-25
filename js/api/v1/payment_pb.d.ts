@@ -224,8 +224,8 @@ export namespace SubscriptionUsageItem {
 }
 
 export class Invoice extends jspb.Message {
-  getInvoiceId(): string;
-  setInvoiceId(value: string): Invoice;
+  getId(): string;
+  setId(value: string): Invoice;
 
   getPdfDownloadUrl(): string;
   setPdfDownloadUrl(value: string): Invoice;
@@ -250,7 +250,7 @@ export class Invoice extends jspb.Message {
 
 export namespace Invoice {
   export type AsObject = {
-    invoiceId: string,
+    id: string,
     pdfDownloadUrl: string,
     periodStart?: google_protobuf_timestamp_pb.Timestamp.AsObject,
     periodEnd?: google_protobuf_timestamp_pb.Timestamp.AsObject,

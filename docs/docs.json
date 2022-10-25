@@ -3388,7 +3388,7 @@
           "extensions": [],
           "fields": [
             {
-              "name": "invoice_id",
+              "name": "id",
               "description": "",
               "label": "",
               "type": "string",
