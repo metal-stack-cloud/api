@@ -508,5 +508,66 @@ proto.api.v1.PaymentServicePromiseClient.prototype.getSubscriptionUsage =
 };
 
 
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.api.v1.PaymentServiceGetInvoicesRequest,
+ *   !proto.api.v1.PaymentServiceGetInvoicesResponse>}
+ */
+const methodDescriptor_PaymentService_GetInvoices = new grpc.web.MethodDescriptor(
+  '/api.v1.PaymentService/GetInvoices',
+  grpc.web.MethodType.UNARY,
+  proto.api.v1.PaymentServiceGetInvoicesRequest,
+  proto.api.v1.PaymentServiceGetInvoicesResponse,
+  /**
+   * @param {!proto.api.v1.PaymentServiceGetInvoicesRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.api.v1.PaymentServiceGetInvoicesResponse.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.api.v1.PaymentServiceGetInvoicesRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.RpcError, ?proto.api.v1.PaymentServiceGetInvoicesResponse)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.api.v1.PaymentServiceGetInvoicesResponse>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.api.v1.PaymentServiceClient.prototype.getInvoices =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/api.v1.PaymentService/GetInvoices',
+      request,
+      metadata || {},
+      methodDescriptor_PaymentService_GetInvoices,
+      callback);
+};
+
+
+/**
+ * @param {!proto.api.v1.PaymentServiceGetInvoicesRequest} request The
+ *     request proto
+ * @param {?Object<string, string>=} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.api.v1.PaymentServiceGetInvoicesResponse>}
+ *     Promise that resolves to the response
+ */
+proto.api.v1.PaymentServicePromiseClient.prototype.getInvoices =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/api.v1.PaymentService/GetInvoices',
+      request,
+      metadata || {},
+      methodDescriptor_PaymentService_GetInvoices);
+};
+
+
 module.exports = proto.api.v1;
 

@@ -3378,6 +3378,66 @@
           ]
         },
         {
+          "name": "Invoice",
+          "longName": "Invoice",
+          "fullName": "api.v1.Invoice",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "id",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "pdf_download_url",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "period_start",
+              "description": "",
+              "label": "",
+              "type": "Timestamp",
+              "longType": "google.protobuf.Timestamp",
+              "fullType": "google.protobuf.Timestamp",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "period_end",
+              "description": "",
+              "label": "",
+              "type": "Timestamp",
+              "longType": "google.protobuf.Timestamp",
+              "fullType": "google.protobuf.Timestamp",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
           "name": "PaymentCustomer",
           "longName": "PaymentCustomer",
           "fullName": "api.v1.PaymentCustomer",
@@ -3749,6 +3809,90 @@
           ]
         },
         {
+          "name": "PaymentServiceGetInvoicesRequest",
+          "longName": "PaymentServiceGetInvoicesRequest",
+          "fullName": "api.v1.PaymentServiceGetInvoicesRequest",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "login",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": "",
+              "options": {
+                "validate.rules": [
+                  {
+                    "name": "string.min_len",
+                    "value": 2
+                  },
+                  {
+                    "name": "string.max_len",
+                    "value": 128
+                  }
+                ]
+              }
+            },
+            {
+              "name": "customer_id",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": "",
+              "options": {
+                "validate.rules": [
+                  {
+                    "name": "string.min_len",
+                    "value": 18
+                  },
+                  {
+                    "name": "string.max_len",
+                    "value": 18
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "PaymentServiceGetInvoicesResponse",
+          "longName": "PaymentServiceGetInvoicesResponse",
+          "fullName": "api.v1.PaymentServiceGetInvoicesResponse",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "invoices",
+              "description": "",
+              "label": "repeated",
+              "type": "Invoice",
+              "longType": "Invoice",
+              "fullType": "api.v1.Invoice",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
           "name": "PaymentServiceGetSubscriptionUsageRequest",
           "longName": "PaymentServiceGetSubscriptionUsageRequest",
           "fullName": "api.v1.PaymentServiceGetSubscriptionUsageRequest",
@@ -4102,6 +4246,18 @@
               "responseType": "PaymentServiceGetSubscriptionUsageResponse",
               "responseLongType": "PaymentServiceGetSubscriptionUsageResponse",
               "responseFullType": "api.v1.PaymentServiceGetSubscriptionUsageResponse",
+              "responseStreaming": false
+            },
+            {
+              "name": "GetInvoices",
+              "description": "",
+              "requestType": "PaymentServiceGetInvoicesRequest",
+              "requestLongType": "PaymentServiceGetInvoicesRequest",
+              "requestFullType": "api.v1.PaymentServiceGetInvoicesRequest",
+              "requestStreaming": false,
+              "responseType": "PaymentServiceGetInvoicesResponse",
+              "responseLongType": "PaymentServiceGetInvoicesResponse",
+              "responseFullType": "api.v1.PaymentServiceGetInvoicesResponse",
               "responseStreaming": false
             }
           ]

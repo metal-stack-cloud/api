@@ -340,5 +340,48 @@ export class PaymentServiceClient {
     this.methodDescriptorGetSubscriptionUsage);
   }
 
+  methodDescriptorGetInvoices = new grpcWeb.MethodDescriptor(
+    '/api.v1.PaymentService/GetInvoices',
+    grpcWeb.MethodType.UNARY,
+    api_v1_payment_pb.PaymentServiceGetInvoicesRequest,
+    api_v1_payment_pb.PaymentServiceGetInvoicesResponse,
+    (request: api_v1_payment_pb.PaymentServiceGetInvoicesRequest) => {
+      return request.serializeBinary();
+    },
+    api_v1_payment_pb.PaymentServiceGetInvoicesResponse.deserializeBinary
+  );
+
+  getInvoices(
+    request: api_v1_payment_pb.PaymentServiceGetInvoicesRequest,
+    metadata: grpcWeb.Metadata | null): Promise<api_v1_payment_pb.PaymentServiceGetInvoicesResponse>;
+
+  getInvoices(
+    request: api_v1_payment_pb.PaymentServiceGetInvoicesRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: api_v1_payment_pb.PaymentServiceGetInvoicesResponse) => void): grpcWeb.ClientReadableStream<api_v1_payment_pb.PaymentServiceGetInvoicesResponse>;
+
+  getInvoices(
+    request: api_v1_payment_pb.PaymentServiceGetInvoicesRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: api_v1_payment_pb.PaymentServiceGetInvoicesResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/api.v1.PaymentService/GetInvoices',
+        request,
+        metadata || {},
+        this.methodDescriptorGetInvoices,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/api.v1.PaymentService/GetInvoices',
+    request,
+    metadata || {},
+    this.methodDescriptorGetInvoices);
+  }
+
 }
 

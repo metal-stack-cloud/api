@@ -441,6 +441,77 @@ func (x *SubscriptionUsageItem) GetPeriodEnd() *timestamppb.Timestamp {
 	return nil
 }
 
+type Invoice struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Id             string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	PdfDownloadUrl string                 `protobuf:"bytes,2,opt,name=pdf_download_url,json=pdfDownloadUrl,proto3" json:"pdf_download_url,omitempty"`
+	PeriodStart    *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=period_start,json=periodStart,proto3" json:"period_start,omitempty"`
+	PeriodEnd      *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=period_end,json=periodEnd,proto3" json:"period_end,omitempty"`
+}
+
+func (x *Invoice) Reset() {
+	*x = Invoice{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_api_v1_payment_proto_msgTypes[5]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *Invoice) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Invoice) ProtoMessage() {}
+
+func (x *Invoice) ProtoReflect() protoreflect.Message {
+	mi := &file_api_v1_payment_proto_msgTypes[5]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Invoice.ProtoReflect.Descriptor instead.
+func (*Invoice) Descriptor() ([]byte, []int) {
+	return file_api_v1_payment_proto_rawDescGZIP(), []int{5}
+}
+
+func (x *Invoice) GetId() string {
+	if x != nil {
+		return x.Id
+	}
+	return ""
+}
+
+func (x *Invoice) GetPdfDownloadUrl() string {
+	if x != nil {
+		return x.PdfDownloadUrl
+	}
+	return ""
+}
+
+func (x *Invoice) GetPeriodStart() *timestamppb.Timestamp {
+	if x != nil {
+		return x.PeriodStart
+	}
+	return nil
+}
+
+func (x *Invoice) GetPeriodEnd() *timestamppb.Timestamp {
+	if x != nil {
+		return x.PeriodEnd
+	}
+	return nil
+}
+
 type PaymentServiceCreateOrUpdateCustomerRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -452,7 +523,7 @@ type PaymentServiceCreateOrUpdateCustomerRequest struct {
 func (x *PaymentServiceCreateOrUpdateCustomerRequest) Reset() {
 	*x = PaymentServiceCreateOrUpdateCustomerRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_v1_payment_proto_msgTypes[5]
+		mi := &file_api_v1_payment_proto_msgTypes[6]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -465,7 +536,7 @@ func (x *PaymentServiceCreateOrUpdateCustomerRequest) String() string {
 func (*PaymentServiceCreateOrUpdateCustomerRequest) ProtoMessage() {}
 
 func (x *PaymentServiceCreateOrUpdateCustomerRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_api_v1_payment_proto_msgTypes[5]
+	mi := &file_api_v1_payment_proto_msgTypes[6]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -478,7 +549,7 @@ func (x *PaymentServiceCreateOrUpdateCustomerRequest) ProtoReflect() protoreflec
 
 // Deprecated: Use PaymentServiceCreateOrUpdateCustomerRequest.ProtoReflect.Descriptor instead.
 func (*PaymentServiceCreateOrUpdateCustomerRequest) Descriptor() ([]byte, []int) {
-	return file_api_v1_payment_proto_rawDescGZIP(), []int{5}
+	return file_api_v1_payment_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *PaymentServiceCreateOrUpdateCustomerRequest) GetCustomer() *PaymentCustomer {
@@ -499,7 +570,7 @@ type PaymentServiceCreateOrUpdateCustomerResponse struct {
 func (x *PaymentServiceCreateOrUpdateCustomerResponse) Reset() {
 	*x = PaymentServiceCreateOrUpdateCustomerResponse{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_v1_payment_proto_msgTypes[6]
+		mi := &file_api_v1_payment_proto_msgTypes[7]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -512,7 +583,7 @@ func (x *PaymentServiceCreateOrUpdateCustomerResponse) String() string {
 func (*PaymentServiceCreateOrUpdateCustomerResponse) ProtoMessage() {}
 
 func (x *PaymentServiceCreateOrUpdateCustomerResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_api_v1_payment_proto_msgTypes[6]
+	mi := &file_api_v1_payment_proto_msgTypes[7]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -525,7 +596,7 @@ func (x *PaymentServiceCreateOrUpdateCustomerResponse) ProtoReflect() protorefle
 
 // Deprecated: Use PaymentServiceCreateOrUpdateCustomerResponse.ProtoReflect.Descriptor instead.
 func (*PaymentServiceCreateOrUpdateCustomerResponse) Descriptor() ([]byte, []int) {
-	return file_api_v1_payment_proto_rawDescGZIP(), []int{6}
+	return file_api_v1_payment_proto_rawDescGZIP(), []int{7}
 }
 
 func (x *PaymentServiceCreateOrUpdateCustomerResponse) GetCustomer() *PaymentCustomer {
@@ -546,7 +617,7 @@ type PaymentServiceGetCustomerRequest struct {
 func (x *PaymentServiceGetCustomerRequest) Reset() {
 	*x = PaymentServiceGetCustomerRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_v1_payment_proto_msgTypes[7]
+		mi := &file_api_v1_payment_proto_msgTypes[8]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -559,7 +630,7 @@ func (x *PaymentServiceGetCustomerRequest) String() string {
 func (*PaymentServiceGetCustomerRequest) ProtoMessage() {}
 
 func (x *PaymentServiceGetCustomerRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_api_v1_payment_proto_msgTypes[7]
+	mi := &file_api_v1_payment_proto_msgTypes[8]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -572,7 +643,7 @@ func (x *PaymentServiceGetCustomerRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PaymentServiceGetCustomerRequest.ProtoReflect.Descriptor instead.
 func (*PaymentServiceGetCustomerRequest) Descriptor() ([]byte, []int) {
-	return file_api_v1_payment_proto_rawDescGZIP(), []int{7}
+	return file_api_v1_payment_proto_rawDescGZIP(), []int{8}
 }
 
 func (x *PaymentServiceGetCustomerRequest) GetCustomerId() string {
@@ -593,7 +664,7 @@ type PaymentServiceGetCustomerResponse struct {
 func (x *PaymentServiceGetCustomerResponse) Reset() {
 	*x = PaymentServiceGetCustomerResponse{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_v1_payment_proto_msgTypes[8]
+		mi := &file_api_v1_payment_proto_msgTypes[9]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -606,7 +677,7 @@ func (x *PaymentServiceGetCustomerResponse) String() string {
 func (*PaymentServiceGetCustomerResponse) ProtoMessage() {}
 
 func (x *PaymentServiceGetCustomerResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_api_v1_payment_proto_msgTypes[8]
+	mi := &file_api_v1_payment_proto_msgTypes[9]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -619,7 +690,7 @@ func (x *PaymentServiceGetCustomerResponse) ProtoReflect() protoreflect.Message 
 
 // Deprecated: Use PaymentServiceGetCustomerResponse.ProtoReflect.Descriptor instead.
 func (*PaymentServiceGetCustomerResponse) Descriptor() ([]byte, []int) {
-	return file_api_v1_payment_proto_rawDescGZIP(), []int{8}
+	return file_api_v1_payment_proto_rawDescGZIP(), []int{9}
 }
 
 func (x *PaymentServiceGetCustomerResponse) GetCustomer() *PaymentCustomer {
@@ -640,7 +711,7 @@ type PaymentServiceGetCustomerWithLoginRequest struct {
 func (x *PaymentServiceGetCustomerWithLoginRequest) Reset() {
 	*x = PaymentServiceGetCustomerWithLoginRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_v1_payment_proto_msgTypes[9]
+		mi := &file_api_v1_payment_proto_msgTypes[10]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -653,7 +724,7 @@ func (x *PaymentServiceGetCustomerWithLoginRequest) String() string {
 func (*PaymentServiceGetCustomerWithLoginRequest) ProtoMessage() {}
 
 func (x *PaymentServiceGetCustomerWithLoginRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_api_v1_payment_proto_msgTypes[9]
+	mi := &file_api_v1_payment_proto_msgTypes[10]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -666,7 +737,7 @@ func (x *PaymentServiceGetCustomerWithLoginRequest) ProtoReflect() protoreflect.
 
 // Deprecated: Use PaymentServiceGetCustomerWithLoginRequest.ProtoReflect.Descriptor instead.
 func (*PaymentServiceGetCustomerWithLoginRequest) Descriptor() ([]byte, []int) {
-	return file_api_v1_payment_proto_rawDescGZIP(), []int{9}
+	return file_api_v1_payment_proto_rawDescGZIP(), []int{10}
 }
 
 func (x *PaymentServiceGetCustomerWithLoginRequest) GetLogin() string {
@@ -687,7 +758,7 @@ type PaymentServiceGetCustomerWithLoginResponse struct {
 func (x *PaymentServiceGetCustomerWithLoginResponse) Reset() {
 	*x = PaymentServiceGetCustomerWithLoginResponse{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_v1_payment_proto_msgTypes[10]
+		mi := &file_api_v1_payment_proto_msgTypes[11]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -700,7 +771,7 @@ func (x *PaymentServiceGetCustomerWithLoginResponse) String() string {
 func (*PaymentServiceGetCustomerWithLoginResponse) ProtoMessage() {}
 
 func (x *PaymentServiceGetCustomerWithLoginResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_api_v1_payment_proto_msgTypes[10]
+	mi := &file_api_v1_payment_proto_msgTypes[11]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -713,7 +784,7 @@ func (x *PaymentServiceGetCustomerWithLoginResponse) ProtoReflect() protoreflect
 
 // Deprecated: Use PaymentServiceGetCustomerWithLoginResponse.ProtoReflect.Descriptor instead.
 func (*PaymentServiceGetCustomerWithLoginResponse) Descriptor() ([]byte, []int) {
-	return file_api_v1_payment_proto_rawDescGZIP(), []int{10}
+	return file_api_v1_payment_proto_rawDescGZIP(), []int{11}
 }
 
 func (x *PaymentServiceGetCustomerWithLoginResponse) GetCustomer() *PaymentCustomer {
@@ -734,7 +805,7 @@ type PaymentServiceCheckIfCustomerExistsRequest struct {
 func (x *PaymentServiceCheckIfCustomerExistsRequest) Reset() {
 	*x = PaymentServiceCheckIfCustomerExistsRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_v1_payment_proto_msgTypes[11]
+		mi := &file_api_v1_payment_proto_msgTypes[12]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -747,7 +818,7 @@ func (x *PaymentServiceCheckIfCustomerExistsRequest) String() string {
 func (*PaymentServiceCheckIfCustomerExistsRequest) ProtoMessage() {}
 
 func (x *PaymentServiceCheckIfCustomerExistsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_api_v1_payment_proto_msgTypes[11]
+	mi := &file_api_v1_payment_proto_msgTypes[12]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -760,7 +831,7 @@ func (x *PaymentServiceCheckIfCustomerExistsRequest) ProtoReflect() protoreflect
 
 // Deprecated: Use PaymentServiceCheckIfCustomerExistsRequest.ProtoReflect.Descriptor instead.
 func (*PaymentServiceCheckIfCustomerExistsRequest) Descriptor() ([]byte, []int) {
-	return file_api_v1_payment_proto_rawDescGZIP(), []int{11}
+	return file_api_v1_payment_proto_rawDescGZIP(), []int{12}
 }
 
 func (x *PaymentServiceCheckIfCustomerExistsRequest) GetLogin() string {
@@ -782,7 +853,7 @@ type PaymentServiceCheckIfCustomerExistsResponse struct {
 func (x *PaymentServiceCheckIfCustomerExistsResponse) Reset() {
 	*x = PaymentServiceCheckIfCustomerExistsResponse{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_v1_payment_proto_msgTypes[12]
+		mi := &file_api_v1_payment_proto_msgTypes[13]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -795,7 +866,7 @@ func (x *PaymentServiceCheckIfCustomerExistsResponse) String() string {
 func (*PaymentServiceCheckIfCustomerExistsResponse) ProtoMessage() {}
 
 func (x *PaymentServiceCheckIfCustomerExistsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_api_v1_payment_proto_msgTypes[12]
+	mi := &file_api_v1_payment_proto_msgTypes[13]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -808,7 +879,7 @@ func (x *PaymentServiceCheckIfCustomerExistsResponse) ProtoReflect() protoreflec
 
 // Deprecated: Use PaymentServiceCheckIfCustomerExistsResponse.ProtoReflect.Descriptor instead.
 func (*PaymentServiceCheckIfCustomerExistsResponse) Descriptor() ([]byte, []int) {
-	return file_api_v1_payment_proto_rawDescGZIP(), []int{12}
+	return file_api_v1_payment_proto_rawDescGZIP(), []int{13}
 }
 
 func (x *PaymentServiceCheckIfCustomerExistsResponse) GetCustomer() *PaymentCustomer {
@@ -837,7 +908,7 @@ type PaymentServiceHasPaymentMethodRequest struct {
 func (x *PaymentServiceHasPaymentMethodRequest) Reset() {
 	*x = PaymentServiceHasPaymentMethodRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_v1_payment_proto_msgTypes[13]
+		mi := &file_api_v1_payment_proto_msgTypes[14]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -850,7 +921,7 @@ func (x *PaymentServiceHasPaymentMethodRequest) String() string {
 func (*PaymentServiceHasPaymentMethodRequest) ProtoMessage() {}
 
 func (x *PaymentServiceHasPaymentMethodRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_api_v1_payment_proto_msgTypes[13]
+	mi := &file_api_v1_payment_proto_msgTypes[14]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -863,7 +934,7 @@ func (x *PaymentServiceHasPaymentMethodRequest) ProtoReflect() protoreflect.Mess
 
 // Deprecated: Use PaymentServiceHasPaymentMethodRequest.ProtoReflect.Descriptor instead.
 func (*PaymentServiceHasPaymentMethodRequest) Descriptor() ([]byte, []int) {
-	return file_api_v1_payment_proto_rawDescGZIP(), []int{13}
+	return file_api_v1_payment_proto_rawDescGZIP(), []int{14}
 }
 
 func (x *PaymentServiceHasPaymentMethodRequest) GetLogin() string {
@@ -891,7 +962,7 @@ type PaymentServiceHasPaymentMethodResponse struct {
 func (x *PaymentServiceHasPaymentMethodResponse) Reset() {
 	*x = PaymentServiceHasPaymentMethodResponse{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_v1_payment_proto_msgTypes[14]
+		mi := &file_api_v1_payment_proto_msgTypes[15]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -904,7 +975,7 @@ func (x *PaymentServiceHasPaymentMethodResponse) String() string {
 func (*PaymentServiceHasPaymentMethodResponse) ProtoMessage() {}
 
 func (x *PaymentServiceHasPaymentMethodResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_api_v1_payment_proto_msgTypes[14]
+	mi := &file_api_v1_payment_proto_msgTypes[15]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -917,7 +988,7 @@ func (x *PaymentServiceHasPaymentMethodResponse) ProtoReflect() protoreflect.Mes
 
 // Deprecated: Use PaymentServiceHasPaymentMethodResponse.ProtoReflect.Descriptor instead.
 func (*PaymentServiceHasPaymentMethodResponse) Descriptor() ([]byte, []int) {
-	return file_api_v1_payment_proto_rawDescGZIP(), []int{14}
+	return file_api_v1_payment_proto_rawDescGZIP(), []int{15}
 }
 
 func (x *PaymentServiceHasPaymentMethodResponse) GetExists() bool {
@@ -938,7 +1009,7 @@ type PaymentServiceDeletePaymentMethodRequest struct {
 func (x *PaymentServiceDeletePaymentMethodRequest) Reset() {
 	*x = PaymentServiceDeletePaymentMethodRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_v1_payment_proto_msgTypes[15]
+		mi := &file_api_v1_payment_proto_msgTypes[16]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -951,7 +1022,7 @@ func (x *PaymentServiceDeletePaymentMethodRequest) String() string {
 func (*PaymentServiceDeletePaymentMethodRequest) ProtoMessage() {}
 
 func (x *PaymentServiceDeletePaymentMethodRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_api_v1_payment_proto_msgTypes[15]
+	mi := &file_api_v1_payment_proto_msgTypes[16]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -964,7 +1035,7 @@ func (x *PaymentServiceDeletePaymentMethodRequest) ProtoReflect() protoreflect.M
 
 // Deprecated: Use PaymentServiceDeletePaymentMethodRequest.ProtoReflect.Descriptor instead.
 func (*PaymentServiceDeletePaymentMethodRequest) Descriptor() ([]byte, []int) {
-	return file_api_v1_payment_proto_rawDescGZIP(), []int{15}
+	return file_api_v1_payment_proto_rawDescGZIP(), []int{16}
 }
 
 func (x *PaymentServiceDeletePaymentMethodRequest) GetLogin() string {
@@ -983,7 +1054,7 @@ type PaymentServiceDeletePaymentMethodResponse struct {
 func (x *PaymentServiceDeletePaymentMethodResponse) Reset() {
 	*x = PaymentServiceDeletePaymentMethodResponse{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_v1_payment_proto_msgTypes[16]
+		mi := &file_api_v1_payment_proto_msgTypes[17]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -996,7 +1067,7 @@ func (x *PaymentServiceDeletePaymentMethodResponse) String() string {
 func (*PaymentServiceDeletePaymentMethodResponse) ProtoMessage() {}
 
 func (x *PaymentServiceDeletePaymentMethodResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_api_v1_payment_proto_msgTypes[16]
+	mi := &file_api_v1_payment_proto_msgTypes[17]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1009,7 +1080,7 @@ func (x *PaymentServiceDeletePaymentMethodResponse) ProtoReflect() protoreflect.
 
 // Deprecated: Use PaymentServiceDeletePaymentMethodResponse.ProtoReflect.Descriptor instead.
 func (*PaymentServiceDeletePaymentMethodResponse) Descriptor() ([]byte, []int) {
-	return file_api_v1_payment_proto_rawDescGZIP(), []int{16}
+	return file_api_v1_payment_proto_rawDescGZIP(), []int{17}
 }
 
 type PaymentServiceGetSubscriptionUsageRequest struct {
@@ -1023,7 +1094,7 @@ type PaymentServiceGetSubscriptionUsageRequest struct {
 func (x *PaymentServiceGetSubscriptionUsageRequest) Reset() {
 	*x = PaymentServiceGetSubscriptionUsageRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_v1_payment_proto_msgTypes[17]
+		mi := &file_api_v1_payment_proto_msgTypes[18]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1036,7 +1107,7 @@ func (x *PaymentServiceGetSubscriptionUsageRequest) String() string {
 func (*PaymentServiceGetSubscriptionUsageRequest) ProtoMessage() {}
 
 func (x *PaymentServiceGetSubscriptionUsageRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_api_v1_payment_proto_msgTypes[17]
+	mi := &file_api_v1_payment_proto_msgTypes[18]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1049,7 +1120,7 @@ func (x *PaymentServiceGetSubscriptionUsageRequest) ProtoReflect() protoreflect.
 
 // Deprecated: Use PaymentServiceGetSubscriptionUsageRequest.ProtoReflect.Descriptor instead.
 func (*PaymentServiceGetSubscriptionUsageRequest) Descriptor() ([]byte, []int) {
-	return file_api_v1_payment_proto_rawDescGZIP(), []int{17}
+	return file_api_v1_payment_proto_rawDescGZIP(), []int{18}
 }
 
 func (x *PaymentServiceGetSubscriptionUsageRequest) GetLogin() string {
@@ -1070,7 +1141,7 @@ type PaymentServiceGetSubscriptionUsageResponse struct {
 func (x *PaymentServiceGetSubscriptionUsageResponse) Reset() {
 	*x = PaymentServiceGetSubscriptionUsageResponse{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_v1_payment_proto_msgTypes[18]
+		mi := &file_api_v1_payment_proto_msgTypes[19]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1083,7 +1154,7 @@ func (x *PaymentServiceGetSubscriptionUsageResponse) String() string {
 func (*PaymentServiceGetSubscriptionUsageResponse) ProtoMessage() {}
 
 func (x *PaymentServiceGetSubscriptionUsageResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_api_v1_payment_proto_msgTypes[18]
+	mi := &file_api_v1_payment_proto_msgTypes[19]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1096,12 +1167,114 @@ func (x *PaymentServiceGetSubscriptionUsageResponse) ProtoReflect() protoreflect
 
 // Deprecated: Use PaymentServiceGetSubscriptionUsageResponse.ProtoReflect.Descriptor instead.
 func (*PaymentServiceGetSubscriptionUsageResponse) Descriptor() ([]byte, []int) {
-	return file_api_v1_payment_proto_rawDescGZIP(), []int{18}
+	return file_api_v1_payment_proto_rawDescGZIP(), []int{19}
 }
 
 func (x *PaymentServiceGetSubscriptionUsageResponse) GetSubscriptionUsageItems() []*SubscriptionUsageItem {
 	if x != nil {
 		return x.SubscriptionUsageItems
+	}
+	return nil
+}
+
+type PaymentServiceGetInvoicesRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Login      string `protobuf:"bytes,1,opt,name=login,proto3" json:"login,omitempty"`
+	CustomerId string `protobuf:"bytes,2,opt,name=customer_id,json=customerId,proto3" json:"customer_id,omitempty"`
+}
+
+func (x *PaymentServiceGetInvoicesRequest) Reset() {
+	*x = PaymentServiceGetInvoicesRequest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_api_v1_payment_proto_msgTypes[20]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *PaymentServiceGetInvoicesRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*PaymentServiceGetInvoicesRequest) ProtoMessage() {}
+
+func (x *PaymentServiceGetInvoicesRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_api_v1_payment_proto_msgTypes[20]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use PaymentServiceGetInvoicesRequest.ProtoReflect.Descriptor instead.
+func (*PaymentServiceGetInvoicesRequest) Descriptor() ([]byte, []int) {
+	return file_api_v1_payment_proto_rawDescGZIP(), []int{20}
+}
+
+func (x *PaymentServiceGetInvoicesRequest) GetLogin() string {
+	if x != nil {
+		return x.Login
+	}
+	return ""
+}
+
+func (x *PaymentServiceGetInvoicesRequest) GetCustomerId() string {
+	if x != nil {
+		return x.CustomerId
+	}
+	return ""
+}
+
+type PaymentServiceGetInvoicesResponse struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Invoices []*Invoice `protobuf:"bytes,1,rep,name=invoices,proto3" json:"invoices,omitempty"`
+}
+
+func (x *PaymentServiceGetInvoicesResponse) Reset() {
+	*x = PaymentServiceGetInvoicesResponse{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_api_v1_payment_proto_msgTypes[21]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *PaymentServiceGetInvoicesResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*PaymentServiceGetInvoicesResponse) ProtoMessage() {}
+
+func (x *PaymentServiceGetInvoicesResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_api_v1_payment_proto_msgTypes[21]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use PaymentServiceGetInvoicesResponse.ProtoReflect.Descriptor instead.
+func (*PaymentServiceGetInvoicesResponse) Descriptor() ([]byte, []int) {
+	return file_api_v1_payment_proto_rawDescGZIP(), []int{21}
+}
+
+func (x *PaymentServiceGetInvoicesResponse) GetInvoices() []*Invoice {
+	if x != nil {
+		return x.Invoices
 	}
 	return nil
 }
@@ -1175,6 +1348,18 @@ var file_api_v1_payment_proto_rawDesc = []byte{
 	0x69, 0x6f, 0x6e, 0x49, 0x74, 0x65, 0x6d, 0x4e, 0x61, 0x6d, 0x65, 0x12, 0x1f, 0x0a, 0x0b, 0x74,
 	0x6f, 0x74, 0x61, 0x6c, 0x5f, 0x75, 0x73, 0x61, 0x67, 0x65, 0x18, 0x03, 0x20, 0x01, 0x28, 0x03,
 	0x52, 0x0a, 0x74, 0x6f, 0x74, 0x61, 0x6c, 0x55, 0x73, 0x61, 0x67, 0x65, 0x12, 0x3d, 0x0a, 0x0c,
+	0x70, 0x65, 0x72, 0x69, 0x6f, 0x64, 0x5f, 0x73, 0x74, 0x61, 0x72, 0x74, 0x18, 0x04, 0x20, 0x01,
+	0x28, 0x0b, 0x32, 0x1a, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74,
+	0x6f, 0x62, 0x75, 0x66, 0x2e, 0x54, 0x69, 0x6d, 0x65, 0x73, 0x74, 0x61, 0x6d, 0x70, 0x52, 0x0b,
+	0x70, 0x65, 0x72, 0x69, 0x6f, 0x64, 0x53, 0x74, 0x61, 0x72, 0x74, 0x12, 0x39, 0x0a, 0x0a, 0x70,
+	0x65, 0x72, 0x69, 0x6f, 0x64, 0x5f, 0x65, 0x6e, 0x64, 0x18, 0x05, 0x20, 0x01, 0x28, 0x0b, 0x32,
+	0x1a, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75,
+	0x66, 0x2e, 0x54, 0x69, 0x6d, 0x65, 0x73, 0x74, 0x61, 0x6d, 0x70, 0x52, 0x09, 0x70, 0x65, 0x72,
+	0x69, 0x6f, 0x64, 0x45, 0x6e, 0x64, 0x22, 0xbd, 0x01, 0x0a, 0x07, 0x49, 0x6e, 0x76, 0x6f, 0x69,
+	0x63, 0x65, 0x12, 0x0e, 0x0a, 0x02, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x02,
+	0x69, 0x64, 0x12, 0x28, 0x0a, 0x10, 0x70, 0x64, 0x66, 0x5f, 0x64, 0x6f, 0x77, 0x6e, 0x6c, 0x6f,
+	0x61, 0x64, 0x5f, 0x75, 0x72, 0x6c, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0e, 0x70, 0x64,
+	0x66, 0x44, 0x6f, 0x77, 0x6e, 0x6c, 0x6f, 0x61, 0x64, 0x55, 0x72, 0x6c, 0x12, 0x3d, 0x0a, 0x0c,
 	0x70, 0x65, 0x72, 0x69, 0x6f, 0x64, 0x5f, 0x73, 0x74, 0x61, 0x72, 0x74, 0x18, 0x04, 0x20, 0x01,
 	0x28, 0x0b, 0x32, 0x1a, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74,
 	0x6f, 0x62, 0x75, 0x66, 0x2e, 0x54, 0x69, 0x6d, 0x65, 0x73, 0x74, 0x61, 0x6d, 0x70, 0x52, 0x0b,
@@ -1259,74 +1444,93 @@ var file_api_v1_payment_proto_rawDesc = []byte{
 	0x28, 0x0b, 0x32, 0x1d, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x76, 0x31, 0x2e, 0x53, 0x75, 0x62, 0x73,
 	0x63, 0x72, 0x69, 0x70, 0x74, 0x69, 0x6f, 0x6e, 0x55, 0x73, 0x61, 0x67, 0x65, 0x49, 0x74, 0x65,
 	0x6d, 0x52, 0x16, 0x73, 0x75, 0x62, 0x73, 0x63, 0x72, 0x69, 0x70, 0x74, 0x69, 0x6f, 0x6e, 0x55,
-	0x73, 0x61, 0x67, 0x65, 0x49, 0x74, 0x65, 0x6d, 0x73, 0x32, 0x9f, 0x07, 0x0a, 0x0e, 0x50, 0x61,
-	0x79, 0x6d, 0x65, 0x6e, 0x74, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x12, 0x8a, 0x01, 0x0a,
-	0x16, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x4f, 0x72, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x43,
-	0x75, 0x73, 0x74, 0x6f, 0x6d, 0x65, 0x72, 0x12, 0x33, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x76, 0x31,
-	0x2e, 0x50, 0x61, 0x79, 0x6d, 0x65, 0x6e, 0x74, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x43,
-	0x72, 0x65, 0x61, 0x74, 0x65, 0x4f, 0x72, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x43, 0x75, 0x73,
-	0x74, 0x6f, 0x6d, 0x65, 0x72, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x34, 0x2e, 0x61,
-	0x70, 0x69, 0x2e, 0x76, 0x31, 0x2e, 0x50, 0x61, 0x79, 0x6d, 0x65, 0x6e, 0x74, 0x53, 0x65, 0x72,
-	0x76, 0x69, 0x63, 0x65, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x4f, 0x72, 0x55, 0x70, 0x64, 0x61,
-	0x74, 0x65, 0x43, 0x75, 0x73, 0x74, 0x6f, 0x6d, 0x65, 0x72, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e,
-	0x73, 0x65, 0x22, 0x05, 0xc2, 0xf3, 0x18, 0x01, 0x01, 0x12, 0x69, 0x0a, 0x0b, 0x47, 0x65, 0x74,
-	0x43, 0x75, 0x73, 0x74, 0x6f, 0x6d, 0x65, 0x72, 0x12, 0x28, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x76,
-	0x31, 0x2e, 0x50, 0x61, 0x79, 0x6d, 0x65, 0x6e, 0x74, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65,
-	0x47, 0x65, 0x74, 0x43, 0x75, 0x73, 0x74, 0x6f, 0x6d, 0x65, 0x72, 0x52, 0x65, 0x71, 0x75, 0x65,
-	0x73, 0x74, 0x1a, 0x29, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x76, 0x31, 0x2e, 0x50, 0x61, 0x79, 0x6d,
+	0x73, 0x61, 0x67, 0x65, 0x49, 0x74, 0x65, 0x6d, 0x73, 0x22, 0x70, 0x0a, 0x20, 0x50, 0x61, 0x79,
+	0x6d, 0x65, 0x6e, 0x74, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x47, 0x65, 0x74, 0x49, 0x6e,
+	0x76, 0x6f, 0x69, 0x63, 0x65, 0x73, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x20, 0x0a,
+	0x05, 0x6c, 0x6f, 0x67, 0x69, 0x6e, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x42, 0x0a, 0xfa, 0x42,
+	0x07, 0x72, 0x05, 0x10, 0x02, 0x18, 0x80, 0x01, 0x52, 0x05, 0x6c, 0x6f, 0x67, 0x69, 0x6e, 0x12,
+	0x2a, 0x0a, 0x0b, 0x63, 0x75, 0x73, 0x74, 0x6f, 0x6d, 0x65, 0x72, 0x5f, 0x69, 0x64, 0x18, 0x02,
+	0x20, 0x01, 0x28, 0x09, 0x42, 0x09, 0xfa, 0x42, 0x06, 0x72, 0x04, 0x10, 0x12, 0x18, 0x12, 0x52,
+	0x0a, 0x63, 0x75, 0x73, 0x74, 0x6f, 0x6d, 0x65, 0x72, 0x49, 0x64, 0x22, 0x50, 0x0a, 0x21, 0x50,
+	0x61, 0x79, 0x6d, 0x65, 0x6e, 0x74, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x47, 0x65, 0x74,
+	0x49, 0x6e, 0x76, 0x6f, 0x69, 0x63, 0x65, 0x73, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65,
+	0x12, 0x2b, 0x0a, 0x08, 0x69, 0x6e, 0x76, 0x6f, 0x69, 0x63, 0x65, 0x73, 0x18, 0x01, 0x20, 0x03,
+	0x28, 0x0b, 0x32, 0x0f, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x76, 0x31, 0x2e, 0x49, 0x6e, 0x76, 0x6f,
+	0x69, 0x63, 0x65, 0x52, 0x08, 0x69, 0x6e, 0x76, 0x6f, 0x69, 0x63, 0x65, 0x73, 0x32, 0x85, 0x08,
+	0x0a, 0x0e, 0x50, 0x61, 0x79, 0x6d, 0x65, 0x6e, 0x74, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65,
+	0x12, 0x89, 0x01, 0x0a, 0x16, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x4f, 0x72, 0x55, 0x70, 0x64,
+	0x61, 0x74, 0x65, 0x43, 0x75, 0x73, 0x74, 0x6f, 0x6d, 0x65, 0x72, 0x12, 0x33, 0x2e, 0x61, 0x70,
+	0x69, 0x2e, 0x76, 0x31, 0x2e, 0x50, 0x61, 0x79, 0x6d, 0x65, 0x6e, 0x74, 0x53, 0x65, 0x72, 0x76,
+	0x69, 0x63, 0x65, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x4f, 0x72, 0x55, 0x70, 0x64, 0x61, 0x74,
+	0x65, 0x43, 0x75, 0x73, 0x74, 0x6f, 0x6d, 0x65, 0x72, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74,
+	0x1a, 0x34, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x76, 0x31, 0x2e, 0x50, 0x61, 0x79, 0x6d, 0x65, 0x6e,
+	0x74, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x4f, 0x72,
+	0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x43, 0x75, 0x73, 0x74, 0x6f, 0x6d, 0x65, 0x72, 0x52, 0x65,
+	0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x04, 0xc0, 0xf3, 0x18, 0x01, 0x12, 0x68, 0x0a, 0x0b,
+	0x47, 0x65, 0x74, 0x43, 0x75, 0x73, 0x74, 0x6f, 0x6d, 0x65, 0x72, 0x12, 0x28, 0x2e, 0x61, 0x70,
+	0x69, 0x2e, 0x76, 0x31, 0x2e, 0x50, 0x61, 0x79, 0x6d, 0x65, 0x6e, 0x74, 0x53, 0x65, 0x72, 0x76,
+	0x69, 0x63, 0x65, 0x47, 0x65, 0x74, 0x43, 0x75, 0x73, 0x74, 0x6f, 0x6d, 0x65, 0x72, 0x52, 0x65,
+	0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x29, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x76, 0x31, 0x2e, 0x50,
+	0x61, 0x79, 0x6d, 0x65, 0x6e, 0x74, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x47, 0x65, 0x74,
+	0x43, 0x75, 0x73, 0x74, 0x6f, 0x6d, 0x65, 0x72, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65,
+	0x22, 0x04, 0xc0, 0xf3, 0x18, 0x01, 0x12, 0x83, 0x01, 0x0a, 0x14, 0x47, 0x65, 0x74, 0x43, 0x75,
+	0x73, 0x74, 0x6f, 0x6d, 0x65, 0x72, 0x57, 0x69, 0x74, 0x68, 0x4c, 0x6f, 0x67, 0x69, 0x6e, 0x12,
+	0x31, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x76, 0x31, 0x2e, 0x50, 0x61, 0x79, 0x6d, 0x65, 0x6e, 0x74,
+	0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x47, 0x65, 0x74, 0x43, 0x75, 0x73, 0x74, 0x6f, 0x6d,
+	0x65, 0x72, 0x57, 0x69, 0x74, 0x68, 0x4c, 0x6f, 0x67, 0x69, 0x6e, 0x52, 0x65, 0x71, 0x75, 0x65,
+	0x73, 0x74, 0x1a, 0x32, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x76, 0x31, 0x2e, 0x50, 0x61, 0x79, 0x6d,
 	0x65, 0x6e, 0x74, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x47, 0x65, 0x74, 0x43, 0x75, 0x73,
-	0x74, 0x6f, 0x6d, 0x65, 0x72, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x05, 0xc2,
-	0xf3, 0x18, 0x01, 0x01, 0x12, 0x84, 0x01, 0x0a, 0x14, 0x47, 0x65, 0x74, 0x43, 0x75, 0x73, 0x74,
-	0x6f, 0x6d, 0x65, 0x72, 0x57, 0x69, 0x74, 0x68, 0x4c, 0x6f, 0x67, 0x69, 0x6e, 0x12, 0x31, 0x2e,
-	0x61, 0x70, 0x69, 0x2e, 0x76, 0x31, 0x2e, 0x50, 0x61, 0x79, 0x6d, 0x65, 0x6e, 0x74, 0x53, 0x65,
-	0x72, 0x76, 0x69, 0x63, 0x65, 0x47, 0x65, 0x74, 0x43, 0x75, 0x73, 0x74, 0x6f, 0x6d, 0x65, 0x72,
-	0x57, 0x69, 0x74, 0x68, 0x4c, 0x6f, 0x67, 0x69, 0x6e, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74,
-	0x1a, 0x32, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x76, 0x31, 0x2e, 0x50, 0x61, 0x79, 0x6d, 0x65, 0x6e,
-	0x74, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x47, 0x65, 0x74, 0x43, 0x75, 0x73, 0x74, 0x6f,
-	0x6d, 0x65, 0x72, 0x57, 0x69, 0x74, 0x68, 0x4c, 0x6f, 0x67, 0x69, 0x6e, 0x52, 0x65, 0x73, 0x70,
-	0x6f, 0x6e, 0x73, 0x65, 0x22, 0x05, 0xc2, 0xf3, 0x18, 0x01, 0x01, 0x12, 0x87, 0x01, 0x0a, 0x15,
-	0x43, 0x68, 0x65, 0x63, 0x6b, 0x49, 0x66, 0x43, 0x75, 0x73, 0x74, 0x6f, 0x6d, 0x65, 0x72, 0x45,
-	0x78, 0x69, 0x73, 0x74, 0x73, 0x12, 0x32, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x76, 0x31, 0x2e, 0x50,
-	0x61, 0x79, 0x6d, 0x65, 0x6e, 0x74, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x43, 0x68, 0x65,
-	0x63, 0x6b, 0x49, 0x66, 0x43, 0x75, 0x73, 0x74, 0x6f, 0x6d, 0x65, 0x72, 0x45, 0x78, 0x69, 0x73,
-	0x74, 0x73, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x33, 0x2e, 0x61, 0x70, 0x69, 0x2e,
-	0x76, 0x31, 0x2e, 0x50, 0x61, 0x79, 0x6d, 0x65, 0x6e, 0x74, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63,
-	0x65, 0x43, 0x68, 0x65, 0x63, 0x6b, 0x49, 0x66, 0x43, 0x75, 0x73, 0x74, 0x6f, 0x6d, 0x65, 0x72,
-	0x45, 0x78, 0x69, 0x73, 0x74, 0x73, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x05,
-	0xc2, 0xf3, 0x18, 0x01, 0x01, 0x12, 0x79, 0x0a, 0x10, 0x48, 0x61, 0x73, 0x50, 0x61, 0x79, 0x6d,
+	0x74, 0x6f, 0x6d, 0x65, 0x72, 0x57, 0x69, 0x74, 0x68, 0x4c, 0x6f, 0x67, 0x69, 0x6e, 0x52, 0x65,
+	0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x04, 0xc0, 0xf3, 0x18, 0x01, 0x12, 0x86, 0x01, 0x0a,
+	0x15, 0x43, 0x68, 0x65, 0x63, 0x6b, 0x49, 0x66, 0x43, 0x75, 0x73, 0x74, 0x6f, 0x6d, 0x65, 0x72,
+	0x45, 0x78, 0x69, 0x73, 0x74, 0x73, 0x12, 0x32, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x76, 0x31, 0x2e,
+	0x50, 0x61, 0x79, 0x6d, 0x65, 0x6e, 0x74, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x43, 0x68,
+	0x65, 0x63, 0x6b, 0x49, 0x66, 0x43, 0x75, 0x73, 0x74, 0x6f, 0x6d, 0x65, 0x72, 0x45, 0x78, 0x69,
+	0x73, 0x74, 0x73, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x33, 0x2e, 0x61, 0x70, 0x69,
+	0x2e, 0x76, 0x31, 0x2e, 0x50, 0x61, 0x79, 0x6d, 0x65, 0x6e, 0x74, 0x53, 0x65, 0x72, 0x76, 0x69,
+	0x63, 0x65, 0x43, 0x68, 0x65, 0x63, 0x6b, 0x49, 0x66, 0x43, 0x75, 0x73, 0x74, 0x6f, 0x6d, 0x65,
+	0x72, 0x45, 0x78, 0x69, 0x73, 0x74, 0x73, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22,
+	0x04, 0xc0, 0xf3, 0x18, 0x01, 0x12, 0x7b, 0x0a, 0x10, 0x48, 0x61, 0x73, 0x50, 0x61, 0x79, 0x6d,
 	0x65, 0x6e, 0x74, 0x4d, 0x65, 0x74, 0x68, 0x6f, 0x64, 0x12, 0x2d, 0x2e, 0x61, 0x70, 0x69, 0x2e,
 	0x76, 0x31, 0x2e, 0x50, 0x61, 0x79, 0x6d, 0x65, 0x6e, 0x74, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63,
 	0x65, 0x48, 0x61, 0x73, 0x50, 0x61, 0x79, 0x6d, 0x65, 0x6e, 0x74, 0x4d, 0x65, 0x74, 0x68, 0x6f,
 	0x64, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x2e, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x76,
 	0x31, 0x2e, 0x50, 0x61, 0x79, 0x6d, 0x65, 0x6e, 0x74, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65,
 	0x48, 0x61, 0x73, 0x50, 0x61, 0x79, 0x6d, 0x65, 0x6e, 0x74, 0x4d, 0x65, 0x74, 0x68, 0x6f, 0x64,
-	0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x06, 0xca, 0xf3, 0x18, 0x02, 0x01, 0x02,
-	0x12, 0x81, 0x01, 0x0a, 0x13, 0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x50, 0x61, 0x79, 0x6d, 0x65,
-	0x6e, 0x74, 0x4d, 0x65, 0x74, 0x68, 0x6f, 0x64, 0x12, 0x30, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x76,
-	0x31, 0x2e, 0x50, 0x61, 0x79, 0x6d, 0x65, 0x6e, 0x74, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65,
-	0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x50, 0x61, 0x79, 0x6d, 0x65, 0x6e, 0x74, 0x4d, 0x65, 0x74,
-	0x68, 0x6f, 0x64, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x31, 0x2e, 0x61, 0x70, 0x69,
+	0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x08, 0xc8, 0xf3, 0x18, 0x01, 0xc8, 0xf3,
+	0x18, 0x02, 0x12, 0x80, 0x01, 0x0a, 0x13, 0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x50, 0x61, 0x79,
+	0x6d, 0x65, 0x6e, 0x74, 0x4d, 0x65, 0x74, 0x68, 0x6f, 0x64, 0x12, 0x30, 0x2e, 0x61, 0x70, 0x69,
 	0x2e, 0x76, 0x31, 0x2e, 0x50, 0x61, 0x79, 0x6d, 0x65, 0x6e, 0x74, 0x53, 0x65, 0x72, 0x76, 0x69,
 	0x63, 0x65, 0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x50, 0x61, 0x79, 0x6d, 0x65, 0x6e, 0x74, 0x4d,
-	0x65, 0x74, 0x68, 0x6f, 0x64, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x05, 0xca,
-	0xf3, 0x18, 0x01, 0x01, 0x12, 0x84, 0x01, 0x0a, 0x14, 0x47, 0x65, 0x74, 0x53, 0x75, 0x62, 0x73,
-	0x63, 0x72, 0x69, 0x70, 0x74, 0x69, 0x6f, 0x6e, 0x55, 0x73, 0x61, 0x67, 0x65, 0x12, 0x31, 0x2e,
-	0x61, 0x70, 0x69, 0x2e, 0x76, 0x31, 0x2e, 0x50, 0x61, 0x79, 0x6d, 0x65, 0x6e, 0x74, 0x53, 0x65,
-	0x72, 0x76, 0x69, 0x63, 0x65, 0x47, 0x65, 0x74, 0x53, 0x75, 0x62, 0x73, 0x63, 0x72, 0x69, 0x70,
-	0x74, 0x69, 0x6f, 0x6e, 0x55, 0x73, 0x61, 0x67, 0x65, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74,
-	0x1a, 0x32, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x76, 0x31, 0x2e, 0x50, 0x61, 0x79, 0x6d, 0x65, 0x6e,
-	0x74, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x47, 0x65, 0x74, 0x53, 0x75, 0x62, 0x73, 0x63,
-	0x72, 0x69, 0x70, 0x74, 0x69, 0x6f, 0x6e, 0x55, 0x73, 0x61, 0x67, 0x65, 0x52, 0x65, 0x73, 0x70,
-	0x6f, 0x6e, 0x73, 0x65, 0x22, 0x05, 0xca, 0xf3, 0x18, 0x01, 0x01, 0x42, 0x85, 0x01, 0x0a, 0x0a,
-	0x63, 0x6f, 0x6d, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x76, 0x31, 0x42, 0x0c, 0x50, 0x61, 0x79, 0x6d,
-	0x65, 0x6e, 0x74, 0x50, 0x72, 0x6f, 0x74, 0x6f, 0x50, 0x01, 0x5a, 0x30, 0x67, 0x69, 0x74, 0x68,
-	0x75, 0x62, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x6d, 0x65, 0x74, 0x61, 0x6c, 0x2d, 0x73, 0x74, 0x61,
-	0x63, 0x6b, 0x2d, 0x63, 0x6c, 0x6f, 0x75, 0x64, 0x2f, 0x61, 0x70, 0x69, 0x2f, 0x67, 0x6f, 0x2f,
-	0x61, 0x70, 0x69, 0x2f, 0x76, 0x31, 0x3b, 0x61, 0x70, 0x69, 0x76, 0x31, 0xa2, 0x02, 0x03, 0x41,
-	0x58, 0x58, 0xaa, 0x02, 0x06, 0x41, 0x70, 0x69, 0x2e, 0x56, 0x31, 0xca, 0x02, 0x06, 0x41, 0x70,
-	0x69, 0x5c, 0x56, 0x31, 0xe2, 0x02, 0x12, 0x41, 0x70, 0x69, 0x5c, 0x56, 0x31, 0x5c, 0x47, 0x50,
-	0x42, 0x4d, 0x65, 0x74, 0x61, 0x64, 0x61, 0x74, 0x61, 0xea, 0x02, 0x07, 0x41, 0x70, 0x69, 0x3a,
-	0x3a, 0x56, 0x31, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x65, 0x74, 0x68, 0x6f, 0x64, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x31, 0x2e, 0x61,
+	0x70, 0x69, 0x2e, 0x76, 0x31, 0x2e, 0x50, 0x61, 0x79, 0x6d, 0x65, 0x6e, 0x74, 0x53, 0x65, 0x72,
+	0x76, 0x69, 0x63, 0x65, 0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x50, 0x61, 0x79, 0x6d, 0x65, 0x6e,
+	0x74, 0x4d, 0x65, 0x74, 0x68, 0x6f, 0x64, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22,
+	0x04, 0xc8, 0xf3, 0x18, 0x01, 0x12, 0x83, 0x01, 0x0a, 0x14, 0x47, 0x65, 0x74, 0x53, 0x75, 0x62,
+	0x73, 0x63, 0x72, 0x69, 0x70, 0x74, 0x69, 0x6f, 0x6e, 0x55, 0x73, 0x61, 0x67, 0x65, 0x12, 0x31,
+	0x2e, 0x61, 0x70, 0x69, 0x2e, 0x76, 0x31, 0x2e, 0x50, 0x61, 0x79, 0x6d, 0x65, 0x6e, 0x74, 0x53,
+	0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x47, 0x65, 0x74, 0x53, 0x75, 0x62, 0x73, 0x63, 0x72, 0x69,
+	0x70, 0x74, 0x69, 0x6f, 0x6e, 0x55, 0x73, 0x61, 0x67, 0x65, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73,
+	0x74, 0x1a, 0x32, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x76, 0x31, 0x2e, 0x50, 0x61, 0x79, 0x6d, 0x65,
+	0x6e, 0x74, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x47, 0x65, 0x74, 0x53, 0x75, 0x62, 0x73,
+	0x63, 0x72, 0x69, 0x70, 0x74, 0x69, 0x6f, 0x6e, 0x55, 0x73, 0x61, 0x67, 0x65, 0x52, 0x65, 0x73,
+	0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x04, 0xc8, 0xf3, 0x18, 0x01, 0x12, 0x68, 0x0a, 0x0b, 0x47,
+	0x65, 0x74, 0x49, 0x6e, 0x76, 0x6f, 0x69, 0x63, 0x65, 0x73, 0x12, 0x28, 0x2e, 0x61, 0x70, 0x69,
+	0x2e, 0x76, 0x31, 0x2e, 0x50, 0x61, 0x79, 0x6d, 0x65, 0x6e, 0x74, 0x53, 0x65, 0x72, 0x76, 0x69,
+	0x63, 0x65, 0x47, 0x65, 0x74, 0x49, 0x6e, 0x76, 0x6f, 0x69, 0x63, 0x65, 0x73, 0x52, 0x65, 0x71,
+	0x75, 0x65, 0x73, 0x74, 0x1a, 0x29, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x76, 0x31, 0x2e, 0x50, 0x61,
+	0x79, 0x6d, 0x65, 0x6e, 0x74, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x47, 0x65, 0x74, 0x49,
+	0x6e, 0x76, 0x6f, 0x69, 0x63, 0x65, 0x73, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22,
+	0x04, 0xc8, 0xf3, 0x18, 0x01, 0x42, 0x85, 0x01, 0x0a, 0x0a, 0x63, 0x6f, 0x6d, 0x2e, 0x61, 0x70,
+	0x69, 0x2e, 0x76, 0x31, 0x42, 0x0c, 0x50, 0x61, 0x79, 0x6d, 0x65, 0x6e, 0x74, 0x50, 0x72, 0x6f,
+	0x74, 0x6f, 0x50, 0x01, 0x5a, 0x30, 0x67, 0x69, 0x74, 0x68, 0x75, 0x62, 0x2e, 0x63, 0x6f, 0x6d,
+	0x2f, 0x6d, 0x65, 0x74, 0x61, 0x6c, 0x2d, 0x73, 0x74, 0x61, 0x63, 0x6b, 0x2d, 0x63, 0x6c, 0x6f,
+	0x75, 0x64, 0x2f, 0x61, 0x70, 0x69, 0x2f, 0x67, 0x6f, 0x2f, 0x61, 0x70, 0x69, 0x2f, 0x76, 0x31,
+	0x3b, 0x61, 0x70, 0x69, 0x76, 0x31, 0xa2, 0x02, 0x03, 0x41, 0x58, 0x58, 0xaa, 0x02, 0x06, 0x41,
+	0x70, 0x69, 0x2e, 0x56, 0x31, 0xca, 0x02, 0x06, 0x41, 0x70, 0x69, 0x5c, 0x56, 0x31, 0xe2, 0x02,
+	0x12, 0x41, 0x70, 0x69, 0x5c, 0x56, 0x31, 0x5c, 0x47, 0x50, 0x42, 0x4d, 0x65, 0x74, 0x61, 0x64,
+	0x61, 0x74, 0x61, 0xea, 0x02, 0x07, 0x41, 0x70, 0x69, 0x3a, 0x3a, 0x56, 0x31, 0x62, 0x06, 0x70,
+	0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -1341,60 +1545,68 @@ func file_api_v1_payment_proto_rawDescGZIP() []byte {
 	return file_api_v1_payment_proto_rawDescData
 }
 
-var file_api_v1_payment_proto_msgTypes = make([]protoimpl.MessageInfo, 19)
+var file_api_v1_payment_proto_msgTypes = make([]protoimpl.MessageInfo, 22)
 var file_api_v1_payment_proto_goTypes = []interface{}{
 	(*PaymentCustomer)(nil),       // 0: api.v1.PaymentCustomer
 	(*Card)(nil),                  // 1: api.v1.Card
 	(*Price)(nil),                 // 2: api.v1.Price
 	(*Address)(nil),               // 3: api.v1.Address
 	(*SubscriptionUsageItem)(nil), // 4: api.v1.SubscriptionUsageItem
-	(*PaymentServiceCreateOrUpdateCustomerRequest)(nil),  // 5: api.v1.PaymentServiceCreateOrUpdateCustomerRequest
-	(*PaymentServiceCreateOrUpdateCustomerResponse)(nil), // 6: api.v1.PaymentServiceCreateOrUpdateCustomerResponse
-	(*PaymentServiceGetCustomerRequest)(nil),             // 7: api.v1.PaymentServiceGetCustomerRequest
-	(*PaymentServiceGetCustomerResponse)(nil),            // 8: api.v1.PaymentServiceGetCustomerResponse
-	(*PaymentServiceGetCustomerWithLoginRequest)(nil),    // 9: api.v1.PaymentServiceGetCustomerWithLoginRequest
-	(*PaymentServiceGetCustomerWithLoginResponse)(nil),   // 10: api.v1.PaymentServiceGetCustomerWithLoginResponse
-	(*PaymentServiceCheckIfCustomerExistsRequest)(nil),   // 11: api.v1.PaymentServiceCheckIfCustomerExistsRequest
-	(*PaymentServiceCheckIfCustomerExistsResponse)(nil),  // 12: api.v1.PaymentServiceCheckIfCustomerExistsResponse
-	(*PaymentServiceHasPaymentMethodRequest)(nil),        // 13: api.v1.PaymentServiceHasPaymentMethodRequest
-	(*PaymentServiceHasPaymentMethodResponse)(nil),       // 14: api.v1.PaymentServiceHasPaymentMethodResponse
-	(*PaymentServiceDeletePaymentMethodRequest)(nil),     // 15: api.v1.PaymentServiceDeletePaymentMethodRequest
-	(*PaymentServiceDeletePaymentMethodResponse)(nil),    // 16: api.v1.PaymentServiceDeletePaymentMethodResponse
-	(*PaymentServiceGetSubscriptionUsageRequest)(nil),    // 17: api.v1.PaymentServiceGetSubscriptionUsageRequest
-	(*PaymentServiceGetSubscriptionUsageResponse)(nil),   // 18: api.v1.PaymentServiceGetSubscriptionUsageResponse
-	(*timestamppb.Timestamp)(nil),                        // 19: google.protobuf.Timestamp
+	(*Invoice)(nil),               // 5: api.v1.Invoice
+	(*PaymentServiceCreateOrUpdateCustomerRequest)(nil),  // 6: api.v1.PaymentServiceCreateOrUpdateCustomerRequest
+	(*PaymentServiceCreateOrUpdateCustomerResponse)(nil), // 7: api.v1.PaymentServiceCreateOrUpdateCustomerResponse
+	(*PaymentServiceGetCustomerRequest)(nil),             // 8: api.v1.PaymentServiceGetCustomerRequest
+	(*PaymentServiceGetCustomerResponse)(nil),            // 9: api.v1.PaymentServiceGetCustomerResponse
+	(*PaymentServiceGetCustomerWithLoginRequest)(nil),    // 10: api.v1.PaymentServiceGetCustomerWithLoginRequest
+	(*PaymentServiceGetCustomerWithLoginResponse)(nil),   // 11: api.v1.PaymentServiceGetCustomerWithLoginResponse
+	(*PaymentServiceCheckIfCustomerExistsRequest)(nil),   // 12: api.v1.PaymentServiceCheckIfCustomerExistsRequest
+	(*PaymentServiceCheckIfCustomerExistsResponse)(nil),  // 13: api.v1.PaymentServiceCheckIfCustomerExistsResponse
+	(*PaymentServiceHasPaymentMethodRequest)(nil),        // 14: api.v1.PaymentServiceHasPaymentMethodRequest
+	(*PaymentServiceHasPaymentMethodResponse)(nil),       // 15: api.v1.PaymentServiceHasPaymentMethodResponse
+	(*PaymentServiceDeletePaymentMethodRequest)(nil),     // 16: api.v1.PaymentServiceDeletePaymentMethodRequest
+	(*PaymentServiceDeletePaymentMethodResponse)(nil),    // 17: api.v1.PaymentServiceDeletePaymentMethodResponse
+	(*PaymentServiceGetSubscriptionUsageRequest)(nil),    // 18: api.v1.PaymentServiceGetSubscriptionUsageRequest
+	(*PaymentServiceGetSubscriptionUsageResponse)(nil),   // 19: api.v1.PaymentServiceGetSubscriptionUsageResponse
+	(*PaymentServiceGetInvoicesRequest)(nil),             // 20: api.v1.PaymentServiceGetInvoicesRequest
+	(*PaymentServiceGetInvoicesResponse)(nil),            // 21: api.v1.PaymentServiceGetInvoicesResponse
+	(*timestamppb.Timestamp)(nil),                        // 22: google.protobuf.Timestamp
 }
 var file_api_v1_payment_proto_depIdxs = []int32{
 	1,  // 0: api.v1.PaymentCustomer.card:type_name -> api.v1.Card
 	2,  // 1: api.v1.PaymentCustomer.prices:type_name -> api.v1.Price
 	3,  // 2: api.v1.PaymentCustomer.address:type_name -> api.v1.Address
-	19, // 3: api.v1.SubscriptionUsageItem.period_start:type_name -> google.protobuf.Timestamp
-	19, // 4: api.v1.SubscriptionUsageItem.period_end:type_name -> google.protobuf.Timestamp
-	0,  // 5: api.v1.PaymentServiceCreateOrUpdateCustomerRequest.customer:type_name -> api.v1.PaymentCustomer
-	0,  // 6: api.v1.PaymentServiceCreateOrUpdateCustomerResponse.customer:type_name -> api.v1.PaymentCustomer
-	0,  // 7: api.v1.PaymentServiceGetCustomerResponse.customer:type_name -> api.v1.PaymentCustomer
-	0,  // 8: api.v1.PaymentServiceGetCustomerWithLoginResponse.customer:type_name -> api.v1.PaymentCustomer
-	0,  // 9: api.v1.PaymentServiceCheckIfCustomerExistsResponse.customer:type_name -> api.v1.PaymentCustomer
-	4,  // 10: api.v1.PaymentServiceGetSubscriptionUsageResponse.subscription_usage_items:type_name -> api.v1.SubscriptionUsageItem
-	5,  // 11: api.v1.PaymentService.CreateOrUpdateCustomer:input_type -> api.v1.PaymentServiceCreateOrUpdateCustomerRequest
-	7,  // 12: api.v1.PaymentService.GetCustomer:input_type -> api.v1.PaymentServiceGetCustomerRequest
-	9,  // 13: api.v1.PaymentService.GetCustomerWithLogin:input_type -> api.v1.PaymentServiceGetCustomerWithLoginRequest
-	11, // 14: api.v1.PaymentService.CheckIfCustomerExists:input_type -> api.v1.PaymentServiceCheckIfCustomerExistsRequest
-	13, // 15: api.v1.PaymentService.HasPaymentMethod:input_type -> api.v1.PaymentServiceHasPaymentMethodRequest
-	15, // 16: api.v1.PaymentService.DeletePaymentMethod:input_type -> api.v1.PaymentServiceDeletePaymentMethodRequest
-	17, // 17: api.v1.PaymentService.GetSubscriptionUsage:input_type -> api.v1.PaymentServiceGetSubscriptionUsageRequest
-	6,  // 18: api.v1.PaymentService.CreateOrUpdateCustomer:output_type -> api.v1.PaymentServiceCreateOrUpdateCustomerResponse
-	8,  // 19: api.v1.PaymentService.GetCustomer:output_type -> api.v1.PaymentServiceGetCustomerResponse
-	10, // 20: api.v1.PaymentService.GetCustomerWithLogin:output_type -> api.v1.PaymentServiceGetCustomerWithLoginResponse
-	12, // 21: api.v1.PaymentService.CheckIfCustomerExists:output_type -> api.v1.PaymentServiceCheckIfCustomerExistsResponse
-	14, // 22: api.v1.PaymentService.HasPaymentMethod:output_type -> api.v1.PaymentServiceHasPaymentMethodResponse
-	16, // 23: api.v1.PaymentService.DeletePaymentMethod:output_type -> api.v1.PaymentServiceDeletePaymentMethodResponse
-	18, // 24: api.v1.PaymentService.GetSubscriptionUsage:output_type -> api.v1.PaymentServiceGetSubscriptionUsageResponse
-	18, // [18:25] is the sub-list for method output_type
-	11, // [11:18] is the sub-list for method input_type
-	11, // [11:11] is the sub-list for extension type_name
-	11, // [11:11] is the sub-list for extension extendee
-	0,  // [0:11] is the sub-list for field type_name
+	22, // 3: api.v1.SubscriptionUsageItem.period_start:type_name -> google.protobuf.Timestamp
+	22, // 4: api.v1.SubscriptionUsageItem.period_end:type_name -> google.protobuf.Timestamp
+	22, // 5: api.v1.Invoice.period_start:type_name -> google.protobuf.Timestamp
+	22, // 6: api.v1.Invoice.period_end:type_name -> google.protobuf.Timestamp
+	0,  // 7: api.v1.PaymentServiceCreateOrUpdateCustomerRequest.customer:type_name -> api.v1.PaymentCustomer
+	0,  // 8: api.v1.PaymentServiceCreateOrUpdateCustomerResponse.customer:type_name -> api.v1.PaymentCustomer
+	0,  // 9: api.v1.PaymentServiceGetCustomerResponse.customer:type_name -> api.v1.PaymentCustomer
+	0,  // 10: api.v1.PaymentServiceGetCustomerWithLoginResponse.customer:type_name -> api.v1.PaymentCustomer
+	0,  // 11: api.v1.PaymentServiceCheckIfCustomerExistsResponse.customer:type_name -> api.v1.PaymentCustomer
+	4,  // 12: api.v1.PaymentServiceGetSubscriptionUsageResponse.subscription_usage_items:type_name -> api.v1.SubscriptionUsageItem
+	5,  // 13: api.v1.PaymentServiceGetInvoicesResponse.invoices:type_name -> api.v1.Invoice
+	6,  // 14: api.v1.PaymentService.CreateOrUpdateCustomer:input_type -> api.v1.PaymentServiceCreateOrUpdateCustomerRequest
+	8,  // 15: api.v1.PaymentService.GetCustomer:input_type -> api.v1.PaymentServiceGetCustomerRequest
+	10, // 16: api.v1.PaymentService.GetCustomerWithLogin:input_type -> api.v1.PaymentServiceGetCustomerWithLoginRequest
+	12, // 17: api.v1.PaymentService.CheckIfCustomerExists:input_type -> api.v1.PaymentServiceCheckIfCustomerExistsRequest
+	14, // 18: api.v1.PaymentService.HasPaymentMethod:input_type -> api.v1.PaymentServiceHasPaymentMethodRequest
+	16, // 19: api.v1.PaymentService.DeletePaymentMethod:input_type -> api.v1.PaymentServiceDeletePaymentMethodRequest
+	18, // 20: api.v1.PaymentService.GetSubscriptionUsage:input_type -> api.v1.PaymentServiceGetSubscriptionUsageRequest
+	20, // 21: api.v1.PaymentService.GetInvoices:input_type -> api.v1.PaymentServiceGetInvoicesRequest
+	7,  // 22: api.v1.PaymentService.CreateOrUpdateCustomer:output_type -> api.v1.PaymentServiceCreateOrUpdateCustomerResponse
+	9,  // 23: api.v1.PaymentService.GetCustomer:output_type -> api.v1.PaymentServiceGetCustomerResponse
+	11, // 24: api.v1.PaymentService.GetCustomerWithLogin:output_type -> api.v1.PaymentServiceGetCustomerWithLoginResponse
+	13, // 25: api.v1.PaymentService.CheckIfCustomerExists:output_type -> api.v1.PaymentServiceCheckIfCustomerExistsResponse
+	15, // 26: api.v1.PaymentService.HasPaymentMethod:output_type -> api.v1.PaymentServiceHasPaymentMethodResponse
+	17, // 27: api.v1.PaymentService.DeletePaymentMethod:output_type -> api.v1.PaymentServiceDeletePaymentMethodResponse
+	19, // 28: api.v1.PaymentService.GetSubscriptionUsage:output_type -> api.v1.PaymentServiceGetSubscriptionUsageResponse
+	21, // 29: api.v1.PaymentService.GetInvoices:output_type -> api.v1.PaymentServiceGetInvoicesResponse
+	22, // [22:30] is the sub-list for method output_type
+	14, // [14:22] is the sub-list for method input_type
+	14, // [14:14] is the sub-list for extension type_name
+	14, // [14:14] is the sub-list for extension extendee
+	0,  // [0:14] is the sub-list for field type_name
 }
 
 func init() { file_api_v1_payment_proto_init() }
@@ -1465,7 +1677,7 @@ func file_api_v1_payment_proto_init() {
 			}
 		}
 		file_api_v1_payment_proto_msgTypes[5].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*PaymentServiceCreateOrUpdateCustomerRequest); i {
+			switch v := v.(*Invoice); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1477,7 +1689,7 @@ func file_api_v1_payment_proto_init() {
 			}
 		}
 		file_api_v1_payment_proto_msgTypes[6].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*PaymentServiceCreateOrUpdateCustomerResponse); i {
+			switch v := v.(*PaymentServiceCreateOrUpdateCustomerRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1489,7 +1701,7 @@ func file_api_v1_payment_proto_init() {
 			}
 		}
 		file_api_v1_payment_proto_msgTypes[7].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*PaymentServiceGetCustomerRequest); i {
+			switch v := v.(*PaymentServiceCreateOrUpdateCustomerResponse); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1501,7 +1713,7 @@ func file_api_v1_payment_proto_init() {
 			}
 		}
 		file_api_v1_payment_proto_msgTypes[8].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*PaymentServiceGetCustomerResponse); i {
+			switch v := v.(*PaymentServiceGetCustomerRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1513,7 +1725,7 @@ func file_api_v1_payment_proto_init() {
 			}
 		}
 		file_api_v1_payment_proto_msgTypes[9].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*PaymentServiceGetCustomerWithLoginRequest); i {
+			switch v := v.(*PaymentServiceGetCustomerResponse); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1525,7 +1737,7 @@ func file_api_v1_payment_proto_init() {
 			}
 		}
 		file_api_v1_payment_proto_msgTypes[10].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*PaymentServiceGetCustomerWithLoginResponse); i {
+			switch v := v.(*PaymentServiceGetCustomerWithLoginRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1537,7 +1749,7 @@ func file_api_v1_payment_proto_init() {
 			}
 		}
 		file_api_v1_payment_proto_msgTypes[11].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*PaymentServiceCheckIfCustomerExistsRequest); i {
+			switch v := v.(*PaymentServiceGetCustomerWithLoginResponse); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1549,7 +1761,7 @@ func file_api_v1_payment_proto_init() {
 			}
 		}
 		file_api_v1_payment_proto_msgTypes[12].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*PaymentServiceCheckIfCustomerExistsResponse); i {
+			switch v := v.(*PaymentServiceCheckIfCustomerExistsRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1561,7 +1773,7 @@ func file_api_v1_payment_proto_init() {
 			}
 		}
 		file_api_v1_payment_proto_msgTypes[13].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*PaymentServiceHasPaymentMethodRequest); i {
+			switch v := v.(*PaymentServiceCheckIfCustomerExistsResponse); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1573,7 +1785,7 @@ func file_api_v1_payment_proto_init() {
 			}
 		}
 		file_api_v1_payment_proto_msgTypes[14].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*PaymentServiceHasPaymentMethodResponse); i {
+			switch v := v.(*PaymentServiceHasPaymentMethodRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1585,7 +1797,7 @@ func file_api_v1_payment_proto_init() {
 			}
 		}
 		file_api_v1_payment_proto_msgTypes[15].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*PaymentServiceDeletePaymentMethodRequest); i {
+			switch v := v.(*PaymentServiceHasPaymentMethodResponse); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1597,7 +1809,7 @@ func file_api_v1_payment_proto_init() {
 			}
 		}
 		file_api_v1_payment_proto_msgTypes[16].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*PaymentServiceDeletePaymentMethodResponse); i {
+			switch v := v.(*PaymentServiceDeletePaymentMethodRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1609,7 +1821,7 @@ func file_api_v1_payment_proto_init() {
 			}
 		}
 		file_api_v1_payment_proto_msgTypes[17].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*PaymentServiceGetSubscriptionUsageRequest); i {
+			switch v := v.(*PaymentServiceDeletePaymentMethodResponse); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1621,7 +1833,43 @@ func file_api_v1_payment_proto_init() {
 			}
 		}
 		file_api_v1_payment_proto_msgTypes[18].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*PaymentServiceGetSubscriptionUsageRequest); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_api_v1_payment_proto_msgTypes[19].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*PaymentServiceGetSubscriptionUsageResponse); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_api_v1_payment_proto_msgTypes[20].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*PaymentServiceGetInvoicesRequest); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_api_v1_payment_proto_msgTypes[21].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*PaymentServiceGetInvoicesResponse); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1640,7 +1888,7 @@ func file_api_v1_payment_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_api_v1_payment_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   19,
+			NumMessages:   22,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

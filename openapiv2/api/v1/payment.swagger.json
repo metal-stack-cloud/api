@@ -89,6 +89,25 @@
         }
       }
     },
+    "v1Invoice": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "pdfDownloadUrl": {
+          "type": "string"
+        },
+        "periodStart": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "periodEnd": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
     "v1PaymentCustomer": {
       "type": "object",
       "properties": {
@@ -159,6 +178,17 @@
       "properties": {
         "customer": {
           "$ref": "#/definitions/v1PaymentCustomer"
+        }
+      }
+    },
+    "v1PaymentServiceGetInvoicesResponse": {
+      "type": "object",
+      "properties": {
+        "invoices": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1Invoice"
+          }
         }
       }
     },
