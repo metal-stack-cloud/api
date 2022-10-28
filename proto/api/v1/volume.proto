@@ -9,9 +9,7 @@ import "validate/validate.proto";
 
 service VolumeService {
   rpc Get(VolumeServiceGetRequest) returns (VolumeServiceGetResponse) {
-    option (google.api.http) = {
-      get: "/api/v1/volume/{project}/{uuid}"
-    };
+    option (google.api.http) = {get: "/api/v1/volume/{project}/{uuid}"};
     option (project_roles) = PROJECT_ROLE_OWNER;
     option (project_roles) = PROJECT_ROLE_EDITOR;
     option (project_roles) = PROJECT_ROLE_VIEWER;
@@ -37,9 +35,7 @@ service VolumeService {
 
 service SnapshotService {
   rpc Get(SnapshotServiceGetRequest) returns (SnapshotServiceGetResponse) {
-    option (google.api.http) = {
-      get: "/api/v1/snapshot/{project}/{uuid}"
-    };
+    option (google.api.http) = {get: "/api/v1/snapshot/{project}/{uuid}"};
     option (project_roles) = PROJECT_ROLE_OWNER;
     option (project_roles) = PROJECT_ROLE_EDITOR;
     option (project_roles) = PROJECT_ROLE_VIEWER;
