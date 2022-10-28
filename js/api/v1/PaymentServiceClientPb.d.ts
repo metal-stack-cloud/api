@@ -37,4 +37,10 @@ export declare class PaymentServiceClient {
     methodDescriptorDeletePaymentMethod: any;
     deletePaymentMethod(request: api_v1_payment_pb.PaymentServiceDeletePaymentMethodRequest, metadata: grpcWeb.Metadata | null): Promise<api_v1_payment_pb.PaymentServiceDeletePaymentMethodResponse>;
     deletePaymentMethod(request: api_v1_payment_pb.PaymentServiceDeletePaymentMethodRequest, metadata: grpcWeb.Metadata | null, callback: (err: grpcWeb.RpcError, response: api_v1_payment_pb.PaymentServiceDeletePaymentMethodResponse) => void): grpcWeb.ClientReadableStream<api_v1_payment_pb.PaymentServiceDeletePaymentMethodResponse>;
+    methodDescriptorGetSubscriptionUsage: any;
+    getSubscriptionUsage(request: api_v1_payment_pb.PaymentServiceGetSubscriptionUsageRequest, metadata: grpcWeb.Metadata | null): Promise<api_v1_payment_pb.PaymentServiceGetSubscriptionUsageResponse>;
+    getSubscriptionUsage(request: api_v1_payment_pb.PaymentServiceGetSubscriptionUsageRequest, metadata: grpcWeb.Metadata | null, callback: (err: grpcWeb.RpcError, response: api_v1_payment_pb.PaymentServiceGetSubscriptionUsageResponse) => void): grpcWeb.ClientReadableStream<api_v1_payment_pb.PaymentServiceGetSubscriptionUsageResponse>;
+    methodDescriptorGetInvoices: any;
+    getInvoices(request: api_v1_payment_pb.PaymentServiceGetInvoicesRequest, metadata: grpcWeb.Metadata | null): Promise<api_v1_payment_pb.PaymentServiceGetInvoicesResponse>;
+    getInvoices(request: api_v1_payment_pb.PaymentServiceGetInvoicesRequest, metadata: grpcWeb.Metadata | null, callback: (err: grpcWeb.RpcError, response: api_v1_payment_pb.PaymentServiceGetInvoicesResponse) => void): grpcWeb.ClientReadableStream<api_v1_payment_pb.PaymentServiceGetInvoicesResponse>;
 }

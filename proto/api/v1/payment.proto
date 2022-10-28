@@ -3,6 +3,7 @@ syntax = "proto3";
 package api.v1;
 
 import "api/v1/common.proto";
+import "google/protobuf/timestamp.proto";
 import "validate/validate.proto";
 
 service PaymentService {
@@ -25,6 +26,12 @@ service PaymentService {
   rpc DeletePaymentMethod(PaymentServiceDeletePaymentMethodRequest) returns (PaymentServiceDeletePaymentMethodResponse) {
     option (project_roles) = PROJECT_ROLE_OWNER;
   }
+  rpc GetSubscriptionUsage(PaymentServiceGetSubscriptionUsageRequest) returns (PaymentServiceGetSubscriptionUsageResponse) {
+    option (project_roles) = PROJECT_ROLE_OWNER;
+  }
+  rpc GetInvoices(PaymentServiceGetInvoicesRequest) returns (PaymentServiceGetInvoicesResponse) {
+    option (project_roles) = PROJECT_ROLE_OWNER;
+  }
 }
 
 message PaymentCustomer {
@@ -43,8 +50,8 @@ message PaymentCustomer {
 message Card {
   string brand = 1;
   string country = 2;
-  uint64 exp_month = 3;
-  uint64 exp_year = 4;
+  int64 exp_month = 3;
+  int64 exp_year = 4;
   string last_4 = 5;
 }
 
@@ -61,6 +68,21 @@ message Address {
   string city = 4;
   string state = 5;
   string country = 6;
+}
+
+message SubscriptionUsageItem {
+  string subscription_item_id = 1;
+  string subscription_item_name = 2;
+  int64 total_usage = 3;
+  google.protobuf.Timestamp period_start = 4;
+  google.protobuf.Timestamp period_end = 5;
+}
+
+message Invoice {
+  string id = 1;
+  string pdf_download_url = 2;
+  google.protobuf.Timestamp period_start = 4;
+  google.protobuf.Timestamp period_end = 5;
 }
 
 message PaymentServiceCreateOrUpdateCustomerRequest {
@@ -119,3 +141,29 @@ message PaymentServiceDeletePaymentMethodRequest {
 }
 
 message PaymentServiceDeletePaymentMethodResponse {}
+
+message PaymentServiceGetSubscriptionUsageRequest {
+  string login = 1 [(validate.rules).string = {
+    min_len: 2,
+    max_len: 128,
+  }];
+}
+
+message PaymentServiceGetSubscriptionUsageResponse {
+  repeated SubscriptionUsageItem subscription_usage_items = 1;
+}
+
+message PaymentServiceGetInvoicesRequest {
+  string login = 1 [(validate.rules).string = {
+    min_len: 2,
+    max_len: 128,
+  }];
+  string customer_id = 2 [(validate.rules).string = {
+    min_len: 18,
+    max_len: 18,
+  }];
+}
+
+message PaymentServiceGetInvoicesResponse {
+  repeated Invoice invoices = 1;
+}

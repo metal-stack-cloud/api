@@ -30,17 +30,17 @@ plugins:
       - paths=source_relative
       - allow_delete_body=true
   # generate openapi documentation for api
-  - remote: buf.build/grpc-ecosystem/plugins/openapiv2:v2.11.3-1
+  - remote: buf.build/grpc-ecosystem/plugins/openapiv2:v2.12.0-1
     out: ../openapiv2
     opt:
       - allow_delete_body=true
   # generate typescript clients
-  - remote: buf.build/grpc/plugins/web:v1.3.1-2
+  - remote: buf.build/grpc/plugins/web:v1.4.1-1
     out: ../js
     opt:
       - mode=grpcwebtext
       - import_style=typescript
-  - remote: buf.build/grpc/plugins/web:v1.3.1-2
+  - remote: buf.build/grpc/plugins/web:v1.4.1-1
     out: ../js
     opt:
       - mode=grpcwebtext
@@ -51,3 +51,8 @@ plugins:
     opt:
       - import_style=commonjs
       - binary
+
+  # generate json docs
+  - remote: buf.build/sawadashota/plugins/protoc-gen-doc:v1.5.1
+    out: ../docs
+    opt: json,docs.json

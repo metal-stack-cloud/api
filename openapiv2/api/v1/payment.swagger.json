@@ -78,14 +78,33 @@
         },
         "expMonth": {
           "type": "string",
-          "format": "uint64"
+          "format": "int64"
         },
         "expYear": {
           "type": "string",
-          "format": "uint64"
+          "format": "int64"
         },
         "last4": {
           "type": "string"
+        }
+      }
+    },
+    "v1Invoice": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "pdfDownloadUrl": {
+          "type": "string"
+        },
+        "periodStart": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "periodEnd": {
+          "type": "string",
+          "format": "date-time"
         }
       }
     },
@@ -165,6 +184,28 @@
         }
       }
     },
+    "v1PaymentServiceGetInvoicesResponse": {
+      "type": "object",
+      "properties": {
+        "invoices": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1Invoice"
+          }
+        }
+      }
+    },
+    "v1PaymentServiceGetSubscriptionUsageResponse": {
+      "type": "object",
+      "properties": {
+        "subscriptionUsageItems": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1SubscriptionUsageItem"
+          }
+        }
+      }
+    },
     "v1PaymentServiceHasPaymentMethodResponse": {
       "type": "object",
       "properties": {
@@ -185,6 +226,29 @@
         },
         "currency": {
           "type": "string"
+        }
+      }
+    },
+    "v1SubscriptionUsageItem": {
+      "type": "object",
+      "properties": {
+        "subscriptionItemId": {
+          "type": "string"
+        },
+        "subscriptionItemName": {
+          "type": "string"
+        },
+        "totalUsage": {
+          "type": "string",
+          "format": "int64"
+        },
+        "periodStart": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "periodEnd": {
+          "type": "string",
+          "format": "date-time"
         }
       }
     }
