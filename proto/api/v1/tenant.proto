@@ -20,9 +20,7 @@ service TenantService {
   rpc CreateOrUpdate(TenantServiceCreateOrUpdateRequest) returns (TenantServiceCreateOrUpdateResponse) {}
 
   rpc Get(TenantServiceGetRequest) returns (TenantServiceGetResponse) {
-    option (google.api.http) = {
-      get: "/api/v1/tenant/{login}"
-    };
+    option (google.api.http) = {get: "/api/v1/tenant/{login}"};
     option (tenant_roles) = TENANT_ROLE_OWNER;
     option (tenant_roles) = TENANT_ROLE_EDITOR;
     option (tenant_roles) = TENANT_ROLE_VIEWER;
@@ -36,9 +34,7 @@ service TenantService {
     option (tenant_roles) = TENANT_ROLE_EDITOR;
   }
   rpc Delete(TenantServiceDeleteRequest) returns (TenantServiceDeleteResponse) {
-    option (google.api.http) = {
-      delete: "/api/v1/tenant/{login}"
-    };
+    option (google.api.http) = {delete: "/api/v1/tenant/{login}"};
     option (tenant_roles) = TENANT_ROLE_OWNER;
     option (tenant_roles) = TENANT_ROLE_EDITOR;
   }

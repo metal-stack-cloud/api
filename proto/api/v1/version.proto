@@ -6,9 +6,7 @@ import "google/api/annotations.proto";
 
 service VersionService {
   rpc Get(VersionServiceGetRequest) returns (VersionServiceGetResponse) {
-    option (google.api.http) = {
-      get: "/api/v1/version"
-    };
+    option (google.api.http) = {get: "/api/v1/version"};
   }
 }
 

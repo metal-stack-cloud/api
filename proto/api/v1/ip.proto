@@ -9,24 +9,18 @@ import "validate/validate.proto";
 
 service IPService {
   rpc Get(IPServiceGetRequest) returns (IPServiceGetResponse) {
-    option (google.api.http) = {
-      get: "/api/v1/ip/{project}/{uuid}"
-    };
+    option (google.api.http) = {get: "/api/v1/ip/{project}/{uuid}"};
     option (project_roles) = PROJECT_ROLE_OWNER;
     option (project_roles) = PROJECT_ROLE_EDITOR;
     option (project_roles) = PROJECT_ROLE_VIEWER;
   }
   rpc Allocate(IPServiceAllocateRequest) returns (IPServiceAllocateResponse) {
-    option (google.api.http) = {
-      get: "/api/v1/ip/allocate/{project}"
-    };
+    option (google.api.http) = {get: "/api/v1/ip/allocate/{project}"};
     option (project_roles) = PROJECT_ROLE_OWNER;
     option (project_roles) = PROJECT_ROLE_EDITOR;
   }
   rpc Static(IPServiceStaticRequest) returns (IPServiceStaticResponse) {
-    option (google.api.http) = {
-      get: "/api/v1/ip/static/{project}/{uuid}"
-    };
+    option (google.api.http) = {get: "/api/v1/ip/static/{project}/{uuid}"};
     option (project_roles) = PROJECT_ROLE_OWNER;
     option (project_roles) = PROJECT_ROLE_EDITOR;
   }
@@ -81,9 +75,7 @@ message IPServiceAllocateRequest {
     min_len: 2,
     max_len: 128
   }];
-  string description = 4 [(validate.rules).string = {
-    max_len: 128
-  }];
+  string description = 4 [(validate.rules).string = {max_len: 128}];
   string network = 5 [(validate.rules).string = {
     min_len: 2,
     max_len: 128
