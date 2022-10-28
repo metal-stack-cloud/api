@@ -17,9 +17,7 @@ service ClusterService {
     option (project_roles) = PROJECT_ROLE_EDITOR;
   }
   rpc Get(ClusterServiceGetRequest) returns (ClusterServiceGetResponse) {
-    option (google.api.http) = {
-      get: "/api/v1/cluster/{project}/{uuid}"
-    };
+    option (google.api.http) = {get: "/api/v1/cluster/{project}/{uuid}"};
     option (project_roles) = PROJECT_ROLE_OWNER;
     option (project_roles) = PROJECT_ROLE_EDITOR;
     option (project_roles) = PROJECT_ROLE_VIEWER;
@@ -55,9 +53,7 @@ service ClusterService {
     option (project_roles) = PROJECT_ROLE_EDITOR;
   }
   rpc GetCredentials(ClusterServiceGetCredentialsRequest) returns (ClusterServiceGetCredentialsResponse) {
-    option (google.api.http) = {
-      get: "/api/v1/cluster/credentials/{project}/{uuid}"
-    };
+    option (google.api.http) = {get: "/api/v1/cluster/credentials/{project}/{uuid}"};
     option (project_roles) = PROJECT_ROLE_OWNER;
     option (project_roles) = PROJECT_ROLE_EDITOR;
   }
