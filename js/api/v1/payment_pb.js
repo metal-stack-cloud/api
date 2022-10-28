@@ -553,8 +553,7 @@ proto.api.v1.PaymentCustomer.toObject = function(includeInstance, msg) {
     card: (f = msg.getCard()) && proto.api.v1.Card.toObject(includeInstance, f),
     pricesList: jspb.Message.toObjectList(msg.getPricesList(),
     proto.api.v1.Price.toObject, includeInstance),
-    address: (f = msg.getAddress()) && proto.api.v1.Address.toObject(includeInstance, f),
-    admitted: jspb.Message.getBooleanFieldWithDefault(msg, 10, false)
+    address: (f = msg.getAddress()) && proto.api.v1.Address.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -629,10 +628,6 @@ proto.api.v1.PaymentCustomer.deserializeBinaryFromReader = function(msg, reader)
       var value = new proto.api.v1.Address;
       reader.readMessage(value,proto.api.v1.Address.deserializeBinaryFromReader);
       msg.setAddress(value);
-      break;
-    case 10:
-      var value = /** @type {boolean} */ (reader.readBool());
-      msg.setAdmitted(value);
       break;
     default:
       reader.skipField();
@@ -727,13 +722,6 @@ proto.api.v1.PaymentCustomer.serializeBinaryToWriter = function(message, writer)
       9,
       f,
       proto.api.v1.Address.serializeBinaryToWriter
-    );
-  }
-  f = message.getAdmitted();
-  if (f) {
-    writer.writeBool(
-      10,
-      f
     );
   }
 };
@@ -1010,24 +998,6 @@ proto.api.v1.PaymentCustomer.prototype.clearAddress = function() {
  */
 proto.api.v1.PaymentCustomer.prototype.hasAddress = function() {
   return jspb.Message.getField(this, 9) != null;
-};
-
-
-/**
- * optional bool admitted = 10;
- * @return {boolean}
- */
-proto.api.v1.PaymentCustomer.prototype.getAdmitted = function() {
-  return /** @type {boolean} */ (jspb.Message.getBooleanFieldWithDefault(this, 10, false));
-};
-
-
-/**
- * @param {boolean} value
- * @return {!proto.api.v1.PaymentCustomer} returns this
- */
-proto.api.v1.PaymentCustomer.prototype.setAdmitted = function(value) {
-  return jspb.Message.setProto3BooleanField(this, 10, value);
 };
 
 

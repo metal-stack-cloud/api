@@ -1,12 +1,12 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "api/v1/payment.proto",
+    "title": "admin/v1/user.proto",
     "version": "version not set"
   },
   "tags": [
     {
-      "name": "PaymentService"
+      "name": "UserService"
     }
   ],
   "consumes": [
@@ -17,6 +17,49 @@
   ],
   "paths": {},
   "definitions": {
+    "adminv1User": {
+      "type": "object",
+      "properties": {
+        "user": {
+          "$ref": "#/definitions/apiv1User"
+        },
+        "paymentCustomer": {
+          "$ref": "#/definitions/v1PaymentCustomer"
+        }
+      },
+      "title": "User is for admin purpose a combined authenticated user and a payment customer"
+    },
+    "apiv1User": {
+      "type": "object",
+      "properties": {
+        "login": {
+          "type": "string",
+          "title": "the login at the provider"
+        },
+        "name": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "avatarUrl": {
+          "type": "string"
+        },
+        "oauthProvider": {
+          "$ref": "#/definitions/v1OAuthProvider"
+        },
+        "organizations": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1Organization"
+          }
+        },
+        "admitted": {
+          "type": "boolean"
+        }
+      },
+      "title": "User"
+    },
     "protobufAny": {
       "type": "object",
       "properties": {
@@ -89,22 +132,44 @@
         }
       }
     },
-    "v1Invoice": {
+    "v1OAuthProvider": {
+      "type": "string",
+      "enum": [
+        "O_AUTH_PROVIDER_UNSPECIFIED",
+        "O_AUTH_PROVIDER_GITHUB",
+        "O_AUTH_PROVIDER_AZURE"
+      ],
+      "default": "O_AUTH_PROVIDER_UNSPECIFIED"
+    },
+    "v1Organization": {
       "type": "object",
       "properties": {
         "id": {
           "type": "string"
         },
-        "pdfDownloadUrl": {
+        "login": {
           "type": "string"
         },
-        "periodStart": {
-          "type": "string",
-          "format": "date-time"
+        "name": {
+          "type": "string"
         },
-        "periodEnd": {
-          "type": "string",
-          "format": "date-time"
+        "email": {
+          "type": "string"
+        },
+        "billingEmail": {
+          "type": "string"
+        },
+        "avatarUrl": {
+          "type": "string"
+        },
+        "role": {
+          "$ref": "#/definitions/v1Role"
+        },
+        "teams": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1Team"
+          }
         }
       }
     },
@@ -143,74 +208,6 @@
         }
       }
     },
-    "v1PaymentServiceCheckIfCustomerExistsResponse": {
-      "type": "object",
-      "properties": {
-        "customer": {
-          "$ref": "#/definitions/v1PaymentCustomer"
-        },
-        "exists": {
-          "type": "boolean"
-        }
-      }
-    },
-    "v1PaymentServiceCreateOrUpdateCustomerResponse": {
-      "type": "object",
-      "properties": {
-        "customer": {
-          "$ref": "#/definitions/v1PaymentCustomer"
-        }
-      }
-    },
-    "v1PaymentServiceDeletePaymentMethodResponse": {
-      "type": "object"
-    },
-    "v1PaymentServiceGetCustomerResponse": {
-      "type": "object",
-      "properties": {
-        "customer": {
-          "$ref": "#/definitions/v1PaymentCustomer"
-        }
-      }
-    },
-    "v1PaymentServiceGetCustomerWithLoginResponse": {
-      "type": "object",
-      "properties": {
-        "customer": {
-          "$ref": "#/definitions/v1PaymentCustomer"
-        }
-      }
-    },
-    "v1PaymentServiceGetInvoicesResponse": {
-      "type": "object",
-      "properties": {
-        "invoices": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/v1Invoice"
-          }
-        }
-      }
-    },
-    "v1PaymentServiceGetSubscriptionUsageResponse": {
-      "type": "object",
-      "properties": {
-        "subscriptionUsageItems": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/v1SubscriptionUsageItem"
-          }
-        }
-      }
-    },
-    "v1PaymentServiceHasPaymentMethodResponse": {
-      "type": "object",
-      "properties": {
-        "exists": {
-          "type": "boolean"
-        }
-      }
-    },
     "v1Price": {
       "type": "object",
       "properties": {
@@ -226,26 +223,53 @@
         }
       }
     },
-    "v1SubscriptionUsageItem": {
+    "v1Role": {
+      "type": "string",
+      "enum": [
+        "ROLE_UNSPECIFIED",
+        "ROLE_MEMBER",
+        "ROLE_MAINTAINER",
+        "ROLE_ADMIN",
+        "ROLE_OWNER"
+      ],
+      "default": "ROLE_UNSPECIFIED"
+    },
+    "v1Team": {
       "type": "object",
       "properties": {
-        "subscriptionItemId": {
+        "id": {
           "type": "string"
         },
-        "subscriptionItemName": {
+        "name": {
           "type": "string"
         },
-        "totalUsage": {
-          "type": "string",
-          "format": "int64"
+        "avatarUrl": {
+          "type": "string"
         },
-        "periodStart": {
-          "type": "string",
-          "format": "date-time"
+        "role": {
+          "$ref": "#/definitions/v1Role"
         },
-        "periodEnd": {
-          "type": "string",
-          "format": "date-time"
+        "projectId": {
+          "type": "string"
+        }
+      }
+    },
+    "v1UserServiceAdmitResponse": {
+      "type": "object",
+      "properties": {
+        "user": {
+          "$ref": "#/definitions/adminv1User"
+        }
+      }
+    },
+    "v1UserServiceListResponse": {
+      "type": "object",
+      "properties": {
+        "users": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/adminv1User"
+          }
         }
       }
     }

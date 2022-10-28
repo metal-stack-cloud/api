@@ -1,0 +1,39 @@
+syntax = "proto3";
+
+package admin.v1;
+
+import "api/v1/common.proto";
+import "api/v1/payment.proto";
+import "api/v1/user.proto";
+
+service UserService {
+  rpc List(UserServiceListRequest) returns (UserServiceListResponse) {
+    option (api.v1.admin_roles) = ADMIN_ROLE_VIEWER;
+  }
+  rpc Admit(UserServiceAdmitRequest) returns (UserServiceAdmitResponse) {
+    option (api.v1.admin_roles) = ADMIN_ROLE_EDITOR;
+  }
+}
+
+// User is for admin purpose a combined authenticated user and a payment customer
+message User {
+  api.v1.User user = 1;
+  api.v1.PaymentCustomer payment_customer = 2;
+}
+
+message UserServiceListRequest {
+  optional string login = 1;
+  optional string name = 2;
+  optional string email = 3;
+  optional string organisation_id = 4;
+  optional api.v1.OAuthProvider oauth_provider = 5;
+}
+message UserServiceListResponse {
+  repeated User users = 1;
+}
+message UserServiceAdmitRequest {
+  string user_id = 1;
+}
+message UserServiceAdmitResponse {
+  User user = 1;
+}

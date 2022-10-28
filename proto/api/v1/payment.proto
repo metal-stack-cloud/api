@@ -44,7 +44,6 @@ message PaymentCustomer {
   optional Card card = 7;
   repeated Price prices = 8;
   Address address = 9;
-  bool admitted = 10;
 }
 
 message Card {

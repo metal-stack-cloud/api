@@ -45,9 +45,6 @@ export class PaymentCustomer extends jspb.Message {
   hasAddress(): boolean;
   clearAddress(): PaymentCustomer;
 
-  getAdmitted(): boolean;
-  setAdmitted(value: boolean): PaymentCustomer;
-
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): PaymentCustomer.AsObject;
   static toObject(includeInstance: boolean, msg: PaymentCustomer): PaymentCustomer.AsObject;
@@ -67,7 +64,6 @@ export namespace PaymentCustomer {
     card?: Card.AsObject,
     pricesList: Array<Price.AsObject>,
     address?: Address.AsObject,
-    admitted: boolean,
   }
 
   export enum NameCase { 

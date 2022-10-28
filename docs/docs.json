@@ -539,18 +539,6 @@
               "isoneof": false,
               "oneofdecl": "",
               "defaultValue": ""
-            },
-            {
-              "name": "admitted",
-              "description": "",
-              "label": "",
-              "type": "bool",
-              "longType": "bool",
-              "fullType": "bool",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
             }
           ]
         },
@@ -1262,20 +1250,20 @@
       ]
     },
     {
-      "name": "admin/v1/customer.proto",
+      "name": "api/v1/user.proto",
       "description": "",
-      "package": "admin.v1",
+      "package": "api.v1",
       "hasEnums": false,
       "hasExtensions": false,
       "hasMessages": true,
-      "hasServices": true,
+      "hasServices": false,
       "enums": [],
       "extensions": [],
       "messages": [
         {
-          "name": "CustomerServiceAdmitRequest",
-          "longName": "CustomerServiceAdmitRequest",
-          "fullName": "admin.v1.CustomerServiceAdmitRequest",
+          "name": "Organization",
+          "longName": "Organization",
+          "fullName": "api.v1.Organization",
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
@@ -1283,7 +1271,163 @@
           "extensions": [],
           "fields": [
             {
-              "name": "customer_id",
+              "name": "id",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "login",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "name",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "email",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "billing_email",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "avatar_url",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "role",
+              "description": "",
+              "label": "",
+              "type": "Role",
+              "longType": "Role",
+              "fullType": "api.v1.Role",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "teams",
+              "description": "",
+              "label": "repeated",
+              "type": "Team",
+              "longType": "Team",
+              "fullType": "api.v1.Team",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "Team",
+          "longName": "Team",
+          "fullName": "api.v1.Team",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "id",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "name",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "avatar_url",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "role",
+              "description": "",
+              "label": "",
+              "type": "Role",
+              "longType": "Role",
+              "fullType": "api.v1.Role",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "project_id",
               "description": "",
               "label": "",
               "type": "string",
@@ -1297,17 +1441,139 @@
           ]
         },
         {
-          "name": "CustomerServiceAdmitResponse",
-          "longName": "CustomerServiceAdmitResponse",
-          "fullName": "admin.v1.CustomerServiceAdmitResponse",
-          "description": "",
+          "name": "User",
+          "longName": "User",
+          "fullName": "api.v1.User",
+          "description": "User",
           "hasExtensions": false,
           "hasFields": true,
           "hasOneofs": false,
           "extensions": [],
           "fields": [
             {
-              "name": "customer",
+              "name": "login",
+              "description": "the login at the provider",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "name",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "email",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "avatar_url",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "oauth_provider",
+              "description": "",
+              "label": "",
+              "type": "OAuthProvider",
+              "longType": "OAuthProvider",
+              "fullType": "api.v1.OAuthProvider",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "organizations",
+              "description": "",
+              "label": "repeated",
+              "type": "Organization",
+              "longType": "Organization",
+              "fullType": "api.v1.Organization",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "admitted",
+              "description": "",
+              "label": "",
+              "type": "bool",
+              "longType": "bool",
+              "fullType": "bool",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        }
+      ],
+      "services": []
+    },
+    {
+      "name": "admin/v1/user.proto",
+      "description": "",
+      "package": "admin.v1",
+      "hasEnums": false,
+      "hasExtensions": false,
+      "hasMessages": true,
+      "hasServices": true,
+      "enums": [],
+      "extensions": [],
+      "messages": [
+        {
+          "name": "User",
+          "longName": "User",
+          "fullName": "admin.v1.User",
+          "description": "User is for admin purpose a combined authenticated user and a payment customer",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "user",
+              "description": "",
+              "label": "",
+              "type": "User",
+              "longType": "api.v1.User",
+              "fullType": "api.v1.User",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "payment_customer",
               "description": "",
               "label": "",
               "type": "PaymentCustomer",
@@ -1321,9 +1587,57 @@
           ]
         },
         {
-          "name": "CustomerServiceListRequest",
-          "longName": "CustomerServiceListRequest",
-          "fullName": "admin.v1.CustomerServiceListRequest",
+          "name": "UserServiceAdmitRequest",
+          "longName": "UserServiceAdmitRequest",
+          "fullName": "admin.v1.UserServiceAdmitRequest",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "user_id",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "UserServiceAdmitResponse",
+          "longName": "UserServiceAdmitResponse",
+          "fullName": "admin.v1.UserServiceAdmitResponse",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "user",
+              "description": "",
+              "label": "",
+              "type": "User",
+              "longType": "User",
+              "fullType": "admin.v1.User",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "UserServiceListRequest",
+          "longName": "UserServiceListRequest",
+          "fullName": "admin.v1.UserServiceListRequest",
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
@@ -1377,13 +1691,25 @@
               "isoneof": true,
               "oneofdecl": "_organisation_id",
               "defaultValue": ""
+            },
+            {
+              "name": "oauth_provider",
+              "description": "",
+              "label": "optional",
+              "type": "OAuthProvider",
+              "longType": "api.v1.OAuthProvider",
+              "fullType": "api.v1.OAuthProvider",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "_oauth_provider",
+              "defaultValue": ""
             }
           ]
         },
         {
-          "name": "CustomerServiceListResponse",
-          "longName": "CustomerServiceListResponse",
-          "fullName": "admin.v1.CustomerServiceListResponse",
+          "name": "UserServiceListResponse",
+          "longName": "UserServiceListResponse",
+          "fullName": "admin.v1.UserServiceListResponse",
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
@@ -1391,12 +1717,12 @@
           "extensions": [],
           "fields": [
             {
-              "name": "customers",
+              "name": "users",
               "description": "",
               "label": "repeated",
-              "type": "PaymentCustomer",
-              "longType": "api.v1.PaymentCustomer",
-              "fullType": "api.v1.PaymentCustomer",
+              "type": "User",
+              "longType": "User",
+              "fullType": "admin.v1.User",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
@@ -1407,33 +1733,33 @@
       ],
       "services": [
         {
-          "name": "CustomerService",
-          "longName": "CustomerService",
-          "fullName": "admin.v1.CustomerService",
+          "name": "UserService",
+          "longName": "UserService",
+          "fullName": "admin.v1.UserService",
           "description": "",
           "methods": [
             {
               "name": "List",
               "description": "",
-              "requestType": "CustomerServiceListRequest",
-              "requestLongType": "CustomerServiceListRequest",
-              "requestFullType": "admin.v1.CustomerServiceListRequest",
+              "requestType": "UserServiceListRequest",
+              "requestLongType": "UserServiceListRequest",
+              "requestFullType": "admin.v1.UserServiceListRequest",
               "requestStreaming": false,
-              "responseType": "CustomerServiceListResponse",
-              "responseLongType": "CustomerServiceListResponse",
-              "responseFullType": "admin.v1.CustomerServiceListResponse",
+              "responseType": "UserServiceListResponse",
+              "responseLongType": "UserServiceListResponse",
+              "responseFullType": "admin.v1.UserServiceListResponse",
               "responseStreaming": false
             },
             {
               "name": "Admit",
               "description": "",
-              "requestType": "CustomerServiceAdmitRequest",
-              "requestLongType": "CustomerServiceAdmitRequest",
-              "requestFullType": "admin.v1.CustomerServiceAdmitRequest",
+              "requestType": "UserServiceAdmitRequest",
+              "requestLongType": "UserServiceAdmitRequest",
+              "requestFullType": "admin.v1.UserServiceAdmitRequest",
               "requestStreaming": false,
-              "responseType": "CustomerServiceAdmitResponse",
-              "responseLongType": "CustomerServiceAdmitResponse",
-              "responseFullType": "admin.v1.CustomerServiceAdmitResponse",
+              "responseType": "UserServiceAdmitResponse",
+              "responseLongType": "UserServiceAdmitResponse",
+              "responseFullType": "admin.v1.UserServiceAdmitResponse",
               "responseStreaming": false
             }
           ]
@@ -5323,284 +5649,6 @@
           ]
         }
       ]
-    },
-    {
-      "name": "api/v1/user.proto",
-      "description": "",
-      "package": "api.v1",
-      "hasEnums": false,
-      "hasExtensions": false,
-      "hasMessages": true,
-      "hasServices": false,
-      "enums": [],
-      "extensions": [],
-      "messages": [
-        {
-          "name": "Organization",
-          "longName": "Organization",
-          "fullName": "api.v1.Organization",
-          "description": "",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "id",
-              "description": "",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "login",
-              "description": "",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "name",
-              "description": "",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "email",
-              "description": "",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "billing_email",
-              "description": "",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "avatar_url",
-              "description": "",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "role",
-              "description": "",
-              "label": "",
-              "type": "Role",
-              "longType": "Role",
-              "fullType": "api.v1.Role",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "teams",
-              "description": "",
-              "label": "repeated",
-              "type": "Team",
-              "longType": "Team",
-              "fullType": "api.v1.Team",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            }
-          ]
-        },
-        {
-          "name": "Team",
-          "longName": "Team",
-          "fullName": "api.v1.Team",
-          "description": "",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "id",
-              "description": "",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "name",
-              "description": "",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "avatar_url",
-              "description": "",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "role",
-              "description": "",
-              "label": "",
-              "type": "Role",
-              "longType": "Role",
-              "fullType": "api.v1.Role",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "project_id",
-              "description": "",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            }
-          ]
-        },
-        {
-          "name": "User",
-          "longName": "User",
-          "fullName": "api.v1.User",
-          "description": "User",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "login",
-              "description": "the login at the provider",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "name",
-              "description": "",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "email",
-              "description": "",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "avatar_url",
-              "description": "",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "oauth_provider",
-              "description": "",
-              "label": "",
-              "type": "OAuthProvider",
-              "longType": "OAuthProvider",
-              "fullType": "api.v1.OAuthProvider",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "organizations",
-              "description": "",
-              "label": "repeated",
-              "type": "Organization",
-              "longType": "Organization",
-              "fullType": "api.v1.Organization",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            }
-          ]
-        }
-      ],
-      "services": []
     },
     {
       "name": "api/v1/version.proto",

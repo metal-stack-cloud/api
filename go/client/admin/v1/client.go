@@ -12,7 +12,7 @@ import (
 
 // Client defines the client API
 type Client interface {
-	Customer() v1.CustomerServiceClient
+	User() v1.UserServiceClient
 	Close() error
 }
 
@@ -27,8 +27,8 @@ func (c APIClient) Close() error {
 	return c.conn.Close()
 }
 
-func (c APIClient) Customer() v1.CustomerServiceClient {
-	return v1.NewCustomerServiceClient(c.conn)
+func (c APIClient) User() v1.UserServiceClient {
+	return v1.NewUserServiceClient(c.conn)
 }
 
 func New(ctx context.Context, config client.DialConfig) (Client, error) {
