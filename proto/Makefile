@@ -5,7 +5,6 @@ _buf:
 	docker run --rm -it \
 		--entrypoint sh \
 		-v $(PWD)/..:/workspace \
-		-v $(PWD)/../.cache:/.cache \
 		-w /workspace/proto \
 		bufbuild/buf:$(BUF_VERSION) \
 		-c "buf $(CMD) && chown -R $(shell id -u):$(shell id -g) /workspace"
