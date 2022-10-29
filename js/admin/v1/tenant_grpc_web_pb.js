@@ -8,7 +8,7 @@
 // versions:
 // 	protoc-gen-grpc-web v1.4.1
 // 	protoc              v0.0.0
-// source: admin/v1/user.proto
+// source: admin/v1/tenant.proto
 
 
 /* eslint-disable */
@@ -22,12 +22,10 @@ grpc.web = require('grpc-web');
 
 var api_v1_common_pb = require('../../api/v1/common_pb.js')
 
-var api_v1_payment_pb = require('../../api/v1/payment_pb.js')
-
-var api_v1_user_pb = require('../../api/v1/user_pb.js')
+var api_v1_tenant_pb = require('../../api/v1/tenant_pb.js')
 const proto = {};
 proto.admin = {};
-proto.admin.v1 = require('./user_pb.js');
+proto.admin.v1 = require('./tenant_pb.js');
 
 /**
  * @param {string} hostname
@@ -37,7 +35,7 @@ proto.admin.v1 = require('./user_pb.js');
  * @struct
  * @final
  */
-proto.admin.v1.UserServiceClient =
+proto.admin.v1.TenantServiceClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
   options.format = 'text';
@@ -63,7 +61,7 @@ proto.admin.v1.UserServiceClient =
  * @struct
  * @final
  */
-proto.admin.v1.UserServicePromiseClient =
+proto.admin.v1.TenantServicePromiseClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
   options.format = 'text';
@@ -84,122 +82,122 @@ proto.admin.v1.UserServicePromiseClient =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.admin.v1.UserServiceListRequest,
- *   !proto.admin.v1.UserServiceListResponse>}
+ *   !proto.admin.v1.TenantServiceListRequest,
+ *   !proto.admin.v1.TenantServiceListResponse>}
  */
-const methodDescriptor_UserService_List = new grpc.web.MethodDescriptor(
-  '/admin.v1.UserService/List',
+const methodDescriptor_TenantService_List = new grpc.web.MethodDescriptor(
+  '/admin.v1.TenantService/List',
   grpc.web.MethodType.UNARY,
-  proto.admin.v1.UserServiceListRequest,
-  proto.admin.v1.UserServiceListResponse,
+  proto.admin.v1.TenantServiceListRequest,
+  proto.admin.v1.TenantServiceListResponse,
   /**
-   * @param {!proto.admin.v1.UserServiceListRequest} request
+   * @param {!proto.admin.v1.TenantServiceListRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.admin.v1.UserServiceListResponse.deserializeBinary
+  proto.admin.v1.TenantServiceListResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.admin.v1.UserServiceListRequest} request The
+ * @param {!proto.admin.v1.TenantServiceListRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.RpcError, ?proto.admin.v1.UserServiceListResponse)}
+ * @param {function(?grpc.web.RpcError, ?proto.admin.v1.TenantServiceListResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.admin.v1.UserServiceListResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.admin.v1.TenantServiceListResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.admin.v1.UserServiceClient.prototype.list =
+proto.admin.v1.TenantServiceClient.prototype.list =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/admin.v1.UserService/List',
+      '/admin.v1.TenantService/List',
       request,
       metadata || {},
-      methodDescriptor_UserService_List,
+      methodDescriptor_TenantService_List,
       callback);
 };
 
 
 /**
- * @param {!proto.admin.v1.UserServiceListRequest} request The
+ * @param {!proto.admin.v1.TenantServiceListRequest} request The
  *     request proto
  * @param {?Object<string, string>=} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.admin.v1.UserServiceListResponse>}
+ * @return {!Promise<!proto.admin.v1.TenantServiceListResponse>}
  *     Promise that resolves to the response
  */
-proto.admin.v1.UserServicePromiseClient.prototype.list =
+proto.admin.v1.TenantServicePromiseClient.prototype.list =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/admin.v1.UserService/List',
+      '/admin.v1.TenantService/List',
       request,
       metadata || {},
-      methodDescriptor_UserService_List);
+      methodDescriptor_TenantService_List);
 };
 
 
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.admin.v1.UserServiceAdmitRequest,
- *   !proto.admin.v1.UserServiceAdmitResponse>}
+ *   !proto.admin.v1.TenantServiceAdmitRequest,
+ *   !proto.admin.v1.TenantServiceAdmitResponse>}
  */
-const methodDescriptor_UserService_Admit = new grpc.web.MethodDescriptor(
-  '/admin.v1.UserService/Admit',
+const methodDescriptor_TenantService_Admit = new grpc.web.MethodDescriptor(
+  '/admin.v1.TenantService/Admit',
   grpc.web.MethodType.UNARY,
-  proto.admin.v1.UserServiceAdmitRequest,
-  proto.admin.v1.UserServiceAdmitResponse,
+  proto.admin.v1.TenantServiceAdmitRequest,
+  proto.admin.v1.TenantServiceAdmitResponse,
   /**
-   * @param {!proto.admin.v1.UserServiceAdmitRequest} request
+   * @param {!proto.admin.v1.TenantServiceAdmitRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.admin.v1.UserServiceAdmitResponse.deserializeBinary
+  proto.admin.v1.TenantServiceAdmitResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.admin.v1.UserServiceAdmitRequest} request The
+ * @param {!proto.admin.v1.TenantServiceAdmitRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.RpcError, ?proto.admin.v1.UserServiceAdmitResponse)}
+ * @param {function(?grpc.web.RpcError, ?proto.admin.v1.TenantServiceAdmitResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.admin.v1.UserServiceAdmitResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.admin.v1.TenantServiceAdmitResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.admin.v1.UserServiceClient.prototype.admit =
+proto.admin.v1.TenantServiceClient.prototype.admit =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/admin.v1.UserService/Admit',
+      '/admin.v1.TenantService/Admit',
       request,
       metadata || {},
-      methodDescriptor_UserService_Admit,
+      methodDescriptor_TenantService_Admit,
       callback);
 };
 
 
 /**
- * @param {!proto.admin.v1.UserServiceAdmitRequest} request The
+ * @param {!proto.admin.v1.TenantServiceAdmitRequest} request The
  *     request proto
  * @param {?Object<string, string>=} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.admin.v1.UserServiceAdmitResponse>}
+ * @return {!Promise<!proto.admin.v1.TenantServiceAdmitResponse>}
  *     Promise that resolves to the response
  */
-proto.admin.v1.UserServicePromiseClient.prototype.admit =
+proto.admin.v1.TenantServicePromiseClient.prototype.admit =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/admin.v1.UserService/Admit',
+      '/admin.v1.TenantService/Admit',
       request,
       metadata || {},
-      methodDescriptor_UserService_Admit);
+      methodDescriptor_TenantService_Admit);
 };
 
 

@@ -8,7 +8,7 @@
 // versions:
 // 	protoc-gen-grpc-web v1.4.1
 // 	protoc              v0.0.0
-// source: admin/v1/user.proto
+// source: admin/v1/tenant.proto
 
 
 /* eslint-disable */
@@ -17,10 +17,10 @@
 
 import * as grpcWeb from 'grpc-web';
 
-import * as admin_v1_user_pb from '../../admin/v1/user_pb';
+import * as admin_v1_tenant_pb from '../../admin/v1/tenant_pb';
 
 
-export class UserServiceClient {
+export class TenantServiceClient {
   client_: grpcWeb.AbstractClientBase;
   hostname_: string;
   credentials_: null | { [index: string]: string; };
@@ -40,35 +40,35 @@ export class UserServiceClient {
   }
 
   methodDescriptorList = new grpcWeb.MethodDescriptor(
-    '/admin.v1.UserService/List',
+    '/admin.v1.TenantService/List',
     grpcWeb.MethodType.UNARY,
-    admin_v1_user_pb.UserServiceListRequest,
-    admin_v1_user_pb.UserServiceListResponse,
-    (request: admin_v1_user_pb.UserServiceListRequest) => {
+    admin_v1_tenant_pb.TenantServiceListRequest,
+    admin_v1_tenant_pb.TenantServiceListResponse,
+    (request: admin_v1_tenant_pb.TenantServiceListRequest) => {
       return request.serializeBinary();
     },
-    admin_v1_user_pb.UserServiceListResponse.deserializeBinary
+    admin_v1_tenant_pb.TenantServiceListResponse.deserializeBinary
   );
 
   list(
-    request: admin_v1_user_pb.UserServiceListRequest,
-    metadata: grpcWeb.Metadata | null): Promise<admin_v1_user_pb.UserServiceListResponse>;
+    request: admin_v1_tenant_pb.TenantServiceListRequest,
+    metadata: grpcWeb.Metadata | null): Promise<admin_v1_tenant_pb.TenantServiceListResponse>;
 
   list(
-    request: admin_v1_user_pb.UserServiceListRequest,
+    request: admin_v1_tenant_pb.TenantServiceListRequest,
     metadata: grpcWeb.Metadata | null,
     callback: (err: grpcWeb.RpcError,
-               response: admin_v1_user_pb.UserServiceListResponse) => void): grpcWeb.ClientReadableStream<admin_v1_user_pb.UserServiceListResponse>;
+               response: admin_v1_tenant_pb.TenantServiceListResponse) => void): grpcWeb.ClientReadableStream<admin_v1_tenant_pb.TenantServiceListResponse>;
 
   list(
-    request: admin_v1_user_pb.UserServiceListRequest,
+    request: admin_v1_tenant_pb.TenantServiceListRequest,
     metadata: grpcWeb.Metadata | null,
     callback?: (err: grpcWeb.RpcError,
-               response: admin_v1_user_pb.UserServiceListResponse) => void) {
+               response: admin_v1_tenant_pb.TenantServiceListResponse) => void) {
     if (callback !== undefined) {
       return this.client_.rpcCall(
         this.hostname_ +
-          '/admin.v1.UserService/List',
+          '/admin.v1.TenantService/List',
         request,
         metadata || {},
         this.methodDescriptorList,
@@ -76,42 +76,42 @@ export class UserServiceClient {
     }
     return this.client_.unaryCall(
     this.hostname_ +
-      '/admin.v1.UserService/List',
+      '/admin.v1.TenantService/List',
     request,
     metadata || {},
     this.methodDescriptorList);
   }
 
   methodDescriptorAdmit = new grpcWeb.MethodDescriptor(
-    '/admin.v1.UserService/Admit',
+    '/admin.v1.TenantService/Admit',
     grpcWeb.MethodType.UNARY,
-    admin_v1_user_pb.UserServiceAdmitRequest,
-    admin_v1_user_pb.UserServiceAdmitResponse,
-    (request: admin_v1_user_pb.UserServiceAdmitRequest) => {
+    admin_v1_tenant_pb.TenantServiceAdmitRequest,
+    admin_v1_tenant_pb.TenantServiceAdmitResponse,
+    (request: admin_v1_tenant_pb.TenantServiceAdmitRequest) => {
       return request.serializeBinary();
     },
-    admin_v1_user_pb.UserServiceAdmitResponse.deserializeBinary
+    admin_v1_tenant_pb.TenantServiceAdmitResponse.deserializeBinary
   );
 
   admit(
-    request: admin_v1_user_pb.UserServiceAdmitRequest,
-    metadata: grpcWeb.Metadata | null): Promise<admin_v1_user_pb.UserServiceAdmitResponse>;
+    request: admin_v1_tenant_pb.TenantServiceAdmitRequest,
+    metadata: grpcWeb.Metadata | null): Promise<admin_v1_tenant_pb.TenantServiceAdmitResponse>;
 
   admit(
-    request: admin_v1_user_pb.UserServiceAdmitRequest,
+    request: admin_v1_tenant_pb.TenantServiceAdmitRequest,
     metadata: grpcWeb.Metadata | null,
     callback: (err: grpcWeb.RpcError,
-               response: admin_v1_user_pb.UserServiceAdmitResponse) => void): grpcWeb.ClientReadableStream<admin_v1_user_pb.UserServiceAdmitResponse>;
+               response: admin_v1_tenant_pb.TenantServiceAdmitResponse) => void): grpcWeb.ClientReadableStream<admin_v1_tenant_pb.TenantServiceAdmitResponse>;
 
   admit(
-    request: admin_v1_user_pb.UserServiceAdmitRequest,
+    request: admin_v1_tenant_pb.TenantServiceAdmitRequest,
     metadata: grpcWeb.Metadata | null,
     callback?: (err: grpcWeb.RpcError,
-               response: admin_v1_user_pb.UserServiceAdmitResponse) => void) {
+               response: admin_v1_tenant_pb.TenantServiceAdmitResponse) => void) {
     if (callback !== undefined) {
       return this.client_.rpcCall(
         this.hostname_ +
-          '/admin.v1.UserService/Admit',
+          '/admin.v1.TenantService/Admit',
         request,
         metadata || {},
         this.methodDescriptorAdmit,
@@ -119,7 +119,7 @@ export class UserServiceClient {
     }
     return this.client_.unaryCall(
     this.hostname_ +
-      '/admin.v1.UserService/Admit',
+      '/admin.v1.TenantService/Admit',
     request,
     metadata || {},
     this.methodDescriptorAdmit);

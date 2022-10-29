@@ -3,25 +3,18 @@ syntax = "proto3";
 package admin.v1;
 
 import "api/v1/common.proto";
-import "api/v1/payment.proto";
-import "api/v1/user.proto";
+import "api/v1/tenant.proto";
 
-service UserService {
-  rpc List(UserServiceListRequest) returns (UserServiceListResponse) {
+service TenantService {
+  rpc List(TenantServiceListRequest) returns (TenantServiceListResponse) {
     option (api.v1.admin_roles) = ADMIN_ROLE_VIEWER;
   }
-  rpc Admit(UserServiceAdmitRequest) returns (UserServiceAdmitResponse) {
+  rpc Admit(TenantServiceAdmitRequest) returns (TenantServiceAdmitResponse) {
     option (api.v1.admin_roles) = ADMIN_ROLE_EDITOR;
   }
 }
 
-// User is for admin purpose a combined authenticated user and a payment customer
-message User {
-  api.v1.User user = 1;
-  api.v1.PaymentCustomer payment_customer = 2;
-}
-
-message UserServiceListRequest {
+message TenantServiceListRequest {
   optional string login = 1;
   optional string name = 2;
   optional string email = 3;
@@ -30,15 +23,17 @@ message UserServiceListRequest {
   optional bool admitted = 6;
   // page_token is used for pagination, if unset only the first page is returned, the list response contains then token for the next page.
   optional string page_token = 7;
+  // count is the number of results returned per page, if no given server side defaults apply
+  optional int32 count = 8;
 }
-message UserServiceListResponse {
-  repeated User users = 1;
+message TenantServiceListResponse {
+  repeated api.v1.Tenant users = 1;
   // next_page_token is used for pagination, returns the next page to be fetched and must then be provided in the list request.
   string next_page_token = 2;
 }
-message UserServiceAdmitRequest {
+message TenantServiceAdmitRequest {
   string user_id = 1;
 }
-message UserServiceAdmitResponse {
-  User user = 1;
+message TenantServiceAdmitResponse {
+  api.v1.Tenant user = 1;
 }

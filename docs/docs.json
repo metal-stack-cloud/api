@@ -196,7 +196,7 @@
       "services": []
     },
     {
-      "name": "api/v1/payment.proto",
+      "name": "api/v1/tenant.proto",
       "description": "",
       "package": "api.v1",
       "hasEnums": false,
@@ -207,265 +207,25 @@
       "extensions": [],
       "messages": [
         {
-          "name": "Address",
-          "longName": "Address",
-          "fullName": "api.v1.Address",
+          "name": "PaymentDetails",
+          "longName": "PaymentDetails",
+          "fullName": "api.v1.PaymentDetails",
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
           "hasOneofs": false,
           "extensions": [],
           "fields": [
-            {
-              "name": "line1",
-              "description": "",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "line2",
-              "description": "",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "postal_code",
-              "description": "",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "city",
-              "description": "",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "state",
-              "description": "",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "country",
-              "description": "",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            }
-          ]
-        },
-        {
-          "name": "Card",
-          "longName": "Card",
-          "fullName": "api.v1.Card",
-          "description": "",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "brand",
-              "description": "",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "country",
-              "description": "",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "exp_month",
-              "description": "",
-              "label": "",
-              "type": "int64",
-              "longType": "int64",
-              "fullType": "int64",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "exp_year",
-              "description": "",
-              "label": "",
-              "type": "int64",
-              "longType": "int64",
-              "fullType": "int64",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "last_4",
-              "description": "",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            }
-          ]
-        },
-        {
-          "name": "Invoice",
-          "longName": "Invoice",
-          "fullName": "api.v1.Invoice",
-          "description": "",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "id",
-              "description": "",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "pdf_download_url",
-              "description": "",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "period_start",
-              "description": "",
-              "label": "",
-              "type": "Timestamp",
-              "longType": "google.protobuf.Timestamp",
-              "fullType": "google.protobuf.Timestamp",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "period_end",
-              "description": "",
-              "label": "",
-              "type": "Timestamp",
-              "longType": "google.protobuf.Timestamp",
-              "fullType": "google.protobuf.Timestamp",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            }
-          ]
-        },
-        {
-          "name": "PaymentCustomer",
-          "longName": "PaymentCustomer",
-          "fullName": "api.v1.PaymentCustomer",
-          "description": "",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": true,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "login",
-              "description": "",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "name",
-              "description": "",
-              "label": "optional",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": true,
-              "oneofdecl": "_name",
-              "defaultValue": ""
-            },
             {
               "name": "customer_id",
               "description": "",
-              "label": "optional",
+              "label": "",
               "type": "string",
               "longType": "string",
               "fullType": "string",
               "ismap": false,
-              "isoneof": true,
-              "oneofdecl": "_customer_id",
+              "isoneof": false,
+              "oneofdecl": "",
               "defaultValue": ""
             },
             {
@@ -491,9 +251,21 @@
               "isoneof": false,
               "oneofdecl": "",
               "defaultValue": ""
-            },
+            }
+          ]
+        },
+        {
+          "name": "PaymentDetailsUpdate",
+          "longName": "PaymentDetailsUpdate",
+          "fullName": "api.v1.PaymentDetailsUpdate",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": true,
+          "extensions": [],
+          "fields": [
             {
-              "name": "email",
+              "name": "customer_id",
               "description": "",
               "label": "optional",
               "type": "string",
@@ -501,950 +273,40 @@
               "fullType": "string",
               "ismap": false,
               "isoneof": true,
-              "oneofdecl": "_email",
+              "oneofdecl": "_customer_id",
               "defaultValue": ""
             },
             {
-              "name": "card",
+              "name": "payment_method_id",
               "description": "",
               "label": "optional",
-              "type": "Card",
-              "longType": "Card",
-              "fullType": "api.v1.Card",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
               "ismap": false,
               "isoneof": true,
-              "oneofdecl": "_card",
+              "oneofdecl": "_payment_method_id",
               "defaultValue": ""
             },
             {
-              "name": "prices",
+              "name": "subscription_id",
               "description": "",
-              "label": "repeated",
-              "type": "Price",
-              "longType": "Price",
-              "fullType": "api.v1.Price",
+              "label": "optional",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
               "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "address",
-              "description": "",
-              "label": "",
-              "type": "Address",
-              "longType": "Address",
-              "fullType": "api.v1.Address",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
+              "isoneof": true,
+              "oneofdecl": "_subscription_id",
               "defaultValue": ""
             }
           ]
         },
         {
-          "name": "PaymentServiceCheckIfCustomerExistsRequest",
-          "longName": "PaymentServiceCheckIfCustomerExistsRequest",
-          "fullName": "api.v1.PaymentServiceCheckIfCustomerExistsRequest",
-          "description": "",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "login",
-              "description": "",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            }
-          ]
-        },
-        {
-          "name": "PaymentServiceCheckIfCustomerExistsResponse",
-          "longName": "PaymentServiceCheckIfCustomerExistsResponse",
-          "fullName": "api.v1.PaymentServiceCheckIfCustomerExistsResponse",
-          "description": "",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "customer",
-              "description": "",
-              "label": "",
-              "type": "PaymentCustomer",
-              "longType": "PaymentCustomer",
-              "fullType": "api.v1.PaymentCustomer",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "exists",
-              "description": "",
-              "label": "",
-              "type": "bool",
-              "longType": "bool",
-              "fullType": "bool",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            }
-          ]
-        },
-        {
-          "name": "PaymentServiceCreateOrUpdateCustomerRequest",
-          "longName": "PaymentServiceCreateOrUpdateCustomerRequest",
-          "fullName": "api.v1.PaymentServiceCreateOrUpdateCustomerRequest",
-          "description": "",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "customer",
-              "description": "",
-              "label": "",
-              "type": "PaymentCustomer",
-              "longType": "PaymentCustomer",
-              "fullType": "api.v1.PaymentCustomer",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            }
-          ]
-        },
-        {
-          "name": "PaymentServiceCreateOrUpdateCustomerResponse",
-          "longName": "PaymentServiceCreateOrUpdateCustomerResponse",
-          "fullName": "api.v1.PaymentServiceCreateOrUpdateCustomerResponse",
-          "description": "",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "customer",
-              "description": "",
-              "label": "",
-              "type": "PaymentCustomer",
-              "longType": "PaymentCustomer",
-              "fullType": "api.v1.PaymentCustomer",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            }
-          ]
-        },
-        {
-          "name": "PaymentServiceDeletePaymentMethodRequest",
-          "longName": "PaymentServiceDeletePaymentMethodRequest",
-          "fullName": "api.v1.PaymentServiceDeletePaymentMethodRequest",
-          "description": "",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "login",
-              "description": "",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.min_len",
-                    "value": 2
-                  },
-                  {
-                    "name": "string.max_len",
-                    "value": 128
-                  }
-                ]
-              }
-            }
-          ]
-        },
-        {
-          "name": "PaymentServiceDeletePaymentMethodResponse",
-          "longName": "PaymentServiceDeletePaymentMethodResponse",
-          "fullName": "api.v1.PaymentServiceDeletePaymentMethodResponse",
-          "description": "",
-          "hasExtensions": false,
-          "hasFields": false,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": []
-        },
-        {
-          "name": "PaymentServiceGetCustomerRequest",
-          "longName": "PaymentServiceGetCustomerRequest",
-          "fullName": "api.v1.PaymentServiceGetCustomerRequest",
-          "description": "",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "customer_id",
-              "description": "",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            }
-          ]
-        },
-        {
-          "name": "PaymentServiceGetCustomerResponse",
-          "longName": "PaymentServiceGetCustomerResponse",
-          "fullName": "api.v1.PaymentServiceGetCustomerResponse",
-          "description": "",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "customer",
-              "description": "",
-              "label": "",
-              "type": "PaymentCustomer",
-              "longType": "PaymentCustomer",
-              "fullType": "api.v1.PaymentCustomer",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            }
-          ]
-        },
-        {
-          "name": "PaymentServiceGetCustomerWithLoginRequest",
-          "longName": "PaymentServiceGetCustomerWithLoginRequest",
-          "fullName": "api.v1.PaymentServiceGetCustomerWithLoginRequest",
-          "description": "",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "login",
-              "description": "",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            }
-          ]
-        },
-        {
-          "name": "PaymentServiceGetCustomerWithLoginResponse",
-          "longName": "PaymentServiceGetCustomerWithLoginResponse",
-          "fullName": "api.v1.PaymentServiceGetCustomerWithLoginResponse",
-          "description": "",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "customer",
-              "description": "",
-              "label": "",
-              "type": "PaymentCustomer",
-              "longType": "PaymentCustomer",
-              "fullType": "api.v1.PaymentCustomer",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            }
-          ]
-        },
-        {
-          "name": "PaymentServiceGetInvoicesRequest",
-          "longName": "PaymentServiceGetInvoicesRequest",
-          "fullName": "api.v1.PaymentServiceGetInvoicesRequest",
-          "description": "",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "login",
-              "description": "",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.min_len",
-                    "value": 2
-                  },
-                  {
-                    "name": "string.max_len",
-                    "value": 128
-                  }
-                ]
-              }
-            },
-            {
-              "name": "customer_id",
-              "description": "",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.min_len",
-                    "value": 18
-                  },
-                  {
-                    "name": "string.max_len",
-                    "value": 18
-                  }
-                ]
-              }
-            }
-          ]
-        },
-        {
-          "name": "PaymentServiceGetInvoicesResponse",
-          "longName": "PaymentServiceGetInvoicesResponse",
-          "fullName": "api.v1.PaymentServiceGetInvoicesResponse",
-          "description": "",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "invoices",
-              "description": "",
-              "label": "repeated",
-              "type": "Invoice",
-              "longType": "Invoice",
-              "fullType": "api.v1.Invoice",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            }
-          ]
-        },
-        {
-          "name": "PaymentServiceGetSubscriptionUsageRequest",
-          "longName": "PaymentServiceGetSubscriptionUsageRequest",
-          "fullName": "api.v1.PaymentServiceGetSubscriptionUsageRequest",
-          "description": "",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "login",
-              "description": "",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.min_len",
-                    "value": 2
-                  },
-                  {
-                    "name": "string.max_len",
-                    "value": 128
-                  }
-                ]
-              }
-            }
-          ]
-        },
-        {
-          "name": "PaymentServiceGetSubscriptionUsageResponse",
-          "longName": "PaymentServiceGetSubscriptionUsageResponse",
-          "fullName": "api.v1.PaymentServiceGetSubscriptionUsageResponse",
-          "description": "",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "subscription_usage_items",
-              "description": "",
-              "label": "repeated",
-              "type": "SubscriptionUsageItem",
-              "longType": "SubscriptionUsageItem",
-              "fullType": "api.v1.SubscriptionUsageItem",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            }
-          ]
-        },
-        {
-          "name": "PaymentServiceHasPaymentMethodRequest",
-          "longName": "PaymentServiceHasPaymentMethodRequest",
-          "fullName": "api.v1.PaymentServiceHasPaymentMethodRequest",
-          "description": "",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "login",
-              "description": "",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.min_len",
-                    "value": 2
-                  },
-                  {
-                    "name": "string.max_len",
-                    "value": 128
-                  }
-                ]
-              }
-            },
-            {
-              "name": "project",
-              "description": "",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.min_len",
-                    "value": 2
-                  },
-                  {
-                    "name": "string.max_len",
-                    "value": 128
-                  }
-                ]
-              }
-            }
-          ]
-        },
-        {
-          "name": "PaymentServiceHasPaymentMethodResponse",
-          "longName": "PaymentServiceHasPaymentMethodResponse",
-          "fullName": "api.v1.PaymentServiceHasPaymentMethodResponse",
-          "description": "",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "exists",
-              "description": "",
-              "label": "",
-              "type": "bool",
-              "longType": "bool",
-              "fullType": "bool",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            }
-          ]
-        },
-        {
-          "name": "Price",
-          "longName": "Price",
-          "fullName": "api.v1.Price",
-          "description": "",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "name",
-              "description": "",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "unit_amount_decimal",
-              "description": "",
-              "label": "",
-              "type": "double",
-              "longType": "double",
-              "fullType": "double",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "currency",
-              "description": "",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            }
-          ]
-        },
-        {
-          "name": "SubscriptionUsageItem",
-          "longName": "SubscriptionUsageItem",
-          "fullName": "api.v1.SubscriptionUsageItem",
-          "description": "",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "subscription_item_id",
-              "description": "",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "subscription_item_name",
-              "description": "",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "total_usage",
-              "description": "",
-              "label": "",
-              "type": "int64",
-              "longType": "int64",
-              "fullType": "int64",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "period_start",
-              "description": "",
-              "label": "",
-              "type": "Timestamp",
-              "longType": "google.protobuf.Timestamp",
-              "fullType": "google.protobuf.Timestamp",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "period_end",
-              "description": "",
-              "label": "",
-              "type": "Timestamp",
-              "longType": "google.protobuf.Timestamp",
-              "fullType": "google.protobuf.Timestamp",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            }
-          ]
-        }
-      ],
-      "services": [
-        {
-          "name": "PaymentService",
-          "longName": "PaymentService",
-          "fullName": "api.v1.PaymentService",
-          "description": "",
-          "methods": [
-            {
-              "name": "CreateOrUpdateCustomer",
-              "description": "",
-              "requestType": "PaymentServiceCreateOrUpdateCustomerRequest",
-              "requestLongType": "PaymentServiceCreateOrUpdateCustomerRequest",
-              "requestFullType": "api.v1.PaymentServiceCreateOrUpdateCustomerRequest",
-              "requestStreaming": false,
-              "responseType": "PaymentServiceCreateOrUpdateCustomerResponse",
-              "responseLongType": "PaymentServiceCreateOrUpdateCustomerResponse",
-              "responseFullType": "api.v1.PaymentServiceCreateOrUpdateCustomerResponse",
-              "responseStreaming": false
-            },
-            {
-              "name": "GetCustomer",
-              "description": "",
-              "requestType": "PaymentServiceGetCustomerRequest",
-              "requestLongType": "PaymentServiceGetCustomerRequest",
-              "requestFullType": "api.v1.PaymentServiceGetCustomerRequest",
-              "requestStreaming": false,
-              "responseType": "PaymentServiceGetCustomerResponse",
-              "responseLongType": "PaymentServiceGetCustomerResponse",
-              "responseFullType": "api.v1.PaymentServiceGetCustomerResponse",
-              "responseStreaming": false
-            },
-            {
-              "name": "GetCustomerWithLogin",
-              "description": "",
-              "requestType": "PaymentServiceGetCustomerWithLoginRequest",
-              "requestLongType": "PaymentServiceGetCustomerWithLoginRequest",
-              "requestFullType": "api.v1.PaymentServiceGetCustomerWithLoginRequest",
-              "requestStreaming": false,
-              "responseType": "PaymentServiceGetCustomerWithLoginResponse",
-              "responseLongType": "PaymentServiceGetCustomerWithLoginResponse",
-              "responseFullType": "api.v1.PaymentServiceGetCustomerWithLoginResponse",
-              "responseStreaming": false
-            },
-            {
-              "name": "CheckIfCustomerExists",
-              "description": "",
-              "requestType": "PaymentServiceCheckIfCustomerExistsRequest",
-              "requestLongType": "PaymentServiceCheckIfCustomerExistsRequest",
-              "requestFullType": "api.v1.PaymentServiceCheckIfCustomerExistsRequest",
-              "requestStreaming": false,
-              "responseType": "PaymentServiceCheckIfCustomerExistsResponse",
-              "responseLongType": "PaymentServiceCheckIfCustomerExistsResponse",
-              "responseFullType": "api.v1.PaymentServiceCheckIfCustomerExistsResponse",
-              "responseStreaming": false
-            },
-            {
-              "name": "HasPaymentMethod",
-              "description": "",
-              "requestType": "PaymentServiceHasPaymentMethodRequest",
-              "requestLongType": "PaymentServiceHasPaymentMethodRequest",
-              "requestFullType": "api.v1.PaymentServiceHasPaymentMethodRequest",
-              "requestStreaming": false,
-              "responseType": "PaymentServiceHasPaymentMethodResponse",
-              "responseLongType": "PaymentServiceHasPaymentMethodResponse",
-              "responseFullType": "api.v1.PaymentServiceHasPaymentMethodResponse",
-              "responseStreaming": false
-            },
-            {
-              "name": "DeletePaymentMethod",
-              "description": "",
-              "requestType": "PaymentServiceDeletePaymentMethodRequest",
-              "requestLongType": "PaymentServiceDeletePaymentMethodRequest",
-              "requestFullType": "api.v1.PaymentServiceDeletePaymentMethodRequest",
-              "requestStreaming": false,
-              "responseType": "PaymentServiceDeletePaymentMethodResponse",
-              "responseLongType": "PaymentServiceDeletePaymentMethodResponse",
-              "responseFullType": "api.v1.PaymentServiceDeletePaymentMethodResponse",
-              "responseStreaming": false
-            },
-            {
-              "name": "GetSubscriptionUsage",
-              "description": "",
-              "requestType": "PaymentServiceGetSubscriptionUsageRequest",
-              "requestLongType": "PaymentServiceGetSubscriptionUsageRequest",
-              "requestFullType": "api.v1.PaymentServiceGetSubscriptionUsageRequest",
-              "requestStreaming": false,
-              "responseType": "PaymentServiceGetSubscriptionUsageResponse",
-              "responseLongType": "PaymentServiceGetSubscriptionUsageResponse",
-              "responseFullType": "api.v1.PaymentServiceGetSubscriptionUsageResponse",
-              "responseStreaming": false
-            },
-            {
-              "name": "GetInvoices",
-              "description": "",
-              "requestType": "PaymentServiceGetInvoicesRequest",
-              "requestLongType": "PaymentServiceGetInvoicesRequest",
-              "requestFullType": "api.v1.PaymentServiceGetInvoicesRequest",
-              "requestStreaming": false,
-              "responseType": "PaymentServiceGetInvoicesResponse",
-              "responseLongType": "PaymentServiceGetInvoicesResponse",
-              "responseFullType": "api.v1.PaymentServiceGetInvoicesResponse",
-              "responseStreaming": false
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "name": "api/v1/user.proto",
-      "description": "",
-      "package": "api.v1",
-      "hasEnums": false,
-      "hasExtensions": false,
-      "hasMessages": true,
-      "hasServices": false,
-      "enums": [],
-      "extensions": [],
-      "messages": [
-        {
-          "name": "Organization",
-          "longName": "Organization",
-          "fullName": "api.v1.Organization",
-          "description": "",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "id",
-              "description": "",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "login",
-              "description": "",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "name",
-              "description": "",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "email",
-              "description": "",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "billing_email",
-              "description": "",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "avatar_url",
-              "description": "",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "role",
-              "description": "",
-              "label": "",
-              "type": "Role",
-              "longType": "Role",
-              "fullType": "api.v1.Role",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "teams",
-              "description": "",
-              "label": "repeated",
-              "type": "Team",
-              "longType": "Team",
-              "fullType": "api.v1.Team",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            }
-          ]
-        },
-        {
-          "name": "Team",
-          "longName": "Team",
-          "fullName": "api.v1.Team",
-          "description": "",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "id",
-              "description": "",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "name",
-              "description": "",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "avatar_url",
-              "description": "",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "role",
-              "description": "",
-              "label": "",
-              "type": "Role",
-              "longType": "Role",
-              "fullType": "api.v1.Role",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "project_id",
-              "description": "",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            }
-          ]
-        },
-        {
-          "name": "User",
-          "longName": "User",
-          "fullName": "api.v1.User",
-          "description": "User",
+          "name": "Tenant",
+          "longName": "Tenant",
+          "fullName": "api.v1.Tenant",
+          "description": "Tenant",
           "hasExtensions": false,
           "hasFields": true,
           "hasOneofs": false,
@@ -1511,24 +373,336 @@
               "defaultValue": ""
             },
             {
-              "name": "organizations",
+              "name": "payment_details",
               "description": "",
-              "label": "repeated",
-              "type": "Organization",
-              "longType": "Organization",
-              "fullType": "api.v1.Organization",
+              "label": "",
+              "type": "PaymentDetails",
+              "longType": "PaymentDetails",
+              "fullType": "api.v1.PaymentDetails",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
               "defaultValue": ""
             },
             {
-              "name": "admitted",
+              "name": "created_at",
               "description": "",
               "label": "",
-              "type": "bool",
-              "longType": "bool",
-              "fullType": "bool",
+              "type": "Timestamp",
+              "longType": "google.protobuf.Timestamp",
+              "fullType": "google.protobuf.Timestamp",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "updated_at",
+              "description": "",
+              "label": "",
+              "type": "Timestamp",
+              "longType": "google.protobuf.Timestamp",
+              "fullType": "google.protobuf.Timestamp",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "deleted_at",
+              "description": "",
+              "label": "",
+              "type": "Timestamp",
+              "longType": "google.protobuf.Timestamp",
+              "fullType": "google.protobuf.Timestamp",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "TenantServiceCreateOrUpdateRequest",
+          "longName": "TenantServiceCreateOrUpdateRequest",
+          "fullName": "api.v1.TenantServiceCreateOrUpdateRequest",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "tenant",
+              "description": "",
+              "label": "",
+              "type": "Tenant",
+              "longType": "Tenant",
+              "fullType": "api.v1.Tenant",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "TenantServiceCreateOrUpdateResponse",
+          "longName": "TenantServiceCreateOrUpdateResponse",
+          "fullName": "api.v1.TenantServiceCreateOrUpdateResponse",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "tenant",
+              "description": "",
+              "label": "",
+              "type": "Tenant",
+              "longType": "Tenant",
+              "fullType": "api.v1.Tenant",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "TenantServiceCreateRequest",
+          "longName": "TenantServiceCreateRequest",
+          "fullName": "api.v1.TenantServiceCreateRequest",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "tenant",
+              "description": "",
+              "label": "",
+              "type": "Tenant",
+              "longType": "Tenant",
+              "fullType": "api.v1.Tenant",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "TenantServiceCreateResponse",
+          "longName": "TenantServiceCreateResponse",
+          "fullName": "api.v1.TenantServiceCreateResponse",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "tenant",
+              "description": "",
+              "label": "",
+              "type": "Tenant",
+              "longType": "Tenant",
+              "fullType": "api.v1.Tenant",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "TenantServiceDeleteRequest",
+          "longName": "TenantServiceDeleteRequest",
+          "fullName": "api.v1.TenantServiceDeleteRequest",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "login",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "TenantServiceDeleteResponse",
+          "longName": "TenantServiceDeleteResponse",
+          "fullName": "api.v1.TenantServiceDeleteResponse",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "tenant",
+              "description": "",
+              "label": "",
+              "type": "Tenant",
+              "longType": "Tenant",
+              "fullType": "api.v1.Tenant",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "TenantServiceGetRequest",
+          "longName": "TenantServiceGetRequest",
+          "fullName": "api.v1.TenantServiceGetRequest",
+          "description": "Requests",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "login",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "TenantServiceGetResponse",
+          "longName": "TenantServiceGetResponse",
+          "fullName": "api.v1.TenantServiceGetResponse",
+          "description": "Responses",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "tenant",
+              "description": "",
+              "label": "",
+              "type": "Tenant",
+              "longType": "Tenant",
+              "fullType": "api.v1.Tenant",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "TenantServiceUpdateRequest",
+          "longName": "TenantServiceUpdateRequest",
+          "fullName": "api.v1.TenantServiceUpdateRequest",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": true,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "login",
+              "description": "the login at the provider",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "name",
+              "description": "",
+              "label": "optional",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "_name",
+              "defaultValue": ""
+            },
+            {
+              "name": "email",
+              "description": "",
+              "label": "optional",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "_email",
+              "defaultValue": ""
+            },
+            {
+              "name": "avatar_url",
+              "description": "",
+              "label": "optional",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "_avatar_url",
+              "defaultValue": ""
+            },
+            {
+              "name": "payment_details",
+              "description": "",
+              "label": "optional",
+              "type": "PaymentDetailsUpdate",
+              "longType": "PaymentDetailsUpdate",
+              "fullType": "api.v1.PaymentDetailsUpdate",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "_payment_details",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "TenantServiceUpdateResponse",
+          "longName": "TenantServiceUpdateResponse",
+          "fullName": "api.v1.TenantServiceUpdateResponse",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "tenant",
+              "description": "",
+              "label": "",
+              "type": "Tenant",
+              "longType": "Tenant",
+              "fullType": "api.v1.Tenant",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
@@ -1537,10 +711,121 @@
           ]
         }
       ],
-      "services": []
+      "services": [
+        {
+          "name": "TenantService",
+          "longName": "TenantService",
+          "fullName": "api.v1.TenantService",
+          "description": "",
+          "methods": [
+            {
+              "name": "Create",
+              "description": "",
+              "requestType": "TenantServiceCreateRequest",
+              "requestLongType": "TenantServiceCreateRequest",
+              "requestFullType": "api.v1.TenantServiceCreateRequest",
+              "requestStreaming": false,
+              "responseType": "TenantServiceCreateResponse",
+              "responseLongType": "TenantServiceCreateResponse",
+              "responseFullType": "api.v1.TenantServiceCreateResponse",
+              "responseStreaming": false,
+              "options": {
+                "google.api.http": {
+                  "rules": [
+                    {
+                      "method": "POST",
+                      "pattern": "/api/v1/tenant",
+                      "body": "*"
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "name": "CreateOrUpdate",
+              "description": "CreateOrUpdate should only be used from within the application\nwill check if tenant already exists and updates if necessary, otherwise create a new tenant",
+              "requestType": "TenantServiceCreateOrUpdateRequest",
+              "requestLongType": "TenantServiceCreateOrUpdateRequest",
+              "requestFullType": "api.v1.TenantServiceCreateOrUpdateRequest",
+              "requestStreaming": false,
+              "responseType": "TenantServiceCreateOrUpdateResponse",
+              "responseLongType": "TenantServiceCreateOrUpdateResponse",
+              "responseFullType": "api.v1.TenantServiceCreateOrUpdateResponse",
+              "responseStreaming": false
+            },
+            {
+              "name": "Get",
+              "description": "",
+              "requestType": "TenantServiceGetRequest",
+              "requestLongType": "TenantServiceGetRequest",
+              "requestFullType": "api.v1.TenantServiceGetRequest",
+              "requestStreaming": false,
+              "responseType": "TenantServiceGetResponse",
+              "responseLongType": "TenantServiceGetResponse",
+              "responseFullType": "api.v1.TenantServiceGetResponse",
+              "responseStreaming": false,
+              "options": {
+                "google.api.http": {
+                  "rules": [
+                    {
+                      "method": "GET",
+                      "pattern": "/api/v1/tenant/{login}"
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "name": "Update",
+              "description": "",
+              "requestType": "TenantServiceUpdateRequest",
+              "requestLongType": "TenantServiceUpdateRequest",
+              "requestFullType": "api.v1.TenantServiceUpdateRequest",
+              "requestStreaming": false,
+              "responseType": "TenantServiceUpdateResponse",
+              "responseLongType": "TenantServiceUpdateResponse",
+              "responseFullType": "api.v1.TenantServiceUpdateResponse",
+              "responseStreaming": false,
+              "options": {
+                "google.api.http": {
+                  "rules": [
+                    {
+                      "method": "PATCH",
+                      "pattern": "/api/v1/tenant",
+                      "body": "*"
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "name": "Delete",
+              "description": "",
+              "requestType": "TenantServiceDeleteRequest",
+              "requestLongType": "TenantServiceDeleteRequest",
+              "requestFullType": "api.v1.TenantServiceDeleteRequest",
+              "requestStreaming": false,
+              "responseType": "TenantServiceDeleteResponse",
+              "responseLongType": "TenantServiceDeleteResponse",
+              "responseFullType": "api.v1.TenantServiceDeleteResponse",
+              "responseStreaming": false,
+              "options": {
+                "google.api.http": {
+                  "rules": [
+                    {
+                      "method": "DELETE",
+                      "pattern": "/api/v1/tenant/{login}"
+                    }
+                  ]
+                }
+              }
+            }
+          ]
+        }
+      ]
     },
     {
-      "name": "admin/v1/user.proto",
+      "name": "admin/v1/tenant.proto",
       "description": "",
       "package": "admin.v1",
       "hasEnums": false,
@@ -1551,45 +836,9 @@
       "extensions": [],
       "messages": [
         {
-          "name": "User",
-          "longName": "User",
-          "fullName": "admin.v1.User",
-          "description": "User is for admin purpose a combined authenticated user and a payment customer",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "user",
-              "description": "",
-              "label": "",
-              "type": "User",
-              "longType": "api.v1.User",
-              "fullType": "api.v1.User",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "payment_customer",
-              "description": "",
-              "label": "",
-              "type": "PaymentCustomer",
-              "longType": "api.v1.PaymentCustomer",
-              "fullType": "api.v1.PaymentCustomer",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            }
-          ]
-        },
-        {
-          "name": "UserServiceAdmitRequest",
-          "longName": "UserServiceAdmitRequest",
-          "fullName": "admin.v1.UserServiceAdmitRequest",
+          "name": "TenantServiceAdmitRequest",
+          "longName": "TenantServiceAdmitRequest",
+          "fullName": "admin.v1.TenantServiceAdmitRequest",
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
@@ -1611,9 +860,9 @@
           ]
         },
         {
-          "name": "UserServiceAdmitResponse",
-          "longName": "UserServiceAdmitResponse",
-          "fullName": "admin.v1.UserServiceAdmitResponse",
+          "name": "TenantServiceAdmitResponse",
+          "longName": "TenantServiceAdmitResponse",
+          "fullName": "admin.v1.TenantServiceAdmitResponse",
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
@@ -1624,9 +873,9 @@
               "name": "user",
               "description": "",
               "label": "",
-              "type": "User",
-              "longType": "User",
-              "fullType": "admin.v1.User",
+              "type": "Tenant",
+              "longType": "api.v1.Tenant",
+              "fullType": "api.v1.Tenant",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
@@ -1635,9 +884,9 @@
           ]
         },
         {
-          "name": "UserServiceListRequest",
-          "longName": "UserServiceListRequest",
-          "fullName": "admin.v1.UserServiceListRequest",
+          "name": "TenantServiceListRequest",
+          "longName": "TenantServiceListRequest",
+          "fullName": "admin.v1.TenantServiceListRequest",
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
@@ -1727,13 +976,25 @@
               "isoneof": true,
               "oneofdecl": "_page_token",
               "defaultValue": ""
+            },
+            {
+              "name": "count",
+              "description": "count is the number of results returned per page, if no given server side defaults apply",
+              "label": "optional",
+              "type": "int32",
+              "longType": "int32",
+              "fullType": "int32",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "_count",
+              "defaultValue": ""
             }
           ]
         },
         {
-          "name": "UserServiceListResponse",
-          "longName": "UserServiceListResponse",
-          "fullName": "admin.v1.UserServiceListResponse",
+          "name": "TenantServiceListResponse",
+          "longName": "TenantServiceListResponse",
+          "fullName": "admin.v1.TenantServiceListResponse",
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
@@ -1744,9 +1005,9 @@
               "name": "users",
               "description": "",
               "label": "repeated",
-              "type": "User",
-              "longType": "User",
-              "fullType": "admin.v1.User",
+              "type": "Tenant",
+              "longType": "api.v1.Tenant",
+              "fullType": "api.v1.Tenant",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
@@ -1769,33 +1030,33 @@
       ],
       "services": [
         {
-          "name": "UserService",
-          "longName": "UserService",
-          "fullName": "admin.v1.UserService",
+          "name": "TenantService",
+          "longName": "TenantService",
+          "fullName": "admin.v1.TenantService",
           "description": "",
           "methods": [
             {
               "name": "List",
               "description": "",
-              "requestType": "UserServiceListRequest",
-              "requestLongType": "UserServiceListRequest",
-              "requestFullType": "admin.v1.UserServiceListRequest",
+              "requestType": "TenantServiceListRequest",
+              "requestLongType": "TenantServiceListRequest",
+              "requestFullType": "admin.v1.TenantServiceListRequest",
               "requestStreaming": false,
-              "responseType": "UserServiceListResponse",
-              "responseLongType": "UserServiceListResponse",
-              "responseFullType": "admin.v1.UserServiceListResponse",
+              "responseType": "TenantServiceListResponse",
+              "responseLongType": "TenantServiceListResponse",
+              "responseFullType": "admin.v1.TenantServiceListResponse",
               "responseStreaming": false
             },
             {
               "name": "Admit",
               "description": "",
-              "requestType": "UserServiceAdmitRequest",
-              "requestLongType": "UserServiceAdmitRequest",
-              "requestFullType": "admin.v1.UserServiceAdmitRequest",
+              "requestType": "TenantServiceAdmitRequest",
+              "requestLongType": "TenantServiceAdmitRequest",
+              "requestFullType": "admin.v1.TenantServiceAdmitRequest",
               "requestStreaming": false,
-              "responseType": "UserServiceAdmitResponse",
-              "responseLongType": "UserServiceAdmitResponse",
-              "responseFullType": "admin.v1.UserServiceAdmitResponse",
+              "responseType": "TenantServiceAdmitResponse",
+              "responseLongType": "TenantServiceAdmitResponse",
+              "responseFullType": "admin.v1.TenantServiceAdmitResponse",
               "responseStreaming": false
             }
           ]
@@ -4856,7 +4117,7 @@
       ]
     },
     {
-      "name": "api/v1/tenant.proto",
+      "name": "api/v1/payment.proto",
       "description": "",
       "package": "api.v1",
       "hasEnums": false,
@@ -4867,9 +4128,9 @@
       "extensions": [],
       "messages": [
         {
-          "name": "PaymentDetails",
-          "longName": "PaymentDetails",
-          "fullName": "api.v1.PaymentDetails",
+          "name": "Address",
+          "longName": "Address",
+          "fullName": "api.v1.Address",
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
@@ -4877,7 +4138,7 @@
           "extensions": [],
           "fields": [
             {
-              "name": "customer_id",
+              "name": "line1",
               "description": "",
               "label": "",
               "type": "string",
@@ -4889,7 +4150,7 @@
               "defaultValue": ""
             },
             {
-              "name": "payment_method_id",
+              "name": "line2",
               "description": "",
               "label": "",
               "type": "string",
@@ -4901,7 +4162,43 @@
               "defaultValue": ""
             },
             {
-              "name": "subscription_id",
+              "name": "postal_code",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "city",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "state",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "country",
               "description": "",
               "label": "",
               "type": "string",
@@ -4915,77 +4212,17 @@
           ]
         },
         {
-          "name": "PaymentDetailsUpdate",
-          "longName": "PaymentDetailsUpdate",
-          "fullName": "api.v1.PaymentDetailsUpdate",
+          "name": "Card",
+          "longName": "Card",
+          "fullName": "api.v1.Card",
           "description": "",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": true,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "customer_id",
-              "description": "",
-              "label": "optional",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": true,
-              "oneofdecl": "_customer_id",
-              "defaultValue": ""
-            },
-            {
-              "name": "payment_method_id",
-              "description": "",
-              "label": "optional",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": true,
-              "oneofdecl": "_payment_method_id",
-              "defaultValue": ""
-            },
-            {
-              "name": "subscription_id",
-              "description": "",
-              "label": "optional",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": true,
-              "oneofdecl": "_subscription_id",
-              "defaultValue": ""
-            }
-          ]
-        },
-        {
-          "name": "Tenant",
-          "longName": "Tenant",
-          "fullName": "api.v1.Tenant",
-          "description": "Tenant",
           "hasExtensions": false,
           "hasFields": true,
           "hasOneofs": false,
           "extensions": [],
           "fields": [
             {
-              "name": "login",
-              "description": "the login at the provider",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "name",
+              "name": "brand",
               "description": "",
               "label": "",
               "type": "string",
@@ -4997,7 +4234,7 @@
               "defaultValue": ""
             },
             {
-              "name": "email",
+              "name": "country",
               "description": "",
               "label": "",
               "type": "string",
@@ -5009,7 +4246,55 @@
               "defaultValue": ""
             },
             {
-              "name": "avatar_url",
+              "name": "exp_month",
+              "description": "",
+              "label": "",
+              "type": "int64",
+              "longType": "int64",
+              "fullType": "int64",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "exp_year",
+              "description": "",
+              "label": "",
+              "type": "int64",
+              "longType": "int64",
+              "fullType": "int64",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "last_4",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "Invoice",
+          "longName": "Invoice",
+          "fullName": "api.v1.Invoice",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "id",
               "description": "",
               "label": "",
               "type": "string",
@@ -5021,31 +4306,19 @@
               "defaultValue": ""
             },
             {
-              "name": "oauth_provider",
+              "name": "pdf_download_url",
               "description": "",
               "label": "",
-              "type": "OAuthProvider",
-              "longType": "OAuthProvider",
-              "fullType": "api.v1.OAuthProvider",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
               "defaultValue": ""
             },
             {
-              "name": "payment_details",
-              "description": "",
-              "label": "",
-              "type": "PaymentDetails",
-              "longType": "PaymentDetails",
-              "fullType": "api.v1.PaymentDetails",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "created_at",
+              "name": "period_start",
               "description": "",
               "label": "",
               "type": "Timestamp",
@@ -5057,19 +4330,7 @@
               "defaultValue": ""
             },
             {
-              "name": "updated_at",
-              "description": "",
-              "label": "",
-              "type": "Timestamp",
-              "longType": "google.protobuf.Timestamp",
-              "fullType": "google.protobuf.Timestamp",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "deleted_at",
+              "name": "period_end",
               "description": "",
               "label": "",
               "type": "Timestamp",
@@ -5083,201 +4344,9 @@
           ]
         },
         {
-          "name": "TenantServiceCreateOrUpdateRequest",
-          "longName": "TenantServiceCreateOrUpdateRequest",
-          "fullName": "api.v1.TenantServiceCreateOrUpdateRequest",
-          "description": "",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "tenant",
-              "description": "",
-              "label": "",
-              "type": "Tenant",
-              "longType": "Tenant",
-              "fullType": "api.v1.Tenant",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            }
-          ]
-        },
-        {
-          "name": "TenantServiceCreateOrUpdateResponse",
-          "longName": "TenantServiceCreateOrUpdateResponse",
-          "fullName": "api.v1.TenantServiceCreateOrUpdateResponse",
-          "description": "",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "tenant",
-              "description": "",
-              "label": "",
-              "type": "Tenant",
-              "longType": "Tenant",
-              "fullType": "api.v1.Tenant",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            }
-          ]
-        },
-        {
-          "name": "TenantServiceCreateRequest",
-          "longName": "TenantServiceCreateRequest",
-          "fullName": "api.v1.TenantServiceCreateRequest",
-          "description": "",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "tenant",
-              "description": "",
-              "label": "",
-              "type": "Tenant",
-              "longType": "Tenant",
-              "fullType": "api.v1.Tenant",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            }
-          ]
-        },
-        {
-          "name": "TenantServiceCreateResponse",
-          "longName": "TenantServiceCreateResponse",
-          "fullName": "api.v1.TenantServiceCreateResponse",
-          "description": "",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "tenant",
-              "description": "",
-              "label": "",
-              "type": "Tenant",
-              "longType": "Tenant",
-              "fullType": "api.v1.Tenant",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            }
-          ]
-        },
-        {
-          "name": "TenantServiceDeleteRequest",
-          "longName": "TenantServiceDeleteRequest",
-          "fullName": "api.v1.TenantServiceDeleteRequest",
-          "description": "",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "login",
-              "description": "",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            }
-          ]
-        },
-        {
-          "name": "TenantServiceDeleteResponse",
-          "longName": "TenantServiceDeleteResponse",
-          "fullName": "api.v1.TenantServiceDeleteResponse",
-          "description": "",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "tenant",
-              "description": "",
-              "label": "",
-              "type": "Tenant",
-              "longType": "Tenant",
-              "fullType": "api.v1.Tenant",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            }
-          ]
-        },
-        {
-          "name": "TenantServiceGetRequest",
-          "longName": "TenantServiceGetRequest",
-          "fullName": "api.v1.TenantServiceGetRequest",
-          "description": "Requests",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "login",
-              "description": "",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            }
-          ]
-        },
-        {
-          "name": "TenantServiceGetResponse",
-          "longName": "TenantServiceGetResponse",
-          "fullName": "api.v1.TenantServiceGetResponse",
-          "description": "Responses",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "tenant",
-              "description": "",
-              "label": "",
-              "type": "Tenant",
-              "longType": "Tenant",
-              "fullType": "api.v1.Tenant",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            }
-          ]
-        },
-        {
-          "name": "TenantServiceUpdateRequest",
-          "longName": "TenantServiceUpdateRequest",
-          "fullName": "api.v1.TenantServiceUpdateRequest",
+          "name": "PaymentCustomer",
+          "longName": "PaymentCustomer",
+          "fullName": "api.v1.PaymentCustomer",
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
@@ -5286,7 +4355,7 @@
           "fields": [
             {
               "name": "login",
-              "description": "the login at the provider",
+              "description": "",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -5309,6 +4378,42 @@
               "defaultValue": ""
             },
             {
+              "name": "customer_id",
+              "description": "",
+              "label": "optional",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "_customer_id",
+              "defaultValue": ""
+            },
+            {
+              "name": "payment_method_id",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "subscription_id",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
               "name": "email",
               "description": "",
               "label": "optional",
@@ -5321,35 +4426,47 @@
               "defaultValue": ""
             },
             {
-              "name": "avatar_url",
+              "name": "card",
               "description": "",
               "label": "optional",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
+              "type": "Card",
+              "longType": "Card",
+              "fullType": "api.v1.Card",
               "ismap": false,
               "isoneof": true,
-              "oneofdecl": "_avatar_url",
+              "oneofdecl": "_card",
               "defaultValue": ""
             },
             {
-              "name": "payment_details",
+              "name": "prices",
               "description": "",
-              "label": "optional",
-              "type": "PaymentDetailsUpdate",
-              "longType": "PaymentDetailsUpdate",
-              "fullType": "api.v1.PaymentDetailsUpdate",
+              "label": "repeated",
+              "type": "Price",
+              "longType": "Price",
+              "fullType": "api.v1.Price",
               "ismap": false,
-              "isoneof": true,
-              "oneofdecl": "_payment_details",
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "address",
+              "description": "",
+              "label": "",
+              "type": "Address",
+              "longType": "Address",
+              "fullType": "api.v1.Address",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
               "defaultValue": ""
             }
           ]
         },
         {
-          "name": "TenantServiceUpdateResponse",
-          "longName": "TenantServiceUpdateResponse",
-          "fullName": "api.v1.TenantServiceUpdateResponse",
+          "name": "PaymentServiceCheckIfCustomerExistsRequest",
+          "longName": "PaymentServiceCheckIfCustomerExistsRequest",
+          "fullName": "api.v1.PaymentServiceCheckIfCustomerExistsRequest",
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
@@ -5357,12 +4474,587 @@
           "extensions": [],
           "fields": [
             {
-              "name": "tenant",
+              "name": "login",
               "description": "",
               "label": "",
-              "type": "Tenant",
-              "longType": "Tenant",
-              "fullType": "api.v1.Tenant",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "PaymentServiceCheckIfCustomerExistsResponse",
+          "longName": "PaymentServiceCheckIfCustomerExistsResponse",
+          "fullName": "api.v1.PaymentServiceCheckIfCustomerExistsResponse",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "customer",
+              "description": "",
+              "label": "",
+              "type": "PaymentCustomer",
+              "longType": "PaymentCustomer",
+              "fullType": "api.v1.PaymentCustomer",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "exists",
+              "description": "",
+              "label": "",
+              "type": "bool",
+              "longType": "bool",
+              "fullType": "bool",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "PaymentServiceCreateOrUpdateCustomerRequest",
+          "longName": "PaymentServiceCreateOrUpdateCustomerRequest",
+          "fullName": "api.v1.PaymentServiceCreateOrUpdateCustomerRequest",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "customer",
+              "description": "",
+              "label": "",
+              "type": "PaymentCustomer",
+              "longType": "PaymentCustomer",
+              "fullType": "api.v1.PaymentCustomer",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "PaymentServiceCreateOrUpdateCustomerResponse",
+          "longName": "PaymentServiceCreateOrUpdateCustomerResponse",
+          "fullName": "api.v1.PaymentServiceCreateOrUpdateCustomerResponse",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "customer",
+              "description": "",
+              "label": "",
+              "type": "PaymentCustomer",
+              "longType": "PaymentCustomer",
+              "fullType": "api.v1.PaymentCustomer",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "PaymentServiceDeletePaymentMethodRequest",
+          "longName": "PaymentServiceDeletePaymentMethodRequest",
+          "fullName": "api.v1.PaymentServiceDeletePaymentMethodRequest",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "login",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": "",
+              "options": {
+                "validate.rules": [
+                  {
+                    "name": "string.min_len",
+                    "value": 2
+                  },
+                  {
+                    "name": "string.max_len",
+                    "value": 128
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "PaymentServiceDeletePaymentMethodResponse",
+          "longName": "PaymentServiceDeletePaymentMethodResponse",
+          "fullName": "api.v1.PaymentServiceDeletePaymentMethodResponse",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": false,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": []
+        },
+        {
+          "name": "PaymentServiceGetCustomerRequest",
+          "longName": "PaymentServiceGetCustomerRequest",
+          "fullName": "api.v1.PaymentServiceGetCustomerRequest",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "customer_id",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "PaymentServiceGetCustomerResponse",
+          "longName": "PaymentServiceGetCustomerResponse",
+          "fullName": "api.v1.PaymentServiceGetCustomerResponse",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "customer",
+              "description": "",
+              "label": "",
+              "type": "PaymentCustomer",
+              "longType": "PaymentCustomer",
+              "fullType": "api.v1.PaymentCustomer",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "PaymentServiceGetCustomerWithLoginRequest",
+          "longName": "PaymentServiceGetCustomerWithLoginRequest",
+          "fullName": "api.v1.PaymentServiceGetCustomerWithLoginRequest",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "login",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "PaymentServiceGetCustomerWithLoginResponse",
+          "longName": "PaymentServiceGetCustomerWithLoginResponse",
+          "fullName": "api.v1.PaymentServiceGetCustomerWithLoginResponse",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "customer",
+              "description": "",
+              "label": "",
+              "type": "PaymentCustomer",
+              "longType": "PaymentCustomer",
+              "fullType": "api.v1.PaymentCustomer",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "PaymentServiceGetInvoicesRequest",
+          "longName": "PaymentServiceGetInvoicesRequest",
+          "fullName": "api.v1.PaymentServiceGetInvoicesRequest",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "login",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": "",
+              "options": {
+                "validate.rules": [
+                  {
+                    "name": "string.min_len",
+                    "value": 2
+                  },
+                  {
+                    "name": "string.max_len",
+                    "value": 128
+                  }
+                ]
+              }
+            },
+            {
+              "name": "customer_id",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": "",
+              "options": {
+                "validate.rules": [
+                  {
+                    "name": "string.min_len",
+                    "value": 18
+                  },
+                  {
+                    "name": "string.max_len",
+                    "value": 18
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "PaymentServiceGetInvoicesResponse",
+          "longName": "PaymentServiceGetInvoicesResponse",
+          "fullName": "api.v1.PaymentServiceGetInvoicesResponse",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "invoices",
+              "description": "",
+              "label": "repeated",
+              "type": "Invoice",
+              "longType": "Invoice",
+              "fullType": "api.v1.Invoice",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "PaymentServiceGetSubscriptionUsageRequest",
+          "longName": "PaymentServiceGetSubscriptionUsageRequest",
+          "fullName": "api.v1.PaymentServiceGetSubscriptionUsageRequest",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "login",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": "",
+              "options": {
+                "validate.rules": [
+                  {
+                    "name": "string.min_len",
+                    "value": 2
+                  },
+                  {
+                    "name": "string.max_len",
+                    "value": 128
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "PaymentServiceGetSubscriptionUsageResponse",
+          "longName": "PaymentServiceGetSubscriptionUsageResponse",
+          "fullName": "api.v1.PaymentServiceGetSubscriptionUsageResponse",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "subscription_usage_items",
+              "description": "",
+              "label": "repeated",
+              "type": "SubscriptionUsageItem",
+              "longType": "SubscriptionUsageItem",
+              "fullType": "api.v1.SubscriptionUsageItem",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "PaymentServiceHasPaymentMethodRequest",
+          "longName": "PaymentServiceHasPaymentMethodRequest",
+          "fullName": "api.v1.PaymentServiceHasPaymentMethodRequest",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "login",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": "",
+              "options": {
+                "validate.rules": [
+                  {
+                    "name": "string.min_len",
+                    "value": 2
+                  },
+                  {
+                    "name": "string.max_len",
+                    "value": 128
+                  }
+                ]
+              }
+            },
+            {
+              "name": "project",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": "",
+              "options": {
+                "validate.rules": [
+                  {
+                    "name": "string.min_len",
+                    "value": 2
+                  },
+                  {
+                    "name": "string.max_len",
+                    "value": 128
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "PaymentServiceHasPaymentMethodResponse",
+          "longName": "PaymentServiceHasPaymentMethodResponse",
+          "fullName": "api.v1.PaymentServiceHasPaymentMethodResponse",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "exists",
+              "description": "",
+              "label": "",
+              "type": "bool",
+              "longType": "bool",
+              "fullType": "bool",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "Price",
+          "longName": "Price",
+          "fullName": "api.v1.Price",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "name",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "unit_amount_decimal",
+              "description": "",
+              "label": "",
+              "type": "double",
+              "longType": "double",
+              "fullType": "double",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "currency",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "SubscriptionUsageItem",
+          "longName": "SubscriptionUsageItem",
+          "fullName": "api.v1.SubscriptionUsageItem",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "subscription_item_id",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "subscription_item_name",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "total_usage",
+              "description": "",
+              "label": "",
+              "type": "int64",
+              "longType": "int64",
+              "fullType": "int64",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "period_start",
+              "description": "",
+              "label": "",
+              "type": "Timestamp",
+              "longType": "google.protobuf.Timestamp",
+              "fullType": "google.protobuf.Timestamp",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "period_end",
+              "description": "",
+              "label": "",
+              "type": "Timestamp",
+              "longType": "google.protobuf.Timestamp",
+              "fullType": "google.protobuf.Timestamp",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
@@ -5373,112 +5065,106 @@
       ],
       "services": [
         {
-          "name": "TenantService",
-          "longName": "TenantService",
-          "fullName": "api.v1.TenantService",
+          "name": "PaymentService",
+          "longName": "PaymentService",
+          "fullName": "api.v1.PaymentService",
           "description": "",
           "methods": [
             {
-              "name": "Create",
+              "name": "CreateOrUpdateCustomer",
               "description": "",
-              "requestType": "TenantServiceCreateRequest",
-              "requestLongType": "TenantServiceCreateRequest",
-              "requestFullType": "api.v1.TenantServiceCreateRequest",
+              "requestType": "PaymentServiceCreateOrUpdateCustomerRequest",
+              "requestLongType": "PaymentServiceCreateOrUpdateCustomerRequest",
+              "requestFullType": "api.v1.PaymentServiceCreateOrUpdateCustomerRequest",
               "requestStreaming": false,
-              "responseType": "TenantServiceCreateResponse",
-              "responseLongType": "TenantServiceCreateResponse",
-              "responseFullType": "api.v1.TenantServiceCreateResponse",
-              "responseStreaming": false,
-              "options": {
-                "google.api.http": {
-                  "rules": [
-                    {
-                      "method": "POST",
-                      "pattern": "/api/v1/tenant",
-                      "body": "*"
-                    }
-                  ]
-                }
-              }
-            },
-            {
-              "name": "CreateOrUpdate",
-              "description": "CreateOrUpdate should only be used from within the application\nwill check if tenant already exists and updates if necessary, otherwise create a new tenant",
-              "requestType": "TenantServiceCreateOrUpdateRequest",
-              "requestLongType": "TenantServiceCreateOrUpdateRequest",
-              "requestFullType": "api.v1.TenantServiceCreateOrUpdateRequest",
-              "requestStreaming": false,
-              "responseType": "TenantServiceCreateOrUpdateResponse",
-              "responseLongType": "TenantServiceCreateOrUpdateResponse",
-              "responseFullType": "api.v1.TenantServiceCreateOrUpdateResponse",
+              "responseType": "PaymentServiceCreateOrUpdateCustomerResponse",
+              "responseLongType": "PaymentServiceCreateOrUpdateCustomerResponse",
+              "responseFullType": "api.v1.PaymentServiceCreateOrUpdateCustomerResponse",
               "responseStreaming": false
             },
             {
-              "name": "Get",
+              "name": "GetCustomer",
               "description": "",
-              "requestType": "TenantServiceGetRequest",
-              "requestLongType": "TenantServiceGetRequest",
-              "requestFullType": "api.v1.TenantServiceGetRequest",
+              "requestType": "PaymentServiceGetCustomerRequest",
+              "requestLongType": "PaymentServiceGetCustomerRequest",
+              "requestFullType": "api.v1.PaymentServiceGetCustomerRequest",
               "requestStreaming": false,
-              "responseType": "TenantServiceGetResponse",
-              "responseLongType": "TenantServiceGetResponse",
-              "responseFullType": "api.v1.TenantServiceGetResponse",
-              "responseStreaming": false,
-              "options": {
-                "google.api.http": {
-                  "rules": [
-                    {
-                      "method": "GET",
-                      "pattern": "/api/v1/tenant/{login}"
-                    }
-                  ]
-                }
-              }
+              "responseType": "PaymentServiceGetCustomerResponse",
+              "responseLongType": "PaymentServiceGetCustomerResponse",
+              "responseFullType": "api.v1.PaymentServiceGetCustomerResponse",
+              "responseStreaming": false
             },
             {
-              "name": "Update",
+              "name": "GetCustomerWithLogin",
               "description": "",
-              "requestType": "TenantServiceUpdateRequest",
-              "requestLongType": "TenantServiceUpdateRequest",
-              "requestFullType": "api.v1.TenantServiceUpdateRequest",
+              "requestType": "PaymentServiceGetCustomerWithLoginRequest",
+              "requestLongType": "PaymentServiceGetCustomerWithLoginRequest",
+              "requestFullType": "api.v1.PaymentServiceGetCustomerWithLoginRequest",
               "requestStreaming": false,
-              "responseType": "TenantServiceUpdateResponse",
-              "responseLongType": "TenantServiceUpdateResponse",
-              "responseFullType": "api.v1.TenantServiceUpdateResponse",
-              "responseStreaming": false,
-              "options": {
-                "google.api.http": {
-                  "rules": [
-                    {
-                      "method": "PATCH",
-                      "pattern": "/api/v1/tenant",
-                      "body": "*"
-                    }
-                  ]
-                }
-              }
+              "responseType": "PaymentServiceGetCustomerWithLoginResponse",
+              "responseLongType": "PaymentServiceGetCustomerWithLoginResponse",
+              "responseFullType": "api.v1.PaymentServiceGetCustomerWithLoginResponse",
+              "responseStreaming": false
             },
             {
-              "name": "Delete",
+              "name": "CheckIfCustomerExists",
               "description": "",
-              "requestType": "TenantServiceDeleteRequest",
-              "requestLongType": "TenantServiceDeleteRequest",
-              "requestFullType": "api.v1.TenantServiceDeleteRequest",
+              "requestType": "PaymentServiceCheckIfCustomerExistsRequest",
+              "requestLongType": "PaymentServiceCheckIfCustomerExistsRequest",
+              "requestFullType": "api.v1.PaymentServiceCheckIfCustomerExistsRequest",
               "requestStreaming": false,
-              "responseType": "TenantServiceDeleteResponse",
-              "responseLongType": "TenantServiceDeleteResponse",
-              "responseFullType": "api.v1.TenantServiceDeleteResponse",
-              "responseStreaming": false,
-              "options": {
-                "google.api.http": {
-                  "rules": [
-                    {
-                      "method": "DELETE",
-                      "pattern": "/api/v1/tenant/{login}"
-                    }
-                  ]
-                }
-              }
+              "responseType": "PaymentServiceCheckIfCustomerExistsResponse",
+              "responseLongType": "PaymentServiceCheckIfCustomerExistsResponse",
+              "responseFullType": "api.v1.PaymentServiceCheckIfCustomerExistsResponse",
+              "responseStreaming": false
+            },
+            {
+              "name": "HasPaymentMethod",
+              "description": "",
+              "requestType": "PaymentServiceHasPaymentMethodRequest",
+              "requestLongType": "PaymentServiceHasPaymentMethodRequest",
+              "requestFullType": "api.v1.PaymentServiceHasPaymentMethodRequest",
+              "requestStreaming": false,
+              "responseType": "PaymentServiceHasPaymentMethodResponse",
+              "responseLongType": "PaymentServiceHasPaymentMethodResponse",
+              "responseFullType": "api.v1.PaymentServiceHasPaymentMethodResponse",
+              "responseStreaming": false
+            },
+            {
+              "name": "DeletePaymentMethod",
+              "description": "",
+              "requestType": "PaymentServiceDeletePaymentMethodRequest",
+              "requestLongType": "PaymentServiceDeletePaymentMethodRequest",
+              "requestFullType": "api.v1.PaymentServiceDeletePaymentMethodRequest",
+              "requestStreaming": false,
+              "responseType": "PaymentServiceDeletePaymentMethodResponse",
+              "responseLongType": "PaymentServiceDeletePaymentMethodResponse",
+              "responseFullType": "api.v1.PaymentServiceDeletePaymentMethodResponse",
+              "responseStreaming": false
+            },
+            {
+              "name": "GetSubscriptionUsage",
+              "description": "",
+              "requestType": "PaymentServiceGetSubscriptionUsageRequest",
+              "requestLongType": "PaymentServiceGetSubscriptionUsageRequest",
+              "requestFullType": "api.v1.PaymentServiceGetSubscriptionUsageRequest",
+              "requestStreaming": false,
+              "responseType": "PaymentServiceGetSubscriptionUsageResponse",
+              "responseLongType": "PaymentServiceGetSubscriptionUsageResponse",
+              "responseFullType": "api.v1.PaymentServiceGetSubscriptionUsageResponse",
+              "responseStreaming": false
+            },
+            {
+              "name": "GetInvoices",
+              "description": "",
+              "requestType": "PaymentServiceGetInvoicesRequest",
+              "requestLongType": "PaymentServiceGetInvoicesRequest",
+              "requestFullType": "api.v1.PaymentServiceGetInvoicesRequest",
+              "requestStreaming": false,
+              "responseType": "PaymentServiceGetInvoicesResponse",
+              "responseLongType": "PaymentServiceGetInvoicesResponse",
+              "responseFullType": "api.v1.PaymentServiceGetInvoicesResponse",
+              "responseStreaming": false
             }
           ]
         }
@@ -5685,6 +5371,296 @@
           ]
         }
       ]
+    },
+    {
+      "name": "api/v1/user.proto",
+      "description": "",
+      "package": "api.v1",
+      "hasEnums": false,
+      "hasExtensions": false,
+      "hasMessages": true,
+      "hasServices": false,
+      "enums": [],
+      "extensions": [],
+      "messages": [
+        {
+          "name": "Organization",
+          "longName": "Organization",
+          "fullName": "api.v1.Organization",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "id",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "login",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "name",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "email",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "billing_email",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "avatar_url",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "role",
+              "description": "",
+              "label": "",
+              "type": "Role",
+              "longType": "Role",
+              "fullType": "api.v1.Role",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "teams",
+              "description": "",
+              "label": "repeated",
+              "type": "Team",
+              "longType": "Team",
+              "fullType": "api.v1.Team",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "Team",
+          "longName": "Team",
+          "fullName": "api.v1.Team",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "id",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "name",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "avatar_url",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "role",
+              "description": "",
+              "label": "",
+              "type": "Role",
+              "longType": "Role",
+              "fullType": "api.v1.Role",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "project_id",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "User",
+          "longName": "User",
+          "fullName": "api.v1.User",
+          "description": "User",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "login",
+              "description": "the login at the provider",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "name",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "email",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "avatar_url",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "oauth_provider",
+              "description": "",
+              "label": "",
+              "type": "OAuthProvider",
+              "longType": "OAuthProvider",
+              "fullType": "api.v1.OAuthProvider",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "organizations",
+              "description": "",
+              "label": "repeated",
+              "type": "Organization",
+              "longType": "Organization",
+              "fullType": "api.v1.Organization",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "admitted",
+              "description": "",
+              "label": "",
+              "type": "bool",
+              "longType": "bool",
+              "fullType": "bool",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        }
+      ],
+      "services": []
     },
     {
       "name": "api/v1/version.proto",
