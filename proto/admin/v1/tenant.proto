@@ -21,15 +21,12 @@ message TenantServiceListRequest {
   optional string organisation_id = 4;
   optional api.v1.OAuthProvider oauth_provider = 5;
   optional bool admitted = 6;
-  // page_token is used for pagination, if unset only the first page is returned, the list response contains then token for the next page.
-  optional string page_token = 7;
-  // count is the number of results returned per page, if no given server side defaults apply
-  optional int32 count = 8;
+  api.v1.Paging paging = 7;
 }
 message TenantServiceListResponse {
   repeated api.v1.Tenant tenants = 1;
-  // next_page_token is used for pagination, returns the next page to be fetched and must then be provided in the list request.
-  string next_page_token = 2;
+  // next_page is used for pagination, returns the next page to be fetched and must then be provided in the list request.
+  optional uint64 next_page = 2;
 }
 message TenantServiceAdmitRequest {
   string tenant_id = 1;

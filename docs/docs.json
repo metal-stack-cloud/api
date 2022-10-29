@@ -6,7 +6,7 @@
       "package": "api.v1",
       "hasEnums": true,
       "hasExtensions": true,
-      "hasMessages": false,
+      "hasMessages": true,
       "hasServices": false,
       "enums": [
         {
@@ -192,7 +192,44 @@
           "containingFullType": "google.protobuf.MethodOptions"
         }
       ],
-      "messages": [],
+      "messages": [
+        {
+          "name": "Paging",
+          "longName": "Paging",
+          "fullName": "api.v1.Paging",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": true,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "page",
+              "description": "page is used for pagination, if unset only the first page is returned, the list response contains then token for the next page.",
+              "label": "optional",
+              "type": "uint64",
+              "longType": "uint64",
+              "fullType": "uint64",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "_page",
+              "defaultValue": ""
+            },
+            {
+              "name": "count",
+              "description": "count is the number of results returned per page, if no given server side defaults apply",
+              "label": "optional",
+              "type": "uint64",
+              "longType": "uint64",
+              "fullType": "uint64",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "_count",
+              "defaultValue": ""
+            }
+          ]
+        }
+      ],
       "services": []
     },
     {
@@ -978,27 +1015,15 @@
               "defaultValue": ""
             },
             {
-              "name": "page_token",
-              "description": "page_token is used for pagination, if unset only the first page is returned, the list response contains then token for the next page.",
-              "label": "optional",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
+              "name": "paging",
+              "description": "",
+              "label": "",
+              "type": "Paging",
+              "longType": "api.v1.Paging",
+              "fullType": "api.v1.Paging",
               "ismap": false,
-              "isoneof": true,
-              "oneofdecl": "_page_token",
-              "defaultValue": ""
-            },
-            {
-              "name": "count",
-              "description": "count is the number of results returned per page, if no given server side defaults apply",
-              "label": "optional",
-              "type": "int32",
-              "longType": "int32",
-              "fullType": "int32",
-              "ismap": false,
-              "isoneof": true,
-              "oneofdecl": "_count",
+              "isoneof": false,
+              "oneofdecl": "",
               "defaultValue": ""
             }
           ]
@@ -1010,7 +1035,7 @@
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
-          "hasOneofs": false,
+          "hasOneofs": true,
           "extensions": [],
           "fields": [
             {
@@ -1026,15 +1051,15 @@
               "defaultValue": ""
             },
             {
-              "name": "next_page_token",
-              "description": "next_page_token is used for pagination, returns the next page to be fetched and must then be provided in the list request.",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
+              "name": "next_page",
+              "description": "next_page is used for pagination, returns the next page to be fetched and must then be provided in the list request.",
+              "label": "optional",
+              "type": "uint64",
+              "longType": "uint64",
+              "fullType": "uint64",
               "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
+              "isoneof": true,
+              "oneofdecl": "_next_page",
               "defaultValue": ""
             }
           ]

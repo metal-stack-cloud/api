@@ -53,6 +53,21 @@
       ],
       "default": "O_AUTH_PROVIDER_UNSPECIFIED"
     },
+    "v1Paging": {
+      "type": "object",
+      "properties": {
+        "page": {
+          "type": "string",
+          "format": "uint64",
+          "description": "page is used for pagination, if unset only the first page is returned, the list response contains then token for the next page."
+        },
+        "count": {
+          "type": "string",
+          "format": "uint64",
+          "title": "count is the number of results returned per page, if no given server side defaults apply"
+        }
+      }
+    },
     "v1PaymentDetails": {
       "type": "object",
       "properties": {
@@ -124,9 +139,10 @@
             "$ref": "#/definitions/v1Tenant"
           }
         },
-        "nextPageToken": {
+        "nextPage": {
           "type": "string",
-          "description": "next_page_token is used for pagination, returns the next page to be fetched and must then be provided in the list request."
+          "format": "uint64",
+          "description": "next_page is used for pagination, returns the next page to be fetched and must then be provided in the list request."
         }
       }
     }

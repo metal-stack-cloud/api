@@ -145,8 +145,7 @@ proto.admin.v1.TenantServiceListRequest.toObject = function(includeInstance, msg
     organisationId: jspb.Message.getFieldWithDefault(msg, 4, ""),
     oauthProvider: jspb.Message.getFieldWithDefault(msg, 5, 0),
     admitted: jspb.Message.getBooleanFieldWithDefault(msg, 6, false),
-    pageToken: jspb.Message.getFieldWithDefault(msg, 7, ""),
-    count: jspb.Message.getFieldWithDefault(msg, 8, 0)
+    paging: (f = msg.getPaging()) && api_v1_common_pb.Paging.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -208,12 +207,9 @@ proto.admin.v1.TenantServiceListRequest.deserializeBinaryFromReader = function(m
       msg.setAdmitted(value);
       break;
     case 7:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setPageToken(value);
-      break;
-    case 8:
-      var value = /** @type {number} */ (reader.readInt32());
-      msg.setCount(value);
+      var value = new api_v1_common_pb.Paging;
+      reader.readMessage(value,api_v1_common_pb.Paging.deserializeBinaryFromReader);
+      msg.setPaging(value);
       break;
     default:
       reader.skipField();
@@ -286,18 +282,12 @@ proto.admin.v1.TenantServiceListRequest.serializeBinaryToWriter = function(messa
       f
     );
   }
-  f = /** @type {string} */ (jspb.Message.getField(message, 7));
+  f = message.getPaging();
   if (f != null) {
-    writer.writeString(
+    writer.writeMessage(
       7,
-      f
-    );
-  }
-  f = /** @type {number} */ (jspb.Message.getField(message, 8));
-  if (f != null) {
-    writer.writeInt32(
-      8,
-      f
+      f,
+      api_v1_common_pb.Paging.serializeBinaryToWriter
     );
   }
 };
@@ -520,29 +510,30 @@ proto.admin.v1.TenantServiceListRequest.prototype.hasAdmitted = function() {
 
 
 /**
- * optional string page_token = 7;
- * @return {string}
+ * optional api.v1.Paging paging = 7;
+ * @return {?proto.api.v1.Paging}
  */
-proto.admin.v1.TenantServiceListRequest.prototype.getPageToken = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 7, ""));
+proto.admin.v1.TenantServiceListRequest.prototype.getPaging = function() {
+  return /** @type{?proto.api.v1.Paging} */ (
+    jspb.Message.getWrapperField(this, api_v1_common_pb.Paging, 7));
 };
 
 
 /**
- * @param {string} value
+ * @param {?proto.api.v1.Paging|undefined} value
  * @return {!proto.admin.v1.TenantServiceListRequest} returns this
- */
-proto.admin.v1.TenantServiceListRequest.prototype.setPageToken = function(value) {
-  return jspb.Message.setField(this, 7, value);
+*/
+proto.admin.v1.TenantServiceListRequest.prototype.setPaging = function(value) {
+  return jspb.Message.setWrapperField(this, 7, value);
 };
 
 
 /**
- * Clears the field making it undefined.
+ * Clears the message field making it undefined.
  * @return {!proto.admin.v1.TenantServiceListRequest} returns this
  */
-proto.admin.v1.TenantServiceListRequest.prototype.clearPageToken = function() {
-  return jspb.Message.setField(this, 7, undefined);
+proto.admin.v1.TenantServiceListRequest.prototype.clearPaging = function() {
+  return this.setPaging(undefined);
 };
 
 
@@ -550,44 +541,8 @@ proto.admin.v1.TenantServiceListRequest.prototype.clearPageToken = function() {
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.admin.v1.TenantServiceListRequest.prototype.hasPageToken = function() {
+proto.admin.v1.TenantServiceListRequest.prototype.hasPaging = function() {
   return jspb.Message.getField(this, 7) != null;
-};
-
-
-/**
- * optional int32 count = 8;
- * @return {number}
- */
-proto.admin.v1.TenantServiceListRequest.prototype.getCount = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 8, 0));
-};
-
-
-/**
- * @param {number} value
- * @return {!proto.admin.v1.TenantServiceListRequest} returns this
- */
-proto.admin.v1.TenantServiceListRequest.prototype.setCount = function(value) {
-  return jspb.Message.setField(this, 8, value);
-};
-
-
-/**
- * Clears the field making it undefined.
- * @return {!proto.admin.v1.TenantServiceListRequest} returns this
- */
-proto.admin.v1.TenantServiceListRequest.prototype.clearCount = function() {
-  return jspb.Message.setField(this, 8, undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return {boolean}
- */
-proto.admin.v1.TenantServiceListRequest.prototype.hasCount = function() {
-  return jspb.Message.getField(this, 8) != null;
 };
 
 
@@ -632,7 +587,7 @@ proto.admin.v1.TenantServiceListResponse.toObject = function(includeInstance, ms
   var f, obj = {
     tenantsList: jspb.Message.toObjectList(msg.getTenantsList(),
     api_v1_tenant_pb.Tenant.toObject, includeInstance),
-    nextPageToken: jspb.Message.getFieldWithDefault(msg, 2, "")
+    nextPage: jspb.Message.getFieldWithDefault(msg, 2, 0)
   };
 
   if (includeInstance) {
@@ -675,8 +630,8 @@ proto.admin.v1.TenantServiceListResponse.deserializeBinaryFromReader = function(
       msg.addTenants(value);
       break;
     case 2:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setNextPageToken(value);
+      var value = /** @type {number} */ (reader.readUint64());
+      msg.setNextPage(value);
       break;
     default:
       reader.skipField();
@@ -715,9 +670,9 @@ proto.admin.v1.TenantServiceListResponse.serializeBinaryToWriter = function(mess
       api_v1_tenant_pb.Tenant.serializeBinaryToWriter
     );
   }
-  f = message.getNextPageToken();
-  if (f.length > 0) {
-    writer.writeString(
+  f = /** @type {number} */ (jspb.Message.getField(message, 2));
+  if (f != null) {
+    writer.writeUint64(
       2,
       f
     );
@@ -764,20 +719,38 @@ proto.admin.v1.TenantServiceListResponse.prototype.clearTenantsList = function()
 
 
 /**
- * optional string next_page_token = 2;
- * @return {string}
+ * optional uint64 next_page = 2;
+ * @return {number}
  */
-proto.admin.v1.TenantServiceListResponse.prototype.getNextPageToken = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
+proto.admin.v1.TenantServiceListResponse.prototype.getNextPage = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 2, 0));
 };
 
 
 /**
- * @param {string} value
+ * @param {number} value
  * @return {!proto.admin.v1.TenantServiceListResponse} returns this
  */
-proto.admin.v1.TenantServiceListResponse.prototype.setNextPageToken = function(value) {
-  return jspb.Message.setProto3StringField(this, 2, value);
+proto.admin.v1.TenantServiceListResponse.prototype.setNextPage = function(value) {
+  return jspb.Message.setField(this, 2, value);
+};
+
+
+/**
+ * Clears the field making it undefined.
+ * @return {!proto.admin.v1.TenantServiceListResponse} returns this
+ */
+proto.admin.v1.TenantServiceListResponse.prototype.clearNextPage = function() {
+  return jspb.Message.setField(this, 2, undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.admin.v1.TenantServiceListResponse.prototype.hasNextPage = function() {
+  return jspb.Message.getField(this, 2) != null;
 };
 
 

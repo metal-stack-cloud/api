@@ -35,15 +35,10 @@ export class TenantServiceListRequest extends jspb.Message {
   hasAdmitted(): boolean;
   clearAdmitted(): TenantServiceListRequest;
 
-  getPageToken(): string;
-  setPageToken(value: string): TenantServiceListRequest;
-  hasPageToken(): boolean;
-  clearPageToken(): TenantServiceListRequest;
-
-  getCount(): number;
-  setCount(value: number): TenantServiceListRequest;
-  hasCount(): boolean;
-  clearCount(): TenantServiceListRequest;
+  getPaging(): api_v1_common_pb.Paging | undefined;
+  setPaging(value?: api_v1_common_pb.Paging): TenantServiceListRequest;
+  hasPaging(): boolean;
+  clearPaging(): TenantServiceListRequest;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): TenantServiceListRequest.AsObject;
@@ -61,8 +56,7 @@ export namespace TenantServiceListRequest {
     organisationId?: string,
     oauthProvider?: api_v1_common_pb.OAuthProvider,
     admitted?: boolean,
-    pageToken?: string,
-    count?: number,
+    paging?: api_v1_common_pb.Paging.AsObject,
   }
 
   export enum LoginCase { 
@@ -94,16 +88,6 @@ export namespace TenantServiceListRequest {
     _ADMITTED_NOT_SET = 0,
     ADMITTED = 6,
   }
-
-  export enum PageTokenCase { 
-    _PAGE_TOKEN_NOT_SET = 0,
-    PAGE_TOKEN = 7,
-  }
-
-  export enum CountCase { 
-    _COUNT_NOT_SET = 0,
-    COUNT = 8,
-  }
 }
 
 export class TenantServiceListResponse extends jspb.Message {
@@ -112,8 +96,10 @@ export class TenantServiceListResponse extends jspb.Message {
   clearTenantsList(): TenantServiceListResponse;
   addTenants(value?: api_v1_tenant_pb.Tenant, index?: number): api_v1_tenant_pb.Tenant;
 
-  getNextPageToken(): string;
-  setNextPageToken(value: string): TenantServiceListResponse;
+  getNextPage(): number;
+  setNextPage(value: number): TenantServiceListResponse;
+  hasNextPage(): boolean;
+  clearNextPage(): TenantServiceListResponse;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): TenantServiceListResponse.AsObject;
@@ -126,7 +112,12 @@ export class TenantServiceListResponse extends jspb.Message {
 export namespace TenantServiceListResponse {
   export type AsObject = {
     tenantsList: Array<api_v1_tenant_pb.Tenant.AsObject>,
-    nextPageToken: string,
+    nextPage?: number,
+  }
+
+  export enum NextPageCase { 
+    _NEXT_PAGE_NOT_SET = 0,
+    NEXT_PAGE = 2,
   }
 }
 

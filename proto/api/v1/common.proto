@@ -39,3 +39,10 @@ extend google.protobuf.MethodOptions {
   repeated ProjectRole project_roles = 51001;
   repeated AdminRole admin_roles = 51002;
 }
+
+message Paging {
+  // page is used for pagination, if unset only the first page is returned, the list response contains then token for the next page.
+  optional uint64 page = 7;
+  // count is the number of results returned per page, if no given server side defaults apply
+  optional uint64 count = 8;
+}

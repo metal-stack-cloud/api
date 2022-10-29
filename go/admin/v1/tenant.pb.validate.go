@@ -61,6 +61,35 @@ func (m *TenantServiceListRequest) validate(all bool) error {
 
 	var errors []error
 
+	if all {
+		switch v := interface{}(m.GetPaging()).(type) {
+		case interface{ ValidateAll() error }:
+			if err := v.ValidateAll(); err != nil {
+				errors = append(errors, TenantServiceListRequestValidationError{
+					field:  "Paging",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		case interface{ Validate() error }:
+			if err := v.Validate(); err != nil {
+				errors = append(errors, TenantServiceListRequestValidationError{
+					field:  "Paging",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		}
+	} else if v, ok := interface{}(m.GetPaging()).(interface{ Validate() error }); ok {
+		if err := v.Validate(); err != nil {
+			return TenantServiceListRequestValidationError{
+				field:  "Paging",
+				reason: "embedded message failed validation",
+				cause:  err,
+			}
+		}
+	}
+
 	if m.Login != nil {
 		// no validation rules for Login
 	}
@@ -83,14 +112,6 @@ func (m *TenantServiceListRequest) validate(all bool) error {
 
 	if m.Admitted != nil {
 		// no validation rules for Admitted
-	}
-
-	if m.PageToken != nil {
-		// no validation rules for PageToken
-	}
-
-	if m.Count != nil {
-		// no validation rules for Count
 	}
 
 	if len(errors) > 0 {
@@ -229,7 +250,9 @@ func (m *TenantServiceListResponse) validate(all bool) error {
 
 	}
 
-	// no validation rules for NextPageToken
+	if m.NextPage != nil {
+		// no validation rules for NextPage
+	}
 
 	if len(errors) > 0 {
 		return TenantServiceListResponseMultiError(errors)
