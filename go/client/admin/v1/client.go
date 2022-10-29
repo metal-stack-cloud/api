@@ -16,25 +16,25 @@ type Client interface {
 	Close() error
 }
 
-// APIClient is a client implementation of the api with grpc transport.
-type APIClient struct {
+// admin is a client implementation of the api with grpc transport.
+type admin struct {
 	conn *grpc.ClientConn
 	log  *zap.SugaredLogger
 }
 
 // Close the underlying connection
-func (c APIClient) Close() error {
+func (c admin) Close() error {
 	return c.conn.Close()
 }
 
-func (c APIClient) Tenant() v1.TenantServiceClient {
+func (c admin) Tenant() v1.TenantServiceClient {
 	return v1.NewTenantServiceClient(c.conn)
 }
 
 func New(ctx context.Context, config client.DialConfig) (Client, error) {
 	log := config.Log
 
-	res := &APIClient{
+	res := &admin{
 		log: log,
 	}
 

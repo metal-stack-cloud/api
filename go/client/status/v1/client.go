@@ -16,28 +16,28 @@ type Client interface {
 	Close() error
 }
 
-// StatusClient is a client implementation of the status api with grpc transport.
-type StatusClient struct {
+// status is a client implementation of the status api with grpc transport.
+type status struct {
 	conn *grpc.ClientConn
 	log  *zap.SugaredLogger
 }
 
-func (c StatusClient) Status() statusv1.StatusServiceClient {
+func (c status) Status() statusv1.StatusServiceClient {
 	return statusv1.NewStatusServiceClient(c.conn)
 }
 
-func (c StatusClient) Message() statusv1.MessageServiceClient {
+func (c status) Message() statusv1.MessageServiceClient {
 	return statusv1.NewMessageServiceClient(c.conn)
 }
 
-func (c StatusClient) Close() error {
+func (c status) Close() error {
 	return c.conn.Close()
 }
 
 func New(ctx context.Context, config client.DialConfig) (Client, error) {
 	log := config.Log
 
-	res := &StatusClient{
+	res := &status{
 		log: log,
 	}
 
