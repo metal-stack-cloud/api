@@ -630,7 +630,7 @@ proto.admin.v1.TenantServiceListResponse.prototype.toObject = function(opt_inclu
  */
 proto.admin.v1.TenantServiceListResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
-    usersList: jspb.Message.toObjectList(msg.getUsersList(),
+    tenantsList: jspb.Message.toObjectList(msg.getTenantsList(),
     api_v1_tenant_pb.Tenant.toObject, includeInstance),
     nextPageToken: jspb.Message.getFieldWithDefault(msg, 2, "")
   };
@@ -672,7 +672,7 @@ proto.admin.v1.TenantServiceListResponse.deserializeBinaryFromReader = function(
     case 1:
       var value = new api_v1_tenant_pb.Tenant;
       reader.readMessage(value,api_v1_tenant_pb.Tenant.deserializeBinaryFromReader);
-      msg.addUsers(value);
+      msg.addTenants(value);
       break;
     case 2:
       var value = /** @type {string} */ (reader.readString());
@@ -707,7 +707,7 @@ proto.admin.v1.TenantServiceListResponse.prototype.serializeBinary = function() 
  */
 proto.admin.v1.TenantServiceListResponse.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
-  f = message.getUsersList();
+  f = message.getTenantsList();
   if (f.length > 0) {
     writer.writeRepeatedMessage(
       1,
@@ -726,10 +726,10 @@ proto.admin.v1.TenantServiceListResponse.serializeBinaryToWriter = function(mess
 
 
 /**
- * repeated api.v1.Tenant users = 1;
+ * repeated api.v1.Tenant tenants = 1;
  * @return {!Array<!proto.api.v1.Tenant>}
  */
-proto.admin.v1.TenantServiceListResponse.prototype.getUsersList = function() {
+proto.admin.v1.TenantServiceListResponse.prototype.getTenantsList = function() {
   return /** @type{!Array<!proto.api.v1.Tenant>} */ (
     jspb.Message.getRepeatedWrapperField(this, api_v1_tenant_pb.Tenant, 1));
 };
@@ -739,7 +739,7 @@ proto.admin.v1.TenantServiceListResponse.prototype.getUsersList = function() {
  * @param {!Array<!proto.api.v1.Tenant>} value
  * @return {!proto.admin.v1.TenantServiceListResponse} returns this
 */
-proto.admin.v1.TenantServiceListResponse.prototype.setUsersList = function(value) {
+proto.admin.v1.TenantServiceListResponse.prototype.setTenantsList = function(value) {
   return jspb.Message.setRepeatedWrapperField(this, 1, value);
 };
 
@@ -749,7 +749,7 @@ proto.admin.v1.TenantServiceListResponse.prototype.setUsersList = function(value
  * @param {number=} opt_index
  * @return {!proto.api.v1.Tenant}
  */
-proto.admin.v1.TenantServiceListResponse.prototype.addUsers = function(opt_value, opt_index) {
+proto.admin.v1.TenantServiceListResponse.prototype.addTenants = function(opt_value, opt_index) {
   return jspb.Message.addToRepeatedWrapperField(this, 1, opt_value, proto.api.v1.Tenant, opt_index);
 };
 
@@ -758,8 +758,8 @@ proto.admin.v1.TenantServiceListResponse.prototype.addUsers = function(opt_value
  * Clears the list making it empty but non-null.
  * @return {!proto.admin.v1.TenantServiceListResponse} returns this
  */
-proto.admin.v1.TenantServiceListResponse.prototype.clearUsersList = function() {
-  return this.setUsersList([]);
+proto.admin.v1.TenantServiceListResponse.prototype.clearTenantsList = function() {
+  return this.setTenantsList([]);
 };
 
 
@@ -943,7 +943,7 @@ proto.admin.v1.TenantServiceAdmitResponse.prototype.toObject = function(opt_incl
  */
 proto.admin.v1.TenantServiceAdmitResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
-    user: (f = msg.getUser()) && api_v1_tenant_pb.Tenant.toObject(includeInstance, f)
+    tenant: (f = msg.getTenant()) && api_v1_tenant_pb.Tenant.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -983,7 +983,7 @@ proto.admin.v1.TenantServiceAdmitResponse.deserializeBinaryFromReader = function
     case 1:
       var value = new api_v1_tenant_pb.Tenant;
       reader.readMessage(value,api_v1_tenant_pb.Tenant.deserializeBinaryFromReader);
-      msg.setUser(value);
+      msg.setTenant(value);
       break;
     default:
       reader.skipField();
@@ -1014,7 +1014,7 @@ proto.admin.v1.TenantServiceAdmitResponse.prototype.serializeBinary = function()
  */
 proto.admin.v1.TenantServiceAdmitResponse.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
-  f = message.getUser();
+  f = message.getTenant();
   if (f != null) {
     writer.writeMessage(
       1,
@@ -1026,10 +1026,10 @@ proto.admin.v1.TenantServiceAdmitResponse.serializeBinaryToWriter = function(mes
 
 
 /**
- * optional api.v1.Tenant user = 1;
+ * optional api.v1.Tenant tenant = 1;
  * @return {?proto.api.v1.Tenant}
  */
-proto.admin.v1.TenantServiceAdmitResponse.prototype.getUser = function() {
+proto.admin.v1.TenantServiceAdmitResponse.prototype.getTenant = function() {
   return /** @type{?proto.api.v1.Tenant} */ (
     jspb.Message.getWrapperField(this, api_v1_tenant_pb.Tenant, 1));
 };
@@ -1039,7 +1039,7 @@ proto.admin.v1.TenantServiceAdmitResponse.prototype.getUser = function() {
  * @param {?proto.api.v1.Tenant|undefined} value
  * @return {!proto.admin.v1.TenantServiceAdmitResponse} returns this
 */
-proto.admin.v1.TenantServiceAdmitResponse.prototype.setUser = function(value) {
+proto.admin.v1.TenantServiceAdmitResponse.prototype.setTenant = function(value) {
   return jspb.Message.setWrapperField(this, 1, value);
 };
 
@@ -1048,8 +1048,8 @@ proto.admin.v1.TenantServiceAdmitResponse.prototype.setUser = function(value) {
  * Clears the message field making it undefined.
  * @return {!proto.admin.v1.TenantServiceAdmitResponse} returns this
  */
-proto.admin.v1.TenantServiceAdmitResponse.prototype.clearUser = function() {
-  return this.setUser(undefined);
+proto.admin.v1.TenantServiceAdmitResponse.prototype.clearTenant = function() {
+  return this.setTenant(undefined);
 };
 
 
@@ -1057,7 +1057,7 @@ proto.admin.v1.TenantServiceAdmitResponse.prototype.clearUser = function() {
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.admin.v1.TenantServiceAdmitResponse.prototype.hasUser = function() {
+proto.admin.v1.TenantServiceAdmitResponse.prototype.hasTenant = function() {
   return jspb.Message.getField(this, 1) != null;
 };
 

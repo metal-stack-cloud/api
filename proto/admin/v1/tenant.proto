@@ -27,7 +27,7 @@ message TenantServiceListRequest {
   optional int32 count = 8;
 }
 message TenantServiceListResponse {
-  repeated api.v1.Tenant users = 1;
+  repeated api.v1.Tenant tenants = 1;
   // next_page_token is used for pagination, returns the next page to be fetched and must then be provided in the list request.
   string next_page_token = 2;
 }
@@ -35,5 +35,5 @@ message TenantServiceAdmitRequest {
   string user_id = 1;
 }
 message TenantServiceAdmitResponse {
-  api.v1.Tenant user = 1;
+  api.v1.Tenant tenant = 1;
 }

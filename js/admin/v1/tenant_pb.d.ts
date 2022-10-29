@@ -107,10 +107,10 @@ export namespace TenantServiceListRequest {
 }
 
 export class TenantServiceListResponse extends jspb.Message {
-  getUsersList(): Array<api_v1_tenant_pb.Tenant>;
-  setUsersList(value: Array<api_v1_tenant_pb.Tenant>): TenantServiceListResponse;
-  clearUsersList(): TenantServiceListResponse;
-  addUsers(value?: api_v1_tenant_pb.Tenant, index?: number): api_v1_tenant_pb.Tenant;
+  getTenantsList(): Array<api_v1_tenant_pb.Tenant>;
+  setTenantsList(value: Array<api_v1_tenant_pb.Tenant>): TenantServiceListResponse;
+  clearTenantsList(): TenantServiceListResponse;
+  addTenants(value?: api_v1_tenant_pb.Tenant, index?: number): api_v1_tenant_pb.Tenant;
 
   getNextPageToken(): string;
   setNextPageToken(value: string): TenantServiceListResponse;
@@ -125,7 +125,7 @@ export class TenantServiceListResponse extends jspb.Message {
 
 export namespace TenantServiceListResponse {
   export type AsObject = {
-    usersList: Array<api_v1_tenant_pb.Tenant.AsObject>,
+    tenantsList: Array<api_v1_tenant_pb.Tenant.AsObject>,
     nextPageToken: string,
   }
 }
@@ -149,10 +149,10 @@ export namespace TenantServiceAdmitRequest {
 }
 
 export class TenantServiceAdmitResponse extends jspb.Message {
-  getUser(): api_v1_tenant_pb.Tenant | undefined;
-  setUser(value?: api_v1_tenant_pb.Tenant): TenantServiceAdmitResponse;
-  hasUser(): boolean;
-  clearUser(): TenantServiceAdmitResponse;
+  getTenant(): api_v1_tenant_pb.Tenant | undefined;
+  setTenant(value?: api_v1_tenant_pb.Tenant): TenantServiceAdmitResponse;
+  hasTenant(): boolean;
+  clearTenant(): TenantServiceAdmitResponse;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): TenantServiceAdmitResponse.AsObject;
@@ -164,7 +164,7 @@ export class TenantServiceAdmitResponse extends jspb.Message {
 
 export namespace TenantServiceAdmitResponse {
   export type AsObject = {
-    user?: api_v1_tenant_pb.Tenant.AsObject,
+    tenant?: api_v1_tenant_pb.Tenant.AsObject,
   }
 }
 

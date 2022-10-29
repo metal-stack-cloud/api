@@ -107,7 +107,7 @@
     "v1TenantServiceAdmitResponse": {
       "type": "object",
       "properties": {
-        "user": {
+        "tenant": {
           "$ref": "#/definitions/v1Tenant"
         }
       }
@@ -115,7 +115,7 @@
     "v1TenantServiceListResponse": {
       "type": "object",
       "properties": {
-        "users": {
+        "tenants": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/v1Tenant"

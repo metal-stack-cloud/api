@@ -870,7 +870,7 @@
           "extensions": [],
           "fields": [
             {
-              "name": "user",
+              "name": "tenant",
               "description": "",
               "label": "",
               "type": "Tenant",
@@ -1002,7 +1002,7 @@
           "extensions": [],
           "fields": [
             {
-              "name": "users",
+              "name": "tenants",
               "description": "",
               "label": "repeated",
               "type": "Tenant",

@@ -195,7 +195,7 @@ func (m *TenantServiceListResponse) validate(all bool) error {
 
 	var errors []error
 
-	for idx, item := range m.GetUsers() {
+	for idx, item := range m.GetTenants() {
 		_, _ = idx, item
 
 		if all {
@@ -203,7 +203,7 @@ func (m *TenantServiceListResponse) validate(all bool) error {
 			case interface{ ValidateAll() error }:
 				if err := v.ValidateAll(); err != nil {
 					errors = append(errors, TenantServiceListResponseValidationError{
-						field:  fmt.Sprintf("Users[%v]", idx),
+						field:  fmt.Sprintf("Tenants[%v]", idx),
 						reason: "embedded message failed validation",
 						cause:  err,
 					})
@@ -211,7 +211,7 @@ func (m *TenantServiceListResponse) validate(all bool) error {
 			case interface{ Validate() error }:
 				if err := v.Validate(); err != nil {
 					errors = append(errors, TenantServiceListResponseValidationError{
-						field:  fmt.Sprintf("Users[%v]", idx),
+						field:  fmt.Sprintf("Tenants[%v]", idx),
 						reason: "embedded message failed validation",
 						cause:  err,
 					})
@@ -220,7 +220,7 @@ func (m *TenantServiceListResponse) validate(all bool) error {
 		} else if v, ok := interface{}(item).(interface{ Validate() error }); ok {
 			if err := v.Validate(); err != nil {
 				return TenantServiceListResponseValidationError{
-					field:  fmt.Sprintf("Users[%v]", idx),
+					field:  fmt.Sprintf("Tenants[%v]", idx),
 					reason: "embedded message failed validation",
 					cause:  err,
 				}
@@ -438,11 +438,11 @@ func (m *TenantServiceAdmitResponse) validate(all bool) error {
 	var errors []error
 
 	if all {
-		switch v := interface{}(m.GetUser()).(type) {
+		switch v := interface{}(m.GetTenant()).(type) {
 		case interface{ ValidateAll() error }:
 			if err := v.ValidateAll(); err != nil {
 				errors = append(errors, TenantServiceAdmitResponseValidationError{
-					field:  "User",
+					field:  "Tenant",
 					reason: "embedded message failed validation",
 					cause:  err,
 				})
@@ -450,16 +450,16 @@ func (m *TenantServiceAdmitResponse) validate(all bool) error {
 		case interface{ Validate() error }:
 			if err := v.Validate(); err != nil {
 				errors = append(errors, TenantServiceAdmitResponseValidationError{
-					field:  "User",
+					field:  "Tenant",
 					reason: "embedded message failed validation",
 					cause:  err,
 				})
 			}
 		}
-	} else if v, ok := interface{}(m.GetUser()).(interface{ Validate() error }); ok {
+	} else if v, ok := interface{}(m.GetTenant()).(interface{ Validate() error }); ok {
 		if err := v.Validate(); err != nil {
 			return TenantServiceAdmitResponseValidationError{
-				field:  "User",
+				field:  "Tenant",
 				reason: "embedded message failed validation",
 				cause:  err,
 			}
