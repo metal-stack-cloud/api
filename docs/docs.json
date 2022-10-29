@@ -846,7 +846,7 @@
           "extensions": [],
           "fields": [
             {
-              "name": "user_id",
+              "name": "tenant_id",
               "description": "",
               "label": "",
               "type": "string",

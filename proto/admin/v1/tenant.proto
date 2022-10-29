@@ -32,7 +32,7 @@ message TenantServiceListResponse {
   string next_page_token = 2;
 }
 message TenantServiceAdmitRequest {
-  string user_id = 1;
+  string tenant_id = 1;
 }
 message TenantServiceAdmitResponse {
   api.v1.Tenant tenant = 1;

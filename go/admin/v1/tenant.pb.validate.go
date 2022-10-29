@@ -333,7 +333,7 @@ func (m *TenantServiceAdmitRequest) validate(all bool) error {
 
 	var errors []error
 
-	// no validation rules for UserId
+	// no validation rules for TenantId
 
 	if len(errors) > 0 {
 		return TenantServiceAdmitRequestMultiError(errors)

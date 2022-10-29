@@ -813,7 +813,7 @@ proto.admin.v1.TenantServiceAdmitRequest.prototype.toObject = function(opt_inclu
  */
 proto.admin.v1.TenantServiceAdmitRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    userId: jspb.Message.getFieldWithDefault(msg, 1, "")
+    tenantId: jspb.Message.getFieldWithDefault(msg, 1, "")
   };
 
   if (includeInstance) {
@@ -852,7 +852,7 @@ proto.admin.v1.TenantServiceAdmitRequest.deserializeBinaryFromReader = function(
     switch (field) {
     case 1:
       var value = /** @type {string} */ (reader.readString());
-      msg.setUserId(value);
+      msg.setTenantId(value);
       break;
     default:
       reader.skipField();
@@ -883,7 +883,7 @@ proto.admin.v1.TenantServiceAdmitRequest.prototype.serializeBinary = function() 
  */
 proto.admin.v1.TenantServiceAdmitRequest.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
-  f = message.getUserId();
+  f = message.getTenantId();
   if (f.length > 0) {
     writer.writeString(
       1,
@@ -894,10 +894,10 @@ proto.admin.v1.TenantServiceAdmitRequest.serializeBinaryToWriter = function(mess
 
 
 /**
- * optional string user_id = 1;
+ * optional string tenant_id = 1;
  * @return {string}
  */
-proto.admin.v1.TenantServiceAdmitRequest.prototype.getUserId = function() {
+proto.admin.v1.TenantServiceAdmitRequest.prototype.getTenantId = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
 };
 
@@ -906,7 +906,7 @@ proto.admin.v1.TenantServiceAdmitRequest.prototype.getUserId = function() {
  * @param {string} value
  * @return {!proto.admin.v1.TenantServiceAdmitRequest} returns this
  */
-proto.admin.v1.TenantServiceAdmitRequest.prototype.setUserId = function(value) {
+proto.admin.v1.TenantServiceAdmitRequest.prototype.setTenantId = function(value) {
   return jspb.Message.setProto3StringField(this, 1, value);
 };
 

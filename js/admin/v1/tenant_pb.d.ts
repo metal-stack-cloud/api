@@ -131,8 +131,8 @@ export namespace TenantServiceListResponse {
 }
 
 export class TenantServiceAdmitRequest extends jspb.Message {
-  getUserId(): string;
-  setUserId(value: string): TenantServiceAdmitRequest;
+  getTenantId(): string;
+  setTenantId(value: string): TenantServiceAdmitRequest;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): TenantServiceAdmitRequest.AsObject;
@@ -144,7 +144,7 @@ export class TenantServiceAdmitRequest extends jspb.Message {
 
 export namespace TenantServiceAdmitRequest {
   export type AsObject = {
-    userId: string,
+    tenantId: string,
   }
 }
 
