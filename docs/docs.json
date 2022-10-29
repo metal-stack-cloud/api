@@ -1703,6 +1703,30 @@
               "isoneof": true,
               "oneofdecl": "_oauth_provider",
               "defaultValue": ""
+            },
+            {
+              "name": "admitted",
+              "description": "",
+              "label": "optional",
+              "type": "bool",
+              "longType": "bool",
+              "fullType": "bool",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "_admitted",
+              "defaultValue": ""
+            },
+            {
+              "name": "page_token",
+              "description": "page_token is used for pagination, if unset only the first page is returned, the list response contains then token for the next page.",
+              "label": "optional",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "_page_token",
+              "defaultValue": ""
             }
           ]
         },
@@ -1723,6 +1747,18 @@
               "type": "User",
               "longType": "User",
               "fullType": "admin.v1.User",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "next_page_token",
+              "description": "next_page_token is used for pagination, returns the next page to be fetched and must then be provided in the list request.",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",

@@ -270,6 +270,10 @@
           "items": {
             "$ref": "#/definitions/adminv1User"
           }
+        },
+        "nextPageToken": {
+          "type": "string",
+          "description": "next_page_token is used for pagination, returns the next page to be fetched and must then be provided in the list request."
         }
       }
     }

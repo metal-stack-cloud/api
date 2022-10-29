@@ -57,6 +57,16 @@ export class UserServiceListRequest extends jspb.Message {
   hasOauthProvider(): boolean;
   clearOauthProvider(): UserServiceListRequest;
 
+  getAdmitted(): boolean;
+  setAdmitted(value: boolean): UserServiceListRequest;
+  hasAdmitted(): boolean;
+  clearAdmitted(): UserServiceListRequest;
+
+  getPageToken(): string;
+  setPageToken(value: string): UserServiceListRequest;
+  hasPageToken(): boolean;
+  clearPageToken(): UserServiceListRequest;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): UserServiceListRequest.AsObject;
   static toObject(includeInstance: boolean, msg: UserServiceListRequest): UserServiceListRequest.AsObject;
@@ -72,6 +82,8 @@ export namespace UserServiceListRequest {
     email?: string,
     organisationId?: string,
     oauthProvider?: api_v1_common_pb.OAuthProvider,
+    admitted?: boolean,
+    pageToken?: string,
   }
 
   export enum LoginCase { 
@@ -98,6 +110,16 @@ export namespace UserServiceListRequest {
     _OAUTH_PROVIDER_NOT_SET = 0,
     OAUTH_PROVIDER = 5,
   }
+
+  export enum AdmittedCase { 
+    _ADMITTED_NOT_SET = 0,
+    ADMITTED = 6,
+  }
+
+  export enum PageTokenCase { 
+    _PAGE_TOKEN_NOT_SET = 0,
+    PAGE_TOKEN = 7,
+  }
 }
 
 export class UserServiceListResponse extends jspb.Message {
@@ -105,6 +127,9 @@ export class UserServiceListResponse extends jspb.Message {
   setUsersList(value: Array<User>): UserServiceListResponse;
   clearUsersList(): UserServiceListResponse;
   addUsers(value?: User, index?: number): User;
+
+  getNextPageToken(): string;
+  setNextPageToken(value: string): UserServiceListResponse;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): UserServiceListResponse.AsObject;
@@ -117,6 +142,7 @@ export class UserServiceListResponse extends jspb.Message {
 export namespace UserServiceListResponse {
   export type AsObject = {
     usersList: Array<User.AsObject>,
+    nextPageToken: string,
   }
 }
 

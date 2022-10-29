@@ -369,7 +369,9 @@ proto.admin.v1.UserServiceListRequest.toObject = function(includeInstance, msg) 
     name: jspb.Message.getFieldWithDefault(msg, 2, ""),
     email: jspb.Message.getFieldWithDefault(msg, 3, ""),
     organisationId: jspb.Message.getFieldWithDefault(msg, 4, ""),
-    oauthProvider: jspb.Message.getFieldWithDefault(msg, 5, 0)
+    oauthProvider: jspb.Message.getFieldWithDefault(msg, 5, 0),
+    admitted: jspb.Message.getBooleanFieldWithDefault(msg, 6, false),
+    pageToken: jspb.Message.getFieldWithDefault(msg, 7, "")
   };
 
   if (includeInstance) {
@@ -425,6 +427,14 @@ proto.admin.v1.UserServiceListRequest.deserializeBinaryFromReader = function(msg
     case 5:
       var value = /** @type {!proto.api.v1.OAuthProvider} */ (reader.readEnum());
       msg.setOauthProvider(value);
+      break;
+    case 6:
+      var value = /** @type {boolean} */ (reader.readBool());
+      msg.setAdmitted(value);
+      break;
+    case 7:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setPageToken(value);
       break;
     default:
       reader.skipField();
@@ -487,6 +497,20 @@ proto.admin.v1.UserServiceListRequest.serializeBinaryToWriter = function(message
   if (f != null) {
     writer.writeEnum(
       5,
+      f
+    );
+  }
+  f = /** @type {boolean} */ (jspb.Message.getField(message, 6));
+  if (f != null) {
+    writer.writeBool(
+      6,
+      f
+    );
+  }
+  f = /** @type {string} */ (jspb.Message.getField(message, 7));
+  if (f != null) {
+    writer.writeString(
+      7,
       f
     );
   }
@@ -673,6 +697,78 @@ proto.admin.v1.UserServiceListRequest.prototype.hasOauthProvider = function() {
 };
 
 
+/**
+ * optional bool admitted = 6;
+ * @return {boolean}
+ */
+proto.admin.v1.UserServiceListRequest.prototype.getAdmitted = function() {
+  return /** @type {boolean} */ (jspb.Message.getBooleanFieldWithDefault(this, 6, false));
+};
+
+
+/**
+ * @param {boolean} value
+ * @return {!proto.admin.v1.UserServiceListRequest} returns this
+ */
+proto.admin.v1.UserServiceListRequest.prototype.setAdmitted = function(value) {
+  return jspb.Message.setField(this, 6, value);
+};
+
+
+/**
+ * Clears the field making it undefined.
+ * @return {!proto.admin.v1.UserServiceListRequest} returns this
+ */
+proto.admin.v1.UserServiceListRequest.prototype.clearAdmitted = function() {
+  return jspb.Message.setField(this, 6, undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.admin.v1.UserServiceListRequest.prototype.hasAdmitted = function() {
+  return jspb.Message.getField(this, 6) != null;
+};
+
+
+/**
+ * optional string page_token = 7;
+ * @return {string}
+ */
+proto.admin.v1.UserServiceListRequest.prototype.getPageToken = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 7, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.admin.v1.UserServiceListRequest} returns this
+ */
+proto.admin.v1.UserServiceListRequest.prototype.setPageToken = function(value) {
+  return jspb.Message.setField(this, 7, value);
+};
+
+
+/**
+ * Clears the field making it undefined.
+ * @return {!proto.admin.v1.UserServiceListRequest} returns this
+ */
+proto.admin.v1.UserServiceListRequest.prototype.clearPageToken = function() {
+  return jspb.Message.setField(this, 7, undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.admin.v1.UserServiceListRequest.prototype.hasPageToken = function() {
+  return jspb.Message.getField(this, 7) != null;
+};
+
+
 
 /**
  * List of repeated fields within this message type.
@@ -713,7 +809,8 @@ proto.admin.v1.UserServiceListResponse.prototype.toObject = function(opt_include
 proto.admin.v1.UserServiceListResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
     usersList: jspb.Message.toObjectList(msg.getUsersList(),
-    proto.admin.v1.User.toObject, includeInstance)
+    proto.admin.v1.User.toObject, includeInstance),
+    nextPageToken: jspb.Message.getFieldWithDefault(msg, 2, "")
   };
 
   if (includeInstance) {
@@ -755,6 +852,10 @@ proto.admin.v1.UserServiceListResponse.deserializeBinaryFromReader = function(ms
       reader.readMessage(value,proto.admin.v1.User.deserializeBinaryFromReader);
       msg.addUsers(value);
       break;
+    case 2:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setNextPageToken(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -790,6 +891,13 @@ proto.admin.v1.UserServiceListResponse.serializeBinaryToWriter = function(messag
       1,
       f,
       proto.admin.v1.User.serializeBinaryToWriter
+    );
+  }
+  f = message.getNextPageToken();
+  if (f.length > 0) {
+    writer.writeString(
+      2,
+      f
     );
   }
 };
@@ -830,6 +938,24 @@ proto.admin.v1.UserServiceListResponse.prototype.addUsers = function(opt_value, 
  */
 proto.admin.v1.UserServiceListResponse.prototype.clearUsersList = function() {
   return this.setUsersList([]);
+};
+
+
+/**
+ * optional string next_page_token = 2;
+ * @return {string}
+ */
+proto.admin.v1.UserServiceListResponse.prototype.getNextPageToken = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.admin.v1.UserServiceListResponse} returns this
+ */
+proto.admin.v1.UserServiceListResponse.prototype.setNextPageToken = function(value) {
+  return jspb.Message.setProto3StringField(this, 2, value);
 };
 
 

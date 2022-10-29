@@ -237,6 +237,14 @@ func (m *UserServiceListRequest) validate(all bool) error {
 		// no validation rules for OauthProvider
 	}
 
+	if m.Admitted != nil {
+		// no validation rules for Admitted
+	}
+
+	if m.PageToken != nil {
+		// no validation rules for PageToken
+	}
+
 	if len(errors) > 0 {
 		return UserServiceListRequestMultiError(errors)
 	}
@@ -372,6 +380,8 @@ func (m *UserServiceListResponse) validate(all bool) error {
 		}
 
 	}
+
+	// no validation rules for NextPageToken
 
 	if len(errors) > 0 {
 		return UserServiceListResponseMultiError(errors)
