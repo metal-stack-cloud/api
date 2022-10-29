@@ -13,7 +13,6 @@ message User {
   string avatar_url = 5;
   OAuthProvider oauth_provider = 6;
   repeated Organization organizations = 7;
-  bool admitted = 8;
 }
 
 message Organization {

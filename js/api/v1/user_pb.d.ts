@@ -24,9 +24,6 @@ export class User extends jspb.Message {
   clearOrganizationsList(): User;
   addOrganizations(value?: Organization, index?: number): Organization;
 
-  getAdmitted(): boolean;
-  setAdmitted(value: boolean): User;
-
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): User.AsObject;
   static toObject(includeInstance: boolean, msg: User): User.AsObject;
@@ -43,7 +40,6 @@ export namespace User {
     avatarUrl: string,
     oauthProvider: api_v1_common_pb.OAuthProvider,
     organizationsList: Array<Organization.AsObject>,
-    admitted: boolean,
   }
 }
 

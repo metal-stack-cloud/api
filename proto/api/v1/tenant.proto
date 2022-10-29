@@ -49,6 +49,7 @@ message Tenant {
   string avatar_url = 5;
   OAuthProvider oauth_provider = 6;
   PaymentDetails payment_details = 8;
+  bool admitted = 9;
 
   google.protobuf.Timestamp created_at = 10;
   google.protobuf.Timestamp updated_at = 11;
