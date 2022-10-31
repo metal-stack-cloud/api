@@ -205,7 +205,7 @@
           "fields": [
             {
               "name": "page",
-              "description": "page is used for pagination, if unset only the first page is returned, the list response contains then token for the next page.",
+              "description": "page is used for pagination, if unset only the first page is returned,\nthe list response contains then the page number for the next page.",
               "label": "optional",
               "type": "uint64",
               "longType": "uint64",
@@ -217,7 +217,7 @@
             },
             {
               "name": "count",
-              "description": "count is the number of results returned per page, if no given server side defaults apply",
+              "description": "count is the number of results returned per page, if not given server side defaults apply",
               "label": "optional",
               "type": "uint64",
               "longType": "uint64",

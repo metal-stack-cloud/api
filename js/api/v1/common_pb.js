@@ -79,8 +79,8 @@ proto.api.v1.Paging.prototype.toObject = function(opt_includeInstance) {
  */
 proto.api.v1.Paging.toObject = function(includeInstance, msg) {
   var f, obj = {
-    page: jspb.Message.getFieldWithDefault(msg, 7, 0),
-    count: jspb.Message.getFieldWithDefault(msg, 8, 0)
+    page: jspb.Message.getFieldWithDefault(msg, 1, 0),
+    count: jspb.Message.getFieldWithDefault(msg, 2, 0)
   };
 
   if (includeInstance) {
@@ -117,11 +117,11 @@ proto.api.v1.Paging.deserializeBinaryFromReader = function(msg, reader) {
     }
     var field = reader.getFieldNumber();
     switch (field) {
-    case 7:
+    case 1:
       var value = /** @type {number} */ (reader.readUint64());
       msg.setPage(value);
       break;
-    case 8:
+    case 2:
       var value = /** @type {number} */ (reader.readUint64());
       msg.setCount(value);
       break;
@@ -154,17 +154,17 @@ proto.api.v1.Paging.prototype.serializeBinary = function() {
  */
 proto.api.v1.Paging.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
-  f = /** @type {number} */ (jspb.Message.getField(message, 7));
+  f = /** @type {number} */ (jspb.Message.getField(message, 1));
   if (f != null) {
     writer.writeUint64(
-      7,
+      1,
       f
     );
   }
-  f = /** @type {number} */ (jspb.Message.getField(message, 8));
+  f = /** @type {number} */ (jspb.Message.getField(message, 2));
   if (f != null) {
     writer.writeUint64(
-      8,
+      2,
       f
     );
   }
@@ -172,11 +172,11 @@ proto.api.v1.Paging.serializeBinaryToWriter = function(message, writer) {
 
 
 /**
- * optional uint64 page = 7;
+ * optional uint64 page = 1;
  * @return {number}
  */
 proto.api.v1.Paging.prototype.getPage = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 7, 0));
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
 };
 
 
@@ -185,7 +185,7 @@ proto.api.v1.Paging.prototype.getPage = function() {
  * @return {!proto.api.v1.Paging} returns this
  */
 proto.api.v1.Paging.prototype.setPage = function(value) {
-  return jspb.Message.setField(this, 7, value);
+  return jspb.Message.setField(this, 1, value);
 };
 
 
@@ -194,7 +194,7 @@ proto.api.v1.Paging.prototype.setPage = function(value) {
  * @return {!proto.api.v1.Paging} returns this
  */
 proto.api.v1.Paging.prototype.clearPage = function() {
-  return jspb.Message.setField(this, 7, undefined);
+  return jspb.Message.setField(this, 1, undefined);
 };
 
 
@@ -203,16 +203,16 @@ proto.api.v1.Paging.prototype.clearPage = function() {
  * @return {boolean}
  */
 proto.api.v1.Paging.prototype.hasPage = function() {
-  return jspb.Message.getField(this, 7) != null;
+  return jspb.Message.getField(this, 1) != null;
 };
 
 
 /**
- * optional uint64 count = 8;
+ * optional uint64 count = 2;
  * @return {number}
  */
 proto.api.v1.Paging.prototype.getCount = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 8, 0));
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 2, 0));
 };
 
 
@@ -221,7 +221,7 @@ proto.api.v1.Paging.prototype.getCount = function() {
  * @return {!proto.api.v1.Paging} returns this
  */
 proto.api.v1.Paging.prototype.setCount = function(value) {
-  return jspb.Message.setField(this, 8, value);
+  return jspb.Message.setField(this, 2, value);
 };
 
 
@@ -230,7 +230,7 @@ proto.api.v1.Paging.prototype.setCount = function(value) {
  * @return {!proto.api.v1.Paging} returns this
  */
 proto.api.v1.Paging.prototype.clearCount = function() {
-  return jspb.Message.setField(this, 8, undefined);
+  return jspb.Message.setField(this, 2, undefined);
 };
 
 
@@ -239,7 +239,7 @@ proto.api.v1.Paging.prototype.clearCount = function() {
  * @return {boolean}
  */
 proto.api.v1.Paging.prototype.hasCount = function() {
-  return jspb.Message.getField(this, 8) != null;
+  return jspb.Message.getField(this, 2) != null;
 };
 
 

@@ -30,12 +30,12 @@ export namespace Paging {
 
   export enum PageCase { 
     _PAGE_NOT_SET = 0,
-    PAGE = 7,
+    PAGE = 1,
   }
 
   export enum CountCase { 
     _COUNT_NOT_SET = 0,
-    COUNT = 8,
+    COUNT = 2,
   }
 }
 

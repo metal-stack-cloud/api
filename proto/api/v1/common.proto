@@ -41,8 +41,9 @@ extend google.protobuf.MethodOptions {
 }
 
 message Paging {
-  // page is used for pagination, if unset only the first page is returned, the list response contains then token for the next page.
-  optional uint64 page = 7;
-  // count is the number of results returned per page, if no given server side defaults apply
-  optional uint64 count = 8;
+  // page is used for pagination, if unset only the first page is returned,
+  // the list response contains then the page number for the next page.
+  optional uint64 page = 1;
+  // count is the number of results returned per page, if not given server side defaults apply
+  optional uint64 count = 2;
 }
