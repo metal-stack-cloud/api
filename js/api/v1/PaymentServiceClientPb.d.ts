@@ -43,4 +43,7 @@ export declare class PaymentServiceClient {
     methodDescriptorGetInvoices: any;
     getInvoices(request: api_v1_payment_pb.PaymentServiceGetInvoicesRequest, metadata: grpcWeb.Metadata | null): Promise<api_v1_payment_pb.PaymentServiceGetInvoicesResponse>;
     getInvoices(request: api_v1_payment_pb.PaymentServiceGetInvoicesRequest, metadata: grpcWeb.Metadata | null, callback: (err: grpcWeb.RpcError, response: api_v1_payment_pb.PaymentServiceGetInvoicesResponse) => void): grpcWeb.ClientReadableStream<api_v1_payment_pb.PaymentServiceGetInvoicesResponse>;
+    methodDescriptorGetDefaultPrices: any;
+    getDefaultPrices(request: api_v1_payment_pb.PaymentServiceGetDefaultPricesRequest, metadata: grpcWeb.Metadata | null): Promise<api_v1_payment_pb.PaymentServiceGetDefaultPricesResponse>;
+    getDefaultPrices(request: api_v1_payment_pb.PaymentServiceGetDefaultPricesRequest, metadata: grpcWeb.Metadata | null, callback: (err: grpcWeb.RpcError, response: api_v1_payment_pb.PaymentServiceGetDefaultPricesResponse) => void): grpcWeb.ClientReadableStream<api_v1_payment_pb.PaymentServiceGetDefaultPricesResponse>;
 }

@@ -567,3 +567,37 @@ export namespace PaymentServiceGetInvoicesResponse {
   }
 }
 
+export class PaymentServiceGetDefaultPricesRequest extends jspb.Message {
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): PaymentServiceGetDefaultPricesRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: PaymentServiceGetDefaultPricesRequest): PaymentServiceGetDefaultPricesRequest.AsObject;
+  static serializeBinaryToWriter(message: PaymentServiceGetDefaultPricesRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): PaymentServiceGetDefaultPricesRequest;
+  static deserializeBinaryFromReader(message: PaymentServiceGetDefaultPricesRequest, reader: jspb.BinaryReader): PaymentServiceGetDefaultPricesRequest;
+}
+
+export namespace PaymentServiceGetDefaultPricesRequest {
+  export type AsObject = {
+  }
+}
+
+export class PaymentServiceGetDefaultPricesResponse extends jspb.Message {
+  getPricesList(): Array<Price>;
+  setPricesList(value: Array<Price>): PaymentServiceGetDefaultPricesResponse;
+  clearPricesList(): PaymentServiceGetDefaultPricesResponse;
+  addPrices(value?: Price, index?: number): Price;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): PaymentServiceGetDefaultPricesResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: PaymentServiceGetDefaultPricesResponse): PaymentServiceGetDefaultPricesResponse.AsObject;
+  static serializeBinaryToWriter(message: PaymentServiceGetDefaultPricesResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): PaymentServiceGetDefaultPricesResponse;
+  static deserializeBinaryFromReader(message: PaymentServiceGetDefaultPricesResponse, reader: jspb.BinaryReader): PaymentServiceGetDefaultPricesResponse;
+}
+
+export namespace PaymentServiceGetDefaultPricesResponse {
+  export type AsObject = {
+    pricesList: Array<Price.AsObject>,
+  }
+}
+
