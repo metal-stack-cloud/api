@@ -569,5 +569,66 @@ proto.api.v1.PaymentServicePromiseClient.prototype.getInvoices =
 };
 
 
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.api.v1.PaymentServiceGetDefaultPricesRequest,
+ *   !proto.api.v1.PaymentServiceGetDefaultPricesResponse>}
+ */
+const methodDescriptor_PaymentService_GetDefaultPrices = new grpc.web.MethodDescriptor(
+  '/api.v1.PaymentService/GetDefaultPrices',
+  grpc.web.MethodType.UNARY,
+  proto.api.v1.PaymentServiceGetDefaultPricesRequest,
+  proto.api.v1.PaymentServiceGetDefaultPricesResponse,
+  /**
+   * @param {!proto.api.v1.PaymentServiceGetDefaultPricesRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.api.v1.PaymentServiceGetDefaultPricesResponse.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.api.v1.PaymentServiceGetDefaultPricesRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.RpcError, ?proto.api.v1.PaymentServiceGetDefaultPricesResponse)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.api.v1.PaymentServiceGetDefaultPricesResponse>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.api.v1.PaymentServiceClient.prototype.getDefaultPrices =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/api.v1.PaymentService/GetDefaultPrices',
+      request,
+      metadata || {},
+      methodDescriptor_PaymentService_GetDefaultPrices,
+      callback);
+};
+
+
+/**
+ * @param {!proto.api.v1.PaymentServiceGetDefaultPricesRequest} request The
+ *     request proto
+ * @param {?Object<string, string>=} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.api.v1.PaymentServiceGetDefaultPricesResponse>}
+ *     Promise that resolves to the response
+ */
+proto.api.v1.PaymentServicePromiseClient.prototype.getDefaultPrices =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/api.v1.PaymentService/GetDefaultPrices',
+      request,
+      metadata || {},
+      methodDescriptor_PaymentService_GetDefaultPrices);
+};
+
+
 module.exports = proto.api.v1;
 

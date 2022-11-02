@@ -26,6 +26,7 @@ type PaymentServiceClient interface {
 	DeletePaymentMethod(ctx context.Context, in *PaymentServiceDeletePaymentMethodRequest, opts ...grpc.CallOption) (*PaymentServiceDeletePaymentMethodResponse, error)
 	GetSubscriptionUsage(ctx context.Context, in *PaymentServiceGetSubscriptionUsageRequest, opts ...grpc.CallOption) (*PaymentServiceGetSubscriptionUsageResponse, error)
 	GetInvoices(ctx context.Context, in *PaymentServiceGetInvoicesRequest, opts ...grpc.CallOption) (*PaymentServiceGetInvoicesResponse, error)
+	GetDefaultPrices(ctx context.Context, in *PaymentServiceGetDefaultPricesRequest, opts ...grpc.CallOption) (*PaymentServiceGetDefaultPricesResponse, error)
 }
 
 type paymentServiceClient struct {
@@ -108,6 +109,15 @@ func (c *paymentServiceClient) GetInvoices(ctx context.Context, in *PaymentServi
 	return out, nil
 }
 
+func (c *paymentServiceClient) GetDefaultPrices(ctx context.Context, in *PaymentServiceGetDefaultPricesRequest, opts ...grpc.CallOption) (*PaymentServiceGetDefaultPricesResponse, error) {
+	out := new(PaymentServiceGetDefaultPricesResponse)
+	err := c.cc.Invoke(ctx, "/api.v1.PaymentService/GetDefaultPrices", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // PaymentServiceServer is the server API for PaymentService service.
 // All implementations should embed UnimplementedPaymentServiceServer
 // for forward compatibility
@@ -120,6 +130,7 @@ type PaymentServiceServer interface {
 	DeletePaymentMethod(context.Context, *PaymentServiceDeletePaymentMethodRequest) (*PaymentServiceDeletePaymentMethodResponse, error)
 	GetSubscriptionUsage(context.Context, *PaymentServiceGetSubscriptionUsageRequest) (*PaymentServiceGetSubscriptionUsageResponse, error)
 	GetInvoices(context.Context, *PaymentServiceGetInvoicesRequest) (*PaymentServiceGetInvoicesResponse, error)
+	GetDefaultPrices(context.Context, *PaymentServiceGetDefaultPricesRequest) (*PaymentServiceGetDefaultPricesResponse, error)
 }
 
 // UnimplementedPaymentServiceServer should be embedded to have forward compatible implementations.
@@ -149,6 +160,9 @@ func (UnimplementedPaymentServiceServer) GetSubscriptionUsage(context.Context, *
 }
 func (UnimplementedPaymentServiceServer) GetInvoices(context.Context, *PaymentServiceGetInvoicesRequest) (*PaymentServiceGetInvoicesResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetInvoices not implemented")
+}
+func (UnimplementedPaymentServiceServer) GetDefaultPrices(context.Context, *PaymentServiceGetDefaultPricesRequest) (*PaymentServiceGetDefaultPricesResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetDefaultPrices not implemented")
 }
 
 // UnsafePaymentServiceServer may be embedded to opt out of forward compatibility for this service.
@@ -306,6 +320,24 @@ func _PaymentService_GetInvoices_Handler(srv interface{}, ctx context.Context, d
 	return interceptor(ctx, in, info, handler)
 }
 
+func _PaymentService_GetDefaultPrices_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(PaymentServiceGetDefaultPricesRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(PaymentServiceServer).GetDefaultPrices(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/api.v1.PaymentService/GetDefaultPrices",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(PaymentServiceServer).GetDefaultPrices(ctx, req.(*PaymentServiceGetDefaultPricesRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // PaymentService_ServiceDesc is the grpc.ServiceDesc for PaymentService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -344,6 +376,10 @@ var PaymentService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetInvoices",
 			Handler:    _PaymentService_GetInvoices_Handler,
+		},
+		{
+			MethodName: "GetDefaultPrices",
+			Handler:    _PaymentService_GetDefaultPrices_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

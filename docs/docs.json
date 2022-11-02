@@ -3809,6 +3809,41 @@
           ]
         },
         {
+          "name": "PaymentServiceGetDefaultPricesRequest",
+          "longName": "PaymentServiceGetDefaultPricesRequest",
+          "fullName": "api.v1.PaymentServiceGetDefaultPricesRequest",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": false,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": []
+        },
+        {
+          "name": "PaymentServiceGetDefaultPricesResponse",
+          "longName": "PaymentServiceGetDefaultPricesResponse",
+          "fullName": "api.v1.PaymentServiceGetDefaultPricesResponse",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "prices",
+              "description": "",
+              "label": "repeated",
+              "type": "Price",
+              "longType": "Price",
+              "fullType": "api.v1.Price",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
           "name": "PaymentServiceGetInvoicesRequest",
           "longName": "PaymentServiceGetInvoicesRequest",
           "fullName": "api.v1.PaymentServiceGetInvoicesRequest",
@@ -4258,6 +4293,18 @@
               "responseType": "PaymentServiceGetInvoicesResponse",
               "responseLongType": "PaymentServiceGetInvoicesResponse",
               "responseFullType": "api.v1.PaymentServiceGetInvoicesResponse",
+              "responseStreaming": false
+            },
+            {
+              "name": "GetDefaultPrices",
+              "description": "",
+              "requestType": "PaymentServiceGetDefaultPricesRequest",
+              "requestLongType": "PaymentServiceGetDefaultPricesRequest",
+              "requestFullType": "api.v1.PaymentServiceGetDefaultPricesRequest",
+              "requestStreaming": false,
+              "responseType": "PaymentServiceGetDefaultPricesResponse",
+              "responseLongType": "PaymentServiceGetDefaultPricesResponse",
+              "responseFullType": "api.v1.PaymentServiceGetDefaultPricesResponse",
               "responseStreaming": false
             }
           ]
