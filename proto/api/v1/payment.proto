@@ -32,6 +32,11 @@ service PaymentService {
   rpc GetInvoices(PaymentServiceGetInvoicesRequest) returns (PaymentServiceGetInvoicesResponse) {
     option (project_roles) = PROJECT_ROLE_OWNER;
   }
+  rpc GetDefaultPrices(PaymentServiceGetDefaultPricesRequest) returns (PaymentServiceGetDefaultPricesResponse) {
+    option (project_roles) = PROJECT_ROLE_OWNER;
+    option (project_roles) = PROJECT_ROLE_EDITOR;
+    option (project_roles) = PROJECT_ROLE_VIEWER;
+  }
 }
 
 message PaymentCustomer {
@@ -165,4 +170,10 @@ message PaymentServiceGetInvoicesRequest {
 
 message PaymentServiceGetInvoicesResponse {
   repeated Invoice invoices = 1;
+}
+
+message PaymentServiceGetDefaultPricesRequest {}
+
+message PaymentServiceGetDefaultPricesResponse {
+  repeated Price prices = 1;
 }

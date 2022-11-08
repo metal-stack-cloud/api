@@ -383,5 +383,48 @@ export class PaymentServiceClient {
     this.methodDescriptorGetInvoices);
   }
 
+  methodDescriptorGetDefaultPrices = new grpcWeb.MethodDescriptor(
+    '/api.v1.PaymentService/GetDefaultPrices',
+    grpcWeb.MethodType.UNARY,
+    api_v1_payment_pb.PaymentServiceGetDefaultPricesRequest,
+    api_v1_payment_pb.PaymentServiceGetDefaultPricesResponse,
+    (request: api_v1_payment_pb.PaymentServiceGetDefaultPricesRequest) => {
+      return request.serializeBinary();
+    },
+    api_v1_payment_pb.PaymentServiceGetDefaultPricesResponse.deserializeBinary
+  );
+
+  getDefaultPrices(
+    request: api_v1_payment_pb.PaymentServiceGetDefaultPricesRequest,
+    metadata: grpcWeb.Metadata | null): Promise<api_v1_payment_pb.PaymentServiceGetDefaultPricesResponse>;
+
+  getDefaultPrices(
+    request: api_v1_payment_pb.PaymentServiceGetDefaultPricesRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: api_v1_payment_pb.PaymentServiceGetDefaultPricesResponse) => void): grpcWeb.ClientReadableStream<api_v1_payment_pb.PaymentServiceGetDefaultPricesResponse>;
+
+  getDefaultPrices(
+    request: api_v1_payment_pb.PaymentServiceGetDefaultPricesRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: api_v1_payment_pb.PaymentServiceGetDefaultPricesResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/api.v1.PaymentService/GetDefaultPrices',
+        request,
+        metadata || {},
+        this.methodDescriptorGetDefaultPrices,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/api.v1.PaymentService/GetDefaultPrices',
+    request,
+    metadata || {},
+    this.methodDescriptorGetDefaultPrices);
+  }
+
 }
 

@@ -2878,3 +2878,248 @@ var _ interface {
 	Cause() error
 	ErrorName() string
 } = PaymentServiceGetInvoicesResponseValidationError{}
+
+// Validate checks the field values on PaymentServiceGetDefaultPricesRequest
+// with the rules defined in the proto definition for this message. If any
+// rules are violated, the first error encountered is returned, or nil if
+// there are no violations.
+func (m *PaymentServiceGetDefaultPricesRequest) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on PaymentServiceGetDefaultPricesRequest
+// with the rules defined in the proto definition for this message. If any
+// rules are violated, the result is a list of violation errors wrapped in
+// PaymentServiceGetDefaultPricesRequestMultiError, or nil if none found.
+func (m *PaymentServiceGetDefaultPricesRequest) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *PaymentServiceGetDefaultPricesRequest) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	if len(errors) > 0 {
+		return PaymentServiceGetDefaultPricesRequestMultiError(errors)
+	}
+
+	return nil
+}
+
+// PaymentServiceGetDefaultPricesRequestMultiError is an error wrapping
+// multiple validation errors returned by
+// PaymentServiceGetDefaultPricesRequest.ValidateAll() if the designated
+// constraints aren't met.
+type PaymentServiceGetDefaultPricesRequestMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m PaymentServiceGetDefaultPricesRequestMultiError) Error() string {
+	var msgs []string
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m PaymentServiceGetDefaultPricesRequestMultiError) AllErrors() []error { return m }
+
+// PaymentServiceGetDefaultPricesRequestValidationError is the validation error
+// returned by PaymentServiceGetDefaultPricesRequest.Validate if the
+// designated constraints aren't met.
+type PaymentServiceGetDefaultPricesRequestValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e PaymentServiceGetDefaultPricesRequestValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e PaymentServiceGetDefaultPricesRequestValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e PaymentServiceGetDefaultPricesRequestValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e PaymentServiceGetDefaultPricesRequestValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e PaymentServiceGetDefaultPricesRequestValidationError) ErrorName() string {
+	return "PaymentServiceGetDefaultPricesRequestValidationError"
+}
+
+// Error satisfies the builtin error interface
+func (e PaymentServiceGetDefaultPricesRequestValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sPaymentServiceGetDefaultPricesRequest.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = PaymentServiceGetDefaultPricesRequestValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = PaymentServiceGetDefaultPricesRequestValidationError{}
+
+// Validate checks the field values on PaymentServiceGetDefaultPricesResponse
+// with the rules defined in the proto definition for this message. If any
+// rules are violated, the first error encountered is returned, or nil if
+// there are no violations.
+func (m *PaymentServiceGetDefaultPricesResponse) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on
+// PaymentServiceGetDefaultPricesResponse with the rules defined in the proto
+// definition for this message. If any rules are violated, the result is a
+// list of violation errors wrapped in
+// PaymentServiceGetDefaultPricesResponseMultiError, or nil if none found.
+func (m *PaymentServiceGetDefaultPricesResponse) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *PaymentServiceGetDefaultPricesResponse) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	for idx, item := range m.GetPrices() {
+		_, _ = idx, item
+
+		if all {
+			switch v := interface{}(item).(type) {
+			case interface{ ValidateAll() error }:
+				if err := v.ValidateAll(); err != nil {
+					errors = append(errors, PaymentServiceGetDefaultPricesResponseValidationError{
+						field:  fmt.Sprintf("Prices[%v]", idx),
+						reason: "embedded message failed validation",
+						cause:  err,
+					})
+				}
+			case interface{ Validate() error }:
+				if err := v.Validate(); err != nil {
+					errors = append(errors, PaymentServiceGetDefaultPricesResponseValidationError{
+						field:  fmt.Sprintf("Prices[%v]", idx),
+						reason: "embedded message failed validation",
+						cause:  err,
+					})
+				}
+			}
+		} else if v, ok := interface{}(item).(interface{ Validate() error }); ok {
+			if err := v.Validate(); err != nil {
+				return PaymentServiceGetDefaultPricesResponseValidationError{
+					field:  fmt.Sprintf("Prices[%v]", idx),
+					reason: "embedded message failed validation",
+					cause:  err,
+				}
+			}
+		}
+
+	}
+
+	if len(errors) > 0 {
+		return PaymentServiceGetDefaultPricesResponseMultiError(errors)
+	}
+
+	return nil
+}
+
+// PaymentServiceGetDefaultPricesResponseMultiError is an error wrapping
+// multiple validation errors returned by
+// PaymentServiceGetDefaultPricesResponse.ValidateAll() if the designated
+// constraints aren't met.
+type PaymentServiceGetDefaultPricesResponseMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m PaymentServiceGetDefaultPricesResponseMultiError) Error() string {
+	var msgs []string
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m PaymentServiceGetDefaultPricesResponseMultiError) AllErrors() []error { return m }
+
+// PaymentServiceGetDefaultPricesResponseValidationError is the validation
+// error returned by PaymentServiceGetDefaultPricesResponse.Validate if the
+// designated constraints aren't met.
+type PaymentServiceGetDefaultPricesResponseValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e PaymentServiceGetDefaultPricesResponseValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e PaymentServiceGetDefaultPricesResponseValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e PaymentServiceGetDefaultPricesResponseValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e PaymentServiceGetDefaultPricesResponseValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e PaymentServiceGetDefaultPricesResponseValidationError) ErrorName() string {
+	return "PaymentServiceGetDefaultPricesResponseValidationError"
+}
+
+// Error satisfies the builtin error interface
+func (e PaymentServiceGetDefaultPricesResponseValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sPaymentServiceGetDefaultPricesResponse.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = PaymentServiceGetDefaultPricesResponseValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = PaymentServiceGetDefaultPricesResponseValidationError{}

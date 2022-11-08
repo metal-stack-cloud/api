@@ -64,6 +64,9 @@ var PaymentServiceClient = /** @class */ (function () {
         this.methodDescriptorGetInvoices = new grpcWeb.MethodDescriptor('/api.v1.PaymentService/GetInvoices', grpcWeb.MethodType.UNARY, api_v1_payment_pb.PaymentServiceGetInvoicesRequest, api_v1_payment_pb.PaymentServiceGetInvoicesResponse, function (request) {
             return request.serializeBinary();
         }, api_v1_payment_pb.PaymentServiceGetInvoicesResponse.deserializeBinary);
+        this.methodDescriptorGetDefaultPrices = new grpcWeb.MethodDescriptor('/api.v1.PaymentService/GetDefaultPrices', grpcWeb.MethodType.UNARY, api_v1_payment_pb.PaymentServiceGetDefaultPricesRequest, api_v1_payment_pb.PaymentServiceGetDefaultPricesResponse, function (request) {
+            return request.serializeBinary();
+        }, api_v1_payment_pb.PaymentServiceGetDefaultPricesResponse.deserializeBinary);
         if (!options)
             options = {};
         if (!credentials)
@@ -137,6 +140,14 @@ var PaymentServiceClient = /** @class */ (function () {
         }
         return this.client_.unaryCall(this.hostname_ +
             '/api.v1.PaymentService/GetInvoices', request, metadata || {}, this.methodDescriptorGetInvoices);
+    };
+    PaymentServiceClient.prototype.getDefaultPrices = function (request, metadata, callback) {
+        if (callback !== undefined) {
+            return this.client_.rpcCall(this.hostname_ +
+                '/api.v1.PaymentService/GetDefaultPrices', request, metadata || {}, this.methodDescriptorGetDefaultPrices, callback);
+        }
+        return this.client_.unaryCall(this.hostname_ +
+            '/api.v1.PaymentService/GetDefaultPrices', request, metadata || {}, this.methodDescriptorGetDefaultPrices);
     };
     return PaymentServiceClient;
 }());
