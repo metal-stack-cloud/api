@@ -254,7 +254,8 @@
           "type": "string"
         },
         "partition": {
-          "type": "string"
+          "type": "string",
+          "title": "partition is part of a region"
         },
         "kubernetes": {
           "$ref": "#/definitions/v1KubernetesSpec"
@@ -296,7 +297,8 @@
           "type": "string"
         },
         "partition": {
-          "type": "string"
+          "type": "string",
+          "title": "partition is part of a region"
         },
         "kubernetes": {
           "$ref": "#/definitions/v1KubernetesSpec"
