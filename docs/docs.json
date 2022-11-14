@@ -4520,7 +4520,19 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": ""
+              "defaultValue": "",
+              "options": {
+                "validate.rules": [
+                  {
+                    "name": "string.min_len",
+                    "value": 2
+                  },
+                  {
+                    "name": "string.max_len",
+                    "value": 128
+                  }
+                ]
+              }
             }
           ]
         },
@@ -4570,6 +4582,30 @@
           "hasOneofs": false,
           "extensions": [],
           "fields": [
+            {
+              "name": "login",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": "",
+              "options": {
+                "validate.rules": [
+                  {
+                    "name": "string.min_len",
+                    "value": 2
+                  },
+                  {
+                    "name": "string.max_len",
+                    "value": 128
+                  }
+                ]
+              }
+            },
             {
               "name": "customer",
               "description": "",
@@ -4666,6 +4702,30 @@
           "extensions": [],
           "fields": [
             {
+              "name": "login",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": "",
+              "options": {
+                "validate.rules": [
+                  {
+                    "name": "string.min_len",
+                    "value": 2
+                  },
+                  {
+                    "name": "string.max_len",
+                    "value": 128
+                  }
+                ]
+              }
+            },
+            {
               "name": "customer_id",
               "description": "",
               "label": "",
@@ -4723,7 +4783,19 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": ""
+              "defaultValue": "",
+              "options": {
+                "validate.rules": [
+                  {
+                    "name": "string.min_len",
+                    "value": 2
+                  },
+                  {
+                    "name": "string.max_len",
+                    "value": 128
+                  }
+                ]
+              }
             }
           ]
         },

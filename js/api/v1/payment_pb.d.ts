@@ -258,6 +258,9 @@ export namespace Invoice {
 }
 
 export class PaymentServiceCreateOrUpdateCustomerRequest extends jspb.Message {
+  getLogin(): string;
+  setLogin(value: string): PaymentServiceCreateOrUpdateCustomerRequest;
+
   getCustomer(): PaymentCustomer | undefined;
   setCustomer(value?: PaymentCustomer): PaymentServiceCreateOrUpdateCustomerRequest;
   hasCustomer(): boolean;
@@ -273,6 +276,7 @@ export class PaymentServiceCreateOrUpdateCustomerRequest extends jspb.Message {
 
 export namespace PaymentServiceCreateOrUpdateCustomerRequest {
   export type AsObject = {
+    login: string,
     customer?: PaymentCustomer.AsObject,
   }
 }
@@ -298,6 +302,9 @@ export namespace PaymentServiceCreateOrUpdateCustomerResponse {
 }
 
 export class PaymentServiceGetCustomerRequest extends jspb.Message {
+  getLogin(): string;
+  setLogin(value: string): PaymentServiceGetCustomerRequest;
+
   getCustomerId(): string;
   setCustomerId(value: string): PaymentServiceGetCustomerRequest;
 
@@ -311,6 +318,7 @@ export class PaymentServiceGetCustomerRequest extends jspb.Message {
 
 export namespace PaymentServiceGetCustomerRequest {
   export type AsObject = {
+    login: string,
     customerId: string,
   }
 }

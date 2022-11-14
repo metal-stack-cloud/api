@@ -921,6 +921,17 @@ func (m *PaymentServiceCreateOrUpdateCustomerRequest) validate(all bool) error {
 
 	var errors []error
 
+	if l := utf8.RuneCountInString(m.GetLogin()); l < 2 || l > 128 {
+		err := PaymentServiceCreateOrUpdateCustomerRequestValidationError{
+			field:  "Login",
+			reason: "value length must be between 2 and 128 runes, inclusive",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
 	if all {
 		switch v := interface{}(m.GetCustomer()).(type) {
 		case interface{ ValidateAll() error }:
@@ -1191,6 +1202,17 @@ func (m *PaymentServiceGetCustomerRequest) validate(all bool) error {
 
 	var errors []error
 
+	if l := utf8.RuneCountInString(m.GetLogin()); l < 2 || l > 128 {
+		err := PaymentServiceGetCustomerRequestValidationError{
+			field:  "Login",
+			reason: "value length must be between 2 and 128 runes, inclusive",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
 	// no validation rules for CustomerId
 
 	if len(errors) > 0 {
@@ -1433,7 +1455,16 @@ func (m *PaymentServiceGetCustomerWithLoginRequest) validate(all bool) error {
 
 	var errors []error
 
-	// no validation rules for Login
+	if l := utf8.RuneCountInString(m.GetLogin()); l < 2 || l > 128 {
+		err := PaymentServiceGetCustomerWithLoginRequestValidationError{
+			field:  "Login",
+			reason: "value length must be between 2 and 128 runes, inclusive",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
 
 	if len(errors) > 0 {
 		return PaymentServiceGetCustomerWithLoginRequestMultiError(errors)
@@ -1676,7 +1707,16 @@ func (m *PaymentServiceCheckIfCustomerExistsRequest) validate(all bool) error {
 
 	var errors []error
 
-	// no validation rules for Login
+	if l := utf8.RuneCountInString(m.GetLogin()); l < 2 || l > 128 {
+		err := PaymentServiceCheckIfCustomerExistsRequestValidationError{
+			field:  "Login",
+			reason: "value length must be between 2 and 128 runes, inclusive",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
 
 	if len(errors) > 0 {
 		return PaymentServiceCheckIfCustomerExistsRequestMultiError(errors)
