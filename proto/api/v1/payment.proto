@@ -20,23 +20,19 @@ service PaymentService {
     option (tenant_roles) = TENANT_ROLE_OWNER;
   }
   rpc HasPaymentMethod(PaymentServiceHasPaymentMethodRequest) returns (PaymentServiceHasPaymentMethodResponse) {
-    option (project_roles) = PROJECT_ROLE_OWNER;
-    option (project_roles) = PROJECT_ROLE_EDITOR;
+    option (tenant_roles) = TENANT_ROLE_OWNER;
+    option (tenant_roles) = TENANT_ROLE_EDITOR;
   }
   rpc DeletePaymentMethod(PaymentServiceDeletePaymentMethodRequest) returns (PaymentServiceDeletePaymentMethodResponse) {
-    option (project_roles) = PROJECT_ROLE_OWNER;
+    option (tenant_roles) = TENANT_ROLE_OWNER;
   }
   rpc GetSubscriptionUsage(PaymentServiceGetSubscriptionUsageRequest) returns (PaymentServiceGetSubscriptionUsageResponse) {
-    option (project_roles) = PROJECT_ROLE_OWNER;
+    option (tenant_roles) = TENANT_ROLE_OWNER;
   }
   rpc GetInvoices(PaymentServiceGetInvoicesRequest) returns (PaymentServiceGetInvoicesResponse) {
-    option (project_roles) = PROJECT_ROLE_OWNER;
+    option (tenant_roles) = TENANT_ROLE_OWNER;
   }
-  rpc GetDefaultPrices(PaymentServiceGetDefaultPricesRequest) returns (PaymentServiceGetDefaultPricesResponse) {
-    option (project_roles) = PROJECT_ROLE_OWNER;
-    option (project_roles) = PROJECT_ROLE_EDITOR;
-    option (project_roles) = PROJECT_ROLE_VIEWER;
-  }
+  rpc GetDefaultPrices(PaymentServiceGetDefaultPricesRequest) returns (PaymentServiceGetDefaultPricesResponse) {}
 }
 
 message PaymentCustomer {
@@ -90,7 +86,11 @@ message Invoice {
 }
 
 message PaymentServiceCreateOrUpdateCustomerRequest {
-  PaymentCustomer customer = 1;
+  string login = 1 [(validate.rules).string = {
+    min_len: 2,
+    max_len: 128,
+  }];
+  PaymentCustomer customer = 2;
 }
 
 message PaymentServiceCreateOrUpdateCustomerResponse {
@@ -98,7 +98,11 @@ message PaymentServiceCreateOrUpdateCustomerResponse {
 }
 
 message PaymentServiceGetCustomerRequest {
-  string customer_id = 1;
+  string login = 1 [(validate.rules).string = {
+    min_len: 2,
+    max_len: 128,
+  }];
+  string customer_id = 2;
 }
 
 message PaymentServiceGetCustomerResponse {
@@ -106,7 +110,10 @@ message PaymentServiceGetCustomerResponse {
 }
 
 message PaymentServiceGetCustomerWithLoginRequest {
-  string login = 1;
+  string login = 1 [(validate.rules).string = {
+    min_len: 2,
+    max_len: 128,
+  }];
 }
 
 message PaymentServiceGetCustomerWithLoginResponse {
@@ -114,7 +121,10 @@ message PaymentServiceGetCustomerWithLoginResponse {
 }
 
 message PaymentServiceCheckIfCustomerExistsRequest {
-  string login = 1;
+  string login = 1 [(validate.rules).string = {
+    min_len: 2,
+    max_len: 128,
+  }];
 }
 
 message PaymentServiceCheckIfCustomerExistsResponse {
