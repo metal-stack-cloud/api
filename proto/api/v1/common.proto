@@ -17,7 +17,6 @@ enum Role {
   ROLE_ADMIN = 3;
   ROLE_OWNER = 4;
 }
-
 enum TenantRole {
   TENANT_ROLE_UNSPECIFIED = 0;
   TENANT_ROLE_OWNER = 1;
@@ -30,7 +29,21 @@ enum ProjectRole {
   PROJECT_ROLE_EDITOR = 2;
   PROJECT_ROLE_VIEWER = 3;
 }
+enum AdminRole {
+  ADMIN_ROLE_UNSPECIFIED = 0;
+  ADMIN_ROLE_EDITOR = 1;
+  ADMIN_ROLE_VIEWER = 2;
+}
 extend google.protobuf.MethodOptions {
   repeated TenantRole tenant_roles = 51000;
   repeated ProjectRole project_roles = 51001;
+  repeated AdminRole admin_roles = 51002;
+}
+
+message Paging {
+  // page is used for pagination, if unset only the first page is returned,
+  // the list response contains then the page number for the next page.
+  optional uint64 page = 1;
+  // count is the number of results returned per page, if not given server side defaults apply
+  optional uint64 count = 2;
 }

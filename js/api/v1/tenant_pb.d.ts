@@ -26,6 +26,9 @@ export class Tenant extends jspb.Message {
   hasPaymentDetails(): boolean;
   clearPaymentDetails(): Tenant;
 
+  getAdmitted(): boolean;
+  setAdmitted(value: boolean): Tenant;
+
   getCreatedAt(): google_protobuf_timestamp_pb.Timestamp | undefined;
   setCreatedAt(value?: google_protobuf_timestamp_pb.Timestamp): Tenant;
   hasCreatedAt(): boolean;
@@ -57,6 +60,7 @@ export namespace Tenant {
     avatarUrl: string,
     oauthProvider: api_v1_common_pb.OAuthProvider,
     paymentDetails?: PaymentDetails.AsObject,
+    admitted: boolean,
     createdAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
     updatedAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
     deletedAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,

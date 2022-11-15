@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+package admin.v1;
+
+import "api/v1/common.proto";
+import "api/v1/tenant.proto";
+
+service TenantService {
+  rpc List(TenantServiceListRequest) returns (TenantServiceListResponse) {
+    option (api.v1.admin_roles) = ADMIN_ROLE_VIEWER;
+  }
+  rpc Admit(TenantServiceAdmitRequest) returns (TenantServiceAdmitResponse) {
+    option (api.v1.admin_roles) = ADMIN_ROLE_EDITOR;
+  }
+}
+
+message TenantServiceListRequest {
+  optional string login = 1;
+  optional string name = 2;
+  optional string email = 3;
+  optional string organisation_id = 4;
+  optional api.v1.OAuthProvider oauth_provider = 5;
+  optional bool admitted = 6;
+  api.v1.Paging paging = 7;
+}
+message TenantServiceListResponse {
+  repeated api.v1.Tenant tenants = 1;
+  // next_page is used for pagination, returns the next page to be fetched and must then be provided in the list request.
+  optional uint64 next_page = 2;
+}
+message TenantServiceAdmitRequest {
+  string tenant_id = 1;
+}
+message TenantServiceAdmitResponse {
+  api.v1.Tenant tenant = 1;
+}

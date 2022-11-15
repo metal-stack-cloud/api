@@ -345,6 +345,7 @@ proto.api.v1.Tenant.toObject = function(includeInstance, msg) {
     avatarUrl: jspb.Message.getFieldWithDefault(msg, 5, ""),
     oauthProvider: jspb.Message.getFieldWithDefault(msg, 6, 0),
     paymentDetails: (f = msg.getPaymentDetails()) && proto.api.v1.PaymentDetails.toObject(includeInstance, f),
+    admitted: jspb.Message.getBooleanFieldWithDefault(msg, 9, false),
     createdAt: (f = msg.getCreatedAt()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
     updatedAt: (f = msg.getUpdatedAt()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
     deletedAt: (f = msg.getDeletedAt()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f)
@@ -408,6 +409,10 @@ proto.api.v1.Tenant.deserializeBinaryFromReader = function(msg, reader) {
       var value = new proto.api.v1.PaymentDetails;
       reader.readMessage(value,proto.api.v1.PaymentDetails.deserializeBinaryFromReader);
       msg.setPaymentDetails(value);
+      break;
+    case 9:
+      var value = /** @type {boolean} */ (reader.readBool());
+      msg.setAdmitted(value);
       break;
     case 10:
       var value = new google_protobuf_timestamp_pb.Timestamp;
@@ -494,6 +499,13 @@ proto.api.v1.Tenant.serializeBinaryToWriter = function(message, writer) {
       8,
       f,
       proto.api.v1.PaymentDetails.serializeBinaryToWriter
+    );
+  }
+  f = message.getAdmitted();
+  if (f) {
+    writer.writeBool(
+      9,
+      f
     );
   }
   f = message.getCreatedAt();
@@ -647,6 +659,24 @@ proto.api.v1.Tenant.prototype.clearPaymentDetails = function() {
  */
 proto.api.v1.Tenant.prototype.hasPaymentDetails = function() {
   return jspb.Message.getField(this, 8) != null;
+};
+
+
+/**
+ * optional bool admitted = 9;
+ * @return {boolean}
+ */
+proto.api.v1.Tenant.prototype.getAdmitted = function() {
+  return /** @type {boolean} */ (jspb.Message.getBooleanFieldWithDefault(this, 9, false));
+};
+
+
+/**
+ * @param {boolean} value
+ * @return {!proto.api.v1.Tenant} returns this
+ */
+proto.api.v1.Tenant.prototype.setAdmitted = function(value) {
+  return jspb.Message.setProto3BooleanField(this, 9, value);
 };
 
 

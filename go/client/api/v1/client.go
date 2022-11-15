@@ -24,57 +24,57 @@ type Client interface {
 	Close() error
 }
 
-// APIClient is a client implementation of the api with grpc transport.
-type APIClient struct {
+// api is a client implementation of the api with grpc transport.
+type api struct {
 	conn *grpc.ClientConn
 	log  *zap.SugaredLogger
 }
 
 // Close the underlying connection
-func (c APIClient) Close() error {
+func (c api) Close() error {
 	return c.conn.Close()
 }
 
-func (c APIClient) Asset() v1.AssetServiceClient {
+func (c api) Asset() v1.AssetServiceClient {
 	return v1.NewAssetServiceClient(c.conn)
 }
 
-func (c APIClient) Cluster() v1.ClusterServiceClient {
+func (c api) Cluster() v1.ClusterServiceClient {
 	return v1.NewClusterServiceClient(c.conn)
 }
 
-func (c APIClient) Health() v1.HealthServiceClient {
+func (c api) Health() v1.HealthServiceClient {
 	return v1.NewHealthServiceClient(c.conn)
 }
 
-func (c APIClient) IP() v1.IPServiceClient {
+func (c api) IP() v1.IPServiceClient {
 	return v1.NewIPServiceClient(c.conn)
 }
 
-func (c APIClient) Payment() v1.PaymentServiceClient {
+func (c api) Payment() v1.PaymentServiceClient {
 	return v1.NewPaymentServiceClient(c.conn)
 }
 
-func (c APIClient) Tenant() v1.TenantServiceClient {
+func (c api) Tenant() v1.TenantServiceClient {
 	return v1.NewTenantServiceClient(c.conn)
 }
 
-func (c APIClient) Token() v1.TokenServiceClient {
+func (c api) Token() v1.TokenServiceClient {
 	return v1.NewTokenServiceClient(c.conn)
 }
 
-func (c APIClient) Version() v1.VersionServiceClient {
+func (c api) Version() v1.VersionServiceClient {
 	return v1.NewVersionServiceClient(c.conn)
 }
 
-func (c APIClient) Volume() v1.VolumeServiceClient {
+func (c api) Volume() v1.VolumeServiceClient {
 	return v1.NewVolumeServiceClient(c.conn)
 }
 
 func New(ctx context.Context, config client.DialConfig) (Client, error) {
 	log := config.Log
 
-	res := &APIClient{
+	res := &api{
 		log: log,
 	}
 

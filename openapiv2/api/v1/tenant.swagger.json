@@ -224,6 +224,9 @@
         "paymentDetails": {
           "$ref": "#/definitions/v1PaymentDetails"
         },
+        "admitted": {
+          "type": "boolean"
+        },
         "createdAt": {
           "type": "string",
           "format": "date-time"

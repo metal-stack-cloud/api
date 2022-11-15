@@ -1,0 +1,150 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "admin/v1/tenant.proto",
+    "version": "version not set"
+  },
+  "tags": [
+    {
+      "name": "TenantService"
+    }
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {},
+  "definitions": {
+    "protobufAny": {
+      "type": "object",
+      "properties": {
+        "@type": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": {}
+    },
+    "rpcStatus": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/protobufAny"
+          }
+        }
+      }
+    },
+    "v1OAuthProvider": {
+      "type": "string",
+      "enum": [
+        "O_AUTH_PROVIDER_UNSPECIFIED",
+        "O_AUTH_PROVIDER_GITHUB",
+        "O_AUTH_PROVIDER_AZURE"
+      ],
+      "default": "O_AUTH_PROVIDER_UNSPECIFIED"
+    },
+    "v1Paging": {
+      "type": "object",
+      "properties": {
+        "page": {
+          "type": "string",
+          "format": "uint64",
+          "description": "page is used for pagination, if unset only the first page is returned,\nthe list response contains then the page number for the next page."
+        },
+        "count": {
+          "type": "string",
+          "format": "uint64",
+          "title": "count is the number of results returned per page, if not given server side defaults apply"
+        }
+      }
+    },
+    "v1PaymentDetails": {
+      "type": "object",
+      "properties": {
+        "customerId": {
+          "type": "string"
+        },
+        "paymentMethodId": {
+          "type": "string"
+        },
+        "subscriptionId": {
+          "type": "string"
+        }
+      }
+    },
+    "v1Tenant": {
+      "type": "object",
+      "properties": {
+        "login": {
+          "type": "string",
+          "title": "the login at the provider"
+        },
+        "name": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "avatarUrl": {
+          "type": "string"
+        },
+        "oauthProvider": {
+          "$ref": "#/definitions/v1OAuthProvider"
+        },
+        "paymentDetails": {
+          "$ref": "#/definitions/v1PaymentDetails"
+        },
+        "admitted": {
+          "type": "boolean"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "deletedAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "title": "Tenant"
+    },
+    "v1TenantServiceAdmitResponse": {
+      "type": "object",
+      "properties": {
+        "tenant": {
+          "$ref": "#/definitions/v1Tenant"
+        }
+      }
+    },
+    "v1TenantServiceListResponse": {
+      "type": "object",
+      "properties": {
+        "tenants": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1Tenant"
+          }
+        },
+        "nextPage": {
+          "type": "string",
+          "format": "uint64",
+          "description": "next_page is used for pagination, returns the next page to be fetched and must then be provided in the list request."
+        }
+      }
+    }
+  }
+}

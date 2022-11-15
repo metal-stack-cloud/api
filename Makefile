@@ -10,7 +10,9 @@ all: proto npm-build
 proto: protolint
 	$(MAKE) -C go clean
 	$(MAKE) -C js clean
+	$(MAKE) -C openapiv2 clean
 	$(MAKE) -C proto protoc
+
 
 .PHONY: protolint
 protolint:
@@ -18,4 +20,5 @@ protolint:
 
 .PHONY: npm-build
 npm-build:
-	docker run -it --rm -v ${PWD}:/work -w /work node:18-alpine sh -c "apk add make && make -C js build"
+	docker pull node:19-bullseye
+	docker run -it --rm -v ${PWD}:/work -w /work node:19-bullseye make -C js build
