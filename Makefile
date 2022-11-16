@@ -7,7 +7,7 @@ VERSION := $(or ${VERSION},devel)
 all: proto npm-build
 
 .PHONY: proto
-proto: protolint
+proto: protolint test
 	$(MAKE) -C go clean
 	$(MAKE) -C js clean
 	$(MAKE) -C openapiv2 clean

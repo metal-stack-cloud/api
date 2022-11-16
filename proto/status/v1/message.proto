@@ -2,10 +2,13 @@ syntax = "proto3";
 
 package status.v1;
 
+import "api/v1/common.proto";
 import "google/protobuf/timestamp.proto";
 
 service MessageService {
-  rpc List(MessageServiceListRequest) returns (MessageServiceListResponse) {}
+  rpc List(MessageServiceListRequest) returns (MessageServiceListResponse) {
+    option (api.v1.admin_roles) = ADMIN_ROLE_VIEWER;
+  }
 }
 
 message MessageServiceListRequest {}

@@ -12,18 +12,18 @@ func NewGRPCWithDisoveredClientServices() *grpc.Server {
 	server := grpc.NewServer()
 
 	adminv1.RegisterTenantServiceServer(server, nil)
+	apiv1.RegisterTenantServiceServer(server, nil)
 	apiv1.RegisterHealthServiceServer(server, nil)
+	apiv1.RegisterIPServiceServer(server, nil)
+	apiv1.RegisterTokenServiceServer(server, nil)
+	apiv1.RegisterClusterServiceServer(server, nil)
 	apiv1.RegisterPaymentServiceServer(server, nil)
+	apiv1.RegisterVersionServiceServer(server, nil)
 	apiv1.RegisterVolumeServiceServer(server, nil)
 	apiv1.RegisterSnapshotServiceServer(server, nil)
 	apiv1.RegisterAssetServiceServer(server, nil)
-	apiv1.RegisterTokenServiceServer(server, nil)
-	apiv1.RegisterIPServiceServer(server, nil)
-	apiv1.RegisterClusterServiceServer(server, nil)
-	apiv1.RegisterTenantServiceServer(server, nil)
-	apiv1.RegisterVersionServiceServer(server, nil)
-	statusv1.RegisterStatusServiceServer(server, nil)
 	statusv1.RegisterMessageServiceServer(server, nil)
+	statusv1.RegisterStatusServiceServer(server, nil)
 
 	return server
 }

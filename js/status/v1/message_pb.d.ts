@@ -1,5 +1,6 @@
 import * as jspb from 'google-protobuf'
 
+import * as api_v1_common_pb from '../../api/v1/common_pb';
 import * as google_protobuf_timestamp_pb from 'google-protobuf/google/protobuf/timestamp_pb';
 
 

@@ -2,6 +2,7 @@ syntax = "proto3";
 
 package api.v1;
 
+import "api/v1/common.proto";
 import "google/api/annotations.proto";
 import "google/protobuf/duration.proto";
 
@@ -11,6 +12,8 @@ service TokenService {
       post: "/api/v1/token"
       body: "*"
     };
+    // TODO keep this service private until a real token service is implemented
+    option (visibility) = VISIBILITY_PRIVATE;
   }
 }
 

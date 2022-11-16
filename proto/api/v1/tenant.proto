@@ -17,7 +17,9 @@ service TenantService {
   }
   // CreateOrUpdate should only be used from within the application
   // will check if tenant already exists and updates if necessary, otherwise create a new tenant
-  rpc CreateOrUpdate(TenantServiceCreateOrUpdateRequest) returns (TenantServiceCreateOrUpdateResponse) {}
+  rpc CreateOrUpdate(TenantServiceCreateOrUpdateRequest) returns (TenantServiceCreateOrUpdateResponse) {
+    option (visibility) = VISIBILITY_PRIVATE;
+  }
 
   rpc Get(TenantServiceGetRequest) returns (TenantServiceGetResponse) {
     option (google.api.http) = {get: "/api/v1/tenant/{login}"};

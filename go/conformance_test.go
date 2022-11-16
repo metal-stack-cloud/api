@@ -48,13 +48,8 @@ func Test_API(t *testing.T) {
 				}
 			}
 			vis := proto.GetExtension(methodOpts, apiv1.E_Visibility).(apiv1.Visibility)
-			switch vis {
-			case apiv1.Visibility_VISIBILITY_PUBLIC:
+			if vis != apiv1.Visibility_VISIBILITY_UNSPECIFIED {
 				hasVisibility = true
-			case apiv1.Visibility_VISIBILITY_UNSPECIFIED:
-				// noop
-			default:
-				// noop
 			}
 
 			if hasAdminRole && (hasProjectRole || hasTenantRole || hasVisibility) {

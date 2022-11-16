@@ -71,4 +71,5 @@ export enum AdminRole {
 export enum Visibility { 
   VISIBILITY_UNSPECIFIED = 0,
   VISIBILITY_PUBLIC = 1,
+  VISIBILITY_PRIVATE = 2,
 }

@@ -2,10 +2,13 @@ syntax = "proto3";
 
 package status.v1;
 
+import "api/v1/common.proto";
 import "api/v1/health.proto";
 
 service StatusService {
-  rpc Get(StatusServiceGetRequest) returns (StatusServiceGetResponse) {}
+  rpc Get(StatusServiceGetRequest) returns (StatusServiceGetResponse) {
+    option (api.v1.admin_roles) = ADMIN_ROLE_VIEWER;
+  }
 }
 
 message StatusServiceGetRequest {}
