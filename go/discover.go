@@ -19,7 +19,6 @@ package generated
 
 import (
 	"google.golang.org/grpc"
-	"google.golang.org/grpc/reflection"
 {{ range $name, $path := .Packages -}}
 	{{ $name }} "github.com/metal-stack-cloud/api/go/{{ $path }}"
 {{ end }}
@@ -31,8 +30,6 @@ func NewGRPCWithDisoveredClientServices() *grpc.Server {
 {{ range $svc := .Services -}}
 	{{ $svc.Package }}.{{ $svc.RegisterFunc }}(server, nil)
 {{ end }}
-
-	reflection.Register(server)
 
 	return server
 }
