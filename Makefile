@@ -24,5 +24,5 @@ npm-build:
 	docker run -it --rm -v ${PWD}:/work -w /work node:19-bullseye make -C js build
 
 .PHONY: test
-test:
+test: proto
 	$(MAKE) -C go test
