@@ -8,7 +8,7 @@ import "google/api/annotations.proto";
 service AssetService {
   rpc List(AssetServiceListRequest) returns (AssetServiceListResponse) {
     option (google.api.http) = {get: "/api/v1/asset"};
-    option (visibility) = VISIBILITY_ANY;
+    option (visibility) = VISIBILITY_PUBLIC;
   }
 }
 

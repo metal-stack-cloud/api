@@ -8,7 +8,7 @@ import "google/api/annotations.proto";
 service VersionService {
   rpc Get(VersionServiceGetRequest) returns (VersionServiceGetResponse) {
     option (google.api.http) = {get: "/api/v1/version"};
-    option (visibility) = VISIBILITY_ANY;
+    option (visibility) = VISIBILITY_PUBLIC;
   }
 }
 

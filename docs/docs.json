@@ -156,7 +156,7 @@
               "description": ""
             },
             {
-              "name": "VISIBILITY_ANY",
+              "name": "VISIBILITY_PUBLIC",
               "number": "1",
               "description": ""
             }

@@ -299,7 +299,7 @@ proto.api.v1.AdminRole = {
  */
 proto.api.v1.Visibility = {
   VISIBILITY_UNSPECIFIED: 0,
-  VISIBILITY_ANY: 1
+  VISIBILITY_PUBLIC: 1
 };
 
 

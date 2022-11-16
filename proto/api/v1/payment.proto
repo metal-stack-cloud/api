@@ -33,7 +33,7 @@ service PaymentService {
     option (tenant_roles) = TENANT_ROLE_OWNER;
   }
   rpc GetDefaultPrices(PaymentServiceGetDefaultPricesRequest) returns (PaymentServiceGetDefaultPricesResponse) {
-    option (visibility) = VISIBILITY_ANY;
+    option (visibility) = VISIBILITY_PUBLIC;
   }
 }
 
