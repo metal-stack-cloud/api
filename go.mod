@@ -6,6 +6,7 @@ require (
 	github.com/envoyproxy/protoc-gen-validate v0.9.0
 	github.com/grpc-ecosystem/go-grpc-middleware v1.3.0
 	github.com/grpc-ecosystem/grpc-gateway/v2 v2.14.0
+	github.com/jhump/protoreflect v1.14.0
 	go.uber.org/zap v1.23.0
 	google.golang.org/genproto v0.0.0-20221114212237-e4508ebdbee1
 	google.golang.org/grpc v1.50.1
