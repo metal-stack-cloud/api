@@ -2,11 +2,13 @@ syntax = "proto3";
 
 package api.v1;
 
+import "api/v1/common.proto";
 import "google/api/annotations.proto";
 
 service VersionService {
   rpc Get(VersionServiceGetRequest) returns (VersionServiceGetResponse) {
     option (google.api.http) = {get: "/api/v1/version"};
+    option (visibility) = VISIBILITY_ANY;
   }
 }
 

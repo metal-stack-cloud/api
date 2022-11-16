@@ -68,3 +68,7 @@ export enum AdminRole {
   ADMIN_ROLE_EDITOR = 1,
   ADMIN_ROLE_VIEWER = 2,
 }
+export enum Visibility { 
+  VISIBILITY_UNSPECIFIED = 0,
+  VISIBILITY_ANY = 1,
+}

@@ -143,6 +143,24 @@
               "description": ""
             }
           ]
+        },
+        {
+          "name": "Visibility",
+          "longName": "Visibility",
+          "fullName": "api.v1.Visibility",
+          "description": "",
+          "values": [
+            {
+              "name": "VISIBILITY_UNSPECIFIED",
+              "number": "0",
+              "description": ""
+            },
+            {
+              "name": "VISIBILITY_ANY",
+              "number": "1",
+              "description": ""
+            }
+          ]
         }
       ],
       "extensions": [
@@ -186,6 +204,21 @@
           "longType": "TenantRole",
           "fullType": "api.v1.TenantRole",
           "number": 51000,
+          "defaultValue": "",
+          "containingType": "MethodOptions",
+          "containingLongType": ".google.protobuf.MethodOptions",
+          "containingFullType": "google.protobuf.MethodOptions"
+        },
+        {
+          "name": "visibility",
+          "longName": ".google.protobuf.MethodOptions.visibility",
+          "fullName": ".google.protobuf.MethodOptions.visibility",
+          "description": "",
+          "label": "",
+          "type": "Visibility",
+          "longType": "Visibility",
+          "fullType": "api.v1.Visibility",
+          "number": 51003,
           "defaultValue": "",
           "containingType": "MethodOptions",
           "containingLongType": ".google.protobuf.MethodOptions",
