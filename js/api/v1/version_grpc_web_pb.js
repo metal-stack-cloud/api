@@ -20,6 +20,8 @@ const grpc = {};
 grpc.web = require('grpc-web');
 
 
+var api_v1_common_pb = require('../../api/v1/common_pb.js')
+
 var google_api_annotations_pb = require('../../google/api/annotations_pb.js')
 const proto = {};
 proto.api = {};

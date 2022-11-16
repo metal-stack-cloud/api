@@ -15,6 +15,8 @@ var jspb = require('google-protobuf');
 var goog = jspb;
 var global = (function() { return this || window || global || self || Function('return this')(); }).call(null);
 
+var api_v1_common_pb = require('../../api/v1/common_pb.js');
+goog.object.extend(proto, api_v1_common_pb);
 goog.exportSymbol('proto.api.v1.Health', null, global);
 goog.exportSymbol('proto.api.v1.HealthServiceGetRequest', null, global);
 goog.exportSymbol('proto.api.v1.HealthServiceGetResponse', null, global);

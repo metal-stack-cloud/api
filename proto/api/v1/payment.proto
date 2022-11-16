@@ -32,7 +32,9 @@ service PaymentService {
   rpc GetInvoices(PaymentServiceGetInvoicesRequest) returns (PaymentServiceGetInvoicesResponse) {
     option (tenant_roles) = TENANT_ROLE_OWNER;
   }
-  rpc GetDefaultPrices(PaymentServiceGetDefaultPricesRequest) returns (PaymentServiceGetDefaultPricesResponse) {}
+  rpc GetDefaultPrices(PaymentServiceGetDefaultPricesRequest) returns (PaymentServiceGetDefaultPricesResponse) {
+    option (visibility) = VISIBILITY_PUBLIC;
+  }
 }
 
 message PaymentCustomer {
