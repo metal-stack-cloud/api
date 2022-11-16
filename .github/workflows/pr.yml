@@ -26,3 +26,8 @@ jobs:
       uses: golangci/golangci-lint-action@v2
       with:
         args: -p bugs -p unused --timeout=3m
+
+    - name: test
+      run: |
+        make
+
