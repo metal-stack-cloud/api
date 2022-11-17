@@ -77,36 +77,35 @@ func Test_APIScopes(t *testing.T) {
 			require.NoError(t, err)
 
 			for name, descriptor := range services {
-				descriptorProto := descriptor.AsServiceDescriptorProto()
-				for _, method := range descriptorProto.Method {
+				for _, method := range descriptor.AsServiceDescriptorProto().Method {
 					var (
-						methodName = fmt.Sprintf("/%s/%s", name, *method.Name)
-
-						scopes = map[string][]string{
+						methodName  = fmt.Sprintf("/%s/%s", name, *method.Name)
+						methodScope = ""
+						scopes      = map[string][]string{
 							"tenant scope":     tenant{}.Get(method.Options),
 							"project scope":    project{}.Get(method.Options),
 							"admin scope":      admin{}.Get(method.Options),
 							"visibility scope": visibility{}.Get(method.Options),
 						}
-					)
-
-					scope := ""
-					for name, s := range scopes {
-						if len(s) > 0 {
-							if scope != "" {
-								t.Errorf("api service method: %q can not have %s and %s (%s) at the same time. only one scope is allowed.", methodName, scope, name, s)
-							}
-							scope = fmt.Sprintf("%s (%s)", name, s)
-						}
-					}
-
-					if scope == "" {
-						t.Errorf("api service method: %q has no scope (%s) defined. one scope needs to be defined though.", methodName, func() (names []string) {
+						allScopeNames = func() (names []string) {
 							for name := range scopes {
 								names = append(names, name)
 							}
 							return
-						}())
+						}()
+					)
+
+					for name, s := range scopes {
+						if len(s) > 0 {
+							if methodScope != "" {
+								t.Errorf("api service method: %q can not have %s and %s (%s) at the same time. only one scope is allowed.", methodName, methodScope, name, s)
+							}
+							methodScope = fmt.Sprintf("%s (%s)", name, s)
+						}
+					}
+
+					if methodScope == "" {
+						t.Errorf("api service method: %q has no scope defined. one scope needs to be defined though. use one of the following scopes: %s", methodName, allScopeNames)
 					}
 				}
 			}
