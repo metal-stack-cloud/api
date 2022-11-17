@@ -7,7 +7,7 @@ import "google/protobuf/timestamp.proto";
 
 service MessageService {
   rpc List(MessageServiceListRequest) returns (MessageServiceListResponse) {
-    option (api.v1.admin_roles) = ADMIN_ROLE_VIEWER;
+    option (api.v1.visibility) = VISIBILITY_PUBLIC;
   }
 }
 

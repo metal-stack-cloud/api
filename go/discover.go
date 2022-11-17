@@ -11,6 +11,7 @@ import (
 	"os"
 	"path"
 	"path/filepath"
+	"sort"
 	"strings"
 )
 
@@ -26,12 +27,9 @@ import (
 
 func DefaultGRPCServiceMocks() func(server *grpc.Server) {
 	return func(server *grpc.Server) {
-
-
 {{ range $svc := .Services -}}
 	{{ $svc.Package }}.{{ $svc.RegisterFunc }}(server, nil)
-{{ end }}
-
+{{ end -}}
 	}
 }
 `
@@ -80,7 +78,6 @@ func discoverServiceClients(root string) (*discovery, error) {
 	}
 
 	for _, dir := range dirs {
-
 		packs, err := parser.ParseDir(set, dir, nil, parser.ParseComments)
 		if err != nil {
 			return nil, err
@@ -106,6 +103,13 @@ func discoverServiceClients(root string) (*discovery, error) {
 			}
 		}
 	}
+
+	sort.Slice(result.Services, func(i, j int) bool {
+		if result.Services[i].Package == result.Services[j].Package {
+			return result.Services[i].RegisterFunc < result.Services[j].RegisterFunc
+		}
+		return result.Services[i].Package < result.Services[j].Package
+	})
 
 	return &result, nil
 }
