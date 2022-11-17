@@ -8,12 +8,12 @@ import (
 	apiv1 "github.com/metal-stack-cloud/api/go/api/v1"
 	"github.com/metal-stack-cloud/api/go/generated"
 	"github.com/stretchr/testify/require"
+	"google.golang.org/grpc"
 	"google.golang.org/protobuf/proto"
 )
 
 func Test_API(t *testing.T) {
-	server := generated.NewGRPCWithDisoveredClientServices()
-
+	server := newGRPCServerWithMockedServices(generated.DefaultGRPCServiceMocks())
 	services, err := grpcreflect.LoadServiceDescriptors(server)
 	require.NoError(t, err)
 
@@ -69,4 +69,13 @@ func Test_API(t *testing.T) {
 			}
 		}
 	}
+}
+func newGRPCServerWithMockedServices(registerFn func(s *grpc.Server)) *grpc.Server {
+	server := grpc.NewServer()
+
+	if registerFn != nil {
+		registerFn(server)
+	}
+
+	return server
 }

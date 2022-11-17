@@ -24,14 +24,15 @@ import (
 {{ end }}
 )
 
-func NewGRPCWithDisoveredClientServices() *grpc.Server {
-	server := grpc.NewServer()
+func DefaultGRPCServiceMocks() func(server *grpc.Server) {
+	return func(server *grpc.Server) {
+
 
 {{ range $svc := .Services -}}
 	{{ $svc.Package }}.{{ $svc.RegisterFunc }}(server, nil)
 {{ end }}
 
-	return server
+	}
 }
 `
 
