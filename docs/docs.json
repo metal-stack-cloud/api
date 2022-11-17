@@ -158,7 +158,12 @@
             {
               "name": "VISIBILITY_PUBLIC",
               "number": "1",
-              "description": ""
+              "description": "VISIBILITY_PUBLIC specifies that this service is accessible without authentication"
+            },
+            {
+              "name": "VISIBILITY_PRIVATE",
+              "number": "2",
+              "description": "VISIBILITY_PRIVATE makes this service blocked"
             }
           ]
         }

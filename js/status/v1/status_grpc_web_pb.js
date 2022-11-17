@@ -20,6 +20,8 @@ const grpc = {};
 grpc.web = require('grpc-web');
 
 
+var api_v1_common_pb = require('../../api/v1/common_pb.js')
+
 var api_v1_health_pb = require('../../api/v1/health_pb.js')
 const proto = {};
 proto.status = {};

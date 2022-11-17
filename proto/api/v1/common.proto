@@ -36,7 +36,10 @@ enum AdminRole {
 }
 enum Visibility {
   VISIBILITY_UNSPECIFIED = 0;
+  // VISIBILITY_PUBLIC specifies that this service is accessible without authentication
   VISIBILITY_PUBLIC = 1;
+  // VISIBILITY_PRIVATE makes this service blocked
+  VISIBILITY_PRIVATE = 2;
 }
 
 extend google.protobuf.MethodOptions {

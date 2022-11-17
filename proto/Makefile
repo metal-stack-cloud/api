@@ -2,7 +2,7 @@ MAKEFLAGS += --no-print-directory
 BUF_VERSION := 1.9.0
 
 _buf:
-	docker run --rm -it \
+	docker run --rm \
 		--entrypoint sh \
 		-v $(PWD)/..:/workspace \
 		-w /workspace/proto \

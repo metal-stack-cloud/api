@@ -7,7 +7,7 @@ VERSION := $(or ${VERSION},devel)
 all: proto npm-build
 
 .PHONY: proto
-proto: protolint
+proto: protolint test
 	$(MAKE) -C go clean
 	$(MAKE) -C js clean
 	$(MAKE) -C openapiv2 clean
@@ -21,4 +21,8 @@ protolint:
 .PHONY: npm-build
 npm-build:
 	docker pull node:19-bullseye
-	docker run -it --rm -v ${PWD}:/work -w /work node:19-bullseye make -C js build
+	docker run --rm -v ${PWD}:/work -w /work node:19-bullseye make -C js build
+
+.PHONY: test
+test: proto
+	$(MAKE) -C go test
