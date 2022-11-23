@@ -4,10 +4,10 @@ GITVERSION := $(shell git describe --long --all)
 BUILDDATE := $(shell date -Iseconds)
 VERSION := $(or ${VERSION},devel)
 
-all: proto npm-build
+all: proto test npm-build
 
 .PHONY: proto
-proto: protolint test
+proto: protolint
 	$(MAKE) -C go clean
 	$(MAKE) -C js clean
 	$(MAKE) -C openapiv2 clean
@@ -24,5 +24,5 @@ npm-build:
 	docker run --rm -v ${PWD}:/work -w /work node:19-bullseye make -C js build
 
 .PHONY: test
-test: proto
+test:
 	$(MAKE) -C go test
