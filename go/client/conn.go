@@ -37,6 +37,7 @@ type AddHeaderTransport struct {
 }
 
 func (a *AddHeaderTransport) RoundTrip(req *http.Request) (*http.Response, error) {
+	req.Header.Add("Authorization", "Bearer "+a.Token)
 	if a.debug {
 		reqDump, err := httputil.DumpRequestOut(req, true)
 		if err != nil {
@@ -44,7 +45,6 @@ func (a *AddHeaderTransport) RoundTrip(req *http.Request) (*http.Response, error
 		}
 		fmt.Printf("REQUEST:\n%s", string(reqDump))
 	}
-	req.Header.Add("Authorization", "Bearer "+a.Token)
 
 	resp, err := a.T.RoundTrip(req)
 
