@@ -3,11 +3,9 @@ syntax = "proto3";
 package api.v1;
 
 import "api/v1/common.proto";
-import "google/api/annotations.proto";
 
 service AssetService {
   rpc List(AssetServiceListRequest) returns (AssetServiceListResponse) {
-    option (google.api.http) = {get: "/api/v1/asset"};
     option (visibility) = VISIBILITY_PUBLIC;
   }
 }

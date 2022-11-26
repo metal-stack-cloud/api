@@ -815,18 +815,7 @@
               "responseType": "TenantServiceCreateResponse",
               "responseLongType": "TenantServiceCreateResponse",
               "responseFullType": "api.v1.TenantServiceCreateResponse",
-              "responseStreaming": false,
-              "options": {
-                "google.api.http": {
-                  "rules": [
-                    {
-                      "method": "POST",
-                      "pattern": "/api/v1/tenant",
-                      "body": "*"
-                    }
-                  ]
-                }
-              }
+              "responseStreaming": false
             },
             {
               "name": "CreateOrUpdate",
@@ -850,17 +839,7 @@
               "responseType": "TenantServiceGetResponse",
               "responseLongType": "TenantServiceGetResponse",
               "responseFullType": "api.v1.TenantServiceGetResponse",
-              "responseStreaming": false,
-              "options": {
-                "google.api.http": {
-                  "rules": [
-                    {
-                      "method": "GET",
-                      "pattern": "/api/v1/tenant/{login}"
-                    }
-                  ]
-                }
-              }
+              "responseStreaming": false
             },
             {
               "name": "Update",
@@ -872,18 +851,7 @@
               "responseType": "TenantServiceUpdateResponse",
               "responseLongType": "TenantServiceUpdateResponse",
               "responseFullType": "api.v1.TenantServiceUpdateResponse",
-              "responseStreaming": false,
-              "options": {
-                "google.api.http": {
-                  "rules": [
-                    {
-                      "method": "PATCH",
-                      "pattern": "/api/v1/tenant",
-                      "body": "*"
-                    }
-                  ]
-                }
-              }
+              "responseStreaming": false
             },
             {
               "name": "Delete",
@@ -895,17 +863,7 @@
               "responseType": "TenantServiceDeleteResponse",
               "responseLongType": "TenantServiceDeleteResponse",
               "responseFullType": "api.v1.TenantServiceDeleteResponse",
-              "responseStreaming": false,
-              "options": {
-                "google.api.http": {
-                  "rules": [
-                    {
-                      "method": "DELETE",
-                      "pattern": "/api/v1/tenant/{login}"
-                    }
-                  ]
-                }
-              }
+              "responseStreaming": false
             }
           ]
         }
@@ -1718,17 +1676,7 @@
               "responseType": "AssetServiceListResponse",
               "responseLongType": "AssetServiceListResponse",
               "responseFullType": "api.v1.AssetServiceListResponse",
-              "responseStreaming": false,
-              "options": {
-                "google.api.http": {
-                  "rules": [
-                    {
-                      "method": "GET",
-                      "pattern": "/api/v1/asset"
-                    }
-                  ]
-                }
-              }
+              "responseStreaming": false
             }
           ]
         }
@@ -3027,18 +2975,7 @@
               "responseType": "ClusterServiceCreateResponse",
               "responseLongType": "ClusterServiceCreateResponse",
               "responseFullType": "api.v1.ClusterServiceCreateResponse",
-              "responseStreaming": false,
-              "options": {
-                "google.api.http": {
-                  "rules": [
-                    {
-                      "method": "POST",
-                      "pattern": "/api/v1/cluster",
-                      "body": "*"
-                    }
-                  ]
-                }
-              }
+              "responseStreaming": false
             },
             {
               "name": "Get",
@@ -3050,17 +2987,7 @@
               "responseType": "ClusterServiceGetResponse",
               "responseLongType": "ClusterServiceGetResponse",
               "responseFullType": "api.v1.ClusterServiceGetResponse",
-              "responseStreaming": false,
-              "options": {
-                "google.api.http": {
-                  "rules": [
-                    {
-                      "method": "GET",
-                      "pattern": "/api/v1/cluster/{project}/{uuid}"
-                    }
-                  ]
-                }
-              }
+              "responseStreaming": false
             },
             {
               "name": "List",
@@ -3072,18 +2999,7 @@
               "responseType": "ClusterServiceListResponse",
               "responseLongType": "ClusterServiceListResponse",
               "responseFullType": "api.v1.ClusterServiceListResponse",
-              "responseStreaming": false,
-              "options": {
-                "google.api.http": {
-                  "rules": [
-                    {
-                      "method": "POST",
-                      "pattern": "/api/v1/clusters",
-                      "body": "*"
-                    }
-                  ]
-                }
-              }
+              "responseStreaming": false
             },
             {
               "name": "WatchStatus",
@@ -3107,18 +3023,7 @@
               "responseType": "ClusterServiceDeleteResponse",
               "responseLongType": "ClusterServiceDeleteResponse",
               "responseFullType": "api.v1.ClusterServiceDeleteResponse",
-              "responseStreaming": false,
-              "options": {
-                "google.api.http": {
-                  "rules": [
-                    {
-                      "method": "DELETE",
-                      "pattern": "/api/v1/cluster",
-                      "body": "*"
-                    }
-                  ]
-                }
-              }
+              "responseStreaming": false
             },
             {
               "name": "Update",
@@ -3130,18 +3035,7 @@
               "responseType": "ClusterServiceUpdateResponse",
               "responseLongType": "ClusterServiceUpdateResponse",
               "responseFullType": "api.v1.ClusterServiceUpdateResponse",
-              "responseStreaming": false,
-              "options": {
-                "google.api.http": {
-                  "rules": [
-                    {
-                      "method": "PATCH",
-                      "pattern": "/api/v1/cluster",
-                      "body": "*"
-                    }
-                  ]
-                }
-              }
+              "responseStreaming": false
             },
             {
               "name": "GetCredentials",
@@ -3153,17 +3047,7 @@
               "responseType": "ClusterServiceGetCredentialsResponse",
               "responseLongType": "ClusterServiceGetCredentialsResponse",
               "responseFullType": "api.v1.ClusterServiceGetCredentialsResponse",
-              "responseStreaming": false,
-              "options": {
-                "google.api.http": {
-                  "rules": [
-                    {
-                      "method": "GET",
-                      "pattern": "/api/v1/cluster/credentials/{project}/{uuid}"
-                    }
-                  ]
-                }
-              }
+              "responseStreaming": false
             }
           ]
         }
@@ -4085,17 +3969,7 @@
               "responseType": "IPServiceGetResponse",
               "responseLongType": "IPServiceGetResponse",
               "responseFullType": "api.v1.IPServiceGetResponse",
-              "responseStreaming": false,
-              "options": {
-                "google.api.http": {
-                  "rules": [
-                    {
-                      "method": "GET",
-                      "pattern": "/api/v1/ip/{project}/{uuid}"
-                    }
-                  ]
-                }
-              }
+              "responseStreaming": false
             },
             {
               "name": "Allocate",
@@ -4107,17 +3981,7 @@
               "responseType": "IPServiceAllocateResponse",
               "responseLongType": "IPServiceAllocateResponse",
               "responseFullType": "api.v1.IPServiceAllocateResponse",
-              "responseStreaming": false,
-              "options": {
-                "google.api.http": {
-                  "rules": [
-                    {
-                      "method": "GET",
-                      "pattern": "/api/v1/ip/allocate/{project}"
-                    }
-                  ]
-                }
-              }
+              "responseStreaming": false
             },
             {
               "name": "Static",
@@ -4129,17 +3993,7 @@
               "responseType": "IPServiceStaticResponse",
               "responseLongType": "IPServiceStaticResponse",
               "responseFullType": "api.v1.IPServiceStaticResponse",
-              "responseStreaming": false,
-              "options": {
-                "google.api.http": {
-                  "rules": [
-                    {
-                      "method": "GET",
-                      "pattern": "/api/v1/ip/static/{project}/{uuid}"
-                    }
-                  ]
-                }
-              }
+              "responseStreaming": false
             },
             {
               "name": "List",
@@ -4151,18 +4005,7 @@
               "responseType": "IPServiceListResponse",
               "responseLongType": "IPServiceListResponse",
               "responseFullType": "api.v1.IPServiceListResponse",
-              "responseStreaming": false,
-              "options": {
-                "google.api.http": {
-                  "rules": [
-                    {
-                      "method": "POST",
-                      "pattern": "/api/v1/ips",
-                      "body": "*"
-                    }
-                  ]
-                }
-              }
+              "responseStreaming": false
             },
             {
               "name": "Delete",
@@ -4174,18 +4017,7 @@
               "responseType": "IPServiceDeleteResponse",
               "responseLongType": "IPServiceDeleteResponse",
               "responseFullType": "api.v1.IPServiceDeleteResponse",
-              "responseStreaming": false,
-              "options": {
-                "google.api.http": {
-                  "rules": [
-                    {
-                      "method": "DELETE",
-                      "pattern": "/api/v1/ip",
-                      "body": "*"
-                    }
-                  ]
-                }
-              }
+              "responseStreaming": false
             }
           ]
         }
@@ -5549,18 +5381,7 @@
               "responseType": "TokenServiceCreateResponse",
               "responseLongType": "TokenServiceCreateResponse",
               "responseFullType": "api.v1.TokenServiceCreateResponse",
-              "responseStreaming": false,
-              "options": {
-                "google.api.http": {
-                  "rules": [
-                    {
-                      "method": "POST",
-                      "pattern": "/api/v1/token",
-                      "body": "*"
-                    }
-                  ]
-                }
-              }
+              "responseStreaming": false
             }
           ]
         }
@@ -5968,17 +5789,7 @@
               "responseType": "VersionServiceGetResponse",
               "responseLongType": "VersionServiceGetResponse",
               "responseFullType": "api.v1.VersionServiceGetResponse",
-              "responseStreaming": false,
-              "options": {
-                "google.api.http": {
-                  "rules": [
-                    {
-                      "method": "GET",
-                      "pattern": "/api/v1/version"
-                    }
-                  ]
-                }
-              }
+              "responseStreaming": false
             }
           ]
         }
@@ -6801,17 +6612,7 @@
               "responseType": "SnapshotServiceGetResponse",
               "responseLongType": "SnapshotServiceGetResponse",
               "responseFullType": "api.v1.SnapshotServiceGetResponse",
-              "responseStreaming": false,
-              "options": {
-                "google.api.http": {
-                  "rules": [
-                    {
-                      "method": "GET",
-                      "pattern": "/api/v1/snapshot/{project}/{uuid}"
-                    }
-                  ]
-                }
-              }
+              "responseStreaming": false
             },
             {
               "name": "List",
@@ -6823,18 +6624,7 @@
               "responseType": "SnapshotServiceListResponse",
               "responseLongType": "SnapshotServiceListResponse",
               "responseFullType": "api.v1.SnapshotServiceListResponse",
-              "responseStreaming": false,
-              "options": {
-                "google.api.http": {
-                  "rules": [
-                    {
-                      "method": "POST",
-                      "pattern": "/api/v1/snapshots",
-                      "body": "*"
-                    }
-                  ]
-                }
-              }
+              "responseStreaming": false
             },
             {
               "name": "Delete",
@@ -6846,18 +6636,7 @@
               "responseType": "SnapshotServiceDeleteResponse",
               "responseLongType": "SnapshotServiceDeleteResponse",
               "responseFullType": "api.v1.SnapshotServiceDeleteResponse",
-              "responseStreaming": false,
-              "options": {
-                "google.api.http": {
-                  "rules": [
-                    {
-                      "method": "DELETE",
-                      "pattern": "/api/v1/snapshot",
-                      "body": "*"
-                    }
-                  ]
-                }
-              }
+              "responseStreaming": false
             }
           ]
         },
@@ -6877,17 +6656,7 @@
               "responseType": "VolumeServiceGetResponse",
               "responseLongType": "VolumeServiceGetResponse",
               "responseFullType": "api.v1.VolumeServiceGetResponse",
-              "responseStreaming": false,
-              "options": {
-                "google.api.http": {
-                  "rules": [
-                    {
-                      "method": "GET",
-                      "pattern": "/api/v1/volume/{project}/{uuid}"
-                    }
-                  ]
-                }
-              }
+              "responseStreaming": false
             },
             {
               "name": "List",
@@ -6899,18 +6668,7 @@
               "responseType": "VolumeServiceListResponse",
               "responseLongType": "VolumeServiceListResponse",
               "responseFullType": "api.v1.VolumeServiceListResponse",
-              "responseStreaming": false,
-              "options": {
-                "google.api.http": {
-                  "rules": [
-                    {
-                      "method": "POST",
-                      "pattern": "/api/v1/volumes",
-                      "body": "*"
-                    }
-                  ]
-                }
-              }
+              "responseStreaming": false
             },
             {
               "name": "Delete",
@@ -6922,18 +6680,7 @@
               "responseType": "VolumeServiceDeleteResponse",
               "responseLongType": "VolumeServiceDeleteResponse",
               "responseFullType": "api.v1.VolumeServiceDeleteResponse",
-              "responseStreaming": false,
-              "options": {
-                "google.api.http": {
-                  "rules": [
-                    {
-                      "method": "DELETE",
-                      "pattern": "/api/v1/volume",
-                      "body": "*"
-                    }
-                  ]
-                }
-              }
+              "responseStreaming": false
             }
           ]
         }

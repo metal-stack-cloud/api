@@ -3,30 +3,20 @@ syntax = "proto3";
 package api.v1;
 
 import "api/v1/common.proto";
-import "google/api/annotations.proto";
 import "google/protobuf/timestamp.proto";
 import "validate/validate.proto";
 
 service ClusterService {
   rpc Create(ClusterServiceCreateRequest) returns (ClusterServiceCreateResponse) {
-    option (google.api.http) = {
-      post: "/api/v1/cluster"
-      body: "*"
-    };
     option (project_roles) = PROJECT_ROLE_OWNER;
     option (project_roles) = PROJECT_ROLE_EDITOR;
   }
   rpc Get(ClusterServiceGetRequest) returns (ClusterServiceGetResponse) {
-    option (google.api.http) = {get: "/api/v1/cluster/{project}/{uuid}"};
     option (project_roles) = PROJECT_ROLE_OWNER;
     option (project_roles) = PROJECT_ROLE_EDITOR;
     option (project_roles) = PROJECT_ROLE_VIEWER;
   }
   rpc List(ClusterServiceListRequest) returns (ClusterServiceListResponse) {
-    option (google.api.http) = {
-      post: "/api/v1/clusters"
-      body: "*"
-    };
     option (project_roles) = PROJECT_ROLE_OWNER;
     option (project_roles) = PROJECT_ROLE_EDITOR;
     option (project_roles) = PROJECT_ROLE_VIEWER;
@@ -37,23 +27,14 @@ service ClusterService {
     option (project_roles) = PROJECT_ROLE_VIEWER;
   }
   rpc Delete(ClusterServiceDeleteRequest) returns (ClusterServiceDeleteResponse) {
-    option (google.api.http) = {
-      delete: "/api/v1/cluster"
-      body: "*"
-    };
     option (project_roles) = PROJECT_ROLE_OWNER;
     option (project_roles) = PROJECT_ROLE_EDITOR;
   }
   rpc Update(ClusterServiceUpdateRequest) returns (ClusterServiceUpdateResponse) {
-    option (google.api.http) = {
-      patch: "/api/v1/cluster"
-      body: "*"
-    };
     option (project_roles) = PROJECT_ROLE_OWNER;
     option (project_roles) = PROJECT_ROLE_EDITOR;
   }
   rpc GetCredentials(ClusterServiceGetCredentialsRequest) returns (ClusterServiceGetCredentialsResponse) {
-    option (google.api.http) = {get: "/api/v1/cluster/credentials/{project}/{uuid}"};
     option (project_roles) = PROJECT_ROLE_OWNER;
     option (project_roles) = PROJECT_ROLE_EDITOR;
   }
