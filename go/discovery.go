@@ -6,62 +6,20 @@ import (
 	"os"
 	"path/filepath"
 	"strings"
-	"time"
 
 	"github.com/jhump/protoreflect/desc/protoparse"
 	v1 "github.com/metal-stack-cloud/api/go/api/v1"
+	"github.com/metal-stack-cloud/api/go/permissions"
 )
 
 // serverReflectionInfo is always allowed to access to get a list of exposed services for example with grpcurl
 const serverReflectionInfo = "/grpc.reflection.v1alpha.ServerReflection/ServerReflectionInfo"
 
-type ServicePermissions struct {
-	Roles      Roles
-	Methods    Methods
-	Visibility Visibility
-}
-type Admin struct {
-	// TODO map from string to bool would be better
-	// maybe map[string][]string where key is method and values is slice of roles like
-	// "v1.SampleService/Get": ["editor", "viewer"]
-	Editor []string `json:"editor,omitempty"`
-	Viewer []string `json:"viewer,omitempty"`
-}
-type Tenant struct {
-	// TODO same as above
-	Owner  []string `json:"owner,omitempty"`
-	Editor []string `json:"editor,omitempty"`
-	Viewer []string `json:"viewer,omitempty"`
-}
-type Project struct {
-	// TODO same as above
-	Owner  []string `json:"owner,omitempty"`
-	Editor []string `json:"editor,omitempty"`
-	Viewer []string `json:"viewer,omitempty"`
-}
-
-// TODO convert to map[string]bool
-type Methods []string
-
-// Roles
-type Roles struct {
-	Admin   *Admin   `json:"admin,omitempty"`
-	Tenant  *Tenant  `json:"tenant,omitempty"`
-	Project *Project `json:"project,omitempty"`
-}
-
-type Visibility struct {
-	Public  map[string]bool `json:"public,omitempty"`
-	Private map[string]bool `json:"private,omitempty"`
-}
-
 func main() {
-	start := time.Now()
-	perms, err := servicePermissions("proto")
+	perms, err := servicePermissions("../proto")
 	if err != nil {
 		panic(err)
 	}
-	fmt.Printf("generation took:%s\n", time.Since(start))
 	j, err := json.MarshalIndent(perms, "", "  ")
 	if err != nil {
 		panic(err)
@@ -69,7 +27,7 @@ func main() {
 	fmt.Printf("%s\n", string(j))
 }
 
-func servicePermissions(root string) (*ServicePermissions, error) {
+func servicePermissions(root string) (*permissions.ServicePermissions, error) {
 	var (
 		walk = func(root string) ([]string, error) {
 			var files []string
@@ -84,13 +42,13 @@ func servicePermissions(root string) (*ServicePermissions, error) {
 			})
 			return files, err
 		}
-		roles = Roles{
-			Admin:   &Admin{},
-			Tenant:  &Tenant{},
-			Project: &Project{},
+		roles = permissions.Roles{
+			Admin:   &permissions.Admin{},
+			Tenant:  &permissions.Tenant{},
+			Project: &permissions.Project{},
 		}
-		methods    = Methods{}
-		visibility = Visibility{
+		methods    = permissions.Methods{}
+		visibility = permissions.Visibility{
 			Public: map[string]bool{
 				// Allow service reflection to list available methods
 				serverReflectionInfo: true,
@@ -166,7 +124,7 @@ func servicePermissions(root string) (*ServicePermissions, error) {
 		}
 	}
 
-	sp := &ServicePermissions{
+	sp := &permissions.ServicePermissions{
 		Roles:      roles,
 		Methods:    methods,
 		Visibility: visibility,

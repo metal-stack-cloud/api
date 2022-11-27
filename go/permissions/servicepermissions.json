@@ -1,5 +1,5 @@
 {
-  "Roles": {
+  "roles": {
     "admin": {
       "editor": [
         "/admin.v1.TenantService/List",
@@ -89,7 +89,7 @@
       ]
     }
   },
-  "Methods": [
+  "methods": [
     "/admin.v1.TenantService/List",
     "/admin.v1.TenantService/List",
     "/admin.v1.TenantService/Admit",
@@ -165,7 +165,7 @@
     "/status.v1.MessageService/List",
     "/status.v1.StatusService/Get"
   ],
-  "Visibility": {
+  "visibility": {
     "public": {
       "/api.v1.AssetService/List": true,
       "/api.v1.HealthService/Get": true,
