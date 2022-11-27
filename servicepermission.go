@@ -6,6 +6,7 @@ import (
 	"os"
 	"path/filepath"
 	"strings"
+	"time"
 
 	"github.com/jhump/protoreflect/desc/protoparse"
 	v1 "github.com/metal-stack-cloud/api/go/api/v1"
@@ -21,19 +22,25 @@ type ServicePermissions struct {
 }
 type Admin struct {
 	// TODO map from string to bool would be better
+	// maybe map[string][]string where key is method and values is slice of roles like
+	// "v1.SampleService/Get": ["editor", "viewer"]
 	Editor []string `json:"editor,omitempty"`
 	Viewer []string `json:"viewer,omitempty"`
 }
 type Tenant struct {
+	// TODO same as above
 	Owner  []string `json:"owner,omitempty"`
 	Editor []string `json:"editor,omitempty"`
 	Viewer []string `json:"viewer,omitempty"`
 }
 type Project struct {
+	// TODO same as above
 	Owner  []string `json:"owner,omitempty"`
 	Editor []string `json:"editor,omitempty"`
 	Viewer []string `json:"viewer,omitempty"`
 }
+
+// TODO convert to map[string]bool
 type Methods []string
 
 // Roles
@@ -49,11 +56,16 @@ type Visibility struct {
 }
 
 func main() {
+	start := time.Now()
 	perms, err := servicePermissions("proto")
 	if err != nil {
 		panic(err)
 	}
-	j, _ := json.MarshalIndent(perms, "", "  ")
+	fmt.Printf("generation took:%s\n", time.Since(start))
+	j, err := json.MarshalIndent(perms, "", "  ")
+	if err != nil {
+		panic(err)
+	}
 	fmt.Printf("%s\n", string(j))
 }
 
@@ -100,29 +112,16 @@ func servicePermissions(root string) (*ServicePermissions, error) {
 		}
 		for _, fd := range fds {
 			for _, serviceDesc := range fd.GetService() {
-
 				for _, method := range serviceDesc.GetMethod() {
-					// fmt.Printf("/%s.%s/%s\n", *fd.Package, *serviceDesc.Name, *method.Name)
-					// fmt.Printf("\t %v\n", method.Options)
-					// fmt.Printf("\t %v\n", method.Options.UninterpretedOption)
-
 					methodName := fmt.Sprintf("/%s.%s/%s", *fd.Package, *serviceDesc.Name, *method.Name)
 					methodOpts := method.Options.GetUninterpretedOption()
-					// hasProjectRoles := proto.HasExtension(method.Options, v1.E_ProjectRoles)
-					// tenantRoles := proto.GetExtension(method.Options, v1.E_TenantRoles)
-					// adminRoles := proto.GetExtension(method.GetOptions(), v1.E_AdminRoles.TypeDescriptor().Type())
-					// fmt.Printf("name: %s hasProjectRole :%t tenant role: %v %v\n", methodName, hasProjectRoles, tenantRoles, adminRoles)
-
 					for _, methodOpt := range methodOpts {
-						// tenantRoles := proto.GetExtension(methodOpt, v1.E_TenantRoles).([]v1.TenantRole)
-						// fmt.Printf("methodName: %s tenant: %v", methodName, tenantRoles)
-
 						for _, namePart := range methodOpt.Name {
 							if !*namePart.IsExtension {
 								continue
 							}
 
-							// fmt.Printf("method: %s identifier: %s \n", methodName, *methodOpt.IdentifierValue)
+							// Tenant
 							switch *methodOpt.IdentifierValue {
 							case v1.TenantRole_TENANT_ROLE_OWNER.String():
 								roles.Tenant.Owner = append(roles.Tenant.Owner, methodName)
@@ -132,7 +131,7 @@ func servicePermissions(root string) (*ServicePermissions, error) {
 								roles.Tenant.Viewer = append(roles.Tenant.Viewer, methodName)
 							case v1.TenantRole_TENANT_ROLE_UNSPECIFIED.String():
 								// noop
-
+							// Project
 							case v1.ProjectRole_PROJECT_ROLE_OWNER.String():
 								roles.Project.Owner = append(roles.Project.Owner, methodName)
 							case v1.ProjectRole_PROJECT_ROLE_EDITOR.String():
@@ -141,13 +140,14 @@ func servicePermissions(root string) (*ServicePermissions, error) {
 								roles.Project.Viewer = append(roles.Project.Viewer, methodName)
 							case v1.ProjectRole_PROJECT_ROLE_UNSPECIFIED.String():
 								// noop
-
+							// Admin
 							case v1.AdminRole_ADMIN_ROLE_EDITOR.String():
 								roles.Admin.Editor = append(roles.Admin.Editor, methodName)
 							case v1.AdminRole_ADMIN_ROLE_VIEWER.String():
 								roles.Admin.Viewer = append(roles.Admin.Viewer, methodName)
 							case v1.AdminRole_ADMIN_ROLE_UNSPECIFIED.String():
 								// noop
+							// Visibility
 							case v1.Visibility_VISIBILITY_PUBLIC.String():
 								visibility.Public[methodName] = true
 							case v1.Visibility_VISIBILITY_PRIVATE.String():
@@ -155,13 +155,12 @@ func servicePermissions(root string) (*ServicePermissions, error) {
 							case v1.Visibility_VISIBILITY_UNSPECIFIED.String():
 								// noop
 							default:
-								// noop
+								return nil, fmt.Errorf("unknonw method identifier value detected:%s", *methodOpt.IdentifierValue)
 
 							}
 							methods = append(methods, methodName)
 						}
 					}
-
 				}
 			}
 		}
