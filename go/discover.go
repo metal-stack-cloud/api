@@ -116,7 +116,7 @@ func servicePermissions(root string) (*permissions.ServicePermissions, error) {
 								return nil, fmt.Errorf("unknonw method identifier value detected:%s", *methodOpt.IdentifierValue)
 
 							}
-							methods = append(methods, methodName)
+							methods[methodName] = true
 						}
 					}
 				}

@@ -34,7 +34,7 @@ type Project struct {
 }
 
 // TODO convert to map[string]bool
-type Methods []string
+type Methods map[string]bool
 
 // Roles
 type Roles struct {
