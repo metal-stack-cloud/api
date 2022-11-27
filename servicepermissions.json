@@ -1,0 +1,183 @@
+{
+  "Roles": {
+    "admin": {
+      "editor": [
+        "/admin.v1.TenantService/List",
+        "/admin.v1.TenantService/Admit"
+      ],
+      "viewer": [
+        "/admin.v1.TenantService/List"
+      ]
+    },
+    "tenant": {
+      "owner": [
+        "/api.v1.PaymentService/CreateOrUpdateCustomer",
+        "/api.v1.PaymentService/GetCustomer",
+        "/api.v1.PaymentService/GetCustomerWithLogin",
+        "/api.v1.PaymentService/CheckIfCustomerExists",
+        "/api.v1.PaymentService/HasPaymentMethod",
+        "/api.v1.PaymentService/DeletePaymentMethod",
+        "/api.v1.PaymentService/GetSubscriptionUsage",
+        "/api.v1.PaymentService/GetInvoices",
+        "/api.v1.TenantService/Create",
+        "/api.v1.TenantService/Get",
+        "/api.v1.TenantService/Update",
+        "/api.v1.TenantService/Delete"
+      ],
+      "editor": [
+        "/api.v1.PaymentService/HasPaymentMethod",
+        "/api.v1.TenantService/Create",
+        "/api.v1.TenantService/Get",
+        "/api.v1.TenantService/Update",
+        "/api.v1.TenantService/Delete"
+      ],
+      "viewer": [
+        "/api.v1.TenantService/Get"
+      ]
+    },
+    "project": {
+      "owner": [
+        "/api.v1.ClusterService/Create",
+        "/api.v1.ClusterService/Get",
+        "/api.v1.ClusterService/List",
+        "/api.v1.ClusterService/WatchStatus",
+        "/api.v1.ClusterService/Delete",
+        "/api.v1.ClusterService/Update",
+        "/api.v1.ClusterService/GetCredentials",
+        "/api.v1.IPService/Get",
+        "/api.v1.IPService/Allocate",
+        "/api.v1.IPService/Static",
+        "/api.v1.IPService/List",
+        "/api.v1.IPService/Delete",
+        "/api.v1.VolumeService/Get",
+        "/api.v1.VolumeService/List",
+        "/api.v1.VolumeService/Delete",
+        "/api.v1.SnapshotService/Get",
+        "/api.v1.SnapshotService/List",
+        "/api.v1.SnapshotService/Delete"
+      ],
+      "editor": [
+        "/api.v1.ClusterService/Create",
+        "/api.v1.ClusterService/Get",
+        "/api.v1.ClusterService/List",
+        "/api.v1.ClusterService/WatchStatus",
+        "/api.v1.ClusterService/Delete",
+        "/api.v1.ClusterService/Update",
+        "/api.v1.ClusterService/GetCredentials",
+        "/api.v1.IPService/Get",
+        "/api.v1.IPService/Allocate",
+        "/api.v1.IPService/Static",
+        "/api.v1.IPService/List",
+        "/api.v1.IPService/Delete",
+        "/api.v1.VolumeService/Get",
+        "/api.v1.VolumeService/List",
+        "/api.v1.VolumeService/Delete",
+        "/api.v1.SnapshotService/Get",
+        "/api.v1.SnapshotService/List",
+        "/api.v1.SnapshotService/Delete"
+      ],
+      "viewer": [
+        "/api.v1.ClusterService/Get",
+        "/api.v1.ClusterService/List",
+        "/api.v1.ClusterService/WatchStatus",
+        "/api.v1.IPService/Get",
+        "/api.v1.IPService/List",
+        "/api.v1.VolumeService/Get",
+        "/api.v1.VolumeService/List",
+        "/api.v1.SnapshotService/Get",
+        "/api.v1.SnapshotService/List"
+      ]
+    }
+  },
+  "Methods": [
+    "/admin.v1.TenantService/List",
+    "/admin.v1.TenantService/List",
+    "/admin.v1.TenantService/Admit",
+    "/api.v1.AssetService/List",
+    "/api.v1.ClusterService/Create",
+    "/api.v1.ClusterService/Create",
+    "/api.v1.ClusterService/Get",
+    "/api.v1.ClusterService/Get",
+    "/api.v1.ClusterService/Get",
+    "/api.v1.ClusterService/List",
+    "/api.v1.ClusterService/List",
+    "/api.v1.ClusterService/List",
+    "/api.v1.ClusterService/WatchStatus",
+    "/api.v1.ClusterService/WatchStatus",
+    "/api.v1.ClusterService/WatchStatus",
+    "/api.v1.ClusterService/Delete",
+    "/api.v1.ClusterService/Delete",
+    "/api.v1.ClusterService/Update",
+    "/api.v1.ClusterService/Update",
+    "/api.v1.ClusterService/GetCredentials",
+    "/api.v1.ClusterService/GetCredentials",
+    "/api.v1.HealthService/Get",
+    "/api.v1.IPService/Get",
+    "/api.v1.IPService/Get",
+    "/api.v1.IPService/Get",
+    "/api.v1.IPService/Allocate",
+    "/api.v1.IPService/Allocate",
+    "/api.v1.IPService/Static",
+    "/api.v1.IPService/Static",
+    "/api.v1.IPService/List",
+    "/api.v1.IPService/List",
+    "/api.v1.IPService/List",
+    "/api.v1.IPService/Delete",
+    "/api.v1.IPService/Delete",
+    "/api.v1.PaymentService/CreateOrUpdateCustomer",
+    "/api.v1.PaymentService/GetCustomer",
+    "/api.v1.PaymentService/GetCustomerWithLogin",
+    "/api.v1.PaymentService/CheckIfCustomerExists",
+    "/api.v1.PaymentService/HasPaymentMethod",
+    "/api.v1.PaymentService/HasPaymentMethod",
+    "/api.v1.PaymentService/DeletePaymentMethod",
+    "/api.v1.PaymentService/GetSubscriptionUsage",
+    "/api.v1.PaymentService/GetInvoices",
+    "/api.v1.PaymentService/GetDefaultPrices",
+    "/api.v1.TenantService/Create",
+    "/api.v1.TenantService/Create",
+    "/api.v1.TenantService/CreateOrUpdate",
+    "/api.v1.TenantService/Get",
+    "/api.v1.TenantService/Get",
+    "/api.v1.TenantService/Get",
+    "/api.v1.TenantService/Update",
+    "/api.v1.TenantService/Update",
+    "/api.v1.TenantService/Delete",
+    "/api.v1.TenantService/Delete",
+    "/api.v1.TokenService/Create",
+    "/api.v1.VersionService/Get",
+    "/api.v1.VolumeService/Get",
+    "/api.v1.VolumeService/Get",
+    "/api.v1.VolumeService/Get",
+    "/api.v1.VolumeService/List",
+    "/api.v1.VolumeService/List",
+    "/api.v1.VolumeService/List",
+    "/api.v1.VolumeService/Delete",
+    "/api.v1.VolumeService/Delete",
+    "/api.v1.SnapshotService/Get",
+    "/api.v1.SnapshotService/Get",
+    "/api.v1.SnapshotService/Get",
+    "/api.v1.SnapshotService/List",
+    "/api.v1.SnapshotService/List",
+    "/api.v1.SnapshotService/List",
+    "/api.v1.SnapshotService/Delete",
+    "/api.v1.SnapshotService/Delete",
+    "/status.v1.MessageService/List",
+    "/status.v1.StatusService/Get"
+  ],
+  "Visibility": {
+    "public": {
+      "/api.v1.AssetService/List": true,
+      "/api.v1.HealthService/Get": true,
+      "/api.v1.PaymentService/GetDefaultPrices": true,
+      "/api.v1.VersionService/Get": true,
+      "/grpc.reflection.v1alpha.ServerReflection/ServerReflectionInfo": true,
+      "/status.v1.MessageService/List": true,
+      "/status.v1.StatusService/Get": true
+    },
+    "private": {
+      "/api.v1.TenantService/CreateOrUpdate": true,
+      "/api.v1.TokenService/Create": true
+    }
+  }
+}
