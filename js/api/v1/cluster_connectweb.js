@@ -5,8 +5,8 @@
 // @ts-nocheck
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ClusterService = void 0;
-var cluster_pb_js_1 = require("./cluster_pb.js");
-var protobuf_1 = require("@bufbuild/protobuf");
+const cluster_pb_js_1 = require("./cluster_pb.js");
+const protobuf_1 = require("@bufbuild/protobuf");
 /**
  * @generated from service api.v1.ClusterService
  */

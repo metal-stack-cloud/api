@@ -3,158 +3,131 @@
 // @generated from file admin/v1/tenant.proto (package admin.v1, syntax proto3)
 /* eslint-disable */
 /* @ts-nocheck */
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        if (typeof b !== "function" && b !== null)
-            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.TenantServiceAdmitResponse = exports.TenantServiceAdmitRequest = exports.TenantServiceListResponse = exports.TenantServiceListRequest = void 0;
-var protobuf_1 = require("@bufbuild/protobuf");
-var common_pb_js_1 = require("../../api/v1/common_pb.js");
-var tenant_pb_js_1 = require("../../api/v1/tenant_pb.js");
+const protobuf_1 = require("@bufbuild/protobuf");
+const common_pb_js_1 = require("../../api/v1/common_pb.js");
+const tenant_pb_js_1 = require("../../api/v1/tenant_pb.js");
 /**
  * @generated from message admin.v1.TenantServiceListRequest
  */
-var TenantServiceListRequest = /** @class */ (function (_super) {
-    __extends(TenantServiceListRequest, _super);
-    function TenantServiceListRequest(data) {
-        var _this = _super.call(this) || this;
-        protobuf_1.proto3.util.initPartial(data, _this);
-        return _this;
+class TenantServiceListRequest extends protobuf_1.Message {
+    constructor(data) {
+        super();
+        protobuf_1.proto3.util.initPartial(data, this);
     }
-    TenantServiceListRequest.fromBinary = function (bytes, options) {
+    static fromBinary(bytes, options) {
         return new TenantServiceListRequest().fromBinary(bytes, options);
-    };
-    TenantServiceListRequest.fromJson = function (jsonValue, options) {
+    }
+    static fromJson(jsonValue, options) {
         return new TenantServiceListRequest().fromJson(jsonValue, options);
-    };
-    TenantServiceListRequest.fromJsonString = function (jsonString, options) {
+    }
+    static fromJsonString(jsonString, options) {
         return new TenantServiceListRequest().fromJsonString(jsonString, options);
-    };
-    TenantServiceListRequest.equals = function (a, b) {
+    }
+    static equals(a, b) {
         return protobuf_1.proto3.util.equals(TenantServiceListRequest, a, b);
-    };
-    TenantServiceListRequest.runtime = protobuf_1.proto3;
-    TenantServiceListRequest.typeName = "admin.v1.TenantServiceListRequest";
-    TenantServiceListRequest.fields = protobuf_1.proto3.util.newFieldList(function () { return [
-        { no: 1, name: "login", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
-        { no: 2, name: "name", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
-        { no: 3, name: "email", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
-        { no: 4, name: "organisation_id", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
-        { no: 5, name: "oauth_provider", kind: "enum", T: protobuf_1.proto3.getEnumType(common_pb_js_1.OAuthProvider), opt: true },
-        { no: 6, name: "admitted", kind: "scalar", T: 8 /* ScalarType.BOOL */, opt: true },
-        { no: 7, name: "paging", kind: "message", T: common_pb_js_1.Paging },
-    ]; });
-    return TenantServiceListRequest;
-}(protobuf_1.Message));
+    }
+}
 exports.TenantServiceListRequest = TenantServiceListRequest;
+TenantServiceListRequest.runtime = protobuf_1.proto3;
+TenantServiceListRequest.typeName = "admin.v1.TenantServiceListRequest";
+TenantServiceListRequest.fields = protobuf_1.proto3.util.newFieldList(() => [
+    { no: 1, name: "login", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
+    { no: 2, name: "name", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
+    { no: 3, name: "email", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
+    { no: 4, name: "organisation_id", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
+    { no: 5, name: "oauth_provider", kind: "enum", T: protobuf_1.proto3.getEnumType(common_pb_js_1.OAuthProvider), opt: true },
+    { no: 6, name: "admitted", kind: "scalar", T: 8 /* ScalarType.BOOL */, opt: true },
+    { no: 7, name: "paging", kind: "message", T: common_pb_js_1.Paging },
+]);
 /**
  * @generated from message admin.v1.TenantServiceListResponse
  */
-var TenantServiceListResponse = /** @class */ (function (_super) {
-    __extends(TenantServiceListResponse, _super);
-    function TenantServiceListResponse(data) {
-        var _this = _super.call(this) || this;
+class TenantServiceListResponse extends protobuf_1.Message {
+    constructor(data) {
+        super();
         /**
          * @generated from field: repeated api.v1.Tenant tenants = 1;
          */
-        _this.tenants = [];
-        protobuf_1.proto3.util.initPartial(data, _this);
-        return _this;
+        this.tenants = [];
+        protobuf_1.proto3.util.initPartial(data, this);
     }
-    TenantServiceListResponse.fromBinary = function (bytes, options) {
+    static fromBinary(bytes, options) {
         return new TenantServiceListResponse().fromBinary(bytes, options);
-    };
-    TenantServiceListResponse.fromJson = function (jsonValue, options) {
+    }
+    static fromJson(jsonValue, options) {
         return new TenantServiceListResponse().fromJson(jsonValue, options);
-    };
-    TenantServiceListResponse.fromJsonString = function (jsonString, options) {
+    }
+    static fromJsonString(jsonString, options) {
         return new TenantServiceListResponse().fromJsonString(jsonString, options);
-    };
-    TenantServiceListResponse.equals = function (a, b) {
+    }
+    static equals(a, b) {
         return protobuf_1.proto3.util.equals(TenantServiceListResponse, a, b);
-    };
-    TenantServiceListResponse.runtime = protobuf_1.proto3;
-    TenantServiceListResponse.typeName = "admin.v1.TenantServiceListResponse";
-    TenantServiceListResponse.fields = protobuf_1.proto3.util.newFieldList(function () { return [
-        { no: 1, name: "tenants", kind: "message", T: tenant_pb_js_1.Tenant, repeated: true },
-        { no: 2, name: "next_page", kind: "scalar", T: 4 /* ScalarType.UINT64 */, opt: true },
-    ]; });
-    return TenantServiceListResponse;
-}(protobuf_1.Message));
+    }
+}
 exports.TenantServiceListResponse = TenantServiceListResponse;
+TenantServiceListResponse.runtime = protobuf_1.proto3;
+TenantServiceListResponse.typeName = "admin.v1.TenantServiceListResponse";
+TenantServiceListResponse.fields = protobuf_1.proto3.util.newFieldList(() => [
+    { no: 1, name: "tenants", kind: "message", T: tenant_pb_js_1.Tenant, repeated: true },
+    { no: 2, name: "next_page", kind: "scalar", T: 4 /* ScalarType.UINT64 */, opt: true },
+]);
 /**
  * @generated from message admin.v1.TenantServiceAdmitRequest
  */
-var TenantServiceAdmitRequest = /** @class */ (function (_super) {
-    __extends(TenantServiceAdmitRequest, _super);
-    function TenantServiceAdmitRequest(data) {
-        var _this = _super.call(this) || this;
+class TenantServiceAdmitRequest extends protobuf_1.Message {
+    constructor(data) {
+        super();
         /**
          * @generated from field: string tenant_id = 1;
          */
-        _this.tenantId = "";
-        protobuf_1.proto3.util.initPartial(data, _this);
-        return _this;
+        this.tenantId = "";
+        protobuf_1.proto3.util.initPartial(data, this);
     }
-    TenantServiceAdmitRequest.fromBinary = function (bytes, options) {
+    static fromBinary(bytes, options) {
         return new TenantServiceAdmitRequest().fromBinary(bytes, options);
-    };
-    TenantServiceAdmitRequest.fromJson = function (jsonValue, options) {
+    }
+    static fromJson(jsonValue, options) {
         return new TenantServiceAdmitRequest().fromJson(jsonValue, options);
-    };
-    TenantServiceAdmitRequest.fromJsonString = function (jsonString, options) {
+    }
+    static fromJsonString(jsonString, options) {
         return new TenantServiceAdmitRequest().fromJsonString(jsonString, options);
-    };
-    TenantServiceAdmitRequest.equals = function (a, b) {
+    }
+    static equals(a, b) {
         return protobuf_1.proto3.util.equals(TenantServiceAdmitRequest, a, b);
-    };
-    TenantServiceAdmitRequest.runtime = protobuf_1.proto3;
-    TenantServiceAdmitRequest.typeName = "admin.v1.TenantServiceAdmitRequest";
-    TenantServiceAdmitRequest.fields = protobuf_1.proto3.util.newFieldList(function () { return [
-        { no: 1, name: "tenant_id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    ]; });
-    return TenantServiceAdmitRequest;
-}(protobuf_1.Message));
+    }
+}
 exports.TenantServiceAdmitRequest = TenantServiceAdmitRequest;
+TenantServiceAdmitRequest.runtime = protobuf_1.proto3;
+TenantServiceAdmitRequest.typeName = "admin.v1.TenantServiceAdmitRequest";
+TenantServiceAdmitRequest.fields = protobuf_1.proto3.util.newFieldList(() => [
+    { no: 1, name: "tenant_id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+]);
 /**
  * @generated from message admin.v1.TenantServiceAdmitResponse
  */
-var TenantServiceAdmitResponse = /** @class */ (function (_super) {
-    __extends(TenantServiceAdmitResponse, _super);
-    function TenantServiceAdmitResponse(data) {
-        var _this = _super.call(this) || this;
-        protobuf_1.proto3.util.initPartial(data, _this);
-        return _this;
+class TenantServiceAdmitResponse extends protobuf_1.Message {
+    constructor(data) {
+        super();
+        protobuf_1.proto3.util.initPartial(data, this);
     }
-    TenantServiceAdmitResponse.fromBinary = function (bytes, options) {
+    static fromBinary(bytes, options) {
         return new TenantServiceAdmitResponse().fromBinary(bytes, options);
-    };
-    TenantServiceAdmitResponse.fromJson = function (jsonValue, options) {
+    }
+    static fromJson(jsonValue, options) {
         return new TenantServiceAdmitResponse().fromJson(jsonValue, options);
-    };
-    TenantServiceAdmitResponse.fromJsonString = function (jsonString, options) {
+    }
+    static fromJsonString(jsonString, options) {
         return new TenantServiceAdmitResponse().fromJsonString(jsonString, options);
-    };
-    TenantServiceAdmitResponse.equals = function (a, b) {
+    }
+    static equals(a, b) {
         return protobuf_1.proto3.util.equals(TenantServiceAdmitResponse, a, b);
-    };
-    TenantServiceAdmitResponse.runtime = protobuf_1.proto3;
-    TenantServiceAdmitResponse.typeName = "admin.v1.TenantServiceAdmitResponse";
-    TenantServiceAdmitResponse.fields = protobuf_1.proto3.util.newFieldList(function () { return [
-        { no: 1, name: "tenant", kind: "message", T: tenant_pb_js_1.Tenant },
-    ]; });
-    return TenantServiceAdmitResponse;
-}(protobuf_1.Message));
+    }
+}
 exports.TenantServiceAdmitResponse = TenantServiceAdmitResponse;
+TenantServiceAdmitResponse.runtime = protobuf_1.proto3;
+TenantServiceAdmitResponse.typeName = "admin.v1.TenantServiceAdmitResponse";
+TenantServiceAdmitResponse.fields = protobuf_1.proto3.util.newFieldList(() => [
+    { no: 1, name: "tenant", kind: "message", T: tenant_pb_js_1.Tenant },
+]);

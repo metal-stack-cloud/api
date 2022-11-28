@@ -5,8 +5,8 @@
 // @ts-nocheck
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.TenantService = void 0;
-var tenant_pb_js_1 = require("./tenant_pb.js");
-var protobuf_1 = require("@bufbuild/protobuf");
+const tenant_pb_js_1 = require("./tenant_pb.js");
+const protobuf_1 = require("@bufbuild/protobuf");
 /**
  * @generated from service api.v1.TenantService
  */

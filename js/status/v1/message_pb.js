@@ -3,24 +3,9 @@
 // @generated from file status/v1/message.proto (package status.v1, syntax proto3)
 /* eslint-disable */
 /* @ts-nocheck */
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        if (typeof b !== "function" && b !== null)
-            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ReplyMessage = exports.Message = exports.MessageServiceListResponse = exports.MessageServiceListRequest = exports.MessageKind = void 0;
-var protobuf_1 = require("@bufbuild/protobuf");
+const protobuf_1 = require("@bufbuild/protobuf");
 /**
  * @generated from enum status.v1.MessageKind
  */
@@ -63,162 +48,150 @@ protobuf_1.proto3.util.setEnumType(MessageKind, "status.v1.MessageKind", [
 /**
  * @generated from message status.v1.MessageServiceListRequest
  */
-var MessageServiceListRequest = /** @class */ (function (_super) {
-    __extends(MessageServiceListRequest, _super);
-    function MessageServiceListRequest(data) {
-        var _this = _super.call(this) || this;
-        protobuf_1.proto3.util.initPartial(data, _this);
-        return _this;
+class MessageServiceListRequest extends protobuf_1.Message {
+    constructor(data) {
+        super();
+        protobuf_1.proto3.util.initPartial(data, this);
     }
-    MessageServiceListRequest.fromBinary = function (bytes, options) {
+    static fromBinary(bytes, options) {
         return new MessageServiceListRequest().fromBinary(bytes, options);
-    };
-    MessageServiceListRequest.fromJson = function (jsonValue, options) {
+    }
+    static fromJson(jsonValue, options) {
         return new MessageServiceListRequest().fromJson(jsonValue, options);
-    };
-    MessageServiceListRequest.fromJsonString = function (jsonString, options) {
+    }
+    static fromJsonString(jsonString, options) {
         return new MessageServiceListRequest().fromJsonString(jsonString, options);
-    };
-    MessageServiceListRequest.equals = function (a, b) {
+    }
+    static equals(a, b) {
         return protobuf_1.proto3.util.equals(MessageServiceListRequest, a, b);
-    };
-    MessageServiceListRequest.runtime = protobuf_1.proto3;
-    MessageServiceListRequest.typeName = "status.v1.MessageServiceListRequest";
-    MessageServiceListRequest.fields = protobuf_1.proto3.util.newFieldList(function () { return []; });
-    return MessageServiceListRequest;
-}(protobuf_1.Message));
+    }
+}
 exports.MessageServiceListRequest = MessageServiceListRequest;
+MessageServiceListRequest.runtime = protobuf_1.proto3;
+MessageServiceListRequest.typeName = "status.v1.MessageServiceListRequest";
+MessageServiceListRequest.fields = protobuf_1.proto3.util.newFieldList(() => []);
 /**
  * @generated from message status.v1.MessageServiceListResponse
  */
-var MessageServiceListResponse = /** @class */ (function (_super) {
-    __extends(MessageServiceListResponse, _super);
-    function MessageServiceListResponse(data) {
-        var _this = _super.call(this) || this;
+class MessageServiceListResponse extends protobuf_1.Message {
+    constructor(data) {
+        super();
         /**
          * @generated from field: repeated status.v1.Message items = 1;
          */
-        _this.items = [];
+        this.items = [];
         /**
          * @generated from field: repeated status.v1.Message pinned_items = 2;
          */
-        _this.pinnedItems = [];
-        protobuf_1.proto3.util.initPartial(data, _this);
-        return _this;
+        this.pinnedItems = [];
+        protobuf_1.proto3.util.initPartial(data, this);
     }
-    MessageServiceListResponse.fromBinary = function (bytes, options) {
+    static fromBinary(bytes, options) {
         return new MessageServiceListResponse().fromBinary(bytes, options);
-    };
-    MessageServiceListResponse.fromJson = function (jsonValue, options) {
+    }
+    static fromJson(jsonValue, options) {
         return new MessageServiceListResponse().fromJson(jsonValue, options);
-    };
-    MessageServiceListResponse.fromJsonString = function (jsonString, options) {
+    }
+    static fromJsonString(jsonString, options) {
         return new MessageServiceListResponse().fromJsonString(jsonString, options);
-    };
-    MessageServiceListResponse.equals = function (a, b) {
+    }
+    static equals(a, b) {
         return protobuf_1.proto3.util.equals(MessageServiceListResponse, a, b);
-    };
-    MessageServiceListResponse.runtime = protobuf_1.proto3;
-    MessageServiceListResponse.typeName = "status.v1.MessageServiceListResponse";
-    MessageServiceListResponse.fields = protobuf_1.proto3.util.newFieldList(function () { return [
-        { no: 1, name: "items", kind: "message", T: Message, repeated: true },
-        { no: 2, name: "pinned_items", kind: "message", T: Message, repeated: true },
-    ]; });
-    return MessageServiceListResponse;
-}(protobuf_1.Message));
+    }
+}
 exports.MessageServiceListResponse = MessageServiceListResponse;
+MessageServiceListResponse.runtime = protobuf_1.proto3;
+MessageServiceListResponse.typeName = "status.v1.MessageServiceListResponse";
+MessageServiceListResponse.fields = protobuf_1.proto3.util.newFieldList(() => [
+    { no: 1, name: "items", kind: "message", T: Message, repeated: true },
+    { no: 2, name: "pinned_items", kind: "message", T: Message, repeated: true },
+]);
 /**
  * @generated from message status.v1.Message
  */
-var Message = /** @class */ (function (_super) {
-    __extends(Message, _super);
-    function Message(data) {
-        var _this = _super.call(this) || this;
+class Message extends protobuf_1.Message {
+    constructor(data) {
+        super();
         /**
          * @generated from field: string id = 1;
          */
-        _this.id = "";
+        this.id = "";
         /**
          * @generated from field: string text = 2;
          */
-        _this.text = "";
+        this.text = "";
         /**
          * @generated from field: status.v1.MessageKind kind = 3;
          */
-        _this.kind = MessageKind.UNSPECIFIED;
+        this.kind = MessageKind.UNSPECIFIED;
         /**
          * @generated from field: repeated status.v1.ReplyMessage replies = 5;
          */
-        _this.replies = [];
-        protobuf_1.proto3.util.initPartial(data, _this);
-        return _this;
+        this.replies = [];
+        protobuf_1.proto3.util.initPartial(data, this);
     }
-    Message.fromBinary = function (bytes, options) {
+    static fromBinary(bytes, options) {
         return new Message().fromBinary(bytes, options);
-    };
-    Message.fromJson = function (jsonValue, options) {
+    }
+    static fromJson(jsonValue, options) {
         return new Message().fromJson(jsonValue, options);
-    };
-    Message.fromJsonString = function (jsonString, options) {
+    }
+    static fromJsonString(jsonString, options) {
         return new Message().fromJsonString(jsonString, options);
-    };
-    Message.equals = function (a, b) {
+    }
+    static equals(a, b) {
         return protobuf_1.proto3.util.equals(Message, a, b);
-    };
-    Message.runtime = protobuf_1.proto3;
-    Message.typeName = "status.v1.Message";
-    Message.fields = protobuf_1.proto3.util.newFieldList(function () { return [
-        { no: 1, name: "id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-        { no: 2, name: "text", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-        { no: 3, name: "kind", kind: "enum", T: protobuf_1.proto3.getEnumType(MessageKind) },
-        { no: 4, name: "timestamp", kind: "message", T: protobuf_1.Timestamp },
-        { no: 5, name: "replies", kind: "message", T: ReplyMessage, repeated: true },
-    ]; });
-    return Message;
-}(protobuf_1.Message));
+    }
+}
 exports.Message = Message;
+Message.runtime = protobuf_1.proto3;
+Message.typeName = "status.v1.Message";
+Message.fields = protobuf_1.proto3.util.newFieldList(() => [
+    { no: 1, name: "id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "text", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 3, name: "kind", kind: "enum", T: protobuf_1.proto3.getEnumType(MessageKind) },
+    { no: 4, name: "timestamp", kind: "message", T: protobuf_1.Timestamp },
+    { no: 5, name: "replies", kind: "message", T: ReplyMessage, repeated: true },
+]);
 /**
  * @generated from message status.v1.ReplyMessage
  */
-var ReplyMessage = /** @class */ (function (_super) {
-    __extends(ReplyMessage, _super);
-    function ReplyMessage(data) {
-        var _this = _super.call(this) || this;
+class ReplyMessage extends protobuf_1.Message {
+    constructor(data) {
+        super();
         /**
          * @generated from field: string id = 1;
          */
-        _this.id = "";
+        this.id = "";
         /**
          * @generated from field: string text = 2;
          */
-        _this.text = "";
+        this.text = "";
         /**
          * @generated from field: status.v1.MessageKind kind = 3;
          */
-        _this.kind = MessageKind.UNSPECIFIED;
-        protobuf_1.proto3.util.initPartial(data, _this);
-        return _this;
+        this.kind = MessageKind.UNSPECIFIED;
+        protobuf_1.proto3.util.initPartial(data, this);
     }
-    ReplyMessage.fromBinary = function (bytes, options) {
+    static fromBinary(bytes, options) {
         return new ReplyMessage().fromBinary(bytes, options);
-    };
-    ReplyMessage.fromJson = function (jsonValue, options) {
+    }
+    static fromJson(jsonValue, options) {
         return new ReplyMessage().fromJson(jsonValue, options);
-    };
-    ReplyMessage.fromJsonString = function (jsonString, options) {
+    }
+    static fromJsonString(jsonString, options) {
         return new ReplyMessage().fromJsonString(jsonString, options);
-    };
-    ReplyMessage.equals = function (a, b) {
+    }
+    static equals(a, b) {
         return protobuf_1.proto3.util.equals(ReplyMessage, a, b);
-    };
-    ReplyMessage.runtime = protobuf_1.proto3;
-    ReplyMessage.typeName = "status.v1.ReplyMessage";
-    ReplyMessage.fields = protobuf_1.proto3.util.newFieldList(function () { return [
-        { no: 1, name: "id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-        { no: 2, name: "text", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-        { no: 3, name: "kind", kind: "enum", T: protobuf_1.proto3.getEnumType(MessageKind) },
-        { no: 4, name: "timestamp", kind: "message", T: protobuf_1.Timestamp },
-    ]; });
-    return ReplyMessage;
-}(protobuf_1.Message));
+    }
+}
 exports.ReplyMessage = ReplyMessage;
+ReplyMessage.runtime = protobuf_1.proto3;
+ReplyMessage.typeName = "status.v1.ReplyMessage";
+ReplyMessage.fields = protobuf_1.proto3.util.newFieldList(() => [
+    { no: 1, name: "id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "text", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 3, name: "kind", kind: "enum", T: protobuf_1.proto3.getEnumType(MessageKind) },
+    { no: 4, name: "timestamp", kind: "message", T: protobuf_1.Timestamp },
+]);

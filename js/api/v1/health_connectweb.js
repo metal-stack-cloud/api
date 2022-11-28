@@ -5,8 +5,8 @@
 // @ts-nocheck
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.HealthService = void 0;
-var health_pb_js_1 = require("./health_pb.js");
-var protobuf_1 = require("@bufbuild/protobuf");
+const health_pb_js_1 = require("./health_pb.js");
+const protobuf_1 = require("@bufbuild/protobuf");
 /**
  * @generated from service api.v1.HealthService
  */

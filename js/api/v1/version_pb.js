@@ -3,136 +3,112 @@
 // @generated from file api/v1/version.proto (package api.v1, syntax proto3)
 /* eslint-disable */
 /* @ts-nocheck */
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        if (typeof b !== "function" && b !== null)
-            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.VersionServiceGetResponse = exports.VersionServiceGetRequest = exports.Version = void 0;
-var protobuf_1 = require("@bufbuild/protobuf");
+const protobuf_1 = require("@bufbuild/protobuf");
 /**
  * @generated from message api.v1.Version
  */
-var Version = /** @class */ (function (_super) {
-    __extends(Version, _super);
-    function Version(data) {
-        var _this = _super.call(this) || this;
+class Version extends protobuf_1.Message {
+    constructor(data) {
+        super();
         /**
          * Version of the application
          *
          * @generated from field: string version = 1;
          */
-        _this.version = "";
+        this.version = "";
         /**
          * Revision of the application
          *
          * @generated from field: string revision = 2;
          */
-        _this.revision = "";
+        this.revision = "";
         /**
          * GitSHA1 of the application
          *
          * @generated from field: string git_sha1 = 3;
          */
-        _this.gitSha1 = "";
+        this.gitSha1 = "";
         /**
          * BuildDate of the application
          *
          * @generated from field: string build_date = 4;
          */
-        _this.buildDate = "";
-        protobuf_1.proto3.util.initPartial(data, _this);
-        return _this;
+        this.buildDate = "";
+        protobuf_1.proto3.util.initPartial(data, this);
     }
-    Version.fromBinary = function (bytes, options) {
+    static fromBinary(bytes, options) {
         return new Version().fromBinary(bytes, options);
-    };
-    Version.fromJson = function (jsonValue, options) {
+    }
+    static fromJson(jsonValue, options) {
         return new Version().fromJson(jsonValue, options);
-    };
-    Version.fromJsonString = function (jsonString, options) {
+    }
+    static fromJsonString(jsonString, options) {
         return new Version().fromJsonString(jsonString, options);
-    };
-    Version.equals = function (a, b) {
+    }
+    static equals(a, b) {
         return protobuf_1.proto3.util.equals(Version, a, b);
-    };
-    Version.runtime = protobuf_1.proto3;
-    Version.typeName = "api.v1.Version";
-    Version.fields = protobuf_1.proto3.util.newFieldList(function () { return [
-        { no: 1, name: "version", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-        { no: 2, name: "revision", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-        { no: 3, name: "git_sha1", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-        { no: 4, name: "build_date", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    ]; });
-    return Version;
-}(protobuf_1.Message));
+    }
+}
 exports.Version = Version;
+Version.runtime = protobuf_1.proto3;
+Version.typeName = "api.v1.Version";
+Version.fields = protobuf_1.proto3.util.newFieldList(() => [
+    { no: 1, name: "version", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "revision", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 3, name: "git_sha1", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 4, name: "build_date", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+]);
 /**
  * @generated from message api.v1.VersionServiceGetRequest
  */
-var VersionServiceGetRequest = /** @class */ (function (_super) {
-    __extends(VersionServiceGetRequest, _super);
-    function VersionServiceGetRequest(data) {
-        var _this = _super.call(this) || this;
-        protobuf_1.proto3.util.initPartial(data, _this);
-        return _this;
+class VersionServiceGetRequest extends protobuf_1.Message {
+    constructor(data) {
+        super();
+        protobuf_1.proto3.util.initPartial(data, this);
     }
-    VersionServiceGetRequest.fromBinary = function (bytes, options) {
+    static fromBinary(bytes, options) {
         return new VersionServiceGetRequest().fromBinary(bytes, options);
-    };
-    VersionServiceGetRequest.fromJson = function (jsonValue, options) {
+    }
+    static fromJson(jsonValue, options) {
         return new VersionServiceGetRequest().fromJson(jsonValue, options);
-    };
-    VersionServiceGetRequest.fromJsonString = function (jsonString, options) {
+    }
+    static fromJsonString(jsonString, options) {
         return new VersionServiceGetRequest().fromJsonString(jsonString, options);
-    };
-    VersionServiceGetRequest.equals = function (a, b) {
+    }
+    static equals(a, b) {
         return protobuf_1.proto3.util.equals(VersionServiceGetRequest, a, b);
-    };
-    VersionServiceGetRequest.runtime = protobuf_1.proto3;
-    VersionServiceGetRequest.typeName = "api.v1.VersionServiceGetRequest";
-    VersionServiceGetRequest.fields = protobuf_1.proto3.util.newFieldList(function () { return []; });
-    return VersionServiceGetRequest;
-}(protobuf_1.Message));
+    }
+}
 exports.VersionServiceGetRequest = VersionServiceGetRequest;
+VersionServiceGetRequest.runtime = protobuf_1.proto3;
+VersionServiceGetRequest.typeName = "api.v1.VersionServiceGetRequest";
+VersionServiceGetRequest.fields = protobuf_1.proto3.util.newFieldList(() => []);
 /**
  * @generated from message api.v1.VersionServiceGetResponse
  */
-var VersionServiceGetResponse = /** @class */ (function (_super) {
-    __extends(VersionServiceGetResponse, _super);
-    function VersionServiceGetResponse(data) {
-        var _this = _super.call(this) || this;
-        protobuf_1.proto3.util.initPartial(data, _this);
-        return _this;
+class VersionServiceGetResponse extends protobuf_1.Message {
+    constructor(data) {
+        super();
+        protobuf_1.proto3.util.initPartial(data, this);
     }
-    VersionServiceGetResponse.fromBinary = function (bytes, options) {
+    static fromBinary(bytes, options) {
         return new VersionServiceGetResponse().fromBinary(bytes, options);
-    };
-    VersionServiceGetResponse.fromJson = function (jsonValue, options) {
+    }
+    static fromJson(jsonValue, options) {
         return new VersionServiceGetResponse().fromJson(jsonValue, options);
-    };
-    VersionServiceGetResponse.fromJsonString = function (jsonString, options) {
+    }
+    static fromJsonString(jsonString, options) {
         return new VersionServiceGetResponse().fromJsonString(jsonString, options);
-    };
-    VersionServiceGetResponse.equals = function (a, b) {
+    }
+    static equals(a, b) {
         return protobuf_1.proto3.util.equals(VersionServiceGetResponse, a, b);
-    };
-    VersionServiceGetResponse.runtime = protobuf_1.proto3;
-    VersionServiceGetResponse.typeName = "api.v1.VersionServiceGetResponse";
-    VersionServiceGetResponse.fields = protobuf_1.proto3.util.newFieldList(function () { return [
-        { no: 1, name: "version", kind: "message", T: Version },
-    ]; });
-    return VersionServiceGetResponse;
-}(protobuf_1.Message));
+    }
+}
 exports.VersionServiceGetResponse = VersionServiceGetResponse;
+VersionServiceGetResponse.runtime = protobuf_1.proto3;
+VersionServiceGetResponse.typeName = "api.v1.VersionServiceGetResponse";
+VersionServiceGetResponse.fields = protobuf_1.proto3.util.newFieldList(() => [
+    { no: 1, name: "version", kind: "message", T: Version },
+]);

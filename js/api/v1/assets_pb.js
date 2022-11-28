@@ -3,397 +3,358 @@
 // @generated from file api/v1/assets.proto (package api.v1, syntax proto3)
 /* eslint-disable */
 /* @ts-nocheck */
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        if (typeof b !== "function" && b !== null)
-            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AssetServiceListResponse = exports.AssetServiceListRequest = exports.AssetDefaults = exports.Kubernetes = exports.MachineType = exports.Partition = exports.Region = exports.Asset = void 0;
-var protobuf_1 = require("@bufbuild/protobuf");
+const protobuf_1 = require("@bufbuild/protobuf");
 /**
  * Types
  *
  * @generated from message api.v1.Asset
  */
-var Asset = /** @class */ (function (_super) {
-    __extends(Asset, _super);
-    function Asset(data) {
-        var _this = _super.call(this) || this;
+class Asset extends protobuf_1.Message {
+    constructor(data) {
+        super();
         /**
          * @generated from field: map<string, api.v1.MachineType> machine_types = 2;
          */
-        _this.machineTypes = {};
+        this.machineTypes = {};
         /**
          * @generated from field: repeated api.v1.Kubernetes kubernetes = 3;
          */
-        _this.kubernetes = [];
+        this.kubernetes = [];
         /**
          * @generated from field: string default_network = 4;
          */
-        _this.defaultNetwork = "";
-        protobuf_1.proto3.util.initPartial(data, _this);
-        return _this;
+        this.defaultNetwork = "";
+        protobuf_1.proto3.util.initPartial(data, this);
     }
-    Asset.fromBinary = function (bytes, options) {
+    static fromBinary(bytes, options) {
         return new Asset().fromBinary(bytes, options);
-    };
-    Asset.fromJson = function (jsonValue, options) {
+    }
+    static fromJson(jsonValue, options) {
         return new Asset().fromJson(jsonValue, options);
-    };
-    Asset.fromJsonString = function (jsonString, options) {
+    }
+    static fromJsonString(jsonString, options) {
         return new Asset().fromJsonString(jsonString, options);
-    };
-    Asset.equals = function (a, b) {
+    }
+    static equals(a, b) {
         return protobuf_1.proto3.util.equals(Asset, a, b);
-    };
-    Asset.runtime = protobuf_1.proto3;
-    Asset.typeName = "api.v1.Asset";
-    Asset.fields = protobuf_1.proto3.util.newFieldList(function () { return [
-        { no: 1, name: "region", kind: "message", T: Region },
-        { no: 2, name: "machine_types", kind: "map", K: 9 /* ScalarType.STRING */, V: { kind: "message", T: MachineType } },
-        { no: 3, name: "kubernetes", kind: "message", T: Kubernetes, repeated: true },
-        { no: 4, name: "default_network", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    ]; });
-    return Asset;
-}(protobuf_1.Message));
+    }
+}
 exports.Asset = Asset;
+Asset.runtime = protobuf_1.proto3;
+Asset.typeName = "api.v1.Asset";
+Asset.fields = protobuf_1.proto3.util.newFieldList(() => [
+    { no: 1, name: "region", kind: "message", T: Region },
+    { no: 2, name: "machine_types", kind: "map", K: 9 /* ScalarType.STRING */, V: { kind: "message", T: MachineType } },
+    { no: 3, name: "kubernetes", kind: "message", T: Kubernetes, repeated: true },
+    { no: 4, name: "default_network", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+]);
 /**
  * @generated from message api.v1.Region
  */
-var Region = /** @class */ (function (_super) {
-    __extends(Region, _super);
-    function Region(data) {
-        var _this = _super.call(this) || this;
+class Region extends protobuf_1.Message {
+    constructor(data) {
+        super();
         /**
          * @generated from field: string id = 1;
          */
-        _this.id = "";
+        this.id = "";
         /**
          * @generated from field: string name = 2;
          */
-        _this.name = "";
+        this.name = "";
         /**
          * @generated from field: string address = 3;
          */
-        _this.address = "";
+        this.address = "";
         /**
          * @generated from field: bool active = 4;
          */
-        _this.active = false;
+        this.active = false;
         /**
          * @generated from field: map<string, api.v1.Partition> partitions = 5;
          */
-        _this.partitions = {};
+        this.partitions = {};
         /**
          * @generated from field: repeated string networks = 7;
          */
-        _this.networks = [];
-        protobuf_1.proto3.util.initPartial(data, _this);
-        return _this;
+        this.networks = [];
+        protobuf_1.proto3.util.initPartial(data, this);
     }
-    Region.fromBinary = function (bytes, options) {
+    static fromBinary(bytes, options) {
         return new Region().fromBinary(bytes, options);
-    };
-    Region.fromJson = function (jsonValue, options) {
+    }
+    static fromJson(jsonValue, options) {
         return new Region().fromJson(jsonValue, options);
-    };
-    Region.fromJsonString = function (jsonString, options) {
+    }
+    static fromJsonString(jsonString, options) {
         return new Region().fromJsonString(jsonString, options);
-    };
-    Region.equals = function (a, b) {
+    }
+    static equals(a, b) {
         return protobuf_1.proto3.util.equals(Region, a, b);
-    };
-    Region.runtime = protobuf_1.proto3;
-    Region.typeName = "api.v1.Region";
-    Region.fields = protobuf_1.proto3.util.newFieldList(function () { return [
-        { no: 1, name: "id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-        { no: 2, name: "name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-        { no: 3, name: "address", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-        { no: 4, name: "active", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
-        { no: 5, name: "partitions", kind: "map", K: 9 /* ScalarType.STRING */, V: { kind: "message", T: Partition } },
-        { no: 6, name: "defaults", kind: "message", T: AssetDefaults },
-        { no: 7, name: "networks", kind: "scalar", T: 9 /* ScalarType.STRING */, repeated: true },
-    ]; });
-    return Region;
-}(protobuf_1.Message));
+    }
+}
 exports.Region = Region;
+Region.runtime = protobuf_1.proto3;
+Region.typeName = "api.v1.Region";
+Region.fields = protobuf_1.proto3.util.newFieldList(() => [
+    { no: 1, name: "id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 3, name: "address", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 4, name: "active", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
+    { no: 5, name: "partitions", kind: "map", K: 9 /* ScalarType.STRING */, V: { kind: "message", T: Partition } },
+    { no: 6, name: "defaults", kind: "message", T: AssetDefaults },
+    { no: 7, name: "networks", kind: "scalar", T: 9 /* ScalarType.STRING */, repeated: true },
+]);
 /**
  * @generated from message api.v1.Partition
  */
-var Partition = /** @class */ (function (_super) {
-    __extends(Partition, _super);
-    function Partition(data) {
-        var _this = _super.call(this) || this;
+class Partition extends protobuf_1.Message {
+    constructor(data) {
+        super();
         /**
          * @generated from field: string id = 1;
          */
-        _this.id = "";
+        this.id = "";
         /**
          * @generated from field: string name = 2;
          */
-        _this.name = "";
+        this.name = "";
         /**
          * @generated from field: string address = 3;
          */
-        _this.address = "";
+        this.address = "";
         /**
          * @generated from field: bool active = 4;
          */
-        _this.active = false;
-        protobuf_1.proto3.util.initPartial(data, _this);
-        return _this;
+        this.active = false;
+        protobuf_1.proto3.util.initPartial(data, this);
     }
-    Partition.fromBinary = function (bytes, options) {
+    static fromBinary(bytes, options) {
         return new Partition().fromBinary(bytes, options);
-    };
-    Partition.fromJson = function (jsonValue, options) {
+    }
+    static fromJson(jsonValue, options) {
         return new Partition().fromJson(jsonValue, options);
-    };
-    Partition.fromJsonString = function (jsonString, options) {
+    }
+    static fromJsonString(jsonString, options) {
         return new Partition().fromJsonString(jsonString, options);
-    };
-    Partition.equals = function (a, b) {
+    }
+    static equals(a, b) {
         return protobuf_1.proto3.util.equals(Partition, a, b);
-    };
-    Partition.runtime = protobuf_1.proto3;
-    Partition.typeName = "api.v1.Partition";
-    Partition.fields = protobuf_1.proto3.util.newFieldList(function () { return [
-        { no: 1, name: "id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-        { no: 2, name: "name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-        { no: 3, name: "address", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-        { no: 4, name: "active", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
-    ]; });
-    return Partition;
-}(protobuf_1.Message));
+    }
+}
 exports.Partition = Partition;
+Partition.runtime = protobuf_1.proto3;
+Partition.typeName = "api.v1.Partition";
+Partition.fields = protobuf_1.proto3.util.newFieldList(() => [
+    { no: 1, name: "id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 3, name: "address", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 4, name: "active", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
+]);
 /**
  * @generated from message api.v1.MachineType
  */
-var MachineType = /** @class */ (function (_super) {
-    __extends(MachineType, _super);
-    function MachineType(data) {
-        var _this = _super.call(this) || this;
+class MachineType extends protobuf_1.Message {
+    constructor(data) {
+        super();
         /**
          * @generated from field: string id = 1;
          */
-        _this.id = "";
+        this.id = "";
         /**
          * @generated from field: string name = 2;
          */
-        _this.name = "";
+        this.name = "";
         /**
          * @generated from field: uint32 cpus = 3;
          */
-        _this.cpus = 0;
+        this.cpus = 0;
         /**
          * @generated from field: uint64 memory = 4;
          */
-        _this.memory = protobuf_1.protoInt64.zero;
+        this.memory = protobuf_1.protoInt64.zero;
         /**
          * @generated from field: uint64 storage = 5;
          */
-        _this.storage = protobuf_1.protoInt64.zero;
-        protobuf_1.proto3.util.initPartial(data, _this);
-        return _this;
+        this.storage = protobuf_1.protoInt64.zero;
+        protobuf_1.proto3.util.initPartial(data, this);
     }
-    MachineType.fromBinary = function (bytes, options) {
+    static fromBinary(bytes, options) {
         return new MachineType().fromBinary(bytes, options);
-    };
-    MachineType.fromJson = function (jsonValue, options) {
+    }
+    static fromJson(jsonValue, options) {
         return new MachineType().fromJson(jsonValue, options);
-    };
-    MachineType.fromJsonString = function (jsonString, options) {
+    }
+    static fromJsonString(jsonString, options) {
         return new MachineType().fromJsonString(jsonString, options);
-    };
-    MachineType.equals = function (a, b) {
+    }
+    static equals(a, b) {
         return protobuf_1.proto3.util.equals(MachineType, a, b);
-    };
-    MachineType.runtime = protobuf_1.proto3;
-    MachineType.typeName = "api.v1.MachineType";
-    MachineType.fields = protobuf_1.proto3.util.newFieldList(function () { return [
-        { no: 1, name: "id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-        { no: 2, name: "name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-        { no: 3, name: "cpus", kind: "scalar", T: 13 /* ScalarType.UINT32 */ },
-        { no: 4, name: "memory", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
-        { no: 5, name: "storage", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
-    ]; });
-    return MachineType;
-}(protobuf_1.Message));
+    }
+}
 exports.MachineType = MachineType;
+MachineType.runtime = protobuf_1.proto3;
+MachineType.typeName = "api.v1.MachineType";
+MachineType.fields = protobuf_1.proto3.util.newFieldList(() => [
+    { no: 1, name: "id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 3, name: "cpus", kind: "scalar", T: 13 /* ScalarType.UINT32 */ },
+    { no: 4, name: "memory", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
+    { no: 5, name: "storage", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
+]);
 /**
  * @generated from message api.v1.Kubernetes
  */
-var Kubernetes = /** @class */ (function (_super) {
-    __extends(Kubernetes, _super);
-    function Kubernetes(data) {
-        var _this = _super.call(this) || this;
+class Kubernetes extends protobuf_1.Message {
+    constructor(data) {
+        super();
         /**
          * @generated from field: string version = 1;
          */
-        _this.version = "";
-        protobuf_1.proto3.util.initPartial(data, _this);
-        return _this;
+        this.version = "";
+        protobuf_1.proto3.util.initPartial(data, this);
     }
-    Kubernetes.fromBinary = function (bytes, options) {
+    static fromBinary(bytes, options) {
         return new Kubernetes().fromBinary(bytes, options);
-    };
-    Kubernetes.fromJson = function (jsonValue, options) {
+    }
+    static fromJson(jsonValue, options) {
         return new Kubernetes().fromJson(jsonValue, options);
-    };
-    Kubernetes.fromJsonString = function (jsonString, options) {
+    }
+    static fromJsonString(jsonString, options) {
         return new Kubernetes().fromJsonString(jsonString, options);
-    };
-    Kubernetes.equals = function (a, b) {
+    }
+    static equals(a, b) {
         return protobuf_1.proto3.util.equals(Kubernetes, a, b);
-    };
-    Kubernetes.runtime = protobuf_1.proto3;
-    Kubernetes.typeName = "api.v1.Kubernetes";
-    Kubernetes.fields = protobuf_1.proto3.util.newFieldList(function () { return [
-        { no: 1, name: "version", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    ]; });
-    return Kubernetes;
-}(protobuf_1.Message));
+    }
+}
 exports.Kubernetes = Kubernetes;
+Kubernetes.runtime = protobuf_1.proto3;
+Kubernetes.typeName = "api.v1.Kubernetes";
+Kubernetes.fields = protobuf_1.proto3.util.newFieldList(() => [
+    { no: 1, name: "version", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+]);
 /**
  * @generated from message api.v1.AssetDefaults
  */
-var AssetDefaults = /** @class */ (function (_super) {
-    __extends(AssetDefaults, _super);
-    function AssetDefaults(data) {
-        var _this = _super.call(this) || this;
+class AssetDefaults extends protobuf_1.Message {
+    constructor(data) {
+        super();
         /**
          * @generated from field: string machine_type = 1;
          */
-        _this.machineType = "";
+        this.machineType = "";
         /**
          * @generated from field: string kubernetes_version = 2;
          */
-        _this.kubernetesVersion = "";
+        this.kubernetesVersion = "";
         /**
          * @generated from field: uint32 worker_min = 3;
          */
-        _this.workerMin = 0;
+        this.workerMin = 0;
         /**
          * @generated from field: uint32 worker_max = 4;
          */
-        _this.workerMax = 0;
+        this.workerMax = 0;
         /**
          * @generated from field: uint32 maxsurge = 5;
          */
-        _this.maxsurge = 0;
+        this.maxsurge = 0;
         /**
          * @generated from field: uint32 maxunavailable = 6;
          */
-        _this.maxunavailable = 0;
+        this.maxunavailable = 0;
         /**
          * @generated from field: string partition = 7;
          */
-        _this.partition = "";
-        protobuf_1.proto3.util.initPartial(data, _this);
-        return _this;
+        this.partition = "";
+        protobuf_1.proto3.util.initPartial(data, this);
     }
-    AssetDefaults.fromBinary = function (bytes, options) {
+    static fromBinary(bytes, options) {
         return new AssetDefaults().fromBinary(bytes, options);
-    };
-    AssetDefaults.fromJson = function (jsonValue, options) {
+    }
+    static fromJson(jsonValue, options) {
         return new AssetDefaults().fromJson(jsonValue, options);
-    };
-    AssetDefaults.fromJsonString = function (jsonString, options) {
+    }
+    static fromJsonString(jsonString, options) {
         return new AssetDefaults().fromJsonString(jsonString, options);
-    };
-    AssetDefaults.equals = function (a, b) {
+    }
+    static equals(a, b) {
         return protobuf_1.proto3.util.equals(AssetDefaults, a, b);
-    };
-    AssetDefaults.runtime = protobuf_1.proto3;
-    AssetDefaults.typeName = "api.v1.AssetDefaults";
-    AssetDefaults.fields = protobuf_1.proto3.util.newFieldList(function () { return [
-        { no: 1, name: "machine_type", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-        { no: 2, name: "kubernetes_version", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-        { no: 3, name: "worker_min", kind: "scalar", T: 13 /* ScalarType.UINT32 */ },
-        { no: 4, name: "worker_max", kind: "scalar", T: 13 /* ScalarType.UINT32 */ },
-        { no: 5, name: "maxsurge", kind: "scalar", T: 13 /* ScalarType.UINT32 */ },
-        { no: 6, name: "maxunavailable", kind: "scalar", T: 13 /* ScalarType.UINT32 */ },
-        { no: 7, name: "partition", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    ]; });
-    return AssetDefaults;
-}(protobuf_1.Message));
+    }
+}
 exports.AssetDefaults = AssetDefaults;
+AssetDefaults.runtime = protobuf_1.proto3;
+AssetDefaults.typeName = "api.v1.AssetDefaults";
+AssetDefaults.fields = protobuf_1.proto3.util.newFieldList(() => [
+    { no: 1, name: "machine_type", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "kubernetes_version", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 3, name: "worker_min", kind: "scalar", T: 13 /* ScalarType.UINT32 */ },
+    { no: 4, name: "worker_max", kind: "scalar", T: 13 /* ScalarType.UINT32 */ },
+    { no: 5, name: "maxsurge", kind: "scalar", T: 13 /* ScalarType.UINT32 */ },
+    { no: 6, name: "maxunavailable", kind: "scalar", T: 13 /* ScalarType.UINT32 */ },
+    { no: 7, name: "partition", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+]);
 /**
  * Requests
  *
  * @generated from message api.v1.AssetServiceListRequest
  */
-var AssetServiceListRequest = /** @class */ (function (_super) {
-    __extends(AssetServiceListRequest, _super);
-    function AssetServiceListRequest(data) {
-        var _this = _super.call(this) || this;
-        protobuf_1.proto3.util.initPartial(data, _this);
-        return _this;
+class AssetServiceListRequest extends protobuf_1.Message {
+    constructor(data) {
+        super();
+        protobuf_1.proto3.util.initPartial(data, this);
     }
-    AssetServiceListRequest.fromBinary = function (bytes, options) {
+    static fromBinary(bytes, options) {
         return new AssetServiceListRequest().fromBinary(bytes, options);
-    };
-    AssetServiceListRequest.fromJson = function (jsonValue, options) {
+    }
+    static fromJson(jsonValue, options) {
         return new AssetServiceListRequest().fromJson(jsonValue, options);
-    };
-    AssetServiceListRequest.fromJsonString = function (jsonString, options) {
+    }
+    static fromJsonString(jsonString, options) {
         return new AssetServiceListRequest().fromJsonString(jsonString, options);
-    };
-    AssetServiceListRequest.equals = function (a, b) {
+    }
+    static equals(a, b) {
         return protobuf_1.proto3.util.equals(AssetServiceListRequest, a, b);
-    };
-    AssetServiceListRequest.runtime = protobuf_1.proto3;
-    AssetServiceListRequest.typeName = "api.v1.AssetServiceListRequest";
-    AssetServiceListRequest.fields = protobuf_1.proto3.util.newFieldList(function () { return []; });
-    return AssetServiceListRequest;
-}(protobuf_1.Message));
+    }
+}
 exports.AssetServiceListRequest = AssetServiceListRequest;
+AssetServiceListRequest.runtime = protobuf_1.proto3;
+AssetServiceListRequest.typeName = "api.v1.AssetServiceListRequest";
+AssetServiceListRequest.fields = protobuf_1.proto3.util.newFieldList(() => []);
 /**
  * Responses
  *
  * @generated from message api.v1.AssetServiceListResponse
  */
-var AssetServiceListResponse = /** @class */ (function (_super) {
-    __extends(AssetServiceListResponse, _super);
-    function AssetServiceListResponse(data) {
-        var _this = _super.call(this) || this;
+class AssetServiceListResponse extends protobuf_1.Message {
+    constructor(data) {
+        super();
         /**
          * assets maps region ids to assets
          *
          * @generated from field: map<string, api.v1.Asset> assets = 1;
          */
-        _this.assets = {};
-        protobuf_1.proto3.util.initPartial(data, _this);
-        return _this;
+        this.assets = {};
+        protobuf_1.proto3.util.initPartial(data, this);
     }
-    AssetServiceListResponse.fromBinary = function (bytes, options) {
+    static fromBinary(bytes, options) {
         return new AssetServiceListResponse().fromBinary(bytes, options);
-    };
-    AssetServiceListResponse.fromJson = function (jsonValue, options) {
+    }
+    static fromJson(jsonValue, options) {
         return new AssetServiceListResponse().fromJson(jsonValue, options);
-    };
-    AssetServiceListResponse.fromJsonString = function (jsonString, options) {
+    }
+    static fromJsonString(jsonString, options) {
         return new AssetServiceListResponse().fromJsonString(jsonString, options);
-    };
-    AssetServiceListResponse.equals = function (a, b) {
+    }
+    static equals(a, b) {
         return protobuf_1.proto3.util.equals(AssetServiceListResponse, a, b);
-    };
-    AssetServiceListResponse.runtime = protobuf_1.proto3;
-    AssetServiceListResponse.typeName = "api.v1.AssetServiceListResponse";
-    AssetServiceListResponse.fields = protobuf_1.proto3.util.newFieldList(function () { return [
-        { no: 1, name: "assets", kind: "map", K: 9 /* ScalarType.STRING */, V: { kind: "message", T: Asset } },
-    ]; });
-    return AssetServiceListResponse;
-}(protobuf_1.Message));
+    }
+}
 exports.AssetServiceListResponse = AssetServiceListResponse;
+AssetServiceListResponse.runtime = protobuf_1.proto3;
+AssetServiceListResponse.typeName = "api.v1.AssetServiceListResponse";
+AssetServiceListResponse.fields = protobuf_1.proto3.util.newFieldList(() => [
+    { no: 1, name: "assets", kind: "map", K: 9 /* ScalarType.STRING */, V: { kind: "message", T: Asset } },
+]);

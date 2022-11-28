@@ -5,8 +5,8 @@
 // @ts-nocheck
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AssetService = void 0;
-var assets_pb_js_1 = require("./assets_pb.js");
-var protobuf_1 = require("@bufbuild/protobuf");
+const assets_pb_js_1 = require("./assets_pb.js");
+const protobuf_1 = require("@bufbuild/protobuf");
 /**
  * @generated from service api.v1.AssetService
  */
