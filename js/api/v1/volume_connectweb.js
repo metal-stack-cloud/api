@@ -5,8 +5,8 @@
 // @ts-nocheck
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.SnapshotService = exports.VolumeService = void 0;
-var volume_pb_js_1 = require("./volume_pb.js");
-var protobuf_1 = require("@bufbuild/protobuf");
+const volume_pb_js_1 = require("./volume_pb.js");
+const protobuf_1 = require("@bufbuild/protobuf");
 /**
  * @generated from service api.v1.VolumeService
  */

@@ -5,8 +5,8 @@
 // @ts-nocheck
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.PaymentService = void 0;
-var payment_pb_js_1 = require("./payment_pb.js");
-var protobuf_1 = require("@bufbuild/protobuf");
+const payment_pb_js_1 = require("./payment_pb.js");
+const protobuf_1 = require("@bufbuild/protobuf");
 /**
  * @generated from service api.v1.PaymentService
  */

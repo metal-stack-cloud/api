@@ -5,8 +5,8 @@
 // @ts-nocheck
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.IPService = void 0;
-var ip_pb_js_1 = require("./ip_pb.js");
-var protobuf_1 = require("@bufbuild/protobuf");
+const ip_pb_js_1 = require("./ip_pb.js");
+const protobuf_1 = require("@bufbuild/protobuf");
 /**
  * @generated from service api.v1.IPService
  */

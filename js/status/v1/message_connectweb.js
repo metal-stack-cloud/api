@@ -5,8 +5,8 @@
 // @ts-nocheck
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.MessageService = void 0;
-var message_pb_js_1 = require("./message_pb.js");
-var protobuf_1 = require("@bufbuild/protobuf");
+const message_pb_js_1 = require("./message_pb.js");
+const protobuf_1 = require("@bufbuild/protobuf");
 /**
  * @generated from service status.v1.MessageService
  */

@@ -3,824 +3,749 @@
 // @generated from file api/v1/cluster.proto (package api.v1, syntax proto3)
 /* eslint-disable */
 /* @ts-nocheck */
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        if (typeof b !== "function" && b !== null)
-            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ClusterServiceWatchStatusResponse = exports.ClusterServiceListResponse = exports.ClusterServiceUpdateResponse = exports.ClusterServiceDeleteResponse = exports.ClusterServiceGetCredentialsResponse = exports.ClusterServiceGetResponse = exports.ClusterServiceCreateResponse = exports.ClusterStatus = exports.ClusterServiceWatchStatusRequest = exports.ClusterServiceDeleteRequest = exports.ClusterServiceUpdateRequest = exports.ClusterServiceCreateRequest = exports.ClusterServiceListRequest = exports.ClusterServiceGetCredentialsRequest = exports.ClusterServiceGetRequest = exports.WorkerUpdate = exports.Worker = exports.Maintenance = exports.KubernetesSpec = exports.Cluster = void 0;
-var protobuf_1 = require("@bufbuild/protobuf");
+const protobuf_1 = require("@bufbuild/protobuf");
 /**
  * Types
  *
  * @generated from message api.v1.Cluster
  */
-var Cluster = /** @class */ (function (_super) {
-    __extends(Cluster, _super);
-    function Cluster(data) {
-        var _this = _super.call(this) || this;
+class Cluster extends protobuf_1.Message {
+    constructor(data) {
+        super();
         /**
          * @generated from field: string uuid = 1;
          */
-        _this.uuid = "";
+        this.uuid = "";
         /**
          * @generated from field: string name = 2;
          */
-        _this.name = "";
+        this.name = "";
         /**
          * @generated from field: string project = 3;
          */
-        _this.project = "";
+        this.project = "";
         /**
          * partition is part of a region
          *
          * @generated from field: string partition = 4;
          */
-        _this.partition = "";
+        this.partition = "";
         /**
          * @generated from field: repeated api.v1.Worker workers = 6;
          */
-        _this.workers = [];
-        protobuf_1.proto3.util.initPartial(data, _this);
-        return _this;
+        this.workers = [];
+        protobuf_1.proto3.util.initPartial(data, this);
     }
-    Cluster.fromBinary = function (bytes, options) {
+    static fromBinary(bytes, options) {
         return new Cluster().fromBinary(bytes, options);
-    };
-    Cluster.fromJson = function (jsonValue, options) {
+    }
+    static fromJson(jsonValue, options) {
         return new Cluster().fromJson(jsonValue, options);
-    };
-    Cluster.fromJsonString = function (jsonString, options) {
+    }
+    static fromJsonString(jsonString, options) {
         return new Cluster().fromJsonString(jsonString, options);
-    };
-    Cluster.equals = function (a, b) {
+    }
+    static equals(a, b) {
         return protobuf_1.proto3.util.equals(Cluster, a, b);
-    };
-    Cluster.runtime = protobuf_1.proto3;
-    Cluster.typeName = "api.v1.Cluster";
-    Cluster.fields = protobuf_1.proto3.util.newFieldList(function () { return [
-        { no: 1, name: "uuid", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-        { no: 2, name: "name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-        { no: 3, name: "project", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-        { no: 4, name: "partition", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-        { no: 5, name: "kubernetes", kind: "message", T: KubernetesSpec },
-        { no: 6, name: "workers", kind: "message", T: Worker, repeated: true },
-        { no: 7, name: "maintenance", kind: "message", T: Maintenance },
-        { no: 10, name: "created_at", kind: "message", T: protobuf_1.Timestamp },
-        { no: 11, name: "updated_at", kind: "message", T: protobuf_1.Timestamp },
-        { no: 12, name: "deleted_at", kind: "message", T: protobuf_1.Timestamp },
-        { no: 20, name: "status", kind: "message", T: ClusterStatus },
-    ]; });
-    return Cluster;
-}(protobuf_1.Message));
+    }
+}
 exports.Cluster = Cluster;
+Cluster.runtime = protobuf_1.proto3;
+Cluster.typeName = "api.v1.Cluster";
+Cluster.fields = protobuf_1.proto3.util.newFieldList(() => [
+    { no: 1, name: "uuid", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 3, name: "project", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 4, name: "partition", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 5, name: "kubernetes", kind: "message", T: KubernetesSpec },
+    { no: 6, name: "workers", kind: "message", T: Worker, repeated: true },
+    { no: 7, name: "maintenance", kind: "message", T: Maintenance },
+    { no: 10, name: "created_at", kind: "message", T: protobuf_1.Timestamp },
+    { no: 11, name: "updated_at", kind: "message", T: protobuf_1.Timestamp },
+    { no: 12, name: "deleted_at", kind: "message", T: protobuf_1.Timestamp },
+    { no: 20, name: "status", kind: "message", T: ClusterStatus },
+]);
 /**
  * @generated from message api.v1.KubernetesSpec
  */
-var KubernetesSpec = /** @class */ (function (_super) {
-    __extends(KubernetesSpec, _super);
-    function KubernetesSpec(data) {
-        var _this = _super.call(this) || this;
+class KubernetesSpec extends protobuf_1.Message {
+    constructor(data) {
+        super();
         /**
          * @generated from field: string version = 1;
          */
-        _this.version = "";
-        protobuf_1.proto3.util.initPartial(data, _this);
-        return _this;
+        this.version = "";
+        protobuf_1.proto3.util.initPartial(data, this);
     }
-    KubernetesSpec.fromBinary = function (bytes, options) {
+    static fromBinary(bytes, options) {
         return new KubernetesSpec().fromBinary(bytes, options);
-    };
-    KubernetesSpec.fromJson = function (jsonValue, options) {
+    }
+    static fromJson(jsonValue, options) {
         return new KubernetesSpec().fromJson(jsonValue, options);
-    };
-    KubernetesSpec.fromJsonString = function (jsonString, options) {
+    }
+    static fromJsonString(jsonString, options) {
         return new KubernetesSpec().fromJsonString(jsonString, options);
-    };
-    KubernetesSpec.equals = function (a, b) {
+    }
+    static equals(a, b) {
         return protobuf_1.proto3.util.equals(KubernetesSpec, a, b);
-    };
-    KubernetesSpec.runtime = protobuf_1.proto3;
-    KubernetesSpec.typeName = "api.v1.KubernetesSpec";
-    KubernetesSpec.fields = protobuf_1.proto3.util.newFieldList(function () { return [
-        { no: 1, name: "version", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    ]; });
-    return KubernetesSpec;
-}(protobuf_1.Message));
+    }
+}
 exports.KubernetesSpec = KubernetesSpec;
+KubernetesSpec.runtime = protobuf_1.proto3;
+KubernetesSpec.typeName = "api.v1.KubernetesSpec";
+KubernetesSpec.fields = protobuf_1.proto3.util.newFieldList(() => [
+    { no: 1, name: "version", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+]);
 /**
  * @generated from message api.v1.Maintenance
  */
-var Maintenance = /** @class */ (function (_super) {
-    __extends(Maintenance, _super);
-    function Maintenance(data) {
-        var _this = _super.call(this) || this;
-        protobuf_1.proto3.util.initPartial(data, _this);
-        return _this;
+class Maintenance extends protobuf_1.Message {
+    constructor(data) {
+        super();
+        protobuf_1.proto3.util.initPartial(data, this);
     }
-    Maintenance.fromBinary = function (bytes, options) {
+    static fromBinary(bytes, options) {
         return new Maintenance().fromBinary(bytes, options);
-    };
-    Maintenance.fromJson = function (jsonValue, options) {
+    }
+    static fromJson(jsonValue, options) {
         return new Maintenance().fromJson(jsonValue, options);
-    };
-    Maintenance.fromJsonString = function (jsonString, options) {
+    }
+    static fromJsonString(jsonString, options) {
         return new Maintenance().fromJsonString(jsonString, options);
-    };
-    Maintenance.equals = function (a, b) {
+    }
+    static equals(a, b) {
         return protobuf_1.proto3.util.equals(Maintenance, a, b);
-    };
-    Maintenance.runtime = protobuf_1.proto3;
-    Maintenance.typeName = "api.v1.Maintenance";
-    Maintenance.fields = protobuf_1.proto3.util.newFieldList(function () { return [
-        { no: 1, name: "kubernetes_autoupdate", kind: "scalar", T: 8 /* ScalarType.BOOL */, opt: true },
-        { no: 2, name: "machineimage_autoupdate", kind: "scalar", T: 8 /* ScalarType.BOOL */, opt: true },
-    ]; });
-    return Maintenance;
-}(protobuf_1.Message));
+    }
+}
 exports.Maintenance = Maintenance;
+Maintenance.runtime = protobuf_1.proto3;
+Maintenance.typeName = "api.v1.Maintenance";
+Maintenance.fields = protobuf_1.proto3.util.newFieldList(() => [
+    { no: 1, name: "kubernetes_autoupdate", kind: "scalar", T: 8 /* ScalarType.BOOL */, opt: true },
+    { no: 2, name: "machineimage_autoupdate", kind: "scalar", T: 8 /* ScalarType.BOOL */, opt: true },
+]);
 /**
  * @generated from message api.v1.Worker
  */
-var Worker = /** @class */ (function (_super) {
-    __extends(Worker, _super);
-    function Worker(data) {
-        var _this = _super.call(this) || this;
+class Worker extends protobuf_1.Message {
+    constructor(data) {
+        super();
         /**
          * @generated from field: string name = 1;
          */
-        _this.name = "";
+        this.name = "";
         /**
          * @generated from field: string machine_type = 2;
          */
-        _this.machineType = "";
+        this.machineType = "";
         /**
          * @generated from field: uint32 minsize = 3;
          */
-        _this.minsize = 0;
+        this.minsize = 0;
         /**
          * @generated from field: uint32 maxsize = 4;
          */
-        _this.maxsize = 0;
+        this.maxsize = 0;
         /**
          * @generated from field: uint32 maxsurge = 5;
          */
-        _this.maxsurge = 0;
+        this.maxsurge = 0;
         /**
          * @generated from field: uint32 maxunavailable = 6;
          */
-        _this.maxunavailable = 0;
-        protobuf_1.proto3.util.initPartial(data, _this);
-        return _this;
+        this.maxunavailable = 0;
+        protobuf_1.proto3.util.initPartial(data, this);
     }
-    Worker.fromBinary = function (bytes, options) {
+    static fromBinary(bytes, options) {
         return new Worker().fromBinary(bytes, options);
-    };
-    Worker.fromJson = function (jsonValue, options) {
+    }
+    static fromJson(jsonValue, options) {
         return new Worker().fromJson(jsonValue, options);
-    };
-    Worker.fromJsonString = function (jsonString, options) {
+    }
+    static fromJsonString(jsonString, options) {
         return new Worker().fromJsonString(jsonString, options);
-    };
-    Worker.equals = function (a, b) {
+    }
+    static equals(a, b) {
         return protobuf_1.proto3.util.equals(Worker, a, b);
-    };
-    Worker.runtime = protobuf_1.proto3;
-    Worker.typeName = "api.v1.Worker";
-    Worker.fields = protobuf_1.proto3.util.newFieldList(function () { return [
-        { no: 1, name: "name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-        { no: 2, name: "machine_type", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-        { no: 3, name: "minsize", kind: "scalar", T: 13 /* ScalarType.UINT32 */ },
-        { no: 4, name: "maxsize", kind: "scalar", T: 13 /* ScalarType.UINT32 */ },
-        { no: 5, name: "maxsurge", kind: "scalar", T: 13 /* ScalarType.UINT32 */ },
-        { no: 6, name: "maxunavailable", kind: "scalar", T: 13 /* ScalarType.UINT32 */ },
-    ]; });
-    return Worker;
-}(protobuf_1.Message));
+    }
+}
 exports.Worker = Worker;
+Worker.runtime = protobuf_1.proto3;
+Worker.typeName = "api.v1.Worker";
+Worker.fields = protobuf_1.proto3.util.newFieldList(() => [
+    { no: 1, name: "name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "machine_type", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 3, name: "minsize", kind: "scalar", T: 13 /* ScalarType.UINT32 */ },
+    { no: 4, name: "maxsize", kind: "scalar", T: 13 /* ScalarType.UINT32 */ },
+    { no: 5, name: "maxsurge", kind: "scalar", T: 13 /* ScalarType.UINT32 */ },
+    { no: 6, name: "maxunavailable", kind: "scalar", T: 13 /* ScalarType.UINT32 */ },
+]);
 /**
  * @generated from message api.v1.WorkerUpdate
  */
-var WorkerUpdate = /** @class */ (function (_super) {
-    __extends(WorkerUpdate, _super);
-    function WorkerUpdate(data) {
-        var _this = _super.call(this) || this;
+class WorkerUpdate extends protobuf_1.Message {
+    constructor(data) {
+        super();
         /**
          * @generated from field: string name = 1;
          */
-        _this.name = "";
-        protobuf_1.proto3.util.initPartial(data, _this);
-        return _this;
+        this.name = "";
+        protobuf_1.proto3.util.initPartial(data, this);
     }
-    WorkerUpdate.fromBinary = function (bytes, options) {
+    static fromBinary(bytes, options) {
         return new WorkerUpdate().fromBinary(bytes, options);
-    };
-    WorkerUpdate.fromJson = function (jsonValue, options) {
+    }
+    static fromJson(jsonValue, options) {
         return new WorkerUpdate().fromJson(jsonValue, options);
-    };
-    WorkerUpdate.fromJsonString = function (jsonString, options) {
+    }
+    static fromJsonString(jsonString, options) {
         return new WorkerUpdate().fromJsonString(jsonString, options);
-    };
-    WorkerUpdate.equals = function (a, b) {
+    }
+    static equals(a, b) {
         return protobuf_1.proto3.util.equals(WorkerUpdate, a, b);
-    };
-    WorkerUpdate.runtime = protobuf_1.proto3;
-    WorkerUpdate.typeName = "api.v1.WorkerUpdate";
-    WorkerUpdate.fields = protobuf_1.proto3.util.newFieldList(function () { return [
-        { no: 1, name: "name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-        { no: 2, name: "machine_type", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
-        { no: 3, name: "minsize", kind: "scalar", T: 13 /* ScalarType.UINT32 */, opt: true },
-        { no: 4, name: "maxsize", kind: "scalar", T: 13 /* ScalarType.UINT32 */, opt: true },
-        { no: 5, name: "maxsurge", kind: "scalar", T: 13 /* ScalarType.UINT32 */, opt: true },
-        { no: 6, name: "maxunavailable", kind: "scalar", T: 13 /* ScalarType.UINT32 */, opt: true },
-    ]; });
-    return WorkerUpdate;
-}(protobuf_1.Message));
+    }
+}
 exports.WorkerUpdate = WorkerUpdate;
+WorkerUpdate.runtime = protobuf_1.proto3;
+WorkerUpdate.typeName = "api.v1.WorkerUpdate";
+WorkerUpdate.fields = protobuf_1.proto3.util.newFieldList(() => [
+    { no: 1, name: "name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "machine_type", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
+    { no: 3, name: "minsize", kind: "scalar", T: 13 /* ScalarType.UINT32 */, opt: true },
+    { no: 4, name: "maxsize", kind: "scalar", T: 13 /* ScalarType.UINT32 */, opt: true },
+    { no: 5, name: "maxsurge", kind: "scalar", T: 13 /* ScalarType.UINT32 */, opt: true },
+    { no: 6, name: "maxunavailable", kind: "scalar", T: 13 /* ScalarType.UINT32 */, opt: true },
+]);
 /**
  * Requests
  *
  * @generated from message api.v1.ClusterServiceGetRequest
  */
-var ClusterServiceGetRequest = /** @class */ (function (_super) {
-    __extends(ClusterServiceGetRequest, _super);
-    function ClusterServiceGetRequest(data) {
-        var _this = _super.call(this) || this;
+class ClusterServiceGetRequest extends protobuf_1.Message {
+    constructor(data) {
+        super();
         /**
          * @generated from field: string uuid = 1;
          */
-        _this.uuid = "";
+        this.uuid = "";
         /**
          * @generated from field: string project = 2;
          */
-        _this.project = "";
-        protobuf_1.proto3.util.initPartial(data, _this);
-        return _this;
+        this.project = "";
+        protobuf_1.proto3.util.initPartial(data, this);
     }
-    ClusterServiceGetRequest.fromBinary = function (bytes, options) {
+    static fromBinary(bytes, options) {
         return new ClusterServiceGetRequest().fromBinary(bytes, options);
-    };
-    ClusterServiceGetRequest.fromJson = function (jsonValue, options) {
+    }
+    static fromJson(jsonValue, options) {
         return new ClusterServiceGetRequest().fromJson(jsonValue, options);
-    };
-    ClusterServiceGetRequest.fromJsonString = function (jsonString, options) {
+    }
+    static fromJsonString(jsonString, options) {
         return new ClusterServiceGetRequest().fromJsonString(jsonString, options);
-    };
-    ClusterServiceGetRequest.equals = function (a, b) {
+    }
+    static equals(a, b) {
         return protobuf_1.proto3.util.equals(ClusterServiceGetRequest, a, b);
-    };
-    ClusterServiceGetRequest.runtime = protobuf_1.proto3;
-    ClusterServiceGetRequest.typeName = "api.v1.ClusterServiceGetRequest";
-    ClusterServiceGetRequest.fields = protobuf_1.proto3.util.newFieldList(function () { return [
-        { no: 1, name: "uuid", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-        { no: 2, name: "project", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    ]; });
-    return ClusterServiceGetRequest;
-}(protobuf_1.Message));
+    }
+}
 exports.ClusterServiceGetRequest = ClusterServiceGetRequest;
+ClusterServiceGetRequest.runtime = protobuf_1.proto3;
+ClusterServiceGetRequest.typeName = "api.v1.ClusterServiceGetRequest";
+ClusterServiceGetRequest.fields = protobuf_1.proto3.util.newFieldList(() => [
+    { no: 1, name: "uuid", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "project", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+]);
 /**
  * @generated from message api.v1.ClusterServiceGetCredentialsRequest
  */
-var ClusterServiceGetCredentialsRequest = /** @class */ (function (_super) {
-    __extends(ClusterServiceGetCredentialsRequest, _super);
-    function ClusterServiceGetCredentialsRequest(data) {
-        var _this = _super.call(this) || this;
+class ClusterServiceGetCredentialsRequest extends protobuf_1.Message {
+    constructor(data) {
+        super();
         /**
          * @generated from field: string uuid = 1;
          */
-        _this.uuid = "";
+        this.uuid = "";
         /**
          * @generated from field: string project = 2;
          */
-        _this.project = "";
-        protobuf_1.proto3.util.initPartial(data, _this);
-        return _this;
+        this.project = "";
+        protobuf_1.proto3.util.initPartial(data, this);
     }
-    ClusterServiceGetCredentialsRequest.fromBinary = function (bytes, options) {
+    static fromBinary(bytes, options) {
         return new ClusterServiceGetCredentialsRequest().fromBinary(bytes, options);
-    };
-    ClusterServiceGetCredentialsRequest.fromJson = function (jsonValue, options) {
+    }
+    static fromJson(jsonValue, options) {
         return new ClusterServiceGetCredentialsRequest().fromJson(jsonValue, options);
-    };
-    ClusterServiceGetCredentialsRequest.fromJsonString = function (jsonString, options) {
+    }
+    static fromJsonString(jsonString, options) {
         return new ClusterServiceGetCredentialsRequest().fromJsonString(jsonString, options);
-    };
-    ClusterServiceGetCredentialsRequest.equals = function (a, b) {
+    }
+    static equals(a, b) {
         return protobuf_1.proto3.util.equals(ClusterServiceGetCredentialsRequest, a, b);
-    };
-    ClusterServiceGetCredentialsRequest.runtime = protobuf_1.proto3;
-    ClusterServiceGetCredentialsRequest.typeName = "api.v1.ClusterServiceGetCredentialsRequest";
-    ClusterServiceGetCredentialsRequest.fields = protobuf_1.proto3.util.newFieldList(function () { return [
-        { no: 1, name: "uuid", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-        { no: 2, name: "project", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    ]; });
-    return ClusterServiceGetCredentialsRequest;
-}(protobuf_1.Message));
+    }
+}
 exports.ClusterServiceGetCredentialsRequest = ClusterServiceGetCredentialsRequest;
+ClusterServiceGetCredentialsRequest.runtime = protobuf_1.proto3;
+ClusterServiceGetCredentialsRequest.typeName = "api.v1.ClusterServiceGetCredentialsRequest";
+ClusterServiceGetCredentialsRequest.fields = protobuf_1.proto3.util.newFieldList(() => [
+    { no: 1, name: "uuid", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "project", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+]);
 /**
  * @generated from message api.v1.ClusterServiceListRequest
  */
-var ClusterServiceListRequest = /** @class */ (function (_super) {
-    __extends(ClusterServiceListRequest, _super);
-    function ClusterServiceListRequest(data) {
-        var _this = _super.call(this) || this;
+class ClusterServiceListRequest extends protobuf_1.Message {
+    constructor(data) {
+        super();
         /**
          * @generated from field: string project = 2;
          */
-        _this.project = "";
-        protobuf_1.proto3.util.initPartial(data, _this);
-        return _this;
+        this.project = "";
+        protobuf_1.proto3.util.initPartial(data, this);
     }
-    ClusterServiceListRequest.fromBinary = function (bytes, options) {
+    static fromBinary(bytes, options) {
         return new ClusterServiceListRequest().fromBinary(bytes, options);
-    };
-    ClusterServiceListRequest.fromJson = function (jsonValue, options) {
+    }
+    static fromJson(jsonValue, options) {
         return new ClusterServiceListRequest().fromJson(jsonValue, options);
-    };
-    ClusterServiceListRequest.fromJsonString = function (jsonString, options) {
+    }
+    static fromJsonString(jsonString, options) {
         return new ClusterServiceListRequest().fromJsonString(jsonString, options);
-    };
-    ClusterServiceListRequest.equals = function (a, b) {
+    }
+    static equals(a, b) {
         return protobuf_1.proto3.util.equals(ClusterServiceListRequest, a, b);
-    };
-    ClusterServiceListRequest.runtime = protobuf_1.proto3;
-    ClusterServiceListRequest.typeName = "api.v1.ClusterServiceListRequest";
-    ClusterServiceListRequest.fields = protobuf_1.proto3.util.newFieldList(function () { return [
-        { no: 2, name: "project", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    ]; });
-    return ClusterServiceListRequest;
-}(protobuf_1.Message));
+    }
+}
 exports.ClusterServiceListRequest = ClusterServiceListRequest;
+ClusterServiceListRequest.runtime = protobuf_1.proto3;
+ClusterServiceListRequest.typeName = "api.v1.ClusterServiceListRequest";
+ClusterServiceListRequest.fields = protobuf_1.proto3.util.newFieldList(() => [
+    { no: 2, name: "project", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+]);
 /**
  * @generated from message api.v1.ClusterServiceCreateRequest
  */
-var ClusterServiceCreateRequest = /** @class */ (function (_super) {
-    __extends(ClusterServiceCreateRequest, _super);
-    function ClusterServiceCreateRequest(data) {
-        var _this = _super.call(this) || this;
+class ClusterServiceCreateRequest extends protobuf_1.Message {
+    constructor(data) {
+        super();
         /**
          * @generated from field: string name = 2;
          */
-        _this.name = "";
+        this.name = "";
         /**
          * @generated from field: string project = 3;
          */
-        _this.project = "";
+        this.project = "";
         /**
          * partition is part of a region
          *
          * @generated from field: string partition = 4;
          */
-        _this.partition = "";
+        this.partition = "";
         /**
          * @generated from field: repeated api.v1.Worker workers = 7;
          */
-        _this.workers = [];
-        protobuf_1.proto3.util.initPartial(data, _this);
-        return _this;
+        this.workers = [];
+        protobuf_1.proto3.util.initPartial(data, this);
     }
-    ClusterServiceCreateRequest.fromBinary = function (bytes, options) {
+    static fromBinary(bytes, options) {
         return new ClusterServiceCreateRequest().fromBinary(bytes, options);
-    };
-    ClusterServiceCreateRequest.fromJson = function (jsonValue, options) {
+    }
+    static fromJson(jsonValue, options) {
         return new ClusterServiceCreateRequest().fromJson(jsonValue, options);
-    };
-    ClusterServiceCreateRequest.fromJsonString = function (jsonString, options) {
+    }
+    static fromJsonString(jsonString, options) {
         return new ClusterServiceCreateRequest().fromJsonString(jsonString, options);
-    };
-    ClusterServiceCreateRequest.equals = function (a, b) {
+    }
+    static equals(a, b) {
         return protobuf_1.proto3.util.equals(ClusterServiceCreateRequest, a, b);
-    };
-    ClusterServiceCreateRequest.runtime = protobuf_1.proto3;
-    ClusterServiceCreateRequest.typeName = "api.v1.ClusterServiceCreateRequest";
-    ClusterServiceCreateRequest.fields = protobuf_1.proto3.util.newFieldList(function () { return [
-        { no: 2, name: "name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-        { no: 3, name: "project", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-        { no: 4, name: "partition", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-        { no: 6, name: "kubernetes", kind: "message", T: KubernetesSpec },
-        { no: 7, name: "workers", kind: "message", T: Worker, repeated: true },
-        { no: 8, name: "maintenance", kind: "message", T: Maintenance },
-    ]; });
-    return ClusterServiceCreateRequest;
-}(protobuf_1.Message));
+    }
+}
 exports.ClusterServiceCreateRequest = ClusterServiceCreateRequest;
+ClusterServiceCreateRequest.runtime = protobuf_1.proto3;
+ClusterServiceCreateRequest.typeName = "api.v1.ClusterServiceCreateRequest";
+ClusterServiceCreateRequest.fields = protobuf_1.proto3.util.newFieldList(() => [
+    { no: 2, name: "name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 3, name: "project", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 4, name: "partition", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 6, name: "kubernetes", kind: "message", T: KubernetesSpec },
+    { no: 7, name: "workers", kind: "message", T: Worker, repeated: true },
+    { no: 8, name: "maintenance", kind: "message", T: Maintenance },
+]);
 /**
  * @generated from message api.v1.ClusterServiceUpdateRequest
  */
-var ClusterServiceUpdateRequest = /** @class */ (function (_super) {
-    __extends(ClusterServiceUpdateRequest, _super);
-    function ClusterServiceUpdateRequest(data) {
-        var _this = _super.call(this) || this;
+class ClusterServiceUpdateRequest extends protobuf_1.Message {
+    constructor(data) {
+        super();
         /**
          * @generated from field: string uuid = 1;
          */
-        _this.uuid = "";
+        this.uuid = "";
         /**
          * @generated from field: string project = 2;
          */
-        _this.project = "";
+        this.project = "";
         /**
          * @generated from field: repeated api.v1.WorkerUpdate workers = 4;
          */
-        _this.workers = [];
-        protobuf_1.proto3.util.initPartial(data, _this);
-        return _this;
+        this.workers = [];
+        protobuf_1.proto3.util.initPartial(data, this);
     }
-    ClusterServiceUpdateRequest.fromBinary = function (bytes, options) {
+    static fromBinary(bytes, options) {
         return new ClusterServiceUpdateRequest().fromBinary(bytes, options);
-    };
-    ClusterServiceUpdateRequest.fromJson = function (jsonValue, options) {
+    }
+    static fromJson(jsonValue, options) {
         return new ClusterServiceUpdateRequest().fromJson(jsonValue, options);
-    };
-    ClusterServiceUpdateRequest.fromJsonString = function (jsonString, options) {
+    }
+    static fromJsonString(jsonString, options) {
         return new ClusterServiceUpdateRequest().fromJsonString(jsonString, options);
-    };
-    ClusterServiceUpdateRequest.equals = function (a, b) {
+    }
+    static equals(a, b) {
         return protobuf_1.proto3.util.equals(ClusterServiceUpdateRequest, a, b);
-    };
-    ClusterServiceUpdateRequest.runtime = protobuf_1.proto3;
-    ClusterServiceUpdateRequest.typeName = "api.v1.ClusterServiceUpdateRequest";
-    ClusterServiceUpdateRequest.fields = protobuf_1.proto3.util.newFieldList(function () { return [
-        { no: 1, name: "uuid", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-        { no: 2, name: "project", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-        { no: 3, name: "kubernetes", kind: "message", T: KubernetesSpec, opt: true },
-        { no: 4, name: "workers", kind: "message", T: WorkerUpdate, repeated: true },
-        { no: 5, name: "maintenance", kind: "message", T: Maintenance, opt: true },
-    ]; });
-    return ClusterServiceUpdateRequest;
-}(protobuf_1.Message));
+    }
+}
 exports.ClusterServiceUpdateRequest = ClusterServiceUpdateRequest;
+ClusterServiceUpdateRequest.runtime = protobuf_1.proto3;
+ClusterServiceUpdateRequest.typeName = "api.v1.ClusterServiceUpdateRequest";
+ClusterServiceUpdateRequest.fields = protobuf_1.proto3.util.newFieldList(() => [
+    { no: 1, name: "uuid", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "project", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 3, name: "kubernetes", kind: "message", T: KubernetesSpec, opt: true },
+    { no: 4, name: "workers", kind: "message", T: WorkerUpdate, repeated: true },
+    { no: 5, name: "maintenance", kind: "message", T: Maintenance, opt: true },
+]);
 /**
  * @generated from message api.v1.ClusterServiceDeleteRequest
  */
-var ClusterServiceDeleteRequest = /** @class */ (function (_super) {
-    __extends(ClusterServiceDeleteRequest, _super);
-    function ClusterServiceDeleteRequest(data) {
-        var _this = _super.call(this) || this;
+class ClusterServiceDeleteRequest extends protobuf_1.Message {
+    constructor(data) {
+        super();
         /**
          * @generated from field: string uuid = 1;
          */
-        _this.uuid = "";
+        this.uuid = "";
         /**
          * @generated from field: string project = 2;
          */
-        _this.project = "";
-        protobuf_1.proto3.util.initPartial(data, _this);
-        return _this;
+        this.project = "";
+        protobuf_1.proto3.util.initPartial(data, this);
     }
-    ClusterServiceDeleteRequest.fromBinary = function (bytes, options) {
+    static fromBinary(bytes, options) {
         return new ClusterServiceDeleteRequest().fromBinary(bytes, options);
-    };
-    ClusterServiceDeleteRequest.fromJson = function (jsonValue, options) {
+    }
+    static fromJson(jsonValue, options) {
         return new ClusterServiceDeleteRequest().fromJson(jsonValue, options);
-    };
-    ClusterServiceDeleteRequest.fromJsonString = function (jsonString, options) {
+    }
+    static fromJsonString(jsonString, options) {
         return new ClusterServiceDeleteRequest().fromJsonString(jsonString, options);
-    };
-    ClusterServiceDeleteRequest.equals = function (a, b) {
+    }
+    static equals(a, b) {
         return protobuf_1.proto3.util.equals(ClusterServiceDeleteRequest, a, b);
-    };
-    ClusterServiceDeleteRequest.runtime = protobuf_1.proto3;
-    ClusterServiceDeleteRequest.typeName = "api.v1.ClusterServiceDeleteRequest";
-    ClusterServiceDeleteRequest.fields = protobuf_1.proto3.util.newFieldList(function () { return [
-        { no: 1, name: "uuid", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-        { no: 2, name: "project", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    ]; });
-    return ClusterServiceDeleteRequest;
-}(protobuf_1.Message));
+    }
+}
 exports.ClusterServiceDeleteRequest = ClusterServiceDeleteRequest;
+ClusterServiceDeleteRequest.runtime = protobuf_1.proto3;
+ClusterServiceDeleteRequest.typeName = "api.v1.ClusterServiceDeleteRequest";
+ClusterServiceDeleteRequest.fields = protobuf_1.proto3.util.newFieldList(() => [
+    { no: 1, name: "uuid", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "project", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+]);
 /**
  * @generated from message api.v1.ClusterServiceWatchStatusRequest
  */
-var ClusterServiceWatchStatusRequest = /** @class */ (function (_super) {
-    __extends(ClusterServiceWatchStatusRequest, _super);
-    function ClusterServiceWatchStatusRequest(data) {
-        var _this = _super.call(this) || this;
+class ClusterServiceWatchStatusRequest extends protobuf_1.Message {
+    constructor(data) {
+        super();
         /**
          * @generated from field: string project = 2;
          */
-        _this.project = "";
-        protobuf_1.proto3.util.initPartial(data, _this);
-        return _this;
+        this.project = "";
+        protobuf_1.proto3.util.initPartial(data, this);
     }
-    ClusterServiceWatchStatusRequest.fromBinary = function (bytes, options) {
+    static fromBinary(bytes, options) {
         return new ClusterServiceWatchStatusRequest().fromBinary(bytes, options);
-    };
-    ClusterServiceWatchStatusRequest.fromJson = function (jsonValue, options) {
+    }
+    static fromJson(jsonValue, options) {
         return new ClusterServiceWatchStatusRequest().fromJson(jsonValue, options);
-    };
-    ClusterServiceWatchStatusRequest.fromJsonString = function (jsonString, options) {
+    }
+    static fromJsonString(jsonString, options) {
         return new ClusterServiceWatchStatusRequest().fromJsonString(jsonString, options);
-    };
-    ClusterServiceWatchStatusRequest.equals = function (a, b) {
+    }
+    static equals(a, b) {
         return protobuf_1.proto3.util.equals(ClusterServiceWatchStatusRequest, a, b);
-    };
-    ClusterServiceWatchStatusRequest.runtime = protobuf_1.proto3;
-    ClusterServiceWatchStatusRequest.typeName = "api.v1.ClusterServiceWatchStatusRequest";
-    ClusterServiceWatchStatusRequest.fields = protobuf_1.proto3.util.newFieldList(function () { return [
-        { no: 1, name: "uuid", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
-        { no: 2, name: "project", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    ]; });
-    return ClusterServiceWatchStatusRequest;
-}(protobuf_1.Message));
+    }
+}
 exports.ClusterServiceWatchStatusRequest = ClusterServiceWatchStatusRequest;
+ClusterServiceWatchStatusRequest.runtime = protobuf_1.proto3;
+ClusterServiceWatchStatusRequest.typeName = "api.v1.ClusterServiceWatchStatusRequest";
+ClusterServiceWatchStatusRequest.fields = protobuf_1.proto3.util.newFieldList(() => [
+    { no: 1, name: "uuid", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
+    { no: 2, name: "project", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+]);
 /**
  * @generated from message api.v1.ClusterStatus
  */
-var ClusterStatus = /** @class */ (function (_super) {
-    __extends(ClusterStatus, _super);
-    function ClusterStatus(data) {
-        var _this = _super.call(this) || this;
+class ClusterStatus extends protobuf_1.Message {
+    constructor(data) {
+        super();
         /**
          * @generated from field: string uuid = 1;
          */
-        _this.uuid = "";
+        this.uuid = "";
         /**
          * @generated from field: uint32 progress = 2;
          */
-        _this.progress = 0;
+        this.progress = 0;
         /**
          * @generated from field: string state = 3;
          */
-        _this.state = "";
+        this.state = "";
         /**
          * @generated from field: string type = 4;
          */
-        _this.type = "";
+        this.type = "";
         /**
          * @generated from field: string api_server_ready = 10;
          */
-        _this.apiServerReady = "";
+        this.apiServerReady = "";
         /**
          * @generated from field: string control_plane_ready = 11;
          */
-        _this.controlPlaneReady = "";
+        this.controlPlaneReady = "";
         /**
          * @generated from field: string nodes_ready = 12;
          */
-        _this.nodesReady = "";
+        this.nodesReady = "";
         /**
          * @generated from field: string system_components_ready = 13;
          */
-        _this.systemComponentsReady = "";
-        protobuf_1.proto3.util.initPartial(data, _this);
-        return _this;
+        this.systemComponentsReady = "";
+        protobuf_1.proto3.util.initPartial(data, this);
     }
-    ClusterStatus.fromBinary = function (bytes, options) {
+    static fromBinary(bytes, options) {
         return new ClusterStatus().fromBinary(bytes, options);
-    };
-    ClusterStatus.fromJson = function (jsonValue, options) {
+    }
+    static fromJson(jsonValue, options) {
         return new ClusterStatus().fromJson(jsonValue, options);
-    };
-    ClusterStatus.fromJsonString = function (jsonString, options) {
+    }
+    static fromJsonString(jsonString, options) {
         return new ClusterStatus().fromJsonString(jsonString, options);
-    };
-    ClusterStatus.equals = function (a, b) {
+    }
+    static equals(a, b) {
         return protobuf_1.proto3.util.equals(ClusterStatus, a, b);
-    };
-    ClusterStatus.runtime = protobuf_1.proto3;
-    ClusterStatus.typeName = "api.v1.ClusterStatus";
-    ClusterStatus.fields = protobuf_1.proto3.util.newFieldList(function () { return [
-        { no: 1, name: "uuid", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-        { no: 2, name: "progress", kind: "scalar", T: 13 /* ScalarType.UINT32 */ },
-        { no: 3, name: "state", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-        { no: 4, name: "type", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-        { no: 10, name: "api_server_ready", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-        { no: 11, name: "control_plane_ready", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-        { no: 12, name: "nodes_ready", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-        { no: 13, name: "system_components_ready", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    ]; });
-    return ClusterStatus;
-}(protobuf_1.Message));
+    }
+}
 exports.ClusterStatus = ClusterStatus;
+ClusterStatus.runtime = protobuf_1.proto3;
+ClusterStatus.typeName = "api.v1.ClusterStatus";
+ClusterStatus.fields = protobuf_1.proto3.util.newFieldList(() => [
+    { no: 1, name: "uuid", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "progress", kind: "scalar", T: 13 /* ScalarType.UINT32 */ },
+    { no: 3, name: "state", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 4, name: "type", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 10, name: "api_server_ready", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 11, name: "control_plane_ready", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 12, name: "nodes_ready", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 13, name: "system_components_ready", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+]);
 /**
  * Responses
  *
  * @generated from message api.v1.ClusterServiceCreateResponse
  */
-var ClusterServiceCreateResponse = /** @class */ (function (_super) {
-    __extends(ClusterServiceCreateResponse, _super);
-    function ClusterServiceCreateResponse(data) {
-        var _this = _super.call(this) || this;
-        protobuf_1.proto3.util.initPartial(data, _this);
-        return _this;
+class ClusterServiceCreateResponse extends protobuf_1.Message {
+    constructor(data) {
+        super();
+        protobuf_1.proto3.util.initPartial(data, this);
     }
-    ClusterServiceCreateResponse.fromBinary = function (bytes, options) {
+    static fromBinary(bytes, options) {
         return new ClusterServiceCreateResponse().fromBinary(bytes, options);
-    };
-    ClusterServiceCreateResponse.fromJson = function (jsonValue, options) {
+    }
+    static fromJson(jsonValue, options) {
         return new ClusterServiceCreateResponse().fromJson(jsonValue, options);
-    };
-    ClusterServiceCreateResponse.fromJsonString = function (jsonString, options) {
+    }
+    static fromJsonString(jsonString, options) {
         return new ClusterServiceCreateResponse().fromJsonString(jsonString, options);
-    };
-    ClusterServiceCreateResponse.equals = function (a, b) {
+    }
+    static equals(a, b) {
         return protobuf_1.proto3.util.equals(ClusterServiceCreateResponse, a, b);
-    };
-    ClusterServiceCreateResponse.runtime = protobuf_1.proto3;
-    ClusterServiceCreateResponse.typeName = "api.v1.ClusterServiceCreateResponse";
-    ClusterServiceCreateResponse.fields = protobuf_1.proto3.util.newFieldList(function () { return [
-        { no: 1, name: "cluster", kind: "message", T: Cluster },
-    ]; });
-    return ClusterServiceCreateResponse;
-}(protobuf_1.Message));
+    }
+}
 exports.ClusterServiceCreateResponse = ClusterServiceCreateResponse;
+ClusterServiceCreateResponse.runtime = protobuf_1.proto3;
+ClusterServiceCreateResponse.typeName = "api.v1.ClusterServiceCreateResponse";
+ClusterServiceCreateResponse.fields = protobuf_1.proto3.util.newFieldList(() => [
+    { no: 1, name: "cluster", kind: "message", T: Cluster },
+]);
 /**
  * @generated from message api.v1.ClusterServiceGetResponse
  */
-var ClusterServiceGetResponse = /** @class */ (function (_super) {
-    __extends(ClusterServiceGetResponse, _super);
-    function ClusterServiceGetResponse(data) {
-        var _this = _super.call(this) || this;
-        protobuf_1.proto3.util.initPartial(data, _this);
-        return _this;
+class ClusterServiceGetResponse extends protobuf_1.Message {
+    constructor(data) {
+        super();
+        protobuf_1.proto3.util.initPartial(data, this);
     }
-    ClusterServiceGetResponse.fromBinary = function (bytes, options) {
+    static fromBinary(bytes, options) {
         return new ClusterServiceGetResponse().fromBinary(bytes, options);
-    };
-    ClusterServiceGetResponse.fromJson = function (jsonValue, options) {
+    }
+    static fromJson(jsonValue, options) {
         return new ClusterServiceGetResponse().fromJson(jsonValue, options);
-    };
-    ClusterServiceGetResponse.fromJsonString = function (jsonString, options) {
+    }
+    static fromJsonString(jsonString, options) {
         return new ClusterServiceGetResponse().fromJsonString(jsonString, options);
-    };
-    ClusterServiceGetResponse.equals = function (a, b) {
+    }
+    static equals(a, b) {
         return protobuf_1.proto3.util.equals(ClusterServiceGetResponse, a, b);
-    };
-    ClusterServiceGetResponse.runtime = protobuf_1.proto3;
-    ClusterServiceGetResponse.typeName = "api.v1.ClusterServiceGetResponse";
-    ClusterServiceGetResponse.fields = protobuf_1.proto3.util.newFieldList(function () { return [
-        { no: 1, name: "cluster", kind: "message", T: Cluster },
-    ]; });
-    return ClusterServiceGetResponse;
-}(protobuf_1.Message));
+    }
+}
 exports.ClusterServiceGetResponse = ClusterServiceGetResponse;
+ClusterServiceGetResponse.runtime = protobuf_1.proto3;
+ClusterServiceGetResponse.typeName = "api.v1.ClusterServiceGetResponse";
+ClusterServiceGetResponse.fields = protobuf_1.proto3.util.newFieldList(() => [
+    { no: 1, name: "cluster", kind: "message", T: Cluster },
+]);
 /**
  * @generated from message api.v1.ClusterServiceGetCredentialsResponse
  */
-var ClusterServiceGetCredentialsResponse = /** @class */ (function (_super) {
-    __extends(ClusterServiceGetCredentialsResponse, _super);
-    function ClusterServiceGetCredentialsResponse(data) {
-        var _this = _super.call(this) || this;
+class ClusterServiceGetCredentialsResponse extends protobuf_1.Message {
+    constructor(data) {
+        super();
         /**
          * @generated from field: string kubeconfig = 1;
          */
-        _this.kubeconfig = "";
-        protobuf_1.proto3.util.initPartial(data, _this);
-        return _this;
+        this.kubeconfig = "";
+        protobuf_1.proto3.util.initPartial(data, this);
     }
-    ClusterServiceGetCredentialsResponse.fromBinary = function (bytes, options) {
+    static fromBinary(bytes, options) {
         return new ClusterServiceGetCredentialsResponse().fromBinary(bytes, options);
-    };
-    ClusterServiceGetCredentialsResponse.fromJson = function (jsonValue, options) {
+    }
+    static fromJson(jsonValue, options) {
         return new ClusterServiceGetCredentialsResponse().fromJson(jsonValue, options);
-    };
-    ClusterServiceGetCredentialsResponse.fromJsonString = function (jsonString, options) {
+    }
+    static fromJsonString(jsonString, options) {
         return new ClusterServiceGetCredentialsResponse().fromJsonString(jsonString, options);
-    };
-    ClusterServiceGetCredentialsResponse.equals = function (a, b) {
+    }
+    static equals(a, b) {
         return protobuf_1.proto3.util.equals(ClusterServiceGetCredentialsResponse, a, b);
-    };
-    ClusterServiceGetCredentialsResponse.runtime = protobuf_1.proto3;
-    ClusterServiceGetCredentialsResponse.typeName = "api.v1.ClusterServiceGetCredentialsResponse";
-    ClusterServiceGetCredentialsResponse.fields = protobuf_1.proto3.util.newFieldList(function () { return [
-        { no: 1, name: "kubeconfig", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    ]; });
-    return ClusterServiceGetCredentialsResponse;
-}(protobuf_1.Message));
+    }
+}
 exports.ClusterServiceGetCredentialsResponse = ClusterServiceGetCredentialsResponse;
+ClusterServiceGetCredentialsResponse.runtime = protobuf_1.proto3;
+ClusterServiceGetCredentialsResponse.typeName = "api.v1.ClusterServiceGetCredentialsResponse";
+ClusterServiceGetCredentialsResponse.fields = protobuf_1.proto3.util.newFieldList(() => [
+    { no: 1, name: "kubeconfig", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+]);
 /**
  * @generated from message api.v1.ClusterServiceDeleteResponse
  */
-var ClusterServiceDeleteResponse = /** @class */ (function (_super) {
-    __extends(ClusterServiceDeleteResponse, _super);
-    function ClusterServiceDeleteResponse(data) {
-        var _this = _super.call(this) || this;
-        protobuf_1.proto3.util.initPartial(data, _this);
-        return _this;
+class ClusterServiceDeleteResponse extends protobuf_1.Message {
+    constructor(data) {
+        super();
+        protobuf_1.proto3.util.initPartial(data, this);
     }
-    ClusterServiceDeleteResponse.fromBinary = function (bytes, options) {
+    static fromBinary(bytes, options) {
         return new ClusterServiceDeleteResponse().fromBinary(bytes, options);
-    };
-    ClusterServiceDeleteResponse.fromJson = function (jsonValue, options) {
+    }
+    static fromJson(jsonValue, options) {
         return new ClusterServiceDeleteResponse().fromJson(jsonValue, options);
-    };
-    ClusterServiceDeleteResponse.fromJsonString = function (jsonString, options) {
+    }
+    static fromJsonString(jsonString, options) {
         return new ClusterServiceDeleteResponse().fromJsonString(jsonString, options);
-    };
-    ClusterServiceDeleteResponse.equals = function (a, b) {
+    }
+    static equals(a, b) {
         return protobuf_1.proto3.util.equals(ClusterServiceDeleteResponse, a, b);
-    };
-    ClusterServiceDeleteResponse.runtime = protobuf_1.proto3;
-    ClusterServiceDeleteResponse.typeName = "api.v1.ClusterServiceDeleteResponse";
-    ClusterServiceDeleteResponse.fields = protobuf_1.proto3.util.newFieldList(function () { return [
-        { no: 1, name: "cluster", kind: "message", T: Cluster },
-    ]; });
-    return ClusterServiceDeleteResponse;
-}(protobuf_1.Message));
+    }
+}
 exports.ClusterServiceDeleteResponse = ClusterServiceDeleteResponse;
+ClusterServiceDeleteResponse.runtime = protobuf_1.proto3;
+ClusterServiceDeleteResponse.typeName = "api.v1.ClusterServiceDeleteResponse";
+ClusterServiceDeleteResponse.fields = protobuf_1.proto3.util.newFieldList(() => [
+    { no: 1, name: "cluster", kind: "message", T: Cluster },
+]);
 /**
  * @generated from message api.v1.ClusterServiceUpdateResponse
  */
-var ClusterServiceUpdateResponse = /** @class */ (function (_super) {
-    __extends(ClusterServiceUpdateResponse, _super);
-    function ClusterServiceUpdateResponse(data) {
-        var _this = _super.call(this) || this;
-        protobuf_1.proto3.util.initPartial(data, _this);
-        return _this;
+class ClusterServiceUpdateResponse extends protobuf_1.Message {
+    constructor(data) {
+        super();
+        protobuf_1.proto3.util.initPartial(data, this);
     }
-    ClusterServiceUpdateResponse.fromBinary = function (bytes, options) {
+    static fromBinary(bytes, options) {
         return new ClusterServiceUpdateResponse().fromBinary(bytes, options);
-    };
-    ClusterServiceUpdateResponse.fromJson = function (jsonValue, options) {
+    }
+    static fromJson(jsonValue, options) {
         return new ClusterServiceUpdateResponse().fromJson(jsonValue, options);
-    };
-    ClusterServiceUpdateResponse.fromJsonString = function (jsonString, options) {
+    }
+    static fromJsonString(jsonString, options) {
         return new ClusterServiceUpdateResponse().fromJsonString(jsonString, options);
-    };
-    ClusterServiceUpdateResponse.equals = function (a, b) {
+    }
+    static equals(a, b) {
         return protobuf_1.proto3.util.equals(ClusterServiceUpdateResponse, a, b);
-    };
-    ClusterServiceUpdateResponse.runtime = protobuf_1.proto3;
-    ClusterServiceUpdateResponse.typeName = "api.v1.ClusterServiceUpdateResponse";
-    ClusterServiceUpdateResponse.fields = protobuf_1.proto3.util.newFieldList(function () { return [
-        { no: 1, name: "cluster", kind: "message", T: Cluster },
-    ]; });
-    return ClusterServiceUpdateResponse;
-}(protobuf_1.Message));
+    }
+}
 exports.ClusterServiceUpdateResponse = ClusterServiceUpdateResponse;
+ClusterServiceUpdateResponse.runtime = protobuf_1.proto3;
+ClusterServiceUpdateResponse.typeName = "api.v1.ClusterServiceUpdateResponse";
+ClusterServiceUpdateResponse.fields = protobuf_1.proto3.util.newFieldList(() => [
+    { no: 1, name: "cluster", kind: "message", T: Cluster },
+]);
 /**
  * @generated from message api.v1.ClusterServiceListResponse
  */
-var ClusterServiceListResponse = /** @class */ (function (_super) {
-    __extends(ClusterServiceListResponse, _super);
-    function ClusterServiceListResponse(data) {
-        var _this = _super.call(this) || this;
+class ClusterServiceListResponse extends protobuf_1.Message {
+    constructor(data) {
+        super();
         /**
          * @generated from field: repeated api.v1.Cluster clusters = 1;
          */
-        _this.clusters = [];
-        protobuf_1.proto3.util.initPartial(data, _this);
-        return _this;
+        this.clusters = [];
+        protobuf_1.proto3.util.initPartial(data, this);
     }
-    ClusterServiceListResponse.fromBinary = function (bytes, options) {
+    static fromBinary(bytes, options) {
         return new ClusterServiceListResponse().fromBinary(bytes, options);
-    };
-    ClusterServiceListResponse.fromJson = function (jsonValue, options) {
+    }
+    static fromJson(jsonValue, options) {
         return new ClusterServiceListResponse().fromJson(jsonValue, options);
-    };
-    ClusterServiceListResponse.fromJsonString = function (jsonString, options) {
+    }
+    static fromJsonString(jsonString, options) {
         return new ClusterServiceListResponse().fromJsonString(jsonString, options);
-    };
-    ClusterServiceListResponse.equals = function (a, b) {
+    }
+    static equals(a, b) {
         return protobuf_1.proto3.util.equals(ClusterServiceListResponse, a, b);
-    };
-    ClusterServiceListResponse.runtime = protobuf_1.proto3;
-    ClusterServiceListResponse.typeName = "api.v1.ClusterServiceListResponse";
-    ClusterServiceListResponse.fields = protobuf_1.proto3.util.newFieldList(function () { return [
-        { no: 1, name: "clusters", kind: "message", T: Cluster, repeated: true },
-    ]; });
-    return ClusterServiceListResponse;
-}(protobuf_1.Message));
+    }
+}
 exports.ClusterServiceListResponse = ClusterServiceListResponse;
+ClusterServiceListResponse.runtime = protobuf_1.proto3;
+ClusterServiceListResponse.typeName = "api.v1.ClusterServiceListResponse";
+ClusterServiceListResponse.fields = protobuf_1.proto3.util.newFieldList(() => [
+    { no: 1, name: "clusters", kind: "message", T: Cluster, repeated: true },
+]);
 /**
  * @generated from message api.v1.ClusterServiceWatchStatusResponse
  */
-var ClusterServiceWatchStatusResponse = /** @class */ (function (_super) {
-    __extends(ClusterServiceWatchStatusResponse, _super);
-    function ClusterServiceWatchStatusResponse(data) {
-        var _this = _super.call(this) || this;
-        protobuf_1.proto3.util.initPartial(data, _this);
-        return _this;
+class ClusterServiceWatchStatusResponse extends protobuf_1.Message {
+    constructor(data) {
+        super();
+        protobuf_1.proto3.util.initPartial(data, this);
     }
-    ClusterServiceWatchStatusResponse.fromBinary = function (bytes, options) {
+    static fromBinary(bytes, options) {
         return new ClusterServiceWatchStatusResponse().fromBinary(bytes, options);
-    };
-    ClusterServiceWatchStatusResponse.fromJson = function (jsonValue, options) {
+    }
+    static fromJson(jsonValue, options) {
         return new ClusterServiceWatchStatusResponse().fromJson(jsonValue, options);
-    };
-    ClusterServiceWatchStatusResponse.fromJsonString = function (jsonString, options) {
+    }
+    static fromJsonString(jsonString, options) {
         return new ClusterServiceWatchStatusResponse().fromJsonString(jsonString, options);
-    };
-    ClusterServiceWatchStatusResponse.equals = function (a, b) {
+    }
+    static equals(a, b) {
         return protobuf_1.proto3.util.equals(ClusterServiceWatchStatusResponse, a, b);
-    };
-    ClusterServiceWatchStatusResponse.runtime = protobuf_1.proto3;
-    ClusterServiceWatchStatusResponse.typeName = "api.v1.ClusterServiceWatchStatusResponse";
-    ClusterServiceWatchStatusResponse.fields = protobuf_1.proto3.util.newFieldList(function () { return [
-        { no: 1, name: "status", kind: "message", T: ClusterStatus },
-    ]; });
-    return ClusterServiceWatchStatusResponse;
-}(protobuf_1.Message));
+    }
+}
 exports.ClusterServiceWatchStatusResponse = ClusterServiceWatchStatusResponse;
+ClusterServiceWatchStatusResponse.runtime = protobuf_1.proto3;
+ClusterServiceWatchStatusResponse.typeName = "api.v1.ClusterServiceWatchStatusResponse";
+ClusterServiceWatchStatusResponse.fields = protobuf_1.proto3.util.newFieldList(() => [
+    { no: 1, name: "status", kind: "message", T: ClusterStatus },
+]);

@@ -3,24 +3,9 @@
 // @generated from file api/v1/common.proto (package api.v1, syntax proto3)
 /* eslint-disable */
 /* @ts-nocheck */
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        if (typeof b !== "function" && b !== null)
-            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Paging = exports.Visibility = exports.AdminRole = exports.ProjectRole = exports.TenantRole = exports.Role = exports.OAuthProvider = void 0;
-var protobuf_1 = require("@bufbuild/protobuf");
+const protobuf_1 = require("@bufbuild/protobuf");
 /**
  * @generated from enum api.v1.OAuthProvider
  */
@@ -192,31 +177,28 @@ protobuf_1.proto3.util.setEnumType(Visibility, "api.v1.Visibility", [
 /**
  * @generated from message api.v1.Paging
  */
-var Paging = /** @class */ (function (_super) {
-    __extends(Paging, _super);
-    function Paging(data) {
-        var _this = _super.call(this) || this;
-        protobuf_1.proto3.util.initPartial(data, _this);
-        return _this;
+class Paging extends protobuf_1.Message {
+    constructor(data) {
+        super();
+        protobuf_1.proto3.util.initPartial(data, this);
     }
-    Paging.fromBinary = function (bytes, options) {
+    static fromBinary(bytes, options) {
         return new Paging().fromBinary(bytes, options);
-    };
-    Paging.fromJson = function (jsonValue, options) {
+    }
+    static fromJson(jsonValue, options) {
         return new Paging().fromJson(jsonValue, options);
-    };
-    Paging.fromJsonString = function (jsonString, options) {
+    }
+    static fromJsonString(jsonString, options) {
         return new Paging().fromJsonString(jsonString, options);
-    };
-    Paging.equals = function (a, b) {
+    }
+    static equals(a, b) {
         return protobuf_1.proto3.util.equals(Paging, a, b);
-    };
-    Paging.runtime = protobuf_1.proto3;
-    Paging.typeName = "api.v1.Paging";
-    Paging.fields = protobuf_1.proto3.util.newFieldList(function () { return [
-        { no: 1, name: "page", kind: "scalar", T: 4 /* ScalarType.UINT64 */, opt: true },
-        { no: 2, name: "count", kind: "scalar", T: 4 /* ScalarType.UINT64 */, opt: true },
-    ]; });
-    return Paging;
-}(protobuf_1.Message));
+    }
+}
 exports.Paging = Paging;
+Paging.runtime = protobuf_1.proto3;
+Paging.typeName = "api.v1.Paging";
+Paging.fields = protobuf_1.proto3.util.newFieldList(() => [
+    { no: 1, name: "page", kind: "scalar", T: 4 /* ScalarType.UINT64 */, opt: true },
+    { no: 2, name: "count", kind: "scalar", T: 4 /* ScalarType.UINT64 */, opt: true },
+]);

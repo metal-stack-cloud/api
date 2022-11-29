@@ -5,8 +5,8 @@
 // @ts-nocheck
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.TokenService = void 0;
-var token_pb_js_1 = require("./token_pb.js");
-var protobuf_1 = require("@bufbuild/protobuf");
+const token_pb_js_1 = require("./token_pb.js");
+const protobuf_1 = require("@bufbuild/protobuf");
 /**
  * @generated from service api.v1.TokenService
  */

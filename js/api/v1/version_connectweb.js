@@ -5,8 +5,8 @@
 // @ts-nocheck
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.VersionService = void 0;
-var version_pb_js_1 = require("./version_pb.js");
-var protobuf_1 = require("@bufbuild/protobuf");
+const version_pb_js_1 = require("./version_pb.js");
+const protobuf_1 = require("@bufbuild/protobuf");
 /**
  * @generated from service api.v1.VersionService
  */
