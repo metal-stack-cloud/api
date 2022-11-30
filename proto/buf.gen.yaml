@@ -12,11 +12,11 @@ plugins:
     out: ../go
     opt: paths=source_relative
   # generate go structs for protocol buffer defination
-  - remote: buf.build/bufbuild/plugins/connect-go:v1.1.0-1
+  - remote: buf.build/bufbuild/plugins/connect-go:v1.2.0-1
     out: ../go
     opt: paths=source_relative
   # generate ts structs for protocol buffer definition
-  - remote: buf.build/bufbuild/plugins/es:v0.2.1-1
+  - remote: buf.build/bufbuild/plugins/es:v0.3.0-1
     out: ../js
     opt: target=ts
   - remote: buf.build/bufbuild/plugins/connect-web:v0.3.2-1
