@@ -32,6 +32,7 @@
         "/api.v1.TenantService/Delete"
       ],
       "viewer": [
+        "/api.v1.PaymentService/HasPaymentMethod",
         "/api.v1.TenantService/Get"
       ]
     },
