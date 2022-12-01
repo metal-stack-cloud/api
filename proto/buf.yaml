@@ -6,6 +6,5 @@ lint:
   use:
     - DEFAULT
 deps:
-  - buf.build/grpc-ecosystem/grpc-gateway
   - buf.build/envoyproxy/protoc-gen-validate
   - buf.build/googleapis/googleapis

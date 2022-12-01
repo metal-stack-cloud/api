@@ -11,36 +11,23 @@ plugins:
   - remote: buf.build/library/plugins/go:v1.27.1-1
     out: ../go
     opt: paths=source_relative
-  # generate gRPC stubs in golang
-  - remote: buf.build/library/plugins/go-grpc:v1.1.0-2
+  # generate go structs for protocol buffer defination
+  - remote: buf.build/bufbuild/plugins/connect-go:v1.2.0-1
     out: ../go
-    opt:
-      - paths=source_relative
-      - require_unimplemented_servers=false
+    opt: paths=source_relative
+  # generate ts structs for protocol buffer definition
+  - remote: buf.build/bufbuild/plugins/es:v0.3.0-1
+    out: ../js
+    opt: target=ts
+  - remote: buf.build/bufbuild/plugins/connect-web:v0.3.2-1
+    out: ../js
+    opt: target=ts
   # generate validate methods
   - remote: buf.build/jirkad/plugins/protoc-gen-validate:v0.6.7
     out: ../go
     opt:
       - paths=source_relative
       - lang=go
-  # generate typescript clients
-  - remote: buf.build/grpc/plugins/web:v1.4.2-1
-    out: ../js
-    opt:
-      - mode=grpcwebtext
-      - import_style=typescript
-  - remote: buf.build/grpc/plugins/web:v1.4.2-1
-    out: ../js
-    opt:
-      - mode=grpcwebtext
-      - import_style=commonjs
-  # generate javascript clients
-  - remote: buf.build/protocolbuffers/plugins/js:v3.20.1-1
-    out: ../js
-    opt:
-      - import_style=commonjs
-      - binary
-
   # generate json docs
   - remote: buf.build/sawadashota/plugins/protoc-gen-doc:v1.5.1
     out: ../docs

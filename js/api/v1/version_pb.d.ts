@@ -1,70 +1,69 @@
-import * as jspb from 'google-protobuf'
-
-import * as api_v1_common_pb from '../../api/v1/common_pb';
-import * as google_api_annotations_pb from '../../google/api/annotations_pb';
-
-
-export class Version extends jspb.Message {
-  getVersion(): string;
-  setVersion(value: string): Version;
-
-  getRevision(): string;
-  setRevision(value: string): Version;
-
-  getGitSha1(): string;
-  setGitSha1(value: string): Version;
-
-  getBuildDate(): string;
-  setBuildDate(value: string): Version;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): Version.AsObject;
-  static toObject(includeInstance: boolean, msg: Version): Version.AsObject;
-  static serializeBinaryToWriter(message: Version, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): Version;
-  static deserializeBinaryFromReader(message: Version, reader: jspb.BinaryReader): Version;
+import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
+import { Message } from "@bufbuild/protobuf";
+/**
+ * @generated from message api.v1.Version
+ */
+export declare class Version extends Message<Version> {
+    /**
+     * Version of the application
+     *
+     * @generated from field: string version = 1;
+     */
+    version: string;
+    /**
+     * Revision of the application
+     *
+     * @generated from field: string revision = 2;
+     */
+    revision: string;
+    /**
+     * GitSHA1 of the application
+     *
+     * @generated from field: string git_sha1 = 3;
+     */
+    gitSha1: string;
+    /**
+     * BuildDate of the application
+     *
+     * @generated from field: string build_date = 4;
+     */
+    buildDate: string;
+    constructor(data?: PartialMessage<Version>);
+    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
+    static readonly typeName = "api.v1.Version";
+    static readonly fields: FieldList;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Version;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): Version;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): Version;
+    static equals(a: Version | PlainMessage<Version> | undefined, b: Version | PlainMessage<Version> | undefined): boolean;
 }
-
-export namespace Version {
-  export type AsObject = {
-    version: string,
-    revision: string,
-    gitSha1: string,
-    buildDate: string,
-  }
+/**
+ * @generated from message api.v1.VersionServiceGetRequest
+ */
+export declare class VersionServiceGetRequest extends Message<VersionServiceGetRequest> {
+    constructor(data?: PartialMessage<VersionServiceGetRequest>);
+    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
+    static readonly typeName = "api.v1.VersionServiceGetRequest";
+    static readonly fields: FieldList;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): VersionServiceGetRequest;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): VersionServiceGetRequest;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): VersionServiceGetRequest;
+    static equals(a: VersionServiceGetRequest | PlainMessage<VersionServiceGetRequest> | undefined, b: VersionServiceGetRequest | PlainMessage<VersionServiceGetRequest> | undefined): boolean;
 }
-
-export class VersionServiceGetRequest extends jspb.Message {
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): VersionServiceGetRequest.AsObject;
-  static toObject(includeInstance: boolean, msg: VersionServiceGetRequest): VersionServiceGetRequest.AsObject;
-  static serializeBinaryToWriter(message: VersionServiceGetRequest, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): VersionServiceGetRequest;
-  static deserializeBinaryFromReader(message: VersionServiceGetRequest, reader: jspb.BinaryReader): VersionServiceGetRequest;
+/**
+ * @generated from message api.v1.VersionServiceGetResponse
+ */
+export declare class VersionServiceGetResponse extends Message<VersionServiceGetResponse> {
+    /**
+     * @generated from field: api.v1.Version version = 1;
+     */
+    version?: Version;
+    constructor(data?: PartialMessage<VersionServiceGetResponse>);
+    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
+    static readonly typeName = "api.v1.VersionServiceGetResponse";
+    static readonly fields: FieldList;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): VersionServiceGetResponse;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): VersionServiceGetResponse;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): VersionServiceGetResponse;
+    static equals(a: VersionServiceGetResponse | PlainMessage<VersionServiceGetResponse> | undefined, b: VersionServiceGetResponse | PlainMessage<VersionServiceGetResponse> | undefined): boolean;
 }
-
-export namespace VersionServiceGetRequest {
-  export type AsObject = {
-  }
-}
-
-export class VersionServiceGetResponse extends jspb.Message {
-  getVersion(): Version | undefined;
-  setVersion(value?: Version): VersionServiceGetResponse;
-  hasVersion(): boolean;
-  clearVersion(): VersionServiceGetResponse;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): VersionServiceGetResponse.AsObject;
-  static toObject(includeInstance: boolean, msg: VersionServiceGetResponse): VersionServiceGetResponse.AsObject;
-  static serializeBinaryToWriter(message: VersionServiceGetResponse, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): VersionServiceGetResponse;
-  static deserializeBinaryFromReader(message: VersionServiceGetResponse, reader: jspb.BinaryReader): VersionServiceGetResponse;
-}
-
-export namespace VersionServiceGetResponse {
-  export type AsObject = {
-    version?: Version.AsObject,
-  }
-}
-

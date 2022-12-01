@@ -22,6 +22,7 @@ service PaymentService {
   rpc HasPaymentMethod(PaymentServiceHasPaymentMethodRequest) returns (PaymentServiceHasPaymentMethodResponse) {
     option (tenant_roles) = TENANT_ROLE_OWNER;
     option (tenant_roles) = TENANT_ROLE_EDITOR;
+    option (tenant_roles) = TENANT_ROLE_VIEWER;
   }
   rpc DeletePaymentMethod(PaymentServiceDeletePaymentMethodRequest) returns (PaymentServiceDeletePaymentMethodResponse) {
     option (tenant_roles) = TENANT_ROLE_OWNER;

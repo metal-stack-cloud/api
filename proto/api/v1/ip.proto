@@ -3,41 +3,29 @@ syntax = "proto3";
 package api.v1;
 
 import "api/v1/common.proto";
-import "google/api/annotations.proto";
 import "google/protobuf/timestamp.proto";
 import "validate/validate.proto";
 
 service IPService {
   rpc Get(IPServiceGetRequest) returns (IPServiceGetResponse) {
-    option (google.api.http) = {get: "/api/v1/ip/{project}/{uuid}"};
     option (project_roles) = PROJECT_ROLE_OWNER;
     option (project_roles) = PROJECT_ROLE_EDITOR;
     option (project_roles) = PROJECT_ROLE_VIEWER;
   }
   rpc Allocate(IPServiceAllocateRequest) returns (IPServiceAllocateResponse) {
-    option (google.api.http) = {get: "/api/v1/ip/allocate/{project}"};
     option (project_roles) = PROJECT_ROLE_OWNER;
     option (project_roles) = PROJECT_ROLE_EDITOR;
   }
   rpc Static(IPServiceStaticRequest) returns (IPServiceStaticResponse) {
-    option (google.api.http) = {get: "/api/v1/ip/static/{project}/{uuid}"};
     option (project_roles) = PROJECT_ROLE_OWNER;
     option (project_roles) = PROJECT_ROLE_EDITOR;
   }
   rpc List(IPServiceListRequest) returns (IPServiceListResponse) {
-    option (google.api.http) = {
-      post: "/api/v1/ips"
-      body: "*"
-    };
     option (project_roles) = PROJECT_ROLE_OWNER;
     option (project_roles) = PROJECT_ROLE_EDITOR;
     option (project_roles) = PROJECT_ROLE_VIEWER;
   }
   rpc Delete(IPServiceDeleteRequest) returns (IPServiceDeleteResponse) {
-    option (google.api.http) = {
-      delete: "/api/v1/ip"
-      body: "*"
-    };
     option (project_roles) = PROJECT_ROLE_OWNER;
     option (project_roles) = PROJECT_ROLE_EDITOR;
   }

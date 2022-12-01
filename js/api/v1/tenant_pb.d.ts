@@ -1,380 +1,302 @@
-import * as jspb from 'google-protobuf'
-
-import * as api_v1_common_pb from '../../api/v1/common_pb';
-import * as google_api_annotations_pb from '../../google/api/annotations_pb';
-import * as google_protobuf_timestamp_pb from 'google-protobuf/google/protobuf/timestamp_pb';
-
-
-export class Tenant extends jspb.Message {
-  getLogin(): string;
-  setLogin(value: string): Tenant;
-
-  getName(): string;
-  setName(value: string): Tenant;
-
-  getEmail(): string;
-  setEmail(value: string): Tenant;
-
-  getAvatarUrl(): string;
-  setAvatarUrl(value: string): Tenant;
-
-  getOauthProvider(): api_v1_common_pb.OAuthProvider;
-  setOauthProvider(value: api_v1_common_pb.OAuthProvider): Tenant;
-
-  getPaymentDetails(): PaymentDetails | undefined;
-  setPaymentDetails(value?: PaymentDetails): Tenant;
-  hasPaymentDetails(): boolean;
-  clearPaymentDetails(): Tenant;
-
-  getAdmitted(): boolean;
-  setAdmitted(value: boolean): Tenant;
-
-  getCreatedAt(): google_protobuf_timestamp_pb.Timestamp | undefined;
-  setCreatedAt(value?: google_protobuf_timestamp_pb.Timestamp): Tenant;
-  hasCreatedAt(): boolean;
-  clearCreatedAt(): Tenant;
-
-  getUpdatedAt(): google_protobuf_timestamp_pb.Timestamp | undefined;
-  setUpdatedAt(value?: google_protobuf_timestamp_pb.Timestamp): Tenant;
-  hasUpdatedAt(): boolean;
-  clearUpdatedAt(): Tenant;
-
-  getDeletedAt(): google_protobuf_timestamp_pb.Timestamp | undefined;
-  setDeletedAt(value?: google_protobuf_timestamp_pb.Timestamp): Tenant;
-  hasDeletedAt(): boolean;
-  clearDeletedAt(): Tenant;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): Tenant.AsObject;
-  static toObject(includeInstance: boolean, msg: Tenant): Tenant.AsObject;
-  static serializeBinaryToWriter(message: Tenant, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): Tenant;
-  static deserializeBinaryFromReader(message: Tenant, reader: jspb.BinaryReader): Tenant;
+import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
+import { Message, Timestamp } from "@bufbuild/protobuf";
+import { OAuthProvider } from "./common_pb.js";
+/**
+ * Tenant
+ *
+ * @generated from message api.v1.Tenant
+ */
+export declare class Tenant extends Message<Tenant> {
+    /**
+     * the login at the provider
+     *
+     * @generated from field: string login = 1;
+     */
+    login: string;
+    /**
+     * @generated from field: string name = 2;
+     */
+    name: string;
+    /**
+     * @generated from field: string email = 3;
+     */
+    email: string;
+    /**
+     * @generated from field: string avatar_url = 5;
+     */
+    avatarUrl: string;
+    /**
+     * @generated from field: api.v1.OAuthProvider oauth_provider = 6;
+     */
+    oauthProvider: OAuthProvider;
+    /**
+     * @generated from field: api.v1.PaymentDetails payment_details = 8;
+     */
+    paymentDetails?: PaymentDetails;
+    /**
+     * @generated from field: bool admitted = 9;
+     */
+    admitted: boolean;
+    /**
+     * @generated from field: google.protobuf.Timestamp created_at = 10;
+     */
+    createdAt?: Timestamp;
+    /**
+     * @generated from field: google.protobuf.Timestamp updated_at = 11;
+     */
+    updatedAt?: Timestamp;
+    /**
+     * @generated from field: google.protobuf.Timestamp deleted_at = 12;
+     */
+    deletedAt?: Timestamp;
+    constructor(data?: PartialMessage<Tenant>);
+    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime.js").ProtoRuntime;
+    static readonly typeName = "api.v1.Tenant";
+    static readonly fields: FieldList;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Tenant;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): Tenant;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): Tenant;
+    static equals(a: Tenant | PlainMessage<Tenant> | undefined, b: Tenant | PlainMessage<Tenant> | undefined): boolean;
 }
-
-export namespace Tenant {
-  export type AsObject = {
-    login: string,
-    name: string,
-    email: string,
-    avatarUrl: string,
-    oauthProvider: api_v1_common_pb.OAuthProvider,
-    paymentDetails?: PaymentDetails.AsObject,
-    admitted: boolean,
-    createdAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-    updatedAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-    deletedAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-  }
+/**
+ * @generated from message api.v1.PaymentDetails
+ */
+export declare class PaymentDetails extends Message<PaymentDetails> {
+    /**
+     * @generated from field: string customer_id = 1;
+     */
+    customerId: string;
+    /**
+     * @generated from field: string payment_method_id = 2;
+     */
+    paymentMethodId: string;
+    /**
+     * @generated from field: string subscription_id = 3;
+     */
+    subscriptionId: string;
+    constructor(data?: PartialMessage<PaymentDetails>);
+    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime.js").ProtoRuntime;
+    static readonly typeName = "api.v1.PaymentDetails";
+    static readonly fields: FieldList;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): PaymentDetails;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): PaymentDetails;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): PaymentDetails;
+    static equals(a: PaymentDetails | PlainMessage<PaymentDetails> | undefined, b: PaymentDetails | PlainMessage<PaymentDetails> | undefined): boolean;
 }
-
-export class PaymentDetails extends jspb.Message {
-  getCustomerId(): string;
-  setCustomerId(value: string): PaymentDetails;
-
-  getPaymentMethodId(): string;
-  setPaymentMethodId(value: string): PaymentDetails;
-
-  getSubscriptionId(): string;
-  setSubscriptionId(value: string): PaymentDetails;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): PaymentDetails.AsObject;
-  static toObject(includeInstance: boolean, msg: PaymentDetails): PaymentDetails.AsObject;
-  static serializeBinaryToWriter(message: PaymentDetails, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): PaymentDetails;
-  static deserializeBinaryFromReader(message: PaymentDetails, reader: jspb.BinaryReader): PaymentDetails;
+/**
+ * @generated from message api.v1.PaymentDetailsUpdate
+ */
+export declare class PaymentDetailsUpdate extends Message<PaymentDetailsUpdate> {
+    /**
+     * @generated from field: optional string customer_id = 1;
+     */
+    customerId?: string;
+    /**
+     * @generated from field: optional string payment_method_id = 2;
+     */
+    paymentMethodId?: string;
+    /**
+     * @generated from field: optional string subscription_id = 3;
+     */
+    subscriptionId?: string;
+    constructor(data?: PartialMessage<PaymentDetailsUpdate>);
+    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime.js").ProtoRuntime;
+    static readonly typeName = "api.v1.PaymentDetailsUpdate";
+    static readonly fields: FieldList;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): PaymentDetailsUpdate;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): PaymentDetailsUpdate;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): PaymentDetailsUpdate;
+    static equals(a: PaymentDetailsUpdate | PlainMessage<PaymentDetailsUpdate> | undefined, b: PaymentDetailsUpdate | PlainMessage<PaymentDetailsUpdate> | undefined): boolean;
 }
-
-export namespace PaymentDetails {
-  export type AsObject = {
-    customerId: string,
-    paymentMethodId: string,
-    subscriptionId: string,
-  }
+/**
+ * Requests
+ *
+ * @generated from message api.v1.TenantServiceGetRequest
+ */
+export declare class TenantServiceGetRequest extends Message<TenantServiceGetRequest> {
+    /**
+     * @generated from field: string login = 1;
+     */
+    login: string;
+    constructor(data?: PartialMessage<TenantServiceGetRequest>);
+    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime.js").ProtoRuntime;
+    static readonly typeName = "api.v1.TenantServiceGetRequest";
+    static readonly fields: FieldList;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): TenantServiceGetRequest;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): TenantServiceGetRequest;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): TenantServiceGetRequest;
+    static equals(a: TenantServiceGetRequest | PlainMessage<TenantServiceGetRequest> | undefined, b: TenantServiceGetRequest | PlainMessage<TenantServiceGetRequest> | undefined): boolean;
 }
-
-export class PaymentDetailsUpdate extends jspb.Message {
-  getCustomerId(): string;
-  setCustomerId(value: string): PaymentDetailsUpdate;
-  hasCustomerId(): boolean;
-  clearCustomerId(): PaymentDetailsUpdate;
-
-  getPaymentMethodId(): string;
-  setPaymentMethodId(value: string): PaymentDetailsUpdate;
-  hasPaymentMethodId(): boolean;
-  clearPaymentMethodId(): PaymentDetailsUpdate;
-
-  getSubscriptionId(): string;
-  setSubscriptionId(value: string): PaymentDetailsUpdate;
-  hasSubscriptionId(): boolean;
-  clearSubscriptionId(): PaymentDetailsUpdate;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): PaymentDetailsUpdate.AsObject;
-  static toObject(includeInstance: boolean, msg: PaymentDetailsUpdate): PaymentDetailsUpdate.AsObject;
-  static serializeBinaryToWriter(message: PaymentDetailsUpdate, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): PaymentDetailsUpdate;
-  static deserializeBinaryFromReader(message: PaymentDetailsUpdate, reader: jspb.BinaryReader): PaymentDetailsUpdate;
+/**
+ * @generated from message api.v1.TenantServiceCreateRequest
+ */
+export declare class TenantServiceCreateRequest extends Message<TenantServiceCreateRequest> {
+    /**
+     * @generated from field: api.v1.Tenant tenant = 1;
+     */
+    tenant?: Tenant;
+    constructor(data?: PartialMessage<TenantServiceCreateRequest>);
+    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime.js").ProtoRuntime;
+    static readonly typeName = "api.v1.TenantServiceCreateRequest";
+    static readonly fields: FieldList;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): TenantServiceCreateRequest;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): TenantServiceCreateRequest;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): TenantServiceCreateRequest;
+    static equals(a: TenantServiceCreateRequest | PlainMessage<TenantServiceCreateRequest> | undefined, b: TenantServiceCreateRequest | PlainMessage<TenantServiceCreateRequest> | undefined): boolean;
 }
-
-export namespace PaymentDetailsUpdate {
-  export type AsObject = {
-    customerId?: string,
-    paymentMethodId?: string,
-    subscriptionId?: string,
-  }
-
-  export enum CustomerIdCase { 
-    _CUSTOMER_ID_NOT_SET = 0,
-    CUSTOMER_ID = 1,
-  }
-
-  export enum PaymentMethodIdCase { 
-    _PAYMENT_METHOD_ID_NOT_SET = 0,
-    PAYMENT_METHOD_ID = 2,
-  }
-
-  export enum SubscriptionIdCase { 
-    _SUBSCRIPTION_ID_NOT_SET = 0,
-    SUBSCRIPTION_ID = 3,
-  }
+/**
+ * @generated from message api.v1.TenantServiceCreateOrUpdateRequest
+ */
+export declare class TenantServiceCreateOrUpdateRequest extends Message<TenantServiceCreateOrUpdateRequest> {
+    /**
+     * @generated from field: api.v1.Tenant tenant = 1;
+     */
+    tenant?: Tenant;
+    constructor(data?: PartialMessage<TenantServiceCreateOrUpdateRequest>);
+    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime.js").ProtoRuntime;
+    static readonly typeName = "api.v1.TenantServiceCreateOrUpdateRequest";
+    static readonly fields: FieldList;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): TenantServiceCreateOrUpdateRequest;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): TenantServiceCreateOrUpdateRequest;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): TenantServiceCreateOrUpdateRequest;
+    static equals(a: TenantServiceCreateOrUpdateRequest | PlainMessage<TenantServiceCreateOrUpdateRequest> | undefined, b: TenantServiceCreateOrUpdateRequest | PlainMessage<TenantServiceCreateOrUpdateRequest> | undefined): boolean;
 }
-
-export class TenantServiceGetRequest extends jspb.Message {
-  getLogin(): string;
-  setLogin(value: string): TenantServiceGetRequest;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): TenantServiceGetRequest.AsObject;
-  static toObject(includeInstance: boolean, msg: TenantServiceGetRequest): TenantServiceGetRequest.AsObject;
-  static serializeBinaryToWriter(message: TenantServiceGetRequest, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): TenantServiceGetRequest;
-  static deserializeBinaryFromReader(message: TenantServiceGetRequest, reader: jspb.BinaryReader): TenantServiceGetRequest;
+/**
+ * @generated from message api.v1.TenantServiceUpdateRequest
+ */
+export declare class TenantServiceUpdateRequest extends Message<TenantServiceUpdateRequest> {
+    /**
+     * the login at the provider
+     *
+     * @generated from field: string login = 1;
+     */
+    login: string;
+    /**
+     * @generated from field: optional string name = 2;
+     */
+    name?: string;
+    /**
+     * @generated from field: optional string email = 3;
+     */
+    email?: string;
+    /**
+     * @generated from field: optional string avatar_url = 5;
+     */
+    avatarUrl?: string;
+    /**
+     * @generated from field: optional api.v1.PaymentDetailsUpdate payment_details = 8;
+     */
+    paymentDetails?: PaymentDetailsUpdate;
+    constructor(data?: PartialMessage<TenantServiceUpdateRequest>);
+    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime.js").ProtoRuntime;
+    static readonly typeName = "api.v1.TenantServiceUpdateRequest";
+    static readonly fields: FieldList;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): TenantServiceUpdateRequest;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): TenantServiceUpdateRequest;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): TenantServiceUpdateRequest;
+    static equals(a: TenantServiceUpdateRequest | PlainMessage<TenantServiceUpdateRequest> | undefined, b: TenantServiceUpdateRequest | PlainMessage<TenantServiceUpdateRequest> | undefined): boolean;
 }
-
-export namespace TenantServiceGetRequest {
-  export type AsObject = {
-    login: string,
-  }
+/**
+ * @generated from message api.v1.TenantServiceDeleteRequest
+ */
+export declare class TenantServiceDeleteRequest extends Message<TenantServiceDeleteRequest> {
+    /**
+     * @generated from field: string login = 1;
+     */
+    login: string;
+    constructor(data?: PartialMessage<TenantServiceDeleteRequest>);
+    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime.js").ProtoRuntime;
+    static readonly typeName = "api.v1.TenantServiceDeleteRequest";
+    static readonly fields: FieldList;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): TenantServiceDeleteRequest;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): TenantServiceDeleteRequest;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): TenantServiceDeleteRequest;
+    static equals(a: TenantServiceDeleteRequest | PlainMessage<TenantServiceDeleteRequest> | undefined, b: TenantServiceDeleteRequest | PlainMessage<TenantServiceDeleteRequest> | undefined): boolean;
 }
-
-export class TenantServiceCreateRequest extends jspb.Message {
-  getTenant(): Tenant | undefined;
-  setTenant(value?: Tenant): TenantServiceCreateRequest;
-  hasTenant(): boolean;
-  clearTenant(): TenantServiceCreateRequest;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): TenantServiceCreateRequest.AsObject;
-  static toObject(includeInstance: boolean, msg: TenantServiceCreateRequest): TenantServiceCreateRequest.AsObject;
-  static serializeBinaryToWriter(message: TenantServiceCreateRequest, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): TenantServiceCreateRequest;
-  static deserializeBinaryFromReader(message: TenantServiceCreateRequest, reader: jspb.BinaryReader): TenantServiceCreateRequest;
+/**
+ * Responses
+ *
+ * @generated from message api.v1.TenantServiceGetResponse
+ */
+export declare class TenantServiceGetResponse extends Message<TenantServiceGetResponse> {
+    /**
+     * @generated from field: api.v1.Tenant tenant = 1;
+     */
+    tenant?: Tenant;
+    constructor(data?: PartialMessage<TenantServiceGetResponse>);
+    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime.js").ProtoRuntime;
+    static readonly typeName = "api.v1.TenantServiceGetResponse";
+    static readonly fields: FieldList;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): TenantServiceGetResponse;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): TenantServiceGetResponse;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): TenantServiceGetResponse;
+    static equals(a: TenantServiceGetResponse | PlainMessage<TenantServiceGetResponse> | undefined, b: TenantServiceGetResponse | PlainMessage<TenantServiceGetResponse> | undefined): boolean;
 }
-
-export namespace TenantServiceCreateRequest {
-  export type AsObject = {
-    tenant?: Tenant.AsObject,
-  }
+/**
+ * @generated from message api.v1.TenantServiceCreateResponse
+ */
+export declare class TenantServiceCreateResponse extends Message<TenantServiceCreateResponse> {
+    /**
+     * @generated from field: api.v1.Tenant tenant = 1;
+     */
+    tenant?: Tenant;
+    constructor(data?: PartialMessage<TenantServiceCreateResponse>);
+    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime.js").ProtoRuntime;
+    static readonly typeName = "api.v1.TenantServiceCreateResponse";
+    static readonly fields: FieldList;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): TenantServiceCreateResponse;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): TenantServiceCreateResponse;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): TenantServiceCreateResponse;
+    static equals(a: TenantServiceCreateResponse | PlainMessage<TenantServiceCreateResponse> | undefined, b: TenantServiceCreateResponse | PlainMessage<TenantServiceCreateResponse> | undefined): boolean;
 }
-
-export class TenantServiceCreateOrUpdateRequest extends jspb.Message {
-  getTenant(): Tenant | undefined;
-  setTenant(value?: Tenant): TenantServiceCreateOrUpdateRequest;
-  hasTenant(): boolean;
-  clearTenant(): TenantServiceCreateOrUpdateRequest;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): TenantServiceCreateOrUpdateRequest.AsObject;
-  static toObject(includeInstance: boolean, msg: TenantServiceCreateOrUpdateRequest): TenantServiceCreateOrUpdateRequest.AsObject;
-  static serializeBinaryToWriter(message: TenantServiceCreateOrUpdateRequest, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): TenantServiceCreateOrUpdateRequest;
-  static deserializeBinaryFromReader(message: TenantServiceCreateOrUpdateRequest, reader: jspb.BinaryReader): TenantServiceCreateOrUpdateRequest;
+/**
+ * @generated from message api.v1.TenantServiceCreateOrUpdateResponse
+ */
+export declare class TenantServiceCreateOrUpdateResponse extends Message<TenantServiceCreateOrUpdateResponse> {
+    /**
+     * @generated from field: api.v1.Tenant tenant = 1;
+     */
+    tenant?: Tenant;
+    constructor(data?: PartialMessage<TenantServiceCreateOrUpdateResponse>);
+    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime.js").ProtoRuntime;
+    static readonly typeName = "api.v1.TenantServiceCreateOrUpdateResponse";
+    static readonly fields: FieldList;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): TenantServiceCreateOrUpdateResponse;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): TenantServiceCreateOrUpdateResponse;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): TenantServiceCreateOrUpdateResponse;
+    static equals(a: TenantServiceCreateOrUpdateResponse | PlainMessage<TenantServiceCreateOrUpdateResponse> | undefined, b: TenantServiceCreateOrUpdateResponse | PlainMessage<TenantServiceCreateOrUpdateResponse> | undefined): boolean;
 }
-
-export namespace TenantServiceCreateOrUpdateRequest {
-  export type AsObject = {
-    tenant?: Tenant.AsObject,
-  }
+/**
+ * @generated from message api.v1.TenantServiceUpdateResponse
+ */
+export declare class TenantServiceUpdateResponse extends Message<TenantServiceUpdateResponse> {
+    /**
+     * @generated from field: api.v1.Tenant tenant = 1;
+     */
+    tenant?: Tenant;
+    constructor(data?: PartialMessage<TenantServiceUpdateResponse>);
+    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime.js").ProtoRuntime;
+    static readonly typeName = "api.v1.TenantServiceUpdateResponse";
+    static readonly fields: FieldList;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): TenantServiceUpdateResponse;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): TenantServiceUpdateResponse;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): TenantServiceUpdateResponse;
+    static equals(a: TenantServiceUpdateResponse | PlainMessage<TenantServiceUpdateResponse> | undefined, b: TenantServiceUpdateResponse | PlainMessage<TenantServiceUpdateResponse> | undefined): boolean;
 }
-
-export class TenantServiceUpdateRequest extends jspb.Message {
-  getLogin(): string;
-  setLogin(value: string): TenantServiceUpdateRequest;
-
-  getName(): string;
-  setName(value: string): TenantServiceUpdateRequest;
-  hasName(): boolean;
-  clearName(): TenantServiceUpdateRequest;
-
-  getEmail(): string;
-  setEmail(value: string): TenantServiceUpdateRequest;
-  hasEmail(): boolean;
-  clearEmail(): TenantServiceUpdateRequest;
-
-  getAvatarUrl(): string;
-  setAvatarUrl(value: string): TenantServiceUpdateRequest;
-  hasAvatarUrl(): boolean;
-  clearAvatarUrl(): TenantServiceUpdateRequest;
-
-  getPaymentDetails(): PaymentDetailsUpdate | undefined;
-  setPaymentDetails(value?: PaymentDetailsUpdate): TenantServiceUpdateRequest;
-  hasPaymentDetails(): boolean;
-  clearPaymentDetails(): TenantServiceUpdateRequest;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): TenantServiceUpdateRequest.AsObject;
-  static toObject(includeInstance: boolean, msg: TenantServiceUpdateRequest): TenantServiceUpdateRequest.AsObject;
-  static serializeBinaryToWriter(message: TenantServiceUpdateRequest, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): TenantServiceUpdateRequest;
-  static deserializeBinaryFromReader(message: TenantServiceUpdateRequest, reader: jspb.BinaryReader): TenantServiceUpdateRequest;
+/**
+ * @generated from message api.v1.TenantServiceDeleteResponse
+ */
+export declare class TenantServiceDeleteResponse extends Message<TenantServiceDeleteResponse> {
+    /**
+     * @generated from field: api.v1.Tenant tenant = 1;
+     */
+    tenant?: Tenant;
+    constructor(data?: PartialMessage<TenantServiceDeleteResponse>);
+    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime.js").ProtoRuntime;
+    static readonly typeName = "api.v1.TenantServiceDeleteResponse";
+    static readonly fields: FieldList;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): TenantServiceDeleteResponse;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): TenantServiceDeleteResponse;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): TenantServiceDeleteResponse;
+    static equals(a: TenantServiceDeleteResponse | PlainMessage<TenantServiceDeleteResponse> | undefined, b: TenantServiceDeleteResponse | PlainMessage<TenantServiceDeleteResponse> | undefined): boolean;
 }
-
-export namespace TenantServiceUpdateRequest {
-  export type AsObject = {
-    login: string,
-    name?: string,
-    email?: string,
-    avatarUrl?: string,
-    paymentDetails?: PaymentDetailsUpdate.AsObject,
-  }
-
-  export enum NameCase { 
-    _NAME_NOT_SET = 0,
-    NAME = 2,
-  }
-
-  export enum EmailCase { 
-    _EMAIL_NOT_SET = 0,
-    EMAIL = 3,
-  }
-
-  export enum AvatarUrlCase { 
-    _AVATAR_URL_NOT_SET = 0,
-    AVATAR_URL = 5,
-  }
-
-  export enum PaymentDetailsCase { 
-    _PAYMENT_DETAILS_NOT_SET = 0,
-    PAYMENT_DETAILS = 8,
-  }
-}
-
-export class TenantServiceDeleteRequest extends jspb.Message {
-  getLogin(): string;
-  setLogin(value: string): TenantServiceDeleteRequest;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): TenantServiceDeleteRequest.AsObject;
-  static toObject(includeInstance: boolean, msg: TenantServiceDeleteRequest): TenantServiceDeleteRequest.AsObject;
-  static serializeBinaryToWriter(message: TenantServiceDeleteRequest, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): TenantServiceDeleteRequest;
-  static deserializeBinaryFromReader(message: TenantServiceDeleteRequest, reader: jspb.BinaryReader): TenantServiceDeleteRequest;
-}
-
-export namespace TenantServiceDeleteRequest {
-  export type AsObject = {
-    login: string,
-  }
-}
-
-export class TenantServiceGetResponse extends jspb.Message {
-  getTenant(): Tenant | undefined;
-  setTenant(value?: Tenant): TenantServiceGetResponse;
-  hasTenant(): boolean;
-  clearTenant(): TenantServiceGetResponse;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): TenantServiceGetResponse.AsObject;
-  static toObject(includeInstance: boolean, msg: TenantServiceGetResponse): TenantServiceGetResponse.AsObject;
-  static serializeBinaryToWriter(message: TenantServiceGetResponse, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): TenantServiceGetResponse;
-  static deserializeBinaryFromReader(message: TenantServiceGetResponse, reader: jspb.BinaryReader): TenantServiceGetResponse;
-}
-
-export namespace TenantServiceGetResponse {
-  export type AsObject = {
-    tenant?: Tenant.AsObject,
-  }
-}
-
-export class TenantServiceCreateResponse extends jspb.Message {
-  getTenant(): Tenant | undefined;
-  setTenant(value?: Tenant): TenantServiceCreateResponse;
-  hasTenant(): boolean;
-  clearTenant(): TenantServiceCreateResponse;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): TenantServiceCreateResponse.AsObject;
-  static toObject(includeInstance: boolean, msg: TenantServiceCreateResponse): TenantServiceCreateResponse.AsObject;
-  static serializeBinaryToWriter(message: TenantServiceCreateResponse, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): TenantServiceCreateResponse;
-  static deserializeBinaryFromReader(message: TenantServiceCreateResponse, reader: jspb.BinaryReader): TenantServiceCreateResponse;
-}
-
-export namespace TenantServiceCreateResponse {
-  export type AsObject = {
-    tenant?: Tenant.AsObject,
-  }
-}
-
-export class TenantServiceCreateOrUpdateResponse extends jspb.Message {
-  getTenant(): Tenant | undefined;
-  setTenant(value?: Tenant): TenantServiceCreateOrUpdateResponse;
-  hasTenant(): boolean;
-  clearTenant(): TenantServiceCreateOrUpdateResponse;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): TenantServiceCreateOrUpdateResponse.AsObject;
-  static toObject(includeInstance: boolean, msg: TenantServiceCreateOrUpdateResponse): TenantServiceCreateOrUpdateResponse.AsObject;
-  static serializeBinaryToWriter(message: TenantServiceCreateOrUpdateResponse, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): TenantServiceCreateOrUpdateResponse;
-  static deserializeBinaryFromReader(message: TenantServiceCreateOrUpdateResponse, reader: jspb.BinaryReader): TenantServiceCreateOrUpdateResponse;
-}
-
-export namespace TenantServiceCreateOrUpdateResponse {
-  export type AsObject = {
-    tenant?: Tenant.AsObject,
-  }
-}
-
-export class TenantServiceUpdateResponse extends jspb.Message {
-  getTenant(): Tenant | undefined;
-  setTenant(value?: Tenant): TenantServiceUpdateResponse;
-  hasTenant(): boolean;
-  clearTenant(): TenantServiceUpdateResponse;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): TenantServiceUpdateResponse.AsObject;
-  static toObject(includeInstance: boolean, msg: TenantServiceUpdateResponse): TenantServiceUpdateResponse.AsObject;
-  static serializeBinaryToWriter(message: TenantServiceUpdateResponse, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): TenantServiceUpdateResponse;
-  static deserializeBinaryFromReader(message: TenantServiceUpdateResponse, reader: jspb.BinaryReader): TenantServiceUpdateResponse;
-}
-
-export namespace TenantServiceUpdateResponse {
-  export type AsObject = {
-    tenant?: Tenant.AsObject,
-  }
-}
-
-export class TenantServiceDeleteResponse extends jspb.Message {
-  getTenant(): Tenant | undefined;
-  setTenant(value?: Tenant): TenantServiceDeleteResponse;
-  hasTenant(): boolean;
-  clearTenant(): TenantServiceDeleteResponse;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): TenantServiceDeleteResponse.AsObject;
-  static toObject(includeInstance: boolean, msg: TenantServiceDeleteResponse): TenantServiceDeleteResponse.AsObject;
-  static serializeBinaryToWriter(message: TenantServiceDeleteResponse, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): TenantServiceDeleteResponse;
-  static deserializeBinaryFromReader(message: TenantServiceDeleteResponse, reader: jspb.BinaryReader): TenantServiceDeleteResponse;
-}
-
-export namespace TenantServiceDeleteResponse {
-  export type AsObject = {
-    tenant?: Tenant.AsObject,
-  }
-}
-

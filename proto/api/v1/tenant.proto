@@ -3,15 +3,10 @@ syntax = "proto3";
 package api.v1;
 
 import "api/v1/common.proto";
-import "google/api/annotations.proto";
 import "google/protobuf/timestamp.proto";
 
 service TenantService {
   rpc Create(TenantServiceCreateRequest) returns (TenantServiceCreateResponse) {
-    option (google.api.http) = {
-      post: "/api/v1/tenant"
-      body: "*"
-    };
     option (tenant_roles) = TENANT_ROLE_OWNER;
     option (tenant_roles) = TENANT_ROLE_EDITOR;
   }
@@ -22,21 +17,15 @@ service TenantService {
   }
 
   rpc Get(TenantServiceGetRequest) returns (TenantServiceGetResponse) {
-    option (google.api.http) = {get: "/api/v1/tenant/{login}"};
     option (tenant_roles) = TENANT_ROLE_OWNER;
     option (tenant_roles) = TENANT_ROLE_EDITOR;
     option (tenant_roles) = TENANT_ROLE_VIEWER;
   }
   rpc Update(TenantServiceUpdateRequest) returns (TenantServiceUpdateResponse) {
-    option (google.api.http) = {
-      patch: "/api/v1/tenant"
-      body: "*"
-    };
     option (tenant_roles) = TENANT_ROLE_OWNER;
     option (tenant_roles) = TENANT_ROLE_EDITOR;
   }
   rpc Delete(TenantServiceDeleteRequest) returns (TenantServiceDeleteResponse) {
-    option (google.api.http) = {delete: "/api/v1/tenant/{login}"};
     option (tenant_roles) = TENANT_ROLE_OWNER;
     option (tenant_roles) = TENANT_ROLE_EDITOR;
   }

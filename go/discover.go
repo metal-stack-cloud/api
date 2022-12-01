@@ -1,102 +1,122 @@
 package main
 
 import (
-	"bytes"
+	"encoding/json"
 	"fmt"
-	"go/ast"
-	"go/format"
-	"go/parser"
-	"go/token"
-	"html/template"
 	"os"
-	"path"
 	"path/filepath"
-	"sort"
 	"strings"
+
+	"github.com/jhump/protoreflect/desc/protoparse"
+	v1 "github.com/metal-stack-cloud/api/go/api/v1"
+	"github.com/metal-stack-cloud/api/go/permissions"
 )
 
-const templ = `// Code generated discover.go. DO NOT EDIT.
-package generated
-
-import (
-	"google.golang.org/grpc"
-{{ range $name, $path := .Packages -}}
-	{{ $name }} "github.com/metal-stack-cloud/api/go/{{ $path }}"
-{{ end }}
-)
-
-func DefaultGRPCServiceMocks() func(server *grpc.Server) {
-	return func(server *grpc.Server) {
-{{ range $svc := .Services -}}
-	{{ $svc.Package }}.{{ $svc.RegisterFunc }}(server, nil)
-{{ end -}}
-	}
-}
-`
-
-type discovery struct {
-	Packages map[string]string
-	Services []struct {
-		Package      string
-		RegisterFunc string
-	}
-}
+// serverReflectionInfo is always allowed to access to get a list of exposed services for example with grpcurl
+const serverReflectionInfo = "/grpc.reflection.v1alpha.ServerReflection/ServerReflectionInfo"
 
 func main() {
-	clients, err := discoverServiceClients(".")
+	perms, err := servicePermissions("../proto")
 	if err != nil {
 		panic(err)
 	}
-
-	err = writeTemplate("generated/discovery.go", templ, clients)
+	j, err := json.MarshalIndent(perms, "", "  ")
 	if err != nil {
 		panic(err)
 	}
+	fmt.Printf("%s\n", string(j))
 }
 
-func discoverServiceClients(root string) (*discovery, error) {
+func servicePermissions(root string) (*permissions.ServicePermissions, error) {
 	var (
-		result = discovery{
-			Packages: map[string]string{},
-		}
-		set  = token.NewFileSet()
 		walk = func(root string) ([]string, error) {
-			var dirs []string
+			var files []string
 			err := filepath.Walk(root, func(path string, info os.FileInfo, err error) error {
 				if info.IsDir() {
-					dirs = append(dirs, path)
+					return nil
+				}
+				if strings.HasSuffix(info.Name(), ".proto") {
+					files = append(files, path)
 				}
 				return nil
 			})
-			return dirs, err
+			return files, err
+		}
+		roles = permissions.Roles{
+			Admin:   &permissions.Admin{},
+			Tenant:  &permissions.Tenant{},
+			Project: &permissions.Project{},
+		}
+		methods    = permissions.Methods{}
+		visibility = permissions.Visibility{
+			Public: map[string]bool{
+				// Allow service reflection to list available methods
+				serverReflectionInfo: true,
+			},
+			Private: map[string]bool{},
 		}
 	)
 
-	dirs, err := walk(root)
+	files, err := walk(root)
 	if err != nil {
 		return nil, err
 	}
 
-	for _, dir := range dirs {
-		packs, err := parser.ParseDir(set, dir, nil, parser.ParseComments)
+	for _, f := range files {
+		p := protoparse.Parser{}
+		fds, err := p.ParseFilesButDoNotLink(f)
 		if err != nil {
 			return nil, err
 		}
+		for _, fd := range fds {
+			for _, serviceDesc := range fd.GetService() {
+				for _, method := range serviceDesc.GetMethod() {
+					methodName := fmt.Sprintf("/%s.%s/%s", *fd.Package, *serviceDesc.Name, *method.Name)
+					methodOpts := method.Options.GetUninterpretedOption()
+					for _, methodOpt := range methodOpts {
+						for _, namePart := range methodOpt.Name {
+							if !*namePart.IsExtension {
+								continue
+							}
 
-		for _, pack := range packs {
-			for fileName, f := range pack.Files {
-				for _, d := range f.Decls {
-					if fn, isFn := d.(*ast.FuncDecl); isFn {
-						name := fn.Name.Name
-						if strings.HasPrefix(name, "Register") && strings.HasSuffix(name, "ServiceServer") {
-							result.Packages[pack.Name] = path.Dir(fileName)
-							result.Services = append(result.Services, struct {
-								Package      string
-								RegisterFunc string
-							}{
-								Package:      pack.Name,
-								RegisterFunc: name,
-							})
+							// Tenant
+							switch *methodOpt.IdentifierValue {
+							case v1.TenantRole_TENANT_ROLE_OWNER.String():
+								roles.Tenant.Owner = append(roles.Tenant.Owner, methodName)
+							case v1.TenantRole_TENANT_ROLE_EDITOR.String():
+								roles.Tenant.Editor = append(roles.Tenant.Editor, methodName)
+							case v1.TenantRole_TENANT_ROLE_VIEWER.String():
+								roles.Tenant.Viewer = append(roles.Tenant.Viewer, methodName)
+							case v1.TenantRole_TENANT_ROLE_UNSPECIFIED.String():
+								// noop
+							// Project
+							case v1.ProjectRole_PROJECT_ROLE_OWNER.String():
+								roles.Project.Owner = append(roles.Project.Owner, methodName)
+							case v1.ProjectRole_PROJECT_ROLE_EDITOR.String():
+								roles.Project.Editor = append(roles.Project.Editor, methodName)
+							case v1.ProjectRole_PROJECT_ROLE_VIEWER.String():
+								roles.Project.Viewer = append(roles.Project.Viewer, methodName)
+							case v1.ProjectRole_PROJECT_ROLE_UNSPECIFIED.String():
+								// noop
+							// Admin
+							case v1.AdminRole_ADMIN_ROLE_EDITOR.String():
+								roles.Admin.Editor = append(roles.Admin.Editor, methodName)
+							case v1.AdminRole_ADMIN_ROLE_VIEWER.String():
+								roles.Admin.Viewer = append(roles.Admin.Viewer, methodName)
+							case v1.AdminRole_ADMIN_ROLE_UNSPECIFIED.String():
+								// noop
+							// Visibility
+							case v1.Visibility_VISIBILITY_PUBLIC.String():
+								visibility.Public[methodName] = true
+							case v1.Visibility_VISIBILITY_PRIVATE.String():
+								visibility.Private[methodName] = true
+							case v1.Visibility_VISIBILITY_UNSPECIFIED.String():
+								// noop
+							default:
+								return nil, fmt.Errorf("unknonw method identifier value detected:%s", *methodOpt.IdentifierValue)
+
+							}
+							methods[methodName] = true
 						}
 					}
 				}
@@ -104,33 +124,10 @@ func discoverServiceClients(root string) (*discovery, error) {
 		}
 	}
 
-	sort.Slice(result.Services, func(i, j int) bool {
-		if result.Services[i].Package == result.Services[j].Package {
-			return result.Services[i].RegisterFunc < result.Services[j].RegisterFunc
-		}
-		return result.Services[i].Package < result.Services[j].Package
-	})
-
-	return &result, nil
-}
-
-func writeTemplate(dest, text string, data any) error {
-	t, err := template.New("").Parse(text)
-	if err != nil {
-		return err
+	sp := &permissions.ServicePermissions{
+		Roles:      roles,
+		Methods:    methods,
+		Visibility: visibility,
 	}
-
-	var buf bytes.Buffer
-	if err := t.Execute(&buf, data); err != nil {
-		return err
-	}
-
-	p, err := format.Source(buf.Bytes())
-	if err != nil {
-		return err
-	}
-
-	fmt.Printf("writing to %s\n", dest)
-
-	return os.WriteFile(dest, p, 0755) // nolint:gosec
+	return sp, nil
 }

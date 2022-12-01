@@ -3,31 +3,21 @@ syntax = "proto3";
 package api.v1;
 
 import "api/v1/common.proto";
-import "google/api/annotations.proto";
 import "google/protobuf/timestamp.proto";
 import "validate/validate.proto";
 
 service VolumeService {
   rpc Get(VolumeServiceGetRequest) returns (VolumeServiceGetResponse) {
-    option (google.api.http) = {get: "/api/v1/volume/{project}/{uuid}"};
     option (project_roles) = PROJECT_ROLE_OWNER;
     option (project_roles) = PROJECT_ROLE_EDITOR;
     option (project_roles) = PROJECT_ROLE_VIEWER;
   }
   rpc List(VolumeServiceListRequest) returns (VolumeServiceListResponse) {
-    option (google.api.http) = {
-      post: "/api/v1/volumes"
-      body: "*"
-    };
     option (project_roles) = PROJECT_ROLE_OWNER;
     option (project_roles) = PROJECT_ROLE_EDITOR;
     option (project_roles) = PROJECT_ROLE_VIEWER;
   }
   rpc Delete(VolumeServiceDeleteRequest) returns (VolumeServiceDeleteResponse) {
-    option (google.api.http) = {
-      delete: "/api/v1/volume"
-      body: "*"
-    };
     option (project_roles) = PROJECT_ROLE_OWNER;
     option (project_roles) = PROJECT_ROLE_EDITOR;
   }
@@ -35,25 +25,16 @@ service VolumeService {
 
 service SnapshotService {
   rpc Get(SnapshotServiceGetRequest) returns (SnapshotServiceGetResponse) {
-    option (google.api.http) = {get: "/api/v1/snapshot/{project}/{uuid}"};
     option (project_roles) = PROJECT_ROLE_OWNER;
     option (project_roles) = PROJECT_ROLE_EDITOR;
     option (project_roles) = PROJECT_ROLE_VIEWER;
   }
   rpc List(SnapshotServiceListRequest) returns (SnapshotServiceListResponse) {
-    option (google.api.http) = {
-      post: "/api/v1/snapshots"
-      body: "*"
-    };
     option (project_roles) = PROJECT_ROLE_OWNER;
     option (project_roles) = PROJECT_ROLE_EDITOR;
     option (project_roles) = PROJECT_ROLE_VIEWER;
   }
   rpc Delete(SnapshotServiceDeleteRequest) returns (SnapshotServiceDeleteResponse) {
-    option (google.api.http) = {
-      delete: "/api/v1/snapshot"
-      body: "*"
-    };
     option (project_roles) = PROJECT_ROLE_OWNER;
     option (project_roles) = PROJECT_ROLE_EDITOR;
   }

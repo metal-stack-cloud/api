@@ -1,6 +1,6 @@
 .PHONY: install
 install:
-	npm install
+	npm install -dd
 
 .PHONY: clean
 clean:

@@ -1,107 +1,92 @@
-import * as jspb from 'google-protobuf'
-
-import * as api_v1_common_pb from '../../api/v1/common_pb';
-import * as google_api_annotations_pb from '../../google/api/annotations_pb';
-import * as google_protobuf_duration_pb from 'google-protobuf/google/protobuf/duration_pb';
-
-
-export class TokenServiceCreateRequest extends jspb.Message {
-  getSubject(): string;
-  setSubject(value: string): TokenServiceCreateRequest;
-
-  getPermissionsList(): Array<ProjectPermission>;
-  setPermissionsList(value: Array<ProjectPermission>): TokenServiceCreateRequest;
-  clearPermissionsList(): TokenServiceCreateRequest;
-  addPermissions(value?: ProjectPermission, index?: number): ProjectPermission;
-
-  getRolesList(): Array<TokenRole>;
-  setRolesList(value: Array<TokenRole>): TokenServiceCreateRequest;
-  clearRolesList(): TokenServiceCreateRequest;
-  addRoles(value?: TokenRole, index?: number): TokenRole;
-
-  getExpires(): google_protobuf_duration_pb.Duration | undefined;
-  setExpires(value?: google_protobuf_duration_pb.Duration): TokenServiceCreateRequest;
-  hasExpires(): boolean;
-  clearExpires(): TokenServiceCreateRequest;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): TokenServiceCreateRequest.AsObject;
-  static toObject(includeInstance: boolean, msg: TokenServiceCreateRequest): TokenServiceCreateRequest.AsObject;
-  static serializeBinaryToWriter(message: TokenServiceCreateRequest, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): TokenServiceCreateRequest;
-  static deserializeBinaryFromReader(message: TokenServiceCreateRequest, reader: jspb.BinaryReader): TokenServiceCreateRequest;
+import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
+import { Duration, Message } from "@bufbuild/protobuf";
+/**
+ * Tokens
+ *
+ * @generated from message api.v1.TokenServiceCreateRequest
+ */
+export declare class TokenServiceCreateRequest extends Message<TokenServiceCreateRequest> {
+    /**
+     * @generated from field: string subject = 1;
+     */
+    subject: string;
+    /**
+     * @generated from field: repeated api.v1.ProjectPermission permissions = 2;
+     */
+    permissions: ProjectPermission[];
+    /**
+     * @generated from field: repeated api.v1.TokenRole roles = 3;
+     */
+    roles: TokenRole[];
+    /**
+     * @generated from field: google.protobuf.Duration expires = 4;
+     */
+    expires?: Duration;
+    constructor(data?: PartialMessage<TokenServiceCreateRequest>);
+    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
+    static readonly typeName = "api.v1.TokenServiceCreateRequest";
+    static readonly fields: FieldList;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): TokenServiceCreateRequest;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): TokenServiceCreateRequest;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): TokenServiceCreateRequest;
+    static equals(a: TokenServiceCreateRequest | PlainMessage<TokenServiceCreateRequest> | undefined, b: TokenServiceCreateRequest | PlainMessage<TokenServiceCreateRequest> | undefined): boolean;
 }
-
-export namespace TokenServiceCreateRequest {
-  export type AsObject = {
-    subject: string,
-    permissionsList: Array<ProjectPermission.AsObject>,
-    rolesList: Array<TokenRole.AsObject>,
-    expires?: google_protobuf_duration_pb.Duration.AsObject,
-  }
+/**
+ * @generated from message api.v1.ProjectPermission
+ */
+export declare class ProjectPermission extends Message<ProjectPermission> {
+    /**
+     * @generated from field: string project = 1;
+     */
+    project: string;
+    /**
+     * @generated from field: repeated string permissions = 2;
+     */
+    permissions: string[];
+    constructor(data?: PartialMessage<ProjectPermission>);
+    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
+    static readonly typeName = "api.v1.ProjectPermission";
+    static readonly fields: FieldList;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ProjectPermission;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ProjectPermission;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ProjectPermission;
+    static equals(a: ProjectPermission | PlainMessage<ProjectPermission> | undefined, b: ProjectPermission | PlainMessage<ProjectPermission> | undefined): boolean;
 }
-
-export class ProjectPermission extends jspb.Message {
-  getProject(): string;
-  setProject(value: string): ProjectPermission;
-
-  getPermissionsList(): Array<string>;
-  setPermissionsList(value: Array<string>): ProjectPermission;
-  clearPermissionsList(): ProjectPermission;
-  addPermissions(value: string, index?: number): ProjectPermission;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): ProjectPermission.AsObject;
-  static toObject(includeInstance: boolean, msg: ProjectPermission): ProjectPermission.AsObject;
-  static serializeBinaryToWriter(message: ProjectPermission, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): ProjectPermission;
-  static deserializeBinaryFromReader(message: ProjectPermission, reader: jspb.BinaryReader): ProjectPermission;
+/**
+ * @generated from message api.v1.TokenRole
+ */
+export declare class TokenRole extends Message<TokenRole> {
+    /**
+     * @generated from field: string subject = 1;
+     */
+    subject: string;
+    /**
+     * @generated from field: string role = 2;
+     */
+    role: string;
+    constructor(data?: PartialMessage<TokenRole>);
+    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
+    static readonly typeName = "api.v1.TokenRole";
+    static readonly fields: FieldList;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): TokenRole;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): TokenRole;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): TokenRole;
+    static equals(a: TokenRole | PlainMessage<TokenRole> | undefined, b: TokenRole | PlainMessage<TokenRole> | undefined): boolean;
 }
-
-export namespace ProjectPermission {
-  export type AsObject = {
-    project: string,
-    permissionsList: Array<string>,
-  }
+/**
+ * @generated from message api.v1.TokenServiceCreateResponse
+ */
+export declare class TokenServiceCreateResponse extends Message<TokenServiceCreateResponse> {
+    /**
+     * @generated from field: string token = 1;
+     */
+    token: string;
+    constructor(data?: PartialMessage<TokenServiceCreateResponse>);
+    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
+    static readonly typeName = "api.v1.TokenServiceCreateResponse";
+    static readonly fields: FieldList;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): TokenServiceCreateResponse;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): TokenServiceCreateResponse;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): TokenServiceCreateResponse;
+    static equals(a: TokenServiceCreateResponse | PlainMessage<TokenServiceCreateResponse> | undefined, b: TokenServiceCreateResponse | PlainMessage<TokenServiceCreateResponse> | undefined): boolean;
 }
-
-export class TokenRole extends jspb.Message {
-  getSubject(): string;
-  setSubject(value: string): TokenRole;
-
-  getRole(): string;
-  setRole(value: string): TokenRole;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): TokenRole.AsObject;
-  static toObject(includeInstance: boolean, msg: TokenRole): TokenRole.AsObject;
-  static serializeBinaryToWriter(message: TokenRole, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): TokenRole;
-  static deserializeBinaryFromReader(message: TokenRole, reader: jspb.BinaryReader): TokenRole;
-}
-
-export namespace TokenRole {
-  export type AsObject = {
-    subject: string,
-    role: string,
-  }
-}
-
-export class TokenServiceCreateResponse extends jspb.Message {
-  getToken(): string;
-  setToken(value: string): TokenServiceCreateResponse;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): TokenServiceCreateResponse.AsObject;
-  static toObject(includeInstance: boolean, msg: TokenServiceCreateResponse): TokenServiceCreateResponse.AsObject;
-  static serializeBinaryToWriter(message: TokenServiceCreateResponse, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): TokenServiceCreateResponse;
-  static deserializeBinaryFromReader(message: TokenServiceCreateResponse, reader: jspb.BinaryReader): TokenServiceCreateResponse;
-}
-
-export namespace TokenServiceCreateResponse {
-  export type AsObject = {
-    token: string,
-  }
-}
-

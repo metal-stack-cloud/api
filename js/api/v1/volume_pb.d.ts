@@ -1,402 +1,362 @@
-import * as jspb from 'google-protobuf'
-
-import * as api_v1_common_pb from '../../api/v1/common_pb';
-import * as google_api_annotations_pb from '../../google/api/annotations_pb';
-import * as google_protobuf_timestamp_pb from 'google-protobuf/google/protobuf/timestamp_pb';
-import * as validate_validate_pb from '../../validate/validate_pb';
-
-
-export class Volume extends jspb.Message {
-  getUuid(): string;
-  setUuid(value: string): Volume;
-
-  getName(): string;
-  setName(value: string): Volume;
-
-  getProject(): string;
-  setProject(value: string): Volume;
-
-  getPartition(): string;
-  setPartition(value: string): Volume;
-
-  getStorageClass(): string;
-  setStorageClass(value: string): Volume;
-
-  getSize(): number;
-  setSize(value: number): Volume;
-
-  getUsage(): number;
-  setUsage(value: number): Volume;
-
-  getState(): string;
-  setState(value: string): Volume;
-
-  getAttachedToList(): Array<string>;
-  setAttachedToList(value: Array<string>): Volume;
-  clearAttachedToList(): Volume;
-  addAttachedTo(value: string, index?: number): Volume;
-
-  getSourceSnapshotUuid(): string;
-  setSourceSnapshotUuid(value: string): Volume;
-
-  getSourceSnapshotName(): string;
-  setSourceSnapshotName(value: string): Volume;
-
-  getCreatedAt(): google_protobuf_timestamp_pb.Timestamp | undefined;
-  setCreatedAt(value?: google_protobuf_timestamp_pb.Timestamp): Volume;
-  hasCreatedAt(): boolean;
-  clearCreatedAt(): Volume;
-
-  getUpdatedAt(): google_protobuf_timestamp_pb.Timestamp | undefined;
-  setUpdatedAt(value?: google_protobuf_timestamp_pb.Timestamp): Volume;
-  hasUpdatedAt(): boolean;
-  clearUpdatedAt(): Volume;
-
-  getDeletedAt(): google_protobuf_timestamp_pb.Timestamp | undefined;
-  setDeletedAt(value?: google_protobuf_timestamp_pb.Timestamp): Volume;
-  hasDeletedAt(): boolean;
-  clearDeletedAt(): Volume;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): Volume.AsObject;
-  static toObject(includeInstance: boolean, msg: Volume): Volume.AsObject;
-  static serializeBinaryToWriter(message: Volume, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): Volume;
-  static deserializeBinaryFromReader(message: Volume, reader: jspb.BinaryReader): Volume;
+import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
+import { Message, Timestamp } from "@bufbuild/protobuf";
+/**
+ * Types
+ *
+ * @generated from message api.v1.Volume
+ */
+export declare class Volume extends Message<Volume> {
+    /**
+     * @generated from field: string uuid = 1;
+     */
+    uuid: string;
+    /**
+     * @generated from field: string name = 2;
+     */
+    name: string;
+    /**
+     * @generated from field: string project = 3;
+     */
+    project: string;
+    /**
+     * @generated from field: string partition = 4;
+     */
+    partition: string;
+    /**
+     * @generated from field: string storage_class = 5;
+     */
+    storageClass: string;
+    /**
+     * @generated from field: uint64 size = 6;
+     */
+    size: bigint;
+    /**
+     * @generated from field: uint64 usage = 7;
+     */
+    usage: bigint;
+    /**
+     * @generated from field: string state = 8;
+     */
+    state: string;
+    /**
+     * @generated from field: repeated string attached_to = 9;
+     */
+    attachedTo: string[];
+    /**
+     * @generated from field: string source_snapshot_uuid = 10;
+     */
+    sourceSnapshotUuid: string;
+    /**
+     * @generated from field: string source_snapshot_name = 11;
+     */
+    sourceSnapshotName: string;
+    /**
+     * @generated from field: google.protobuf.Timestamp created_at = 20;
+     */
+    createdAt?: Timestamp;
+    /**
+     * @generated from field: google.protobuf.Timestamp updated_at = 21;
+     */
+    updatedAt?: Timestamp;
+    /**
+     * @generated from field: google.protobuf.Timestamp deleted_at = 22;
+     */
+    deletedAt?: Timestamp;
+    constructor(data?: PartialMessage<Volume>);
+    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
+    static readonly typeName = "api.v1.Volume";
+    static readonly fields: FieldList;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Volume;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): Volume;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): Volume;
+    static equals(a: Volume | PlainMessage<Volume> | undefined, b: Volume | PlainMessage<Volume> | undefined): boolean;
 }
-
-export namespace Volume {
-  export type AsObject = {
-    uuid: string,
-    name: string,
-    project: string,
-    partition: string,
-    storageClass: string,
-    size: number,
-    usage: number,
-    state: string,
-    attachedToList: Array<string>,
-    sourceSnapshotUuid: string,
-    sourceSnapshotName: string,
-    createdAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-    updatedAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-    deletedAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-  }
+/**
+ * @generated from message api.v1.Snapshot
+ */
+export declare class Snapshot extends Message<Snapshot> {
+    /**
+     * @generated from field: string uuid = 1;
+     */
+    uuid: string;
+    /**
+     * @generated from field: string name = 2;
+     */
+    name: string;
+    /**
+     * @generated from field: string project = 3;
+     */
+    project: string;
+    /**
+     * @generated from field: string partition = 4;
+     */
+    partition: string;
+    /**
+     * @generated from field: string storage_class = 5;
+     */
+    storageClass: string;
+    /**
+     * @generated from field: uint64 size = 6;
+     */
+    size: bigint;
+    /**
+     * @generated from field: uint64 usage = 7;
+     */
+    usage: bigint;
+    /**
+     * @generated from field: string state = 8;
+     */
+    state: string;
+    /**
+     * @generated from field: string source_volume_uuid = 10;
+     */
+    sourceVolumeUuid: string;
+    /**
+     * @generated from field: string source_volume_name = 11;
+     */
+    sourceVolumeName: string;
+    /**
+     * @generated from field: google.protobuf.Timestamp created_at = 20;
+     */
+    createdAt?: Timestamp;
+    /**
+     * @generated from field: google.protobuf.Timestamp updated_at = 21;
+     */
+    updatedAt?: Timestamp;
+    /**
+     * @generated from field: google.protobuf.Timestamp deleted_at = 22;
+     */
+    deletedAt?: Timestamp;
+    constructor(data?: PartialMessage<Snapshot>);
+    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
+    static readonly typeName = "api.v1.Snapshot";
+    static readonly fields: FieldList;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Snapshot;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): Snapshot;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): Snapshot;
+    static equals(a: Snapshot | PlainMessage<Snapshot> | undefined, b: Snapshot | PlainMessage<Snapshot> | undefined): boolean;
 }
-
-export class Snapshot extends jspb.Message {
-  getUuid(): string;
-  setUuid(value: string): Snapshot;
-
-  getName(): string;
-  setName(value: string): Snapshot;
-
-  getProject(): string;
-  setProject(value: string): Snapshot;
-
-  getPartition(): string;
-  setPartition(value: string): Snapshot;
-
-  getStorageClass(): string;
-  setStorageClass(value: string): Snapshot;
-
-  getSize(): number;
-  setSize(value: number): Snapshot;
-
-  getUsage(): number;
-  setUsage(value: number): Snapshot;
-
-  getState(): string;
-  setState(value: string): Snapshot;
-
-  getSourceVolumeUuid(): string;
-  setSourceVolumeUuid(value: string): Snapshot;
-
-  getSourceVolumeName(): string;
-  setSourceVolumeName(value: string): Snapshot;
-
-  getCreatedAt(): google_protobuf_timestamp_pb.Timestamp | undefined;
-  setCreatedAt(value?: google_protobuf_timestamp_pb.Timestamp): Snapshot;
-  hasCreatedAt(): boolean;
-  clearCreatedAt(): Snapshot;
-
-  getUpdatedAt(): google_protobuf_timestamp_pb.Timestamp | undefined;
-  setUpdatedAt(value?: google_protobuf_timestamp_pb.Timestamp): Snapshot;
-  hasUpdatedAt(): boolean;
-  clearUpdatedAt(): Snapshot;
-
-  getDeletedAt(): google_protobuf_timestamp_pb.Timestamp | undefined;
-  setDeletedAt(value?: google_protobuf_timestamp_pb.Timestamp): Snapshot;
-  hasDeletedAt(): boolean;
-  clearDeletedAt(): Snapshot;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): Snapshot.AsObject;
-  static toObject(includeInstance: boolean, msg: Snapshot): Snapshot.AsObject;
-  static serializeBinaryToWriter(message: Snapshot, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): Snapshot;
-  static deserializeBinaryFromReader(message: Snapshot, reader: jspb.BinaryReader): Snapshot;
+/**
+ * Requests
+ *
+ * @generated from message api.v1.VolumeServiceGetRequest
+ */
+export declare class VolumeServiceGetRequest extends Message<VolumeServiceGetRequest> {
+    /**
+     * @generated from field: string uuid = 1;
+     */
+    uuid: string;
+    /**
+     * @generated from field: string project = 2;
+     */
+    project: string;
+    constructor(data?: PartialMessage<VolumeServiceGetRequest>);
+    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
+    static readonly typeName = "api.v1.VolumeServiceGetRequest";
+    static readonly fields: FieldList;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): VolumeServiceGetRequest;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): VolumeServiceGetRequest;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): VolumeServiceGetRequest;
+    static equals(a: VolumeServiceGetRequest | PlainMessage<VolumeServiceGetRequest> | undefined, b: VolumeServiceGetRequest | PlainMessage<VolumeServiceGetRequest> | undefined): boolean;
 }
-
-export namespace Snapshot {
-  export type AsObject = {
-    uuid: string,
-    name: string,
-    project: string,
-    partition: string,
-    storageClass: string,
-    size: number,
-    usage: number,
-    state: string,
-    sourceVolumeUuid: string,
-    sourceVolumeName: string,
-    createdAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-    updatedAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-    deletedAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-  }
+/**
+ * @generated from message api.v1.VolumeServiceListRequest
+ */
+export declare class VolumeServiceListRequest extends Message<VolumeServiceListRequest> {
+    /**
+     * @generated from field: string project = 2;
+     */
+    project: string;
+    constructor(data?: PartialMessage<VolumeServiceListRequest>);
+    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
+    static readonly typeName = "api.v1.VolumeServiceListRequest";
+    static readonly fields: FieldList;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): VolumeServiceListRequest;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): VolumeServiceListRequest;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): VolumeServiceListRequest;
+    static equals(a: VolumeServiceListRequest | PlainMessage<VolumeServiceListRequest> | undefined, b: VolumeServiceListRequest | PlainMessage<VolumeServiceListRequest> | undefined): boolean;
 }
-
-export class VolumeServiceGetRequest extends jspb.Message {
-  getUuid(): string;
-  setUuid(value: string): VolumeServiceGetRequest;
-
-  getProject(): string;
-  setProject(value: string): VolumeServiceGetRequest;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): VolumeServiceGetRequest.AsObject;
-  static toObject(includeInstance: boolean, msg: VolumeServiceGetRequest): VolumeServiceGetRequest.AsObject;
-  static serializeBinaryToWriter(message: VolumeServiceGetRequest, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): VolumeServiceGetRequest;
-  static deserializeBinaryFromReader(message: VolumeServiceGetRequest, reader: jspb.BinaryReader): VolumeServiceGetRequest;
+/**
+ * @generated from message api.v1.VolumeServiceDeleteRequest
+ */
+export declare class VolumeServiceDeleteRequest extends Message<VolumeServiceDeleteRequest> {
+    /**
+     * @generated from field: string uuid = 1;
+     */
+    uuid: string;
+    /**
+     * @generated from field: string project = 2;
+     */
+    project: string;
+    constructor(data?: PartialMessage<VolumeServiceDeleteRequest>);
+    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
+    static readonly typeName = "api.v1.VolumeServiceDeleteRequest";
+    static readonly fields: FieldList;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): VolumeServiceDeleteRequest;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): VolumeServiceDeleteRequest;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): VolumeServiceDeleteRequest;
+    static equals(a: VolumeServiceDeleteRequest | PlainMessage<VolumeServiceDeleteRequest> | undefined, b: VolumeServiceDeleteRequest | PlainMessage<VolumeServiceDeleteRequest> | undefined): boolean;
 }
-
-export namespace VolumeServiceGetRequest {
-  export type AsObject = {
-    uuid: string,
-    project: string,
-  }
+/**
+ * @generated from message api.v1.SnapshotServiceGetRequest
+ */
+export declare class SnapshotServiceGetRequest extends Message<SnapshotServiceGetRequest> {
+    /**
+     * @generated from field: string uuid = 1;
+     */
+    uuid: string;
+    /**
+     * @generated from field: string project = 2;
+     */
+    project: string;
+    constructor(data?: PartialMessage<SnapshotServiceGetRequest>);
+    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
+    static readonly typeName = "api.v1.SnapshotServiceGetRequest";
+    static readonly fields: FieldList;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): SnapshotServiceGetRequest;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): SnapshotServiceGetRequest;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): SnapshotServiceGetRequest;
+    static equals(a: SnapshotServiceGetRequest | PlainMessage<SnapshotServiceGetRequest> | undefined, b: SnapshotServiceGetRequest | PlainMessage<SnapshotServiceGetRequest> | undefined): boolean;
 }
-
-export class VolumeServiceListRequest extends jspb.Message {
-  getProject(): string;
-  setProject(value: string): VolumeServiceListRequest;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): VolumeServiceListRequest.AsObject;
-  static toObject(includeInstance: boolean, msg: VolumeServiceListRequest): VolumeServiceListRequest.AsObject;
-  static serializeBinaryToWriter(message: VolumeServiceListRequest, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): VolumeServiceListRequest;
-  static deserializeBinaryFromReader(message: VolumeServiceListRequest, reader: jspb.BinaryReader): VolumeServiceListRequest;
+/**
+ * @generated from message api.v1.SnapshotServiceListRequest
+ */
+export declare class SnapshotServiceListRequest extends Message<SnapshotServiceListRequest> {
+    /**
+     * @generated from field: string project = 2;
+     */
+    project: string;
+    constructor(data?: PartialMessage<SnapshotServiceListRequest>);
+    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
+    static readonly typeName = "api.v1.SnapshotServiceListRequest";
+    static readonly fields: FieldList;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): SnapshotServiceListRequest;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): SnapshotServiceListRequest;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): SnapshotServiceListRequest;
+    static equals(a: SnapshotServiceListRequest | PlainMessage<SnapshotServiceListRequest> | undefined, b: SnapshotServiceListRequest | PlainMessage<SnapshotServiceListRequest> | undefined): boolean;
 }
-
-export namespace VolumeServiceListRequest {
-  export type AsObject = {
-    project: string,
-  }
+/**
+ * @generated from message api.v1.SnapshotServiceDeleteRequest
+ */
+export declare class SnapshotServiceDeleteRequest extends Message<SnapshotServiceDeleteRequest> {
+    /**
+     * @generated from field: string uuid = 1;
+     */
+    uuid: string;
+    /**
+     * @generated from field: string project = 2;
+     */
+    project: string;
+    constructor(data?: PartialMessage<SnapshotServiceDeleteRequest>);
+    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
+    static readonly typeName = "api.v1.SnapshotServiceDeleteRequest";
+    static readonly fields: FieldList;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): SnapshotServiceDeleteRequest;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): SnapshotServiceDeleteRequest;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): SnapshotServiceDeleteRequest;
+    static equals(a: SnapshotServiceDeleteRequest | PlainMessage<SnapshotServiceDeleteRequest> | undefined, b: SnapshotServiceDeleteRequest | PlainMessage<SnapshotServiceDeleteRequest> | undefined): boolean;
 }
-
-export class VolumeServiceDeleteRequest extends jspb.Message {
-  getUuid(): string;
-  setUuid(value: string): VolumeServiceDeleteRequest;
-
-  getProject(): string;
-  setProject(value: string): VolumeServiceDeleteRequest;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): VolumeServiceDeleteRequest.AsObject;
-  static toObject(includeInstance: boolean, msg: VolumeServiceDeleteRequest): VolumeServiceDeleteRequest.AsObject;
-  static serializeBinaryToWriter(message: VolumeServiceDeleteRequest, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): VolumeServiceDeleteRequest;
-  static deserializeBinaryFromReader(message: VolumeServiceDeleteRequest, reader: jspb.BinaryReader): VolumeServiceDeleteRequest;
+/**
+ * Responses
+ *
+ * @generated from message api.v1.VolumeServiceGetResponse
+ */
+export declare class VolumeServiceGetResponse extends Message<VolumeServiceGetResponse> {
+    /**
+     * @generated from field: api.v1.Volume volume = 1;
+     */
+    volume?: Volume;
+    constructor(data?: PartialMessage<VolumeServiceGetResponse>);
+    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
+    static readonly typeName = "api.v1.VolumeServiceGetResponse";
+    static readonly fields: FieldList;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): VolumeServiceGetResponse;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): VolumeServiceGetResponse;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): VolumeServiceGetResponse;
+    static equals(a: VolumeServiceGetResponse | PlainMessage<VolumeServiceGetResponse> | undefined, b: VolumeServiceGetResponse | PlainMessage<VolumeServiceGetResponse> | undefined): boolean;
 }
-
-export namespace VolumeServiceDeleteRequest {
-  export type AsObject = {
-    uuid: string,
-    project: string,
-  }
+/**
+ * @generated from message api.v1.VolumeServiceListResponse
+ */
+export declare class VolumeServiceListResponse extends Message<VolumeServiceListResponse> {
+    /**
+     * @generated from field: repeated api.v1.Volume volumes = 1;
+     */
+    volumes: Volume[];
+    constructor(data?: PartialMessage<VolumeServiceListResponse>);
+    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
+    static readonly typeName = "api.v1.VolumeServiceListResponse";
+    static readonly fields: FieldList;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): VolumeServiceListResponse;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): VolumeServiceListResponse;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): VolumeServiceListResponse;
+    static equals(a: VolumeServiceListResponse | PlainMessage<VolumeServiceListResponse> | undefined, b: VolumeServiceListResponse | PlainMessage<VolumeServiceListResponse> | undefined): boolean;
 }
-
-export class SnapshotServiceGetRequest extends jspb.Message {
-  getUuid(): string;
-  setUuid(value: string): SnapshotServiceGetRequest;
-
-  getProject(): string;
-  setProject(value: string): SnapshotServiceGetRequest;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): SnapshotServiceGetRequest.AsObject;
-  static toObject(includeInstance: boolean, msg: SnapshotServiceGetRequest): SnapshotServiceGetRequest.AsObject;
-  static serializeBinaryToWriter(message: SnapshotServiceGetRequest, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): SnapshotServiceGetRequest;
-  static deserializeBinaryFromReader(message: SnapshotServiceGetRequest, reader: jspb.BinaryReader): SnapshotServiceGetRequest;
+/**
+ * @generated from message api.v1.VolumeServiceDeleteResponse
+ */
+export declare class VolumeServiceDeleteResponse extends Message<VolumeServiceDeleteResponse> {
+    /**
+     * @generated from field: api.v1.Volume volume = 1;
+     */
+    volume?: Volume;
+    constructor(data?: PartialMessage<VolumeServiceDeleteResponse>);
+    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
+    static readonly typeName = "api.v1.VolumeServiceDeleteResponse";
+    static readonly fields: FieldList;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): VolumeServiceDeleteResponse;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): VolumeServiceDeleteResponse;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): VolumeServiceDeleteResponse;
+    static equals(a: VolumeServiceDeleteResponse | PlainMessage<VolumeServiceDeleteResponse> | undefined, b: VolumeServiceDeleteResponse | PlainMessage<VolumeServiceDeleteResponse> | undefined): boolean;
 }
-
-export namespace SnapshotServiceGetRequest {
-  export type AsObject = {
-    uuid: string,
-    project: string,
-  }
+/**
+ * @generated from message api.v1.SnapshotServiceGetResponse
+ */
+export declare class SnapshotServiceGetResponse extends Message<SnapshotServiceGetResponse> {
+    /**
+     * @generated from field: api.v1.Snapshot snapshot = 1;
+     */
+    snapshot?: Snapshot;
+    constructor(data?: PartialMessage<SnapshotServiceGetResponse>);
+    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
+    static readonly typeName = "api.v1.SnapshotServiceGetResponse";
+    static readonly fields: FieldList;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): SnapshotServiceGetResponse;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): SnapshotServiceGetResponse;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): SnapshotServiceGetResponse;
+    static equals(a: SnapshotServiceGetResponse | PlainMessage<SnapshotServiceGetResponse> | undefined, b: SnapshotServiceGetResponse | PlainMessage<SnapshotServiceGetResponse> | undefined): boolean;
 }
-
-export class SnapshotServiceListRequest extends jspb.Message {
-  getProject(): string;
-  setProject(value: string): SnapshotServiceListRequest;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): SnapshotServiceListRequest.AsObject;
-  static toObject(includeInstance: boolean, msg: SnapshotServiceListRequest): SnapshotServiceListRequest.AsObject;
-  static serializeBinaryToWriter(message: SnapshotServiceListRequest, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): SnapshotServiceListRequest;
-  static deserializeBinaryFromReader(message: SnapshotServiceListRequest, reader: jspb.BinaryReader): SnapshotServiceListRequest;
+/**
+ * @generated from message api.v1.SnapshotServiceListResponse
+ */
+export declare class SnapshotServiceListResponse extends Message<SnapshotServiceListResponse> {
+    /**
+     * @generated from field: repeated api.v1.Snapshot snapshots = 1;
+     */
+    snapshots: Snapshot[];
+    constructor(data?: PartialMessage<SnapshotServiceListResponse>);
+    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
+    static readonly typeName = "api.v1.SnapshotServiceListResponse";
+    static readonly fields: FieldList;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): SnapshotServiceListResponse;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): SnapshotServiceListResponse;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): SnapshotServiceListResponse;
+    static equals(a: SnapshotServiceListResponse | PlainMessage<SnapshotServiceListResponse> | undefined, b: SnapshotServiceListResponse | PlainMessage<SnapshotServiceListResponse> | undefined): boolean;
 }
-
-export namespace SnapshotServiceListRequest {
-  export type AsObject = {
-    project: string,
-  }
+/**
+ * @generated from message api.v1.SnapshotServiceDeleteResponse
+ */
+export declare class SnapshotServiceDeleteResponse extends Message<SnapshotServiceDeleteResponse> {
+    /**
+     * @generated from field: api.v1.Snapshot snapshot = 1;
+     */
+    snapshot?: Snapshot;
+    constructor(data?: PartialMessage<SnapshotServiceDeleteResponse>);
+    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
+    static readonly typeName = "api.v1.SnapshotServiceDeleteResponse";
+    static readonly fields: FieldList;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): SnapshotServiceDeleteResponse;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): SnapshotServiceDeleteResponse;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): SnapshotServiceDeleteResponse;
+    static equals(a: SnapshotServiceDeleteResponse | PlainMessage<SnapshotServiceDeleteResponse> | undefined, b: SnapshotServiceDeleteResponse | PlainMessage<SnapshotServiceDeleteResponse> | undefined): boolean;
 }
-
-export class SnapshotServiceDeleteRequest extends jspb.Message {
-  getUuid(): string;
-  setUuid(value: string): SnapshotServiceDeleteRequest;
-
-  getProject(): string;
-  setProject(value: string): SnapshotServiceDeleteRequest;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): SnapshotServiceDeleteRequest.AsObject;
-  static toObject(includeInstance: boolean, msg: SnapshotServiceDeleteRequest): SnapshotServiceDeleteRequest.AsObject;
-  static serializeBinaryToWriter(message: SnapshotServiceDeleteRequest, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): SnapshotServiceDeleteRequest;
-  static deserializeBinaryFromReader(message: SnapshotServiceDeleteRequest, reader: jspb.BinaryReader): SnapshotServiceDeleteRequest;
-}
-
-export namespace SnapshotServiceDeleteRequest {
-  export type AsObject = {
-    uuid: string,
-    project: string,
-  }
-}
-
-export class VolumeServiceGetResponse extends jspb.Message {
-  getVolume(): Volume | undefined;
-  setVolume(value?: Volume): VolumeServiceGetResponse;
-  hasVolume(): boolean;
-  clearVolume(): VolumeServiceGetResponse;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): VolumeServiceGetResponse.AsObject;
-  static toObject(includeInstance: boolean, msg: VolumeServiceGetResponse): VolumeServiceGetResponse.AsObject;
-  static serializeBinaryToWriter(message: VolumeServiceGetResponse, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): VolumeServiceGetResponse;
-  static deserializeBinaryFromReader(message: VolumeServiceGetResponse, reader: jspb.BinaryReader): VolumeServiceGetResponse;
-}
-
-export namespace VolumeServiceGetResponse {
-  export type AsObject = {
-    volume?: Volume.AsObject,
-  }
-}
-
-export class VolumeServiceListResponse extends jspb.Message {
-  getVolumesList(): Array<Volume>;
-  setVolumesList(value: Array<Volume>): VolumeServiceListResponse;
-  clearVolumesList(): VolumeServiceListResponse;
-  addVolumes(value?: Volume, index?: number): Volume;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): VolumeServiceListResponse.AsObject;
-  static toObject(includeInstance: boolean, msg: VolumeServiceListResponse): VolumeServiceListResponse.AsObject;
-  static serializeBinaryToWriter(message: VolumeServiceListResponse, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): VolumeServiceListResponse;
-  static deserializeBinaryFromReader(message: VolumeServiceListResponse, reader: jspb.BinaryReader): VolumeServiceListResponse;
-}
-
-export namespace VolumeServiceListResponse {
-  export type AsObject = {
-    volumesList: Array<Volume.AsObject>,
-  }
-}
-
-export class VolumeServiceDeleteResponse extends jspb.Message {
-  getVolume(): Volume | undefined;
-  setVolume(value?: Volume): VolumeServiceDeleteResponse;
-  hasVolume(): boolean;
-  clearVolume(): VolumeServiceDeleteResponse;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): VolumeServiceDeleteResponse.AsObject;
-  static toObject(includeInstance: boolean, msg: VolumeServiceDeleteResponse): VolumeServiceDeleteResponse.AsObject;
-  static serializeBinaryToWriter(message: VolumeServiceDeleteResponse, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): VolumeServiceDeleteResponse;
-  static deserializeBinaryFromReader(message: VolumeServiceDeleteResponse, reader: jspb.BinaryReader): VolumeServiceDeleteResponse;
-}
-
-export namespace VolumeServiceDeleteResponse {
-  export type AsObject = {
-    volume?: Volume.AsObject,
-  }
-}
-
-export class SnapshotServiceGetResponse extends jspb.Message {
-  getSnapshot(): Snapshot | undefined;
-  setSnapshot(value?: Snapshot): SnapshotServiceGetResponse;
-  hasSnapshot(): boolean;
-  clearSnapshot(): SnapshotServiceGetResponse;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): SnapshotServiceGetResponse.AsObject;
-  static toObject(includeInstance: boolean, msg: SnapshotServiceGetResponse): SnapshotServiceGetResponse.AsObject;
-  static serializeBinaryToWriter(message: SnapshotServiceGetResponse, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): SnapshotServiceGetResponse;
-  static deserializeBinaryFromReader(message: SnapshotServiceGetResponse, reader: jspb.BinaryReader): SnapshotServiceGetResponse;
-}
-
-export namespace SnapshotServiceGetResponse {
-  export type AsObject = {
-    snapshot?: Snapshot.AsObject,
-  }
-}
-
-export class SnapshotServiceListResponse extends jspb.Message {
-  getSnapshotsList(): Array<Snapshot>;
-  setSnapshotsList(value: Array<Snapshot>): SnapshotServiceListResponse;
-  clearSnapshotsList(): SnapshotServiceListResponse;
-  addSnapshots(value?: Snapshot, index?: number): Snapshot;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): SnapshotServiceListResponse.AsObject;
-  static toObject(includeInstance: boolean, msg: SnapshotServiceListResponse): SnapshotServiceListResponse.AsObject;
-  static serializeBinaryToWriter(message: SnapshotServiceListResponse, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): SnapshotServiceListResponse;
-  static deserializeBinaryFromReader(message: SnapshotServiceListResponse, reader: jspb.BinaryReader): SnapshotServiceListResponse;
-}
-
-export namespace SnapshotServiceListResponse {
-  export type AsObject = {
-    snapshotsList: Array<Snapshot.AsObject>,
-  }
-}
-
-export class SnapshotServiceDeleteResponse extends jspb.Message {
-  getSnapshot(): Snapshot | undefined;
-  setSnapshot(value?: Snapshot): SnapshotServiceDeleteResponse;
-  hasSnapshot(): boolean;
-  clearSnapshot(): SnapshotServiceDeleteResponse;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): SnapshotServiceDeleteResponse.AsObject;
-  static toObject(includeInstance: boolean, msg: SnapshotServiceDeleteResponse): SnapshotServiceDeleteResponse.AsObject;
-  static serializeBinaryToWriter(message: SnapshotServiceDeleteResponse, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): SnapshotServiceDeleteResponse;
-  static deserializeBinaryFromReader(message: SnapshotServiceDeleteResponse, reader: jspb.BinaryReader): SnapshotServiceDeleteResponse;
-}
-
-export namespace SnapshotServiceDeleteResponse {
-  export type AsObject = {
-    snapshot?: Snapshot.AsObject,
-  }
-}
-

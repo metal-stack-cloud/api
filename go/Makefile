@@ -4,5 +4,5 @@ clean:
 
 .PHONY: test
 test:
-	go run ./discover.go
+	go run ./discover.go > permissions/servicepermissions.json
 	go test -v ./...

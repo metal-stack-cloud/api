@@ -1,124 +1,127 @@
-import * as jspb from 'google-protobuf'
-
-import * as api_v1_common_pb from '../../api/v1/common_pb';
-import * as google_protobuf_timestamp_pb from 'google-protobuf/google/protobuf/timestamp_pb';
-
-
-export class MessageServiceListRequest extends jspb.Message {
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): MessageServiceListRequest.AsObject;
-  static toObject(includeInstance: boolean, msg: MessageServiceListRequest): MessageServiceListRequest.AsObject;
-  static serializeBinaryToWriter(message: MessageServiceListRequest, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): MessageServiceListRequest;
-  static deserializeBinaryFromReader(message: MessageServiceListRequest, reader: jspb.BinaryReader): MessageServiceListRequest;
+import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
+import { Message as Message$1, Timestamp } from "@bufbuild/protobuf";
+/**
+ * @generated from enum status.v1.MessageKind
+ */
+export declare enum MessageKind {
+    /**
+     * @generated from enum value: MESSAGE_KIND_UNSPECIFIED = 0;
+     */
+    UNSPECIFIED = 0,
+    /**
+     * @generated from enum value: MESSAGE_KIND_INFO = 1;
+     */
+    INFO = 1,
+    /**
+     * @generated from enum value: MESSAGE_KIND_INCIDENT = 2;
+     */
+    INCIDENT = 2,
+    /**
+     * @generated from enum value: MESSAGE_KIND_CHANGE = 3;
+     */
+    CHANGE = 3,
+    /**
+     * @generated from enum value: MESSAGE_KIND_RESOLVED = 4;
+     */
+    RESOLVED = 4,
+    /**
+     * @generated from enum value: MESSAGE_KIND_UPDATE = 5;
+     */
+    UPDATE = 5
 }
-
-export namespace MessageServiceListRequest {
-  export type AsObject = {
-  }
+/**
+ * @generated from message status.v1.MessageServiceListRequest
+ */
+export declare class MessageServiceListRequest extends Message$1<MessageServiceListRequest> {
+    constructor(data?: PartialMessage<MessageServiceListRequest>);
+    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
+    static readonly typeName = "status.v1.MessageServiceListRequest";
+    static readonly fields: FieldList;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): MessageServiceListRequest;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): MessageServiceListRequest;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): MessageServiceListRequest;
+    static equals(a: MessageServiceListRequest | PlainMessage<MessageServiceListRequest> | undefined, b: MessageServiceListRequest | PlainMessage<MessageServiceListRequest> | undefined): boolean;
 }
-
-export class MessageServiceListResponse extends jspb.Message {
-  getItemsList(): Array<Message>;
-  setItemsList(value: Array<Message>): MessageServiceListResponse;
-  clearItemsList(): MessageServiceListResponse;
-  addItems(value?: Message, index?: number): Message;
-
-  getPinnedItemsList(): Array<Message>;
-  setPinnedItemsList(value: Array<Message>): MessageServiceListResponse;
-  clearPinnedItemsList(): MessageServiceListResponse;
-  addPinnedItems(value?: Message, index?: number): Message;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): MessageServiceListResponse.AsObject;
-  static toObject(includeInstance: boolean, msg: MessageServiceListResponse): MessageServiceListResponse.AsObject;
-  static serializeBinaryToWriter(message: MessageServiceListResponse, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): MessageServiceListResponse;
-  static deserializeBinaryFromReader(message: MessageServiceListResponse, reader: jspb.BinaryReader): MessageServiceListResponse;
+/**
+ * @generated from message status.v1.MessageServiceListResponse
+ */
+export declare class MessageServiceListResponse extends Message$1<MessageServiceListResponse> {
+    /**
+     * @generated from field: repeated status.v1.Message items = 1;
+     */
+    items: Message[];
+    /**
+     * @generated from field: repeated status.v1.Message pinned_items = 2;
+     */
+    pinnedItems: Message[];
+    constructor(data?: PartialMessage<MessageServiceListResponse>);
+    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
+    static readonly typeName = "status.v1.MessageServiceListResponse";
+    static readonly fields: FieldList;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): MessageServiceListResponse;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): MessageServiceListResponse;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): MessageServiceListResponse;
+    static equals(a: MessageServiceListResponse | PlainMessage<MessageServiceListResponse> | undefined, b: MessageServiceListResponse | PlainMessage<MessageServiceListResponse> | undefined): boolean;
 }
-
-export namespace MessageServiceListResponse {
-  export type AsObject = {
-    itemsList: Array<Message.AsObject>,
-    pinnedItemsList: Array<Message.AsObject>,
-  }
+/**
+ * @generated from message status.v1.Message
+ */
+export declare class Message extends Message$1<Message> {
+    /**
+     * @generated from field: string id = 1;
+     */
+    id: string;
+    /**
+     * @generated from field: string text = 2;
+     */
+    text: string;
+    /**
+     * @generated from field: status.v1.MessageKind kind = 3;
+     */
+    kind: MessageKind;
+    /**
+     * @generated from field: google.protobuf.Timestamp timestamp = 4;
+     */
+    timestamp?: Timestamp;
+    /**
+     * @generated from field: repeated status.v1.ReplyMessage replies = 5;
+     */
+    replies: ReplyMessage[];
+    constructor(data?: PartialMessage<Message>);
+    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
+    static readonly typeName = "status.v1.Message";
+    static readonly fields: FieldList;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Message;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): Message;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): Message;
+    static equals(a: Message | PlainMessage<Message> | undefined, b: Message | PlainMessage<Message> | undefined): boolean;
 }
-
-export class Message extends jspb.Message {
-  getId(): string;
-  setId(value: string): Message;
-
-  getText(): string;
-  setText(value: string): Message;
-
-  getKind(): MessageKind;
-  setKind(value: MessageKind): Message;
-
-  getTimestamp(): google_protobuf_timestamp_pb.Timestamp | undefined;
-  setTimestamp(value?: google_protobuf_timestamp_pb.Timestamp): Message;
-  hasTimestamp(): boolean;
-  clearTimestamp(): Message;
-
-  getRepliesList(): Array<ReplyMessage>;
-  setRepliesList(value: Array<ReplyMessage>): Message;
-  clearRepliesList(): Message;
-  addReplies(value?: ReplyMessage, index?: number): ReplyMessage;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): Message.AsObject;
-  static toObject(includeInstance: boolean, msg: Message): Message.AsObject;
-  static serializeBinaryToWriter(message: Message, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): Message;
-  static deserializeBinaryFromReader(message: Message, reader: jspb.BinaryReader): Message;
-}
-
-export namespace Message {
-  export type AsObject = {
-    id: string,
-    text: string,
-    kind: MessageKind,
-    timestamp?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-    repliesList: Array<ReplyMessage.AsObject>,
-  }
-}
-
-export class ReplyMessage extends jspb.Message {
-  getId(): string;
-  setId(value: string): ReplyMessage;
-
-  getText(): string;
-  setText(value: string): ReplyMessage;
-
-  getKind(): MessageKind;
-  setKind(value: MessageKind): ReplyMessage;
-
-  getTimestamp(): google_protobuf_timestamp_pb.Timestamp | undefined;
-  setTimestamp(value?: google_protobuf_timestamp_pb.Timestamp): ReplyMessage;
-  hasTimestamp(): boolean;
-  clearTimestamp(): ReplyMessage;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): ReplyMessage.AsObject;
-  static toObject(includeInstance: boolean, msg: ReplyMessage): ReplyMessage.AsObject;
-  static serializeBinaryToWriter(message: ReplyMessage, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): ReplyMessage;
-  static deserializeBinaryFromReader(message: ReplyMessage, reader: jspb.BinaryReader): ReplyMessage;
-}
-
-export namespace ReplyMessage {
-  export type AsObject = {
-    id: string,
-    text: string,
-    kind: MessageKind,
-    timestamp?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-  }
-}
-
-export enum MessageKind { 
-  MESSAGE_KIND_UNSPECIFIED = 0,
-  MESSAGE_KIND_INFO = 1,
-  MESSAGE_KIND_INCIDENT = 2,
-  MESSAGE_KIND_CHANGE = 3,
-  MESSAGE_KIND_RESOLVED = 4,
-  MESSAGE_KIND_UPDATE = 5,
+/**
+ * @generated from message status.v1.ReplyMessage
+ */
+export declare class ReplyMessage extends Message$1<ReplyMessage> {
+    /**
+     * @generated from field: string id = 1;
+     */
+    id: string;
+    /**
+     * @generated from field: string text = 2;
+     */
+    text: string;
+    /**
+     * @generated from field: status.v1.MessageKind kind = 3;
+     */
+    kind: MessageKind;
+    /**
+     * @generated from field: google.protobuf.Timestamp timestamp = 4;
+     */
+    timestamp?: Timestamp;
+    constructor(data?: PartialMessage<ReplyMessage>);
+    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
+    static readonly typeName = "status.v1.ReplyMessage";
+    static readonly fields: FieldList;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ReplyMessage;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ReplyMessage;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ReplyMessage;
+    static equals(a: ReplyMessage | PlainMessage<ReplyMessage> | undefined, b: ReplyMessage | PlainMessage<ReplyMessage> | undefined): boolean;
 }

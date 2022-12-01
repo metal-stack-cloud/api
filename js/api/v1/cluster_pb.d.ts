@@ -1,636 +1,516 @@
-import * as jspb from 'google-protobuf'
-
-import * as api_v1_common_pb from '../../api/v1/common_pb';
-import * as google_api_annotations_pb from '../../google/api/annotations_pb';
-import * as google_protobuf_timestamp_pb from 'google-protobuf/google/protobuf/timestamp_pb';
-import * as validate_validate_pb from '../../validate/validate_pb';
-
-
-export class Cluster extends jspb.Message {
-  getUuid(): string;
-  setUuid(value: string): Cluster;
-
-  getName(): string;
-  setName(value: string): Cluster;
-
-  getProject(): string;
-  setProject(value: string): Cluster;
-
-  getPartition(): string;
-  setPartition(value: string): Cluster;
-
-  getKubernetes(): KubernetesSpec | undefined;
-  setKubernetes(value?: KubernetesSpec): Cluster;
-  hasKubernetes(): boolean;
-  clearKubernetes(): Cluster;
-
-  getWorkersList(): Array<Worker>;
-  setWorkersList(value: Array<Worker>): Cluster;
-  clearWorkersList(): Cluster;
-  addWorkers(value?: Worker, index?: number): Worker;
-
-  getMaintenance(): Maintenance | undefined;
-  setMaintenance(value?: Maintenance): Cluster;
-  hasMaintenance(): boolean;
-  clearMaintenance(): Cluster;
-
-  getCreatedAt(): google_protobuf_timestamp_pb.Timestamp | undefined;
-  setCreatedAt(value?: google_protobuf_timestamp_pb.Timestamp): Cluster;
-  hasCreatedAt(): boolean;
-  clearCreatedAt(): Cluster;
-
-  getUpdatedAt(): google_protobuf_timestamp_pb.Timestamp | undefined;
-  setUpdatedAt(value?: google_protobuf_timestamp_pb.Timestamp): Cluster;
-  hasUpdatedAt(): boolean;
-  clearUpdatedAt(): Cluster;
-
-  getDeletedAt(): google_protobuf_timestamp_pb.Timestamp | undefined;
-  setDeletedAt(value?: google_protobuf_timestamp_pb.Timestamp): Cluster;
-  hasDeletedAt(): boolean;
-  clearDeletedAt(): Cluster;
-
-  getStatus(): ClusterStatus | undefined;
-  setStatus(value?: ClusterStatus): Cluster;
-  hasStatus(): boolean;
-  clearStatus(): Cluster;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): Cluster.AsObject;
-  static toObject(includeInstance: boolean, msg: Cluster): Cluster.AsObject;
-  static serializeBinaryToWriter(message: Cluster, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): Cluster;
-  static deserializeBinaryFromReader(message: Cluster, reader: jspb.BinaryReader): Cluster;
+import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
+import { Message, Timestamp } from "@bufbuild/protobuf";
+/**
+ * Types
+ *
+ * @generated from message api.v1.Cluster
+ */
+export declare class Cluster extends Message<Cluster> {
+    /**
+     * @generated from field: string uuid = 1;
+     */
+    uuid: string;
+    /**
+     * @generated from field: string name = 2;
+     */
+    name: string;
+    /**
+     * @generated from field: string project = 3;
+     */
+    project: string;
+    /**
+     * partition is part of a region
+     *
+     * @generated from field: string partition = 4;
+     */
+    partition: string;
+    /**
+     * @generated from field: api.v1.KubernetesSpec kubernetes = 5;
+     */
+    kubernetes?: KubernetesSpec;
+    /**
+     * @generated from field: repeated api.v1.Worker workers = 6;
+     */
+    workers: Worker[];
+    /**
+     * @generated from field: api.v1.Maintenance maintenance = 7;
+     */
+    maintenance?: Maintenance;
+    /**
+     * @generated from field: google.protobuf.Timestamp created_at = 10;
+     */
+    createdAt?: Timestamp;
+    /**
+     * @generated from field: google.protobuf.Timestamp updated_at = 11;
+     */
+    updatedAt?: Timestamp;
+    /**
+     * @generated from field: google.protobuf.Timestamp deleted_at = 12;
+     */
+    deletedAt?: Timestamp;
+    /**
+     * @generated from field: api.v1.ClusterStatus status = 20;
+     */
+    status?: ClusterStatus;
+    constructor(data?: PartialMessage<Cluster>);
+    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
+    static readonly typeName = "api.v1.Cluster";
+    static readonly fields: FieldList;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Cluster;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): Cluster;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): Cluster;
+    static equals(a: Cluster | PlainMessage<Cluster> | undefined, b: Cluster | PlainMessage<Cluster> | undefined): boolean;
 }
-
-export namespace Cluster {
-  export type AsObject = {
-    uuid: string,
-    name: string,
-    project: string,
-    partition: string,
-    kubernetes?: KubernetesSpec.AsObject,
-    workersList: Array<Worker.AsObject>,
-    maintenance?: Maintenance.AsObject,
-    createdAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-    updatedAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-    deletedAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-    status?: ClusterStatus.AsObject,
-  }
+/**
+ * @generated from message api.v1.KubernetesSpec
+ */
+export declare class KubernetesSpec extends Message<KubernetesSpec> {
+    /**
+     * @generated from field: string version = 1;
+     */
+    version: string;
+    constructor(data?: PartialMessage<KubernetesSpec>);
+    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
+    static readonly typeName = "api.v1.KubernetesSpec";
+    static readonly fields: FieldList;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): KubernetesSpec;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): KubernetesSpec;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): KubernetesSpec;
+    static equals(a: KubernetesSpec | PlainMessage<KubernetesSpec> | undefined, b: KubernetesSpec | PlainMessage<KubernetesSpec> | undefined): boolean;
 }
-
-export class KubernetesSpec extends jspb.Message {
-  getVersion(): string;
-  setVersion(value: string): KubernetesSpec;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): KubernetesSpec.AsObject;
-  static toObject(includeInstance: boolean, msg: KubernetesSpec): KubernetesSpec.AsObject;
-  static serializeBinaryToWriter(message: KubernetesSpec, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): KubernetesSpec;
-  static deserializeBinaryFromReader(message: KubernetesSpec, reader: jspb.BinaryReader): KubernetesSpec;
+/**
+ * @generated from message api.v1.Maintenance
+ */
+export declare class Maintenance extends Message<Maintenance> {
+    /**
+     * @generated from field: optional bool kubernetes_autoupdate = 1;
+     */
+    kubernetesAutoupdate?: boolean;
+    /**
+     * @generated from field: optional bool machineimage_autoupdate = 2;
+     */
+    machineimageAutoupdate?: boolean;
+    constructor(data?: PartialMessage<Maintenance>);
+    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
+    static readonly typeName = "api.v1.Maintenance";
+    static readonly fields: FieldList;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Maintenance;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): Maintenance;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): Maintenance;
+    static equals(a: Maintenance | PlainMessage<Maintenance> | undefined, b: Maintenance | PlainMessage<Maintenance> | undefined): boolean;
 }
-
-export namespace KubernetesSpec {
-  export type AsObject = {
-    version: string,
-  }
+/**
+ * @generated from message api.v1.Worker
+ */
+export declare class Worker extends Message<Worker> {
+    /**
+     * @generated from field: string name = 1;
+     */
+    name: string;
+    /**
+     * @generated from field: string machine_type = 2;
+     */
+    machineType: string;
+    /**
+     * @generated from field: uint32 minsize = 3;
+     */
+    minsize: number;
+    /**
+     * @generated from field: uint32 maxsize = 4;
+     */
+    maxsize: number;
+    /**
+     * @generated from field: uint32 maxsurge = 5;
+     */
+    maxsurge: number;
+    /**
+     * @generated from field: uint32 maxunavailable = 6;
+     */
+    maxunavailable: number;
+    constructor(data?: PartialMessage<Worker>);
+    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
+    static readonly typeName = "api.v1.Worker";
+    static readonly fields: FieldList;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Worker;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): Worker;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): Worker;
+    static equals(a: Worker | PlainMessage<Worker> | undefined, b: Worker | PlainMessage<Worker> | undefined): boolean;
 }
-
-export class Maintenance extends jspb.Message {
-  getKubernetesAutoupdate(): boolean;
-  setKubernetesAutoupdate(value: boolean): Maintenance;
-  hasKubernetesAutoupdate(): boolean;
-  clearKubernetesAutoupdate(): Maintenance;
-
-  getMachineimageAutoupdate(): boolean;
-  setMachineimageAutoupdate(value: boolean): Maintenance;
-  hasMachineimageAutoupdate(): boolean;
-  clearMachineimageAutoupdate(): Maintenance;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): Maintenance.AsObject;
-  static toObject(includeInstance: boolean, msg: Maintenance): Maintenance.AsObject;
-  static serializeBinaryToWriter(message: Maintenance, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): Maintenance;
-  static deserializeBinaryFromReader(message: Maintenance, reader: jspb.BinaryReader): Maintenance;
+/**
+ * @generated from message api.v1.WorkerUpdate
+ */
+export declare class WorkerUpdate extends Message<WorkerUpdate> {
+    /**
+     * @generated from field: string name = 1;
+     */
+    name: string;
+    /**
+     * @generated from field: optional string machine_type = 2;
+     */
+    machineType?: string;
+    /**
+     * @generated from field: optional uint32 minsize = 3;
+     */
+    minsize?: number;
+    /**
+     * @generated from field: optional uint32 maxsize = 4;
+     */
+    maxsize?: number;
+    /**
+     * @generated from field: optional uint32 maxsurge = 5;
+     */
+    maxsurge?: number;
+    /**
+     * @generated from field: optional uint32 maxunavailable = 6;
+     */
+    maxunavailable?: number;
+    constructor(data?: PartialMessage<WorkerUpdate>);
+    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
+    static readonly typeName = "api.v1.WorkerUpdate";
+    static readonly fields: FieldList;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): WorkerUpdate;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): WorkerUpdate;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): WorkerUpdate;
+    static equals(a: WorkerUpdate | PlainMessage<WorkerUpdate> | undefined, b: WorkerUpdate | PlainMessage<WorkerUpdate> | undefined): boolean;
 }
-
-export namespace Maintenance {
-  export type AsObject = {
-    kubernetesAutoupdate?: boolean,
-    machineimageAutoupdate?: boolean,
-  }
-
-  export enum KubernetesAutoupdateCase { 
-    _KUBERNETES_AUTOUPDATE_NOT_SET = 0,
-    KUBERNETES_AUTOUPDATE = 1,
-  }
-
-  export enum MachineimageAutoupdateCase { 
-    _MACHINEIMAGE_AUTOUPDATE_NOT_SET = 0,
-    MACHINEIMAGE_AUTOUPDATE = 2,
-  }
+/**
+ * Requests
+ *
+ * @generated from message api.v1.ClusterServiceGetRequest
+ */
+export declare class ClusterServiceGetRequest extends Message<ClusterServiceGetRequest> {
+    /**
+     * @generated from field: string uuid = 1;
+     */
+    uuid: string;
+    /**
+     * @generated from field: string project = 2;
+     */
+    project: string;
+    constructor(data?: PartialMessage<ClusterServiceGetRequest>);
+    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
+    static readonly typeName = "api.v1.ClusterServiceGetRequest";
+    static readonly fields: FieldList;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ClusterServiceGetRequest;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ClusterServiceGetRequest;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ClusterServiceGetRequest;
+    static equals(a: ClusterServiceGetRequest | PlainMessage<ClusterServiceGetRequest> | undefined, b: ClusterServiceGetRequest | PlainMessage<ClusterServiceGetRequest> | undefined): boolean;
 }
-
-export class Worker extends jspb.Message {
-  getName(): string;
-  setName(value: string): Worker;
-
-  getMachineType(): string;
-  setMachineType(value: string): Worker;
-
-  getMinsize(): number;
-  setMinsize(value: number): Worker;
-
-  getMaxsize(): number;
-  setMaxsize(value: number): Worker;
-
-  getMaxsurge(): number;
-  setMaxsurge(value: number): Worker;
-
-  getMaxunavailable(): number;
-  setMaxunavailable(value: number): Worker;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): Worker.AsObject;
-  static toObject(includeInstance: boolean, msg: Worker): Worker.AsObject;
-  static serializeBinaryToWriter(message: Worker, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): Worker;
-  static deserializeBinaryFromReader(message: Worker, reader: jspb.BinaryReader): Worker;
+/**
+ * @generated from message api.v1.ClusterServiceGetCredentialsRequest
+ */
+export declare class ClusterServiceGetCredentialsRequest extends Message<ClusterServiceGetCredentialsRequest> {
+    /**
+     * @generated from field: string uuid = 1;
+     */
+    uuid: string;
+    /**
+     * @generated from field: string project = 2;
+     */
+    project: string;
+    constructor(data?: PartialMessage<ClusterServiceGetCredentialsRequest>);
+    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
+    static readonly typeName = "api.v1.ClusterServiceGetCredentialsRequest";
+    static readonly fields: FieldList;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ClusterServiceGetCredentialsRequest;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ClusterServiceGetCredentialsRequest;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ClusterServiceGetCredentialsRequest;
+    static equals(a: ClusterServiceGetCredentialsRequest | PlainMessage<ClusterServiceGetCredentialsRequest> | undefined, b: ClusterServiceGetCredentialsRequest | PlainMessage<ClusterServiceGetCredentialsRequest> | undefined): boolean;
 }
-
-export namespace Worker {
-  export type AsObject = {
-    name: string,
-    machineType: string,
-    minsize: number,
-    maxsize: number,
-    maxsurge: number,
-    maxunavailable: number,
-  }
+/**
+ * @generated from message api.v1.ClusterServiceListRequest
+ */
+export declare class ClusterServiceListRequest extends Message<ClusterServiceListRequest> {
+    /**
+     * @generated from field: string project = 2;
+     */
+    project: string;
+    constructor(data?: PartialMessage<ClusterServiceListRequest>);
+    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
+    static readonly typeName = "api.v1.ClusterServiceListRequest";
+    static readonly fields: FieldList;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ClusterServiceListRequest;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ClusterServiceListRequest;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ClusterServiceListRequest;
+    static equals(a: ClusterServiceListRequest | PlainMessage<ClusterServiceListRequest> | undefined, b: ClusterServiceListRequest | PlainMessage<ClusterServiceListRequest> | undefined): boolean;
 }
-
-export class WorkerUpdate extends jspb.Message {
-  getName(): string;
-  setName(value: string): WorkerUpdate;
-
-  getMachineType(): string;
-  setMachineType(value: string): WorkerUpdate;
-  hasMachineType(): boolean;
-  clearMachineType(): WorkerUpdate;
-
-  getMinsize(): number;
-  setMinsize(value: number): WorkerUpdate;
-  hasMinsize(): boolean;
-  clearMinsize(): WorkerUpdate;
-
-  getMaxsize(): number;
-  setMaxsize(value: number): WorkerUpdate;
-  hasMaxsize(): boolean;
-  clearMaxsize(): WorkerUpdate;
-
-  getMaxsurge(): number;
-  setMaxsurge(value: number): WorkerUpdate;
-  hasMaxsurge(): boolean;
-  clearMaxsurge(): WorkerUpdate;
-
-  getMaxunavailable(): number;
-  setMaxunavailable(value: number): WorkerUpdate;
-  hasMaxunavailable(): boolean;
-  clearMaxunavailable(): WorkerUpdate;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): WorkerUpdate.AsObject;
-  static toObject(includeInstance: boolean, msg: WorkerUpdate): WorkerUpdate.AsObject;
-  static serializeBinaryToWriter(message: WorkerUpdate, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): WorkerUpdate;
-  static deserializeBinaryFromReader(message: WorkerUpdate, reader: jspb.BinaryReader): WorkerUpdate;
+/**
+ * @generated from message api.v1.ClusterServiceCreateRequest
+ */
+export declare class ClusterServiceCreateRequest extends Message<ClusterServiceCreateRequest> {
+    /**
+     * @generated from field: string name = 2;
+     */
+    name: string;
+    /**
+     * @generated from field: string project = 3;
+     */
+    project: string;
+    /**
+     * partition is part of a region
+     *
+     * @generated from field: string partition = 4;
+     */
+    partition: string;
+    /**
+     * @generated from field: api.v1.KubernetesSpec kubernetes = 6;
+     */
+    kubernetes?: KubernetesSpec;
+    /**
+     * @generated from field: repeated api.v1.Worker workers = 7;
+     */
+    workers: Worker[];
+    /**
+     * @generated from field: api.v1.Maintenance maintenance = 8;
+     */
+    maintenance?: Maintenance;
+    constructor(data?: PartialMessage<ClusterServiceCreateRequest>);
+    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
+    static readonly typeName = "api.v1.ClusterServiceCreateRequest";
+    static readonly fields: FieldList;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ClusterServiceCreateRequest;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ClusterServiceCreateRequest;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ClusterServiceCreateRequest;
+    static equals(a: ClusterServiceCreateRequest | PlainMessage<ClusterServiceCreateRequest> | undefined, b: ClusterServiceCreateRequest | PlainMessage<ClusterServiceCreateRequest> | undefined): boolean;
 }
-
-export namespace WorkerUpdate {
-  export type AsObject = {
-    name: string,
-    machineType?: string,
-    minsize?: number,
-    maxsize?: number,
-    maxsurge?: number,
-    maxunavailable?: number,
-  }
-
-  export enum MachineTypeCase { 
-    _MACHINE_TYPE_NOT_SET = 0,
-    MACHINE_TYPE = 2,
-  }
-
-  export enum MinsizeCase { 
-    _MINSIZE_NOT_SET = 0,
-    MINSIZE = 3,
-  }
-
-  export enum MaxsizeCase { 
-    _MAXSIZE_NOT_SET = 0,
-    MAXSIZE = 4,
-  }
-
-  export enum MaxsurgeCase { 
-    _MAXSURGE_NOT_SET = 0,
-    MAXSURGE = 5,
-  }
-
-  export enum MaxunavailableCase { 
-    _MAXUNAVAILABLE_NOT_SET = 0,
-    MAXUNAVAILABLE = 6,
-  }
+/**
+ * @generated from message api.v1.ClusterServiceUpdateRequest
+ */
+export declare class ClusterServiceUpdateRequest extends Message<ClusterServiceUpdateRequest> {
+    /**
+     * @generated from field: string uuid = 1;
+     */
+    uuid: string;
+    /**
+     * @generated from field: string project = 2;
+     */
+    project: string;
+    /**
+     * @generated from field: optional api.v1.KubernetesSpec kubernetes = 3;
+     */
+    kubernetes?: KubernetesSpec;
+    /**
+     * @generated from field: repeated api.v1.WorkerUpdate workers = 4;
+     */
+    workers: WorkerUpdate[];
+    /**
+     * @generated from field: optional api.v1.Maintenance maintenance = 5;
+     */
+    maintenance?: Maintenance;
+    constructor(data?: PartialMessage<ClusterServiceUpdateRequest>);
+    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
+    static readonly typeName = "api.v1.ClusterServiceUpdateRequest";
+    static readonly fields: FieldList;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ClusterServiceUpdateRequest;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ClusterServiceUpdateRequest;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ClusterServiceUpdateRequest;
+    static equals(a: ClusterServiceUpdateRequest | PlainMessage<ClusterServiceUpdateRequest> | undefined, b: ClusterServiceUpdateRequest | PlainMessage<ClusterServiceUpdateRequest> | undefined): boolean;
 }
-
-export class ClusterServiceGetRequest extends jspb.Message {
-  getUuid(): string;
-  setUuid(value: string): ClusterServiceGetRequest;
-
-  getProject(): string;
-  setProject(value: string): ClusterServiceGetRequest;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): ClusterServiceGetRequest.AsObject;
-  static toObject(includeInstance: boolean, msg: ClusterServiceGetRequest): ClusterServiceGetRequest.AsObject;
-  static serializeBinaryToWriter(message: ClusterServiceGetRequest, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): ClusterServiceGetRequest;
-  static deserializeBinaryFromReader(message: ClusterServiceGetRequest, reader: jspb.BinaryReader): ClusterServiceGetRequest;
+/**
+ * @generated from message api.v1.ClusterServiceDeleteRequest
+ */
+export declare class ClusterServiceDeleteRequest extends Message<ClusterServiceDeleteRequest> {
+    /**
+     * @generated from field: string uuid = 1;
+     */
+    uuid: string;
+    /**
+     * @generated from field: string project = 2;
+     */
+    project: string;
+    constructor(data?: PartialMessage<ClusterServiceDeleteRequest>);
+    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
+    static readonly typeName = "api.v1.ClusterServiceDeleteRequest";
+    static readonly fields: FieldList;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ClusterServiceDeleteRequest;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ClusterServiceDeleteRequest;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ClusterServiceDeleteRequest;
+    static equals(a: ClusterServiceDeleteRequest | PlainMessage<ClusterServiceDeleteRequest> | undefined, b: ClusterServiceDeleteRequest | PlainMessage<ClusterServiceDeleteRequest> | undefined): boolean;
 }
-
-export namespace ClusterServiceGetRequest {
-  export type AsObject = {
-    uuid: string,
-    project: string,
-  }
+/**
+ * @generated from message api.v1.ClusterServiceWatchStatusRequest
+ */
+export declare class ClusterServiceWatchStatusRequest extends Message<ClusterServiceWatchStatusRequest> {
+    /**
+     * @generated from field: optional string uuid = 1;
+     */
+    uuid?: string;
+    /**
+     * @generated from field: string project = 2;
+     */
+    project: string;
+    constructor(data?: PartialMessage<ClusterServiceWatchStatusRequest>);
+    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
+    static readonly typeName = "api.v1.ClusterServiceWatchStatusRequest";
+    static readonly fields: FieldList;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ClusterServiceWatchStatusRequest;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ClusterServiceWatchStatusRequest;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ClusterServiceWatchStatusRequest;
+    static equals(a: ClusterServiceWatchStatusRequest | PlainMessage<ClusterServiceWatchStatusRequest> | undefined, b: ClusterServiceWatchStatusRequest | PlainMessage<ClusterServiceWatchStatusRequest> | undefined): boolean;
 }
-
-export class ClusterServiceGetCredentialsRequest extends jspb.Message {
-  getUuid(): string;
-  setUuid(value: string): ClusterServiceGetCredentialsRequest;
-
-  getProject(): string;
-  setProject(value: string): ClusterServiceGetCredentialsRequest;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): ClusterServiceGetCredentialsRequest.AsObject;
-  static toObject(includeInstance: boolean, msg: ClusterServiceGetCredentialsRequest): ClusterServiceGetCredentialsRequest.AsObject;
-  static serializeBinaryToWriter(message: ClusterServiceGetCredentialsRequest, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): ClusterServiceGetCredentialsRequest;
-  static deserializeBinaryFromReader(message: ClusterServiceGetCredentialsRequest, reader: jspb.BinaryReader): ClusterServiceGetCredentialsRequest;
+/**
+ * @generated from message api.v1.ClusterStatus
+ */
+export declare class ClusterStatus extends Message<ClusterStatus> {
+    /**
+     * @generated from field: string uuid = 1;
+     */
+    uuid: string;
+    /**
+     * @generated from field: uint32 progress = 2;
+     */
+    progress: number;
+    /**
+     * @generated from field: string state = 3;
+     */
+    state: string;
+    /**
+     * @generated from field: string type = 4;
+     */
+    type: string;
+    /**
+     * @generated from field: string api_server_ready = 10;
+     */
+    apiServerReady: string;
+    /**
+     * @generated from field: string control_plane_ready = 11;
+     */
+    controlPlaneReady: string;
+    /**
+     * @generated from field: string nodes_ready = 12;
+     */
+    nodesReady: string;
+    /**
+     * @generated from field: string system_components_ready = 13;
+     */
+    systemComponentsReady: string;
+    constructor(data?: PartialMessage<ClusterStatus>);
+    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
+    static readonly typeName = "api.v1.ClusterStatus";
+    static readonly fields: FieldList;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ClusterStatus;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ClusterStatus;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ClusterStatus;
+    static equals(a: ClusterStatus | PlainMessage<ClusterStatus> | undefined, b: ClusterStatus | PlainMessage<ClusterStatus> | undefined): boolean;
 }
-
-export namespace ClusterServiceGetCredentialsRequest {
-  export type AsObject = {
-    uuid: string,
-    project: string,
-  }
+/**
+ * Responses
+ *
+ * @generated from message api.v1.ClusterServiceCreateResponse
+ */
+export declare class ClusterServiceCreateResponse extends Message<ClusterServiceCreateResponse> {
+    /**
+     * @generated from field: api.v1.Cluster cluster = 1;
+     */
+    cluster?: Cluster;
+    constructor(data?: PartialMessage<ClusterServiceCreateResponse>);
+    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
+    static readonly typeName = "api.v1.ClusterServiceCreateResponse";
+    static readonly fields: FieldList;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ClusterServiceCreateResponse;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ClusterServiceCreateResponse;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ClusterServiceCreateResponse;
+    static equals(a: ClusterServiceCreateResponse | PlainMessage<ClusterServiceCreateResponse> | undefined, b: ClusterServiceCreateResponse | PlainMessage<ClusterServiceCreateResponse> | undefined): boolean;
 }
-
-export class ClusterServiceListRequest extends jspb.Message {
-  getProject(): string;
-  setProject(value: string): ClusterServiceListRequest;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): ClusterServiceListRequest.AsObject;
-  static toObject(includeInstance: boolean, msg: ClusterServiceListRequest): ClusterServiceListRequest.AsObject;
-  static serializeBinaryToWriter(message: ClusterServiceListRequest, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): ClusterServiceListRequest;
-  static deserializeBinaryFromReader(message: ClusterServiceListRequest, reader: jspb.BinaryReader): ClusterServiceListRequest;
+/**
+ * @generated from message api.v1.ClusterServiceGetResponse
+ */
+export declare class ClusterServiceGetResponse extends Message<ClusterServiceGetResponse> {
+    /**
+     * @generated from field: api.v1.Cluster cluster = 1;
+     */
+    cluster?: Cluster;
+    constructor(data?: PartialMessage<ClusterServiceGetResponse>);
+    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
+    static readonly typeName = "api.v1.ClusterServiceGetResponse";
+    static readonly fields: FieldList;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ClusterServiceGetResponse;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ClusterServiceGetResponse;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ClusterServiceGetResponse;
+    static equals(a: ClusterServiceGetResponse | PlainMessage<ClusterServiceGetResponse> | undefined, b: ClusterServiceGetResponse | PlainMessage<ClusterServiceGetResponse> | undefined): boolean;
 }
-
-export namespace ClusterServiceListRequest {
-  export type AsObject = {
-    project: string,
-  }
+/**
+ * @generated from message api.v1.ClusterServiceGetCredentialsResponse
+ */
+export declare class ClusterServiceGetCredentialsResponse extends Message<ClusterServiceGetCredentialsResponse> {
+    /**
+     * @generated from field: string kubeconfig = 1;
+     */
+    kubeconfig: string;
+    constructor(data?: PartialMessage<ClusterServiceGetCredentialsResponse>);
+    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
+    static readonly typeName = "api.v1.ClusterServiceGetCredentialsResponse";
+    static readonly fields: FieldList;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ClusterServiceGetCredentialsResponse;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ClusterServiceGetCredentialsResponse;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ClusterServiceGetCredentialsResponse;
+    static equals(a: ClusterServiceGetCredentialsResponse | PlainMessage<ClusterServiceGetCredentialsResponse> | undefined, b: ClusterServiceGetCredentialsResponse | PlainMessage<ClusterServiceGetCredentialsResponse> | undefined): boolean;
 }
-
-export class ClusterServiceCreateRequest extends jspb.Message {
-  getName(): string;
-  setName(value: string): ClusterServiceCreateRequest;
-
-  getProject(): string;
-  setProject(value: string): ClusterServiceCreateRequest;
-
-  getPartition(): string;
-  setPartition(value: string): ClusterServiceCreateRequest;
-
-  getKubernetes(): KubernetesSpec | undefined;
-  setKubernetes(value?: KubernetesSpec): ClusterServiceCreateRequest;
-  hasKubernetes(): boolean;
-  clearKubernetes(): ClusterServiceCreateRequest;
-
-  getWorkersList(): Array<Worker>;
-  setWorkersList(value: Array<Worker>): ClusterServiceCreateRequest;
-  clearWorkersList(): ClusterServiceCreateRequest;
-  addWorkers(value?: Worker, index?: number): Worker;
-
-  getMaintenance(): Maintenance | undefined;
-  setMaintenance(value?: Maintenance): ClusterServiceCreateRequest;
-  hasMaintenance(): boolean;
-  clearMaintenance(): ClusterServiceCreateRequest;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): ClusterServiceCreateRequest.AsObject;
-  static toObject(includeInstance: boolean, msg: ClusterServiceCreateRequest): ClusterServiceCreateRequest.AsObject;
-  static serializeBinaryToWriter(message: ClusterServiceCreateRequest, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): ClusterServiceCreateRequest;
-  static deserializeBinaryFromReader(message: ClusterServiceCreateRequest, reader: jspb.BinaryReader): ClusterServiceCreateRequest;
+/**
+ * @generated from message api.v1.ClusterServiceDeleteResponse
+ */
+export declare class ClusterServiceDeleteResponse extends Message<ClusterServiceDeleteResponse> {
+    /**
+     * @generated from field: api.v1.Cluster cluster = 1;
+     */
+    cluster?: Cluster;
+    constructor(data?: PartialMessage<ClusterServiceDeleteResponse>);
+    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
+    static readonly typeName = "api.v1.ClusterServiceDeleteResponse";
+    static readonly fields: FieldList;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ClusterServiceDeleteResponse;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ClusterServiceDeleteResponse;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ClusterServiceDeleteResponse;
+    static equals(a: ClusterServiceDeleteResponse | PlainMessage<ClusterServiceDeleteResponse> | undefined, b: ClusterServiceDeleteResponse | PlainMessage<ClusterServiceDeleteResponse> | undefined): boolean;
 }
-
-export namespace ClusterServiceCreateRequest {
-  export type AsObject = {
-    name: string,
-    project: string,
-    partition: string,
-    kubernetes?: KubernetesSpec.AsObject,
-    workersList: Array<Worker.AsObject>,
-    maintenance?: Maintenance.AsObject,
-  }
+/**
+ * @generated from message api.v1.ClusterServiceUpdateResponse
+ */
+export declare class ClusterServiceUpdateResponse extends Message<ClusterServiceUpdateResponse> {
+    /**
+     * @generated from field: api.v1.Cluster cluster = 1;
+     */
+    cluster?: Cluster;
+    constructor(data?: PartialMessage<ClusterServiceUpdateResponse>);
+    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
+    static readonly typeName = "api.v1.ClusterServiceUpdateResponse";
+    static readonly fields: FieldList;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ClusterServiceUpdateResponse;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ClusterServiceUpdateResponse;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ClusterServiceUpdateResponse;
+    static equals(a: ClusterServiceUpdateResponse | PlainMessage<ClusterServiceUpdateResponse> | undefined, b: ClusterServiceUpdateResponse | PlainMessage<ClusterServiceUpdateResponse> | undefined): boolean;
 }
-
-export class ClusterServiceUpdateRequest extends jspb.Message {
-  getUuid(): string;
-  setUuid(value: string): ClusterServiceUpdateRequest;
-
-  getProject(): string;
-  setProject(value: string): ClusterServiceUpdateRequest;
-
-  getKubernetes(): KubernetesSpec | undefined;
-  setKubernetes(value?: KubernetesSpec): ClusterServiceUpdateRequest;
-  hasKubernetes(): boolean;
-  clearKubernetes(): ClusterServiceUpdateRequest;
-
-  getWorkersList(): Array<WorkerUpdate>;
-  setWorkersList(value: Array<WorkerUpdate>): ClusterServiceUpdateRequest;
-  clearWorkersList(): ClusterServiceUpdateRequest;
-  addWorkers(value?: WorkerUpdate, index?: number): WorkerUpdate;
-
-  getMaintenance(): Maintenance | undefined;
-  setMaintenance(value?: Maintenance): ClusterServiceUpdateRequest;
-  hasMaintenance(): boolean;
-  clearMaintenance(): ClusterServiceUpdateRequest;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): ClusterServiceUpdateRequest.AsObject;
-  static toObject(includeInstance: boolean, msg: ClusterServiceUpdateRequest): ClusterServiceUpdateRequest.AsObject;
-  static serializeBinaryToWriter(message: ClusterServiceUpdateRequest, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): ClusterServiceUpdateRequest;
-  static deserializeBinaryFromReader(message: ClusterServiceUpdateRequest, reader: jspb.BinaryReader): ClusterServiceUpdateRequest;
+/**
+ * @generated from message api.v1.ClusterServiceListResponse
+ */
+export declare class ClusterServiceListResponse extends Message<ClusterServiceListResponse> {
+    /**
+     * @generated from field: repeated api.v1.Cluster clusters = 1;
+     */
+    clusters: Cluster[];
+    constructor(data?: PartialMessage<ClusterServiceListResponse>);
+    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
+    static readonly typeName = "api.v1.ClusterServiceListResponse";
+    static readonly fields: FieldList;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ClusterServiceListResponse;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ClusterServiceListResponse;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ClusterServiceListResponse;
+    static equals(a: ClusterServiceListResponse | PlainMessage<ClusterServiceListResponse> | undefined, b: ClusterServiceListResponse | PlainMessage<ClusterServiceListResponse> | undefined): boolean;
 }
-
-export namespace ClusterServiceUpdateRequest {
-  export type AsObject = {
-    uuid: string,
-    project: string,
-    kubernetes?: KubernetesSpec.AsObject,
-    workersList: Array<WorkerUpdate.AsObject>,
-    maintenance?: Maintenance.AsObject,
-  }
-
-  export enum KubernetesCase { 
-    _KUBERNETES_NOT_SET = 0,
-    KUBERNETES = 3,
-  }
-
-  export enum MaintenanceCase { 
-    _MAINTENANCE_NOT_SET = 0,
-    MAINTENANCE = 5,
-  }
+/**
+ * @generated from message api.v1.ClusterServiceWatchStatusResponse
+ */
+export declare class ClusterServiceWatchStatusResponse extends Message<ClusterServiceWatchStatusResponse> {
+    /**
+     * @generated from field: api.v1.ClusterStatus status = 1;
+     */
+    status?: ClusterStatus;
+    constructor(data?: PartialMessage<ClusterServiceWatchStatusResponse>);
+    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
+    static readonly typeName = "api.v1.ClusterServiceWatchStatusResponse";
+    static readonly fields: FieldList;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ClusterServiceWatchStatusResponse;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ClusterServiceWatchStatusResponse;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ClusterServiceWatchStatusResponse;
+    static equals(a: ClusterServiceWatchStatusResponse | PlainMessage<ClusterServiceWatchStatusResponse> | undefined, b: ClusterServiceWatchStatusResponse | PlainMessage<ClusterServiceWatchStatusResponse> | undefined): boolean;
 }
-
-export class ClusterServiceDeleteRequest extends jspb.Message {
-  getUuid(): string;
-  setUuid(value: string): ClusterServiceDeleteRequest;
-
-  getProject(): string;
-  setProject(value: string): ClusterServiceDeleteRequest;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): ClusterServiceDeleteRequest.AsObject;
-  static toObject(includeInstance: boolean, msg: ClusterServiceDeleteRequest): ClusterServiceDeleteRequest.AsObject;
-  static serializeBinaryToWriter(message: ClusterServiceDeleteRequest, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): ClusterServiceDeleteRequest;
-  static deserializeBinaryFromReader(message: ClusterServiceDeleteRequest, reader: jspb.BinaryReader): ClusterServiceDeleteRequest;
-}
-
-export namespace ClusterServiceDeleteRequest {
-  export type AsObject = {
-    uuid: string,
-    project: string,
-  }
-}
-
-export class ClusterServiceWatchStatusRequest extends jspb.Message {
-  getUuid(): string;
-  setUuid(value: string): ClusterServiceWatchStatusRequest;
-  hasUuid(): boolean;
-  clearUuid(): ClusterServiceWatchStatusRequest;
-
-  getProject(): string;
-  setProject(value: string): ClusterServiceWatchStatusRequest;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): ClusterServiceWatchStatusRequest.AsObject;
-  static toObject(includeInstance: boolean, msg: ClusterServiceWatchStatusRequest): ClusterServiceWatchStatusRequest.AsObject;
-  static serializeBinaryToWriter(message: ClusterServiceWatchStatusRequest, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): ClusterServiceWatchStatusRequest;
-  static deserializeBinaryFromReader(message: ClusterServiceWatchStatusRequest, reader: jspb.BinaryReader): ClusterServiceWatchStatusRequest;
-}
-
-export namespace ClusterServiceWatchStatusRequest {
-  export type AsObject = {
-    uuid?: string,
-    project: string,
-  }
-
-  export enum UuidCase { 
-    _UUID_NOT_SET = 0,
-    UUID = 1,
-  }
-}
-
-export class ClusterStatus extends jspb.Message {
-  getUuid(): string;
-  setUuid(value: string): ClusterStatus;
-
-  getProgress(): number;
-  setProgress(value: number): ClusterStatus;
-
-  getState(): string;
-  setState(value: string): ClusterStatus;
-
-  getType(): string;
-  setType(value: string): ClusterStatus;
-
-  getApiServerReady(): string;
-  setApiServerReady(value: string): ClusterStatus;
-
-  getControlPlaneReady(): string;
-  setControlPlaneReady(value: string): ClusterStatus;
-
-  getNodesReady(): string;
-  setNodesReady(value: string): ClusterStatus;
-
-  getSystemComponentsReady(): string;
-  setSystemComponentsReady(value: string): ClusterStatus;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): ClusterStatus.AsObject;
-  static toObject(includeInstance: boolean, msg: ClusterStatus): ClusterStatus.AsObject;
-  static serializeBinaryToWriter(message: ClusterStatus, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): ClusterStatus;
-  static deserializeBinaryFromReader(message: ClusterStatus, reader: jspb.BinaryReader): ClusterStatus;
-}
-
-export namespace ClusterStatus {
-  export type AsObject = {
-    uuid: string,
-    progress: number,
-    state: string,
-    type: string,
-    apiServerReady: string,
-    controlPlaneReady: string,
-    nodesReady: string,
-    systemComponentsReady: string,
-  }
-}
-
-export class ClusterServiceCreateResponse extends jspb.Message {
-  getCluster(): Cluster | undefined;
-  setCluster(value?: Cluster): ClusterServiceCreateResponse;
-  hasCluster(): boolean;
-  clearCluster(): ClusterServiceCreateResponse;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): ClusterServiceCreateResponse.AsObject;
-  static toObject(includeInstance: boolean, msg: ClusterServiceCreateResponse): ClusterServiceCreateResponse.AsObject;
-  static serializeBinaryToWriter(message: ClusterServiceCreateResponse, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): ClusterServiceCreateResponse;
-  static deserializeBinaryFromReader(message: ClusterServiceCreateResponse, reader: jspb.BinaryReader): ClusterServiceCreateResponse;
-}
-
-export namespace ClusterServiceCreateResponse {
-  export type AsObject = {
-    cluster?: Cluster.AsObject,
-  }
-}
-
-export class ClusterServiceGetResponse extends jspb.Message {
-  getCluster(): Cluster | undefined;
-  setCluster(value?: Cluster): ClusterServiceGetResponse;
-  hasCluster(): boolean;
-  clearCluster(): ClusterServiceGetResponse;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): ClusterServiceGetResponse.AsObject;
-  static toObject(includeInstance: boolean, msg: ClusterServiceGetResponse): ClusterServiceGetResponse.AsObject;
-  static serializeBinaryToWriter(message: ClusterServiceGetResponse, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): ClusterServiceGetResponse;
-  static deserializeBinaryFromReader(message: ClusterServiceGetResponse, reader: jspb.BinaryReader): ClusterServiceGetResponse;
-}
-
-export namespace ClusterServiceGetResponse {
-  export type AsObject = {
-    cluster?: Cluster.AsObject,
-  }
-}
-
-export class ClusterServiceGetCredentialsResponse extends jspb.Message {
-  getKubeconfig(): string;
-  setKubeconfig(value: string): ClusterServiceGetCredentialsResponse;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): ClusterServiceGetCredentialsResponse.AsObject;
-  static toObject(includeInstance: boolean, msg: ClusterServiceGetCredentialsResponse): ClusterServiceGetCredentialsResponse.AsObject;
-  static serializeBinaryToWriter(message: ClusterServiceGetCredentialsResponse, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): ClusterServiceGetCredentialsResponse;
-  static deserializeBinaryFromReader(message: ClusterServiceGetCredentialsResponse, reader: jspb.BinaryReader): ClusterServiceGetCredentialsResponse;
-}
-
-export namespace ClusterServiceGetCredentialsResponse {
-  export type AsObject = {
-    kubeconfig: string,
-  }
-}
-
-export class ClusterServiceDeleteResponse extends jspb.Message {
-  getCluster(): Cluster | undefined;
-  setCluster(value?: Cluster): ClusterServiceDeleteResponse;
-  hasCluster(): boolean;
-  clearCluster(): ClusterServiceDeleteResponse;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): ClusterServiceDeleteResponse.AsObject;
-  static toObject(includeInstance: boolean, msg: ClusterServiceDeleteResponse): ClusterServiceDeleteResponse.AsObject;
-  static serializeBinaryToWriter(message: ClusterServiceDeleteResponse, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): ClusterServiceDeleteResponse;
-  static deserializeBinaryFromReader(message: ClusterServiceDeleteResponse, reader: jspb.BinaryReader): ClusterServiceDeleteResponse;
-}
-
-export namespace ClusterServiceDeleteResponse {
-  export type AsObject = {
-    cluster?: Cluster.AsObject,
-  }
-}
-
-export class ClusterServiceUpdateResponse extends jspb.Message {
-  getCluster(): Cluster | undefined;
-  setCluster(value?: Cluster): ClusterServiceUpdateResponse;
-  hasCluster(): boolean;
-  clearCluster(): ClusterServiceUpdateResponse;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): ClusterServiceUpdateResponse.AsObject;
-  static toObject(includeInstance: boolean, msg: ClusterServiceUpdateResponse): ClusterServiceUpdateResponse.AsObject;
-  static serializeBinaryToWriter(message: ClusterServiceUpdateResponse, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): ClusterServiceUpdateResponse;
-  static deserializeBinaryFromReader(message: ClusterServiceUpdateResponse, reader: jspb.BinaryReader): ClusterServiceUpdateResponse;
-}
-
-export namespace ClusterServiceUpdateResponse {
-  export type AsObject = {
-    cluster?: Cluster.AsObject,
-  }
-}
-
-export class ClusterServiceListResponse extends jspb.Message {
-  getClustersList(): Array<Cluster>;
-  setClustersList(value: Array<Cluster>): ClusterServiceListResponse;
-  clearClustersList(): ClusterServiceListResponse;
-  addClusters(value?: Cluster, index?: number): Cluster;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): ClusterServiceListResponse.AsObject;
-  static toObject(includeInstance: boolean, msg: ClusterServiceListResponse): ClusterServiceListResponse.AsObject;
-  static serializeBinaryToWriter(message: ClusterServiceListResponse, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): ClusterServiceListResponse;
-  static deserializeBinaryFromReader(message: ClusterServiceListResponse, reader: jspb.BinaryReader): ClusterServiceListResponse;
-}
-
-export namespace ClusterServiceListResponse {
-  export type AsObject = {
-    clustersList: Array<Cluster.AsObject>,
-  }
-}
-
-export class ClusterServiceWatchStatusResponse extends jspb.Message {
-  getStatus(): ClusterStatus | undefined;
-  setStatus(value?: ClusterStatus): ClusterServiceWatchStatusResponse;
-  hasStatus(): boolean;
-  clearStatus(): ClusterServiceWatchStatusResponse;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): ClusterServiceWatchStatusResponse.AsObject;
-  static toObject(includeInstance: boolean, msg: ClusterServiceWatchStatusResponse): ClusterServiceWatchStatusResponse.AsObject;
-  static serializeBinaryToWriter(message: ClusterServiceWatchStatusResponse, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): ClusterServiceWatchStatusResponse;
-  static deserializeBinaryFromReader(message: ClusterServiceWatchStatusResponse, reader: jspb.BinaryReader): ClusterServiceWatchStatusResponse;
-}
-
-export namespace ClusterServiceWatchStatusResponse {
-  export type AsObject = {
-    status?: ClusterStatus.AsObject,
-  }
-}
-

@@ -1,298 +1,267 @@
-import * as jspb from 'google-protobuf'
-
-import * as api_v1_common_pb from '../../api/v1/common_pb';
-import * as google_api_annotations_pb from '../../google/api/annotations_pb';
-import * as google_protobuf_timestamp_pb from 'google-protobuf/google/protobuf/timestamp_pb';
-import * as validate_validate_pb from '../../validate/validate_pb';
-
-
-export class IP extends jspb.Message {
-  getUuid(): string;
-  setUuid(value: string): IP;
-
-  getIp(): string;
-  setIp(value: string): IP;
-
-  getName(): string;
-  setName(value: string): IP;
-
-  getDescription(): string;
-  setDescription(value: string): IP;
-
-  getNetwork(): string;
-  setNetwork(value: string): IP;
-
-  getProject(): string;
-  setProject(value: string): IP;
-
-  getType(): string;
-  setType(value: string): IP;
-
-  getTagsList(): Array<string>;
-  setTagsList(value: Array<string>): IP;
-  clearTagsList(): IP;
-  addTags(value: string, index?: number): IP;
-
-  getCreatedAt(): google_protobuf_timestamp_pb.Timestamp | undefined;
-  setCreatedAt(value?: google_protobuf_timestamp_pb.Timestamp): IP;
-  hasCreatedAt(): boolean;
-  clearCreatedAt(): IP;
-
-  getUpdatedAt(): google_protobuf_timestamp_pb.Timestamp | undefined;
-  setUpdatedAt(value?: google_protobuf_timestamp_pb.Timestamp): IP;
-  hasUpdatedAt(): boolean;
-  clearUpdatedAt(): IP;
-
-  getDeletedAt(): google_protobuf_timestamp_pb.Timestamp | undefined;
-  setDeletedAt(value?: google_protobuf_timestamp_pb.Timestamp): IP;
-  hasDeletedAt(): boolean;
-  clearDeletedAt(): IP;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): IP.AsObject;
-  static toObject(includeInstance: boolean, msg: IP): IP.AsObject;
-  static serializeBinaryToWriter(message: IP, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): IP;
-  static deserializeBinaryFromReader(message: IP, reader: jspb.BinaryReader): IP;
+import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
+import { Message, Timestamp } from "@bufbuild/protobuf";
+/**
+ * Types
+ *
+ * @generated from message api.v1.IP
+ */
+export declare class IP extends Message<IP> {
+    /**
+     * @generated from field: string uuid = 1;
+     */
+    uuid: string;
+    /**
+     * @generated from field: string ip = 2;
+     */
+    ip: string;
+    /**
+     * @generated from field: string name = 3;
+     */
+    name: string;
+    /**
+     * @generated from field: string description = 4;
+     */
+    description: string;
+    /**
+     * @generated from field: string network = 5;
+     */
+    network: string;
+    /**
+     * @generated from field: string project = 6;
+     */
+    project: string;
+    /**
+     * @generated from field: string type = 7;
+     */
+    type: string;
+    /**
+     * @generated from field: repeated string tags = 8;
+     */
+    tags: string[];
+    /**
+     * @generated from field: google.protobuf.Timestamp created_at = 10;
+     */
+    createdAt?: Timestamp;
+    /**
+     * @generated from field: google.protobuf.Timestamp updated_at = 11;
+     */
+    updatedAt?: Timestamp;
+    /**
+     * @generated from field: google.protobuf.Timestamp deleted_at = 12;
+     */
+    deletedAt?: Timestamp;
+    constructor(data?: PartialMessage<IP>);
+    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
+    static readonly typeName = "api.v1.IP";
+    static readonly fields: FieldList;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): IP;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): IP;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): IP;
+    static equals(a: IP | PlainMessage<IP> | undefined, b: IP | PlainMessage<IP> | undefined): boolean;
 }
-
-export namespace IP {
-  export type AsObject = {
-    uuid: string,
-    ip: string,
-    name: string,
-    description: string,
-    network: string,
-    project: string,
-    type: string,
-    tagsList: Array<string>,
-    createdAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-    updatedAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-    deletedAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-  }
+/**
+ * Requests
+ *
+ * @generated from message api.v1.IPServiceGetRequest
+ */
+export declare class IPServiceGetRequest extends Message<IPServiceGetRequest> {
+    /**
+     * @generated from field: string uuid = 1;
+     */
+    uuid: string;
+    /**
+     * @generated from field: string project = 2;
+     */
+    project: string;
+    constructor(data?: PartialMessage<IPServiceGetRequest>);
+    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
+    static readonly typeName = "api.v1.IPServiceGetRequest";
+    static readonly fields: FieldList;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): IPServiceGetRequest;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): IPServiceGetRequest;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): IPServiceGetRequest;
+    static equals(a: IPServiceGetRequest | PlainMessage<IPServiceGetRequest> | undefined, b: IPServiceGetRequest | PlainMessage<IPServiceGetRequest> | undefined): boolean;
 }
-
-export class IPServiceGetRequest extends jspb.Message {
-  getUuid(): string;
-  setUuid(value: string): IPServiceGetRequest;
-
-  getProject(): string;
-  setProject(value: string): IPServiceGetRequest;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): IPServiceGetRequest.AsObject;
-  static toObject(includeInstance: boolean, msg: IPServiceGetRequest): IPServiceGetRequest.AsObject;
-  static serializeBinaryToWriter(message: IPServiceGetRequest, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): IPServiceGetRequest;
-  static deserializeBinaryFromReader(message: IPServiceGetRequest, reader: jspb.BinaryReader): IPServiceGetRequest;
+/**
+ * @generated from message api.v1.IPServiceAllocateRequest
+ */
+export declare class IPServiceAllocateRequest extends Message<IPServiceAllocateRequest> {
+    /**
+     * @generated from field: string project = 2;
+     */
+    project: string;
+    /**
+     * @generated from field: string name = 3;
+     */
+    name: string;
+    /**
+     * @generated from field: string description = 4;
+     */
+    description: string;
+    /**
+     * @generated from field: string network = 5;
+     */
+    network: string;
+    /**
+     * @generated from field: repeated string tags = 8;
+     */
+    tags: string[];
+    /**
+     * @generated from field: bool static = 9;
+     */
+    static: boolean;
+    constructor(data?: PartialMessage<IPServiceAllocateRequest>);
+    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
+    static readonly typeName = "api.v1.IPServiceAllocateRequest";
+    static readonly fields: FieldList;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): IPServiceAllocateRequest;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): IPServiceAllocateRequest;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): IPServiceAllocateRequest;
+    static equals(a: IPServiceAllocateRequest | PlainMessage<IPServiceAllocateRequest> | undefined, b: IPServiceAllocateRequest | PlainMessage<IPServiceAllocateRequest> | undefined): boolean;
 }
-
-export namespace IPServiceGetRequest {
-  export type AsObject = {
-    uuid: string,
-    project: string,
-  }
+/**
+ * @generated from message api.v1.IPServiceStaticRequest
+ */
+export declare class IPServiceStaticRequest extends Message<IPServiceStaticRequest> {
+    /**
+     * @generated from field: string uuid = 1;
+     */
+    uuid: string;
+    /**
+     * @generated from field: string project = 2;
+     */
+    project: string;
+    constructor(data?: PartialMessage<IPServiceStaticRequest>);
+    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
+    static readonly typeName = "api.v1.IPServiceStaticRequest";
+    static readonly fields: FieldList;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): IPServiceStaticRequest;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): IPServiceStaticRequest;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): IPServiceStaticRequest;
+    static equals(a: IPServiceStaticRequest | PlainMessage<IPServiceStaticRequest> | undefined, b: IPServiceStaticRequest | PlainMessage<IPServiceStaticRequest> | undefined): boolean;
 }
-
-export class IPServiceAllocateRequest extends jspb.Message {
-  getProject(): string;
-  setProject(value: string): IPServiceAllocateRequest;
-
-  getName(): string;
-  setName(value: string): IPServiceAllocateRequest;
-
-  getDescription(): string;
-  setDescription(value: string): IPServiceAllocateRequest;
-
-  getNetwork(): string;
-  setNetwork(value: string): IPServiceAllocateRequest;
-
-  getTagsList(): Array<string>;
-  setTagsList(value: Array<string>): IPServiceAllocateRequest;
-  clearTagsList(): IPServiceAllocateRequest;
-  addTags(value: string, index?: number): IPServiceAllocateRequest;
-
-  getStatic(): boolean;
-  setStatic(value: boolean): IPServiceAllocateRequest;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): IPServiceAllocateRequest.AsObject;
-  static toObject(includeInstance: boolean, msg: IPServiceAllocateRequest): IPServiceAllocateRequest.AsObject;
-  static serializeBinaryToWriter(message: IPServiceAllocateRequest, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): IPServiceAllocateRequest;
-  static deserializeBinaryFromReader(message: IPServiceAllocateRequest, reader: jspb.BinaryReader): IPServiceAllocateRequest;
+/**
+ * @generated from message api.v1.IPServiceListRequest
+ */
+export declare class IPServiceListRequest extends Message<IPServiceListRequest> {
+    /**
+     * @generated from field: string project = 2;
+     */
+    project: string;
+    constructor(data?: PartialMessage<IPServiceListRequest>);
+    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
+    static readonly typeName = "api.v1.IPServiceListRequest";
+    static readonly fields: FieldList;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): IPServiceListRequest;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): IPServiceListRequest;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): IPServiceListRequest;
+    static equals(a: IPServiceListRequest | PlainMessage<IPServiceListRequest> | undefined, b: IPServiceListRequest | PlainMessage<IPServiceListRequest> | undefined): boolean;
 }
-
-export namespace IPServiceAllocateRequest {
-  export type AsObject = {
-    project: string,
-    name: string,
-    description: string,
-    network: string,
-    tagsList: Array<string>,
-    pb_static: boolean,
-  }
+/**
+ * @generated from message api.v1.IPServiceDeleteRequest
+ */
+export declare class IPServiceDeleteRequest extends Message<IPServiceDeleteRequest> {
+    /**
+     * @generated from field: string uuid = 1;
+     */
+    uuid: string;
+    /**
+     * @generated from field: string project = 2;
+     */
+    project: string;
+    constructor(data?: PartialMessage<IPServiceDeleteRequest>);
+    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
+    static readonly typeName = "api.v1.IPServiceDeleteRequest";
+    static readonly fields: FieldList;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): IPServiceDeleteRequest;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): IPServiceDeleteRequest;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): IPServiceDeleteRequest;
+    static equals(a: IPServiceDeleteRequest | PlainMessage<IPServiceDeleteRequest> | undefined, b: IPServiceDeleteRequest | PlainMessage<IPServiceDeleteRequest> | undefined): boolean;
 }
-
-export class IPServiceStaticRequest extends jspb.Message {
-  getUuid(): string;
-  setUuid(value: string): IPServiceStaticRequest;
-
-  getProject(): string;
-  setProject(value: string): IPServiceStaticRequest;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): IPServiceStaticRequest.AsObject;
-  static toObject(includeInstance: boolean, msg: IPServiceStaticRequest): IPServiceStaticRequest.AsObject;
-  static serializeBinaryToWriter(message: IPServiceStaticRequest, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): IPServiceStaticRequest;
-  static deserializeBinaryFromReader(message: IPServiceStaticRequest, reader: jspb.BinaryReader): IPServiceStaticRequest;
+/**
+ * Responses
+ *
+ * @generated from message api.v1.IPServiceGetResponse
+ */
+export declare class IPServiceGetResponse extends Message<IPServiceGetResponse> {
+    /**
+     * @generated from field: api.v1.IP ip = 1;
+     */
+    ip?: IP;
+    constructor(data?: PartialMessage<IPServiceGetResponse>);
+    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
+    static readonly typeName = "api.v1.IPServiceGetResponse";
+    static readonly fields: FieldList;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): IPServiceGetResponse;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): IPServiceGetResponse;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): IPServiceGetResponse;
+    static equals(a: IPServiceGetResponse | PlainMessage<IPServiceGetResponse> | undefined, b: IPServiceGetResponse | PlainMessage<IPServiceGetResponse> | undefined): boolean;
 }
-
-export namespace IPServiceStaticRequest {
-  export type AsObject = {
-    uuid: string,
-    project: string,
-  }
+/**
+ * @generated from message api.v1.IPServiceAllocateResponse
+ */
+export declare class IPServiceAllocateResponse extends Message<IPServiceAllocateResponse> {
+    /**
+     * @generated from field: api.v1.IP ip = 1;
+     */
+    ip?: IP;
+    constructor(data?: PartialMessage<IPServiceAllocateResponse>);
+    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
+    static readonly typeName = "api.v1.IPServiceAllocateResponse";
+    static readonly fields: FieldList;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): IPServiceAllocateResponse;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): IPServiceAllocateResponse;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): IPServiceAllocateResponse;
+    static equals(a: IPServiceAllocateResponse | PlainMessage<IPServiceAllocateResponse> | undefined, b: IPServiceAllocateResponse | PlainMessage<IPServiceAllocateResponse> | undefined): boolean;
 }
-
-export class IPServiceListRequest extends jspb.Message {
-  getProject(): string;
-  setProject(value: string): IPServiceListRequest;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): IPServiceListRequest.AsObject;
-  static toObject(includeInstance: boolean, msg: IPServiceListRequest): IPServiceListRequest.AsObject;
-  static serializeBinaryToWriter(message: IPServiceListRequest, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): IPServiceListRequest;
-  static deserializeBinaryFromReader(message: IPServiceListRequest, reader: jspb.BinaryReader): IPServiceListRequest;
+/**
+ * @generated from message api.v1.IPServiceStaticResponse
+ */
+export declare class IPServiceStaticResponse extends Message<IPServiceStaticResponse> {
+    /**
+     * @generated from field: api.v1.IP ip = 1;
+     */
+    ip?: IP;
+    constructor(data?: PartialMessage<IPServiceStaticResponse>);
+    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
+    static readonly typeName = "api.v1.IPServiceStaticResponse";
+    static readonly fields: FieldList;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): IPServiceStaticResponse;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): IPServiceStaticResponse;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): IPServiceStaticResponse;
+    static equals(a: IPServiceStaticResponse | PlainMessage<IPServiceStaticResponse> | undefined, b: IPServiceStaticResponse | PlainMessage<IPServiceStaticResponse> | undefined): boolean;
 }
-
-export namespace IPServiceListRequest {
-  export type AsObject = {
-    project: string,
-  }
+/**
+ * @generated from message api.v1.IPServiceListResponse
+ */
+export declare class IPServiceListResponse extends Message<IPServiceListResponse> {
+    /**
+     * @generated from field: repeated api.v1.IP ips = 1;
+     */
+    ips: IP[];
+    constructor(data?: PartialMessage<IPServiceListResponse>);
+    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
+    static readonly typeName = "api.v1.IPServiceListResponse";
+    static readonly fields: FieldList;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): IPServiceListResponse;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): IPServiceListResponse;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): IPServiceListResponse;
+    static equals(a: IPServiceListResponse | PlainMessage<IPServiceListResponse> | undefined, b: IPServiceListResponse | PlainMessage<IPServiceListResponse> | undefined): boolean;
 }
-
-export class IPServiceDeleteRequest extends jspb.Message {
-  getUuid(): string;
-  setUuid(value: string): IPServiceDeleteRequest;
-
-  getProject(): string;
-  setProject(value: string): IPServiceDeleteRequest;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): IPServiceDeleteRequest.AsObject;
-  static toObject(includeInstance: boolean, msg: IPServiceDeleteRequest): IPServiceDeleteRequest.AsObject;
-  static serializeBinaryToWriter(message: IPServiceDeleteRequest, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): IPServiceDeleteRequest;
-  static deserializeBinaryFromReader(message: IPServiceDeleteRequest, reader: jspb.BinaryReader): IPServiceDeleteRequest;
+/**
+ * @generated from message api.v1.IPServiceDeleteResponse
+ */
+export declare class IPServiceDeleteResponse extends Message<IPServiceDeleteResponse> {
+    /**
+     * @generated from field: api.v1.IP ip = 1;
+     */
+    ip?: IP;
+    constructor(data?: PartialMessage<IPServiceDeleteResponse>);
+    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
+    static readonly typeName = "api.v1.IPServiceDeleteResponse";
+    static readonly fields: FieldList;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): IPServiceDeleteResponse;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): IPServiceDeleteResponse;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): IPServiceDeleteResponse;
+    static equals(a: IPServiceDeleteResponse | PlainMessage<IPServiceDeleteResponse> | undefined, b: IPServiceDeleteResponse | PlainMessage<IPServiceDeleteResponse> | undefined): boolean;
 }
-
-export namespace IPServiceDeleteRequest {
-  export type AsObject = {
-    uuid: string,
-    project: string,
-  }
-}
-
-export class IPServiceGetResponse extends jspb.Message {
-  getIp(): IP | undefined;
-  setIp(value?: IP): IPServiceGetResponse;
-  hasIp(): boolean;
-  clearIp(): IPServiceGetResponse;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): IPServiceGetResponse.AsObject;
-  static toObject(includeInstance: boolean, msg: IPServiceGetResponse): IPServiceGetResponse.AsObject;
-  static serializeBinaryToWriter(message: IPServiceGetResponse, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): IPServiceGetResponse;
-  static deserializeBinaryFromReader(message: IPServiceGetResponse, reader: jspb.BinaryReader): IPServiceGetResponse;
-}
-
-export namespace IPServiceGetResponse {
-  export type AsObject = {
-    ip?: IP.AsObject,
-  }
-}
-
-export class IPServiceAllocateResponse extends jspb.Message {
-  getIp(): IP | undefined;
-  setIp(value?: IP): IPServiceAllocateResponse;
-  hasIp(): boolean;
-  clearIp(): IPServiceAllocateResponse;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): IPServiceAllocateResponse.AsObject;
-  static toObject(includeInstance: boolean, msg: IPServiceAllocateResponse): IPServiceAllocateResponse.AsObject;
-  static serializeBinaryToWriter(message: IPServiceAllocateResponse, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): IPServiceAllocateResponse;
-  static deserializeBinaryFromReader(message: IPServiceAllocateResponse, reader: jspb.BinaryReader): IPServiceAllocateResponse;
-}
-
-export namespace IPServiceAllocateResponse {
-  export type AsObject = {
-    ip?: IP.AsObject,
-  }
-}
-
-export class IPServiceStaticResponse extends jspb.Message {
-  getIp(): IP | undefined;
-  setIp(value?: IP): IPServiceStaticResponse;
-  hasIp(): boolean;
-  clearIp(): IPServiceStaticResponse;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): IPServiceStaticResponse.AsObject;
-  static toObject(includeInstance: boolean, msg: IPServiceStaticResponse): IPServiceStaticResponse.AsObject;
-  static serializeBinaryToWriter(message: IPServiceStaticResponse, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): IPServiceStaticResponse;
-  static deserializeBinaryFromReader(message: IPServiceStaticResponse, reader: jspb.BinaryReader): IPServiceStaticResponse;
-}
-
-export namespace IPServiceStaticResponse {
-  export type AsObject = {
-    ip?: IP.AsObject,
-  }
-}
-
-export class IPServiceListResponse extends jspb.Message {
-  getIpsList(): Array<IP>;
-  setIpsList(value: Array<IP>): IPServiceListResponse;
-  clearIpsList(): IPServiceListResponse;
-  addIps(value?: IP, index?: number): IP;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): IPServiceListResponse.AsObject;
-  static toObject(includeInstance: boolean, msg: IPServiceListResponse): IPServiceListResponse.AsObject;
-  static serializeBinaryToWriter(message: IPServiceListResponse, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): IPServiceListResponse;
-  static deserializeBinaryFromReader(message: IPServiceListResponse, reader: jspb.BinaryReader): IPServiceListResponse;
-}
-
-export namespace IPServiceListResponse {
-  export type AsObject = {
-    ipsList: Array<IP.AsObject>,
-  }
-}
-
-export class IPServiceDeleteResponse extends jspb.Message {
-  getIp(): IP | undefined;
-  setIp(value?: IP): IPServiceDeleteResponse;
-  hasIp(): boolean;
-  clearIp(): IPServiceDeleteResponse;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): IPServiceDeleteResponse.AsObject;
-  static toObject(includeInstance: boolean, msg: IPServiceDeleteResponse): IPServiceDeleteResponse.AsObject;
-  static serializeBinaryToWriter(message: IPServiceDeleteResponse, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): IPServiceDeleteResponse;
-  static deserializeBinaryFromReader(message: IPServiceDeleteResponse, reader: jspb.BinaryReader): IPServiceDeleteResponse;
-}
-
-export namespace IPServiceDeleteResponse {
-  export type AsObject = {
-    ip?: IP.AsObject,
-  }
-}
-
