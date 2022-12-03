@@ -17,20 +17,20 @@ type Admin struct {
 	// TODO map from string to bool would be better
 	// maybe map[string][]string where key is method and values is slice of roles like
 	// "v1.SampleService/Get": ["editor", "viewer"]
-	Editor []string `json:"editor,omitempty"`
-	Viewer []string `json:"viewer,omitempty"`
+	Editor map[string]bool `json:"editor,omitempty"`
+	Viewer map[string]bool `json:"viewer,omitempty"`
 }
 type Tenant struct {
 	// TODO same as above
-	Owner  []string `json:"owner,omitempty"`
-	Editor []string `json:"editor,omitempty"`
-	Viewer []string `json:"viewer,omitempty"`
+	Owner  map[string]bool `json:"owner,omitempty"`
+	Editor map[string]bool `json:"editor,omitempty"`
+	Viewer map[string]bool `json:"viewer,omitempty"`
 }
 type Project struct {
 	// TODO same as above
-	Owner  []string `json:"owner,omitempty"`
-	Editor []string `json:"editor,omitempty"`
-	Viewer []string `json:"viewer,omitempty"`
+	Owner  map[string]bool `json:"owner,omitempty"`
+	Editor map[string]bool `json:"editor,omitempty"`
+	Viewer map[string]bool `json:"viewer,omitempty"`
 }
 
 // TODO convert to map[string]bool
