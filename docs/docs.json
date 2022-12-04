@@ -271,6 +271,185 @@
       "services": []
     },
     {
+      "name": "admin/v1/project.proto",
+      "description": "",
+      "package": "admin.v1",
+      "hasEnums": false,
+      "hasExtensions": false,
+      "hasMessages": true,
+      "hasServices": true,
+      "enums": [],
+      "extensions": [],
+      "messages": [
+        {
+          "name": "Project",
+          "longName": "Project",
+          "fullName": "admin.v1.Project",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "id",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "name",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "tenant",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "ProjectServiceListRequest",
+          "longName": "ProjectServiceListRequest",
+          "fullName": "admin.v1.ProjectServiceListRequest",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": true,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "id",
+              "description": "",
+              "label": "optional",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "_id",
+              "defaultValue": ""
+            },
+            {
+              "name": "name",
+              "description": "",
+              "label": "optional",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "_name",
+              "defaultValue": ""
+            },
+            {
+              "name": "tenant_id",
+              "description": "",
+              "label": "optional",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "_tenant_id",
+              "defaultValue": ""
+            },
+            {
+              "name": "paging",
+              "description": "",
+              "label": "",
+              "type": "Paging",
+              "longType": "api.v1.Paging",
+              "fullType": "api.v1.Paging",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "ProjectServiceListResponse",
+          "longName": "ProjectServiceListResponse",
+          "fullName": "admin.v1.ProjectServiceListResponse",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": true,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "projects",
+              "description": "",
+              "label": "repeated",
+              "type": "Project",
+              "longType": "Project",
+              "fullType": "admin.v1.Project",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "next_page",
+              "description": "next_page is used for pagination, returns the next page to be fetched and must then be provided in the list request.",
+              "label": "optional",
+              "type": "uint64",
+              "longType": "uint64",
+              "fullType": "uint64",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "_next_page",
+              "defaultValue": ""
+            }
+          ]
+        }
+      ],
+      "services": [
+        {
+          "name": "ProjectService",
+          "longName": "ProjectService",
+          "fullName": "admin.v1.ProjectService",
+          "description": "",
+          "methods": [
+            {
+              "name": "List",
+              "description": "",
+              "requestType": "ProjectServiceListRequest",
+              "requestLongType": "ProjectServiceListRequest",
+              "requestFullType": "admin.v1.ProjectServiceListRequest",
+              "requestStreaming": false,
+              "responseType": "ProjectServiceListResponse",
+              "responseLongType": "ProjectServiceListResponse",
+              "responseFullType": "admin.v1.ProjectServiceListResponse",
+              "responseStreaming": false
+            }
+          ]
+        }
+      ]
+    },
+    {
       "name": "api/v1/tenant.proto",
       "description": "",
       "package": "api.v1",

@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+package admin.v1;
+
+import "api/v1/common.proto";
+
+service ProjectService {
+  rpc List(ProjectServiceListRequest) returns (ProjectServiceListResponse) {
+    option (api.v1.admin_roles) = ADMIN_ROLE_EDITOR;
+    option (api.v1.admin_roles) = ADMIN_ROLE_VIEWER;
+  }
+}
+
+message ProjectServiceListRequest {
+  optional string id = 1;
+  optional string name = 2;
+  optional string tenant_id = 3;
+  api.v1.Paging paging = 4;
+}
+message ProjectServiceListResponse {
+  repeated Project projects = 1;
+  // next_page is used for pagination, returns the next page to be fetched and must then be provided in the list request.
+  optional uint64 next_page = 2;
+}
+
+message Project {
+  string id = 1;
+  string name = 2;
+  string tenant = 3;
+}
