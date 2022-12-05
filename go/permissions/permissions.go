@@ -12,6 +12,7 @@ type ServicePermissions struct {
 	Roles      Roles      `json:"roles"`
 	Methods    Methods    `json:"methods"`
 	Visibility Visibility `json:"visibility"`
+	Chargeable Chargeable `json:"chargeable,omitempty"`
 }
 type Admin struct {
 	// TODO map from string to bool would be better
@@ -47,6 +48,7 @@ type Visibility struct {
 	Public  map[string]bool `json:"public,omitempty"`
 	Private map[string]bool `json:"private,omitempty"`
 }
+type Chargeable map[string]bool
 
 func Get() (*ServicePermissions, error) {
 	result := &ServicePermissions{}

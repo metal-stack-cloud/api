@@ -191,6 +191,32 @@ proto3.util.setEnumType(Visibility, "api.v1.Visibility", [
 ]);
 
 /**
+ * @generated from enum api.v1.Chargeable
+ */
+export enum Chargeable {
+  /**
+   * @generated from enum value: CHARGEABLE_UNSPECIFIED = 0;
+   */
+  UNSPECIFIED = 0,
+
+  /**
+   * @generated from enum value: CHARGEABLE_TRUE = 1;
+   */
+  TRUE = 1,
+
+  /**
+   * @generated from enum value: CHARGEABLE_FALSE = 2;
+   */
+  FALSE = 2,
+}
+// Retrieve enum metadata with: proto3.getEnumType(Chargeable)
+proto3.util.setEnumType(Chargeable, "api.v1.Chargeable", [
+  { no: 0, name: "CHARGEABLE_UNSPECIFIED" },
+  { no: 1, name: "CHARGEABLE_TRUE" },
+  { no: 2, name: "CHARGEABLE_FALSE" },
+]);
+
+/**
  * @generated from message api.v1.Paging
  */
 export class Paging extends Message<Paging> {

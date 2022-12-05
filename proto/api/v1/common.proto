@@ -42,11 +42,18 @@ enum Visibility {
   VISIBILITY_PRIVATE = 2;
 }
 
+enum Chargeable {
+  CHARGEABLE_UNSPECIFIED = 0;
+  CHARGEABLE_TRUE = 1;
+  CHARGEABLE_FALSE = 2;
+}
+
 extend google.protobuf.MethodOptions {
   repeated TenantRole tenant_roles = 51000;
   repeated ProjectRole project_roles = 51001;
   repeated AdminRole admin_roles = 51002;
   Visibility visibility = 51003;
+  Chargeable chargeable = 51004;
 }
 
 message Paging {
