@@ -4,7 +4,7 @@
 /* eslint-disable */
 // @ts-nocheck
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Paging = exports.Visibility = exports.AdminRole = exports.ProjectRole = exports.TenantRole = exports.Role = exports.OAuthProvider = void 0;
+exports.Paging = exports.Chargeable = exports.Visibility = exports.AdminRole = exports.ProjectRole = exports.TenantRole = exports.Role = exports.OAuthProvider = void 0;
 const protobuf_1 = require("@bufbuild/protobuf");
 /**
  * @generated from enum api.v1.OAuthProvider
@@ -173,6 +173,30 @@ protobuf_1.proto3.util.setEnumType(Visibility, "api.v1.Visibility", [
     { no: 0, name: "VISIBILITY_UNSPECIFIED" },
     { no: 1, name: "VISIBILITY_PUBLIC" },
     { no: 2, name: "VISIBILITY_PRIVATE" },
+]);
+/**
+ * @generated from enum api.v1.Chargeable
+ */
+var Chargeable;
+(function (Chargeable) {
+    /**
+     * @generated from enum value: CHARGEABLE_UNSPECIFIED = 0;
+     */
+    Chargeable[Chargeable["UNSPECIFIED"] = 0] = "UNSPECIFIED";
+    /**
+     * @generated from enum value: CHARGEABLE_TRUE = 1;
+     */
+    Chargeable[Chargeable["TRUE"] = 1] = "TRUE";
+    /**
+     * @generated from enum value: CHARGEABLE_FALSE = 2;
+     */
+    Chargeable[Chargeable["FALSE"] = 2] = "FALSE";
+})(Chargeable = exports.Chargeable || (exports.Chargeable = {}));
+// Retrieve enum metadata with: proto3.getEnumType(Chargeable)
+protobuf_1.proto3.util.setEnumType(Chargeable, "api.v1.Chargeable", [
+    { no: 0, name: "CHARGEABLE_UNSPECIFIED" },
+    { no: 1, name: "CHARGEABLE_TRUE" },
+    { no: 2, name: "CHARGEABLE_FALSE" },
 ]);
 /**
  * @generated from message api.v1.Paging
