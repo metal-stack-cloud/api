@@ -30,6 +30,7 @@ service IPService {
   rpc Delete(IPServiceDeleteRequest) returns (IPServiceDeleteResponse) {
     option (project_roles) = PROJECT_ROLE_OWNER;
     option (project_roles) = PROJECT_ROLE_EDITOR;
+    option (chargeable) = CHARGEABLE_TRUE;
   }
 }
 
