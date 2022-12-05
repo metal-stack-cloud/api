@@ -33,6 +33,29 @@
           ]
         },
         {
+          "name": "Chargeable",
+          "longName": "Chargeable",
+          "fullName": "api.v1.Chargeable",
+          "description": "",
+          "values": [
+            {
+              "name": "CHARGEABLE_UNSPECIFIED",
+              "number": "0",
+              "description": ""
+            },
+            {
+              "name": "CHARGEABLE_TRUE",
+              "number": "1",
+              "description": ""
+            },
+            {
+              "name": "CHARGEABLE_FALSE",
+              "number": "2",
+              "description": ""
+            }
+          ]
+        },
+        {
           "name": "OAuthProvider",
           "longName": "OAuthProvider",
           "fullName": "api.v1.OAuthProvider",
@@ -179,6 +202,21 @@
           "longType": "AdminRole",
           "fullType": "api.v1.AdminRole",
           "number": 51002,
+          "defaultValue": "",
+          "containingType": "MethodOptions",
+          "containingLongType": ".google.protobuf.MethodOptions",
+          "containingFullType": "google.protobuf.MethodOptions"
+        },
+        {
+          "name": "chargeable",
+          "longName": ".google.protobuf.MethodOptions.chargeable",
+          "fullName": ".google.protobuf.MethodOptions.chargeable",
+          "description": "",
+          "label": "",
+          "type": "Chargeable",
+          "longType": "Chargeable",
+          "fullType": "api.v1.Chargeable",
+          "number": 51004,
           "defaultValue": "",
           "containingType": "MethodOptions",
           "containingLongType": ".google.protobuf.MethodOptions",

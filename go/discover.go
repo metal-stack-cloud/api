@@ -55,6 +55,7 @@ func servicePermissions(root string) (*permissions.ServicePermissions, error) {
 			},
 			Private: map[string]bool{},
 		}
+		chargeable = permissions.Chargeable{}
 	)
 
 	files, err := walk(root)
@@ -112,8 +113,15 @@ func servicePermissions(root string) (*permissions.ServicePermissions, error) {
 								visibility.Private[methodName] = true
 							case v1.Visibility_VISIBILITY_UNSPECIFIED.String():
 								// noop
+							// Chargeable
+							case v1.Chargeable_CHARGEABLE_TRUE.String():
+								chargeable[methodName] = true
+							case v1.Chargeable_CHARGEABLE_FALSE.String():
+								chargeable[methodName] = false
+							case v1.Chargeable_CHARGEABLE_UNSPECIFIED.String():
+								// noop
 							default:
-								return nil, fmt.Errorf("unknonw method identifier value detected:%s", *methodOpt.IdentifierValue)
+								return nil, fmt.Errorf("unknown method identifier value detected:%s", *methodOpt.IdentifierValue)
 
 							}
 							methods[methodName] = true
@@ -128,6 +136,7 @@ func servicePermissions(root string) (*permissions.ServicePermissions, error) {
 		Roles:      roles,
 		Methods:    methods,
 		Visibility: visibility,
+		Chargeable: chargeable,
 	}
 	return sp, nil
 }

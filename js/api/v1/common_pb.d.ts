@@ -123,6 +123,23 @@ export declare enum Visibility {
     PRIVATE = 2
 }
 /**
+ * @generated from enum api.v1.Chargeable
+ */
+export declare enum Chargeable {
+    /**
+     * @generated from enum value: CHARGEABLE_UNSPECIFIED = 0;
+     */
+    UNSPECIFIED = 0,
+    /**
+     * @generated from enum value: CHARGEABLE_TRUE = 1;
+     */
+    TRUE = 1,
+    /**
+     * @generated from enum value: CHARGEABLE_FALSE = 2;
+     */
+    FALSE = 2
+}
+/**
  * @generated from message api.v1.Paging
  */
 export declare class Paging extends Message<Paging> {
