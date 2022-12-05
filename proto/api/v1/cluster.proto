@@ -10,6 +10,7 @@ service ClusterService {
   rpc Create(ClusterServiceCreateRequest) returns (ClusterServiceCreateResponse) {
     option (project_roles) = PROJECT_ROLE_OWNER;
     option (project_roles) = PROJECT_ROLE_EDITOR;
+    option (chargeable) = CHARGEABLE_TRUE;
   }
   rpc Get(ClusterServiceGetRequest) returns (ClusterServiceGetResponse) {
     option (project_roles) = PROJECT_ROLE_OWNER;
@@ -29,10 +30,12 @@ service ClusterService {
   rpc Delete(ClusterServiceDeleteRequest) returns (ClusterServiceDeleteResponse) {
     option (project_roles) = PROJECT_ROLE_OWNER;
     option (project_roles) = PROJECT_ROLE_EDITOR;
+    option (chargeable) = CHARGEABLE_TRUE;
   }
   rpc Update(ClusterServiceUpdateRequest) returns (ClusterServiceUpdateResponse) {
     option (project_roles) = PROJECT_ROLE_OWNER;
     option (project_roles) = PROJECT_ROLE_EDITOR;
+    option (chargeable) = CHARGEABLE_TRUE;
   }
   rpc GetCredentials(ClusterServiceGetCredentialsRequest) returns (ClusterServiceGetCredentialsResponse) {
     option (project_roles) = PROJECT_ROLE_OWNER;

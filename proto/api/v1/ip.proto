@@ -15,10 +15,12 @@ service IPService {
   rpc Allocate(IPServiceAllocateRequest) returns (IPServiceAllocateResponse) {
     option (project_roles) = PROJECT_ROLE_OWNER;
     option (project_roles) = PROJECT_ROLE_EDITOR;
+    option (chargeable) = CHARGEABLE_TRUE;
   }
   rpc Static(IPServiceStaticRequest) returns (IPServiceStaticResponse) {
     option (project_roles) = PROJECT_ROLE_OWNER;
     option (project_roles) = PROJECT_ROLE_EDITOR;
+    option (chargeable) = CHARGEABLE_TRUE;
   }
   rpc List(IPServiceListRequest) returns (IPServiceListResponse) {
     option (project_roles) = PROJECT_ROLE_OWNER;
