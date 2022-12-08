@@ -548,6 +548,54 @@
           ]
         },
         {
+          "name": "TenantServiceCheckAdmittedRequest",
+          "longName": "TenantServiceCheckAdmittedRequest",
+          "fullName": "api.v1.TenantServiceCheckAdmittedRequest",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "login",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "TenantServiceCheckAdmittedResponse",
+          "longName": "TenantServiceCheckAdmittedResponse",
+          "fullName": "api.v1.TenantServiceCheckAdmittedResponse",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "admitted",
+              "description": "",
+              "label": "",
+              "type": "bool",
+              "longType": "bool",
+              "fullType": "bool",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
           "name": "TenantServiceCreateOrUpdateRequest",
           "longName": "TenantServiceCreateOrUpdateRequest",
           "fullName": "api.v1.TenantServiceCreateOrUpdateRequest",
@@ -740,6 +788,78 @@
           ]
         },
         {
+          "name": "TenantServiceRequestAdmissionRequest",
+          "longName": "TenantServiceRequestAdmissionRequest",
+          "fullName": "api.v1.TenantServiceRequestAdmissionRequest",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "login",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "email",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "phone_number",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "TenantServiceRequestAdmissionResponse",
+          "longName": "TenantServiceRequestAdmissionResponse",
+          "fullName": "api.v1.TenantServiceRequestAdmissionResponse",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "tenant",
+              "description": "",
+              "label": "",
+              "type": "Tenant",
+              "longType": "Tenant",
+              "fullType": "api.v1.Tenant",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
           "name": "TenantServiceUpdateRequest",
           "longName": "TenantServiceUpdateRequest",
           "fullName": "api.v1.TenantServiceUpdateRequest",
@@ -901,6 +1021,30 @@
               "responseType": "TenantServiceDeleteResponse",
               "responseLongType": "TenantServiceDeleteResponse",
               "responseFullType": "api.v1.TenantServiceDeleteResponse",
+              "responseStreaming": false
+            },
+            {
+              "name": "CheckAdmitted",
+              "description": "",
+              "requestType": "TenantServiceCheckAdmittedRequest",
+              "requestLongType": "TenantServiceCheckAdmittedRequest",
+              "requestFullType": "api.v1.TenantServiceCheckAdmittedRequest",
+              "requestStreaming": false,
+              "responseType": "TenantServiceCheckAdmittedResponse",
+              "responseLongType": "TenantServiceCheckAdmittedResponse",
+              "responseFullType": "api.v1.TenantServiceCheckAdmittedResponse",
+              "responseStreaming": false
+            },
+            {
+              "name": "RequestAdmission",
+              "description": "",
+              "requestType": "TenantServiceRequestAdmissionRequest",
+              "requestLongType": "TenantServiceRequestAdmissionRequest",
+              "requestFullType": "api.v1.TenantServiceRequestAdmissionRequest",
+              "requestStreaming": false,
+              "responseType": "TenantServiceRequestAdmissionResponse",
+              "responseLongType": "TenantServiceRequestAdmissionResponse",
+              "responseFullType": "api.v1.TenantServiceRequestAdmissionResponse",
               "responseStreaming": false
             }
           ]

@@ -414,6 +414,92 @@ export class TenantServiceDeleteRequest extends Message<TenantServiceDeleteReque
 }
 
 /**
+ * @generated from message api.v1.TenantServiceCheckAdmittedRequest
+ */
+export class TenantServiceCheckAdmittedRequest extends Message<TenantServiceCheckAdmittedRequest> {
+  /**
+   * @generated from field: string login = 1;
+   */
+  login = "";
+
+  constructor(data?: PartialMessage<TenantServiceCheckAdmittedRequest>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime = proto3;
+  static readonly typeName = "api.v1.TenantServiceCheckAdmittedRequest";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "login", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): TenantServiceCheckAdmittedRequest {
+    return new TenantServiceCheckAdmittedRequest().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): TenantServiceCheckAdmittedRequest {
+    return new TenantServiceCheckAdmittedRequest().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): TenantServiceCheckAdmittedRequest {
+    return new TenantServiceCheckAdmittedRequest().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: TenantServiceCheckAdmittedRequest | PlainMessage<TenantServiceCheckAdmittedRequest> | undefined, b: TenantServiceCheckAdmittedRequest | PlainMessage<TenantServiceCheckAdmittedRequest> | undefined): boolean {
+    return proto3.util.equals(TenantServiceCheckAdmittedRequest, a, b);
+  }
+}
+
+/**
+ * @generated from message api.v1.TenantServiceRequestAdmissionRequest
+ */
+export class TenantServiceRequestAdmissionRequest extends Message<TenantServiceRequestAdmissionRequest> {
+  /**
+   * @generated from field: string login = 1;
+   */
+  login = "";
+
+  /**
+   * @generated from field: string email = 2;
+   */
+  email = "";
+
+  /**
+   * @generated from field: string phone_number = 3;
+   */
+  phoneNumber = "";
+
+  constructor(data?: PartialMessage<TenantServiceRequestAdmissionRequest>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime = proto3;
+  static readonly typeName = "api.v1.TenantServiceRequestAdmissionRequest";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "login", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "email", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 3, name: "phone_number", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): TenantServiceRequestAdmissionRequest {
+    return new TenantServiceRequestAdmissionRequest().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): TenantServiceRequestAdmissionRequest {
+    return new TenantServiceRequestAdmissionRequest().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): TenantServiceRequestAdmissionRequest {
+    return new TenantServiceRequestAdmissionRequest().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: TenantServiceRequestAdmissionRequest | PlainMessage<TenantServiceRequestAdmissionRequest> | undefined, b: TenantServiceRequestAdmissionRequest | PlainMessage<TenantServiceRequestAdmissionRequest> | undefined): boolean {
+    return proto3.util.equals(TenantServiceRequestAdmissionRequest, a, b);
+  }
+}
+
+/**
  * Responses
  *
  * @generated from message api.v1.TenantServiceGetResponse
@@ -597,6 +683,80 @@ export class TenantServiceDeleteResponse extends Message<TenantServiceDeleteResp
 
   static equals(a: TenantServiceDeleteResponse | PlainMessage<TenantServiceDeleteResponse> | undefined, b: TenantServiceDeleteResponse | PlainMessage<TenantServiceDeleteResponse> | undefined): boolean {
     return proto3.util.equals(TenantServiceDeleteResponse, a, b);
+  }
+}
+
+/**
+ * @generated from message api.v1.TenantServiceCheckAdmittedResponse
+ */
+export class TenantServiceCheckAdmittedResponse extends Message<TenantServiceCheckAdmittedResponse> {
+  /**
+   * @generated from field: bool admitted = 1;
+   */
+  admitted = false;
+
+  constructor(data?: PartialMessage<TenantServiceCheckAdmittedResponse>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime = proto3;
+  static readonly typeName = "api.v1.TenantServiceCheckAdmittedResponse";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "admitted", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): TenantServiceCheckAdmittedResponse {
+    return new TenantServiceCheckAdmittedResponse().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): TenantServiceCheckAdmittedResponse {
+    return new TenantServiceCheckAdmittedResponse().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): TenantServiceCheckAdmittedResponse {
+    return new TenantServiceCheckAdmittedResponse().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: TenantServiceCheckAdmittedResponse | PlainMessage<TenantServiceCheckAdmittedResponse> | undefined, b: TenantServiceCheckAdmittedResponse | PlainMessage<TenantServiceCheckAdmittedResponse> | undefined): boolean {
+    return proto3.util.equals(TenantServiceCheckAdmittedResponse, a, b);
+  }
+}
+
+/**
+ * @generated from message api.v1.TenantServiceRequestAdmissionResponse
+ */
+export class TenantServiceRequestAdmissionResponse extends Message<TenantServiceRequestAdmissionResponse> {
+  /**
+   * @generated from field: api.v1.Tenant tenant = 1;
+   */
+  tenant?: Tenant;
+
+  constructor(data?: PartialMessage<TenantServiceRequestAdmissionResponse>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime = proto3;
+  static readonly typeName = "api.v1.TenantServiceRequestAdmissionResponse";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "tenant", kind: "message", T: Tenant },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): TenantServiceRequestAdmissionResponse {
+    return new TenantServiceRequestAdmissionResponse().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): TenantServiceRequestAdmissionResponse {
+    return new TenantServiceRequestAdmissionResponse().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): TenantServiceRequestAdmissionResponse {
+    return new TenantServiceRequestAdmissionResponse().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: TenantServiceRequestAdmissionResponse | PlainMessage<TenantServiceRequestAdmissionResponse> | undefined, b: TenantServiceRequestAdmissionResponse | PlainMessage<TenantServiceRequestAdmissionResponse> | undefined): boolean {
+    return proto3.util.equals(TenantServiceRequestAdmissionResponse, a, b);
   }
 }
 
