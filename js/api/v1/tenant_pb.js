@@ -41,6 +41,10 @@ class Tenant extends protobuf_1.Message {
          * @generated from field: bool admitted = 9;
          */
         this.admitted = false;
+        /**
+         * @generated from field: string phone_number = 10;
+         */
+        this.phoneNumber = "";
         protobuf_1.proto3.util.initPartial(data, this);
     }
     static fromBinary(bytes, options) {
@@ -67,9 +71,10 @@ Tenant.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 6, name: "oauth_provider", kind: "enum", T: protobuf_1.proto3.getEnumType(common_pb_js_1.OAuthProvider) },
     { no: 8, name: "payment_details", kind: "message", T: PaymentDetails },
     { no: 9, name: "admitted", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
-    { no: 10, name: "created_at", kind: "message", T: protobuf_1.Timestamp },
-    { no: 11, name: "updated_at", kind: "message", T: protobuf_1.Timestamp },
-    { no: 12, name: "deleted_at", kind: "message", T: protobuf_1.Timestamp },
+    { no: 10, name: "phone_number", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 11, name: "created_at", kind: "message", T: protobuf_1.Timestamp },
+    { no: 12, name: "updated_at", kind: "message", T: protobuf_1.Timestamp },
+    { no: 13, name: "deleted_at", kind: "message", T: protobuf_1.Timestamp },
 ]);
 /**
  * @generated from message api.v1.PaymentDetails

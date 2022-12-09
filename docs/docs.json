@@ -510,6 +510,18 @@
               "defaultValue": ""
             },
             {
+              "name": "phone_number",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
               "name": "created_at",
               "description": "",
               "label": "",

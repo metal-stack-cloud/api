@@ -50,10 +50,11 @@ message Tenant {
   OAuthProvider oauth_provider = 6;
   PaymentDetails payment_details = 8;
   bool admitted = 9;
+  string phone_number = 10;
 
-  google.protobuf.Timestamp created_at = 10;
-  google.protobuf.Timestamp updated_at = 11;
-  google.protobuf.Timestamp deleted_at = 12;
+  google.protobuf.Timestamp created_at = 11;
+  google.protobuf.Timestamp updated_at = 12;
+  google.protobuf.Timestamp deleted_at = 13;
 }
 
 message PaymentDetails {

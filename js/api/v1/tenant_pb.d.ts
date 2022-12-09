@@ -38,15 +38,19 @@ export declare class Tenant extends Message<Tenant> {
      */
     admitted: boolean;
     /**
-     * @generated from field: google.protobuf.Timestamp created_at = 10;
+     * @generated from field: string phone_number = 10;
+     */
+    phoneNumber: string;
+    /**
+     * @generated from field: google.protobuf.Timestamp created_at = 11;
      */
     createdAt?: Timestamp;
     /**
-     * @generated from field: google.protobuf.Timestamp updated_at = 11;
+     * @generated from field: google.protobuf.Timestamp updated_at = 12;
      */
     updatedAt?: Timestamp;
     /**
-     * @generated from field: google.protobuf.Timestamp deleted_at = 12;
+     * @generated from field: google.protobuf.Timestamp deleted_at = 13;
      */
     deletedAt?: Timestamp;
     constructor(data?: PartialMessage<Tenant>);
