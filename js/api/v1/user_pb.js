@@ -41,6 +41,10 @@ class User extends protobuf_1.Message {
          * @generated from field: repeated api.v1.Organization organizations = 7;
          */
         this.organizations = [];
+        /**
+         * @generated from field: bool admitted = 8;
+         */
+        this.admitted = false;
         protobuf_1.proto3.util.initPartial(data, this);
     }
     static fromBinary(bytes, options) {
@@ -66,6 +70,7 @@ User.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 5, name: "avatar_url", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 6, name: "oauth_provider", kind: "enum", T: protobuf_1.proto3.getEnumType(common_pb_js_1.OAuthProvider) },
     { no: 7, name: "organizations", kind: "message", T: Organization, repeated: true },
+    { no: 8, name: "admitted", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
 ]);
 /**
  * @generated from message api.v1.Organization

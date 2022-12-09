@@ -33,6 +33,10 @@ export declare class User extends Message<User> {
      * @generated from field: repeated api.v1.Organization organizations = 7;
      */
     organizations: Organization[];
+    /**
+     * @generated from field: bool admitted = 8;
+     */
+    admitted: boolean;
     constructor(data?: PartialMessage<User>);
     static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime.js").ProtoRuntime;
     static readonly typeName = "api.v1.User";

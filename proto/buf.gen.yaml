@@ -12,7 +12,7 @@ plugins:
     out: ../go
     opt: paths=source_relative
   # generate go structs for protocol buffer defination
-  - remote: buf.build/bufbuild/plugins/connect-go:v1.2.0-1
+  - remote: buf.build/bufbuild/plugins/connect-go:v1.3.0-1
     out: ../go
     opt: paths=source_relative
   # generate ts structs for protocol buffer definition
@@ -23,7 +23,7 @@ plugins:
     out: ../js
     opt: target=ts
   # generate validate methods
-  - remote: buf.build/jirkad/plugins/protoc-gen-validate:v0.6.7
+  - remote: buf.build/lionelee/plugins/protoc-gen-validate:v0.9.0-1
     out: ../go
     opt:
       - paths=source_relative
