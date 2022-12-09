@@ -22,18 +22,23 @@
         "/api.v1.TenantService/Create",
         "/api.v1.TenantService/Get",
         "/api.v1.TenantService/Update",
-        "/api.v1.TenantService/Delete"
+        "/api.v1.TenantService/Delete",
+        "/api.v1.TenantService/CheckAdmitted",
+        "/api.v1.TenantService/RequestAdmission"
       ],
       "editor": [
         "/api.v1.PaymentService/HasPaymentMethod",
         "/api.v1.TenantService/Create",
         "/api.v1.TenantService/Get",
         "/api.v1.TenantService/Update",
-        "/api.v1.TenantService/Delete"
+        "/api.v1.TenantService/Delete",
+        "/api.v1.TenantService/CheckAdmitted",
+        "/api.v1.TenantService/RequestAdmission"
       ],
       "viewer": [
         "/api.v1.PaymentService/HasPaymentMethod",
-        "/api.v1.TenantService/Get"
+        "/api.v1.TenantService/Get",
+        "/api.v1.TenantService/CheckAdmitted"
       ]
     },
     "project": {
@@ -119,10 +124,12 @@
     "/api.v1.SnapshotService/Delete": true,
     "/api.v1.SnapshotService/Get": true,
     "/api.v1.SnapshotService/List": true,
+    "/api.v1.TenantService/CheckAdmitted": true,
     "/api.v1.TenantService/Create": true,
     "/api.v1.TenantService/CreateOrUpdate": true,
     "/api.v1.TenantService/Delete": true,
     "/api.v1.TenantService/Get": true,
+    "/api.v1.TenantService/RequestAdmission": true,
     "/api.v1.TenantService/Update": true,
     "/api.v1.TokenService/Create": true,
     "/api.v1.VersionService/Get": true,

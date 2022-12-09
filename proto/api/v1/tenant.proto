@@ -29,6 +29,15 @@ service TenantService {
     option (tenant_roles) = TENANT_ROLE_OWNER;
     option (tenant_roles) = TENANT_ROLE_EDITOR;
   }
+  rpc CheckAdmitted(TenantServiceCheckAdmittedRequest) returns (TenantServiceCheckAdmittedResponse) {
+    option (tenant_roles) = TENANT_ROLE_OWNER;
+    option (tenant_roles) = TENANT_ROLE_EDITOR;
+    option (tenant_roles) = TENANT_ROLE_VIEWER;
+  }
+  rpc RequestAdmission(TenantServiceRequestAdmissionRequest) returns (TenantServiceRequestAdmissionResponse) {
+    option (tenant_roles) = TENANT_ROLE_OWNER;
+    option (tenant_roles) = TENANT_ROLE_EDITOR;
+  }
 }
 
 // Tenant
@@ -83,6 +92,16 @@ message TenantServiceDeleteRequest {
   string login = 1;
 }
 
+message TenantServiceCheckAdmittedRequest {
+  string login = 1;
+}
+
+message TenantServiceRequestAdmissionRequest {
+  string login = 1;
+  string email = 2;
+  string phone_number = 3;
+}
+
 // Responses
 message TenantServiceGetResponse {
   Tenant tenant = 1;
@@ -97,5 +116,13 @@ message TenantServiceUpdateResponse {
   Tenant tenant = 1;
 }
 message TenantServiceDeleteResponse {
+  Tenant tenant = 1;
+}
+
+message TenantServiceCheckAdmittedResponse {
+  bool admitted = 1;
+}
+
+message TenantServiceRequestAdmissionResponse {
   Tenant tenant = 1;
 }

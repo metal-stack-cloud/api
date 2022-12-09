@@ -61,5 +61,23 @@ exports.TenantService = {
             O: tenant_pb_js_1.TenantServiceDeleteResponse,
             kind: protobuf_1.MethodKind.Unary,
         },
+        /**
+         * @generated from rpc api.v1.TenantService.CheckAdmitted
+         */
+        checkAdmitted: {
+            name: "CheckAdmitted",
+            I: tenant_pb_js_1.TenantServiceCheckAdmittedRequest,
+            O: tenant_pb_js_1.TenantServiceCheckAdmittedResponse,
+            kind: protobuf_1.MethodKind.Unary,
+        },
+        /**
+         * @generated from rpc api.v1.TenantService.RequestAdmission
+         */
+        requestAdmission: {
+            name: "RequestAdmission",
+            I: tenant_pb_js_1.TenantServiceRequestAdmissionRequest,
+            O: tenant_pb_js_1.TenantServiceRequestAdmissionResponse,
+            kind: protobuf_1.MethodKind.Unary,
+        },
     }
 };

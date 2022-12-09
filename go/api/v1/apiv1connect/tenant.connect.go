@@ -34,6 +34,8 @@ type TenantServiceClient interface {
 	Get(context.Context, *connect_go.Request[v1.TenantServiceGetRequest]) (*connect_go.Response[v1.TenantServiceGetResponse], error)
 	Update(context.Context, *connect_go.Request[v1.TenantServiceUpdateRequest]) (*connect_go.Response[v1.TenantServiceUpdateResponse], error)
 	Delete(context.Context, *connect_go.Request[v1.TenantServiceDeleteRequest]) (*connect_go.Response[v1.TenantServiceDeleteResponse], error)
+	CheckAdmitted(context.Context, *connect_go.Request[v1.TenantServiceCheckAdmittedRequest]) (*connect_go.Response[v1.TenantServiceCheckAdmittedResponse], error)
+	RequestAdmission(context.Context, *connect_go.Request[v1.TenantServiceRequestAdmissionRequest]) (*connect_go.Response[v1.TenantServiceRequestAdmissionResponse], error)
 }
 
 // NewTenantServiceClient constructs a client for the api.v1.TenantService service. By default, it
@@ -71,16 +73,28 @@ func NewTenantServiceClient(httpClient connect_go.HTTPClient, baseURL string, op
 			baseURL+"/api.v1.TenantService/Delete",
 			opts...,
 		),
+		checkAdmitted: connect_go.NewClient[v1.TenantServiceCheckAdmittedRequest, v1.TenantServiceCheckAdmittedResponse](
+			httpClient,
+			baseURL+"/api.v1.TenantService/CheckAdmitted",
+			opts...,
+		),
+		requestAdmission: connect_go.NewClient[v1.TenantServiceRequestAdmissionRequest, v1.TenantServiceRequestAdmissionResponse](
+			httpClient,
+			baseURL+"/api.v1.TenantService/RequestAdmission",
+			opts...,
+		),
 	}
 }
 
 // tenantServiceClient implements TenantServiceClient.
 type tenantServiceClient struct {
-	create         *connect_go.Client[v1.TenantServiceCreateRequest, v1.TenantServiceCreateResponse]
-	createOrUpdate *connect_go.Client[v1.TenantServiceCreateOrUpdateRequest, v1.TenantServiceCreateOrUpdateResponse]
-	get            *connect_go.Client[v1.TenantServiceGetRequest, v1.TenantServiceGetResponse]
-	update         *connect_go.Client[v1.TenantServiceUpdateRequest, v1.TenantServiceUpdateResponse]
-	delete         *connect_go.Client[v1.TenantServiceDeleteRequest, v1.TenantServiceDeleteResponse]
+	create           *connect_go.Client[v1.TenantServiceCreateRequest, v1.TenantServiceCreateResponse]
+	createOrUpdate   *connect_go.Client[v1.TenantServiceCreateOrUpdateRequest, v1.TenantServiceCreateOrUpdateResponse]
+	get              *connect_go.Client[v1.TenantServiceGetRequest, v1.TenantServiceGetResponse]
+	update           *connect_go.Client[v1.TenantServiceUpdateRequest, v1.TenantServiceUpdateResponse]
+	delete           *connect_go.Client[v1.TenantServiceDeleteRequest, v1.TenantServiceDeleteResponse]
+	checkAdmitted    *connect_go.Client[v1.TenantServiceCheckAdmittedRequest, v1.TenantServiceCheckAdmittedResponse]
+	requestAdmission *connect_go.Client[v1.TenantServiceRequestAdmissionRequest, v1.TenantServiceRequestAdmissionResponse]
 }
 
 // Create calls api.v1.TenantService.Create.
@@ -108,6 +122,16 @@ func (c *tenantServiceClient) Delete(ctx context.Context, req *connect_go.Reques
 	return c.delete.CallUnary(ctx, req)
 }
 
+// CheckAdmitted calls api.v1.TenantService.CheckAdmitted.
+func (c *tenantServiceClient) CheckAdmitted(ctx context.Context, req *connect_go.Request[v1.TenantServiceCheckAdmittedRequest]) (*connect_go.Response[v1.TenantServiceCheckAdmittedResponse], error) {
+	return c.checkAdmitted.CallUnary(ctx, req)
+}
+
+// RequestAdmission calls api.v1.TenantService.RequestAdmission.
+func (c *tenantServiceClient) RequestAdmission(ctx context.Context, req *connect_go.Request[v1.TenantServiceRequestAdmissionRequest]) (*connect_go.Response[v1.TenantServiceRequestAdmissionResponse], error) {
+	return c.requestAdmission.CallUnary(ctx, req)
+}
+
 // TenantServiceHandler is an implementation of the api.v1.TenantService service.
 type TenantServiceHandler interface {
 	Create(context.Context, *connect_go.Request[v1.TenantServiceCreateRequest]) (*connect_go.Response[v1.TenantServiceCreateResponse], error)
@@ -117,6 +141,8 @@ type TenantServiceHandler interface {
 	Get(context.Context, *connect_go.Request[v1.TenantServiceGetRequest]) (*connect_go.Response[v1.TenantServiceGetResponse], error)
 	Update(context.Context, *connect_go.Request[v1.TenantServiceUpdateRequest]) (*connect_go.Response[v1.TenantServiceUpdateResponse], error)
 	Delete(context.Context, *connect_go.Request[v1.TenantServiceDeleteRequest]) (*connect_go.Response[v1.TenantServiceDeleteResponse], error)
+	CheckAdmitted(context.Context, *connect_go.Request[v1.TenantServiceCheckAdmittedRequest]) (*connect_go.Response[v1.TenantServiceCheckAdmittedResponse], error)
+	RequestAdmission(context.Context, *connect_go.Request[v1.TenantServiceRequestAdmissionRequest]) (*connect_go.Response[v1.TenantServiceRequestAdmissionResponse], error)
 }
 
 // NewTenantServiceHandler builds an HTTP handler from the service implementation. It returns the
@@ -151,6 +177,16 @@ func NewTenantServiceHandler(svc TenantServiceHandler, opts ...connect_go.Handle
 		svc.Delete,
 		opts...,
 	))
+	mux.Handle("/api.v1.TenantService/CheckAdmitted", connect_go.NewUnaryHandler(
+		"/api.v1.TenantService/CheckAdmitted",
+		svc.CheckAdmitted,
+		opts...,
+	))
+	mux.Handle("/api.v1.TenantService/RequestAdmission", connect_go.NewUnaryHandler(
+		"/api.v1.TenantService/RequestAdmission",
+		svc.RequestAdmission,
+		opts...,
+	))
 	return "/api.v1.TenantService/", mux
 }
 
@@ -175,4 +211,12 @@ func (UnimplementedTenantServiceHandler) Update(context.Context, *connect_go.Req
 
 func (UnimplementedTenantServiceHandler) Delete(context.Context, *connect_go.Request[v1.TenantServiceDeleteRequest]) (*connect_go.Response[v1.TenantServiceDeleteResponse], error) {
 	return nil, connect_go.NewError(connect_go.CodeUnimplemented, errors.New("api.v1.TenantService.Delete is not implemented"))
+}
+
+func (UnimplementedTenantServiceHandler) CheckAdmitted(context.Context, *connect_go.Request[v1.TenantServiceCheckAdmittedRequest]) (*connect_go.Response[v1.TenantServiceCheckAdmittedResponse], error) {
+	return nil, connect_go.NewError(connect_go.CodeUnimplemented, errors.New("api.v1.TenantService.CheckAdmitted is not implemented"))
+}
+
+func (UnimplementedTenantServiceHandler) RequestAdmission(context.Context, *connect_go.Request[v1.TenantServiceRequestAdmissionRequest]) (*connect_go.Response[v1.TenantServiceRequestAdmissionResponse], error) {
+	return nil, connect_go.NewError(connect_go.CodeUnimplemented, errors.New("api.v1.TenantService.RequestAdmission is not implemented"))
 }

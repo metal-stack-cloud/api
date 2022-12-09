@@ -1,4 +1,4 @@
-import { TenantServiceCreateOrUpdateRequest, TenantServiceCreateOrUpdateResponse, TenantServiceCreateRequest, TenantServiceCreateResponse, TenantServiceDeleteRequest, TenantServiceDeleteResponse, TenantServiceGetRequest, TenantServiceGetResponse, TenantServiceUpdateRequest, TenantServiceUpdateResponse } from "./tenant_pb.js";
+import { TenantServiceCheckAdmittedRequest, TenantServiceCheckAdmittedResponse, TenantServiceCreateOrUpdateRequest, TenantServiceCreateOrUpdateResponse, TenantServiceCreateRequest, TenantServiceCreateResponse, TenantServiceDeleteRequest, TenantServiceDeleteResponse, TenantServiceGetRequest, TenantServiceGetResponse, TenantServiceRequestAdmissionRequest, TenantServiceRequestAdmissionResponse, TenantServiceUpdateRequest, TenantServiceUpdateResponse } from "./tenant_pb.js";
 import { MethodKind } from "@bufbuild/protobuf";
 /**
  * @generated from service api.v1.TenantService
@@ -52,6 +52,24 @@ export declare const TenantService: {
             readonly name: "Delete";
             readonly I: typeof TenantServiceDeleteRequest;
             readonly O: typeof TenantServiceDeleteResponse;
+            readonly kind: MethodKind.Unary;
+        };
+        /**
+         * @generated from rpc api.v1.TenantService.CheckAdmitted
+         */
+        readonly checkAdmitted: {
+            readonly name: "CheckAdmitted";
+            readonly I: typeof TenantServiceCheckAdmittedRequest;
+            readonly O: typeof TenantServiceCheckAdmittedResponse;
+            readonly kind: MethodKind.Unary;
+        };
+        /**
+         * @generated from rpc api.v1.TenantService.RequestAdmission
+         */
+        readonly requestAdmission: {
+            readonly name: "RequestAdmission";
+            readonly I: typeof TenantServiceRequestAdmissionRequest;
+            readonly O: typeof TenantServiceRequestAdmissionResponse;
             readonly kind: MethodKind.Unary;
         };
     };
