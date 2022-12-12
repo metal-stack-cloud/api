@@ -274,9 +274,63 @@ func (m *Card) validate(all bool) error {
 
 	// no validation rules for Country
 
-	// no validation rules for ExpMonth
+	if all {
+		switch v := interface{}(m.GetExpMonth()).(type) {
+		case interface{ ValidateAll() error }:
+			if err := v.ValidateAll(); err != nil {
+				errors = append(errors, CardValidationError{
+					field:  "ExpMonth",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		case interface{ Validate() error }:
+			if err := v.Validate(); err != nil {
+				errors = append(errors, CardValidationError{
+					field:  "ExpMonth",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		}
+	} else if v, ok := interface{}(m.GetExpMonth()).(interface{ Validate() error }); ok {
+		if err := v.Validate(); err != nil {
+			return CardValidationError{
+				field:  "ExpMonth",
+				reason: "embedded message failed validation",
+				cause:  err,
+			}
+		}
+	}
 
-	// no validation rules for ExpYear
+	if all {
+		switch v := interface{}(m.GetExpYear()).(type) {
+		case interface{ ValidateAll() error }:
+			if err := v.ValidateAll(); err != nil {
+				errors = append(errors, CardValidationError{
+					field:  "ExpYear",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		case interface{ Validate() error }:
+			if err := v.Validate(); err != nil {
+				errors = append(errors, CardValidationError{
+					field:  "ExpYear",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		}
+	} else if v, ok := interface{}(m.GetExpYear()).(interface{ Validate() error }); ok {
+		if err := v.Validate(); err != nil {
+			return CardValidationError{
+				field:  "ExpYear",
+				reason: "embedded message failed validation",
+				cause:  err,
+			}
+		}
+	}
 
 	// no validation rules for Last_4
 

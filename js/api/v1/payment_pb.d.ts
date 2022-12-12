@@ -62,13 +62,13 @@ export declare class Card extends Message<Card> {
      */
     country: string;
     /**
-     * @generated from field: int64 exp_month = 3;
+     * @generated from field: google.protobuf.Timestamp exp_month = 3;
      */
-    expMonth: bigint;
+    expMonth?: Timestamp;
     /**
-     * @generated from field: int64 exp_year = 4;
+     * @generated from field: google.protobuf.Timestamp exp_year = 4;
      */
-    expYear: bigint;
+    expYear?: Timestamp;
     /**
      * @generated from field: string last_4 = 5;
      */

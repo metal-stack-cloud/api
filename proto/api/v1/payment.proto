@@ -53,8 +53,8 @@ message PaymentCustomer {
 message Card {
   string brand = 1;
   string country = 2;
-  int64 exp_month = 3;
-  int64 exp_year = 4;
+  google.protobuf.Timestamp exp_month = 3;
+  google.protobuf.Timestamp exp_year = 4;
   string last_4 = 5;
 }
 

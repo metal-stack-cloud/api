@@ -106,14 +106,14 @@ export class Card extends Message<Card> {
   country = "";
 
   /**
-   * @generated from field: int64 exp_month = 3;
+   * @generated from field: google.protobuf.Timestamp exp_month = 3;
    */
-  expMonth = protoInt64.zero;
+  expMonth?: Timestamp;
 
   /**
-   * @generated from field: int64 exp_year = 4;
+   * @generated from field: google.protobuf.Timestamp exp_year = 4;
    */
-  expYear = protoInt64.zero;
+  expYear?: Timestamp;
 
   /**
    * @generated from field: string last_4 = 5;
@@ -130,8 +130,8 @@ export class Card extends Message<Card> {
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
     { no: 1, name: "brand", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 2, name: "country", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 3, name: "exp_month", kind: "scalar", T: 3 /* ScalarType.INT64 */ },
-    { no: 4, name: "exp_year", kind: "scalar", T: 3 /* ScalarType.INT64 */ },
+    { no: 3, name: "exp_month", kind: "message", T: Timestamp },
+    { no: 4, name: "exp_year", kind: "message", T: Timestamp },
     { no: 5, name: "last_4", kind: "scalar", T: 9 /* ScalarType.STRING */ },
   ]);
 

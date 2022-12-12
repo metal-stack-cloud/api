@@ -72,14 +72,6 @@ class Card extends protobuf_1.Message {
          */
         this.country = "";
         /**
-         * @generated from field: int64 exp_month = 3;
-         */
-        this.expMonth = protobuf_1.protoInt64.zero;
-        /**
-         * @generated from field: int64 exp_year = 4;
-         */
-        this.expYear = protobuf_1.protoInt64.zero;
-        /**
          * @generated from field: string last_4 = 5;
          */
         this.last4 = "";
@@ -104,8 +96,8 @@ Card.typeName = "api.v1.Card";
 Card.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 1, name: "brand", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 2, name: "country", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 3, name: "exp_month", kind: "scalar", T: 3 /* ScalarType.INT64 */ },
-    { no: 4, name: "exp_year", kind: "scalar", T: 3 /* ScalarType.INT64 */ },
+    { no: 3, name: "exp_month", kind: "message", T: protobuf_1.Timestamp },
+    { no: 4, name: "exp_year", kind: "message", T: protobuf_1.Timestamp },
     { no: 5, name: "last_4", kind: "scalar", T: 9 /* ScalarType.STRING */ },
 ]);
 /**
