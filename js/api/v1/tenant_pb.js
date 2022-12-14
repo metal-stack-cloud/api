@@ -4,7 +4,7 @@
 /* eslint-disable */
 // @ts-nocheck
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.TenantServiceRequestAdmissionResponse = exports.TenantServiceCheckAdmittedResponse = exports.TenantServiceDeleteResponse = exports.TenantServiceUpdateResponse = exports.TenantServiceCreateOrUpdateResponse = exports.TenantServiceCreateResponse = exports.TenantServiceGetResponse = exports.TenantServiceRequestAdmissionRequest = exports.TenantServiceCheckAdmittedRequest = exports.TenantServiceDeleteRequest = exports.TenantServiceUpdateRequest = exports.TenantServiceCreateOrUpdateRequest = exports.TenantServiceCreateRequest = exports.TenantServiceGetRequest = exports.PaymentDetailsUpdate = exports.PaymentDetails = exports.Tenant = void 0;
+exports.TenantServiceRequestAdmissionResponse = exports.TenantServiceCheckAdmittedResponse = exports.TenantServiceDeleteResponse = exports.TenantServiceUpdateResponse = exports.TenantServiceCreateOrUpdateResponse = exports.TenantServiceCreateResponse = exports.TenantServiceGetResponse = exports.TenantServiceRequestAdmissionRequest = exports.TenantServiceCheckAdmittedRequest = exports.TenantServiceDeleteRequest = exports.TenantServiceUpdateRequest = exports.TenantServiceCreateOrUpdateRequest = exports.TenantServiceCreateRequest = exports.TenantServiceGetRequest = exports.AcceptedTermsAndConditionsDetails = exports.PaymentDetailsUpdate = exports.PaymentDetails = exports.Tenant = void 0;
 const protobuf_1 = require("@bufbuild/protobuf");
 const common_pb_js_1 = require("./common_pb.js");
 /**
@@ -75,6 +75,7 @@ Tenant.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 11, name: "created_at", kind: "message", T: protobuf_1.Timestamp },
     { no: 12, name: "updated_at", kind: "message", T: protobuf_1.Timestamp },
     { no: 13, name: "deleted_at", kind: "message", T: protobuf_1.Timestamp },
+    { no: 14, name: "accepted_terms_and_conditions_details", kind: "message", T: AcceptedTermsAndConditionsDetails },
 ]);
 /**
  * @generated from message api.v1.PaymentDetails
@@ -145,6 +146,38 @@ PaymentDetailsUpdate.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 1, name: "customer_id", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
     { no: 2, name: "payment_method_id", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
     { no: 3, name: "subscription_id", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
+]);
+/**
+ * @generated from message api.v1.AcceptedTermsAndConditionsDetails
+ */
+class AcceptedTermsAndConditionsDetails extends protobuf_1.Message {
+    constructor(data) {
+        super();
+        /**
+         * @generated from field: bool accepted_terms_and_conditions = 1;
+         */
+        this.acceptedTermsAndConditions = false;
+        protobuf_1.proto3.util.initPartial(data, this);
+    }
+    static fromBinary(bytes, options) {
+        return new AcceptedTermsAndConditionsDetails().fromBinary(bytes, options);
+    }
+    static fromJson(jsonValue, options) {
+        return new AcceptedTermsAndConditionsDetails().fromJson(jsonValue, options);
+    }
+    static fromJsonString(jsonString, options) {
+        return new AcceptedTermsAndConditionsDetails().fromJsonString(jsonString, options);
+    }
+    static equals(a, b) {
+        return protobuf_1.proto3.util.equals(AcceptedTermsAndConditionsDetails, a, b);
+    }
+}
+exports.AcceptedTermsAndConditionsDetails = AcceptedTermsAndConditionsDetails;
+AcceptedTermsAndConditionsDetails.runtime = protobuf_1.proto3;
+AcceptedTermsAndConditionsDetails.typeName = "api.v1.AcceptedTermsAndConditionsDetails";
+AcceptedTermsAndConditionsDetails.fields = protobuf_1.proto3.util.newFieldList(() => [
+    { no: 1, name: "accepted_terms_and_conditions", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
+    { no: 2, name: "accepted_terms_and_conditions_timestamp", kind: "message", T: protobuf_1.Timestamp },
 ]);
 /**
  * Requests

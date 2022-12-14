@@ -53,6 +53,10 @@ export declare class Tenant extends Message<Tenant> {
      * @generated from field: google.protobuf.Timestamp deleted_at = 13;
      */
     deletedAt?: Timestamp;
+    /**
+     * @generated from field: api.v1.AcceptedTermsAndConditionsDetails accepted_terms_and_conditions_details = 14;
+     */
+    acceptedTermsAndConditionsDetails?: AcceptedTermsAndConditionsDetails;
     constructor(data?: PartialMessage<Tenant>);
     static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime.js").ProtoRuntime;
     static readonly typeName = "api.v1.Tenant";
@@ -111,6 +115,27 @@ export declare class PaymentDetailsUpdate extends Message<PaymentDetailsUpdate> 
     static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): PaymentDetailsUpdate;
     static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): PaymentDetailsUpdate;
     static equals(a: PaymentDetailsUpdate | PlainMessage<PaymentDetailsUpdate> | undefined, b: PaymentDetailsUpdate | PlainMessage<PaymentDetailsUpdate> | undefined): boolean;
+}
+/**
+ * @generated from message api.v1.AcceptedTermsAndConditionsDetails
+ */
+export declare class AcceptedTermsAndConditionsDetails extends Message<AcceptedTermsAndConditionsDetails> {
+    /**
+     * @generated from field: bool accepted_terms_and_conditions = 1;
+     */
+    acceptedTermsAndConditions: boolean;
+    /**
+     * @generated from field: google.protobuf.Timestamp accepted_terms_and_conditions_timestamp = 2;
+     */
+    acceptedTermsAndConditionsTimestamp?: Timestamp;
+    constructor(data?: PartialMessage<AcceptedTermsAndConditionsDetails>);
+    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime.js").ProtoRuntime;
+    static readonly typeName = "api.v1.AcceptedTermsAndConditionsDetails";
+    static readonly fields: FieldList;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): AcceptedTermsAndConditionsDetails;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): AcceptedTermsAndConditionsDetails;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): AcceptedTermsAndConditionsDetails;
+    static equals(a: AcceptedTermsAndConditionsDetails | PlainMessage<AcceptedTermsAndConditionsDetails> | undefined, b: AcceptedTermsAndConditionsDetails | PlainMessage<AcceptedTermsAndConditionsDetails> | undefined): boolean;
 }
 /**
  * Requests

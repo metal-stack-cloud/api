@@ -320,6 +320,42 @@
       "extensions": [],
       "messages": [
         {
+          "name": "AcceptedTermsAndConditionsDetails",
+          "longName": "AcceptedTermsAndConditionsDetails",
+          "fullName": "api.v1.AcceptedTermsAndConditionsDetails",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "accepted_terms_and_conditions",
+              "description": "",
+              "label": "",
+              "type": "bool",
+              "longType": "bool",
+              "fullType": "bool",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "accepted_terms_and_conditions_timestamp",
+              "description": "",
+              "label": "",
+              "type": "Timestamp",
+              "longType": "google.protobuf.Timestamp",
+              "fullType": "google.protobuf.Timestamp",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
           "name": "PaymentDetails",
           "longName": "PaymentDetails",
           "fullName": "api.v1.PaymentDetails",
@@ -552,6 +588,18 @@
               "type": "Timestamp",
               "longType": "google.protobuf.Timestamp",
               "fullType": "google.protobuf.Timestamp",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "accepted_terms_and_conditions_details",
+              "description": "",
+              "label": "",
+              "type": "AcceptedTermsAndConditionsDetails",
+              "longType": "AcceptedTermsAndConditionsDetails",
+              "fullType": "api.v1.AcceptedTermsAndConditionsDetails",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
