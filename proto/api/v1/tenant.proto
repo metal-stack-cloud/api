@@ -76,6 +76,11 @@ message AcceptedTermsAndConditionsDetails {
   google.protobuf.Timestamp accepted_terms_and_conditions_timestamp = 2;
 }
 
+message AcceptedTermsAndConditionsDetailsUpdate {
+  optional bool accepted_terms_and_conditions = 1;
+  optional google.protobuf.Timestamp accepted_terms_and_conditions_timestamp = 2;
+}
+
 // Requests
 message TenantServiceGetRequest {
   string login = 1;
@@ -94,6 +99,7 @@ message TenantServiceUpdateRequest {
   optional string email = 3;
   optional string avatar_url = 5;
   optional PaymentDetailsUpdate payment_details = 8;
+  optional AcceptedTermsAndConditionsDetailsUpdate accepted_terms_and_conditions_details = 9;
 }
 
 message TenantServiceDeleteRequest {

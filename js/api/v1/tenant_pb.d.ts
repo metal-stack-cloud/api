@@ -138,6 +138,27 @@ export declare class AcceptedTermsAndConditionsDetails extends Message<AcceptedT
     static equals(a: AcceptedTermsAndConditionsDetails | PlainMessage<AcceptedTermsAndConditionsDetails> | undefined, b: AcceptedTermsAndConditionsDetails | PlainMessage<AcceptedTermsAndConditionsDetails> | undefined): boolean;
 }
 /**
+ * @generated from message api.v1.AcceptedTermsAndConditionsDetailsUpdate
+ */
+export declare class AcceptedTermsAndConditionsDetailsUpdate extends Message<AcceptedTermsAndConditionsDetailsUpdate> {
+    /**
+     * @generated from field: optional bool accepted_terms_and_conditions = 1;
+     */
+    acceptedTermsAndConditions?: boolean;
+    /**
+     * @generated from field: optional google.protobuf.Timestamp accepted_terms_and_conditions_timestamp = 2;
+     */
+    acceptedTermsAndConditionsTimestamp?: Timestamp;
+    constructor(data?: PartialMessage<AcceptedTermsAndConditionsDetailsUpdate>);
+    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime.js").ProtoRuntime;
+    static readonly typeName = "api.v1.AcceptedTermsAndConditionsDetailsUpdate";
+    static readonly fields: FieldList;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): AcceptedTermsAndConditionsDetailsUpdate;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): AcceptedTermsAndConditionsDetailsUpdate;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): AcceptedTermsAndConditionsDetailsUpdate;
+    static equals(a: AcceptedTermsAndConditionsDetailsUpdate | PlainMessage<AcceptedTermsAndConditionsDetailsUpdate> | undefined, b: AcceptedTermsAndConditionsDetailsUpdate | PlainMessage<AcceptedTermsAndConditionsDetailsUpdate> | undefined): boolean;
+}
+/**
  * Requests
  *
  * @generated from message api.v1.TenantServiceGetRequest
@@ -216,6 +237,10 @@ export declare class TenantServiceUpdateRequest extends Message<TenantServiceUpd
      * @generated from field: optional api.v1.PaymentDetailsUpdate payment_details = 8;
      */
     paymentDetails?: PaymentDetailsUpdate;
+    /**
+     * @generated from field: optional api.v1.AcceptedTermsAndConditionsDetailsUpdate accepted_terms_and_conditions_details = 9;
+     */
+    acceptedTermsAndConditionsDetails?: AcceptedTermsAndConditionsDetailsUpdate;
     constructor(data?: PartialMessage<TenantServiceUpdateRequest>);
     static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime.js").ProtoRuntime;
     static readonly typeName = "api.v1.TenantServiceUpdateRequest";
