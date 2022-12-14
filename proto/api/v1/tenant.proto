@@ -55,6 +55,8 @@ message Tenant {
   google.protobuf.Timestamp created_at = 11;
   google.protobuf.Timestamp updated_at = 12;
   google.protobuf.Timestamp deleted_at = 13;
+
+  AcceptedTermsAndConditionsDetails accepted_terms_and_conditions_details = 14;
 }
 
 message PaymentDetails {
@@ -67,6 +69,11 @@ message PaymentDetailsUpdate {
   optional string customer_id = 1;
   optional string payment_method_id = 2;
   optional string subscription_id = 3;
+}
+
+message AcceptedTermsAndConditionsDetails {
+  bool accepted_terms_and_conditions = 1;
+  google.protobuf.Timestamp accepted_terms_and_conditions_timestamp = 2;
 }
 
 // Requests
