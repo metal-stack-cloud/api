@@ -171,6 +171,39 @@ func (m *PaymentCustomer) validate(all bool) error {
 
 	}
 
+	if m.Coupon != nil {
+
+		if all {
+			switch v := interface{}(m.GetCoupon()).(type) {
+			case interface{ ValidateAll() error }:
+				if err := v.ValidateAll(); err != nil {
+					errors = append(errors, PaymentCustomerValidationError{
+						field:  "Coupon",
+						reason: "embedded message failed validation",
+						cause:  err,
+					})
+				}
+			case interface{ Validate() error }:
+				if err := v.Validate(); err != nil {
+					errors = append(errors, PaymentCustomerValidationError{
+						field:  "Coupon",
+						reason: "embedded message failed validation",
+						cause:  err,
+					})
+				}
+			}
+		} else if v, ok := interface{}(m.GetCoupon()).(interface{ Validate() error }); ok {
+			if err := v.Validate(); err != nil {
+				return PaymentCustomerValidationError{
+					field:  "Coupon",
+					reason: "embedded message failed validation",
+					cause:  err,
+				}
+			}
+		}
+
+	}
+
 	if len(errors) > 0 {
 		return PaymentCustomerMultiError(errors)
 	}
@@ -896,6 +929,114 @@ var _ interface {
 	Cause() error
 	ErrorName() string
 } = InvoiceValidationError{}
+
+// Validate checks the field values on Coupon with the rules defined in the
+// proto definition for this message. If any rules are violated, the first
+// error encountered is returned, or nil if there are no violations.
+func (m *Coupon) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on Coupon with the rules defined in the
+// proto definition for this message. If any rules are violated, the result is
+// a list of violation errors wrapped in CouponMultiError, or nil if none found.
+func (m *Coupon) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *Coupon) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	// no validation rules for Id
+
+	// no validation rules for Name
+
+	// no validation rules for AmountOff
+
+	// no validation rules for Currency
+
+	// no validation rules for DurationInMonth
+
+	if len(errors) > 0 {
+		return CouponMultiError(errors)
+	}
+
+	return nil
+}
+
+// CouponMultiError is an error wrapping multiple validation errors returned by
+// Coupon.ValidateAll() if the designated constraints aren't met.
+type CouponMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m CouponMultiError) Error() string {
+	var msgs []string
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m CouponMultiError) AllErrors() []error { return m }
+
+// CouponValidationError is the validation error returned by Coupon.Validate if
+// the designated constraints aren't met.
+type CouponValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e CouponValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e CouponValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e CouponValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e CouponValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e CouponValidationError) ErrorName() string { return "CouponValidationError" }
+
+// Error satisfies the builtin error interface
+func (e CouponValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sCoupon.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = CouponValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = CouponValidationError{}
 
 // Validate checks the field values on
 // PaymentServiceCreateOrUpdateCustomerRequest with the rules defined in the

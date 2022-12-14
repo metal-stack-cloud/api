@@ -97,6 +97,8 @@ func (m *Tenant) validate(all bool) error {
 
 	// no validation rules for Admitted
 
+	// no validation rules for PhoneNumber
+
 	if all {
 		switch v := interface{}(m.GetCreatedAt()).(type) {
 		case interface{ ValidateAll() error }:

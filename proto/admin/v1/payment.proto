@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+package admin.v1;
+
+import "api/v1/common.proto";
+import "api/v1/payment.proto";
+
+service PaymentService {
+  rpc ListCoupons(PaymentServiceListCouponsRequest) returns (PaymentServiceListCouponsResponse) {
+    option (api.v1.admin_roles) = ADMIN_ROLE_EDITOR;
+    option (api.v1.admin_roles) = ADMIN_ROLE_VIEWER;
+  }
+  rpc AddCouponToCustomer(PaymentServiceAddCouponToCustomerRequest) returns (PaymentServiceAddCouponToCustomerResponse) {
+    option (api.v1.admin_roles) = ADMIN_ROLE_EDITOR;
+  }
+}
+
+message PaymentServiceListCouponsRequest {}
+message PaymentServiceListCouponsResponse {
+  repeated api.v1.Coupon coupons = 1;
+}
+message PaymentServiceAddCouponToCustomerRequest {
+  string login = 1;
+  string coupon_id = 2;
+}
+message PaymentServiceAddCouponToCustomerResponse {
+  api.v1.PaymentCustomer customer = 1;
+}

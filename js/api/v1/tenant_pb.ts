@@ -51,17 +51,22 @@ export class Tenant extends Message<Tenant> {
   admitted = false;
 
   /**
-   * @generated from field: google.protobuf.Timestamp created_at = 10;
+   * @generated from field: string phone_number = 10;
+   */
+  phoneNumber = "";
+
+  /**
+   * @generated from field: google.protobuf.Timestamp created_at = 20;
    */
   createdAt?: Timestamp;
 
   /**
-   * @generated from field: google.protobuf.Timestamp updated_at = 11;
+   * @generated from field: google.protobuf.Timestamp updated_at = 21;
    */
   updatedAt?: Timestamp;
 
   /**
-   * @generated from field: google.protobuf.Timestamp deleted_at = 12;
+   * @generated from field: google.protobuf.Timestamp deleted_at = 22;
    */
   deletedAt?: Timestamp;
 
@@ -80,9 +85,10 @@ export class Tenant extends Message<Tenant> {
     { no: 6, name: "oauth_provider", kind: "enum", T: proto3.getEnumType(OAuthProvider) },
     { no: 8, name: "payment_details", kind: "message", T: PaymentDetails },
     { no: 9, name: "admitted", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
-    { no: 10, name: "created_at", kind: "message", T: Timestamp },
-    { no: 11, name: "updated_at", kind: "message", T: Timestamp },
-    { no: 12, name: "deleted_at", kind: "message", T: Timestamp },
+    { no: 10, name: "phone_number", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 20, name: "created_at", kind: "message", T: Timestamp },
+    { no: 21, name: "updated_at", kind: "message", T: Timestamp },
+    { no: 22, name: "deleted_at", kind: "message", T: Timestamp },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Tenant {

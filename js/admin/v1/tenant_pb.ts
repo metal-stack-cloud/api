@@ -135,6 +135,11 @@ export class TenantServiceAdmitRequest extends Message<TenantServiceAdmitRequest
    */
   tenantId = "";
 
+  /**
+   * @generated from field: optional string coupon_id = 2;
+   */
+  couponId?: string;
+
   constructor(data?: PartialMessage<TenantServiceAdmitRequest>) {
     super();
     proto3.util.initPartial(data, this);
@@ -144,6 +149,7 @@ export class TenantServiceAdmitRequest extends Message<TenantServiceAdmitRequest
   static readonly typeName = "admin.v1.TenantServiceAdmitRequest";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
     { no: 1, name: "tenant_id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "coupon_id", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): TenantServiceAdmitRequest {

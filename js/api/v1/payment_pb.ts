@@ -55,6 +55,11 @@ export class PaymentCustomer extends Message<PaymentCustomer> {
    */
   address?: Address;
 
+  /**
+   * @generated from field: optional api.v1.Coupon coupon = 10;
+   */
+  coupon?: Coupon;
+
   constructor(data?: PartialMessage<PaymentCustomer>) {
     super();
     proto3.util.initPartial(data, this);
@@ -72,6 +77,7 @@ export class PaymentCustomer extends Message<PaymentCustomer> {
     { no: 7, name: "card", kind: "message", T: Card, opt: true },
     { no: 8, name: "prices", kind: "message", T: Price, repeated: true },
     { no: 9, name: "address", kind: "message", T: Address },
+    { no: 10, name: "coupon", kind: "message", T: Coupon, opt: true },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): PaymentCustomer {
@@ -381,6 +387,67 @@ export class Invoice extends Message<Invoice> {
 
   static equals(a: Invoice | PlainMessage<Invoice> | undefined, b: Invoice | PlainMessage<Invoice> | undefined): boolean {
     return proto3.util.equals(Invoice, a, b);
+  }
+}
+
+/**
+ * @generated from message api.v1.Coupon
+ */
+export class Coupon extends Message<Coupon> {
+  /**
+   * @generated from field: string id = 1;
+   */
+  id = "";
+
+  /**
+   * @generated from field: string name = 2;
+   */
+  name = "";
+
+  /**
+   * @generated from field: int64 amount_off = 3;
+   */
+  amountOff = protoInt64.zero;
+
+  /**
+   * @generated from field: string currency = 4;
+   */
+  currency = "";
+
+  /**
+   * @generated from field: int64 duration_in_month = 5;
+   */
+  durationInMonth = protoInt64.zero;
+
+  constructor(data?: PartialMessage<Coupon>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime = proto3;
+  static readonly typeName = "api.v1.Coupon";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 3, name: "amount_off", kind: "scalar", T: 3 /* ScalarType.INT64 */ },
+    { no: 4, name: "currency", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 5, name: "duration_in_month", kind: "scalar", T: 3 /* ScalarType.INT64 */ },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Coupon {
+    return new Coupon().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): Coupon {
+    return new Coupon().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): Coupon {
+    return new Coupon().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: Coupon | PlainMessage<Coupon> | undefined, b: Coupon | PlainMessage<Coupon> | undefined): boolean {
+    return proto3.util.equals(Coupon, a, b);
   }
 }
 

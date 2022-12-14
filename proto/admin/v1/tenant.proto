@@ -31,6 +31,7 @@ message TenantServiceListResponse {
 }
 message TenantServiceAdmitRequest {
   string tenant_id = 1;
+  optional string coupon_id = 2;
 }
 message TenantServiceAdmitResponse {
   api.v1.Tenant tenant = 1;

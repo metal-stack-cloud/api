@@ -4,7 +4,7 @@
 /* eslint-disable */
 // @ts-nocheck
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.PaymentServiceGetDefaultPricesResponse = exports.PaymentServiceGetDefaultPricesRequest = exports.PaymentServiceGetInvoicesResponse = exports.PaymentServiceGetInvoicesRequest = exports.PaymentServiceGetSubscriptionUsageResponse = exports.PaymentServiceGetSubscriptionUsageRequest = exports.PaymentServiceDeletePaymentMethodResponse = exports.PaymentServiceDeletePaymentMethodRequest = exports.PaymentServiceHasPaymentMethodResponse = exports.PaymentServiceHasPaymentMethodRequest = exports.PaymentServiceCheckIfCustomerExistsResponse = exports.PaymentServiceCheckIfCustomerExistsRequest = exports.PaymentServiceGetCustomerWithLoginResponse = exports.PaymentServiceGetCustomerWithLoginRequest = exports.PaymentServiceGetCustomerResponse = exports.PaymentServiceGetCustomerRequest = exports.PaymentServiceCreateOrUpdateCustomerResponse = exports.PaymentServiceCreateOrUpdateCustomerRequest = exports.Invoice = exports.SubscriptionUsageItem = exports.Address = exports.Price = exports.Card = exports.PaymentCustomer = void 0;
+exports.PaymentServiceGetDefaultPricesResponse = exports.PaymentServiceGetDefaultPricesRequest = exports.PaymentServiceGetInvoicesResponse = exports.PaymentServiceGetInvoicesRequest = exports.PaymentServiceGetSubscriptionUsageResponse = exports.PaymentServiceGetSubscriptionUsageRequest = exports.PaymentServiceDeletePaymentMethodResponse = exports.PaymentServiceDeletePaymentMethodRequest = exports.PaymentServiceHasPaymentMethodResponse = exports.PaymentServiceHasPaymentMethodRequest = exports.PaymentServiceCheckIfCustomerExistsResponse = exports.PaymentServiceCheckIfCustomerExistsRequest = exports.PaymentServiceGetCustomerWithLoginResponse = exports.PaymentServiceGetCustomerWithLoginRequest = exports.PaymentServiceGetCustomerResponse = exports.PaymentServiceGetCustomerRequest = exports.PaymentServiceCreateOrUpdateCustomerResponse = exports.PaymentServiceCreateOrUpdateCustomerRequest = exports.Coupon = exports.Invoice = exports.SubscriptionUsageItem = exports.Address = exports.Price = exports.Card = exports.PaymentCustomer = void 0;
 const protobuf_1 = require("@bufbuild/protobuf");
 /**
  * @generated from message api.v1.PaymentCustomer
@@ -56,6 +56,7 @@ PaymentCustomer.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 7, name: "card", kind: "message", T: Card, opt: true },
     { no: 8, name: "prices", kind: "message", T: Price, repeated: true },
     { no: 9, name: "address", kind: "message", T: Address },
+    { no: 10, name: "coupon", kind: "message", T: Coupon, opt: true },
 ]);
 /**
  * @generated from message api.v1.Card
@@ -285,6 +286,57 @@ Invoice.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 2, name: "pdf_download_url", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 4, name: "period_start", kind: "message", T: protobuf_1.Timestamp },
     { no: 5, name: "period_end", kind: "message", T: protobuf_1.Timestamp },
+]);
+/**
+ * @generated from message api.v1.Coupon
+ */
+class Coupon extends protobuf_1.Message {
+    constructor(data) {
+        super();
+        /**
+         * @generated from field: string id = 1;
+         */
+        this.id = "";
+        /**
+         * @generated from field: string name = 2;
+         */
+        this.name = "";
+        /**
+         * @generated from field: int64 amount_off = 3;
+         */
+        this.amountOff = protobuf_1.protoInt64.zero;
+        /**
+         * @generated from field: string currency = 4;
+         */
+        this.currency = "";
+        /**
+         * @generated from field: int64 duration_in_month = 5;
+         */
+        this.durationInMonth = protobuf_1.protoInt64.zero;
+        protobuf_1.proto3.util.initPartial(data, this);
+    }
+    static fromBinary(bytes, options) {
+        return new Coupon().fromBinary(bytes, options);
+    }
+    static fromJson(jsonValue, options) {
+        return new Coupon().fromJson(jsonValue, options);
+    }
+    static fromJsonString(jsonString, options) {
+        return new Coupon().fromJsonString(jsonString, options);
+    }
+    static equals(a, b) {
+        return protobuf_1.proto3.util.equals(Coupon, a, b);
+    }
+}
+exports.Coupon = Coupon;
+Coupon.runtime = protobuf_1.proto3;
+Coupon.typeName = "api.v1.Coupon";
+Coupon.fields = protobuf_1.proto3.util.newFieldList(() => [
+    { no: 1, name: "id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 3, name: "amount_off", kind: "scalar", T: 3 /* ScalarType.INT64 */ },
+    { no: 4, name: "currency", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 5, name: "duration_in_month", kind: "scalar", T: 3 /* ScalarType.INT64 */ },
 ]);
 /**
  * @generated from message api.v1.PaymentServiceCreateOrUpdateCustomerRequest

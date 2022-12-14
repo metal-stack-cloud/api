@@ -48,6 +48,7 @@ message PaymentCustomer {
   optional Card card = 7;
   repeated Price prices = 8;
   Address address = 9;
+  optional Coupon coupon = 10;
 }
 
 message Card {
@@ -86,6 +87,14 @@ message Invoice {
   string pdf_download_url = 2;
   google.protobuf.Timestamp period_start = 4;
   google.protobuf.Timestamp period_end = 5;
+}
+
+message Coupon {
+  string id = 1;
+  string name = 2;
+  int64 amount_off = 3;
+  string currency = 4;
+  int64 duration_in_month = 5;
 }
 
 message PaymentServiceCreateOrUpdateCustomerRequest {
