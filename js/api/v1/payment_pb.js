@@ -296,6 +296,10 @@ class PaymentServiceCreateOrUpdateCustomerRequest extends protobuf_1.Message {
          * @generated from field: string login = 1;
          */
         this.login = "";
+        /**
+         * @generated from field: bool accepted_terms_and_conditions = 3;
+         */
+        this.acceptedTermsAndConditions = false;
         protobuf_1.proto3.util.initPartial(data, this);
     }
     static fromBinary(bytes, options) {
@@ -317,6 +321,7 @@ PaymentServiceCreateOrUpdateCustomerRequest.typeName = "api.v1.PaymentServiceCre
 PaymentServiceCreateOrUpdateCustomerRequest.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 1, name: "login", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 2, name: "customer", kind: "message", T: PaymentCustomer },
+    { no: 3, name: "accepted_terms_and_conditions", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
 ]);
 /**
  * @generated from message api.v1.PaymentServiceCreateOrUpdateCustomerResponse

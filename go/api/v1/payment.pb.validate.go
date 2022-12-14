@@ -961,6 +961,8 @@ func (m *PaymentServiceCreateOrUpdateCustomerRequest) validate(all bool) error {
 		}
 	}
 
+	// no validation rules for AcceptedTermsAndConditions
+
 	if len(errors) > 0 {
 		return PaymentServiceCreateOrUpdateCustomerRequestMultiError(errors)
 	}
