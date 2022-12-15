@@ -1021,6 +1021,8 @@ func (m *Coupon) validate(all bool) error {
 
 	// no validation rules for TimesRedeemed
 
+	// no validation rules for MaxRedemptions
+
 	if len(errors) > 0 {
 		return CouponMultiError(errors)
 	}

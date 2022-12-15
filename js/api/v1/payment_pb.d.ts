@@ -246,6 +246,10 @@ export declare class Coupon extends Message<Coupon> {
      * @generated from field: int64 times_redeemed = 8;
      */
     timesRedeemed: bigint;
+    /**
+     * @generated from field: int64 max_redemptions = 9;
+     */
+    maxRedemptions: bigint;
     constructor(data?: PartialMessage<Coupon>);
     static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
     static readonly typeName = "api.v1.Coupon";

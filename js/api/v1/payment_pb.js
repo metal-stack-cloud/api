@@ -317,6 +317,10 @@ class Coupon extends protobuf_1.Message {
          * @generated from field: int64 times_redeemed = 8;
          */
         this.timesRedeemed = protobuf_1.protoInt64.zero;
+        /**
+         * @generated from field: int64 max_redemptions = 9;
+         */
+        this.maxRedemptions = protobuf_1.protoInt64.zero;
         protobuf_1.proto3.util.initPartial(data, this);
     }
     static fromBinary(bytes, options) {
@@ -344,6 +348,7 @@ Coupon.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 6, name: "created_at", kind: "message", T: protobuf_1.Timestamp },
     { no: 7, name: "redeem_by", kind: "message", T: protobuf_1.Timestamp },
     { no: 8, name: "times_redeemed", kind: "scalar", T: 3 /* ScalarType.INT64 */ },
+    { no: 9, name: "max_redemptions", kind: "scalar", T: 3 /* ScalarType.INT64 */ },
 ]);
 /**
  * @generated from message api.v1.PaymentServiceCreateOrUpdateCustomerRequest
