@@ -20,7 +20,7 @@ message PaymentServiceListCouponsResponse {
   repeated api.v1.Coupon coupons = 1;
 }
 message PaymentServiceAddCouponToCustomerRequest {
-  string login = 1;
+  api.v1.PaymentCustomer customer = 1;
   string coupon_id = 2;
 }
 message PaymentServiceAddCouponToCustomerResponse {

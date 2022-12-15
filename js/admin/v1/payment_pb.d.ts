@@ -36,9 +36,9 @@ export declare class PaymentServiceListCouponsResponse extends Message<PaymentSe
  */
 export declare class PaymentServiceAddCouponToCustomerRequest extends Message<PaymentServiceAddCouponToCustomerRequest> {
     /**
-     * @generated from field: string login = 1;
+     * @generated from field: api.v1.PaymentCustomer customer = 1;
      */
-    login: string;
+    customer?: PaymentCustomer;
     /**
      * @generated from field: string coupon_id = 2;
      */

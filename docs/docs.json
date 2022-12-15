@@ -1635,12 +1635,12 @@
           "extensions": [],
           "fields": [
             {
-              "name": "login",
+              "name": "customer",
               "description": "",
               "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
+              "type": "PaymentCustomer",
+              "longType": "api.v1.PaymentCustomer",
+              "fullType": "api.v1.PaymentCustomer",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",

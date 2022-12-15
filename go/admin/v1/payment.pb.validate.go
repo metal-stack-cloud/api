@@ -303,7 +303,34 @@ func (m *PaymentServiceAddCouponToCustomerRequest) validate(all bool) error {
 
 	var errors []error
 
-	// no validation rules for Login
+	if all {
+		switch v := interface{}(m.GetCustomer()).(type) {
+		case interface{ ValidateAll() error }:
+			if err := v.ValidateAll(); err != nil {
+				errors = append(errors, PaymentServiceAddCouponToCustomerRequestValidationError{
+					field:  "Customer",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		case interface{ Validate() error }:
+			if err := v.Validate(); err != nil {
+				errors = append(errors, PaymentServiceAddCouponToCustomerRequestValidationError{
+					field:  "Customer",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		}
+	} else if v, ok := interface{}(m.GetCustomer()).(interface{ Validate() error }); ok {
+		if err := v.Validate(); err != nil {
+			return PaymentServiceAddCouponToCustomerRequestValidationError{
+				field:  "Customer",
+				reason: "embedded message failed validation",
+				cause:  err,
+			}
+		}
+	}
 
 	// no validation rules for CouponId
 

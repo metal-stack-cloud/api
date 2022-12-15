@@ -80,9 +80,9 @@ export class PaymentServiceListCouponsResponse extends Message<PaymentServiceLis
  */
 export class PaymentServiceAddCouponToCustomerRequest extends Message<PaymentServiceAddCouponToCustomerRequest> {
   /**
-   * @generated from field: string login = 1;
+   * @generated from field: api.v1.PaymentCustomer customer = 1;
    */
-  login = "";
+  customer?: PaymentCustomer;
 
   /**
    * @generated from field: string coupon_id = 2;
@@ -97,7 +97,7 @@ export class PaymentServiceAddCouponToCustomerRequest extends Message<PaymentSer
   static readonly runtime = proto3;
   static readonly typeName = "admin.v1.PaymentServiceAddCouponToCustomerRequest";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "login", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 1, name: "customer", kind: "message", T: PaymentCustomer },
     { no: 2, name: "coupon_id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
   ]);
 

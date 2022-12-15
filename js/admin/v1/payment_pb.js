@@ -70,10 +70,6 @@ class PaymentServiceAddCouponToCustomerRequest extends protobuf_1.Message {
     constructor(data) {
         super();
         /**
-         * @generated from field: string login = 1;
-         */
-        this.login = "";
-        /**
          * @generated from field: string coupon_id = 2;
          */
         this.couponId = "";
@@ -96,7 +92,7 @@ exports.PaymentServiceAddCouponToCustomerRequest = PaymentServiceAddCouponToCust
 PaymentServiceAddCouponToCustomerRequest.runtime = protobuf_1.proto3;
 PaymentServiceAddCouponToCustomerRequest.typeName = "admin.v1.PaymentServiceAddCouponToCustomerRequest";
 PaymentServiceAddCouponToCustomerRequest.fields = protobuf_1.proto3.util.newFieldList(() => [
-    { no: 1, name: "login", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 1, name: "customer", kind: "message", T: payment_pb_js_1.PaymentCustomer },
     { no: 2, name: "coupon_id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
 ]);
 /**
