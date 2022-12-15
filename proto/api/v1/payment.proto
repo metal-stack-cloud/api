@@ -95,6 +95,9 @@ message Coupon {
   int64 amount_off = 3;
   string currency = 4;
   int64 duration_in_month = 5;
+  google.protobuf.Timestamp created_at = 6;
+  google.protobuf.Timestamp redeem_by = 7;
+  int64 times_redeemed = 8;
 }
 
 message PaymentServiceCreateOrUpdateCustomerRequest {

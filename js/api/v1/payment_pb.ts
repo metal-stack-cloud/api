@@ -419,6 +419,21 @@ export class Coupon extends Message<Coupon> {
    */
   durationInMonth = protoInt64.zero;
 
+  /**
+   * @generated from field: google.protobuf.Timestamp created_at = 6;
+   */
+  createdAt?: Timestamp;
+
+  /**
+   * @generated from field: google.protobuf.Timestamp redeem_by = 7;
+   */
+  redeemBy?: Timestamp;
+
+  /**
+   * @generated from field: int64 times_redeemed = 8;
+   */
+  timesRedeemed = protoInt64.zero;
+
   constructor(data?: PartialMessage<Coupon>) {
     super();
     proto3.util.initPartial(data, this);
@@ -432,6 +447,9 @@ export class Coupon extends Message<Coupon> {
     { no: 3, name: "amount_off", kind: "scalar", T: 3 /* ScalarType.INT64 */ },
     { no: 4, name: "currency", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 5, name: "duration_in_month", kind: "scalar", T: 3 /* ScalarType.INT64 */ },
+    { no: 6, name: "created_at", kind: "message", T: Timestamp },
+    { no: 7, name: "redeem_by", kind: "message", T: Timestamp },
+    { no: 8, name: "times_redeemed", kind: "scalar", T: 3 /* ScalarType.INT64 */ },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Coupon {

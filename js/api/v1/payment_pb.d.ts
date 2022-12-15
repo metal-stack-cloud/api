@@ -234,6 +234,18 @@ export declare class Coupon extends Message<Coupon> {
      * @generated from field: int64 duration_in_month = 5;
      */
     durationInMonth: bigint;
+    /**
+     * @generated from field: google.protobuf.Timestamp created_at = 6;
+     */
+    createdAt?: Timestamp;
+    /**
+     * @generated from field: google.protobuf.Timestamp redeem_by = 7;
+     */
+    redeemBy?: Timestamp;
+    /**
+     * @generated from field: int64 times_redeemed = 8;
+     */
+    timesRedeemed: bigint;
     constructor(data?: PartialMessage<Coupon>);
     static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
     static readonly typeName = "api.v1.Coupon";
