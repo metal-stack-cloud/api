@@ -1811,6 +1811,18 @@
               "isoneof": false,
               "oneofdecl": "",
               "defaultValue": ""
+            },
+            {
+              "name": "coupons",
+              "description": "",
+              "label": "repeated",
+              "type": "Coupon",
+              "longType": "Coupon",
+              "fullType": "api.v1.Coupon",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
             }
           ]
         },
@@ -2202,7 +2214,7 @@
           "name": "TenantServiceGetRequest",
           "longName": "TenantServiceGetRequest",
           "fullName": "api.v1.TenantServiceGetRequest",
-          "description": "Requests",
+          "description": "",
           "hasExtensions": false,
           "hasFields": true,
           "hasOneofs": false,

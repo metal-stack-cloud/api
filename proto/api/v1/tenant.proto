@@ -3,6 +3,7 @@ syntax = "proto3";
 package api.v1;
 
 import "api/v1/common.proto";
+import "api/v1/payment.proto";
 import "google/protobuf/timestamp.proto";
 
 service TenantService {
@@ -61,6 +62,7 @@ message PaymentDetails {
   string customer_id = 1;
   string payment_method_id = 2;
   string subscription_id = 3;
+  repeated Coupon coupons = 4;
 }
 
 message PaymentDetailsUpdate {
@@ -70,6 +72,7 @@ message PaymentDetailsUpdate {
 }
 
 // Requests
+
 message TenantServiceGetRequest {
   string login = 1;
 }

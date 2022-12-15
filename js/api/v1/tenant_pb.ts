@@ -6,6 +6,7 @@
 import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
 import { Message, proto3, Timestamp } from "@bufbuild/protobuf";
 import { OAuthProvider } from "./common_pb.js";
+import { Coupon } from "./payment_pb.js";
 
 /**
  * Tenant
@@ -127,6 +128,11 @@ export class PaymentDetails extends Message<PaymentDetails> {
    */
   subscriptionId = "";
 
+  /**
+   * @generated from field: repeated api.v1.Coupon coupons = 4;
+   */
+  coupons: Coupon[] = [];
+
   constructor(data?: PartialMessage<PaymentDetails>) {
     super();
     proto3.util.initPartial(data, this);
@@ -138,6 +144,7 @@ export class PaymentDetails extends Message<PaymentDetails> {
     { no: 1, name: "customer_id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 2, name: "payment_method_id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 3, name: "subscription_id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 4, name: "coupons", kind: "message", T: Coupon, repeated: true },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): PaymentDetails {
@@ -207,8 +214,6 @@ export class PaymentDetailsUpdate extends Message<PaymentDetailsUpdate> {
 }
 
 /**
- * Requests
- *
  * @generated from message api.v1.TenantServiceGetRequest
  */
 export class TenantServiceGetRequest extends Message<TenantServiceGetRequest> {

@@ -1,6 +1,7 @@
 import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
 import { Message, Timestamp } from "@bufbuild/protobuf";
 import { OAuthProvider } from "./common_pb.js";
+import { Coupon } from "./payment_pb.js";
 /**
  * Tenant
  *
@@ -78,6 +79,10 @@ export declare class PaymentDetails extends Message<PaymentDetails> {
      * @generated from field: string subscription_id = 3;
      */
     subscriptionId: string;
+    /**
+     * @generated from field: repeated api.v1.Coupon coupons = 4;
+     */
+    coupons: Coupon[];
     constructor(data?: PartialMessage<PaymentDetails>);
     static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime.js").ProtoRuntime;
     static readonly typeName = "api.v1.PaymentDetails";
@@ -113,8 +118,6 @@ export declare class PaymentDetailsUpdate extends Message<PaymentDetailsUpdate> 
     static equals(a: PaymentDetailsUpdate | PlainMessage<PaymentDetailsUpdate> | undefined, b: PaymentDetailsUpdate | PlainMessage<PaymentDetailsUpdate> | undefined): boolean;
 }
 /**
- * Requests
- *
  * @generated from message api.v1.TenantServiceGetRequest
  */
 export declare class TenantServiceGetRequest extends Message<TenantServiceGetRequest> {
