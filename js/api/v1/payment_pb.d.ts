@@ -40,6 +40,10 @@ export declare class PaymentCustomer extends Message<PaymentCustomer> {
      * @generated from field: api.v1.Address address = 9;
      */
     address?: Address;
+    /**
+     * @generated from field: optional api.v1.Coupon coupon = 10;
+     */
+    coupon?: Coupon;
     constructor(data?: PartialMessage<PaymentCustomer>);
     static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
     static readonly typeName = "api.v1.PaymentCustomer";
@@ -205,6 +209,55 @@ export declare class Invoice extends Message<Invoice> {
     static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): Invoice;
     static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): Invoice;
     static equals(a: Invoice | PlainMessage<Invoice> | undefined, b: Invoice | PlainMessage<Invoice> | undefined): boolean;
+}
+/**
+ * @generated from message api.v1.Coupon
+ */
+export declare class Coupon extends Message<Coupon> {
+    /**
+     * @generated from field: string id = 1;
+     */
+    id: string;
+    /**
+     * @generated from field: string name = 2;
+     */
+    name: string;
+    /**
+     * @generated from field: int64 amount_off = 3;
+     */
+    amountOff: bigint;
+    /**
+     * @generated from field: string currency = 4;
+     */
+    currency: string;
+    /**
+     * @generated from field: int64 duration_in_month = 5;
+     */
+    durationInMonth: bigint;
+    /**
+     * @generated from field: google.protobuf.Timestamp created_at = 6;
+     */
+    createdAt?: Timestamp;
+    /**
+     * @generated from field: google.protobuf.Timestamp redeem_by = 7;
+     */
+    redeemBy?: Timestamp;
+    /**
+     * @generated from field: int64 times_redeemed = 8;
+     */
+    timesRedeemed: bigint;
+    /**
+     * @generated from field: int64 max_redemptions = 9;
+     */
+    maxRedemptions: bigint;
+    constructor(data?: PartialMessage<Coupon>);
+    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
+    static readonly typeName = "api.v1.Coupon";
+    static readonly fields: FieldList;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Coupon;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): Coupon;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): Coupon;
+    static equals(a: Coupon | PlainMessage<Coupon> | undefined, b: Coupon | PlainMessage<Coupon> | undefined): boolean;
 }
 /**
  * @generated from message api.v1.PaymentServiceCreateOrUpdateCustomerRequest

@@ -103,6 +103,7 @@ TenantServiceAdmitRequest.runtime = protobuf_1.proto3;
 TenantServiceAdmitRequest.typeName = "admin.v1.TenantServiceAdmitRequest";
 TenantServiceAdmitRequest.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 1, name: "tenant_id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "coupon_id", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
 ]);
 /**
  * @generated from message admin.v1.TenantServiceAdmitResponse

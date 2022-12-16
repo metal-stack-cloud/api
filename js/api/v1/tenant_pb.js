@@ -7,6 +7,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.TenantServiceRequestAdmissionResponse = exports.TenantServiceCheckAdmittedResponse = exports.TenantServiceDeleteResponse = exports.TenantServiceUpdateResponse = exports.TenantServiceCreateOrUpdateResponse = exports.TenantServiceCreateResponse = exports.TenantServiceGetResponse = exports.TenantServiceRequestAdmissionRequest = exports.TenantServiceCheckAdmittedRequest = exports.TenantServiceDeleteRequest = exports.TenantServiceUpdateRequest = exports.TenantServiceCreateOrUpdateRequest = exports.TenantServiceCreateRequest = exports.TenantServiceGetRequest = exports.PaymentDetailsUpdate = exports.PaymentDetails = exports.Tenant = void 0;
 const protobuf_1 = require("@bufbuild/protobuf");
 const common_pb_js_1 = require("./common_pb.js");
+const payment_pb_js_1 = require("./payment_pb.js");
 /**
  * Tenant
  *
@@ -41,6 +42,10 @@ class Tenant extends protobuf_1.Message {
          * @generated from field: bool admitted = 9;
          */
         this.admitted = false;
+        /**
+         * @generated from field: string phone_number = 10;
+         */
+        this.phoneNumber = "";
         protobuf_1.proto3.util.initPartial(data, this);
     }
     static fromBinary(bytes, options) {
@@ -67,9 +72,10 @@ Tenant.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 6, name: "oauth_provider", kind: "enum", T: protobuf_1.proto3.getEnumType(common_pb_js_1.OAuthProvider) },
     { no: 8, name: "payment_details", kind: "message", T: PaymentDetails },
     { no: 9, name: "admitted", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
-    { no: 10, name: "created_at", kind: "message", T: protobuf_1.Timestamp },
-    { no: 11, name: "updated_at", kind: "message", T: protobuf_1.Timestamp },
-    { no: 12, name: "deleted_at", kind: "message", T: protobuf_1.Timestamp },
+    { no: 10, name: "phone_number", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 20, name: "created_at", kind: "message", T: protobuf_1.Timestamp },
+    { no: 21, name: "updated_at", kind: "message", T: protobuf_1.Timestamp },
+    { no: 22, name: "deleted_at", kind: "message", T: protobuf_1.Timestamp },
 ]);
 /**
  * @generated from message api.v1.PaymentDetails
@@ -89,6 +95,10 @@ class PaymentDetails extends protobuf_1.Message {
          * @generated from field: string subscription_id = 3;
          */
         this.subscriptionId = "";
+        /**
+         * @generated from field: repeated api.v1.Coupon coupons = 4;
+         */
+        this.coupons = [];
         protobuf_1.proto3.util.initPartial(data, this);
     }
     static fromBinary(bytes, options) {
@@ -111,6 +121,7 @@ PaymentDetails.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 1, name: "customer_id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 2, name: "payment_method_id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 3, name: "subscription_id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 4, name: "coupons", kind: "message", T: payment_pb_js_1.Coupon, repeated: true },
 ]);
 /**
  * @generated from message api.v1.PaymentDetailsUpdate
@@ -142,8 +153,6 @@ PaymentDetailsUpdate.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 3, name: "subscription_id", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
 ]);
 /**
- * Requests
- *
  * @generated from message api.v1.TenantServiceGetRequest
  */
 class TenantServiceGetRequest extends protobuf_1.Message {
