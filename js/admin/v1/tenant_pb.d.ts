@@ -74,6 +74,10 @@ export declare class TenantServiceAdmitRequest extends Message<TenantServiceAdmi
      * @generated from field: string tenant_id = 1;
      */
     tenantId: string;
+    /**
+     * @generated from field: optional string coupon_id = 2;
+     */
+    couponId?: string;
     constructor(data?: PartialMessage<TenantServiceAdmitRequest>);
     static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime.js").ProtoRuntime;
     static readonly typeName = "admin.v1.TenantServiceAdmitRequest";

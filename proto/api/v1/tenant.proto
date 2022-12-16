@@ -3,6 +3,7 @@ syntax = "proto3";
 package api.v1;
 
 import "api/v1/common.proto";
+import "api/v1/payment.proto";
 import "google/protobuf/timestamp.proto";
 
 service TenantService {
@@ -51,18 +52,18 @@ message Tenant {
   PaymentDetails payment_details = 8;
   bool admitted = 9;
   string phone_number = 10;
+  AcceptedTermsAndConditionsDetails accepted_terms_and_conditions_details = 11;
 
-  google.protobuf.Timestamp created_at = 11;
-  google.protobuf.Timestamp updated_at = 12;
-  google.protobuf.Timestamp deleted_at = 13;
-
-  AcceptedTermsAndConditionsDetails accepted_terms_and_conditions_details = 14;
+  google.protobuf.Timestamp created_at = 20;
+  google.protobuf.Timestamp updated_at = 21;
+  google.protobuf.Timestamp deleted_at = 22;
 }
 
 message PaymentDetails {
   string customer_id = 1;
   string payment_method_id = 2;
   string subscription_id = 3;
+  repeated Coupon coupons = 4;
 }
 
 message PaymentDetailsUpdate {
@@ -82,6 +83,7 @@ message AcceptedTermsAndConditionsDetailsUpdate {
 }
 
 // Requests
+
 message TenantServiceGetRequest {
   string login = 1;
 }

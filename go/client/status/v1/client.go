@@ -15,28 +15,30 @@ type Client interface {
 }
 
 type status struct {
-	c   client.DialConfig
-	log *zap.SugaredLogger
+	log                  *zap.SugaredLogger
+	statusServiceClient  statusv1connect.StatusServiceClient
+	messageServiceClient statusv1connect.MessageServiceClient
 }
 
 func New(ctx context.Context, config client.DialConfig) Client {
 	return &status{
 		log: config.Log,
-		c:   config,
+		statusServiceClient: statusv1connect.NewStatusServiceClient(
+			config.HttpClient(),
+			config.BaseURL,
+			compress.WithAll(compress.LevelBalanced),
+		),
+		messageServiceClient: statusv1connect.NewMessageServiceClient(
+			config.HttpClient(),
+			config.BaseURL,
+			compress.WithAll(compress.LevelBalanced),
+		),
 	}
 }
 func (c status) Status() statusv1connect.StatusServiceClient {
-	return statusv1connect.NewStatusServiceClient(
-		c.c.HttpClient(),
-		c.c.BaseURL,
-		compress.WithAll(compress.LevelBalanced),
-	)
+	return c.statusServiceClient
 }
 
 func (c status) Message() statusv1connect.MessageServiceClient {
-	return statusv1connect.NewMessageServiceClient(
-		c.c.HttpClient(),
-		c.c.BaseURL,
-		compress.WithAll(compress.LevelBalanced),
-	)
+	return c.messageServiceClient
 }
