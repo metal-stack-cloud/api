@@ -1779,78 +1779,6 @@
       "extensions": [],
       "messages": [
         {
-          "name": "AcceptedTermsAndConditionsDetails",
-          "longName": "AcceptedTermsAndConditionsDetails",
-          "fullName": "api.v1.AcceptedTermsAndConditionsDetails",
-          "description": "",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "accepted_terms_and_conditions",
-              "description": "",
-              "label": "",
-              "type": "bool",
-              "longType": "bool",
-              "fullType": "bool",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "accepted_terms_and_conditions_timestamp",
-              "description": "",
-              "label": "",
-              "type": "Timestamp",
-              "longType": "google.protobuf.Timestamp",
-              "fullType": "google.protobuf.Timestamp",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            }
-          ]
-        },
-        {
-          "name": "AcceptedTermsAndConditionsDetailsUpdate",
-          "longName": "AcceptedTermsAndConditionsDetailsUpdate",
-          "fullName": "api.v1.AcceptedTermsAndConditionsDetailsUpdate",
-          "description": "",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": true,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "accepted_terms_and_conditions",
-              "description": "",
-              "label": "optional",
-              "type": "bool",
-              "longType": "bool",
-              "fullType": "bool",
-              "ismap": false,
-              "isoneof": true,
-              "oneofdecl": "_accepted_terms_and_conditions",
-              "defaultValue": ""
-            },
-            {
-              "name": "accepted_terms_and_conditions_timestamp",
-              "description": "",
-              "label": "optional",
-              "type": "Timestamp",
-              "longType": "google.protobuf.Timestamp",
-              "fullType": "google.protobuf.Timestamp",
-              "ismap": false,
-              "isoneof": true,
-              "oneofdecl": "_accepted_terms_and_conditions_timestamp",
-              "defaultValue": ""
-            }
-          ]
-        },
-        {
           "name": "PaymentDetails",
           "longName": "PaymentDetails",
           "fullName": "api.v1.PaymentDetails",
@@ -2065,12 +1993,12 @@
               "defaultValue": ""
             },
             {
-              "name": "accepted_terms_and_conditions_details",
+              "name": "terms_and_conditions",
               "description": "",
               "label": "",
-              "type": "AcceptedTermsAndConditionsDetails",
-              "longType": "AcceptedTermsAndConditionsDetails",
-              "fullType": "api.v1.AcceptedTermsAndConditionsDetails",
+              "type": "TermsAndConditions",
+              "longType": "TermsAndConditions",
+              "fullType": "api.v1.TermsAndConditions",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
@@ -2497,15 +2425,15 @@
               "defaultValue": ""
             },
             {
-              "name": "accepted_terms_and_conditions_details",
+              "name": "terms_and_conditions",
               "description": "",
               "label": "optional",
-              "type": "AcceptedTermsAndConditionsDetailsUpdate",
-              "longType": "AcceptedTermsAndConditionsDetailsUpdate",
-              "fullType": "api.v1.AcceptedTermsAndConditionsDetailsUpdate",
+              "type": "TermsAndConditionsUpdate",
+              "longType": "TermsAndConditionsUpdate",
+              "fullType": "api.v1.TermsAndConditionsUpdate",
               "ismap": false,
               "isoneof": true,
-              "oneofdecl": "_accepted_terms_and_conditions_details",
+              "oneofdecl": "_terms_and_conditions",
               "defaultValue": ""
             }
           ]
@@ -2530,6 +2458,78 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "TermsAndConditions",
+          "longName": "TermsAndConditions",
+          "fullName": "api.v1.TermsAndConditions",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "accepted_terms_and_conditions",
+              "description": "",
+              "label": "",
+              "type": "bool",
+              "longType": "bool",
+              "fullType": "bool",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "accepted_terms_and_conditions_timestamp",
+              "description": "",
+              "label": "",
+              "type": "Timestamp",
+              "longType": "google.protobuf.Timestamp",
+              "fullType": "google.protobuf.Timestamp",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "TermsAndConditionsUpdate",
+          "longName": "TermsAndConditionsUpdate",
+          "fullName": "api.v1.TermsAndConditionsUpdate",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": true,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "accepted_terms_and_conditions",
+              "description": "",
+              "label": "optional",
+              "type": "bool",
+              "longType": "bool",
+              "fullType": "bool",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "_accepted_terms_and_conditions",
+              "defaultValue": ""
+            },
+            {
+              "name": "accepted_terms_and_conditions_timestamp",
+              "description": "",
+              "label": "optional",
+              "type": "Timestamp",
+              "longType": "google.protobuf.Timestamp",
+              "fullType": "google.protobuf.Timestamp",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "_accepted_terms_and_conditions_timestamp",
               "defaultValue": ""
             }
           ]

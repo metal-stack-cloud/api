@@ -57,9 +57,9 @@ export class Tenant extends Message<Tenant> {
   phoneNumber = "";
 
   /**
-   * @generated from field: api.v1.AcceptedTermsAndConditionsDetails accepted_terms_and_conditions_details = 11;
+   * @generated from field: api.v1.TermsAndConditions terms_and_conditions = 11;
    */
-  acceptedTermsAndConditionsDetails?: AcceptedTermsAndConditionsDetails;
+  termsAndConditions?: TermsAndConditions;
 
   /**
    * @generated from field: google.protobuf.Timestamp created_at = 20;
@@ -92,7 +92,7 @@ export class Tenant extends Message<Tenant> {
     { no: 8, name: "payment_details", kind: "message", T: PaymentDetails },
     { no: 9, name: "admitted", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
     { no: 10, name: "phone_number", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 11, name: "accepted_terms_and_conditions_details", kind: "message", T: AcceptedTermsAndConditionsDetails },
+    { no: 11, name: "terms_and_conditions", kind: "message", T: TermsAndConditions },
     { no: 20, name: "created_at", kind: "message", T: Timestamp },
     { no: 21, name: "updated_at", kind: "message", T: Timestamp },
     { no: 22, name: "deleted_at", kind: "message", T: Timestamp },
@@ -220,9 +220,9 @@ export class PaymentDetailsUpdate extends Message<PaymentDetailsUpdate> {
 }
 
 /**
- * @generated from message api.v1.AcceptedTermsAndConditionsDetails
+ * @generated from message api.v1.TermsAndConditions
  */
-export class AcceptedTermsAndConditionsDetails extends Message<AcceptedTermsAndConditionsDetails> {
+export class TermsAndConditions extends Message<TermsAndConditions> {
   /**
    * @generated from field: bool accepted_terms_and_conditions = 1;
    */
@@ -233,39 +233,39 @@ export class AcceptedTermsAndConditionsDetails extends Message<AcceptedTermsAndC
    */
   acceptedTermsAndConditionsTimestamp?: Timestamp;
 
-  constructor(data?: PartialMessage<AcceptedTermsAndConditionsDetails>) {
+  constructor(data?: PartialMessage<TermsAndConditions>) {
     super();
     proto3.util.initPartial(data, this);
   }
 
   static readonly runtime = proto3;
-  static readonly typeName = "api.v1.AcceptedTermsAndConditionsDetails";
+  static readonly typeName = "api.v1.TermsAndConditions";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
     { no: 1, name: "accepted_terms_and_conditions", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
     { no: 2, name: "accepted_terms_and_conditions_timestamp", kind: "message", T: Timestamp },
   ]);
 
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): AcceptedTermsAndConditionsDetails {
-    return new AcceptedTermsAndConditionsDetails().fromBinary(bytes, options);
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): TermsAndConditions {
+    return new TermsAndConditions().fromBinary(bytes, options);
   }
 
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): AcceptedTermsAndConditionsDetails {
-    return new AcceptedTermsAndConditionsDetails().fromJson(jsonValue, options);
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): TermsAndConditions {
+    return new TermsAndConditions().fromJson(jsonValue, options);
   }
 
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): AcceptedTermsAndConditionsDetails {
-    return new AcceptedTermsAndConditionsDetails().fromJsonString(jsonString, options);
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): TermsAndConditions {
+    return new TermsAndConditions().fromJsonString(jsonString, options);
   }
 
-  static equals(a: AcceptedTermsAndConditionsDetails | PlainMessage<AcceptedTermsAndConditionsDetails> | undefined, b: AcceptedTermsAndConditionsDetails | PlainMessage<AcceptedTermsAndConditionsDetails> | undefined): boolean {
-    return proto3.util.equals(AcceptedTermsAndConditionsDetails, a, b);
+  static equals(a: TermsAndConditions | PlainMessage<TermsAndConditions> | undefined, b: TermsAndConditions | PlainMessage<TermsAndConditions> | undefined): boolean {
+    return proto3.util.equals(TermsAndConditions, a, b);
   }
 }
 
 /**
- * @generated from message api.v1.AcceptedTermsAndConditionsDetailsUpdate
+ * @generated from message api.v1.TermsAndConditionsUpdate
  */
-export class AcceptedTermsAndConditionsDetailsUpdate extends Message<AcceptedTermsAndConditionsDetailsUpdate> {
+export class TermsAndConditionsUpdate extends Message<TermsAndConditionsUpdate> {
   /**
    * @generated from field: optional bool accepted_terms_and_conditions = 1;
    */
@@ -276,32 +276,32 @@ export class AcceptedTermsAndConditionsDetailsUpdate extends Message<AcceptedTer
    */
   acceptedTermsAndConditionsTimestamp?: Timestamp;
 
-  constructor(data?: PartialMessage<AcceptedTermsAndConditionsDetailsUpdate>) {
+  constructor(data?: PartialMessage<TermsAndConditionsUpdate>) {
     super();
     proto3.util.initPartial(data, this);
   }
 
   static readonly runtime = proto3;
-  static readonly typeName = "api.v1.AcceptedTermsAndConditionsDetailsUpdate";
+  static readonly typeName = "api.v1.TermsAndConditionsUpdate";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
     { no: 1, name: "accepted_terms_and_conditions", kind: "scalar", T: 8 /* ScalarType.BOOL */, opt: true },
     { no: 2, name: "accepted_terms_and_conditions_timestamp", kind: "message", T: Timestamp, opt: true },
   ]);
 
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): AcceptedTermsAndConditionsDetailsUpdate {
-    return new AcceptedTermsAndConditionsDetailsUpdate().fromBinary(bytes, options);
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): TermsAndConditionsUpdate {
+    return new TermsAndConditionsUpdate().fromBinary(bytes, options);
   }
 
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): AcceptedTermsAndConditionsDetailsUpdate {
-    return new AcceptedTermsAndConditionsDetailsUpdate().fromJson(jsonValue, options);
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): TermsAndConditionsUpdate {
+    return new TermsAndConditionsUpdate().fromJson(jsonValue, options);
   }
 
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): AcceptedTermsAndConditionsDetailsUpdate {
-    return new AcceptedTermsAndConditionsDetailsUpdate().fromJsonString(jsonString, options);
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): TermsAndConditionsUpdate {
+    return new TermsAndConditionsUpdate().fromJsonString(jsonString, options);
   }
 
-  static equals(a: AcceptedTermsAndConditionsDetailsUpdate | PlainMessage<AcceptedTermsAndConditionsDetailsUpdate> | undefined, b: AcceptedTermsAndConditionsDetailsUpdate | PlainMessage<AcceptedTermsAndConditionsDetailsUpdate> | undefined): boolean {
-    return proto3.util.equals(AcceptedTermsAndConditionsDetailsUpdate, a, b);
+  static equals(a: TermsAndConditionsUpdate | PlainMessage<TermsAndConditionsUpdate> | undefined, b: TermsAndConditionsUpdate | PlainMessage<TermsAndConditionsUpdate> | undefined): boolean {
+    return proto3.util.equals(TermsAndConditionsUpdate, a, b);
   }
 }
 
@@ -448,9 +448,9 @@ export class TenantServiceUpdateRequest extends Message<TenantServiceUpdateReque
   paymentDetails?: PaymentDetailsUpdate;
 
   /**
-   * @generated from field: optional api.v1.AcceptedTermsAndConditionsDetailsUpdate accepted_terms_and_conditions_details = 9;
+   * @generated from field: optional api.v1.TermsAndConditionsUpdate terms_and_conditions = 9;
    */
-  acceptedTermsAndConditionsDetails?: AcceptedTermsAndConditionsDetailsUpdate;
+  termsAndConditions?: TermsAndConditionsUpdate;
 
   constructor(data?: PartialMessage<TenantServiceUpdateRequest>) {
     super();
@@ -465,7 +465,7 @@ export class TenantServiceUpdateRequest extends Message<TenantServiceUpdateReque
     { no: 3, name: "email", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
     { no: 5, name: "avatar_url", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
     { no: 8, name: "payment_details", kind: "message", T: PaymentDetailsUpdate, opt: true },
-    { no: 9, name: "accepted_terms_and_conditions_details", kind: "message", T: AcceptedTermsAndConditionsDetailsUpdate, opt: true },
+    { no: 9, name: "terms_and_conditions", kind: "message", T: TermsAndConditionsUpdate, opt: true },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): TenantServiceUpdateRequest {

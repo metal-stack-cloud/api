@@ -52,7 +52,7 @@ message Tenant {
   PaymentDetails payment_details = 8;
   bool admitted = 9;
   string phone_number = 10;
-  AcceptedTermsAndConditionsDetails accepted_terms_and_conditions_details = 11;
+  TermsAndConditions terms_and_conditions = 11;
 
   google.protobuf.Timestamp created_at = 20;
   google.protobuf.Timestamp updated_at = 21;
@@ -72,12 +72,12 @@ message PaymentDetailsUpdate {
   optional string subscription_id = 3;
 }
 
-message AcceptedTermsAndConditionsDetails {
+message TermsAndConditions {
   bool accepted_terms_and_conditions = 1;
   google.protobuf.Timestamp accepted_terms_and_conditions_timestamp = 2;
 }
 
-message AcceptedTermsAndConditionsDetailsUpdate {
+message TermsAndConditionsUpdate {
   optional bool accepted_terms_and_conditions = 1;
   optional google.protobuf.Timestamp accepted_terms_and_conditions_timestamp = 2;
 }
@@ -101,7 +101,7 @@ message TenantServiceUpdateRequest {
   optional string email = 3;
   optional string avatar_url = 5;
   optional PaymentDetailsUpdate payment_details = 8;
-  optional AcceptedTermsAndConditionsDetailsUpdate accepted_terms_and_conditions_details = 9;
+  optional TermsAndConditionsUpdate terms_and_conditions = 9;
 }
 
 message TenantServiceDeleteRequest {
