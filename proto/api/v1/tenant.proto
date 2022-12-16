@@ -73,13 +73,13 @@ message PaymentDetailsUpdate {
 }
 
 message TermsAndConditions {
-  bool accepted_terms_and_conditions = 1;
-  google.protobuf.Timestamp accepted_terms_and_conditions_timestamp = 2;
+  bool accepted = 1;
+  google.protobuf.Timestamp when = 2;
 }
 
 message TermsAndConditionsUpdate {
-  optional bool accepted_terms_and_conditions = 1;
-  optional google.protobuf.Timestamp accepted_terms_and_conditions_timestamp = 2;
+  optional bool accepted = 1;
+  optional google.protobuf.Timestamp when = 2;
 }
 
 // Requests

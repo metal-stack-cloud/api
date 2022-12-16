@@ -2473,7 +2473,7 @@
           "extensions": [],
           "fields": [
             {
-              "name": "accepted_terms_and_conditions",
+              "name": "accepted",
               "description": "",
               "label": "",
               "type": "bool",
@@ -2485,7 +2485,7 @@
               "defaultValue": ""
             },
             {
-              "name": "accepted_terms_and_conditions_timestamp",
+              "name": "when",
               "description": "",
               "label": "",
               "type": "Timestamp",
@@ -2509,7 +2509,7 @@
           "extensions": [],
           "fields": [
             {
-              "name": "accepted_terms_and_conditions",
+              "name": "accepted",
               "description": "",
               "label": "optional",
               "type": "bool",
@@ -2517,11 +2517,11 @@
               "fullType": "bool",
               "ismap": false,
               "isoneof": true,
-              "oneofdecl": "_accepted_terms_and_conditions",
+              "oneofdecl": "_accepted",
               "defaultValue": ""
             },
             {
-              "name": "accepted_terms_and_conditions_timestamp",
+              "name": "when",
               "description": "",
               "label": "optional",
               "type": "Timestamp",
@@ -2529,7 +2529,7 @@
               "fullType": "google.protobuf.Timestamp",
               "ismap": false,
               "isoneof": true,
-              "oneofdecl": "_accepted_terms_and_conditions_timestamp",
+              "oneofdecl": "_when",
               "defaultValue": ""
             }
           ]

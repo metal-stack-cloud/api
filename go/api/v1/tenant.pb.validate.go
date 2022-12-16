@@ -568,14 +568,14 @@ func (m *TermsAndConditions) validate(all bool) error {
 
 	var errors []error
 
-	// no validation rules for AcceptedTermsAndConditions
+	// no validation rules for Accepted
 
 	if all {
-		switch v := interface{}(m.GetAcceptedTermsAndConditionsTimestamp()).(type) {
+		switch v := interface{}(m.GetWhen()).(type) {
 		case interface{ ValidateAll() error }:
 			if err := v.ValidateAll(); err != nil {
 				errors = append(errors, TermsAndConditionsValidationError{
-					field:  "AcceptedTermsAndConditionsTimestamp",
+					field:  "When",
 					reason: "embedded message failed validation",
 					cause:  err,
 				})
@@ -583,16 +583,16 @@ func (m *TermsAndConditions) validate(all bool) error {
 		case interface{ Validate() error }:
 			if err := v.Validate(); err != nil {
 				errors = append(errors, TermsAndConditionsValidationError{
-					field:  "AcceptedTermsAndConditionsTimestamp",
+					field:  "When",
 					reason: "embedded message failed validation",
 					cause:  err,
 				})
 			}
 		}
-	} else if v, ok := interface{}(m.GetAcceptedTermsAndConditionsTimestamp()).(interface{ Validate() error }); ok {
+	} else if v, ok := interface{}(m.GetWhen()).(interface{ Validate() error }); ok {
 		if err := v.Validate(); err != nil {
 			return TermsAndConditionsValidationError{
-				field:  "AcceptedTermsAndConditionsTimestamp",
+				field:  "When",
 				reason: "embedded message failed validation",
 				cause:  err,
 			}
@@ -701,18 +701,18 @@ func (m *TermsAndConditionsUpdate) validate(all bool) error {
 
 	var errors []error
 
-	if m.AcceptedTermsAndConditions != nil {
-		// no validation rules for AcceptedTermsAndConditions
+	if m.Accepted != nil {
+		// no validation rules for Accepted
 	}
 
-	if m.AcceptedTermsAndConditionsTimestamp != nil {
+	if m.When != nil {
 
 		if all {
-			switch v := interface{}(m.GetAcceptedTermsAndConditionsTimestamp()).(type) {
+			switch v := interface{}(m.GetWhen()).(type) {
 			case interface{ ValidateAll() error }:
 				if err := v.ValidateAll(); err != nil {
 					errors = append(errors, TermsAndConditionsUpdateValidationError{
-						field:  "AcceptedTermsAndConditionsTimestamp",
+						field:  "When",
 						reason: "embedded message failed validation",
 						cause:  err,
 					})
@@ -720,16 +720,16 @@ func (m *TermsAndConditionsUpdate) validate(all bool) error {
 			case interface{ Validate() error }:
 				if err := v.Validate(); err != nil {
 					errors = append(errors, TermsAndConditionsUpdateValidationError{
-						field:  "AcceptedTermsAndConditionsTimestamp",
+						field:  "When",
 						reason: "embedded message failed validation",
 						cause:  err,
 					})
 				}
 			}
-		} else if v, ok := interface{}(m.GetAcceptedTermsAndConditionsTimestamp()).(interface{ Validate() error }); ok {
+		} else if v, ok := interface{}(m.GetWhen()).(interface{ Validate() error }); ok {
 			if err := v.Validate(); err != nil {
 				return TermsAndConditionsUpdateValidationError{
-					field:  "AcceptedTermsAndConditionsTimestamp",
+					field:  "When",
 					reason: "embedded message failed validation",
 					cause:  err,
 				}

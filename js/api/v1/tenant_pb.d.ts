@@ -126,13 +126,13 @@ export declare class PaymentDetailsUpdate extends Message<PaymentDetailsUpdate> 
  */
 export declare class TermsAndConditions extends Message<TermsAndConditions> {
     /**
-     * @generated from field: bool accepted_terms_and_conditions = 1;
+     * @generated from field: bool accepted = 1;
      */
-    acceptedTermsAndConditions: boolean;
+    accepted: boolean;
     /**
-     * @generated from field: google.protobuf.Timestamp accepted_terms_and_conditions_timestamp = 2;
+     * @generated from field: google.protobuf.Timestamp when = 2;
      */
-    acceptedTermsAndConditionsTimestamp?: Timestamp;
+    when?: Timestamp;
     constructor(data?: PartialMessage<TermsAndConditions>);
     static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime.js").ProtoRuntime;
     static readonly typeName = "api.v1.TermsAndConditions";
@@ -147,13 +147,13 @@ export declare class TermsAndConditions extends Message<TermsAndConditions> {
  */
 export declare class TermsAndConditionsUpdate extends Message<TermsAndConditionsUpdate> {
     /**
-     * @generated from field: optional bool accepted_terms_and_conditions = 1;
+     * @generated from field: optional bool accepted = 1;
      */
-    acceptedTermsAndConditions?: boolean;
+    accepted?: boolean;
     /**
-     * @generated from field: optional google.protobuf.Timestamp accepted_terms_and_conditions_timestamp = 2;
+     * @generated from field: optional google.protobuf.Timestamp when = 2;
      */
-    acceptedTermsAndConditionsTimestamp?: Timestamp;
+    when?: Timestamp;
     constructor(data?: PartialMessage<TermsAndConditionsUpdate>);
     static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime.js").ProtoRuntime;
     static readonly typeName = "api.v1.TermsAndConditionsUpdate";

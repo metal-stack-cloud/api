@@ -224,14 +224,14 @@ export class PaymentDetailsUpdate extends Message<PaymentDetailsUpdate> {
  */
 export class TermsAndConditions extends Message<TermsAndConditions> {
   /**
-   * @generated from field: bool accepted_terms_and_conditions = 1;
+   * @generated from field: bool accepted = 1;
    */
-  acceptedTermsAndConditions = false;
+  accepted = false;
 
   /**
-   * @generated from field: google.protobuf.Timestamp accepted_terms_and_conditions_timestamp = 2;
+   * @generated from field: google.protobuf.Timestamp when = 2;
    */
-  acceptedTermsAndConditionsTimestamp?: Timestamp;
+  when?: Timestamp;
 
   constructor(data?: PartialMessage<TermsAndConditions>) {
     super();
@@ -241,8 +241,8 @@ export class TermsAndConditions extends Message<TermsAndConditions> {
   static readonly runtime = proto3;
   static readonly typeName = "api.v1.TermsAndConditions";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "accepted_terms_and_conditions", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
-    { no: 2, name: "accepted_terms_and_conditions_timestamp", kind: "message", T: Timestamp },
+    { no: 1, name: "accepted", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
+    { no: 2, name: "when", kind: "message", T: Timestamp },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): TermsAndConditions {
@@ -267,14 +267,14 @@ export class TermsAndConditions extends Message<TermsAndConditions> {
  */
 export class TermsAndConditionsUpdate extends Message<TermsAndConditionsUpdate> {
   /**
-   * @generated from field: optional bool accepted_terms_and_conditions = 1;
+   * @generated from field: optional bool accepted = 1;
    */
-  acceptedTermsAndConditions?: boolean;
+  accepted?: boolean;
 
   /**
-   * @generated from field: optional google.protobuf.Timestamp accepted_terms_and_conditions_timestamp = 2;
+   * @generated from field: optional google.protobuf.Timestamp when = 2;
    */
-  acceptedTermsAndConditionsTimestamp?: Timestamp;
+  when?: Timestamp;
 
   constructor(data?: PartialMessage<TermsAndConditionsUpdate>) {
     super();
@@ -284,8 +284,8 @@ export class TermsAndConditionsUpdate extends Message<TermsAndConditionsUpdate> 
   static readonly runtime = proto3;
   static readonly typeName = "api.v1.TermsAndConditionsUpdate";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "accepted_terms_and_conditions", kind: "scalar", T: 8 /* ScalarType.BOOL */, opt: true },
-    { no: 2, name: "accepted_terms_and_conditions_timestamp", kind: "message", T: Timestamp, opt: true },
+    { no: 1, name: "accepted", kind: "scalar", T: 8 /* ScalarType.BOOL */, opt: true },
+    { no: 2, name: "when", kind: "message", T: Timestamp, opt: true },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): TermsAndConditionsUpdate {

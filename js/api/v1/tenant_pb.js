@@ -160,9 +160,9 @@ class TermsAndConditions extends protobuf_1.Message {
     constructor(data) {
         super();
         /**
-         * @generated from field: bool accepted_terms_and_conditions = 1;
+         * @generated from field: bool accepted = 1;
          */
-        this.acceptedTermsAndConditions = false;
+        this.accepted = false;
         protobuf_1.proto3.util.initPartial(data, this);
     }
     static fromBinary(bytes, options) {
@@ -182,8 +182,8 @@ exports.TermsAndConditions = TermsAndConditions;
 TermsAndConditions.runtime = protobuf_1.proto3;
 TermsAndConditions.typeName = "api.v1.TermsAndConditions";
 TermsAndConditions.fields = protobuf_1.proto3.util.newFieldList(() => [
-    { no: 1, name: "accepted_terms_and_conditions", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
-    { no: 2, name: "accepted_terms_and_conditions_timestamp", kind: "message", T: protobuf_1.Timestamp },
+    { no: 1, name: "accepted", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
+    { no: 2, name: "when", kind: "message", T: protobuf_1.Timestamp },
 ]);
 /**
  * @generated from message api.v1.TermsAndConditionsUpdate
@@ -210,8 +210,8 @@ exports.TermsAndConditionsUpdate = TermsAndConditionsUpdate;
 TermsAndConditionsUpdate.runtime = protobuf_1.proto3;
 TermsAndConditionsUpdate.typeName = "api.v1.TermsAndConditionsUpdate";
 TermsAndConditionsUpdate.fields = protobuf_1.proto3.util.newFieldList(() => [
-    { no: 1, name: "accepted_terms_and_conditions", kind: "scalar", T: 8 /* ScalarType.BOOL */, opt: true },
-    { no: 2, name: "accepted_terms_and_conditions_timestamp", kind: "message", T: protobuf_1.Timestamp, opt: true },
+    { no: 1, name: "accepted", kind: "scalar", T: 8 /* ScalarType.BOOL */, opt: true },
+    { no: 2, name: "when", kind: "message", T: protobuf_1.Timestamp, opt: true },
 ]);
 /**
  * @generated from message api.v1.TenantServiceGetRequest
