@@ -18,32 +18,30 @@ type Client interface {
 
 // admin is a client implementation of the api with grpc transport.
 type admin struct {
-	log *zap.SugaredLogger
-	c   client.DialConfig
+	log                  *zap.SugaredLogger
+	tenantServiceClient  adminv1connect.TenantServiceClient
+	paymentServiceClient adminv1connect.PaymentServiceClient
 }
 
 func New(ctx context.Context, config client.DialConfig) Client {
 	return &admin{
 		log: config.Log,
-		c:   config,
+		tenantServiceClient: adminv1connect.NewTenantServiceClient(
+			config.HttpClient(),
+			config.BaseURL,
+			compress.WithAll(compress.LevelBalanced),
+		),
+		paymentServiceClient: adminv1connect.NewPaymentServiceClient(
+			config.HttpClient(),
+			config.BaseURL,
+			compress.WithAll(compress.LevelBalanced),
+		),
 	}
 }
 
 func (c admin) Tenant() adminv1connect.TenantServiceClient {
-	client := adminv1connect.NewTenantServiceClient(
-		c.c.HttpClient(),
-		c.c.BaseURL,
-		compress.WithAll(compress.LevelBalanced),
-	)
-
-	return client
+	return c.tenantServiceClient
 }
 func (c admin) Payment() adminv1connect.PaymentServiceClient {
-	client := adminv1connect.NewPaymentServiceClient(
-		c.c.HttpClient(),
-		c.c.BaseURL,
-		compress.WithAll(compress.LevelBalanced),
-	)
-
-	return client
+	return c.paymentServiceClient
 }
