@@ -107,6 +107,7 @@ message PaymentServiceCreateOrUpdateCustomerRequest {
     max_len: 128,
   }];
   PaymentCustomer customer = 2;
+  bool accepted_terms_and_conditions = 3;
 }
 
 message PaymentServiceCreateOrUpdateCustomerResponse {

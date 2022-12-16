@@ -271,6 +271,10 @@ export declare class PaymentServiceCreateOrUpdateCustomerRequest extends Message
      * @generated from field: api.v1.PaymentCustomer customer = 2;
      */
     customer?: PaymentCustomer;
+    /**
+     * @generated from field: bool accepted_terms_and_conditions = 3;
+     */
+    acceptedTermsAndConditions: boolean;
     constructor(data?: PartialMessage<PaymentServiceCreateOrUpdateCustomerRequest>);
     static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
     static readonly typeName = "api.v1.PaymentServiceCreateOrUpdateCustomerRequest";

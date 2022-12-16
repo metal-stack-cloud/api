@@ -904,6 +904,18 @@
               "isoneof": false,
               "oneofdecl": "",
               "defaultValue": ""
+            },
+            {
+              "name": "accepted_terms_and_conditions",
+              "description": "",
+              "label": "",
+              "type": "bool",
+              "longType": "bool",
+              "fullType": "bool",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
             }
           ]
         },
@@ -1981,6 +1993,18 @@
               "defaultValue": ""
             },
             {
+              "name": "terms_and_conditions",
+              "description": "",
+              "label": "",
+              "type": "TermsAndConditions",
+              "longType": "TermsAndConditions",
+              "fullType": "api.v1.TermsAndConditions",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
               "name": "created_at",
               "description": "",
               "label": "",
@@ -2399,6 +2423,18 @@
               "isoneof": true,
               "oneofdecl": "_payment_details",
               "defaultValue": ""
+            },
+            {
+              "name": "terms_and_conditions",
+              "description": "",
+              "label": "optional",
+              "type": "TermsAndConditionsUpdate",
+              "longType": "TermsAndConditionsUpdate",
+              "fullType": "api.v1.TermsAndConditionsUpdate",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "_terms_and_conditions",
+              "defaultValue": ""
             }
           ]
         },
@@ -2422,6 +2458,78 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "TermsAndConditions",
+          "longName": "TermsAndConditions",
+          "fullName": "api.v1.TermsAndConditions",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "accepted",
+              "description": "",
+              "label": "",
+              "type": "bool",
+              "longType": "bool",
+              "fullType": "bool",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "when",
+              "description": "",
+              "label": "",
+              "type": "Timestamp",
+              "longType": "google.protobuf.Timestamp",
+              "fullType": "google.protobuf.Timestamp",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "TermsAndConditionsUpdate",
+          "longName": "TermsAndConditionsUpdate",
+          "fullName": "api.v1.TermsAndConditionsUpdate",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": true,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "accepted",
+              "description": "",
+              "label": "optional",
+              "type": "bool",
+              "longType": "bool",
+              "fullType": "bool",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "_accepted",
+              "defaultValue": ""
+            },
+            {
+              "name": "when",
+              "description": "",
+              "label": "optional",
+              "type": "Timestamp",
+              "longType": "google.protobuf.Timestamp",
+              "fullType": "google.protobuf.Timestamp",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "_when",
               "defaultValue": ""
             }
           ]

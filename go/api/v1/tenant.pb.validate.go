@@ -100,6 +100,35 @@ func (m *Tenant) validate(all bool) error {
 	// no validation rules for PhoneNumber
 
 	if all {
+		switch v := interface{}(m.GetTermsAndConditions()).(type) {
+		case interface{ ValidateAll() error }:
+			if err := v.ValidateAll(); err != nil {
+				errors = append(errors, TenantValidationError{
+					field:  "TermsAndConditions",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		case interface{ Validate() error }:
+			if err := v.Validate(); err != nil {
+				errors = append(errors, TenantValidationError{
+					field:  "TermsAndConditions",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		}
+	} else if v, ok := interface{}(m.GetTermsAndConditions()).(interface{ Validate() error }); ok {
+		if err := v.Validate(); err != nil {
+			return TenantValidationError{
+				field:  "TermsAndConditions",
+				reason: "embedded message failed validation",
+				cause:  err,
+			}
+		}
+	}
+
+	if all {
 		switch v := interface{}(m.GetCreatedAt()).(type) {
 		case interface{ ValidateAll() error }:
 			if err := v.ValidateAll(); err != nil {
@@ -516,6 +545,278 @@ var _ interface {
 	Cause() error
 	ErrorName() string
 } = PaymentDetailsUpdateValidationError{}
+
+// Validate checks the field values on TermsAndConditions with the rules
+// defined in the proto definition for this message. If any rules are
+// violated, the first error encountered is returned, or nil if there are no violations.
+func (m *TermsAndConditions) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on TermsAndConditions with the rules
+// defined in the proto definition for this message. If any rules are
+// violated, the result is a list of violation errors wrapped in
+// TermsAndConditionsMultiError, or nil if none found.
+func (m *TermsAndConditions) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *TermsAndConditions) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	// no validation rules for Accepted
+
+	if all {
+		switch v := interface{}(m.GetWhen()).(type) {
+		case interface{ ValidateAll() error }:
+			if err := v.ValidateAll(); err != nil {
+				errors = append(errors, TermsAndConditionsValidationError{
+					field:  "When",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		case interface{ Validate() error }:
+			if err := v.Validate(); err != nil {
+				errors = append(errors, TermsAndConditionsValidationError{
+					field:  "When",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		}
+	} else if v, ok := interface{}(m.GetWhen()).(interface{ Validate() error }); ok {
+		if err := v.Validate(); err != nil {
+			return TermsAndConditionsValidationError{
+				field:  "When",
+				reason: "embedded message failed validation",
+				cause:  err,
+			}
+		}
+	}
+
+	if len(errors) > 0 {
+		return TermsAndConditionsMultiError(errors)
+	}
+
+	return nil
+}
+
+// TermsAndConditionsMultiError is an error wrapping multiple validation errors
+// returned by TermsAndConditions.ValidateAll() if the designated constraints
+// aren't met.
+type TermsAndConditionsMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m TermsAndConditionsMultiError) Error() string {
+	var msgs []string
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m TermsAndConditionsMultiError) AllErrors() []error { return m }
+
+// TermsAndConditionsValidationError is the validation error returned by
+// TermsAndConditions.Validate if the designated constraints aren't met.
+type TermsAndConditionsValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e TermsAndConditionsValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e TermsAndConditionsValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e TermsAndConditionsValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e TermsAndConditionsValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e TermsAndConditionsValidationError) ErrorName() string {
+	return "TermsAndConditionsValidationError"
+}
+
+// Error satisfies the builtin error interface
+func (e TermsAndConditionsValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sTermsAndConditions.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = TermsAndConditionsValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = TermsAndConditionsValidationError{}
+
+// Validate checks the field values on TermsAndConditionsUpdate with the rules
+// defined in the proto definition for this message. If any rules are
+// violated, the first error encountered is returned, or nil if there are no violations.
+func (m *TermsAndConditionsUpdate) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on TermsAndConditionsUpdate with the
+// rules defined in the proto definition for this message. If any rules are
+// violated, the result is a list of violation errors wrapped in
+// TermsAndConditionsUpdateMultiError, or nil if none found.
+func (m *TermsAndConditionsUpdate) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *TermsAndConditionsUpdate) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	if m.Accepted != nil {
+		// no validation rules for Accepted
+	}
+
+	if m.When != nil {
+
+		if all {
+			switch v := interface{}(m.GetWhen()).(type) {
+			case interface{ ValidateAll() error }:
+				if err := v.ValidateAll(); err != nil {
+					errors = append(errors, TermsAndConditionsUpdateValidationError{
+						field:  "When",
+						reason: "embedded message failed validation",
+						cause:  err,
+					})
+				}
+			case interface{ Validate() error }:
+				if err := v.Validate(); err != nil {
+					errors = append(errors, TermsAndConditionsUpdateValidationError{
+						field:  "When",
+						reason: "embedded message failed validation",
+						cause:  err,
+					})
+				}
+			}
+		} else if v, ok := interface{}(m.GetWhen()).(interface{ Validate() error }); ok {
+			if err := v.Validate(); err != nil {
+				return TermsAndConditionsUpdateValidationError{
+					field:  "When",
+					reason: "embedded message failed validation",
+					cause:  err,
+				}
+			}
+		}
+
+	}
+
+	if len(errors) > 0 {
+		return TermsAndConditionsUpdateMultiError(errors)
+	}
+
+	return nil
+}
+
+// TermsAndConditionsUpdateMultiError is an error wrapping multiple validation
+// errors returned by TermsAndConditionsUpdate.ValidateAll() if the designated
+// constraints aren't met.
+type TermsAndConditionsUpdateMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m TermsAndConditionsUpdateMultiError) Error() string {
+	var msgs []string
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m TermsAndConditionsUpdateMultiError) AllErrors() []error { return m }
+
+// TermsAndConditionsUpdateValidationError is the validation error returned by
+// TermsAndConditionsUpdate.Validate if the designated constraints aren't met.
+type TermsAndConditionsUpdateValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e TermsAndConditionsUpdateValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e TermsAndConditionsUpdateValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e TermsAndConditionsUpdateValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e TermsAndConditionsUpdateValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e TermsAndConditionsUpdateValidationError) ErrorName() string {
+	return "TermsAndConditionsUpdateValidationError"
+}
+
+// Error satisfies the builtin error interface
+func (e TermsAndConditionsUpdateValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sTermsAndConditionsUpdate.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = TermsAndConditionsUpdateValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = TermsAndConditionsUpdateValidationError{}
 
 // Validate checks the field values on TenantServiceGetRequest with the rules
 // defined in the proto definition for this message. If any rules are
@@ -947,6 +1248,39 @@ func (m *TenantServiceUpdateRequest) validate(all bool) error {
 			if err := v.Validate(); err != nil {
 				return TenantServiceUpdateRequestValidationError{
 					field:  "PaymentDetails",
+					reason: "embedded message failed validation",
+					cause:  err,
+				}
+			}
+		}
+
+	}
+
+	if m.TermsAndConditions != nil {
+
+		if all {
+			switch v := interface{}(m.GetTermsAndConditions()).(type) {
+			case interface{ ValidateAll() error }:
+				if err := v.ValidateAll(); err != nil {
+					errors = append(errors, TenantServiceUpdateRequestValidationError{
+						field:  "TermsAndConditions",
+						reason: "embedded message failed validation",
+						cause:  err,
+					})
+				}
+			case interface{ Validate() error }:
+				if err := v.Validate(); err != nil {
+					errors = append(errors, TenantServiceUpdateRequestValidationError{
+						field:  "TermsAndConditions",
+						reason: "embedded message failed validation",
+						cause:  err,
+					})
+				}
+			}
+		} else if v, ok := interface{}(m.GetTermsAndConditions()).(interface{ Validate() error }); ok {
+			if err := v.Validate(); err != nil {
+				return TenantServiceUpdateRequestValidationError{
+					field:  "TermsAndConditions",
 					reason: "embedded message failed validation",
 					cause:  err,
 				}

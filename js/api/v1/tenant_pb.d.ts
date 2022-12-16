@@ -43,6 +43,10 @@ export declare class Tenant extends Message<Tenant> {
      */
     phoneNumber: string;
     /**
+     * @generated from field: api.v1.TermsAndConditions terms_and_conditions = 11;
+     */
+    termsAndConditions?: TermsAndConditions;
+    /**
      * @generated from field: google.protobuf.Timestamp created_at = 20;
      */
     createdAt?: Timestamp;
@@ -116,6 +120,48 @@ export declare class PaymentDetailsUpdate extends Message<PaymentDetailsUpdate> 
     static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): PaymentDetailsUpdate;
     static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): PaymentDetailsUpdate;
     static equals(a: PaymentDetailsUpdate | PlainMessage<PaymentDetailsUpdate> | undefined, b: PaymentDetailsUpdate | PlainMessage<PaymentDetailsUpdate> | undefined): boolean;
+}
+/**
+ * @generated from message api.v1.TermsAndConditions
+ */
+export declare class TermsAndConditions extends Message<TermsAndConditions> {
+    /**
+     * @generated from field: bool accepted = 1;
+     */
+    accepted: boolean;
+    /**
+     * @generated from field: google.protobuf.Timestamp when = 2;
+     */
+    when?: Timestamp;
+    constructor(data?: PartialMessage<TermsAndConditions>);
+    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime.js").ProtoRuntime;
+    static readonly typeName = "api.v1.TermsAndConditions";
+    static readonly fields: FieldList;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): TermsAndConditions;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): TermsAndConditions;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): TermsAndConditions;
+    static equals(a: TermsAndConditions | PlainMessage<TermsAndConditions> | undefined, b: TermsAndConditions | PlainMessage<TermsAndConditions> | undefined): boolean;
+}
+/**
+ * @generated from message api.v1.TermsAndConditionsUpdate
+ */
+export declare class TermsAndConditionsUpdate extends Message<TermsAndConditionsUpdate> {
+    /**
+     * @generated from field: optional bool accepted = 1;
+     */
+    accepted?: boolean;
+    /**
+     * @generated from field: optional google.protobuf.Timestamp when = 2;
+     */
+    when?: Timestamp;
+    constructor(data?: PartialMessage<TermsAndConditionsUpdate>);
+    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime.js").ProtoRuntime;
+    static readonly typeName = "api.v1.TermsAndConditionsUpdate";
+    static readonly fields: FieldList;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): TermsAndConditionsUpdate;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): TermsAndConditionsUpdate;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): TermsAndConditionsUpdate;
+    static equals(a: TermsAndConditionsUpdate | PlainMessage<TermsAndConditionsUpdate> | undefined, b: TermsAndConditionsUpdate | PlainMessage<TermsAndConditionsUpdate> | undefined): boolean;
 }
 /**
  * @generated from message api.v1.TenantServiceGetRequest
@@ -194,6 +240,10 @@ export declare class TenantServiceUpdateRequest extends Message<TenantServiceUpd
      * @generated from field: optional api.v1.PaymentDetailsUpdate payment_details = 8;
      */
     paymentDetails?: PaymentDetailsUpdate;
+    /**
+     * @generated from field: optional api.v1.TermsAndConditionsUpdate terms_and_conditions = 9;
+     */
+    termsAndConditions?: TermsAndConditionsUpdate;
     constructor(data?: PartialMessage<TenantServiceUpdateRequest>);
     static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime.js").ProtoRuntime;
     static readonly typeName = "api.v1.TenantServiceUpdateRequest";

@@ -52,6 +52,7 @@ message Tenant {
   PaymentDetails payment_details = 8;
   bool admitted = 9;
   string phone_number = 10;
+  TermsAndConditions terms_and_conditions = 11;
 
   google.protobuf.Timestamp created_at = 20;
   google.protobuf.Timestamp updated_at = 21;
@@ -69,6 +70,16 @@ message PaymentDetailsUpdate {
   optional string customer_id = 1;
   optional string payment_method_id = 2;
   optional string subscription_id = 3;
+}
+
+message TermsAndConditions {
+  bool accepted = 1;
+  google.protobuf.Timestamp when = 2;
+}
+
+message TermsAndConditionsUpdate {
+  optional bool accepted = 1;
+  optional google.protobuf.Timestamp when = 2;
 }
 
 // Requests
@@ -90,6 +101,7 @@ message TenantServiceUpdateRequest {
   optional string email = 3;
   optional string avatar_url = 5;
   optional PaymentDetailsUpdate payment_details = 8;
+  optional TermsAndConditionsUpdate terms_and_conditions = 9;
 }
 
 message TenantServiceDeleteRequest {
