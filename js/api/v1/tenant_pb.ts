@@ -6,6 +6,7 @@
 import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
 import { Message, proto3, Timestamp } from "@bufbuild/protobuf";
 import { OAuthProvider } from "./common_pb.js";
+import { Coupon } from "./payment_pb.js";
 
 /**
  * Tenant
@@ -51,17 +52,22 @@ export class Tenant extends Message<Tenant> {
   admitted = false;
 
   /**
-   * @generated from field: google.protobuf.Timestamp created_at = 10;
+   * @generated from field: string phone_number = 10;
+   */
+  phoneNumber = "";
+
+  /**
+   * @generated from field: google.protobuf.Timestamp created_at = 20;
    */
   createdAt?: Timestamp;
 
   /**
-   * @generated from field: google.protobuf.Timestamp updated_at = 11;
+   * @generated from field: google.protobuf.Timestamp updated_at = 21;
    */
   updatedAt?: Timestamp;
 
   /**
-   * @generated from field: google.protobuf.Timestamp deleted_at = 12;
+   * @generated from field: google.protobuf.Timestamp deleted_at = 22;
    */
   deletedAt?: Timestamp;
 
@@ -80,9 +86,10 @@ export class Tenant extends Message<Tenant> {
     { no: 6, name: "oauth_provider", kind: "enum", T: proto3.getEnumType(OAuthProvider) },
     { no: 8, name: "payment_details", kind: "message", T: PaymentDetails },
     { no: 9, name: "admitted", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
-    { no: 10, name: "created_at", kind: "message", T: Timestamp },
-    { no: 11, name: "updated_at", kind: "message", T: Timestamp },
-    { no: 12, name: "deleted_at", kind: "message", T: Timestamp },
+    { no: 10, name: "phone_number", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 20, name: "created_at", kind: "message", T: Timestamp },
+    { no: 21, name: "updated_at", kind: "message", T: Timestamp },
+    { no: 22, name: "deleted_at", kind: "message", T: Timestamp },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Tenant {
@@ -121,6 +128,11 @@ export class PaymentDetails extends Message<PaymentDetails> {
    */
   subscriptionId = "";
 
+  /**
+   * @generated from field: repeated api.v1.Coupon coupons = 4;
+   */
+  coupons: Coupon[] = [];
+
   constructor(data?: PartialMessage<PaymentDetails>) {
     super();
     proto3.util.initPartial(data, this);
@@ -132,6 +144,7 @@ export class PaymentDetails extends Message<PaymentDetails> {
     { no: 1, name: "customer_id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 2, name: "payment_method_id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 3, name: "subscription_id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 4, name: "coupons", kind: "message", T: Coupon, repeated: true },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): PaymentDetails {
@@ -201,8 +214,6 @@ export class PaymentDetailsUpdate extends Message<PaymentDetailsUpdate> {
 }
 
 /**
- * Requests
- *
  * @generated from message api.v1.TenantServiceGetRequest
  */
 export class TenantServiceGetRequest extends Message<TenantServiceGetRequest> {

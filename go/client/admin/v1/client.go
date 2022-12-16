@@ -13,6 +13,7 @@ import (
 // Client defines the client API
 type Client interface {
 	Tenant() adminv1connect.TenantServiceClient
+	Payment() adminv1connect.PaymentServiceClient
 }
 
 // admin is a client implementation of the api with grpc transport.
@@ -30,6 +31,15 @@ func New(ctx context.Context, config client.DialConfig) Client {
 
 func (c admin) Tenant() adminv1connect.TenantServiceClient {
 	client := adminv1connect.NewTenantServiceClient(
+		c.c.HttpClient(),
+		c.c.BaseURL,
+		compress.WithAll(compress.LevelBalanced),
+	)
+
+	return client
+}
+func (c admin) Payment() adminv1connect.PaymentServiceClient {
+	client := adminv1connect.NewPaymentServiceClient(
 		c.c.HttpClient(),
 		c.c.BaseURL,
 		compress.WithAll(compress.LevelBalanced),

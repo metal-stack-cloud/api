@@ -2,10 +2,13 @@
   "roles": {
     "admin": {
       "editor": [
+        "/admin.v1.PaymentService/ListCoupons",
+        "/admin.v1.PaymentService/AddCouponToCustomer",
         "/admin.v1.TenantService/List",
         "/admin.v1.TenantService/Admit"
       ],
       "viewer": [
+        "/admin.v1.PaymentService/ListCoupons",
         "/admin.v1.TenantService/List"
       ]
     },
@@ -96,6 +99,8 @@
     }
   },
   "methods": {
+    "/admin.v1.PaymentService/AddCouponToCustomer": true,
+    "/admin.v1.PaymentService/ListCoupons": true,
     "/admin.v1.TenantService/Admit": true,
     "/admin.v1.TenantService/List": true,
     "/api.v1.AssetService/List": true,
