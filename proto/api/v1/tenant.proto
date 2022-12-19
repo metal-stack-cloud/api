@@ -64,12 +64,14 @@ message PaymentDetails {
   string payment_method_id = 2;
   string subscription_id = 3;
   repeated Coupon coupons = 4;
+  string vat_number = 5;
 }
 
 message PaymentDetailsUpdate {
   optional string customer_id = 1;
   optional string payment_method_id = 2;
   optional string subscription_id = 3;
+  optional string vat_number = 4;
 }
 
 message TermsAndConditions {
