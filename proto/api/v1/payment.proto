@@ -49,6 +49,7 @@ message PaymentCustomer {
   repeated Price prices = 8;
   Address address = 9;
   optional Coupon coupon = 10;
+  string vat_number = 11;
 }
 
 message Card {

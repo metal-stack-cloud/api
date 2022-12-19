@@ -784,6 +784,18 @@
               "isoneof": true,
               "oneofdecl": "_coupon",
               "defaultValue": ""
+            },
+            {
+              "name": "vat_number",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
             }
           ]
         },
