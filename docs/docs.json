@@ -784,6 +784,18 @@
               "isoneof": true,
               "oneofdecl": "_coupon",
               "defaultValue": ""
+            },
+            {
+              "name": "vat",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
             }
           ]
         },
@@ -1835,6 +1847,18 @@
               "isoneof": false,
               "oneofdecl": "",
               "defaultValue": ""
+            },
+            {
+              "name": "vat",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
             }
           ]
         },
@@ -1882,6 +1906,18 @@
               "ismap": false,
               "isoneof": true,
               "oneofdecl": "_subscription_id",
+              "defaultValue": ""
+            },
+            {
+              "name": "vat",
+              "description": "",
+              "label": "optional",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "_vat",
               "defaultValue": ""
             }
           ]

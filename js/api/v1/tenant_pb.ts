@@ -139,6 +139,11 @@ export class PaymentDetails extends Message<PaymentDetails> {
    */
   coupons: Coupon[] = [];
 
+  /**
+   * @generated from field: string vat = 5;
+   */
+  vat = "";
+
   constructor(data?: PartialMessage<PaymentDetails>) {
     super();
     proto3.util.initPartial(data, this);
@@ -151,6 +156,7 @@ export class PaymentDetails extends Message<PaymentDetails> {
     { no: 2, name: "payment_method_id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 3, name: "subscription_id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 4, name: "coupons", kind: "message", T: Coupon, repeated: true },
+    { no: 5, name: "vat", kind: "scalar", T: 9 /* ScalarType.STRING */ },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): PaymentDetails {
@@ -189,6 +195,11 @@ export class PaymentDetailsUpdate extends Message<PaymentDetailsUpdate> {
    */
   subscriptionId?: string;
 
+  /**
+   * @generated from field: optional string vat = 4;
+   */
+  vat?: string;
+
   constructor(data?: PartialMessage<PaymentDetailsUpdate>) {
     super();
     proto3.util.initPartial(data, this);
@@ -200,6 +211,7 @@ export class PaymentDetailsUpdate extends Message<PaymentDetailsUpdate> {
     { no: 1, name: "customer_id", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
     { no: 2, name: "payment_method_id", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
     { no: 3, name: "subscription_id", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
+    { no: 4, name: "vat", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): PaymentDetailsUpdate {

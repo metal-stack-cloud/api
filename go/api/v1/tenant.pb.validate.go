@@ -354,6 +354,8 @@ func (m *PaymentDetails) validate(all bool) error {
 
 	}
 
+	// no validation rules for Vat
+
 	if len(errors) > 0 {
 		return PaymentDetailsMultiError(errors)
 	}
@@ -464,6 +466,10 @@ func (m *PaymentDetailsUpdate) validate(all bool) error {
 
 	if m.SubscriptionId != nil {
 		// no validation rules for SubscriptionId
+	}
+
+	if m.Vat != nil {
+		// no validation rules for Vat
 	}
 
 	if len(errors) > 0 {

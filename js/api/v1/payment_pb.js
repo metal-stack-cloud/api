@@ -28,6 +28,10 @@ class PaymentCustomer extends protobuf_1.Message {
          * @generated from field: repeated api.v1.Price prices = 8;
          */
         this.prices = [];
+        /**
+         * @generated from field: string vat = 11;
+         */
+        this.vat = "";
         protobuf_1.proto3.util.initPartial(data, this);
     }
     static fromBinary(bytes, options) {
@@ -57,6 +61,7 @@ PaymentCustomer.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 8, name: "prices", kind: "message", T: Price, repeated: true },
     { no: 9, name: "address", kind: "message", T: Address },
     { no: 10, name: "coupon", kind: "message", T: Coupon, opt: true },
+    { no: 11, name: "vat", kind: "scalar", T: 9 /* ScalarType.STRING */ },
 ]);
 /**
  * @generated from message api.v1.Card
