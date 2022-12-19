@@ -45,9 +45,9 @@ export declare class PaymentCustomer extends Message<PaymentCustomer> {
      */
     coupon?: Coupon;
     /**
-     * @generated from field: string vat_number = 11;
+     * @generated from field: string vat = 11;
      */
-    vatNumber: string;
+    vat: string;
     constructor(data?: PartialMessage<PaymentCustomer>);
     static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
     static readonly typeName = "api.v1.PaymentCustomer";

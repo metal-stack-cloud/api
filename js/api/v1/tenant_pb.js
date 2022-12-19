@@ -101,9 +101,9 @@ class PaymentDetails extends protobuf_1.Message {
          */
         this.coupons = [];
         /**
-         * @generated from field: string vat_number = 5;
+         * @generated from field: string vat = 5;
          */
-        this.vatNumber = "";
+        this.vat = "";
         protobuf_1.proto3.util.initPartial(data, this);
     }
     static fromBinary(bytes, options) {
@@ -127,7 +127,7 @@ PaymentDetails.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 2, name: "payment_method_id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 3, name: "subscription_id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 4, name: "coupons", kind: "message", T: payment_pb_js_1.Coupon, repeated: true },
-    { no: 5, name: "vat_number", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 5, name: "vat", kind: "scalar", T: 9 /* ScalarType.STRING */ },
 ]);
 /**
  * @generated from message api.v1.PaymentDetailsUpdate
@@ -157,7 +157,7 @@ PaymentDetailsUpdate.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 1, name: "customer_id", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
     { no: 2, name: "payment_method_id", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
     { no: 3, name: "subscription_id", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
-    { no: 4, name: "vat_number", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
+    { no: 4, name: "vat", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
 ]);
 /**
  * @generated from message api.v1.TermsAndConditions

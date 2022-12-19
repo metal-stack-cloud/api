@@ -786,7 +786,7 @@
               "defaultValue": ""
             },
             {
-              "name": "vat_number",
+              "name": "vat",
               "description": "",
               "label": "",
               "type": "string",
@@ -1849,7 +1849,7 @@
               "defaultValue": ""
             },
             {
-              "name": "vat_number",
+              "name": "vat",
               "description": "",
               "label": "",
               "type": "string",
@@ -1909,7 +1909,7 @@
               "defaultValue": ""
             },
             {
-              "name": "vat_number",
+              "name": "vat",
               "description": "",
               "label": "optional",
               "type": "string",
@@ -1917,7 +1917,7 @@
               "fullType": "string",
               "ismap": false,
               "isoneof": true,
-              "oneofdecl": "_vat_number",
+              "oneofdecl": "_vat",
               "defaultValue": ""
             }
           ]

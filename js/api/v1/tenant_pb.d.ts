@@ -88,9 +88,9 @@ export declare class PaymentDetails extends Message<PaymentDetails> {
      */
     coupons: Coupon[];
     /**
-     * @generated from field: string vat_number = 5;
+     * @generated from field: string vat = 5;
      */
-    vatNumber: string;
+    vat: string;
     constructor(data?: PartialMessage<PaymentDetails>);
     static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime.js").ProtoRuntime;
     static readonly typeName = "api.v1.PaymentDetails";
@@ -117,9 +117,9 @@ export declare class PaymentDetailsUpdate extends Message<PaymentDetailsUpdate> 
      */
     subscriptionId?: string;
     /**
-     * @generated from field: optional string vat_number = 4;
+     * @generated from field: optional string vat = 4;
      */
-    vatNumber?: string;
+    vat?: string;
     constructor(data?: PartialMessage<PaymentDetailsUpdate>);
     static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime.js").ProtoRuntime;
     static readonly typeName = "api.v1.PaymentDetailsUpdate";
