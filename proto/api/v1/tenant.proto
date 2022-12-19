@@ -118,6 +118,7 @@ message TenantServiceRequestAdmissionRequest {
   string login = 1;
   string email = 2;
   string phone_number = 3;
+  bool accepted_terms_and_conditions = 4;
 }
 
 // Responses

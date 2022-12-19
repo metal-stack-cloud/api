@@ -311,6 +311,10 @@ export declare class TenantServiceRequestAdmissionRequest extends Message<Tenant
      * @generated from field: string phone_number = 3;
      */
     phoneNumber: string;
+    /**
+     * @generated from field: bool accepted_terms_and_conditions = 4;
+     */
+    acceptedTermsAndConditions: boolean;
     constructor(data?: PartialMessage<TenantServiceRequestAdmissionRequest>);
     static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime.js").ProtoRuntime;
     static readonly typeName = "api.v1.TenantServiceRequestAdmissionRequest";
