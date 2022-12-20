@@ -1615,6 +1615,8 @@ func (m *TenantServiceRequestAdmissionRequest) validate(all bool) error {
 
 	// no validation rules for PhoneNumber
 
+	// no validation rules for AcceptedTermsAndConditions
+
 	if len(errors) > 0 {
 		return TenantServiceRequestAdmissionRequestMultiError(errors)
 	}
