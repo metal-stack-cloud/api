@@ -3,7 +3,7 @@ module github.com/metal-stack-cloud/api
 go 1.19
 
 require (
-	github.com/bufbuild/connect-go v1.4.0
+	github.com/bufbuild/connect-go v1.4.1
 	github.com/envoyproxy/protoc-gen-validate v0.9.1
 	github.com/jhump/protoreflect v1.14.0
 	github.com/klauspost/connect-compress v1.0.0
