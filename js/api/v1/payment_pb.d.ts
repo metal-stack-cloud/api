@@ -106,6 +106,10 @@ export declare class Price extends Message<Price> {
      * @generated from field: string currency = 3;
      */
     currency: string;
+    /**
+     * @generated from field: string unit_label = 4;
+     */
+    unitLabel: string;
     constructor(data?: PartialMessage<Price>);
     static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
     static readonly typeName = "api.v1.Price";
