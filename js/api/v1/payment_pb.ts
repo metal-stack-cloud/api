@@ -183,6 +183,11 @@ export class Price extends Message<Price> {
    */
   currency = "";
 
+  /**
+   * @generated from field: string unit_label = 4;
+   */
+  unitLabel = "";
+
   constructor(data?: PartialMessage<Price>) {
     super();
     proto3.util.initPartial(data, this);
@@ -194,6 +199,7 @@ export class Price extends Message<Price> {
     { no: 1, name: "name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 2, name: "unit_amount_decimal", kind: "scalar", T: 1 /* ScalarType.DOUBLE */ },
     { no: 3, name: "currency", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 4, name: "unit_label", kind: "scalar", T: 9 /* ScalarType.STRING */ },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Price {

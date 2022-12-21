@@ -64,6 +64,7 @@ message Price {
   string name = 1;
   double unit_amount_decimal = 2;
   string currency = 3;
+  string unit_label = 4;
 }
 
 message Address {

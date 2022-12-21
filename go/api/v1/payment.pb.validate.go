@@ -419,6 +419,8 @@ func (m *Price) validate(all bool) error {
 
 	// no validation rules for Currency
 
+	// no validation rules for UnitLabel
+
 	if len(errors) > 0 {
 		return PriceMultiError(errors)
 	}

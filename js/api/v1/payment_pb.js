@@ -132,6 +132,10 @@ class Price extends protobuf_1.Message {
          * @generated from field: string currency = 3;
          */
         this.currency = "";
+        /**
+         * @generated from field: string unit_label = 4;
+         */
+        this.unitLabel = "";
         protobuf_1.proto3.util.initPartial(data, this);
     }
     static fromBinary(bytes, options) {
@@ -154,6 +158,7 @@ Price.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 1, name: "name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 2, name: "unit_amount_decimal", kind: "scalar", T: 1 /* ScalarType.DOUBLE */ },
     { no: 3, name: "currency", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 4, name: "unit_label", kind: "scalar", T: 9 /* ScalarType.STRING */ },
 ]);
 /**
  * @generated from message api.v1.Address
