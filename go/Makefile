@@ -1,8 +1,17 @@
 .PHONY: clean
 clean:
-	rm -rf api/v1/*.pb*.go admin status
+	rm -rf api/v1/*.pb*.go admin status tests/mocks
 
 .PHONY: test
 test:
 	go run ./discover.go > permissions/servicepermissions.json
 	go test -v ./...
+
+.PHONY: mocks
+mocks:
+	docker run --rm \
+		--user $$(id -u):$$(id -g) \
+		-w /work \
+		-v $(PWD):/work \
+		vektra/mockery:v2.15.0 -r --keeptree --inpackage --dir go --output go/tests/mocks --all --log-level debug
+	go run ./tests/generate/generate_mock_client.go
