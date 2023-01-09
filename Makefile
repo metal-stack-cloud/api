@@ -4,7 +4,7 @@ GITVERSION := $(shell git describe --long --all)
 BUILDDATE := $(shell date -Iseconds)
 VERSION := $(or ${VERSION},devel)
 
-all: proto test npm-build
+all: proto generate test npm-build
 
 .PHONY: proto
 proto: protolint
@@ -16,11 +16,16 @@ proto: protolint
 protolint:
 	$(MAKE) -C proto protolint
 
-.PHONY: npm-build
-npm-build:
-	docker pull node:19-bullseye
-	docker run --rm -v ${PWD}:/work -w /work node:19-bullseye make -C js build
+.PHONY: generate
+generate:
+	$(MAKE) -C go mocks
 
 .PHONY: test
 test:
 	$(MAKE) -C go test
+
+# TODO: this target should be moved to the js dir:
+.PHONY: npm-build
+npm-build:
+	docker pull node:19-bullseye
+	docker run --rm -v ${PWD}:/work -w /work node:19-bullseye make -C js build
