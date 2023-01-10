@@ -822,6 +822,11 @@ export class TenantServiceCheckAdmittedResponse extends Message<TenantServiceChe
    */
   admitted = false;
 
+  /**
+   * @generated from field: bool requested = 2;
+   */
+  requested = false;
+
   constructor(data?: PartialMessage<TenantServiceCheckAdmittedResponse>) {
     super();
     proto3.util.initPartial(data, this);
@@ -831,6 +836,7 @@ export class TenantServiceCheckAdmittedResponse extends Message<TenantServiceChe
   static readonly typeName = "api.v1.TenantServiceCheckAdmittedResponse";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
     { no: 1, name: "admitted", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
+    { no: 2, name: "requested", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): TenantServiceCheckAdmittedResponse {
