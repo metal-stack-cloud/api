@@ -419,6 +419,10 @@ export declare class TenantServiceCheckAdmittedResponse extends Message<TenantSe
      * @generated from field: bool admitted = 1;
      */
     admitted: boolean;
+    /**
+     * @generated from field: bool requested = 2;
+     */
+    requested: boolean;
     constructor(data?: PartialMessage<TenantServiceCheckAdmittedResponse>);
     static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime.js").ProtoRuntime;
     static readonly typeName = "api.v1.TenantServiceCheckAdmittedResponse";
