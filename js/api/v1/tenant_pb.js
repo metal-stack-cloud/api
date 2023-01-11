@@ -597,6 +597,10 @@ class TenantServiceCheckAdmittedResponse extends protobuf_1.Message {
          * @generated from field: bool admitted = 1;
          */
         this.admitted = false;
+        /**
+         * @generated from field: bool requested = 2;
+         */
+        this.requested = false;
         protobuf_1.proto3.util.initPartial(data, this);
     }
     static fromBinary(bytes, options) {
@@ -617,6 +621,7 @@ TenantServiceCheckAdmittedResponse.runtime = protobuf_1.proto3;
 TenantServiceCheckAdmittedResponse.typeName = "api.v1.TenantServiceCheckAdmittedResponse";
 TenantServiceCheckAdmittedResponse.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 1, name: "admitted", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
+    { no: 2, name: "requested", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
 ]);
 /**
  * @generated from message api.v1.TenantServiceRequestAdmissionResponse

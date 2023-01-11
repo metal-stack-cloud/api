@@ -2385,6 +2385,8 @@ func (m *TenantServiceCheckAdmittedResponse) validate(all bool) error {
 
 	// no validation rules for Admitted
 
+	// no validation rules for Requested
+
 	if len(errors) > 0 {
 		return TenantServiceCheckAdmittedResponseMultiError(errors)
 	}
