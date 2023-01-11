@@ -4519,6 +4519,82 @@
               "isoneof": true,
               "oneofdecl": "_machineimage_autoupdate",
               "defaultValue": ""
+            },
+            {
+              "name": "time_window",
+              "description": "",
+              "label": "",
+              "type": "MaintenanceTimeWindow",
+              "longType": "MaintenanceTimeWindow",
+              "fullType": "api.v1.MaintenanceTimeWindow",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "MaintenanceTimeWindow",
+          "longName": "MaintenanceTimeWindow",
+          "fullName": "api.v1.MaintenanceTimeWindow",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "begin",
+              "description": "",
+              "label": "",
+              "type": "Timestamp",
+              "longType": "google.protobuf.Timestamp",
+              "fullType": "google.protobuf.Timestamp",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": "",
+              "options": {
+                "validate.rules": [
+                  {
+                    "name": "timestamp.required",
+                    "value": true
+                  }
+                ]
+              }
+            },
+            {
+              "name": "duration",
+              "description": "",
+              "label": "",
+              "type": "Duration",
+              "longType": "google.protobuf.Duration",
+              "fullType": "google.protobuf.Duration",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": "",
+              "options": {
+                "validate.rules": [
+                  {
+                    "name": "duration.lt.seconds",
+                    "value": 14400
+                  },
+                  {
+                    "name": "duration.lt.nanos",
+                    "value": 0
+                  },
+                  {
+                    "name": "duration.gte.seconds",
+                    "value": 3600
+                  },
+                  {
+                    "name": "duration.gte.nanos",
+                    "value": 0
+                  }
+                ]
+              }
             }
           ]
         },

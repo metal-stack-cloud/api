@@ -3,6 +3,7 @@ syntax = "proto3";
 package api.v1;
 
 import "api/v1/common.proto";
+import "google/protobuf/duration.proto";
 import "google/protobuf/timestamp.proto";
 import "validate/validate.proto";
 
@@ -74,6 +75,15 @@ message KubernetesSpec {
 message Maintenance {
   optional bool kubernetes_autoupdate = 1;
   optional bool machineimage_autoupdate = 2;
+  MaintenanceTimeWindow time_window = 3;
+}
+
+message MaintenanceTimeWindow {
+  google.protobuf.Timestamp begin = 1 [(validate.rules).timestamp.required = true];
+  google.protobuf.Duration duration = 2 [(validate.rules).duration = {
+    gte: {seconds: 3600}, // 1 hour minimum
+    lt: {seconds: 14400} /* 4 hours maximum */
+  }];
 }
 
 message Worker {

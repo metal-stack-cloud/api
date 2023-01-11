@@ -4,7 +4,7 @@
 // @ts-nocheck
 
 import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
-import { Message, proto3, Timestamp } from "@bufbuild/protobuf";
+import { Duration, Message, proto3, Timestamp } from "@bufbuild/protobuf";
 
 /**
  * Types
@@ -158,6 +158,11 @@ export class Maintenance extends Message<Maintenance> {
    */
   machineimageAutoupdate?: boolean;
 
+  /**
+   * @generated from field: api.v1.MaintenanceTimeWindow time_window = 3;
+   */
+  timeWindow?: MaintenanceTimeWindow;
+
   constructor(data?: PartialMessage<Maintenance>) {
     super();
     proto3.util.initPartial(data, this);
@@ -168,6 +173,7 @@ export class Maintenance extends Message<Maintenance> {
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
     { no: 1, name: "kubernetes_autoupdate", kind: "scalar", T: 8 /* ScalarType.BOOL */, opt: true },
     { no: 2, name: "machineimage_autoupdate", kind: "scalar", T: 8 /* ScalarType.BOOL */, opt: true },
+    { no: 3, name: "time_window", kind: "message", T: MaintenanceTimeWindow },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Maintenance {
@@ -184,6 +190,49 @@ export class Maintenance extends Message<Maintenance> {
 
   static equals(a: Maintenance | PlainMessage<Maintenance> | undefined, b: Maintenance | PlainMessage<Maintenance> | undefined): boolean {
     return proto3.util.equals(Maintenance, a, b);
+  }
+}
+
+/**
+ * @generated from message api.v1.MaintenanceTimeWindow
+ */
+export class MaintenanceTimeWindow extends Message<MaintenanceTimeWindow> {
+  /**
+   * @generated from field: google.protobuf.Timestamp begin = 1;
+   */
+  begin?: Timestamp;
+
+  /**
+   * @generated from field: google.protobuf.Duration duration = 2;
+   */
+  duration?: Duration;
+
+  constructor(data?: PartialMessage<MaintenanceTimeWindow>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime = proto3;
+  static readonly typeName = "api.v1.MaintenanceTimeWindow";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "begin", kind: "message", T: Timestamp },
+    { no: 2, name: "duration", kind: "message", T: Duration },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): MaintenanceTimeWindow {
+    return new MaintenanceTimeWindow().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): MaintenanceTimeWindow {
+    return new MaintenanceTimeWindow().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): MaintenanceTimeWindow {
+    return new MaintenanceTimeWindow().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: MaintenanceTimeWindow | PlainMessage<MaintenanceTimeWindow> | undefined, b: MaintenanceTimeWindow | PlainMessage<MaintenanceTimeWindow> | undefined): boolean {
+    return proto3.util.equals(MaintenanceTimeWindow, a, b);
   }
 }
 
