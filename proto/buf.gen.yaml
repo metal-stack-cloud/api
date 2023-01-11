@@ -12,14 +12,14 @@ plugins:
     out: ../go
     opt: paths=source_relative
   # generate go structs for protocol buffer defination
-  - plugin: buf.build/bufbuild/connect-go:v1.4.0
+  - plugin: buf.build/bufbuild/connect-go:v1.4.1
     out: ../go
     opt: paths=source_relative
   # generate ts structs for protocol buffer definition
-  - plugin: buf.build/bufbuild/es:v0.4.0
+  - plugin: buf.build/bufbuild/es:v1.0.0
     out: ../js
     opt: target=ts
-  - plugin: buf.build/bufbuild/connect-web:v0.3.3
+  - plugin: buf.build/bufbuild/connect-web:v0.6.0
     out: ../js
     opt: target=ts
   # generate validate methods
