@@ -1,5 +1,5 @@
 import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
-import { Message, Timestamp } from "@bufbuild/protobuf";
+import { Duration, Message, Timestamp } from "@bufbuild/protobuf";
 /**
  * Types
  *
@@ -90,6 +90,10 @@ export declare class Maintenance extends Message<Maintenance> {
      * @generated from field: optional bool machineimage_autoupdate = 2;
      */
     machineimageAutoupdate?: boolean;
+    /**
+     * @generated from field: api.v1.MaintenanceTimeWindow time_window = 3;
+     */
+    timeWindow?: MaintenanceTimeWindow;
     constructor(data?: PartialMessage<Maintenance>);
     static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
     static readonly typeName = "api.v1.Maintenance";
@@ -98,6 +102,27 @@ export declare class Maintenance extends Message<Maintenance> {
     static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): Maintenance;
     static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): Maintenance;
     static equals(a: Maintenance | PlainMessage<Maintenance> | undefined, b: Maintenance | PlainMessage<Maintenance> | undefined): boolean;
+}
+/**
+ * @generated from message api.v1.MaintenanceTimeWindow
+ */
+export declare class MaintenanceTimeWindow extends Message<MaintenanceTimeWindow> {
+    /**
+     * @generated from field: google.protobuf.Timestamp begin = 1;
+     */
+    begin?: Timestamp;
+    /**
+     * @generated from field: google.protobuf.Duration duration = 2;
+     */
+    duration?: Duration;
+    constructor(data?: PartialMessage<MaintenanceTimeWindow>);
+    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
+    static readonly typeName = "api.v1.MaintenanceTimeWindow";
+    static readonly fields: FieldList;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): MaintenanceTimeWindow;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): MaintenanceTimeWindow;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): MaintenanceTimeWindow;
+    static equals(a: MaintenanceTimeWindow | PlainMessage<MaintenanceTimeWindow> | undefined, b: MaintenanceTimeWindow | PlainMessage<MaintenanceTimeWindow> | undefined): boolean;
 }
 /**
  * @generated from message api.v1.Worker

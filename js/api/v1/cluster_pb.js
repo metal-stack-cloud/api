@@ -4,7 +4,7 @@
 /* eslint-disable */
 // @ts-nocheck
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ClusterServiceWatchStatusResponse = exports.ClusterServiceListResponse = exports.ClusterServiceUpdateResponse = exports.ClusterServiceDeleteResponse = exports.ClusterServiceGetCredentialsResponse = exports.ClusterServiceGetResponse = exports.ClusterServiceCreateResponse = exports.ClusterStatus = exports.ClusterServiceWatchStatusRequest = exports.ClusterServiceDeleteRequest = exports.ClusterServiceUpdateRequest = exports.ClusterServiceCreateRequest = exports.ClusterServiceListRequest = exports.ClusterServiceGetCredentialsRequest = exports.ClusterServiceGetRequest = exports.WorkerUpdate = exports.Worker = exports.Maintenance = exports.KubernetesSpec = exports.Cluster = void 0;
+exports.ClusterServiceWatchStatusResponse = exports.ClusterServiceListResponse = exports.ClusterServiceUpdateResponse = exports.ClusterServiceDeleteResponse = exports.ClusterServiceGetCredentialsResponse = exports.ClusterServiceGetResponse = exports.ClusterServiceCreateResponse = exports.ClusterStatus = exports.ClusterServiceWatchStatusRequest = exports.ClusterServiceDeleteRequest = exports.ClusterServiceUpdateRequest = exports.ClusterServiceCreateRequest = exports.ClusterServiceListRequest = exports.ClusterServiceGetCredentialsRequest = exports.ClusterServiceGetRequest = exports.WorkerUpdate = exports.Worker = exports.MaintenanceTimeWindow = exports.Maintenance = exports.KubernetesSpec = exports.Cluster = void 0;
 const protobuf_1 = require("@bufbuild/protobuf");
 /**
  * Types
@@ -125,6 +125,35 @@ Maintenance.typeName = "api.v1.Maintenance";
 Maintenance.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 1, name: "kubernetes_autoupdate", kind: "scalar", T: 8 /* ScalarType.BOOL */, opt: true },
     { no: 2, name: "machineimage_autoupdate", kind: "scalar", T: 8 /* ScalarType.BOOL */, opt: true },
+    { no: 3, name: "time_window", kind: "message", T: MaintenanceTimeWindow },
+]);
+/**
+ * @generated from message api.v1.MaintenanceTimeWindow
+ */
+class MaintenanceTimeWindow extends protobuf_1.Message {
+    constructor(data) {
+        super();
+        protobuf_1.proto3.util.initPartial(data, this);
+    }
+    static fromBinary(bytes, options) {
+        return new MaintenanceTimeWindow().fromBinary(bytes, options);
+    }
+    static fromJson(jsonValue, options) {
+        return new MaintenanceTimeWindow().fromJson(jsonValue, options);
+    }
+    static fromJsonString(jsonString, options) {
+        return new MaintenanceTimeWindow().fromJsonString(jsonString, options);
+    }
+    static equals(a, b) {
+        return protobuf_1.proto3.util.equals(MaintenanceTimeWindow, a, b);
+    }
+}
+exports.MaintenanceTimeWindow = MaintenanceTimeWindow;
+MaintenanceTimeWindow.runtime = protobuf_1.proto3;
+MaintenanceTimeWindow.typeName = "api.v1.MaintenanceTimeWindow";
+MaintenanceTimeWindow.fields = protobuf_1.proto3.util.newFieldList(() => [
+    { no: 1, name: "begin", kind: "message", T: protobuf_1.Timestamp },
+    { no: 2, name: "duration", kind: "message", T: protobuf_1.Duration },
 ]);
 /**
  * @generated from message api.v1.Worker
