@@ -48,7 +48,7 @@ func (a *AddHeaderTransport) RoundTrip(req *http.Request) (*http.Response, error
 
 	resp, err := a.T.RoundTrip(req)
 
-	if a.debug {
+	if a.debug && resp != nil {
 		respDump, err := httputil.DumpResponse(resp, true)
 		if err != nil {
 			log.Fatal(err)
