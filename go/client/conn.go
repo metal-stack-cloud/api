@@ -2,7 +2,6 @@ package client
 
 import (
 	"fmt"
-	"log"
 	"net/http"
 	"net/http/httputil"
 
@@ -38,22 +37,26 @@ type AddHeaderTransport struct {
 
 func (a *AddHeaderTransport) RoundTrip(req *http.Request) (*http.Response, error) {
 	req.Header.Add("Authorization", "Bearer "+a.Token)
+
 	if a.debug {
 		reqDump, err := httputil.DumpRequestOut(req, true)
 		if err != nil {
-			log.Fatal(err)
+			fmt.Printf("DEBUG ERROR: %s\n", err)
+		} else {
+			fmt.Printf("DEBUG REQUEST:\n%s\n", string(reqDump))
 		}
-		fmt.Printf("REQUEST:\n%s", string(reqDump))
 	}
 
 	resp, err := a.T.RoundTrip(req)
 
-	if a.debug {
+	if a.debug && resp != nil {
 		respDump, err := httputil.DumpResponse(resp, true)
 		if err != nil {
-			log.Fatal(err)
+			fmt.Printf("DEBUG ERROR: %s\n", err)
+		} else {
+			fmt.Printf("DEBUG RESPONSE:\n%s\n", string(respDump))
 		}
-		fmt.Printf("RESPONSE:\n%s", string(respDump))
 	}
+
 	return resp, err
 }
