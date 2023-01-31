@@ -595,6 +595,11 @@ export class TenantServiceRequestAdmissionRequest extends Message<TenantServiceR
    */
   acceptedTermsAndConditions = false;
 
+  /**
+   * @generated from field: bool email_consent = 5;
+   */
+  emailConsent = false;
+
   constructor(data?: PartialMessage<TenantServiceRequestAdmissionRequest>) {
     super();
     proto3.util.initPartial(data, this);
@@ -607,6 +612,7 @@ export class TenantServiceRequestAdmissionRequest extends Message<TenantServiceR
     { no: 2, name: "email", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 3, name: "phone_number", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 4, name: "accepted_terms_and_conditions", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
+    { no: 5, name: "email_consent", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): TenantServiceRequestAdmissionRequest {

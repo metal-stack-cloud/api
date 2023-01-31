@@ -119,6 +119,7 @@ message TenantServiceRequestAdmissionRequest {
   string email = 2;
   string phone_number = 3;
   bool accepted_terms_and_conditions = 4;
+  bool email_consent = 5;
 }
 
 // Responses
