@@ -4,7 +4,7 @@
 /* eslint-disable */
 // @ts-nocheck
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.TenantServiceBlockResponse = exports.TenantServiceBlockRequest = exports.TenantServiceAdmitResponse = exports.TenantServiceAdmitRequest = exports.TenantServiceListResponse = exports.TenantServiceListRequest = void 0;
+exports.TenantServiceRevokeResponse = exports.TenantServiceRevokeRequest = exports.TenantServiceAdmitResponse = exports.TenantServiceAdmitRequest = exports.TenantServiceListResponse = exports.TenantServiceListRequest = void 0;
 const protobuf_1 = require("@bufbuild/protobuf");
 const common_pb_js_1 = require("../../api/v1/common_pb.js");
 const tenant_pb_js_1 = require("../../api/v1/tenant_pb.js");
@@ -133,9 +133,9 @@ TenantServiceAdmitResponse.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 1, name: "tenant", kind: "message", T: tenant_pb_js_1.Tenant },
 ]);
 /**
- * @generated from message admin.v1.TenantServiceBlockRequest
+ * @generated from message admin.v1.TenantServiceRevokeRequest
  */
-class TenantServiceBlockRequest extends protobuf_1.Message {
+class TenantServiceRevokeRequest extends protobuf_1.Message {
     constructor(data) {
         super();
         /**
@@ -145,48 +145,48 @@ class TenantServiceBlockRequest extends protobuf_1.Message {
         protobuf_1.proto3.util.initPartial(data, this);
     }
     static fromBinary(bytes, options) {
-        return new TenantServiceBlockRequest().fromBinary(bytes, options);
+        return new TenantServiceRevokeRequest().fromBinary(bytes, options);
     }
     static fromJson(jsonValue, options) {
-        return new TenantServiceBlockRequest().fromJson(jsonValue, options);
+        return new TenantServiceRevokeRequest().fromJson(jsonValue, options);
     }
     static fromJsonString(jsonString, options) {
-        return new TenantServiceBlockRequest().fromJsonString(jsonString, options);
+        return new TenantServiceRevokeRequest().fromJsonString(jsonString, options);
     }
     static equals(a, b) {
-        return protobuf_1.proto3.util.equals(TenantServiceBlockRequest, a, b);
+        return protobuf_1.proto3.util.equals(TenantServiceRevokeRequest, a, b);
     }
 }
-exports.TenantServiceBlockRequest = TenantServiceBlockRequest;
-TenantServiceBlockRequest.runtime = protobuf_1.proto3;
-TenantServiceBlockRequest.typeName = "admin.v1.TenantServiceBlockRequest";
-TenantServiceBlockRequest.fields = protobuf_1.proto3.util.newFieldList(() => [
+exports.TenantServiceRevokeRequest = TenantServiceRevokeRequest;
+TenantServiceRevokeRequest.runtime = protobuf_1.proto3;
+TenantServiceRevokeRequest.typeName = "admin.v1.TenantServiceRevokeRequest";
+TenantServiceRevokeRequest.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 1, name: "tenant_id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
 ]);
 /**
- * @generated from message admin.v1.TenantServiceBlockResponse
+ * @generated from message admin.v1.TenantServiceRevokeResponse
  */
-class TenantServiceBlockResponse extends protobuf_1.Message {
+class TenantServiceRevokeResponse extends protobuf_1.Message {
     constructor(data) {
         super();
         protobuf_1.proto3.util.initPartial(data, this);
     }
     static fromBinary(bytes, options) {
-        return new TenantServiceBlockResponse().fromBinary(bytes, options);
+        return new TenantServiceRevokeResponse().fromBinary(bytes, options);
     }
     static fromJson(jsonValue, options) {
-        return new TenantServiceBlockResponse().fromJson(jsonValue, options);
+        return new TenantServiceRevokeResponse().fromJson(jsonValue, options);
     }
     static fromJsonString(jsonString, options) {
-        return new TenantServiceBlockResponse().fromJsonString(jsonString, options);
+        return new TenantServiceRevokeResponse().fromJsonString(jsonString, options);
     }
     static equals(a, b) {
-        return protobuf_1.proto3.util.equals(TenantServiceBlockResponse, a, b);
+        return protobuf_1.proto3.util.equals(TenantServiceRevokeResponse, a, b);
     }
 }
-exports.TenantServiceBlockResponse = TenantServiceBlockResponse;
-TenantServiceBlockResponse.runtime = protobuf_1.proto3;
-TenantServiceBlockResponse.typeName = "admin.v1.TenantServiceBlockResponse";
-TenantServiceBlockResponse.fields = protobuf_1.proto3.util.newFieldList(() => [
+exports.TenantServiceRevokeResponse = TenantServiceRevokeResponse;
+TenantServiceRevokeResponse.runtime = protobuf_1.proto3;
+TenantServiceRevokeResponse.typeName = "admin.v1.TenantServiceRevokeResponse";
+TenantServiceRevokeResponse.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 1, name: "tenant", kind: "message", T: tenant_pb_js_1.Tenant },
 ]);

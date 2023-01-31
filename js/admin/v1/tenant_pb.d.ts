@@ -105,36 +105,36 @@ export declare class TenantServiceAdmitResponse extends Message<TenantServiceAdm
     static equals(a: TenantServiceAdmitResponse | PlainMessage<TenantServiceAdmitResponse> | undefined, b: TenantServiceAdmitResponse | PlainMessage<TenantServiceAdmitResponse> | undefined): boolean;
 }
 /**
- * @generated from message admin.v1.TenantServiceBlockRequest
+ * @generated from message admin.v1.TenantServiceRevokeRequest
  */
-export declare class TenantServiceBlockRequest extends Message<TenantServiceBlockRequest> {
+export declare class TenantServiceRevokeRequest extends Message<TenantServiceRevokeRequest> {
     /**
      * @generated from field: string tenant_id = 1;
      */
     tenantId: string;
-    constructor(data?: PartialMessage<TenantServiceBlockRequest>);
+    constructor(data?: PartialMessage<TenantServiceRevokeRequest>);
     static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime.js").ProtoRuntime;
-    static readonly typeName = "admin.v1.TenantServiceBlockRequest";
+    static readonly typeName = "admin.v1.TenantServiceRevokeRequest";
     static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): TenantServiceBlockRequest;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): TenantServiceBlockRequest;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): TenantServiceBlockRequest;
-    static equals(a: TenantServiceBlockRequest | PlainMessage<TenantServiceBlockRequest> | undefined, b: TenantServiceBlockRequest | PlainMessage<TenantServiceBlockRequest> | undefined): boolean;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): TenantServiceRevokeRequest;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): TenantServiceRevokeRequest;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): TenantServiceRevokeRequest;
+    static equals(a: TenantServiceRevokeRequest | PlainMessage<TenantServiceRevokeRequest> | undefined, b: TenantServiceRevokeRequest | PlainMessage<TenantServiceRevokeRequest> | undefined): boolean;
 }
 /**
- * @generated from message admin.v1.TenantServiceBlockResponse
+ * @generated from message admin.v1.TenantServiceRevokeResponse
  */
-export declare class TenantServiceBlockResponse extends Message<TenantServiceBlockResponse> {
+export declare class TenantServiceRevokeResponse extends Message<TenantServiceRevokeResponse> {
     /**
      * @generated from field: api.v1.Tenant tenant = 1;
      */
     tenant?: Tenant;
-    constructor(data?: PartialMessage<TenantServiceBlockResponse>);
+    constructor(data?: PartialMessage<TenantServiceRevokeResponse>);
     static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime.js").ProtoRuntime;
-    static readonly typeName = "admin.v1.TenantServiceBlockResponse";
+    static readonly typeName = "admin.v1.TenantServiceRevokeResponse";
     static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): TenantServiceBlockResponse;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): TenantServiceBlockResponse;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): TenantServiceBlockResponse;
-    static equals(a: TenantServiceBlockResponse | PlainMessage<TenantServiceBlockResponse> | undefined, b: TenantServiceBlockResponse | PlainMessage<TenantServiceBlockResponse> | undefined): boolean;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): TenantServiceRevokeResponse;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): TenantServiceRevokeResponse;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): TenantServiceRevokeResponse;
+    static equals(a: TenantServiceRevokeResponse | PlainMessage<TenantServiceRevokeResponse> | undefined, b: TenantServiceRevokeResponse | PlainMessage<TenantServiceRevokeResponse> | undefined): boolean;
 }

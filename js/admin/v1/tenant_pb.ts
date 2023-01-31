@@ -207,76 +207,76 @@ export class TenantServiceAdmitResponse extends Message<TenantServiceAdmitRespon
 }
 
 /**
- * @generated from message admin.v1.TenantServiceBlockRequest
+ * @generated from message admin.v1.TenantServiceRevokeRequest
  */
-export class TenantServiceBlockRequest extends Message<TenantServiceBlockRequest> {
+export class TenantServiceRevokeRequest extends Message<TenantServiceRevokeRequest> {
   /**
    * @generated from field: string tenant_id = 1;
    */
   tenantId = "";
 
-  constructor(data?: PartialMessage<TenantServiceBlockRequest>) {
+  constructor(data?: PartialMessage<TenantServiceRevokeRequest>) {
     super();
     proto3.util.initPartial(data, this);
   }
 
   static readonly runtime = proto3;
-  static readonly typeName = "admin.v1.TenantServiceBlockRequest";
+  static readonly typeName = "admin.v1.TenantServiceRevokeRequest";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
     { no: 1, name: "tenant_id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
   ]);
 
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): TenantServiceBlockRequest {
-    return new TenantServiceBlockRequest().fromBinary(bytes, options);
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): TenantServiceRevokeRequest {
+    return new TenantServiceRevokeRequest().fromBinary(bytes, options);
   }
 
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): TenantServiceBlockRequest {
-    return new TenantServiceBlockRequest().fromJson(jsonValue, options);
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): TenantServiceRevokeRequest {
+    return new TenantServiceRevokeRequest().fromJson(jsonValue, options);
   }
 
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): TenantServiceBlockRequest {
-    return new TenantServiceBlockRequest().fromJsonString(jsonString, options);
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): TenantServiceRevokeRequest {
+    return new TenantServiceRevokeRequest().fromJsonString(jsonString, options);
   }
 
-  static equals(a: TenantServiceBlockRequest | PlainMessage<TenantServiceBlockRequest> | undefined, b: TenantServiceBlockRequest | PlainMessage<TenantServiceBlockRequest> | undefined): boolean {
-    return proto3.util.equals(TenantServiceBlockRequest, a, b);
+  static equals(a: TenantServiceRevokeRequest | PlainMessage<TenantServiceRevokeRequest> | undefined, b: TenantServiceRevokeRequest | PlainMessage<TenantServiceRevokeRequest> | undefined): boolean {
+    return proto3.util.equals(TenantServiceRevokeRequest, a, b);
   }
 }
 
 /**
- * @generated from message admin.v1.TenantServiceBlockResponse
+ * @generated from message admin.v1.TenantServiceRevokeResponse
  */
-export class TenantServiceBlockResponse extends Message<TenantServiceBlockResponse> {
+export class TenantServiceRevokeResponse extends Message<TenantServiceRevokeResponse> {
   /**
    * @generated from field: api.v1.Tenant tenant = 1;
    */
   tenant?: Tenant;
 
-  constructor(data?: PartialMessage<TenantServiceBlockResponse>) {
+  constructor(data?: PartialMessage<TenantServiceRevokeResponse>) {
     super();
     proto3.util.initPartial(data, this);
   }
 
   static readonly runtime = proto3;
-  static readonly typeName = "admin.v1.TenantServiceBlockResponse";
+  static readonly typeName = "admin.v1.TenantServiceRevokeResponse";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
     { no: 1, name: "tenant", kind: "message", T: Tenant },
   ]);
 
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): TenantServiceBlockResponse {
-    return new TenantServiceBlockResponse().fromBinary(bytes, options);
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): TenantServiceRevokeResponse {
+    return new TenantServiceRevokeResponse().fromBinary(bytes, options);
   }
 
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): TenantServiceBlockResponse {
-    return new TenantServiceBlockResponse().fromJson(jsonValue, options);
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): TenantServiceRevokeResponse {
+    return new TenantServiceRevokeResponse().fromJson(jsonValue, options);
   }
 
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): TenantServiceBlockResponse {
-    return new TenantServiceBlockResponse().fromJsonString(jsonString, options);
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): TenantServiceRevokeResponse {
+    return new TenantServiceRevokeResponse().fromJsonString(jsonString, options);
   }
 
-  static equals(a: TenantServiceBlockResponse | PlainMessage<TenantServiceBlockResponse> | undefined, b: TenantServiceBlockResponse | PlainMessage<TenantServiceBlockResponse> | undefined): boolean {
-    return proto3.util.equals(TenantServiceBlockResponse, a, b);
+  static equals(a: TenantServiceRevokeResponse | PlainMessage<TenantServiceRevokeResponse> | undefined, b: TenantServiceRevokeResponse | PlainMessage<TenantServiceRevokeResponse> | undefined): boolean {
+    return proto3.util.equals(TenantServiceRevokeResponse, a, b);
   }
 }
 

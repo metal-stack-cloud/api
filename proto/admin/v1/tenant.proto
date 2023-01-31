@@ -13,7 +13,7 @@ service TenantService {
   rpc Admit(TenantServiceAdmitRequest) returns (TenantServiceAdmitResponse) {
     option (api.v1.admin_roles) = ADMIN_ROLE_EDITOR;
   }
-  rpc Block(TenantServiceBlockRequest) returns (TenantServiceBlockResponse) {
+  rpc Revoke(TenantServiceRevokeRequest) returns (TenantServiceRevokeResponse) {
     option (api.v1.admin_roles) = ADMIN_ROLE_EDITOR;
   }
 }
@@ -39,9 +39,9 @@ message TenantServiceAdmitRequest {
 message TenantServiceAdmitResponse {
   api.v1.Tenant tenant = 1;
 }
-message TenantServiceBlockRequest {
+message TenantServiceRevokeRequest {
   string tenant_id = 1;
 }
-message TenantServiceBlockResponse {
+message TenantServiceRevokeResponse {
   api.v1.Tenant tenant = 1;
 }

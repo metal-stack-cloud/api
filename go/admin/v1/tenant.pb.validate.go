@@ -573,22 +573,22 @@ var _ interface {
 	ErrorName() string
 } = TenantServiceAdmitResponseValidationError{}
 
-// Validate checks the field values on TenantServiceBlockRequest with the rules
-// defined in the proto definition for this message. If any rules are
+// Validate checks the field values on TenantServiceRevokeRequest with the
+// rules defined in the proto definition for this message. If any rules are
 // violated, the first error encountered is returned, or nil if there are no violations.
-func (m *TenantServiceBlockRequest) Validate() error {
+func (m *TenantServiceRevokeRequest) Validate() error {
 	return m.validate(false)
 }
 
-// ValidateAll checks the field values on TenantServiceBlockRequest with the
+// ValidateAll checks the field values on TenantServiceRevokeRequest with the
 // rules defined in the proto definition for this message. If any rules are
 // violated, the result is a list of violation errors wrapped in
-// TenantServiceBlockRequestMultiError, or nil if none found.
-func (m *TenantServiceBlockRequest) ValidateAll() error {
+// TenantServiceRevokeRequestMultiError, or nil if none found.
+func (m *TenantServiceRevokeRequest) ValidateAll() error {
 	return m.validate(true)
 }
 
-func (m *TenantServiceBlockRequest) validate(all bool) error {
+func (m *TenantServiceRevokeRequest) validate(all bool) error {
 	if m == nil {
 		return nil
 	}
@@ -598,19 +598,19 @@ func (m *TenantServiceBlockRequest) validate(all bool) error {
 	// no validation rules for TenantId
 
 	if len(errors) > 0 {
-		return TenantServiceBlockRequestMultiError(errors)
+		return TenantServiceRevokeRequestMultiError(errors)
 	}
 
 	return nil
 }
 
-// TenantServiceBlockRequestMultiError is an error wrapping multiple validation
-// errors returned by TenantServiceBlockRequest.ValidateAll() if the
-// designated constraints aren't met.
-type TenantServiceBlockRequestMultiError []error
+// TenantServiceRevokeRequestMultiError is an error wrapping multiple
+// validation errors returned by TenantServiceRevokeRequest.ValidateAll() if
+// the designated constraints aren't met.
+type TenantServiceRevokeRequestMultiError []error
 
 // Error returns a concatenation of all the error messages it wraps.
-func (m TenantServiceBlockRequestMultiError) Error() string {
+func (m TenantServiceRevokeRequestMultiError) Error() string {
 	var msgs []string
 	for _, err := range m {
 		msgs = append(msgs, err.Error())
@@ -619,11 +619,11 @@ func (m TenantServiceBlockRequestMultiError) Error() string {
 }
 
 // AllErrors returns a list of validation violation errors.
-func (m TenantServiceBlockRequestMultiError) AllErrors() []error { return m }
+func (m TenantServiceRevokeRequestMultiError) AllErrors() []error { return m }
 
-// TenantServiceBlockRequestValidationError is the validation error returned by
-// TenantServiceBlockRequest.Validate if the designated constraints aren't met.
-type TenantServiceBlockRequestValidationError struct {
+// TenantServiceRevokeRequestValidationError is the validation error returned
+// by TenantServiceRevokeRequest.Validate if the designated constraints aren't met.
+type TenantServiceRevokeRequestValidationError struct {
 	field  string
 	reason string
 	cause  error
@@ -631,24 +631,24 @@ type TenantServiceBlockRequestValidationError struct {
 }
 
 // Field function returns field value.
-func (e TenantServiceBlockRequestValidationError) Field() string { return e.field }
+func (e TenantServiceRevokeRequestValidationError) Field() string { return e.field }
 
 // Reason function returns reason value.
-func (e TenantServiceBlockRequestValidationError) Reason() string { return e.reason }
+func (e TenantServiceRevokeRequestValidationError) Reason() string { return e.reason }
 
 // Cause function returns cause value.
-func (e TenantServiceBlockRequestValidationError) Cause() error { return e.cause }
+func (e TenantServiceRevokeRequestValidationError) Cause() error { return e.cause }
 
 // Key function returns key value.
-func (e TenantServiceBlockRequestValidationError) Key() bool { return e.key }
+func (e TenantServiceRevokeRequestValidationError) Key() bool { return e.key }
 
 // ErrorName returns error name.
-func (e TenantServiceBlockRequestValidationError) ErrorName() string {
-	return "TenantServiceBlockRequestValidationError"
+func (e TenantServiceRevokeRequestValidationError) ErrorName() string {
+	return "TenantServiceRevokeRequestValidationError"
 }
 
 // Error satisfies the builtin error interface
-func (e TenantServiceBlockRequestValidationError) Error() string {
+func (e TenantServiceRevokeRequestValidationError) Error() string {
 	cause := ""
 	if e.cause != nil {
 		cause = fmt.Sprintf(" | caused by: %v", e.cause)
@@ -660,14 +660,14 @@ func (e TenantServiceBlockRequestValidationError) Error() string {
 	}
 
 	return fmt.Sprintf(
-		"invalid %sTenantServiceBlockRequest.%s: %s%s",
+		"invalid %sTenantServiceRevokeRequest.%s: %s%s",
 		key,
 		e.field,
 		e.reason,
 		cause)
 }
 
-var _ error = TenantServiceBlockRequestValidationError{}
+var _ error = TenantServiceRevokeRequestValidationError{}
 
 var _ interface {
 	Field() string
@@ -675,24 +675,24 @@ var _ interface {
 	Key() bool
 	Cause() error
 	ErrorName() string
-} = TenantServiceBlockRequestValidationError{}
+} = TenantServiceRevokeRequestValidationError{}
 
-// Validate checks the field values on TenantServiceBlockResponse with the
+// Validate checks the field values on TenantServiceRevokeResponse with the
 // rules defined in the proto definition for this message. If any rules are
 // violated, the first error encountered is returned, or nil if there are no violations.
-func (m *TenantServiceBlockResponse) Validate() error {
+func (m *TenantServiceRevokeResponse) Validate() error {
 	return m.validate(false)
 }
 
-// ValidateAll checks the field values on TenantServiceBlockResponse with the
+// ValidateAll checks the field values on TenantServiceRevokeResponse with the
 // rules defined in the proto definition for this message. If any rules are
 // violated, the result is a list of violation errors wrapped in
-// TenantServiceBlockResponseMultiError, or nil if none found.
-func (m *TenantServiceBlockResponse) ValidateAll() error {
+// TenantServiceRevokeResponseMultiError, or nil if none found.
+func (m *TenantServiceRevokeResponse) ValidateAll() error {
 	return m.validate(true)
 }
 
-func (m *TenantServiceBlockResponse) validate(all bool) error {
+func (m *TenantServiceRevokeResponse) validate(all bool) error {
 	if m == nil {
 		return nil
 	}
@@ -703,7 +703,7 @@ func (m *TenantServiceBlockResponse) validate(all bool) error {
 		switch v := interface{}(m.GetTenant()).(type) {
 		case interface{ ValidateAll() error }:
 			if err := v.ValidateAll(); err != nil {
-				errors = append(errors, TenantServiceBlockResponseValidationError{
+				errors = append(errors, TenantServiceRevokeResponseValidationError{
 					field:  "Tenant",
 					reason: "embedded message failed validation",
 					cause:  err,
@@ -711,7 +711,7 @@ func (m *TenantServiceBlockResponse) validate(all bool) error {
 			}
 		case interface{ Validate() error }:
 			if err := v.Validate(); err != nil {
-				errors = append(errors, TenantServiceBlockResponseValidationError{
+				errors = append(errors, TenantServiceRevokeResponseValidationError{
 					field:  "Tenant",
 					reason: "embedded message failed validation",
 					cause:  err,
@@ -720,7 +720,7 @@ func (m *TenantServiceBlockResponse) validate(all bool) error {
 		}
 	} else if v, ok := interface{}(m.GetTenant()).(interface{ Validate() error }); ok {
 		if err := v.Validate(); err != nil {
-			return TenantServiceBlockResponseValidationError{
+			return TenantServiceRevokeResponseValidationError{
 				field:  "Tenant",
 				reason: "embedded message failed validation",
 				cause:  err,
@@ -729,19 +729,19 @@ func (m *TenantServiceBlockResponse) validate(all bool) error {
 	}
 
 	if len(errors) > 0 {
-		return TenantServiceBlockResponseMultiError(errors)
+		return TenantServiceRevokeResponseMultiError(errors)
 	}
 
 	return nil
 }
 
-// TenantServiceBlockResponseMultiError is an error wrapping multiple
-// validation errors returned by TenantServiceBlockResponse.ValidateAll() if
+// TenantServiceRevokeResponseMultiError is an error wrapping multiple
+// validation errors returned by TenantServiceRevokeResponse.ValidateAll() if
 // the designated constraints aren't met.
-type TenantServiceBlockResponseMultiError []error
+type TenantServiceRevokeResponseMultiError []error
 
 // Error returns a concatenation of all the error messages it wraps.
-func (m TenantServiceBlockResponseMultiError) Error() string {
+func (m TenantServiceRevokeResponseMultiError) Error() string {
 	var msgs []string
 	for _, err := range m {
 		msgs = append(msgs, err.Error())
@@ -750,11 +750,12 @@ func (m TenantServiceBlockResponseMultiError) Error() string {
 }
 
 // AllErrors returns a list of validation violation errors.
-func (m TenantServiceBlockResponseMultiError) AllErrors() []error { return m }
+func (m TenantServiceRevokeResponseMultiError) AllErrors() []error { return m }
 
-// TenantServiceBlockResponseValidationError is the validation error returned
-// by TenantServiceBlockResponse.Validate if the designated constraints aren't met.
-type TenantServiceBlockResponseValidationError struct {
+// TenantServiceRevokeResponseValidationError is the validation error returned
+// by TenantServiceRevokeResponse.Validate if the designated constraints
+// aren't met.
+type TenantServiceRevokeResponseValidationError struct {
 	field  string
 	reason string
 	cause  error
@@ -762,24 +763,24 @@ type TenantServiceBlockResponseValidationError struct {
 }
 
 // Field function returns field value.
-func (e TenantServiceBlockResponseValidationError) Field() string { return e.field }
+func (e TenantServiceRevokeResponseValidationError) Field() string { return e.field }
 
 // Reason function returns reason value.
-func (e TenantServiceBlockResponseValidationError) Reason() string { return e.reason }
+func (e TenantServiceRevokeResponseValidationError) Reason() string { return e.reason }
 
 // Cause function returns cause value.
-func (e TenantServiceBlockResponseValidationError) Cause() error { return e.cause }
+func (e TenantServiceRevokeResponseValidationError) Cause() error { return e.cause }
 
 // Key function returns key value.
-func (e TenantServiceBlockResponseValidationError) Key() bool { return e.key }
+func (e TenantServiceRevokeResponseValidationError) Key() bool { return e.key }
 
 // ErrorName returns error name.
-func (e TenantServiceBlockResponseValidationError) ErrorName() string {
-	return "TenantServiceBlockResponseValidationError"
+func (e TenantServiceRevokeResponseValidationError) ErrorName() string {
+	return "TenantServiceRevokeResponseValidationError"
 }
 
 // Error satisfies the builtin error interface
-func (e TenantServiceBlockResponseValidationError) Error() string {
+func (e TenantServiceRevokeResponseValidationError) Error() string {
 	cause := ""
 	if e.cause != nil {
 		cause = fmt.Sprintf(" | caused by: %v", e.cause)
@@ -791,14 +792,14 @@ func (e TenantServiceBlockResponseValidationError) Error() string {
 	}
 
 	return fmt.Sprintf(
-		"invalid %sTenantServiceBlockResponse.%s: %s%s",
+		"invalid %sTenantServiceRevokeResponse.%s: %s%s",
 		key,
 		e.field,
 		e.reason,
 		cause)
 }
 
-var _ error = TenantServiceBlockResponseValidationError{}
+var _ error = TenantServiceRevokeResponseValidationError{}
 
 var _ interface {
 	Field() string
@@ -806,4 +807,4 @@ var _ interface {
 	Key() bool
 	Cause() error
 	ErrorName() string
-} = TenantServiceBlockResponseValidationError{}
+} = TenantServiceRevokeResponseValidationError{}
