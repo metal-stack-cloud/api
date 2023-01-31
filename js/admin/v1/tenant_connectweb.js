@@ -31,5 +31,14 @@ exports.TenantService = {
             O: tenant_pb_js_1.TenantServiceAdmitResponse,
             kind: protobuf_1.MethodKind.Unary,
         },
+        /**
+         * @generated from rpc admin.v1.TenantService.Block
+         */
+        block: {
+            name: "Block",
+            I: tenant_pb_js_1.TenantServiceBlockRequest,
+            O: tenant_pb_js_1.TenantServiceBlockResponse,
+            kind: protobuf_1.MethodKind.Unary,
+        },
     }
 };

@@ -2798,6 +2798,54 @@
           ]
         },
         {
+          "name": "TenantServiceBlockRequest",
+          "longName": "TenantServiceBlockRequest",
+          "fullName": "admin.v1.TenantServiceBlockRequest",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "tenant_id",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "TenantServiceBlockResponse",
+          "longName": "TenantServiceBlockResponse",
+          "fullName": "admin.v1.TenantServiceBlockResponse",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "tenant",
+              "description": "",
+              "label": "",
+              "type": "Tenant",
+              "longType": "api.v1.Tenant",
+              "fullType": "api.v1.Tenant",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
           "name": "TenantServiceListRequest",
           "longName": "TenantServiceListRequest",
           "fullName": "admin.v1.TenantServiceListRequest",
@@ -2959,6 +3007,18 @@
               "responseType": "TenantServiceAdmitResponse",
               "responseLongType": "TenantServiceAdmitResponse",
               "responseFullType": "admin.v1.TenantServiceAdmitResponse",
+              "responseStreaming": false
+            },
+            {
+              "name": "Block",
+              "description": "",
+              "requestType": "TenantServiceBlockRequest",
+              "requestLongType": "TenantServiceBlockRequest",
+              "requestFullType": "admin.v1.TenantServiceBlockRequest",
+              "requestStreaming": false,
+              "responseType": "TenantServiceBlockResponse",
+              "responseLongType": "TenantServiceBlockResponse",
+              "responseFullType": "admin.v1.TenantServiceBlockResponse",
               "responseStreaming": false
             }
           ]

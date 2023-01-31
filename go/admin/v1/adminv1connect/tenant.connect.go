@@ -29,6 +29,7 @@ const (
 type TenantServiceClient interface {
 	List(context.Context, *connect_go.Request[v1.TenantServiceListRequest]) (*connect_go.Response[v1.TenantServiceListResponse], error)
 	Admit(context.Context, *connect_go.Request[v1.TenantServiceAdmitRequest]) (*connect_go.Response[v1.TenantServiceAdmitResponse], error)
+	Block(context.Context, *connect_go.Request[v1.TenantServiceBlockRequest]) (*connect_go.Response[v1.TenantServiceBlockResponse], error)
 }
 
 // NewTenantServiceClient constructs a client for the admin.v1.TenantService service. By default, it
@@ -51,6 +52,11 @@ func NewTenantServiceClient(httpClient connect_go.HTTPClient, baseURL string, op
 			baseURL+"/admin.v1.TenantService/Admit",
 			opts...,
 		),
+		block: connect_go.NewClient[v1.TenantServiceBlockRequest, v1.TenantServiceBlockResponse](
+			httpClient,
+			baseURL+"/admin.v1.TenantService/Block",
+			opts...,
+		),
 	}
 }
 
@@ -58,6 +64,7 @@ func NewTenantServiceClient(httpClient connect_go.HTTPClient, baseURL string, op
 type tenantServiceClient struct {
 	list  *connect_go.Client[v1.TenantServiceListRequest, v1.TenantServiceListResponse]
 	admit *connect_go.Client[v1.TenantServiceAdmitRequest, v1.TenantServiceAdmitResponse]
+	block *connect_go.Client[v1.TenantServiceBlockRequest, v1.TenantServiceBlockResponse]
 }
 
 // List calls admin.v1.TenantService.List.
@@ -70,10 +77,16 @@ func (c *tenantServiceClient) Admit(ctx context.Context, req *connect_go.Request
 	return c.admit.CallUnary(ctx, req)
 }
 
+// Block calls admin.v1.TenantService.Block.
+func (c *tenantServiceClient) Block(ctx context.Context, req *connect_go.Request[v1.TenantServiceBlockRequest]) (*connect_go.Response[v1.TenantServiceBlockResponse], error) {
+	return c.block.CallUnary(ctx, req)
+}
+
 // TenantServiceHandler is an implementation of the admin.v1.TenantService service.
 type TenantServiceHandler interface {
 	List(context.Context, *connect_go.Request[v1.TenantServiceListRequest]) (*connect_go.Response[v1.TenantServiceListResponse], error)
 	Admit(context.Context, *connect_go.Request[v1.TenantServiceAdmitRequest]) (*connect_go.Response[v1.TenantServiceAdmitResponse], error)
+	Block(context.Context, *connect_go.Request[v1.TenantServiceBlockRequest]) (*connect_go.Response[v1.TenantServiceBlockResponse], error)
 }
 
 // NewTenantServiceHandler builds an HTTP handler from the service implementation. It returns the
@@ -93,6 +106,11 @@ func NewTenantServiceHandler(svc TenantServiceHandler, opts ...connect_go.Handle
 		svc.Admit,
 		opts...,
 	))
+	mux.Handle("/admin.v1.TenantService/Block", connect_go.NewUnaryHandler(
+		"/admin.v1.TenantService/Block",
+		svc.Block,
+		opts...,
+	))
 	return "/admin.v1.TenantService/", mux
 }
 
@@ -105,4 +123,8 @@ func (UnimplementedTenantServiceHandler) List(context.Context, *connect_go.Reque
 
 func (UnimplementedTenantServiceHandler) Admit(context.Context, *connect_go.Request[v1.TenantServiceAdmitRequest]) (*connect_go.Response[v1.TenantServiceAdmitResponse], error) {
 	return nil, connect_go.NewError(connect_go.CodeUnimplemented, errors.New("admin.v1.TenantService.Admit is not implemented"))
+}
+
+func (UnimplementedTenantServiceHandler) Block(context.Context, *connect_go.Request[v1.TenantServiceBlockRequest]) (*connect_go.Response[v1.TenantServiceBlockResponse], error) {
+	return nil, connect_go.NewError(connect_go.CodeUnimplemented, errors.New("admin.v1.TenantService.Block is not implemented"))
 }
