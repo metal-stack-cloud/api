@@ -46,6 +46,10 @@ class Tenant extends protobuf_1.Message {
          * @generated from field: string phone_number = 10;
          */
         this.phoneNumber = "";
+        /**
+         * @generated from field: bool email_consent = 12;
+         */
+        this.emailConsent = false;
         protobuf_1.proto3.util.initPartial(data, this);
     }
     static fromBinary(bytes, options) {
@@ -74,6 +78,7 @@ Tenant.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 9, name: "admitted", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
     { no: 10, name: "phone_number", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 11, name: "terms_and_conditions", kind: "message", T: TermsAndConditions },
+    { no: 12, name: "email_consent", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
     { no: 20, name: "created_at", kind: "message", T: protobuf_1.Timestamp },
     { no: 21, name: "updated_at", kind: "message", T: protobuf_1.Timestamp },
     { no: 22, name: "deleted_at", kind: "message", T: protobuf_1.Timestamp },

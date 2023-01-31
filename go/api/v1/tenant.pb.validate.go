@@ -128,6 +128,8 @@ func (m *Tenant) validate(all bool) error {
 		}
 	}
 
+	// no validation rules for EmailConsent
+
 	if all {
 		switch v := interface{}(m.GetCreatedAt()).(type) {
 		case interface{ ValidateAll() error }:

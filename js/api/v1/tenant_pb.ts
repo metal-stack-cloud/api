@@ -62,6 +62,11 @@ export class Tenant extends Message<Tenant> {
   termsAndConditions?: TermsAndConditions;
 
   /**
+   * @generated from field: bool email_consent = 12;
+   */
+  emailConsent = false;
+
+  /**
    * @generated from field: google.protobuf.Timestamp created_at = 20;
    */
   createdAt?: Timestamp;
@@ -93,6 +98,7 @@ export class Tenant extends Message<Tenant> {
     { no: 9, name: "admitted", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
     { no: 10, name: "phone_number", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 11, name: "terms_and_conditions", kind: "message", T: TermsAndConditions },
+    { no: 12, name: "email_consent", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
     { no: 20, name: "created_at", kind: "message", T: Timestamp },
     { no: 21, name: "updated_at", kind: "message", T: Timestamp },
     { no: 22, name: "deleted_at", kind: "message", T: Timestamp },
