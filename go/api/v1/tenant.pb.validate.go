@@ -1617,6 +1617,8 @@ func (m *TenantServiceRequestAdmissionRequest) validate(all bool) error {
 
 	// no validation rules for AcceptedTermsAndConditions
 
+	// no validation rules for EmailConsent
+
 	if len(errors) > 0 {
 		return TenantServiceRequestAdmissionRequestMultiError(errors)
 	}
