@@ -315,6 +315,10 @@ export declare class TenantServiceRequestAdmissionRequest extends Message<Tenant
      * @generated from field: bool accepted_terms_and_conditions = 4;
      */
     acceptedTermsAndConditions: boolean;
+    /**
+     * @generated from field: bool email_consent = 5;
+     */
+    emailConsent: boolean;
     constructor(data?: PartialMessage<TenantServiceRequestAdmissionRequest>);
     static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime.js").ProtoRuntime;
     static readonly typeName = "api.v1.TenantServiceRequestAdmissionRequest";
