@@ -53,6 +53,7 @@ message Tenant {
   bool admitted = 9;
   string phone_number = 10;
   TermsAndConditions terms_and_conditions = 11;
+  bool email_consent = 12;
 
   google.protobuf.Timestamp created_at = 20;
   google.protobuf.Timestamp updated_at = 21;

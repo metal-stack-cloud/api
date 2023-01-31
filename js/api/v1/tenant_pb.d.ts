@@ -47,6 +47,10 @@ export declare class Tenant extends Message<Tenant> {
      */
     termsAndConditions?: TermsAndConditions;
     /**
+     * @generated from field: bool email_consent = 12;
+     */
+    emailConsent: boolean;
+    /**
      * @generated from field: google.protobuf.Timestamp created_at = 20;
      */
     createdAt?: Timestamp;
