@@ -104,3 +104,37 @@ export declare class TenantServiceAdmitResponse extends Message<TenantServiceAdm
     static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): TenantServiceAdmitResponse;
     static equals(a: TenantServiceAdmitResponse | PlainMessage<TenantServiceAdmitResponse> | undefined, b: TenantServiceAdmitResponse | PlainMessage<TenantServiceAdmitResponse> | undefined): boolean;
 }
+/**
+ * @generated from message admin.v1.TenantServiceRevokeRequest
+ */
+export declare class TenantServiceRevokeRequest extends Message<TenantServiceRevokeRequest> {
+    /**
+     * @generated from field: string tenant_id = 1;
+     */
+    tenantId: string;
+    constructor(data?: PartialMessage<TenantServiceRevokeRequest>);
+    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime.js").ProtoRuntime;
+    static readonly typeName = "admin.v1.TenantServiceRevokeRequest";
+    static readonly fields: FieldList;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): TenantServiceRevokeRequest;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): TenantServiceRevokeRequest;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): TenantServiceRevokeRequest;
+    static equals(a: TenantServiceRevokeRequest | PlainMessage<TenantServiceRevokeRequest> | undefined, b: TenantServiceRevokeRequest | PlainMessage<TenantServiceRevokeRequest> | undefined): boolean;
+}
+/**
+ * @generated from message admin.v1.TenantServiceRevokeResponse
+ */
+export declare class TenantServiceRevokeResponse extends Message<TenantServiceRevokeResponse> {
+    /**
+     * @generated from field: api.v1.Tenant tenant = 1;
+     */
+    tenant?: Tenant;
+    constructor(data?: PartialMessage<TenantServiceRevokeResponse>);
+    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime.js").ProtoRuntime;
+    static readonly typeName = "admin.v1.TenantServiceRevokeResponse";
+    static readonly fields: FieldList;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): TenantServiceRevokeResponse;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): TenantServiceRevokeResponse;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): TenantServiceRevokeResponse;
+    static equals(a: TenantServiceRevokeResponse | PlainMessage<TenantServiceRevokeResponse> | undefined, b: TenantServiceRevokeResponse | PlainMessage<TenantServiceRevokeResponse> | undefined): boolean;
+}

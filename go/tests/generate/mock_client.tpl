@@ -1,4 +1,4 @@
-// Code generated discover.go. DO NOT EDIT.
+// Code generated generate_mock_client.go. DO NOT EDIT.
 package apitests
 
 import (

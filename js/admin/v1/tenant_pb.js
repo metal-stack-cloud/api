@@ -4,7 +4,7 @@
 /* eslint-disable */
 // @ts-nocheck
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.TenantServiceAdmitResponse = exports.TenantServiceAdmitRequest = exports.TenantServiceListResponse = exports.TenantServiceListRequest = void 0;
+exports.TenantServiceRevokeResponse = exports.TenantServiceRevokeRequest = exports.TenantServiceAdmitResponse = exports.TenantServiceAdmitRequest = exports.TenantServiceListResponse = exports.TenantServiceListRequest = void 0;
 const protobuf_1 = require("@bufbuild/protobuf");
 const common_pb_js_1 = require("../../api/v1/common_pb.js");
 const tenant_pb_js_1 = require("../../api/v1/tenant_pb.js");
@@ -130,5 +130,63 @@ exports.TenantServiceAdmitResponse = TenantServiceAdmitResponse;
 TenantServiceAdmitResponse.runtime = protobuf_1.proto3;
 TenantServiceAdmitResponse.typeName = "admin.v1.TenantServiceAdmitResponse";
 TenantServiceAdmitResponse.fields = protobuf_1.proto3.util.newFieldList(() => [
+    { no: 1, name: "tenant", kind: "message", T: tenant_pb_js_1.Tenant },
+]);
+/**
+ * @generated from message admin.v1.TenantServiceRevokeRequest
+ */
+class TenantServiceRevokeRequest extends protobuf_1.Message {
+    constructor(data) {
+        super();
+        /**
+         * @generated from field: string tenant_id = 1;
+         */
+        this.tenantId = "";
+        protobuf_1.proto3.util.initPartial(data, this);
+    }
+    static fromBinary(bytes, options) {
+        return new TenantServiceRevokeRequest().fromBinary(bytes, options);
+    }
+    static fromJson(jsonValue, options) {
+        return new TenantServiceRevokeRequest().fromJson(jsonValue, options);
+    }
+    static fromJsonString(jsonString, options) {
+        return new TenantServiceRevokeRequest().fromJsonString(jsonString, options);
+    }
+    static equals(a, b) {
+        return protobuf_1.proto3.util.equals(TenantServiceRevokeRequest, a, b);
+    }
+}
+exports.TenantServiceRevokeRequest = TenantServiceRevokeRequest;
+TenantServiceRevokeRequest.runtime = protobuf_1.proto3;
+TenantServiceRevokeRequest.typeName = "admin.v1.TenantServiceRevokeRequest";
+TenantServiceRevokeRequest.fields = protobuf_1.proto3.util.newFieldList(() => [
+    { no: 1, name: "tenant_id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+]);
+/**
+ * @generated from message admin.v1.TenantServiceRevokeResponse
+ */
+class TenantServiceRevokeResponse extends protobuf_1.Message {
+    constructor(data) {
+        super();
+        protobuf_1.proto3.util.initPartial(data, this);
+    }
+    static fromBinary(bytes, options) {
+        return new TenantServiceRevokeResponse().fromBinary(bytes, options);
+    }
+    static fromJson(jsonValue, options) {
+        return new TenantServiceRevokeResponse().fromJson(jsonValue, options);
+    }
+    static fromJsonString(jsonString, options) {
+        return new TenantServiceRevokeResponse().fromJsonString(jsonString, options);
+    }
+    static equals(a, b) {
+        return protobuf_1.proto3.util.equals(TenantServiceRevokeResponse, a, b);
+    }
+}
+exports.TenantServiceRevokeResponse = TenantServiceRevokeResponse;
+TenantServiceRevokeResponse.runtime = protobuf_1.proto3;
+TenantServiceRevokeResponse.typeName = "admin.v1.TenantServiceRevokeResponse";
+TenantServiceRevokeResponse.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 1, name: "tenant", kind: "message", T: tenant_pb_js_1.Tenant },
 ]);

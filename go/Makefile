@@ -13,5 +13,5 @@ mocks:
 		--user $$(id -u):$$(id -g) \
 		-w /work \
 		-v $(PWD):/work \
-		vektra/mockery:v2.15.0 -r --keeptree --inpackage --dir go --output go/tests/mocks --all --log-level debug
+		vektra/mockery:v2.16.0 -r --keeptree --inpackage --dir go --output go/tests/mocks --all --log-level debug
 	go run ./tests/generate/generate_mock_client.go

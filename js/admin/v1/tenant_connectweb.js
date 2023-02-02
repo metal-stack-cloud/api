@@ -31,5 +31,14 @@ exports.TenantService = {
             O: tenant_pb_js_1.TenantServiceAdmitResponse,
             kind: protobuf_1.MethodKind.Unary,
         },
+        /**
+         * @generated from rpc admin.v1.TenantService.Revoke
+         */
+        revoke: {
+            name: "Revoke",
+            I: tenant_pb_js_1.TenantServiceRevokeRequest,
+            O: tenant_pb_js_1.TenantServiceRevokeResponse,
+            kind: protobuf_1.MethodKind.Unary,
+        },
     }
 };

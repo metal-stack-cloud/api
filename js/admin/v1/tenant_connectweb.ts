@@ -3,7 +3,7 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import { TenantServiceAdmitRequest, TenantServiceAdmitResponse, TenantServiceListRequest, TenantServiceListResponse } from "./tenant_pb.js";
+import { TenantServiceAdmitRequest, TenantServiceAdmitResponse, TenantServiceListRequest, TenantServiceListResponse, TenantServiceRevokeRequest, TenantServiceRevokeResponse } from "./tenant_pb.js";
 import { MethodKind } from "@bufbuild/protobuf";
 
 /**
@@ -28,6 +28,15 @@ export const TenantService = {
       name: "Admit",
       I: TenantServiceAdmitRequest,
       O: TenantServiceAdmitResponse,
+      kind: MethodKind.Unary,
+    },
+    /**
+     * @generated from rpc admin.v1.TenantService.Revoke
+     */
+    revoke: {
+      name: "Revoke",
+      I: TenantServiceRevokeRequest,
+      O: TenantServiceRevokeResponse,
       kind: MethodKind.Unary,
     },
   }
