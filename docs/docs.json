@@ -6029,6 +6029,173 @@
       ]
     },
     {
+      "name": "api/v1/project.proto",
+      "description": "",
+      "package": "api.v1",
+      "hasEnums": false,
+      "hasExtensions": false,
+      "hasMessages": true,
+      "hasServices": true,
+      "enums": [],
+      "extensions": [],
+      "messages": [
+        {
+          "name": "ProjectServiceWatchRevisionRequest",
+          "longName": "ProjectServiceWatchRevisionRequest",
+          "fullName": "api.v1.ProjectServiceWatchRevisionRequest",
+          "description": "ProjectServiceWatchRevisionRequest starts the stream of projectrevisions",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "project",
+              "description": "project to watch for changes",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": "",
+              "options": {
+                "validate.rules": [
+                  {
+                    "name": "string.min_len",
+                    "value": 2
+                  },
+                  {
+                    "name": "string.max_len",
+                    "value": 128
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "ProjectServiceWatchRevisionResponse",
+          "longName": "ProjectServiceWatchRevisionResponse",
+          "fullName": "api.v1.ProjectServiceWatchRevisionResponse",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "project",
+              "description": "the project this watch is ment for",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "revision",
+              "description": "revision is incremented if any of the resources from the project has changed",
+              "label": "",
+              "type": "uint64",
+              "longType": "uint64",
+              "fullType": "uint64",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "resources",
+              "description": "resources show the revision per resource to have a more granular view.",
+              "label": "",
+              "type": "ResourceRevisions",
+              "longType": "ResourceRevisions",
+              "fullType": "api.v1.ResourceRevisions",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "ResourceRevisions",
+          "longName": "ResourceRevisions",
+          "fullName": "api.v1.ResourceRevisions",
+          "description": "ResourceRevisions contain revisions by resource",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "cluster",
+              "description": "cluster revision is incremented if anything changed on the projects clusters.",
+              "label": "",
+              "type": "uint64",
+              "longType": "uint64",
+              "fullType": "uint64",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "volume",
+              "description": "volume revision is incremented if anything changed on the projects volumes.",
+              "label": "",
+              "type": "uint64",
+              "longType": "uint64",
+              "fullType": "uint64",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "ip",
+              "description": "ip revision is incremented if anything changed on the projects ips.",
+              "label": "",
+              "type": "uint64",
+              "longType": "uint64",
+              "fullType": "uint64",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        }
+      ],
+      "services": [
+        {
+          "name": "ProjectService",
+          "longName": "ProjectService",
+          "fullName": "api.v1.ProjectService",
+          "description": "ProjectService provides services which are project related",
+          "methods": [
+            {
+              "name": "WatchRevision",
+              "description": "WatchRevision can be used to watch for changes on project scoped resources\nthis might be useful to update a view only if necessary.",
+              "requestType": "ProjectServiceWatchRevisionRequest",
+              "requestLongType": "ProjectServiceWatchRevisionRequest",
+              "requestFullType": "api.v1.ProjectServiceWatchRevisionRequest",
+              "requestStreaming": false,
+              "responseType": "ProjectServiceWatchRevisionResponse",
+              "responseLongType": "ProjectServiceWatchRevisionResponse",
+              "responseFullType": "api.v1.ProjectServiceWatchRevisionResponse",
+              "responseStreaming": true
+            }
+          ]
+        }
+      ]
+    },
+    {
       "name": "api/v1/token.proto",
       "description": "",
       "package": "api.v1",
