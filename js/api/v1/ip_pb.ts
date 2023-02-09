@@ -261,6 +261,43 @@ export class IPServiceStaticRequest extends Message<IPServiceStaticRequest> {
 }
 
 /**
+ * @generated from message api.v1.IPServiceUpdateRequest
+ */
+export class IPServiceUpdateRequest extends Message<IPServiceUpdateRequest> {
+  /**
+   * @generated from field: api.v1.IP ip = 1;
+   */
+  ip?: IP;
+
+  constructor(data?: PartialMessage<IPServiceUpdateRequest>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime = proto3;
+  static readonly typeName = "api.v1.IPServiceUpdateRequest";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "ip", kind: "message", T: IP },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): IPServiceUpdateRequest {
+    return new IPServiceUpdateRequest().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): IPServiceUpdateRequest {
+    return new IPServiceUpdateRequest().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): IPServiceUpdateRequest {
+    return new IPServiceUpdateRequest().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: IPServiceUpdateRequest | PlainMessage<IPServiceUpdateRequest> | undefined, b: IPServiceUpdateRequest | PlainMessage<IPServiceUpdateRequest> | undefined): boolean {
+    return proto3.util.equals(IPServiceUpdateRequest, a, b);
+  }
+}
+
+/**
  * @generated from message api.v1.IPServiceListRequest
  */
 export class IPServiceListRequest extends Message<IPServiceListRequest> {
@@ -376,6 +413,43 @@ export class IPServiceGetResponse extends Message<IPServiceGetResponse> {
 
   static equals(a: IPServiceGetResponse | PlainMessage<IPServiceGetResponse> | undefined, b: IPServiceGetResponse | PlainMessage<IPServiceGetResponse> | undefined): boolean {
     return proto3.util.equals(IPServiceGetResponse, a, b);
+  }
+}
+
+/**
+ * @generated from message api.v1.IPServiceUpdateResponse
+ */
+export class IPServiceUpdateResponse extends Message<IPServiceUpdateResponse> {
+  /**
+   * @generated from field: api.v1.IP ip = 1;
+   */
+  ip?: IP;
+
+  constructor(data?: PartialMessage<IPServiceUpdateResponse>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime = proto3;
+  static readonly typeName = "api.v1.IPServiceUpdateResponse";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "ip", kind: "message", T: IP },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): IPServiceUpdateResponse {
+    return new IPServiceUpdateResponse().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): IPServiceUpdateResponse {
+    return new IPServiceUpdateResponse().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): IPServiceUpdateResponse {
+    return new IPServiceUpdateResponse().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: IPServiceUpdateResponse | PlainMessage<IPServiceUpdateResponse> | undefined, b: IPServiceUpdateResponse | PlainMessage<IPServiceUpdateResponse> | undefined): boolean {
+    return proto3.util.equals(IPServiceUpdateResponse, a, b);
   }
 }
 

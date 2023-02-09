@@ -22,6 +22,11 @@ service IPService {
     option (project_roles) = PROJECT_ROLE_EDITOR;
     option (chargeable) = CHARGEABLE_TRUE;
   }
+  rpc Update(IPServiceUpdateRequest) returns (IPServiceUpdateResponse) {
+    option (project_roles) = PROJECT_ROLE_OWNER;
+    option (project_roles) = PROJECT_ROLE_EDITOR;
+    option (chargeable) = CHARGEABLE_TRUE;
+  }
   rpc List(IPServiceListRequest) returns (IPServiceListResponse) {
     option (project_roles) = PROJECT_ROLE_OWNER;
     option (project_roles) = PROJECT_ROLE_EDITOR;
@@ -81,6 +86,9 @@ message IPServiceStaticRequest {
     max_len: 128
   }];
 }
+message IPServiceUpdateRequest {
+  IP ip = 1;
+}
 message IPServiceListRequest {
   string project = 2 [(validate.rules).string = {
     min_len: 2,
@@ -97,6 +105,9 @@ message IPServiceDeleteRequest {
 
 // Responses
 message IPServiceGetResponse {
+  IP ip = 1;
+}
+message IPServiceUpdateResponse {
   IP ip = 1;
 }
 message IPServiceAllocateResponse {

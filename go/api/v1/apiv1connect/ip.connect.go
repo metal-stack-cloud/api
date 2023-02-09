@@ -30,6 +30,7 @@ type IPServiceClient interface {
 	Get(context.Context, *connect_go.Request[v1.IPServiceGetRequest]) (*connect_go.Response[v1.IPServiceGetResponse], error)
 	Allocate(context.Context, *connect_go.Request[v1.IPServiceAllocateRequest]) (*connect_go.Response[v1.IPServiceAllocateResponse], error)
 	Static(context.Context, *connect_go.Request[v1.IPServiceStaticRequest]) (*connect_go.Response[v1.IPServiceStaticResponse], error)
+	Update(context.Context, *connect_go.Request[v1.IPServiceUpdateRequest]) (*connect_go.Response[v1.IPServiceUpdateResponse], error)
 	List(context.Context, *connect_go.Request[v1.IPServiceListRequest]) (*connect_go.Response[v1.IPServiceListResponse], error)
 	Delete(context.Context, *connect_go.Request[v1.IPServiceDeleteRequest]) (*connect_go.Response[v1.IPServiceDeleteResponse], error)
 }
@@ -59,6 +60,11 @@ func NewIPServiceClient(httpClient connect_go.HTTPClient, baseURL string, opts .
 			baseURL+"/api.v1.IPService/Static",
 			opts...,
 		),
+		update: connect_go.NewClient[v1.IPServiceUpdateRequest, v1.IPServiceUpdateResponse](
+			httpClient,
+			baseURL+"/api.v1.IPService/Update",
+			opts...,
+		),
 		list: connect_go.NewClient[v1.IPServiceListRequest, v1.IPServiceListResponse](
 			httpClient,
 			baseURL+"/api.v1.IPService/List",
@@ -77,6 +83,7 @@ type iPServiceClient struct {
 	get      *connect_go.Client[v1.IPServiceGetRequest, v1.IPServiceGetResponse]
 	allocate *connect_go.Client[v1.IPServiceAllocateRequest, v1.IPServiceAllocateResponse]
 	static   *connect_go.Client[v1.IPServiceStaticRequest, v1.IPServiceStaticResponse]
+	update   *connect_go.Client[v1.IPServiceUpdateRequest, v1.IPServiceUpdateResponse]
 	list     *connect_go.Client[v1.IPServiceListRequest, v1.IPServiceListResponse]
 	delete   *connect_go.Client[v1.IPServiceDeleteRequest, v1.IPServiceDeleteResponse]
 }
@@ -96,6 +103,11 @@ func (c *iPServiceClient) Static(ctx context.Context, req *connect_go.Request[v1
 	return c.static.CallUnary(ctx, req)
 }
 
+// Update calls api.v1.IPService.Update.
+func (c *iPServiceClient) Update(ctx context.Context, req *connect_go.Request[v1.IPServiceUpdateRequest]) (*connect_go.Response[v1.IPServiceUpdateResponse], error) {
+	return c.update.CallUnary(ctx, req)
+}
+
 // List calls api.v1.IPService.List.
 func (c *iPServiceClient) List(ctx context.Context, req *connect_go.Request[v1.IPServiceListRequest]) (*connect_go.Response[v1.IPServiceListResponse], error) {
 	return c.list.CallUnary(ctx, req)
@@ -111,6 +123,7 @@ type IPServiceHandler interface {
 	Get(context.Context, *connect_go.Request[v1.IPServiceGetRequest]) (*connect_go.Response[v1.IPServiceGetResponse], error)
 	Allocate(context.Context, *connect_go.Request[v1.IPServiceAllocateRequest]) (*connect_go.Response[v1.IPServiceAllocateResponse], error)
 	Static(context.Context, *connect_go.Request[v1.IPServiceStaticRequest]) (*connect_go.Response[v1.IPServiceStaticResponse], error)
+	Update(context.Context, *connect_go.Request[v1.IPServiceUpdateRequest]) (*connect_go.Response[v1.IPServiceUpdateResponse], error)
 	List(context.Context, *connect_go.Request[v1.IPServiceListRequest]) (*connect_go.Response[v1.IPServiceListResponse], error)
 	Delete(context.Context, *connect_go.Request[v1.IPServiceDeleteRequest]) (*connect_go.Response[v1.IPServiceDeleteResponse], error)
 }
@@ -135,6 +148,11 @@ func NewIPServiceHandler(svc IPServiceHandler, opts ...connect_go.HandlerOption)
 	mux.Handle("/api.v1.IPService/Static", connect_go.NewUnaryHandler(
 		"/api.v1.IPService/Static",
 		svc.Static,
+		opts...,
+	))
+	mux.Handle("/api.v1.IPService/Update", connect_go.NewUnaryHandler(
+		"/api.v1.IPService/Update",
+		svc.Update,
 		opts...,
 	))
 	mux.Handle("/api.v1.IPService/List", connect_go.NewUnaryHandler(
@@ -163,6 +181,10 @@ func (UnimplementedIPServiceHandler) Allocate(context.Context, *connect_go.Reque
 
 func (UnimplementedIPServiceHandler) Static(context.Context, *connect_go.Request[v1.IPServiceStaticRequest]) (*connect_go.Response[v1.IPServiceStaticResponse], error) {
 	return nil, connect_go.NewError(connect_go.CodeUnimplemented, errors.New("api.v1.IPService.Static is not implemented"))
+}
+
+func (UnimplementedIPServiceHandler) Update(context.Context, *connect_go.Request[v1.IPServiceUpdateRequest]) (*connect_go.Response[v1.IPServiceUpdateResponse], error) {
+	return nil, connect_go.NewError(connect_go.CodeUnimplemented, errors.New("api.v1.IPService.Update is not implemented"))
 }
 
 func (UnimplementedIPServiceHandler) List(context.Context, *connect_go.Request[v1.IPServiceListRequest]) (*connect_go.Response[v1.IPServiceListResponse], error) {
