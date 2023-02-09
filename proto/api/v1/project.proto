@@ -1,0 +1,46 @@
+syntax = "proto3";
+
+package api.v1;
+
+import "api/v1/common.proto";
+import "validate/validate.proto";
+
+// ProjectService provides services which are project related
+service ProjectService {
+  // WatchRevision can be used to watch for changes on project scoped resources
+  // this might be useful to update a view only if necessary.
+  rpc WatchRevision(ProjectServiceWatchRevisionRequest) returns (stream ProjectServiceWatchRevisionResponse) {
+    option (project_roles) = PROJECT_ROLE_OWNER;
+    option (project_roles) = PROJECT_ROLE_EDITOR;
+    option (project_roles) = PROJECT_ROLE_VIEWER;
+  }
+}
+
+// ProjectServiceWatchRevisionRequest starts the stream of projectrevisions
+message ProjectServiceWatchRevisionRequest {
+  // project to watch for changes
+  string project = 2 [(validate.rules).string = {
+    min_len: 2,
+    max_len: 128,
+  }];
+}
+
+// ProjectServiceWatchRevisionResponse is returned in the stream
+message ProjectServiceWatchRevisionResponse {
+  // the project this watch is ment for
+  string project = 1;
+  // revision is incremented if any of the resources from the project has changed
+  uint64 revision = 2;
+  // resources show the revision per resource to have a more granular view.
+  ResourceRevisions resources = 3;
+}
+
+// ResourceRevisions contain revisions by resource
+message ResourceRevisions {
+  // cluster revision is incremented if anything changed on the projects clusters.
+  uint64 cluster = 1;
+  // volume revision is incremented if anything changed on the projects volumes.
+  uint64 volume = 2;
+  // ip revision is incremented if anything changed on the projects ips.
+  uint64 ip = 3;
+}
