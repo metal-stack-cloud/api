@@ -22,6 +22,8 @@ export declare class ProjectServiceWatchRevisionRequest extends Message<ProjectS
     static equals(a: ProjectServiceWatchRevisionRequest | PlainMessage<ProjectServiceWatchRevisionRequest> | undefined, b: ProjectServiceWatchRevisionRequest | PlainMessage<ProjectServiceWatchRevisionRequest> | undefined): boolean;
 }
 /**
+ * ProjectServiceWatchRevisionResponse is returned in the stream
+ *
  * @generated from message api.v1.ProjectServiceWatchRevisionResponse
  */
 export declare class ProjectServiceWatchRevisionResponse extends Message<ProjectServiceWatchRevisionResponse> {

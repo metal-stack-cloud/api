@@ -42,6 +42,8 @@ ProjectServiceWatchRevisionRequest.fields = protobuf_1.proto3.util.newFieldList(
     { no: 2, name: "project", kind: "scalar", T: 9 /* ScalarType.STRING */ },
 ]);
 /**
+ * ProjectServiceWatchRevisionResponse is returned in the stream
+ *
  * @generated from message api.v1.ProjectServiceWatchRevisionResponse
  */
 class ProjectServiceWatchRevisionResponse extends protobuf_1.Message {

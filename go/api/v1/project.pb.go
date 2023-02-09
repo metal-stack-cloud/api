@@ -70,6 +70,7 @@ func (x *ProjectServiceWatchRevisionRequest) GetProject() string {
 	return ""
 }
 
+// ProjectServiceWatchRevisionResponse is returned in the stream
 type ProjectServiceWatchRevisionResponse struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache

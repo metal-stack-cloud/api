@@ -48,6 +48,8 @@ export class ProjectServiceWatchRevisionRequest extends Message<ProjectServiceWa
 }
 
 /**
+ * ProjectServiceWatchRevisionResponse is returned in the stream
+ *
  * @generated from message api.v1.ProjectServiceWatchRevisionResponse
  */
 export class ProjectServiceWatchRevisionResponse extends Message<ProjectServiceWatchRevisionResponse> {

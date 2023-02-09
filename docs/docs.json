@@ -6079,7 +6079,7 @@
           "name": "ProjectServiceWatchRevisionResponse",
           "longName": "ProjectServiceWatchRevisionResponse",
           "fullName": "api.v1.ProjectServiceWatchRevisionResponse",
-          "description": "",
+          "description": "ProjectServiceWatchRevisionResponse is returned in the stream",
           "hasExtensions": false,
           "hasFields": true,
           "hasOneofs": false,
