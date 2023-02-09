@@ -80,6 +80,8 @@ message IPServiceAllocateRequest {
   bool static = 9;
 }
 message IPServiceStaticRequest {
+  // use ip update instead
+  option deprecated = true;
   string uuid = 1 [(validate.rules).string.uuid = true];
   string project = 2 [(validate.rules).string = {
     min_len: 2,

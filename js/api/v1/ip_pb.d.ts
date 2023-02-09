@@ -121,6 +121,7 @@ export declare class IPServiceAllocateRequest extends Message<IPServiceAllocateR
 }
 /**
  * @generated from message api.v1.IPServiceStaticRequest
+ * @deprecated
  */
 export declare class IPServiceStaticRequest extends Message<IPServiceStaticRequest> {
     /**

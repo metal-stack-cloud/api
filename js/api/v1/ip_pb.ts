@@ -219,6 +219,7 @@ export class IPServiceAllocateRequest extends Message<IPServiceAllocateRequest> 
 
 /**
  * @generated from message api.v1.IPServiceStaticRequest
+ * @deprecated
  */
 export class IPServiceStaticRequest extends Message<IPServiceStaticRequest> {
   /**

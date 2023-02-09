@@ -173,6 +173,7 @@ IPServiceAllocateRequest.fields = protobuf_1.proto3.util.newFieldList(() => [
 ]);
 /**
  * @generated from message api.v1.IPServiceStaticRequest
+ * @deprecated
  */
 class IPServiceStaticRequest extends protobuf_1.Message {
     constructor(data) {
