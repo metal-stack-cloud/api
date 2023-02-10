@@ -32,12 +32,12 @@ exports.IPService = {
             kind: protobuf_1.MethodKind.Unary,
         },
         /**
-         * @generated from rpc api.v1.IPService.Static
+         * @generated from rpc api.v1.IPService.Update
          */
-        static: {
-            name: "Static",
-            I: ip_pb_js_1.IPServiceStaticRequest,
-            O: ip_pb_js_1.IPServiceStaticResponse,
+        update: {
+            name: "Update",
+            I: ip_pb_js_1.IPServiceUpdateRequest,
+            O: ip_pb_js_1.IPServiceUpdateResponse,
             kind: protobuf_1.MethodKind.Unary,
         },
         /**

@@ -108,21 +108,21 @@ func (_m *IPServiceHandler) List(_a0 context.Context, _a1 *connect.Request[apiv1
 	return r0, r1
 }
 
-// Static provides a mock function with given fields: _a0, _a1
-func (_m *IPServiceHandler) Static(_a0 context.Context, _a1 *connect.Request[apiv1.IPServiceStaticRequest]) (*connect.Response[apiv1.IPServiceStaticResponse], error) {
+// Update provides a mock function with given fields: _a0, _a1
+func (_m *IPServiceHandler) Update(_a0 context.Context, _a1 *connect.Request[apiv1.IPServiceUpdateRequest]) (*connect.Response[apiv1.IPServiceUpdateResponse], error) {
 	ret := _m.Called(_a0, _a1)
 
-	var r0 *connect.Response[apiv1.IPServiceStaticResponse]
-	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[apiv1.IPServiceStaticRequest]) *connect.Response[apiv1.IPServiceStaticResponse]); ok {
+	var r0 *connect.Response[apiv1.IPServiceUpdateResponse]
+	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[apiv1.IPServiceUpdateRequest]) *connect.Response[apiv1.IPServiceUpdateResponse]); ok {
 		r0 = rf(_a0, _a1)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*connect.Response[apiv1.IPServiceStaticResponse])
+			r0 = ret.Get(0).(*connect.Response[apiv1.IPServiceUpdateResponse])
 		}
 	}
 
 	var r1 error
-	if rf, ok := ret.Get(1).(func(context.Context, *connect.Request[apiv1.IPServiceStaticRequest]) error); ok {
+	if rf, ok := ret.Get(1).(func(context.Context, *connect.Request[apiv1.IPServiceUpdateRequest]) error); ok {
 		r1 = rf(_a0, _a1)
 	} else {
 		r1 = ret.Error(1)

@@ -59,19 +59,85 @@ func (m *IP) validate(all bool) error {
 
 	var errors []error
 
-	// no validation rules for Uuid
+	if err := m._validateUuid(m.GetUuid()); err != nil {
+		err = IPValidationError{
+			field:  "Uuid",
+			reason: "value must be a valid UUID",
+			cause:  err,
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
 
-	// no validation rules for Ip
+	if ip := net.ParseIP(m.GetIp()); ip == nil {
+		err := IPValidationError{
+			field:  "Ip",
+			reason: "value must be a valid IP address",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
 
-	// no validation rules for Name
+	if l := utf8.RuneCountInString(m.GetName()); l < 2 || l > 128 {
+		err := IPValidationError{
+			field:  "Name",
+			reason: "value length must be between 2 and 128 runes, inclusive",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
 
-	// no validation rules for Description
+	if utf8.RuneCountInString(m.GetDescription()) > 128 {
+		err := IPValidationError{
+			field:  "Description",
+			reason: "value length must be at most 128 runes",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
 
-	// no validation rules for Network
+	if l := utf8.RuneCountInString(m.GetNetwork()); l < 2 || l > 128 {
+		err := IPValidationError{
+			field:  "Network",
+			reason: "value length must be between 2 and 128 runes, inclusive",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
 
-	// no validation rules for Project
+	if l := utf8.RuneCountInString(m.GetProject()); l < 2 || l > 128 {
+		err := IPValidationError{
+			field:  "Project",
+			reason: "value length must be between 2 and 128 runes, inclusive",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
 
 	// no validation rules for Type
+
+	if len(m.GetTags()) > 100 {
+		err := IPValidationError{
+			field:  "Tags",
+			reason: "value must contain no more than 100 item(s)",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
 
 	if all {
 		switch v := interface{}(m.GetCreatedAt()).(type) {
@@ -162,6 +228,14 @@ func (m *IP) validate(all bool) error {
 
 	if len(errors) > 0 {
 		return IPMultiError(errors)
+	}
+
+	return nil
+}
+
+func (m *IP) _validateUuid(uuid string) error {
+	if matched := _ip_uuidPattern.MatchString(uuid); !matched {
+		return errors.New("invalid uuid format")
 	}
 
 	return nil
@@ -529,73 +603,71 @@ var _ interface {
 	ErrorName() string
 } = IPServiceAllocateRequestValidationError{}
 
-// Validate checks the field values on IPServiceStaticRequest with the rules
+// Validate checks the field values on IPServiceUpdateRequest with the rules
 // defined in the proto definition for this message. If any rules are
 // violated, the first error encountered is returned, or nil if there are no violations.
-func (m *IPServiceStaticRequest) Validate() error {
+func (m *IPServiceUpdateRequest) Validate() error {
 	return m.validate(false)
 }
 
-// ValidateAll checks the field values on IPServiceStaticRequest with the rules
+// ValidateAll checks the field values on IPServiceUpdateRequest with the rules
 // defined in the proto definition for this message. If any rules are
 // violated, the result is a list of violation errors wrapped in
-// IPServiceStaticRequestMultiError, or nil if none found.
-func (m *IPServiceStaticRequest) ValidateAll() error {
+// IPServiceUpdateRequestMultiError, or nil if none found.
+func (m *IPServiceUpdateRequest) ValidateAll() error {
 	return m.validate(true)
 }
 
-func (m *IPServiceStaticRequest) validate(all bool) error {
+func (m *IPServiceUpdateRequest) validate(all bool) error {
 	if m == nil {
 		return nil
 	}
 
 	var errors []error
 
-	if err := m._validateUuid(m.GetUuid()); err != nil {
-		err = IPServiceStaticRequestValidationError{
-			field:  "Uuid",
-			reason: "value must be a valid UUID",
-			cause:  err,
+	if all {
+		switch v := interface{}(m.GetIp()).(type) {
+		case interface{ ValidateAll() error }:
+			if err := v.ValidateAll(); err != nil {
+				errors = append(errors, IPServiceUpdateRequestValidationError{
+					field:  "Ip",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		case interface{ Validate() error }:
+			if err := v.Validate(); err != nil {
+				errors = append(errors, IPServiceUpdateRequestValidationError{
+					field:  "Ip",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
 		}
-		if !all {
-			return err
+	} else if v, ok := interface{}(m.GetIp()).(interface{ Validate() error }); ok {
+		if err := v.Validate(); err != nil {
+			return IPServiceUpdateRequestValidationError{
+				field:  "Ip",
+				reason: "embedded message failed validation",
+				cause:  err,
+			}
 		}
-		errors = append(errors, err)
-	}
-
-	if l := utf8.RuneCountInString(m.GetProject()); l < 2 || l > 128 {
-		err := IPServiceStaticRequestValidationError{
-			field:  "Project",
-			reason: "value length must be between 2 and 128 runes, inclusive",
-		}
-		if !all {
-			return err
-		}
-		errors = append(errors, err)
 	}
 
 	if len(errors) > 0 {
-		return IPServiceStaticRequestMultiError(errors)
+		return IPServiceUpdateRequestMultiError(errors)
 	}
 
 	return nil
 }
 
-func (m *IPServiceStaticRequest) _validateUuid(uuid string) error {
-	if matched := _ip_uuidPattern.MatchString(uuid); !matched {
-		return errors.New("invalid uuid format")
-	}
-
-	return nil
-}
-
-// IPServiceStaticRequestMultiError is an error wrapping multiple validation
-// errors returned by IPServiceStaticRequest.ValidateAll() if the designated
+// IPServiceUpdateRequestMultiError is an error wrapping multiple validation
+// errors returned by IPServiceUpdateRequest.ValidateAll() if the designated
 // constraints aren't met.
-type IPServiceStaticRequestMultiError []error
+type IPServiceUpdateRequestMultiError []error
 
 // Error returns a concatenation of all the error messages it wraps.
-func (m IPServiceStaticRequestMultiError) Error() string {
+func (m IPServiceUpdateRequestMultiError) Error() string {
 	var msgs []string
 	for _, err := range m {
 		msgs = append(msgs, err.Error())
@@ -604,11 +676,11 @@ func (m IPServiceStaticRequestMultiError) Error() string {
 }
 
 // AllErrors returns a list of validation violation errors.
-func (m IPServiceStaticRequestMultiError) AllErrors() []error { return m }
+func (m IPServiceUpdateRequestMultiError) AllErrors() []error { return m }
 
-// IPServiceStaticRequestValidationError is the validation error returned by
-// IPServiceStaticRequest.Validate if the designated constraints aren't met.
-type IPServiceStaticRequestValidationError struct {
+// IPServiceUpdateRequestValidationError is the validation error returned by
+// IPServiceUpdateRequest.Validate if the designated constraints aren't met.
+type IPServiceUpdateRequestValidationError struct {
 	field  string
 	reason string
 	cause  error
@@ -616,24 +688,24 @@ type IPServiceStaticRequestValidationError struct {
 }
 
 // Field function returns field value.
-func (e IPServiceStaticRequestValidationError) Field() string { return e.field }
+func (e IPServiceUpdateRequestValidationError) Field() string { return e.field }
 
 // Reason function returns reason value.
-func (e IPServiceStaticRequestValidationError) Reason() string { return e.reason }
+func (e IPServiceUpdateRequestValidationError) Reason() string { return e.reason }
 
 // Cause function returns cause value.
-func (e IPServiceStaticRequestValidationError) Cause() error { return e.cause }
+func (e IPServiceUpdateRequestValidationError) Cause() error { return e.cause }
 
 // Key function returns key value.
-func (e IPServiceStaticRequestValidationError) Key() bool { return e.key }
+func (e IPServiceUpdateRequestValidationError) Key() bool { return e.key }
 
 // ErrorName returns error name.
-func (e IPServiceStaticRequestValidationError) ErrorName() string {
-	return "IPServiceStaticRequestValidationError"
+func (e IPServiceUpdateRequestValidationError) ErrorName() string {
+	return "IPServiceUpdateRequestValidationError"
 }
 
 // Error satisfies the builtin error interface
-func (e IPServiceStaticRequestValidationError) Error() string {
+func (e IPServiceUpdateRequestValidationError) Error() string {
 	cause := ""
 	if e.cause != nil {
 		cause = fmt.Sprintf(" | caused by: %v", e.cause)
@@ -645,14 +717,14 @@ func (e IPServiceStaticRequestValidationError) Error() string {
 	}
 
 	return fmt.Sprintf(
-		"invalid %sIPServiceStaticRequest.%s: %s%s",
+		"invalid %sIPServiceUpdateRequest.%s: %s%s",
 		key,
 		e.field,
 		e.reason,
 		cause)
 }
 
-var _ error = IPServiceStaticRequestValidationError{}
+var _ error = IPServiceUpdateRequestValidationError{}
 
 var _ interface {
 	Field() string
@@ -660,7 +732,7 @@ var _ interface {
 	Key() bool
 	Cause() error
 	ErrorName() string
-} = IPServiceStaticRequestValidationError{}
+} = IPServiceUpdateRequestValidationError{}
 
 // Validate checks the field values on IPServiceListRequest with the rules
 // defined in the proto definition for this message. If any rules are
@@ -1038,6 +1110,137 @@ var _ interface {
 	Cause() error
 	ErrorName() string
 } = IPServiceGetResponseValidationError{}
+
+// Validate checks the field values on IPServiceUpdateResponse with the rules
+// defined in the proto definition for this message. If any rules are
+// violated, the first error encountered is returned, or nil if there are no violations.
+func (m *IPServiceUpdateResponse) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on IPServiceUpdateResponse with the
+// rules defined in the proto definition for this message. If any rules are
+// violated, the result is a list of violation errors wrapped in
+// IPServiceUpdateResponseMultiError, or nil if none found.
+func (m *IPServiceUpdateResponse) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *IPServiceUpdateResponse) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	if all {
+		switch v := interface{}(m.GetIp()).(type) {
+		case interface{ ValidateAll() error }:
+			if err := v.ValidateAll(); err != nil {
+				errors = append(errors, IPServiceUpdateResponseValidationError{
+					field:  "Ip",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		case interface{ Validate() error }:
+			if err := v.Validate(); err != nil {
+				errors = append(errors, IPServiceUpdateResponseValidationError{
+					field:  "Ip",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		}
+	} else if v, ok := interface{}(m.GetIp()).(interface{ Validate() error }); ok {
+		if err := v.Validate(); err != nil {
+			return IPServiceUpdateResponseValidationError{
+				field:  "Ip",
+				reason: "embedded message failed validation",
+				cause:  err,
+			}
+		}
+	}
+
+	if len(errors) > 0 {
+		return IPServiceUpdateResponseMultiError(errors)
+	}
+
+	return nil
+}
+
+// IPServiceUpdateResponseMultiError is an error wrapping multiple validation
+// errors returned by IPServiceUpdateResponse.ValidateAll() if the designated
+// constraints aren't met.
+type IPServiceUpdateResponseMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m IPServiceUpdateResponseMultiError) Error() string {
+	var msgs []string
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m IPServiceUpdateResponseMultiError) AllErrors() []error { return m }
+
+// IPServiceUpdateResponseValidationError is the validation error returned by
+// IPServiceUpdateResponse.Validate if the designated constraints aren't met.
+type IPServiceUpdateResponseValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e IPServiceUpdateResponseValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e IPServiceUpdateResponseValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e IPServiceUpdateResponseValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e IPServiceUpdateResponseValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e IPServiceUpdateResponseValidationError) ErrorName() string {
+	return "IPServiceUpdateResponseValidationError"
+}
+
+// Error satisfies the builtin error interface
+func (e IPServiceUpdateResponseValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sIPServiceUpdateResponse.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = IPServiceUpdateResponseValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = IPServiceUpdateResponseValidationError{}
 
 // Validate checks the field values on IPServiceAllocateResponse with the rules
 // defined in the proto definition for this message. If any rules are

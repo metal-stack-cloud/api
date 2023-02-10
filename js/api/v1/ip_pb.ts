@@ -7,6 +7,32 @@ import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialM
 import { Message, proto3, Timestamp } from "@bufbuild/protobuf";
 
 /**
+ * @generated from enum api.v1.IPType
+ */
+export enum IPType {
+  /**
+   * @generated from enum value: IP_TYPE_UNSPECIFIED = 0;
+   */
+  IP_TYPE_UNSPECIFIED = 0,
+
+  /**
+   * @generated from enum value: IP_TYPE_EPHEMERAL = 1;
+   */
+  IP_TYPE_EPHEMERAL = 1,
+
+  /**
+   * @generated from enum value: IP_TYPE_STATIC = 2;
+   */
+  IP_TYPE_STATIC = 2,
+}
+// Retrieve enum metadata with: proto3.getEnumType(IPType)
+proto3.util.setEnumType(IPType, "api.v1.IPType", [
+  { no: 0, name: "IP_TYPE_UNSPECIFIED" },
+  { no: 1, name: "IP_TYPE_EPHEMERAL" },
+  { no: 2, name: "IP_TYPE_STATIC" },
+]);
+
+/**
  * Types
  *
  * @generated from message api.v1.IP
@@ -43,9 +69,9 @@ export class IP extends Message<IP> {
   project = "";
 
   /**
-   * @generated from field: string type = 7;
+   * @generated from field: api.v1.IPType type = 7;
    */
-  type = "";
+  type = IPType.IP_TYPE_UNSPECIFIED;
 
   /**
    * @generated from field: repeated string tags = 8;
@@ -81,7 +107,7 @@ export class IP extends Message<IP> {
     { no: 4, name: "description", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 5, name: "network", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 6, name: "project", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 7, name: "type", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 7, name: "type", kind: "enum", T: proto3.getEnumType(IPType) },
     { no: 8, name: "tags", kind: "scalar", T: 9 /* ScalarType.STRING */, repeated: true },
     { no: 10, name: "created_at", kind: "message", T: Timestamp },
     { no: 11, name: "updated_at", kind: "message", T: Timestamp },
@@ -218,45 +244,39 @@ export class IPServiceAllocateRequest extends Message<IPServiceAllocateRequest> 
 }
 
 /**
- * @generated from message api.v1.IPServiceStaticRequest
+ * @generated from message api.v1.IPServiceUpdateRequest
  */
-export class IPServiceStaticRequest extends Message<IPServiceStaticRequest> {
+export class IPServiceUpdateRequest extends Message<IPServiceUpdateRequest> {
   /**
-   * @generated from field: string uuid = 1;
+   * @generated from field: api.v1.IP ip = 1;
    */
-  uuid = "";
+  ip?: IP;
 
-  /**
-   * @generated from field: string project = 2;
-   */
-  project = "";
-
-  constructor(data?: PartialMessage<IPServiceStaticRequest>) {
+  constructor(data?: PartialMessage<IPServiceUpdateRequest>) {
     super();
     proto3.util.initPartial(data, this);
   }
 
   static readonly runtime = proto3;
-  static readonly typeName = "api.v1.IPServiceStaticRequest";
+  static readonly typeName = "api.v1.IPServiceUpdateRequest";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "uuid", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 2, name: "project", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 1, name: "ip", kind: "message", T: IP },
   ]);
 
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): IPServiceStaticRequest {
-    return new IPServiceStaticRequest().fromBinary(bytes, options);
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): IPServiceUpdateRequest {
+    return new IPServiceUpdateRequest().fromBinary(bytes, options);
   }
 
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): IPServiceStaticRequest {
-    return new IPServiceStaticRequest().fromJson(jsonValue, options);
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): IPServiceUpdateRequest {
+    return new IPServiceUpdateRequest().fromJson(jsonValue, options);
   }
 
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): IPServiceStaticRequest {
-    return new IPServiceStaticRequest().fromJsonString(jsonString, options);
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): IPServiceUpdateRequest {
+    return new IPServiceUpdateRequest().fromJsonString(jsonString, options);
   }
 
-  static equals(a: IPServiceStaticRequest | PlainMessage<IPServiceStaticRequest> | undefined, b: IPServiceStaticRequest | PlainMessage<IPServiceStaticRequest> | undefined): boolean {
-    return proto3.util.equals(IPServiceStaticRequest, a, b);
+  static equals(a: IPServiceUpdateRequest | PlainMessage<IPServiceUpdateRequest> | undefined, b: IPServiceUpdateRequest | PlainMessage<IPServiceUpdateRequest> | undefined): boolean {
+    return proto3.util.equals(IPServiceUpdateRequest, a, b);
   }
 }
 
@@ -376,6 +396,43 @@ export class IPServiceGetResponse extends Message<IPServiceGetResponse> {
 
   static equals(a: IPServiceGetResponse | PlainMessage<IPServiceGetResponse> | undefined, b: IPServiceGetResponse | PlainMessage<IPServiceGetResponse> | undefined): boolean {
     return proto3.util.equals(IPServiceGetResponse, a, b);
+  }
+}
+
+/**
+ * @generated from message api.v1.IPServiceUpdateResponse
+ */
+export class IPServiceUpdateResponse extends Message<IPServiceUpdateResponse> {
+  /**
+   * @generated from field: api.v1.IP ip = 1;
+   */
+  ip?: IP;
+
+  constructor(data?: PartialMessage<IPServiceUpdateResponse>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime = proto3;
+  static readonly typeName = "api.v1.IPServiceUpdateResponse";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "ip", kind: "message", T: IP },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): IPServiceUpdateResponse {
+    return new IPServiceUpdateResponse().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): IPServiceUpdateResponse {
+    return new IPServiceUpdateResponse().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): IPServiceUpdateResponse {
+    return new IPServiceUpdateResponse().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: IPServiceUpdateResponse | PlainMessage<IPServiceUpdateResponse> | undefined, b: IPServiceUpdateResponse | PlainMessage<IPServiceUpdateResponse> | undefined): boolean {
+    return proto3.util.equals(IPServiceUpdateResponse, a, b);
   }
 }
 

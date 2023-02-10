@@ -3,7 +3,7 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import { IPServiceAllocateRequest, IPServiceAllocateResponse, IPServiceDeleteRequest, IPServiceDeleteResponse, IPServiceGetRequest, IPServiceGetResponse, IPServiceListRequest, IPServiceListResponse, IPServiceStaticRequest, IPServiceStaticResponse } from "./ip_pb.js";
+import { IPServiceAllocateRequest, IPServiceAllocateResponse, IPServiceDeleteRequest, IPServiceDeleteResponse, IPServiceGetRequest, IPServiceGetResponse, IPServiceListRequest, IPServiceListResponse, IPServiceUpdateRequest, IPServiceUpdateResponse } from "./ip_pb.js";
 import { MethodKind } from "@bufbuild/protobuf";
 
 /**
@@ -31,12 +31,12 @@ export const IPService = {
       kind: MethodKind.Unary,
     },
     /**
-     * @generated from rpc api.v1.IPService.Static
+     * @generated from rpc api.v1.IPService.Update
      */
-    static: {
-      name: "Static",
-      I: IPServiceStaticRequest,
-      O: IPServiceStaticResponse,
+    update: {
+      name: "Update",
+      I: IPServiceUpdateRequest,
+      O: IPServiceUpdateResponse,
       kind: MethodKind.Unary,
     },
     /**

@@ -17,7 +17,7 @@ service IPService {
     option (project_roles) = PROJECT_ROLE_EDITOR;
     option (chargeable) = CHARGEABLE_TRUE;
   }
-  rpc Static(IPServiceStaticRequest) returns (IPServiceStaticResponse) {
+  rpc Update(IPServiceUpdateRequest) returns (IPServiceUpdateResponse) {
     option (project_roles) = PROJECT_ROLE_OWNER;
     option (project_roles) = PROJECT_ROLE_EDITOR;
     option (chargeable) = CHARGEABLE_TRUE;
@@ -34,16 +34,31 @@ service IPService {
   }
 }
 
+enum IPType {
+  IP_TYPE_UNSPECIFIED = 0;
+  IP_TYPE_EPHEMERAL = 1;
+  IP_TYPE_STATIC = 2;
+}
+
 // Types
 message IP {
-  string uuid = 1;
-  string ip = 2;
-  string name = 3;
-  string description = 4;
-  string network = 5;
-  string project = 6;
-  string type = 7;
-  repeated string tags = 8;
+  string uuid = 1 [(validate.rules).string.uuid = true];
+  string ip = 2 [(validate.rules).string.ip = true];
+  string name = 3 [(validate.rules).string = {
+    min_len: 2,
+    max_len: 128
+  }];
+  string description = 4 [(validate.rules).string = {max_len: 128}];
+  string network = 5 [(validate.rules).string = {
+    min_len: 2,
+    max_len: 128
+  }];
+  string project = 6 [(validate.rules).string = {
+    min_len: 2,
+    max_len: 128
+  }];
+  IPType type = 7;
+  repeated string tags = 8 [(validate.rules).repeated.max_items = 100];
   google.protobuf.Timestamp created_at = 10;
   google.protobuf.Timestamp updated_at = 11;
   google.protobuf.Timestamp deleted_at = 12;
@@ -74,12 +89,8 @@ message IPServiceAllocateRequest {
   repeated string tags = 8 [(validate.rules).repeated.max_items = 100];
   bool static = 9;
 }
-message IPServiceStaticRequest {
-  string uuid = 1 [(validate.rules).string.uuid = true];
-  string project = 2 [(validate.rules).string = {
-    min_len: 2,
-    max_len: 128
-  }];
+message IPServiceUpdateRequest {
+  IP ip = 1;
 }
 message IPServiceListRequest {
   string project = 2 [(validate.rules).string = {
@@ -97,6 +108,9 @@ message IPServiceDeleteRequest {
 
 // Responses
 message IPServiceGetResponse {
+  IP ip = 1;
+}
+message IPServiceUpdateResponse {
   IP ip = 1;
 }
 message IPServiceAllocateResponse {

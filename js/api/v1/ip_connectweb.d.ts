@@ -1,4 +1,4 @@
-import { IPServiceAllocateRequest, IPServiceAllocateResponse, IPServiceDeleteRequest, IPServiceDeleteResponse, IPServiceGetRequest, IPServiceGetResponse, IPServiceListRequest, IPServiceListResponse, IPServiceStaticRequest, IPServiceStaticResponse } from "./ip_pb.js";
+import { IPServiceAllocateRequest, IPServiceAllocateResponse, IPServiceDeleteRequest, IPServiceDeleteResponse, IPServiceGetRequest, IPServiceGetResponse, IPServiceListRequest, IPServiceListResponse, IPServiceUpdateRequest, IPServiceUpdateResponse } from "./ip_pb.js";
 import { MethodKind } from "@bufbuild/protobuf";
 /**
  * @generated from service api.v1.IPService
@@ -25,12 +25,12 @@ export declare const IPService: {
             readonly kind: MethodKind.Unary;
         };
         /**
-         * @generated from rpc api.v1.IPService.Static
+         * @generated from rpc api.v1.IPService.Update
          */
-        readonly static: {
-            readonly name: "Static";
-            readonly I: typeof IPServiceStaticRequest;
-            readonly O: typeof IPServiceStaticResponse;
+        readonly update: {
+            readonly name: "Update";
+            readonly I: typeof IPServiceUpdateRequest;
+            readonly O: typeof IPServiceUpdateResponse;
             readonly kind: MethodKind.Unary;
         };
         /**
