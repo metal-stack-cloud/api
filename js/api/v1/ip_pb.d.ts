@@ -1,6 +1,23 @@
 import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
 import { Message, Timestamp } from "@bufbuild/protobuf";
 /**
+ * @generated from enum api.v1.IPType
+ */
+export declare enum IPType {
+    /**
+     * @generated from enum value: IP_TYPE_UNSPECIFIED = 0;
+     */
+    IP_TYPE_UNSPECIFIED = 0,
+    /**
+     * @generated from enum value: IP_TYPE_EPHEMERAL = 1;
+     */
+    IP_TYPE_EPHEMERAL = 1,
+    /**
+     * @generated from enum value: IP_TYPE_STATIC = 2;
+     */
+    IP_TYPE_STATIC = 2
+}
+/**
  * Types
  *
  * @generated from message api.v1.IP
@@ -31,9 +48,9 @@ export declare class IP extends Message<IP> {
      */
     project: string;
     /**
-     * @generated from field: string type = 7;
+     * @generated from field: api.v1.IPType type = 7;
      */
-    type: string;
+    type: IPType;
     /**
      * @generated from field: repeated string tags = 8;
      */
@@ -118,28 +135,6 @@ export declare class IPServiceAllocateRequest extends Message<IPServiceAllocateR
     static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): IPServiceAllocateRequest;
     static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): IPServiceAllocateRequest;
     static equals(a: IPServiceAllocateRequest | PlainMessage<IPServiceAllocateRequest> | undefined, b: IPServiceAllocateRequest | PlainMessage<IPServiceAllocateRequest> | undefined): boolean;
-}
-/**
- * @generated from message api.v1.IPServiceStaticRequest
- * @deprecated
- */
-export declare class IPServiceStaticRequest extends Message<IPServiceStaticRequest> {
-    /**
-     * @generated from field: string uuid = 1;
-     */
-    uuid: string;
-    /**
-     * @generated from field: string project = 2;
-     */
-    project: string;
-    constructor(data?: PartialMessage<IPServiceStaticRequest>);
-    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
-    static readonly typeName = "api.v1.IPServiceStaticRequest";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): IPServiceStaticRequest;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): IPServiceStaticRequest;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): IPServiceStaticRequest;
-    static equals(a: IPServiceStaticRequest | PlainMessage<IPServiceStaticRequest> | undefined, b: IPServiceStaticRequest | PlainMessage<IPServiceStaticRequest> | undefined): boolean;
 }
 /**
  * @generated from message api.v1.IPServiceUpdateRequest

@@ -4,8 +4,32 @@
 /* eslint-disable */
 // @ts-nocheck
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.IPServiceDeleteResponse = exports.IPServiceListResponse = exports.IPServiceStaticResponse = exports.IPServiceAllocateResponse = exports.IPServiceUpdateResponse = exports.IPServiceGetResponse = exports.IPServiceDeleteRequest = exports.IPServiceListRequest = exports.IPServiceUpdateRequest = exports.IPServiceStaticRequest = exports.IPServiceAllocateRequest = exports.IPServiceGetRequest = exports.IP = void 0;
+exports.IPServiceDeleteResponse = exports.IPServiceListResponse = exports.IPServiceStaticResponse = exports.IPServiceAllocateResponse = exports.IPServiceUpdateResponse = exports.IPServiceGetResponse = exports.IPServiceDeleteRequest = exports.IPServiceListRequest = exports.IPServiceUpdateRequest = exports.IPServiceAllocateRequest = exports.IPServiceGetRequest = exports.IP = exports.IPType = void 0;
 const protobuf_1 = require("@bufbuild/protobuf");
+/**
+ * @generated from enum api.v1.IPType
+ */
+var IPType;
+(function (IPType) {
+    /**
+     * @generated from enum value: IP_TYPE_UNSPECIFIED = 0;
+     */
+    IPType[IPType["IP_TYPE_UNSPECIFIED"] = 0] = "IP_TYPE_UNSPECIFIED";
+    /**
+     * @generated from enum value: IP_TYPE_EPHEMERAL = 1;
+     */
+    IPType[IPType["IP_TYPE_EPHEMERAL"] = 1] = "IP_TYPE_EPHEMERAL";
+    /**
+     * @generated from enum value: IP_TYPE_STATIC = 2;
+     */
+    IPType[IPType["IP_TYPE_STATIC"] = 2] = "IP_TYPE_STATIC";
+})(IPType = exports.IPType || (exports.IPType = {}));
+// Retrieve enum metadata with: proto3.getEnumType(IPType)
+protobuf_1.proto3.util.setEnumType(IPType, "api.v1.IPType", [
+    { no: 0, name: "IP_TYPE_UNSPECIFIED" },
+    { no: 1, name: "IP_TYPE_EPHEMERAL" },
+    { no: 2, name: "IP_TYPE_STATIC" },
+]);
 /**
  * Types
  *
@@ -39,9 +63,9 @@ class IP extends protobuf_1.Message {
          */
         this.project = "";
         /**
-         * @generated from field: string type = 7;
+         * @generated from field: api.v1.IPType type = 7;
          */
-        this.type = "";
+        this.type = IPType.IP_TYPE_UNSPECIFIED;
         /**
          * @generated from field: repeated string tags = 8;
          */
@@ -71,7 +95,7 @@ IP.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 4, name: "description", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 5, name: "network", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 6, name: "project", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 7, name: "type", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 7, name: "type", kind: "enum", T: protobuf_1.proto3.getEnumType(IPType) },
     { no: 8, name: "tags", kind: "scalar", T: 9 /* ScalarType.STRING */, repeated: true },
     { no: 10, name: "created_at", kind: "message", T: protobuf_1.Timestamp },
     { no: 11, name: "updated_at", kind: "message", T: protobuf_1.Timestamp },
@@ -170,43 +194,6 @@ IPServiceAllocateRequest.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 5, name: "network", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 8, name: "tags", kind: "scalar", T: 9 /* ScalarType.STRING */, repeated: true },
     { no: 9, name: "static", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
-]);
-/**
- * @generated from message api.v1.IPServiceStaticRequest
- * @deprecated
- */
-class IPServiceStaticRequest extends protobuf_1.Message {
-    constructor(data) {
-        super();
-        /**
-         * @generated from field: string uuid = 1;
-         */
-        this.uuid = "";
-        /**
-         * @generated from field: string project = 2;
-         */
-        this.project = "";
-        protobuf_1.proto3.util.initPartial(data, this);
-    }
-    static fromBinary(bytes, options) {
-        return new IPServiceStaticRequest().fromBinary(bytes, options);
-    }
-    static fromJson(jsonValue, options) {
-        return new IPServiceStaticRequest().fromJson(jsonValue, options);
-    }
-    static fromJsonString(jsonString, options) {
-        return new IPServiceStaticRequest().fromJsonString(jsonString, options);
-    }
-    static equals(a, b) {
-        return protobuf_1.proto3.util.equals(IPServiceStaticRequest, a, b);
-    }
-}
-exports.IPServiceStaticRequest = IPServiceStaticRequest;
-IPServiceStaticRequest.runtime = protobuf_1.proto3;
-IPServiceStaticRequest.typeName = "api.v1.IPServiceStaticRequest";
-IPServiceStaticRequest.fields = protobuf_1.proto3.util.newFieldList(() => [
-    { no: 1, name: "uuid", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 2, name: "project", kind: "scalar", T: 9 /* ScalarType.STRING */ },
 ]);
 /**
  * @generated from message api.v1.IPServiceUpdateRequest

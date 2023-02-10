@@ -5345,11 +5345,35 @@
       "name": "api/v1/ip.proto",
       "description": "",
       "package": "api.v1",
-      "hasEnums": false,
+      "hasEnums": true,
       "hasExtensions": false,
       "hasMessages": true,
       "hasServices": true,
-      "enums": [],
+      "enums": [
+        {
+          "name": "IPType",
+          "longName": "IPType",
+          "fullName": "api.v1.IPType",
+          "description": "",
+          "values": [
+            {
+              "name": "IP_TYPE_UNSPECIFIED",
+              "number": "0",
+              "description": ""
+            },
+            {
+              "name": "IP_TYPE_EPHEMERAL",
+              "number": "1",
+              "description": ""
+            },
+            {
+              "name": "IP_TYPE_STATIC",
+              "number": "2",
+              "description": ""
+            }
+          ]
+        }
+      ],
       "extensions": [],
       "messages": [
         {
@@ -5372,7 +5396,15 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": ""
+              "defaultValue": "",
+              "options": {
+                "validate.rules": [
+                  {
+                    "name": "string.uuid",
+                    "value": true
+                  }
+                ]
+              }
             },
             {
               "name": "ip",
@@ -5384,7 +5416,15 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": ""
+              "defaultValue": "",
+              "options": {
+                "validate.rules": [
+                  {
+                    "name": "string.ip",
+                    "value": true
+                  }
+                ]
+              }
             },
             {
               "name": "name",
@@ -5396,7 +5436,19 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": ""
+              "defaultValue": "",
+              "options": {
+                "validate.rules": [
+                  {
+                    "name": "string.min_len",
+                    "value": 2
+                  },
+                  {
+                    "name": "string.max_len",
+                    "value": 128
+                  }
+                ]
+              }
             },
             {
               "name": "description",
@@ -5408,7 +5460,15 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": ""
+              "defaultValue": "",
+              "options": {
+                "validate.rules": [
+                  {
+                    "name": "string.max_len",
+                    "value": 128
+                  }
+                ]
+              }
             },
             {
               "name": "network",
@@ -5420,7 +5480,19 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": ""
+              "defaultValue": "",
+              "options": {
+                "validate.rules": [
+                  {
+                    "name": "string.min_len",
+                    "value": 2
+                  },
+                  {
+                    "name": "string.max_len",
+                    "value": 128
+                  }
+                ]
+              }
             },
             {
               "name": "project",
@@ -5432,15 +5504,27 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": ""
+              "defaultValue": "",
+              "options": {
+                "validate.rules": [
+                  {
+                    "name": "string.min_len",
+                    "value": 2
+                  },
+                  {
+                    "name": "string.max_len",
+                    "value": 128
+                  }
+                ]
+              }
             },
             {
               "name": "type",
               "description": "",
               "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
+              "type": "IPType",
+              "longType": "IPType",
+              "fullType": "api.v1.IPType",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
@@ -5456,7 +5540,15 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": ""
+              "defaultValue": "",
+              "options": {
+                "validate.rules": [
+                  {
+                    "name": "repeated.max_items",
+                    "value": 100
+                  }
+                ]
+              }
             },
             {
               "name": "created_at",
@@ -5877,65 +5969,6 @@
           ]
         },
         {
-          "name": "IPServiceStaticRequest",
-          "longName": "IPServiceStaticRequest",
-          "fullName": "api.v1.IPServiceStaticRequest",
-          "description": "",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "uuid",
-              "description": "",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.uuid",
-                    "value": true
-                  }
-                ]
-              }
-            },
-            {
-              "name": "project",
-              "description": "",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.min_len",
-                    "value": 2
-                  },
-                  {
-                    "name": "string.max_len",
-                    "value": 128
-                  }
-                ]
-              }
-            }
-          ],
-          "options": {
-            "deprecated": true
-          }
-        },
-        {
           "name": "IPServiceStaticResponse",
           "longName": "IPServiceStaticResponse",
           "fullName": "api.v1.IPServiceStaticResponse",
@@ -6037,18 +6070,6 @@
               "responseType": "IPServiceAllocateResponse",
               "responseLongType": "IPServiceAllocateResponse",
               "responseFullType": "api.v1.IPServiceAllocateResponse",
-              "responseStreaming": false
-            },
-            {
-              "name": "Static",
-              "description": "",
-              "requestType": "IPServiceStaticRequest",
-              "requestLongType": "IPServiceStaticRequest",
-              "requestFullType": "api.v1.IPServiceStaticRequest",
-              "requestStreaming": false,
-              "responseType": "IPServiceStaticResponse",
-              "responseLongType": "IPServiceStaticResponse",
-              "responseFullType": "api.v1.IPServiceStaticResponse",
               "responseStreaming": false
             },
             {
