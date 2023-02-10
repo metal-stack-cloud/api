@@ -90,7 +90,11 @@ message IPServiceAllocateRequest {
   bool static = 9;
 }
 message IPServiceUpdateRequest {
-  IP ip = 1;
+  string project = 1 [(validate.rules).string = {
+    min_len: 2,
+    max_len: 128
+  }];
+  IP ip = 2;
 }
 message IPServiceListRequest {
   string project = 2 [(validate.rules).string = {

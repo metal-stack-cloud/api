@@ -248,7 +248,12 @@ export class IPServiceAllocateRequest extends Message<IPServiceAllocateRequest> 
  */
 export class IPServiceUpdateRequest extends Message<IPServiceUpdateRequest> {
   /**
-   * @generated from field: api.v1.IP ip = 1;
+   * @generated from field: string project = 1;
+   */
+  project = "";
+
+  /**
+   * @generated from field: api.v1.IP ip = 2;
    */
   ip?: IP;
 
@@ -260,7 +265,8 @@ export class IPServiceUpdateRequest extends Message<IPServiceUpdateRequest> {
   static readonly runtime = proto3;
   static readonly typeName = "api.v1.IPServiceUpdateRequest";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "ip", kind: "message", T: IP },
+    { no: 1, name: "project", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "ip", kind: "message", T: IP },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): IPServiceUpdateRequest {

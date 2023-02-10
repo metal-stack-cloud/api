@@ -625,6 +625,17 @@ func (m *IPServiceUpdateRequest) validate(all bool) error {
 
 	var errors []error
 
+	if l := utf8.RuneCountInString(m.GetProject()); l < 2 || l > 128 {
+		err := IPServiceUpdateRequestValidationError{
+			field:  "Project",
+			reason: "value length must be between 2 and 128 runes, inclusive",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
 	if all {
 		switch v := interface{}(m.GetIp()).(type) {
 		case interface{ ValidateAll() error }:

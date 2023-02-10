@@ -141,7 +141,11 @@ export declare class IPServiceAllocateRequest extends Message<IPServiceAllocateR
  */
 export declare class IPServiceUpdateRequest extends Message<IPServiceUpdateRequest> {
     /**
-     * @generated from field: api.v1.IP ip = 1;
+     * @generated from field: string project = 1;
+     */
+    project: string;
+    /**
+     * @generated from field: api.v1.IP ip = 2;
      */
     ip?: IP;
     constructor(data?: PartialMessage<IPServiceUpdateRequest>);
