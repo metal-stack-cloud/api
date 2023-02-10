@@ -201,6 +201,10 @@ IPServiceAllocateRequest.fields = protobuf_1.proto3.util.newFieldList(() => [
 class IPServiceUpdateRequest extends protobuf_1.Message {
     constructor(data) {
         super();
+        /**
+         * @generated from field: string project = 1;
+         */
+        this.project = "";
         protobuf_1.proto3.util.initPartial(data, this);
     }
     static fromBinary(bytes, options) {
@@ -220,7 +224,8 @@ exports.IPServiceUpdateRequest = IPServiceUpdateRequest;
 IPServiceUpdateRequest.runtime = protobuf_1.proto3;
 IPServiceUpdateRequest.typeName = "api.v1.IPServiceUpdateRequest";
 IPServiceUpdateRequest.fields = protobuf_1.proto3.util.newFieldList(() => [
-    { no: 1, name: "ip", kind: "message", T: IP },
+    { no: 1, name: "project", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "ip", kind: "message", T: IP },
 ]);
 /**
  * @generated from message api.v1.IPServiceListRequest

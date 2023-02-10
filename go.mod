@@ -1,10 +1,10 @@
 module github.com/metal-stack-cloud/api
 
-go 1.19
+go 1.20
 
 require (
 	github.com/Masterminds/sprig/v3 v3.2.3
-	github.com/bufbuild/connect-go v1.5.0
+	github.com/bufbuild/connect-go v1.5.1
 	github.com/envoyproxy/protoc-gen-validate v0.9.1
 	github.com/jhump/protoreflect v1.14.1
 	github.com/klauspost/connect-compress v1.0.0
@@ -31,7 +31,7 @@ require (
 	github.com/stretchr/objx v0.5.0 // indirect
 	go.uber.org/atomic v1.10.0 // indirect
 	go.uber.org/multierr v1.9.0 // indirect
-	golang.org/x/crypto v0.5.0 // indirect
-	google.golang.org/genproto v0.0.0-20230127162408-596548ed4efa // indirect
+	golang.org/x/crypto v0.6.0 // indirect
+	google.golang.org/genproto v0.0.0-20230209215440-0dfe4f8abfcc // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 )
