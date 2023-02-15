@@ -70,8 +70,7 @@ func getScopes(methodOpts []*descriptorpb.UninterpretedOption, identifiers []str
 	return
 }
 
-func Test_APIScopes(t *testing.T) {
-
+func getProtos(root string) ([]string, error) {
 	var (
 		walk = func(root string) ([]string, error) {
 			var files []string
@@ -89,6 +88,14 @@ func Test_APIScopes(t *testing.T) {
 	)
 
 	files, err := walk("../../proto")
+	if err != nil {
+		return nil, err
+	}
+	return files, nil
+}
+
+func Test_APIScopes(t *testing.T) {
+	files, err := getProtos("../../proto")
 	if err != nil {
 		require.NoError(t, err)
 	}
