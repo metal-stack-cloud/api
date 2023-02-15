@@ -11,6 +11,8 @@ import (
 	v1 "github.com/metal-stack-cloud/api/go/api/v1"
 	"github.com/stretchr/testify/require"
 	"google.golang.org/protobuf/types/descriptorpb"
+
+	"golang.org/x/exp/slices"
 )
 
 type (
@@ -21,70 +23,46 @@ type (
 )
 
 func (tenant) Get(methodOpts []*descriptorpb.UninterpretedOption) (scopes []string) {
-	for _, methodOpt := range methodOpts {
-		for _, namePart := range methodOpt.Name {
-			if !*namePart.IsExtension {
-				continue
-			}
-			switch *methodOpt.IdentifierValue {
-			case v1.TenantRole_TENANT_ROLE_OWNER.String():
-				scopes = append(scopes, *methodOpt.IdentifierValue)
-			case v1.TenantRole_TENANT_ROLE_EDITOR.String():
-				scopes = append(scopes, *methodOpt.IdentifierValue)
-			case v1.TenantRole_TENANT_ROLE_VIEWER.String():
-				scopes = append(scopes, *methodOpt.IdentifierValue)
-			}
-		}
-	}
+	scopes = getScopes(methodOpts, []string{
+		v1.TenantRole_TENANT_ROLE_OWNER.String(),
+		v1.TenantRole_TENANT_ROLE_EDITOR.String(),
+		v1.TenantRole_TENANT_ROLE_VIEWER.String(),
+	})
 	return
 }
 
 func (project) Get(methodOpts []*descriptorpb.UninterpretedOption) (scopes []string) {
-	for _, methodOpt := range methodOpts {
-		for _, namePart := range methodOpt.Name {
-			if !*namePart.IsExtension {
-				continue
-			}
-			switch *methodOpt.IdentifierValue {
-			case v1.ProjectRole_PROJECT_ROLE_OWNER.String():
-				scopes = append(scopes, *methodOpt.IdentifierValue)
-			case v1.ProjectRole_PROJECT_ROLE_EDITOR.String():
-				scopes = append(scopes, *methodOpt.IdentifierValue)
-			case v1.ProjectRole_PROJECT_ROLE_VIEWER.String():
-				scopes = append(scopes, *methodOpt.IdentifierValue)
-			}
-		}
-	}
+	scopes = getScopes(methodOpts, []string{
+		v1.ProjectRole_PROJECT_ROLE_OWNER.String(),
+		v1.ProjectRole_PROJECT_ROLE_EDITOR.String(),
+		v1.ProjectRole_PROJECT_ROLE_VIEWER.String(),
+	})
 	return
 }
 
 func (admin) Get(methodOpts []*descriptorpb.UninterpretedOption) (scopes []string) {
-	for _, methodOpt := range methodOpts {
-		for _, namePart := range methodOpt.Name {
-			if !*namePart.IsExtension {
-				continue
-			}
-			switch *methodOpt.IdentifierValue {
-			case v1.AdminRole_ADMIN_ROLE_EDITOR.String():
-				scopes = append(scopes, *methodOpt.IdentifierValue)
-			case v1.AdminRole_ADMIN_ROLE_VIEWER.String():
-				scopes = append(scopes, *methodOpt.IdentifierValue)
-			}
-		}
-	}
+	scopes = getScopes(methodOpts, []string{
+		v1.AdminRole_ADMIN_ROLE_EDITOR.String(),
+		v1.AdminRole_ADMIN_ROLE_VIEWER.String(),
+	})
 	return
 }
 
 func (visibility) Get(methodOpts []*descriptorpb.UninterpretedOption) (scopes []string) {
+	scopes = getScopes(methodOpts, []string{
+		v1.Visibility_VISIBILITY_PUBLIC.String(),
+		v1.Visibility_VISIBILITY_PRIVATE.String(),
+	})
+	return
+}
+
+func getScopes(methodOpts []*descriptorpb.UninterpretedOption, identifiers []string) (scopes []string) {
 	for _, methodOpt := range methodOpts {
 		for _, namePart := range methodOpt.Name {
 			if !*namePart.IsExtension {
 				continue
 			}
-			switch *methodOpt.IdentifierValue {
-			case v1.Visibility_VISIBILITY_PUBLIC.String():
-				scopes = append(scopes, *methodOpt.IdentifierValue)
-			case v1.Visibility_VISIBILITY_PRIVATE.String():
+			if slices.Contains(identifiers, *methodOpt.IdentifierValue) {
 				scopes = append(scopes, *methodOpt.IdentifierValue)
 			}
 		}
@@ -141,7 +119,6 @@ func Test_APIScopes(t *testing.T) {
 							return
 						}()
 					)
-					// fmt.Printf("method:%s opts:%#v\n", methodName, method.Options)
 
 					for name, s := range scopes {
 						if len(s) > 0 {
