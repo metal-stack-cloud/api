@@ -87,7 +87,7 @@ func getProtos(root string) ([]string, error) {
 		}
 	)
 
-	files, err := walk("../../proto")
+	files, err := walk(root)
 	if err != nil {
 		return nil, err
 	}
@@ -133,6 +133,25 @@ func Test_APIScopes(t *testing.T) {
 								t.Errorf("api service method: %q can not have %s and %s (%s) at the same time. only one scope is allowed.", methodName, methodScope, name, s)
 							}
 							methodScope = fmt.Sprintf("%s (%s)", name, s)
+						}
+
+						if name == "project scope" && len(s) > 0 {
+							projectFound := false
+							projectRequest := ""
+							for _, mt := range fd.GetMessageType() {
+								if *mt.Name != method.GetInputType() {
+									continue
+								}
+								for _, field := range mt.Field {
+									if *field.Name == "project" {
+										projectFound = true
+									}
+								}
+								projectRequest = *mt.Name
+							}
+							if !projectFound {
+								t.Errorf("api service method: %q has project scope but request payload %q does not have a project field", methodName, projectRequest)
+							}
 						}
 					}
 
