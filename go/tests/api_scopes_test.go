@@ -8,11 +8,12 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/jhump/protoreflect/desc/protoparse"
 	v1 "github.com/metal-stack-cloud/api/go/api/v1"
+	"github.com/metal-stack-cloud/api/go/tests/protoparser"
 	"github.com/stretchr/testify/require"
 	"google.golang.org/protobuf/types/descriptorpb"
 
+	"golang.org/x/exp/maps"
 	"golang.org/x/exp/slices"
 )
 
@@ -102,8 +103,8 @@ func Test_APIScopes(t *testing.T) {
 
 	errs := errors.Join(
 		errors.New("api service method: \"/api.v1.WrongProjectService/Get\" has project scope but request payload \"WrongProjectServiceGetRequest\" does not have a project field"),
-		errors.New("api service method: \"/api.v1.WrongProjectService/List\" has no scope defined. one scope needs to be defined though. use one of the following scopes: [tenant scope project scope admin scope visibility scope]"),
-		errors.New("api service method: \"/api.v1.WrongProjectService/Update\" can not have project scope ([PROJECT_ROLE_OWNER]) and admin scope ([ADMIN_ROLE_VIEWER]) at the same time. only one scope is allowed."),
+		errors.New("api service method: \"/api.v1.WrongProjectService/List\" has no scope defined. one scope needs to be defined though. use one of the following scopes: [admin scope project scope tenant scope visibility scope]"),
+		errors.New("api service method: \"/api.v1.WrongProjectService/Update\" can not have admin scope ([ADMIN_ROLE_VIEWER]) and project scope ([PROJECT_ROLE_OWNER]) at the same time. only one scope is allowed."),
 		errors.New("api service method: \"/api.v1.WrongProjectService/Delete\" can not have admin scope ([ADMIN_ROLE_VIEWER]) and visibility scope ([VISIBILITY_PUBLIC]) at the same time. only one scope is allowed."),
 	)
 
@@ -118,64 +119,67 @@ func validateProto(root string) error {
 	}
 
 	var errs []error
-	for _, f := range files {
-		p := protoparse.Parser{}
-		fds, err := p.ParseFilesButDoNotLink(f)
+	for _, filename := range files {
+		fd, err := protoparser.Parse(filename)
 		if err != nil {
 			return err
 		}
-		for _, fd := range fds {
-			for _, serviceDesc := range fd.GetService() {
-				for _, method := range serviceDesc.GetMethod() {
-					var (
-						methodName  = fmt.Sprintf("/%s.%s/%s", *fd.Package, *serviceDesc.Name, *method.Name)
-						methodOpts  = method.Options.GetUninterpretedOption()
-						methodScope = ""
-						scopes      = map[string][]string{
-							"tenant scope":     tenant{}.Get(methodOpts),
-							"project scope":    project{}.Get(methodOpts),
-							"admin scope":      admin{}.Get(methodOpts),
-							"visibility scope": visibility{}.Get(methodOpts),
+		for _, serviceDesc := range fd.GetService() {
+			for _, method := range serviceDesc.GetMethod() {
+				var (
+					methodName  = fmt.Sprintf("/%s.%s/%s", *fd.Package, *serviceDesc.Name, *method.Name)
+					methodOpts  = method.Options.GetUninterpretedOption()
+					methodScope = ""
+					scopes      = map[string][]string{
+						"tenant scope":     tenant{}.Get(methodOpts),
+						"project scope":    project{}.Get(methodOpts),
+						"admin scope":      admin{}.Get(methodOpts),
+						"visibility scope": visibility{}.Get(methodOpts),
+					}
+					allScopeNames = func() (names []string) {
+						for name := range scopes {
+							names = append(names, name)
 						}
-						allScopeNames = func() (names []string) {
-							for name := range scopes {
-								names = append(names, name)
-							}
-							return
-						}()
-					)
+						return
+					}()
+				)
 
-					for name, s := range scopes {
-						if len(s) > 0 {
-							if methodScope != "" {
-								errs = append(errs, fmt.Errorf("api service method: %q can not have %s and %s (%s) at the same time. only one scope is allowed.", methodName, methodScope, name, s))
-							}
-							methodScope = fmt.Sprintf("%s (%s)", name, s)
-						}
+				// Sort all to have stable results
+				slices.Sort(allScopeNames)
+				scopeKeys := maps.Keys(scopes)
+				slices.Sort(scopeKeys)
 
-						if name == "project scope" && len(s) > 0 {
-							projectFound := false
-							projectRequest := ""
-							for _, mt := range fd.GetMessageType() {
-								if *mt.Name != method.GetInputType() {
-									continue
-								}
-								for _, field := range mt.Field {
-									if *field.Name == "project" {
-										projectFound = true
-									}
-								}
-								projectRequest = *mt.Name
-							}
-							if !projectFound {
-								errs = append(errs, fmt.Errorf("api service method: %q has project scope but request payload %q does not have a project field", methodName, projectRequest))
-							}
+				for _, name := range scopeKeys {
+					s := scopes[name]
+					if len(s) > 0 {
+						if methodScope != "" {
+							errs = append(errs, fmt.Errorf("api service method: %q can not have %s and %s (%s) at the same time. only one scope is allowed.", methodName, methodScope, name, s))
 						}
+						methodScope = fmt.Sprintf("%s (%s)", name, s)
 					}
 
-					if methodScope == "" {
-						errs = append(errs, fmt.Errorf("api service method: %q has no scope defined. one scope needs to be defined though. use one of the following scopes: %s", methodName, allScopeNames))
+					if name == "project scope" && len(s) > 0 {
+						projectFound := false
+						projectRequest := ""
+						for _, mt := range fd.GetMessageType() {
+							if *mt.Name != method.GetInputType() {
+								continue
+							}
+							for _, field := range mt.Field {
+								if *field.Name == "project" {
+									projectFound = true
+								}
+							}
+							projectRequest = *mt.Name
+						}
+						if !projectFound {
+							errs = append(errs, fmt.Errorf("api service method: %q has project scope but request payload %q does not have a project field", methodName, projectRequest))
+						}
 					}
+				}
+
+				if methodScope == "" {
+					errs = append(errs, fmt.Errorf("api service method: %q has no scope defined. one scope needs to be defined though. use one of the following scopes: %s", methodName, allScopeNames))
 				}
 			}
 		}
