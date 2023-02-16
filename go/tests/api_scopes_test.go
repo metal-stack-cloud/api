@@ -1,6 +1,7 @@
 package apitests
 
 import (
+	"errors"
 	"fmt"
 	"os"
 	"path/filepath"
@@ -95,16 +96,33 @@ func getProtos(root string) ([]string, error) {
 }
 
 func Test_APIScopes(t *testing.T) {
-	files, err := getProtos("../../proto")
+	err := validateProto("../../proto")
+	require.NoError(t, err)
+	err = validateProto("./testproto")
+
+	errs := errors.Join(
+		errors.New("api service method: \"/api.v1.WrongProjectService/Get\" has project scope but request payload \"WrongProjectServiceGetRequest\" does not have a project field"),
+		errors.New("api service method: \"/api.v1.WrongProjectService/List\" has no scope defined. one scope needs to be defined though. use one of the following scopes: [tenant scope project scope admin scope visibility scope]"),
+		errors.New("api service method: \"/api.v1.WrongProjectService/Update\" can not have project scope ([PROJECT_ROLE_OWNER]) and admin scope ([ADMIN_ROLE_VIEWER]) at the same time. only one scope is allowed."),
+		errors.New("api service method: \"/api.v1.WrongProjectService/Delete\" can not have admin scope ([ADMIN_ROLE_VIEWER]) and visibility scope ([VISIBILITY_PUBLIC]) at the same time. only one scope is allowed."),
+	)
+
+	require.Equal(t, err, errs)
+}
+
+func validateProto(root string) error {
+
+	files, err := getProtos(root)
 	if err != nil {
-		require.NoError(t, err)
+		return err
 	}
 
+	var errs []error
 	for _, f := range files {
 		p := protoparse.Parser{}
 		fds, err := p.ParseFilesButDoNotLink(f)
 		if err != nil {
-			require.NoError(t, err)
+			return err
 		}
 		for _, fd := range fds {
 			for _, serviceDesc := range fd.GetService() {
@@ -130,7 +148,7 @@ func Test_APIScopes(t *testing.T) {
 					for name, s := range scopes {
 						if len(s) > 0 {
 							if methodScope != "" {
-								t.Errorf("api service method: %q can not have %s and %s (%s) at the same time. only one scope is allowed.", methodName, methodScope, name, s)
+								errs = append(errs, fmt.Errorf("api service method: %q can not have %s and %s (%s) at the same time. only one scope is allowed.", methodName, methodScope, name, s))
 							}
 							methodScope = fmt.Sprintf("%s (%s)", name, s)
 						}
@@ -150,17 +168,17 @@ func Test_APIScopes(t *testing.T) {
 								projectRequest = *mt.Name
 							}
 							if !projectFound {
-								t.Errorf("api service method: %q has project scope but request payload %q does not have a project field", methodName, projectRequest)
+								errs = append(errs, fmt.Errorf("api service method: %q has project scope but request payload %q does not have a project field", methodName, projectRequest))
 							}
 						}
 					}
 
 					if methodScope == "" {
-						t.Errorf("api service method: %q has no scope defined. one scope needs to be defined though. use one of the following scopes: %s", methodName, allScopeNames)
+						errs = append(errs, fmt.Errorf("api service method: %q has no scope defined. one scope needs to be defined though. use one of the following scopes: %s", methodName, allScopeNames))
 					}
 				}
 			}
 		}
 	}
-
+	return errors.Join(errs...)
 }
