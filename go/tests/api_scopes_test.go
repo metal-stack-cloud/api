@@ -102,17 +102,27 @@ func Test_APIScopes(t *testing.T) {
 	err = validateProto("./testproto")
 
 	errs := errors.Join(
-		errors.New("api service method: \"/api.v1.WrongProjectService/Get\" has project scope but request payload \"WrongProjectServiceGetRequest\" does not have a project field"),
-		errors.New("api service method: \"/api.v1.WrongProjectService/List\" has no scope defined. one scope needs to be defined though. use one of the following scopes: [admin scope project scope tenant scope visibility scope]"),
-		errors.New("api service method: \"/api.v1.WrongProjectService/Update\" can not have admin scope ([ADMIN_ROLE_VIEWER]) and project scope ([PROJECT_ROLE_OWNER]) at the same time. only one scope is allowed."),
-		errors.New("api service method: \"/api.v1.WrongProjectService/Delete\" can not have admin scope ([ADMIN_ROLE_VIEWER]) and visibility scope ([VISIBILITY_PUBLIC]) at the same time. only one scope is allowed."),
+		errors.New("api service method: \"/api.v1.WrongProjectService/Get\" has apiv1.ProjectRole but request payload \"WrongProjectServiceGetRequest\" does not have a project field"),
+		errors.New("api service method: \"/api.v1.WrongProjectService/List\" has no scope defined. one scope needs to be defined though. use one of the following scopes: [apiv1.AdminRole apiv1.ProjectRole apiv1.TenantRole apiv1.Visibility]"),
+		errors.New("api service method: \"/api.v1.WrongProjectService/Update\" can not have apiv1.AdminRole ([ADMIN_ROLE_VIEWER]) and apiv1.ProjectRole ([PROJECT_ROLE_OWNER]) at the same time. only one scope is allowed."),
+		errors.New("api service method: \"/api.v1.WrongProjectService/Delete\" can not have apiv1.AdminRole ([ADMIN_ROLE_VIEWER]) and apiv1.Visibility ([VISIBILITY_PUBLIC]) at the same time. only one scope is allowed."),
 	)
 
 	require.Equal(t, err, errs)
 }
 
 func validateProto(root string) error {
+	var (
+		tr v1.TenantRole
+		pr v1.ProjectRole
+		ar v1.AdminRole
+		vr v1.Visibility
 
+		trs = fmt.Sprintf("%T", tr)
+		prs = fmt.Sprintf("%T", pr)
+		ars = fmt.Sprintf("%T", ar)
+		vrs = fmt.Sprintf("%T", vr)
+	)
 	files, err := getProtos(root)
 	if err != nil {
 		return err
@@ -131,10 +141,10 @@ func validateProto(root string) error {
 					methodOpts  = method.Options.GetUninterpretedOption()
 					methodScope = ""
 					scopes      = map[string][]string{
-						"tenant scope":     tenant{}.Get(methodOpts),
-						"project scope":    project{}.Get(methodOpts),
-						"admin scope":      admin{}.Get(methodOpts),
-						"visibility scope": visibility{}.Get(methodOpts),
+						trs: tenant{}.Get(methodOpts),
+						prs: project{}.Get(methodOpts),
+						ars: admin{}.Get(methodOpts),
+						vrs: visibility{}.Get(methodOpts),
 					}
 					allScopeNames = func() (names []string) {
 						for name := range scopes {
@@ -158,7 +168,7 @@ func validateProto(root string) error {
 						methodScope = fmt.Sprintf("%s (%s)", name, s)
 					}
 
-					if name == "project scope" && len(s) > 0 {
+					if name == prs && len(s) > 0 {
 						projectFound := false
 						projectRequest := ""
 						for _, mt := range fd.GetMessageType() {
@@ -173,7 +183,7 @@ func validateProto(root string) error {
 							projectRequest = *mt.Name
 						}
 						if !projectFound {
-							errs = append(errs, fmt.Errorf("api service method: %q has project scope but request payload %q does not have a project field", methodName, projectRequest))
+							errs = append(errs, fmt.Errorf("api service method: %q has %s but request payload %q does not have a project field", methodName, prs, projectRequest))
 						}
 					}
 				}
