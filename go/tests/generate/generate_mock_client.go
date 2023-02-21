@@ -11,7 +11,7 @@ import (
 	"text/template"
 
 	"github.com/Masterminds/sprig/v3"
-	"github.com/jhump/protoreflect/desc/protoparse"
+	"github.com/metal-stack-cloud/api/go/tests/protoparser"
 
 	_ "embed"
 )
@@ -60,26 +60,23 @@ func svcs(root string) (map[string]api, error) {
 		return nil, err
 	}
 
-	for _, f := range files {
-		p := protoparse.Parser{}
-		fds, err := p.ParseFilesButDoNotLink(f)
+	for _, filename := range files {
+		fd, err := protoparser.Parse(filename)
 		if err != nil {
 			return nil, err
 		}
-		for _, fd := range fds {
-			n := strings.ReplaceAll(*fd.Package, ".", "")
-			a, ok := result[n]
-			if !ok {
-				a = api{
-					Name: n,
-					Path: path.Dir(strings.TrimPrefix(f, root)),
-				}
+		n := strings.ReplaceAll(*fd.Package, ".", "")
+		a, ok := result[n]
+		if !ok {
+			a = api{
+				Name: n,
+				Path: path.Dir(strings.TrimPrefix(filename, root)),
 			}
-			for _, serviceDesc := range fd.GetService() {
-				a.Services = append(a.Services, *serviceDesc.Name)
-			}
-			result[n] = a
 		}
+		for _, serviceDesc := range fd.GetService() {
+			a.Services = append(a.Services, *serviceDesc.Name)
+		}
+		result[n] = a
 	}
 
 	return result, nil
