@@ -22,6 +22,7 @@ type (
 	project    struct{}
 	admin      struct{}
 	visibility struct{}
+	chargeable struct{}
 )
 
 func (tenant) Get(methodOpts []*descriptorpb.UninterpretedOption) (scopes []string) {
@@ -54,6 +55,13 @@ func (visibility) Get(methodOpts []*descriptorpb.UninterpretedOption) (scopes []
 	scopes = getScopes(methodOpts, []string{
 		v1.Visibility_VISIBILITY_PUBLIC.String(),
 		v1.Visibility_VISIBILITY_PRIVATE.String(),
+	})
+	return
+}
+func (chargeable) Get(methodOpts []*descriptorpb.UninterpretedOption) (scopes []string) {
+	scopes = getScopes(methodOpts, []string{
+		v1.Chargeable_CHARGEABLE_TRUE.String(),
+		v1.Chargeable_CHARGEABLE_FALSE.String(),
 	})
 	return
 }
@@ -103,9 +111,11 @@ func Test_APIScopes(t *testing.T) {
 
 	errs := errors.Join(
 		errors.New("api service method: \"/api.v1.WrongProjectService/Get\" has apiv1.ProjectRole but request payload \"WrongProjectServiceGetRequest\" does not have a project field"),
-		errors.New("api service method: \"/api.v1.WrongProjectService/List\" has no scope defined. one scope needs to be defined though. use one of the following scopes: [apiv1.AdminRole apiv1.ProjectRole apiv1.TenantRole apiv1.Visibility]"),
+		errors.New("api service method: \"/api.v1.WrongProjectService/List\" has no scope defined. one scope needs to be defined though. use one of the following scopes: [apiv1.AdminRole apiv1.Chargeable apiv1.ProjectRole apiv1.TenantRole apiv1.Visibility]"),
 		errors.New("api service method: \"/api.v1.WrongProjectService/Update\" can not have apiv1.AdminRole ([ADMIN_ROLE_VIEWER]) and apiv1.ProjectRole ([PROJECT_ROLE_OWNER]) at the same time. only one scope is allowed."),
 		errors.New("api service method: \"/api.v1.WrongProjectService/Delete\" can not have apiv1.AdminRole ([ADMIN_ROLE_VIEWER]) and apiv1.Visibility ([VISIBILITY_PUBLIC]) at the same time. only one scope is allowed."),
+		errors.New("api service method: \"/api.v1.WrongProjectService/Charge\" is marked \"apiv1.Chargeable\" but has no project scope"),
+		errors.New("api service method: \"/api.v1.WrongProjectService/Charge\" has no scope defined. one scope needs to be defined though. use one of the following scopes: [apiv1.AdminRole apiv1.Chargeable apiv1.ProjectRole apiv1.TenantRole apiv1.Visibility]"),
 	)
 
 	require.Equal(t, err, errs)
@@ -117,11 +127,13 @@ func validateProto(root string) error {
 		pr v1.ProjectRole
 		ar v1.AdminRole
 		vr v1.Visibility
+		cr v1.Chargeable
 
 		trs = fmt.Sprintf("%T", tr)
 		prs = fmt.Sprintf("%T", pr)
 		ars = fmt.Sprintf("%T", ar)
 		vrs = fmt.Sprintf("%T", vr)
+		crs = fmt.Sprintf("%T", cr)
 	)
 	files, err := getProtos(root)
 	if err != nil {
@@ -145,6 +157,7 @@ func validateProto(root string) error {
 						prs: project{}.Get(methodOpts),
 						ars: admin{}.Get(methodOpts),
 						vrs: visibility{}.Get(methodOpts),
+						crs: chargeable{}.Get(methodOpts),
 					}
 					allScopeNames = func() (names []string) {
 						for name := range scopes {
@@ -165,7 +178,10 @@ func validateProto(root string) error {
 						if methodScope != "" {
 							errs = append(errs, fmt.Errorf("api service method: %q can not have %s and %s (%s) at the same time. only one scope is allowed.", methodName, methodScope, name, s))
 						}
-						methodScope = fmt.Sprintf("%s (%s)", name, s)
+						// Chargeable must not be counted as scope
+						if name != crs {
+							methodScope = fmt.Sprintf("%s (%s)", name, s)
+						}
 					}
 
 					if name == prs && len(s) > 0 {
@@ -186,6 +202,10 @@ func validateProto(root string) error {
 							errs = append(errs, fmt.Errorf("api service method: %q has %s but request payload %q does not have a project field", methodName, prs, projectRequest))
 						}
 					}
+				}
+
+				if len(scopes[crs]) > 0 && len(scopes[prs]) < 1 {
+					errs = append(errs, fmt.Errorf("api service method: %q is marked %q but has no project scope", methodName, crs))
 				}
 
 				if methodScope == "" {

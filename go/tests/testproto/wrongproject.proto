@@ -18,6 +18,9 @@ service WrongProjectService {
     option (admin_roles) = ADMIN_ROLE_VIEWER;
     option (api.v1.visibility) = VISIBILITY_PUBLIC;
   }
+  rpc Charge(WrongProjectServiceUpdateRequest) returns (WrongProjectServiceUpdateResponse) {
+    option (chargeable) = CHARGEABLE_TRUE;
+  }
 }
 
 message WrongProjectServiceGetRequest {
