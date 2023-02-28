@@ -635,6 +635,10 @@ func (m *VolumeServiceListRequest) validate(all bool) error {
 		// no validation rules for Partition
 	}
 
+	if m.Name != nil {
+		// no validation rules for Name
+	}
+
 	if len(errors) > 0 {
 		return VolumeServiceListRequestMultiError(errors)
 	}
@@ -1040,6 +1044,10 @@ func (m *SnapshotServiceListRequest) validate(all bool) error {
 
 	if m.Partition != nil {
 		// no validation rules for Partition
+	}
+
+	if m.Name != nil {
+		// no validation rules for Name
 	}
 
 	if len(errors) > 0 {

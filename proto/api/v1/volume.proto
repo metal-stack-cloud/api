@@ -93,6 +93,7 @@ message VolumeServiceListRequest {
     max_len: 128
   }];
   optional string partition = 3;
+  optional string name = 4;
 }
 message VolumeServiceDeleteRequest {
   string uuid = 1 [(validate.rules).string.uuid = true];
@@ -116,6 +117,7 @@ message SnapshotServiceListRequest {
     max_len: 128
   }];
   optional string partition = 3;
+  optional string name = 4;
 }
 message SnapshotServiceDeleteRequest {
   string uuid = 1 [(validate.rules).string.uuid = true];

@@ -296,6 +296,11 @@ export class VolumeServiceListRequest extends Message<VolumeServiceListRequest> 
    */
   partition?: string;
 
+  /**
+   * @generated from field: optional string name = 4;
+   */
+  name?: string;
+
   constructor(data?: PartialMessage<VolumeServiceListRequest>) {
     super();
     proto3.util.initPartial(data, this);
@@ -307,6 +312,7 @@ export class VolumeServiceListRequest extends Message<VolumeServiceListRequest> 
     { no: 1, name: "uuid", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
     { no: 2, name: "project", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 3, name: "partition", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
+    { no: 4, name: "name", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): VolumeServiceListRequest {
@@ -431,6 +437,11 @@ export class SnapshotServiceListRequest extends Message<SnapshotServiceListReque
    */
   partition?: string;
 
+  /**
+   * @generated from field: optional string name = 4;
+   */
+  name?: string;
+
   constructor(data?: PartialMessage<SnapshotServiceListRequest>) {
     super();
     proto3.util.initPartial(data, this);
@@ -442,6 +453,7 @@ export class SnapshotServiceListRequest extends Message<SnapshotServiceListReque
     { no: 1, name: "uuid", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
     { no: 2, name: "project", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 3, name: "partition", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
+    { no: 4, name: "name", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): SnapshotServiceListRequest {

@@ -7690,6 +7690,18 @@
               "isoneof": true,
               "oneofdecl": "_partition",
               "defaultValue": ""
+            },
+            {
+              "name": "name",
+              "description": "",
+              "label": "optional",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "_name",
+              "defaultValue": ""
             }
           ]
         },
@@ -8121,6 +8133,18 @@
               "ismap": false,
               "isoneof": true,
               "oneofdecl": "_partition",
+              "defaultValue": ""
+            },
+            {
+              "name": "name",
+              "description": "",
+              "label": "optional",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "_name",
               "defaultValue": ""
             }
           ]

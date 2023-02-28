@@ -175,6 +175,10 @@ export declare class VolumeServiceListRequest extends Message<VolumeServiceListR
      * @generated from field: optional string partition = 3;
      */
     partition?: string;
+    /**
+     * @generated from field: optional string name = 4;
+     */
+    name?: string;
     constructor(data?: PartialMessage<VolumeServiceListRequest>);
     static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
     static readonly typeName = "api.v1.VolumeServiceListRequest";
@@ -242,6 +246,10 @@ export declare class SnapshotServiceListRequest extends Message<SnapshotServiceL
      * @generated from field: optional string partition = 3;
      */
     partition?: string;
+    /**
+     * @generated from field: optional string name = 4;
+     */
+    name?: string;
     constructor(data?: PartialMessage<SnapshotServiceListRequest>);
     static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
     static readonly typeName = "api.v1.SnapshotServiceListRequest";
