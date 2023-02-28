@@ -416,7 +416,7 @@ export class ClusterStatisticsApi extends Message<ClusterStatisticsApi> {
    *
    * compression ratio logicalUsedStorage/physicalUsedStorage
    *
-   * @generated from field: float compression_ratio = 11;
+   * @generated from field: double compression_ratio = 11;
    */
   compressionRatio = 0;
 
@@ -438,7 +438,7 @@ export class ClusterStatisticsApi extends Message<ClusterStatisticsApi> {
     { no: 8, name: "free_physical_storage", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
     { no: 9, name: "estimated_free_logical_storage", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
     { no: 10, name: "estimated_logical_storage", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
-    { no: 11, name: "compression_ratio", kind: "scalar", T: 2 /* ScalarType.FLOAT */ },
+    { no: 11, name: "compression_ratio", kind: "scalar", T: 1 /* ScalarType.DOUBLE */ },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ClusterStatisticsApi {

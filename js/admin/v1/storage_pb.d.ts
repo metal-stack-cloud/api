@@ -258,7 +258,7 @@ export declare class ClusterStatisticsApi extends Message<ClusterStatisticsApi> 
      *
      * compression ratio logicalUsedStorage/physicalUsedStorage
      *
-     * @generated from field: float compression_ratio = 11;
+     * @generated from field: double compression_ratio = 11;
      */
     compressionRatio: number;
     constructor(data?: PartialMessage<ClusterStatisticsApi>);

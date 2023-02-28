@@ -96,5 +96,5 @@ message ClusterStatisticsApi {
   // commpression ratio
   //
   // compression ratio logicalUsedStorage/physicalUsedStorage
-  float compression_ratio = 11;
+  double compression_ratio = 11;
 }
