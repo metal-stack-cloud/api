@@ -20,11 +20,13 @@ type (
 	}
 	adminv1 struct {
 		paymentservice *adminv1mocks.PaymentServiceClient
+		storageservice *adminv1mocks.StorageServiceClient
 		tenantservice  *adminv1mocks.TenantServiceClient
 	}
 
 	Adminv1MockFns struct {
 		Payment func(m *mock.Mock)
+		Storage func(m *mock.Mock)
 		Tenant  func(m *mock.Mock)
 	}
 	apiv1 struct {
@@ -74,12 +76,16 @@ func (w wrapper) Adminv1(fns *Adminv1MockFns) *adminv1 {
 func newadminv1(t *testing.T, fns *Adminv1MockFns) *adminv1 {
 	a := &adminv1{
 		paymentservice: adminv1mocks.NewPaymentServiceClient(t),
+		storageservice: adminv1mocks.NewStorageServiceClient(t),
 		tenantservice:  adminv1mocks.NewTenantServiceClient(t),
 	}
 
 	if fns != nil {
 		if fns.Payment != nil {
 			fns.Payment(&a.paymentservice.Mock)
+		}
+		if fns.Storage != nil {
+			fns.Storage(&a.storageservice.Mock)
 		}
 		if fns.Tenant != nil {
 			fns.Tenant(&a.tenantservice.Mock)
@@ -92,6 +98,9 @@ func newadminv1(t *testing.T, fns *Adminv1MockFns) *adminv1 {
 
 func (c *adminv1) Payment() adminv1connect.PaymentServiceClient {
 	return c.paymentservice
+}
+func (c *adminv1) Storage() adminv1connect.StorageServiceClient {
+	return c.storageservice
 }
 func (c *adminv1) Tenant() adminv1connect.TenantServiceClient {
 	return c.tenantservice

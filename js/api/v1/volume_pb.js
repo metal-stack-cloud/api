@@ -239,6 +239,7 @@ VolumeServiceListRequest.runtime = protobuf_1.proto3;
 VolumeServiceListRequest.typeName = "api.v1.VolumeServiceListRequest";
 VolumeServiceListRequest.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 2, name: "project", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 3, name: "partition", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
 ]);
 /**
  * @generated from message api.v1.VolumeServiceDeleteRequest
@@ -342,6 +343,7 @@ SnapshotServiceListRequest.runtime = protobuf_1.proto3;
 SnapshotServiceListRequest.typeName = "api.v1.SnapshotServiceListRequest";
 SnapshotServiceListRequest.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 2, name: "project", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 3, name: "partition", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
 ]);
 /**
  * @generated from message api.v1.SnapshotServiceDeleteRequest

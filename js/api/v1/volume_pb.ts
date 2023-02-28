@@ -286,6 +286,11 @@ export class VolumeServiceListRequest extends Message<VolumeServiceListRequest> 
    */
   project = "";
 
+  /**
+   * @generated from field: optional string partition = 3;
+   */
+  partition?: string;
+
   constructor(data?: PartialMessage<VolumeServiceListRequest>) {
     super();
     proto3.util.initPartial(data, this);
@@ -295,6 +300,7 @@ export class VolumeServiceListRequest extends Message<VolumeServiceListRequest> 
   static readonly typeName = "api.v1.VolumeServiceListRequest";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
     { no: 2, name: "project", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 3, name: "partition", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): VolumeServiceListRequest {
@@ -409,6 +415,11 @@ export class SnapshotServiceListRequest extends Message<SnapshotServiceListReque
    */
   project = "";
 
+  /**
+   * @generated from field: optional string partition = 3;
+   */
+  partition?: string;
+
   constructor(data?: PartialMessage<SnapshotServiceListRequest>) {
     super();
     proto3.util.initPartial(data, this);
@@ -418,6 +429,7 @@ export class SnapshotServiceListRequest extends Message<SnapshotServiceListReque
   static readonly typeName = "api.v1.SnapshotServiceListRequest";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
     { no: 2, name: "project", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 3, name: "partition", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): SnapshotServiceListRequest {

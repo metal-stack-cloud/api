@@ -4,12 +4,14 @@
       "editor": [
         "/admin.v1.PaymentService/ListCoupons",
         "/admin.v1.PaymentService/AddCouponToCustomer",
+        "/admin.v1.StorageService/ClusterInfo",
         "/admin.v1.TenantService/List",
         "/admin.v1.TenantService/Admit",
         "/admin.v1.TenantService/Revoke"
       ],
       "viewer": [
         "/admin.v1.PaymentService/ListCoupons",
+        "/admin.v1.StorageService/ClusterInfo",
         "/admin.v1.TenantService/List"
       ]
     },
@@ -102,6 +104,7 @@
   "methods": {
     "/admin.v1.PaymentService/AddCouponToCustomer": true,
     "/admin.v1.PaymentService/ListCoupons": true,
+    "/admin.v1.StorageService/ClusterInfo": true,
     "/admin.v1.TenantService/Admit": true,
     "/admin.v1.TenantService/List": true,
     "/admin.v1.TenantService/Revoke": true,
