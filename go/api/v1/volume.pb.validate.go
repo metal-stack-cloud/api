@@ -615,12 +615,36 @@ func (m *VolumeServiceListRequest) validate(all bool) error {
 		errors = append(errors, err)
 	}
 
+	if m.Uuid != nil {
+
+		if err := m._validateUuid(m.GetUuid()); err != nil {
+			err = VolumeServiceListRequestValidationError{
+				field:  "Uuid",
+				reason: "value must be a valid UUID",
+				cause:  err,
+			}
+			if !all {
+				return err
+			}
+			errors = append(errors, err)
+		}
+
+	}
+
 	if m.Partition != nil {
 		// no validation rules for Partition
 	}
 
 	if len(errors) > 0 {
 		return VolumeServiceListRequestMultiError(errors)
+	}
+
+	return nil
+}
+
+func (m *VolumeServiceListRequest) _validateUuid(uuid string) error {
+	if matched := _volume_uuidPattern.MatchString(uuid); !matched {
+		return errors.New("invalid uuid format")
 	}
 
 	return nil
@@ -998,12 +1022,36 @@ func (m *SnapshotServiceListRequest) validate(all bool) error {
 		errors = append(errors, err)
 	}
 
+	if m.Uuid != nil {
+
+		if err := m._validateUuid(m.GetUuid()); err != nil {
+			err = SnapshotServiceListRequestValidationError{
+				field:  "Uuid",
+				reason: "value must be a valid UUID",
+				cause:  err,
+			}
+			if !all {
+				return err
+			}
+			errors = append(errors, err)
+		}
+
+	}
+
 	if m.Partition != nil {
 		// no validation rules for Partition
 	}
 
 	if len(errors) > 0 {
 		return SnapshotServiceListRequestMultiError(errors)
+	}
+
+	return nil
+}
+
+func (m *SnapshotServiceListRequest) _validateUuid(uuid string) error {
+	if matched := _volume_uuidPattern.MatchString(uuid); !matched {
+		return errors.New("invalid uuid format")
 	}
 
 	return nil

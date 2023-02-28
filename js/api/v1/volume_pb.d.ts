@@ -164,6 +164,10 @@ export declare class VolumeServiceGetRequest extends Message<VolumeServiceGetReq
  */
 export declare class VolumeServiceListRequest extends Message<VolumeServiceListRequest> {
     /**
+     * @generated from field: optional string uuid = 1;
+     */
+    uuid?: string;
+    /**
      * @generated from field: string project = 2;
      */
     project: string;
@@ -226,6 +230,10 @@ export declare class SnapshotServiceGetRequest extends Message<SnapshotServiceGe
  * @generated from message api.v1.SnapshotServiceListRequest
  */
 export declare class SnapshotServiceListRequest extends Message<SnapshotServiceListRequest> {
+    /**
+     * @generated from field: optional string uuid = 1;
+     */
+    uuid?: string;
     /**
      * @generated from field: string project = 2;
      */

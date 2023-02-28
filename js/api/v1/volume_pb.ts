@@ -282,6 +282,11 @@ export class VolumeServiceGetRequest extends Message<VolumeServiceGetRequest> {
  */
 export class VolumeServiceListRequest extends Message<VolumeServiceListRequest> {
   /**
+   * @generated from field: optional string uuid = 1;
+   */
+  uuid?: string;
+
+  /**
    * @generated from field: string project = 2;
    */
   project = "";
@@ -299,6 +304,7 @@ export class VolumeServiceListRequest extends Message<VolumeServiceListRequest> 
   static readonly runtime = proto3;
   static readonly typeName = "api.v1.VolumeServiceListRequest";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "uuid", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
     { no: 2, name: "project", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 3, name: "partition", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
   ]);
@@ -411,6 +417,11 @@ export class SnapshotServiceGetRequest extends Message<SnapshotServiceGetRequest
  */
 export class SnapshotServiceListRequest extends Message<SnapshotServiceListRequest> {
   /**
+   * @generated from field: optional string uuid = 1;
+   */
+  uuid?: string;
+
+  /**
    * @generated from field: string project = 2;
    */
   project = "";
@@ -428,6 +439,7 @@ export class SnapshotServiceListRequest extends Message<SnapshotServiceListReque
   static readonly runtime = proto3;
   static readonly typeName = "api.v1.SnapshotServiceListRequest";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "uuid", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
     { no: 2, name: "project", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 3, name: "partition", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
   ]);

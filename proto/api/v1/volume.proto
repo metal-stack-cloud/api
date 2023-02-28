@@ -87,6 +87,7 @@ message VolumeServiceGetRequest {
   }];
 }
 message VolumeServiceListRequest {
+  optional string uuid = 1 [(validate.rules).string.uuid = true];
   string project = 2 [(validate.rules).string = {
     min_len: 2,
     max_len: 128
@@ -109,6 +110,7 @@ message SnapshotServiceGetRequest {
   }];
 }
 message SnapshotServiceListRequest {
+  optional string uuid = 1 [(validate.rules).string.uuid = true];
   string project = 2 [(validate.rules).string = {
     min_len: 2,
     max_len: 128

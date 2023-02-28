@@ -7636,6 +7636,26 @@
           "extensions": [],
           "fields": [
             {
+              "name": "uuid",
+              "description": "",
+              "label": "optional",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "_uuid",
+              "defaultValue": "",
+              "options": {
+                "validate.rules": [
+                  {
+                    "name": "string.uuid",
+                    "value": true
+                  }
+                ]
+              }
+            },
+            {
               "name": "project",
               "description": "",
               "label": "",
@@ -8047,6 +8067,26 @@
           "hasOneofs": true,
           "extensions": [],
           "fields": [
+            {
+              "name": "uuid",
+              "description": "",
+              "label": "optional",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "_uuid",
+              "defaultValue": "",
+              "options": {
+                "validate.rules": [
+                  {
+                    "name": "string.uuid",
+                    "value": true
+                  }
+                ]
+              }
+            },
             {
               "name": "project",
               "description": "",
