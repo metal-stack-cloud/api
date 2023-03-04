@@ -79,6 +79,49 @@ func (m *Volume) validate(all bool) error {
 
 	// no validation rules for SourceSnapshotName
 
+	// no validation rules for VolumeHandle
+
+	// no validation rules for RebuildProgress
+
+	// no validation rules for PrimaryNodeUuid
+
+	// no validation rules for QosPolicyUuid
+
+	// no validation rules for QosPolicyName
+
+	// no validation rules for ReplicaCount
+
+	// no validation rules for ProtectionState
+
+	if all {
+		switch v := interface{}(m.GetStatistics()).(type) {
+		case interface{ ValidateAll() error }:
+			if err := v.ValidateAll(); err != nil {
+				errors = append(errors, VolumeValidationError{
+					field:  "Statistics",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		case interface{ Validate() error }:
+			if err := v.Validate(); err != nil {
+				errors = append(errors, VolumeValidationError{
+					field:  "Statistics",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		}
+	} else if v, ok := interface{}(m.GetStatistics()).(interface{ Validate() error }); ok {
+		if err := v.Validate(); err != nil {
+			return VolumeValidationError{
+				field:  "Statistics",
+				reason: "embedded message failed validation",
+				cause:  err,
+			}
+		}
+	}
+
 	if all {
 		switch v := interface{}(m.GetCreatedAt()).(type) {
 		case interface{ ValidateAll() error }:
@@ -243,6 +286,128 @@ var _ interface {
 	ErrorName() string
 } = VolumeValidationError{}
 
+// Validate checks the field values on VolumeStatistics with the rules defined
+// in the proto definition for this message. If any rules are violated, the
+// first error encountered is returned, or nil if there are no violations.
+func (m *VolumeStatistics) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on VolumeStatistics with the rules
+// defined in the proto definition for this message. If any rules are
+// violated, the result is a list of violation errors wrapped in
+// VolumeStatisticsMultiError, or nil if none found.
+func (m *VolumeStatistics) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *VolumeStatistics) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	// no validation rules for LogicalUsedStorage
+
+	// no validation rules for PhysicalUsedStorage
+
+	// no validation rules for CompressionRatio
+
+	// no validation rules for TotalCompressionRatio
+
+	// no validation rules for PhysicalCapacity
+
+	// no validation rules for PhysicalOwnedCapacity
+
+	// no validation rules for PhysicalOwnedMemory
+
+	// no validation rules for PhysicalMemory
+
+	// no validation rules for UserWritten
+
+	// no validation rules for UnrecoverableDataIntegrityErrors
+
+	// no validation rules for RecoverableDataIntegrityErrors
+
+	if len(errors) > 0 {
+		return VolumeStatisticsMultiError(errors)
+	}
+
+	return nil
+}
+
+// VolumeStatisticsMultiError is an error wrapping multiple validation errors
+// returned by VolumeStatistics.ValidateAll() if the designated constraints
+// aren't met.
+type VolumeStatisticsMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m VolumeStatisticsMultiError) Error() string {
+	var msgs []string
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m VolumeStatisticsMultiError) AllErrors() []error { return m }
+
+// VolumeStatisticsValidationError is the validation error returned by
+// VolumeStatistics.Validate if the designated constraints aren't met.
+type VolumeStatisticsValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e VolumeStatisticsValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e VolumeStatisticsValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e VolumeStatisticsValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e VolumeStatisticsValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e VolumeStatisticsValidationError) ErrorName() string { return "VolumeStatisticsValidationError" }
+
+// Error satisfies the builtin error interface
+func (e VolumeStatisticsValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sVolumeStatistics.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = VolumeStatisticsValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = VolumeStatisticsValidationError{}
+
 // Validate checks the field values on Snapshot with the rules defined in the
 // proto definition for this message. If any rules are violated, the first
 // error encountered is returned, or nil if there are no violations.
@@ -284,6 +449,68 @@ func (m *Snapshot) validate(all bool) error {
 	// no validation rules for SourceVolumeUuid
 
 	// no validation rules for SourceVolumeName
+
+	// no validation rules for ReplicaCount
+
+	// no validation rules for PrimaryNodeUuid
+
+	if all {
+		switch v := interface{}(m.GetRetention()).(type) {
+		case interface{ ValidateAll() error }:
+			if err := v.ValidateAll(); err != nil {
+				errors = append(errors, SnapshotValidationError{
+					field:  "Retention",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		case interface{ Validate() error }:
+			if err := v.Validate(); err != nil {
+				errors = append(errors, SnapshotValidationError{
+					field:  "Retention",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		}
+	} else if v, ok := interface{}(m.GetRetention()).(interface{ Validate() error }); ok {
+		if err := v.Validate(); err != nil {
+			return SnapshotValidationError{
+				field:  "Retention",
+				reason: "embedded message failed validation",
+				cause:  err,
+			}
+		}
+	}
+
+	if all {
+		switch v := interface{}(m.GetStatistics()).(type) {
+		case interface{ ValidateAll() error }:
+			if err := v.ValidateAll(); err != nil {
+				errors = append(errors, SnapshotValidationError{
+					field:  "Statistics",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		case interface{ Validate() error }:
+			if err := v.Validate(); err != nil {
+				errors = append(errors, SnapshotValidationError{
+					field:  "Statistics",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		}
+	} else if v, ok := interface{}(m.GetStatistics()).(interface{ Validate() error }); ok {
+		if err := v.Validate(); err != nil {
+			return SnapshotValidationError{
+				field:  "Statistics",
+				reason: "embedded message failed validation",
+				cause:  err,
+			}
+		}
+	}
 
 	if all {
 		switch v := interface{}(m.GetCreatedAt()).(type) {
@@ -448,6 +675,118 @@ var _ interface {
 	Cause() error
 	ErrorName() string
 } = SnapshotValidationError{}
+
+// Validate checks the field values on SnapshotStatistics with the rules
+// defined in the proto definition for this message. If any rules are
+// violated, the first error encountered is returned, or nil if there are no violations.
+func (m *SnapshotStatistics) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on SnapshotStatistics with the rules
+// defined in the proto definition for this message. If any rules are
+// violated, the result is a list of violation errors wrapped in
+// SnapshotStatisticsMultiError, or nil if none found.
+func (m *SnapshotStatistics) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *SnapshotStatistics) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	// no validation rules for PhysicalCapacity
+
+	// no validation rules for PhysicalOwnedCapacity
+
+	// no validation rules for PhysicalOwnedMemory
+
+	// no validation rules for PhysicalMemory
+
+	// no validation rules for UserWritten
+
+	if len(errors) > 0 {
+		return SnapshotStatisticsMultiError(errors)
+	}
+
+	return nil
+}
+
+// SnapshotStatisticsMultiError is an error wrapping multiple validation errors
+// returned by SnapshotStatistics.ValidateAll() if the designated constraints
+// aren't met.
+type SnapshotStatisticsMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m SnapshotStatisticsMultiError) Error() string {
+	var msgs []string
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m SnapshotStatisticsMultiError) AllErrors() []error { return m }
+
+// SnapshotStatisticsValidationError is the validation error returned by
+// SnapshotStatistics.Validate if the designated constraints aren't met.
+type SnapshotStatisticsValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e SnapshotStatisticsValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e SnapshotStatisticsValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e SnapshotStatisticsValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e SnapshotStatisticsValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e SnapshotStatisticsValidationError) ErrorName() string {
+	return "SnapshotStatisticsValidationError"
+}
+
+// Error satisfies the builtin error interface
+func (e SnapshotStatisticsValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sSnapshotStatistics.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = SnapshotStatisticsValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = SnapshotStatisticsValidationError{}
 
 // Validate checks the field values on VolumeServiceGetRequest with the rules
 // defined in the proto definition for this message. If any rules are

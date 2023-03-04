@@ -4,7 +4,7 @@
 // @ts-nocheck
 
 import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
-import { Message, proto3, protoInt64, Timestamp } from "@bufbuild/protobuf";
+import { Duration, Message, proto3, protoInt64, Timestamp } from "@bufbuild/protobuf";
 
 /**
  * Types
@@ -68,17 +68,62 @@ export class Volume extends Message<Volume> {
   sourceSnapshotName = "";
 
   /**
-   * @generated from field: google.protobuf.Timestamp created_at = 20;
+   * @generated from field: string volume_handle = 12;
+   */
+  volumeHandle = "";
+
+  /**
+   * @generated from field: repeated string node_ips = 13;
+   */
+  nodeIps: string[] = [];
+
+  /**
+   * @generated from field: string rebuild_progress = 14;
+   */
+  rebuildProgress = "";
+
+  /**
+   * @generated from field: string primary_node_uuid = 15;
+   */
+  primaryNodeUuid = "";
+
+  /**
+   * @generated from field: string qos_policy_uuid = 16;
+   */
+  qosPolicyUuid = "";
+
+  /**
+   * @generated from field: string qos_policy_name = 17;
+   */
+  qosPolicyName = "";
+
+  /**
+   * @generated from field: uint32 replica_count = 18;
+   */
+  replicaCount = 0;
+
+  /**
+   * @generated from field: string protection_state = 19;
+   */
+  protectionState = "";
+
+  /**
+   * @generated from field: api.v1.VolumeStatistics statistics = 20;
+   */
+  statistics?: VolumeStatistics;
+
+  /**
+   * @generated from field: google.protobuf.Timestamp created_at = 30;
    */
   createdAt?: Timestamp;
 
   /**
-   * @generated from field: google.protobuf.Timestamp updated_at = 21;
+   * @generated from field: google.protobuf.Timestamp updated_at = 31;
    */
   updatedAt?: Timestamp;
 
   /**
-   * @generated from field: google.protobuf.Timestamp deleted_at = 22;
+   * @generated from field: google.protobuf.Timestamp deleted_at = 32;
    */
   deletedAt?: Timestamp;
 
@@ -101,9 +146,18 @@ export class Volume extends Message<Volume> {
     { no: 9, name: "attached_to", kind: "scalar", T: 9 /* ScalarType.STRING */, repeated: true },
     { no: 10, name: "source_snapshot_uuid", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 11, name: "source_snapshot_name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 20, name: "created_at", kind: "message", T: Timestamp },
-    { no: 21, name: "updated_at", kind: "message", T: Timestamp },
-    { no: 22, name: "deleted_at", kind: "message", T: Timestamp },
+    { no: 12, name: "volume_handle", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 13, name: "node_ips", kind: "scalar", T: 9 /* ScalarType.STRING */, repeated: true },
+    { no: 14, name: "rebuild_progress", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 15, name: "primary_node_uuid", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 16, name: "qos_policy_uuid", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 17, name: "qos_policy_name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 18, name: "replica_count", kind: "scalar", T: 13 /* ScalarType.UINT32 */ },
+    { no: 19, name: "protection_state", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 20, name: "statistics", kind: "message", T: VolumeStatistics },
+    { no: 30, name: "created_at", kind: "message", T: Timestamp },
+    { no: 31, name: "updated_at", kind: "message", T: Timestamp },
+    { no: 32, name: "deleted_at", kind: "message", T: Timestamp },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Volume {
@@ -120,6 +174,135 @@ export class Volume extends Message<Volume> {
 
   static equals(a: Volume | PlainMessage<Volume> | undefined, b: Volume | PlainMessage<Volume> | undefined): boolean {
     return proto3.util.equals(Volume, a, b);
+  }
+}
+
+/**
+ * @generated from message api.v1.VolumeStatistics
+ */
+export class VolumeStatistics extends Message<VolumeStatistics> {
+  /**
+   * Logical Used Storage
+   *
+   * Logical storage space used by volume, given in bytes.
+   *
+   * @generated from field: uint64 logical_used_storage = 1;
+   */
+  logicalUsedStorage = protoInt64.zero;
+
+  /**
+   * Physical Used Storage
+   *
+   * Physical storage space used by volume excluding parity, given in bytes.
+   *
+   * @generated from field: uint64 physical_used_storage = 2;
+   */
+  physicalUsedStorage = protoInt64.zero;
+
+  /**
+   * commpression ratio
+   *
+   * compression ratio userWritten/physicalCapacity
+   *
+   * @generated from field: double compression_ratio = 3;
+   */
+  compressionRatio = 0;
+
+  /**
+   * total commpression ratio
+   *
+   * compression ratio sum(userWritten) / sum(physical capacity)
+   *
+   * @generated from field: double total_compression_ratio = 4;
+   */
+  totalCompressionRatio = 0;
+
+  /**
+   * PhysicalCapacity
+   *
+   * The physical capacity that exists in this volume layer
+   *
+   * @generated from field: uint64 physical_capacity = 5;
+   */
+  physicalCapacity = protoInt64.zero;
+
+  /**
+   * Physical Owned storage Capacity
+   *
+   * The capacity that would be freed when volume is deleted
+   *
+   * @generated from field: uint64 physical_owned_capacity = 6;
+   */
+  physicalOwnedCapacity = protoInt64.zero;
+
+  /**
+   * @generated from field: uint64 physical_owned_memory = 7;
+   */
+  physicalOwnedMemory = protoInt64.zero;
+
+  /**
+   * @generated from field: uint64 physical_memory = 8;
+   */
+  physicalMemory = protoInt64.zero;
+
+  /**
+   * @generated from field: uint64 user_written = 9;
+   */
+  userWritten = protoInt64.zero;
+
+  /**
+   * Unrecoverable Data Integrity Errors
+   *
+   * Number of data integrity errors that could no be recovered by the system.
+   *
+   * @generated from field: uint32 unrecoverable_data_integrity_errors = 10;
+   */
+  unrecoverableDataIntegrityErrors = 0;
+
+  /**
+   * Recoverable Data Integrity Errors
+   *
+   * Number of data integrity errors that were recovered by the system.
+   *
+   * @generated from field: uint32 recoverable_data_integrity_errors = 12;
+   */
+  recoverableDataIntegrityErrors = 0;
+
+  constructor(data?: PartialMessage<VolumeStatistics>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime = proto3;
+  static readonly typeName = "api.v1.VolumeStatistics";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "logical_used_storage", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
+    { no: 2, name: "physical_used_storage", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
+    { no: 3, name: "compression_ratio", kind: "scalar", T: 1 /* ScalarType.DOUBLE */ },
+    { no: 4, name: "total_compression_ratio", kind: "scalar", T: 1 /* ScalarType.DOUBLE */ },
+    { no: 5, name: "physical_capacity", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
+    { no: 6, name: "physical_owned_capacity", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
+    { no: 7, name: "physical_owned_memory", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
+    { no: 8, name: "physical_memory", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
+    { no: 9, name: "user_written", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
+    { no: 10, name: "unrecoverable_data_integrity_errors", kind: "scalar", T: 13 /* ScalarType.UINT32 */ },
+    { no: 12, name: "recoverable_data_integrity_errors", kind: "scalar", T: 13 /* ScalarType.UINT32 */ },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): VolumeStatistics {
+    return new VolumeStatistics().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): VolumeStatistics {
+    return new VolumeStatistics().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): VolumeStatistics {
+    return new VolumeStatistics().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: VolumeStatistics | PlainMessage<VolumeStatistics> | undefined, b: VolumeStatistics | PlainMessage<VolumeStatistics> | undefined): boolean {
+    return proto3.util.equals(VolumeStatistics, a, b);
   }
 }
 
@@ -178,6 +361,26 @@ export class Snapshot extends Message<Snapshot> {
   sourceVolumeName = "";
 
   /**
+   * @generated from field: uint32 replica_count = 12;
+   */
+  replicaCount = 0;
+
+  /**
+   * @generated from field: string primary_node_uuid = 13;
+   */
+  primaryNodeUuid = "";
+
+  /**
+   * @generated from field: google.protobuf.Duration retention = 14;
+   */
+  retention?: Duration;
+
+  /**
+   * @generated from field: api.v1.SnapshotStatistics statistics = 15;
+   */
+  statistics?: SnapshotStatistics;
+
+  /**
    * @generated from field: google.protobuf.Timestamp created_at = 20;
    */
   createdAt?: Timestamp;
@@ -210,6 +413,10 @@ export class Snapshot extends Message<Snapshot> {
     { no: 8, name: "state", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 10, name: "source_volume_uuid", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 11, name: "source_volume_name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 12, name: "replica_count", kind: "scalar", T: 13 /* ScalarType.UINT32 */ },
+    { no: 13, name: "primary_node_uuid", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 14, name: "retention", kind: "message", T: Duration },
+    { no: 15, name: "statistics", kind: "message", T: SnapshotStatistics },
     { no: 20, name: "created_at", kind: "message", T: Timestamp },
     { no: 21, name: "updated_at", kind: "message", T: Timestamp },
     { no: 22, name: "deleted_at", kind: "message", T: Timestamp },
@@ -229,6 +436,67 @@ export class Snapshot extends Message<Snapshot> {
 
   static equals(a: Snapshot | PlainMessage<Snapshot> | undefined, b: Snapshot | PlainMessage<Snapshot> | undefined): boolean {
     return proto3.util.equals(Snapshot, a, b);
+  }
+}
+
+/**
+ * @generated from message api.v1.SnapshotStatistics
+ */
+export class SnapshotStatistics extends Message<SnapshotStatistics> {
+  /**
+   * @generated from field: uint64 physical_capacity = 1;
+   */
+  physicalCapacity = protoInt64.zero;
+
+  /**
+   * @generated from field: uint64 physical_owned_capacity = 2;
+   */
+  physicalOwnedCapacity = protoInt64.zero;
+
+  /**
+   * @generated from field: uint64 physical_owned_memory = 3;
+   */
+  physicalOwnedMemory = protoInt64.zero;
+
+  /**
+   * @generated from field: uint64 physical_memory = 4;
+   */
+  physicalMemory = protoInt64.zero;
+
+  /**
+   * @generated from field: uint64 user_written = 5;
+   */
+  userWritten = protoInt64.zero;
+
+  constructor(data?: PartialMessage<SnapshotStatistics>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime = proto3;
+  static readonly typeName = "api.v1.SnapshotStatistics";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "physical_capacity", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
+    { no: 2, name: "physical_owned_capacity", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
+    { no: 3, name: "physical_owned_memory", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
+    { no: 4, name: "physical_memory", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
+    { no: 5, name: "user_written", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): SnapshotStatistics {
+    return new SnapshotStatistics().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): SnapshotStatistics {
+    return new SnapshotStatistics().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): SnapshotStatistics {
+    return new SnapshotStatistics().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: SnapshotStatistics | PlainMessage<SnapshotStatistics> | undefined, b: SnapshotStatistics | PlainMessage<SnapshotStatistics> | undefined): boolean {
+    return proto3.util.equals(SnapshotStatistics, a, b);
   }
 }
 

@@ -4,7 +4,7 @@
 /* eslint-disable */
 // @ts-nocheck
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.SnapshotServiceDeleteResponse = exports.SnapshotServiceListResponse = exports.SnapshotServiceGetResponse = exports.VolumeServiceDeleteResponse = exports.VolumeServiceListResponse = exports.VolumeServiceGetResponse = exports.SnapshotServiceDeleteRequest = exports.SnapshotServiceListRequest = exports.SnapshotServiceGetRequest = exports.VolumeServiceDeleteRequest = exports.VolumeServiceListRequest = exports.VolumeServiceGetRequest = exports.Snapshot = exports.Volume = void 0;
+exports.SnapshotServiceDeleteResponse = exports.SnapshotServiceListResponse = exports.SnapshotServiceGetResponse = exports.VolumeServiceDeleteResponse = exports.VolumeServiceListResponse = exports.VolumeServiceGetResponse = exports.SnapshotServiceDeleteRequest = exports.SnapshotServiceListRequest = exports.SnapshotServiceGetRequest = exports.VolumeServiceDeleteRequest = exports.VolumeServiceListRequest = exports.VolumeServiceGetRequest = exports.SnapshotStatistics = exports.Snapshot = exports.VolumeStatistics = exports.Volume = void 0;
 const protobuf_1 = require("@bufbuild/protobuf");
 /**
  * Types
@@ -58,6 +58,38 @@ class Volume extends protobuf_1.Message {
          * @generated from field: string source_snapshot_name = 11;
          */
         this.sourceSnapshotName = "";
+        /**
+         * @generated from field: string volume_handle = 12;
+         */
+        this.volumeHandle = "";
+        /**
+         * @generated from field: repeated string node_ips = 13;
+         */
+        this.nodeIps = [];
+        /**
+         * @generated from field: string rebuild_progress = 14;
+         */
+        this.rebuildProgress = "";
+        /**
+         * @generated from field: string primary_node_uuid = 15;
+         */
+        this.primaryNodeUuid = "";
+        /**
+         * @generated from field: string qos_policy_uuid = 16;
+         */
+        this.qosPolicyUuid = "";
+        /**
+         * @generated from field: string qos_policy_name = 17;
+         */
+        this.qosPolicyName = "";
+        /**
+         * @generated from field: uint32 replica_count = 18;
+         */
+        this.replicaCount = 0;
+        /**
+         * @generated from field: string protection_state = 19;
+         */
+        this.protectionState = "";
         protobuf_1.proto3.util.initPartial(data, this);
     }
     static fromBinary(bytes, options) {
@@ -88,9 +120,131 @@ Volume.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 9, name: "attached_to", kind: "scalar", T: 9 /* ScalarType.STRING */, repeated: true },
     { no: 10, name: "source_snapshot_uuid", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 11, name: "source_snapshot_name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 20, name: "created_at", kind: "message", T: protobuf_1.Timestamp },
-    { no: 21, name: "updated_at", kind: "message", T: protobuf_1.Timestamp },
-    { no: 22, name: "deleted_at", kind: "message", T: protobuf_1.Timestamp },
+    { no: 12, name: "volume_handle", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 13, name: "node_ips", kind: "scalar", T: 9 /* ScalarType.STRING */, repeated: true },
+    { no: 14, name: "rebuild_progress", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 15, name: "primary_node_uuid", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 16, name: "qos_policy_uuid", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 17, name: "qos_policy_name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 18, name: "replica_count", kind: "scalar", T: 13 /* ScalarType.UINT32 */ },
+    { no: 19, name: "protection_state", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 20, name: "statistics", kind: "message", T: VolumeStatistics },
+    { no: 30, name: "created_at", kind: "message", T: protobuf_1.Timestamp },
+    { no: 31, name: "updated_at", kind: "message", T: protobuf_1.Timestamp },
+    { no: 32, name: "deleted_at", kind: "message", T: protobuf_1.Timestamp },
+]);
+/**
+ * @generated from message api.v1.VolumeStatistics
+ */
+class VolumeStatistics extends protobuf_1.Message {
+    constructor(data) {
+        super();
+        /**
+         * Logical Used Storage
+         *
+         * Logical storage space used by volume, given in bytes.
+         *
+         * @generated from field: uint64 logical_used_storage = 1;
+         */
+        this.logicalUsedStorage = protobuf_1.protoInt64.zero;
+        /**
+         * Physical Used Storage
+         *
+         * Physical storage space used by volume excluding parity, given in bytes.
+         *
+         * @generated from field: uint64 physical_used_storage = 2;
+         */
+        this.physicalUsedStorage = protobuf_1.protoInt64.zero;
+        /**
+         * commpression ratio
+         *
+         * compression ratio userWritten/physicalCapacity
+         *
+         * @generated from field: double compression_ratio = 3;
+         */
+        this.compressionRatio = 0;
+        /**
+         * total commpression ratio
+         *
+         * compression ratio sum(userWritten) / sum(physical capacity)
+         *
+         * @generated from field: double total_compression_ratio = 4;
+         */
+        this.totalCompressionRatio = 0;
+        /**
+         * PhysicalCapacity
+         *
+         * The physical capacity that exists in this volume layer
+         *
+         * @generated from field: uint64 physical_capacity = 5;
+         */
+        this.physicalCapacity = protobuf_1.protoInt64.zero;
+        /**
+         * Physical Owned storage Capacity
+         *
+         * The capacity that would be freed when volume is deleted
+         *
+         * @generated from field: uint64 physical_owned_capacity = 6;
+         */
+        this.physicalOwnedCapacity = protobuf_1.protoInt64.zero;
+        /**
+         * @generated from field: uint64 physical_owned_memory = 7;
+         */
+        this.physicalOwnedMemory = protobuf_1.protoInt64.zero;
+        /**
+         * @generated from field: uint64 physical_memory = 8;
+         */
+        this.physicalMemory = protobuf_1.protoInt64.zero;
+        /**
+         * @generated from field: uint64 user_written = 9;
+         */
+        this.userWritten = protobuf_1.protoInt64.zero;
+        /**
+         * Unrecoverable Data Integrity Errors
+         *
+         * Number of data integrity errors that could no be recovered by the system.
+         *
+         * @generated from field: uint32 unrecoverable_data_integrity_errors = 10;
+         */
+        this.unrecoverableDataIntegrityErrors = 0;
+        /**
+         * Recoverable Data Integrity Errors
+         *
+         * Number of data integrity errors that were recovered by the system.
+         *
+         * @generated from field: uint32 recoverable_data_integrity_errors = 12;
+         */
+        this.recoverableDataIntegrityErrors = 0;
+        protobuf_1.proto3.util.initPartial(data, this);
+    }
+    static fromBinary(bytes, options) {
+        return new VolumeStatistics().fromBinary(bytes, options);
+    }
+    static fromJson(jsonValue, options) {
+        return new VolumeStatistics().fromJson(jsonValue, options);
+    }
+    static fromJsonString(jsonString, options) {
+        return new VolumeStatistics().fromJsonString(jsonString, options);
+    }
+    static equals(a, b) {
+        return protobuf_1.proto3.util.equals(VolumeStatistics, a, b);
+    }
+}
+exports.VolumeStatistics = VolumeStatistics;
+VolumeStatistics.runtime = protobuf_1.proto3;
+VolumeStatistics.typeName = "api.v1.VolumeStatistics";
+VolumeStatistics.fields = protobuf_1.proto3.util.newFieldList(() => [
+    { no: 1, name: "logical_used_storage", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
+    { no: 2, name: "physical_used_storage", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
+    { no: 3, name: "compression_ratio", kind: "scalar", T: 1 /* ScalarType.DOUBLE */ },
+    { no: 4, name: "total_compression_ratio", kind: "scalar", T: 1 /* ScalarType.DOUBLE */ },
+    { no: 5, name: "physical_capacity", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
+    { no: 6, name: "physical_owned_capacity", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
+    { no: 7, name: "physical_owned_memory", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
+    { no: 8, name: "physical_memory", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
+    { no: 9, name: "user_written", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
+    { no: 10, name: "unrecoverable_data_integrity_errors", kind: "scalar", T: 13 /* ScalarType.UINT32 */ },
+    { no: 12, name: "recoverable_data_integrity_errors", kind: "scalar", T: 13 /* ScalarType.UINT32 */ },
 ]);
 /**
  * @generated from message api.v1.Snapshot
@@ -138,6 +292,14 @@ class Snapshot extends protobuf_1.Message {
          * @generated from field: string source_volume_name = 11;
          */
         this.sourceVolumeName = "";
+        /**
+         * @generated from field: uint32 replica_count = 12;
+         */
+        this.replicaCount = 0;
+        /**
+         * @generated from field: string primary_node_uuid = 13;
+         */
+        this.primaryNodeUuid = "";
         protobuf_1.proto3.util.initPartial(data, this);
     }
     static fromBinary(bytes, options) {
@@ -167,9 +329,64 @@ Snapshot.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 8, name: "state", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 10, name: "source_volume_uuid", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 11, name: "source_volume_name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 12, name: "replica_count", kind: "scalar", T: 13 /* ScalarType.UINT32 */ },
+    { no: 13, name: "primary_node_uuid", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 14, name: "retention", kind: "message", T: protobuf_1.Duration },
+    { no: 15, name: "statistics", kind: "message", T: SnapshotStatistics },
     { no: 20, name: "created_at", kind: "message", T: protobuf_1.Timestamp },
     { no: 21, name: "updated_at", kind: "message", T: protobuf_1.Timestamp },
     { no: 22, name: "deleted_at", kind: "message", T: protobuf_1.Timestamp },
+]);
+/**
+ * @generated from message api.v1.SnapshotStatistics
+ */
+class SnapshotStatistics extends protobuf_1.Message {
+    constructor(data) {
+        super();
+        /**
+         * @generated from field: uint64 physical_capacity = 1;
+         */
+        this.physicalCapacity = protobuf_1.protoInt64.zero;
+        /**
+         * @generated from field: uint64 physical_owned_capacity = 2;
+         */
+        this.physicalOwnedCapacity = protobuf_1.protoInt64.zero;
+        /**
+         * @generated from field: uint64 physical_owned_memory = 3;
+         */
+        this.physicalOwnedMemory = protobuf_1.protoInt64.zero;
+        /**
+         * @generated from field: uint64 physical_memory = 4;
+         */
+        this.physicalMemory = protobuf_1.protoInt64.zero;
+        /**
+         * @generated from field: uint64 user_written = 5;
+         */
+        this.userWritten = protobuf_1.protoInt64.zero;
+        protobuf_1.proto3.util.initPartial(data, this);
+    }
+    static fromBinary(bytes, options) {
+        return new SnapshotStatistics().fromBinary(bytes, options);
+    }
+    static fromJson(jsonValue, options) {
+        return new SnapshotStatistics().fromJson(jsonValue, options);
+    }
+    static fromJsonString(jsonString, options) {
+        return new SnapshotStatistics().fromJsonString(jsonString, options);
+    }
+    static equals(a, b) {
+        return protobuf_1.proto3.util.equals(SnapshotStatistics, a, b);
+    }
+}
+exports.SnapshotStatistics = SnapshotStatistics;
+SnapshotStatistics.runtime = protobuf_1.proto3;
+SnapshotStatistics.typeName = "api.v1.SnapshotStatistics";
+SnapshotStatistics.fields = protobuf_1.proto3.util.newFieldList(() => [
+    { no: 1, name: "physical_capacity", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
+    { no: 2, name: "physical_owned_capacity", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
+    { no: 3, name: "physical_owned_memory", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
+    { no: 4, name: "physical_memory", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
+    { no: 5, name: "user_written", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
 ]);
 /**
  * Requests

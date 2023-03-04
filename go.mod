@@ -5,13 +5,13 @@ go 1.20
 require (
 	github.com/Masterminds/sprig/v3 v3.2.3
 	github.com/bufbuild/connect-go v1.5.2
-	github.com/bufbuild/protocompile v0.2.0
+	github.com/bufbuild/protocompile v0.4.0
 	github.com/envoyproxy/protoc-gen-validate v0.9.1
 	github.com/klauspost/connect-compress v1.0.0
-	github.com/stretchr/testify v1.8.1
+	github.com/stretchr/testify v1.8.2
 	go.uber.org/zap v1.24.0
-	golang.org/x/exp v0.0.0-20230213192124-5e25df0256eb
-	google.golang.org/protobuf v1.28.2-0.20220831092852-f930b1dc76e8
+	golang.org/x/exp v0.0.0-20230303215020-44a13b063f3e
+	google.golang.org/protobuf v1.28.2-0.20230222093303-bc1253ad3743
 )
 
 require (
@@ -21,7 +21,7 @@ require (
 	github.com/google/uuid v1.3.0 // indirect
 	github.com/huandu/xstrings v1.4.0 // indirect
 	github.com/imdario/mergo v0.3.13 // indirect
-	github.com/klauspost/compress v1.15.15 // indirect
+	github.com/klauspost/compress v1.16.0 // indirect
 	github.com/mitchellh/copystructure v1.2.0 // indirect
 	github.com/mitchellh/reflectwalk v1.0.2 // indirect
 	github.com/pkg/errors v0.9.1 // indirect

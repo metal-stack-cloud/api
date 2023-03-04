@@ -3,6 +3,7 @@ syntax = "proto3";
 package api.v1;
 
 import "api/v1/common.proto";
+import "google/protobuf/duration.proto";
 import "google/protobuf/timestamp.proto";
 import "validate/validate.proto";
 
@@ -55,10 +56,57 @@ message Volume {
   repeated string attached_to = 9;
   string source_snapshot_uuid = 10;
   string source_snapshot_name = 11;
+  string volume_handle = 12;
+  repeated string node_ips = 13;
+  string rebuild_progress = 14;
+  string primary_node_uuid = 15;
+  string qos_policy_uuid = 16;
+  string qos_policy_name = 17;
+  uint32 replica_count = 18;
+  string protection_state = 19;
+  VolumeStatistics statistics = 20;
 
-  google.protobuf.Timestamp created_at = 20;
-  google.protobuf.Timestamp updated_at = 21;
-  google.protobuf.Timestamp deleted_at = 22;
+  google.protobuf.Timestamp created_at = 30;
+  google.protobuf.Timestamp updated_at = 31;
+  google.protobuf.Timestamp deleted_at = 32;
+}
+
+message VolumeStatistics {
+  // Logical Used Storage
+  //
+  // Logical storage space used by volume, given in bytes.
+  uint64 logical_used_storage = 1;
+  // Physical Used Storage
+  //
+  // Physical storage space used by volume excluding parity, given in bytes.
+  uint64 physical_used_storage = 2;
+  // commpression ratio
+  //
+  // compression ratio userWritten/physicalCapacity
+  double compression_ratio = 3;
+  // total commpression ratio
+  //
+  // compression ratio sum(userWritten) / sum(physical capacity)
+  double total_compression_ratio = 4;
+  // PhysicalCapacity
+  //
+  // The physical capacity that exists in this volume layer
+  uint64 physical_capacity = 5;
+  // Physical Owned storage Capacity
+  //
+  // The capacity that would be freed when volume is deleted
+  uint64 physical_owned_capacity = 6;
+  uint64 physical_owned_memory = 7;
+  uint64 physical_memory = 8;
+  uint64 user_written = 9;
+  // Unrecoverable Data Integrity Errors
+  //
+  // Number of data integrity errors that could no be recovered by the system.
+  uint32 unrecoverable_data_integrity_errors = 10;
+  // Recoverable Data Integrity Errors
+  //
+  // Number of data integrity errors that were recovered by the system.
+  uint32 recoverable_data_integrity_errors = 12;
 }
 
 message Snapshot {
@@ -72,10 +120,22 @@ message Snapshot {
   string state = 8;
   string source_volume_uuid = 10;
   string source_volume_name = 11;
+  uint32 replica_count = 12;
+  string primary_node_uuid = 13;
+  google.protobuf.Duration retention = 14;
+  SnapshotStatistics statistics = 15;
 
   google.protobuf.Timestamp created_at = 20;
   google.protobuf.Timestamp updated_at = 21;
   google.protobuf.Timestamp deleted_at = 22;
+}
+
+message SnapshotStatistics {
+  uint64 physical_capacity = 1;
+  uint64 physical_owned_capacity = 2;
+  uint64 physical_owned_memory = 3;
+  uint64 physical_memory = 4;
+  uint64 user_written = 5;
 }
 
 // Requests
