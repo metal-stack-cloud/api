@@ -48,9 +48,9 @@ export class StorageServiceClusterInfoRequest extends Message<StorageServiceClus
  */
 export class StorageServiceClusterInfoResponse extends Message<StorageServiceClusterInfoResponse> {
   /**
-   * @generated from field: admin.v1.StorageClusterInfo info = 1;
+   * @generated from field: repeated admin.v1.StorageClusterInfo infos = 1;
    */
-  info?: StorageClusterInfo;
+  infos: StorageClusterInfo[] = [];
 
   constructor(data?: PartialMessage<StorageServiceClusterInfoResponse>) {
     super();
@@ -60,7 +60,7 @@ export class StorageServiceClusterInfoResponse extends Message<StorageServiceClu
   static readonly runtime = proto3;
   static readonly typeName = "admin.v1.StorageServiceClusterInfoResponse";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "info", kind: "message", T: StorageClusterInfo },
+    { no: 1, name: "infos", kind: "message", T: StorageClusterInfo, repeated: true },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): StorageServiceClusterInfoResponse {

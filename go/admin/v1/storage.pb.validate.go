@@ -167,33 +167,38 @@ func (m *StorageServiceClusterInfoResponse) validate(all bool) error {
 
 	var errors []error
 
-	if all {
-		switch v := interface{}(m.GetInfo()).(type) {
-		case interface{ ValidateAll() error }:
-			if err := v.ValidateAll(); err != nil {
-				errors = append(errors, StorageServiceClusterInfoResponseValidationError{
-					field:  "Info",
-					reason: "embedded message failed validation",
-					cause:  err,
-				})
+	for idx, item := range m.GetInfos() {
+		_, _ = idx, item
+
+		if all {
+			switch v := interface{}(item).(type) {
+			case interface{ ValidateAll() error }:
+				if err := v.ValidateAll(); err != nil {
+					errors = append(errors, StorageServiceClusterInfoResponseValidationError{
+						field:  fmt.Sprintf("Infos[%v]", idx),
+						reason: "embedded message failed validation",
+						cause:  err,
+					})
+				}
+			case interface{ Validate() error }:
+				if err := v.Validate(); err != nil {
+					errors = append(errors, StorageServiceClusterInfoResponseValidationError{
+						field:  fmt.Sprintf("Infos[%v]", idx),
+						reason: "embedded message failed validation",
+						cause:  err,
+					})
+				}
 			}
-		case interface{ Validate() error }:
+		} else if v, ok := interface{}(item).(interface{ Validate() error }); ok {
 			if err := v.Validate(); err != nil {
-				errors = append(errors, StorageServiceClusterInfoResponseValidationError{
-					field:  "Info",
+				return StorageServiceClusterInfoResponseValidationError{
+					field:  fmt.Sprintf("Infos[%v]", idx),
 					reason: "embedded message failed validation",
 					cause:  err,
-				})
+				}
 			}
 		}
-	} else if v, ok := interface{}(m.GetInfo()).(interface{ Validate() error }); ok {
-		if err := v.Validate(); err != nil {
-			return StorageServiceClusterInfoResponseValidationError{
-				field:  "Info",
-				reason: "embedded message failed validation",
-				cause:  err,
-			}
-		}
+
 	}
 
 	if len(errors) > 0 {

@@ -39,6 +39,10 @@ StorageServiceClusterInfoRequest.fields = protobuf_1.proto3.util.newFieldList(()
 class StorageServiceClusterInfoResponse extends protobuf_1.Message {
     constructor(data) {
         super();
+        /**
+         * @generated from field: repeated admin.v1.StorageClusterInfo infos = 1;
+         */
+        this.infos = [];
         protobuf_1.proto3.util.initPartial(data, this);
     }
     static fromBinary(bytes, options) {
@@ -58,7 +62,7 @@ exports.StorageServiceClusterInfoResponse = StorageServiceClusterInfoResponse;
 StorageServiceClusterInfoResponse.runtime = protobuf_1.proto3;
 StorageServiceClusterInfoResponse.typeName = "admin.v1.StorageServiceClusterInfoResponse";
 StorageServiceClusterInfoResponse.fields = protobuf_1.proto3.util.newFieldList(() => [
-    { no: 1, name: "info", kind: "message", T: StorageClusterInfo },
+    { no: 1, name: "infos", kind: "message", T: StorageClusterInfo, repeated: true },
 ]);
 /**
  * @generated from message admin.v1.StorageClusterInfo

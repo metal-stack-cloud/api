@@ -16,7 +16,7 @@ message StorageServiceClusterInfoRequest {
 }
 
 message StorageServiceClusterInfoResponse {
-  StorageClusterInfo info = 1;
+  repeated StorageClusterInfo infos = 1;
 }
 
 message StorageClusterInfo {

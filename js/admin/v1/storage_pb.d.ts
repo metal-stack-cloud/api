@@ -22,9 +22,9 @@ export declare class StorageServiceClusterInfoRequest extends Message<StorageSer
  */
 export declare class StorageServiceClusterInfoResponse extends Message<StorageServiceClusterInfoResponse> {
     /**
-     * @generated from field: admin.v1.StorageClusterInfo info = 1;
+     * @generated from field: repeated admin.v1.StorageClusterInfo infos = 1;
      */
-    info?: StorageClusterInfo;
+    infos: StorageClusterInfo[];
     constructor(data?: PartialMessage<StorageServiceClusterInfoResponse>);
     static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
     static readonly typeName = "admin.v1.StorageServiceClusterInfoResponse";

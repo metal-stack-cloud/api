@@ -2305,9 +2305,9 @@
           "extensions": [],
           "fields": [
             {
-              "name": "info",
+              "name": "infos",
               "description": "",
-              "label": "",
+              "label": "repeated",
               "type": "StorageClusterInfo",
               "longType": "StorageClusterInfo",
               "fullType": "admin.v1.StorageClusterInfo",
