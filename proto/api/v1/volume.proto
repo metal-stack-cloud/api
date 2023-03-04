@@ -112,12 +112,13 @@ message VolumeStatistics {
 message Snapshot {
   string uuid = 1;
   string name = 2;
-  string project = 3;
-  string partition = 4;
-  string storage_class = 5;
-  uint64 size = 6;
-  uint64 usage = 7;
-  string state = 8;
+  string description = 3;
+  string project = 4;
+  string partition = 5;
+  string storage_class = 6;
+  uint64 size = 7;
+  uint64 usage = 8;
+  string state = 9;
   string source_volume_uuid = 10;
   string source_volume_name = 11;
   uint32 replica_count = 12;

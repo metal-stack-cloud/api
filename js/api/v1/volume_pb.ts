@@ -321,32 +321,37 @@ export class Snapshot extends Message<Snapshot> {
   name = "";
 
   /**
-   * @generated from field: string project = 3;
+   * @generated from field: string description = 3;
+   */
+  description = "";
+
+  /**
+   * @generated from field: string project = 4;
    */
   project = "";
 
   /**
-   * @generated from field: string partition = 4;
+   * @generated from field: string partition = 5;
    */
   partition = "";
 
   /**
-   * @generated from field: string storage_class = 5;
+   * @generated from field: string storage_class = 6;
    */
   storageClass = "";
 
   /**
-   * @generated from field: uint64 size = 6;
+   * @generated from field: uint64 size = 7;
    */
   size = protoInt64.zero;
 
   /**
-   * @generated from field: uint64 usage = 7;
+   * @generated from field: uint64 usage = 8;
    */
   usage = protoInt64.zero;
 
   /**
-   * @generated from field: string state = 8;
+   * @generated from field: string state = 9;
    */
   state = "";
 
@@ -405,12 +410,13 @@ export class Snapshot extends Message<Snapshot> {
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
     { no: 1, name: "uuid", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 2, name: "name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 3, name: "project", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 4, name: "partition", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 5, name: "storage_class", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 6, name: "size", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
-    { no: 7, name: "usage", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
-    { no: 8, name: "state", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 3, name: "description", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 4, name: "project", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 5, name: "partition", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 6, name: "storage_class", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 7, name: "size", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
+    { no: 8, name: "usage", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
+    { no: 9, name: "state", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 10, name: "source_volume_uuid", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 11, name: "source_volume_name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 12, name: "replica_count", kind: "scalar", T: 13 /* ScalarType.UINT32 */ },

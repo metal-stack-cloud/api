@@ -434,6 +434,8 @@ func (m *Snapshot) validate(all bool) error {
 
 	// no validation rules for Name
 
+	// no validation rules for Description
+
 	// no validation rules for Project
 
 	// no validation rules for Partition

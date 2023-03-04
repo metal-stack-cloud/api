@@ -209,27 +209,31 @@ export declare class Snapshot extends Message<Snapshot> {
      */
     name: string;
     /**
-     * @generated from field: string project = 3;
+     * @generated from field: string description = 3;
+     */
+    description: string;
+    /**
+     * @generated from field: string project = 4;
      */
     project: string;
     /**
-     * @generated from field: string partition = 4;
+     * @generated from field: string partition = 5;
      */
     partition: string;
     /**
-     * @generated from field: string storage_class = 5;
+     * @generated from field: string storage_class = 6;
      */
     storageClass: string;
     /**
-     * @generated from field: uint64 size = 6;
+     * @generated from field: uint64 size = 7;
      */
     size: bigint;
     /**
-     * @generated from field: uint64 usage = 7;
+     * @generated from field: uint64 usage = 8;
      */
     usage: bigint;
     /**
-     * @generated from field: string state = 8;
+     * @generated from field: string state = 9;
      */
     state: string;
     /**
