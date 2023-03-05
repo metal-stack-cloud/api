@@ -275,6 +275,26 @@ export declare class ClusterStatisticsApi extends Message<ClusterStatisticsApi> 
  * @generated from message admin.v1.StorageServiceListVolumesRequest
  */
 export declare class StorageServiceListVolumesRequest extends Message<StorageServiceListVolumesRequest> {
+    /**
+     * @generated from field: optional string uuid = 1;
+     */
+    uuid?: string;
+    /**
+     * @generated from field: optional string project = 2;
+     */
+    project?: string;
+    /**
+     * @generated from field: optional string partition = 3;
+     */
+    partition?: string;
+    /**
+     * @generated from field: optional string name = 4;
+     */
+    name?: string;
+    /**
+     * @generated from field: optional string tenant = 5;
+     */
+    tenant?: string;
     constructor(data?: PartialMessage<StorageServiceListVolumesRequest>);
     static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime.js").ProtoRuntime;
     static readonly typeName = "admin.v1.StorageServiceListVolumesRequest";
@@ -305,6 +325,26 @@ export declare class StorageServiceListVolumesResponse extends Message<StorageSe
  * @generated from message admin.v1.StorageServiceListSnapshotsRequest
  */
 export declare class StorageServiceListSnapshotsRequest extends Message<StorageServiceListSnapshotsRequest> {
+    /**
+     * @generated from field: optional string uuid = 1;
+     */
+    uuid?: string;
+    /**
+     * @generated from field: optional string project = 2;
+     */
+    project?: string;
+    /**
+     * @generated from field: optional string partition = 3;
+     */
+    partition?: string;
+    /**
+     * @generated from field: optional string name = 4;
+     */
+    name?: string;
+    /**
+     * @generated from field: optional string tenant = 5;
+     */
+    tenant?: string;
     constructor(data?: PartialMessage<StorageServiceListSnapshotsRequest>);
     static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime.js").ProtoRuntime;
     static readonly typeName = "admin.v1.StorageServiceListSnapshotsRequest";

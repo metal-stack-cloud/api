@@ -404,7 +404,13 @@ class StorageServiceListVolumesRequest extends protobuf_1.Message {
 exports.StorageServiceListVolumesRequest = StorageServiceListVolumesRequest;
 StorageServiceListVolumesRequest.runtime = protobuf_1.proto3;
 StorageServiceListVolumesRequest.typeName = "admin.v1.StorageServiceListVolumesRequest";
-StorageServiceListVolumesRequest.fields = protobuf_1.proto3.util.newFieldList(() => []);
+StorageServiceListVolumesRequest.fields = protobuf_1.proto3.util.newFieldList(() => [
+    { no: 1, name: "uuid", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
+    { no: 2, name: "project", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
+    { no: 3, name: "partition", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
+    { no: 4, name: "name", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
+    { no: 5, name: "tenant", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
+]);
 /**
  * @generated from message admin.v1.StorageServiceListVolumesResponse
  */
@@ -460,7 +466,13 @@ class StorageServiceListSnapshotsRequest extends protobuf_1.Message {
 exports.StorageServiceListSnapshotsRequest = StorageServiceListSnapshotsRequest;
 StorageServiceListSnapshotsRequest.runtime = protobuf_1.proto3;
 StorageServiceListSnapshotsRequest.typeName = "admin.v1.StorageServiceListSnapshotsRequest";
-StorageServiceListSnapshotsRequest.fields = protobuf_1.proto3.util.newFieldList(() => []);
+StorageServiceListSnapshotsRequest.fields = protobuf_1.proto3.util.newFieldList(() => [
+    { no: 1, name: "uuid", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
+    { no: 2, name: "project", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
+    { no: 3, name: "partition", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
+    { no: 4, name: "name", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
+    { no: 5, name: "tenant", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
+]);
 /**
  * @generated from message admin.v1.StorageServiceListSnapshotsResponse
  */

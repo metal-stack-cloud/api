@@ -463,6 +463,31 @@ export class ClusterStatisticsApi extends Message<ClusterStatisticsApi> {
  * @generated from message admin.v1.StorageServiceListVolumesRequest
  */
 export class StorageServiceListVolumesRequest extends Message<StorageServiceListVolumesRequest> {
+  /**
+   * @generated from field: optional string uuid = 1;
+   */
+  uuid?: string;
+
+  /**
+   * @generated from field: optional string project = 2;
+   */
+  project?: string;
+
+  /**
+   * @generated from field: optional string partition = 3;
+   */
+  partition?: string;
+
+  /**
+   * @generated from field: optional string name = 4;
+   */
+  name?: string;
+
+  /**
+   * @generated from field: optional string tenant = 5;
+   */
+  tenant?: string;
+
   constructor(data?: PartialMessage<StorageServiceListVolumesRequest>) {
     super();
     proto3.util.initPartial(data, this);
@@ -471,6 +496,11 @@ export class StorageServiceListVolumesRequest extends Message<StorageServiceList
   static readonly runtime = proto3;
   static readonly typeName = "admin.v1.StorageServiceListVolumesRequest";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "uuid", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
+    { no: 2, name: "project", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
+    { no: 3, name: "partition", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
+    { no: 4, name: "name", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
+    { no: 5, name: "tenant", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): StorageServiceListVolumesRequest {
@@ -531,6 +561,31 @@ export class StorageServiceListVolumesResponse extends Message<StorageServiceLis
  * @generated from message admin.v1.StorageServiceListSnapshotsRequest
  */
 export class StorageServiceListSnapshotsRequest extends Message<StorageServiceListSnapshotsRequest> {
+  /**
+   * @generated from field: optional string uuid = 1;
+   */
+  uuid?: string;
+
+  /**
+   * @generated from field: optional string project = 2;
+   */
+  project?: string;
+
+  /**
+   * @generated from field: optional string partition = 3;
+   */
+  partition?: string;
+
+  /**
+   * @generated from field: optional string name = 4;
+   */
+  name?: string;
+
+  /**
+   * @generated from field: optional string tenant = 5;
+   */
+  tenant?: string;
+
   constructor(data?: PartialMessage<StorageServiceListSnapshotsRequest>) {
     super();
     proto3.util.initPartial(data, this);
@@ -539,6 +594,11 @@ export class StorageServiceListSnapshotsRequest extends Message<StorageServiceLi
   static readonly runtime = proto3;
   static readonly typeName = "admin.v1.StorageServiceListSnapshotsRequest";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "uuid", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
+    { no: 2, name: "project", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
+    { no: 3, name: "partition", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
+    { no: 4, name: "name", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
+    { no: 5, name: "tenant", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): StorageServiceListSnapshotsRequest {

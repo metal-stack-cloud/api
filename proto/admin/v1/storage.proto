@@ -4,6 +4,7 @@ package admin.v1;
 
 import "api/v1/common.proto";
 import "api/v1/volume.proto";
+import "validate/validate.proto";
 
 service StorageService {
   rpc ClusterInfo(StorageServiceClusterInfoRequest) returns (StorageServiceClusterInfoResponse) {
@@ -108,13 +109,31 @@ message ClusterStatisticsApi {
   double compression_ratio = 11;
 }
 
-message StorageServiceListVolumesRequest {}
+message StorageServiceListVolumesRequest {
+  optional string uuid = 1 [(validate.rules).string.uuid = true];
+  optional string project = 2 [(validate.rules).string = {
+    min_len: 2,
+    max_len: 128
+  }];
+  optional string partition = 3;
+  optional string name = 4;
+  optional string tenant = 5;
+}
 
 message StorageServiceListVolumesResponse {
   repeated api.v1.Volume volumes = 1;
 }
 
-message StorageServiceListSnapshotsRequest {}
+message StorageServiceListSnapshotsRequest {
+  optional string uuid = 1 [(validate.rules).string.uuid = true];
+  optional string project = 2 [(validate.rules).string = {
+    min_len: 2,
+    max_len: 128
+  }];
+  optional string partition = 3;
+  optional string name = 4;
+  optional string tenant = 5;
+}
 
 message StorageServiceListSnapshotsResponse {
   repeated api.v1.Snapshot snapshots = 1;
