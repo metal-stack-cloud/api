@@ -3,7 +3,7 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import { StorageServiceClusterInfoRequest, StorageServiceClusterInfoResponse } from "./storage_pb.js";
+import { StorageServiceClusterInfoRequest, StorageServiceClusterInfoResponse, StorageServiceListSnapshotsRequest, StorageServiceListSnapshotsResponse, StorageServiceListVolumesRequest, StorageServiceListVolumesResponse } from "./storage_pb.js";
 import { MethodKind } from "@bufbuild/protobuf";
 
 /**
@@ -19,6 +19,24 @@ export const StorageService = {
       name: "ClusterInfo",
       I: StorageServiceClusterInfoRequest,
       O: StorageServiceClusterInfoResponse,
+      kind: MethodKind.Unary,
+    },
+    /**
+     * @generated from rpc admin.v1.StorageService.ListVolumes
+     */
+    listVolumes: {
+      name: "ListVolumes",
+      I: StorageServiceListVolumesRequest,
+      O: StorageServiceListVolumesResponse,
+      kind: MethodKind.Unary,
+    },
+    /**
+     * @generated from rpc admin.v1.StorageService.ListSnapshots
+     */
+    listSnapshots: {
+      name: "ListSnapshots",
+      I: StorageServiceListSnapshotsRequest,
+      O: StorageServiceListSnapshotsResponse,
       kind: MethodKind.Unary,
     },
   }

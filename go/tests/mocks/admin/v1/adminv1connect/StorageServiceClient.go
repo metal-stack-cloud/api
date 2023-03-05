@@ -39,6 +39,52 @@ func (_m *StorageServiceClient) ClusterInfo(_a0 context.Context, _a1 *connect.Re
 	return r0, r1
 }
 
+// ListSnapshots provides a mock function with given fields: _a0, _a1
+func (_m *StorageServiceClient) ListSnapshots(_a0 context.Context, _a1 *connect.Request[adminv1.StorageServiceListSnapshotsRequest]) (*connect.Response[adminv1.StorageServiceListSnapshotsResponse], error) {
+	ret := _m.Called(_a0, _a1)
+
+	var r0 *connect.Response[adminv1.StorageServiceListSnapshotsResponse]
+	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[adminv1.StorageServiceListSnapshotsRequest]) *connect.Response[adminv1.StorageServiceListSnapshotsResponse]); ok {
+		r0 = rf(_a0, _a1)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*connect.Response[adminv1.StorageServiceListSnapshotsResponse])
+		}
+	}
+
+	var r1 error
+	if rf, ok := ret.Get(1).(func(context.Context, *connect.Request[adminv1.StorageServiceListSnapshotsRequest]) error); ok {
+		r1 = rf(_a0, _a1)
+	} else {
+		r1 = ret.Error(1)
+	}
+
+	return r0, r1
+}
+
+// ListVolumes provides a mock function with given fields: _a0, _a1
+func (_m *StorageServiceClient) ListVolumes(_a0 context.Context, _a1 *connect.Request[adminv1.StorageServiceListVolumesRequest]) (*connect.Response[adminv1.StorageServiceListVolumesResponse], error) {
+	ret := _m.Called(_a0, _a1)
+
+	var r0 *connect.Response[adminv1.StorageServiceListVolumesResponse]
+	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[adminv1.StorageServiceListVolumesRequest]) *connect.Response[adminv1.StorageServiceListVolumesResponse]); ok {
+		r0 = rf(_a0, _a1)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*connect.Response[adminv1.StorageServiceListVolumesResponse])
+		}
+	}
+
+	var r1 error
+	if rf, ok := ret.Get(1).(func(context.Context, *connect.Request[adminv1.StorageServiceListVolumesRequest]) error); ok {
+		r1 = rf(_a0, _a1)
+	} else {
+		r1 = ret.Error(1)
+	}
+
+	return r0, r1
+}
+
 type mockConstructorTestingTNewStorageServiceClient interface {
 	mock.TestingT
 	Cleanup(func())

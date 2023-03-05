@@ -28,6 +28,8 @@ const (
 // StorageServiceClient is a client for the admin.v1.StorageService service.
 type StorageServiceClient interface {
 	ClusterInfo(context.Context, *connect_go.Request[v1.StorageServiceClusterInfoRequest]) (*connect_go.Response[v1.StorageServiceClusterInfoResponse], error)
+	ListVolumes(context.Context, *connect_go.Request[v1.StorageServiceListVolumesRequest]) (*connect_go.Response[v1.StorageServiceListVolumesResponse], error)
+	ListSnapshots(context.Context, *connect_go.Request[v1.StorageServiceListSnapshotsRequest]) (*connect_go.Response[v1.StorageServiceListSnapshotsResponse], error)
 }
 
 // NewStorageServiceClient constructs a client for the admin.v1.StorageService service. By default,
@@ -45,12 +47,24 @@ func NewStorageServiceClient(httpClient connect_go.HTTPClient, baseURL string, o
 			baseURL+"/admin.v1.StorageService/ClusterInfo",
 			opts...,
 		),
+		listVolumes: connect_go.NewClient[v1.StorageServiceListVolumesRequest, v1.StorageServiceListVolumesResponse](
+			httpClient,
+			baseURL+"/admin.v1.StorageService/ListVolumes",
+			opts...,
+		),
+		listSnapshots: connect_go.NewClient[v1.StorageServiceListSnapshotsRequest, v1.StorageServiceListSnapshotsResponse](
+			httpClient,
+			baseURL+"/admin.v1.StorageService/ListSnapshots",
+			opts...,
+		),
 	}
 }
 
 // storageServiceClient implements StorageServiceClient.
 type storageServiceClient struct {
-	clusterInfo *connect_go.Client[v1.StorageServiceClusterInfoRequest, v1.StorageServiceClusterInfoResponse]
+	clusterInfo   *connect_go.Client[v1.StorageServiceClusterInfoRequest, v1.StorageServiceClusterInfoResponse]
+	listVolumes   *connect_go.Client[v1.StorageServiceListVolumesRequest, v1.StorageServiceListVolumesResponse]
+	listSnapshots *connect_go.Client[v1.StorageServiceListSnapshotsRequest, v1.StorageServiceListSnapshotsResponse]
 }
 
 // ClusterInfo calls admin.v1.StorageService.ClusterInfo.
@@ -58,9 +72,21 @@ func (c *storageServiceClient) ClusterInfo(ctx context.Context, req *connect_go.
 	return c.clusterInfo.CallUnary(ctx, req)
 }
 
+// ListVolumes calls admin.v1.StorageService.ListVolumes.
+func (c *storageServiceClient) ListVolumes(ctx context.Context, req *connect_go.Request[v1.StorageServiceListVolumesRequest]) (*connect_go.Response[v1.StorageServiceListVolumesResponse], error) {
+	return c.listVolumes.CallUnary(ctx, req)
+}
+
+// ListSnapshots calls admin.v1.StorageService.ListSnapshots.
+func (c *storageServiceClient) ListSnapshots(ctx context.Context, req *connect_go.Request[v1.StorageServiceListSnapshotsRequest]) (*connect_go.Response[v1.StorageServiceListSnapshotsResponse], error) {
+	return c.listSnapshots.CallUnary(ctx, req)
+}
+
 // StorageServiceHandler is an implementation of the admin.v1.StorageService service.
 type StorageServiceHandler interface {
 	ClusterInfo(context.Context, *connect_go.Request[v1.StorageServiceClusterInfoRequest]) (*connect_go.Response[v1.StorageServiceClusterInfoResponse], error)
+	ListVolumes(context.Context, *connect_go.Request[v1.StorageServiceListVolumesRequest]) (*connect_go.Response[v1.StorageServiceListVolumesResponse], error)
+	ListSnapshots(context.Context, *connect_go.Request[v1.StorageServiceListSnapshotsRequest]) (*connect_go.Response[v1.StorageServiceListSnapshotsResponse], error)
 }
 
 // NewStorageServiceHandler builds an HTTP handler from the service implementation. It returns the
@@ -75,6 +101,16 @@ func NewStorageServiceHandler(svc StorageServiceHandler, opts ...connect_go.Hand
 		svc.ClusterInfo,
 		opts...,
 	))
+	mux.Handle("/admin.v1.StorageService/ListVolumes", connect_go.NewUnaryHandler(
+		"/admin.v1.StorageService/ListVolumes",
+		svc.ListVolumes,
+		opts...,
+	))
+	mux.Handle("/admin.v1.StorageService/ListSnapshots", connect_go.NewUnaryHandler(
+		"/admin.v1.StorageService/ListSnapshots",
+		svc.ListSnapshots,
+		opts...,
+	))
 	return "/admin.v1.StorageService/", mux
 }
 
@@ -83,4 +119,12 @@ type UnimplementedStorageServiceHandler struct{}
 
 func (UnimplementedStorageServiceHandler) ClusterInfo(context.Context, *connect_go.Request[v1.StorageServiceClusterInfoRequest]) (*connect_go.Response[v1.StorageServiceClusterInfoResponse], error) {
 	return nil, connect_go.NewError(connect_go.CodeUnimplemented, errors.New("admin.v1.StorageService.ClusterInfo is not implemented"))
+}
+
+func (UnimplementedStorageServiceHandler) ListVolumes(context.Context, *connect_go.Request[v1.StorageServiceListVolumesRequest]) (*connect_go.Response[v1.StorageServiceListVolumesResponse], error) {
+	return nil, connect_go.NewError(connect_go.CodeUnimplemented, errors.New("admin.v1.StorageService.ListVolumes is not implemented"))
+}
+
+func (UnimplementedStorageServiceHandler) ListSnapshots(context.Context, *connect_go.Request[v1.StorageServiceListSnapshotsRequest]) (*connect_go.Response[v1.StorageServiceListSnapshotsResponse], error) {
+	return nil, connect_go.NewError(connect_go.CodeUnimplemented, errors.New("admin.v1.StorageService.ListSnapshots is not implemented"))
 }

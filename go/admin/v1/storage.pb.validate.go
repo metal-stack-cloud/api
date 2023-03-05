@@ -838,3 +838,491 @@ var _ interface {
 	Cause() error
 	ErrorName() string
 } = ClusterStatisticsApiValidationError{}
+
+// Validate checks the field values on StorageServiceListVolumesRequest with
+// the rules defined in the proto definition for this message. If any rules
+// are violated, the first error encountered is returned, or nil if there are
+// no violations.
+func (m *StorageServiceListVolumesRequest) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on StorageServiceListVolumesRequest with
+// the rules defined in the proto definition for this message. If any rules
+// are violated, the result is a list of violation errors wrapped in
+// StorageServiceListVolumesRequestMultiError, or nil if none found.
+func (m *StorageServiceListVolumesRequest) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *StorageServiceListVolumesRequest) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	if len(errors) > 0 {
+		return StorageServiceListVolumesRequestMultiError(errors)
+	}
+
+	return nil
+}
+
+// StorageServiceListVolumesRequestMultiError is an error wrapping multiple
+// validation errors returned by
+// StorageServiceListVolumesRequest.ValidateAll() if the designated
+// constraints aren't met.
+type StorageServiceListVolumesRequestMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m StorageServiceListVolumesRequestMultiError) Error() string {
+	var msgs []string
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m StorageServiceListVolumesRequestMultiError) AllErrors() []error { return m }
+
+// StorageServiceListVolumesRequestValidationError is the validation error
+// returned by StorageServiceListVolumesRequest.Validate if the designated
+// constraints aren't met.
+type StorageServiceListVolumesRequestValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e StorageServiceListVolumesRequestValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e StorageServiceListVolumesRequestValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e StorageServiceListVolumesRequestValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e StorageServiceListVolumesRequestValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e StorageServiceListVolumesRequestValidationError) ErrorName() string {
+	return "StorageServiceListVolumesRequestValidationError"
+}
+
+// Error satisfies the builtin error interface
+func (e StorageServiceListVolumesRequestValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sStorageServiceListVolumesRequest.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = StorageServiceListVolumesRequestValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = StorageServiceListVolumesRequestValidationError{}
+
+// Validate checks the field values on StorageServiceListVolumesResponse with
+// the rules defined in the proto definition for this message. If any rules
+// are violated, the first error encountered is returned, or nil if there are
+// no violations.
+func (m *StorageServiceListVolumesResponse) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on StorageServiceListVolumesResponse
+// with the rules defined in the proto definition for this message. If any
+// rules are violated, the result is a list of violation errors wrapped in
+// StorageServiceListVolumesResponseMultiError, or nil if none found.
+func (m *StorageServiceListVolumesResponse) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *StorageServiceListVolumesResponse) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	for idx, item := range m.GetVolumes() {
+		_, _ = idx, item
+
+		if all {
+			switch v := interface{}(item).(type) {
+			case interface{ ValidateAll() error }:
+				if err := v.ValidateAll(); err != nil {
+					errors = append(errors, StorageServiceListVolumesResponseValidationError{
+						field:  fmt.Sprintf("Volumes[%v]", idx),
+						reason: "embedded message failed validation",
+						cause:  err,
+					})
+				}
+			case interface{ Validate() error }:
+				if err := v.Validate(); err != nil {
+					errors = append(errors, StorageServiceListVolumesResponseValidationError{
+						field:  fmt.Sprintf("Volumes[%v]", idx),
+						reason: "embedded message failed validation",
+						cause:  err,
+					})
+				}
+			}
+		} else if v, ok := interface{}(item).(interface{ Validate() error }); ok {
+			if err := v.Validate(); err != nil {
+				return StorageServiceListVolumesResponseValidationError{
+					field:  fmt.Sprintf("Volumes[%v]", idx),
+					reason: "embedded message failed validation",
+					cause:  err,
+				}
+			}
+		}
+
+	}
+
+	if len(errors) > 0 {
+		return StorageServiceListVolumesResponseMultiError(errors)
+	}
+
+	return nil
+}
+
+// StorageServiceListVolumesResponseMultiError is an error wrapping multiple
+// validation errors returned by
+// StorageServiceListVolumesResponse.ValidateAll() if the designated
+// constraints aren't met.
+type StorageServiceListVolumesResponseMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m StorageServiceListVolumesResponseMultiError) Error() string {
+	var msgs []string
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m StorageServiceListVolumesResponseMultiError) AllErrors() []error { return m }
+
+// StorageServiceListVolumesResponseValidationError is the validation error
+// returned by StorageServiceListVolumesResponse.Validate if the designated
+// constraints aren't met.
+type StorageServiceListVolumesResponseValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e StorageServiceListVolumesResponseValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e StorageServiceListVolumesResponseValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e StorageServiceListVolumesResponseValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e StorageServiceListVolumesResponseValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e StorageServiceListVolumesResponseValidationError) ErrorName() string {
+	return "StorageServiceListVolumesResponseValidationError"
+}
+
+// Error satisfies the builtin error interface
+func (e StorageServiceListVolumesResponseValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sStorageServiceListVolumesResponse.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = StorageServiceListVolumesResponseValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = StorageServiceListVolumesResponseValidationError{}
+
+// Validate checks the field values on StorageServiceListSnapshotsRequest with
+// the rules defined in the proto definition for this message. If any rules
+// are violated, the first error encountered is returned, or nil if there are
+// no violations.
+func (m *StorageServiceListSnapshotsRequest) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on StorageServiceListSnapshotsRequest
+// with the rules defined in the proto definition for this message. If any
+// rules are violated, the result is a list of violation errors wrapped in
+// StorageServiceListSnapshotsRequestMultiError, or nil if none found.
+func (m *StorageServiceListSnapshotsRequest) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *StorageServiceListSnapshotsRequest) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	if len(errors) > 0 {
+		return StorageServiceListSnapshotsRequestMultiError(errors)
+	}
+
+	return nil
+}
+
+// StorageServiceListSnapshotsRequestMultiError is an error wrapping multiple
+// validation errors returned by
+// StorageServiceListSnapshotsRequest.ValidateAll() if the designated
+// constraints aren't met.
+type StorageServiceListSnapshotsRequestMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m StorageServiceListSnapshotsRequestMultiError) Error() string {
+	var msgs []string
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m StorageServiceListSnapshotsRequestMultiError) AllErrors() []error { return m }
+
+// StorageServiceListSnapshotsRequestValidationError is the validation error
+// returned by StorageServiceListSnapshotsRequest.Validate if the designated
+// constraints aren't met.
+type StorageServiceListSnapshotsRequestValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e StorageServiceListSnapshotsRequestValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e StorageServiceListSnapshotsRequestValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e StorageServiceListSnapshotsRequestValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e StorageServiceListSnapshotsRequestValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e StorageServiceListSnapshotsRequestValidationError) ErrorName() string {
+	return "StorageServiceListSnapshotsRequestValidationError"
+}
+
+// Error satisfies the builtin error interface
+func (e StorageServiceListSnapshotsRequestValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sStorageServiceListSnapshotsRequest.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = StorageServiceListSnapshotsRequestValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = StorageServiceListSnapshotsRequestValidationError{}
+
+// Validate checks the field values on StorageServiceListSnapshotsResponse with
+// the rules defined in the proto definition for this message. If any rules
+// are violated, the first error encountered is returned, or nil if there are
+// no violations.
+func (m *StorageServiceListSnapshotsResponse) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on StorageServiceListSnapshotsResponse
+// with the rules defined in the proto definition for this message. If any
+// rules are violated, the result is a list of violation errors wrapped in
+// StorageServiceListSnapshotsResponseMultiError, or nil if none found.
+func (m *StorageServiceListSnapshotsResponse) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *StorageServiceListSnapshotsResponse) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	for idx, item := range m.GetSnapshots() {
+		_, _ = idx, item
+
+		if all {
+			switch v := interface{}(item).(type) {
+			case interface{ ValidateAll() error }:
+				if err := v.ValidateAll(); err != nil {
+					errors = append(errors, StorageServiceListSnapshotsResponseValidationError{
+						field:  fmt.Sprintf("Snapshots[%v]", idx),
+						reason: "embedded message failed validation",
+						cause:  err,
+					})
+				}
+			case interface{ Validate() error }:
+				if err := v.Validate(); err != nil {
+					errors = append(errors, StorageServiceListSnapshotsResponseValidationError{
+						field:  fmt.Sprintf("Snapshots[%v]", idx),
+						reason: "embedded message failed validation",
+						cause:  err,
+					})
+				}
+			}
+		} else if v, ok := interface{}(item).(interface{ Validate() error }); ok {
+			if err := v.Validate(); err != nil {
+				return StorageServiceListSnapshotsResponseValidationError{
+					field:  fmt.Sprintf("Snapshots[%v]", idx),
+					reason: "embedded message failed validation",
+					cause:  err,
+				}
+			}
+		}
+
+	}
+
+	if len(errors) > 0 {
+		return StorageServiceListSnapshotsResponseMultiError(errors)
+	}
+
+	return nil
+}
+
+// StorageServiceListSnapshotsResponseMultiError is an error wrapping multiple
+// validation errors returned by
+// StorageServiceListSnapshotsResponse.ValidateAll() if the designated
+// constraints aren't met.
+type StorageServiceListSnapshotsResponseMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m StorageServiceListSnapshotsResponseMultiError) Error() string {
+	var msgs []string
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m StorageServiceListSnapshotsResponseMultiError) AllErrors() []error { return m }
+
+// StorageServiceListSnapshotsResponseValidationError is the validation error
+// returned by StorageServiceListSnapshotsResponse.Validate if the designated
+// constraints aren't met.
+type StorageServiceListSnapshotsResponseValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e StorageServiceListSnapshotsResponseValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e StorageServiceListSnapshotsResponseValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e StorageServiceListSnapshotsResponseValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e StorageServiceListSnapshotsResponseValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e StorageServiceListSnapshotsResponseValidationError) ErrorName() string {
+	return "StorageServiceListSnapshotsResponseValidationError"
+}
+
+// Error satisfies the builtin error interface
+func (e StorageServiceListSnapshotsResponseValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sStorageServiceListSnapshotsResponse.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = StorageServiceListSnapshotsResponseValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = StorageServiceListSnapshotsResponseValidationError{}

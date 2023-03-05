@@ -4,8 +4,9 @@
 /* eslint-disable */
 // @ts-nocheck
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ClusterStatisticsApi = exports.ClusterHealth = exports.StorageServerInfo = exports.StorageClusterInfo = exports.StorageServiceClusterInfoResponse = exports.StorageServiceClusterInfoRequest = void 0;
+exports.StorageServiceListSnapshotsResponse = exports.StorageServiceListSnapshotsRequest = exports.StorageServiceListVolumesResponse = exports.StorageServiceListVolumesRequest = exports.ClusterStatisticsApi = exports.ClusterHealth = exports.StorageServerInfo = exports.StorageClusterInfo = exports.StorageServiceClusterInfoResponse = exports.StorageServiceClusterInfoRequest = void 0;
 const protobuf_1 = require("@bufbuild/protobuf");
+const volume_pb_js_1 = require("../../api/v1/volume_pb.js");
 /**
  * @generated from message admin.v1.StorageServiceClusterInfoRequest
  */
@@ -378,4 +379,116 @@ ClusterStatisticsApi.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 9, name: "estimated_free_logical_storage", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
     { no: 10, name: "estimated_logical_storage", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
     { no: 11, name: "compression_ratio", kind: "scalar", T: 1 /* ScalarType.DOUBLE */ },
+]);
+/**
+ * @generated from message admin.v1.StorageServiceListVolumesRequest
+ */
+class StorageServiceListVolumesRequest extends protobuf_1.Message {
+    constructor(data) {
+        super();
+        protobuf_1.proto3.util.initPartial(data, this);
+    }
+    static fromBinary(bytes, options) {
+        return new StorageServiceListVolumesRequest().fromBinary(bytes, options);
+    }
+    static fromJson(jsonValue, options) {
+        return new StorageServiceListVolumesRequest().fromJson(jsonValue, options);
+    }
+    static fromJsonString(jsonString, options) {
+        return new StorageServiceListVolumesRequest().fromJsonString(jsonString, options);
+    }
+    static equals(a, b) {
+        return protobuf_1.proto3.util.equals(StorageServiceListVolumesRequest, a, b);
+    }
+}
+exports.StorageServiceListVolumesRequest = StorageServiceListVolumesRequest;
+StorageServiceListVolumesRequest.runtime = protobuf_1.proto3;
+StorageServiceListVolumesRequest.typeName = "admin.v1.StorageServiceListVolumesRequest";
+StorageServiceListVolumesRequest.fields = protobuf_1.proto3.util.newFieldList(() => []);
+/**
+ * @generated from message admin.v1.StorageServiceListVolumesResponse
+ */
+class StorageServiceListVolumesResponse extends protobuf_1.Message {
+    constructor(data) {
+        super();
+        /**
+         * @generated from field: repeated api.v1.Volume volumes = 1;
+         */
+        this.volumes = [];
+        protobuf_1.proto3.util.initPartial(data, this);
+    }
+    static fromBinary(bytes, options) {
+        return new StorageServiceListVolumesResponse().fromBinary(bytes, options);
+    }
+    static fromJson(jsonValue, options) {
+        return new StorageServiceListVolumesResponse().fromJson(jsonValue, options);
+    }
+    static fromJsonString(jsonString, options) {
+        return new StorageServiceListVolumesResponse().fromJsonString(jsonString, options);
+    }
+    static equals(a, b) {
+        return protobuf_1.proto3.util.equals(StorageServiceListVolumesResponse, a, b);
+    }
+}
+exports.StorageServiceListVolumesResponse = StorageServiceListVolumesResponse;
+StorageServiceListVolumesResponse.runtime = protobuf_1.proto3;
+StorageServiceListVolumesResponse.typeName = "admin.v1.StorageServiceListVolumesResponse";
+StorageServiceListVolumesResponse.fields = protobuf_1.proto3.util.newFieldList(() => [
+    { no: 1, name: "volumes", kind: "message", T: volume_pb_js_1.Volume, repeated: true },
+]);
+/**
+ * @generated from message admin.v1.StorageServiceListSnapshotsRequest
+ */
+class StorageServiceListSnapshotsRequest extends protobuf_1.Message {
+    constructor(data) {
+        super();
+        protobuf_1.proto3.util.initPartial(data, this);
+    }
+    static fromBinary(bytes, options) {
+        return new StorageServiceListSnapshotsRequest().fromBinary(bytes, options);
+    }
+    static fromJson(jsonValue, options) {
+        return new StorageServiceListSnapshotsRequest().fromJson(jsonValue, options);
+    }
+    static fromJsonString(jsonString, options) {
+        return new StorageServiceListSnapshotsRequest().fromJsonString(jsonString, options);
+    }
+    static equals(a, b) {
+        return protobuf_1.proto3.util.equals(StorageServiceListSnapshotsRequest, a, b);
+    }
+}
+exports.StorageServiceListSnapshotsRequest = StorageServiceListSnapshotsRequest;
+StorageServiceListSnapshotsRequest.runtime = protobuf_1.proto3;
+StorageServiceListSnapshotsRequest.typeName = "admin.v1.StorageServiceListSnapshotsRequest";
+StorageServiceListSnapshotsRequest.fields = protobuf_1.proto3.util.newFieldList(() => []);
+/**
+ * @generated from message admin.v1.StorageServiceListSnapshotsResponse
+ */
+class StorageServiceListSnapshotsResponse extends protobuf_1.Message {
+    constructor(data) {
+        super();
+        /**
+         * @generated from field: repeated api.v1.Snapshot snapshots = 1;
+         */
+        this.snapshots = [];
+        protobuf_1.proto3.util.initPartial(data, this);
+    }
+    static fromBinary(bytes, options) {
+        return new StorageServiceListSnapshotsResponse().fromBinary(bytes, options);
+    }
+    static fromJson(jsonValue, options) {
+        return new StorageServiceListSnapshotsResponse().fromJson(jsonValue, options);
+    }
+    static fromJsonString(jsonString, options) {
+        return new StorageServiceListSnapshotsResponse().fromJsonString(jsonString, options);
+    }
+    static equals(a, b) {
+        return protobuf_1.proto3.util.equals(StorageServiceListSnapshotsResponse, a, b);
+    }
+}
+exports.StorageServiceListSnapshotsResponse = StorageServiceListSnapshotsResponse;
+StorageServiceListSnapshotsResponse.runtime = protobuf_1.proto3;
+StorageServiceListSnapshotsResponse.typeName = "admin.v1.StorageServiceListSnapshotsResponse";
+StorageServiceListSnapshotsResponse.fields = protobuf_1.proto3.util.newFieldList(() => [
+    { no: 1, name: "snapshots", kind: "message", T: volume_pb_js_1.Snapshot, repeated: true },
 ]);

@@ -22,5 +22,23 @@ exports.StorageService = {
             O: storage_pb_js_1.StorageServiceClusterInfoResponse,
             kind: protobuf_1.MethodKind.Unary,
         },
+        /**
+         * @generated from rpc admin.v1.StorageService.ListVolumes
+         */
+        listVolumes: {
+            name: "ListVolumes",
+            I: storage_pb_js_1.StorageServiceListVolumesRequest,
+            O: storage_pb_js_1.StorageServiceListVolumesResponse,
+            kind: protobuf_1.MethodKind.Unary,
+        },
+        /**
+         * @generated from rpc admin.v1.StorageService.ListSnapshots
+         */
+        listSnapshots: {
+            name: "ListSnapshots",
+            I: storage_pb_js_1.StorageServiceListSnapshotsRequest,
+            O: storage_pb_js_1.StorageServiceListSnapshotsResponse,
+            kind: protobuf_1.MethodKind.Unary,
+        },
     }
 };

@@ -3,9 +3,18 @@ syntax = "proto3";
 package admin.v1;
 
 import "api/v1/common.proto";
+import "api/v1/volume.proto";
 
 service StorageService {
   rpc ClusterInfo(StorageServiceClusterInfoRequest) returns (StorageServiceClusterInfoResponse) {
+    option (api.v1.admin_roles) = ADMIN_ROLE_EDITOR;
+    option (api.v1.admin_roles) = ADMIN_ROLE_VIEWER;
+  }
+  rpc ListVolumes(StorageServiceListVolumesRequest) returns (StorageServiceListVolumesResponse) {
+    option (api.v1.admin_roles) = ADMIN_ROLE_EDITOR;
+    option (api.v1.admin_roles) = ADMIN_ROLE_VIEWER;
+  }
+  rpc ListSnapshots(StorageServiceListSnapshotsRequest) returns (StorageServiceListSnapshotsResponse) {
     option (api.v1.admin_roles) = ADMIN_ROLE_EDITOR;
     option (api.v1.admin_roles) = ADMIN_ROLE_VIEWER;
   }
@@ -97,4 +106,16 @@ message ClusterStatisticsApi {
   //
   // compression ratio logicalUsedStorage/physicalUsedStorage
   double compression_ratio = 11;
+}
+
+message StorageServiceListVolumesRequest {}
+
+message StorageServiceListVolumesResponse {
+  repeated api.v1.Volume volumes = 1;
+}
+
+message StorageServiceListSnapshotsRequest {}
+
+message StorageServiceListSnapshotsResponse {
+  repeated api.v1.Snapshot snapshots = 1;
 }

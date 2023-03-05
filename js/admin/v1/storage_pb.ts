@@ -5,6 +5,7 @@
 
 import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
 import { Message, proto3, protoInt64 } from "@bufbuild/protobuf";
+import { Snapshot, Volume } from "../../api/v1/volume_pb.js";
 
 /**
  * @generated from message admin.v1.StorageServiceClusterInfoRequest
@@ -455,6 +456,142 @@ export class ClusterStatisticsApi extends Message<ClusterStatisticsApi> {
 
   static equals(a: ClusterStatisticsApi | PlainMessage<ClusterStatisticsApi> | undefined, b: ClusterStatisticsApi | PlainMessage<ClusterStatisticsApi> | undefined): boolean {
     return proto3.util.equals(ClusterStatisticsApi, a, b);
+  }
+}
+
+/**
+ * @generated from message admin.v1.StorageServiceListVolumesRequest
+ */
+export class StorageServiceListVolumesRequest extends Message<StorageServiceListVolumesRequest> {
+  constructor(data?: PartialMessage<StorageServiceListVolumesRequest>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime = proto3;
+  static readonly typeName = "admin.v1.StorageServiceListVolumesRequest";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): StorageServiceListVolumesRequest {
+    return new StorageServiceListVolumesRequest().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): StorageServiceListVolumesRequest {
+    return new StorageServiceListVolumesRequest().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): StorageServiceListVolumesRequest {
+    return new StorageServiceListVolumesRequest().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: StorageServiceListVolumesRequest | PlainMessage<StorageServiceListVolumesRequest> | undefined, b: StorageServiceListVolumesRequest | PlainMessage<StorageServiceListVolumesRequest> | undefined): boolean {
+    return proto3.util.equals(StorageServiceListVolumesRequest, a, b);
+  }
+}
+
+/**
+ * @generated from message admin.v1.StorageServiceListVolumesResponse
+ */
+export class StorageServiceListVolumesResponse extends Message<StorageServiceListVolumesResponse> {
+  /**
+   * @generated from field: repeated api.v1.Volume volumes = 1;
+   */
+  volumes: Volume[] = [];
+
+  constructor(data?: PartialMessage<StorageServiceListVolumesResponse>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime = proto3;
+  static readonly typeName = "admin.v1.StorageServiceListVolumesResponse";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "volumes", kind: "message", T: Volume, repeated: true },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): StorageServiceListVolumesResponse {
+    return new StorageServiceListVolumesResponse().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): StorageServiceListVolumesResponse {
+    return new StorageServiceListVolumesResponse().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): StorageServiceListVolumesResponse {
+    return new StorageServiceListVolumesResponse().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: StorageServiceListVolumesResponse | PlainMessage<StorageServiceListVolumesResponse> | undefined, b: StorageServiceListVolumesResponse | PlainMessage<StorageServiceListVolumesResponse> | undefined): boolean {
+    return proto3.util.equals(StorageServiceListVolumesResponse, a, b);
+  }
+}
+
+/**
+ * @generated from message admin.v1.StorageServiceListSnapshotsRequest
+ */
+export class StorageServiceListSnapshotsRequest extends Message<StorageServiceListSnapshotsRequest> {
+  constructor(data?: PartialMessage<StorageServiceListSnapshotsRequest>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime = proto3;
+  static readonly typeName = "admin.v1.StorageServiceListSnapshotsRequest";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): StorageServiceListSnapshotsRequest {
+    return new StorageServiceListSnapshotsRequest().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): StorageServiceListSnapshotsRequest {
+    return new StorageServiceListSnapshotsRequest().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): StorageServiceListSnapshotsRequest {
+    return new StorageServiceListSnapshotsRequest().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: StorageServiceListSnapshotsRequest | PlainMessage<StorageServiceListSnapshotsRequest> | undefined, b: StorageServiceListSnapshotsRequest | PlainMessage<StorageServiceListSnapshotsRequest> | undefined): boolean {
+    return proto3.util.equals(StorageServiceListSnapshotsRequest, a, b);
+  }
+}
+
+/**
+ * @generated from message admin.v1.StorageServiceListSnapshotsResponse
+ */
+export class StorageServiceListSnapshotsResponse extends Message<StorageServiceListSnapshotsResponse> {
+  /**
+   * @generated from field: repeated api.v1.Snapshot snapshots = 1;
+   */
+  snapshots: Snapshot[] = [];
+
+  constructor(data?: PartialMessage<StorageServiceListSnapshotsResponse>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime = proto3;
+  static readonly typeName = "admin.v1.StorageServiceListSnapshotsResponse";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "snapshots", kind: "message", T: Snapshot, repeated: true },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): StorageServiceListSnapshotsResponse {
+    return new StorageServiceListSnapshotsResponse().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): StorageServiceListSnapshotsResponse {
+    return new StorageServiceListSnapshotsResponse().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): StorageServiceListSnapshotsResponse {
+    return new StorageServiceListSnapshotsResponse().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: StorageServiceListSnapshotsResponse | PlainMessage<StorageServiceListSnapshotsResponse> | undefined, b: StorageServiceListSnapshotsResponse | PlainMessage<StorageServiceListSnapshotsResponse> | undefined): boolean {
+    return proto3.util.equals(StorageServiceListSnapshotsResponse, a, b);
   }
 }
 
