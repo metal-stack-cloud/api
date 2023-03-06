@@ -93,6 +93,8 @@ func (m *Volume) validate(all bool) error {
 
 	// no validation rules for ProtectionState
 
+	// no validation rules for LogicalUsedStorage
+
 	if all {
 		switch v := interface{}(m.GetStatistics()).(type) {
 		case interface{ ValidateAll() error }:

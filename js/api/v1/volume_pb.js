@@ -90,6 +90,10 @@ class Volume extends protobuf_1.Message {
          * @generated from field: string protection_state = 19;
          */
         this.protectionState = "";
+        /**
+         * @generated from field: uint64 logical_used_storage = 20;
+         */
+        this.logicalUsedStorage = protobuf_1.protoInt64.zero;
         protobuf_1.proto3.util.initPartial(data, this);
     }
     static fromBinary(bytes, options) {
@@ -128,7 +132,8 @@ Volume.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 17, name: "qos_policy_name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 18, name: "replica_count", kind: "scalar", T: 13 /* ScalarType.UINT32 */ },
     { no: 19, name: "protection_state", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 20, name: "statistics", kind: "message", T: VolumeStatistics },
+    { no: 20, name: "logical_used_storage", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
+    { no: 21, name: "statistics", kind: "message", T: VolumeStatistics },
     { no: 30, name: "created_at", kind: "message", T: protobuf_1.Timestamp },
     { no: 31, name: "updated_at", kind: "message", T: protobuf_1.Timestamp },
     { no: 32, name: "deleted_at", kind: "message", T: protobuf_1.Timestamp },

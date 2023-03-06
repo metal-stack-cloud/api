@@ -1982,7 +1982,7 @@
             },
             {
               "name": "statistics",
-              "description": "",
+              "description": "SnapshotStatistics are only visible to admins",
               "label": "",
               "type": "SnapshotStatistics",
               "longType": "SnapshotStatistics",
@@ -2605,8 +2605,20 @@
               "defaultValue": ""
             },
             {
-              "name": "statistics",
+              "name": "logical_used_storage",
               "description": "",
+              "label": "",
+              "type": "uint64",
+              "longType": "uint64",
+              "fullType": "uint64",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "statistics",
+              "description": "VolumeStatistics are only visible to admins",
               "label": "",
               "type": "VolumeStatistics",
               "longType": "VolumeStatistics",

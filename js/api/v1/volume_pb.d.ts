@@ -83,7 +83,13 @@ export declare class Volume extends Message<Volume> {
      */
     protectionState: string;
     /**
-     * @generated from field: api.v1.VolumeStatistics statistics = 20;
+     * @generated from field: uint64 logical_used_storage = 20;
+     */
+    logicalUsedStorage: bigint;
+    /**
+     * VolumeStatistics are only visible to admins
+     *
+     * @generated from field: api.v1.VolumeStatistics statistics = 21;
      */
     statistics?: VolumeStatistics;
     /**
@@ -257,6 +263,8 @@ export declare class Snapshot extends Message<Snapshot> {
      */
     retention?: Duration;
     /**
+     * SnapshotStatistics are only visible to admins
+     *
      * @generated from field: api.v1.SnapshotStatistics statistics = 15;
      */
     statistics?: SnapshotStatistics;

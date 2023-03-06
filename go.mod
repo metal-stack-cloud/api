@@ -10,7 +10,7 @@ require (
 	github.com/klauspost/connect-compress v1.0.0
 	github.com/stretchr/testify v1.8.2
 	go.uber.org/zap v1.24.0
-	golang.org/x/exp v0.0.0-20230303215020-44a13b063f3e
+	golang.org/x/exp v0.0.0-20230304125523-9ff063c70017
 	google.golang.org/protobuf v1.28.2-0.20230222093303-bc1253ad3743
 )
 
@@ -31,7 +31,7 @@ require (
 	github.com/stretchr/objx v0.5.0 // indirect
 	go.uber.org/atomic v1.10.0 // indirect
 	go.uber.org/multierr v1.9.0 // indirect
-	golang.org/x/crypto v0.6.0 // indirect
+	golang.org/x/crypto v0.7.0 // indirect
 	gopkg.in/check.v1 v1.0.0-20201130134442-10cb98267c6c // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 )

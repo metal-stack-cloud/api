@@ -108,7 +108,14 @@ export class Volume extends Message<Volume> {
   protectionState = "";
 
   /**
-   * @generated from field: api.v1.VolumeStatistics statistics = 20;
+   * @generated from field: uint64 logical_used_storage = 20;
+   */
+  logicalUsedStorage = protoInt64.zero;
+
+  /**
+   * VolumeStatistics are only visible to admins
+   *
+   * @generated from field: api.v1.VolumeStatistics statistics = 21;
    */
   statistics?: VolumeStatistics;
 
@@ -154,7 +161,8 @@ export class Volume extends Message<Volume> {
     { no: 17, name: "qos_policy_name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 18, name: "replica_count", kind: "scalar", T: 13 /* ScalarType.UINT32 */ },
     { no: 19, name: "protection_state", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 20, name: "statistics", kind: "message", T: VolumeStatistics },
+    { no: 20, name: "logical_used_storage", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
+    { no: 21, name: "statistics", kind: "message", T: VolumeStatistics },
     { no: 30, name: "created_at", kind: "message", T: Timestamp },
     { no: 31, name: "updated_at", kind: "message", T: Timestamp },
     { no: 32, name: "deleted_at", kind: "message", T: Timestamp },
@@ -381,6 +389,8 @@ export class Snapshot extends Message<Snapshot> {
   retention?: Duration;
 
   /**
+   * SnapshotStatistics are only visible to admins
+   *
    * @generated from field: api.v1.SnapshotStatistics statistics = 15;
    */
   statistics?: SnapshotStatistics;
