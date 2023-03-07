@@ -5,13 +5,13 @@ go 1.20
 require (
 	github.com/Masterminds/sprig/v3 v3.2.3
 	github.com/bufbuild/connect-go v1.5.2
-	github.com/bufbuild/protocompile v0.2.0
+	github.com/bufbuild/protocompile v0.4.0
 	github.com/envoyproxy/protoc-gen-validate v0.9.1
 	github.com/klauspost/connect-compress v1.0.0
 	github.com/stretchr/testify v1.8.2
 	go.uber.org/zap v1.24.0
-	golang.org/x/exp v0.0.0-20230224173230-c95f2b4c22f2
-	google.golang.org/protobuf v1.28.2-0.20220831092852-f930b1dc76e8
+	golang.org/x/exp v0.0.0-20230306221820-f0f767cdffd6
+	google.golang.org/protobuf v1.28.2-0.20230222093303-bc1253ad3743
 )
 
 require (
@@ -31,7 +31,7 @@ require (
 	github.com/stretchr/objx v0.5.0 // indirect
 	go.uber.org/atomic v1.10.0 // indirect
 	go.uber.org/multierr v1.9.0 // indirect
-	golang.org/x/crypto v0.6.0 // indirect
+	golang.org/x/crypto v0.7.0 // indirect
 	gopkg.in/check.v1 v1.0.0-20201130134442-10cb98267c6c // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 )

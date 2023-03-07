@@ -1,0 +1,140 @@
+syntax = "proto3";
+
+package admin.v1;
+
+import "api/v1/common.proto";
+import "api/v1/volume.proto";
+import "validate/validate.proto";
+
+service StorageService {
+  rpc ClusterInfo(StorageServiceClusterInfoRequest) returns (StorageServiceClusterInfoResponse) {
+    option (api.v1.admin_roles) = ADMIN_ROLE_EDITOR;
+    option (api.v1.admin_roles) = ADMIN_ROLE_VIEWER;
+  }
+  rpc ListVolumes(StorageServiceListVolumesRequest) returns (StorageServiceListVolumesResponse) {
+    option (api.v1.admin_roles) = ADMIN_ROLE_EDITOR;
+    option (api.v1.admin_roles) = ADMIN_ROLE_VIEWER;
+  }
+  rpc ListSnapshots(StorageServiceListSnapshotsRequest) returns (StorageServiceListSnapshotsResponse) {
+    option (api.v1.admin_roles) = ADMIN_ROLE_EDITOR;
+    option (api.v1.admin_roles) = ADMIN_ROLE_VIEWER;
+  }
+}
+
+message StorageServiceClusterInfoRequest {
+  optional string partition = 1;
+}
+
+message StorageServiceClusterInfoResponse {
+  repeated StorageClusterInfo infos = 1;
+}
+
+message StorageClusterInfo {
+  string partition = 1;
+  string uuid = 2;
+  string subsystem_nqn = 3;
+  uint32 current_max_replicas = 4;
+  uint32 supported_max_replicas = 5;
+  ClusterStatisticsApi statistics = 6;
+  ClusterHealth health = 7;
+  string min_version_in_cluster = 8;
+  string min_allowed_version = 9;
+  string max_allowed_version = 10;
+  repeated string api_endpoints = 11;
+  repeated string discovery_endpoints = 12;
+  repeated StorageServerInfo servers = 13;
+}
+
+message StorageServerInfo {
+  string uuid = 1;
+  string name = 2;
+  string risk_of_service_loss_state = 3;
+  string state = 4;
+  repeated string server_endpoints = 5;
+  string light_os_version = 6;
+}
+
+message ClusterHealth {
+  string state = 1;
+  uint32 num_degraded_volumes = 2;
+  uint32 num_read_only_volumes = 3;
+  uint32 num_not_available_volumes = 4;
+  uint32 num_inactive_nodes = 5;
+}
+
+message ClusterStatisticsApi {
+  // Installed Physical Storage
+  //
+  // All installed SSDs capacities over all servers in cluster, given in bytes.
+  uint64 installed_physical_storage = 1;
+  // Total Attached Physical Storage
+  //
+  // Sum of all managed and healthy SSDs capacities, given in bytes.
+  uint64 managed_physical_storage = 2;
+  // Effective Physical Storage
+  //
+  // Effective Physical storage excluding overhead of OVP and Parity, given in bytes.
+  uint64 effective_physical_storage = 3;
+  // Logical Storage
+  //
+  // Sum of capacities of all allocated volumes, given in bytes.
+  uint64 logical_storage = 4;
+  // Logical Used Storage
+  //
+  // Logical storage space used by all volumes (n of LBAs x 4096), given in bytes.
+  uint64 logical_used_storage = 5;
+  // Physical Used Storage Excluding Parity
+  //
+  // Physical storage space occupied by all volumes (data only), given in bytes.
+  uint64 physical_used_storage = 6;
+  // Physical Used Storage
+  //
+  // Physical storage space occupied by all data including Parity overhead when EC enabled (physical n*disks/(n*disks -1)), given in bytes.
+  uint64 physical_used_storage_including_parity = 7;
+  // Free Physical Storage
+  //
+  // Free storage before entering to read-only mode , given in bytes.
+  uint64 free_physical_storage = 8;
+  // Estimated Free Logical Storage
+  //
+  // Estimated free storage before entering to read-only mode assuming current compression ratio, given in bytes.
+  uint64 estimated_free_logical_storage = 9;
+  // Estimated Total Available Logical Storage
+  //
+  // Estimate of total available logical storage based on current compression ratio (effective * compression)
+  uint64 estimated_logical_storage = 10;
+  // commpression ratio
+  //
+  // compression ratio logicalUsedStorage/physicalUsedStorage
+  double compression_ratio = 11;
+}
+
+message StorageServiceListVolumesRequest {
+  optional string uuid = 1 [(validate.rules).string.uuid = true];
+  optional string project = 2 [(validate.rules).string = {
+    min_len: 2,
+    max_len: 128
+  }];
+  optional string partition = 3;
+  optional string name = 4;
+  optional string tenant = 5;
+}
+
+message StorageServiceListVolumesResponse {
+  repeated api.v1.Volume volumes = 1;
+}
+
+message StorageServiceListSnapshotsRequest {
+  optional string uuid = 1 [(validate.rules).string.uuid = true];
+  optional string project = 2 [(validate.rules).string = {
+    min_len: 2,
+    max_len: 128
+  }];
+  optional string partition = 3;
+  optional string name = 4;
+  optional string tenant = 5;
+}
+
+message StorageServiceListSnapshotsResponse {
+  repeated api.v1.Snapshot snapshots = 1;
+}

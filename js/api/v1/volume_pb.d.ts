@@ -1,5 +1,5 @@
 import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
-import { Message, Timestamp } from "@bufbuild/protobuf";
+import { Duration, Message, Timestamp } from "@bufbuild/protobuf";
 /**
  * Types
  *
@@ -51,15 +51,57 @@ export declare class Volume extends Message<Volume> {
      */
     sourceSnapshotName: string;
     /**
-     * @generated from field: google.protobuf.Timestamp created_at = 20;
+     * @generated from field: string volume_handle = 12;
+     */
+    volumeHandle: string;
+    /**
+     * @generated from field: repeated string node_ips = 13;
+     */
+    nodeIps: string[];
+    /**
+     * @generated from field: string rebuild_progress = 14;
+     */
+    rebuildProgress: string;
+    /**
+     * @generated from field: string primary_node_uuid = 15;
+     */
+    primaryNodeUuid: string;
+    /**
+     * @generated from field: string qos_policy_uuid = 16;
+     */
+    qosPolicyUuid: string;
+    /**
+     * @generated from field: string qos_policy_name = 17;
+     */
+    qosPolicyName: string;
+    /**
+     * @generated from field: uint32 replica_count = 18;
+     */
+    replicaCount: number;
+    /**
+     * @generated from field: string protection_state = 19;
+     */
+    protectionState: string;
+    /**
+     * @generated from field: uint64 logical_used_storage = 20;
+     */
+    logicalUsedStorage: bigint;
+    /**
+     * VolumeStatistics are only visible to admins
+     *
+     * @generated from field: api.v1.VolumeStatistics statistics = 21;
+     */
+    statistics?: VolumeStatistics;
+    /**
+     * @generated from field: google.protobuf.Timestamp created_at = 30;
      */
     createdAt?: Timestamp;
     /**
-     * @generated from field: google.protobuf.Timestamp updated_at = 21;
+     * @generated from field: google.protobuf.Timestamp updated_at = 31;
      */
     updatedAt?: Timestamp;
     /**
-     * @generated from field: google.protobuf.Timestamp deleted_at = 22;
+     * @generated from field: google.protobuf.Timestamp deleted_at = 32;
      */
     deletedAt?: Timestamp;
     constructor(data?: PartialMessage<Volume>);
@@ -70,6 +112,95 @@ export declare class Volume extends Message<Volume> {
     static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): Volume;
     static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): Volume;
     static equals(a: Volume | PlainMessage<Volume> | undefined, b: Volume | PlainMessage<Volume> | undefined): boolean;
+}
+/**
+ * @generated from message api.v1.VolumeStatistics
+ */
+export declare class VolumeStatistics extends Message<VolumeStatistics> {
+    /**
+     * Logical Used Storage
+     *
+     * Logical storage space used by volume, given in bytes.
+     *
+     * @generated from field: uint64 logical_used_storage = 1;
+     */
+    logicalUsedStorage: bigint;
+    /**
+     * Physical Used Storage
+     *
+     * Physical storage space used by volume excluding parity, given in bytes.
+     *
+     * @generated from field: uint64 physical_used_storage = 2;
+     */
+    physicalUsedStorage: bigint;
+    /**
+     * commpression ratio
+     *
+     * compression ratio userWritten/physicalCapacity
+     *
+     * @generated from field: double compression_ratio = 3;
+     */
+    compressionRatio: number;
+    /**
+     * total commpression ratio
+     *
+     * compression ratio sum(userWritten) / sum(physical capacity)
+     *
+     * @generated from field: double total_compression_ratio = 4;
+     */
+    totalCompressionRatio: number;
+    /**
+     * PhysicalCapacity
+     *
+     * The physical capacity that exists in this volume layer
+     *
+     * @generated from field: uint64 physical_capacity = 5;
+     */
+    physicalCapacity: bigint;
+    /**
+     * Physical Owned storage Capacity
+     *
+     * The capacity that would be freed when volume is deleted
+     *
+     * @generated from field: uint64 physical_owned_capacity = 6;
+     */
+    physicalOwnedCapacity: bigint;
+    /**
+     * @generated from field: uint64 physical_owned_memory = 7;
+     */
+    physicalOwnedMemory: bigint;
+    /**
+     * @generated from field: uint64 physical_memory = 8;
+     */
+    physicalMemory: bigint;
+    /**
+     * @generated from field: uint64 user_written = 9;
+     */
+    userWritten: bigint;
+    /**
+     * Unrecoverable Data Integrity Errors
+     *
+     * Number of data integrity errors that could no be recovered by the system.
+     *
+     * @generated from field: uint32 unrecoverable_data_integrity_errors = 10;
+     */
+    unrecoverableDataIntegrityErrors: number;
+    /**
+     * Recoverable Data Integrity Errors
+     *
+     * Number of data integrity errors that were recovered by the system.
+     *
+     * @generated from field: uint32 recoverable_data_integrity_errors = 12;
+     */
+    recoverableDataIntegrityErrors: number;
+    constructor(data?: PartialMessage<VolumeStatistics>);
+    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
+    static readonly typeName = "api.v1.VolumeStatistics";
+    static readonly fields: FieldList;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): VolumeStatistics;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): VolumeStatistics;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): VolumeStatistics;
+    static equals(a: VolumeStatistics | PlainMessage<VolumeStatistics> | undefined, b: VolumeStatistics | PlainMessage<VolumeStatistics> | undefined): boolean;
 }
 /**
  * @generated from message api.v1.Snapshot
@@ -84,27 +215,31 @@ export declare class Snapshot extends Message<Snapshot> {
      */
     name: string;
     /**
-     * @generated from field: string project = 3;
+     * @generated from field: string description = 3;
+     */
+    description: string;
+    /**
+     * @generated from field: string project = 4;
      */
     project: string;
     /**
-     * @generated from field: string partition = 4;
+     * @generated from field: string partition = 5;
      */
     partition: string;
     /**
-     * @generated from field: string storage_class = 5;
+     * @generated from field: string storage_class = 6;
      */
     storageClass: string;
     /**
-     * @generated from field: uint64 size = 6;
+     * @generated from field: uint64 size = 7;
      */
     size: bigint;
     /**
-     * @generated from field: uint64 usage = 7;
+     * @generated from field: uint64 usage = 8;
      */
     usage: bigint;
     /**
-     * @generated from field: string state = 8;
+     * @generated from field: string state = 9;
      */
     state: string;
     /**
@@ -115,6 +250,24 @@ export declare class Snapshot extends Message<Snapshot> {
      * @generated from field: string source_volume_name = 11;
      */
     sourceVolumeName: string;
+    /**
+     * @generated from field: uint32 replica_count = 12;
+     */
+    replicaCount: number;
+    /**
+     * @generated from field: string primary_node_uuid = 13;
+     */
+    primaryNodeUuid: string;
+    /**
+     * @generated from field: google.protobuf.Duration retention = 14;
+     */
+    retention?: Duration;
+    /**
+     * SnapshotStatistics are only visible to admins
+     *
+     * @generated from field: api.v1.SnapshotStatistics statistics = 15;
+     */
+    statistics?: SnapshotStatistics;
     /**
      * @generated from field: google.protobuf.Timestamp created_at = 20;
      */
@@ -135,6 +288,39 @@ export declare class Snapshot extends Message<Snapshot> {
     static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): Snapshot;
     static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): Snapshot;
     static equals(a: Snapshot | PlainMessage<Snapshot> | undefined, b: Snapshot | PlainMessage<Snapshot> | undefined): boolean;
+}
+/**
+ * @generated from message api.v1.SnapshotStatistics
+ */
+export declare class SnapshotStatistics extends Message<SnapshotStatistics> {
+    /**
+     * @generated from field: uint64 physical_capacity = 1;
+     */
+    physicalCapacity: bigint;
+    /**
+     * @generated from field: uint64 physical_owned_capacity = 2;
+     */
+    physicalOwnedCapacity: bigint;
+    /**
+     * @generated from field: uint64 physical_owned_memory = 3;
+     */
+    physicalOwnedMemory: bigint;
+    /**
+     * @generated from field: uint64 physical_memory = 4;
+     */
+    physicalMemory: bigint;
+    /**
+     * @generated from field: uint64 user_written = 5;
+     */
+    userWritten: bigint;
+    constructor(data?: PartialMessage<SnapshotStatistics>);
+    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
+    static readonly typeName = "api.v1.SnapshotStatistics";
+    static readonly fields: FieldList;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): SnapshotStatistics;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): SnapshotStatistics;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): SnapshotStatistics;
+    static equals(a: SnapshotStatistics | PlainMessage<SnapshotStatistics> | undefined, b: SnapshotStatistics | PlainMessage<SnapshotStatistics> | undefined): boolean;
 }
 /**
  * Requests
@@ -164,9 +350,21 @@ export declare class VolumeServiceGetRequest extends Message<VolumeServiceGetReq
  */
 export declare class VolumeServiceListRequest extends Message<VolumeServiceListRequest> {
     /**
+     * @generated from field: optional string uuid = 1;
+     */
+    uuid?: string;
+    /**
      * @generated from field: string project = 2;
      */
     project: string;
+    /**
+     * @generated from field: optional string partition = 3;
+     */
+    partition?: string;
+    /**
+     * @generated from field: optional string name = 4;
+     */
+    name?: string;
     constructor(data?: PartialMessage<VolumeServiceListRequest>);
     static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
     static readonly typeName = "api.v1.VolumeServiceListRequest";
@@ -223,9 +421,21 @@ export declare class SnapshotServiceGetRequest extends Message<SnapshotServiceGe
  */
 export declare class SnapshotServiceListRequest extends Message<SnapshotServiceListRequest> {
     /**
+     * @generated from field: optional string uuid = 1;
+     */
+    uuid?: string;
+    /**
      * @generated from field: string project = 2;
      */
     project: string;
+    /**
+     * @generated from field: optional string partition = 3;
+     */
+    partition?: string;
+    /**
+     * @generated from field: optional string name = 4;
+     */
+    name?: string;
     constructor(data?: PartialMessage<SnapshotServiceListRequest>);
     static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
     static readonly typeName = "api.v1.SnapshotServiceListRequest";
