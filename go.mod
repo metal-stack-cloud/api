@@ -10,7 +10,7 @@ require (
 	github.com/klauspost/connect-compress v1.0.0
 	github.com/stretchr/testify v1.8.2
 	go.uber.org/zap v1.24.0
-	golang.org/x/exp v0.0.0-20230304125523-9ff063c70017
+	golang.org/x/exp v0.0.0-20230306221820-f0f767cdffd6
 	google.golang.org/protobuf v1.28.2-0.20230222093303-bc1253ad3743
 )
 
