@@ -20,20 +20,22 @@ type Client interface {
 	Token() apiv1connect.TokenServiceClient
 	Version() apiv1connect.VersionServiceClient
 	Volume() apiv1connect.VolumeServiceClient
+	Snapshot() apiv1connect.SnapshotServiceClient
 }
 
 // api is a client implementation of the api with grpc transport.
 type api struct {
-	log                  *zap.SugaredLogger
-	assetServiceClient   apiv1connect.AssetServiceClient
-	clusterServiceClient apiv1connect.ClusterServiceClient
-	healthServiceClient  apiv1connect.HealthServiceClient
-	ipServiceClient      apiv1connect.IPServiceClient
-	paymentServiceClient apiv1connect.PaymentServiceClient
-	tenantServiceClient  apiv1connect.TenantServiceClient
-	tokenServiceClient   apiv1connect.TokenServiceClient
-	versionServiceClient apiv1connect.VersionServiceClient
-	volumeServiceClient  apiv1connect.VolumeServiceClient
+	log                   *zap.SugaredLogger
+	assetServiceClient    apiv1connect.AssetServiceClient
+	clusterServiceClient  apiv1connect.ClusterServiceClient
+	healthServiceClient   apiv1connect.HealthServiceClient
+	ipServiceClient       apiv1connect.IPServiceClient
+	paymentServiceClient  apiv1connect.PaymentServiceClient
+	tenantServiceClient   apiv1connect.TenantServiceClient
+	tokenServiceClient    apiv1connect.TokenServiceClient
+	versionServiceClient  apiv1connect.VersionServiceClient
+	volumeServiceClient   apiv1connect.VolumeServiceClient
+	snapshotServiceClient apiv1connect.SnapshotServiceClient
 }
 
 func New(ctx context.Context, config client.DialConfig) Client {
@@ -84,6 +86,11 @@ func New(ctx context.Context, config client.DialConfig) Client {
 			config.BaseURL,
 			compress.WithAll(compress.LevelBalanced),
 		),
+		snapshotServiceClient: apiv1connect.NewSnapshotServiceClient(
+			config.HttpClient(),
+			config.BaseURL,
+			compress.WithAll(compress.LevelBalanced),
+		),
 	}
 }
 func (c api) Asset() apiv1connect.AssetServiceClient {
@@ -119,4 +126,7 @@ func (c api) Version() apiv1connect.VersionServiceClient {
 
 func (c api) Volume() apiv1connect.VolumeServiceClient {
 	return c.volumeServiceClient
+}
+func (c api) Snapshot() apiv1connect.SnapshotServiceClient {
+	return c.snapshotServiceClient
 }
