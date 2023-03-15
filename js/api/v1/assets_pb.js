@@ -22,10 +22,6 @@ class Asset extends protobuf_1.Message {
          * @generated from field: repeated api.v1.Kubernetes kubernetes = 3;
          */
         this.kubernetes = [];
-        /**
-         * @generated from field: string default_network = 4;
-         */
-        this.defaultNetwork = "";
         protobuf_1.proto3.util.initPartial(data, this);
     }
     static fromBinary(bytes, options) {
@@ -48,7 +44,6 @@ Asset.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 1, name: "region", kind: "message", T: Region },
     { no: 2, name: "machine_types", kind: "map", K: 9 /* ScalarType.STRING */, V: { kind: "message", T: MachineType } },
     { no: 3, name: "kubernetes", kind: "message", T: Kubernetes, repeated: true },
-    { no: 4, name: "default_network", kind: "scalar", T: 9 /* ScalarType.STRING */ },
 ]);
 /**
  * @generated from message api.v1.Region
@@ -76,10 +71,6 @@ class Region extends protobuf_1.Message {
          * @generated from field: map<string, api.v1.Partition> partitions = 5;
          */
         this.partitions = {};
-        /**
-         * @generated from field: repeated string networks = 7;
-         */
-        this.networks = [];
         protobuf_1.proto3.util.initPartial(data, this);
     }
     static fromBinary(bytes, options) {
@@ -105,7 +96,6 @@ Region.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 4, name: "active", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
     { no: 5, name: "partitions", kind: "map", K: 9 /* ScalarType.STRING */, V: { kind: "message", T: Partition } },
     { no: 6, name: "defaults", kind: "message", T: AssetDefaults },
-    { no: 7, name: "networks", kind: "scalar", T: 9 /* ScalarType.STRING */, repeated: true },
 ]);
 /**
  * @generated from message api.v1.Partition
@@ -258,14 +248,6 @@ class AssetDefaults extends protobuf_1.Message {
          */
         this.workerMax = 0;
         /**
-         * @generated from field: uint32 maxsurge = 5;
-         */
-        this.maxsurge = 0;
-        /**
-         * @generated from field: uint32 maxunavailable = 6;
-         */
-        this.maxunavailable = 0;
-        /**
          * @generated from field: string partition = 7;
          */
         this.partition = "";
@@ -292,8 +274,6 @@ AssetDefaults.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 2, name: "kubernetes_version", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 3, name: "worker_min", kind: "scalar", T: 13 /* ScalarType.UINT32 */ },
     { no: 4, name: "worker_max", kind: "scalar", T: 13 /* ScalarType.UINT32 */ },
-    { no: 5, name: "maxsurge", kind: "scalar", T: 13 /* ScalarType.UINT32 */ },
-    { no: 6, name: "maxunavailable", kind: "scalar", T: 13 /* ScalarType.UINT32 */ },
     { no: 7, name: "partition", kind: "scalar", T: 9 /* ScalarType.STRING */ },
 ]);
 /**

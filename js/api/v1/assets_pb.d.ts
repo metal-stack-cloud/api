@@ -20,10 +20,6 @@ export declare class Asset extends Message<Asset> {
      * @generated from field: repeated api.v1.Kubernetes kubernetes = 3;
      */
     kubernetes: Kubernetes[];
-    /**
-     * @generated from field: string default_network = 4;
-     */
-    defaultNetwork: string;
     constructor(data?: PartialMessage<Asset>);
     static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
     static readonly typeName = "api.v1.Asset";
@@ -63,10 +59,6 @@ export declare class Region extends Message<Region> {
      * @generated from field: api.v1.AssetDefaults defaults = 6;
      */
     defaults?: AssetDefaults;
-    /**
-     * @generated from field: repeated string networks = 7;
-     */
-    networks: string[];
     constructor(data?: PartialMessage<Region>);
     static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
     static readonly typeName = "api.v1.Region";
@@ -175,14 +167,6 @@ export declare class AssetDefaults extends Message<AssetDefaults> {
      * @generated from field: uint32 worker_max = 4;
      */
     workerMax: number;
-    /**
-     * @generated from field: uint32 maxsurge = 5;
-     */
-    maxsurge: number;
-    /**
-     * @generated from field: uint32 maxunavailable = 6;
-     */
-    maxunavailable: number;
     /**
      * @generated from field: string partition = 7;
      */

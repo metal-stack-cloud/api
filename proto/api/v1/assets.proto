@@ -15,7 +15,6 @@ message Asset {
   Region region = 1;
   map<string, MachineType> machine_types = 2;
   repeated Kubernetes kubernetes = 3;
-  string default_network = 4;
 }
 
 message Region {
@@ -25,7 +24,6 @@ message Region {
   bool active = 4;
   map<string, Partition> partitions = 5;
   AssetDefaults defaults = 6;
-  repeated string networks = 7;
 }
 
 message Partition {
@@ -52,8 +50,6 @@ message AssetDefaults {
   string kubernetes_version = 2;
   uint32 worker_min = 3;
   uint32 worker_max = 4;
-  uint32 maxsurge = 5;
-  uint32 maxunavailable = 6;
   string partition = 7;
 }
 

@@ -165,8 +165,6 @@ func (m *Asset) validate(all bool) error {
 
 	}
 
-	// no validation rules for DefaultNetwork
-
 	if len(errors) > 0 {
 		return AssetMultiError(errors)
 	}
@@ -771,10 +769,6 @@ func (m *AssetDefaults) validate(all bool) error {
 	// no validation rules for WorkerMin
 
 	// no validation rules for WorkerMax
-
-	// no validation rules for Maxsurge
-
-	// no validation rules for Maxunavailable
 
 	// no validation rules for Partition
 
