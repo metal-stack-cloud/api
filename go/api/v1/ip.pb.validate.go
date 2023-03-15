@@ -499,17 +499,6 @@ func (m *IPServiceAllocateRequest) validate(all bool) error {
 		errors = append(errors, err)
 	}
 
-	if l := utf8.RuneCountInString(m.GetNetwork()); l < 2 || l > 128 {
-		err := IPServiceAllocateRequestValidationError{
-			field:  "Network",
-			reason: "value length must be between 2 and 128 runes, inclusive",
-		}
-		if !all {
-			return err
-		}
-		errors = append(errors, err)
-	}
-
 	if len(m.GetTags()) > 100 {
 		err := IPServiceAllocateRequestValidationError{
 			field:  "Tags",

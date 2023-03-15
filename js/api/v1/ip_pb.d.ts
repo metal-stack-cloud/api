@@ -116,10 +116,6 @@ export declare class IPServiceAllocateRequest extends Message<IPServiceAllocateR
      */
     description: string;
     /**
-     * @generated from field: string network = 5;
-     */
-    network: string;
-    /**
      * @generated from field: repeated string tags = 8;
      */
     tags: string[];
