@@ -1,5 +1,5 @@
 import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
-import { Message, Timestamp } from "@bufbuild/protobuf";
+import { Message, proto3, Timestamp } from "@bufbuild/protobuf";
 /**
  * @generated from message api.v1.PaymentCustomer
  */
@@ -49,7 +49,7 @@ export declare class PaymentCustomer extends Message<PaymentCustomer> {
      */
     vat: string;
     constructor(data?: PartialMessage<PaymentCustomer>);
-    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
+    static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.PaymentCustomer";
     static readonly fields: FieldList;
     static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): PaymentCustomer;
@@ -82,7 +82,7 @@ export declare class Card extends Message<Card> {
      */
     last4: string;
     constructor(data?: PartialMessage<Card>);
-    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
+    static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.Card";
     static readonly fields: FieldList;
     static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Card;
@@ -111,7 +111,7 @@ export declare class Price extends Message<Price> {
      */
     unitLabel: string;
     constructor(data?: PartialMessage<Price>);
-    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
+    static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.Price";
     static readonly fields: FieldList;
     static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Price;
@@ -148,7 +148,7 @@ export declare class Address extends Message<Address> {
      */
     country: string;
     constructor(data?: PartialMessage<Address>);
-    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
+    static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.Address";
     static readonly fields: FieldList;
     static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Address;
@@ -181,7 +181,7 @@ export declare class SubscriptionUsageItem extends Message<SubscriptionUsageItem
      */
     periodEnd?: Timestamp;
     constructor(data?: PartialMessage<SubscriptionUsageItem>);
-    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
+    static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.SubscriptionUsageItem";
     static readonly fields: FieldList;
     static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): SubscriptionUsageItem;
@@ -210,7 +210,7 @@ export declare class Invoice extends Message<Invoice> {
      */
     periodEnd?: Timestamp;
     constructor(data?: PartialMessage<Invoice>);
-    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
+    static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.Invoice";
     static readonly fields: FieldList;
     static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Invoice;
@@ -259,7 +259,7 @@ export declare class Coupon extends Message<Coupon> {
      */
     maxRedemptions: bigint;
     constructor(data?: PartialMessage<Coupon>);
-    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
+    static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.Coupon";
     static readonly fields: FieldList;
     static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Coupon;
@@ -284,7 +284,7 @@ export declare class PaymentServiceCreateOrUpdateCustomerRequest extends Message
      */
     acceptedTermsAndConditions: boolean;
     constructor(data?: PartialMessage<PaymentServiceCreateOrUpdateCustomerRequest>);
-    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
+    static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.PaymentServiceCreateOrUpdateCustomerRequest";
     static readonly fields: FieldList;
     static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): PaymentServiceCreateOrUpdateCustomerRequest;
@@ -301,7 +301,7 @@ export declare class PaymentServiceCreateOrUpdateCustomerResponse extends Messag
      */
     customer?: PaymentCustomer;
     constructor(data?: PartialMessage<PaymentServiceCreateOrUpdateCustomerResponse>);
-    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
+    static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.PaymentServiceCreateOrUpdateCustomerResponse";
     static readonly fields: FieldList;
     static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): PaymentServiceCreateOrUpdateCustomerResponse;
@@ -322,7 +322,7 @@ export declare class PaymentServiceGetCustomerRequest extends Message<PaymentSer
      */
     customerId: string;
     constructor(data?: PartialMessage<PaymentServiceGetCustomerRequest>);
-    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
+    static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.PaymentServiceGetCustomerRequest";
     static readonly fields: FieldList;
     static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): PaymentServiceGetCustomerRequest;
@@ -339,7 +339,7 @@ export declare class PaymentServiceGetCustomerResponse extends Message<PaymentSe
      */
     customer?: PaymentCustomer;
     constructor(data?: PartialMessage<PaymentServiceGetCustomerResponse>);
-    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
+    static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.PaymentServiceGetCustomerResponse";
     static readonly fields: FieldList;
     static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): PaymentServiceGetCustomerResponse;
@@ -356,7 +356,7 @@ export declare class PaymentServiceGetCustomerWithLoginRequest extends Message<P
      */
     login: string;
     constructor(data?: PartialMessage<PaymentServiceGetCustomerWithLoginRequest>);
-    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
+    static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.PaymentServiceGetCustomerWithLoginRequest";
     static readonly fields: FieldList;
     static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): PaymentServiceGetCustomerWithLoginRequest;
@@ -373,7 +373,7 @@ export declare class PaymentServiceGetCustomerWithLoginResponse extends Message<
      */
     customer?: PaymentCustomer;
     constructor(data?: PartialMessage<PaymentServiceGetCustomerWithLoginResponse>);
-    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
+    static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.PaymentServiceGetCustomerWithLoginResponse";
     static readonly fields: FieldList;
     static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): PaymentServiceGetCustomerWithLoginResponse;
@@ -390,7 +390,7 @@ export declare class PaymentServiceCheckIfCustomerExistsRequest extends Message<
      */
     login: string;
     constructor(data?: PartialMessage<PaymentServiceCheckIfCustomerExistsRequest>);
-    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
+    static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.PaymentServiceCheckIfCustomerExistsRequest";
     static readonly fields: FieldList;
     static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): PaymentServiceCheckIfCustomerExistsRequest;
@@ -411,7 +411,7 @@ export declare class PaymentServiceCheckIfCustomerExistsResponse extends Message
      */
     exists: boolean;
     constructor(data?: PartialMessage<PaymentServiceCheckIfCustomerExistsResponse>);
-    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
+    static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.PaymentServiceCheckIfCustomerExistsResponse";
     static readonly fields: FieldList;
     static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): PaymentServiceCheckIfCustomerExistsResponse;
@@ -432,7 +432,7 @@ export declare class PaymentServiceHasPaymentMethodRequest extends Message<Payme
      */
     project: string;
     constructor(data?: PartialMessage<PaymentServiceHasPaymentMethodRequest>);
-    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
+    static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.PaymentServiceHasPaymentMethodRequest";
     static readonly fields: FieldList;
     static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): PaymentServiceHasPaymentMethodRequest;
@@ -449,7 +449,7 @@ export declare class PaymentServiceHasPaymentMethodResponse extends Message<Paym
      */
     exists: boolean;
     constructor(data?: PartialMessage<PaymentServiceHasPaymentMethodResponse>);
-    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
+    static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.PaymentServiceHasPaymentMethodResponse";
     static readonly fields: FieldList;
     static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): PaymentServiceHasPaymentMethodResponse;
@@ -466,7 +466,7 @@ export declare class PaymentServiceDeletePaymentMethodRequest extends Message<Pa
      */
     login: string;
     constructor(data?: PartialMessage<PaymentServiceDeletePaymentMethodRequest>);
-    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
+    static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.PaymentServiceDeletePaymentMethodRequest";
     static readonly fields: FieldList;
     static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): PaymentServiceDeletePaymentMethodRequest;
@@ -479,7 +479,7 @@ export declare class PaymentServiceDeletePaymentMethodRequest extends Message<Pa
  */
 export declare class PaymentServiceDeletePaymentMethodResponse extends Message<PaymentServiceDeletePaymentMethodResponse> {
     constructor(data?: PartialMessage<PaymentServiceDeletePaymentMethodResponse>);
-    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
+    static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.PaymentServiceDeletePaymentMethodResponse";
     static readonly fields: FieldList;
     static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): PaymentServiceDeletePaymentMethodResponse;
@@ -496,7 +496,7 @@ export declare class PaymentServiceGetSubscriptionUsageRequest extends Message<P
      */
     login: string;
     constructor(data?: PartialMessage<PaymentServiceGetSubscriptionUsageRequest>);
-    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
+    static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.PaymentServiceGetSubscriptionUsageRequest";
     static readonly fields: FieldList;
     static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): PaymentServiceGetSubscriptionUsageRequest;
@@ -513,7 +513,7 @@ export declare class PaymentServiceGetSubscriptionUsageResponse extends Message<
      */
     subscriptionUsageItems: SubscriptionUsageItem[];
     constructor(data?: PartialMessage<PaymentServiceGetSubscriptionUsageResponse>);
-    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
+    static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.PaymentServiceGetSubscriptionUsageResponse";
     static readonly fields: FieldList;
     static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): PaymentServiceGetSubscriptionUsageResponse;
@@ -534,7 +534,7 @@ export declare class PaymentServiceGetInvoicesRequest extends Message<PaymentSer
      */
     customerId: string;
     constructor(data?: PartialMessage<PaymentServiceGetInvoicesRequest>);
-    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
+    static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.PaymentServiceGetInvoicesRequest";
     static readonly fields: FieldList;
     static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): PaymentServiceGetInvoicesRequest;
@@ -551,7 +551,7 @@ export declare class PaymentServiceGetInvoicesResponse extends Message<PaymentSe
      */
     invoices: Invoice[];
     constructor(data?: PartialMessage<PaymentServiceGetInvoicesResponse>);
-    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
+    static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.PaymentServiceGetInvoicesResponse";
     static readonly fields: FieldList;
     static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): PaymentServiceGetInvoicesResponse;
@@ -564,7 +564,7 @@ export declare class PaymentServiceGetInvoicesResponse extends Message<PaymentSe
  */
 export declare class PaymentServiceGetDefaultPricesRequest extends Message<PaymentServiceGetDefaultPricesRequest> {
     constructor(data?: PartialMessage<PaymentServiceGetDefaultPricesRequest>);
-    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
+    static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.PaymentServiceGetDefaultPricesRequest";
     static readonly fields: FieldList;
     static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): PaymentServiceGetDefaultPricesRequest;
@@ -581,7 +581,7 @@ export declare class PaymentServiceGetDefaultPricesResponse extends Message<Paym
      */
     prices: Price[];
     constructor(data?: PartialMessage<PaymentServiceGetDefaultPricesResponse>);
-    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
+    static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.PaymentServiceGetDefaultPricesResponse";
     static readonly fields: FieldList;
     static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): PaymentServiceGetDefaultPricesResponse;

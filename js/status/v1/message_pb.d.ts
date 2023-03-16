@@ -1,5 +1,5 @@
 import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
-import { Message as Message$1, Timestamp } from "@bufbuild/protobuf";
+import { Message as Message$1, proto3, Timestamp } from "@bufbuild/protobuf";
 /**
  * @generated from enum status.v1.MessageKind
  */
@@ -34,7 +34,7 @@ export declare enum MessageKind {
  */
 export declare class MessageServiceListRequest extends Message$1<MessageServiceListRequest> {
     constructor(data?: PartialMessage<MessageServiceListRequest>);
-    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
+    static readonly runtime: typeof proto3;
     static readonly typeName = "status.v1.MessageServiceListRequest";
     static readonly fields: FieldList;
     static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): MessageServiceListRequest;
@@ -55,7 +55,7 @@ export declare class MessageServiceListResponse extends Message$1<MessageService
      */
     pinnedItems: Message[];
     constructor(data?: PartialMessage<MessageServiceListResponse>);
-    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
+    static readonly runtime: typeof proto3;
     static readonly typeName = "status.v1.MessageServiceListResponse";
     static readonly fields: FieldList;
     static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): MessageServiceListResponse;
@@ -88,7 +88,7 @@ export declare class Message extends Message$1<Message> {
      */
     replies: ReplyMessage[];
     constructor(data?: PartialMessage<Message>);
-    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
+    static readonly runtime: typeof proto3;
     static readonly typeName = "status.v1.Message";
     static readonly fields: FieldList;
     static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Message;
@@ -117,7 +117,7 @@ export declare class ReplyMessage extends Message$1<ReplyMessage> {
      */
     timestamp?: Timestamp;
     constructor(data?: PartialMessage<ReplyMessage>);
-    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
+    static readonly runtime: typeof proto3;
     static readonly typeName = "status.v1.ReplyMessage";
     static readonly fields: FieldList;
     static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ReplyMessage;

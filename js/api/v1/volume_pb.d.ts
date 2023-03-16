@@ -1,5 +1,5 @@
 import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
-import { Duration, Message, Timestamp } from "@bufbuild/protobuf";
+import { Duration, Message, proto3, Timestamp } from "@bufbuild/protobuf";
 /**
  * Types
  *
@@ -105,7 +105,7 @@ export declare class Volume extends Message<Volume> {
      */
     deletedAt?: Timestamp;
     constructor(data?: PartialMessage<Volume>);
-    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
+    static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.Volume";
     static readonly fields: FieldList;
     static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Volume;
@@ -194,7 +194,7 @@ export declare class VolumeStatistics extends Message<VolumeStatistics> {
      */
     recoverableDataIntegrityErrors: number;
     constructor(data?: PartialMessage<VolumeStatistics>);
-    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
+    static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.VolumeStatistics";
     static readonly fields: FieldList;
     static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): VolumeStatistics;
@@ -281,7 +281,7 @@ export declare class Snapshot extends Message<Snapshot> {
      */
     deletedAt?: Timestamp;
     constructor(data?: PartialMessage<Snapshot>);
-    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
+    static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.Snapshot";
     static readonly fields: FieldList;
     static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Snapshot;
@@ -314,7 +314,7 @@ export declare class SnapshotStatistics extends Message<SnapshotStatistics> {
      */
     userWritten: bigint;
     constructor(data?: PartialMessage<SnapshotStatistics>);
-    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
+    static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.SnapshotStatistics";
     static readonly fields: FieldList;
     static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): SnapshotStatistics;
@@ -337,7 +337,7 @@ export declare class VolumeServiceGetRequest extends Message<VolumeServiceGetReq
      */
     project: string;
     constructor(data?: PartialMessage<VolumeServiceGetRequest>);
-    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
+    static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.VolumeServiceGetRequest";
     static readonly fields: FieldList;
     static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): VolumeServiceGetRequest;
@@ -366,7 +366,7 @@ export declare class VolumeServiceListRequest extends Message<VolumeServiceListR
      */
     name?: string;
     constructor(data?: PartialMessage<VolumeServiceListRequest>);
-    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
+    static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.VolumeServiceListRequest";
     static readonly fields: FieldList;
     static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): VolumeServiceListRequest;
@@ -387,7 +387,7 @@ export declare class VolumeServiceDeleteRequest extends Message<VolumeServiceDel
      */
     project: string;
     constructor(data?: PartialMessage<VolumeServiceDeleteRequest>);
-    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
+    static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.VolumeServiceDeleteRequest";
     static readonly fields: FieldList;
     static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): VolumeServiceDeleteRequest;
@@ -408,7 +408,7 @@ export declare class SnapshotServiceGetRequest extends Message<SnapshotServiceGe
      */
     project: string;
     constructor(data?: PartialMessage<SnapshotServiceGetRequest>);
-    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
+    static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.SnapshotServiceGetRequest";
     static readonly fields: FieldList;
     static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): SnapshotServiceGetRequest;
@@ -437,7 +437,7 @@ export declare class SnapshotServiceListRequest extends Message<SnapshotServiceL
      */
     name?: string;
     constructor(data?: PartialMessage<SnapshotServiceListRequest>);
-    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
+    static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.SnapshotServiceListRequest";
     static readonly fields: FieldList;
     static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): SnapshotServiceListRequest;
@@ -458,7 +458,7 @@ export declare class SnapshotServiceDeleteRequest extends Message<SnapshotServic
      */
     project: string;
     constructor(data?: PartialMessage<SnapshotServiceDeleteRequest>);
-    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
+    static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.SnapshotServiceDeleteRequest";
     static readonly fields: FieldList;
     static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): SnapshotServiceDeleteRequest;
@@ -477,7 +477,7 @@ export declare class VolumeServiceGetResponse extends Message<VolumeServiceGetRe
      */
     volume?: Volume;
     constructor(data?: PartialMessage<VolumeServiceGetResponse>);
-    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
+    static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.VolumeServiceGetResponse";
     static readonly fields: FieldList;
     static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): VolumeServiceGetResponse;
@@ -494,7 +494,7 @@ export declare class VolumeServiceListResponse extends Message<VolumeServiceList
      */
     volumes: Volume[];
     constructor(data?: PartialMessage<VolumeServiceListResponse>);
-    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
+    static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.VolumeServiceListResponse";
     static readonly fields: FieldList;
     static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): VolumeServiceListResponse;
@@ -511,7 +511,7 @@ export declare class VolumeServiceDeleteResponse extends Message<VolumeServiceDe
      */
     volume?: Volume;
     constructor(data?: PartialMessage<VolumeServiceDeleteResponse>);
-    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
+    static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.VolumeServiceDeleteResponse";
     static readonly fields: FieldList;
     static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): VolumeServiceDeleteResponse;
@@ -528,7 +528,7 @@ export declare class SnapshotServiceGetResponse extends Message<SnapshotServiceG
      */
     snapshot?: Snapshot;
     constructor(data?: PartialMessage<SnapshotServiceGetResponse>);
-    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
+    static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.SnapshotServiceGetResponse";
     static readonly fields: FieldList;
     static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): SnapshotServiceGetResponse;
@@ -545,7 +545,7 @@ export declare class SnapshotServiceListResponse extends Message<SnapshotService
      */
     snapshots: Snapshot[];
     constructor(data?: PartialMessage<SnapshotServiceListResponse>);
-    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
+    static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.SnapshotServiceListResponse";
     static readonly fields: FieldList;
     static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): SnapshotServiceListResponse;
@@ -562,7 +562,7 @@ export declare class SnapshotServiceDeleteResponse extends Message<SnapshotServi
      */
     snapshot?: Snapshot;
     constructor(data?: PartialMessage<SnapshotServiceDeleteResponse>);
-    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
+    static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.SnapshotServiceDeleteResponse";
     static readonly fields: FieldList;
     static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): SnapshotServiceDeleteResponse;
