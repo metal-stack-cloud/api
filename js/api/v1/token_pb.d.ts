@@ -1,5 +1,5 @@
 import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
-import { Duration, Message } from "@bufbuild/protobuf";
+import { Duration, Message, proto3 } from "@bufbuild/protobuf";
 /**
  * Tokens
  *
@@ -23,7 +23,7 @@ export declare class TokenServiceCreateRequest extends Message<TokenServiceCreat
      */
     expires?: Duration;
     constructor(data?: PartialMessage<TokenServiceCreateRequest>);
-    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
+    static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.TokenServiceCreateRequest";
     static readonly fields: FieldList;
     static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): TokenServiceCreateRequest;
@@ -44,7 +44,7 @@ export declare class ProjectPermission extends Message<ProjectPermission> {
      */
     permissions: string[];
     constructor(data?: PartialMessage<ProjectPermission>);
-    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
+    static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.ProjectPermission";
     static readonly fields: FieldList;
     static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ProjectPermission;
@@ -65,7 +65,7 @@ export declare class TokenRole extends Message<TokenRole> {
      */
     role: string;
     constructor(data?: PartialMessage<TokenRole>);
-    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
+    static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.TokenRole";
     static readonly fields: FieldList;
     static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): TokenRole;
@@ -82,7 +82,7 @@ export declare class TokenServiceCreateResponse extends Message<TokenServiceCrea
      */
     token: string;
     constructor(data?: PartialMessage<TokenServiceCreateResponse>);
-    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
+    static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.TokenServiceCreateResponse";
     static readonly fields: FieldList;
     static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): TokenServiceCreateResponse;

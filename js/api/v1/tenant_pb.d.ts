@@ -1,5 +1,5 @@
 import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
-import { Message, Timestamp } from "@bufbuild/protobuf";
+import { Message, proto3, Timestamp } from "@bufbuild/protobuf";
 import { OAuthProvider } from "./common_pb.js";
 import { Coupon } from "./payment_pb.js";
 /**
@@ -63,7 +63,7 @@ export declare class Tenant extends Message<Tenant> {
      */
     deletedAt?: Timestamp;
     constructor(data?: PartialMessage<Tenant>);
-    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime.js").ProtoRuntime;
+    static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.Tenant";
     static readonly fields: FieldList;
     static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Tenant;
@@ -96,7 +96,7 @@ export declare class PaymentDetails extends Message<PaymentDetails> {
      */
     vat: string;
     constructor(data?: PartialMessage<PaymentDetails>);
-    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime.js").ProtoRuntime;
+    static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.PaymentDetails";
     static readonly fields: FieldList;
     static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): PaymentDetails;
@@ -125,7 +125,7 @@ export declare class PaymentDetailsUpdate extends Message<PaymentDetailsUpdate> 
      */
     vat?: string;
     constructor(data?: PartialMessage<PaymentDetailsUpdate>);
-    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime.js").ProtoRuntime;
+    static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.PaymentDetailsUpdate";
     static readonly fields: FieldList;
     static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): PaymentDetailsUpdate;
@@ -146,7 +146,7 @@ export declare class TermsAndConditions extends Message<TermsAndConditions> {
      */
     when?: Timestamp;
     constructor(data?: PartialMessage<TermsAndConditions>);
-    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime.js").ProtoRuntime;
+    static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.TermsAndConditions";
     static readonly fields: FieldList;
     static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): TermsAndConditions;
@@ -167,7 +167,7 @@ export declare class TermsAndConditionsUpdate extends Message<TermsAndConditions
      */
     when?: Timestamp;
     constructor(data?: PartialMessage<TermsAndConditionsUpdate>);
-    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime.js").ProtoRuntime;
+    static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.TermsAndConditionsUpdate";
     static readonly fields: FieldList;
     static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): TermsAndConditionsUpdate;
@@ -184,7 +184,7 @@ export declare class TenantServiceGetRequest extends Message<TenantServiceGetReq
      */
     login: string;
     constructor(data?: PartialMessage<TenantServiceGetRequest>);
-    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime.js").ProtoRuntime;
+    static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.TenantServiceGetRequest";
     static readonly fields: FieldList;
     static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): TenantServiceGetRequest;
@@ -201,7 +201,7 @@ export declare class TenantServiceCreateRequest extends Message<TenantServiceCre
      */
     tenant?: Tenant;
     constructor(data?: PartialMessage<TenantServiceCreateRequest>);
-    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime.js").ProtoRuntime;
+    static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.TenantServiceCreateRequest";
     static readonly fields: FieldList;
     static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): TenantServiceCreateRequest;
@@ -218,7 +218,7 @@ export declare class TenantServiceCreateOrUpdateRequest extends Message<TenantSe
      */
     tenant?: Tenant;
     constructor(data?: PartialMessage<TenantServiceCreateOrUpdateRequest>);
-    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime.js").ProtoRuntime;
+    static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.TenantServiceCreateOrUpdateRequest";
     static readonly fields: FieldList;
     static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): TenantServiceCreateOrUpdateRequest;
@@ -257,7 +257,7 @@ export declare class TenantServiceUpdateRequest extends Message<TenantServiceUpd
      */
     termsAndConditions?: TermsAndConditionsUpdate;
     constructor(data?: PartialMessage<TenantServiceUpdateRequest>);
-    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime.js").ProtoRuntime;
+    static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.TenantServiceUpdateRequest";
     static readonly fields: FieldList;
     static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): TenantServiceUpdateRequest;
@@ -274,7 +274,7 @@ export declare class TenantServiceDeleteRequest extends Message<TenantServiceDel
      */
     login: string;
     constructor(data?: PartialMessage<TenantServiceDeleteRequest>);
-    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime.js").ProtoRuntime;
+    static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.TenantServiceDeleteRequest";
     static readonly fields: FieldList;
     static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): TenantServiceDeleteRequest;
@@ -291,7 +291,7 @@ export declare class TenantServiceCheckAdmittedRequest extends Message<TenantSer
      */
     login: string;
     constructor(data?: PartialMessage<TenantServiceCheckAdmittedRequest>);
-    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime.js").ProtoRuntime;
+    static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.TenantServiceCheckAdmittedRequest";
     static readonly fields: FieldList;
     static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): TenantServiceCheckAdmittedRequest;
@@ -324,7 +324,7 @@ export declare class TenantServiceRequestAdmissionRequest extends Message<Tenant
      */
     emailConsent: boolean;
     constructor(data?: PartialMessage<TenantServiceRequestAdmissionRequest>);
-    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime.js").ProtoRuntime;
+    static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.TenantServiceRequestAdmissionRequest";
     static readonly fields: FieldList;
     static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): TenantServiceRequestAdmissionRequest;
@@ -343,7 +343,7 @@ export declare class TenantServiceGetResponse extends Message<TenantServiceGetRe
      */
     tenant?: Tenant;
     constructor(data?: PartialMessage<TenantServiceGetResponse>);
-    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime.js").ProtoRuntime;
+    static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.TenantServiceGetResponse";
     static readonly fields: FieldList;
     static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): TenantServiceGetResponse;
@@ -360,7 +360,7 @@ export declare class TenantServiceCreateResponse extends Message<TenantServiceCr
      */
     tenant?: Tenant;
     constructor(data?: PartialMessage<TenantServiceCreateResponse>);
-    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime.js").ProtoRuntime;
+    static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.TenantServiceCreateResponse";
     static readonly fields: FieldList;
     static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): TenantServiceCreateResponse;
@@ -377,7 +377,7 @@ export declare class TenantServiceCreateOrUpdateResponse extends Message<TenantS
      */
     tenant?: Tenant;
     constructor(data?: PartialMessage<TenantServiceCreateOrUpdateResponse>);
-    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime.js").ProtoRuntime;
+    static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.TenantServiceCreateOrUpdateResponse";
     static readonly fields: FieldList;
     static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): TenantServiceCreateOrUpdateResponse;
@@ -394,7 +394,7 @@ export declare class TenantServiceUpdateResponse extends Message<TenantServiceUp
      */
     tenant?: Tenant;
     constructor(data?: PartialMessage<TenantServiceUpdateResponse>);
-    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime.js").ProtoRuntime;
+    static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.TenantServiceUpdateResponse";
     static readonly fields: FieldList;
     static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): TenantServiceUpdateResponse;
@@ -411,7 +411,7 @@ export declare class TenantServiceDeleteResponse extends Message<TenantServiceDe
      */
     tenant?: Tenant;
     constructor(data?: PartialMessage<TenantServiceDeleteResponse>);
-    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime.js").ProtoRuntime;
+    static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.TenantServiceDeleteResponse";
     static readonly fields: FieldList;
     static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): TenantServiceDeleteResponse;
@@ -432,7 +432,7 @@ export declare class TenantServiceCheckAdmittedResponse extends Message<TenantSe
      */
     requested: boolean;
     constructor(data?: PartialMessage<TenantServiceCheckAdmittedResponse>);
-    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime.js").ProtoRuntime;
+    static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.TenantServiceCheckAdmittedResponse";
     static readonly fields: FieldList;
     static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): TenantServiceCheckAdmittedResponse;
@@ -449,7 +449,7 @@ export declare class TenantServiceRequestAdmissionResponse extends Message<Tenan
      */
     tenant?: Tenant;
     constructor(data?: PartialMessage<TenantServiceRequestAdmissionResponse>);
-    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime.js").ProtoRuntime;
+    static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.TenantServiceRequestAdmissionResponse";
     static readonly fields: FieldList;
     static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): TenantServiceRequestAdmissionResponse;

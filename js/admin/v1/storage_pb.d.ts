@@ -1,5 +1,5 @@
 import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
-import { Message } from "@bufbuild/protobuf";
+import { Message, proto3 } from "@bufbuild/protobuf";
 import { Snapshot, Volume } from "../../api/v1/volume_pb.js";
 /**
  * @generated from message admin.v1.StorageServiceClusterInfoRequest
@@ -10,7 +10,7 @@ export declare class StorageServiceClusterInfoRequest extends Message<StorageSer
      */
     partition?: string;
     constructor(data?: PartialMessage<StorageServiceClusterInfoRequest>);
-    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime.js").ProtoRuntime;
+    static readonly runtime: typeof proto3;
     static readonly typeName = "admin.v1.StorageServiceClusterInfoRequest";
     static readonly fields: FieldList;
     static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): StorageServiceClusterInfoRequest;
@@ -27,7 +27,7 @@ export declare class StorageServiceClusterInfoResponse extends Message<StorageSe
      */
     infos: StorageClusterInfo[];
     constructor(data?: PartialMessage<StorageServiceClusterInfoResponse>);
-    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime.js").ProtoRuntime;
+    static readonly runtime: typeof proto3;
     static readonly typeName = "admin.v1.StorageServiceClusterInfoResponse";
     static readonly fields: FieldList;
     static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): StorageServiceClusterInfoResponse;
@@ -92,7 +92,7 @@ export declare class StorageClusterInfo extends Message<StorageClusterInfo> {
      */
     servers: StorageServerInfo[];
     constructor(data?: PartialMessage<StorageClusterInfo>);
-    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime.js").ProtoRuntime;
+    static readonly runtime: typeof proto3;
     static readonly typeName = "admin.v1.StorageClusterInfo";
     static readonly fields: FieldList;
     static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): StorageClusterInfo;
@@ -129,7 +129,7 @@ export declare class StorageServerInfo extends Message<StorageServerInfo> {
      */
     lightOsVersion: string;
     constructor(data?: PartialMessage<StorageServerInfo>);
-    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime.js").ProtoRuntime;
+    static readonly runtime: typeof proto3;
     static readonly typeName = "admin.v1.StorageServerInfo";
     static readonly fields: FieldList;
     static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): StorageServerInfo;
@@ -162,7 +162,7 @@ export declare class ClusterHealth extends Message<ClusterHealth> {
      */
     numInactiveNodes: number;
     constructor(data?: PartialMessage<ClusterHealth>);
-    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime.js").ProtoRuntime;
+    static readonly runtime: typeof proto3;
     static readonly typeName = "admin.v1.ClusterHealth";
     static readonly fields: FieldList;
     static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ClusterHealth;
@@ -263,7 +263,7 @@ export declare class ClusterStatisticsApi extends Message<ClusterStatisticsApi> 
      */
     compressionRatio: number;
     constructor(data?: PartialMessage<ClusterStatisticsApi>);
-    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime.js").ProtoRuntime;
+    static readonly runtime: typeof proto3;
     static readonly typeName = "admin.v1.ClusterStatisticsApi";
     static readonly fields: FieldList;
     static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ClusterStatisticsApi;
@@ -296,7 +296,7 @@ export declare class StorageServiceListVolumesRequest extends Message<StorageSer
      */
     tenant?: string;
     constructor(data?: PartialMessage<StorageServiceListVolumesRequest>);
-    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime.js").ProtoRuntime;
+    static readonly runtime: typeof proto3;
     static readonly typeName = "admin.v1.StorageServiceListVolumesRequest";
     static readonly fields: FieldList;
     static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): StorageServiceListVolumesRequest;
@@ -313,7 +313,7 @@ export declare class StorageServiceListVolumesResponse extends Message<StorageSe
      */
     volumes: Volume[];
     constructor(data?: PartialMessage<StorageServiceListVolumesResponse>);
-    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime.js").ProtoRuntime;
+    static readonly runtime: typeof proto3;
     static readonly typeName = "admin.v1.StorageServiceListVolumesResponse";
     static readonly fields: FieldList;
     static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): StorageServiceListVolumesResponse;
@@ -346,7 +346,7 @@ export declare class StorageServiceListSnapshotsRequest extends Message<StorageS
      */
     tenant?: string;
     constructor(data?: PartialMessage<StorageServiceListSnapshotsRequest>);
-    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime.js").ProtoRuntime;
+    static readonly runtime: typeof proto3;
     static readonly typeName = "admin.v1.StorageServiceListSnapshotsRequest";
     static readonly fields: FieldList;
     static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): StorageServiceListSnapshotsRequest;
@@ -363,7 +363,7 @@ export declare class StorageServiceListSnapshotsResponse extends Message<Storage
      */
     snapshots: Snapshot[];
     constructor(data?: PartialMessage<StorageServiceListSnapshotsResponse>);
-    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime.js").ProtoRuntime;
+    static readonly runtime: typeof proto3;
     static readonly typeName = "admin.v1.StorageServiceListSnapshotsResponse";
     static readonly fields: FieldList;
     static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): StorageServiceListSnapshotsResponse;

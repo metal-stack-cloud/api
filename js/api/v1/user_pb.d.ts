@@ -1,5 +1,5 @@
 import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
-import { Message } from "@bufbuild/protobuf";
+import { Message, proto3 } from "@bufbuild/protobuf";
 import { OAuthProvider, Role } from "./common_pb.js";
 /**
  * User
@@ -34,7 +34,7 @@ export declare class User extends Message<User> {
      */
     organizations: Organization[];
     constructor(data?: PartialMessage<User>);
-    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime.js").ProtoRuntime;
+    static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.User";
     static readonly fields: FieldList;
     static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): User;
@@ -79,7 +79,7 @@ export declare class Organization extends Message<Organization> {
      */
     teams: Team[];
     constructor(data?: PartialMessage<Organization>);
-    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime.js").ProtoRuntime;
+    static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.Organization";
     static readonly fields: FieldList;
     static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Organization;
@@ -112,7 +112,7 @@ export declare class Team extends Message<Team> {
      */
     projectId: string;
     constructor(data?: PartialMessage<Team>);
-    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime.js").ProtoRuntime;
+    static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.Team";
     static readonly fields: FieldList;
     static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Team;
