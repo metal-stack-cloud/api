@@ -158,10 +158,6 @@ class IPServiceAllocateRequest extends protobuf_1.Message {
          */
         this.description = "";
         /**
-         * @generated from field: string network = 5;
-         */
-        this.network = "";
-        /**
          * @generated from field: repeated string tags = 8;
          */
         this.tags = [];
@@ -191,7 +187,6 @@ IPServiceAllocateRequest.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 2, name: "project", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 3, name: "name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 4, name: "description", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 5, name: "network", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 8, name: "tags", kind: "scalar", T: 9 /* ScalarType.STRING */, repeated: true },
     { no: 9, name: "static", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
 ]);

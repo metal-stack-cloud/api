@@ -27,11 +27,6 @@ export class Asset extends Message<Asset> {
    */
   kubernetes: Kubernetes[] = [];
 
-  /**
-   * @generated from field: string default_network = 4;
-   */
-  defaultNetwork = "";
-
   constructor(data?: PartialMessage<Asset>) {
     super();
     proto3.util.initPartial(data, this);
@@ -43,7 +38,6 @@ export class Asset extends Message<Asset> {
     { no: 1, name: "region", kind: "message", T: Region },
     { no: 2, name: "machine_types", kind: "map", K: 9 /* ScalarType.STRING */, V: {kind: "message", T: MachineType} },
     { no: 3, name: "kubernetes", kind: "message", T: Kubernetes, repeated: true },
-    { no: 4, name: "default_network", kind: "scalar", T: 9 /* ScalarType.STRING */ },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Asset {
@@ -97,11 +91,6 @@ export class Region extends Message<Region> {
    */
   defaults?: AssetDefaults;
 
-  /**
-   * @generated from field: repeated string networks = 7;
-   */
-  networks: string[] = [];
-
   constructor(data?: PartialMessage<Region>) {
     super();
     proto3.util.initPartial(data, this);
@@ -116,7 +105,6 @@ export class Region extends Message<Region> {
     { no: 4, name: "active", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
     { no: 5, name: "partitions", kind: "map", K: 9 /* ScalarType.STRING */, V: {kind: "message", T: Partition} },
     { no: 6, name: "defaults", kind: "message", T: AssetDefaults },
-    { no: 7, name: "networks", kind: "scalar", T: 9 /* ScalarType.STRING */, repeated: true },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Region {
@@ -314,16 +302,6 @@ export class AssetDefaults extends Message<AssetDefaults> {
   workerMax = 0;
 
   /**
-   * @generated from field: uint32 maxsurge = 5;
-   */
-  maxsurge = 0;
-
-  /**
-   * @generated from field: uint32 maxunavailable = 6;
-   */
-  maxunavailable = 0;
-
-  /**
    * @generated from field: string partition = 7;
    */
   partition = "";
@@ -340,8 +318,6 @@ export class AssetDefaults extends Message<AssetDefaults> {
     { no: 2, name: "kubernetes_version", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 3, name: "worker_min", kind: "scalar", T: 13 /* ScalarType.UINT32 */ },
     { no: 4, name: "worker_max", kind: "scalar", T: 13 /* ScalarType.UINT32 */ },
-    { no: 5, name: "maxsurge", kind: "scalar", T: 13 /* ScalarType.UINT32 */ },
-    { no: 6, name: "maxunavailable", kind: "scalar", T: 13 /* ScalarType.UINT32 */ },
     { no: 7, name: "partition", kind: "scalar", T: 9 /* ScalarType.STRING */ },
   ]);
 
