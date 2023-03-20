@@ -1,12 +1,12 @@
 import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
-import { Message } from "@bufbuild/protobuf";
+import { Message, proto3 } from "@bufbuild/protobuf";
 import { Health, ServiceStatus } from "../../api/v1/health_pb.js";
 /**
  * @generated from message status.v1.StatusServiceGetRequest
  */
 export declare class StatusServiceGetRequest extends Message<StatusServiceGetRequest> {
     constructor(data?: PartialMessage<StatusServiceGetRequest>);
-    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime.js").ProtoRuntime;
+    static readonly runtime: typeof proto3;
     static readonly typeName = "status.v1.StatusServiceGetRequest";
     static readonly fields: FieldList;
     static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): StatusServiceGetRequest;
@@ -35,7 +35,7 @@ export declare class StatusServiceGetResponse extends Message<StatusServiceGetRe
      */
     apiVersion: string;
     constructor(data?: PartialMessage<StatusServiceGetResponse>);
-    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime.js").ProtoRuntime;
+    static readonly runtime: typeof proto3;
     static readonly typeName = "status.v1.StatusServiceGetResponse";
     static readonly fields: FieldList;
     static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): StatusServiceGetResponse;

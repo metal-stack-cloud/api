@@ -1,5 +1,5 @@
 import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
-import { Message } from "@bufbuild/protobuf";
+import { Message, proto3 } from "@bufbuild/protobuf";
 /**
  * @generated from message api.v1.Version
  */
@@ -29,7 +29,7 @@ export declare class Version extends Message<Version> {
      */
     buildDate: string;
     constructor(data?: PartialMessage<Version>);
-    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
+    static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.Version";
     static readonly fields: FieldList;
     static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Version;
@@ -42,7 +42,7 @@ export declare class Version extends Message<Version> {
  */
 export declare class VersionServiceGetRequest extends Message<VersionServiceGetRequest> {
     constructor(data?: PartialMessage<VersionServiceGetRequest>);
-    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
+    static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.VersionServiceGetRequest";
     static readonly fields: FieldList;
     static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): VersionServiceGetRequest;
@@ -59,7 +59,7 @@ export declare class VersionServiceGetResponse extends Message<VersionServiceGet
      */
     version?: Version;
     constructor(data?: PartialMessage<VersionServiceGetResponse>);
-    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
+    static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.VersionServiceGetResponse";
     static readonly fields: FieldList;
     static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): VersionServiceGetResponse;

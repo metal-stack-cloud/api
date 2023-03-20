@@ -1,5 +1,5 @@
 import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
-import { Duration, Message, Timestamp } from "@bufbuild/protobuf";
+import { Duration, Message, proto3, Timestamp } from "@bufbuild/protobuf";
 /**
  * Types
  *
@@ -53,7 +53,7 @@ export declare class Cluster extends Message<Cluster> {
      */
     status?: ClusterStatus;
     constructor(data?: PartialMessage<Cluster>);
-    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
+    static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.Cluster";
     static readonly fields: FieldList;
     static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Cluster;
@@ -70,7 +70,7 @@ export declare class KubernetesSpec extends Message<KubernetesSpec> {
      */
     version: string;
     constructor(data?: PartialMessage<KubernetesSpec>);
-    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
+    static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.KubernetesSpec";
     static readonly fields: FieldList;
     static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): KubernetesSpec;
@@ -95,7 +95,7 @@ export declare class Maintenance extends Message<Maintenance> {
      */
     timeWindow?: MaintenanceTimeWindow;
     constructor(data?: PartialMessage<Maintenance>);
-    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
+    static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.Maintenance";
     static readonly fields: FieldList;
     static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Maintenance;
@@ -116,7 +116,7 @@ export declare class MaintenanceTimeWindow extends Message<MaintenanceTimeWindow
      */
     duration?: Duration;
     constructor(data?: PartialMessage<MaintenanceTimeWindow>);
-    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
+    static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.MaintenanceTimeWindow";
     static readonly fields: FieldList;
     static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): MaintenanceTimeWindow;
@@ -153,7 +153,7 @@ export declare class Worker extends Message<Worker> {
      */
     maxunavailable: number;
     constructor(data?: PartialMessage<Worker>);
-    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
+    static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.Worker";
     static readonly fields: FieldList;
     static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Worker;
@@ -190,7 +190,7 @@ export declare class WorkerUpdate extends Message<WorkerUpdate> {
      */
     maxunavailable?: number;
     constructor(data?: PartialMessage<WorkerUpdate>);
-    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
+    static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.WorkerUpdate";
     static readonly fields: FieldList;
     static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): WorkerUpdate;
@@ -213,7 +213,7 @@ export declare class ClusterServiceGetRequest extends Message<ClusterServiceGetR
      */
     project: string;
     constructor(data?: PartialMessage<ClusterServiceGetRequest>);
-    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
+    static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.ClusterServiceGetRequest";
     static readonly fields: FieldList;
     static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ClusterServiceGetRequest;
@@ -234,7 +234,7 @@ export declare class ClusterServiceGetCredentialsRequest extends Message<Cluster
      */
     project: string;
     constructor(data?: PartialMessage<ClusterServiceGetCredentialsRequest>);
-    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
+    static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.ClusterServiceGetCredentialsRequest";
     static readonly fields: FieldList;
     static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ClusterServiceGetCredentialsRequest;
@@ -251,7 +251,7 @@ export declare class ClusterServiceListRequest extends Message<ClusterServiceLis
      */
     project: string;
     constructor(data?: PartialMessage<ClusterServiceListRequest>);
-    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
+    static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.ClusterServiceListRequest";
     static readonly fields: FieldList;
     static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ClusterServiceListRequest;
@@ -290,7 +290,7 @@ export declare class ClusterServiceCreateRequest extends Message<ClusterServiceC
      */
     maintenance?: Maintenance;
     constructor(data?: PartialMessage<ClusterServiceCreateRequest>);
-    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
+    static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.ClusterServiceCreateRequest";
     static readonly fields: FieldList;
     static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ClusterServiceCreateRequest;
@@ -323,7 +323,7 @@ export declare class ClusterServiceUpdateRequest extends Message<ClusterServiceU
      */
     maintenance?: Maintenance;
     constructor(data?: PartialMessage<ClusterServiceUpdateRequest>);
-    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
+    static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.ClusterServiceUpdateRequest";
     static readonly fields: FieldList;
     static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ClusterServiceUpdateRequest;
@@ -344,7 +344,7 @@ export declare class ClusterServiceDeleteRequest extends Message<ClusterServiceD
      */
     project: string;
     constructor(data?: PartialMessage<ClusterServiceDeleteRequest>);
-    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
+    static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.ClusterServiceDeleteRequest";
     static readonly fields: FieldList;
     static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ClusterServiceDeleteRequest;
@@ -365,7 +365,7 @@ export declare class ClusterServiceWatchStatusRequest extends Message<ClusterSer
      */
     project: string;
     constructor(data?: PartialMessage<ClusterServiceWatchStatusRequest>);
-    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
+    static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.ClusterServiceWatchStatusRequest";
     static readonly fields: FieldList;
     static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ClusterServiceWatchStatusRequest;
@@ -410,7 +410,7 @@ export declare class ClusterStatus extends Message<ClusterStatus> {
      */
     systemComponentsReady: string;
     constructor(data?: PartialMessage<ClusterStatus>);
-    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
+    static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.ClusterStatus";
     static readonly fields: FieldList;
     static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ClusterStatus;
@@ -429,7 +429,7 @@ export declare class ClusterServiceCreateResponse extends Message<ClusterService
      */
     cluster?: Cluster;
     constructor(data?: PartialMessage<ClusterServiceCreateResponse>);
-    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
+    static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.ClusterServiceCreateResponse";
     static readonly fields: FieldList;
     static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ClusterServiceCreateResponse;
@@ -446,7 +446,7 @@ export declare class ClusterServiceGetResponse extends Message<ClusterServiceGet
      */
     cluster?: Cluster;
     constructor(data?: PartialMessage<ClusterServiceGetResponse>);
-    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
+    static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.ClusterServiceGetResponse";
     static readonly fields: FieldList;
     static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ClusterServiceGetResponse;
@@ -463,7 +463,7 @@ export declare class ClusterServiceGetCredentialsResponse extends Message<Cluste
      */
     kubeconfig: string;
     constructor(data?: PartialMessage<ClusterServiceGetCredentialsResponse>);
-    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
+    static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.ClusterServiceGetCredentialsResponse";
     static readonly fields: FieldList;
     static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ClusterServiceGetCredentialsResponse;
@@ -480,7 +480,7 @@ export declare class ClusterServiceDeleteResponse extends Message<ClusterService
      */
     cluster?: Cluster;
     constructor(data?: PartialMessage<ClusterServiceDeleteResponse>);
-    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
+    static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.ClusterServiceDeleteResponse";
     static readonly fields: FieldList;
     static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ClusterServiceDeleteResponse;
@@ -497,7 +497,7 @@ export declare class ClusterServiceUpdateResponse extends Message<ClusterService
      */
     cluster?: Cluster;
     constructor(data?: PartialMessage<ClusterServiceUpdateResponse>);
-    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
+    static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.ClusterServiceUpdateResponse";
     static readonly fields: FieldList;
     static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ClusterServiceUpdateResponse;
@@ -514,7 +514,7 @@ export declare class ClusterServiceListResponse extends Message<ClusterServiceLi
      */
     clusters: Cluster[];
     constructor(data?: PartialMessage<ClusterServiceListResponse>);
-    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
+    static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.ClusterServiceListResponse";
     static readonly fields: FieldList;
     static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ClusterServiceListResponse;
@@ -531,7 +531,7 @@ export declare class ClusterServiceWatchStatusResponse extends Message<ClusterSe
      */
     status?: ClusterStatus;
     constructor(data?: PartialMessage<ClusterServiceWatchStatusResponse>);
-    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
+    static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.ClusterServiceWatchStatusResponse";
     static readonly fields: FieldList;
     static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ClusterServiceWatchStatusResponse;

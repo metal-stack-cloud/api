@@ -1,5 +1,5 @@
 import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
-import { Message } from "@bufbuild/protobuf";
+import { Message, proto3 } from "@bufbuild/protobuf";
 /**
  * @generated from enum api.v1.ServiceStatus
  */
@@ -51,7 +51,7 @@ export declare class Health extends Message<Health> {
      */
     services: HealthStatus[];
     constructor(data?: PartialMessage<Health>);
-    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
+    static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.Health";
     static readonly fields: FieldList;
     static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Health;
@@ -82,7 +82,7 @@ export declare class HealthStatus extends Message<HealthStatus> {
         [key: string]: PartitionHealth;
     };
     constructor(data?: PartialMessage<HealthStatus>);
-    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
+    static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.HealthStatus";
     static readonly fields: FieldList;
     static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): HealthStatus;
@@ -103,7 +103,7 @@ export declare class PartitionHealth extends Message<PartitionHealth> {
      */
     message: string;
     constructor(data?: PartialMessage<PartitionHealth>);
-    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
+    static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.PartitionHealth";
     static readonly fields: FieldList;
     static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): PartitionHealth;
@@ -116,7 +116,7 @@ export declare class PartitionHealth extends Message<PartitionHealth> {
  */
 export declare class HealthServiceGetRequest extends Message<HealthServiceGetRequest> {
     constructor(data?: PartialMessage<HealthServiceGetRequest>);
-    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
+    static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.HealthServiceGetRequest";
     static readonly fields: FieldList;
     static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): HealthServiceGetRequest;
@@ -133,7 +133,7 @@ export declare class HealthServiceGetResponse extends Message<HealthServiceGetRe
      */
     health?: Health;
     constructor(data?: PartialMessage<HealthServiceGetResponse>);
-    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
+    static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.HealthServiceGetResponse";
     static readonly fields: FieldList;
     static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): HealthServiceGetResponse;

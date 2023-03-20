@@ -1,12 +1,12 @@
 import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
-import { Message } from "@bufbuild/protobuf";
+import { Message, proto3 } from "@bufbuild/protobuf";
 import { Coupon, PaymentCustomer } from "../../api/v1/payment_pb.js";
 /**
  * @generated from message admin.v1.PaymentServiceListCouponsRequest
  */
 export declare class PaymentServiceListCouponsRequest extends Message<PaymentServiceListCouponsRequest> {
     constructor(data?: PartialMessage<PaymentServiceListCouponsRequest>);
-    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime.js").ProtoRuntime;
+    static readonly runtime: typeof proto3;
     static readonly typeName = "admin.v1.PaymentServiceListCouponsRequest";
     static readonly fields: FieldList;
     static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): PaymentServiceListCouponsRequest;
@@ -23,7 +23,7 @@ export declare class PaymentServiceListCouponsResponse extends Message<PaymentSe
      */
     coupons: Coupon[];
     constructor(data?: PartialMessage<PaymentServiceListCouponsResponse>);
-    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime.js").ProtoRuntime;
+    static readonly runtime: typeof proto3;
     static readonly typeName = "admin.v1.PaymentServiceListCouponsResponse";
     static readonly fields: FieldList;
     static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): PaymentServiceListCouponsResponse;
@@ -44,7 +44,7 @@ export declare class PaymentServiceAddCouponToCustomerRequest extends Message<Pa
      */
     couponId: string;
     constructor(data?: PartialMessage<PaymentServiceAddCouponToCustomerRequest>);
-    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime.js").ProtoRuntime;
+    static readonly runtime: typeof proto3;
     static readonly typeName = "admin.v1.PaymentServiceAddCouponToCustomerRequest";
     static readonly fields: FieldList;
     static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): PaymentServiceAddCouponToCustomerRequest;
@@ -61,7 +61,7 @@ export declare class PaymentServiceAddCouponToCustomerResponse extends Message<P
      */
     customer?: PaymentCustomer;
     constructor(data?: PartialMessage<PaymentServiceAddCouponToCustomerResponse>);
-    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime.js").ProtoRuntime;
+    static readonly runtime: typeof proto3;
     static readonly typeName = "admin.v1.PaymentServiceAddCouponToCustomerResponse";
     static readonly fields: FieldList;
     static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): PaymentServiceAddCouponToCustomerResponse;

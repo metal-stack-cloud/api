@@ -1,5 +1,5 @@
 import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
-import { Message } from "@bufbuild/protobuf";
+import { Message, proto3 } from "@bufbuild/protobuf";
 /**
  * Types
  *
@@ -21,7 +21,7 @@ export declare class Asset extends Message<Asset> {
      */
     kubernetes: Kubernetes[];
     constructor(data?: PartialMessage<Asset>);
-    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
+    static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.Asset";
     static readonly fields: FieldList;
     static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Asset;
@@ -60,7 +60,7 @@ export declare class Region extends Message<Region> {
      */
     defaults?: AssetDefaults;
     constructor(data?: PartialMessage<Region>);
-    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
+    static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.Region";
     static readonly fields: FieldList;
     static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Region;
@@ -89,7 +89,7 @@ export declare class Partition extends Message<Partition> {
      */
     active: boolean;
     constructor(data?: PartialMessage<Partition>);
-    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
+    static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.Partition";
     static readonly fields: FieldList;
     static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Partition;
@@ -122,7 +122,7 @@ export declare class MachineType extends Message<MachineType> {
      */
     storage: bigint;
     constructor(data?: PartialMessage<MachineType>);
-    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
+    static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.MachineType";
     static readonly fields: FieldList;
     static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): MachineType;
@@ -139,7 +139,7 @@ export declare class Kubernetes extends Message<Kubernetes> {
      */
     version: string;
     constructor(data?: PartialMessage<Kubernetes>);
-    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
+    static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.Kubernetes";
     static readonly fields: FieldList;
     static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Kubernetes;
@@ -172,7 +172,7 @@ export declare class AssetDefaults extends Message<AssetDefaults> {
      */
     partition: string;
     constructor(data?: PartialMessage<AssetDefaults>);
-    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
+    static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.AssetDefaults";
     static readonly fields: FieldList;
     static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): AssetDefaults;
@@ -187,7 +187,7 @@ export declare class AssetDefaults extends Message<AssetDefaults> {
  */
 export declare class AssetServiceListRequest extends Message<AssetServiceListRequest> {
     constructor(data?: PartialMessage<AssetServiceListRequest>);
-    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
+    static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.AssetServiceListRequest";
     static readonly fields: FieldList;
     static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): AssetServiceListRequest;
@@ -210,7 +210,7 @@ export declare class AssetServiceListResponse extends Message<AssetServiceListRe
         [key: string]: Asset;
     };
     constructor(data?: PartialMessage<AssetServiceListResponse>);
-    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
+    static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.AssetServiceListResponse";
     static readonly fields: FieldList;
     static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): AssetServiceListResponse;

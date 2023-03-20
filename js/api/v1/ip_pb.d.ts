@@ -1,5 +1,5 @@
 import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
-import { Message, Timestamp } from "@bufbuild/protobuf";
+import { Message, proto3, Timestamp } from "@bufbuild/protobuf";
 /**
  * @generated from enum api.v1.IPType
  */
@@ -68,7 +68,7 @@ export declare class IP extends Message<IP> {
      */
     deletedAt?: Timestamp;
     constructor(data?: PartialMessage<IP>);
-    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
+    static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.IP";
     static readonly fields: FieldList;
     static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): IP;
@@ -91,7 +91,7 @@ export declare class IPServiceGetRequest extends Message<IPServiceGetRequest> {
      */
     project: string;
     constructor(data?: PartialMessage<IPServiceGetRequest>);
-    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
+    static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.IPServiceGetRequest";
     static readonly fields: FieldList;
     static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): IPServiceGetRequest;
@@ -124,7 +124,7 @@ export declare class IPServiceAllocateRequest extends Message<IPServiceAllocateR
      */
     static: boolean;
     constructor(data?: PartialMessage<IPServiceAllocateRequest>);
-    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
+    static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.IPServiceAllocateRequest";
     static readonly fields: FieldList;
     static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): IPServiceAllocateRequest;
@@ -145,7 +145,7 @@ export declare class IPServiceUpdateRequest extends Message<IPServiceUpdateReque
      */
     ip?: IP;
     constructor(data?: PartialMessage<IPServiceUpdateRequest>);
-    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
+    static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.IPServiceUpdateRequest";
     static readonly fields: FieldList;
     static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): IPServiceUpdateRequest;
@@ -162,7 +162,7 @@ export declare class IPServiceListRequest extends Message<IPServiceListRequest> 
      */
     project: string;
     constructor(data?: PartialMessage<IPServiceListRequest>);
-    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
+    static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.IPServiceListRequest";
     static readonly fields: FieldList;
     static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): IPServiceListRequest;
@@ -183,7 +183,7 @@ export declare class IPServiceDeleteRequest extends Message<IPServiceDeleteReque
      */
     project: string;
     constructor(data?: PartialMessage<IPServiceDeleteRequest>);
-    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
+    static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.IPServiceDeleteRequest";
     static readonly fields: FieldList;
     static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): IPServiceDeleteRequest;
@@ -202,7 +202,7 @@ export declare class IPServiceGetResponse extends Message<IPServiceGetResponse> 
      */
     ip?: IP;
     constructor(data?: PartialMessage<IPServiceGetResponse>);
-    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
+    static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.IPServiceGetResponse";
     static readonly fields: FieldList;
     static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): IPServiceGetResponse;
@@ -219,7 +219,7 @@ export declare class IPServiceUpdateResponse extends Message<IPServiceUpdateResp
      */
     ip?: IP;
     constructor(data?: PartialMessage<IPServiceUpdateResponse>);
-    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
+    static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.IPServiceUpdateResponse";
     static readonly fields: FieldList;
     static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): IPServiceUpdateResponse;
@@ -236,7 +236,7 @@ export declare class IPServiceAllocateResponse extends Message<IPServiceAllocate
      */
     ip?: IP;
     constructor(data?: PartialMessage<IPServiceAllocateResponse>);
-    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
+    static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.IPServiceAllocateResponse";
     static readonly fields: FieldList;
     static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): IPServiceAllocateResponse;
@@ -253,7 +253,7 @@ export declare class IPServiceStaticResponse extends Message<IPServiceStaticResp
      */
     ip?: IP;
     constructor(data?: PartialMessage<IPServiceStaticResponse>);
-    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
+    static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.IPServiceStaticResponse";
     static readonly fields: FieldList;
     static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): IPServiceStaticResponse;
@@ -270,7 +270,7 @@ export declare class IPServiceListResponse extends Message<IPServiceListResponse
      */
     ips: IP[];
     constructor(data?: PartialMessage<IPServiceListResponse>);
-    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
+    static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.IPServiceListResponse";
     static readonly fields: FieldList;
     static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): IPServiceListResponse;
@@ -287,7 +287,7 @@ export declare class IPServiceDeleteResponse extends Message<IPServiceDeleteResp
      */
     ip?: IP;
     constructor(data?: PartialMessage<IPServiceDeleteResponse>);
-    static readonly runtime: import("@bufbuild/protobuf/dist/types/private/proto-runtime").ProtoRuntime;
+    static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.IPServiceDeleteResponse";
     static readonly fields: FieldList;
     static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): IPServiceDeleteResponse;
