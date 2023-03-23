@@ -1,7 +1,7 @@
 import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
 import { Message, proto3, Timestamp } from "@bufbuild/protobuf";
 import { OAuthProvider } from "./common_pb.js";
-import { Coupon } from "./payment_pb.js";
+import { Coupon, PaymentCustomer } from "./payment_pb.js";
 /**
  * Tenant
  *
@@ -308,13 +308,9 @@ export declare class TenantServiceRequestAdmissionRequest extends Message<Tenant
      */
     login: string;
     /**
-     * @generated from field: string email = 2;
+     * @generated from field: api.v1.PaymentCustomer customer = 2;
      */
-    email: string;
-    /**
-     * @generated from field: string phone_number = 3;
-     */
-    phoneNumber: string;
+    customer?: PaymentCustomer;
     /**
      * @generated from field: bool accepted_terms_and_conditions = 4;
      */

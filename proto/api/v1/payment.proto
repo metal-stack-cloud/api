@@ -50,6 +50,7 @@ message PaymentCustomer {
   Address address = 9;
   optional Coupon coupon = 10;
   string vat = 11;
+  string phone_number = 12;
 }
 
 message Card {

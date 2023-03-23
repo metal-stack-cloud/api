@@ -6,7 +6,7 @@
 import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
 import { Message, proto3, Timestamp } from "@bufbuild/protobuf";
 import { OAuthProvider } from "./common_pb.js";
-import { Coupon } from "./payment_pb.js";
+import { Coupon, PaymentCustomer } from "./payment_pb.js";
 
 /**
  * Tenant
@@ -587,14 +587,9 @@ export class TenantServiceRequestAdmissionRequest extends Message<TenantServiceR
   login = "";
 
   /**
-   * @generated from field: string email = 2;
+   * @generated from field: api.v1.PaymentCustomer customer = 2;
    */
-  email = "";
-
-  /**
-   * @generated from field: string phone_number = 3;
-   */
-  phoneNumber = "";
+  customer?: PaymentCustomer;
 
   /**
    * @generated from field: bool accepted_terms_and_conditions = 4;
@@ -615,8 +610,7 @@ export class TenantServiceRequestAdmissionRequest extends Message<TenantServiceR
   static readonly typeName = "api.v1.TenantServiceRequestAdmissionRequest";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
     { no: 1, name: "login", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 2, name: "email", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 3, name: "phone_number", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "customer", kind: "message", T: PaymentCustomer },
     { no: 4, name: "accepted_terms_and_conditions", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
     { no: 5, name: "email_consent", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
   ]);

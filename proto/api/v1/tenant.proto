@@ -117,8 +117,7 @@ message TenantServiceCheckAdmittedRequest {
 
 message TenantServiceRequestAdmissionRequest {
   string login = 1;
-  string email = 2;
-  string phone_number = 3;
+  PaymentCustomer customer = 2;
   bool accepted_terms_and_conditions = 4;
   bool email_consent = 5;
 }

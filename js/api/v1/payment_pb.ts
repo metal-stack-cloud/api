@@ -65,6 +65,11 @@ export class PaymentCustomer extends Message<PaymentCustomer> {
    */
   vat = "";
 
+  /**
+   * @generated from field: string phone_number = 12;
+   */
+  phoneNumber = "";
+
   constructor(data?: PartialMessage<PaymentCustomer>) {
     super();
     proto3.util.initPartial(data, this);
@@ -84,6 +89,7 @@ export class PaymentCustomer extends Message<PaymentCustomer> {
     { no: 9, name: "address", kind: "message", T: Address },
     { no: 10, name: "coupon", kind: "message", T: Coupon, opt: true },
     { no: 11, name: "vat", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 12, name: "phone_number", kind: "scalar", T: 9 /* ScalarType.STRING */ },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): PaymentCustomer {

@@ -420,14 +420,6 @@ class TenantServiceRequestAdmissionRequest extends protobuf_1.Message {
          */
         this.login = "";
         /**
-         * @generated from field: string email = 2;
-         */
-        this.email = "";
-        /**
-         * @generated from field: string phone_number = 3;
-         */
-        this.phoneNumber = "";
-        /**
          * @generated from field: bool accepted_terms_and_conditions = 4;
          */
         this.acceptedTermsAndConditions = false;
@@ -455,8 +447,7 @@ TenantServiceRequestAdmissionRequest.runtime = protobuf_1.proto3;
 TenantServiceRequestAdmissionRequest.typeName = "api.v1.TenantServiceRequestAdmissionRequest";
 TenantServiceRequestAdmissionRequest.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 1, name: "login", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 2, name: "email", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 3, name: "phone_number", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "customer", kind: "message", T: payment_pb_js_1.PaymentCustomer },
     { no: 4, name: "accepted_terms_and_conditions", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
     { no: 5, name: "email_consent", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
 ]);
