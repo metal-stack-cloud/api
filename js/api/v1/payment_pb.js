@@ -4,7 +4,7 @@
 /* eslint-disable */
 // @ts-nocheck
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.PaymentServiceGetDefaultPricesResponse = exports.PaymentServiceGetDefaultPricesRequest = exports.PaymentServiceGetInvoicesResponse = exports.PaymentServiceGetInvoicesRequest = exports.PaymentServiceGetSubscriptionUsageResponse = exports.PaymentServiceGetSubscriptionUsageRequest = exports.PaymentServiceDeletePaymentMethodResponse = exports.PaymentServiceDeletePaymentMethodRequest = exports.PaymentServiceHasPaymentMethodResponse = exports.PaymentServiceHasPaymentMethodRequest = exports.PaymentServiceCheckIfCustomerExistsResponse = exports.PaymentServiceCheckIfCustomerExistsRequest = exports.PaymentServiceGetCustomerWithLoginResponse = exports.PaymentServiceGetCustomerWithLoginRequest = exports.PaymentServiceGetCustomerResponse = exports.PaymentServiceGetCustomerRequest = exports.PaymentServiceCreateOrUpdateCustomerResponse = exports.PaymentServiceCreateOrUpdateCustomerRequest = exports.Coupon = exports.Invoice = exports.SubscriptionUsageItem = exports.Address = exports.Price = exports.Card = exports.PaymentCustomer = void 0;
+exports.PaymentServiceRequestAdmissionResponse = exports.PaymentServiceRequestAdmissionRequest = exports.PaymentServiceCheckAdmittedResponse = exports.PaymentServiceCheckAdmittedRequest = exports.PaymentServiceGetDefaultPricesResponse = exports.PaymentServiceGetDefaultPricesRequest = exports.PaymentServiceGetInvoicesResponse = exports.PaymentServiceGetInvoicesRequest = exports.PaymentServiceGetSubscriptionUsageResponse = exports.PaymentServiceGetSubscriptionUsageRequest = exports.PaymentServiceDeletePaymentMethodResponse = exports.PaymentServiceDeletePaymentMethodRequest = exports.PaymentServiceHasPaymentMethodResponse = exports.PaymentServiceHasPaymentMethodRequest = exports.PaymentServiceCheckIfCustomerExistsResponse = exports.PaymentServiceCheckIfCustomerExistsRequest = exports.PaymentServiceGetCustomerWithLoginResponse = exports.PaymentServiceGetCustomerWithLoginRequest = exports.PaymentServiceGetCustomerResponse = exports.PaymentServiceGetCustomerRequest = exports.PaymentServiceCreateOrUpdateCustomerResponse = exports.PaymentServiceCreateOrUpdateCustomerRequest = exports.Coupon = exports.Invoice = exports.SubscriptionUsageItem = exports.Address = exports.Price = exports.Card = exports.PaymentCustomer = void 0;
 const protobuf_1 = require("@bufbuild/protobuf");
 /**
  * @generated from message api.v1.PaymentCustomer
@@ -921,3 +921,137 @@ PaymentServiceGetDefaultPricesResponse.typeName = "api.v1.PaymentServiceGetDefau
 PaymentServiceGetDefaultPricesResponse.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 1, name: "prices", kind: "message", T: Price, repeated: true },
 ]);
+/**
+ * @generated from message api.v1.PaymentServiceCheckAdmittedRequest
+ */
+class PaymentServiceCheckAdmittedRequest extends protobuf_1.Message {
+    constructor(data) {
+        super();
+        /**
+         * @generated from field: string login = 1;
+         */
+        this.login = "";
+        protobuf_1.proto3.util.initPartial(data, this);
+    }
+    static fromBinary(bytes, options) {
+        return new PaymentServiceCheckAdmittedRequest().fromBinary(bytes, options);
+    }
+    static fromJson(jsonValue, options) {
+        return new PaymentServiceCheckAdmittedRequest().fromJson(jsonValue, options);
+    }
+    static fromJsonString(jsonString, options) {
+        return new PaymentServiceCheckAdmittedRequest().fromJsonString(jsonString, options);
+    }
+    static equals(a, b) {
+        return protobuf_1.proto3.util.equals(PaymentServiceCheckAdmittedRequest, a, b);
+    }
+}
+exports.PaymentServiceCheckAdmittedRequest = PaymentServiceCheckAdmittedRequest;
+PaymentServiceCheckAdmittedRequest.runtime = protobuf_1.proto3;
+PaymentServiceCheckAdmittedRequest.typeName = "api.v1.PaymentServiceCheckAdmittedRequest";
+PaymentServiceCheckAdmittedRequest.fields = protobuf_1.proto3.util.newFieldList(() => [
+    { no: 1, name: "login", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+]);
+/**
+ * @generated from message api.v1.PaymentServiceCheckAdmittedResponse
+ */
+class PaymentServiceCheckAdmittedResponse extends protobuf_1.Message {
+    constructor(data) {
+        super();
+        /**
+         * @generated from field: bool admitted = 1;
+         */
+        this.admitted = false;
+        /**
+         * @generated from field: bool requested = 2;
+         */
+        this.requested = false;
+        protobuf_1.proto3.util.initPartial(data, this);
+    }
+    static fromBinary(bytes, options) {
+        return new PaymentServiceCheckAdmittedResponse().fromBinary(bytes, options);
+    }
+    static fromJson(jsonValue, options) {
+        return new PaymentServiceCheckAdmittedResponse().fromJson(jsonValue, options);
+    }
+    static fromJsonString(jsonString, options) {
+        return new PaymentServiceCheckAdmittedResponse().fromJsonString(jsonString, options);
+    }
+    static equals(a, b) {
+        return protobuf_1.proto3.util.equals(PaymentServiceCheckAdmittedResponse, a, b);
+    }
+}
+exports.PaymentServiceCheckAdmittedResponse = PaymentServiceCheckAdmittedResponse;
+PaymentServiceCheckAdmittedResponse.runtime = protobuf_1.proto3;
+PaymentServiceCheckAdmittedResponse.typeName = "api.v1.PaymentServiceCheckAdmittedResponse";
+PaymentServiceCheckAdmittedResponse.fields = protobuf_1.proto3.util.newFieldList(() => [
+    { no: 1, name: "admitted", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
+    { no: 2, name: "requested", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
+]);
+/**
+ * @generated from message api.v1.PaymentServiceRequestAdmissionRequest
+ */
+class PaymentServiceRequestAdmissionRequest extends protobuf_1.Message {
+    constructor(data) {
+        super();
+        /**
+         * @generated from field: string login = 1;
+         */
+        this.login = "";
+        /**
+         * @generated from field: bool accepted_terms_and_conditions = 3;
+         */
+        this.acceptedTermsAndConditions = false;
+        /**
+         * @generated from field: bool email_consent = 4;
+         */
+        this.emailConsent = false;
+        protobuf_1.proto3.util.initPartial(data, this);
+    }
+    static fromBinary(bytes, options) {
+        return new PaymentServiceRequestAdmissionRequest().fromBinary(bytes, options);
+    }
+    static fromJson(jsonValue, options) {
+        return new PaymentServiceRequestAdmissionRequest().fromJson(jsonValue, options);
+    }
+    static fromJsonString(jsonString, options) {
+        return new PaymentServiceRequestAdmissionRequest().fromJsonString(jsonString, options);
+    }
+    static equals(a, b) {
+        return protobuf_1.proto3.util.equals(PaymentServiceRequestAdmissionRequest, a, b);
+    }
+}
+exports.PaymentServiceRequestAdmissionRequest = PaymentServiceRequestAdmissionRequest;
+PaymentServiceRequestAdmissionRequest.runtime = protobuf_1.proto3;
+PaymentServiceRequestAdmissionRequest.typeName = "api.v1.PaymentServiceRequestAdmissionRequest";
+PaymentServiceRequestAdmissionRequest.fields = protobuf_1.proto3.util.newFieldList(() => [
+    { no: 1, name: "login", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "customer", kind: "message", T: PaymentCustomer },
+    { no: 3, name: "accepted_terms_and_conditions", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
+    { no: 4, name: "email_consent", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
+]);
+/**
+ * @generated from message api.v1.PaymentServiceRequestAdmissionResponse
+ */
+class PaymentServiceRequestAdmissionResponse extends protobuf_1.Message {
+    constructor(data) {
+        super();
+        protobuf_1.proto3.util.initPartial(data, this);
+    }
+    static fromBinary(bytes, options) {
+        return new PaymentServiceRequestAdmissionResponse().fromBinary(bytes, options);
+    }
+    static fromJson(jsonValue, options) {
+        return new PaymentServiceRequestAdmissionResponse().fromJson(jsonValue, options);
+    }
+    static fromJsonString(jsonString, options) {
+        return new PaymentServiceRequestAdmissionResponse().fromJsonString(jsonString, options);
+    }
+    static equals(a, b) {
+        return protobuf_1.proto3.util.equals(PaymentServiceRequestAdmissionResponse, a, b);
+    }
+}
+exports.PaymentServiceRequestAdmissionResponse = PaymentServiceRequestAdmissionResponse;
+PaymentServiceRequestAdmissionResponse.runtime = protobuf_1.proto3;
+PaymentServiceRequestAdmissionResponse.typeName = "api.v1.PaymentServiceRequestAdmissionResponse";
+PaymentServiceRequestAdmissionResponse.fields = protobuf_1.proto3.util.newFieldList(() => []);

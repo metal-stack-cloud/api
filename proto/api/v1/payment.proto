@@ -36,6 +36,15 @@ service PaymentService {
   rpc GetDefaultPrices(PaymentServiceGetDefaultPricesRequest) returns (PaymentServiceGetDefaultPricesResponse) {
     option (visibility) = VISIBILITY_PUBLIC;
   }
+  rpc CheckAdmitted(PaymentServiceCheckAdmittedRequest) returns (PaymentServiceCheckAdmittedResponse) {
+    option (tenant_roles) = TENANT_ROLE_OWNER;
+    option (tenant_roles) = TENANT_ROLE_EDITOR;
+    option (tenant_roles) = TENANT_ROLE_VIEWER;
+  }
+  rpc RequestAdmission(PaymentServiceRequestAdmissionRequest) returns (PaymentServiceRequestAdmissionResponse) {
+    option (tenant_roles) = TENANT_ROLE_OWNER;
+    option (tenant_roles) = TENANT_ROLE_EDITOR;
+  }
 }
 
 message PaymentCustomer {
@@ -207,3 +216,21 @@ message PaymentServiceGetDefaultPricesRequest {}
 message PaymentServiceGetDefaultPricesResponse {
   repeated Price prices = 1;
 }
+
+message PaymentServiceCheckAdmittedRequest {
+  string login = 1;
+}
+
+message PaymentServiceCheckAdmittedResponse {
+  bool admitted = 1;
+  bool requested = 2;
+}
+
+message PaymentServiceRequestAdmissionRequest {
+  string login = 1;
+  PaymentCustomer customer = 2;
+  bool accepted_terms_and_conditions = 3;
+  bool email_consent = 4;
+}
+
+message PaymentServiceRequestAdmissionResponse {}

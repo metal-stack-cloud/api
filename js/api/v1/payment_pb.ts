@@ -1183,3 +1183,169 @@ export class PaymentServiceGetDefaultPricesResponse extends Message<PaymentServi
   }
 }
 
+/**
+ * @generated from message api.v1.PaymentServiceCheckAdmittedRequest
+ */
+export class PaymentServiceCheckAdmittedRequest extends Message<PaymentServiceCheckAdmittedRequest> {
+  /**
+   * @generated from field: string login = 1;
+   */
+  login = "";
+
+  constructor(data?: PartialMessage<PaymentServiceCheckAdmittedRequest>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "api.v1.PaymentServiceCheckAdmittedRequest";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "login", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): PaymentServiceCheckAdmittedRequest {
+    return new PaymentServiceCheckAdmittedRequest().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): PaymentServiceCheckAdmittedRequest {
+    return new PaymentServiceCheckAdmittedRequest().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): PaymentServiceCheckAdmittedRequest {
+    return new PaymentServiceCheckAdmittedRequest().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: PaymentServiceCheckAdmittedRequest | PlainMessage<PaymentServiceCheckAdmittedRequest> | undefined, b: PaymentServiceCheckAdmittedRequest | PlainMessage<PaymentServiceCheckAdmittedRequest> | undefined): boolean {
+    return proto3.util.equals(PaymentServiceCheckAdmittedRequest, a, b);
+  }
+}
+
+/**
+ * @generated from message api.v1.PaymentServiceCheckAdmittedResponse
+ */
+export class PaymentServiceCheckAdmittedResponse extends Message<PaymentServiceCheckAdmittedResponse> {
+  /**
+   * @generated from field: bool admitted = 1;
+   */
+  admitted = false;
+
+  /**
+   * @generated from field: bool requested = 2;
+   */
+  requested = false;
+
+  constructor(data?: PartialMessage<PaymentServiceCheckAdmittedResponse>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "api.v1.PaymentServiceCheckAdmittedResponse";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "admitted", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
+    { no: 2, name: "requested", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): PaymentServiceCheckAdmittedResponse {
+    return new PaymentServiceCheckAdmittedResponse().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): PaymentServiceCheckAdmittedResponse {
+    return new PaymentServiceCheckAdmittedResponse().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): PaymentServiceCheckAdmittedResponse {
+    return new PaymentServiceCheckAdmittedResponse().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: PaymentServiceCheckAdmittedResponse | PlainMessage<PaymentServiceCheckAdmittedResponse> | undefined, b: PaymentServiceCheckAdmittedResponse | PlainMessage<PaymentServiceCheckAdmittedResponse> | undefined): boolean {
+    return proto3.util.equals(PaymentServiceCheckAdmittedResponse, a, b);
+  }
+}
+
+/**
+ * @generated from message api.v1.PaymentServiceRequestAdmissionRequest
+ */
+export class PaymentServiceRequestAdmissionRequest extends Message<PaymentServiceRequestAdmissionRequest> {
+  /**
+   * @generated from field: string login = 1;
+   */
+  login = "";
+
+  /**
+   * @generated from field: api.v1.PaymentCustomer customer = 2;
+   */
+  customer?: PaymentCustomer;
+
+  /**
+   * @generated from field: bool accepted_terms_and_conditions = 3;
+   */
+  acceptedTermsAndConditions = false;
+
+  /**
+   * @generated from field: bool email_consent = 4;
+   */
+  emailConsent = false;
+
+  constructor(data?: PartialMessage<PaymentServiceRequestAdmissionRequest>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "api.v1.PaymentServiceRequestAdmissionRequest";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "login", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "customer", kind: "message", T: PaymentCustomer },
+    { no: 3, name: "accepted_terms_and_conditions", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
+    { no: 4, name: "email_consent", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): PaymentServiceRequestAdmissionRequest {
+    return new PaymentServiceRequestAdmissionRequest().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): PaymentServiceRequestAdmissionRequest {
+    return new PaymentServiceRequestAdmissionRequest().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): PaymentServiceRequestAdmissionRequest {
+    return new PaymentServiceRequestAdmissionRequest().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: PaymentServiceRequestAdmissionRequest | PlainMessage<PaymentServiceRequestAdmissionRequest> | undefined, b: PaymentServiceRequestAdmissionRequest | PlainMessage<PaymentServiceRequestAdmissionRequest> | undefined): boolean {
+    return proto3.util.equals(PaymentServiceRequestAdmissionRequest, a, b);
+  }
+}
+
+/**
+ * @generated from message api.v1.PaymentServiceRequestAdmissionResponse
+ */
+export class PaymentServiceRequestAdmissionResponse extends Message<PaymentServiceRequestAdmissionResponse> {
+  constructor(data?: PartialMessage<PaymentServiceRequestAdmissionResponse>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "api.v1.PaymentServiceRequestAdmissionResponse";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): PaymentServiceRequestAdmissionResponse {
+    return new PaymentServiceRequestAdmissionResponse().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): PaymentServiceRequestAdmissionResponse {
+    return new PaymentServiceRequestAdmissionResponse().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): PaymentServiceRequestAdmissionResponse {
+    return new PaymentServiceRequestAdmissionResponse().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: PaymentServiceRequestAdmissionResponse | PlainMessage<PaymentServiceRequestAdmissionResponse> | undefined, b: PaymentServiceRequestAdmissionResponse | PlainMessage<PaymentServiceRequestAdmissionResponse> | undefined): boolean {
+    return proto3.util.equals(PaymentServiceRequestAdmissionResponse, a, b);
+  }
+}
+

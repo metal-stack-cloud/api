@@ -4,7 +4,7 @@
 /* eslint-disable */
 // @ts-nocheck
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.TenantServiceRequestAdmissionResponse = exports.TenantServiceCheckAdmittedResponse = exports.TenantServiceDeleteResponse = exports.TenantServiceUpdateResponse = exports.TenantServiceCreateOrUpdateResponse = exports.TenantServiceCreateResponse = exports.TenantServiceGetResponse = exports.TenantServiceRequestAdmissionRequest = exports.TenantServiceCheckAdmittedRequest = exports.TenantServiceDeleteRequest = exports.TenantServiceUpdateRequest = exports.TenantServiceCreateOrUpdateRequest = exports.TenantServiceCreateRequest = exports.TenantServiceGetRequest = exports.TermsAndConditionsUpdate = exports.TermsAndConditions = exports.PaymentDetailsUpdate = exports.PaymentDetails = exports.Tenant = void 0;
+exports.TenantServiceDeleteResponse = exports.TenantServiceUpdateResponse = exports.TenantServiceCreateOrUpdateResponse = exports.TenantServiceCreateResponse = exports.TenantServiceGetResponse = exports.TenantServiceDeleteRequest = exports.TenantServiceUpdateRequest = exports.TenantServiceCreateOrUpdateRequest = exports.TenantServiceCreateRequest = exports.TenantServiceGetRequest = exports.TermsAndConditionsUpdate = exports.TermsAndConditions = exports.PaymentDetailsUpdate = exports.PaymentDetails = exports.Tenant = void 0;
 const protobuf_1 = require("@bufbuild/protobuf");
 const common_pb_js_1 = require("./common_pb.js");
 const payment_pb_js_1 = require("./payment_pb.js");
@@ -379,79 +379,6 @@ TenantServiceDeleteRequest.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 1, name: "login", kind: "scalar", T: 9 /* ScalarType.STRING */ },
 ]);
 /**
- * @generated from message api.v1.TenantServiceCheckAdmittedRequest
- */
-class TenantServiceCheckAdmittedRequest extends protobuf_1.Message {
-    constructor(data) {
-        super();
-        /**
-         * @generated from field: string login = 1;
-         */
-        this.login = "";
-        protobuf_1.proto3.util.initPartial(data, this);
-    }
-    static fromBinary(bytes, options) {
-        return new TenantServiceCheckAdmittedRequest().fromBinary(bytes, options);
-    }
-    static fromJson(jsonValue, options) {
-        return new TenantServiceCheckAdmittedRequest().fromJson(jsonValue, options);
-    }
-    static fromJsonString(jsonString, options) {
-        return new TenantServiceCheckAdmittedRequest().fromJsonString(jsonString, options);
-    }
-    static equals(a, b) {
-        return protobuf_1.proto3.util.equals(TenantServiceCheckAdmittedRequest, a, b);
-    }
-}
-exports.TenantServiceCheckAdmittedRequest = TenantServiceCheckAdmittedRequest;
-TenantServiceCheckAdmittedRequest.runtime = protobuf_1.proto3;
-TenantServiceCheckAdmittedRequest.typeName = "api.v1.TenantServiceCheckAdmittedRequest";
-TenantServiceCheckAdmittedRequest.fields = protobuf_1.proto3.util.newFieldList(() => [
-    { no: 1, name: "login", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-]);
-/**
- * @generated from message api.v1.TenantServiceRequestAdmissionRequest
- */
-class TenantServiceRequestAdmissionRequest extends protobuf_1.Message {
-    constructor(data) {
-        super();
-        /**
-         * @generated from field: string login = 1;
-         */
-        this.login = "";
-        /**
-         * @generated from field: bool accepted_terms_and_conditions = 4;
-         */
-        this.acceptedTermsAndConditions = false;
-        /**
-         * @generated from field: bool email_consent = 5;
-         */
-        this.emailConsent = false;
-        protobuf_1.proto3.util.initPartial(data, this);
-    }
-    static fromBinary(bytes, options) {
-        return new TenantServiceRequestAdmissionRequest().fromBinary(bytes, options);
-    }
-    static fromJson(jsonValue, options) {
-        return new TenantServiceRequestAdmissionRequest().fromJson(jsonValue, options);
-    }
-    static fromJsonString(jsonString, options) {
-        return new TenantServiceRequestAdmissionRequest().fromJsonString(jsonString, options);
-    }
-    static equals(a, b) {
-        return protobuf_1.proto3.util.equals(TenantServiceRequestAdmissionRequest, a, b);
-    }
-}
-exports.TenantServiceRequestAdmissionRequest = TenantServiceRequestAdmissionRequest;
-TenantServiceRequestAdmissionRequest.runtime = protobuf_1.proto3;
-TenantServiceRequestAdmissionRequest.typeName = "api.v1.TenantServiceRequestAdmissionRequest";
-TenantServiceRequestAdmissionRequest.fields = protobuf_1.proto3.util.newFieldList(() => [
-    { no: 1, name: "login", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 2, name: "customer", kind: "message", T: payment_pb_js_1.PaymentCustomer },
-    { no: 4, name: "accepted_terms_and_conditions", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
-    { no: 5, name: "email_consent", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
-]);
-/**
  * Responses
  *
  * @generated from message api.v1.TenantServiceGetResponse
@@ -586,68 +513,5 @@ exports.TenantServiceDeleteResponse = TenantServiceDeleteResponse;
 TenantServiceDeleteResponse.runtime = protobuf_1.proto3;
 TenantServiceDeleteResponse.typeName = "api.v1.TenantServiceDeleteResponse";
 TenantServiceDeleteResponse.fields = protobuf_1.proto3.util.newFieldList(() => [
-    { no: 1, name: "tenant", kind: "message", T: Tenant },
-]);
-/**
- * @generated from message api.v1.TenantServiceCheckAdmittedResponse
- */
-class TenantServiceCheckAdmittedResponse extends protobuf_1.Message {
-    constructor(data) {
-        super();
-        /**
-         * @generated from field: bool admitted = 1;
-         */
-        this.admitted = false;
-        /**
-         * @generated from field: bool requested = 2;
-         */
-        this.requested = false;
-        protobuf_1.proto3.util.initPartial(data, this);
-    }
-    static fromBinary(bytes, options) {
-        return new TenantServiceCheckAdmittedResponse().fromBinary(bytes, options);
-    }
-    static fromJson(jsonValue, options) {
-        return new TenantServiceCheckAdmittedResponse().fromJson(jsonValue, options);
-    }
-    static fromJsonString(jsonString, options) {
-        return new TenantServiceCheckAdmittedResponse().fromJsonString(jsonString, options);
-    }
-    static equals(a, b) {
-        return protobuf_1.proto3.util.equals(TenantServiceCheckAdmittedResponse, a, b);
-    }
-}
-exports.TenantServiceCheckAdmittedResponse = TenantServiceCheckAdmittedResponse;
-TenantServiceCheckAdmittedResponse.runtime = protobuf_1.proto3;
-TenantServiceCheckAdmittedResponse.typeName = "api.v1.TenantServiceCheckAdmittedResponse";
-TenantServiceCheckAdmittedResponse.fields = protobuf_1.proto3.util.newFieldList(() => [
-    { no: 1, name: "admitted", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
-    { no: 2, name: "requested", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
-]);
-/**
- * @generated from message api.v1.TenantServiceRequestAdmissionResponse
- */
-class TenantServiceRequestAdmissionResponse extends protobuf_1.Message {
-    constructor(data) {
-        super();
-        protobuf_1.proto3.util.initPartial(data, this);
-    }
-    static fromBinary(bytes, options) {
-        return new TenantServiceRequestAdmissionResponse().fromBinary(bytes, options);
-    }
-    static fromJson(jsonValue, options) {
-        return new TenantServiceRequestAdmissionResponse().fromJson(jsonValue, options);
-    }
-    static fromJsonString(jsonString, options) {
-        return new TenantServiceRequestAdmissionResponse().fromJsonString(jsonString, options);
-    }
-    static equals(a, b) {
-        return protobuf_1.proto3.util.equals(TenantServiceRequestAdmissionResponse, a, b);
-    }
-}
-exports.TenantServiceRequestAdmissionResponse = TenantServiceRequestAdmissionResponse;
-TenantServiceRequestAdmissionResponse.runtime = protobuf_1.proto3;
-TenantServiceRequestAdmissionResponse.typeName = "api.v1.TenantServiceRequestAdmissionResponse";
-TenantServiceRequestAdmissionResponse.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 1, name: "tenant", kind: "message", T: Tenant },
 ]);

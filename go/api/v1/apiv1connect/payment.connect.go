@@ -36,6 +36,8 @@ type PaymentServiceClient interface {
 	GetSubscriptionUsage(context.Context, *connect_go.Request[v1.PaymentServiceGetSubscriptionUsageRequest]) (*connect_go.Response[v1.PaymentServiceGetSubscriptionUsageResponse], error)
 	GetInvoices(context.Context, *connect_go.Request[v1.PaymentServiceGetInvoicesRequest]) (*connect_go.Response[v1.PaymentServiceGetInvoicesResponse], error)
 	GetDefaultPrices(context.Context, *connect_go.Request[v1.PaymentServiceGetDefaultPricesRequest]) (*connect_go.Response[v1.PaymentServiceGetDefaultPricesResponse], error)
+	CheckAdmitted(context.Context, *connect_go.Request[v1.PaymentServiceCheckAdmittedRequest]) (*connect_go.Response[v1.PaymentServiceCheckAdmittedResponse], error)
+	RequestAdmission(context.Context, *connect_go.Request[v1.PaymentServiceRequestAdmissionRequest]) (*connect_go.Response[v1.PaymentServiceRequestAdmissionResponse], error)
 }
 
 // NewPaymentServiceClient constructs a client for the api.v1.PaymentService service. By default, it
@@ -93,6 +95,16 @@ func NewPaymentServiceClient(httpClient connect_go.HTTPClient, baseURL string, o
 			baseURL+"/api.v1.PaymentService/GetDefaultPrices",
 			opts...,
 		),
+		checkAdmitted: connect_go.NewClient[v1.PaymentServiceCheckAdmittedRequest, v1.PaymentServiceCheckAdmittedResponse](
+			httpClient,
+			baseURL+"/api.v1.PaymentService/CheckAdmitted",
+			opts...,
+		),
+		requestAdmission: connect_go.NewClient[v1.PaymentServiceRequestAdmissionRequest, v1.PaymentServiceRequestAdmissionResponse](
+			httpClient,
+			baseURL+"/api.v1.PaymentService/RequestAdmission",
+			opts...,
+		),
 	}
 }
 
@@ -107,6 +119,8 @@ type paymentServiceClient struct {
 	getSubscriptionUsage   *connect_go.Client[v1.PaymentServiceGetSubscriptionUsageRequest, v1.PaymentServiceGetSubscriptionUsageResponse]
 	getInvoices            *connect_go.Client[v1.PaymentServiceGetInvoicesRequest, v1.PaymentServiceGetInvoicesResponse]
 	getDefaultPrices       *connect_go.Client[v1.PaymentServiceGetDefaultPricesRequest, v1.PaymentServiceGetDefaultPricesResponse]
+	checkAdmitted          *connect_go.Client[v1.PaymentServiceCheckAdmittedRequest, v1.PaymentServiceCheckAdmittedResponse]
+	requestAdmission       *connect_go.Client[v1.PaymentServiceRequestAdmissionRequest, v1.PaymentServiceRequestAdmissionResponse]
 }
 
 // CreateOrUpdateCustomer calls api.v1.PaymentService.CreateOrUpdateCustomer.
@@ -154,6 +168,16 @@ func (c *paymentServiceClient) GetDefaultPrices(ctx context.Context, req *connec
 	return c.getDefaultPrices.CallUnary(ctx, req)
 }
 
+// CheckAdmitted calls api.v1.PaymentService.CheckAdmitted.
+func (c *paymentServiceClient) CheckAdmitted(ctx context.Context, req *connect_go.Request[v1.PaymentServiceCheckAdmittedRequest]) (*connect_go.Response[v1.PaymentServiceCheckAdmittedResponse], error) {
+	return c.checkAdmitted.CallUnary(ctx, req)
+}
+
+// RequestAdmission calls api.v1.PaymentService.RequestAdmission.
+func (c *paymentServiceClient) RequestAdmission(ctx context.Context, req *connect_go.Request[v1.PaymentServiceRequestAdmissionRequest]) (*connect_go.Response[v1.PaymentServiceRequestAdmissionResponse], error) {
+	return c.requestAdmission.CallUnary(ctx, req)
+}
+
 // PaymentServiceHandler is an implementation of the api.v1.PaymentService service.
 type PaymentServiceHandler interface {
 	CreateOrUpdateCustomer(context.Context, *connect_go.Request[v1.PaymentServiceCreateOrUpdateCustomerRequest]) (*connect_go.Response[v1.PaymentServiceCreateOrUpdateCustomerResponse], error)
@@ -165,6 +189,8 @@ type PaymentServiceHandler interface {
 	GetSubscriptionUsage(context.Context, *connect_go.Request[v1.PaymentServiceGetSubscriptionUsageRequest]) (*connect_go.Response[v1.PaymentServiceGetSubscriptionUsageResponse], error)
 	GetInvoices(context.Context, *connect_go.Request[v1.PaymentServiceGetInvoicesRequest]) (*connect_go.Response[v1.PaymentServiceGetInvoicesResponse], error)
 	GetDefaultPrices(context.Context, *connect_go.Request[v1.PaymentServiceGetDefaultPricesRequest]) (*connect_go.Response[v1.PaymentServiceGetDefaultPricesResponse], error)
+	CheckAdmitted(context.Context, *connect_go.Request[v1.PaymentServiceCheckAdmittedRequest]) (*connect_go.Response[v1.PaymentServiceCheckAdmittedResponse], error)
+	RequestAdmission(context.Context, *connect_go.Request[v1.PaymentServiceRequestAdmissionRequest]) (*connect_go.Response[v1.PaymentServiceRequestAdmissionResponse], error)
 }
 
 // NewPaymentServiceHandler builds an HTTP handler from the service implementation. It returns the
@@ -219,6 +245,16 @@ func NewPaymentServiceHandler(svc PaymentServiceHandler, opts ...connect_go.Hand
 		svc.GetDefaultPrices,
 		opts...,
 	))
+	mux.Handle("/api.v1.PaymentService/CheckAdmitted", connect_go.NewUnaryHandler(
+		"/api.v1.PaymentService/CheckAdmitted",
+		svc.CheckAdmitted,
+		opts...,
+	))
+	mux.Handle("/api.v1.PaymentService/RequestAdmission", connect_go.NewUnaryHandler(
+		"/api.v1.PaymentService/RequestAdmission",
+		svc.RequestAdmission,
+		opts...,
+	))
 	return "/api.v1.PaymentService/", mux
 }
 
@@ -259,4 +295,12 @@ func (UnimplementedPaymentServiceHandler) GetInvoices(context.Context, *connect_
 
 func (UnimplementedPaymentServiceHandler) GetDefaultPrices(context.Context, *connect_go.Request[v1.PaymentServiceGetDefaultPricesRequest]) (*connect_go.Response[v1.PaymentServiceGetDefaultPricesResponse], error) {
 	return nil, connect_go.NewError(connect_go.CodeUnimplemented, errors.New("api.v1.PaymentService.GetDefaultPrices is not implemented"))
+}
+
+func (UnimplementedPaymentServiceHandler) CheckAdmitted(context.Context, *connect_go.Request[v1.PaymentServiceCheckAdmittedRequest]) (*connect_go.Response[v1.PaymentServiceCheckAdmittedResponse], error) {
+	return nil, connect_go.NewError(connect_go.CodeUnimplemented, errors.New("api.v1.PaymentService.CheckAdmitted is not implemented"))
+}
+
+func (UnimplementedPaymentServiceHandler) RequestAdmission(context.Context, *connect_go.Request[v1.PaymentServiceRequestAdmissionRequest]) (*connect_go.Response[v1.PaymentServiceRequestAdmissionResponse], error) {
+	return nil, connect_go.NewError(connect_go.CodeUnimplemented, errors.New("api.v1.PaymentService.RequestAdmission is not implemented"))
 }

@@ -94,5 +94,23 @@ exports.PaymentService = {
             O: payment_pb_js_1.PaymentServiceGetDefaultPricesResponse,
             kind: protobuf_1.MethodKind.Unary,
         },
+        /**
+         * @generated from rpc api.v1.PaymentService.CheckAdmitted
+         */
+        checkAdmitted: {
+            name: "CheckAdmitted",
+            I: payment_pb_js_1.PaymentServiceCheckAdmittedRequest,
+            O: payment_pb_js_1.PaymentServiceCheckAdmittedResponse,
+            kind: protobuf_1.MethodKind.Unary,
+        },
+        /**
+         * @generated from rpc api.v1.PaymentService.RequestAdmission
+         */
+        requestAdmission: {
+            name: "RequestAdmission",
+            I: payment_pb_js_1.PaymentServiceRequestAdmissionRequest,
+            O: payment_pb_js_1.PaymentServiceRequestAdmissionResponse,
+            kind: protobuf_1.MethodKind.Unary,
+        },
     }
 };
