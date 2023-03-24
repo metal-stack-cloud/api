@@ -1545,10 +1545,21 @@ func (m *ClusterServiceCreateRequest) validate(all bool) error {
 
 	var errors []error
 
-	if l := utf8.RuneCountInString(m.GetName()); l < 2 || l > 20 {
+	if l := utf8.RuneCountInString(m.GetName()); l < 2 || l > 12 {
 		err := ClusterServiceCreateRequestValidationError{
 			field:  "Name",
-			reason: "value length must be between 2 and 20 runes, inclusive",
+			reason: "value length must be between 2 and 12 runes, inclusive",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
+	if !_ClusterServiceCreateRequest_Name_Pattern.MatchString(m.GetName()) {
+		err := ClusterServiceCreateRequestValidationError{
+			field:  "Name",
+			reason: "value does not match regex pattern \"[a-z0-9]([-a-z0-9]*[a-z0-9])?\"",
 		}
 		if !all {
 			return err
@@ -1741,6 +1752,8 @@ var _ interface {
 	Cause() error
 	ErrorName() string
 } = ClusterServiceCreateRequestValidationError{}
+
+var _ClusterServiceCreateRequest_Name_Pattern = regexp.MustCompile("[a-z0-9]([-a-z0-9]*[a-z0-9])?")
 
 // Validate checks the field values on ClusterServiceUpdateRequest with the
 // rules defined in the proto definition for this message. If any rules are
