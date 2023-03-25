@@ -5964,8 +5964,8 @@
                     "value": 12
                   },
                   {
-                    "name": "string.pattern",
-                    "value": "[a-z0-9]([-a-z0-9]*[a-z0-9])?"
+                    "name": "string.hostname",
+                    "value": true
                   }
                 ]
               }

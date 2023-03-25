@@ -141,7 +141,7 @@ message ClusterServiceCreateRequest {
   string name = 2 [(validate.rules).string = {
     min_len: 2,
     max_len: 12,
-    pattern: "[a-z0-9]([-a-z0-9]*[a-z0-9])?",
+    hostname: true,
   }];
   string project = 3 [(validate.rules).string = {
     min_len: 2,

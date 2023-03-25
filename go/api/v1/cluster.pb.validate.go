@@ -1556,10 +1556,11 @@ func (m *ClusterServiceCreateRequest) validate(all bool) error {
 		errors = append(errors, err)
 	}
 
-	if !_ClusterServiceCreateRequest_Name_Pattern.MatchString(m.GetName()) {
-		err := ClusterServiceCreateRequestValidationError{
+	if err := m._validateHostname(m.GetName()); err != nil {
+		err = ClusterServiceCreateRequestValidationError{
 			field:  "Name",
-			reason: "value does not match regex pattern \"[a-z0-9]([-a-z0-9]*[a-z0-9])?\"",
+			reason: "value must be a valid hostname",
+			cause:  err,
 		}
 		if !all {
 			return err
@@ -1679,6 +1680,36 @@ func (m *ClusterServiceCreateRequest) validate(all bool) error {
 	return nil
 }
 
+func (m *ClusterServiceCreateRequest) _validateHostname(host string) error {
+	s := strings.ToLower(strings.TrimSuffix(host, "."))
+
+	if len(host) > 253 {
+		return errors.New("hostname cannot exceed 253 characters")
+	}
+
+	for _, part := range strings.Split(s, ".") {
+		if l := len(part); l == 0 || l > 63 {
+			return errors.New("hostname part must be non-empty and cannot exceed 63 characters")
+		}
+
+		if part[0] == '-' {
+			return errors.New("hostname parts cannot begin with hyphens")
+		}
+
+		if part[len(part)-1] == '-' {
+			return errors.New("hostname parts cannot end with hyphens")
+		}
+
+		for _, r := range part {
+			if (r < 'a' || r > 'z') && (r < '0' || r > '9') && r != '-' {
+				return fmt.Errorf("hostname parts can only contain alphanumeric characters or hyphens, got %q", string(r))
+			}
+		}
+	}
+
+	return nil
+}
+
 // ClusterServiceCreateRequestMultiError is an error wrapping multiple
 // validation errors returned by ClusterServiceCreateRequest.ValidateAll() if
 // the designated constraints aren't met.
@@ -1752,8 +1783,6 @@ var _ interface {
 	Cause() error
 	ErrorName() string
 } = ClusterServiceCreateRequestValidationError{}
-
-var _ClusterServiceCreateRequest_Name_Pattern = regexp.MustCompile("[a-z0-9]([-a-z0-9]*[a-z0-9])?")
 
 // Validate checks the field values on ClusterServiceUpdateRequest with the
 // rules defined in the proto definition for this message. If any rules are
