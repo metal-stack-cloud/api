@@ -115,7 +115,7 @@ class ClusterServiceListRequest extends protobuf_1.Message {
     constructor(data) {
         super();
         /**
-         * @generated from field: map<string, string> labels = 7;
+         * @generated from field: map<string, string> labels = 8;
          */
         this.labels = {};
         protobuf_1.proto3.util.initPartial(data, this);
@@ -137,13 +137,14 @@ exports.ClusterServiceListRequest = ClusterServiceListRequest;
 ClusterServiceListRequest.runtime = protobuf_1.proto3;
 ClusterServiceListRequest.typeName = "admin.v1.ClusterServiceListRequest";
 ClusterServiceListRequest.fields = protobuf_1.proto3.util.newFieldList(() => [
-    { no: 1, name: "project", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
-    { no: 2, name: "tenant", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
-    { no: 3, name: "partition", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
-    { no: 4, name: "seed", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
-    { no: 5, name: "name", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
-    { no: 6, name: "purpose", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
-    { no: 7, name: "labels", kind: "map", K: 9 /* ScalarType.STRING */, V: { kind: "scalar", T: 9 /* ScalarType.STRING */ } },
+    { no: 1, name: "uuid", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
+    { no: 2, name: "project", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
+    { no: 3, name: "tenant", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
+    { no: 4, name: "partition", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
+    { no: 5, name: "seed", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
+    { no: 6, name: "name", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
+    { no: 7, name: "purpose", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
+    { no: 8, name: "labels", kind: "map", K: 9 /* ScalarType.STRING */, V: { kind: "scalar", T: 9 /* ScalarType.STRING */ } },
 ]);
 /**
  * @generated from message admin.v1.ClusterServiceGetCredentialsRequest

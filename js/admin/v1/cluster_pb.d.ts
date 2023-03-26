@@ -69,31 +69,35 @@ export declare class ClusterServiceLogsRequest extends Message<ClusterServiceLog
  */
 export declare class ClusterServiceListRequest extends Message<ClusterServiceListRequest> {
     /**
-     * @generated from field: optional string project = 1;
+     * @generated from field: optional string uuid = 1;
+     */
+    uuid?: string;
+    /**
+     * @generated from field: optional string project = 2;
      */
     project?: string;
     /**
-     * @generated from field: optional string tenant = 2;
+     * @generated from field: optional string tenant = 3;
      */
     tenant?: string;
     /**
-     * @generated from field: optional string partition = 3;
+     * @generated from field: optional string partition = 4;
      */
     partition?: string;
     /**
-     * @generated from field: optional string seed = 4;
+     * @generated from field: optional string seed = 5;
      */
     seed?: string;
     /**
-     * @generated from field: optional string name = 5;
+     * @generated from field: optional string name = 6;
      */
     name?: string;
     /**
-     * @generated from field: optional string purpose = 6;
+     * @generated from field: optional string purpose = 7;
      */
     purpose?: string;
     /**
-     * @generated from field: map<string, string> labels = 7;
+     * @generated from field: map<string, string> labels = 8;
      */
     labels: {
         [key: string]: string;

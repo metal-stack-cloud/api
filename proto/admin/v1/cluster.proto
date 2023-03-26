@@ -34,13 +34,14 @@ message ClusterServiceLogsRequest {
   string uuid = 1 [(validate.rules).string.uuid = true];
 }
 message ClusterServiceListRequest {
-  optional string project = 1;
-  optional string tenant = 2;
-  optional string partition = 3;
-  optional string seed = 4;
-  optional string name = 5;
-  optional string purpose = 6;
-  map<string, string> labels = 7;
+  optional string uuid = 1;
+  optional string project = 2;
+  optional string tenant = 3;
+  optional string partition = 4;
+  optional string seed = 5;
+  optional string name = 6;
+  optional string purpose = 7;
+  map<string, string> labels = 8;
 }
 
 message ClusterServiceGetCredentialsRequest {

@@ -306,6 +306,10 @@ func (m *ClusterServiceListRequest) validate(all bool) error {
 
 	// no validation rules for Labels
 
+	if m.Uuid != nil {
+		// no validation rules for Uuid
+	}
+
 	if m.Project != nil {
 		// no validation rules for Project
 	}

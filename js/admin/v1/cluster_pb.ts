@@ -130,37 +130,42 @@ export class ClusterServiceLogsRequest extends Message<ClusterServiceLogsRequest
  */
 export class ClusterServiceListRequest extends Message<ClusterServiceListRequest> {
   /**
-   * @generated from field: optional string project = 1;
+   * @generated from field: optional string uuid = 1;
+   */
+  uuid?: string;
+
+  /**
+   * @generated from field: optional string project = 2;
    */
   project?: string;
 
   /**
-   * @generated from field: optional string tenant = 2;
+   * @generated from field: optional string tenant = 3;
    */
   tenant?: string;
 
   /**
-   * @generated from field: optional string partition = 3;
+   * @generated from field: optional string partition = 4;
    */
   partition?: string;
 
   /**
-   * @generated from field: optional string seed = 4;
+   * @generated from field: optional string seed = 5;
    */
   seed?: string;
 
   /**
-   * @generated from field: optional string name = 5;
+   * @generated from field: optional string name = 6;
    */
   name?: string;
 
   /**
-   * @generated from field: optional string purpose = 6;
+   * @generated from field: optional string purpose = 7;
    */
   purpose?: string;
 
   /**
-   * @generated from field: map<string, string> labels = 7;
+   * @generated from field: map<string, string> labels = 8;
    */
   labels: { [key: string]: string } = {};
 
@@ -172,13 +177,14 @@ export class ClusterServiceListRequest extends Message<ClusterServiceListRequest
   static readonly runtime: typeof proto3 = proto3;
   static readonly typeName = "admin.v1.ClusterServiceListRequest";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "project", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
-    { no: 2, name: "tenant", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
-    { no: 3, name: "partition", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
-    { no: 4, name: "seed", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
-    { no: 5, name: "name", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
-    { no: 6, name: "purpose", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
-    { no: 7, name: "labels", kind: "map", K: 9 /* ScalarType.STRING */, V: {kind: "scalar", T: 9 /* ScalarType.STRING */} },
+    { no: 1, name: "uuid", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
+    { no: 2, name: "project", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
+    { no: 3, name: "tenant", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
+    { no: 4, name: "partition", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
+    { no: 5, name: "seed", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
+    { no: 6, name: "name", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
+    { no: 7, name: "purpose", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
+    { no: 8, name: "labels", kind: "map", K: 9 /* ScalarType.STRING */, V: {kind: "scalar", T: 9 /* ScalarType.STRING */} },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ClusterServiceListRequest {

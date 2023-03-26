@@ -1928,6 +1928,18 @@
           "extensions": [],
           "fields": [
             {
+              "name": "uuid",
+              "description": "",
+              "label": "optional",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "_uuid",
+              "defaultValue": ""
+            },
+            {
               "name": "project",
               "description": "",
               "label": "optional",
