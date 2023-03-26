@@ -93,9 +93,11 @@ export declare class ClusterServiceListRequest extends Message<ClusterServiceLis
      */
     purpose?: string;
     /**
-     * @generated from field: repeated string labels = 7;
+     * @generated from field: map<string, string> labels = 7;
      */
-    labels: string[];
+    labels: {
+        [key: string]: string;
+    };
     constructor(data?: PartialMessage<ClusterServiceListRequest>);
     static readonly runtime: typeof proto3;
     static readonly typeName = "admin.v1.ClusterServiceListRequest";

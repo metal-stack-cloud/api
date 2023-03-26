@@ -304,6 +304,8 @@ func (m *ClusterServiceListRequest) validate(all bool) error {
 
 	var errors []error
 
+	// no validation rules for Labels
+
 	if m.Project != nil {
 		// no validation rules for Project
 	}

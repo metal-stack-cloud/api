@@ -40,7 +40,7 @@ message ClusterServiceListRequest {
   optional string seed = 4;
   optional string name = 5;
   optional string purpose = 6;
-  repeated string labels = 7;
+  map<string, string> labels = 7;
 }
 
 message ClusterServiceGetCredentialsRequest {

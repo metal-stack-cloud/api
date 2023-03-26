@@ -2003,6 +2003,42 @@
               "name": "labels",
               "description": "",
               "label": "repeated",
+              "type": "LabelsEntry",
+              "longType": "ClusterServiceListRequest.LabelsEntry",
+              "fullType": "admin.v1.ClusterServiceListRequest.LabelsEntry",
+              "ismap": true,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "LabelsEntry",
+          "longName": "ClusterServiceListRequest.LabelsEntry",
+          "fullName": "admin.v1.ClusterServiceListRequest.LabelsEntry",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "key",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "value",
+              "description": "",
+              "label": "",
               "type": "string",
               "longType": "string",
               "fullType": "string",

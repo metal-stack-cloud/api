@@ -115,9 +115,9 @@ class ClusterServiceListRequest extends protobuf_1.Message {
     constructor(data) {
         super();
         /**
-         * @generated from field: repeated string labels = 7;
+         * @generated from field: map<string, string> labels = 7;
          */
-        this.labels = [];
+        this.labels = {};
         protobuf_1.proto3.util.initPartial(data, this);
     }
     static fromBinary(bytes, options) {
@@ -143,7 +143,7 @@ ClusterServiceListRequest.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 4, name: "seed", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
     { no: 5, name: "name", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
     { no: 6, name: "purpose", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
-    { no: 7, name: "labels", kind: "scalar", T: 9 /* ScalarType.STRING */, repeated: true },
+    { no: 7, name: "labels", kind: "map", K: 9 /* ScalarType.STRING */, V: { kind: "scalar", T: 9 /* ScalarType.STRING */ } },
 ]);
 /**
  * @generated from message admin.v1.ClusterServiceGetCredentialsRequest

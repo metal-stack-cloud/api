@@ -160,9 +160,9 @@ export class ClusterServiceListRequest extends Message<ClusterServiceListRequest
   purpose?: string;
 
   /**
-   * @generated from field: repeated string labels = 7;
+   * @generated from field: map<string, string> labels = 7;
    */
-  labels: string[] = [];
+  labels: { [key: string]: string } = {};
 
   constructor(data?: PartialMessage<ClusterServiceListRequest>) {
     super();
@@ -178,7 +178,7 @@ export class ClusterServiceListRequest extends Message<ClusterServiceListRequest
     { no: 4, name: "seed", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
     { no: 5, name: "name", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
     { no: 6, name: "purpose", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
-    { no: 7, name: "labels", kind: "scalar", T: 9 /* ScalarType.STRING */, repeated: true },
+    { no: 7, name: "labels", kind: "map", K: 9 /* ScalarType.STRING */, V: {kind: "scalar", T: 9 /* ScalarType.STRING */} },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ClusterServiceListRequest {
