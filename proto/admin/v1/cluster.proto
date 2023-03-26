@@ -35,7 +35,14 @@ message ClusterServiceLogsRequest {
 }
 message ClusterServiceListRequest {
   optional string project = 1;
+  optional string tenant = 2;
+  optional string partition = 3;
+  optional string seed = 4;
+  optional string name = 5;
+  optional string purpose = 6;
+  repeated string labels = 7;
 }
+
 message ClusterServiceGetCredentialsRequest {
   string uuid = 1 [(validate.rules).string.uuid = true];
 }

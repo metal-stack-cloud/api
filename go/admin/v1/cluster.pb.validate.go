@@ -308,6 +308,26 @@ func (m *ClusterServiceListRequest) validate(all bool) error {
 		// no validation rules for Project
 	}
 
+	if m.Tenant != nil {
+		// no validation rules for Tenant
+	}
+
+	if m.Partition != nil {
+		// no validation rules for Partition
+	}
+
+	if m.Seed != nil {
+		// no validation rules for Seed
+	}
+
+	if m.Name != nil {
+		// no validation rules for Name
+	}
+
+	if m.Purpose != nil {
+		// no validation rules for Purpose
+	}
+
 	if len(errors) > 0 {
 		return ClusterServiceListRequestMultiError(errors)
 	}

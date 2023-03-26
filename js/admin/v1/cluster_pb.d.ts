@@ -72,6 +72,30 @@ export declare class ClusterServiceListRequest extends Message<ClusterServiceLis
      * @generated from field: optional string project = 1;
      */
     project?: string;
+    /**
+     * @generated from field: optional string tenant = 2;
+     */
+    tenant?: string;
+    /**
+     * @generated from field: optional string partition = 3;
+     */
+    partition?: string;
+    /**
+     * @generated from field: optional string seed = 4;
+     */
+    seed?: string;
+    /**
+     * @generated from field: optional string name = 5;
+     */
+    name?: string;
+    /**
+     * @generated from field: optional string purpose = 6;
+     */
+    purpose?: string;
+    /**
+     * @generated from field: repeated string labels = 7;
+     */
+    labels: string[];
     constructor(data?: PartialMessage<ClusterServiceListRequest>);
     static readonly runtime: typeof proto3;
     static readonly typeName = "admin.v1.ClusterServiceListRequest";
