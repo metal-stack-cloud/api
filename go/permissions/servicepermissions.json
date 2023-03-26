@@ -2,6 +2,9 @@
   "roles": {
     "admin": {
       "editor": [
+        "/admin.v1.ClusterService/Get",
+        "/admin.v1.ClusterService/List",
+        "/admin.v1.ClusterService/GetCredentials",
         "/admin.v1.PaymentService/ListCoupons",
         "/admin.v1.PaymentService/AddCouponToCustomer",
         "/admin.v1.StorageService/ClusterInfo",
@@ -12,6 +15,8 @@
         "/admin.v1.TenantService/Revoke"
       ],
       "viewer": [
+        "/admin.v1.ClusterService/Get",
+        "/admin.v1.ClusterService/List",
         "/admin.v1.PaymentService/ListCoupons",
         "/admin.v1.StorageService/ClusterInfo",
         "/admin.v1.StorageService/ListVolumes",
@@ -106,6 +111,9 @@
     }
   },
   "methods": {
+    "/admin.v1.ClusterService/Get": true,
+    "/admin.v1.ClusterService/GetCredentials": true,
+    "/admin.v1.ClusterService/List": true,
     "/admin.v1.PaymentService/AddCouponToCustomer": true,
     "/admin.v1.PaymentService/ListCoupons": true,
     "/admin.v1.StorageService/ClusterInfo": true,

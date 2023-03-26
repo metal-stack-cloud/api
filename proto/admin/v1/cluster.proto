@@ -1,0 +1,53 @@
+syntax = "proto3";
+
+package admin.v1;
+
+import "api/v1/cluster.proto";
+import "api/v1/common.proto";
+import "validate/validate.proto";
+
+service ClusterService {
+  rpc Get(ClusterServiceGetRequest) returns (ClusterServiceGetResponse) {
+    option (api.v1.admin_roles) = ADMIN_ROLE_EDITOR;
+    option (api.v1.admin_roles) = ADMIN_ROLE_VIEWER;
+  }
+  rpc List(ClusterServiceListRequest) returns (ClusterServiceListResponse) {
+    option (api.v1.admin_roles) = ADMIN_ROLE_EDITOR;
+    option (api.v1.admin_roles) = ADMIN_ROLE_VIEWER;
+  }
+  rpc GetCredentials(ClusterServiceGetCredentialsRequest) returns (ClusterServiceGetCredentialsResponse) {
+    option (api.v1.admin_roles) = ADMIN_ROLE_EDITOR;
+  }
+}
+
+message ClusterServiceGetRequest {
+  string uuid = 1 [(validate.rules).string.uuid = true];
+  string project = 2 [(validate.rules).string = {
+    min_len: 2,
+    max_len: 128,
+  }];
+}
+message ClusterServiceGetCredentialsRequest {
+  string uuid = 1 [(validate.rules).string.uuid = true];
+  string project = 2 [(validate.rules).string = {
+    min_len: 2,
+    max_len: 128,
+  }];
+}
+message ClusterServiceListRequest {
+  string project = 2 [(validate.rules).string = {
+    min_len: 2,
+    max_len: 128,
+  }];
+}
+
+message ClusterServiceGetResponse {
+  api.v1.Cluster cluster = 1;
+}
+message ClusterServiceGetCredentialsResponse {
+  string kubeconfig = 1;
+}
+
+message ClusterServiceListResponse {
+  repeated api.v1.Cluster clusters = 1;
+}
