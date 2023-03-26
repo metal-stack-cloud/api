@@ -28,8 +28,10 @@ const (
 // ClusterServiceClient is a client for the admin.v1.ClusterService service.
 type ClusterServiceClient interface {
 	Get(context.Context, *connect_go.Request[v1.ClusterServiceGetRequest]) (*connect_go.Response[v1.ClusterServiceGetResponse], error)
+	Logs(context.Context, *connect_go.Request[v1.ClusterServiceLogsRequest]) (*connect_go.Response[v1.ClusterServiceLogsResponse], error)
 	List(context.Context, *connect_go.Request[v1.ClusterServiceListRequest]) (*connect_go.Response[v1.ClusterServiceListResponse], error)
 	GetCredentials(context.Context, *connect_go.Request[v1.ClusterServiceGetCredentialsRequest]) (*connect_go.Response[v1.ClusterServiceGetCredentialsResponse], error)
+	Operate(context.Context, *connect_go.Request[v1.ClusterServiceOperateRequest]) (*connect_go.Response[v1.ClusterServiceOperateResponse], error)
 }
 
 // NewClusterServiceClient constructs a client for the admin.v1.ClusterService service. By default,
@@ -47,6 +49,11 @@ func NewClusterServiceClient(httpClient connect_go.HTTPClient, baseURL string, o
 			baseURL+"/admin.v1.ClusterService/Get",
 			opts...,
 		),
+		logs: connect_go.NewClient[v1.ClusterServiceLogsRequest, v1.ClusterServiceLogsResponse](
+			httpClient,
+			baseURL+"/admin.v1.ClusterService/Logs",
+			opts...,
+		),
 		list: connect_go.NewClient[v1.ClusterServiceListRequest, v1.ClusterServiceListResponse](
 			httpClient,
 			baseURL+"/admin.v1.ClusterService/List",
@@ -57,19 +64,31 @@ func NewClusterServiceClient(httpClient connect_go.HTTPClient, baseURL string, o
 			baseURL+"/admin.v1.ClusterService/GetCredentials",
 			opts...,
 		),
+		operate: connect_go.NewClient[v1.ClusterServiceOperateRequest, v1.ClusterServiceOperateResponse](
+			httpClient,
+			baseURL+"/admin.v1.ClusterService/Operate",
+			opts...,
+		),
 	}
 }
 
 // clusterServiceClient implements ClusterServiceClient.
 type clusterServiceClient struct {
 	get            *connect_go.Client[v1.ClusterServiceGetRequest, v1.ClusterServiceGetResponse]
+	logs           *connect_go.Client[v1.ClusterServiceLogsRequest, v1.ClusterServiceLogsResponse]
 	list           *connect_go.Client[v1.ClusterServiceListRequest, v1.ClusterServiceListResponse]
 	getCredentials *connect_go.Client[v1.ClusterServiceGetCredentialsRequest, v1.ClusterServiceGetCredentialsResponse]
+	operate        *connect_go.Client[v1.ClusterServiceOperateRequest, v1.ClusterServiceOperateResponse]
 }
 
 // Get calls admin.v1.ClusterService.Get.
 func (c *clusterServiceClient) Get(ctx context.Context, req *connect_go.Request[v1.ClusterServiceGetRequest]) (*connect_go.Response[v1.ClusterServiceGetResponse], error) {
 	return c.get.CallUnary(ctx, req)
+}
+
+// Logs calls admin.v1.ClusterService.Logs.
+func (c *clusterServiceClient) Logs(ctx context.Context, req *connect_go.Request[v1.ClusterServiceLogsRequest]) (*connect_go.Response[v1.ClusterServiceLogsResponse], error) {
+	return c.logs.CallUnary(ctx, req)
 }
 
 // List calls admin.v1.ClusterService.List.
@@ -82,11 +101,18 @@ func (c *clusterServiceClient) GetCredentials(ctx context.Context, req *connect_
 	return c.getCredentials.CallUnary(ctx, req)
 }
 
+// Operate calls admin.v1.ClusterService.Operate.
+func (c *clusterServiceClient) Operate(ctx context.Context, req *connect_go.Request[v1.ClusterServiceOperateRequest]) (*connect_go.Response[v1.ClusterServiceOperateResponse], error) {
+	return c.operate.CallUnary(ctx, req)
+}
+
 // ClusterServiceHandler is an implementation of the admin.v1.ClusterService service.
 type ClusterServiceHandler interface {
 	Get(context.Context, *connect_go.Request[v1.ClusterServiceGetRequest]) (*connect_go.Response[v1.ClusterServiceGetResponse], error)
+	Logs(context.Context, *connect_go.Request[v1.ClusterServiceLogsRequest]) (*connect_go.Response[v1.ClusterServiceLogsResponse], error)
 	List(context.Context, *connect_go.Request[v1.ClusterServiceListRequest]) (*connect_go.Response[v1.ClusterServiceListResponse], error)
 	GetCredentials(context.Context, *connect_go.Request[v1.ClusterServiceGetCredentialsRequest]) (*connect_go.Response[v1.ClusterServiceGetCredentialsResponse], error)
+	Operate(context.Context, *connect_go.Request[v1.ClusterServiceOperateRequest]) (*connect_go.Response[v1.ClusterServiceOperateResponse], error)
 }
 
 // NewClusterServiceHandler builds an HTTP handler from the service implementation. It returns the
@@ -101,6 +127,11 @@ func NewClusterServiceHandler(svc ClusterServiceHandler, opts ...connect_go.Hand
 		svc.Get,
 		opts...,
 	))
+	mux.Handle("/admin.v1.ClusterService/Logs", connect_go.NewUnaryHandler(
+		"/admin.v1.ClusterService/Logs",
+		svc.Logs,
+		opts...,
+	))
 	mux.Handle("/admin.v1.ClusterService/List", connect_go.NewUnaryHandler(
 		"/admin.v1.ClusterService/List",
 		svc.List,
@@ -109,6 +140,11 @@ func NewClusterServiceHandler(svc ClusterServiceHandler, opts ...connect_go.Hand
 	mux.Handle("/admin.v1.ClusterService/GetCredentials", connect_go.NewUnaryHandler(
 		"/admin.v1.ClusterService/GetCredentials",
 		svc.GetCredentials,
+		opts...,
+	))
+	mux.Handle("/admin.v1.ClusterService/Operate", connect_go.NewUnaryHandler(
+		"/admin.v1.ClusterService/Operate",
+		svc.Operate,
 		opts...,
 	))
 	return "/admin.v1.ClusterService/", mux
@@ -121,10 +157,18 @@ func (UnimplementedClusterServiceHandler) Get(context.Context, *connect_go.Reque
 	return nil, connect_go.NewError(connect_go.CodeUnimplemented, errors.New("admin.v1.ClusterService.Get is not implemented"))
 }
 
+func (UnimplementedClusterServiceHandler) Logs(context.Context, *connect_go.Request[v1.ClusterServiceLogsRequest]) (*connect_go.Response[v1.ClusterServiceLogsResponse], error) {
+	return nil, connect_go.NewError(connect_go.CodeUnimplemented, errors.New("admin.v1.ClusterService.Logs is not implemented"))
+}
+
 func (UnimplementedClusterServiceHandler) List(context.Context, *connect_go.Request[v1.ClusterServiceListRequest]) (*connect_go.Response[v1.ClusterServiceListResponse], error) {
 	return nil, connect_go.NewError(connect_go.CodeUnimplemented, errors.New("admin.v1.ClusterService.List is not implemented"))
 }
 
 func (UnimplementedClusterServiceHandler) GetCredentials(context.Context, *connect_go.Request[v1.ClusterServiceGetCredentialsRequest]) (*connect_go.Response[v1.ClusterServiceGetCredentialsResponse], error) {
 	return nil, connect_go.NewError(connect_go.CodeUnimplemented, errors.New("admin.v1.ClusterService.GetCredentials is not implemented"))
+}
+
+func (UnimplementedClusterServiceHandler) Operate(context.Context, *connect_go.Request[v1.ClusterServiceOperateRequest]) (*connect_go.Response[v1.ClusterServiceOperateResponse], error) {
+	return nil, connect_go.NewError(connect_go.CodeUnimplemented, errors.New("admin.v1.ClusterService.Operate is not implemented"))
 }

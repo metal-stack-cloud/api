@@ -1759,11 +1759,50 @@
       "name": "admin/v1/cluster.proto",
       "description": "",
       "package": "admin.v1",
-      "hasEnums": false,
+      "hasEnums": true,
       "hasExtensions": false,
       "hasMessages": true,
       "hasServices": true,
-      "enums": [],
+      "enums": [
+        {
+          "name": "Operate",
+          "longName": "Operate",
+          "fullName": "admin.v1.Operate",
+          "description": "",
+          "values": [
+            {
+              "name": "OPERATE_UNSPECIFIED",
+              "number": "0",
+              "description": ""
+            },
+            {
+              "name": "OPERATE_RECONCILE",
+              "number": "1",
+              "description": ""
+            },
+            {
+              "name": "OPERATE_MAINTAIN",
+              "number": "2",
+              "description": ""
+            },
+            {
+              "name": "OPERATE_RETRY",
+              "number": "3",
+              "description": ""
+            },
+            {
+              "name": "OPERATE_RESTART_KUBELET",
+              "number": "4",
+              "description": ""
+            },
+            {
+              "name": "OPERATE_RESTART_CONTAINERD",
+              "number": "5",
+              "description": ""
+            }
+          ]
+        }
+      ],
       "extensions": [],
       "messages": [
         {
@@ -1792,30 +1831,6 @@
                   {
                     "name": "string.uuid",
                     "value": true
-                  }
-                ]
-              }
-            },
-            {
-              "name": "project",
-              "description": "",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.min_len",
-                    "value": 2
-                  },
-                  {
-                    "name": "string.max_len",
-                    "value": 128
                   }
                 ]
               }
@@ -1875,30 +1890,6 @@
                   }
                 ]
               }
-            },
-            {
-              "name": "project",
-              "description": "",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.min_len",
-                    "value": 2
-                  },
-                  {
-                    "name": "string.max_len",
-                    "value": 128
-                  }
-                ]
-              }
             }
           ]
         },
@@ -1933,32 +1924,20 @@
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
-          "hasOneofs": false,
+          "hasOneofs": true,
           "extensions": [],
           "fields": [
             {
               "name": "project",
               "description": "",
-              "label": "",
+              "label": "optional",
               "type": "string",
               "longType": "string",
               "fullType": "string",
               "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.min_len",
-                    "value": 2
-                  },
-                  {
-                    "name": "string.max_len",
-                    "value": 128
-                  }
-                ]
-              }
+              "isoneof": true,
+              "oneofdecl": "_project",
+              "defaultValue": ""
             }
           ]
         },
@@ -1976,6 +1955,130 @@
               "name": "clusters",
               "description": "",
               "label": "repeated",
+              "type": "Cluster",
+              "longType": "api.v1.Cluster",
+              "fullType": "api.v1.Cluster",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "ClusterServiceLogsRequest",
+          "longName": "ClusterServiceLogsRequest",
+          "fullName": "admin.v1.ClusterServiceLogsRequest",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "uuid",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": "",
+              "options": {
+                "validate.rules": [
+                  {
+                    "name": "string.uuid",
+                    "value": true
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "ClusterServiceLogsResponse",
+          "longName": "ClusterServiceLogsResponse",
+          "fullName": "admin.v1.ClusterServiceLogsResponse",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "log",
+              "description": "",
+              "label": "repeated",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "ClusterServiceOperateRequest",
+          "longName": "ClusterServiceOperateRequest",
+          "fullName": "admin.v1.ClusterServiceOperateRequest",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "uuid",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": "",
+              "options": {
+                "validate.rules": [
+                  {
+                    "name": "string.uuid",
+                    "value": true
+                  }
+                ]
+              }
+            },
+            {
+              "name": "operate",
+              "description": "",
+              "label": "",
+              "type": "Operate",
+              "longType": "Operate",
+              "fullType": "admin.v1.Operate",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "ClusterServiceOperateResponse",
+          "longName": "ClusterServiceOperateResponse",
+          "fullName": "admin.v1.ClusterServiceOperateResponse",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "cluster",
+              "description": "",
+              "label": "",
               "type": "Cluster",
               "longType": "api.v1.Cluster",
               "fullType": "api.v1.Cluster",
@@ -2007,6 +2110,18 @@
               "responseStreaming": false
             },
             {
+              "name": "Logs",
+              "description": "",
+              "requestType": "ClusterServiceLogsRequest",
+              "requestLongType": "ClusterServiceLogsRequest",
+              "requestFullType": "admin.v1.ClusterServiceLogsRequest",
+              "requestStreaming": false,
+              "responseType": "ClusterServiceLogsResponse",
+              "responseLongType": "ClusterServiceLogsResponse",
+              "responseFullType": "admin.v1.ClusterServiceLogsResponse",
+              "responseStreaming": false
+            },
+            {
               "name": "List",
               "description": "",
               "requestType": "ClusterServiceListRequest",
@@ -2028,6 +2143,18 @@
               "responseType": "ClusterServiceGetCredentialsResponse",
               "responseLongType": "ClusterServiceGetCredentialsResponse",
               "responseFullType": "admin.v1.ClusterServiceGetCredentialsResponse",
+              "responseStreaming": false
+            },
+            {
+              "name": "Operate",
+              "description": "",
+              "requestType": "ClusterServiceOperateRequest",
+              "requestLongType": "ClusterServiceOperateRequest",
+              "requestFullType": "admin.v1.ClusterServiceOperateRequest",
+              "requestStreaming": false,
+              "responseType": "ClusterServiceOperateResponse",
+              "responseLongType": "ClusterServiceOperateResponse",
+              "responseFullType": "admin.v1.ClusterServiceOperateResponse",
               "responseStreaming": false
             }
           ]

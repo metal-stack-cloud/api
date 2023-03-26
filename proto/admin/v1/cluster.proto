@@ -11,6 +11,10 @@ service ClusterService {
     option (api.v1.admin_roles) = ADMIN_ROLE_EDITOR;
     option (api.v1.admin_roles) = ADMIN_ROLE_VIEWER;
   }
+  rpc Logs(ClusterServiceLogsRequest) returns (ClusterServiceLogsResponse) {
+    option (api.v1.admin_roles) = ADMIN_ROLE_EDITOR;
+    option (api.v1.admin_roles) = ADMIN_ROLE_VIEWER;
+  }
   rpc List(ClusterServiceListRequest) returns (ClusterServiceListResponse) {
     option (api.v1.admin_roles) = ADMIN_ROLE_EDITOR;
     option (api.v1.admin_roles) = ADMIN_ROLE_VIEWER;
@@ -18,36 +22,48 @@ service ClusterService {
   rpc GetCredentials(ClusterServiceGetCredentialsRequest) returns (ClusterServiceGetCredentialsResponse) {
     option (api.v1.admin_roles) = ADMIN_ROLE_EDITOR;
   }
+  rpc Operate(ClusterServiceOperateRequest) returns (ClusterServiceOperateResponse) {
+    option (api.v1.admin_roles) = ADMIN_ROLE_EDITOR;
+  }
 }
 
 message ClusterServiceGetRequest {
   string uuid = 1 [(validate.rules).string.uuid = true];
-  string project = 2 [(validate.rules).string = {
-    min_len: 2,
-    max_len: 128,
-  }];
+}
+message ClusterServiceLogsRequest {
+  string uuid = 1 [(validate.rules).string.uuid = true];
+}
+message ClusterServiceListRequest {
+  optional string project = 1;
 }
 message ClusterServiceGetCredentialsRequest {
   string uuid = 1 [(validate.rules).string.uuid = true];
-  string project = 2 [(validate.rules).string = {
-    min_len: 2,
-    max_len: 128,
-  }];
 }
-message ClusterServiceListRequest {
-  string project = 2 [(validate.rules).string = {
-    min_len: 2,
-    max_len: 128,
-  }];
+message ClusterServiceOperateRequest {
+  string uuid = 1 [(validate.rules).string.uuid = true];
+  Operate operate = 2;
 }
 
 message ClusterServiceGetResponse {
   api.v1.Cluster cluster = 1;
 }
+message ClusterServiceLogsResponse {
+  repeated string log = 1;
+}
+message ClusterServiceListResponse {
+  repeated api.v1.Cluster clusters = 1;
+}
 message ClusterServiceGetCredentialsResponse {
   string kubeconfig = 1;
 }
-
-message ClusterServiceListResponse {
-  repeated api.v1.Cluster clusters = 1;
+message ClusterServiceOperateResponse {
+  api.v1.Cluster cluster = 1;
+}
+enum Operate {
+  OPERATE_UNSPECIFIED = 0;
+  OPERATE_RECONCILE = 1;
+  OPERATE_MAINTAIN = 2;
+  OPERATE_RETRY = 3;
+  OPERATE_RESTART_KUBELET = 4;
+  OPERATE_RESTART_CONTAINERD = 5;
 }

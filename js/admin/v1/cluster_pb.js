@@ -4,9 +4,48 @@
 /* eslint-disable */
 // @ts-nocheck
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ClusterServiceListResponse = exports.ClusterServiceGetCredentialsResponse = exports.ClusterServiceGetResponse = exports.ClusterServiceListRequest = exports.ClusterServiceGetCredentialsRequest = exports.ClusterServiceGetRequest = void 0;
+exports.ClusterServiceOperateResponse = exports.ClusterServiceGetCredentialsResponse = exports.ClusterServiceListResponse = exports.ClusterServiceLogsResponse = exports.ClusterServiceGetResponse = exports.ClusterServiceOperateRequest = exports.ClusterServiceGetCredentialsRequest = exports.ClusterServiceListRequest = exports.ClusterServiceLogsRequest = exports.ClusterServiceGetRequest = exports.Operate = void 0;
 const protobuf_1 = require("@bufbuild/protobuf");
 const cluster_pb_js_1 = require("../../api/v1/cluster_pb.js");
+/**
+ * @generated from enum admin.v1.Operate
+ */
+var Operate;
+(function (Operate) {
+    /**
+     * @generated from enum value: OPERATE_UNSPECIFIED = 0;
+     */
+    Operate[Operate["UNSPECIFIED"] = 0] = "UNSPECIFIED";
+    /**
+     * @generated from enum value: OPERATE_RECONCILE = 1;
+     */
+    Operate[Operate["RECONCILE"] = 1] = "RECONCILE";
+    /**
+     * @generated from enum value: OPERATE_MAINTAIN = 2;
+     */
+    Operate[Operate["MAINTAIN"] = 2] = "MAINTAIN";
+    /**
+     * @generated from enum value: OPERATE_RETRY = 3;
+     */
+    Operate[Operate["RETRY"] = 3] = "RETRY";
+    /**
+     * @generated from enum value: OPERATE_RESTART_KUBELET = 4;
+     */
+    Operate[Operate["RESTART_KUBELET"] = 4] = "RESTART_KUBELET";
+    /**
+     * @generated from enum value: OPERATE_RESTART_CONTAINERD = 5;
+     */
+    Operate[Operate["RESTART_CONTAINERD"] = 5] = "RESTART_CONTAINERD";
+})(Operate = exports.Operate || (exports.Operate = {}));
+// Retrieve enum metadata with: proto3.getEnumType(Operate)
+protobuf_1.proto3.util.setEnumType(Operate, "admin.v1.Operate", [
+    { no: 0, name: "OPERATE_UNSPECIFIED" },
+    { no: 1, name: "OPERATE_RECONCILE" },
+    { no: 2, name: "OPERATE_MAINTAIN" },
+    { no: 3, name: "OPERATE_RETRY" },
+    { no: 4, name: "OPERATE_RESTART_KUBELET" },
+    { no: 5, name: "OPERATE_RESTART_CONTAINERD" },
+]);
 /**
  * @generated from message admin.v1.ClusterServiceGetRequest
  */
@@ -17,10 +56,6 @@ class ClusterServiceGetRequest extends protobuf_1.Message {
          * @generated from field: string uuid = 1;
          */
         this.uuid = "";
-        /**
-         * @generated from field: string project = 2;
-         */
-        this.project = "";
         protobuf_1.proto3.util.initPartial(data, this);
     }
     static fromBinary(bytes, options) {
@@ -41,7 +76,64 @@ ClusterServiceGetRequest.runtime = protobuf_1.proto3;
 ClusterServiceGetRequest.typeName = "admin.v1.ClusterServiceGetRequest";
 ClusterServiceGetRequest.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 1, name: "uuid", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 2, name: "project", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+]);
+/**
+ * @generated from message admin.v1.ClusterServiceLogsRequest
+ */
+class ClusterServiceLogsRequest extends protobuf_1.Message {
+    constructor(data) {
+        super();
+        /**
+         * @generated from field: string uuid = 1;
+         */
+        this.uuid = "";
+        protobuf_1.proto3.util.initPartial(data, this);
+    }
+    static fromBinary(bytes, options) {
+        return new ClusterServiceLogsRequest().fromBinary(bytes, options);
+    }
+    static fromJson(jsonValue, options) {
+        return new ClusterServiceLogsRequest().fromJson(jsonValue, options);
+    }
+    static fromJsonString(jsonString, options) {
+        return new ClusterServiceLogsRequest().fromJsonString(jsonString, options);
+    }
+    static equals(a, b) {
+        return protobuf_1.proto3.util.equals(ClusterServiceLogsRequest, a, b);
+    }
+}
+exports.ClusterServiceLogsRequest = ClusterServiceLogsRequest;
+ClusterServiceLogsRequest.runtime = protobuf_1.proto3;
+ClusterServiceLogsRequest.typeName = "admin.v1.ClusterServiceLogsRequest";
+ClusterServiceLogsRequest.fields = protobuf_1.proto3.util.newFieldList(() => [
+    { no: 1, name: "uuid", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+]);
+/**
+ * @generated from message admin.v1.ClusterServiceListRequest
+ */
+class ClusterServiceListRequest extends protobuf_1.Message {
+    constructor(data) {
+        super();
+        protobuf_1.proto3.util.initPartial(data, this);
+    }
+    static fromBinary(bytes, options) {
+        return new ClusterServiceListRequest().fromBinary(bytes, options);
+    }
+    static fromJson(jsonValue, options) {
+        return new ClusterServiceListRequest().fromJson(jsonValue, options);
+    }
+    static fromJsonString(jsonString, options) {
+        return new ClusterServiceListRequest().fromJsonString(jsonString, options);
+    }
+    static equals(a, b) {
+        return protobuf_1.proto3.util.equals(ClusterServiceListRequest, a, b);
+    }
+}
+exports.ClusterServiceListRequest = ClusterServiceListRequest;
+ClusterServiceListRequest.runtime = protobuf_1.proto3;
+ClusterServiceListRequest.typeName = "admin.v1.ClusterServiceListRequest";
+ClusterServiceListRequest.fields = protobuf_1.proto3.util.newFieldList(() => [
+    { no: 1, name: "project", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
 ]);
 /**
  * @generated from message admin.v1.ClusterServiceGetCredentialsRequest
@@ -53,10 +145,6 @@ class ClusterServiceGetCredentialsRequest extends protobuf_1.Message {
          * @generated from field: string uuid = 1;
          */
         this.uuid = "";
-        /**
-         * @generated from field: string project = 2;
-         */
-        this.project = "";
         protobuf_1.proto3.util.initPartial(data, this);
     }
     static fromBinary(bytes, options) {
@@ -77,38 +165,42 @@ ClusterServiceGetCredentialsRequest.runtime = protobuf_1.proto3;
 ClusterServiceGetCredentialsRequest.typeName = "admin.v1.ClusterServiceGetCredentialsRequest";
 ClusterServiceGetCredentialsRequest.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 1, name: "uuid", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 2, name: "project", kind: "scalar", T: 9 /* ScalarType.STRING */ },
 ]);
 /**
- * @generated from message admin.v1.ClusterServiceListRequest
+ * @generated from message admin.v1.ClusterServiceOperateRequest
  */
-class ClusterServiceListRequest extends protobuf_1.Message {
+class ClusterServiceOperateRequest extends protobuf_1.Message {
     constructor(data) {
         super();
         /**
-         * @generated from field: string project = 2;
+         * @generated from field: string uuid = 1;
          */
-        this.project = "";
+        this.uuid = "";
+        /**
+         * @generated from field: admin.v1.Operate operate = 2;
+         */
+        this.operate = Operate.UNSPECIFIED;
         protobuf_1.proto3.util.initPartial(data, this);
     }
     static fromBinary(bytes, options) {
-        return new ClusterServiceListRequest().fromBinary(bytes, options);
+        return new ClusterServiceOperateRequest().fromBinary(bytes, options);
     }
     static fromJson(jsonValue, options) {
-        return new ClusterServiceListRequest().fromJson(jsonValue, options);
+        return new ClusterServiceOperateRequest().fromJson(jsonValue, options);
     }
     static fromJsonString(jsonString, options) {
-        return new ClusterServiceListRequest().fromJsonString(jsonString, options);
+        return new ClusterServiceOperateRequest().fromJsonString(jsonString, options);
     }
     static equals(a, b) {
-        return protobuf_1.proto3.util.equals(ClusterServiceListRequest, a, b);
+        return protobuf_1.proto3.util.equals(ClusterServiceOperateRequest, a, b);
     }
 }
-exports.ClusterServiceListRequest = ClusterServiceListRequest;
-ClusterServiceListRequest.runtime = protobuf_1.proto3;
-ClusterServiceListRequest.typeName = "admin.v1.ClusterServiceListRequest";
-ClusterServiceListRequest.fields = protobuf_1.proto3.util.newFieldList(() => [
-    { no: 2, name: "project", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+exports.ClusterServiceOperateRequest = ClusterServiceOperateRequest;
+ClusterServiceOperateRequest.runtime = protobuf_1.proto3;
+ClusterServiceOperateRequest.typeName = "admin.v1.ClusterServiceOperateRequest";
+ClusterServiceOperateRequest.fields = protobuf_1.proto3.util.newFieldList(() => [
+    { no: 1, name: "uuid", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "operate", kind: "enum", T: protobuf_1.proto3.getEnumType(Operate) },
 ]);
 /**
  * @generated from message admin.v1.ClusterServiceGetResponse
@@ -136,6 +228,68 @@ ClusterServiceGetResponse.runtime = protobuf_1.proto3;
 ClusterServiceGetResponse.typeName = "admin.v1.ClusterServiceGetResponse";
 ClusterServiceGetResponse.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 1, name: "cluster", kind: "message", T: cluster_pb_js_1.Cluster },
+]);
+/**
+ * @generated from message admin.v1.ClusterServiceLogsResponse
+ */
+class ClusterServiceLogsResponse extends protobuf_1.Message {
+    constructor(data) {
+        super();
+        /**
+         * @generated from field: repeated string log = 1;
+         */
+        this.log = [];
+        protobuf_1.proto3.util.initPartial(data, this);
+    }
+    static fromBinary(bytes, options) {
+        return new ClusterServiceLogsResponse().fromBinary(bytes, options);
+    }
+    static fromJson(jsonValue, options) {
+        return new ClusterServiceLogsResponse().fromJson(jsonValue, options);
+    }
+    static fromJsonString(jsonString, options) {
+        return new ClusterServiceLogsResponse().fromJsonString(jsonString, options);
+    }
+    static equals(a, b) {
+        return protobuf_1.proto3.util.equals(ClusterServiceLogsResponse, a, b);
+    }
+}
+exports.ClusterServiceLogsResponse = ClusterServiceLogsResponse;
+ClusterServiceLogsResponse.runtime = protobuf_1.proto3;
+ClusterServiceLogsResponse.typeName = "admin.v1.ClusterServiceLogsResponse";
+ClusterServiceLogsResponse.fields = protobuf_1.proto3.util.newFieldList(() => [
+    { no: 1, name: "log", kind: "scalar", T: 9 /* ScalarType.STRING */, repeated: true },
+]);
+/**
+ * @generated from message admin.v1.ClusterServiceListResponse
+ */
+class ClusterServiceListResponse extends protobuf_1.Message {
+    constructor(data) {
+        super();
+        /**
+         * @generated from field: repeated api.v1.Cluster clusters = 1;
+         */
+        this.clusters = [];
+        protobuf_1.proto3.util.initPartial(data, this);
+    }
+    static fromBinary(bytes, options) {
+        return new ClusterServiceListResponse().fromBinary(bytes, options);
+    }
+    static fromJson(jsonValue, options) {
+        return new ClusterServiceListResponse().fromJson(jsonValue, options);
+    }
+    static fromJsonString(jsonString, options) {
+        return new ClusterServiceListResponse().fromJsonString(jsonString, options);
+    }
+    static equals(a, b) {
+        return protobuf_1.proto3.util.equals(ClusterServiceListResponse, a, b);
+    }
+}
+exports.ClusterServiceListResponse = ClusterServiceListResponse;
+ClusterServiceListResponse.runtime = protobuf_1.proto3;
+ClusterServiceListResponse.typeName = "admin.v1.ClusterServiceListResponse";
+ClusterServiceListResponse.fields = protobuf_1.proto3.util.newFieldList(() => [
+    { no: 1, name: "clusters", kind: "message", T: cluster_pb_js_1.Cluster, repeated: true },
 ]);
 /**
  * @generated from message admin.v1.ClusterServiceGetCredentialsResponse
@@ -169,33 +323,29 @@ ClusterServiceGetCredentialsResponse.fields = protobuf_1.proto3.util.newFieldLis
     { no: 1, name: "kubeconfig", kind: "scalar", T: 9 /* ScalarType.STRING */ },
 ]);
 /**
- * @generated from message admin.v1.ClusterServiceListResponse
+ * @generated from message admin.v1.ClusterServiceOperateResponse
  */
-class ClusterServiceListResponse extends protobuf_1.Message {
+class ClusterServiceOperateResponse extends protobuf_1.Message {
     constructor(data) {
         super();
-        /**
-         * @generated from field: repeated api.v1.Cluster clusters = 1;
-         */
-        this.clusters = [];
         protobuf_1.proto3.util.initPartial(data, this);
     }
     static fromBinary(bytes, options) {
-        return new ClusterServiceListResponse().fromBinary(bytes, options);
+        return new ClusterServiceOperateResponse().fromBinary(bytes, options);
     }
     static fromJson(jsonValue, options) {
-        return new ClusterServiceListResponse().fromJson(jsonValue, options);
+        return new ClusterServiceOperateResponse().fromJson(jsonValue, options);
     }
     static fromJsonString(jsonString, options) {
-        return new ClusterServiceListResponse().fromJsonString(jsonString, options);
+        return new ClusterServiceOperateResponse().fromJsonString(jsonString, options);
     }
     static equals(a, b) {
-        return protobuf_1.proto3.util.equals(ClusterServiceListResponse, a, b);
+        return protobuf_1.proto3.util.equals(ClusterServiceOperateResponse, a, b);
     }
 }
-exports.ClusterServiceListResponse = ClusterServiceListResponse;
-ClusterServiceListResponse.runtime = protobuf_1.proto3;
-ClusterServiceListResponse.typeName = "admin.v1.ClusterServiceListResponse";
-ClusterServiceListResponse.fields = protobuf_1.proto3.util.newFieldList(() => [
-    { no: 1, name: "clusters", kind: "message", T: cluster_pb_js_1.Cluster, repeated: true },
+exports.ClusterServiceOperateResponse = ClusterServiceOperateResponse;
+ClusterServiceOperateResponse.runtime = protobuf_1.proto3;
+ClusterServiceOperateResponse.typeName = "admin.v1.ClusterServiceOperateResponse";
+ClusterServiceOperateResponse.fields = protobuf_1.proto3.util.newFieldList(() => [
+    { no: 1, name: "cluster", kind: "message", T: cluster_pb_js_1.Cluster },
 ]);

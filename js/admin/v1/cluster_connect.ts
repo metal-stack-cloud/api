@@ -3,7 +3,7 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import { ClusterServiceGetCredentialsRequest, ClusterServiceGetCredentialsResponse, ClusterServiceGetRequest, ClusterServiceGetResponse, ClusterServiceListRequest, ClusterServiceListResponse } from "./cluster_pb.js";
+import { ClusterServiceGetCredentialsRequest, ClusterServiceGetCredentialsResponse, ClusterServiceGetRequest, ClusterServiceGetResponse, ClusterServiceListRequest, ClusterServiceListResponse, ClusterServiceLogsRequest, ClusterServiceLogsResponse, ClusterServiceOperateRequest, ClusterServiceOperateResponse } from "./cluster_pb.js";
 import { MethodKind } from "@bufbuild/protobuf";
 
 /**
@@ -22,6 +22,15 @@ export const ClusterService = {
       kind: MethodKind.Unary,
     },
     /**
+     * @generated from rpc admin.v1.ClusterService.Logs
+     */
+    logs: {
+      name: "Logs",
+      I: ClusterServiceLogsRequest,
+      O: ClusterServiceLogsResponse,
+      kind: MethodKind.Unary,
+    },
+    /**
      * @generated from rpc admin.v1.ClusterService.List
      */
     list: {
@@ -37,6 +46,15 @@ export const ClusterService = {
       name: "GetCredentials",
       I: ClusterServiceGetCredentialsRequest,
       O: ClusterServiceGetCredentialsResponse,
+      kind: MethodKind.Unary,
+    },
+    /**
+     * @generated from rpc admin.v1.ClusterService.Operate
+     */
+    operate: {
+      name: "Operate",
+      I: ClusterServiceOperateRequest,
+      O: ClusterServiceOperateResponse,
       kind: MethodKind.Unary,
     },
   }

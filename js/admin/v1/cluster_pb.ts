@@ -8,6 +8,50 @@ import { Message, proto3 } from "@bufbuild/protobuf";
 import { Cluster } from "../../api/v1/cluster_pb.js";
 
 /**
+ * @generated from enum admin.v1.Operate
+ */
+export enum Operate {
+  /**
+   * @generated from enum value: OPERATE_UNSPECIFIED = 0;
+   */
+  UNSPECIFIED = 0,
+
+  /**
+   * @generated from enum value: OPERATE_RECONCILE = 1;
+   */
+  RECONCILE = 1,
+
+  /**
+   * @generated from enum value: OPERATE_MAINTAIN = 2;
+   */
+  MAINTAIN = 2,
+
+  /**
+   * @generated from enum value: OPERATE_RETRY = 3;
+   */
+  RETRY = 3,
+
+  /**
+   * @generated from enum value: OPERATE_RESTART_KUBELET = 4;
+   */
+  RESTART_KUBELET = 4,
+
+  /**
+   * @generated from enum value: OPERATE_RESTART_CONTAINERD = 5;
+   */
+  RESTART_CONTAINERD = 5,
+}
+// Retrieve enum metadata with: proto3.getEnumType(Operate)
+proto3.util.setEnumType(Operate, "admin.v1.Operate", [
+  { no: 0, name: "OPERATE_UNSPECIFIED" },
+  { no: 1, name: "OPERATE_RECONCILE" },
+  { no: 2, name: "OPERATE_MAINTAIN" },
+  { no: 3, name: "OPERATE_RETRY" },
+  { no: 4, name: "OPERATE_RESTART_KUBELET" },
+  { no: 5, name: "OPERATE_RESTART_CONTAINERD" },
+]);
+
+/**
  * @generated from message admin.v1.ClusterServiceGetRequest
  */
 export class ClusterServiceGetRequest extends Message<ClusterServiceGetRequest> {
@@ -15,11 +59,6 @@ export class ClusterServiceGetRequest extends Message<ClusterServiceGetRequest> 
    * @generated from field: string uuid = 1;
    */
   uuid = "";
-
-  /**
-   * @generated from field: string project = 2;
-   */
-  project = "";
 
   constructor(data?: PartialMessage<ClusterServiceGetRequest>) {
     super();
@@ -30,7 +69,6 @@ export class ClusterServiceGetRequest extends Message<ClusterServiceGetRequest> 
   static readonly typeName = "admin.v1.ClusterServiceGetRequest";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
     { no: 1, name: "uuid", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 2, name: "project", kind: "scalar", T: 9 /* ScalarType.STRING */ },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ClusterServiceGetRequest {
@@ -51,6 +89,80 @@ export class ClusterServiceGetRequest extends Message<ClusterServiceGetRequest> 
 }
 
 /**
+ * @generated from message admin.v1.ClusterServiceLogsRequest
+ */
+export class ClusterServiceLogsRequest extends Message<ClusterServiceLogsRequest> {
+  /**
+   * @generated from field: string uuid = 1;
+   */
+  uuid = "";
+
+  constructor(data?: PartialMessage<ClusterServiceLogsRequest>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "admin.v1.ClusterServiceLogsRequest";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "uuid", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ClusterServiceLogsRequest {
+    return new ClusterServiceLogsRequest().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ClusterServiceLogsRequest {
+    return new ClusterServiceLogsRequest().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ClusterServiceLogsRequest {
+    return new ClusterServiceLogsRequest().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: ClusterServiceLogsRequest | PlainMessage<ClusterServiceLogsRequest> | undefined, b: ClusterServiceLogsRequest | PlainMessage<ClusterServiceLogsRequest> | undefined): boolean {
+    return proto3.util.equals(ClusterServiceLogsRequest, a, b);
+  }
+}
+
+/**
+ * @generated from message admin.v1.ClusterServiceListRequest
+ */
+export class ClusterServiceListRequest extends Message<ClusterServiceListRequest> {
+  /**
+   * @generated from field: optional string project = 1;
+   */
+  project?: string;
+
+  constructor(data?: PartialMessage<ClusterServiceListRequest>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "admin.v1.ClusterServiceListRequest";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "project", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ClusterServiceListRequest {
+    return new ClusterServiceListRequest().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ClusterServiceListRequest {
+    return new ClusterServiceListRequest().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ClusterServiceListRequest {
+    return new ClusterServiceListRequest().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: ClusterServiceListRequest | PlainMessage<ClusterServiceListRequest> | undefined, b: ClusterServiceListRequest | PlainMessage<ClusterServiceListRequest> | undefined): boolean {
+    return proto3.util.equals(ClusterServiceListRequest, a, b);
+  }
+}
+
+/**
  * @generated from message admin.v1.ClusterServiceGetCredentialsRequest
  */
 export class ClusterServiceGetCredentialsRequest extends Message<ClusterServiceGetCredentialsRequest> {
@@ -58,11 +170,6 @@ export class ClusterServiceGetCredentialsRequest extends Message<ClusterServiceG
    * @generated from field: string uuid = 1;
    */
   uuid = "";
-
-  /**
-   * @generated from field: string project = 2;
-   */
-  project = "";
 
   constructor(data?: PartialMessage<ClusterServiceGetCredentialsRequest>) {
     super();
@@ -73,7 +180,6 @@ export class ClusterServiceGetCredentialsRequest extends Message<ClusterServiceG
   static readonly typeName = "admin.v1.ClusterServiceGetCredentialsRequest";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
     { no: 1, name: "uuid", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 2, name: "project", kind: "scalar", T: 9 /* ScalarType.STRING */ },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ClusterServiceGetCredentialsRequest {
@@ -94,39 +200,45 @@ export class ClusterServiceGetCredentialsRequest extends Message<ClusterServiceG
 }
 
 /**
- * @generated from message admin.v1.ClusterServiceListRequest
+ * @generated from message admin.v1.ClusterServiceOperateRequest
  */
-export class ClusterServiceListRequest extends Message<ClusterServiceListRequest> {
+export class ClusterServiceOperateRequest extends Message<ClusterServiceOperateRequest> {
   /**
-   * @generated from field: string project = 2;
+   * @generated from field: string uuid = 1;
    */
-  project = "";
+  uuid = "";
 
-  constructor(data?: PartialMessage<ClusterServiceListRequest>) {
+  /**
+   * @generated from field: admin.v1.Operate operate = 2;
+   */
+  operate = Operate.UNSPECIFIED;
+
+  constructor(data?: PartialMessage<ClusterServiceOperateRequest>) {
     super();
     proto3.util.initPartial(data, this);
   }
 
   static readonly runtime: typeof proto3 = proto3;
-  static readonly typeName = "admin.v1.ClusterServiceListRequest";
+  static readonly typeName = "admin.v1.ClusterServiceOperateRequest";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 2, name: "project", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 1, name: "uuid", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "operate", kind: "enum", T: proto3.getEnumType(Operate) },
   ]);
 
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ClusterServiceListRequest {
-    return new ClusterServiceListRequest().fromBinary(bytes, options);
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ClusterServiceOperateRequest {
+    return new ClusterServiceOperateRequest().fromBinary(bytes, options);
   }
 
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ClusterServiceListRequest {
-    return new ClusterServiceListRequest().fromJson(jsonValue, options);
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ClusterServiceOperateRequest {
+    return new ClusterServiceOperateRequest().fromJson(jsonValue, options);
   }
 
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ClusterServiceListRequest {
-    return new ClusterServiceListRequest().fromJsonString(jsonString, options);
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ClusterServiceOperateRequest {
+    return new ClusterServiceOperateRequest().fromJsonString(jsonString, options);
   }
 
-  static equals(a: ClusterServiceListRequest | PlainMessage<ClusterServiceListRequest> | undefined, b: ClusterServiceListRequest | PlainMessage<ClusterServiceListRequest> | undefined): boolean {
-    return proto3.util.equals(ClusterServiceListRequest, a, b);
+  static equals(a: ClusterServiceOperateRequest | PlainMessage<ClusterServiceOperateRequest> | undefined, b: ClusterServiceOperateRequest | PlainMessage<ClusterServiceOperateRequest> | undefined): boolean {
+    return proto3.util.equals(ClusterServiceOperateRequest, a, b);
   }
 }
 
@@ -168,39 +280,39 @@ export class ClusterServiceGetResponse extends Message<ClusterServiceGetResponse
 }
 
 /**
- * @generated from message admin.v1.ClusterServiceGetCredentialsResponse
+ * @generated from message admin.v1.ClusterServiceLogsResponse
  */
-export class ClusterServiceGetCredentialsResponse extends Message<ClusterServiceGetCredentialsResponse> {
+export class ClusterServiceLogsResponse extends Message<ClusterServiceLogsResponse> {
   /**
-   * @generated from field: string kubeconfig = 1;
+   * @generated from field: repeated string log = 1;
    */
-  kubeconfig = "";
+  log: string[] = [];
 
-  constructor(data?: PartialMessage<ClusterServiceGetCredentialsResponse>) {
+  constructor(data?: PartialMessage<ClusterServiceLogsResponse>) {
     super();
     proto3.util.initPartial(data, this);
   }
 
   static readonly runtime: typeof proto3 = proto3;
-  static readonly typeName = "admin.v1.ClusterServiceGetCredentialsResponse";
+  static readonly typeName = "admin.v1.ClusterServiceLogsResponse";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "kubeconfig", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 1, name: "log", kind: "scalar", T: 9 /* ScalarType.STRING */, repeated: true },
   ]);
 
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ClusterServiceGetCredentialsResponse {
-    return new ClusterServiceGetCredentialsResponse().fromBinary(bytes, options);
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ClusterServiceLogsResponse {
+    return new ClusterServiceLogsResponse().fromBinary(bytes, options);
   }
 
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ClusterServiceGetCredentialsResponse {
-    return new ClusterServiceGetCredentialsResponse().fromJson(jsonValue, options);
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ClusterServiceLogsResponse {
+    return new ClusterServiceLogsResponse().fromJson(jsonValue, options);
   }
 
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ClusterServiceGetCredentialsResponse {
-    return new ClusterServiceGetCredentialsResponse().fromJsonString(jsonString, options);
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ClusterServiceLogsResponse {
+    return new ClusterServiceLogsResponse().fromJsonString(jsonString, options);
   }
 
-  static equals(a: ClusterServiceGetCredentialsResponse | PlainMessage<ClusterServiceGetCredentialsResponse> | undefined, b: ClusterServiceGetCredentialsResponse | PlainMessage<ClusterServiceGetCredentialsResponse> | undefined): boolean {
-    return proto3.util.equals(ClusterServiceGetCredentialsResponse, a, b);
+  static equals(a: ClusterServiceLogsResponse | PlainMessage<ClusterServiceLogsResponse> | undefined, b: ClusterServiceLogsResponse | PlainMessage<ClusterServiceLogsResponse> | undefined): boolean {
+    return proto3.util.equals(ClusterServiceLogsResponse, a, b);
   }
 }
 
@@ -238,6 +350,80 @@ export class ClusterServiceListResponse extends Message<ClusterServiceListRespon
 
   static equals(a: ClusterServiceListResponse | PlainMessage<ClusterServiceListResponse> | undefined, b: ClusterServiceListResponse | PlainMessage<ClusterServiceListResponse> | undefined): boolean {
     return proto3.util.equals(ClusterServiceListResponse, a, b);
+  }
+}
+
+/**
+ * @generated from message admin.v1.ClusterServiceGetCredentialsResponse
+ */
+export class ClusterServiceGetCredentialsResponse extends Message<ClusterServiceGetCredentialsResponse> {
+  /**
+   * @generated from field: string kubeconfig = 1;
+   */
+  kubeconfig = "";
+
+  constructor(data?: PartialMessage<ClusterServiceGetCredentialsResponse>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "admin.v1.ClusterServiceGetCredentialsResponse";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "kubeconfig", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ClusterServiceGetCredentialsResponse {
+    return new ClusterServiceGetCredentialsResponse().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ClusterServiceGetCredentialsResponse {
+    return new ClusterServiceGetCredentialsResponse().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ClusterServiceGetCredentialsResponse {
+    return new ClusterServiceGetCredentialsResponse().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: ClusterServiceGetCredentialsResponse | PlainMessage<ClusterServiceGetCredentialsResponse> | undefined, b: ClusterServiceGetCredentialsResponse | PlainMessage<ClusterServiceGetCredentialsResponse> | undefined): boolean {
+    return proto3.util.equals(ClusterServiceGetCredentialsResponse, a, b);
+  }
+}
+
+/**
+ * @generated from message admin.v1.ClusterServiceOperateResponse
+ */
+export class ClusterServiceOperateResponse extends Message<ClusterServiceOperateResponse> {
+  /**
+   * @generated from field: api.v1.Cluster cluster = 1;
+   */
+  cluster?: Cluster;
+
+  constructor(data?: PartialMessage<ClusterServiceOperateResponse>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "admin.v1.ClusterServiceOperateResponse";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "cluster", kind: "message", T: Cluster },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ClusterServiceOperateResponse {
+    return new ClusterServiceOperateResponse().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ClusterServiceOperateResponse {
+    return new ClusterServiceOperateResponse().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ClusterServiceOperateResponse {
+    return new ClusterServiceOperateResponse().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: ClusterServiceOperateResponse | PlainMessage<ClusterServiceOperateResponse> | undefined, b: ClusterServiceOperateResponse | PlainMessage<ClusterServiceOperateResponse> | undefined): boolean {
+    return proto3.util.equals(ClusterServiceOperateResponse, a, b);
   }
 }
 

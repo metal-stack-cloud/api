@@ -72,17 +72,6 @@ func (m *ClusterServiceGetRequest) validate(all bool) error {
 		errors = append(errors, err)
 	}
 
-	if l := utf8.RuneCountInString(m.GetProject()); l < 2 || l > 128 {
-		err := ClusterServiceGetRequestValidationError{
-			field:  "Project",
-			reason: "value length must be between 2 and 128 runes, inclusive",
-		}
-		if !all {
-			return err
-		}
-		errors = append(errors, err)
-	}
-
 	if len(errors) > 0 {
 		return ClusterServiceGetRequestMultiError(errors)
 	}
@@ -171,6 +160,234 @@ var _ interface {
 	ErrorName() string
 } = ClusterServiceGetRequestValidationError{}
 
+// Validate checks the field values on ClusterServiceLogsRequest with the rules
+// defined in the proto definition for this message. If any rules are
+// violated, the first error encountered is returned, or nil if there are no violations.
+func (m *ClusterServiceLogsRequest) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on ClusterServiceLogsRequest with the
+// rules defined in the proto definition for this message. If any rules are
+// violated, the result is a list of violation errors wrapped in
+// ClusterServiceLogsRequestMultiError, or nil if none found.
+func (m *ClusterServiceLogsRequest) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *ClusterServiceLogsRequest) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	if err := m._validateUuid(m.GetUuid()); err != nil {
+		err = ClusterServiceLogsRequestValidationError{
+			field:  "Uuid",
+			reason: "value must be a valid UUID",
+			cause:  err,
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
+	if len(errors) > 0 {
+		return ClusterServiceLogsRequestMultiError(errors)
+	}
+
+	return nil
+}
+
+func (m *ClusterServiceLogsRequest) _validateUuid(uuid string) error {
+	if matched := _cluster_uuidPattern.MatchString(uuid); !matched {
+		return errors.New("invalid uuid format")
+	}
+
+	return nil
+}
+
+// ClusterServiceLogsRequestMultiError is an error wrapping multiple validation
+// errors returned by ClusterServiceLogsRequest.ValidateAll() if the
+// designated constraints aren't met.
+type ClusterServiceLogsRequestMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m ClusterServiceLogsRequestMultiError) Error() string {
+	var msgs []string
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m ClusterServiceLogsRequestMultiError) AllErrors() []error { return m }
+
+// ClusterServiceLogsRequestValidationError is the validation error returned by
+// ClusterServiceLogsRequest.Validate if the designated constraints aren't met.
+type ClusterServiceLogsRequestValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e ClusterServiceLogsRequestValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e ClusterServiceLogsRequestValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e ClusterServiceLogsRequestValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e ClusterServiceLogsRequestValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e ClusterServiceLogsRequestValidationError) ErrorName() string {
+	return "ClusterServiceLogsRequestValidationError"
+}
+
+// Error satisfies the builtin error interface
+func (e ClusterServiceLogsRequestValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sClusterServiceLogsRequest.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = ClusterServiceLogsRequestValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = ClusterServiceLogsRequestValidationError{}
+
+// Validate checks the field values on ClusterServiceListRequest with the rules
+// defined in the proto definition for this message. If any rules are
+// violated, the first error encountered is returned, or nil if there are no violations.
+func (m *ClusterServiceListRequest) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on ClusterServiceListRequest with the
+// rules defined in the proto definition for this message. If any rules are
+// violated, the result is a list of violation errors wrapped in
+// ClusterServiceListRequestMultiError, or nil if none found.
+func (m *ClusterServiceListRequest) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *ClusterServiceListRequest) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	if m.Project != nil {
+		// no validation rules for Project
+	}
+
+	if len(errors) > 0 {
+		return ClusterServiceListRequestMultiError(errors)
+	}
+
+	return nil
+}
+
+// ClusterServiceListRequestMultiError is an error wrapping multiple validation
+// errors returned by ClusterServiceListRequest.ValidateAll() if the
+// designated constraints aren't met.
+type ClusterServiceListRequestMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m ClusterServiceListRequestMultiError) Error() string {
+	var msgs []string
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m ClusterServiceListRequestMultiError) AllErrors() []error { return m }
+
+// ClusterServiceListRequestValidationError is the validation error returned by
+// ClusterServiceListRequest.Validate if the designated constraints aren't met.
+type ClusterServiceListRequestValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e ClusterServiceListRequestValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e ClusterServiceListRequestValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e ClusterServiceListRequestValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e ClusterServiceListRequestValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e ClusterServiceListRequestValidationError) ErrorName() string {
+	return "ClusterServiceListRequestValidationError"
+}
+
+// Error satisfies the builtin error interface
+func (e ClusterServiceListRequestValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sClusterServiceListRequest.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = ClusterServiceListRequestValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = ClusterServiceListRequestValidationError{}
+
 // Validate checks the field values on ClusterServiceGetCredentialsRequest with
 // the rules defined in the proto definition for this message. If any rules
 // are violated, the first error encountered is returned, or nil if there are
@@ -199,17 +416,6 @@ func (m *ClusterServiceGetCredentialsRequest) validate(all bool) error {
 			field:  "Uuid",
 			reason: "value must be a valid UUID",
 			cause:  err,
-		}
-		if !all {
-			return err
-		}
-		errors = append(errors, err)
-	}
-
-	if l := utf8.RuneCountInString(m.GetProject()); l < 2 || l > 128 {
-		err := ClusterServiceGetCredentialsRequestValidationError{
-			field:  "Project",
-			reason: "value length must be between 2 and 128 runes, inclusive",
 		}
 		if !all {
 			return err
@@ -307,32 +513,33 @@ var _ interface {
 	ErrorName() string
 } = ClusterServiceGetCredentialsRequestValidationError{}
 
-// Validate checks the field values on ClusterServiceListRequest with the rules
-// defined in the proto definition for this message. If any rules are
+// Validate checks the field values on ClusterServiceOperateRequest with the
+// rules defined in the proto definition for this message. If any rules are
 // violated, the first error encountered is returned, or nil if there are no violations.
-func (m *ClusterServiceListRequest) Validate() error {
+func (m *ClusterServiceOperateRequest) Validate() error {
 	return m.validate(false)
 }
 
-// ValidateAll checks the field values on ClusterServiceListRequest with the
+// ValidateAll checks the field values on ClusterServiceOperateRequest with the
 // rules defined in the proto definition for this message. If any rules are
 // violated, the result is a list of violation errors wrapped in
-// ClusterServiceListRequestMultiError, or nil if none found.
-func (m *ClusterServiceListRequest) ValidateAll() error {
+// ClusterServiceOperateRequestMultiError, or nil if none found.
+func (m *ClusterServiceOperateRequest) ValidateAll() error {
 	return m.validate(true)
 }
 
-func (m *ClusterServiceListRequest) validate(all bool) error {
+func (m *ClusterServiceOperateRequest) validate(all bool) error {
 	if m == nil {
 		return nil
 	}
 
 	var errors []error
 
-	if l := utf8.RuneCountInString(m.GetProject()); l < 2 || l > 128 {
-		err := ClusterServiceListRequestValidationError{
-			field:  "Project",
-			reason: "value length must be between 2 and 128 runes, inclusive",
+	if err := m._validateUuid(m.GetUuid()); err != nil {
+		err = ClusterServiceOperateRequestValidationError{
+			field:  "Uuid",
+			reason: "value must be a valid UUID",
+			cause:  err,
 		}
 		if !all {
 			return err
@@ -340,20 +547,30 @@ func (m *ClusterServiceListRequest) validate(all bool) error {
 		errors = append(errors, err)
 	}
 
+	// no validation rules for Operate
+
 	if len(errors) > 0 {
-		return ClusterServiceListRequestMultiError(errors)
+		return ClusterServiceOperateRequestMultiError(errors)
 	}
 
 	return nil
 }
 
-// ClusterServiceListRequestMultiError is an error wrapping multiple validation
-// errors returned by ClusterServiceListRequest.ValidateAll() if the
-// designated constraints aren't met.
-type ClusterServiceListRequestMultiError []error
+func (m *ClusterServiceOperateRequest) _validateUuid(uuid string) error {
+	if matched := _cluster_uuidPattern.MatchString(uuid); !matched {
+		return errors.New("invalid uuid format")
+	}
+
+	return nil
+}
+
+// ClusterServiceOperateRequestMultiError is an error wrapping multiple
+// validation errors returned by ClusterServiceOperateRequest.ValidateAll() if
+// the designated constraints aren't met.
+type ClusterServiceOperateRequestMultiError []error
 
 // Error returns a concatenation of all the error messages it wraps.
-func (m ClusterServiceListRequestMultiError) Error() string {
+func (m ClusterServiceOperateRequestMultiError) Error() string {
 	var msgs []string
 	for _, err := range m {
 		msgs = append(msgs, err.Error())
@@ -362,11 +579,12 @@ func (m ClusterServiceListRequestMultiError) Error() string {
 }
 
 // AllErrors returns a list of validation violation errors.
-func (m ClusterServiceListRequestMultiError) AllErrors() []error { return m }
+func (m ClusterServiceOperateRequestMultiError) AllErrors() []error { return m }
 
-// ClusterServiceListRequestValidationError is the validation error returned by
-// ClusterServiceListRequest.Validate if the designated constraints aren't met.
-type ClusterServiceListRequestValidationError struct {
+// ClusterServiceOperateRequestValidationError is the validation error returned
+// by ClusterServiceOperateRequest.Validate if the designated constraints
+// aren't met.
+type ClusterServiceOperateRequestValidationError struct {
 	field  string
 	reason string
 	cause  error
@@ -374,24 +592,24 @@ type ClusterServiceListRequestValidationError struct {
 }
 
 // Field function returns field value.
-func (e ClusterServiceListRequestValidationError) Field() string { return e.field }
+func (e ClusterServiceOperateRequestValidationError) Field() string { return e.field }
 
 // Reason function returns reason value.
-func (e ClusterServiceListRequestValidationError) Reason() string { return e.reason }
+func (e ClusterServiceOperateRequestValidationError) Reason() string { return e.reason }
 
 // Cause function returns cause value.
-func (e ClusterServiceListRequestValidationError) Cause() error { return e.cause }
+func (e ClusterServiceOperateRequestValidationError) Cause() error { return e.cause }
 
 // Key function returns key value.
-func (e ClusterServiceListRequestValidationError) Key() bool { return e.key }
+func (e ClusterServiceOperateRequestValidationError) Key() bool { return e.key }
 
 // ErrorName returns error name.
-func (e ClusterServiceListRequestValidationError) ErrorName() string {
-	return "ClusterServiceListRequestValidationError"
+func (e ClusterServiceOperateRequestValidationError) ErrorName() string {
+	return "ClusterServiceOperateRequestValidationError"
 }
 
 // Error satisfies the builtin error interface
-func (e ClusterServiceListRequestValidationError) Error() string {
+func (e ClusterServiceOperateRequestValidationError) Error() string {
 	cause := ""
 	if e.cause != nil {
 		cause = fmt.Sprintf(" | caused by: %v", e.cause)
@@ -403,14 +621,14 @@ func (e ClusterServiceListRequestValidationError) Error() string {
 	}
 
 	return fmt.Sprintf(
-		"invalid %sClusterServiceListRequest.%s: %s%s",
+		"invalid %sClusterServiceOperateRequest.%s: %s%s",
 		key,
 		e.field,
 		e.reason,
 		cause)
 }
 
-var _ error = ClusterServiceListRequestValidationError{}
+var _ error = ClusterServiceOperateRequestValidationError{}
 
 var _ interface {
 	Field() string
@@ -418,7 +636,7 @@ var _ interface {
 	Key() bool
 	Cause() error
 	ErrorName() string
-} = ClusterServiceListRequestValidationError{}
+} = ClusterServiceOperateRequestValidationError{}
 
 // Validate checks the field values on ClusterServiceGetResponse with the rules
 // defined in the proto definition for this message. If any rules are
@@ -551,46 +769,42 @@ var _ interface {
 	ErrorName() string
 } = ClusterServiceGetResponseValidationError{}
 
-// Validate checks the field values on ClusterServiceGetCredentialsResponse
-// with the rules defined in the proto definition for this message. If any
-// rules are violated, the first error encountered is returned, or nil if
-// there are no violations.
-func (m *ClusterServiceGetCredentialsResponse) Validate() error {
+// Validate checks the field values on ClusterServiceLogsResponse with the
+// rules defined in the proto definition for this message. If any rules are
+// violated, the first error encountered is returned, or nil if there are no violations.
+func (m *ClusterServiceLogsResponse) Validate() error {
 	return m.validate(false)
 }
 
-// ValidateAll checks the field values on ClusterServiceGetCredentialsResponse
-// with the rules defined in the proto definition for this message. If any
-// rules are violated, the result is a list of violation errors wrapped in
-// ClusterServiceGetCredentialsResponseMultiError, or nil if none found.
-func (m *ClusterServiceGetCredentialsResponse) ValidateAll() error {
+// ValidateAll checks the field values on ClusterServiceLogsResponse with the
+// rules defined in the proto definition for this message. If any rules are
+// violated, the result is a list of violation errors wrapped in
+// ClusterServiceLogsResponseMultiError, or nil if none found.
+func (m *ClusterServiceLogsResponse) ValidateAll() error {
 	return m.validate(true)
 }
 
-func (m *ClusterServiceGetCredentialsResponse) validate(all bool) error {
+func (m *ClusterServiceLogsResponse) validate(all bool) error {
 	if m == nil {
 		return nil
 	}
 
 	var errors []error
 
-	// no validation rules for Kubeconfig
-
 	if len(errors) > 0 {
-		return ClusterServiceGetCredentialsResponseMultiError(errors)
+		return ClusterServiceLogsResponseMultiError(errors)
 	}
 
 	return nil
 }
 
-// ClusterServiceGetCredentialsResponseMultiError is an error wrapping multiple
-// validation errors returned by
-// ClusterServiceGetCredentialsResponse.ValidateAll() if the designated
-// constraints aren't met.
-type ClusterServiceGetCredentialsResponseMultiError []error
+// ClusterServiceLogsResponseMultiError is an error wrapping multiple
+// validation errors returned by ClusterServiceLogsResponse.ValidateAll() if
+// the designated constraints aren't met.
+type ClusterServiceLogsResponseMultiError []error
 
 // Error returns a concatenation of all the error messages it wraps.
-func (m ClusterServiceGetCredentialsResponseMultiError) Error() string {
+func (m ClusterServiceLogsResponseMultiError) Error() string {
 	var msgs []string
 	for _, err := range m {
 		msgs = append(msgs, err.Error())
@@ -599,12 +813,11 @@ func (m ClusterServiceGetCredentialsResponseMultiError) Error() string {
 }
 
 // AllErrors returns a list of validation violation errors.
-func (m ClusterServiceGetCredentialsResponseMultiError) AllErrors() []error { return m }
+func (m ClusterServiceLogsResponseMultiError) AllErrors() []error { return m }
 
-// ClusterServiceGetCredentialsResponseValidationError is the validation error
-// returned by ClusterServiceGetCredentialsResponse.Validate if the designated
-// constraints aren't met.
-type ClusterServiceGetCredentialsResponseValidationError struct {
+// ClusterServiceLogsResponseValidationError is the validation error returned
+// by ClusterServiceLogsResponse.Validate if the designated constraints aren't met.
+type ClusterServiceLogsResponseValidationError struct {
 	field  string
 	reason string
 	cause  error
@@ -612,24 +825,24 @@ type ClusterServiceGetCredentialsResponseValidationError struct {
 }
 
 // Field function returns field value.
-func (e ClusterServiceGetCredentialsResponseValidationError) Field() string { return e.field }
+func (e ClusterServiceLogsResponseValidationError) Field() string { return e.field }
 
 // Reason function returns reason value.
-func (e ClusterServiceGetCredentialsResponseValidationError) Reason() string { return e.reason }
+func (e ClusterServiceLogsResponseValidationError) Reason() string { return e.reason }
 
 // Cause function returns cause value.
-func (e ClusterServiceGetCredentialsResponseValidationError) Cause() error { return e.cause }
+func (e ClusterServiceLogsResponseValidationError) Cause() error { return e.cause }
 
 // Key function returns key value.
-func (e ClusterServiceGetCredentialsResponseValidationError) Key() bool { return e.key }
+func (e ClusterServiceLogsResponseValidationError) Key() bool { return e.key }
 
 // ErrorName returns error name.
-func (e ClusterServiceGetCredentialsResponseValidationError) ErrorName() string {
-	return "ClusterServiceGetCredentialsResponseValidationError"
+func (e ClusterServiceLogsResponseValidationError) ErrorName() string {
+	return "ClusterServiceLogsResponseValidationError"
 }
 
 // Error satisfies the builtin error interface
-func (e ClusterServiceGetCredentialsResponseValidationError) Error() string {
+func (e ClusterServiceLogsResponseValidationError) Error() string {
 	cause := ""
 	if e.cause != nil {
 		cause = fmt.Sprintf(" | caused by: %v", e.cause)
@@ -641,14 +854,14 @@ func (e ClusterServiceGetCredentialsResponseValidationError) Error() string {
 	}
 
 	return fmt.Sprintf(
-		"invalid %sClusterServiceGetCredentialsResponse.%s: %s%s",
+		"invalid %sClusterServiceLogsResponse.%s: %s%s",
 		key,
 		e.field,
 		e.reason,
 		cause)
 }
 
-var _ error = ClusterServiceGetCredentialsResponseValidationError{}
+var _ error = ClusterServiceLogsResponseValidationError{}
 
 var _ interface {
 	Field() string
@@ -656,7 +869,7 @@ var _ interface {
 	Key() bool
 	Cause() error
 	ErrorName() string
-} = ClusterServiceGetCredentialsResponseValidationError{}
+} = ClusterServiceLogsResponseValidationError{}
 
 // Validate checks the field values on ClusterServiceListResponse with the
 // rules defined in the proto definition for this message. If any rules are
@@ -793,3 +1006,242 @@ var _ interface {
 	Cause() error
 	ErrorName() string
 } = ClusterServiceListResponseValidationError{}
+
+// Validate checks the field values on ClusterServiceGetCredentialsResponse
+// with the rules defined in the proto definition for this message. If any
+// rules are violated, the first error encountered is returned, or nil if
+// there are no violations.
+func (m *ClusterServiceGetCredentialsResponse) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on ClusterServiceGetCredentialsResponse
+// with the rules defined in the proto definition for this message. If any
+// rules are violated, the result is a list of violation errors wrapped in
+// ClusterServiceGetCredentialsResponseMultiError, or nil if none found.
+func (m *ClusterServiceGetCredentialsResponse) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *ClusterServiceGetCredentialsResponse) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	// no validation rules for Kubeconfig
+
+	if len(errors) > 0 {
+		return ClusterServiceGetCredentialsResponseMultiError(errors)
+	}
+
+	return nil
+}
+
+// ClusterServiceGetCredentialsResponseMultiError is an error wrapping multiple
+// validation errors returned by
+// ClusterServiceGetCredentialsResponse.ValidateAll() if the designated
+// constraints aren't met.
+type ClusterServiceGetCredentialsResponseMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m ClusterServiceGetCredentialsResponseMultiError) Error() string {
+	var msgs []string
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m ClusterServiceGetCredentialsResponseMultiError) AllErrors() []error { return m }
+
+// ClusterServiceGetCredentialsResponseValidationError is the validation error
+// returned by ClusterServiceGetCredentialsResponse.Validate if the designated
+// constraints aren't met.
+type ClusterServiceGetCredentialsResponseValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e ClusterServiceGetCredentialsResponseValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e ClusterServiceGetCredentialsResponseValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e ClusterServiceGetCredentialsResponseValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e ClusterServiceGetCredentialsResponseValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e ClusterServiceGetCredentialsResponseValidationError) ErrorName() string {
+	return "ClusterServiceGetCredentialsResponseValidationError"
+}
+
+// Error satisfies the builtin error interface
+func (e ClusterServiceGetCredentialsResponseValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sClusterServiceGetCredentialsResponse.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = ClusterServiceGetCredentialsResponseValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = ClusterServiceGetCredentialsResponseValidationError{}
+
+// Validate checks the field values on ClusterServiceOperateResponse with the
+// rules defined in the proto definition for this message. If any rules are
+// violated, the first error encountered is returned, or nil if there are no violations.
+func (m *ClusterServiceOperateResponse) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on ClusterServiceOperateResponse with
+// the rules defined in the proto definition for this message. If any rules
+// are violated, the result is a list of violation errors wrapped in
+// ClusterServiceOperateResponseMultiError, or nil if none found.
+func (m *ClusterServiceOperateResponse) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *ClusterServiceOperateResponse) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	if all {
+		switch v := interface{}(m.GetCluster()).(type) {
+		case interface{ ValidateAll() error }:
+			if err := v.ValidateAll(); err != nil {
+				errors = append(errors, ClusterServiceOperateResponseValidationError{
+					field:  "Cluster",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		case interface{ Validate() error }:
+			if err := v.Validate(); err != nil {
+				errors = append(errors, ClusterServiceOperateResponseValidationError{
+					field:  "Cluster",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		}
+	} else if v, ok := interface{}(m.GetCluster()).(interface{ Validate() error }); ok {
+		if err := v.Validate(); err != nil {
+			return ClusterServiceOperateResponseValidationError{
+				field:  "Cluster",
+				reason: "embedded message failed validation",
+				cause:  err,
+			}
+		}
+	}
+
+	if len(errors) > 0 {
+		return ClusterServiceOperateResponseMultiError(errors)
+	}
+
+	return nil
+}
+
+// ClusterServiceOperateResponseMultiError is an error wrapping multiple
+// validation errors returned by ClusterServiceOperateResponse.ValidateAll()
+// if the designated constraints aren't met.
+type ClusterServiceOperateResponseMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m ClusterServiceOperateResponseMultiError) Error() string {
+	var msgs []string
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m ClusterServiceOperateResponseMultiError) AllErrors() []error { return m }
+
+// ClusterServiceOperateResponseValidationError is the validation error
+// returned by ClusterServiceOperateResponse.Validate if the designated
+// constraints aren't met.
+type ClusterServiceOperateResponseValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e ClusterServiceOperateResponseValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e ClusterServiceOperateResponseValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e ClusterServiceOperateResponseValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e ClusterServiceOperateResponseValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e ClusterServiceOperateResponseValidationError) ErrorName() string {
+	return "ClusterServiceOperateResponseValidationError"
+}
+
+// Error satisfies the builtin error interface
+func (e ClusterServiceOperateResponseValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sClusterServiceOperateResponse.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = ClusterServiceOperateResponseValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = ClusterServiceOperateResponseValidationError{}
