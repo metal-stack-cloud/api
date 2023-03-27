@@ -5961,7 +5961,11 @@
                   },
                   {
                     "name": "string.max_len",
-                    "value": 20
+                    "value": 12
+                  },
+                  {
+                    "name": "string.hostname",
+                    "value": true
                   }
                 ]
               }
