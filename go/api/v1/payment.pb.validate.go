@@ -126,10 +126,6 @@ func (m *PaymentCustomer) validate(all bool) error {
 		}
 	}
 
-	// no validation rules for Vat
-
-	// no validation rules for PhoneNumber
-
 	if m.Name != nil {
 		// no validation rules for Name
 	}
@@ -206,6 +202,14 @@ func (m *PaymentCustomer) validate(all bool) error {
 			}
 		}
 
+	}
+
+	if m.Vat != nil {
+		// no validation rules for Vat
+	}
+
+	if m.PhoneNumber != nil {
+		// no validation rules for PhoneNumber
 	}
 
 	if len(errors) > 0 {

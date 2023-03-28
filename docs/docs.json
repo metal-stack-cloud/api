@@ -788,25 +788,25 @@
             {
               "name": "vat",
               "description": "",
-              "label": "",
+              "label": "optional",
               "type": "string",
               "longType": "string",
               "fullType": "string",
               "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
+              "isoneof": true,
+              "oneofdecl": "_vat",
               "defaultValue": ""
             },
             {
               "name": "phone_number",
               "description": "",
-              "label": "",
+              "label": "optional",
               "type": "string",
               "longType": "string",
               "fullType": "string",
               "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
+              "isoneof": true,
+              "oneofdecl": "_phone_number",
               "defaultValue": ""
             }
           ]

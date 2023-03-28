@@ -61,14 +61,14 @@ export class PaymentCustomer extends Message<PaymentCustomer> {
   coupon?: Coupon;
 
   /**
-   * @generated from field: string vat = 11;
+   * @generated from field: optional string vat = 11;
    */
-  vat = "";
+  vat?: string;
 
   /**
-   * @generated from field: string phone_number = 12;
+   * @generated from field: optional string phone_number = 12;
    */
-  phoneNumber = "";
+  phoneNumber?: string;
 
   constructor(data?: PartialMessage<PaymentCustomer>) {
     super();
@@ -88,8 +88,8 @@ export class PaymentCustomer extends Message<PaymentCustomer> {
     { no: 8, name: "prices", kind: "message", T: Price, repeated: true },
     { no: 9, name: "address", kind: "message", T: Address },
     { no: 10, name: "coupon", kind: "message", T: Coupon, opt: true },
-    { no: 11, name: "vat", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 12, name: "phone_number", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 11, name: "vat", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
+    { no: 12, name: "phone_number", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): PaymentCustomer {

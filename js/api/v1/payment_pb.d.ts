@@ -45,13 +45,13 @@ export declare class PaymentCustomer extends Message<PaymentCustomer> {
      */
     coupon?: Coupon;
     /**
-     * @generated from field: string vat = 11;
+     * @generated from field: optional string vat = 11;
      */
-    vat: string;
+    vat?: string;
     /**
-     * @generated from field: string phone_number = 12;
+     * @generated from field: optional string phone_number = 12;
      */
-    phoneNumber: string;
+    phoneNumber?: string;
     constructor(data?: PartialMessage<PaymentCustomer>);
     static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.PaymentCustomer";
