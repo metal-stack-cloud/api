@@ -56,7 +56,6 @@ class User extends protobuf_1.Message {
         return protobuf_1.proto3.util.equals(User, a, b);
     }
 }
-exports.User = User;
 User.runtime = protobuf_1.proto3;
 User.typeName = "api.v1.User";
 User.fields = protobuf_1.proto3.util.newFieldList(() => [
@@ -67,6 +66,7 @@ User.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 6, name: "oauth_provider", kind: "enum", T: protobuf_1.proto3.getEnumType(common_pb_js_1.OAuthProvider) },
     { no: 7, name: "organizations", kind: "message", T: Organization, repeated: true },
 ]);
+exports.User = User;
 /**
  * @generated from message api.v1.Organization
  */
@@ -120,7 +120,6 @@ class Organization extends protobuf_1.Message {
         return protobuf_1.proto3.util.equals(Organization, a, b);
     }
 }
-exports.Organization = Organization;
 Organization.runtime = protobuf_1.proto3;
 Organization.typeName = "api.v1.Organization";
 Organization.fields = protobuf_1.proto3.util.newFieldList(() => [
@@ -133,6 +132,7 @@ Organization.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 7, name: "role", kind: "enum", T: protobuf_1.proto3.getEnumType(common_pb_js_1.Role) },
     { no: 8, name: "teams", kind: "message", T: Team, repeated: true },
 ]);
+exports.Organization = Organization;
 /**
  * @generated from message api.v1.Team
  */
@@ -174,7 +174,6 @@ class Team extends protobuf_1.Message {
         return protobuf_1.proto3.util.equals(Team, a, b);
     }
 }
-exports.Team = Team;
 Team.runtime = protobuf_1.proto3;
 Team.typeName = "api.v1.Team";
 Team.fields = protobuf_1.proto3.util.newFieldList(() => [
@@ -184,3 +183,4 @@ Team.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 4, name: "role", kind: "enum", T: protobuf_1.proto3.getEnumType(common_pb_js_1.Role) },
     { no: 5, name: "project_id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
 ]);
+exports.Team = Team;

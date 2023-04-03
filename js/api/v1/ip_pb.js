@@ -85,7 +85,6 @@ class IP extends protobuf_1.Message {
         return protobuf_1.proto3.util.equals(IP, a, b);
     }
 }
-exports.IP = IP;
 IP.runtime = protobuf_1.proto3;
 IP.typeName = "api.v1.IP";
 IP.fields = protobuf_1.proto3.util.newFieldList(() => [
@@ -101,6 +100,7 @@ IP.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 11, name: "updated_at", kind: "message", T: protobuf_1.Timestamp },
     { no: 12, name: "deleted_at", kind: "message", T: protobuf_1.Timestamp },
 ]);
+exports.IP = IP;
 /**
  * Requests
  *
@@ -132,13 +132,13 @@ class IPServiceGetRequest extends protobuf_1.Message {
         return protobuf_1.proto3.util.equals(IPServiceGetRequest, a, b);
     }
 }
-exports.IPServiceGetRequest = IPServiceGetRequest;
 IPServiceGetRequest.runtime = protobuf_1.proto3;
 IPServiceGetRequest.typeName = "api.v1.IPServiceGetRequest";
 IPServiceGetRequest.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 1, name: "uuid", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 2, name: "project", kind: "scalar", T: 9 /* ScalarType.STRING */ },
 ]);
+exports.IPServiceGetRequest = IPServiceGetRequest;
 /**
  * @generated from message api.v1.IPServiceAllocateRequest
  */
@@ -180,7 +180,6 @@ class IPServiceAllocateRequest extends protobuf_1.Message {
         return protobuf_1.proto3.util.equals(IPServiceAllocateRequest, a, b);
     }
 }
-exports.IPServiceAllocateRequest = IPServiceAllocateRequest;
 IPServiceAllocateRequest.runtime = protobuf_1.proto3;
 IPServiceAllocateRequest.typeName = "api.v1.IPServiceAllocateRequest";
 IPServiceAllocateRequest.fields = protobuf_1.proto3.util.newFieldList(() => [
@@ -190,6 +189,7 @@ IPServiceAllocateRequest.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 8, name: "tags", kind: "scalar", T: 9 /* ScalarType.STRING */, repeated: true },
     { no: 9, name: "static", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
 ]);
+exports.IPServiceAllocateRequest = IPServiceAllocateRequest;
 /**
  * @generated from message api.v1.IPServiceUpdateRequest
  */
@@ -215,13 +215,13 @@ class IPServiceUpdateRequest extends protobuf_1.Message {
         return protobuf_1.proto3.util.equals(IPServiceUpdateRequest, a, b);
     }
 }
-exports.IPServiceUpdateRequest = IPServiceUpdateRequest;
 IPServiceUpdateRequest.runtime = protobuf_1.proto3;
 IPServiceUpdateRequest.typeName = "api.v1.IPServiceUpdateRequest";
 IPServiceUpdateRequest.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 1, name: "project", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 2, name: "ip", kind: "message", T: IP },
 ]);
+exports.IPServiceUpdateRequest = IPServiceUpdateRequest;
 /**
  * @generated from message api.v1.IPServiceListRequest
  */
@@ -247,12 +247,12 @@ class IPServiceListRequest extends protobuf_1.Message {
         return protobuf_1.proto3.util.equals(IPServiceListRequest, a, b);
     }
 }
-exports.IPServiceListRequest = IPServiceListRequest;
 IPServiceListRequest.runtime = protobuf_1.proto3;
 IPServiceListRequest.typeName = "api.v1.IPServiceListRequest";
 IPServiceListRequest.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 2, name: "project", kind: "scalar", T: 9 /* ScalarType.STRING */ },
 ]);
+exports.IPServiceListRequest = IPServiceListRequest;
 /**
  * @generated from message api.v1.IPServiceDeleteRequest
  */
@@ -282,13 +282,13 @@ class IPServiceDeleteRequest extends protobuf_1.Message {
         return protobuf_1.proto3.util.equals(IPServiceDeleteRequest, a, b);
     }
 }
-exports.IPServiceDeleteRequest = IPServiceDeleteRequest;
 IPServiceDeleteRequest.runtime = protobuf_1.proto3;
 IPServiceDeleteRequest.typeName = "api.v1.IPServiceDeleteRequest";
 IPServiceDeleteRequest.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 1, name: "uuid", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 2, name: "project", kind: "scalar", T: 9 /* ScalarType.STRING */ },
 ]);
+exports.IPServiceDeleteRequest = IPServiceDeleteRequest;
 /**
  * Responses
  *
@@ -312,12 +312,12 @@ class IPServiceGetResponse extends protobuf_1.Message {
         return protobuf_1.proto3.util.equals(IPServiceGetResponse, a, b);
     }
 }
-exports.IPServiceGetResponse = IPServiceGetResponse;
 IPServiceGetResponse.runtime = protobuf_1.proto3;
 IPServiceGetResponse.typeName = "api.v1.IPServiceGetResponse";
 IPServiceGetResponse.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 1, name: "ip", kind: "message", T: IP },
 ]);
+exports.IPServiceGetResponse = IPServiceGetResponse;
 /**
  * @generated from message api.v1.IPServiceUpdateResponse
  */
@@ -339,12 +339,12 @@ class IPServiceUpdateResponse extends protobuf_1.Message {
         return protobuf_1.proto3.util.equals(IPServiceUpdateResponse, a, b);
     }
 }
-exports.IPServiceUpdateResponse = IPServiceUpdateResponse;
 IPServiceUpdateResponse.runtime = protobuf_1.proto3;
 IPServiceUpdateResponse.typeName = "api.v1.IPServiceUpdateResponse";
 IPServiceUpdateResponse.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 1, name: "ip", kind: "message", T: IP },
 ]);
+exports.IPServiceUpdateResponse = IPServiceUpdateResponse;
 /**
  * @generated from message api.v1.IPServiceAllocateResponse
  */
@@ -366,12 +366,12 @@ class IPServiceAllocateResponse extends protobuf_1.Message {
         return protobuf_1.proto3.util.equals(IPServiceAllocateResponse, a, b);
     }
 }
-exports.IPServiceAllocateResponse = IPServiceAllocateResponse;
 IPServiceAllocateResponse.runtime = protobuf_1.proto3;
 IPServiceAllocateResponse.typeName = "api.v1.IPServiceAllocateResponse";
 IPServiceAllocateResponse.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 1, name: "ip", kind: "message", T: IP },
 ]);
+exports.IPServiceAllocateResponse = IPServiceAllocateResponse;
 /**
  * @generated from message api.v1.IPServiceStaticResponse
  */
@@ -393,12 +393,12 @@ class IPServiceStaticResponse extends protobuf_1.Message {
         return protobuf_1.proto3.util.equals(IPServiceStaticResponse, a, b);
     }
 }
-exports.IPServiceStaticResponse = IPServiceStaticResponse;
 IPServiceStaticResponse.runtime = protobuf_1.proto3;
 IPServiceStaticResponse.typeName = "api.v1.IPServiceStaticResponse";
 IPServiceStaticResponse.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 1, name: "ip", kind: "message", T: IP },
 ]);
+exports.IPServiceStaticResponse = IPServiceStaticResponse;
 /**
  * @generated from message api.v1.IPServiceListResponse
  */
@@ -424,12 +424,12 @@ class IPServiceListResponse extends protobuf_1.Message {
         return protobuf_1.proto3.util.equals(IPServiceListResponse, a, b);
     }
 }
-exports.IPServiceListResponse = IPServiceListResponse;
 IPServiceListResponse.runtime = protobuf_1.proto3;
 IPServiceListResponse.typeName = "api.v1.IPServiceListResponse";
 IPServiceListResponse.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 1, name: "ips", kind: "message", T: IP, repeated: true },
 ]);
+exports.IPServiceListResponse = IPServiceListResponse;
 /**
  * @generated from message api.v1.IPServiceDeleteResponse
  */
@@ -451,9 +451,9 @@ class IPServiceDeleteResponse extends protobuf_1.Message {
         return protobuf_1.proto3.util.equals(IPServiceDeleteResponse, a, b);
     }
 }
-exports.IPServiceDeleteResponse = IPServiceDeleteResponse;
 IPServiceDeleteResponse.runtime = protobuf_1.proto3;
 IPServiceDeleteResponse.typeName = "api.v1.IPServiceDeleteResponse";
 IPServiceDeleteResponse.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 1, name: "ip", kind: "message", T: IP },
 ]);
+exports.IPServiceDeleteResponse = IPServiceDeleteResponse;

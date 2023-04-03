@@ -51,7 +51,6 @@ class Cluster extends protobuf_1.Message {
         return protobuf_1.proto3.util.equals(Cluster, a, b);
     }
 }
-exports.Cluster = Cluster;
 Cluster.runtime = protobuf_1.proto3;
 Cluster.typeName = "api.v1.Cluster";
 Cluster.fields = protobuf_1.proto3.util.newFieldList(() => [
@@ -67,6 +66,7 @@ Cluster.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 12, name: "deleted_at", kind: "message", T: protobuf_1.Timestamp },
     { no: 20, name: "status", kind: "message", T: ClusterStatus },
 ]);
+exports.Cluster = Cluster;
 /**
  * @generated from message api.v1.KubernetesSpec
  */
@@ -92,12 +92,12 @@ class KubernetesSpec extends protobuf_1.Message {
         return protobuf_1.proto3.util.equals(KubernetesSpec, a, b);
     }
 }
-exports.KubernetesSpec = KubernetesSpec;
 KubernetesSpec.runtime = protobuf_1.proto3;
 KubernetesSpec.typeName = "api.v1.KubernetesSpec";
 KubernetesSpec.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 1, name: "version", kind: "scalar", T: 9 /* ScalarType.STRING */ },
 ]);
+exports.KubernetesSpec = KubernetesSpec;
 /**
  * @generated from message api.v1.Maintenance
  */
@@ -119,7 +119,6 @@ class Maintenance extends protobuf_1.Message {
         return protobuf_1.proto3.util.equals(Maintenance, a, b);
     }
 }
-exports.Maintenance = Maintenance;
 Maintenance.runtime = protobuf_1.proto3;
 Maintenance.typeName = "api.v1.Maintenance";
 Maintenance.fields = protobuf_1.proto3.util.newFieldList(() => [
@@ -127,6 +126,7 @@ Maintenance.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 2, name: "machineimage_autoupdate", kind: "scalar", T: 8 /* ScalarType.BOOL */, opt: true },
     { no: 3, name: "time_window", kind: "message", T: MaintenanceTimeWindow },
 ]);
+exports.Maintenance = Maintenance;
 /**
  * @generated from message api.v1.MaintenanceTimeWindow
  */
@@ -148,13 +148,13 @@ class MaintenanceTimeWindow extends protobuf_1.Message {
         return protobuf_1.proto3.util.equals(MaintenanceTimeWindow, a, b);
     }
 }
-exports.MaintenanceTimeWindow = MaintenanceTimeWindow;
 MaintenanceTimeWindow.runtime = protobuf_1.proto3;
 MaintenanceTimeWindow.typeName = "api.v1.MaintenanceTimeWindow";
 MaintenanceTimeWindow.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 1, name: "begin", kind: "message", T: protobuf_1.Timestamp },
     { no: 2, name: "duration", kind: "message", T: protobuf_1.Duration },
 ]);
+exports.MaintenanceTimeWindow = MaintenanceTimeWindow;
 /**
  * @generated from message api.v1.Worker
  */
@@ -200,7 +200,6 @@ class Worker extends protobuf_1.Message {
         return protobuf_1.proto3.util.equals(Worker, a, b);
     }
 }
-exports.Worker = Worker;
 Worker.runtime = protobuf_1.proto3;
 Worker.typeName = "api.v1.Worker";
 Worker.fields = protobuf_1.proto3.util.newFieldList(() => [
@@ -211,6 +210,7 @@ Worker.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 5, name: "maxsurge", kind: "scalar", T: 13 /* ScalarType.UINT32 */ },
     { no: 6, name: "maxunavailable", kind: "scalar", T: 13 /* ScalarType.UINT32 */ },
 ]);
+exports.Worker = Worker;
 /**
  * @generated from message api.v1.WorkerUpdate
  */
@@ -236,7 +236,6 @@ class WorkerUpdate extends protobuf_1.Message {
         return protobuf_1.proto3.util.equals(WorkerUpdate, a, b);
     }
 }
-exports.WorkerUpdate = WorkerUpdate;
 WorkerUpdate.runtime = protobuf_1.proto3;
 WorkerUpdate.typeName = "api.v1.WorkerUpdate";
 WorkerUpdate.fields = protobuf_1.proto3.util.newFieldList(() => [
@@ -247,6 +246,7 @@ WorkerUpdate.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 5, name: "maxsurge", kind: "scalar", T: 13 /* ScalarType.UINT32 */, opt: true },
     { no: 6, name: "maxunavailable", kind: "scalar", T: 13 /* ScalarType.UINT32 */, opt: true },
 ]);
+exports.WorkerUpdate = WorkerUpdate;
 /**
  * Requests
  *
@@ -278,13 +278,13 @@ class ClusterServiceGetRequest extends protobuf_1.Message {
         return protobuf_1.proto3.util.equals(ClusterServiceGetRequest, a, b);
     }
 }
-exports.ClusterServiceGetRequest = ClusterServiceGetRequest;
 ClusterServiceGetRequest.runtime = protobuf_1.proto3;
 ClusterServiceGetRequest.typeName = "api.v1.ClusterServiceGetRequest";
 ClusterServiceGetRequest.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 1, name: "uuid", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 2, name: "project", kind: "scalar", T: 9 /* ScalarType.STRING */ },
 ]);
+exports.ClusterServiceGetRequest = ClusterServiceGetRequest;
 /**
  * @generated from message api.v1.ClusterServiceGetCredentialsRequest
  */
@@ -314,13 +314,13 @@ class ClusterServiceGetCredentialsRequest extends protobuf_1.Message {
         return protobuf_1.proto3.util.equals(ClusterServiceGetCredentialsRequest, a, b);
     }
 }
-exports.ClusterServiceGetCredentialsRequest = ClusterServiceGetCredentialsRequest;
 ClusterServiceGetCredentialsRequest.runtime = protobuf_1.proto3;
 ClusterServiceGetCredentialsRequest.typeName = "api.v1.ClusterServiceGetCredentialsRequest";
 ClusterServiceGetCredentialsRequest.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 1, name: "uuid", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 2, name: "project", kind: "scalar", T: 9 /* ScalarType.STRING */ },
 ]);
+exports.ClusterServiceGetCredentialsRequest = ClusterServiceGetCredentialsRequest;
 /**
  * @generated from message api.v1.ClusterServiceListRequest
  */
@@ -346,12 +346,12 @@ class ClusterServiceListRequest extends protobuf_1.Message {
         return protobuf_1.proto3.util.equals(ClusterServiceListRequest, a, b);
     }
 }
-exports.ClusterServiceListRequest = ClusterServiceListRequest;
 ClusterServiceListRequest.runtime = protobuf_1.proto3;
 ClusterServiceListRequest.typeName = "api.v1.ClusterServiceListRequest";
 ClusterServiceListRequest.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 2, name: "project", kind: "scalar", T: 9 /* ScalarType.STRING */ },
 ]);
+exports.ClusterServiceListRequest = ClusterServiceListRequest;
 /**
  * @generated from message api.v1.ClusterServiceCreateRequest
  */
@@ -391,7 +391,6 @@ class ClusterServiceCreateRequest extends protobuf_1.Message {
         return protobuf_1.proto3.util.equals(ClusterServiceCreateRequest, a, b);
     }
 }
-exports.ClusterServiceCreateRequest = ClusterServiceCreateRequest;
 ClusterServiceCreateRequest.runtime = protobuf_1.proto3;
 ClusterServiceCreateRequest.typeName = "api.v1.ClusterServiceCreateRequest";
 ClusterServiceCreateRequest.fields = protobuf_1.proto3.util.newFieldList(() => [
@@ -402,6 +401,7 @@ ClusterServiceCreateRequest.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 7, name: "workers", kind: "message", T: Worker, repeated: true },
     { no: 8, name: "maintenance", kind: "message", T: Maintenance },
 ]);
+exports.ClusterServiceCreateRequest = ClusterServiceCreateRequest;
 /**
  * @generated from message api.v1.ClusterServiceUpdateRequest
  */
@@ -435,7 +435,6 @@ class ClusterServiceUpdateRequest extends protobuf_1.Message {
         return protobuf_1.proto3.util.equals(ClusterServiceUpdateRequest, a, b);
     }
 }
-exports.ClusterServiceUpdateRequest = ClusterServiceUpdateRequest;
 ClusterServiceUpdateRequest.runtime = protobuf_1.proto3;
 ClusterServiceUpdateRequest.typeName = "api.v1.ClusterServiceUpdateRequest";
 ClusterServiceUpdateRequest.fields = protobuf_1.proto3.util.newFieldList(() => [
@@ -445,6 +444,7 @@ ClusterServiceUpdateRequest.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 4, name: "workers", kind: "message", T: WorkerUpdate, repeated: true },
     { no: 5, name: "maintenance", kind: "message", T: Maintenance, opt: true },
 ]);
+exports.ClusterServiceUpdateRequest = ClusterServiceUpdateRequest;
 /**
  * @generated from message api.v1.ClusterServiceDeleteRequest
  */
@@ -474,13 +474,13 @@ class ClusterServiceDeleteRequest extends protobuf_1.Message {
         return protobuf_1.proto3.util.equals(ClusterServiceDeleteRequest, a, b);
     }
 }
-exports.ClusterServiceDeleteRequest = ClusterServiceDeleteRequest;
 ClusterServiceDeleteRequest.runtime = protobuf_1.proto3;
 ClusterServiceDeleteRequest.typeName = "api.v1.ClusterServiceDeleteRequest";
 ClusterServiceDeleteRequest.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 1, name: "uuid", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 2, name: "project", kind: "scalar", T: 9 /* ScalarType.STRING */ },
 ]);
+exports.ClusterServiceDeleteRequest = ClusterServiceDeleteRequest;
 /**
  * @generated from message api.v1.ClusterServiceWatchStatusRequest
  */
@@ -506,13 +506,13 @@ class ClusterServiceWatchStatusRequest extends protobuf_1.Message {
         return protobuf_1.proto3.util.equals(ClusterServiceWatchStatusRequest, a, b);
     }
 }
-exports.ClusterServiceWatchStatusRequest = ClusterServiceWatchStatusRequest;
 ClusterServiceWatchStatusRequest.runtime = protobuf_1.proto3;
 ClusterServiceWatchStatusRequest.typeName = "api.v1.ClusterServiceWatchStatusRequest";
 ClusterServiceWatchStatusRequest.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 1, name: "uuid", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
     { no: 2, name: "project", kind: "scalar", T: 9 /* ScalarType.STRING */ },
 ]);
+exports.ClusterServiceWatchStatusRequest = ClusterServiceWatchStatusRequest;
 /**
  * @generated from message api.v1.ClusterStatus
  */
@@ -566,7 +566,6 @@ class ClusterStatus extends protobuf_1.Message {
         return protobuf_1.proto3.util.equals(ClusterStatus, a, b);
     }
 }
-exports.ClusterStatus = ClusterStatus;
 ClusterStatus.runtime = protobuf_1.proto3;
 ClusterStatus.typeName = "api.v1.ClusterStatus";
 ClusterStatus.fields = protobuf_1.proto3.util.newFieldList(() => [
@@ -579,6 +578,7 @@ ClusterStatus.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 12, name: "nodes_ready", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 13, name: "system_components_ready", kind: "scalar", T: 9 /* ScalarType.STRING */ },
 ]);
+exports.ClusterStatus = ClusterStatus;
 /**
  * Responses
  *
@@ -602,12 +602,12 @@ class ClusterServiceCreateResponse extends protobuf_1.Message {
         return protobuf_1.proto3.util.equals(ClusterServiceCreateResponse, a, b);
     }
 }
-exports.ClusterServiceCreateResponse = ClusterServiceCreateResponse;
 ClusterServiceCreateResponse.runtime = protobuf_1.proto3;
 ClusterServiceCreateResponse.typeName = "api.v1.ClusterServiceCreateResponse";
 ClusterServiceCreateResponse.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 1, name: "cluster", kind: "message", T: Cluster },
 ]);
+exports.ClusterServiceCreateResponse = ClusterServiceCreateResponse;
 /**
  * @generated from message api.v1.ClusterServiceGetResponse
  */
@@ -629,12 +629,12 @@ class ClusterServiceGetResponse extends protobuf_1.Message {
         return protobuf_1.proto3.util.equals(ClusterServiceGetResponse, a, b);
     }
 }
-exports.ClusterServiceGetResponse = ClusterServiceGetResponse;
 ClusterServiceGetResponse.runtime = protobuf_1.proto3;
 ClusterServiceGetResponse.typeName = "api.v1.ClusterServiceGetResponse";
 ClusterServiceGetResponse.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 1, name: "cluster", kind: "message", T: Cluster },
 ]);
+exports.ClusterServiceGetResponse = ClusterServiceGetResponse;
 /**
  * @generated from message api.v1.ClusterServiceGetCredentialsResponse
  */
@@ -660,12 +660,12 @@ class ClusterServiceGetCredentialsResponse extends protobuf_1.Message {
         return protobuf_1.proto3.util.equals(ClusterServiceGetCredentialsResponse, a, b);
     }
 }
-exports.ClusterServiceGetCredentialsResponse = ClusterServiceGetCredentialsResponse;
 ClusterServiceGetCredentialsResponse.runtime = protobuf_1.proto3;
 ClusterServiceGetCredentialsResponse.typeName = "api.v1.ClusterServiceGetCredentialsResponse";
 ClusterServiceGetCredentialsResponse.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 1, name: "kubeconfig", kind: "scalar", T: 9 /* ScalarType.STRING */ },
 ]);
+exports.ClusterServiceGetCredentialsResponse = ClusterServiceGetCredentialsResponse;
 /**
  * @generated from message api.v1.ClusterServiceDeleteResponse
  */
@@ -687,12 +687,12 @@ class ClusterServiceDeleteResponse extends protobuf_1.Message {
         return protobuf_1.proto3.util.equals(ClusterServiceDeleteResponse, a, b);
     }
 }
-exports.ClusterServiceDeleteResponse = ClusterServiceDeleteResponse;
 ClusterServiceDeleteResponse.runtime = protobuf_1.proto3;
 ClusterServiceDeleteResponse.typeName = "api.v1.ClusterServiceDeleteResponse";
 ClusterServiceDeleteResponse.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 1, name: "cluster", kind: "message", T: Cluster },
 ]);
+exports.ClusterServiceDeleteResponse = ClusterServiceDeleteResponse;
 /**
  * @generated from message api.v1.ClusterServiceUpdateResponse
  */
@@ -714,12 +714,12 @@ class ClusterServiceUpdateResponse extends protobuf_1.Message {
         return protobuf_1.proto3.util.equals(ClusterServiceUpdateResponse, a, b);
     }
 }
-exports.ClusterServiceUpdateResponse = ClusterServiceUpdateResponse;
 ClusterServiceUpdateResponse.runtime = protobuf_1.proto3;
 ClusterServiceUpdateResponse.typeName = "api.v1.ClusterServiceUpdateResponse";
 ClusterServiceUpdateResponse.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 1, name: "cluster", kind: "message", T: Cluster },
 ]);
+exports.ClusterServiceUpdateResponse = ClusterServiceUpdateResponse;
 /**
  * @generated from message api.v1.ClusterServiceListResponse
  */
@@ -745,12 +745,12 @@ class ClusterServiceListResponse extends protobuf_1.Message {
         return protobuf_1.proto3.util.equals(ClusterServiceListResponse, a, b);
     }
 }
-exports.ClusterServiceListResponse = ClusterServiceListResponse;
 ClusterServiceListResponse.runtime = protobuf_1.proto3;
 ClusterServiceListResponse.typeName = "api.v1.ClusterServiceListResponse";
 ClusterServiceListResponse.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 1, name: "clusters", kind: "message", T: Cluster, repeated: true },
 ]);
+exports.ClusterServiceListResponse = ClusterServiceListResponse;
 /**
  * @generated from message api.v1.ClusterServiceWatchStatusResponse
  */
@@ -772,9 +772,9 @@ class ClusterServiceWatchStatusResponse extends protobuf_1.Message {
         return protobuf_1.proto3.util.equals(ClusterServiceWatchStatusResponse, a, b);
     }
 }
-exports.ClusterServiceWatchStatusResponse = ClusterServiceWatchStatusResponse;
 ClusterServiceWatchStatusResponse.runtime = protobuf_1.proto3;
 ClusterServiceWatchStatusResponse.typeName = "api.v1.ClusterServiceWatchStatusResponse";
 ClusterServiceWatchStatusResponse.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 1, name: "status", kind: "message", T: ClusterStatus },
 ]);
+exports.ClusterServiceWatchStatusResponse = ClusterServiceWatchStatusResponse;

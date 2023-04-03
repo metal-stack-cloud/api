@@ -219,10 +219,10 @@ class Paging extends protobuf_1.Message {
         return protobuf_1.proto3.util.equals(Paging, a, b);
     }
 }
-exports.Paging = Paging;
 Paging.runtime = protobuf_1.proto3;
 Paging.typeName = "api.v1.Paging";
 Paging.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 1, name: "page", kind: "scalar", T: 4 /* ScalarType.UINT64 */, opt: true },
     { no: 2, name: "count", kind: "scalar", T: 4 /* ScalarType.UINT64 */, opt: true },
 ]);
+exports.Paging = Paging;

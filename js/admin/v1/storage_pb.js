@@ -28,12 +28,12 @@ class StorageServiceClusterInfoRequest extends protobuf_1.Message {
         return protobuf_1.proto3.util.equals(StorageServiceClusterInfoRequest, a, b);
     }
 }
-exports.StorageServiceClusterInfoRequest = StorageServiceClusterInfoRequest;
 StorageServiceClusterInfoRequest.runtime = protobuf_1.proto3;
 StorageServiceClusterInfoRequest.typeName = "admin.v1.StorageServiceClusterInfoRequest";
 StorageServiceClusterInfoRequest.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 1, name: "partition", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
 ]);
+exports.StorageServiceClusterInfoRequest = StorageServiceClusterInfoRequest;
 /**
  * @generated from message admin.v1.StorageServiceClusterInfoResponse
  */
@@ -59,12 +59,12 @@ class StorageServiceClusterInfoResponse extends protobuf_1.Message {
         return protobuf_1.proto3.util.equals(StorageServiceClusterInfoResponse, a, b);
     }
 }
-exports.StorageServiceClusterInfoResponse = StorageServiceClusterInfoResponse;
 StorageServiceClusterInfoResponse.runtime = protobuf_1.proto3;
 StorageServiceClusterInfoResponse.typeName = "admin.v1.StorageServiceClusterInfoResponse";
 StorageServiceClusterInfoResponse.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 1, name: "infos", kind: "message", T: StorageClusterInfo, repeated: true },
 ]);
+exports.StorageServiceClusterInfoResponse = StorageServiceClusterInfoResponse;
 /**
  * @generated from message admin.v1.StorageClusterInfo
  */
@@ -130,7 +130,6 @@ class StorageClusterInfo extends protobuf_1.Message {
         return protobuf_1.proto3.util.equals(StorageClusterInfo, a, b);
     }
 }
-exports.StorageClusterInfo = StorageClusterInfo;
 StorageClusterInfo.runtime = protobuf_1.proto3;
 StorageClusterInfo.typeName = "admin.v1.StorageClusterInfo";
 StorageClusterInfo.fields = protobuf_1.proto3.util.newFieldList(() => [
@@ -148,6 +147,7 @@ StorageClusterInfo.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 12, name: "discovery_endpoints", kind: "scalar", T: 9 /* ScalarType.STRING */, repeated: true },
     { no: 13, name: "servers", kind: "message", T: StorageServerInfo, repeated: true },
 ]);
+exports.StorageClusterInfo = StorageClusterInfo;
 /**
  * @generated from message admin.v1.StorageServerInfo
  */
@@ -193,7 +193,6 @@ class StorageServerInfo extends protobuf_1.Message {
         return protobuf_1.proto3.util.equals(StorageServerInfo, a, b);
     }
 }
-exports.StorageServerInfo = StorageServerInfo;
 StorageServerInfo.runtime = protobuf_1.proto3;
 StorageServerInfo.typeName = "admin.v1.StorageServerInfo";
 StorageServerInfo.fields = protobuf_1.proto3.util.newFieldList(() => [
@@ -204,6 +203,7 @@ StorageServerInfo.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 5, name: "server_endpoints", kind: "scalar", T: 9 /* ScalarType.STRING */, repeated: true },
     { no: 6, name: "light_os_version", kind: "scalar", T: 9 /* ScalarType.STRING */ },
 ]);
+exports.StorageServerInfo = StorageServerInfo;
 /**
  * @generated from message admin.v1.ClusterHealth
  */
@@ -245,7 +245,6 @@ class ClusterHealth extends protobuf_1.Message {
         return protobuf_1.proto3.util.equals(ClusterHealth, a, b);
     }
 }
-exports.ClusterHealth = ClusterHealth;
 ClusterHealth.runtime = protobuf_1.proto3;
 ClusterHealth.typeName = "admin.v1.ClusterHealth";
 ClusterHealth.fields = protobuf_1.proto3.util.newFieldList(() => [
@@ -255,6 +254,7 @@ ClusterHealth.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 4, name: "num_not_available_volumes", kind: "scalar", T: 13 /* ScalarType.UINT32 */ },
     { no: 5, name: "num_inactive_nodes", kind: "scalar", T: 13 /* ScalarType.UINT32 */ },
 ]);
+exports.ClusterHealth = ClusterHealth;
 /**
  * @generated from message admin.v1.ClusterStatisticsApi
  */
@@ -364,7 +364,6 @@ class ClusterStatisticsApi extends protobuf_1.Message {
         return protobuf_1.proto3.util.equals(ClusterStatisticsApi, a, b);
     }
 }
-exports.ClusterStatisticsApi = ClusterStatisticsApi;
 ClusterStatisticsApi.runtime = protobuf_1.proto3;
 ClusterStatisticsApi.typeName = "admin.v1.ClusterStatisticsApi";
 ClusterStatisticsApi.fields = protobuf_1.proto3.util.newFieldList(() => [
@@ -380,6 +379,7 @@ ClusterStatisticsApi.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 10, name: "estimated_logical_storage", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
     { no: 11, name: "compression_ratio", kind: "scalar", T: 1 /* ScalarType.DOUBLE */ },
 ]);
+exports.ClusterStatisticsApi = ClusterStatisticsApi;
 /**
  * @generated from message admin.v1.StorageServiceListVolumesRequest
  */
@@ -401,7 +401,6 @@ class StorageServiceListVolumesRequest extends protobuf_1.Message {
         return protobuf_1.proto3.util.equals(StorageServiceListVolumesRequest, a, b);
     }
 }
-exports.StorageServiceListVolumesRequest = StorageServiceListVolumesRequest;
 StorageServiceListVolumesRequest.runtime = protobuf_1.proto3;
 StorageServiceListVolumesRequest.typeName = "admin.v1.StorageServiceListVolumesRequest";
 StorageServiceListVolumesRequest.fields = protobuf_1.proto3.util.newFieldList(() => [
@@ -411,6 +410,7 @@ StorageServiceListVolumesRequest.fields = protobuf_1.proto3.util.newFieldList(()
     { no: 4, name: "name", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
     { no: 5, name: "tenant", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
 ]);
+exports.StorageServiceListVolumesRequest = StorageServiceListVolumesRequest;
 /**
  * @generated from message admin.v1.StorageServiceListVolumesResponse
  */
@@ -436,12 +436,12 @@ class StorageServiceListVolumesResponse extends protobuf_1.Message {
         return protobuf_1.proto3.util.equals(StorageServiceListVolumesResponse, a, b);
     }
 }
-exports.StorageServiceListVolumesResponse = StorageServiceListVolumesResponse;
 StorageServiceListVolumesResponse.runtime = protobuf_1.proto3;
 StorageServiceListVolumesResponse.typeName = "admin.v1.StorageServiceListVolumesResponse";
 StorageServiceListVolumesResponse.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 1, name: "volumes", kind: "message", T: volume_pb_js_1.Volume, repeated: true },
 ]);
+exports.StorageServiceListVolumesResponse = StorageServiceListVolumesResponse;
 /**
  * @generated from message admin.v1.StorageServiceListSnapshotsRequest
  */
@@ -463,7 +463,6 @@ class StorageServiceListSnapshotsRequest extends protobuf_1.Message {
         return protobuf_1.proto3.util.equals(StorageServiceListSnapshotsRequest, a, b);
     }
 }
-exports.StorageServiceListSnapshotsRequest = StorageServiceListSnapshotsRequest;
 StorageServiceListSnapshotsRequest.runtime = protobuf_1.proto3;
 StorageServiceListSnapshotsRequest.typeName = "admin.v1.StorageServiceListSnapshotsRequest";
 StorageServiceListSnapshotsRequest.fields = protobuf_1.proto3.util.newFieldList(() => [
@@ -473,6 +472,7 @@ StorageServiceListSnapshotsRequest.fields = protobuf_1.proto3.util.newFieldList(
     { no: 4, name: "name", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
     { no: 5, name: "tenant", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
 ]);
+exports.StorageServiceListSnapshotsRequest = StorageServiceListSnapshotsRequest;
 /**
  * @generated from message admin.v1.StorageServiceListSnapshotsResponse
  */
@@ -498,9 +498,9 @@ class StorageServiceListSnapshotsResponse extends protobuf_1.Message {
         return protobuf_1.proto3.util.equals(StorageServiceListSnapshotsResponse, a, b);
     }
 }
-exports.StorageServiceListSnapshotsResponse = StorageServiceListSnapshotsResponse;
 StorageServiceListSnapshotsResponse.runtime = protobuf_1.proto3;
 StorageServiceListSnapshotsResponse.typeName = "admin.v1.StorageServiceListSnapshotsResponse";
 StorageServiceListSnapshotsResponse.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 1, name: "snapshots", kind: "message", T: volume_pb_js_1.Snapshot, repeated: true },
 ]);
+exports.StorageServiceListSnapshotsResponse = StorageServiceListSnapshotsResponse;

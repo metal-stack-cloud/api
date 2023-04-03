@@ -28,10 +28,10 @@ class StatusServiceGetRequest extends protobuf_1.Message {
         return protobuf_1.proto3.util.equals(StatusServiceGetRequest, a, b);
     }
 }
-exports.StatusServiceGetRequest = StatusServiceGetRequest;
 StatusServiceGetRequest.runtime = protobuf_1.proto3;
 StatusServiceGetRequest.typeName = "status.v1.StatusServiceGetRequest";
 StatusServiceGetRequest.fields = protobuf_1.proto3.util.newFieldList(() => []);
+exports.StatusServiceGetRequest = StatusServiceGetRequest;
 /**
  * @generated from message status.v1.StatusServiceGetResponse
  */
@@ -65,7 +65,6 @@ class StatusServiceGetResponse extends protobuf_1.Message {
         return protobuf_1.proto3.util.equals(StatusServiceGetResponse, a, b);
     }
 }
-exports.StatusServiceGetResponse = StatusServiceGetResponse;
 StatusServiceGetResponse.runtime = protobuf_1.proto3;
 StatusServiceGetResponse.typeName = "status.v1.StatusServiceGetResponse";
 StatusServiceGetResponse.fields = protobuf_1.proto3.util.newFieldList(() => [
@@ -74,3 +73,4 @@ StatusServiceGetResponse.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 3, name: "connection_broken", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
     { no: 4, name: "api_version", kind: "scalar", T: 9 /* ScalarType.STRING */ },
 ]);
+exports.StatusServiceGetResponse = StatusServiceGetResponse;

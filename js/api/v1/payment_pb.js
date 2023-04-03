@@ -43,7 +43,6 @@ class PaymentCustomer extends protobuf_1.Message {
         return protobuf_1.proto3.util.equals(PaymentCustomer, a, b);
     }
 }
-exports.PaymentCustomer = PaymentCustomer;
 PaymentCustomer.runtime = protobuf_1.proto3;
 PaymentCustomer.typeName = "api.v1.PaymentCustomer";
 PaymentCustomer.fields = protobuf_1.proto3.util.newFieldList(() => [
@@ -60,6 +59,7 @@ PaymentCustomer.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 11, name: "vat", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
     { no: 12, name: "phone_number", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
 ]);
+exports.PaymentCustomer = PaymentCustomer;
 /**
  * @generated from message api.v1.Card
  */
@@ -101,7 +101,6 @@ class Card extends protobuf_1.Message {
         return protobuf_1.proto3.util.equals(Card, a, b);
     }
 }
-exports.Card = Card;
 Card.runtime = protobuf_1.proto3;
 Card.typeName = "api.v1.Card";
 Card.fields = protobuf_1.proto3.util.newFieldList(() => [
@@ -111,6 +110,7 @@ Card.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 4, name: "exp_year", kind: "scalar", T: 3 /* ScalarType.INT64 */ },
     { no: 5, name: "last_4", kind: "scalar", T: 9 /* ScalarType.STRING */ },
 ]);
+exports.Card = Card;
 /**
  * @generated from message api.v1.Price
  */
@@ -148,7 +148,6 @@ class Price extends protobuf_1.Message {
         return protobuf_1.proto3.util.equals(Price, a, b);
     }
 }
-exports.Price = Price;
 Price.runtime = protobuf_1.proto3;
 Price.typeName = "api.v1.Price";
 Price.fields = protobuf_1.proto3.util.newFieldList(() => [
@@ -157,6 +156,7 @@ Price.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 3, name: "currency", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 4, name: "unit_label", kind: "scalar", T: 9 /* ScalarType.STRING */ },
 ]);
+exports.Price = Price;
 /**
  * @generated from message api.v1.Address
  */
@@ -202,7 +202,6 @@ class Address extends protobuf_1.Message {
         return protobuf_1.proto3.util.equals(Address, a, b);
     }
 }
-exports.Address = Address;
 Address.runtime = protobuf_1.proto3;
 Address.typeName = "api.v1.Address";
 Address.fields = protobuf_1.proto3.util.newFieldList(() => [
@@ -213,6 +212,7 @@ Address.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 5, name: "state", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 6, name: "country", kind: "scalar", T: 9 /* ScalarType.STRING */ },
 ]);
+exports.Address = Address;
 /**
  * @generated from message api.v1.SubscriptionUsageItem
  */
@@ -246,7 +246,6 @@ class SubscriptionUsageItem extends protobuf_1.Message {
         return protobuf_1.proto3.util.equals(SubscriptionUsageItem, a, b);
     }
 }
-exports.SubscriptionUsageItem = SubscriptionUsageItem;
 SubscriptionUsageItem.runtime = protobuf_1.proto3;
 SubscriptionUsageItem.typeName = "api.v1.SubscriptionUsageItem";
 SubscriptionUsageItem.fields = protobuf_1.proto3.util.newFieldList(() => [
@@ -256,6 +255,7 @@ SubscriptionUsageItem.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 4, name: "period_start", kind: "message", T: protobuf_1.Timestamp },
     { no: 5, name: "period_end", kind: "message", T: protobuf_1.Timestamp },
 ]);
+exports.SubscriptionUsageItem = SubscriptionUsageItem;
 /**
  * @generated from message api.v1.Invoice
  */
@@ -285,7 +285,6 @@ class Invoice extends protobuf_1.Message {
         return protobuf_1.proto3.util.equals(Invoice, a, b);
     }
 }
-exports.Invoice = Invoice;
 Invoice.runtime = protobuf_1.proto3;
 Invoice.typeName = "api.v1.Invoice";
 Invoice.fields = protobuf_1.proto3.util.newFieldList(() => [
@@ -294,6 +293,7 @@ Invoice.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 4, name: "period_start", kind: "message", T: protobuf_1.Timestamp },
     { no: 5, name: "period_end", kind: "message", T: protobuf_1.Timestamp },
 ]);
+exports.Invoice = Invoice;
 /**
  * @generated from message api.v1.Coupon
  */
@@ -343,7 +343,6 @@ class Coupon extends protobuf_1.Message {
         return protobuf_1.proto3.util.equals(Coupon, a, b);
     }
 }
-exports.Coupon = Coupon;
 Coupon.runtime = protobuf_1.proto3;
 Coupon.typeName = "api.v1.Coupon";
 Coupon.fields = protobuf_1.proto3.util.newFieldList(() => [
@@ -357,6 +356,7 @@ Coupon.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 8, name: "times_redeemed", kind: "scalar", T: 3 /* ScalarType.INT64 */ },
     { no: 9, name: "max_redemptions", kind: "scalar", T: 3 /* ScalarType.INT64 */ },
 ]);
+exports.Coupon = Coupon;
 /**
  * @generated from message api.v1.PaymentServiceCreateOrUpdateCustomerRequest
  */
@@ -386,7 +386,6 @@ class PaymentServiceCreateOrUpdateCustomerRequest extends protobuf_1.Message {
         return protobuf_1.proto3.util.equals(PaymentServiceCreateOrUpdateCustomerRequest, a, b);
     }
 }
-exports.PaymentServiceCreateOrUpdateCustomerRequest = PaymentServiceCreateOrUpdateCustomerRequest;
 PaymentServiceCreateOrUpdateCustomerRequest.runtime = protobuf_1.proto3;
 PaymentServiceCreateOrUpdateCustomerRequest.typeName = "api.v1.PaymentServiceCreateOrUpdateCustomerRequest";
 PaymentServiceCreateOrUpdateCustomerRequest.fields = protobuf_1.proto3.util.newFieldList(() => [
@@ -394,6 +393,7 @@ PaymentServiceCreateOrUpdateCustomerRequest.fields = protobuf_1.proto3.util.newF
     { no: 2, name: "customer", kind: "message", T: PaymentCustomer },
     { no: 3, name: "accepted_terms_and_conditions", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
 ]);
+exports.PaymentServiceCreateOrUpdateCustomerRequest = PaymentServiceCreateOrUpdateCustomerRequest;
 /**
  * @generated from message api.v1.PaymentServiceCreateOrUpdateCustomerResponse
  */
@@ -415,12 +415,12 @@ class PaymentServiceCreateOrUpdateCustomerResponse extends protobuf_1.Message {
         return protobuf_1.proto3.util.equals(PaymentServiceCreateOrUpdateCustomerResponse, a, b);
     }
 }
-exports.PaymentServiceCreateOrUpdateCustomerResponse = PaymentServiceCreateOrUpdateCustomerResponse;
 PaymentServiceCreateOrUpdateCustomerResponse.runtime = protobuf_1.proto3;
 PaymentServiceCreateOrUpdateCustomerResponse.typeName = "api.v1.PaymentServiceCreateOrUpdateCustomerResponse";
 PaymentServiceCreateOrUpdateCustomerResponse.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 1, name: "customer", kind: "message", T: PaymentCustomer },
 ]);
+exports.PaymentServiceCreateOrUpdateCustomerResponse = PaymentServiceCreateOrUpdateCustomerResponse;
 /**
  * @generated from message api.v1.PaymentServiceGetCustomerRequest
  */
@@ -450,13 +450,13 @@ class PaymentServiceGetCustomerRequest extends protobuf_1.Message {
         return protobuf_1.proto3.util.equals(PaymentServiceGetCustomerRequest, a, b);
     }
 }
-exports.PaymentServiceGetCustomerRequest = PaymentServiceGetCustomerRequest;
 PaymentServiceGetCustomerRequest.runtime = protobuf_1.proto3;
 PaymentServiceGetCustomerRequest.typeName = "api.v1.PaymentServiceGetCustomerRequest";
 PaymentServiceGetCustomerRequest.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 1, name: "login", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 2, name: "customer_id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
 ]);
+exports.PaymentServiceGetCustomerRequest = PaymentServiceGetCustomerRequest;
 /**
  * @generated from message api.v1.PaymentServiceGetCustomerResponse
  */
@@ -478,12 +478,12 @@ class PaymentServiceGetCustomerResponse extends protobuf_1.Message {
         return protobuf_1.proto3.util.equals(PaymentServiceGetCustomerResponse, a, b);
     }
 }
-exports.PaymentServiceGetCustomerResponse = PaymentServiceGetCustomerResponse;
 PaymentServiceGetCustomerResponse.runtime = protobuf_1.proto3;
 PaymentServiceGetCustomerResponse.typeName = "api.v1.PaymentServiceGetCustomerResponse";
 PaymentServiceGetCustomerResponse.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 1, name: "customer", kind: "message", T: PaymentCustomer },
 ]);
+exports.PaymentServiceGetCustomerResponse = PaymentServiceGetCustomerResponse;
 /**
  * @generated from message api.v1.PaymentServiceGetCustomerWithLoginRequest
  */
@@ -509,12 +509,12 @@ class PaymentServiceGetCustomerWithLoginRequest extends protobuf_1.Message {
         return protobuf_1.proto3.util.equals(PaymentServiceGetCustomerWithLoginRequest, a, b);
     }
 }
-exports.PaymentServiceGetCustomerWithLoginRequest = PaymentServiceGetCustomerWithLoginRequest;
 PaymentServiceGetCustomerWithLoginRequest.runtime = protobuf_1.proto3;
 PaymentServiceGetCustomerWithLoginRequest.typeName = "api.v1.PaymentServiceGetCustomerWithLoginRequest";
 PaymentServiceGetCustomerWithLoginRequest.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 1, name: "login", kind: "scalar", T: 9 /* ScalarType.STRING */ },
 ]);
+exports.PaymentServiceGetCustomerWithLoginRequest = PaymentServiceGetCustomerWithLoginRequest;
 /**
  * @generated from message api.v1.PaymentServiceGetCustomerWithLoginResponse
  */
@@ -536,12 +536,12 @@ class PaymentServiceGetCustomerWithLoginResponse extends protobuf_1.Message {
         return protobuf_1.proto3.util.equals(PaymentServiceGetCustomerWithLoginResponse, a, b);
     }
 }
-exports.PaymentServiceGetCustomerWithLoginResponse = PaymentServiceGetCustomerWithLoginResponse;
 PaymentServiceGetCustomerWithLoginResponse.runtime = protobuf_1.proto3;
 PaymentServiceGetCustomerWithLoginResponse.typeName = "api.v1.PaymentServiceGetCustomerWithLoginResponse";
 PaymentServiceGetCustomerWithLoginResponse.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 1, name: "customer", kind: "message", T: PaymentCustomer },
 ]);
+exports.PaymentServiceGetCustomerWithLoginResponse = PaymentServiceGetCustomerWithLoginResponse;
 /**
  * @generated from message api.v1.PaymentServiceCheckIfCustomerExistsRequest
  */
@@ -567,12 +567,12 @@ class PaymentServiceCheckIfCustomerExistsRequest extends protobuf_1.Message {
         return protobuf_1.proto3.util.equals(PaymentServiceCheckIfCustomerExistsRequest, a, b);
     }
 }
-exports.PaymentServiceCheckIfCustomerExistsRequest = PaymentServiceCheckIfCustomerExistsRequest;
 PaymentServiceCheckIfCustomerExistsRequest.runtime = protobuf_1.proto3;
 PaymentServiceCheckIfCustomerExistsRequest.typeName = "api.v1.PaymentServiceCheckIfCustomerExistsRequest";
 PaymentServiceCheckIfCustomerExistsRequest.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 1, name: "login", kind: "scalar", T: 9 /* ScalarType.STRING */ },
 ]);
+exports.PaymentServiceCheckIfCustomerExistsRequest = PaymentServiceCheckIfCustomerExistsRequest;
 /**
  * @generated from message api.v1.PaymentServiceCheckIfCustomerExistsResponse
  */
@@ -598,13 +598,13 @@ class PaymentServiceCheckIfCustomerExistsResponse extends protobuf_1.Message {
         return protobuf_1.proto3.util.equals(PaymentServiceCheckIfCustomerExistsResponse, a, b);
     }
 }
-exports.PaymentServiceCheckIfCustomerExistsResponse = PaymentServiceCheckIfCustomerExistsResponse;
 PaymentServiceCheckIfCustomerExistsResponse.runtime = protobuf_1.proto3;
 PaymentServiceCheckIfCustomerExistsResponse.typeName = "api.v1.PaymentServiceCheckIfCustomerExistsResponse";
 PaymentServiceCheckIfCustomerExistsResponse.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 1, name: "customer", kind: "message", T: PaymentCustomer },
     { no: 2, name: "exists", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
 ]);
+exports.PaymentServiceCheckIfCustomerExistsResponse = PaymentServiceCheckIfCustomerExistsResponse;
 /**
  * @generated from message api.v1.PaymentServiceHasPaymentMethodRequest
  */
@@ -634,13 +634,13 @@ class PaymentServiceHasPaymentMethodRequest extends protobuf_1.Message {
         return protobuf_1.proto3.util.equals(PaymentServiceHasPaymentMethodRequest, a, b);
     }
 }
-exports.PaymentServiceHasPaymentMethodRequest = PaymentServiceHasPaymentMethodRequest;
 PaymentServiceHasPaymentMethodRequest.runtime = protobuf_1.proto3;
 PaymentServiceHasPaymentMethodRequest.typeName = "api.v1.PaymentServiceHasPaymentMethodRequest";
 PaymentServiceHasPaymentMethodRequest.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 1, name: "login", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 2, name: "project", kind: "scalar", T: 9 /* ScalarType.STRING */ },
 ]);
+exports.PaymentServiceHasPaymentMethodRequest = PaymentServiceHasPaymentMethodRequest;
 /**
  * @generated from message api.v1.PaymentServiceHasPaymentMethodResponse
  */
@@ -666,12 +666,12 @@ class PaymentServiceHasPaymentMethodResponse extends protobuf_1.Message {
         return protobuf_1.proto3.util.equals(PaymentServiceHasPaymentMethodResponse, a, b);
     }
 }
-exports.PaymentServiceHasPaymentMethodResponse = PaymentServiceHasPaymentMethodResponse;
 PaymentServiceHasPaymentMethodResponse.runtime = protobuf_1.proto3;
 PaymentServiceHasPaymentMethodResponse.typeName = "api.v1.PaymentServiceHasPaymentMethodResponse";
 PaymentServiceHasPaymentMethodResponse.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 1, name: "exists", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
 ]);
+exports.PaymentServiceHasPaymentMethodResponse = PaymentServiceHasPaymentMethodResponse;
 /**
  * @generated from message api.v1.PaymentServiceDeletePaymentMethodRequest
  */
@@ -697,12 +697,12 @@ class PaymentServiceDeletePaymentMethodRequest extends protobuf_1.Message {
         return protobuf_1.proto3.util.equals(PaymentServiceDeletePaymentMethodRequest, a, b);
     }
 }
-exports.PaymentServiceDeletePaymentMethodRequest = PaymentServiceDeletePaymentMethodRequest;
 PaymentServiceDeletePaymentMethodRequest.runtime = protobuf_1.proto3;
 PaymentServiceDeletePaymentMethodRequest.typeName = "api.v1.PaymentServiceDeletePaymentMethodRequest";
 PaymentServiceDeletePaymentMethodRequest.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 1, name: "login", kind: "scalar", T: 9 /* ScalarType.STRING */ },
 ]);
+exports.PaymentServiceDeletePaymentMethodRequest = PaymentServiceDeletePaymentMethodRequest;
 /**
  * @generated from message api.v1.PaymentServiceDeletePaymentMethodResponse
  */
@@ -724,10 +724,10 @@ class PaymentServiceDeletePaymentMethodResponse extends protobuf_1.Message {
         return protobuf_1.proto3.util.equals(PaymentServiceDeletePaymentMethodResponse, a, b);
     }
 }
-exports.PaymentServiceDeletePaymentMethodResponse = PaymentServiceDeletePaymentMethodResponse;
 PaymentServiceDeletePaymentMethodResponse.runtime = protobuf_1.proto3;
 PaymentServiceDeletePaymentMethodResponse.typeName = "api.v1.PaymentServiceDeletePaymentMethodResponse";
 PaymentServiceDeletePaymentMethodResponse.fields = protobuf_1.proto3.util.newFieldList(() => []);
+exports.PaymentServiceDeletePaymentMethodResponse = PaymentServiceDeletePaymentMethodResponse;
 /**
  * @generated from message api.v1.PaymentServiceGetSubscriptionUsageRequest
  */
@@ -753,12 +753,12 @@ class PaymentServiceGetSubscriptionUsageRequest extends protobuf_1.Message {
         return protobuf_1.proto3.util.equals(PaymentServiceGetSubscriptionUsageRequest, a, b);
     }
 }
-exports.PaymentServiceGetSubscriptionUsageRequest = PaymentServiceGetSubscriptionUsageRequest;
 PaymentServiceGetSubscriptionUsageRequest.runtime = protobuf_1.proto3;
 PaymentServiceGetSubscriptionUsageRequest.typeName = "api.v1.PaymentServiceGetSubscriptionUsageRequest";
 PaymentServiceGetSubscriptionUsageRequest.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 1, name: "login", kind: "scalar", T: 9 /* ScalarType.STRING */ },
 ]);
+exports.PaymentServiceGetSubscriptionUsageRequest = PaymentServiceGetSubscriptionUsageRequest;
 /**
  * @generated from message api.v1.PaymentServiceGetSubscriptionUsageResponse
  */
@@ -784,12 +784,12 @@ class PaymentServiceGetSubscriptionUsageResponse extends protobuf_1.Message {
         return protobuf_1.proto3.util.equals(PaymentServiceGetSubscriptionUsageResponse, a, b);
     }
 }
-exports.PaymentServiceGetSubscriptionUsageResponse = PaymentServiceGetSubscriptionUsageResponse;
 PaymentServiceGetSubscriptionUsageResponse.runtime = protobuf_1.proto3;
 PaymentServiceGetSubscriptionUsageResponse.typeName = "api.v1.PaymentServiceGetSubscriptionUsageResponse";
 PaymentServiceGetSubscriptionUsageResponse.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 1, name: "subscription_usage_items", kind: "message", T: SubscriptionUsageItem, repeated: true },
 ]);
+exports.PaymentServiceGetSubscriptionUsageResponse = PaymentServiceGetSubscriptionUsageResponse;
 /**
  * @generated from message api.v1.PaymentServiceGetInvoicesRequest
  */
@@ -819,13 +819,13 @@ class PaymentServiceGetInvoicesRequest extends protobuf_1.Message {
         return protobuf_1.proto3.util.equals(PaymentServiceGetInvoicesRequest, a, b);
     }
 }
-exports.PaymentServiceGetInvoicesRequest = PaymentServiceGetInvoicesRequest;
 PaymentServiceGetInvoicesRequest.runtime = protobuf_1.proto3;
 PaymentServiceGetInvoicesRequest.typeName = "api.v1.PaymentServiceGetInvoicesRequest";
 PaymentServiceGetInvoicesRequest.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 1, name: "login", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 2, name: "customer_id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
 ]);
+exports.PaymentServiceGetInvoicesRequest = PaymentServiceGetInvoicesRequest;
 /**
  * @generated from message api.v1.PaymentServiceGetInvoicesResponse
  */
@@ -851,12 +851,12 @@ class PaymentServiceGetInvoicesResponse extends protobuf_1.Message {
         return protobuf_1.proto3.util.equals(PaymentServiceGetInvoicesResponse, a, b);
     }
 }
-exports.PaymentServiceGetInvoicesResponse = PaymentServiceGetInvoicesResponse;
 PaymentServiceGetInvoicesResponse.runtime = protobuf_1.proto3;
 PaymentServiceGetInvoicesResponse.typeName = "api.v1.PaymentServiceGetInvoicesResponse";
 PaymentServiceGetInvoicesResponse.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 1, name: "invoices", kind: "message", T: Invoice, repeated: true },
 ]);
+exports.PaymentServiceGetInvoicesResponse = PaymentServiceGetInvoicesResponse;
 /**
  * @generated from message api.v1.PaymentServiceGetDefaultPricesRequest
  */
@@ -878,10 +878,10 @@ class PaymentServiceGetDefaultPricesRequest extends protobuf_1.Message {
         return protobuf_1.proto3.util.equals(PaymentServiceGetDefaultPricesRequest, a, b);
     }
 }
-exports.PaymentServiceGetDefaultPricesRequest = PaymentServiceGetDefaultPricesRequest;
 PaymentServiceGetDefaultPricesRequest.runtime = protobuf_1.proto3;
 PaymentServiceGetDefaultPricesRequest.typeName = "api.v1.PaymentServiceGetDefaultPricesRequest";
 PaymentServiceGetDefaultPricesRequest.fields = protobuf_1.proto3.util.newFieldList(() => []);
+exports.PaymentServiceGetDefaultPricesRequest = PaymentServiceGetDefaultPricesRequest;
 /**
  * @generated from message api.v1.PaymentServiceGetDefaultPricesResponse
  */
@@ -907,12 +907,12 @@ class PaymentServiceGetDefaultPricesResponse extends protobuf_1.Message {
         return protobuf_1.proto3.util.equals(PaymentServiceGetDefaultPricesResponse, a, b);
     }
 }
-exports.PaymentServiceGetDefaultPricesResponse = PaymentServiceGetDefaultPricesResponse;
 PaymentServiceGetDefaultPricesResponse.runtime = protobuf_1.proto3;
 PaymentServiceGetDefaultPricesResponse.typeName = "api.v1.PaymentServiceGetDefaultPricesResponse";
 PaymentServiceGetDefaultPricesResponse.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 1, name: "prices", kind: "message", T: Price, repeated: true },
 ]);
+exports.PaymentServiceGetDefaultPricesResponse = PaymentServiceGetDefaultPricesResponse;
 /**
  * @generated from message api.v1.PaymentServiceCheckAdmittedRequest
  */
@@ -938,12 +938,12 @@ class PaymentServiceCheckAdmittedRequest extends protobuf_1.Message {
         return protobuf_1.proto3.util.equals(PaymentServiceCheckAdmittedRequest, a, b);
     }
 }
-exports.PaymentServiceCheckAdmittedRequest = PaymentServiceCheckAdmittedRequest;
 PaymentServiceCheckAdmittedRequest.runtime = protobuf_1.proto3;
 PaymentServiceCheckAdmittedRequest.typeName = "api.v1.PaymentServiceCheckAdmittedRequest";
 PaymentServiceCheckAdmittedRequest.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 1, name: "login", kind: "scalar", T: 9 /* ScalarType.STRING */ },
 ]);
+exports.PaymentServiceCheckAdmittedRequest = PaymentServiceCheckAdmittedRequest;
 /**
  * @generated from message api.v1.PaymentServiceCheckAdmittedResponse
  */
@@ -973,13 +973,13 @@ class PaymentServiceCheckAdmittedResponse extends protobuf_1.Message {
         return protobuf_1.proto3.util.equals(PaymentServiceCheckAdmittedResponse, a, b);
     }
 }
-exports.PaymentServiceCheckAdmittedResponse = PaymentServiceCheckAdmittedResponse;
 PaymentServiceCheckAdmittedResponse.runtime = protobuf_1.proto3;
 PaymentServiceCheckAdmittedResponse.typeName = "api.v1.PaymentServiceCheckAdmittedResponse";
 PaymentServiceCheckAdmittedResponse.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 1, name: "admitted", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
     { no: 2, name: "requested", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
 ]);
+exports.PaymentServiceCheckAdmittedResponse = PaymentServiceCheckAdmittedResponse;
 /**
  * @generated from message api.v1.PaymentServiceRequestAdmissionRequest
  */
@@ -1013,7 +1013,6 @@ class PaymentServiceRequestAdmissionRequest extends protobuf_1.Message {
         return protobuf_1.proto3.util.equals(PaymentServiceRequestAdmissionRequest, a, b);
     }
 }
-exports.PaymentServiceRequestAdmissionRequest = PaymentServiceRequestAdmissionRequest;
 PaymentServiceRequestAdmissionRequest.runtime = protobuf_1.proto3;
 PaymentServiceRequestAdmissionRequest.typeName = "api.v1.PaymentServiceRequestAdmissionRequest";
 PaymentServiceRequestAdmissionRequest.fields = protobuf_1.proto3.util.newFieldList(() => [
@@ -1022,6 +1021,7 @@ PaymentServiceRequestAdmissionRequest.fields = protobuf_1.proto3.util.newFieldLi
     { no: 3, name: "accepted_terms_and_conditions", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
     { no: 4, name: "email_consent", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
 ]);
+exports.PaymentServiceRequestAdmissionRequest = PaymentServiceRequestAdmissionRequest;
 /**
  * @generated from message api.v1.PaymentServiceRequestAdmissionResponse
  */
@@ -1043,7 +1043,7 @@ class PaymentServiceRequestAdmissionResponse extends protobuf_1.Message {
         return protobuf_1.proto3.util.equals(PaymentServiceRequestAdmissionResponse, a, b);
     }
 }
-exports.PaymentServiceRequestAdmissionResponse = PaymentServiceRequestAdmissionResponse;
 PaymentServiceRequestAdmissionResponse.runtime = protobuf_1.proto3;
 PaymentServiceRequestAdmissionResponse.typeName = "api.v1.PaymentServiceRequestAdmissionResponse";
 PaymentServiceRequestAdmissionResponse.fields = protobuf_1.proto3.util.newFieldList(() => []);
+exports.PaymentServiceRequestAdmissionResponse = PaymentServiceRequestAdmissionResponse;

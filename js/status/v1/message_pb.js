@@ -66,10 +66,10 @@ class MessageServiceListRequest extends protobuf_1.Message {
         return protobuf_1.proto3.util.equals(MessageServiceListRequest, a, b);
     }
 }
-exports.MessageServiceListRequest = MessageServiceListRequest;
 MessageServiceListRequest.runtime = protobuf_1.proto3;
 MessageServiceListRequest.typeName = "status.v1.MessageServiceListRequest";
 MessageServiceListRequest.fields = protobuf_1.proto3.util.newFieldList(() => []);
+exports.MessageServiceListRequest = MessageServiceListRequest;
 /**
  * @generated from message status.v1.MessageServiceListResponse
  */
@@ -99,13 +99,13 @@ class MessageServiceListResponse extends protobuf_1.Message {
         return protobuf_1.proto3.util.equals(MessageServiceListResponse, a, b);
     }
 }
-exports.MessageServiceListResponse = MessageServiceListResponse;
 MessageServiceListResponse.runtime = protobuf_1.proto3;
 MessageServiceListResponse.typeName = "status.v1.MessageServiceListResponse";
 MessageServiceListResponse.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 1, name: "items", kind: "message", T: Message, repeated: true },
     { no: 2, name: "pinned_items", kind: "message", T: Message, repeated: true },
 ]);
+exports.MessageServiceListResponse = MessageServiceListResponse;
 /**
  * @generated from message status.v1.Message
  */
@@ -143,7 +143,6 @@ class Message extends protobuf_1.Message {
         return protobuf_1.proto3.util.equals(Message, a, b);
     }
 }
-exports.Message = Message;
 Message.runtime = protobuf_1.proto3;
 Message.typeName = "status.v1.Message";
 Message.fields = protobuf_1.proto3.util.newFieldList(() => [
@@ -153,6 +152,7 @@ Message.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 4, name: "timestamp", kind: "message", T: protobuf_1.Timestamp },
     { no: 5, name: "replies", kind: "message", T: ReplyMessage, repeated: true },
 ]);
+exports.Message = Message;
 /**
  * @generated from message status.v1.ReplyMessage
  */
@@ -186,7 +186,6 @@ class ReplyMessage extends protobuf_1.Message {
         return protobuf_1.proto3.util.equals(ReplyMessage, a, b);
     }
 }
-exports.ReplyMessage = ReplyMessage;
 ReplyMessage.runtime = protobuf_1.proto3;
 ReplyMessage.typeName = "status.v1.ReplyMessage";
 ReplyMessage.fields = protobuf_1.proto3.util.newFieldList(() => [
@@ -195,3 +194,4 @@ ReplyMessage.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 3, name: "kind", kind: "enum", T: protobuf_1.proto3.getEnumType(MessageKind) },
     { no: 4, name: "timestamp", kind: "message", T: protobuf_1.Timestamp },
 ]);
+exports.ReplyMessage = ReplyMessage;

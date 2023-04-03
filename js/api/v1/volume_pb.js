@@ -109,7 +109,6 @@ class Volume extends protobuf_1.Message {
         return protobuf_1.proto3.util.equals(Volume, a, b);
     }
 }
-exports.Volume = Volume;
 Volume.runtime = protobuf_1.proto3;
 Volume.typeName = "api.v1.Volume";
 Volume.fields = protobuf_1.proto3.util.newFieldList(() => [
@@ -138,6 +137,7 @@ Volume.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 31, name: "updated_at", kind: "message", T: protobuf_1.Timestamp },
     { no: 32, name: "deleted_at", kind: "message", T: protobuf_1.Timestamp },
 ]);
+exports.Volume = Volume;
 /**
  * @generated from message api.v1.VolumeStatistics
  */
@@ -235,7 +235,6 @@ class VolumeStatistics extends protobuf_1.Message {
         return protobuf_1.proto3.util.equals(VolumeStatistics, a, b);
     }
 }
-exports.VolumeStatistics = VolumeStatistics;
 VolumeStatistics.runtime = protobuf_1.proto3;
 VolumeStatistics.typeName = "api.v1.VolumeStatistics";
 VolumeStatistics.fields = protobuf_1.proto3.util.newFieldList(() => [
@@ -251,6 +250,7 @@ VolumeStatistics.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 10, name: "unrecoverable_data_integrity_errors", kind: "scalar", T: 13 /* ScalarType.UINT32 */ },
     { no: 12, name: "recoverable_data_integrity_errors", kind: "scalar", T: 13 /* ScalarType.UINT32 */ },
 ]);
+exports.VolumeStatistics = VolumeStatistics;
 /**
  * @generated from message api.v1.Snapshot
  */
@@ -324,7 +324,6 @@ class Snapshot extends protobuf_1.Message {
         return protobuf_1.proto3.util.equals(Snapshot, a, b);
     }
 }
-exports.Snapshot = Snapshot;
 Snapshot.runtime = protobuf_1.proto3;
 Snapshot.typeName = "api.v1.Snapshot";
 Snapshot.fields = protobuf_1.proto3.util.newFieldList(() => [
@@ -347,6 +346,7 @@ Snapshot.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 21, name: "updated_at", kind: "message", T: protobuf_1.Timestamp },
     { no: 22, name: "deleted_at", kind: "message", T: protobuf_1.Timestamp },
 ]);
+exports.Snapshot = Snapshot;
 /**
  * @generated from message api.v1.SnapshotStatistics
  */
@@ -388,7 +388,6 @@ class SnapshotStatistics extends protobuf_1.Message {
         return protobuf_1.proto3.util.equals(SnapshotStatistics, a, b);
     }
 }
-exports.SnapshotStatistics = SnapshotStatistics;
 SnapshotStatistics.runtime = protobuf_1.proto3;
 SnapshotStatistics.typeName = "api.v1.SnapshotStatistics";
 SnapshotStatistics.fields = protobuf_1.proto3.util.newFieldList(() => [
@@ -398,6 +397,7 @@ SnapshotStatistics.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 4, name: "physical_memory", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
     { no: 5, name: "user_written", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
 ]);
+exports.SnapshotStatistics = SnapshotStatistics;
 /**
  * Requests
  *
@@ -429,13 +429,13 @@ class VolumeServiceGetRequest extends protobuf_1.Message {
         return protobuf_1.proto3.util.equals(VolumeServiceGetRequest, a, b);
     }
 }
-exports.VolumeServiceGetRequest = VolumeServiceGetRequest;
 VolumeServiceGetRequest.runtime = protobuf_1.proto3;
 VolumeServiceGetRequest.typeName = "api.v1.VolumeServiceGetRequest";
 VolumeServiceGetRequest.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 1, name: "uuid", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 2, name: "project", kind: "scalar", T: 9 /* ScalarType.STRING */ },
 ]);
+exports.VolumeServiceGetRequest = VolumeServiceGetRequest;
 /**
  * @generated from message api.v1.VolumeServiceListRequest
  */
@@ -461,7 +461,6 @@ class VolumeServiceListRequest extends protobuf_1.Message {
         return protobuf_1.proto3.util.equals(VolumeServiceListRequest, a, b);
     }
 }
-exports.VolumeServiceListRequest = VolumeServiceListRequest;
 VolumeServiceListRequest.runtime = protobuf_1.proto3;
 VolumeServiceListRequest.typeName = "api.v1.VolumeServiceListRequest";
 VolumeServiceListRequest.fields = protobuf_1.proto3.util.newFieldList(() => [
@@ -470,6 +469,7 @@ VolumeServiceListRequest.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 3, name: "partition", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
     { no: 4, name: "name", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
 ]);
+exports.VolumeServiceListRequest = VolumeServiceListRequest;
 /**
  * @generated from message api.v1.VolumeServiceDeleteRequest
  */
@@ -499,13 +499,13 @@ class VolumeServiceDeleteRequest extends protobuf_1.Message {
         return protobuf_1.proto3.util.equals(VolumeServiceDeleteRequest, a, b);
     }
 }
-exports.VolumeServiceDeleteRequest = VolumeServiceDeleteRequest;
 VolumeServiceDeleteRequest.runtime = protobuf_1.proto3;
 VolumeServiceDeleteRequest.typeName = "api.v1.VolumeServiceDeleteRequest";
 VolumeServiceDeleteRequest.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 1, name: "uuid", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 2, name: "project", kind: "scalar", T: 9 /* ScalarType.STRING */ },
 ]);
+exports.VolumeServiceDeleteRequest = VolumeServiceDeleteRequest;
 /**
  * @generated from message api.v1.SnapshotServiceGetRequest
  */
@@ -535,13 +535,13 @@ class SnapshotServiceGetRequest extends protobuf_1.Message {
         return protobuf_1.proto3.util.equals(SnapshotServiceGetRequest, a, b);
     }
 }
-exports.SnapshotServiceGetRequest = SnapshotServiceGetRequest;
 SnapshotServiceGetRequest.runtime = protobuf_1.proto3;
 SnapshotServiceGetRequest.typeName = "api.v1.SnapshotServiceGetRequest";
 SnapshotServiceGetRequest.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 1, name: "uuid", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 2, name: "project", kind: "scalar", T: 9 /* ScalarType.STRING */ },
 ]);
+exports.SnapshotServiceGetRequest = SnapshotServiceGetRequest;
 /**
  * @generated from message api.v1.SnapshotServiceListRequest
  */
@@ -567,7 +567,6 @@ class SnapshotServiceListRequest extends protobuf_1.Message {
         return protobuf_1.proto3.util.equals(SnapshotServiceListRequest, a, b);
     }
 }
-exports.SnapshotServiceListRequest = SnapshotServiceListRequest;
 SnapshotServiceListRequest.runtime = protobuf_1.proto3;
 SnapshotServiceListRequest.typeName = "api.v1.SnapshotServiceListRequest";
 SnapshotServiceListRequest.fields = protobuf_1.proto3.util.newFieldList(() => [
@@ -576,6 +575,7 @@ SnapshotServiceListRequest.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 3, name: "partition", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
     { no: 4, name: "name", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
 ]);
+exports.SnapshotServiceListRequest = SnapshotServiceListRequest;
 /**
  * @generated from message api.v1.SnapshotServiceDeleteRequest
  */
@@ -605,13 +605,13 @@ class SnapshotServiceDeleteRequest extends protobuf_1.Message {
         return protobuf_1.proto3.util.equals(SnapshotServiceDeleteRequest, a, b);
     }
 }
-exports.SnapshotServiceDeleteRequest = SnapshotServiceDeleteRequest;
 SnapshotServiceDeleteRequest.runtime = protobuf_1.proto3;
 SnapshotServiceDeleteRequest.typeName = "api.v1.SnapshotServiceDeleteRequest";
 SnapshotServiceDeleteRequest.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 1, name: "uuid", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 2, name: "project", kind: "scalar", T: 9 /* ScalarType.STRING */ },
 ]);
+exports.SnapshotServiceDeleteRequest = SnapshotServiceDeleteRequest;
 /**
  * Responses
  *
@@ -635,12 +635,12 @@ class VolumeServiceGetResponse extends protobuf_1.Message {
         return protobuf_1.proto3.util.equals(VolumeServiceGetResponse, a, b);
     }
 }
-exports.VolumeServiceGetResponse = VolumeServiceGetResponse;
 VolumeServiceGetResponse.runtime = protobuf_1.proto3;
 VolumeServiceGetResponse.typeName = "api.v1.VolumeServiceGetResponse";
 VolumeServiceGetResponse.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 1, name: "volume", kind: "message", T: Volume },
 ]);
+exports.VolumeServiceGetResponse = VolumeServiceGetResponse;
 /**
  * @generated from message api.v1.VolumeServiceListResponse
  */
@@ -666,12 +666,12 @@ class VolumeServiceListResponse extends protobuf_1.Message {
         return protobuf_1.proto3.util.equals(VolumeServiceListResponse, a, b);
     }
 }
-exports.VolumeServiceListResponse = VolumeServiceListResponse;
 VolumeServiceListResponse.runtime = protobuf_1.proto3;
 VolumeServiceListResponse.typeName = "api.v1.VolumeServiceListResponse";
 VolumeServiceListResponse.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 1, name: "volumes", kind: "message", T: Volume, repeated: true },
 ]);
+exports.VolumeServiceListResponse = VolumeServiceListResponse;
 /**
  * @generated from message api.v1.VolumeServiceDeleteResponse
  */
@@ -693,12 +693,12 @@ class VolumeServiceDeleteResponse extends protobuf_1.Message {
         return protobuf_1.proto3.util.equals(VolumeServiceDeleteResponse, a, b);
     }
 }
-exports.VolumeServiceDeleteResponse = VolumeServiceDeleteResponse;
 VolumeServiceDeleteResponse.runtime = protobuf_1.proto3;
 VolumeServiceDeleteResponse.typeName = "api.v1.VolumeServiceDeleteResponse";
 VolumeServiceDeleteResponse.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 1, name: "volume", kind: "message", T: Volume },
 ]);
+exports.VolumeServiceDeleteResponse = VolumeServiceDeleteResponse;
 /**
  * @generated from message api.v1.SnapshotServiceGetResponse
  */
@@ -720,12 +720,12 @@ class SnapshotServiceGetResponse extends protobuf_1.Message {
         return protobuf_1.proto3.util.equals(SnapshotServiceGetResponse, a, b);
     }
 }
-exports.SnapshotServiceGetResponse = SnapshotServiceGetResponse;
 SnapshotServiceGetResponse.runtime = protobuf_1.proto3;
 SnapshotServiceGetResponse.typeName = "api.v1.SnapshotServiceGetResponse";
 SnapshotServiceGetResponse.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 1, name: "snapshot", kind: "message", T: Snapshot },
 ]);
+exports.SnapshotServiceGetResponse = SnapshotServiceGetResponse;
 /**
  * @generated from message api.v1.SnapshotServiceListResponse
  */
@@ -751,12 +751,12 @@ class SnapshotServiceListResponse extends protobuf_1.Message {
         return protobuf_1.proto3.util.equals(SnapshotServiceListResponse, a, b);
     }
 }
-exports.SnapshotServiceListResponse = SnapshotServiceListResponse;
 SnapshotServiceListResponse.runtime = protobuf_1.proto3;
 SnapshotServiceListResponse.typeName = "api.v1.SnapshotServiceListResponse";
 SnapshotServiceListResponse.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 1, name: "snapshots", kind: "message", T: Snapshot, repeated: true },
 ]);
+exports.SnapshotServiceListResponse = SnapshotServiceListResponse;
 /**
  * @generated from message api.v1.SnapshotServiceDeleteResponse
  */
@@ -778,9 +778,9 @@ class SnapshotServiceDeleteResponse extends protobuf_1.Message {
         return protobuf_1.proto3.util.equals(SnapshotServiceDeleteResponse, a, b);
     }
 }
-exports.SnapshotServiceDeleteResponse = SnapshotServiceDeleteResponse;
 SnapshotServiceDeleteResponse.runtime = protobuf_1.proto3;
 SnapshotServiceDeleteResponse.typeName = "api.v1.SnapshotServiceDeleteResponse";
 SnapshotServiceDeleteResponse.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 1, name: "snapshot", kind: "message", T: Snapshot },
 ]);
+exports.SnapshotServiceDeleteResponse = SnapshotServiceDeleteResponse;
