@@ -16,32 +16,6 @@ type TenantServiceHandler struct {
 	mock.Mock
 }
 
-// CheckAdmitted provides a mock function with given fields: _a0, _a1
-func (_m *TenantServiceHandler) CheckAdmitted(_a0 context.Context, _a1 *connect.Request[apiv1.TenantServiceCheckAdmittedRequest]) (*connect.Response[apiv1.TenantServiceCheckAdmittedResponse], error) {
-	ret := _m.Called(_a0, _a1)
-
-	var r0 *connect.Response[apiv1.TenantServiceCheckAdmittedResponse]
-	var r1 error
-	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[apiv1.TenantServiceCheckAdmittedRequest]) (*connect.Response[apiv1.TenantServiceCheckAdmittedResponse], error)); ok {
-		return rf(_a0, _a1)
-	}
-	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[apiv1.TenantServiceCheckAdmittedRequest]) *connect.Response[apiv1.TenantServiceCheckAdmittedResponse]); ok {
-		r0 = rf(_a0, _a1)
-	} else {
-		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*connect.Response[apiv1.TenantServiceCheckAdmittedResponse])
-		}
-	}
-
-	if rf, ok := ret.Get(1).(func(context.Context, *connect.Request[apiv1.TenantServiceCheckAdmittedRequest]) error); ok {
-		r1 = rf(_a0, _a1)
-	} else {
-		r1 = ret.Error(1)
-	}
-
-	return r0, r1
-}
-
 // Create provides a mock function with given fields: _a0, _a1
 func (_m *TenantServiceHandler) Create(_a0 context.Context, _a1 *connect.Request[apiv1.TenantServiceCreateRequest]) (*connect.Response[apiv1.TenantServiceCreateResponse], error) {
 	ret := _m.Called(_a0, _a1)
@@ -138,32 +112,6 @@ func (_m *TenantServiceHandler) Get(_a0 context.Context, _a1 *connect.Request[ap
 	}
 
 	if rf, ok := ret.Get(1).(func(context.Context, *connect.Request[apiv1.TenantServiceGetRequest]) error); ok {
-		r1 = rf(_a0, _a1)
-	} else {
-		r1 = ret.Error(1)
-	}
-
-	return r0, r1
-}
-
-// RequestAdmission provides a mock function with given fields: _a0, _a1
-func (_m *TenantServiceHandler) RequestAdmission(_a0 context.Context, _a1 *connect.Request[apiv1.TenantServiceRequestAdmissionRequest]) (*connect.Response[apiv1.TenantServiceRequestAdmissionResponse], error) {
-	ret := _m.Called(_a0, _a1)
-
-	var r0 *connect.Response[apiv1.TenantServiceRequestAdmissionResponse]
-	var r1 error
-	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[apiv1.TenantServiceRequestAdmissionRequest]) (*connect.Response[apiv1.TenantServiceRequestAdmissionResponse], error)); ok {
-		return rf(_a0, _a1)
-	}
-	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[apiv1.TenantServiceRequestAdmissionRequest]) *connect.Response[apiv1.TenantServiceRequestAdmissionResponse]); ok {
-		r0 = rf(_a0, _a1)
-	} else {
-		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*connect.Response[apiv1.TenantServiceRequestAdmissionResponse])
-		}
-	}
-
-	if rf, ok := ret.Get(1).(func(context.Context, *connect.Request[apiv1.TenantServiceRequestAdmissionRequest]) error); ok {
 		r1 = rf(_a0, _a1)
 	} else {
 		r1 = ret.Error(1)

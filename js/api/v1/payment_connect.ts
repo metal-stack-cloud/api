@@ -3,7 +3,7 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import { PaymentServiceCheckIfCustomerExistsRequest, PaymentServiceCheckIfCustomerExistsResponse, PaymentServiceCreateOrUpdateCustomerRequest, PaymentServiceCreateOrUpdateCustomerResponse, PaymentServiceDeletePaymentMethodRequest, PaymentServiceDeletePaymentMethodResponse, PaymentServiceGetCustomerRequest, PaymentServiceGetCustomerResponse, PaymentServiceGetCustomerWithLoginRequest, PaymentServiceGetCustomerWithLoginResponse, PaymentServiceGetDefaultPricesRequest, PaymentServiceGetDefaultPricesResponse, PaymentServiceGetInvoicesRequest, PaymentServiceGetInvoicesResponse, PaymentServiceGetSubscriptionUsageRequest, PaymentServiceGetSubscriptionUsageResponse, PaymentServiceHasPaymentMethodRequest, PaymentServiceHasPaymentMethodResponse } from "./payment_pb.js";
+import { PaymentServiceCheckAdmittedRequest, PaymentServiceCheckAdmittedResponse, PaymentServiceCheckIfCustomerExistsRequest, PaymentServiceCheckIfCustomerExistsResponse, PaymentServiceCreateOrUpdateCustomerRequest, PaymentServiceCreateOrUpdateCustomerResponse, PaymentServiceDeletePaymentMethodRequest, PaymentServiceDeletePaymentMethodResponse, PaymentServiceGetCustomerRequest, PaymentServiceGetCustomerResponse, PaymentServiceGetCustomerWithLoginRequest, PaymentServiceGetCustomerWithLoginResponse, PaymentServiceGetDefaultPricesRequest, PaymentServiceGetDefaultPricesResponse, PaymentServiceGetInvoicesRequest, PaymentServiceGetInvoicesResponse, PaymentServiceGetSubscriptionUsageRequest, PaymentServiceGetSubscriptionUsageResponse, PaymentServiceHasPaymentMethodRequest, PaymentServiceHasPaymentMethodResponse, PaymentServiceRequestAdmissionRequest, PaymentServiceRequestAdmissionResponse } from "./payment_pb.js";
 import { MethodKind } from "@bufbuild/protobuf";
 
 /**
@@ -91,6 +91,24 @@ export const PaymentService = {
       name: "GetDefaultPrices",
       I: PaymentServiceGetDefaultPricesRequest,
       O: PaymentServiceGetDefaultPricesResponse,
+      kind: MethodKind.Unary,
+    },
+    /**
+     * @generated from rpc api.v1.PaymentService.CheckAdmitted
+     */
+    checkAdmitted: {
+      name: "CheckAdmitted",
+      I: PaymentServiceCheckAdmittedRequest,
+      O: PaymentServiceCheckAdmittedResponse,
+      kind: MethodKind.Unary,
+    },
+    /**
+     * @generated from rpc api.v1.PaymentService.RequestAdmission
+     */
+    requestAdmission: {
+      name: "RequestAdmission",
+      I: PaymentServiceRequestAdmissionRequest,
+      O: PaymentServiceRequestAdmissionResponse,
       kind: MethodKind.Unary,
     },
   }

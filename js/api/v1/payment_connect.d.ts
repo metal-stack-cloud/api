@@ -1,4 +1,4 @@
-import { PaymentServiceCheckIfCustomerExistsRequest, PaymentServiceCheckIfCustomerExistsResponse, PaymentServiceCreateOrUpdateCustomerRequest, PaymentServiceCreateOrUpdateCustomerResponse, PaymentServiceDeletePaymentMethodRequest, PaymentServiceDeletePaymentMethodResponse, PaymentServiceGetCustomerRequest, PaymentServiceGetCustomerResponse, PaymentServiceGetCustomerWithLoginRequest, PaymentServiceGetCustomerWithLoginResponse, PaymentServiceGetDefaultPricesRequest, PaymentServiceGetDefaultPricesResponse, PaymentServiceGetInvoicesRequest, PaymentServiceGetInvoicesResponse, PaymentServiceGetSubscriptionUsageRequest, PaymentServiceGetSubscriptionUsageResponse, PaymentServiceHasPaymentMethodRequest, PaymentServiceHasPaymentMethodResponse } from "./payment_pb.js";
+import { PaymentServiceCheckAdmittedRequest, PaymentServiceCheckAdmittedResponse, PaymentServiceCheckIfCustomerExistsRequest, PaymentServiceCheckIfCustomerExistsResponse, PaymentServiceCreateOrUpdateCustomerRequest, PaymentServiceCreateOrUpdateCustomerResponse, PaymentServiceDeletePaymentMethodRequest, PaymentServiceDeletePaymentMethodResponse, PaymentServiceGetCustomerRequest, PaymentServiceGetCustomerResponse, PaymentServiceGetCustomerWithLoginRequest, PaymentServiceGetCustomerWithLoginResponse, PaymentServiceGetDefaultPricesRequest, PaymentServiceGetDefaultPricesResponse, PaymentServiceGetInvoicesRequest, PaymentServiceGetInvoicesResponse, PaymentServiceGetSubscriptionUsageRequest, PaymentServiceGetSubscriptionUsageResponse, PaymentServiceHasPaymentMethodRequest, PaymentServiceHasPaymentMethodResponse, PaymentServiceRequestAdmissionRequest, PaymentServiceRequestAdmissionResponse } from "./payment_pb.js";
 import { MethodKind } from "@bufbuild/protobuf";
 /**
  * @generated from service api.v1.PaymentService
@@ -85,6 +85,24 @@ export declare const PaymentService: {
             readonly name: "GetDefaultPrices";
             readonly I: typeof PaymentServiceGetDefaultPricesRequest;
             readonly O: typeof PaymentServiceGetDefaultPricesResponse;
+            readonly kind: MethodKind.Unary;
+        };
+        /**
+         * @generated from rpc api.v1.PaymentService.CheckAdmitted
+         */
+        readonly checkAdmitted: {
+            readonly name: "CheckAdmitted";
+            readonly I: typeof PaymentServiceCheckAdmittedRequest;
+            readonly O: typeof PaymentServiceCheckAdmittedResponse;
+            readonly kind: MethodKind.Unary;
+        };
+        /**
+         * @generated from rpc api.v1.PaymentService.RequestAdmission
+         */
+        readonly requestAdmission: {
+            readonly name: "RequestAdmission";
+            readonly I: typeof PaymentServiceRequestAdmissionRequest;
+            readonly O: typeof PaymentServiceRequestAdmissionResponse;
             readonly kind: MethodKind.Unary;
         };
     };
