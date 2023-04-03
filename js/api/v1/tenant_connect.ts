@@ -3,7 +3,7 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import { TenantServiceCheckAdmittedRequest, TenantServiceCheckAdmittedResponse, TenantServiceCreateOrUpdateRequest, TenantServiceCreateOrUpdateResponse, TenantServiceCreateRequest, TenantServiceCreateResponse, TenantServiceDeleteRequest, TenantServiceDeleteResponse, TenantServiceGetRequest, TenantServiceGetResponse, TenantServiceRequestAdmissionRequest, TenantServiceRequestAdmissionResponse, TenantServiceUpdateRequest, TenantServiceUpdateResponse } from "./tenant_pb.js";
+import { TenantServiceCreateOrUpdateRequest, TenantServiceCreateOrUpdateResponse, TenantServiceCreateRequest, TenantServiceCreateResponse, TenantServiceDeleteRequest, TenantServiceDeleteResponse, TenantServiceGetRequest, TenantServiceGetResponse, TenantServiceUpdateRequest, TenantServiceUpdateResponse } from "./tenant_pb.js";
 import { MethodKind } from "@bufbuild/protobuf";
 
 /**
@@ -58,24 +58,6 @@ export const TenantService = {
       name: "Delete",
       I: TenantServiceDeleteRequest,
       O: TenantServiceDeleteResponse,
-      kind: MethodKind.Unary,
-    },
-    /**
-     * @generated from rpc api.v1.TenantService.CheckAdmitted
-     */
-    checkAdmitted: {
-      name: "CheckAdmitted",
-      I: TenantServiceCheckAdmittedRequest,
-      O: TenantServiceCheckAdmittedResponse,
-      kind: MethodKind.Unary,
-    },
-    /**
-     * @generated from rpc api.v1.TenantService.RequestAdmission
-     */
-    requestAdmission: {
-      name: "RequestAdmission",
-      I: TenantServiceRequestAdmissionRequest,
-      O: TenantServiceRequestAdmissionResponse,
       kind: MethodKind.Unary,
     },
   }
