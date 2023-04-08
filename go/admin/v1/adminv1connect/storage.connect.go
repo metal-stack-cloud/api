@@ -25,6 +25,25 @@ const (
 	StorageServiceName = "admin.v1.StorageService"
 )
 
+// These constants are the fully-qualified names of the RPCs defined in this package. They're
+// exposed at runtime as Spec.Procedure and as the final two segments of the HTTP route.
+//
+// Note that these are different from the fully-qualified method names used by
+// google.golang.org/protobuf/reflect/protoreflect. To convert from these constants to
+// reflection-formatted method names, remove the leading slash and convert the remaining slash to a
+// period.
+const (
+	// StorageServiceClusterInfoProcedure is the fully-qualified name of the StorageService's
+	// ClusterInfo RPC.
+	StorageServiceClusterInfoProcedure = "/admin.v1.StorageService/ClusterInfo"
+	// StorageServiceListVolumesProcedure is the fully-qualified name of the StorageService's
+	// ListVolumes RPC.
+	StorageServiceListVolumesProcedure = "/admin.v1.StorageService/ListVolumes"
+	// StorageServiceListSnapshotsProcedure is the fully-qualified name of the StorageService's
+	// ListSnapshots RPC.
+	StorageServiceListSnapshotsProcedure = "/admin.v1.StorageService/ListSnapshots"
+)
+
 // StorageServiceClient is a client for the admin.v1.StorageService service.
 type StorageServiceClient interface {
 	ClusterInfo(context.Context, *connect_go.Request[v1.StorageServiceClusterInfoRequest]) (*connect_go.Response[v1.StorageServiceClusterInfoResponse], error)
@@ -44,17 +63,17 @@ func NewStorageServiceClient(httpClient connect_go.HTTPClient, baseURL string, o
 	return &storageServiceClient{
 		clusterInfo: connect_go.NewClient[v1.StorageServiceClusterInfoRequest, v1.StorageServiceClusterInfoResponse](
 			httpClient,
-			baseURL+"/admin.v1.StorageService/ClusterInfo",
+			baseURL+StorageServiceClusterInfoProcedure,
 			opts...,
 		),
 		listVolumes: connect_go.NewClient[v1.StorageServiceListVolumesRequest, v1.StorageServiceListVolumesResponse](
 			httpClient,
-			baseURL+"/admin.v1.StorageService/ListVolumes",
+			baseURL+StorageServiceListVolumesProcedure,
 			opts...,
 		),
 		listSnapshots: connect_go.NewClient[v1.StorageServiceListSnapshotsRequest, v1.StorageServiceListSnapshotsResponse](
 			httpClient,
-			baseURL+"/admin.v1.StorageService/ListSnapshots",
+			baseURL+StorageServiceListSnapshotsProcedure,
 			opts...,
 		),
 	}
@@ -96,18 +115,18 @@ type StorageServiceHandler interface {
 // and JSON codecs. They also support gzip compression.
 func NewStorageServiceHandler(svc StorageServiceHandler, opts ...connect_go.HandlerOption) (string, http.Handler) {
 	mux := http.NewServeMux()
-	mux.Handle("/admin.v1.StorageService/ClusterInfo", connect_go.NewUnaryHandler(
-		"/admin.v1.StorageService/ClusterInfo",
+	mux.Handle(StorageServiceClusterInfoProcedure, connect_go.NewUnaryHandler(
+		StorageServiceClusterInfoProcedure,
 		svc.ClusterInfo,
 		opts...,
 	))
-	mux.Handle("/admin.v1.StorageService/ListVolumes", connect_go.NewUnaryHandler(
-		"/admin.v1.StorageService/ListVolumes",
+	mux.Handle(StorageServiceListVolumesProcedure, connect_go.NewUnaryHandler(
+		StorageServiceListVolumesProcedure,
 		svc.ListVolumes,
 		opts...,
 	))
-	mux.Handle("/admin.v1.StorageService/ListSnapshots", connect_go.NewUnaryHandler(
-		"/admin.v1.StorageService/ListSnapshots",
+	mux.Handle(StorageServiceListSnapshotsProcedure, connect_go.NewUnaryHandler(
+		StorageServiceListSnapshotsProcedure,
 		svc.ListSnapshots,
 		opts...,
 	))

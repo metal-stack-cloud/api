@@ -25,6 +25,18 @@ const (
 	StatusServiceName = "status.v1.StatusService"
 )
 
+// These constants are the fully-qualified names of the RPCs defined in this package. They're
+// exposed at runtime as Spec.Procedure and as the final two segments of the HTTP route.
+//
+// Note that these are different from the fully-qualified method names used by
+// google.golang.org/protobuf/reflect/protoreflect. To convert from these constants to
+// reflection-formatted method names, remove the leading slash and convert the remaining slash to a
+// period.
+const (
+	// StatusServiceGetProcedure is the fully-qualified name of the StatusService's Get RPC.
+	StatusServiceGetProcedure = "/status.v1.StatusService/Get"
+)
+
 // StatusServiceClient is a client for the status.v1.StatusService service.
 type StatusServiceClient interface {
 	Get(context.Context, *connect_go.Request[v1.StatusServiceGetRequest]) (*connect_go.Response[v1.StatusServiceGetResponse], error)
@@ -42,7 +54,7 @@ func NewStatusServiceClient(httpClient connect_go.HTTPClient, baseURL string, op
 	return &statusServiceClient{
 		get: connect_go.NewClient[v1.StatusServiceGetRequest, v1.StatusServiceGetResponse](
 			httpClient,
-			baseURL+"/status.v1.StatusService/Get",
+			baseURL+StatusServiceGetProcedure,
 			opts...,
 		),
 	}
@@ -70,8 +82,8 @@ type StatusServiceHandler interface {
 // and JSON codecs. They also support gzip compression.
 func NewStatusServiceHandler(svc StatusServiceHandler, opts ...connect_go.HandlerOption) (string, http.Handler) {
 	mux := http.NewServeMux()
-	mux.Handle("/status.v1.StatusService/Get", connect_go.NewUnaryHandler(
-		"/status.v1.StatusService/Get",
+	mux.Handle(StatusServiceGetProcedure, connect_go.NewUnaryHandler(
+		StatusServiceGetProcedure,
 		svc.Get,
 		opts...,
 	))

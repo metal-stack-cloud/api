@@ -25,6 +25,18 @@ const (
 	MessageServiceName = "status.v1.MessageService"
 )
 
+// These constants are the fully-qualified names of the RPCs defined in this package. They're
+// exposed at runtime as Spec.Procedure and as the final two segments of the HTTP route.
+//
+// Note that these are different from the fully-qualified method names used by
+// google.golang.org/protobuf/reflect/protoreflect. To convert from these constants to
+// reflection-formatted method names, remove the leading slash and convert the remaining slash to a
+// period.
+const (
+	// MessageServiceListProcedure is the fully-qualified name of the MessageService's List RPC.
+	MessageServiceListProcedure = "/status.v1.MessageService/List"
+)
+
 // MessageServiceClient is a client for the status.v1.MessageService service.
 type MessageServiceClient interface {
 	List(context.Context, *connect_go.Request[v1.MessageServiceListRequest]) (*connect_go.Response[v1.MessageServiceListResponse], error)
@@ -42,7 +54,7 @@ func NewMessageServiceClient(httpClient connect_go.HTTPClient, baseURL string, o
 	return &messageServiceClient{
 		list: connect_go.NewClient[v1.MessageServiceListRequest, v1.MessageServiceListResponse](
 			httpClient,
-			baseURL+"/status.v1.MessageService/List",
+			baseURL+MessageServiceListProcedure,
 			opts...,
 		),
 	}
@@ -70,8 +82,8 @@ type MessageServiceHandler interface {
 // and JSON codecs. They also support gzip compression.
 func NewMessageServiceHandler(svc MessageServiceHandler, opts ...connect_go.HandlerOption) (string, http.Handler) {
 	mux := http.NewServeMux()
-	mux.Handle("/status.v1.MessageService/List", connect_go.NewUnaryHandler(
-		"/status.v1.MessageService/List",
+	mux.Handle(MessageServiceListProcedure, connect_go.NewUnaryHandler(
+		MessageServiceListProcedure,
 		svc.List,
 		opts...,
 	))

@@ -27,6 +27,28 @@ const (
 	SnapshotServiceName = "api.v1.SnapshotService"
 )
 
+// These constants are the fully-qualified names of the RPCs defined in this package. They're
+// exposed at runtime as Spec.Procedure and as the final two segments of the HTTP route.
+//
+// Note that these are different from the fully-qualified method names used by
+// google.golang.org/protobuf/reflect/protoreflect. To convert from these constants to
+// reflection-formatted method names, remove the leading slash and convert the remaining slash to a
+// period.
+const (
+	// VolumeServiceGetProcedure is the fully-qualified name of the VolumeService's Get RPC.
+	VolumeServiceGetProcedure = "/api.v1.VolumeService/Get"
+	// VolumeServiceListProcedure is the fully-qualified name of the VolumeService's List RPC.
+	VolumeServiceListProcedure = "/api.v1.VolumeService/List"
+	// VolumeServiceDeleteProcedure is the fully-qualified name of the VolumeService's Delete RPC.
+	VolumeServiceDeleteProcedure = "/api.v1.VolumeService/Delete"
+	// SnapshotServiceGetProcedure is the fully-qualified name of the SnapshotService's Get RPC.
+	SnapshotServiceGetProcedure = "/api.v1.SnapshotService/Get"
+	// SnapshotServiceListProcedure is the fully-qualified name of the SnapshotService's List RPC.
+	SnapshotServiceListProcedure = "/api.v1.SnapshotService/List"
+	// SnapshotServiceDeleteProcedure is the fully-qualified name of the SnapshotService's Delete RPC.
+	SnapshotServiceDeleteProcedure = "/api.v1.SnapshotService/Delete"
+)
+
 // VolumeServiceClient is a client for the api.v1.VolumeService service.
 type VolumeServiceClient interface {
 	Get(context.Context, *connect_go.Request[v1.VolumeServiceGetRequest]) (*connect_go.Response[v1.VolumeServiceGetResponse], error)
@@ -46,17 +68,17 @@ func NewVolumeServiceClient(httpClient connect_go.HTTPClient, baseURL string, op
 	return &volumeServiceClient{
 		get: connect_go.NewClient[v1.VolumeServiceGetRequest, v1.VolumeServiceGetResponse](
 			httpClient,
-			baseURL+"/api.v1.VolumeService/Get",
+			baseURL+VolumeServiceGetProcedure,
 			opts...,
 		),
 		list: connect_go.NewClient[v1.VolumeServiceListRequest, v1.VolumeServiceListResponse](
 			httpClient,
-			baseURL+"/api.v1.VolumeService/List",
+			baseURL+VolumeServiceListProcedure,
 			opts...,
 		),
 		delete: connect_go.NewClient[v1.VolumeServiceDeleteRequest, v1.VolumeServiceDeleteResponse](
 			httpClient,
-			baseURL+"/api.v1.VolumeService/Delete",
+			baseURL+VolumeServiceDeleteProcedure,
 			opts...,
 		),
 	}
@@ -98,18 +120,18 @@ type VolumeServiceHandler interface {
 // and JSON codecs. They also support gzip compression.
 func NewVolumeServiceHandler(svc VolumeServiceHandler, opts ...connect_go.HandlerOption) (string, http.Handler) {
 	mux := http.NewServeMux()
-	mux.Handle("/api.v1.VolumeService/Get", connect_go.NewUnaryHandler(
-		"/api.v1.VolumeService/Get",
+	mux.Handle(VolumeServiceGetProcedure, connect_go.NewUnaryHandler(
+		VolumeServiceGetProcedure,
 		svc.Get,
 		opts...,
 	))
-	mux.Handle("/api.v1.VolumeService/List", connect_go.NewUnaryHandler(
-		"/api.v1.VolumeService/List",
+	mux.Handle(VolumeServiceListProcedure, connect_go.NewUnaryHandler(
+		VolumeServiceListProcedure,
 		svc.List,
 		opts...,
 	))
-	mux.Handle("/api.v1.VolumeService/Delete", connect_go.NewUnaryHandler(
-		"/api.v1.VolumeService/Delete",
+	mux.Handle(VolumeServiceDeleteProcedure, connect_go.NewUnaryHandler(
+		VolumeServiceDeleteProcedure,
 		svc.Delete,
 		opts...,
 	))
@@ -150,17 +172,17 @@ func NewSnapshotServiceClient(httpClient connect_go.HTTPClient, baseURL string, 
 	return &snapshotServiceClient{
 		get: connect_go.NewClient[v1.SnapshotServiceGetRequest, v1.SnapshotServiceGetResponse](
 			httpClient,
-			baseURL+"/api.v1.SnapshotService/Get",
+			baseURL+SnapshotServiceGetProcedure,
 			opts...,
 		),
 		list: connect_go.NewClient[v1.SnapshotServiceListRequest, v1.SnapshotServiceListResponse](
 			httpClient,
-			baseURL+"/api.v1.SnapshotService/List",
+			baseURL+SnapshotServiceListProcedure,
 			opts...,
 		),
 		delete: connect_go.NewClient[v1.SnapshotServiceDeleteRequest, v1.SnapshotServiceDeleteResponse](
 			httpClient,
-			baseURL+"/api.v1.SnapshotService/Delete",
+			baseURL+SnapshotServiceDeleteProcedure,
 			opts...,
 		),
 	}
@@ -202,18 +224,18 @@ type SnapshotServiceHandler interface {
 // and JSON codecs. They also support gzip compression.
 func NewSnapshotServiceHandler(svc SnapshotServiceHandler, opts ...connect_go.HandlerOption) (string, http.Handler) {
 	mux := http.NewServeMux()
-	mux.Handle("/api.v1.SnapshotService/Get", connect_go.NewUnaryHandler(
-		"/api.v1.SnapshotService/Get",
+	mux.Handle(SnapshotServiceGetProcedure, connect_go.NewUnaryHandler(
+		SnapshotServiceGetProcedure,
 		svc.Get,
 		opts...,
 	))
-	mux.Handle("/api.v1.SnapshotService/List", connect_go.NewUnaryHandler(
-		"/api.v1.SnapshotService/List",
+	mux.Handle(SnapshotServiceListProcedure, connect_go.NewUnaryHandler(
+		SnapshotServiceListProcedure,
 		svc.List,
 		opts...,
 	))
-	mux.Handle("/api.v1.SnapshotService/Delete", connect_go.NewUnaryHandler(
-		"/api.v1.SnapshotService/Delete",
+	mux.Handle(SnapshotServiceDeleteProcedure, connect_go.NewUnaryHandler(
+		SnapshotServiceDeleteProcedure,
 		svc.Delete,
 		opts...,
 	))

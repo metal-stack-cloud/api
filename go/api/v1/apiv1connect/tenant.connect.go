@@ -25,6 +25,27 @@ const (
 	TenantServiceName = "api.v1.TenantService"
 )
 
+// These constants are the fully-qualified names of the RPCs defined in this package. They're
+// exposed at runtime as Spec.Procedure and as the final two segments of the HTTP route.
+//
+// Note that these are different from the fully-qualified method names used by
+// google.golang.org/protobuf/reflect/protoreflect. To convert from these constants to
+// reflection-formatted method names, remove the leading slash and convert the remaining slash to a
+// period.
+const (
+	// TenantServiceCreateProcedure is the fully-qualified name of the TenantService's Create RPC.
+	TenantServiceCreateProcedure = "/api.v1.TenantService/Create"
+	// TenantServiceCreateOrUpdateProcedure is the fully-qualified name of the TenantService's
+	// CreateOrUpdate RPC.
+	TenantServiceCreateOrUpdateProcedure = "/api.v1.TenantService/CreateOrUpdate"
+	// TenantServiceGetProcedure is the fully-qualified name of the TenantService's Get RPC.
+	TenantServiceGetProcedure = "/api.v1.TenantService/Get"
+	// TenantServiceUpdateProcedure is the fully-qualified name of the TenantService's Update RPC.
+	TenantServiceUpdateProcedure = "/api.v1.TenantService/Update"
+	// TenantServiceDeleteProcedure is the fully-qualified name of the TenantService's Delete RPC.
+	TenantServiceDeleteProcedure = "/api.v1.TenantService/Delete"
+)
+
 // TenantServiceClient is a client for the api.v1.TenantService service.
 type TenantServiceClient interface {
 	Create(context.Context, *connect_go.Request[v1.TenantServiceCreateRequest]) (*connect_go.Response[v1.TenantServiceCreateResponse], error)
@@ -48,27 +69,27 @@ func NewTenantServiceClient(httpClient connect_go.HTTPClient, baseURL string, op
 	return &tenantServiceClient{
 		create: connect_go.NewClient[v1.TenantServiceCreateRequest, v1.TenantServiceCreateResponse](
 			httpClient,
-			baseURL+"/api.v1.TenantService/Create",
+			baseURL+TenantServiceCreateProcedure,
 			opts...,
 		),
 		createOrUpdate: connect_go.NewClient[v1.TenantServiceCreateOrUpdateRequest, v1.TenantServiceCreateOrUpdateResponse](
 			httpClient,
-			baseURL+"/api.v1.TenantService/CreateOrUpdate",
+			baseURL+TenantServiceCreateOrUpdateProcedure,
 			opts...,
 		),
 		get: connect_go.NewClient[v1.TenantServiceGetRequest, v1.TenantServiceGetResponse](
 			httpClient,
-			baseURL+"/api.v1.TenantService/Get",
+			baseURL+TenantServiceGetProcedure,
 			opts...,
 		),
 		update: connect_go.NewClient[v1.TenantServiceUpdateRequest, v1.TenantServiceUpdateResponse](
 			httpClient,
-			baseURL+"/api.v1.TenantService/Update",
+			baseURL+TenantServiceUpdateProcedure,
 			opts...,
 		),
 		delete: connect_go.NewClient[v1.TenantServiceDeleteRequest, v1.TenantServiceDeleteResponse](
 			httpClient,
-			baseURL+"/api.v1.TenantService/Delete",
+			baseURL+TenantServiceDeleteProcedure,
 			opts...,
 		),
 	}
@@ -126,28 +147,28 @@ type TenantServiceHandler interface {
 // and JSON codecs. They also support gzip compression.
 func NewTenantServiceHandler(svc TenantServiceHandler, opts ...connect_go.HandlerOption) (string, http.Handler) {
 	mux := http.NewServeMux()
-	mux.Handle("/api.v1.TenantService/Create", connect_go.NewUnaryHandler(
-		"/api.v1.TenantService/Create",
+	mux.Handle(TenantServiceCreateProcedure, connect_go.NewUnaryHandler(
+		TenantServiceCreateProcedure,
 		svc.Create,
 		opts...,
 	))
-	mux.Handle("/api.v1.TenantService/CreateOrUpdate", connect_go.NewUnaryHandler(
-		"/api.v1.TenantService/CreateOrUpdate",
+	mux.Handle(TenantServiceCreateOrUpdateProcedure, connect_go.NewUnaryHandler(
+		TenantServiceCreateOrUpdateProcedure,
 		svc.CreateOrUpdate,
 		opts...,
 	))
-	mux.Handle("/api.v1.TenantService/Get", connect_go.NewUnaryHandler(
-		"/api.v1.TenantService/Get",
+	mux.Handle(TenantServiceGetProcedure, connect_go.NewUnaryHandler(
+		TenantServiceGetProcedure,
 		svc.Get,
 		opts...,
 	))
-	mux.Handle("/api.v1.TenantService/Update", connect_go.NewUnaryHandler(
-		"/api.v1.TenantService/Update",
+	mux.Handle(TenantServiceUpdateProcedure, connect_go.NewUnaryHandler(
+		TenantServiceUpdateProcedure,
 		svc.Update,
 		opts...,
 	))
-	mux.Handle("/api.v1.TenantService/Delete", connect_go.NewUnaryHandler(
-		"/api.v1.TenantService/Delete",
+	mux.Handle(TenantServiceDeleteProcedure, connect_go.NewUnaryHandler(
+		TenantServiceDeleteProcedure,
 		svc.Delete,
 		opts...,
 	))

@@ -25,6 +25,18 @@ const (
 	VersionServiceName = "api.v1.VersionService"
 )
 
+// These constants are the fully-qualified names of the RPCs defined in this package. They're
+// exposed at runtime as Spec.Procedure and as the final two segments of the HTTP route.
+//
+// Note that these are different from the fully-qualified method names used by
+// google.golang.org/protobuf/reflect/protoreflect. To convert from these constants to
+// reflection-formatted method names, remove the leading slash and convert the remaining slash to a
+// period.
+const (
+	// VersionServiceGetProcedure is the fully-qualified name of the VersionService's Get RPC.
+	VersionServiceGetProcedure = "/api.v1.VersionService/Get"
+)
+
 // VersionServiceClient is a client for the api.v1.VersionService service.
 type VersionServiceClient interface {
 	Get(context.Context, *connect_go.Request[v1.VersionServiceGetRequest]) (*connect_go.Response[v1.VersionServiceGetResponse], error)
@@ -42,7 +54,7 @@ func NewVersionServiceClient(httpClient connect_go.HTTPClient, baseURL string, o
 	return &versionServiceClient{
 		get: connect_go.NewClient[v1.VersionServiceGetRequest, v1.VersionServiceGetResponse](
 			httpClient,
-			baseURL+"/api.v1.VersionService/Get",
+			baseURL+VersionServiceGetProcedure,
 			opts...,
 		),
 	}
@@ -70,8 +82,8 @@ type VersionServiceHandler interface {
 // and JSON codecs. They also support gzip compression.
 func NewVersionServiceHandler(svc VersionServiceHandler, opts ...connect_go.HandlerOption) (string, http.Handler) {
 	mux := http.NewServeMux()
-	mux.Handle("/api.v1.VersionService/Get", connect_go.NewUnaryHandler(
-		"/api.v1.VersionService/Get",
+	mux.Handle(VersionServiceGetProcedure, connect_go.NewUnaryHandler(
+		VersionServiceGetProcedure,
 		svc.Get,
 		opts...,
 	))
