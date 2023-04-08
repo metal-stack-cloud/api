@@ -63,6 +63,8 @@ message ClusterServiceListResponse {
 }
 message ClusterServiceGetCredentialsResponse {
   string kubeconfig = 1;
+  SSHKeyPair ssh_keypair = 2;
+  VPN vpn = 3;
 }
 message ClusterServiceOperateResponse {
   api.v1.Cluster cluster = 1;
@@ -74,4 +76,14 @@ enum Operate {
   OPERATE_RETRY = 3;
   OPERATE_RESTART_KUBELET = 4;
   OPERATE_RESTART_CONTAINERD = 5;
+}
+
+message SSHKeyPair {
+  bytes publickey = 1;
+  bytes privatekey = 2;
+}
+
+message VPN {
+  string address = 1;
+  string authkey = 2;
 }

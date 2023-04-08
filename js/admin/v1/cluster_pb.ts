@@ -404,6 +404,16 @@ export class ClusterServiceGetCredentialsResponse extends Message<ClusterService
    */
   kubeconfig = "";
 
+  /**
+   * @generated from field: admin.v1.SSHKeyPair ssh_keypair = 2;
+   */
+  sshKeypair?: SSHKeyPair;
+
+  /**
+   * @generated from field: admin.v1.VPN vpn = 3;
+   */
+  vpn?: VPN;
+
   constructor(data?: PartialMessage<ClusterServiceGetCredentialsResponse>) {
     super();
     proto3.util.initPartial(data, this);
@@ -413,6 +423,8 @@ export class ClusterServiceGetCredentialsResponse extends Message<ClusterService
   static readonly typeName = "admin.v1.ClusterServiceGetCredentialsResponse";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
     { no: 1, name: "kubeconfig", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "ssh_keypair", kind: "message", T: SSHKeyPair },
+    { no: 3, name: "vpn", kind: "message", T: VPN },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ClusterServiceGetCredentialsResponse {
@@ -466,6 +478,92 @@ export class ClusterServiceOperateResponse extends Message<ClusterServiceOperate
 
   static equals(a: ClusterServiceOperateResponse | PlainMessage<ClusterServiceOperateResponse> | undefined, b: ClusterServiceOperateResponse | PlainMessage<ClusterServiceOperateResponse> | undefined): boolean {
     return proto3.util.equals(ClusterServiceOperateResponse, a, b);
+  }
+}
+
+/**
+ * @generated from message admin.v1.SSHKeyPair
+ */
+export class SSHKeyPair extends Message<SSHKeyPair> {
+  /**
+   * @generated from field: bytes publickey = 1;
+   */
+  publickey = new Uint8Array(0);
+
+  /**
+   * @generated from field: bytes privatekey = 2;
+   */
+  privatekey = new Uint8Array(0);
+
+  constructor(data?: PartialMessage<SSHKeyPair>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "admin.v1.SSHKeyPair";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "publickey", kind: "scalar", T: 12 /* ScalarType.BYTES */ },
+    { no: 2, name: "privatekey", kind: "scalar", T: 12 /* ScalarType.BYTES */ },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): SSHKeyPair {
+    return new SSHKeyPair().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): SSHKeyPair {
+    return new SSHKeyPair().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): SSHKeyPair {
+    return new SSHKeyPair().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: SSHKeyPair | PlainMessage<SSHKeyPair> | undefined, b: SSHKeyPair | PlainMessage<SSHKeyPair> | undefined): boolean {
+    return proto3.util.equals(SSHKeyPair, a, b);
+  }
+}
+
+/**
+ * @generated from message admin.v1.VPN
+ */
+export class VPN extends Message<VPN> {
+  /**
+   * @generated from field: string address = 1;
+   */
+  address = "";
+
+  /**
+   * @generated from field: string authkey = 2;
+   */
+  authkey = "";
+
+  constructor(data?: PartialMessage<VPN>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "admin.v1.VPN";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "address", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "authkey", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): VPN {
+    return new VPN().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): VPN {
+    return new VPN().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): VPN {
+    return new VPN().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: VPN | PlainMessage<VPN> | undefined, b: VPN | PlainMessage<VPN> | undefined): boolean {
+    return proto3.util.equals(VPN, a, b);
   }
 }
 

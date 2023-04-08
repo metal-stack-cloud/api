@@ -208,6 +208,14 @@ export declare class ClusterServiceGetCredentialsResponse extends Message<Cluste
      * @generated from field: string kubeconfig = 1;
      */
     kubeconfig: string;
+    /**
+     * @generated from field: admin.v1.SSHKeyPair ssh_keypair = 2;
+     */
+    sshKeypair?: SSHKeyPair;
+    /**
+     * @generated from field: admin.v1.VPN vpn = 3;
+     */
+    vpn?: VPN;
     constructor(data?: PartialMessage<ClusterServiceGetCredentialsResponse>);
     static readonly runtime: typeof proto3;
     static readonly typeName = "admin.v1.ClusterServiceGetCredentialsResponse";
@@ -233,4 +241,46 @@ export declare class ClusterServiceOperateResponse extends Message<ClusterServic
     static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ClusterServiceOperateResponse;
     static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ClusterServiceOperateResponse;
     static equals(a: ClusterServiceOperateResponse | PlainMessage<ClusterServiceOperateResponse> | undefined, b: ClusterServiceOperateResponse | PlainMessage<ClusterServiceOperateResponse> | undefined): boolean;
+}
+/**
+ * @generated from message admin.v1.SSHKeyPair
+ */
+export declare class SSHKeyPair extends Message<SSHKeyPair> {
+    /**
+     * @generated from field: bytes publickey = 1;
+     */
+    publickey: Uint8Array;
+    /**
+     * @generated from field: bytes privatekey = 2;
+     */
+    privatekey: Uint8Array;
+    constructor(data?: PartialMessage<SSHKeyPair>);
+    static readonly runtime: typeof proto3;
+    static readonly typeName = "admin.v1.SSHKeyPair";
+    static readonly fields: FieldList;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): SSHKeyPair;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): SSHKeyPair;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): SSHKeyPair;
+    static equals(a: SSHKeyPair | PlainMessage<SSHKeyPair> | undefined, b: SSHKeyPair | PlainMessage<SSHKeyPair> | undefined): boolean;
+}
+/**
+ * @generated from message admin.v1.VPN
+ */
+export declare class VPN extends Message<VPN> {
+    /**
+     * @generated from field: string address = 1;
+     */
+    address: string;
+    /**
+     * @generated from field: string authkey = 2;
+     */
+    authkey: string;
+    constructor(data?: PartialMessage<VPN>);
+    static readonly runtime: typeof proto3;
+    static readonly typeName = "admin.v1.VPN";
+    static readonly fields: FieldList;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): VPN;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): VPN;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): VPN;
+    static equals(a: VPN | PlainMessage<VPN> | undefined, b: VPN | PlainMessage<VPN> | undefined): boolean;
 }

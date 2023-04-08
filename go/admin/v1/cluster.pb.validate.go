@@ -1058,6 +1058,64 @@ func (m *ClusterServiceGetCredentialsResponse) validate(all bool) error {
 
 	// no validation rules for Kubeconfig
 
+	if all {
+		switch v := interface{}(m.GetSshKeypair()).(type) {
+		case interface{ ValidateAll() error }:
+			if err := v.ValidateAll(); err != nil {
+				errors = append(errors, ClusterServiceGetCredentialsResponseValidationError{
+					field:  "SshKeypair",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		case interface{ Validate() error }:
+			if err := v.Validate(); err != nil {
+				errors = append(errors, ClusterServiceGetCredentialsResponseValidationError{
+					field:  "SshKeypair",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		}
+	} else if v, ok := interface{}(m.GetSshKeypair()).(interface{ Validate() error }); ok {
+		if err := v.Validate(); err != nil {
+			return ClusterServiceGetCredentialsResponseValidationError{
+				field:  "SshKeypair",
+				reason: "embedded message failed validation",
+				cause:  err,
+			}
+		}
+	}
+
+	if all {
+		switch v := interface{}(m.GetVpn()).(type) {
+		case interface{ ValidateAll() error }:
+			if err := v.ValidateAll(); err != nil {
+				errors = append(errors, ClusterServiceGetCredentialsResponseValidationError{
+					field:  "Vpn",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		case interface{ Validate() error }:
+			if err := v.Validate(); err != nil {
+				errors = append(errors, ClusterServiceGetCredentialsResponseValidationError{
+					field:  "Vpn",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		}
+	} else if v, ok := interface{}(m.GetVpn()).(interface{ Validate() error }); ok {
+		if err := v.Validate(); err != nil {
+			return ClusterServiceGetCredentialsResponseValidationError{
+				field:  "Vpn",
+				reason: "embedded message failed validation",
+				cause:  err,
+			}
+		}
+	}
+
 	if len(errors) > 0 {
 		return ClusterServiceGetCredentialsResponseMultiError(errors)
 	}
@@ -1271,3 +1329,208 @@ var _ interface {
 	Cause() error
 	ErrorName() string
 } = ClusterServiceOperateResponseValidationError{}
+
+// Validate checks the field values on SSHKeyPair with the rules defined in the
+// proto definition for this message. If any rules are violated, the first
+// error encountered is returned, or nil if there are no violations.
+func (m *SSHKeyPair) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on SSHKeyPair with the rules defined in
+// the proto definition for this message. If any rules are violated, the
+// result is a list of violation errors wrapped in SSHKeyPairMultiError, or
+// nil if none found.
+func (m *SSHKeyPair) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *SSHKeyPair) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	// no validation rules for Publickey
+
+	// no validation rules for Privatekey
+
+	if len(errors) > 0 {
+		return SSHKeyPairMultiError(errors)
+	}
+
+	return nil
+}
+
+// SSHKeyPairMultiError is an error wrapping multiple validation errors
+// returned by SSHKeyPair.ValidateAll() if the designated constraints aren't met.
+type SSHKeyPairMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m SSHKeyPairMultiError) Error() string {
+	var msgs []string
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m SSHKeyPairMultiError) AllErrors() []error { return m }
+
+// SSHKeyPairValidationError is the validation error returned by
+// SSHKeyPair.Validate if the designated constraints aren't met.
+type SSHKeyPairValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e SSHKeyPairValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e SSHKeyPairValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e SSHKeyPairValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e SSHKeyPairValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e SSHKeyPairValidationError) ErrorName() string { return "SSHKeyPairValidationError" }
+
+// Error satisfies the builtin error interface
+func (e SSHKeyPairValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sSSHKeyPair.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = SSHKeyPairValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = SSHKeyPairValidationError{}
+
+// Validate checks the field values on VPN with the rules defined in the proto
+// definition for this message. If any rules are violated, the first error
+// encountered is returned, or nil if there are no violations.
+func (m *VPN) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on VPN with the rules defined in the
+// proto definition for this message. If any rules are violated, the result is
+// a list of violation errors wrapped in VPNMultiError, or nil if none found.
+func (m *VPN) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *VPN) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	// no validation rules for Address
+
+	// no validation rules for Authkey
+
+	if len(errors) > 0 {
+		return VPNMultiError(errors)
+	}
+
+	return nil
+}
+
+// VPNMultiError is an error wrapping multiple validation errors returned by
+// VPN.ValidateAll() if the designated constraints aren't met.
+type VPNMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m VPNMultiError) Error() string {
+	var msgs []string
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m VPNMultiError) AllErrors() []error { return m }
+
+// VPNValidationError is the validation error returned by VPN.Validate if the
+// designated constraints aren't met.
+type VPNValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e VPNValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e VPNValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e VPNValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e VPNValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e VPNValidationError) ErrorName() string { return "VPNValidationError" }
+
+// Error satisfies the builtin error interface
+func (e VPNValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sVPN.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = VPNValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = VPNValidationError{}
