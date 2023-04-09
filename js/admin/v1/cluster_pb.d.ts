@@ -1,6 +1,7 @@
 import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
 import { Message, proto3 } from "@bufbuild/protobuf";
 import { Cluster } from "../../api/v1/cluster_pb.js";
+import { Machine, VPN } from "./machine_pb.js";
 /**
  * @generated from enum admin.v1.Operate
  */
@@ -38,6 +39,10 @@ export declare class ClusterServiceGetRequest extends Message<ClusterServiceGetR
      * @generated from field: string uuid = 1;
      */
     uuid: string;
+    /**
+     * @generated from field: bool with_machines = 2;
+     */
+    withMachines: boolean;
     constructor(data?: PartialMessage<ClusterServiceGetRequest>);
     static readonly runtime: typeof proto3;
     static readonly typeName = "admin.v1.ClusterServiceGetRequest";
@@ -157,6 +162,10 @@ export declare class ClusterServiceGetResponse extends Message<ClusterServiceGet
      * @generated from field: api.v1.Cluster cluster = 1;
      */
     cluster?: Cluster;
+    /**
+     * @generated from field: repeated admin.v1.Machine machines = 2;
+     */
+    machines: Machine[];
     constructor(data?: PartialMessage<ClusterServiceGetResponse>);
     static readonly runtime: typeof proto3;
     static readonly typeName = "admin.v1.ClusterServiceGetResponse";
@@ -262,25 +271,4 @@ export declare class SSHKeyPair extends Message<SSHKeyPair> {
     static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): SSHKeyPair;
     static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): SSHKeyPair;
     static equals(a: SSHKeyPair | PlainMessage<SSHKeyPair> | undefined, b: SSHKeyPair | PlainMessage<SSHKeyPair> | undefined): boolean;
-}
-/**
- * @generated from message admin.v1.VPN
- */
-export declare class VPN extends Message<VPN> {
-    /**
-     * @generated from field: string address = 1;
-     */
-    address: string;
-    /**
-     * @generated from field: string authkey = 2;
-     */
-    authkey: string;
-    constructor(data?: PartialMessage<VPN>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "admin.v1.VPN";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): VPN;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): VPN;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): VPN;
-    static equals(a: VPN | PlainMessage<VPN> | undefined, b: VPN | PlainMessage<VPN> | undefined): boolean;
 }

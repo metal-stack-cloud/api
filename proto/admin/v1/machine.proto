@@ -1,0 +1,42 @@
+syntax = "proto3";
+
+package admin.v1;
+
+import "google/protobuf/timestamp.proto";
+
+message Machine {
+  string uuid = 1;
+  string name = 2;
+  string description = 3;
+  string project = 4;
+  string image = 5;
+  string size = 6;
+  repeated MachineNetwork machine_networks = 7;
+  string hostname = 8;
+  string user_data = 9;
+  string role = 10;
+  string creator = 11;
+  google.protobuf.Timestamp created = 12;
+
+  string partition = 13;
+  string rack = 14;
+  string state = 15;
+  string liveliness = 16;
+  repeated string tags = 17;
+  VPN vpn = 18;
+}
+
+message MachineNetwork {
+  string network = 1;
+  repeated string prefixes = 2;
+  repeated string ips = 3;
+  repeated string destination_prefixes = 4;
+  string network_type = 5;
+  uint32 vrf = 6;
+  int64 asd = 7;
+  bool nat = 8;
+}
+message VPN {
+  string address = 1;
+  string authkey = 2;
+}

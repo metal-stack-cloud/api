@@ -6,6 +6,7 @@
 import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
 import { Message, proto3 } from "@bufbuild/protobuf";
 import { Cluster } from "../../api/v1/cluster_pb.js";
+import { Machine, VPN } from "./machine_pb.js";
 
 /**
  * @generated from enum admin.v1.Operate
@@ -60,6 +61,11 @@ export class ClusterServiceGetRequest extends Message<ClusterServiceGetRequest> 
    */
   uuid = "";
 
+  /**
+   * @generated from field: bool with_machines = 2;
+   */
+  withMachines = false;
+
   constructor(data?: PartialMessage<ClusterServiceGetRequest>) {
     super();
     proto3.util.initPartial(data, this);
@@ -69,6 +75,7 @@ export class ClusterServiceGetRequest extends Message<ClusterServiceGetRequest> 
   static readonly typeName = "admin.v1.ClusterServiceGetRequest";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
     { no: 1, name: "uuid", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "with_machines", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ClusterServiceGetRequest {
@@ -293,6 +300,11 @@ export class ClusterServiceGetResponse extends Message<ClusterServiceGetResponse
    */
   cluster?: Cluster;
 
+  /**
+   * @generated from field: repeated admin.v1.Machine machines = 2;
+   */
+  machines: Machine[] = [];
+
   constructor(data?: PartialMessage<ClusterServiceGetResponse>) {
     super();
     proto3.util.initPartial(data, this);
@@ -302,6 +314,7 @@ export class ClusterServiceGetResponse extends Message<ClusterServiceGetResponse
   static readonly typeName = "admin.v1.ClusterServiceGetResponse";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
     { no: 1, name: "cluster", kind: "message", T: Cluster },
+    { no: 2, name: "machines", kind: "message", T: Machine, repeated: true },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ClusterServiceGetResponse {
@@ -521,49 +534,6 @@ export class SSHKeyPair extends Message<SSHKeyPair> {
 
   static equals(a: SSHKeyPair | PlainMessage<SSHKeyPair> | undefined, b: SSHKeyPair | PlainMessage<SSHKeyPair> | undefined): boolean {
     return proto3.util.equals(SSHKeyPair, a, b);
-  }
-}
-
-/**
- * @generated from message admin.v1.VPN
- */
-export class VPN extends Message<VPN> {
-  /**
-   * @generated from field: string address = 1;
-   */
-  address = "";
-
-  /**
-   * @generated from field: string authkey = 2;
-   */
-  authkey = "";
-
-  constructor(data?: PartialMessage<VPN>) {
-    super();
-    proto3.util.initPartial(data, this);
-  }
-
-  static readonly runtime: typeof proto3 = proto3;
-  static readonly typeName = "admin.v1.VPN";
-  static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "address", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 2, name: "authkey", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-  ]);
-
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): VPN {
-    return new VPN().fromBinary(bytes, options);
-  }
-
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): VPN {
-    return new VPN().fromJson(jsonValue, options);
-  }
-
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): VPN {
-    return new VPN().fromJsonString(jsonString, options);
-  }
-
-  static equals(a: VPN | PlainMessage<VPN> | undefined, b: VPN | PlainMessage<VPN> | undefined): boolean {
-    return proto3.util.equals(VPN, a, b);
   }
 }
 

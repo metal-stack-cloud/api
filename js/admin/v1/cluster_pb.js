@@ -4,9 +4,10 @@
 /* eslint-disable */
 // @ts-nocheck
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.VPN = exports.SSHKeyPair = exports.ClusterServiceOperateResponse = exports.ClusterServiceGetCredentialsResponse = exports.ClusterServiceListResponse = exports.ClusterServiceLogsResponse = exports.ClusterServiceGetResponse = exports.ClusterServiceOperateRequest = exports.ClusterServiceGetCredentialsRequest = exports.ClusterServiceListRequest = exports.ClusterServiceLogsRequest = exports.ClusterServiceGetRequest = exports.Operate = void 0;
+exports.SSHKeyPair = exports.ClusterServiceOperateResponse = exports.ClusterServiceGetCredentialsResponse = exports.ClusterServiceListResponse = exports.ClusterServiceLogsResponse = exports.ClusterServiceGetResponse = exports.ClusterServiceOperateRequest = exports.ClusterServiceGetCredentialsRequest = exports.ClusterServiceListRequest = exports.ClusterServiceLogsRequest = exports.ClusterServiceGetRequest = exports.Operate = void 0;
 const protobuf_1 = require("@bufbuild/protobuf");
 const cluster_pb_js_1 = require("../../api/v1/cluster_pb.js");
+const machine_pb_js_1 = require("./machine_pb.js");
 /**
  * @generated from enum admin.v1.Operate
  */
@@ -56,6 +57,10 @@ class ClusterServiceGetRequest extends protobuf_1.Message {
          * @generated from field: string uuid = 1;
          */
         this.uuid = "";
+        /**
+         * @generated from field: bool with_machines = 2;
+         */
+        this.withMachines = false;
         protobuf_1.proto3.util.initPartial(data, this);
     }
     static fromBinary(bytes, options) {
@@ -75,6 +80,7 @@ ClusterServiceGetRequest.runtime = protobuf_1.proto3;
 ClusterServiceGetRequest.typeName = "admin.v1.ClusterServiceGetRequest";
 ClusterServiceGetRequest.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 1, name: "uuid", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "with_machines", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
 ]);
 exports.ClusterServiceGetRequest = ClusterServiceGetRequest;
 /**
@@ -219,6 +225,10 @@ exports.ClusterServiceOperateRequest = ClusterServiceOperateRequest;
 class ClusterServiceGetResponse extends protobuf_1.Message {
     constructor(data) {
         super();
+        /**
+         * @generated from field: repeated admin.v1.Machine machines = 2;
+         */
+        this.machines = [];
         protobuf_1.proto3.util.initPartial(data, this);
     }
     static fromBinary(bytes, options) {
@@ -238,6 +248,7 @@ ClusterServiceGetResponse.runtime = protobuf_1.proto3;
 ClusterServiceGetResponse.typeName = "admin.v1.ClusterServiceGetResponse";
 ClusterServiceGetResponse.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 1, name: "cluster", kind: "message", T: cluster_pb_js_1.Cluster },
+    { no: 2, name: "machines", kind: "message", T: machine_pb_js_1.Machine, repeated: true },
 ]);
 exports.ClusterServiceGetResponse = ClusterServiceGetResponse;
 /**
@@ -332,7 +343,7 @@ ClusterServiceGetCredentialsResponse.typeName = "admin.v1.ClusterServiceGetCrede
 ClusterServiceGetCredentialsResponse.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 1, name: "kubeconfig", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 2, name: "ssh_keypair", kind: "message", T: SSHKeyPair },
-    { no: 3, name: "vpn", kind: "message", T: VPN },
+    { no: 3, name: "vpn", kind: "message", T: machine_pb_js_1.VPN },
 ]);
 exports.ClusterServiceGetCredentialsResponse = ClusterServiceGetCredentialsResponse;
 /**
@@ -398,39 +409,3 @@ SSHKeyPair.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 2, name: "privatekey", kind: "scalar", T: 12 /* ScalarType.BYTES */ },
 ]);
 exports.SSHKeyPair = SSHKeyPair;
-/**
- * @generated from message admin.v1.VPN
- */
-class VPN extends protobuf_1.Message {
-    constructor(data) {
-        super();
-        /**
-         * @generated from field: string address = 1;
-         */
-        this.address = "";
-        /**
-         * @generated from field: string authkey = 2;
-         */
-        this.authkey = "";
-        protobuf_1.proto3.util.initPartial(data, this);
-    }
-    static fromBinary(bytes, options) {
-        return new VPN().fromBinary(bytes, options);
-    }
-    static fromJson(jsonValue, options) {
-        return new VPN().fromJson(jsonValue, options);
-    }
-    static fromJsonString(jsonString, options) {
-        return new VPN().fromJsonString(jsonString, options);
-    }
-    static equals(a, b) {
-        return protobuf_1.proto3.util.equals(VPN, a, b);
-    }
-}
-VPN.runtime = protobuf_1.proto3;
-VPN.typeName = "admin.v1.VPN";
-VPN.fields = protobuf_1.proto3.util.newFieldList(() => [
-    { no: 1, name: "address", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 2, name: "authkey", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-]);
-exports.VPN = VPN;
