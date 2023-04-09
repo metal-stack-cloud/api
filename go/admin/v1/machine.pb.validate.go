@@ -281,9 +281,7 @@ func (m *MachineNetwork) validate(all bool) error {
 
 	// no validation rules for Vrf
 
-	// no validation rules for Asd
-
-	// no validation rules for Nat
+	// no validation rules for Asn
 
 	if len(errors) > 0 {
 		return MachineNetworkMultiError(errors)

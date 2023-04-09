@@ -145,13 +145,9 @@ class MachineNetwork extends protobuf_1.Message {
          */
         this.vrf = 0;
         /**
-         * @generated from field: int64 asd = 7;
+         * @generated from field: int64 asn = 7;
          */
-        this.asd = protobuf_1.protoInt64.zero;
-        /**
-         * @generated from field: bool nat = 8;
-         */
-        this.nat = false;
+        this.asn = protobuf_1.protoInt64.zero;
         protobuf_1.proto3.util.initPartial(data, this);
     }
     static fromBinary(bytes, options) {
@@ -176,8 +172,7 @@ MachineNetwork.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 4, name: "destination_prefixes", kind: "scalar", T: 9 /* ScalarType.STRING */, repeated: true },
     { no: 5, name: "network_type", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 6, name: "vrf", kind: "scalar", T: 13 /* ScalarType.UINT32 */ },
-    { no: 7, name: "asd", kind: "scalar", T: 3 /* ScalarType.INT64 */ },
-    { no: 8, name: "nat", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
+    { no: 7, name: "asn", kind: "scalar", T: 3 /* ScalarType.INT64 */ },
 ]);
 exports.MachineNetwork = MachineNetwork;
 /**

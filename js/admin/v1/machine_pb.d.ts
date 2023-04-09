@@ -114,13 +114,9 @@ export declare class MachineNetwork extends Message<MachineNetwork> {
      */
     vrf: number;
     /**
-     * @generated from field: int64 asd = 7;
+     * @generated from field: int64 asn = 7;
      */
-    asd: bigint;
-    /**
-     * @generated from field: bool nat = 8;
-     */
-    nat: boolean;
+    asn: bigint;
     constructor(data?: PartialMessage<MachineNetwork>);
     static readonly runtime: typeof proto3;
     static readonly typeName = "admin.v1.MachineNetwork";

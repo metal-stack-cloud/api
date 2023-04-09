@@ -33,8 +33,7 @@ message MachineNetwork {
   repeated string destination_prefixes = 4;
   string network_type = 5;
   uint32 vrf = 6;
-  int64 asd = 7;
-  bool nat = 8;
+  int64 asn = 7;
 }
 message VPN {
   string address = 1;
