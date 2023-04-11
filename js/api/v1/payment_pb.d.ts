@@ -673,3 +673,37 @@ export declare class PaymentServiceRequestAdmissionResponse extends Message<Paym
     static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): PaymentServiceRequestAdmissionResponse;
     static equals(a: PaymentServiceRequestAdmissionResponse | PlainMessage<PaymentServiceRequestAdmissionResponse> | undefined, b: PaymentServiceRequestAdmissionResponse | PlainMessage<PaymentServiceRequestAdmissionResponse> | undefined): boolean;
 }
+/**
+ * @generated from message api.v1.PaymentServiceHasChargeableResourcesRequest
+ */
+export declare class PaymentServiceHasChargeableResourcesRequest extends Message<PaymentServiceHasChargeableResourcesRequest> {
+    /**
+     * @generated from field: string login = 1;
+     */
+    login: string;
+    constructor(data?: PartialMessage<PaymentServiceHasChargeableResourcesRequest>);
+    static readonly runtime: typeof proto3;
+    static readonly typeName = "api.v1.PaymentServiceHasChargeableResourcesRequest";
+    static readonly fields: FieldList;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): PaymentServiceHasChargeableResourcesRequest;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): PaymentServiceHasChargeableResourcesRequest;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): PaymentServiceHasChargeableResourcesRequest;
+    static equals(a: PaymentServiceHasChargeableResourcesRequest | PlainMessage<PaymentServiceHasChargeableResourcesRequest> | undefined, b: PaymentServiceHasChargeableResourcesRequest | PlainMessage<PaymentServiceHasChargeableResourcesRequest> | undefined): boolean;
+}
+/**
+ * @generated from message api.v1.PaymentServiceHasChargeableResourcesResponse
+ */
+export declare class PaymentServiceHasChargeableResourcesResponse extends Message<PaymentServiceHasChargeableResourcesResponse> {
+    /**
+     * @generated from field: bool has_resources = 1;
+     */
+    hasResources: boolean;
+    constructor(data?: PartialMessage<PaymentServiceHasChargeableResourcesResponse>);
+    static readonly runtime: typeof proto3;
+    static readonly typeName = "api.v1.PaymentServiceHasChargeableResourcesResponse";
+    static readonly fields: FieldList;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): PaymentServiceHasChargeableResourcesResponse;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): PaymentServiceHasChargeableResourcesResponse;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): PaymentServiceHasChargeableResourcesResponse;
+    static equals(a: PaymentServiceHasChargeableResourcesResponse | PlainMessage<PaymentServiceHasChargeableResourcesResponse> | undefined, b: PaymentServiceHasChargeableResourcesResponse | PlainMessage<PaymentServiceHasChargeableResourcesResponse> | undefined): boolean;
+}

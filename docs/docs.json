@@ -1386,6 +1386,54 @@
           ]
         },
         {
+          "name": "PaymentServiceHasChargeableResourcesRequest",
+          "longName": "PaymentServiceHasChargeableResourcesRequest",
+          "fullName": "api.v1.PaymentServiceHasChargeableResourcesRequest",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "login",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "PaymentServiceHasChargeableResourcesResponse",
+          "longName": "PaymentServiceHasChargeableResourcesResponse",
+          "fullName": "api.v1.PaymentServiceHasChargeableResourcesResponse",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "has_resources",
+              "description": "",
+              "label": "",
+              "type": "bool",
+              "longType": "bool",
+              "fullType": "bool",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
           "name": "PaymentServiceHasPaymentMethodRequest",
           "longName": "PaymentServiceHasPaymentMethodRequest",
           "fullName": "api.v1.PaymentServiceHasPaymentMethodRequest",
@@ -1810,6 +1858,18 @@
               "responseType": "PaymentServiceRequestAdmissionResponse",
               "responseLongType": "PaymentServiceRequestAdmissionResponse",
               "responseFullType": "api.v1.PaymentServiceRequestAdmissionResponse",
+              "responseStreaming": false
+            },
+            {
+              "name": "HasChargeableResources",
+              "description": "",
+              "requestType": "PaymentServiceHasChargeableResourcesRequest",
+              "requestLongType": "PaymentServiceHasChargeableResourcesRequest",
+              "requestFullType": "api.v1.PaymentServiceHasChargeableResourcesRequest",
+              "requestStreaming": false,
+              "responseType": "PaymentServiceHasChargeableResourcesResponse",
+              "responseLongType": "PaymentServiceHasChargeableResourcesResponse",
+              "responseFullType": "api.v1.PaymentServiceHasChargeableResourcesResponse",
               "responseStreaming": false
             }
           ]
