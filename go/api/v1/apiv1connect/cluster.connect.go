@@ -25,6 +25,32 @@ const (
 	ClusterServiceName = "api.v1.ClusterService"
 )
 
+// These constants are the fully-qualified names of the RPCs defined in this package. They're
+// exposed at runtime as Spec.Procedure and as the final two segments of the HTTP route.
+//
+// Note that these are different from the fully-qualified method names used by
+// google.golang.org/protobuf/reflect/protoreflect. To convert from these constants to
+// reflection-formatted method names, remove the leading slash and convert the remaining slash to a
+// period.
+const (
+	// ClusterServiceCreateProcedure is the fully-qualified name of the ClusterService's Create RPC.
+	ClusterServiceCreateProcedure = "/api.v1.ClusterService/Create"
+	// ClusterServiceGetProcedure is the fully-qualified name of the ClusterService's Get RPC.
+	ClusterServiceGetProcedure = "/api.v1.ClusterService/Get"
+	// ClusterServiceListProcedure is the fully-qualified name of the ClusterService's List RPC.
+	ClusterServiceListProcedure = "/api.v1.ClusterService/List"
+	// ClusterServiceWatchStatusProcedure is the fully-qualified name of the ClusterService's
+	// WatchStatus RPC.
+	ClusterServiceWatchStatusProcedure = "/api.v1.ClusterService/WatchStatus"
+	// ClusterServiceDeleteProcedure is the fully-qualified name of the ClusterService's Delete RPC.
+	ClusterServiceDeleteProcedure = "/api.v1.ClusterService/Delete"
+	// ClusterServiceUpdateProcedure is the fully-qualified name of the ClusterService's Update RPC.
+	ClusterServiceUpdateProcedure = "/api.v1.ClusterService/Update"
+	// ClusterServiceGetCredentialsProcedure is the fully-qualified name of the ClusterService's
+	// GetCredentials RPC.
+	ClusterServiceGetCredentialsProcedure = "/api.v1.ClusterService/GetCredentials"
+)
+
 // ClusterServiceClient is a client for the api.v1.ClusterService service.
 type ClusterServiceClient interface {
 	Create(context.Context, *connect_go.Request[v1.ClusterServiceCreateRequest]) (*connect_go.Response[v1.ClusterServiceCreateResponse], error)
@@ -48,37 +74,37 @@ func NewClusterServiceClient(httpClient connect_go.HTTPClient, baseURL string, o
 	return &clusterServiceClient{
 		create: connect_go.NewClient[v1.ClusterServiceCreateRequest, v1.ClusterServiceCreateResponse](
 			httpClient,
-			baseURL+"/api.v1.ClusterService/Create",
+			baseURL+ClusterServiceCreateProcedure,
 			opts...,
 		),
 		get: connect_go.NewClient[v1.ClusterServiceGetRequest, v1.ClusterServiceGetResponse](
 			httpClient,
-			baseURL+"/api.v1.ClusterService/Get",
+			baseURL+ClusterServiceGetProcedure,
 			opts...,
 		),
 		list: connect_go.NewClient[v1.ClusterServiceListRequest, v1.ClusterServiceListResponse](
 			httpClient,
-			baseURL+"/api.v1.ClusterService/List",
+			baseURL+ClusterServiceListProcedure,
 			opts...,
 		),
 		watchStatus: connect_go.NewClient[v1.ClusterServiceWatchStatusRequest, v1.ClusterServiceWatchStatusResponse](
 			httpClient,
-			baseURL+"/api.v1.ClusterService/WatchStatus",
+			baseURL+ClusterServiceWatchStatusProcedure,
 			opts...,
 		),
 		delete: connect_go.NewClient[v1.ClusterServiceDeleteRequest, v1.ClusterServiceDeleteResponse](
 			httpClient,
-			baseURL+"/api.v1.ClusterService/Delete",
+			baseURL+ClusterServiceDeleteProcedure,
 			opts...,
 		),
 		update: connect_go.NewClient[v1.ClusterServiceUpdateRequest, v1.ClusterServiceUpdateResponse](
 			httpClient,
-			baseURL+"/api.v1.ClusterService/Update",
+			baseURL+ClusterServiceUpdateProcedure,
 			opts...,
 		),
 		getCredentials: connect_go.NewClient[v1.ClusterServiceGetCredentialsRequest, v1.ClusterServiceGetCredentialsResponse](
 			httpClient,
-			baseURL+"/api.v1.ClusterService/GetCredentials",
+			baseURL+ClusterServiceGetCredentialsProcedure,
 			opts...,
 		),
 	}
@@ -148,38 +174,38 @@ type ClusterServiceHandler interface {
 // and JSON codecs. They also support gzip compression.
 func NewClusterServiceHandler(svc ClusterServiceHandler, opts ...connect_go.HandlerOption) (string, http.Handler) {
 	mux := http.NewServeMux()
-	mux.Handle("/api.v1.ClusterService/Create", connect_go.NewUnaryHandler(
-		"/api.v1.ClusterService/Create",
+	mux.Handle(ClusterServiceCreateProcedure, connect_go.NewUnaryHandler(
+		ClusterServiceCreateProcedure,
 		svc.Create,
 		opts...,
 	))
-	mux.Handle("/api.v1.ClusterService/Get", connect_go.NewUnaryHandler(
-		"/api.v1.ClusterService/Get",
+	mux.Handle(ClusterServiceGetProcedure, connect_go.NewUnaryHandler(
+		ClusterServiceGetProcedure,
 		svc.Get,
 		opts...,
 	))
-	mux.Handle("/api.v1.ClusterService/List", connect_go.NewUnaryHandler(
-		"/api.v1.ClusterService/List",
+	mux.Handle(ClusterServiceListProcedure, connect_go.NewUnaryHandler(
+		ClusterServiceListProcedure,
 		svc.List,
 		opts...,
 	))
-	mux.Handle("/api.v1.ClusterService/WatchStatus", connect_go.NewServerStreamHandler(
-		"/api.v1.ClusterService/WatchStatus",
+	mux.Handle(ClusterServiceWatchStatusProcedure, connect_go.NewServerStreamHandler(
+		ClusterServiceWatchStatusProcedure,
 		svc.WatchStatus,
 		opts...,
 	))
-	mux.Handle("/api.v1.ClusterService/Delete", connect_go.NewUnaryHandler(
-		"/api.v1.ClusterService/Delete",
+	mux.Handle(ClusterServiceDeleteProcedure, connect_go.NewUnaryHandler(
+		ClusterServiceDeleteProcedure,
 		svc.Delete,
 		opts...,
 	))
-	mux.Handle("/api.v1.ClusterService/Update", connect_go.NewUnaryHandler(
-		"/api.v1.ClusterService/Update",
+	mux.Handle(ClusterServiceUpdateProcedure, connect_go.NewUnaryHandler(
+		ClusterServiceUpdateProcedure,
 		svc.Update,
 		opts...,
 	))
-	mux.Handle("/api.v1.ClusterService/GetCredentials", connect_go.NewUnaryHandler(
-		"/api.v1.ClusterService/GetCredentials",
+	mux.Handle(ClusterServiceGetCredentialsProcedure, connect_go.NewUnaryHandler(
+		ClusterServiceGetCredentialsProcedure,
 		svc.GetCredentials,
 		opts...,
 	))

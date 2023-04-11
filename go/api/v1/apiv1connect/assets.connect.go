@@ -25,6 +25,18 @@ const (
 	AssetServiceName = "api.v1.AssetService"
 )
 
+// These constants are the fully-qualified names of the RPCs defined in this package. They're
+// exposed at runtime as Spec.Procedure and as the final two segments of the HTTP route.
+//
+// Note that these are different from the fully-qualified method names used by
+// google.golang.org/protobuf/reflect/protoreflect. To convert from these constants to
+// reflection-formatted method names, remove the leading slash and convert the remaining slash to a
+// period.
+const (
+	// AssetServiceListProcedure is the fully-qualified name of the AssetService's List RPC.
+	AssetServiceListProcedure = "/api.v1.AssetService/List"
+)
+
 // AssetServiceClient is a client for the api.v1.AssetService service.
 type AssetServiceClient interface {
 	List(context.Context, *connect_go.Request[v1.AssetServiceListRequest]) (*connect_go.Response[v1.AssetServiceListResponse], error)
@@ -42,7 +54,7 @@ func NewAssetServiceClient(httpClient connect_go.HTTPClient, baseURL string, opt
 	return &assetServiceClient{
 		list: connect_go.NewClient[v1.AssetServiceListRequest, v1.AssetServiceListResponse](
 			httpClient,
-			baseURL+"/api.v1.AssetService/List",
+			baseURL+AssetServiceListProcedure,
 			opts...,
 		),
 	}
@@ -70,8 +82,8 @@ type AssetServiceHandler interface {
 // and JSON codecs. They also support gzip compression.
 func NewAssetServiceHandler(svc AssetServiceHandler, opts ...connect_go.HandlerOption) (string, http.Handler) {
 	mux := http.NewServeMux()
-	mux.Handle("/api.v1.AssetService/List", connect_go.NewUnaryHandler(
-		"/api.v1.AssetService/List",
+	mux.Handle(AssetServiceListProcedure, connect_go.NewUnaryHandler(
+		AssetServiceListProcedure,
 		svc.List,
 		opts...,
 	))

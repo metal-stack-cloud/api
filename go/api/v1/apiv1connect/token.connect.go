@@ -25,6 +25,18 @@ const (
 	TokenServiceName = "api.v1.TokenService"
 )
 
+// These constants are the fully-qualified names of the RPCs defined in this package. They're
+// exposed at runtime as Spec.Procedure and as the final two segments of the HTTP route.
+//
+// Note that these are different from the fully-qualified method names used by
+// google.golang.org/protobuf/reflect/protoreflect. To convert from these constants to
+// reflection-formatted method names, remove the leading slash and convert the remaining slash to a
+// period.
+const (
+	// TokenServiceCreateProcedure is the fully-qualified name of the TokenService's Create RPC.
+	TokenServiceCreateProcedure = "/api.v1.TokenService/Create"
+)
+
 // TokenServiceClient is a client for the api.v1.TokenService service.
 type TokenServiceClient interface {
 	Create(context.Context, *connect_go.Request[v1.TokenServiceCreateRequest]) (*connect_go.Response[v1.TokenServiceCreateResponse], error)
@@ -42,7 +54,7 @@ func NewTokenServiceClient(httpClient connect_go.HTTPClient, baseURL string, opt
 	return &tokenServiceClient{
 		create: connect_go.NewClient[v1.TokenServiceCreateRequest, v1.TokenServiceCreateResponse](
 			httpClient,
-			baseURL+"/api.v1.TokenService/Create",
+			baseURL+TokenServiceCreateProcedure,
 			opts...,
 		),
 	}
@@ -70,8 +82,8 @@ type TokenServiceHandler interface {
 // and JSON codecs. They also support gzip compression.
 func NewTokenServiceHandler(svc TokenServiceHandler, opts ...connect_go.HandlerOption) (string, http.Handler) {
 	mux := http.NewServeMux()
-	mux.Handle("/api.v1.TokenService/Create", connect_go.NewUnaryHandler(
-		"/api.v1.TokenService/Create",
+	mux.Handle(TokenServiceCreateProcedure, connect_go.NewUnaryHandler(
+		TokenServiceCreateProcedure,
 		svc.Create,
 		opts...,
 	))

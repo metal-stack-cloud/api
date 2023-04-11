@@ -25,6 +25,49 @@ const (
 	PaymentServiceName = "api.v1.PaymentService"
 )
 
+// These constants are the fully-qualified names of the RPCs defined in this package. They're
+// exposed at runtime as Spec.Procedure and as the final two segments of the HTTP route.
+//
+// Note that these are different from the fully-qualified method names used by
+// google.golang.org/protobuf/reflect/protoreflect. To convert from these constants to
+// reflection-formatted method names, remove the leading slash and convert the remaining slash to a
+// period.
+const (
+	// PaymentServiceCreateOrUpdateCustomerProcedure is the fully-qualified name of the PaymentService's
+	// CreateOrUpdateCustomer RPC.
+	PaymentServiceCreateOrUpdateCustomerProcedure = "/api.v1.PaymentService/CreateOrUpdateCustomer"
+	// PaymentServiceGetCustomerProcedure is the fully-qualified name of the PaymentService's
+	// GetCustomer RPC.
+	PaymentServiceGetCustomerProcedure = "/api.v1.PaymentService/GetCustomer"
+	// PaymentServiceGetCustomerWithLoginProcedure is the fully-qualified name of the PaymentService's
+	// GetCustomerWithLogin RPC.
+	PaymentServiceGetCustomerWithLoginProcedure = "/api.v1.PaymentService/GetCustomerWithLogin"
+	// PaymentServiceCheckIfCustomerExistsProcedure is the fully-qualified name of the PaymentService's
+	// CheckIfCustomerExists RPC.
+	PaymentServiceCheckIfCustomerExistsProcedure = "/api.v1.PaymentService/CheckIfCustomerExists"
+	// PaymentServiceHasPaymentMethodProcedure is the fully-qualified name of the PaymentService's
+	// HasPaymentMethod RPC.
+	PaymentServiceHasPaymentMethodProcedure = "/api.v1.PaymentService/HasPaymentMethod"
+	// PaymentServiceDeletePaymentMethodProcedure is the fully-qualified name of the PaymentService's
+	// DeletePaymentMethod RPC.
+	PaymentServiceDeletePaymentMethodProcedure = "/api.v1.PaymentService/DeletePaymentMethod"
+	// PaymentServiceGetSubscriptionUsageProcedure is the fully-qualified name of the PaymentService's
+	// GetSubscriptionUsage RPC.
+	PaymentServiceGetSubscriptionUsageProcedure = "/api.v1.PaymentService/GetSubscriptionUsage"
+	// PaymentServiceGetInvoicesProcedure is the fully-qualified name of the PaymentService's
+	// GetInvoices RPC.
+	PaymentServiceGetInvoicesProcedure = "/api.v1.PaymentService/GetInvoices"
+	// PaymentServiceGetDefaultPricesProcedure is the fully-qualified name of the PaymentService's
+	// GetDefaultPrices RPC.
+	PaymentServiceGetDefaultPricesProcedure = "/api.v1.PaymentService/GetDefaultPrices"
+	// PaymentServiceCheckAdmittedProcedure is the fully-qualified name of the PaymentService's
+	// CheckAdmitted RPC.
+	PaymentServiceCheckAdmittedProcedure = "/api.v1.PaymentService/CheckAdmitted"
+	// PaymentServiceRequestAdmissionProcedure is the fully-qualified name of the PaymentService's
+	// RequestAdmission RPC.
+	PaymentServiceRequestAdmissionProcedure = "/api.v1.PaymentService/RequestAdmission"
+)
+
 // PaymentServiceClient is a client for the api.v1.PaymentService service.
 type PaymentServiceClient interface {
 	CreateOrUpdateCustomer(context.Context, *connect_go.Request[v1.PaymentServiceCreateOrUpdateCustomerRequest]) (*connect_go.Response[v1.PaymentServiceCreateOrUpdateCustomerResponse], error)
@@ -52,57 +95,57 @@ func NewPaymentServiceClient(httpClient connect_go.HTTPClient, baseURL string, o
 	return &paymentServiceClient{
 		createOrUpdateCustomer: connect_go.NewClient[v1.PaymentServiceCreateOrUpdateCustomerRequest, v1.PaymentServiceCreateOrUpdateCustomerResponse](
 			httpClient,
-			baseURL+"/api.v1.PaymentService/CreateOrUpdateCustomer",
+			baseURL+PaymentServiceCreateOrUpdateCustomerProcedure,
 			opts...,
 		),
 		getCustomer: connect_go.NewClient[v1.PaymentServiceGetCustomerRequest, v1.PaymentServiceGetCustomerResponse](
 			httpClient,
-			baseURL+"/api.v1.PaymentService/GetCustomer",
+			baseURL+PaymentServiceGetCustomerProcedure,
 			opts...,
 		),
 		getCustomerWithLogin: connect_go.NewClient[v1.PaymentServiceGetCustomerWithLoginRequest, v1.PaymentServiceGetCustomerWithLoginResponse](
 			httpClient,
-			baseURL+"/api.v1.PaymentService/GetCustomerWithLogin",
+			baseURL+PaymentServiceGetCustomerWithLoginProcedure,
 			opts...,
 		),
 		checkIfCustomerExists: connect_go.NewClient[v1.PaymentServiceCheckIfCustomerExistsRequest, v1.PaymentServiceCheckIfCustomerExistsResponse](
 			httpClient,
-			baseURL+"/api.v1.PaymentService/CheckIfCustomerExists",
+			baseURL+PaymentServiceCheckIfCustomerExistsProcedure,
 			opts...,
 		),
 		hasPaymentMethod: connect_go.NewClient[v1.PaymentServiceHasPaymentMethodRequest, v1.PaymentServiceHasPaymentMethodResponse](
 			httpClient,
-			baseURL+"/api.v1.PaymentService/HasPaymentMethod",
+			baseURL+PaymentServiceHasPaymentMethodProcedure,
 			opts...,
 		),
 		deletePaymentMethod: connect_go.NewClient[v1.PaymentServiceDeletePaymentMethodRequest, v1.PaymentServiceDeletePaymentMethodResponse](
 			httpClient,
-			baseURL+"/api.v1.PaymentService/DeletePaymentMethod",
+			baseURL+PaymentServiceDeletePaymentMethodProcedure,
 			opts...,
 		),
 		getSubscriptionUsage: connect_go.NewClient[v1.PaymentServiceGetSubscriptionUsageRequest, v1.PaymentServiceGetSubscriptionUsageResponse](
 			httpClient,
-			baseURL+"/api.v1.PaymentService/GetSubscriptionUsage",
+			baseURL+PaymentServiceGetSubscriptionUsageProcedure,
 			opts...,
 		),
 		getInvoices: connect_go.NewClient[v1.PaymentServiceGetInvoicesRequest, v1.PaymentServiceGetInvoicesResponse](
 			httpClient,
-			baseURL+"/api.v1.PaymentService/GetInvoices",
+			baseURL+PaymentServiceGetInvoicesProcedure,
 			opts...,
 		),
 		getDefaultPrices: connect_go.NewClient[v1.PaymentServiceGetDefaultPricesRequest, v1.PaymentServiceGetDefaultPricesResponse](
 			httpClient,
-			baseURL+"/api.v1.PaymentService/GetDefaultPrices",
+			baseURL+PaymentServiceGetDefaultPricesProcedure,
 			opts...,
 		),
 		checkAdmitted: connect_go.NewClient[v1.PaymentServiceCheckAdmittedRequest, v1.PaymentServiceCheckAdmittedResponse](
 			httpClient,
-			baseURL+"/api.v1.PaymentService/CheckAdmitted",
+			baseURL+PaymentServiceCheckAdmittedProcedure,
 			opts...,
 		),
 		requestAdmission: connect_go.NewClient[v1.PaymentServiceRequestAdmissionRequest, v1.PaymentServiceRequestAdmissionResponse](
 			httpClient,
-			baseURL+"/api.v1.PaymentService/RequestAdmission",
+			baseURL+PaymentServiceRequestAdmissionProcedure,
 			opts...,
 		),
 	}
@@ -200,58 +243,58 @@ type PaymentServiceHandler interface {
 // and JSON codecs. They also support gzip compression.
 func NewPaymentServiceHandler(svc PaymentServiceHandler, opts ...connect_go.HandlerOption) (string, http.Handler) {
 	mux := http.NewServeMux()
-	mux.Handle("/api.v1.PaymentService/CreateOrUpdateCustomer", connect_go.NewUnaryHandler(
-		"/api.v1.PaymentService/CreateOrUpdateCustomer",
+	mux.Handle(PaymentServiceCreateOrUpdateCustomerProcedure, connect_go.NewUnaryHandler(
+		PaymentServiceCreateOrUpdateCustomerProcedure,
 		svc.CreateOrUpdateCustomer,
 		opts...,
 	))
-	mux.Handle("/api.v1.PaymentService/GetCustomer", connect_go.NewUnaryHandler(
-		"/api.v1.PaymentService/GetCustomer",
+	mux.Handle(PaymentServiceGetCustomerProcedure, connect_go.NewUnaryHandler(
+		PaymentServiceGetCustomerProcedure,
 		svc.GetCustomer,
 		opts...,
 	))
-	mux.Handle("/api.v1.PaymentService/GetCustomerWithLogin", connect_go.NewUnaryHandler(
-		"/api.v1.PaymentService/GetCustomerWithLogin",
+	mux.Handle(PaymentServiceGetCustomerWithLoginProcedure, connect_go.NewUnaryHandler(
+		PaymentServiceGetCustomerWithLoginProcedure,
 		svc.GetCustomerWithLogin,
 		opts...,
 	))
-	mux.Handle("/api.v1.PaymentService/CheckIfCustomerExists", connect_go.NewUnaryHandler(
-		"/api.v1.PaymentService/CheckIfCustomerExists",
+	mux.Handle(PaymentServiceCheckIfCustomerExistsProcedure, connect_go.NewUnaryHandler(
+		PaymentServiceCheckIfCustomerExistsProcedure,
 		svc.CheckIfCustomerExists,
 		opts...,
 	))
-	mux.Handle("/api.v1.PaymentService/HasPaymentMethod", connect_go.NewUnaryHandler(
-		"/api.v1.PaymentService/HasPaymentMethod",
+	mux.Handle(PaymentServiceHasPaymentMethodProcedure, connect_go.NewUnaryHandler(
+		PaymentServiceHasPaymentMethodProcedure,
 		svc.HasPaymentMethod,
 		opts...,
 	))
-	mux.Handle("/api.v1.PaymentService/DeletePaymentMethod", connect_go.NewUnaryHandler(
-		"/api.v1.PaymentService/DeletePaymentMethod",
+	mux.Handle(PaymentServiceDeletePaymentMethodProcedure, connect_go.NewUnaryHandler(
+		PaymentServiceDeletePaymentMethodProcedure,
 		svc.DeletePaymentMethod,
 		opts...,
 	))
-	mux.Handle("/api.v1.PaymentService/GetSubscriptionUsage", connect_go.NewUnaryHandler(
-		"/api.v1.PaymentService/GetSubscriptionUsage",
+	mux.Handle(PaymentServiceGetSubscriptionUsageProcedure, connect_go.NewUnaryHandler(
+		PaymentServiceGetSubscriptionUsageProcedure,
 		svc.GetSubscriptionUsage,
 		opts...,
 	))
-	mux.Handle("/api.v1.PaymentService/GetInvoices", connect_go.NewUnaryHandler(
-		"/api.v1.PaymentService/GetInvoices",
+	mux.Handle(PaymentServiceGetInvoicesProcedure, connect_go.NewUnaryHandler(
+		PaymentServiceGetInvoicesProcedure,
 		svc.GetInvoices,
 		opts...,
 	))
-	mux.Handle("/api.v1.PaymentService/GetDefaultPrices", connect_go.NewUnaryHandler(
-		"/api.v1.PaymentService/GetDefaultPrices",
+	mux.Handle(PaymentServiceGetDefaultPricesProcedure, connect_go.NewUnaryHandler(
+		PaymentServiceGetDefaultPricesProcedure,
 		svc.GetDefaultPrices,
 		opts...,
 	))
-	mux.Handle("/api.v1.PaymentService/CheckAdmitted", connect_go.NewUnaryHandler(
-		"/api.v1.PaymentService/CheckAdmitted",
+	mux.Handle(PaymentServiceCheckAdmittedProcedure, connect_go.NewUnaryHandler(
+		PaymentServiceCheckAdmittedProcedure,
 		svc.CheckAdmitted,
 		opts...,
 	))
-	mux.Handle("/api.v1.PaymentService/RequestAdmission", connect_go.NewUnaryHandler(
-		"/api.v1.PaymentService/RequestAdmission",
+	mux.Handle(PaymentServiceRequestAdmissionProcedure, connect_go.NewUnaryHandler(
+		PaymentServiceRequestAdmissionProcedure,
 		svc.RequestAdmission,
 		opts...,
 	))

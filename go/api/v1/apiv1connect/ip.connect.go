@@ -25,6 +25,26 @@ const (
 	IPServiceName = "api.v1.IPService"
 )
 
+// These constants are the fully-qualified names of the RPCs defined in this package. They're
+// exposed at runtime as Spec.Procedure and as the final two segments of the HTTP route.
+//
+// Note that these are different from the fully-qualified method names used by
+// google.golang.org/protobuf/reflect/protoreflect. To convert from these constants to
+// reflection-formatted method names, remove the leading slash and convert the remaining slash to a
+// period.
+const (
+	// IPServiceGetProcedure is the fully-qualified name of the IPService's Get RPC.
+	IPServiceGetProcedure = "/api.v1.IPService/Get"
+	// IPServiceAllocateProcedure is the fully-qualified name of the IPService's Allocate RPC.
+	IPServiceAllocateProcedure = "/api.v1.IPService/Allocate"
+	// IPServiceUpdateProcedure is the fully-qualified name of the IPService's Update RPC.
+	IPServiceUpdateProcedure = "/api.v1.IPService/Update"
+	// IPServiceListProcedure is the fully-qualified name of the IPService's List RPC.
+	IPServiceListProcedure = "/api.v1.IPService/List"
+	// IPServiceDeleteProcedure is the fully-qualified name of the IPService's Delete RPC.
+	IPServiceDeleteProcedure = "/api.v1.IPService/Delete"
+)
+
 // IPServiceClient is a client for the api.v1.IPService service.
 type IPServiceClient interface {
 	Get(context.Context, *connect_go.Request[v1.IPServiceGetRequest]) (*connect_go.Response[v1.IPServiceGetResponse], error)
@@ -46,27 +66,27 @@ func NewIPServiceClient(httpClient connect_go.HTTPClient, baseURL string, opts .
 	return &iPServiceClient{
 		get: connect_go.NewClient[v1.IPServiceGetRequest, v1.IPServiceGetResponse](
 			httpClient,
-			baseURL+"/api.v1.IPService/Get",
+			baseURL+IPServiceGetProcedure,
 			opts...,
 		),
 		allocate: connect_go.NewClient[v1.IPServiceAllocateRequest, v1.IPServiceAllocateResponse](
 			httpClient,
-			baseURL+"/api.v1.IPService/Allocate",
+			baseURL+IPServiceAllocateProcedure,
 			opts...,
 		),
 		update: connect_go.NewClient[v1.IPServiceUpdateRequest, v1.IPServiceUpdateResponse](
 			httpClient,
-			baseURL+"/api.v1.IPService/Update",
+			baseURL+IPServiceUpdateProcedure,
 			opts...,
 		),
 		list: connect_go.NewClient[v1.IPServiceListRequest, v1.IPServiceListResponse](
 			httpClient,
-			baseURL+"/api.v1.IPService/List",
+			baseURL+IPServiceListProcedure,
 			opts...,
 		),
 		delete: connect_go.NewClient[v1.IPServiceDeleteRequest, v1.IPServiceDeleteResponse](
 			httpClient,
-			baseURL+"/api.v1.IPService/Delete",
+			baseURL+IPServiceDeleteProcedure,
 			opts...,
 		),
 	}
@@ -122,28 +142,28 @@ type IPServiceHandler interface {
 // and JSON codecs. They also support gzip compression.
 func NewIPServiceHandler(svc IPServiceHandler, opts ...connect_go.HandlerOption) (string, http.Handler) {
 	mux := http.NewServeMux()
-	mux.Handle("/api.v1.IPService/Get", connect_go.NewUnaryHandler(
-		"/api.v1.IPService/Get",
+	mux.Handle(IPServiceGetProcedure, connect_go.NewUnaryHandler(
+		IPServiceGetProcedure,
 		svc.Get,
 		opts...,
 	))
-	mux.Handle("/api.v1.IPService/Allocate", connect_go.NewUnaryHandler(
-		"/api.v1.IPService/Allocate",
+	mux.Handle(IPServiceAllocateProcedure, connect_go.NewUnaryHandler(
+		IPServiceAllocateProcedure,
 		svc.Allocate,
 		opts...,
 	))
-	mux.Handle("/api.v1.IPService/Update", connect_go.NewUnaryHandler(
-		"/api.v1.IPService/Update",
+	mux.Handle(IPServiceUpdateProcedure, connect_go.NewUnaryHandler(
+		IPServiceUpdateProcedure,
 		svc.Update,
 		opts...,
 	))
-	mux.Handle("/api.v1.IPService/List", connect_go.NewUnaryHandler(
-		"/api.v1.IPService/List",
+	mux.Handle(IPServiceListProcedure, connect_go.NewUnaryHandler(
+		IPServiceListProcedure,
 		svc.List,
 		opts...,
 	))
-	mux.Handle("/api.v1.IPService/Delete", connect_go.NewUnaryHandler(
-		"/api.v1.IPService/Delete",
+	mux.Handle(IPServiceDeleteProcedure, connect_go.NewUnaryHandler(
+		IPServiceDeleteProcedure,
 		svc.Delete,
 		opts...,
 	))
