@@ -25,6 +25,22 @@ const (
 	TenantServiceName = "admin.v1.TenantService"
 )
 
+// These constants are the fully-qualified names of the RPCs defined in this package. They're
+// exposed at runtime as Spec.Procedure and as the final two segments of the HTTP route.
+//
+// Note that these are different from the fully-qualified method names used by
+// google.golang.org/protobuf/reflect/protoreflect. To convert from these constants to
+// reflection-formatted method names, remove the leading slash and convert the remaining slash to a
+// period.
+const (
+	// TenantServiceListProcedure is the fully-qualified name of the TenantService's List RPC.
+	TenantServiceListProcedure = "/admin.v1.TenantService/List"
+	// TenantServiceAdmitProcedure is the fully-qualified name of the TenantService's Admit RPC.
+	TenantServiceAdmitProcedure = "/admin.v1.TenantService/Admit"
+	// TenantServiceRevokeProcedure is the fully-qualified name of the TenantService's Revoke RPC.
+	TenantServiceRevokeProcedure = "/admin.v1.TenantService/Revoke"
+)
+
 // TenantServiceClient is a client for the admin.v1.TenantService service.
 type TenantServiceClient interface {
 	List(context.Context, *connect_go.Request[v1.TenantServiceListRequest]) (*connect_go.Response[v1.TenantServiceListResponse], error)
@@ -44,17 +60,17 @@ func NewTenantServiceClient(httpClient connect_go.HTTPClient, baseURL string, op
 	return &tenantServiceClient{
 		list: connect_go.NewClient[v1.TenantServiceListRequest, v1.TenantServiceListResponse](
 			httpClient,
-			baseURL+"/admin.v1.TenantService/List",
+			baseURL+TenantServiceListProcedure,
 			opts...,
 		),
 		admit: connect_go.NewClient[v1.TenantServiceAdmitRequest, v1.TenantServiceAdmitResponse](
 			httpClient,
-			baseURL+"/admin.v1.TenantService/Admit",
+			baseURL+TenantServiceAdmitProcedure,
 			opts...,
 		),
 		revoke: connect_go.NewClient[v1.TenantServiceRevokeRequest, v1.TenantServiceRevokeResponse](
 			httpClient,
-			baseURL+"/admin.v1.TenantService/Revoke",
+			baseURL+TenantServiceRevokeProcedure,
 			opts...,
 		),
 	}
@@ -96,18 +112,18 @@ type TenantServiceHandler interface {
 // and JSON codecs. They also support gzip compression.
 func NewTenantServiceHandler(svc TenantServiceHandler, opts ...connect_go.HandlerOption) (string, http.Handler) {
 	mux := http.NewServeMux()
-	mux.Handle("/admin.v1.TenantService/List", connect_go.NewUnaryHandler(
-		"/admin.v1.TenantService/List",
+	mux.Handle(TenantServiceListProcedure, connect_go.NewUnaryHandler(
+		TenantServiceListProcedure,
 		svc.List,
 		opts...,
 	))
-	mux.Handle("/admin.v1.TenantService/Admit", connect_go.NewUnaryHandler(
-		"/admin.v1.TenantService/Admit",
+	mux.Handle(TenantServiceAdmitProcedure, connect_go.NewUnaryHandler(
+		TenantServiceAdmitProcedure,
 		svc.Admit,
 		opts...,
 	))
-	mux.Handle("/admin.v1.TenantService/Revoke", connect_go.NewUnaryHandler(
-		"/admin.v1.TenantService/Revoke",
+	mux.Handle(TenantServiceRevokeProcedure, connect_go.NewUnaryHandler(
+		TenantServiceRevokeProcedure,
 		svc.Revoke,
 		opts...,
 	))

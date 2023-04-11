@@ -25,6 +25,22 @@ const (
 	PaymentServiceName = "admin.v1.PaymentService"
 )
 
+// These constants are the fully-qualified names of the RPCs defined in this package. They're
+// exposed at runtime as Spec.Procedure and as the final two segments of the HTTP route.
+//
+// Note that these are different from the fully-qualified method names used by
+// google.golang.org/protobuf/reflect/protoreflect. To convert from these constants to
+// reflection-formatted method names, remove the leading slash and convert the remaining slash to a
+// period.
+const (
+	// PaymentServiceListCouponsProcedure is the fully-qualified name of the PaymentService's
+	// ListCoupons RPC.
+	PaymentServiceListCouponsProcedure = "/admin.v1.PaymentService/ListCoupons"
+	// PaymentServiceAddCouponToCustomerProcedure is the fully-qualified name of the PaymentService's
+	// AddCouponToCustomer RPC.
+	PaymentServiceAddCouponToCustomerProcedure = "/admin.v1.PaymentService/AddCouponToCustomer"
+)
+
 // PaymentServiceClient is a client for the admin.v1.PaymentService service.
 type PaymentServiceClient interface {
 	ListCoupons(context.Context, *connect_go.Request[v1.PaymentServiceListCouponsRequest]) (*connect_go.Response[v1.PaymentServiceListCouponsResponse], error)
@@ -43,12 +59,12 @@ func NewPaymentServiceClient(httpClient connect_go.HTTPClient, baseURL string, o
 	return &paymentServiceClient{
 		listCoupons: connect_go.NewClient[v1.PaymentServiceListCouponsRequest, v1.PaymentServiceListCouponsResponse](
 			httpClient,
-			baseURL+"/admin.v1.PaymentService/ListCoupons",
+			baseURL+PaymentServiceListCouponsProcedure,
 			opts...,
 		),
 		addCouponToCustomer: connect_go.NewClient[v1.PaymentServiceAddCouponToCustomerRequest, v1.PaymentServiceAddCouponToCustomerResponse](
 			httpClient,
-			baseURL+"/admin.v1.PaymentService/AddCouponToCustomer",
+			baseURL+PaymentServiceAddCouponToCustomerProcedure,
 			opts...,
 		),
 	}
@@ -83,13 +99,13 @@ type PaymentServiceHandler interface {
 // and JSON codecs. They also support gzip compression.
 func NewPaymentServiceHandler(svc PaymentServiceHandler, opts ...connect_go.HandlerOption) (string, http.Handler) {
 	mux := http.NewServeMux()
-	mux.Handle("/admin.v1.PaymentService/ListCoupons", connect_go.NewUnaryHandler(
-		"/admin.v1.PaymentService/ListCoupons",
+	mux.Handle(PaymentServiceListCouponsProcedure, connect_go.NewUnaryHandler(
+		PaymentServiceListCouponsProcedure,
 		svc.ListCoupons,
 		opts...,
 	))
-	mux.Handle("/admin.v1.PaymentService/AddCouponToCustomer", connect_go.NewUnaryHandler(
-		"/admin.v1.PaymentService/AddCouponToCustomer",
+	mux.Handle(PaymentServiceAddCouponToCustomerProcedure, connect_go.NewUnaryHandler(
+		PaymentServiceAddCouponToCustomerProcedure,
 		svc.AddCouponToCustomer,
 		opts...,
 	))
