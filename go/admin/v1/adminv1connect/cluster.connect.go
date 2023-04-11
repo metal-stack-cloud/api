@@ -25,6 +25,27 @@ const (
 	ClusterServiceName = "admin.v1.ClusterService"
 )
 
+// These constants are the fully-qualified names of the RPCs defined in this package. They're
+// exposed at runtime as Spec.Procedure and as the final two segments of the HTTP route.
+//
+// Note that these are different from the fully-qualified method names used by
+// google.golang.org/protobuf/reflect/protoreflect. To convert from these constants to
+// reflection-formatted method names, remove the leading slash and convert the remaining slash to a
+// period.
+const (
+	// ClusterServiceGetProcedure is the fully-qualified name of the ClusterService's Get RPC.
+	ClusterServiceGetProcedure = "/admin.v1.ClusterService/Get"
+	// ClusterServiceLogsProcedure is the fully-qualified name of the ClusterService's Logs RPC.
+	ClusterServiceLogsProcedure = "/admin.v1.ClusterService/Logs"
+	// ClusterServiceListProcedure is the fully-qualified name of the ClusterService's List RPC.
+	ClusterServiceListProcedure = "/admin.v1.ClusterService/List"
+	// ClusterServiceGetCredentialsProcedure is the fully-qualified name of the ClusterService's
+	// GetCredentials RPC.
+	ClusterServiceGetCredentialsProcedure = "/admin.v1.ClusterService/GetCredentials"
+	// ClusterServiceOperateProcedure is the fully-qualified name of the ClusterService's Operate RPC.
+	ClusterServiceOperateProcedure = "/admin.v1.ClusterService/Operate"
+)
+
 // ClusterServiceClient is a client for the admin.v1.ClusterService service.
 type ClusterServiceClient interface {
 	Get(context.Context, *connect_go.Request[v1.ClusterServiceGetRequest]) (*connect_go.Response[v1.ClusterServiceGetResponse], error)
@@ -46,27 +67,27 @@ func NewClusterServiceClient(httpClient connect_go.HTTPClient, baseURL string, o
 	return &clusterServiceClient{
 		get: connect_go.NewClient[v1.ClusterServiceGetRequest, v1.ClusterServiceGetResponse](
 			httpClient,
-			baseURL+"/admin.v1.ClusterService/Get",
+			baseURL+ClusterServiceGetProcedure,
 			opts...,
 		),
 		logs: connect_go.NewClient[v1.ClusterServiceLogsRequest, v1.ClusterServiceLogsResponse](
 			httpClient,
-			baseURL+"/admin.v1.ClusterService/Logs",
+			baseURL+ClusterServiceLogsProcedure,
 			opts...,
 		),
 		list: connect_go.NewClient[v1.ClusterServiceListRequest, v1.ClusterServiceListResponse](
 			httpClient,
-			baseURL+"/admin.v1.ClusterService/List",
+			baseURL+ClusterServiceListProcedure,
 			opts...,
 		),
 		getCredentials: connect_go.NewClient[v1.ClusterServiceGetCredentialsRequest, v1.ClusterServiceGetCredentialsResponse](
 			httpClient,
-			baseURL+"/admin.v1.ClusterService/GetCredentials",
+			baseURL+ClusterServiceGetCredentialsProcedure,
 			opts...,
 		),
 		operate: connect_go.NewClient[v1.ClusterServiceOperateRequest, v1.ClusterServiceOperateResponse](
 			httpClient,
-			baseURL+"/admin.v1.ClusterService/Operate",
+			baseURL+ClusterServiceOperateProcedure,
 			opts...,
 		),
 	}
@@ -122,28 +143,28 @@ type ClusterServiceHandler interface {
 // and JSON codecs. They also support gzip compression.
 func NewClusterServiceHandler(svc ClusterServiceHandler, opts ...connect_go.HandlerOption) (string, http.Handler) {
 	mux := http.NewServeMux()
-	mux.Handle("/admin.v1.ClusterService/Get", connect_go.NewUnaryHandler(
-		"/admin.v1.ClusterService/Get",
+	mux.Handle(ClusterServiceGetProcedure, connect_go.NewUnaryHandler(
+		ClusterServiceGetProcedure,
 		svc.Get,
 		opts...,
 	))
-	mux.Handle("/admin.v1.ClusterService/Logs", connect_go.NewUnaryHandler(
-		"/admin.v1.ClusterService/Logs",
+	mux.Handle(ClusterServiceLogsProcedure, connect_go.NewUnaryHandler(
+		ClusterServiceLogsProcedure,
 		svc.Logs,
 		opts...,
 	))
-	mux.Handle("/admin.v1.ClusterService/List", connect_go.NewUnaryHandler(
-		"/admin.v1.ClusterService/List",
+	mux.Handle(ClusterServiceListProcedure, connect_go.NewUnaryHandler(
+		ClusterServiceListProcedure,
 		svc.List,
 		opts...,
 	))
-	mux.Handle("/admin.v1.ClusterService/GetCredentials", connect_go.NewUnaryHandler(
-		"/admin.v1.ClusterService/GetCredentials",
+	mux.Handle(ClusterServiceGetCredentialsProcedure, connect_go.NewUnaryHandler(
+		ClusterServiceGetCredentialsProcedure,
 		svc.GetCredentials,
 		opts...,
 	))
-	mux.Handle("/admin.v1.ClusterService/Operate", connect_go.NewUnaryHandler(
-		"/admin.v1.ClusterService/Operate",
+	mux.Handle(ClusterServiceOperateProcedure, connect_go.NewUnaryHandler(
+		ClusterServiceOperateProcedure,
 		svc.Operate,
 		opts...,
 	))
