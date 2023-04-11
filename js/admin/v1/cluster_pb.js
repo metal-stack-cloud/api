@@ -4,7 +4,7 @@
 /* eslint-disable */
 // @ts-nocheck
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.SSHKeyPair = exports.ClusterServiceOperateResponse = exports.ClusterServiceGetCredentialsResponse = exports.ClusterServiceListResponse = exports.ClusterServiceLogsResponse = exports.ClusterServiceGetResponse = exports.ClusterServiceOperateRequest = exports.ClusterServiceGetCredentialsRequest = exports.ClusterServiceListRequest = exports.ClusterServiceLogsRequest = exports.ClusterServiceGetRequest = exports.Operate = void 0;
+exports.SSHKeyPair = exports.ClusterServiceOperateResponse = exports.ClusterServiceCredentialsResponse = exports.ClusterServiceListResponse = exports.ClusterServiceLogsResponse = exports.ClusterServiceGetResponse = exports.ClusterServiceOperateRequest = exports.ClusterServiceCredentialsRequest = exports.ClusterServiceListRequest = exports.ClusterServiceLogsRequest = exports.ClusterServiceGetRequest = exports.Operate = void 0;
 const protobuf_1 = require("@bufbuild/protobuf");
 const cluster_pb_js_1 = require("../../api/v1/cluster_pb.js");
 const machine_pb_js_1 = require("./machine_pb.js");
@@ -153,9 +153,9 @@ ClusterServiceListRequest.fields = protobuf_1.proto3.util.newFieldList(() => [
 ]);
 exports.ClusterServiceListRequest = ClusterServiceListRequest;
 /**
- * @generated from message admin.v1.ClusterServiceGetCredentialsRequest
+ * @generated from message admin.v1.ClusterServiceCredentialsRequest
  */
-class ClusterServiceGetCredentialsRequest extends protobuf_1.Message {
+class ClusterServiceCredentialsRequest extends protobuf_1.Message {
     constructor(data) {
         super();
         /**
@@ -165,24 +165,24 @@ class ClusterServiceGetCredentialsRequest extends protobuf_1.Message {
         protobuf_1.proto3.util.initPartial(data, this);
     }
     static fromBinary(bytes, options) {
-        return new ClusterServiceGetCredentialsRequest().fromBinary(bytes, options);
+        return new ClusterServiceCredentialsRequest().fromBinary(bytes, options);
     }
     static fromJson(jsonValue, options) {
-        return new ClusterServiceGetCredentialsRequest().fromJson(jsonValue, options);
+        return new ClusterServiceCredentialsRequest().fromJson(jsonValue, options);
     }
     static fromJsonString(jsonString, options) {
-        return new ClusterServiceGetCredentialsRequest().fromJsonString(jsonString, options);
+        return new ClusterServiceCredentialsRequest().fromJsonString(jsonString, options);
     }
     static equals(a, b) {
-        return protobuf_1.proto3.util.equals(ClusterServiceGetCredentialsRequest, a, b);
+        return protobuf_1.proto3.util.equals(ClusterServiceCredentialsRequest, a, b);
     }
 }
-ClusterServiceGetCredentialsRequest.runtime = protobuf_1.proto3;
-ClusterServiceGetCredentialsRequest.typeName = "admin.v1.ClusterServiceGetCredentialsRequest";
-ClusterServiceGetCredentialsRequest.fields = protobuf_1.proto3.util.newFieldList(() => [
+ClusterServiceCredentialsRequest.runtime = protobuf_1.proto3;
+ClusterServiceCredentialsRequest.typeName = "admin.v1.ClusterServiceCredentialsRequest";
+ClusterServiceCredentialsRequest.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 1, name: "uuid", kind: "scalar", T: 9 /* ScalarType.STRING */ },
 ]);
-exports.ClusterServiceGetCredentialsRequest = ClusterServiceGetCredentialsRequest;
+exports.ClusterServiceCredentialsRequest = ClusterServiceCredentialsRequest;
 /**
  * @generated from message admin.v1.ClusterServiceOperateRequest
  */
@@ -314,9 +314,9 @@ ClusterServiceListResponse.fields = protobuf_1.proto3.util.newFieldList(() => [
 ]);
 exports.ClusterServiceListResponse = ClusterServiceListResponse;
 /**
- * @generated from message admin.v1.ClusterServiceGetCredentialsResponse
+ * @generated from message admin.v1.ClusterServiceCredentialsResponse
  */
-class ClusterServiceGetCredentialsResponse extends protobuf_1.Message {
+class ClusterServiceCredentialsResponse extends protobuf_1.Message {
     constructor(data) {
         super();
         /**
@@ -326,26 +326,26 @@ class ClusterServiceGetCredentialsResponse extends protobuf_1.Message {
         protobuf_1.proto3.util.initPartial(data, this);
     }
     static fromBinary(bytes, options) {
-        return new ClusterServiceGetCredentialsResponse().fromBinary(bytes, options);
+        return new ClusterServiceCredentialsResponse().fromBinary(bytes, options);
     }
     static fromJson(jsonValue, options) {
-        return new ClusterServiceGetCredentialsResponse().fromJson(jsonValue, options);
+        return new ClusterServiceCredentialsResponse().fromJson(jsonValue, options);
     }
     static fromJsonString(jsonString, options) {
-        return new ClusterServiceGetCredentialsResponse().fromJsonString(jsonString, options);
+        return new ClusterServiceCredentialsResponse().fromJsonString(jsonString, options);
     }
     static equals(a, b) {
-        return protobuf_1.proto3.util.equals(ClusterServiceGetCredentialsResponse, a, b);
+        return protobuf_1.proto3.util.equals(ClusterServiceCredentialsResponse, a, b);
     }
 }
-ClusterServiceGetCredentialsResponse.runtime = protobuf_1.proto3;
-ClusterServiceGetCredentialsResponse.typeName = "admin.v1.ClusterServiceGetCredentialsResponse";
-ClusterServiceGetCredentialsResponse.fields = protobuf_1.proto3.util.newFieldList(() => [
+ClusterServiceCredentialsResponse.runtime = protobuf_1.proto3;
+ClusterServiceCredentialsResponse.typeName = "admin.v1.ClusterServiceCredentialsResponse";
+ClusterServiceCredentialsResponse.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 1, name: "kubeconfig", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 2, name: "ssh_keypair", kind: "message", T: SSHKeyPair },
     { no: 3, name: "vpn", kind: "message", T: machine_pb_js_1.VPN },
 ]);
-exports.ClusterServiceGetCredentialsResponse = ClusterServiceGetCredentialsResponse;
+exports.ClusterServiceCredentialsResponse = ClusterServiceCredentialsResponse;
 /**
  * @generated from message admin.v1.ClusterServiceOperateResponse
  */

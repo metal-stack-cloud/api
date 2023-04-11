@@ -12,15 +12,11 @@ service ClusterService {
     option (api.v1.admin_roles) = ADMIN_ROLE_EDITOR;
     option (api.v1.admin_roles) = ADMIN_ROLE_VIEWER;
   }
-  rpc Logs(ClusterServiceLogsRequest) returns (ClusterServiceLogsResponse) {
-    option (api.v1.admin_roles) = ADMIN_ROLE_EDITOR;
-    option (api.v1.admin_roles) = ADMIN_ROLE_VIEWER;
-  }
   rpc List(ClusterServiceListRequest) returns (ClusterServiceListResponse) {
     option (api.v1.admin_roles) = ADMIN_ROLE_EDITOR;
     option (api.v1.admin_roles) = ADMIN_ROLE_VIEWER;
   }
-  rpc GetCredentials(ClusterServiceGetCredentialsRequest) returns (ClusterServiceGetCredentialsResponse) {
+  rpc Credentials(ClusterServiceCredentialsRequest) returns (ClusterServiceCredentialsResponse) {
     option (api.v1.admin_roles) = ADMIN_ROLE_EDITOR;
   }
   rpc Operate(ClusterServiceOperateRequest) returns (ClusterServiceOperateResponse) {
@@ -46,7 +42,7 @@ message ClusterServiceListRequest {
   map<string, string> labels = 8;
 }
 
-message ClusterServiceGetCredentialsRequest {
+message ClusterServiceCredentialsRequest {
   string uuid = 1 [(validate.rules).string.uuid = true];
 }
 message ClusterServiceOperateRequest {
@@ -64,7 +60,7 @@ message ClusterServiceLogsResponse {
 message ClusterServiceListResponse {
   repeated api.v1.Cluster clusters = 1;
 }
-message ClusterServiceGetCredentialsResponse {
+message ClusterServiceCredentialsResponse {
   string kubeconfig = 1;
   SSHKeyPair ssh_keypair = 2;
   admin.v1.VPN vpn = 3;

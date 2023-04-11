@@ -2184,9 +2184,9 @@
       "extensions": [],
       "messages": [
         {
-          "name": "ClusterServiceGetCredentialsRequest",
-          "longName": "ClusterServiceGetCredentialsRequest",
-          "fullName": "admin.v1.ClusterServiceGetCredentialsRequest",
+          "name": "ClusterServiceCredentialsRequest",
+          "longName": "ClusterServiceCredentialsRequest",
+          "fullName": "admin.v1.ClusterServiceCredentialsRequest",
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
@@ -2216,9 +2216,9 @@
           ]
         },
         {
-          "name": "ClusterServiceGetCredentialsResponse",
-          "longName": "ClusterServiceGetCredentialsResponse",
-          "fullName": "admin.v1.ClusterServiceGetCredentialsResponse",
+          "name": "ClusterServiceCredentialsResponse",
+          "longName": "ClusterServiceCredentialsResponse",
+          "fullName": "admin.v1.ClusterServiceCredentialsResponse",
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
@@ -2692,18 +2692,6 @@
               "responseStreaming": false
             },
             {
-              "name": "Logs",
-              "description": "",
-              "requestType": "ClusterServiceLogsRequest",
-              "requestLongType": "ClusterServiceLogsRequest",
-              "requestFullType": "admin.v1.ClusterServiceLogsRequest",
-              "requestStreaming": false,
-              "responseType": "ClusterServiceLogsResponse",
-              "responseLongType": "ClusterServiceLogsResponse",
-              "responseFullType": "admin.v1.ClusterServiceLogsResponse",
-              "responseStreaming": false
-            },
-            {
               "name": "List",
               "description": "",
               "requestType": "ClusterServiceListRequest",
@@ -2716,15 +2704,15 @@
               "responseStreaming": false
             },
             {
-              "name": "GetCredentials",
+              "name": "Credentials",
               "description": "",
-              "requestType": "ClusterServiceGetCredentialsRequest",
-              "requestLongType": "ClusterServiceGetCredentialsRequest",
-              "requestFullType": "admin.v1.ClusterServiceGetCredentialsRequest",
+              "requestType": "ClusterServiceCredentialsRequest",
+              "requestLongType": "ClusterServiceCredentialsRequest",
+              "requestFullType": "admin.v1.ClusterServiceCredentialsRequest",
               "requestStreaming": false,
-              "responseType": "ClusterServiceGetCredentialsResponse",
-              "responseLongType": "ClusterServiceGetCredentialsResponse",
-              "responseFullType": "admin.v1.ClusterServiceGetCredentialsResponse",
+              "responseType": "ClusterServiceCredentialsResponse",
+              "responseLongType": "ClusterServiceCredentialsResponse",
+              "responseFullType": "admin.v1.ClusterServiceCredentialsResponse",
               "responseStreaming": false
             },
             {

@@ -416,23 +416,23 @@ var _ interface {
 	ErrorName() string
 } = ClusterServiceListRequestValidationError{}
 
-// Validate checks the field values on ClusterServiceGetCredentialsRequest with
+// Validate checks the field values on ClusterServiceCredentialsRequest with
 // the rules defined in the proto definition for this message. If any rules
 // are violated, the first error encountered is returned, or nil if there are
 // no violations.
-func (m *ClusterServiceGetCredentialsRequest) Validate() error {
+func (m *ClusterServiceCredentialsRequest) Validate() error {
 	return m.validate(false)
 }
 
-// ValidateAll checks the field values on ClusterServiceGetCredentialsRequest
-// with the rules defined in the proto definition for this message. If any
-// rules are violated, the result is a list of violation errors wrapped in
-// ClusterServiceGetCredentialsRequestMultiError, or nil if none found.
-func (m *ClusterServiceGetCredentialsRequest) ValidateAll() error {
+// ValidateAll checks the field values on ClusterServiceCredentialsRequest with
+// the rules defined in the proto definition for this message. If any rules
+// are violated, the result is a list of violation errors wrapped in
+// ClusterServiceCredentialsRequestMultiError, or nil if none found.
+func (m *ClusterServiceCredentialsRequest) ValidateAll() error {
 	return m.validate(true)
 }
 
-func (m *ClusterServiceGetCredentialsRequest) validate(all bool) error {
+func (m *ClusterServiceCredentialsRequest) validate(all bool) error {
 	if m == nil {
 		return nil
 	}
@@ -440,7 +440,7 @@ func (m *ClusterServiceGetCredentialsRequest) validate(all bool) error {
 	var errors []error
 
 	if err := m._validateUuid(m.GetUuid()); err != nil {
-		err = ClusterServiceGetCredentialsRequestValidationError{
+		err = ClusterServiceCredentialsRequestValidationError{
 			field:  "Uuid",
 			reason: "value must be a valid UUID",
 			cause:  err,
@@ -452,13 +452,13 @@ func (m *ClusterServiceGetCredentialsRequest) validate(all bool) error {
 	}
 
 	if len(errors) > 0 {
-		return ClusterServiceGetCredentialsRequestMultiError(errors)
+		return ClusterServiceCredentialsRequestMultiError(errors)
 	}
 
 	return nil
 }
 
-func (m *ClusterServiceGetCredentialsRequest) _validateUuid(uuid string) error {
+func (m *ClusterServiceCredentialsRequest) _validateUuid(uuid string) error {
 	if matched := _cluster_uuidPattern.MatchString(uuid); !matched {
 		return errors.New("invalid uuid format")
 	}
@@ -466,14 +466,14 @@ func (m *ClusterServiceGetCredentialsRequest) _validateUuid(uuid string) error {
 	return nil
 }
 
-// ClusterServiceGetCredentialsRequestMultiError is an error wrapping multiple
+// ClusterServiceCredentialsRequestMultiError is an error wrapping multiple
 // validation errors returned by
-// ClusterServiceGetCredentialsRequest.ValidateAll() if the designated
+// ClusterServiceCredentialsRequest.ValidateAll() if the designated
 // constraints aren't met.
-type ClusterServiceGetCredentialsRequestMultiError []error
+type ClusterServiceCredentialsRequestMultiError []error
 
 // Error returns a concatenation of all the error messages it wraps.
-func (m ClusterServiceGetCredentialsRequestMultiError) Error() string {
+func (m ClusterServiceCredentialsRequestMultiError) Error() string {
 	var msgs []string
 	for _, err := range m {
 		msgs = append(msgs, err.Error())
@@ -482,12 +482,12 @@ func (m ClusterServiceGetCredentialsRequestMultiError) Error() string {
 }
 
 // AllErrors returns a list of validation violation errors.
-func (m ClusterServiceGetCredentialsRequestMultiError) AllErrors() []error { return m }
+func (m ClusterServiceCredentialsRequestMultiError) AllErrors() []error { return m }
 
-// ClusterServiceGetCredentialsRequestValidationError is the validation error
-// returned by ClusterServiceGetCredentialsRequest.Validate if the designated
+// ClusterServiceCredentialsRequestValidationError is the validation error
+// returned by ClusterServiceCredentialsRequest.Validate if the designated
 // constraints aren't met.
-type ClusterServiceGetCredentialsRequestValidationError struct {
+type ClusterServiceCredentialsRequestValidationError struct {
 	field  string
 	reason string
 	cause  error
@@ -495,24 +495,24 @@ type ClusterServiceGetCredentialsRequestValidationError struct {
 }
 
 // Field function returns field value.
-func (e ClusterServiceGetCredentialsRequestValidationError) Field() string { return e.field }
+func (e ClusterServiceCredentialsRequestValidationError) Field() string { return e.field }
 
 // Reason function returns reason value.
-func (e ClusterServiceGetCredentialsRequestValidationError) Reason() string { return e.reason }
+func (e ClusterServiceCredentialsRequestValidationError) Reason() string { return e.reason }
 
 // Cause function returns cause value.
-func (e ClusterServiceGetCredentialsRequestValidationError) Cause() error { return e.cause }
+func (e ClusterServiceCredentialsRequestValidationError) Cause() error { return e.cause }
 
 // Key function returns key value.
-func (e ClusterServiceGetCredentialsRequestValidationError) Key() bool { return e.key }
+func (e ClusterServiceCredentialsRequestValidationError) Key() bool { return e.key }
 
 // ErrorName returns error name.
-func (e ClusterServiceGetCredentialsRequestValidationError) ErrorName() string {
-	return "ClusterServiceGetCredentialsRequestValidationError"
+func (e ClusterServiceCredentialsRequestValidationError) ErrorName() string {
+	return "ClusterServiceCredentialsRequestValidationError"
 }
 
 // Error satisfies the builtin error interface
-func (e ClusterServiceGetCredentialsRequestValidationError) Error() string {
+func (e ClusterServiceCredentialsRequestValidationError) Error() string {
 	cause := ""
 	if e.cause != nil {
 		cause = fmt.Sprintf(" | caused by: %v", e.cause)
@@ -524,14 +524,14 @@ func (e ClusterServiceGetCredentialsRequestValidationError) Error() string {
 	}
 
 	return fmt.Sprintf(
-		"invalid %sClusterServiceGetCredentialsRequest.%s: %s%s",
+		"invalid %sClusterServiceCredentialsRequest.%s: %s%s",
 		key,
 		e.field,
 		e.reason,
 		cause)
 }
 
-var _ error = ClusterServiceGetCredentialsRequestValidationError{}
+var _ error = ClusterServiceCredentialsRequestValidationError{}
 
 var _ interface {
 	Field() string
@@ -539,7 +539,7 @@ var _ interface {
 	Key() bool
 	Cause() error
 	ErrorName() string
-} = ClusterServiceGetCredentialsRequestValidationError{}
+} = ClusterServiceCredentialsRequestValidationError{}
 
 // Validate checks the field values on ClusterServiceOperateRequest with the
 // rules defined in the proto definition for this message. If any rules are
@@ -1069,23 +1069,23 @@ var _ interface {
 	ErrorName() string
 } = ClusterServiceListResponseValidationError{}
 
-// Validate checks the field values on ClusterServiceGetCredentialsResponse
-// with the rules defined in the proto definition for this message. If any
-// rules are violated, the first error encountered is returned, or nil if
-// there are no violations.
-func (m *ClusterServiceGetCredentialsResponse) Validate() error {
+// Validate checks the field values on ClusterServiceCredentialsResponse with
+// the rules defined in the proto definition for this message. If any rules
+// are violated, the first error encountered is returned, or nil if there are
+// no violations.
+func (m *ClusterServiceCredentialsResponse) Validate() error {
 	return m.validate(false)
 }
 
-// ValidateAll checks the field values on ClusterServiceGetCredentialsResponse
+// ValidateAll checks the field values on ClusterServiceCredentialsResponse
 // with the rules defined in the proto definition for this message. If any
 // rules are violated, the result is a list of violation errors wrapped in
-// ClusterServiceGetCredentialsResponseMultiError, or nil if none found.
-func (m *ClusterServiceGetCredentialsResponse) ValidateAll() error {
+// ClusterServiceCredentialsResponseMultiError, or nil if none found.
+func (m *ClusterServiceCredentialsResponse) ValidateAll() error {
 	return m.validate(true)
 }
 
-func (m *ClusterServiceGetCredentialsResponse) validate(all bool) error {
+func (m *ClusterServiceCredentialsResponse) validate(all bool) error {
 	if m == nil {
 		return nil
 	}
@@ -1098,7 +1098,7 @@ func (m *ClusterServiceGetCredentialsResponse) validate(all bool) error {
 		switch v := interface{}(m.GetSshKeypair()).(type) {
 		case interface{ ValidateAll() error }:
 			if err := v.ValidateAll(); err != nil {
-				errors = append(errors, ClusterServiceGetCredentialsResponseValidationError{
+				errors = append(errors, ClusterServiceCredentialsResponseValidationError{
 					field:  "SshKeypair",
 					reason: "embedded message failed validation",
 					cause:  err,
@@ -1106,7 +1106,7 @@ func (m *ClusterServiceGetCredentialsResponse) validate(all bool) error {
 			}
 		case interface{ Validate() error }:
 			if err := v.Validate(); err != nil {
-				errors = append(errors, ClusterServiceGetCredentialsResponseValidationError{
+				errors = append(errors, ClusterServiceCredentialsResponseValidationError{
 					field:  "SshKeypair",
 					reason: "embedded message failed validation",
 					cause:  err,
@@ -1115,7 +1115,7 @@ func (m *ClusterServiceGetCredentialsResponse) validate(all bool) error {
 		}
 	} else if v, ok := interface{}(m.GetSshKeypair()).(interface{ Validate() error }); ok {
 		if err := v.Validate(); err != nil {
-			return ClusterServiceGetCredentialsResponseValidationError{
+			return ClusterServiceCredentialsResponseValidationError{
 				field:  "SshKeypair",
 				reason: "embedded message failed validation",
 				cause:  err,
@@ -1127,7 +1127,7 @@ func (m *ClusterServiceGetCredentialsResponse) validate(all bool) error {
 		switch v := interface{}(m.GetVpn()).(type) {
 		case interface{ ValidateAll() error }:
 			if err := v.ValidateAll(); err != nil {
-				errors = append(errors, ClusterServiceGetCredentialsResponseValidationError{
+				errors = append(errors, ClusterServiceCredentialsResponseValidationError{
 					field:  "Vpn",
 					reason: "embedded message failed validation",
 					cause:  err,
@@ -1135,7 +1135,7 @@ func (m *ClusterServiceGetCredentialsResponse) validate(all bool) error {
 			}
 		case interface{ Validate() error }:
 			if err := v.Validate(); err != nil {
-				errors = append(errors, ClusterServiceGetCredentialsResponseValidationError{
+				errors = append(errors, ClusterServiceCredentialsResponseValidationError{
 					field:  "Vpn",
 					reason: "embedded message failed validation",
 					cause:  err,
@@ -1144,7 +1144,7 @@ func (m *ClusterServiceGetCredentialsResponse) validate(all bool) error {
 		}
 	} else if v, ok := interface{}(m.GetVpn()).(interface{ Validate() error }); ok {
 		if err := v.Validate(); err != nil {
-			return ClusterServiceGetCredentialsResponseValidationError{
+			return ClusterServiceCredentialsResponseValidationError{
 				field:  "Vpn",
 				reason: "embedded message failed validation",
 				cause:  err,
@@ -1153,20 +1153,20 @@ func (m *ClusterServiceGetCredentialsResponse) validate(all bool) error {
 	}
 
 	if len(errors) > 0 {
-		return ClusterServiceGetCredentialsResponseMultiError(errors)
+		return ClusterServiceCredentialsResponseMultiError(errors)
 	}
 
 	return nil
 }
 
-// ClusterServiceGetCredentialsResponseMultiError is an error wrapping multiple
+// ClusterServiceCredentialsResponseMultiError is an error wrapping multiple
 // validation errors returned by
-// ClusterServiceGetCredentialsResponse.ValidateAll() if the designated
+// ClusterServiceCredentialsResponse.ValidateAll() if the designated
 // constraints aren't met.
-type ClusterServiceGetCredentialsResponseMultiError []error
+type ClusterServiceCredentialsResponseMultiError []error
 
 // Error returns a concatenation of all the error messages it wraps.
-func (m ClusterServiceGetCredentialsResponseMultiError) Error() string {
+func (m ClusterServiceCredentialsResponseMultiError) Error() string {
 	var msgs []string
 	for _, err := range m {
 		msgs = append(msgs, err.Error())
@@ -1175,12 +1175,12 @@ func (m ClusterServiceGetCredentialsResponseMultiError) Error() string {
 }
 
 // AllErrors returns a list of validation violation errors.
-func (m ClusterServiceGetCredentialsResponseMultiError) AllErrors() []error { return m }
+func (m ClusterServiceCredentialsResponseMultiError) AllErrors() []error { return m }
 
-// ClusterServiceGetCredentialsResponseValidationError is the validation error
-// returned by ClusterServiceGetCredentialsResponse.Validate if the designated
+// ClusterServiceCredentialsResponseValidationError is the validation error
+// returned by ClusterServiceCredentialsResponse.Validate if the designated
 // constraints aren't met.
-type ClusterServiceGetCredentialsResponseValidationError struct {
+type ClusterServiceCredentialsResponseValidationError struct {
 	field  string
 	reason string
 	cause  error
@@ -1188,24 +1188,24 @@ type ClusterServiceGetCredentialsResponseValidationError struct {
 }
 
 // Field function returns field value.
-func (e ClusterServiceGetCredentialsResponseValidationError) Field() string { return e.field }
+func (e ClusterServiceCredentialsResponseValidationError) Field() string { return e.field }
 
 // Reason function returns reason value.
-func (e ClusterServiceGetCredentialsResponseValidationError) Reason() string { return e.reason }
+func (e ClusterServiceCredentialsResponseValidationError) Reason() string { return e.reason }
 
 // Cause function returns cause value.
-func (e ClusterServiceGetCredentialsResponseValidationError) Cause() error { return e.cause }
+func (e ClusterServiceCredentialsResponseValidationError) Cause() error { return e.cause }
 
 // Key function returns key value.
-func (e ClusterServiceGetCredentialsResponseValidationError) Key() bool { return e.key }
+func (e ClusterServiceCredentialsResponseValidationError) Key() bool { return e.key }
 
 // ErrorName returns error name.
-func (e ClusterServiceGetCredentialsResponseValidationError) ErrorName() string {
-	return "ClusterServiceGetCredentialsResponseValidationError"
+func (e ClusterServiceCredentialsResponseValidationError) ErrorName() string {
+	return "ClusterServiceCredentialsResponseValidationError"
 }
 
 // Error satisfies the builtin error interface
-func (e ClusterServiceGetCredentialsResponseValidationError) Error() string {
+func (e ClusterServiceCredentialsResponseValidationError) Error() string {
 	cause := ""
 	if e.cause != nil {
 		cause = fmt.Sprintf(" | caused by: %v", e.cause)
@@ -1217,14 +1217,14 @@ func (e ClusterServiceGetCredentialsResponseValidationError) Error() string {
 	}
 
 	return fmt.Sprintf(
-		"invalid %sClusterServiceGetCredentialsResponse.%s: %s%s",
+		"invalid %sClusterServiceCredentialsResponse.%s: %s%s",
 		key,
 		e.field,
 		e.reason,
 		cause)
 }
 
-var _ error = ClusterServiceGetCredentialsResponseValidationError{}
+var _ error = ClusterServiceCredentialsResponseValidationError{}
 
 var _ interface {
 	Field() string
@@ -1232,7 +1232,7 @@ var _ interface {
 	Key() bool
 	Cause() error
 	ErrorName() string
-} = ClusterServiceGetCredentialsResponseValidationError{}
+} = ClusterServiceCredentialsResponseValidationError{}
 
 // Validate checks the field values on ClusterServiceOperateResponse with the
 // rules defined in the proto definition for this message. If any rules are

@@ -3,9 +3,8 @@
     "admin": {
       "editor": [
         "/admin.v1.ClusterService/Get",
-        "/admin.v1.ClusterService/Logs",
         "/admin.v1.ClusterService/List",
-        "/admin.v1.ClusterService/GetCredentials",
+        "/admin.v1.ClusterService/Credentials",
         "/admin.v1.ClusterService/Operate",
         "/admin.v1.PaymentService/ListCoupons",
         "/admin.v1.PaymentService/AddCouponToCustomer",
@@ -18,7 +17,6 @@
       ],
       "viewer": [
         "/admin.v1.ClusterService/Get",
-        "/admin.v1.ClusterService/Logs",
         "/admin.v1.ClusterService/List",
         "/admin.v1.PaymentService/ListCoupons",
         "/admin.v1.StorageService/ClusterInfo",
@@ -114,10 +112,9 @@
     }
   },
   "methods": {
+    "/admin.v1.ClusterService/Credentials": true,
     "/admin.v1.ClusterService/Get": true,
-    "/admin.v1.ClusterService/GetCredentials": true,
     "/admin.v1.ClusterService/List": true,
-    "/admin.v1.ClusterService/Logs": true,
     "/admin.v1.ClusterService/Operate": true,
     "/admin.v1.PaymentService/AddCouponToCustomer": true,
     "/admin.v1.PaymentService/ListCoupons": true,

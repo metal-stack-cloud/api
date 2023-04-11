@@ -117,21 +117,21 @@ export declare class ClusterServiceListRequest extends Message<ClusterServiceLis
     static equals(a: ClusterServiceListRequest | PlainMessage<ClusterServiceListRequest> | undefined, b: ClusterServiceListRequest | PlainMessage<ClusterServiceListRequest> | undefined): boolean;
 }
 /**
- * @generated from message admin.v1.ClusterServiceGetCredentialsRequest
+ * @generated from message admin.v1.ClusterServiceCredentialsRequest
  */
-export declare class ClusterServiceGetCredentialsRequest extends Message<ClusterServiceGetCredentialsRequest> {
+export declare class ClusterServiceCredentialsRequest extends Message<ClusterServiceCredentialsRequest> {
     /**
      * @generated from field: string uuid = 1;
      */
     uuid: string;
-    constructor(data?: PartialMessage<ClusterServiceGetCredentialsRequest>);
+    constructor(data?: PartialMessage<ClusterServiceCredentialsRequest>);
     static readonly runtime: typeof proto3;
-    static readonly typeName = "admin.v1.ClusterServiceGetCredentialsRequest";
+    static readonly typeName = "admin.v1.ClusterServiceCredentialsRequest";
     static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ClusterServiceGetCredentialsRequest;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ClusterServiceGetCredentialsRequest;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ClusterServiceGetCredentialsRequest;
-    static equals(a: ClusterServiceGetCredentialsRequest | PlainMessage<ClusterServiceGetCredentialsRequest> | undefined, b: ClusterServiceGetCredentialsRequest | PlainMessage<ClusterServiceGetCredentialsRequest> | undefined): boolean;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ClusterServiceCredentialsRequest;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ClusterServiceCredentialsRequest;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ClusterServiceCredentialsRequest;
+    static equals(a: ClusterServiceCredentialsRequest | PlainMessage<ClusterServiceCredentialsRequest> | undefined, b: ClusterServiceCredentialsRequest | PlainMessage<ClusterServiceCredentialsRequest> | undefined): boolean;
 }
 /**
  * @generated from message admin.v1.ClusterServiceOperateRequest
@@ -210,9 +210,9 @@ export declare class ClusterServiceListResponse extends Message<ClusterServiceLi
     static equals(a: ClusterServiceListResponse | PlainMessage<ClusterServiceListResponse> | undefined, b: ClusterServiceListResponse | PlainMessage<ClusterServiceListResponse> | undefined): boolean;
 }
 /**
- * @generated from message admin.v1.ClusterServiceGetCredentialsResponse
+ * @generated from message admin.v1.ClusterServiceCredentialsResponse
  */
-export declare class ClusterServiceGetCredentialsResponse extends Message<ClusterServiceGetCredentialsResponse> {
+export declare class ClusterServiceCredentialsResponse extends Message<ClusterServiceCredentialsResponse> {
     /**
      * @generated from field: string kubeconfig = 1;
      */
@@ -225,14 +225,14 @@ export declare class ClusterServiceGetCredentialsResponse extends Message<Cluste
      * @generated from field: admin.v1.VPN vpn = 3;
      */
     vpn?: VPN;
-    constructor(data?: PartialMessage<ClusterServiceGetCredentialsResponse>);
+    constructor(data?: PartialMessage<ClusterServiceCredentialsResponse>);
     static readonly runtime: typeof proto3;
-    static readonly typeName = "admin.v1.ClusterServiceGetCredentialsResponse";
+    static readonly typeName = "admin.v1.ClusterServiceCredentialsResponse";
     static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ClusterServiceGetCredentialsResponse;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ClusterServiceGetCredentialsResponse;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ClusterServiceGetCredentialsResponse;
-    static equals(a: ClusterServiceGetCredentialsResponse | PlainMessage<ClusterServiceGetCredentialsResponse> | undefined, b: ClusterServiceGetCredentialsResponse | PlainMessage<ClusterServiceGetCredentialsResponse> | undefined): boolean;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ClusterServiceCredentialsResponse;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ClusterServiceCredentialsResponse;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ClusterServiceCredentialsResponse;
+    static equals(a: ClusterServiceCredentialsResponse | PlainMessage<ClusterServiceCredentialsResponse> | undefined, b: ClusterServiceCredentialsResponse | PlainMessage<ClusterServiceCredentialsResponse> | undefined): boolean;
 }
 /**
  * @generated from message admin.v1.ClusterServiceOperateResponse

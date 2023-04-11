@@ -1,4 +1,4 @@
-import { ClusterServiceGetCredentialsRequest, ClusterServiceGetCredentialsResponse, ClusterServiceGetRequest, ClusterServiceGetResponse, ClusterServiceListRequest, ClusterServiceListResponse, ClusterServiceLogsRequest, ClusterServiceLogsResponse, ClusterServiceOperateRequest, ClusterServiceOperateResponse } from "./cluster_pb.js";
+import { ClusterServiceCredentialsRequest, ClusterServiceCredentialsResponse, ClusterServiceGetRequest, ClusterServiceGetResponse, ClusterServiceListRequest, ClusterServiceListResponse, ClusterServiceOperateRequest, ClusterServiceOperateResponse } from "./cluster_pb.js";
 import { MethodKind } from "@bufbuild/protobuf";
 /**
  * @generated from service admin.v1.ClusterService
@@ -16,15 +16,6 @@ export declare const ClusterService: {
             readonly kind: MethodKind.Unary;
         };
         /**
-         * @generated from rpc admin.v1.ClusterService.Logs
-         */
-        readonly logs: {
-            readonly name: "Logs";
-            readonly I: typeof ClusterServiceLogsRequest;
-            readonly O: typeof ClusterServiceLogsResponse;
-            readonly kind: MethodKind.Unary;
-        };
-        /**
          * @generated from rpc admin.v1.ClusterService.List
          */
         readonly list: {
@@ -34,12 +25,12 @@ export declare const ClusterService: {
             readonly kind: MethodKind.Unary;
         };
         /**
-         * @generated from rpc admin.v1.ClusterService.GetCredentials
+         * @generated from rpc admin.v1.ClusterService.Credentials
          */
-        readonly getCredentials: {
-            readonly name: "GetCredentials";
-            readonly I: typeof ClusterServiceGetCredentialsRequest;
-            readonly O: typeof ClusterServiceGetCredentialsResponse;
+        readonly credentials: {
+            readonly name: "Credentials";
+            readonly I: typeof ClusterServiceCredentialsRequest;
+            readonly O: typeof ClusterServiceCredentialsResponse;
             readonly kind: MethodKind.Unary;
         };
         /**

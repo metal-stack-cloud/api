@@ -212,39 +212,39 @@ export class ClusterServiceListRequest extends Message<ClusterServiceListRequest
 }
 
 /**
- * @generated from message admin.v1.ClusterServiceGetCredentialsRequest
+ * @generated from message admin.v1.ClusterServiceCredentialsRequest
  */
-export class ClusterServiceGetCredentialsRequest extends Message<ClusterServiceGetCredentialsRequest> {
+export class ClusterServiceCredentialsRequest extends Message<ClusterServiceCredentialsRequest> {
   /**
    * @generated from field: string uuid = 1;
    */
   uuid = "";
 
-  constructor(data?: PartialMessage<ClusterServiceGetCredentialsRequest>) {
+  constructor(data?: PartialMessage<ClusterServiceCredentialsRequest>) {
     super();
     proto3.util.initPartial(data, this);
   }
 
   static readonly runtime: typeof proto3 = proto3;
-  static readonly typeName = "admin.v1.ClusterServiceGetCredentialsRequest";
+  static readonly typeName = "admin.v1.ClusterServiceCredentialsRequest";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
     { no: 1, name: "uuid", kind: "scalar", T: 9 /* ScalarType.STRING */ },
   ]);
 
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ClusterServiceGetCredentialsRequest {
-    return new ClusterServiceGetCredentialsRequest().fromBinary(bytes, options);
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ClusterServiceCredentialsRequest {
+    return new ClusterServiceCredentialsRequest().fromBinary(bytes, options);
   }
 
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ClusterServiceGetCredentialsRequest {
-    return new ClusterServiceGetCredentialsRequest().fromJson(jsonValue, options);
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ClusterServiceCredentialsRequest {
+    return new ClusterServiceCredentialsRequest().fromJson(jsonValue, options);
   }
 
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ClusterServiceGetCredentialsRequest {
-    return new ClusterServiceGetCredentialsRequest().fromJsonString(jsonString, options);
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ClusterServiceCredentialsRequest {
+    return new ClusterServiceCredentialsRequest().fromJsonString(jsonString, options);
   }
 
-  static equals(a: ClusterServiceGetCredentialsRequest | PlainMessage<ClusterServiceGetCredentialsRequest> | undefined, b: ClusterServiceGetCredentialsRequest | PlainMessage<ClusterServiceGetCredentialsRequest> | undefined): boolean {
-    return proto3.util.equals(ClusterServiceGetCredentialsRequest, a, b);
+  static equals(a: ClusterServiceCredentialsRequest | PlainMessage<ClusterServiceCredentialsRequest> | undefined, b: ClusterServiceCredentialsRequest | PlainMessage<ClusterServiceCredentialsRequest> | undefined): boolean {
+    return proto3.util.equals(ClusterServiceCredentialsRequest, a, b);
   }
 }
 
@@ -409,9 +409,9 @@ export class ClusterServiceListResponse extends Message<ClusterServiceListRespon
 }
 
 /**
- * @generated from message admin.v1.ClusterServiceGetCredentialsResponse
+ * @generated from message admin.v1.ClusterServiceCredentialsResponse
  */
-export class ClusterServiceGetCredentialsResponse extends Message<ClusterServiceGetCredentialsResponse> {
+export class ClusterServiceCredentialsResponse extends Message<ClusterServiceCredentialsResponse> {
   /**
    * @generated from field: string kubeconfig = 1;
    */
@@ -427,33 +427,33 @@ export class ClusterServiceGetCredentialsResponse extends Message<ClusterService
    */
   vpn?: VPN;
 
-  constructor(data?: PartialMessage<ClusterServiceGetCredentialsResponse>) {
+  constructor(data?: PartialMessage<ClusterServiceCredentialsResponse>) {
     super();
     proto3.util.initPartial(data, this);
   }
 
   static readonly runtime: typeof proto3 = proto3;
-  static readonly typeName = "admin.v1.ClusterServiceGetCredentialsResponse";
+  static readonly typeName = "admin.v1.ClusterServiceCredentialsResponse";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
     { no: 1, name: "kubeconfig", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 2, name: "ssh_keypair", kind: "message", T: SSHKeyPair },
     { no: 3, name: "vpn", kind: "message", T: VPN },
   ]);
 
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ClusterServiceGetCredentialsResponse {
-    return new ClusterServiceGetCredentialsResponse().fromBinary(bytes, options);
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ClusterServiceCredentialsResponse {
+    return new ClusterServiceCredentialsResponse().fromBinary(bytes, options);
   }
 
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ClusterServiceGetCredentialsResponse {
-    return new ClusterServiceGetCredentialsResponse().fromJson(jsonValue, options);
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ClusterServiceCredentialsResponse {
+    return new ClusterServiceCredentialsResponse().fromJson(jsonValue, options);
   }
 
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ClusterServiceGetCredentialsResponse {
-    return new ClusterServiceGetCredentialsResponse().fromJsonString(jsonString, options);
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ClusterServiceCredentialsResponse {
+    return new ClusterServiceCredentialsResponse().fromJsonString(jsonString, options);
   }
 
-  static equals(a: ClusterServiceGetCredentialsResponse | PlainMessage<ClusterServiceGetCredentialsResponse> | undefined, b: ClusterServiceGetCredentialsResponse | PlainMessage<ClusterServiceGetCredentialsResponse> | undefined): boolean {
-    return proto3.util.equals(ClusterServiceGetCredentialsResponse, a, b);
+  static equals(a: ClusterServiceCredentialsResponse | PlainMessage<ClusterServiceCredentialsResponse> | undefined, b: ClusterServiceCredentialsResponse | PlainMessage<ClusterServiceCredentialsResponse> | undefined): boolean {
+    return proto3.util.equals(ClusterServiceCredentialsResponse, a, b);
   }
 }
 

@@ -3,7 +3,7 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import { ClusterServiceGetCredentialsRequest, ClusterServiceGetCredentialsResponse, ClusterServiceGetRequest, ClusterServiceGetResponse, ClusterServiceListRequest, ClusterServiceListResponse, ClusterServiceLogsRequest, ClusterServiceLogsResponse, ClusterServiceOperateRequest, ClusterServiceOperateResponse } from "./cluster_pb.js";
+import { ClusterServiceCredentialsRequest, ClusterServiceCredentialsResponse, ClusterServiceGetRequest, ClusterServiceGetResponse, ClusterServiceListRequest, ClusterServiceListResponse, ClusterServiceOperateRequest, ClusterServiceOperateResponse } from "./cluster_pb.js";
 import { MethodKind } from "@bufbuild/protobuf";
 
 /**
@@ -22,15 +22,6 @@ export const ClusterService = {
       kind: MethodKind.Unary,
     },
     /**
-     * @generated from rpc admin.v1.ClusterService.Logs
-     */
-    logs: {
-      name: "Logs",
-      I: ClusterServiceLogsRequest,
-      O: ClusterServiceLogsResponse,
-      kind: MethodKind.Unary,
-    },
-    /**
      * @generated from rpc admin.v1.ClusterService.List
      */
     list: {
@@ -40,12 +31,12 @@ export const ClusterService = {
       kind: MethodKind.Unary,
     },
     /**
-     * @generated from rpc admin.v1.ClusterService.GetCredentials
+     * @generated from rpc admin.v1.ClusterService.Credentials
      */
-    getCredentials: {
-      name: "GetCredentials",
-      I: ClusterServiceGetCredentialsRequest,
-      O: ClusterServiceGetCredentialsResponse,
+    credentials: {
+      name: "Credentials",
+      I: ClusterServiceCredentialsRequest,
+      O: ClusterServiceCredentialsResponse,
       kind: MethodKind.Unary,
     },
     /**

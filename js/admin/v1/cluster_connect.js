@@ -23,15 +23,6 @@ exports.ClusterService = {
             kind: protobuf_1.MethodKind.Unary,
         },
         /**
-         * @generated from rpc admin.v1.ClusterService.Logs
-         */
-        logs: {
-            name: "Logs",
-            I: cluster_pb_js_1.ClusterServiceLogsRequest,
-            O: cluster_pb_js_1.ClusterServiceLogsResponse,
-            kind: protobuf_1.MethodKind.Unary,
-        },
-        /**
          * @generated from rpc admin.v1.ClusterService.List
          */
         list: {
@@ -41,12 +32,12 @@ exports.ClusterService = {
             kind: protobuf_1.MethodKind.Unary,
         },
         /**
-         * @generated from rpc admin.v1.ClusterService.GetCredentials
+         * @generated from rpc admin.v1.ClusterService.Credentials
          */
-        getCredentials: {
-            name: "GetCredentials",
-            I: cluster_pb_js_1.ClusterServiceGetCredentialsRequest,
-            O: cluster_pb_js_1.ClusterServiceGetCredentialsResponse,
+        credentials: {
+            name: "Credentials",
+            I: cluster_pb_js_1.ClusterServiceCredentialsRequest,
+            O: cluster_pb_js_1.ClusterServiceCredentialsResponse,
             kind: protobuf_1.MethodKind.Unary,
         },
         /**
