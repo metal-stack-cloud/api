@@ -45,6 +45,11 @@ service PaymentService {
     option (tenant_roles) = TENANT_ROLE_OWNER;
     option (tenant_roles) = TENANT_ROLE_EDITOR;
   }
+  rpc HasChargeableResources(PaymentServiceHasChargeableResourcesRequest) returns (PaymentServiceHasChargeableResourcesResponse) {
+    option (tenant_roles) = TENANT_ROLE_OWNER;
+    option (tenant_roles) = TENANT_ROLE_EDITOR;
+    option (tenant_roles) = TENANT_ROLE_VIEWER;
+  }
 }
 
 message PaymentCustomer {
@@ -234,3 +239,11 @@ message PaymentServiceRequestAdmissionRequest {
 }
 
 message PaymentServiceRequestAdmissionResponse {}
+
+message PaymentServiceHasChargeableResourcesRequest {
+  string login = 1;
+}
+
+message PaymentServiceHasChargeableResourcesResponse {
+  bool has_resources = 1;
+}

@@ -4,7 +4,7 @@
 /* eslint-disable */
 // @ts-nocheck
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.PaymentServiceRequestAdmissionResponse = exports.PaymentServiceRequestAdmissionRequest = exports.PaymentServiceCheckAdmittedResponse = exports.PaymentServiceCheckAdmittedRequest = exports.PaymentServiceGetDefaultPricesResponse = exports.PaymentServiceGetDefaultPricesRequest = exports.PaymentServiceGetInvoicesResponse = exports.PaymentServiceGetInvoicesRequest = exports.PaymentServiceGetSubscriptionUsageResponse = exports.PaymentServiceGetSubscriptionUsageRequest = exports.PaymentServiceDeletePaymentMethodResponse = exports.PaymentServiceDeletePaymentMethodRequest = exports.PaymentServiceHasPaymentMethodResponse = exports.PaymentServiceHasPaymentMethodRequest = exports.PaymentServiceCheckIfCustomerExistsResponse = exports.PaymentServiceCheckIfCustomerExistsRequest = exports.PaymentServiceGetCustomerWithLoginResponse = exports.PaymentServiceGetCustomerWithLoginRequest = exports.PaymentServiceGetCustomerResponse = exports.PaymentServiceGetCustomerRequest = exports.PaymentServiceCreateOrUpdateCustomerResponse = exports.PaymentServiceCreateOrUpdateCustomerRequest = exports.Coupon = exports.Invoice = exports.SubscriptionUsageItem = exports.Address = exports.Price = exports.Card = exports.PaymentCustomer = void 0;
+exports.PaymentServiceHasChargeableResourcesResponse = exports.PaymentServiceHasChargeableResourcesRequest = exports.PaymentServiceRequestAdmissionResponse = exports.PaymentServiceRequestAdmissionRequest = exports.PaymentServiceCheckAdmittedResponse = exports.PaymentServiceCheckAdmittedRequest = exports.PaymentServiceGetDefaultPricesResponse = exports.PaymentServiceGetDefaultPricesRequest = exports.PaymentServiceGetInvoicesResponse = exports.PaymentServiceGetInvoicesRequest = exports.PaymentServiceGetSubscriptionUsageResponse = exports.PaymentServiceGetSubscriptionUsageRequest = exports.PaymentServiceDeletePaymentMethodResponse = exports.PaymentServiceDeletePaymentMethodRequest = exports.PaymentServiceHasPaymentMethodResponse = exports.PaymentServiceHasPaymentMethodRequest = exports.PaymentServiceCheckIfCustomerExistsResponse = exports.PaymentServiceCheckIfCustomerExistsRequest = exports.PaymentServiceGetCustomerWithLoginResponse = exports.PaymentServiceGetCustomerWithLoginRequest = exports.PaymentServiceGetCustomerResponse = exports.PaymentServiceGetCustomerRequest = exports.PaymentServiceCreateOrUpdateCustomerResponse = exports.PaymentServiceCreateOrUpdateCustomerRequest = exports.Coupon = exports.Invoice = exports.SubscriptionUsageItem = exports.Address = exports.Price = exports.Card = exports.PaymentCustomer = void 0;
 const protobuf_1 = require("@bufbuild/protobuf");
 /**
  * @generated from message api.v1.PaymentCustomer
@@ -1047,3 +1047,65 @@ PaymentServiceRequestAdmissionResponse.runtime = protobuf_1.proto3;
 PaymentServiceRequestAdmissionResponse.typeName = "api.v1.PaymentServiceRequestAdmissionResponse";
 PaymentServiceRequestAdmissionResponse.fields = protobuf_1.proto3.util.newFieldList(() => []);
 exports.PaymentServiceRequestAdmissionResponse = PaymentServiceRequestAdmissionResponse;
+/**
+ * @generated from message api.v1.PaymentServiceHasChargeableResourcesRequest
+ */
+class PaymentServiceHasChargeableResourcesRequest extends protobuf_1.Message {
+    constructor(data) {
+        super();
+        /**
+         * @generated from field: string login = 1;
+         */
+        this.login = "";
+        protobuf_1.proto3.util.initPartial(data, this);
+    }
+    static fromBinary(bytes, options) {
+        return new PaymentServiceHasChargeableResourcesRequest().fromBinary(bytes, options);
+    }
+    static fromJson(jsonValue, options) {
+        return new PaymentServiceHasChargeableResourcesRequest().fromJson(jsonValue, options);
+    }
+    static fromJsonString(jsonString, options) {
+        return new PaymentServiceHasChargeableResourcesRequest().fromJsonString(jsonString, options);
+    }
+    static equals(a, b) {
+        return protobuf_1.proto3.util.equals(PaymentServiceHasChargeableResourcesRequest, a, b);
+    }
+}
+PaymentServiceHasChargeableResourcesRequest.runtime = protobuf_1.proto3;
+PaymentServiceHasChargeableResourcesRequest.typeName = "api.v1.PaymentServiceHasChargeableResourcesRequest";
+PaymentServiceHasChargeableResourcesRequest.fields = protobuf_1.proto3.util.newFieldList(() => [
+    { no: 1, name: "login", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+]);
+exports.PaymentServiceHasChargeableResourcesRequest = PaymentServiceHasChargeableResourcesRequest;
+/**
+ * @generated from message api.v1.PaymentServiceHasChargeableResourcesResponse
+ */
+class PaymentServiceHasChargeableResourcesResponse extends protobuf_1.Message {
+    constructor(data) {
+        super();
+        /**
+         * @generated from field: bool has_resources = 1;
+         */
+        this.hasResources = false;
+        protobuf_1.proto3.util.initPartial(data, this);
+    }
+    static fromBinary(bytes, options) {
+        return new PaymentServiceHasChargeableResourcesResponse().fromBinary(bytes, options);
+    }
+    static fromJson(jsonValue, options) {
+        return new PaymentServiceHasChargeableResourcesResponse().fromJson(jsonValue, options);
+    }
+    static fromJsonString(jsonString, options) {
+        return new PaymentServiceHasChargeableResourcesResponse().fromJsonString(jsonString, options);
+    }
+    static equals(a, b) {
+        return protobuf_1.proto3.util.equals(PaymentServiceHasChargeableResourcesResponse, a, b);
+    }
+}
+PaymentServiceHasChargeableResourcesResponse.runtime = protobuf_1.proto3;
+PaymentServiceHasChargeableResourcesResponse.typeName = "api.v1.PaymentServiceHasChargeableResourcesResponse";
+PaymentServiceHasChargeableResourcesResponse.fields = protobuf_1.proto3.util.newFieldList(() => [
+    { no: 1, name: "has_resources", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
+]);
+exports.PaymentServiceHasChargeableResourcesResponse = PaymentServiceHasChargeableResourcesResponse;

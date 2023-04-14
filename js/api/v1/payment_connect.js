@@ -112,5 +112,14 @@ exports.PaymentService = {
             O: payment_pb_js_1.PaymentServiceRequestAdmissionResponse,
             kind: protobuf_1.MethodKind.Unary,
         },
+        /**
+         * @generated from rpc api.v1.PaymentService.HasChargeableResources
+         */
+        hasChargeableResources: {
+            name: "HasChargeableResources",
+            I: payment_pb_js_1.PaymentServiceHasChargeableResourcesRequest,
+            O: payment_pb_js_1.PaymentServiceHasChargeableResourcesResponse,
+            kind: protobuf_1.MethodKind.Unary,
+        },
     }
 };

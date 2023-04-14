@@ -3840,3 +3840,220 @@ var _ interface {
 	Cause() error
 	ErrorName() string
 } = PaymentServiceRequestAdmissionResponseValidationError{}
+
+// Validate checks the field values on
+// PaymentServiceHasChargeableResourcesRequest with the rules defined in the
+// proto definition for this message. If any rules are violated, the first
+// error encountered is returned, or nil if there are no violations.
+func (m *PaymentServiceHasChargeableResourcesRequest) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on
+// PaymentServiceHasChargeableResourcesRequest with the rules defined in the
+// proto definition for this message. If any rules are violated, the result is
+// a list of violation errors wrapped in
+// PaymentServiceHasChargeableResourcesRequestMultiError, or nil if none found.
+func (m *PaymentServiceHasChargeableResourcesRequest) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *PaymentServiceHasChargeableResourcesRequest) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	// no validation rules for Login
+
+	if len(errors) > 0 {
+		return PaymentServiceHasChargeableResourcesRequestMultiError(errors)
+	}
+
+	return nil
+}
+
+// PaymentServiceHasChargeableResourcesRequestMultiError is an error wrapping
+// multiple validation errors returned by
+// PaymentServiceHasChargeableResourcesRequest.ValidateAll() if the designated
+// constraints aren't met.
+type PaymentServiceHasChargeableResourcesRequestMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m PaymentServiceHasChargeableResourcesRequestMultiError) Error() string {
+	var msgs []string
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m PaymentServiceHasChargeableResourcesRequestMultiError) AllErrors() []error { return m }
+
+// PaymentServiceHasChargeableResourcesRequestValidationError is the validation
+// error returned by PaymentServiceHasChargeableResourcesRequest.Validate if
+// the designated constraints aren't met.
+type PaymentServiceHasChargeableResourcesRequestValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e PaymentServiceHasChargeableResourcesRequestValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e PaymentServiceHasChargeableResourcesRequestValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e PaymentServiceHasChargeableResourcesRequestValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e PaymentServiceHasChargeableResourcesRequestValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e PaymentServiceHasChargeableResourcesRequestValidationError) ErrorName() string {
+	return "PaymentServiceHasChargeableResourcesRequestValidationError"
+}
+
+// Error satisfies the builtin error interface
+func (e PaymentServiceHasChargeableResourcesRequestValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sPaymentServiceHasChargeableResourcesRequest.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = PaymentServiceHasChargeableResourcesRequestValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = PaymentServiceHasChargeableResourcesRequestValidationError{}
+
+// Validate checks the field values on
+// PaymentServiceHasChargeableResourcesResponse with the rules defined in the
+// proto definition for this message. If any rules are violated, the first
+// error encountered is returned, or nil if there are no violations.
+func (m *PaymentServiceHasChargeableResourcesResponse) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on
+// PaymentServiceHasChargeableResourcesResponse with the rules defined in the
+// proto definition for this message. If any rules are violated, the result is
+// a list of violation errors wrapped in
+// PaymentServiceHasChargeableResourcesResponseMultiError, or nil if none found.
+func (m *PaymentServiceHasChargeableResourcesResponse) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *PaymentServiceHasChargeableResourcesResponse) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	// no validation rules for HasResources
+
+	if len(errors) > 0 {
+		return PaymentServiceHasChargeableResourcesResponseMultiError(errors)
+	}
+
+	return nil
+}
+
+// PaymentServiceHasChargeableResourcesResponseMultiError is an error wrapping
+// multiple validation errors returned by
+// PaymentServiceHasChargeableResourcesResponse.ValidateAll() if the
+// designated constraints aren't met.
+type PaymentServiceHasChargeableResourcesResponseMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m PaymentServiceHasChargeableResourcesResponseMultiError) Error() string {
+	var msgs []string
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m PaymentServiceHasChargeableResourcesResponseMultiError) AllErrors() []error { return m }
+
+// PaymentServiceHasChargeableResourcesResponseValidationError is the
+// validation error returned by
+// PaymentServiceHasChargeableResourcesResponse.Validate if the designated
+// constraints aren't met.
+type PaymentServiceHasChargeableResourcesResponseValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e PaymentServiceHasChargeableResourcesResponseValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e PaymentServiceHasChargeableResourcesResponseValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e PaymentServiceHasChargeableResourcesResponseValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e PaymentServiceHasChargeableResourcesResponseValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e PaymentServiceHasChargeableResourcesResponseValidationError) ErrorName() string {
+	return "PaymentServiceHasChargeableResourcesResponseValidationError"
+}
+
+// Error satisfies the builtin error interface
+func (e PaymentServiceHasChargeableResourcesResponseValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sPaymentServiceHasChargeableResourcesResponse.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = PaymentServiceHasChargeableResourcesResponseValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = PaymentServiceHasChargeableResourcesResponseValidationError{}
