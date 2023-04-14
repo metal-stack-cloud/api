@@ -66,6 +66,9 @@ const (
 	// PaymentServiceRequestAdmissionProcedure is the fully-qualified name of the PaymentService's
 	// RequestAdmission RPC.
 	PaymentServiceRequestAdmissionProcedure = "/api.v1.PaymentService/RequestAdmission"
+	// PaymentServiceHasChargeableResourcesProcedure is the fully-qualified name of the PaymentService's
+	// HasChargeableResources RPC.
+	PaymentServiceHasChargeableResourcesProcedure = "/api.v1.PaymentService/HasChargeableResources"
 )
 
 // PaymentServiceClient is a client for the api.v1.PaymentService service.
@@ -81,6 +84,7 @@ type PaymentServiceClient interface {
 	GetDefaultPrices(context.Context, *connect_go.Request[v1.PaymentServiceGetDefaultPricesRequest]) (*connect_go.Response[v1.PaymentServiceGetDefaultPricesResponse], error)
 	CheckAdmitted(context.Context, *connect_go.Request[v1.PaymentServiceCheckAdmittedRequest]) (*connect_go.Response[v1.PaymentServiceCheckAdmittedResponse], error)
 	RequestAdmission(context.Context, *connect_go.Request[v1.PaymentServiceRequestAdmissionRequest]) (*connect_go.Response[v1.PaymentServiceRequestAdmissionResponse], error)
+	HasChargeableResources(context.Context, *connect_go.Request[v1.PaymentServiceHasChargeableResourcesRequest]) (*connect_go.Response[v1.PaymentServiceHasChargeableResourcesResponse], error)
 }
 
 // NewPaymentServiceClient constructs a client for the api.v1.PaymentService service. By default, it
@@ -148,6 +152,11 @@ func NewPaymentServiceClient(httpClient connect_go.HTTPClient, baseURL string, o
 			baseURL+PaymentServiceRequestAdmissionProcedure,
 			opts...,
 		),
+		hasChargeableResources: connect_go.NewClient[v1.PaymentServiceHasChargeableResourcesRequest, v1.PaymentServiceHasChargeableResourcesResponse](
+			httpClient,
+			baseURL+PaymentServiceHasChargeableResourcesProcedure,
+			opts...,
+		),
 	}
 }
 
@@ -164,6 +173,7 @@ type paymentServiceClient struct {
 	getDefaultPrices       *connect_go.Client[v1.PaymentServiceGetDefaultPricesRequest, v1.PaymentServiceGetDefaultPricesResponse]
 	checkAdmitted          *connect_go.Client[v1.PaymentServiceCheckAdmittedRequest, v1.PaymentServiceCheckAdmittedResponse]
 	requestAdmission       *connect_go.Client[v1.PaymentServiceRequestAdmissionRequest, v1.PaymentServiceRequestAdmissionResponse]
+	hasChargeableResources *connect_go.Client[v1.PaymentServiceHasChargeableResourcesRequest, v1.PaymentServiceHasChargeableResourcesResponse]
 }
 
 // CreateOrUpdateCustomer calls api.v1.PaymentService.CreateOrUpdateCustomer.
@@ -221,6 +231,11 @@ func (c *paymentServiceClient) RequestAdmission(ctx context.Context, req *connec
 	return c.requestAdmission.CallUnary(ctx, req)
 }
 
+// HasChargeableResources calls api.v1.PaymentService.HasChargeableResources.
+func (c *paymentServiceClient) HasChargeableResources(ctx context.Context, req *connect_go.Request[v1.PaymentServiceHasChargeableResourcesRequest]) (*connect_go.Response[v1.PaymentServiceHasChargeableResourcesResponse], error) {
+	return c.hasChargeableResources.CallUnary(ctx, req)
+}
+
 // PaymentServiceHandler is an implementation of the api.v1.PaymentService service.
 type PaymentServiceHandler interface {
 	CreateOrUpdateCustomer(context.Context, *connect_go.Request[v1.PaymentServiceCreateOrUpdateCustomerRequest]) (*connect_go.Response[v1.PaymentServiceCreateOrUpdateCustomerResponse], error)
@@ -234,6 +249,7 @@ type PaymentServiceHandler interface {
 	GetDefaultPrices(context.Context, *connect_go.Request[v1.PaymentServiceGetDefaultPricesRequest]) (*connect_go.Response[v1.PaymentServiceGetDefaultPricesResponse], error)
 	CheckAdmitted(context.Context, *connect_go.Request[v1.PaymentServiceCheckAdmittedRequest]) (*connect_go.Response[v1.PaymentServiceCheckAdmittedResponse], error)
 	RequestAdmission(context.Context, *connect_go.Request[v1.PaymentServiceRequestAdmissionRequest]) (*connect_go.Response[v1.PaymentServiceRequestAdmissionResponse], error)
+	HasChargeableResources(context.Context, *connect_go.Request[v1.PaymentServiceHasChargeableResourcesRequest]) (*connect_go.Response[v1.PaymentServiceHasChargeableResourcesResponse], error)
 }
 
 // NewPaymentServiceHandler builds an HTTP handler from the service implementation. It returns the
@@ -298,6 +314,11 @@ func NewPaymentServiceHandler(svc PaymentServiceHandler, opts ...connect_go.Hand
 		svc.RequestAdmission,
 		opts...,
 	))
+	mux.Handle(PaymentServiceHasChargeableResourcesProcedure, connect_go.NewUnaryHandler(
+		PaymentServiceHasChargeableResourcesProcedure,
+		svc.HasChargeableResources,
+		opts...,
+	))
 	return "/api.v1.PaymentService/", mux
 }
 
@@ -346,4 +367,8 @@ func (UnimplementedPaymentServiceHandler) CheckAdmitted(context.Context, *connec
 
 func (UnimplementedPaymentServiceHandler) RequestAdmission(context.Context, *connect_go.Request[v1.PaymentServiceRequestAdmissionRequest]) (*connect_go.Response[v1.PaymentServiceRequestAdmissionResponse], error) {
 	return nil, connect_go.NewError(connect_go.CodeUnimplemented, errors.New("api.v1.PaymentService.RequestAdmission is not implemented"))
+}
+
+func (UnimplementedPaymentServiceHandler) HasChargeableResources(context.Context, *connect_go.Request[v1.PaymentServiceHasChargeableResourcesRequest]) (*connect_go.Response[v1.PaymentServiceHasChargeableResourcesResponse], error) {
+	return nil, connect_go.NewError(connect_go.CodeUnimplemented, errors.New("api.v1.PaymentService.HasChargeableResources is not implemented"))
 }

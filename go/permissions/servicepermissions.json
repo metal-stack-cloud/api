@@ -37,6 +37,7 @@
         "/api.v1.PaymentService/GetInvoices",
         "/api.v1.PaymentService/CheckAdmitted",
         "/api.v1.PaymentService/RequestAdmission",
+        "/api.v1.PaymentService/HasChargeableResources",
         "/api.v1.TenantService/Create",
         "/api.v1.TenantService/Get",
         "/api.v1.TenantService/Update",
@@ -46,6 +47,7 @@
         "/api.v1.PaymentService/HasPaymentMethod",
         "/api.v1.PaymentService/CheckAdmitted",
         "/api.v1.PaymentService/RequestAdmission",
+        "/api.v1.PaymentService/HasChargeableResources",
         "/api.v1.TenantService/Create",
         "/api.v1.TenantService/Get",
         "/api.v1.TenantService/Update",
@@ -54,6 +56,7 @@
       "viewer": [
         "/api.v1.PaymentService/HasPaymentMethod",
         "/api.v1.PaymentService/CheckAdmitted",
+        "/api.v1.PaymentService/HasChargeableResources",
         "/api.v1.TenantService/Get"
       ]
     },
@@ -147,6 +150,7 @@
     "/api.v1.PaymentService/GetDefaultPrices": true,
     "/api.v1.PaymentService/GetInvoices": true,
     "/api.v1.PaymentService/GetSubscriptionUsage": true,
+    "/api.v1.PaymentService/HasChargeableResources": true,
     "/api.v1.PaymentService/HasPaymentMethod": true,
     "/api.v1.PaymentService/RequestAdmission": true,
     "/api.v1.SnapshotService/Delete": true,
