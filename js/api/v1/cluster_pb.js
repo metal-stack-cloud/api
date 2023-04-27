@@ -36,6 +36,10 @@ class Cluster extends protobuf_1.Message {
          * @generated from field: repeated api.v1.Worker workers = 6;
          */
         this.workers = [];
+        /**
+         * @generated from field: string tenant = 8;
+         */
+        this.tenant = "";
         protobuf_1.proto3.util.initPartial(data, this);
     }
     static fromBinary(bytes, options) {
@@ -61,6 +65,7 @@ Cluster.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 5, name: "kubernetes", kind: "message", T: KubernetesSpec },
     { no: 6, name: "workers", kind: "message", T: Worker, repeated: true },
     { no: 7, name: "maintenance", kind: "message", T: Maintenance },
+    { no: 8, name: "tenant", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 10, name: "created_at", kind: "message", T: protobuf_1.Timestamp },
     { no: 11, name: "updated_at", kind: "message", T: protobuf_1.Timestamp },
     { no: 12, name: "deleted_at", kind: "message", T: protobuf_1.Timestamp },

@@ -50,6 +50,11 @@ export class Cluster extends Message<Cluster> {
   maintenance?: Maintenance;
 
   /**
+   * @generated from field: string tenant = 8;
+   */
+  tenant = "";
+
+  /**
    * @generated from field: google.protobuf.Timestamp created_at = 10;
    */
   createdAt?: Timestamp;
@@ -84,6 +89,7 @@ export class Cluster extends Message<Cluster> {
     { no: 5, name: "kubernetes", kind: "message", T: KubernetesSpec },
     { no: 6, name: "workers", kind: "message", T: Worker, repeated: true },
     { no: 7, name: "maintenance", kind: "message", T: Maintenance },
+    { no: 8, name: "tenant", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 10, name: "created_at", kind: "message", T: Timestamp },
     { no: 11, name: "updated_at", kind: "message", T: Timestamp },
     { no: 12, name: "deleted_at", kind: "message", T: Timestamp },

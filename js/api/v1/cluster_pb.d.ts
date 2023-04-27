@@ -37,6 +37,10 @@ export declare class Cluster extends Message<Cluster> {
      */
     maintenance?: Maintenance;
     /**
+     * @generated from field: string tenant = 8;
+     */
+    tenant: string;
+    /**
      * @generated from field: google.protobuf.Timestamp created_at = 10;
      */
     createdAt?: Timestamp;

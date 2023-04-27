@@ -187,6 +187,8 @@ func (m *Cluster) validate(all bool) error {
 		}
 	}
 
+	// no validation rules for Tenant
+
 	if all {
 		switch v := interface{}(m.GetCreatedAt()).(type) {
 		case interface{ ValidateAll() error }:

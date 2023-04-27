@@ -59,6 +59,7 @@ message Cluster {
   KubernetesSpec kubernetes = 5;
   repeated Worker workers = 6;
   Maintenance maintenance = 7;
+  string tenant = 8;
   google.protobuf.Timestamp created_at = 10;
   google.protobuf.Timestamp updated_at = 11;
   google.protobuf.Timestamp deleted_at = 12;
