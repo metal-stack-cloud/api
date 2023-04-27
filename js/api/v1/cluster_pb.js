@@ -4,7 +4,7 @@
 /* eslint-disable */
 // @ts-nocheck
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ClusterServiceWatchStatusResponse = exports.ClusterServiceListResponse = exports.ClusterServiceUpdateResponse = exports.ClusterServiceDeleteResponse = exports.ClusterServiceGetCredentialsResponse = exports.ClusterServiceGetResponse = exports.ClusterServiceCreateResponse = exports.ClusterStatus = exports.ClusterServiceWatchStatusRequest = exports.ClusterServiceDeleteRequest = exports.ClusterServiceUpdateRequest = exports.ClusterServiceCreateRequest = exports.ClusterServiceListRequest = exports.ClusterServiceGetCredentialsRequest = exports.ClusterServiceGetRequest = exports.WorkerUpdate = exports.Worker = exports.MaintenanceTimeWindow = exports.Maintenance = exports.KubernetesSpec = exports.Cluster = void 0;
+exports.ClusterServiceWatchStatusResponse = exports.ClusterServiceListResponse = exports.ClusterServiceUpdateResponse = exports.ClusterServiceDeleteResponse = exports.ClusterServiceGetCredentialsResponse = exports.ClusterServiceGetResponse = exports.ClusterServiceCreateResponse = exports.ClusterStatusLastError = exports.ClusterStatus = exports.ClusterServiceWatchStatusRequest = exports.ClusterServiceDeleteRequest = exports.ClusterServiceUpdateRequest = exports.ClusterServiceCreateRequest = exports.ClusterServiceListRequest = exports.ClusterServiceGetCredentialsRequest = exports.ClusterServiceGetRequest = exports.WorkerUpdate = exports.Worker = exports.MaintenanceTimeWindow = exports.Maintenance = exports.KubernetesSpec = exports.Cluster = void 0;
 const protobuf_1 = require("@bufbuild/protobuf");
 /**
  * Types
@@ -577,8 +577,52 @@ ClusterStatus.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 11, name: "control_plane_ready", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 12, name: "nodes_ready", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 13, name: "system_components_ready", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 14, name: "last_error", kind: "message", T: ClusterStatusLastError },
 ]);
 exports.ClusterStatus = ClusterStatus;
+/**
+ * @generated from message api.v1.ClusterStatusLastError
+ */
+class ClusterStatusLastError extends protobuf_1.Message {
+    constructor(data) {
+        super();
+        /**
+         * A human readable message indicating details about the last error.
+         *
+         * @generated from field: string description = 1;
+         */
+        this.description = "";
+        /**
+         * Well-defined error codes of the last error(s).
+         * +optional
+         *
+         * @generated from field: repeated string codes = 3;
+         */
+        this.codes = [];
+        protobuf_1.proto3.util.initPartial(data, this);
+    }
+    static fromBinary(bytes, options) {
+        return new ClusterStatusLastError().fromBinary(bytes, options);
+    }
+    static fromJson(jsonValue, options) {
+        return new ClusterStatusLastError().fromJson(jsonValue, options);
+    }
+    static fromJsonString(jsonString, options) {
+        return new ClusterStatusLastError().fromJsonString(jsonString, options);
+    }
+    static equals(a, b) {
+        return protobuf_1.proto3.util.equals(ClusterStatusLastError, a, b);
+    }
+}
+ClusterStatusLastError.runtime = protobuf_1.proto3;
+ClusterStatusLastError.typeName = "api.v1.ClusterStatusLastError";
+ClusterStatusLastError.fields = protobuf_1.proto3.util.newFieldList(() => [
+    { no: 1, name: "description", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "task_id", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
+    { no: 3, name: "codes", kind: "scalar", T: 9 /* ScalarType.STRING */, repeated: true },
+    { no: 4, name: "last_update_time", kind: "message", T: protobuf_1.Timestamp },
+]);
+exports.ClusterStatusLastError = ClusterStatusLastError;
 /**
  * Responses
  *

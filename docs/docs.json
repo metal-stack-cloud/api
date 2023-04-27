@@ -1606,6 +1606,78 @@
               "isoneof": false,
               "oneofdecl": "",
               "defaultValue": ""
+            },
+            {
+              "name": "last_error",
+              "description": "",
+              "label": "",
+              "type": "ClusterStatusLastError",
+              "longType": "ClusterStatusLastError",
+              "fullType": "api.v1.ClusterStatusLastError",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "ClusterStatusLastError",
+          "longName": "ClusterStatusLastError",
+          "fullName": "api.v1.ClusterStatusLastError",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": true,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "description",
+              "description": "A human readable message indicating details about the last error.",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "task_id",
+              "description": "ID of the task which caused this last error\n+optional",
+              "label": "optional",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "_task_id",
+              "defaultValue": ""
+            },
+            {
+              "name": "codes",
+              "description": "Well-defined error codes of the last error(s).\n+optional",
+              "label": "repeated",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "last_update_time",
+              "description": "Last time the error was reported\n+optional",
+              "label": "",
+              "type": "Timestamp",
+              "longType": "google.protobuf.Timestamp",
+              "fullType": "google.protobuf.Timestamp",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
             }
           ]
         },

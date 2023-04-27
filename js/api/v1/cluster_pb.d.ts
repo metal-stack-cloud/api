@@ -409,6 +409,10 @@ export declare class ClusterStatus extends Message<ClusterStatus> {
      * @generated from field: string system_components_ready = 13;
      */
     systemComponentsReady: string;
+    /**
+     * @generated from field: api.v1.ClusterStatusLastError last_error = 14;
+     */
+    lastError?: ClusterStatusLastError;
     constructor(data?: PartialMessage<ClusterStatus>);
     static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.ClusterStatus";
@@ -417,6 +421,46 @@ export declare class ClusterStatus extends Message<ClusterStatus> {
     static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ClusterStatus;
     static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ClusterStatus;
     static equals(a: ClusterStatus | PlainMessage<ClusterStatus> | undefined, b: ClusterStatus | PlainMessage<ClusterStatus> | undefined): boolean;
+}
+/**
+ * @generated from message api.v1.ClusterStatusLastError
+ */
+export declare class ClusterStatusLastError extends Message<ClusterStatusLastError> {
+    /**
+     * A human readable message indicating details about the last error.
+     *
+     * @generated from field: string description = 1;
+     */
+    description: string;
+    /**
+     * ID of the task which caused this last error
+     * +optional
+     *
+     * @generated from field: optional string task_id = 2;
+     */
+    taskId?: string;
+    /**
+     * Well-defined error codes of the last error(s).
+     * +optional
+     *
+     * @generated from field: repeated string codes = 3;
+     */
+    codes: string[];
+    /**
+     * Last time the error was reported
+     * +optional
+     *
+     * @generated from field: google.protobuf.Timestamp last_update_time = 4;
+     */
+    lastUpdateTime?: Timestamp;
+    constructor(data?: PartialMessage<ClusterStatusLastError>);
+    static readonly runtime: typeof proto3;
+    static readonly typeName = "api.v1.ClusterStatusLastError";
+    static readonly fields: FieldList;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ClusterStatusLastError;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ClusterStatusLastError;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ClusterStatusLastError;
+    static equals(a: ClusterStatusLastError | PlainMessage<ClusterStatusLastError> | undefined, b: ClusterStatusLastError | PlainMessage<ClusterStatusLastError> | undefined): boolean;
 }
 /**
  * Responses

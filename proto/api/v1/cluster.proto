@@ -189,6 +189,21 @@ message ClusterStatus {
   string control_plane_ready = 11;
   string nodes_ready = 12;
   string system_components_ready = 13;
+  ClusterStatusLastError last_error = 14;
+}
+
+message ClusterStatusLastError {
+  // A human readable message indicating details about the last error.
+  string description = 1;
+  // ID of the task which caused this last error
+  // +optional
+  optional string task_id = 2;
+  // Well-defined error codes of the last error(s).
+  // +optional
+  repeated string codes = 3;
+  // Last time the error was reported
+  // +optional
+  google.protobuf.Timestamp last_update_time = 4;
 }
 
 // Responses
