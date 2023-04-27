@@ -551,6 +551,10 @@ class ClusterStatus extends protobuf_1.Message {
          * @generated from field: string system_components_ready = 13;
          */
         this.systemComponentsReady = "";
+        /**
+         * @generated from field: repeated api.v1.ClusterStatusLastError last_errors = 14;
+         */
+        this.lastErrors = [];
         protobuf_1.proto3.util.initPartial(data, this);
     }
     static fromBinary(bytes, options) {
@@ -577,7 +581,7 @@ ClusterStatus.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 11, name: "control_plane_ready", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 12, name: "nodes_ready", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 13, name: "system_components_ready", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 14, name: "last_error", kind: "message", T: ClusterStatusLastError },
+    { no: 14, name: "last_errors", kind: "message", T: ClusterStatusLastError, repeated: true },
 ]);
 exports.ClusterStatus = ClusterStatus;
 /**

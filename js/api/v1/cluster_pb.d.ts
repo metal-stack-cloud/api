@@ -410,9 +410,9 @@ export declare class ClusterStatus extends Message<ClusterStatus> {
      */
     systemComponentsReady: string;
     /**
-     * @generated from field: api.v1.ClusterStatusLastError last_error = 14;
+     * @generated from field: repeated api.v1.ClusterStatusLastError last_errors = 14;
      */
-    lastError?: ClusterStatusLastError;
+    lastErrors: ClusterStatusLastError[];
     constructor(data?: PartialMessage<ClusterStatus>);
     static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.ClusterStatus";

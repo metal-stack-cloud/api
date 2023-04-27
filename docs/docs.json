@@ -1608,9 +1608,9 @@
               "defaultValue": ""
             },
             {
-              "name": "last_error",
+              "name": "last_errors",
               "description": "",
-              "label": "",
+              "label": "repeated",
               "type": "ClusterStatusLastError",
               "longType": "ClusterStatusLastError",
               "fullType": "api.v1.ClusterStatusLastError",

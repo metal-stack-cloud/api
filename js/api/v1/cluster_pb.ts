@@ -756,9 +756,9 @@ export class ClusterStatus extends Message<ClusterStatus> {
   systemComponentsReady = "";
 
   /**
-   * @generated from field: api.v1.ClusterStatusLastError last_error = 14;
+   * @generated from field: repeated api.v1.ClusterStatusLastError last_errors = 14;
    */
-  lastError?: ClusterStatusLastError;
+  lastErrors: ClusterStatusLastError[] = [];
 
   constructor(data?: PartialMessage<ClusterStatus>) {
     super();
@@ -776,7 +776,7 @@ export class ClusterStatus extends Message<ClusterStatus> {
     { no: 11, name: "control_plane_ready", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 12, name: "nodes_ready", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 13, name: "system_components_ready", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 14, name: "last_error", kind: "message", T: ClusterStatusLastError },
+    { no: 14, name: "last_errors", kind: "message", T: ClusterStatusLastError, repeated: true },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ClusterStatus {

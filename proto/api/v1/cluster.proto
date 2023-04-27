@@ -189,7 +189,7 @@ message ClusterStatus {
   string control_plane_ready = 11;
   string nodes_ready = 12;
   string system_components_ready = 13;
-  ClusterStatusLastError last_error = 14;
+  repeated ClusterStatusLastError last_errors = 14;
 }
 
 message ClusterStatusLastError {
