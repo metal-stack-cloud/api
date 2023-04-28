@@ -50,6 +50,11 @@ export class Cluster extends Message<Cluster> {
   maintenance?: Maintenance;
 
   /**
+   * @generated from field: string tenant = 8;
+   */
+  tenant = "";
+
+  /**
    * @generated from field: google.protobuf.Timestamp created_at = 10;
    */
   createdAt?: Timestamp;
@@ -84,6 +89,7 @@ export class Cluster extends Message<Cluster> {
     { no: 5, name: "kubernetes", kind: "message", T: KubernetesSpec },
     { no: 6, name: "workers", kind: "message", T: Worker, repeated: true },
     { no: 7, name: "maintenance", kind: "message", T: Maintenance },
+    { no: 8, name: "tenant", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 10, name: "created_at", kind: "message", T: Timestamp },
     { no: 11, name: "updated_at", kind: "message", T: Timestamp },
     { no: 12, name: "deleted_at", kind: "message", T: Timestamp },
@@ -755,6 +761,11 @@ export class ClusterStatus extends Message<ClusterStatus> {
    */
   systemComponentsReady = "";
 
+  /**
+   * @generated from field: repeated api.v1.ClusterStatusLastError last_errors = 14;
+   */
+  lastErrors: ClusterStatusLastError[] = [];
+
   constructor(data?: PartialMessage<ClusterStatus>) {
     super();
     proto3.util.initPartial(data, this);
@@ -771,6 +782,7 @@ export class ClusterStatus extends Message<ClusterStatus> {
     { no: 11, name: "control_plane_ready", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 12, name: "nodes_ready", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 13, name: "system_components_ready", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 14, name: "last_errors", kind: "message", T: ClusterStatusLastError, repeated: true },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ClusterStatus {
@@ -787,6 +799,72 @@ export class ClusterStatus extends Message<ClusterStatus> {
 
   static equals(a: ClusterStatus | PlainMessage<ClusterStatus> | undefined, b: ClusterStatus | PlainMessage<ClusterStatus> | undefined): boolean {
     return proto3.util.equals(ClusterStatus, a, b);
+  }
+}
+
+/**
+ * @generated from message api.v1.ClusterStatusLastError
+ */
+export class ClusterStatusLastError extends Message<ClusterStatusLastError> {
+  /**
+   * A human readable message indicating details about the last error.
+   *
+   * @generated from field: string description = 1;
+   */
+  description = "";
+
+  /**
+   * ID of the task which caused this last error
+   * +optional
+   *
+   * @generated from field: optional string task_id = 2;
+   */
+  taskId?: string;
+
+  /**
+   * Well-defined error codes of the last error(s).
+   * +optional
+   *
+   * @generated from field: repeated string codes = 3;
+   */
+  codes: string[] = [];
+
+  /**
+   * Last time the error was reported
+   * +optional
+   *
+   * @generated from field: google.protobuf.Timestamp last_update_time = 4;
+   */
+  lastUpdateTime?: Timestamp;
+
+  constructor(data?: PartialMessage<ClusterStatusLastError>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "api.v1.ClusterStatusLastError";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "description", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "task_id", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
+    { no: 3, name: "codes", kind: "scalar", T: 9 /* ScalarType.STRING */, repeated: true },
+    { no: 4, name: "last_update_time", kind: "message", T: Timestamp },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ClusterStatusLastError {
+    return new ClusterStatusLastError().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ClusterStatusLastError {
+    return new ClusterStatusLastError().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ClusterStatusLastError {
+    return new ClusterStatusLastError().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: ClusterStatusLastError | PlainMessage<ClusterStatusLastError> | undefined, b: ClusterStatusLastError | PlainMessage<ClusterStatusLastError> | undefined): boolean {
+    return proto3.util.equals(ClusterStatusLastError, a, b);
   }
 }
 
