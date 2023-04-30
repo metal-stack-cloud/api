@@ -21,15 +21,7 @@ export declare enum Operate {
     /**
      * @generated from enum value: OPERATE_RETRY = 3;
      */
-    RETRY = 3,
-    /**
-     * @generated from enum value: OPERATE_RESTART_KUBELET = 4;
-     */
-    RESTART_KUBELET = 4,
-    /**
-     * @generated from enum value: OPERATE_RESTART_CONTAINERD = 5;
-     */
-    RESTART_CONTAINERD = 5
+    RETRY = 3
 }
 /**
  * @generated from message admin.v1.ClusterServiceGetRequest

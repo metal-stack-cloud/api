@@ -31,16 +31,6 @@ export enum Operate {
    * @generated from enum value: OPERATE_RETRY = 3;
    */
   RETRY = 3,
-
-  /**
-   * @generated from enum value: OPERATE_RESTART_KUBELET = 4;
-   */
-  RESTART_KUBELET = 4,
-
-  /**
-   * @generated from enum value: OPERATE_RESTART_CONTAINERD = 5;
-   */
-  RESTART_CONTAINERD = 5,
 }
 // Retrieve enum metadata with: proto3.getEnumType(Operate)
 proto3.util.setEnumType(Operate, "admin.v1.Operate", [
@@ -48,8 +38,6 @@ proto3.util.setEnumType(Operate, "admin.v1.Operate", [
   { no: 1, name: "OPERATE_RECONCILE" },
   { no: 2, name: "OPERATE_MAINTAIN" },
   { no: 3, name: "OPERATE_RETRY" },
-  { no: 4, name: "OPERATE_RESTART_KUBELET" },
-  { no: 5, name: "OPERATE_RESTART_CONTAINERD" },
 ]);
 
 /**

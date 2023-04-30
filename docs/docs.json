@@ -2263,16 +2263,6 @@
               "name": "OPERATE_RETRY",
               "number": "3",
               "description": ""
-            },
-            {
-              "name": "OPERATE_RESTART_KUBELET",
-              "number": "4",
-              "description": ""
-            },
-            {
-              "name": "OPERATE_RESTART_CONTAINERD",
-              "number": "5",
-              "description": ""
             }
           ]
         }

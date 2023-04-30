@@ -29,14 +29,6 @@ var Operate;
      * @generated from enum value: OPERATE_RETRY = 3;
      */
     Operate[Operate["RETRY"] = 3] = "RETRY";
-    /**
-     * @generated from enum value: OPERATE_RESTART_KUBELET = 4;
-     */
-    Operate[Operate["RESTART_KUBELET"] = 4] = "RESTART_KUBELET";
-    /**
-     * @generated from enum value: OPERATE_RESTART_CONTAINERD = 5;
-     */
-    Operate[Operate["RESTART_CONTAINERD"] = 5] = "RESTART_CONTAINERD";
 })(Operate = exports.Operate || (exports.Operate = {}));
 // Retrieve enum metadata with: proto3.getEnumType(Operate)
 protobuf_1.proto3.util.setEnumType(Operate, "admin.v1.Operate", [
@@ -44,8 +36,6 @@ protobuf_1.proto3.util.setEnumType(Operate, "admin.v1.Operate", [
     { no: 1, name: "OPERATE_RECONCILE" },
     { no: 2, name: "OPERATE_MAINTAIN" },
     { no: 3, name: "OPERATE_RETRY" },
-    { no: 4, name: "OPERATE_RESTART_KUBELET" },
-    { no: 5, name: "OPERATE_RESTART_CONTAINERD" },
 ]);
 /**
  * @generated from message admin.v1.ClusterServiceGetRequest
