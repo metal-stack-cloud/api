@@ -305,7 +305,9 @@ func (m *Cluster) validate(all bool) error {
 		}
 	}
 
-	// no validation rules for Purpose
+	if m.Purpose != nil {
+		// no validation rules for Purpose
+	}
 
 	if len(errors) > 0 {
 		return ClusterMultiError(errors)
