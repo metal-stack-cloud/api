@@ -57,9 +57,9 @@ export declare class Cluster extends Message<Cluster> {
      */
     status?: ClusterStatus;
     /**
-     * @generated from field: string purpose = 21;
+     * @generated from field: optional string purpose = 21;
      */
-    purpose: string;
+    purpose?: string;
     constructor(data?: PartialMessage<Cluster>);
     static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.Cluster";

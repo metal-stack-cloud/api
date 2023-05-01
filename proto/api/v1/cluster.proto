@@ -64,7 +64,7 @@ message Cluster {
   google.protobuf.Timestamp updated_at = 11;
   google.protobuf.Timestamp deleted_at = 12;
   ClusterStatus status = 20;
-  string purpose = 21;
+  optional string purpose = 21;
 }
 
 message KubernetesSpec {
