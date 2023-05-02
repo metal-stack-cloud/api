@@ -74,6 +74,11 @@ export class Cluster extends Message<Cluster> {
    */
   status?: ClusterStatus;
 
+  /**
+   * @generated from field: optional string purpose = 21;
+   */
+  purpose?: string;
+
   constructor(data?: PartialMessage<Cluster>) {
     super();
     proto3.util.initPartial(data, this);
@@ -94,6 +99,7 @@ export class Cluster extends Message<Cluster> {
     { no: 11, name: "updated_at", kind: "message", T: Timestamp },
     { no: 12, name: "deleted_at", kind: "message", T: Timestamp },
     { no: 20, name: "status", kind: "message", T: ClusterStatus },
+    { no: 21, name: "purpose", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Cluster {

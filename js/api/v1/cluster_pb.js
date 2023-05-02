@@ -70,6 +70,7 @@ Cluster.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 11, name: "updated_at", kind: "message", T: protobuf_1.Timestamp },
     { no: 12, name: "deleted_at", kind: "message", T: protobuf_1.Timestamp },
     { no: 20, name: "status", kind: "message", T: ClusterStatus },
+    { no: 21, name: "purpose", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
 ]);
 exports.Cluster = Cluster;
 /**
