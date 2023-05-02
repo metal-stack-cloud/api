@@ -44,6 +44,8 @@ message ClusterServiceListRequest {
 
 message ClusterServiceCredentialsRequest {
   string uuid = 1 [(validate.rules).string.uuid = true];
+  bool with_vpn = 2;
+  bool with_ssh = 3;
 }
 message ClusterServiceOperateRequest {
   string uuid = 1 [(validate.rules).string.uuid = true];

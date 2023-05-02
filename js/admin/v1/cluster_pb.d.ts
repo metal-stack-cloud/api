@@ -116,6 +116,14 @@ export declare class ClusterServiceCredentialsRequest extends Message<ClusterSer
      * @generated from field: string uuid = 1;
      */
     uuid: string;
+    /**
+     * @generated from field: bool with_vpn = 2;
+     */
+    withVpn: boolean;
+    /**
+     * @generated from field: bool with_ssh = 3;
+     */
+    withSsh: boolean;
     constructor(data?: PartialMessage<ClusterServiceCredentialsRequest>);
     static readonly runtime: typeof proto3;
     static readonly typeName = "admin.v1.ClusterServiceCredentialsRequest";

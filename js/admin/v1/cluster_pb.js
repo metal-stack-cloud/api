@@ -152,6 +152,14 @@ class ClusterServiceCredentialsRequest extends protobuf_1.Message {
          * @generated from field: string uuid = 1;
          */
         this.uuid = "";
+        /**
+         * @generated from field: bool with_vpn = 2;
+         */
+        this.withVpn = false;
+        /**
+         * @generated from field: bool with_ssh = 3;
+         */
+        this.withSsh = false;
         protobuf_1.proto3.util.initPartial(data, this);
     }
     static fromBinary(bytes, options) {
@@ -171,6 +179,8 @@ ClusterServiceCredentialsRequest.runtime = protobuf_1.proto3;
 ClusterServiceCredentialsRequest.typeName = "admin.v1.ClusterServiceCredentialsRequest";
 ClusterServiceCredentialsRequest.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 1, name: "uuid", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "with_vpn", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
+    { no: 3, name: "with_ssh", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
 ]);
 exports.ClusterServiceCredentialsRequest = ClusterServiceCredentialsRequest;
 /**

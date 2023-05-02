@@ -208,6 +208,16 @@ export class ClusterServiceCredentialsRequest extends Message<ClusterServiceCred
    */
   uuid = "";
 
+  /**
+   * @generated from field: bool with_vpn = 2;
+   */
+  withVpn = false;
+
+  /**
+   * @generated from field: bool with_ssh = 3;
+   */
+  withSsh = false;
+
   constructor(data?: PartialMessage<ClusterServiceCredentialsRequest>) {
     super();
     proto3.util.initPartial(data, this);
@@ -217,6 +227,8 @@ export class ClusterServiceCredentialsRequest extends Message<ClusterServiceCred
   static readonly typeName = "admin.v1.ClusterServiceCredentialsRequest";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
     { no: 1, name: "uuid", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "with_vpn", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
+    { no: 3, name: "with_ssh", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ClusterServiceCredentialsRequest {

@@ -451,6 +451,10 @@ func (m *ClusterServiceCredentialsRequest) validate(all bool) error {
 		errors = append(errors, err)
 	}
 
+	// no validation rules for WithVpn
+
+	// no validation rules for WithSsh
+
 	if len(errors) > 0 {
 		return ClusterServiceCredentialsRequestMultiError(errors)
 	}
