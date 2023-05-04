@@ -5,6 +5,7 @@ package admin.v1;
 import "admin/v1/machine.proto";
 import "api/v1/cluster.proto";
 import "api/v1/common.proto";
+import "google/protobuf/duration.proto";
 import "validate/validate.proto";
 
 service ClusterService {
@@ -46,6 +47,7 @@ message ClusterServiceCredentialsRequest {
   string uuid = 1 [(validate.rules).string.uuid = true];
   bool with_vpn = 2;
   bool with_ssh = 3;
+  optional google.protobuf.Duration expiration = 4;
 }
 message ClusterServiceOperateRequest {
   string uuid = 1 [(validate.rules).string.uuid = true];

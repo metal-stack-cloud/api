@@ -241,6 +241,10 @@ export declare class ClusterServiceGetCredentialsRequest extends Message<Cluster
      * @generated from field: string project = 2;
      */
     project: string;
+    /**
+     * @generated from field: optional google.protobuf.Duration expiration = 4;
+     */
+    expiration?: Duration;
     constructor(data?: PartialMessage<ClusterServiceGetCredentialsRequest>);
     static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.ClusterServiceGetCredentialsRequest";

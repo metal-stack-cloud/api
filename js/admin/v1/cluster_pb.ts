@@ -4,7 +4,7 @@
 // @ts-nocheck
 
 import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
-import { Message, proto3 } from "@bufbuild/protobuf";
+import { Duration, Message, proto3 } from "@bufbuild/protobuf";
 import { Cluster } from "../../api/v1/cluster_pb.js";
 import { Machine, VPN } from "./machine_pb.js";
 
@@ -218,6 +218,11 @@ export class ClusterServiceCredentialsRequest extends Message<ClusterServiceCred
    */
   withSsh = false;
 
+  /**
+   * @generated from field: optional google.protobuf.Duration expiration = 4;
+   */
+  expiration?: Duration;
+
   constructor(data?: PartialMessage<ClusterServiceCredentialsRequest>) {
     super();
     proto3.util.initPartial(data, this);
@@ -229,6 +234,7 @@ export class ClusterServiceCredentialsRequest extends Message<ClusterServiceCred
     { no: 1, name: "uuid", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 2, name: "with_vpn", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
     { no: 3, name: "with_ssh", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
+    { no: 4, name: "expiration", kind: "message", T: Duration, opt: true },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ClusterServiceCredentialsRequest {

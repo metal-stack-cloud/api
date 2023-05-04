@@ -132,6 +132,7 @@ message ClusterServiceGetCredentialsRequest {
     min_len: 2,
     max_len: 128,
   }];
+  optional google.protobuf.Duration expiration = 4;
 }
 message ClusterServiceListRequest {
   string project = 2 [(validate.rules).string = {

@@ -181,6 +181,7 @@ ClusterServiceCredentialsRequest.fields = protobuf_1.proto3.util.newFieldList(()
     { no: 1, name: "uuid", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 2, name: "with_vpn", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
     { no: 3, name: "with_ssh", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
+    { no: 4, name: "expiration", kind: "message", T: protobuf_1.Duration, opt: true },
 ]);
 exports.ClusterServiceCredentialsRequest = ClusterServiceCredentialsRequest;
 /**

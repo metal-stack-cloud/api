@@ -325,6 +325,7 @@ ClusterServiceGetCredentialsRequest.typeName = "api.v1.ClusterServiceGetCredenti
 ClusterServiceGetCredentialsRequest.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 1, name: "uuid", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 2, name: "project", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 4, name: "expiration", kind: "message", T: protobuf_1.Duration, opt: true },
 ]);
 exports.ClusterServiceGetCredentialsRequest = ClusterServiceGetCredentialsRequest;
 /**

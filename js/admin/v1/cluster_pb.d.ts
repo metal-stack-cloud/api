@@ -1,5 +1,5 @@
 import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
-import { Message, proto3 } from "@bufbuild/protobuf";
+import { Duration, Message, proto3 } from "@bufbuild/protobuf";
 import { Cluster } from "../../api/v1/cluster_pb.js";
 import { Machine, VPN } from "./machine_pb.js";
 /**
@@ -124,6 +124,10 @@ export declare class ClusterServiceCredentialsRequest extends Message<ClusterSer
      * @generated from field: bool with_ssh = 3;
      */
     withSsh: boolean;
+    /**
+     * @generated from field: optional google.protobuf.Duration expiration = 4;
+     */
+    expiration?: Duration;
     constructor(data?: PartialMessage<ClusterServiceCredentialsRequest>);
     static readonly runtime: typeof proto3;
     static readonly typeName = "admin.v1.ClusterServiceCredentialsRequest";
