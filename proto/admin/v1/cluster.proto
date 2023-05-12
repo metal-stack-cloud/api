@@ -1,0 +1,85 @@
+syntax = "proto3";
+
+package admin.v1;
+
+import "admin/v1/machine.proto";
+import "api/v1/cluster.proto";
+import "api/v1/common.proto";
+import "google/protobuf/duration.proto";
+import "validate/validate.proto";
+
+service ClusterService {
+  rpc Get(ClusterServiceGetRequest) returns (ClusterServiceGetResponse) {
+    option (api.v1.admin_roles) = ADMIN_ROLE_EDITOR;
+    option (api.v1.admin_roles) = ADMIN_ROLE_VIEWER;
+  }
+  rpc List(ClusterServiceListRequest) returns (ClusterServiceListResponse) {
+    option (api.v1.admin_roles) = ADMIN_ROLE_EDITOR;
+    option (api.v1.admin_roles) = ADMIN_ROLE_VIEWER;
+  }
+  rpc Credentials(ClusterServiceCredentialsRequest) returns (ClusterServiceCredentialsResponse) {
+    option (api.v1.admin_roles) = ADMIN_ROLE_EDITOR;
+  }
+  rpc Operate(ClusterServiceOperateRequest) returns (ClusterServiceOperateResponse) {
+    option (api.v1.admin_roles) = ADMIN_ROLE_EDITOR;
+  }
+}
+
+message ClusterServiceGetRequest {
+  string uuid = 1 [(validate.rules).string.uuid = true];
+  bool with_machines = 2;
+}
+
+message ClusterServiceListRequest {
+  optional string uuid = 1;
+  optional string project = 2;
+  optional string tenant = 3;
+  optional string partition = 4;
+  optional string seed = 5;
+  optional string name = 6;
+  optional string purpose = 7;
+  map<string, string> labels = 8;
+}
+
+message ClusterServiceCredentialsRequest {
+  string uuid = 1 [(validate.rules).string.uuid = true];
+  bool with_vpn = 2;
+  bool with_ssh = 3;
+  optional google.protobuf.Duration expiration = 4;
+}
+
+message ClusterServiceOperateRequest {
+  string uuid = 1 [(validate.rules).string.uuid = true];
+  Operate operate = 2;
+}
+
+message ClusterServiceGetResponse {
+  api.v1.Cluster cluster = 1;
+  repeated admin.v1.Machine machines = 2;
+}
+
+message ClusterServiceListResponse {
+  repeated api.v1.Cluster clusters = 1;
+}
+
+message ClusterServiceCredentialsResponse {
+  string kubeconfig = 1;
+  SSHKeyPair ssh_keypair = 2;
+  admin.v1.VPN vpn = 3;
+}
+
+message ClusterServiceOperateResponse {
+  api.v1.Cluster cluster = 1;
+}
+
+enum Operate {
+  OPERATE_UNSPECIFIED = 0;
+  OPERATE_RECONCILE = 1;
+  OPERATE_MAINTAIN = 2;
+  OPERATE_RETRY = 3;
+}
+
+message SSHKeyPair {
+  bytes publickey = 1;
+  bytes privatekey = 2;
+}

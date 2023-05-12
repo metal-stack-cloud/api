@@ -1,6 +1,380 @@
 {
   "files": [
     {
+      "name": "admin/v1/machine.proto",
+      "description": "",
+      "package": "admin.v1",
+      "hasEnums": false,
+      "hasExtensions": false,
+      "hasMessages": true,
+      "hasServices": false,
+      "enums": [],
+      "extensions": [],
+      "messages": [
+        {
+          "name": "Machine",
+          "longName": "Machine",
+          "fullName": "admin.v1.Machine",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "uuid",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "name",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "description",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "project",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "image",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "size",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "machine_networks",
+              "description": "",
+              "label": "repeated",
+              "type": "MachineNetwork",
+              "longType": "MachineNetwork",
+              "fullType": "admin.v1.MachineNetwork",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "hostname",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "user_data",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "role",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "creator",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "created",
+              "description": "",
+              "label": "",
+              "type": "Timestamp",
+              "longType": "google.protobuf.Timestamp",
+              "fullType": "google.protobuf.Timestamp",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "partition",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "rack",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "state",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "liveliness",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "tags",
+              "description": "",
+              "label": "repeated",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "vpn",
+              "description": "",
+              "label": "",
+              "type": "VPN",
+              "longType": "VPN",
+              "fullType": "admin.v1.VPN",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "MachineNetwork",
+          "longName": "MachineNetwork",
+          "fullName": "admin.v1.MachineNetwork",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "network",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "prefixes",
+              "description": "",
+              "label": "repeated",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "ips",
+              "description": "",
+              "label": "repeated",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "destination_prefixes",
+              "description": "",
+              "label": "repeated",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "network_type",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "vrf",
+              "description": "",
+              "label": "",
+              "type": "uint32",
+              "longType": "uint32",
+              "fullType": "uint32",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "asn",
+              "description": "",
+              "label": "",
+              "type": "int64",
+              "longType": "int64",
+              "fullType": "int64",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "VPN",
+          "longName": "VPN",
+          "fullName": "admin.v1.VPN",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "address",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "authkey",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        }
+      ],
+      "services": []
+    },
+    {
       "name": "api/v1/common.proto",
       "description": "",
       "package": "api.v1",
@@ -307,6 +681,2133 @@
         }
       ],
       "services": []
+    },
+    {
+      "name": "api/v1/cluster.proto",
+      "description": "",
+      "package": "api.v1",
+      "hasEnums": false,
+      "hasExtensions": false,
+      "hasMessages": true,
+      "hasServices": true,
+      "enums": [],
+      "extensions": [],
+      "messages": [
+        {
+          "name": "Cluster",
+          "longName": "Cluster",
+          "fullName": "api.v1.Cluster",
+          "description": "Types",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": true,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "uuid",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": "",
+              "options": {
+                "validate.rules": [
+                  {
+                    "name": "string.uuid",
+                    "value": true
+                  }
+                ]
+              }
+            },
+            {
+              "name": "name",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": "",
+              "options": {
+                "validate.rules": [
+                  {
+                    "name": "string.min_len",
+                    "value": 2
+                  },
+                  {
+                    "name": "string.max_len",
+                    "value": 12
+                  }
+                ]
+              }
+            },
+            {
+              "name": "project",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": "",
+              "options": {
+                "validate.rules": [
+                  {
+                    "name": "string.min_len",
+                    "value": 2
+                  },
+                  {
+                    "name": "string.max_len",
+                    "value": 128
+                  }
+                ]
+              }
+            },
+            {
+              "name": "partition",
+              "description": "partition is part of a region",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "kubernetes",
+              "description": "",
+              "label": "",
+              "type": "KubernetesSpec",
+              "longType": "KubernetesSpec",
+              "fullType": "api.v1.KubernetesSpec",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "workers",
+              "description": "",
+              "label": "repeated",
+              "type": "Worker",
+              "longType": "Worker",
+              "fullType": "api.v1.Worker",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "maintenance",
+              "description": "",
+              "label": "",
+              "type": "Maintenance",
+              "longType": "Maintenance",
+              "fullType": "api.v1.Maintenance",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "tenant",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "created_at",
+              "description": "",
+              "label": "",
+              "type": "Timestamp",
+              "longType": "google.protobuf.Timestamp",
+              "fullType": "google.protobuf.Timestamp",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "updated_at",
+              "description": "",
+              "label": "",
+              "type": "Timestamp",
+              "longType": "google.protobuf.Timestamp",
+              "fullType": "google.protobuf.Timestamp",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "deleted_at",
+              "description": "",
+              "label": "",
+              "type": "Timestamp",
+              "longType": "google.protobuf.Timestamp",
+              "fullType": "google.protobuf.Timestamp",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "status",
+              "description": "",
+              "label": "",
+              "type": "ClusterStatus",
+              "longType": "ClusterStatus",
+              "fullType": "api.v1.ClusterStatus",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "purpose",
+              "description": "",
+              "label": "optional",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "_purpose",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "ClusterServiceCreateRequest",
+          "longName": "ClusterServiceCreateRequest",
+          "fullName": "api.v1.ClusterServiceCreateRequest",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "name",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": "",
+              "options": {
+                "validate.rules": [
+                  {
+                    "name": "string.min_len",
+                    "value": 2
+                  },
+                  {
+                    "name": "string.max_len",
+                    "value": 12
+                  },
+                  {
+                    "name": "string.hostname",
+                    "value": true
+                  }
+                ]
+              }
+            },
+            {
+              "name": "project",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": "",
+              "options": {
+                "validate.rules": [
+                  {
+                    "name": "string.min_len",
+                    "value": 2
+                  },
+                  {
+                    "name": "string.max_len",
+                    "value": 128
+                  }
+                ]
+              }
+            },
+            {
+              "name": "partition",
+              "description": "partition is part of a region",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "kubernetes",
+              "description": "",
+              "label": "",
+              "type": "KubernetesSpec",
+              "longType": "KubernetesSpec",
+              "fullType": "api.v1.KubernetesSpec",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "workers",
+              "description": "",
+              "label": "repeated",
+              "type": "Worker",
+              "longType": "Worker",
+              "fullType": "api.v1.Worker",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "maintenance",
+              "description": "",
+              "label": "",
+              "type": "Maintenance",
+              "longType": "Maintenance",
+              "fullType": "api.v1.Maintenance",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "ClusterServiceCreateResponse",
+          "longName": "ClusterServiceCreateResponse",
+          "fullName": "api.v1.ClusterServiceCreateResponse",
+          "description": "Responses",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "cluster",
+              "description": "",
+              "label": "",
+              "type": "Cluster",
+              "longType": "Cluster",
+              "fullType": "api.v1.Cluster",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "ClusterServiceDeleteRequest",
+          "longName": "ClusterServiceDeleteRequest",
+          "fullName": "api.v1.ClusterServiceDeleteRequest",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "uuid",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": "",
+              "options": {
+                "validate.rules": [
+                  {
+                    "name": "string.uuid",
+                    "value": true
+                  }
+                ]
+              }
+            },
+            {
+              "name": "project",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": "",
+              "options": {
+                "validate.rules": [
+                  {
+                    "name": "string.min_len",
+                    "value": 2
+                  },
+                  {
+                    "name": "string.max_len",
+                    "value": 128
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "ClusterServiceDeleteResponse",
+          "longName": "ClusterServiceDeleteResponse",
+          "fullName": "api.v1.ClusterServiceDeleteResponse",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "cluster",
+              "description": "",
+              "label": "",
+              "type": "Cluster",
+              "longType": "Cluster",
+              "fullType": "api.v1.Cluster",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "ClusterServiceGetCredentialsRequest",
+          "longName": "ClusterServiceGetCredentialsRequest",
+          "fullName": "api.v1.ClusterServiceGetCredentialsRequest",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": true,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "uuid",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": "",
+              "options": {
+                "validate.rules": [
+                  {
+                    "name": "string.uuid",
+                    "value": true
+                  }
+                ]
+              }
+            },
+            {
+              "name": "project",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": "",
+              "options": {
+                "validate.rules": [
+                  {
+                    "name": "string.min_len",
+                    "value": 2
+                  },
+                  {
+                    "name": "string.max_len",
+                    "value": 128
+                  }
+                ]
+              }
+            },
+            {
+              "name": "expiration",
+              "description": "",
+              "label": "optional",
+              "type": "Duration",
+              "longType": "google.protobuf.Duration",
+              "fullType": "google.protobuf.Duration",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "_expiration",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "ClusterServiceGetCredentialsResponse",
+          "longName": "ClusterServiceGetCredentialsResponse",
+          "fullName": "api.v1.ClusterServiceGetCredentialsResponse",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "kubeconfig",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "ClusterServiceGetRequest",
+          "longName": "ClusterServiceGetRequest",
+          "fullName": "api.v1.ClusterServiceGetRequest",
+          "description": "Requests",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "uuid",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": "",
+              "options": {
+                "validate.rules": [
+                  {
+                    "name": "string.uuid",
+                    "value": true
+                  }
+                ]
+              }
+            },
+            {
+              "name": "project",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": "",
+              "options": {
+                "validate.rules": [
+                  {
+                    "name": "string.min_len",
+                    "value": 2
+                  },
+                  {
+                    "name": "string.max_len",
+                    "value": 128
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "ClusterServiceGetResponse",
+          "longName": "ClusterServiceGetResponse",
+          "fullName": "api.v1.ClusterServiceGetResponse",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "cluster",
+              "description": "",
+              "label": "",
+              "type": "Cluster",
+              "longType": "Cluster",
+              "fullType": "api.v1.Cluster",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "ClusterServiceListRequest",
+          "longName": "ClusterServiceListRequest",
+          "fullName": "api.v1.ClusterServiceListRequest",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "project",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": "",
+              "options": {
+                "validate.rules": [
+                  {
+                    "name": "string.min_len",
+                    "value": 2
+                  },
+                  {
+                    "name": "string.max_len",
+                    "value": 128
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "ClusterServiceListResponse",
+          "longName": "ClusterServiceListResponse",
+          "fullName": "api.v1.ClusterServiceListResponse",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "clusters",
+              "description": "",
+              "label": "repeated",
+              "type": "Cluster",
+              "longType": "Cluster",
+              "fullType": "api.v1.Cluster",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "ClusterServiceUpdateRequest",
+          "longName": "ClusterServiceUpdateRequest",
+          "fullName": "api.v1.ClusterServiceUpdateRequest",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": true,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "uuid",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": "",
+              "options": {
+                "validate.rules": [
+                  {
+                    "name": "string.uuid",
+                    "value": true
+                  }
+                ]
+              }
+            },
+            {
+              "name": "project",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": "",
+              "options": {
+                "validate.rules": [
+                  {
+                    "name": "string.min_len",
+                    "value": 2
+                  },
+                  {
+                    "name": "string.max_len",
+                    "value": 128
+                  }
+                ]
+              }
+            },
+            {
+              "name": "kubernetes",
+              "description": "",
+              "label": "optional",
+              "type": "KubernetesSpec",
+              "longType": "KubernetesSpec",
+              "fullType": "api.v1.KubernetesSpec",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "_kubernetes",
+              "defaultValue": ""
+            },
+            {
+              "name": "workers",
+              "description": "",
+              "label": "repeated",
+              "type": "WorkerUpdate",
+              "longType": "WorkerUpdate",
+              "fullType": "api.v1.WorkerUpdate",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "maintenance",
+              "description": "",
+              "label": "optional",
+              "type": "Maintenance",
+              "longType": "Maintenance",
+              "fullType": "api.v1.Maintenance",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "_maintenance",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "ClusterServiceUpdateResponse",
+          "longName": "ClusterServiceUpdateResponse",
+          "fullName": "api.v1.ClusterServiceUpdateResponse",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "cluster",
+              "description": "",
+              "label": "",
+              "type": "Cluster",
+              "longType": "Cluster",
+              "fullType": "api.v1.Cluster",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "ClusterServiceWatchStatusRequest",
+          "longName": "ClusterServiceWatchStatusRequest",
+          "fullName": "api.v1.ClusterServiceWatchStatusRequest",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": true,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "uuid",
+              "description": "",
+              "label": "optional",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "_uuid",
+              "defaultValue": "",
+              "options": {
+                "validate.rules": [
+                  {
+                    "name": "string.uuid",
+                    "value": true
+                  }
+                ]
+              }
+            },
+            {
+              "name": "project",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": "",
+              "options": {
+                "validate.rules": [
+                  {
+                    "name": "string.min_len",
+                    "value": 2
+                  },
+                  {
+                    "name": "string.max_len",
+                    "value": 128
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "ClusterServiceWatchStatusResponse",
+          "longName": "ClusterServiceWatchStatusResponse",
+          "fullName": "api.v1.ClusterServiceWatchStatusResponse",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "status",
+              "description": "",
+              "label": "",
+              "type": "ClusterStatus",
+              "longType": "ClusterStatus",
+              "fullType": "api.v1.ClusterStatus",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "ClusterStatus",
+          "longName": "ClusterStatus",
+          "fullName": "api.v1.ClusterStatus",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "uuid",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "progress",
+              "description": "",
+              "label": "",
+              "type": "uint32",
+              "longType": "uint32",
+              "fullType": "uint32",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "state",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "type",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "api_server_ready",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "control_plane_ready",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "nodes_ready",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "system_components_ready",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "last_errors",
+              "description": "",
+              "label": "repeated",
+              "type": "ClusterStatusLastError",
+              "longType": "ClusterStatusLastError",
+              "fullType": "api.v1.ClusterStatusLastError",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "ClusterStatusLastError",
+          "longName": "ClusterStatusLastError",
+          "fullName": "api.v1.ClusterStatusLastError",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": true,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "description",
+              "description": "A human readable message indicating details about the last error.",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "task_id",
+              "description": "ID of the task which caused this last error\n+optional",
+              "label": "optional",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "_task_id",
+              "defaultValue": ""
+            },
+            {
+              "name": "codes",
+              "description": "Well-defined error codes of the last error(s).\n+optional",
+              "label": "repeated",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "last_update_time",
+              "description": "Last time the error was reported\n+optional",
+              "label": "",
+              "type": "Timestamp",
+              "longType": "google.protobuf.Timestamp",
+              "fullType": "google.protobuf.Timestamp",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "KubernetesSpec",
+          "longName": "KubernetesSpec",
+          "fullName": "api.v1.KubernetesSpec",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "version",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": "",
+              "options": {
+                "validate.rules": [
+                  {
+                    "name": "string.max_bytes",
+                    "value": 8
+                  },
+                  {
+                    "name": "string.pattern",
+                    "value": "[0-9]+.[0-9]+.[0-9]"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Maintenance",
+          "longName": "Maintenance",
+          "fullName": "api.v1.Maintenance",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": true,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "kubernetes_autoupdate",
+              "description": "",
+              "label": "optional",
+              "type": "bool",
+              "longType": "bool",
+              "fullType": "bool",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "_kubernetes_autoupdate",
+              "defaultValue": ""
+            },
+            {
+              "name": "machineimage_autoupdate",
+              "description": "",
+              "label": "optional",
+              "type": "bool",
+              "longType": "bool",
+              "fullType": "bool",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "_machineimage_autoupdate",
+              "defaultValue": ""
+            },
+            {
+              "name": "time_window",
+              "description": "",
+              "label": "",
+              "type": "MaintenanceTimeWindow",
+              "longType": "MaintenanceTimeWindow",
+              "fullType": "api.v1.MaintenanceTimeWindow",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "MaintenanceTimeWindow",
+          "longName": "MaintenanceTimeWindow",
+          "fullName": "api.v1.MaintenanceTimeWindow",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "begin",
+              "description": "",
+              "label": "",
+              "type": "Timestamp",
+              "longType": "google.protobuf.Timestamp",
+              "fullType": "google.protobuf.Timestamp",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": "",
+              "options": {
+                "validate.rules": [
+                  {
+                    "name": "timestamp.required",
+                    "value": true
+                  }
+                ]
+              }
+            },
+            {
+              "name": "duration",
+              "description": "",
+              "label": "",
+              "type": "Duration",
+              "longType": "google.protobuf.Duration",
+              "fullType": "google.protobuf.Duration",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": "",
+              "options": {
+                "validate.rules": [
+                  {
+                    "name": "duration.lt.seconds",
+                    "value": 14400
+                  },
+                  {
+                    "name": "duration.lt.nanos",
+                    "value": 0
+                  },
+                  {
+                    "name": "duration.gte.seconds",
+                    "value": 3600
+                  },
+                  {
+                    "name": "duration.gte.nanos",
+                    "value": 0
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Worker",
+          "longName": "Worker",
+          "fullName": "api.v1.Worker",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "name",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": "",
+              "options": {
+                "validate.rules": [
+                  {
+                    "name": "string.min_len",
+                    "value": 2
+                  },
+                  {
+                    "name": "string.max_len",
+                    "value": 128
+                  }
+                ]
+              }
+            },
+            {
+              "name": "machine_type",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": "",
+              "options": {
+                "validate.rules": [
+                  {
+                    "name": "string.min_len",
+                    "value": 2
+                  },
+                  {
+                    "name": "string.max_len",
+                    "value": 128
+                  }
+                ]
+              }
+            },
+            {
+              "name": "minsize",
+              "description": "",
+              "label": "",
+              "type": "uint32",
+              "longType": "uint32",
+              "fullType": "uint32",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": "",
+              "options": {
+                "validate.rules": [
+                  {
+                    "name": "uint32.lt",
+                    "value": 32
+                  }
+                ]
+              }
+            },
+            {
+              "name": "maxsize",
+              "description": "",
+              "label": "",
+              "type": "uint32",
+              "longType": "uint32",
+              "fullType": "uint32",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": "",
+              "options": {
+                "validate.rules": [
+                  {
+                    "name": "uint32.lt",
+                    "value": 64
+                  }
+                ]
+              }
+            },
+            {
+              "name": "maxsurge",
+              "description": "",
+              "label": "",
+              "type": "uint32",
+              "longType": "uint32",
+              "fullType": "uint32",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": "",
+              "options": {
+                "validate.rules": [
+                  {
+                    "name": "uint32.lt",
+                    "value": 64
+                  }
+                ]
+              }
+            },
+            {
+              "name": "maxunavailable",
+              "description": "",
+              "label": "",
+              "type": "uint32",
+              "longType": "uint32",
+              "fullType": "uint32",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": "",
+              "options": {
+                "validate.rules": [
+                  {
+                    "name": "uint32.lt",
+                    "value": 64
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "WorkerUpdate",
+          "longName": "WorkerUpdate",
+          "fullName": "api.v1.WorkerUpdate",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": true,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "name",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": "",
+              "options": {
+                "validate.rules": [
+                  {
+                    "name": "string.min_len",
+                    "value": 2
+                  },
+                  {
+                    "name": "string.max_len",
+                    "value": 128
+                  }
+                ]
+              }
+            },
+            {
+              "name": "machine_type",
+              "description": "",
+              "label": "optional",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "_machine_type",
+              "defaultValue": "",
+              "options": {
+                "validate.rules": [
+                  {
+                    "name": "string.min_len",
+                    "value": 2
+                  },
+                  {
+                    "name": "string.max_len",
+                    "value": 128
+                  }
+                ]
+              }
+            },
+            {
+              "name": "minsize",
+              "description": "",
+              "label": "optional",
+              "type": "uint32",
+              "longType": "uint32",
+              "fullType": "uint32",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "_minsize",
+              "defaultValue": "",
+              "options": {
+                "validate.rules": [
+                  {
+                    "name": "uint32.lt",
+                    "value": 32
+                  }
+                ]
+              }
+            },
+            {
+              "name": "maxsize",
+              "description": "",
+              "label": "optional",
+              "type": "uint32",
+              "longType": "uint32",
+              "fullType": "uint32",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "_maxsize",
+              "defaultValue": "",
+              "options": {
+                "validate.rules": [
+                  {
+                    "name": "uint32.lt",
+                    "value": 64
+                  }
+                ]
+              }
+            },
+            {
+              "name": "maxsurge",
+              "description": "",
+              "label": "optional",
+              "type": "uint32",
+              "longType": "uint32",
+              "fullType": "uint32",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "_maxsurge",
+              "defaultValue": "",
+              "options": {
+                "validate.rules": [
+                  {
+                    "name": "uint32.lt",
+                    "value": 64
+                  }
+                ]
+              }
+            },
+            {
+              "name": "maxunavailable",
+              "description": "",
+              "label": "optional",
+              "type": "uint32",
+              "longType": "uint32",
+              "fullType": "uint32",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "_maxunavailable",
+              "defaultValue": "",
+              "options": {
+                "validate.rules": [
+                  {
+                    "name": "uint32.lt",
+                    "value": 64
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "services": [
+        {
+          "name": "ClusterService",
+          "longName": "ClusterService",
+          "fullName": "api.v1.ClusterService",
+          "description": "",
+          "methods": [
+            {
+              "name": "Create",
+              "description": "",
+              "requestType": "ClusterServiceCreateRequest",
+              "requestLongType": "ClusterServiceCreateRequest",
+              "requestFullType": "api.v1.ClusterServiceCreateRequest",
+              "requestStreaming": false,
+              "responseType": "ClusterServiceCreateResponse",
+              "responseLongType": "ClusterServiceCreateResponse",
+              "responseFullType": "api.v1.ClusterServiceCreateResponse",
+              "responseStreaming": false
+            },
+            {
+              "name": "Get",
+              "description": "",
+              "requestType": "ClusterServiceGetRequest",
+              "requestLongType": "ClusterServiceGetRequest",
+              "requestFullType": "api.v1.ClusterServiceGetRequest",
+              "requestStreaming": false,
+              "responseType": "ClusterServiceGetResponse",
+              "responseLongType": "ClusterServiceGetResponse",
+              "responseFullType": "api.v1.ClusterServiceGetResponse",
+              "responseStreaming": false
+            },
+            {
+              "name": "List",
+              "description": "",
+              "requestType": "ClusterServiceListRequest",
+              "requestLongType": "ClusterServiceListRequest",
+              "requestFullType": "api.v1.ClusterServiceListRequest",
+              "requestStreaming": false,
+              "responseType": "ClusterServiceListResponse",
+              "responseLongType": "ClusterServiceListResponse",
+              "responseFullType": "api.v1.ClusterServiceListResponse",
+              "responseStreaming": false
+            },
+            {
+              "name": "WatchStatus",
+              "description": "",
+              "requestType": "ClusterServiceWatchStatusRequest",
+              "requestLongType": "ClusterServiceWatchStatusRequest",
+              "requestFullType": "api.v1.ClusterServiceWatchStatusRequest",
+              "requestStreaming": false,
+              "responseType": "ClusterServiceWatchStatusResponse",
+              "responseLongType": "ClusterServiceWatchStatusResponse",
+              "responseFullType": "api.v1.ClusterServiceWatchStatusResponse",
+              "responseStreaming": true
+            },
+            {
+              "name": "Delete",
+              "description": "",
+              "requestType": "ClusterServiceDeleteRequest",
+              "requestLongType": "ClusterServiceDeleteRequest",
+              "requestFullType": "api.v1.ClusterServiceDeleteRequest",
+              "requestStreaming": false,
+              "responseType": "ClusterServiceDeleteResponse",
+              "responseLongType": "ClusterServiceDeleteResponse",
+              "responseFullType": "api.v1.ClusterServiceDeleteResponse",
+              "responseStreaming": false
+            },
+            {
+              "name": "Update",
+              "description": "",
+              "requestType": "ClusterServiceUpdateRequest",
+              "requestLongType": "ClusterServiceUpdateRequest",
+              "requestFullType": "api.v1.ClusterServiceUpdateRequest",
+              "requestStreaming": false,
+              "responseType": "ClusterServiceUpdateResponse",
+              "responseLongType": "ClusterServiceUpdateResponse",
+              "responseFullType": "api.v1.ClusterServiceUpdateResponse",
+              "responseStreaming": false
+            },
+            {
+              "name": "GetCredentials",
+              "description": "",
+              "requestType": "ClusterServiceGetCredentialsRequest",
+              "requestLongType": "ClusterServiceGetCredentialsRequest",
+              "requestFullType": "api.v1.ClusterServiceGetCredentialsRequest",
+              "requestStreaming": false,
+              "responseType": "ClusterServiceGetCredentialsResponse",
+              "responseLongType": "ClusterServiceGetCredentialsResponse",
+              "responseFullType": "api.v1.ClusterServiceGetCredentialsResponse",
+              "responseStreaming": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "admin/v1/cluster.proto",
+      "description": "",
+      "package": "admin.v1",
+      "hasEnums": true,
+      "hasExtensions": false,
+      "hasMessages": true,
+      "hasServices": true,
+      "enums": [
+        {
+          "name": "Operate",
+          "longName": "Operate",
+          "fullName": "admin.v1.Operate",
+          "description": "",
+          "values": [
+            {
+              "name": "OPERATE_UNSPECIFIED",
+              "number": "0",
+              "description": ""
+            },
+            {
+              "name": "OPERATE_RECONCILE",
+              "number": "1",
+              "description": ""
+            },
+            {
+              "name": "OPERATE_MAINTAIN",
+              "number": "2",
+              "description": ""
+            },
+            {
+              "name": "OPERATE_RETRY",
+              "number": "3",
+              "description": ""
+            }
+          ]
+        }
+      ],
+      "extensions": [],
+      "messages": [
+        {
+          "name": "ClusterServiceCredentialsRequest",
+          "longName": "ClusterServiceCredentialsRequest",
+          "fullName": "admin.v1.ClusterServiceCredentialsRequest",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": true,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "uuid",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": "",
+              "options": {
+                "validate.rules": [
+                  {
+                    "name": "string.uuid",
+                    "value": true
+                  }
+                ]
+              }
+            },
+            {
+              "name": "with_vpn",
+              "description": "",
+              "label": "",
+              "type": "bool",
+              "longType": "bool",
+              "fullType": "bool",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "with_ssh",
+              "description": "",
+              "label": "",
+              "type": "bool",
+              "longType": "bool",
+              "fullType": "bool",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "expiration",
+              "description": "",
+              "label": "optional",
+              "type": "Duration",
+              "longType": "google.protobuf.Duration",
+              "fullType": "google.protobuf.Duration",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "_expiration",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "ClusterServiceCredentialsResponse",
+          "longName": "ClusterServiceCredentialsResponse",
+          "fullName": "admin.v1.ClusterServiceCredentialsResponse",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "kubeconfig",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "ssh_keypair",
+              "description": "",
+              "label": "",
+              "type": "SSHKeyPair",
+              "longType": "SSHKeyPair",
+              "fullType": "admin.v1.SSHKeyPair",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "vpn",
+              "description": "",
+              "label": "",
+              "type": "VPN",
+              "longType": "VPN",
+              "fullType": "admin.v1.VPN",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "ClusterServiceGetRequest",
+          "longName": "ClusterServiceGetRequest",
+          "fullName": "admin.v1.ClusterServiceGetRequest",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "uuid",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": "",
+              "options": {
+                "validate.rules": [
+                  {
+                    "name": "string.uuid",
+                    "value": true
+                  }
+                ]
+              }
+            },
+            {
+              "name": "with_machines",
+              "description": "",
+              "label": "",
+              "type": "bool",
+              "longType": "bool",
+              "fullType": "bool",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "ClusterServiceGetResponse",
+          "longName": "ClusterServiceGetResponse",
+          "fullName": "admin.v1.ClusterServiceGetResponse",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "cluster",
+              "description": "",
+              "label": "",
+              "type": "Cluster",
+              "longType": "api.v1.Cluster",
+              "fullType": "api.v1.Cluster",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "machines",
+              "description": "",
+              "label": "repeated",
+              "type": "Machine",
+              "longType": "Machine",
+              "fullType": "admin.v1.Machine",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "ClusterServiceListRequest",
+          "longName": "ClusterServiceListRequest",
+          "fullName": "admin.v1.ClusterServiceListRequest",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": true,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "uuid",
+              "description": "",
+              "label": "optional",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "_uuid",
+              "defaultValue": ""
+            },
+            {
+              "name": "project",
+              "description": "",
+              "label": "optional",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "_project",
+              "defaultValue": ""
+            },
+            {
+              "name": "tenant",
+              "description": "",
+              "label": "optional",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "_tenant",
+              "defaultValue": ""
+            },
+            {
+              "name": "partition",
+              "description": "",
+              "label": "optional",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "_partition",
+              "defaultValue": ""
+            },
+            {
+              "name": "seed",
+              "description": "",
+              "label": "optional",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "_seed",
+              "defaultValue": ""
+            },
+            {
+              "name": "name",
+              "description": "",
+              "label": "optional",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "_name",
+              "defaultValue": ""
+            },
+            {
+              "name": "purpose",
+              "description": "",
+              "label": "optional",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "_purpose",
+              "defaultValue": ""
+            },
+            {
+              "name": "labels",
+              "description": "",
+              "label": "repeated",
+              "type": "LabelsEntry",
+              "longType": "ClusterServiceListRequest.LabelsEntry",
+              "fullType": "admin.v1.ClusterServiceListRequest.LabelsEntry",
+              "ismap": true,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "LabelsEntry",
+          "longName": "ClusterServiceListRequest.LabelsEntry",
+          "fullName": "admin.v1.ClusterServiceListRequest.LabelsEntry",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "key",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "value",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "ClusterServiceListResponse",
+          "longName": "ClusterServiceListResponse",
+          "fullName": "admin.v1.ClusterServiceListResponse",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "clusters",
+              "description": "",
+              "label": "repeated",
+              "type": "Cluster",
+              "longType": "api.v1.Cluster",
+              "fullType": "api.v1.Cluster",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "ClusterServiceOperateRequest",
+          "longName": "ClusterServiceOperateRequest",
+          "fullName": "admin.v1.ClusterServiceOperateRequest",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "uuid",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": "",
+              "options": {
+                "validate.rules": [
+                  {
+                    "name": "string.uuid",
+                    "value": true
+                  }
+                ]
+              }
+            },
+            {
+              "name": "operate",
+              "description": "",
+              "label": "",
+              "type": "Operate",
+              "longType": "Operate",
+              "fullType": "admin.v1.Operate",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "ClusterServiceOperateResponse",
+          "longName": "ClusterServiceOperateResponse",
+          "fullName": "admin.v1.ClusterServiceOperateResponse",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "cluster",
+              "description": "",
+              "label": "",
+              "type": "Cluster",
+              "longType": "api.v1.Cluster",
+              "fullType": "api.v1.Cluster",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "SSHKeyPair",
+          "longName": "SSHKeyPair",
+          "fullName": "admin.v1.SSHKeyPair",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "publickey",
+              "description": "",
+              "label": "",
+              "type": "bytes",
+              "longType": "bytes",
+              "fullType": "bytes",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "privatekey",
+              "description": "",
+              "label": "",
+              "type": "bytes",
+              "longType": "bytes",
+              "fullType": "bytes",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        }
+      ],
+      "services": [
+        {
+          "name": "ClusterService",
+          "longName": "ClusterService",
+          "fullName": "admin.v1.ClusterService",
+          "description": "",
+          "methods": [
+            {
+              "name": "Get",
+              "description": "",
+              "requestType": "ClusterServiceGetRequest",
+              "requestLongType": "ClusterServiceGetRequest",
+              "requestFullType": "admin.v1.ClusterServiceGetRequest",
+              "requestStreaming": false,
+              "responseType": "ClusterServiceGetResponse",
+              "responseLongType": "ClusterServiceGetResponse",
+              "responseFullType": "admin.v1.ClusterServiceGetResponse",
+              "responseStreaming": false
+            },
+            {
+              "name": "List",
+              "description": "",
+              "requestType": "ClusterServiceListRequest",
+              "requestLongType": "ClusterServiceListRequest",
+              "requestFullType": "admin.v1.ClusterServiceListRequest",
+              "requestStreaming": false,
+              "responseType": "ClusterServiceListResponse",
+              "responseLongType": "ClusterServiceListResponse",
+              "responseFullType": "admin.v1.ClusterServiceListResponse",
+              "responseStreaming": false
+            },
+            {
+              "name": "Credentials",
+              "description": "",
+              "requestType": "ClusterServiceCredentialsRequest",
+              "requestLongType": "ClusterServiceCredentialsRequest",
+              "requestFullType": "admin.v1.ClusterServiceCredentialsRequest",
+              "requestStreaming": false,
+              "responseType": "ClusterServiceCredentialsResponse",
+              "responseLongType": "ClusterServiceCredentialsResponse",
+              "responseFullType": "admin.v1.ClusterServiceCredentialsResponse",
+              "responseStreaming": false
+            },
+            {
+              "name": "Operate",
+              "description": "",
+              "requestType": "ClusterServiceOperateRequest",
+              "requestLongType": "ClusterServiceOperateRequest",
+              "requestFullType": "admin.v1.ClusterServiceOperateRequest",
+              "requestStreaming": false,
+              "responseType": "ClusterServiceOperateResponse",
+              "responseLongType": "ClusterServiceOperateResponse",
+              "responseFullType": "admin.v1.ClusterServiceOperateResponse",
+              "responseStreaming": false
+            }
+          ]
+        }
+      ]
     },
     {
       "name": "api/v1/payment.proto",
@@ -5786,1553 +8287,6 @@
               "responseType": "AssetServiceListResponse",
               "responseLongType": "AssetServiceListResponse",
               "responseFullType": "api.v1.AssetServiceListResponse",
-              "responseStreaming": false
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "name": "api/v1/cluster.proto",
-      "description": "",
-      "package": "api.v1",
-      "hasEnums": false,
-      "hasExtensions": false,
-      "hasMessages": true,
-      "hasServices": true,
-      "enums": [],
-      "extensions": [],
-      "messages": [
-        {
-          "name": "Cluster",
-          "longName": "Cluster",
-          "fullName": "api.v1.Cluster",
-          "description": "Types",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": true,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "uuid",
-              "description": "",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.uuid",
-                    "value": true
-                  }
-                ]
-              }
-            },
-            {
-              "name": "name",
-              "description": "",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.min_len",
-                    "value": 2
-                  },
-                  {
-                    "name": "string.max_len",
-                    "value": 12
-                  }
-                ]
-              }
-            },
-            {
-              "name": "project",
-              "description": "",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.min_len",
-                    "value": 2
-                  },
-                  {
-                    "name": "string.max_len",
-                    "value": 128
-                  }
-                ]
-              }
-            },
-            {
-              "name": "partition",
-              "description": "partition is part of a region",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "kubernetes",
-              "description": "",
-              "label": "",
-              "type": "KubernetesSpec",
-              "longType": "KubernetesSpec",
-              "fullType": "api.v1.KubernetesSpec",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "workers",
-              "description": "",
-              "label": "repeated",
-              "type": "Worker",
-              "longType": "Worker",
-              "fullType": "api.v1.Worker",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "maintenance",
-              "description": "",
-              "label": "",
-              "type": "Maintenance",
-              "longType": "Maintenance",
-              "fullType": "api.v1.Maintenance",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "tenant",
-              "description": "",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "created_at",
-              "description": "",
-              "label": "",
-              "type": "Timestamp",
-              "longType": "google.protobuf.Timestamp",
-              "fullType": "google.protobuf.Timestamp",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "updated_at",
-              "description": "",
-              "label": "",
-              "type": "Timestamp",
-              "longType": "google.protobuf.Timestamp",
-              "fullType": "google.protobuf.Timestamp",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "deleted_at",
-              "description": "",
-              "label": "",
-              "type": "Timestamp",
-              "longType": "google.protobuf.Timestamp",
-              "fullType": "google.protobuf.Timestamp",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "status",
-              "description": "",
-              "label": "",
-              "type": "ClusterStatus",
-              "longType": "ClusterStatus",
-              "fullType": "api.v1.ClusterStatus",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "purpose",
-              "description": "",
-              "label": "optional",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": true,
-              "oneofdecl": "_purpose",
-              "defaultValue": ""
-            }
-          ]
-        },
-        {
-          "name": "ClusterServiceCreateRequest",
-          "longName": "ClusterServiceCreateRequest",
-          "fullName": "api.v1.ClusterServiceCreateRequest",
-          "description": "",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "name",
-              "description": "",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.min_len",
-                    "value": 2
-                  },
-                  {
-                    "name": "string.max_len",
-                    "value": 12
-                  },
-                  {
-                    "name": "string.hostname",
-                    "value": true
-                  }
-                ]
-              }
-            },
-            {
-              "name": "project",
-              "description": "",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.min_len",
-                    "value": 2
-                  },
-                  {
-                    "name": "string.max_len",
-                    "value": 128
-                  }
-                ]
-              }
-            },
-            {
-              "name": "partition",
-              "description": "partition is part of a region",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "kubernetes",
-              "description": "",
-              "label": "",
-              "type": "KubernetesSpec",
-              "longType": "KubernetesSpec",
-              "fullType": "api.v1.KubernetesSpec",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "workers",
-              "description": "",
-              "label": "repeated",
-              "type": "Worker",
-              "longType": "Worker",
-              "fullType": "api.v1.Worker",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "maintenance",
-              "description": "",
-              "label": "",
-              "type": "Maintenance",
-              "longType": "Maintenance",
-              "fullType": "api.v1.Maintenance",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            }
-          ]
-        },
-        {
-          "name": "ClusterServiceCreateResponse",
-          "longName": "ClusterServiceCreateResponse",
-          "fullName": "api.v1.ClusterServiceCreateResponse",
-          "description": "Responses",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "cluster",
-              "description": "",
-              "label": "",
-              "type": "Cluster",
-              "longType": "Cluster",
-              "fullType": "api.v1.Cluster",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            }
-          ]
-        },
-        {
-          "name": "ClusterServiceDeleteRequest",
-          "longName": "ClusterServiceDeleteRequest",
-          "fullName": "api.v1.ClusterServiceDeleteRequest",
-          "description": "",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "uuid",
-              "description": "",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.uuid",
-                    "value": true
-                  }
-                ]
-              }
-            },
-            {
-              "name": "project",
-              "description": "",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.min_len",
-                    "value": 2
-                  },
-                  {
-                    "name": "string.max_len",
-                    "value": 128
-                  }
-                ]
-              }
-            }
-          ]
-        },
-        {
-          "name": "ClusterServiceDeleteResponse",
-          "longName": "ClusterServiceDeleteResponse",
-          "fullName": "api.v1.ClusterServiceDeleteResponse",
-          "description": "",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "cluster",
-              "description": "",
-              "label": "",
-              "type": "Cluster",
-              "longType": "Cluster",
-              "fullType": "api.v1.Cluster",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            }
-          ]
-        },
-        {
-          "name": "ClusterServiceGetCredentialsRequest",
-          "longName": "ClusterServiceGetCredentialsRequest",
-          "fullName": "api.v1.ClusterServiceGetCredentialsRequest",
-          "description": "",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "uuid",
-              "description": "",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.uuid",
-                    "value": true
-                  }
-                ]
-              }
-            },
-            {
-              "name": "project",
-              "description": "",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.min_len",
-                    "value": 2
-                  },
-                  {
-                    "name": "string.max_len",
-                    "value": 128
-                  }
-                ]
-              }
-            }
-          ]
-        },
-        {
-          "name": "ClusterServiceGetCredentialsResponse",
-          "longName": "ClusterServiceGetCredentialsResponse",
-          "fullName": "api.v1.ClusterServiceGetCredentialsResponse",
-          "description": "",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "kubeconfig",
-              "description": "",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            }
-          ]
-        },
-        {
-          "name": "ClusterServiceGetRequest",
-          "longName": "ClusterServiceGetRequest",
-          "fullName": "api.v1.ClusterServiceGetRequest",
-          "description": "Requests",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "uuid",
-              "description": "",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.uuid",
-                    "value": true
-                  }
-                ]
-              }
-            },
-            {
-              "name": "project",
-              "description": "",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.min_len",
-                    "value": 2
-                  },
-                  {
-                    "name": "string.max_len",
-                    "value": 128
-                  }
-                ]
-              }
-            }
-          ]
-        },
-        {
-          "name": "ClusterServiceGetResponse",
-          "longName": "ClusterServiceGetResponse",
-          "fullName": "api.v1.ClusterServiceGetResponse",
-          "description": "",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "cluster",
-              "description": "",
-              "label": "",
-              "type": "Cluster",
-              "longType": "Cluster",
-              "fullType": "api.v1.Cluster",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            }
-          ]
-        },
-        {
-          "name": "ClusterServiceListRequest",
-          "longName": "ClusterServiceListRequest",
-          "fullName": "api.v1.ClusterServiceListRequest",
-          "description": "",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "project",
-              "description": "",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.min_len",
-                    "value": 2
-                  },
-                  {
-                    "name": "string.max_len",
-                    "value": 128
-                  }
-                ]
-              }
-            }
-          ]
-        },
-        {
-          "name": "ClusterServiceListResponse",
-          "longName": "ClusterServiceListResponse",
-          "fullName": "api.v1.ClusterServiceListResponse",
-          "description": "",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "clusters",
-              "description": "",
-              "label": "repeated",
-              "type": "Cluster",
-              "longType": "Cluster",
-              "fullType": "api.v1.Cluster",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            }
-          ]
-        },
-        {
-          "name": "ClusterServiceUpdateRequest",
-          "longName": "ClusterServiceUpdateRequest",
-          "fullName": "api.v1.ClusterServiceUpdateRequest",
-          "description": "",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": true,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "uuid",
-              "description": "",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.uuid",
-                    "value": true
-                  }
-                ]
-              }
-            },
-            {
-              "name": "project",
-              "description": "",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.min_len",
-                    "value": 2
-                  },
-                  {
-                    "name": "string.max_len",
-                    "value": 128
-                  }
-                ]
-              }
-            },
-            {
-              "name": "kubernetes",
-              "description": "",
-              "label": "optional",
-              "type": "KubernetesSpec",
-              "longType": "KubernetesSpec",
-              "fullType": "api.v1.KubernetesSpec",
-              "ismap": false,
-              "isoneof": true,
-              "oneofdecl": "_kubernetes",
-              "defaultValue": ""
-            },
-            {
-              "name": "workers",
-              "description": "",
-              "label": "repeated",
-              "type": "WorkerUpdate",
-              "longType": "WorkerUpdate",
-              "fullType": "api.v1.WorkerUpdate",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "maintenance",
-              "description": "",
-              "label": "optional",
-              "type": "Maintenance",
-              "longType": "Maintenance",
-              "fullType": "api.v1.Maintenance",
-              "ismap": false,
-              "isoneof": true,
-              "oneofdecl": "_maintenance",
-              "defaultValue": ""
-            }
-          ]
-        },
-        {
-          "name": "ClusterServiceUpdateResponse",
-          "longName": "ClusterServiceUpdateResponse",
-          "fullName": "api.v1.ClusterServiceUpdateResponse",
-          "description": "",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "cluster",
-              "description": "",
-              "label": "",
-              "type": "Cluster",
-              "longType": "Cluster",
-              "fullType": "api.v1.Cluster",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            }
-          ]
-        },
-        {
-          "name": "ClusterServiceWatchStatusRequest",
-          "longName": "ClusterServiceWatchStatusRequest",
-          "fullName": "api.v1.ClusterServiceWatchStatusRequest",
-          "description": "",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": true,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "uuid",
-              "description": "",
-              "label": "optional",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": true,
-              "oneofdecl": "_uuid",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.uuid",
-                    "value": true
-                  }
-                ]
-              }
-            },
-            {
-              "name": "project",
-              "description": "",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.min_len",
-                    "value": 2
-                  },
-                  {
-                    "name": "string.max_len",
-                    "value": 128
-                  }
-                ]
-              }
-            }
-          ]
-        },
-        {
-          "name": "ClusterServiceWatchStatusResponse",
-          "longName": "ClusterServiceWatchStatusResponse",
-          "fullName": "api.v1.ClusterServiceWatchStatusResponse",
-          "description": "",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "status",
-              "description": "",
-              "label": "",
-              "type": "ClusterStatus",
-              "longType": "ClusterStatus",
-              "fullType": "api.v1.ClusterStatus",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            }
-          ]
-        },
-        {
-          "name": "ClusterStatus",
-          "longName": "ClusterStatus",
-          "fullName": "api.v1.ClusterStatus",
-          "description": "",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "uuid",
-              "description": "",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "progress",
-              "description": "",
-              "label": "",
-              "type": "uint32",
-              "longType": "uint32",
-              "fullType": "uint32",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "state",
-              "description": "",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "type",
-              "description": "",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "api_server_ready",
-              "description": "",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "control_plane_ready",
-              "description": "",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "nodes_ready",
-              "description": "",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "system_components_ready",
-              "description": "",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "last_errors",
-              "description": "",
-              "label": "repeated",
-              "type": "ClusterStatusLastError",
-              "longType": "ClusterStatusLastError",
-              "fullType": "api.v1.ClusterStatusLastError",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            }
-          ]
-        },
-        {
-          "name": "ClusterStatusLastError",
-          "longName": "ClusterStatusLastError",
-          "fullName": "api.v1.ClusterStatusLastError",
-          "description": "",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": true,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "description",
-              "description": "A human readable message indicating details about the last error.",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "task_id",
-              "description": "ID of the task which caused this last error\n+optional",
-              "label": "optional",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": true,
-              "oneofdecl": "_task_id",
-              "defaultValue": ""
-            },
-            {
-              "name": "codes",
-              "description": "Well-defined error codes of the last error(s).\n+optional",
-              "label": "repeated",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "last_update_time",
-              "description": "Last time the error was reported\n+optional",
-              "label": "",
-              "type": "Timestamp",
-              "longType": "google.protobuf.Timestamp",
-              "fullType": "google.protobuf.Timestamp",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            }
-          ]
-        },
-        {
-          "name": "KubernetesSpec",
-          "longName": "KubernetesSpec",
-          "fullName": "api.v1.KubernetesSpec",
-          "description": "",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "version",
-              "description": "",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.max_bytes",
-                    "value": 8
-                  },
-                  {
-                    "name": "string.pattern",
-                    "value": "[0-9]+.[0-9]+.[0-9]"
-                  }
-                ]
-              }
-            }
-          ]
-        },
-        {
-          "name": "Maintenance",
-          "longName": "Maintenance",
-          "fullName": "api.v1.Maintenance",
-          "description": "",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": true,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "kubernetes_autoupdate",
-              "description": "",
-              "label": "optional",
-              "type": "bool",
-              "longType": "bool",
-              "fullType": "bool",
-              "ismap": false,
-              "isoneof": true,
-              "oneofdecl": "_kubernetes_autoupdate",
-              "defaultValue": ""
-            },
-            {
-              "name": "machineimage_autoupdate",
-              "description": "",
-              "label": "optional",
-              "type": "bool",
-              "longType": "bool",
-              "fullType": "bool",
-              "ismap": false,
-              "isoneof": true,
-              "oneofdecl": "_machineimage_autoupdate",
-              "defaultValue": ""
-            },
-            {
-              "name": "time_window",
-              "description": "",
-              "label": "",
-              "type": "MaintenanceTimeWindow",
-              "longType": "MaintenanceTimeWindow",
-              "fullType": "api.v1.MaintenanceTimeWindow",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            }
-          ]
-        },
-        {
-          "name": "MaintenanceTimeWindow",
-          "longName": "MaintenanceTimeWindow",
-          "fullName": "api.v1.MaintenanceTimeWindow",
-          "description": "",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "begin",
-              "description": "",
-              "label": "",
-              "type": "Timestamp",
-              "longType": "google.protobuf.Timestamp",
-              "fullType": "google.protobuf.Timestamp",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "timestamp.required",
-                    "value": true
-                  }
-                ]
-              }
-            },
-            {
-              "name": "duration",
-              "description": "",
-              "label": "",
-              "type": "Duration",
-              "longType": "google.protobuf.Duration",
-              "fullType": "google.protobuf.Duration",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "duration.lt.seconds",
-                    "value": 14400
-                  },
-                  {
-                    "name": "duration.lt.nanos",
-                    "value": 0
-                  },
-                  {
-                    "name": "duration.gte.seconds",
-                    "value": 3600
-                  },
-                  {
-                    "name": "duration.gte.nanos",
-                    "value": 0
-                  }
-                ]
-              }
-            }
-          ]
-        },
-        {
-          "name": "Worker",
-          "longName": "Worker",
-          "fullName": "api.v1.Worker",
-          "description": "",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "name",
-              "description": "",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.min_len",
-                    "value": 2
-                  },
-                  {
-                    "name": "string.max_len",
-                    "value": 128
-                  }
-                ]
-              }
-            },
-            {
-              "name": "machine_type",
-              "description": "",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.min_len",
-                    "value": 2
-                  },
-                  {
-                    "name": "string.max_len",
-                    "value": 128
-                  }
-                ]
-              }
-            },
-            {
-              "name": "minsize",
-              "description": "",
-              "label": "",
-              "type": "uint32",
-              "longType": "uint32",
-              "fullType": "uint32",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "uint32.lt",
-                    "value": 32
-                  }
-                ]
-              }
-            },
-            {
-              "name": "maxsize",
-              "description": "",
-              "label": "",
-              "type": "uint32",
-              "longType": "uint32",
-              "fullType": "uint32",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "uint32.lt",
-                    "value": 64
-                  }
-                ]
-              }
-            },
-            {
-              "name": "maxsurge",
-              "description": "",
-              "label": "",
-              "type": "uint32",
-              "longType": "uint32",
-              "fullType": "uint32",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "uint32.lt",
-                    "value": 64
-                  }
-                ]
-              }
-            },
-            {
-              "name": "maxunavailable",
-              "description": "",
-              "label": "",
-              "type": "uint32",
-              "longType": "uint32",
-              "fullType": "uint32",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "uint32.lt",
-                    "value": 64
-                  }
-                ]
-              }
-            }
-          ]
-        },
-        {
-          "name": "WorkerUpdate",
-          "longName": "WorkerUpdate",
-          "fullName": "api.v1.WorkerUpdate",
-          "description": "",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": true,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "name",
-              "description": "",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.min_len",
-                    "value": 2
-                  },
-                  {
-                    "name": "string.max_len",
-                    "value": 128
-                  }
-                ]
-              }
-            },
-            {
-              "name": "machine_type",
-              "description": "",
-              "label": "optional",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": true,
-              "oneofdecl": "_machine_type",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.min_len",
-                    "value": 2
-                  },
-                  {
-                    "name": "string.max_len",
-                    "value": 128
-                  }
-                ]
-              }
-            },
-            {
-              "name": "minsize",
-              "description": "",
-              "label": "optional",
-              "type": "uint32",
-              "longType": "uint32",
-              "fullType": "uint32",
-              "ismap": false,
-              "isoneof": true,
-              "oneofdecl": "_minsize",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "uint32.lt",
-                    "value": 32
-                  }
-                ]
-              }
-            },
-            {
-              "name": "maxsize",
-              "description": "",
-              "label": "optional",
-              "type": "uint32",
-              "longType": "uint32",
-              "fullType": "uint32",
-              "ismap": false,
-              "isoneof": true,
-              "oneofdecl": "_maxsize",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "uint32.lt",
-                    "value": 64
-                  }
-                ]
-              }
-            },
-            {
-              "name": "maxsurge",
-              "description": "",
-              "label": "optional",
-              "type": "uint32",
-              "longType": "uint32",
-              "fullType": "uint32",
-              "ismap": false,
-              "isoneof": true,
-              "oneofdecl": "_maxsurge",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "uint32.lt",
-                    "value": 64
-                  }
-                ]
-              }
-            },
-            {
-              "name": "maxunavailable",
-              "description": "",
-              "label": "optional",
-              "type": "uint32",
-              "longType": "uint32",
-              "fullType": "uint32",
-              "ismap": false,
-              "isoneof": true,
-              "oneofdecl": "_maxunavailable",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "uint32.lt",
-                    "value": 64
-                  }
-                ]
-              }
-            }
-          ]
-        }
-      ],
-      "services": [
-        {
-          "name": "ClusterService",
-          "longName": "ClusterService",
-          "fullName": "api.v1.ClusterService",
-          "description": "",
-          "methods": [
-            {
-              "name": "Create",
-              "description": "",
-              "requestType": "ClusterServiceCreateRequest",
-              "requestLongType": "ClusterServiceCreateRequest",
-              "requestFullType": "api.v1.ClusterServiceCreateRequest",
-              "requestStreaming": false,
-              "responseType": "ClusterServiceCreateResponse",
-              "responseLongType": "ClusterServiceCreateResponse",
-              "responseFullType": "api.v1.ClusterServiceCreateResponse",
-              "responseStreaming": false
-            },
-            {
-              "name": "Get",
-              "description": "",
-              "requestType": "ClusterServiceGetRequest",
-              "requestLongType": "ClusterServiceGetRequest",
-              "requestFullType": "api.v1.ClusterServiceGetRequest",
-              "requestStreaming": false,
-              "responseType": "ClusterServiceGetResponse",
-              "responseLongType": "ClusterServiceGetResponse",
-              "responseFullType": "api.v1.ClusterServiceGetResponse",
-              "responseStreaming": false
-            },
-            {
-              "name": "List",
-              "description": "",
-              "requestType": "ClusterServiceListRequest",
-              "requestLongType": "ClusterServiceListRequest",
-              "requestFullType": "api.v1.ClusterServiceListRequest",
-              "requestStreaming": false,
-              "responseType": "ClusterServiceListResponse",
-              "responseLongType": "ClusterServiceListResponse",
-              "responseFullType": "api.v1.ClusterServiceListResponse",
-              "responseStreaming": false
-            },
-            {
-              "name": "WatchStatus",
-              "description": "",
-              "requestType": "ClusterServiceWatchStatusRequest",
-              "requestLongType": "ClusterServiceWatchStatusRequest",
-              "requestFullType": "api.v1.ClusterServiceWatchStatusRequest",
-              "requestStreaming": false,
-              "responseType": "ClusterServiceWatchStatusResponse",
-              "responseLongType": "ClusterServiceWatchStatusResponse",
-              "responseFullType": "api.v1.ClusterServiceWatchStatusResponse",
-              "responseStreaming": true
-            },
-            {
-              "name": "Delete",
-              "description": "",
-              "requestType": "ClusterServiceDeleteRequest",
-              "requestLongType": "ClusterServiceDeleteRequest",
-              "requestFullType": "api.v1.ClusterServiceDeleteRequest",
-              "requestStreaming": false,
-              "responseType": "ClusterServiceDeleteResponse",
-              "responseLongType": "ClusterServiceDeleteResponse",
-              "responseFullType": "api.v1.ClusterServiceDeleteResponse",
-              "responseStreaming": false
-            },
-            {
-              "name": "Update",
-              "description": "",
-              "requestType": "ClusterServiceUpdateRequest",
-              "requestLongType": "ClusterServiceUpdateRequest",
-              "requestFullType": "api.v1.ClusterServiceUpdateRequest",
-              "requestStreaming": false,
-              "responseType": "ClusterServiceUpdateResponse",
-              "responseLongType": "ClusterServiceUpdateResponse",
-              "responseFullType": "api.v1.ClusterServiceUpdateResponse",
-              "responseStreaming": false
-            },
-            {
-              "name": "GetCredentials",
-              "description": "",
-              "requestType": "ClusterServiceGetCredentialsRequest",
-              "requestLongType": "ClusterServiceGetCredentialsRequest",
-              "requestFullType": "api.v1.ClusterServiceGetCredentialsRequest",
-              "requestStreaming": false,
-              "responseType": "ClusterServiceGetCredentialsResponse",
-              "responseLongType": "ClusterServiceGetCredentialsResponse",
-              "responseFullType": "api.v1.ClusterServiceGetCredentialsResponse",
               "responseStreaming": false
             }
           ]

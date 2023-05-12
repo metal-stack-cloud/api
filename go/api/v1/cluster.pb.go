@@ -567,8 +567,9 @@ type ClusterServiceGetCredentialsRequest struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Uuid    string `protobuf:"bytes,1,opt,name=uuid,proto3" json:"uuid,omitempty"`
-	Project string `protobuf:"bytes,2,opt,name=project,proto3" json:"project,omitempty"`
+	Uuid       string               `protobuf:"bytes,1,opt,name=uuid,proto3" json:"uuid,omitempty"`
+	Project    string               `protobuf:"bytes,2,opt,name=project,proto3" json:"project,omitempty"`
+	Expiration *durationpb.Duration `protobuf:"bytes,4,opt,name=expiration,proto3,oneof" json:"expiration,omitempty"`
 }
 
 func (x *ClusterServiceGetCredentialsRequest) Reset() {
@@ -615,6 +616,13 @@ func (x *ClusterServiceGetCredentialsRequest) GetProject() string {
 		return x.Project
 	}
 	return ""
+}
+
+func (x *ClusterServiceGetCredentialsRequest) GetExpiration() *durationpb.Duration {
+	if x != nil {
+		return x.Expiration
+	}
+	return nil
 }
 
 type ClusterServiceListRequest struct {
@@ -1581,13 +1589,18 @@ var file_api_v1_cluster_proto_rawDesc = []byte{
 	0x72, 0x03, 0xb0, 0x01, 0x01, 0x52, 0x04, 0x75, 0x75, 0x69, 0x64, 0x12, 0x24, 0x0a, 0x07, 0x70,
 	0x72, 0x6f, 0x6a, 0x65, 0x63, 0x74, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x42, 0x0a, 0xfa, 0x42,
 	0x07, 0x72, 0x05, 0x10, 0x02, 0x18, 0x80, 0x01, 0x52, 0x07, 0x70, 0x72, 0x6f, 0x6a, 0x65, 0x63,
-	0x74, 0x22, 0x69, 0x0a, 0x23, 0x43, 0x6c, 0x75, 0x73, 0x74, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76,
-	0x69, 0x63, 0x65, 0x47, 0x65, 0x74, 0x43, 0x72, 0x65, 0x64, 0x65, 0x6e, 0x74, 0x69, 0x61, 0x6c,
-	0x73, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x1c, 0x0a, 0x04, 0x75, 0x75, 0x69, 0x64,
-	0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x42, 0x08, 0xfa, 0x42, 0x05, 0x72, 0x03, 0xb0, 0x01, 0x01,
-	0x52, 0x04, 0x75, 0x75, 0x69, 0x64, 0x12, 0x24, 0x0a, 0x07, 0x70, 0x72, 0x6f, 0x6a, 0x65, 0x63,
-	0x74, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x42, 0x0a, 0xfa, 0x42, 0x07, 0x72, 0x05, 0x10, 0x02,
-	0x18, 0x80, 0x01, 0x52, 0x07, 0x70, 0x72, 0x6f, 0x6a, 0x65, 0x63, 0x74, 0x22, 0x41, 0x0a, 0x19,
+	0x74, 0x22, 0xb8, 0x01, 0x0a, 0x23, 0x43, 0x6c, 0x75, 0x73, 0x74, 0x65, 0x72, 0x53, 0x65, 0x72,
+	0x76, 0x69, 0x63, 0x65, 0x47, 0x65, 0x74, 0x43, 0x72, 0x65, 0x64, 0x65, 0x6e, 0x74, 0x69, 0x61,
+	0x6c, 0x73, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x1c, 0x0a, 0x04, 0x75, 0x75, 0x69,
+	0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x42, 0x08, 0xfa, 0x42, 0x05, 0x72, 0x03, 0xb0, 0x01,
+	0x01, 0x52, 0x04, 0x75, 0x75, 0x69, 0x64, 0x12, 0x24, 0x0a, 0x07, 0x70, 0x72, 0x6f, 0x6a, 0x65,
+	0x63, 0x74, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x42, 0x0a, 0xfa, 0x42, 0x07, 0x72, 0x05, 0x10,
+	0x02, 0x18, 0x80, 0x01, 0x52, 0x07, 0x70, 0x72, 0x6f, 0x6a, 0x65, 0x63, 0x74, 0x12, 0x3e, 0x0a,
+	0x0a, 0x65, 0x78, 0x70, 0x69, 0x72, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x18, 0x04, 0x20, 0x01, 0x28,
+	0x0b, 0x32, 0x19, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f,
+	0x62, 0x75, 0x66, 0x2e, 0x44, 0x75, 0x72, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x48, 0x00, 0x52, 0x0a,
+	0x65, 0x78, 0x70, 0x69, 0x72, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x88, 0x01, 0x01, 0x42, 0x0d, 0x0a,
+	0x0b, 0x5f, 0x65, 0x78, 0x70, 0x69, 0x72, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x22, 0x41, 0x0a, 0x19,
 	0x43, 0x6c, 0x75, 0x73, 0x74, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x4c, 0x69,
 	0x73, 0x74, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x24, 0x0a, 0x07, 0x70, 0x72, 0x6f,
 	0x6a, 0x65, 0x63, 0x74, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x42, 0x0a, 0xfa, 0x42, 0x07, 0x72,
@@ -1817,39 +1830,40 @@ var file_api_v1_cluster_proto_depIdxs = []int32{
 	3,  // 7: api.v1.Maintenance.time_window:type_name -> api.v1.MaintenanceTimeWindow
 	22, // 8: api.v1.MaintenanceTimeWindow.begin:type_name -> google.protobuf.Timestamp
 	23, // 9: api.v1.MaintenanceTimeWindow.duration:type_name -> google.protobuf.Duration
-	1,  // 10: api.v1.ClusterServiceCreateRequest.kubernetes:type_name -> api.v1.KubernetesSpec
-	4,  // 11: api.v1.ClusterServiceCreateRequest.workers:type_name -> api.v1.Worker
-	2,  // 12: api.v1.ClusterServiceCreateRequest.maintenance:type_name -> api.v1.Maintenance
-	1,  // 13: api.v1.ClusterServiceUpdateRequest.kubernetes:type_name -> api.v1.KubernetesSpec
-	5,  // 14: api.v1.ClusterServiceUpdateRequest.workers:type_name -> api.v1.WorkerUpdate
-	2,  // 15: api.v1.ClusterServiceUpdateRequest.maintenance:type_name -> api.v1.Maintenance
-	14, // 16: api.v1.ClusterStatus.last_errors:type_name -> api.v1.ClusterStatusLastError
-	22, // 17: api.v1.ClusterStatusLastError.last_update_time:type_name -> google.protobuf.Timestamp
-	0,  // 18: api.v1.ClusterServiceCreateResponse.cluster:type_name -> api.v1.Cluster
-	0,  // 19: api.v1.ClusterServiceGetResponse.cluster:type_name -> api.v1.Cluster
-	0,  // 20: api.v1.ClusterServiceDeleteResponse.cluster:type_name -> api.v1.Cluster
-	0,  // 21: api.v1.ClusterServiceUpdateResponse.cluster:type_name -> api.v1.Cluster
-	0,  // 22: api.v1.ClusterServiceListResponse.clusters:type_name -> api.v1.Cluster
-	13, // 23: api.v1.ClusterServiceWatchStatusResponse.status:type_name -> api.v1.ClusterStatus
-	9,  // 24: api.v1.ClusterService.Create:input_type -> api.v1.ClusterServiceCreateRequest
-	6,  // 25: api.v1.ClusterService.Get:input_type -> api.v1.ClusterServiceGetRequest
-	8,  // 26: api.v1.ClusterService.List:input_type -> api.v1.ClusterServiceListRequest
-	12, // 27: api.v1.ClusterService.WatchStatus:input_type -> api.v1.ClusterServiceWatchStatusRequest
-	11, // 28: api.v1.ClusterService.Delete:input_type -> api.v1.ClusterServiceDeleteRequest
-	10, // 29: api.v1.ClusterService.Update:input_type -> api.v1.ClusterServiceUpdateRequest
-	7,  // 30: api.v1.ClusterService.GetCredentials:input_type -> api.v1.ClusterServiceGetCredentialsRequest
-	15, // 31: api.v1.ClusterService.Create:output_type -> api.v1.ClusterServiceCreateResponse
-	16, // 32: api.v1.ClusterService.Get:output_type -> api.v1.ClusterServiceGetResponse
-	20, // 33: api.v1.ClusterService.List:output_type -> api.v1.ClusterServiceListResponse
-	21, // 34: api.v1.ClusterService.WatchStatus:output_type -> api.v1.ClusterServiceWatchStatusResponse
-	18, // 35: api.v1.ClusterService.Delete:output_type -> api.v1.ClusterServiceDeleteResponse
-	19, // 36: api.v1.ClusterService.Update:output_type -> api.v1.ClusterServiceUpdateResponse
-	17, // 37: api.v1.ClusterService.GetCredentials:output_type -> api.v1.ClusterServiceGetCredentialsResponse
-	31, // [31:38] is the sub-list for method output_type
-	24, // [24:31] is the sub-list for method input_type
-	24, // [24:24] is the sub-list for extension type_name
-	24, // [24:24] is the sub-list for extension extendee
-	0,  // [0:24] is the sub-list for field type_name
+	23, // 10: api.v1.ClusterServiceGetCredentialsRequest.expiration:type_name -> google.protobuf.Duration
+	1,  // 11: api.v1.ClusterServiceCreateRequest.kubernetes:type_name -> api.v1.KubernetesSpec
+	4,  // 12: api.v1.ClusterServiceCreateRequest.workers:type_name -> api.v1.Worker
+	2,  // 13: api.v1.ClusterServiceCreateRequest.maintenance:type_name -> api.v1.Maintenance
+	1,  // 14: api.v1.ClusterServiceUpdateRequest.kubernetes:type_name -> api.v1.KubernetesSpec
+	5,  // 15: api.v1.ClusterServiceUpdateRequest.workers:type_name -> api.v1.WorkerUpdate
+	2,  // 16: api.v1.ClusterServiceUpdateRequest.maintenance:type_name -> api.v1.Maintenance
+	14, // 17: api.v1.ClusterStatus.last_errors:type_name -> api.v1.ClusterStatusLastError
+	22, // 18: api.v1.ClusterStatusLastError.last_update_time:type_name -> google.protobuf.Timestamp
+	0,  // 19: api.v1.ClusterServiceCreateResponse.cluster:type_name -> api.v1.Cluster
+	0,  // 20: api.v1.ClusterServiceGetResponse.cluster:type_name -> api.v1.Cluster
+	0,  // 21: api.v1.ClusterServiceDeleteResponse.cluster:type_name -> api.v1.Cluster
+	0,  // 22: api.v1.ClusterServiceUpdateResponse.cluster:type_name -> api.v1.Cluster
+	0,  // 23: api.v1.ClusterServiceListResponse.clusters:type_name -> api.v1.Cluster
+	13, // 24: api.v1.ClusterServiceWatchStatusResponse.status:type_name -> api.v1.ClusterStatus
+	9,  // 25: api.v1.ClusterService.Create:input_type -> api.v1.ClusterServiceCreateRequest
+	6,  // 26: api.v1.ClusterService.Get:input_type -> api.v1.ClusterServiceGetRequest
+	8,  // 27: api.v1.ClusterService.List:input_type -> api.v1.ClusterServiceListRequest
+	12, // 28: api.v1.ClusterService.WatchStatus:input_type -> api.v1.ClusterServiceWatchStatusRequest
+	11, // 29: api.v1.ClusterService.Delete:input_type -> api.v1.ClusterServiceDeleteRequest
+	10, // 30: api.v1.ClusterService.Update:input_type -> api.v1.ClusterServiceUpdateRequest
+	7,  // 31: api.v1.ClusterService.GetCredentials:input_type -> api.v1.ClusterServiceGetCredentialsRequest
+	15, // 32: api.v1.ClusterService.Create:output_type -> api.v1.ClusterServiceCreateResponse
+	16, // 33: api.v1.ClusterService.Get:output_type -> api.v1.ClusterServiceGetResponse
+	20, // 34: api.v1.ClusterService.List:output_type -> api.v1.ClusterServiceListResponse
+	21, // 35: api.v1.ClusterService.WatchStatus:output_type -> api.v1.ClusterServiceWatchStatusResponse
+	18, // 36: api.v1.ClusterService.Delete:output_type -> api.v1.ClusterServiceDeleteResponse
+	19, // 37: api.v1.ClusterService.Update:output_type -> api.v1.ClusterServiceUpdateResponse
+	17, // 38: api.v1.ClusterService.GetCredentials:output_type -> api.v1.ClusterServiceGetCredentialsResponse
+	32, // [32:39] is the sub-list for method output_type
+	25, // [25:32] is the sub-list for method input_type
+	25, // [25:25] is the sub-list for extension type_name
+	25, // [25:25] is the sub-list for extension extendee
+	0,  // [0:25] is the sub-list for field type_name
 }
 
 func init() { file_api_v1_cluster_proto_init() }
@@ -2127,6 +2141,7 @@ func file_api_v1_cluster_proto_init() {
 	file_api_v1_cluster_proto_msgTypes[0].OneofWrappers = []interface{}{}
 	file_api_v1_cluster_proto_msgTypes[2].OneofWrappers = []interface{}{}
 	file_api_v1_cluster_proto_msgTypes[5].OneofWrappers = []interface{}{}
+	file_api_v1_cluster_proto_msgTypes[7].OneofWrappers = []interface{}{}
 	file_api_v1_cluster_proto_msgTypes[10].OneofWrappers = []interface{}{}
 	file_api_v1_cluster_proto_msgTypes[12].OneofWrappers = []interface{}{}
 	file_api_v1_cluster_proto_msgTypes[14].OneofWrappers = []interface{}{}
