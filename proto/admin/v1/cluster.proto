@@ -29,9 +29,7 @@ message ClusterServiceGetRequest {
   string uuid = 1 [(validate.rules).string.uuid = true];
   bool with_machines = 2;
 }
-message ClusterServiceLogsRequest {
-  string uuid = 1 [(validate.rules).string.uuid = true];
-}
+
 message ClusterServiceListRequest {
   optional string uuid = 1;
   optional string project = 2;
@@ -49,6 +47,7 @@ message ClusterServiceCredentialsRequest {
   bool with_ssh = 3;
   optional google.protobuf.Duration expiration = 4;
 }
+
 message ClusterServiceOperateRequest {
   string uuid = 1 [(validate.rules).string.uuid = true];
   Operate operate = 2;
@@ -58,20 +57,21 @@ message ClusterServiceGetResponse {
   api.v1.Cluster cluster = 1;
   repeated admin.v1.Machine machines = 2;
 }
-message ClusterServiceLogsResponse {
-  repeated string log = 1;
-}
+
 message ClusterServiceListResponse {
   repeated api.v1.Cluster clusters = 1;
 }
+
 message ClusterServiceCredentialsResponse {
   string kubeconfig = 1;
   SSHKeyPair ssh_keypair = 2;
   admin.v1.VPN vpn = 3;
 }
+
 message ClusterServiceOperateResponse {
   api.v1.Cluster cluster = 1;
 }
+
 enum Operate {
   OPERATE_UNSPECIFIED = 0;
   OPERATE_RECONCILE = 1;

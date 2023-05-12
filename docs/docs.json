@@ -2646,62 +2646,6 @@
           ]
         },
         {
-          "name": "ClusterServiceLogsRequest",
-          "longName": "ClusterServiceLogsRequest",
-          "fullName": "admin.v1.ClusterServiceLogsRequest",
-          "description": "",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "uuid",
-              "description": "",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.uuid",
-                    "value": true
-                  }
-                ]
-              }
-            }
-          ]
-        },
-        {
-          "name": "ClusterServiceLogsResponse",
-          "longName": "ClusterServiceLogsResponse",
-          "fullName": "admin.v1.ClusterServiceLogsResponse",
-          "description": "",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "log",
-              "description": "",
-              "label": "repeated",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            }
-          ]
-        },
-        {
           "name": "ClusterServiceOperateRequest",
           "longName": "ClusterServiceOperateRequest",
           "fullName": "admin.v1.ClusterServiceOperateRequest",

@@ -45,23 +45,6 @@ export declare class ClusterServiceGetRequest extends Message<ClusterServiceGetR
     static equals(a: ClusterServiceGetRequest | PlainMessage<ClusterServiceGetRequest> | undefined, b: ClusterServiceGetRequest | PlainMessage<ClusterServiceGetRequest> | undefined): boolean;
 }
 /**
- * @generated from message admin.v1.ClusterServiceLogsRequest
- */
-export declare class ClusterServiceLogsRequest extends Message<ClusterServiceLogsRequest> {
-    /**
-     * @generated from field: string uuid = 1;
-     */
-    uuid: string;
-    constructor(data?: PartialMessage<ClusterServiceLogsRequest>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "admin.v1.ClusterServiceLogsRequest";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ClusterServiceLogsRequest;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ClusterServiceLogsRequest;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ClusterServiceLogsRequest;
-    static equals(a: ClusterServiceLogsRequest | PlainMessage<ClusterServiceLogsRequest> | undefined, b: ClusterServiceLogsRequest | PlainMessage<ClusterServiceLogsRequest> | undefined): boolean;
-}
-/**
  * @generated from message admin.v1.ClusterServiceListRequest
  */
 export declare class ClusterServiceListRequest extends Message<ClusterServiceListRequest> {
@@ -178,23 +161,6 @@ export declare class ClusterServiceGetResponse extends Message<ClusterServiceGet
     static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ClusterServiceGetResponse;
     static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ClusterServiceGetResponse;
     static equals(a: ClusterServiceGetResponse | PlainMessage<ClusterServiceGetResponse> | undefined, b: ClusterServiceGetResponse | PlainMessage<ClusterServiceGetResponse> | undefined): boolean;
-}
-/**
- * @generated from message admin.v1.ClusterServiceLogsResponse
- */
-export declare class ClusterServiceLogsResponse extends Message<ClusterServiceLogsResponse> {
-    /**
-     * @generated from field: repeated string log = 1;
-     */
-    log: string[];
-    constructor(data?: PartialMessage<ClusterServiceLogsResponse>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "admin.v1.ClusterServiceLogsResponse";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ClusterServiceLogsResponse;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ClusterServiceLogsResponse;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ClusterServiceLogsResponse;
-    static equals(a: ClusterServiceLogsResponse | PlainMessage<ClusterServiceLogsResponse> | undefined, b: ClusterServiceLogsResponse | PlainMessage<ClusterServiceLogsResponse> | undefined): boolean;
 }
 /**
  * @generated from message admin.v1.ClusterServiceListResponse

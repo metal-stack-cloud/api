@@ -4,7 +4,7 @@
 /* eslint-disable */
 // @ts-nocheck
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.SSHKeyPair = exports.ClusterServiceOperateResponse = exports.ClusterServiceCredentialsResponse = exports.ClusterServiceListResponse = exports.ClusterServiceLogsResponse = exports.ClusterServiceGetResponse = exports.ClusterServiceOperateRequest = exports.ClusterServiceCredentialsRequest = exports.ClusterServiceListRequest = exports.ClusterServiceLogsRequest = exports.ClusterServiceGetRequest = exports.Operate = void 0;
+exports.SSHKeyPair = exports.ClusterServiceOperateResponse = exports.ClusterServiceCredentialsResponse = exports.ClusterServiceListResponse = exports.ClusterServiceGetResponse = exports.ClusterServiceOperateRequest = exports.ClusterServiceCredentialsRequest = exports.ClusterServiceListRequest = exports.ClusterServiceGetRequest = exports.Operate = void 0;
 const protobuf_1 = require("@bufbuild/protobuf");
 const cluster_pb_js_1 = require("../../api/v1/cluster_pb.js");
 const machine_pb_js_1 = require("./machine_pb.js");
@@ -73,37 +73,6 @@ ClusterServiceGetRequest.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 2, name: "with_machines", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
 ]);
 exports.ClusterServiceGetRequest = ClusterServiceGetRequest;
-/**
- * @generated from message admin.v1.ClusterServiceLogsRequest
- */
-class ClusterServiceLogsRequest extends protobuf_1.Message {
-    constructor(data) {
-        super();
-        /**
-         * @generated from field: string uuid = 1;
-         */
-        this.uuid = "";
-        protobuf_1.proto3.util.initPartial(data, this);
-    }
-    static fromBinary(bytes, options) {
-        return new ClusterServiceLogsRequest().fromBinary(bytes, options);
-    }
-    static fromJson(jsonValue, options) {
-        return new ClusterServiceLogsRequest().fromJson(jsonValue, options);
-    }
-    static fromJsonString(jsonString, options) {
-        return new ClusterServiceLogsRequest().fromJsonString(jsonString, options);
-    }
-    static equals(a, b) {
-        return protobuf_1.proto3.util.equals(ClusterServiceLogsRequest, a, b);
-    }
-}
-ClusterServiceLogsRequest.runtime = protobuf_1.proto3;
-ClusterServiceLogsRequest.typeName = "admin.v1.ClusterServiceLogsRequest";
-ClusterServiceLogsRequest.fields = protobuf_1.proto3.util.newFieldList(() => [
-    { no: 1, name: "uuid", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-]);
-exports.ClusterServiceLogsRequest = ClusterServiceLogsRequest;
 /**
  * @generated from message admin.v1.ClusterServiceListRequest
  */
@@ -252,37 +221,6 @@ ClusterServiceGetResponse.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 2, name: "machines", kind: "message", T: machine_pb_js_1.Machine, repeated: true },
 ]);
 exports.ClusterServiceGetResponse = ClusterServiceGetResponse;
-/**
- * @generated from message admin.v1.ClusterServiceLogsResponse
- */
-class ClusterServiceLogsResponse extends protobuf_1.Message {
-    constructor(data) {
-        super();
-        /**
-         * @generated from field: repeated string log = 1;
-         */
-        this.log = [];
-        protobuf_1.proto3.util.initPartial(data, this);
-    }
-    static fromBinary(bytes, options) {
-        return new ClusterServiceLogsResponse().fromBinary(bytes, options);
-    }
-    static fromJson(jsonValue, options) {
-        return new ClusterServiceLogsResponse().fromJson(jsonValue, options);
-    }
-    static fromJsonString(jsonString, options) {
-        return new ClusterServiceLogsResponse().fromJsonString(jsonString, options);
-    }
-    static equals(a, b) {
-        return protobuf_1.proto3.util.equals(ClusterServiceLogsResponse, a, b);
-    }
-}
-ClusterServiceLogsResponse.runtime = protobuf_1.proto3;
-ClusterServiceLogsResponse.typeName = "admin.v1.ClusterServiceLogsResponse";
-ClusterServiceLogsResponse.fields = protobuf_1.proto3.util.newFieldList(() => [
-    { no: 1, name: "log", kind: "scalar", T: 9 /* ScalarType.STRING */, repeated: true },
-]);
-exports.ClusterServiceLogsResponse = ClusterServiceLogsResponse;
 /**
  * @generated from message admin.v1.ClusterServiceListResponse
  */
