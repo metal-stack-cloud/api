@@ -18,6 +18,7 @@ protolint:
 
 .PHONY: generate
 generate:
+	$(MAKE) -C go client
 	$(MAKE) -C go mocks
 
 .PHONY: test

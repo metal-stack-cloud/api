@@ -17,6 +17,9 @@ import (
 )
 
 //go:embed mock_client.tpl
+var mockClientTpl string
+
+//go:embed client.tpl
 var clientTpl string
 
 type api struct {
@@ -31,10 +34,18 @@ func main() {
 		panic(err)
 	}
 
-	err = writeTemplate("tests/mock_clients.go", clientTpl, svcs)
+	if len(os.Args) > 1 && os.Args[1] == "mocks" {
+		err = writeTemplate("tests/mock_clients.go", mockClientTpl, svcs)
+		if err != nil {
+			panic(err)
+		}
+		return
+	}
+	err = writeTemplate("client/client.go", clientTpl, svcs)
 	if err != nil {
 		panic(err)
 	}
+
 }
 
 func svcs(root string) (map[string]api, error) {

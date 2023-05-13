@@ -1,0 +1,195 @@
+// Code generated generate_mock_client.go. DO NOT EDIT.
+package client
+
+import (
+	compress "github.com/klauspost/connect-compress"
+
+	"github.com/metal-stack-cloud/api/go/admin/v1/adminv1connect"
+	"github.com/metal-stack-cloud/api/go/api/v1/apiv1connect"
+	"github.com/metal-stack-cloud/api/go/status/v1/statusv1connect"
+)
+
+type (
+	wrapper struct {
+		config DialConfig
+	}
+	adminv1 struct {
+		clusterservice adminv1connect.ClusterServiceClient
+		paymentservice adminv1connect.PaymentServiceClient
+		storageservice adminv1connect.StorageServiceClient
+		tenantservice  adminv1connect.TenantServiceClient
+	}
+
+	apiv1 struct {
+		assetservice    apiv1connect.AssetServiceClient
+		clusterservice  apiv1connect.ClusterServiceClient
+		healthservice   apiv1connect.HealthServiceClient
+		ipservice       apiv1connect.IPServiceClient
+		paymentservice  apiv1connect.PaymentServiceClient
+		tenantservice   apiv1connect.TenantServiceClient
+		tokenservice    apiv1connect.TokenServiceClient
+		versionservice  apiv1connect.VersionServiceClient
+		volumeservice   apiv1connect.VolumeServiceClient
+		snapshotservice apiv1connect.SnapshotServiceClient
+	}
+
+	statusv1 struct {
+		messageservice statusv1connect.MessageServiceClient
+		statusservice  statusv1connect.StatusServiceClient
+	}
+)
+
+func New(config DialConfig) *wrapper {
+	return &wrapper{
+		config: config,
+	}
+}
+
+func (w wrapper) Adminv1() *adminv1 {
+	a := &adminv1{
+		clusterservice: adminv1connect.NewClusterServiceClient(
+			w.config.HttpClient(),
+			w.config.BaseURL,
+			compress.WithAll(compress.LevelBalanced),
+		),
+		paymentservice: adminv1connect.NewPaymentServiceClient(
+			w.config.HttpClient(),
+			w.config.BaseURL,
+			compress.WithAll(compress.LevelBalanced),
+		),
+		storageservice: adminv1connect.NewStorageServiceClient(
+			w.config.HttpClient(),
+			w.config.BaseURL,
+			compress.WithAll(compress.LevelBalanced),
+		),
+		tenantservice: adminv1connect.NewTenantServiceClient(
+			w.config.HttpClient(),
+			w.config.BaseURL,
+			compress.WithAll(compress.LevelBalanced),
+		),
+	}
+	return a
+}
+
+func (c *adminv1) Cluster() adminv1connect.ClusterServiceClient {
+	return c.clusterservice
+}
+func (c *adminv1) Payment() adminv1connect.PaymentServiceClient {
+	return c.paymentservice
+}
+func (c *adminv1) Storage() adminv1connect.StorageServiceClient {
+	return c.storageservice
+}
+func (c *adminv1) Tenant() adminv1connect.TenantServiceClient {
+	return c.tenantservice
+}
+
+func (w wrapper) Apiv1() *apiv1 {
+	a := &apiv1{
+		assetservice: apiv1connect.NewAssetServiceClient(
+			w.config.HttpClient(),
+			w.config.BaseURL,
+			compress.WithAll(compress.LevelBalanced),
+		),
+		clusterservice: apiv1connect.NewClusterServiceClient(
+			w.config.HttpClient(),
+			w.config.BaseURL,
+			compress.WithAll(compress.LevelBalanced),
+		),
+		healthservice: apiv1connect.NewHealthServiceClient(
+			w.config.HttpClient(),
+			w.config.BaseURL,
+			compress.WithAll(compress.LevelBalanced),
+		),
+		ipservice: apiv1connect.NewIPServiceClient(
+			w.config.HttpClient(),
+			w.config.BaseURL,
+			compress.WithAll(compress.LevelBalanced),
+		),
+		paymentservice: apiv1connect.NewPaymentServiceClient(
+			w.config.HttpClient(),
+			w.config.BaseURL,
+			compress.WithAll(compress.LevelBalanced),
+		),
+		tenantservice: apiv1connect.NewTenantServiceClient(
+			w.config.HttpClient(),
+			w.config.BaseURL,
+			compress.WithAll(compress.LevelBalanced),
+		),
+		tokenservice: apiv1connect.NewTokenServiceClient(
+			w.config.HttpClient(),
+			w.config.BaseURL,
+			compress.WithAll(compress.LevelBalanced),
+		),
+		versionservice: apiv1connect.NewVersionServiceClient(
+			w.config.HttpClient(),
+			w.config.BaseURL,
+			compress.WithAll(compress.LevelBalanced),
+		),
+		volumeservice: apiv1connect.NewVolumeServiceClient(
+			w.config.HttpClient(),
+			w.config.BaseURL,
+			compress.WithAll(compress.LevelBalanced),
+		),
+		snapshotservice: apiv1connect.NewSnapshotServiceClient(
+			w.config.HttpClient(),
+			w.config.BaseURL,
+			compress.WithAll(compress.LevelBalanced),
+		),
+	}
+	return a
+}
+
+func (c *apiv1) Asset() apiv1connect.AssetServiceClient {
+	return c.assetservice
+}
+func (c *apiv1) Cluster() apiv1connect.ClusterServiceClient {
+	return c.clusterservice
+}
+func (c *apiv1) Health() apiv1connect.HealthServiceClient {
+	return c.healthservice
+}
+func (c *apiv1) IP() apiv1connect.IPServiceClient {
+	return c.ipservice
+}
+func (c *apiv1) Payment() apiv1connect.PaymentServiceClient {
+	return c.paymentservice
+}
+func (c *apiv1) Tenant() apiv1connect.TenantServiceClient {
+	return c.tenantservice
+}
+func (c *apiv1) Token() apiv1connect.TokenServiceClient {
+	return c.tokenservice
+}
+func (c *apiv1) Version() apiv1connect.VersionServiceClient {
+	return c.versionservice
+}
+func (c *apiv1) Volume() apiv1connect.VolumeServiceClient {
+	return c.volumeservice
+}
+func (c *apiv1) Snapshot() apiv1connect.SnapshotServiceClient {
+	return c.snapshotservice
+}
+
+func (w wrapper) Statusv1() *statusv1 {
+	a := &statusv1{
+		messageservice: statusv1connect.NewMessageServiceClient(
+			w.config.HttpClient(),
+			w.config.BaseURL,
+			compress.WithAll(compress.LevelBalanced),
+		),
+		statusservice: statusv1connect.NewStatusServiceClient(
+			w.config.HttpClient(),
+			w.config.BaseURL,
+			compress.WithAll(compress.LevelBalanced),
+		),
+	}
+	return a
+}
+
+func (c *statusv1) Message() statusv1connect.MessageServiceClient {
+	return c.messageservice
+}
+func (c *statusv1) Status() statusv1connect.StatusServiceClient {
+	return c.statusservice
+}
