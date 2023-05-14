@@ -14,6 +14,12 @@ type (
 		config DialConfig
 	}
 {{ range $name, $api := . -}}
+	{{ $name | title }} interface {
+{{ range $svc := $api.Services -}}
+	{{ $svc | trimSuffix "Service" }}() {{ $name }}connect.{{ $svc }}Client
+{{ end }}
+	}
+
     {{ $name }} struct {
 {{ range $svc := $api.Services -}}
 	{{ $svc | lower }} {{ $name }}connect.{{ $svc }}Client
@@ -30,7 +36,7 @@ func New(config DialConfig) *wrapper {
 }
 
 {{ range $name, $api := . -}}
-func (w wrapper) {{ $name | title }}() *{{ $name }} {
+func (w wrapper) {{ $name | title }}() {{ $name | title }} {
 	a := &{{ $name }}{
 {{ range $svc := $api.Services -}}
 	{{ $svc | lower }}:  {{ $name }}connect.New{{ $svc }}Client(

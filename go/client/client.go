@@ -13,11 +13,31 @@ type (
 	wrapper struct {
 		config DialConfig
 	}
+	Adminv1 interface {
+		Cluster() adminv1connect.ClusterServiceClient
+		Payment() adminv1connect.PaymentServiceClient
+		Storage() adminv1connect.StorageServiceClient
+		Tenant() adminv1connect.TenantServiceClient
+	}
+
 	adminv1 struct {
 		clusterservice adminv1connect.ClusterServiceClient
 		paymentservice adminv1connect.PaymentServiceClient
 		storageservice adminv1connect.StorageServiceClient
 		tenantservice  adminv1connect.TenantServiceClient
+	}
+
+	Apiv1 interface {
+		Asset() apiv1connect.AssetServiceClient
+		Cluster() apiv1connect.ClusterServiceClient
+		Health() apiv1connect.HealthServiceClient
+		IP() apiv1connect.IPServiceClient
+		Payment() apiv1connect.PaymentServiceClient
+		Tenant() apiv1connect.TenantServiceClient
+		Token() apiv1connect.TokenServiceClient
+		Version() apiv1connect.VersionServiceClient
+		Volume() apiv1connect.VolumeServiceClient
+		Snapshot() apiv1connect.SnapshotServiceClient
 	}
 
 	apiv1 struct {
@@ -33,6 +53,11 @@ type (
 		snapshotservice apiv1connect.SnapshotServiceClient
 	}
 
+	Statusv1 interface {
+		Message() statusv1connect.MessageServiceClient
+		Status() statusv1connect.StatusServiceClient
+	}
+
 	statusv1 struct {
 		messageservice statusv1connect.MessageServiceClient
 		statusservice  statusv1connect.StatusServiceClient
@@ -45,7 +70,7 @@ func New(config DialConfig) *wrapper {
 	}
 }
 
-func (w wrapper) Adminv1() *adminv1 {
+func (w wrapper) Adminv1() Adminv1 {
 	a := &adminv1{
 		clusterservice: adminv1connect.NewClusterServiceClient(
 			w.config.HttpClient(),
@@ -84,7 +109,7 @@ func (c *adminv1) Tenant() adminv1connect.TenantServiceClient {
 	return c.tenantservice
 }
 
-func (w wrapper) Apiv1() *apiv1 {
+func (w wrapper) Apiv1() Apiv1 {
 	a := &apiv1{
 		assetservice: apiv1connect.NewAssetServiceClient(
 			w.config.HttpClient(),
@@ -171,7 +196,7 @@ func (c *apiv1) Snapshot() apiv1connect.SnapshotServiceClient {
 	return c.snapshotservice
 }
 
-func (w wrapper) Statusv1() *statusv1 {
+func (w wrapper) Statusv1() Statusv1 {
 	a := &statusv1{
 		messageservice: statusv1connect.NewMessageServiceClient(
 			w.config.HttpClient(),
