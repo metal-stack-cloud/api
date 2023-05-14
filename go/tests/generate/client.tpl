@@ -10,7 +10,7 @@ import (
 )
 
 type (
-	Client struct {
+	client struct {
 		config DialConfig
 	}
 {{ range $name, $api := . -}}
@@ -29,14 +29,14 @@ type (
 {{ end }}
 )
 
-func New(config DialConfig) *Client {
-	return &Client{
+func New(config DialConfig) *client {
+	return &client{
 		config: config,
 	}
 }
 
 {{ range $name, $api := . -}}
-func (c Client) {{ $name | title }}() {{ $name | title }} {
+func (c client) {{ $name | title }}() {{ $name | title }} {
 	a := &{{ $name }}{
 {{ range $svc := $api.Services -}}
 	{{ $svc | lower }}:  {{ $name }}connect.New{{ $svc }}Client(

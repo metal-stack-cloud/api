@@ -10,7 +10,7 @@ import (
 )
 
 type (
-	Client struct {
+	client struct {
 		config DialConfig
 	}
 	Adminv1 interface {
@@ -64,13 +64,13 @@ type (
 	}
 )
 
-func New(config DialConfig) *Client {
-	return &Client{
+func New(config DialConfig) *client {
+	return &client{
 		config: config,
 	}
 }
 
-func (c Client) Adminv1() Adminv1 {
+func (c client) Adminv1() Adminv1 {
 	a := &adminv1{
 		clusterservice: adminv1connect.NewClusterServiceClient(
 			c.config.HttpClient(),
@@ -109,7 +109,7 @@ func (c *adminv1) Tenant() adminv1connect.TenantServiceClient {
 	return c.tenantservice
 }
 
-func (c Client) Apiv1() Apiv1 {
+func (c client) Apiv1() Apiv1 {
 	a := &apiv1{
 		assetservice: apiv1connect.NewAssetServiceClient(
 			c.config.HttpClient(),
@@ -196,7 +196,7 @@ func (c *apiv1) Snapshot() apiv1connect.SnapshotServiceClient {
 	return c.snapshotservice
 }
 
-func (c Client) Statusv1() Statusv1 {
+func (c client) Statusv1() Statusv1 {
 	a := &statusv1{
 		messageservice: statusv1connect.NewMessageServiceClient(
 			c.config.HttpClient(),
