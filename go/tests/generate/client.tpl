@@ -10,7 +10,7 @@ import (
 )
 
 type (
-	wrapper struct {
+	Client struct {
 		config DialConfig
 	}
 {{ range $name, $api := . -}}
@@ -29,19 +29,19 @@ type (
 {{ end }}
 )
 
-func New(config DialConfig) *wrapper {
-	return &wrapper{
+func New(config DialConfig) *Client {
+	return &Client{
 		config: config,
 	}
 }
 
 {{ range $name, $api := . -}}
-func (w wrapper) {{ $name | title }}() {{ $name | title }} {
+func (c Client) {{ $name | title }}() {{ $name | title }} {
 	a := &{{ $name }}{
 {{ range $svc := $api.Services -}}
 	{{ $svc | lower }}:  {{ $name }}connect.New{{ $svc }}Client(
-		w.config.HttpClient(),
-		w.config.BaseURL,
+		c.config.HttpClient(),
+		c.config.BaseURL,
 		compress.WithAll(compress.LevelBalanced),
 	),
 {{ end }}

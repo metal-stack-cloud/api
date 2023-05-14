@@ -10,7 +10,7 @@ import (
 )
 
 type (
-	wrapper struct {
+	Client struct {
 		config DialConfig
 	}
 	Adminv1 interface {
@@ -64,32 +64,32 @@ type (
 	}
 )
 
-func New(config DialConfig) *wrapper {
-	return &wrapper{
+func New(config DialConfig) *Client {
+	return &Client{
 		config: config,
 	}
 }
 
-func (w wrapper) Adminv1() Adminv1 {
+func (c Client) Adminv1() Adminv1 {
 	a := &adminv1{
 		clusterservice: adminv1connect.NewClusterServiceClient(
-			w.config.HttpClient(),
-			w.config.BaseURL,
+			c.config.HttpClient(),
+			c.config.BaseURL,
 			compress.WithAll(compress.LevelBalanced),
 		),
 		paymentservice: adminv1connect.NewPaymentServiceClient(
-			w.config.HttpClient(),
-			w.config.BaseURL,
+			c.config.HttpClient(),
+			c.config.BaseURL,
 			compress.WithAll(compress.LevelBalanced),
 		),
 		storageservice: adminv1connect.NewStorageServiceClient(
-			w.config.HttpClient(),
-			w.config.BaseURL,
+			c.config.HttpClient(),
+			c.config.BaseURL,
 			compress.WithAll(compress.LevelBalanced),
 		),
 		tenantservice: adminv1connect.NewTenantServiceClient(
-			w.config.HttpClient(),
-			w.config.BaseURL,
+			c.config.HttpClient(),
+			c.config.BaseURL,
 			compress.WithAll(compress.LevelBalanced),
 		),
 	}
@@ -109,56 +109,56 @@ func (c *adminv1) Tenant() adminv1connect.TenantServiceClient {
 	return c.tenantservice
 }
 
-func (w wrapper) Apiv1() Apiv1 {
+func (c Client) Apiv1() Apiv1 {
 	a := &apiv1{
 		assetservice: apiv1connect.NewAssetServiceClient(
-			w.config.HttpClient(),
-			w.config.BaseURL,
+			c.config.HttpClient(),
+			c.config.BaseURL,
 			compress.WithAll(compress.LevelBalanced),
 		),
 		clusterservice: apiv1connect.NewClusterServiceClient(
-			w.config.HttpClient(),
-			w.config.BaseURL,
+			c.config.HttpClient(),
+			c.config.BaseURL,
 			compress.WithAll(compress.LevelBalanced),
 		),
 		healthservice: apiv1connect.NewHealthServiceClient(
-			w.config.HttpClient(),
-			w.config.BaseURL,
+			c.config.HttpClient(),
+			c.config.BaseURL,
 			compress.WithAll(compress.LevelBalanced),
 		),
 		ipservice: apiv1connect.NewIPServiceClient(
-			w.config.HttpClient(),
-			w.config.BaseURL,
+			c.config.HttpClient(),
+			c.config.BaseURL,
 			compress.WithAll(compress.LevelBalanced),
 		),
 		paymentservice: apiv1connect.NewPaymentServiceClient(
-			w.config.HttpClient(),
-			w.config.BaseURL,
+			c.config.HttpClient(),
+			c.config.BaseURL,
 			compress.WithAll(compress.LevelBalanced),
 		),
 		tenantservice: apiv1connect.NewTenantServiceClient(
-			w.config.HttpClient(),
-			w.config.BaseURL,
+			c.config.HttpClient(),
+			c.config.BaseURL,
 			compress.WithAll(compress.LevelBalanced),
 		),
 		tokenservice: apiv1connect.NewTokenServiceClient(
-			w.config.HttpClient(),
-			w.config.BaseURL,
+			c.config.HttpClient(),
+			c.config.BaseURL,
 			compress.WithAll(compress.LevelBalanced),
 		),
 		versionservice: apiv1connect.NewVersionServiceClient(
-			w.config.HttpClient(),
-			w.config.BaseURL,
+			c.config.HttpClient(),
+			c.config.BaseURL,
 			compress.WithAll(compress.LevelBalanced),
 		),
 		volumeservice: apiv1connect.NewVolumeServiceClient(
-			w.config.HttpClient(),
-			w.config.BaseURL,
+			c.config.HttpClient(),
+			c.config.BaseURL,
 			compress.WithAll(compress.LevelBalanced),
 		),
 		snapshotservice: apiv1connect.NewSnapshotServiceClient(
-			w.config.HttpClient(),
-			w.config.BaseURL,
+			c.config.HttpClient(),
+			c.config.BaseURL,
 			compress.WithAll(compress.LevelBalanced),
 		),
 	}
@@ -196,16 +196,16 @@ func (c *apiv1) Snapshot() apiv1connect.SnapshotServiceClient {
 	return c.snapshotservice
 }
 
-func (w wrapper) Statusv1() Statusv1 {
+func (c Client) Statusv1() Statusv1 {
 	a := &statusv1{
 		messageservice: statusv1connect.NewMessageServiceClient(
-			w.config.HttpClient(),
-			w.config.BaseURL,
+			c.config.HttpClient(),
+			c.config.BaseURL,
 			compress.WithAll(compress.LevelBalanced),
 		),
 		statusservice: statusv1connect.NewStatusServiceClient(
-			w.config.HttpClient(),
-			w.config.BaseURL,
+			c.config.HttpClient(),
+			c.config.BaseURL,
 			compress.WithAll(compress.LevelBalanced),
 		),
 	}
