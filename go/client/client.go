@@ -1,4 +1,4 @@
-// Code generated generate_mock_client.go. DO NOT EDIT.
+// Code generated generate_clients.go. DO NOT EDIT.
 package client
 
 import (
