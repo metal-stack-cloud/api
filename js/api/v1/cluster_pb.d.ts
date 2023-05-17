@@ -475,6 +475,31 @@ export declare class ClusterStatusLastError extends Message<ClusterStatusLastErr
     static equals(a: ClusterStatusLastError | PlainMessage<ClusterStatusLastError> | undefined, b: ClusterStatusLastError | PlainMessage<ClusterStatusLastError> | undefined): boolean;
 }
 /**
+ * @generated from message api.v1.ClusterMonitoring
+ */
+export declare class ClusterMonitoring extends Message<ClusterMonitoring> {
+    /**
+     * @generated from field: string username = 1;
+     */
+    username: string;
+    /**
+     * @generated from field: string password = 2;
+     */
+    password: string;
+    /**
+     * @generated from field: string endpoint = 3;
+     */
+    endpoint: string;
+    constructor(data?: PartialMessage<ClusterMonitoring>);
+    static readonly runtime: typeof proto3;
+    static readonly typeName = "api.v1.ClusterMonitoring";
+    static readonly fields: FieldList;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ClusterMonitoring;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ClusterMonitoring;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ClusterMonitoring;
+    static equals(a: ClusterMonitoring | PlainMessage<ClusterMonitoring> | undefined, b: ClusterMonitoring | PlainMessage<ClusterMonitoring> | undefined): boolean;
+}
+/**
  * Responses
  *
  * @generated from message api.v1.ClusterServiceCreateResponse
@@ -518,6 +543,10 @@ export declare class ClusterServiceGetCredentialsResponse extends Message<Cluste
      * @generated from field: string kubeconfig = 1;
      */
     kubeconfig: string;
+    /**
+     * @generated from field: api.v1.ClusterMonitoring monitoring = 2;
+     */
+    monitoring?: ClusterMonitoring;
     constructor(data?: PartialMessage<ClusterServiceGetCredentialsResponse>);
     static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.ClusterServiceGetCredentialsResponse";

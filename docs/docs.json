@@ -894,6 +894,54 @@
           ]
         },
         {
+          "name": "ClusterMonitoring",
+          "longName": "ClusterMonitoring",
+          "fullName": "api.v1.ClusterMonitoring",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "username",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "password",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "endpoint",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
           "name": "ClusterServiceCreateRequest",
           "longName": "ClusterServiceCreateRequest",
           "fullName": "api.v1.ClusterServiceCreateRequest",
@@ -1194,6 +1242,18 @@
               "type": "string",
               "longType": "string",
               "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "monitoring",
+              "description": "",
+              "label": "",
+              "type": "ClusterMonitoring",
+              "longType": "ClusterMonitoring",
+              "fullType": "api.v1.ClusterMonitoring",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
