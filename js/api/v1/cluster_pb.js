@@ -4,7 +4,7 @@
 /* eslint-disable */
 // @ts-nocheck
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ClusterServiceWatchStatusResponse = exports.ClusterServiceListResponse = exports.ClusterServiceUpdateResponse = exports.ClusterServiceDeleteResponse = exports.ClusterServiceGetCredentialsResponse = exports.ClusterServiceGetResponse = exports.ClusterServiceCreateResponse = exports.ClusterStatusLastError = exports.ClusterStatus = exports.ClusterServiceWatchStatusRequest = exports.ClusterServiceDeleteRequest = exports.ClusterServiceUpdateRequest = exports.ClusterServiceCreateRequest = exports.ClusterServiceListRequest = exports.ClusterServiceGetCredentialsRequest = exports.ClusterServiceGetRequest = exports.WorkerUpdate = exports.Worker = exports.MaintenanceTimeWindow = exports.Maintenance = exports.KubernetesSpec = exports.Cluster = void 0;
+exports.ClusterServiceWatchStatusResponse = exports.ClusterServiceListResponse = exports.ClusterServiceUpdateResponse = exports.ClusterServiceDeleteResponse = exports.ClusterServiceGetCredentialsResponse = exports.ClusterServiceGetResponse = exports.ClusterServiceCreateResponse = exports.ClusterMonitoring = exports.ClusterStatusLastError = exports.ClusterStatus = exports.ClusterServiceWatchStatusRequest = exports.ClusterServiceDeleteRequest = exports.ClusterServiceUpdateRequest = exports.ClusterServiceCreateRequest = exports.ClusterServiceListRequest = exports.ClusterServiceGetCredentialsRequest = exports.ClusterServiceGetRequest = exports.WorkerUpdate = exports.Worker = exports.MaintenanceTimeWindow = exports.Maintenance = exports.KubernetesSpec = exports.Cluster = void 0;
 const protobuf_1 = require("@bufbuild/protobuf");
 /**
  * Types
@@ -635,6 +635,47 @@ ClusterStatusLastError.fields = protobuf_1.proto3.util.newFieldList(() => [
 ]);
 exports.ClusterStatusLastError = ClusterStatusLastError;
 /**
+ * @generated from message api.v1.ClusterMonitoring
+ */
+class ClusterMonitoring extends protobuf_1.Message {
+    constructor(data) {
+        super();
+        /**
+         * @generated from field: string username = 1;
+         */
+        this.username = "";
+        /**
+         * @generated from field: string password = 2;
+         */
+        this.password = "";
+        /**
+         * @generated from field: string endpoint = 3;
+         */
+        this.endpoint = "";
+        protobuf_1.proto3.util.initPartial(data, this);
+    }
+    static fromBinary(bytes, options) {
+        return new ClusterMonitoring().fromBinary(bytes, options);
+    }
+    static fromJson(jsonValue, options) {
+        return new ClusterMonitoring().fromJson(jsonValue, options);
+    }
+    static fromJsonString(jsonString, options) {
+        return new ClusterMonitoring().fromJsonString(jsonString, options);
+    }
+    static equals(a, b) {
+        return protobuf_1.proto3.util.equals(ClusterMonitoring, a, b);
+    }
+}
+ClusterMonitoring.runtime = protobuf_1.proto3;
+ClusterMonitoring.typeName = "api.v1.ClusterMonitoring";
+ClusterMonitoring.fields = protobuf_1.proto3.util.newFieldList(() => [
+    { no: 1, name: "username", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "password", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 3, name: "endpoint", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+]);
+exports.ClusterMonitoring = ClusterMonitoring;
+/**
  * Responses
  *
  * @generated from message api.v1.ClusterServiceCreateResponse
@@ -719,6 +760,7 @@ ClusterServiceGetCredentialsResponse.runtime = protobuf_1.proto3;
 ClusterServiceGetCredentialsResponse.typeName = "api.v1.ClusterServiceGetCredentialsResponse";
 ClusterServiceGetCredentialsResponse.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 1, name: "kubeconfig", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "monitoring", kind: "message", T: ClusterMonitoring },
 ]);
 exports.ClusterServiceGetCredentialsResponse = ClusterServiceGetCredentialsResponse;
 /**

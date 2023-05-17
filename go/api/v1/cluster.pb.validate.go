@@ -2618,6 +2618,114 @@ var _ interface {
 	ErrorName() string
 } = ClusterStatusLastErrorValidationError{}
 
+// Validate checks the field values on ClusterMonitoring with the rules defined
+// in the proto definition for this message. If any rules are violated, the
+// first error encountered is returned, or nil if there are no violations.
+func (m *ClusterMonitoring) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on ClusterMonitoring with the rules
+// defined in the proto definition for this message. If any rules are
+// violated, the result is a list of violation errors wrapped in
+// ClusterMonitoringMultiError, or nil if none found.
+func (m *ClusterMonitoring) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *ClusterMonitoring) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	// no validation rules for Username
+
+	// no validation rules for Password
+
+	// no validation rules for Endpoint
+
+	if len(errors) > 0 {
+		return ClusterMonitoringMultiError(errors)
+	}
+
+	return nil
+}
+
+// ClusterMonitoringMultiError is an error wrapping multiple validation errors
+// returned by ClusterMonitoring.ValidateAll() if the designated constraints
+// aren't met.
+type ClusterMonitoringMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m ClusterMonitoringMultiError) Error() string {
+	var msgs []string
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m ClusterMonitoringMultiError) AllErrors() []error { return m }
+
+// ClusterMonitoringValidationError is the validation error returned by
+// ClusterMonitoring.Validate if the designated constraints aren't met.
+type ClusterMonitoringValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e ClusterMonitoringValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e ClusterMonitoringValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e ClusterMonitoringValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e ClusterMonitoringValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e ClusterMonitoringValidationError) ErrorName() string {
+	return "ClusterMonitoringValidationError"
+}
+
+// Error satisfies the builtin error interface
+func (e ClusterMonitoringValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sClusterMonitoring.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = ClusterMonitoringValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = ClusterMonitoringValidationError{}
+
 // Validate checks the field values on ClusterServiceCreateResponse with the
 // rules defined in the proto definition for this message. If any rules are
 // violated, the first error encountered is returned, or nil if there are no violations.
@@ -2905,6 +3013,35 @@ func (m *ClusterServiceGetCredentialsResponse) validate(all bool) error {
 	var errors []error
 
 	// no validation rules for Kubeconfig
+
+	if all {
+		switch v := interface{}(m.GetMonitoring()).(type) {
+		case interface{ ValidateAll() error }:
+			if err := v.ValidateAll(); err != nil {
+				errors = append(errors, ClusterServiceGetCredentialsResponseValidationError{
+					field:  "Monitoring",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		case interface{ Validate() error }:
+			if err := v.Validate(); err != nil {
+				errors = append(errors, ClusterServiceGetCredentialsResponseValidationError{
+					field:  "Monitoring",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		}
+	} else if v, ok := interface{}(m.GetMonitoring()).(interface{ Validate() error }); ok {
+		if err := v.Validate(); err != nil {
+			return ClusterServiceGetCredentialsResponseValidationError{
+				field:  "Monitoring",
+				reason: "embedded message failed validation",
+				cause:  err,
+			}
+		}
+	}
 
 	if len(errors) > 0 {
 		return ClusterServiceGetCredentialsResponseMultiError(errors)

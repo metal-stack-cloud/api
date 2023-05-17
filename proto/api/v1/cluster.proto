@@ -209,6 +209,12 @@ message ClusterStatusLastError {
   google.protobuf.Timestamp last_update_time = 4;
 }
 
+message ClusterMonitoring {
+  string username = 1;
+  string password = 2;
+  string endpoint = 3;
+}
+
 // Responses
 message ClusterServiceCreateResponse {
   Cluster cluster = 1;
@@ -218,6 +224,7 @@ message ClusterServiceGetResponse {
 }
 message ClusterServiceGetCredentialsResponse {
   string kubeconfig = 1;
+  ClusterMonitoring monitoring = 2;
 }
 message ClusterServiceDeleteResponse {
   Cluster cluster = 1;

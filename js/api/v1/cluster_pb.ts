@@ -881,6 +881,55 @@ export class ClusterStatusLastError extends Message<ClusterStatusLastError> {
 }
 
 /**
+ * @generated from message api.v1.ClusterMonitoring
+ */
+export class ClusterMonitoring extends Message<ClusterMonitoring> {
+  /**
+   * @generated from field: string username = 1;
+   */
+  username = "";
+
+  /**
+   * @generated from field: string password = 2;
+   */
+  password = "";
+
+  /**
+   * @generated from field: string endpoint = 3;
+   */
+  endpoint = "";
+
+  constructor(data?: PartialMessage<ClusterMonitoring>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "api.v1.ClusterMonitoring";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "username", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "password", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 3, name: "endpoint", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ClusterMonitoring {
+    return new ClusterMonitoring().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ClusterMonitoring {
+    return new ClusterMonitoring().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ClusterMonitoring {
+    return new ClusterMonitoring().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: ClusterMonitoring | PlainMessage<ClusterMonitoring> | undefined, b: ClusterMonitoring | PlainMessage<ClusterMonitoring> | undefined): boolean {
+    return proto3.util.equals(ClusterMonitoring, a, b);
+  }
+}
+
+/**
  * Responses
  *
  * @generated from message api.v1.ClusterServiceCreateResponse
@@ -965,6 +1014,11 @@ export class ClusterServiceGetCredentialsResponse extends Message<ClusterService
    */
   kubeconfig = "";
 
+  /**
+   * @generated from field: api.v1.ClusterMonitoring monitoring = 2;
+   */
+  monitoring?: ClusterMonitoring;
+
   constructor(data?: PartialMessage<ClusterServiceGetCredentialsResponse>) {
     super();
     proto3.util.initPartial(data, this);
@@ -974,6 +1028,7 @@ export class ClusterServiceGetCredentialsResponse extends Message<ClusterService
   static readonly typeName = "api.v1.ClusterServiceGetCredentialsResponse";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
     { no: 1, name: "kubeconfig", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "monitoring", kind: "message", T: ClusterMonitoring },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ClusterServiceGetCredentialsResponse {
