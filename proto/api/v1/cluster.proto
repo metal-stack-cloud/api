@@ -65,6 +65,7 @@ message Cluster {
   google.protobuf.Timestamp deleted_at = 12;
   ClusterStatus status = 20;
   optional string purpose = 21;
+  ClusterMonitoring monitoring = 22;
 }
 
 message KubernetesSpec {
@@ -224,7 +225,6 @@ message ClusterServiceGetResponse {
 }
 message ClusterServiceGetCredentialsResponse {
   string kubeconfig = 1;
-  ClusterMonitoring monitoring = 2;
 }
 message ClusterServiceDeleteResponse {
   Cluster cluster = 1;
