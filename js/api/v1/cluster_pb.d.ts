@@ -60,6 +60,10 @@ export declare class Cluster extends Message<Cluster> {
      * @generated from field: optional string purpose = 21;
      */
     purpose?: string;
+    /**
+     * @generated from field: api.v1.ClusterMonitoring monitoring = 22;
+     */
+    monitoring?: ClusterMonitoring;
     constructor(data?: PartialMessage<Cluster>);
     static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.Cluster";
@@ -543,10 +547,6 @@ export declare class ClusterServiceGetCredentialsResponse extends Message<Cluste
      * @generated from field: string kubeconfig = 1;
      */
     kubeconfig: string;
-    /**
-     * @generated from field: api.v1.ClusterMonitoring monitoring = 2;
-     */
-    monitoring?: ClusterMonitoring;
     constructor(data?: PartialMessage<ClusterServiceGetCredentialsResponse>);
     static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.ClusterServiceGetCredentialsResponse";

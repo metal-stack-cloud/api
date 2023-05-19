@@ -71,6 +71,7 @@ Cluster.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 12, name: "deleted_at", kind: "message", T: protobuf_1.Timestamp },
     { no: 20, name: "status", kind: "message", T: ClusterStatus },
     { no: 21, name: "purpose", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
+    { no: 22, name: "monitoring", kind: "message", T: ClusterMonitoring },
 ]);
 exports.Cluster = Cluster;
 /**
@@ -760,7 +761,6 @@ ClusterServiceGetCredentialsResponse.runtime = protobuf_1.proto3;
 ClusterServiceGetCredentialsResponse.typeName = "api.v1.ClusterServiceGetCredentialsResponse";
 ClusterServiceGetCredentialsResponse.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 1, name: "kubeconfig", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 2, name: "monitoring", kind: "message", T: ClusterMonitoring },
 ]);
 exports.ClusterServiceGetCredentialsResponse = ClusterServiceGetCredentialsResponse;
 /**
