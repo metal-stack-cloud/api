@@ -318,8 +318,6 @@ func (m *PaymentDetails) validate(all bool) error {
 
 	// no validation rules for CustomerId
 
-	// no validation rules for PaymentMethodId
-
 	// no validation rules for SubscriptionId
 
 	for idx, item := range m.GetCoupons() {
@@ -357,6 +355,10 @@ func (m *PaymentDetails) validate(all bool) error {
 	}
 
 	// no validation rules for Vat
+
+	if m.PaymentMethodId != nil {
+		// no validation rules for PaymentMethodId
+	}
 
 	if len(errors) > 0 {
 		return PaymentDetailsMultiError(errors)

@@ -53,7 +53,7 @@ message Tenant {
 
 message PaymentDetails {
   string customer_id = 1;
-  string payment_method_id = 2;
+  optional string payment_method_id = 2;
   string subscription_id = 3;
   repeated Coupon coupons = 4;
   string vat = 5;

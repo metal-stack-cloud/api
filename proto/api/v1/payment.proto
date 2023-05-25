@@ -56,7 +56,7 @@ message PaymentCustomer {
   string login = 1;
   optional string name = 2;
   optional string customer_id = 3;
-  string payment_method_id = 4;
+  optional string payment_method_id = 4;
   string subscription_id = 5;
   optional string email = 6;
   optional Card card = 7;
@@ -179,6 +179,7 @@ message PaymentServiceHasPaymentMethodRequest {
 
 message PaymentServiceHasPaymentMethodResponse {
   bool exists = 1;
+  bool coupon_left = 2;
 }
 
 message PaymentServiceDeletePaymentMethodRequest {
