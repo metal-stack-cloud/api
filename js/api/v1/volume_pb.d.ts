@@ -92,18 +92,6 @@ export declare class Volume extends Message<Volume> {
      * @generated from field: api.v1.VolumeStatistics statistics = 21;
      */
     statistics?: VolumeStatistics;
-    /**
-     * @generated from field: google.protobuf.Timestamp created_at = 30;
-     */
-    createdAt?: Timestamp;
-    /**
-     * @generated from field: google.protobuf.Timestamp updated_at = 31;
-     */
-    updatedAt?: Timestamp;
-    /**
-     * @generated from field: google.protobuf.Timestamp deleted_at = 32;
-     */
-    deletedAt?: Timestamp;
     constructor(data?: PartialMessage<Volume>);
     static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.Volume";

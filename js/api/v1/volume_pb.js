@@ -133,9 +133,6 @@ Volume.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 19, name: "protection_state", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 20, name: "logical_used_storage", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
     { no: 21, name: "statistics", kind: "message", T: VolumeStatistics },
-    { no: 30, name: "created_at", kind: "message", T: protobuf_1.Timestamp },
-    { no: 31, name: "updated_at", kind: "message", T: protobuf_1.Timestamp },
-    { no: 32, name: "deleted_at", kind: "message", T: protobuf_1.Timestamp },
 ]);
 exports.Volume = Volume;
 /**
