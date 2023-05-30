@@ -260,14 +260,6 @@ export declare class Snapshot extends Message<Snapshot> {
      * @generated from field: google.protobuf.Timestamp created_at = 20;
      */
     createdAt?: Timestamp;
-    /**
-     * @generated from field: google.protobuf.Timestamp updated_at = 21;
-     */
-    updatedAt?: Timestamp;
-    /**
-     * @generated from field: google.protobuf.Timestamp deleted_at = 22;
-     */
-    deletedAt?: Timestamp;
     constructor(data?: PartialMessage<Snapshot>);
     static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.Snapshot";

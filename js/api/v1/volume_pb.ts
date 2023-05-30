@@ -382,16 +382,6 @@ export class Snapshot extends Message<Snapshot> {
    */
   createdAt?: Timestamp;
 
-  /**
-   * @generated from field: google.protobuf.Timestamp updated_at = 21;
-   */
-  updatedAt?: Timestamp;
-
-  /**
-   * @generated from field: google.protobuf.Timestamp deleted_at = 22;
-   */
-  deletedAt?: Timestamp;
-
   constructor(data?: PartialMessage<Snapshot>) {
     super();
     proto3.util.initPartial(data, this);
@@ -416,8 +406,6 @@ export class Snapshot extends Message<Snapshot> {
     { no: 14, name: "retention", kind: "message", T: Duration },
     { no: 15, name: "statistics", kind: "message", T: SnapshotStatistics },
     { no: 20, name: "created_at", kind: "message", T: Timestamp },
-    { no: 21, name: "updated_at", kind: "message", T: Timestamp },
-    { no: 22, name: "deleted_at", kind: "message", T: Timestamp },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Snapshot {

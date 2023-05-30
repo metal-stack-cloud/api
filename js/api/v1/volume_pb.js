@@ -340,8 +340,6 @@ Snapshot.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 14, name: "retention", kind: "message", T: protobuf_1.Duration },
     { no: 15, name: "statistics", kind: "message", T: SnapshotStatistics },
     { no: 20, name: "created_at", kind: "message", T: protobuf_1.Timestamp },
-    { no: 21, name: "updated_at", kind: "message", T: protobuf_1.Timestamp },
-    { no: 22, name: "deleted_at", kind: "message", T: protobuf_1.Timestamp },
 ]);
 exports.Snapshot = Snapshot;
 /**
