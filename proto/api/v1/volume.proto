@@ -67,10 +67,6 @@ message Volume {
   uint64 logical_used_storage = 20;
   // VolumeStatistics are only visible to admins
   VolumeStatistics statistics = 21;
-
-  google.protobuf.Timestamp created_at = 30;
-  google.protobuf.Timestamp updated_at = 31;
-  google.protobuf.Timestamp deleted_at = 32;
 }
 
 message VolumeStatistics {

@@ -119,21 +119,6 @@ export class Volume extends Message<Volume> {
    */
   statistics?: VolumeStatistics;
 
-  /**
-   * @generated from field: google.protobuf.Timestamp created_at = 30;
-   */
-  createdAt?: Timestamp;
-
-  /**
-   * @generated from field: google.protobuf.Timestamp updated_at = 31;
-   */
-  updatedAt?: Timestamp;
-
-  /**
-   * @generated from field: google.protobuf.Timestamp deleted_at = 32;
-   */
-  deletedAt?: Timestamp;
-
   constructor(data?: PartialMessage<Volume>) {
     super();
     proto3.util.initPartial(data, this);
@@ -163,9 +148,6 @@ export class Volume extends Message<Volume> {
     { no: 19, name: "protection_state", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 20, name: "logical_used_storage", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
     { no: 21, name: "statistics", kind: "message", T: VolumeStatistics },
-    { no: 30, name: "created_at", kind: "message", T: Timestamp },
-    { no: 31, name: "updated_at", kind: "message", T: Timestamp },
-    { no: 32, name: "deleted_at", kind: "message", T: Timestamp },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Volume {
