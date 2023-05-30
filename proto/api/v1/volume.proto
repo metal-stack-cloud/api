@@ -126,8 +126,6 @@ message Snapshot {
   SnapshotStatistics statistics = 15;
 
   google.protobuf.Timestamp created_at = 20;
-  google.protobuf.Timestamp updated_at = 21;
-  google.protobuf.Timestamp deleted_at = 22;
 }
 
 message SnapshotStatistics {
