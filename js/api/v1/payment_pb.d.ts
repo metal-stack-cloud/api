@@ -17,9 +17,9 @@ export declare class PaymentCustomer extends Message<PaymentCustomer> {
      */
     customerId?: string;
     /**
-     * @generated from field: string payment_method_id = 4;
+     * @generated from field: optional string payment_method_id = 4;
      */
-    paymentMethodId: string;
+    paymentMethodId?: string;
     /**
      * @generated from field: string subscription_id = 5;
      */
@@ -452,6 +452,10 @@ export declare class PaymentServiceHasPaymentMethodResponse extends Message<Paym
      * @generated from field: bool exists = 1;
      */
     exists: boolean;
+    /**
+     * @generated from field: bool coupon_left = 2;
+     */
+    couponLeft: boolean;
     constructor(data?: PartialMessage<PaymentServiceHasPaymentMethodResponse>);
     static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.PaymentServiceHasPaymentMethodResponse";

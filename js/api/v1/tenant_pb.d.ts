@@ -80,9 +80,9 @@ export declare class PaymentDetails extends Message<PaymentDetails> {
      */
     customerId: string;
     /**
-     * @generated from field: string payment_method_id = 2;
+     * @generated from field: optional string payment_method_id = 2;
      */
-    paymentMethodId: string;
+    paymentMethodId?: string;
     /**
      * @generated from field: string subscription_id = 3;
      */

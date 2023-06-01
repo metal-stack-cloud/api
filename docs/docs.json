@@ -3265,13 +3265,13 @@
             {
               "name": "payment_method_id",
               "description": "",
-              "label": "",
+              "label": "optional",
               "type": "string",
               "longType": "string",
               "fullType": "string",
               "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
+              "isoneof": true,
+              "oneofdecl": "_payment_method_id",
               "defaultValue": ""
             },
             {
@@ -4066,6 +4066,18 @@
           "fields": [
             {
               "name": "exists",
+              "description": "",
+              "label": "",
+              "type": "bool",
+              "longType": "bool",
+              "fullType": "bool",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "coupon_left",
               "description": "",
               "label": "",
               "type": "bool",
@@ -6719,7 +6731,7 @@
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
-          "hasOneofs": false,
+          "hasOneofs": true,
           "extensions": [],
           "fields": [
             {
@@ -6737,13 +6749,13 @@
             {
               "name": "payment_method_id",
               "description": "",
-              "label": "",
+              "label": "optional",
               "type": "string",
               "longType": "string",
               "fullType": "string",
               "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
+              "isoneof": true,
+              "oneofdecl": "_payment_method_id",
               "defaultValue": ""
             },
             {

@@ -17,10 +17,6 @@ class PaymentCustomer extends protobuf_1.Message {
          */
         this.login = "";
         /**
-         * @generated from field: string payment_method_id = 4;
-         */
-        this.paymentMethodId = "";
-        /**
          * @generated from field: string subscription_id = 5;
          */
         this.subscriptionId = "";
@@ -49,7 +45,7 @@ PaymentCustomer.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 1, name: "login", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 2, name: "name", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
     { no: 3, name: "customer_id", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
-    { no: 4, name: "payment_method_id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 4, name: "payment_method_id", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
     { no: 5, name: "subscription_id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 6, name: "email", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
     { no: 7, name: "card", kind: "message", T: Card, opt: true },
@@ -651,6 +647,10 @@ class PaymentServiceHasPaymentMethodResponse extends protobuf_1.Message {
          * @generated from field: bool exists = 1;
          */
         this.exists = false;
+        /**
+         * @generated from field: bool coupon_left = 2;
+         */
+        this.couponLeft = false;
         protobuf_1.proto3.util.initPartial(data, this);
     }
     static fromBinary(bytes, options) {
@@ -670,6 +670,7 @@ PaymentServiceHasPaymentMethodResponse.runtime = protobuf_1.proto3;
 PaymentServiceHasPaymentMethodResponse.typeName = "api.v1.PaymentServiceHasPaymentMethodResponse";
 PaymentServiceHasPaymentMethodResponse.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 1, name: "exists", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
+    { no: 2, name: "coupon_left", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
 ]);
 exports.PaymentServiceHasPaymentMethodResponse = PaymentServiceHasPaymentMethodResponse;
 /**

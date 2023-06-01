@@ -59,8 +59,6 @@ func (m *PaymentCustomer) validate(all bool) error {
 
 	// no validation rules for Login
 
-	// no validation rules for PaymentMethodId
-
 	// no validation rules for SubscriptionId
 
 	for idx, item := range m.GetPrices() {
@@ -132,6 +130,10 @@ func (m *PaymentCustomer) validate(all bool) error {
 
 	if m.CustomerId != nil {
 		// no validation rules for CustomerId
+	}
+
+	if m.PaymentMethodId != nil {
+		// no validation rules for PaymentMethodId
 	}
 
 	if m.Email != nil {
@@ -2304,6 +2306,8 @@ func (m *PaymentServiceHasPaymentMethodResponse) validate(all bool) error {
 	var errors []error
 
 	// no validation rules for Exists
+
+	// no validation rules for CouponLeft
 
 	if len(errors) > 0 {
 		return PaymentServiceHasPaymentMethodResponseMultiError(errors)

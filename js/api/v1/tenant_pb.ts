@@ -131,9 +131,9 @@ export class PaymentDetails extends Message<PaymentDetails> {
   customerId = "";
 
   /**
-   * @generated from field: string payment_method_id = 2;
+   * @generated from field: optional string payment_method_id = 2;
    */
-  paymentMethodId = "";
+  paymentMethodId?: string;
 
   /**
    * @generated from field: string subscription_id = 3;
@@ -159,7 +159,7 @@ export class PaymentDetails extends Message<PaymentDetails> {
   static readonly typeName = "api.v1.PaymentDetails";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
     { no: 1, name: "customer_id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 2, name: "payment_method_id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "payment_method_id", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
     { no: 3, name: "subscription_id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 4, name: "coupons", kind: "message", T: Coupon, repeated: true },
     { no: 5, name: "vat", kind: "scalar", T: 9 /* ScalarType.STRING */ },
