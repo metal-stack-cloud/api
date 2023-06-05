@@ -78,7 +78,7 @@ func servicePermissions(root string) (*permissions.ServicePermissions, error) {
 						if !*namePart.IsExtension {
 							continue
 						}
-
+						auditable[methodName] = true
 						// Tenant
 						switch *methodOpt.IdentifierValue {
 						case v1.TenantRole_TENANT_ROLE_OWNER.String():
