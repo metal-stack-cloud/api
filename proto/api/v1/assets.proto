@@ -7,6 +7,7 @@ import "api/v1/common.proto";
 service AssetService {
   rpc List(AssetServiceListRequest) returns (AssetServiceListResponse) {
     option (visibility) = VISIBILITY_PUBLIC;
+    option (auditing) = AUDITING_EXCLUDED;
   }
 }
 

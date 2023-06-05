@@ -21,6 +21,7 @@ service TenantService {
     option (tenant_roles) = TENANT_ROLE_OWNER;
     option (tenant_roles) = TENANT_ROLE_EDITOR;
     option (tenant_roles) = TENANT_ROLE_VIEWER;
+    option (auditing) = AUDITING_EXCLUDED;
   }
   rpc Update(TenantServiceUpdateRequest) returns (TenantServiceUpdateResponse) {
     option (tenant_roles) = TENANT_ROLE_OWNER;

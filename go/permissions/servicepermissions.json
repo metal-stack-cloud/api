@@ -193,5 +193,29 @@
     "/api.v1.IPService/Update": true,
     "/api.v1.SnapshotService/Delete": true,
     "/api.v1.VolumeService/Delete": true
+  },
+  "auditable": {
+    "/api.v1.AssetService/List": false,
+    "/api.v1.ClusterService/Get": false,
+    "/api.v1.ClusterService/List": false,
+    "/api.v1.ClusterService/WatchStatus": false,
+    "/api.v1.HealthService/Get": false,
+    "/api.v1.IPService/Get": false,
+    "/api.v1.IPService/List": false,
+    "/api.v1.PaymentService/CheckAdmitted": false,
+    "/api.v1.PaymentService/CheckIfCustomerExists": false,
+    "/api.v1.PaymentService/GetCustomer": false,
+    "/api.v1.PaymentService/GetDefaultPrices": false,
+    "/api.v1.PaymentService/GetInvoices": false,
+    "/api.v1.PaymentService/GetSubscriptionUsage": false,
+    "/api.v1.PaymentService/HasChargeableResources": false,
+    "/api.v1.PaymentService/HasPaymentMethod": false,
+    "/api.v1.PaymentService/RequestAdmission": false,
+    "/api.v1.SnapshotService/Get": false,
+    "/api.v1.SnapshotService/List": false,
+    "/api.v1.TenantService/Get": false,
+    "/api.v1.VersionService/Get": false,
+    "/api.v1.VolumeService/Get": false,
+    "/api.v1.VolumeService/List": false
   }
 }

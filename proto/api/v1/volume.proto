@@ -12,11 +12,13 @@ service VolumeService {
     option (project_roles) = PROJECT_ROLE_OWNER;
     option (project_roles) = PROJECT_ROLE_EDITOR;
     option (project_roles) = PROJECT_ROLE_VIEWER;
+    option (auditing) = AUDITING_EXCLUDED;
   }
   rpc List(VolumeServiceListRequest) returns (VolumeServiceListResponse) {
     option (project_roles) = PROJECT_ROLE_OWNER;
     option (project_roles) = PROJECT_ROLE_EDITOR;
     option (project_roles) = PROJECT_ROLE_VIEWER;
+    option (auditing) = AUDITING_EXCLUDED;
   }
   rpc Delete(VolumeServiceDeleteRequest) returns (VolumeServiceDeleteResponse) {
     option (project_roles) = PROJECT_ROLE_OWNER;
@@ -30,11 +32,13 @@ service SnapshotService {
     option (project_roles) = PROJECT_ROLE_OWNER;
     option (project_roles) = PROJECT_ROLE_EDITOR;
     option (project_roles) = PROJECT_ROLE_VIEWER;
+    option (auditing) = AUDITING_EXCLUDED;
   }
   rpc List(SnapshotServiceListRequest) returns (SnapshotServiceListResponse) {
     option (project_roles) = PROJECT_ROLE_OWNER;
     option (project_roles) = PROJECT_ROLE_EDITOR;
     option (project_roles) = PROJECT_ROLE_VIEWER;
+    option (auditing) = AUDITING_EXCLUDED;
   }
   rpc Delete(SnapshotServiceDeleteRequest) returns (SnapshotServiceDeleteResponse) {
     option (project_roles) = PROJECT_ROLE_OWNER;

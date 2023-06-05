@@ -407,6 +407,29 @@
           ]
         },
         {
+          "name": "Auditing",
+          "longName": "Auditing",
+          "fullName": "api.v1.Auditing",
+          "description": "Auditing option specified per service method\nby default all service methods are included\nadd the auditing option if you want to exclude a method in auditing",
+          "values": [
+            {
+              "name": "AUDITING_UNSPECIFIED",
+              "number": "0",
+              "description": ""
+            },
+            {
+              "name": "AUDITING_INCLUDED",
+              "number": "1",
+              "description": ""
+            },
+            {
+              "name": "AUDITING_EXCLUDED",
+              "number": "2",
+              "description": ""
+            }
+          ]
+        },
+        {
           "name": "Chargeable",
           "longName": "Chargeable",
           "fullName": "api.v1.Chargeable",
@@ -576,6 +599,21 @@
           "longType": "AdminRole",
           "fullType": "api.v1.AdminRole",
           "number": 51002,
+          "defaultValue": "",
+          "containingType": "MethodOptions",
+          "containingLongType": ".google.protobuf.MethodOptions",
+          "containingFullType": "google.protobuf.MethodOptions"
+        },
+        {
+          "name": "auditing",
+          "longName": ".google.protobuf.MethodOptions.auditing",
+          "fullName": ".google.protobuf.MethodOptions.auditing",
+          "description": "",
+          "label": "",
+          "type": "Auditing",
+          "longType": "Auditing",
+          "fullType": "api.v1.Auditing",
+          "number": 51005,
           "defaultValue": "",
           "containingType": "MethodOptions",
           "containingLongType": ".google.protobuf.MethodOptions",

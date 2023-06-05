@@ -11,6 +11,7 @@ service IPService {
     option (project_roles) = PROJECT_ROLE_OWNER;
     option (project_roles) = PROJECT_ROLE_EDITOR;
     option (project_roles) = PROJECT_ROLE_VIEWER;
+    option (auditing) = AUDITING_EXCLUDED;
   }
   rpc Allocate(IPServiceAllocateRequest) returns (IPServiceAllocateResponse) {
     option (project_roles) = PROJECT_ROLE_OWNER;
@@ -26,6 +27,7 @@ service IPService {
     option (project_roles) = PROJECT_ROLE_OWNER;
     option (project_roles) = PROJECT_ROLE_EDITOR;
     option (project_roles) = PROJECT_ROLE_VIEWER;
+    option (auditing) = AUDITING_EXCLUDED;
   }
   rpc Delete(IPServiceDeleteRequest) returns (IPServiceDeleteResponse) {
     option (project_roles) = PROJECT_ROLE_OWNER;
