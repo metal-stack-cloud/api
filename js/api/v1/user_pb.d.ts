@@ -78,6 +78,10 @@ export declare class Organization extends Message<Organization> {
      * @generated from field: repeated api.v1.Team teams = 8;
      */
     teams: Team[];
+    /**
+     * @generated from field: optional bool admitted = 9;
+     */
+    admitted?: boolean;
     constructor(data?: PartialMessage<Organization>);
     static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.Organization";
