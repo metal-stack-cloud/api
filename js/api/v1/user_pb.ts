@@ -122,6 +122,11 @@ export class Organization extends Message<Organization> {
    */
   teams: Team[] = [];
 
+  /**
+   * @generated from field: optional bool admitted = 9;
+   */
+  admitted?: boolean;
+
   constructor(data?: PartialMessage<Organization>) {
     super();
     proto3.util.initPartial(data, this);
@@ -138,6 +143,7 @@ export class Organization extends Message<Organization> {
     { no: 6, name: "avatar_url", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 7, name: "role", kind: "enum", T: proto3.getEnumType(Role) },
     { no: 8, name: "teams", kind: "message", T: Team, repeated: true },
+    { no: 9, name: "admitted", kind: "scalar", T: 8 /* ScalarType.BOOL */, opt: true },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Organization {

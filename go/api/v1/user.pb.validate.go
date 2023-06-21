@@ -247,6 +247,10 @@ func (m *Organization) validate(all bool) error {
 
 	}
 
+	if m.Admitted != nil {
+		// no validation rules for Admitted
+	}
+
 	if len(errors) > 0 {
 		return OrganizationMultiError(errors)
 	}
