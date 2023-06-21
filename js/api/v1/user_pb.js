@@ -132,6 +132,7 @@ Organization.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 6, name: "avatar_url", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 7, name: "role", kind: "enum", T: protobuf_1.proto3.getEnumType(common_pb_js_1.Role) },
     { no: 8, name: "teams", kind: "message", T: Team, repeated: true },
+    { no: 9, name: "admitted", kind: "scalar", T: 8 /* ScalarType.BOOL */, opt: true },
 ]);
 /**
  * @generated from message api.v1.Team
