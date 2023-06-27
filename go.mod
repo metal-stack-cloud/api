@@ -4,7 +4,7 @@ go 1.20
 
 require (
 	github.com/Masterminds/sprig/v3 v3.2.3
-	github.com/bufbuild/connect-go v1.7.0
+	github.com/bufbuild/connect-go v1.8.0
 	github.com/bufbuild/protocompile v0.5.1
 	github.com/envoyproxy/protoc-gen-validate v1.0.1
 	github.com/klauspost/connect-compress v1.0.0

@@ -217,6 +217,36 @@ proto3.util.setEnumType(Chargeable, "api.v1.Chargeable", [
 ]);
 
 /**
+ * Auditing option specified per service method
+ * by default all service methods are included
+ * add the auditing option if you want to exclude a method in auditing
+ *
+ * @generated from enum api.v1.Auditing
+ */
+export enum Auditing {
+  /**
+   * @generated from enum value: AUDITING_UNSPECIFIED = 0;
+   */
+  UNSPECIFIED = 0,
+
+  /**
+   * @generated from enum value: AUDITING_INCLUDED = 1;
+   */
+  INCLUDED = 1,
+
+  /**
+   * @generated from enum value: AUDITING_EXCLUDED = 2;
+   */
+  EXCLUDED = 2,
+}
+// Retrieve enum metadata with: proto3.getEnumType(Auditing)
+proto3.util.setEnumType(Auditing, "api.v1.Auditing", [
+  { no: 0, name: "AUDITING_UNSPECIFIED" },
+  { no: 1, name: "AUDITING_INCLUDED" },
+  { no: 2, name: "AUDITING_EXCLUDED" },
+]);
+
+/**
  * @generated from message api.v1.Paging
  */
 export class Paging extends Message<Paging> {

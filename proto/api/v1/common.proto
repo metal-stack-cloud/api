@@ -48,12 +48,22 @@ enum Chargeable {
   CHARGEABLE_FALSE = 2;
 }
 
+// Auditing option specified per service method
+// by default all service methods are included
+// add the auditing option if you want to exclude a method in auditing
+enum Auditing {
+  AUDITING_UNSPECIFIED = 0;
+  AUDITING_INCLUDED = 1;
+  AUDITING_EXCLUDED = 2;
+}
+
 extend google.protobuf.MethodOptions {
   repeated TenantRole tenant_roles = 51000;
   repeated ProjectRole project_roles = 51001;
   repeated AdminRole admin_roles = 51002;
   Visibility visibility = 51003;
   Chargeable chargeable = 51004;
+  Auditing auditing = 51005;
 }
 
 message Paging {

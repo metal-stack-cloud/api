@@ -56,6 +56,7 @@ func servicePermissions(root string) (*permissions.ServicePermissions, error) {
 			Private: map[string]bool{},
 		}
 		chargeable = permissions.Chargeable{}
+		auditable  = permissions.Auditable{}
 	)
 
 	files, err := walk(root)
@@ -77,7 +78,7 @@ func servicePermissions(root string) (*permissions.ServicePermissions, error) {
 						if !*namePart.IsExtension {
 							continue
 						}
-
+						auditable[methodName] = true
 						// Tenant
 						switch *methodOpt.IdentifierValue {
 						case v1.TenantRole_TENANT_ROLE_OWNER.String():
@@ -118,6 +119,14 @@ func servicePermissions(root string) (*permissions.ServicePermissions, error) {
 							chargeable[methodName] = false
 						case v1.Chargeable_CHARGEABLE_UNSPECIFIED.String():
 							// noop
+						// Auditable
+						case v1.Auditing_AUDITING_EXCLUDED.String():
+							auditable[methodName] = false
+						case v1.Auditing_AUDITING_INCLUDED.String():
+							auditable[methodName] = true
+						case v1.Auditing_AUDITING_UNSPECIFIED.String():
+							auditable[methodName] = true
+						// noop
 						default:
 							return nil, fmt.Errorf("unknown method identifier value detected:%s", *methodOpt.IdentifierValue)
 
@@ -134,6 +143,7 @@ func servicePermissions(root string) (*permissions.ServicePermissions, error) {
 		Methods:    methods,
 		Visibility: visibility,
 		Chargeable: chargeable,
+		Auditable:  auditable,
 	}
 	return sp, nil
 }

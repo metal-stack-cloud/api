@@ -4,7 +4,7 @@
 /* eslint-disable */
 // @ts-nocheck
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Paging = exports.Chargeable = exports.Visibility = exports.AdminRole = exports.ProjectRole = exports.TenantRole = exports.Role = exports.OAuthProvider = void 0;
+exports.Paging = exports.Auditing = exports.Chargeable = exports.Visibility = exports.AdminRole = exports.ProjectRole = exports.TenantRole = exports.Role = exports.OAuthProvider = void 0;
 const protobuf_1 = require("@bufbuild/protobuf");
 /**
  * @generated from enum api.v1.OAuthProvider
@@ -197,6 +197,34 @@ protobuf_1.proto3.util.setEnumType(Chargeable, "api.v1.Chargeable", [
     { no: 0, name: "CHARGEABLE_UNSPECIFIED" },
     { no: 1, name: "CHARGEABLE_TRUE" },
     { no: 2, name: "CHARGEABLE_FALSE" },
+]);
+/**
+ * Auditing option specified per service method
+ * by default all service methods are included
+ * add the auditing option if you want to exclude a method in auditing
+ *
+ * @generated from enum api.v1.Auditing
+ */
+var Auditing;
+(function (Auditing) {
+    /**
+     * @generated from enum value: AUDITING_UNSPECIFIED = 0;
+     */
+    Auditing[Auditing["UNSPECIFIED"] = 0] = "UNSPECIFIED";
+    /**
+     * @generated from enum value: AUDITING_INCLUDED = 1;
+     */
+    Auditing[Auditing["INCLUDED"] = 1] = "INCLUDED";
+    /**
+     * @generated from enum value: AUDITING_EXCLUDED = 2;
+     */
+    Auditing[Auditing["EXCLUDED"] = 2] = "EXCLUDED";
+})(Auditing || (exports.Auditing = Auditing = {}));
+// Retrieve enum metadata with: proto3.getEnumType(Auditing)
+protobuf_1.proto3.util.setEnumType(Auditing, "api.v1.Auditing", [
+    { no: 0, name: "AUDITING_UNSPECIFIED" },
+    { no: 1, name: "AUDITING_INCLUDED" },
+    { no: 2, name: "AUDITING_EXCLUDED" },
 ]);
 /**
  * @generated from message api.v1.Paging

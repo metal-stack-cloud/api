@@ -12,43 +12,52 @@ service PaymentService {
   }
   rpc GetCustomer(PaymentServiceGetCustomerRequest) returns (PaymentServiceGetCustomerResponse) {
     option (tenant_roles) = TENANT_ROLE_OWNER;
+    option (auditing) = AUDITING_EXCLUDED;
   }
   rpc GetCustomerWithLogin(PaymentServiceGetCustomerWithLoginRequest) returns (PaymentServiceGetCustomerWithLoginResponse) {
     option (tenant_roles) = TENANT_ROLE_OWNER;
   }
   rpc CheckIfCustomerExists(PaymentServiceCheckIfCustomerExistsRequest) returns (PaymentServiceCheckIfCustomerExistsResponse) {
     option (tenant_roles) = TENANT_ROLE_OWNER;
+    option (auditing) = AUDITING_EXCLUDED;
   }
   rpc HasPaymentMethod(PaymentServiceHasPaymentMethodRequest) returns (PaymentServiceHasPaymentMethodResponse) {
     option (tenant_roles) = TENANT_ROLE_OWNER;
     option (tenant_roles) = TENANT_ROLE_EDITOR;
     option (tenant_roles) = TENANT_ROLE_VIEWER;
+    option (auditing) = AUDITING_EXCLUDED;
   }
   rpc DeletePaymentMethod(PaymentServiceDeletePaymentMethodRequest) returns (PaymentServiceDeletePaymentMethodResponse) {
     option (tenant_roles) = TENANT_ROLE_OWNER;
   }
   rpc GetSubscriptionUsage(PaymentServiceGetSubscriptionUsageRequest) returns (PaymentServiceGetSubscriptionUsageResponse) {
     option (tenant_roles) = TENANT_ROLE_OWNER;
+    option (auditing) = AUDITING_EXCLUDED;
   }
   rpc GetInvoices(PaymentServiceGetInvoicesRequest) returns (PaymentServiceGetInvoicesResponse) {
     option (tenant_roles) = TENANT_ROLE_OWNER;
+    option (auditing) = AUDITING_EXCLUDED;
   }
   rpc GetDefaultPrices(PaymentServiceGetDefaultPricesRequest) returns (PaymentServiceGetDefaultPricesResponse) {
     option (visibility) = VISIBILITY_PUBLIC;
+    option (auditing) = AUDITING_EXCLUDED;
   }
   rpc CheckAdmitted(PaymentServiceCheckAdmittedRequest) returns (PaymentServiceCheckAdmittedResponse) {
     option (tenant_roles) = TENANT_ROLE_OWNER;
     option (tenant_roles) = TENANT_ROLE_EDITOR;
     option (tenant_roles) = TENANT_ROLE_VIEWER;
+    option (auditing) = AUDITING_EXCLUDED;
   }
   rpc RequestAdmission(PaymentServiceRequestAdmissionRequest) returns (PaymentServiceRequestAdmissionResponse) {
     option (tenant_roles) = TENANT_ROLE_OWNER;
     option (tenant_roles) = TENANT_ROLE_EDITOR;
+    option (auditing) = AUDITING_EXCLUDED;
   }
   rpc HasChargeableResources(PaymentServiceHasChargeableResourcesRequest) returns (PaymentServiceHasChargeableResourcesResponse) {
     option (tenant_roles) = TENANT_ROLE_OWNER;
     option (tenant_roles) = TENANT_ROLE_EDITOR;
     option (tenant_roles) = TENANT_ROLE_VIEWER;
+    option (auditing) = AUDITING_EXCLUDED;
   }
 }
 

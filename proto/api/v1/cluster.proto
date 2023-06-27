@@ -17,16 +17,19 @@ service ClusterService {
     option (project_roles) = PROJECT_ROLE_OWNER;
     option (project_roles) = PROJECT_ROLE_EDITOR;
     option (project_roles) = PROJECT_ROLE_VIEWER;
+    option (auditing) = AUDITING_EXCLUDED;
   }
   rpc List(ClusterServiceListRequest) returns (ClusterServiceListResponse) {
     option (project_roles) = PROJECT_ROLE_OWNER;
     option (project_roles) = PROJECT_ROLE_EDITOR;
     option (project_roles) = PROJECT_ROLE_VIEWER;
+    option (auditing) = AUDITING_EXCLUDED;
   }
   rpc WatchStatus(ClusterServiceWatchStatusRequest) returns (stream ClusterServiceWatchStatusResponse) {
     option (project_roles) = PROJECT_ROLE_OWNER;
     option (project_roles) = PROJECT_ROLE_EDITOR;
     option (project_roles) = PROJECT_ROLE_VIEWER;
+    option (auditing) = AUDITING_EXCLUDED;
   }
   rpc Delete(ClusterServiceDeleteRequest) returns (ClusterServiceDeleteResponse) {
     option (project_roles) = PROJECT_ROLE_OWNER;

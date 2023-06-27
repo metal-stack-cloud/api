@@ -140,6 +140,27 @@ export declare enum Chargeable {
     FALSE = 2
 }
 /**
+ * Auditing option specified per service method
+ * by default all service methods are included
+ * add the auditing option if you want to exclude a method in auditing
+ *
+ * @generated from enum api.v1.Auditing
+ */
+export declare enum Auditing {
+    /**
+     * @generated from enum value: AUDITING_UNSPECIFIED = 0;
+     */
+    UNSPECIFIED = 0,
+    /**
+     * @generated from enum value: AUDITING_INCLUDED = 1;
+     */
+    INCLUDED = 1,
+    /**
+     * @generated from enum value: AUDITING_EXCLUDED = 2;
+     */
+    EXCLUDED = 2
+}
+/**
  * @generated from message api.v1.Paging
  */
 export declare class Paging extends Message<Paging> {
