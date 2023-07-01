@@ -141,33 +141,47 @@ type IPServiceHandler interface {
 // By default, handlers support the Connect, gRPC, and gRPC-Web protocols with the binary Protobuf
 // and JSON codecs. They also support gzip compression.
 func NewIPServiceHandler(svc IPServiceHandler, opts ...connect_go.HandlerOption) (string, http.Handler) {
-	mux := http.NewServeMux()
-	mux.Handle(IPServiceGetProcedure, connect_go.NewUnaryHandler(
+	iPServiceGetHandler := connect_go.NewUnaryHandler(
 		IPServiceGetProcedure,
 		svc.Get,
 		opts...,
-	))
-	mux.Handle(IPServiceAllocateProcedure, connect_go.NewUnaryHandler(
+	)
+	iPServiceAllocateHandler := connect_go.NewUnaryHandler(
 		IPServiceAllocateProcedure,
 		svc.Allocate,
 		opts...,
-	))
-	mux.Handle(IPServiceUpdateProcedure, connect_go.NewUnaryHandler(
+	)
+	iPServiceUpdateHandler := connect_go.NewUnaryHandler(
 		IPServiceUpdateProcedure,
 		svc.Update,
 		opts...,
-	))
-	mux.Handle(IPServiceListProcedure, connect_go.NewUnaryHandler(
+	)
+	iPServiceListHandler := connect_go.NewUnaryHandler(
 		IPServiceListProcedure,
 		svc.List,
 		opts...,
-	))
-	mux.Handle(IPServiceDeleteProcedure, connect_go.NewUnaryHandler(
+	)
+	iPServiceDeleteHandler := connect_go.NewUnaryHandler(
 		IPServiceDeleteProcedure,
 		svc.Delete,
 		opts...,
-	))
-	return "/api.v1.IPService/", mux
+	)
+	return "/api.v1.IPService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		switch r.URL.Path {
+		case IPServiceGetProcedure:
+			iPServiceGetHandler.ServeHTTP(w, r)
+		case IPServiceAllocateProcedure:
+			iPServiceAllocateHandler.ServeHTTP(w, r)
+		case IPServiceUpdateProcedure:
+			iPServiceUpdateHandler.ServeHTTP(w, r)
+		case IPServiceListProcedure:
+			iPServiceListHandler.ServeHTTP(w, r)
+		case IPServiceDeleteProcedure:
+			iPServiceDeleteHandler.ServeHTTP(w, r)
+		default:
+			http.NotFound(w, r)
+		}
+	})
 }
 
 // UnimplementedIPServiceHandler returns CodeUnimplemented from all methods.

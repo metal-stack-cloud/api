@@ -173,43 +173,61 @@ type ClusterServiceHandler interface {
 // By default, handlers support the Connect, gRPC, and gRPC-Web protocols with the binary Protobuf
 // and JSON codecs. They also support gzip compression.
 func NewClusterServiceHandler(svc ClusterServiceHandler, opts ...connect_go.HandlerOption) (string, http.Handler) {
-	mux := http.NewServeMux()
-	mux.Handle(ClusterServiceCreateProcedure, connect_go.NewUnaryHandler(
+	clusterServiceCreateHandler := connect_go.NewUnaryHandler(
 		ClusterServiceCreateProcedure,
 		svc.Create,
 		opts...,
-	))
-	mux.Handle(ClusterServiceGetProcedure, connect_go.NewUnaryHandler(
+	)
+	clusterServiceGetHandler := connect_go.NewUnaryHandler(
 		ClusterServiceGetProcedure,
 		svc.Get,
 		opts...,
-	))
-	mux.Handle(ClusterServiceListProcedure, connect_go.NewUnaryHandler(
+	)
+	clusterServiceListHandler := connect_go.NewUnaryHandler(
 		ClusterServiceListProcedure,
 		svc.List,
 		opts...,
-	))
-	mux.Handle(ClusterServiceWatchStatusProcedure, connect_go.NewServerStreamHandler(
+	)
+	clusterServiceWatchStatusHandler := connect_go.NewServerStreamHandler(
 		ClusterServiceWatchStatusProcedure,
 		svc.WatchStatus,
 		opts...,
-	))
-	mux.Handle(ClusterServiceDeleteProcedure, connect_go.NewUnaryHandler(
+	)
+	clusterServiceDeleteHandler := connect_go.NewUnaryHandler(
 		ClusterServiceDeleteProcedure,
 		svc.Delete,
 		opts...,
-	))
-	mux.Handle(ClusterServiceUpdateProcedure, connect_go.NewUnaryHandler(
+	)
+	clusterServiceUpdateHandler := connect_go.NewUnaryHandler(
 		ClusterServiceUpdateProcedure,
 		svc.Update,
 		opts...,
-	))
-	mux.Handle(ClusterServiceGetCredentialsProcedure, connect_go.NewUnaryHandler(
+	)
+	clusterServiceGetCredentialsHandler := connect_go.NewUnaryHandler(
 		ClusterServiceGetCredentialsProcedure,
 		svc.GetCredentials,
 		opts...,
-	))
-	return "/api.v1.ClusterService/", mux
+	)
+	return "/api.v1.ClusterService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		switch r.URL.Path {
+		case ClusterServiceCreateProcedure:
+			clusterServiceCreateHandler.ServeHTTP(w, r)
+		case ClusterServiceGetProcedure:
+			clusterServiceGetHandler.ServeHTTP(w, r)
+		case ClusterServiceListProcedure:
+			clusterServiceListHandler.ServeHTTP(w, r)
+		case ClusterServiceWatchStatusProcedure:
+			clusterServiceWatchStatusHandler.ServeHTTP(w, r)
+		case ClusterServiceDeleteProcedure:
+			clusterServiceDeleteHandler.ServeHTTP(w, r)
+		case ClusterServiceUpdateProcedure:
+			clusterServiceUpdateHandler.ServeHTTP(w, r)
+		case ClusterServiceGetCredentialsProcedure:
+			clusterServiceGetCredentialsHandler.ServeHTTP(w, r)
+		default:
+			http.NotFound(w, r)
+		}
+	})
 }
 
 // UnimplementedClusterServiceHandler returns CodeUnimplemented from all methods.

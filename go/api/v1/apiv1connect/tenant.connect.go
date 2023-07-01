@@ -146,33 +146,47 @@ type TenantServiceHandler interface {
 // By default, handlers support the Connect, gRPC, and gRPC-Web protocols with the binary Protobuf
 // and JSON codecs. They also support gzip compression.
 func NewTenantServiceHandler(svc TenantServiceHandler, opts ...connect_go.HandlerOption) (string, http.Handler) {
-	mux := http.NewServeMux()
-	mux.Handle(TenantServiceCreateProcedure, connect_go.NewUnaryHandler(
+	tenantServiceCreateHandler := connect_go.NewUnaryHandler(
 		TenantServiceCreateProcedure,
 		svc.Create,
 		opts...,
-	))
-	mux.Handle(TenantServiceCreateOrUpdateProcedure, connect_go.NewUnaryHandler(
+	)
+	tenantServiceCreateOrUpdateHandler := connect_go.NewUnaryHandler(
 		TenantServiceCreateOrUpdateProcedure,
 		svc.CreateOrUpdate,
 		opts...,
-	))
-	mux.Handle(TenantServiceGetProcedure, connect_go.NewUnaryHandler(
+	)
+	tenantServiceGetHandler := connect_go.NewUnaryHandler(
 		TenantServiceGetProcedure,
 		svc.Get,
 		opts...,
-	))
-	mux.Handle(TenantServiceUpdateProcedure, connect_go.NewUnaryHandler(
+	)
+	tenantServiceUpdateHandler := connect_go.NewUnaryHandler(
 		TenantServiceUpdateProcedure,
 		svc.Update,
 		opts...,
-	))
-	mux.Handle(TenantServiceDeleteProcedure, connect_go.NewUnaryHandler(
+	)
+	tenantServiceDeleteHandler := connect_go.NewUnaryHandler(
 		TenantServiceDeleteProcedure,
 		svc.Delete,
 		opts...,
-	))
-	return "/api.v1.TenantService/", mux
+	)
+	return "/api.v1.TenantService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		switch r.URL.Path {
+		case TenantServiceCreateProcedure:
+			tenantServiceCreateHandler.ServeHTTP(w, r)
+		case TenantServiceCreateOrUpdateProcedure:
+			tenantServiceCreateOrUpdateHandler.ServeHTTP(w, r)
+		case TenantServiceGetProcedure:
+			tenantServiceGetHandler.ServeHTTP(w, r)
+		case TenantServiceUpdateProcedure:
+			tenantServiceUpdateHandler.ServeHTTP(w, r)
+		case TenantServiceDeleteProcedure:
+			tenantServiceDeleteHandler.ServeHTTP(w, r)
+		default:
+			http.NotFound(w, r)
+		}
+	})
 }
 
 // UnimplementedTenantServiceHandler returns CodeUnimplemented from all methods.

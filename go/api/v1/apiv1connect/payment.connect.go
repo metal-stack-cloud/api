@@ -258,68 +258,96 @@ type PaymentServiceHandler interface {
 // By default, handlers support the Connect, gRPC, and gRPC-Web protocols with the binary Protobuf
 // and JSON codecs. They also support gzip compression.
 func NewPaymentServiceHandler(svc PaymentServiceHandler, opts ...connect_go.HandlerOption) (string, http.Handler) {
-	mux := http.NewServeMux()
-	mux.Handle(PaymentServiceCreateOrUpdateCustomerProcedure, connect_go.NewUnaryHandler(
+	paymentServiceCreateOrUpdateCustomerHandler := connect_go.NewUnaryHandler(
 		PaymentServiceCreateOrUpdateCustomerProcedure,
 		svc.CreateOrUpdateCustomer,
 		opts...,
-	))
-	mux.Handle(PaymentServiceGetCustomerProcedure, connect_go.NewUnaryHandler(
+	)
+	paymentServiceGetCustomerHandler := connect_go.NewUnaryHandler(
 		PaymentServiceGetCustomerProcedure,
 		svc.GetCustomer,
 		opts...,
-	))
-	mux.Handle(PaymentServiceGetCustomerWithLoginProcedure, connect_go.NewUnaryHandler(
+	)
+	paymentServiceGetCustomerWithLoginHandler := connect_go.NewUnaryHandler(
 		PaymentServiceGetCustomerWithLoginProcedure,
 		svc.GetCustomerWithLogin,
 		opts...,
-	))
-	mux.Handle(PaymentServiceCheckIfCustomerExistsProcedure, connect_go.NewUnaryHandler(
+	)
+	paymentServiceCheckIfCustomerExistsHandler := connect_go.NewUnaryHandler(
 		PaymentServiceCheckIfCustomerExistsProcedure,
 		svc.CheckIfCustomerExists,
 		opts...,
-	))
-	mux.Handle(PaymentServiceHasPaymentMethodProcedure, connect_go.NewUnaryHandler(
+	)
+	paymentServiceHasPaymentMethodHandler := connect_go.NewUnaryHandler(
 		PaymentServiceHasPaymentMethodProcedure,
 		svc.HasPaymentMethod,
 		opts...,
-	))
-	mux.Handle(PaymentServiceDeletePaymentMethodProcedure, connect_go.NewUnaryHandler(
+	)
+	paymentServiceDeletePaymentMethodHandler := connect_go.NewUnaryHandler(
 		PaymentServiceDeletePaymentMethodProcedure,
 		svc.DeletePaymentMethod,
 		opts...,
-	))
-	mux.Handle(PaymentServiceGetSubscriptionUsageProcedure, connect_go.NewUnaryHandler(
+	)
+	paymentServiceGetSubscriptionUsageHandler := connect_go.NewUnaryHandler(
 		PaymentServiceGetSubscriptionUsageProcedure,
 		svc.GetSubscriptionUsage,
 		opts...,
-	))
-	mux.Handle(PaymentServiceGetInvoicesProcedure, connect_go.NewUnaryHandler(
+	)
+	paymentServiceGetInvoicesHandler := connect_go.NewUnaryHandler(
 		PaymentServiceGetInvoicesProcedure,
 		svc.GetInvoices,
 		opts...,
-	))
-	mux.Handle(PaymentServiceGetDefaultPricesProcedure, connect_go.NewUnaryHandler(
+	)
+	paymentServiceGetDefaultPricesHandler := connect_go.NewUnaryHandler(
 		PaymentServiceGetDefaultPricesProcedure,
 		svc.GetDefaultPrices,
 		opts...,
-	))
-	mux.Handle(PaymentServiceCheckAdmittedProcedure, connect_go.NewUnaryHandler(
+	)
+	paymentServiceCheckAdmittedHandler := connect_go.NewUnaryHandler(
 		PaymentServiceCheckAdmittedProcedure,
 		svc.CheckAdmitted,
 		opts...,
-	))
-	mux.Handle(PaymentServiceRequestAdmissionProcedure, connect_go.NewUnaryHandler(
+	)
+	paymentServiceRequestAdmissionHandler := connect_go.NewUnaryHandler(
 		PaymentServiceRequestAdmissionProcedure,
 		svc.RequestAdmission,
 		opts...,
-	))
-	mux.Handle(PaymentServiceHasChargeableResourcesProcedure, connect_go.NewUnaryHandler(
+	)
+	paymentServiceHasChargeableResourcesHandler := connect_go.NewUnaryHandler(
 		PaymentServiceHasChargeableResourcesProcedure,
 		svc.HasChargeableResources,
 		opts...,
-	))
-	return "/api.v1.PaymentService/", mux
+	)
+	return "/api.v1.PaymentService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		switch r.URL.Path {
+		case PaymentServiceCreateOrUpdateCustomerProcedure:
+			paymentServiceCreateOrUpdateCustomerHandler.ServeHTTP(w, r)
+		case PaymentServiceGetCustomerProcedure:
+			paymentServiceGetCustomerHandler.ServeHTTP(w, r)
+		case PaymentServiceGetCustomerWithLoginProcedure:
+			paymentServiceGetCustomerWithLoginHandler.ServeHTTP(w, r)
+		case PaymentServiceCheckIfCustomerExistsProcedure:
+			paymentServiceCheckIfCustomerExistsHandler.ServeHTTP(w, r)
+		case PaymentServiceHasPaymentMethodProcedure:
+			paymentServiceHasPaymentMethodHandler.ServeHTTP(w, r)
+		case PaymentServiceDeletePaymentMethodProcedure:
+			paymentServiceDeletePaymentMethodHandler.ServeHTTP(w, r)
+		case PaymentServiceGetSubscriptionUsageProcedure:
+			paymentServiceGetSubscriptionUsageHandler.ServeHTTP(w, r)
+		case PaymentServiceGetInvoicesProcedure:
+			paymentServiceGetInvoicesHandler.ServeHTTP(w, r)
+		case PaymentServiceGetDefaultPricesProcedure:
+			paymentServiceGetDefaultPricesHandler.ServeHTTP(w, r)
+		case PaymentServiceCheckAdmittedProcedure:
+			paymentServiceCheckAdmittedHandler.ServeHTTP(w, r)
+		case PaymentServiceRequestAdmissionProcedure:
+			paymentServiceRequestAdmissionHandler.ServeHTTP(w, r)
+		case PaymentServiceHasChargeableResourcesProcedure:
+			paymentServiceHasChargeableResourcesHandler.ServeHTTP(w, r)
+		default:
+			http.NotFound(w, r)
+		}
+	})
 }
 
 // UnimplementedPaymentServiceHandler returns CodeUnimplemented from all methods.

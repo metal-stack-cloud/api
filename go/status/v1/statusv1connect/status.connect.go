@@ -81,13 +81,19 @@ type StatusServiceHandler interface {
 // By default, handlers support the Connect, gRPC, and gRPC-Web protocols with the binary Protobuf
 // and JSON codecs. They also support gzip compression.
 func NewStatusServiceHandler(svc StatusServiceHandler, opts ...connect_go.HandlerOption) (string, http.Handler) {
-	mux := http.NewServeMux()
-	mux.Handle(StatusServiceGetProcedure, connect_go.NewUnaryHandler(
+	statusServiceGetHandler := connect_go.NewUnaryHandler(
 		StatusServiceGetProcedure,
 		svc.Get,
 		opts...,
-	))
-	return "/status.v1.StatusService/", mux
+	)
+	return "/status.v1.StatusService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		switch r.URL.Path {
+		case StatusServiceGetProcedure:
+			statusServiceGetHandler.ServeHTTP(w, r)
+		default:
+			http.NotFound(w, r)
+		}
+	})
 }
 
 // UnimplementedStatusServiceHandler returns CodeUnimplemented from all methods.

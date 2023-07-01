@@ -111,23 +111,33 @@ type TenantServiceHandler interface {
 // By default, handlers support the Connect, gRPC, and gRPC-Web protocols with the binary Protobuf
 // and JSON codecs. They also support gzip compression.
 func NewTenantServiceHandler(svc TenantServiceHandler, opts ...connect_go.HandlerOption) (string, http.Handler) {
-	mux := http.NewServeMux()
-	mux.Handle(TenantServiceListProcedure, connect_go.NewUnaryHandler(
+	tenantServiceListHandler := connect_go.NewUnaryHandler(
 		TenantServiceListProcedure,
 		svc.List,
 		opts...,
-	))
-	mux.Handle(TenantServiceAdmitProcedure, connect_go.NewUnaryHandler(
+	)
+	tenantServiceAdmitHandler := connect_go.NewUnaryHandler(
 		TenantServiceAdmitProcedure,
 		svc.Admit,
 		opts...,
-	))
-	mux.Handle(TenantServiceRevokeProcedure, connect_go.NewUnaryHandler(
+	)
+	tenantServiceRevokeHandler := connect_go.NewUnaryHandler(
 		TenantServiceRevokeProcedure,
 		svc.Revoke,
 		opts...,
-	))
-	return "/admin.v1.TenantService/", mux
+	)
+	return "/admin.v1.TenantService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		switch r.URL.Path {
+		case TenantServiceListProcedure:
+			tenantServiceListHandler.ServeHTTP(w, r)
+		case TenantServiceAdmitProcedure:
+			tenantServiceAdmitHandler.ServeHTTP(w, r)
+		case TenantServiceRevokeProcedure:
+			tenantServiceRevokeHandler.ServeHTTP(w, r)
+		default:
+			http.NotFound(w, r)
+		}
+	})
 }
 
 // UnimplementedTenantServiceHandler returns CodeUnimplemented from all methods.
