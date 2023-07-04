@@ -4,6 +4,7 @@ package apitests
 import (
 	"testing"
 
+	apiclient "github.com/metal-stack-cloud/api/go/client"
 {{ range $name, $api := . -}}
 	"github.com/metal-stack-cloud/api/go{{ $api.Path }}/{{ $api.Name }}connect"
 	{{ $name }}mocks "github.com/metal-stack-cloud/api/go/tests/mocks{{ $api.Path }}/{{ $api.Name }}connect"
@@ -12,6 +13,18 @@ import (
 )
 
 type (
+	client struct {
+{{ range $name, $api := . -}}
+	{{ $name }}service *{{ $name}}
+{{ end }}
+	}
+
+	ClientMockFns struct {
+{{ range $name, $api := . -}}
+	{{ $name | title }}Mocks *{{ $name | title }}MockFns
+{{ end }}
+	}
+
 	wrapper struct {
 		t *testing.T
 	}
@@ -33,6 +46,20 @@ type (
 func New(t *testing.T) *wrapper {
 	return &wrapper{t: t}
 }
+
+func (w wrapper) Client(fns *ClientMockFns) *client {
+	return &client{
+{{ range $name, $api := . -}}
+	{{ $name }}service: w.{{ $name |title }}(fns.{{ $name | title }}Mocks),
+{{ end }}
+	}
+}
+
+{{ range $name, $api := . -}}
+func (c *client) {{ $name | title }}() apiclient.{{ $name | title }} {
+	return c.{{ $name }}service
+}
+{{ end }}
 
 {{ range $name, $api := . -}}
 func (w wrapper) {{ $name | title }}(fns *{{ $name | title }}MockFns) *{{ $name }} {
