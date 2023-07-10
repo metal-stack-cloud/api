@@ -9398,6 +9398,63 @@
       ]
     },
     {
+      "name": "api/v1/mail.proto",
+      "description": "",
+      "package": "api.v1",
+      "hasEnums": true,
+      "hasExtensions": false,
+      "hasMessages": false,
+      "hasServices": false,
+      "enums": [
+        {
+          "name": "MailType",
+          "longName": "MailType",
+          "fullName": "api.v1.MailType",
+          "description": "",
+          "values": [
+            {
+              "name": "MAIL_TYPE_UNSPECIFIED",
+              "number": "0",
+              "description": ""
+            },
+            {
+              "name": "MAIL_TYPE_ADMITTED",
+              "number": "1",
+              "description": ""
+            },
+            {
+              "name": "MAIL_TYPE_COUPON_PERCENTAGE_USED_WARNING",
+              "number": "2",
+              "description": ""
+            },
+            {
+              "name": "MAIL_TYPE_COUPON_COMPLETELY_USED_WARNING",
+              "number": "3",
+              "description": ""
+            },
+            {
+              "name": "MAIL_TYPE_PAYMENT_UPDATED",
+              "number": "4",
+              "description": ""
+            },
+            {
+              "name": "MAIL_TYPE_ADMISSION_REQUESTED",
+              "number": "5",
+              "description": ""
+            },
+            {
+              "name": "MAIL_TYPE_WELCOME",
+              "number": "6",
+              "description": ""
+            }
+          ]
+        }
+      ],
+      "extensions": [],
+      "messages": [],
+      "services": []
+    },
+    {
       "name": "api/v1/token.proto",
       "description": "",
       "package": "api.v1",
