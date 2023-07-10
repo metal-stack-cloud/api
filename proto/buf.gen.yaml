@@ -31,7 +31,7 @@ plugins:
     out: ../docs
     opt: json,docs.json
   # Create python client
-  # - plugin: buf.build/protocolbuffers/python:v21.12
+  # - plugin: buf.build/protocolbuffers/python:v23.4
   #   out: ../python
-  # - plugin: buf.build/grpc/python:v1.52.0
+  # - plugin: buf.build/grpc/python:v1.56.0
   #   out: ../python
