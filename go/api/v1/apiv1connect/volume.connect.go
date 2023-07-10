@@ -119,23 +119,33 @@ type VolumeServiceHandler interface {
 // By default, handlers support the Connect, gRPC, and gRPC-Web protocols with the binary Protobuf
 // and JSON codecs. They also support gzip compression.
 func NewVolumeServiceHandler(svc VolumeServiceHandler, opts ...connect_go.HandlerOption) (string, http.Handler) {
-	mux := http.NewServeMux()
-	mux.Handle(VolumeServiceGetProcedure, connect_go.NewUnaryHandler(
+	volumeServiceGetHandler := connect_go.NewUnaryHandler(
 		VolumeServiceGetProcedure,
 		svc.Get,
 		opts...,
-	))
-	mux.Handle(VolumeServiceListProcedure, connect_go.NewUnaryHandler(
+	)
+	volumeServiceListHandler := connect_go.NewUnaryHandler(
 		VolumeServiceListProcedure,
 		svc.List,
 		opts...,
-	))
-	mux.Handle(VolumeServiceDeleteProcedure, connect_go.NewUnaryHandler(
+	)
+	volumeServiceDeleteHandler := connect_go.NewUnaryHandler(
 		VolumeServiceDeleteProcedure,
 		svc.Delete,
 		opts...,
-	))
-	return "/api.v1.VolumeService/", mux
+	)
+	return "/api.v1.VolumeService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		switch r.URL.Path {
+		case VolumeServiceGetProcedure:
+			volumeServiceGetHandler.ServeHTTP(w, r)
+		case VolumeServiceListProcedure:
+			volumeServiceListHandler.ServeHTTP(w, r)
+		case VolumeServiceDeleteProcedure:
+			volumeServiceDeleteHandler.ServeHTTP(w, r)
+		default:
+			http.NotFound(w, r)
+		}
+	})
 }
 
 // UnimplementedVolumeServiceHandler returns CodeUnimplemented from all methods.
@@ -223,23 +233,33 @@ type SnapshotServiceHandler interface {
 // By default, handlers support the Connect, gRPC, and gRPC-Web protocols with the binary Protobuf
 // and JSON codecs. They also support gzip compression.
 func NewSnapshotServiceHandler(svc SnapshotServiceHandler, opts ...connect_go.HandlerOption) (string, http.Handler) {
-	mux := http.NewServeMux()
-	mux.Handle(SnapshotServiceGetProcedure, connect_go.NewUnaryHandler(
+	snapshotServiceGetHandler := connect_go.NewUnaryHandler(
 		SnapshotServiceGetProcedure,
 		svc.Get,
 		opts...,
-	))
-	mux.Handle(SnapshotServiceListProcedure, connect_go.NewUnaryHandler(
+	)
+	snapshotServiceListHandler := connect_go.NewUnaryHandler(
 		SnapshotServiceListProcedure,
 		svc.List,
 		opts...,
-	))
-	mux.Handle(SnapshotServiceDeleteProcedure, connect_go.NewUnaryHandler(
+	)
+	snapshotServiceDeleteHandler := connect_go.NewUnaryHandler(
 		SnapshotServiceDeleteProcedure,
 		svc.Delete,
 		opts...,
-	))
-	return "/api.v1.SnapshotService/", mux
+	)
+	return "/api.v1.SnapshotService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		switch r.URL.Path {
+		case SnapshotServiceGetProcedure:
+			snapshotServiceGetHandler.ServeHTTP(w, r)
+		case SnapshotServiceListProcedure:
+			snapshotServiceListHandler.ServeHTTP(w, r)
+		case SnapshotServiceDeleteProcedure:
+			snapshotServiceDeleteHandler.ServeHTTP(w, r)
+		default:
+			http.NotFound(w, r)
+		}
+	})
 }
 
 // UnimplementedSnapshotServiceHandler returns CodeUnimplemented from all methods.

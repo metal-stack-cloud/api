@@ -6,6 +6,7 @@ import (
 
 	"github.com/metal-stack-cloud/api/go/admin/v1/adminv1connect"
 	"github.com/metal-stack-cloud/api/go/api/v1/apiv1connect"
+	apiclient "github.com/metal-stack-cloud/api/go/client"
 	"github.com/metal-stack-cloud/api/go/status/v1/statusv1connect"
 	adminv1mocks "github.com/metal-stack-cloud/api/go/tests/mocks/admin/v1/adminv1connect"
 	apiv1mocks "github.com/metal-stack-cloud/api/go/tests/mocks/api/v1/apiv1connect"
@@ -15,6 +16,18 @@ import (
 )
 
 type (
+	client struct {
+		adminv1service  *adminv1
+		apiv1service    *apiv1
+		statusv1service *statusv1
+	}
+
+	ClientMockFns struct {
+		Adminv1Mocks  *Adminv1MockFns
+		Apiv1Mocks    *Apiv1MockFns
+		Statusv1Mocks *Statusv1MockFns
+	}
+
 	wrapper struct {
 		t *testing.T
 	}
@@ -69,6 +82,24 @@ type (
 
 func New(t *testing.T) *wrapper {
 	return &wrapper{t: t}
+}
+
+func (w wrapper) Client(fns *ClientMockFns) *client {
+	return &client{
+		adminv1service:  w.Adminv1(fns.Adminv1Mocks),
+		apiv1service:    w.Apiv1(fns.Apiv1Mocks),
+		statusv1service: w.Statusv1(fns.Statusv1Mocks),
+	}
+}
+
+func (c *client) Adminv1() apiclient.Adminv1 {
+	return c.adminv1service
+}
+func (c *client) Apiv1() apiclient.Apiv1 {
+	return c.apiv1service
+}
+func (c *client) Statusv1() apiclient.Statusv1 {
+	return c.statusv1service
 }
 
 func (w wrapper) Adminv1(fns *Adminv1MockFns) *adminv1 {

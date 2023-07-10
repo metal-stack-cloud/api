@@ -10,6 +10,11 @@ import (
 )
 
 type (
+	Client interface {
+		Adminv1() Adminv1
+		Apiv1() Apiv1
+		Statusv1() Statusv1
+	}
 	client struct {
 		config DialConfig
 	}
@@ -64,7 +69,7 @@ type (
 	}
 )
 
-func New(config DialConfig) *client {
+func New(config DialConfig) Client {
 	return &client{
 		config: config,
 	}

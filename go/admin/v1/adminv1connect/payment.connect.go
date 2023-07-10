@@ -98,18 +98,26 @@ type PaymentServiceHandler interface {
 // By default, handlers support the Connect, gRPC, and gRPC-Web protocols with the binary Protobuf
 // and JSON codecs. They also support gzip compression.
 func NewPaymentServiceHandler(svc PaymentServiceHandler, opts ...connect_go.HandlerOption) (string, http.Handler) {
-	mux := http.NewServeMux()
-	mux.Handle(PaymentServiceListCouponsProcedure, connect_go.NewUnaryHandler(
+	paymentServiceListCouponsHandler := connect_go.NewUnaryHandler(
 		PaymentServiceListCouponsProcedure,
 		svc.ListCoupons,
 		opts...,
-	))
-	mux.Handle(PaymentServiceAddCouponToCustomerProcedure, connect_go.NewUnaryHandler(
+	)
+	paymentServiceAddCouponToCustomerHandler := connect_go.NewUnaryHandler(
 		PaymentServiceAddCouponToCustomerProcedure,
 		svc.AddCouponToCustomer,
 		opts...,
-	))
-	return "/admin.v1.PaymentService/", mux
+	)
+	return "/admin.v1.PaymentService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		switch r.URL.Path {
+		case PaymentServiceListCouponsProcedure:
+			paymentServiceListCouponsHandler.ServeHTTP(w, r)
+		case PaymentServiceAddCouponToCustomerProcedure:
+			paymentServiceAddCouponToCustomerHandler.ServeHTTP(w, r)
+		default:
+			http.NotFound(w, r)
+		}
+	})
 }
 
 // UnimplementedPaymentServiceHandler returns CodeUnimplemented from all methods.

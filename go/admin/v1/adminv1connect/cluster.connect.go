@@ -127,28 +127,40 @@ type ClusterServiceHandler interface {
 // By default, handlers support the Connect, gRPC, and gRPC-Web protocols with the binary Protobuf
 // and JSON codecs. They also support gzip compression.
 func NewClusterServiceHandler(svc ClusterServiceHandler, opts ...connect_go.HandlerOption) (string, http.Handler) {
-	mux := http.NewServeMux()
-	mux.Handle(ClusterServiceGetProcedure, connect_go.NewUnaryHandler(
+	clusterServiceGetHandler := connect_go.NewUnaryHandler(
 		ClusterServiceGetProcedure,
 		svc.Get,
 		opts...,
-	))
-	mux.Handle(ClusterServiceListProcedure, connect_go.NewUnaryHandler(
+	)
+	clusterServiceListHandler := connect_go.NewUnaryHandler(
 		ClusterServiceListProcedure,
 		svc.List,
 		opts...,
-	))
-	mux.Handle(ClusterServiceCredentialsProcedure, connect_go.NewUnaryHandler(
+	)
+	clusterServiceCredentialsHandler := connect_go.NewUnaryHandler(
 		ClusterServiceCredentialsProcedure,
 		svc.Credentials,
 		opts...,
-	))
-	mux.Handle(ClusterServiceOperateProcedure, connect_go.NewUnaryHandler(
+	)
+	clusterServiceOperateHandler := connect_go.NewUnaryHandler(
 		ClusterServiceOperateProcedure,
 		svc.Operate,
 		opts...,
-	))
-	return "/admin.v1.ClusterService/", mux
+	)
+	return "/admin.v1.ClusterService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		switch r.URL.Path {
+		case ClusterServiceGetProcedure:
+			clusterServiceGetHandler.ServeHTTP(w, r)
+		case ClusterServiceListProcedure:
+			clusterServiceListHandler.ServeHTTP(w, r)
+		case ClusterServiceCredentialsProcedure:
+			clusterServiceCredentialsHandler.ServeHTTP(w, r)
+		case ClusterServiceOperateProcedure:
+			clusterServiceOperateHandler.ServeHTTP(w, r)
+		default:
+			http.NotFound(w, r)
+		}
+	})
 }
 
 // UnimplementedClusterServiceHandler returns CodeUnimplemented from all methods.

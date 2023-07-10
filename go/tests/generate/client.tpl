@@ -10,6 +10,11 @@ import (
 )
 
 type (
+	Client interface {
+{{ range $name, $api := . -}}
+	{{ $name | title }}() {{ $name | title }}
+{{ end }}
+	}
 	client struct {
 		config DialConfig
 	}
@@ -29,7 +34,7 @@ type (
 {{ end }}
 )
 
-func New(config DialConfig) *client {
+func New(config DialConfig) Client {
 	return &client{
 		config: config,
 	}

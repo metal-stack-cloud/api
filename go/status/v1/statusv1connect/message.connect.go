@@ -81,13 +81,19 @@ type MessageServiceHandler interface {
 // By default, handlers support the Connect, gRPC, and gRPC-Web protocols with the binary Protobuf
 // and JSON codecs. They also support gzip compression.
 func NewMessageServiceHandler(svc MessageServiceHandler, opts ...connect_go.HandlerOption) (string, http.Handler) {
-	mux := http.NewServeMux()
-	mux.Handle(MessageServiceListProcedure, connect_go.NewUnaryHandler(
+	messageServiceListHandler := connect_go.NewUnaryHandler(
 		MessageServiceListProcedure,
 		svc.List,
 		opts...,
-	))
-	return "/status.v1.MessageService/", mux
+	)
+	return "/status.v1.MessageService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		switch r.URL.Path {
+		case MessageServiceListProcedure:
+			messageServiceListHandler.ServeHTTP(w, r)
+		default:
+			http.NotFound(w, r)
+		}
+	})
 }
 
 // UnimplementedMessageServiceHandler returns CodeUnimplemented from all methods.

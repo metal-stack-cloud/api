@@ -81,13 +81,19 @@ type AssetServiceHandler interface {
 // By default, handlers support the Connect, gRPC, and gRPC-Web protocols with the binary Protobuf
 // and JSON codecs. They also support gzip compression.
 func NewAssetServiceHandler(svc AssetServiceHandler, opts ...connect_go.HandlerOption) (string, http.Handler) {
-	mux := http.NewServeMux()
-	mux.Handle(AssetServiceListProcedure, connect_go.NewUnaryHandler(
+	assetServiceListHandler := connect_go.NewUnaryHandler(
 		AssetServiceListProcedure,
 		svc.List,
 		opts...,
-	))
-	return "/api.v1.AssetService/", mux
+	)
+	return "/api.v1.AssetService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		switch r.URL.Path {
+		case AssetServiceListProcedure:
+			assetServiceListHandler.ServeHTTP(w, r)
+		default:
+			http.NotFound(w, r)
+		}
+	})
 }
 
 // UnimplementedAssetServiceHandler returns CodeUnimplemented from all methods.

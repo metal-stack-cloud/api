@@ -114,23 +114,33 @@ type StorageServiceHandler interface {
 // By default, handlers support the Connect, gRPC, and gRPC-Web protocols with the binary Protobuf
 // and JSON codecs. They also support gzip compression.
 func NewStorageServiceHandler(svc StorageServiceHandler, opts ...connect_go.HandlerOption) (string, http.Handler) {
-	mux := http.NewServeMux()
-	mux.Handle(StorageServiceClusterInfoProcedure, connect_go.NewUnaryHandler(
+	storageServiceClusterInfoHandler := connect_go.NewUnaryHandler(
 		StorageServiceClusterInfoProcedure,
 		svc.ClusterInfo,
 		opts...,
-	))
-	mux.Handle(StorageServiceListVolumesProcedure, connect_go.NewUnaryHandler(
+	)
+	storageServiceListVolumesHandler := connect_go.NewUnaryHandler(
 		StorageServiceListVolumesProcedure,
 		svc.ListVolumes,
 		opts...,
-	))
-	mux.Handle(StorageServiceListSnapshotsProcedure, connect_go.NewUnaryHandler(
+	)
+	storageServiceListSnapshotsHandler := connect_go.NewUnaryHandler(
 		StorageServiceListSnapshotsProcedure,
 		svc.ListSnapshots,
 		opts...,
-	))
-	return "/admin.v1.StorageService/", mux
+	)
+	return "/admin.v1.StorageService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		switch r.URL.Path {
+		case StorageServiceClusterInfoProcedure:
+			storageServiceClusterInfoHandler.ServeHTTP(w, r)
+		case StorageServiceListVolumesProcedure:
+			storageServiceListVolumesHandler.ServeHTTP(w, r)
+		case StorageServiceListSnapshotsProcedure:
+			storageServiceListSnapshotsHandler.ServeHTTP(w, r)
+		default:
+			http.NotFound(w, r)
+		}
+	})
 }
 
 // UnimplementedStorageServiceHandler returns CodeUnimplemented from all methods.
