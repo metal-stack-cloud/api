@@ -3,6 +3,7 @@ syntax = "proto3";
 package api.v1;
 
 import "google/protobuf/any.proto";
+import "validate/validate.proto";
 
 enum MailType {
   MAIL_TYPE_UNSPECIFIED = 0;
@@ -15,7 +16,10 @@ enum MailType {
 }
 
 message Email {
-  repeated string to = 1;
+  repeated string to = 1 [(validate.rules).repeated = {
+    unique: true
+    min_items: 1
+  }];
   optional string subject = 2;
   MailType mail_type = 3;
   map<string, google.protobuf.Any> values = 4;

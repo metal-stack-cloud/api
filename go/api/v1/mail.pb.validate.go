@@ -56,6 +56,38 @@ func (m *Email) validate(all bool) error {
 
 	var errors []error
 
+	if len(m.GetTo()) < 1 {
+		err := EmailValidationError{
+			field:  "To",
+			reason: "value must contain at least 1 item(s)",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
+	_Email_To_Unique := make(map[string]struct{}, len(m.GetTo()))
+
+	for idx, item := range m.GetTo() {
+		_, _ = idx, item
+
+		if _, exists := _Email_To_Unique[item]; exists {
+			err := EmailValidationError{
+				field:  fmt.Sprintf("To[%v]", idx),
+				reason: "repeated value must contain unique items",
+			}
+			if !all {
+				return err
+			}
+			errors = append(errors, err)
+		} else {
+			_Email_To_Unique[item] = struct{}{}
+		}
+
+		// no validation rules for To[idx]
+	}
+
 	// no validation rules for MailType
 
 	{
