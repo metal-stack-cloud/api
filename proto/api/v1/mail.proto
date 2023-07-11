@@ -2,6 +2,8 @@ syntax = "proto3";
 
 package api.v1;
 
+import "google/protobuf/any.proto";
+
 enum MailType {
   MAIL_TYPE_UNSPECIFIED = 0;
   MAIL_TYPE_ADMITTED = 1;
@@ -10,4 +12,11 @@ enum MailType {
   MAIL_TYPE_PAYMENT_UPDATED = 4;
   MAIL_TYPE_ADMISSION_REQUESTED = 5;
   MAIL_TYPE_WELCOME = 6;
+}
+
+message Email {
+  repeated string to = 1;
+  optional string subject = 2;
+  MailType mail_type = 3;
+  map<string, google.protobuf.Any> values = 4;
 }

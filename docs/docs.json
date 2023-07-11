@@ -9403,7 +9403,7 @@
       "package": "api.v1",
       "hasEnums": true,
       "hasExtensions": false,
-      "hasMessages": false,
+      "hasMessages": true,
       "hasServices": false,
       "enums": [
         {
@@ -9451,7 +9451,104 @@
         }
       ],
       "extensions": [],
-      "messages": [],
+      "messages": [
+        {
+          "name": "Email",
+          "longName": "Email",
+          "fullName": "api.v1.Email",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": true,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "to",
+              "description": "",
+              "label": "repeated",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "subject",
+              "description": "",
+              "label": "optional",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "_subject",
+              "defaultValue": ""
+            },
+            {
+              "name": "mail_type",
+              "description": "",
+              "label": "",
+              "type": "MailType",
+              "longType": "MailType",
+              "fullType": "api.v1.MailType",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "values",
+              "description": "",
+              "label": "repeated",
+              "type": "ValuesEntry",
+              "longType": "Email.ValuesEntry",
+              "fullType": "api.v1.Email.ValuesEntry",
+              "ismap": true,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "ValuesEntry",
+          "longName": "Email.ValuesEntry",
+          "fullName": "api.v1.Email.ValuesEntry",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "key",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "value",
+              "description": "",
+              "label": "",
+              "type": "Any",
+              "longType": "google.protobuf.Any",
+              "fullType": "google.protobuf.Any",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        }
+      ],
       "services": []
     },
     {

@@ -1,3 +1,5 @@
+import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
+import { Any, Message, proto3 } from "@bufbuild/protobuf";
 /**
  * @generated from enum api.v1.MailType
  */
@@ -30,4 +32,35 @@ export declare enum MailType {
      * @generated from enum value: MAIL_TYPE_WELCOME = 6;
      */
     WELCOME = 6
+}
+/**
+ * @generated from message api.v1.Email
+ */
+export declare class Email extends Message<Email> {
+    /**
+     * @generated from field: repeated string to = 1;
+     */
+    to: string[];
+    /**
+     * @generated from field: optional string subject = 2;
+     */
+    subject?: string;
+    /**
+     * @generated from field: api.v1.MailType mail_type = 3;
+     */
+    mailType: MailType;
+    /**
+     * @generated from field: map<string, google.protobuf.Any> values = 4;
+     */
+    values: {
+        [key: string]: Any;
+    };
+    constructor(data?: PartialMessage<Email>);
+    static readonly runtime: typeof proto3;
+    static readonly typeName = "api.v1.Email";
+    static readonly fields: FieldList;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Email;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): Email;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): Email;
+    static equals(a: Email | PlainMessage<Email> | undefined, b: Email | PlainMessage<Email> | undefined): boolean;
 }

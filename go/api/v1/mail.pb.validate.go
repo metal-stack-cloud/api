@@ -34,3 +34,153 @@ var (
 	_ = anypb.Any{}
 	_ = sort.Sort
 )
+
+// Validate checks the field values on Email with the rules defined in the
+// proto definition for this message. If any rules are violated, the first
+// error encountered is returned, or nil if there are no violations.
+func (m *Email) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on Email with the rules defined in the
+// proto definition for this message. If any rules are violated, the result is
+// a list of violation errors wrapped in EmailMultiError, or nil if none found.
+func (m *Email) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *Email) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	// no validation rules for MailType
+
+	{
+		sorted_keys := make([]string, len(m.GetValues()))
+		i := 0
+		for key := range m.GetValues() {
+			sorted_keys[i] = key
+			i++
+		}
+		sort.Slice(sorted_keys, func(i, j int) bool { return sorted_keys[i] < sorted_keys[j] })
+		for _, key := range sorted_keys {
+			val := m.GetValues()[key]
+			_ = val
+
+			// no validation rules for Values[key]
+
+			if all {
+				switch v := interface{}(val).(type) {
+				case interface{ ValidateAll() error }:
+					if err := v.ValidateAll(); err != nil {
+						errors = append(errors, EmailValidationError{
+							field:  fmt.Sprintf("Values[%v]", key),
+							reason: "embedded message failed validation",
+							cause:  err,
+						})
+					}
+				case interface{ Validate() error }:
+					if err := v.Validate(); err != nil {
+						errors = append(errors, EmailValidationError{
+							field:  fmt.Sprintf("Values[%v]", key),
+							reason: "embedded message failed validation",
+							cause:  err,
+						})
+					}
+				}
+			} else if v, ok := interface{}(val).(interface{ Validate() error }); ok {
+				if err := v.Validate(); err != nil {
+					return EmailValidationError{
+						field:  fmt.Sprintf("Values[%v]", key),
+						reason: "embedded message failed validation",
+						cause:  err,
+					}
+				}
+			}
+
+		}
+	}
+
+	if m.Subject != nil {
+		// no validation rules for Subject
+	}
+
+	if len(errors) > 0 {
+		return EmailMultiError(errors)
+	}
+
+	return nil
+}
+
+// EmailMultiError is an error wrapping multiple validation errors returned by
+// Email.ValidateAll() if the designated constraints aren't met.
+type EmailMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m EmailMultiError) Error() string {
+	var msgs []string
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m EmailMultiError) AllErrors() []error { return m }
+
+// EmailValidationError is the validation error returned by Email.Validate if
+// the designated constraints aren't met.
+type EmailValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e EmailValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e EmailValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e EmailValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e EmailValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e EmailValidationError) ErrorName() string { return "EmailValidationError" }
+
+// Error satisfies the builtin error interface
+func (e EmailValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sEmail.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = EmailValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = EmailValidationError{}

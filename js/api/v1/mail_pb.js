@@ -4,7 +4,7 @@
 /* eslint-disable */
 // @ts-nocheck
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.MailType = void 0;
+exports.Email = exports.MailType = void 0;
 const protobuf_1 = require("@bufbuild/protobuf");
 /**
  * @generated from enum api.v1.MailType
@@ -49,4 +49,46 @@ protobuf_1.proto3.util.setEnumType(MailType, "api.v1.MailType", [
     { no: 4, name: "MAIL_TYPE_PAYMENT_UPDATED" },
     { no: 5, name: "MAIL_TYPE_ADMISSION_REQUESTED" },
     { no: 6, name: "MAIL_TYPE_WELCOME" },
+]);
+/**
+ * @generated from message api.v1.Email
+ */
+class Email extends protobuf_1.Message {
+    constructor(data) {
+        super();
+        /**
+         * @generated from field: repeated string to = 1;
+         */
+        this.to = [];
+        /**
+         * @generated from field: api.v1.MailType mail_type = 3;
+         */
+        this.mailType = MailType.UNSPECIFIED;
+        /**
+         * @generated from field: map<string, google.protobuf.Any> values = 4;
+         */
+        this.values = {};
+        protobuf_1.proto3.util.initPartial(data, this);
+    }
+    static fromBinary(bytes, options) {
+        return new Email().fromBinary(bytes, options);
+    }
+    static fromJson(jsonValue, options) {
+        return new Email().fromJson(jsonValue, options);
+    }
+    static fromJsonString(jsonString, options) {
+        return new Email().fromJsonString(jsonString, options);
+    }
+    static equals(a, b) {
+        return protobuf_1.proto3.util.equals(Email, a, b);
+    }
+}
+exports.Email = Email;
+Email.runtime = protobuf_1.proto3;
+Email.typeName = "api.v1.Email";
+Email.fields = protobuf_1.proto3.util.newFieldList(() => [
+    { no: 1, name: "to", kind: "scalar", T: 9 /* ScalarType.STRING */, repeated: true },
+    { no: 2, name: "subject", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
+    { no: 3, name: "mail_type", kind: "enum", T: protobuf_1.proto3.getEnumType(MailType) },
+    { no: 4, name: "values", kind: "map", K: 9 /* ScalarType.STRING */, V: { kind: "message", T: protobuf_1.Any } },
 ]);

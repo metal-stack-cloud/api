@@ -3,7 +3,8 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import { proto3 } from "@bufbuild/protobuf";
+import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
+import { Any, Message, proto3 } from "@bufbuild/protobuf";
 
 /**
  * @generated from enum api.v1.MailType
@@ -54,4 +55,59 @@ proto3.util.setEnumType(MailType, "api.v1.MailType", [
   { no: 5, name: "MAIL_TYPE_ADMISSION_REQUESTED" },
   { no: 6, name: "MAIL_TYPE_WELCOME" },
 ]);
+
+/**
+ * @generated from message api.v1.Email
+ */
+export class Email extends Message<Email> {
+  /**
+   * @generated from field: repeated string to = 1;
+   */
+  to: string[] = [];
+
+  /**
+   * @generated from field: optional string subject = 2;
+   */
+  subject?: string;
+
+  /**
+   * @generated from field: api.v1.MailType mail_type = 3;
+   */
+  mailType = MailType.UNSPECIFIED;
+
+  /**
+   * @generated from field: map<string, google.protobuf.Any> values = 4;
+   */
+  values: { [key: string]: Any } = {};
+
+  constructor(data?: PartialMessage<Email>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "api.v1.Email";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "to", kind: "scalar", T: 9 /* ScalarType.STRING */, repeated: true },
+    { no: 2, name: "subject", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
+    { no: 3, name: "mail_type", kind: "enum", T: proto3.getEnumType(MailType) },
+    { no: 4, name: "values", kind: "map", K: 9 /* ScalarType.STRING */, V: {kind: "message", T: Any} },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Email {
+    return new Email().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): Email {
+    return new Email().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): Email {
+    return new Email().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: Email | PlainMessage<Email> | undefined, b: Email | PlainMessage<Email> | undefined): boolean {
+    return proto3.util.equals(Email, a, b);
+  }
+}
 
