@@ -64,10 +64,6 @@ class Email extends protobuf_1.Message {
          * @generated from field: api.v1.MailType mail_type = 3;
          */
         this.mailType = MailType.UNSPECIFIED;
-        /**
-         * @generated from field: map<string, google.protobuf.Any> values = 4;
-         */
-        this.values = {};
         protobuf_1.proto3.util.initPartial(data, this);
     }
     static fromBinary(bytes, options) {
@@ -90,5 +86,6 @@ Email.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 1, name: "to", kind: "scalar", T: 9 /* ScalarType.STRING */, repeated: true },
     { no: 2, name: "subject", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
     { no: 3, name: "mail_type", kind: "enum", T: protobuf_1.proto3.getEnumType(MailType) },
-    { no: 4, name: "values", kind: "map", K: 9 /* ScalarType.STRING */, V: { kind: "message", T: protobuf_1.Any } },
+    { no: 4, name: "values", kind: "message", T: protobuf_1.Struct },
+    { no: 5, name: "msg", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
 ]);

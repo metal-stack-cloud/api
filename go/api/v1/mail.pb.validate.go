@@ -90,54 +90,41 @@ func (m *Email) validate(all bool) error {
 
 	// no validation rules for MailType
 
-	{
-		sorted_keys := make([]string, len(m.GetValues()))
-		i := 0
-		for key := range m.GetValues() {
-			sorted_keys[i] = key
-			i++
-		}
-		sort.Slice(sorted_keys, func(i, j int) bool { return sorted_keys[i] < sorted_keys[j] })
-		for _, key := range sorted_keys {
-			val := m.GetValues()[key]
-			_ = val
-
-			// no validation rules for Values[key]
-
-			if all {
-				switch v := interface{}(val).(type) {
-				case interface{ ValidateAll() error }:
-					if err := v.ValidateAll(); err != nil {
-						errors = append(errors, EmailValidationError{
-							field:  fmt.Sprintf("Values[%v]", key),
-							reason: "embedded message failed validation",
-							cause:  err,
-						})
-					}
-				case interface{ Validate() error }:
-					if err := v.Validate(); err != nil {
-						errors = append(errors, EmailValidationError{
-							field:  fmt.Sprintf("Values[%v]", key),
-							reason: "embedded message failed validation",
-							cause:  err,
-						})
-					}
-				}
-			} else if v, ok := interface{}(val).(interface{ Validate() error }); ok {
-				if err := v.Validate(); err != nil {
-					return EmailValidationError{
-						field:  fmt.Sprintf("Values[%v]", key),
-						reason: "embedded message failed validation",
-						cause:  err,
-					}
-				}
+	if all {
+		switch v := interface{}(m.GetValues()).(type) {
+		case interface{ ValidateAll() error }:
+			if err := v.ValidateAll(); err != nil {
+				errors = append(errors, EmailValidationError{
+					field:  "Values",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
 			}
-
+		case interface{ Validate() error }:
+			if err := v.Validate(); err != nil {
+				errors = append(errors, EmailValidationError{
+					field:  "Values",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		}
+	} else if v, ok := interface{}(m.GetValues()).(interface{ Validate() error }); ok {
+		if err := v.Validate(); err != nil {
+			return EmailValidationError{
+				field:  "Values",
+				reason: "embedded message failed validation",
+				cause:  err,
+			}
 		}
 	}
 
 	if m.Subject != nil {
 		// no validation rules for Subject
+	}
+
+	if m.Msg != nil {
+		// no validation rules for Msg
 	}
 
 	if len(errors) > 0 {

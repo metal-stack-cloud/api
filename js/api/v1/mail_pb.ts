@@ -4,7 +4,7 @@
 // @ts-nocheck
 
 import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
-import { Any, Message, proto3 } from "@bufbuild/protobuf";
+import { Message, proto3, Struct } from "@bufbuild/protobuf";
 
 /**
  * @generated from enum api.v1.MailType
@@ -76,9 +76,14 @@ export class Email extends Message<Email> {
   mailType = MailType.UNSPECIFIED;
 
   /**
-   * @generated from field: map<string, google.protobuf.Any> values = 4;
+   * @generated from field: google.protobuf.Struct values = 4;
    */
-  values: { [key: string]: Any } = {};
+  values?: Struct;
+
+  /**
+   * @generated from field: optional string msg = 5;
+   */
+  msg?: string;
 
   constructor(data?: PartialMessage<Email>) {
     super();
@@ -91,7 +96,8 @@ export class Email extends Message<Email> {
     { no: 1, name: "to", kind: "scalar", T: 9 /* ScalarType.STRING */, repeated: true },
     { no: 2, name: "subject", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
     { no: 3, name: "mail_type", kind: "enum", T: proto3.getEnumType(MailType) },
-    { no: 4, name: "values", kind: "map", K: 9 /* ScalarType.STRING */, V: {kind: "message", T: Any} },
+    { no: 4, name: "values", kind: "message", T: Struct },
+    { no: 5, name: "msg", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Email {

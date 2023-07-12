@@ -9513,49 +9513,25 @@
             {
               "name": "values",
               "description": "",
-              "label": "repeated",
-              "type": "ValuesEntry",
-              "longType": "Email.ValuesEntry",
-              "fullType": "api.v1.Email.ValuesEntry",
-              "ismap": true,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            }
-          ]
-        },
-        {
-          "name": "ValuesEntry",
-          "longName": "Email.ValuesEntry",
-          "fullName": "api.v1.Email.ValuesEntry",
-          "description": "",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "key",
-              "description": "",
               "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
+              "type": "Struct",
+              "longType": "google.protobuf.Struct",
+              "fullType": "google.protobuf.Struct",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
               "defaultValue": ""
             },
             {
-              "name": "value",
+              "name": "msg",
               "description": "",
-              "label": "",
-              "type": "Any",
-              "longType": "google.protobuf.Any",
-              "fullType": "google.protobuf.Any",
+              "label": "optional",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
               "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
+              "isoneof": true,
+              "oneofdecl": "_msg",
               "defaultValue": ""
             }
           ]
