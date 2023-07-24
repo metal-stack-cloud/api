@@ -15,6 +15,13 @@ enum MailType {
   MAIL_TYPE_WELCOME = 6;
 }
 
+enum MailFunction {
+  MAIL_FUNCTION_UNSPECIFIED = 0;
+  MAIL_FUNCTION_SEND = 1;
+  MAIL_FUNCTION_SEND_TEMPLATE = 2;
+  MAIL_FUNCTION_NOTIFY = 3;
+}
+
 message Email {
   repeated string to = 1 [(validate.rules).repeated = {
     unique: true
@@ -24,4 +31,5 @@ message Email {
   MailType mail_type = 3;
   google.protobuf.Struct values = 4;
   optional string msg = 5;
+  MailFunction mail_function = 6;
 }

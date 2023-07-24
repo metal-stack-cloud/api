@@ -57,6 +57,38 @@ proto3.util.setEnumType(MailType, "api.v1.MailType", [
 ]);
 
 /**
+ * @generated from enum api.v1.MailFunction
+ */
+export enum MailFunction {
+  /**
+   * @generated from enum value: MAIL_FUNCTION_UNSPECIFIED = 0;
+   */
+  UNSPECIFIED = 0,
+
+  /**
+   * @generated from enum value: MAIL_FUNCTION_SEND = 1;
+   */
+  SEND = 1,
+
+  /**
+   * @generated from enum value: MAIL_FUNCTION_SEND_TEMPLATE = 2;
+   */
+  SEND_TEMPLATE = 2,
+
+  /**
+   * @generated from enum value: MAIL_FUNCTION_NOTIFY = 3;
+   */
+  NOTIFY = 3,
+}
+// Retrieve enum metadata with: proto3.getEnumType(MailFunction)
+proto3.util.setEnumType(MailFunction, "api.v1.MailFunction", [
+  { no: 0, name: "MAIL_FUNCTION_UNSPECIFIED" },
+  { no: 1, name: "MAIL_FUNCTION_SEND" },
+  { no: 2, name: "MAIL_FUNCTION_SEND_TEMPLATE" },
+  { no: 3, name: "MAIL_FUNCTION_NOTIFY" },
+]);
+
+/**
  * @generated from message api.v1.Email
  */
 export class Email extends Message<Email> {
@@ -85,6 +117,11 @@ export class Email extends Message<Email> {
    */
   msg?: string;
 
+  /**
+   * @generated from field: api.v1.MailFunction mail_function = 6;
+   */
+  mailFunction = MailFunction.UNSPECIFIED;
+
   constructor(data?: PartialMessage<Email>) {
     super();
     proto3.util.initPartial(data, this);
@@ -98,6 +135,7 @@ export class Email extends Message<Email> {
     { no: 3, name: "mail_type", kind: "enum", T: proto3.getEnumType(MailType) },
     { no: 4, name: "values", kind: "message", T: Struct },
     { no: 5, name: "msg", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
+    { no: 6, name: "mail_function", kind: "enum", T: proto3.getEnumType(MailFunction) },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Email {

@@ -4,7 +4,7 @@
 /* eslint-disable */
 // @ts-nocheck
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Email = exports.MailType = void 0;
+exports.Email = exports.MailFunction = exports.MailType = void 0;
 const protobuf_1 = require("@bufbuild/protobuf");
 /**
  * @generated from enum api.v1.MailType
@@ -51,6 +51,35 @@ protobuf_1.proto3.util.setEnumType(MailType, "api.v1.MailType", [
     { no: 6, name: "MAIL_TYPE_WELCOME" },
 ]);
 /**
+ * @generated from enum api.v1.MailFunction
+ */
+var MailFunction;
+(function (MailFunction) {
+    /**
+     * @generated from enum value: MAIL_FUNCTION_UNSPECIFIED = 0;
+     */
+    MailFunction[MailFunction["UNSPECIFIED"] = 0] = "UNSPECIFIED";
+    /**
+     * @generated from enum value: MAIL_FUNCTION_SEND = 1;
+     */
+    MailFunction[MailFunction["SEND"] = 1] = "SEND";
+    /**
+     * @generated from enum value: MAIL_FUNCTION_SEND_TEMPLATE = 2;
+     */
+    MailFunction[MailFunction["SEND_TEMPLATE"] = 2] = "SEND_TEMPLATE";
+    /**
+     * @generated from enum value: MAIL_FUNCTION_NOTIFY = 3;
+     */
+    MailFunction[MailFunction["NOTIFY"] = 3] = "NOTIFY";
+})(MailFunction || (exports.MailFunction = MailFunction = {}));
+// Retrieve enum metadata with: proto3.getEnumType(MailFunction)
+protobuf_1.proto3.util.setEnumType(MailFunction, "api.v1.MailFunction", [
+    { no: 0, name: "MAIL_FUNCTION_UNSPECIFIED" },
+    { no: 1, name: "MAIL_FUNCTION_SEND" },
+    { no: 2, name: "MAIL_FUNCTION_SEND_TEMPLATE" },
+    { no: 3, name: "MAIL_FUNCTION_NOTIFY" },
+]);
+/**
  * @generated from message api.v1.Email
  */
 class Email extends protobuf_1.Message {
@@ -64,6 +93,10 @@ class Email extends protobuf_1.Message {
          * @generated from field: api.v1.MailType mail_type = 3;
          */
         this.mailType = MailType.UNSPECIFIED;
+        /**
+         * @generated from field: api.v1.MailFunction mail_function = 6;
+         */
+        this.mailFunction = MailFunction.UNSPECIFIED;
         protobuf_1.proto3.util.initPartial(data, this);
     }
     static fromBinary(bytes, options) {
@@ -88,4 +121,5 @@ Email.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 3, name: "mail_type", kind: "enum", T: protobuf_1.proto3.getEnumType(MailType) },
     { no: 4, name: "values", kind: "message", T: protobuf_1.Struct },
     { no: 5, name: "msg", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
+    { no: 6, name: "mail_function", kind: "enum", T: protobuf_1.proto3.getEnumType(MailFunction) },
 ]);

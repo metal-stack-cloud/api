@@ -9407,6 +9407,34 @@
       "hasServices": false,
       "enums": [
         {
+          "name": "MailFunction",
+          "longName": "MailFunction",
+          "fullName": "api.v1.MailFunction",
+          "description": "",
+          "values": [
+            {
+              "name": "MAIL_FUNCTION_UNSPECIFIED",
+              "number": "0",
+              "description": ""
+            },
+            {
+              "name": "MAIL_FUNCTION_SEND",
+              "number": "1",
+              "description": ""
+            },
+            {
+              "name": "MAIL_FUNCTION_SEND_TEMPLATE",
+              "number": "2",
+              "description": ""
+            },
+            {
+              "name": "MAIL_FUNCTION_NOTIFY",
+              "number": "3",
+              "description": ""
+            }
+          ]
+        },
+        {
           "name": "MailType",
           "longName": "MailType",
           "fullName": "api.v1.MailType",
@@ -9532,6 +9560,18 @@
               "ismap": false,
               "isoneof": true,
               "oneofdecl": "_msg",
+              "defaultValue": ""
+            },
+            {
+              "name": "mail_function",
+              "description": "",
+              "label": "",
+              "type": "MailFunction",
+              "longType": "MailFunction",
+              "fullType": "api.v1.MailFunction",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
               "defaultValue": ""
             }
           ]

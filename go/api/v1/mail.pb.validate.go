@@ -119,6 +119,8 @@ func (m *Email) validate(all bool) error {
 		}
 	}
 
+	// no validation rules for MailFunction
+
 	if m.Subject != nil {
 		// no validation rules for Subject
 	}
