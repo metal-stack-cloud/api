@@ -101,10 +101,10 @@ message Worker {
     min_len: 2,
     max_len: 128,
   }];
-  uint32 minsize = 3 [(validate.rules).uint32.lt = 32];
-  uint32 maxsize = 4 [(validate.rules).uint32.lt = 64];
-  uint32 maxsurge = 5 [(validate.rules).uint32.lt = 64];
-  uint32 maxunavailable = 6 [(validate.rules).uint32.lt = 64];
+  uint32 minsize = 3 [(validate.rules).uint32.lte = 32];
+  uint32 maxsize = 4 [(validate.rules).uint32.lte = 64];
+  uint32 maxsurge = 5 [(validate.rules).uint32.lte = 64];
+  uint32 maxunavailable = 6 [(validate.rules).uint32.lte = 64];
 }
 
 message WorkerUpdate {
@@ -116,10 +116,10 @@ message WorkerUpdate {
     min_len: 2,
     max_len: 128,
   }];
-  optional uint32 minsize = 3 [(validate.rules).uint32.lt = 32];
-  optional uint32 maxsize = 4 [(validate.rules).uint32.lt = 64];
-  optional uint32 maxsurge = 5 [(validate.rules).uint32.lt = 64];
-  optional uint32 maxunavailable = 6 [(validate.rules).uint32.lt = 64];
+  optional uint32 minsize = 3 [(validate.rules).uint32.lte = 32];
+  optional uint32 maxsize = 4 [(validate.rules).uint32.lte = 64];
+  optional uint32 maxsurge = 5 [(validate.rules).uint32.lte = 64];
+  optional uint32 maxunavailable = 6 [(validate.rules).uint32.lte = 64];
 }
 
 // Requests
