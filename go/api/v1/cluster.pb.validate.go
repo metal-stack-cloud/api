@@ -870,10 +870,10 @@ func (m *Worker) validate(all bool) error {
 		errors = append(errors, err)
 	}
 
-	if m.GetMinsize() >= 32 {
+	if m.GetMinsize() > 32 {
 		err := WorkerValidationError{
 			field:  "Minsize",
-			reason: "value must be less than 32",
+			reason: "value must be less than or equal to 32",
 		}
 		if !all {
 			return err
@@ -881,10 +881,10 @@ func (m *Worker) validate(all bool) error {
 		errors = append(errors, err)
 	}
 
-	if m.GetMaxsize() >= 64 {
+	if m.GetMaxsize() > 64 {
 		err := WorkerValidationError{
 			field:  "Maxsize",
-			reason: "value must be less than 64",
+			reason: "value must be less than or equal to 64",
 		}
 		if !all {
 			return err
@@ -892,10 +892,10 @@ func (m *Worker) validate(all bool) error {
 		errors = append(errors, err)
 	}
 
-	if m.GetMaxsurge() >= 64 {
+	if m.GetMaxsurge() > 64 {
 		err := WorkerValidationError{
 			field:  "Maxsurge",
-			reason: "value must be less than 64",
+			reason: "value must be less than or equal to 64",
 		}
 		if !all {
 			return err
@@ -903,10 +903,10 @@ func (m *Worker) validate(all bool) error {
 		errors = append(errors, err)
 	}
 
-	if m.GetMaxunavailable() >= 64 {
+	if m.GetMaxunavailable() > 64 {
 		err := WorkerValidationError{
 			field:  "Maxunavailable",
-			reason: "value must be less than 64",
+			reason: "value must be less than or equal to 64",
 		}
 		if !all {
 			return err
@@ -1041,10 +1041,10 @@ func (m *WorkerUpdate) validate(all bool) error {
 
 	if m.Minsize != nil {
 
-		if m.GetMinsize() >= 32 {
+		if m.GetMinsize() > 32 {
 			err := WorkerUpdateValidationError{
 				field:  "Minsize",
-				reason: "value must be less than 32",
+				reason: "value must be less than or equal to 32",
 			}
 			if !all {
 				return err
@@ -1056,10 +1056,10 @@ func (m *WorkerUpdate) validate(all bool) error {
 
 	if m.Maxsize != nil {
 
-		if m.GetMaxsize() >= 64 {
+		if m.GetMaxsize() > 64 {
 			err := WorkerUpdateValidationError{
 				field:  "Maxsize",
-				reason: "value must be less than 64",
+				reason: "value must be less than or equal to 64",
 			}
 			if !all {
 				return err
@@ -1071,10 +1071,10 @@ func (m *WorkerUpdate) validate(all bool) error {
 
 	if m.Maxsurge != nil {
 
-		if m.GetMaxsurge() >= 64 {
+		if m.GetMaxsurge() > 64 {
 			err := WorkerUpdateValidationError{
 				field:  "Maxsurge",
-				reason: "value must be less than 64",
+				reason: "value must be less than or equal to 64",
 			}
 			if !all {
 				return err
@@ -1086,10 +1086,10 @@ func (m *WorkerUpdate) validate(all bool) error {
 
 	if m.Maxunavailable != nil {
 
-		if m.GetMaxunavailable() >= 64 {
+		if m.GetMaxunavailable() > 64 {
 			err := WorkerUpdateValidationError{
 				field:  "Maxunavailable",
-				reason: "value must be less than 64",
+				reason: "value must be less than or equal to 64",
 			}
 			if !all {
 				return err
