@@ -5,9 +5,9 @@
 package apiv1connect
 
 import (
+	connect "connectrpc.com/connect"
 	context "context"
 	errors "errors"
-	connect_go "github.com/bufbuild/connect-go"
 	v1 "github.com/metal-stack-cloud/api/go/api/v1"
 	http "net/http"
 	strings "strings"
@@ -18,7 +18,7 @@ import (
 // generated with a version of connect newer than the one compiled into your binary. You can fix the
 // problem by either regenerating this code with an older version of connect or updating the connect
 // version compiled into your binary.
-const _ = connect_go.IsAtLeastVersion0_1_0
+const _ = connect.IsAtLeastVersion0_1_0
 
 const (
 	// IPServiceName is the fully-qualified name of the IPService service.
@@ -47,11 +47,11 @@ const (
 
 // IPServiceClient is a client for the api.v1.IPService service.
 type IPServiceClient interface {
-	Get(context.Context, *connect_go.Request[v1.IPServiceGetRequest]) (*connect_go.Response[v1.IPServiceGetResponse], error)
-	Allocate(context.Context, *connect_go.Request[v1.IPServiceAllocateRequest]) (*connect_go.Response[v1.IPServiceAllocateResponse], error)
-	Update(context.Context, *connect_go.Request[v1.IPServiceUpdateRequest]) (*connect_go.Response[v1.IPServiceUpdateResponse], error)
-	List(context.Context, *connect_go.Request[v1.IPServiceListRequest]) (*connect_go.Response[v1.IPServiceListResponse], error)
-	Delete(context.Context, *connect_go.Request[v1.IPServiceDeleteRequest]) (*connect_go.Response[v1.IPServiceDeleteResponse], error)
+	Get(context.Context, *connect.Request[v1.IPServiceGetRequest]) (*connect.Response[v1.IPServiceGetResponse], error)
+	Allocate(context.Context, *connect.Request[v1.IPServiceAllocateRequest]) (*connect.Response[v1.IPServiceAllocateResponse], error)
+	Update(context.Context, *connect.Request[v1.IPServiceUpdateRequest]) (*connect.Response[v1.IPServiceUpdateResponse], error)
+	List(context.Context, *connect.Request[v1.IPServiceListRequest]) (*connect.Response[v1.IPServiceListResponse], error)
+	Delete(context.Context, *connect.Request[v1.IPServiceDeleteRequest]) (*connect.Response[v1.IPServiceDeleteResponse], error)
 }
 
 // NewIPServiceClient constructs a client for the api.v1.IPService service. By default, it uses the
@@ -61,30 +61,30 @@ type IPServiceClient interface {
 //
 // The URL supplied here should be the base URL for the Connect or gRPC server (for example,
 // http://api.acme.com or https://acme.com/grpc).
-func NewIPServiceClient(httpClient connect_go.HTTPClient, baseURL string, opts ...connect_go.ClientOption) IPServiceClient {
+func NewIPServiceClient(httpClient connect.HTTPClient, baseURL string, opts ...connect.ClientOption) IPServiceClient {
 	baseURL = strings.TrimRight(baseURL, "/")
 	return &iPServiceClient{
-		get: connect_go.NewClient[v1.IPServiceGetRequest, v1.IPServiceGetResponse](
+		get: connect.NewClient[v1.IPServiceGetRequest, v1.IPServiceGetResponse](
 			httpClient,
 			baseURL+IPServiceGetProcedure,
 			opts...,
 		),
-		allocate: connect_go.NewClient[v1.IPServiceAllocateRequest, v1.IPServiceAllocateResponse](
+		allocate: connect.NewClient[v1.IPServiceAllocateRequest, v1.IPServiceAllocateResponse](
 			httpClient,
 			baseURL+IPServiceAllocateProcedure,
 			opts...,
 		),
-		update: connect_go.NewClient[v1.IPServiceUpdateRequest, v1.IPServiceUpdateResponse](
+		update: connect.NewClient[v1.IPServiceUpdateRequest, v1.IPServiceUpdateResponse](
 			httpClient,
 			baseURL+IPServiceUpdateProcedure,
 			opts...,
 		),
-		list: connect_go.NewClient[v1.IPServiceListRequest, v1.IPServiceListResponse](
+		list: connect.NewClient[v1.IPServiceListRequest, v1.IPServiceListResponse](
 			httpClient,
 			baseURL+IPServiceListProcedure,
 			opts...,
 		),
-		delete: connect_go.NewClient[v1.IPServiceDeleteRequest, v1.IPServiceDeleteResponse](
+		delete: connect.NewClient[v1.IPServiceDeleteRequest, v1.IPServiceDeleteResponse](
 			httpClient,
 			baseURL+IPServiceDeleteProcedure,
 			opts...,
@@ -94,45 +94,45 @@ func NewIPServiceClient(httpClient connect_go.HTTPClient, baseURL string, opts .
 
 // iPServiceClient implements IPServiceClient.
 type iPServiceClient struct {
-	get      *connect_go.Client[v1.IPServiceGetRequest, v1.IPServiceGetResponse]
-	allocate *connect_go.Client[v1.IPServiceAllocateRequest, v1.IPServiceAllocateResponse]
-	update   *connect_go.Client[v1.IPServiceUpdateRequest, v1.IPServiceUpdateResponse]
-	list     *connect_go.Client[v1.IPServiceListRequest, v1.IPServiceListResponse]
-	delete   *connect_go.Client[v1.IPServiceDeleteRequest, v1.IPServiceDeleteResponse]
+	get      *connect.Client[v1.IPServiceGetRequest, v1.IPServiceGetResponse]
+	allocate *connect.Client[v1.IPServiceAllocateRequest, v1.IPServiceAllocateResponse]
+	update   *connect.Client[v1.IPServiceUpdateRequest, v1.IPServiceUpdateResponse]
+	list     *connect.Client[v1.IPServiceListRequest, v1.IPServiceListResponse]
+	delete   *connect.Client[v1.IPServiceDeleteRequest, v1.IPServiceDeleteResponse]
 }
 
 // Get calls api.v1.IPService.Get.
-func (c *iPServiceClient) Get(ctx context.Context, req *connect_go.Request[v1.IPServiceGetRequest]) (*connect_go.Response[v1.IPServiceGetResponse], error) {
+func (c *iPServiceClient) Get(ctx context.Context, req *connect.Request[v1.IPServiceGetRequest]) (*connect.Response[v1.IPServiceGetResponse], error) {
 	return c.get.CallUnary(ctx, req)
 }
 
 // Allocate calls api.v1.IPService.Allocate.
-func (c *iPServiceClient) Allocate(ctx context.Context, req *connect_go.Request[v1.IPServiceAllocateRequest]) (*connect_go.Response[v1.IPServiceAllocateResponse], error) {
+func (c *iPServiceClient) Allocate(ctx context.Context, req *connect.Request[v1.IPServiceAllocateRequest]) (*connect.Response[v1.IPServiceAllocateResponse], error) {
 	return c.allocate.CallUnary(ctx, req)
 }
 
 // Update calls api.v1.IPService.Update.
-func (c *iPServiceClient) Update(ctx context.Context, req *connect_go.Request[v1.IPServiceUpdateRequest]) (*connect_go.Response[v1.IPServiceUpdateResponse], error) {
+func (c *iPServiceClient) Update(ctx context.Context, req *connect.Request[v1.IPServiceUpdateRequest]) (*connect.Response[v1.IPServiceUpdateResponse], error) {
 	return c.update.CallUnary(ctx, req)
 }
 
 // List calls api.v1.IPService.List.
-func (c *iPServiceClient) List(ctx context.Context, req *connect_go.Request[v1.IPServiceListRequest]) (*connect_go.Response[v1.IPServiceListResponse], error) {
+func (c *iPServiceClient) List(ctx context.Context, req *connect.Request[v1.IPServiceListRequest]) (*connect.Response[v1.IPServiceListResponse], error) {
 	return c.list.CallUnary(ctx, req)
 }
 
 // Delete calls api.v1.IPService.Delete.
-func (c *iPServiceClient) Delete(ctx context.Context, req *connect_go.Request[v1.IPServiceDeleteRequest]) (*connect_go.Response[v1.IPServiceDeleteResponse], error) {
+func (c *iPServiceClient) Delete(ctx context.Context, req *connect.Request[v1.IPServiceDeleteRequest]) (*connect.Response[v1.IPServiceDeleteResponse], error) {
 	return c.delete.CallUnary(ctx, req)
 }
 
 // IPServiceHandler is an implementation of the api.v1.IPService service.
 type IPServiceHandler interface {
-	Get(context.Context, *connect_go.Request[v1.IPServiceGetRequest]) (*connect_go.Response[v1.IPServiceGetResponse], error)
-	Allocate(context.Context, *connect_go.Request[v1.IPServiceAllocateRequest]) (*connect_go.Response[v1.IPServiceAllocateResponse], error)
-	Update(context.Context, *connect_go.Request[v1.IPServiceUpdateRequest]) (*connect_go.Response[v1.IPServiceUpdateResponse], error)
-	List(context.Context, *connect_go.Request[v1.IPServiceListRequest]) (*connect_go.Response[v1.IPServiceListResponse], error)
-	Delete(context.Context, *connect_go.Request[v1.IPServiceDeleteRequest]) (*connect_go.Response[v1.IPServiceDeleteResponse], error)
+	Get(context.Context, *connect.Request[v1.IPServiceGetRequest]) (*connect.Response[v1.IPServiceGetResponse], error)
+	Allocate(context.Context, *connect.Request[v1.IPServiceAllocateRequest]) (*connect.Response[v1.IPServiceAllocateResponse], error)
+	Update(context.Context, *connect.Request[v1.IPServiceUpdateRequest]) (*connect.Response[v1.IPServiceUpdateResponse], error)
+	List(context.Context, *connect.Request[v1.IPServiceListRequest]) (*connect.Response[v1.IPServiceListResponse], error)
+	Delete(context.Context, *connect.Request[v1.IPServiceDeleteRequest]) (*connect.Response[v1.IPServiceDeleteResponse], error)
 }
 
 // NewIPServiceHandler builds an HTTP handler from the service implementation. It returns the path
@@ -140,28 +140,28 @@ type IPServiceHandler interface {
 //
 // By default, handlers support the Connect, gRPC, and gRPC-Web protocols with the binary Protobuf
 // and JSON codecs. They also support gzip compression.
-func NewIPServiceHandler(svc IPServiceHandler, opts ...connect_go.HandlerOption) (string, http.Handler) {
-	iPServiceGetHandler := connect_go.NewUnaryHandler(
+func NewIPServiceHandler(svc IPServiceHandler, opts ...connect.HandlerOption) (string, http.Handler) {
+	iPServiceGetHandler := connect.NewUnaryHandler(
 		IPServiceGetProcedure,
 		svc.Get,
 		opts...,
 	)
-	iPServiceAllocateHandler := connect_go.NewUnaryHandler(
+	iPServiceAllocateHandler := connect.NewUnaryHandler(
 		IPServiceAllocateProcedure,
 		svc.Allocate,
 		opts...,
 	)
-	iPServiceUpdateHandler := connect_go.NewUnaryHandler(
+	iPServiceUpdateHandler := connect.NewUnaryHandler(
 		IPServiceUpdateProcedure,
 		svc.Update,
 		opts...,
 	)
-	iPServiceListHandler := connect_go.NewUnaryHandler(
+	iPServiceListHandler := connect.NewUnaryHandler(
 		IPServiceListProcedure,
 		svc.List,
 		opts...,
 	)
-	iPServiceDeleteHandler := connect_go.NewUnaryHandler(
+	iPServiceDeleteHandler := connect.NewUnaryHandler(
 		IPServiceDeleteProcedure,
 		svc.Delete,
 		opts...,
@@ -187,22 +187,22 @@ func NewIPServiceHandler(svc IPServiceHandler, opts ...connect_go.HandlerOption)
 // UnimplementedIPServiceHandler returns CodeUnimplemented from all methods.
 type UnimplementedIPServiceHandler struct{}
 
-func (UnimplementedIPServiceHandler) Get(context.Context, *connect_go.Request[v1.IPServiceGetRequest]) (*connect_go.Response[v1.IPServiceGetResponse], error) {
-	return nil, connect_go.NewError(connect_go.CodeUnimplemented, errors.New("api.v1.IPService.Get is not implemented"))
+func (UnimplementedIPServiceHandler) Get(context.Context, *connect.Request[v1.IPServiceGetRequest]) (*connect.Response[v1.IPServiceGetResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("api.v1.IPService.Get is not implemented"))
 }
 
-func (UnimplementedIPServiceHandler) Allocate(context.Context, *connect_go.Request[v1.IPServiceAllocateRequest]) (*connect_go.Response[v1.IPServiceAllocateResponse], error) {
-	return nil, connect_go.NewError(connect_go.CodeUnimplemented, errors.New("api.v1.IPService.Allocate is not implemented"))
+func (UnimplementedIPServiceHandler) Allocate(context.Context, *connect.Request[v1.IPServiceAllocateRequest]) (*connect.Response[v1.IPServiceAllocateResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("api.v1.IPService.Allocate is not implemented"))
 }
 
-func (UnimplementedIPServiceHandler) Update(context.Context, *connect_go.Request[v1.IPServiceUpdateRequest]) (*connect_go.Response[v1.IPServiceUpdateResponse], error) {
-	return nil, connect_go.NewError(connect_go.CodeUnimplemented, errors.New("api.v1.IPService.Update is not implemented"))
+func (UnimplementedIPServiceHandler) Update(context.Context, *connect.Request[v1.IPServiceUpdateRequest]) (*connect.Response[v1.IPServiceUpdateResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("api.v1.IPService.Update is not implemented"))
 }
 
-func (UnimplementedIPServiceHandler) List(context.Context, *connect_go.Request[v1.IPServiceListRequest]) (*connect_go.Response[v1.IPServiceListResponse], error) {
-	return nil, connect_go.NewError(connect_go.CodeUnimplemented, errors.New("api.v1.IPService.List is not implemented"))
+func (UnimplementedIPServiceHandler) List(context.Context, *connect.Request[v1.IPServiceListRequest]) (*connect.Response[v1.IPServiceListResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("api.v1.IPService.List is not implemented"))
 }
 
-func (UnimplementedIPServiceHandler) Delete(context.Context, *connect_go.Request[v1.IPServiceDeleteRequest]) (*connect_go.Response[v1.IPServiceDeleteResponse], error) {
-	return nil, connect_go.NewError(connect_go.CodeUnimplemented, errors.New("api.v1.IPService.Delete is not implemented"))
+func (UnimplementedIPServiceHandler) Delete(context.Context, *connect.Request[v1.IPServiceDeleteRequest]) (*connect.Response[v1.IPServiceDeleteResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("api.v1.IPService.Delete is not implemented"))
 }

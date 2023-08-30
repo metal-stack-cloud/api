@@ -5,9 +5,9 @@
 package statusv1connect
 
 import (
+	connect "connectrpc.com/connect"
 	context "context"
 	errors "errors"
-	connect_go "github.com/bufbuild/connect-go"
 	v1 "github.com/metal-stack-cloud/api/go/status/v1"
 	http "net/http"
 	strings "strings"
@@ -18,7 +18,7 @@ import (
 // generated with a version of connect newer than the one compiled into your binary. You can fix the
 // problem by either regenerating this code with an older version of connect or updating the connect
 // version compiled into your binary.
-const _ = connect_go.IsAtLeastVersion0_1_0
+const _ = connect.IsAtLeastVersion0_1_0
 
 const (
 	// StatusServiceName is the fully-qualified name of the StatusService service.
@@ -39,7 +39,7 @@ const (
 
 // StatusServiceClient is a client for the status.v1.StatusService service.
 type StatusServiceClient interface {
-	Get(context.Context, *connect_go.Request[v1.StatusServiceGetRequest]) (*connect_go.Response[v1.StatusServiceGetResponse], error)
+	Get(context.Context, *connect.Request[v1.StatusServiceGetRequest]) (*connect.Response[v1.StatusServiceGetResponse], error)
 }
 
 // NewStatusServiceClient constructs a client for the status.v1.StatusService service. By default,
@@ -49,10 +49,10 @@ type StatusServiceClient interface {
 //
 // The URL supplied here should be the base URL for the Connect or gRPC server (for example,
 // http://api.acme.com or https://acme.com/grpc).
-func NewStatusServiceClient(httpClient connect_go.HTTPClient, baseURL string, opts ...connect_go.ClientOption) StatusServiceClient {
+func NewStatusServiceClient(httpClient connect.HTTPClient, baseURL string, opts ...connect.ClientOption) StatusServiceClient {
 	baseURL = strings.TrimRight(baseURL, "/")
 	return &statusServiceClient{
-		get: connect_go.NewClient[v1.StatusServiceGetRequest, v1.StatusServiceGetResponse](
+		get: connect.NewClient[v1.StatusServiceGetRequest, v1.StatusServiceGetResponse](
 			httpClient,
 			baseURL+StatusServiceGetProcedure,
 			opts...,
@@ -62,17 +62,17 @@ func NewStatusServiceClient(httpClient connect_go.HTTPClient, baseURL string, op
 
 // statusServiceClient implements StatusServiceClient.
 type statusServiceClient struct {
-	get *connect_go.Client[v1.StatusServiceGetRequest, v1.StatusServiceGetResponse]
+	get *connect.Client[v1.StatusServiceGetRequest, v1.StatusServiceGetResponse]
 }
 
 // Get calls status.v1.StatusService.Get.
-func (c *statusServiceClient) Get(ctx context.Context, req *connect_go.Request[v1.StatusServiceGetRequest]) (*connect_go.Response[v1.StatusServiceGetResponse], error) {
+func (c *statusServiceClient) Get(ctx context.Context, req *connect.Request[v1.StatusServiceGetRequest]) (*connect.Response[v1.StatusServiceGetResponse], error) {
 	return c.get.CallUnary(ctx, req)
 }
 
 // StatusServiceHandler is an implementation of the status.v1.StatusService service.
 type StatusServiceHandler interface {
-	Get(context.Context, *connect_go.Request[v1.StatusServiceGetRequest]) (*connect_go.Response[v1.StatusServiceGetResponse], error)
+	Get(context.Context, *connect.Request[v1.StatusServiceGetRequest]) (*connect.Response[v1.StatusServiceGetResponse], error)
 }
 
 // NewStatusServiceHandler builds an HTTP handler from the service implementation. It returns the
@@ -80,8 +80,8 @@ type StatusServiceHandler interface {
 //
 // By default, handlers support the Connect, gRPC, and gRPC-Web protocols with the binary Protobuf
 // and JSON codecs. They also support gzip compression.
-func NewStatusServiceHandler(svc StatusServiceHandler, opts ...connect_go.HandlerOption) (string, http.Handler) {
-	statusServiceGetHandler := connect_go.NewUnaryHandler(
+func NewStatusServiceHandler(svc StatusServiceHandler, opts ...connect.HandlerOption) (string, http.Handler) {
+	statusServiceGetHandler := connect.NewUnaryHandler(
 		StatusServiceGetProcedure,
 		svc.Get,
 		opts...,
@@ -99,6 +99,6 @@ func NewStatusServiceHandler(svc StatusServiceHandler, opts ...connect_go.Handle
 // UnimplementedStatusServiceHandler returns CodeUnimplemented from all methods.
 type UnimplementedStatusServiceHandler struct{}
 
-func (UnimplementedStatusServiceHandler) Get(context.Context, *connect_go.Request[v1.StatusServiceGetRequest]) (*connect_go.Response[v1.StatusServiceGetResponse], error) {
-	return nil, connect_go.NewError(connect_go.CodeUnimplemented, errors.New("status.v1.StatusService.Get is not implemented"))
+func (UnimplementedStatusServiceHandler) Get(context.Context, *connect.Request[v1.StatusServiceGetRequest]) (*connect.Response[v1.StatusServiceGetResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("status.v1.StatusService.Get is not implemented"))
 }

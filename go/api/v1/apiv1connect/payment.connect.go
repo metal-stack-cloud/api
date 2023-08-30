@@ -5,9 +5,9 @@
 package apiv1connect
 
 import (
+	connect "connectrpc.com/connect"
 	context "context"
 	errors "errors"
-	connect_go "github.com/bufbuild/connect-go"
 	v1 "github.com/metal-stack-cloud/api/go/api/v1"
 	http "net/http"
 	strings "strings"
@@ -18,7 +18,7 @@ import (
 // generated with a version of connect newer than the one compiled into your binary. You can fix the
 // problem by either regenerating this code with an older version of connect or updating the connect
 // version compiled into your binary.
-const _ = connect_go.IsAtLeastVersion0_1_0
+const _ = connect.IsAtLeastVersion0_1_0
 
 const (
 	// PaymentServiceName is the fully-qualified name of the PaymentService service.
@@ -73,18 +73,18 @@ const (
 
 // PaymentServiceClient is a client for the api.v1.PaymentService service.
 type PaymentServiceClient interface {
-	CreateOrUpdateCustomer(context.Context, *connect_go.Request[v1.PaymentServiceCreateOrUpdateCustomerRequest]) (*connect_go.Response[v1.PaymentServiceCreateOrUpdateCustomerResponse], error)
-	GetCustomer(context.Context, *connect_go.Request[v1.PaymentServiceGetCustomerRequest]) (*connect_go.Response[v1.PaymentServiceGetCustomerResponse], error)
-	GetCustomerWithLogin(context.Context, *connect_go.Request[v1.PaymentServiceGetCustomerWithLoginRequest]) (*connect_go.Response[v1.PaymentServiceGetCustomerWithLoginResponse], error)
-	CheckIfCustomerExists(context.Context, *connect_go.Request[v1.PaymentServiceCheckIfCustomerExistsRequest]) (*connect_go.Response[v1.PaymentServiceCheckIfCustomerExistsResponse], error)
-	HasPaymentMethod(context.Context, *connect_go.Request[v1.PaymentServiceHasPaymentMethodRequest]) (*connect_go.Response[v1.PaymentServiceHasPaymentMethodResponse], error)
-	DeletePaymentMethod(context.Context, *connect_go.Request[v1.PaymentServiceDeletePaymentMethodRequest]) (*connect_go.Response[v1.PaymentServiceDeletePaymentMethodResponse], error)
-	GetSubscriptionUsage(context.Context, *connect_go.Request[v1.PaymentServiceGetSubscriptionUsageRequest]) (*connect_go.Response[v1.PaymentServiceGetSubscriptionUsageResponse], error)
-	GetInvoices(context.Context, *connect_go.Request[v1.PaymentServiceGetInvoicesRequest]) (*connect_go.Response[v1.PaymentServiceGetInvoicesResponse], error)
-	GetDefaultPrices(context.Context, *connect_go.Request[v1.PaymentServiceGetDefaultPricesRequest]) (*connect_go.Response[v1.PaymentServiceGetDefaultPricesResponse], error)
-	CheckAdmitted(context.Context, *connect_go.Request[v1.PaymentServiceCheckAdmittedRequest]) (*connect_go.Response[v1.PaymentServiceCheckAdmittedResponse], error)
-	RequestAdmission(context.Context, *connect_go.Request[v1.PaymentServiceRequestAdmissionRequest]) (*connect_go.Response[v1.PaymentServiceRequestAdmissionResponse], error)
-	HasChargeableResources(context.Context, *connect_go.Request[v1.PaymentServiceHasChargeableResourcesRequest]) (*connect_go.Response[v1.PaymentServiceHasChargeableResourcesResponse], error)
+	CreateOrUpdateCustomer(context.Context, *connect.Request[v1.PaymentServiceCreateOrUpdateCustomerRequest]) (*connect.Response[v1.PaymentServiceCreateOrUpdateCustomerResponse], error)
+	GetCustomer(context.Context, *connect.Request[v1.PaymentServiceGetCustomerRequest]) (*connect.Response[v1.PaymentServiceGetCustomerResponse], error)
+	GetCustomerWithLogin(context.Context, *connect.Request[v1.PaymentServiceGetCustomerWithLoginRequest]) (*connect.Response[v1.PaymentServiceGetCustomerWithLoginResponse], error)
+	CheckIfCustomerExists(context.Context, *connect.Request[v1.PaymentServiceCheckIfCustomerExistsRequest]) (*connect.Response[v1.PaymentServiceCheckIfCustomerExistsResponse], error)
+	HasPaymentMethod(context.Context, *connect.Request[v1.PaymentServiceHasPaymentMethodRequest]) (*connect.Response[v1.PaymentServiceHasPaymentMethodResponse], error)
+	DeletePaymentMethod(context.Context, *connect.Request[v1.PaymentServiceDeletePaymentMethodRequest]) (*connect.Response[v1.PaymentServiceDeletePaymentMethodResponse], error)
+	GetSubscriptionUsage(context.Context, *connect.Request[v1.PaymentServiceGetSubscriptionUsageRequest]) (*connect.Response[v1.PaymentServiceGetSubscriptionUsageResponse], error)
+	GetInvoices(context.Context, *connect.Request[v1.PaymentServiceGetInvoicesRequest]) (*connect.Response[v1.PaymentServiceGetInvoicesResponse], error)
+	GetDefaultPrices(context.Context, *connect.Request[v1.PaymentServiceGetDefaultPricesRequest]) (*connect.Response[v1.PaymentServiceGetDefaultPricesResponse], error)
+	CheckAdmitted(context.Context, *connect.Request[v1.PaymentServiceCheckAdmittedRequest]) (*connect.Response[v1.PaymentServiceCheckAdmittedResponse], error)
+	RequestAdmission(context.Context, *connect.Request[v1.PaymentServiceRequestAdmissionRequest]) (*connect.Response[v1.PaymentServiceRequestAdmissionResponse], error)
+	HasChargeableResources(context.Context, *connect.Request[v1.PaymentServiceHasChargeableResourcesRequest]) (*connect.Response[v1.PaymentServiceHasChargeableResourcesResponse], error)
 }
 
 // NewPaymentServiceClient constructs a client for the api.v1.PaymentService service. By default, it
@@ -94,65 +94,65 @@ type PaymentServiceClient interface {
 //
 // The URL supplied here should be the base URL for the Connect or gRPC server (for example,
 // http://api.acme.com or https://acme.com/grpc).
-func NewPaymentServiceClient(httpClient connect_go.HTTPClient, baseURL string, opts ...connect_go.ClientOption) PaymentServiceClient {
+func NewPaymentServiceClient(httpClient connect.HTTPClient, baseURL string, opts ...connect.ClientOption) PaymentServiceClient {
 	baseURL = strings.TrimRight(baseURL, "/")
 	return &paymentServiceClient{
-		createOrUpdateCustomer: connect_go.NewClient[v1.PaymentServiceCreateOrUpdateCustomerRequest, v1.PaymentServiceCreateOrUpdateCustomerResponse](
+		createOrUpdateCustomer: connect.NewClient[v1.PaymentServiceCreateOrUpdateCustomerRequest, v1.PaymentServiceCreateOrUpdateCustomerResponse](
 			httpClient,
 			baseURL+PaymentServiceCreateOrUpdateCustomerProcedure,
 			opts...,
 		),
-		getCustomer: connect_go.NewClient[v1.PaymentServiceGetCustomerRequest, v1.PaymentServiceGetCustomerResponse](
+		getCustomer: connect.NewClient[v1.PaymentServiceGetCustomerRequest, v1.PaymentServiceGetCustomerResponse](
 			httpClient,
 			baseURL+PaymentServiceGetCustomerProcedure,
 			opts...,
 		),
-		getCustomerWithLogin: connect_go.NewClient[v1.PaymentServiceGetCustomerWithLoginRequest, v1.PaymentServiceGetCustomerWithLoginResponse](
+		getCustomerWithLogin: connect.NewClient[v1.PaymentServiceGetCustomerWithLoginRequest, v1.PaymentServiceGetCustomerWithLoginResponse](
 			httpClient,
 			baseURL+PaymentServiceGetCustomerWithLoginProcedure,
 			opts...,
 		),
-		checkIfCustomerExists: connect_go.NewClient[v1.PaymentServiceCheckIfCustomerExistsRequest, v1.PaymentServiceCheckIfCustomerExistsResponse](
+		checkIfCustomerExists: connect.NewClient[v1.PaymentServiceCheckIfCustomerExistsRequest, v1.PaymentServiceCheckIfCustomerExistsResponse](
 			httpClient,
 			baseURL+PaymentServiceCheckIfCustomerExistsProcedure,
 			opts...,
 		),
-		hasPaymentMethod: connect_go.NewClient[v1.PaymentServiceHasPaymentMethodRequest, v1.PaymentServiceHasPaymentMethodResponse](
+		hasPaymentMethod: connect.NewClient[v1.PaymentServiceHasPaymentMethodRequest, v1.PaymentServiceHasPaymentMethodResponse](
 			httpClient,
 			baseURL+PaymentServiceHasPaymentMethodProcedure,
 			opts...,
 		),
-		deletePaymentMethod: connect_go.NewClient[v1.PaymentServiceDeletePaymentMethodRequest, v1.PaymentServiceDeletePaymentMethodResponse](
+		deletePaymentMethod: connect.NewClient[v1.PaymentServiceDeletePaymentMethodRequest, v1.PaymentServiceDeletePaymentMethodResponse](
 			httpClient,
 			baseURL+PaymentServiceDeletePaymentMethodProcedure,
 			opts...,
 		),
-		getSubscriptionUsage: connect_go.NewClient[v1.PaymentServiceGetSubscriptionUsageRequest, v1.PaymentServiceGetSubscriptionUsageResponse](
+		getSubscriptionUsage: connect.NewClient[v1.PaymentServiceGetSubscriptionUsageRequest, v1.PaymentServiceGetSubscriptionUsageResponse](
 			httpClient,
 			baseURL+PaymentServiceGetSubscriptionUsageProcedure,
 			opts...,
 		),
-		getInvoices: connect_go.NewClient[v1.PaymentServiceGetInvoicesRequest, v1.PaymentServiceGetInvoicesResponse](
+		getInvoices: connect.NewClient[v1.PaymentServiceGetInvoicesRequest, v1.PaymentServiceGetInvoicesResponse](
 			httpClient,
 			baseURL+PaymentServiceGetInvoicesProcedure,
 			opts...,
 		),
-		getDefaultPrices: connect_go.NewClient[v1.PaymentServiceGetDefaultPricesRequest, v1.PaymentServiceGetDefaultPricesResponse](
+		getDefaultPrices: connect.NewClient[v1.PaymentServiceGetDefaultPricesRequest, v1.PaymentServiceGetDefaultPricesResponse](
 			httpClient,
 			baseURL+PaymentServiceGetDefaultPricesProcedure,
 			opts...,
 		),
-		checkAdmitted: connect_go.NewClient[v1.PaymentServiceCheckAdmittedRequest, v1.PaymentServiceCheckAdmittedResponse](
+		checkAdmitted: connect.NewClient[v1.PaymentServiceCheckAdmittedRequest, v1.PaymentServiceCheckAdmittedResponse](
 			httpClient,
 			baseURL+PaymentServiceCheckAdmittedProcedure,
 			opts...,
 		),
-		requestAdmission: connect_go.NewClient[v1.PaymentServiceRequestAdmissionRequest, v1.PaymentServiceRequestAdmissionResponse](
+		requestAdmission: connect.NewClient[v1.PaymentServiceRequestAdmissionRequest, v1.PaymentServiceRequestAdmissionResponse](
 			httpClient,
 			baseURL+PaymentServiceRequestAdmissionProcedure,
 			opts...,
 		),
-		hasChargeableResources: connect_go.NewClient[v1.PaymentServiceHasChargeableResourcesRequest, v1.PaymentServiceHasChargeableResourcesResponse](
+		hasChargeableResources: connect.NewClient[v1.PaymentServiceHasChargeableResourcesRequest, v1.PaymentServiceHasChargeableResourcesResponse](
 			httpClient,
 			baseURL+PaymentServiceHasChargeableResourcesProcedure,
 			opts...,
@@ -162,94 +162,94 @@ func NewPaymentServiceClient(httpClient connect_go.HTTPClient, baseURL string, o
 
 // paymentServiceClient implements PaymentServiceClient.
 type paymentServiceClient struct {
-	createOrUpdateCustomer *connect_go.Client[v1.PaymentServiceCreateOrUpdateCustomerRequest, v1.PaymentServiceCreateOrUpdateCustomerResponse]
-	getCustomer            *connect_go.Client[v1.PaymentServiceGetCustomerRequest, v1.PaymentServiceGetCustomerResponse]
-	getCustomerWithLogin   *connect_go.Client[v1.PaymentServiceGetCustomerWithLoginRequest, v1.PaymentServiceGetCustomerWithLoginResponse]
-	checkIfCustomerExists  *connect_go.Client[v1.PaymentServiceCheckIfCustomerExistsRequest, v1.PaymentServiceCheckIfCustomerExistsResponse]
-	hasPaymentMethod       *connect_go.Client[v1.PaymentServiceHasPaymentMethodRequest, v1.PaymentServiceHasPaymentMethodResponse]
-	deletePaymentMethod    *connect_go.Client[v1.PaymentServiceDeletePaymentMethodRequest, v1.PaymentServiceDeletePaymentMethodResponse]
-	getSubscriptionUsage   *connect_go.Client[v1.PaymentServiceGetSubscriptionUsageRequest, v1.PaymentServiceGetSubscriptionUsageResponse]
-	getInvoices            *connect_go.Client[v1.PaymentServiceGetInvoicesRequest, v1.PaymentServiceGetInvoicesResponse]
-	getDefaultPrices       *connect_go.Client[v1.PaymentServiceGetDefaultPricesRequest, v1.PaymentServiceGetDefaultPricesResponse]
-	checkAdmitted          *connect_go.Client[v1.PaymentServiceCheckAdmittedRequest, v1.PaymentServiceCheckAdmittedResponse]
-	requestAdmission       *connect_go.Client[v1.PaymentServiceRequestAdmissionRequest, v1.PaymentServiceRequestAdmissionResponse]
-	hasChargeableResources *connect_go.Client[v1.PaymentServiceHasChargeableResourcesRequest, v1.PaymentServiceHasChargeableResourcesResponse]
+	createOrUpdateCustomer *connect.Client[v1.PaymentServiceCreateOrUpdateCustomerRequest, v1.PaymentServiceCreateOrUpdateCustomerResponse]
+	getCustomer            *connect.Client[v1.PaymentServiceGetCustomerRequest, v1.PaymentServiceGetCustomerResponse]
+	getCustomerWithLogin   *connect.Client[v1.PaymentServiceGetCustomerWithLoginRequest, v1.PaymentServiceGetCustomerWithLoginResponse]
+	checkIfCustomerExists  *connect.Client[v1.PaymentServiceCheckIfCustomerExistsRequest, v1.PaymentServiceCheckIfCustomerExistsResponse]
+	hasPaymentMethod       *connect.Client[v1.PaymentServiceHasPaymentMethodRequest, v1.PaymentServiceHasPaymentMethodResponse]
+	deletePaymentMethod    *connect.Client[v1.PaymentServiceDeletePaymentMethodRequest, v1.PaymentServiceDeletePaymentMethodResponse]
+	getSubscriptionUsage   *connect.Client[v1.PaymentServiceGetSubscriptionUsageRequest, v1.PaymentServiceGetSubscriptionUsageResponse]
+	getInvoices            *connect.Client[v1.PaymentServiceGetInvoicesRequest, v1.PaymentServiceGetInvoicesResponse]
+	getDefaultPrices       *connect.Client[v1.PaymentServiceGetDefaultPricesRequest, v1.PaymentServiceGetDefaultPricesResponse]
+	checkAdmitted          *connect.Client[v1.PaymentServiceCheckAdmittedRequest, v1.PaymentServiceCheckAdmittedResponse]
+	requestAdmission       *connect.Client[v1.PaymentServiceRequestAdmissionRequest, v1.PaymentServiceRequestAdmissionResponse]
+	hasChargeableResources *connect.Client[v1.PaymentServiceHasChargeableResourcesRequest, v1.PaymentServiceHasChargeableResourcesResponse]
 }
 
 // CreateOrUpdateCustomer calls api.v1.PaymentService.CreateOrUpdateCustomer.
-func (c *paymentServiceClient) CreateOrUpdateCustomer(ctx context.Context, req *connect_go.Request[v1.PaymentServiceCreateOrUpdateCustomerRequest]) (*connect_go.Response[v1.PaymentServiceCreateOrUpdateCustomerResponse], error) {
+func (c *paymentServiceClient) CreateOrUpdateCustomer(ctx context.Context, req *connect.Request[v1.PaymentServiceCreateOrUpdateCustomerRequest]) (*connect.Response[v1.PaymentServiceCreateOrUpdateCustomerResponse], error) {
 	return c.createOrUpdateCustomer.CallUnary(ctx, req)
 }
 
 // GetCustomer calls api.v1.PaymentService.GetCustomer.
-func (c *paymentServiceClient) GetCustomer(ctx context.Context, req *connect_go.Request[v1.PaymentServiceGetCustomerRequest]) (*connect_go.Response[v1.PaymentServiceGetCustomerResponse], error) {
+func (c *paymentServiceClient) GetCustomer(ctx context.Context, req *connect.Request[v1.PaymentServiceGetCustomerRequest]) (*connect.Response[v1.PaymentServiceGetCustomerResponse], error) {
 	return c.getCustomer.CallUnary(ctx, req)
 }
 
 // GetCustomerWithLogin calls api.v1.PaymentService.GetCustomerWithLogin.
-func (c *paymentServiceClient) GetCustomerWithLogin(ctx context.Context, req *connect_go.Request[v1.PaymentServiceGetCustomerWithLoginRequest]) (*connect_go.Response[v1.PaymentServiceGetCustomerWithLoginResponse], error) {
+func (c *paymentServiceClient) GetCustomerWithLogin(ctx context.Context, req *connect.Request[v1.PaymentServiceGetCustomerWithLoginRequest]) (*connect.Response[v1.PaymentServiceGetCustomerWithLoginResponse], error) {
 	return c.getCustomerWithLogin.CallUnary(ctx, req)
 }
 
 // CheckIfCustomerExists calls api.v1.PaymentService.CheckIfCustomerExists.
-func (c *paymentServiceClient) CheckIfCustomerExists(ctx context.Context, req *connect_go.Request[v1.PaymentServiceCheckIfCustomerExistsRequest]) (*connect_go.Response[v1.PaymentServiceCheckIfCustomerExistsResponse], error) {
+func (c *paymentServiceClient) CheckIfCustomerExists(ctx context.Context, req *connect.Request[v1.PaymentServiceCheckIfCustomerExistsRequest]) (*connect.Response[v1.PaymentServiceCheckIfCustomerExistsResponse], error) {
 	return c.checkIfCustomerExists.CallUnary(ctx, req)
 }
 
 // HasPaymentMethod calls api.v1.PaymentService.HasPaymentMethod.
-func (c *paymentServiceClient) HasPaymentMethod(ctx context.Context, req *connect_go.Request[v1.PaymentServiceHasPaymentMethodRequest]) (*connect_go.Response[v1.PaymentServiceHasPaymentMethodResponse], error) {
+func (c *paymentServiceClient) HasPaymentMethod(ctx context.Context, req *connect.Request[v1.PaymentServiceHasPaymentMethodRequest]) (*connect.Response[v1.PaymentServiceHasPaymentMethodResponse], error) {
 	return c.hasPaymentMethod.CallUnary(ctx, req)
 }
 
 // DeletePaymentMethod calls api.v1.PaymentService.DeletePaymentMethod.
-func (c *paymentServiceClient) DeletePaymentMethod(ctx context.Context, req *connect_go.Request[v1.PaymentServiceDeletePaymentMethodRequest]) (*connect_go.Response[v1.PaymentServiceDeletePaymentMethodResponse], error) {
+func (c *paymentServiceClient) DeletePaymentMethod(ctx context.Context, req *connect.Request[v1.PaymentServiceDeletePaymentMethodRequest]) (*connect.Response[v1.PaymentServiceDeletePaymentMethodResponse], error) {
 	return c.deletePaymentMethod.CallUnary(ctx, req)
 }
 
 // GetSubscriptionUsage calls api.v1.PaymentService.GetSubscriptionUsage.
-func (c *paymentServiceClient) GetSubscriptionUsage(ctx context.Context, req *connect_go.Request[v1.PaymentServiceGetSubscriptionUsageRequest]) (*connect_go.Response[v1.PaymentServiceGetSubscriptionUsageResponse], error) {
+func (c *paymentServiceClient) GetSubscriptionUsage(ctx context.Context, req *connect.Request[v1.PaymentServiceGetSubscriptionUsageRequest]) (*connect.Response[v1.PaymentServiceGetSubscriptionUsageResponse], error) {
 	return c.getSubscriptionUsage.CallUnary(ctx, req)
 }
 
 // GetInvoices calls api.v1.PaymentService.GetInvoices.
-func (c *paymentServiceClient) GetInvoices(ctx context.Context, req *connect_go.Request[v1.PaymentServiceGetInvoicesRequest]) (*connect_go.Response[v1.PaymentServiceGetInvoicesResponse], error) {
+func (c *paymentServiceClient) GetInvoices(ctx context.Context, req *connect.Request[v1.PaymentServiceGetInvoicesRequest]) (*connect.Response[v1.PaymentServiceGetInvoicesResponse], error) {
 	return c.getInvoices.CallUnary(ctx, req)
 }
 
 // GetDefaultPrices calls api.v1.PaymentService.GetDefaultPrices.
-func (c *paymentServiceClient) GetDefaultPrices(ctx context.Context, req *connect_go.Request[v1.PaymentServiceGetDefaultPricesRequest]) (*connect_go.Response[v1.PaymentServiceGetDefaultPricesResponse], error) {
+func (c *paymentServiceClient) GetDefaultPrices(ctx context.Context, req *connect.Request[v1.PaymentServiceGetDefaultPricesRequest]) (*connect.Response[v1.PaymentServiceGetDefaultPricesResponse], error) {
 	return c.getDefaultPrices.CallUnary(ctx, req)
 }
 
 // CheckAdmitted calls api.v1.PaymentService.CheckAdmitted.
-func (c *paymentServiceClient) CheckAdmitted(ctx context.Context, req *connect_go.Request[v1.PaymentServiceCheckAdmittedRequest]) (*connect_go.Response[v1.PaymentServiceCheckAdmittedResponse], error) {
+func (c *paymentServiceClient) CheckAdmitted(ctx context.Context, req *connect.Request[v1.PaymentServiceCheckAdmittedRequest]) (*connect.Response[v1.PaymentServiceCheckAdmittedResponse], error) {
 	return c.checkAdmitted.CallUnary(ctx, req)
 }
 
 // RequestAdmission calls api.v1.PaymentService.RequestAdmission.
-func (c *paymentServiceClient) RequestAdmission(ctx context.Context, req *connect_go.Request[v1.PaymentServiceRequestAdmissionRequest]) (*connect_go.Response[v1.PaymentServiceRequestAdmissionResponse], error) {
+func (c *paymentServiceClient) RequestAdmission(ctx context.Context, req *connect.Request[v1.PaymentServiceRequestAdmissionRequest]) (*connect.Response[v1.PaymentServiceRequestAdmissionResponse], error) {
 	return c.requestAdmission.CallUnary(ctx, req)
 }
 
 // HasChargeableResources calls api.v1.PaymentService.HasChargeableResources.
-func (c *paymentServiceClient) HasChargeableResources(ctx context.Context, req *connect_go.Request[v1.PaymentServiceHasChargeableResourcesRequest]) (*connect_go.Response[v1.PaymentServiceHasChargeableResourcesResponse], error) {
+func (c *paymentServiceClient) HasChargeableResources(ctx context.Context, req *connect.Request[v1.PaymentServiceHasChargeableResourcesRequest]) (*connect.Response[v1.PaymentServiceHasChargeableResourcesResponse], error) {
 	return c.hasChargeableResources.CallUnary(ctx, req)
 }
 
 // PaymentServiceHandler is an implementation of the api.v1.PaymentService service.
 type PaymentServiceHandler interface {
-	CreateOrUpdateCustomer(context.Context, *connect_go.Request[v1.PaymentServiceCreateOrUpdateCustomerRequest]) (*connect_go.Response[v1.PaymentServiceCreateOrUpdateCustomerResponse], error)
-	GetCustomer(context.Context, *connect_go.Request[v1.PaymentServiceGetCustomerRequest]) (*connect_go.Response[v1.PaymentServiceGetCustomerResponse], error)
-	GetCustomerWithLogin(context.Context, *connect_go.Request[v1.PaymentServiceGetCustomerWithLoginRequest]) (*connect_go.Response[v1.PaymentServiceGetCustomerWithLoginResponse], error)
-	CheckIfCustomerExists(context.Context, *connect_go.Request[v1.PaymentServiceCheckIfCustomerExistsRequest]) (*connect_go.Response[v1.PaymentServiceCheckIfCustomerExistsResponse], error)
-	HasPaymentMethod(context.Context, *connect_go.Request[v1.PaymentServiceHasPaymentMethodRequest]) (*connect_go.Response[v1.PaymentServiceHasPaymentMethodResponse], error)
-	DeletePaymentMethod(context.Context, *connect_go.Request[v1.PaymentServiceDeletePaymentMethodRequest]) (*connect_go.Response[v1.PaymentServiceDeletePaymentMethodResponse], error)
-	GetSubscriptionUsage(context.Context, *connect_go.Request[v1.PaymentServiceGetSubscriptionUsageRequest]) (*connect_go.Response[v1.PaymentServiceGetSubscriptionUsageResponse], error)
-	GetInvoices(context.Context, *connect_go.Request[v1.PaymentServiceGetInvoicesRequest]) (*connect_go.Response[v1.PaymentServiceGetInvoicesResponse], error)
-	GetDefaultPrices(context.Context, *connect_go.Request[v1.PaymentServiceGetDefaultPricesRequest]) (*connect_go.Response[v1.PaymentServiceGetDefaultPricesResponse], error)
-	CheckAdmitted(context.Context, *connect_go.Request[v1.PaymentServiceCheckAdmittedRequest]) (*connect_go.Response[v1.PaymentServiceCheckAdmittedResponse], error)
-	RequestAdmission(context.Context, *connect_go.Request[v1.PaymentServiceRequestAdmissionRequest]) (*connect_go.Response[v1.PaymentServiceRequestAdmissionResponse], error)
-	HasChargeableResources(context.Context, *connect_go.Request[v1.PaymentServiceHasChargeableResourcesRequest]) (*connect_go.Response[v1.PaymentServiceHasChargeableResourcesResponse], error)
+	CreateOrUpdateCustomer(context.Context, *connect.Request[v1.PaymentServiceCreateOrUpdateCustomerRequest]) (*connect.Response[v1.PaymentServiceCreateOrUpdateCustomerResponse], error)
+	GetCustomer(context.Context, *connect.Request[v1.PaymentServiceGetCustomerRequest]) (*connect.Response[v1.PaymentServiceGetCustomerResponse], error)
+	GetCustomerWithLogin(context.Context, *connect.Request[v1.PaymentServiceGetCustomerWithLoginRequest]) (*connect.Response[v1.PaymentServiceGetCustomerWithLoginResponse], error)
+	CheckIfCustomerExists(context.Context, *connect.Request[v1.PaymentServiceCheckIfCustomerExistsRequest]) (*connect.Response[v1.PaymentServiceCheckIfCustomerExistsResponse], error)
+	HasPaymentMethod(context.Context, *connect.Request[v1.PaymentServiceHasPaymentMethodRequest]) (*connect.Response[v1.PaymentServiceHasPaymentMethodResponse], error)
+	DeletePaymentMethod(context.Context, *connect.Request[v1.PaymentServiceDeletePaymentMethodRequest]) (*connect.Response[v1.PaymentServiceDeletePaymentMethodResponse], error)
+	GetSubscriptionUsage(context.Context, *connect.Request[v1.PaymentServiceGetSubscriptionUsageRequest]) (*connect.Response[v1.PaymentServiceGetSubscriptionUsageResponse], error)
+	GetInvoices(context.Context, *connect.Request[v1.PaymentServiceGetInvoicesRequest]) (*connect.Response[v1.PaymentServiceGetInvoicesResponse], error)
+	GetDefaultPrices(context.Context, *connect.Request[v1.PaymentServiceGetDefaultPricesRequest]) (*connect.Response[v1.PaymentServiceGetDefaultPricesResponse], error)
+	CheckAdmitted(context.Context, *connect.Request[v1.PaymentServiceCheckAdmittedRequest]) (*connect.Response[v1.PaymentServiceCheckAdmittedResponse], error)
+	RequestAdmission(context.Context, *connect.Request[v1.PaymentServiceRequestAdmissionRequest]) (*connect.Response[v1.PaymentServiceRequestAdmissionResponse], error)
+	HasChargeableResources(context.Context, *connect.Request[v1.PaymentServiceHasChargeableResourcesRequest]) (*connect.Response[v1.PaymentServiceHasChargeableResourcesResponse], error)
 }
 
 // NewPaymentServiceHandler builds an HTTP handler from the service implementation. It returns the
@@ -257,63 +257,63 @@ type PaymentServiceHandler interface {
 //
 // By default, handlers support the Connect, gRPC, and gRPC-Web protocols with the binary Protobuf
 // and JSON codecs. They also support gzip compression.
-func NewPaymentServiceHandler(svc PaymentServiceHandler, opts ...connect_go.HandlerOption) (string, http.Handler) {
-	paymentServiceCreateOrUpdateCustomerHandler := connect_go.NewUnaryHandler(
+func NewPaymentServiceHandler(svc PaymentServiceHandler, opts ...connect.HandlerOption) (string, http.Handler) {
+	paymentServiceCreateOrUpdateCustomerHandler := connect.NewUnaryHandler(
 		PaymentServiceCreateOrUpdateCustomerProcedure,
 		svc.CreateOrUpdateCustomer,
 		opts...,
 	)
-	paymentServiceGetCustomerHandler := connect_go.NewUnaryHandler(
+	paymentServiceGetCustomerHandler := connect.NewUnaryHandler(
 		PaymentServiceGetCustomerProcedure,
 		svc.GetCustomer,
 		opts...,
 	)
-	paymentServiceGetCustomerWithLoginHandler := connect_go.NewUnaryHandler(
+	paymentServiceGetCustomerWithLoginHandler := connect.NewUnaryHandler(
 		PaymentServiceGetCustomerWithLoginProcedure,
 		svc.GetCustomerWithLogin,
 		opts...,
 	)
-	paymentServiceCheckIfCustomerExistsHandler := connect_go.NewUnaryHandler(
+	paymentServiceCheckIfCustomerExistsHandler := connect.NewUnaryHandler(
 		PaymentServiceCheckIfCustomerExistsProcedure,
 		svc.CheckIfCustomerExists,
 		opts...,
 	)
-	paymentServiceHasPaymentMethodHandler := connect_go.NewUnaryHandler(
+	paymentServiceHasPaymentMethodHandler := connect.NewUnaryHandler(
 		PaymentServiceHasPaymentMethodProcedure,
 		svc.HasPaymentMethod,
 		opts...,
 	)
-	paymentServiceDeletePaymentMethodHandler := connect_go.NewUnaryHandler(
+	paymentServiceDeletePaymentMethodHandler := connect.NewUnaryHandler(
 		PaymentServiceDeletePaymentMethodProcedure,
 		svc.DeletePaymentMethod,
 		opts...,
 	)
-	paymentServiceGetSubscriptionUsageHandler := connect_go.NewUnaryHandler(
+	paymentServiceGetSubscriptionUsageHandler := connect.NewUnaryHandler(
 		PaymentServiceGetSubscriptionUsageProcedure,
 		svc.GetSubscriptionUsage,
 		opts...,
 	)
-	paymentServiceGetInvoicesHandler := connect_go.NewUnaryHandler(
+	paymentServiceGetInvoicesHandler := connect.NewUnaryHandler(
 		PaymentServiceGetInvoicesProcedure,
 		svc.GetInvoices,
 		opts...,
 	)
-	paymentServiceGetDefaultPricesHandler := connect_go.NewUnaryHandler(
+	paymentServiceGetDefaultPricesHandler := connect.NewUnaryHandler(
 		PaymentServiceGetDefaultPricesProcedure,
 		svc.GetDefaultPrices,
 		opts...,
 	)
-	paymentServiceCheckAdmittedHandler := connect_go.NewUnaryHandler(
+	paymentServiceCheckAdmittedHandler := connect.NewUnaryHandler(
 		PaymentServiceCheckAdmittedProcedure,
 		svc.CheckAdmitted,
 		opts...,
 	)
-	paymentServiceRequestAdmissionHandler := connect_go.NewUnaryHandler(
+	paymentServiceRequestAdmissionHandler := connect.NewUnaryHandler(
 		PaymentServiceRequestAdmissionProcedure,
 		svc.RequestAdmission,
 		opts...,
 	)
-	paymentServiceHasChargeableResourcesHandler := connect_go.NewUnaryHandler(
+	paymentServiceHasChargeableResourcesHandler := connect.NewUnaryHandler(
 		PaymentServiceHasChargeableResourcesProcedure,
 		svc.HasChargeableResources,
 		opts...,
@@ -353,50 +353,50 @@ func NewPaymentServiceHandler(svc PaymentServiceHandler, opts ...connect_go.Hand
 // UnimplementedPaymentServiceHandler returns CodeUnimplemented from all methods.
 type UnimplementedPaymentServiceHandler struct{}
 
-func (UnimplementedPaymentServiceHandler) CreateOrUpdateCustomer(context.Context, *connect_go.Request[v1.PaymentServiceCreateOrUpdateCustomerRequest]) (*connect_go.Response[v1.PaymentServiceCreateOrUpdateCustomerResponse], error) {
-	return nil, connect_go.NewError(connect_go.CodeUnimplemented, errors.New("api.v1.PaymentService.CreateOrUpdateCustomer is not implemented"))
+func (UnimplementedPaymentServiceHandler) CreateOrUpdateCustomer(context.Context, *connect.Request[v1.PaymentServiceCreateOrUpdateCustomerRequest]) (*connect.Response[v1.PaymentServiceCreateOrUpdateCustomerResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("api.v1.PaymentService.CreateOrUpdateCustomer is not implemented"))
 }
 
-func (UnimplementedPaymentServiceHandler) GetCustomer(context.Context, *connect_go.Request[v1.PaymentServiceGetCustomerRequest]) (*connect_go.Response[v1.PaymentServiceGetCustomerResponse], error) {
-	return nil, connect_go.NewError(connect_go.CodeUnimplemented, errors.New("api.v1.PaymentService.GetCustomer is not implemented"))
+func (UnimplementedPaymentServiceHandler) GetCustomer(context.Context, *connect.Request[v1.PaymentServiceGetCustomerRequest]) (*connect.Response[v1.PaymentServiceGetCustomerResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("api.v1.PaymentService.GetCustomer is not implemented"))
 }
 
-func (UnimplementedPaymentServiceHandler) GetCustomerWithLogin(context.Context, *connect_go.Request[v1.PaymentServiceGetCustomerWithLoginRequest]) (*connect_go.Response[v1.PaymentServiceGetCustomerWithLoginResponse], error) {
-	return nil, connect_go.NewError(connect_go.CodeUnimplemented, errors.New("api.v1.PaymentService.GetCustomerWithLogin is not implemented"))
+func (UnimplementedPaymentServiceHandler) GetCustomerWithLogin(context.Context, *connect.Request[v1.PaymentServiceGetCustomerWithLoginRequest]) (*connect.Response[v1.PaymentServiceGetCustomerWithLoginResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("api.v1.PaymentService.GetCustomerWithLogin is not implemented"))
 }
 
-func (UnimplementedPaymentServiceHandler) CheckIfCustomerExists(context.Context, *connect_go.Request[v1.PaymentServiceCheckIfCustomerExistsRequest]) (*connect_go.Response[v1.PaymentServiceCheckIfCustomerExistsResponse], error) {
-	return nil, connect_go.NewError(connect_go.CodeUnimplemented, errors.New("api.v1.PaymentService.CheckIfCustomerExists is not implemented"))
+func (UnimplementedPaymentServiceHandler) CheckIfCustomerExists(context.Context, *connect.Request[v1.PaymentServiceCheckIfCustomerExistsRequest]) (*connect.Response[v1.PaymentServiceCheckIfCustomerExistsResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("api.v1.PaymentService.CheckIfCustomerExists is not implemented"))
 }
 
-func (UnimplementedPaymentServiceHandler) HasPaymentMethod(context.Context, *connect_go.Request[v1.PaymentServiceHasPaymentMethodRequest]) (*connect_go.Response[v1.PaymentServiceHasPaymentMethodResponse], error) {
-	return nil, connect_go.NewError(connect_go.CodeUnimplemented, errors.New("api.v1.PaymentService.HasPaymentMethod is not implemented"))
+func (UnimplementedPaymentServiceHandler) HasPaymentMethod(context.Context, *connect.Request[v1.PaymentServiceHasPaymentMethodRequest]) (*connect.Response[v1.PaymentServiceHasPaymentMethodResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("api.v1.PaymentService.HasPaymentMethod is not implemented"))
 }
 
-func (UnimplementedPaymentServiceHandler) DeletePaymentMethod(context.Context, *connect_go.Request[v1.PaymentServiceDeletePaymentMethodRequest]) (*connect_go.Response[v1.PaymentServiceDeletePaymentMethodResponse], error) {
-	return nil, connect_go.NewError(connect_go.CodeUnimplemented, errors.New("api.v1.PaymentService.DeletePaymentMethod is not implemented"))
+func (UnimplementedPaymentServiceHandler) DeletePaymentMethod(context.Context, *connect.Request[v1.PaymentServiceDeletePaymentMethodRequest]) (*connect.Response[v1.PaymentServiceDeletePaymentMethodResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("api.v1.PaymentService.DeletePaymentMethod is not implemented"))
 }
 
-func (UnimplementedPaymentServiceHandler) GetSubscriptionUsage(context.Context, *connect_go.Request[v1.PaymentServiceGetSubscriptionUsageRequest]) (*connect_go.Response[v1.PaymentServiceGetSubscriptionUsageResponse], error) {
-	return nil, connect_go.NewError(connect_go.CodeUnimplemented, errors.New("api.v1.PaymentService.GetSubscriptionUsage is not implemented"))
+func (UnimplementedPaymentServiceHandler) GetSubscriptionUsage(context.Context, *connect.Request[v1.PaymentServiceGetSubscriptionUsageRequest]) (*connect.Response[v1.PaymentServiceGetSubscriptionUsageResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("api.v1.PaymentService.GetSubscriptionUsage is not implemented"))
 }
 
-func (UnimplementedPaymentServiceHandler) GetInvoices(context.Context, *connect_go.Request[v1.PaymentServiceGetInvoicesRequest]) (*connect_go.Response[v1.PaymentServiceGetInvoicesResponse], error) {
-	return nil, connect_go.NewError(connect_go.CodeUnimplemented, errors.New("api.v1.PaymentService.GetInvoices is not implemented"))
+func (UnimplementedPaymentServiceHandler) GetInvoices(context.Context, *connect.Request[v1.PaymentServiceGetInvoicesRequest]) (*connect.Response[v1.PaymentServiceGetInvoicesResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("api.v1.PaymentService.GetInvoices is not implemented"))
 }
 
-func (UnimplementedPaymentServiceHandler) GetDefaultPrices(context.Context, *connect_go.Request[v1.PaymentServiceGetDefaultPricesRequest]) (*connect_go.Response[v1.PaymentServiceGetDefaultPricesResponse], error) {
-	return nil, connect_go.NewError(connect_go.CodeUnimplemented, errors.New("api.v1.PaymentService.GetDefaultPrices is not implemented"))
+func (UnimplementedPaymentServiceHandler) GetDefaultPrices(context.Context, *connect.Request[v1.PaymentServiceGetDefaultPricesRequest]) (*connect.Response[v1.PaymentServiceGetDefaultPricesResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("api.v1.PaymentService.GetDefaultPrices is not implemented"))
 }
 
-func (UnimplementedPaymentServiceHandler) CheckAdmitted(context.Context, *connect_go.Request[v1.PaymentServiceCheckAdmittedRequest]) (*connect_go.Response[v1.PaymentServiceCheckAdmittedResponse], error) {
-	return nil, connect_go.NewError(connect_go.CodeUnimplemented, errors.New("api.v1.PaymentService.CheckAdmitted is not implemented"))
+func (UnimplementedPaymentServiceHandler) CheckAdmitted(context.Context, *connect.Request[v1.PaymentServiceCheckAdmittedRequest]) (*connect.Response[v1.PaymentServiceCheckAdmittedResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("api.v1.PaymentService.CheckAdmitted is not implemented"))
 }
 
-func (UnimplementedPaymentServiceHandler) RequestAdmission(context.Context, *connect_go.Request[v1.PaymentServiceRequestAdmissionRequest]) (*connect_go.Response[v1.PaymentServiceRequestAdmissionResponse], error) {
-	return nil, connect_go.NewError(connect_go.CodeUnimplemented, errors.New("api.v1.PaymentService.RequestAdmission is not implemented"))
+func (UnimplementedPaymentServiceHandler) RequestAdmission(context.Context, *connect.Request[v1.PaymentServiceRequestAdmissionRequest]) (*connect.Response[v1.PaymentServiceRequestAdmissionResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("api.v1.PaymentService.RequestAdmission is not implemented"))
 }
 
-func (UnimplementedPaymentServiceHandler) HasChargeableResources(context.Context, *connect_go.Request[v1.PaymentServiceHasChargeableResourcesRequest]) (*connect_go.Response[v1.PaymentServiceHasChargeableResourcesResponse], error) {
-	return nil, connect_go.NewError(connect_go.CodeUnimplemented, errors.New("api.v1.PaymentService.HasChargeableResources is not implemented"))
+func (UnimplementedPaymentServiceHandler) HasChargeableResources(context.Context, *connect.Request[v1.PaymentServiceHasChargeableResourcesRequest]) (*connect.Response[v1.PaymentServiceHasChargeableResourcesResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("api.v1.PaymentService.HasChargeableResources is not implemented"))
 }

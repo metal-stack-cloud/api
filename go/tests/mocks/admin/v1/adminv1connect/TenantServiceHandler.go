@@ -3,7 +3,7 @@
 package adminv1connect
 
 import (
-	connect "github.com/bufbuild/connect-go"
+	connect "connectrpc.com/connect"
 	adminv1 "github.com/metal-stack-cloud/api/go/admin/v1"
 
 	context "context"

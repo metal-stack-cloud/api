@@ -5,9 +5,9 @@
 package apiv1connect
 
 import (
+	connect "connectrpc.com/connect"
 	context "context"
 	errors "errors"
-	connect_go "github.com/bufbuild/connect-go"
 	v1 "github.com/metal-stack-cloud/api/go/api/v1"
 	http "net/http"
 	strings "strings"
@@ -18,7 +18,7 @@ import (
 // generated with a version of connect newer than the one compiled into your binary. You can fix the
 // problem by either regenerating this code with an older version of connect or updating the connect
 // version compiled into your binary.
-const _ = connect_go.IsAtLeastVersion0_1_0
+const _ = connect.IsAtLeastVersion0_1_0
 
 const (
 	// TokenServiceName is the fully-qualified name of the TokenService service.
@@ -39,7 +39,7 @@ const (
 
 // TokenServiceClient is a client for the api.v1.TokenService service.
 type TokenServiceClient interface {
-	Create(context.Context, *connect_go.Request[v1.TokenServiceCreateRequest]) (*connect_go.Response[v1.TokenServiceCreateResponse], error)
+	Create(context.Context, *connect.Request[v1.TokenServiceCreateRequest]) (*connect.Response[v1.TokenServiceCreateResponse], error)
 }
 
 // NewTokenServiceClient constructs a client for the api.v1.TokenService service. By default, it
@@ -49,10 +49,10 @@ type TokenServiceClient interface {
 //
 // The URL supplied here should be the base URL for the Connect or gRPC server (for example,
 // http://api.acme.com or https://acme.com/grpc).
-func NewTokenServiceClient(httpClient connect_go.HTTPClient, baseURL string, opts ...connect_go.ClientOption) TokenServiceClient {
+func NewTokenServiceClient(httpClient connect.HTTPClient, baseURL string, opts ...connect.ClientOption) TokenServiceClient {
 	baseURL = strings.TrimRight(baseURL, "/")
 	return &tokenServiceClient{
-		create: connect_go.NewClient[v1.TokenServiceCreateRequest, v1.TokenServiceCreateResponse](
+		create: connect.NewClient[v1.TokenServiceCreateRequest, v1.TokenServiceCreateResponse](
 			httpClient,
 			baseURL+TokenServiceCreateProcedure,
 			opts...,
@@ -62,17 +62,17 @@ func NewTokenServiceClient(httpClient connect_go.HTTPClient, baseURL string, opt
 
 // tokenServiceClient implements TokenServiceClient.
 type tokenServiceClient struct {
-	create *connect_go.Client[v1.TokenServiceCreateRequest, v1.TokenServiceCreateResponse]
+	create *connect.Client[v1.TokenServiceCreateRequest, v1.TokenServiceCreateResponse]
 }
 
 // Create calls api.v1.TokenService.Create.
-func (c *tokenServiceClient) Create(ctx context.Context, req *connect_go.Request[v1.TokenServiceCreateRequest]) (*connect_go.Response[v1.TokenServiceCreateResponse], error) {
+func (c *tokenServiceClient) Create(ctx context.Context, req *connect.Request[v1.TokenServiceCreateRequest]) (*connect.Response[v1.TokenServiceCreateResponse], error) {
 	return c.create.CallUnary(ctx, req)
 }
 
 // TokenServiceHandler is an implementation of the api.v1.TokenService service.
 type TokenServiceHandler interface {
-	Create(context.Context, *connect_go.Request[v1.TokenServiceCreateRequest]) (*connect_go.Response[v1.TokenServiceCreateResponse], error)
+	Create(context.Context, *connect.Request[v1.TokenServiceCreateRequest]) (*connect.Response[v1.TokenServiceCreateResponse], error)
 }
 
 // NewTokenServiceHandler builds an HTTP handler from the service implementation. It returns the
@@ -80,8 +80,8 @@ type TokenServiceHandler interface {
 //
 // By default, handlers support the Connect, gRPC, and gRPC-Web protocols with the binary Protobuf
 // and JSON codecs. They also support gzip compression.
-func NewTokenServiceHandler(svc TokenServiceHandler, opts ...connect_go.HandlerOption) (string, http.Handler) {
-	tokenServiceCreateHandler := connect_go.NewUnaryHandler(
+func NewTokenServiceHandler(svc TokenServiceHandler, opts ...connect.HandlerOption) (string, http.Handler) {
+	tokenServiceCreateHandler := connect.NewUnaryHandler(
 		TokenServiceCreateProcedure,
 		svc.Create,
 		opts...,
@@ -99,6 +99,6 @@ func NewTokenServiceHandler(svc TokenServiceHandler, opts ...connect_go.HandlerO
 // UnimplementedTokenServiceHandler returns CodeUnimplemented from all methods.
 type UnimplementedTokenServiceHandler struct{}
 
-func (UnimplementedTokenServiceHandler) Create(context.Context, *connect_go.Request[v1.TokenServiceCreateRequest]) (*connect_go.Response[v1.TokenServiceCreateResponse], error) {
-	return nil, connect_go.NewError(connect_go.CodeUnimplemented, errors.New("api.v1.TokenService.Create is not implemented"))
+func (UnimplementedTokenServiceHandler) Create(context.Context, *connect.Request[v1.TokenServiceCreateRequest]) (*connect.Response[v1.TokenServiceCreateResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("api.v1.TokenService.Create is not implemented"))
 }

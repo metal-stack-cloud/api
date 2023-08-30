@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"os"
 	"path/filepath"
+	"slices"
 	"strings"
 	"testing"
 
@@ -14,7 +15,6 @@ import (
 	"google.golang.org/protobuf/types/descriptorpb"
 
 	"golang.org/x/exp/maps"
-	"golang.org/x/exp/slices"
 )
 
 type (

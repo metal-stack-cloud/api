@@ -5,9 +5,9 @@
 package apiv1connect
 
 import (
+	connect "connectrpc.com/connect"
 	context "context"
 	errors "errors"
-	connect_go "github.com/bufbuild/connect-go"
 	v1 "github.com/metal-stack-cloud/api/go/api/v1"
 	http "net/http"
 	strings "strings"
@@ -18,7 +18,7 @@ import (
 // generated with a version of connect newer than the one compiled into your binary. You can fix the
 // problem by either regenerating this code with an older version of connect or updating the connect
 // version compiled into your binary.
-const _ = connect_go.IsAtLeastVersion0_1_0
+const _ = connect.IsAtLeastVersion0_1_0
 
 const (
 	// AssetServiceName is the fully-qualified name of the AssetService service.
@@ -39,7 +39,7 @@ const (
 
 // AssetServiceClient is a client for the api.v1.AssetService service.
 type AssetServiceClient interface {
-	List(context.Context, *connect_go.Request[v1.AssetServiceListRequest]) (*connect_go.Response[v1.AssetServiceListResponse], error)
+	List(context.Context, *connect.Request[v1.AssetServiceListRequest]) (*connect.Response[v1.AssetServiceListResponse], error)
 }
 
 // NewAssetServiceClient constructs a client for the api.v1.AssetService service. By default, it
@@ -49,10 +49,10 @@ type AssetServiceClient interface {
 //
 // The URL supplied here should be the base URL for the Connect or gRPC server (for example,
 // http://api.acme.com or https://acme.com/grpc).
-func NewAssetServiceClient(httpClient connect_go.HTTPClient, baseURL string, opts ...connect_go.ClientOption) AssetServiceClient {
+func NewAssetServiceClient(httpClient connect.HTTPClient, baseURL string, opts ...connect.ClientOption) AssetServiceClient {
 	baseURL = strings.TrimRight(baseURL, "/")
 	return &assetServiceClient{
-		list: connect_go.NewClient[v1.AssetServiceListRequest, v1.AssetServiceListResponse](
+		list: connect.NewClient[v1.AssetServiceListRequest, v1.AssetServiceListResponse](
 			httpClient,
 			baseURL+AssetServiceListProcedure,
 			opts...,
@@ -62,17 +62,17 @@ func NewAssetServiceClient(httpClient connect_go.HTTPClient, baseURL string, opt
 
 // assetServiceClient implements AssetServiceClient.
 type assetServiceClient struct {
-	list *connect_go.Client[v1.AssetServiceListRequest, v1.AssetServiceListResponse]
+	list *connect.Client[v1.AssetServiceListRequest, v1.AssetServiceListResponse]
 }
 
 // List calls api.v1.AssetService.List.
-func (c *assetServiceClient) List(ctx context.Context, req *connect_go.Request[v1.AssetServiceListRequest]) (*connect_go.Response[v1.AssetServiceListResponse], error) {
+func (c *assetServiceClient) List(ctx context.Context, req *connect.Request[v1.AssetServiceListRequest]) (*connect.Response[v1.AssetServiceListResponse], error) {
 	return c.list.CallUnary(ctx, req)
 }
 
 // AssetServiceHandler is an implementation of the api.v1.AssetService service.
 type AssetServiceHandler interface {
-	List(context.Context, *connect_go.Request[v1.AssetServiceListRequest]) (*connect_go.Response[v1.AssetServiceListResponse], error)
+	List(context.Context, *connect.Request[v1.AssetServiceListRequest]) (*connect.Response[v1.AssetServiceListResponse], error)
 }
 
 // NewAssetServiceHandler builds an HTTP handler from the service implementation. It returns the
@@ -80,8 +80,8 @@ type AssetServiceHandler interface {
 //
 // By default, handlers support the Connect, gRPC, and gRPC-Web protocols with the binary Protobuf
 // and JSON codecs. They also support gzip compression.
-func NewAssetServiceHandler(svc AssetServiceHandler, opts ...connect_go.HandlerOption) (string, http.Handler) {
-	assetServiceListHandler := connect_go.NewUnaryHandler(
+func NewAssetServiceHandler(svc AssetServiceHandler, opts ...connect.HandlerOption) (string, http.Handler) {
+	assetServiceListHandler := connect.NewUnaryHandler(
 		AssetServiceListProcedure,
 		svc.List,
 		opts...,
@@ -99,6 +99,6 @@ func NewAssetServiceHandler(svc AssetServiceHandler, opts ...connect_go.HandlerO
 // UnimplementedAssetServiceHandler returns CodeUnimplemented from all methods.
 type UnimplementedAssetServiceHandler struct{}
 
-func (UnimplementedAssetServiceHandler) List(context.Context, *connect_go.Request[v1.AssetServiceListRequest]) (*connect_go.Response[v1.AssetServiceListResponse], error) {
-	return nil, connect_go.NewError(connect_go.CodeUnimplemented, errors.New("api.v1.AssetService.List is not implemented"))
+func (UnimplementedAssetServiceHandler) List(context.Context, *connect.Request[v1.AssetServiceListRequest]) (*connect.Response[v1.AssetServiceListResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("api.v1.AssetService.List is not implemented"))
 }
