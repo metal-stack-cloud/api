@@ -5,9 +5,9 @@
 package apiv1connect
 
 import (
+	connect "connectrpc.com/connect"
 	context "context"
 	errors "errors"
-	connect_go "github.com/bufbuild/connect-go"
 	v1 "github.com/metal-stack-cloud/api/go/api/v1"
 	http "net/http"
 	strings "strings"
@@ -18,7 +18,7 @@ import (
 // generated with a version of connect newer than the one compiled into your binary. You can fix the
 // problem by either regenerating this code with an older version of connect or updating the connect
 // version compiled into your binary.
-const _ = connect_go.IsAtLeastVersion0_1_0
+const _ = connect.IsAtLeastVersion0_1_0
 
 const (
 	// TenantServiceName is the fully-qualified name of the TenantService service.
@@ -48,13 +48,13 @@ const (
 
 // TenantServiceClient is a client for the api.v1.TenantService service.
 type TenantServiceClient interface {
-	Create(context.Context, *connect_go.Request[v1.TenantServiceCreateRequest]) (*connect_go.Response[v1.TenantServiceCreateResponse], error)
+	Create(context.Context, *connect.Request[v1.TenantServiceCreateRequest]) (*connect.Response[v1.TenantServiceCreateResponse], error)
 	// CreateOrUpdate should only be used from within the application
 	// will check if tenant already exists and updates if necessary, otherwise create a new tenant
-	CreateOrUpdate(context.Context, *connect_go.Request[v1.TenantServiceCreateOrUpdateRequest]) (*connect_go.Response[v1.TenantServiceCreateOrUpdateResponse], error)
-	Get(context.Context, *connect_go.Request[v1.TenantServiceGetRequest]) (*connect_go.Response[v1.TenantServiceGetResponse], error)
-	Update(context.Context, *connect_go.Request[v1.TenantServiceUpdateRequest]) (*connect_go.Response[v1.TenantServiceUpdateResponse], error)
-	Delete(context.Context, *connect_go.Request[v1.TenantServiceDeleteRequest]) (*connect_go.Response[v1.TenantServiceDeleteResponse], error)
+	CreateOrUpdate(context.Context, *connect.Request[v1.TenantServiceCreateOrUpdateRequest]) (*connect.Response[v1.TenantServiceCreateOrUpdateResponse], error)
+	Get(context.Context, *connect.Request[v1.TenantServiceGetRequest]) (*connect.Response[v1.TenantServiceGetResponse], error)
+	Update(context.Context, *connect.Request[v1.TenantServiceUpdateRequest]) (*connect.Response[v1.TenantServiceUpdateResponse], error)
+	Delete(context.Context, *connect.Request[v1.TenantServiceDeleteRequest]) (*connect.Response[v1.TenantServiceDeleteResponse], error)
 }
 
 // NewTenantServiceClient constructs a client for the api.v1.TenantService service. By default, it
@@ -64,30 +64,30 @@ type TenantServiceClient interface {
 //
 // The URL supplied here should be the base URL for the Connect or gRPC server (for example,
 // http://api.acme.com or https://acme.com/grpc).
-func NewTenantServiceClient(httpClient connect_go.HTTPClient, baseURL string, opts ...connect_go.ClientOption) TenantServiceClient {
+func NewTenantServiceClient(httpClient connect.HTTPClient, baseURL string, opts ...connect.ClientOption) TenantServiceClient {
 	baseURL = strings.TrimRight(baseURL, "/")
 	return &tenantServiceClient{
-		create: connect_go.NewClient[v1.TenantServiceCreateRequest, v1.TenantServiceCreateResponse](
+		create: connect.NewClient[v1.TenantServiceCreateRequest, v1.TenantServiceCreateResponse](
 			httpClient,
 			baseURL+TenantServiceCreateProcedure,
 			opts...,
 		),
-		createOrUpdate: connect_go.NewClient[v1.TenantServiceCreateOrUpdateRequest, v1.TenantServiceCreateOrUpdateResponse](
+		createOrUpdate: connect.NewClient[v1.TenantServiceCreateOrUpdateRequest, v1.TenantServiceCreateOrUpdateResponse](
 			httpClient,
 			baseURL+TenantServiceCreateOrUpdateProcedure,
 			opts...,
 		),
-		get: connect_go.NewClient[v1.TenantServiceGetRequest, v1.TenantServiceGetResponse](
+		get: connect.NewClient[v1.TenantServiceGetRequest, v1.TenantServiceGetResponse](
 			httpClient,
 			baseURL+TenantServiceGetProcedure,
 			opts...,
 		),
-		update: connect_go.NewClient[v1.TenantServiceUpdateRequest, v1.TenantServiceUpdateResponse](
+		update: connect.NewClient[v1.TenantServiceUpdateRequest, v1.TenantServiceUpdateResponse](
 			httpClient,
 			baseURL+TenantServiceUpdateProcedure,
 			opts...,
 		),
-		delete: connect_go.NewClient[v1.TenantServiceDeleteRequest, v1.TenantServiceDeleteResponse](
+		delete: connect.NewClient[v1.TenantServiceDeleteRequest, v1.TenantServiceDeleteResponse](
 			httpClient,
 			baseURL+TenantServiceDeleteProcedure,
 			opts...,
@@ -97,47 +97,47 @@ func NewTenantServiceClient(httpClient connect_go.HTTPClient, baseURL string, op
 
 // tenantServiceClient implements TenantServiceClient.
 type tenantServiceClient struct {
-	create         *connect_go.Client[v1.TenantServiceCreateRequest, v1.TenantServiceCreateResponse]
-	createOrUpdate *connect_go.Client[v1.TenantServiceCreateOrUpdateRequest, v1.TenantServiceCreateOrUpdateResponse]
-	get            *connect_go.Client[v1.TenantServiceGetRequest, v1.TenantServiceGetResponse]
-	update         *connect_go.Client[v1.TenantServiceUpdateRequest, v1.TenantServiceUpdateResponse]
-	delete         *connect_go.Client[v1.TenantServiceDeleteRequest, v1.TenantServiceDeleteResponse]
+	create         *connect.Client[v1.TenantServiceCreateRequest, v1.TenantServiceCreateResponse]
+	createOrUpdate *connect.Client[v1.TenantServiceCreateOrUpdateRequest, v1.TenantServiceCreateOrUpdateResponse]
+	get            *connect.Client[v1.TenantServiceGetRequest, v1.TenantServiceGetResponse]
+	update         *connect.Client[v1.TenantServiceUpdateRequest, v1.TenantServiceUpdateResponse]
+	delete         *connect.Client[v1.TenantServiceDeleteRequest, v1.TenantServiceDeleteResponse]
 }
 
 // Create calls api.v1.TenantService.Create.
-func (c *tenantServiceClient) Create(ctx context.Context, req *connect_go.Request[v1.TenantServiceCreateRequest]) (*connect_go.Response[v1.TenantServiceCreateResponse], error) {
+func (c *tenantServiceClient) Create(ctx context.Context, req *connect.Request[v1.TenantServiceCreateRequest]) (*connect.Response[v1.TenantServiceCreateResponse], error) {
 	return c.create.CallUnary(ctx, req)
 }
 
 // CreateOrUpdate calls api.v1.TenantService.CreateOrUpdate.
-func (c *tenantServiceClient) CreateOrUpdate(ctx context.Context, req *connect_go.Request[v1.TenantServiceCreateOrUpdateRequest]) (*connect_go.Response[v1.TenantServiceCreateOrUpdateResponse], error) {
+func (c *tenantServiceClient) CreateOrUpdate(ctx context.Context, req *connect.Request[v1.TenantServiceCreateOrUpdateRequest]) (*connect.Response[v1.TenantServiceCreateOrUpdateResponse], error) {
 	return c.createOrUpdate.CallUnary(ctx, req)
 }
 
 // Get calls api.v1.TenantService.Get.
-func (c *tenantServiceClient) Get(ctx context.Context, req *connect_go.Request[v1.TenantServiceGetRequest]) (*connect_go.Response[v1.TenantServiceGetResponse], error) {
+func (c *tenantServiceClient) Get(ctx context.Context, req *connect.Request[v1.TenantServiceGetRequest]) (*connect.Response[v1.TenantServiceGetResponse], error) {
 	return c.get.CallUnary(ctx, req)
 }
 
 // Update calls api.v1.TenantService.Update.
-func (c *tenantServiceClient) Update(ctx context.Context, req *connect_go.Request[v1.TenantServiceUpdateRequest]) (*connect_go.Response[v1.TenantServiceUpdateResponse], error) {
+func (c *tenantServiceClient) Update(ctx context.Context, req *connect.Request[v1.TenantServiceUpdateRequest]) (*connect.Response[v1.TenantServiceUpdateResponse], error) {
 	return c.update.CallUnary(ctx, req)
 }
 
 // Delete calls api.v1.TenantService.Delete.
-func (c *tenantServiceClient) Delete(ctx context.Context, req *connect_go.Request[v1.TenantServiceDeleteRequest]) (*connect_go.Response[v1.TenantServiceDeleteResponse], error) {
+func (c *tenantServiceClient) Delete(ctx context.Context, req *connect.Request[v1.TenantServiceDeleteRequest]) (*connect.Response[v1.TenantServiceDeleteResponse], error) {
 	return c.delete.CallUnary(ctx, req)
 }
 
 // TenantServiceHandler is an implementation of the api.v1.TenantService service.
 type TenantServiceHandler interface {
-	Create(context.Context, *connect_go.Request[v1.TenantServiceCreateRequest]) (*connect_go.Response[v1.TenantServiceCreateResponse], error)
+	Create(context.Context, *connect.Request[v1.TenantServiceCreateRequest]) (*connect.Response[v1.TenantServiceCreateResponse], error)
 	// CreateOrUpdate should only be used from within the application
 	// will check if tenant already exists and updates if necessary, otherwise create a new tenant
-	CreateOrUpdate(context.Context, *connect_go.Request[v1.TenantServiceCreateOrUpdateRequest]) (*connect_go.Response[v1.TenantServiceCreateOrUpdateResponse], error)
-	Get(context.Context, *connect_go.Request[v1.TenantServiceGetRequest]) (*connect_go.Response[v1.TenantServiceGetResponse], error)
-	Update(context.Context, *connect_go.Request[v1.TenantServiceUpdateRequest]) (*connect_go.Response[v1.TenantServiceUpdateResponse], error)
-	Delete(context.Context, *connect_go.Request[v1.TenantServiceDeleteRequest]) (*connect_go.Response[v1.TenantServiceDeleteResponse], error)
+	CreateOrUpdate(context.Context, *connect.Request[v1.TenantServiceCreateOrUpdateRequest]) (*connect.Response[v1.TenantServiceCreateOrUpdateResponse], error)
+	Get(context.Context, *connect.Request[v1.TenantServiceGetRequest]) (*connect.Response[v1.TenantServiceGetResponse], error)
+	Update(context.Context, *connect.Request[v1.TenantServiceUpdateRequest]) (*connect.Response[v1.TenantServiceUpdateResponse], error)
+	Delete(context.Context, *connect.Request[v1.TenantServiceDeleteRequest]) (*connect.Response[v1.TenantServiceDeleteResponse], error)
 }
 
 // NewTenantServiceHandler builds an HTTP handler from the service implementation. It returns the
@@ -145,28 +145,28 @@ type TenantServiceHandler interface {
 //
 // By default, handlers support the Connect, gRPC, and gRPC-Web protocols with the binary Protobuf
 // and JSON codecs. They also support gzip compression.
-func NewTenantServiceHandler(svc TenantServiceHandler, opts ...connect_go.HandlerOption) (string, http.Handler) {
-	tenantServiceCreateHandler := connect_go.NewUnaryHandler(
+func NewTenantServiceHandler(svc TenantServiceHandler, opts ...connect.HandlerOption) (string, http.Handler) {
+	tenantServiceCreateHandler := connect.NewUnaryHandler(
 		TenantServiceCreateProcedure,
 		svc.Create,
 		opts...,
 	)
-	tenantServiceCreateOrUpdateHandler := connect_go.NewUnaryHandler(
+	tenantServiceCreateOrUpdateHandler := connect.NewUnaryHandler(
 		TenantServiceCreateOrUpdateProcedure,
 		svc.CreateOrUpdate,
 		opts...,
 	)
-	tenantServiceGetHandler := connect_go.NewUnaryHandler(
+	tenantServiceGetHandler := connect.NewUnaryHandler(
 		TenantServiceGetProcedure,
 		svc.Get,
 		opts...,
 	)
-	tenantServiceUpdateHandler := connect_go.NewUnaryHandler(
+	tenantServiceUpdateHandler := connect.NewUnaryHandler(
 		TenantServiceUpdateProcedure,
 		svc.Update,
 		opts...,
 	)
-	tenantServiceDeleteHandler := connect_go.NewUnaryHandler(
+	tenantServiceDeleteHandler := connect.NewUnaryHandler(
 		TenantServiceDeleteProcedure,
 		svc.Delete,
 		opts...,
@@ -192,22 +192,22 @@ func NewTenantServiceHandler(svc TenantServiceHandler, opts ...connect_go.Handle
 // UnimplementedTenantServiceHandler returns CodeUnimplemented from all methods.
 type UnimplementedTenantServiceHandler struct{}
 
-func (UnimplementedTenantServiceHandler) Create(context.Context, *connect_go.Request[v1.TenantServiceCreateRequest]) (*connect_go.Response[v1.TenantServiceCreateResponse], error) {
-	return nil, connect_go.NewError(connect_go.CodeUnimplemented, errors.New("api.v1.TenantService.Create is not implemented"))
+func (UnimplementedTenantServiceHandler) Create(context.Context, *connect.Request[v1.TenantServiceCreateRequest]) (*connect.Response[v1.TenantServiceCreateResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("api.v1.TenantService.Create is not implemented"))
 }
 
-func (UnimplementedTenantServiceHandler) CreateOrUpdate(context.Context, *connect_go.Request[v1.TenantServiceCreateOrUpdateRequest]) (*connect_go.Response[v1.TenantServiceCreateOrUpdateResponse], error) {
-	return nil, connect_go.NewError(connect_go.CodeUnimplemented, errors.New("api.v1.TenantService.CreateOrUpdate is not implemented"))
+func (UnimplementedTenantServiceHandler) CreateOrUpdate(context.Context, *connect.Request[v1.TenantServiceCreateOrUpdateRequest]) (*connect.Response[v1.TenantServiceCreateOrUpdateResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("api.v1.TenantService.CreateOrUpdate is not implemented"))
 }
 
-func (UnimplementedTenantServiceHandler) Get(context.Context, *connect_go.Request[v1.TenantServiceGetRequest]) (*connect_go.Response[v1.TenantServiceGetResponse], error) {
-	return nil, connect_go.NewError(connect_go.CodeUnimplemented, errors.New("api.v1.TenantService.Get is not implemented"))
+func (UnimplementedTenantServiceHandler) Get(context.Context, *connect.Request[v1.TenantServiceGetRequest]) (*connect.Response[v1.TenantServiceGetResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("api.v1.TenantService.Get is not implemented"))
 }
 
-func (UnimplementedTenantServiceHandler) Update(context.Context, *connect_go.Request[v1.TenantServiceUpdateRequest]) (*connect_go.Response[v1.TenantServiceUpdateResponse], error) {
-	return nil, connect_go.NewError(connect_go.CodeUnimplemented, errors.New("api.v1.TenantService.Update is not implemented"))
+func (UnimplementedTenantServiceHandler) Update(context.Context, *connect.Request[v1.TenantServiceUpdateRequest]) (*connect.Response[v1.TenantServiceUpdateResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("api.v1.TenantService.Update is not implemented"))
 }
 
-func (UnimplementedTenantServiceHandler) Delete(context.Context, *connect_go.Request[v1.TenantServiceDeleteRequest]) (*connect_go.Response[v1.TenantServiceDeleteResponse], error) {
-	return nil, connect_go.NewError(connect_go.CodeUnimplemented, errors.New("api.v1.TenantService.Delete is not implemented"))
+func (UnimplementedTenantServiceHandler) Delete(context.Context, *connect.Request[v1.TenantServiceDeleteRequest]) (*connect.Response[v1.TenantServiceDeleteResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("api.v1.TenantService.Delete is not implemented"))
 }

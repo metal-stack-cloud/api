@@ -2,7 +2,7 @@
 package client
 
 import (
-	compress "github.com/klauspost/connect-compress"
+	compress "github.com/klauspost/connect-compress/v2"
 
 	"github.com/metal-stack-cloud/api/go/admin/v1/adminv1connect"
 	"github.com/metal-stack-cloud/api/go/api/v1/apiv1connect"

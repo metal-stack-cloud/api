@@ -3,7 +3,7 @@
 package apiv1connect
 
 import (
-	connect "github.com/bufbuild/connect-go"
+	connect "connectrpc.com/connect"
 	apiv1 "github.com/metal-stack-cloud/api/go/api/v1"
 
 	context "context"
