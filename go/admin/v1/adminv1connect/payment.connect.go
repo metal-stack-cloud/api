@@ -5,9 +5,9 @@
 package adminv1connect
 
 import (
+	connect "connectrpc.com/connect"
 	context "context"
 	errors "errors"
-	connect_go "github.com/bufbuild/connect-go"
 	v1 "github.com/metal-stack-cloud/api/go/admin/v1"
 	http "net/http"
 	strings "strings"
@@ -18,7 +18,7 @@ import (
 // generated with a version of connect newer than the one compiled into your binary. You can fix the
 // problem by either regenerating this code with an older version of connect or updating the connect
 // version compiled into your binary.
-const _ = connect_go.IsAtLeastVersion0_1_0
+const _ = connect.IsAtLeastVersion0_1_0
 
 const (
 	// PaymentServiceName is the fully-qualified name of the PaymentService service.
@@ -43,8 +43,8 @@ const (
 
 // PaymentServiceClient is a client for the admin.v1.PaymentService service.
 type PaymentServiceClient interface {
-	ListCoupons(context.Context, *connect_go.Request[v1.PaymentServiceListCouponsRequest]) (*connect_go.Response[v1.PaymentServiceListCouponsResponse], error)
-	AddCouponToCustomer(context.Context, *connect_go.Request[v1.PaymentServiceAddCouponToCustomerRequest]) (*connect_go.Response[v1.PaymentServiceAddCouponToCustomerResponse], error)
+	ListCoupons(context.Context, *connect.Request[v1.PaymentServiceListCouponsRequest]) (*connect.Response[v1.PaymentServiceListCouponsResponse], error)
+	AddCouponToCustomer(context.Context, *connect.Request[v1.PaymentServiceAddCouponToCustomerRequest]) (*connect.Response[v1.PaymentServiceAddCouponToCustomerResponse], error)
 }
 
 // NewPaymentServiceClient constructs a client for the admin.v1.PaymentService service. By default,
@@ -54,15 +54,15 @@ type PaymentServiceClient interface {
 //
 // The URL supplied here should be the base URL for the Connect or gRPC server (for example,
 // http://api.acme.com or https://acme.com/grpc).
-func NewPaymentServiceClient(httpClient connect_go.HTTPClient, baseURL string, opts ...connect_go.ClientOption) PaymentServiceClient {
+func NewPaymentServiceClient(httpClient connect.HTTPClient, baseURL string, opts ...connect.ClientOption) PaymentServiceClient {
 	baseURL = strings.TrimRight(baseURL, "/")
 	return &paymentServiceClient{
-		listCoupons: connect_go.NewClient[v1.PaymentServiceListCouponsRequest, v1.PaymentServiceListCouponsResponse](
+		listCoupons: connect.NewClient[v1.PaymentServiceListCouponsRequest, v1.PaymentServiceListCouponsResponse](
 			httpClient,
 			baseURL+PaymentServiceListCouponsProcedure,
 			opts...,
 		),
-		addCouponToCustomer: connect_go.NewClient[v1.PaymentServiceAddCouponToCustomerRequest, v1.PaymentServiceAddCouponToCustomerResponse](
+		addCouponToCustomer: connect.NewClient[v1.PaymentServiceAddCouponToCustomerRequest, v1.PaymentServiceAddCouponToCustomerResponse](
 			httpClient,
 			baseURL+PaymentServiceAddCouponToCustomerProcedure,
 			opts...,
@@ -72,24 +72,24 @@ func NewPaymentServiceClient(httpClient connect_go.HTTPClient, baseURL string, o
 
 // paymentServiceClient implements PaymentServiceClient.
 type paymentServiceClient struct {
-	listCoupons         *connect_go.Client[v1.PaymentServiceListCouponsRequest, v1.PaymentServiceListCouponsResponse]
-	addCouponToCustomer *connect_go.Client[v1.PaymentServiceAddCouponToCustomerRequest, v1.PaymentServiceAddCouponToCustomerResponse]
+	listCoupons         *connect.Client[v1.PaymentServiceListCouponsRequest, v1.PaymentServiceListCouponsResponse]
+	addCouponToCustomer *connect.Client[v1.PaymentServiceAddCouponToCustomerRequest, v1.PaymentServiceAddCouponToCustomerResponse]
 }
 
 // ListCoupons calls admin.v1.PaymentService.ListCoupons.
-func (c *paymentServiceClient) ListCoupons(ctx context.Context, req *connect_go.Request[v1.PaymentServiceListCouponsRequest]) (*connect_go.Response[v1.PaymentServiceListCouponsResponse], error) {
+func (c *paymentServiceClient) ListCoupons(ctx context.Context, req *connect.Request[v1.PaymentServiceListCouponsRequest]) (*connect.Response[v1.PaymentServiceListCouponsResponse], error) {
 	return c.listCoupons.CallUnary(ctx, req)
 }
 
 // AddCouponToCustomer calls admin.v1.PaymentService.AddCouponToCustomer.
-func (c *paymentServiceClient) AddCouponToCustomer(ctx context.Context, req *connect_go.Request[v1.PaymentServiceAddCouponToCustomerRequest]) (*connect_go.Response[v1.PaymentServiceAddCouponToCustomerResponse], error) {
+func (c *paymentServiceClient) AddCouponToCustomer(ctx context.Context, req *connect.Request[v1.PaymentServiceAddCouponToCustomerRequest]) (*connect.Response[v1.PaymentServiceAddCouponToCustomerResponse], error) {
 	return c.addCouponToCustomer.CallUnary(ctx, req)
 }
 
 // PaymentServiceHandler is an implementation of the admin.v1.PaymentService service.
 type PaymentServiceHandler interface {
-	ListCoupons(context.Context, *connect_go.Request[v1.PaymentServiceListCouponsRequest]) (*connect_go.Response[v1.PaymentServiceListCouponsResponse], error)
-	AddCouponToCustomer(context.Context, *connect_go.Request[v1.PaymentServiceAddCouponToCustomerRequest]) (*connect_go.Response[v1.PaymentServiceAddCouponToCustomerResponse], error)
+	ListCoupons(context.Context, *connect.Request[v1.PaymentServiceListCouponsRequest]) (*connect.Response[v1.PaymentServiceListCouponsResponse], error)
+	AddCouponToCustomer(context.Context, *connect.Request[v1.PaymentServiceAddCouponToCustomerRequest]) (*connect.Response[v1.PaymentServiceAddCouponToCustomerResponse], error)
 }
 
 // NewPaymentServiceHandler builds an HTTP handler from the service implementation. It returns the
@@ -97,13 +97,13 @@ type PaymentServiceHandler interface {
 //
 // By default, handlers support the Connect, gRPC, and gRPC-Web protocols with the binary Protobuf
 // and JSON codecs. They also support gzip compression.
-func NewPaymentServiceHandler(svc PaymentServiceHandler, opts ...connect_go.HandlerOption) (string, http.Handler) {
-	paymentServiceListCouponsHandler := connect_go.NewUnaryHandler(
+func NewPaymentServiceHandler(svc PaymentServiceHandler, opts ...connect.HandlerOption) (string, http.Handler) {
+	paymentServiceListCouponsHandler := connect.NewUnaryHandler(
 		PaymentServiceListCouponsProcedure,
 		svc.ListCoupons,
 		opts...,
 	)
-	paymentServiceAddCouponToCustomerHandler := connect_go.NewUnaryHandler(
+	paymentServiceAddCouponToCustomerHandler := connect.NewUnaryHandler(
 		PaymentServiceAddCouponToCustomerProcedure,
 		svc.AddCouponToCustomer,
 		opts...,
@@ -123,10 +123,10 @@ func NewPaymentServiceHandler(svc PaymentServiceHandler, opts ...connect_go.Hand
 // UnimplementedPaymentServiceHandler returns CodeUnimplemented from all methods.
 type UnimplementedPaymentServiceHandler struct{}
 
-func (UnimplementedPaymentServiceHandler) ListCoupons(context.Context, *connect_go.Request[v1.PaymentServiceListCouponsRequest]) (*connect_go.Response[v1.PaymentServiceListCouponsResponse], error) {
-	return nil, connect_go.NewError(connect_go.CodeUnimplemented, errors.New("admin.v1.PaymentService.ListCoupons is not implemented"))
+func (UnimplementedPaymentServiceHandler) ListCoupons(context.Context, *connect.Request[v1.PaymentServiceListCouponsRequest]) (*connect.Response[v1.PaymentServiceListCouponsResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("admin.v1.PaymentService.ListCoupons is not implemented"))
 }
 
-func (UnimplementedPaymentServiceHandler) AddCouponToCustomer(context.Context, *connect_go.Request[v1.PaymentServiceAddCouponToCustomerRequest]) (*connect_go.Response[v1.PaymentServiceAddCouponToCustomerResponse], error) {
-	return nil, connect_go.NewError(connect_go.CodeUnimplemented, errors.New("admin.v1.PaymentService.AddCouponToCustomer is not implemented"))
+func (UnimplementedPaymentServiceHandler) AddCouponToCustomer(context.Context, *connect.Request[v1.PaymentServiceAddCouponToCustomerRequest]) (*connect.Response[v1.PaymentServiceAddCouponToCustomerResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("admin.v1.PaymentService.AddCouponToCustomer is not implemented"))
 }

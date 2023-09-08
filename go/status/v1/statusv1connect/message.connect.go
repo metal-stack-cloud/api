@@ -5,9 +5,9 @@
 package statusv1connect
 
 import (
+	connect "connectrpc.com/connect"
 	context "context"
 	errors "errors"
-	connect_go "github.com/bufbuild/connect-go"
 	v1 "github.com/metal-stack-cloud/api/go/status/v1"
 	http "net/http"
 	strings "strings"
@@ -18,7 +18,7 @@ import (
 // generated with a version of connect newer than the one compiled into your binary. You can fix the
 // problem by either regenerating this code with an older version of connect or updating the connect
 // version compiled into your binary.
-const _ = connect_go.IsAtLeastVersion0_1_0
+const _ = connect.IsAtLeastVersion0_1_0
 
 const (
 	// MessageServiceName is the fully-qualified name of the MessageService service.
@@ -39,7 +39,7 @@ const (
 
 // MessageServiceClient is a client for the status.v1.MessageService service.
 type MessageServiceClient interface {
-	List(context.Context, *connect_go.Request[v1.MessageServiceListRequest]) (*connect_go.Response[v1.MessageServiceListResponse], error)
+	List(context.Context, *connect.Request[v1.MessageServiceListRequest]) (*connect.Response[v1.MessageServiceListResponse], error)
 }
 
 // NewMessageServiceClient constructs a client for the status.v1.MessageService service. By default,
@@ -49,10 +49,10 @@ type MessageServiceClient interface {
 //
 // The URL supplied here should be the base URL for the Connect or gRPC server (for example,
 // http://api.acme.com or https://acme.com/grpc).
-func NewMessageServiceClient(httpClient connect_go.HTTPClient, baseURL string, opts ...connect_go.ClientOption) MessageServiceClient {
+func NewMessageServiceClient(httpClient connect.HTTPClient, baseURL string, opts ...connect.ClientOption) MessageServiceClient {
 	baseURL = strings.TrimRight(baseURL, "/")
 	return &messageServiceClient{
-		list: connect_go.NewClient[v1.MessageServiceListRequest, v1.MessageServiceListResponse](
+		list: connect.NewClient[v1.MessageServiceListRequest, v1.MessageServiceListResponse](
 			httpClient,
 			baseURL+MessageServiceListProcedure,
 			opts...,
@@ -62,17 +62,17 @@ func NewMessageServiceClient(httpClient connect_go.HTTPClient, baseURL string, o
 
 // messageServiceClient implements MessageServiceClient.
 type messageServiceClient struct {
-	list *connect_go.Client[v1.MessageServiceListRequest, v1.MessageServiceListResponse]
+	list *connect.Client[v1.MessageServiceListRequest, v1.MessageServiceListResponse]
 }
 
 // List calls status.v1.MessageService.List.
-func (c *messageServiceClient) List(ctx context.Context, req *connect_go.Request[v1.MessageServiceListRequest]) (*connect_go.Response[v1.MessageServiceListResponse], error) {
+func (c *messageServiceClient) List(ctx context.Context, req *connect.Request[v1.MessageServiceListRequest]) (*connect.Response[v1.MessageServiceListResponse], error) {
 	return c.list.CallUnary(ctx, req)
 }
 
 // MessageServiceHandler is an implementation of the status.v1.MessageService service.
 type MessageServiceHandler interface {
-	List(context.Context, *connect_go.Request[v1.MessageServiceListRequest]) (*connect_go.Response[v1.MessageServiceListResponse], error)
+	List(context.Context, *connect.Request[v1.MessageServiceListRequest]) (*connect.Response[v1.MessageServiceListResponse], error)
 }
 
 // NewMessageServiceHandler builds an HTTP handler from the service implementation. It returns the
@@ -80,8 +80,8 @@ type MessageServiceHandler interface {
 //
 // By default, handlers support the Connect, gRPC, and gRPC-Web protocols with the binary Protobuf
 // and JSON codecs. They also support gzip compression.
-func NewMessageServiceHandler(svc MessageServiceHandler, opts ...connect_go.HandlerOption) (string, http.Handler) {
-	messageServiceListHandler := connect_go.NewUnaryHandler(
+func NewMessageServiceHandler(svc MessageServiceHandler, opts ...connect.HandlerOption) (string, http.Handler) {
+	messageServiceListHandler := connect.NewUnaryHandler(
 		MessageServiceListProcedure,
 		svc.List,
 		opts...,
@@ -99,6 +99,6 @@ func NewMessageServiceHandler(svc MessageServiceHandler, opts ...connect_go.Hand
 // UnimplementedMessageServiceHandler returns CodeUnimplemented from all methods.
 type UnimplementedMessageServiceHandler struct{}
 
-func (UnimplementedMessageServiceHandler) List(context.Context, *connect_go.Request[v1.MessageServiceListRequest]) (*connect_go.Response[v1.MessageServiceListResponse], error) {
-	return nil, connect_go.NewError(connect_go.CodeUnimplemented, errors.New("status.v1.MessageService.List is not implemented"))
+func (UnimplementedMessageServiceHandler) List(context.Context, *connect.Request[v1.MessageServiceListRequest]) (*connect.Response[v1.MessageServiceListResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("status.v1.MessageService.List is not implemented"))
 }

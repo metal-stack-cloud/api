@@ -2,7 +2,7 @@
 package client
 
 import (
-	compress "github.com/klauspost/connect-compress"
+	compress "github.com/klauspost/connect-compress/v2"
 
 {{ range $name, $api := . -}}
 	"github.com/metal-stack-cloud/api/go{{ $api.Path }}/{{ $api.Name }}connect"

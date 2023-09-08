@@ -2035,7 +2035,7 @@
               "options": {
                 "validate.rules": [
                   {
-                    "name": "uint32.lt",
+                    "name": "uint32.lte",
                     "value": 32
                   }
                 ]
@@ -2055,7 +2055,7 @@
               "options": {
                 "validate.rules": [
                   {
-                    "name": "uint32.lt",
+                    "name": "uint32.lte",
                     "value": 64
                   }
                 ]
@@ -2075,7 +2075,7 @@
               "options": {
                 "validate.rules": [
                   {
-                    "name": "uint32.lt",
+                    "name": "uint32.lte",
                     "value": 64
                   }
                 ]
@@ -2095,7 +2095,7 @@
               "options": {
                 "validate.rules": [
                   {
-                    "name": "uint32.lt",
+                    "name": "uint32.lte",
                     "value": 64
                   }
                 ]
@@ -2175,7 +2175,7 @@
               "options": {
                 "validate.rules": [
                   {
-                    "name": "uint32.lt",
+                    "name": "uint32.lte",
                     "value": 32
                   }
                 ]
@@ -2195,7 +2195,7 @@
               "options": {
                 "validate.rules": [
                   {
-                    "name": "uint32.lt",
+                    "name": "uint32.lte",
                     "value": 64
                   }
                 ]
@@ -2215,7 +2215,7 @@
               "options": {
                 "validate.rules": [
                   {
-                    "name": "uint32.lt",
+                    "name": "uint32.lte",
                     "value": 64
                   }
                 ]
@@ -2235,7 +2235,7 @@
               "options": {
                 "validate.rules": [
                   {
-                    "name": "uint32.lt",
+                    "name": "uint32.lte",
                     "value": 64
                   }
                 ]

@@ -5,9 +5,9 @@
 package adminv1connect
 
 import (
+	connect "connectrpc.com/connect"
 	context "context"
 	errors "errors"
-	connect_go "github.com/bufbuild/connect-go"
 	v1 "github.com/metal-stack-cloud/api/go/admin/v1"
 	http "net/http"
 	strings "strings"
@@ -18,7 +18,7 @@ import (
 // generated with a version of connect newer than the one compiled into your binary. You can fix the
 // problem by either regenerating this code with an older version of connect or updating the connect
 // version compiled into your binary.
-const _ = connect_go.IsAtLeastVersion0_1_0
+const _ = connect.IsAtLeastVersion0_1_0
 
 const (
 	// TenantServiceName is the fully-qualified name of the TenantService service.
@@ -43,9 +43,9 @@ const (
 
 // TenantServiceClient is a client for the admin.v1.TenantService service.
 type TenantServiceClient interface {
-	List(context.Context, *connect_go.Request[v1.TenantServiceListRequest]) (*connect_go.Response[v1.TenantServiceListResponse], error)
-	Admit(context.Context, *connect_go.Request[v1.TenantServiceAdmitRequest]) (*connect_go.Response[v1.TenantServiceAdmitResponse], error)
-	Revoke(context.Context, *connect_go.Request[v1.TenantServiceRevokeRequest]) (*connect_go.Response[v1.TenantServiceRevokeResponse], error)
+	List(context.Context, *connect.Request[v1.TenantServiceListRequest]) (*connect.Response[v1.TenantServiceListResponse], error)
+	Admit(context.Context, *connect.Request[v1.TenantServiceAdmitRequest]) (*connect.Response[v1.TenantServiceAdmitResponse], error)
+	Revoke(context.Context, *connect.Request[v1.TenantServiceRevokeRequest]) (*connect.Response[v1.TenantServiceRevokeResponse], error)
 }
 
 // NewTenantServiceClient constructs a client for the admin.v1.TenantService service. By default, it
@@ -55,20 +55,20 @@ type TenantServiceClient interface {
 //
 // The URL supplied here should be the base URL for the Connect or gRPC server (for example,
 // http://api.acme.com or https://acme.com/grpc).
-func NewTenantServiceClient(httpClient connect_go.HTTPClient, baseURL string, opts ...connect_go.ClientOption) TenantServiceClient {
+func NewTenantServiceClient(httpClient connect.HTTPClient, baseURL string, opts ...connect.ClientOption) TenantServiceClient {
 	baseURL = strings.TrimRight(baseURL, "/")
 	return &tenantServiceClient{
-		list: connect_go.NewClient[v1.TenantServiceListRequest, v1.TenantServiceListResponse](
+		list: connect.NewClient[v1.TenantServiceListRequest, v1.TenantServiceListResponse](
 			httpClient,
 			baseURL+TenantServiceListProcedure,
 			opts...,
 		),
-		admit: connect_go.NewClient[v1.TenantServiceAdmitRequest, v1.TenantServiceAdmitResponse](
+		admit: connect.NewClient[v1.TenantServiceAdmitRequest, v1.TenantServiceAdmitResponse](
 			httpClient,
 			baseURL+TenantServiceAdmitProcedure,
 			opts...,
 		),
-		revoke: connect_go.NewClient[v1.TenantServiceRevokeRequest, v1.TenantServiceRevokeResponse](
+		revoke: connect.NewClient[v1.TenantServiceRevokeRequest, v1.TenantServiceRevokeResponse](
 			httpClient,
 			baseURL+TenantServiceRevokeProcedure,
 			opts...,
@@ -78,31 +78,31 @@ func NewTenantServiceClient(httpClient connect_go.HTTPClient, baseURL string, op
 
 // tenantServiceClient implements TenantServiceClient.
 type tenantServiceClient struct {
-	list   *connect_go.Client[v1.TenantServiceListRequest, v1.TenantServiceListResponse]
-	admit  *connect_go.Client[v1.TenantServiceAdmitRequest, v1.TenantServiceAdmitResponse]
-	revoke *connect_go.Client[v1.TenantServiceRevokeRequest, v1.TenantServiceRevokeResponse]
+	list   *connect.Client[v1.TenantServiceListRequest, v1.TenantServiceListResponse]
+	admit  *connect.Client[v1.TenantServiceAdmitRequest, v1.TenantServiceAdmitResponse]
+	revoke *connect.Client[v1.TenantServiceRevokeRequest, v1.TenantServiceRevokeResponse]
 }
 
 // List calls admin.v1.TenantService.List.
-func (c *tenantServiceClient) List(ctx context.Context, req *connect_go.Request[v1.TenantServiceListRequest]) (*connect_go.Response[v1.TenantServiceListResponse], error) {
+func (c *tenantServiceClient) List(ctx context.Context, req *connect.Request[v1.TenantServiceListRequest]) (*connect.Response[v1.TenantServiceListResponse], error) {
 	return c.list.CallUnary(ctx, req)
 }
 
 // Admit calls admin.v1.TenantService.Admit.
-func (c *tenantServiceClient) Admit(ctx context.Context, req *connect_go.Request[v1.TenantServiceAdmitRequest]) (*connect_go.Response[v1.TenantServiceAdmitResponse], error) {
+func (c *tenantServiceClient) Admit(ctx context.Context, req *connect.Request[v1.TenantServiceAdmitRequest]) (*connect.Response[v1.TenantServiceAdmitResponse], error) {
 	return c.admit.CallUnary(ctx, req)
 }
 
 // Revoke calls admin.v1.TenantService.Revoke.
-func (c *tenantServiceClient) Revoke(ctx context.Context, req *connect_go.Request[v1.TenantServiceRevokeRequest]) (*connect_go.Response[v1.TenantServiceRevokeResponse], error) {
+func (c *tenantServiceClient) Revoke(ctx context.Context, req *connect.Request[v1.TenantServiceRevokeRequest]) (*connect.Response[v1.TenantServiceRevokeResponse], error) {
 	return c.revoke.CallUnary(ctx, req)
 }
 
 // TenantServiceHandler is an implementation of the admin.v1.TenantService service.
 type TenantServiceHandler interface {
-	List(context.Context, *connect_go.Request[v1.TenantServiceListRequest]) (*connect_go.Response[v1.TenantServiceListResponse], error)
-	Admit(context.Context, *connect_go.Request[v1.TenantServiceAdmitRequest]) (*connect_go.Response[v1.TenantServiceAdmitResponse], error)
-	Revoke(context.Context, *connect_go.Request[v1.TenantServiceRevokeRequest]) (*connect_go.Response[v1.TenantServiceRevokeResponse], error)
+	List(context.Context, *connect.Request[v1.TenantServiceListRequest]) (*connect.Response[v1.TenantServiceListResponse], error)
+	Admit(context.Context, *connect.Request[v1.TenantServiceAdmitRequest]) (*connect.Response[v1.TenantServiceAdmitResponse], error)
+	Revoke(context.Context, *connect.Request[v1.TenantServiceRevokeRequest]) (*connect.Response[v1.TenantServiceRevokeResponse], error)
 }
 
 // NewTenantServiceHandler builds an HTTP handler from the service implementation. It returns the
@@ -110,18 +110,18 @@ type TenantServiceHandler interface {
 //
 // By default, handlers support the Connect, gRPC, and gRPC-Web protocols with the binary Protobuf
 // and JSON codecs. They also support gzip compression.
-func NewTenantServiceHandler(svc TenantServiceHandler, opts ...connect_go.HandlerOption) (string, http.Handler) {
-	tenantServiceListHandler := connect_go.NewUnaryHandler(
+func NewTenantServiceHandler(svc TenantServiceHandler, opts ...connect.HandlerOption) (string, http.Handler) {
+	tenantServiceListHandler := connect.NewUnaryHandler(
 		TenantServiceListProcedure,
 		svc.List,
 		opts...,
 	)
-	tenantServiceAdmitHandler := connect_go.NewUnaryHandler(
+	tenantServiceAdmitHandler := connect.NewUnaryHandler(
 		TenantServiceAdmitProcedure,
 		svc.Admit,
 		opts...,
 	)
-	tenantServiceRevokeHandler := connect_go.NewUnaryHandler(
+	tenantServiceRevokeHandler := connect.NewUnaryHandler(
 		TenantServiceRevokeProcedure,
 		svc.Revoke,
 		opts...,
@@ -143,14 +143,14 @@ func NewTenantServiceHandler(svc TenantServiceHandler, opts ...connect_go.Handle
 // UnimplementedTenantServiceHandler returns CodeUnimplemented from all methods.
 type UnimplementedTenantServiceHandler struct{}
 
-func (UnimplementedTenantServiceHandler) List(context.Context, *connect_go.Request[v1.TenantServiceListRequest]) (*connect_go.Response[v1.TenantServiceListResponse], error) {
-	return nil, connect_go.NewError(connect_go.CodeUnimplemented, errors.New("admin.v1.TenantService.List is not implemented"))
+func (UnimplementedTenantServiceHandler) List(context.Context, *connect.Request[v1.TenantServiceListRequest]) (*connect.Response[v1.TenantServiceListResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("admin.v1.TenantService.List is not implemented"))
 }
 
-func (UnimplementedTenantServiceHandler) Admit(context.Context, *connect_go.Request[v1.TenantServiceAdmitRequest]) (*connect_go.Response[v1.TenantServiceAdmitResponse], error) {
-	return nil, connect_go.NewError(connect_go.CodeUnimplemented, errors.New("admin.v1.TenantService.Admit is not implemented"))
+func (UnimplementedTenantServiceHandler) Admit(context.Context, *connect.Request[v1.TenantServiceAdmitRequest]) (*connect.Response[v1.TenantServiceAdmitResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("admin.v1.TenantService.Admit is not implemented"))
 }
 
-func (UnimplementedTenantServiceHandler) Revoke(context.Context, *connect_go.Request[v1.TenantServiceRevokeRequest]) (*connect_go.Response[v1.TenantServiceRevokeResponse], error) {
-	return nil, connect_go.NewError(connect_go.CodeUnimplemented, errors.New("admin.v1.TenantService.Revoke is not implemented"))
+func (UnimplementedTenantServiceHandler) Revoke(context.Context, *connect.Request[v1.TenantServiceRevokeRequest]) (*connect.Response[v1.TenantServiceRevokeResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("admin.v1.TenantService.Revoke is not implemented"))
 }
