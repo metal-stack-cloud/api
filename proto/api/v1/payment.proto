@@ -92,7 +92,7 @@ message Price {
   ProductType product_type = 5;
   string description = 6 [(validate.rules).string = {
     min_len: 2,
-    max_len: 512,
+    max_len: 500,
   }];
 }
 

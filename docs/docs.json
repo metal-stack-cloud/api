@@ -4322,7 +4322,7 @@
                   },
                   {
                     "name": "string.max_len",
-                    "value": 512
+                    "value": 500
                   }
                 ]
               }
