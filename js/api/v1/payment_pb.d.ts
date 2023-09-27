@@ -1,6 +1,31 @@
 import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
 import { Message, proto3, Timestamp } from "@bufbuild/protobuf";
 /**
+ * @generated from enum api.v1.ProductType
+ */
+export declare enum ProductType {
+    /**
+     * @generated from enum value: PRODUCT_TYPE_UNSPECIFIED = 0;
+     */
+    UNSPECIFIED = 0,
+    /**
+     * @generated from enum value: PRODUCT_TYPE_STORAGE = 1;
+     */
+    STORAGE = 1,
+    /**
+     * @generated from enum value: PRODUCT_TYPE_COMPUTE = 2;
+     */
+    COMPUTE = 2,
+    /**
+     * @generated from enum value: PRODUCT_TYPE_NETWORK = 3;
+     */
+    NETWORK = 3,
+    /**
+     * @generated from enum value: PRODUCT_TYPE_KUBERNTES = 5;
+     */
+    KUBERNTES = 5
+}
+/**
  * @generated from message api.v1.PaymentCustomer
  */
 export declare class PaymentCustomer extends Message<PaymentCustomer> {
@@ -114,6 +139,14 @@ export declare class Price extends Message<Price> {
      * @generated from field: string unit_label = 4;
      */
     unitLabel: string;
+    /**
+     * @generated from field: api.v1.ProductType product_type = 5;
+     */
+    productType: ProductType;
+    /**
+     * @generated from field: string description = 6;
+     */
+    description: string;
     constructor(data?: PartialMessage<Price>);
     static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.Price";

@@ -89,6 +89,19 @@ message Price {
   double unit_amount_decimal = 2;
   string currency = 3;
   string unit_label = 4;
+  ProductType product_type = 5;
+  string description = 6 [(validate.rules).string = {
+    min_len: 2,
+    max_len: 512,
+  }];
+}
+
+enum ProductType {
+  PRODUCT_TYPE_UNSPECIFIED = 0;
+  PRODUCT_TYPE_STORAGE = 1;
+  PRODUCT_TYPE_COMPUTE = 2;
+  PRODUCT_TYPE_NETWORK = 3;
+  PRODUCT_TYPE_KUBERNTES = 5;
 }
 
 message Address {
