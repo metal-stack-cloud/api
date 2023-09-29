@@ -7578,6 +7578,54 @@
           ]
         },
         {
+          "name": "TenantServiceDeleteTestUserRequest",
+          "longName": "TenantServiceDeleteTestUserRequest",
+          "fullName": "admin.v1.TenantServiceDeleteTestUserRequest",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "tenant_id",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "TenantServiceDeleteTestUserResponse",
+          "longName": "TenantServiceDeleteTestUserResponse",
+          "fullName": "admin.v1.TenantServiceDeleteTestUserResponse",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "tenant",
+              "description": "",
+              "label": "",
+              "type": "Tenant",
+              "longType": "api.v1.Tenant",
+              "fullType": "api.v1.Tenant",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
           "name": "TenantServiceListRequest",
           "longName": "TenantServiceListRequest",
           "fullName": "admin.v1.TenantServiceListRequest",
@@ -7799,6 +7847,18 @@
               "responseType": "TenantServiceRevokeResponse",
               "responseLongType": "TenantServiceRevokeResponse",
               "responseFullType": "admin.v1.TenantServiceRevokeResponse",
+              "responseStreaming": false
+            },
+            {
+              "name": "DeleteTestUser",
+              "description": "",
+              "requestType": "TenantServiceDeleteTestUserRequest",
+              "requestLongType": "TenantServiceDeleteTestUserRequest",
+              "requestFullType": "admin.v1.TenantServiceDeleteTestUserRequest",
+              "requestStreaming": false,
+              "responseType": "TenantServiceDeleteTestUserResponse",
+              "responseLongType": "TenantServiceDeleteTestUserResponse",
+              "responseFullType": "admin.v1.TenantServiceDeleteTestUserResponse",
               "responseStreaming": false
             }
           ]

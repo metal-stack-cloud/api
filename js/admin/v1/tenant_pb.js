@@ -4,7 +4,7 @@
 /* eslint-disable */
 // @ts-nocheck
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.TenantServiceRevokeResponse = exports.TenantServiceRevokeRequest = exports.TenantServiceAdmitResponse = exports.TenantServiceAdmitRequest = exports.TenantServiceListResponse = exports.TenantServiceListRequest = void 0;
+exports.TenantServiceDeleteTestUserResponse = exports.TenantServiceDeleteTestUserRequest = exports.TenantServiceRevokeResponse = exports.TenantServiceRevokeRequest = exports.TenantServiceAdmitResponse = exports.TenantServiceAdmitRequest = exports.TenantServiceListResponse = exports.TenantServiceListRequest = void 0;
 const protobuf_1 = require("@bufbuild/protobuf");
 const common_pb_js_1 = require("../../api/v1/common_pb.js");
 const tenant_pb_js_1 = require("../../api/v1/tenant_pb.js");
@@ -188,5 +188,63 @@ exports.TenantServiceRevokeResponse = TenantServiceRevokeResponse;
 TenantServiceRevokeResponse.runtime = protobuf_1.proto3;
 TenantServiceRevokeResponse.typeName = "admin.v1.TenantServiceRevokeResponse";
 TenantServiceRevokeResponse.fields = protobuf_1.proto3.util.newFieldList(() => [
+    { no: 1, name: "tenant", kind: "message", T: tenant_pb_js_1.Tenant },
+]);
+/**
+ * @generated from message admin.v1.TenantServiceDeleteTestUserRequest
+ */
+class TenantServiceDeleteTestUserRequest extends protobuf_1.Message {
+    constructor(data) {
+        super();
+        /**
+         * @generated from field: string tenant_id = 1;
+         */
+        this.tenantId = "";
+        protobuf_1.proto3.util.initPartial(data, this);
+    }
+    static fromBinary(bytes, options) {
+        return new TenantServiceDeleteTestUserRequest().fromBinary(bytes, options);
+    }
+    static fromJson(jsonValue, options) {
+        return new TenantServiceDeleteTestUserRequest().fromJson(jsonValue, options);
+    }
+    static fromJsonString(jsonString, options) {
+        return new TenantServiceDeleteTestUserRequest().fromJsonString(jsonString, options);
+    }
+    static equals(a, b) {
+        return protobuf_1.proto3.util.equals(TenantServiceDeleteTestUserRequest, a, b);
+    }
+}
+exports.TenantServiceDeleteTestUserRequest = TenantServiceDeleteTestUserRequest;
+TenantServiceDeleteTestUserRequest.runtime = protobuf_1.proto3;
+TenantServiceDeleteTestUserRequest.typeName = "admin.v1.TenantServiceDeleteTestUserRequest";
+TenantServiceDeleteTestUserRequest.fields = protobuf_1.proto3.util.newFieldList(() => [
+    { no: 1, name: "tenant_id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+]);
+/**
+ * @generated from message admin.v1.TenantServiceDeleteTestUserResponse
+ */
+class TenantServiceDeleteTestUserResponse extends protobuf_1.Message {
+    constructor(data) {
+        super();
+        protobuf_1.proto3.util.initPartial(data, this);
+    }
+    static fromBinary(bytes, options) {
+        return new TenantServiceDeleteTestUserResponse().fromBinary(bytes, options);
+    }
+    static fromJson(jsonValue, options) {
+        return new TenantServiceDeleteTestUserResponse().fromJson(jsonValue, options);
+    }
+    static fromJsonString(jsonString, options) {
+        return new TenantServiceDeleteTestUserResponse().fromJsonString(jsonString, options);
+    }
+    static equals(a, b) {
+        return protobuf_1.proto3.util.equals(TenantServiceDeleteTestUserResponse, a, b);
+    }
+}
+exports.TenantServiceDeleteTestUserResponse = TenantServiceDeleteTestUserResponse;
+TenantServiceDeleteTestUserResponse.runtime = protobuf_1.proto3;
+TenantServiceDeleteTestUserResponse.typeName = "admin.v1.TenantServiceDeleteTestUserResponse";
+TenantServiceDeleteTestUserResponse.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 1, name: "tenant", kind: "message", T: tenant_pb_js_1.Tenant },
 ]);

@@ -16,6 +16,9 @@ service TenantService {
   rpc Revoke(TenantServiceRevokeRequest) returns (TenantServiceRevokeResponse) {
     option (api.v1.admin_roles) = ADMIN_ROLE_EDITOR;
   }
+  rpc DeleteTestUser(TenantServiceDeleteTestUserRequest) returns (TenantServiceDeleteTestUserResponse) {
+    option (api.v1.admin_roles) = ADMIN_ROLE_EDITOR;
+  }
 }
 
 message TenantServiceListRequest {
@@ -43,5 +46,12 @@ message TenantServiceRevokeRequest {
   string tenant_id = 1;
 }
 message TenantServiceRevokeResponse {
+  api.v1.Tenant tenant = 1;
+}
+
+message TenantServiceDeleteTestUserRequest {
+  string tenant_id = 1;
+}
+message TenantServiceDeleteTestUserResponse {
   api.v1.Tenant tenant = 1;
 }

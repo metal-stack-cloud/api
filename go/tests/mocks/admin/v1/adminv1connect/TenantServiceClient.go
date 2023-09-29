@@ -42,6 +42,32 @@ func (_m *TenantServiceClient) Admit(_a0 context.Context, _a1 *connect.Request[a
 	return r0, r1
 }
 
+// DeleteTestUser provides a mock function with given fields: _a0, _a1
+func (_m *TenantServiceClient) DeleteTestUser(_a0 context.Context, _a1 *connect.Request[adminv1.TenantServiceDeleteTestUserRequest]) (*connect.Response[adminv1.TenantServiceDeleteTestUserResponse], error) {
+	ret := _m.Called(_a0, _a1)
+
+	var r0 *connect.Response[adminv1.TenantServiceDeleteTestUserResponse]
+	var r1 error
+	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[adminv1.TenantServiceDeleteTestUserRequest]) (*connect.Response[adminv1.TenantServiceDeleteTestUserResponse], error)); ok {
+		return rf(_a0, _a1)
+	}
+	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[adminv1.TenantServiceDeleteTestUserRequest]) *connect.Response[adminv1.TenantServiceDeleteTestUserResponse]); ok {
+		r0 = rf(_a0, _a1)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*connect.Response[adminv1.TenantServiceDeleteTestUserResponse])
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(context.Context, *connect.Request[adminv1.TenantServiceDeleteTestUserRequest]) error); ok {
+		r1 = rf(_a0, _a1)
+	} else {
+		r1 = ret.Error(1)
+	}
+
+	return r0, r1
+}
+
 // List provides a mock function with given fields: _a0, _a1
 func (_m *TenantServiceClient) List(_a0 context.Context, _a1 *connect.Request[adminv1.TenantServiceListRequest]) (*connect.Response[adminv1.TenantServiceListResponse], error) {
 	ret := _m.Called(_a0, _a1)

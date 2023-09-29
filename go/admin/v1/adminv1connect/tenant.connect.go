@@ -39,6 +39,9 @@ const (
 	TenantServiceAdmitProcedure = "/admin.v1.TenantService/Admit"
 	// TenantServiceRevokeProcedure is the fully-qualified name of the TenantService's Revoke RPC.
 	TenantServiceRevokeProcedure = "/admin.v1.TenantService/Revoke"
+	// TenantServiceDeleteTestUserProcedure is the fully-qualified name of the TenantService's
+	// DeleteTestUser RPC.
+	TenantServiceDeleteTestUserProcedure = "/admin.v1.TenantService/DeleteTestUser"
 )
 
 // TenantServiceClient is a client for the admin.v1.TenantService service.
@@ -46,6 +49,7 @@ type TenantServiceClient interface {
 	List(context.Context, *connect.Request[v1.TenantServiceListRequest]) (*connect.Response[v1.TenantServiceListResponse], error)
 	Admit(context.Context, *connect.Request[v1.TenantServiceAdmitRequest]) (*connect.Response[v1.TenantServiceAdmitResponse], error)
 	Revoke(context.Context, *connect.Request[v1.TenantServiceRevokeRequest]) (*connect.Response[v1.TenantServiceRevokeResponse], error)
+	DeleteTestUser(context.Context, *connect.Request[v1.TenantServiceDeleteTestUserRequest]) (*connect.Response[v1.TenantServiceDeleteTestUserResponse], error)
 }
 
 // NewTenantServiceClient constructs a client for the admin.v1.TenantService service. By default, it
@@ -73,14 +77,20 @@ func NewTenantServiceClient(httpClient connect.HTTPClient, baseURL string, opts 
 			baseURL+TenantServiceRevokeProcedure,
 			opts...,
 		),
+		deleteTestUser: connect.NewClient[v1.TenantServiceDeleteTestUserRequest, v1.TenantServiceDeleteTestUserResponse](
+			httpClient,
+			baseURL+TenantServiceDeleteTestUserProcedure,
+			opts...,
+		),
 	}
 }
 
 // tenantServiceClient implements TenantServiceClient.
 type tenantServiceClient struct {
-	list   *connect.Client[v1.TenantServiceListRequest, v1.TenantServiceListResponse]
-	admit  *connect.Client[v1.TenantServiceAdmitRequest, v1.TenantServiceAdmitResponse]
-	revoke *connect.Client[v1.TenantServiceRevokeRequest, v1.TenantServiceRevokeResponse]
+	list           *connect.Client[v1.TenantServiceListRequest, v1.TenantServiceListResponse]
+	admit          *connect.Client[v1.TenantServiceAdmitRequest, v1.TenantServiceAdmitResponse]
+	revoke         *connect.Client[v1.TenantServiceRevokeRequest, v1.TenantServiceRevokeResponse]
+	deleteTestUser *connect.Client[v1.TenantServiceDeleteTestUserRequest, v1.TenantServiceDeleteTestUserResponse]
 }
 
 // List calls admin.v1.TenantService.List.
@@ -98,11 +108,17 @@ func (c *tenantServiceClient) Revoke(ctx context.Context, req *connect.Request[v
 	return c.revoke.CallUnary(ctx, req)
 }
 
+// DeleteTestUser calls admin.v1.TenantService.DeleteTestUser.
+func (c *tenantServiceClient) DeleteTestUser(ctx context.Context, req *connect.Request[v1.TenantServiceDeleteTestUserRequest]) (*connect.Response[v1.TenantServiceDeleteTestUserResponse], error) {
+	return c.deleteTestUser.CallUnary(ctx, req)
+}
+
 // TenantServiceHandler is an implementation of the admin.v1.TenantService service.
 type TenantServiceHandler interface {
 	List(context.Context, *connect.Request[v1.TenantServiceListRequest]) (*connect.Response[v1.TenantServiceListResponse], error)
 	Admit(context.Context, *connect.Request[v1.TenantServiceAdmitRequest]) (*connect.Response[v1.TenantServiceAdmitResponse], error)
 	Revoke(context.Context, *connect.Request[v1.TenantServiceRevokeRequest]) (*connect.Response[v1.TenantServiceRevokeResponse], error)
+	DeleteTestUser(context.Context, *connect.Request[v1.TenantServiceDeleteTestUserRequest]) (*connect.Response[v1.TenantServiceDeleteTestUserResponse], error)
 }
 
 // NewTenantServiceHandler builds an HTTP handler from the service implementation. It returns the
@@ -126,6 +142,11 @@ func NewTenantServiceHandler(svc TenantServiceHandler, opts ...connect.HandlerOp
 		svc.Revoke,
 		opts...,
 	)
+	tenantServiceDeleteTestUserHandler := connect.NewUnaryHandler(
+		TenantServiceDeleteTestUserProcedure,
+		svc.DeleteTestUser,
+		opts...,
+	)
 	return "/admin.v1.TenantService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
 		case TenantServiceListProcedure:
@@ -134,6 +155,8 @@ func NewTenantServiceHandler(svc TenantServiceHandler, opts ...connect.HandlerOp
 			tenantServiceAdmitHandler.ServeHTTP(w, r)
 		case TenantServiceRevokeProcedure:
 			tenantServiceRevokeHandler.ServeHTTP(w, r)
+		case TenantServiceDeleteTestUserProcedure:
+			tenantServiceDeleteTestUserHandler.ServeHTTP(w, r)
 		default:
 			http.NotFound(w, r)
 		}
@@ -153,4 +176,8 @@ func (UnimplementedTenantServiceHandler) Admit(context.Context, *connect.Request
 
 func (UnimplementedTenantServiceHandler) Revoke(context.Context, *connect.Request[v1.TenantServiceRevokeRequest]) (*connect.Response[v1.TenantServiceRevokeResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("admin.v1.TenantService.Revoke is not implemented"))
+}
+
+func (UnimplementedTenantServiceHandler) DeleteTestUser(context.Context, *connect.Request[v1.TenantServiceDeleteTestUserRequest]) (*connect.Response[v1.TenantServiceDeleteTestUserResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("admin.v1.TenantService.DeleteTestUser is not implemented"))
 }

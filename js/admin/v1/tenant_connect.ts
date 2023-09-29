@@ -3,7 +3,7 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import { TenantServiceAdmitRequest, TenantServiceAdmitResponse, TenantServiceListRequest, TenantServiceListResponse, TenantServiceRevokeRequest, TenantServiceRevokeResponse } from "./tenant_pb.js";
+import { TenantServiceAdmitRequest, TenantServiceAdmitResponse, TenantServiceDeleteTestUserRequest, TenantServiceDeleteTestUserResponse, TenantServiceListRequest, TenantServiceListResponse, TenantServiceRevokeRequest, TenantServiceRevokeResponse } from "./tenant_pb.js";
 import { MethodKind } from "@bufbuild/protobuf";
 
 /**
@@ -37,6 +37,15 @@ export const TenantService = {
       name: "Revoke",
       I: TenantServiceRevokeRequest,
       O: TenantServiceRevokeResponse,
+      kind: MethodKind.Unary,
+    },
+    /**
+     * @generated from rpc admin.v1.TenantService.DeleteTestUser
+     */
+    deleteTestUser: {
+      name: "DeleteTestUser",
+      I: TenantServiceDeleteTestUserRequest,
+      O: TenantServiceDeleteTestUserResponse,
       kind: MethodKind.Unary,
     },
   }

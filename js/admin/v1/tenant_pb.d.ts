@@ -138,3 +138,37 @@ export declare class TenantServiceRevokeResponse extends Message<TenantServiceRe
     static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): TenantServiceRevokeResponse;
     static equals(a: TenantServiceRevokeResponse | PlainMessage<TenantServiceRevokeResponse> | undefined, b: TenantServiceRevokeResponse | PlainMessage<TenantServiceRevokeResponse> | undefined): boolean;
 }
+/**
+ * @generated from message admin.v1.TenantServiceDeleteTestUserRequest
+ */
+export declare class TenantServiceDeleteTestUserRequest extends Message<TenantServiceDeleteTestUserRequest> {
+    /**
+     * @generated from field: string tenant_id = 1;
+     */
+    tenantId: string;
+    constructor(data?: PartialMessage<TenantServiceDeleteTestUserRequest>);
+    static readonly runtime: typeof proto3;
+    static readonly typeName = "admin.v1.TenantServiceDeleteTestUserRequest";
+    static readonly fields: FieldList;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): TenantServiceDeleteTestUserRequest;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): TenantServiceDeleteTestUserRequest;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): TenantServiceDeleteTestUserRequest;
+    static equals(a: TenantServiceDeleteTestUserRequest | PlainMessage<TenantServiceDeleteTestUserRequest> | undefined, b: TenantServiceDeleteTestUserRequest | PlainMessage<TenantServiceDeleteTestUserRequest> | undefined): boolean;
+}
+/**
+ * @generated from message admin.v1.TenantServiceDeleteTestUserResponse
+ */
+export declare class TenantServiceDeleteTestUserResponse extends Message<TenantServiceDeleteTestUserResponse> {
+    /**
+     * @generated from field: api.v1.Tenant tenant = 1;
+     */
+    tenant?: Tenant;
+    constructor(data?: PartialMessage<TenantServiceDeleteTestUserResponse>);
+    static readonly runtime: typeof proto3;
+    static readonly typeName = "admin.v1.TenantServiceDeleteTestUserResponse";
+    static readonly fields: FieldList;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): TenantServiceDeleteTestUserResponse;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): TenantServiceDeleteTestUserResponse;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): TenantServiceDeleteTestUserResponse;
+    static equals(a: TenantServiceDeleteTestUserResponse | PlainMessage<TenantServiceDeleteTestUserResponse> | undefined, b: TenantServiceDeleteTestUserResponse | PlainMessage<TenantServiceDeleteTestUserResponse> | undefined): boolean;
+}
