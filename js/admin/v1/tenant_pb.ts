@@ -284,11 +284,6 @@ export class TenantServiceRevokeResponse extends Message<TenantServiceRevokeResp
  * @generated from message admin.v1.TenantServiceDeleteTestUserRequest
  */
 export class TenantServiceDeleteTestUserRequest extends Message<TenantServiceDeleteTestUserRequest> {
-  /**
-   * @generated from field: string tenant_id = 1;
-   */
-  tenantId = "";
-
   constructor(data?: PartialMessage<TenantServiceDeleteTestUserRequest>) {
     super();
     proto3.util.initPartial(data, this);
@@ -297,7 +292,6 @@ export class TenantServiceDeleteTestUserRequest extends Message<TenantServiceDel
   static readonly runtime: typeof proto3 = proto3;
   static readonly typeName = "admin.v1.TenantServiceDeleteTestUserRequest";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "tenant_id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): TenantServiceDeleteTestUserRequest {

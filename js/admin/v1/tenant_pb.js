@@ -196,10 +196,6 @@ TenantServiceRevokeResponse.fields = protobuf_1.proto3.util.newFieldList(() => [
 class TenantServiceDeleteTestUserRequest extends protobuf_1.Message {
     constructor(data) {
         super();
-        /**
-         * @generated from field: string tenant_id = 1;
-         */
-        this.tenantId = "";
         protobuf_1.proto3.util.initPartial(data, this);
     }
     static fromBinary(bytes, options) {
@@ -218,9 +214,7 @@ class TenantServiceDeleteTestUserRequest extends protobuf_1.Message {
 exports.TenantServiceDeleteTestUserRequest = TenantServiceDeleteTestUserRequest;
 TenantServiceDeleteTestUserRequest.runtime = protobuf_1.proto3;
 TenantServiceDeleteTestUserRequest.typeName = "admin.v1.TenantServiceDeleteTestUserRequest";
-TenantServiceDeleteTestUserRequest.fields = protobuf_1.proto3.util.newFieldList(() => [
-    { no: 1, name: "tenant_id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-]);
+TenantServiceDeleteTestUserRequest.fields = protobuf_1.proto3.util.newFieldList(() => []);
 /**
  * @generated from message admin.v1.TenantServiceDeleteTestUserResponse
  */

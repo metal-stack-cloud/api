@@ -49,9 +49,8 @@ message TenantServiceRevokeResponse {
   api.v1.Tenant tenant = 1;
 }
 
-message TenantServiceDeleteTestUserRequest {
-  string tenant_id = 1;
-}
+message TenantServiceDeleteTestUserRequest {}
+
 message TenantServiceDeleteTestUserResponse {
   api.v1.Tenant tenant = 1;
 }

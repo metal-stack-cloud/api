@@ -142,10 +142,6 @@ export declare class TenantServiceRevokeResponse extends Message<TenantServiceRe
  * @generated from message admin.v1.TenantServiceDeleteTestUserRequest
  */
 export declare class TenantServiceDeleteTestUserRequest extends Message<TenantServiceDeleteTestUserRequest> {
-    /**
-     * @generated from field: string tenant_id = 1;
-     */
-    tenantId: string;
     constructor(data?: PartialMessage<TenantServiceDeleteTestUserRequest>);
     static readonly runtime: typeof proto3;
     static readonly typeName = "admin.v1.TenantServiceDeleteTestUserRequest";

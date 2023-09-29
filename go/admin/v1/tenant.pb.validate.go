@@ -832,8 +832,6 @@ func (m *TenantServiceDeleteTestUserRequest) validate(all bool) error {
 
 	var errors []error
 
-	// no validation rules for TenantId
-
 	if len(errors) > 0 {
 		return TenantServiceDeleteTestUserRequestMultiError(errors)
 	}
