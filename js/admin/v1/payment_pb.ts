@@ -155,3 +155,71 @@ export class PaymentServiceAddCouponToCustomerResponse extends Message<PaymentSe
   }
 }
 
+/**
+ * @generated from message admin.v1.PaymentServiceDeleteTestUserRequest
+ */
+export class PaymentServiceDeleteTestUserRequest extends Message<PaymentServiceDeleteTestUserRequest> {
+  constructor(data?: PartialMessage<PaymentServiceDeleteTestUserRequest>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "admin.v1.PaymentServiceDeleteTestUserRequest";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): PaymentServiceDeleteTestUserRequest {
+    return new PaymentServiceDeleteTestUserRequest().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): PaymentServiceDeleteTestUserRequest {
+    return new PaymentServiceDeleteTestUserRequest().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): PaymentServiceDeleteTestUserRequest {
+    return new PaymentServiceDeleteTestUserRequest().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: PaymentServiceDeleteTestUserRequest | PlainMessage<PaymentServiceDeleteTestUserRequest> | undefined, b: PaymentServiceDeleteTestUserRequest | PlainMessage<PaymentServiceDeleteTestUserRequest> | undefined): boolean {
+    return proto3.util.equals(PaymentServiceDeleteTestUserRequest, a, b);
+  }
+}
+
+/**
+ * @generated from message admin.v1.PaymentServiceDeleteTestUserResponse
+ */
+export class PaymentServiceDeleteTestUserResponse extends Message<PaymentServiceDeleteTestUserResponse> {
+  /**
+   * @generated from field: api.v1.PaymentCustomer customer = 1;
+   */
+  customer?: PaymentCustomer;
+
+  constructor(data?: PartialMessage<PaymentServiceDeleteTestUserResponse>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "admin.v1.PaymentServiceDeleteTestUserResponse";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "customer", kind: "message", T: PaymentCustomer },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): PaymentServiceDeleteTestUserResponse {
+    return new PaymentServiceDeleteTestUserResponse().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): PaymentServiceDeleteTestUserResponse {
+    return new PaymentServiceDeleteTestUserResponse().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): PaymentServiceDeleteTestUserResponse {
+    return new PaymentServiceDeleteTestUserResponse().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: PaymentServiceDeleteTestUserResponse | PlainMessage<PaymentServiceDeleteTestUserResponse> | undefined, b: PaymentServiceDeleteTestUserResponse | PlainMessage<PaymentServiceDeleteTestUserResponse> | undefined): boolean {
+    return proto3.util.equals(PaymentServiceDeleteTestUserResponse, a, b);
+  }
+}
+

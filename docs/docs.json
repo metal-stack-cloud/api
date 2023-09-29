@@ -4559,6 +4559,41 @@
           ]
         },
         {
+          "name": "PaymentServiceDeleteTestUserRequest",
+          "longName": "PaymentServiceDeleteTestUserRequest",
+          "fullName": "admin.v1.PaymentServiceDeleteTestUserRequest",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": false,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": []
+        },
+        {
+          "name": "PaymentServiceDeleteTestUserResponse",
+          "longName": "PaymentServiceDeleteTestUserResponse",
+          "fullName": "admin.v1.PaymentServiceDeleteTestUserResponse",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "customer",
+              "description": "",
+              "label": "",
+              "type": "PaymentCustomer",
+              "longType": "api.v1.PaymentCustomer",
+              "fullType": "api.v1.PaymentCustomer",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
           "name": "PaymentServiceListCouponsRequest",
           "longName": "PaymentServiceListCouponsRequest",
           "fullName": "admin.v1.PaymentServiceListCouponsRequest",
@@ -4623,6 +4658,18 @@
               "responseType": "PaymentServiceAddCouponToCustomerResponse",
               "responseLongType": "PaymentServiceAddCouponToCustomerResponse",
               "responseFullType": "admin.v1.PaymentServiceAddCouponToCustomerResponse",
+              "responseStreaming": false
+            },
+            {
+              "name": "DeleteTestUser",
+              "description": "",
+              "requestType": "PaymentServiceDeleteTestUserRequest",
+              "requestLongType": "PaymentServiceDeleteTestUserRequest",
+              "requestFullType": "admin.v1.PaymentServiceDeleteTestUserRequest",
+              "requestStreaming": false,
+              "responseType": "PaymentServiceDeleteTestUserResponse",
+              "responseLongType": "PaymentServiceDeleteTestUserResponse",
+              "responseFullType": "admin.v1.PaymentServiceDeleteTestUserResponse",
               "responseStreaming": false
             }
           ]

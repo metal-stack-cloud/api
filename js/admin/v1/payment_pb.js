@@ -4,7 +4,7 @@
 /* eslint-disable */
 // @ts-nocheck
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.PaymentServiceAddCouponToCustomerResponse = exports.PaymentServiceAddCouponToCustomerRequest = exports.PaymentServiceListCouponsResponse = exports.PaymentServiceListCouponsRequest = void 0;
+exports.PaymentServiceDeleteTestUserResponse = exports.PaymentServiceDeleteTestUserRequest = exports.PaymentServiceAddCouponToCustomerResponse = exports.PaymentServiceAddCouponToCustomerRequest = exports.PaymentServiceListCouponsResponse = exports.PaymentServiceListCouponsRequest = void 0;
 const protobuf_1 = require("@bufbuild/protobuf");
 const payment_pb_js_1 = require("../../api/v1/payment_pb.js");
 /**
@@ -120,5 +120,57 @@ exports.PaymentServiceAddCouponToCustomerResponse = PaymentServiceAddCouponToCus
 PaymentServiceAddCouponToCustomerResponse.runtime = protobuf_1.proto3;
 PaymentServiceAddCouponToCustomerResponse.typeName = "admin.v1.PaymentServiceAddCouponToCustomerResponse";
 PaymentServiceAddCouponToCustomerResponse.fields = protobuf_1.proto3.util.newFieldList(() => [
+    { no: 1, name: "customer", kind: "message", T: payment_pb_js_1.PaymentCustomer },
+]);
+/**
+ * @generated from message admin.v1.PaymentServiceDeleteTestUserRequest
+ */
+class PaymentServiceDeleteTestUserRequest extends protobuf_1.Message {
+    constructor(data) {
+        super();
+        protobuf_1.proto3.util.initPartial(data, this);
+    }
+    static fromBinary(bytes, options) {
+        return new PaymentServiceDeleteTestUserRequest().fromBinary(bytes, options);
+    }
+    static fromJson(jsonValue, options) {
+        return new PaymentServiceDeleteTestUserRequest().fromJson(jsonValue, options);
+    }
+    static fromJsonString(jsonString, options) {
+        return new PaymentServiceDeleteTestUserRequest().fromJsonString(jsonString, options);
+    }
+    static equals(a, b) {
+        return protobuf_1.proto3.util.equals(PaymentServiceDeleteTestUserRequest, a, b);
+    }
+}
+exports.PaymentServiceDeleteTestUserRequest = PaymentServiceDeleteTestUserRequest;
+PaymentServiceDeleteTestUserRequest.runtime = protobuf_1.proto3;
+PaymentServiceDeleteTestUserRequest.typeName = "admin.v1.PaymentServiceDeleteTestUserRequest";
+PaymentServiceDeleteTestUserRequest.fields = protobuf_1.proto3.util.newFieldList(() => []);
+/**
+ * @generated from message admin.v1.PaymentServiceDeleteTestUserResponse
+ */
+class PaymentServiceDeleteTestUserResponse extends protobuf_1.Message {
+    constructor(data) {
+        super();
+        protobuf_1.proto3.util.initPartial(data, this);
+    }
+    static fromBinary(bytes, options) {
+        return new PaymentServiceDeleteTestUserResponse().fromBinary(bytes, options);
+    }
+    static fromJson(jsonValue, options) {
+        return new PaymentServiceDeleteTestUserResponse().fromJson(jsonValue, options);
+    }
+    static fromJsonString(jsonString, options) {
+        return new PaymentServiceDeleteTestUserResponse().fromJsonString(jsonString, options);
+    }
+    static equals(a, b) {
+        return protobuf_1.proto3.util.equals(PaymentServiceDeleteTestUserResponse, a, b);
+    }
+}
+exports.PaymentServiceDeleteTestUserResponse = PaymentServiceDeleteTestUserResponse;
+PaymentServiceDeleteTestUserResponse.runtime = protobuf_1.proto3;
+PaymentServiceDeleteTestUserResponse.typeName = "admin.v1.PaymentServiceDeleteTestUserResponse";
+PaymentServiceDeleteTestUserResponse.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 1, name: "customer", kind: "message", T: payment_pb_js_1.PaymentCustomer },
 ]);
