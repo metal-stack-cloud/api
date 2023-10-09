@@ -4,15 +4,12 @@ import (
 	"fmt"
 	"net/http"
 	"net/http/httputil"
-
-	"go.uber.org/zap"
 )
 
 // DialConfig is the configuration to create a api-server connection
 type DialConfig struct {
 	BaseURL string
 	Token   string
-	Log     *zap.SugaredLogger
 	Debug   bool
 
 	UserAgent string
