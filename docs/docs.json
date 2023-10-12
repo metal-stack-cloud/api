@@ -2911,11 +2911,45 @@
       "name": "api/v1/payment.proto",
       "description": "",
       "package": "api.v1",
-      "hasEnums": false,
+      "hasEnums": true,
       "hasExtensions": false,
       "hasMessages": true,
       "hasServices": true,
-      "enums": [],
+      "enums": [
+        {
+          "name": "ProductType",
+          "longName": "ProductType",
+          "fullName": "api.v1.ProductType",
+          "description": "",
+          "values": [
+            {
+              "name": "PRODUCT_TYPE_UNSPECIFIED",
+              "number": "0",
+              "description": ""
+            },
+            {
+              "name": "PRODUCT_TYPE_STORAGE",
+              "number": "1",
+              "description": ""
+            },
+            {
+              "name": "PRODUCT_TYPE_COMPUTE",
+              "number": "2",
+              "description": ""
+            },
+            {
+              "name": "PRODUCT_TYPE_NETWORK",
+              "number": "3",
+              "description": ""
+            },
+            {
+              "name": "PRODUCT_TYPE_KUBERNTES",
+              "number": "5",
+              "description": ""
+            }
+          ]
+        }
+      ],
       "extensions": [],
       "messages": [
         {
@@ -4206,7 +4240,7 @@
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
-          "hasOneofs": false,
+          "hasOneofs": true,
           "extensions": [],
           "fields": [
             {
@@ -4256,6 +4290,42 @@
               "isoneof": false,
               "oneofdecl": "",
               "defaultValue": ""
+            },
+            {
+              "name": "product_type",
+              "description": "",
+              "label": "",
+              "type": "ProductType",
+              "longType": "ProductType",
+              "fullType": "api.v1.ProductType",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "description",
+              "description": "",
+              "label": "optional",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "_description",
+              "defaultValue": "",
+              "options": {
+                "validate.rules": [
+                  {
+                    "name": "string.min_len",
+                    "value": 2
+                  },
+                  {
+                    "name": "string.max_len",
+                    "value": 500
+                  }
+                ]
+              }
             }
           ]
         },

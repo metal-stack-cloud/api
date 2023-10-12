@@ -4,8 +4,42 @@
 /* eslint-disable */
 // @ts-nocheck
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.PaymentServiceHasChargeableResourcesResponse = exports.PaymentServiceHasChargeableResourcesRequest = exports.PaymentServiceRequestAdmissionResponse = exports.PaymentServiceRequestAdmissionRequest = exports.PaymentServiceCheckAdmittedResponse = exports.PaymentServiceCheckAdmittedRequest = exports.PaymentServiceGetDefaultPricesResponse = exports.PaymentServiceGetDefaultPricesRequest = exports.PaymentServiceGetInvoicesResponse = exports.PaymentServiceGetInvoicesRequest = exports.PaymentServiceGetSubscriptionUsageResponse = exports.PaymentServiceGetSubscriptionUsageRequest = exports.PaymentServiceDeletePaymentMethodResponse = exports.PaymentServiceDeletePaymentMethodRequest = exports.PaymentServiceHasPaymentMethodResponse = exports.PaymentServiceHasPaymentMethodRequest = exports.PaymentServiceCheckIfCustomerExistsResponse = exports.PaymentServiceCheckIfCustomerExistsRequest = exports.PaymentServiceGetCustomerWithLoginResponse = exports.PaymentServiceGetCustomerWithLoginRequest = exports.PaymentServiceGetCustomerResponse = exports.PaymentServiceGetCustomerRequest = exports.PaymentServiceCreateOrUpdateCustomerResponse = exports.PaymentServiceCreateOrUpdateCustomerRequest = exports.Coupon = exports.Invoice = exports.SubscriptionUsageItem = exports.Address = exports.Price = exports.Card = exports.PaymentCustomer = void 0;
+exports.PaymentServiceHasChargeableResourcesResponse = exports.PaymentServiceHasChargeableResourcesRequest = exports.PaymentServiceRequestAdmissionResponse = exports.PaymentServiceRequestAdmissionRequest = exports.PaymentServiceCheckAdmittedResponse = exports.PaymentServiceCheckAdmittedRequest = exports.PaymentServiceGetDefaultPricesResponse = exports.PaymentServiceGetDefaultPricesRequest = exports.PaymentServiceGetInvoicesResponse = exports.PaymentServiceGetInvoicesRequest = exports.PaymentServiceGetSubscriptionUsageResponse = exports.PaymentServiceGetSubscriptionUsageRequest = exports.PaymentServiceDeletePaymentMethodResponse = exports.PaymentServiceDeletePaymentMethodRequest = exports.PaymentServiceHasPaymentMethodResponse = exports.PaymentServiceHasPaymentMethodRequest = exports.PaymentServiceCheckIfCustomerExistsResponse = exports.PaymentServiceCheckIfCustomerExistsRequest = exports.PaymentServiceGetCustomerWithLoginResponse = exports.PaymentServiceGetCustomerWithLoginRequest = exports.PaymentServiceGetCustomerResponse = exports.PaymentServiceGetCustomerRequest = exports.PaymentServiceCreateOrUpdateCustomerResponse = exports.PaymentServiceCreateOrUpdateCustomerRequest = exports.Coupon = exports.Invoice = exports.SubscriptionUsageItem = exports.Address = exports.Price = exports.Card = exports.PaymentCustomer = exports.ProductType = void 0;
 const protobuf_1 = require("@bufbuild/protobuf");
+/**
+ * @generated from enum api.v1.ProductType
+ */
+var ProductType;
+(function (ProductType) {
+    /**
+     * @generated from enum value: PRODUCT_TYPE_UNSPECIFIED = 0;
+     */
+    ProductType[ProductType["UNSPECIFIED"] = 0] = "UNSPECIFIED";
+    /**
+     * @generated from enum value: PRODUCT_TYPE_STORAGE = 1;
+     */
+    ProductType[ProductType["STORAGE"] = 1] = "STORAGE";
+    /**
+     * @generated from enum value: PRODUCT_TYPE_COMPUTE = 2;
+     */
+    ProductType[ProductType["COMPUTE"] = 2] = "COMPUTE";
+    /**
+     * @generated from enum value: PRODUCT_TYPE_NETWORK = 3;
+     */
+    ProductType[ProductType["NETWORK"] = 3] = "NETWORK";
+    /**
+     * @generated from enum value: PRODUCT_TYPE_KUBERNTES = 5;
+     */
+    ProductType[ProductType["KUBERNTES"] = 5] = "KUBERNTES";
+})(ProductType || (exports.ProductType = ProductType = {}));
+// Retrieve enum metadata with: proto3.getEnumType(ProductType)
+protobuf_1.proto3.util.setEnumType(ProductType, "api.v1.ProductType", [
+    { no: 0, name: "PRODUCT_TYPE_UNSPECIFIED" },
+    { no: 1, name: "PRODUCT_TYPE_STORAGE" },
+    { no: 2, name: "PRODUCT_TYPE_COMPUTE" },
+    { no: 3, name: "PRODUCT_TYPE_NETWORK" },
+    { no: 5, name: "PRODUCT_TYPE_KUBERNTES" },
+]);
 /**
  * @generated from message api.v1.PaymentCustomer
  */
@@ -129,6 +163,10 @@ class Price extends protobuf_1.Message {
          * @generated from field: string unit_label = 4;
          */
         this.unitLabel = "";
+        /**
+         * @generated from field: api.v1.ProductType product_type = 5;
+         */
+        this.productType = ProductType.UNSPECIFIED;
         protobuf_1.proto3.util.initPartial(data, this);
     }
     static fromBinary(bytes, options) {
@@ -152,6 +190,8 @@ Price.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 2, name: "unit_amount_decimal", kind: "scalar", T: 1 /* ScalarType.DOUBLE */ },
     { no: 3, name: "currency", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 4, name: "unit_label", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 5, name: "product_type", kind: "enum", T: protobuf_1.proto3.getEnumType(ProductType) },
+    { no: 6, name: "description", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
 ]);
 /**
  * @generated from message api.v1.Address

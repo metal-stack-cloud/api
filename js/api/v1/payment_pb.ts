@@ -7,6 +7,44 @@ import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialM
 import { Message, proto3, protoInt64, Timestamp } from "@bufbuild/protobuf";
 
 /**
+ * @generated from enum api.v1.ProductType
+ */
+export enum ProductType {
+  /**
+   * @generated from enum value: PRODUCT_TYPE_UNSPECIFIED = 0;
+   */
+  UNSPECIFIED = 0,
+
+  /**
+   * @generated from enum value: PRODUCT_TYPE_STORAGE = 1;
+   */
+  STORAGE = 1,
+
+  /**
+   * @generated from enum value: PRODUCT_TYPE_COMPUTE = 2;
+   */
+  COMPUTE = 2,
+
+  /**
+   * @generated from enum value: PRODUCT_TYPE_NETWORK = 3;
+   */
+  NETWORK = 3,
+
+  /**
+   * @generated from enum value: PRODUCT_TYPE_KUBERNTES = 5;
+   */
+  KUBERNTES = 5,
+}
+// Retrieve enum metadata with: proto3.getEnumType(ProductType)
+proto3.util.setEnumType(ProductType, "api.v1.ProductType", [
+  { no: 0, name: "PRODUCT_TYPE_UNSPECIFIED" },
+  { no: 1, name: "PRODUCT_TYPE_STORAGE" },
+  { no: 2, name: "PRODUCT_TYPE_COMPUTE" },
+  { no: 3, name: "PRODUCT_TYPE_NETWORK" },
+  { no: 5, name: "PRODUCT_TYPE_KUBERNTES" },
+]);
+
+/**
  * @generated from message api.v1.PaymentCustomer
  */
 export class PaymentCustomer extends Message<PaymentCustomer> {
@@ -194,6 +232,16 @@ export class Price extends Message<Price> {
    */
   unitLabel = "";
 
+  /**
+   * @generated from field: api.v1.ProductType product_type = 5;
+   */
+  productType = ProductType.UNSPECIFIED;
+
+  /**
+   * @generated from field: optional string description = 6;
+   */
+  description?: string;
+
   constructor(data?: PartialMessage<Price>) {
     super();
     proto3.util.initPartial(data, this);
@@ -206,6 +254,8 @@ export class Price extends Message<Price> {
     { no: 2, name: "unit_amount_decimal", kind: "scalar", T: 1 /* ScalarType.DOUBLE */ },
     { no: 3, name: "currency", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 4, name: "unit_label", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 5, name: "product_type", kind: "enum", T: proto3.getEnumType(ProductType) },
+    { no: 6, name: "description", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Price {
