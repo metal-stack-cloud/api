@@ -431,15 +431,19 @@ func (m *Price) validate(all bool) error {
 
 	// no validation rules for ProductType
 
-	if l := utf8.RuneCountInString(m.GetDescription()); l < 2 || l > 500 {
-		err := PriceValidationError{
-			field:  "Description",
-			reason: "value length must be between 2 and 500 runes, inclusive",
+	if m.Description != nil {
+
+		if l := utf8.RuneCountInString(m.GetDescription()); l < 2 || l > 500 {
+			err := PriceValidationError{
+				field:  "Description",
+				reason: "value length must be between 2 and 500 runes, inclusive",
+			}
+			if !all {
+				return err
+			}
+			errors = append(errors, err)
 		}
-		if !all {
-			return err
-		}
-		errors = append(errors, err)
+
 	}
 
 	if len(errors) > 0 {

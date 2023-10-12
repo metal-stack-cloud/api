@@ -144,9 +144,9 @@ export declare class Price extends Message<Price> {
      */
     productType: ProductType;
     /**
-     * @generated from field: string description = 6;
+     * @generated from field: optional string description = 6;
      */
-    description: string;
+    description?: string;
     constructor(data?: PartialMessage<Price>);
     static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.Price";

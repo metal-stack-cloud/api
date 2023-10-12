@@ -90,7 +90,7 @@ message Price {
   string currency = 3;
   string unit_label = 4;
   ProductType product_type = 5;
-  string description = 6 [(validate.rules).string = {
+  optional string description = 6 [(validate.rules).string = {
     min_len: 2,
     max_len: 500,
   }];

@@ -167,10 +167,6 @@ class Price extends protobuf_1.Message {
          * @generated from field: api.v1.ProductType product_type = 5;
          */
         this.productType = ProductType.UNSPECIFIED;
-        /**
-         * @generated from field: string description = 6;
-         */
-        this.description = "";
         protobuf_1.proto3.util.initPartial(data, this);
     }
     static fromBinary(bytes, options) {
@@ -195,7 +191,7 @@ Price.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 3, name: "currency", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 4, name: "unit_label", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 5, name: "product_type", kind: "enum", T: protobuf_1.proto3.getEnumType(ProductType) },
-    { no: 6, name: "description", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 6, name: "description", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
 ]);
 /**
  * @generated from message api.v1.Address

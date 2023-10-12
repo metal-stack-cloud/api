@@ -238,9 +238,9 @@ export class Price extends Message<Price> {
   productType = ProductType.UNSPECIFIED;
 
   /**
-   * @generated from field: string description = 6;
+   * @generated from field: optional string description = 6;
    */
-  description = "";
+  description?: string;
 
   constructor(data?: PartialMessage<Price>) {
     super();
@@ -255,7 +255,7 @@ export class Price extends Message<Price> {
     { no: 3, name: "currency", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 4, name: "unit_label", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 5, name: "product_type", kind: "enum", T: proto3.getEnumType(ProductType) },
-    { no: 6, name: "description", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 6, name: "description", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Price {
