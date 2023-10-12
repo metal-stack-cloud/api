@@ -13,6 +13,9 @@ service PaymentService {
   rpc AddCouponToCustomer(PaymentServiceAddCouponToCustomerRequest) returns (PaymentServiceAddCouponToCustomerResponse) {
     option (api.v1.admin_roles) = ADMIN_ROLE_EDITOR;
   }
+  rpc DeleteTestUser(PaymentServiceDeleteTestUserRequest) returns (PaymentServiceDeleteTestUserResponse) {
+    option (api.v1.admin_roles) = ADMIN_ROLE_EDITOR;
+  }
 }
 
 message PaymentServiceListCouponsRequest {}
@@ -24,5 +27,10 @@ message PaymentServiceAddCouponToCustomerRequest {
   string coupon_id = 2;
 }
 message PaymentServiceAddCouponToCustomerResponse {
+  api.v1.PaymentCustomer customer = 1;
+}
+
+message PaymentServiceDeleteTestUserRequest {}
+message PaymentServiceDeleteTestUserResponse {
   api.v1.PaymentCustomer customer = 1;
 }

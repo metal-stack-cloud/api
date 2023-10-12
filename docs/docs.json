@@ -4559,6 +4559,41 @@
           ]
         },
         {
+          "name": "PaymentServiceDeleteTestUserRequest",
+          "longName": "PaymentServiceDeleteTestUserRequest",
+          "fullName": "admin.v1.PaymentServiceDeleteTestUserRequest",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": false,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": []
+        },
+        {
+          "name": "PaymentServiceDeleteTestUserResponse",
+          "longName": "PaymentServiceDeleteTestUserResponse",
+          "fullName": "admin.v1.PaymentServiceDeleteTestUserResponse",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "customer",
+              "description": "",
+              "label": "",
+              "type": "PaymentCustomer",
+              "longType": "api.v1.PaymentCustomer",
+              "fullType": "api.v1.PaymentCustomer",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
           "name": "PaymentServiceListCouponsRequest",
           "longName": "PaymentServiceListCouponsRequest",
           "fullName": "admin.v1.PaymentServiceListCouponsRequest",
@@ -4623,6 +4658,18 @@
               "responseType": "PaymentServiceAddCouponToCustomerResponse",
               "responseLongType": "PaymentServiceAddCouponToCustomerResponse",
               "responseFullType": "admin.v1.PaymentServiceAddCouponToCustomerResponse",
+              "responseStreaming": false
+            },
+            {
+              "name": "DeleteTestUser",
+              "description": "",
+              "requestType": "PaymentServiceDeleteTestUserRequest",
+              "requestLongType": "PaymentServiceDeleteTestUserRequest",
+              "requestFullType": "admin.v1.PaymentServiceDeleteTestUserRequest",
+              "requestStreaming": false,
+              "responseType": "PaymentServiceDeleteTestUserResponse",
+              "responseLongType": "PaymentServiceDeleteTestUserResponse",
+              "responseFullType": "admin.v1.PaymentServiceDeleteTestUserResponse",
               "responseStreaming": false
             }
           ]
@@ -7578,6 +7625,41 @@
           ]
         },
         {
+          "name": "TenantServiceDeleteTestUserRequest",
+          "longName": "TenantServiceDeleteTestUserRequest",
+          "fullName": "admin.v1.TenantServiceDeleteTestUserRequest",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": false,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": []
+        },
+        {
+          "name": "TenantServiceDeleteTestUserResponse",
+          "longName": "TenantServiceDeleteTestUserResponse",
+          "fullName": "admin.v1.TenantServiceDeleteTestUserResponse",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "tenant",
+              "description": "",
+              "label": "",
+              "type": "Tenant",
+              "longType": "api.v1.Tenant",
+              "fullType": "api.v1.Tenant",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
           "name": "TenantServiceListRequest",
           "longName": "TenantServiceListRequest",
           "fullName": "admin.v1.TenantServiceListRequest",
@@ -7799,6 +7881,18 @@
               "responseType": "TenantServiceRevokeResponse",
               "responseLongType": "TenantServiceRevokeResponse",
               "responseFullType": "admin.v1.TenantServiceRevokeResponse",
+              "responseStreaming": false
+            },
+            {
+              "name": "DeleteTestUser",
+              "description": "",
+              "requestType": "TenantServiceDeleteTestUserRequest",
+              "requestLongType": "TenantServiceDeleteTestUserRequest",
+              "requestFullType": "admin.v1.TenantServiceDeleteTestUserRequest",
+              "requestStreaming": false,
+              "responseType": "TenantServiceDeleteTestUserResponse",
+              "responseLongType": "TenantServiceDeleteTestUserResponse",
+              "responseFullType": "admin.v1.TenantServiceDeleteTestUserResponse",
               "responseStreaming": false
             }
           ]

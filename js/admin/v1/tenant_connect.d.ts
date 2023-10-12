@@ -1,4 +1,4 @@
-import { TenantServiceAdmitRequest, TenantServiceAdmitResponse, TenantServiceListRequest, TenantServiceListResponse, TenantServiceRevokeRequest, TenantServiceRevokeResponse } from "./tenant_pb.js";
+import { TenantServiceAdmitRequest, TenantServiceAdmitResponse, TenantServiceDeleteTestUserRequest, TenantServiceDeleteTestUserResponse, TenantServiceListRequest, TenantServiceListResponse, TenantServiceRevokeRequest, TenantServiceRevokeResponse } from "./tenant_pb.js";
 import { MethodKind } from "@bufbuild/protobuf";
 /**
  * @generated from service admin.v1.TenantService
@@ -31,6 +31,15 @@ export declare const TenantService: {
             readonly name: "Revoke";
             readonly I: typeof TenantServiceRevokeRequest;
             readonly O: typeof TenantServiceRevokeResponse;
+            readonly kind: MethodKind.Unary;
+        };
+        /**
+         * @generated from rpc admin.v1.TenantService.DeleteTestUser
+         */
+        readonly deleteTestUser: {
+            readonly name: "DeleteTestUser";
+            readonly I: typeof TenantServiceDeleteTestUserRequest;
+            readonly O: typeof TenantServiceDeleteTestUserResponse;
             readonly kind: MethodKind.Unary;
         };
     };

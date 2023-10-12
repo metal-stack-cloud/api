@@ -69,3 +69,33 @@ export declare class PaymentServiceAddCouponToCustomerResponse extends Message<P
     static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): PaymentServiceAddCouponToCustomerResponse;
     static equals(a: PaymentServiceAddCouponToCustomerResponse | PlainMessage<PaymentServiceAddCouponToCustomerResponse> | undefined, b: PaymentServiceAddCouponToCustomerResponse | PlainMessage<PaymentServiceAddCouponToCustomerResponse> | undefined): boolean;
 }
+/**
+ * @generated from message admin.v1.PaymentServiceDeleteTestUserRequest
+ */
+export declare class PaymentServiceDeleteTestUserRequest extends Message<PaymentServiceDeleteTestUserRequest> {
+    constructor(data?: PartialMessage<PaymentServiceDeleteTestUserRequest>);
+    static readonly runtime: typeof proto3;
+    static readonly typeName = "admin.v1.PaymentServiceDeleteTestUserRequest";
+    static readonly fields: FieldList;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): PaymentServiceDeleteTestUserRequest;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): PaymentServiceDeleteTestUserRequest;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): PaymentServiceDeleteTestUserRequest;
+    static equals(a: PaymentServiceDeleteTestUserRequest | PlainMessage<PaymentServiceDeleteTestUserRequest> | undefined, b: PaymentServiceDeleteTestUserRequest | PlainMessage<PaymentServiceDeleteTestUserRequest> | undefined): boolean;
+}
+/**
+ * @generated from message admin.v1.PaymentServiceDeleteTestUserResponse
+ */
+export declare class PaymentServiceDeleteTestUserResponse extends Message<PaymentServiceDeleteTestUserResponse> {
+    /**
+     * @generated from field: api.v1.PaymentCustomer customer = 1;
+     */
+    customer?: PaymentCustomer;
+    constructor(data?: PartialMessage<PaymentServiceDeleteTestUserResponse>);
+    static readonly runtime: typeof proto3;
+    static readonly typeName = "admin.v1.PaymentServiceDeleteTestUserResponse";
+    static readonly fields: FieldList;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): PaymentServiceDeleteTestUserResponse;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): PaymentServiceDeleteTestUserResponse;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): PaymentServiceDeleteTestUserResponse;
+    static equals(a: PaymentServiceDeleteTestUserResponse | PlainMessage<PaymentServiceDeleteTestUserResponse> | undefined, b: PaymentServiceDeleteTestUserResponse | PlainMessage<PaymentServiceDeleteTestUserResponse> | undefined): boolean;
+}

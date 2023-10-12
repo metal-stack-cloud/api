@@ -31,5 +31,14 @@ exports.PaymentService = {
             O: payment_pb_js_1.PaymentServiceAddCouponToCustomerResponse,
             kind: protobuf_1.MethodKind.Unary,
         },
+        /**
+         * @generated from rpc admin.v1.PaymentService.DeleteTestUser
+         */
+        deleteTestUser: {
+            name: "DeleteTestUser",
+            I: payment_pb_js_1.PaymentServiceDeleteTestUserRequest,
+            O: payment_pb_js_1.PaymentServiceDeleteTestUserResponse,
+            kind: protobuf_1.MethodKind.Unary,
+        },
     }
 };

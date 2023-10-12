@@ -808,3 +808,242 @@ var _ interface {
 	Cause() error
 	ErrorName() string
 } = TenantServiceRevokeResponseValidationError{}
+
+// Validate checks the field values on TenantServiceDeleteTestUserRequest with
+// the rules defined in the proto definition for this message. If any rules
+// are violated, the first error encountered is returned, or nil if there are
+// no violations.
+func (m *TenantServiceDeleteTestUserRequest) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on TenantServiceDeleteTestUserRequest
+// with the rules defined in the proto definition for this message. If any
+// rules are violated, the result is a list of violation errors wrapped in
+// TenantServiceDeleteTestUserRequestMultiError, or nil if none found.
+func (m *TenantServiceDeleteTestUserRequest) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *TenantServiceDeleteTestUserRequest) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	if len(errors) > 0 {
+		return TenantServiceDeleteTestUserRequestMultiError(errors)
+	}
+
+	return nil
+}
+
+// TenantServiceDeleteTestUserRequestMultiError is an error wrapping multiple
+// validation errors returned by
+// TenantServiceDeleteTestUserRequest.ValidateAll() if the designated
+// constraints aren't met.
+type TenantServiceDeleteTestUserRequestMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m TenantServiceDeleteTestUserRequestMultiError) Error() string {
+	var msgs []string
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m TenantServiceDeleteTestUserRequestMultiError) AllErrors() []error { return m }
+
+// TenantServiceDeleteTestUserRequestValidationError is the validation error
+// returned by TenantServiceDeleteTestUserRequest.Validate if the designated
+// constraints aren't met.
+type TenantServiceDeleteTestUserRequestValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e TenantServiceDeleteTestUserRequestValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e TenantServiceDeleteTestUserRequestValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e TenantServiceDeleteTestUserRequestValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e TenantServiceDeleteTestUserRequestValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e TenantServiceDeleteTestUserRequestValidationError) ErrorName() string {
+	return "TenantServiceDeleteTestUserRequestValidationError"
+}
+
+// Error satisfies the builtin error interface
+func (e TenantServiceDeleteTestUserRequestValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sTenantServiceDeleteTestUserRequest.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = TenantServiceDeleteTestUserRequestValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = TenantServiceDeleteTestUserRequestValidationError{}
+
+// Validate checks the field values on TenantServiceDeleteTestUserResponse with
+// the rules defined in the proto definition for this message. If any rules
+// are violated, the first error encountered is returned, or nil if there are
+// no violations.
+func (m *TenantServiceDeleteTestUserResponse) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on TenantServiceDeleteTestUserResponse
+// with the rules defined in the proto definition for this message. If any
+// rules are violated, the result is a list of violation errors wrapped in
+// TenantServiceDeleteTestUserResponseMultiError, or nil if none found.
+func (m *TenantServiceDeleteTestUserResponse) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *TenantServiceDeleteTestUserResponse) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	if all {
+		switch v := interface{}(m.GetTenant()).(type) {
+		case interface{ ValidateAll() error }:
+			if err := v.ValidateAll(); err != nil {
+				errors = append(errors, TenantServiceDeleteTestUserResponseValidationError{
+					field:  "Tenant",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		case interface{ Validate() error }:
+			if err := v.Validate(); err != nil {
+				errors = append(errors, TenantServiceDeleteTestUserResponseValidationError{
+					field:  "Tenant",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		}
+	} else if v, ok := interface{}(m.GetTenant()).(interface{ Validate() error }); ok {
+		if err := v.Validate(); err != nil {
+			return TenantServiceDeleteTestUserResponseValidationError{
+				field:  "Tenant",
+				reason: "embedded message failed validation",
+				cause:  err,
+			}
+		}
+	}
+
+	if len(errors) > 0 {
+		return TenantServiceDeleteTestUserResponseMultiError(errors)
+	}
+
+	return nil
+}
+
+// TenantServiceDeleteTestUserResponseMultiError is an error wrapping multiple
+// validation errors returned by
+// TenantServiceDeleteTestUserResponse.ValidateAll() if the designated
+// constraints aren't met.
+type TenantServiceDeleteTestUserResponseMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m TenantServiceDeleteTestUserResponseMultiError) Error() string {
+	var msgs []string
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m TenantServiceDeleteTestUserResponseMultiError) AllErrors() []error { return m }
+
+// TenantServiceDeleteTestUserResponseValidationError is the validation error
+// returned by TenantServiceDeleteTestUserResponse.Validate if the designated
+// constraints aren't met.
+type TenantServiceDeleteTestUserResponseValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e TenantServiceDeleteTestUserResponseValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e TenantServiceDeleteTestUserResponseValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e TenantServiceDeleteTestUserResponseValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e TenantServiceDeleteTestUserResponseValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e TenantServiceDeleteTestUserResponseValidationError) ErrorName() string {
+	return "TenantServiceDeleteTestUserResponseValidationError"
+}
+
+// Error satisfies the builtin error interface
+func (e TenantServiceDeleteTestUserResponseValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sTenantServiceDeleteTestUserResponse.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = TenantServiceDeleteTestUserResponseValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = TenantServiceDeleteTestUserResponseValidationError{}

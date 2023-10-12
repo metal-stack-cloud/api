@@ -40,5 +40,14 @@ exports.TenantService = {
             O: tenant_pb_js_1.TenantServiceRevokeResponse,
             kind: protobuf_1.MethodKind.Unary,
         },
+        /**
+         * @generated from rpc admin.v1.TenantService.DeleteTestUser
+         */
+        deleteTestUser: {
+            name: "DeleteTestUser",
+            I: tenant_pb_js_1.TenantServiceDeleteTestUserRequest,
+            O: tenant_pb_js_1.TenantServiceDeleteTestUserResponse,
+            kind: protobuf_1.MethodKind.Unary,
+        },
     }
 };

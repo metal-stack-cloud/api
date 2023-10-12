@@ -550,3 +550,242 @@ var _ interface {
 	Cause() error
 	ErrorName() string
 } = PaymentServiceAddCouponToCustomerResponseValidationError{}
+
+// Validate checks the field values on PaymentServiceDeleteTestUserRequest with
+// the rules defined in the proto definition for this message. If any rules
+// are violated, the first error encountered is returned, or nil if there are
+// no violations.
+func (m *PaymentServiceDeleteTestUserRequest) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on PaymentServiceDeleteTestUserRequest
+// with the rules defined in the proto definition for this message. If any
+// rules are violated, the result is a list of violation errors wrapped in
+// PaymentServiceDeleteTestUserRequestMultiError, or nil if none found.
+func (m *PaymentServiceDeleteTestUserRequest) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *PaymentServiceDeleteTestUserRequest) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	if len(errors) > 0 {
+		return PaymentServiceDeleteTestUserRequestMultiError(errors)
+	}
+
+	return nil
+}
+
+// PaymentServiceDeleteTestUserRequestMultiError is an error wrapping multiple
+// validation errors returned by
+// PaymentServiceDeleteTestUserRequest.ValidateAll() if the designated
+// constraints aren't met.
+type PaymentServiceDeleteTestUserRequestMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m PaymentServiceDeleteTestUserRequestMultiError) Error() string {
+	var msgs []string
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m PaymentServiceDeleteTestUserRequestMultiError) AllErrors() []error { return m }
+
+// PaymentServiceDeleteTestUserRequestValidationError is the validation error
+// returned by PaymentServiceDeleteTestUserRequest.Validate if the designated
+// constraints aren't met.
+type PaymentServiceDeleteTestUserRequestValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e PaymentServiceDeleteTestUserRequestValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e PaymentServiceDeleteTestUserRequestValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e PaymentServiceDeleteTestUserRequestValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e PaymentServiceDeleteTestUserRequestValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e PaymentServiceDeleteTestUserRequestValidationError) ErrorName() string {
+	return "PaymentServiceDeleteTestUserRequestValidationError"
+}
+
+// Error satisfies the builtin error interface
+func (e PaymentServiceDeleteTestUserRequestValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sPaymentServiceDeleteTestUserRequest.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = PaymentServiceDeleteTestUserRequestValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = PaymentServiceDeleteTestUserRequestValidationError{}
+
+// Validate checks the field values on PaymentServiceDeleteTestUserResponse
+// with the rules defined in the proto definition for this message. If any
+// rules are violated, the first error encountered is returned, or nil if
+// there are no violations.
+func (m *PaymentServiceDeleteTestUserResponse) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on PaymentServiceDeleteTestUserResponse
+// with the rules defined in the proto definition for this message. If any
+// rules are violated, the result is a list of violation errors wrapped in
+// PaymentServiceDeleteTestUserResponseMultiError, or nil if none found.
+func (m *PaymentServiceDeleteTestUserResponse) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *PaymentServiceDeleteTestUserResponse) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	if all {
+		switch v := interface{}(m.GetCustomer()).(type) {
+		case interface{ ValidateAll() error }:
+			if err := v.ValidateAll(); err != nil {
+				errors = append(errors, PaymentServiceDeleteTestUserResponseValidationError{
+					field:  "Customer",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		case interface{ Validate() error }:
+			if err := v.Validate(); err != nil {
+				errors = append(errors, PaymentServiceDeleteTestUserResponseValidationError{
+					field:  "Customer",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		}
+	} else if v, ok := interface{}(m.GetCustomer()).(interface{ Validate() error }); ok {
+		if err := v.Validate(); err != nil {
+			return PaymentServiceDeleteTestUserResponseValidationError{
+				field:  "Customer",
+				reason: "embedded message failed validation",
+				cause:  err,
+			}
+		}
+	}
+
+	if len(errors) > 0 {
+		return PaymentServiceDeleteTestUserResponseMultiError(errors)
+	}
+
+	return nil
+}
+
+// PaymentServiceDeleteTestUserResponseMultiError is an error wrapping multiple
+// validation errors returned by
+// PaymentServiceDeleteTestUserResponse.ValidateAll() if the designated
+// constraints aren't met.
+type PaymentServiceDeleteTestUserResponseMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m PaymentServiceDeleteTestUserResponseMultiError) Error() string {
+	var msgs []string
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m PaymentServiceDeleteTestUserResponseMultiError) AllErrors() []error { return m }
+
+// PaymentServiceDeleteTestUserResponseValidationError is the validation error
+// returned by PaymentServiceDeleteTestUserResponse.Validate if the designated
+// constraints aren't met.
+type PaymentServiceDeleteTestUserResponseValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e PaymentServiceDeleteTestUserResponseValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e PaymentServiceDeleteTestUserResponseValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e PaymentServiceDeleteTestUserResponseValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e PaymentServiceDeleteTestUserResponseValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e PaymentServiceDeleteTestUserResponseValidationError) ErrorName() string {
+	return "PaymentServiceDeleteTestUserResponseValidationError"
+}
+
+// Error satisfies the builtin error interface
+func (e PaymentServiceDeleteTestUserResponseValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sPaymentServiceDeleteTestUserResponse.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = PaymentServiceDeleteTestUserResponseValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = PaymentServiceDeleteTestUserResponseValidationError{}
