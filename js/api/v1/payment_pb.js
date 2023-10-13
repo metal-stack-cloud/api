@@ -28,9 +28,9 @@ var ProductType;
      */
     ProductType[ProductType["NETWORK"] = 3] = "NETWORK";
     /**
-     * @generated from enum value: PRODUCT_TYPE_KUBERNTES = 5;
+     * @generated from enum value: PRODUCT_TYPE_KUBERNETES = 5;
      */
-    ProductType[ProductType["KUBERNTES"] = 5] = "KUBERNTES";
+    ProductType[ProductType["KUBERNETES"] = 5] = "KUBERNETES";
 })(ProductType || (exports.ProductType = ProductType = {}));
 // Retrieve enum metadata with: proto3.getEnumType(ProductType)
 protobuf_1.proto3.util.setEnumType(ProductType, "api.v1.ProductType", [
@@ -38,7 +38,7 @@ protobuf_1.proto3.util.setEnumType(ProductType, "api.v1.ProductType", [
     { no: 1, name: "PRODUCT_TYPE_STORAGE" },
     { no: 2, name: "PRODUCT_TYPE_COMPUTE" },
     { no: 3, name: "PRODUCT_TYPE_NETWORK" },
-    { no: 5, name: "PRODUCT_TYPE_KUBERNTES" },
+    { no: 5, name: "PRODUCT_TYPE_KUBERNETES" },
 ]);
 /**
  * @generated from message api.v1.PaymentCustomer
