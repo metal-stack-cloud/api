@@ -2943,7 +2943,7 @@
               "description": ""
             },
             {
-              "name": "PRODUCT_TYPE_KUBERNTES",
+              "name": "PRODUCT_TYPE_KUBERNETES",
               "number": "5",
               "description": ""
             }

@@ -31,9 +31,9 @@ export enum ProductType {
   NETWORK = 3,
 
   /**
-   * @generated from enum value: PRODUCT_TYPE_KUBERNTES = 5;
+   * @generated from enum value: PRODUCT_TYPE_KUBERNETES = 5;
    */
-  KUBERNTES = 5,
+  KUBERNETES = 5,
 }
 // Retrieve enum metadata with: proto3.getEnumType(ProductType)
 proto3.util.setEnumType(ProductType, "api.v1.ProductType", [
@@ -41,7 +41,7 @@ proto3.util.setEnumType(ProductType, "api.v1.ProductType", [
   { no: 1, name: "PRODUCT_TYPE_STORAGE" },
   { no: 2, name: "PRODUCT_TYPE_COMPUTE" },
   { no: 3, name: "PRODUCT_TYPE_NETWORK" },
-  { no: 5, name: "PRODUCT_TYPE_KUBERNTES" },
+  { no: 5, name: "PRODUCT_TYPE_KUBERNETES" },
 ]);
 
 /**
