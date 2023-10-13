@@ -21,9 +21,9 @@ export declare enum ProductType {
      */
     NETWORK = 3,
     /**
-     * @generated from enum value: PRODUCT_TYPE_KUBERNTES = 5;
+     * @generated from enum value: PRODUCT_TYPE_KUBERNETES = 5;
      */
-    KUBERNTES = 5
+    KUBERNETES = 5
 }
 /**
  * @generated from message api.v1.PaymentCustomer
