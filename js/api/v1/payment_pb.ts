@@ -507,6 +507,16 @@ export class Coupon extends Message<Coupon> {
    */
   maxRedemptions = protoInt64.zero;
 
+  /**
+   * @generated from field: google.protobuf.Timestamp duration_start = 10;
+   */
+  durationStart?: Timestamp;
+
+  /**
+   * @generated from field: google.protobuf.Timestamp duration_end = 11;
+   */
+  durationEnd?: Timestamp;
+
   constructor(data?: PartialMessage<Coupon>) {
     super();
     proto3.util.initPartial(data, this);
@@ -524,6 +534,8 @@ export class Coupon extends Message<Coupon> {
     { no: 7, name: "redeem_by", kind: "message", T: Timestamp },
     { no: 8, name: "times_redeemed", kind: "scalar", T: 3 /* ScalarType.INT64 */ },
     { no: 9, name: "max_redemptions", kind: "scalar", T: 3 /* ScalarType.INT64 */ },
+    { no: 10, name: "duration_start", kind: "message", T: Timestamp },
+    { no: 11, name: "duration_end", kind: "message", T: Timestamp },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Coupon {

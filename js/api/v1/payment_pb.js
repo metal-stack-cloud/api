@@ -392,6 +392,8 @@ Coupon.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 7, name: "redeem_by", kind: "message", T: protobuf_1.Timestamp },
     { no: 8, name: "times_redeemed", kind: "scalar", T: 3 /* ScalarType.INT64 */ },
     { no: 9, name: "max_redemptions", kind: "scalar", T: 3 /* ScalarType.INT64 */ },
+    { no: 10, name: "duration_start", kind: "message", T: protobuf_1.Timestamp },
+    { no: 11, name: "duration_end", kind: "message", T: protobuf_1.Timestamp },
 ]);
 /**
  * @generated from message api.v1.PaymentServiceCreateOrUpdateCustomerRequest

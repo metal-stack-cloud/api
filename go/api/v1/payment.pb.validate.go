@@ -1052,6 +1052,64 @@ func (m *Coupon) validate(all bool) error {
 
 	// no validation rules for MaxRedemptions
 
+	if all {
+		switch v := interface{}(m.GetDurationStart()).(type) {
+		case interface{ ValidateAll() error }:
+			if err := v.ValidateAll(); err != nil {
+				errors = append(errors, CouponValidationError{
+					field:  "DurationStart",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		case interface{ Validate() error }:
+			if err := v.Validate(); err != nil {
+				errors = append(errors, CouponValidationError{
+					field:  "DurationStart",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		}
+	} else if v, ok := interface{}(m.GetDurationStart()).(interface{ Validate() error }); ok {
+		if err := v.Validate(); err != nil {
+			return CouponValidationError{
+				field:  "DurationStart",
+				reason: "embedded message failed validation",
+				cause:  err,
+			}
+		}
+	}
+
+	if all {
+		switch v := interface{}(m.GetDurationEnd()).(type) {
+		case interface{ ValidateAll() error }:
+			if err := v.ValidateAll(); err != nil {
+				errors = append(errors, CouponValidationError{
+					field:  "DurationEnd",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		case interface{ Validate() error }:
+			if err := v.Validate(); err != nil {
+				errors = append(errors, CouponValidationError{
+					field:  "DurationEnd",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		}
+	} else if v, ok := interface{}(m.GetDurationEnd()).(interface{ Validate() error }); ok {
+		if err := v.Validate(); err != nil {
+			return CouponValidationError{
+				field:  "DurationEnd",
+				reason: "embedded message failed validation",
+				cause:  err,
+			}
+		}
+	}
+
 	if len(errors) > 0 {
 		return CouponMultiError(errors)
 	}

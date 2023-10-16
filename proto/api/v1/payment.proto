@@ -138,6 +138,8 @@ message Coupon {
   google.protobuf.Timestamp redeem_by = 7;
   int64 times_redeemed = 8;
   int64 max_redemptions = 9;
+  google.protobuf.Timestamp duration_start = 10;
+  google.protobuf.Timestamp duration_end = 11;
 }
 
 message PaymentServiceCreateOrUpdateCustomerRequest {
