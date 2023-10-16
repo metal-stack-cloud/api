@@ -296,13 +296,9 @@ export declare class Coupon extends Message<Coupon> {
      */
     maxRedemptions: bigint;
     /**
-     * @generated from field: google.protobuf.Timestamp duration_start = 10;
+     * @generated from field: int64 amount_left = 10;
      */
-    durationStart?: Timestamp;
-    /**
-     * @generated from field: google.protobuf.Timestamp duration_end = 11;
-     */
-    durationEnd?: Timestamp;
+    amountLeft: bigint;
     constructor(data?: PartialMessage<Coupon>);
     static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.Coupon";
