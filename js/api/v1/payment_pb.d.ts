@@ -295,6 +295,10 @@ export declare class Coupon extends Message<Coupon> {
      * @generated from field: int64 max_redemptions = 9;
      */
     maxRedemptions: bigint;
+    /**
+     * @generated from field: int64 amount_left = 10;
+     */
+    amountLeft: bigint;
     constructor(data?: PartialMessage<Coupon>);
     static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.Coupon";

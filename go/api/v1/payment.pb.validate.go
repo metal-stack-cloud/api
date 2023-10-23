@@ -1052,6 +1052,8 @@ func (m *Coupon) validate(all bool) error {
 
 	// no validation rules for MaxRedemptions
 
+	// no validation rules for AmountLeft
+
 	if len(errors) > 0 {
 		return CouponMultiError(errors)
 	}
