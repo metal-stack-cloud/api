@@ -77,6 +77,22 @@ func (_m *Adminv1) Tenant() adminv1connect.TenantServiceClient {
 	return r0
 }
 
+// Token provides a mock function with given fields:
+func (_m *Adminv1) Token() adminv1connect.TokenServiceClient {
+	ret := _m.Called()
+
+	var r0 adminv1connect.TokenServiceClient
+	if rf, ok := ret.Get(0).(func() adminv1connect.TokenServiceClient); ok {
+		r0 = rf()
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(adminv1connect.TokenServiceClient)
+		}
+	}
+
+	return r0
+}
+
 // NewAdminv1 creates a new instance of Adminv1. It also registers a testing interface on the mock and a cleanup function to assert the mocks expectations.
 // The first argument is typically a *testing.T value.
 func NewAdminv1(t interface {

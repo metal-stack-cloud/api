@@ -23,6 +23,7 @@ type (
 		Payment() adminv1connect.PaymentServiceClient
 		Storage() adminv1connect.StorageServiceClient
 		Tenant() adminv1connect.TenantServiceClient
+		Token() adminv1connect.TokenServiceClient
 	}
 
 	adminv1 struct {
@@ -30,6 +31,7 @@ type (
 		paymentservice adminv1connect.PaymentServiceClient
 		storageservice adminv1connect.StorageServiceClient
 		tenantservice  adminv1connect.TenantServiceClient
+		tokenservice   adminv1connect.TokenServiceClient
 	}
 
 	Apiv1 interface {
@@ -97,6 +99,11 @@ func (c client) Adminv1() Adminv1 {
 			c.config.BaseURL,
 			compress.WithAll(compress.LevelBalanced),
 		),
+		tokenservice: adminv1connect.NewTokenServiceClient(
+			c.config.HttpClient(),
+			c.config.BaseURL,
+			compress.WithAll(compress.LevelBalanced),
+		),
 	}
 	return a
 }
@@ -112,6 +119,9 @@ func (c *adminv1) Storage() adminv1connect.StorageServiceClient {
 }
 func (c *adminv1) Tenant() adminv1connect.TenantServiceClient {
 	return c.tenantservice
+}
+func (c *adminv1) Token() adminv1connect.TokenServiceClient {
+	return c.tokenservice
 }
 
 func (c client) Apiv1() Apiv1 {

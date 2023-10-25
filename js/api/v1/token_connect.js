@@ -22,5 +22,23 @@ exports.TokenService = {
             O: token_pb_js_1.TokenServiceCreateResponse,
             kind: protobuf_1.MethodKind.Unary,
         },
+        /**
+         * @generated from rpc api.v1.TokenService.List
+         */
+        list: {
+            name: "List",
+            I: token_pb_js_1.TokenServiceListRequest,
+            O: token_pb_js_1.TokenServiceListResponse,
+            kind: protobuf_1.MethodKind.Unary,
+        },
+        /**
+         * @generated from rpc api.v1.TokenService.Revoke
+         */
+        revoke: {
+            name: "Revoke",
+            I: token_pb_js_1.TokenServiceRevokeRequest,
+            O: token_pb_js_1.TokenServiceRevokeResponse,
+            kind: protobuf_1.MethodKind.Unary,
+        },
     }
 };

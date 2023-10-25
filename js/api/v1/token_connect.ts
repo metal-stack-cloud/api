@@ -3,7 +3,7 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import { TokenServiceCreateRequest, TokenServiceCreateResponse } from "./token_pb.js";
+import { TokenServiceCreateRequest, TokenServiceCreateResponse, TokenServiceListRequest, TokenServiceListResponse, TokenServiceRevokeRequest, TokenServiceRevokeResponse } from "./token_pb.js";
 import { MethodKind } from "@bufbuild/protobuf";
 
 /**
@@ -19,6 +19,24 @@ export const TokenService = {
       name: "Create",
       I: TokenServiceCreateRequest,
       O: TokenServiceCreateResponse,
+      kind: MethodKind.Unary,
+    },
+    /**
+     * @generated from rpc api.v1.TokenService.List
+     */
+    list: {
+      name: "List",
+      I: TokenServiceListRequest,
+      O: TokenServiceListResponse,
+      kind: MethodKind.Unary,
+    },
+    /**
+     * @generated from rpc api.v1.TokenService.Revoke
+     */
+    revoke: {
+      name: "Revoke",
+      I: TokenServiceRevokeRequest,
+      O: TokenServiceRevokeResponse,
       kind: MethodKind.Unary,
     },
   }

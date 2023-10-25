@@ -4,15 +4,52 @@ package api.v1;
 
 import "api/v1/common.proto";
 import "google/protobuf/duration.proto";
+import "google/protobuf/timestamp.proto";
+import "validate/validate.proto";
 
 service TokenService {
   rpc Create(TokenServiceCreateRequest) returns (TokenServiceCreateResponse) {
-    // TODO keep this service private until a real token service is implemented
-    option (visibility) = VISIBILITY_PRIVATE;
+    // TODO review if we need a more specific visibility check for issuer for example
+    option (visibility) = VISIBILITY_PUBLIC;
+  }
+  rpc List(TokenServiceListRequest) returns (TokenServiceListResponse) {
+    // TODO review if we need a more specific visibility check for issuer for example
+    option (visibility) = VISIBILITY_PUBLIC;
+  }
+  rpc Revoke(TokenServiceRevokeRequest) returns (TokenServiceRevokeResponse) {
+    // TODO review if we need a more specific visibility check for issuer for example
+    option (visibility) = VISIBILITY_PUBLIC;
   }
 }
 
 // Tokens
+
+message Token {
+  // uuid of the jwt token
+  string uuid = 1 [(validate.rules).string.uuid = true];
+  // user_id who created this token
+  string user_id = 2 [(validate.rules).string = {
+    min_len: 2,
+    max_len: 512,
+  }];
+  // description is a user given description of this token.
+  string description = 3 [(validate.rules).string = {
+    min_len: 2,
+    max_len: 256,
+  }];
+  repeated ProjectPermission permissions = 4;
+  repeated TokenRole roles = 5;
+  google.protobuf.Timestamp expires = 6;
+  google.protobuf.Timestamp issued_at = 7;
+  TokenType token_type = 8;
+}
+
+enum TokenType {
+  TOKEN_TYPE_UNSPECIFIED = 0;
+  TOKEN_TYPE_API = 1;
+  TOKEN_TYPE_CONSOLE = 2;
+}
+
 message TokenServiceCreateRequest {
   string subject = 1;
   repeated ProjectPermission permissions = 2;
@@ -31,5 +68,16 @@ message TokenRole {
 }
 
 message TokenServiceCreateResponse {
-  string token = 1;
+  Token token = 1;
+  string secret = 2;
 }
+
+message TokenServiceListRequest {}
+message TokenServiceListResponse {
+  repeated Token tokens = 1;
+}
+
+message TokenServiceRevokeRequest {
+  string uuid = 1;
+}
+message TokenServiceRevokeResponse {}

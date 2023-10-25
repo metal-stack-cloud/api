@@ -12,6 +12,6 @@ func TestGet(t *testing.T) {
 	require.NoError(t, err)
 	require.NotNil(t, perms)
 	require.Contains(t, perms.Methods, "/api.v1.AssetService/List")
-	require.Contains(t, perms.Visibility.Private, "/api.v1.TokenService/Create")
+	require.Contains(t, perms.Visibility.Public, "/api.v1.TokenService/Create")
 
 }

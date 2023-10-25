@@ -36,6 +36,7 @@ type (
 		paymentservice *adminv1mocks.PaymentServiceClient
 		storageservice *adminv1mocks.StorageServiceClient
 		tenantservice  *adminv1mocks.TenantServiceClient
+		tokenservice   *adminv1mocks.TokenServiceClient
 	}
 
 	Adminv1MockFns struct {
@@ -43,6 +44,7 @@ type (
 		Payment func(m *mock.Mock)
 		Storage func(m *mock.Mock)
 		Tenant  func(m *mock.Mock)
+		Token   func(m *mock.Mock)
 	}
 	apiv1 struct {
 		assetservice    *apiv1mocks.AssetServiceClient
@@ -112,6 +114,7 @@ func newadminv1(t *testing.T, fns *Adminv1MockFns) *adminv1 {
 		paymentservice: adminv1mocks.NewPaymentServiceClient(t),
 		storageservice: adminv1mocks.NewStorageServiceClient(t),
 		tenantservice:  adminv1mocks.NewTenantServiceClient(t),
+		tokenservice:   adminv1mocks.NewTokenServiceClient(t),
 	}
 
 	if fns != nil {
@@ -126,6 +129,9 @@ func newadminv1(t *testing.T, fns *Adminv1MockFns) *adminv1 {
 		}
 		if fns.Tenant != nil {
 			fns.Tenant(&a.tenantservice.Mock)
+		}
+		if fns.Token != nil {
+			fns.Token(&a.tokenservice.Mock)
 		}
 
 	}
@@ -144,6 +150,9 @@ func (c *adminv1) Storage() adminv1connect.StorageServiceClient {
 }
 func (c *adminv1) Tenant() adminv1connect.TenantServiceClient {
 	return c.tenantservice
+}
+func (c *adminv1) Token() adminv1connect.TokenServiceClient {
+	return c.tokenservice
 }
 
 func (w wrapper) Apiv1(fns *Apiv1MockFns) *apiv1 {
