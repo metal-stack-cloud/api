@@ -9,16 +9,13 @@ import "validate/validate.proto";
 
 service TokenService {
   rpc Create(TokenServiceCreateRequest) returns (TokenServiceCreateResponse) {
-    // TODO review if we need a more specific visibility check for issuer for example
-    option (visibility) = VISIBILITY_PUBLIC;
+    option (visibility) = VISIBILITY_SELF;
   }
   rpc List(TokenServiceListRequest) returns (TokenServiceListResponse) {
-    // TODO review if we need a more specific visibility check for issuer for example
-    option (visibility) = VISIBILITY_PUBLIC;
+    option (visibility) = VISIBILITY_SELF;
   }
   rpc Revoke(TokenServiceRevokeRequest) returns (TokenServiceRevokeResponse) {
-    // TODO review if we need a more specific visibility check for issuer for example
-    option (visibility) = VISIBILITY_PUBLIC;
+    option (visibility) = VISIBILITY_SELF;
   }
 }
 

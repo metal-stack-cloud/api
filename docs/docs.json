@@ -584,6 +584,11 @@
               "name": "VISIBILITY_PRIVATE",
               "number": "2",
               "description": "VISIBILITY_PRIVATE makes this service blocked"
+            },
+            {
+              "name": "VISIBILITY_SELF",
+              "number": "3",
+              "description": "VISIBILITY_SELF enable call this endpoint from the authenticated user only"
             }
           ]
         }

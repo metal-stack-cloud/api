@@ -182,12 +182,20 @@ export enum Visibility {
    * @generated from enum value: VISIBILITY_PRIVATE = 2;
    */
   PRIVATE = 2,
+
+  /**
+   * VISIBILITY_SELF enable call this endpoint from the authenticated user only
+   *
+   * @generated from enum value: VISIBILITY_SELF = 3;
+   */
+  SELF = 3,
 }
 // Retrieve enum metadata with: proto3.getEnumType(Visibility)
 proto3.util.setEnumType(Visibility, "api.v1.Visibility", [
   { no: 0, name: "VISIBILITY_UNSPECIFIED" },
   { no: 1, name: "VISIBILITY_PUBLIC" },
   { no: 2, name: "VISIBILITY_PRIVATE" },
+  { no: 3, name: "VISIBILITY_SELF" },
 ]);
 
 /**

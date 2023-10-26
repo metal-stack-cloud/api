@@ -48,6 +48,7 @@ type Roles struct {
 type Visibility struct {
 	Public  map[string]bool `json:"public,omitempty"`
 	Private map[string]bool `json:"private,omitempty"`
+	Self    map[string]bool `json:"self,omitempty"`
 }
 type Chargeable map[string]bool
 type Auditable map[string]bool

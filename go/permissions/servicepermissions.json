@@ -182,9 +182,6 @@
       "/api.v1.AssetService/List": true,
       "/api.v1.HealthService/Get": true,
       "/api.v1.PaymentService/GetDefaultPrices": true,
-      "/api.v1.TokenService/Create": true,
-      "/api.v1.TokenService/List": true,
-      "/api.v1.TokenService/Revoke": true,
       "/api.v1.VersionService/Get": true,
       "/grpc.reflection.v1alpha.ServerReflection/ServerReflectionInfo": true,
       "/status.v1.MessageService/List": true,
@@ -192,6 +189,11 @@
     },
     "private": {
       "/api.v1.TenantService/CreateOrUpdate": true
+    },
+    "self": {
+      "/api.v1.TokenService/Create": true,
+      "/api.v1.TokenService/List": true,
+      "/api.v1.TokenService/Revoke": true
     }
   },
   "chargeable": {
