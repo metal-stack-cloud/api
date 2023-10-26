@@ -6,3 +6,5 @@ const (
 	EDITOR = "editor"
 	VIEWER = "viewer"
 )
+
+var RolesDescending = []string{ADMIN, OWNER, EDITOR, VIEWER}
