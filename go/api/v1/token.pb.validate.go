@@ -633,9 +633,27 @@ func (m *TokenRole) validate(all bool) error {
 
 	var errors []error
 
-	// no validation rules for Subject
+	if l := utf8.RuneCountInString(m.GetSubject()); l < 2 || l > 256 {
+		err := TokenRoleValidationError{
+			field:  "Subject",
+			reason: "value length must be between 2 and 256 runes, inclusive",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
 
-	// no validation rules for Role
+	if _, ok := _TokenRole_Role_InLookup[m.GetRole()]; !ok {
+		err := TokenRoleValidationError{
+			field:  "Role",
+			reason: "value must be in list [admin owner editor viewer]",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
 
 	if len(errors) > 0 {
 		return TokenRoleMultiError(errors)
@@ -713,6 +731,13 @@ var _ interface {
 	Cause() error
 	ErrorName() string
 } = TokenRoleValidationError{}
+
+var _TokenRole_Role_InLookup = map[string]struct{}{
+	"admin":  {},
+	"owner":  {},
+	"editor": {},
+	"viewer": {},
+}
 
 // Validate checks the field values on TokenServiceCreateResponse with the
 // rules defined in the proto definition for this message. If any rules are

@@ -8110,7 +8110,7 @@
           "fields": [
             {
               "name": "subject",
-              "description": "",
+              "description": "subject specifies the project or organization this role applies to",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -8118,11 +8118,23 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": ""
+              "defaultValue": "",
+              "options": {
+                "validate.rules": [
+                  {
+                    "name": "string.min_len",
+                    "value": 2
+                  },
+                  {
+                    "name": "string.max_len",
+                    "value": 256
+                  }
+                ]
+              }
             },
             {
               "name": "role",
-              "description": "",
+              "description": "role defines the string representation of a tenantrole, projectrole or a global adminrole",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -8130,7 +8142,20 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": ""
+              "defaultValue": "",
+              "options": {
+                "validate.rules": [
+                  {
+                    "name": "string.in",
+                    "value": [
+                      "admin",
+                      "owner",
+                      "editor",
+                      "viewer"
+                    ]
+                  }
+                ]
+              }
             }
           ]
         },

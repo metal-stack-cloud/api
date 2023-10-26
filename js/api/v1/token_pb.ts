@@ -220,11 +220,15 @@ export class ProjectPermission extends Message<ProjectPermission> {
  */
 export class TokenRole extends Message<TokenRole> {
   /**
+   * subject specifies the project or organization this role applies to
+   *
    * @generated from field: string subject = 1;
    */
   subject = "";
 
   /**
+   * role defines the string representation of a tenantrole, projectrole or a global adminrole
+   *
    * @generated from field: string role = 2;
    */
   role = "";
