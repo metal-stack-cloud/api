@@ -29,22 +29,6 @@ func (_m *Adminv1) Cluster() adminv1connect.ClusterServiceClient {
 	return r0
 }
 
-// Method provides a mock function with given fields:
-func (_m *Adminv1) Method() adminv1connect.MethodServiceClient {
-	ret := _m.Called()
-
-	var r0 adminv1connect.MethodServiceClient
-	if rf, ok := ret.Get(0).(func() adminv1connect.MethodServiceClient); ok {
-		r0 = rf()
-	} else {
-		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(adminv1connect.MethodServiceClient)
-		}
-	}
-
-	return r0
-}
-
 // Payment provides a mock function with given fields:
 func (_m *Adminv1) Payment() adminv1connect.PaymentServiceClient {
 	ret := _m.Called()

@@ -20,7 +20,6 @@ type (
 	}
 	Adminv1 interface {
 		Cluster() adminv1connect.ClusterServiceClient
-		Method() adminv1connect.MethodServiceClient
 		Payment() adminv1connect.PaymentServiceClient
 		Storage() adminv1connect.StorageServiceClient
 		Tenant() adminv1connect.TenantServiceClient
@@ -29,7 +28,6 @@ type (
 
 	adminv1 struct {
 		clusterservice adminv1connect.ClusterServiceClient
-		methodservice  adminv1connect.MethodServiceClient
 		paymentservice adminv1connect.PaymentServiceClient
 		storageservice adminv1connect.StorageServiceClient
 		tenantservice  adminv1connect.TenantServiceClient
@@ -88,11 +86,6 @@ func (c client) Adminv1() Adminv1 {
 			c.config.BaseURL,
 			compress.WithAll(compress.LevelBalanced),
 		),
-		methodservice: adminv1connect.NewMethodServiceClient(
-			c.config.HttpClient(),
-			c.config.BaseURL,
-			compress.WithAll(compress.LevelBalanced),
-		),
 		paymentservice: adminv1connect.NewPaymentServiceClient(
 			c.config.HttpClient(),
 			c.config.BaseURL,
@@ -119,9 +112,6 @@ func (c client) Adminv1() Adminv1 {
 
 func (c *adminv1) Cluster() adminv1connect.ClusterServiceClient {
 	return c.clusterservice
-}
-func (c *adminv1) Method() adminv1connect.MethodServiceClient {
-	return c.methodservice
 }
 func (c *adminv1) Payment() adminv1connect.PaymentServiceClient {
 	return c.paymentservice

@@ -33,7 +33,6 @@ type (
 	}
 	adminv1 struct {
 		clusterservice *adminv1mocks.ClusterServiceClient
-		methodservice  *adminv1mocks.MethodServiceClient
 		paymentservice *adminv1mocks.PaymentServiceClient
 		storageservice *adminv1mocks.StorageServiceClient
 		tenantservice  *adminv1mocks.TenantServiceClient
@@ -42,7 +41,6 @@ type (
 
 	Adminv1MockFns struct {
 		Cluster func(m *mock.Mock)
-		Method  func(m *mock.Mock)
 		Payment func(m *mock.Mock)
 		Storage func(m *mock.Mock)
 		Tenant  func(m *mock.Mock)
@@ -115,7 +113,6 @@ func (w wrapper) Adminv1(fns *Adminv1MockFns) *adminv1 {
 func newadminv1(t *testing.T, fns *Adminv1MockFns) *adminv1 {
 	a := &adminv1{
 		clusterservice: adminv1mocks.NewClusterServiceClient(t),
-		methodservice:  adminv1mocks.NewMethodServiceClient(t),
 		paymentservice: adminv1mocks.NewPaymentServiceClient(t),
 		storageservice: adminv1mocks.NewStorageServiceClient(t),
 		tenantservice:  adminv1mocks.NewTenantServiceClient(t),
@@ -125,9 +122,6 @@ func newadminv1(t *testing.T, fns *Adminv1MockFns) *adminv1 {
 	if fns != nil {
 		if fns.Cluster != nil {
 			fns.Cluster(&a.clusterservice.Mock)
-		}
-		if fns.Method != nil {
-			fns.Method(&a.methodservice.Mock)
 		}
 		if fns.Payment != nil {
 			fns.Payment(&a.paymentservice.Mock)
@@ -149,9 +143,6 @@ func newadminv1(t *testing.T, fns *Adminv1MockFns) *adminv1 {
 
 func (c *adminv1) Cluster() adminv1connect.ClusterServiceClient {
 	return c.clusterservice
-}
-func (c *adminv1) Method() adminv1connect.MethodServiceClient {
-	return c.methodservice
 }
 func (c *adminv1) Payment() adminv1connect.PaymentServiceClient {
 	return c.paymentservice
