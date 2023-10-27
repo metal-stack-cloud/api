@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package api.v1;
+
+import "api/v1/common.proto";
+
+service MethodService {
+  rpc List(MethodServiceListRequest) returns (MethodServiceListResponse) {
+    option (visibility) = VISIBILITY_PUBLIC;
+  }
+}
+
+message MethodServiceListRequest {}
+
+message MethodServiceListResponse {
+  repeated string methods = 1;
+}

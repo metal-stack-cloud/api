@@ -77,6 +77,22 @@ func (_m *Apiv1) IP() apiv1connect.IPServiceClient {
 	return r0
 }
 
+// Method provides a mock function with given fields:
+func (_m *Apiv1) Method() apiv1connect.MethodServiceClient {
+	ret := _m.Called()
+
+	var r0 apiv1connect.MethodServiceClient
+	if rf, ok := ret.Get(0).(func() apiv1connect.MethodServiceClient); ok {
+		r0 = rf()
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(apiv1connect.MethodServiceClient)
+		}
+	}
+
+	return r0
+}
+
 // Payment provides a mock function with given fields:
 func (_m *Apiv1) Payment() apiv1connect.PaymentServiceClient {
 	ret := _m.Called()

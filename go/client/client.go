@@ -20,6 +20,7 @@ type (
 	}
 	Adminv1 interface {
 		Cluster() adminv1connect.ClusterServiceClient
+		Method() adminv1connect.MethodServiceClient
 		Payment() adminv1connect.PaymentServiceClient
 		Storage() adminv1connect.StorageServiceClient
 		Tenant() adminv1connect.TenantServiceClient
@@ -28,6 +29,7 @@ type (
 
 	adminv1 struct {
 		clusterservice adminv1connect.ClusterServiceClient
+		methodservice  adminv1connect.MethodServiceClient
 		paymentservice adminv1connect.PaymentServiceClient
 		storageservice adminv1connect.StorageServiceClient
 		tenantservice  adminv1connect.TenantServiceClient
@@ -39,6 +41,7 @@ type (
 		Cluster() apiv1connect.ClusterServiceClient
 		Health() apiv1connect.HealthServiceClient
 		IP() apiv1connect.IPServiceClient
+		Method() apiv1connect.MethodServiceClient
 		Payment() apiv1connect.PaymentServiceClient
 		Tenant() apiv1connect.TenantServiceClient
 		Token() apiv1connect.TokenServiceClient
@@ -52,6 +55,7 @@ type (
 		clusterservice  apiv1connect.ClusterServiceClient
 		healthservice   apiv1connect.HealthServiceClient
 		ipservice       apiv1connect.IPServiceClient
+		methodservice   apiv1connect.MethodServiceClient
 		paymentservice  apiv1connect.PaymentServiceClient
 		tenantservice   apiv1connect.TenantServiceClient
 		tokenservice    apiv1connect.TokenServiceClient
@@ -84,6 +88,11 @@ func (c client) Adminv1() Adminv1 {
 			c.config.BaseURL,
 			compress.WithAll(compress.LevelBalanced),
 		),
+		methodservice: adminv1connect.NewMethodServiceClient(
+			c.config.HttpClient(),
+			c.config.BaseURL,
+			compress.WithAll(compress.LevelBalanced),
+		),
 		paymentservice: adminv1connect.NewPaymentServiceClient(
 			c.config.HttpClient(),
 			c.config.BaseURL,
@@ -110,6 +119,9 @@ func (c client) Adminv1() Adminv1 {
 
 func (c *adminv1) Cluster() adminv1connect.ClusterServiceClient {
 	return c.clusterservice
+}
+func (c *adminv1) Method() adminv1connect.MethodServiceClient {
+	return c.methodservice
 }
 func (c *adminv1) Payment() adminv1connect.PaymentServiceClient {
 	return c.paymentservice
@@ -142,6 +154,11 @@ func (c client) Apiv1() Apiv1 {
 			compress.WithAll(compress.LevelBalanced),
 		),
 		ipservice: apiv1connect.NewIPServiceClient(
+			c.config.HttpClient(),
+			c.config.BaseURL,
+			compress.WithAll(compress.LevelBalanced),
+		),
+		methodservice: apiv1connect.NewMethodServiceClient(
 			c.config.HttpClient(),
 			c.config.BaseURL,
 			compress.WithAll(compress.LevelBalanced),
@@ -191,6 +208,9 @@ func (c *apiv1) Health() apiv1connect.HealthServiceClient {
 }
 func (c *apiv1) IP() apiv1connect.IPServiceClient {
 	return c.ipservice
+}
+func (c *apiv1) Method() apiv1connect.MethodServiceClient {
+	return c.methodservice
 }
 func (c *apiv1) Payment() apiv1connect.PaymentServiceClient {
 	return c.paymentservice

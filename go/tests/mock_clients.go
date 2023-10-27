@@ -33,6 +33,7 @@ type (
 	}
 	adminv1 struct {
 		clusterservice *adminv1mocks.ClusterServiceClient
+		methodservice  *adminv1mocks.MethodServiceClient
 		paymentservice *adminv1mocks.PaymentServiceClient
 		storageservice *adminv1mocks.StorageServiceClient
 		tenantservice  *adminv1mocks.TenantServiceClient
@@ -41,6 +42,7 @@ type (
 
 	Adminv1MockFns struct {
 		Cluster func(m *mock.Mock)
+		Method  func(m *mock.Mock)
 		Payment func(m *mock.Mock)
 		Storage func(m *mock.Mock)
 		Tenant  func(m *mock.Mock)
@@ -51,6 +53,7 @@ type (
 		clusterservice  *apiv1mocks.ClusterServiceClient
 		healthservice   *apiv1mocks.HealthServiceClient
 		ipservice       *apiv1mocks.IPServiceClient
+		methodservice   *apiv1mocks.MethodServiceClient
 		paymentservice  *apiv1mocks.PaymentServiceClient
 		tenantservice   *apiv1mocks.TenantServiceClient
 		tokenservice    *apiv1mocks.TokenServiceClient
@@ -64,6 +67,7 @@ type (
 		Cluster  func(m *mock.Mock)
 		Health   func(m *mock.Mock)
 		IP       func(m *mock.Mock)
+		Method   func(m *mock.Mock)
 		Payment  func(m *mock.Mock)
 		Tenant   func(m *mock.Mock)
 		Token    func(m *mock.Mock)
@@ -111,6 +115,7 @@ func (w wrapper) Adminv1(fns *Adminv1MockFns) *adminv1 {
 func newadminv1(t *testing.T, fns *Adminv1MockFns) *adminv1 {
 	a := &adminv1{
 		clusterservice: adminv1mocks.NewClusterServiceClient(t),
+		methodservice:  adminv1mocks.NewMethodServiceClient(t),
 		paymentservice: adminv1mocks.NewPaymentServiceClient(t),
 		storageservice: adminv1mocks.NewStorageServiceClient(t),
 		tenantservice:  adminv1mocks.NewTenantServiceClient(t),
@@ -120,6 +125,9 @@ func newadminv1(t *testing.T, fns *Adminv1MockFns) *adminv1 {
 	if fns != nil {
 		if fns.Cluster != nil {
 			fns.Cluster(&a.clusterservice.Mock)
+		}
+		if fns.Method != nil {
+			fns.Method(&a.methodservice.Mock)
 		}
 		if fns.Payment != nil {
 			fns.Payment(&a.paymentservice.Mock)
@@ -141,6 +149,9 @@ func newadminv1(t *testing.T, fns *Adminv1MockFns) *adminv1 {
 
 func (c *adminv1) Cluster() adminv1connect.ClusterServiceClient {
 	return c.clusterservice
+}
+func (c *adminv1) Method() adminv1connect.MethodServiceClient {
+	return c.methodservice
 }
 func (c *adminv1) Payment() adminv1connect.PaymentServiceClient {
 	return c.paymentservice
@@ -165,6 +176,7 @@ func newapiv1(t *testing.T, fns *Apiv1MockFns) *apiv1 {
 		clusterservice:  apiv1mocks.NewClusterServiceClient(t),
 		healthservice:   apiv1mocks.NewHealthServiceClient(t),
 		ipservice:       apiv1mocks.NewIPServiceClient(t),
+		methodservice:   apiv1mocks.NewMethodServiceClient(t),
 		paymentservice:  apiv1mocks.NewPaymentServiceClient(t),
 		tenantservice:   apiv1mocks.NewTenantServiceClient(t),
 		tokenservice:    apiv1mocks.NewTokenServiceClient(t),
@@ -185,6 +197,9 @@ func newapiv1(t *testing.T, fns *Apiv1MockFns) *apiv1 {
 		}
 		if fns.IP != nil {
 			fns.IP(&a.ipservice.Mock)
+		}
+		if fns.Method != nil {
+			fns.Method(&a.methodservice.Mock)
 		}
 		if fns.Payment != nil {
 			fns.Payment(&a.paymentservice.Mock)
@@ -221,6 +236,9 @@ func (c *apiv1) Health() apiv1connect.HealthServiceClient {
 }
 func (c *apiv1) IP() apiv1connect.IPServiceClient {
 	return c.ipservice
+}
+func (c *apiv1) Method() apiv1connect.MethodServiceClient {
+	return c.methodservice
 }
 func (c *apiv1) Payment() apiv1connect.PaymentServiceClient {
 	return c.paymentservice
