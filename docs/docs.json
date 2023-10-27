@@ -8128,7 +8128,7 @@
                 "validate.rules": [
                   {
                     "name": "string.min_len",
-                    "value": 2
+                    "value": 1
                   },
                   {
                     "name": "string.max_len",

@@ -642,10 +642,10 @@ func (m *TokenRole) validate(all bool) error {
 
 	var errors []error
 
-	if l := utf8.RuneCountInString(m.GetSubject()); l < 2 || l > 256 {
+	if l := utf8.RuneCountInString(m.GetSubject()); l < 1 || l > 256 {
 		err := TokenRoleValidationError{
 			field:  "Subject",
-			reason: "value length must be between 2 and 256 runes, inclusive",
+			reason: "value length must be between 1 and 256 runes, inclusive",
 		}
 		if !all {
 			return err

@@ -65,7 +65,7 @@ message ProjectPermission {
 message TokenRole {
   // subject specifies the project or organization this role applies to
   string subject = 1 [(validate.rules).string = {
-    min_len: 2,
+    min_len: 1, // when requesting admin permissions with *
     max_len: 256,
   }];
   // role defines the string representation of a tenantrole, projectrole or a global adminrole
