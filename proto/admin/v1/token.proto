@@ -4,6 +4,7 @@ package admin.v1;
 
 import "api/v1/common.proto";
 import "api/v1/token.proto";
+import "validate/validate.proto";
 
 service TokenService {
   rpc List(TokenServiceListRequest) returns (TokenServiceListResponse) {
@@ -22,6 +23,10 @@ message TokenServiceListResponse {
 }
 
 message TokenServiceRevokeRequest {
-  string uuid = 1;
+  string uuid = 1 [(validate.rules).string.uuid = true];
+  string user_id = 2 [(validate.rules).string = {
+    min_len: 2,
+    max_len: 512,
+  }];
 }
 message TokenServiceRevokeResponse {}

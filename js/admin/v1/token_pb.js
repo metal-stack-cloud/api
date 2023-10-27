@@ -73,6 +73,10 @@ class TokenServiceRevokeRequest extends protobuf_1.Message {
          * @generated from field: string uuid = 1;
          */
         this.uuid = "";
+        /**
+         * @generated from field: string user_id = 2;
+         */
+        this.userId = "";
         protobuf_1.proto3.util.initPartial(data, this);
     }
     static fromBinary(bytes, options) {
@@ -93,6 +97,7 @@ TokenServiceRevokeRequest.runtime = protobuf_1.proto3;
 TokenServiceRevokeRequest.typeName = "admin.v1.TokenServiceRevokeRequest";
 TokenServiceRevokeRequest.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 1, name: "uuid", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "user_id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
 ]);
 /**
  * @generated from message admin.v1.TokenServiceRevokeResponse

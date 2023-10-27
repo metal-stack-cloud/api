@@ -84,6 +84,11 @@ export class TokenServiceRevokeRequest extends Message<TokenServiceRevokeRequest
    */
   uuid = "";
 
+  /**
+   * @generated from field: string user_id = 2;
+   */
+  userId = "";
+
   constructor(data?: PartialMessage<TokenServiceRevokeRequest>) {
     super();
     proto3.util.initPartial(data, this);
@@ -93,6 +98,7 @@ export class TokenServiceRevokeRequest extends Message<TokenServiceRevokeRequest
   static readonly typeName = "admin.v1.TokenServiceRevokeRequest";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
     { no: 1, name: "uuid", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "user_id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): TokenServiceRevokeRequest {

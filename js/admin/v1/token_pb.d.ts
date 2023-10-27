@@ -39,6 +39,10 @@ export declare class TokenServiceRevokeRequest extends Message<TokenServiceRevok
      * @generated from field: string uuid = 1;
      */
     uuid: string;
+    /**
+     * @generated from field: string user_id = 2;
+     */
+    userId: string;
     constructor(data?: PartialMessage<TokenServiceRevokeRequest>);
     static readonly runtime: typeof proto3;
     static readonly typeName = "admin.v1.TokenServiceRevokeRequest";
