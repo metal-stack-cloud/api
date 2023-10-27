@@ -7950,7 +7950,7 @@
               "defaultValue": ""
             },
             {
-              "name": "endpoints",
+              "name": "methods",
               "description": "",
               "label": "repeated",
               "type": "string",

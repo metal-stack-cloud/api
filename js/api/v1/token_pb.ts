@@ -182,9 +182,9 @@ export class ProjectPermission extends Message<ProjectPermission> {
   project = "";
 
   /**
-   * @generated from field: repeated string endpoints = 2;
+   * @generated from field: repeated string methods = 2;
    */
-  endpoints: string[] = [];
+  methods: string[] = [];
 
   constructor(data?: PartialMessage<ProjectPermission>) {
     super();
@@ -195,7 +195,7 @@ export class ProjectPermission extends Message<ProjectPermission> {
   static readonly typeName = "api.v1.ProjectPermission";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
     { no: 1, name: "project", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 2, name: "endpoints", kind: "scalar", T: 9 /* ScalarType.STRING */, repeated: true },
+    { no: 2, name: "methods", kind: "scalar", T: 9 /* ScalarType.STRING */, repeated: true },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ProjectPermission {

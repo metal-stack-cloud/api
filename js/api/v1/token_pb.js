@@ -147,9 +147,9 @@ class ProjectPermission extends protobuf_1.Message {
          */
         this.project = "";
         /**
-         * @generated from field: repeated string endpoints = 2;
+         * @generated from field: repeated string methods = 2;
          */
-        this.endpoints = [];
+        this.methods = [];
         protobuf_1.proto3.util.initPartial(data, this);
     }
     static fromBinary(bytes, options) {
@@ -170,7 +170,7 @@ ProjectPermission.runtime = protobuf_1.proto3;
 ProjectPermission.typeName = "api.v1.ProjectPermission";
 ProjectPermission.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 1, name: "project", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 2, name: "endpoints", kind: "scalar", T: 9 /* ScalarType.STRING */, repeated: true },
+    { no: 2, name: "methods", kind: "scalar", T: 9 /* ScalarType.STRING */, repeated: true },
 ]);
 /**
  * @generated from message api.v1.TokenRole

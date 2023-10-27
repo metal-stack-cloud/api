@@ -106,9 +106,9 @@ export declare class ProjectPermission extends Message<ProjectPermission> {
      */
     project: string;
     /**
-     * @generated from field: repeated string endpoints = 2;
+     * @generated from field: repeated string methods = 2;
      */
-    endpoints: string[];
+    methods: string[];
     constructor(data?: PartialMessage<ProjectPermission>);
     static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.ProjectPermission";

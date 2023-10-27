@@ -59,7 +59,7 @@ message TokenServiceCreateRequest {
 
 message ProjectPermission {
   string project = 1;
-  repeated string endpoints = 2;
+  repeated string methods = 2;
 }
 
 message TokenRole {
