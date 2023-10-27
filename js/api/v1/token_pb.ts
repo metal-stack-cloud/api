@@ -122,9 +122,9 @@ export class Token extends Message<Token> {
  */
 export class TokenServiceCreateRequest extends Message<TokenServiceCreateRequest> {
   /**
-   * @generated from field: string subject = 1;
+   * @generated from field: string description = 1;
    */
-  subject = "";
+  description = "";
 
   /**
    * @generated from field: repeated api.v1.ProjectPermission permissions = 2;
@@ -149,7 +149,7 @@ export class TokenServiceCreateRequest extends Message<TokenServiceCreateRequest
   static readonly runtime: typeof proto3 = proto3;
   static readonly typeName = "api.v1.TokenServiceCreateRequest";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "subject", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 1, name: "description", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 2, name: "permissions", kind: "message", T: ProjectPermission, repeated: true },
     { no: 3, name: "roles", kind: "message", T: TokenRole, repeated: true },
     { no: 4, name: "expires", kind: "message", T: Duration },
@@ -182,9 +182,9 @@ export class ProjectPermission extends Message<ProjectPermission> {
   project = "";
 
   /**
-   * @generated from field: repeated string permissions = 2;
+   * @generated from field: repeated string endpoints = 2;
    */
-  permissions: string[] = [];
+  endpoints: string[] = [];
 
   constructor(data?: PartialMessage<ProjectPermission>) {
     super();
@@ -195,7 +195,7 @@ export class ProjectPermission extends Message<ProjectPermission> {
   static readonly typeName = "api.v1.ProjectPermission";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
     { no: 1, name: "project", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 2, name: "permissions", kind: "scalar", T: 9 /* ScalarType.STRING */, repeated: true },
+    { no: 2, name: "endpoints", kind: "scalar", T: 9 /* ScalarType.STRING */, repeated: true },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ProjectPermission {

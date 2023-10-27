@@ -73,9 +73,9 @@ export declare class Token extends Message<Token> {
  */
 export declare class TokenServiceCreateRequest extends Message<TokenServiceCreateRequest> {
     /**
-     * @generated from field: string subject = 1;
+     * @generated from field: string description = 1;
      */
-    subject: string;
+    description: string;
     /**
      * @generated from field: repeated api.v1.ProjectPermission permissions = 2;
      */
@@ -106,9 +106,9 @@ export declare class ProjectPermission extends Message<ProjectPermission> {
      */
     project: string;
     /**
-     * @generated from field: repeated string permissions = 2;
+     * @generated from field: repeated string endpoints = 2;
      */
-    permissions: string[];
+    endpoints: string[];
     constructor(data?: PartialMessage<ProjectPermission>);
     static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.ProjectPermission";

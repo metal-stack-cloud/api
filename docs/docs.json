@@ -7950,7 +7950,7 @@
               "defaultValue": ""
             },
             {
-              "name": "permissions",
+              "name": "endpoints",
               "description": "",
               "label": "repeated",
               "type": "string",
@@ -8175,7 +8175,7 @@
           "extensions": [],
           "fields": [
             {
-              "name": "subject",
+              "name": "description",
               "description": "",
               "label": "",
               "type": "string",
@@ -8184,7 +8184,19 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": ""
+              "defaultValue": "",
+              "options": {
+                "validate.rules": [
+                  {
+                    "name": "string.min_len",
+                    "value": 2
+                  },
+                  {
+                    "name": "string.max_len",
+                    "value": 256
+                  }
+                ]
+              }
             },
             {
               "name": "permissions",

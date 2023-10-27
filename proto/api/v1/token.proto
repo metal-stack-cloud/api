@@ -48,7 +48,10 @@ enum TokenType {
 }
 
 message TokenServiceCreateRequest {
-  string subject = 1;
+  string description = 1 [(validate.rules).string = {
+    min_len: 2,
+    max_len: 256,
+  }];
   repeated ProjectPermission permissions = 2;
   repeated TokenRole roles = 3;
   google.protobuf.Duration expires = 4;
@@ -56,7 +59,7 @@ message TokenServiceCreateRequest {
 
 message ProjectPermission {
   string project = 1;
-  repeated string permissions = 2;
+  repeated string endpoints = 2;
 }
 
 message TokenRole {

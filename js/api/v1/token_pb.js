@@ -101,9 +101,9 @@ class TokenServiceCreateRequest extends protobuf_1.Message {
     constructor(data) {
         super();
         /**
-         * @generated from field: string subject = 1;
+         * @generated from field: string description = 1;
          */
-        this.subject = "";
+        this.description = "";
         /**
          * @generated from field: repeated api.v1.ProjectPermission permissions = 2;
          */
@@ -131,7 +131,7 @@ exports.TokenServiceCreateRequest = TokenServiceCreateRequest;
 TokenServiceCreateRequest.runtime = protobuf_1.proto3;
 TokenServiceCreateRequest.typeName = "api.v1.TokenServiceCreateRequest";
 TokenServiceCreateRequest.fields = protobuf_1.proto3.util.newFieldList(() => [
-    { no: 1, name: "subject", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 1, name: "description", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 2, name: "permissions", kind: "message", T: ProjectPermission, repeated: true },
     { no: 3, name: "roles", kind: "message", T: TokenRole, repeated: true },
     { no: 4, name: "expires", kind: "message", T: protobuf_1.Duration },
@@ -147,9 +147,9 @@ class ProjectPermission extends protobuf_1.Message {
          */
         this.project = "";
         /**
-         * @generated from field: repeated string permissions = 2;
+         * @generated from field: repeated string endpoints = 2;
          */
-        this.permissions = [];
+        this.endpoints = [];
         protobuf_1.proto3.util.initPartial(data, this);
     }
     static fromBinary(bytes, options) {
@@ -170,7 +170,7 @@ ProjectPermission.runtime = protobuf_1.proto3;
 ProjectPermission.typeName = "api.v1.ProjectPermission";
 ProjectPermission.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 1, name: "project", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 2, name: "permissions", kind: "scalar", T: 9 /* ScalarType.STRING */, repeated: true },
+    { no: 2, name: "endpoints", kind: "scalar", T: 9 /* ScalarType.STRING */, repeated: true },
 ]);
 /**
  * @generated from message api.v1.TokenRole

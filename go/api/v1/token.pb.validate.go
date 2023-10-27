@@ -328,7 +328,16 @@ func (m *TokenServiceCreateRequest) validate(all bool) error {
 
 	var errors []error
 
-	// no validation rules for Subject
+	if l := utf8.RuneCountInString(m.GetDescription()); l < 2 || l > 256 {
+		err := TokenServiceCreateRequestValidationError{
+			field:  "Description",
+			reason: "value length must be between 2 and 256 runes, inclusive",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
 
 	for idx, item := range m.GetPermissions() {
 		_, _ = idx, item
