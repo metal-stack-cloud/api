@@ -10144,6 +10144,53 @@
               "defaultValue": ""
             }
           ]
+        },
+        {
+          "name": "MethodServiceTokenScopedListRequest",
+          "longName": "MethodServiceTokenScopedListRequest",
+          "fullName": "api.v1.MethodServiceTokenScopedListRequest",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": false,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": []
+        },
+        {
+          "name": "MethodServiceTokenScopedListResponse",
+          "longName": "MethodServiceTokenScopedListResponse",
+          "fullName": "api.v1.MethodServiceTokenScopedListResponse",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "permissions",
+              "description": "",
+              "label": "repeated",
+              "type": "ProjectPermission",
+              "longType": "ProjectPermission",
+              "fullType": "api.v1.ProjectPermission",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "roles",
+              "description": "",
+              "label": "repeated",
+              "type": "TokenRole",
+              "longType": "TokenRole",
+              "fullType": "api.v1.TokenRole",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
         }
       ],
       "services": [
@@ -10163,6 +10210,18 @@
               "responseType": "MethodServiceListResponse",
               "responseLongType": "MethodServiceListResponse",
               "responseFullType": "api.v1.MethodServiceListResponse",
+              "responseStreaming": false
+            },
+            {
+              "name": "TokenScopedList",
+              "description": "",
+              "requestType": "MethodServiceTokenScopedListRequest",
+              "requestLongType": "MethodServiceTokenScopedListRequest",
+              "requestFullType": "api.v1.MethodServiceTokenScopedListRequest",
+              "requestStreaming": false,
+              "responseType": "MethodServiceTokenScopedListResponse",
+              "responseLongType": "MethodServiceTokenScopedListResponse",
+              "responseFullType": "api.v1.MethodServiceTokenScopedListResponse",
               "responseStreaming": false
             }
           ]

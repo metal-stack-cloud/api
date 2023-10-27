@@ -35,11 +35,15 @@ const (
 const (
 	// MethodServiceListProcedure is the fully-qualified name of the MethodService's List RPC.
 	MethodServiceListProcedure = "/api.v1.MethodService/List"
+	// MethodServiceTokenScopedListProcedure is the fully-qualified name of the MethodService's
+	// TokenScopedList RPC.
+	MethodServiceTokenScopedListProcedure = "/api.v1.MethodService/TokenScopedList"
 )
 
 // MethodServiceClient is a client for the api.v1.MethodService service.
 type MethodServiceClient interface {
 	List(context.Context, *connect.Request[v1.MethodServiceListRequest]) (*connect.Response[v1.MethodServiceListResponse], error)
+	TokenScopedList(context.Context, *connect.Request[v1.MethodServiceTokenScopedListRequest]) (*connect.Response[v1.MethodServiceTokenScopedListResponse], error)
 }
 
 // NewMethodServiceClient constructs a client for the api.v1.MethodService service. By default, it
@@ -57,12 +61,18 @@ func NewMethodServiceClient(httpClient connect.HTTPClient, baseURL string, opts 
 			baseURL+MethodServiceListProcedure,
 			opts...,
 		),
+		tokenScopedList: connect.NewClient[v1.MethodServiceTokenScopedListRequest, v1.MethodServiceTokenScopedListResponse](
+			httpClient,
+			baseURL+MethodServiceTokenScopedListProcedure,
+			opts...,
+		),
 	}
 }
 
 // methodServiceClient implements MethodServiceClient.
 type methodServiceClient struct {
-	list *connect.Client[v1.MethodServiceListRequest, v1.MethodServiceListResponse]
+	list            *connect.Client[v1.MethodServiceListRequest, v1.MethodServiceListResponse]
+	tokenScopedList *connect.Client[v1.MethodServiceTokenScopedListRequest, v1.MethodServiceTokenScopedListResponse]
 }
 
 // List calls api.v1.MethodService.List.
@@ -70,9 +80,15 @@ func (c *methodServiceClient) List(ctx context.Context, req *connect.Request[v1.
 	return c.list.CallUnary(ctx, req)
 }
 
+// TokenScopedList calls api.v1.MethodService.TokenScopedList.
+func (c *methodServiceClient) TokenScopedList(ctx context.Context, req *connect.Request[v1.MethodServiceTokenScopedListRequest]) (*connect.Response[v1.MethodServiceTokenScopedListResponse], error) {
+	return c.tokenScopedList.CallUnary(ctx, req)
+}
+
 // MethodServiceHandler is an implementation of the api.v1.MethodService service.
 type MethodServiceHandler interface {
 	List(context.Context, *connect.Request[v1.MethodServiceListRequest]) (*connect.Response[v1.MethodServiceListResponse], error)
+	TokenScopedList(context.Context, *connect.Request[v1.MethodServiceTokenScopedListRequest]) (*connect.Response[v1.MethodServiceTokenScopedListResponse], error)
 }
 
 // NewMethodServiceHandler builds an HTTP handler from the service implementation. It returns the
@@ -86,10 +102,17 @@ func NewMethodServiceHandler(svc MethodServiceHandler, opts ...connect.HandlerOp
 		svc.List,
 		opts...,
 	)
+	methodServiceTokenScopedListHandler := connect.NewUnaryHandler(
+		MethodServiceTokenScopedListProcedure,
+		svc.TokenScopedList,
+		opts...,
+	)
 	return "/api.v1.MethodService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
 		case MethodServiceListProcedure:
 			methodServiceListHandler.ServeHTTP(w, r)
+		case MethodServiceTokenScopedListProcedure:
+			methodServiceTokenScopedListHandler.ServeHTTP(w, r)
 		default:
 			http.NotFound(w, r)
 		}
@@ -101,4 +124,8 @@ type UnimplementedMethodServiceHandler struct{}
 
 func (UnimplementedMethodServiceHandler) List(context.Context, *connect.Request[v1.MethodServiceListRequest]) (*connect.Response[v1.MethodServiceListResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("api.v1.MethodService.List is not implemented"))
+}
+
+func (UnimplementedMethodServiceHandler) TokenScopedList(context.Context, *connect.Request[v1.MethodServiceTokenScopedListRequest]) (*connect.Response[v1.MethodServiceTokenScopedListResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("api.v1.MethodService.TokenScopedList is not implemented"))
 }

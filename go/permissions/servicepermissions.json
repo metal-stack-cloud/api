@@ -148,6 +148,7 @@
     "/api.v1.IPService/List": true,
     "/api.v1.IPService/Update": true,
     "/api.v1.MethodService/List": true,
+    "/api.v1.MethodService/TokenScopedList": true,
     "/api.v1.PaymentService/CheckAdmitted": true,
     "/api.v1.PaymentService/CheckIfCustomerExists": true,
     "/api.v1.PaymentService/CreateOrUpdateCustomer": true,
@@ -193,6 +194,7 @@
       "/api.v1.TenantService/CreateOrUpdate": true
     },
     "self": {
+      "/api.v1.MethodService/TokenScopedList": true,
       "/api.v1.TokenService/Create": true,
       "/api.v1.TokenService/List": true,
       "/api.v1.TokenService/Revoke": true
@@ -238,6 +240,7 @@
     "/api.v1.IPService/List": false,
     "/api.v1.IPService/Update": true,
     "/api.v1.MethodService/List": true,
+    "/api.v1.MethodService/TokenScopedList": true,
     "/api.v1.PaymentService/CheckAdmitted": false,
     "/api.v1.PaymentService/CheckIfCustomerExists": false,
     "/api.v1.PaymentService/CreateOrUpdateCustomer": true,

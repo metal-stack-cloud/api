@@ -4,8 +4,9 @@
 /* eslint-disable */
 // @ts-nocheck
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.MethodServiceListResponse = exports.MethodServiceListRequest = void 0;
+exports.MethodServiceTokenScopedListResponse = exports.MethodServiceTokenScopedListRequest = exports.MethodServiceListResponse = exports.MethodServiceListRequest = void 0;
 const protobuf_1 = require("@bufbuild/protobuf");
+const token_pb_js_1 = require("./token_pb.js");
 /**
  * @generated from message api.v1.MethodServiceListRequest
  */
@@ -61,4 +62,65 @@ MethodServiceListResponse.runtime = protobuf_1.proto3;
 MethodServiceListResponse.typeName = "api.v1.MethodServiceListResponse";
 MethodServiceListResponse.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 1, name: "methods", kind: "scalar", T: 9 /* ScalarType.STRING */, repeated: true },
+]);
+/**
+ * @generated from message api.v1.MethodServiceTokenScopedListRequest
+ */
+class MethodServiceTokenScopedListRequest extends protobuf_1.Message {
+    constructor(data) {
+        super();
+        protobuf_1.proto3.util.initPartial(data, this);
+    }
+    static fromBinary(bytes, options) {
+        return new MethodServiceTokenScopedListRequest().fromBinary(bytes, options);
+    }
+    static fromJson(jsonValue, options) {
+        return new MethodServiceTokenScopedListRequest().fromJson(jsonValue, options);
+    }
+    static fromJsonString(jsonString, options) {
+        return new MethodServiceTokenScopedListRequest().fromJsonString(jsonString, options);
+    }
+    static equals(a, b) {
+        return protobuf_1.proto3.util.equals(MethodServiceTokenScopedListRequest, a, b);
+    }
+}
+exports.MethodServiceTokenScopedListRequest = MethodServiceTokenScopedListRequest;
+MethodServiceTokenScopedListRequest.runtime = protobuf_1.proto3;
+MethodServiceTokenScopedListRequest.typeName = "api.v1.MethodServiceTokenScopedListRequest";
+MethodServiceTokenScopedListRequest.fields = protobuf_1.proto3.util.newFieldList(() => []);
+/**
+ * @generated from message api.v1.MethodServiceTokenScopedListResponse
+ */
+class MethodServiceTokenScopedListResponse extends protobuf_1.Message {
+    constructor(data) {
+        super();
+        /**
+         * @generated from field: repeated api.v1.ProjectPermission permissions = 1;
+         */
+        this.permissions = [];
+        /**
+         * @generated from field: repeated api.v1.TokenRole roles = 2;
+         */
+        this.roles = [];
+        protobuf_1.proto3.util.initPartial(data, this);
+    }
+    static fromBinary(bytes, options) {
+        return new MethodServiceTokenScopedListResponse().fromBinary(bytes, options);
+    }
+    static fromJson(jsonValue, options) {
+        return new MethodServiceTokenScopedListResponse().fromJson(jsonValue, options);
+    }
+    static fromJsonString(jsonString, options) {
+        return new MethodServiceTokenScopedListResponse().fromJsonString(jsonString, options);
+    }
+    static equals(a, b) {
+        return protobuf_1.proto3.util.equals(MethodServiceTokenScopedListResponse, a, b);
+    }
+}
+exports.MethodServiceTokenScopedListResponse = MethodServiceTokenScopedListResponse;
+MethodServiceTokenScopedListResponse.runtime = protobuf_1.proto3;
+MethodServiceTokenScopedListResponse.typeName = "api.v1.MethodServiceTokenScopedListResponse";
+MethodServiceTokenScopedListResponse.fields = protobuf_1.proto3.util.newFieldList(() => [
+    { no: 1, name: "permissions", kind: "message", T: token_pb_js_1.ProjectPermission, repeated: true },
+    { no: 2, name: "roles", kind: "message", T: token_pb_js_1.TokenRole, repeated: true },
 ]);

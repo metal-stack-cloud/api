@@ -3,7 +3,7 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import { MethodServiceListRequest, MethodServiceListResponse } from "./methods_pb.js";
+import { MethodServiceListRequest, MethodServiceListResponse, MethodServiceTokenScopedListRequest, MethodServiceTokenScopedListResponse } from "./methods_pb.js";
 import { MethodKind } from "@bufbuild/protobuf";
 
 /**
@@ -19,6 +19,15 @@ export const MethodService = {
       name: "List",
       I: MethodServiceListRequest,
       O: MethodServiceListResponse,
+      kind: MethodKind.Unary,
+    },
+    /**
+     * @generated from rpc api.v1.MethodService.TokenScopedList
+     */
+    tokenScopedList: {
+      name: "TokenScopedList",
+      I: MethodServiceTokenScopedListRequest,
+      O: MethodServiceTokenScopedListResponse,
       kind: MethodKind.Unary,
     },
   }

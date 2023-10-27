@@ -22,5 +22,14 @@ exports.MethodService = {
             O: methods_pb_js_1.MethodServiceListResponse,
             kind: protobuf_1.MethodKind.Unary,
         },
+        /**
+         * @generated from rpc api.v1.MethodService.TokenScopedList
+         */
+        tokenScopedList: {
+            name: "TokenScopedList",
+            I: methods_pb_js_1.MethodServiceTokenScopedListRequest,
+            O: methods_pb_js_1.MethodServiceTokenScopedListResponse,
+            kind: protobuf_1.MethodKind.Unary,
+        },
     }
 };
