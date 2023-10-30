@@ -5,6 +5,10 @@ import { Token } from "../../api/v1/token_pb.js";
  * @generated from message admin.v1.TokenServiceListRequest
  */
 export declare class TokenServiceListRequest extends Message<TokenServiceListRequest> {
+    /**
+     * @generated from field: string user_id = 2;
+     */
+    userId: string;
     constructor(data?: PartialMessage<TokenServiceListRequest>);
     static readonly runtime: typeof proto3;
     static readonly typeName = "admin.v1.TokenServiceListRequest";

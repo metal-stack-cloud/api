@@ -11,6 +11,11 @@ import { Token } from "../../api/v1/token_pb.js";
  * @generated from message admin.v1.TokenServiceListRequest
  */
 export class TokenServiceListRequest extends Message<TokenServiceListRequest> {
+  /**
+   * @generated from field: string user_id = 2;
+   */
+  userId = "";
+
   constructor(data?: PartialMessage<TokenServiceListRequest>) {
     super();
     proto3.util.initPartial(data, this);
@@ -19,6 +24,7 @@ export class TokenServiceListRequest extends Message<TokenServiceListRequest> {
   static readonly runtime: typeof proto3 = proto3;
   static readonly typeName = "admin.v1.TokenServiceListRequest";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 2, name: "user_id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): TokenServiceListRequest {
