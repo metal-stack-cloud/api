@@ -13,7 +13,9 @@
         "/admin.v1.StorageService/ListSnapshots",
         "/admin.v1.TenantService/List",
         "/admin.v1.TenantService/Admit",
-        "/admin.v1.TenantService/Revoke"
+        "/admin.v1.TenantService/Revoke",
+        "/admin.v1.TokenService/List",
+        "/admin.v1.TokenService/Revoke"
       ],
       "viewer": [
         "/admin.v1.ClusterService/Get",
@@ -22,7 +24,9 @@
         "/admin.v1.StorageService/ClusterInfo",
         "/admin.v1.StorageService/ListVolumes",
         "/admin.v1.StorageService/ListSnapshots",
-        "/admin.v1.TenantService/List"
+        "/admin.v1.TenantService/List",
+        "/admin.v1.TokenService/List",
+        "/admin.v1.TokenService/Revoke"
       ]
     },
     "tenant": {
@@ -127,6 +131,8 @@
     "/admin.v1.TenantService/Admit": true,
     "/admin.v1.TenantService/List": true,
     "/admin.v1.TenantService/Revoke": true,
+    "/admin.v1.TokenService/List": true,
+    "/admin.v1.TokenService/Revoke": true,
     "/api.v1.AssetService/List": true,
     "/api.v1.ClusterService/Create": true,
     "/api.v1.ClusterService/Delete": true,
@@ -141,6 +147,8 @@
     "/api.v1.IPService/Get": true,
     "/api.v1.IPService/List": true,
     "/api.v1.IPService/Update": true,
+    "/api.v1.MethodService/List": true,
+    "/api.v1.MethodService/TokenScopedList": true,
     "/api.v1.PaymentService/CheckAdmitted": true,
     "/api.v1.PaymentService/CheckIfCustomerExists": true,
     "/api.v1.PaymentService/CreateOrUpdateCustomer": true,
@@ -162,6 +170,8 @@
     "/api.v1.TenantService/Get": true,
     "/api.v1.TenantService/Update": true,
     "/api.v1.TokenService/Create": true,
+    "/api.v1.TokenService/List": true,
+    "/api.v1.TokenService/Revoke": true,
     "/api.v1.VersionService/Get": true,
     "/api.v1.VolumeService/Delete": true,
     "/api.v1.VolumeService/Get": true,
@@ -173,6 +183,7 @@
     "public": {
       "/api.v1.AssetService/List": true,
       "/api.v1.HealthService/Get": true,
+      "/api.v1.MethodService/List": true,
       "/api.v1.PaymentService/GetDefaultPrices": true,
       "/api.v1.VersionService/Get": true,
       "/grpc.reflection.v1alpha.ServerReflection/ServerReflectionInfo": true,
@@ -180,8 +191,13 @@
       "/status.v1.StatusService/Get": true
     },
     "private": {
-      "/api.v1.TenantService/CreateOrUpdate": true,
-      "/api.v1.TokenService/Create": true
+      "/api.v1.TenantService/CreateOrUpdate": true
+    },
+    "self": {
+      "/api.v1.MethodService/TokenScopedList": true,
+      "/api.v1.TokenService/Create": true,
+      "/api.v1.TokenService/List": true,
+      "/api.v1.TokenService/Revoke": true
     }
   },
   "chargeable": {
@@ -207,6 +223,8 @@
     "/admin.v1.TenantService/Admit": true,
     "/admin.v1.TenantService/List": true,
     "/admin.v1.TenantService/Revoke": true,
+    "/admin.v1.TokenService/List": true,
+    "/admin.v1.TokenService/Revoke": true,
     "/api.v1.AssetService/List": false,
     "/api.v1.ClusterService/Create": true,
     "/api.v1.ClusterService/Delete": true,
@@ -221,6 +239,8 @@
     "/api.v1.IPService/Get": false,
     "/api.v1.IPService/List": false,
     "/api.v1.IPService/Update": true,
+    "/api.v1.MethodService/List": true,
+    "/api.v1.MethodService/TokenScopedList": true,
     "/api.v1.PaymentService/CheckAdmitted": false,
     "/api.v1.PaymentService/CheckIfCustomerExists": false,
     "/api.v1.PaymentService/CreateOrUpdateCustomer": true,
@@ -242,6 +262,8 @@
     "/api.v1.TenantService/Get": false,
     "/api.v1.TenantService/Update": true,
     "/api.v1.TokenService/Create": true,
+    "/api.v1.TokenService/List": true,
+    "/api.v1.TokenService/Revoke": true,
     "/api.v1.VersionService/Get": false,
     "/api.v1.VolumeService/Delete": true,
     "/api.v1.VolumeService/Get": false,

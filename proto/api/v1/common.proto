@@ -40,6 +40,8 @@ enum Visibility {
   VISIBILITY_PUBLIC = 1;
   // VISIBILITY_PRIVATE makes this service blocked
   VISIBILITY_PRIVATE = 2;
+  // VISIBILITY_SELF enable call this endpoint from the authenticated user only
+  VISIBILITY_SELF = 3;
 }
 
 enum Chargeable {

@@ -120,7 +120,13 @@ export declare enum Visibility {
      *
      * @generated from enum value: VISIBILITY_PRIVATE = 2;
      */
-    PRIVATE = 2
+    PRIVATE = 2,
+    /**
+     * VISIBILITY_SELF enable call this endpoint from the authenticated user only
+     *
+     * @generated from enum value: VISIBILITY_SELF = 3;
+     */
+    SELF = 3
 }
 /**
  * @generated from enum api.v1.Chargeable

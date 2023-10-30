@@ -36,6 +36,7 @@ type (
 		paymentservice *adminv1mocks.PaymentServiceClient
 		storageservice *adminv1mocks.StorageServiceClient
 		tenantservice  *adminv1mocks.TenantServiceClient
+		tokenservice   *adminv1mocks.TokenServiceClient
 	}
 
 	Adminv1MockFns struct {
@@ -43,12 +44,14 @@ type (
 		Payment func(m *mock.Mock)
 		Storage func(m *mock.Mock)
 		Tenant  func(m *mock.Mock)
+		Token   func(m *mock.Mock)
 	}
 	apiv1 struct {
 		assetservice    *apiv1mocks.AssetServiceClient
 		clusterservice  *apiv1mocks.ClusterServiceClient
 		healthservice   *apiv1mocks.HealthServiceClient
 		ipservice       *apiv1mocks.IPServiceClient
+		methodservice   *apiv1mocks.MethodServiceClient
 		paymentservice  *apiv1mocks.PaymentServiceClient
 		tenantservice   *apiv1mocks.TenantServiceClient
 		tokenservice    *apiv1mocks.TokenServiceClient
@@ -62,6 +65,7 @@ type (
 		Cluster  func(m *mock.Mock)
 		Health   func(m *mock.Mock)
 		IP       func(m *mock.Mock)
+		Method   func(m *mock.Mock)
 		Payment  func(m *mock.Mock)
 		Tenant   func(m *mock.Mock)
 		Token    func(m *mock.Mock)
@@ -112,6 +116,7 @@ func newadminv1(t *testing.T, fns *Adminv1MockFns) *adminv1 {
 		paymentservice: adminv1mocks.NewPaymentServiceClient(t),
 		storageservice: adminv1mocks.NewStorageServiceClient(t),
 		tenantservice:  adminv1mocks.NewTenantServiceClient(t),
+		tokenservice:   adminv1mocks.NewTokenServiceClient(t),
 	}
 
 	if fns != nil {
@@ -126,6 +131,9 @@ func newadminv1(t *testing.T, fns *Adminv1MockFns) *adminv1 {
 		}
 		if fns.Tenant != nil {
 			fns.Tenant(&a.tenantservice.Mock)
+		}
+		if fns.Token != nil {
+			fns.Token(&a.tokenservice.Mock)
 		}
 
 	}
@@ -145,6 +153,9 @@ func (c *adminv1) Storage() adminv1connect.StorageServiceClient {
 func (c *adminv1) Tenant() adminv1connect.TenantServiceClient {
 	return c.tenantservice
 }
+func (c *adminv1) Token() adminv1connect.TokenServiceClient {
+	return c.tokenservice
+}
 
 func (w wrapper) Apiv1(fns *Apiv1MockFns) *apiv1 {
 	return newapiv1(w.t, fns)
@@ -156,6 +167,7 @@ func newapiv1(t *testing.T, fns *Apiv1MockFns) *apiv1 {
 		clusterservice:  apiv1mocks.NewClusterServiceClient(t),
 		healthservice:   apiv1mocks.NewHealthServiceClient(t),
 		ipservice:       apiv1mocks.NewIPServiceClient(t),
+		methodservice:   apiv1mocks.NewMethodServiceClient(t),
 		paymentservice:  apiv1mocks.NewPaymentServiceClient(t),
 		tenantservice:   apiv1mocks.NewTenantServiceClient(t),
 		tokenservice:    apiv1mocks.NewTokenServiceClient(t),
@@ -176,6 +188,9 @@ func newapiv1(t *testing.T, fns *Apiv1MockFns) *apiv1 {
 		}
 		if fns.IP != nil {
 			fns.IP(&a.ipservice.Mock)
+		}
+		if fns.Method != nil {
+			fns.Method(&a.methodservice.Mock)
 		}
 		if fns.Payment != nil {
 			fns.Payment(&a.paymentservice.Mock)
@@ -212,6 +227,9 @@ func (c *apiv1) Health() apiv1connect.HealthServiceClient {
 }
 func (c *apiv1) IP() apiv1connect.IPServiceClient {
 	return c.ipservice
+}
+func (c *apiv1) Method() apiv1connect.MethodServiceClient {
+	return c.methodservice
 }
 func (c *apiv1) Payment() apiv1connect.PaymentServiceClient {
 	return c.paymentservice

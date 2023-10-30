@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+package api.v1;
+
+import "api/v1/common.proto";
+import "api/v1/token.proto";
+
+service MethodService {
+  rpc List(MethodServiceListRequest) returns (MethodServiceListResponse) {
+    option (visibility) = VISIBILITY_PUBLIC;
+  }
+  rpc TokenScopedList(MethodServiceTokenScopedListRequest) returns (MethodServiceTokenScopedListResponse) {
+    option (visibility) = VISIBILITY_SELF;
+  }
+}
+
+message MethodServiceListRequest {}
+
+message MethodServiceListResponse {
+  repeated string methods = 1;
+}
+
+message MethodServiceTokenScopedListRequest {}
+
+message MethodServiceTokenScopedListResponse {
+  repeated ProjectPermission permissions = 1;
+  repeated TokenRole roles = 2;
+}

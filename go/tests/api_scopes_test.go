@@ -55,6 +55,7 @@ func (visibility) Get(methodOpts []*descriptorpb.UninterpretedOption) (scopes []
 	scopes = getScopes(methodOpts, []string{
 		v1.Visibility_VISIBILITY_PUBLIC.String(),
 		v1.Visibility_VISIBILITY_PRIVATE.String(),
+		v1.Visibility_VISIBILITY_SELF.String(),
 	})
 	return
 }

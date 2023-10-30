@@ -584,6 +584,11 @@
               "name": "VISIBILITY_PRIVATE",
               "number": "2",
               "description": "VISIBILITY_PRIVATE makes this service blocked"
+            },
+            {
+              "name": "VISIBILITY_SELF",
+              "number": "3",
+              "description": "VISIBILITY_SELF enable call this endpoint from the authenticated user only"
             }
           ]
         }
@@ -7888,6 +7893,694 @@
       ]
     },
     {
+      "name": "api/v1/token.proto",
+      "description": "",
+      "package": "api.v1",
+      "hasEnums": true,
+      "hasExtensions": false,
+      "hasMessages": true,
+      "hasServices": true,
+      "enums": [
+        {
+          "name": "TokenType",
+          "longName": "TokenType",
+          "fullName": "api.v1.TokenType",
+          "description": "",
+          "values": [
+            {
+              "name": "TOKEN_TYPE_UNSPECIFIED",
+              "number": "0",
+              "description": ""
+            },
+            {
+              "name": "TOKEN_TYPE_API",
+              "number": "1",
+              "description": ""
+            },
+            {
+              "name": "TOKEN_TYPE_CONSOLE",
+              "number": "2",
+              "description": ""
+            }
+          ]
+        }
+      ],
+      "extensions": [],
+      "messages": [
+        {
+          "name": "ProjectPermission",
+          "longName": "ProjectPermission",
+          "fullName": "api.v1.ProjectPermission",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "project",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "methods",
+              "description": "",
+              "label": "repeated",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "Token",
+          "longName": "Token",
+          "fullName": "api.v1.Token",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "uuid",
+              "description": "uuid of the jwt token",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": "",
+              "options": {
+                "validate.rules": [
+                  {
+                    "name": "string.uuid",
+                    "value": true
+                  }
+                ]
+              }
+            },
+            {
+              "name": "user_id",
+              "description": "user_id who created this token",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": "",
+              "options": {
+                "validate.rules": [
+                  {
+                    "name": "string.min_len",
+                    "value": 2
+                  },
+                  {
+                    "name": "string.max_len",
+                    "value": 512
+                  }
+                ]
+              }
+            },
+            {
+              "name": "description",
+              "description": "description is a user given description of this token.",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": "",
+              "options": {
+                "validate.rules": [
+                  {
+                    "name": "string.min_len",
+                    "value": 2
+                  },
+                  {
+                    "name": "string.max_len",
+                    "value": 256
+                  }
+                ]
+              }
+            },
+            {
+              "name": "permissions",
+              "description": "",
+              "label": "repeated",
+              "type": "ProjectPermission",
+              "longType": "ProjectPermission",
+              "fullType": "api.v1.ProjectPermission",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "roles",
+              "description": "",
+              "label": "repeated",
+              "type": "TokenRole",
+              "longType": "TokenRole",
+              "fullType": "api.v1.TokenRole",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "expires",
+              "description": "",
+              "label": "",
+              "type": "Timestamp",
+              "longType": "google.protobuf.Timestamp",
+              "fullType": "google.protobuf.Timestamp",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "issued_at",
+              "description": "",
+              "label": "",
+              "type": "Timestamp",
+              "longType": "google.protobuf.Timestamp",
+              "fullType": "google.protobuf.Timestamp",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "token_type",
+              "description": "",
+              "label": "",
+              "type": "TokenType",
+              "longType": "TokenType",
+              "fullType": "api.v1.TokenType",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "TokenRole",
+          "longName": "TokenRole",
+          "fullName": "api.v1.TokenRole",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "subject",
+              "description": "subject specifies the project or organization this role applies to",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": "",
+              "options": {
+                "validate.rules": [
+                  {
+                    "name": "string.min_len",
+                    "value": 1
+                  },
+                  {
+                    "name": "string.max_len",
+                    "value": 256
+                  }
+                ]
+              }
+            },
+            {
+              "name": "role",
+              "description": "role defines the string representation of a tenantrole, projectrole or a global adminrole",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": "",
+              "options": {
+                "validate.rules": [
+                  {
+                    "name": "string.in",
+                    "value": [
+                      "admin",
+                      "owner",
+                      "editor",
+                      "viewer"
+                    ]
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "TokenServiceCreateRequest",
+          "longName": "TokenServiceCreateRequest",
+          "fullName": "api.v1.TokenServiceCreateRequest",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "description",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": "",
+              "options": {
+                "validate.rules": [
+                  {
+                    "name": "string.min_len",
+                    "value": 2
+                  },
+                  {
+                    "name": "string.max_len",
+                    "value": 256
+                  }
+                ]
+              }
+            },
+            {
+              "name": "permissions",
+              "description": "",
+              "label": "repeated",
+              "type": "ProjectPermission",
+              "longType": "ProjectPermission",
+              "fullType": "api.v1.ProjectPermission",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "roles",
+              "description": "",
+              "label": "repeated",
+              "type": "TokenRole",
+              "longType": "TokenRole",
+              "fullType": "api.v1.TokenRole",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "expires",
+              "description": "",
+              "label": "",
+              "type": "Duration",
+              "longType": "google.protobuf.Duration",
+              "fullType": "google.protobuf.Duration",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": "",
+              "options": {
+                "validate.rules": [
+                  {
+                    "name": "duration.lt.seconds",
+                    "value": 31536001
+                  },
+                  {
+                    "name": "duration.lt.nanos",
+                    "value": 0
+                  },
+                  {
+                    "name": "duration.gte.seconds",
+                    "value": 600
+                  },
+                  {
+                    "name": "duration.gte.nanos",
+                    "value": 0
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "TokenServiceCreateResponse",
+          "longName": "TokenServiceCreateResponse",
+          "fullName": "api.v1.TokenServiceCreateResponse",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "token",
+              "description": "",
+              "label": "",
+              "type": "Token",
+              "longType": "Token",
+              "fullType": "api.v1.Token",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "secret",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "TokenServiceListRequest",
+          "longName": "TokenServiceListRequest",
+          "fullName": "api.v1.TokenServiceListRequest",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": false,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": []
+        },
+        {
+          "name": "TokenServiceListResponse",
+          "longName": "TokenServiceListResponse",
+          "fullName": "api.v1.TokenServiceListResponse",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "tokens",
+              "description": "",
+              "label": "repeated",
+              "type": "Token",
+              "longType": "Token",
+              "fullType": "api.v1.Token",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "TokenServiceRevokeRequest",
+          "longName": "TokenServiceRevokeRequest",
+          "fullName": "api.v1.TokenServiceRevokeRequest",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "uuid",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": "",
+              "options": {
+                "validate.rules": [
+                  {
+                    "name": "string.uuid",
+                    "value": true
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "TokenServiceRevokeResponse",
+          "longName": "TokenServiceRevokeResponse",
+          "fullName": "api.v1.TokenServiceRevokeResponse",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": false,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": []
+        }
+      ],
+      "services": [
+        {
+          "name": "TokenService",
+          "longName": "TokenService",
+          "fullName": "api.v1.TokenService",
+          "description": "",
+          "methods": [
+            {
+              "name": "Create",
+              "description": "",
+              "requestType": "TokenServiceCreateRequest",
+              "requestLongType": "TokenServiceCreateRequest",
+              "requestFullType": "api.v1.TokenServiceCreateRequest",
+              "requestStreaming": false,
+              "responseType": "TokenServiceCreateResponse",
+              "responseLongType": "TokenServiceCreateResponse",
+              "responseFullType": "api.v1.TokenServiceCreateResponse",
+              "responseStreaming": false
+            },
+            {
+              "name": "List",
+              "description": "",
+              "requestType": "TokenServiceListRequest",
+              "requestLongType": "TokenServiceListRequest",
+              "requestFullType": "api.v1.TokenServiceListRequest",
+              "requestStreaming": false,
+              "responseType": "TokenServiceListResponse",
+              "responseLongType": "TokenServiceListResponse",
+              "responseFullType": "api.v1.TokenServiceListResponse",
+              "responseStreaming": false
+            },
+            {
+              "name": "Revoke",
+              "description": "",
+              "requestType": "TokenServiceRevokeRequest",
+              "requestLongType": "TokenServiceRevokeRequest",
+              "requestFullType": "api.v1.TokenServiceRevokeRequest",
+              "requestStreaming": false,
+              "responseType": "TokenServiceRevokeResponse",
+              "responseLongType": "TokenServiceRevokeResponse",
+              "responseFullType": "api.v1.TokenServiceRevokeResponse",
+              "responseStreaming": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "admin/v1/token.proto",
+      "description": "",
+      "package": "admin.v1",
+      "hasEnums": false,
+      "hasExtensions": false,
+      "hasMessages": true,
+      "hasServices": true,
+      "enums": [],
+      "extensions": [],
+      "messages": [
+        {
+          "name": "TokenServiceListRequest",
+          "longName": "TokenServiceListRequest",
+          "fullName": "admin.v1.TokenServiceListRequest",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": true,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "user_id",
+              "description": "",
+              "label": "optional",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "_user_id",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "TokenServiceListResponse",
+          "longName": "TokenServiceListResponse",
+          "fullName": "admin.v1.TokenServiceListResponse",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "tokens",
+              "description": "",
+              "label": "repeated",
+              "type": "Token",
+              "longType": "api.v1.Token",
+              "fullType": "api.v1.Token",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "TokenServiceRevokeRequest",
+          "longName": "TokenServiceRevokeRequest",
+          "fullName": "admin.v1.TokenServiceRevokeRequest",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "uuid",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": "",
+              "options": {
+                "validate.rules": [
+                  {
+                    "name": "string.uuid",
+                    "value": true
+                  }
+                ]
+              }
+            },
+            {
+              "name": "user_id",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": "",
+              "options": {
+                "validate.rules": [
+                  {
+                    "name": "string.min_len",
+                    "value": 2
+                  },
+                  {
+                    "name": "string.max_len",
+                    "value": 512
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "TokenServiceRevokeResponse",
+          "longName": "TokenServiceRevokeResponse",
+          "fullName": "admin.v1.TokenServiceRevokeResponse",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": false,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": []
+        }
+      ],
+      "services": [
+        {
+          "name": "TokenService",
+          "longName": "TokenService",
+          "fullName": "admin.v1.TokenService",
+          "description": "",
+          "methods": [
+            {
+              "name": "List",
+              "description": "",
+              "requestType": "TokenServiceListRequest",
+              "requestLongType": "TokenServiceListRequest",
+              "requestFullType": "admin.v1.TokenServiceListRequest",
+              "requestStreaming": false,
+              "responseType": "TokenServiceListResponse",
+              "responseLongType": "TokenServiceListResponse",
+              "responseFullType": "admin.v1.TokenServiceListResponse",
+              "responseStreaming": false
+            },
+            {
+              "name": "Revoke",
+              "description": "",
+              "requestType": "TokenServiceRevokeRequest",
+              "requestLongType": "TokenServiceRevokeRequest",
+              "requestFullType": "admin.v1.TokenServiceRevokeRequest",
+              "requestStreaming": false,
+              "responseType": "TokenServiceRevokeResponse",
+              "responseLongType": "TokenServiceRevokeResponse",
+              "responseFullType": "admin.v1.TokenServiceRevokeResponse",
+              "responseStreaming": false
+            }
+          ]
+        }
+      ]
+    },
+    {
       "name": "api/v1/assets.proto",
       "description": "",
       "package": "api.v1",
@@ -9480,7 +10173,7 @@
       ]
     },
     {
-      "name": "api/v1/token.proto",
+      "name": "api/v1/methods.proto",
       "description": "",
       "package": "api.v1",
       "hasEnums": false,
@@ -9491,9 +10184,20 @@
       "extensions": [],
       "messages": [
         {
-          "name": "ProjectPermission",
-          "longName": "ProjectPermission",
-          "fullName": "api.v1.ProjectPermission",
+          "name": "MethodServiceListRequest",
+          "longName": "MethodServiceListRequest",
+          "fullName": "api.v1.MethodServiceListRequest",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": false,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": []
+        },
+        {
+          "name": "MethodServiceListResponse",
+          "longName": "MethodServiceListResponse",
+          "fullName": "api.v1.MethodServiceListResponse",
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
@@ -9501,19 +10205,7 @@
           "extensions": [],
           "fields": [
             {
-              "name": "project",
-              "description": "",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "permissions",
+              "name": "methods",
               "description": "",
               "label": "repeated",
               "type": "string",
@@ -9527,63 +10219,26 @@
           ]
         },
         {
-          "name": "TokenRole",
-          "longName": "TokenRole",
-          "fullName": "api.v1.TokenRole",
+          "name": "MethodServiceTokenScopedListRequest",
+          "longName": "MethodServiceTokenScopedListRequest",
+          "fullName": "api.v1.MethodServiceTokenScopedListRequest",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": false,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": []
+        },
+        {
+          "name": "MethodServiceTokenScopedListResponse",
+          "longName": "MethodServiceTokenScopedListResponse",
+          "fullName": "api.v1.MethodServiceTokenScopedListResponse",
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
           "hasOneofs": false,
           "extensions": [],
           "fields": [
-            {
-              "name": "subject",
-              "description": "",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "role",
-              "description": "",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            }
-          ]
-        },
-        {
-          "name": "TokenServiceCreateRequest",
-          "longName": "TokenServiceCreateRequest",
-          "fullName": "api.v1.TokenServiceCreateRequest",
-          "description": "Tokens",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "subject",
-              "description": "",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
             {
               "name": "permissions",
               "description": "",
@@ -9607,63 +10262,39 @@
               "isoneof": false,
               "oneofdecl": "",
               "defaultValue": ""
-            },
-            {
-              "name": "expires",
-              "description": "",
-              "label": "",
-              "type": "Duration",
-              "longType": "google.protobuf.Duration",
-              "fullType": "google.protobuf.Duration",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            }
-          ]
-        },
-        {
-          "name": "TokenServiceCreateResponse",
-          "longName": "TokenServiceCreateResponse",
-          "fullName": "api.v1.TokenServiceCreateResponse",
-          "description": "",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "token",
-              "description": "",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
             }
           ]
         }
       ],
       "services": [
         {
-          "name": "TokenService",
-          "longName": "TokenService",
-          "fullName": "api.v1.TokenService",
+          "name": "MethodService",
+          "longName": "MethodService",
+          "fullName": "api.v1.MethodService",
           "description": "",
           "methods": [
             {
-              "name": "Create",
+              "name": "List",
               "description": "",
-              "requestType": "TokenServiceCreateRequest",
-              "requestLongType": "TokenServiceCreateRequest",
-              "requestFullType": "api.v1.TokenServiceCreateRequest",
+              "requestType": "MethodServiceListRequest",
+              "requestLongType": "MethodServiceListRequest",
+              "requestFullType": "api.v1.MethodServiceListRequest",
               "requestStreaming": false,
-              "responseType": "TokenServiceCreateResponse",
-              "responseLongType": "TokenServiceCreateResponse",
-              "responseFullType": "api.v1.TokenServiceCreateResponse",
+              "responseType": "MethodServiceListResponse",
+              "responseLongType": "MethodServiceListResponse",
+              "responseFullType": "api.v1.MethodServiceListResponse",
+              "responseStreaming": false
+            },
+            {
+              "name": "TokenScopedList",
+              "description": "",
+              "requestType": "MethodServiceTokenScopedListRequest",
+              "requestLongType": "MethodServiceTokenScopedListRequest",
+              "requestFullType": "api.v1.MethodServiceTokenScopedListRequest",
+              "requestStreaming": false,
+              "responseType": "MethodServiceTokenScopedListResponse",
+              "responseLongType": "MethodServiceTokenScopedListResponse",
+              "responseFullType": "api.v1.MethodServiceTokenScopedListResponse",
               "responseStreaming": false
             }
           ]

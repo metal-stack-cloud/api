@@ -28,5 +28,5 @@ test:
 # TODO: this target should be moved to the js dir:
 .PHONY: npm-build
 npm-build:
-	docker pull node:20-bullseye
-	docker run --rm -v ${PWD}:/work -w /work node:20-bullseye make -C js build
+	docker pull node:21-bookworm
+	docker run --rm -v ${PWD}:/work -w /work node:21-bookworm make -C js build

@@ -54,6 +54,7 @@ func servicePermissions(root string) (*permissions.ServicePermissions, error) {
 				serverReflectionInfo: true,
 			},
 			Private: map[string]bool{},
+			Self:    map[string]bool{},
 		}
 		chargeable = permissions.Chargeable{}
 		auditable  = permissions.Auditable{}
@@ -65,16 +66,21 @@ func servicePermissions(root string) (*permissions.ServicePermissions, error) {
 	}
 
 	for _, filename := range files {
+		filename := filename
 		fd, err := protoparser.Parse(filename)
 		if err != nil {
 			return nil, err
 		}
 		for _, serviceDesc := range fd.GetService() {
+			serviceDesc := serviceDesc
 			for _, method := range serviceDesc.GetMethod() {
+				method := method
 				methodName := fmt.Sprintf("/%s.%s/%s", *fd.Package, *serviceDesc.Name, *method.Name)
 				methodOpts := method.Options.GetUninterpretedOption()
 				for _, methodOpt := range methodOpts {
+					methodOpt := methodOpt
 					for _, namePart := range methodOpt.Name {
+						namePart := namePart
 						if !*namePart.IsExtension {
 							continue
 						}
@@ -110,6 +116,8 @@ func servicePermissions(root string) (*permissions.ServicePermissions, error) {
 							visibility.Public[methodName] = true
 						case v1.Visibility_VISIBILITY_PRIVATE.String():
 							visibility.Private[methodName] = true
+						case v1.Visibility_VISIBILITY_SELF.String():
+							visibility.Self[methodName] = true
 						case v1.Visibility_VISIBILITY_UNSPECIFIED.String():
 							// noop
 						// Chargeable
