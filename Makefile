@@ -2,9 +2,11 @@
 SHA := $(shell git rev-parse --short=8 HEAD)
 GITVERSION := $(shell git describe --long --all)
 BUILDDATE := $(shell date -Iseconds)
-VERSION := $(or ${VERSION},devel)
+VERSION := $(or ${VERSION},$(shell git describe --tags --exact-match 2> /dev/null || git symbolic-ref -q --short HEAD || git rev-parse --short HEAD))
 
 all: proto generate test npm-build
+
+release: proto generate test npm-build-tagged
 
 .PHONY: proto
 proto: protolint
@@ -30,3 +32,9 @@ test:
 npm-build:
 	docker pull node:21-bookworm
 	docker run --rm -v ${PWD}:/work -w /work node:21-bookworm make -C js build
+
+.PHONY: npm-build-tagged
+npm-build-tagged:
+	yq e -ij ".version=\"$(shell version=$$(git describe --tags `git rev-list --tags --max-count=1`); echo $${version#v})\"" js/package.json
+	yq e '.version' js/package.json
+	$(MAKE)	npm-build
