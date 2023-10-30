@@ -13,10 +13,6 @@ const token_pb_js_1 = require("../../api/v1/token_pb.js");
 class TokenServiceListRequest extends protobuf_1.Message {
     constructor(data) {
         super();
-        /**
-         * @generated from field: string user_id = 2;
-         */
-        this.userId = "";
         protobuf_1.proto3.util.initPartial(data, this);
     }
     static fromBinary(bytes, options) {
@@ -36,7 +32,7 @@ exports.TokenServiceListRequest = TokenServiceListRequest;
 TokenServiceListRequest.runtime = protobuf_1.proto3;
 TokenServiceListRequest.typeName = "admin.v1.TokenServiceListRequest";
 TokenServiceListRequest.fields = protobuf_1.proto3.util.newFieldList(() => [
-    { no: 2, name: "user_id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 1, name: "user_id", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
 ]);
 /**
  * @generated from message admin.v1.TokenServiceListResponse

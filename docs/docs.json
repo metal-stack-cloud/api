@@ -8408,32 +8408,20 @@
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
-          "hasOneofs": false,
+          "hasOneofs": true,
           "extensions": [],
           "fields": [
             {
               "name": "user_id",
               "description": "",
-              "label": "",
+              "label": "optional",
               "type": "string",
               "longType": "string",
               "fullType": "string",
               "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.min_len",
-                    "value": 2
-                  },
-                  {
-                    "name": "string.max_len",
-                    "value": 512
-                  }
-                ]
-              }
+              "isoneof": true,
+              "oneofdecl": "_user_id",
+              "defaultValue": ""
             }
           ]
         },

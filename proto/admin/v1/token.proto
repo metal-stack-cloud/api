@@ -18,10 +18,7 @@ service TokenService {
 }
 
 message TokenServiceListRequest {
-  string user_id = 2 [(validate.rules).string = {
-    min_len: 2,
-    max_len: 512,
-  }];
+  optional string user_id = 1;
 }
 message TokenServiceListResponse {
   repeated api.v1.Token tokens = 1;

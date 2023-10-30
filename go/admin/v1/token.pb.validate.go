@@ -60,15 +60,8 @@ func (m *TokenServiceListRequest) validate(all bool) error {
 
 	var errors []error
 
-	if l := utf8.RuneCountInString(m.GetUserId()); l < 2 || l > 512 {
-		err := TokenServiceListRequestValidationError{
-			field:  "UserId",
-			reason: "value length must be between 2 and 512 runes, inclusive",
-		}
-		if !all {
-			return err
-		}
-		errors = append(errors, err)
+	if m.UserId != nil {
+		// no validation rules for UserId
 	}
 
 	if len(errors) > 0 {
