@@ -407,32 +407,34 @@ func (m *TokenServiceCreateRequest) validate(all bool) error {
 
 	}
 
-	if all {
-		switch v := interface{}(m.GetExpires()).(type) {
-		case interface{ ValidateAll() error }:
-			if err := v.ValidateAll(); err != nil {
-				errors = append(errors, TokenServiceCreateRequestValidationError{
-					field:  "Expires",
-					reason: "embedded message failed validation",
-					cause:  err,
-				})
-			}
-		case interface{ Validate() error }:
-			if err := v.Validate(); err != nil {
-				errors = append(errors, TokenServiceCreateRequestValidationError{
-					field:  "Expires",
-					reason: "embedded message failed validation",
-					cause:  err,
-				})
-			}
-		}
-	} else if v, ok := interface{}(m.GetExpires()).(interface{ Validate() error }); ok {
-		if err := v.Validate(); err != nil {
-			return TokenServiceCreateRequestValidationError{
+	if d := m.GetExpires(); d != nil {
+		dur, err := d.AsDuration(), d.CheckValid()
+		if err != nil {
+			err = TokenServiceCreateRequestValidationError{
 				field:  "Expires",
-				reason: "embedded message failed validation",
+				reason: "value is not a valid duration",
 				cause:  err,
 			}
+			if !all {
+				return err
+			}
+			errors = append(errors, err)
+		} else {
+
+			lt := time.Duration(31536001*time.Second + 0*time.Nanosecond)
+			gte := time.Duration(600*time.Second + 0*time.Nanosecond)
+
+			if dur < gte || dur >= lt {
+				err := TokenServiceCreateRequestValidationError{
+					field:  "Expires",
+					reason: "value must be inside range [10m0s, 8760h0m1s)",
+				}
+				if !all {
+					return err
+				}
+				errors = append(errors, err)
+			}
+
 		}
 	}
 
@@ -1141,10 +1143,28 @@ func (m *TokenServiceRevokeRequest) validate(all bool) error {
 
 	var errors []error
 
-	// no validation rules for Uuid
+	if err := m._validateUuid(m.GetUuid()); err != nil {
+		err = TokenServiceRevokeRequestValidationError{
+			field:  "Uuid",
+			reason: "value must be a valid UUID",
+			cause:  err,
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
 
 	if len(errors) > 0 {
 		return TokenServiceRevokeRequestMultiError(errors)
+	}
+
+	return nil
+}
+
+func (m *TokenServiceRevokeRequest) _validateUuid(uuid string) error {
+	if matched := _token_uuidPattern.MatchString(uuid); !matched {
+		return errors.New("invalid uuid format")
 	}
 
 	return nil

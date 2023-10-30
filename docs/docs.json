@@ -8232,7 +8232,27 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": ""
+              "defaultValue": "",
+              "options": {
+                "validate.rules": [
+                  {
+                    "name": "duration.lt.seconds",
+                    "value": 31536001
+                  },
+                  {
+                    "name": "duration.lt.nanos",
+                    "value": 0
+                  },
+                  {
+                    "name": "duration.gte.seconds",
+                    "value": 600
+                  },
+                  {
+                    "name": "duration.gte.nanos",
+                    "value": 0
+                  }
+                ]
+              }
             }
           ]
         },
@@ -8327,7 +8347,15 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": ""
+              "defaultValue": "",
+              "options": {
+                "validate.rules": [
+                  {
+                    "name": "string.uuid",
+                    "value": true
+                  }
+                ]
+              }
             }
           ]
         },
