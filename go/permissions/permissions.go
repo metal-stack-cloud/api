@@ -35,7 +35,6 @@ type Project struct {
 	Viewer []string `json:"viewer,omitempty"`
 }
 
-// TODO convert to map[string]bool
 type Methods map[string]bool
 
 // Roles
