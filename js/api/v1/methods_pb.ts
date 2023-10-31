@@ -5,7 +5,7 @@
 
 import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
 import { Message, proto3 } from "@bufbuild/protobuf";
-import { ProjectPermission, TokenRole } from "./token_pb.js";
+import { MethodPermission, TokenRole } from "./token_pb.js";
 
 /**
  * @generated from message api.v1.MethodServiceListRequest
@@ -111,9 +111,9 @@ export class MethodServiceTokenScopedListRequest extends Message<MethodServiceTo
  */
 export class MethodServiceTokenScopedListResponse extends Message<MethodServiceTokenScopedListResponse> {
   /**
-   * @generated from field: repeated api.v1.ProjectPermission permissions = 1;
+   * @generated from field: repeated api.v1.MethodPermission permissions = 1;
    */
-  permissions: ProjectPermission[] = [];
+  permissions: MethodPermission[] = [];
 
   /**
    * @generated from field: repeated api.v1.TokenRole roles = 2;
@@ -128,7 +128,7 @@ export class MethodServiceTokenScopedListResponse extends Message<MethodServiceT
   static readonly runtime: typeof proto3 = proto3;
   static readonly typeName = "api.v1.MethodServiceTokenScopedListResponse";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "permissions", kind: "message", T: ProjectPermission, repeated: true },
+    { no: 1, name: "permissions", kind: "message", T: MethodPermission, repeated: true },
     { no: 2, name: "roles", kind: "message", T: TokenRole, repeated: true },
   ]);
 

@@ -23,6 +23,6 @@ message MethodServiceListResponse {
 message MethodServiceTokenScopedListRequest {}
 
 message MethodServiceTokenScopedListResponse {
-  repeated ProjectPermission permissions = 1;
+  repeated MethodPermission permissions = 1;
   repeated TokenRole roles = 2;
 }

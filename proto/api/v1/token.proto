@@ -34,7 +34,7 @@ message Token {
     min_len: 2,
     max_len: 256,
   }];
-  repeated ProjectPermission permissions = 4;
+  repeated MethodPermission permissions = 4;
   repeated TokenRole roles = 5;
   google.protobuf.Timestamp expires = 6;
   google.protobuf.Timestamp issued_at = 7;
@@ -52,7 +52,7 @@ message TokenServiceCreateRequest {
     min_len: 2,
     max_len: 256,
   }];
-  repeated ProjectPermission permissions = 2;
+  repeated MethodPermission permissions = 2;
   repeated TokenRole roles = 3;
   google.protobuf.Duration expires = 4 [(validate.rules).duration = {
     // Between 10min and 1year
@@ -61,8 +61,11 @@ message TokenServiceCreateRequest {
   }];
 }
 
-message ProjectPermission {
-  string project = 1;
+message MethodPermission {
+  // subject maybe either the project or the organization
+  // for which the methods should be allowed
+  string subject = 1;
+  // methods which should be accessible
   repeated string methods = 2;
 }
 

@@ -4,7 +4,7 @@
 /* eslint-disable */
 // @ts-nocheck
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.TokenServiceRevokeResponse = exports.TokenServiceRevokeRequest = exports.TokenServiceListResponse = exports.TokenServiceListRequest = exports.TokenServiceCreateResponse = exports.TokenRole = exports.ProjectPermission = exports.TokenServiceCreateRequest = exports.Token = exports.TokenType = void 0;
+exports.TokenServiceRevokeResponse = exports.TokenServiceRevokeRequest = exports.TokenServiceListResponse = exports.TokenServiceListRequest = exports.TokenServiceCreateResponse = exports.TokenRole = exports.MethodPermission = exports.TokenServiceCreateRequest = exports.Token = exports.TokenType = void 0;
 const protobuf_1 = require("@bufbuild/protobuf");
 /**
  * @generated from enum api.v1.TokenType
@@ -55,7 +55,7 @@ class Token extends protobuf_1.Message {
          */
         this.description = "";
         /**
-         * @generated from field: repeated api.v1.ProjectPermission permissions = 4;
+         * @generated from field: repeated api.v1.MethodPermission permissions = 4;
          */
         this.permissions = [];
         /**
@@ -88,7 +88,7 @@ Token.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 1, name: "uuid", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 2, name: "user_id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 3, name: "description", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 4, name: "permissions", kind: "message", T: ProjectPermission, repeated: true },
+    { no: 4, name: "permissions", kind: "message", T: MethodPermission, repeated: true },
     { no: 5, name: "roles", kind: "message", T: TokenRole, repeated: true },
     { no: 6, name: "expires", kind: "message", T: protobuf_1.Timestamp },
     { no: 7, name: "issued_at", kind: "message", T: protobuf_1.Timestamp },
@@ -105,7 +105,7 @@ class TokenServiceCreateRequest extends protobuf_1.Message {
          */
         this.description = "";
         /**
-         * @generated from field: repeated api.v1.ProjectPermission permissions = 2;
+         * @generated from field: repeated api.v1.MethodPermission permissions = 2;
          */
         this.permissions = [];
         /**
@@ -132,44 +132,49 @@ TokenServiceCreateRequest.runtime = protobuf_1.proto3;
 TokenServiceCreateRequest.typeName = "api.v1.TokenServiceCreateRequest";
 TokenServiceCreateRequest.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 1, name: "description", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 2, name: "permissions", kind: "message", T: ProjectPermission, repeated: true },
+    { no: 2, name: "permissions", kind: "message", T: MethodPermission, repeated: true },
     { no: 3, name: "roles", kind: "message", T: TokenRole, repeated: true },
     { no: 4, name: "expires", kind: "message", T: protobuf_1.Duration },
 ]);
 /**
- * @generated from message api.v1.ProjectPermission
+ * @generated from message api.v1.MethodPermission
  */
-class ProjectPermission extends protobuf_1.Message {
+class MethodPermission extends protobuf_1.Message {
     constructor(data) {
         super();
         /**
-         * @generated from field: string project = 1;
+         * subject maybe either the project or the organization
+         * for which the methods should be allowed
+         *
+         * @generated from field: string subject = 1;
          */
-        this.project = "";
+        this.subject = "";
         /**
+         * methods which should be accessible
+         *
          * @generated from field: repeated string methods = 2;
          */
         this.methods = [];
         protobuf_1.proto3.util.initPartial(data, this);
     }
     static fromBinary(bytes, options) {
-        return new ProjectPermission().fromBinary(bytes, options);
+        return new MethodPermission().fromBinary(bytes, options);
     }
     static fromJson(jsonValue, options) {
-        return new ProjectPermission().fromJson(jsonValue, options);
+        return new MethodPermission().fromJson(jsonValue, options);
     }
     static fromJsonString(jsonString, options) {
-        return new ProjectPermission().fromJsonString(jsonString, options);
+        return new MethodPermission().fromJsonString(jsonString, options);
     }
     static equals(a, b) {
-        return protobuf_1.proto3.util.equals(ProjectPermission, a, b);
+        return protobuf_1.proto3.util.equals(MethodPermission, a, b);
     }
 }
-exports.ProjectPermission = ProjectPermission;
-ProjectPermission.runtime = protobuf_1.proto3;
-ProjectPermission.typeName = "api.v1.ProjectPermission";
-ProjectPermission.fields = protobuf_1.proto3.util.newFieldList(() => [
-    { no: 1, name: "project", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+exports.MethodPermission = MethodPermission;
+MethodPermission.runtime = protobuf_1.proto3;
+MethodPermission.typeName = "api.v1.MethodPermission";
+MethodPermission.fields = protobuf_1.proto3.util.newFieldList(() => [
+    { no: 1, name: "subject", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 2, name: "methods", kind: "scalar", T: 9 /* ScalarType.STRING */, repeated: true },
 ]);
 /**

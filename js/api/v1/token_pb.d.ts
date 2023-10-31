@@ -40,9 +40,9 @@ export declare class Token extends Message<Token> {
      */
     description: string;
     /**
-     * @generated from field: repeated api.v1.ProjectPermission permissions = 4;
+     * @generated from field: repeated api.v1.MethodPermission permissions = 4;
      */
-    permissions: ProjectPermission[];
+    permissions: MethodPermission[];
     /**
      * @generated from field: repeated api.v1.TokenRole roles = 5;
      */
@@ -77,9 +77,9 @@ export declare class TokenServiceCreateRequest extends Message<TokenServiceCreat
      */
     description: string;
     /**
-     * @generated from field: repeated api.v1.ProjectPermission permissions = 2;
+     * @generated from field: repeated api.v1.MethodPermission permissions = 2;
      */
-    permissions: ProjectPermission[];
+    permissions: MethodPermission[];
     /**
      * @generated from field: repeated api.v1.TokenRole roles = 3;
      */
@@ -98,25 +98,30 @@ export declare class TokenServiceCreateRequest extends Message<TokenServiceCreat
     static equals(a: TokenServiceCreateRequest | PlainMessage<TokenServiceCreateRequest> | undefined, b: TokenServiceCreateRequest | PlainMessage<TokenServiceCreateRequest> | undefined): boolean;
 }
 /**
- * @generated from message api.v1.ProjectPermission
+ * @generated from message api.v1.MethodPermission
  */
-export declare class ProjectPermission extends Message<ProjectPermission> {
+export declare class MethodPermission extends Message<MethodPermission> {
     /**
-     * @generated from field: string project = 1;
+     * subject maybe either the project or the organization
+     * for which the methods should be allowed
+     *
+     * @generated from field: string subject = 1;
      */
-    project: string;
+    subject: string;
     /**
+     * methods which should be accessible
+     *
      * @generated from field: repeated string methods = 2;
      */
     methods: string[];
-    constructor(data?: PartialMessage<ProjectPermission>);
+    constructor(data?: PartialMessage<MethodPermission>);
     static readonly runtime: typeof proto3;
-    static readonly typeName = "api.v1.ProjectPermission";
+    static readonly typeName = "api.v1.MethodPermission";
     static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ProjectPermission;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ProjectPermission;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ProjectPermission;
-    static equals(a: ProjectPermission | PlainMessage<ProjectPermission> | undefined, b: ProjectPermission | PlainMessage<ProjectPermission> | undefined): boolean;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): MethodPermission;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): MethodPermission;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): MethodPermission;
+    static equals(a: MethodPermission | PlainMessage<MethodPermission> | undefined, b: MethodPermission | PlainMessage<MethodPermission> | undefined): boolean;
 }
 /**
  * @generated from message api.v1.TokenRole

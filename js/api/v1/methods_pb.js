@@ -95,7 +95,7 @@ class MethodServiceTokenScopedListResponse extends protobuf_1.Message {
     constructor(data) {
         super();
         /**
-         * @generated from field: repeated api.v1.ProjectPermission permissions = 1;
+         * @generated from field: repeated api.v1.MethodPermission permissions = 1;
          */
         this.permissions = [];
         /**
@@ -121,6 +121,6 @@ exports.MethodServiceTokenScopedListResponse = MethodServiceTokenScopedListRespo
 MethodServiceTokenScopedListResponse.runtime = protobuf_1.proto3;
 MethodServiceTokenScopedListResponse.typeName = "api.v1.MethodServiceTokenScopedListResponse";
 MethodServiceTokenScopedListResponse.fields = protobuf_1.proto3.util.newFieldList(() => [
-    { no: 1, name: "permissions", kind: "message", T: token_pb_js_1.ProjectPermission, repeated: true },
+    { no: 1, name: "permissions", kind: "message", T: token_pb_js_1.MethodPermission, repeated: true },
     { no: 2, name: "roles", kind: "message", T: token_pb_js_1.TokenRole, repeated: true },
 ]);
