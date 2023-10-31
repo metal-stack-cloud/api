@@ -1,6 +1,6 @@
 import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
 import { Message, proto3 } from "@bufbuild/protobuf";
-import { ProjectPermission, TokenRole } from "./token_pb.js";
+import { MethodPermission, TokenRole } from "./token_pb.js";
 /**
  * @generated from message api.v1.MethodServiceListRequest
  */
@@ -49,9 +49,9 @@ export declare class MethodServiceTokenScopedListRequest extends Message<MethodS
  */
 export declare class MethodServiceTokenScopedListResponse extends Message<MethodServiceTokenScopedListResponse> {
     /**
-     * @generated from field: repeated api.v1.ProjectPermission permissions = 1;
+     * @generated from field: repeated api.v1.MethodPermission permissions = 1;
      */
-    permissions: ProjectPermission[];
+    permissions: MethodPermission[];
     /**
      * @generated from field: repeated api.v1.TokenRole roles = 2;
      */

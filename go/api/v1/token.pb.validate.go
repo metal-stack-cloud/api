@@ -518,44 +518,44 @@ var _ interface {
 	ErrorName() string
 } = TokenServiceCreateRequestValidationError{}
 
-// Validate checks the field values on ProjectPermission with the rules defined
+// Validate checks the field values on MethodPermission with the rules defined
 // in the proto definition for this message. If any rules are violated, the
 // first error encountered is returned, or nil if there are no violations.
-func (m *ProjectPermission) Validate() error {
+func (m *MethodPermission) Validate() error {
 	return m.validate(false)
 }
 
-// ValidateAll checks the field values on ProjectPermission with the rules
+// ValidateAll checks the field values on MethodPermission with the rules
 // defined in the proto definition for this message. If any rules are
 // violated, the result is a list of violation errors wrapped in
-// ProjectPermissionMultiError, or nil if none found.
-func (m *ProjectPermission) ValidateAll() error {
+// MethodPermissionMultiError, or nil if none found.
+func (m *MethodPermission) ValidateAll() error {
 	return m.validate(true)
 }
 
-func (m *ProjectPermission) validate(all bool) error {
+func (m *MethodPermission) validate(all bool) error {
 	if m == nil {
 		return nil
 	}
 
 	var errors []error
 
-	// no validation rules for Project
+	// no validation rules for Subject
 
 	if len(errors) > 0 {
-		return ProjectPermissionMultiError(errors)
+		return MethodPermissionMultiError(errors)
 	}
 
 	return nil
 }
 
-// ProjectPermissionMultiError is an error wrapping multiple validation errors
-// returned by ProjectPermission.ValidateAll() if the designated constraints
+// MethodPermissionMultiError is an error wrapping multiple validation errors
+// returned by MethodPermission.ValidateAll() if the designated constraints
 // aren't met.
-type ProjectPermissionMultiError []error
+type MethodPermissionMultiError []error
 
 // Error returns a concatenation of all the error messages it wraps.
-func (m ProjectPermissionMultiError) Error() string {
+func (m MethodPermissionMultiError) Error() string {
 	var msgs []string
 	for _, err := range m {
 		msgs = append(msgs, err.Error())
@@ -564,11 +564,11 @@ func (m ProjectPermissionMultiError) Error() string {
 }
 
 // AllErrors returns a list of validation violation errors.
-func (m ProjectPermissionMultiError) AllErrors() []error { return m }
+func (m MethodPermissionMultiError) AllErrors() []error { return m }
 
-// ProjectPermissionValidationError is the validation error returned by
-// ProjectPermission.Validate if the designated constraints aren't met.
-type ProjectPermissionValidationError struct {
+// MethodPermissionValidationError is the validation error returned by
+// MethodPermission.Validate if the designated constraints aren't met.
+type MethodPermissionValidationError struct {
 	field  string
 	reason string
 	cause  error
@@ -576,24 +576,22 @@ type ProjectPermissionValidationError struct {
 }
 
 // Field function returns field value.
-func (e ProjectPermissionValidationError) Field() string { return e.field }
+func (e MethodPermissionValidationError) Field() string { return e.field }
 
 // Reason function returns reason value.
-func (e ProjectPermissionValidationError) Reason() string { return e.reason }
+func (e MethodPermissionValidationError) Reason() string { return e.reason }
 
 // Cause function returns cause value.
-func (e ProjectPermissionValidationError) Cause() error { return e.cause }
+func (e MethodPermissionValidationError) Cause() error { return e.cause }
 
 // Key function returns key value.
-func (e ProjectPermissionValidationError) Key() bool { return e.key }
+func (e MethodPermissionValidationError) Key() bool { return e.key }
 
 // ErrorName returns error name.
-func (e ProjectPermissionValidationError) ErrorName() string {
-	return "ProjectPermissionValidationError"
-}
+func (e MethodPermissionValidationError) ErrorName() string { return "MethodPermissionValidationError" }
 
 // Error satisfies the builtin error interface
-func (e ProjectPermissionValidationError) Error() string {
+func (e MethodPermissionValidationError) Error() string {
 	cause := ""
 	if e.cause != nil {
 		cause = fmt.Sprintf(" | caused by: %v", e.cause)
@@ -605,14 +603,14 @@ func (e ProjectPermissionValidationError) Error() string {
 	}
 
 	return fmt.Sprintf(
-		"invalid %sProjectPermission.%s: %s%s",
+		"invalid %sMethodPermission.%s: %s%s",
 		key,
 		e.field,
 		e.reason,
 		cause)
 }
 
-var _ error = ProjectPermissionValidationError{}
+var _ error = MethodPermissionValidationError{}
 
 var _ interface {
 	Field() string
@@ -620,7 +618,7 @@ var _ interface {
 	Key() bool
 	Cause() error
 	ErrorName() string
-} = ProjectPermissionValidationError{}
+} = MethodPermissionValidationError{}
 
 // Validate checks the field values on TokenRole with the rules defined in the
 // proto definition for this message. If any rules are violated, the first
