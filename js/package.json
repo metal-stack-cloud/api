@@ -1,6 +1,6 @@
 {
   "name": "@metal-stack-cloud/api",
-  "version": "0.6.1",
+  "version": "0.6.2",
   "description": "metal-cloud api js client",
   "main": "index.js",
   "repository": "https://github.com/metal-stack-cloud/api.git",

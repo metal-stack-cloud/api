@@ -216,9 +216,9 @@ export class Maintenance extends Message<Maintenance> {
  */
 export class MaintenanceTimeWindow extends Message<MaintenanceTimeWindow> {
   /**
-   * @generated from field: google.protobuf.Timestamp begin = 1;
+   * @generated from field: api.v1.Time begin = 1;
    */
-  begin?: Timestamp;
+  begin?: Time;
 
   /**
    * @generated from field: google.protobuf.Duration duration = 2;
@@ -233,7 +233,7 @@ export class MaintenanceTimeWindow extends Message<MaintenanceTimeWindow> {
   static readonly runtime: typeof proto3 = proto3;
   static readonly typeName = "api.v1.MaintenanceTimeWindow";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "begin", kind: "message", T: Timestamp },
+    { no: 1, name: "begin", kind: "message", T: Time },
     { no: 2, name: "duration", kind: "message", T: Duration },
   ]);
 
@@ -251,6 +251,63 @@ export class MaintenanceTimeWindow extends Message<MaintenanceTimeWindow> {
 
   static equals(a: MaintenanceTimeWindow | PlainMessage<MaintenanceTimeWindow> | undefined, b: MaintenanceTimeWindow | PlainMessage<MaintenanceTimeWindow> | undefined): boolean {
     return proto3.util.equals(MaintenanceTimeWindow, a, b);
+  }
+}
+
+/**
+ * Time of day
+ *
+ * @generated from message api.v1.Time
+ */
+export class Time extends Message<Time> {
+  /**
+   * hour begin of the maintenance window, specified in 24 hour format.
+   *
+   * @generated from field: uint32 hour = 1;
+   */
+  hour = 0;
+
+  /**
+   * hour:minute begin of the maintenance window.
+   *
+   * @generated from field: uint32 minute = 2;
+   */
+  minute = 0;
+
+  /**
+   * timezone specifies for which region in the world the given hour:minute should apply.
+   *
+   * @generated from field: string timezone = 3;
+   */
+  timezone = "";
+
+  constructor(data?: PartialMessage<Time>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "api.v1.Time";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "hour", kind: "scalar", T: 13 /* ScalarType.UINT32 */ },
+    { no: 2, name: "minute", kind: "scalar", T: 13 /* ScalarType.UINT32 */ },
+    { no: 3, name: "timezone", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Time {
+    return new Time().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): Time {
+    return new Time().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): Time {
+    return new Time().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: Time | PlainMessage<Time> | undefined, b: Time | PlainMessage<Time> | undefined): boolean {
+    return proto3.util.equals(Time, a, b);
   }
 }
 

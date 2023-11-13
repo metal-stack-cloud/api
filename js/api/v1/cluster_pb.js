@@ -4,7 +4,7 @@
 /* eslint-disable */
 // @ts-nocheck
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ClusterServiceWatchStatusResponse = exports.ClusterServiceListResponse = exports.ClusterServiceUpdateResponse = exports.ClusterServiceDeleteResponse = exports.ClusterServiceGetCredentialsResponse = exports.ClusterServiceGetResponse = exports.ClusterServiceCreateResponse = exports.ClusterMonitoring = exports.ClusterStatusLastError = exports.ClusterStatus = exports.ClusterServiceWatchStatusRequest = exports.ClusterServiceDeleteRequest = exports.ClusterServiceUpdateRequest = exports.ClusterServiceCreateRequest = exports.ClusterServiceListRequest = exports.ClusterServiceGetCredentialsRequest = exports.ClusterServiceGetRequest = exports.WorkerUpdate = exports.Worker = exports.MaintenanceTimeWindow = exports.Maintenance = exports.KubernetesSpec = exports.Cluster = void 0;
+exports.ClusterServiceWatchStatusResponse = exports.ClusterServiceListResponse = exports.ClusterServiceUpdateResponse = exports.ClusterServiceDeleteResponse = exports.ClusterServiceGetCredentialsResponse = exports.ClusterServiceGetResponse = exports.ClusterServiceCreateResponse = exports.ClusterMonitoring = exports.ClusterStatusLastError = exports.ClusterStatus = exports.ClusterServiceWatchStatusRequest = exports.ClusterServiceDeleteRequest = exports.ClusterServiceUpdateRequest = exports.ClusterServiceCreateRequest = exports.ClusterServiceListRequest = exports.ClusterServiceGetCredentialsRequest = exports.ClusterServiceGetRequest = exports.WorkerUpdate = exports.Worker = exports.Time = exports.MaintenanceTimeWindow = exports.Maintenance = exports.KubernetesSpec = exports.Cluster = void 0;
 const protobuf_1 = require("@bufbuild/protobuf");
 /**
  * Types
@@ -159,8 +159,57 @@ exports.MaintenanceTimeWindow = MaintenanceTimeWindow;
 MaintenanceTimeWindow.runtime = protobuf_1.proto3;
 MaintenanceTimeWindow.typeName = "api.v1.MaintenanceTimeWindow";
 MaintenanceTimeWindow.fields = protobuf_1.proto3.util.newFieldList(() => [
-    { no: 1, name: "begin", kind: "message", T: protobuf_1.Timestamp },
+    { no: 1, name: "begin", kind: "message", T: Time },
     { no: 2, name: "duration", kind: "message", T: protobuf_1.Duration },
+]);
+/**
+ * Time of day
+ *
+ * @generated from message api.v1.Time
+ */
+class Time extends protobuf_1.Message {
+    constructor(data) {
+        super();
+        /**
+         * hour begin of the maintenance window, specified in 24 hour format.
+         *
+         * @generated from field: uint32 hour = 1;
+         */
+        this.hour = 0;
+        /**
+         * hour:minute begin of the maintenance window.
+         *
+         * @generated from field: uint32 minute = 2;
+         */
+        this.minute = 0;
+        /**
+         * timezone specifies for which region in the world the given hour:minute should apply.
+         *
+         * @generated from field: string timezone = 3;
+         */
+        this.timezone = "";
+        protobuf_1.proto3.util.initPartial(data, this);
+    }
+    static fromBinary(bytes, options) {
+        return new Time().fromBinary(bytes, options);
+    }
+    static fromJson(jsonValue, options) {
+        return new Time().fromJson(jsonValue, options);
+    }
+    static fromJsonString(jsonString, options) {
+        return new Time().fromJsonString(jsonString, options);
+    }
+    static equals(a, b) {
+        return protobuf_1.proto3.util.equals(Time, a, b);
+    }
+}
+exports.Time = Time;
+Time.runtime = protobuf_1.proto3;
+Time.typeName = "api.v1.Time";
+Time.fields = protobuf_1.proto3.util.newFieldList(() => [
+    { no: 1, name: "hour", kind: "scalar", T: 13 /* ScalarType.UINT32 */ },
+    { no: 2, name: "minute", kind: "scalar", T: 13 /* ScalarType.UINT32 */ },
+    { no: 3, name: "timezone", kind: "scalar", T: 9 /* ScalarType.STRING */ },
 ]);
 /**
  * @generated from message api.v1.Worker

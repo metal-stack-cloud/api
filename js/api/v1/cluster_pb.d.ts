@@ -120,9 +120,9 @@ export declare class Maintenance extends Message<Maintenance> {
  */
 export declare class MaintenanceTimeWindow extends Message<MaintenanceTimeWindow> {
     /**
-     * @generated from field: google.protobuf.Timestamp begin = 1;
+     * @generated from field: api.v1.Time begin = 1;
      */
-    begin?: Timestamp;
+    begin?: Time;
     /**
      * @generated from field: google.protobuf.Duration duration = 2;
      */
@@ -135,6 +135,39 @@ export declare class MaintenanceTimeWindow extends Message<MaintenanceTimeWindow
     static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): MaintenanceTimeWindow;
     static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): MaintenanceTimeWindow;
     static equals(a: MaintenanceTimeWindow | PlainMessage<MaintenanceTimeWindow> | undefined, b: MaintenanceTimeWindow | PlainMessage<MaintenanceTimeWindow> | undefined): boolean;
+}
+/**
+ * Time of day
+ *
+ * @generated from message api.v1.Time
+ */
+export declare class Time extends Message<Time> {
+    /**
+     * hour begin of the maintenance window, specified in 24 hour format.
+     *
+     * @generated from field: uint32 hour = 1;
+     */
+    hour: number;
+    /**
+     * hour:minute begin of the maintenance window.
+     *
+     * @generated from field: uint32 minute = 2;
+     */
+    minute: number;
+    /**
+     * timezone specifies for which region in the world the given hour:minute should apply.
+     *
+     * @generated from field: string timezone = 3;
+     */
+    timezone: string;
+    constructor(data?: PartialMessage<Time>);
+    static readonly runtime: typeof proto3;
+    static readonly typeName = "api.v1.Time";
+    static readonly fields: FieldList;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Time;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): Time;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): Time;
+    static equals(a: Time | PlainMessage<Time> | undefined, b: Time | PlainMessage<Time> | undefined): boolean;
 }
 /**
  * @generated from message api.v1.Worker
