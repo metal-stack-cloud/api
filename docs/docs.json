@@ -737,6 +737,38 @@
       "extensions": [],
       "messages": [
         {
+          "name": "APIServerACL",
+          "longName": "APIServerACL",
+          "fullName": "api.v1.APIServerACL",
+          "description": "APiServerACL defines which source ip addresses are allowed to talk to the API Server.",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "source_addresses",
+              "description": "source_addresses a list of ip addresses which are allowed.",
+              "label": "repeated",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": "",
+              "options": {
+                "validate.rules": [
+                  {
+                    "name": "repeated.items.string.ip",
+                    "value": true
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
           "name": "Cluster",
           "longName": "Cluster",
           "fullName": "api.v1.Cluster",
@@ -941,6 +973,18 @@
               "type": "ClusterMonitoring",
               "longType": "ClusterMonitoring",
               "fullType": "api.v1.ClusterMonitoring",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "api_server_acl",
+              "description": "",
+              "label": "",
+              "type": "APIServerACL",
+              "longType": "APIServerACL",
+              "fullType": "api.v1.APIServerACL",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
@@ -1532,6 +1576,18 @@
               "ismap": false,
               "isoneof": true,
               "oneofdecl": "_maintenance",
+              "defaultValue": ""
+            },
+            {
+              "name": "api_server_acl",
+              "description": "",
+              "label": "optional",
+              "type": "APIServerACL",
+              "longType": "APIServerACL",
+              "fullType": "api.v1.APIServerACL",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "_api_server_acl",
               "defaultValue": ""
             }
           ]

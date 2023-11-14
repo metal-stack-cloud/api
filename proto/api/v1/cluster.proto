@@ -69,6 +69,7 @@ message Cluster {
   ClusterStatus status = 20;
   optional string purpose = 21;
   ClusterMonitoring monitoring = 22;
+  APIServerACL api_server_acl = 23;
 }
 
 message KubernetesSpec {
@@ -122,6 +123,12 @@ message WorkerUpdate {
   optional uint32 maxunavailable = 6 [(validate.rules).uint32.lte = 64];
 }
 
+// APiServerACL defines which source ip addresses are allowed to talk to the API Server.
+message APIServerACL {
+  // source_addresses a list of ip addresses which are allowed.
+  repeated string source_addresses = 1 [(validate.rules).repeated.items.string.ip = true];
+}
+
 // Requests
 message ClusterServiceGetRequest {
   string uuid = 1 [(validate.rules).string.uuid = true];
@@ -169,6 +176,7 @@ message ClusterServiceUpdateRequest {
   optional KubernetesSpec kubernetes = 3;
   repeated WorkerUpdate workers = 4;
   optional Maintenance maintenance = 5;
+  optional APIServerACL api_server_acl = 23;
 }
 message ClusterServiceDeleteRequest {
   string uuid = 1 [(validate.rules).string.uuid = true];
