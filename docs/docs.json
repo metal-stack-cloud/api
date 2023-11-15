@@ -747,6 +747,18 @@
           "extensions": [],
           "fields": [
             {
+              "name": "enabled",
+              "description": "enabled must be true if the acls should take effect.\nCan be set to false to temporarily disable the acls without loosing the original list of source addresses",
+              "label": "",
+              "type": "bool",
+              "longType": "bool",
+              "fullType": "bool",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
               "name": "source_addresses",
               "description": "source_addresses a list of ip addresses which are allowed.",
               "label": "repeated",

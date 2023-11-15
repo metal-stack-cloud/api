@@ -1227,6 +1227,8 @@ func (m *APIServerACL) validate(all bool) error {
 
 	var errors []error
 
+	// no validation rules for Enabled
+
 	for idx, item := range m.GetSourceAddresses() {
 		_, _ = idx, item
 

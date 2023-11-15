@@ -401,9 +401,17 @@ export class WorkerUpdate extends Message<WorkerUpdate> {
  */
 export class APIServerACL extends Message<APIServerACL> {
   /**
+   * enabled must be true if the acls should take effect.
+   * Can be set to false to temporarily disable the acls without loosing the original list of source addresses
+   *
+   * @generated from field: bool enabled = 1;
+   */
+  enabled = false;
+
+  /**
    * source_addresses a list of ip addresses which are allowed.
    *
-   * @generated from field: repeated string source_addresses = 1;
+   * @generated from field: repeated string source_addresses = 2;
    */
   sourceAddresses: string[] = [];
 
@@ -415,7 +423,8 @@ export class APIServerACL extends Message<APIServerACL> {
   static readonly runtime: typeof proto3 = proto3;
   static readonly typeName = "api.v1.APIServerACL";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "source_addresses", kind: "scalar", T: 9 /* ScalarType.STRING */, repeated: true },
+    { no: 1, name: "enabled", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
+    { no: 2, name: "source_addresses", kind: "scalar", T: 9 /* ScalarType.STRING */, repeated: true },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): APIServerACL {

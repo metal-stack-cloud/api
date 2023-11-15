@@ -221,9 +221,16 @@ export declare class WorkerUpdate extends Message<WorkerUpdate> {
  */
 export declare class APIServerACL extends Message<APIServerACL> {
     /**
+     * enabled must be true if the acls should take effect.
+     * Can be set to false to temporarily disable the acls without loosing the original list of source addresses
+     *
+     * @generated from field: bool enabled = 1;
+     */
+    enabled: boolean;
+    /**
      * source_addresses a list of ip addresses which are allowed.
      *
-     * @generated from field: repeated string source_addresses = 1;
+     * @generated from field: repeated string source_addresses = 2;
      */
     sourceAddresses: string[];
     constructor(data?: PartialMessage<APIServerACL>);

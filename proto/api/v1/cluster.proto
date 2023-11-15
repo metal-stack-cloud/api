@@ -125,8 +125,11 @@ message WorkerUpdate {
 
 // APiServerACL defines which source ip addresses are allowed to talk to the API Server.
 message APIServerACL {
+  // enabled must be true if the acls should take effect.
+  // Can be set to false to temporarily disable the acls without loosing the original list of source addresses
+  bool enabled = 1;
   // source_addresses a list of ip addresses which are allowed.
-  repeated string source_addresses = 1 [(validate.rules).repeated.items.string.ip = true];
+  repeated string source_addresses = 2 [(validate.rules).repeated.items.string.ip = true];
 }
 
 // Requests
