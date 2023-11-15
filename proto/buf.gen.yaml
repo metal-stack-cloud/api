@@ -16,7 +16,7 @@ plugins:
     out: ../go
     opt: paths=source_relative
   # generate ts structs for protocol buffer definition
-  - plugin: buf.build/bufbuild/es:v1.4.1
+  - plugin: buf.build/bufbuild/es:v1.4.2
     out: ../js
     opt: target=ts
   - plugin: buf.build/connectrpc/es:v1.1.3
@@ -31,7 +31,7 @@ plugins:
     out: ../docs
     opt: json,docs.json
   # Create python client
-  # - plugin: buf.build/protocolbuffers/python:v23.4
+  # - plugin: buf.build/protocolbuffers/python:v25.0
   #   out: ../python
-  # - plugin: buf.build/grpc/python:v1.56.0
+  # - plugin: buf.build/grpc/python:v1.59.2
   #   out: ../python

@@ -64,6 +64,10 @@ export declare class Cluster extends Message<Cluster> {
      * @generated from field: api.v1.ClusterMonitoring monitoring = 22;
      */
     monitoring?: ClusterMonitoring;
+    /**
+     * @generated from field: api.v1.APIServerACL api_server_acl = 23;
+     */
+    apiServerAcl?: APIServerACL;
     constructor(data?: PartialMessage<Cluster>);
     static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.Cluster";
@@ -211,6 +215,34 @@ export declare class WorkerUpdate extends Message<WorkerUpdate> {
     static equals(a: WorkerUpdate | PlainMessage<WorkerUpdate> | undefined, b: WorkerUpdate | PlainMessage<WorkerUpdate> | undefined): boolean;
 }
 /**
+ * APiServerACL defines which source ip addresses are allowed to talk to the API Server.
+ *
+ * @generated from message api.v1.APIServerACL
+ */
+export declare class APIServerACL extends Message<APIServerACL> {
+    /**
+     * enabled must be true if the acls should take effect.
+     * Can be set to false to temporarily disable the acls without loosing the original list of source addresses
+     *
+     * @generated from field: bool enabled = 1;
+     */
+    enabled: boolean;
+    /**
+     * source_addresses a list of ip addresses which are allowed.
+     *
+     * @generated from field: repeated string source_addresses = 2;
+     */
+    sourceAddresses: string[];
+    constructor(data?: PartialMessage<APIServerACL>);
+    static readonly runtime: typeof proto3;
+    static readonly typeName = "api.v1.APIServerACL";
+    static readonly fields: FieldList;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): APIServerACL;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): APIServerACL;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): APIServerACL;
+    static equals(a: APIServerACL | PlainMessage<APIServerACL> | undefined, b: APIServerACL | PlainMessage<APIServerACL> | undefined): boolean;
+}
+/**
  * Requests
  *
  * @generated from message api.v1.ClusterServiceGetRequest
@@ -338,6 +370,10 @@ export declare class ClusterServiceUpdateRequest extends Message<ClusterServiceU
      * @generated from field: optional api.v1.Maintenance maintenance = 5;
      */
     maintenance?: Maintenance;
+    /**
+     * @generated from field: optional api.v1.APIServerACL api_server_acl = 23;
+     */
+    apiServerAcl?: APIServerACL;
     constructor(data?: PartialMessage<ClusterServiceUpdateRequest>);
     static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.ClusterServiceUpdateRequest";
