@@ -3458,6 +3458,18 @@
               "isoneof": true,
               "oneofdecl": "_phone_number",
               "defaultValue": ""
+            },
+            {
+              "name": "balance",
+              "description": "",
+              "label": "optional",
+              "type": "int64",
+              "longType": "int64",
+              "fullType": "int64",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "_balance",
+              "defaultValue": ""
             }
           ]
         },
@@ -4176,6 +4188,18 @@
               "isoneof": false,
               "oneofdecl": "",
               "defaultValue": ""
+            },
+            {
+              "name": "positive_balance",
+              "description": "",
+              "label": "",
+              "type": "bool",
+              "longType": "bool",
+              "fullType": "bool",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
             }
           ]
         },
@@ -4586,6 +4610,66 @@
       "extensions": [],
       "messages": [
         {
+          "name": "PaymentServiceAddBalanceToCustomerRequest",
+          "longName": "PaymentServiceAddBalanceToCustomerRequest",
+          "fullName": "admin.v1.PaymentServiceAddBalanceToCustomerRequest",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "customer",
+              "description": "",
+              "label": "",
+              "type": "PaymentCustomer",
+              "longType": "api.v1.PaymentCustomer",
+              "fullType": "api.v1.PaymentCustomer",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "balance",
+              "description": "",
+              "label": "",
+              "type": "int64",
+              "longType": "int64",
+              "fullType": "int64",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "PaymentServiceAddBalanceToCustomerResponse",
+          "longName": "PaymentServiceAddBalanceToCustomerResponse",
+          "fullName": "admin.v1.PaymentServiceAddBalanceToCustomerResponse",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "customer",
+              "description": "",
+              "label": "",
+              "type": "PaymentCustomer",
+              "longType": "api.v1.PaymentCustomer",
+              "fullType": "api.v1.PaymentCustomer",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
           "name": "PaymentServiceAddCouponToCustomerRequest",
           "longName": "PaymentServiceAddCouponToCustomerRequest",
           "fullName": "admin.v1.PaymentServiceAddCouponToCustomerRequest",
@@ -4710,6 +4794,18 @@
               "responseType": "PaymentServiceAddCouponToCustomerResponse",
               "responseLongType": "PaymentServiceAddCouponToCustomerResponse",
               "responseFullType": "admin.v1.PaymentServiceAddCouponToCustomerResponse",
+              "responseStreaming": false
+            },
+            {
+              "name": "AddBalanceToCustomer",
+              "description": "",
+              "requestType": "PaymentServiceAddBalanceToCustomerRequest",
+              "requestLongType": "PaymentServiceAddBalanceToCustomerRequest",
+              "requestFullType": "admin.v1.PaymentServiceAddBalanceToCustomerRequest",
+              "requestStreaming": false,
+              "responseType": "PaymentServiceAddBalanceToCustomerResponse",
+              "responseLongType": "PaymentServiceAddBalanceToCustomerResponse",
+              "responseFullType": "admin.v1.PaymentServiceAddBalanceToCustomerResponse",
               "responseStreaming": false
             }
           ]

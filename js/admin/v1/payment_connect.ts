@@ -3,7 +3,7 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import { PaymentServiceAddCouponToCustomerRequest, PaymentServiceAddCouponToCustomerResponse, PaymentServiceListCouponsRequest, PaymentServiceListCouponsResponse } from "./payment_pb.js";
+import { PaymentServiceAddBalanceToCustomerRequest, PaymentServiceAddBalanceToCustomerResponse, PaymentServiceAddCouponToCustomerRequest, PaymentServiceAddCouponToCustomerResponse, PaymentServiceListCouponsRequest, PaymentServiceListCouponsResponse } from "./payment_pb.js";
 import { MethodKind } from "@bufbuild/protobuf";
 
 /**
@@ -28,6 +28,15 @@ export const PaymentService = {
       name: "AddCouponToCustomer",
       I: PaymentServiceAddCouponToCustomerRequest,
       O: PaymentServiceAddCouponToCustomerResponse,
+      kind: MethodKind.Unary,
+    },
+    /**
+     * @generated from rpc admin.v1.PaymentService.AddBalanceToCustomer
+     */
+    addBalanceToCustomer: {
+      name: "AddBalanceToCustomer",
+      I: PaymentServiceAddBalanceToCustomerRequest,
+      O: PaymentServiceAddBalanceToCustomerResponse,
       kind: MethodKind.Unary,
     },
   }

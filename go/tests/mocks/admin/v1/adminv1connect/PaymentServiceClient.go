@@ -16,6 +16,32 @@ type PaymentServiceClient struct {
 	mock.Mock
 }
 
+// AddBalanceToCustomer provides a mock function with given fields: _a0, _a1
+func (_m *PaymentServiceClient) AddBalanceToCustomer(_a0 context.Context, _a1 *connect.Request[adminv1.PaymentServiceAddBalanceToCustomerRequest]) (*connect.Response[adminv1.PaymentServiceAddBalanceToCustomerResponse], error) {
+	ret := _m.Called(_a0, _a1)
+
+	var r0 *connect.Response[adminv1.PaymentServiceAddBalanceToCustomerResponse]
+	var r1 error
+	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[adminv1.PaymentServiceAddBalanceToCustomerRequest]) (*connect.Response[adminv1.PaymentServiceAddBalanceToCustomerResponse], error)); ok {
+		return rf(_a0, _a1)
+	}
+	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[adminv1.PaymentServiceAddBalanceToCustomerRequest]) *connect.Response[adminv1.PaymentServiceAddBalanceToCustomerResponse]); ok {
+		r0 = rf(_a0, _a1)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*connect.Response[adminv1.PaymentServiceAddBalanceToCustomerResponse])
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(context.Context, *connect.Request[adminv1.PaymentServiceAddBalanceToCustomerRequest]) error); ok {
+		r1 = rf(_a0, _a1)
+	} else {
+		r1 = ret.Error(1)
+	}
+
+	return r0, r1
+}
+
 // AddCouponToCustomer provides a mock function with given fields: _a0, _a1
 func (_m *PaymentServiceClient) AddCouponToCustomer(_a0 context.Context, _a1 *connect.Request[adminv1.PaymentServiceAddCouponToCustomerRequest]) (*connect.Response[adminv1.PaymentServiceAddCouponToCustomerResponse], error) {
 	ret := _m.Called(_a0, _a1)

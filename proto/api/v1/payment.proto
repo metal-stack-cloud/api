@@ -74,6 +74,7 @@ message PaymentCustomer {
   optional Coupon coupon = 10;
   optional string vat = 11;
   optional string phone_number = 12;
+  optional int64 balance = 13;
 }
 
 message Card {
@@ -203,6 +204,7 @@ message PaymentServiceHasPaymentMethodRequest {
 message PaymentServiceHasPaymentMethodResponse {
   bool exists = 1;
   bool coupon_left = 2;
+  bool positive_balance = 3;
 }
 
 message PaymentServiceDeletePaymentMethodRequest {

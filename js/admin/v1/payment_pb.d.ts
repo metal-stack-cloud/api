@@ -69,3 +69,41 @@ export declare class PaymentServiceAddCouponToCustomerResponse extends Message<P
     static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): PaymentServiceAddCouponToCustomerResponse;
     static equals(a: PaymentServiceAddCouponToCustomerResponse | PlainMessage<PaymentServiceAddCouponToCustomerResponse> | undefined, b: PaymentServiceAddCouponToCustomerResponse | PlainMessage<PaymentServiceAddCouponToCustomerResponse> | undefined): boolean;
 }
+/**
+ * @generated from message admin.v1.PaymentServiceAddBalanceToCustomerRequest
+ */
+export declare class PaymentServiceAddBalanceToCustomerRequest extends Message<PaymentServiceAddBalanceToCustomerRequest> {
+    /**
+     * @generated from field: api.v1.PaymentCustomer customer = 1;
+     */
+    customer?: PaymentCustomer;
+    /**
+     * @generated from field: int64 balance = 2;
+     */
+    balance: bigint;
+    constructor(data?: PartialMessage<PaymentServiceAddBalanceToCustomerRequest>);
+    static readonly runtime: typeof proto3;
+    static readonly typeName = "admin.v1.PaymentServiceAddBalanceToCustomerRequest";
+    static readonly fields: FieldList;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): PaymentServiceAddBalanceToCustomerRequest;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): PaymentServiceAddBalanceToCustomerRequest;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): PaymentServiceAddBalanceToCustomerRequest;
+    static equals(a: PaymentServiceAddBalanceToCustomerRequest | PlainMessage<PaymentServiceAddBalanceToCustomerRequest> | undefined, b: PaymentServiceAddBalanceToCustomerRequest | PlainMessage<PaymentServiceAddBalanceToCustomerRequest> | undefined): boolean;
+}
+/**
+ * @generated from message admin.v1.PaymentServiceAddBalanceToCustomerResponse
+ */
+export declare class PaymentServiceAddBalanceToCustomerResponse extends Message<PaymentServiceAddBalanceToCustomerResponse> {
+    /**
+     * @generated from field: api.v1.PaymentCustomer customer = 1;
+     */
+    customer?: PaymentCustomer;
+    constructor(data?: PartialMessage<PaymentServiceAddBalanceToCustomerResponse>);
+    static readonly runtime: typeof proto3;
+    static readonly typeName = "admin.v1.PaymentServiceAddBalanceToCustomerResponse";
+    static readonly fields: FieldList;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): PaymentServiceAddBalanceToCustomerResponse;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): PaymentServiceAddBalanceToCustomerResponse;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): PaymentServiceAddBalanceToCustomerResponse;
+    static equals(a: PaymentServiceAddBalanceToCustomerResponse | PlainMessage<PaymentServiceAddBalanceToCustomerResponse> | undefined, b: PaymentServiceAddBalanceToCustomerResponse | PlainMessage<PaymentServiceAddBalanceToCustomerResponse> | undefined): boolean;
+}
