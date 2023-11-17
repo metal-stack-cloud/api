@@ -7733,6 +7733,18 @@
               "isoneof": true,
               "oneofdecl": "_coupon_id",
               "defaultValue": ""
+            },
+            {
+              "name": "balance",
+              "description": "",
+              "label": "optional",
+              "type": "int64",
+              "longType": "int64",
+              "fullType": "int64",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "_balance",
+              "defaultValue": ""
             }
           ]
         },
