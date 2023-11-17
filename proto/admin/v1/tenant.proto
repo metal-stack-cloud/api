@@ -35,6 +35,7 @@ message TenantServiceListResponse {
 message TenantServiceAdmitRequest {
   string tenant_id = 1;
   optional string coupon_id = 2;
+  optional int64 balance = 3;
 }
 message TenantServiceAdmitResponse {
   api.v1.Tenant tenant = 1;

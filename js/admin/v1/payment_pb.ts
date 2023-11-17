@@ -4,7 +4,7 @@
 // @ts-nocheck
 
 import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
-import { Message, proto3 } from "@bufbuild/protobuf";
+import { Message, proto3, protoInt64 } from "@bufbuild/protobuf";
 import { Coupon, PaymentCustomer } from "../../api/v1/payment_pb.js";
 
 /**
@@ -152,6 +152,86 @@ export class PaymentServiceAddCouponToCustomerResponse extends Message<PaymentSe
 
   static equals(a: PaymentServiceAddCouponToCustomerResponse | PlainMessage<PaymentServiceAddCouponToCustomerResponse> | undefined, b: PaymentServiceAddCouponToCustomerResponse | PlainMessage<PaymentServiceAddCouponToCustomerResponse> | undefined): boolean {
     return proto3.util.equals(PaymentServiceAddCouponToCustomerResponse, a, b);
+  }
+}
+
+/**
+ * @generated from message admin.v1.PaymentServiceAddBalanceToCustomerRequest
+ */
+export class PaymentServiceAddBalanceToCustomerRequest extends Message<PaymentServiceAddBalanceToCustomerRequest> {
+  /**
+   * @generated from field: api.v1.PaymentCustomer customer = 1;
+   */
+  customer?: PaymentCustomer;
+
+  /**
+   * @generated from field: int64 balance = 2;
+   */
+  balance = protoInt64.zero;
+
+  constructor(data?: PartialMessage<PaymentServiceAddBalanceToCustomerRequest>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "admin.v1.PaymentServiceAddBalanceToCustomerRequest";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "customer", kind: "message", T: PaymentCustomer },
+    { no: 2, name: "balance", kind: "scalar", T: 3 /* ScalarType.INT64 */ },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): PaymentServiceAddBalanceToCustomerRequest {
+    return new PaymentServiceAddBalanceToCustomerRequest().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): PaymentServiceAddBalanceToCustomerRequest {
+    return new PaymentServiceAddBalanceToCustomerRequest().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): PaymentServiceAddBalanceToCustomerRequest {
+    return new PaymentServiceAddBalanceToCustomerRequest().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: PaymentServiceAddBalanceToCustomerRequest | PlainMessage<PaymentServiceAddBalanceToCustomerRequest> | undefined, b: PaymentServiceAddBalanceToCustomerRequest | PlainMessage<PaymentServiceAddBalanceToCustomerRequest> | undefined): boolean {
+    return proto3.util.equals(PaymentServiceAddBalanceToCustomerRequest, a, b);
+  }
+}
+
+/**
+ * @generated from message admin.v1.PaymentServiceAddBalanceToCustomerResponse
+ */
+export class PaymentServiceAddBalanceToCustomerResponse extends Message<PaymentServiceAddBalanceToCustomerResponse> {
+  /**
+   * @generated from field: api.v1.PaymentCustomer customer = 1;
+   */
+  customer?: PaymentCustomer;
+
+  constructor(data?: PartialMessage<PaymentServiceAddBalanceToCustomerResponse>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "admin.v1.PaymentServiceAddBalanceToCustomerResponse";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "customer", kind: "message", T: PaymentCustomer },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): PaymentServiceAddBalanceToCustomerResponse {
+    return new PaymentServiceAddBalanceToCustomerResponse().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): PaymentServiceAddBalanceToCustomerResponse {
+    return new PaymentServiceAddBalanceToCustomerResponse().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): PaymentServiceAddBalanceToCustomerResponse {
+    return new PaymentServiceAddBalanceToCustomerResponse().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: PaymentServiceAddBalanceToCustomerResponse | PlainMessage<PaymentServiceAddBalanceToCustomerResponse> | undefined, b: PaymentServiceAddBalanceToCustomerResponse | PlainMessage<PaymentServiceAddBalanceToCustomerResponse> | undefined): boolean {
+    return proto3.util.equals(PaymentServiceAddBalanceToCustomerResponse, a, b);
   }
 }
 

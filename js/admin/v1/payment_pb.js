@@ -4,7 +4,7 @@
 /* eslint-disable */
 // @ts-nocheck
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.PaymentServiceAddCouponToCustomerResponse = exports.PaymentServiceAddCouponToCustomerRequest = exports.PaymentServiceListCouponsResponse = exports.PaymentServiceListCouponsRequest = void 0;
+exports.PaymentServiceAddBalanceToCustomerResponse = exports.PaymentServiceAddBalanceToCustomerRequest = exports.PaymentServiceAddCouponToCustomerResponse = exports.PaymentServiceAddCouponToCustomerRequest = exports.PaymentServiceListCouponsResponse = exports.PaymentServiceListCouponsRequest = void 0;
 const protobuf_1 = require("@bufbuild/protobuf");
 const payment_pb_js_1 = require("../../api/v1/payment_pb.js");
 /**
@@ -120,5 +120,64 @@ exports.PaymentServiceAddCouponToCustomerResponse = PaymentServiceAddCouponToCus
 PaymentServiceAddCouponToCustomerResponse.runtime = protobuf_1.proto3;
 PaymentServiceAddCouponToCustomerResponse.typeName = "admin.v1.PaymentServiceAddCouponToCustomerResponse";
 PaymentServiceAddCouponToCustomerResponse.fields = protobuf_1.proto3.util.newFieldList(() => [
+    { no: 1, name: "customer", kind: "message", T: payment_pb_js_1.PaymentCustomer },
+]);
+/**
+ * @generated from message admin.v1.PaymentServiceAddBalanceToCustomerRequest
+ */
+class PaymentServiceAddBalanceToCustomerRequest extends protobuf_1.Message {
+    constructor(data) {
+        super();
+        /**
+         * @generated from field: int64 balance = 2;
+         */
+        this.balance = protobuf_1.protoInt64.zero;
+        protobuf_1.proto3.util.initPartial(data, this);
+    }
+    static fromBinary(bytes, options) {
+        return new PaymentServiceAddBalanceToCustomerRequest().fromBinary(bytes, options);
+    }
+    static fromJson(jsonValue, options) {
+        return new PaymentServiceAddBalanceToCustomerRequest().fromJson(jsonValue, options);
+    }
+    static fromJsonString(jsonString, options) {
+        return new PaymentServiceAddBalanceToCustomerRequest().fromJsonString(jsonString, options);
+    }
+    static equals(a, b) {
+        return protobuf_1.proto3.util.equals(PaymentServiceAddBalanceToCustomerRequest, a, b);
+    }
+}
+exports.PaymentServiceAddBalanceToCustomerRequest = PaymentServiceAddBalanceToCustomerRequest;
+PaymentServiceAddBalanceToCustomerRequest.runtime = protobuf_1.proto3;
+PaymentServiceAddBalanceToCustomerRequest.typeName = "admin.v1.PaymentServiceAddBalanceToCustomerRequest";
+PaymentServiceAddBalanceToCustomerRequest.fields = protobuf_1.proto3.util.newFieldList(() => [
+    { no: 1, name: "customer", kind: "message", T: payment_pb_js_1.PaymentCustomer },
+    { no: 2, name: "balance", kind: "scalar", T: 3 /* ScalarType.INT64 */ },
+]);
+/**
+ * @generated from message admin.v1.PaymentServiceAddBalanceToCustomerResponse
+ */
+class PaymentServiceAddBalanceToCustomerResponse extends protobuf_1.Message {
+    constructor(data) {
+        super();
+        protobuf_1.proto3.util.initPartial(data, this);
+    }
+    static fromBinary(bytes, options) {
+        return new PaymentServiceAddBalanceToCustomerResponse().fromBinary(bytes, options);
+    }
+    static fromJson(jsonValue, options) {
+        return new PaymentServiceAddBalanceToCustomerResponse().fromJson(jsonValue, options);
+    }
+    static fromJsonString(jsonString, options) {
+        return new PaymentServiceAddBalanceToCustomerResponse().fromJsonString(jsonString, options);
+    }
+    static equals(a, b) {
+        return protobuf_1.proto3.util.equals(PaymentServiceAddBalanceToCustomerResponse, a, b);
+    }
+}
+exports.PaymentServiceAddBalanceToCustomerResponse = PaymentServiceAddBalanceToCustomerResponse;
+PaymentServiceAddBalanceToCustomerResponse.runtime = protobuf_1.proto3;
+PaymentServiceAddBalanceToCustomerResponse.typeName = "admin.v1.PaymentServiceAddBalanceToCustomerResponse";
+PaymentServiceAddBalanceToCustomerResponse.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 1, name: "customer", kind: "message", T: payment_pb_js_1.PaymentCustomer },
 ]);

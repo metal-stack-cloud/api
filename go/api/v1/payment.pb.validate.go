@@ -214,6 +214,10 @@ func (m *PaymentCustomer) validate(all bool) error {
 		// no validation rules for PhoneNumber
 	}
 
+	if m.Balance != nil {
+		// no validation rules for Balance
+	}
+
 	if len(errors) > 0 {
 		return PaymentCustomerMultiError(errors)
 	}
@@ -2327,6 +2331,8 @@ func (m *PaymentServiceHasPaymentMethodResponse) validate(all bool) error {
 	// no validation rules for Exists
 
 	// no validation rules for CouponLeft
+
+	// no validation rules for PositiveBalance
 
 	if len(errors) > 0 {
 		return PaymentServiceHasPaymentMethodResponseMultiError(errors)

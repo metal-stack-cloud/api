@@ -39,12 +39,16 @@ const (
 	// PaymentServiceAddCouponToCustomerProcedure is the fully-qualified name of the PaymentService's
 	// AddCouponToCustomer RPC.
 	PaymentServiceAddCouponToCustomerProcedure = "/admin.v1.PaymentService/AddCouponToCustomer"
+	// PaymentServiceAddBalanceToCustomerProcedure is the fully-qualified name of the PaymentService's
+	// AddBalanceToCustomer RPC.
+	PaymentServiceAddBalanceToCustomerProcedure = "/admin.v1.PaymentService/AddBalanceToCustomer"
 )
 
 // PaymentServiceClient is a client for the admin.v1.PaymentService service.
 type PaymentServiceClient interface {
 	ListCoupons(context.Context, *connect.Request[v1.PaymentServiceListCouponsRequest]) (*connect.Response[v1.PaymentServiceListCouponsResponse], error)
 	AddCouponToCustomer(context.Context, *connect.Request[v1.PaymentServiceAddCouponToCustomerRequest]) (*connect.Response[v1.PaymentServiceAddCouponToCustomerResponse], error)
+	AddBalanceToCustomer(context.Context, *connect.Request[v1.PaymentServiceAddBalanceToCustomerRequest]) (*connect.Response[v1.PaymentServiceAddBalanceToCustomerResponse], error)
 }
 
 // NewPaymentServiceClient constructs a client for the admin.v1.PaymentService service. By default,
@@ -67,13 +71,19 @@ func NewPaymentServiceClient(httpClient connect.HTTPClient, baseURL string, opts
 			baseURL+PaymentServiceAddCouponToCustomerProcedure,
 			opts...,
 		),
+		addBalanceToCustomer: connect.NewClient[v1.PaymentServiceAddBalanceToCustomerRequest, v1.PaymentServiceAddBalanceToCustomerResponse](
+			httpClient,
+			baseURL+PaymentServiceAddBalanceToCustomerProcedure,
+			opts...,
+		),
 	}
 }
 
 // paymentServiceClient implements PaymentServiceClient.
 type paymentServiceClient struct {
-	listCoupons         *connect.Client[v1.PaymentServiceListCouponsRequest, v1.PaymentServiceListCouponsResponse]
-	addCouponToCustomer *connect.Client[v1.PaymentServiceAddCouponToCustomerRequest, v1.PaymentServiceAddCouponToCustomerResponse]
+	listCoupons          *connect.Client[v1.PaymentServiceListCouponsRequest, v1.PaymentServiceListCouponsResponse]
+	addCouponToCustomer  *connect.Client[v1.PaymentServiceAddCouponToCustomerRequest, v1.PaymentServiceAddCouponToCustomerResponse]
+	addBalanceToCustomer *connect.Client[v1.PaymentServiceAddBalanceToCustomerRequest, v1.PaymentServiceAddBalanceToCustomerResponse]
 }
 
 // ListCoupons calls admin.v1.PaymentService.ListCoupons.
@@ -86,10 +96,16 @@ func (c *paymentServiceClient) AddCouponToCustomer(ctx context.Context, req *con
 	return c.addCouponToCustomer.CallUnary(ctx, req)
 }
 
+// AddBalanceToCustomer calls admin.v1.PaymentService.AddBalanceToCustomer.
+func (c *paymentServiceClient) AddBalanceToCustomer(ctx context.Context, req *connect.Request[v1.PaymentServiceAddBalanceToCustomerRequest]) (*connect.Response[v1.PaymentServiceAddBalanceToCustomerResponse], error) {
+	return c.addBalanceToCustomer.CallUnary(ctx, req)
+}
+
 // PaymentServiceHandler is an implementation of the admin.v1.PaymentService service.
 type PaymentServiceHandler interface {
 	ListCoupons(context.Context, *connect.Request[v1.PaymentServiceListCouponsRequest]) (*connect.Response[v1.PaymentServiceListCouponsResponse], error)
 	AddCouponToCustomer(context.Context, *connect.Request[v1.PaymentServiceAddCouponToCustomerRequest]) (*connect.Response[v1.PaymentServiceAddCouponToCustomerResponse], error)
+	AddBalanceToCustomer(context.Context, *connect.Request[v1.PaymentServiceAddBalanceToCustomerRequest]) (*connect.Response[v1.PaymentServiceAddBalanceToCustomerResponse], error)
 }
 
 // NewPaymentServiceHandler builds an HTTP handler from the service implementation. It returns the
@@ -108,12 +124,19 @@ func NewPaymentServiceHandler(svc PaymentServiceHandler, opts ...connect.Handler
 		svc.AddCouponToCustomer,
 		opts...,
 	)
+	paymentServiceAddBalanceToCustomerHandler := connect.NewUnaryHandler(
+		PaymentServiceAddBalanceToCustomerProcedure,
+		svc.AddBalanceToCustomer,
+		opts...,
+	)
 	return "/admin.v1.PaymentService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
 		case PaymentServiceListCouponsProcedure:
 			paymentServiceListCouponsHandler.ServeHTTP(w, r)
 		case PaymentServiceAddCouponToCustomerProcedure:
 			paymentServiceAddCouponToCustomerHandler.ServeHTTP(w, r)
+		case PaymentServiceAddBalanceToCustomerProcedure:
+			paymentServiceAddBalanceToCustomerHandler.ServeHTTP(w, r)
 		default:
 			http.NotFound(w, r)
 		}
@@ -129,4 +152,8 @@ func (UnimplementedPaymentServiceHandler) ListCoupons(context.Context, *connect.
 
 func (UnimplementedPaymentServiceHandler) AddCouponToCustomer(context.Context, *connect.Request[v1.PaymentServiceAddCouponToCustomerRequest]) (*connect.Response[v1.PaymentServiceAddCouponToCustomerResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("admin.v1.PaymentService.AddCouponToCustomer is not implemented"))
+}
+
+func (UnimplementedPaymentServiceHandler) AddBalanceToCustomer(context.Context, *connect.Request[v1.PaymentServiceAddBalanceToCustomerRequest]) (*connect.Response[v1.PaymentServiceAddBalanceToCustomerResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("admin.v1.PaymentService.AddBalanceToCustomer is not implemented"))
 }

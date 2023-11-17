@@ -89,6 +89,7 @@ PaymentCustomer.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 10, name: "coupon", kind: "message", T: Coupon, opt: true },
     { no: 11, name: "vat", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
     { no: 12, name: "phone_number", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
+    { no: 13, name: "balance", kind: "scalar", T: 3 /* ScalarType.INT64 */, opt: true },
 ]);
 /**
  * @generated from message api.v1.Card
@@ -696,6 +697,10 @@ class PaymentServiceHasPaymentMethodResponse extends protobuf_1.Message {
          * @generated from field: bool coupon_left = 2;
          */
         this.couponLeft = false;
+        /**
+         * @generated from field: bool positive_balance = 3;
+         */
+        this.positiveBalance = false;
         protobuf_1.proto3.util.initPartial(data, this);
     }
     static fromBinary(bytes, options) {
@@ -717,6 +722,7 @@ PaymentServiceHasPaymentMethodResponse.typeName = "api.v1.PaymentServiceHasPayme
 PaymentServiceHasPaymentMethodResponse.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 1, name: "exists", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
     { no: 2, name: "coupon_left", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
+    { no: 3, name: "positive_balance", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
 ]);
 /**
  * @generated from message api.v1.PaymentServiceDeletePaymentMethodRequest

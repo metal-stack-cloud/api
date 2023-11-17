@@ -77,6 +77,10 @@ export declare class PaymentCustomer extends Message<PaymentCustomer> {
      * @generated from field: optional string phone_number = 12;
      */
     phoneNumber?: string;
+    /**
+     * @generated from field: optional int64 balance = 13;
+     */
+    balance?: bigint;
     constructor(data?: PartialMessage<PaymentCustomer>);
     static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.PaymentCustomer";
@@ -493,6 +497,10 @@ export declare class PaymentServiceHasPaymentMethodResponse extends Message<Paym
      * @generated from field: bool coupon_left = 2;
      */
     couponLeft: boolean;
+    /**
+     * @generated from field: bool positive_balance = 3;
+     */
+    positiveBalance: boolean;
     constructor(data?: PartialMessage<PaymentServiceHasPaymentMethodResponse>);
     static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.PaymentServiceHasPaymentMethodResponse";
