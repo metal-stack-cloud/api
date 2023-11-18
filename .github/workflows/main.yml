@@ -30,14 +30,13 @@ jobs:
         args: -p bugs -p unused -D protogetter --timeout=3m
 
     - name: build and push npm package
-      uses: actions/setup-node@v3
-      with:
-        scope: '@metal-stack-cloud'
+      uses: oven-sh/setup-bun@v1
+
     - run: |
         cd js
-        npm install typescript
-        npm install
-    - uses: JS-DevTools/npm-publish@v1
+        bun install typescript
+        bun install
+    - uses: JS-DevTools/npm-publish@v3
       with:
         token: ${{ secrets.NPMJS_PUBLISH_TOKEN }}
         access: public

@@ -28,5 +28,4 @@ test:
 # TODO: this target should be moved to the js dir:
 .PHONY: npm-build
 npm-build:
-	docker pull node:21-bookworm
-	docker run --rm -v ${PWD}:/work -w /work node:21-bookworm make -C js build
+	make -C js build
