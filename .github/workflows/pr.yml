@@ -27,6 +27,9 @@ jobs:
       with:
         args: -p bugs -p unused -D protogetter --timeout=3m
 
+    - name: build and push npm package
+      uses: oven-sh/setup-bun@v1
+
     - name: test
       run: |
         make
