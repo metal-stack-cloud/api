@@ -129,9 +129,9 @@ class PaymentServiceAddBalanceToCustomerRequest extends protobuf_1.Message {
     constructor(data) {
         super();
         /**
-         * @generated from field: int64 balance = 2;
+         * @generated from field: int64 balance_to_add = 2;
          */
-        this.balance = protobuf_1.protoInt64.zero;
+        this.balanceToAdd = protobuf_1.protoInt64.zero;
         protobuf_1.proto3.util.initPartial(data, this);
     }
     static fromBinary(bytes, options) {
@@ -152,7 +152,7 @@ PaymentServiceAddBalanceToCustomerRequest.runtime = protobuf_1.proto3;
 PaymentServiceAddBalanceToCustomerRequest.typeName = "admin.v1.PaymentServiceAddBalanceToCustomerRequest";
 PaymentServiceAddBalanceToCustomerRequest.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 1, name: "customer", kind: "message", T: payment_pb_js_1.PaymentCustomer },
-    { no: 2, name: "balance", kind: "scalar", T: 3 /* ScalarType.INT64 */ },
+    { no: 2, name: "balance_to_add", kind: "scalar", T: 3 /* ScalarType.INT64 */ },
 ]);
 /**
  * @generated from message admin.v1.PaymentServiceAddBalanceToCustomerResponse

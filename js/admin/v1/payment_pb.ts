@@ -165,9 +165,9 @@ export class PaymentServiceAddBalanceToCustomerRequest extends Message<PaymentSe
   customer?: PaymentCustomer;
 
   /**
-   * @generated from field: int64 balance = 2;
+   * @generated from field: int64 balance_to_add = 2;
    */
-  balance = protoInt64.zero;
+  balanceToAdd = protoInt64.zero;
 
   constructor(data?: PartialMessage<PaymentServiceAddBalanceToCustomerRequest>) {
     super();
@@ -178,7 +178,7 @@ export class PaymentServiceAddBalanceToCustomerRequest extends Message<PaymentSe
   static readonly typeName = "admin.v1.PaymentServiceAddBalanceToCustomerRequest";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
     { no: 1, name: "customer", kind: "message", T: PaymentCustomer },
-    { no: 2, name: "balance", kind: "scalar", T: 3 /* ScalarType.INT64 */ },
+    { no: 2, name: "balance_to_add", kind: "scalar", T: 3 /* ScalarType.INT64 */ },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): PaymentServiceAddBalanceToCustomerRequest {

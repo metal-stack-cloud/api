@@ -4,6 +4,7 @@ package admin.v1;
 
 import "api/v1/common.proto";
 import "api/v1/tenant.proto";
+import "validate/validate.proto";
 
 service TenantService {
   rpc List(TenantServiceListRequest) returns (TenantServiceListResponse) {
@@ -35,7 +36,7 @@ message TenantServiceListResponse {
 message TenantServiceAdmitRequest {
   string tenant_id = 1;
   optional string coupon_id = 2;
-  optional int64 balance = 3;
+  optional int64 balance_to_add = 3 [(validate.rules).int64.gt = 0];
 }
 message TenantServiceAdmitResponse {
   api.v1.Tenant tenant = 1;
