@@ -34,6 +34,6 @@ npm-build:
 
 .PHONY: npm-build-tagged
 npm-build-tagged:
-	yq e -ij ".version=\"$(shell version=$$(git describe --tags `git rev-list --tags --max-count=1`); echo $${version#v})\"" js/package.json
-	yq e '.version' js/package.json
+	yq e -i -o=json ".version=\"$(shell version=$$(git describe --tags `git rev-list --tags --max-count=1`); echo $${version#v})\"" js/package.json
+	yq e -o=json '.version' js/package.json
 	$(MAKE)	npm-build
