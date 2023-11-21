@@ -4,6 +4,7 @@ package admin.v1;
 
 import "api/v1/common.proto";
 import "api/v1/payment.proto";
+import "validate/validate.proto";
 
 service PaymentService {
   rpc ListCoupons(PaymentServiceListCouponsRequest) returns (PaymentServiceListCouponsResponse) {
@@ -33,7 +34,7 @@ message PaymentServiceAddCouponToCustomerResponse {
 
 message PaymentServiceAddBalanceToCustomerRequest {
   api.v1.PaymentCustomer customer = 1;
-  int64 balance = 2;
+  int64 balance_to_add = 2 [(validate.rules).int64.gt = 0];
 }
 message PaymentServiceAddBalanceToCustomerResponse {
   api.v1.PaymentCustomer customer = 1;

@@ -141,9 +141,9 @@ export class TenantServiceAdmitRequest extends Message<TenantServiceAdmitRequest
   couponId?: string;
 
   /**
-   * @generated from field: optional int64 balance = 3;
+   * @generated from field: optional int64 balance_to_add = 3;
    */
-  balance?: bigint;
+  balanceToAdd?: bigint;
 
   constructor(data?: PartialMessage<TenantServiceAdmitRequest>) {
     super();
@@ -155,7 +155,7 @@ export class TenantServiceAdmitRequest extends Message<TenantServiceAdmitRequest
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
     { no: 1, name: "tenant_id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 2, name: "coupon_id", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
-    { no: 3, name: "balance", kind: "scalar", T: 3 /* ScalarType.INT64 */, opt: true },
+    { no: 3, name: "balance_to_add", kind: "scalar", T: 3 /* ScalarType.INT64 */, opt: true },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): TenantServiceAdmitRequest {

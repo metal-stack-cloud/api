@@ -78,9 +78,9 @@ export declare class PaymentServiceAddBalanceToCustomerRequest extends Message<P
      */
     customer?: PaymentCustomer;
     /**
-     * @generated from field: int64 balance = 2;
+     * @generated from field: int64 balance_to_add = 2;
      */
-    balance: bigint;
+    balanceToAdd: bigint;
     constructor(data?: PartialMessage<PaymentServiceAddBalanceToCustomerRequest>);
     static readonly runtime: typeof proto3;
     static readonly typeName = "admin.v1.PaymentServiceAddBalanceToCustomerRequest";

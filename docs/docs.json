@@ -4632,7 +4632,7 @@
               "defaultValue": ""
             },
             {
-              "name": "balance",
+              "name": "balance_to_add",
               "description": "",
               "label": "",
               "type": "int64",
@@ -4641,7 +4641,15 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": ""
+              "defaultValue": "",
+              "options": {
+                "validate.rules": [
+                  {
+                    "name": "int64.gt",
+                    "value": 0
+                  }
+                ]
+              }
             }
           ]
         },
@@ -7735,7 +7743,7 @@
               "defaultValue": ""
             },
             {
-              "name": "balance",
+              "name": "balance_to_add",
               "description": "",
               "label": "optional",
               "type": "int64",
@@ -7743,8 +7751,16 @@
               "fullType": "int64",
               "ismap": false,
               "isoneof": true,
-              "oneofdecl": "_balance",
-              "defaultValue": ""
+              "oneofdecl": "_balance_to_add",
+              "defaultValue": "",
+              "options": {
+                "validate.rules": [
+                  {
+                    "name": "int64.gt",
+                    "value": 0
+                  }
+                ]
+              }
             }
           ]
         },
