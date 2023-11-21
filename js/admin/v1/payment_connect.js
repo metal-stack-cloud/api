@@ -31,5 +31,14 @@ exports.PaymentService = {
             O: payment_pb_js_1.PaymentServiceAddCouponToCustomerResponse,
             kind: protobuf_1.MethodKind.Unary,
         },
+        /**
+         * @generated from rpc admin.v1.PaymentService.AddBalanceToCustomer
+         */
+        addBalanceToCustomer: {
+            name: "AddBalanceToCustomer",
+            I: payment_pb_js_1.PaymentServiceAddBalanceToCustomerRequest,
+            O: payment_pb_js_1.PaymentServiceAddBalanceToCustomerResponse,
+            kind: protobuf_1.MethodKind.Unary,
+        },
     }
 };

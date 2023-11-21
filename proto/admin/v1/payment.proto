@@ -13,16 +13,28 @@ service PaymentService {
   rpc AddCouponToCustomer(PaymentServiceAddCouponToCustomerRequest) returns (PaymentServiceAddCouponToCustomerResponse) {
     option (api.v1.admin_roles) = ADMIN_ROLE_EDITOR;
   }
+  rpc AddBalanceToCustomer(PaymentServiceAddBalanceToCustomerRequest) returns (PaymentServiceAddBalanceToCustomerResponse) {
+    option (api.v1.admin_roles) = ADMIN_ROLE_EDITOR;
+  }
 }
 
 message PaymentServiceListCouponsRequest {}
 message PaymentServiceListCouponsResponse {
   repeated api.v1.Coupon coupons = 1;
 }
+
 message PaymentServiceAddCouponToCustomerRequest {
   api.v1.PaymentCustomer customer = 1;
   string coupon_id = 2;
 }
 message PaymentServiceAddCouponToCustomerResponse {
+  api.v1.PaymentCustomer customer = 1;
+}
+
+message PaymentServiceAddBalanceToCustomerRequest {
+  api.v1.PaymentCustomer customer = 1;
+  int64 balance = 2;
+}
+message PaymentServiceAddBalanceToCustomerResponse {
   api.v1.PaymentCustomer customer = 1;
 }

@@ -362,6 +362,10 @@ func (m *TenantServiceAdmitRequest) validate(all bool) error {
 		// no validation rules for CouponId
 	}
 
+	if m.Balance != nil {
+		// no validation rules for Balance
+	}
+
 	if len(errors) > 0 {
 		return TenantServiceAdmitRequestMultiError(errors)
 	}

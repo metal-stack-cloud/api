@@ -34,25 +34,18 @@ jobs:
 
     - name: Build
       run: |
-        if ! which yq; then
-          sudo curl -Lo /usr/local/bin/yq https://github.com/mikefarah/yq/releases/download/v4.35.2/yq_linux_amd64
-          sudo chmod +x /usr/local/bin/yq
-        fi
+        go install github.com/mikefarah/yq/v4@latest
         make release
 
     - name: build and push npm package
-      uses: actions/setup-node@v3
-      with:
-        scope: '@metal-stack-cloud'
-      if: github.event_name == 'release'
+      uses: oven-sh/setup-bun@v1
 
     - run: |
         cd js
-        npm install typescript
-        npm install
-      if: github.event_name == 'release'
+        bun install typescript
+        bun install
 
-    - uses: JS-DevTools/npm-publish@v1
+    - uses: JS-DevTools/npm-publish@v3
       with:
         token: ${{ secrets.NPMJS_PUBLISH_TOKEN }}
         access: public
