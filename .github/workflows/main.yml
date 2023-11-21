@@ -1,10 +1,14 @@
 name: build
 on:
+  pull_request:
+    branches:
+      - main
+  release:
+    types:
+      - published
   push:
     branches:
-      - "main"
-    tags:
-      - 'v*'
+      - main
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}
@@ -14,30 +18,36 @@ jobs:
     name: Build
     runs-on: ubuntu-latest
     steps:
+    - name: Check out code
+      uses: actions/checkout@v4
 
-    - name: Set up Go 1.21
+    - name: Set up Go
       uses: actions/setup-go@v4
       with:
-        go-version: "1.21"
-      id: go
+        go-version-file: 'go.mod'
+        cache: false
 
-    - name: Check out code into the Go module directory
-      uses: actions/checkout@v4
+    - name: build and push npm package
+      uses: oven-sh/setup-bun@v1
 
     - name: Lint
       uses: golangci/golangci-lint-action@v3
       with:
-        args: -p bugs -p unused -D protogetter --timeout=3m
+        args: -p bugs -p unused -D protogetter --timeout=5m
 
-    - name: build and push npm package
-      uses: oven-sh/setup-bun@v1
+    - name: Build
+      run: |
+        go install github.com/mikefarah/yq/v4@latest
+        make release
 
     - run: |
         cd js
         bun install typescript
         bun install
+
     - uses: JS-DevTools/npm-publish@v3
       with:
         token: ${{ secrets.NPMJS_PUBLISH_TOKEN }}
         access: public
         package: js/package.json
+      if: github.event_name == 'release'
