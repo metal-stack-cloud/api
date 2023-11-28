@@ -1,30 +1,51 @@
 package main
 
 import (
+	"bytes"
 	"encoding/json"
 	"fmt"
+	"go/format"
+	"html/template"
 	"os"
 	"path/filepath"
 	"strings"
 
+	"github.com/Masterminds/sprig/v3"
 	v1 "github.com/metal-stack-cloud/api/go/api/v1"
 	"github.com/metal-stack-cloud/api/go/permissions"
 	"github.com/metal-stack-cloud/api/go/tests/protoparser"
+
+	_ "embed"
 )
 
 // serverReflectionInfo is always allowed to access to get a list of exposed services for example with grpcurl
 const serverReflectionInfo = "/grpc.reflection.v1alpha.ServerReflection/ServerReflectionInfo"
+
+//go:embed servicepermissions.tpl
+var servicePermissionsTpl string
 
 func main() {
 	perms, err := servicePermissions("../proto")
 	if err != nil {
 		panic(err)
 	}
+
+	err = writeTemplate("permissions/servicepermissions.go", servicePermissionsTpl, perms)
+	if err != nil {
+		panic(err)
+	}
+
 	j, err := json.MarshalIndent(perms, "", "  ")
 	if err != nil {
 		panic(err)
 	}
-	fmt.Printf("%s\n", string(j))
+
+	err = os.WriteFile("../js/permissions/servicepermissions.json", j, 0755) // nolint:gosec
+	if err != nil {
+		panic(err)
+	}
+
+	fmt.Println("wrote ../js/permissions/servicepermissions.json")
 }
 
 func servicePermissions(root string) (*permissions.ServicePermissions, error) {
@@ -153,5 +174,27 @@ func servicePermissions(root string) (*permissions.ServicePermissions, error) {
 		Chargeable: chargeable,
 		Auditable:  auditable,
 	}
+
 	return sp, nil
+}
+
+func writeTemplate(dest, text string, data any) error {
+	t, err := template.New("").Funcs(sprig.FuncMap()).Parse(text)
+	if err != nil {
+		return err
+	}
+
+	var buf bytes.Buffer
+	if err := t.Execute(&buf, data); err != nil {
+		return err
+	}
+
+	p, err := format.Source(buf.Bytes())
+	if err != nil {
+		return err
+	}
+
+	fmt.Println("wrote " + dest)
+
+	return os.WriteFile(dest, p, 0755) // nolint:gosec
 }
