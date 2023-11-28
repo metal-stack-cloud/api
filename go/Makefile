@@ -11,7 +11,7 @@ generate:
 	go run ./tests/generate/generate_clients.go
 
 	rm -f permissions/servicepermissions.go
-	rm -f permissions/servicepermissions.json
+	rm -f ../js/permissions/servicepermissions.json
 	go run ./discover.go
 
 .PHONY: mocks

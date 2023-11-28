@@ -40,12 +40,12 @@ func main() {
 		panic(err)
 	}
 
-	err = os.WriteFile("permissions/servicepermissions.json", j, 0755) // nolint:gosec
+	err = os.WriteFile("../js/permissions/servicepermissions.json", j, 0755) // nolint:gosec
 	if err != nil {
 		panic(err)
 	}
 
-	fmt.Println("wrote permissions/servicepermissions.json")
+	fmt.Println("wrote ../js/permissions/servicepermissions.json")
 }
 
 func servicePermissions(root string) (*permissions.ServicePermissions, error) {
