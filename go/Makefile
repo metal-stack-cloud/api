@@ -4,12 +4,15 @@ clean:
 
 .PHONY: test
 test:
-	go run ./discover.go > permissions/servicepermissions.json
 	go test -v ./...
 
-.PHONY: client
-client:
+.PHONY: generate
+generate:
 	go run ./tests/generate/generate_clients.go
+
+	rm -f permissions/servicepermissions.go
+	rm -f permissions/servicepermissions.json
+	go run ./discover.go
 
 .PHONY: mocks
 mocks:
