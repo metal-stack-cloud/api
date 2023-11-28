@@ -312,11 +312,9 @@ class AssetServiceListResponse extends protobuf_1.Message {
     constructor(data) {
         super();
         /**
-         * assets maps region ids to assets
-         *
-         * @generated from field: map<string, api.v1.Asset> assets = 1;
+         * @generated from field: repeated api.v1.Asset assets = 2;
          */
-        this.assets = {};
+        this.assets = [];
         protobuf_1.proto3.util.initPartial(data, this);
     }
     static fromBinary(bytes, options) {
@@ -336,5 +334,5 @@ exports.AssetServiceListResponse = AssetServiceListResponse;
 AssetServiceListResponse.runtime = protobuf_1.proto3;
 AssetServiceListResponse.typeName = "api.v1.AssetServiceListResponse";
 AssetServiceListResponse.fields = protobuf_1.proto3.util.newFieldList(() => [
-    { no: 1, name: "assets", kind: "map", K: 9 /* ScalarType.STRING */, V: { kind: "message", T: Asset } },
+    { no: 2, name: "assets", kind: "message", T: Asset, repeated: true },
 ]);

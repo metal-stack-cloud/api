@@ -8894,44 +8894,8 @@
           "fields": [
             {
               "name": "assets",
-              "description": "assets maps region ids to assets",
+              "description": "",
               "label": "repeated",
-              "type": "AssetsEntry",
-              "longType": "AssetServiceListResponse.AssetsEntry",
-              "fullType": "api.v1.AssetServiceListResponse.AssetsEntry",
-              "ismap": true,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            }
-          ]
-        },
-        {
-          "name": "AssetsEntry",
-          "longName": "AssetServiceListResponse.AssetsEntry",
-          "fullName": "api.v1.AssetServiceListResponse.AssetsEntry",
-          "description": "",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "key",
-              "description": "",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "value",
-              "description": "",
-              "label": "",
               "type": "Asset",
               "longType": "Asset",
               "fullType": "api.v1.Asset",

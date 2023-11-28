@@ -202,13 +202,9 @@ export declare class AssetServiceListRequest extends Message<AssetServiceListReq
  */
 export declare class AssetServiceListResponse extends Message<AssetServiceListResponse> {
     /**
-     * assets maps region ids to assets
-     *
-     * @generated from field: map<string, api.v1.Asset> assets = 1;
+     * @generated from field: repeated api.v1.Asset assets = 2;
      */
-    assets: {
-        [key: string]: Asset;
-    };
+    assets: Asset[];
     constructor(data?: PartialMessage<AssetServiceListResponse>);
     static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.AssetServiceListResponse";

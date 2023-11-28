@@ -378,11 +378,9 @@ export class AssetServiceListRequest extends Message<AssetServiceListRequest> {
  */
 export class AssetServiceListResponse extends Message<AssetServiceListResponse> {
   /**
-   * assets maps region ids to assets
-   *
-   * @generated from field: map<string, api.v1.Asset> assets = 1;
+   * @generated from field: repeated api.v1.Asset assets = 2;
    */
-  assets: { [key: string]: Asset } = {};
+  assets: Asset[] = [];
 
   constructor(data?: PartialMessage<AssetServiceListResponse>) {
     super();
@@ -392,7 +390,7 @@ export class AssetServiceListResponse extends Message<AssetServiceListResponse> 
   static readonly runtime: typeof proto3 = proto3;
   static readonly typeName = "api.v1.AssetServiceListResponse";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "assets", kind: "map", K: 9 /* ScalarType.STRING */, V: {kind: "message", T: Asset} },
+    { no: 2, name: "assets", kind: "message", T: Asset, repeated: true },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): AssetServiceListResponse {

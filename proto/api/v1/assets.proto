@@ -59,6 +59,5 @@ message AssetServiceListRequest {}
 
 // Responses
 message AssetServiceListResponse {
-  // assets maps region ids to assets
-  map<string, Asset> assets = 1;
+  repeated Asset assets = 2;
 }
