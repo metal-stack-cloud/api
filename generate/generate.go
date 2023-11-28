@@ -7,6 +7,7 @@ import (
 	"go/format"
 	"html/template"
 	"os"
+	"path"
 	"path/filepath"
 	"strings"
 
@@ -21,16 +22,30 @@ import (
 // serverReflectionInfo is always allowed to access to get a list of exposed services for example with grpcurl
 const serverReflectionInfo = "/grpc.reflection.v1alpha.ServerReflection/ServerReflectionInfo"
 
-//go:embed servicepermissions.tpl
-var servicePermissionsTpl string
+var (
+	//go:embed go_servicepermissions.tpl
+	servicePermissionsTpl string
+	//go:embed go_mock_client.tpl
+	mockClientTpl string
+	//go:embed go_client.tpl
+	clientTpl string
+)
+
+type api struct {
+	Name     string
+	Services []string
+	Path     string
+}
 
 func main() {
+	fmt.Println("generating service permissions")
+
 	perms, err := servicePermissions("../proto")
 	if err != nil {
 		panic(err)
 	}
 
-	err = writeTemplate("permissions/servicepermissions.go", servicePermissionsTpl, perms)
+	err = writeTemplate("../go/permissions/servicepermissions.go", servicePermissionsTpl, perms)
 	if err != nil {
 		panic(err)
 	}
@@ -46,6 +61,23 @@ func main() {
 	}
 
 	fmt.Println("wrote ../js/permissions/servicepermissions.json")
+
+	fmt.Println("generating clients")
+
+	svcs, err := svcs("../proto")
+	if err != nil {
+		panic(err)
+	}
+
+	err = writeTemplate("../go/client/client.go", clientTpl, svcs)
+	if err != nil {
+		panic(err)
+	}
+
+	err = writeTemplate("../go/tests/mock_clients.go", mockClientTpl, svcs)
+	if err != nil {
+		panic(err)
+	}
 }
 
 func servicePermissions(root string) (*permissions.ServicePermissions, error) {
@@ -176,6 +208,51 @@ func servicePermissions(root string) (*permissions.ServicePermissions, error) {
 	}
 
 	return sp, nil
+}
+
+func svcs(root string) (map[string]api, error) {
+	var (
+		result = map[string]api{}
+		walk   = func(root string) ([]string, error) {
+			var files []string
+			err := filepath.Walk(root, func(path string, info os.FileInfo, err error) error {
+				if info.IsDir() {
+					return nil
+				}
+				if strings.HasSuffix(info.Name(), ".proto") {
+					files = append(files, path)
+				}
+				return nil
+			})
+			return files, err
+		}
+	)
+
+	files, err := walk(root)
+	if err != nil {
+		return nil, err
+	}
+
+	for _, filename := range files {
+		fd, err := protoparser.Parse(filename)
+		if err != nil {
+			return nil, err
+		}
+		n := strings.ReplaceAll(*fd.Package, ".", "")
+		a, ok := result[n]
+		if !ok {
+			a = api{
+				Name: n,
+				Path: path.Dir(strings.TrimPrefix(filename, root)),
+			}
+		}
+		for _, serviceDesc := range fd.GetService() {
+			a.Services = append(a.Services, *serviceDesc.Name)
+		}
+		result[n] = a
+	}
+
+	return result, nil
 }
 
 func writeTemplate(dest, text string, data any) error {
