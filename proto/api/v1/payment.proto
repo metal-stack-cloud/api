@@ -3,8 +3,8 @@ syntax = "proto3";
 package api.v1;
 
 import "api/v1/common.proto";
+import "buf/validate/validate.proto";
 import "google/protobuf/timestamp.proto";
-import "validate/validate.proto";
 
 service PaymentService {
   rpc CreateOrUpdateCustomer(PaymentServiceCreateOrUpdateCustomerRequest) returns (PaymentServiceCreateOrUpdateCustomerResponse) {
@@ -91,7 +91,7 @@ message Price {
   string currency = 3;
   string unit_label = 4;
   ProductType product_type = 5;
-  optional string description = 6 [(validate.rules).string = {
+  optional string description = 6 [(buf.validate.field).string = {
     min_len: 2,
     max_len: 500,
   }];
@@ -143,7 +143,7 @@ message Coupon {
 }
 
 message PaymentServiceCreateOrUpdateCustomerRequest {
-  string login = 1 [(validate.rules).string = {
+  string login = 1 [(buf.validate.field).string = {
     min_len: 2,
     max_len: 128,
   }];
@@ -156,7 +156,7 @@ message PaymentServiceCreateOrUpdateCustomerResponse {
 }
 
 message PaymentServiceGetCustomerRequest {
-  string login = 1 [(validate.rules).string = {
+  string login = 1 [(buf.validate.field).string = {
     min_len: 2,
     max_len: 128,
   }];
@@ -168,7 +168,7 @@ message PaymentServiceGetCustomerResponse {
 }
 
 message PaymentServiceGetCustomerWithLoginRequest {
-  string login = 1 [(validate.rules).string = {
+  string login = 1 [(buf.validate.field).string = {
     min_len: 2,
     max_len: 128,
   }];
@@ -179,7 +179,7 @@ message PaymentServiceGetCustomerWithLoginResponse {
 }
 
 message PaymentServiceCheckIfCustomerExistsRequest {
-  string login = 1 [(validate.rules).string = {
+  string login = 1 [(buf.validate.field).string = {
     min_len: 2,
     max_len: 128,
   }];
@@ -191,11 +191,11 @@ message PaymentServiceCheckIfCustomerExistsResponse {
 }
 
 message PaymentServiceHasPaymentMethodRequest {
-  string login = 1 [(validate.rules).string = {
+  string login = 1 [(buf.validate.field).string = {
     min_len: 2,
     max_len: 128,
   }];
-  string project = 2 [(validate.rules).string = {
+  string project = 2 [(buf.validate.field).string = {
     min_len: 2,
     max_len: 128,
   }];
@@ -208,7 +208,7 @@ message PaymentServiceHasPaymentMethodResponse {
 }
 
 message PaymentServiceDeletePaymentMethodRequest {
-  string login = 1 [(validate.rules).string = {
+  string login = 1 [(buf.validate.field).string = {
     min_len: 2,
     max_len: 128,
   }];
@@ -217,7 +217,7 @@ message PaymentServiceDeletePaymentMethodRequest {
 message PaymentServiceDeletePaymentMethodResponse {}
 
 message PaymentServiceGetSubscriptionUsageRequest {
-  string login = 1 [(validate.rules).string = {
+  string login = 1 [(buf.validate.field).string = {
     min_len: 2,
     max_len: 128,
   }];
@@ -228,14 +228,11 @@ message PaymentServiceGetSubscriptionUsageResponse {
 }
 
 message PaymentServiceGetInvoicesRequest {
-  string login = 1 [(validate.rules).string = {
+  string login = 1 [(buf.validate.field).string = {
     min_len: 2,
     max_len: 128,
   }];
-  string customer_id = 2 [(validate.rules).string = {
-    min_len: 18,
-    max_len: 18,
-  }];
+  string customer_id = 2 [(buf.validate.field).string.len = 18];
 }
 
 message PaymentServiceGetInvoicesResponse {

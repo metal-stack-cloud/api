@@ -3,9 +3,9 @@ syntax = "proto3";
 package api.v1;
 
 import "api/v1/common.proto";
+import "buf/validate/validate.proto";
 import "google/protobuf/duration.proto";
 import "google/protobuf/timestamp.proto";
-import "validate/validate.proto";
 
 service TokenService {
   rpc Create(TokenServiceCreateRequest) returns (TokenServiceCreateResponse) {
@@ -23,14 +23,14 @@ service TokenService {
 
 message Token {
   // uuid of the jwt token
-  string uuid = 1 [(validate.rules).string.uuid = true];
+  string uuid = 1 [(buf.validate.field).string.uuid = true];
   // user_id who created this token
-  string user_id = 2 [(validate.rules).string = {
+  string user_id = 2 [(buf.validate.field).string = {
     min_len: 2,
     max_len: 512,
   }];
   // description is a user given description of this token.
-  string description = 3 [(validate.rules).string = {
+  string description = 3 [(buf.validate.field).string = {
     min_len: 2,
     max_len: 256,
   }];
@@ -48,14 +48,13 @@ enum TokenType {
 }
 
 message TokenServiceCreateRequest {
-  string description = 1 [(validate.rules).string = {
+  string description = 1 [(buf.validate.field).string = {
     min_len: 2,
     max_len: 256,
   }];
   repeated MethodPermission permissions = 2;
   repeated TokenRole roles = 3;
-  google.protobuf.Duration expires = 4 [(validate.rules).duration = {
-    // Between 10min and 1year
+  google.protobuf.Duration expires = 4 [(buf.validate.field).duration = {
     lt: {seconds: 31536001},
     gte: {seconds: 600}
   }];
@@ -71,12 +70,12 @@ message MethodPermission {
 
 message TokenRole {
   // subject specifies the project or organization this role applies to
-  string subject = 1 [(validate.rules).string = {
+  string subject = 1 [(buf.validate.field).string = {
     min_len: 1, // when requesting admin permissions with *
     max_len: 256,
   }];
   // role defines the string representation of a tenantrole, projectrole or a global adminrole
-  string role = 2 [(validate.rules).string = {
+  string role = 2 [(buf.validate.field).string = {
     in: [
       "admin",
       "owner",
@@ -97,6 +96,6 @@ message TokenServiceListResponse {
 }
 
 message TokenServiceRevokeRequest {
-  string uuid = 1 [(validate.rules).string.uuid = true];
+  string uuid = 1 [(buf.validate.field).string.uuid = true];
 }
 message TokenServiceRevokeResponse {}

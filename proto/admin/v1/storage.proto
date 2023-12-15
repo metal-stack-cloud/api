@@ -4,7 +4,7 @@ package admin.v1;
 
 import "api/v1/common.proto";
 import "api/v1/volume.proto";
-import "validate/validate.proto";
+import "buf/validate/validate.proto";
 
 service StorageService {
   rpc ClusterInfo(StorageServiceClusterInfoRequest) returns (StorageServiceClusterInfoResponse) {
@@ -110,8 +110,8 @@ message ClusterStatisticsApi {
 }
 
 message StorageServiceListVolumesRequest {
-  optional string uuid = 1 [(validate.rules).string.uuid = true];
-  optional string project = 2 [(validate.rules).string = {
+  optional string uuid = 1 [(buf.validate.field).string.uuid = true];
+  optional string project = 2 [(buf.validate.field).string = {
     min_len: 2,
     max_len: 128
   }];
@@ -125,8 +125,8 @@ message StorageServiceListVolumesResponse {
 }
 
 message StorageServiceListSnapshotsRequest {
-  optional string uuid = 1 [(validate.rules).string.uuid = true];
-  optional string project = 2 [(validate.rules).string = {
+  optional string uuid = 1 [(buf.validate.field).string.uuid = true];
+  optional string project = 2 [(buf.validate.field).string = {
     min_len: 2,
     max_len: 128
   }];

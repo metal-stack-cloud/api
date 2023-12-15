@@ -3,9 +3,9 @@ syntax = "proto3";
 package api.v1;
 
 import "api/v1/common.proto";
+import "buf/validate/validate.proto";
 import "google/protobuf/duration.proto";
 import "google/protobuf/timestamp.proto";
-import "validate/validate.proto";
 
 service ClusterService {
   rpc Create(ClusterServiceCreateRequest) returns (ClusterServiceCreateResponse) {
@@ -49,12 +49,12 @@ service ClusterService {
 
 // Types
 message Cluster {
-  string uuid = 1 [(validate.rules).string.uuid = true];
-  string name = 2 [(validate.rules).string = {
+  string uuid = 1 [(buf.validate.field).string.uuid = true];
+  string name = 2 [(buf.validate.field).string = {
     min_len: 2,
     max_len: 12,
   }];
-  string project = 3 [(validate.rules).string = {
+  string project = 3 [(buf.validate.field).string = {
     min_len: 2,
     max_len: 128,
   }];
@@ -72,7 +72,7 @@ message Cluster {
 }
 
 message KubernetesSpec {
-  string version = 1 [(validate.rules).string = {
+  string version = 1 [(buf.validate.field).string = {
     pattern: "[0-9]+.[0-9]+.[0-9]",
     max_bytes: 8,
   }];
@@ -85,72 +85,72 @@ message Maintenance {
 }
 
 message MaintenanceTimeWindow {
-  google.protobuf.Timestamp begin = 1 [(validate.rules).timestamp.required = true];
-  google.protobuf.Duration duration = 2 [(validate.rules).duration = {
+  google.protobuf.Timestamp begin = 1 [(buf.validate.field).required = true];
+  google.protobuf.Duration duration = 2 [(buf.validate.field).duration = {
     gte: {seconds: 3600}, // 1 hour minimum
     lt: {seconds: 14400} /* 4 hours maximum */
   }];
 }
 
 message Worker {
-  string name = 1 [(validate.rules).string = {
+  string name = 1 [(buf.validate.field).string = {
     min_len: 2,
     max_len: 128,
   }];
-  string machine_type = 2 [(validate.rules).string = {
+  string machine_type = 2 [(buf.validate.field).string = {
     min_len: 2,
     max_len: 128,
   }];
-  uint32 minsize = 3 [(validate.rules).uint32.lte = 32];
-  uint32 maxsize = 4 [(validate.rules).uint32.lte = 64];
-  uint32 maxsurge = 5 [(validate.rules).uint32.lte = 64];
-  uint32 maxunavailable = 6 [(validate.rules).uint32.lte = 64];
+  uint32 minsize = 3 [(buf.validate.field).uint32.lte = 32];
+  uint32 maxsize = 4 [(buf.validate.field).uint32.lte = 64];
+  uint32 maxsurge = 5 [(buf.validate.field).uint32.lte = 64];
+  uint32 maxunavailable = 6 [(buf.validate.field).uint32.lte = 64];
 }
 
 message WorkerUpdate {
-  string name = 1 [(validate.rules).string = {
+  string name = 1 [(buf.validate.field).string = {
     min_len: 2,
     max_len: 128,
   }];
-  optional string machine_type = 2 [(validate.rules).string = {
+  optional string machine_type = 2 [(buf.validate.field).string = {
     min_len: 2,
     max_len: 128,
   }];
-  optional uint32 minsize = 3 [(validate.rules).uint32.lte = 32];
-  optional uint32 maxsize = 4 [(validate.rules).uint32.lte = 64];
-  optional uint32 maxsurge = 5 [(validate.rules).uint32.lte = 64];
-  optional uint32 maxunavailable = 6 [(validate.rules).uint32.lte = 64];
+  optional uint32 minsize = 3 [(buf.validate.field).uint32.lte = 32];
+  optional uint32 maxsize = 4 [(buf.validate.field).uint32.lte = 64];
+  optional uint32 maxsurge = 5 [(buf.validate.field).uint32.lte = 64];
+  optional uint32 maxunavailable = 6 [(buf.validate.field).uint32.lte = 64];
 }
 
 // Requests
 message ClusterServiceGetRequest {
-  string uuid = 1 [(validate.rules).string.uuid = true];
-  string project = 2 [(validate.rules).string = {
+  string uuid = 1 [(buf.validate.field).string.uuid = true];
+  string project = 2 [(buf.validate.field).string = {
     min_len: 2,
     max_len: 128,
   }];
 }
 message ClusterServiceGetCredentialsRequest {
-  string uuid = 1 [(validate.rules).string.uuid = true];
-  string project = 2 [(validate.rules).string = {
+  string uuid = 1 [(buf.validate.field).string.uuid = true];
+  string project = 2 [(buf.validate.field).string = {
     min_len: 2,
     max_len: 128,
   }];
   optional google.protobuf.Duration expiration = 4;
 }
 message ClusterServiceListRequest {
-  string project = 2 [(validate.rules).string = {
+  string project = 2 [(buf.validate.field).string = {
     min_len: 2,
     max_len: 128,
   }];
 }
 message ClusterServiceCreateRequest {
-  string name = 2 [(validate.rules).string = {
+  string name = 2 [(buf.validate.field).string = {
     min_len: 2,
     max_len: 12,
     hostname: true,
   }];
-  string project = 3 [(validate.rules).string = {
+  string project = 3 [(buf.validate.field).string = {
     min_len: 2,
     max_len: 128,
   }];
@@ -160,9 +160,9 @@ message ClusterServiceCreateRequest {
   Maintenance maintenance = 8;
 }
 message ClusterServiceUpdateRequest {
-  string uuid = 1 [(validate.rules).string.uuid = true];
+  string uuid = 1 [(buf.validate.field).string.uuid = true];
 
-  string project = 2 [(validate.rules).string = {
+  string project = 2 [(buf.validate.field).string = {
     min_len: 2,
     max_len: 128,
   }];
@@ -171,16 +171,16 @@ message ClusterServiceUpdateRequest {
   optional Maintenance maintenance = 5;
 }
 message ClusterServiceDeleteRequest {
-  string uuid = 1 [(validate.rules).string.uuid = true];
+  string uuid = 1 [(buf.validate.field).string.uuid = true];
 
-  string project = 2 [(validate.rules).string = {
+  string project = 2 [(buf.validate.field).string = {
     min_len: 2,
     max_len: 128,
   }];
 }
 message ClusterServiceWatchStatusRequest {
-  optional string uuid = 1 [(validate.rules).string.uuid = true];
-  string project = 2 [(validate.rules).string = {
+  optional string uuid = 1 [(buf.validate.field).string.uuid = true];
+  string project = 2 [(buf.validate.field).string = {
     min_len: 2,
     max_len: 128,
   }];

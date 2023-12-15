@@ -3,8 +3,8 @@ syntax = "proto3";
 package api.v1;
 
 import "api/v1/common.proto";
+import "buf/validate/validate.proto";
 import "google/protobuf/timestamp.proto";
-import "validate/validate.proto";
 
 service IPService {
   rpc Get(IPServiceGetRequest) returns (IPServiceGetResponse) {
@@ -44,23 +44,23 @@ enum IPType {
 
 // Types
 message IP {
-  string uuid = 1 [(validate.rules).string.uuid = true];
-  string ip = 2 [(validate.rules).string.ip = true];
-  string name = 3 [(validate.rules).string = {
+  string uuid = 1 [(buf.validate.field).string.uuid = true];
+  string ip = 2 [(buf.validate.field).string.ip = true];
+  string name = 3 [(buf.validate.field).string = {
     min_len: 2,
     max_len: 128
   }];
-  string description = 4 [(validate.rules).string = {max_len: 128}];
-  string network = 5 [(validate.rules).string = {
+  string description = 4 [(buf.validate.field).string = {max_len: 128}];
+  string network = 5 [(buf.validate.field).string = {
     min_len: 2,
     max_len: 128
   }];
-  string project = 6 [(validate.rules).string = {
+  string project = 6 [(buf.validate.field).string = {
     min_len: 2,
     max_len: 128
   }];
   IPType type = 7;
-  repeated string tags = 8 [(validate.rules).repeated.max_items = 100];
+  repeated string tags = 8 [(buf.validate.field).repeated.max_items = 100];
   google.protobuf.Timestamp created_at = 10;
   google.protobuf.Timestamp updated_at = 11;
   google.protobuf.Timestamp deleted_at = 12;
@@ -68,41 +68,41 @@ message IP {
 
 // Requests
 message IPServiceGetRequest {
-  string uuid = 1 [(validate.rules).string.uuid = true];
-  string project = 2 [(validate.rules).string = {
+  string uuid = 1 [(buf.validate.field).string.uuid = true];
+  string project = 2 [(buf.validate.field).string = {
     min_len: 2,
     max_len: 128
   }];
 }
 message IPServiceAllocateRequest {
-  string project = 2 [(validate.rules).string = {
+  string project = 2 [(buf.validate.field).string = {
     min_len: 2,
     max_len: 128
   }];
-  string name = 3 [(validate.rules).string = {
+  string name = 3 [(buf.validate.field).string = {
     min_len: 2,
     max_len: 128
   }];
-  string description = 4 [(validate.rules).string = {max_len: 128}];
-  repeated string tags = 8 [(validate.rules).repeated.max_items = 100];
+  string description = 4 [(buf.validate.field).string = {max_len: 128}];
+  repeated string tags = 8 [(buf.validate.field).repeated.max_items = 100];
   bool static = 9;
 }
 message IPServiceUpdateRequest {
-  string project = 1 [(validate.rules).string = {
+  string project = 1 [(buf.validate.field).string = {
     min_len: 2,
     max_len: 128
   }];
   IP ip = 2;
 }
 message IPServiceListRequest {
-  string project = 2 [(validate.rules).string = {
+  string project = 2 [(buf.validate.field).string = {
     min_len: 2,
     max_len: 128
   }];
 }
 message IPServiceDeleteRequest {
-  string uuid = 1 [(validate.rules).string.uuid = true];
-  string project = 2 [(validate.rules).string = {
+  string uuid = 1 [(buf.validate.field).string.uuid = true];
+  string project = 2 [(buf.validate.field).string = {
     min_len: 2,
     max_len: 128
   }];

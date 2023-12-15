@@ -5,7 +5,8 @@ managed:
     default: github.com/metal-stack-cloud/api/go
     except:
       - buf.build/googleapis/googleapis
-      - buf.build/envoyproxy/protoc-gen-validate
+      - buf.build/bufbuild/protovalidate
+      - buf.build/gen/go
 plugins:
   # generate go structs for protocol buffer definition
   - plugin: buf.build/protocolbuffers/go:v1.31.0
@@ -22,10 +23,6 @@ plugins:
   - plugin: buf.build/connectrpc/es:v1.1.3
     out: ../js
     opt: target=ts
-  # generate validate methods
-  - plugin: buf.build/bufbuild/validate-go:v1.0.2
-    out: ../go
-    opt: paths=source_relative
   # generate json docs
   - plugin: buf.build/community/pseudomuto-doc:v1.5.1
     out: ../docs
