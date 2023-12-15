@@ -33,6 +33,6 @@ plugins:
   # create python stubs
   - plugin: buf.build/grpc/python:v1.60.0
     out: ../python
-  - plugin: buf.build/protocolbuffers/python
+  - plugin: buf.build/protocolbuffers/python:v25.1
     out: ../python
     opt: pyi_out=../python
