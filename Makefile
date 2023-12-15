@@ -12,6 +12,7 @@ release: proto generate test npm-build-tagged
 proto: protolint
 	$(MAKE) -C go clean
 	$(MAKE) -C js clean
+	$(MAKE) -C python clean
 	$(MAKE) -C proto protoc
 
 .PHONY: protolint
