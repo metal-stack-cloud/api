@@ -9,6 +9,7 @@ import (
 	"os"
 	"path"
 	"path/filepath"
+	"slices"
 	"strings"
 
 	"github.com/Masterminds/sprig/v3"
@@ -111,6 +112,7 @@ func servicePermissions(root string) (*permissions.ServicePermissions, error) {
 		}
 		chargeable = permissions.Chargeable{}
 		auditable  = permissions.Auditable{}
+		services   = []string{}
 	)
 
 	files, err := walk(root)
@@ -126,6 +128,7 @@ func servicePermissions(root string) (*permissions.ServicePermissions, error) {
 		}
 		for _, serviceDesc := range fd.GetService() {
 			serviceDesc := serviceDesc
+			services = append(services, fmt.Sprintf("%s.%s", *fd.Package, *serviceDesc.Name))
 			for _, method := range serviceDesc.GetMethod() {
 				method := method
 				methodName := fmt.Sprintf("/%s.%s/%s", *fd.Package, *serviceDesc.Name, *method.Name)
@@ -198,13 +201,14 @@ func servicePermissions(root string) (*permissions.ServicePermissions, error) {
 			}
 		}
 	}
-
+	slices.Sort(services)
 	sp := &permissions.ServicePermissions{
 		Roles:      roles,
 		Methods:    methods,
 		Visibility: visibility,
 		Chargeable: chargeable,
 		Auditable:  auditable,
+		Services:   services,
 	}
 
 	return sp, nil

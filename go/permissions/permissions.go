@@ -10,6 +10,7 @@ type ServicePermissions struct {
 	Visibility Visibility `json:"visibility"`
 	Chargeable Chargeable `json:"chargeable,omitempty"`
 	Auditable  Auditable  `json:"auditable,omitempty"`
+	Services   []string   `json:"services,omitempty"`
 }
 type Admin struct {
 	// TODO map from string to bool would be better
