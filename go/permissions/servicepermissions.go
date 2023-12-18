@@ -215,6 +215,7 @@ func GetServicePermissions() *ServicePermissions {
 				"/api.v1.MethodService/List":                                     true,
 				"/api.v1.PaymentService/GetDefaultPrices":                        true,
 				"/api.v1.VersionService/Get":                                     true,
+				"/grpc.reflection.v1.ServerReflection/ServerReflectionInfo":      true,
 				"/grpc.reflection.v1alpha.ServerReflection/ServerReflectionInfo": true,
 				"/status.v1.MessageService/List":                                 true,
 				"/status.v1.StatusService/Get":                                   true,
