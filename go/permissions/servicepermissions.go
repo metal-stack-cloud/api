@@ -1,6 +1,29 @@
 // Code generated discover.go. DO NOT EDIT.
 package permissions
 
+func GetServices() []string {
+	return []string{
+		"admin.v1.ClusterService",
+		"admin.v1.PaymentService",
+		"admin.v1.StorageService",
+		"admin.v1.TenantService",
+		"admin.v1.TokenService",
+		"api.v1.AssetService",
+		"api.v1.ClusterService",
+		"api.v1.HealthService",
+		"api.v1.IPService",
+		"api.v1.MethodService",
+		"api.v1.PaymentService",
+		"api.v1.SnapshotService",
+		"api.v1.TenantService",
+		"api.v1.TokenService",
+		"api.v1.VersionService",
+		"api.v1.VolumeService",
+		"status.v1.MessageService",
+		"status.v1.StatusService",
+	}
+}
+
 func GetServicePermissions() *ServicePermissions {
 	return &ServicePermissions{
 		Roles: Roles{
@@ -192,6 +215,7 @@ func GetServicePermissions() *ServicePermissions {
 				"/api.v1.MethodService/List":                                     true,
 				"/api.v1.PaymentService/GetDefaultPrices":                        true,
 				"/api.v1.VersionService/Get":                                     true,
+				"/grpc.reflection.v1.ServerReflection/ServerReflectionInfo":      true,
 				"/grpc.reflection.v1alpha.ServerReflection/ServerReflectionInfo": true,
 				"/status.v1.MessageService/List":                                 true,
 				"/status.v1.StatusService/Get":                                   true,

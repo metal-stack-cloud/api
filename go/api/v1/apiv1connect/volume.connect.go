@@ -18,7 +18,7 @@ import (
 // generated with a version of connect newer than the one compiled into your binary. You can fix the
 // problem by either regenerating this code with an older version of connect or updating the connect
 // version compiled into your binary.
-const _ = connect.IsAtLeastVersion0_1_0
+const _ = connect.IsAtLeastVersion1_13_0
 
 const (
 	// VolumeServiceName is the fully-qualified name of the VolumeService service.
@@ -49,6 +49,18 @@ const (
 	SnapshotServiceDeleteProcedure = "/api.v1.SnapshotService/Delete"
 )
 
+// These variables are the protoreflect.Descriptor objects for the RPCs defined in this package.
+var (
+	volumeServiceServiceDescriptor        = v1.File_api_v1_volume_proto.Services().ByName("VolumeService")
+	volumeServiceGetMethodDescriptor      = volumeServiceServiceDescriptor.Methods().ByName("Get")
+	volumeServiceListMethodDescriptor     = volumeServiceServiceDescriptor.Methods().ByName("List")
+	volumeServiceDeleteMethodDescriptor   = volumeServiceServiceDescriptor.Methods().ByName("Delete")
+	snapshotServiceServiceDescriptor      = v1.File_api_v1_volume_proto.Services().ByName("SnapshotService")
+	snapshotServiceGetMethodDescriptor    = snapshotServiceServiceDescriptor.Methods().ByName("Get")
+	snapshotServiceListMethodDescriptor   = snapshotServiceServiceDescriptor.Methods().ByName("List")
+	snapshotServiceDeleteMethodDescriptor = snapshotServiceServiceDescriptor.Methods().ByName("Delete")
+)
+
 // VolumeServiceClient is a client for the api.v1.VolumeService service.
 type VolumeServiceClient interface {
 	Get(context.Context, *connect.Request[v1.VolumeServiceGetRequest]) (*connect.Response[v1.VolumeServiceGetResponse], error)
@@ -69,17 +81,20 @@ func NewVolumeServiceClient(httpClient connect.HTTPClient, baseURL string, opts 
 		get: connect.NewClient[v1.VolumeServiceGetRequest, v1.VolumeServiceGetResponse](
 			httpClient,
 			baseURL+VolumeServiceGetProcedure,
-			opts...,
+			connect.WithSchema(volumeServiceGetMethodDescriptor),
+			connect.WithClientOptions(opts...),
 		),
 		list: connect.NewClient[v1.VolumeServiceListRequest, v1.VolumeServiceListResponse](
 			httpClient,
 			baseURL+VolumeServiceListProcedure,
-			opts...,
+			connect.WithSchema(volumeServiceListMethodDescriptor),
+			connect.WithClientOptions(opts...),
 		),
 		delete: connect.NewClient[v1.VolumeServiceDeleteRequest, v1.VolumeServiceDeleteResponse](
 			httpClient,
 			baseURL+VolumeServiceDeleteProcedure,
-			opts...,
+			connect.WithSchema(volumeServiceDeleteMethodDescriptor),
+			connect.WithClientOptions(opts...),
 		),
 	}
 }
@@ -122,17 +137,20 @@ func NewVolumeServiceHandler(svc VolumeServiceHandler, opts ...connect.HandlerOp
 	volumeServiceGetHandler := connect.NewUnaryHandler(
 		VolumeServiceGetProcedure,
 		svc.Get,
-		opts...,
+		connect.WithSchema(volumeServiceGetMethodDescriptor),
+		connect.WithHandlerOptions(opts...),
 	)
 	volumeServiceListHandler := connect.NewUnaryHandler(
 		VolumeServiceListProcedure,
 		svc.List,
-		opts...,
+		connect.WithSchema(volumeServiceListMethodDescriptor),
+		connect.WithHandlerOptions(opts...),
 	)
 	volumeServiceDeleteHandler := connect.NewUnaryHandler(
 		VolumeServiceDeleteProcedure,
 		svc.Delete,
-		opts...,
+		connect.WithSchema(volumeServiceDeleteMethodDescriptor),
+		connect.WithHandlerOptions(opts...),
 	)
 	return "/api.v1.VolumeService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
@@ -183,17 +201,20 @@ func NewSnapshotServiceClient(httpClient connect.HTTPClient, baseURL string, opt
 		get: connect.NewClient[v1.SnapshotServiceGetRequest, v1.SnapshotServiceGetResponse](
 			httpClient,
 			baseURL+SnapshotServiceGetProcedure,
-			opts...,
+			connect.WithSchema(snapshotServiceGetMethodDescriptor),
+			connect.WithClientOptions(opts...),
 		),
 		list: connect.NewClient[v1.SnapshotServiceListRequest, v1.SnapshotServiceListResponse](
 			httpClient,
 			baseURL+SnapshotServiceListProcedure,
-			opts...,
+			connect.WithSchema(snapshotServiceListMethodDescriptor),
+			connect.WithClientOptions(opts...),
 		),
 		delete: connect.NewClient[v1.SnapshotServiceDeleteRequest, v1.SnapshotServiceDeleteResponse](
 			httpClient,
 			baseURL+SnapshotServiceDeleteProcedure,
-			opts...,
+			connect.WithSchema(snapshotServiceDeleteMethodDescriptor),
+			connect.WithClientOptions(opts...),
 		),
 	}
 }
@@ -236,17 +257,20 @@ func NewSnapshotServiceHandler(svc SnapshotServiceHandler, opts ...connect.Handl
 	snapshotServiceGetHandler := connect.NewUnaryHandler(
 		SnapshotServiceGetProcedure,
 		svc.Get,
-		opts...,
+		connect.WithSchema(snapshotServiceGetMethodDescriptor),
+		connect.WithHandlerOptions(opts...),
 	)
 	snapshotServiceListHandler := connect.NewUnaryHandler(
 		SnapshotServiceListProcedure,
 		svc.List,
-		opts...,
+		connect.WithSchema(snapshotServiceListMethodDescriptor),
+		connect.WithHandlerOptions(opts...),
 	)
 	snapshotServiceDeleteHandler := connect.NewUnaryHandler(
 		SnapshotServiceDeleteProcedure,
 		svc.Delete,
-		opts...,
+		connect.WithSchema(snapshotServiceDeleteMethodDescriptor),
+		connect.WithHandlerOptions(opts...),
 	)
 	return "/api.v1.SnapshotService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {

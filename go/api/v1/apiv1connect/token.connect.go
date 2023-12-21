@@ -18,7 +18,7 @@ import (
 // generated with a version of connect newer than the one compiled into your binary. You can fix the
 // problem by either regenerating this code with an older version of connect or updating the connect
 // version compiled into your binary.
-const _ = connect.IsAtLeastVersion0_1_0
+const _ = connect.IsAtLeastVersion1_13_0
 
 const (
 	// TokenServiceName is the fully-qualified name of the TokenService service.
@@ -41,6 +41,14 @@ const (
 	TokenServiceRevokeProcedure = "/api.v1.TokenService/Revoke"
 )
 
+// These variables are the protoreflect.Descriptor objects for the RPCs defined in this package.
+var (
+	tokenServiceServiceDescriptor      = v1.File_api_v1_token_proto.Services().ByName("TokenService")
+	tokenServiceCreateMethodDescriptor = tokenServiceServiceDescriptor.Methods().ByName("Create")
+	tokenServiceListMethodDescriptor   = tokenServiceServiceDescriptor.Methods().ByName("List")
+	tokenServiceRevokeMethodDescriptor = tokenServiceServiceDescriptor.Methods().ByName("Revoke")
+)
+
 // TokenServiceClient is a client for the api.v1.TokenService service.
 type TokenServiceClient interface {
 	Create(context.Context, *connect.Request[v1.TokenServiceCreateRequest]) (*connect.Response[v1.TokenServiceCreateResponse], error)
@@ -61,17 +69,20 @@ func NewTokenServiceClient(httpClient connect.HTTPClient, baseURL string, opts .
 		create: connect.NewClient[v1.TokenServiceCreateRequest, v1.TokenServiceCreateResponse](
 			httpClient,
 			baseURL+TokenServiceCreateProcedure,
-			opts...,
+			connect.WithSchema(tokenServiceCreateMethodDescriptor),
+			connect.WithClientOptions(opts...),
 		),
 		list: connect.NewClient[v1.TokenServiceListRequest, v1.TokenServiceListResponse](
 			httpClient,
 			baseURL+TokenServiceListProcedure,
-			opts...,
+			connect.WithSchema(tokenServiceListMethodDescriptor),
+			connect.WithClientOptions(opts...),
 		),
 		revoke: connect.NewClient[v1.TokenServiceRevokeRequest, v1.TokenServiceRevokeResponse](
 			httpClient,
 			baseURL+TokenServiceRevokeProcedure,
-			opts...,
+			connect.WithSchema(tokenServiceRevokeMethodDescriptor),
+			connect.WithClientOptions(opts...),
 		),
 	}
 }
@@ -114,17 +125,20 @@ func NewTokenServiceHandler(svc TokenServiceHandler, opts ...connect.HandlerOpti
 	tokenServiceCreateHandler := connect.NewUnaryHandler(
 		TokenServiceCreateProcedure,
 		svc.Create,
-		opts...,
+		connect.WithSchema(tokenServiceCreateMethodDescriptor),
+		connect.WithHandlerOptions(opts...),
 	)
 	tokenServiceListHandler := connect.NewUnaryHandler(
 		TokenServiceListProcedure,
 		svc.List,
-		opts...,
+		connect.WithSchema(tokenServiceListMethodDescriptor),
+		connect.WithHandlerOptions(opts...),
 	)
 	tokenServiceRevokeHandler := connect.NewUnaryHandler(
 		TokenServiceRevokeProcedure,
 		svc.Revoke,
-		opts...,
+		connect.WithSchema(tokenServiceRevokeMethodDescriptor),
+		connect.WithHandlerOptions(opts...),
 	)
 	return "/api.v1.TokenService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {

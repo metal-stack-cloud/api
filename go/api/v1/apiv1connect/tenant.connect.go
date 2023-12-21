@@ -18,7 +18,7 @@ import (
 // generated with a version of connect newer than the one compiled into your binary. You can fix the
 // problem by either regenerating this code with an older version of connect or updating the connect
 // version compiled into your binary.
-const _ = connect.IsAtLeastVersion0_1_0
+const _ = connect.IsAtLeastVersion1_13_0
 
 const (
 	// TenantServiceName is the fully-qualified name of the TenantService service.
@@ -46,6 +46,16 @@ const (
 	TenantServiceDeleteProcedure = "/api.v1.TenantService/Delete"
 )
 
+// These variables are the protoreflect.Descriptor objects for the RPCs defined in this package.
+var (
+	tenantServiceServiceDescriptor              = v1.File_api_v1_tenant_proto.Services().ByName("TenantService")
+	tenantServiceCreateMethodDescriptor         = tenantServiceServiceDescriptor.Methods().ByName("Create")
+	tenantServiceCreateOrUpdateMethodDescriptor = tenantServiceServiceDescriptor.Methods().ByName("CreateOrUpdate")
+	tenantServiceGetMethodDescriptor            = tenantServiceServiceDescriptor.Methods().ByName("Get")
+	tenantServiceUpdateMethodDescriptor         = tenantServiceServiceDescriptor.Methods().ByName("Update")
+	tenantServiceDeleteMethodDescriptor         = tenantServiceServiceDescriptor.Methods().ByName("Delete")
+)
+
 // TenantServiceClient is a client for the api.v1.TenantService service.
 type TenantServiceClient interface {
 	Create(context.Context, *connect.Request[v1.TenantServiceCreateRequest]) (*connect.Response[v1.TenantServiceCreateResponse], error)
@@ -70,27 +80,32 @@ func NewTenantServiceClient(httpClient connect.HTTPClient, baseURL string, opts 
 		create: connect.NewClient[v1.TenantServiceCreateRequest, v1.TenantServiceCreateResponse](
 			httpClient,
 			baseURL+TenantServiceCreateProcedure,
-			opts...,
+			connect.WithSchema(tenantServiceCreateMethodDescriptor),
+			connect.WithClientOptions(opts...),
 		),
 		createOrUpdate: connect.NewClient[v1.TenantServiceCreateOrUpdateRequest, v1.TenantServiceCreateOrUpdateResponse](
 			httpClient,
 			baseURL+TenantServiceCreateOrUpdateProcedure,
-			opts...,
+			connect.WithSchema(tenantServiceCreateOrUpdateMethodDescriptor),
+			connect.WithClientOptions(opts...),
 		),
 		get: connect.NewClient[v1.TenantServiceGetRequest, v1.TenantServiceGetResponse](
 			httpClient,
 			baseURL+TenantServiceGetProcedure,
-			opts...,
+			connect.WithSchema(tenantServiceGetMethodDescriptor),
+			connect.WithClientOptions(opts...),
 		),
 		update: connect.NewClient[v1.TenantServiceUpdateRequest, v1.TenantServiceUpdateResponse](
 			httpClient,
 			baseURL+TenantServiceUpdateProcedure,
-			opts...,
+			connect.WithSchema(tenantServiceUpdateMethodDescriptor),
+			connect.WithClientOptions(opts...),
 		),
 		delete: connect.NewClient[v1.TenantServiceDeleteRequest, v1.TenantServiceDeleteResponse](
 			httpClient,
 			baseURL+TenantServiceDeleteProcedure,
-			opts...,
+			connect.WithSchema(tenantServiceDeleteMethodDescriptor),
+			connect.WithClientOptions(opts...),
 		),
 	}
 }
@@ -149,27 +164,32 @@ func NewTenantServiceHandler(svc TenantServiceHandler, opts ...connect.HandlerOp
 	tenantServiceCreateHandler := connect.NewUnaryHandler(
 		TenantServiceCreateProcedure,
 		svc.Create,
-		opts...,
+		connect.WithSchema(tenantServiceCreateMethodDescriptor),
+		connect.WithHandlerOptions(opts...),
 	)
 	tenantServiceCreateOrUpdateHandler := connect.NewUnaryHandler(
 		TenantServiceCreateOrUpdateProcedure,
 		svc.CreateOrUpdate,
-		opts...,
+		connect.WithSchema(tenantServiceCreateOrUpdateMethodDescriptor),
+		connect.WithHandlerOptions(opts...),
 	)
 	tenantServiceGetHandler := connect.NewUnaryHandler(
 		TenantServiceGetProcedure,
 		svc.Get,
-		opts...,
+		connect.WithSchema(tenantServiceGetMethodDescriptor),
+		connect.WithHandlerOptions(opts...),
 	)
 	tenantServiceUpdateHandler := connect.NewUnaryHandler(
 		TenantServiceUpdateProcedure,
 		svc.Update,
-		opts...,
+		connect.WithSchema(tenantServiceUpdateMethodDescriptor),
+		connect.WithHandlerOptions(opts...),
 	)
 	tenantServiceDeleteHandler := connect.NewUnaryHandler(
 		TenantServiceDeleteProcedure,
 		svc.Delete,
-		opts...,
+		connect.WithSchema(tenantServiceDeleteMethodDescriptor),
+		connect.WithHandlerOptions(opts...),
 	)
 	return "/api.v1.TenantService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {

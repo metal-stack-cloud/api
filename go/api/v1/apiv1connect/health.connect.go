@@ -18,7 +18,7 @@ import (
 // generated with a version of connect newer than the one compiled into your binary. You can fix the
 // problem by either regenerating this code with an older version of connect or updating the connect
 // version compiled into your binary.
-const _ = connect.IsAtLeastVersion0_1_0
+const _ = connect.IsAtLeastVersion1_13_0
 
 const (
 	// HealthServiceName is the fully-qualified name of the HealthService service.
@@ -35,6 +35,12 @@ const (
 const (
 	// HealthServiceGetProcedure is the fully-qualified name of the HealthService's Get RPC.
 	HealthServiceGetProcedure = "/api.v1.HealthService/Get"
+)
+
+// These variables are the protoreflect.Descriptor objects for the RPCs defined in this package.
+var (
+	healthServiceServiceDescriptor   = v1.File_api_v1_health_proto.Services().ByName("HealthService")
+	healthServiceGetMethodDescriptor = healthServiceServiceDescriptor.Methods().ByName("Get")
 )
 
 // HealthServiceClient is a client for the api.v1.HealthService service.
@@ -55,7 +61,8 @@ func NewHealthServiceClient(httpClient connect.HTTPClient, baseURL string, opts 
 		get: connect.NewClient[v1.HealthServiceGetRequest, v1.HealthServiceGetResponse](
 			httpClient,
 			baseURL+HealthServiceGetProcedure,
-			opts...,
+			connect.WithSchema(healthServiceGetMethodDescriptor),
+			connect.WithClientOptions(opts...),
 		),
 	}
 }
@@ -84,7 +91,8 @@ func NewHealthServiceHandler(svc HealthServiceHandler, opts ...connect.HandlerOp
 	healthServiceGetHandler := connect.NewUnaryHandler(
 		HealthServiceGetProcedure,
 		svc.Get,
-		opts...,
+		connect.WithSchema(healthServiceGetMethodDescriptor),
+		connect.WithHandlerOptions(opts...),
 	)
 	return "/api.v1.HealthService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {

@@ -9,6 +9,7 @@ import (
 	"os"
 	"path"
 	"path/filepath"
+	"slices"
 	"strings"
 
 	"github.com/Masterminds/sprig/v3"
@@ -19,8 +20,12 @@ import (
 	_ "embed"
 )
 
-// serverReflectionInfo is always allowed to access to get a list of exposed services for example with grpcurl
-const serverReflectionInfo = "/grpc.reflection.v1alpha.ServerReflection/ServerReflectionInfo"
+const (
+	// serverReflectionInfo1alpha1 is always allowed to access to get a list of exposed services for example with grpcurl
+	serverReflectionInfov1alpha1 = "/grpc.reflection.v1alpha.ServerReflection/ServerReflectionInfo"
+	// serverReflectionInfo is always allowed to access to get a list of exposed services for example with grpcurl
+	serverReflectionInfo = "/grpc.reflection.v1.ServerReflection/ServerReflectionInfo"
+)
 
 var (
 	//go:embed go_servicepermissions.tpl
@@ -104,13 +109,15 @@ func servicePermissions(root string) (*permissions.ServicePermissions, error) {
 		visibility = permissions.Visibility{
 			Public: map[string]bool{
 				// Allow service reflection to list available methods
-				serverReflectionInfo: true,
+				serverReflectionInfov1alpha1: true,
+				serverReflectionInfo:         true,
 			},
 			Private: map[string]bool{},
 			Self:    map[string]bool{},
 		}
 		chargeable = permissions.Chargeable{}
 		auditable  = permissions.Auditable{}
+		services   = []string{}
 	)
 
 	files, err := walk(root)
@@ -126,6 +133,7 @@ func servicePermissions(root string) (*permissions.ServicePermissions, error) {
 		}
 		for _, serviceDesc := range fd.GetService() {
 			serviceDesc := serviceDesc
+			services = append(services, fmt.Sprintf("%s.%s", *fd.Package, *serviceDesc.Name))
 			for _, method := range serviceDesc.GetMethod() {
 				method := method
 				methodName := fmt.Sprintf("/%s.%s/%s", *fd.Package, *serviceDesc.Name, *method.Name)
@@ -198,13 +206,14 @@ func servicePermissions(root string) (*permissions.ServicePermissions, error) {
 			}
 		}
 	}
-
+	slices.Sort(services)
 	sp := &permissions.ServicePermissions{
 		Roles:      roles,
 		Methods:    methods,
 		Visibility: visibility,
 		Chargeable: chargeable,
 		Auditable:  auditable,
+		Services:   services,
 	}
 
 	return sp, nil

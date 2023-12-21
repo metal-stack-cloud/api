@@ -1,6 +1,14 @@
 // Code generated discover.go. DO NOT EDIT.
 package permissions
 
+func GetServices() []string {
+	return []string{
+{{- range $s := .Services }}
+	"{{ $s }}",
+{{- end }}
+	}
+}
+
 func GetServicePermissions() *ServicePermissions {
 	return &ServicePermissions{
 		Roles:      Roles{
