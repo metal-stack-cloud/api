@@ -4,45 +4,70 @@ package api.v1;
 
 import "api/v1/common.proto";
 
+// HealthService serves health related functions
 service HealthService {
+  // Get the health of the platform
   rpc Get(HealthServiceGetRequest) returns (HealthServiceGetResponse) {
     option (visibility) = VISIBILITY_PUBLIC;
     option (auditing) = AUDITING_EXCLUDED;
   }
 }
 
+// ServiceStatus defines the status of a service
 enum ServiceStatus {
+  // SERVICE_STATUS_UNSPECIFIED service status is not known or unspecified
   SERVICE_STATUS_UNSPECIFIED = 0;
+  // SERVICE_STATUS_DEGRADED the service is in degraded status, not the whole functionality is available
   SERVICE_STATUS_DEGRADED = 1;
+  // SERVICE_STATUS_UNHEALTHY the service is in unhealthy status, serious impact is expected
   SERVICE_STATUS_UNHEALTHY = 2;
+  // SERVICE_STATUS_HEALTHY the service is in healthy status e.g. fully functional
   SERVICE_STATUS_HEALTHY = 3;
 }
 
+// Service defines the service for which the healtyness is reported
 enum Service {
+  // SERVICE_UNSPECIFIED is a unknown service
   SERVICE_UNSPECIFIED = 0;
+  // SERVICE_CLUSTER the kubernetes cluster service
   SERVICE_CLUSTER = 1;
+  // SERVICE_VOLUME the volume/storage service
   SERVICE_VOLUME = 2;
+  // SERVICE_MACHINES the machine service
   SERVICE_MACHINES = 3;
 }
 
+// Health reports the healt status of all services
 message Health {
+  // Services the health of all individual services
   repeated HealthStatus services = 1;
 }
 
+// HealthStatus the health of one service
 message HealthStatus {
+  // Name the name of the service
   Service name = 1;
+  // Status the status of this service
   ServiceStatus status = 2;
+  // Message describes the reason for the unhealthy status if possible
   string message = 3;
+  // Partitions describes the health of the service by partition
   map<string, PartitionHealth> partitions = 4;
 }
 
+// PartitionHealth the status of a specific service in this partition
 message PartitionHealth {
+  // Status the health status of the service in this partition
   ServiceStatus status = 1;
+  // Message describes the reason for the unhealthy status if possible
   string message = 2;
 }
 
+// HealthServiceGetRequest is request payload to get the health of the system
 message HealthServiceGetRequest {}
 
+// HealthServiceGetRequest is the response payload with the health of the system
 message HealthServiceGetResponse {
+  // Health is the overall health of the system
   Health health = 1;
 }

@@ -20,6 +20,7 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
+// MethodServiceListRequest is the request payload to list all public methods
 type MethodServiceListRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -58,11 +59,13 @@ func (*MethodServiceListRequest) Descriptor() ([]byte, []int) {
 	return file_api_v1_methods_proto_rawDescGZIP(), []int{0}
 }
 
+// MethodServiceListResponse is the response payload with all public visible methods
 type MethodServiceListResponse struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
+	// Methods is a list of methods public callable
 	Methods []string `protobuf:"bytes,1,rep,name=methods,proto3" json:"methods,omitempty"`
 }
 
@@ -105,6 +108,7 @@ func (x *MethodServiceListResponse) GetMethods() []string {
 	return nil
 }
 
+// MethodServiceTokenScopedListRequest is the request payload to list all methods callable with the token present in the request
 type MethodServiceTokenScopedListRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -143,13 +147,16 @@ func (*MethodServiceTokenScopedListRequest) Descriptor() ([]byte, []int) {
 	return file_api_v1_methods_proto_rawDescGZIP(), []int{2}
 }
 
+// MethodServiceTokenScopedListResponse is the response payload which contains all methods which are callable with the given token
 type MethodServiceTokenScopedListResponse struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
+	// Permissions a list of methods which can be called
 	Permissions []*MethodPermission `protobuf:"bytes,1,rep,name=permissions,proto3" json:"permissions,omitempty"`
-	Roles       []*TokenRole        `protobuf:"bytes,2,rep,name=roles,proto3" json:"roles,omitempty"`
+	// Roles a list of roles the presented token contains
+	Roles []*TokenRole `protobuf:"bytes,2,rep,name=roles,proto3" json:"roles,omitempty"`
 }
 
 func (x *MethodServiceTokenScopedListResponse) Reset() {

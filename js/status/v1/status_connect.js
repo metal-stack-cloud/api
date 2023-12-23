@@ -8,12 +8,17 @@ exports.StatusService = void 0;
 const status_pb_js_1 = require("./status_pb.js");
 const protobuf_1 = require("@bufbuild/protobuf");
 /**
+ * StatusService serves status related functions
+ * this service is used as backend for the status dashboard
+ *
  * @generated from service status.v1.StatusService
  */
 exports.StatusService = {
     typeName: "status.v1.StatusService",
     methods: {
         /**
+         * Get the system status
+         *
          * @generated from rpc status.v1.StatusService.Get
          */
         get: {

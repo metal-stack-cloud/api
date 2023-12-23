@@ -5,24 +5,35 @@ package api.v1;
 import "api/v1/common.proto";
 import "api/v1/token.proto";
 
+// MethodService serves method related functions
+// methods are functions in services
 service MethodService {
+  // List all public visible methods
   rpc List(MethodServiceListRequest) returns (MethodServiceListResponse) {
     option (visibility) = VISIBILITY_PUBLIC;
   }
+  // TokenScopedList all methods callable with the token present in the request
   rpc TokenScopedList(MethodServiceTokenScopedListRequest) returns (MethodServiceTokenScopedListResponse) {
     option (visibility) = VISIBILITY_SELF;
   }
 }
 
+// MethodServiceListRequest is the request payload to list all public methods
 message MethodServiceListRequest {}
 
+// MethodServiceListResponse is the response payload with all public visible methods
 message MethodServiceListResponse {
+  // Methods is a list of methods public callable
   repeated string methods = 1;
 }
 
+// MethodServiceTokenScopedListRequest is the request payload to list all methods callable with the token present in the request
 message MethodServiceTokenScopedListRequest {}
 
+// MethodServiceTokenScopedListResponse is the response payload which contains all methods which are callable with the given token
 message MethodServiceTokenScopedListResponse {
+  // Permissions a list of methods which can be called
   repeated MethodPermission permissions = 1;
+  // Roles a list of roles the presented token contains
   repeated TokenRole roles = 2;
 }

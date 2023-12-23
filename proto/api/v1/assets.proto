@@ -4,61 +4,92 @@ package api.v1;
 
 import "api/v1/common.proto";
 
+// AssetService serves asset related functions
 service AssetService {
+  // List available assets
   rpc List(AssetServiceListRequest) returns (AssetServiceListResponse) {
     option (visibility) = VISIBILITY_PUBLIC;
     option (auditing) = AUDITING_EXCLUDED;
   }
 }
 
-// Types
+// Asset defines the available resources which can be used
 message Asset {
+  // Region defines a datacenter location, e.g. a city.
   Region region = 1;
+  // MachineTypes available by region
   map<string, MachineType> machine_types = 2;
+  // Kubernetes a list of kubernetes versions
   repeated Kubernetes kubernetes = 3;
 }
 
+// Region defines a datacenter location
 message Region {
+  // Id is the technical identifier of this region
   string id = 1;
+  // Name of the region
   string name = 2;
+  // Address is the postal address of the region
   string address = 3;
+  // Active indicates if this region is usable
   bool active = 4;
+  // Partitions in this region
   map<string, Partition> partitions = 5;
+  // Defaults are the default assets used if not otherwise speecified.
   AssetDefaults defaults = 6;
 }
 
+// Partition defines a failure domain in one Region.
 message Partition {
+  // Id is the technical id of this partition
   string id = 1;
+  // Name of this partition
   string name = 2;
+  // Address is the postal address of the partition
   string address = 3;
+  // Active indicates if this partition is usable
   bool active = 4;
 }
 
+// MachineType defines a server type
 message MachineType {
+  // Id is the technical id of this machine type
   string id = 1;
+  // Name of this machine type
   string name = 2;
+  // CPUs e.g. cores in this machine / server
   uint32 cpus = 3;
+  // Memory in this machine / server
   uint64 memory = 4;
+  // Storage in this machine / server
   uint64 storage = 5;
 }
 
+// Kubernetes related configurations available
 message Kubernetes {
+  // Version of kubernetes
   string version = 1;
 }
 
+// AssetDefaults apply if no specific properties are specified
 message AssetDefaults {
+  // MachineType defines the default machine type used
   string machine_type = 1;
+  // KubernetesVersion defines the default kubernetes version to be used
   string kubernetes_version = 2;
+  // WorkerMin defines how many servers are specified as minimum
   uint32 worker_min = 3;
+  // WorkerMax defines how many servers are specified as maximum
   uint32 worker_max = 4;
+  // Partition defines where the cluster is created if not otherwise specified
   string partition = 7;
 }
 
-// Requests
+// AssetServiceListRequest is the request payload to list all Assets
 message AssetServiceListRequest {}
 
-// Responses
+// AssetServiceListResponse is the response payload which containes the the Asset list
 message AssetServiceListResponse {
-  // assets maps region ids to assets
+  // Assets maps the Assets by Region
   map<string, Asset> assets = 1;
 }

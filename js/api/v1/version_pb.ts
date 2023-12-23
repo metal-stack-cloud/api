@@ -7,6 +7,8 @@ import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialM
 import { Message, proto3 } from "@bufbuild/protobuf";
 
 /**
+ * Version of the application
+ *
  * @generated from message api.v1.Version
  */
 export class Version extends Message<Version> {
@@ -70,6 +72,8 @@ export class Version extends Message<Version> {
 }
 
 /**
+ * VersionServiceGetRequest is the request payload to get the version
+ *
  * @generated from message api.v1.VersionServiceGetRequest
  */
 export class VersionServiceGetRequest extends Message<VersionServiceGetRequest> {
@@ -101,10 +105,14 @@ export class VersionServiceGetRequest extends Message<VersionServiceGetRequest> 
 }
 
 /**
+ * VersionServiceGetResponse is the response payload with the version
+ *
  * @generated from message api.v1.VersionServiceGetResponse
  */
 export class VersionServiceGetResponse extends Message<VersionServiceGetResponse> {
   /**
+   * Version of the application
+   *
    * @generated from field: api.v1.Version version = 1;
    */
   version?: Version;

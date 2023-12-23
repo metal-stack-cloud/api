@@ -21,12 +21,16 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
+// OAuthProvider defines which login providers are supported
 type OAuthProvider int32
 
 const (
+	// O_AUTH_PROVIDER_UNSPECIFIED is an unknown login provider
 	OAuthProvider_O_AUTH_PROVIDER_UNSPECIFIED OAuthProvider = 0
-	OAuthProvider_O_AUTH_PROVIDER_GITHUB      OAuthProvider = 1
-	OAuthProvider_O_AUTH_PROVIDER_AZURE       OAuthProvider = 2
+	// O_AUTH_PROVIDER_GITHUB specifies github as oauth login provider
+	OAuthProvider_O_AUTH_PROVIDER_GITHUB OAuthProvider = 1
+	// O_AUTH_PROVIDER_AZURE specifies azure as oauth login provider
+	OAuthProvider_O_AUTH_PROVIDER_AZURE OAuthProvider = 2
 )
 
 // Enum value maps for OAuthProvider.
@@ -70,14 +74,20 @@ func (OAuthProvider) EnumDescriptor() ([]byte, []int) {
 	return file_api_v1_common_proto_rawDescGZIP(), []int{0}
 }
 
+// Role defines which role the logged in user got from the login provider
 type Role int32
 
 const (
+	// ROLE_UNSPECIFIED is not specified
 	Role_ROLE_UNSPECIFIED Role = 0
-	Role_ROLE_MEMBER      Role = 1
-	Role_ROLE_MAINTAINER  Role = 2
-	Role_ROLE_ADMIN       Role = 3
-	Role_ROLE_OWNER       Role = 4
+	// ROLE_MEMBER the user has member role in the scope
+	Role_ROLE_MEMBER Role = 1
+	// ROLE_MAINTAINER the user has maintainer role in the scope
+	Role_ROLE_MAINTAINER Role = 2
+	// ROLE_ADMIN the user has admin role in the scope
+	Role_ROLE_ADMIN Role = 3
+	// ROLE_OWNER the user has owner role in the scope
+	Role_ROLE_OWNER Role = 4
 )
 
 // Enum value maps for Role.
@@ -125,13 +135,18 @@ func (Role) EnumDescriptor() ([]byte, []int) {
 	return file_api_v1_common_proto_rawDescGZIP(), []int{1}
 }
 
+// TenantRole specifies what role a logged in user needs to call this tenant scoped service
 type TenantRole int32
 
 const (
+	// TENANT_ROLE_UNSPECIFIED is not specified
 	TenantRole_TENANT_ROLE_UNSPECIFIED TenantRole = 0
-	TenantRole_TENANT_ROLE_OWNER       TenantRole = 1
-	TenantRole_TENANT_ROLE_EDITOR      TenantRole = 2
-	TenantRole_TENANT_ROLE_VIEWER      TenantRole = 3
+	// TENANT_ROLE_OWNER the logged in user needs at least owner role to call this method
+	TenantRole_TENANT_ROLE_OWNER TenantRole = 1
+	// TENANT_ROLE_EDITOR the logged in user needs at least editor role to call this method
+	TenantRole_TENANT_ROLE_EDITOR TenantRole = 2
+	// TENANT_ROLE_VIEWER the logged in user needs at least viewer role to call this method
+	TenantRole_TENANT_ROLE_VIEWER TenantRole = 3
 )
 
 // Enum value maps for TenantRole.
@@ -177,13 +192,18 @@ func (TenantRole) EnumDescriptor() ([]byte, []int) {
 	return file_api_v1_common_proto_rawDescGZIP(), []int{2}
 }
 
+// ProjectRole specifies what role a logged in user needs to call this project scoped service
 type ProjectRole int32
 
 const (
+	// PROJECT_ROLE_UNSPECIFIED is not specified
 	ProjectRole_PROJECT_ROLE_UNSPECIFIED ProjectRole = 0
-	ProjectRole_PROJECT_ROLE_OWNER       ProjectRole = 1
-	ProjectRole_PROJECT_ROLE_EDITOR      ProjectRole = 2
-	ProjectRole_PROJECT_ROLE_VIEWER      ProjectRole = 3
+	// PROJECT_ROLE_OWNER the logged in user needs at least owner role to call this method
+	ProjectRole_PROJECT_ROLE_OWNER ProjectRole = 1
+	// PROJECT_ROLE_EDITOR the logged in user needs at least editor role to call this method
+	ProjectRole_PROJECT_ROLE_EDITOR ProjectRole = 2
+	// PROJECT_ROLE_VIEWER the logged in user needs at least viewer role to call this method
+	ProjectRole_PROJECT_ROLE_VIEWER ProjectRole = 3
 )
 
 // Enum value maps for ProjectRole.
@@ -229,12 +249,16 @@ func (ProjectRole) EnumDescriptor() ([]byte, []int) {
 	return file_api_v1_common_proto_rawDescGZIP(), []int{3}
 }
 
+// AdminRole specifies what role a logged in user needs to call this admin service
 type AdminRole int32
 
 const (
+	// ADMIN_ROLE_UNSPECIFIED is not specified
 	AdminRole_ADMIN_ROLE_UNSPECIFIED AdminRole = 0
-	AdminRole_ADMIN_ROLE_EDITOR      AdminRole = 1
-	AdminRole_ADMIN_ROLE_VIEWER      AdminRole = 2
+	// ADMIN_ROLE_EDITOR the logged in user needs at least editor role to call this method
+	AdminRole_ADMIN_ROLE_EDITOR AdminRole = 1
+	// ADMIN_ROLE_VIEWER the logged in user needs at least viewer role to call this method
+	AdminRole_ADMIN_ROLE_VIEWER AdminRole = 2
 )
 
 // Enum value maps for AdminRole.
@@ -278,9 +302,11 @@ func (AdminRole) EnumDescriptor() ([]byte, []int) {
 	return file_api_v1_common_proto_rawDescGZIP(), []int{4}
 }
 
+// Visibility of a method
 type Visibility int32
 
 const (
+	// VISIBILITY_UNSPECIFIED is not defined
 	Visibility_VISIBILITY_UNSPECIFIED Visibility = 0
 	// VISIBILITY_PUBLIC specifies that this service is accessible without authentication
 	Visibility_VISIBILITY_PUBLIC Visibility = 1
@@ -333,12 +359,16 @@ func (Visibility) EnumDescriptor() ([]byte, []int) {
 	return file_api_v1_common_proto_rawDescGZIP(), []int{5}
 }
 
+// Chargable defines if calling a method requires that billing credentials are present or not
 type Chargeable int32
 
 const (
+	// CHARGEABLE_UNSPECIFIED no chargeable option is set
 	Chargeable_CHARGEABLE_UNSPECIFIED Chargeable = 0
-	Chargeable_CHARGEABLE_TRUE        Chargeable = 1
-	Chargeable_CHARGEABLE_FALSE       Chargeable = 2
+	// CHARGEABLE_TRUE if this is set on a method, calling it requires that billing credentials are present
+	Chargeable_CHARGEABLE_TRUE Chargeable = 1
+	// CHARGEABLE_FALSE if this is set on a method, no billing credentials are required
+	Chargeable_CHARGEABLE_FALSE Chargeable = 2
 )
 
 // Enum value maps for Chargeable.
@@ -389,8 +419,10 @@ type Auditing int32
 
 const (
 	Auditing_AUDITING_UNSPECIFIED Auditing = 0
-	Auditing_AUDITING_INCLUDED    Auditing = 1
-	Auditing_AUDITING_EXCLUDED    Auditing = 2
+	// AUDITING_INCLUDED if a method is annotated with this, all calls are audited
+	Auditing_AUDITING_INCLUDED Auditing = 1
+	// AUDITING_EXCLUDED if a method is annotated with this, no calls are audited
+	Auditing_AUDITING_EXCLUDED Auditing = 2
 )
 
 // Enum value maps for Auditing.
@@ -434,15 +466,16 @@ func (Auditing) EnumDescriptor() ([]byte, []int) {
 	return file_api_v1_common_proto_rawDescGZIP(), []int{7}
 }
 
+// Paging defines paging for methods with a lot of results
 type Paging struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// page is used for pagination, if unset only the first page is returned,
+	// Page is used for pagination, if unset only the first page is returned,
 	// the list response contains then the page number for the next page.
 	Page *uint64 `protobuf:"varint,1,opt,name=page,proto3,oneof" json:"page,omitempty"`
-	// count is the number of results returned per page, if not given server side defaults apply
+	// Count is the number of results returned per page, if not given server side defaults apply
 	Count *uint64 `protobuf:"varint,2,opt,name=count,proto3,oneof" json:"count,omitempty"`
 }
 
@@ -545,16 +578,28 @@ var file_api_v1_common_proto_extTypes = []protoimpl.ExtensionInfo{
 
 // Extension fields to descriptorpb.MethodOptions.
 var (
+	// TenantRoles are used to define which tenant role a logged in user must provide to call this method
+	//
 	// repeated api.v1.TenantRole tenant_roles = 51000;
 	E_TenantRoles = &file_api_v1_common_proto_extTypes[0]
+	// ProjectRoles are used to define which project role a logged in user must provide to call this method
+	//
 	// repeated api.v1.ProjectRole project_roles = 51001;
 	E_ProjectRoles = &file_api_v1_common_proto_extTypes[1]
+	// AdminRoles are used to define which admin role a logged in user must provide to call this method
+	//
 	// repeated api.v1.AdminRole admin_roles = 51002;
 	E_AdminRoles = &file_api_v1_common_proto_extTypes[2]
+	// Visibility defines the visibility of this method, this is used to have public, private or self visible methods
+	//
 	// optional api.v1.Visibility visibility = 51003;
 	E_Visibility = &file_api_v1_common_proto_extTypes[3]
+	// Chargeable if this is set on a method, calling it requires that billing credentials are present
+	//
 	// optional api.v1.Chargeable chargeable = 51004;
 	E_Chargeable = &file_api_v1_common_proto_extTypes[4]
+	// Auditing defines if calls to this method should be audited or not
+	//
 	// optional api.v1.Auditing auditing = 51005;
 	E_Auditing = &file_api_v1_common_proto_extTypes[5]
 )

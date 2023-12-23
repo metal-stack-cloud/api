@@ -8,6 +8,8 @@ exports.StatusServiceGetResponse = exports.StatusServiceGetRequest = void 0;
 const protobuf_1 = require("@bufbuild/protobuf");
 const health_pb_js_1 = require("../../api/v1/health_pb.js");
 /**
+ * StatusServiceGetRequest is the request payload to get the status
+ *
  * @generated from message status.v1.StatusServiceGetRequest
  */
 class StatusServiceGetRequest extends protobuf_1.Message {
@@ -33,20 +35,28 @@ StatusServiceGetRequest.runtime = protobuf_1.proto3;
 StatusServiceGetRequest.typeName = "status.v1.StatusServiceGetRequest";
 StatusServiceGetRequest.fields = protobuf_1.proto3.util.newFieldList(() => []);
 /**
+ * StatusServiceGetResponse is the response payload which describes the system status
+ *
  * @generated from message status.v1.StatusServiceGetResponse
  */
 class StatusServiceGetResponse extends protobuf_1.Message {
     constructor(data) {
         super();
         /**
+         * OverallStatus is the status of the system
+         *
          * @generated from field: api.v1.ServiceStatus overall_status = 2;
          */
         this.overallStatus = health_pb_js_1.ServiceStatus.UNSPECIFIED;
         /**
+         * ConnectionBroken shows if the connection to the system is broken
+         *
          * @generated from field: bool connection_broken = 3;
          */
         this.connectionBroken = false;
         /**
+         * ApiVersion of the system
+         *
          * @generated from field: string api_version = 4;
          */
         this.apiVersion = "";

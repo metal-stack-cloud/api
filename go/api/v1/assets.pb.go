@@ -20,15 +20,18 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-// Types
+// Asset defines the available resources which can be used
 type Asset struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Region       *Region                 `protobuf:"bytes,1,opt,name=region,proto3" json:"region,omitempty"`
+	// Region defines a datacenter location, e.g. a city.
+	Region *Region `protobuf:"bytes,1,opt,name=region,proto3" json:"region,omitempty"`
+	// MachineTypes available by region
 	MachineTypes map[string]*MachineType `protobuf:"bytes,2,rep,name=machine_types,json=machineTypes,proto3" json:"machine_types,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
-	Kubernetes   []*Kubernetes           `protobuf:"bytes,3,rep,name=kubernetes,proto3" json:"kubernetes,omitempty"`
+	// Kubernetes a list of kubernetes versions
+	Kubernetes []*Kubernetes `protobuf:"bytes,3,rep,name=kubernetes,proto3" json:"kubernetes,omitempty"`
 }
 
 func (x *Asset) Reset() {
@@ -84,17 +87,24 @@ func (x *Asset) GetKubernetes() []*Kubernetes {
 	return nil
 }
 
+// Region defines a datacenter location
 type Region struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id         string                `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
-	Name       string                `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
-	Address    string                `protobuf:"bytes,3,opt,name=address,proto3" json:"address,omitempty"`
-	Active     bool                  `protobuf:"varint,4,opt,name=active,proto3" json:"active,omitempty"`
+	// Id is the technical identifier of this region
+	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	// Name of the region
+	Name string `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
+	// Address is the postal address of the region
+	Address string `protobuf:"bytes,3,opt,name=address,proto3" json:"address,omitempty"`
+	// Active indicates if this region is usable
+	Active bool `protobuf:"varint,4,opt,name=active,proto3" json:"active,omitempty"`
+	// Partitions in this region
 	Partitions map[string]*Partition `protobuf:"bytes,5,rep,name=partitions,proto3" json:"partitions,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
-	Defaults   *AssetDefaults        `protobuf:"bytes,6,opt,name=defaults,proto3" json:"defaults,omitempty"`
+	// Defaults are the default assets used if not otherwise speecified.
+	Defaults *AssetDefaults `protobuf:"bytes,6,opt,name=defaults,proto3" json:"defaults,omitempty"`
 }
 
 func (x *Region) Reset() {
@@ -171,15 +181,20 @@ func (x *Region) GetDefaults() *AssetDefaults {
 	return nil
 }
 
+// Partition defines a failure domain in one Region.
 type Partition struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id      string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
-	Name    string `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
+	// Id is the technical id of this partition
+	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	// Name of this partition
+	Name string `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
+	// Address is the postal address of the partition
 	Address string `protobuf:"bytes,3,opt,name=address,proto3" json:"address,omitempty"`
-	Active  bool   `protobuf:"varint,4,opt,name=active,proto3" json:"active,omitempty"`
+	// Active indicates if this partition is usable
+	Active bool `protobuf:"varint,4,opt,name=active,proto3" json:"active,omitempty"`
 }
 
 func (x *Partition) Reset() {
@@ -242,15 +257,21 @@ func (x *Partition) GetActive() bool {
 	return false
 }
 
+// MachineType defines a server type
 type MachineType struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id      string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
-	Name    string `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
-	Cpus    uint32 `protobuf:"varint,3,opt,name=cpus,proto3" json:"cpus,omitempty"`
-	Memory  uint64 `protobuf:"varint,4,opt,name=memory,proto3" json:"memory,omitempty"`
+	// Id is the technical id of this machine type
+	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	// Name of this machine type
+	Name string `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
+	// CPUs e.g. cores in this machine / server
+	Cpus uint32 `protobuf:"varint,3,opt,name=cpus,proto3" json:"cpus,omitempty"`
+	// Memory in this machine / server
+	Memory uint64 `protobuf:"varint,4,opt,name=memory,proto3" json:"memory,omitempty"`
+	// Storage in this machine / server
 	Storage uint64 `protobuf:"varint,5,opt,name=storage,proto3" json:"storage,omitempty"`
 }
 
@@ -321,11 +342,13 @@ func (x *MachineType) GetStorage() uint64 {
 	return 0
 }
 
+// Kubernetes related configurations available
 type Kubernetes struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
+	// Version of kubernetes
 	Version string `protobuf:"bytes,1,opt,name=version,proto3" json:"version,omitempty"`
 }
 
@@ -368,16 +391,22 @@ func (x *Kubernetes) GetVersion() string {
 	return ""
 }
 
+// AssetDefaults apply if no specific properties are specified
 type AssetDefaults struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	MachineType       string `protobuf:"bytes,1,opt,name=machine_type,json=machineType,proto3" json:"machine_type,omitempty"`
+	// MachineType defines the default machine type used
+	MachineType string `protobuf:"bytes,1,opt,name=machine_type,json=machineType,proto3" json:"machine_type,omitempty"`
+	// KubernetesVersion defines the default kubernetes version to be used
 	KubernetesVersion string `protobuf:"bytes,2,opt,name=kubernetes_version,json=kubernetesVersion,proto3" json:"kubernetes_version,omitempty"`
-	WorkerMin         uint32 `protobuf:"varint,3,opt,name=worker_min,json=workerMin,proto3" json:"worker_min,omitempty"`
-	WorkerMax         uint32 `protobuf:"varint,4,opt,name=worker_max,json=workerMax,proto3" json:"worker_max,omitempty"`
-	Partition         string `protobuf:"bytes,7,opt,name=partition,proto3" json:"partition,omitempty"`
+	// WorkerMin defines how many servers are specified as minimum
+	WorkerMin uint32 `protobuf:"varint,3,opt,name=worker_min,json=workerMin,proto3" json:"worker_min,omitempty"`
+	// WorkerMax defines how many servers are specified as maximum
+	WorkerMax uint32 `protobuf:"varint,4,opt,name=worker_max,json=workerMax,proto3" json:"worker_max,omitempty"`
+	// Partition defines where the cluster is created if not otherwise specified
+	Partition string `protobuf:"bytes,7,opt,name=partition,proto3" json:"partition,omitempty"`
 }
 
 func (x *AssetDefaults) Reset() {
@@ -447,7 +476,7 @@ func (x *AssetDefaults) GetPartition() string {
 	return ""
 }
 
-// Requests
+// AssetServiceListRequest is the request payload to list all Assets
 type AssetServiceListRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -486,13 +515,13 @@ func (*AssetServiceListRequest) Descriptor() ([]byte, []int) {
 	return file_api_v1_assets_proto_rawDescGZIP(), []int{6}
 }
 
-// Responses
+// AssetServiceListResponse is the response payload which containes the the Asset list
 type AssetServiceListResponse struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// assets maps region ids to assets
+	// Assets maps the Assets by Region
 	Assets map[string]*Asset `protobuf:"bytes,1,rep,name=assets,proto3" json:"assets,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 }
 

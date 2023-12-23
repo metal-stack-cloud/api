@@ -8,6 +8,8 @@ exports.MethodServiceTokenScopedListResponse = exports.MethodServiceTokenScopedL
 const protobuf_1 = require("@bufbuild/protobuf");
 const token_pb_js_1 = require("./token_pb.js");
 /**
+ * MethodServiceListRequest is the request payload to list all public methods
+ *
  * @generated from message api.v1.MethodServiceListRequest
  */
 class MethodServiceListRequest extends protobuf_1.Message {
@@ -33,12 +35,16 @@ MethodServiceListRequest.runtime = protobuf_1.proto3;
 MethodServiceListRequest.typeName = "api.v1.MethodServiceListRequest";
 MethodServiceListRequest.fields = protobuf_1.proto3.util.newFieldList(() => []);
 /**
+ * MethodServiceListResponse is the response payload with all public visible methods
+ *
  * @generated from message api.v1.MethodServiceListResponse
  */
 class MethodServiceListResponse extends protobuf_1.Message {
     constructor(data) {
         super();
         /**
+         * Methods is a list of methods public callable
+         *
          * @generated from field: repeated string methods = 1;
          */
         this.methods = [];
@@ -64,6 +70,8 @@ MethodServiceListResponse.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 1, name: "methods", kind: "scalar", T: 9 /* ScalarType.STRING */, repeated: true },
 ]);
 /**
+ * MethodServiceTokenScopedListRequest is the request payload to list all methods callable with the token present in the request
+ *
  * @generated from message api.v1.MethodServiceTokenScopedListRequest
  */
 class MethodServiceTokenScopedListRequest extends protobuf_1.Message {
@@ -89,16 +97,22 @@ MethodServiceTokenScopedListRequest.runtime = protobuf_1.proto3;
 MethodServiceTokenScopedListRequest.typeName = "api.v1.MethodServiceTokenScopedListRequest";
 MethodServiceTokenScopedListRequest.fields = protobuf_1.proto3.util.newFieldList(() => []);
 /**
+ * MethodServiceTokenScopedListResponse is the response payload which contains all methods which are callable with the given token
+ *
  * @generated from message api.v1.MethodServiceTokenScopedListResponse
  */
 class MethodServiceTokenScopedListResponse extends protobuf_1.Message {
     constructor(data) {
         super();
         /**
+         * Permissions a list of methods which can be called
+         *
          * @generated from field: repeated api.v1.MethodPermission permissions = 1;
          */
         this.permissions = [];
         /**
+         * Roles a list of roles the presented token contains
+         *
          * @generated from field: repeated api.v1.TokenRole roles = 2;
          */
         this.roles = [];

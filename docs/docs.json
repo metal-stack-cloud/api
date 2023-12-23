@@ -387,22 +387,22 @@
           "name": "AdminRole",
           "longName": "AdminRole",
           "fullName": "api.v1.AdminRole",
-          "description": "",
+          "description": "AdminRole specifies what role a logged in user needs to call this admin service",
           "values": [
             {
               "name": "ADMIN_ROLE_UNSPECIFIED",
               "number": "0",
-              "description": ""
+              "description": "ADMIN_ROLE_UNSPECIFIED is not specified"
             },
             {
               "name": "ADMIN_ROLE_EDITOR",
               "number": "1",
-              "description": ""
+              "description": "ADMIN_ROLE_EDITOR the logged in user needs at least editor role to call this method"
             },
             {
               "name": "ADMIN_ROLE_VIEWER",
               "number": "2",
-              "description": ""
+              "description": "ADMIN_ROLE_VIEWER the logged in user needs at least viewer role to call this method"
             }
           ]
         },
@@ -420,12 +420,12 @@
             {
               "name": "AUDITING_INCLUDED",
               "number": "1",
-              "description": ""
+              "description": "AUDITING_INCLUDED if a method is annotated with this, all calls are audited"
             },
             {
               "name": "AUDITING_EXCLUDED",
               "number": "2",
-              "description": ""
+              "description": "AUDITING_EXCLUDED if a method is annotated with this, no calls are audited"
             }
           ]
         },
@@ -433,22 +433,22 @@
           "name": "Chargeable",
           "longName": "Chargeable",
           "fullName": "api.v1.Chargeable",
-          "description": "",
+          "description": "Chargable defines if calling a method requires that billing credentials are present or not",
           "values": [
             {
               "name": "CHARGEABLE_UNSPECIFIED",
               "number": "0",
-              "description": ""
+              "description": "CHARGEABLE_UNSPECIFIED no chargeable option is set"
             },
             {
               "name": "CHARGEABLE_TRUE",
               "number": "1",
-              "description": ""
+              "description": "CHARGEABLE_TRUE if this is set on a method, calling it requires that billing credentials are present"
             },
             {
               "name": "CHARGEABLE_FALSE",
               "number": "2",
-              "description": ""
+              "description": "CHARGEABLE_FALSE if this is set on a method, no billing credentials are required"
             }
           ]
         },
@@ -456,22 +456,22 @@
           "name": "OAuthProvider",
           "longName": "OAuthProvider",
           "fullName": "api.v1.OAuthProvider",
-          "description": "",
+          "description": "OAuthProvider defines which login providers are supported",
           "values": [
             {
               "name": "O_AUTH_PROVIDER_UNSPECIFIED",
               "number": "0",
-              "description": ""
+              "description": "O_AUTH_PROVIDER_UNSPECIFIED is an unknown login provider"
             },
             {
               "name": "O_AUTH_PROVIDER_GITHUB",
               "number": "1",
-              "description": ""
+              "description": "O_AUTH_PROVIDER_GITHUB specifies github as oauth login provider"
             },
             {
               "name": "O_AUTH_PROVIDER_AZURE",
               "number": "2",
-              "description": ""
+              "description": "O_AUTH_PROVIDER_AZURE specifies azure as oauth login provider"
             }
           ]
         },
@@ -479,27 +479,27 @@
           "name": "ProjectRole",
           "longName": "ProjectRole",
           "fullName": "api.v1.ProjectRole",
-          "description": "",
+          "description": "ProjectRole specifies what role a logged in user needs to call this project scoped service",
           "values": [
             {
               "name": "PROJECT_ROLE_UNSPECIFIED",
               "number": "0",
-              "description": ""
+              "description": "PROJECT_ROLE_UNSPECIFIED is not specified"
             },
             {
               "name": "PROJECT_ROLE_OWNER",
               "number": "1",
-              "description": ""
+              "description": "PROJECT_ROLE_OWNER the logged in user needs at least owner role to call this method"
             },
             {
               "name": "PROJECT_ROLE_EDITOR",
               "number": "2",
-              "description": ""
+              "description": "PROJECT_ROLE_EDITOR the logged in user needs at least editor role to call this method"
             },
             {
               "name": "PROJECT_ROLE_VIEWER",
               "number": "3",
-              "description": ""
+              "description": "PROJECT_ROLE_VIEWER the logged in user needs at least viewer role to call this method"
             }
           ]
         },
@@ -507,32 +507,32 @@
           "name": "Role",
           "longName": "Role",
           "fullName": "api.v1.Role",
-          "description": "",
+          "description": "Role defines which role the logged in user got from the login provider",
           "values": [
             {
               "name": "ROLE_UNSPECIFIED",
               "number": "0",
-              "description": ""
+              "description": "ROLE_UNSPECIFIED is not specified"
             },
             {
               "name": "ROLE_MEMBER",
               "number": "1",
-              "description": ""
+              "description": "ROLE_MEMBER the user has member role in the scope"
             },
             {
               "name": "ROLE_MAINTAINER",
               "number": "2",
-              "description": ""
+              "description": "ROLE_MAINTAINER the user has maintainer role in the scope"
             },
             {
               "name": "ROLE_ADMIN",
               "number": "3",
-              "description": ""
+              "description": "ROLE_ADMIN the user has admin role in the scope"
             },
             {
               "name": "ROLE_OWNER",
               "number": "4",
-              "description": ""
+              "description": "ROLE_OWNER the user has owner role in the scope"
             }
           ]
         },
@@ -540,27 +540,27 @@
           "name": "TenantRole",
           "longName": "TenantRole",
           "fullName": "api.v1.TenantRole",
-          "description": "",
+          "description": "TenantRole specifies what role a logged in user needs to call this tenant scoped service",
           "values": [
             {
               "name": "TENANT_ROLE_UNSPECIFIED",
               "number": "0",
-              "description": ""
+              "description": "TENANT_ROLE_UNSPECIFIED is not specified"
             },
             {
               "name": "TENANT_ROLE_OWNER",
               "number": "1",
-              "description": ""
+              "description": "TENANT_ROLE_OWNER the logged in user needs at least owner role to call this method"
             },
             {
               "name": "TENANT_ROLE_EDITOR",
               "number": "2",
-              "description": ""
+              "description": "TENANT_ROLE_EDITOR the logged in user needs at least editor role to call this method"
             },
             {
               "name": "TENANT_ROLE_VIEWER",
               "number": "3",
-              "description": ""
+              "description": "TENANT_ROLE_VIEWER the logged in user needs at least viewer role to call this method"
             }
           ]
         },
@@ -568,12 +568,12 @@
           "name": "Visibility",
           "longName": "Visibility",
           "fullName": "api.v1.Visibility",
-          "description": "",
+          "description": "Visibility of a method",
           "values": [
             {
               "name": "VISIBILITY_UNSPECIFIED",
               "number": "0",
-              "description": ""
+              "description": "VISIBILITY_UNSPECIFIED is not defined"
             },
             {
               "name": "VISIBILITY_PUBLIC",
@@ -598,7 +598,7 @@
           "name": "admin_roles",
           "longName": ".google.protobuf.MethodOptions.admin_roles",
           "fullName": ".google.protobuf.MethodOptions.admin_roles",
-          "description": "",
+          "description": "AdminRoles are used to define which admin role a logged in user must provide to call this method",
           "label": "repeated",
           "type": "AdminRole",
           "longType": "AdminRole",
@@ -613,7 +613,7 @@
           "name": "auditing",
           "longName": ".google.protobuf.MethodOptions.auditing",
           "fullName": ".google.protobuf.MethodOptions.auditing",
-          "description": "",
+          "description": "Auditing defines if calls to this method should be audited or not",
           "label": "",
           "type": "Auditing",
           "longType": "Auditing",
@@ -628,7 +628,7 @@
           "name": "chargeable",
           "longName": ".google.protobuf.MethodOptions.chargeable",
           "fullName": ".google.protobuf.MethodOptions.chargeable",
-          "description": "",
+          "description": "Chargeable if this is set on a method, calling it requires that billing credentials are present",
           "label": "",
           "type": "Chargeable",
           "longType": "Chargeable",
@@ -643,7 +643,7 @@
           "name": "project_roles",
           "longName": ".google.protobuf.MethodOptions.project_roles",
           "fullName": ".google.protobuf.MethodOptions.project_roles",
-          "description": "",
+          "description": "ProjectRoles are used to define which project role a logged in user must provide to call this method",
           "label": "repeated",
           "type": "ProjectRole",
           "longType": "ProjectRole",
@@ -658,7 +658,7 @@
           "name": "tenant_roles",
           "longName": ".google.protobuf.MethodOptions.tenant_roles",
           "fullName": ".google.protobuf.MethodOptions.tenant_roles",
-          "description": "",
+          "description": "TenantRoles are used to define which tenant role a logged in user must provide to call this method",
           "label": "repeated",
           "type": "TenantRole",
           "longType": "TenantRole",
@@ -673,7 +673,7 @@
           "name": "visibility",
           "longName": ".google.protobuf.MethodOptions.visibility",
           "fullName": ".google.protobuf.MethodOptions.visibility",
-          "description": "",
+          "description": "Visibility defines the visibility of this method, this is used to have public, private or self visible methods",
           "label": "",
           "type": "Visibility",
           "longType": "Visibility",
@@ -690,7 +690,7 @@
           "name": "Paging",
           "longName": "Paging",
           "fullName": "api.v1.Paging",
-          "description": "",
+          "description": "Paging defines paging for methods with a lot of results",
           "hasExtensions": false,
           "hasFields": true,
           "hasOneofs": true,
@@ -698,7 +698,7 @@
           "fields": [
             {
               "name": "page",
-              "description": "page is used for pagination, if unset only the first page is returned,\nthe list response contains then the page number for the next page.",
+              "description": "Page is used for pagination, if unset only the first page is returned,\nthe list response contains then the page number for the next page.",
               "label": "optional",
               "type": "uint64",
               "longType": "uint64",
@@ -710,7 +710,7 @@
             },
             {
               "name": "count",
-              "description": "count is the number of results returned per page, if not given server side defaults apply",
+              "description": "Count is the number of results returned per page, if not given server side defaults apply",
               "label": "optional",
               "type": "uint64",
               "longType": "uint64",
@@ -8719,7 +8719,7 @@
           "name": "Asset",
           "longName": "Asset",
           "fullName": "api.v1.Asset",
-          "description": "Types",
+          "description": "Asset defines the available resources which can be used",
           "hasExtensions": false,
           "hasFields": true,
           "hasOneofs": false,
@@ -8727,7 +8727,7 @@
           "fields": [
             {
               "name": "region",
-              "description": "",
+              "description": "Region defines a datacenter location, e.g. a city.",
               "label": "",
               "type": "Region",
               "longType": "Region",
@@ -8739,7 +8739,7 @@
             },
             {
               "name": "machine_types",
-              "description": "",
+              "description": "MachineTypes available by region",
               "label": "repeated",
               "type": "MachineTypesEntry",
               "longType": "Asset.MachineTypesEntry",
@@ -8751,7 +8751,7 @@
             },
             {
               "name": "kubernetes",
-              "description": "",
+              "description": "Kubernetes a list of kubernetes versions",
               "label": "repeated",
               "type": "Kubernetes",
               "longType": "Kubernetes",
@@ -8803,7 +8803,7 @@
           "name": "AssetDefaults",
           "longName": "AssetDefaults",
           "fullName": "api.v1.AssetDefaults",
-          "description": "",
+          "description": "AssetDefaults apply if no specific properties are specified",
           "hasExtensions": false,
           "hasFields": true,
           "hasOneofs": false,
@@ -8811,7 +8811,7 @@
           "fields": [
             {
               "name": "machine_type",
-              "description": "",
+              "description": "MachineType defines the default machine type used",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -8823,7 +8823,7 @@
             },
             {
               "name": "kubernetes_version",
-              "description": "",
+              "description": "KubernetesVersion defines the default kubernetes version to be used",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -8835,7 +8835,7 @@
             },
             {
               "name": "worker_min",
-              "description": "",
+              "description": "WorkerMin defines how many servers are specified as minimum",
               "label": "",
               "type": "uint32",
               "longType": "uint32",
@@ -8847,7 +8847,7 @@
             },
             {
               "name": "worker_max",
-              "description": "",
+              "description": "WorkerMax defines how many servers are specified as maximum",
               "label": "",
               "type": "uint32",
               "longType": "uint32",
@@ -8859,7 +8859,7 @@
             },
             {
               "name": "partition",
-              "description": "",
+              "description": "Partition defines where the cluster is created if not otherwise specified",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -8875,7 +8875,7 @@
           "name": "AssetServiceListRequest",
           "longName": "AssetServiceListRequest",
           "fullName": "api.v1.AssetServiceListRequest",
-          "description": "Requests",
+          "description": "AssetServiceListRequest is the request payload to list all Assets",
           "hasExtensions": false,
           "hasFields": false,
           "hasOneofs": false,
@@ -8886,7 +8886,7 @@
           "name": "AssetServiceListResponse",
           "longName": "AssetServiceListResponse",
           "fullName": "api.v1.AssetServiceListResponse",
-          "description": "Responses",
+          "description": "AssetServiceListResponse is the response payload which containes the the Asset list",
           "hasExtensions": false,
           "hasFields": true,
           "hasOneofs": false,
@@ -8894,7 +8894,7 @@
           "fields": [
             {
               "name": "assets",
-              "description": "assets maps region ids to assets",
+              "description": "Assets maps the Assets by Region",
               "label": "repeated",
               "type": "AssetsEntry",
               "longType": "AssetServiceListResponse.AssetsEntry",
@@ -8946,7 +8946,7 @@
           "name": "Kubernetes",
           "longName": "Kubernetes",
           "fullName": "api.v1.Kubernetes",
-          "description": "",
+          "description": "Kubernetes related configurations available",
           "hasExtensions": false,
           "hasFields": true,
           "hasOneofs": false,
@@ -8954,7 +8954,7 @@
           "fields": [
             {
               "name": "version",
-              "description": "",
+              "description": "Version of kubernetes",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -8970,7 +8970,7 @@
           "name": "MachineType",
           "longName": "MachineType",
           "fullName": "api.v1.MachineType",
-          "description": "",
+          "description": "MachineType defines a server type",
           "hasExtensions": false,
           "hasFields": true,
           "hasOneofs": false,
@@ -8978,7 +8978,7 @@
           "fields": [
             {
               "name": "id",
-              "description": "",
+              "description": "Id is the technical id of this machine type",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -8990,7 +8990,7 @@
             },
             {
               "name": "name",
-              "description": "",
+              "description": "Name of this machine type",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -9002,7 +9002,7 @@
             },
             {
               "name": "cpus",
-              "description": "",
+              "description": "CPUs e.g. cores in this machine / server",
               "label": "",
               "type": "uint32",
               "longType": "uint32",
@@ -9014,7 +9014,7 @@
             },
             {
               "name": "memory",
-              "description": "",
+              "description": "Memory in this machine / server",
               "label": "",
               "type": "uint64",
               "longType": "uint64",
@@ -9026,7 +9026,7 @@
             },
             {
               "name": "storage",
-              "description": "",
+              "description": "Storage in this machine / server",
               "label": "",
               "type": "uint64",
               "longType": "uint64",
@@ -9042,7 +9042,7 @@
           "name": "Partition",
           "longName": "Partition",
           "fullName": "api.v1.Partition",
-          "description": "",
+          "description": "Partition defines a failure domain in one Region.",
           "hasExtensions": false,
           "hasFields": true,
           "hasOneofs": false,
@@ -9050,7 +9050,7 @@
           "fields": [
             {
               "name": "id",
-              "description": "",
+              "description": "Id is the technical id of this partition",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -9062,7 +9062,7 @@
             },
             {
               "name": "name",
-              "description": "",
+              "description": "Name of this partition",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -9074,7 +9074,7 @@
             },
             {
               "name": "address",
-              "description": "",
+              "description": "Address is the postal address of the partition",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -9086,7 +9086,7 @@
             },
             {
               "name": "active",
-              "description": "",
+              "description": "Active indicates if this partition is usable",
               "label": "",
               "type": "bool",
               "longType": "bool",
@@ -9102,7 +9102,7 @@
           "name": "Region",
           "longName": "Region",
           "fullName": "api.v1.Region",
-          "description": "",
+          "description": "Region defines a datacenter location",
           "hasExtensions": false,
           "hasFields": true,
           "hasOneofs": false,
@@ -9110,7 +9110,7 @@
           "fields": [
             {
               "name": "id",
-              "description": "",
+              "description": "Id is the technical identifier of this region",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -9122,7 +9122,7 @@
             },
             {
               "name": "name",
-              "description": "",
+              "description": "Name of the region",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -9134,7 +9134,7 @@
             },
             {
               "name": "address",
-              "description": "",
+              "description": "Address is the postal address of the region",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -9146,7 +9146,7 @@
             },
             {
               "name": "active",
-              "description": "",
+              "description": "Active indicates if this region is usable",
               "label": "",
               "type": "bool",
               "longType": "bool",
@@ -9158,7 +9158,7 @@
             },
             {
               "name": "partitions",
-              "description": "",
+              "description": "Partitions in this region",
               "label": "repeated",
               "type": "PartitionsEntry",
               "longType": "Region.PartitionsEntry",
@@ -9170,7 +9170,7 @@
             },
             {
               "name": "defaults",
-              "description": "",
+              "description": "Defaults are the default assets used if not otherwise speecified.",
               "label": "",
               "type": "AssetDefaults",
               "longType": "AssetDefaults",
@@ -9224,11 +9224,11 @@
           "name": "AssetService",
           "longName": "AssetService",
           "fullName": "api.v1.AssetService",
-          "description": "",
+          "description": "AssetService serves asset related functions",
           "methods": [
             {
               "name": "List",
-              "description": "",
+              "description": "List available assets",
               "requestType": "AssetServiceListRequest",
               "requestLongType": "AssetServiceListRequest",
               "requestFullType": "api.v1.AssetServiceListRequest",
@@ -9255,27 +9255,27 @@
           "name": "Service",
           "longName": "Service",
           "fullName": "api.v1.Service",
-          "description": "",
+          "description": "Service defines the service for which the healtyness is reported",
           "values": [
             {
               "name": "SERVICE_UNSPECIFIED",
               "number": "0",
-              "description": ""
+              "description": "SERVICE_UNSPECIFIED is a unknown service"
             },
             {
               "name": "SERVICE_CLUSTER",
               "number": "1",
-              "description": ""
+              "description": "SERVICE_CLUSTER the kubernetes cluster service"
             },
             {
               "name": "SERVICE_VOLUME",
               "number": "2",
-              "description": ""
+              "description": "SERVICE_VOLUME the volume/storage service"
             },
             {
               "name": "SERVICE_MACHINES",
               "number": "3",
-              "description": ""
+              "description": "SERVICE_MACHINES the machine service"
             }
           ]
         },
@@ -9283,27 +9283,27 @@
           "name": "ServiceStatus",
           "longName": "ServiceStatus",
           "fullName": "api.v1.ServiceStatus",
-          "description": "",
+          "description": "ServiceStatus defines the status of a service",
           "values": [
             {
               "name": "SERVICE_STATUS_UNSPECIFIED",
               "number": "0",
-              "description": ""
+              "description": "SERVICE_STATUS_UNSPECIFIED service status is not known or unspecified"
             },
             {
               "name": "SERVICE_STATUS_DEGRADED",
               "number": "1",
-              "description": ""
+              "description": "SERVICE_STATUS_DEGRADED the service is in degraded status, not the whole functionality is available"
             },
             {
               "name": "SERVICE_STATUS_UNHEALTHY",
               "number": "2",
-              "description": ""
+              "description": "SERVICE_STATUS_UNHEALTHY the service is in unhealthy status, serious impact is expected"
             },
             {
               "name": "SERVICE_STATUS_HEALTHY",
               "number": "3",
-              "description": ""
+              "description": "SERVICE_STATUS_HEALTHY the service is in healthy status e.g. fully functional"
             }
           ]
         }
@@ -9314,7 +9314,7 @@
           "name": "Health",
           "longName": "Health",
           "fullName": "api.v1.Health",
-          "description": "",
+          "description": "Health reports the healt status of all services",
           "hasExtensions": false,
           "hasFields": true,
           "hasOneofs": false,
@@ -9322,7 +9322,7 @@
           "fields": [
             {
               "name": "services",
-              "description": "",
+              "description": "Services the health of all individual services",
               "label": "repeated",
               "type": "HealthStatus",
               "longType": "HealthStatus",
@@ -9338,7 +9338,7 @@
           "name": "HealthServiceGetRequest",
           "longName": "HealthServiceGetRequest",
           "fullName": "api.v1.HealthServiceGetRequest",
-          "description": "",
+          "description": "HealthServiceGetRequest is request payload to get the health of the system",
           "hasExtensions": false,
           "hasFields": false,
           "hasOneofs": false,
@@ -9349,7 +9349,7 @@
           "name": "HealthServiceGetResponse",
           "longName": "HealthServiceGetResponse",
           "fullName": "api.v1.HealthServiceGetResponse",
-          "description": "",
+          "description": "HealthServiceGetRequest is the response payload with the health of the system",
           "hasExtensions": false,
           "hasFields": true,
           "hasOneofs": false,
@@ -9357,7 +9357,7 @@
           "fields": [
             {
               "name": "health",
-              "description": "",
+              "description": "Health is the overall health of the system",
               "label": "",
               "type": "Health",
               "longType": "Health",
@@ -9373,7 +9373,7 @@
           "name": "HealthStatus",
           "longName": "HealthStatus",
           "fullName": "api.v1.HealthStatus",
-          "description": "",
+          "description": "HealthStatus the health of one service",
           "hasExtensions": false,
           "hasFields": true,
           "hasOneofs": false,
@@ -9381,7 +9381,7 @@
           "fields": [
             {
               "name": "name",
-              "description": "",
+              "description": "Name the name of the service",
               "label": "",
               "type": "Service",
               "longType": "Service",
@@ -9393,7 +9393,7 @@
             },
             {
               "name": "status",
-              "description": "",
+              "description": "Status the status of this service",
               "label": "",
               "type": "ServiceStatus",
               "longType": "ServiceStatus",
@@ -9405,7 +9405,7 @@
             },
             {
               "name": "message",
-              "description": "",
+              "description": "Message describes the reason for the unhealthy status if possible",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -9417,7 +9417,7 @@
             },
             {
               "name": "partitions",
-              "description": "",
+              "description": "Partitions describes the health of the service by partition",
               "label": "repeated",
               "type": "PartitionsEntry",
               "longType": "HealthStatus.PartitionsEntry",
@@ -9469,7 +9469,7 @@
           "name": "PartitionHealth",
           "longName": "PartitionHealth",
           "fullName": "api.v1.PartitionHealth",
-          "description": "",
+          "description": "PartitionHealth the status of a specific service in this partition",
           "hasExtensions": false,
           "hasFields": true,
           "hasOneofs": false,
@@ -9477,7 +9477,7 @@
           "fields": [
             {
               "name": "status",
-              "description": "",
+              "description": "Status the health status of the service in this partition",
               "label": "",
               "type": "ServiceStatus",
               "longType": "ServiceStatus",
@@ -9489,7 +9489,7 @@
             },
             {
               "name": "message",
-              "description": "",
+              "description": "Message describes the reason for the unhealthy status if possible",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -9507,11 +9507,11 @@
           "name": "HealthService",
           "longName": "HealthService",
           "fullName": "api.v1.HealthService",
-          "description": "",
+          "description": "HealthService serves health related functions",
           "methods": [
             {
               "name": "Get",
-              "description": "",
+              "description": "Get the health of the platform",
               "requestType": "HealthServiceGetRequest",
               "requestLongType": "HealthServiceGetRequest",
               "requestFullType": "api.v1.HealthServiceGetRequest",
@@ -10311,7 +10311,7 @@
           "name": "MethodServiceListRequest",
           "longName": "MethodServiceListRequest",
           "fullName": "api.v1.MethodServiceListRequest",
-          "description": "",
+          "description": "MethodServiceListRequest is the request payload to list all public methods",
           "hasExtensions": false,
           "hasFields": false,
           "hasOneofs": false,
@@ -10322,7 +10322,7 @@
           "name": "MethodServiceListResponse",
           "longName": "MethodServiceListResponse",
           "fullName": "api.v1.MethodServiceListResponse",
-          "description": "",
+          "description": "MethodServiceListResponse is the response payload with all public visible methods",
           "hasExtensions": false,
           "hasFields": true,
           "hasOneofs": false,
@@ -10330,7 +10330,7 @@
           "fields": [
             {
               "name": "methods",
-              "description": "",
+              "description": "Methods is a list of methods public callable",
               "label": "repeated",
               "type": "string",
               "longType": "string",
@@ -10346,7 +10346,7 @@
           "name": "MethodServiceTokenScopedListRequest",
           "longName": "MethodServiceTokenScopedListRequest",
           "fullName": "api.v1.MethodServiceTokenScopedListRequest",
-          "description": "",
+          "description": "MethodServiceTokenScopedListRequest is the request payload to list all methods callable with the token present in the request",
           "hasExtensions": false,
           "hasFields": false,
           "hasOneofs": false,
@@ -10357,7 +10357,7 @@
           "name": "MethodServiceTokenScopedListResponse",
           "longName": "MethodServiceTokenScopedListResponse",
           "fullName": "api.v1.MethodServiceTokenScopedListResponse",
-          "description": "",
+          "description": "MethodServiceTokenScopedListResponse is the response payload which contains all methods which are callable with the given token",
           "hasExtensions": false,
           "hasFields": true,
           "hasOneofs": false,
@@ -10365,7 +10365,7 @@
           "fields": [
             {
               "name": "permissions",
-              "description": "",
+              "description": "Permissions a list of methods which can be called",
               "label": "repeated",
               "type": "MethodPermission",
               "longType": "MethodPermission",
@@ -10377,7 +10377,7 @@
             },
             {
               "name": "roles",
-              "description": "",
+              "description": "Roles a list of roles the presented token contains",
               "label": "repeated",
               "type": "TokenRole",
               "longType": "TokenRole",
@@ -10395,11 +10395,11 @@
           "name": "MethodService",
           "longName": "MethodService",
           "fullName": "api.v1.MethodService",
-          "description": "",
+          "description": "MethodService serves method related functions\nmethods are functions in services",
           "methods": [
             {
               "name": "List",
-              "description": "",
+              "description": "List all public visible methods",
               "requestType": "MethodServiceListRequest",
               "requestLongType": "MethodServiceListRequest",
               "requestFullType": "api.v1.MethodServiceListRequest",
@@ -10411,7 +10411,7 @@
             },
             {
               "name": "TokenScopedList",
-              "description": "",
+              "description": "TokenScopedList all methods callable with the token present in the request",
               "requestType": "MethodServiceTokenScopedListRequest",
               "requestLongType": "MethodServiceTokenScopedListRequest",
               "requestFullType": "api.v1.MethodServiceTokenScopedListRequest",
@@ -10730,7 +10730,7 @@
           "name": "Version",
           "longName": "Version",
           "fullName": "api.v1.Version",
-          "description": "",
+          "description": "Version of the application",
           "hasExtensions": false,
           "hasFields": true,
           "hasOneofs": false,
@@ -10790,7 +10790,7 @@
           "name": "VersionServiceGetRequest",
           "longName": "VersionServiceGetRequest",
           "fullName": "api.v1.VersionServiceGetRequest",
-          "description": "",
+          "description": "VersionServiceGetRequest is the request payload to get the version",
           "hasExtensions": false,
           "hasFields": false,
           "hasOneofs": false,
@@ -10801,7 +10801,7 @@
           "name": "VersionServiceGetResponse",
           "longName": "VersionServiceGetResponse",
           "fullName": "api.v1.VersionServiceGetResponse",
-          "description": "",
+          "description": "VersionServiceGetResponse is the response payload with the version",
           "hasExtensions": false,
           "hasFields": true,
           "hasOneofs": false,
@@ -10809,7 +10809,7 @@
           "fields": [
             {
               "name": "version",
-              "description": "",
+              "description": "Version of the application",
               "label": "",
               "type": "Version",
               "longType": "Version",
@@ -10827,11 +10827,11 @@
           "name": "VersionService",
           "longName": "VersionService",
           "fullName": "api.v1.VersionService",
-          "description": "",
+          "description": "VersionService serves version related functions",
           "methods": [
             {
               "name": "Get",
-              "description": "",
+              "description": "Get the version",
               "requestType": "VersionServiceGetRequest",
               "requestLongType": "VersionServiceGetRequest",
               "requestFullType": "api.v1.VersionServiceGetRequest",
@@ -11113,7 +11113,7 @@
           "name": "StatusServiceGetRequest",
           "longName": "StatusServiceGetRequest",
           "fullName": "status.v1.StatusServiceGetRequest",
-          "description": "",
+          "description": "StatusServiceGetRequest is the request payload to get the status",
           "hasExtensions": false,
           "hasFields": false,
           "hasOneofs": false,
@@ -11124,7 +11124,7 @@
           "name": "StatusServiceGetResponse",
           "longName": "StatusServiceGetResponse",
           "fullName": "status.v1.StatusServiceGetResponse",
-          "description": "",
+          "description": "StatusServiceGetResponse is the response payload which describes the system status",
           "hasExtensions": false,
           "hasFields": true,
           "hasOneofs": false,
@@ -11132,7 +11132,7 @@
           "fields": [
             {
               "name": "health",
-              "description": "",
+              "description": "Health of the individual services",
               "label": "",
               "type": "Health",
               "longType": "api.v1.Health",
@@ -11144,7 +11144,7 @@
             },
             {
               "name": "overall_status",
-              "description": "",
+              "description": "OverallStatus is the status of the system",
               "label": "",
               "type": "ServiceStatus",
               "longType": "api.v1.ServiceStatus",
@@ -11156,7 +11156,7 @@
             },
             {
               "name": "connection_broken",
-              "description": "",
+              "description": "ConnectionBroken shows if the connection to the system is broken",
               "label": "",
               "type": "bool",
               "longType": "bool",
@@ -11168,7 +11168,7 @@
             },
             {
               "name": "api_version",
-              "description": "",
+              "description": "ApiVersion of the system",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -11186,11 +11186,11 @@
           "name": "StatusService",
           "longName": "StatusService",
           "fullName": "status.v1.StatusService",
-          "description": "",
+          "description": "StatusService serves status related functions\nthis service is used as backend for the status dashboard",
           "methods": [
             {
               "name": "Get",
-              "description": "",
+              "description": "Get the system status",
               "requestType": "StatusServiceGetRequest",
               "requestLongType": "StatusServiceGetRequest",
               "requestFullType": "status.v1.StatusServiceGetRequest",

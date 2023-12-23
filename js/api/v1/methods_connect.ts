@@ -7,12 +7,17 @@ import { MethodServiceListRequest, MethodServiceListResponse, MethodServiceToken
 import { MethodKind } from "@bufbuild/protobuf";
 
 /**
+ * MethodService serves method related functions
+ * methods are functions in services
+ *
  * @generated from service api.v1.MethodService
  */
 export const MethodService = {
   typeName: "api.v1.MethodService",
   methods: {
     /**
+     * List all public visible methods
+     *
      * @generated from rpc api.v1.MethodService.List
      */
     list: {
@@ -22,6 +27,8 @@ export const MethodService = {
       kind: MethodKind.Unary,
     },
     /**
+     * TokenScopedList all methods callable with the token present in the request
+     *
      * @generated from rpc api.v1.MethodService.TokenScopedList
      */
     tokenScopedList: {

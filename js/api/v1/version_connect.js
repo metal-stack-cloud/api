@@ -8,12 +8,16 @@ exports.VersionService = void 0;
 const version_pb_js_1 = require("./version_pb.js");
 const protobuf_1 = require("@bufbuild/protobuf");
 /**
+ * VersionService serves version related functions
+ *
  * @generated from service api.v1.VersionService
  */
 exports.VersionService = {
     typeName: "api.v1.VersionService",
     methods: {
         /**
+         * Get the version
+         *
          * @generated from rpc api.v1.VersionService.Get
          */
         get: {

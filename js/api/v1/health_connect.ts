@@ -7,12 +7,16 @@ import { HealthServiceGetRequest, HealthServiceGetResponse } from "./health_pb.j
 import { MethodKind } from "@bufbuild/protobuf";
 
 /**
+ * HealthService serves health related functions
+ *
  * @generated from service api.v1.HealthService
  */
 export const HealthService = {
   typeName: "api.v1.HealthService",
   methods: {
     /**
+     * Get the health of the platform
+     *
      * @generated from rpc api.v1.HealthService.Get
      */
     get: {

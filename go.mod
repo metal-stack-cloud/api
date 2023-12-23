@@ -3,13 +3,13 @@ module github.com/metal-stack-cloud/api
 go 1.21
 
 require (
-	connectrpc.com/connect v1.13.0
+	connectrpc.com/connect v1.14.0
 	github.com/Masterminds/sprig/v3 v3.2.3
 	github.com/bufbuild/protocompile v0.7.1
 	github.com/envoyproxy/protoc-gen-validate v1.0.2
 	github.com/klauspost/connect-compress/v2 v2.0.0
 	github.com/stretchr/testify v1.8.4
-	google.golang.org/protobuf v1.31.1-0.20231027082548-f4a6c1f6e5c1
+	google.golang.org/protobuf v1.32.0
 )
 
 require (

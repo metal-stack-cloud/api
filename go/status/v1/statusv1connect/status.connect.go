@@ -45,6 +45,7 @@ var (
 
 // StatusServiceClient is a client for the status.v1.StatusService service.
 type StatusServiceClient interface {
+	// Get the system status
 	Get(context.Context, *connect.Request[v1.StatusServiceGetRequest]) (*connect.Response[v1.StatusServiceGetResponse], error)
 }
 
@@ -79,6 +80,7 @@ func (c *statusServiceClient) Get(ctx context.Context, req *connect.Request[v1.S
 
 // StatusServiceHandler is an implementation of the status.v1.StatusService service.
 type StatusServiceHandler interface {
+	// Get the system status
 	Get(context.Context, *connect.Request[v1.StatusServiceGetRequest]) (*connect.Response[v1.StatusServiceGetResponse], error)
 }
 

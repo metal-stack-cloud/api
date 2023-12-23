@@ -20,6 +20,7 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
+// Version of the application
 type Version struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -95,6 +96,7 @@ func (x *Version) GetBuildDate() string {
 	return ""
 }
 
+// VersionServiceGetRequest is the request payload to get the version
 type VersionServiceGetRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -133,11 +135,13 @@ func (*VersionServiceGetRequest) Descriptor() ([]byte, []int) {
 	return file_api_v1_version_proto_rawDescGZIP(), []int{1}
 }
 
+// VersionServiceGetResponse is the response payload with the version
 type VersionServiceGetResponse struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
+	// Version of the application
 	Version *Version `protobuf:"bytes,1,opt,name=version,proto3" json:"version,omitempty"`
 }
 

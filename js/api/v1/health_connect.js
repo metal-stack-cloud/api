@@ -8,12 +8,16 @@ exports.HealthService = void 0;
 const health_pb_js_1 = require("./health_pb.js");
 const protobuf_1 = require("@bufbuild/protobuf");
 /**
+ * HealthService serves health related functions
+ *
  * @generated from service api.v1.HealthService
  */
 exports.HealthService = {
     typeName: "api.v1.HealthService",
     methods: {
         /**
+         * Get the health of the platform
+         *
          * @generated from rpc api.v1.HealthService.Get
          */
         get: {

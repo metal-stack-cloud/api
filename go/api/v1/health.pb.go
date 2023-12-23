@@ -20,13 +20,18 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
+// ServiceStatus defines the status of a service
 type ServiceStatus int32
 
 const (
+	// SERVICE_STATUS_UNSPECIFIED service status is not known or unspecified
 	ServiceStatus_SERVICE_STATUS_UNSPECIFIED ServiceStatus = 0
-	ServiceStatus_SERVICE_STATUS_DEGRADED    ServiceStatus = 1
-	ServiceStatus_SERVICE_STATUS_UNHEALTHY   ServiceStatus = 2
-	ServiceStatus_SERVICE_STATUS_HEALTHY     ServiceStatus = 3
+	// SERVICE_STATUS_DEGRADED the service is in degraded status, not the whole functionality is available
+	ServiceStatus_SERVICE_STATUS_DEGRADED ServiceStatus = 1
+	// SERVICE_STATUS_UNHEALTHY the service is in unhealthy status, serious impact is expected
+	ServiceStatus_SERVICE_STATUS_UNHEALTHY ServiceStatus = 2
+	// SERVICE_STATUS_HEALTHY the service is in healthy status e.g. fully functional
+	ServiceStatus_SERVICE_STATUS_HEALTHY ServiceStatus = 3
 )
 
 // Enum value maps for ServiceStatus.
@@ -72,13 +77,18 @@ func (ServiceStatus) EnumDescriptor() ([]byte, []int) {
 	return file_api_v1_health_proto_rawDescGZIP(), []int{0}
 }
 
+// Service defines the service for which the healtyness is reported
 type Service int32
 
 const (
+	// SERVICE_UNSPECIFIED is a unknown service
 	Service_SERVICE_UNSPECIFIED Service = 0
-	Service_SERVICE_CLUSTER     Service = 1
-	Service_SERVICE_VOLUME      Service = 2
-	Service_SERVICE_MACHINES    Service = 3
+	// SERVICE_CLUSTER the kubernetes cluster service
+	Service_SERVICE_CLUSTER Service = 1
+	// SERVICE_VOLUME the volume/storage service
+	Service_SERVICE_VOLUME Service = 2
+	// SERVICE_MACHINES the machine service
+	Service_SERVICE_MACHINES Service = 3
 )
 
 // Enum value maps for Service.
@@ -124,11 +134,13 @@ func (Service) EnumDescriptor() ([]byte, []int) {
 	return file_api_v1_health_proto_rawDescGZIP(), []int{1}
 }
 
+// Health reports the healt status of all services
 type Health struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
+	// Services the health of all individual services
 	Services []*HealthStatus `protobuf:"bytes,1,rep,name=services,proto3" json:"services,omitempty"`
 }
 
@@ -171,14 +183,19 @@ func (x *Health) GetServices() []*HealthStatus {
 	return nil
 }
 
+// HealthStatus the health of one service
 type HealthStatus struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Name       Service                     `protobuf:"varint,1,opt,name=name,proto3,enum=api.v1.Service" json:"name,omitempty"`
-	Status     ServiceStatus               `protobuf:"varint,2,opt,name=status,proto3,enum=api.v1.ServiceStatus" json:"status,omitempty"`
-	Message    string                      `protobuf:"bytes,3,opt,name=message,proto3" json:"message,omitempty"`
+	// Name the name of the service
+	Name Service `protobuf:"varint,1,opt,name=name,proto3,enum=api.v1.Service" json:"name,omitempty"`
+	// Status the status of this service
+	Status ServiceStatus `protobuf:"varint,2,opt,name=status,proto3,enum=api.v1.ServiceStatus" json:"status,omitempty"`
+	// Message describes the reason for the unhealthy status if possible
+	Message string `protobuf:"bytes,3,opt,name=message,proto3" json:"message,omitempty"`
+	// Partitions describes the health of the service by partition
 	Partitions map[string]*PartitionHealth `protobuf:"bytes,4,rep,name=partitions,proto3" json:"partitions,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 }
 
@@ -242,13 +259,16 @@ func (x *HealthStatus) GetPartitions() map[string]*PartitionHealth {
 	return nil
 }
 
+// PartitionHealth the status of a specific service in this partition
 type PartitionHealth struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Status  ServiceStatus `protobuf:"varint,1,opt,name=status,proto3,enum=api.v1.ServiceStatus" json:"status,omitempty"`
-	Message string        `protobuf:"bytes,2,opt,name=message,proto3" json:"message,omitempty"`
+	// Status the health status of the service in this partition
+	Status ServiceStatus `protobuf:"varint,1,opt,name=status,proto3,enum=api.v1.ServiceStatus" json:"status,omitempty"`
+	// Message describes the reason for the unhealthy status if possible
+	Message string `protobuf:"bytes,2,opt,name=message,proto3" json:"message,omitempty"`
 }
 
 func (x *PartitionHealth) Reset() {
@@ -297,6 +317,7 @@ func (x *PartitionHealth) GetMessage() string {
 	return ""
 }
 
+// HealthServiceGetRequest is request payload to get the health of the system
 type HealthServiceGetRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -335,11 +356,13 @@ func (*HealthServiceGetRequest) Descriptor() ([]byte, []int) {
 	return file_api_v1_health_proto_rawDescGZIP(), []int{3}
 }
 
+// HealthServiceGetRequest is the response payload with the health of the system
 type HealthServiceGetResponse struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
+	// Health is the overall health of the system
 	Health *Health `protobuf:"bytes,1,opt,name=health,proto3" json:"health,omitempty"`
 }
 
