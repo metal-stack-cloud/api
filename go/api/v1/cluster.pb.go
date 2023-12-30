@@ -23,26 +23,40 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-// Types
+// Cluster describes a kubernetes cluster
 type Cluster struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Uuid        string                 `protobuf:"bytes,1,opt,name=uuid,proto3" json:"uuid,omitempty"`
-	Name        string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
-	Project     string                 `protobuf:"bytes,3,opt,name=project,proto3" json:"project,omitempty"`
-	Partition   string                 `protobuf:"bytes,4,opt,name=partition,proto3" json:"partition,omitempty"` // partition is part of a region
-	Kubernetes  *KubernetesSpec        `protobuf:"bytes,5,opt,name=kubernetes,proto3" json:"kubernetes,omitempty"`
-	Workers     []*Worker              `protobuf:"bytes,6,rep,name=workers,proto3" json:"workers,omitempty"`
-	Maintenance *Maintenance           `protobuf:"bytes,7,opt,name=maintenance,proto3" json:"maintenance,omitempty"`
-	Tenant      string                 `protobuf:"bytes,8,opt,name=tenant,proto3" json:"tenant,omitempty"`
-	CreatedAt   *timestamppb.Timestamp `protobuf:"bytes,10,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	UpdatedAt   *timestamppb.Timestamp `protobuf:"bytes,11,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
-	DeletedAt   *timestamppb.Timestamp `protobuf:"bytes,12,opt,name=deleted_at,json=deletedAt,proto3" json:"deleted_at,omitempty"`
-	Status      *ClusterStatus         `protobuf:"bytes,20,opt,name=status,proto3" json:"status,omitempty"`
-	Purpose     *string                `protobuf:"bytes,21,opt,name=purpose,proto3,oneof" json:"purpose,omitempty"`
-	Monitoring  *ClusterMonitoring     `protobuf:"bytes,22,opt,name=monitoring,proto3" json:"monitoring,omitempty"`
+	// Uuid of the cluster
+	Uuid string `protobuf:"bytes,1,opt,name=uuid,proto3" json:"uuid,omitempty"`
+	// Name of the cluster
+	Name string `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
+	// Project where this cluster belongs to
+	Project string `protobuf:"bytes,3,opt,name=project,proto3" json:"project,omitempty"`
+	// Partition where this cluster was created
+	Partition string `protobuf:"bytes,4,opt,name=partition,proto3" json:"partition,omitempty"`
+	// Kubernetes defines the kubernetes specifications of this cluster
+	Kubernetes *KubernetesSpec `protobuf:"bytes,5,opt,name=kubernetes,proto3" json:"kubernetes,omitempty"`
+	// Workers defines the list of worker groups with their specification
+	Workers []*Worker `protobuf:"bytes,6,rep,name=workers,proto3" json:"workers,omitempty"`
+	// Maintenance defines when automated actions on this cluster should be scheduled
+	Maintenance *Maintenance `protobuf:"bytes,7,opt,name=maintenance,proto3" json:"maintenance,omitempty"`
+	// Tenant where this cluster belongs to
+	Tenant string `protobuf:"bytes,8,opt,name=tenant,proto3" json:"tenant,omitempty"`
+	// CreatedAt defines the date when this cluster was created
+	CreatedAt *timestamppb.Timestamp `protobuf:"bytes,10,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
+	// UpdatedAt defines the date when this cluster was updated
+	UpdatedAt *timestamppb.Timestamp `protobuf:"bytes,11,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	// DeletedAt defines the date when this cluster was deleted
+	DeletedAt *timestamppb.Timestamp `protobuf:"bytes,12,opt,name=deleted_at,json=deletedAt,proto3" json:"deleted_at,omitempty"`
+	// Status of this cluster
+	Status *ClusterStatus `protobuf:"bytes,20,opt,name=status,proto3" json:"status,omitempty"`
+	// Purpose of this cluster, can be for example production, development or evaluation
+	Purpose *string `protobuf:"bytes,21,opt,name=purpose,proto3,oneof" json:"purpose,omitempty"`
+	// Monitoring details for this cluster
+	Monitoring *ClusterMonitoring `protobuf:"bytes,22,opt,name=monitoring,proto3" json:"monitoring,omitempty"`
 }
 
 func (x *Cluster) Reset() {
@@ -175,11 +189,13 @@ func (x *Cluster) GetMonitoring() *ClusterMonitoring {
 	return nil
 }
 
+// KubernetesSpec details of kubernetes this cluster
 type KubernetesSpec struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
+	// Version of kubernetes
 	Version string `protobuf:"bytes,1,opt,name=version,proto3" json:"version,omitempty"`
 }
 
@@ -222,14 +238,18 @@ func (x *KubernetesSpec) GetVersion() string {
 	return ""
 }
 
+// Maintenance defines when automatic actions should be scheduled on this cluster
 type Maintenance struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	KubernetesAutoupdate   *bool                  `protobuf:"varint,1,opt,name=kubernetes_autoupdate,json=kubernetesAutoupdate,proto3,oneof" json:"kubernetes_autoupdate,omitempty"`
-	MachineimageAutoupdate *bool                  `protobuf:"varint,2,opt,name=machineimage_autoupdate,json=machineimageAutoupdate,proto3,oneof" json:"machineimage_autoupdate,omitempty"`
-	TimeWindow             *MaintenanceTimeWindow `protobuf:"bytes,3,opt,name=time_window,json=timeWindow,proto3" json:"time_window,omitempty"`
+	// KubernetesAutoupdate if set to true, kubernetes patch version updates will be done in the maintenance window
+	KubernetesAutoupdate *bool `protobuf:"varint,1,opt,name=kubernetes_autoupdate,json=kubernetesAutoupdate,proto3,oneof" json:"kubernetes_autoupdate,omitempty"`
+	// MachineimageAutoupdate if set to true, machine images will be automatically update by rolling nodes in the maintenance window
+	MachineimageAutoupdate *bool `protobuf:"varint,2,opt,name=machineimage_autoupdate,json=machineimageAutoupdate,proto3,oneof" json:"machineimage_autoupdate,omitempty"`
+	// TimeWindow defines the start time and duration during which automatic actions will be performed
+	TimeWindow *MaintenanceTimeWindow `protobuf:"bytes,3,opt,name=time_window,json=timeWindow,proto3" json:"time_window,omitempty"`
 }
 
 func (x *Maintenance) Reset() {
@@ -285,13 +305,16 @@ func (x *Maintenance) GetTimeWindow() *MaintenanceTimeWindow {
 	return nil
 }
 
+// MaintenanceTimeWindow defines the start time and duration during which automatic actions will be performed
 type MaintenanceTimeWindow struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Begin    *timestamppb.Timestamp `protobuf:"bytes,1,opt,name=begin,proto3" json:"begin,omitempty"`
-	Duration *durationpb.Duration   `protobuf:"bytes,2,opt,name=duration,proto3" json:"duration,omitempty"`
+	// Begin of the time window
+	Begin *timestamppb.Timestamp `protobuf:"bytes,1,opt,name=begin,proto3" json:"begin,omitempty"`
+	// Duration of the time window
+	Duration *durationpb.Duration `protobuf:"bytes,2,opt,name=duration,proto3" json:"duration,omitempty"`
 }
 
 func (x *MaintenanceTimeWindow) Reset() {
@@ -340,16 +363,23 @@ func (x *MaintenanceTimeWindow) GetDuration() *durationpb.Duration {
 	return nil
 }
 
+// Worker defines a set of worker nodes with identical properties
 type Worker struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Name           string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
-	MachineType    string `protobuf:"bytes,2,opt,name=machine_type,json=machineType,proto3" json:"machine_type,omitempty"`
-	Minsize        uint32 `protobuf:"varint,3,opt,name=minsize,proto3" json:"minsize,omitempty"`
-	Maxsize        uint32 `protobuf:"varint,4,opt,name=maxsize,proto3" json:"maxsize,omitempty"`
-	Maxsurge       uint32 `protobuf:"varint,5,opt,name=maxsurge,proto3" json:"maxsurge,omitempty"`
+	// Name of this worker group
+	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	// MachineType of machines which should be used for the worker nodes in this group
+	MachineType string `protobuf:"bytes,2,opt,name=machine_type,json=machineType,proto3" json:"machine_type,omitempty"`
+	// Minsize defines the minimum amount of machines present in this worker group
+	Minsize uint32 `protobuf:"varint,3,opt,name=minsize,proto3" json:"minsize,omitempty"`
+	// Maxsize defines the maximum amount of machines present in this worker group
+	Maxsize uint32 `protobuf:"varint,4,opt,name=maxsize,proto3" json:"maxsize,omitempty"`
+	// Maxsurge defines the maximum amount of machines which are spun up in this worker group during a rolling upgrade
+	Maxsurge uint32 `protobuf:"varint,5,opt,name=maxsurge,proto3" json:"maxsurge,omitempty"`
+	// Maxunavailable defines the maximum amount of not available machines in this worker group during a rolling upgrade
 	Maxunavailable uint32 `protobuf:"varint,6,opt,name=maxunavailable,proto3" json:"maxunavailable,omitempty"`
 }
 
@@ -427,16 +457,23 @@ func (x *Worker) GetMaxunavailable() uint32 {
 	return 0
 }
 
+// WorkerUpdate is used to update a Worker group
 type WorkerUpdate struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Name           string  `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
-	MachineType    *string `protobuf:"bytes,2,opt,name=machine_type,json=machineType,proto3,oneof" json:"machine_type,omitempty"`
-	Minsize        *uint32 `protobuf:"varint,3,opt,name=minsize,proto3,oneof" json:"minsize,omitempty"`
-	Maxsize        *uint32 `protobuf:"varint,4,opt,name=maxsize,proto3,oneof" json:"maxsize,omitempty"`
-	Maxsurge       *uint32 `protobuf:"varint,5,opt,name=maxsurge,proto3,oneof" json:"maxsurge,omitempty"`
+	// Name of the worker group to update
+	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	// MachineType to change in this worker group
+	MachineType *string `protobuf:"bytes,2,opt,name=machine_type,json=machineType,proto3,oneof" json:"machine_type,omitempty"`
+	// Minsize defines the minimum amount of machines present in this worker group
+	Minsize *uint32 `protobuf:"varint,3,opt,name=minsize,proto3,oneof" json:"minsize,omitempty"`
+	// Maxsize defines the maximum amount of machines present in this worker group
+	Maxsize *uint32 `protobuf:"varint,4,opt,name=maxsize,proto3,oneof" json:"maxsize,omitempty"`
+	// Maxsurge defines the maximum amount of machines which are spun up in this worker group during a rolling upgrade
+	Maxsurge *uint32 `protobuf:"varint,5,opt,name=maxsurge,proto3,oneof" json:"maxsurge,omitempty"`
+	// Maxunavailable defines the maximum amount of not available machines in this worker group during a rolling upgrade
 	Maxunavailable *uint32 `protobuf:"varint,6,opt,name=maxunavailable,proto3,oneof" json:"maxunavailable,omitempty"`
 }
 
@@ -514,13 +551,15 @@ func (x *WorkerUpdate) GetMaxunavailable() uint32 {
 	return 0
 }
 
-// Requests
+// ClusterServiceGetRequest is the request payload for a cluster get request
 type ClusterServiceGetRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Uuid    string `protobuf:"bytes,1,opt,name=uuid,proto3" json:"uuid,omitempty"`
+	// Uuid of the cluster
+	Uuid string `protobuf:"bytes,1,opt,name=uuid,proto3" json:"uuid,omitempty"`
+	// Project of the cluster
 	Project string `protobuf:"bytes,2,opt,name=project,proto3" json:"project,omitempty"`
 }
 
@@ -570,13 +609,17 @@ func (x *ClusterServiceGetRequest) GetProject() string {
 	return ""
 }
 
+// ClusterServiceGetRequest is the request payload for a cluster get request
 type ClusterServiceGetCredentialsRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Uuid       string               `protobuf:"bytes,1,opt,name=uuid,proto3" json:"uuid,omitempty"`
-	Project    string               `protobuf:"bytes,2,opt,name=project,proto3" json:"project,omitempty"`
+	// Uuid of the cluster
+	Uuid string `protobuf:"bytes,1,opt,name=uuid,proto3" json:"uuid,omitempty"`
+	// Project of the cluster
+	Project string `protobuf:"bytes,2,opt,name=project,proto3" json:"project,omitempty"`
+	// Expiration defines the duration after which the requested kubernetes access token can not be used anymore
 	Expiration *durationpb.Duration `protobuf:"bytes,4,opt,name=expiration,proto3,oneof" json:"expiration,omitempty"`
 }
 
@@ -633,11 +676,13 @@ func (x *ClusterServiceGetCredentialsRequest) GetExpiration() *durationpb.Durati
 	return nil
 }
 
+// ClusterServiceListRequest is the request payload for a cluster list request
 type ClusterServiceListRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
+	// Project of the cluster
 	Project string `protobuf:"bytes,2,opt,name=project,proto3" json:"project,omitempty"`
 }
 
@@ -680,17 +725,24 @@ func (x *ClusterServiceListRequest) GetProject() string {
 	return ""
 }
 
+// ClusterServiceCreateRequest is the request payload for a cluster create request
 type ClusterServiceCreateRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Name        string          `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
-	Project     string          `protobuf:"bytes,3,opt,name=project,proto3" json:"project,omitempty"`
-	Partition   string          `protobuf:"bytes,4,opt,name=partition,proto3" json:"partition,omitempty"` // partition is part of a region
-	Kubernetes  *KubernetesSpec `protobuf:"bytes,6,opt,name=kubernetes,proto3" json:"kubernetes,omitempty"`
-	Workers     []*Worker       `protobuf:"bytes,7,rep,name=workers,proto3" json:"workers,omitempty"`
-	Maintenance *Maintenance    `protobuf:"bytes,8,opt,name=maintenance,proto3" json:"maintenance,omitempty"`
+	// Name of the cluster to create
+	Name string `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
+	// Project of the cluster
+	Project string `protobuf:"bytes,3,opt,name=project,proto3" json:"project,omitempty"`
+	// Partition of the cluster
+	Partition string `protobuf:"bytes,4,opt,name=partition,proto3" json:"partition,omitempty"`
+	// Kubernetes specification of the cluster
+	Kubernetes *KubernetesSpec `protobuf:"bytes,6,opt,name=kubernetes,proto3" json:"kubernetes,omitempty"`
+	// Worker specification of the cluster
+	Workers []*Worker `protobuf:"bytes,7,rep,name=workers,proto3" json:"workers,omitempty"`
+	// Maintenance specification of the cluster
+	Maintenance *Maintenance `protobuf:"bytes,8,opt,name=maintenance,proto3" json:"maintenance,omitempty"`
 }
 
 func (x *ClusterServiceCreateRequest) Reset() {
@@ -767,16 +819,22 @@ func (x *ClusterServiceCreateRequest) GetMaintenance() *Maintenance {
 	return nil
 }
 
+// ClusterServiceUpdateRequest is the request payload for a cluster update request
 type ClusterServiceUpdateRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Uuid        string          `protobuf:"bytes,1,opt,name=uuid,proto3" json:"uuid,omitempty"`
-	Project     string          `protobuf:"bytes,2,opt,name=project,proto3" json:"project,omitempty"`
-	Kubernetes  *KubernetesSpec `protobuf:"bytes,3,opt,name=kubernetes,proto3,oneof" json:"kubernetes,omitempty"`
-	Workers     []*WorkerUpdate `protobuf:"bytes,4,rep,name=workers,proto3" json:"workers,omitempty"`
-	Maintenance *Maintenance    `protobuf:"bytes,5,opt,name=maintenance,proto3,oneof" json:"maintenance,omitempty"`
+	// Uuid of the cluster
+	Uuid string `protobuf:"bytes,1,opt,name=uuid,proto3" json:"uuid,omitempty"`
+	// Project of the cluster
+	Project string `protobuf:"bytes,2,opt,name=project,proto3" json:"project,omitempty"`
+	// Kubernetes specification of the cluster
+	Kubernetes *KubernetesSpec `protobuf:"bytes,3,opt,name=kubernetes,proto3,oneof" json:"kubernetes,omitempty"`
+	// Worker specification of the cluster
+	Workers []*WorkerUpdate `protobuf:"bytes,4,rep,name=workers,proto3" json:"workers,omitempty"`
+	// Maintenance specification of the cluster
+	Maintenance *Maintenance `protobuf:"bytes,5,opt,name=maintenance,proto3,oneof" json:"maintenance,omitempty"`
 }
 
 func (x *ClusterServiceUpdateRequest) Reset() {
@@ -846,12 +904,15 @@ func (x *ClusterServiceUpdateRequest) GetMaintenance() *Maintenance {
 	return nil
 }
 
+// ClusterServiceDeleteRequest is the request payload for a cluster delete request
 type ClusterServiceDeleteRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Uuid    string `protobuf:"bytes,1,opt,name=uuid,proto3" json:"uuid,omitempty"`
+	// Uuid of the cluster
+	Uuid string `protobuf:"bytes,1,opt,name=uuid,proto3" json:"uuid,omitempty"`
+	// Project of the cluster
 	Project string `protobuf:"bytes,2,opt,name=project,proto3" json:"project,omitempty"`
 }
 
@@ -901,13 +962,16 @@ func (x *ClusterServiceDeleteRequest) GetProject() string {
 	return ""
 }
 
+// ClusterServiceWatchStatusRequest is the request payload for a cluster watch status request
 type ClusterServiceWatchStatusRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Uuid    *string `protobuf:"bytes,1,opt,name=uuid,proto3,oneof" json:"uuid,omitempty"`
-	Project string  `protobuf:"bytes,2,opt,name=project,proto3" json:"project,omitempty"`
+	// Uuid of the cluster
+	Uuid *string `protobuf:"bytes,1,opt,name=uuid,proto3,oneof" json:"uuid,omitempty"`
+	// Project of the cluster
+	Project string `protobuf:"bytes,2,opt,name=project,proto3" json:"project,omitempty"`
 }
 
 func (x *ClusterServiceWatchStatusRequest) Reset() {
@@ -956,20 +1020,30 @@ func (x *ClusterServiceWatchStatusRequest) GetProject() string {
 	return ""
 }
 
+// ClusterStatus
 type ClusterStatus struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Uuid                  string                    `protobuf:"bytes,1,opt,name=uuid,proto3" json:"uuid,omitempty"`
-	Progress              uint32                    `protobuf:"varint,2,opt,name=progress,proto3" json:"progress,omitempty"`
-	State                 string                    `protobuf:"bytes,3,opt,name=state,proto3" json:"state,omitempty"`
-	Type                  string                    `protobuf:"bytes,4,opt,name=type,proto3" json:"type,omitempty"`
-	ApiServerReady        string                    `protobuf:"bytes,10,opt,name=api_server_ready,json=apiServerReady,proto3" json:"api_server_ready,omitempty"`
-	ControlPlaneReady     string                    `protobuf:"bytes,11,opt,name=control_plane_ready,json=controlPlaneReady,proto3" json:"control_plane_ready,omitempty"`
-	NodesReady            string                    `protobuf:"bytes,12,opt,name=nodes_ready,json=nodesReady,proto3" json:"nodes_ready,omitempty"`
-	SystemComponentsReady string                    `protobuf:"bytes,13,opt,name=system_components_ready,json=systemComponentsReady,proto3" json:"system_components_ready,omitempty"`
-	LastErrors            []*ClusterStatusLastError `protobuf:"bytes,14,rep,name=last_errors,json=lastErrors,proto3" json:"last_errors,omitempty"`
+	// Uuid of the cluster
+	Uuid string `protobuf:"bytes,1,opt,name=uuid,proto3" json:"uuid,omitempty"`
+	// Progress of the cluster reconcilation
+	Progress uint32 `protobuf:"varint,2,opt,name=progress,proto3" json:"progress,omitempty"`
+	// State of the cluster
+	State string `protobuf:"bytes,3,opt,name=state,proto3" json:"state,omitempty"`
+	// Type of the cluster status
+	Type string `protobuf:"bytes,4,opt,name=type,proto3" json:"type,omitempty"`
+	// ApiServerReady represents the ready state of the kubernetes api server
+	ApiServerReady string `protobuf:"bytes,10,opt,name=api_server_ready,json=apiServerReady,proto3" json:"api_server_ready,omitempty"`
+	// ControlPlaneReady represents the ready state of the control plane components
+	ControlPlaneReady string `protobuf:"bytes,11,opt,name=control_plane_ready,json=controlPlaneReady,proto3" json:"control_plane_ready,omitempty"`
+	// NodesReady represents the ready state of the worker nodes
+	NodesReady string `protobuf:"bytes,12,opt,name=nodes_ready,json=nodesReady,proto3" json:"nodes_ready,omitempty"`
+	// SystemComponentsReady represents the ready state of the system components
+	SystemComponentsReady string `protobuf:"bytes,13,opt,name=system_components_ready,json=systemComponentsReady,proto3" json:"system_components_ready,omitempty"`
+	// LastErrors is a list of the last known errors occured during the cluster reconcilation
+	LastErrors []*ClusterStatusLastError `protobuf:"bytes,14,rep,name=last_errors,json=lastErrors,proto3" json:"last_errors,omitempty"`
 }
 
 func (x *ClusterStatus) Reset() {
@@ -1067,20 +1141,21 @@ func (x *ClusterStatus) GetLastErrors() []*ClusterStatusLastError {
 	return nil
 }
 
+// ClusterStatusLastError is the last known cluster status error
 type ClusterStatusLastError struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// A human readable message indicating details about the last error.
+	// Description a human readable message indicating details about the last error.
 	Description string `protobuf:"bytes,1,opt,name=description,proto3" json:"description,omitempty"`
-	// ID of the task which caused this last error
+	// TaskId ID of the task which caused this last error
 	// +optional
 	TaskId *string `protobuf:"bytes,2,opt,name=task_id,json=taskId,proto3,oneof" json:"task_id,omitempty"`
-	// Well-defined error codes of the last error(s).
+	// Codes well-defined error codes of the last error(s).
 	// +optional
 	Codes []string `protobuf:"bytes,3,rep,name=codes,proto3" json:"codes,omitempty"`
-	// Last time the error was reported
+	// LastUpdateTime last time the error was reported
 	// +optional
 	LastUpdateTime *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=last_update_time,json=lastUpdateTime,proto3" json:"last_update_time,omitempty"`
 }
@@ -1145,13 +1220,17 @@ func (x *ClusterStatusLastError) GetLastUpdateTime() *timestamppb.Timestamp {
 	return nil
 }
 
+// ClusterMonitoring contains details howto access the cluster monitoring
 type ClusterMonitoring struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
+	// Username to access the monitoring
 	Username string `protobuf:"bytes,1,opt,name=username,proto3" json:"username,omitempty"`
+	// Password to access the monitoring
 	Password string `protobuf:"bytes,2,opt,name=password,proto3" json:"password,omitempty"`
+	// Endpoint is the url to access the monitoring
 	Endpoint string `protobuf:"bytes,3,opt,name=endpoint,proto3" json:"endpoint,omitempty"`
 }
 
@@ -1208,12 +1287,13 @@ func (x *ClusterMonitoring) GetEndpoint() string {
 	return ""
 }
 
-// Responses
+// ClusterServiceCreateResponse is the response payload of a cluster create request
 type ClusterServiceCreateResponse struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
+	// Cluster is the cluster
 	Cluster *Cluster `protobuf:"bytes,1,opt,name=cluster,proto3" json:"cluster,omitempty"`
 }
 
@@ -1256,11 +1336,13 @@ func (x *ClusterServiceCreateResponse) GetCluster() *Cluster {
 	return nil
 }
 
+// ClusterServiceGetResponse is the response payload of a cluster get request
 type ClusterServiceGetResponse struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
+	// Cluster is the cluster
 	Cluster *Cluster `protobuf:"bytes,1,opt,name=cluster,proto3" json:"cluster,omitempty"`
 }
 
@@ -1303,11 +1385,13 @@ func (x *ClusterServiceGetResponse) GetCluster() *Cluster {
 	return nil
 }
 
+// ClusterServiceGetCredentialsResponse is the response payload of a cluster get credentials request
 type ClusterServiceGetCredentialsResponse struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
+	// Cluster is the cluster
 	Kubeconfig string `protobuf:"bytes,1,opt,name=kubeconfig,proto3" json:"kubeconfig,omitempty"`
 }
 
@@ -1350,11 +1434,13 @@ func (x *ClusterServiceGetCredentialsResponse) GetKubeconfig() string {
 	return ""
 }
 
+// ClusterServiceDeleteResponse is the response payload of a cluster delete request
 type ClusterServiceDeleteResponse struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
+	// Cluster is the cluster
 	Cluster *Cluster `protobuf:"bytes,1,opt,name=cluster,proto3" json:"cluster,omitempty"`
 }
 
@@ -1397,11 +1483,13 @@ func (x *ClusterServiceDeleteResponse) GetCluster() *Cluster {
 	return nil
 }
 
+// ClusterServiceUpdateResponse is the response payload of a cluster update request
 type ClusterServiceUpdateResponse struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
+	// Cluster is the cluster
 	Cluster *Cluster `protobuf:"bytes,1,opt,name=cluster,proto3" json:"cluster,omitempty"`
 }
 
@@ -1444,11 +1532,13 @@ func (x *ClusterServiceUpdateResponse) GetCluster() *Cluster {
 	return nil
 }
 
+// ClusterServiceListResponse is the response payload of a cluster list request
 type ClusterServiceListResponse struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
+	// Clusters a list of clusters
 	Clusters []*Cluster `protobuf:"bytes,1,rep,name=clusters,proto3" json:"clusters,omitempty"`
 }
 
@@ -1491,11 +1581,13 @@ func (x *ClusterServiceListResponse) GetClusters() []*Cluster {
 	return nil
 }
 
+// ClusterServiceWatchStatusResponse is the response payload of a cluster watch status request
 type ClusterServiceWatchStatusResponse struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
+	// Status the cluster status
 	Status *ClusterStatus `protobuf:"bytes,1,opt,name=status,proto3" json:"status,omitempty"`
 }
 

@@ -740,7 +740,7 @@
           "name": "Cluster",
           "longName": "Cluster",
           "fullName": "api.v1.Cluster",
-          "description": "Types",
+          "description": "Cluster describes a kubernetes cluster",
           "hasExtensions": false,
           "hasFields": true,
           "hasOneofs": true,
@@ -748,7 +748,7 @@
           "fields": [
             {
               "name": "uuid",
-              "description": "",
+              "description": "Uuid of the cluster",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -768,7 +768,7 @@
             },
             {
               "name": "name",
-              "description": "",
+              "description": "Name of the cluster",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -792,7 +792,7 @@
             },
             {
               "name": "project",
-              "description": "",
+              "description": "Project where this cluster belongs to",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -816,7 +816,7 @@
             },
             {
               "name": "partition",
-              "description": "partition is part of a region",
+              "description": "Partition where this cluster was created",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -828,7 +828,7 @@
             },
             {
               "name": "kubernetes",
-              "description": "",
+              "description": "Kubernetes defines the kubernetes specifications of this cluster",
               "label": "",
               "type": "KubernetesSpec",
               "longType": "KubernetesSpec",
@@ -840,7 +840,7 @@
             },
             {
               "name": "workers",
-              "description": "",
+              "description": "Workers defines the list of worker groups with their specification",
               "label": "repeated",
               "type": "Worker",
               "longType": "Worker",
@@ -852,7 +852,7 @@
             },
             {
               "name": "maintenance",
-              "description": "",
+              "description": "Maintenance defines when automated actions on this cluster should be scheduled",
               "label": "",
               "type": "Maintenance",
               "longType": "Maintenance",
@@ -864,7 +864,7 @@
             },
             {
               "name": "tenant",
-              "description": "",
+              "description": "Tenant where this cluster belongs to",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -876,7 +876,7 @@
             },
             {
               "name": "created_at",
-              "description": "",
+              "description": "CreatedAt defines the date when this cluster was created",
               "label": "",
               "type": "Timestamp",
               "longType": "google.protobuf.Timestamp",
@@ -888,7 +888,7 @@
             },
             {
               "name": "updated_at",
-              "description": "",
+              "description": "UpdatedAt defines the date when this cluster was updated",
               "label": "",
               "type": "Timestamp",
               "longType": "google.protobuf.Timestamp",
@@ -900,7 +900,7 @@
             },
             {
               "name": "deleted_at",
-              "description": "",
+              "description": "DeletedAt defines the date when this cluster was deleted",
               "label": "",
               "type": "Timestamp",
               "longType": "google.protobuf.Timestamp",
@@ -912,7 +912,7 @@
             },
             {
               "name": "status",
-              "description": "",
+              "description": "Status of this cluster",
               "label": "",
               "type": "ClusterStatus",
               "longType": "ClusterStatus",
@@ -924,7 +924,7 @@
             },
             {
               "name": "purpose",
-              "description": "",
+              "description": "Purpose of this cluster, can be for example production, development or evaluation",
               "label": "optional",
               "type": "string",
               "longType": "string",
@@ -936,7 +936,7 @@
             },
             {
               "name": "monitoring",
-              "description": "",
+              "description": "Monitoring details for this cluster",
               "label": "",
               "type": "ClusterMonitoring",
               "longType": "ClusterMonitoring",
@@ -952,7 +952,7 @@
           "name": "ClusterMonitoring",
           "longName": "ClusterMonitoring",
           "fullName": "api.v1.ClusterMonitoring",
-          "description": "",
+          "description": "ClusterMonitoring contains details howto access the cluster monitoring",
           "hasExtensions": false,
           "hasFields": true,
           "hasOneofs": false,
@@ -960,7 +960,7 @@
           "fields": [
             {
               "name": "username",
-              "description": "",
+              "description": "Username to access the monitoring",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -972,7 +972,7 @@
             },
             {
               "name": "password",
-              "description": "",
+              "description": "Password to access the monitoring",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -984,7 +984,7 @@
             },
             {
               "name": "endpoint",
-              "description": "",
+              "description": "Endpoint is the url to access the monitoring",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -1000,7 +1000,7 @@
           "name": "ClusterServiceCreateRequest",
           "longName": "ClusterServiceCreateRequest",
           "fullName": "api.v1.ClusterServiceCreateRequest",
-          "description": "",
+          "description": "ClusterServiceCreateRequest is the request payload for a cluster create request",
           "hasExtensions": false,
           "hasFields": true,
           "hasOneofs": false,
@@ -1008,7 +1008,7 @@
           "fields": [
             {
               "name": "name",
-              "description": "",
+              "description": "Name of the cluster to create",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -1036,7 +1036,7 @@
             },
             {
               "name": "project",
-              "description": "",
+              "description": "Project of the cluster",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -1060,7 +1060,7 @@
             },
             {
               "name": "partition",
-              "description": "partition is part of a region",
+              "description": "Partition of the cluster",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -1072,7 +1072,7 @@
             },
             {
               "name": "kubernetes",
-              "description": "",
+              "description": "Kubernetes specification of the cluster",
               "label": "",
               "type": "KubernetesSpec",
               "longType": "KubernetesSpec",
@@ -1084,7 +1084,7 @@
             },
             {
               "name": "workers",
-              "description": "",
+              "description": "Worker specification of the cluster",
               "label": "repeated",
               "type": "Worker",
               "longType": "Worker",
@@ -1096,7 +1096,7 @@
             },
             {
               "name": "maintenance",
-              "description": "",
+              "description": "Maintenance specification of the cluster",
               "label": "",
               "type": "Maintenance",
               "longType": "Maintenance",
@@ -1112,7 +1112,7 @@
           "name": "ClusterServiceCreateResponse",
           "longName": "ClusterServiceCreateResponse",
           "fullName": "api.v1.ClusterServiceCreateResponse",
-          "description": "Responses",
+          "description": "ClusterServiceCreateResponse is the response payload of a cluster create request",
           "hasExtensions": false,
           "hasFields": true,
           "hasOneofs": false,
@@ -1120,7 +1120,7 @@
           "fields": [
             {
               "name": "cluster",
-              "description": "",
+              "description": "Cluster is the cluster",
               "label": "",
               "type": "Cluster",
               "longType": "Cluster",
@@ -1136,7 +1136,7 @@
           "name": "ClusterServiceDeleteRequest",
           "longName": "ClusterServiceDeleteRequest",
           "fullName": "api.v1.ClusterServiceDeleteRequest",
-          "description": "",
+          "description": "ClusterServiceDeleteRequest is the request payload for a cluster delete request",
           "hasExtensions": false,
           "hasFields": true,
           "hasOneofs": false,
@@ -1144,7 +1144,7 @@
           "fields": [
             {
               "name": "uuid",
-              "description": "",
+              "description": "Uuid of the cluster",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -1164,7 +1164,7 @@
             },
             {
               "name": "project",
-              "description": "",
+              "description": "Project of the cluster",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -1192,7 +1192,7 @@
           "name": "ClusterServiceDeleteResponse",
           "longName": "ClusterServiceDeleteResponse",
           "fullName": "api.v1.ClusterServiceDeleteResponse",
-          "description": "",
+          "description": "ClusterServiceDeleteResponse is the response payload of a cluster delete request",
           "hasExtensions": false,
           "hasFields": true,
           "hasOneofs": false,
@@ -1200,7 +1200,7 @@
           "fields": [
             {
               "name": "cluster",
-              "description": "",
+              "description": "Cluster is the cluster",
               "label": "",
               "type": "Cluster",
               "longType": "Cluster",
@@ -1216,7 +1216,7 @@
           "name": "ClusterServiceGetCredentialsRequest",
           "longName": "ClusterServiceGetCredentialsRequest",
           "fullName": "api.v1.ClusterServiceGetCredentialsRequest",
-          "description": "",
+          "description": "ClusterServiceGetRequest is the request payload for a cluster get request",
           "hasExtensions": false,
           "hasFields": true,
           "hasOneofs": true,
@@ -1224,7 +1224,7 @@
           "fields": [
             {
               "name": "uuid",
-              "description": "",
+              "description": "Uuid of the cluster",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -1244,7 +1244,7 @@
             },
             {
               "name": "project",
-              "description": "",
+              "description": "Project of the cluster",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -1268,7 +1268,7 @@
             },
             {
               "name": "expiration",
-              "description": "",
+              "description": "Expiration defines the duration after which the requested kubernetes access token can not be used anymore",
               "label": "optional",
               "type": "Duration",
               "longType": "google.protobuf.Duration",
@@ -1284,7 +1284,7 @@
           "name": "ClusterServiceGetCredentialsResponse",
           "longName": "ClusterServiceGetCredentialsResponse",
           "fullName": "api.v1.ClusterServiceGetCredentialsResponse",
-          "description": "",
+          "description": "ClusterServiceGetCredentialsResponse is the response payload of a cluster get credentials request",
           "hasExtensions": false,
           "hasFields": true,
           "hasOneofs": false,
@@ -1292,7 +1292,7 @@
           "fields": [
             {
               "name": "kubeconfig",
-              "description": "",
+              "description": "Cluster is the cluster",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -1308,7 +1308,7 @@
           "name": "ClusterServiceGetRequest",
           "longName": "ClusterServiceGetRequest",
           "fullName": "api.v1.ClusterServiceGetRequest",
-          "description": "Requests",
+          "description": "ClusterServiceGetRequest is the request payload for a cluster get request",
           "hasExtensions": false,
           "hasFields": true,
           "hasOneofs": false,
@@ -1316,7 +1316,7 @@
           "fields": [
             {
               "name": "uuid",
-              "description": "",
+              "description": "Uuid of the cluster",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -1336,7 +1336,7 @@
             },
             {
               "name": "project",
-              "description": "",
+              "description": "Project of the cluster",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -1364,7 +1364,7 @@
           "name": "ClusterServiceGetResponse",
           "longName": "ClusterServiceGetResponse",
           "fullName": "api.v1.ClusterServiceGetResponse",
-          "description": "",
+          "description": "ClusterServiceGetResponse is the response payload of a cluster get request",
           "hasExtensions": false,
           "hasFields": true,
           "hasOneofs": false,
@@ -1372,7 +1372,7 @@
           "fields": [
             {
               "name": "cluster",
-              "description": "",
+              "description": "Cluster is the cluster",
               "label": "",
               "type": "Cluster",
               "longType": "Cluster",
@@ -1388,7 +1388,7 @@
           "name": "ClusterServiceListRequest",
           "longName": "ClusterServiceListRequest",
           "fullName": "api.v1.ClusterServiceListRequest",
-          "description": "",
+          "description": "ClusterServiceListRequest is the request payload for a cluster list request",
           "hasExtensions": false,
           "hasFields": true,
           "hasOneofs": false,
@@ -1396,7 +1396,7 @@
           "fields": [
             {
               "name": "project",
-              "description": "",
+              "description": "Project of the cluster",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -1424,7 +1424,7 @@
           "name": "ClusterServiceListResponse",
           "longName": "ClusterServiceListResponse",
           "fullName": "api.v1.ClusterServiceListResponse",
-          "description": "",
+          "description": "ClusterServiceListResponse is the response payload of a cluster list request",
           "hasExtensions": false,
           "hasFields": true,
           "hasOneofs": false,
@@ -1432,7 +1432,7 @@
           "fields": [
             {
               "name": "clusters",
-              "description": "",
+              "description": "Clusters a list of clusters",
               "label": "repeated",
               "type": "Cluster",
               "longType": "Cluster",
@@ -1448,7 +1448,7 @@
           "name": "ClusterServiceUpdateRequest",
           "longName": "ClusterServiceUpdateRequest",
           "fullName": "api.v1.ClusterServiceUpdateRequest",
-          "description": "",
+          "description": "ClusterServiceUpdateRequest is the request payload for a cluster update request",
           "hasExtensions": false,
           "hasFields": true,
           "hasOneofs": true,
@@ -1456,7 +1456,7 @@
           "fields": [
             {
               "name": "uuid",
-              "description": "",
+              "description": "Uuid of the cluster",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -1476,7 +1476,7 @@
             },
             {
               "name": "project",
-              "description": "",
+              "description": "Project of the cluster",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -1500,7 +1500,7 @@
             },
             {
               "name": "kubernetes",
-              "description": "",
+              "description": "Kubernetes specification of the cluster",
               "label": "optional",
               "type": "KubernetesSpec",
               "longType": "KubernetesSpec",
@@ -1512,7 +1512,7 @@
             },
             {
               "name": "workers",
-              "description": "",
+              "description": "Worker specification of the cluster",
               "label": "repeated",
               "type": "WorkerUpdate",
               "longType": "WorkerUpdate",
@@ -1524,7 +1524,7 @@
             },
             {
               "name": "maintenance",
-              "description": "",
+              "description": "Maintenance specification of the cluster",
               "label": "optional",
               "type": "Maintenance",
               "longType": "Maintenance",
@@ -1540,7 +1540,7 @@
           "name": "ClusterServiceUpdateResponse",
           "longName": "ClusterServiceUpdateResponse",
           "fullName": "api.v1.ClusterServiceUpdateResponse",
-          "description": "",
+          "description": "ClusterServiceUpdateResponse is the response payload of a cluster update request",
           "hasExtensions": false,
           "hasFields": true,
           "hasOneofs": false,
@@ -1548,7 +1548,7 @@
           "fields": [
             {
               "name": "cluster",
-              "description": "",
+              "description": "Cluster is the cluster",
               "label": "",
               "type": "Cluster",
               "longType": "Cluster",
@@ -1564,7 +1564,7 @@
           "name": "ClusterServiceWatchStatusRequest",
           "longName": "ClusterServiceWatchStatusRequest",
           "fullName": "api.v1.ClusterServiceWatchStatusRequest",
-          "description": "",
+          "description": "ClusterServiceWatchStatusRequest is the request payload for a cluster watch status request",
           "hasExtensions": false,
           "hasFields": true,
           "hasOneofs": true,
@@ -1572,7 +1572,7 @@
           "fields": [
             {
               "name": "uuid",
-              "description": "",
+              "description": "Uuid of the cluster",
               "label": "optional",
               "type": "string",
               "longType": "string",
@@ -1592,7 +1592,7 @@
             },
             {
               "name": "project",
-              "description": "",
+              "description": "Project of the cluster",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -1620,7 +1620,7 @@
           "name": "ClusterServiceWatchStatusResponse",
           "longName": "ClusterServiceWatchStatusResponse",
           "fullName": "api.v1.ClusterServiceWatchStatusResponse",
-          "description": "",
+          "description": "ClusterServiceWatchStatusResponse is the response payload of a cluster watch status request",
           "hasExtensions": false,
           "hasFields": true,
           "hasOneofs": false,
@@ -1628,7 +1628,7 @@
           "fields": [
             {
               "name": "status",
-              "description": "",
+              "description": "Status the cluster status",
               "label": "",
               "type": "ClusterStatus",
               "longType": "ClusterStatus",
@@ -1644,7 +1644,7 @@
           "name": "ClusterStatus",
           "longName": "ClusterStatus",
           "fullName": "api.v1.ClusterStatus",
-          "description": "",
+          "description": "ClusterStatus",
           "hasExtensions": false,
           "hasFields": true,
           "hasOneofs": false,
@@ -1652,7 +1652,7 @@
           "fields": [
             {
               "name": "uuid",
-              "description": "",
+              "description": "Uuid of the cluster",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -1664,7 +1664,7 @@
             },
             {
               "name": "progress",
-              "description": "",
+              "description": "Progress of the cluster reconcilation",
               "label": "",
               "type": "uint32",
               "longType": "uint32",
@@ -1676,7 +1676,7 @@
             },
             {
               "name": "state",
-              "description": "",
+              "description": "State of the cluster",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -1688,7 +1688,7 @@
             },
             {
               "name": "type",
-              "description": "",
+              "description": "Type of the cluster status",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -1700,7 +1700,7 @@
             },
             {
               "name": "api_server_ready",
-              "description": "",
+              "description": "ApiServerReady represents the ready state of the kubernetes api server",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -1712,7 +1712,7 @@
             },
             {
               "name": "control_plane_ready",
-              "description": "",
+              "description": "ControlPlaneReady represents the ready state of the control plane components",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -1724,7 +1724,7 @@
             },
             {
               "name": "nodes_ready",
-              "description": "",
+              "description": "NodesReady represents the ready state of the worker nodes",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -1736,7 +1736,7 @@
             },
             {
               "name": "system_components_ready",
-              "description": "",
+              "description": "SystemComponentsReady represents the ready state of the system components",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -1748,7 +1748,7 @@
             },
             {
               "name": "last_errors",
-              "description": "",
+              "description": "LastErrors is a list of the last known errors occured during the cluster reconcilation",
               "label": "repeated",
               "type": "ClusterStatusLastError",
               "longType": "ClusterStatusLastError",
@@ -1764,7 +1764,7 @@
           "name": "ClusterStatusLastError",
           "longName": "ClusterStatusLastError",
           "fullName": "api.v1.ClusterStatusLastError",
-          "description": "",
+          "description": "ClusterStatusLastError is the last known cluster status error",
           "hasExtensions": false,
           "hasFields": true,
           "hasOneofs": true,
@@ -1772,7 +1772,7 @@
           "fields": [
             {
               "name": "description",
-              "description": "A human readable message indicating details about the last error.",
+              "description": "Description a human readable message indicating details about the last error.",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -1784,7 +1784,7 @@
             },
             {
               "name": "task_id",
-              "description": "ID of the task which caused this last error\n+optional",
+              "description": "TaskId ID of the task which caused this last error\n+optional",
               "label": "optional",
               "type": "string",
               "longType": "string",
@@ -1796,7 +1796,7 @@
             },
             {
               "name": "codes",
-              "description": "Well-defined error codes of the last error(s).\n+optional",
+              "description": "Codes well-defined error codes of the last error(s).\n+optional",
               "label": "repeated",
               "type": "string",
               "longType": "string",
@@ -1808,7 +1808,7 @@
             },
             {
               "name": "last_update_time",
-              "description": "Last time the error was reported\n+optional",
+              "description": "LastUpdateTime last time the error was reported\n+optional",
               "label": "",
               "type": "Timestamp",
               "longType": "google.protobuf.Timestamp",
@@ -1824,7 +1824,7 @@
           "name": "KubernetesSpec",
           "longName": "KubernetesSpec",
           "fullName": "api.v1.KubernetesSpec",
-          "description": "",
+          "description": "KubernetesSpec details of kubernetes this cluster",
           "hasExtensions": false,
           "hasFields": true,
           "hasOneofs": false,
@@ -1832,7 +1832,7 @@
           "fields": [
             {
               "name": "version",
-              "description": "",
+              "description": "Version of kubernetes",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -1860,7 +1860,7 @@
           "name": "Maintenance",
           "longName": "Maintenance",
           "fullName": "api.v1.Maintenance",
-          "description": "",
+          "description": "Maintenance defines when automatic actions should be scheduled on this cluster",
           "hasExtensions": false,
           "hasFields": true,
           "hasOneofs": true,
@@ -1868,7 +1868,7 @@
           "fields": [
             {
               "name": "kubernetes_autoupdate",
-              "description": "",
+              "description": "KubernetesAutoupdate if set to true, kubernetes patch version updates will be done in the maintenance window",
               "label": "optional",
               "type": "bool",
               "longType": "bool",
@@ -1880,7 +1880,7 @@
             },
             {
               "name": "machineimage_autoupdate",
-              "description": "",
+              "description": "MachineimageAutoupdate if set to true, machine images will be automatically update by rolling nodes in the maintenance window",
               "label": "optional",
               "type": "bool",
               "longType": "bool",
@@ -1892,7 +1892,7 @@
             },
             {
               "name": "time_window",
-              "description": "",
+              "description": "TimeWindow defines the start time and duration during which automatic actions will be performed",
               "label": "",
               "type": "MaintenanceTimeWindow",
               "longType": "MaintenanceTimeWindow",
@@ -1908,7 +1908,7 @@
           "name": "MaintenanceTimeWindow",
           "longName": "MaintenanceTimeWindow",
           "fullName": "api.v1.MaintenanceTimeWindow",
-          "description": "",
+          "description": "MaintenanceTimeWindow defines the start time and duration during which automatic actions will be performed",
           "hasExtensions": false,
           "hasFields": true,
           "hasOneofs": false,
@@ -1916,7 +1916,7 @@
           "fields": [
             {
               "name": "begin",
-              "description": "",
+              "description": "Begin of the time window",
               "label": "",
               "type": "Timestamp",
               "longType": "google.protobuf.Timestamp",
@@ -1936,7 +1936,7 @@
             },
             {
               "name": "duration",
-              "description": "",
+              "description": "Duration of the time window",
               "label": "",
               "type": "Duration",
               "longType": "google.protobuf.Duration",
@@ -1972,7 +1972,7 @@
           "name": "Worker",
           "longName": "Worker",
           "fullName": "api.v1.Worker",
-          "description": "",
+          "description": "Worker defines a set of worker nodes with identical properties",
           "hasExtensions": false,
           "hasFields": true,
           "hasOneofs": false,
@@ -1980,7 +1980,7 @@
           "fields": [
             {
               "name": "name",
-              "description": "",
+              "description": "Name of this worker group",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -2004,7 +2004,7 @@
             },
             {
               "name": "machine_type",
-              "description": "",
+              "description": "MachineType of machines which should be used for the worker nodes in this group",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -2028,7 +2028,7 @@
             },
             {
               "name": "minsize",
-              "description": "",
+              "description": "Minsize defines the minimum amount of machines present in this worker group",
               "label": "",
               "type": "uint32",
               "longType": "uint32",
@@ -2048,7 +2048,7 @@
             },
             {
               "name": "maxsize",
-              "description": "",
+              "description": "Maxsize defines the maximum amount of machines present in this worker group",
               "label": "",
               "type": "uint32",
               "longType": "uint32",
@@ -2068,7 +2068,7 @@
             },
             {
               "name": "maxsurge",
-              "description": "",
+              "description": "Maxsurge defines the maximum amount of machines which are spun up in this worker group during a rolling upgrade",
               "label": "",
               "type": "uint32",
               "longType": "uint32",
@@ -2088,7 +2088,7 @@
             },
             {
               "name": "maxunavailable",
-              "description": "",
+              "description": "Maxunavailable defines the maximum amount of not available machines in this worker group during a rolling upgrade",
               "label": "",
               "type": "uint32",
               "longType": "uint32",
@@ -2112,7 +2112,7 @@
           "name": "WorkerUpdate",
           "longName": "WorkerUpdate",
           "fullName": "api.v1.WorkerUpdate",
-          "description": "",
+          "description": "WorkerUpdate is used to update a Worker group",
           "hasExtensions": false,
           "hasFields": true,
           "hasOneofs": true,
@@ -2120,7 +2120,7 @@
           "fields": [
             {
               "name": "name",
-              "description": "",
+              "description": "Name of the worker group to update",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -2144,7 +2144,7 @@
             },
             {
               "name": "machine_type",
-              "description": "",
+              "description": "MachineType to change in this worker group",
               "label": "optional",
               "type": "string",
               "longType": "string",
@@ -2168,7 +2168,7 @@
             },
             {
               "name": "minsize",
-              "description": "",
+              "description": "Minsize defines the minimum amount of machines present in this worker group",
               "label": "optional",
               "type": "uint32",
               "longType": "uint32",
@@ -2188,7 +2188,7 @@
             },
             {
               "name": "maxsize",
-              "description": "",
+              "description": "Maxsize defines the maximum amount of machines present in this worker group",
               "label": "optional",
               "type": "uint32",
               "longType": "uint32",
@@ -2208,7 +2208,7 @@
             },
             {
               "name": "maxsurge",
-              "description": "",
+              "description": "Maxsurge defines the maximum amount of machines which are spun up in this worker group during a rolling upgrade",
               "label": "optional",
               "type": "uint32",
               "longType": "uint32",
@@ -2228,7 +2228,7 @@
             },
             {
               "name": "maxunavailable",
-              "description": "",
+              "description": "Maxunavailable defines the maximum amount of not available machines in this worker group during a rolling upgrade",
               "label": "optional",
               "type": "uint32",
               "longType": "uint32",
@@ -2254,11 +2254,11 @@
           "name": "ClusterService",
           "longName": "ClusterService",
           "fullName": "api.v1.ClusterService",
-          "description": "",
+          "description": "ClusterService serves kubernetes cluster related functions",
           "methods": [
             {
               "name": "Create",
-              "description": "",
+              "description": "Create a cluster",
               "requestType": "ClusterServiceCreateRequest",
               "requestLongType": "ClusterServiceCreateRequest",
               "requestFullType": "api.v1.ClusterServiceCreateRequest",
@@ -2270,7 +2270,7 @@
             },
             {
               "name": "Get",
-              "description": "",
+              "description": "Get a cluster",
               "requestType": "ClusterServiceGetRequest",
               "requestLongType": "ClusterServiceGetRequest",
               "requestFullType": "api.v1.ClusterServiceGetRequest",
@@ -2282,7 +2282,7 @@
             },
             {
               "name": "List",
-              "description": "",
+              "description": "List clusters",
               "requestType": "ClusterServiceListRequest",
               "requestLongType": "ClusterServiceListRequest",
               "requestFullType": "api.v1.ClusterServiceListRequest",
@@ -2294,7 +2294,7 @@
             },
             {
               "name": "WatchStatus",
-              "description": "",
+              "description": "WatchStatus of a cluster",
               "requestType": "ClusterServiceWatchStatusRequest",
               "requestLongType": "ClusterServiceWatchStatusRequest",
               "requestFullType": "api.v1.ClusterServiceWatchStatusRequest",
@@ -2306,7 +2306,7 @@
             },
             {
               "name": "Delete",
-              "description": "",
+              "description": "Delete a cluster",
               "requestType": "ClusterServiceDeleteRequest",
               "requestLongType": "ClusterServiceDeleteRequest",
               "requestFullType": "api.v1.ClusterServiceDeleteRequest",
@@ -2318,7 +2318,7 @@
             },
             {
               "name": "Update",
-              "description": "",
+              "description": "Update a cluster",
               "requestType": "ClusterServiceUpdateRequest",
               "requestLongType": "ClusterServiceUpdateRequest",
               "requestFullType": "api.v1.ClusterServiceUpdateRequest",
@@ -2330,7 +2330,7 @@
             },
             {
               "name": "GetCredentials",
-              "description": "",
+              "description": "GetCredentials of a cluster",
               "requestType": "ClusterServiceGetCredentialsRequest",
               "requestLongType": "ClusterServiceGetCredentialsRequest",
               "requestFullType": "api.v1.ClusterServiceGetCredentialsRequest",
@@ -9538,22 +9538,22 @@
           "name": "IPType",
           "longName": "IPType",
           "fullName": "api.v1.IPType",
-          "description": "",
+          "description": "IPType specifies different ip address types",
           "values": [
             {
               "name": "IP_TYPE_UNSPECIFIED",
               "number": "0",
-              "description": ""
+              "description": "IP_TYPE_UNSPECIFIED is not specified"
             },
             {
               "name": "IP_TYPE_EPHEMERAL",
               "number": "1",
-              "description": ""
+              "description": "IP_TYPE_EPHEMERAL defines a ephemeral ip address which is freed/deleted after usage"
             },
             {
               "name": "IP_TYPE_STATIC",
               "number": "2",
-              "description": ""
+              "description": "IP_TYPE_STATIC defines a static ip address which must be freed/deleted explicitly"
             }
           ]
         }
@@ -9564,7 +9564,7 @@
           "name": "IP",
           "longName": "IP",
           "fullName": "api.v1.IP",
-          "description": "Types",
+          "description": "IP is a ip address which can be used as loadbalancer addresses",
           "hasExtensions": false,
           "hasFields": true,
           "hasOneofs": false,
@@ -9572,7 +9572,7 @@
           "fields": [
             {
               "name": "uuid",
-              "description": "",
+              "description": "Uuid of this ip",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -9592,7 +9592,7 @@
             },
             {
               "name": "ip",
-              "description": "",
+              "description": "Ip is either ipv4 or ipv6 address",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -9612,7 +9612,7 @@
             },
             {
               "name": "name",
-              "description": "",
+              "description": "Name of this ip",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -9636,7 +9636,7 @@
             },
             {
               "name": "description",
-              "description": "",
+              "description": "Description of this ip",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -9656,7 +9656,7 @@
             },
             {
               "name": "network",
-              "description": "",
+              "description": "Network is the network this ip belongs to",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -9680,7 +9680,7 @@
             },
             {
               "name": "project",
-              "description": "",
+              "description": "Project where this ip address belongs to",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -9704,7 +9704,7 @@
             },
             {
               "name": "type",
-              "description": "",
+              "description": "Type of this ip",
               "label": "",
               "type": "IPType",
               "longType": "IPType",
@@ -9716,7 +9716,7 @@
             },
             {
               "name": "tags",
-              "description": "",
+              "description": "Tags on this ip",
               "label": "repeated",
               "type": "string",
               "longType": "string",
@@ -9736,7 +9736,7 @@
             },
             {
               "name": "created_at",
-              "description": "",
+              "description": "CreatedAt is the date when this ip was created",
               "label": "",
               "type": "Timestamp",
               "longType": "google.protobuf.Timestamp",
@@ -9748,7 +9748,7 @@
             },
             {
               "name": "updated_at",
-              "description": "",
+              "description": "UpdatedAt is the date when this ip was updated",
               "label": "",
               "type": "Timestamp",
               "longType": "google.protobuf.Timestamp",
@@ -9760,7 +9760,7 @@
             },
             {
               "name": "deleted_at",
-              "description": "",
+              "description": "DeletedAt is the date when this ip was deleted",
               "label": "",
               "type": "Timestamp",
               "longType": "google.protobuf.Timestamp",
@@ -9776,7 +9776,7 @@
           "name": "IPServiceAllocateRequest",
           "longName": "IPServiceAllocateRequest",
           "fullName": "api.v1.IPServiceAllocateRequest",
-          "description": "",
+          "description": "IPServiceGetRequest is the request payload for a ip get request",
           "hasExtensions": false,
           "hasFields": true,
           "hasOneofs": false,
@@ -9784,7 +9784,7 @@
           "fields": [
             {
               "name": "project",
-              "description": "",
+              "description": "Project of the ip",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -9808,7 +9808,7 @@
             },
             {
               "name": "name",
-              "description": "",
+              "description": "Name of the ip",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -9832,7 +9832,7 @@
             },
             {
               "name": "description",
-              "description": "",
+              "description": "Description of the ip",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -9852,7 +9852,7 @@
             },
             {
               "name": "tags",
-              "description": "",
+              "description": "Tags to put onto the ip",
               "label": "repeated",
               "type": "string",
               "longType": "string",
@@ -9872,7 +9872,7 @@
             },
             {
               "name": "static",
-              "description": "",
+              "description": "Static if set to true, this will be a Static ip",
               "label": "",
               "type": "bool",
               "longType": "bool",
@@ -9888,7 +9888,7 @@
           "name": "IPServiceAllocateResponse",
           "longName": "IPServiceAllocateResponse",
           "fullName": "api.v1.IPServiceAllocateResponse",
-          "description": "",
+          "description": "IPServiceAllocateResponse is the response payload for a ip allocate request",
           "hasExtensions": false,
           "hasFields": true,
           "hasOneofs": false,
@@ -9896,7 +9896,7 @@
           "fields": [
             {
               "name": "ip",
-              "description": "",
+              "description": "Ip the ip",
               "label": "",
               "type": "IP",
               "longType": "IP",
@@ -9912,7 +9912,7 @@
           "name": "IPServiceDeleteRequest",
           "longName": "IPServiceDeleteRequest",
           "fullName": "api.v1.IPServiceDeleteRequest",
-          "description": "",
+          "description": "IPServiceDeleteRequest is the request payload for a ip delete request",
           "hasExtensions": false,
           "hasFields": true,
           "hasOneofs": false,
@@ -9920,7 +9920,7 @@
           "fields": [
             {
               "name": "uuid",
-              "description": "",
+              "description": "Uuid of the ip to delete",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -9940,7 +9940,7 @@
             },
             {
               "name": "project",
-              "description": "",
+              "description": "Project of the ip",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -9968,7 +9968,7 @@
           "name": "IPServiceDeleteResponse",
           "longName": "IPServiceDeleteResponse",
           "fullName": "api.v1.IPServiceDeleteResponse",
-          "description": "",
+          "description": "IPServiceDeleteResponse is the response payload for a ip delete request",
           "hasExtensions": false,
           "hasFields": true,
           "hasOneofs": false,
@@ -9976,7 +9976,7 @@
           "fields": [
             {
               "name": "ip",
-              "description": "",
+              "description": "Ip the ip",
               "label": "",
               "type": "IP",
               "longType": "IP",
@@ -9992,7 +9992,7 @@
           "name": "IPServiceGetRequest",
           "longName": "IPServiceGetRequest",
           "fullName": "api.v1.IPServiceGetRequest",
-          "description": "Requests",
+          "description": "IPServiceGetRequest is the request payload for a ip get request",
           "hasExtensions": false,
           "hasFields": true,
           "hasOneofs": false,
@@ -10000,7 +10000,7 @@
           "fields": [
             {
               "name": "uuid",
-              "description": "",
+              "description": "Uuid of the ip to get",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -10020,7 +10020,7 @@
             },
             {
               "name": "project",
-              "description": "",
+              "description": "Project of the ip",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -10048,7 +10048,7 @@
           "name": "IPServiceGetResponse",
           "longName": "IPServiceGetResponse",
           "fullName": "api.v1.IPServiceGetResponse",
-          "description": "Responses",
+          "description": "IPServiceGetResponse is the response payload for a ip get request",
           "hasExtensions": false,
           "hasFields": true,
           "hasOneofs": false,
@@ -10056,7 +10056,7 @@
           "fields": [
             {
               "name": "ip",
-              "description": "",
+              "description": "Ip the ip",
               "label": "",
               "type": "IP",
               "longType": "IP",
@@ -10072,7 +10072,7 @@
           "name": "IPServiceListRequest",
           "longName": "IPServiceListRequest",
           "fullName": "api.v1.IPServiceListRequest",
-          "description": "",
+          "description": "IPServiceListRequest is the request payload for a ip list request",
           "hasExtensions": false,
           "hasFields": true,
           "hasOneofs": false,
@@ -10080,7 +10080,7 @@
           "fields": [
             {
               "name": "project",
-              "description": "",
+              "description": "Project of the ips to list",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -10108,7 +10108,7 @@
           "name": "IPServiceListResponse",
           "longName": "IPServiceListResponse",
           "fullName": "api.v1.IPServiceListResponse",
-          "description": "",
+          "description": "IPServiceListResponse is the response payload for a ip list request",
           "hasExtensions": false,
           "hasFields": true,
           "hasOneofs": false,
@@ -10116,32 +10116,8 @@
           "fields": [
             {
               "name": "ips",
-              "description": "",
+              "description": "Ips the ips",
               "label": "repeated",
-              "type": "IP",
-              "longType": "IP",
-              "fullType": "api.v1.IP",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            }
-          ]
-        },
-        {
-          "name": "IPServiceStaticResponse",
-          "longName": "IPServiceStaticResponse",
-          "fullName": "api.v1.IPServiceStaticResponse",
-          "description": "",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "ip",
-              "description": "",
-              "label": "",
               "type": "IP",
               "longType": "IP",
               "fullType": "api.v1.IP",
@@ -10156,7 +10132,7 @@
           "name": "IPServiceUpdateRequest",
           "longName": "IPServiceUpdateRequest",
           "fullName": "api.v1.IPServiceUpdateRequest",
-          "description": "",
+          "description": "IPServiceUpdateRequest is the request payload for a ip update request",
           "hasExtensions": false,
           "hasFields": true,
           "hasOneofs": false,
@@ -10164,7 +10140,7 @@
           "fields": [
             {
               "name": "project",
-              "description": "",
+              "description": "Project of the ip",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -10188,7 +10164,7 @@
             },
             {
               "name": "ip",
-              "description": "",
+              "description": "Ip the ip to update",
               "label": "",
               "type": "IP",
               "longType": "IP",
@@ -10204,7 +10180,7 @@
           "name": "IPServiceUpdateResponse",
           "longName": "IPServiceUpdateResponse",
           "fullName": "api.v1.IPServiceUpdateResponse",
-          "description": "",
+          "description": "IPServiceUpdateResponse is the response payload for a ip update request",
           "hasExtensions": false,
           "hasFields": true,
           "hasOneofs": false,
@@ -10212,7 +10188,7 @@
           "fields": [
             {
               "name": "ip",
-              "description": "",
+              "description": "Ip the ip",
               "label": "",
               "type": "IP",
               "longType": "IP",
@@ -10230,11 +10206,11 @@
           "name": "IPService",
           "longName": "IPService",
           "fullName": "api.v1.IPService",
-          "description": "",
+          "description": "IPService serves ip address related functions",
           "methods": [
             {
               "name": "Get",
-              "description": "",
+              "description": "Get a ip",
               "requestType": "IPServiceGetRequest",
               "requestLongType": "IPServiceGetRequest",
               "requestFullType": "api.v1.IPServiceGetRequest",
@@ -10246,7 +10222,7 @@
             },
             {
               "name": "Allocate",
-              "description": "",
+              "description": "Allocate a ip",
               "requestType": "IPServiceAllocateRequest",
               "requestLongType": "IPServiceAllocateRequest",
               "requestFullType": "api.v1.IPServiceAllocateRequest",
@@ -10258,7 +10234,7 @@
             },
             {
               "name": "Update",
-              "description": "",
+              "description": "Update a ip",
               "requestType": "IPServiceUpdateRequest",
               "requestLongType": "IPServiceUpdateRequest",
               "requestFullType": "api.v1.IPServiceUpdateRequest",
@@ -10270,7 +10246,7 @@
             },
             {
               "name": "List",
-              "description": "",
+              "description": "List all ips",
               "requestType": "IPServiceListRequest",
               "requestLongType": "IPServiceListRequest",
               "requestFullType": "api.v1.IPServiceListRequest",
@@ -10282,7 +10258,7 @@
             },
             {
               "name": "Delete",
-              "description": "",
+              "description": "Delete a ip",
               "requestType": "IPServiceDeleteRequest",
               "requestLongType": "IPServiceDeleteRequest",
               "requestFullType": "api.v1.IPServiceDeleteRequest",

@@ -57,10 +57,15 @@ var (
 
 // IPServiceClient is a client for the api.v1.IPService service.
 type IPServiceClient interface {
+	// Get a ip
 	Get(context.Context, *connect.Request[v1.IPServiceGetRequest]) (*connect.Response[v1.IPServiceGetResponse], error)
+	// Allocate a ip
 	Allocate(context.Context, *connect.Request[v1.IPServiceAllocateRequest]) (*connect.Response[v1.IPServiceAllocateResponse], error)
+	// Update a ip
 	Update(context.Context, *connect.Request[v1.IPServiceUpdateRequest]) (*connect.Response[v1.IPServiceUpdateResponse], error)
+	// List all ips
 	List(context.Context, *connect.Request[v1.IPServiceListRequest]) (*connect.Response[v1.IPServiceListResponse], error)
+	// Delete a ip
 	Delete(context.Context, *connect.Request[v1.IPServiceDeleteRequest]) (*connect.Response[v1.IPServiceDeleteResponse], error)
 }
 
@@ -143,10 +148,15 @@ func (c *iPServiceClient) Delete(ctx context.Context, req *connect.Request[v1.IP
 
 // IPServiceHandler is an implementation of the api.v1.IPService service.
 type IPServiceHandler interface {
+	// Get a ip
 	Get(context.Context, *connect.Request[v1.IPServiceGetRequest]) (*connect.Response[v1.IPServiceGetResponse], error)
+	// Allocate a ip
 	Allocate(context.Context, *connect.Request[v1.IPServiceAllocateRequest]) (*connect.Response[v1.IPServiceAllocateResponse], error)
+	// Update a ip
 	Update(context.Context, *connect.Request[v1.IPServiceUpdateRequest]) (*connect.Response[v1.IPServiceUpdateResponse], error)
+	// List all ips
 	List(context.Context, *connect.Request[v1.IPServiceListRequest]) (*connect.Response[v1.IPServiceListResponse], error)
+	// Delete a ip
 	Delete(context.Context, *connect.Request[v1.IPServiceDeleteRequest]) (*connect.Response[v1.IPServiceDeleteResponse], error)
 }
 
