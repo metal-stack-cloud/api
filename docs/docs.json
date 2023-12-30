@@ -6957,7 +6957,7 @@
           "name": "PaymentDetails",
           "longName": "PaymentDetails",
           "fullName": "api.v1.PaymentDetails",
-          "description": "",
+          "description": "PaymentDetails of a tenant",
           "hasExtensions": false,
           "hasFields": true,
           "hasOneofs": true,
@@ -6965,7 +6965,7 @@
           "fields": [
             {
               "name": "customer_id",
-              "description": "",
+              "description": "CustomerId at the payment processor",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -6977,7 +6977,7 @@
             },
             {
               "name": "payment_method_id",
-              "description": "",
+              "description": "PaymentMethodId of the tenant at the payment processor",
               "label": "optional",
               "type": "string",
               "longType": "string",
@@ -6989,7 +6989,7 @@
             },
             {
               "name": "subscription_id",
-              "description": "",
+              "description": "SubscriptionId at the payment processor",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -7001,7 +7001,7 @@
             },
             {
               "name": "coupons",
-              "description": "",
+              "description": "Coupons a list of coupons the tenant has",
               "label": "repeated",
               "type": "Coupon",
               "longType": "Coupon",
@@ -7013,7 +7013,7 @@
             },
             {
               "name": "vat",
-              "description": "",
+              "description": "Vat which applies to this tenant",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -7029,7 +7029,7 @@
           "name": "PaymentDetailsUpdate",
           "longName": "PaymentDetailsUpdate",
           "fullName": "api.v1.PaymentDetailsUpdate",
-          "description": "",
+          "description": "PaymentDetailsUpdate is used to update PaymentDetails",
           "hasExtensions": false,
           "hasFields": true,
           "hasOneofs": true,
@@ -7037,7 +7037,7 @@
           "fields": [
             {
               "name": "customer_id",
-              "description": "",
+              "description": "CustomerId at the payment processor",
               "label": "optional",
               "type": "string",
               "longType": "string",
@@ -7049,7 +7049,7 @@
             },
             {
               "name": "payment_method_id",
-              "description": "",
+              "description": "PaymentMethodId of the tenant at the payment processor",
               "label": "optional",
               "type": "string",
               "longType": "string",
@@ -7061,7 +7061,7 @@
             },
             {
               "name": "subscription_id",
-              "description": "",
+              "description": "SubscriptionId at the payment processor",
               "label": "optional",
               "type": "string",
               "longType": "string",
@@ -7073,7 +7073,7 @@
             },
             {
               "name": "vat",
-              "description": "",
+              "description": "Vat which applies to this tenant",
               "label": "optional",
               "type": "string",
               "longType": "string",
@@ -7089,7 +7089,7 @@
           "name": "Tenant",
           "longName": "Tenant",
           "fullName": "api.v1.Tenant",
-          "description": "Tenant",
+          "description": "Tenant is a customer of the platform",
           "hasExtensions": false,
           "hasFields": true,
           "hasOneofs": false,
@@ -7097,7 +7097,7 @@
           "fields": [
             {
               "name": "login",
-              "description": "the login at the provider",
+              "description": "Login of the tenant",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -7109,7 +7109,7 @@
             },
             {
               "name": "name",
-              "description": "",
+              "description": "Name if the tenant",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -7121,7 +7121,7 @@
             },
             {
               "name": "email",
-              "description": "",
+              "description": "Email of the tenant",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -7133,7 +7133,7 @@
             },
             {
               "name": "avatar_url",
-              "description": "",
+              "description": "AvatarUrl of the tenant",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -7145,7 +7145,7 @@
             },
             {
               "name": "oauth_provider",
-              "description": "",
+              "description": "OauthProvider of the tenant",
               "label": "",
               "type": "OAuthProvider",
               "longType": "OAuthProvider",
@@ -7157,7 +7157,7 @@
             },
             {
               "name": "payment_details",
-              "description": "",
+              "description": "PaymentDetails the tenant provides",
               "label": "",
               "type": "PaymentDetails",
               "longType": "PaymentDetails",
@@ -7169,7 +7169,7 @@
             },
             {
               "name": "admitted",
-              "description": "",
+              "description": "Admitted indicates if this tenant is allowed to use the platform",
               "label": "",
               "type": "bool",
               "longType": "bool",
@@ -7181,7 +7181,7 @@
             },
             {
               "name": "phone_number",
-              "description": "",
+              "description": "PhoneNumber of the tenant",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -7193,7 +7193,7 @@
             },
             {
               "name": "terms_and_conditions",
-              "description": "",
+              "description": "TermsAndConditions the tenant accepted",
               "label": "",
               "type": "TermsAndConditions",
               "longType": "TermsAndConditions",
@@ -7205,7 +7205,7 @@
             },
             {
               "name": "email_consent",
-              "description": "",
+              "description": "EmailConsent the tenant made",
               "label": "",
               "type": "bool",
               "longType": "bool",
@@ -7217,7 +7217,7 @@
             },
             {
               "name": "created_at",
-              "description": "",
+              "description": "CreatedAt the date when this tenant was created",
               "label": "",
               "type": "Timestamp",
               "longType": "google.protobuf.Timestamp",
@@ -7229,7 +7229,7 @@
             },
             {
               "name": "updated_at",
-              "description": "",
+              "description": "UpdatedAt the date when this tenant was updated",
               "label": "",
               "type": "Timestamp",
               "longType": "google.protobuf.Timestamp",
@@ -7241,7 +7241,7 @@
             },
             {
               "name": "deleted_at",
-              "description": "",
+              "description": "DeletedAt the date when this tenant was deleted",
               "label": "",
               "type": "Timestamp",
               "longType": "google.protobuf.Timestamp",
@@ -7257,7 +7257,7 @@
           "name": "TenantServiceCreateOrUpdateRequest",
           "longName": "TenantServiceCreateOrUpdateRequest",
           "fullName": "api.v1.TenantServiceCreateOrUpdateRequest",
-          "description": "",
+          "description": "TenantServiceCreateOrUpdateRequest is the request payload of the tenant create or update request",
           "hasExtensions": false,
           "hasFields": true,
           "hasOneofs": false,
@@ -7265,7 +7265,7 @@
           "fields": [
             {
               "name": "tenant",
-              "description": "",
+              "description": "Tenant the tenant to create or update",
               "label": "",
               "type": "Tenant",
               "longType": "Tenant",
@@ -7281,7 +7281,7 @@
           "name": "TenantServiceCreateOrUpdateResponse",
           "longName": "TenantServiceCreateOrUpdateResponse",
           "fullName": "api.v1.TenantServiceCreateOrUpdateResponse",
-          "description": "",
+          "description": "TenantServiceCreateOrUpdateResponse is the response payload of the tenant create or update request",
           "hasExtensions": false,
           "hasFields": true,
           "hasOneofs": false,
@@ -7289,7 +7289,7 @@
           "fields": [
             {
               "name": "tenant",
-              "description": "",
+              "description": "Tenant is the tenant",
               "label": "",
               "type": "Tenant",
               "longType": "Tenant",
@@ -7305,7 +7305,7 @@
           "name": "TenantServiceCreateRequest",
           "longName": "TenantServiceCreateRequest",
           "fullName": "api.v1.TenantServiceCreateRequest",
-          "description": "",
+          "description": "TenantServiceCreateRequest is the request payload of the tenant create request",
           "hasExtensions": false,
           "hasFields": true,
           "hasOneofs": false,
@@ -7313,7 +7313,7 @@
           "fields": [
             {
               "name": "tenant",
-              "description": "",
+              "description": "Tenant the tenant to create",
               "label": "",
               "type": "Tenant",
               "longType": "Tenant",
@@ -7329,7 +7329,7 @@
           "name": "TenantServiceCreateResponse",
           "longName": "TenantServiceCreateResponse",
           "fullName": "api.v1.TenantServiceCreateResponse",
-          "description": "",
+          "description": "TenantServiceCreateResponse is the response payload of the tenant create request",
           "hasExtensions": false,
           "hasFields": true,
           "hasOneofs": false,
@@ -7337,7 +7337,7 @@
           "fields": [
             {
               "name": "tenant",
-              "description": "",
+              "description": "Tenant is the tenant",
               "label": "",
               "type": "Tenant",
               "longType": "Tenant",
@@ -7353,7 +7353,7 @@
           "name": "TenantServiceDeleteRequest",
           "longName": "TenantServiceDeleteRequest",
           "fullName": "api.v1.TenantServiceDeleteRequest",
-          "description": "",
+          "description": "TenantServiceDeleteRequest is the request payload of the tenant delete request",
           "hasExtensions": false,
           "hasFields": true,
           "hasOneofs": false,
@@ -7361,7 +7361,7 @@
           "fields": [
             {
               "name": "login",
-              "description": "",
+              "description": "Login of the tenant",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -7377,7 +7377,7 @@
           "name": "TenantServiceDeleteResponse",
           "longName": "TenantServiceDeleteResponse",
           "fullName": "api.v1.TenantServiceDeleteResponse",
-          "description": "",
+          "description": "TenantServiceDeleteResponse is the response payload of the tenant delete request",
           "hasExtensions": false,
           "hasFields": true,
           "hasOneofs": false,
@@ -7385,7 +7385,7 @@
           "fields": [
             {
               "name": "tenant",
-              "description": "",
+              "description": "Tenant is the tenant",
               "label": "",
               "type": "Tenant",
               "longType": "Tenant",
@@ -7401,7 +7401,7 @@
           "name": "TenantServiceGetRequest",
           "longName": "TenantServiceGetRequest",
           "fullName": "api.v1.TenantServiceGetRequest",
-          "description": "",
+          "description": "TenantServiceGetRequest is the request payload of the tenant get request",
           "hasExtensions": false,
           "hasFields": true,
           "hasOneofs": false,
@@ -7409,7 +7409,7 @@
           "fields": [
             {
               "name": "login",
-              "description": "",
+              "description": "Login of the tenant",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -7425,7 +7425,7 @@
           "name": "TenantServiceGetResponse",
           "longName": "TenantServiceGetResponse",
           "fullName": "api.v1.TenantServiceGetResponse",
-          "description": "Responses",
+          "description": "TenantServiceGetResponse is the response payload of the tenant get request",
           "hasExtensions": false,
           "hasFields": true,
           "hasOneofs": false,
@@ -7433,7 +7433,7 @@
           "fields": [
             {
               "name": "tenant",
-              "description": "",
+              "description": "Tenant is the tenant",
               "label": "",
               "type": "Tenant",
               "longType": "Tenant",
@@ -7449,7 +7449,7 @@
           "name": "TenantServiceUpdateRequest",
           "longName": "TenantServiceUpdateRequest",
           "fullName": "api.v1.TenantServiceUpdateRequest",
-          "description": "",
+          "description": "TenantServiceUpdateRequest is the request payload of the tenant update request",
           "hasExtensions": false,
           "hasFields": true,
           "hasOneofs": true,
@@ -7457,7 +7457,7 @@
           "fields": [
             {
               "name": "login",
-              "description": "the login at the provider",
+              "description": "Login of the tenant",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -7469,7 +7469,7 @@
             },
             {
               "name": "name",
-              "description": "",
+              "description": "Name of the tenant",
               "label": "optional",
               "type": "string",
               "longType": "string",
@@ -7481,7 +7481,7 @@
             },
             {
               "name": "email",
-              "description": "",
+              "description": "Email of the tenant",
               "label": "optional",
               "type": "string",
               "longType": "string",
@@ -7493,7 +7493,7 @@
             },
             {
               "name": "avatar_url",
-              "description": "",
+              "description": "AvatarUrl of the tenant",
               "label": "optional",
               "type": "string",
               "longType": "string",
@@ -7505,7 +7505,7 @@
             },
             {
               "name": "payment_details",
-              "description": "",
+              "description": "PaymentDetails of the tenant",
               "label": "optional",
               "type": "PaymentDetailsUpdate",
               "longType": "PaymentDetailsUpdate",
@@ -7517,7 +7517,7 @@
             },
             {
               "name": "terms_and_conditions",
-              "description": "",
+              "description": "TermsAndConditions of the tenant",
               "label": "optional",
               "type": "TermsAndConditionsUpdate",
               "longType": "TermsAndConditionsUpdate",
@@ -7533,7 +7533,7 @@
           "name": "TenantServiceUpdateResponse",
           "longName": "TenantServiceUpdateResponse",
           "fullName": "api.v1.TenantServiceUpdateResponse",
-          "description": "",
+          "description": "TenantServiceUpdateResponse is the response payload of the tenant update request",
           "hasExtensions": false,
           "hasFields": true,
           "hasOneofs": false,
@@ -7541,7 +7541,7 @@
           "fields": [
             {
               "name": "tenant",
-              "description": "",
+              "description": "Tenant is the tenant",
               "label": "",
               "type": "Tenant",
               "longType": "Tenant",
@@ -7557,7 +7557,7 @@
           "name": "TermsAndConditions",
           "longName": "TermsAndConditions",
           "fullName": "api.v1.TermsAndConditions",
-          "description": "",
+          "description": "TermsAndConditions the tenant accepted",
           "hasExtensions": false,
           "hasFields": true,
           "hasOneofs": false,
@@ -7565,7 +7565,7 @@
           "fields": [
             {
               "name": "accepted",
-              "description": "",
+              "description": "Accepted indicates if the tenant accepted the terms and conditions",
               "label": "",
               "type": "bool",
               "longType": "bool",
@@ -7577,7 +7577,7 @@
             },
             {
               "name": "when",
-              "description": "",
+              "description": "When is the date when the tenant accepted the terms and conditions",
               "label": "",
               "type": "Timestamp",
               "longType": "google.protobuf.Timestamp",
@@ -7593,7 +7593,7 @@
           "name": "TermsAndConditionsUpdate",
           "longName": "TermsAndConditionsUpdate",
           "fullName": "api.v1.TermsAndConditionsUpdate",
-          "description": "",
+          "description": "TermsAndConditionsUpdate",
           "hasExtensions": false,
           "hasFields": true,
           "hasOneofs": true,
@@ -7601,7 +7601,7 @@
           "fields": [
             {
               "name": "accepted",
-              "description": "",
+              "description": "Accepted indicates if the tenant accepted the terms and conditions",
               "label": "optional",
               "type": "bool",
               "longType": "bool",
@@ -7613,7 +7613,7 @@
             },
             {
               "name": "when",
-              "description": "",
+              "description": "When is the date when the tenant accepted the terms and conditions",
               "label": "optional",
               "type": "Timestamp",
               "longType": "google.protobuf.Timestamp",
@@ -7631,11 +7631,11 @@
           "name": "TenantService",
           "longName": "TenantService",
           "fullName": "api.v1.TenantService",
-          "description": "",
+          "description": "TenantService serves tenant related functions",
           "methods": [
             {
               "name": "Create",
-              "description": "",
+              "description": "Create a tenant",
               "requestType": "TenantServiceCreateRequest",
               "requestLongType": "TenantServiceCreateRequest",
               "requestFullType": "api.v1.TenantServiceCreateRequest",
@@ -7659,7 +7659,7 @@
             },
             {
               "name": "Get",
-              "description": "",
+              "description": "Get a tenant",
               "requestType": "TenantServiceGetRequest",
               "requestLongType": "TenantServiceGetRequest",
               "requestFullType": "api.v1.TenantServiceGetRequest",
@@ -7671,7 +7671,7 @@
             },
             {
               "name": "Update",
-              "description": "",
+              "description": "Update a tenant",
               "requestType": "TenantServiceUpdateRequest",
               "requestLongType": "TenantServiceUpdateRequest",
               "requestFullType": "api.v1.TenantServiceUpdateRequest",
@@ -7683,7 +7683,7 @@
             },
             {
               "name": "Delete",
-              "description": "",
+              "description": "Delete a tenant",
               "requestType": "TenantServiceDeleteRequest",
               "requestLongType": "TenantServiceDeleteRequest",
               "requestFullType": "api.v1.TenantServiceDeleteRequest",

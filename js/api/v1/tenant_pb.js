@@ -9,7 +9,7 @@ const protobuf_1 = require("@bufbuild/protobuf");
 const common_pb_js_1 = require("./common_pb.js");
 const payment_pb_js_1 = require("./payment_pb.js");
 /**
- * Tenant
+ * Tenant is a customer of the platform
  *
  * @generated from message api.v1.Tenant
  */
@@ -17,36 +17,50 @@ class Tenant extends protobuf_1.Message {
     constructor(data) {
         super();
         /**
-         * the login at the provider
+         * Login of the tenant
          *
          * @generated from field: string login = 1;
          */
         this.login = "";
         /**
+         * Name if the tenant
+         *
          * @generated from field: string name = 2;
          */
         this.name = "";
         /**
+         * Email of the tenant
+         *
          * @generated from field: string email = 3;
          */
         this.email = "";
         /**
+         * AvatarUrl of the tenant
+         *
          * @generated from field: string avatar_url = 5;
          */
         this.avatarUrl = "";
         /**
+         * OauthProvider of the tenant
+         *
          * @generated from field: api.v1.OAuthProvider oauth_provider = 6;
          */
         this.oauthProvider = common_pb_js_1.OAuthProvider.UNSPECIFIED;
         /**
+         * Admitted indicates if this tenant is allowed to use the platform
+         *
          * @generated from field: bool admitted = 9;
          */
         this.admitted = false;
         /**
+         * PhoneNumber of the tenant
+         *
          * @generated from field: string phone_number = 10;
          */
         this.phoneNumber = "";
         /**
+         * EmailConsent the tenant made
+         *
          * @generated from field: bool email_consent = 12;
          */
         this.emailConsent = false;
@@ -84,24 +98,34 @@ Tenant.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 22, name: "deleted_at", kind: "message", T: protobuf_1.Timestamp },
 ]);
 /**
+ * PaymentDetails of a tenant
+ *
  * @generated from message api.v1.PaymentDetails
  */
 class PaymentDetails extends protobuf_1.Message {
     constructor(data) {
         super();
         /**
+         * CustomerId at the payment processor
+         *
          * @generated from field: string customer_id = 1;
          */
         this.customerId = "";
         /**
+         * SubscriptionId at the payment processor
+         *
          * @generated from field: string subscription_id = 3;
          */
         this.subscriptionId = "";
         /**
+         * Coupons a list of coupons the tenant has
+         *
          * @generated from field: repeated api.v1.Coupon coupons = 4;
          */
         this.coupons = [];
         /**
+         * Vat which applies to this tenant
+         *
          * @generated from field: string vat = 5;
          */
         this.vat = "";
@@ -131,6 +155,8 @@ PaymentDetails.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 5, name: "vat", kind: "scalar", T: 9 /* ScalarType.STRING */ },
 ]);
 /**
+ * PaymentDetailsUpdate is used to update PaymentDetails
+ *
  * @generated from message api.v1.PaymentDetailsUpdate
  */
 class PaymentDetailsUpdate extends protobuf_1.Message {
@@ -161,12 +187,16 @@ PaymentDetailsUpdate.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 4, name: "vat", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
 ]);
 /**
+ * TermsAndConditions the tenant accepted
+ *
  * @generated from message api.v1.TermsAndConditions
  */
 class TermsAndConditions extends protobuf_1.Message {
     constructor(data) {
         super();
         /**
+         * Accepted indicates if the tenant accepted the terms and conditions
+         *
          * @generated from field: bool accepted = 1;
          */
         this.accepted = false;
@@ -193,6 +223,8 @@ TermsAndConditions.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 2, name: "when", kind: "message", T: protobuf_1.Timestamp },
 ]);
 /**
+ * TermsAndConditionsUpdate
+ *
  * @generated from message api.v1.TermsAndConditionsUpdate
  */
 class TermsAndConditionsUpdate extends protobuf_1.Message {
@@ -221,12 +253,16 @@ TermsAndConditionsUpdate.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 2, name: "when", kind: "message", T: protobuf_1.Timestamp, opt: true },
 ]);
 /**
+ * TenantServiceGetRequest is the request payload of the tenant get request
+ *
  * @generated from message api.v1.TenantServiceGetRequest
  */
 class TenantServiceGetRequest extends protobuf_1.Message {
     constructor(data) {
         super();
         /**
+         * Login of the tenant
+         *
          * @generated from field: string login = 1;
          */
         this.login = "";
@@ -252,6 +288,8 @@ TenantServiceGetRequest.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 1, name: "login", kind: "scalar", T: 9 /* ScalarType.STRING */ },
 ]);
 /**
+ * TenantServiceCreateRequest is the request payload of the tenant create request
+ *
  * @generated from message api.v1.TenantServiceCreateRequest
  */
 class TenantServiceCreateRequest extends protobuf_1.Message {
@@ -279,6 +317,8 @@ TenantServiceCreateRequest.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 1, name: "tenant", kind: "message", T: Tenant },
 ]);
 /**
+ * TenantServiceCreateOrUpdateRequest is the request payload of the tenant create or update request
+ *
  * @generated from message api.v1.TenantServiceCreateOrUpdateRequest
  */
 class TenantServiceCreateOrUpdateRequest extends protobuf_1.Message {
@@ -306,13 +346,15 @@ TenantServiceCreateOrUpdateRequest.fields = protobuf_1.proto3.util.newFieldList(
     { no: 1, name: "tenant", kind: "message", T: Tenant },
 ]);
 /**
+ * TenantServiceUpdateRequest is the request payload of the tenant update request
+ *
  * @generated from message api.v1.TenantServiceUpdateRequest
  */
 class TenantServiceUpdateRequest extends protobuf_1.Message {
     constructor(data) {
         super();
         /**
-         * the login at the provider
+         * Login of the tenant
          *
          * @generated from field: string login = 1;
          */
@@ -344,12 +386,16 @@ TenantServiceUpdateRequest.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 9, name: "terms_and_conditions", kind: "message", T: TermsAndConditionsUpdate, opt: true },
 ]);
 /**
+ * TenantServiceDeleteRequest is the request payload of the tenant delete request
+ *
  * @generated from message api.v1.TenantServiceDeleteRequest
  */
 class TenantServiceDeleteRequest extends protobuf_1.Message {
     constructor(data) {
         super();
         /**
+         * Login of the tenant
+         *
          * @generated from field: string login = 1;
          */
         this.login = "";
@@ -375,7 +421,7 @@ TenantServiceDeleteRequest.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 1, name: "login", kind: "scalar", T: 9 /* ScalarType.STRING */ },
 ]);
 /**
- * Responses
+ * TenantServiceGetResponse is the response payload of the tenant get request
  *
  * @generated from message api.v1.TenantServiceGetResponse
  */
@@ -404,6 +450,8 @@ TenantServiceGetResponse.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 1, name: "tenant", kind: "message", T: Tenant },
 ]);
 /**
+ * TenantServiceCreateResponse is the response payload of the tenant create request
+ *
  * @generated from message api.v1.TenantServiceCreateResponse
  */
 class TenantServiceCreateResponse extends protobuf_1.Message {
@@ -431,6 +479,8 @@ TenantServiceCreateResponse.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 1, name: "tenant", kind: "message", T: Tenant },
 ]);
 /**
+ * TenantServiceCreateOrUpdateResponse is the response payload of the tenant create or update request
+ *
  * @generated from message api.v1.TenantServiceCreateOrUpdateResponse
  */
 class TenantServiceCreateOrUpdateResponse extends protobuf_1.Message {
@@ -458,6 +508,8 @@ TenantServiceCreateOrUpdateResponse.fields = protobuf_1.proto3.util.newFieldList
     { no: 1, name: "tenant", kind: "message", T: Tenant },
 ]);
 /**
+ * TenantServiceUpdateResponse is the response payload of the tenant update request
+ *
  * @generated from message api.v1.TenantServiceUpdateResponse
  */
 class TenantServiceUpdateResponse extends protobuf_1.Message {
@@ -485,6 +537,8 @@ TenantServiceUpdateResponse.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 1, name: "tenant", kind: "message", T: Tenant },
 ]);
 /**
+ * TenantServiceDeleteResponse is the response payload of the tenant delete request
+ *
  * @generated from message api.v1.TenantServiceDeleteResponse
  */
 class TenantServiceDeleteResponse extends protobuf_1.Message {

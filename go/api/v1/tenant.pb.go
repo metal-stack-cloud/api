@@ -21,26 +21,38 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-// Tenant
+// Tenant is a customer of the platform
 type Tenant struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// the login at the provider
-	Login              string                 `protobuf:"bytes,1,opt,name=login,proto3" json:"login,omitempty"`
-	Name               string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
-	Email              string                 `protobuf:"bytes,3,opt,name=email,proto3" json:"email,omitempty"`
-	AvatarUrl          string                 `protobuf:"bytes,5,opt,name=avatar_url,json=avatarUrl,proto3" json:"avatar_url,omitempty"`
-	OauthProvider      OAuthProvider          `protobuf:"varint,6,opt,name=oauth_provider,json=oauthProvider,proto3,enum=api.v1.OAuthProvider" json:"oauth_provider,omitempty"`
-	PaymentDetails     *PaymentDetails        `protobuf:"bytes,8,opt,name=payment_details,json=paymentDetails,proto3" json:"payment_details,omitempty"`
-	Admitted           bool                   `protobuf:"varint,9,opt,name=admitted,proto3" json:"admitted,omitempty"`
-	PhoneNumber        string                 `protobuf:"bytes,10,opt,name=phone_number,json=phoneNumber,proto3" json:"phone_number,omitempty"`
-	TermsAndConditions *TermsAndConditions    `protobuf:"bytes,11,opt,name=terms_and_conditions,json=termsAndConditions,proto3" json:"terms_and_conditions,omitempty"`
-	EmailConsent       bool                   `protobuf:"varint,12,opt,name=email_consent,json=emailConsent,proto3" json:"email_consent,omitempty"`
-	CreatedAt          *timestamppb.Timestamp `protobuf:"bytes,20,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	UpdatedAt          *timestamppb.Timestamp `protobuf:"bytes,21,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
-	DeletedAt          *timestamppb.Timestamp `protobuf:"bytes,22,opt,name=deleted_at,json=deletedAt,proto3" json:"deleted_at,omitempty"`
+	// Login of the tenant
+	Login string `protobuf:"bytes,1,opt,name=login,proto3" json:"login,omitempty"`
+	// Name if the tenant
+	Name string `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
+	// Email of the tenant
+	Email string `protobuf:"bytes,3,opt,name=email,proto3" json:"email,omitempty"`
+	// AvatarUrl of the tenant
+	AvatarUrl string `protobuf:"bytes,5,opt,name=avatar_url,json=avatarUrl,proto3" json:"avatar_url,omitempty"`
+	// OauthProvider of the tenant
+	OauthProvider OAuthProvider `protobuf:"varint,6,opt,name=oauth_provider,json=oauthProvider,proto3,enum=api.v1.OAuthProvider" json:"oauth_provider,omitempty"`
+	// PaymentDetails the tenant provides
+	PaymentDetails *PaymentDetails `protobuf:"bytes,8,opt,name=payment_details,json=paymentDetails,proto3" json:"payment_details,omitempty"`
+	// Admitted indicates if this tenant is allowed to use the platform
+	Admitted bool `protobuf:"varint,9,opt,name=admitted,proto3" json:"admitted,omitempty"`
+	// PhoneNumber of the tenant
+	PhoneNumber string `protobuf:"bytes,10,opt,name=phone_number,json=phoneNumber,proto3" json:"phone_number,omitempty"`
+	// TermsAndConditions the tenant accepted
+	TermsAndConditions *TermsAndConditions `protobuf:"bytes,11,opt,name=terms_and_conditions,json=termsAndConditions,proto3" json:"terms_and_conditions,omitempty"`
+	// EmailConsent the tenant made
+	EmailConsent bool `protobuf:"varint,12,opt,name=email_consent,json=emailConsent,proto3" json:"email_consent,omitempty"`
+	// CreatedAt the date when this tenant was created
+	CreatedAt *timestamppb.Timestamp `protobuf:"bytes,20,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
+	// UpdatedAt the date when this tenant was updated
+	UpdatedAt *timestamppb.Timestamp `protobuf:"bytes,21,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	// DeletedAt the date when this tenant was deleted
+	DeletedAt *timestamppb.Timestamp `protobuf:"bytes,22,opt,name=deleted_at,json=deletedAt,proto3" json:"deleted_at,omitempty"`
 }
 
 func (x *Tenant) Reset() {
@@ -166,16 +178,22 @@ func (x *Tenant) GetDeletedAt() *timestamppb.Timestamp {
 	return nil
 }
 
+// PaymentDetails of a tenant
 type PaymentDetails struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	CustomerId      string    `protobuf:"bytes,1,opt,name=customer_id,json=customerId,proto3" json:"customer_id,omitempty"`
-	PaymentMethodId *string   `protobuf:"bytes,2,opt,name=payment_method_id,json=paymentMethodId,proto3,oneof" json:"payment_method_id,omitempty"`
-	SubscriptionId  string    `protobuf:"bytes,3,opt,name=subscription_id,json=subscriptionId,proto3" json:"subscription_id,omitempty"`
-	Coupons         []*Coupon `protobuf:"bytes,4,rep,name=coupons,proto3" json:"coupons,omitempty"`
-	Vat             string    `protobuf:"bytes,5,opt,name=vat,proto3" json:"vat,omitempty"`
+	// CustomerId at the payment processor
+	CustomerId string `protobuf:"bytes,1,opt,name=customer_id,json=customerId,proto3" json:"customer_id,omitempty"`
+	// PaymentMethodId of the tenant at the payment processor
+	PaymentMethodId *string `protobuf:"bytes,2,opt,name=payment_method_id,json=paymentMethodId,proto3,oneof" json:"payment_method_id,omitempty"`
+	// SubscriptionId at the payment processor
+	SubscriptionId string `protobuf:"bytes,3,opt,name=subscription_id,json=subscriptionId,proto3" json:"subscription_id,omitempty"`
+	// Coupons a list of coupons the tenant has
+	Coupons []*Coupon `protobuf:"bytes,4,rep,name=coupons,proto3" json:"coupons,omitempty"`
+	// Vat which applies to this tenant
+	Vat string `protobuf:"bytes,5,opt,name=vat,proto3" json:"vat,omitempty"`
 }
 
 func (x *PaymentDetails) Reset() {
@@ -245,15 +263,20 @@ func (x *PaymentDetails) GetVat() string {
 	return ""
 }
 
+// PaymentDetailsUpdate is used to update PaymentDetails
 type PaymentDetailsUpdate struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	CustomerId      *string `protobuf:"bytes,1,opt,name=customer_id,json=customerId,proto3,oneof" json:"customer_id,omitempty"`
+	// CustomerId at the payment processor
+	CustomerId *string `protobuf:"bytes,1,opt,name=customer_id,json=customerId,proto3,oneof" json:"customer_id,omitempty"`
+	// PaymentMethodId of the tenant at the payment processor
 	PaymentMethodId *string `protobuf:"bytes,2,opt,name=payment_method_id,json=paymentMethodId,proto3,oneof" json:"payment_method_id,omitempty"`
-	SubscriptionId  *string `protobuf:"bytes,3,opt,name=subscription_id,json=subscriptionId,proto3,oneof" json:"subscription_id,omitempty"`
-	Vat             *string `protobuf:"bytes,4,opt,name=vat,proto3,oneof" json:"vat,omitempty"`
+	// SubscriptionId at the payment processor
+	SubscriptionId *string `protobuf:"bytes,3,opt,name=subscription_id,json=subscriptionId,proto3,oneof" json:"subscription_id,omitempty"`
+	// Vat which applies to this tenant
+	Vat *string `protobuf:"bytes,4,opt,name=vat,proto3,oneof" json:"vat,omitempty"`
 }
 
 func (x *PaymentDetailsUpdate) Reset() {
@@ -316,13 +339,16 @@ func (x *PaymentDetailsUpdate) GetVat() string {
 	return ""
 }
 
+// TermsAndConditions the tenant accepted
 type TermsAndConditions struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Accepted bool                   `protobuf:"varint,1,opt,name=accepted,proto3" json:"accepted,omitempty"`
-	When     *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=when,proto3" json:"when,omitempty"`
+	// Accepted indicates if the tenant accepted the terms and conditions
+	Accepted bool `protobuf:"varint,1,opt,name=accepted,proto3" json:"accepted,omitempty"`
+	// When is the date when the tenant accepted the terms and conditions
+	When *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=when,proto3" json:"when,omitempty"`
 }
 
 func (x *TermsAndConditions) Reset() {
@@ -371,13 +397,16 @@ func (x *TermsAndConditions) GetWhen() *timestamppb.Timestamp {
 	return nil
 }
 
+// TermsAndConditionsUpdate
 type TermsAndConditionsUpdate struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Accepted *bool                  `protobuf:"varint,1,opt,name=accepted,proto3,oneof" json:"accepted,omitempty"`
-	When     *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=when,proto3,oneof" json:"when,omitempty"`
+	// Accepted indicates if the tenant accepted the terms and conditions
+	Accepted *bool `protobuf:"varint,1,opt,name=accepted,proto3,oneof" json:"accepted,omitempty"`
+	// When is the date when the tenant accepted the terms and conditions
+	When *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=when,proto3,oneof" json:"when,omitempty"`
 }
 
 func (x *TermsAndConditionsUpdate) Reset() {
@@ -426,11 +455,13 @@ func (x *TermsAndConditionsUpdate) GetWhen() *timestamppb.Timestamp {
 	return nil
 }
 
+// TenantServiceGetRequest is the request payload of the tenant get request
 type TenantServiceGetRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
+	// Login of the tenant
 	Login string `protobuf:"bytes,1,opt,name=login,proto3" json:"login,omitempty"`
 }
 
@@ -473,11 +504,13 @@ func (x *TenantServiceGetRequest) GetLogin() string {
 	return ""
 }
 
+// TenantServiceCreateRequest is the request payload of the tenant create request
 type TenantServiceCreateRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
+	// Tenant the tenant to create
 	Tenant *Tenant `protobuf:"bytes,1,opt,name=tenant,proto3" json:"tenant,omitempty"`
 }
 
@@ -520,11 +553,13 @@ func (x *TenantServiceCreateRequest) GetTenant() *Tenant {
 	return nil
 }
 
+// TenantServiceCreateOrUpdateRequest is the request payload of the tenant create or update request
 type TenantServiceCreateOrUpdateRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
+	// Tenant the tenant to create or update
 	Tenant *Tenant `protobuf:"bytes,1,opt,name=tenant,proto3" json:"tenant,omitempty"`
 }
 
@@ -567,17 +602,23 @@ func (x *TenantServiceCreateOrUpdateRequest) GetTenant() *Tenant {
 	return nil
 }
 
+// TenantServiceUpdateRequest is the request payload of the tenant update request
 type TenantServiceUpdateRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// the login at the provider
-	Login              string                    `protobuf:"bytes,1,opt,name=login,proto3" json:"login,omitempty"`
-	Name               *string                   `protobuf:"bytes,2,opt,name=name,proto3,oneof" json:"name,omitempty"`
-	Email              *string                   `protobuf:"bytes,3,opt,name=email,proto3,oneof" json:"email,omitempty"`
-	AvatarUrl          *string                   `protobuf:"bytes,5,opt,name=avatar_url,json=avatarUrl,proto3,oneof" json:"avatar_url,omitempty"`
-	PaymentDetails     *PaymentDetailsUpdate     `protobuf:"bytes,8,opt,name=payment_details,json=paymentDetails,proto3,oneof" json:"payment_details,omitempty"`
+	// Login of the tenant
+	Login string `protobuf:"bytes,1,opt,name=login,proto3" json:"login,omitempty"`
+	// Name of the tenant
+	Name *string `protobuf:"bytes,2,opt,name=name,proto3,oneof" json:"name,omitempty"`
+	// Email of the tenant
+	Email *string `protobuf:"bytes,3,opt,name=email,proto3,oneof" json:"email,omitempty"`
+	// AvatarUrl of the tenant
+	AvatarUrl *string `protobuf:"bytes,5,opt,name=avatar_url,json=avatarUrl,proto3,oneof" json:"avatar_url,omitempty"`
+	// PaymentDetails of the tenant
+	PaymentDetails *PaymentDetailsUpdate `protobuf:"bytes,8,opt,name=payment_details,json=paymentDetails,proto3,oneof" json:"payment_details,omitempty"`
+	// TermsAndConditions of the tenant
 	TermsAndConditions *TermsAndConditionsUpdate `protobuf:"bytes,9,opt,name=terms_and_conditions,json=termsAndConditions,proto3,oneof" json:"terms_and_conditions,omitempty"`
 }
 
@@ -655,11 +696,13 @@ func (x *TenantServiceUpdateRequest) GetTermsAndConditions() *TermsAndConditions
 	return nil
 }
 
+// TenantServiceDeleteRequest is the request payload of the tenant delete request
 type TenantServiceDeleteRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
+	// Login of the tenant
 	Login string `protobuf:"bytes,1,opt,name=login,proto3" json:"login,omitempty"`
 }
 
@@ -702,12 +745,13 @@ func (x *TenantServiceDeleteRequest) GetLogin() string {
 	return ""
 }
 
-// Responses
+// TenantServiceGetResponse is the response payload of the tenant get request
 type TenantServiceGetResponse struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
+	// Tenant is the tenant
 	Tenant *Tenant `protobuf:"bytes,1,opt,name=tenant,proto3" json:"tenant,omitempty"`
 }
 
@@ -750,11 +794,13 @@ func (x *TenantServiceGetResponse) GetTenant() *Tenant {
 	return nil
 }
 
+// TenantServiceCreateResponse is the response payload of the tenant create request
 type TenantServiceCreateResponse struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
+	// Tenant is the tenant
 	Tenant *Tenant `protobuf:"bytes,1,opt,name=tenant,proto3" json:"tenant,omitempty"`
 }
 
@@ -797,11 +843,13 @@ func (x *TenantServiceCreateResponse) GetTenant() *Tenant {
 	return nil
 }
 
+// TenantServiceCreateOrUpdateResponse is the response payload of the tenant create or update request
 type TenantServiceCreateOrUpdateResponse struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
+	// Tenant is the tenant
 	Tenant *Tenant `protobuf:"bytes,1,opt,name=tenant,proto3" json:"tenant,omitempty"`
 }
 
@@ -844,11 +892,13 @@ func (x *TenantServiceCreateOrUpdateResponse) GetTenant() *Tenant {
 	return nil
 }
 
+// TenantServiceUpdateResponse is the response payload of the tenant update request
 type TenantServiceUpdateResponse struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
+	// Tenant is the tenant
 	Tenant *Tenant `protobuf:"bytes,1,opt,name=tenant,proto3" json:"tenant,omitempty"`
 }
 
@@ -891,11 +941,13 @@ func (x *TenantServiceUpdateResponse) GetTenant() *Tenant {
 	return nil
 }
 
+// TenantServiceDeleteResponse is the response payload of the tenant delete request
 type TenantServiceDeleteResponse struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
+	// Tenant is the tenant
 	Tenant *Tenant `protobuf:"bytes,1,opt,name=tenant,proto3" json:"tenant,omitempty"`
 }
 
