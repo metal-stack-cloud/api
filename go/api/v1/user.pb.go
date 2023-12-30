@@ -20,18 +20,23 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-// User
+// User is a end user of the platform
 type User struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// the login at the provider
-	Login         string          `protobuf:"bytes,1,opt,name=login,proto3" json:"login,omitempty"`
-	Name          string          `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
-	Email         string          `protobuf:"bytes,3,opt,name=email,proto3" json:"email,omitempty"`
-	AvatarUrl     string          `protobuf:"bytes,5,opt,name=avatar_url,json=avatarUrl,proto3" json:"avatar_url,omitempty"`
-	OauthProvider OAuthProvider   `protobuf:"varint,6,opt,name=oauth_provider,json=oauthProvider,proto3,enum=api.v1.OAuthProvider" json:"oauth_provider,omitempty"`
+	// Login the login at the provider
+	Login string `protobuf:"bytes,1,opt,name=login,proto3" json:"login,omitempty"`
+	// Name of the user
+	Name string `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
+	// Email of the user
+	Email string `protobuf:"bytes,3,opt,name=email,proto3" json:"email,omitempty"`
+	// AvatarUrl of the user
+	AvatarUrl string `protobuf:"bytes,5,opt,name=avatar_url,json=avatarUrl,proto3" json:"avatar_url,omitempty"`
+	// OauthProvider of the user
+	OauthProvider OAuthProvider `protobuf:"varint,6,opt,name=oauth_provider,json=oauthProvider,proto3,enum=api.v1.OAuthProvider" json:"oauth_provider,omitempty"`
+	// Organisations the user belongs to
 	Organizations []*Organization `protobuf:"bytes,7,rep,name=organizations,proto3" json:"organizations,omitempty"`
 }
 
@@ -109,20 +114,31 @@ func (x *User) GetOrganizations() []*Organization {
 	return nil
 }
 
+// Organization which is a customer of the platform
+// can be a company or some other form of business
 type Organization struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id           string  `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
-	Login        string  `protobuf:"bytes,2,opt,name=login,proto3" json:"login,omitempty"`
-	Name         string  `protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`
-	Email        string  `protobuf:"bytes,4,opt,name=email,proto3" json:"email,omitempty"`
-	BillingEmail string  `protobuf:"bytes,5,opt,name=billing_email,json=billingEmail,proto3" json:"billing_email,omitempty"`
-	AvatarUrl    string  `protobuf:"bytes,6,opt,name=avatar_url,json=avatarUrl,proto3" json:"avatar_url,omitempty"`
-	Role         Role    `protobuf:"varint,7,opt,name=role,proto3,enum=api.v1.Role" json:"role,omitempty"`
-	Teams        []*Team `protobuf:"bytes,8,rep,name=teams,proto3" json:"teams,omitempty"`
-	Admitted     *bool   `protobuf:"varint,9,opt,name=admitted,proto3,oneof" json:"admitted,omitempty"`
+	// Id of this organization
+	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	// Login of this organization
+	Login string `protobuf:"bytes,2,opt,name=login,proto3" json:"login,omitempty"`
+	// Name of this organization
+	Name string `protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`
+	// Email of this organization
+	Email string `protobuf:"bytes,4,opt,name=email,proto3" json:"email,omitempty"`
+	// BillingEmail of this organization
+	BillingEmail string `protobuf:"bytes,5,opt,name=billing_email,json=billingEmail,proto3" json:"billing_email,omitempty"`
+	// AvatarUrl of this organization
+	AvatarUrl string `protobuf:"bytes,6,opt,name=avatar_url,json=avatarUrl,proto3" json:"avatar_url,omitempty"`
+	// Role of this organization
+	Role Role `protobuf:"varint,7,opt,name=role,proto3,enum=api.v1.Role" json:"role,omitempty"`
+	// Teams which belong to this organization
+	Teams []*Team `protobuf:"bytes,8,rep,name=teams,proto3" json:"teams,omitempty"`
+	// Admitted if set to true, this organization is allowed to use the platform
+	Admitted *bool `protobuf:"varint,9,opt,name=admitted,proto3,oneof" json:"admitted,omitempty"`
 }
 
 func (x *Organization) Reset() {
@@ -220,15 +236,22 @@ func (x *Organization) GetAdmitted() bool {
 	return false
 }
 
+// Team is a sub structure of users in a organizations
 type Team struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id        string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
-	Name      string `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
+	// Id of this team
+	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	// Name of this team
+	Name string `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
+	// AvatarUrl of this team
 	AvatarUrl string `protobuf:"bytes,3,opt,name=avatar_url,json=avatarUrl,proto3" json:"avatar_url,omitempty"`
-	Role      Role   `protobuf:"varint,4,opt,name=role,proto3,enum=api.v1.Role" json:"role,omitempty"`
+	// Role of this team
+	Role Role `protobuf:"varint,4,opt,name=role,proto3,enum=api.v1.Role" json:"role,omitempty"`
+	// ProjectId of this team
+	// a project is created in the backend for every team
 	ProjectId string `protobuf:"bytes,5,opt,name=project_id,json=projectId,proto3" json:"project_id,omitempty"`
 }
 

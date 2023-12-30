@@ -214,6 +214,8 @@ export declare enum Chargeable {
  */
 export declare enum Auditing {
     /**
+     * AUDITING_UNSPECIFIED is not specified
+     *
      * @generated from enum value: AUDITING_UNSPECIFIED = 0;
      */
     UNSPECIFIED = 0,

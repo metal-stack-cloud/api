@@ -293,6 +293,8 @@ proto3.util.setEnumType(Chargeable, "api.v1.Chargeable", [
  */
 export enum Auditing {
   /**
+   * AUDITING_UNSPECIFIED is not specified
+   *
    * @generated from enum value: AUDITING_UNSPECIFIED = 0;
    */
   UNSPECIFIED = 0,

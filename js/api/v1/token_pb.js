@@ -7,19 +7,27 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.TokenServiceRevokeResponse = exports.TokenServiceRevokeRequest = exports.TokenServiceListResponse = exports.TokenServiceListRequest = exports.TokenServiceCreateResponse = exports.TokenRole = exports.MethodPermission = exports.TokenServiceCreateRequest = exports.Token = exports.TokenType = void 0;
 const protobuf_1 = require("@bufbuild/protobuf");
 /**
+ * TokenType specifies different use cases of tokens
+ *
  * @generated from enum api.v1.TokenType
  */
 var TokenType;
 (function (TokenType) {
     /**
+     * TOKEN_TYPE_UNSPECIFIED is not specified
+     *
      * @generated from enum value: TOKEN_TYPE_UNSPECIFIED = 0;
      */
     TokenType[TokenType["UNSPECIFIED"] = 0] = "UNSPECIFIED";
     /**
+     * TOKEN_TYPE_API is a token for api usage
+     *
      * @generated from enum value: TOKEN_TYPE_API = 1;
      */
     TokenType[TokenType["API"] = 1] = "API";
     /**
+     * TOKEN_TYPE_CONSOLE is a token for console or web ui usage
+     *
      * @generated from enum value: TOKEN_TYPE_CONSOLE = 2;
      */
     TokenType[TokenType["CONSOLE"] = 2] = "CONSOLE";
@@ -31,38 +39,46 @@ protobuf_1.proto3.util.setEnumType(TokenType, "api.v1.TokenType", [
     { no: 2, name: "TOKEN_TYPE_CONSOLE" },
 ]);
 /**
+ * Token is a jwt authentication token to access the api
+ *
  * @generated from message api.v1.Token
  */
 class Token extends protobuf_1.Message {
     constructor(data) {
         super();
         /**
-         * uuid of the jwt token
+         * Uuid of the jwt token, used to reference it by revoke
          *
          * @generated from field: string uuid = 1;
          */
         this.uuid = "";
         /**
-         * user_id who created this token
+         * UserId who created this token
          *
          * @generated from field: string user_id = 2;
          */
         this.userId = "";
         /**
-         * description is a user given description of this token.
+         * Description is a user given description of this token.
          *
          * @generated from field: string description = 3;
          */
         this.description = "";
         /**
+         * Permissions is a list of service methods this token can be used for
+         *
          * @generated from field: repeated api.v1.MethodPermission permissions = 4;
          */
         this.permissions = [];
         /**
+         * Roles is a list of roles this token can be used for
+         *
          * @generated from field: repeated api.v1.TokenRole roles = 5;
          */
         this.roles = [];
         /**
+         * TokenType describes the type of this token
+         *
          * @generated from field: api.v1.TokenType token_type = 8;
          */
         this.tokenType = TokenType.UNSPECIFIED;
@@ -95,20 +111,28 @@ Token.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 8, name: "token_type", kind: "enum", T: protobuf_1.proto3.getEnumType(TokenType) },
 ]);
 /**
+ * TokenServiceCreateRequest is the request payload to create a token
+ *
  * @generated from message api.v1.TokenServiceCreateRequest
  */
 class TokenServiceCreateRequest extends protobuf_1.Message {
     constructor(data) {
         super();
         /**
+         * Description of the token
+         *
          * @generated from field: string description = 1;
          */
         this.description = "";
         /**
+         * Permissions is a list of service methods this token can be used for
+         *
          * @generated from field: repeated api.v1.MethodPermission permissions = 2;
          */
         this.permissions = [];
         /**
+         * Roles is a list of roles this token can be used for
+         *
          * @generated from field: repeated api.v1.TokenRole roles = 3;
          */
         this.roles = [];
@@ -137,20 +161,22 @@ TokenServiceCreateRequest.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 4, name: "expires", kind: "message", T: protobuf_1.Duration },
 ]);
 /**
+ * MethodPermission is a mapping from a subject/project to a service method
+ *
  * @generated from message api.v1.MethodPermission
  */
 class MethodPermission extends protobuf_1.Message {
     constructor(data) {
         super();
         /**
-         * subject maybe either the project or the organization
+         * Subject maybe either the project or the organization
          * for which the methods should be allowed
          *
          * @generated from field: string subject = 1;
          */
         this.subject = "";
         /**
-         * methods which should be accessible
+         * Methods which should be accessible
          *
          * @generated from field: repeated string methods = 2;
          */
@@ -178,19 +204,21 @@ MethodPermission.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 2, name: "methods", kind: "scalar", T: 9 /* ScalarType.STRING */, repeated: true },
 ]);
 /**
+ * TokenRole is a mapping from subject to role there
+ *
  * @generated from message api.v1.TokenRole
  */
 class TokenRole extends protobuf_1.Message {
     constructor(data) {
         super();
         /**
-         * subject specifies the project or organization this role applies to
+         * Subject specifies the subject (project or organization) this role applies to
          *
          * @generated from field: string subject = 1;
          */
         this.subject = "";
         /**
-         * role defines the string representation of a tenantrole, projectrole or a global adminrole
+         * Role defines the string representation of a tenantrole, projectrole or a global adminrole
          *
          * @generated from field: string role = 2;
          */
@@ -218,12 +246,16 @@ TokenRole.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 2, name: "role", kind: "scalar", T: 9 /* ScalarType.STRING */ },
 ]);
 /**
+ * TokenServiceCreateResponse is the response payload of a token create request
+ *
  * @generated from message api.v1.TokenServiceCreateResponse
  */
 class TokenServiceCreateResponse extends protobuf_1.Message {
     constructor(data) {
         super();
         /**
+         * Secret is the body if the jwt token, should be used in api requests as bearer token
+         *
          * @generated from field: string secret = 2;
          */
         this.secret = "";
@@ -250,6 +282,8 @@ TokenServiceCreateResponse.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 2, name: "secret", kind: "scalar", T: 9 /* ScalarType.STRING */ },
 ]);
 /**
+ * TokenServiceListRequest is the request payload to list tokens
+ *
  * @generated from message api.v1.TokenServiceListRequest
  */
 class TokenServiceListRequest extends protobuf_1.Message {
@@ -275,12 +309,16 @@ TokenServiceListRequest.runtime = protobuf_1.proto3;
 TokenServiceListRequest.typeName = "api.v1.TokenServiceListRequest";
 TokenServiceListRequest.fields = protobuf_1.proto3.util.newFieldList(() => []);
 /**
+ * TokenServiceListResponse is the response payload of a token list request
+ *
  * @generated from message api.v1.TokenServiceListResponse
  */
 class TokenServiceListResponse extends protobuf_1.Message {
     constructor(data) {
         super();
         /**
+         * Tokens is a list of tokens without the secrets
+         *
          * @generated from field: repeated api.v1.Token tokens = 1;
          */
         this.tokens = [];
@@ -306,12 +344,16 @@ TokenServiceListResponse.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 1, name: "tokens", kind: "message", T: Token, repeated: true },
 ]);
 /**
+ * TokenServiceRevokeRequest is the request payload of a token revoke request
+ *
  * @generated from message api.v1.TokenServiceRevokeRequest
  */
 class TokenServiceRevokeRequest extends protobuf_1.Message {
     constructor(data) {
         super();
         /**
+         * Uuid of the token to revoke
+         *
          * @generated from field: string uuid = 1;
          */
         this.uuid = "";
@@ -337,6 +379,8 @@ TokenServiceRevokeRequest.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 1, name: "uuid", kind: "scalar", T: 9 /* ScalarType.STRING */ },
 ]);
 /**
+ * TokenServiceRevokeResponse is the response payload of a token revoke request
+ *
  * @generated from message api.v1.TokenServiceRevokeResponse
  */
 class TokenServiceRevokeResponse extends protobuf_1.Message {

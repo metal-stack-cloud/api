@@ -5,6 +5,7 @@ breaking:
 lint:
   use:
     - DEFAULT
+    # - COMMENTS
 deps:
   - buf.build/envoyproxy/protoc-gen-validate
   - buf.build/googleapis/googleapis

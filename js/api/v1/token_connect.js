@@ -8,12 +8,16 @@ exports.TokenService = void 0;
 const token_pb_js_1 = require("./token_pb.js");
 const protobuf_1 = require("@bufbuild/protobuf");
 /**
+ * TokenService serves token related functions
+ *
  * @generated from service api.v1.TokenService
  */
 exports.TokenService = {
     typeName: "api.v1.TokenService",
     methods: {
         /**
+         * Create a token to authenticate against the platform, the secret will be only visible in the response
+         *
          * @generated from rpc api.v1.TokenService.Create
          */
         create: {
@@ -23,6 +27,8 @@ exports.TokenService = {
             kind: protobuf_1.MethodKind.Unary,
         },
         /**
+         * List all your tokens
+         *
          * @generated from rpc api.v1.TokenService.List
          */
         list: {
@@ -32,6 +38,8 @@ exports.TokenService = {
             kind: protobuf_1.MethodKind.Unary,
         },
         /**
+         * Revoke a token, no further usage is possible afterwards
+         *
          * @generated from rpc api.v1.TokenService.Revoke
          */
         revoke: {

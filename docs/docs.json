@@ -415,7 +415,7 @@
             {
               "name": "AUDITING_UNSPECIFIED",
               "number": "0",
-              "description": ""
+              "description": "AUDITING_UNSPECIFIED is not specified"
             },
             {
               "name": "AUDITING_INCLUDED",
@@ -8029,22 +8029,22 @@
           "name": "TokenType",
           "longName": "TokenType",
           "fullName": "api.v1.TokenType",
-          "description": "",
+          "description": "TokenType specifies different use cases of tokens",
           "values": [
             {
               "name": "TOKEN_TYPE_UNSPECIFIED",
               "number": "0",
-              "description": ""
+              "description": "TOKEN_TYPE_UNSPECIFIED is not specified"
             },
             {
               "name": "TOKEN_TYPE_API",
               "number": "1",
-              "description": ""
+              "description": "TOKEN_TYPE_API is a token for api usage"
             },
             {
               "name": "TOKEN_TYPE_CONSOLE",
               "number": "2",
-              "description": ""
+              "description": "TOKEN_TYPE_CONSOLE is a token for console or web ui usage"
             }
           ]
         }
@@ -8055,7 +8055,7 @@
           "name": "MethodPermission",
           "longName": "MethodPermission",
           "fullName": "api.v1.MethodPermission",
-          "description": "",
+          "description": "MethodPermission is a mapping from a subject/project to a service method",
           "hasExtensions": false,
           "hasFields": true,
           "hasOneofs": false,
@@ -8063,7 +8063,7 @@
           "fields": [
             {
               "name": "subject",
-              "description": "subject maybe either the project or the organization\nfor which the methods should be allowed",
+              "description": "Subject maybe either the project or the organization\nfor which the methods should be allowed",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -8075,7 +8075,7 @@
             },
             {
               "name": "methods",
-              "description": "methods which should be accessible",
+              "description": "Methods which should be accessible",
               "label": "repeated",
               "type": "string",
               "longType": "string",
@@ -8091,7 +8091,7 @@
           "name": "Token",
           "longName": "Token",
           "fullName": "api.v1.Token",
-          "description": "",
+          "description": "Token is a jwt authentication token to access the api",
           "hasExtensions": false,
           "hasFields": true,
           "hasOneofs": false,
@@ -8099,7 +8099,7 @@
           "fields": [
             {
               "name": "uuid",
-              "description": "uuid of the jwt token",
+              "description": "Uuid of the jwt token, used to reference it by revoke",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -8119,7 +8119,7 @@
             },
             {
               "name": "user_id",
-              "description": "user_id who created this token",
+              "description": "UserId who created this token",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -8143,7 +8143,7 @@
             },
             {
               "name": "description",
-              "description": "description is a user given description of this token.",
+              "description": "Description is a user given description of this token.",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -8167,7 +8167,7 @@
             },
             {
               "name": "permissions",
-              "description": "",
+              "description": "Permissions is a list of service methods this token can be used for",
               "label": "repeated",
               "type": "MethodPermission",
               "longType": "MethodPermission",
@@ -8179,7 +8179,7 @@
             },
             {
               "name": "roles",
-              "description": "",
+              "description": "Roles is a list of roles this token can be used for",
               "label": "repeated",
               "type": "TokenRole",
               "longType": "TokenRole",
@@ -8191,7 +8191,7 @@
             },
             {
               "name": "expires",
-              "description": "",
+              "description": "Expires gives the date in the future after which this token can not be used anymore",
               "label": "",
               "type": "Timestamp",
               "longType": "google.protobuf.Timestamp",
@@ -8203,7 +8203,7 @@
             },
             {
               "name": "issued_at",
-              "description": "",
+              "description": "IssuedAt gives the date when this token was created",
               "label": "",
               "type": "Timestamp",
               "longType": "google.protobuf.Timestamp",
@@ -8215,7 +8215,7 @@
             },
             {
               "name": "token_type",
-              "description": "",
+              "description": "TokenType describes the type of this token",
               "label": "",
               "type": "TokenType",
               "longType": "TokenType",
@@ -8231,7 +8231,7 @@
           "name": "TokenRole",
           "longName": "TokenRole",
           "fullName": "api.v1.TokenRole",
-          "description": "",
+          "description": "TokenRole is a mapping from subject to role there",
           "hasExtensions": false,
           "hasFields": true,
           "hasOneofs": false,
@@ -8239,7 +8239,7 @@
           "fields": [
             {
               "name": "subject",
-              "description": "subject specifies the project or organization this role applies to",
+              "description": "Subject specifies the subject (project or organization) this role applies to",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -8263,7 +8263,7 @@
             },
             {
               "name": "role",
-              "description": "role defines the string representation of a tenantrole, projectrole or a global adminrole",
+              "description": "Role defines the string representation of a tenantrole, projectrole or a global adminrole",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -8292,7 +8292,7 @@
           "name": "TokenServiceCreateRequest",
           "longName": "TokenServiceCreateRequest",
           "fullName": "api.v1.TokenServiceCreateRequest",
-          "description": "",
+          "description": "TokenServiceCreateRequest is the request payload to create a token",
           "hasExtensions": false,
           "hasFields": true,
           "hasOneofs": false,
@@ -8300,7 +8300,7 @@
           "fields": [
             {
               "name": "description",
-              "description": "",
+              "description": "Description of the token",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -8324,7 +8324,7 @@
             },
             {
               "name": "permissions",
-              "description": "",
+              "description": "Permissions is a list of service methods this token can be used for",
               "label": "repeated",
               "type": "MethodPermission",
               "longType": "MethodPermission",
@@ -8336,7 +8336,7 @@
             },
             {
               "name": "roles",
-              "description": "",
+              "description": "Roles is a list of roles this token can be used for",
               "label": "repeated",
               "type": "TokenRole",
               "longType": "TokenRole",
@@ -8348,7 +8348,7 @@
             },
             {
               "name": "expires",
-              "description": "",
+              "description": "Expires gives the duration since now, after which this token can not be used anymore",
               "label": "",
               "type": "Duration",
               "longType": "google.protobuf.Duration",
@@ -8384,7 +8384,7 @@
           "name": "TokenServiceCreateResponse",
           "longName": "TokenServiceCreateResponse",
           "fullName": "api.v1.TokenServiceCreateResponse",
-          "description": "",
+          "description": "TokenServiceCreateResponse is the response payload of a token create request",
           "hasExtensions": false,
           "hasFields": true,
           "hasOneofs": false,
@@ -8392,7 +8392,7 @@
           "fields": [
             {
               "name": "token",
-              "description": "",
+              "description": "Token which was created",
               "label": "",
               "type": "Token",
               "longType": "Token",
@@ -8404,7 +8404,7 @@
             },
             {
               "name": "secret",
-              "description": "",
+              "description": "Secret is the body if the jwt token, should be used in api requests as bearer token",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -8420,7 +8420,7 @@
           "name": "TokenServiceListRequest",
           "longName": "TokenServiceListRequest",
           "fullName": "api.v1.TokenServiceListRequest",
-          "description": "",
+          "description": "TokenServiceListRequest is the request payload to list tokens",
           "hasExtensions": false,
           "hasFields": false,
           "hasOneofs": false,
@@ -8431,7 +8431,7 @@
           "name": "TokenServiceListResponse",
           "longName": "TokenServiceListResponse",
           "fullName": "api.v1.TokenServiceListResponse",
-          "description": "",
+          "description": "TokenServiceListResponse is the response payload of a token list request",
           "hasExtensions": false,
           "hasFields": true,
           "hasOneofs": false,
@@ -8439,7 +8439,7 @@
           "fields": [
             {
               "name": "tokens",
-              "description": "",
+              "description": "Tokens is a list of tokens without the secrets",
               "label": "repeated",
               "type": "Token",
               "longType": "Token",
@@ -8455,7 +8455,7 @@
           "name": "TokenServiceRevokeRequest",
           "longName": "TokenServiceRevokeRequest",
           "fullName": "api.v1.TokenServiceRevokeRequest",
-          "description": "",
+          "description": "TokenServiceRevokeRequest is the request payload of a token revoke request",
           "hasExtensions": false,
           "hasFields": true,
           "hasOneofs": false,
@@ -8463,7 +8463,7 @@
           "fields": [
             {
               "name": "uuid",
-              "description": "",
+              "description": "Uuid of the token to revoke",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -8487,7 +8487,7 @@
           "name": "TokenServiceRevokeResponse",
           "longName": "TokenServiceRevokeResponse",
           "fullName": "api.v1.TokenServiceRevokeResponse",
-          "description": "",
+          "description": "TokenServiceRevokeResponse is the response payload of a token revoke request",
           "hasExtensions": false,
           "hasFields": false,
           "hasOneofs": false,
@@ -8500,11 +8500,11 @@
           "name": "TokenService",
           "longName": "TokenService",
           "fullName": "api.v1.TokenService",
-          "description": "",
+          "description": "TokenService serves token related functions",
           "methods": [
             {
               "name": "Create",
-              "description": "",
+              "description": "Create a token to authenticate against the platform, the secret will be only visible in the response",
               "requestType": "TokenServiceCreateRequest",
               "requestLongType": "TokenServiceCreateRequest",
               "requestFullType": "api.v1.TokenServiceCreateRequest",
@@ -8516,7 +8516,7 @@
             },
             {
               "name": "List",
-              "description": "",
+              "description": "List all your tokens",
               "requestType": "TokenServiceListRequest",
               "requestLongType": "TokenServiceListRequest",
               "requestFullType": "api.v1.TokenServiceListRequest",
@@ -8528,7 +8528,7 @@
             },
             {
               "name": "Revoke",
-              "description": "",
+              "description": "Revoke a token, no further usage is possible afterwards",
               "requestType": "TokenServiceRevokeRequest",
               "requestLongType": "TokenServiceRevokeRequest",
               "requestFullType": "api.v1.TokenServiceRevokeRequest",
@@ -10440,7 +10440,7 @@
           "name": "Organization",
           "longName": "Organization",
           "fullName": "api.v1.Organization",
-          "description": "",
+          "description": "Organization which is a customer of the platform\ncan be a company or some other form of business",
           "hasExtensions": false,
           "hasFields": true,
           "hasOneofs": true,
@@ -10448,7 +10448,7 @@
           "fields": [
             {
               "name": "id",
-              "description": "",
+              "description": "Id of this organization",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -10460,7 +10460,7 @@
             },
             {
               "name": "login",
-              "description": "",
+              "description": "Login of this organization",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -10472,7 +10472,7 @@
             },
             {
               "name": "name",
-              "description": "",
+              "description": "Name of this organization",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -10484,7 +10484,7 @@
             },
             {
               "name": "email",
-              "description": "",
+              "description": "Email of this organization",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -10496,7 +10496,7 @@
             },
             {
               "name": "billing_email",
-              "description": "",
+              "description": "BillingEmail of this organization",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -10508,7 +10508,7 @@
             },
             {
               "name": "avatar_url",
-              "description": "",
+              "description": "AvatarUrl of this organization",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -10520,7 +10520,7 @@
             },
             {
               "name": "role",
-              "description": "",
+              "description": "Role of this organization",
               "label": "",
               "type": "Role",
               "longType": "Role",
@@ -10532,7 +10532,7 @@
             },
             {
               "name": "teams",
-              "description": "",
+              "description": "Teams which belong to this organization",
               "label": "repeated",
               "type": "Team",
               "longType": "Team",
@@ -10544,7 +10544,7 @@
             },
             {
               "name": "admitted",
-              "description": "",
+              "description": "Admitted if set to true, this organization is allowed to use the platform",
               "label": "optional",
               "type": "bool",
               "longType": "bool",
@@ -10560,7 +10560,7 @@
           "name": "Team",
           "longName": "Team",
           "fullName": "api.v1.Team",
-          "description": "",
+          "description": "Team is a sub structure of users in a organizations",
           "hasExtensions": false,
           "hasFields": true,
           "hasOneofs": false,
@@ -10568,7 +10568,7 @@
           "fields": [
             {
               "name": "id",
-              "description": "",
+              "description": "Id of this team",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -10580,7 +10580,7 @@
             },
             {
               "name": "name",
-              "description": "",
+              "description": "Name of this team",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -10592,7 +10592,7 @@
             },
             {
               "name": "avatar_url",
-              "description": "",
+              "description": "AvatarUrl of this team",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -10604,7 +10604,7 @@
             },
             {
               "name": "role",
-              "description": "",
+              "description": "Role of this team",
               "label": "",
               "type": "Role",
               "longType": "Role",
@@ -10616,7 +10616,7 @@
             },
             {
               "name": "project_id",
-              "description": "",
+              "description": "ProjectId of this team\na project is created in the backend for every team",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -10632,7 +10632,7 @@
           "name": "User",
           "longName": "User",
           "fullName": "api.v1.User",
-          "description": "User",
+          "description": "User is a end user of the platform",
           "hasExtensions": false,
           "hasFields": true,
           "hasOneofs": false,
@@ -10640,7 +10640,7 @@
           "fields": [
             {
               "name": "login",
-              "description": "the login at the provider",
+              "description": "Login the login at the provider",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -10652,7 +10652,7 @@
             },
             {
               "name": "name",
-              "description": "",
+              "description": "Name of the user",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -10664,7 +10664,7 @@
             },
             {
               "name": "email",
-              "description": "",
+              "description": "Email of the user",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -10676,7 +10676,7 @@
             },
             {
               "name": "avatar_url",
-              "description": "",
+              "description": "AvatarUrl of the user",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -10688,7 +10688,7 @@
             },
             {
               "name": "oauth_provider",
-              "description": "",
+              "description": "OauthProvider of the user",
               "label": "",
               "type": "OAuthProvider",
               "longType": "OAuthProvider",
@@ -10700,7 +10700,7 @@
             },
             {
               "name": "organizations",
-              "description": "",
+              "description": "Organisations the user belongs to",
               "label": "repeated",
               "type": "Organization",
               "longType": "Organization",

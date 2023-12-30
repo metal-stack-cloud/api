@@ -418,6 +418,7 @@ func (Chargeable) EnumDescriptor() ([]byte, []int) {
 type Auditing int32
 
 const (
+	// AUDITING_UNSPECIFIED is not specified
 	Auditing_AUDITING_UNSPECIFIED Auditing = 0
 	// AUDITING_INCLUDED if a method is annotated with this, all calls are audited
 	Auditing_AUDITING_INCLUDED Auditing = 1

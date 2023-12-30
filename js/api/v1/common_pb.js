@@ -275,6 +275,8 @@ protobuf_1.proto3.util.setEnumType(Chargeable, "api.v1.Chargeable", [
 var Auditing;
 (function (Auditing) {
     /**
+     * AUDITING_UNSPECIFIED is not specified
+     *
      * @generated from enum value: AUDITING_UNSPECIFIED = 0;
      */
     Auditing[Auditing["UNSPECIFIED"] = 0] = "UNSPECIFIED";
