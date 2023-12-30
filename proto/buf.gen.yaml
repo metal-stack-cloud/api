@@ -8,7 +8,7 @@ managed:
       - buf.build/envoyproxy/protoc-gen-validate
 plugins:
   # generate go structs for protocol buffer definition
-  - plugin: buf.build/protocolbuffers/go:v1.31.0
+  - plugin: buf.build/protocolbuffers/go:v1.32.0
     out: ../go
     opt: paths=source_relative
   # generate go structs for protocol buffer definition

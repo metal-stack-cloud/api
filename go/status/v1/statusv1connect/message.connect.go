@@ -45,6 +45,7 @@ var (
 
 // MessageServiceClient is a client for the status.v1.MessageService service.
 type MessageServiceClient interface {
+	// List returns all messages of interest
 	List(context.Context, *connect.Request[v1.MessageServiceListRequest]) (*connect.Response[v1.MessageServiceListResponse], error)
 }
 
@@ -79,6 +80,7 @@ func (c *messageServiceClient) List(ctx context.Context, req *connect.Request[v1
 
 // MessageServiceHandler is an implementation of the status.v1.MessageService service.
 type MessageServiceHandler interface {
+	// List returns all messages of interest
 	List(context.Context, *connect.Request[v1.MessageServiceListRequest]) (*connect.Response[v1.MessageServiceListResponse], error)
 }
 

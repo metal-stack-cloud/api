@@ -10858,37 +10858,37 @@
           "name": "MessageKind",
           "longName": "MessageKind",
           "fullName": "status.v1.MessageKind",
-          "description": "",
+          "description": "MessageKind defines what type of message it is",
           "values": [
             {
               "name": "MESSAGE_KIND_UNSPECIFIED",
               "number": "0",
-              "description": ""
+              "description": "MESSAGE_KIND_UNSPECIFIED is not specified"
             },
             {
               "name": "MESSAGE_KIND_INFO",
               "number": "1",
-              "description": ""
+              "description": "MESSAGE_KIND_INFO is a informational message"
             },
             {
               "name": "MESSAGE_KIND_INCIDENT",
               "number": "2",
-              "description": ""
+              "description": "MESSAGE_KIND_INCIDENT is a incident message"
             },
             {
               "name": "MESSAGE_KIND_CHANGE",
               "number": "3",
-              "description": ""
+              "description": "MESSAGE_KIND_CHANGE is a change message"
             },
             {
               "name": "MESSAGE_KIND_RESOLVED",
               "number": "4",
-              "description": ""
+              "description": "MESSAGE_KIND_RESOLVED is a resolved message"
             },
             {
               "name": "MESSAGE_KIND_UPDATE",
               "number": "5",
-              "description": ""
+              "description": "MESSAGE_KIND_UPDATE is a update message"
             }
           ]
         }
@@ -10899,7 +10899,7 @@
           "name": "Message",
           "longName": "Message",
           "fullName": "status.v1.Message",
-          "description": "",
+          "description": "Message is a test message to be displayed in the status",
           "hasExtensions": false,
           "hasFields": true,
           "hasOneofs": false,
@@ -10907,7 +10907,7 @@
           "fields": [
             {
               "name": "id",
-              "description": "",
+              "description": "Id of the message",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -10919,7 +10919,7 @@
             },
             {
               "name": "text",
-              "description": "",
+              "description": "Text of the message",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -10931,7 +10931,7 @@
             },
             {
               "name": "kind",
-              "description": "",
+              "description": "Kind of the message, this is to distinguish between the importance of a message",
               "label": "",
               "type": "MessageKind",
               "longType": "MessageKind",
@@ -10943,7 +10943,7 @@
             },
             {
               "name": "timestamp",
-              "description": "",
+              "description": "Timestamp when this message was created",
               "label": "",
               "type": "Timestamp",
               "longType": "google.protobuf.Timestamp",
@@ -10955,7 +10955,7 @@
             },
             {
               "name": "replies",
-              "description": "",
+              "description": "Replies are messages which are followups to the initial message",
               "label": "repeated",
               "type": "ReplyMessage",
               "longType": "ReplyMessage",
@@ -10971,7 +10971,7 @@
           "name": "MessageServiceListRequest",
           "longName": "MessageServiceListRequest",
           "fullName": "status.v1.MessageServiceListRequest",
-          "description": "",
+          "description": "MessageServiceListRequest is the request payload to get the messages",
           "hasExtensions": false,
           "hasFields": false,
           "hasOneofs": false,
@@ -10982,7 +10982,7 @@
           "name": "MessageServiceListResponse",
           "longName": "MessageServiceListResponse",
           "fullName": "status.v1.MessageServiceListResponse",
-          "description": "",
+          "description": "MessageServiceListResponse is the response payload with the messages",
           "hasExtensions": false,
           "hasFields": true,
           "hasOneofs": false,
@@ -10990,7 +10990,7 @@
           "fields": [
             {
               "name": "items",
-              "description": "",
+              "description": "Items is a slice of all messages",
               "label": "repeated",
               "type": "Message",
               "longType": "Message",
@@ -11002,7 +11002,7 @@
             },
             {
               "name": "pinned_items",
-              "description": "",
+              "description": "PinnedItems are messages which are of special interest",
               "label": "repeated",
               "type": "Message",
               "longType": "Message",
@@ -11018,7 +11018,7 @@
           "name": "ReplyMessage",
           "longName": "ReplyMessage",
           "fullName": "status.v1.ReplyMessage",
-          "description": "",
+          "description": "ReplyMessage is a message as a followup of a initial message",
           "hasExtensions": false,
           "hasFields": true,
           "hasOneofs": false,
@@ -11026,7 +11026,7 @@
           "fields": [
             {
               "name": "id",
-              "description": "",
+              "description": "Id of the message",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -11038,7 +11038,7 @@
             },
             {
               "name": "text",
-              "description": "",
+              "description": "Text of the message",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -11050,7 +11050,7 @@
             },
             {
               "name": "kind",
-              "description": "",
+              "description": "Kind of the message, this is to distinguish between the importance of a message",
               "label": "",
               "type": "MessageKind",
               "longType": "MessageKind",
@@ -11062,7 +11062,7 @@
             },
             {
               "name": "timestamp",
-              "description": "",
+              "description": "Timestamp when this message was created",
               "label": "",
               "type": "Timestamp",
               "longType": "google.protobuf.Timestamp",
@@ -11080,11 +11080,11 @@
           "name": "MessageService",
           "longName": "MessageService",
           "fullName": "status.v1.MessageService",
-          "description": "",
+          "description": "MessageService serves status message related functions\nthis service is used as backend for the status dashboard",
           "methods": [
             {
               "name": "List",
-              "description": "",
+              "description": "List returns all messages of interest",
               "requestType": "MessageServiceListRequest",
               "requestLongType": "MessageServiceListRequest",
               "requestFullType": "status.v1.MessageServiceListRequest",

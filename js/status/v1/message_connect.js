@@ -8,12 +8,17 @@ exports.MessageService = void 0;
 const message_pb_js_1 = require("./message_pb.js");
 const protobuf_1 = require("@bufbuild/protobuf");
 /**
+ * MessageService serves status message related functions
+ * this service is used as backend for the status dashboard
+ *
  * @generated from service status.v1.MessageService
  */
 exports.MessageService = {
     typeName: "status.v1.MessageService",
     methods: {
         /**
+         * List returns all messages of interest
+         *
          * @generated from rpc status.v1.MessageService.List
          */
         list: {

@@ -7,35 +7,49 @@ import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialM
 import { Message as Message$1, proto3, Timestamp } from "@bufbuild/protobuf";
 
 /**
+ * MessageKind defines what type of message it is
+ *
  * @generated from enum status.v1.MessageKind
  */
 export enum MessageKind {
   /**
+   * MESSAGE_KIND_UNSPECIFIED is not specified
+   *
    * @generated from enum value: MESSAGE_KIND_UNSPECIFIED = 0;
    */
   UNSPECIFIED = 0,
 
   /**
+   * MESSAGE_KIND_INFO is a informational message
+   *
    * @generated from enum value: MESSAGE_KIND_INFO = 1;
    */
   INFO = 1,
 
   /**
+   * MESSAGE_KIND_INCIDENT is a incident message
+   *
    * @generated from enum value: MESSAGE_KIND_INCIDENT = 2;
    */
   INCIDENT = 2,
 
   /**
+   * MESSAGE_KIND_CHANGE is a change message
+   *
    * @generated from enum value: MESSAGE_KIND_CHANGE = 3;
    */
   CHANGE = 3,
 
   /**
+   * MESSAGE_KIND_RESOLVED is a resolved message
+   *
    * @generated from enum value: MESSAGE_KIND_RESOLVED = 4;
    */
   RESOLVED = 4,
 
   /**
+   * MESSAGE_KIND_UPDATE is a update message
+   *
    * @generated from enum value: MESSAGE_KIND_UPDATE = 5;
    */
   UPDATE = 5,
@@ -51,6 +65,8 @@ proto3.util.setEnumType(MessageKind, "status.v1.MessageKind", [
 ]);
 
 /**
+ * MessageServiceListRequest is the request payload to get the messages
+ *
  * @generated from message status.v1.MessageServiceListRequest
  */
 export class MessageServiceListRequest extends Message$1<MessageServiceListRequest> {
@@ -82,15 +98,21 @@ export class MessageServiceListRequest extends Message$1<MessageServiceListReque
 }
 
 /**
+ * MessageServiceListResponse is the response payload with the messages
+ *
  * @generated from message status.v1.MessageServiceListResponse
  */
 export class MessageServiceListResponse extends Message$1<MessageServiceListResponse> {
   /**
+   * Items is a slice of all messages
+   *
    * @generated from field: repeated status.v1.Message items = 1;
    */
   items: Message[] = [];
 
   /**
+   * PinnedItems are messages which are of special interest
+   *
    * @generated from field: repeated status.v1.Message pinned_items = 2;
    */
   pinnedItems: Message[] = [];
@@ -125,30 +147,42 @@ export class MessageServiceListResponse extends Message$1<MessageServiceListResp
 }
 
 /**
+ * Message is a test message to be displayed in the status
+ *
  * @generated from message status.v1.Message
  */
 export class Message extends Message$1<Message> {
   /**
+   * Id of the message
+   *
    * @generated from field: string id = 1;
    */
   id = "";
 
   /**
+   * Text of the message
+   *
    * @generated from field: string text = 2;
    */
   text = "";
 
   /**
+   * Kind of the message, this is to distinguish between the importance of a message
+   *
    * @generated from field: status.v1.MessageKind kind = 3;
    */
   kind = MessageKind.UNSPECIFIED;
 
   /**
+   * Timestamp when this message was created
+   *
    * @generated from field: google.protobuf.Timestamp timestamp = 4;
    */
   timestamp?: Timestamp;
 
   /**
+   * Replies are messages which are followups to the initial message
+   *
    * @generated from field: repeated status.v1.ReplyMessage replies = 5;
    */
   replies: ReplyMessage[] = [];
@@ -186,25 +220,35 @@ export class Message extends Message$1<Message> {
 }
 
 /**
+ * ReplyMessage is a message as a followup of a initial message
+ *
  * @generated from message status.v1.ReplyMessage
  */
 export class ReplyMessage extends Message$1<ReplyMessage> {
   /**
+   * Id of the message
+   *
    * @generated from field: string id = 1;
    */
   id = "";
 
   /**
+   * Text of the message
+   *
    * @generated from field: string text = 2;
    */
   text = "";
 
   /**
+   * Kind of the message, this is to distinguish between the importance of a message
+   *
    * @generated from field: status.v1.MessageKind kind = 3;
    */
   kind = MessageKind.UNSPECIFIED;
 
   /**
+   * Timestamp when this message was created
+   *
    * @generated from field: google.protobuf.Timestamp timestamp = 4;
    */
   timestamp?: Timestamp;
