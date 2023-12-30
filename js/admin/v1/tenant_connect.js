@@ -8,12 +8,16 @@ exports.TenantService = void 0;
 const tenant_pb_js_1 = require("./tenant_pb.js");
 const protobuf_1 = require("@bufbuild/protobuf");
 /**
+ * TenantService serves tenant related functions
+ *
  * @generated from service admin.v1.TenantService
  */
 exports.TenantService = {
     typeName: "admin.v1.TenantService",
     methods: {
         /**
+         * List tenants
+         *
          * @generated from rpc admin.v1.TenantService.List
          */
         list: {
@@ -23,6 +27,8 @@ exports.TenantService = {
             kind: protobuf_1.MethodKind.Unary,
         },
         /**
+         * Admit a tenant
+         *
          * @generated from rpc admin.v1.TenantService.Admit
          */
         admit: {
@@ -32,6 +38,8 @@ exports.TenantService = {
             kind: protobuf_1.MethodKind.Unary,
         },
         /**
+         * Revoke a tenant
+         *
          * @generated from rpc admin.v1.TenantService.Revoke
          */
         revoke: {

@@ -22,11 +22,13 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
+// TokenServiceListRequest is the request payload for the token list request
 type TokenServiceListRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
+	// UserId is the id of the user for which the tokens should be listed
 	UserId *string `protobuf:"bytes,1,opt,name=user_id,json=userId,proto3,oneof" json:"user_id,omitempty"`
 }
 
@@ -69,11 +71,13 @@ func (x *TokenServiceListRequest) GetUserId() string {
 	return ""
 }
 
+// TokenServiceListResponse is the response payload for the token list request
 type TokenServiceListResponse struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
+	// Tokens is the list of tokens
 	Tokens []*v1.Token `protobuf:"bytes,1,rep,name=tokens,proto3" json:"tokens,omitempty"`
 }
 
@@ -116,12 +120,15 @@ func (x *TokenServiceListResponse) GetTokens() []*v1.Token {
 	return nil
 }
 
+// TokenServiceRevokeRequest is the request payload for the token revoke request
 type TokenServiceRevokeRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Uuid   string `protobuf:"bytes,1,opt,name=uuid,proto3" json:"uuid,omitempty"`
+	// Uuid is the uuid of the token which should be revoked
+	Uuid string `protobuf:"bytes,1,opt,name=uuid,proto3" json:"uuid,omitempty"`
+	// UserId is the id of the user for which the token should be revoked
 	UserId string `protobuf:"bytes,2,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
 }
 
@@ -171,6 +178,7 @@ func (x *TokenServiceRevokeRequest) GetUserId() string {
 	return ""
 }
 
+// TokenServiceRevokeResponse is the response payload for the token revoke request
 type TokenServiceRevokeResponse struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache

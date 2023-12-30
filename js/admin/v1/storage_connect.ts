@@ -7,12 +7,16 @@ import { StorageServiceClusterInfoRequest, StorageServiceClusterInfoResponse, St
 import { MethodKind } from "@bufbuild/protobuf";
 
 /**
+ * StorageService serves storage related functions
+ *
  * @generated from service admin.v1.StorageService
  */
 export const StorageService = {
   typeName: "admin.v1.StorageService",
   methods: {
     /**
+     * ClusterInfo returns overall statistics of the storage system
+     *
      * @generated from rpc admin.v1.StorageService.ClusterInfo
      */
     clusterInfo: {
@@ -22,6 +26,8 @@ export const StorageService = {
       kind: MethodKind.Unary,
     },
     /**
+     * ListVolumes list all volumes
+     *
      * @generated from rpc admin.v1.StorageService.ListVolumes
      */
     listVolumes: {
@@ -31,6 +37,8 @@ export const StorageService = {
       kind: MethodKind.Unary,
     },
     /**
+     * ListSnapshots list all snapshots
+     *
      * @generated from rpc admin.v1.StorageService.ListSnapshots
      */
     listSnapshots: {

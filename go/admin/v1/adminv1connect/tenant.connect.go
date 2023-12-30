@@ -51,8 +51,11 @@ var (
 
 // TenantServiceClient is a client for the admin.v1.TenantService service.
 type TenantServiceClient interface {
+	// List tenants
 	List(context.Context, *connect.Request[v1.TenantServiceListRequest]) (*connect.Response[v1.TenantServiceListResponse], error)
+	// Admit a tenant
 	Admit(context.Context, *connect.Request[v1.TenantServiceAdmitRequest]) (*connect.Response[v1.TenantServiceAdmitResponse], error)
+	// Revoke a tenant
 	Revoke(context.Context, *connect.Request[v1.TenantServiceRevokeRequest]) (*connect.Response[v1.TenantServiceRevokeResponse], error)
 }
 
@@ -111,8 +114,11 @@ func (c *tenantServiceClient) Revoke(ctx context.Context, req *connect.Request[v
 
 // TenantServiceHandler is an implementation of the admin.v1.TenantService service.
 type TenantServiceHandler interface {
+	// List tenants
 	List(context.Context, *connect.Request[v1.TenantServiceListRequest]) (*connect.Response[v1.TenantServiceListResponse], error)
+	// Admit a tenant
 	Admit(context.Context, *connect.Request[v1.TenantServiceAdmitRequest]) (*connect.Response[v1.TenantServiceAdmitResponse], error)
+	// Revoke a tenant
 	Revoke(context.Context, *connect.Request[v1.TenantServiceRevokeRequest]) (*connect.Response[v1.TenantServiceRevokeResponse], error)
 }
 

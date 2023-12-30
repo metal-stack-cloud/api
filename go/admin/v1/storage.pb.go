@@ -22,11 +22,13 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
+// StorageServiceClusterInfoRequest is the request payload for the cluster info request
 type StorageServiceClusterInfoRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
+	// Partition for which the cluster info should be returned
 	Partition *string `protobuf:"bytes,1,opt,name=partition,proto3,oneof" json:"partition,omitempty"`
 }
 
@@ -69,11 +71,13 @@ func (x *StorageServiceClusterInfoRequest) GetPartition() string {
 	return ""
 }
 
+// StorageServiceClusterInfoResponse is the response payload for the cluster info request
 type StorageServiceClusterInfoResponse struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
+	// Infos about the storage systems
 	Infos []*StorageClusterInfo `protobuf:"bytes,1,rep,name=infos,proto3" json:"infos,omitempty"`
 }
 
@@ -116,24 +120,38 @@ func (x *StorageServiceClusterInfoResponse) GetInfos() []*StorageClusterInfo {
 	return nil
 }
 
+// StorageClusterInfo represents details about a storage system
 type StorageClusterInfo struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Partition            string                `protobuf:"bytes,1,opt,name=partition,proto3" json:"partition,omitempty"`
-	Uuid                 string                `protobuf:"bytes,2,opt,name=uuid,proto3" json:"uuid,omitempty"`
-	SubsystemNqn         string                `protobuf:"bytes,3,opt,name=subsystem_nqn,json=subsystemNqn,proto3" json:"subsystem_nqn,omitempty"`
-	CurrentMaxReplicas   uint32                `protobuf:"varint,4,opt,name=current_max_replicas,json=currentMaxReplicas,proto3" json:"current_max_replicas,omitempty"`
-	SupportedMaxReplicas uint32                `protobuf:"varint,5,opt,name=supported_max_replicas,json=supportedMaxReplicas,proto3" json:"supported_max_replicas,omitempty"`
-	Statistics           *ClusterStatisticsApi `protobuf:"bytes,6,opt,name=statistics,proto3" json:"statistics,omitempty"`
-	Health               *ClusterHealth        `protobuf:"bytes,7,opt,name=health,proto3" json:"health,omitempty"`
-	MinVersionInCluster  string                `protobuf:"bytes,8,opt,name=min_version_in_cluster,json=minVersionInCluster,proto3" json:"min_version_in_cluster,omitempty"`
-	MinAllowedVersion    string                `protobuf:"bytes,9,opt,name=min_allowed_version,json=minAllowedVersion,proto3" json:"min_allowed_version,omitempty"`
-	MaxAllowedVersion    string                `protobuf:"bytes,10,opt,name=max_allowed_version,json=maxAllowedVersion,proto3" json:"max_allowed_version,omitempty"`
-	ApiEndpoints         []string              `protobuf:"bytes,11,rep,name=api_endpoints,json=apiEndpoints,proto3" json:"api_endpoints,omitempty"`
-	DiscoveryEndpoints   []string              `protobuf:"bytes,12,rep,name=discovery_endpoints,json=discoveryEndpoints,proto3" json:"discovery_endpoints,omitempty"`
-	Servers              []*StorageServerInfo  `protobuf:"bytes,13,rep,name=servers,proto3" json:"servers,omitempty"`
+	// Partition where this storage system is present
+	Partition string `protobuf:"bytes,1,opt,name=partition,proto3" json:"partition,omitempty"`
+	// Uuid of this storage system
+	Uuid string `protobuf:"bytes,2,opt,name=uuid,proto3" json:"uuid,omitempty"`
+	// SubsystemNqn is the subsystem nqn
+	SubsystemNqn string `protobuf:"bytes,3,opt,name=subsystem_nqn,json=subsystemNqn,proto3" json:"subsystem_nqn,omitempty"`
+	// CurrentMaxReplicas defines how many replicas a volume can have currently
+	CurrentMaxReplicas uint32 `protobuf:"varint,4,opt,name=current_max_replicas,json=currentMaxReplicas,proto3" json:"current_max_replicas,omitempty"`
+	// SupportedMaxReplicas defines how many replicas a volume can have at max
+	SupportedMaxReplicas uint32 `protobuf:"varint,5,opt,name=supported_max_replicas,json=supportedMaxReplicas,proto3" json:"supported_max_replicas,omitempty"`
+	// Statistics of the storage system
+	Statistics *ClusterStatisticsApi `protobuf:"bytes,6,opt,name=statistics,proto3" json:"statistics,omitempty"`
+	// Health of the storage system
+	Health *ClusterHealth `protobuf:"bytes,7,opt,name=health,proto3" json:"health,omitempty"`
+	// MinVersionInCluster is the minimum server version in this cluster
+	MinVersionInCluster string `protobuf:"bytes,8,opt,name=min_version_in_cluster,json=minVersionInCluster,proto3" json:"min_version_in_cluster,omitempty"`
+	// MinAllowedVersion is the minimum possible server version in this cluster
+	MinAllowedVersion string `protobuf:"bytes,9,opt,name=min_allowed_version,json=minAllowedVersion,proto3" json:"min_allowed_version,omitempty"`
+	// MaxAllowedVersion is the maximum possible server version in this cluster
+	MaxAllowedVersion string `protobuf:"bytes,10,opt,name=max_allowed_version,json=maxAllowedVersion,proto3" json:"max_allowed_version,omitempty"`
+	// ApiEndpoints is a list of ips of all api endpoints this cluster has
+	ApiEndpoints []string `protobuf:"bytes,11,rep,name=api_endpoints,json=apiEndpoints,proto3" json:"api_endpoints,omitempty"`
+	// DiscoveryEndpoints is a list of ips of all discovery endpoints this cluster has
+	DiscoveryEndpoints []string `protobuf:"bytes,12,rep,name=discovery_endpoints,json=discoveryEndpoints,proto3" json:"discovery_endpoints,omitempty"`
+	// Servers is a list of storage servers in this storage system
+	Servers []*StorageServerInfo `protobuf:"bytes,13,rep,name=servers,proto3" json:"servers,omitempty"`
 }
 
 func (x *StorageClusterInfo) Reset() {
@@ -259,17 +277,24 @@ func (x *StorageClusterInfo) GetServers() []*StorageServerInfo {
 	return nil
 }
 
+// StorageServerInfo contains details about a single storage server
 type StorageServerInfo struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Uuid                   string   `protobuf:"bytes,1,opt,name=uuid,proto3" json:"uuid,omitempty"`
-	Name                   string   `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
-	RiskOfServiceLossState string   `protobuf:"bytes,3,opt,name=risk_of_service_loss_state,json=riskOfServiceLossState,proto3" json:"risk_of_service_loss_state,omitempty"`
-	State                  string   `protobuf:"bytes,4,opt,name=state,proto3" json:"state,omitempty"`
-	ServerEndpoints        []string `protobuf:"bytes,5,rep,name=server_endpoints,json=serverEndpoints,proto3" json:"server_endpoints,omitempty"`
-	LightOsVersion         string   `protobuf:"bytes,6,opt,name=light_os_version,json=lightOsVersion,proto3" json:"light_os_version,omitempty"`
+	// Uuid of this server
+	Uuid string `protobuf:"bytes,1,opt,name=uuid,proto3" json:"uuid,omitempty"`
+	// Name of this server
+	Name string `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
+	// RiskOfServiceLossState describes the risk of service loss
+	RiskOfServiceLossState string `protobuf:"bytes,3,opt,name=risk_of_service_loss_state,json=riskOfServiceLossState,proto3" json:"risk_of_service_loss_state,omitempty"`
+	// State of this server
+	State string `protobuf:"bytes,4,opt,name=state,proto3" json:"state,omitempty"`
+	// ServerEndpoints is a list of ips this server offers
+	ServerEndpoints []string `protobuf:"bytes,5,rep,name=server_endpoints,json=serverEndpoints,proto3" json:"server_endpoints,omitempty"`
+	// LightOsVersion is the version of the storage server version
+	LightOsVersion string `protobuf:"bytes,6,opt,name=light_os_version,json=lightOsVersion,proto3" json:"light_os_version,omitempty"`
 }
 
 func (x *StorageServerInfo) Reset() {
@@ -346,16 +371,22 @@ func (x *StorageServerInfo) GetLightOsVersion() string {
 	return ""
 }
 
+// ClusterHealth the healt of the cluster
 type ClusterHealth struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	State                  string `protobuf:"bytes,1,opt,name=state,proto3" json:"state,omitempty"`
-	NumDegradedVolumes     uint32 `protobuf:"varint,2,opt,name=num_degraded_volumes,json=numDegradedVolumes,proto3" json:"num_degraded_volumes,omitempty"`
-	NumReadOnlyVolumes     uint32 `protobuf:"varint,3,opt,name=num_read_only_volumes,json=numReadOnlyVolumes,proto3" json:"num_read_only_volumes,omitempty"`
+	// State of the cluster
+	State string `protobuf:"bytes,1,opt,name=state,proto3" json:"state,omitempty"`
+	// NumDegradedVolumes is the number of degraded volumes
+	NumDegradedVolumes uint32 `protobuf:"varint,2,opt,name=num_degraded_volumes,json=numDegradedVolumes,proto3" json:"num_degraded_volumes,omitempty"`
+	// NumReadonlyVolumes is the number of read only volumes
+	NumReadOnlyVolumes uint32 `protobuf:"varint,3,opt,name=num_read_only_volumes,json=numReadOnlyVolumes,proto3" json:"num_read_only_volumes,omitempty"`
+	// NumNotAvailableVolumes is the number of not available volumes
 	NumNotAvailableVolumes uint32 `protobuf:"varint,4,opt,name=num_not_available_volumes,json=numNotAvailableVolumes,proto3" json:"num_not_available_volumes,omitempty"`
-	NumInactiveNodes       uint32 `protobuf:"varint,5,opt,name=num_inactive_nodes,json=numInactiveNodes,proto3" json:"num_inactive_nodes,omitempty"`
+	// NumInactiveVolumes is the number of inactive volumes
+	NumInactiveNodes uint32 `protobuf:"varint,5,opt,name=num_inactive_nodes,json=numInactiveNodes,proto3" json:"num_inactive_nodes,omitempty"`
 }
 
 func (x *ClusterHealth) Reset() {
@@ -425,6 +456,7 @@ func (x *ClusterHealth) GetNumInactiveNodes() uint32 {
 	return 0
 }
 
+// ClusterStatisticsApi detailed statistics of the storage cluster
 type ClusterStatisticsApi struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -585,16 +617,22 @@ func (x *ClusterStatisticsApi) GetCompressionRatio() float64 {
 	return 0
 }
 
+// StorageServiceListVolumesRequest is the request payload for the volume list request
 type StorageServiceListVolumesRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Uuid      *string `protobuf:"bytes,1,opt,name=uuid,proto3,oneof" json:"uuid,omitempty"`
-	Project   *string `protobuf:"bytes,2,opt,name=project,proto3,oneof" json:"project,omitempty"`
+	// Uuid is the uuid of the volume to list
+	Uuid *string `protobuf:"bytes,1,opt,name=uuid,proto3,oneof" json:"uuid,omitempty"`
+	// Project is the project of the volume to list
+	Project *string `protobuf:"bytes,2,opt,name=project,proto3,oneof" json:"project,omitempty"`
+	// Partition is the partition of the volume to list
 	Partition *string `protobuf:"bytes,3,opt,name=partition,proto3,oneof" json:"partition,omitempty"`
-	Name      *string `protobuf:"bytes,4,opt,name=name,proto3,oneof" json:"name,omitempty"`
-	Tenant    *string `protobuf:"bytes,5,opt,name=tenant,proto3,oneof" json:"tenant,omitempty"`
+	// Name is the name of the volume to list
+	Name *string `protobuf:"bytes,4,opt,name=name,proto3,oneof" json:"name,omitempty"`
+	// Tenant is the tenant of the volume to list
+	Tenant *string `protobuf:"bytes,5,opt,name=tenant,proto3,oneof" json:"tenant,omitempty"`
 }
 
 func (x *StorageServiceListVolumesRequest) Reset() {
@@ -664,11 +702,13 @@ func (x *StorageServiceListVolumesRequest) GetTenant() string {
 	return ""
 }
 
+// StorageServiceListVolumesResponse is the response payload for the volume list request
 type StorageServiceListVolumesResponse struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
+	// Volumes is the list of volumes
 	Volumes []*v1.Volume `protobuf:"bytes,1,rep,name=volumes,proto3" json:"volumes,omitempty"`
 }
 
@@ -711,16 +751,22 @@ func (x *StorageServiceListVolumesResponse) GetVolumes() []*v1.Volume {
 	return nil
 }
 
+// StorageServiceListVolumesRequest is the request payload for the snapshot list request
 type StorageServiceListSnapshotsRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Uuid      *string `protobuf:"bytes,1,opt,name=uuid,proto3,oneof" json:"uuid,omitempty"`
-	Project   *string `protobuf:"bytes,2,opt,name=project,proto3,oneof" json:"project,omitempty"`
+	// Uuid is the uuid of the snapshot to list
+	Uuid *string `protobuf:"bytes,1,opt,name=uuid,proto3,oneof" json:"uuid,omitempty"`
+	// Project is the project of the snapshot to list
+	Project *string `protobuf:"bytes,2,opt,name=project,proto3,oneof" json:"project,omitempty"`
+	// Partition is the partition of the snapshot to list
 	Partition *string `protobuf:"bytes,3,opt,name=partition,proto3,oneof" json:"partition,omitempty"`
-	Name      *string `protobuf:"bytes,4,opt,name=name,proto3,oneof" json:"name,omitempty"`
-	Tenant    *string `protobuf:"bytes,5,opt,name=tenant,proto3,oneof" json:"tenant,omitempty"`
+	// Name is the name of the snapshot to list
+	Name *string `protobuf:"bytes,4,opt,name=name,proto3,oneof" json:"name,omitempty"`
+	// Tenant is the tenant of the snapshot to list
+	Tenant *string `protobuf:"bytes,5,opt,name=tenant,proto3,oneof" json:"tenant,omitempty"`
 }
 
 func (x *StorageServiceListSnapshotsRequest) Reset() {
@@ -790,11 +836,13 @@ func (x *StorageServiceListSnapshotsRequest) GetTenant() string {
 	return ""
 }
 
+// StorageServiceListSnapshotsResponse is the response payload for the snapshot list request
 type StorageServiceListSnapshotsResponse struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
+	// Snapshots is the list of snapshots
 	Snapshots []*v1.Snapshot `protobuf:"bytes,1,rep,name=snapshots,proto3" json:"snapshots,omitempty"`
 }
 

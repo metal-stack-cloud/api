@@ -7,12 +7,16 @@ import { TenantServiceAdmitRequest, TenantServiceAdmitResponse, TenantServiceLis
 import { MethodKind } from "@bufbuild/protobuf";
 
 /**
+ * TenantService serves tenant related functions
+ *
  * @generated from service admin.v1.TenantService
  */
 export const TenantService = {
   typeName: "admin.v1.TenantService",
   methods: {
     /**
+     * List tenants
+     *
      * @generated from rpc admin.v1.TenantService.List
      */
     list: {
@@ -22,6 +26,8 @@ export const TenantService = {
       kind: MethodKind.Unary,
     },
     /**
+     * Admit a tenant
+     *
      * @generated from rpc admin.v1.TenantService.Admit
      */
     admit: {
@@ -31,6 +37,8 @@ export const TenantService = {
       kind: MethodKind.Unary,
     },
     /**
+     * Revoke a tenant
+     *
      * @generated from rpc admin.v1.TenantService.Revoke
      */
     revoke: {

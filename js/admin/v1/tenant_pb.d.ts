@@ -3,34 +3,50 @@ import { Message, proto3 } from "@bufbuild/protobuf";
 import { OAuthProvider, Paging } from "../../api/v1/common_pb.js";
 import { Tenant } from "../../api/v1/tenant_pb.js";
 /**
+ * TenantServiceListRequest is the request payload for a tenant list request
+ *
  * @generated from message admin.v1.TenantServiceListRequest
  */
 export declare class TenantServiceListRequest extends Message<TenantServiceListRequest> {
     /**
+     * Login of the tenant to list
+     *
      * @generated from field: optional string login = 1;
      */
     login?: string;
     /**
+     * Name of the tenant to list
+     *
      * @generated from field: optional string name = 2;
      */
     name?: string;
     /**
+     * Email of the tenant to list
+     *
      * @generated from field: optional string email = 3;
      */
     email?: string;
     /**
+     * OrganisationId of the tenant to list
+     *
      * @generated from field: optional string organisation_id = 4;
      */
     organisationId?: string;
     /**
+     * OauthProvide of the tenant to list
+     *
      * @generated from field: optional api.v1.OAuthProvider oauth_provider = 5;
      */
     oauthProvider?: OAuthProvider;
     /**
+     * Admitted on show admitted tenants
+     *
      * @generated from field: optional bool admitted = 6;
      */
     admitted?: boolean;
     /**
+     * Paging details for the list request
+     *
      * @generated from field: api.v1.Paging paging = 7;
      */
     paging?: Paging;
@@ -44,15 +60,19 @@ export declare class TenantServiceListRequest extends Message<TenantServiceListR
     static equals(a: TenantServiceListRequest | PlainMessage<TenantServiceListRequest> | undefined, b: TenantServiceListRequest | PlainMessage<TenantServiceListRequest> | undefined): boolean;
 }
 /**
+ * TenantServiceListResponse is the response payload for a tenant list request
+ *
  * @generated from message admin.v1.TenantServiceListResponse
  */
 export declare class TenantServiceListResponse extends Message<TenantServiceListResponse> {
     /**
+     * Tenants are the list of tenants
+     *
      * @generated from field: repeated api.v1.Tenant tenants = 1;
      */
     tenants: Tenant[];
     /**
-     * next_page is used for pagination, returns the next page to be fetched and must then be provided in the list request.
+     * NextPage is used for pagination, returns the next page to be fetched and must then be provided in the list request.
      *
      * @generated from field: optional uint64 next_page = 2;
      */
@@ -67,18 +87,26 @@ export declare class TenantServiceListResponse extends Message<TenantServiceList
     static equals(a: TenantServiceListResponse | PlainMessage<TenantServiceListResponse> | undefined, b: TenantServiceListResponse | PlainMessage<TenantServiceListResponse> | undefined): boolean;
 }
 /**
+ * TenantServiceAdmitRequest is the request payload for a tenant admit request
+ *
  * @generated from message admin.v1.TenantServiceAdmitRequest
  */
 export declare class TenantServiceAdmitRequest extends Message<TenantServiceAdmitRequest> {
     /**
+     * TenantId is the id of the tenant to admit
+     *
      * @generated from field: string tenant_id = 1;
      */
     tenantId: string;
     /**
+     * CouponId is the id of the coupon this tenant should get
+     *
      * @generated from field: optional string coupon_id = 2;
      */
     couponId?: string;
     /**
+     * BalanceToAdd is the amount of balance he should be granted
+     *
      * @generated from field: optional int64 balance_to_add = 3;
      */
     balanceToAdd?: bigint;
@@ -92,10 +120,14 @@ export declare class TenantServiceAdmitRequest extends Message<TenantServiceAdmi
     static equals(a: TenantServiceAdmitRequest | PlainMessage<TenantServiceAdmitRequest> | undefined, b: TenantServiceAdmitRequest | PlainMessage<TenantServiceAdmitRequest> | undefined): boolean;
 }
 /**
+ * TenantServiceAdmitResponse is the response payload for a tenant admit request
+ *
  * @generated from message admin.v1.TenantServiceAdmitResponse
  */
 export declare class TenantServiceAdmitResponse extends Message<TenantServiceAdmitResponse> {
     /**
+     * Tenant the tenant
+     *
      * @generated from field: api.v1.Tenant tenant = 1;
      */
     tenant?: Tenant;
@@ -109,10 +141,14 @@ export declare class TenantServiceAdmitResponse extends Message<TenantServiceAdm
     static equals(a: TenantServiceAdmitResponse | PlainMessage<TenantServiceAdmitResponse> | undefined, b: TenantServiceAdmitResponse | PlainMessage<TenantServiceAdmitResponse> | undefined): boolean;
 }
 /**
+ * TenantServiceRevokeRequest is the request payload for a tenant revoke request
+ *
  * @generated from message admin.v1.TenantServiceRevokeRequest
  */
 export declare class TenantServiceRevokeRequest extends Message<TenantServiceRevokeRequest> {
     /**
+     * TenantId is the id of the tenant to revoke
+     *
      * @generated from field: string tenant_id = 1;
      */
     tenantId: string;
@@ -126,10 +162,14 @@ export declare class TenantServiceRevokeRequest extends Message<TenantServiceRev
     static equals(a: TenantServiceRevokeRequest | PlainMessage<TenantServiceRevokeRequest> | undefined, b: TenantServiceRevokeRequest | PlainMessage<TenantServiceRevokeRequest> | undefined): boolean;
 }
 /**
+ * TenantServiceRevokeResponse is the response payload for a tenant revoke request
+ *
  * @generated from message admin.v1.TenantServiceRevokeResponse
  */
 export declare class TenantServiceRevokeResponse extends Message<TenantServiceRevokeResponse> {
     /**
+     * Tenant the tenant
+     *
      * @generated from field: api.v1.Tenant tenant = 1;
      */
     tenant?: Tenant;
