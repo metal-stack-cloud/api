@@ -6,6 +6,7 @@ lint:
   use:
     - DEFAULT
     - COMMENTS
+    - PACKAGE_NO_IMPORT_CYCLE
 deps:
   - buf.build/envoyproxy/protoc-gen-validate
   - buf.build/googleapis/googleapis
