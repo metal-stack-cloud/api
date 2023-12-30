@@ -4835,7 +4835,7 @@
           "name": "Snapshot",
           "longName": "Snapshot",
           "fullName": "api.v1.Snapshot",
-          "description": "",
+          "description": "Snapshot is a unit of block storage create as a point in time block copy of a volume",
           "hasExtensions": false,
           "hasFields": true,
           "hasOneofs": false,
@@ -4843,7 +4843,7 @@
           "fields": [
             {
               "name": "uuid",
-              "description": "",
+              "description": "Uuid is the unique identifier of the snapshot",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -4855,7 +4855,7 @@
             },
             {
               "name": "name",
-              "description": "",
+              "description": "Name of the snapshot",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -4867,7 +4867,7 @@
             },
             {
               "name": "description",
-              "description": "",
+              "description": "Description of this snapshot",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -4879,7 +4879,7 @@
             },
             {
               "name": "project",
-              "description": "",
+              "description": "Project this snapshot belongs to",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -4891,7 +4891,7 @@
             },
             {
               "name": "partition",
-              "description": "",
+              "description": "Partition where this snapshot resides",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -4903,7 +4903,7 @@
             },
             {
               "name": "storage_class",
-              "description": "",
+              "description": "StorageClass where this snapshot is created",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -4915,7 +4915,7 @@
             },
             {
               "name": "size",
-              "description": "",
+              "description": "Size in bytes of the snapshot",
               "label": "",
               "type": "uint64",
               "longType": "uint64",
@@ -4927,7 +4927,7 @@
             },
             {
               "name": "usage",
-              "description": "",
+              "description": "Usage in bytes of the snapshot",
               "label": "",
               "type": "uint64",
               "longType": "uint64",
@@ -4939,7 +4939,7 @@
             },
             {
               "name": "state",
-              "description": "",
+              "description": "State of the snapshot",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -4951,7 +4951,7 @@
             },
             {
               "name": "source_volume_uuid",
-              "description": "",
+              "description": "SourceVolumeUuid is the uuid of the snapshot this snapshot was created from",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -4963,7 +4963,7 @@
             },
             {
               "name": "source_volume_name",
-              "description": "",
+              "description": "SourceVolumeName is the name of the snapshot this snapshot was created from",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -4975,7 +4975,7 @@
             },
             {
               "name": "replica_count",
-              "description": "",
+              "description": "ReplicaCount shows how many replicas of this snapshot exist",
               "label": "",
               "type": "uint32",
               "longType": "uint32",
@@ -4987,7 +4987,7 @@
             },
             {
               "name": "primary_node_uuid",
-              "description": "",
+              "description": "PrimaryNodeUuid is the uuid of the storage server node where the primary replica of this snapshot resides",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -4999,7 +4999,7 @@
             },
             {
               "name": "retention",
-              "description": "",
+              "description": "Retention is the duration after creation, after which this snapshot will be deleted",
               "label": "",
               "type": "Duration",
               "longType": "google.protobuf.Duration",
@@ -5023,7 +5023,7 @@
             },
             {
               "name": "created_at",
-              "description": "",
+              "description": "CreatedAt is the date when this snapshot was created",
               "label": "",
               "type": "Timestamp",
               "longType": "google.protobuf.Timestamp",
@@ -5039,7 +5039,7 @@
           "name": "SnapshotServiceDeleteRequest",
           "longName": "SnapshotServiceDeleteRequest",
           "fullName": "api.v1.SnapshotServiceDeleteRequest",
-          "description": "",
+          "description": "SnapshotServiceDeleteRequest is the request payload of a snapshot delete request",
           "hasExtensions": false,
           "hasFields": true,
           "hasOneofs": false,
@@ -5047,7 +5047,7 @@
           "fields": [
             {
               "name": "uuid",
-              "description": "",
+              "description": "Uuid of the snapshot",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -5067,7 +5067,7 @@
             },
             {
               "name": "project",
-              "description": "",
+              "description": "Project of the snapshot",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -5095,7 +5095,7 @@
           "name": "SnapshotServiceDeleteResponse",
           "longName": "SnapshotServiceDeleteResponse",
           "fullName": "api.v1.SnapshotServiceDeleteResponse",
-          "description": "",
+          "description": "SnapshotServiceDeleteResponse is the response payload of a snapshot delete request",
           "hasExtensions": false,
           "hasFields": true,
           "hasOneofs": false,
@@ -5103,7 +5103,7 @@
           "fields": [
             {
               "name": "snapshot",
-              "description": "",
+              "description": "Snapshot the snapshot",
               "label": "",
               "type": "Snapshot",
               "longType": "Snapshot",
@@ -5119,7 +5119,7 @@
           "name": "SnapshotServiceGetRequest",
           "longName": "SnapshotServiceGetRequest",
           "fullName": "api.v1.SnapshotServiceGetRequest",
-          "description": "",
+          "description": "SnapshotServiceGetRequest is the request payload of a snapshot list request",
           "hasExtensions": false,
           "hasFields": true,
           "hasOneofs": false,
@@ -5127,7 +5127,7 @@
           "fields": [
             {
               "name": "uuid",
-              "description": "",
+              "description": "Uuid of the snapshot",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -5147,7 +5147,7 @@
             },
             {
               "name": "project",
-              "description": "",
+              "description": "Project of the snapshot",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -5175,7 +5175,7 @@
           "name": "SnapshotServiceGetResponse",
           "longName": "SnapshotServiceGetResponse",
           "fullName": "api.v1.SnapshotServiceGetResponse",
-          "description": "",
+          "description": "SnapshotServiceGetResponse is the response payload of a snapshot get request",
           "hasExtensions": false,
           "hasFields": true,
           "hasOneofs": false,
@@ -5183,7 +5183,7 @@
           "fields": [
             {
               "name": "snapshot",
-              "description": "",
+              "description": "Snapshot the snapshot",
               "label": "",
               "type": "Snapshot",
               "longType": "Snapshot",
@@ -5199,7 +5199,7 @@
           "name": "SnapshotServiceListRequest",
           "longName": "SnapshotServiceListRequest",
           "fullName": "api.v1.SnapshotServiceListRequest",
-          "description": "",
+          "description": "SnapshotServiceListRequest is the request payload of a snapshot list request",
           "hasExtensions": false,
           "hasFields": true,
           "hasOneofs": true,
@@ -5207,7 +5207,7 @@
           "fields": [
             {
               "name": "uuid",
-              "description": "",
+              "description": "Uuid of the snapshot",
               "label": "optional",
               "type": "string",
               "longType": "string",
@@ -5227,7 +5227,7 @@
             },
             {
               "name": "project",
-              "description": "",
+              "description": "Project of the snapshot",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -5251,7 +5251,7 @@
             },
             {
               "name": "partition",
-              "description": "",
+              "description": "Partition where the snapshots should be listed",
               "label": "optional",
               "type": "string",
               "longType": "string",
@@ -5263,7 +5263,7 @@
             },
             {
               "name": "name",
-              "description": "",
+              "description": "Name of the snapshot",
               "label": "optional",
               "type": "string",
               "longType": "string",
@@ -5279,7 +5279,7 @@
           "name": "SnapshotServiceListResponse",
           "longName": "SnapshotServiceListResponse",
           "fullName": "api.v1.SnapshotServiceListResponse",
-          "description": "",
+          "description": "SnapshotServiceListResponse is the response payload of a snapshot list request",
           "hasExtensions": false,
           "hasFields": true,
           "hasOneofs": false,
@@ -5287,7 +5287,7 @@
           "fields": [
             {
               "name": "snapshots",
-              "description": "",
+              "description": "Snapshots the snapshots",
               "label": "repeated",
               "type": "Snapshot",
               "longType": "Snapshot",
@@ -5303,7 +5303,7 @@
           "name": "SnapshotStatistics",
           "longName": "SnapshotStatistics",
           "fullName": "api.v1.SnapshotStatistics",
-          "description": "",
+          "description": "SnapshotStatistics are all detailed statistics of a snapshot",
           "hasExtensions": false,
           "hasFields": true,
           "hasOneofs": false,
@@ -5311,7 +5311,7 @@
           "fields": [
             {
               "name": "physical_capacity",
-              "description": "",
+              "description": "PhysicalCapacity\n\nThe physical capacity that exists in this snapshot layer",
               "label": "",
               "type": "uint64",
               "longType": "uint64",
@@ -5323,7 +5323,7 @@
             },
             {
               "name": "physical_owned_capacity",
-              "description": "",
+              "description": "PhysicalOwnedStorageCapacity\n\nThe capacity that would be freed when snapshot is deleted",
               "label": "",
               "type": "uint64",
               "longType": "uint64",
@@ -5335,7 +5335,7 @@
             },
             {
               "name": "physical_owned_memory",
-              "description": "",
+              "description": "PhysicalOwnedMemory\n\nThe memory that would be freed when snapshot is deleted",
               "label": "",
               "type": "uint64",
               "longType": "uint64",
@@ -5347,7 +5347,7 @@
             },
             {
               "name": "physical_memory",
-              "description": "",
+              "description": "PhysicalMemory\n\nThe memory that exists for this snapshot",
               "label": "",
               "type": "uint64",
               "longType": "uint64",
@@ -5359,7 +5359,7 @@
             },
             {
               "name": "user_written",
-              "description": "",
+              "description": "UserWritten\n\nThe amount of bytes written to this snapshot by the user",
               "label": "",
               "type": "uint64",
               "longType": "uint64",
@@ -5375,7 +5375,7 @@
           "name": "Volume",
           "longName": "Volume",
           "fullName": "api.v1.Volume",
-          "description": "Types",
+          "description": "Volume is a unit of block storage",
           "hasExtensions": false,
           "hasFields": true,
           "hasOneofs": false,
@@ -5383,7 +5383,7 @@
           "fields": [
             {
               "name": "uuid",
-              "description": "",
+              "description": "Uuid is the unique identifier of the volume",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -5395,7 +5395,7 @@
             },
             {
               "name": "name",
-              "description": "",
+              "description": "Name of the volume",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -5407,7 +5407,7 @@
             },
             {
               "name": "project",
-              "description": "",
+              "description": "Project this volume belongs to",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -5419,7 +5419,7 @@
             },
             {
               "name": "partition",
-              "description": "",
+              "description": "Partition where this volume resides",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -5431,7 +5431,7 @@
             },
             {
               "name": "storage_class",
-              "description": "",
+              "description": "StorageClass where this volume is created",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -5443,7 +5443,7 @@
             },
             {
               "name": "size",
-              "description": "",
+              "description": "Size in bytes of the volume",
               "label": "",
               "type": "uint64",
               "longType": "uint64",
@@ -5455,7 +5455,7 @@
             },
             {
               "name": "usage",
-              "description": "",
+              "description": "Usage in bytes of the volume",
               "label": "",
               "type": "uint64",
               "longType": "uint64",
@@ -5467,7 +5467,7 @@
             },
             {
               "name": "state",
-              "description": "",
+              "description": "State of the volume",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -5479,7 +5479,7 @@
             },
             {
               "name": "attached_to",
-              "description": "",
+              "description": "AttachedTo us a list of nodes this volume is attached",
               "label": "repeated",
               "type": "string",
               "longType": "string",
@@ -5491,7 +5491,7 @@
             },
             {
               "name": "source_snapshot_uuid",
-              "description": "",
+              "description": "SourceSnapshotUuid if this volume was created from a snapshot, this was the uuid source",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -5503,7 +5503,7 @@
             },
             {
               "name": "source_snapshot_name",
-              "description": "",
+              "description": "SourceSnapshotName if this volume was created from a snapshot, this was the name of the source",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -5515,7 +5515,7 @@
             },
             {
               "name": "volume_handle",
-              "description": "",
+              "description": "VolumeHandle is the handle to mount this volume manually",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -5527,7 +5527,7 @@
             },
             {
               "name": "node_ips",
-              "description": "",
+              "description": "NodeIps is a list of storage server node ips",
               "label": "repeated",
               "type": "string",
               "longType": "string",
@@ -5539,7 +5539,7 @@
             },
             {
               "name": "rebuild_progress",
-              "description": "",
+              "description": "RebuildProgress shows the progress of a rebuild if any",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -5551,7 +5551,7 @@
             },
             {
               "name": "primary_node_uuid",
-              "description": "",
+              "description": "PrimaryNodeUuid is the uuid of the storage server node where the primary replica of this volume resides",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -5563,7 +5563,7 @@
             },
             {
               "name": "qos_policy_uuid",
-              "description": "",
+              "description": "QosPolicyUuid is the uuid of the QOS policy if any",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -5575,7 +5575,7 @@
             },
             {
               "name": "qos_policy_name",
-              "description": "",
+              "description": "QosPolicyName is the name of the QOS policy if any",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -5587,7 +5587,7 @@
             },
             {
               "name": "replica_count",
-              "description": "",
+              "description": "ReplicaCount shows how many replicas of this volume exist",
               "label": "",
               "type": "uint32",
               "longType": "uint32",
@@ -5599,7 +5599,7 @@
             },
             {
               "name": "protection_state",
-              "description": "",
+              "description": "ProtectionState shows the state of failure protection of this volume",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -5611,7 +5611,7 @@
             },
             {
               "name": "logical_used_storage",
-              "description": "",
+              "description": "LogicalUsedStorage in bytes of the volume",
               "label": "",
               "type": "uint64",
               "longType": "uint64",
@@ -5639,7 +5639,7 @@
           "name": "VolumeServiceDeleteRequest",
           "longName": "VolumeServiceDeleteRequest",
           "fullName": "api.v1.VolumeServiceDeleteRequest",
-          "description": "",
+          "description": "VolumeServiceDeleteRequest is the request payload of a volume delete request",
           "hasExtensions": false,
           "hasFields": true,
           "hasOneofs": false,
@@ -5647,7 +5647,7 @@
           "fields": [
             {
               "name": "uuid",
-              "description": "",
+              "description": "Uuid of the volume",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -5667,7 +5667,7 @@
             },
             {
               "name": "project",
-              "description": "",
+              "description": "Project of the volume",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -5695,7 +5695,7 @@
           "name": "VolumeServiceDeleteResponse",
           "longName": "VolumeServiceDeleteResponse",
           "fullName": "api.v1.VolumeServiceDeleteResponse",
-          "description": "",
+          "description": "VolumeServiceDeleteResponse is the response payload of a volume delete request",
           "hasExtensions": false,
           "hasFields": true,
           "hasOneofs": false,
@@ -5703,7 +5703,7 @@
           "fields": [
             {
               "name": "volume",
-              "description": "",
+              "description": "Volume the volume",
               "label": "",
               "type": "Volume",
               "longType": "Volume",
@@ -5719,7 +5719,7 @@
           "name": "VolumeServiceGetRequest",
           "longName": "VolumeServiceGetRequest",
           "fullName": "api.v1.VolumeServiceGetRequest",
-          "description": "Requests",
+          "description": "VolumeServiceGetRequest is the request payload of the volume get request",
           "hasExtensions": false,
           "hasFields": true,
           "hasOneofs": false,
@@ -5727,7 +5727,7 @@
           "fields": [
             {
               "name": "uuid",
-              "description": "",
+              "description": "Uuid of the volume",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -5747,7 +5747,7 @@
             },
             {
               "name": "project",
-              "description": "",
+              "description": "Project of the volume",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -5775,7 +5775,7 @@
           "name": "VolumeServiceGetResponse",
           "longName": "VolumeServiceGetResponse",
           "fullName": "api.v1.VolumeServiceGetResponse",
-          "description": "Responses",
+          "description": "VolumeServiceGetResponse is the response payload of a volume get request",
           "hasExtensions": false,
           "hasFields": true,
           "hasOneofs": false,
@@ -5783,7 +5783,7 @@
           "fields": [
             {
               "name": "volume",
-              "description": "",
+              "description": "Volume the volume",
               "label": "",
               "type": "Volume",
               "longType": "Volume",
@@ -5799,7 +5799,7 @@
           "name": "VolumeServiceListRequest",
           "longName": "VolumeServiceListRequest",
           "fullName": "api.v1.VolumeServiceListRequest",
-          "description": "",
+          "description": "VolumeServiceListRequest is the request payload of a volume list request",
           "hasExtensions": false,
           "hasFields": true,
           "hasOneofs": true,
@@ -5807,7 +5807,7 @@
           "fields": [
             {
               "name": "uuid",
-              "description": "",
+              "description": "Uuid of the volume",
               "label": "optional",
               "type": "string",
               "longType": "string",
@@ -5827,7 +5827,7 @@
             },
             {
               "name": "project",
-              "description": "",
+              "description": "Project of the volume",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -5851,7 +5851,7 @@
             },
             {
               "name": "partition",
-              "description": "",
+              "description": "Partition where the volumes should be listed",
               "label": "optional",
               "type": "string",
               "longType": "string",
@@ -5863,7 +5863,7 @@
             },
             {
               "name": "name",
-              "description": "",
+              "description": "Name of the volume",
               "label": "optional",
               "type": "string",
               "longType": "string",
@@ -5879,7 +5879,7 @@
           "name": "VolumeServiceListResponse",
           "longName": "VolumeServiceListResponse",
           "fullName": "api.v1.VolumeServiceListResponse",
-          "description": "",
+          "description": "VolumeServiceListResponse is the response payload of a volume list request",
           "hasExtensions": false,
           "hasFields": true,
           "hasOneofs": false,
@@ -5887,7 +5887,7 @@
           "fields": [
             {
               "name": "volumes",
-              "description": "",
+              "description": "Volumes the volumes",
               "label": "repeated",
               "type": "Volume",
               "longType": "Volume",
@@ -5903,7 +5903,7 @@
           "name": "VolumeStatistics",
           "longName": "VolumeStatistics",
           "fullName": "api.v1.VolumeStatistics",
-          "description": "",
+          "description": "VolumeStatistics are all detailed statistics of a volume",
           "hasExtensions": false,
           "hasFields": true,
           "hasOneofs": false,
@@ -5911,7 +5911,7 @@
           "fields": [
             {
               "name": "logical_used_storage",
-              "description": "Logical Used Storage\n\nLogical storage space used by volume, given in bytes.",
+              "description": "LogicalUsedStorage\n\nLogical storage space used by volume, given in bytes.",
               "label": "",
               "type": "uint64",
               "longType": "uint64",
@@ -5923,7 +5923,7 @@
             },
             {
               "name": "physical_used_storage",
-              "description": "Physical Used Storage\n\nPhysical storage space used by volume excluding parity, given in bytes.",
+              "description": "PhysicalUsedStorage\n\nPhysical storage space used by volume excluding parity, given in bytes.",
               "label": "",
               "type": "uint64",
               "longType": "uint64",
@@ -5935,7 +5935,7 @@
             },
             {
               "name": "compression_ratio",
-              "description": "commpression ratio\n\ncompression ratio userWritten/physicalCapacity",
+              "description": "CommpressionRatio\n\ncompression ratio userWritten/physicalCapacity",
               "label": "",
               "type": "double",
               "longType": "double",
@@ -5947,7 +5947,7 @@
             },
             {
               "name": "total_compression_ratio",
-              "description": "total commpression ratio\n\ncompression ratio sum(userWritten) / sum(physical capacity)",
+              "description": "TotalCommpressionRatio\n\ncompression ratio sum(userWritten) / sum(physical capacity)",
               "label": "",
               "type": "double",
               "longType": "double",
@@ -5971,7 +5971,7 @@
             },
             {
               "name": "physical_owned_capacity",
-              "description": "Physical Owned storage Capacity\n\nThe capacity that would be freed when volume is deleted",
+              "description": "PhysicalOwnedStorageCapacity\n\nThe capacity that would be freed when volume is deleted",
               "label": "",
               "type": "uint64",
               "longType": "uint64",
@@ -5983,7 +5983,7 @@
             },
             {
               "name": "physical_owned_memory",
-              "description": "",
+              "description": "PhysicalOwnedMemory\n\nThe memory that would be freed when volume is deleted",
               "label": "",
               "type": "uint64",
               "longType": "uint64",
@@ -5995,7 +5995,7 @@
             },
             {
               "name": "physical_memory",
-              "description": "",
+              "description": "PhysicalMemory\n\nThe memory that exists for this volume",
               "label": "",
               "type": "uint64",
               "longType": "uint64",
@@ -6007,7 +6007,7 @@
             },
             {
               "name": "user_written",
-              "description": "",
+              "description": "UserWritten\n\nThe amount of bytes written to this volume by the user",
               "label": "",
               "type": "uint64",
               "longType": "uint64",
@@ -6019,7 +6019,7 @@
             },
             {
               "name": "unrecoverable_data_integrity_errors",
-              "description": "Unrecoverable Data Integrity Errors\n\nNumber of data integrity errors that could no be recovered by the system.",
+              "description": "UnrecoverableDataIntegrityErrors\n\nNumber of data integrity errors that could no be recovered by the system.",
               "label": "",
               "type": "uint32",
               "longType": "uint32",
@@ -6031,7 +6031,7 @@
             },
             {
               "name": "recoverable_data_integrity_errors",
-              "description": "Recoverable Data Integrity Errors\n\nNumber of data integrity errors that were recovered by the system.",
+              "description": "RecoverableDataIntegrityErrors\n\nNumber of data integrity errors that were recovered by the system.",
               "label": "",
               "type": "uint32",
               "longType": "uint32",
@@ -6049,11 +6049,11 @@
           "name": "SnapshotService",
           "longName": "SnapshotService",
           "fullName": "api.v1.SnapshotService",
-          "description": "",
+          "description": "SnapshotService serves snapshot related functions",
           "methods": [
             {
               "name": "Get",
-              "description": "",
+              "description": "Get a snapshot",
               "requestType": "SnapshotServiceGetRequest",
               "requestLongType": "SnapshotServiceGetRequest",
               "requestFullType": "api.v1.SnapshotServiceGetRequest",
@@ -6065,7 +6065,7 @@
             },
             {
               "name": "List",
-              "description": "",
+              "description": "List snapshots",
               "requestType": "SnapshotServiceListRequest",
               "requestLongType": "SnapshotServiceListRequest",
               "requestFullType": "api.v1.SnapshotServiceListRequest",
@@ -6077,7 +6077,7 @@
             },
             {
               "name": "Delete",
-              "description": "",
+              "description": "Delete a snapshot",
               "requestType": "SnapshotServiceDeleteRequest",
               "requestLongType": "SnapshotServiceDeleteRequest",
               "requestFullType": "api.v1.SnapshotServiceDeleteRequest",
@@ -6093,11 +6093,11 @@
           "name": "VolumeService",
           "longName": "VolumeService",
           "fullName": "api.v1.VolumeService",
-          "description": "",
+          "description": "VolumeService serves volume related functions",
           "methods": [
             {
               "name": "Get",
-              "description": "",
+              "description": "Get a volume",
               "requestType": "VolumeServiceGetRequest",
               "requestLongType": "VolumeServiceGetRequest",
               "requestFullType": "api.v1.VolumeServiceGetRequest",
@@ -6109,7 +6109,7 @@
             },
             {
               "name": "List",
-              "description": "",
+              "description": "List the volumes",
               "requestType": "VolumeServiceListRequest",
               "requestLongType": "VolumeServiceListRequest",
               "requestFullType": "api.v1.VolumeServiceListRequest",
@@ -6121,7 +6121,7 @@
             },
             {
               "name": "Delete",
-              "description": "",
+              "description": "Delete a volume",
               "requestType": "VolumeServiceDeleteRequest",
               "requestLongType": "VolumeServiceDeleteRequest",
               "requestFullType": "api.v1.VolumeServiceDeleteRequest",

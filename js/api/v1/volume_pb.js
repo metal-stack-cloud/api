@@ -7,7 +7,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.SnapshotServiceDeleteResponse = exports.SnapshotServiceListResponse = exports.SnapshotServiceGetResponse = exports.VolumeServiceDeleteResponse = exports.VolumeServiceListResponse = exports.VolumeServiceGetResponse = exports.SnapshotServiceDeleteRequest = exports.SnapshotServiceListRequest = exports.SnapshotServiceGetRequest = exports.VolumeServiceDeleteRequest = exports.VolumeServiceListRequest = exports.VolumeServiceGetRequest = exports.SnapshotStatistics = exports.Snapshot = exports.VolumeStatistics = exports.Volume = void 0;
 const protobuf_1 = require("@bufbuild/protobuf");
 /**
- * Types
+ * Volume is a unit of block storage
  *
  * @generated from message api.v1.Volume
  */
@@ -15,82 +15,122 @@ class Volume extends protobuf_1.Message {
     constructor(data) {
         super();
         /**
+         * Uuid is the unique identifier of the volume
+         *
          * @generated from field: string uuid = 1;
          */
         this.uuid = "";
         /**
+         * Name of the volume
+         *
          * @generated from field: string name = 2;
          */
         this.name = "";
         /**
+         * Project this volume belongs to
+         *
          * @generated from field: string project = 3;
          */
         this.project = "";
         /**
+         * Partition where this volume resides
+         *
          * @generated from field: string partition = 4;
          */
         this.partition = "";
         /**
+         * StorageClass where this volume is created
+         *
          * @generated from field: string storage_class = 5;
          */
         this.storageClass = "";
         /**
+         * Size in bytes of the volume
+         *
          * @generated from field: uint64 size = 6;
          */
         this.size = protobuf_1.protoInt64.zero;
         /**
+         * Usage in bytes of the volume
+         *
          * @generated from field: uint64 usage = 7;
          */
         this.usage = protobuf_1.protoInt64.zero;
         /**
+         * State of the volume
+         *
          * @generated from field: string state = 8;
          */
         this.state = "";
         /**
+         * AttachedTo us a list of nodes this volume is attached
+         *
          * @generated from field: repeated string attached_to = 9;
          */
         this.attachedTo = [];
         /**
+         * SourceSnapshotUuid if this volume was created from a snapshot, this was the uuid source
+         *
          * @generated from field: string source_snapshot_uuid = 10;
          */
         this.sourceSnapshotUuid = "";
         /**
+         * SourceSnapshotName if this volume was created from a snapshot, this was the name of the source
+         *
          * @generated from field: string source_snapshot_name = 11;
          */
         this.sourceSnapshotName = "";
         /**
+         * VolumeHandle is the handle to mount this volume manually
+         *
          * @generated from field: string volume_handle = 12;
          */
         this.volumeHandle = "";
         /**
+         * NodeIps is a list of storage server node ips
+         *
          * @generated from field: repeated string node_ips = 13;
          */
         this.nodeIps = [];
         /**
+         * RebuildProgress shows the progress of a rebuild if any
+         *
          * @generated from field: string rebuild_progress = 14;
          */
         this.rebuildProgress = "";
         /**
+         * PrimaryNodeUuid is the uuid of the storage server node where the primary replica of this volume resides
+         *
          * @generated from field: string primary_node_uuid = 15;
          */
         this.primaryNodeUuid = "";
         /**
+         * QosPolicyUuid is the uuid of the QOS policy if any
+         *
          * @generated from field: string qos_policy_uuid = 16;
          */
         this.qosPolicyUuid = "";
         /**
+         * QosPolicyName is the name of the QOS policy if any
+         *
          * @generated from field: string qos_policy_name = 17;
          */
         this.qosPolicyName = "";
         /**
+         * ReplicaCount shows how many replicas of this volume exist
+         *
          * @generated from field: uint32 replica_count = 18;
          */
         this.replicaCount = 0;
         /**
+         * ProtectionState shows the state of failure protection of this volume
+         *
          * @generated from field: string protection_state = 19;
          */
         this.protectionState = "";
         /**
+         * LogicalUsedStorage in bytes of the volume
+         *
          * @generated from field: uint64 logical_used_storage = 20;
          */
         this.logicalUsedStorage = protobuf_1.protoInt64.zero;
@@ -136,13 +176,15 @@ Volume.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 21, name: "statistics", kind: "message", T: VolumeStatistics },
 ]);
 /**
+ * VolumeStatistics are all detailed statistics of a volume
+ *
  * @generated from message api.v1.VolumeStatistics
  */
 class VolumeStatistics extends protobuf_1.Message {
     constructor(data) {
         super();
         /**
-         * Logical Used Storage
+         * LogicalUsedStorage
          *
          * Logical storage space used by volume, given in bytes.
          *
@@ -150,7 +192,7 @@ class VolumeStatistics extends protobuf_1.Message {
          */
         this.logicalUsedStorage = protobuf_1.protoInt64.zero;
         /**
-         * Physical Used Storage
+         * PhysicalUsedStorage
          *
          * Physical storage space used by volume excluding parity, given in bytes.
          *
@@ -158,7 +200,7 @@ class VolumeStatistics extends protobuf_1.Message {
          */
         this.physicalUsedStorage = protobuf_1.protoInt64.zero;
         /**
-         * commpression ratio
+         * CommpressionRatio
          *
          * compression ratio userWritten/physicalCapacity
          *
@@ -166,7 +208,7 @@ class VolumeStatistics extends protobuf_1.Message {
          */
         this.compressionRatio = 0;
         /**
-         * total commpression ratio
+         * TotalCommpressionRatio
          *
          * compression ratio sum(userWritten) / sum(physical capacity)
          *
@@ -182,7 +224,7 @@ class VolumeStatistics extends protobuf_1.Message {
          */
         this.physicalCapacity = protobuf_1.protoInt64.zero;
         /**
-         * Physical Owned storage Capacity
+         * PhysicalOwnedStorageCapacity
          *
          * The capacity that would be freed when volume is deleted
          *
@@ -190,19 +232,31 @@ class VolumeStatistics extends protobuf_1.Message {
          */
         this.physicalOwnedCapacity = protobuf_1.protoInt64.zero;
         /**
+         * PhysicalOwnedMemory
+         *
+         * The memory that would be freed when volume is deleted
+         *
          * @generated from field: uint64 physical_owned_memory = 7;
          */
         this.physicalOwnedMemory = protobuf_1.protoInt64.zero;
         /**
+         * PhysicalMemory
+         *
+         * The memory that exists for this volume
+         *
          * @generated from field: uint64 physical_memory = 8;
          */
         this.physicalMemory = protobuf_1.protoInt64.zero;
         /**
+         * UserWritten
+         *
+         * The amount of bytes written to this volume by the user
+         *
          * @generated from field: uint64 user_written = 9;
          */
         this.userWritten = protobuf_1.protoInt64.zero;
         /**
-         * Unrecoverable Data Integrity Errors
+         * UnrecoverableDataIntegrityErrors
          *
          * Number of data integrity errors that could no be recovered by the system.
          *
@@ -210,7 +264,7 @@ class VolumeStatistics extends protobuf_1.Message {
          */
         this.unrecoverableDataIntegrityErrors = 0;
         /**
-         * Recoverable Data Integrity Errors
+         * RecoverableDataIntegrityErrors
          *
          * Number of data integrity errors that were recovered by the system.
          *
@@ -249,60 +303,88 @@ VolumeStatistics.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 12, name: "recoverable_data_integrity_errors", kind: "scalar", T: 13 /* ScalarType.UINT32 */ },
 ]);
 /**
+ * Snapshot is a unit of block storage create as a point in time block copy of a volume
+ *
  * @generated from message api.v1.Snapshot
  */
 class Snapshot extends protobuf_1.Message {
     constructor(data) {
         super();
         /**
+         * Uuid is the unique identifier of the snapshot
+         *
          * @generated from field: string uuid = 1;
          */
         this.uuid = "";
         /**
+         * Name of the snapshot
+         *
          * @generated from field: string name = 2;
          */
         this.name = "";
         /**
+         * Description of this snapshot
+         *
          * @generated from field: string description = 3;
          */
         this.description = "";
         /**
+         * Project this snapshot belongs to
+         *
          * @generated from field: string project = 4;
          */
         this.project = "";
         /**
+         * Partition where this snapshot resides
+         *
          * @generated from field: string partition = 5;
          */
         this.partition = "";
         /**
+         * StorageClass where this snapshot is created
+         *
          * @generated from field: string storage_class = 6;
          */
         this.storageClass = "";
         /**
+         * Size in bytes of the snapshot
+         *
          * @generated from field: uint64 size = 7;
          */
         this.size = protobuf_1.protoInt64.zero;
         /**
+         * Usage in bytes of the snapshot
+         *
          * @generated from field: uint64 usage = 8;
          */
         this.usage = protobuf_1.protoInt64.zero;
         /**
+         * State of the snapshot
+         *
          * @generated from field: string state = 9;
          */
         this.state = "";
         /**
+         * SourceVolumeUuid is the uuid of the snapshot this snapshot was created from
+         *
          * @generated from field: string source_volume_uuid = 10;
          */
         this.sourceVolumeUuid = "";
         /**
+         * SourceVolumeName is the name of the snapshot this snapshot was created from
+         *
          * @generated from field: string source_volume_name = 11;
          */
         this.sourceVolumeName = "";
         /**
+         * ReplicaCount shows how many replicas of this snapshot exist
+         *
          * @generated from field: uint32 replica_count = 12;
          */
         this.replicaCount = 0;
         /**
+         * PrimaryNodeUuid is the uuid of the storage server node where the primary replica of this snapshot resides
+         *
          * @generated from field: string primary_node_uuid = 13;
          */
         this.primaryNodeUuid = "";
@@ -343,28 +425,50 @@ Snapshot.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 20, name: "created_at", kind: "message", T: protobuf_1.Timestamp },
 ]);
 /**
+ * SnapshotStatistics are all detailed statistics of a snapshot
+ *
  * @generated from message api.v1.SnapshotStatistics
  */
 class SnapshotStatistics extends protobuf_1.Message {
     constructor(data) {
         super();
         /**
+         * PhysicalCapacity
+         *
+         * The physical capacity that exists in this snapshot layer
+         *
          * @generated from field: uint64 physical_capacity = 1;
          */
         this.physicalCapacity = protobuf_1.protoInt64.zero;
         /**
+         * PhysicalOwnedStorageCapacity
+         *
+         * The capacity that would be freed when snapshot is deleted
+         *
          * @generated from field: uint64 physical_owned_capacity = 2;
          */
         this.physicalOwnedCapacity = protobuf_1.protoInt64.zero;
         /**
+         * PhysicalOwnedMemory
+         *
+         * The memory that would be freed when snapshot is deleted
+         *
          * @generated from field: uint64 physical_owned_memory = 3;
          */
         this.physicalOwnedMemory = protobuf_1.protoInt64.zero;
         /**
+         * PhysicalMemory
+         *
+         * The memory that exists for this snapshot
+         *
          * @generated from field: uint64 physical_memory = 4;
          */
         this.physicalMemory = protobuf_1.protoInt64.zero;
         /**
+         * UserWritten
+         *
+         * The amount of bytes written to this snapshot by the user
+         *
          * @generated from field: uint64 user_written = 5;
          */
         this.userWritten = protobuf_1.protoInt64.zero;
@@ -394,7 +498,7 @@ SnapshotStatistics.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 5, name: "user_written", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
 ]);
 /**
- * Requests
+ * VolumeServiceGetRequest is the request payload of the volume get request
  *
  * @generated from message api.v1.VolumeServiceGetRequest
  */
@@ -402,10 +506,14 @@ class VolumeServiceGetRequest extends protobuf_1.Message {
     constructor(data) {
         super();
         /**
+         * Uuid of the volume
+         *
          * @generated from field: string uuid = 1;
          */
         this.uuid = "";
         /**
+         * Project of the volume
+         *
          * @generated from field: string project = 2;
          */
         this.project = "";
@@ -432,12 +540,16 @@ VolumeServiceGetRequest.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 2, name: "project", kind: "scalar", T: 9 /* ScalarType.STRING */ },
 ]);
 /**
+ * VolumeServiceListRequest is the request payload of a volume list request
+ *
  * @generated from message api.v1.VolumeServiceListRequest
  */
 class VolumeServiceListRequest extends protobuf_1.Message {
     constructor(data) {
         super();
         /**
+         * Project of the volume
+         *
          * @generated from field: string project = 2;
          */
         this.project = "";
@@ -466,16 +578,22 @@ VolumeServiceListRequest.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 4, name: "name", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
 ]);
 /**
+ * VolumeServiceDeleteRequest is the request payload of a volume delete request
+ *
  * @generated from message api.v1.VolumeServiceDeleteRequest
  */
 class VolumeServiceDeleteRequest extends protobuf_1.Message {
     constructor(data) {
         super();
         /**
+         * Uuid of the volume
+         *
          * @generated from field: string uuid = 1;
          */
         this.uuid = "";
         /**
+         * Project of the volume
+         *
          * @generated from field: string project = 2;
          */
         this.project = "";
@@ -502,16 +620,22 @@ VolumeServiceDeleteRequest.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 2, name: "project", kind: "scalar", T: 9 /* ScalarType.STRING */ },
 ]);
 /**
+ * SnapshotServiceGetRequest is the request payload of a snapshot list request
+ *
  * @generated from message api.v1.SnapshotServiceGetRequest
  */
 class SnapshotServiceGetRequest extends protobuf_1.Message {
     constructor(data) {
         super();
         /**
+         * Uuid of the snapshot
+         *
          * @generated from field: string uuid = 1;
          */
         this.uuid = "";
         /**
+         * Project of the snapshot
+         *
          * @generated from field: string project = 2;
          */
         this.project = "";
@@ -538,12 +662,16 @@ SnapshotServiceGetRequest.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 2, name: "project", kind: "scalar", T: 9 /* ScalarType.STRING */ },
 ]);
 /**
+ * SnapshotServiceListRequest is the request payload of a snapshot list request
+ *
  * @generated from message api.v1.SnapshotServiceListRequest
  */
 class SnapshotServiceListRequest extends protobuf_1.Message {
     constructor(data) {
         super();
         /**
+         * Project of the snapshot
+         *
          * @generated from field: string project = 2;
          */
         this.project = "";
@@ -572,16 +700,22 @@ SnapshotServiceListRequest.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 4, name: "name", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
 ]);
 /**
+ * SnapshotServiceDeleteRequest is the request payload of a snapshot delete request
+ *
  * @generated from message api.v1.SnapshotServiceDeleteRequest
  */
 class SnapshotServiceDeleteRequest extends protobuf_1.Message {
     constructor(data) {
         super();
         /**
+         * Uuid of the snapshot
+         *
          * @generated from field: string uuid = 1;
          */
         this.uuid = "";
         /**
+         * Project of the snapshot
+         *
          * @generated from field: string project = 2;
          */
         this.project = "";
@@ -608,7 +742,7 @@ SnapshotServiceDeleteRequest.fields = protobuf_1.proto3.util.newFieldList(() => 
     { no: 2, name: "project", kind: "scalar", T: 9 /* ScalarType.STRING */ },
 ]);
 /**
- * Responses
+ * VolumeServiceGetResponse is the response payload of a volume get request
  *
  * @generated from message api.v1.VolumeServiceGetResponse
  */
@@ -637,12 +771,16 @@ VolumeServiceGetResponse.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 1, name: "volume", kind: "message", T: Volume },
 ]);
 /**
+ * VolumeServiceListResponse is the response payload of a volume list request
+ *
  * @generated from message api.v1.VolumeServiceListResponse
  */
 class VolumeServiceListResponse extends protobuf_1.Message {
     constructor(data) {
         super();
         /**
+         * Volumes the volumes
+         *
          * @generated from field: repeated api.v1.Volume volumes = 1;
          */
         this.volumes = [];
@@ -668,6 +806,8 @@ VolumeServiceListResponse.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 1, name: "volumes", kind: "message", T: Volume, repeated: true },
 ]);
 /**
+ * VolumeServiceDeleteResponse is the response payload of a volume delete request
+ *
  * @generated from message api.v1.VolumeServiceDeleteResponse
  */
 class VolumeServiceDeleteResponse extends protobuf_1.Message {
@@ -695,6 +835,8 @@ VolumeServiceDeleteResponse.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 1, name: "volume", kind: "message", T: Volume },
 ]);
 /**
+ * SnapshotServiceGetResponse is the response payload of a snapshot get request
+ *
  * @generated from message api.v1.SnapshotServiceGetResponse
  */
 class SnapshotServiceGetResponse extends protobuf_1.Message {
@@ -722,12 +864,16 @@ SnapshotServiceGetResponse.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 1, name: "snapshot", kind: "message", T: Snapshot },
 ]);
 /**
+ * SnapshotServiceListResponse is the response payload of a snapshot list request
+ *
  * @generated from message api.v1.SnapshotServiceListResponse
  */
 class SnapshotServiceListResponse extends protobuf_1.Message {
     constructor(data) {
         super();
         /**
+         * Snapshots the snapshots
+         *
          * @generated from field: repeated api.v1.Snapshot snapshots = 1;
          */
         this.snapshots = [];
@@ -753,6 +899,8 @@ SnapshotServiceListResponse.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 1, name: "snapshots", kind: "message", T: Snapshot, repeated: true },
 ]);
 /**
+ * SnapshotServiceDeleteResponse is the response payload of a snapshot delete request
+ *
  * @generated from message api.v1.SnapshotServiceDeleteResponse
  */
 class SnapshotServiceDeleteResponse extends protobuf_1.Message {

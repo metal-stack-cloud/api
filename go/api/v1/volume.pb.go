@@ -23,32 +23,52 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-// Types
+// Volume is a unit of block storage
 type Volume struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Uuid               string   `protobuf:"bytes,1,opt,name=uuid,proto3" json:"uuid,omitempty"`
-	Name               string   `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
-	Project            string   `protobuf:"bytes,3,opt,name=project,proto3" json:"project,omitempty"`
-	Partition          string   `protobuf:"bytes,4,opt,name=partition,proto3" json:"partition,omitempty"`
-	StorageClass       string   `protobuf:"bytes,5,opt,name=storage_class,json=storageClass,proto3" json:"storage_class,omitempty"`
-	Size               uint64   `protobuf:"varint,6,opt,name=size,proto3" json:"size,omitempty"`
-	Usage              uint64   `protobuf:"varint,7,opt,name=usage,proto3" json:"usage,omitempty"`
-	State              string   `protobuf:"bytes,8,opt,name=state,proto3" json:"state,omitempty"`
-	AttachedTo         []string `protobuf:"bytes,9,rep,name=attached_to,json=attachedTo,proto3" json:"attached_to,omitempty"`
-	SourceSnapshotUuid string   `protobuf:"bytes,10,opt,name=source_snapshot_uuid,json=sourceSnapshotUuid,proto3" json:"source_snapshot_uuid,omitempty"`
-	SourceSnapshotName string   `protobuf:"bytes,11,opt,name=source_snapshot_name,json=sourceSnapshotName,proto3" json:"source_snapshot_name,omitempty"`
-	VolumeHandle       string   `protobuf:"bytes,12,opt,name=volume_handle,json=volumeHandle,proto3" json:"volume_handle,omitempty"`
-	NodeIps            []string `protobuf:"bytes,13,rep,name=node_ips,json=nodeIps,proto3" json:"node_ips,omitempty"`
-	RebuildProgress    string   `protobuf:"bytes,14,opt,name=rebuild_progress,json=rebuildProgress,proto3" json:"rebuild_progress,omitempty"`
-	PrimaryNodeUuid    string   `protobuf:"bytes,15,opt,name=primary_node_uuid,json=primaryNodeUuid,proto3" json:"primary_node_uuid,omitempty"`
-	QosPolicyUuid      string   `protobuf:"bytes,16,opt,name=qos_policy_uuid,json=qosPolicyUuid,proto3" json:"qos_policy_uuid,omitempty"`
-	QosPolicyName      string   `protobuf:"bytes,17,opt,name=qos_policy_name,json=qosPolicyName,proto3" json:"qos_policy_name,omitempty"`
-	ReplicaCount       uint32   `protobuf:"varint,18,opt,name=replica_count,json=replicaCount,proto3" json:"replica_count,omitempty"`
-	ProtectionState    string   `protobuf:"bytes,19,opt,name=protection_state,json=protectionState,proto3" json:"protection_state,omitempty"`
-	LogicalUsedStorage uint64   `protobuf:"varint,20,opt,name=logical_used_storage,json=logicalUsedStorage,proto3" json:"logical_used_storage,omitempty"`
+	// Uuid is the unique identifier of the volume
+	Uuid string `protobuf:"bytes,1,opt,name=uuid,proto3" json:"uuid,omitempty"`
+	// Name of the volume
+	Name string `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
+	// Project this volume belongs to
+	Project string `protobuf:"bytes,3,opt,name=project,proto3" json:"project,omitempty"`
+	// Partition where this volume resides
+	Partition string `protobuf:"bytes,4,opt,name=partition,proto3" json:"partition,omitempty"`
+	// StorageClass where this volume is created
+	StorageClass string `protobuf:"bytes,5,opt,name=storage_class,json=storageClass,proto3" json:"storage_class,omitempty"`
+	// Size in bytes of the volume
+	Size uint64 `protobuf:"varint,6,opt,name=size,proto3" json:"size,omitempty"`
+	// Usage in bytes of the volume
+	Usage uint64 `protobuf:"varint,7,opt,name=usage,proto3" json:"usage,omitempty"`
+	// State of the volume
+	State string `protobuf:"bytes,8,opt,name=state,proto3" json:"state,omitempty"`
+	// AttachedTo us a list of nodes this volume is attached
+	AttachedTo []string `protobuf:"bytes,9,rep,name=attached_to,json=attachedTo,proto3" json:"attached_to,omitempty"`
+	// SourceSnapshotUuid if this volume was created from a snapshot, this was the uuid source
+	SourceSnapshotUuid string `protobuf:"bytes,10,opt,name=source_snapshot_uuid,json=sourceSnapshotUuid,proto3" json:"source_snapshot_uuid,omitempty"`
+	// SourceSnapshotName if this volume was created from a snapshot, this was the name of the source
+	SourceSnapshotName string `protobuf:"bytes,11,opt,name=source_snapshot_name,json=sourceSnapshotName,proto3" json:"source_snapshot_name,omitempty"`
+	// VolumeHandle is the handle to mount this volume manually
+	VolumeHandle string `protobuf:"bytes,12,opt,name=volume_handle,json=volumeHandle,proto3" json:"volume_handle,omitempty"`
+	// NodeIps is a list of storage server node ips
+	NodeIps []string `protobuf:"bytes,13,rep,name=node_ips,json=nodeIps,proto3" json:"node_ips,omitempty"`
+	// RebuildProgress shows the progress of a rebuild if any
+	RebuildProgress string `protobuf:"bytes,14,opt,name=rebuild_progress,json=rebuildProgress,proto3" json:"rebuild_progress,omitempty"`
+	// PrimaryNodeUuid is the uuid of the storage server node where the primary replica of this volume resides
+	PrimaryNodeUuid string `protobuf:"bytes,15,opt,name=primary_node_uuid,json=primaryNodeUuid,proto3" json:"primary_node_uuid,omitempty"`
+	// QosPolicyUuid is the uuid of the QOS policy if any
+	QosPolicyUuid string `protobuf:"bytes,16,opt,name=qos_policy_uuid,json=qosPolicyUuid,proto3" json:"qos_policy_uuid,omitempty"`
+	// QosPolicyName is the name of the QOS policy if any
+	QosPolicyName string `protobuf:"bytes,17,opt,name=qos_policy_name,json=qosPolicyName,proto3" json:"qos_policy_name,omitempty"`
+	// ReplicaCount shows how many replicas of this volume exist
+	ReplicaCount uint32 `protobuf:"varint,18,opt,name=replica_count,json=replicaCount,proto3" json:"replica_count,omitempty"`
+	// ProtectionState shows the state of failure protection of this volume
+	ProtectionState string `protobuf:"bytes,19,opt,name=protection_state,json=protectionState,proto3" json:"protection_state,omitempty"`
+	// LogicalUsedStorage in bytes of the volume
+	LogicalUsedStorage uint64 `protobuf:"varint,20,opt,name=logical_used_storage,json=logicalUsedStorage,proto3" json:"logical_used_storage,omitempty"`
 	// VolumeStatistics are only visible to admins
 	Statistics *VolumeStatistics `protobuf:"bytes,21,opt,name=statistics,proto3" json:"statistics,omitempty"`
 }
@@ -232,24 +252,25 @@ func (x *Volume) GetStatistics() *VolumeStatistics {
 	return nil
 }
 
+// VolumeStatistics are all detailed statistics of a volume
 type VolumeStatistics struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Logical Used Storage
+	// LogicalUsedStorage
 	//
 	// Logical storage space used by volume, given in bytes.
 	LogicalUsedStorage uint64 `protobuf:"varint,1,opt,name=logical_used_storage,json=logicalUsedStorage,proto3" json:"logical_used_storage,omitempty"`
-	// Physical Used Storage
+	// PhysicalUsedStorage
 	//
 	// Physical storage space used by volume excluding parity, given in bytes.
 	PhysicalUsedStorage uint64 `protobuf:"varint,2,opt,name=physical_used_storage,json=physicalUsedStorage,proto3" json:"physical_used_storage,omitempty"`
-	// commpression ratio
+	// CommpressionRatio
 	//
 	// compression ratio userWritten/physicalCapacity
 	CompressionRatio float64 `protobuf:"fixed64,3,opt,name=compression_ratio,json=compressionRatio,proto3" json:"compression_ratio,omitempty"`
-	// total commpression ratio
+	// TotalCommpressionRatio
 	//
 	// compression ratio sum(userWritten) / sum(physical capacity)
 	TotalCompressionRatio float64 `protobuf:"fixed64,4,opt,name=total_compression_ratio,json=totalCompressionRatio,proto3" json:"total_compression_ratio,omitempty"`
@@ -257,18 +278,27 @@ type VolumeStatistics struct {
 	//
 	// The physical capacity that exists in this volume layer
 	PhysicalCapacity uint64 `protobuf:"varint,5,opt,name=physical_capacity,json=physicalCapacity,proto3" json:"physical_capacity,omitempty"`
-	// Physical Owned storage Capacity
+	// PhysicalOwnedStorageCapacity
 	//
 	// The capacity that would be freed when volume is deleted
 	PhysicalOwnedCapacity uint64 `protobuf:"varint,6,opt,name=physical_owned_capacity,json=physicalOwnedCapacity,proto3" json:"physical_owned_capacity,omitempty"`
-	PhysicalOwnedMemory   uint64 `protobuf:"varint,7,opt,name=physical_owned_memory,json=physicalOwnedMemory,proto3" json:"physical_owned_memory,omitempty"`
-	PhysicalMemory        uint64 `protobuf:"varint,8,opt,name=physical_memory,json=physicalMemory,proto3" json:"physical_memory,omitempty"`
-	UserWritten           uint64 `protobuf:"varint,9,opt,name=user_written,json=userWritten,proto3" json:"user_written,omitempty"`
-	// Unrecoverable Data Integrity Errors
+	// PhysicalOwnedMemory
+	//
+	// The memory that would be freed when volume is deleted
+	PhysicalOwnedMemory uint64 `protobuf:"varint,7,opt,name=physical_owned_memory,json=physicalOwnedMemory,proto3" json:"physical_owned_memory,omitempty"`
+	// PhysicalMemory
+	//
+	// The memory that exists for this volume
+	PhysicalMemory uint64 `protobuf:"varint,8,opt,name=physical_memory,json=physicalMemory,proto3" json:"physical_memory,omitempty"`
+	// UserWritten
+	//
+	// The amount of bytes written to this volume by the user
+	UserWritten uint64 `protobuf:"varint,9,opt,name=user_written,json=userWritten,proto3" json:"user_written,omitempty"`
+	// UnrecoverableDataIntegrityErrors
 	//
 	// Number of data integrity errors that could no be recovered by the system.
 	UnrecoverableDataIntegrityErrors uint32 `protobuf:"varint,10,opt,name=unrecoverable_data_integrity_errors,json=unrecoverableDataIntegrityErrors,proto3" json:"unrecoverable_data_integrity_errors,omitempty"`
-	// Recoverable Data Integrity Errors
+	// RecoverableDataIntegrityErrors
 	//
 	// Number of data integrity errors that were recovered by the system.
 	RecoverableDataIntegrityErrors uint32 `protobuf:"varint,12,opt,name=recoverable_data_integrity_errors,json=recoverableDataIntegrityErrors,proto3" json:"recoverable_data_integrity_errors,omitempty"`
@@ -383,28 +413,44 @@ func (x *VolumeStatistics) GetRecoverableDataIntegrityErrors() uint32 {
 	return 0
 }
 
+// Snapshot is a unit of block storage create as a point in time block copy of a volume
 type Snapshot struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Uuid             string               `protobuf:"bytes,1,opt,name=uuid,proto3" json:"uuid,omitempty"`
-	Name             string               `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
-	Description      string               `protobuf:"bytes,3,opt,name=description,proto3" json:"description,omitempty"`
-	Project          string               `protobuf:"bytes,4,opt,name=project,proto3" json:"project,omitempty"`
-	Partition        string               `protobuf:"bytes,5,opt,name=partition,proto3" json:"partition,omitempty"`
-	StorageClass     string               `protobuf:"bytes,6,opt,name=storage_class,json=storageClass,proto3" json:"storage_class,omitempty"`
-	Size             uint64               `protobuf:"varint,7,opt,name=size,proto3" json:"size,omitempty"`
-	Usage            uint64               `protobuf:"varint,8,opt,name=usage,proto3" json:"usage,omitempty"`
-	State            string               `protobuf:"bytes,9,opt,name=state,proto3" json:"state,omitempty"`
-	SourceVolumeUuid string               `protobuf:"bytes,10,opt,name=source_volume_uuid,json=sourceVolumeUuid,proto3" json:"source_volume_uuid,omitempty"`
-	SourceVolumeName string               `protobuf:"bytes,11,opt,name=source_volume_name,json=sourceVolumeName,proto3" json:"source_volume_name,omitempty"`
-	ReplicaCount     uint32               `protobuf:"varint,12,opt,name=replica_count,json=replicaCount,proto3" json:"replica_count,omitempty"`
-	PrimaryNodeUuid  string               `protobuf:"bytes,13,opt,name=primary_node_uuid,json=primaryNodeUuid,proto3" json:"primary_node_uuid,omitempty"`
-	Retention        *durationpb.Duration `protobuf:"bytes,14,opt,name=retention,proto3" json:"retention,omitempty"`
+	// Uuid is the unique identifier of the snapshot
+	Uuid string `protobuf:"bytes,1,opt,name=uuid,proto3" json:"uuid,omitempty"`
+	// Name of the snapshot
+	Name string `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
+	// Description of this snapshot
+	Description string `protobuf:"bytes,3,opt,name=description,proto3" json:"description,omitempty"`
+	// Project this snapshot belongs to
+	Project string `protobuf:"bytes,4,opt,name=project,proto3" json:"project,omitempty"`
+	// Partition where this snapshot resides
+	Partition string `protobuf:"bytes,5,opt,name=partition,proto3" json:"partition,omitempty"`
+	// StorageClass where this snapshot is created
+	StorageClass string `protobuf:"bytes,6,opt,name=storage_class,json=storageClass,proto3" json:"storage_class,omitempty"`
+	// Size in bytes of the snapshot
+	Size uint64 `protobuf:"varint,7,opt,name=size,proto3" json:"size,omitempty"`
+	// Usage in bytes of the snapshot
+	Usage uint64 `protobuf:"varint,8,opt,name=usage,proto3" json:"usage,omitempty"`
+	// State of the snapshot
+	State string `protobuf:"bytes,9,opt,name=state,proto3" json:"state,omitempty"`
+	// SourceVolumeUuid is the uuid of the snapshot this snapshot was created from
+	SourceVolumeUuid string `protobuf:"bytes,10,opt,name=source_volume_uuid,json=sourceVolumeUuid,proto3" json:"source_volume_uuid,omitempty"`
+	// SourceVolumeName is the name of the snapshot this snapshot was created from
+	SourceVolumeName string `protobuf:"bytes,11,opt,name=source_volume_name,json=sourceVolumeName,proto3" json:"source_volume_name,omitempty"`
+	// ReplicaCount shows how many replicas of this snapshot exist
+	ReplicaCount uint32 `protobuf:"varint,12,opt,name=replica_count,json=replicaCount,proto3" json:"replica_count,omitempty"`
+	// PrimaryNodeUuid is the uuid of the storage server node where the primary replica of this snapshot resides
+	PrimaryNodeUuid string `protobuf:"bytes,13,opt,name=primary_node_uuid,json=primaryNodeUuid,proto3" json:"primary_node_uuid,omitempty"`
+	// Retention is the duration after creation, after which this snapshot will be deleted
+	Retention *durationpb.Duration `protobuf:"bytes,14,opt,name=retention,proto3" json:"retention,omitempty"`
 	// SnapshotStatistics are only visible to admins
-	Statistics *SnapshotStatistics    `protobuf:"bytes,15,opt,name=statistics,proto3" json:"statistics,omitempty"`
-	CreatedAt  *timestamppb.Timestamp `protobuf:"bytes,20,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
+	Statistics *SnapshotStatistics `protobuf:"bytes,15,opt,name=statistics,proto3" json:"statistics,omitempty"`
+	// CreatedAt is the date when this snapshot was created
+	CreatedAt *timestamppb.Timestamp `protobuf:"bytes,20,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
 }
 
 func (x *Snapshot) Reset() {
@@ -551,16 +597,32 @@ func (x *Snapshot) GetCreatedAt() *timestamppb.Timestamp {
 	return nil
 }
 
+// SnapshotStatistics are all detailed statistics of a snapshot
 type SnapshotStatistics struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	PhysicalCapacity      uint64 `protobuf:"varint,1,opt,name=physical_capacity,json=physicalCapacity,proto3" json:"physical_capacity,omitempty"`
+	// PhysicalCapacity
+	//
+	// The physical capacity that exists in this snapshot layer
+	PhysicalCapacity uint64 `protobuf:"varint,1,opt,name=physical_capacity,json=physicalCapacity,proto3" json:"physical_capacity,omitempty"`
+	// PhysicalOwnedStorageCapacity
+	//
+	// The capacity that would be freed when snapshot is deleted
 	PhysicalOwnedCapacity uint64 `protobuf:"varint,2,opt,name=physical_owned_capacity,json=physicalOwnedCapacity,proto3" json:"physical_owned_capacity,omitempty"`
-	PhysicalOwnedMemory   uint64 `protobuf:"varint,3,opt,name=physical_owned_memory,json=physicalOwnedMemory,proto3" json:"physical_owned_memory,omitempty"`
-	PhysicalMemory        uint64 `protobuf:"varint,4,opt,name=physical_memory,json=physicalMemory,proto3" json:"physical_memory,omitempty"`
-	UserWritten           uint64 `protobuf:"varint,5,opt,name=user_written,json=userWritten,proto3" json:"user_written,omitempty"`
+	// PhysicalOwnedMemory
+	//
+	// The memory that would be freed when snapshot is deleted
+	PhysicalOwnedMemory uint64 `protobuf:"varint,3,opt,name=physical_owned_memory,json=physicalOwnedMemory,proto3" json:"physical_owned_memory,omitempty"`
+	// PhysicalMemory
+	//
+	// The memory that exists for this snapshot
+	PhysicalMemory uint64 `protobuf:"varint,4,opt,name=physical_memory,json=physicalMemory,proto3" json:"physical_memory,omitempty"`
+	// UserWritten
+	//
+	// The amount of bytes written to this snapshot by the user
+	UserWritten uint64 `protobuf:"varint,5,opt,name=user_written,json=userWritten,proto3" json:"user_written,omitempty"`
 }
 
 func (x *SnapshotStatistics) Reset() {
@@ -630,13 +692,15 @@ func (x *SnapshotStatistics) GetUserWritten() uint64 {
 	return 0
 }
 
-// Requests
+// VolumeServiceGetRequest is the request payload of the volume get request
 type VolumeServiceGetRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Uuid    string `protobuf:"bytes,1,opt,name=uuid,proto3" json:"uuid,omitempty"`
+	// Uuid of the volume
+	Uuid string `protobuf:"bytes,1,opt,name=uuid,proto3" json:"uuid,omitempty"`
+	// Project of the volume
 	Project string `protobuf:"bytes,2,opt,name=project,proto3" json:"project,omitempty"`
 }
 
@@ -686,15 +750,20 @@ func (x *VolumeServiceGetRequest) GetProject() string {
 	return ""
 }
 
+// VolumeServiceListRequest is the request payload of a volume list request
 type VolumeServiceListRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Uuid      *string `protobuf:"bytes,1,opt,name=uuid,proto3,oneof" json:"uuid,omitempty"`
-	Project   string  `protobuf:"bytes,2,opt,name=project,proto3" json:"project,omitempty"`
+	// Uuid of the volume
+	Uuid *string `protobuf:"bytes,1,opt,name=uuid,proto3,oneof" json:"uuid,omitempty"`
+	// Project of the volume
+	Project string `protobuf:"bytes,2,opt,name=project,proto3" json:"project,omitempty"`
+	// Partition where the volumes should be listed
 	Partition *string `protobuf:"bytes,3,opt,name=partition,proto3,oneof" json:"partition,omitempty"`
-	Name      *string `protobuf:"bytes,4,opt,name=name,proto3,oneof" json:"name,omitempty"`
+	// Name of the volume
+	Name *string `protobuf:"bytes,4,opt,name=name,proto3,oneof" json:"name,omitempty"`
 }
 
 func (x *VolumeServiceListRequest) Reset() {
@@ -757,12 +826,15 @@ func (x *VolumeServiceListRequest) GetName() string {
 	return ""
 }
 
+// VolumeServiceDeleteRequest is the request payload of a volume delete request
 type VolumeServiceDeleteRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Uuid    string `protobuf:"bytes,1,opt,name=uuid,proto3" json:"uuid,omitempty"`
+	// Uuid of the volume
+	Uuid string `protobuf:"bytes,1,opt,name=uuid,proto3" json:"uuid,omitempty"`
+	// Project of the volume
 	Project string `protobuf:"bytes,2,opt,name=project,proto3" json:"project,omitempty"`
 }
 
@@ -812,12 +884,15 @@ func (x *VolumeServiceDeleteRequest) GetProject() string {
 	return ""
 }
 
+// SnapshotServiceGetRequest is the request payload of a snapshot list request
 type SnapshotServiceGetRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Uuid    string `protobuf:"bytes,1,opt,name=uuid,proto3" json:"uuid,omitempty"`
+	// Uuid of the snapshot
+	Uuid string `protobuf:"bytes,1,opt,name=uuid,proto3" json:"uuid,omitempty"`
+	// Project of the snapshot
 	Project string `protobuf:"bytes,2,opt,name=project,proto3" json:"project,omitempty"`
 }
 
@@ -867,15 +942,20 @@ func (x *SnapshotServiceGetRequest) GetProject() string {
 	return ""
 }
 
+// SnapshotServiceListRequest is the request payload of a snapshot list request
 type SnapshotServiceListRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Uuid      *string `protobuf:"bytes,1,opt,name=uuid,proto3,oneof" json:"uuid,omitempty"`
-	Project   string  `protobuf:"bytes,2,opt,name=project,proto3" json:"project,omitempty"`
+	// Uuid of the snapshot
+	Uuid *string `protobuf:"bytes,1,opt,name=uuid,proto3,oneof" json:"uuid,omitempty"`
+	// Project of the snapshot
+	Project string `protobuf:"bytes,2,opt,name=project,proto3" json:"project,omitempty"`
+	// Partition where the snapshots should be listed
 	Partition *string `protobuf:"bytes,3,opt,name=partition,proto3,oneof" json:"partition,omitempty"`
-	Name      *string `protobuf:"bytes,4,opt,name=name,proto3,oneof" json:"name,omitempty"`
+	// Name of the snapshot
+	Name *string `protobuf:"bytes,4,opt,name=name,proto3,oneof" json:"name,omitempty"`
 }
 
 func (x *SnapshotServiceListRequest) Reset() {
@@ -938,12 +1018,15 @@ func (x *SnapshotServiceListRequest) GetName() string {
 	return ""
 }
 
+// SnapshotServiceDeleteRequest is the request payload of a snapshot delete request
 type SnapshotServiceDeleteRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Uuid    string `protobuf:"bytes,1,opt,name=uuid,proto3" json:"uuid,omitempty"`
+	// Uuid of the snapshot
+	Uuid string `protobuf:"bytes,1,opt,name=uuid,proto3" json:"uuid,omitempty"`
+	// Project of the snapshot
 	Project string `protobuf:"bytes,2,opt,name=project,proto3" json:"project,omitempty"`
 }
 
@@ -993,12 +1076,13 @@ func (x *SnapshotServiceDeleteRequest) GetProject() string {
 	return ""
 }
 
-// Responses
+// VolumeServiceGetResponse is the response payload of a volume get request
 type VolumeServiceGetResponse struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
+	// Volume the volume
 	Volume *Volume `protobuf:"bytes,1,opt,name=volume,proto3" json:"volume,omitempty"`
 }
 
@@ -1041,11 +1125,13 @@ func (x *VolumeServiceGetResponse) GetVolume() *Volume {
 	return nil
 }
 
+// VolumeServiceListResponse is the response payload of a volume list request
 type VolumeServiceListResponse struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
+	// Volumes the volumes
 	Volumes []*Volume `protobuf:"bytes,1,rep,name=volumes,proto3" json:"volumes,omitempty"`
 }
 
@@ -1088,11 +1174,13 @@ func (x *VolumeServiceListResponse) GetVolumes() []*Volume {
 	return nil
 }
 
+// VolumeServiceDeleteResponse is the response payload of a volume delete request
 type VolumeServiceDeleteResponse struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
+	// Volume the volume
 	Volume *Volume `protobuf:"bytes,1,opt,name=volume,proto3" json:"volume,omitempty"`
 }
 
@@ -1135,11 +1223,13 @@ func (x *VolumeServiceDeleteResponse) GetVolume() *Volume {
 	return nil
 }
 
+// SnapshotServiceGetResponse is the response payload of a snapshot get request
 type SnapshotServiceGetResponse struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
+	// Snapshot the snapshot
 	Snapshot *Snapshot `protobuf:"bytes,1,opt,name=snapshot,proto3" json:"snapshot,omitempty"`
 }
 
@@ -1182,11 +1272,13 @@ func (x *SnapshotServiceGetResponse) GetSnapshot() *Snapshot {
 	return nil
 }
 
+// SnapshotServiceListResponse is the response payload of a snapshot list request
 type SnapshotServiceListResponse struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
+	// Snapshots the snapshots
 	Snapshots []*Snapshot `protobuf:"bytes,1,rep,name=snapshots,proto3" json:"snapshots,omitempty"`
 }
 
@@ -1229,11 +1321,13 @@ func (x *SnapshotServiceListResponse) GetSnapshots() []*Snapshot {
 	return nil
 }
 
+// SnapshotServiceDeleteResponse is the response payload of a snapshot delete request
 type SnapshotServiceDeleteResponse struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
+	// Snapshot the snapshot
 	Snapshot *Snapshot `protobuf:"bytes,1,opt,name=snapshot,proto3" json:"snapshot,omitempty"`
 }
 
