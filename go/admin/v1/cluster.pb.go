@@ -23,13 +23,18 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
+// Operate defines the types of reconcilation to be triggered
 type Operate int32
 
 const (
+	// OPERATE_UNSPECIFIED is not specified
 	Operate_OPERATE_UNSPECIFIED Operate = 0
-	Operate_OPERATE_RECONCILE   Operate = 1
-	Operate_OPERATE_MAINTAIN    Operate = 2
-	Operate_OPERATE_RETRY       Operate = 3
+	// OPERATE_RECONCILE reconcile the cluster
+	Operate_OPERATE_RECONCILE Operate = 1
+	// OPERATE_MAINTAIN maintain the cluster
+	Operate_OPERATE_MAINTAIN Operate = 2
+	// OPERATE_RETRY retry the reconcilation of the cluster
+	Operate_OPERATE_RETRY Operate = 3
 )
 
 // Enum value maps for Operate.
@@ -75,13 +80,16 @@ func (Operate) EnumDescriptor() ([]byte, []int) {
 	return file_admin_v1_cluster_proto_rawDescGZIP(), []int{0}
 }
 
+// ClusterServiceGetRequest is the request payload for the cluster get request
 type ClusterServiceGetRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Uuid         string `protobuf:"bytes,1,opt,name=uuid,proto3" json:"uuid,omitempty"`
-	WithMachines bool   `protobuf:"varint,2,opt,name=with_machines,json=withMachines,proto3" json:"with_machines,omitempty"`
+	// Uuid of the cluster to get
+	Uuid string `protobuf:"bytes,1,opt,name=uuid,proto3" json:"uuid,omitempty"`
+	// WithMachines if set to true machines of all worker groups are also returned
+	WithMachines bool `protobuf:"varint,2,opt,name=with_machines,json=withMachines,proto3" json:"with_machines,omitempty"`
 }
 
 func (x *ClusterServiceGetRequest) Reset() {
@@ -130,19 +138,28 @@ func (x *ClusterServiceGetRequest) GetWithMachines() bool {
 	return false
 }
 
+// ClusterServiceListRequest is the request payload for the cluster list request
 type ClusterServiceListRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Uuid      *string           `protobuf:"bytes,1,opt,name=uuid,proto3,oneof" json:"uuid,omitempty"`
-	Project   *string           `protobuf:"bytes,2,opt,name=project,proto3,oneof" json:"project,omitempty"`
-	Tenant    *string           `protobuf:"bytes,3,opt,name=tenant,proto3,oneof" json:"tenant,omitempty"`
-	Partition *string           `protobuf:"bytes,4,opt,name=partition,proto3,oneof" json:"partition,omitempty"`
-	Seed      *string           `protobuf:"bytes,5,opt,name=seed,proto3,oneof" json:"seed,omitempty"`
-	Name      *string           `protobuf:"bytes,6,opt,name=name,proto3,oneof" json:"name,omitempty"`
-	Purpose   *string           `protobuf:"bytes,7,opt,name=purpose,proto3,oneof" json:"purpose,omitempty"`
-	Labels    map[string]string `protobuf:"bytes,8,rep,name=labels,proto3" json:"labels,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
+	// Uuid of the cluster
+	Uuid *string `protobuf:"bytes,1,opt,name=uuid,proto3,oneof" json:"uuid,omitempty"`
+	// Project of the cluster
+	Project *string `protobuf:"bytes,2,opt,name=project,proto3,oneof" json:"project,omitempty"`
+	// Tenant of the cluster
+	Tenant *string `protobuf:"bytes,3,opt,name=tenant,proto3,oneof" json:"tenant,omitempty"`
+	// Partiton of the cluster
+	Partition *string `protobuf:"bytes,4,opt,name=partition,proto3,oneof" json:"partition,omitempty"`
+	// Seed of the cluster
+	Seed *string `protobuf:"bytes,5,opt,name=seed,proto3,oneof" json:"seed,omitempty"`
+	// Name of the cluster
+	Name *string `protobuf:"bytes,6,opt,name=name,proto3,oneof" json:"name,omitempty"`
+	// Purpose of the cluster
+	Purpose *string `protobuf:"bytes,7,opt,name=purpose,proto3,oneof" json:"purpose,omitempty"`
+	// Labels of the cluster
+	Labels map[string]string `protobuf:"bytes,8,rep,name=labels,proto3" json:"labels,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 }
 
 func (x *ClusterServiceListRequest) Reset() {
@@ -233,14 +250,19 @@ func (x *ClusterServiceListRequest) GetLabels() map[string]string {
 	return nil
 }
 
+// ClusterServiceCredentialsRequest is the request payload for the cluster credentials request
 type ClusterServiceCredentialsRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Uuid       string               `protobuf:"bytes,1,opt,name=uuid,proto3" json:"uuid,omitempty"`
-	WithVpn    bool                 `protobuf:"varint,2,opt,name=with_vpn,json=withVpn,proto3" json:"with_vpn,omitempty"`
-	WithSsh    bool                 `protobuf:"varint,3,opt,name=with_ssh,json=withSsh,proto3" json:"with_ssh,omitempty"`
+	// Uuid of the cluster
+	Uuid string `protobuf:"bytes,1,opt,name=uuid,proto3" json:"uuid,omitempty"`
+	// WithVpn if set VPN details are returned
+	WithVpn bool `protobuf:"varint,2,opt,name=with_vpn,json=withVpn,proto3" json:"with_vpn,omitempty"`
+	// WithSsh if set ssh access credentials are returned
+	WithSsh bool `protobuf:"varint,3,opt,name=with_ssh,json=withSsh,proto3" json:"with_ssh,omitempty"`
+	// Expiration defines the duration after which the kubernetes token is not valid anymore
 	Expiration *durationpb.Duration `protobuf:"bytes,4,opt,name=expiration,proto3,oneof" json:"expiration,omitempty"`
 }
 
@@ -304,12 +326,15 @@ func (x *ClusterServiceCredentialsRequest) GetExpiration() *durationpb.Duration 
 	return nil
 }
 
+// ClusterServiceOperateRequest is the request payload for the cluster operate request
 type ClusterServiceOperateRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Uuid    string  `protobuf:"bytes,1,opt,name=uuid,proto3" json:"uuid,omitempty"`
+	// Uuid of the cluster
+	Uuid string `protobuf:"bytes,1,opt,name=uuid,proto3" json:"uuid,omitempty"`
+	// Operate is the reconcilation operation which should be performed
 	Operate Operate `protobuf:"varint,2,opt,name=operate,proto3,enum=admin.v1.Operate" json:"operate,omitempty"`
 }
 
@@ -359,13 +384,16 @@ func (x *ClusterServiceOperateRequest) GetOperate() Operate {
 	return Operate_OPERATE_UNSPECIFIED
 }
 
+// ClusterServiceGetResponse is the response payload for the cluster get request
 type ClusterServiceGetResponse struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Cluster  *v1.Cluster `protobuf:"bytes,1,opt,name=cluster,proto3" json:"cluster,omitempty"`
-	Machines []*Machine  `protobuf:"bytes,2,rep,name=machines,proto3" json:"machines,omitempty"`
+	// Cluster is the cluster
+	Cluster *v1.Cluster `protobuf:"bytes,1,opt,name=cluster,proto3" json:"cluster,omitempty"`
+	// Machines is a list of all machines in all worker groups
+	Machines []*Machine `protobuf:"bytes,2,rep,name=machines,proto3" json:"machines,omitempty"`
 }
 
 func (x *ClusterServiceGetResponse) Reset() {
@@ -414,11 +442,13 @@ func (x *ClusterServiceGetResponse) GetMachines() []*Machine {
 	return nil
 }
 
+// ClusterServiceListResponse is the response payload for the cluster list request
 type ClusterServiceListResponse struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
+	// Clusters is the list of clusters
 	Clusters []*v1.Cluster `protobuf:"bytes,1,rep,name=clusters,proto3" json:"clusters,omitempty"`
 }
 
@@ -461,14 +491,18 @@ func (x *ClusterServiceListResponse) GetClusters() []*v1.Cluster {
 	return nil
 }
 
+// ClusterServiceCredentialsResponse is the response payload for the cluster credentials request
 type ClusterServiceCredentialsResponse struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Kubeconfig string      `protobuf:"bytes,1,opt,name=kubeconfig,proto3" json:"kubeconfig,omitempty"`
+	// Kubeconfig is the access token for the kubernetes api of this cluster
+	Kubeconfig string `protobuf:"bytes,1,opt,name=kubeconfig,proto3" json:"kubeconfig,omitempty"`
+	// SshKeypair is the keypair to access the firewall of the cluster with ssh
 	SshKeypair *SSHKeyPair `protobuf:"bytes,2,opt,name=ssh_keypair,json=sshKeypair,proto3" json:"ssh_keypair,omitempty"`
-	Vpn        *VPN        `protobuf:"bytes,3,opt,name=vpn,proto3" json:"vpn,omitempty"`
+	// Vpn are the VPN access details
+	Vpn *VPN `protobuf:"bytes,3,opt,name=vpn,proto3" json:"vpn,omitempty"`
 }
 
 func (x *ClusterServiceCredentialsResponse) Reset() {
@@ -524,11 +558,13 @@ func (x *ClusterServiceCredentialsResponse) GetVpn() *VPN {
 	return nil
 }
 
+// ClusterServiceOperateResponse is the response payload for the cluster operate request
 type ClusterServiceOperateResponse struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
+	// Cluster is the cluster
 	Cluster *v1.Cluster `protobuf:"bytes,1,opt,name=cluster,proto3" json:"cluster,omitempty"`
 }
 
@@ -571,12 +607,15 @@ func (x *ClusterServiceOperateResponse) GetCluster() *v1.Cluster {
 	return nil
 }
 
+// SSHKeyPair details to access a firewall via ssh
 type SSHKeyPair struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Publickey  []byte `protobuf:"bytes,1,opt,name=publickey,proto3" json:"publickey,omitempty"`
+	// Publickey is the public key
+	Publickey []byte `protobuf:"bytes,1,opt,name=publickey,proto3" json:"publickey,omitempty"`
+	// Privatekey is the private key
 	Privatekey []byte `protobuf:"bytes,2,opt,name=privatekey,proto3" json:"privatekey,omitempty"`
 }
 

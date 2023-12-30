@@ -22,6 +22,7 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
+// PaymentServiceListCouponsRequest is the request payload for the coupons list request
 type PaymentServiceListCouponsRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -60,11 +61,13 @@ func (*PaymentServiceListCouponsRequest) Descriptor() ([]byte, []int) {
 	return file_admin_v1_payment_proto_rawDescGZIP(), []int{0}
 }
 
+// PaymentServiceListCouponsResponse is the response payload for the coupons list request
 type PaymentServiceListCouponsResponse struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
+	// Coupons is the list of all coupons
 	Coupons []*v1.Coupon `protobuf:"bytes,1,rep,name=coupons,proto3" json:"coupons,omitempty"`
 }
 
@@ -107,13 +110,16 @@ func (x *PaymentServiceListCouponsResponse) GetCoupons() []*v1.Coupon {
 	return nil
 }
 
+// PaymentServiceAddCouponToCustomerRequest is the request payload for the coupons add to customer request
 type PaymentServiceAddCouponToCustomerRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
+	// Customer is the customer
 	Customer *v1.PaymentCustomer `protobuf:"bytes,1,opt,name=customer,proto3" json:"customer,omitempty"`
-	CouponId string              `protobuf:"bytes,2,opt,name=coupon_id,json=couponId,proto3" json:"coupon_id,omitempty"`
+	// CouponId is the id of the coupon which should be granted to the customer
+	CouponId string `protobuf:"bytes,2,opt,name=coupon_id,json=couponId,proto3" json:"coupon_id,omitempty"`
 }
 
 func (x *PaymentServiceAddCouponToCustomerRequest) Reset() {
@@ -162,11 +168,13 @@ func (x *PaymentServiceAddCouponToCustomerRequest) GetCouponId() string {
 	return ""
 }
 
+// PaymentServiceAddCouponToCustomerResponse is the response payload for the coupons add to customer request
 type PaymentServiceAddCouponToCustomerResponse struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
+	// Customer is the customer
 	Customer *v1.PaymentCustomer `protobuf:"bytes,1,opt,name=customer,proto3" json:"customer,omitempty"`
 }
 
@@ -209,13 +217,16 @@ func (x *PaymentServiceAddCouponToCustomerResponse) GetCustomer() *v1.PaymentCus
 	return nil
 }
 
+// PaymentServiceAddBalanceToCustomerRequest is the request payload for the balance to customer request
 type PaymentServiceAddBalanceToCustomerRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Customer     *v1.PaymentCustomer `protobuf:"bytes,1,opt,name=customer,proto3" json:"customer,omitempty"`
-	BalanceToAdd int64               `protobuf:"varint,2,opt,name=balance_to_add,json=balanceToAdd,proto3" json:"balance_to_add,omitempty"`
+	// Customer is the customer
+	Customer *v1.PaymentCustomer `protobuf:"bytes,1,opt,name=customer,proto3" json:"customer,omitempty"`
+	// BalanceToAdd is the balance which should be added to the customer
+	BalanceToAdd int64 `protobuf:"varint,2,opt,name=balance_to_add,json=balanceToAdd,proto3" json:"balance_to_add,omitempty"`
 }
 
 func (x *PaymentServiceAddBalanceToCustomerRequest) Reset() {
@@ -264,11 +275,13 @@ func (x *PaymentServiceAddBalanceToCustomerRequest) GetBalanceToAdd() int64 {
 	return 0
 }
 
+// PaymentServiceAddBalanceToCustomerResponse is the response payload for the balance to customer request
 type PaymentServiceAddBalanceToCustomerResponse struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
+	// Customer is the customer
 	Customer *v1.PaymentCustomer `protobuf:"bytes,1,opt,name=customer,proto3" json:"customer,omitempty"`
 }
 

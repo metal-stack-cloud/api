@@ -8,12 +8,16 @@ exports.ClusterService = void 0;
 const cluster_pb_js_1 = require("./cluster_pb.js");
 const protobuf_1 = require("@bufbuild/protobuf");
 /**
+ * ClusterService serves cluster related functions
+ *
  * @generated from service admin.v1.ClusterService
  */
 exports.ClusterService = {
     typeName: "admin.v1.ClusterService",
     methods: {
         /**
+         * Get a cluster
+         *
          * @generated from rpc admin.v1.ClusterService.Get
          */
         get: {
@@ -23,6 +27,8 @@ exports.ClusterService = {
             kind: protobuf_1.MethodKind.Unary,
         },
         /**
+         * List clusters
+         *
          * @generated from rpc admin.v1.ClusterService.List
          */
         list: {
@@ -32,6 +38,8 @@ exports.ClusterService = {
             kind: protobuf_1.MethodKind.Unary,
         },
         /**
+         * Credentials of a cluster
+         *
          * @generated from rpc admin.v1.ClusterService.Credentials
          */
         credentials: {
@@ -41,6 +49,8 @@ exports.ClusterService = {
             kind: protobuf_1.MethodKind.Unary,
         },
         /**
+         * Operate on a cluster
+         *
          * @generated from rpc admin.v1.ClusterService.Operate
          */
         operate: {

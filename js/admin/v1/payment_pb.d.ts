@@ -2,6 +2,8 @@ import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialM
 import { Message, proto3 } from "@bufbuild/protobuf";
 import { Coupon, PaymentCustomer } from "../../api/v1/payment_pb.js";
 /**
+ * PaymentServiceListCouponsRequest is the request payload for the coupons list request
+ *
  * @generated from message admin.v1.PaymentServiceListCouponsRequest
  */
 export declare class PaymentServiceListCouponsRequest extends Message<PaymentServiceListCouponsRequest> {
@@ -15,10 +17,14 @@ export declare class PaymentServiceListCouponsRequest extends Message<PaymentSer
     static equals(a: PaymentServiceListCouponsRequest | PlainMessage<PaymentServiceListCouponsRequest> | undefined, b: PaymentServiceListCouponsRequest | PlainMessage<PaymentServiceListCouponsRequest> | undefined): boolean;
 }
 /**
+ * PaymentServiceListCouponsResponse is the response payload for the coupons list request
+ *
  * @generated from message admin.v1.PaymentServiceListCouponsResponse
  */
 export declare class PaymentServiceListCouponsResponse extends Message<PaymentServiceListCouponsResponse> {
     /**
+     * Coupons is the list of all coupons
+     *
      * @generated from field: repeated api.v1.Coupon coupons = 1;
      */
     coupons: Coupon[];
@@ -32,14 +38,20 @@ export declare class PaymentServiceListCouponsResponse extends Message<PaymentSe
     static equals(a: PaymentServiceListCouponsResponse | PlainMessage<PaymentServiceListCouponsResponse> | undefined, b: PaymentServiceListCouponsResponse | PlainMessage<PaymentServiceListCouponsResponse> | undefined): boolean;
 }
 /**
+ * PaymentServiceAddCouponToCustomerRequest is the request payload for the coupons add to customer request
+ *
  * @generated from message admin.v1.PaymentServiceAddCouponToCustomerRequest
  */
 export declare class PaymentServiceAddCouponToCustomerRequest extends Message<PaymentServiceAddCouponToCustomerRequest> {
     /**
+     * Customer is the customer
+     *
      * @generated from field: api.v1.PaymentCustomer customer = 1;
      */
     customer?: PaymentCustomer;
     /**
+     * CouponId is the id of the coupon which should be granted to the customer
+     *
      * @generated from field: string coupon_id = 2;
      */
     couponId: string;
@@ -53,10 +65,14 @@ export declare class PaymentServiceAddCouponToCustomerRequest extends Message<Pa
     static equals(a: PaymentServiceAddCouponToCustomerRequest | PlainMessage<PaymentServiceAddCouponToCustomerRequest> | undefined, b: PaymentServiceAddCouponToCustomerRequest | PlainMessage<PaymentServiceAddCouponToCustomerRequest> | undefined): boolean;
 }
 /**
+ * PaymentServiceAddCouponToCustomerResponse is the response payload for the coupons add to customer request
+ *
  * @generated from message admin.v1.PaymentServiceAddCouponToCustomerResponse
  */
 export declare class PaymentServiceAddCouponToCustomerResponse extends Message<PaymentServiceAddCouponToCustomerResponse> {
     /**
+     * Customer is the customer
+     *
      * @generated from field: api.v1.PaymentCustomer customer = 1;
      */
     customer?: PaymentCustomer;
@@ -70,14 +86,20 @@ export declare class PaymentServiceAddCouponToCustomerResponse extends Message<P
     static equals(a: PaymentServiceAddCouponToCustomerResponse | PlainMessage<PaymentServiceAddCouponToCustomerResponse> | undefined, b: PaymentServiceAddCouponToCustomerResponse | PlainMessage<PaymentServiceAddCouponToCustomerResponse> | undefined): boolean;
 }
 /**
+ * PaymentServiceAddBalanceToCustomerRequest is the request payload for the balance to customer request
+ *
  * @generated from message admin.v1.PaymentServiceAddBalanceToCustomerRequest
  */
 export declare class PaymentServiceAddBalanceToCustomerRequest extends Message<PaymentServiceAddBalanceToCustomerRequest> {
     /**
+     * Customer is the customer
+     *
      * @generated from field: api.v1.PaymentCustomer customer = 1;
      */
     customer?: PaymentCustomer;
     /**
+     * BalanceToAdd is the balance which should be added to the customer
+     *
      * @generated from field: int64 balance_to_add = 2;
      */
     balanceToAdd: bigint;
@@ -91,10 +113,14 @@ export declare class PaymentServiceAddBalanceToCustomerRequest extends Message<P
     static equals(a: PaymentServiceAddBalanceToCustomerRequest | PlainMessage<PaymentServiceAddBalanceToCustomerRequest> | undefined, b: PaymentServiceAddBalanceToCustomerRequest | PlainMessage<PaymentServiceAddBalanceToCustomerRequest> | undefined): boolean;
 }
 /**
+ * PaymentServiceAddBalanceToCustomerResponse is the response payload for the balance to customer request
+ *
  * @generated from message admin.v1.PaymentServiceAddBalanceToCustomerResponse
  */
 export declare class PaymentServiceAddBalanceToCustomerResponse extends Message<PaymentServiceAddBalanceToCustomerResponse> {
     /**
+     * Customer is the customer
+     *
      * @generated from field: api.v1.PaymentCustomer customer = 1;
      */
     customer?: PaymentCustomer;

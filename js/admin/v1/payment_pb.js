@@ -8,6 +8,8 @@ exports.PaymentServiceAddBalanceToCustomerResponse = exports.PaymentServiceAddBa
 const protobuf_1 = require("@bufbuild/protobuf");
 const payment_pb_js_1 = require("../../api/v1/payment_pb.js");
 /**
+ * PaymentServiceListCouponsRequest is the request payload for the coupons list request
+ *
  * @generated from message admin.v1.PaymentServiceListCouponsRequest
  */
 class PaymentServiceListCouponsRequest extends protobuf_1.Message {
@@ -33,12 +35,16 @@ PaymentServiceListCouponsRequest.runtime = protobuf_1.proto3;
 PaymentServiceListCouponsRequest.typeName = "admin.v1.PaymentServiceListCouponsRequest";
 PaymentServiceListCouponsRequest.fields = protobuf_1.proto3.util.newFieldList(() => []);
 /**
+ * PaymentServiceListCouponsResponse is the response payload for the coupons list request
+ *
  * @generated from message admin.v1.PaymentServiceListCouponsResponse
  */
 class PaymentServiceListCouponsResponse extends protobuf_1.Message {
     constructor(data) {
         super();
         /**
+         * Coupons is the list of all coupons
+         *
          * @generated from field: repeated api.v1.Coupon coupons = 1;
          */
         this.coupons = [];
@@ -64,12 +70,16 @@ PaymentServiceListCouponsResponse.fields = protobuf_1.proto3.util.newFieldList((
     { no: 1, name: "coupons", kind: "message", T: payment_pb_js_1.Coupon, repeated: true },
 ]);
 /**
+ * PaymentServiceAddCouponToCustomerRequest is the request payload for the coupons add to customer request
+ *
  * @generated from message admin.v1.PaymentServiceAddCouponToCustomerRequest
  */
 class PaymentServiceAddCouponToCustomerRequest extends protobuf_1.Message {
     constructor(data) {
         super();
         /**
+         * CouponId is the id of the coupon which should be granted to the customer
+         *
          * @generated from field: string coupon_id = 2;
          */
         this.couponId = "";
@@ -96,6 +106,8 @@ PaymentServiceAddCouponToCustomerRequest.fields = protobuf_1.proto3.util.newFiel
     { no: 2, name: "coupon_id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
 ]);
 /**
+ * PaymentServiceAddCouponToCustomerResponse is the response payload for the coupons add to customer request
+ *
  * @generated from message admin.v1.PaymentServiceAddCouponToCustomerResponse
  */
 class PaymentServiceAddCouponToCustomerResponse extends protobuf_1.Message {
@@ -123,12 +135,16 @@ PaymentServiceAddCouponToCustomerResponse.fields = protobuf_1.proto3.util.newFie
     { no: 1, name: "customer", kind: "message", T: payment_pb_js_1.PaymentCustomer },
 ]);
 /**
+ * PaymentServiceAddBalanceToCustomerRequest is the request payload for the balance to customer request
+ *
  * @generated from message admin.v1.PaymentServiceAddBalanceToCustomerRequest
  */
 class PaymentServiceAddBalanceToCustomerRequest extends protobuf_1.Message {
     constructor(data) {
         super();
         /**
+         * BalanceToAdd is the balance which should be added to the customer
+         *
          * @generated from field: int64 balance_to_add = 2;
          */
         this.balanceToAdd = protobuf_1.protoInt64.zero;
@@ -155,6 +171,8 @@ PaymentServiceAddBalanceToCustomerRequest.fields = protobuf_1.proto3.util.newFie
     { no: 2, name: "balance_to_add", kind: "scalar", T: 3 /* ScalarType.INT64 */ },
 ]);
 /**
+ * PaymentServiceAddBalanceToCustomerResponse is the response payload for the balance to customer request
+ *
  * @generated from message admin.v1.PaymentServiceAddBalanceToCustomerResponse
  */
 class PaymentServiceAddBalanceToCustomerResponse extends protobuf_1.Message {

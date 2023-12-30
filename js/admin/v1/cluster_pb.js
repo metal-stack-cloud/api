@@ -9,23 +9,33 @@ const protobuf_1 = require("@bufbuild/protobuf");
 const cluster_pb_js_1 = require("../../api/v1/cluster_pb.js");
 const machine_pb_js_1 = require("./machine_pb.js");
 /**
+ * Operate defines the types of reconcilation to be triggered
+ *
  * @generated from enum admin.v1.Operate
  */
 var Operate;
 (function (Operate) {
     /**
+     * OPERATE_UNSPECIFIED is not specified
+     *
      * @generated from enum value: OPERATE_UNSPECIFIED = 0;
      */
     Operate[Operate["UNSPECIFIED"] = 0] = "UNSPECIFIED";
     /**
+     * OPERATE_RECONCILE reconcile the cluster
+     *
      * @generated from enum value: OPERATE_RECONCILE = 1;
      */
     Operate[Operate["RECONCILE"] = 1] = "RECONCILE";
     /**
+     * OPERATE_MAINTAIN maintain the cluster
+     *
      * @generated from enum value: OPERATE_MAINTAIN = 2;
      */
     Operate[Operate["MAINTAIN"] = 2] = "MAINTAIN";
     /**
+     * OPERATE_RETRY retry the reconcilation of the cluster
+     *
      * @generated from enum value: OPERATE_RETRY = 3;
      */
     Operate[Operate["RETRY"] = 3] = "RETRY";
@@ -38,16 +48,22 @@ protobuf_1.proto3.util.setEnumType(Operate, "admin.v1.Operate", [
     { no: 3, name: "OPERATE_RETRY" },
 ]);
 /**
+ * ClusterServiceGetRequest is the request payload for the cluster get request
+ *
  * @generated from message admin.v1.ClusterServiceGetRequest
  */
 class ClusterServiceGetRequest extends protobuf_1.Message {
     constructor(data) {
         super();
         /**
+         * Uuid of the cluster to get
+         *
          * @generated from field: string uuid = 1;
          */
         this.uuid = "";
         /**
+         * WithMachines if set to true machines of all worker groups are also returned
+         *
          * @generated from field: bool with_machines = 2;
          */
         this.withMachines = false;
@@ -74,12 +90,16 @@ ClusterServiceGetRequest.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 2, name: "with_machines", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
 ]);
 /**
+ * ClusterServiceListRequest is the request payload for the cluster list request
+ *
  * @generated from message admin.v1.ClusterServiceListRequest
  */
 class ClusterServiceListRequest extends protobuf_1.Message {
     constructor(data) {
         super();
         /**
+         * Labels of the cluster
+         *
          * @generated from field: map<string, string> labels = 8;
          */
         this.labels = {};
@@ -112,20 +132,28 @@ ClusterServiceListRequest.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 8, name: "labels", kind: "map", K: 9 /* ScalarType.STRING */, V: { kind: "scalar", T: 9 /* ScalarType.STRING */ } },
 ]);
 /**
+ * ClusterServiceCredentialsRequest is the request payload for the cluster credentials request
+ *
  * @generated from message admin.v1.ClusterServiceCredentialsRequest
  */
 class ClusterServiceCredentialsRequest extends protobuf_1.Message {
     constructor(data) {
         super();
         /**
+         * Uuid of the cluster
+         *
          * @generated from field: string uuid = 1;
          */
         this.uuid = "";
         /**
+         * WithVpn if set VPN details are returned
+         *
          * @generated from field: bool with_vpn = 2;
          */
         this.withVpn = false;
         /**
+         * WithSsh if set ssh access credentials are returned
+         *
          * @generated from field: bool with_ssh = 3;
          */
         this.withSsh = false;
@@ -154,16 +182,22 @@ ClusterServiceCredentialsRequest.fields = protobuf_1.proto3.util.newFieldList(()
     { no: 4, name: "expiration", kind: "message", T: protobuf_1.Duration, opt: true },
 ]);
 /**
+ * ClusterServiceOperateRequest is the request payload for the cluster operate request
+ *
  * @generated from message admin.v1.ClusterServiceOperateRequest
  */
 class ClusterServiceOperateRequest extends protobuf_1.Message {
     constructor(data) {
         super();
         /**
+         * Uuid of the cluster
+         *
          * @generated from field: string uuid = 1;
          */
         this.uuid = "";
         /**
+         * Operate is the reconcilation operation which should be performed
+         *
          * @generated from field: admin.v1.Operate operate = 2;
          */
         this.operate = Operate.UNSPECIFIED;
@@ -190,12 +224,16 @@ ClusterServiceOperateRequest.fields = protobuf_1.proto3.util.newFieldList(() => 
     { no: 2, name: "operate", kind: "enum", T: protobuf_1.proto3.getEnumType(Operate) },
 ]);
 /**
+ * ClusterServiceGetResponse is the response payload for the cluster get request
+ *
  * @generated from message admin.v1.ClusterServiceGetResponse
  */
 class ClusterServiceGetResponse extends protobuf_1.Message {
     constructor(data) {
         super();
         /**
+         * Machines is a list of all machines in all worker groups
+         *
          * @generated from field: repeated admin.v1.Machine machines = 2;
          */
         this.machines = [];
@@ -222,12 +260,16 @@ ClusterServiceGetResponse.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 2, name: "machines", kind: "message", T: machine_pb_js_1.Machine, repeated: true },
 ]);
 /**
+ * ClusterServiceListResponse is the response payload for the cluster list request
+ *
  * @generated from message admin.v1.ClusterServiceListResponse
  */
 class ClusterServiceListResponse extends protobuf_1.Message {
     constructor(data) {
         super();
         /**
+         * Clusters is the list of clusters
+         *
          * @generated from field: repeated api.v1.Cluster clusters = 1;
          */
         this.clusters = [];
@@ -253,12 +295,16 @@ ClusterServiceListResponse.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 1, name: "clusters", kind: "message", T: cluster_pb_js_1.Cluster, repeated: true },
 ]);
 /**
+ * ClusterServiceCredentialsResponse is the response payload for the cluster credentials request
+ *
  * @generated from message admin.v1.ClusterServiceCredentialsResponse
  */
 class ClusterServiceCredentialsResponse extends protobuf_1.Message {
     constructor(data) {
         super();
         /**
+         * Kubeconfig is the access token for the kubernetes api of this cluster
+         *
          * @generated from field: string kubeconfig = 1;
          */
         this.kubeconfig = "";
@@ -286,6 +332,8 @@ ClusterServiceCredentialsResponse.fields = protobuf_1.proto3.util.newFieldList((
     { no: 3, name: "vpn", kind: "message", T: machine_pb_js_1.VPN },
 ]);
 /**
+ * ClusterServiceOperateResponse is the response payload for the cluster operate request
+ *
  * @generated from message admin.v1.ClusterServiceOperateResponse
  */
 class ClusterServiceOperateResponse extends protobuf_1.Message {
@@ -313,16 +361,22 @@ ClusterServiceOperateResponse.fields = protobuf_1.proto3.util.newFieldList(() =>
     { no: 1, name: "cluster", kind: "message", T: cluster_pb_js_1.Cluster },
 ]);
 /**
+ * SSHKeyPair details to access a firewall via ssh
+ *
  * @generated from message admin.v1.SSHKeyPair
  */
 class SSHKeyPair extends protobuf_1.Message {
     constructor(data) {
         super();
         /**
+         * Publickey is the public key
+         *
          * @generated from field: bytes publickey = 1;
          */
         this.publickey = new Uint8Array(0);
         /**
+         * Privatekey is the private key
+         *
          * @generated from field: bytes privatekey = 2;
          */
         this.privatekey = new Uint8Array(0);
