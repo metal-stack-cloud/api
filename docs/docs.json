@@ -2925,32 +2925,32 @@
           "name": "ProductType",
           "longName": "ProductType",
           "fullName": "api.v1.ProductType",
-          "description": "",
+          "description": "ProductType defines for which type of product a price applies",
           "values": [
             {
               "name": "PRODUCT_TYPE_UNSPECIFIED",
               "number": "0",
-              "description": ""
+              "description": "PRODUCT_TYPE_UNSPECIFIED is unspecified"
             },
             {
               "name": "PRODUCT_TYPE_STORAGE",
               "number": "1",
-              "description": ""
+              "description": "PRODUCT_TYPE_STORAGE for storage"
             },
             {
               "name": "PRODUCT_TYPE_COMPUTE",
               "number": "2",
-              "description": ""
+              "description": "PRODUCT_TYPE_COMPUTE for compute, e.g. machines"
             },
             {
               "name": "PRODUCT_TYPE_NETWORK",
               "number": "3",
-              "description": ""
+              "description": "PRODUCT_TYPE_NETWORK for network, e.g. ips and traffic"
             },
             {
               "name": "PRODUCT_TYPE_KUBERNETES",
               "number": "5",
-              "description": ""
+              "description": "PRODUCT_TYPE_KUBERNETES for kubernetes, e.g. the control plane"
             }
           ]
         }
@@ -2961,7 +2961,7 @@
           "name": "Address",
           "longName": "Address",
           "fullName": "api.v1.Address",
-          "description": "",
+          "description": "Address postal address of a customer",
           "hasExtensions": false,
           "hasFields": true,
           "hasOneofs": false,
@@ -2969,7 +2969,7 @@
           "fields": [
             {
               "name": "line1",
-              "description": "",
+              "description": "Line1 the first address line",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -2981,7 +2981,7 @@
             },
             {
               "name": "line2",
-              "description": "",
+              "description": "Line2 the second address line",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -2993,7 +2993,7 @@
             },
             {
               "name": "postal_code",
-              "description": "",
+              "description": "PostalCode of the city or address",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -3005,7 +3005,7 @@
             },
             {
               "name": "city",
-              "description": "",
+              "description": "City where the customer lives",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -3017,7 +3017,7 @@
             },
             {
               "name": "state",
-              "description": "",
+              "description": "Sate where the customer lives",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -3029,7 +3029,7 @@
             },
             {
               "name": "country",
-              "description": "",
+              "description": "Country where the customer lives",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -3045,7 +3045,7 @@
           "name": "Card",
           "longName": "Card",
           "fullName": "api.v1.Card",
-          "description": "",
+          "description": "Card is the payment card the customer pays with",
           "hasExtensions": false,
           "hasFields": true,
           "hasOneofs": false,
@@ -3053,7 +3053,7 @@
           "fields": [
             {
               "name": "brand",
-              "description": "",
+              "description": "Brand of the card",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -3065,7 +3065,7 @@
             },
             {
               "name": "country",
-              "description": "",
+              "description": "Country where the card was issued",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -3077,7 +3077,7 @@
             },
             {
               "name": "exp_month",
-              "description": "",
+              "description": "ExpMonth is the month when this card expires",
               "label": "",
               "type": "int64",
               "longType": "int64",
@@ -3089,7 +3089,7 @@
             },
             {
               "name": "exp_year",
-              "description": "",
+              "description": "ExpYear is the year when this card expires",
               "label": "",
               "type": "int64",
               "longType": "int64",
@@ -3101,7 +3101,7 @@
             },
             {
               "name": "last_4",
-              "description": "",
+              "description": "Last4 are the 4 last digits of the card number, the full number is not stored anywhere",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -3117,7 +3117,7 @@
           "name": "Coupon",
           "longName": "Coupon",
           "fullName": "api.v1.Coupon",
-          "description": "",
+          "description": "Coupon is a amount of free usage which can be granted to a customer",
           "hasExtensions": false,
           "hasFields": true,
           "hasOneofs": false,
@@ -3125,7 +3125,7 @@
           "fields": [
             {
               "name": "id",
-              "description": "",
+              "description": "Id of the coupon",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -3137,7 +3137,7 @@
             },
             {
               "name": "name",
-              "description": "",
+              "description": "Name of this coupon",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -3149,7 +3149,7 @@
             },
             {
               "name": "amount_off",
-              "description": "",
+              "description": "AmountOff is th amount the customer can use for free",
               "label": "",
               "type": "int64",
               "longType": "int64",
@@ -3161,7 +3161,7 @@
             },
             {
               "name": "currency",
-              "description": "",
+              "description": "Currency of the free usage amount",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -3173,7 +3173,7 @@
             },
             {
               "name": "duration_in_month",
-              "description": "",
+              "description": "DurationInMonth defines how many month this coupon is valid for",
               "label": "",
               "type": "int64",
               "longType": "int64",
@@ -3185,7 +3185,7 @@
             },
             {
               "name": "created_at",
-              "description": "",
+              "description": "CreatedAt is the date the coupon was created",
               "label": "",
               "type": "Timestamp",
               "longType": "google.protobuf.Timestamp",
@@ -3197,7 +3197,7 @@
             },
             {
               "name": "redeem_by",
-              "description": "",
+              "description": "RedeemBy is the date when this coupon can no longer be used",
               "label": "",
               "type": "Timestamp",
               "longType": "google.protobuf.Timestamp",
@@ -3209,7 +3209,7 @@
             },
             {
               "name": "times_redeemed",
-              "description": "",
+              "description": "TimesRedeemed how often this coupon was already consumed",
               "label": "",
               "type": "int64",
               "longType": "int64",
@@ -3221,7 +3221,7 @@
             },
             {
               "name": "max_redemptions",
-              "description": "",
+              "description": "MaxRedemptions defines how often this coupon can be consumed",
               "label": "",
               "type": "int64",
               "longType": "int64",
@@ -3233,7 +3233,7 @@
             },
             {
               "name": "amount_left",
-              "description": "",
+              "description": "AmountLeft how many usages are left for this coupon",
               "label": "",
               "type": "int64",
               "longType": "int64",
@@ -3249,7 +3249,7 @@
           "name": "Invoice",
           "longName": "Invoice",
           "fullName": "api.v1.Invoice",
-          "description": "",
+          "description": "Invoice a customer has to pay for subscription usage",
           "hasExtensions": false,
           "hasFields": true,
           "hasOneofs": false,
@@ -3257,7 +3257,7 @@
           "fields": [
             {
               "name": "id",
-              "description": "",
+              "description": "Id of the invoice",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -3269,7 +3269,7 @@
             },
             {
               "name": "pdf_download_url",
-              "description": "",
+              "description": "PdfDownloadUrl is the url where the customer can download this invoice in pdf format",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -3281,7 +3281,7 @@
             },
             {
               "name": "period_start",
-              "description": "",
+              "description": "PeriodStart is the start date of this subscription",
               "label": "",
               "type": "Timestamp",
               "longType": "google.protobuf.Timestamp",
@@ -3293,7 +3293,7 @@
             },
             {
               "name": "period_end",
-              "description": "",
+              "description": "PeriodEnd is the end date of this subscription",
               "label": "",
               "type": "Timestamp",
               "longType": "google.protobuf.Timestamp",
@@ -3309,7 +3309,7 @@
           "name": "PaymentCustomer",
           "longName": "PaymentCustomer",
           "fullName": "api.v1.PaymentCustomer",
-          "description": "",
+          "description": "PaymentCustomer is a customer at the payment processor",
           "hasExtensions": false,
           "hasFields": true,
           "hasOneofs": true,
@@ -3317,7 +3317,7 @@
           "fields": [
             {
               "name": "login",
-              "description": "",
+              "description": "Login of the customer",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -3329,7 +3329,7 @@
             },
             {
               "name": "name",
-              "description": "",
+              "description": "Name of the customer",
               "label": "optional",
               "type": "string",
               "longType": "string",
@@ -3341,7 +3341,7 @@
             },
             {
               "name": "customer_id",
-              "description": "",
+              "description": "CustomerId id of the customer",
               "label": "optional",
               "type": "string",
               "longType": "string",
@@ -3353,7 +3353,7 @@
             },
             {
               "name": "payment_method_id",
-              "description": "",
+              "description": "PaymentMethodId at the payment processor",
               "label": "optional",
               "type": "string",
               "longType": "string",
@@ -3365,7 +3365,7 @@
             },
             {
               "name": "subscription_id",
-              "description": "",
+              "description": "SubscriptionId of the customer",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -3377,7 +3377,7 @@
             },
             {
               "name": "email",
-              "description": "",
+              "description": "Email of the customer",
               "label": "optional",
               "type": "string",
               "longType": "string",
@@ -3389,7 +3389,7 @@
             },
             {
               "name": "card",
-              "description": "",
+              "description": "Card the customer supplied",
               "label": "optional",
               "type": "Card",
               "longType": "Card",
@@ -3401,7 +3401,7 @@
             },
             {
               "name": "prices",
-              "description": "",
+              "description": "Prices which apply to customer resources",
               "label": "repeated",
               "type": "Price",
               "longType": "Price",
@@ -3413,7 +3413,7 @@
             },
             {
               "name": "address",
-              "description": "",
+              "description": "Address is the postal address of the customer",
               "label": "",
               "type": "Address",
               "longType": "Address",
@@ -3425,7 +3425,7 @@
             },
             {
               "name": "coupon",
-              "description": "",
+              "description": "Coupon details of granted coupon if any",
               "label": "optional",
               "type": "Coupon",
               "longType": "Coupon",
@@ -3437,7 +3437,7 @@
             },
             {
               "name": "vat",
-              "description": "",
+              "description": "Vat which applies to the customer",
               "label": "optional",
               "type": "string",
               "longType": "string",
@@ -3449,7 +3449,7 @@
             },
             {
               "name": "phone_number",
-              "description": "",
+              "description": "PhoneNumber of the customer",
               "label": "optional",
               "type": "string",
               "longType": "string",
@@ -3461,7 +3461,7 @@
             },
             {
               "name": "balance",
-              "description": "",
+              "description": "Balance actual balance of the customer",
               "label": "optional",
               "type": "int64",
               "longType": "int64",
@@ -3477,7 +3477,7 @@
           "name": "PaymentServiceCheckAdmittedRequest",
           "longName": "PaymentServiceCheckAdmittedRequest",
           "fullName": "api.v1.PaymentServiceCheckAdmittedRequest",
-          "description": "",
+          "description": "PaymentServiceCheckAdmittedRequest is the request payload for a check admitted request",
           "hasExtensions": false,
           "hasFields": true,
           "hasOneofs": false,
@@ -3485,7 +3485,7 @@
           "fields": [
             {
               "name": "login",
-              "description": "",
+              "description": "Login of the customer",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -3501,7 +3501,7 @@
           "name": "PaymentServiceCheckAdmittedResponse",
           "longName": "PaymentServiceCheckAdmittedResponse",
           "fullName": "api.v1.PaymentServiceCheckAdmittedResponse",
-          "description": "",
+          "description": "PaymentServiceCheckAdmittedResponse is the response payload for a check admitted request",
           "hasExtensions": false,
           "hasFields": true,
           "hasOneofs": false,
@@ -3509,7 +3509,7 @@
           "fields": [
             {
               "name": "admitted",
-              "description": "",
+              "description": "Admitted indicates if the customer is already admitted to use the service",
               "label": "",
               "type": "bool",
               "longType": "bool",
@@ -3521,7 +3521,7 @@
             },
             {
               "name": "requested",
-              "description": "",
+              "description": "Requested indicates if the customer requested admittance",
               "label": "",
               "type": "bool",
               "longType": "bool",
@@ -3537,7 +3537,7 @@
           "name": "PaymentServiceCheckIfCustomerExistsRequest",
           "longName": "PaymentServiceCheckIfCustomerExistsRequest",
           "fullName": "api.v1.PaymentServiceCheckIfCustomerExistsRequest",
-          "description": "",
+          "description": "PaymentServiceCheckIfCustomerExistsRequest is the request payload for a payment check if customer exists request",
           "hasExtensions": false,
           "hasFields": true,
           "hasOneofs": false,
@@ -3545,7 +3545,7 @@
           "fields": [
             {
               "name": "login",
-              "description": "",
+              "description": "Login of the customer",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -3573,7 +3573,7 @@
           "name": "PaymentServiceCheckIfCustomerExistsResponse",
           "longName": "PaymentServiceCheckIfCustomerExistsResponse",
           "fullName": "api.v1.PaymentServiceCheckIfCustomerExistsResponse",
-          "description": "",
+          "description": "PaymentServiceCheckIfCustomerExistsResponse is the response payload for a payment check if customer exists request",
           "hasExtensions": false,
           "hasFields": true,
           "hasOneofs": false,
@@ -3581,7 +3581,7 @@
           "fields": [
             {
               "name": "customer",
-              "description": "",
+              "description": "Customer is the customer",
               "label": "",
               "type": "PaymentCustomer",
               "longType": "PaymentCustomer",
@@ -3593,7 +3593,7 @@
             },
             {
               "name": "exists",
-              "description": "",
+              "description": "Exists indicates if this customer exists",
               "label": "",
               "type": "bool",
               "longType": "bool",
@@ -3609,7 +3609,7 @@
           "name": "PaymentServiceCreateOrUpdateCustomerRequest",
           "longName": "PaymentServiceCreateOrUpdateCustomerRequest",
           "fullName": "api.v1.PaymentServiceCreateOrUpdateCustomerRequest",
-          "description": "",
+          "description": "PaymentServiceCreateOrUpdateCustomerRequest is the request payload for a payment create or update customer request",
           "hasExtensions": false,
           "hasFields": true,
           "hasOneofs": false,
@@ -3617,7 +3617,7 @@
           "fields": [
             {
               "name": "login",
-              "description": "",
+              "description": "Login of the customer",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -3641,7 +3641,7 @@
             },
             {
               "name": "customer",
-              "description": "",
+              "description": "Customer is the customer to modify",
               "label": "",
               "type": "PaymentCustomer",
               "longType": "PaymentCustomer",
@@ -3653,7 +3653,7 @@
             },
             {
               "name": "accepted_terms_and_conditions",
-              "description": "",
+              "description": "AcceptedTermsAndConditions indicates the modification of the terms and conditions acceptance",
               "label": "",
               "type": "bool",
               "longType": "bool",
@@ -3669,7 +3669,7 @@
           "name": "PaymentServiceCreateOrUpdateCustomerResponse",
           "longName": "PaymentServiceCreateOrUpdateCustomerResponse",
           "fullName": "api.v1.PaymentServiceCreateOrUpdateCustomerResponse",
-          "description": "",
+          "description": "PaymentServiceCreateOrUpdateCustomerResponse is the response payload for a payment create or update customer request",
           "hasExtensions": false,
           "hasFields": true,
           "hasOneofs": false,
@@ -3677,7 +3677,7 @@
           "fields": [
             {
               "name": "customer",
-              "description": "",
+              "description": "Customer is the customer",
               "label": "",
               "type": "PaymentCustomer",
               "longType": "PaymentCustomer",
@@ -3693,7 +3693,7 @@
           "name": "PaymentServiceDeletePaymentMethodRequest",
           "longName": "PaymentServiceDeletePaymentMethodRequest",
           "fullName": "api.v1.PaymentServiceDeletePaymentMethodRequest",
-          "description": "",
+          "description": "PaymentServiceDeletePaymentMethodRequest is the request payload for a delete payment request",
           "hasExtensions": false,
           "hasFields": true,
           "hasOneofs": false,
@@ -3701,7 +3701,7 @@
           "fields": [
             {
               "name": "login",
-              "description": "",
+              "description": "Login of the customer",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -3729,7 +3729,7 @@
           "name": "PaymentServiceDeletePaymentMethodResponse",
           "longName": "PaymentServiceDeletePaymentMethodResponse",
           "fullName": "api.v1.PaymentServiceDeletePaymentMethodResponse",
-          "description": "",
+          "description": "PaymentServiceDeletePaymentMethodResponse is the response payload for a delete payment request",
           "hasExtensions": false,
           "hasFields": false,
           "hasOneofs": false,
@@ -3740,7 +3740,7 @@
           "name": "PaymentServiceGetCustomerRequest",
           "longName": "PaymentServiceGetCustomerRequest",
           "fullName": "api.v1.PaymentServiceGetCustomerRequest",
-          "description": "",
+          "description": "PaymentServiceGetCustomerRequest is the request payload for a payment get customer request",
           "hasExtensions": false,
           "hasFields": true,
           "hasOneofs": false,
@@ -3748,7 +3748,7 @@
           "fields": [
             {
               "name": "login",
-              "description": "",
+              "description": "Login of the customer",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -3772,7 +3772,7 @@
             },
             {
               "name": "customer_id",
-              "description": "",
+              "description": "CustomerId of the customer",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -3788,7 +3788,7 @@
           "name": "PaymentServiceGetCustomerResponse",
           "longName": "PaymentServiceGetCustomerResponse",
           "fullName": "api.v1.PaymentServiceGetCustomerResponse",
-          "description": "",
+          "description": "PaymentServiceGetCustomerResponse is the response payload for a payment get customer request",
           "hasExtensions": false,
           "hasFields": true,
           "hasOneofs": false,
@@ -3796,7 +3796,7 @@
           "fields": [
             {
               "name": "customer",
-              "description": "",
+              "description": "Customer is the customer",
               "label": "",
               "type": "PaymentCustomer",
               "longType": "PaymentCustomer",
@@ -3812,7 +3812,7 @@
           "name": "PaymentServiceGetCustomerWithLoginRequest",
           "longName": "PaymentServiceGetCustomerWithLoginRequest",
           "fullName": "api.v1.PaymentServiceGetCustomerWithLoginRequest",
-          "description": "",
+          "description": "PaymentServiceGetCustomerWithLoginRequest is the request payload for a payment get customer request",
           "hasExtensions": false,
           "hasFields": true,
           "hasOneofs": false,
@@ -3820,7 +3820,7 @@
           "fields": [
             {
               "name": "login",
-              "description": "",
+              "description": "Login of the customer",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -3848,7 +3848,7 @@
           "name": "PaymentServiceGetCustomerWithLoginResponse",
           "longName": "PaymentServiceGetCustomerWithLoginResponse",
           "fullName": "api.v1.PaymentServiceGetCustomerWithLoginResponse",
-          "description": "",
+          "description": "PaymentServiceGetCustomerWithLoginResponse is the response payload for a payment get customer request",
           "hasExtensions": false,
           "hasFields": true,
           "hasOneofs": false,
@@ -3856,7 +3856,7 @@
           "fields": [
             {
               "name": "customer",
-              "description": "",
+              "description": "Customer is the customer",
               "label": "",
               "type": "PaymentCustomer",
               "longType": "PaymentCustomer",
@@ -3872,7 +3872,7 @@
           "name": "PaymentServiceGetDefaultPricesRequest",
           "longName": "PaymentServiceGetDefaultPricesRequest",
           "fullName": "api.v1.PaymentServiceGetDefaultPricesRequest",
-          "description": "",
+          "description": "PaymentServiceGetDefaultPricesRequest is the request payload for a get default prices request",
           "hasExtensions": false,
           "hasFields": false,
           "hasOneofs": false,
@@ -3883,7 +3883,7 @@
           "name": "PaymentServiceGetDefaultPricesResponse",
           "longName": "PaymentServiceGetDefaultPricesResponse",
           "fullName": "api.v1.PaymentServiceGetDefaultPricesResponse",
-          "description": "",
+          "description": "PaymentServiceGetDefaultPricesResponse is the response payload for a get default prices request",
           "hasExtensions": false,
           "hasFields": true,
           "hasOneofs": false,
@@ -3891,7 +3891,7 @@
           "fields": [
             {
               "name": "prices",
-              "description": "",
+              "description": "Prices is the list of default prices",
               "label": "repeated",
               "type": "Price",
               "longType": "Price",
@@ -3907,7 +3907,7 @@
           "name": "PaymentServiceGetInvoicesRequest",
           "longName": "PaymentServiceGetInvoicesRequest",
           "fullName": "api.v1.PaymentServiceGetInvoicesRequest",
-          "description": "",
+          "description": "PaymentServiceHasPaymentMethodRequest is the request payload for a get invoices request",
           "hasExtensions": false,
           "hasFields": true,
           "hasOneofs": false,
@@ -3915,7 +3915,7 @@
           "fields": [
             {
               "name": "login",
-              "description": "",
+              "description": "Login of the customer",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -3939,7 +3939,7 @@
             },
             {
               "name": "customer_id",
-              "description": "",
+              "description": "CustomerId is the id of the customer",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -3967,7 +3967,7 @@
           "name": "PaymentServiceGetInvoicesResponse",
           "longName": "PaymentServiceGetInvoicesResponse",
           "fullName": "api.v1.PaymentServiceGetInvoicesResponse",
-          "description": "",
+          "description": "PaymentServiceGetInvoicesResponse is the response payload for a get invoices request",
           "hasExtensions": false,
           "hasFields": true,
           "hasOneofs": false,
@@ -3975,7 +3975,7 @@
           "fields": [
             {
               "name": "invoices",
-              "description": "",
+              "description": "Invoices is the list of invoices",
               "label": "repeated",
               "type": "Invoice",
               "longType": "Invoice",
@@ -3991,7 +3991,7 @@
           "name": "PaymentServiceGetSubscriptionUsageRequest",
           "longName": "PaymentServiceGetSubscriptionUsageRequest",
           "fullName": "api.v1.PaymentServiceGetSubscriptionUsageRequest",
-          "description": "",
+          "description": "PaymentServiceGetSubscriptionUsageRequest is the request payload for a get subscription usage request",
           "hasExtensions": false,
           "hasFields": true,
           "hasOneofs": false,
@@ -3999,7 +3999,7 @@
           "fields": [
             {
               "name": "login",
-              "description": "",
+              "description": "Login of the customer",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -4027,7 +4027,7 @@
           "name": "PaymentServiceGetSubscriptionUsageResponse",
           "longName": "PaymentServiceGetSubscriptionUsageResponse",
           "fullName": "api.v1.PaymentServiceGetSubscriptionUsageResponse",
-          "description": "",
+          "description": "PaymentServiceGetSubscriptionUsageResponse is the response payload for a get subscription usage request",
           "hasExtensions": false,
           "hasFields": true,
           "hasOneofs": false,
@@ -4035,7 +4035,7 @@
           "fields": [
             {
               "name": "subscription_usage_items",
-              "description": "",
+              "description": "SubscriptionUsageItems is a list of usage for all subscriptions",
               "label": "repeated",
               "type": "SubscriptionUsageItem",
               "longType": "SubscriptionUsageItem",
@@ -4051,7 +4051,7 @@
           "name": "PaymentServiceHasChargeableResourcesRequest",
           "longName": "PaymentServiceHasChargeableResourcesRequest",
           "fullName": "api.v1.PaymentServiceHasChargeableResourcesRequest",
-          "description": "",
+          "description": "PaymentServiceHasChargeableResourcesRequest is the request payload for a has chargeable request",
           "hasExtensions": false,
           "hasFields": true,
           "hasOneofs": false,
@@ -4059,7 +4059,7 @@
           "fields": [
             {
               "name": "login",
-              "description": "",
+              "description": "Login of the customer",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -4075,7 +4075,7 @@
           "name": "PaymentServiceHasChargeableResourcesResponse",
           "longName": "PaymentServiceHasChargeableResourcesResponse",
           "fullName": "api.v1.PaymentServiceHasChargeableResourcesResponse",
-          "description": "",
+          "description": "PaymentServiceHasChargeableResourcesResponse is the response payload for a has chargeable request",
           "hasExtensions": false,
           "hasFields": true,
           "hasOneofs": false,
@@ -4083,7 +4083,7 @@
           "fields": [
             {
               "name": "has_resources",
-              "description": "",
+              "description": "HasResources indicates if the customer has actually chargable resources",
               "label": "",
               "type": "bool",
               "longType": "bool",
@@ -4099,7 +4099,7 @@
           "name": "PaymentServiceHasPaymentMethodRequest",
           "longName": "PaymentServiceHasPaymentMethodRequest",
           "fullName": "api.v1.PaymentServiceHasPaymentMethodRequest",
-          "description": "",
+          "description": "PaymentServiceHasPaymentMethodRequest is the request payload for a has payment request",
           "hasExtensions": false,
           "hasFields": true,
           "hasOneofs": false,
@@ -4107,7 +4107,7 @@
           "fields": [
             {
               "name": "login",
-              "description": "",
+              "description": "Login of the customer",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -4131,7 +4131,7 @@
             },
             {
               "name": "project",
-              "description": "",
+              "description": "Project for which the payment method should be checked",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -4159,7 +4159,7 @@
           "name": "PaymentServiceHasPaymentMethodResponse",
           "longName": "PaymentServiceHasPaymentMethodResponse",
           "fullName": "api.v1.PaymentServiceHasPaymentMethodResponse",
-          "description": "",
+          "description": "PaymentServiceHasPaymentMethodResponse is the response payload for a has payment request",
           "hasExtensions": false,
           "hasFields": true,
           "hasOneofs": false,
@@ -4167,7 +4167,7 @@
           "fields": [
             {
               "name": "exists",
-              "description": "",
+              "description": "Exists indicates if this customer has a payment method",
               "label": "",
               "type": "bool",
               "longType": "bool",
@@ -4179,7 +4179,7 @@
             },
             {
               "name": "coupon_left",
-              "description": "",
+              "description": "CouponLeft is true if there is still free amount on the coupon left",
               "label": "",
               "type": "bool",
               "longType": "bool",
@@ -4191,7 +4191,7 @@
             },
             {
               "name": "positive_balance",
-              "description": "",
+              "description": "PositiveBalance indicates if the customer still has positive balance",
               "label": "",
               "type": "bool",
               "longType": "bool",
@@ -4207,7 +4207,7 @@
           "name": "PaymentServiceRequestAdmissionRequest",
           "longName": "PaymentServiceRequestAdmissionRequest",
           "fullName": "api.v1.PaymentServiceRequestAdmissionRequest",
-          "description": "",
+          "description": "PaymentServiceRequestAdmissionRequest is the request payload for a admission request",
           "hasExtensions": false,
           "hasFields": true,
           "hasOneofs": false,
@@ -4215,7 +4215,7 @@
           "fields": [
             {
               "name": "login",
-              "description": "",
+              "description": "Login of the customer",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -4227,7 +4227,7 @@
             },
             {
               "name": "customer",
-              "description": "",
+              "description": "Customer is the customer",
               "label": "",
               "type": "PaymentCustomer",
               "longType": "PaymentCustomer",
@@ -4239,7 +4239,7 @@
             },
             {
               "name": "accepted_terms_and_conditions",
-              "description": "",
+              "description": "AcceptedTermsAndConditions indicates if the customer already accepted the terms and conditions",
               "label": "",
               "type": "bool",
               "longType": "bool",
@@ -4251,7 +4251,7 @@
             },
             {
               "name": "email_consent",
-              "description": "",
+              "description": "EmailConsent indicates if the customer already gave consent to email",
               "label": "",
               "type": "bool",
               "longType": "bool",
@@ -4267,7 +4267,7 @@
           "name": "PaymentServiceRequestAdmissionResponse",
           "longName": "PaymentServiceRequestAdmissionResponse",
           "fullName": "api.v1.PaymentServiceRequestAdmissionResponse",
-          "description": "",
+          "description": "PaymentServiceRequestAdmissionResponse is the response payload for a admission request",
           "hasExtensions": false,
           "hasFields": false,
           "hasOneofs": false,
@@ -4278,7 +4278,7 @@
           "name": "Price",
           "longName": "Price",
           "fullName": "api.v1.Price",
-          "description": "",
+          "description": "Price of a product",
           "hasExtensions": false,
           "hasFields": true,
           "hasOneofs": true,
@@ -4286,7 +4286,7 @@
           "fields": [
             {
               "name": "name",
-              "description": "",
+              "description": "Name of the price",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -4298,7 +4298,7 @@
             },
             {
               "name": "unit_amount_decimal",
-              "description": "",
+              "description": "UnitAmountDecimal the value of this price",
               "label": "",
               "type": "double",
               "longType": "double",
@@ -4310,7 +4310,7 @@
             },
             {
               "name": "currency",
-              "description": "",
+              "description": "Currency of this price",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -4322,7 +4322,7 @@
             },
             {
               "name": "unit_label",
-              "description": "",
+              "description": "UnitLabel is a label which allows for searching this unit at the payment processor",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -4334,7 +4334,7 @@
             },
             {
               "name": "product_type",
-              "description": "",
+              "description": "ProductType this price applies to",
               "label": "",
               "type": "ProductType",
               "longType": "ProductType",
@@ -4346,7 +4346,7 @@
             },
             {
               "name": "description",
-              "description": "",
+              "description": "Description of this price",
               "label": "optional",
               "type": "string",
               "longType": "string",
@@ -4374,7 +4374,7 @@
           "name": "SubscriptionUsageItem",
           "longName": "SubscriptionUsageItem",
           "fullName": "api.v1.SubscriptionUsageItem",
-          "description": "",
+          "description": "SubscriptionUsageItem details of a subscription",
           "hasExtensions": false,
           "hasFields": true,
           "hasOneofs": false,
@@ -4382,7 +4382,7 @@
           "fields": [
             {
               "name": "subscription_item_id",
-              "description": "",
+              "description": "SubscriptionItemId is the id of the subscription",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -4394,7 +4394,7 @@
             },
             {
               "name": "subscription_item_name",
-              "description": "",
+              "description": "SubscriptionItemName is the name of the subscription",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -4406,7 +4406,7 @@
             },
             {
               "name": "total_usage",
-              "description": "",
+              "description": "TotalUsage of this subscription",
               "label": "",
               "type": "int64",
               "longType": "int64",
@@ -4418,7 +4418,7 @@
             },
             {
               "name": "period_start",
-              "description": "",
+              "description": "PeriodStart is the start date of this subscription",
               "label": "",
               "type": "Timestamp",
               "longType": "google.protobuf.Timestamp",
@@ -4430,7 +4430,7 @@
             },
             {
               "name": "period_end",
-              "description": "",
+              "description": "PeriodEnd is the end date of this subscription",
               "label": "",
               "type": "Timestamp",
               "longType": "google.protobuf.Timestamp",
@@ -4448,11 +4448,11 @@
           "name": "PaymentService",
           "longName": "PaymentService",
           "fullName": "api.v1.PaymentService",
-          "description": "",
+          "description": "PaymentService serves payment related functions",
           "methods": [
             {
               "name": "CreateOrUpdateCustomer",
-              "description": "",
+              "description": "CreateOrUpdateCustomer the payment data on the payment processor",
               "requestType": "PaymentServiceCreateOrUpdateCustomerRequest",
               "requestLongType": "PaymentServiceCreateOrUpdateCustomerRequest",
               "requestFullType": "api.v1.PaymentServiceCreateOrUpdateCustomerRequest",
@@ -4464,7 +4464,7 @@
             },
             {
               "name": "GetCustomer",
-              "description": "",
+              "description": "GetCustomer from the payment processor",
               "requestType": "PaymentServiceGetCustomerRequest",
               "requestLongType": "PaymentServiceGetCustomerRequest",
               "requestFullType": "api.v1.PaymentServiceGetCustomerRequest",
@@ -4476,7 +4476,7 @@
             },
             {
               "name": "GetCustomerWithLogin",
-              "description": "",
+              "description": "GetCustomerWithLogin from the payment processor",
               "requestType": "PaymentServiceGetCustomerWithLoginRequest",
               "requestLongType": "PaymentServiceGetCustomerWithLoginRequest",
               "requestFullType": "api.v1.PaymentServiceGetCustomerWithLoginRequest",
@@ -4488,7 +4488,7 @@
             },
             {
               "name": "CheckIfCustomerExists",
-              "description": "",
+              "description": "CheckIfCustomerExists at the payment processor",
               "requestType": "PaymentServiceCheckIfCustomerExistsRequest",
               "requestLongType": "PaymentServiceCheckIfCustomerExistsRequest",
               "requestFullType": "api.v1.PaymentServiceCheckIfCustomerExistsRequest",
@@ -4500,7 +4500,7 @@
             },
             {
               "name": "HasPaymentMethod",
-              "description": "",
+              "description": "HasPaymentMethod check if the customer has a payment method provided",
               "requestType": "PaymentServiceHasPaymentMethodRequest",
               "requestLongType": "PaymentServiceHasPaymentMethodRequest",
               "requestFullType": "api.v1.PaymentServiceHasPaymentMethodRequest",
@@ -4512,7 +4512,7 @@
             },
             {
               "name": "DeletePaymentMethod",
-              "description": "",
+              "description": "DeletePaymentMethod of the customer",
               "requestType": "PaymentServiceDeletePaymentMethodRequest",
               "requestLongType": "PaymentServiceDeletePaymentMethodRequest",
               "requestFullType": "api.v1.PaymentServiceDeletePaymentMethodRequest",
@@ -4524,7 +4524,7 @@
             },
             {
               "name": "GetSubscriptionUsage",
-              "description": "",
+              "description": "GetSubscriptionUsage of the customer",
               "requestType": "PaymentServiceGetSubscriptionUsageRequest",
               "requestLongType": "PaymentServiceGetSubscriptionUsageRequest",
               "requestFullType": "api.v1.PaymentServiceGetSubscriptionUsageRequest",
@@ -4536,7 +4536,7 @@
             },
             {
               "name": "GetInvoices",
-              "description": "",
+              "description": "GetInvoices of the customer",
               "requestType": "PaymentServiceGetInvoicesRequest",
               "requestLongType": "PaymentServiceGetInvoicesRequest",
               "requestFullType": "api.v1.PaymentServiceGetInvoicesRequest",
@@ -4548,7 +4548,7 @@
             },
             {
               "name": "GetDefaultPrices",
-              "description": "",
+              "description": "GetDefaultPrices of the products on the platform",
               "requestType": "PaymentServiceGetDefaultPricesRequest",
               "requestLongType": "PaymentServiceGetDefaultPricesRequest",
               "requestFullType": "api.v1.PaymentServiceGetDefaultPricesRequest",
@@ -4560,7 +4560,7 @@
             },
             {
               "name": "CheckAdmitted",
-              "description": "",
+              "description": "CheckAdmitted if the customer is allowed to use the service on the platform",
               "requestType": "PaymentServiceCheckAdmittedRequest",
               "requestLongType": "PaymentServiceCheckAdmittedRequest",
               "requestFullType": "api.v1.PaymentServiceCheckAdmittedRequest",
@@ -4572,7 +4572,7 @@
             },
             {
               "name": "RequestAdmission",
-              "description": "",
+              "description": "RequestAdmission for a customer to get allowed to used the service",
               "requestType": "PaymentServiceRequestAdmissionRequest",
               "requestLongType": "PaymentServiceRequestAdmissionRequest",
               "requestFullType": "api.v1.PaymentServiceRequestAdmissionRequest",
@@ -4584,7 +4584,7 @@
             },
             {
               "name": "HasChargeableResources",
-              "description": "",
+              "description": "HasChargeableResources checks if the customer has resources actually consumed which are chargeable",
               "requestType": "PaymentServiceHasChargeableResourcesRequest",
               "requestLongType": "PaymentServiceHasChargeableResourcesRequest",
               "requestFullType": "api.v1.PaymentServiceHasChargeableResourcesRequest",
