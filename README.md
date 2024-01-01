@@ -6,37 +6,4 @@ This is the API of [metalstack.cloud](https://metalstack.cloud).
 
 ## Usage examples
 
-
-```go
-
-TBD
-```
-
-
-```ts
-
-TBD
-```
-
-
-```js
-
-TBD
-```
-
-
-```python
-
-TBD
-```
-
-
-```ansible
-
-TBD
-```
-
-```curl
-TBD
-
-```
+Can be found in the [examples](examples/) folder.
