@@ -21,7 +21,7 @@ async function main() {
   const res = await client.list({ project: process.env.PROJECT_ID });
 
   for (let cluster of res.clusters) {
-      console.log(cluster);
+      console.log(cluster.name + " " + cluster.uuid);
   }
 }
 void main();
