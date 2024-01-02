@@ -10402,6 +10402,149 @@
       ]
     },
     {
+      "name": "api/v1/project.proto",
+      "description": "",
+      "package": "api.v1",
+      "hasEnums": false,
+      "hasExtensions": false,
+      "hasMessages": true,
+      "hasServices": true,
+      "enums": [],
+      "extensions": [],
+      "messages": [
+        {
+          "name": "Project",
+          "longName": "Project",
+          "fullName": "api.v1.Project",
+          "description": "Project defines a group of resources belonging to a tenant\na tenant can have multiple projects",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "uuid",
+              "description": "Uuid of this project",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "name",
+              "description": "Name of this project",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "tenant",
+              "description": "Tenant this project belongs to",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "ProjectServiceListRequest",
+          "longName": "ProjectServiceListRequest",
+          "fullName": "api.v1.ProjectServiceListRequest",
+          "description": "ProjectServiceListRequest is the request payload to list all projects",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": true,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "name",
+              "description": "Name list only projects with this name",
+              "label": "optional",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "_name",
+              "defaultValue": ""
+            },
+            {
+              "name": "tenant",
+              "description": "Tenant list only projects of this tenant",
+              "label": "optional",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "_tenant",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "ProjectServiceListResponse",
+          "longName": "ProjectServiceListResponse",
+          "fullName": "api.v1.ProjectServiceListResponse",
+          "description": "ProjectServiceListResponse is the response payload to list all projects",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "projects",
+              "description": "Projects is a list of all your projects",
+              "label": "repeated",
+              "type": "Project",
+              "longType": "Project",
+              "fullType": "api.v1.Project",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        }
+      ],
+      "services": [
+        {
+          "name": "ProjectService",
+          "longName": "ProjectService",
+          "fullName": "api.v1.ProjectService",
+          "description": "ProjectService serves project related functions",
+          "methods": [
+            {
+              "name": "List",
+              "description": "List all accessible projects",
+              "requestType": "ProjectServiceListRequest",
+              "requestLongType": "ProjectServiceListRequest",
+              "requestFullType": "api.v1.ProjectServiceListRequest",
+              "requestStreaming": false,
+              "responseType": "ProjectServiceListResponse",
+              "responseLongType": "ProjectServiceListResponse",
+              "responseFullType": "api.v1.ProjectServiceListResponse",
+              "responseStreaming": false
+            }
+          ]
+        }
+      ]
+    },
+    {
       "name": "api/v1/user.proto",
       "description": "",
       "package": "api.v1",

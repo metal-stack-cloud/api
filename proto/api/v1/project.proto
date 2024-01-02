@@ -1,0 +1,38 @@
+syntax = "proto3";
+
+package api.v1;
+
+import "api/v1/common.proto";
+
+// ProjectService serves project related functions
+service ProjectService {
+  // List all accessible projects
+  rpc List(ProjectServiceListRequest) returns (ProjectServiceListResponse) {
+    option (visibility) = VISIBILITY_SELF;
+  }
+}
+
+// Project defines a group of resources belonging to a tenant
+// a tenant can have multiple projects
+message Project {
+  // Uuid of this project
+  string uuid = 1;
+  // Name of this project
+  string name = 2;
+  // Tenant this project belongs to
+  string tenant = 3;
+}
+
+// ProjectServiceListRequest is the request payload to list all projects
+message ProjectServiceListRequest {
+  // Name list only projects with this name
+  optional string name = 1;
+  // Tenant list only projects of this tenant
+  optional string tenant = 2;
+}
+
+// ProjectServiceListResponse is the response payload to list all projects
+message ProjectServiceListResponse {
+  // Projects is a list of all your projects
+  repeated Project projects = 1;
+}

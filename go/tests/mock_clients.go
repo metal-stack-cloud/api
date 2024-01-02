@@ -53,6 +53,7 @@ type (
 		ipservice       *apiv1mocks.IPServiceClient
 		methodservice   *apiv1mocks.MethodServiceClient
 		paymentservice  *apiv1mocks.PaymentServiceClient
+		projectservice  *apiv1mocks.ProjectServiceClient
 		tenantservice   *apiv1mocks.TenantServiceClient
 		tokenservice    *apiv1mocks.TokenServiceClient
 		versionservice  *apiv1mocks.VersionServiceClient
@@ -67,6 +68,7 @@ type (
 		IP       func(m *mock.Mock)
 		Method   func(m *mock.Mock)
 		Payment  func(m *mock.Mock)
+		Project  func(m *mock.Mock)
 		Tenant   func(m *mock.Mock)
 		Token    func(m *mock.Mock)
 		Version  func(m *mock.Mock)
@@ -169,6 +171,7 @@ func newapiv1(t *testing.T, fns *Apiv1MockFns) *apiv1 {
 		ipservice:       apiv1mocks.NewIPServiceClient(t),
 		methodservice:   apiv1mocks.NewMethodServiceClient(t),
 		paymentservice:  apiv1mocks.NewPaymentServiceClient(t),
+		projectservice:  apiv1mocks.NewProjectServiceClient(t),
 		tenantservice:   apiv1mocks.NewTenantServiceClient(t),
 		tokenservice:    apiv1mocks.NewTokenServiceClient(t),
 		versionservice:  apiv1mocks.NewVersionServiceClient(t),
@@ -194,6 +197,9 @@ func newapiv1(t *testing.T, fns *Apiv1MockFns) *apiv1 {
 		}
 		if fns.Payment != nil {
 			fns.Payment(&a.paymentservice.Mock)
+		}
+		if fns.Project != nil {
+			fns.Project(&a.projectservice.Mock)
 		}
 		if fns.Tenant != nil {
 			fns.Tenant(&a.tenantservice.Mock)
@@ -233,6 +239,9 @@ func (c *apiv1) Method() apiv1connect.MethodServiceClient {
 }
 func (c *apiv1) Payment() apiv1connect.PaymentServiceClient {
 	return c.paymentservice
+}
+func (c *apiv1) Project() apiv1connect.ProjectServiceClient {
+	return c.projectservice
 }
 func (c *apiv1) Tenant() apiv1connect.TenantServiceClient {
 	return c.tenantservice
