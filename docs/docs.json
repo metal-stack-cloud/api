@@ -10402,6 +10402,277 @@
       ]
     },
     {
+      "name": "api/v1/project.proto",
+      "description": "",
+      "package": "api.v1",
+      "hasEnums": false,
+      "hasExtensions": false,
+      "hasMessages": true,
+      "hasServices": true,
+      "enums": [],
+      "extensions": [],
+      "messages": [
+        {
+          "name": "Project",
+          "longName": "Project",
+          "fullName": "api.v1.Project",
+          "description": "Project defines a group of resources belonging to a tenant\na tenant can have multiple projects",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "uuid",
+              "description": "Uuid of this project",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "name",
+              "description": "Name of this project",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "description",
+              "description": "Description of this project",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "tenant",
+              "description": "Tenant this project belongs to",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "created_at",
+              "description": "CreatedAt the date when this project was created",
+              "label": "",
+              "type": "Timestamp",
+              "longType": "google.protobuf.Timestamp",
+              "fullType": "google.protobuf.Timestamp",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "updated_at",
+              "description": "UpdatedAt the date when this project was updated",
+              "label": "",
+              "type": "Timestamp",
+              "longType": "google.protobuf.Timestamp",
+              "fullType": "google.protobuf.Timestamp",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "ProjectServiceGetRequest",
+          "longName": "ProjectServiceGetRequest",
+          "fullName": "api.v1.ProjectServiceGetRequest",
+          "description": "ProjectServiceGetRequest is the request payload to get a project",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "project",
+              "description": "Project is the uuid of the project to get",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": "",
+              "options": {
+                "validate.rules": [
+                  {
+                    "name": "string.uuid",
+                    "value": true
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "ProjectServiceGetResponse",
+          "longName": "ProjectServiceGetResponse",
+          "fullName": "api.v1.ProjectServiceGetResponse",
+          "description": "ProjectServiceGetResponse is the response payload to get a projects",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "project",
+              "description": "Project is the project",
+              "label": "",
+              "type": "Project",
+              "longType": "Project",
+              "fullType": "api.v1.Project",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "ProjectServiceListRequest",
+          "longName": "ProjectServiceListRequest",
+          "fullName": "api.v1.ProjectServiceListRequest",
+          "description": "ProjectServiceListRequest is the request payload to list all projects",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": true,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "name",
+              "description": "Name list only projects with this name",
+              "label": "optional",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "_name",
+              "defaultValue": "",
+              "options": {
+                "validate.rules": [
+                  {
+                    "name": "string.min_len",
+                    "value": 2
+                  },
+                  {
+                    "name": "string.max_len",
+                    "value": 128
+                  }
+                ]
+              }
+            },
+            {
+              "name": "tenant",
+              "description": "Tenant list only projects of this tenant",
+              "label": "optional",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "_tenant",
+              "defaultValue": "",
+              "options": {
+                "validate.rules": [
+                  {
+                    "name": "string.min_len",
+                    "value": 2
+                  },
+                  {
+                    "name": "string.max_len",
+                    "value": 128
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "ProjectServiceListResponse",
+          "longName": "ProjectServiceListResponse",
+          "fullName": "api.v1.ProjectServiceListResponse",
+          "description": "ProjectServiceListResponse is the response payload to list all projects",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "projects",
+              "description": "Projects is a list of all your projects",
+              "label": "repeated",
+              "type": "Project",
+              "longType": "Project",
+              "fullType": "api.v1.Project",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        }
+      ],
+      "services": [
+        {
+          "name": "ProjectService",
+          "longName": "ProjectService",
+          "fullName": "api.v1.ProjectService",
+          "description": "ProjectService serves project related functions",
+          "methods": [
+            {
+              "name": "List",
+              "description": "List all accessible projects",
+              "requestType": "ProjectServiceListRequest",
+              "requestLongType": "ProjectServiceListRequest",
+              "requestFullType": "api.v1.ProjectServiceListRequest",
+              "requestStreaming": false,
+              "responseType": "ProjectServiceListResponse",
+              "responseLongType": "ProjectServiceListResponse",
+              "responseFullType": "api.v1.ProjectServiceListResponse",
+              "responseStreaming": false
+            },
+            {
+              "name": "Get",
+              "description": "Get a project",
+              "requestType": "ProjectServiceGetRequest",
+              "requestLongType": "ProjectServiceGetRequest",
+              "requestFullType": "api.v1.ProjectServiceGetRequest",
+              "requestStreaming": false,
+              "responseType": "ProjectServiceGetResponse",
+              "responseLongType": "ProjectServiceGetResponse",
+              "responseFullType": "api.v1.ProjectServiceGetResponse",
+              "responseStreaming": false
+            }
+          ]
+        }
+      ]
+    },
+    {
       "name": "api/v1/user.proto",
       "description": "",
       "package": "api.v1",
