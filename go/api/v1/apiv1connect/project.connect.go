@@ -35,18 +35,23 @@ const (
 const (
 	// ProjectServiceListProcedure is the fully-qualified name of the ProjectService's List RPC.
 	ProjectServiceListProcedure = "/api.v1.ProjectService/List"
+	// ProjectServiceGetProcedure is the fully-qualified name of the ProjectService's Get RPC.
+	ProjectServiceGetProcedure = "/api.v1.ProjectService/Get"
 )
 
 // These variables are the protoreflect.Descriptor objects for the RPCs defined in this package.
 var (
 	projectServiceServiceDescriptor    = v1.File_api_v1_project_proto.Services().ByName("ProjectService")
 	projectServiceListMethodDescriptor = projectServiceServiceDescriptor.Methods().ByName("List")
+	projectServiceGetMethodDescriptor  = projectServiceServiceDescriptor.Methods().ByName("Get")
 )
 
 // ProjectServiceClient is a client for the api.v1.ProjectService service.
 type ProjectServiceClient interface {
 	// List all accessible projects
 	List(context.Context, *connect.Request[v1.ProjectServiceListRequest]) (*connect.Response[v1.ProjectServiceListResponse], error)
+	// Get a project
+	Get(context.Context, *connect.Request[v1.ProjectServiceGetRequest]) (*connect.Response[v1.ProjectServiceGetResponse], error)
 }
 
 // NewProjectServiceClient constructs a client for the api.v1.ProjectService service. By default, it
@@ -65,12 +70,19 @@ func NewProjectServiceClient(httpClient connect.HTTPClient, baseURL string, opts
 			connect.WithSchema(projectServiceListMethodDescriptor),
 			connect.WithClientOptions(opts...),
 		),
+		get: connect.NewClient[v1.ProjectServiceGetRequest, v1.ProjectServiceGetResponse](
+			httpClient,
+			baseURL+ProjectServiceGetProcedure,
+			connect.WithSchema(projectServiceGetMethodDescriptor),
+			connect.WithClientOptions(opts...),
+		),
 	}
 }
 
 // projectServiceClient implements ProjectServiceClient.
 type projectServiceClient struct {
 	list *connect.Client[v1.ProjectServiceListRequest, v1.ProjectServiceListResponse]
+	get  *connect.Client[v1.ProjectServiceGetRequest, v1.ProjectServiceGetResponse]
 }
 
 // List calls api.v1.ProjectService.List.
@@ -78,10 +90,17 @@ func (c *projectServiceClient) List(ctx context.Context, req *connect.Request[v1
 	return c.list.CallUnary(ctx, req)
 }
 
+// Get calls api.v1.ProjectService.Get.
+func (c *projectServiceClient) Get(ctx context.Context, req *connect.Request[v1.ProjectServiceGetRequest]) (*connect.Response[v1.ProjectServiceGetResponse], error) {
+	return c.get.CallUnary(ctx, req)
+}
+
 // ProjectServiceHandler is an implementation of the api.v1.ProjectService service.
 type ProjectServiceHandler interface {
 	// List all accessible projects
 	List(context.Context, *connect.Request[v1.ProjectServiceListRequest]) (*connect.Response[v1.ProjectServiceListResponse], error)
+	// Get a project
+	Get(context.Context, *connect.Request[v1.ProjectServiceGetRequest]) (*connect.Response[v1.ProjectServiceGetResponse], error)
 }
 
 // NewProjectServiceHandler builds an HTTP handler from the service implementation. It returns the
@@ -96,10 +115,18 @@ func NewProjectServiceHandler(svc ProjectServiceHandler, opts ...connect.Handler
 		connect.WithSchema(projectServiceListMethodDescriptor),
 		connect.WithHandlerOptions(opts...),
 	)
+	projectServiceGetHandler := connect.NewUnaryHandler(
+		ProjectServiceGetProcedure,
+		svc.Get,
+		connect.WithSchema(projectServiceGetMethodDescriptor),
+		connect.WithHandlerOptions(opts...),
+	)
 	return "/api.v1.ProjectService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
 		case ProjectServiceListProcedure:
 			projectServiceListHandler.ServeHTTP(w, r)
+		case ProjectServiceGetProcedure:
+			projectServiceGetHandler.ServeHTTP(w, r)
 		default:
 			http.NotFound(w, r)
 		}
@@ -111,4 +138,8 @@ type UnimplementedProjectServiceHandler struct{}
 
 func (UnimplementedProjectServiceHandler) List(context.Context, *connect.Request[v1.ProjectServiceListRequest]) (*connect.Response[v1.ProjectServiceListResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("api.v1.ProjectService.List is not implemented"))
+}
+
+func (UnimplementedProjectServiceHandler) Get(context.Context, *connect.Request[v1.ProjectServiceGetRequest]) (*connect.Response[v1.ProjectServiceGetResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("api.v1.ProjectService.Get is not implemented"))
 }

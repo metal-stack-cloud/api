@@ -3,7 +3,7 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import { ProjectServiceListRequest, ProjectServiceListResponse } from "./project_pb.js";
+import { ProjectServiceGetRequest, ProjectServiceGetResponse, ProjectServiceListRequest, ProjectServiceListResponse } from "./project_pb.js";
 import { MethodKind } from "@bufbuild/protobuf";
 
 /**
@@ -23,6 +23,17 @@ export const ProjectService = {
       name: "List",
       I: ProjectServiceListRequest,
       O: ProjectServiceListResponse,
+      kind: MethodKind.Unary,
+    },
+    /**
+     * Get a project
+     *
+     * @generated from rpc api.v1.ProjectService.Get
+     */
+    get: {
+      name: "Get",
+      I: ProjectServiceGetRequest,
+      O: ProjectServiceGetResponse,
       kind: MethodKind.Unary,
     },
   }

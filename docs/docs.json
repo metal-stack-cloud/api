@@ -10447,12 +10447,104 @@
               "defaultValue": ""
             },
             {
+              "name": "description",
+              "description": "Description of this project",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
               "name": "tenant",
               "description": "Tenant this project belongs to",
               "label": "",
               "type": "string",
               "longType": "string",
               "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "created_at",
+              "description": "CreatedAt the date when this project was created",
+              "label": "",
+              "type": "Timestamp",
+              "longType": "google.protobuf.Timestamp",
+              "fullType": "google.protobuf.Timestamp",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "updated_at",
+              "description": "UpdatedAt the date when this project was updated",
+              "label": "",
+              "type": "Timestamp",
+              "longType": "google.protobuf.Timestamp",
+              "fullType": "google.protobuf.Timestamp",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "ProjectServiceGetRequest",
+          "longName": "ProjectServiceGetRequest",
+          "fullName": "api.v1.ProjectServiceGetRequest",
+          "description": "ProjectServiceGetRequest is the request payload to get a project",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "project",
+              "description": "Project is the uuid of the project to get",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": "",
+              "options": {
+                "validate.rules": [
+                  {
+                    "name": "string.uuid",
+                    "value": true
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "ProjectServiceGetResponse",
+          "longName": "ProjectServiceGetResponse",
+          "fullName": "api.v1.ProjectServiceGetResponse",
+          "description": "ProjectServiceGetResponse is the response payload to get a projects",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "project",
+              "description": "Project is the project",
+              "label": "",
+              "type": "Project",
+              "longType": "Project",
+              "fullType": "api.v1.Project",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
@@ -10480,7 +10572,19 @@
               "ismap": false,
               "isoneof": true,
               "oneofdecl": "_name",
-              "defaultValue": ""
+              "defaultValue": "",
+              "options": {
+                "validate.rules": [
+                  {
+                    "name": "string.min_len",
+                    "value": 2
+                  },
+                  {
+                    "name": "string.max_len",
+                    "value": 128
+                  }
+                ]
+              }
             },
             {
               "name": "tenant",
@@ -10492,7 +10596,19 @@
               "ismap": false,
               "isoneof": true,
               "oneofdecl": "_tenant",
-              "defaultValue": ""
+              "defaultValue": "",
+              "options": {
+                "validate.rules": [
+                  {
+                    "name": "string.min_len",
+                    "value": 2
+                  },
+                  {
+                    "name": "string.max_len",
+                    "value": 128
+                  }
+                ]
+              }
             }
           ]
         },
@@ -10538,6 +10654,18 @@
               "responseType": "ProjectServiceListResponse",
               "responseLongType": "ProjectServiceListResponse",
               "responseFullType": "api.v1.ProjectServiceListResponse",
+              "responseStreaming": false
+            },
+            {
+              "name": "Get",
+              "description": "Get a project",
+              "requestType": "ProjectServiceGetRequest",
+              "requestLongType": "ProjectServiceGetRequest",
+              "requestFullType": "api.v1.ProjectServiceGetRequest",
+              "requestStreaming": false,
+              "responseType": "ProjectServiceGetResponse",
+              "responseLongType": "ProjectServiceGetResponse",
+              "responseFullType": "api.v1.ProjectServiceGetResponse",
               "responseStreaming": false
             }
           ]

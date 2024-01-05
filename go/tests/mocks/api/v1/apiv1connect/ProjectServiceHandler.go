@@ -16,6 +16,36 @@ type ProjectServiceHandler struct {
 	mock.Mock
 }
 
+// Get provides a mock function with given fields: _a0, _a1
+func (_m *ProjectServiceHandler) Get(_a0 context.Context, _a1 *connect.Request[apiv1.ProjectServiceGetRequest]) (*connect.Response[apiv1.ProjectServiceGetResponse], error) {
+	ret := _m.Called(_a0, _a1)
+
+	if len(ret) == 0 {
+		panic("no return value specified for Get")
+	}
+
+	var r0 *connect.Response[apiv1.ProjectServiceGetResponse]
+	var r1 error
+	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[apiv1.ProjectServiceGetRequest]) (*connect.Response[apiv1.ProjectServiceGetResponse], error)); ok {
+		return rf(_a0, _a1)
+	}
+	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[apiv1.ProjectServiceGetRequest]) *connect.Response[apiv1.ProjectServiceGetResponse]); ok {
+		r0 = rf(_a0, _a1)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*connect.Response[apiv1.ProjectServiceGetResponse])
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(context.Context, *connect.Request[apiv1.ProjectServiceGetRequest]) error); ok {
+		r1 = rf(_a0, _a1)
+	} else {
+		r1 = ret.Error(1)
+	}
+
+	return r0, r1
+}
+
 // List provides a mock function with given fields: _a0, _a1
 func (_m *ProjectServiceHandler) List(_a0 context.Context, _a1 *connect.Request[apiv1.ProjectServiceListRequest]) (*connect.Response[apiv1.ProjectServiceListResponse], error) {
 	ret := _m.Called(_a0, _a1)

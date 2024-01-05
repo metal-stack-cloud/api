@@ -26,5 +26,16 @@ exports.ProjectService = {
             O: project_pb_js_1.ProjectServiceListResponse,
             kind: protobuf_1.MethodKind.Unary,
         },
+        /**
+         * Get a project
+         *
+         * @generated from rpc api.v1.ProjectService.Get
+         */
+        get: {
+            name: "Get",
+            I: project_pb_js_1.ProjectServiceGetRequest,
+            O: project_pb_js_1.ProjectServiceGetResponse,
+            kind: protobuf_1.MethodKind.Unary,
+        },
     }
 };

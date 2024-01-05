@@ -35,6 +35,9 @@ var (
 	_ = sort.Sort
 )
 
+// define the regex for a UUID once up-front
+var _project_uuidPattern = regexp.MustCompile("^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$")
+
 // Validate checks the field values on Project with the rules defined in the
 // proto definition for this message. If any rules are violated, the first
 // error encountered is returned, or nil if there are no violations.
@@ -60,7 +63,67 @@ func (m *Project) validate(all bool) error {
 
 	// no validation rules for Name
 
+	// no validation rules for Description
+
 	// no validation rules for Tenant
+
+	if all {
+		switch v := interface{}(m.GetCreatedAt()).(type) {
+		case interface{ ValidateAll() error }:
+			if err := v.ValidateAll(); err != nil {
+				errors = append(errors, ProjectValidationError{
+					field:  "CreatedAt",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		case interface{ Validate() error }:
+			if err := v.Validate(); err != nil {
+				errors = append(errors, ProjectValidationError{
+					field:  "CreatedAt",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		}
+	} else if v, ok := interface{}(m.GetCreatedAt()).(interface{ Validate() error }); ok {
+		if err := v.Validate(); err != nil {
+			return ProjectValidationError{
+				field:  "CreatedAt",
+				reason: "embedded message failed validation",
+				cause:  err,
+			}
+		}
+	}
+
+	if all {
+		switch v := interface{}(m.GetUpdatedAt()).(type) {
+		case interface{ ValidateAll() error }:
+			if err := v.ValidateAll(); err != nil {
+				errors = append(errors, ProjectValidationError{
+					field:  "UpdatedAt",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		case interface{ Validate() error }:
+			if err := v.Validate(); err != nil {
+				errors = append(errors, ProjectValidationError{
+					field:  "UpdatedAt",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		}
+	} else if v, ok := interface{}(m.GetUpdatedAt()).(interface{ Validate() error }); ok {
+		if err := v.Validate(); err != nil {
+			return ProjectValidationError{
+				field:  "UpdatedAt",
+				reason: "embedded message failed validation",
+				cause:  err,
+			}
+		}
+	}
 
 	if len(errors) > 0 {
 		return ProjectMultiError(errors)
@@ -162,11 +225,33 @@ func (m *ProjectServiceListRequest) validate(all bool) error {
 	var errors []error
 
 	if m.Name != nil {
-		// no validation rules for Name
+
+		if l := utf8.RuneCountInString(m.GetName()); l < 2 || l > 128 {
+			err := ProjectServiceListRequestValidationError{
+				field:  "Name",
+				reason: "value length must be between 2 and 128 runes, inclusive",
+			}
+			if !all {
+				return err
+			}
+			errors = append(errors, err)
+		}
+
 	}
 
 	if m.Tenant != nil {
-		// no validation rules for Tenant
+
+		if l := utf8.RuneCountInString(m.GetTenant()); l < 2 || l > 128 {
+			err := ProjectServiceListRequestValidationError{
+				field:  "Tenant",
+				reason: "value length must be between 2 and 128 runes, inclusive",
+			}
+			if !all {
+				return err
+			}
+			errors = append(errors, err)
+		}
+
 	}
 
 	if len(errors) > 0 {
@@ -384,3 +469,256 @@ var _ interface {
 	Cause() error
 	ErrorName() string
 } = ProjectServiceListResponseValidationError{}
+
+// Validate checks the field values on ProjectServiceGetRequest with the rules
+// defined in the proto definition for this message. If any rules are
+// violated, the first error encountered is returned, or nil if there are no violations.
+func (m *ProjectServiceGetRequest) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on ProjectServiceGetRequest with the
+// rules defined in the proto definition for this message. If any rules are
+// violated, the result is a list of violation errors wrapped in
+// ProjectServiceGetRequestMultiError, or nil if none found.
+func (m *ProjectServiceGetRequest) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *ProjectServiceGetRequest) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	if err := m._validateUuid(m.GetProject()); err != nil {
+		err = ProjectServiceGetRequestValidationError{
+			field:  "Project",
+			reason: "value must be a valid UUID",
+			cause:  err,
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
+	if len(errors) > 0 {
+		return ProjectServiceGetRequestMultiError(errors)
+	}
+
+	return nil
+}
+
+func (m *ProjectServiceGetRequest) _validateUuid(uuid string) error {
+	if matched := _project_uuidPattern.MatchString(uuid); !matched {
+		return errors.New("invalid uuid format")
+	}
+
+	return nil
+}
+
+// ProjectServiceGetRequestMultiError is an error wrapping multiple validation
+// errors returned by ProjectServiceGetRequest.ValidateAll() if the designated
+// constraints aren't met.
+type ProjectServiceGetRequestMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m ProjectServiceGetRequestMultiError) Error() string {
+	var msgs []string
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m ProjectServiceGetRequestMultiError) AllErrors() []error { return m }
+
+// ProjectServiceGetRequestValidationError is the validation error returned by
+// ProjectServiceGetRequest.Validate if the designated constraints aren't met.
+type ProjectServiceGetRequestValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e ProjectServiceGetRequestValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e ProjectServiceGetRequestValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e ProjectServiceGetRequestValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e ProjectServiceGetRequestValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e ProjectServiceGetRequestValidationError) ErrorName() string {
+	return "ProjectServiceGetRequestValidationError"
+}
+
+// Error satisfies the builtin error interface
+func (e ProjectServiceGetRequestValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sProjectServiceGetRequest.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = ProjectServiceGetRequestValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = ProjectServiceGetRequestValidationError{}
+
+// Validate checks the field values on ProjectServiceGetResponse with the rules
+// defined in the proto definition for this message. If any rules are
+// violated, the first error encountered is returned, or nil if there are no violations.
+func (m *ProjectServiceGetResponse) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on ProjectServiceGetResponse with the
+// rules defined in the proto definition for this message. If any rules are
+// violated, the result is a list of violation errors wrapped in
+// ProjectServiceGetResponseMultiError, or nil if none found.
+func (m *ProjectServiceGetResponse) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *ProjectServiceGetResponse) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	if all {
+		switch v := interface{}(m.GetProject()).(type) {
+		case interface{ ValidateAll() error }:
+			if err := v.ValidateAll(); err != nil {
+				errors = append(errors, ProjectServiceGetResponseValidationError{
+					field:  "Project",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		case interface{ Validate() error }:
+			if err := v.Validate(); err != nil {
+				errors = append(errors, ProjectServiceGetResponseValidationError{
+					field:  "Project",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		}
+	} else if v, ok := interface{}(m.GetProject()).(interface{ Validate() error }); ok {
+		if err := v.Validate(); err != nil {
+			return ProjectServiceGetResponseValidationError{
+				field:  "Project",
+				reason: "embedded message failed validation",
+				cause:  err,
+			}
+		}
+	}
+
+	if len(errors) > 0 {
+		return ProjectServiceGetResponseMultiError(errors)
+	}
+
+	return nil
+}
+
+// ProjectServiceGetResponseMultiError is an error wrapping multiple validation
+// errors returned by ProjectServiceGetResponse.ValidateAll() if the
+// designated constraints aren't met.
+type ProjectServiceGetResponseMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m ProjectServiceGetResponseMultiError) Error() string {
+	var msgs []string
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m ProjectServiceGetResponseMultiError) AllErrors() []error { return m }
+
+// ProjectServiceGetResponseValidationError is the validation error returned by
+// ProjectServiceGetResponse.Validate if the designated constraints aren't met.
+type ProjectServiceGetResponseValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e ProjectServiceGetResponseValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e ProjectServiceGetResponseValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e ProjectServiceGetResponseValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e ProjectServiceGetResponseValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e ProjectServiceGetResponseValidationError) ErrorName() string {
+	return "ProjectServiceGetResponseValidationError"
+}
+
+// Error satisfies the builtin error interface
+func (e ProjectServiceGetResponseValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sProjectServiceGetResponse.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = ProjectServiceGetResponseValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = ProjectServiceGetResponseValidationError{}

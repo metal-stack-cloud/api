@@ -4,7 +4,7 @@
 /* eslint-disable */
 // @ts-nocheck
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ProjectServiceListResponse = exports.ProjectServiceListRequest = exports.Project = void 0;
+exports.ProjectServiceGetResponse = exports.ProjectServiceGetRequest = exports.ProjectServiceListResponse = exports.ProjectServiceListRequest = exports.Project = void 0;
 const protobuf_1 = require("@bufbuild/protobuf");
 /**
  * Project defines a group of resources belonging to a tenant
@@ -28,9 +28,15 @@ class Project extends protobuf_1.Message {
          */
         this.name = "";
         /**
+         * Description of this project
+         *
+         * @generated from field: string description = 3;
+         */
+        this.description = "";
+        /**
          * Tenant this project belongs to
          *
-         * @generated from field: string tenant = 3;
+         * @generated from field: string tenant = 4;
          */
         this.tenant = "";
         protobuf_1.proto3.util.initPartial(data, this);
@@ -54,7 +60,10 @@ Project.typeName = "api.v1.Project";
 Project.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 1, name: "uuid", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 2, name: "name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 3, name: "tenant", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 3, name: "description", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 4, name: "tenant", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 10, name: "created_at", kind: "message", T: protobuf_1.Timestamp },
+    { no: 11, name: "updated_at", kind: "message", T: protobuf_1.Timestamp },
 ]);
 /**
  * ProjectServiceListRequest is the request payload to list all projects
@@ -120,4 +129,68 @@ ProjectServiceListResponse.runtime = protobuf_1.proto3;
 ProjectServiceListResponse.typeName = "api.v1.ProjectServiceListResponse";
 ProjectServiceListResponse.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 1, name: "projects", kind: "message", T: Project, repeated: true },
+]);
+/**
+ * ProjectServiceGetRequest is the request payload to get a project
+ *
+ * @generated from message api.v1.ProjectServiceGetRequest
+ */
+class ProjectServiceGetRequest extends protobuf_1.Message {
+    constructor(data) {
+        super();
+        /**
+         * Project is the uuid of the project to get
+         *
+         * @generated from field: string project = 1;
+         */
+        this.project = "";
+        protobuf_1.proto3.util.initPartial(data, this);
+    }
+    static fromBinary(bytes, options) {
+        return new ProjectServiceGetRequest().fromBinary(bytes, options);
+    }
+    static fromJson(jsonValue, options) {
+        return new ProjectServiceGetRequest().fromJson(jsonValue, options);
+    }
+    static fromJsonString(jsonString, options) {
+        return new ProjectServiceGetRequest().fromJsonString(jsonString, options);
+    }
+    static equals(a, b) {
+        return protobuf_1.proto3.util.equals(ProjectServiceGetRequest, a, b);
+    }
+}
+exports.ProjectServiceGetRequest = ProjectServiceGetRequest;
+ProjectServiceGetRequest.runtime = protobuf_1.proto3;
+ProjectServiceGetRequest.typeName = "api.v1.ProjectServiceGetRequest";
+ProjectServiceGetRequest.fields = protobuf_1.proto3.util.newFieldList(() => [
+    { no: 1, name: "project", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+]);
+/**
+ * ProjectServiceGetResponse is the response payload to get a projects
+ *
+ * @generated from message api.v1.ProjectServiceGetResponse
+ */
+class ProjectServiceGetResponse extends protobuf_1.Message {
+    constructor(data) {
+        super();
+        protobuf_1.proto3.util.initPartial(data, this);
+    }
+    static fromBinary(bytes, options) {
+        return new ProjectServiceGetResponse().fromBinary(bytes, options);
+    }
+    static fromJson(jsonValue, options) {
+        return new ProjectServiceGetResponse().fromJson(jsonValue, options);
+    }
+    static fromJsonString(jsonString, options) {
+        return new ProjectServiceGetResponse().fromJsonString(jsonString, options);
+    }
+    static equals(a, b) {
+        return protobuf_1.proto3.util.equals(ProjectServiceGetResponse, a, b);
+    }
+}
+exports.ProjectServiceGetResponse = ProjectServiceGetResponse;
+ProjectServiceGetResponse.runtime = protobuf_1.proto3;
+ProjectServiceGetResponse.typeName = "api.v1.ProjectServiceGetResponse";
+ProjectServiceGetResponse.fields = protobuf_1.proto3.util.newFieldList(() => [
+    { no: 1, name: "project", kind: "message", T: Project },
 ]);

@@ -1,5 +1,5 @@
 import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
-import { Message, proto3 } from "@bufbuild/protobuf";
+import { Message, proto3, Timestamp } from "@bufbuild/protobuf";
 /**
  * Project defines a group of resources belonging to a tenant
  * a tenant can have multiple projects
@@ -20,11 +20,29 @@ export declare class Project extends Message<Project> {
      */
     name: string;
     /**
+     * Description of this project
+     *
+     * @generated from field: string description = 3;
+     */
+    description: string;
+    /**
      * Tenant this project belongs to
      *
-     * @generated from field: string tenant = 3;
+     * @generated from field: string tenant = 4;
      */
     tenant: string;
+    /**
+     * CreatedAt the date when this project was created
+     *
+     * @generated from field: google.protobuf.Timestamp created_at = 10;
+     */
+    createdAt?: Timestamp;
+    /**
+     * UpdatedAt the date when this project was updated
+     *
+     * @generated from field: google.protobuf.Timestamp updated_at = 11;
+     */
+    updatedAt?: Timestamp;
     constructor(data?: PartialMessage<Project>);
     static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.Project";
@@ -81,4 +99,46 @@ export declare class ProjectServiceListResponse extends Message<ProjectServiceLi
     static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ProjectServiceListResponse;
     static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ProjectServiceListResponse;
     static equals(a: ProjectServiceListResponse | PlainMessage<ProjectServiceListResponse> | undefined, b: ProjectServiceListResponse | PlainMessage<ProjectServiceListResponse> | undefined): boolean;
+}
+/**
+ * ProjectServiceGetRequest is the request payload to get a project
+ *
+ * @generated from message api.v1.ProjectServiceGetRequest
+ */
+export declare class ProjectServiceGetRequest extends Message<ProjectServiceGetRequest> {
+    /**
+     * Project is the uuid of the project to get
+     *
+     * @generated from field: string project = 1;
+     */
+    project: string;
+    constructor(data?: PartialMessage<ProjectServiceGetRequest>);
+    static readonly runtime: typeof proto3;
+    static readonly typeName = "api.v1.ProjectServiceGetRequest";
+    static readonly fields: FieldList;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ProjectServiceGetRequest;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ProjectServiceGetRequest;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ProjectServiceGetRequest;
+    static equals(a: ProjectServiceGetRequest | PlainMessage<ProjectServiceGetRequest> | undefined, b: ProjectServiceGetRequest | PlainMessage<ProjectServiceGetRequest> | undefined): boolean;
+}
+/**
+ * ProjectServiceGetResponse is the response payload to get a projects
+ *
+ * @generated from message api.v1.ProjectServiceGetResponse
+ */
+export declare class ProjectServiceGetResponse extends Message<ProjectServiceGetResponse> {
+    /**
+     * Project is the project
+     *
+     * @generated from field: api.v1.Project project = 1;
+     */
+    project?: Project;
+    constructor(data?: PartialMessage<ProjectServiceGetResponse>);
+    static readonly runtime: typeof proto3;
+    static readonly typeName = "api.v1.ProjectServiceGetResponse";
+    static readonly fields: FieldList;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ProjectServiceGetResponse;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ProjectServiceGetResponse;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ProjectServiceGetResponse;
+    static equals(a: ProjectServiceGetResponse | PlainMessage<ProjectServiceGetResponse> | undefined, b: ProjectServiceGetResponse | PlainMessage<ProjectServiceGetResponse> | undefined): boolean;
 }
