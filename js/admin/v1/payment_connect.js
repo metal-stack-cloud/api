@@ -8,12 +8,16 @@ exports.PaymentService = void 0;
 const payment_pb_js_1 = require("./payment_pb.js");
 const protobuf_1 = require("@bufbuild/protobuf");
 /**
+ * PaymentService serves payment related functions
+ *
  * @generated from service admin.v1.PaymentService
  */
 exports.PaymentService = {
     typeName: "admin.v1.PaymentService",
     methods: {
         /**
+         * ListCoupons list all available coupons
+         *
          * @generated from rpc admin.v1.PaymentService.ListCoupons
          */
         listCoupons: {
@@ -23,6 +27,8 @@ exports.PaymentService = {
             kind: protobuf_1.MethodKind.Unary,
         },
         /**
+         * AddCouponToCustomer adds a coupon to a customer
+         *
          * @generated from rpc admin.v1.PaymentService.AddCouponToCustomer
          */
         addCouponToCustomer: {
@@ -32,6 +38,8 @@ exports.PaymentService = {
             kind: protobuf_1.MethodKind.Unary,
         },
         /**
+         * AddBalanceToCustomer adds balance to a customer
+         *
          * @generated from rpc admin.v1.PaymentService.AddBalanceToCustomer
          */
         addBalanceToCustomer: {

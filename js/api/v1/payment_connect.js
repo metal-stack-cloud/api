@@ -8,12 +8,16 @@ exports.PaymentService = void 0;
 const payment_pb_js_1 = require("./payment_pb.js");
 const protobuf_1 = require("@bufbuild/protobuf");
 /**
+ * PaymentService serves payment related functions
+ *
  * @generated from service api.v1.PaymentService
  */
 exports.PaymentService = {
     typeName: "api.v1.PaymentService",
     methods: {
         /**
+         * CreateOrUpdateCustomer the payment data on the payment processor
+         *
          * @generated from rpc api.v1.PaymentService.CreateOrUpdateCustomer
          */
         createOrUpdateCustomer: {
@@ -23,6 +27,8 @@ exports.PaymentService = {
             kind: protobuf_1.MethodKind.Unary,
         },
         /**
+         * GetCustomer from the payment processor
+         *
          * @generated from rpc api.v1.PaymentService.GetCustomer
          */
         getCustomer: {
@@ -32,6 +38,8 @@ exports.PaymentService = {
             kind: protobuf_1.MethodKind.Unary,
         },
         /**
+         * GetCustomerWithLogin from the payment processor
+         *
          * @generated from rpc api.v1.PaymentService.GetCustomerWithLogin
          */
         getCustomerWithLogin: {
@@ -41,6 +49,8 @@ exports.PaymentService = {
             kind: protobuf_1.MethodKind.Unary,
         },
         /**
+         * CheckIfCustomerExists at the payment processor
+         *
          * @generated from rpc api.v1.PaymentService.CheckIfCustomerExists
          */
         checkIfCustomerExists: {
@@ -50,6 +60,8 @@ exports.PaymentService = {
             kind: protobuf_1.MethodKind.Unary,
         },
         /**
+         * HasPaymentMethod check if the customer has a payment method provided
+         *
          * @generated from rpc api.v1.PaymentService.HasPaymentMethod
          */
         hasPaymentMethod: {
@@ -59,6 +71,8 @@ exports.PaymentService = {
             kind: protobuf_1.MethodKind.Unary,
         },
         /**
+         * DeletePaymentMethod of the customer
+         *
          * @generated from rpc api.v1.PaymentService.DeletePaymentMethod
          */
         deletePaymentMethod: {
@@ -68,6 +82,8 @@ exports.PaymentService = {
             kind: protobuf_1.MethodKind.Unary,
         },
         /**
+         * GetSubscriptionUsage of the customer
+         *
          * @generated from rpc api.v1.PaymentService.GetSubscriptionUsage
          */
         getSubscriptionUsage: {
@@ -77,6 +93,8 @@ exports.PaymentService = {
             kind: protobuf_1.MethodKind.Unary,
         },
         /**
+         * GetInvoices of the customer
+         *
          * @generated from rpc api.v1.PaymentService.GetInvoices
          */
         getInvoices: {
@@ -86,6 +104,8 @@ exports.PaymentService = {
             kind: protobuf_1.MethodKind.Unary,
         },
         /**
+         * GetDefaultPrices of the products on the platform
+         *
          * @generated from rpc api.v1.PaymentService.GetDefaultPrices
          */
         getDefaultPrices: {
@@ -95,6 +115,8 @@ exports.PaymentService = {
             kind: protobuf_1.MethodKind.Unary,
         },
         /**
+         * CheckAdmitted if the customer is allowed to use the service on the platform
+         *
          * @generated from rpc api.v1.PaymentService.CheckAdmitted
          */
         checkAdmitted: {
@@ -104,6 +126,8 @@ exports.PaymentService = {
             kind: protobuf_1.MethodKind.Unary,
         },
         /**
+         * RequestAdmission for a customer to get allowed to used the service
+         *
          * @generated from rpc api.v1.PaymentService.RequestAdmission
          */
         requestAdmission: {
@@ -113,6 +137,8 @@ exports.PaymentService = {
             kind: protobuf_1.MethodKind.Unary,
         },
         /**
+         * HasChargeableResources checks if the customer has resources actually consumed which are chargeable
+         *
          * @generated from rpc api.v1.PaymentService.HasChargeableResources
          */
         hasChargeableResources: {

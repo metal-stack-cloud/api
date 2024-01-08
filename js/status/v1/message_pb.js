@@ -7,31 +7,45 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.ReplyMessage = exports.Message = exports.MessageServiceListResponse = exports.MessageServiceListRequest = exports.MessageKind = void 0;
 const protobuf_1 = require("@bufbuild/protobuf");
 /**
+ * MessageKind defines what type of message it is
+ *
  * @generated from enum status.v1.MessageKind
  */
 var MessageKind;
 (function (MessageKind) {
     /**
+     * MESSAGE_KIND_UNSPECIFIED is not specified
+     *
      * @generated from enum value: MESSAGE_KIND_UNSPECIFIED = 0;
      */
     MessageKind[MessageKind["UNSPECIFIED"] = 0] = "UNSPECIFIED";
     /**
+     * MESSAGE_KIND_INFO is a informational message
+     *
      * @generated from enum value: MESSAGE_KIND_INFO = 1;
      */
     MessageKind[MessageKind["INFO"] = 1] = "INFO";
     /**
+     * MESSAGE_KIND_INCIDENT is a incident message
+     *
      * @generated from enum value: MESSAGE_KIND_INCIDENT = 2;
      */
     MessageKind[MessageKind["INCIDENT"] = 2] = "INCIDENT";
     /**
+     * MESSAGE_KIND_CHANGE is a change message
+     *
      * @generated from enum value: MESSAGE_KIND_CHANGE = 3;
      */
     MessageKind[MessageKind["CHANGE"] = 3] = "CHANGE";
     /**
+     * MESSAGE_KIND_RESOLVED is a resolved message
+     *
      * @generated from enum value: MESSAGE_KIND_RESOLVED = 4;
      */
     MessageKind[MessageKind["RESOLVED"] = 4] = "RESOLVED";
     /**
+     * MESSAGE_KIND_UPDATE is a update message
+     *
      * @generated from enum value: MESSAGE_KIND_UPDATE = 5;
      */
     MessageKind[MessageKind["UPDATE"] = 5] = "UPDATE";
@@ -46,6 +60,8 @@ protobuf_1.proto3.util.setEnumType(MessageKind, "status.v1.MessageKind", [
     { no: 5, name: "MESSAGE_KIND_UPDATE" },
 ]);
 /**
+ * MessageServiceListRequest is the request payload to get the messages
+ *
  * @generated from message status.v1.MessageServiceListRequest
  */
 class MessageServiceListRequest extends protobuf_1.Message {
@@ -71,16 +87,22 @@ MessageServiceListRequest.runtime = protobuf_1.proto3;
 MessageServiceListRequest.typeName = "status.v1.MessageServiceListRequest";
 MessageServiceListRequest.fields = protobuf_1.proto3.util.newFieldList(() => []);
 /**
+ * MessageServiceListResponse is the response payload with the messages
+ *
  * @generated from message status.v1.MessageServiceListResponse
  */
 class MessageServiceListResponse extends protobuf_1.Message {
     constructor(data) {
         super();
         /**
+         * Items is a slice of all messages
+         *
          * @generated from field: repeated status.v1.Message items = 1;
          */
         this.items = [];
         /**
+         * PinnedItems are messages which are of special interest
+         *
          * @generated from field: repeated status.v1.Message pinned_items = 2;
          */
         this.pinnedItems = [];
@@ -107,24 +129,34 @@ MessageServiceListResponse.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 2, name: "pinned_items", kind: "message", T: Message, repeated: true },
 ]);
 /**
+ * Message is a test message to be displayed in the status
+ *
  * @generated from message status.v1.Message
  */
 class Message extends protobuf_1.Message {
     constructor(data) {
         super();
         /**
+         * Id of the message
+         *
          * @generated from field: string id = 1;
          */
         this.id = "";
         /**
+         * Text of the message
+         *
          * @generated from field: string text = 2;
          */
         this.text = "";
         /**
+         * Kind of the message, this is to distinguish between the importance of a message
+         *
          * @generated from field: status.v1.MessageKind kind = 3;
          */
         this.kind = MessageKind.UNSPECIFIED;
         /**
+         * Replies are messages which are followups to the initial message
+         *
          * @generated from field: repeated status.v1.ReplyMessage replies = 5;
          */
         this.replies = [];
@@ -154,20 +186,28 @@ Message.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 5, name: "replies", kind: "message", T: ReplyMessage, repeated: true },
 ]);
 /**
+ * ReplyMessage is a message as a followup of a initial message
+ *
  * @generated from message status.v1.ReplyMessage
  */
 class ReplyMessage extends protobuf_1.Message {
     constructor(data) {
         super();
         /**
+         * Id of the message
+         *
          * @generated from field: string id = 1;
          */
         this.id = "";
         /**
+         * Text of the message
+         *
          * @generated from field: string text = 2;
          */
         this.text = "";
         /**
+         * Kind of the message, this is to distinguish between the importance of a message
+         *
          * @generated from field: status.v1.MessageKind kind = 3;
          */
         this.kind = MessageKind.UNSPECIFIED;

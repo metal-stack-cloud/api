@@ -1,12 +1,16 @@
 import { IPServiceAllocateRequest, IPServiceAllocateResponse, IPServiceDeleteRequest, IPServiceDeleteResponse, IPServiceGetRequest, IPServiceGetResponse, IPServiceListRequest, IPServiceListResponse, IPServiceUpdateRequest, IPServiceUpdateResponse } from "./ip_pb.js";
 import { MethodKind } from "@bufbuild/protobuf";
 /**
+ * IPService serves ip address related functions
+ *
  * @generated from service api.v1.IPService
  */
 export declare const IPService: {
     readonly typeName: "api.v1.IPService";
     readonly methods: {
         /**
+         * Get a ip
+         *
          * @generated from rpc api.v1.IPService.Get
          */
         readonly get: {
@@ -16,6 +20,8 @@ export declare const IPService: {
             readonly kind: MethodKind.Unary;
         };
         /**
+         * Allocate a ip
+         *
          * @generated from rpc api.v1.IPService.Allocate
          */
         readonly allocate: {
@@ -25,6 +31,8 @@ export declare const IPService: {
             readonly kind: MethodKind.Unary;
         };
         /**
+         * Update a ip
+         *
          * @generated from rpc api.v1.IPService.Update
          */
         readonly update: {
@@ -34,6 +42,8 @@ export declare const IPService: {
             readonly kind: MethodKind.Unary;
         };
         /**
+         * List all ips
+         *
          * @generated from rpc api.v1.IPService.List
          */
         readonly list: {
@@ -43,6 +53,8 @@ export declare const IPService: {
             readonly kind: MethodKind.Unary;
         };
         /**
+         * Delete a ip
+         *
          * @generated from rpc api.v1.IPService.Delete
          */
         readonly delete: {

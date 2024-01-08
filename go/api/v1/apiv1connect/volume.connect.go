@@ -63,8 +63,11 @@ var (
 
 // VolumeServiceClient is a client for the api.v1.VolumeService service.
 type VolumeServiceClient interface {
+	// Get a volume
 	Get(context.Context, *connect.Request[v1.VolumeServiceGetRequest]) (*connect.Response[v1.VolumeServiceGetResponse], error)
+	// List the volumes
 	List(context.Context, *connect.Request[v1.VolumeServiceListRequest]) (*connect.Response[v1.VolumeServiceListResponse], error)
+	// Delete a volume
 	Delete(context.Context, *connect.Request[v1.VolumeServiceDeleteRequest]) (*connect.Response[v1.VolumeServiceDeleteResponse], error)
 }
 
@@ -123,8 +126,11 @@ func (c *volumeServiceClient) Delete(ctx context.Context, req *connect.Request[v
 
 // VolumeServiceHandler is an implementation of the api.v1.VolumeService service.
 type VolumeServiceHandler interface {
+	// Get a volume
 	Get(context.Context, *connect.Request[v1.VolumeServiceGetRequest]) (*connect.Response[v1.VolumeServiceGetResponse], error)
+	// List the volumes
 	List(context.Context, *connect.Request[v1.VolumeServiceListRequest]) (*connect.Response[v1.VolumeServiceListResponse], error)
+	// Delete a volume
 	Delete(context.Context, *connect.Request[v1.VolumeServiceDeleteRequest]) (*connect.Response[v1.VolumeServiceDeleteResponse], error)
 }
 
@@ -183,8 +189,11 @@ func (UnimplementedVolumeServiceHandler) Delete(context.Context, *connect.Reques
 
 // SnapshotServiceClient is a client for the api.v1.SnapshotService service.
 type SnapshotServiceClient interface {
+	// Get a snapshot
 	Get(context.Context, *connect.Request[v1.SnapshotServiceGetRequest]) (*connect.Response[v1.SnapshotServiceGetResponse], error)
+	// List snapshots
 	List(context.Context, *connect.Request[v1.SnapshotServiceListRequest]) (*connect.Response[v1.SnapshotServiceListResponse], error)
+	// Delete a snapshot
 	Delete(context.Context, *connect.Request[v1.SnapshotServiceDeleteRequest]) (*connect.Response[v1.SnapshotServiceDeleteResponse], error)
 }
 
@@ -243,8 +252,11 @@ func (c *snapshotServiceClient) Delete(ctx context.Context, req *connect.Request
 
 // SnapshotServiceHandler is an implementation of the api.v1.SnapshotService service.
 type SnapshotServiceHandler interface {
+	// Get a snapshot
 	Get(context.Context, *connect.Request[v1.SnapshotServiceGetRequest]) (*connect.Response[v1.SnapshotServiceGetResponse], error)
+	// List snapshots
 	List(context.Context, *connect.Request[v1.SnapshotServiceListRequest]) (*connect.Response[v1.SnapshotServiceListResponse], error)
+	// Delete a snapshot
 	Delete(context.Context, *connect.Request[v1.SnapshotServiceDeleteRequest]) (*connect.Response[v1.SnapshotServiceDeleteResponse], error)
 }
 

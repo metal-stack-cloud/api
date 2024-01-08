@@ -7,30 +7,42 @@ import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialM
 import { Message, proto3, protoInt64, Timestamp } from "@bufbuild/protobuf";
 
 /**
+ * ProductType defines for which type of product a price applies
+ *
  * @generated from enum api.v1.ProductType
  */
 export enum ProductType {
   /**
+   * PRODUCT_TYPE_UNSPECIFIED is unspecified
+   *
    * @generated from enum value: PRODUCT_TYPE_UNSPECIFIED = 0;
    */
   UNSPECIFIED = 0,
 
   /**
+   * PRODUCT_TYPE_STORAGE for storage
+   *
    * @generated from enum value: PRODUCT_TYPE_STORAGE = 1;
    */
   STORAGE = 1,
 
   /**
+   * PRODUCT_TYPE_COMPUTE for compute, e.g. machines
+   *
    * @generated from enum value: PRODUCT_TYPE_COMPUTE = 2;
    */
   COMPUTE = 2,
 
   /**
+   * PRODUCT_TYPE_NETWORK for network, e.g. ips and traffic
+   *
    * @generated from enum value: PRODUCT_TYPE_NETWORK = 3;
    */
   NETWORK = 3,
 
   /**
+   * PRODUCT_TYPE_KUBERNETES for kubernetes, e.g. the control plane
+   *
    * @generated from enum value: PRODUCT_TYPE_KUBERNETES = 5;
    */
   KUBERNETES = 5,
@@ -45,70 +57,98 @@ proto3.util.setEnumType(ProductType, "api.v1.ProductType", [
 ]);
 
 /**
+ * PaymentCustomer is a customer at the payment processor
+ *
  * @generated from message api.v1.PaymentCustomer
  */
 export class PaymentCustomer extends Message<PaymentCustomer> {
   /**
+   * Login of the customer
+   *
    * @generated from field: string login = 1;
    */
   login = "";
 
   /**
+   * Name of the customer
+   *
    * @generated from field: optional string name = 2;
    */
   name?: string;
 
   /**
+   * CustomerId id of the customer
+   *
    * @generated from field: optional string customer_id = 3;
    */
   customerId?: string;
 
   /**
+   * PaymentMethodId at the payment processor
+   *
    * @generated from field: optional string payment_method_id = 4;
    */
   paymentMethodId?: string;
 
   /**
+   * SubscriptionId of the customer
+   *
    * @generated from field: string subscription_id = 5;
    */
   subscriptionId = "";
 
   /**
+   * Email of the customer
+   *
    * @generated from field: optional string email = 6;
    */
   email?: string;
 
   /**
+   * Card the customer supplied
+   *
    * @generated from field: optional api.v1.Card card = 7;
    */
   card?: Card;
 
   /**
+   * Prices which apply to customer resources
+   *
    * @generated from field: repeated api.v1.Price prices = 8;
    */
   prices: Price[] = [];
 
   /**
+   * Address is the postal address of the customer
+   *
    * @generated from field: api.v1.Address address = 9;
    */
   address?: Address;
 
   /**
+   * Coupon details of granted coupon if any
+   *
    * @generated from field: optional api.v1.Coupon coupon = 10;
    */
   coupon?: Coupon;
 
   /**
+   * Vat which applies to the customer
+   *
    * @generated from field: optional string vat = 11;
    */
   vat?: string;
 
   /**
+   * PhoneNumber of the customer
+   *
    * @generated from field: optional string phone_number = 12;
    */
   phoneNumber?: string;
 
   /**
+   * Balance actual balance of the customer
+   *
    * @generated from field: optional int64 balance = 13;
    */
   balance?: bigint;
@@ -154,30 +194,42 @@ export class PaymentCustomer extends Message<PaymentCustomer> {
 }
 
 /**
+ * Card is the payment card the customer pays with
+ *
  * @generated from message api.v1.Card
  */
 export class Card extends Message<Card> {
   /**
+   * Brand of the card
+   *
    * @generated from field: string brand = 1;
    */
   brand = "";
 
   /**
+   * Country where the card was issued
+   *
    * @generated from field: string country = 2;
    */
   country = "";
 
   /**
+   * ExpMonth is the month when this card expires
+   *
    * @generated from field: int64 exp_month = 3;
    */
   expMonth = protoInt64.zero;
 
   /**
+   * ExpYear is the year when this card expires
+   *
    * @generated from field: int64 exp_year = 4;
    */
   expYear = protoInt64.zero;
 
   /**
+   * Last4 are the 4 last digits of the card number, the full number is not stored anywhere
+   *
    * @generated from field: string last_4 = 5;
    */
   last4 = "";
@@ -215,35 +267,49 @@ export class Card extends Message<Card> {
 }
 
 /**
+ * Price of a product
+ *
  * @generated from message api.v1.Price
  */
 export class Price extends Message<Price> {
   /**
+   * Name of the price
+   *
    * @generated from field: string name = 1;
    */
   name = "";
 
   /**
+   * UnitAmountDecimal the value of this price
+   *
    * @generated from field: double unit_amount_decimal = 2;
    */
   unitAmountDecimal = 0;
 
   /**
+   * Currency of this price
+   *
    * @generated from field: string currency = 3;
    */
   currency = "";
 
   /**
+   * UnitLabel is a label which allows for searching this unit at the payment processor
+   *
    * @generated from field: string unit_label = 4;
    */
   unitLabel = "";
 
   /**
+   * ProductType this price applies to
+   *
    * @generated from field: api.v1.ProductType product_type = 5;
    */
   productType = ProductType.UNSPECIFIED;
 
   /**
+   * Description of this price
+   *
    * @generated from field: optional string description = 6;
    */
   description?: string;
@@ -282,35 +348,49 @@ export class Price extends Message<Price> {
 }
 
 /**
+ * Address postal address of a customer
+ *
  * @generated from message api.v1.Address
  */
 export class Address extends Message<Address> {
   /**
+   * Line1 the first address line
+   *
    * @generated from field: string line1 = 1;
    */
   line1 = "";
 
   /**
+   * Line2 the second address line
+   *
    * @generated from field: string line2 = 2;
    */
   line2 = "";
 
   /**
+   * PostalCode of the city or address
+   *
    * @generated from field: string postal_code = 3;
    */
   postalCode = "";
 
   /**
+   * City where the customer lives
+   *
    * @generated from field: string city = 4;
    */
   city = "";
 
   /**
+   * Sate where the customer lives
+   *
    * @generated from field: string state = 5;
    */
   state = "";
 
   /**
+   * Country where the customer lives
+   *
    * @generated from field: string country = 6;
    */
   country = "";
@@ -349,30 +429,42 @@ export class Address extends Message<Address> {
 }
 
 /**
+ * SubscriptionUsageItem details of a subscription
+ *
  * @generated from message api.v1.SubscriptionUsageItem
  */
 export class SubscriptionUsageItem extends Message<SubscriptionUsageItem> {
   /**
+   * SubscriptionItemId is the id of the subscription
+   *
    * @generated from field: string subscription_item_id = 1;
    */
   subscriptionItemId = "";
 
   /**
+   * SubscriptionItemName is the name of the subscription
+   *
    * @generated from field: string subscription_item_name = 2;
    */
   subscriptionItemName = "";
 
   /**
+   * TotalUsage of this subscription
+   *
    * @generated from field: int64 total_usage = 3;
    */
   totalUsage = protoInt64.zero;
 
   /**
+   * PeriodStart is the start date of this subscription
+   *
    * @generated from field: google.protobuf.Timestamp period_start = 4;
    */
   periodStart?: Timestamp;
 
   /**
+   * PeriodEnd is the end date of this subscription
+   *
    * @generated from field: google.protobuf.Timestamp period_end = 5;
    */
   periodEnd?: Timestamp;
@@ -410,25 +502,35 @@ export class SubscriptionUsageItem extends Message<SubscriptionUsageItem> {
 }
 
 /**
+ * Invoice a customer has to pay for subscription usage
+ *
  * @generated from message api.v1.Invoice
  */
 export class Invoice extends Message<Invoice> {
   /**
+   * Id of the invoice
+   *
    * @generated from field: string id = 1;
    */
   id = "";
 
   /**
+   * PdfDownloadUrl is the url where the customer can download this invoice in pdf format
+   *
    * @generated from field: string pdf_download_url = 2;
    */
   pdfDownloadUrl = "";
 
   /**
+   * PeriodStart is the start date of this subscription
+   *
    * @generated from field: google.protobuf.Timestamp period_start = 4;
    */
   periodStart?: Timestamp;
 
   /**
+   * PeriodEnd is the end date of this subscription
+   *
    * @generated from field: google.protobuf.Timestamp period_end = 5;
    */
   periodEnd?: Timestamp;
@@ -465,55 +567,77 @@ export class Invoice extends Message<Invoice> {
 }
 
 /**
+ * Coupon is a amount of free usage which can be granted to a customer
+ *
  * @generated from message api.v1.Coupon
  */
 export class Coupon extends Message<Coupon> {
   /**
+   * Id of the coupon
+   *
    * @generated from field: string id = 1;
    */
   id = "";
 
   /**
+   * Name of this coupon
+   *
    * @generated from field: string name = 2;
    */
   name = "";
 
   /**
+   * AmountOff is th amount the customer can use for free
+   *
    * @generated from field: int64 amount_off = 3;
    */
   amountOff = protoInt64.zero;
 
   /**
+   * Currency of the free usage amount
+   *
    * @generated from field: string currency = 4;
    */
   currency = "";
 
   /**
+   * DurationInMonth defines how many month this coupon is valid for
+   *
    * @generated from field: int64 duration_in_month = 5;
    */
   durationInMonth = protoInt64.zero;
 
   /**
+   * CreatedAt is the date the coupon was created
+   *
    * @generated from field: google.protobuf.Timestamp created_at = 6;
    */
   createdAt?: Timestamp;
 
   /**
+   * RedeemBy is the date when this coupon can no longer be used
+   *
    * @generated from field: google.protobuf.Timestamp redeem_by = 7;
    */
   redeemBy?: Timestamp;
 
   /**
+   * TimesRedeemed how often this coupon was already consumed
+   *
    * @generated from field: int64 times_redeemed = 8;
    */
   timesRedeemed = protoInt64.zero;
 
   /**
+   * MaxRedemptions defines how often this coupon can be consumed
+   *
    * @generated from field: int64 max_redemptions = 9;
    */
   maxRedemptions = protoInt64.zero;
 
   /**
+   * AmountLeft how many usages are left for this coupon
+   *
    * @generated from field: int64 amount_left = 10;
    */
   amountLeft = protoInt64.zero;
@@ -556,20 +680,28 @@ export class Coupon extends Message<Coupon> {
 }
 
 /**
+ * PaymentServiceCreateOrUpdateCustomerRequest is the request payload for a payment create or update customer request
+ *
  * @generated from message api.v1.PaymentServiceCreateOrUpdateCustomerRequest
  */
 export class PaymentServiceCreateOrUpdateCustomerRequest extends Message<PaymentServiceCreateOrUpdateCustomerRequest> {
   /**
+   * Login of the customer
+   *
    * @generated from field: string login = 1;
    */
   login = "";
 
   /**
+   * Customer is the customer to modify
+   *
    * @generated from field: api.v1.PaymentCustomer customer = 2;
    */
   customer?: PaymentCustomer;
 
   /**
+   * AcceptedTermsAndConditions indicates the modification of the terms and conditions acceptance
+   *
    * @generated from field: bool accepted_terms_and_conditions = 3;
    */
   acceptedTermsAndConditions = false;
@@ -605,10 +737,14 @@ export class PaymentServiceCreateOrUpdateCustomerRequest extends Message<Payment
 }
 
 /**
+ * PaymentServiceCreateOrUpdateCustomerResponse is the response payload for a payment create or update customer request
+ *
  * @generated from message api.v1.PaymentServiceCreateOrUpdateCustomerResponse
  */
 export class PaymentServiceCreateOrUpdateCustomerResponse extends Message<PaymentServiceCreateOrUpdateCustomerResponse> {
   /**
+   * Customer is the customer
+   *
    * @generated from field: api.v1.PaymentCustomer customer = 1;
    */
   customer?: PaymentCustomer;
@@ -642,15 +778,21 @@ export class PaymentServiceCreateOrUpdateCustomerResponse extends Message<Paymen
 }
 
 /**
+ * PaymentServiceGetCustomerRequest is the request payload for a payment get customer request
+ *
  * @generated from message api.v1.PaymentServiceGetCustomerRequest
  */
 export class PaymentServiceGetCustomerRequest extends Message<PaymentServiceGetCustomerRequest> {
   /**
+   * Login of the customer
+   *
    * @generated from field: string login = 1;
    */
   login = "";
 
   /**
+   * CustomerId of the customer
+   *
    * @generated from field: string customer_id = 2;
    */
   customerId = "";
@@ -685,10 +827,14 @@ export class PaymentServiceGetCustomerRequest extends Message<PaymentServiceGetC
 }
 
 /**
+ * PaymentServiceGetCustomerResponse is the response payload for a payment get customer request
+ *
  * @generated from message api.v1.PaymentServiceGetCustomerResponse
  */
 export class PaymentServiceGetCustomerResponse extends Message<PaymentServiceGetCustomerResponse> {
   /**
+   * Customer is the customer
+   *
    * @generated from field: api.v1.PaymentCustomer customer = 1;
    */
   customer?: PaymentCustomer;
@@ -722,10 +868,14 @@ export class PaymentServiceGetCustomerResponse extends Message<PaymentServiceGet
 }
 
 /**
+ * PaymentServiceGetCustomerWithLoginRequest is the request payload for a payment get customer request
+ *
  * @generated from message api.v1.PaymentServiceGetCustomerWithLoginRequest
  */
 export class PaymentServiceGetCustomerWithLoginRequest extends Message<PaymentServiceGetCustomerWithLoginRequest> {
   /**
+   * Login of the customer
+   *
    * @generated from field: string login = 1;
    */
   login = "";
@@ -759,10 +909,14 @@ export class PaymentServiceGetCustomerWithLoginRequest extends Message<PaymentSe
 }
 
 /**
+ * PaymentServiceGetCustomerWithLoginResponse is the response payload for a payment get customer request
+ *
  * @generated from message api.v1.PaymentServiceGetCustomerWithLoginResponse
  */
 export class PaymentServiceGetCustomerWithLoginResponse extends Message<PaymentServiceGetCustomerWithLoginResponse> {
   /**
+   * Customer is the customer
+   *
    * @generated from field: api.v1.PaymentCustomer customer = 1;
    */
   customer?: PaymentCustomer;
@@ -796,10 +950,14 @@ export class PaymentServiceGetCustomerWithLoginResponse extends Message<PaymentS
 }
 
 /**
+ * PaymentServiceCheckIfCustomerExistsRequest is the request payload for a payment check if customer exists request
+ *
  * @generated from message api.v1.PaymentServiceCheckIfCustomerExistsRequest
  */
 export class PaymentServiceCheckIfCustomerExistsRequest extends Message<PaymentServiceCheckIfCustomerExistsRequest> {
   /**
+   * Login of the customer
+   *
    * @generated from field: string login = 1;
    */
   login = "";
@@ -833,15 +991,21 @@ export class PaymentServiceCheckIfCustomerExistsRequest extends Message<PaymentS
 }
 
 /**
+ * PaymentServiceCheckIfCustomerExistsResponse is the response payload for a payment check if customer exists request
+ *
  * @generated from message api.v1.PaymentServiceCheckIfCustomerExistsResponse
  */
 export class PaymentServiceCheckIfCustomerExistsResponse extends Message<PaymentServiceCheckIfCustomerExistsResponse> {
   /**
+   * Customer is the customer
+   *
    * @generated from field: api.v1.PaymentCustomer customer = 1;
    */
   customer?: PaymentCustomer;
 
   /**
+   * Exists indicates if this customer exists
+   *
    * @generated from field: bool exists = 2;
    */
   exists = false;
@@ -876,15 +1040,21 @@ export class PaymentServiceCheckIfCustomerExistsResponse extends Message<Payment
 }
 
 /**
+ * PaymentServiceHasPaymentMethodRequest is the request payload for a has payment request
+ *
  * @generated from message api.v1.PaymentServiceHasPaymentMethodRequest
  */
 export class PaymentServiceHasPaymentMethodRequest extends Message<PaymentServiceHasPaymentMethodRequest> {
   /**
+   * Login of the customer
+   *
    * @generated from field: string login = 1;
    */
   login = "";
 
   /**
+   * Project for which the payment method should be checked
+   *
    * @generated from field: string project = 2;
    */
   project = "";
@@ -919,20 +1089,28 @@ export class PaymentServiceHasPaymentMethodRequest extends Message<PaymentServic
 }
 
 /**
+ * PaymentServiceHasPaymentMethodResponse is the response payload for a has payment request
+ *
  * @generated from message api.v1.PaymentServiceHasPaymentMethodResponse
  */
 export class PaymentServiceHasPaymentMethodResponse extends Message<PaymentServiceHasPaymentMethodResponse> {
   /**
+   * Exists indicates if this customer has a payment method
+   *
    * @generated from field: bool exists = 1;
    */
   exists = false;
 
   /**
+   * CouponLeft is true if there is still free amount on the coupon left
+   *
    * @generated from field: bool coupon_left = 2;
    */
   couponLeft = false;
 
   /**
+   * PositiveBalance indicates if the customer still has positive balance
+   *
    * @generated from field: bool positive_balance = 3;
    */
   positiveBalance = false;
@@ -968,10 +1146,14 @@ export class PaymentServiceHasPaymentMethodResponse extends Message<PaymentServi
 }
 
 /**
+ * PaymentServiceDeletePaymentMethodRequest is the request payload for a delete payment request
+ *
  * @generated from message api.v1.PaymentServiceDeletePaymentMethodRequest
  */
 export class PaymentServiceDeletePaymentMethodRequest extends Message<PaymentServiceDeletePaymentMethodRequest> {
   /**
+   * Login of the customer
+   *
    * @generated from field: string login = 1;
    */
   login = "";
@@ -1005,6 +1187,8 @@ export class PaymentServiceDeletePaymentMethodRequest extends Message<PaymentSer
 }
 
 /**
+ * PaymentServiceDeletePaymentMethodResponse is the response payload for a delete payment request
+ *
  * @generated from message api.v1.PaymentServiceDeletePaymentMethodResponse
  */
 export class PaymentServiceDeletePaymentMethodResponse extends Message<PaymentServiceDeletePaymentMethodResponse> {
@@ -1036,10 +1220,14 @@ export class PaymentServiceDeletePaymentMethodResponse extends Message<PaymentSe
 }
 
 /**
+ * PaymentServiceGetSubscriptionUsageRequest is the request payload for a get subscription usage request
+ *
  * @generated from message api.v1.PaymentServiceGetSubscriptionUsageRequest
  */
 export class PaymentServiceGetSubscriptionUsageRequest extends Message<PaymentServiceGetSubscriptionUsageRequest> {
   /**
+   * Login of the customer
+   *
    * @generated from field: string login = 1;
    */
   login = "";
@@ -1073,10 +1261,14 @@ export class PaymentServiceGetSubscriptionUsageRequest extends Message<PaymentSe
 }
 
 /**
+ * PaymentServiceGetSubscriptionUsageResponse is the response payload for a get subscription usage request
+ *
  * @generated from message api.v1.PaymentServiceGetSubscriptionUsageResponse
  */
 export class PaymentServiceGetSubscriptionUsageResponse extends Message<PaymentServiceGetSubscriptionUsageResponse> {
   /**
+   * SubscriptionUsageItems is a list of usage for all subscriptions
+   *
    * @generated from field: repeated api.v1.SubscriptionUsageItem subscription_usage_items = 1;
    */
   subscriptionUsageItems: SubscriptionUsageItem[] = [];
@@ -1110,15 +1302,21 @@ export class PaymentServiceGetSubscriptionUsageResponse extends Message<PaymentS
 }
 
 /**
+ * PaymentServiceHasPaymentMethodRequest is the request payload for a get invoices request
+ *
  * @generated from message api.v1.PaymentServiceGetInvoicesRequest
  */
 export class PaymentServiceGetInvoicesRequest extends Message<PaymentServiceGetInvoicesRequest> {
   /**
+   * Login of the customer
+   *
    * @generated from field: string login = 1;
    */
   login = "";
 
   /**
+   * CustomerId is the id of the customer
+   *
    * @generated from field: string customer_id = 2;
    */
   customerId = "";
@@ -1153,10 +1351,14 @@ export class PaymentServiceGetInvoicesRequest extends Message<PaymentServiceGetI
 }
 
 /**
+ * PaymentServiceGetInvoicesResponse is the response payload for a get invoices request
+ *
  * @generated from message api.v1.PaymentServiceGetInvoicesResponse
  */
 export class PaymentServiceGetInvoicesResponse extends Message<PaymentServiceGetInvoicesResponse> {
   /**
+   * Invoices is the list of invoices
+   *
    * @generated from field: repeated api.v1.Invoice invoices = 1;
    */
   invoices: Invoice[] = [];
@@ -1190,6 +1392,8 @@ export class PaymentServiceGetInvoicesResponse extends Message<PaymentServiceGet
 }
 
 /**
+ * PaymentServiceGetDefaultPricesRequest is the request payload for a get default prices request
+ *
  * @generated from message api.v1.PaymentServiceGetDefaultPricesRequest
  */
 export class PaymentServiceGetDefaultPricesRequest extends Message<PaymentServiceGetDefaultPricesRequest> {
@@ -1221,10 +1425,14 @@ export class PaymentServiceGetDefaultPricesRequest extends Message<PaymentServic
 }
 
 /**
+ * PaymentServiceGetDefaultPricesResponse is the response payload for a get default prices request
+ *
  * @generated from message api.v1.PaymentServiceGetDefaultPricesResponse
  */
 export class PaymentServiceGetDefaultPricesResponse extends Message<PaymentServiceGetDefaultPricesResponse> {
   /**
+   * Prices is the list of default prices
+   *
    * @generated from field: repeated api.v1.Price prices = 1;
    */
   prices: Price[] = [];
@@ -1258,10 +1466,14 @@ export class PaymentServiceGetDefaultPricesResponse extends Message<PaymentServi
 }
 
 /**
+ * PaymentServiceCheckAdmittedRequest is the request payload for a check admitted request
+ *
  * @generated from message api.v1.PaymentServiceCheckAdmittedRequest
  */
 export class PaymentServiceCheckAdmittedRequest extends Message<PaymentServiceCheckAdmittedRequest> {
   /**
+   * Login of the customer
+   *
    * @generated from field: string login = 1;
    */
   login = "";
@@ -1295,15 +1507,21 @@ export class PaymentServiceCheckAdmittedRequest extends Message<PaymentServiceCh
 }
 
 /**
+ * PaymentServiceCheckAdmittedResponse is the response payload for a check admitted request
+ *
  * @generated from message api.v1.PaymentServiceCheckAdmittedResponse
  */
 export class PaymentServiceCheckAdmittedResponse extends Message<PaymentServiceCheckAdmittedResponse> {
   /**
+   * Admitted indicates if the customer is already admitted to use the service
+   *
    * @generated from field: bool admitted = 1;
    */
   admitted = false;
 
   /**
+   * Requested indicates if the customer requested admittance
+   *
    * @generated from field: bool requested = 2;
    */
   requested = false;
@@ -1338,25 +1556,35 @@ export class PaymentServiceCheckAdmittedResponse extends Message<PaymentServiceC
 }
 
 /**
+ * PaymentServiceRequestAdmissionRequest is the request payload for a admission request
+ *
  * @generated from message api.v1.PaymentServiceRequestAdmissionRequest
  */
 export class PaymentServiceRequestAdmissionRequest extends Message<PaymentServiceRequestAdmissionRequest> {
   /**
+   * Login of the customer
+   *
    * @generated from field: string login = 1;
    */
   login = "";
 
   /**
+   * Customer is the customer
+   *
    * @generated from field: api.v1.PaymentCustomer customer = 2;
    */
   customer?: PaymentCustomer;
 
   /**
+   * AcceptedTermsAndConditions indicates if the customer already accepted the terms and conditions
+   *
    * @generated from field: bool accepted_terms_and_conditions = 3;
    */
   acceptedTermsAndConditions = false;
 
   /**
+   * EmailConsent indicates if the customer already gave consent to email
+   *
    * @generated from field: bool email_consent = 4;
    */
   emailConsent = false;
@@ -1393,6 +1621,8 @@ export class PaymentServiceRequestAdmissionRequest extends Message<PaymentServic
 }
 
 /**
+ * PaymentServiceRequestAdmissionResponse is the response payload for a admission request
+ *
  * @generated from message api.v1.PaymentServiceRequestAdmissionResponse
  */
 export class PaymentServiceRequestAdmissionResponse extends Message<PaymentServiceRequestAdmissionResponse> {
@@ -1424,10 +1654,14 @@ export class PaymentServiceRequestAdmissionResponse extends Message<PaymentServi
 }
 
 /**
+ * PaymentServiceHasChargeableResourcesRequest is the request payload for a has chargeable request
+ *
  * @generated from message api.v1.PaymentServiceHasChargeableResourcesRequest
  */
 export class PaymentServiceHasChargeableResourcesRequest extends Message<PaymentServiceHasChargeableResourcesRequest> {
   /**
+   * Login of the customer
+   *
    * @generated from field: string login = 1;
    */
   login = "";
@@ -1461,10 +1695,14 @@ export class PaymentServiceHasChargeableResourcesRequest extends Message<Payment
 }
 
 /**
+ * PaymentServiceHasChargeableResourcesResponse is the response payload for a has chargeable request
+ *
  * @generated from message api.v1.PaymentServiceHasChargeableResourcesResponse
  */
 export class PaymentServiceHasChargeableResourcesResponse extends Message<PaymentServiceHasChargeableResourcesResponse> {
   /**
+   * HasResources indicates if the customer has actually chargable resources
+   *
    * @generated from field: bool has_resources = 1;
    */
   hasResources = false;

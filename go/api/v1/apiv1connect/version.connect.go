@@ -45,6 +45,7 @@ var (
 
 // VersionServiceClient is a client for the api.v1.VersionService service.
 type VersionServiceClient interface {
+	// Get the version
 	Get(context.Context, *connect.Request[v1.VersionServiceGetRequest]) (*connect.Response[v1.VersionServiceGetResponse], error)
 }
 
@@ -79,6 +80,7 @@ func (c *versionServiceClient) Get(ctx context.Context, req *connect.Request[v1.
 
 // VersionServiceHandler is an implementation of the api.v1.VersionService service.
 type VersionServiceHandler interface {
+	// Get the version
 	Get(context.Context, *connect.Request[v1.VersionServiceGetRequest]) (*connect.Response[v1.VersionServiceGetResponse], error)
 }
 

@@ -133,6 +133,26 @@ func (_m *Apiv1) Payment() apiv1connect.PaymentServiceClient {
 	return r0
 }
 
+// Project provides a mock function with given fields:
+func (_m *Apiv1) Project() apiv1connect.ProjectServiceClient {
+	ret := _m.Called()
+
+	if len(ret) == 0 {
+		panic("no return value specified for Project")
+	}
+
+	var r0 apiv1connect.ProjectServiceClient
+	if rf, ok := ret.Get(0).(func() apiv1connect.ProjectServiceClient); ok {
+		r0 = rf()
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(apiv1connect.ProjectServiceClient)
+		}
+	}
+
+	return r0
+}
+
 // Snapshot provides a mock function with given fields:
 func (_m *Apiv1) Snapshot() apiv1connect.SnapshotServiceClient {
 	ret := _m.Called()

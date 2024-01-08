@@ -8,6 +8,8 @@ exports.TokenServiceRevokeResponse = exports.TokenServiceRevokeRequest = exports
 const protobuf_1 = require("@bufbuild/protobuf");
 const token_pb_js_1 = require("../../api/v1/token_pb.js");
 /**
+ * TokenServiceListRequest is the request payload for the token list request
+ *
  * @generated from message admin.v1.TokenServiceListRequest
  */
 class TokenServiceListRequest extends protobuf_1.Message {
@@ -35,12 +37,16 @@ TokenServiceListRequest.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 1, name: "user_id", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
 ]);
 /**
+ * TokenServiceListResponse is the response payload for the token list request
+ *
  * @generated from message admin.v1.TokenServiceListResponse
  */
 class TokenServiceListResponse extends protobuf_1.Message {
     constructor(data) {
         super();
         /**
+         * Tokens is the list of tokens
+         *
          * @generated from field: repeated api.v1.Token tokens = 1;
          */
         this.tokens = [];
@@ -66,16 +72,22 @@ TokenServiceListResponse.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 1, name: "tokens", kind: "message", T: token_pb_js_1.Token, repeated: true },
 ]);
 /**
+ * TokenServiceRevokeRequest is the request payload for the token revoke request
+ *
  * @generated from message admin.v1.TokenServiceRevokeRequest
  */
 class TokenServiceRevokeRequest extends protobuf_1.Message {
     constructor(data) {
         super();
         /**
+         * Uuid is the uuid of the token which should be revoked
+         *
          * @generated from field: string uuid = 1;
          */
         this.uuid = "";
         /**
+         * UserId is the id of the user for which the token should be revoked
+         *
          * @generated from field: string user_id = 2;
          */
         this.userId = "";
@@ -102,6 +114,8 @@ TokenServiceRevokeRequest.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 2, name: "user_id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
 ]);
 /**
+ * TokenServiceRevokeResponse is the response payload for the token revoke request
+ *
  * @generated from message admin.v1.TokenServiceRevokeResponse
  */
 class TokenServiceRevokeResponse extends protobuf_1.Message {

@@ -49,7 +49,9 @@ var (
 
 // MethodServiceClient is a client for the api.v1.MethodService service.
 type MethodServiceClient interface {
+	// List all public visible methods
 	List(context.Context, *connect.Request[v1.MethodServiceListRequest]) (*connect.Response[v1.MethodServiceListResponse], error)
+	// TokenScopedList all methods callable with the token present in the request
 	TokenScopedList(context.Context, *connect.Request[v1.MethodServiceTokenScopedListRequest]) (*connect.Response[v1.MethodServiceTokenScopedListResponse], error)
 }
 
@@ -96,7 +98,9 @@ func (c *methodServiceClient) TokenScopedList(ctx context.Context, req *connect.
 
 // MethodServiceHandler is an implementation of the api.v1.MethodService service.
 type MethodServiceHandler interface {
+	// List all public visible methods
 	List(context.Context, *connect.Request[v1.MethodServiceListRequest]) (*connect.Response[v1.MethodServiceListResponse], error)
+	// TokenScopedList all methods callable with the token present in the request
 	TokenScopedList(context.Context, *connect.Request[v1.MethodServiceTokenScopedListRequest]) (*connect.Response[v1.MethodServiceTokenScopedListResponse], error)
 }
 

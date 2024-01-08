@@ -7,12 +7,16 @@ import { ClusterServiceCreateRequest, ClusterServiceCreateResponse, ClusterServi
 import { MethodKind } from "@bufbuild/protobuf";
 
 /**
+ * ClusterService serves kubernetes cluster related functions
+ *
  * @generated from service api.v1.ClusterService
  */
 export const ClusterService = {
   typeName: "api.v1.ClusterService",
   methods: {
     /**
+     * Create a cluster
+     *
      * @generated from rpc api.v1.ClusterService.Create
      */
     create: {
@@ -22,6 +26,8 @@ export const ClusterService = {
       kind: MethodKind.Unary,
     },
     /**
+     * Get a cluster
+     *
      * @generated from rpc api.v1.ClusterService.Get
      */
     get: {
@@ -31,6 +37,8 @@ export const ClusterService = {
       kind: MethodKind.Unary,
     },
     /**
+     * List clusters
+     *
      * @generated from rpc api.v1.ClusterService.List
      */
     list: {
@@ -40,6 +48,8 @@ export const ClusterService = {
       kind: MethodKind.Unary,
     },
     /**
+     * WatchStatus of a cluster
+     *
      * @generated from rpc api.v1.ClusterService.WatchStatus
      */
     watchStatus: {
@@ -49,6 +59,8 @@ export const ClusterService = {
       kind: MethodKind.ServerStreaming,
     },
     /**
+     * Delete a cluster
+     *
      * @generated from rpc api.v1.ClusterService.Delete
      */
     delete: {
@@ -58,6 +70,8 @@ export const ClusterService = {
       kind: MethodKind.Unary,
     },
     /**
+     * Update a cluster
+     *
      * @generated from rpc api.v1.ClusterService.Update
      */
     update: {
@@ -67,6 +81,8 @@ export const ClusterService = {
       kind: MethodKind.Unary,
     },
     /**
+     * GetCredentials of a cluster
+     *
      * @generated from rpc api.v1.ClusterService.GetCredentials
      */
     getCredentials: {

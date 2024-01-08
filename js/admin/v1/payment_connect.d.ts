@@ -1,12 +1,16 @@
 import { PaymentServiceAddBalanceToCustomerRequest, PaymentServiceAddBalanceToCustomerResponse, PaymentServiceAddCouponToCustomerRequest, PaymentServiceAddCouponToCustomerResponse, PaymentServiceListCouponsRequest, PaymentServiceListCouponsResponse } from "./payment_pb.js";
 import { MethodKind } from "@bufbuild/protobuf";
 /**
+ * PaymentService serves payment related functions
+ *
  * @generated from service admin.v1.PaymentService
  */
 export declare const PaymentService: {
     readonly typeName: "admin.v1.PaymentService";
     readonly methods: {
         /**
+         * ListCoupons list all available coupons
+         *
          * @generated from rpc admin.v1.PaymentService.ListCoupons
          */
         readonly listCoupons: {
@@ -16,6 +20,8 @@ export declare const PaymentService: {
             readonly kind: MethodKind.Unary;
         };
         /**
+         * AddCouponToCustomer adds a coupon to a customer
+         *
          * @generated from rpc admin.v1.PaymentService.AddCouponToCustomer
          */
         readonly addCouponToCustomer: {
@@ -25,6 +31,8 @@ export declare const PaymentService: {
             readonly kind: MethodKind.Unary;
         };
         /**
+         * AddBalanceToCustomer adds balance to a customer
+         *
          * @generated from rpc admin.v1.PaymentService.AddBalanceToCustomer
          */
         readonly addBalanceToCustomer: {

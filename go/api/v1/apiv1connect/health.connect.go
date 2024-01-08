@@ -45,6 +45,7 @@ var (
 
 // HealthServiceClient is a client for the api.v1.HealthService service.
 type HealthServiceClient interface {
+	// Get the health of the platform
 	Get(context.Context, *connect.Request[v1.HealthServiceGetRequest]) (*connect.Response[v1.HealthServiceGetResponse], error)
 }
 
@@ -79,6 +80,7 @@ func (c *healthServiceClient) Get(ctx context.Context, req *connect.Request[v1.H
 
 // HealthServiceHandler is an implementation of the api.v1.HealthService service.
 type HealthServiceHandler interface {
+	// Get the health of the platform
 	Get(context.Context, *connect.Request[v1.HealthServiceGetRequest]) (*connect.Response[v1.HealthServiceGetResponse], error)
 }
 

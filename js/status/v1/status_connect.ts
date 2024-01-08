@@ -7,12 +7,17 @@ import { StatusServiceGetRequest, StatusServiceGetResponse } from "./status_pb.j
 import { MethodKind } from "@bufbuild/protobuf";
 
 /**
+ * StatusService serves status related functions
+ * this service is used as backend for the status dashboard
+ *
  * @generated from service status.v1.StatusService
  */
 export const StatusService = {
   typeName: "status.v1.StatusService",
   methods: {
     /**
+     * Get the system status
+     *
      * @generated from rpc status.v1.StatusService.Get
      */
     get: {

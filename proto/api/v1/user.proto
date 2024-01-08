@@ -4,33 +4,56 @@ package api.v1;
 
 import "api/v1/common.proto";
 
-// User
+// User is a end user of the platform
 message User {
-  // the login at the provider
+  // Login the login at the provider
   string login = 1;
+  // Name of the user
   string name = 2;
+  // Email of the user
   string email = 3;
+  // AvatarUrl of the user
   string avatar_url = 5;
+  // OauthProvider of the user
   OAuthProvider oauth_provider = 6;
+  // Organisations the user belongs to
   repeated Organization organizations = 7;
 }
 
+// Organization which is a customer of the platform
+// can be a company or some other form of business
 message Organization {
+  // Id of this organization
   string id = 1;
+  // Login of this organization
   string login = 2;
+  // Name of this organization
   string name = 3;
+  // Email of this organization
   string email = 4;
+  // BillingEmail of this organization
   string billing_email = 5;
+  // AvatarUrl of this organization
   string avatar_url = 6;
+  // Role of this organization
   Role role = 7;
+  // Teams which belong to this organization
   repeated Team teams = 8;
+  // Admitted if set to true, this organization is allowed to use the platform
   optional bool admitted = 9;
 }
 
+// Team is a sub structure of users in a organizations
 message Team {
+  // Id of this team
   string id = 1;
+  // Name of this team
   string name = 2;
+  // AvatarUrl of this team
   string avatar_url = 3;
+  // Role of this team
   Role role = 4;
+  // ProjectId of this team
+  // a project is created in the backend for every team
   string project_id = 5;
 }

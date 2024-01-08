@@ -9,6 +9,8 @@ const protobuf_1 = require("@bufbuild/protobuf");
 const common_pb_js_1 = require("../../api/v1/common_pb.js");
 const tenant_pb_js_1 = require("../../api/v1/tenant_pb.js");
 /**
+ * TenantServiceListRequest is the request payload for a tenant list request
+ *
  * @generated from message admin.v1.TenantServiceListRequest
  */
 class TenantServiceListRequest extends protobuf_1.Message {
@@ -42,12 +44,16 @@ TenantServiceListRequest.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 7, name: "paging", kind: "message", T: common_pb_js_1.Paging },
 ]);
 /**
+ * TenantServiceListResponse is the response payload for a tenant list request
+ *
  * @generated from message admin.v1.TenantServiceListResponse
  */
 class TenantServiceListResponse extends protobuf_1.Message {
     constructor(data) {
         super();
         /**
+         * Tenants are the list of tenants
+         *
          * @generated from field: repeated api.v1.Tenant tenants = 1;
          */
         this.tenants = [];
@@ -74,12 +80,16 @@ TenantServiceListResponse.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 2, name: "next_page", kind: "scalar", T: 4 /* ScalarType.UINT64 */, opt: true },
 ]);
 /**
+ * TenantServiceAdmitRequest is the request payload for a tenant admit request
+ *
  * @generated from message admin.v1.TenantServiceAdmitRequest
  */
 class TenantServiceAdmitRequest extends protobuf_1.Message {
     constructor(data) {
         super();
         /**
+         * TenantId is the id of the tenant to admit
+         *
          * @generated from field: string tenant_id = 1;
          */
         this.tenantId = "";
@@ -107,6 +117,8 @@ TenantServiceAdmitRequest.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 3, name: "balance_to_add", kind: "scalar", T: 3 /* ScalarType.INT64 */, opt: true },
 ]);
 /**
+ * TenantServiceAdmitResponse is the response payload for a tenant admit request
+ *
  * @generated from message admin.v1.TenantServiceAdmitResponse
  */
 class TenantServiceAdmitResponse extends protobuf_1.Message {
@@ -134,12 +146,16 @@ TenantServiceAdmitResponse.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 1, name: "tenant", kind: "message", T: tenant_pb_js_1.Tenant },
 ]);
 /**
+ * TenantServiceRevokeRequest is the request payload for a tenant revoke request
+ *
  * @generated from message admin.v1.TenantServiceRevokeRequest
  */
 class TenantServiceRevokeRequest extends protobuf_1.Message {
     constructor(data) {
         super();
         /**
+         * TenantId is the id of the tenant to revoke
+         *
          * @generated from field: string tenant_id = 1;
          */
         this.tenantId = "";
@@ -165,6 +181,8 @@ TenantServiceRevokeRequest.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 1, name: "tenant_id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
 ]);
 /**
+ * TenantServiceRevokeResponse is the response payload for a tenant revoke request
+ *
  * @generated from message admin.v1.TenantServiceRevokeResponse
  */
 class TenantServiceRevokeResponse extends protobuf_1.Message {

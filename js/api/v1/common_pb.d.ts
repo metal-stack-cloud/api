@@ -1,111 +1,163 @@
 import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
 import { Message, proto3 } from "@bufbuild/protobuf";
 /**
+ * OAuthProvider defines which login providers are supported
+ *
  * @generated from enum api.v1.OAuthProvider
  */
 export declare enum OAuthProvider {
     /**
+     * O_AUTH_PROVIDER_UNSPECIFIED is an unknown login provider
+     *
      * @generated from enum value: O_AUTH_PROVIDER_UNSPECIFIED = 0;
      */
     UNSPECIFIED = 0,
     /**
+     * O_AUTH_PROVIDER_GITHUB specifies github as oauth login provider
+     *
      * @generated from enum value: O_AUTH_PROVIDER_GITHUB = 1;
      */
     GITHUB = 1,
     /**
+     * O_AUTH_PROVIDER_AZURE specifies azure as oauth login provider
+     *
      * @generated from enum value: O_AUTH_PROVIDER_AZURE = 2;
      */
     AZURE = 2
 }
 /**
+ * Role defines which role the logged in user got from the login provider
+ *
  * @generated from enum api.v1.Role
  */
 export declare enum Role {
     /**
+     * ROLE_UNSPECIFIED is not specified
+     *
      * @generated from enum value: ROLE_UNSPECIFIED = 0;
      */
     UNSPECIFIED = 0,
     /**
+     * ROLE_MEMBER the user has member role in the scope
+     *
      * @generated from enum value: ROLE_MEMBER = 1;
      */
     MEMBER = 1,
     /**
+     * ROLE_MAINTAINER the user has maintainer role in the scope
+     *
      * @generated from enum value: ROLE_MAINTAINER = 2;
      */
     MAINTAINER = 2,
     /**
+     * ROLE_ADMIN the user has admin role in the scope
+     *
      * @generated from enum value: ROLE_ADMIN = 3;
      */
     ADMIN = 3,
     /**
+     * ROLE_OWNER the user has owner role in the scope
+     *
      * @generated from enum value: ROLE_OWNER = 4;
      */
     OWNER = 4
 }
 /**
+ * TenantRole specifies what role a logged in user needs to call this tenant scoped service
+ *
  * @generated from enum api.v1.TenantRole
  */
 export declare enum TenantRole {
     /**
+     * TENANT_ROLE_UNSPECIFIED is not specified
+     *
      * @generated from enum value: TENANT_ROLE_UNSPECIFIED = 0;
      */
     UNSPECIFIED = 0,
     /**
+     * TENANT_ROLE_OWNER the logged in user needs at least owner role to call this method
+     *
      * @generated from enum value: TENANT_ROLE_OWNER = 1;
      */
     OWNER = 1,
     /**
+     * TENANT_ROLE_EDITOR the logged in user needs at least editor role to call this method
+     *
      * @generated from enum value: TENANT_ROLE_EDITOR = 2;
      */
     EDITOR = 2,
     /**
+     * TENANT_ROLE_VIEWER the logged in user needs at least viewer role to call this method
+     *
      * @generated from enum value: TENANT_ROLE_VIEWER = 3;
      */
     VIEWER = 3
 }
 /**
+ * ProjectRole specifies what role a logged in user needs to call this project scoped service
+ *
  * @generated from enum api.v1.ProjectRole
  */
 export declare enum ProjectRole {
     /**
+     * PROJECT_ROLE_UNSPECIFIED is not specified
+     *
      * @generated from enum value: PROJECT_ROLE_UNSPECIFIED = 0;
      */
     UNSPECIFIED = 0,
     /**
+     * PROJECT_ROLE_OWNER the logged in user needs at least owner role to call this method
+     *
      * @generated from enum value: PROJECT_ROLE_OWNER = 1;
      */
     OWNER = 1,
     /**
+     * PROJECT_ROLE_EDITOR the logged in user needs at least editor role to call this method
+     *
      * @generated from enum value: PROJECT_ROLE_EDITOR = 2;
      */
     EDITOR = 2,
     /**
+     * PROJECT_ROLE_VIEWER the logged in user needs at least viewer role to call this method
+     *
      * @generated from enum value: PROJECT_ROLE_VIEWER = 3;
      */
     VIEWER = 3
 }
 /**
+ * AdminRole specifies what role a logged in user needs to call this admin service
+ *
  * @generated from enum api.v1.AdminRole
  */
 export declare enum AdminRole {
     /**
+     * ADMIN_ROLE_UNSPECIFIED is not specified
+     *
      * @generated from enum value: ADMIN_ROLE_UNSPECIFIED = 0;
      */
     UNSPECIFIED = 0,
     /**
+     * ADMIN_ROLE_EDITOR the logged in user needs at least editor role to call this method
+     *
      * @generated from enum value: ADMIN_ROLE_EDITOR = 1;
      */
     EDITOR = 1,
     /**
+     * ADMIN_ROLE_VIEWER the logged in user needs at least viewer role to call this method
+     *
      * @generated from enum value: ADMIN_ROLE_VIEWER = 2;
      */
     VIEWER = 2
 }
 /**
+ * Visibility of a method
+ *
  * @generated from enum api.v1.Visibility
  */
 export declare enum Visibility {
     /**
+     * VISIBILITY_UNSPECIFIED is not defined
+     *
      * @generated from enum value: VISIBILITY_UNSPECIFIED = 0;
      */
     UNSPECIFIED = 0,
@@ -129,18 +181,26 @@ export declare enum Visibility {
     SELF = 3
 }
 /**
+ * Chargable defines if calling a method requires that billing credentials are present or not
+ *
  * @generated from enum api.v1.Chargeable
  */
 export declare enum Chargeable {
     /**
+     * CHARGEABLE_UNSPECIFIED no chargeable option is set
+     *
      * @generated from enum value: CHARGEABLE_UNSPECIFIED = 0;
      */
     UNSPECIFIED = 0,
     /**
+     * CHARGEABLE_TRUE if this is set on a method, calling it requires that billing credentials are present
+     *
      * @generated from enum value: CHARGEABLE_TRUE = 1;
      */
     TRUE = 1,
     /**
+     * CHARGEABLE_FALSE if this is set on a method, no billing credentials are required
+     *
      * @generated from enum value: CHARGEABLE_FALSE = 2;
      */
     FALSE = 2
@@ -154,31 +214,39 @@ export declare enum Chargeable {
  */
 export declare enum Auditing {
     /**
+     * AUDITING_UNSPECIFIED is not specified
+     *
      * @generated from enum value: AUDITING_UNSPECIFIED = 0;
      */
     UNSPECIFIED = 0,
     /**
+     * AUDITING_INCLUDED if a method is annotated with this, all calls are audited
+     *
      * @generated from enum value: AUDITING_INCLUDED = 1;
      */
     INCLUDED = 1,
     /**
+     * AUDITING_EXCLUDED if a method is annotated with this, no calls are audited
+     *
      * @generated from enum value: AUDITING_EXCLUDED = 2;
      */
     EXCLUDED = 2
 }
 /**
+ * Paging defines paging for methods with a lot of results
+ *
  * @generated from message api.v1.Paging
  */
 export declare class Paging extends Message<Paging> {
     /**
-     * page is used for pagination, if unset only the first page is returned,
+     * Page is used for pagination, if unset only the first page is returned,
      * the list response contains then the page number for the next page.
      *
      * @generated from field: optional uint64 page = 1;
      */
     page?: bigint;
     /**
-     * count is the number of results returned per page, if not given server side defaults apply
+     * Count is the number of results returned per page, if not given server side defaults apply
      *
      * @generated from field: optional uint64 count = 2;
      */

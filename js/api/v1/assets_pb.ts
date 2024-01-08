@@ -7,22 +7,28 @@ import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialM
 import { Message, proto3, protoInt64 } from "@bufbuild/protobuf";
 
 /**
- * Types
+ * Asset defines the available resources which can be used
  *
  * @generated from message api.v1.Asset
  */
 export class Asset extends Message<Asset> {
   /**
+   * Region defines a datacenter location, e.g. a city.
+   *
    * @generated from field: api.v1.Region region = 1;
    */
   region?: Region;
 
   /**
+   * MachineTypes available by region
+   *
    * @generated from field: map<string, api.v1.MachineType> machine_types = 2;
    */
   machineTypes: { [key: string]: MachineType } = {};
 
   /**
+   * Kubernetes a list of kubernetes versions
+   *
    * @generated from field: repeated api.v1.Kubernetes kubernetes = 3;
    */
   kubernetes: Kubernetes[] = [];
@@ -58,35 +64,49 @@ export class Asset extends Message<Asset> {
 }
 
 /**
+ * Region defines a datacenter location
+ *
  * @generated from message api.v1.Region
  */
 export class Region extends Message<Region> {
   /**
+   * Id is the technical identifier of this region
+   *
    * @generated from field: string id = 1;
    */
   id = "";
 
   /**
+   * Name of the region
+   *
    * @generated from field: string name = 2;
    */
   name = "";
 
   /**
+   * Address is the postal address of the region
+   *
    * @generated from field: string address = 3;
    */
   address = "";
 
   /**
+   * Active indicates if this region is usable
+   *
    * @generated from field: bool active = 4;
    */
   active = false;
 
   /**
+   * Partitions in this region
+   *
    * @generated from field: map<string, api.v1.Partition> partitions = 5;
    */
   partitions: { [key: string]: Partition } = {};
 
   /**
+   * Defaults are the default assets used if not otherwise speecified.
+   *
    * @generated from field: api.v1.AssetDefaults defaults = 6;
    */
   defaults?: AssetDefaults;
@@ -125,25 +145,35 @@ export class Region extends Message<Region> {
 }
 
 /**
+ * Partition defines a failure domain in one Region.
+ *
  * @generated from message api.v1.Partition
  */
 export class Partition extends Message<Partition> {
   /**
+   * Id is the technical id of this partition
+   *
    * @generated from field: string id = 1;
    */
   id = "";
 
   /**
+   * Name of this partition
+   *
    * @generated from field: string name = 2;
    */
   name = "";
 
   /**
+   * Address is the postal address of the partition
+   *
    * @generated from field: string address = 3;
    */
   address = "";
 
   /**
+   * Active indicates if this partition is usable
+   *
    * @generated from field: bool active = 4;
    */
   active = false;
@@ -180,30 +210,42 @@ export class Partition extends Message<Partition> {
 }
 
 /**
+ * MachineType defines a server type
+ *
  * @generated from message api.v1.MachineType
  */
 export class MachineType extends Message<MachineType> {
   /**
+   * Id is the technical id of this machine type
+   *
    * @generated from field: string id = 1;
    */
   id = "";
 
   /**
+   * Name of this machine type
+   *
    * @generated from field: string name = 2;
    */
   name = "";
 
   /**
+   * CPUs e.g. cores in this machine / server
+   *
    * @generated from field: uint32 cpus = 3;
    */
   cpus = 0;
 
   /**
+   * Memory in this machine / server
+   *
    * @generated from field: uint64 memory = 4;
    */
   memory = protoInt64.zero;
 
   /**
+   * Storage in this machine / server
+   *
    * @generated from field: uint64 storage = 5;
    */
   storage = protoInt64.zero;
@@ -241,10 +283,14 @@ export class MachineType extends Message<MachineType> {
 }
 
 /**
+ * Kubernetes related configurations available
+ *
  * @generated from message api.v1.Kubernetes
  */
 export class Kubernetes extends Message<Kubernetes> {
   /**
+   * Version of kubernetes
+   *
    * @generated from field: string version = 1;
    */
   version = "";
@@ -278,30 +324,42 @@ export class Kubernetes extends Message<Kubernetes> {
 }
 
 /**
+ * AssetDefaults apply if no specific properties are specified
+ *
  * @generated from message api.v1.AssetDefaults
  */
 export class AssetDefaults extends Message<AssetDefaults> {
   /**
+   * MachineType defines the default machine type used
+   *
    * @generated from field: string machine_type = 1;
    */
   machineType = "";
 
   /**
+   * KubernetesVersion defines the default kubernetes version to be used
+   *
    * @generated from field: string kubernetes_version = 2;
    */
   kubernetesVersion = "";
 
   /**
+   * WorkerMin defines how many servers are specified as minimum
+   *
    * @generated from field: uint32 worker_min = 3;
    */
   workerMin = 0;
 
   /**
+   * WorkerMax defines how many servers are specified as maximum
+   *
    * @generated from field: uint32 worker_max = 4;
    */
   workerMax = 0;
 
   /**
+   * Partition defines where the cluster is created if not otherwise specified
+   *
    * @generated from field: string partition = 7;
    */
   partition = "";
@@ -339,7 +397,7 @@ export class AssetDefaults extends Message<AssetDefaults> {
 }
 
 /**
- * Requests
+ * AssetServiceListRequest is the request payload to list all Assets
  *
  * @generated from message api.v1.AssetServiceListRequest
  */
@@ -372,13 +430,13 @@ export class AssetServiceListRequest extends Message<AssetServiceListRequest> {
 }
 
 /**
- * Responses
+ * AssetServiceListResponse is the response payload which containes the the Asset list
  *
  * @generated from message api.v1.AssetServiceListResponse
  */
 export class AssetServiceListResponse extends Message<AssetServiceListResponse> {
   /**
-   * assets maps region ids to assets
+   * Assets maps the Assets by Region
    *
    * @generated from field: map<string, api.v1.Asset> assets = 1;
    */

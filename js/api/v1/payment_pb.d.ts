@@ -1,83 +1,123 @@
 import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
 import { Message, proto3, Timestamp } from "@bufbuild/protobuf";
 /**
+ * ProductType defines for which type of product a price applies
+ *
  * @generated from enum api.v1.ProductType
  */
 export declare enum ProductType {
     /**
+     * PRODUCT_TYPE_UNSPECIFIED is unspecified
+     *
      * @generated from enum value: PRODUCT_TYPE_UNSPECIFIED = 0;
      */
     UNSPECIFIED = 0,
     /**
+     * PRODUCT_TYPE_STORAGE for storage
+     *
      * @generated from enum value: PRODUCT_TYPE_STORAGE = 1;
      */
     STORAGE = 1,
     /**
+     * PRODUCT_TYPE_COMPUTE for compute, e.g. machines
+     *
      * @generated from enum value: PRODUCT_TYPE_COMPUTE = 2;
      */
     COMPUTE = 2,
     /**
+     * PRODUCT_TYPE_NETWORK for network, e.g. ips and traffic
+     *
      * @generated from enum value: PRODUCT_TYPE_NETWORK = 3;
      */
     NETWORK = 3,
     /**
+     * PRODUCT_TYPE_KUBERNETES for kubernetes, e.g. the control plane
+     *
      * @generated from enum value: PRODUCT_TYPE_KUBERNETES = 5;
      */
     KUBERNETES = 5
 }
 /**
+ * PaymentCustomer is a customer at the payment processor
+ *
  * @generated from message api.v1.PaymentCustomer
  */
 export declare class PaymentCustomer extends Message<PaymentCustomer> {
     /**
+     * Login of the customer
+     *
      * @generated from field: string login = 1;
      */
     login: string;
     /**
+     * Name of the customer
+     *
      * @generated from field: optional string name = 2;
      */
     name?: string;
     /**
+     * CustomerId id of the customer
+     *
      * @generated from field: optional string customer_id = 3;
      */
     customerId?: string;
     /**
+     * PaymentMethodId at the payment processor
+     *
      * @generated from field: optional string payment_method_id = 4;
      */
     paymentMethodId?: string;
     /**
+     * SubscriptionId of the customer
+     *
      * @generated from field: string subscription_id = 5;
      */
     subscriptionId: string;
     /**
+     * Email of the customer
+     *
      * @generated from field: optional string email = 6;
      */
     email?: string;
     /**
+     * Card the customer supplied
+     *
      * @generated from field: optional api.v1.Card card = 7;
      */
     card?: Card;
     /**
+     * Prices which apply to customer resources
+     *
      * @generated from field: repeated api.v1.Price prices = 8;
      */
     prices: Price[];
     /**
+     * Address is the postal address of the customer
+     *
      * @generated from field: api.v1.Address address = 9;
      */
     address?: Address;
     /**
+     * Coupon details of granted coupon if any
+     *
      * @generated from field: optional api.v1.Coupon coupon = 10;
      */
     coupon?: Coupon;
     /**
+     * Vat which applies to the customer
+     *
      * @generated from field: optional string vat = 11;
      */
     vat?: string;
     /**
+     * PhoneNumber of the customer
+     *
      * @generated from field: optional string phone_number = 12;
      */
     phoneNumber?: string;
     /**
+     * Balance actual balance of the customer
+     *
      * @generated from field: optional int64 balance = 13;
      */
     balance?: bigint;
@@ -91,26 +131,38 @@ export declare class PaymentCustomer extends Message<PaymentCustomer> {
     static equals(a: PaymentCustomer | PlainMessage<PaymentCustomer> | undefined, b: PaymentCustomer | PlainMessage<PaymentCustomer> | undefined): boolean;
 }
 /**
+ * Card is the payment card the customer pays with
+ *
  * @generated from message api.v1.Card
  */
 export declare class Card extends Message<Card> {
     /**
+     * Brand of the card
+     *
      * @generated from field: string brand = 1;
      */
     brand: string;
     /**
+     * Country where the card was issued
+     *
      * @generated from field: string country = 2;
      */
     country: string;
     /**
+     * ExpMonth is the month when this card expires
+     *
      * @generated from field: int64 exp_month = 3;
      */
     expMonth: bigint;
     /**
+     * ExpYear is the year when this card expires
+     *
      * @generated from field: int64 exp_year = 4;
      */
     expYear: bigint;
     /**
+     * Last4 are the 4 last digits of the card number, the full number is not stored anywhere
+     *
      * @generated from field: string last_4 = 5;
      */
     last4: string;
@@ -124,30 +176,44 @@ export declare class Card extends Message<Card> {
     static equals(a: Card | PlainMessage<Card> | undefined, b: Card | PlainMessage<Card> | undefined): boolean;
 }
 /**
+ * Price of a product
+ *
  * @generated from message api.v1.Price
  */
 export declare class Price extends Message<Price> {
     /**
+     * Name of the price
+     *
      * @generated from field: string name = 1;
      */
     name: string;
     /**
+     * UnitAmountDecimal the value of this price
+     *
      * @generated from field: double unit_amount_decimal = 2;
      */
     unitAmountDecimal: number;
     /**
+     * Currency of this price
+     *
      * @generated from field: string currency = 3;
      */
     currency: string;
     /**
+     * UnitLabel is a label which allows for searching this unit at the payment processor
+     *
      * @generated from field: string unit_label = 4;
      */
     unitLabel: string;
     /**
+     * ProductType this price applies to
+     *
      * @generated from field: api.v1.ProductType product_type = 5;
      */
     productType: ProductType;
     /**
+     * Description of this price
+     *
      * @generated from field: optional string description = 6;
      */
     description?: string;
@@ -161,30 +227,44 @@ export declare class Price extends Message<Price> {
     static equals(a: Price | PlainMessage<Price> | undefined, b: Price | PlainMessage<Price> | undefined): boolean;
 }
 /**
+ * Address postal address of a customer
+ *
  * @generated from message api.v1.Address
  */
 export declare class Address extends Message<Address> {
     /**
+     * Line1 the first address line
+     *
      * @generated from field: string line1 = 1;
      */
     line1: string;
     /**
+     * Line2 the second address line
+     *
      * @generated from field: string line2 = 2;
      */
     line2: string;
     /**
+     * PostalCode of the city or address
+     *
      * @generated from field: string postal_code = 3;
      */
     postalCode: string;
     /**
+     * City where the customer lives
+     *
      * @generated from field: string city = 4;
      */
     city: string;
     /**
+     * Sate where the customer lives
+     *
      * @generated from field: string state = 5;
      */
     state: string;
     /**
+     * Country where the customer lives
+     *
      * @generated from field: string country = 6;
      */
     country: string;
@@ -198,26 +278,38 @@ export declare class Address extends Message<Address> {
     static equals(a: Address | PlainMessage<Address> | undefined, b: Address | PlainMessage<Address> | undefined): boolean;
 }
 /**
+ * SubscriptionUsageItem details of a subscription
+ *
  * @generated from message api.v1.SubscriptionUsageItem
  */
 export declare class SubscriptionUsageItem extends Message<SubscriptionUsageItem> {
     /**
+     * SubscriptionItemId is the id of the subscription
+     *
      * @generated from field: string subscription_item_id = 1;
      */
     subscriptionItemId: string;
     /**
+     * SubscriptionItemName is the name of the subscription
+     *
      * @generated from field: string subscription_item_name = 2;
      */
     subscriptionItemName: string;
     /**
+     * TotalUsage of this subscription
+     *
      * @generated from field: int64 total_usage = 3;
      */
     totalUsage: bigint;
     /**
+     * PeriodStart is the start date of this subscription
+     *
      * @generated from field: google.protobuf.Timestamp period_start = 4;
      */
     periodStart?: Timestamp;
     /**
+     * PeriodEnd is the end date of this subscription
+     *
      * @generated from field: google.protobuf.Timestamp period_end = 5;
      */
     periodEnd?: Timestamp;
@@ -231,22 +323,32 @@ export declare class SubscriptionUsageItem extends Message<SubscriptionUsageItem
     static equals(a: SubscriptionUsageItem | PlainMessage<SubscriptionUsageItem> | undefined, b: SubscriptionUsageItem | PlainMessage<SubscriptionUsageItem> | undefined): boolean;
 }
 /**
+ * Invoice a customer has to pay for subscription usage
+ *
  * @generated from message api.v1.Invoice
  */
 export declare class Invoice extends Message<Invoice> {
     /**
+     * Id of the invoice
+     *
      * @generated from field: string id = 1;
      */
     id: string;
     /**
+     * PdfDownloadUrl is the url where the customer can download this invoice in pdf format
+     *
      * @generated from field: string pdf_download_url = 2;
      */
     pdfDownloadUrl: string;
     /**
+     * PeriodStart is the start date of this subscription
+     *
      * @generated from field: google.protobuf.Timestamp period_start = 4;
      */
     periodStart?: Timestamp;
     /**
+     * PeriodEnd is the end date of this subscription
+     *
      * @generated from field: google.protobuf.Timestamp period_end = 5;
      */
     periodEnd?: Timestamp;
@@ -260,46 +362,68 @@ export declare class Invoice extends Message<Invoice> {
     static equals(a: Invoice | PlainMessage<Invoice> | undefined, b: Invoice | PlainMessage<Invoice> | undefined): boolean;
 }
 /**
+ * Coupon is a amount of free usage which can be granted to a customer
+ *
  * @generated from message api.v1.Coupon
  */
 export declare class Coupon extends Message<Coupon> {
     /**
+     * Id of the coupon
+     *
      * @generated from field: string id = 1;
      */
     id: string;
     /**
+     * Name of this coupon
+     *
      * @generated from field: string name = 2;
      */
     name: string;
     /**
+     * AmountOff is th amount the customer can use for free
+     *
      * @generated from field: int64 amount_off = 3;
      */
     amountOff: bigint;
     /**
+     * Currency of the free usage amount
+     *
      * @generated from field: string currency = 4;
      */
     currency: string;
     /**
+     * DurationInMonth defines how many month this coupon is valid for
+     *
      * @generated from field: int64 duration_in_month = 5;
      */
     durationInMonth: bigint;
     /**
+     * CreatedAt is the date the coupon was created
+     *
      * @generated from field: google.protobuf.Timestamp created_at = 6;
      */
     createdAt?: Timestamp;
     /**
+     * RedeemBy is the date when this coupon can no longer be used
+     *
      * @generated from field: google.protobuf.Timestamp redeem_by = 7;
      */
     redeemBy?: Timestamp;
     /**
+     * TimesRedeemed how often this coupon was already consumed
+     *
      * @generated from field: int64 times_redeemed = 8;
      */
     timesRedeemed: bigint;
     /**
+     * MaxRedemptions defines how often this coupon can be consumed
+     *
      * @generated from field: int64 max_redemptions = 9;
      */
     maxRedemptions: bigint;
     /**
+     * AmountLeft how many usages are left for this coupon
+     *
      * @generated from field: int64 amount_left = 10;
      */
     amountLeft: bigint;
@@ -313,18 +437,26 @@ export declare class Coupon extends Message<Coupon> {
     static equals(a: Coupon | PlainMessage<Coupon> | undefined, b: Coupon | PlainMessage<Coupon> | undefined): boolean;
 }
 /**
+ * PaymentServiceCreateOrUpdateCustomerRequest is the request payload for a payment create or update customer request
+ *
  * @generated from message api.v1.PaymentServiceCreateOrUpdateCustomerRequest
  */
 export declare class PaymentServiceCreateOrUpdateCustomerRequest extends Message<PaymentServiceCreateOrUpdateCustomerRequest> {
     /**
+     * Login of the customer
+     *
      * @generated from field: string login = 1;
      */
     login: string;
     /**
+     * Customer is the customer to modify
+     *
      * @generated from field: api.v1.PaymentCustomer customer = 2;
      */
     customer?: PaymentCustomer;
     /**
+     * AcceptedTermsAndConditions indicates the modification of the terms and conditions acceptance
+     *
      * @generated from field: bool accepted_terms_and_conditions = 3;
      */
     acceptedTermsAndConditions: boolean;
@@ -338,10 +470,14 @@ export declare class PaymentServiceCreateOrUpdateCustomerRequest extends Message
     static equals(a: PaymentServiceCreateOrUpdateCustomerRequest | PlainMessage<PaymentServiceCreateOrUpdateCustomerRequest> | undefined, b: PaymentServiceCreateOrUpdateCustomerRequest | PlainMessage<PaymentServiceCreateOrUpdateCustomerRequest> | undefined): boolean;
 }
 /**
+ * PaymentServiceCreateOrUpdateCustomerResponse is the response payload for a payment create or update customer request
+ *
  * @generated from message api.v1.PaymentServiceCreateOrUpdateCustomerResponse
  */
 export declare class PaymentServiceCreateOrUpdateCustomerResponse extends Message<PaymentServiceCreateOrUpdateCustomerResponse> {
     /**
+     * Customer is the customer
+     *
      * @generated from field: api.v1.PaymentCustomer customer = 1;
      */
     customer?: PaymentCustomer;
@@ -355,14 +491,20 @@ export declare class PaymentServiceCreateOrUpdateCustomerResponse extends Messag
     static equals(a: PaymentServiceCreateOrUpdateCustomerResponse | PlainMessage<PaymentServiceCreateOrUpdateCustomerResponse> | undefined, b: PaymentServiceCreateOrUpdateCustomerResponse | PlainMessage<PaymentServiceCreateOrUpdateCustomerResponse> | undefined): boolean;
 }
 /**
+ * PaymentServiceGetCustomerRequest is the request payload for a payment get customer request
+ *
  * @generated from message api.v1.PaymentServiceGetCustomerRequest
  */
 export declare class PaymentServiceGetCustomerRequest extends Message<PaymentServiceGetCustomerRequest> {
     /**
+     * Login of the customer
+     *
      * @generated from field: string login = 1;
      */
     login: string;
     /**
+     * CustomerId of the customer
+     *
      * @generated from field: string customer_id = 2;
      */
     customerId: string;
@@ -376,10 +518,14 @@ export declare class PaymentServiceGetCustomerRequest extends Message<PaymentSer
     static equals(a: PaymentServiceGetCustomerRequest | PlainMessage<PaymentServiceGetCustomerRequest> | undefined, b: PaymentServiceGetCustomerRequest | PlainMessage<PaymentServiceGetCustomerRequest> | undefined): boolean;
 }
 /**
+ * PaymentServiceGetCustomerResponse is the response payload for a payment get customer request
+ *
  * @generated from message api.v1.PaymentServiceGetCustomerResponse
  */
 export declare class PaymentServiceGetCustomerResponse extends Message<PaymentServiceGetCustomerResponse> {
     /**
+     * Customer is the customer
+     *
      * @generated from field: api.v1.PaymentCustomer customer = 1;
      */
     customer?: PaymentCustomer;
@@ -393,10 +539,14 @@ export declare class PaymentServiceGetCustomerResponse extends Message<PaymentSe
     static equals(a: PaymentServiceGetCustomerResponse | PlainMessage<PaymentServiceGetCustomerResponse> | undefined, b: PaymentServiceGetCustomerResponse | PlainMessage<PaymentServiceGetCustomerResponse> | undefined): boolean;
 }
 /**
+ * PaymentServiceGetCustomerWithLoginRequest is the request payload for a payment get customer request
+ *
  * @generated from message api.v1.PaymentServiceGetCustomerWithLoginRequest
  */
 export declare class PaymentServiceGetCustomerWithLoginRequest extends Message<PaymentServiceGetCustomerWithLoginRequest> {
     /**
+     * Login of the customer
+     *
      * @generated from field: string login = 1;
      */
     login: string;
@@ -410,10 +560,14 @@ export declare class PaymentServiceGetCustomerWithLoginRequest extends Message<P
     static equals(a: PaymentServiceGetCustomerWithLoginRequest | PlainMessage<PaymentServiceGetCustomerWithLoginRequest> | undefined, b: PaymentServiceGetCustomerWithLoginRequest | PlainMessage<PaymentServiceGetCustomerWithLoginRequest> | undefined): boolean;
 }
 /**
+ * PaymentServiceGetCustomerWithLoginResponse is the response payload for a payment get customer request
+ *
  * @generated from message api.v1.PaymentServiceGetCustomerWithLoginResponse
  */
 export declare class PaymentServiceGetCustomerWithLoginResponse extends Message<PaymentServiceGetCustomerWithLoginResponse> {
     /**
+     * Customer is the customer
+     *
      * @generated from field: api.v1.PaymentCustomer customer = 1;
      */
     customer?: PaymentCustomer;
@@ -427,10 +581,14 @@ export declare class PaymentServiceGetCustomerWithLoginResponse extends Message<
     static equals(a: PaymentServiceGetCustomerWithLoginResponse | PlainMessage<PaymentServiceGetCustomerWithLoginResponse> | undefined, b: PaymentServiceGetCustomerWithLoginResponse | PlainMessage<PaymentServiceGetCustomerWithLoginResponse> | undefined): boolean;
 }
 /**
+ * PaymentServiceCheckIfCustomerExistsRequest is the request payload for a payment check if customer exists request
+ *
  * @generated from message api.v1.PaymentServiceCheckIfCustomerExistsRequest
  */
 export declare class PaymentServiceCheckIfCustomerExistsRequest extends Message<PaymentServiceCheckIfCustomerExistsRequest> {
     /**
+     * Login of the customer
+     *
      * @generated from field: string login = 1;
      */
     login: string;
@@ -444,14 +602,20 @@ export declare class PaymentServiceCheckIfCustomerExistsRequest extends Message<
     static equals(a: PaymentServiceCheckIfCustomerExistsRequest | PlainMessage<PaymentServiceCheckIfCustomerExistsRequest> | undefined, b: PaymentServiceCheckIfCustomerExistsRequest | PlainMessage<PaymentServiceCheckIfCustomerExistsRequest> | undefined): boolean;
 }
 /**
+ * PaymentServiceCheckIfCustomerExistsResponse is the response payload for a payment check if customer exists request
+ *
  * @generated from message api.v1.PaymentServiceCheckIfCustomerExistsResponse
  */
 export declare class PaymentServiceCheckIfCustomerExistsResponse extends Message<PaymentServiceCheckIfCustomerExistsResponse> {
     /**
+     * Customer is the customer
+     *
      * @generated from field: api.v1.PaymentCustomer customer = 1;
      */
     customer?: PaymentCustomer;
     /**
+     * Exists indicates if this customer exists
+     *
      * @generated from field: bool exists = 2;
      */
     exists: boolean;
@@ -465,14 +629,20 @@ export declare class PaymentServiceCheckIfCustomerExistsResponse extends Message
     static equals(a: PaymentServiceCheckIfCustomerExistsResponse | PlainMessage<PaymentServiceCheckIfCustomerExistsResponse> | undefined, b: PaymentServiceCheckIfCustomerExistsResponse | PlainMessage<PaymentServiceCheckIfCustomerExistsResponse> | undefined): boolean;
 }
 /**
+ * PaymentServiceHasPaymentMethodRequest is the request payload for a has payment request
+ *
  * @generated from message api.v1.PaymentServiceHasPaymentMethodRequest
  */
 export declare class PaymentServiceHasPaymentMethodRequest extends Message<PaymentServiceHasPaymentMethodRequest> {
     /**
+     * Login of the customer
+     *
      * @generated from field: string login = 1;
      */
     login: string;
     /**
+     * Project for which the payment method should be checked
+     *
      * @generated from field: string project = 2;
      */
     project: string;
@@ -486,18 +656,26 @@ export declare class PaymentServiceHasPaymentMethodRequest extends Message<Payme
     static equals(a: PaymentServiceHasPaymentMethodRequest | PlainMessage<PaymentServiceHasPaymentMethodRequest> | undefined, b: PaymentServiceHasPaymentMethodRequest | PlainMessage<PaymentServiceHasPaymentMethodRequest> | undefined): boolean;
 }
 /**
+ * PaymentServiceHasPaymentMethodResponse is the response payload for a has payment request
+ *
  * @generated from message api.v1.PaymentServiceHasPaymentMethodResponse
  */
 export declare class PaymentServiceHasPaymentMethodResponse extends Message<PaymentServiceHasPaymentMethodResponse> {
     /**
+     * Exists indicates if this customer has a payment method
+     *
      * @generated from field: bool exists = 1;
      */
     exists: boolean;
     /**
+     * CouponLeft is true if there is still free amount on the coupon left
+     *
      * @generated from field: bool coupon_left = 2;
      */
     couponLeft: boolean;
     /**
+     * PositiveBalance indicates if the customer still has positive balance
+     *
      * @generated from field: bool positive_balance = 3;
      */
     positiveBalance: boolean;
@@ -511,10 +689,14 @@ export declare class PaymentServiceHasPaymentMethodResponse extends Message<Paym
     static equals(a: PaymentServiceHasPaymentMethodResponse | PlainMessage<PaymentServiceHasPaymentMethodResponse> | undefined, b: PaymentServiceHasPaymentMethodResponse | PlainMessage<PaymentServiceHasPaymentMethodResponse> | undefined): boolean;
 }
 /**
+ * PaymentServiceDeletePaymentMethodRequest is the request payload for a delete payment request
+ *
  * @generated from message api.v1.PaymentServiceDeletePaymentMethodRequest
  */
 export declare class PaymentServiceDeletePaymentMethodRequest extends Message<PaymentServiceDeletePaymentMethodRequest> {
     /**
+     * Login of the customer
+     *
      * @generated from field: string login = 1;
      */
     login: string;
@@ -528,6 +710,8 @@ export declare class PaymentServiceDeletePaymentMethodRequest extends Message<Pa
     static equals(a: PaymentServiceDeletePaymentMethodRequest | PlainMessage<PaymentServiceDeletePaymentMethodRequest> | undefined, b: PaymentServiceDeletePaymentMethodRequest | PlainMessage<PaymentServiceDeletePaymentMethodRequest> | undefined): boolean;
 }
 /**
+ * PaymentServiceDeletePaymentMethodResponse is the response payload for a delete payment request
+ *
  * @generated from message api.v1.PaymentServiceDeletePaymentMethodResponse
  */
 export declare class PaymentServiceDeletePaymentMethodResponse extends Message<PaymentServiceDeletePaymentMethodResponse> {
@@ -541,10 +725,14 @@ export declare class PaymentServiceDeletePaymentMethodResponse extends Message<P
     static equals(a: PaymentServiceDeletePaymentMethodResponse | PlainMessage<PaymentServiceDeletePaymentMethodResponse> | undefined, b: PaymentServiceDeletePaymentMethodResponse | PlainMessage<PaymentServiceDeletePaymentMethodResponse> | undefined): boolean;
 }
 /**
+ * PaymentServiceGetSubscriptionUsageRequest is the request payload for a get subscription usage request
+ *
  * @generated from message api.v1.PaymentServiceGetSubscriptionUsageRequest
  */
 export declare class PaymentServiceGetSubscriptionUsageRequest extends Message<PaymentServiceGetSubscriptionUsageRequest> {
     /**
+     * Login of the customer
+     *
      * @generated from field: string login = 1;
      */
     login: string;
@@ -558,10 +746,14 @@ export declare class PaymentServiceGetSubscriptionUsageRequest extends Message<P
     static equals(a: PaymentServiceGetSubscriptionUsageRequest | PlainMessage<PaymentServiceGetSubscriptionUsageRequest> | undefined, b: PaymentServiceGetSubscriptionUsageRequest | PlainMessage<PaymentServiceGetSubscriptionUsageRequest> | undefined): boolean;
 }
 /**
+ * PaymentServiceGetSubscriptionUsageResponse is the response payload for a get subscription usage request
+ *
  * @generated from message api.v1.PaymentServiceGetSubscriptionUsageResponse
  */
 export declare class PaymentServiceGetSubscriptionUsageResponse extends Message<PaymentServiceGetSubscriptionUsageResponse> {
     /**
+     * SubscriptionUsageItems is a list of usage for all subscriptions
+     *
      * @generated from field: repeated api.v1.SubscriptionUsageItem subscription_usage_items = 1;
      */
     subscriptionUsageItems: SubscriptionUsageItem[];
@@ -575,14 +767,20 @@ export declare class PaymentServiceGetSubscriptionUsageResponse extends Message<
     static equals(a: PaymentServiceGetSubscriptionUsageResponse | PlainMessage<PaymentServiceGetSubscriptionUsageResponse> | undefined, b: PaymentServiceGetSubscriptionUsageResponse | PlainMessage<PaymentServiceGetSubscriptionUsageResponse> | undefined): boolean;
 }
 /**
+ * PaymentServiceHasPaymentMethodRequest is the request payload for a get invoices request
+ *
  * @generated from message api.v1.PaymentServiceGetInvoicesRequest
  */
 export declare class PaymentServiceGetInvoicesRequest extends Message<PaymentServiceGetInvoicesRequest> {
     /**
+     * Login of the customer
+     *
      * @generated from field: string login = 1;
      */
     login: string;
     /**
+     * CustomerId is the id of the customer
+     *
      * @generated from field: string customer_id = 2;
      */
     customerId: string;
@@ -596,10 +794,14 @@ export declare class PaymentServiceGetInvoicesRequest extends Message<PaymentSer
     static equals(a: PaymentServiceGetInvoicesRequest | PlainMessage<PaymentServiceGetInvoicesRequest> | undefined, b: PaymentServiceGetInvoicesRequest | PlainMessage<PaymentServiceGetInvoicesRequest> | undefined): boolean;
 }
 /**
+ * PaymentServiceGetInvoicesResponse is the response payload for a get invoices request
+ *
  * @generated from message api.v1.PaymentServiceGetInvoicesResponse
  */
 export declare class PaymentServiceGetInvoicesResponse extends Message<PaymentServiceGetInvoicesResponse> {
     /**
+     * Invoices is the list of invoices
+     *
      * @generated from field: repeated api.v1.Invoice invoices = 1;
      */
     invoices: Invoice[];
@@ -613,6 +815,8 @@ export declare class PaymentServiceGetInvoicesResponse extends Message<PaymentSe
     static equals(a: PaymentServiceGetInvoicesResponse | PlainMessage<PaymentServiceGetInvoicesResponse> | undefined, b: PaymentServiceGetInvoicesResponse | PlainMessage<PaymentServiceGetInvoicesResponse> | undefined): boolean;
 }
 /**
+ * PaymentServiceGetDefaultPricesRequest is the request payload for a get default prices request
+ *
  * @generated from message api.v1.PaymentServiceGetDefaultPricesRequest
  */
 export declare class PaymentServiceGetDefaultPricesRequest extends Message<PaymentServiceGetDefaultPricesRequest> {
@@ -626,10 +830,14 @@ export declare class PaymentServiceGetDefaultPricesRequest extends Message<Payme
     static equals(a: PaymentServiceGetDefaultPricesRequest | PlainMessage<PaymentServiceGetDefaultPricesRequest> | undefined, b: PaymentServiceGetDefaultPricesRequest | PlainMessage<PaymentServiceGetDefaultPricesRequest> | undefined): boolean;
 }
 /**
+ * PaymentServiceGetDefaultPricesResponse is the response payload for a get default prices request
+ *
  * @generated from message api.v1.PaymentServiceGetDefaultPricesResponse
  */
 export declare class PaymentServiceGetDefaultPricesResponse extends Message<PaymentServiceGetDefaultPricesResponse> {
     /**
+     * Prices is the list of default prices
+     *
      * @generated from field: repeated api.v1.Price prices = 1;
      */
     prices: Price[];
@@ -643,10 +851,14 @@ export declare class PaymentServiceGetDefaultPricesResponse extends Message<Paym
     static equals(a: PaymentServiceGetDefaultPricesResponse | PlainMessage<PaymentServiceGetDefaultPricesResponse> | undefined, b: PaymentServiceGetDefaultPricesResponse | PlainMessage<PaymentServiceGetDefaultPricesResponse> | undefined): boolean;
 }
 /**
+ * PaymentServiceCheckAdmittedRequest is the request payload for a check admitted request
+ *
  * @generated from message api.v1.PaymentServiceCheckAdmittedRequest
  */
 export declare class PaymentServiceCheckAdmittedRequest extends Message<PaymentServiceCheckAdmittedRequest> {
     /**
+     * Login of the customer
+     *
      * @generated from field: string login = 1;
      */
     login: string;
@@ -660,14 +872,20 @@ export declare class PaymentServiceCheckAdmittedRequest extends Message<PaymentS
     static equals(a: PaymentServiceCheckAdmittedRequest | PlainMessage<PaymentServiceCheckAdmittedRequest> | undefined, b: PaymentServiceCheckAdmittedRequest | PlainMessage<PaymentServiceCheckAdmittedRequest> | undefined): boolean;
 }
 /**
+ * PaymentServiceCheckAdmittedResponse is the response payload for a check admitted request
+ *
  * @generated from message api.v1.PaymentServiceCheckAdmittedResponse
  */
 export declare class PaymentServiceCheckAdmittedResponse extends Message<PaymentServiceCheckAdmittedResponse> {
     /**
+     * Admitted indicates if the customer is already admitted to use the service
+     *
      * @generated from field: bool admitted = 1;
      */
     admitted: boolean;
     /**
+     * Requested indicates if the customer requested admittance
+     *
      * @generated from field: bool requested = 2;
      */
     requested: boolean;
@@ -681,22 +899,32 @@ export declare class PaymentServiceCheckAdmittedResponse extends Message<Payment
     static equals(a: PaymentServiceCheckAdmittedResponse | PlainMessage<PaymentServiceCheckAdmittedResponse> | undefined, b: PaymentServiceCheckAdmittedResponse | PlainMessage<PaymentServiceCheckAdmittedResponse> | undefined): boolean;
 }
 /**
+ * PaymentServiceRequestAdmissionRequest is the request payload for a admission request
+ *
  * @generated from message api.v1.PaymentServiceRequestAdmissionRequest
  */
 export declare class PaymentServiceRequestAdmissionRequest extends Message<PaymentServiceRequestAdmissionRequest> {
     /**
+     * Login of the customer
+     *
      * @generated from field: string login = 1;
      */
     login: string;
     /**
+     * Customer is the customer
+     *
      * @generated from field: api.v1.PaymentCustomer customer = 2;
      */
     customer?: PaymentCustomer;
     /**
+     * AcceptedTermsAndConditions indicates if the customer already accepted the terms and conditions
+     *
      * @generated from field: bool accepted_terms_and_conditions = 3;
      */
     acceptedTermsAndConditions: boolean;
     /**
+     * EmailConsent indicates if the customer already gave consent to email
+     *
      * @generated from field: bool email_consent = 4;
      */
     emailConsent: boolean;
@@ -710,6 +938,8 @@ export declare class PaymentServiceRequestAdmissionRequest extends Message<Payme
     static equals(a: PaymentServiceRequestAdmissionRequest | PlainMessage<PaymentServiceRequestAdmissionRequest> | undefined, b: PaymentServiceRequestAdmissionRequest | PlainMessage<PaymentServiceRequestAdmissionRequest> | undefined): boolean;
 }
 /**
+ * PaymentServiceRequestAdmissionResponse is the response payload for a admission request
+ *
  * @generated from message api.v1.PaymentServiceRequestAdmissionResponse
  */
 export declare class PaymentServiceRequestAdmissionResponse extends Message<PaymentServiceRequestAdmissionResponse> {
@@ -723,10 +953,14 @@ export declare class PaymentServiceRequestAdmissionResponse extends Message<Paym
     static equals(a: PaymentServiceRequestAdmissionResponse | PlainMessage<PaymentServiceRequestAdmissionResponse> | undefined, b: PaymentServiceRequestAdmissionResponse | PlainMessage<PaymentServiceRequestAdmissionResponse> | undefined): boolean;
 }
 /**
+ * PaymentServiceHasChargeableResourcesRequest is the request payload for a has chargeable request
+ *
  * @generated from message api.v1.PaymentServiceHasChargeableResourcesRequest
  */
 export declare class PaymentServiceHasChargeableResourcesRequest extends Message<PaymentServiceHasChargeableResourcesRequest> {
     /**
+     * Login of the customer
+     *
      * @generated from field: string login = 1;
      */
     login: string;
@@ -740,10 +974,14 @@ export declare class PaymentServiceHasChargeableResourcesRequest extends Message
     static equals(a: PaymentServiceHasChargeableResourcesRequest | PlainMessage<PaymentServiceHasChargeableResourcesRequest> | undefined, b: PaymentServiceHasChargeableResourcesRequest | PlainMessage<PaymentServiceHasChargeableResourcesRequest> | undefined): boolean;
 }
 /**
+ * PaymentServiceHasChargeableResourcesResponse is the response payload for a has chargeable request
+ *
  * @generated from message api.v1.PaymentServiceHasChargeableResourcesResponse
  */
 export declare class PaymentServiceHasChargeableResourcesResponse extends Message<PaymentServiceHasChargeableResourcesResponse> {
     /**
+     * HasResources indicates if the customer has actually chargable resources
+     *
      * @generated from field: bool has_resources = 1;
      */
     hasResources: boolean;

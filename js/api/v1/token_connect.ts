@@ -7,12 +7,16 @@ import { TokenServiceCreateRequest, TokenServiceCreateResponse, TokenServiceList
 import { MethodKind } from "@bufbuild/protobuf";
 
 /**
+ * TokenService serves token related functions
+ *
  * @generated from service api.v1.TokenService
  */
 export const TokenService = {
   typeName: "api.v1.TokenService",
   methods: {
     /**
+     * Create a token to authenticate against the platform, the secret will be only visible in the response
+     *
      * @generated from rpc api.v1.TokenService.Create
      */
     create: {
@@ -22,6 +26,8 @@ export const TokenService = {
       kind: MethodKind.Unary,
     },
     /**
+     * List all your tokens
+     *
      * @generated from rpc api.v1.TokenService.List
      */
     list: {
@@ -31,6 +37,8 @@ export const TokenService = {
       kind: MethodKind.Unary,
     },
     /**
+     * Revoke a token, no further usage is possible afterwards
+     *
      * @generated from rpc api.v1.TokenService.Revoke
      */
     revoke: {

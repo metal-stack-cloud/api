@@ -8,12 +8,16 @@ exports.StorageService = void 0;
 const storage_pb_js_1 = require("./storage_pb.js");
 const protobuf_1 = require("@bufbuild/protobuf");
 /**
+ * StorageService serves storage related functions
+ *
  * @generated from service admin.v1.StorageService
  */
 exports.StorageService = {
     typeName: "admin.v1.StorageService",
     methods: {
         /**
+         * ClusterInfo returns overall statistics of the storage system
+         *
          * @generated from rpc admin.v1.StorageService.ClusterInfo
          */
         clusterInfo: {
@@ -23,6 +27,8 @@ exports.StorageService = {
             kind: protobuf_1.MethodKind.Unary,
         },
         /**
+         * ListVolumes list all volumes
+         *
          * @generated from rpc admin.v1.StorageService.ListVolumes
          */
         listVolumes: {
@@ -32,6 +38,8 @@ exports.StorageService = {
             kind: protobuf_1.MethodKind.Unary,
         },
         /**
+         * ListSnapshots list all snapshots
+         *
          * @generated from rpc admin.v1.StorageService.ListSnapshots
          */
         listSnapshots: {

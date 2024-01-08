@@ -55,9 +55,13 @@ var (
 
 // ClusterServiceClient is a client for the admin.v1.ClusterService service.
 type ClusterServiceClient interface {
+	// Get a cluster
 	Get(context.Context, *connect.Request[v1.ClusterServiceGetRequest]) (*connect.Response[v1.ClusterServiceGetResponse], error)
+	// List clusters
 	List(context.Context, *connect.Request[v1.ClusterServiceListRequest]) (*connect.Response[v1.ClusterServiceListResponse], error)
+	// Credentials of a cluster
 	Credentials(context.Context, *connect.Request[v1.ClusterServiceCredentialsRequest]) (*connect.Response[v1.ClusterServiceCredentialsResponse], error)
+	// Operate on a cluster
 	Operate(context.Context, *connect.Request[v1.ClusterServiceOperateRequest]) (*connect.Response[v1.ClusterServiceOperateResponse], error)
 }
 
@@ -128,9 +132,13 @@ func (c *clusterServiceClient) Operate(ctx context.Context, req *connect.Request
 
 // ClusterServiceHandler is an implementation of the admin.v1.ClusterService service.
 type ClusterServiceHandler interface {
+	// Get a cluster
 	Get(context.Context, *connect.Request[v1.ClusterServiceGetRequest]) (*connect.Response[v1.ClusterServiceGetResponse], error)
+	// List clusters
 	List(context.Context, *connect.Request[v1.ClusterServiceListRequest]) (*connect.Response[v1.ClusterServiceListResponse], error)
+	// Credentials of a cluster
 	Credentials(context.Context, *connect.Request[v1.ClusterServiceCredentialsRequest]) (*connect.Response[v1.ClusterServiceCredentialsResponse], error)
+	// Operate on a cluster
 	Operate(context.Context, *connect.Request[v1.ClusterServiceOperateRequest]) (*connect.Response[v1.ClusterServiceOperateResponse], error)
 }
 

@@ -45,6 +45,7 @@ var (
 
 // AssetServiceClient is a client for the api.v1.AssetService service.
 type AssetServiceClient interface {
+	// List available assets
 	List(context.Context, *connect.Request[v1.AssetServiceListRequest]) (*connect.Response[v1.AssetServiceListResponse], error)
 }
 
@@ -79,6 +80,7 @@ func (c *assetServiceClient) List(ctx context.Context, req *connect.Request[v1.A
 
 // AssetServiceHandler is an implementation of the api.v1.AssetService service.
 type AssetServiceHandler interface {
+	// List available assets
 	List(context.Context, *connect.Request[v1.AssetServiceListRequest]) (*connect.Response[v1.AssetServiceListResponse], error)
 }
 

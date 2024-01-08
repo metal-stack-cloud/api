@@ -7,12 +7,16 @@ import { ClusterServiceCredentialsRequest, ClusterServiceCredentialsResponse, Cl
 import { MethodKind } from "@bufbuild/protobuf";
 
 /**
+ * ClusterService serves cluster related functions
+ *
  * @generated from service admin.v1.ClusterService
  */
 export const ClusterService = {
   typeName: "admin.v1.ClusterService",
   methods: {
     /**
+     * Get a cluster
+     *
      * @generated from rpc admin.v1.ClusterService.Get
      */
     get: {
@@ -22,6 +26,8 @@ export const ClusterService = {
       kind: MethodKind.Unary,
     },
     /**
+     * List clusters
+     *
      * @generated from rpc admin.v1.ClusterService.List
      */
     list: {
@@ -31,6 +37,8 @@ export const ClusterService = {
       kind: MethodKind.Unary,
     },
     /**
+     * Credentials of a cluster
+     *
      * @generated from rpc admin.v1.ClusterService.Credentials
      */
     credentials: {
@@ -40,6 +48,8 @@ export const ClusterService = {
       kind: MethodKind.Unary,
     },
     /**
+     * Operate on a cluster
+     *
      * @generated from rpc admin.v1.ClusterService.Operate
      */
     operate: {

@@ -1,12 +1,16 @@
 import { ClusterServiceCreateRequest, ClusterServiceCreateResponse, ClusterServiceDeleteRequest, ClusterServiceDeleteResponse, ClusterServiceGetCredentialsRequest, ClusterServiceGetCredentialsResponse, ClusterServiceGetRequest, ClusterServiceGetResponse, ClusterServiceListRequest, ClusterServiceListResponse, ClusterServiceUpdateRequest, ClusterServiceUpdateResponse, ClusterServiceWatchStatusRequest, ClusterServiceWatchStatusResponse } from "./cluster_pb.js";
 import { MethodKind } from "@bufbuild/protobuf";
 /**
+ * ClusterService serves kubernetes cluster related functions
+ *
  * @generated from service api.v1.ClusterService
  */
 export declare const ClusterService: {
     readonly typeName: "api.v1.ClusterService";
     readonly methods: {
         /**
+         * Create a cluster
+         *
          * @generated from rpc api.v1.ClusterService.Create
          */
         readonly create: {
@@ -16,6 +20,8 @@ export declare const ClusterService: {
             readonly kind: MethodKind.Unary;
         };
         /**
+         * Get a cluster
+         *
          * @generated from rpc api.v1.ClusterService.Get
          */
         readonly get: {
@@ -25,6 +31,8 @@ export declare const ClusterService: {
             readonly kind: MethodKind.Unary;
         };
         /**
+         * List clusters
+         *
          * @generated from rpc api.v1.ClusterService.List
          */
         readonly list: {
@@ -34,6 +42,8 @@ export declare const ClusterService: {
             readonly kind: MethodKind.Unary;
         };
         /**
+         * WatchStatus of a cluster
+         *
          * @generated from rpc api.v1.ClusterService.WatchStatus
          */
         readonly watchStatus: {
@@ -43,6 +53,8 @@ export declare const ClusterService: {
             readonly kind: MethodKind.ServerStreaming;
         };
         /**
+         * Delete a cluster
+         *
          * @generated from rpc api.v1.ClusterService.Delete
          */
         readonly delete: {
@@ -52,6 +64,8 @@ export declare const ClusterService: {
             readonly kind: MethodKind.Unary;
         };
         /**
+         * Update a cluster
+         *
          * @generated from rpc api.v1.ClusterService.Update
          */
         readonly update: {
@@ -61,6 +75,8 @@ export declare const ClusterService: {
             readonly kind: MethodKind.Unary;
         };
         /**
+         * GetCredentials of a cluster
+         *
          * @generated from rpc api.v1.ClusterService.GetCredentials
          */
         readonly getCredentials: {

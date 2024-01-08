@@ -8,12 +8,16 @@ exports.AssetService = void 0;
 const assets_pb_js_1 = require("./assets_pb.js");
 const protobuf_1 = require("@bufbuild/protobuf");
 /**
+ * AssetService serves asset related functions
+ *
  * @generated from service api.v1.AssetService
  */
 exports.AssetService = {
     typeName: "api.v1.AssetService",
     methods: {
         /**
+         * List available assets
+         *
          * @generated from rpc api.v1.AssetService.List
          */
         list: {

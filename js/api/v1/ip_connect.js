@@ -8,12 +8,16 @@ exports.IPService = void 0;
 const ip_pb_js_1 = require("./ip_pb.js");
 const protobuf_1 = require("@bufbuild/protobuf");
 /**
+ * IPService serves ip address related functions
+ *
  * @generated from service api.v1.IPService
  */
 exports.IPService = {
     typeName: "api.v1.IPService",
     methods: {
         /**
+         * Get a ip
+         *
          * @generated from rpc api.v1.IPService.Get
          */
         get: {
@@ -23,6 +27,8 @@ exports.IPService = {
             kind: protobuf_1.MethodKind.Unary,
         },
         /**
+         * Allocate a ip
+         *
          * @generated from rpc api.v1.IPService.Allocate
          */
         allocate: {
@@ -32,6 +38,8 @@ exports.IPService = {
             kind: protobuf_1.MethodKind.Unary,
         },
         /**
+         * Update a ip
+         *
          * @generated from rpc api.v1.IPService.Update
          */
         update: {
@@ -41,6 +49,8 @@ exports.IPService = {
             kind: protobuf_1.MethodKind.Unary,
         },
         /**
+         * List all ips
+         *
          * @generated from rpc api.v1.IPService.List
          */
         list: {
@@ -50,6 +60,8 @@ exports.IPService = {
             kind: protobuf_1.MethodKind.Unary,
         },
         /**
+         * Delete a ip
+         *
          * @generated from rpc api.v1.IPService.Delete
          */
         delete: {

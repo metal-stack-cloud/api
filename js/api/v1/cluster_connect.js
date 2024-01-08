@@ -8,12 +8,16 @@ exports.ClusterService = void 0;
 const cluster_pb_js_1 = require("./cluster_pb.js");
 const protobuf_1 = require("@bufbuild/protobuf");
 /**
+ * ClusterService serves kubernetes cluster related functions
+ *
  * @generated from service api.v1.ClusterService
  */
 exports.ClusterService = {
     typeName: "api.v1.ClusterService",
     methods: {
         /**
+         * Create a cluster
+         *
          * @generated from rpc api.v1.ClusterService.Create
          */
         create: {
@@ -23,6 +27,8 @@ exports.ClusterService = {
             kind: protobuf_1.MethodKind.Unary,
         },
         /**
+         * Get a cluster
+         *
          * @generated from rpc api.v1.ClusterService.Get
          */
         get: {
@@ -32,6 +38,8 @@ exports.ClusterService = {
             kind: protobuf_1.MethodKind.Unary,
         },
         /**
+         * List clusters
+         *
          * @generated from rpc api.v1.ClusterService.List
          */
         list: {
@@ -41,6 +49,8 @@ exports.ClusterService = {
             kind: protobuf_1.MethodKind.Unary,
         },
         /**
+         * WatchStatus of a cluster
+         *
          * @generated from rpc api.v1.ClusterService.WatchStatus
          */
         watchStatus: {
@@ -50,6 +60,8 @@ exports.ClusterService = {
             kind: protobuf_1.MethodKind.ServerStreaming,
         },
         /**
+         * Delete a cluster
+         *
          * @generated from rpc api.v1.ClusterService.Delete
          */
         delete: {
@@ -59,6 +71,8 @@ exports.ClusterService = {
             kind: protobuf_1.MethodKind.Unary,
         },
         /**
+         * Update a cluster
+         *
          * @generated from rpc api.v1.ClusterService.Update
          */
         update: {
@@ -68,6 +82,8 @@ exports.ClusterService = {
             kind: protobuf_1.MethodKind.Unary,
         },
         /**
+         * GetCredentials of a cluster
+         *
          * @generated from rpc api.v1.ClusterService.GetCredentials
          */
         getCredentials: {

@@ -7,7 +7,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.ClusterServiceWatchStatusResponse = exports.ClusterServiceListResponse = exports.ClusterServiceUpdateResponse = exports.ClusterServiceDeleteResponse = exports.ClusterServiceGetCredentialsResponse = exports.ClusterServiceGetResponse = exports.ClusterServiceCreateResponse = exports.ClusterMonitoring = exports.ClusterStatusLastError = exports.ClusterStatus = exports.ClusterServiceWatchStatusRequest = exports.ClusterServiceDeleteRequest = exports.ClusterServiceUpdateRequest = exports.ClusterServiceCreateRequest = exports.ClusterServiceListRequest = exports.ClusterServiceGetCredentialsRequest = exports.ClusterServiceGetRequest = exports.WorkerUpdate = exports.Worker = exports.MaintenanceTimeWindow = exports.Maintenance = exports.KubernetesSpec = exports.Cluster = void 0;
 const protobuf_1 = require("@bufbuild/protobuf");
 /**
- * Types
+ * Cluster describes a kubernetes cluster
  *
  * @generated from message api.v1.Cluster
  */
@@ -15,28 +15,38 @@ class Cluster extends protobuf_1.Message {
     constructor(data) {
         super();
         /**
+         * Uuid of the cluster
+         *
          * @generated from field: string uuid = 1;
          */
         this.uuid = "";
         /**
+         * Name of the cluster
+         *
          * @generated from field: string name = 2;
          */
         this.name = "";
         /**
+         * Project where this cluster belongs to
+         *
          * @generated from field: string project = 3;
          */
         this.project = "";
         /**
-         * partition is part of a region
+         * Partition where this cluster was created
          *
          * @generated from field: string partition = 4;
          */
         this.partition = "";
         /**
+         * Workers defines the list of worker groups with their specification
+         *
          * @generated from field: repeated api.v1.Worker workers = 6;
          */
         this.workers = [];
         /**
+         * Tenant where this cluster belongs to
+         *
          * @generated from field: string tenant = 8;
          */
         this.tenant = "";
@@ -75,12 +85,16 @@ Cluster.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 22, name: "monitoring", kind: "message", T: ClusterMonitoring },
 ]);
 /**
+ * KubernetesSpec details of kubernetes this cluster
+ *
  * @generated from message api.v1.KubernetesSpec
  */
 class KubernetesSpec extends protobuf_1.Message {
     constructor(data) {
         super();
         /**
+         * Version of kubernetes
+         *
          * @generated from field: string version = 1;
          */
         this.version = "";
@@ -106,6 +120,8 @@ KubernetesSpec.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 1, name: "version", kind: "scalar", T: 9 /* ScalarType.STRING */ },
 ]);
 /**
+ * Maintenance defines when automatic actions should be scheduled on this cluster
+ *
  * @generated from message api.v1.Maintenance
  */
 class Maintenance extends protobuf_1.Message {
@@ -135,6 +151,8 @@ Maintenance.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 3, name: "time_window", kind: "message", T: MaintenanceTimeWindow },
 ]);
 /**
+ * MaintenanceTimeWindow defines the start time and duration during which automatic actions will be performed
+ *
  * @generated from message api.v1.MaintenanceTimeWindow
  */
 class MaintenanceTimeWindow extends protobuf_1.Message {
@@ -163,32 +181,46 @@ MaintenanceTimeWindow.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 2, name: "duration", kind: "message", T: protobuf_1.Duration },
 ]);
 /**
+ * Worker defines a set of worker nodes with identical properties
+ *
  * @generated from message api.v1.Worker
  */
 class Worker extends protobuf_1.Message {
     constructor(data) {
         super();
         /**
+         * Name of this worker group
+         *
          * @generated from field: string name = 1;
          */
         this.name = "";
         /**
+         * MachineType of machines which should be used for the worker nodes in this group
+         *
          * @generated from field: string machine_type = 2;
          */
         this.machineType = "";
         /**
+         * Minsize defines the minimum amount of machines present in this worker group
+         *
          * @generated from field: uint32 minsize = 3;
          */
         this.minsize = 0;
         /**
+         * Maxsize defines the maximum amount of machines present in this worker group
+         *
          * @generated from field: uint32 maxsize = 4;
          */
         this.maxsize = 0;
         /**
+         * Maxsurge defines the maximum amount of machines which are spun up in this worker group during a rolling upgrade
+         *
          * @generated from field: uint32 maxsurge = 5;
          */
         this.maxsurge = 0;
         /**
+         * Maxunavailable defines the maximum amount of not available machines in this worker group during a rolling upgrade
+         *
          * @generated from field: uint32 maxunavailable = 6;
          */
         this.maxunavailable = 0;
@@ -219,12 +251,16 @@ Worker.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 6, name: "maxunavailable", kind: "scalar", T: 13 /* ScalarType.UINT32 */ },
 ]);
 /**
+ * WorkerUpdate is used to update a Worker group
+ *
  * @generated from message api.v1.WorkerUpdate
  */
 class WorkerUpdate extends protobuf_1.Message {
     constructor(data) {
         super();
         /**
+         * Name of the worker group to update
+         *
          * @generated from field: string name = 1;
          */
         this.name = "";
@@ -255,7 +291,7 @@ WorkerUpdate.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 6, name: "maxunavailable", kind: "scalar", T: 13 /* ScalarType.UINT32 */, opt: true },
 ]);
 /**
- * Requests
+ * ClusterServiceGetRequest is the request payload for a cluster get request
  *
  * @generated from message api.v1.ClusterServiceGetRequest
  */
@@ -263,10 +299,14 @@ class ClusterServiceGetRequest extends protobuf_1.Message {
     constructor(data) {
         super();
         /**
+         * Uuid of the cluster
+         *
          * @generated from field: string uuid = 1;
          */
         this.uuid = "";
         /**
+         * Project of the cluster
+         *
          * @generated from field: string project = 2;
          */
         this.project = "";
@@ -293,16 +333,22 @@ ClusterServiceGetRequest.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 2, name: "project", kind: "scalar", T: 9 /* ScalarType.STRING */ },
 ]);
 /**
+ * ClusterServiceGetRequest is the request payload for a cluster get request
+ *
  * @generated from message api.v1.ClusterServiceGetCredentialsRequest
  */
 class ClusterServiceGetCredentialsRequest extends protobuf_1.Message {
     constructor(data) {
         super();
         /**
+         * Uuid of the cluster
+         *
          * @generated from field: string uuid = 1;
          */
         this.uuid = "";
         /**
+         * Project of the cluster
+         *
          * @generated from field: string project = 2;
          */
         this.project = "";
@@ -330,12 +376,16 @@ ClusterServiceGetCredentialsRequest.fields = protobuf_1.proto3.util.newFieldList
     { no: 4, name: "expiration", kind: "message", T: protobuf_1.Duration, opt: true },
 ]);
 /**
+ * ClusterServiceListRequest is the request payload for a cluster list request
+ *
  * @generated from message api.v1.ClusterServiceListRequest
  */
 class ClusterServiceListRequest extends protobuf_1.Message {
     constructor(data) {
         super();
         /**
+         * Project of the cluster
+         *
          * @generated from field: string project = 2;
          */
         this.project = "";
@@ -361,26 +411,34 @@ ClusterServiceListRequest.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 2, name: "project", kind: "scalar", T: 9 /* ScalarType.STRING */ },
 ]);
 /**
+ * ClusterServiceCreateRequest is the request payload for a cluster create request
+ *
  * @generated from message api.v1.ClusterServiceCreateRequest
  */
 class ClusterServiceCreateRequest extends protobuf_1.Message {
     constructor(data) {
         super();
         /**
+         * Name of the cluster to create
+         *
          * @generated from field: string name = 2;
          */
         this.name = "";
         /**
+         * Project of the cluster
+         *
          * @generated from field: string project = 3;
          */
         this.project = "";
         /**
-         * partition is part of a region
+         * Partition of the cluster
          *
          * @generated from field: string partition = 4;
          */
         this.partition = "";
         /**
+         * Worker specification of the cluster
+         *
          * @generated from field: repeated api.v1.Worker workers = 7;
          */
         this.workers = [];
@@ -411,20 +469,28 @@ ClusterServiceCreateRequest.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 8, name: "maintenance", kind: "message", T: Maintenance },
 ]);
 /**
+ * ClusterServiceUpdateRequest is the request payload for a cluster update request
+ *
  * @generated from message api.v1.ClusterServiceUpdateRequest
  */
 class ClusterServiceUpdateRequest extends protobuf_1.Message {
     constructor(data) {
         super();
         /**
+         * Uuid of the cluster
+         *
          * @generated from field: string uuid = 1;
          */
         this.uuid = "";
         /**
+         * Project of the cluster
+         *
          * @generated from field: string project = 2;
          */
         this.project = "";
         /**
+         * Worker specification of the cluster
+         *
          * @generated from field: repeated api.v1.WorkerUpdate workers = 4;
          */
         this.workers = [];
@@ -454,16 +520,22 @@ ClusterServiceUpdateRequest.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 5, name: "maintenance", kind: "message", T: Maintenance, opt: true },
 ]);
 /**
+ * ClusterServiceDeleteRequest is the request payload for a cluster delete request
+ *
  * @generated from message api.v1.ClusterServiceDeleteRequest
  */
 class ClusterServiceDeleteRequest extends protobuf_1.Message {
     constructor(data) {
         super();
         /**
+         * Uuid of the cluster
+         *
          * @generated from field: string uuid = 1;
          */
         this.uuid = "";
         /**
+         * Project of the cluster
+         *
          * @generated from field: string project = 2;
          */
         this.project = "";
@@ -490,12 +562,16 @@ ClusterServiceDeleteRequest.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 2, name: "project", kind: "scalar", T: 9 /* ScalarType.STRING */ },
 ]);
 /**
+ * ClusterServiceWatchStatusRequest is the request payload for a cluster watch status request
+ *
  * @generated from message api.v1.ClusterServiceWatchStatusRequest
  */
 class ClusterServiceWatchStatusRequest extends protobuf_1.Message {
     constructor(data) {
         super();
         /**
+         * Project of the cluster
+         *
          * @generated from field: string project = 2;
          */
         this.project = "";
@@ -522,44 +598,64 @@ ClusterServiceWatchStatusRequest.fields = protobuf_1.proto3.util.newFieldList(()
     { no: 2, name: "project", kind: "scalar", T: 9 /* ScalarType.STRING */ },
 ]);
 /**
+ * ClusterStatus
+ *
  * @generated from message api.v1.ClusterStatus
  */
 class ClusterStatus extends protobuf_1.Message {
     constructor(data) {
         super();
         /**
+         * Uuid of the cluster
+         *
          * @generated from field: string uuid = 1;
          */
         this.uuid = "";
         /**
+         * Progress of the cluster reconcilation
+         *
          * @generated from field: uint32 progress = 2;
          */
         this.progress = 0;
         /**
+         * State of the cluster
+         *
          * @generated from field: string state = 3;
          */
         this.state = "";
         /**
+         * Type of the cluster status
+         *
          * @generated from field: string type = 4;
          */
         this.type = "";
         /**
+         * ApiServerReady represents the ready state of the kubernetes api server
+         *
          * @generated from field: string api_server_ready = 10;
          */
         this.apiServerReady = "";
         /**
+         * ControlPlaneReady represents the ready state of the control plane components
+         *
          * @generated from field: string control_plane_ready = 11;
          */
         this.controlPlaneReady = "";
         /**
+         * NodesReady represents the ready state of the worker nodes
+         *
          * @generated from field: string nodes_ready = 12;
          */
         this.nodesReady = "";
         /**
+         * SystemComponentsReady represents the ready state of the system components
+         *
          * @generated from field: string system_components_ready = 13;
          */
         this.systemComponentsReady = "";
         /**
+         * LastErrors is a list of the last known errors occured during the cluster reconcilation
+         *
          * @generated from field: repeated api.v1.ClusterStatusLastError last_errors = 14;
          */
         this.lastErrors = [];
@@ -593,19 +689,21 @@ ClusterStatus.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 14, name: "last_errors", kind: "message", T: ClusterStatusLastError, repeated: true },
 ]);
 /**
+ * ClusterStatusLastError is the last known cluster status error
+ *
  * @generated from message api.v1.ClusterStatusLastError
  */
 class ClusterStatusLastError extends protobuf_1.Message {
     constructor(data) {
         super();
         /**
-         * A human readable message indicating details about the last error.
+         * Description a human readable message indicating details about the last error.
          *
          * @generated from field: string description = 1;
          */
         this.description = "";
         /**
-         * Well-defined error codes of the last error(s).
+         * Codes well-defined error codes of the last error(s).
          * +optional
          *
          * @generated from field: repeated string codes = 3;
@@ -636,20 +734,28 @@ ClusterStatusLastError.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 4, name: "last_update_time", kind: "message", T: protobuf_1.Timestamp },
 ]);
 /**
+ * ClusterMonitoring contains details howto access the cluster monitoring
+ *
  * @generated from message api.v1.ClusterMonitoring
  */
 class ClusterMonitoring extends protobuf_1.Message {
     constructor(data) {
         super();
         /**
+         * Username to access the monitoring
+         *
          * @generated from field: string username = 1;
          */
         this.username = "";
         /**
+         * Password to access the monitoring
+         *
          * @generated from field: string password = 2;
          */
         this.password = "";
         /**
+         * Endpoint is the url to access the monitoring
+         *
          * @generated from field: string endpoint = 3;
          */
         this.endpoint = "";
@@ -677,7 +783,7 @@ ClusterMonitoring.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 3, name: "endpoint", kind: "scalar", T: 9 /* ScalarType.STRING */ },
 ]);
 /**
- * Responses
+ * ClusterServiceCreateResponse is the response payload of a cluster create request
  *
  * @generated from message api.v1.ClusterServiceCreateResponse
  */
@@ -706,6 +812,8 @@ ClusterServiceCreateResponse.fields = protobuf_1.proto3.util.newFieldList(() => 
     { no: 1, name: "cluster", kind: "message", T: Cluster },
 ]);
 /**
+ * ClusterServiceGetResponse is the response payload of a cluster get request
+ *
  * @generated from message api.v1.ClusterServiceGetResponse
  */
 class ClusterServiceGetResponse extends protobuf_1.Message {
@@ -733,12 +841,16 @@ ClusterServiceGetResponse.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 1, name: "cluster", kind: "message", T: Cluster },
 ]);
 /**
+ * ClusterServiceGetCredentialsResponse is the response payload of a cluster get credentials request
+ *
  * @generated from message api.v1.ClusterServiceGetCredentialsResponse
  */
 class ClusterServiceGetCredentialsResponse extends protobuf_1.Message {
     constructor(data) {
         super();
         /**
+         * Cluster is the cluster
+         *
          * @generated from field: string kubeconfig = 1;
          */
         this.kubeconfig = "";
@@ -764,6 +876,8 @@ ClusterServiceGetCredentialsResponse.fields = protobuf_1.proto3.util.newFieldLis
     { no: 1, name: "kubeconfig", kind: "scalar", T: 9 /* ScalarType.STRING */ },
 ]);
 /**
+ * ClusterServiceDeleteResponse is the response payload of a cluster delete request
+ *
  * @generated from message api.v1.ClusterServiceDeleteResponse
  */
 class ClusterServiceDeleteResponse extends protobuf_1.Message {
@@ -791,6 +905,8 @@ ClusterServiceDeleteResponse.fields = protobuf_1.proto3.util.newFieldList(() => 
     { no: 1, name: "cluster", kind: "message", T: Cluster },
 ]);
 /**
+ * ClusterServiceUpdateResponse is the response payload of a cluster update request
+ *
  * @generated from message api.v1.ClusterServiceUpdateResponse
  */
 class ClusterServiceUpdateResponse extends protobuf_1.Message {
@@ -818,12 +934,16 @@ ClusterServiceUpdateResponse.fields = protobuf_1.proto3.util.newFieldList(() => 
     { no: 1, name: "cluster", kind: "message", T: Cluster },
 ]);
 /**
+ * ClusterServiceListResponse is the response payload of a cluster list request
+ *
  * @generated from message api.v1.ClusterServiceListResponse
  */
 class ClusterServiceListResponse extends protobuf_1.Message {
     constructor(data) {
         super();
         /**
+         * Clusters a list of clusters
+         *
          * @generated from field: repeated api.v1.Cluster clusters = 1;
          */
         this.clusters = [];
@@ -849,6 +969,8 @@ ClusterServiceListResponse.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 1, name: "clusters", kind: "message", T: Cluster, repeated: true },
 ]);
 /**
+ * ClusterServiceWatchStatusResponse is the response payload of a cluster watch status request
+ *
  * @generated from message api.v1.ClusterServiceWatchStatusResponse
  */
 class ClusterServiceWatchStatusResponse extends protobuf_1.Message {

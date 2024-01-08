@@ -8,12 +8,16 @@ exports.SnapshotService = exports.VolumeService = void 0;
 const volume_pb_js_1 = require("./volume_pb.js");
 const protobuf_1 = require("@bufbuild/protobuf");
 /**
+ * VolumeService serves volume related functions
+ *
  * @generated from service api.v1.VolumeService
  */
 exports.VolumeService = {
     typeName: "api.v1.VolumeService",
     methods: {
         /**
+         * Get a volume
+         *
          * @generated from rpc api.v1.VolumeService.Get
          */
         get: {
@@ -23,6 +27,8 @@ exports.VolumeService = {
             kind: protobuf_1.MethodKind.Unary,
         },
         /**
+         * List the volumes
+         *
          * @generated from rpc api.v1.VolumeService.List
          */
         list: {
@@ -32,6 +38,8 @@ exports.VolumeService = {
             kind: protobuf_1.MethodKind.Unary,
         },
         /**
+         * Delete a volume
+         *
          * @generated from rpc api.v1.VolumeService.Delete
          */
         delete: {
@@ -43,12 +51,16 @@ exports.VolumeService = {
     }
 };
 /**
+ * SnapshotService serves snapshot related functions
+ *
  * @generated from service api.v1.SnapshotService
  */
 exports.SnapshotService = {
     typeName: "api.v1.SnapshotService",
     methods: {
         /**
+         * Get a snapshot
+         *
          * @generated from rpc api.v1.SnapshotService.Get
          */
         get: {
@@ -58,6 +70,8 @@ exports.SnapshotService = {
             kind: protobuf_1.MethodKind.Unary,
         },
         /**
+         * List snapshots
+         *
          * @generated from rpc api.v1.SnapshotService.List
          */
         list: {
@@ -67,6 +81,8 @@ exports.SnapshotService = {
             kind: protobuf_1.MethodKind.Unary,
         },
         /**
+         * Delete a snapshot
+         *
          * @generated from rpc api.v1.SnapshotService.Delete
          */
         delete: {

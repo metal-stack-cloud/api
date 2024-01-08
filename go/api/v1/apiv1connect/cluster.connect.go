@@ -65,12 +65,19 @@ var (
 
 // ClusterServiceClient is a client for the api.v1.ClusterService service.
 type ClusterServiceClient interface {
+	// Create a cluster
 	Create(context.Context, *connect.Request[v1.ClusterServiceCreateRequest]) (*connect.Response[v1.ClusterServiceCreateResponse], error)
+	// Get a cluster
 	Get(context.Context, *connect.Request[v1.ClusterServiceGetRequest]) (*connect.Response[v1.ClusterServiceGetResponse], error)
+	// List clusters
 	List(context.Context, *connect.Request[v1.ClusterServiceListRequest]) (*connect.Response[v1.ClusterServiceListResponse], error)
+	// WatchStatus of a cluster
 	WatchStatus(context.Context, *connect.Request[v1.ClusterServiceWatchStatusRequest]) (*connect.ServerStreamForClient[v1.ClusterServiceWatchStatusResponse], error)
+	// Delete a cluster
 	Delete(context.Context, *connect.Request[v1.ClusterServiceDeleteRequest]) (*connect.Response[v1.ClusterServiceDeleteResponse], error)
+	// Update a cluster
 	Update(context.Context, *connect.Request[v1.ClusterServiceUpdateRequest]) (*connect.Response[v1.ClusterServiceUpdateResponse], error)
+	// GetCredentials of a cluster
 	GetCredentials(context.Context, *connect.Request[v1.ClusterServiceGetCredentialsRequest]) (*connect.Response[v1.ClusterServiceGetCredentialsResponse], error)
 }
 
@@ -177,12 +184,19 @@ func (c *clusterServiceClient) GetCredentials(ctx context.Context, req *connect.
 
 // ClusterServiceHandler is an implementation of the api.v1.ClusterService service.
 type ClusterServiceHandler interface {
+	// Create a cluster
 	Create(context.Context, *connect.Request[v1.ClusterServiceCreateRequest]) (*connect.Response[v1.ClusterServiceCreateResponse], error)
+	// Get a cluster
 	Get(context.Context, *connect.Request[v1.ClusterServiceGetRequest]) (*connect.Response[v1.ClusterServiceGetResponse], error)
+	// List clusters
 	List(context.Context, *connect.Request[v1.ClusterServiceListRequest]) (*connect.Response[v1.ClusterServiceListResponse], error)
+	// WatchStatus of a cluster
 	WatchStatus(context.Context, *connect.Request[v1.ClusterServiceWatchStatusRequest], *connect.ServerStream[v1.ClusterServiceWatchStatusResponse]) error
+	// Delete a cluster
 	Delete(context.Context, *connect.Request[v1.ClusterServiceDeleteRequest]) (*connect.Response[v1.ClusterServiceDeleteResponse], error)
+	// Update a cluster
 	Update(context.Context, *connect.Request[v1.ClusterServiceUpdateRequest]) (*connect.Response[v1.ClusterServiceUpdateResponse], error)
+	// GetCredentials of a cluster
 	GetCredentials(context.Context, *connect.Request[v1.ClusterServiceGetCredentialsRequest]) (*connect.Response[v1.ClusterServiceGetCredentialsResponse], error)
 }
 
