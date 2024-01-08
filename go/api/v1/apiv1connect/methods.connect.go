@@ -18,7 +18,7 @@ import (
 // generated with a version of connect newer than the one compiled into your binary. You can fix the
 // problem by either regenerating this code with an older version of connect or updating the connect
 // version compiled into your binary.
-const _ = connect.IsAtLeastVersion0_1_0
+const _ = connect.IsAtLeastVersion1_13_0
 
 const (
 	// MethodServiceName is the fully-qualified name of the MethodService service.
@@ -40,9 +40,18 @@ const (
 	MethodServiceTokenScopedListProcedure = "/api.v1.MethodService/TokenScopedList"
 )
 
+// These variables are the protoreflect.Descriptor objects for the RPCs defined in this package.
+var (
+	methodServiceServiceDescriptor               = v1.File_api_v1_methods_proto.Services().ByName("MethodService")
+	methodServiceListMethodDescriptor            = methodServiceServiceDescriptor.Methods().ByName("List")
+	methodServiceTokenScopedListMethodDescriptor = methodServiceServiceDescriptor.Methods().ByName("TokenScopedList")
+)
+
 // MethodServiceClient is a client for the api.v1.MethodService service.
 type MethodServiceClient interface {
+	// List all public visible methods
 	List(context.Context, *connect.Request[v1.MethodServiceListRequest]) (*connect.Response[v1.MethodServiceListResponse], error)
+	// TokenScopedList all methods callable with the token present in the request
 	TokenScopedList(context.Context, *connect.Request[v1.MethodServiceTokenScopedListRequest]) (*connect.Response[v1.MethodServiceTokenScopedListResponse], error)
 }
 
@@ -59,12 +68,14 @@ func NewMethodServiceClient(httpClient connect.HTTPClient, baseURL string, opts 
 		list: connect.NewClient[v1.MethodServiceListRequest, v1.MethodServiceListResponse](
 			httpClient,
 			baseURL+MethodServiceListProcedure,
-			opts...,
+			connect.WithSchema(methodServiceListMethodDescriptor),
+			connect.WithClientOptions(opts...),
 		),
 		tokenScopedList: connect.NewClient[v1.MethodServiceTokenScopedListRequest, v1.MethodServiceTokenScopedListResponse](
 			httpClient,
 			baseURL+MethodServiceTokenScopedListProcedure,
-			opts...,
+			connect.WithSchema(methodServiceTokenScopedListMethodDescriptor),
+			connect.WithClientOptions(opts...),
 		),
 	}
 }
@@ -87,7 +98,9 @@ func (c *methodServiceClient) TokenScopedList(ctx context.Context, req *connect.
 
 // MethodServiceHandler is an implementation of the api.v1.MethodService service.
 type MethodServiceHandler interface {
+	// List all public visible methods
 	List(context.Context, *connect.Request[v1.MethodServiceListRequest]) (*connect.Response[v1.MethodServiceListResponse], error)
+	// TokenScopedList all methods callable with the token present in the request
 	TokenScopedList(context.Context, *connect.Request[v1.MethodServiceTokenScopedListRequest]) (*connect.Response[v1.MethodServiceTokenScopedListResponse], error)
 }
 
@@ -100,12 +113,14 @@ func NewMethodServiceHandler(svc MethodServiceHandler, opts ...connect.HandlerOp
 	methodServiceListHandler := connect.NewUnaryHandler(
 		MethodServiceListProcedure,
 		svc.List,
-		opts...,
+		connect.WithSchema(methodServiceListMethodDescriptor),
+		connect.WithHandlerOptions(opts...),
 	)
 	methodServiceTokenScopedListHandler := connect.NewUnaryHandler(
 		MethodServiceTokenScopedListProcedure,
 		svc.TokenScopedList,
-		opts...,
+		connect.WithSchema(methodServiceTokenScopedListMethodDescriptor),
+		connect.WithHandlerOptions(opts...),
 	)
 	return "/api.v1.MethodService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {

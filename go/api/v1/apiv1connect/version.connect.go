@@ -18,7 +18,7 @@ import (
 // generated with a version of connect newer than the one compiled into your binary. You can fix the
 // problem by either regenerating this code with an older version of connect or updating the connect
 // version compiled into your binary.
-const _ = connect.IsAtLeastVersion0_1_0
+const _ = connect.IsAtLeastVersion1_13_0
 
 const (
 	// VersionServiceName is the fully-qualified name of the VersionService service.
@@ -37,8 +37,15 @@ const (
 	VersionServiceGetProcedure = "/api.v1.VersionService/Get"
 )
 
+// These variables are the protoreflect.Descriptor objects for the RPCs defined in this package.
+var (
+	versionServiceServiceDescriptor   = v1.File_api_v1_version_proto.Services().ByName("VersionService")
+	versionServiceGetMethodDescriptor = versionServiceServiceDescriptor.Methods().ByName("Get")
+)
+
 // VersionServiceClient is a client for the api.v1.VersionService service.
 type VersionServiceClient interface {
+	// Get the version
 	Get(context.Context, *connect.Request[v1.VersionServiceGetRequest]) (*connect.Response[v1.VersionServiceGetResponse], error)
 }
 
@@ -55,7 +62,8 @@ func NewVersionServiceClient(httpClient connect.HTTPClient, baseURL string, opts
 		get: connect.NewClient[v1.VersionServiceGetRequest, v1.VersionServiceGetResponse](
 			httpClient,
 			baseURL+VersionServiceGetProcedure,
-			opts...,
+			connect.WithSchema(versionServiceGetMethodDescriptor),
+			connect.WithClientOptions(opts...),
 		),
 	}
 }
@@ -72,6 +80,7 @@ func (c *versionServiceClient) Get(ctx context.Context, req *connect.Request[v1.
 
 // VersionServiceHandler is an implementation of the api.v1.VersionService service.
 type VersionServiceHandler interface {
+	// Get the version
 	Get(context.Context, *connect.Request[v1.VersionServiceGetRequest]) (*connect.Response[v1.VersionServiceGetResponse], error)
 }
 
@@ -84,7 +93,8 @@ func NewVersionServiceHandler(svc VersionServiceHandler, opts ...connect.Handler
 	versionServiceGetHandler := connect.NewUnaryHandler(
 		VersionServiceGetProcedure,
 		svc.Get,
-		opts...,
+		connect.WithSchema(versionServiceGetMethodDescriptor),
+		connect.WithHandlerOptions(opts...),
 	)
 	return "/api.v1.VersionService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {

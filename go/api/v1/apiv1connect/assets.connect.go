@@ -18,7 +18,7 @@ import (
 // generated with a version of connect newer than the one compiled into your binary. You can fix the
 // problem by either regenerating this code with an older version of connect or updating the connect
 // version compiled into your binary.
-const _ = connect.IsAtLeastVersion0_1_0
+const _ = connect.IsAtLeastVersion1_13_0
 
 const (
 	// AssetServiceName is the fully-qualified name of the AssetService service.
@@ -37,8 +37,15 @@ const (
 	AssetServiceListProcedure = "/api.v1.AssetService/List"
 )
 
+// These variables are the protoreflect.Descriptor objects for the RPCs defined in this package.
+var (
+	assetServiceServiceDescriptor    = v1.File_api_v1_assets_proto.Services().ByName("AssetService")
+	assetServiceListMethodDescriptor = assetServiceServiceDescriptor.Methods().ByName("List")
+)
+
 // AssetServiceClient is a client for the api.v1.AssetService service.
 type AssetServiceClient interface {
+	// List available assets
 	List(context.Context, *connect.Request[v1.AssetServiceListRequest]) (*connect.Response[v1.AssetServiceListResponse], error)
 }
 
@@ -55,7 +62,8 @@ func NewAssetServiceClient(httpClient connect.HTTPClient, baseURL string, opts .
 		list: connect.NewClient[v1.AssetServiceListRequest, v1.AssetServiceListResponse](
 			httpClient,
 			baseURL+AssetServiceListProcedure,
-			opts...,
+			connect.WithSchema(assetServiceListMethodDescriptor),
+			connect.WithClientOptions(opts...),
 		),
 	}
 }
@@ -72,6 +80,7 @@ func (c *assetServiceClient) List(ctx context.Context, req *connect.Request[v1.A
 
 // AssetServiceHandler is an implementation of the api.v1.AssetService service.
 type AssetServiceHandler interface {
+	// List available assets
 	List(context.Context, *connect.Request[v1.AssetServiceListRequest]) (*connect.Response[v1.AssetServiceListResponse], error)
 }
 
@@ -84,7 +93,8 @@ func NewAssetServiceHandler(svc AssetServiceHandler, opts ...connect.HandlerOpti
 	assetServiceListHandler := connect.NewUnaryHandler(
 		AssetServiceListProcedure,
 		svc.List,
-		opts...,
+		connect.WithSchema(assetServiceListMethodDescriptor),
+		connect.WithHandlerOptions(opts...),
 	)
 	return "/api.v1.AssetService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {

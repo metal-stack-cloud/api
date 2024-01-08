@@ -4,38 +4,68 @@ package admin.v1;
 
 import "google/protobuf/timestamp.proto";
 
+// Machine is a metal-api machine
 message Machine {
+  // Uuid of this machine
   string uuid = 1;
+  // Name of the machine
   string name = 2;
+  // Description of the machine
   string description = 3;
+  // Project this machine belongs to
   string project = 4;
+  // Image which is installed on this machine
   string image = 5;
+  // Size of this machine
   string size = 6;
+  // MachineNetworks is a list of networks this machine is connected to
   repeated MachineNetwork machine_networks = 7;
+  // Hostname of this machine
   string hostname = 8;
+  // UserDate which are used for bootstrapping
   string user_data = 9;
+  // Role of this machine, can be either machine or firewall
   string role = 10;
+  // Creator is the user who ordered this machine
   string creator = 11;
+  // Created is the date when this machine was created
   google.protobuf.Timestamp created = 12;
-
+  // Partition where this machine resides
   string partition = 13;
+  // Rack where this machine resides
   string rack = 14;
+  // State of this machine
   string state = 15;
+  // Liveliness of this machine
   string liveliness = 16;
+  // Tags put on this machine
   repeated string tags = 17;
+  // Vpn details for this machine if any
   VPN vpn = 18;
 }
 
+// MachineNetwork describes the details of the network connectivity of a machine
 message MachineNetwork {
+  // Network is the uuid of this network
   string network = 1;
+  // Prefixes availalble in this network
   repeated string prefixes = 2;
+  // Ips attached for the machine in this network
   repeated string ips = 3;
+  // DestinationPrefixes define for which prefixes destination routes are defined
   repeated string destination_prefixes = 4;
+  // NetworkType of this network
   string network_type = 5;
+  // Vrf is the VRF number of this network
   uint32 vrf = 6;
+  // Asn is the ASN number of this machine in this network
   int64 asn = 7;
 }
+
+// VPN Details for a machine
 message VPN {
+  // Address is the ipv4 or ipv6 ip address of the machine in the VPN
   string address = 1;
+  // Authkey is the authentication key to join the network
   string authkey = 2;
 }

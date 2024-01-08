@@ -7,83 +7,112 @@ import "google/protobuf/duration.proto";
 import "google/protobuf/timestamp.proto";
 import "validate/validate.proto";
 
+// ClusterService serves kubernetes cluster related functions
 service ClusterService {
+  // Create a cluster
   rpc Create(ClusterServiceCreateRequest) returns (ClusterServiceCreateResponse) {
     option (project_roles) = PROJECT_ROLE_OWNER;
     option (project_roles) = PROJECT_ROLE_EDITOR;
     option (chargeable) = CHARGEABLE_TRUE;
   }
+  // Get a cluster
   rpc Get(ClusterServiceGetRequest) returns (ClusterServiceGetResponse) {
     option (project_roles) = PROJECT_ROLE_OWNER;
     option (project_roles) = PROJECT_ROLE_EDITOR;
     option (project_roles) = PROJECT_ROLE_VIEWER;
     option (auditing) = AUDITING_EXCLUDED;
   }
+  // List clusters
   rpc List(ClusterServiceListRequest) returns (ClusterServiceListResponse) {
     option (project_roles) = PROJECT_ROLE_OWNER;
     option (project_roles) = PROJECT_ROLE_EDITOR;
     option (project_roles) = PROJECT_ROLE_VIEWER;
     option (auditing) = AUDITING_EXCLUDED;
   }
+  // WatchStatus of a cluster
   rpc WatchStatus(ClusterServiceWatchStatusRequest) returns (stream ClusterServiceWatchStatusResponse) {
     option (project_roles) = PROJECT_ROLE_OWNER;
     option (project_roles) = PROJECT_ROLE_EDITOR;
     option (project_roles) = PROJECT_ROLE_VIEWER;
     option (auditing) = AUDITING_EXCLUDED;
   }
+  // Delete a cluster
   rpc Delete(ClusterServiceDeleteRequest) returns (ClusterServiceDeleteResponse) {
     option (project_roles) = PROJECT_ROLE_OWNER;
     option (project_roles) = PROJECT_ROLE_EDITOR;
     option (chargeable) = CHARGEABLE_TRUE;
   }
+  // Update a cluster
   rpc Update(ClusterServiceUpdateRequest) returns (ClusterServiceUpdateResponse) {
     option (project_roles) = PROJECT_ROLE_OWNER;
     option (project_roles) = PROJECT_ROLE_EDITOR;
     option (chargeable) = CHARGEABLE_TRUE;
   }
+  // GetCredentials of a cluster
   rpc GetCredentials(ClusterServiceGetCredentialsRequest) returns (ClusterServiceGetCredentialsResponse) {
     option (project_roles) = PROJECT_ROLE_OWNER;
     option (project_roles) = PROJECT_ROLE_EDITOR;
   }
 }
 
-// Types
+// Cluster describes a kubernetes cluster
 message Cluster {
+  // Uuid of the cluster
   string uuid = 1 [(validate.rules).string.uuid = true];
+  // Name of the cluster
   string name = 2 [(validate.rules).string = {
     min_len: 2,
     max_len: 12,
   }];
+  // Project where this cluster belongs to
   string project = 3 [(validate.rules).string = {
     min_len: 2,
     max_len: 128,
   }];
-  string partition = 4; // partition is part of a region
+  // Partition where this cluster was created
+  string partition = 4;
+  // Kubernetes defines the kubernetes specifications of this cluster
   KubernetesSpec kubernetes = 5;
+  // Workers defines the list of worker groups with their specification
   repeated Worker workers = 6;
+  // Maintenance defines when automated actions on this cluster should be scheduled
   Maintenance maintenance = 7;
+  // Tenant where this cluster belongs to
   string tenant = 8;
+  // CreatedAt defines the date when this cluster was created
   google.protobuf.Timestamp created_at = 10;
+  // UpdatedAt defines the date when this cluster was updated
   google.protobuf.Timestamp updated_at = 11;
+  // DeletedAt defines the date when this cluster was deleted
   google.protobuf.Timestamp deleted_at = 12;
+  // Status of this cluster
   ClusterStatus status = 20;
+  // Purpose of this cluster, can be for example production, development or evaluation
   optional string purpose = 21;
+  // Monitoring details for this cluster
   ClusterMonitoring monitoring = 22;
 }
 
+// KubernetesSpec details of kubernetes this cluster
 message KubernetesSpec {
+  // Version of kubernetes
   string version = 1 [(validate.rules).string = {
     pattern: "[0-9]+.[0-9]+.[0-9]",
     max_bytes: 8,
   }];
 }
 
+// Maintenance defines when automatic actions should be scheduled on this cluster
 message Maintenance {
+  // KubernetesAutoupdate if set to true, kubernetes patch version updates will be done in the maintenance window
   optional bool kubernetes_autoupdate = 1;
+  // MachineimageAutoupdate if set to true, machine images will be automatically update by rolling nodes in the maintenance window
   optional bool machineimage_autoupdate = 2;
+  // TimeWindow defines the start time and duration during which automatic actions will be performed
   MaintenanceTimeWindow time_window = 3;
 }
 
+// MaintenanceTimeWindow defines the start time and duration during which automatic actions will be performed
 message MaintenanceTimeWindow {
   Time begin = 1;
   google.protobuf.Duration duration = 2 [(validate.rules).duration = {
@@ -102,152 +131,232 @@ message Time {
   string timezone = 3;
 }
 
+// Worker defines a set of worker nodes with identical properties
 message Worker {
+  // Name of this worker group
   string name = 1 [(validate.rules).string = {
     min_len: 2,
     max_len: 128,
   }];
+  // MachineType of machines which should be used for the worker nodes in this group
   string machine_type = 2 [(validate.rules).string = {
     min_len: 2,
     max_len: 128,
   }];
+  // Minsize defines the minimum amount of machines present in this worker group
   uint32 minsize = 3 [(validate.rules).uint32.lte = 32];
+  // Maxsize defines the maximum amount of machines present in this worker group
   uint32 maxsize = 4 [(validate.rules).uint32.lte = 64];
+  // Maxsurge defines the maximum amount of machines which are spun up in this worker group during a rolling upgrade
   uint32 maxsurge = 5 [(validate.rules).uint32.lte = 64];
+  // Maxunavailable defines the maximum amount of not available machines in this worker group during a rolling upgrade
   uint32 maxunavailable = 6 [(validate.rules).uint32.lte = 64];
 }
 
+// WorkerUpdate is used to update a Worker group
 message WorkerUpdate {
+  // Name of the worker group to update
   string name = 1 [(validate.rules).string = {
     min_len: 2,
     max_len: 128,
   }];
+  // MachineType to change in this worker group
   optional string machine_type = 2 [(validate.rules).string = {
     min_len: 2,
     max_len: 128,
   }];
+  // Minsize defines the minimum amount of machines present in this worker group
   optional uint32 minsize = 3 [(validate.rules).uint32.lte = 32];
+  // Maxsize defines the maximum amount of machines present in this worker group
   optional uint32 maxsize = 4 [(validate.rules).uint32.lte = 64];
+  // Maxsurge defines the maximum amount of machines which are spun up in this worker group during a rolling upgrade
   optional uint32 maxsurge = 5 [(validate.rules).uint32.lte = 64];
+  // Maxunavailable defines the maximum amount of not available machines in this worker group during a rolling upgrade
   optional uint32 maxunavailable = 6 [(validate.rules).uint32.lte = 64];
 }
 
-// Requests
+// ClusterServiceGetRequest is the request payload for a cluster get request
 message ClusterServiceGetRequest {
+  // Uuid of the cluster
   string uuid = 1 [(validate.rules).string.uuid = true];
+  // Project of the cluster
   string project = 2 [(validate.rules).string = {
     min_len: 2,
     max_len: 128,
   }];
 }
+
+// ClusterServiceGetRequest is the request payload for a cluster get request
 message ClusterServiceGetCredentialsRequest {
+  // Uuid of the cluster
   string uuid = 1 [(validate.rules).string.uuid = true];
+  // Project of the cluster
   string project = 2 [(validate.rules).string = {
     min_len: 2,
     max_len: 128,
   }];
+  // Expiration defines the duration after which the requested kubernetes access token can not be used anymore
   optional google.protobuf.Duration expiration = 4;
 }
+
+// ClusterServiceListRequest is the request payload for a cluster list request
 message ClusterServiceListRequest {
+  // Project of the cluster
   string project = 2 [(validate.rules).string = {
     min_len: 2,
     max_len: 128,
   }];
 }
+
+// ClusterServiceCreateRequest is the request payload for a cluster create request
 message ClusterServiceCreateRequest {
+  // Name of the cluster to create
   string name = 2 [(validate.rules).string = {
     min_len: 2,
     max_len: 12,
     hostname: true,
   }];
+  // Project of the cluster
   string project = 3 [(validate.rules).string = {
     min_len: 2,
     max_len: 128,
   }];
-  string partition = 4; // partition is part of a region
+  // Partition of the cluster
+  string partition = 4;
+  // Kubernetes specification of the cluster
   KubernetesSpec kubernetes = 6;
+  // Worker specification of the cluster
   repeated Worker workers = 7;
+  // Maintenance specification of the cluster
   Maintenance maintenance = 8;
 }
+
+// ClusterServiceUpdateRequest is the request payload for a cluster update request
 message ClusterServiceUpdateRequest {
+  // Uuid of the cluster
   string uuid = 1 [(validate.rules).string.uuid = true];
 
+  // Project of the cluster
   string project = 2 [(validate.rules).string = {
     min_len: 2,
     max_len: 128,
   }];
+  // Kubernetes specification of the cluster
   optional KubernetesSpec kubernetes = 3;
+  // Worker specification of the cluster
   repeated WorkerUpdate workers = 4;
+  // Maintenance specification of the cluster
   optional Maintenance maintenance = 5;
 }
+
+// ClusterServiceDeleteRequest is the request payload for a cluster delete request
 message ClusterServiceDeleteRequest {
+  // Uuid of the cluster
   string uuid = 1 [(validate.rules).string.uuid = true];
 
+  // Project of the cluster
   string project = 2 [(validate.rules).string = {
     min_len: 2,
     max_len: 128,
   }];
 }
+
+// ClusterServiceWatchStatusRequest is the request payload for a cluster watch status request
 message ClusterServiceWatchStatusRequest {
+  // Uuid of the cluster
   optional string uuid = 1 [(validate.rules).string.uuid = true];
+  // Project of the cluster
   string project = 2 [(validate.rules).string = {
     min_len: 2,
     max_len: 128,
   }];
 }
 
+// ClusterStatus
 message ClusterStatus {
+  // Uuid of the cluster
   string uuid = 1;
+  // Progress of the cluster reconcilation
   uint32 progress = 2;
+  // State of the cluster
   string state = 3;
+  // Type of the cluster status
   string type = 4;
-
+  // ApiServerReady represents the ready state of the kubernetes api server
   string api_server_ready = 10;
+  // ControlPlaneReady represents the ready state of the control plane components
   string control_plane_ready = 11;
+  // NodesReady represents the ready state of the worker nodes
   string nodes_ready = 12;
+  // SystemComponentsReady represents the ready state of the system components
   string system_components_ready = 13;
+  // LastErrors is a list of the last known errors occured during the cluster reconcilation
   repeated ClusterStatusLastError last_errors = 14;
 }
 
+// ClusterStatusLastError is the last known cluster status error
 message ClusterStatusLastError {
-  // A human readable message indicating details about the last error.
+  // Description a human readable message indicating details about the last error.
   string description = 1;
-  // ID of the task which caused this last error
+  // TaskId ID of the task which caused this last error
   // +optional
   optional string task_id = 2;
-  // Well-defined error codes of the last error(s).
+  // Codes well-defined error codes of the last error(s).
   // +optional
   repeated string codes = 3;
-  // Last time the error was reported
+  // LastUpdateTime last time the error was reported
   // +optional
   google.protobuf.Timestamp last_update_time = 4;
 }
 
+// ClusterMonitoring contains details howto access the cluster monitoring
 message ClusterMonitoring {
+  // Username to access the monitoring
   string username = 1;
+  // Password to access the monitoring
   string password = 2;
+  // Endpoint is the url to access the monitoring
   string endpoint = 3;
 }
 
-// Responses
+// ClusterServiceCreateResponse is the response payload of a cluster create request
 message ClusterServiceCreateResponse {
+  // Cluster is the cluster
   Cluster cluster = 1;
 }
+
+// ClusterServiceGetResponse is the response payload of a cluster get request
 message ClusterServiceGetResponse {
+  // Cluster is the cluster
   Cluster cluster = 1;
 }
+
+// ClusterServiceGetCredentialsResponse is the response payload of a cluster get credentials request
 message ClusterServiceGetCredentialsResponse {
+  // Cluster is the cluster
   string kubeconfig = 1;
 }
+
+// ClusterServiceDeleteResponse is the response payload of a cluster delete request
 message ClusterServiceDeleteResponse {
+  // Cluster is the cluster
   Cluster cluster = 1;
 }
+
+// ClusterServiceUpdateResponse is the response payload of a cluster update request
 message ClusterServiceUpdateResponse {
+  // Cluster is the cluster
   Cluster cluster = 1;
 }
+
+// ClusterServiceListResponse is the response payload of a cluster list request
 message ClusterServiceListResponse {
+  // Clusters a list of clusters
   repeated Cluster clusters = 1;
 }
+
+// ClusterServiceWatchStatusResponse is the response payload of a cluster watch status request
 message ClusterServiceWatchStatusResponse {
+  // Status the cluster status
   ClusterStatus status = 1;
 }

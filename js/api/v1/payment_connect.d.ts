@@ -1,12 +1,16 @@
 import { PaymentServiceCheckAdmittedRequest, PaymentServiceCheckAdmittedResponse, PaymentServiceCheckIfCustomerExistsRequest, PaymentServiceCheckIfCustomerExistsResponse, PaymentServiceCreateOrUpdateCustomerRequest, PaymentServiceCreateOrUpdateCustomerResponse, PaymentServiceDeletePaymentMethodRequest, PaymentServiceDeletePaymentMethodResponse, PaymentServiceGetCustomerRequest, PaymentServiceGetCustomerResponse, PaymentServiceGetCustomerWithLoginRequest, PaymentServiceGetCustomerWithLoginResponse, PaymentServiceGetDefaultPricesRequest, PaymentServiceGetDefaultPricesResponse, PaymentServiceGetInvoicesRequest, PaymentServiceGetInvoicesResponse, PaymentServiceGetSubscriptionUsageRequest, PaymentServiceGetSubscriptionUsageResponse, PaymentServiceHasChargeableResourcesRequest, PaymentServiceHasChargeableResourcesResponse, PaymentServiceHasPaymentMethodRequest, PaymentServiceHasPaymentMethodResponse, PaymentServiceRequestAdmissionRequest, PaymentServiceRequestAdmissionResponse } from "./payment_pb.js";
 import { MethodKind } from "@bufbuild/protobuf";
 /**
+ * PaymentService serves payment related functions
+ *
  * @generated from service api.v1.PaymentService
  */
 export declare const PaymentService: {
     readonly typeName: "api.v1.PaymentService";
     readonly methods: {
         /**
+         * CreateOrUpdateCustomer the payment data on the payment processor
+         *
          * @generated from rpc api.v1.PaymentService.CreateOrUpdateCustomer
          */
         readonly createOrUpdateCustomer: {
@@ -16,6 +20,8 @@ export declare const PaymentService: {
             readonly kind: MethodKind.Unary;
         };
         /**
+         * GetCustomer from the payment processor
+         *
          * @generated from rpc api.v1.PaymentService.GetCustomer
          */
         readonly getCustomer: {
@@ -25,6 +31,8 @@ export declare const PaymentService: {
             readonly kind: MethodKind.Unary;
         };
         /**
+         * GetCustomerWithLogin from the payment processor
+         *
          * @generated from rpc api.v1.PaymentService.GetCustomerWithLogin
          */
         readonly getCustomerWithLogin: {
@@ -34,6 +42,8 @@ export declare const PaymentService: {
             readonly kind: MethodKind.Unary;
         };
         /**
+         * CheckIfCustomerExists at the payment processor
+         *
          * @generated from rpc api.v1.PaymentService.CheckIfCustomerExists
          */
         readonly checkIfCustomerExists: {
@@ -43,6 +53,8 @@ export declare const PaymentService: {
             readonly kind: MethodKind.Unary;
         };
         /**
+         * HasPaymentMethod check if the customer has a payment method provided
+         *
          * @generated from rpc api.v1.PaymentService.HasPaymentMethod
          */
         readonly hasPaymentMethod: {
@@ -52,6 +64,8 @@ export declare const PaymentService: {
             readonly kind: MethodKind.Unary;
         };
         /**
+         * DeletePaymentMethod of the customer
+         *
          * @generated from rpc api.v1.PaymentService.DeletePaymentMethod
          */
         readonly deletePaymentMethod: {
@@ -61,6 +75,8 @@ export declare const PaymentService: {
             readonly kind: MethodKind.Unary;
         };
         /**
+         * GetSubscriptionUsage of the customer
+         *
          * @generated from rpc api.v1.PaymentService.GetSubscriptionUsage
          */
         readonly getSubscriptionUsage: {
@@ -70,6 +86,8 @@ export declare const PaymentService: {
             readonly kind: MethodKind.Unary;
         };
         /**
+         * GetInvoices of the customer
+         *
          * @generated from rpc api.v1.PaymentService.GetInvoices
          */
         readonly getInvoices: {
@@ -79,6 +97,8 @@ export declare const PaymentService: {
             readonly kind: MethodKind.Unary;
         };
         /**
+         * GetDefaultPrices of the products on the platform
+         *
          * @generated from rpc api.v1.PaymentService.GetDefaultPrices
          */
         readonly getDefaultPrices: {
@@ -88,6 +108,8 @@ export declare const PaymentService: {
             readonly kind: MethodKind.Unary;
         };
         /**
+         * CheckAdmitted if the customer is allowed to use the service on the platform
+         *
          * @generated from rpc api.v1.PaymentService.CheckAdmitted
          */
         readonly checkAdmitted: {
@@ -97,6 +119,8 @@ export declare const PaymentService: {
             readonly kind: MethodKind.Unary;
         };
         /**
+         * RequestAdmission for a customer to get allowed to used the service
+         *
          * @generated from rpc api.v1.PaymentService.RequestAdmission
          */
         readonly requestAdmission: {
@@ -106,6 +130,8 @@ export declare const PaymentService: {
             readonly kind: MethodKind.Unary;
         };
         /**
+         * HasChargeableResources checks if the customer has resources actually consumed which are chargeable
+         *
          * @generated from rpc api.v1.PaymentService.HasChargeableResources
          */
         readonly hasChargeableResources: {

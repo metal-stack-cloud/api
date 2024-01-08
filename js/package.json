@@ -1,6 +1,5 @@
 {
   "name": "@metal-stack-cloud/api",
-  "version": "0.6.2",
   "description": "metal-cloud api js client",
   "main": "index.js",
   "repository": "https://github.com/metal-stack-cloud/api.git",
@@ -12,9 +11,9 @@
   "license": "MIT",
   "dependencies": {
     "@bufbuild/connect-web": "^0.13.0",
-    "@bufbuild/protobuf": "^1.4.1"
+    "@bufbuild/protobuf": "^1.6.0"
   },
   "devDependencies": {
-    "typescript": "^5.2.2"
+    "typescript": "^5.3.3"
   }
 }

@@ -41,6 +41,7 @@ type (
 		IP() apiv1connect.IPServiceClient
 		Method() apiv1connect.MethodServiceClient
 		Payment() apiv1connect.PaymentServiceClient
+		Project() apiv1connect.ProjectServiceClient
 		Tenant() apiv1connect.TenantServiceClient
 		Token() apiv1connect.TokenServiceClient
 		Version() apiv1connect.VersionServiceClient
@@ -55,6 +56,7 @@ type (
 		ipservice       apiv1connect.IPServiceClient
 		methodservice   apiv1connect.MethodServiceClient
 		paymentservice  apiv1connect.PaymentServiceClient
+		projectservice  apiv1connect.ProjectServiceClient
 		tenantservice   apiv1connect.TenantServiceClient
 		tokenservice    apiv1connect.TokenServiceClient
 		versionservice  apiv1connect.VersionServiceClient
@@ -158,6 +160,11 @@ func (c client) Apiv1() Apiv1 {
 			c.config.BaseURL,
 			compress.WithAll(compress.LevelBalanced),
 		),
+		projectservice: apiv1connect.NewProjectServiceClient(
+			c.config.HttpClient(),
+			c.config.BaseURL,
+			compress.WithAll(compress.LevelBalanced),
+		),
 		tenantservice: apiv1connect.NewTenantServiceClient(
 			c.config.HttpClient(),
 			c.config.BaseURL,
@@ -204,6 +211,9 @@ func (c *apiv1) Method() apiv1connect.MethodServiceClient {
 }
 func (c *apiv1) Payment() apiv1connect.PaymentServiceClient {
 	return c.paymentservice
+}
+func (c *apiv1) Project() apiv1connect.ProjectServiceClient {
+	return c.projectservice
 }
 func (c *apiv1) Tenant() apiv1connect.TenantServiceClient {
 	return c.tenantservice

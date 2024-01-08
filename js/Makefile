@@ -1,6 +1,7 @@
 .PHONY: install
 install:
-	npm install -dd
+	bun upgrade
+	bun install -dd
 
 .PHONY: clean
 clean:
@@ -8,4 +9,4 @@ clean:
 
 .PHONY: build
 build: install
-	npm run build
+	bun run build

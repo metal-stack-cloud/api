@@ -1,0 +1,15 @@
+{
+    "name": "cluster-list",
+    "version": "1.0.0",
+    "type": "module",
+    "main": "cluster-list.ts",
+    "dependencies": {
+        "@bufbuild/connect-web": "^0.13.0",
+        "@bufbuild/protobuf": "^1.6.0",
+        "@connectrpc/connect": "^1.2.0",
+        "@connectrpc/connect-node": "^1.2.0",
+        "@metal-stack-cloud/api": "^0.6.6",
+        "dotenv": "^16.3.1",
+        "ts-node": "^10.9.2"
+    }
+}

@@ -7,19 +7,23 @@ import "google/protobuf/duration.proto";
 import "google/protobuf/timestamp.proto";
 import "validate/validate.proto";
 
+// VolumeService serves volume related functions
 service VolumeService {
+  // Get a volume
   rpc Get(VolumeServiceGetRequest) returns (VolumeServiceGetResponse) {
     option (project_roles) = PROJECT_ROLE_OWNER;
     option (project_roles) = PROJECT_ROLE_EDITOR;
     option (project_roles) = PROJECT_ROLE_VIEWER;
     option (auditing) = AUDITING_EXCLUDED;
   }
+  // List the volumes
   rpc List(VolumeServiceListRequest) returns (VolumeServiceListResponse) {
     option (project_roles) = PROJECT_ROLE_OWNER;
     option (project_roles) = PROJECT_ROLE_EDITOR;
     option (project_roles) = PROJECT_ROLE_VIEWER;
     option (auditing) = AUDITING_EXCLUDED;
   }
+  // Delete a volume
   rpc Delete(VolumeServiceDeleteRequest) returns (VolumeServiceDeleteResponse) {
     option (project_roles) = PROJECT_ROLE_OWNER;
     option (project_roles) = PROJECT_ROLE_EDITOR;
@@ -27,19 +31,23 @@ service VolumeService {
   }
 }
 
+// SnapshotService serves snapshot related functions
 service SnapshotService {
+  // Get a snapshot
   rpc Get(SnapshotServiceGetRequest) returns (SnapshotServiceGetResponse) {
     option (project_roles) = PROJECT_ROLE_OWNER;
     option (project_roles) = PROJECT_ROLE_EDITOR;
     option (project_roles) = PROJECT_ROLE_VIEWER;
     option (auditing) = AUDITING_EXCLUDED;
   }
+  // List snapshots
   rpc List(SnapshotServiceListRequest) returns (SnapshotServiceListResponse) {
     option (project_roles) = PROJECT_ROLE_OWNER;
     option (project_roles) = PROJECT_ROLE_EDITOR;
     option (project_roles) = PROJECT_ROLE_VIEWER;
     option (auditing) = AUDITING_EXCLUDED;
   }
+  // Delete a snapshot
   rpc Delete(SnapshotServiceDeleteRequest) returns (SnapshotServiceDeleteResponse) {
     option (project_roles) = PROJECT_ROLE_OWNER;
     option (project_roles) = PROJECT_ROLE_EDITOR;
@@ -47,46 +55,67 @@ service SnapshotService {
   }
 }
 
-// Types
+// Volume is a unit of block storage
 message Volume {
+  // Uuid is the unique identifier of the volume
   string uuid = 1;
+  // Name of the volume
   string name = 2;
+  // Project this volume belongs to
   string project = 3;
+  // Partition where this volume resides
   string partition = 4;
+  // StorageClass where this volume is created
   string storage_class = 5;
+  // Size in bytes of the volume
   uint64 size = 6;
+  // Usage in bytes of the volume
   uint64 usage = 7;
+  // State of the volume
   string state = 8;
+  // AttachedTo us a list of nodes this volume is attached
   repeated string attached_to = 9;
+  // SourceSnapshotUuid if this volume was created from a snapshot, this was the uuid source
   string source_snapshot_uuid = 10;
+  // SourceSnapshotName if this volume was created from a snapshot, this was the name of the source
   string source_snapshot_name = 11;
+  // VolumeHandle is the handle to mount this volume manually
   string volume_handle = 12;
+  // NodeIps is a list of storage server node ips
   repeated string node_ips = 13;
+  // RebuildProgress shows the progress of a rebuild if any
   string rebuild_progress = 14;
+  // PrimaryNodeUuid is the uuid of the storage server node where the primary replica of this volume resides
   string primary_node_uuid = 15;
+  // QosPolicyUuid is the uuid of the QOS policy if any
   string qos_policy_uuid = 16;
+  // QosPolicyName is the name of the QOS policy if any
   string qos_policy_name = 17;
+  // ReplicaCount shows how many replicas of this volume exist
   uint32 replica_count = 18;
+  // ProtectionState shows the state of failure protection of this volume
   string protection_state = 19;
+  // LogicalUsedStorage in bytes of the volume
   uint64 logical_used_storage = 20;
   // VolumeStatistics are only visible to admins
   VolumeStatistics statistics = 21;
 }
 
+// VolumeStatistics are all detailed statistics of a volume
 message VolumeStatistics {
-  // Logical Used Storage
+  // LogicalUsedStorage
   //
   // Logical storage space used by volume, given in bytes.
   uint64 logical_used_storage = 1;
-  // Physical Used Storage
+  // PhysicalUsedStorage
   //
   // Physical storage space used by volume excluding parity, given in bytes.
   uint64 physical_used_storage = 2;
-  // commpression ratio
+  // CommpressionRatio
   //
   // compression ratio userWritten/physicalCapacity
   double compression_ratio = 3;
-  // total commpression ratio
+  // TotalCommpressionRatio
   //
   // compression ratio sum(userWritten) / sum(physical capacity)
   double total_compression_ratio = 4;
@@ -94,118 +123,198 @@ message VolumeStatistics {
   //
   // The physical capacity that exists in this volume layer
   uint64 physical_capacity = 5;
-  // Physical Owned storage Capacity
+  // PhysicalOwnedStorageCapacity
   //
   // The capacity that would be freed when volume is deleted
   uint64 physical_owned_capacity = 6;
+  // PhysicalOwnedMemory
+  //
+  // The memory that would be freed when volume is deleted
   uint64 physical_owned_memory = 7;
+  // PhysicalMemory
+  //
+  // The memory that exists for this volume
   uint64 physical_memory = 8;
+  // UserWritten
+  //
+  // The amount of bytes written to this volume by the user
   uint64 user_written = 9;
-  // Unrecoverable Data Integrity Errors
+  // UnrecoverableDataIntegrityErrors
   //
   // Number of data integrity errors that could no be recovered by the system.
   uint32 unrecoverable_data_integrity_errors = 10;
-  // Recoverable Data Integrity Errors
+  // RecoverableDataIntegrityErrors
   //
   // Number of data integrity errors that were recovered by the system.
   uint32 recoverable_data_integrity_errors = 12;
 }
 
+// Snapshot is a unit of block storage create as a point in time block copy of a volume
 message Snapshot {
+  // Uuid is the unique identifier of the snapshot
   string uuid = 1;
+  // Name of the snapshot
   string name = 2;
+  // Description of this snapshot
   string description = 3;
+  // Project this snapshot belongs to
   string project = 4;
+  // Partition where this snapshot resides
   string partition = 5;
+  // StorageClass where this snapshot is created
   string storage_class = 6;
+  // Size in bytes of the snapshot
   uint64 size = 7;
+  // Usage in bytes of the snapshot
   uint64 usage = 8;
+  // State of the snapshot
   string state = 9;
+  // SourceVolumeUuid is the uuid of the snapshot this snapshot was created from
   string source_volume_uuid = 10;
+  // SourceVolumeName is the name of the snapshot this snapshot was created from
   string source_volume_name = 11;
+  // ReplicaCount shows how many replicas of this snapshot exist
   uint32 replica_count = 12;
+  // PrimaryNodeUuid is the uuid of the storage server node where the primary replica of this snapshot resides
   string primary_node_uuid = 13;
+  // Retention is the duration after creation, after which this snapshot will be deleted
   google.protobuf.Duration retention = 14;
   // SnapshotStatistics are only visible to admins
   SnapshotStatistics statistics = 15;
-
+  // CreatedAt is the date when this snapshot was created
   google.protobuf.Timestamp created_at = 20;
 }
 
+// SnapshotStatistics are all detailed statistics of a snapshot
 message SnapshotStatistics {
+  // PhysicalCapacity
+  //
+  // The physical capacity that exists in this snapshot layer
   uint64 physical_capacity = 1;
+  // PhysicalOwnedStorageCapacity
+  //
+  // The capacity that would be freed when snapshot is deleted
   uint64 physical_owned_capacity = 2;
+  // PhysicalOwnedMemory
+  //
+  // The memory that would be freed when snapshot is deleted
   uint64 physical_owned_memory = 3;
+  // PhysicalMemory
+  //
+  // The memory that exists for this snapshot
   uint64 physical_memory = 4;
+  // UserWritten
+  //
+  // The amount of bytes written to this snapshot by the user
   uint64 user_written = 5;
 }
 
-// Requests
+// VolumeServiceGetRequest is the request payload of the volume get request
 message VolumeServiceGetRequest {
+  // Uuid of the volume
   string uuid = 1 [(validate.rules).string.uuid = true];
+  // Project of the volume
   string project = 2 [(validate.rules).string = {
     min_len: 2,
     max_len: 128
   }];
 }
+
+// VolumeServiceListRequest is the request payload of a volume list request
 message VolumeServiceListRequest {
+  // Uuid of the volume
   optional string uuid = 1 [(validate.rules).string.uuid = true];
+  // Project of the volume
   string project = 2 [(validate.rules).string = {
     min_len: 2,
     max_len: 128
   }];
+  // Partition where the volumes should be listed
   optional string partition = 3;
+  // Name of the volume
   optional string name = 4;
 }
+
+// VolumeServiceDeleteRequest is the request payload of a volume delete request
 message VolumeServiceDeleteRequest {
+  // Uuid of the volume
   string uuid = 1 [(validate.rules).string.uuid = true];
+  // Project of the volume
   string project = 2 [(validate.rules).string = {
     min_len: 2,
     max_len: 128
   }];
 }
 
+// SnapshotServiceGetRequest is the request payload of a snapshot list request
 message SnapshotServiceGetRequest {
+  // Uuid of the snapshot
   string uuid = 1 [(validate.rules).string.uuid = true];
+  // Project of the snapshot
   string project = 2 [(validate.rules).string = {
     min_len: 2,
     max_len: 128
   }];
 }
+
+// SnapshotServiceListRequest is the request payload of a snapshot list request
 message SnapshotServiceListRequest {
+  // Uuid of the snapshot
   optional string uuid = 1 [(validate.rules).string.uuid = true];
+  // Project of the snapshot
   string project = 2 [(validate.rules).string = {
     min_len: 2,
     max_len: 128
   }];
+  // Partition where the snapshots should be listed
   optional string partition = 3;
+  // Name of the snapshot
   optional string name = 4;
 }
+
+// SnapshotServiceDeleteRequest is the request payload of a snapshot delete request
 message SnapshotServiceDeleteRequest {
+  // Uuid of the snapshot
   string uuid = 1 [(validate.rules).string.uuid = true];
+  // Project of the snapshot
   string project = 2 [(validate.rules).string = {
     min_len: 2,
     max_len: 128
   }];
 }
 
-// Responses
+// VolumeServiceGetResponse is the response payload of a volume get request
 message VolumeServiceGetResponse {
+  // Volume the volume
   Volume volume = 1;
 }
+
+// VolumeServiceListResponse is the response payload of a volume list request
 message VolumeServiceListResponse {
+  // Volumes the volumes
   repeated Volume volumes = 1;
 }
+
+// VolumeServiceDeleteResponse is the response payload of a volume delete request
 message VolumeServiceDeleteResponse {
+  // Volume the volume
   Volume volume = 1;
 }
 
+// SnapshotServiceGetResponse is the response payload of a snapshot get request
 message SnapshotServiceGetResponse {
+  // Snapshot the snapshot
   Snapshot snapshot = 1;
 }
+
+// SnapshotServiceListResponse is the response payload of a snapshot list request
 message SnapshotServiceListResponse {
+  // Snapshots the snapshots
   repeated Snapshot snapshots = 1;
 }
+
+// SnapshotServiceDeleteResponse is the response payload of a snapshot delete request
 message SnapshotServiceDeleteResponse {
+  // Snapshot the snapshot
   Snapshot snapshot = 1;
 }

@@ -2,11 +2,7 @@ package permissions
 
 import (
 	_ "embed"
-	"encoding/json"
 )
-
-//go:embed servicepermissions.json
-var servicePermissionsJSON string
 
 type ServicePermissions struct {
 	Roles      Roles      `json:"roles"`
@@ -14,6 +10,7 @@ type ServicePermissions struct {
 	Visibility Visibility `json:"visibility"`
 	Chargeable Chargeable `json:"chargeable,omitempty"`
 	Auditable  Auditable  `json:"auditable,omitempty"`
+	Services   []string   `json:"services,omitempty"`
 }
 type Admin struct {
 	// TODO map from string to bool would be better
@@ -51,9 +48,3 @@ type Visibility struct {
 }
 type Chargeable map[string]bool
 type Auditable map[string]bool
-
-func Get() (*ServicePermissions, error) {
-	result := &ServicePermissions{}
-	err := json.Unmarshal([]byte(servicePermissionsJSON), result)
-	return result, err
-}

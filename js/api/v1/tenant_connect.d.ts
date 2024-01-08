@@ -1,12 +1,16 @@
 import { TenantServiceCreateOrUpdateRequest, TenantServiceCreateOrUpdateResponse, TenantServiceCreateRequest, TenantServiceCreateResponse, TenantServiceDeleteRequest, TenantServiceDeleteResponse, TenantServiceGetRequest, TenantServiceGetResponse, TenantServiceUpdateRequest, TenantServiceUpdateResponse } from "./tenant_pb.js";
 import { MethodKind } from "@bufbuild/protobuf";
 /**
+ * TenantService serves tenant related functions
+ *
  * @generated from service api.v1.TenantService
  */
 export declare const TenantService: {
     readonly typeName: "api.v1.TenantService";
     readonly methods: {
         /**
+         * Create a tenant
+         *
          * @generated from rpc api.v1.TenantService.Create
          */
         readonly create: {
@@ -28,6 +32,8 @@ export declare const TenantService: {
             readonly kind: MethodKind.Unary;
         };
         /**
+         * Get a tenant
+         *
          * @generated from rpc api.v1.TenantService.Get
          */
         readonly get: {
@@ -37,6 +43,8 @@ export declare const TenantService: {
             readonly kind: MethodKind.Unary;
         };
         /**
+         * Update a tenant
+         *
          * @generated from rpc api.v1.TenantService.Update
          */
         readonly update: {
@@ -46,6 +54,8 @@ export declare const TenantService: {
             readonly kind: MethodKind.Unary;
         };
         /**
+         * Delete a tenant
+         *
          * @generated from rpc api.v1.TenantService.Delete
          */
         readonly delete: {

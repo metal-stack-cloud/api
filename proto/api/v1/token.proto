@@ -7,53 +7,70 @@ import "google/protobuf/duration.proto";
 import "google/protobuf/timestamp.proto";
 import "validate/validate.proto";
 
+// TokenService serves token related functions
 service TokenService {
+  // Create a token to authenticate against the platform, the secret will be only visible in the response
   rpc Create(TokenServiceCreateRequest) returns (TokenServiceCreateResponse) {
     option (visibility) = VISIBILITY_SELF;
   }
+  // List all your tokens
   rpc List(TokenServiceListRequest) returns (TokenServiceListResponse) {
     option (visibility) = VISIBILITY_SELF;
   }
+  // Revoke a token, no further usage is possible afterwards
   rpc Revoke(TokenServiceRevokeRequest) returns (TokenServiceRevokeResponse) {
     option (visibility) = VISIBILITY_SELF;
   }
 }
 
-// Tokens
-
+// Token is a jwt authentication token to access the api
 message Token {
-  // uuid of the jwt token
+  // Uuid of the jwt token, used to reference it by revoke
   string uuid = 1 [(validate.rules).string.uuid = true];
-  // user_id who created this token
+  // UserId who created this token
   string user_id = 2 [(validate.rules).string = {
     min_len: 2,
     max_len: 512,
   }];
-  // description is a user given description of this token.
+  // Description is a user given description of this token.
   string description = 3 [(validate.rules).string = {
     min_len: 2,
     max_len: 256,
   }];
+  // Permissions is a list of service methods this token can be used for
   repeated MethodPermission permissions = 4;
+  // Roles is a list of roles this token can be used for
   repeated TokenRole roles = 5;
+  // Expires gives the date in the future after which this token can not be used anymore
   google.protobuf.Timestamp expires = 6;
+  // IssuedAt gives the date when this token was created
   google.protobuf.Timestamp issued_at = 7;
+  // TokenType describes the type of this token
   TokenType token_type = 8;
 }
 
+// TokenType specifies different use cases of tokens
 enum TokenType {
+  // TOKEN_TYPE_UNSPECIFIED is not specified
   TOKEN_TYPE_UNSPECIFIED = 0;
+  // TOKEN_TYPE_API is a token for api usage
   TOKEN_TYPE_API = 1;
+  // TOKEN_TYPE_CONSOLE is a token for console or web ui usage
   TOKEN_TYPE_CONSOLE = 2;
 }
 
+// TokenServiceCreateRequest is the request payload to create a token
 message TokenServiceCreateRequest {
+  // Description of the token
   string description = 1 [(validate.rules).string = {
     min_len: 2,
     max_len: 256,
   }];
+  // Permissions is a list of service methods this token can be used for
   repeated MethodPermission permissions = 2;
+  // Roles is a list of roles this token can be used for
   repeated TokenRole roles = 3;
+  // Expires gives the duration since now, after which this token can not be used anymore
   google.protobuf.Duration expires = 4 [(validate.rules).duration = {
     // Between 10min and 1year
     lt: {seconds: 31536001},
@@ -61,21 +78,23 @@ message TokenServiceCreateRequest {
   }];
 }
 
+// MethodPermission is a mapping from a subject/project to a service method
 message MethodPermission {
-  // subject maybe either the project or the organization
+  // Subject maybe either the project or the organization
   // for which the methods should be allowed
   string subject = 1;
-  // methods which should be accessible
+  // Methods which should be accessible
   repeated string methods = 2;
 }
 
+// TokenRole is a mapping from subject to role there
 message TokenRole {
-  // subject specifies the project or organization this role applies to
+  // Subject specifies the subject (project or organization) this role applies to
   string subject = 1 [(validate.rules).string = {
     min_len: 1, // when requesting admin permissions with *
     max_len: 256,
   }];
-  // role defines the string representation of a tenantrole, projectrole or a global adminrole
+  // Role defines the string representation of a tenantrole, projectrole or a global adminrole
   string role = 2 [(validate.rules).string = {
     in: [
       "admin",
@@ -86,17 +105,28 @@ message TokenRole {
   }];
 }
 
+// TokenServiceCreateResponse is the response payload of a token create request
 message TokenServiceCreateResponse {
+  // Token which was created
   Token token = 1;
+  // Secret is the body if the jwt token, should be used in api requests as bearer token
   string secret = 2;
 }
 
+// TokenServiceListRequest is the request payload to list tokens
 message TokenServiceListRequest {}
+
+// TokenServiceListResponse is the response payload of a token list request
 message TokenServiceListResponse {
+  // Tokens is a list of tokens without the secrets
   repeated Token tokens = 1;
 }
 
+// TokenServiceRevokeRequest is the request payload of a token revoke request
 message TokenServiceRevokeRequest {
+  // Uuid of the token to revoke
   string uuid = 1 [(validate.rules).string.uuid = true];
 }
+
+// TokenServiceRevokeResponse is the response payload of a token revoke request
 message TokenServiceRevokeResponse {}

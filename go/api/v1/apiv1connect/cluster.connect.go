@@ -18,7 +18,7 @@ import (
 // generated with a version of connect newer than the one compiled into your binary. You can fix the
 // problem by either regenerating this code with an older version of connect or updating the connect
 // version compiled into your binary.
-const _ = connect.IsAtLeastVersion0_1_0
+const _ = connect.IsAtLeastVersion1_13_0
 
 const (
 	// ClusterServiceName is the fully-qualified name of the ClusterService service.
@@ -51,14 +51,33 @@ const (
 	ClusterServiceGetCredentialsProcedure = "/api.v1.ClusterService/GetCredentials"
 )
 
+// These variables are the protoreflect.Descriptor objects for the RPCs defined in this package.
+var (
+	clusterServiceServiceDescriptor              = v1.File_api_v1_cluster_proto.Services().ByName("ClusterService")
+	clusterServiceCreateMethodDescriptor         = clusterServiceServiceDescriptor.Methods().ByName("Create")
+	clusterServiceGetMethodDescriptor            = clusterServiceServiceDescriptor.Methods().ByName("Get")
+	clusterServiceListMethodDescriptor           = clusterServiceServiceDescriptor.Methods().ByName("List")
+	clusterServiceWatchStatusMethodDescriptor    = clusterServiceServiceDescriptor.Methods().ByName("WatchStatus")
+	clusterServiceDeleteMethodDescriptor         = clusterServiceServiceDescriptor.Methods().ByName("Delete")
+	clusterServiceUpdateMethodDescriptor         = clusterServiceServiceDescriptor.Methods().ByName("Update")
+	clusterServiceGetCredentialsMethodDescriptor = clusterServiceServiceDescriptor.Methods().ByName("GetCredentials")
+)
+
 // ClusterServiceClient is a client for the api.v1.ClusterService service.
 type ClusterServiceClient interface {
+	// Create a cluster
 	Create(context.Context, *connect.Request[v1.ClusterServiceCreateRequest]) (*connect.Response[v1.ClusterServiceCreateResponse], error)
+	// Get a cluster
 	Get(context.Context, *connect.Request[v1.ClusterServiceGetRequest]) (*connect.Response[v1.ClusterServiceGetResponse], error)
+	// List clusters
 	List(context.Context, *connect.Request[v1.ClusterServiceListRequest]) (*connect.Response[v1.ClusterServiceListResponse], error)
+	// WatchStatus of a cluster
 	WatchStatus(context.Context, *connect.Request[v1.ClusterServiceWatchStatusRequest]) (*connect.ServerStreamForClient[v1.ClusterServiceWatchStatusResponse], error)
+	// Delete a cluster
 	Delete(context.Context, *connect.Request[v1.ClusterServiceDeleteRequest]) (*connect.Response[v1.ClusterServiceDeleteResponse], error)
+	// Update a cluster
 	Update(context.Context, *connect.Request[v1.ClusterServiceUpdateRequest]) (*connect.Response[v1.ClusterServiceUpdateResponse], error)
+	// GetCredentials of a cluster
 	GetCredentials(context.Context, *connect.Request[v1.ClusterServiceGetCredentialsRequest]) (*connect.Response[v1.ClusterServiceGetCredentialsResponse], error)
 }
 
@@ -75,37 +94,44 @@ func NewClusterServiceClient(httpClient connect.HTTPClient, baseURL string, opts
 		create: connect.NewClient[v1.ClusterServiceCreateRequest, v1.ClusterServiceCreateResponse](
 			httpClient,
 			baseURL+ClusterServiceCreateProcedure,
-			opts...,
+			connect.WithSchema(clusterServiceCreateMethodDescriptor),
+			connect.WithClientOptions(opts...),
 		),
 		get: connect.NewClient[v1.ClusterServiceGetRequest, v1.ClusterServiceGetResponse](
 			httpClient,
 			baseURL+ClusterServiceGetProcedure,
-			opts...,
+			connect.WithSchema(clusterServiceGetMethodDescriptor),
+			connect.WithClientOptions(opts...),
 		),
 		list: connect.NewClient[v1.ClusterServiceListRequest, v1.ClusterServiceListResponse](
 			httpClient,
 			baseURL+ClusterServiceListProcedure,
-			opts...,
+			connect.WithSchema(clusterServiceListMethodDescriptor),
+			connect.WithClientOptions(opts...),
 		),
 		watchStatus: connect.NewClient[v1.ClusterServiceWatchStatusRequest, v1.ClusterServiceWatchStatusResponse](
 			httpClient,
 			baseURL+ClusterServiceWatchStatusProcedure,
-			opts...,
+			connect.WithSchema(clusterServiceWatchStatusMethodDescriptor),
+			connect.WithClientOptions(opts...),
 		),
 		delete: connect.NewClient[v1.ClusterServiceDeleteRequest, v1.ClusterServiceDeleteResponse](
 			httpClient,
 			baseURL+ClusterServiceDeleteProcedure,
-			opts...,
+			connect.WithSchema(clusterServiceDeleteMethodDescriptor),
+			connect.WithClientOptions(opts...),
 		),
 		update: connect.NewClient[v1.ClusterServiceUpdateRequest, v1.ClusterServiceUpdateResponse](
 			httpClient,
 			baseURL+ClusterServiceUpdateProcedure,
-			opts...,
+			connect.WithSchema(clusterServiceUpdateMethodDescriptor),
+			connect.WithClientOptions(opts...),
 		),
 		getCredentials: connect.NewClient[v1.ClusterServiceGetCredentialsRequest, v1.ClusterServiceGetCredentialsResponse](
 			httpClient,
 			baseURL+ClusterServiceGetCredentialsProcedure,
-			opts...,
+			connect.WithSchema(clusterServiceGetCredentialsMethodDescriptor),
+			connect.WithClientOptions(opts...),
 		),
 	}
 }
@@ -158,12 +184,19 @@ func (c *clusterServiceClient) GetCredentials(ctx context.Context, req *connect.
 
 // ClusterServiceHandler is an implementation of the api.v1.ClusterService service.
 type ClusterServiceHandler interface {
+	// Create a cluster
 	Create(context.Context, *connect.Request[v1.ClusterServiceCreateRequest]) (*connect.Response[v1.ClusterServiceCreateResponse], error)
+	// Get a cluster
 	Get(context.Context, *connect.Request[v1.ClusterServiceGetRequest]) (*connect.Response[v1.ClusterServiceGetResponse], error)
+	// List clusters
 	List(context.Context, *connect.Request[v1.ClusterServiceListRequest]) (*connect.Response[v1.ClusterServiceListResponse], error)
+	// WatchStatus of a cluster
 	WatchStatus(context.Context, *connect.Request[v1.ClusterServiceWatchStatusRequest], *connect.ServerStream[v1.ClusterServiceWatchStatusResponse]) error
+	// Delete a cluster
 	Delete(context.Context, *connect.Request[v1.ClusterServiceDeleteRequest]) (*connect.Response[v1.ClusterServiceDeleteResponse], error)
+	// Update a cluster
 	Update(context.Context, *connect.Request[v1.ClusterServiceUpdateRequest]) (*connect.Response[v1.ClusterServiceUpdateResponse], error)
+	// GetCredentials of a cluster
 	GetCredentials(context.Context, *connect.Request[v1.ClusterServiceGetCredentialsRequest]) (*connect.Response[v1.ClusterServiceGetCredentialsResponse], error)
 }
 
@@ -176,37 +209,44 @@ func NewClusterServiceHandler(svc ClusterServiceHandler, opts ...connect.Handler
 	clusterServiceCreateHandler := connect.NewUnaryHandler(
 		ClusterServiceCreateProcedure,
 		svc.Create,
-		opts...,
+		connect.WithSchema(clusterServiceCreateMethodDescriptor),
+		connect.WithHandlerOptions(opts...),
 	)
 	clusterServiceGetHandler := connect.NewUnaryHandler(
 		ClusterServiceGetProcedure,
 		svc.Get,
-		opts...,
+		connect.WithSchema(clusterServiceGetMethodDescriptor),
+		connect.WithHandlerOptions(opts...),
 	)
 	clusterServiceListHandler := connect.NewUnaryHandler(
 		ClusterServiceListProcedure,
 		svc.List,
-		opts...,
+		connect.WithSchema(clusterServiceListMethodDescriptor),
+		connect.WithHandlerOptions(opts...),
 	)
 	clusterServiceWatchStatusHandler := connect.NewServerStreamHandler(
 		ClusterServiceWatchStatusProcedure,
 		svc.WatchStatus,
-		opts...,
+		connect.WithSchema(clusterServiceWatchStatusMethodDescriptor),
+		connect.WithHandlerOptions(opts...),
 	)
 	clusterServiceDeleteHandler := connect.NewUnaryHandler(
 		ClusterServiceDeleteProcedure,
 		svc.Delete,
-		opts...,
+		connect.WithSchema(clusterServiceDeleteMethodDescriptor),
+		connect.WithHandlerOptions(opts...),
 	)
 	clusterServiceUpdateHandler := connect.NewUnaryHandler(
 		ClusterServiceUpdateProcedure,
 		svc.Update,
-		opts...,
+		connect.WithSchema(clusterServiceUpdateMethodDescriptor),
+		connect.WithHandlerOptions(opts...),
 	)
 	clusterServiceGetCredentialsHandler := connect.NewUnaryHandler(
 		ClusterServiceGetCredentialsProcedure,
 		svc.GetCredentials,
-		opts...,
+		connect.WithSchema(clusterServiceGetCredentialsMethodDescriptor),
+		connect.WithHandlerOptions(opts...),
 	)
 	return "/api.v1.ClusterService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {

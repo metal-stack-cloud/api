@@ -1,12 +1,16 @@
 import { SnapshotServiceDeleteRequest, SnapshotServiceDeleteResponse, SnapshotServiceGetRequest, SnapshotServiceGetResponse, SnapshotServiceListRequest, SnapshotServiceListResponse, VolumeServiceDeleteRequest, VolumeServiceDeleteResponse, VolumeServiceGetRequest, VolumeServiceGetResponse, VolumeServiceListRequest, VolumeServiceListResponse } from "./volume_pb.js";
 import { MethodKind } from "@bufbuild/protobuf";
 /**
+ * VolumeService serves volume related functions
+ *
  * @generated from service api.v1.VolumeService
  */
 export declare const VolumeService: {
     readonly typeName: "api.v1.VolumeService";
     readonly methods: {
         /**
+         * Get a volume
+         *
          * @generated from rpc api.v1.VolumeService.Get
          */
         readonly get: {
@@ -16,6 +20,8 @@ export declare const VolumeService: {
             readonly kind: MethodKind.Unary;
         };
         /**
+         * List the volumes
+         *
          * @generated from rpc api.v1.VolumeService.List
          */
         readonly list: {
@@ -25,6 +31,8 @@ export declare const VolumeService: {
             readonly kind: MethodKind.Unary;
         };
         /**
+         * Delete a volume
+         *
          * @generated from rpc api.v1.VolumeService.Delete
          */
         readonly delete: {
@@ -36,12 +44,16 @@ export declare const VolumeService: {
     };
 };
 /**
+ * SnapshotService serves snapshot related functions
+ *
  * @generated from service api.v1.SnapshotService
  */
 export declare const SnapshotService: {
     readonly typeName: "api.v1.SnapshotService";
     readonly methods: {
         /**
+         * Get a snapshot
+         *
          * @generated from rpc api.v1.SnapshotService.Get
          */
         readonly get: {
@@ -51,6 +63,8 @@ export declare const SnapshotService: {
             readonly kind: MethodKind.Unary;
         };
         /**
+         * List snapshots
+         *
          * @generated from rpc api.v1.SnapshotService.List
          */
         readonly list: {
@@ -60,6 +74,8 @@ export declare const SnapshotService: {
             readonly kind: MethodKind.Unary;
         };
         /**
+         * Delete a snapshot
+         *
          * @generated from rpc api.v1.SnapshotService.Delete
          */
         readonly delete: {

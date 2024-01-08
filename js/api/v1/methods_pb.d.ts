@@ -2,6 +2,8 @@ import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialM
 import { Message, proto3 } from "@bufbuild/protobuf";
 import { MethodPermission, TokenRole } from "./token_pb.js";
 /**
+ * MethodServiceListRequest is the request payload to list all public methods
+ *
  * @generated from message api.v1.MethodServiceListRequest
  */
 export declare class MethodServiceListRequest extends Message<MethodServiceListRequest> {
@@ -15,10 +17,14 @@ export declare class MethodServiceListRequest extends Message<MethodServiceListR
     static equals(a: MethodServiceListRequest | PlainMessage<MethodServiceListRequest> | undefined, b: MethodServiceListRequest | PlainMessage<MethodServiceListRequest> | undefined): boolean;
 }
 /**
+ * MethodServiceListResponse is the response payload with all public visible methods
+ *
  * @generated from message api.v1.MethodServiceListResponse
  */
 export declare class MethodServiceListResponse extends Message<MethodServiceListResponse> {
     /**
+     * Methods is a list of methods public callable
+     *
      * @generated from field: repeated string methods = 1;
      */
     methods: string[];
@@ -32,6 +38,8 @@ export declare class MethodServiceListResponse extends Message<MethodServiceList
     static equals(a: MethodServiceListResponse | PlainMessage<MethodServiceListResponse> | undefined, b: MethodServiceListResponse | PlainMessage<MethodServiceListResponse> | undefined): boolean;
 }
 /**
+ * MethodServiceTokenScopedListRequest is the request payload to list all methods callable with the token present in the request
+ *
  * @generated from message api.v1.MethodServiceTokenScopedListRequest
  */
 export declare class MethodServiceTokenScopedListRequest extends Message<MethodServiceTokenScopedListRequest> {
@@ -45,14 +53,20 @@ export declare class MethodServiceTokenScopedListRequest extends Message<MethodS
     static equals(a: MethodServiceTokenScopedListRequest | PlainMessage<MethodServiceTokenScopedListRequest> | undefined, b: MethodServiceTokenScopedListRequest | PlainMessage<MethodServiceTokenScopedListRequest> | undefined): boolean;
 }
 /**
+ * MethodServiceTokenScopedListResponse is the response payload which contains all methods which are callable with the given token
+ *
  * @generated from message api.v1.MethodServiceTokenScopedListResponse
  */
 export declare class MethodServiceTokenScopedListResponse extends Message<MethodServiceTokenScopedListResponse> {
     /**
+     * Permissions a list of methods which can be called
+     *
      * @generated from field: repeated api.v1.MethodPermission permissions = 1;
      */
     permissions: MethodPermission[];
     /**
+     * Roles a list of roles the presented token contains
+     *
      * @generated from field: repeated api.v1.TokenRole roles = 2;
      */
     roles: TokenRole[];

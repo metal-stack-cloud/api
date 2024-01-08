@@ -1,0 +1,72 @@
+syntax = "proto3";
+
+package api.v1;
+
+import "api/v1/common.proto";
+import "google/protobuf/timestamp.proto";
+import "validate/validate.proto";
+
+// ProjectService serves project related functions
+service ProjectService {
+  // List all accessible projects
+  rpc List(ProjectServiceListRequest) returns (ProjectServiceListResponse) {
+    option (visibility) = VISIBILITY_SELF;
+    option (auditing) = AUDITING_EXCLUDED;
+  }
+  // Get a project
+  rpc Get(ProjectServiceGetRequest) returns (ProjectServiceGetResponse) {
+    option (project_roles) = PROJECT_ROLE_OWNER;
+    option (project_roles) = PROJECT_ROLE_EDITOR;
+    option (project_roles) = PROJECT_ROLE_VIEWER;
+    option (auditing) = AUDITING_EXCLUDED;
+  }
+}
+
+// Project defines a group of resources belonging to a tenant
+// a tenant can have multiple projects
+message Project {
+  // Uuid of this project
+  string uuid = 1;
+  // Name of this project
+  string name = 2;
+  // Description of this project
+  string description = 3;
+  // Tenant this project belongs to
+  string tenant = 4;
+  // CreatedAt the date when this project was created
+  google.protobuf.Timestamp created_at = 10;
+  // UpdatedAt the date when this project was updated
+  google.protobuf.Timestamp updated_at = 11;
+}
+
+// ProjectServiceListRequest is the request payload to list all projects
+message ProjectServiceListRequest {
+  // Name list only projects with this name
+  optional string name = 1 [(validate.rules).string = {
+    min_len: 2,
+    max_len: 128,
+  }];
+  // Tenant list only projects of this tenant
+  optional string tenant = 2 [(validate.rules).string = {
+    min_len: 2,
+    max_len: 128,
+  }];
+}
+
+// ProjectServiceListResponse is the response payload to list all projects
+message ProjectServiceListResponse {
+  // Projects is a list of all your projects
+  repeated Project projects = 1;
+}
+
+// ProjectServiceGetRequest is the request payload to get a project
+message ProjectServiceGetRequest {
+  // Project is the uuid of the project to get
+  string project = 1 [(validate.rules).string.uuid = true];
+}
+
+// ProjectServiceGetResponse is the response payload to get a projects
+message ProjectServiceGetResponse {
+  // Project is the project
+  Project project = 1;
+}

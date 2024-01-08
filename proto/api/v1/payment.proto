@@ -6,53 +6,66 @@ import "api/v1/common.proto";
 import "google/protobuf/timestamp.proto";
 import "validate/validate.proto";
 
+// PaymentService serves payment related functions
 service PaymentService {
+  // CreateOrUpdateCustomer the payment data on the payment processor
   rpc CreateOrUpdateCustomer(PaymentServiceCreateOrUpdateCustomerRequest) returns (PaymentServiceCreateOrUpdateCustomerResponse) {
     option (tenant_roles) = TENANT_ROLE_OWNER;
   }
+  // GetCustomer from the payment processor
   rpc GetCustomer(PaymentServiceGetCustomerRequest) returns (PaymentServiceGetCustomerResponse) {
     option (tenant_roles) = TENANT_ROLE_OWNER;
     option (auditing) = AUDITING_EXCLUDED;
   }
+  // GetCustomerWithLogin from the payment processor
   rpc GetCustomerWithLogin(PaymentServiceGetCustomerWithLoginRequest) returns (PaymentServiceGetCustomerWithLoginResponse) {
     option (tenant_roles) = TENANT_ROLE_OWNER;
   }
+  // CheckIfCustomerExists at the payment processor
   rpc CheckIfCustomerExists(PaymentServiceCheckIfCustomerExistsRequest) returns (PaymentServiceCheckIfCustomerExistsResponse) {
     option (tenant_roles) = TENANT_ROLE_OWNER;
     option (auditing) = AUDITING_EXCLUDED;
   }
+  // HasPaymentMethod check if the customer has a payment method provided
   rpc HasPaymentMethod(PaymentServiceHasPaymentMethodRequest) returns (PaymentServiceHasPaymentMethodResponse) {
     option (tenant_roles) = TENANT_ROLE_OWNER;
     option (tenant_roles) = TENANT_ROLE_EDITOR;
     option (tenant_roles) = TENANT_ROLE_VIEWER;
     option (auditing) = AUDITING_EXCLUDED;
   }
+  // DeletePaymentMethod of the customer
   rpc DeletePaymentMethod(PaymentServiceDeletePaymentMethodRequest) returns (PaymentServiceDeletePaymentMethodResponse) {
     option (tenant_roles) = TENANT_ROLE_OWNER;
   }
+  // GetSubscriptionUsage of the customer
   rpc GetSubscriptionUsage(PaymentServiceGetSubscriptionUsageRequest) returns (PaymentServiceGetSubscriptionUsageResponse) {
     option (tenant_roles) = TENANT_ROLE_OWNER;
     option (auditing) = AUDITING_EXCLUDED;
   }
+  // GetInvoices of the customer
   rpc GetInvoices(PaymentServiceGetInvoicesRequest) returns (PaymentServiceGetInvoicesResponse) {
     option (tenant_roles) = TENANT_ROLE_OWNER;
     option (auditing) = AUDITING_EXCLUDED;
   }
+  // GetDefaultPrices of the products on the platform
   rpc GetDefaultPrices(PaymentServiceGetDefaultPricesRequest) returns (PaymentServiceGetDefaultPricesResponse) {
     option (visibility) = VISIBILITY_PUBLIC;
     option (auditing) = AUDITING_EXCLUDED;
   }
+  // CheckAdmitted if the customer is allowed to use the service on the platform
   rpc CheckAdmitted(PaymentServiceCheckAdmittedRequest) returns (PaymentServiceCheckAdmittedResponse) {
     option (tenant_roles) = TENANT_ROLE_OWNER;
     option (tenant_roles) = TENANT_ROLE_EDITOR;
     option (tenant_roles) = TENANT_ROLE_VIEWER;
     option (auditing) = AUDITING_EXCLUDED;
   }
+  // RequestAdmission for a customer to get allowed to used the service
   rpc RequestAdmission(PaymentServiceRequestAdmissionRequest) returns (PaymentServiceRequestAdmissionResponse) {
     option (tenant_roles) = TENANT_ROLE_OWNER;
     option (tenant_roles) = TENANT_ROLE_EDITOR;
     option (auditing) = AUDITING_EXCLUDED;
   }
+  // HasChargeableResources checks if the customer has resources actually consumed which are chargeable
   rpc HasChargeableResources(PaymentServiceHasChargeableResourcesRequest) returns (PaymentServiceHasChargeableResourcesResponse) {
     option (tenant_roles) = TENANT_ROLE_OWNER;
     option (tenant_roles) = TENANT_ROLE_EDITOR;
@@ -61,213 +74,334 @@ service PaymentService {
   }
 }
 
+// PaymentCustomer is a customer at the payment processor
 message PaymentCustomer {
+  // Login of the customer
   string login = 1;
+  // Name of the customer
   optional string name = 2;
+  // CustomerId id of the customer
   optional string customer_id = 3;
+  // PaymentMethodId at the payment processor
   optional string payment_method_id = 4;
+  // SubscriptionId of the customer
   string subscription_id = 5;
+  // Email of the customer
   optional string email = 6;
+  // Card the customer supplied
   optional Card card = 7;
+  // Prices which apply to customer resources
   repeated Price prices = 8;
+  // Address is the postal address of the customer
   Address address = 9;
+  // Coupon details of granted coupon if any
   optional Coupon coupon = 10;
+  // Vat which applies to the customer
   optional string vat = 11;
+  // PhoneNumber of the customer
   optional string phone_number = 12;
+  // Balance actual balance of the customer
+  optional int64 balance = 13;
 }
 
+// Card is the payment card the customer pays with
 message Card {
+  // Brand of the card
   string brand = 1;
+  // Country where the card was issued
   string country = 2;
+  // ExpMonth is the month when this card expires
   int64 exp_month = 3;
+  // ExpYear is the year when this card expires
   int64 exp_year = 4;
+  // Last4 are the 4 last digits of the card number, the full number is not stored anywhere
   string last_4 = 5;
 }
 
+// Price of a product
 message Price {
+  // Name of the price
   string name = 1;
+  // UnitAmountDecimal the value of this price
   double unit_amount_decimal = 2;
+  // Currency of this price
   string currency = 3;
+  // UnitLabel is a label which allows for searching this unit at the payment processor
   string unit_label = 4;
+  // ProductType this price applies to
   ProductType product_type = 5;
+  // Description of this price
   optional string description = 6 [(validate.rules).string = {
     min_len: 2,
     max_len: 500,
   }];
 }
 
+// ProductType defines for which type of product a price applies
 enum ProductType {
+  // PRODUCT_TYPE_UNSPECIFIED is unspecified
   PRODUCT_TYPE_UNSPECIFIED = 0;
+  // PRODUCT_TYPE_STORAGE for storage
   PRODUCT_TYPE_STORAGE = 1;
+  // PRODUCT_TYPE_COMPUTE for compute, e.g. machines
   PRODUCT_TYPE_COMPUTE = 2;
+  // PRODUCT_TYPE_NETWORK for network, e.g. ips and traffic
   PRODUCT_TYPE_NETWORK = 3;
+  // PRODUCT_TYPE_KUBERNETES for kubernetes, e.g. the control plane
   PRODUCT_TYPE_KUBERNETES = 5;
 }
 
+// Address postal address of a customer
 message Address {
+  // Line1 the first address line
   string line1 = 1;
+  // Line2 the second address line
   string line2 = 2;
+  // PostalCode of the city or address
   string postal_code = 3;
+  // City where the customer lives
   string city = 4;
+  // Sate where the customer lives
   string state = 5;
+  // Country where the customer lives
   string country = 6;
 }
 
+// SubscriptionUsageItem details of a subscription
 message SubscriptionUsageItem {
+  // SubscriptionItemId is the id of the subscription
   string subscription_item_id = 1;
+  // SubscriptionItemName is the name of the subscription
   string subscription_item_name = 2;
+  // TotalUsage of this subscription
   int64 total_usage = 3;
+  // PeriodStart is the start date of this subscription
   google.protobuf.Timestamp period_start = 4;
+  // PeriodEnd is the end date of this subscription
   google.protobuf.Timestamp period_end = 5;
 }
 
+// Invoice a customer has to pay for subscription usage
 message Invoice {
+  // Id of the invoice
   string id = 1;
+  // PdfDownloadUrl is the url where the customer can download this invoice in pdf format
   string pdf_download_url = 2;
+  // PeriodStart is the start date of this subscription
   google.protobuf.Timestamp period_start = 4;
+  // PeriodEnd is the end date of this subscription
   google.protobuf.Timestamp period_end = 5;
 }
 
+// Coupon is a amount of free usage which can be granted to a customer
 message Coupon {
+  // Id of the coupon
   string id = 1;
+  // Name of this coupon
   string name = 2;
+  // AmountOff is th amount the customer can use for free
   int64 amount_off = 3;
+  // Currency of the free usage amount
   string currency = 4;
+  // DurationInMonth defines how many month this coupon is valid for
   int64 duration_in_month = 5;
+  // CreatedAt is the date the coupon was created
   google.protobuf.Timestamp created_at = 6;
+  // RedeemBy is the date when this coupon can no longer be used
   google.protobuf.Timestamp redeem_by = 7;
+  // TimesRedeemed how often this coupon was already consumed
   int64 times_redeemed = 8;
+  // MaxRedemptions defines how often this coupon can be consumed
   int64 max_redemptions = 9;
+  // AmountLeft how many usages are left for this coupon
   int64 amount_left = 10;
 }
 
+// PaymentServiceCreateOrUpdateCustomerRequest is the request payload for a payment create or update customer request
 message PaymentServiceCreateOrUpdateCustomerRequest {
+  // Login of the customer
   string login = 1 [(validate.rules).string = {
     min_len: 2,
     max_len: 128,
   }];
+  // Customer is the customer to modify
   PaymentCustomer customer = 2;
+  // AcceptedTermsAndConditions indicates the modification of the terms and conditions acceptance
   bool accepted_terms_and_conditions = 3;
 }
 
+// PaymentServiceCreateOrUpdateCustomerResponse is the response payload for a payment create or update customer request
 message PaymentServiceCreateOrUpdateCustomerResponse {
+  // Customer is the customer
   PaymentCustomer customer = 1;
 }
 
+// PaymentServiceGetCustomerRequest is the request payload for a payment get customer request
 message PaymentServiceGetCustomerRequest {
+  // Login of the customer
   string login = 1 [(validate.rules).string = {
     min_len: 2,
     max_len: 128,
   }];
+  // CustomerId of the customer
   string customer_id = 2;
 }
 
+// PaymentServiceGetCustomerResponse is the response payload for a payment get customer request
 message PaymentServiceGetCustomerResponse {
+  // Customer is the customer
   PaymentCustomer customer = 1;
 }
 
+// PaymentServiceGetCustomerWithLoginRequest is the request payload for a payment get customer request
 message PaymentServiceGetCustomerWithLoginRequest {
+  // Login of the customer
   string login = 1 [(validate.rules).string = {
     min_len: 2,
     max_len: 128,
   }];
 }
 
+// PaymentServiceGetCustomerWithLoginResponse is the response payload for a payment get customer request
 message PaymentServiceGetCustomerWithLoginResponse {
+  // Customer is the customer
   PaymentCustomer customer = 1;
 }
 
+// PaymentServiceCheckIfCustomerExistsRequest is the request payload for a payment check if customer exists request
 message PaymentServiceCheckIfCustomerExistsRequest {
+  // Login of the customer
   string login = 1 [(validate.rules).string = {
     min_len: 2,
     max_len: 128,
   }];
 }
 
+// PaymentServiceCheckIfCustomerExistsResponse is the response payload for a payment check if customer exists request
 message PaymentServiceCheckIfCustomerExistsResponse {
+  // Customer is the customer
   PaymentCustomer customer = 1;
+  // Exists indicates if this customer exists
   bool exists = 2;
 }
 
+// PaymentServiceHasPaymentMethodRequest is the request payload for a has payment request
 message PaymentServiceHasPaymentMethodRequest {
+  // Login of the customer
   string login = 1 [(validate.rules).string = {
     min_len: 2,
     max_len: 128,
   }];
+  // Project for which the payment method should be checked
   string project = 2 [(validate.rules).string = {
     min_len: 2,
     max_len: 128,
   }];
 }
 
+// PaymentServiceHasPaymentMethodResponse is the response payload for a has payment request
 message PaymentServiceHasPaymentMethodResponse {
+  // Exists indicates if this customer has a payment method
   bool exists = 1;
+  // CouponLeft is true if there is still free amount on the coupon left
   bool coupon_left = 2;
+  // PositiveBalance indicates if the customer still has positive balance
+  bool positive_balance = 3;
 }
 
+// PaymentServiceDeletePaymentMethodRequest is the request payload for a delete payment request
 message PaymentServiceDeletePaymentMethodRequest {
+  // Login of the customer
   string login = 1 [(validate.rules).string = {
     min_len: 2,
     max_len: 128,
   }];
 }
 
+// PaymentServiceDeletePaymentMethodResponse is the response payload for a delete payment request
 message PaymentServiceDeletePaymentMethodResponse {}
 
+// PaymentServiceGetSubscriptionUsageRequest is the request payload for a get subscription usage request
 message PaymentServiceGetSubscriptionUsageRequest {
+  // Login of the customer
   string login = 1 [(validate.rules).string = {
     min_len: 2,
     max_len: 128,
   }];
 }
 
+// PaymentServiceGetSubscriptionUsageResponse is the response payload for a get subscription usage request
 message PaymentServiceGetSubscriptionUsageResponse {
+  // SubscriptionUsageItems is a list of usage for all subscriptions
   repeated SubscriptionUsageItem subscription_usage_items = 1;
 }
 
+// PaymentServiceHasPaymentMethodRequest is the request payload for a get invoices request
 message PaymentServiceGetInvoicesRequest {
+  // Login of the customer
   string login = 1 [(validate.rules).string = {
     min_len: 2,
     max_len: 128,
   }];
+  // CustomerId is the id of the customer
   string customer_id = 2 [(validate.rules).string = {
     min_len: 18,
     max_len: 18,
   }];
 }
 
+// PaymentServiceGetInvoicesResponse is the response payload for a get invoices request
 message PaymentServiceGetInvoicesResponse {
+  // Invoices is the list of invoices
   repeated Invoice invoices = 1;
 }
 
+// PaymentServiceGetDefaultPricesRequest is the request payload for a get default prices request
 message PaymentServiceGetDefaultPricesRequest {}
 
+// PaymentServiceGetDefaultPricesResponse is the response payload for a get default prices request
 message PaymentServiceGetDefaultPricesResponse {
+  // Prices is the list of default prices
   repeated Price prices = 1;
 }
 
+// PaymentServiceCheckAdmittedRequest is the request payload for a check admitted request
 message PaymentServiceCheckAdmittedRequest {
+  // Login of the customer
   string login = 1;
 }
 
+// PaymentServiceCheckAdmittedResponse is the response payload for a check admitted request
 message PaymentServiceCheckAdmittedResponse {
+  // Admitted indicates if the customer is already admitted to use the service
   bool admitted = 1;
+  // Requested indicates if the customer requested admittance
   bool requested = 2;
 }
 
+// PaymentServiceRequestAdmissionRequest is the request payload for a admission request
 message PaymentServiceRequestAdmissionRequest {
+  // Login of the customer
   string login = 1;
+  // Customer is the customer
   PaymentCustomer customer = 2;
+  // AcceptedTermsAndConditions indicates if the customer already accepted the terms and conditions
   bool accepted_terms_and_conditions = 3;
+  // EmailConsent indicates if the customer already gave consent to email
   bool email_consent = 4;
 }
 
+// PaymentServiceRequestAdmissionResponse is the response payload for a admission request
 message PaymentServiceRequestAdmissionResponse {}
 
+// PaymentServiceHasChargeableResourcesRequest is the request payload for a has chargeable request
 message PaymentServiceHasChargeableResourcesRequest {
+  // Login of the customer
   string login = 1;
 }
 
+// PaymentServiceHasChargeableResourcesResponse is the response payload for a has chargeable request
 message PaymentServiceHasChargeableResourcesResponse {
+  // HasResources indicates if the customer has actually chargable resources
   bool has_resources = 1;
 }

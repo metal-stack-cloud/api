@@ -6,7 +6,9 @@ import "api/v1/common.proto";
 import "api/v1/payment.proto";
 import "google/protobuf/timestamp.proto";
 
+// TenantService serves tenant related functions
 service TenantService {
+  // Create a tenant
   rpc Create(TenantServiceCreateRequest) returns (TenantServiceCreateResponse) {
     option (tenant_roles) = TENANT_ROLE_OWNER;
     option (tenant_roles) = TENANT_ROLE_EDITOR;
@@ -16,106 +18,163 @@ service TenantService {
   rpc CreateOrUpdate(TenantServiceCreateOrUpdateRequest) returns (TenantServiceCreateOrUpdateResponse) {
     option (visibility) = VISIBILITY_PRIVATE;
   }
-
+  // Get a tenant
   rpc Get(TenantServiceGetRequest) returns (TenantServiceGetResponse) {
     option (tenant_roles) = TENANT_ROLE_OWNER;
     option (tenant_roles) = TENANT_ROLE_EDITOR;
     option (tenant_roles) = TENANT_ROLE_VIEWER;
     option (auditing) = AUDITING_EXCLUDED;
   }
+  // Update a tenant
   rpc Update(TenantServiceUpdateRequest) returns (TenantServiceUpdateResponse) {
     option (tenant_roles) = TENANT_ROLE_OWNER;
     option (tenant_roles) = TENANT_ROLE_EDITOR;
   }
+  // Delete a tenant
   rpc Delete(TenantServiceDeleteRequest) returns (TenantServiceDeleteResponse) {
     option (tenant_roles) = TENANT_ROLE_OWNER;
     option (tenant_roles) = TENANT_ROLE_EDITOR;
   }
 }
 
-// Tenant
+// Tenant is a customer of the platform
 message Tenant {
-  // the login at the provider
+  // Login of the tenant
   string login = 1;
+  // Name if the tenant
   string name = 2;
+  // Email of the tenant
   string email = 3;
+  // AvatarUrl of the tenant
   string avatar_url = 5;
+  // OauthProvider of the tenant
   OAuthProvider oauth_provider = 6;
+  // PaymentDetails the tenant provides
   PaymentDetails payment_details = 8;
+  // Admitted indicates if this tenant is allowed to use the platform
   bool admitted = 9;
+  // PhoneNumber of the tenant
   string phone_number = 10;
+  // TermsAndConditions the tenant accepted
   TermsAndConditions terms_and_conditions = 11;
+  // EmailConsent the tenant made
   bool email_consent = 12;
-
+  // CreatedAt the date when this tenant was created
   google.protobuf.Timestamp created_at = 20;
+  // UpdatedAt the date when this tenant was updated
   google.protobuf.Timestamp updated_at = 21;
+  // DeletedAt the date when this tenant was deleted
   google.protobuf.Timestamp deleted_at = 22;
 }
 
+// PaymentDetails of a tenant
 message PaymentDetails {
+  // CustomerId at the payment processor
   string customer_id = 1;
+  // PaymentMethodId of the tenant at the payment processor
   optional string payment_method_id = 2;
+  // SubscriptionId at the payment processor
   string subscription_id = 3;
+  // Coupons a list of coupons the tenant has
   repeated Coupon coupons = 4;
+  // Vat which applies to this tenant
   string vat = 5;
 }
 
+// PaymentDetailsUpdate is used to update PaymentDetails
 message PaymentDetailsUpdate {
+  // CustomerId at the payment processor
   optional string customer_id = 1;
+  // PaymentMethodId of the tenant at the payment processor
   optional string payment_method_id = 2;
+  // SubscriptionId at the payment processor
   optional string subscription_id = 3;
+  // Vat which applies to this tenant
   optional string vat = 4;
 }
 
+// TermsAndConditions the tenant accepted
 message TermsAndConditions {
+  // Accepted indicates if the tenant accepted the terms and conditions
   bool accepted = 1;
+  // When is the date when the tenant accepted the terms and conditions
   google.protobuf.Timestamp when = 2;
 }
 
+// TermsAndConditionsUpdate
 message TermsAndConditionsUpdate {
+  // Accepted indicates if the tenant accepted the terms and conditions
   optional bool accepted = 1;
+  // When is the date when the tenant accepted the terms and conditions
   optional google.protobuf.Timestamp when = 2;
 }
 
-// Requests
-
+// TenantServiceGetRequest is the request payload of the tenant get request
 message TenantServiceGetRequest {
+  // Login of the tenant
   string login = 1;
 }
+
+// TenantServiceCreateRequest is the request payload of the tenant create request
 message TenantServiceCreateRequest {
-  Tenant tenant = 1;
-}
-message TenantServiceCreateOrUpdateRequest {
+  // Tenant the tenant to create
   Tenant tenant = 1;
 }
 
+// TenantServiceCreateOrUpdateRequest is the request payload of the tenant create or update request
+message TenantServiceCreateOrUpdateRequest {
+  // Tenant the tenant to create or update
+  Tenant tenant = 1;
+}
+
+// TenantServiceUpdateRequest is the request payload of the tenant update request
 message TenantServiceUpdateRequest {
-  // the login at the provider
+  // Login of the tenant
   string login = 1;
+  // Name of the tenant
   optional string name = 2;
+  // Email of the tenant
   optional string email = 3;
+  // AvatarUrl of the tenant
   optional string avatar_url = 5;
+  // PaymentDetails of the tenant
   optional PaymentDetailsUpdate payment_details = 8;
+  // TermsAndConditions of the tenant
   optional TermsAndConditionsUpdate terms_and_conditions = 9;
 }
 
+// TenantServiceDeleteRequest is the request payload of the tenant delete request
 message TenantServiceDeleteRequest {
+  // Login of the tenant
   string login = 1;
 }
 
-// Responses
+// TenantServiceGetResponse is the response payload of the tenant get request
 message TenantServiceGetResponse {
+  // Tenant is the tenant
   Tenant tenant = 1;
 }
+
+// TenantServiceCreateResponse is the response payload of the tenant create request
 message TenantServiceCreateResponse {
+  // Tenant is the tenant
   Tenant tenant = 1;
 }
+
+// TenantServiceCreateOrUpdateResponse is the response payload of the tenant create or update request
 message TenantServiceCreateOrUpdateResponse {
+  // Tenant is the tenant
   Tenant tenant = 1;
 }
+
+// TenantServiceUpdateResponse is the response payload of the tenant update request
 message TenantServiceUpdateResponse {
+  // Tenant is the tenant
   Tenant tenant = 1;
 }
+
+// TenantServiceDeleteResponse is the response payload of the tenant delete request
 message TenantServiceDeleteResponse {
+  // Tenant is the tenant
   Tenant tenant = 1;
 }

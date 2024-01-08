@@ -362,6 +362,21 @@ func (m *TenantServiceAdmitRequest) validate(all bool) error {
 		// no validation rules for CouponId
 	}
 
+	if m.BalanceToAdd != nil {
+
+		if m.GetBalanceToAdd() <= 0 {
+			err := TenantServiceAdmitRequestValidationError{
+				field:  "BalanceToAdd",
+				reason: "value must be greater than 0",
+			}
+			if !all {
+				return err
+			}
+			errors = append(errors, err)
+		}
+
+	}
+
 	if len(errors) > 0 {
 		return TenantServiceAdmitRequestMultiError(errors)
 	}
