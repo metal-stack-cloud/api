@@ -2,7 +2,7 @@
 
 You must first get a API Token and the Project ID to access the metalstack.cloud api then export this as environment variables.
 
-TODO: howto figure out the project id ?
+You can get the Project ID from the [console](https://console.metalstack.cloud) as described [here](https://metalstack.cloud/en/documentation/DeveloperGuide/go-api-client).
 
 ```bash
 export API_TOKEN=yourapitoken
