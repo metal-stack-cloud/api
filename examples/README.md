@@ -16,7 +16,8 @@ Golang:
 go run go/cluster-list.go
 
 Typescript:
-npx tsx ts/cluster-list.ts
+cd ts && npm install
+npx tsx cluster-list.ts
 
 Ansible:
 ansible-playbook ansible/cluster-list.yaml
