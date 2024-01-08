@@ -3,14 +3,7 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import type {
-  BinaryReadOptions,
-  FieldList,
-  JsonReadOptions,
-  JsonValue,
-  PartialMessage,
-  PlainMessage,
-} from "@bufbuild/protobuf";
+import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
 import { Duration, Message, proto3, Timestamp } from "@bufbuild/protobuf";
 
 /**
@@ -137,41 +130,23 @@ export class Cluster extends Message<Cluster> {
     { no: 11, name: "updated_at", kind: "message", T: Timestamp },
     { no: 12, name: "deleted_at", kind: "message", T: Timestamp },
     { no: 20, name: "status", kind: "message", T: ClusterStatus },
-    {
-      no: 21,
-      name: "purpose",
-      kind: "scalar",
-      T: 9 /* ScalarType.STRING */,
-      opt: true,
-    },
+    { no: 21, name: "purpose", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
     { no: 22, name: "monitoring", kind: "message", T: ClusterMonitoring },
   ]);
 
-  static fromBinary(
-    bytes: Uint8Array,
-    options?: Partial<BinaryReadOptions>
-  ): Cluster {
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Cluster {
     return new Cluster().fromBinary(bytes, options);
   }
 
-  static fromJson(
-    jsonValue: JsonValue,
-    options?: Partial<JsonReadOptions>
-  ): Cluster {
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): Cluster {
     return new Cluster().fromJson(jsonValue, options);
   }
 
-  static fromJsonString(
-    jsonString: string,
-    options?: Partial<JsonReadOptions>
-  ): Cluster {
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): Cluster {
     return new Cluster().fromJsonString(jsonString, options);
   }
 
-  static equals(
-    a: Cluster | PlainMessage<Cluster> | undefined,
-    b: Cluster | PlainMessage<Cluster> | undefined
-  ): boolean {
+  static equals(a: Cluster | PlainMessage<Cluster> | undefined, b: Cluster | PlainMessage<Cluster> | undefined): boolean {
     return proto3.util.equals(Cluster, a, b);
   }
 }
@@ -200,31 +175,19 @@ export class KubernetesSpec extends Message<KubernetesSpec> {
     { no: 1, name: "version", kind: "scalar", T: 9 /* ScalarType.STRING */ },
   ]);
 
-  static fromBinary(
-    bytes: Uint8Array,
-    options?: Partial<BinaryReadOptions>
-  ): KubernetesSpec {
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): KubernetesSpec {
     return new KubernetesSpec().fromBinary(bytes, options);
   }
 
-  static fromJson(
-    jsonValue: JsonValue,
-    options?: Partial<JsonReadOptions>
-  ): KubernetesSpec {
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): KubernetesSpec {
     return new KubernetesSpec().fromJson(jsonValue, options);
   }
 
-  static fromJsonString(
-    jsonString: string,
-    options?: Partial<JsonReadOptions>
-  ): KubernetesSpec {
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): KubernetesSpec {
     return new KubernetesSpec().fromJsonString(jsonString, options);
   }
 
-  static equals(
-    a: KubernetesSpec | PlainMessage<KubernetesSpec> | undefined,
-    b: KubernetesSpec | PlainMessage<KubernetesSpec> | undefined
-  ): boolean {
+  static equals(a: KubernetesSpec | PlainMessage<KubernetesSpec> | undefined, b: KubernetesSpec | PlainMessage<KubernetesSpec> | undefined): boolean {
     return proto3.util.equals(KubernetesSpec, a, b);
   }
 }
@@ -264,48 +227,24 @@ export class Maintenance extends Message<Maintenance> {
   static readonly runtime: typeof proto3 = proto3;
   static readonly typeName = "api.v1.Maintenance";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    {
-      no: 1,
-      name: "kubernetes_autoupdate",
-      kind: "scalar",
-      T: 8 /* ScalarType.BOOL */,
-      opt: true,
-    },
-    {
-      no: 2,
-      name: "machineimage_autoupdate",
-      kind: "scalar",
-      T: 8 /* ScalarType.BOOL */,
-      opt: true,
-    },
+    { no: 1, name: "kubernetes_autoupdate", kind: "scalar", T: 8 /* ScalarType.BOOL */, opt: true },
+    { no: 2, name: "machineimage_autoupdate", kind: "scalar", T: 8 /* ScalarType.BOOL */, opt: true },
     { no: 3, name: "time_window", kind: "message", T: MaintenanceTimeWindow },
   ]);
 
-  static fromBinary(
-    bytes: Uint8Array,
-    options?: Partial<BinaryReadOptions>
-  ): Maintenance {
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Maintenance {
     return new Maintenance().fromBinary(bytes, options);
   }
 
-  static fromJson(
-    jsonValue: JsonValue,
-    options?: Partial<JsonReadOptions>
-  ): Maintenance {
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): Maintenance {
     return new Maintenance().fromJson(jsonValue, options);
   }
 
-  static fromJsonString(
-    jsonString: string,
-    options?: Partial<JsonReadOptions>
-  ): Maintenance {
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): Maintenance {
     return new Maintenance().fromJsonString(jsonString, options);
   }
 
-  static equals(
-    a: Maintenance | PlainMessage<Maintenance> | undefined,
-    b: Maintenance | PlainMessage<Maintenance> | undefined
-  ): boolean {
+  static equals(a: Maintenance | PlainMessage<Maintenance> | undefined, b: Maintenance | PlainMessage<Maintenance> | undefined): boolean {
     return proto3.util.equals(Maintenance, a, b);
   }
 }
@@ -317,12 +256,14 @@ export class Maintenance extends Message<Maintenance> {
  */
 export class MaintenanceTimeWindow extends Message<MaintenanceTimeWindow> {
   /**
+   * Begin of the MaintenanceTimeWindow
+   *
    * @generated from field: api.v1.Time begin = 1;
    */
   begin?: Time;
 
   /**
-   * Duration of the time window
+   * Duration of the MaintenanceTimeWindow
    *
    * @generated from field: google.protobuf.Duration duration = 2;
    */
@@ -340,31 +281,19 @@ export class MaintenanceTimeWindow extends Message<MaintenanceTimeWindow> {
     { no: 2, name: "duration", kind: "message", T: Duration },
   ]);
 
-  static fromBinary(
-    bytes: Uint8Array,
-    options?: Partial<BinaryReadOptions>
-  ): MaintenanceTimeWindow {
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): MaintenanceTimeWindow {
     return new MaintenanceTimeWindow().fromBinary(bytes, options);
   }
 
-  static fromJson(
-    jsonValue: JsonValue,
-    options?: Partial<JsonReadOptions>
-  ): MaintenanceTimeWindow {
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): MaintenanceTimeWindow {
     return new MaintenanceTimeWindow().fromJson(jsonValue, options);
   }
 
-  static fromJsonString(
-    jsonString: string,
-    options?: Partial<JsonReadOptions>
-  ): MaintenanceTimeWindow {
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): MaintenanceTimeWindow {
     return new MaintenanceTimeWindow().fromJsonString(jsonString, options);
   }
 
-  static equals(
-    a: MaintenanceTimeWindow | PlainMessage<MaintenanceTimeWindow> | undefined,
-    b: MaintenanceTimeWindow | PlainMessage<MaintenanceTimeWindow> | undefined
-  ): boolean {
+  static equals(a: MaintenanceTimeWindow | PlainMessage<MaintenanceTimeWindow> | undefined, b: MaintenanceTimeWindow | PlainMessage<MaintenanceTimeWindow> | undefined): boolean {
     return proto3.util.equals(MaintenanceTimeWindow, a, b);
   }
 }
@@ -409,31 +338,19 @@ export class Time extends Message<Time> {
     { no: 3, name: "timezone", kind: "scalar", T: 9 /* ScalarType.STRING */ },
   ]);
 
-  static fromBinary(
-    bytes: Uint8Array,
-    options?: Partial<BinaryReadOptions>
-  ): Time {
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Time {
     return new Time().fromBinary(bytes, options);
   }
 
-  static fromJson(
-    jsonValue: JsonValue,
-    options?: Partial<JsonReadOptions>
-  ): Time {
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): Time {
     return new Time().fromJson(jsonValue, options);
   }
 
-  static fromJsonString(
-    jsonString: string,
-    options?: Partial<JsonReadOptions>
-  ): Time {
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): Time {
     return new Time().fromJsonString(jsonString, options);
   }
 
-  static equals(
-    a: Time | PlainMessage<Time> | undefined,
-    b: Time | PlainMessage<Time> | undefined
-  ): boolean {
+  static equals(a: Time | PlainMessage<Time> | undefined, b: Time | PlainMessage<Time> | undefined): boolean {
     return proto3.util.equals(Time, a, b);
   }
 }
@@ -495,48 +412,26 @@ export class Worker extends Message<Worker> {
   static readonly typeName = "api.v1.Worker";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
     { no: 1, name: "name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    {
-      no: 2,
-      name: "machine_type",
-      kind: "scalar",
-      T: 9 /* ScalarType.STRING */,
-    },
+    { no: 2, name: "machine_type", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 3, name: "minsize", kind: "scalar", T: 13 /* ScalarType.UINT32 */ },
     { no: 4, name: "maxsize", kind: "scalar", T: 13 /* ScalarType.UINT32 */ },
     { no: 5, name: "maxsurge", kind: "scalar", T: 13 /* ScalarType.UINT32 */ },
-    {
-      no: 6,
-      name: "maxunavailable",
-      kind: "scalar",
-      T: 13 /* ScalarType.UINT32 */,
-    },
+    { no: 6, name: "maxunavailable", kind: "scalar", T: 13 /* ScalarType.UINT32 */ },
   ]);
 
-  static fromBinary(
-    bytes: Uint8Array,
-    options?: Partial<BinaryReadOptions>
-  ): Worker {
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Worker {
     return new Worker().fromBinary(bytes, options);
   }
 
-  static fromJson(
-    jsonValue: JsonValue,
-    options?: Partial<JsonReadOptions>
-  ): Worker {
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): Worker {
     return new Worker().fromJson(jsonValue, options);
   }
 
-  static fromJsonString(
-    jsonString: string,
-    options?: Partial<JsonReadOptions>
-  ): Worker {
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): Worker {
     return new Worker().fromJsonString(jsonString, options);
   }
 
-  static equals(
-    a: Worker | PlainMessage<Worker> | undefined,
-    b: Worker | PlainMessage<Worker> | undefined
-  ): boolean {
+  static equals(a: Worker | PlainMessage<Worker> | undefined, b: Worker | PlainMessage<Worker> | undefined): boolean {
     return proto3.util.equals(Worker, a, b);
   }
 }
@@ -598,68 +493,26 @@ export class WorkerUpdate extends Message<WorkerUpdate> {
   static readonly typeName = "api.v1.WorkerUpdate";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
     { no: 1, name: "name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    {
-      no: 2,
-      name: "machine_type",
-      kind: "scalar",
-      T: 9 /* ScalarType.STRING */,
-      opt: true,
-    },
-    {
-      no: 3,
-      name: "minsize",
-      kind: "scalar",
-      T: 13 /* ScalarType.UINT32 */,
-      opt: true,
-    },
-    {
-      no: 4,
-      name: "maxsize",
-      kind: "scalar",
-      T: 13 /* ScalarType.UINT32 */,
-      opt: true,
-    },
-    {
-      no: 5,
-      name: "maxsurge",
-      kind: "scalar",
-      T: 13 /* ScalarType.UINT32 */,
-      opt: true,
-    },
-    {
-      no: 6,
-      name: "maxunavailable",
-      kind: "scalar",
-      T: 13 /* ScalarType.UINT32 */,
-      opt: true,
-    },
+    { no: 2, name: "machine_type", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
+    { no: 3, name: "minsize", kind: "scalar", T: 13 /* ScalarType.UINT32 */, opt: true },
+    { no: 4, name: "maxsize", kind: "scalar", T: 13 /* ScalarType.UINT32 */, opt: true },
+    { no: 5, name: "maxsurge", kind: "scalar", T: 13 /* ScalarType.UINT32 */, opt: true },
+    { no: 6, name: "maxunavailable", kind: "scalar", T: 13 /* ScalarType.UINT32 */, opt: true },
   ]);
 
-  static fromBinary(
-    bytes: Uint8Array,
-    options?: Partial<BinaryReadOptions>
-  ): WorkerUpdate {
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): WorkerUpdate {
     return new WorkerUpdate().fromBinary(bytes, options);
   }
 
-  static fromJson(
-    jsonValue: JsonValue,
-    options?: Partial<JsonReadOptions>
-  ): WorkerUpdate {
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): WorkerUpdate {
     return new WorkerUpdate().fromJson(jsonValue, options);
   }
 
-  static fromJsonString(
-    jsonString: string,
-    options?: Partial<JsonReadOptions>
-  ): WorkerUpdate {
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): WorkerUpdate {
     return new WorkerUpdate().fromJsonString(jsonString, options);
   }
 
-  static equals(
-    a: WorkerUpdate | PlainMessage<WorkerUpdate> | undefined,
-    b: WorkerUpdate | PlainMessage<WorkerUpdate> | undefined
-  ): boolean {
+  static equals(a: WorkerUpdate | PlainMessage<WorkerUpdate> | undefined, b: WorkerUpdate | PlainMessage<WorkerUpdate> | undefined): boolean {
     return proto3.util.equals(WorkerUpdate, a, b);
   }
 }
@@ -696,37 +549,19 @@ export class ClusterServiceGetRequest extends Message<ClusterServiceGetRequest> 
     { no: 2, name: "project", kind: "scalar", T: 9 /* ScalarType.STRING */ },
   ]);
 
-  static fromBinary(
-    bytes: Uint8Array,
-    options?: Partial<BinaryReadOptions>
-  ): ClusterServiceGetRequest {
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ClusterServiceGetRequest {
     return new ClusterServiceGetRequest().fromBinary(bytes, options);
   }
 
-  static fromJson(
-    jsonValue: JsonValue,
-    options?: Partial<JsonReadOptions>
-  ): ClusterServiceGetRequest {
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ClusterServiceGetRequest {
     return new ClusterServiceGetRequest().fromJson(jsonValue, options);
   }
 
-  static fromJsonString(
-    jsonString: string,
-    options?: Partial<JsonReadOptions>
-  ): ClusterServiceGetRequest {
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ClusterServiceGetRequest {
     return new ClusterServiceGetRequest().fromJsonString(jsonString, options);
   }
 
-  static equals(
-    a:
-      | ClusterServiceGetRequest
-      | PlainMessage<ClusterServiceGetRequest>
-      | undefined,
-    b:
-      | ClusterServiceGetRequest
-      | PlainMessage<ClusterServiceGetRequest>
-      | undefined
-  ): boolean {
+  static equals(a: ClusterServiceGetRequest | PlainMessage<ClusterServiceGetRequest> | undefined, b: ClusterServiceGetRequest | PlainMessage<ClusterServiceGetRequest> | undefined): boolean {
     return proto3.util.equals(ClusterServiceGetRequest, a, b);
   }
 }
@@ -771,43 +606,19 @@ export class ClusterServiceGetCredentialsRequest extends Message<ClusterServiceG
     { no: 4, name: "expiration", kind: "message", T: Duration, opt: true },
   ]);
 
-  static fromBinary(
-    bytes: Uint8Array,
-    options?: Partial<BinaryReadOptions>
-  ): ClusterServiceGetCredentialsRequest {
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ClusterServiceGetCredentialsRequest {
     return new ClusterServiceGetCredentialsRequest().fromBinary(bytes, options);
   }
 
-  static fromJson(
-    jsonValue: JsonValue,
-    options?: Partial<JsonReadOptions>
-  ): ClusterServiceGetCredentialsRequest {
-    return new ClusterServiceGetCredentialsRequest().fromJson(
-      jsonValue,
-      options
-    );
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ClusterServiceGetCredentialsRequest {
+    return new ClusterServiceGetCredentialsRequest().fromJson(jsonValue, options);
   }
 
-  static fromJsonString(
-    jsonString: string,
-    options?: Partial<JsonReadOptions>
-  ): ClusterServiceGetCredentialsRequest {
-    return new ClusterServiceGetCredentialsRequest().fromJsonString(
-      jsonString,
-      options
-    );
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ClusterServiceGetCredentialsRequest {
+    return new ClusterServiceGetCredentialsRequest().fromJsonString(jsonString, options);
   }
 
-  static equals(
-    a:
-      | ClusterServiceGetCredentialsRequest
-      | PlainMessage<ClusterServiceGetCredentialsRequest>
-      | undefined,
-    b:
-      | ClusterServiceGetCredentialsRequest
-      | PlainMessage<ClusterServiceGetCredentialsRequest>
-      | undefined
-  ): boolean {
+  static equals(a: ClusterServiceGetCredentialsRequest | PlainMessage<ClusterServiceGetCredentialsRequest> | undefined, b: ClusterServiceGetCredentialsRequest | PlainMessage<ClusterServiceGetCredentialsRequest> | undefined): boolean {
     return proto3.util.equals(ClusterServiceGetCredentialsRequest, a, b);
   }
 }
@@ -836,37 +647,19 @@ export class ClusterServiceListRequest extends Message<ClusterServiceListRequest
     { no: 2, name: "project", kind: "scalar", T: 9 /* ScalarType.STRING */ },
   ]);
 
-  static fromBinary(
-    bytes: Uint8Array,
-    options?: Partial<BinaryReadOptions>
-  ): ClusterServiceListRequest {
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ClusterServiceListRequest {
     return new ClusterServiceListRequest().fromBinary(bytes, options);
   }
 
-  static fromJson(
-    jsonValue: JsonValue,
-    options?: Partial<JsonReadOptions>
-  ): ClusterServiceListRequest {
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ClusterServiceListRequest {
     return new ClusterServiceListRequest().fromJson(jsonValue, options);
   }
 
-  static fromJsonString(
-    jsonString: string,
-    options?: Partial<JsonReadOptions>
-  ): ClusterServiceListRequest {
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ClusterServiceListRequest {
     return new ClusterServiceListRequest().fromJsonString(jsonString, options);
   }
 
-  static equals(
-    a:
-      | ClusterServiceListRequest
-      | PlainMessage<ClusterServiceListRequest>
-      | undefined,
-    b:
-      | ClusterServiceListRequest
-      | PlainMessage<ClusterServiceListRequest>
-      | undefined
-  ): boolean {
+  static equals(a: ClusterServiceListRequest | PlainMessage<ClusterServiceListRequest> | undefined, b: ClusterServiceListRequest | PlainMessage<ClusterServiceListRequest> | undefined): boolean {
     return proto3.util.equals(ClusterServiceListRequest, a, b);
   }
 }
@@ -935,40 +728,19 @@ export class ClusterServiceCreateRequest extends Message<ClusterServiceCreateReq
     { no: 8, name: "maintenance", kind: "message", T: Maintenance },
   ]);
 
-  static fromBinary(
-    bytes: Uint8Array,
-    options?: Partial<BinaryReadOptions>
-  ): ClusterServiceCreateRequest {
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ClusterServiceCreateRequest {
     return new ClusterServiceCreateRequest().fromBinary(bytes, options);
   }
 
-  static fromJson(
-    jsonValue: JsonValue,
-    options?: Partial<JsonReadOptions>
-  ): ClusterServiceCreateRequest {
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ClusterServiceCreateRequest {
     return new ClusterServiceCreateRequest().fromJson(jsonValue, options);
   }
 
-  static fromJsonString(
-    jsonString: string,
-    options?: Partial<JsonReadOptions>
-  ): ClusterServiceCreateRequest {
-    return new ClusterServiceCreateRequest().fromJsonString(
-      jsonString,
-      options
-    );
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ClusterServiceCreateRequest {
+    return new ClusterServiceCreateRequest().fromJsonString(jsonString, options);
   }
 
-  static equals(
-    a:
-      | ClusterServiceCreateRequest
-      | PlainMessage<ClusterServiceCreateRequest>
-      | undefined,
-    b:
-      | ClusterServiceCreateRequest
-      | PlainMessage<ClusterServiceCreateRequest>
-      | undefined
-  ): boolean {
+  static equals(a: ClusterServiceCreateRequest | PlainMessage<ClusterServiceCreateRequest> | undefined, b: ClusterServiceCreateRequest | PlainMessage<ClusterServiceCreateRequest> | undefined): boolean {
     return proto3.util.equals(ClusterServiceCreateRequest, a, b);
   }
 }
@@ -1024,57 +796,24 @@ export class ClusterServiceUpdateRequest extends Message<ClusterServiceUpdateReq
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
     { no: 1, name: "uuid", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 2, name: "project", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    {
-      no: 3,
-      name: "kubernetes",
-      kind: "message",
-      T: KubernetesSpec,
-      opt: true,
-    },
-    {
-      no: 4,
-      name: "workers",
-      kind: "message",
-      T: WorkerUpdate,
-      repeated: true,
-    },
+    { no: 3, name: "kubernetes", kind: "message", T: KubernetesSpec, opt: true },
+    { no: 4, name: "workers", kind: "message", T: WorkerUpdate, repeated: true },
     { no: 5, name: "maintenance", kind: "message", T: Maintenance, opt: true },
   ]);
 
-  static fromBinary(
-    bytes: Uint8Array,
-    options?: Partial<BinaryReadOptions>
-  ): ClusterServiceUpdateRequest {
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ClusterServiceUpdateRequest {
     return new ClusterServiceUpdateRequest().fromBinary(bytes, options);
   }
 
-  static fromJson(
-    jsonValue: JsonValue,
-    options?: Partial<JsonReadOptions>
-  ): ClusterServiceUpdateRequest {
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ClusterServiceUpdateRequest {
     return new ClusterServiceUpdateRequest().fromJson(jsonValue, options);
   }
 
-  static fromJsonString(
-    jsonString: string,
-    options?: Partial<JsonReadOptions>
-  ): ClusterServiceUpdateRequest {
-    return new ClusterServiceUpdateRequest().fromJsonString(
-      jsonString,
-      options
-    );
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ClusterServiceUpdateRequest {
+    return new ClusterServiceUpdateRequest().fromJsonString(jsonString, options);
   }
 
-  static equals(
-    a:
-      | ClusterServiceUpdateRequest
-      | PlainMessage<ClusterServiceUpdateRequest>
-      | undefined,
-    b:
-      | ClusterServiceUpdateRequest
-      | PlainMessage<ClusterServiceUpdateRequest>
-      | undefined
-  ): boolean {
+  static equals(a: ClusterServiceUpdateRequest | PlainMessage<ClusterServiceUpdateRequest> | undefined, b: ClusterServiceUpdateRequest | PlainMessage<ClusterServiceUpdateRequest> | undefined): boolean {
     return proto3.util.equals(ClusterServiceUpdateRequest, a, b);
   }
 }
@@ -1111,40 +850,19 @@ export class ClusterServiceDeleteRequest extends Message<ClusterServiceDeleteReq
     { no: 2, name: "project", kind: "scalar", T: 9 /* ScalarType.STRING */ },
   ]);
 
-  static fromBinary(
-    bytes: Uint8Array,
-    options?: Partial<BinaryReadOptions>
-  ): ClusterServiceDeleteRequest {
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ClusterServiceDeleteRequest {
     return new ClusterServiceDeleteRequest().fromBinary(bytes, options);
   }
 
-  static fromJson(
-    jsonValue: JsonValue,
-    options?: Partial<JsonReadOptions>
-  ): ClusterServiceDeleteRequest {
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ClusterServiceDeleteRequest {
     return new ClusterServiceDeleteRequest().fromJson(jsonValue, options);
   }
 
-  static fromJsonString(
-    jsonString: string,
-    options?: Partial<JsonReadOptions>
-  ): ClusterServiceDeleteRequest {
-    return new ClusterServiceDeleteRequest().fromJsonString(
-      jsonString,
-      options
-    );
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ClusterServiceDeleteRequest {
+    return new ClusterServiceDeleteRequest().fromJsonString(jsonString, options);
   }
 
-  static equals(
-    a:
-      | ClusterServiceDeleteRequest
-      | PlainMessage<ClusterServiceDeleteRequest>
-      | undefined,
-    b:
-      | ClusterServiceDeleteRequest
-      | PlainMessage<ClusterServiceDeleteRequest>
-      | undefined
-  ): boolean {
+  static equals(a: ClusterServiceDeleteRequest | PlainMessage<ClusterServiceDeleteRequest> | undefined, b: ClusterServiceDeleteRequest | PlainMessage<ClusterServiceDeleteRequest> | undefined): boolean {
     return proto3.util.equals(ClusterServiceDeleteRequest, a, b);
   }
 }
@@ -1177,50 +895,23 @@ export class ClusterServiceWatchStatusRequest extends Message<ClusterServiceWatc
   static readonly runtime: typeof proto3 = proto3;
   static readonly typeName = "api.v1.ClusterServiceWatchStatusRequest";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    {
-      no: 1,
-      name: "uuid",
-      kind: "scalar",
-      T: 9 /* ScalarType.STRING */,
-      opt: true,
-    },
+    { no: 1, name: "uuid", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
     { no: 2, name: "project", kind: "scalar", T: 9 /* ScalarType.STRING */ },
   ]);
 
-  static fromBinary(
-    bytes: Uint8Array,
-    options?: Partial<BinaryReadOptions>
-  ): ClusterServiceWatchStatusRequest {
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ClusterServiceWatchStatusRequest {
     return new ClusterServiceWatchStatusRequest().fromBinary(bytes, options);
   }
 
-  static fromJson(
-    jsonValue: JsonValue,
-    options?: Partial<JsonReadOptions>
-  ): ClusterServiceWatchStatusRequest {
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ClusterServiceWatchStatusRequest {
     return new ClusterServiceWatchStatusRequest().fromJson(jsonValue, options);
   }
 
-  static fromJsonString(
-    jsonString: string,
-    options?: Partial<JsonReadOptions>
-  ): ClusterServiceWatchStatusRequest {
-    return new ClusterServiceWatchStatusRequest().fromJsonString(
-      jsonString,
-      options
-    );
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ClusterServiceWatchStatusRequest {
+    return new ClusterServiceWatchStatusRequest().fromJsonString(jsonString, options);
   }
 
-  static equals(
-    a:
-      | ClusterServiceWatchStatusRequest
-      | PlainMessage<ClusterServiceWatchStatusRequest>
-      | undefined,
-    b:
-      | ClusterServiceWatchStatusRequest
-      | PlainMessage<ClusterServiceWatchStatusRequest>
-      | undefined
-  ): boolean {
+  static equals(a: ClusterServiceWatchStatusRequest | PlainMessage<ClusterServiceWatchStatusRequest> | undefined, b: ClusterServiceWatchStatusRequest | PlainMessage<ClusterServiceWatchStatusRequest> | undefined): boolean {
     return proto3.util.equals(ClusterServiceWatchStatusRequest, a, b);
   }
 }
@@ -1306,64 +997,26 @@ export class ClusterStatus extends Message<ClusterStatus> {
     { no: 2, name: "progress", kind: "scalar", T: 13 /* ScalarType.UINT32 */ },
     { no: 3, name: "state", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 4, name: "type", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    {
-      no: 10,
-      name: "api_server_ready",
-      kind: "scalar",
-      T: 9 /* ScalarType.STRING */,
-    },
-    {
-      no: 11,
-      name: "control_plane_ready",
-      kind: "scalar",
-      T: 9 /* ScalarType.STRING */,
-    },
-    {
-      no: 12,
-      name: "nodes_ready",
-      kind: "scalar",
-      T: 9 /* ScalarType.STRING */,
-    },
-    {
-      no: 13,
-      name: "system_components_ready",
-      kind: "scalar",
-      T: 9 /* ScalarType.STRING */,
-    },
-    {
-      no: 14,
-      name: "last_errors",
-      kind: "message",
-      T: ClusterStatusLastError,
-      repeated: true,
-    },
+    { no: 10, name: "api_server_ready", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 11, name: "control_plane_ready", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 12, name: "nodes_ready", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 13, name: "system_components_ready", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 14, name: "last_errors", kind: "message", T: ClusterStatusLastError, repeated: true },
   ]);
 
-  static fromBinary(
-    bytes: Uint8Array,
-    options?: Partial<BinaryReadOptions>
-  ): ClusterStatus {
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ClusterStatus {
     return new ClusterStatus().fromBinary(bytes, options);
   }
 
-  static fromJson(
-    jsonValue: JsonValue,
-    options?: Partial<JsonReadOptions>
-  ): ClusterStatus {
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ClusterStatus {
     return new ClusterStatus().fromJson(jsonValue, options);
   }
 
-  static fromJsonString(
-    jsonString: string,
-    options?: Partial<JsonReadOptions>
-  ): ClusterStatus {
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ClusterStatus {
     return new ClusterStatus().fromJsonString(jsonString, options);
   }
 
-  static equals(
-    a: ClusterStatus | PlainMessage<ClusterStatus> | undefined,
-    b: ClusterStatus | PlainMessage<ClusterStatus> | undefined
-  ): boolean {
+  static equals(a: ClusterStatus | PlainMessage<ClusterStatus> | undefined, b: ClusterStatus | PlainMessage<ClusterStatus> | undefined): boolean {
     return proto3.util.equals(ClusterStatus, a, b);
   }
 }
@@ -1413,57 +1066,25 @@ export class ClusterStatusLastError extends Message<ClusterStatusLastError> {
   static readonly runtime: typeof proto3 = proto3;
   static readonly typeName = "api.v1.ClusterStatusLastError";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    {
-      no: 1,
-      name: "description",
-      kind: "scalar",
-      T: 9 /* ScalarType.STRING */,
-    },
-    {
-      no: 2,
-      name: "task_id",
-      kind: "scalar",
-      T: 9 /* ScalarType.STRING */,
-      opt: true,
-    },
-    {
-      no: 3,
-      name: "codes",
-      kind: "scalar",
-      T: 9 /* ScalarType.STRING */,
-      repeated: true,
-    },
+    { no: 1, name: "description", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "task_id", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
+    { no: 3, name: "codes", kind: "scalar", T: 9 /* ScalarType.STRING */, repeated: true },
     { no: 4, name: "last_update_time", kind: "message", T: Timestamp },
   ]);
 
-  static fromBinary(
-    bytes: Uint8Array,
-    options?: Partial<BinaryReadOptions>
-  ): ClusterStatusLastError {
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ClusterStatusLastError {
     return new ClusterStatusLastError().fromBinary(bytes, options);
   }
 
-  static fromJson(
-    jsonValue: JsonValue,
-    options?: Partial<JsonReadOptions>
-  ): ClusterStatusLastError {
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ClusterStatusLastError {
     return new ClusterStatusLastError().fromJson(jsonValue, options);
   }
 
-  static fromJsonString(
-    jsonString: string,
-    options?: Partial<JsonReadOptions>
-  ): ClusterStatusLastError {
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ClusterStatusLastError {
     return new ClusterStatusLastError().fromJsonString(jsonString, options);
   }
 
-  static equals(
-    a:
-      | ClusterStatusLastError
-      | PlainMessage<ClusterStatusLastError>
-      | undefined,
-    b: ClusterStatusLastError | PlainMessage<ClusterStatusLastError> | undefined
-  ): boolean {
+  static equals(a: ClusterStatusLastError | PlainMessage<ClusterStatusLastError> | undefined, b: ClusterStatusLastError | PlainMessage<ClusterStatusLastError> | undefined): boolean {
     return proto3.util.equals(ClusterStatusLastError, a, b);
   }
 }
@@ -1508,31 +1129,19 @@ export class ClusterMonitoring extends Message<ClusterMonitoring> {
     { no: 3, name: "endpoint", kind: "scalar", T: 9 /* ScalarType.STRING */ },
   ]);
 
-  static fromBinary(
-    bytes: Uint8Array,
-    options?: Partial<BinaryReadOptions>
-  ): ClusterMonitoring {
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ClusterMonitoring {
     return new ClusterMonitoring().fromBinary(bytes, options);
   }
 
-  static fromJson(
-    jsonValue: JsonValue,
-    options?: Partial<JsonReadOptions>
-  ): ClusterMonitoring {
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ClusterMonitoring {
     return new ClusterMonitoring().fromJson(jsonValue, options);
   }
 
-  static fromJsonString(
-    jsonString: string,
-    options?: Partial<JsonReadOptions>
-  ): ClusterMonitoring {
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ClusterMonitoring {
     return new ClusterMonitoring().fromJsonString(jsonString, options);
   }
 
-  static equals(
-    a: ClusterMonitoring | PlainMessage<ClusterMonitoring> | undefined,
-    b: ClusterMonitoring | PlainMessage<ClusterMonitoring> | undefined
-  ): boolean {
+  static equals(a: ClusterMonitoring | PlainMessage<ClusterMonitoring> | undefined, b: ClusterMonitoring | PlainMessage<ClusterMonitoring> | undefined): boolean {
     return proto3.util.equals(ClusterMonitoring, a, b);
   }
 }
@@ -1561,40 +1170,19 @@ export class ClusterServiceCreateResponse extends Message<ClusterServiceCreateRe
     { no: 1, name: "cluster", kind: "message", T: Cluster },
   ]);
 
-  static fromBinary(
-    bytes: Uint8Array,
-    options?: Partial<BinaryReadOptions>
-  ): ClusterServiceCreateResponse {
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ClusterServiceCreateResponse {
     return new ClusterServiceCreateResponse().fromBinary(bytes, options);
   }
 
-  static fromJson(
-    jsonValue: JsonValue,
-    options?: Partial<JsonReadOptions>
-  ): ClusterServiceCreateResponse {
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ClusterServiceCreateResponse {
     return new ClusterServiceCreateResponse().fromJson(jsonValue, options);
   }
 
-  static fromJsonString(
-    jsonString: string,
-    options?: Partial<JsonReadOptions>
-  ): ClusterServiceCreateResponse {
-    return new ClusterServiceCreateResponse().fromJsonString(
-      jsonString,
-      options
-    );
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ClusterServiceCreateResponse {
+    return new ClusterServiceCreateResponse().fromJsonString(jsonString, options);
   }
 
-  static equals(
-    a:
-      | ClusterServiceCreateResponse
-      | PlainMessage<ClusterServiceCreateResponse>
-      | undefined,
-    b:
-      | ClusterServiceCreateResponse
-      | PlainMessage<ClusterServiceCreateResponse>
-      | undefined
-  ): boolean {
+  static equals(a: ClusterServiceCreateResponse | PlainMessage<ClusterServiceCreateResponse> | undefined, b: ClusterServiceCreateResponse | PlainMessage<ClusterServiceCreateResponse> | undefined): boolean {
     return proto3.util.equals(ClusterServiceCreateResponse, a, b);
   }
 }
@@ -1623,37 +1211,19 @@ export class ClusterServiceGetResponse extends Message<ClusterServiceGetResponse
     { no: 1, name: "cluster", kind: "message", T: Cluster },
   ]);
 
-  static fromBinary(
-    bytes: Uint8Array,
-    options?: Partial<BinaryReadOptions>
-  ): ClusterServiceGetResponse {
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ClusterServiceGetResponse {
     return new ClusterServiceGetResponse().fromBinary(bytes, options);
   }
 
-  static fromJson(
-    jsonValue: JsonValue,
-    options?: Partial<JsonReadOptions>
-  ): ClusterServiceGetResponse {
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ClusterServiceGetResponse {
     return new ClusterServiceGetResponse().fromJson(jsonValue, options);
   }
 
-  static fromJsonString(
-    jsonString: string,
-    options?: Partial<JsonReadOptions>
-  ): ClusterServiceGetResponse {
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ClusterServiceGetResponse {
     return new ClusterServiceGetResponse().fromJsonString(jsonString, options);
   }
 
-  static equals(
-    a:
-      | ClusterServiceGetResponse
-      | PlainMessage<ClusterServiceGetResponse>
-      | undefined,
-    b:
-      | ClusterServiceGetResponse
-      | PlainMessage<ClusterServiceGetResponse>
-      | undefined
-  ): boolean {
+  static equals(a: ClusterServiceGetResponse | PlainMessage<ClusterServiceGetResponse> | undefined, b: ClusterServiceGetResponse | PlainMessage<ClusterServiceGetResponse> | undefined): boolean {
     return proto3.util.equals(ClusterServiceGetResponse, a, b);
   }
 }
@@ -1682,46 +1252,19 @@ export class ClusterServiceGetCredentialsResponse extends Message<ClusterService
     { no: 1, name: "kubeconfig", kind: "scalar", T: 9 /* ScalarType.STRING */ },
   ]);
 
-  static fromBinary(
-    bytes: Uint8Array,
-    options?: Partial<BinaryReadOptions>
-  ): ClusterServiceGetCredentialsResponse {
-    return new ClusterServiceGetCredentialsResponse().fromBinary(
-      bytes,
-      options
-    );
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ClusterServiceGetCredentialsResponse {
+    return new ClusterServiceGetCredentialsResponse().fromBinary(bytes, options);
   }
 
-  static fromJson(
-    jsonValue: JsonValue,
-    options?: Partial<JsonReadOptions>
-  ): ClusterServiceGetCredentialsResponse {
-    return new ClusterServiceGetCredentialsResponse().fromJson(
-      jsonValue,
-      options
-    );
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ClusterServiceGetCredentialsResponse {
+    return new ClusterServiceGetCredentialsResponse().fromJson(jsonValue, options);
   }
 
-  static fromJsonString(
-    jsonString: string,
-    options?: Partial<JsonReadOptions>
-  ): ClusterServiceGetCredentialsResponse {
-    return new ClusterServiceGetCredentialsResponse().fromJsonString(
-      jsonString,
-      options
-    );
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ClusterServiceGetCredentialsResponse {
+    return new ClusterServiceGetCredentialsResponse().fromJsonString(jsonString, options);
   }
 
-  static equals(
-    a:
-      | ClusterServiceGetCredentialsResponse
-      | PlainMessage<ClusterServiceGetCredentialsResponse>
-      | undefined,
-    b:
-      | ClusterServiceGetCredentialsResponse
-      | PlainMessage<ClusterServiceGetCredentialsResponse>
-      | undefined
-  ): boolean {
+  static equals(a: ClusterServiceGetCredentialsResponse | PlainMessage<ClusterServiceGetCredentialsResponse> | undefined, b: ClusterServiceGetCredentialsResponse | PlainMessage<ClusterServiceGetCredentialsResponse> | undefined): boolean {
     return proto3.util.equals(ClusterServiceGetCredentialsResponse, a, b);
   }
 }
@@ -1750,40 +1293,19 @@ export class ClusterServiceDeleteResponse extends Message<ClusterServiceDeleteRe
     { no: 1, name: "cluster", kind: "message", T: Cluster },
   ]);
 
-  static fromBinary(
-    bytes: Uint8Array,
-    options?: Partial<BinaryReadOptions>
-  ): ClusterServiceDeleteResponse {
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ClusterServiceDeleteResponse {
     return new ClusterServiceDeleteResponse().fromBinary(bytes, options);
   }
 
-  static fromJson(
-    jsonValue: JsonValue,
-    options?: Partial<JsonReadOptions>
-  ): ClusterServiceDeleteResponse {
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ClusterServiceDeleteResponse {
     return new ClusterServiceDeleteResponse().fromJson(jsonValue, options);
   }
 
-  static fromJsonString(
-    jsonString: string,
-    options?: Partial<JsonReadOptions>
-  ): ClusterServiceDeleteResponse {
-    return new ClusterServiceDeleteResponse().fromJsonString(
-      jsonString,
-      options
-    );
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ClusterServiceDeleteResponse {
+    return new ClusterServiceDeleteResponse().fromJsonString(jsonString, options);
   }
 
-  static equals(
-    a:
-      | ClusterServiceDeleteResponse
-      | PlainMessage<ClusterServiceDeleteResponse>
-      | undefined,
-    b:
-      | ClusterServiceDeleteResponse
-      | PlainMessage<ClusterServiceDeleteResponse>
-      | undefined
-  ): boolean {
+  static equals(a: ClusterServiceDeleteResponse | PlainMessage<ClusterServiceDeleteResponse> | undefined, b: ClusterServiceDeleteResponse | PlainMessage<ClusterServiceDeleteResponse> | undefined): boolean {
     return proto3.util.equals(ClusterServiceDeleteResponse, a, b);
   }
 }
@@ -1812,40 +1334,19 @@ export class ClusterServiceUpdateResponse extends Message<ClusterServiceUpdateRe
     { no: 1, name: "cluster", kind: "message", T: Cluster },
   ]);
 
-  static fromBinary(
-    bytes: Uint8Array,
-    options?: Partial<BinaryReadOptions>
-  ): ClusterServiceUpdateResponse {
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ClusterServiceUpdateResponse {
     return new ClusterServiceUpdateResponse().fromBinary(bytes, options);
   }
 
-  static fromJson(
-    jsonValue: JsonValue,
-    options?: Partial<JsonReadOptions>
-  ): ClusterServiceUpdateResponse {
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ClusterServiceUpdateResponse {
     return new ClusterServiceUpdateResponse().fromJson(jsonValue, options);
   }
 
-  static fromJsonString(
-    jsonString: string,
-    options?: Partial<JsonReadOptions>
-  ): ClusterServiceUpdateResponse {
-    return new ClusterServiceUpdateResponse().fromJsonString(
-      jsonString,
-      options
-    );
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ClusterServiceUpdateResponse {
+    return new ClusterServiceUpdateResponse().fromJsonString(jsonString, options);
   }
 
-  static equals(
-    a:
-      | ClusterServiceUpdateResponse
-      | PlainMessage<ClusterServiceUpdateResponse>
-      | undefined,
-    b:
-      | ClusterServiceUpdateResponse
-      | PlainMessage<ClusterServiceUpdateResponse>
-      | undefined
-  ): boolean {
+  static equals(a: ClusterServiceUpdateResponse | PlainMessage<ClusterServiceUpdateResponse> | undefined, b: ClusterServiceUpdateResponse | PlainMessage<ClusterServiceUpdateResponse> | undefined): boolean {
     return proto3.util.equals(ClusterServiceUpdateResponse, a, b);
   }
 }
@@ -1874,37 +1375,19 @@ export class ClusterServiceListResponse extends Message<ClusterServiceListRespon
     { no: 1, name: "clusters", kind: "message", T: Cluster, repeated: true },
   ]);
 
-  static fromBinary(
-    bytes: Uint8Array,
-    options?: Partial<BinaryReadOptions>
-  ): ClusterServiceListResponse {
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ClusterServiceListResponse {
     return new ClusterServiceListResponse().fromBinary(bytes, options);
   }
 
-  static fromJson(
-    jsonValue: JsonValue,
-    options?: Partial<JsonReadOptions>
-  ): ClusterServiceListResponse {
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ClusterServiceListResponse {
     return new ClusterServiceListResponse().fromJson(jsonValue, options);
   }
 
-  static fromJsonString(
-    jsonString: string,
-    options?: Partial<JsonReadOptions>
-  ): ClusterServiceListResponse {
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ClusterServiceListResponse {
     return new ClusterServiceListResponse().fromJsonString(jsonString, options);
   }
 
-  static equals(
-    a:
-      | ClusterServiceListResponse
-      | PlainMessage<ClusterServiceListResponse>
-      | undefined,
-    b:
-      | ClusterServiceListResponse
-      | PlainMessage<ClusterServiceListResponse>
-      | undefined
-  ): boolean {
+  static equals(a: ClusterServiceListResponse | PlainMessage<ClusterServiceListResponse> | undefined, b: ClusterServiceListResponse | PlainMessage<ClusterServiceListResponse> | undefined): boolean {
     return proto3.util.equals(ClusterServiceListResponse, a, b);
   }
 }
@@ -1933,40 +1416,20 @@ export class ClusterServiceWatchStatusResponse extends Message<ClusterServiceWat
     { no: 1, name: "status", kind: "message", T: ClusterStatus },
   ]);
 
-  static fromBinary(
-    bytes: Uint8Array,
-    options?: Partial<BinaryReadOptions>
-  ): ClusterServiceWatchStatusResponse {
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ClusterServiceWatchStatusResponse {
     return new ClusterServiceWatchStatusResponse().fromBinary(bytes, options);
   }
 
-  static fromJson(
-    jsonValue: JsonValue,
-    options?: Partial<JsonReadOptions>
-  ): ClusterServiceWatchStatusResponse {
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ClusterServiceWatchStatusResponse {
     return new ClusterServiceWatchStatusResponse().fromJson(jsonValue, options);
   }
 
-  static fromJsonString(
-    jsonString: string,
-    options?: Partial<JsonReadOptions>
-  ): ClusterServiceWatchStatusResponse {
-    return new ClusterServiceWatchStatusResponse().fromJsonString(
-      jsonString,
-      options
-    );
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ClusterServiceWatchStatusResponse {
+    return new ClusterServiceWatchStatusResponse().fromJsonString(jsonString, options);
   }
 
-  static equals(
-    a:
-      | ClusterServiceWatchStatusResponse
-      | PlainMessage<ClusterServiceWatchStatusResponse>
-      | undefined,
-    b:
-      | ClusterServiceWatchStatusResponse
-      | PlainMessage<ClusterServiceWatchStatusResponse>
-      | undefined
-  ): boolean {
+  static equals(a: ClusterServiceWatchStatusResponse | PlainMessage<ClusterServiceWatchStatusResponse> | undefined, b: ClusterServiceWatchStatusResponse | PlainMessage<ClusterServiceWatchStatusResponse> | undefined): boolean {
     return proto3.util.equals(ClusterServiceWatchStatusResponse, a, b);
   }
 }
+

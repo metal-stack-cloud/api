@@ -311,7 +311,9 @@ type MaintenanceTimeWindow struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Begin    *Time                `protobuf:"bytes,1,opt,name=begin,proto3" json:"begin,omitempty"`
+	// Begin of the MaintenanceTimeWindow
+	Begin *Time `protobuf:"bytes,1,opt,name=begin,proto3" json:"begin,omitempty"`
+	// Duration of the MaintenanceTimeWindow
 	Duration *durationpb.Duration `protobuf:"bytes,2,opt,name=duration,proto3" json:"duration,omitempty"`
 }
 

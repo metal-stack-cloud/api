@@ -114,7 +114,9 @@ message Maintenance {
 
 // MaintenanceTimeWindow defines the start time and duration during which automatic actions will be performed
 message MaintenanceTimeWindow {
+  // Begin of the MaintenanceTimeWindow
   Time begin = 1;
+  // Duration of the MaintenanceTimeWindow
   google.protobuf.Duration duration = 2 [(validate.rules).duration = {
     gte: {seconds: 3600}, // 1 hour minimum
     lt: {seconds: 14400} /* 4 hours maximum */

@@ -1916,7 +1916,7 @@
           "fields": [
             {
               "name": "begin",
-              "description": "Begin of the time window",
+              "description": "Begin of the MaintenanceTimeWindow",
               "label": "",
               "type": "Time",
               "longType": "Time",
@@ -1928,7 +1928,7 @@
             },
             {
               "name": "duration",
-              "description": "Duration of the time window",
+              "description": "Duration of the MaintenanceTimeWindow",
               "label": "",
               "type": "Duration",
               "longType": "google.protobuf.Duration",
