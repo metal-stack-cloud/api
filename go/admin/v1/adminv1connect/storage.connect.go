@@ -18,7 +18,7 @@ import (
 // generated with a version of connect newer than the one compiled into your binary. You can fix the
 // problem by either regenerating this code with an older version of connect or updating the connect
 // version compiled into your binary.
-const _ = connect.IsAtLeastVersion0_1_0
+const _ = connect.IsAtLeastVersion1_13_0
 
 const (
 	// StorageServiceName is the fully-qualified name of the StorageService service.
@@ -44,6 +44,14 @@ const (
 	StorageServiceListSnapshotsProcedure = "/admin.v1.StorageService/ListSnapshots"
 )
 
+// These variables are the protoreflect.Descriptor objects for the RPCs defined in this package.
+var (
+	storageServiceServiceDescriptor             = v1.File_admin_v1_storage_proto.Services().ByName("StorageService")
+	storageServiceClusterInfoMethodDescriptor   = storageServiceServiceDescriptor.Methods().ByName("ClusterInfo")
+	storageServiceListVolumesMethodDescriptor   = storageServiceServiceDescriptor.Methods().ByName("ListVolumes")
+	storageServiceListSnapshotsMethodDescriptor = storageServiceServiceDescriptor.Methods().ByName("ListSnapshots")
+)
+
 // StorageServiceClient is a client for the admin.v1.StorageService service.
 type StorageServiceClient interface {
 	ClusterInfo(context.Context, *connect.Request[v1.StorageServiceClusterInfoRequest]) (*connect.Response[v1.StorageServiceClusterInfoResponse], error)
@@ -64,17 +72,20 @@ func NewStorageServiceClient(httpClient connect.HTTPClient, baseURL string, opts
 		clusterInfo: connect.NewClient[v1.StorageServiceClusterInfoRequest, v1.StorageServiceClusterInfoResponse](
 			httpClient,
 			baseURL+StorageServiceClusterInfoProcedure,
-			opts...,
+			connect.WithSchema(storageServiceClusterInfoMethodDescriptor),
+			connect.WithClientOptions(opts...),
 		),
 		listVolumes: connect.NewClient[v1.StorageServiceListVolumesRequest, v1.StorageServiceListVolumesResponse](
 			httpClient,
 			baseURL+StorageServiceListVolumesProcedure,
-			opts...,
+			connect.WithSchema(storageServiceListVolumesMethodDescriptor),
+			connect.WithClientOptions(opts...),
 		),
 		listSnapshots: connect.NewClient[v1.StorageServiceListSnapshotsRequest, v1.StorageServiceListSnapshotsResponse](
 			httpClient,
 			baseURL+StorageServiceListSnapshotsProcedure,
-			opts...,
+			connect.WithSchema(storageServiceListSnapshotsMethodDescriptor),
+			connect.WithClientOptions(opts...),
 		),
 	}
 }
@@ -117,17 +128,20 @@ func NewStorageServiceHandler(svc StorageServiceHandler, opts ...connect.Handler
 	storageServiceClusterInfoHandler := connect.NewUnaryHandler(
 		StorageServiceClusterInfoProcedure,
 		svc.ClusterInfo,
-		opts...,
+		connect.WithSchema(storageServiceClusterInfoMethodDescriptor),
+		connect.WithHandlerOptions(opts...),
 	)
 	storageServiceListVolumesHandler := connect.NewUnaryHandler(
 		StorageServiceListVolumesProcedure,
 		svc.ListVolumes,
-		opts...,
+		connect.WithSchema(storageServiceListVolumesMethodDescriptor),
+		connect.WithHandlerOptions(opts...),
 	)
 	storageServiceListSnapshotsHandler := connect.NewUnaryHandler(
 		StorageServiceListSnapshotsProcedure,
 		svc.ListSnapshots,
-		opts...,
+		connect.WithSchema(storageServiceListSnapshotsMethodDescriptor),
+		connect.WithHandlerOptions(opts...),
 	)
 	return "/admin.v1.StorageService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {

@@ -18,7 +18,7 @@ import (
 // generated with a version of connect newer than the one compiled into your binary. You can fix the
 // problem by either regenerating this code with an older version of connect or updating the connect
 // version compiled into your binary.
-const _ = connect.IsAtLeastVersion0_1_0
+const _ = connect.IsAtLeastVersion1_13_0
 
 const (
 	// PaymentServiceName is the fully-qualified name of the PaymentService service.
@@ -44,6 +44,14 @@ const (
 	PaymentServiceAddBalanceToCustomerProcedure = "/admin.v1.PaymentService/AddBalanceToCustomer"
 )
 
+// These variables are the protoreflect.Descriptor objects for the RPCs defined in this package.
+var (
+	paymentServiceServiceDescriptor                    = v1.File_admin_v1_payment_proto.Services().ByName("PaymentService")
+	paymentServiceListCouponsMethodDescriptor          = paymentServiceServiceDescriptor.Methods().ByName("ListCoupons")
+	paymentServiceAddCouponToCustomerMethodDescriptor  = paymentServiceServiceDescriptor.Methods().ByName("AddCouponToCustomer")
+	paymentServiceAddBalanceToCustomerMethodDescriptor = paymentServiceServiceDescriptor.Methods().ByName("AddBalanceToCustomer")
+)
+
 // PaymentServiceClient is a client for the admin.v1.PaymentService service.
 type PaymentServiceClient interface {
 	ListCoupons(context.Context, *connect.Request[v1.PaymentServiceListCouponsRequest]) (*connect.Response[v1.PaymentServiceListCouponsResponse], error)
@@ -64,17 +72,20 @@ func NewPaymentServiceClient(httpClient connect.HTTPClient, baseURL string, opts
 		listCoupons: connect.NewClient[v1.PaymentServiceListCouponsRequest, v1.PaymentServiceListCouponsResponse](
 			httpClient,
 			baseURL+PaymentServiceListCouponsProcedure,
-			opts...,
+			connect.WithSchema(paymentServiceListCouponsMethodDescriptor),
+			connect.WithClientOptions(opts...),
 		),
 		addCouponToCustomer: connect.NewClient[v1.PaymentServiceAddCouponToCustomerRequest, v1.PaymentServiceAddCouponToCustomerResponse](
 			httpClient,
 			baseURL+PaymentServiceAddCouponToCustomerProcedure,
-			opts...,
+			connect.WithSchema(paymentServiceAddCouponToCustomerMethodDescriptor),
+			connect.WithClientOptions(opts...),
 		),
 		addBalanceToCustomer: connect.NewClient[v1.PaymentServiceAddBalanceToCustomerRequest, v1.PaymentServiceAddBalanceToCustomerResponse](
 			httpClient,
 			baseURL+PaymentServiceAddBalanceToCustomerProcedure,
-			opts...,
+			connect.WithSchema(paymentServiceAddBalanceToCustomerMethodDescriptor),
+			connect.WithClientOptions(opts...),
 		),
 	}
 }
@@ -117,17 +128,20 @@ func NewPaymentServiceHandler(svc PaymentServiceHandler, opts ...connect.Handler
 	paymentServiceListCouponsHandler := connect.NewUnaryHandler(
 		PaymentServiceListCouponsProcedure,
 		svc.ListCoupons,
-		opts...,
+		connect.WithSchema(paymentServiceListCouponsMethodDescriptor),
+		connect.WithHandlerOptions(opts...),
 	)
 	paymentServiceAddCouponToCustomerHandler := connect.NewUnaryHandler(
 		PaymentServiceAddCouponToCustomerProcedure,
 		svc.AddCouponToCustomer,
-		opts...,
+		connect.WithSchema(paymentServiceAddCouponToCustomerMethodDescriptor),
+		connect.WithHandlerOptions(opts...),
 	)
 	paymentServiceAddBalanceToCustomerHandler := connect.NewUnaryHandler(
 		PaymentServiceAddBalanceToCustomerProcedure,
 		svc.AddBalanceToCustomer,
-		opts...,
+		connect.WithSchema(paymentServiceAddBalanceToCustomerMethodDescriptor),
+		connect.WithHandlerOptions(opts...),
 	)
 	return "/admin.v1.PaymentService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {

@@ -18,7 +18,7 @@ import (
 // generated with a version of connect newer than the one compiled into your binary. You can fix the
 // problem by either regenerating this code with an older version of connect or updating the connect
 // version compiled into your binary.
-const _ = connect.IsAtLeastVersion0_1_0
+const _ = connect.IsAtLeastVersion1_13_0
 
 const (
 	// TenantServiceName is the fully-qualified name of the TenantService service.
@@ -41,6 +41,14 @@ const (
 	TenantServiceRevokeProcedure = "/admin.v1.TenantService/Revoke"
 )
 
+// These variables are the protoreflect.Descriptor objects for the RPCs defined in this package.
+var (
+	tenantServiceServiceDescriptor      = v1.File_admin_v1_tenant_proto.Services().ByName("TenantService")
+	tenantServiceListMethodDescriptor   = tenantServiceServiceDescriptor.Methods().ByName("List")
+	tenantServiceAdmitMethodDescriptor  = tenantServiceServiceDescriptor.Methods().ByName("Admit")
+	tenantServiceRevokeMethodDescriptor = tenantServiceServiceDescriptor.Methods().ByName("Revoke")
+)
+
 // TenantServiceClient is a client for the admin.v1.TenantService service.
 type TenantServiceClient interface {
 	List(context.Context, *connect.Request[v1.TenantServiceListRequest]) (*connect.Response[v1.TenantServiceListResponse], error)
@@ -61,17 +69,20 @@ func NewTenantServiceClient(httpClient connect.HTTPClient, baseURL string, opts 
 		list: connect.NewClient[v1.TenantServiceListRequest, v1.TenantServiceListResponse](
 			httpClient,
 			baseURL+TenantServiceListProcedure,
-			opts...,
+			connect.WithSchema(tenantServiceListMethodDescriptor),
+			connect.WithClientOptions(opts...),
 		),
 		admit: connect.NewClient[v1.TenantServiceAdmitRequest, v1.TenantServiceAdmitResponse](
 			httpClient,
 			baseURL+TenantServiceAdmitProcedure,
-			opts...,
+			connect.WithSchema(tenantServiceAdmitMethodDescriptor),
+			connect.WithClientOptions(opts...),
 		),
 		revoke: connect.NewClient[v1.TenantServiceRevokeRequest, v1.TenantServiceRevokeResponse](
 			httpClient,
 			baseURL+TenantServiceRevokeProcedure,
-			opts...,
+			connect.WithSchema(tenantServiceRevokeMethodDescriptor),
+			connect.WithClientOptions(opts...),
 		),
 	}
 }
@@ -114,17 +125,20 @@ func NewTenantServiceHandler(svc TenantServiceHandler, opts ...connect.HandlerOp
 	tenantServiceListHandler := connect.NewUnaryHandler(
 		TenantServiceListProcedure,
 		svc.List,
-		opts...,
+		connect.WithSchema(tenantServiceListMethodDescriptor),
+		connect.WithHandlerOptions(opts...),
 	)
 	tenantServiceAdmitHandler := connect.NewUnaryHandler(
 		TenantServiceAdmitProcedure,
 		svc.Admit,
-		opts...,
+		connect.WithSchema(tenantServiceAdmitMethodDescriptor),
+		connect.WithHandlerOptions(opts...),
 	)
 	tenantServiceRevokeHandler := connect.NewUnaryHandler(
 		TenantServiceRevokeProcedure,
 		svc.Revoke,
-		opts...,
+		connect.WithSchema(tenantServiceRevokeMethodDescriptor),
+		connect.WithHandlerOptions(opts...),
 	)
 	return "/admin.v1.TenantService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
