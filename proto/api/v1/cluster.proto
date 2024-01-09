@@ -114,13 +114,23 @@ message Maintenance {
 
 // MaintenanceTimeWindow defines the start time and duration during which automatic actions will be performed
 message MaintenanceTimeWindow {
-  // Begin of the time window
-  google.protobuf.Timestamp begin = 1 [(validate.rules).timestamp.required = true];
-  // Duration of the time window
+  // Begin of the MaintenanceTimeWindow
+  Time begin = 1;
+  // Duration of the MaintenanceTimeWindow
   google.protobuf.Duration duration = 2 [(validate.rules).duration = {
     gte: {seconds: 3600}, // 1 hour minimum
     lt: {seconds: 14400} /* 4 hours maximum */
   }];
+}
+
+// Time of day
+message Time {
+  // hour begin of the maintenance window, specified in 24 hour format.
+  uint32 hour = 1 [(validate.rules).uint32.lte = 24];
+  // hour:minute begin of the maintenance window.
+  uint32 minute = 2 [(validate.rules).uint32.lte = 60];
+  // timezone specifies for which region in the world the given hour:minute should apply.
+  string timezone = 3;
 }
 
 // Worker defines a set of worker nodes with identical properties

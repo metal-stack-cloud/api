@@ -1916,27 +1916,19 @@
           "fields": [
             {
               "name": "begin",
-              "description": "Begin of the time window",
+              "description": "Begin of the MaintenanceTimeWindow",
               "label": "",
-              "type": "Timestamp",
-              "longType": "google.protobuf.Timestamp",
-              "fullType": "google.protobuf.Timestamp",
+              "type": "Time",
+              "longType": "Time",
+              "fullType": "api.v1.Time",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "timestamp.required",
-                    "value": true
-                  }
-                ]
-              }
+              "defaultValue": ""
             },
             {
               "name": "duration",
-              "description": "Duration of the time window",
+              "description": "Duration of the MaintenanceTimeWindow",
               "label": "",
               "type": "Duration",
               "longType": "google.protobuf.Duration",
@@ -1965,6 +1957,70 @@
                   }
                 ]
               }
+            }
+          ]
+        },
+        {
+          "name": "Time",
+          "longName": "Time",
+          "fullName": "api.v1.Time",
+          "description": "Time of day",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "hour",
+              "description": "hour begin of the maintenance window, specified in 24 hour format.",
+              "label": "",
+              "type": "uint32",
+              "longType": "uint32",
+              "fullType": "uint32",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": "",
+              "options": {
+                "validate.rules": [
+                  {
+                    "name": "uint32.lte",
+                    "value": 24
+                  }
+                ]
+              }
+            },
+            {
+              "name": "minute",
+              "description": "hour:minute begin of the maintenance window.",
+              "label": "",
+              "type": "uint32",
+              "longType": "uint32",
+              "fullType": "uint32",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": "",
+              "options": {
+                "validate.rules": [
+                  {
+                    "name": "uint32.lte",
+                    "value": 60
+                  }
+                ]
+              }
+            },
+            {
+              "name": "timezone",
+              "description": "timezone specifies for which region in the world the given hour:minute should apply.",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
             }
           ]
         },
