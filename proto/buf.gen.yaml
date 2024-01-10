@@ -19,7 +19,7 @@ plugins:
   - plugin: buf.build/bufbuild/es:v1.6.0
     out: ../js
     opt: target=ts
-  - plugin: buf.build/connectrpc/es:v1.2.0
+  - plugin: buf.build/connectrpc/es:v1.3.0
     out: ../js
     opt: target=ts
   # generate validate methods
