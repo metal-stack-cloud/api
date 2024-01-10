@@ -7,79 +7,105 @@ import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialM
 import { Duration, Message, proto3, Timestamp } from "@bufbuild/protobuf";
 
 /**
- * Types
+ * Cluster describes a kubernetes cluster
  *
  * @generated from message api.v1.Cluster
  */
 export class Cluster extends Message<Cluster> {
   /**
+   * Uuid of the cluster
+   *
    * @generated from field: string uuid = 1;
    */
   uuid = "";
 
   /**
+   * Name of the cluster
+   *
    * @generated from field: string name = 2;
    */
   name = "";
 
   /**
+   * Project where this cluster belongs to
+   *
    * @generated from field: string project = 3;
    */
   project = "";
 
   /**
-   * partition is part of a region
+   * Partition where this cluster was created
    *
    * @generated from field: string partition = 4;
    */
   partition = "";
 
   /**
+   * Kubernetes defines the kubernetes specifications of this cluster
+   *
    * @generated from field: api.v1.KubernetesSpec kubernetes = 5;
    */
   kubernetes?: KubernetesSpec;
 
   /**
+   * Workers defines the list of worker groups with their specification
+   *
    * @generated from field: repeated api.v1.Worker workers = 6;
    */
   workers: Worker[] = [];
 
   /**
+   * Maintenance defines when automated actions on this cluster should be scheduled
+   *
    * @generated from field: api.v1.Maintenance maintenance = 7;
    */
   maintenance?: Maintenance;
 
   /**
+   * Tenant where this cluster belongs to
+   *
    * @generated from field: string tenant = 8;
    */
   tenant = "";
 
   /**
+   * CreatedAt defines the date when this cluster was created
+   *
    * @generated from field: google.protobuf.Timestamp created_at = 10;
    */
   createdAt?: Timestamp;
 
   /**
+   * UpdatedAt defines the date when this cluster was updated
+   *
    * @generated from field: google.protobuf.Timestamp updated_at = 11;
    */
   updatedAt?: Timestamp;
 
   /**
+   * DeletedAt defines the date when this cluster was deleted
+   *
    * @generated from field: google.protobuf.Timestamp deleted_at = 12;
    */
   deletedAt?: Timestamp;
 
   /**
+   * Status of this cluster
+   *
    * @generated from field: api.v1.ClusterStatus status = 20;
    */
   status?: ClusterStatus;
 
   /**
+   * Purpose of this cluster, can be for example production, development or evaluation
+   *
    * @generated from field: optional string purpose = 21;
    */
   purpose?: string;
 
   /**
+   * Monitoring details for this cluster
+   *
    * @generated from field: api.v1.ClusterMonitoring monitoring = 22;
    */
   monitoring?: ClusterMonitoring;
@@ -126,10 +152,14 @@ export class Cluster extends Message<Cluster> {
 }
 
 /**
+ * KubernetesSpec details of kubernetes this cluster
+ *
  * @generated from message api.v1.KubernetesSpec
  */
 export class KubernetesSpec extends Message<KubernetesSpec> {
   /**
+   * Version of kubernetes
+   *
    * @generated from field: string version = 1;
    */
   version = "";
@@ -163,20 +193,28 @@ export class KubernetesSpec extends Message<KubernetesSpec> {
 }
 
 /**
+ * Maintenance defines when automatic actions should be scheduled on this cluster
+ *
  * @generated from message api.v1.Maintenance
  */
 export class Maintenance extends Message<Maintenance> {
   /**
+   * KubernetesAutoupdate if set to true, kubernetes patch version updates will be done in the maintenance window
+   *
    * @generated from field: optional bool kubernetes_autoupdate = 1;
    */
   kubernetesAutoupdate?: boolean;
 
   /**
+   * MachineimageAutoupdate if set to true, machine images will be automatically update by rolling nodes in the maintenance window
+   *
    * @generated from field: optional bool machineimage_autoupdate = 2;
    */
   machineimageAutoupdate?: boolean;
 
   /**
+   * TimeWindow defines the start time and duration during which automatic actions will be performed
+   *
    * @generated from field: api.v1.MaintenanceTimeWindow time_window = 3;
    */
   timeWindow?: MaintenanceTimeWindow;
@@ -212,15 +250,21 @@ export class Maintenance extends Message<Maintenance> {
 }
 
 /**
+ * MaintenanceTimeWindow defines the start time and duration during which automatic actions will be performed
+ *
  * @generated from message api.v1.MaintenanceTimeWindow
  */
 export class MaintenanceTimeWindow extends Message<MaintenanceTimeWindow> {
   /**
-   * @generated from field: google.protobuf.Timestamp begin = 1;
+   * Begin of the MaintenanceTimeWindow
+   *
+   * @generated from field: api.v1.Time begin = 1;
    */
-  begin?: Timestamp;
+  begin?: Time;
 
   /**
+   * Duration of the MaintenanceTimeWindow
+   *
    * @generated from field: google.protobuf.Duration duration = 2;
    */
   duration?: Duration;
@@ -233,7 +277,7 @@ export class MaintenanceTimeWindow extends Message<MaintenanceTimeWindow> {
   static readonly runtime: typeof proto3 = proto3;
   static readonly typeName = "api.v1.MaintenanceTimeWindow";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "begin", kind: "message", T: Timestamp },
+    { no: 1, name: "begin", kind: "message", T: Time },
     { no: 2, name: "duration", kind: "message", T: Duration },
   ]);
 
@@ -255,35 +299,106 @@ export class MaintenanceTimeWindow extends Message<MaintenanceTimeWindow> {
 }
 
 /**
+ * Time of day
+ *
+ * @generated from message api.v1.Time
+ */
+export class Time extends Message<Time> {
+  /**
+   * hour begin of the maintenance window, specified in 24 hour format.
+   *
+   * @generated from field: uint32 hour = 1;
+   */
+  hour = 0;
+
+  /**
+   * hour:minute begin of the maintenance window.
+   *
+   * @generated from field: uint32 minute = 2;
+   */
+  minute = 0;
+
+  /**
+   * timezone specifies for which region in the world the given hour:minute should apply.
+   *
+   * @generated from field: string timezone = 3;
+   */
+  timezone = "";
+
+  constructor(data?: PartialMessage<Time>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "api.v1.Time";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "hour", kind: "scalar", T: 13 /* ScalarType.UINT32 */ },
+    { no: 2, name: "minute", kind: "scalar", T: 13 /* ScalarType.UINT32 */ },
+    { no: 3, name: "timezone", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Time {
+    return new Time().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): Time {
+    return new Time().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): Time {
+    return new Time().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: Time | PlainMessage<Time> | undefined, b: Time | PlainMessage<Time> | undefined): boolean {
+    return proto3.util.equals(Time, a, b);
+  }
+}
+
+/**
+ * Worker defines a set of worker nodes with identical properties
+ *
  * @generated from message api.v1.Worker
  */
 export class Worker extends Message<Worker> {
   /**
+   * Name of this worker group
+   *
    * @generated from field: string name = 1;
    */
   name = "";
 
   /**
+   * MachineType of machines which should be used for the worker nodes in this group
+   *
    * @generated from field: string machine_type = 2;
    */
   machineType = "";
 
   /**
+   * Minsize defines the minimum amount of machines present in this worker group
+   *
    * @generated from field: uint32 minsize = 3;
    */
   minsize = 0;
 
   /**
+   * Maxsize defines the maximum amount of machines present in this worker group
+   *
    * @generated from field: uint32 maxsize = 4;
    */
   maxsize = 0;
 
   /**
+   * Maxsurge defines the maximum amount of machines which are spun up in this worker group during a rolling upgrade
+   *
    * @generated from field: uint32 maxsurge = 5;
    */
   maxsurge = 0;
 
   /**
+   * Maxunavailable defines the maximum amount of not available machines in this worker group during a rolling upgrade
+   *
    * @generated from field: uint32 maxunavailable = 6;
    */
   maxunavailable = 0;
@@ -322,35 +437,49 @@ export class Worker extends Message<Worker> {
 }
 
 /**
+ * WorkerUpdate is used to update a Worker group
+ *
  * @generated from message api.v1.WorkerUpdate
  */
 export class WorkerUpdate extends Message<WorkerUpdate> {
   /**
+   * Name of the worker group to update
+   *
    * @generated from field: string name = 1;
    */
   name = "";
 
   /**
+   * MachineType to change in this worker group
+   *
    * @generated from field: optional string machine_type = 2;
    */
   machineType?: string;
 
   /**
+   * Minsize defines the minimum amount of machines present in this worker group
+   *
    * @generated from field: optional uint32 minsize = 3;
    */
   minsize?: number;
 
   /**
+   * Maxsize defines the maximum amount of machines present in this worker group
+   *
    * @generated from field: optional uint32 maxsize = 4;
    */
   maxsize?: number;
 
   /**
+   * Maxsurge defines the maximum amount of machines which are spun up in this worker group during a rolling upgrade
+   *
    * @generated from field: optional uint32 maxsurge = 5;
    */
   maxsurge?: number;
 
   /**
+   * Maxunavailable defines the maximum amount of not available machines in this worker group during a rolling upgrade
+   *
    * @generated from field: optional uint32 maxunavailable = 6;
    */
   maxunavailable?: number;
@@ -389,17 +518,21 @@ export class WorkerUpdate extends Message<WorkerUpdate> {
 }
 
 /**
- * Requests
+ * ClusterServiceGetRequest is the request payload for a cluster get request
  *
  * @generated from message api.v1.ClusterServiceGetRequest
  */
 export class ClusterServiceGetRequest extends Message<ClusterServiceGetRequest> {
   /**
+   * Uuid of the cluster
+   *
    * @generated from field: string uuid = 1;
    */
   uuid = "";
 
   /**
+   * Project of the cluster
+   *
    * @generated from field: string project = 2;
    */
   project = "";
@@ -434,20 +567,28 @@ export class ClusterServiceGetRequest extends Message<ClusterServiceGetRequest> 
 }
 
 /**
+ * ClusterServiceGetRequest is the request payload for a cluster get request
+ *
  * @generated from message api.v1.ClusterServiceGetCredentialsRequest
  */
 export class ClusterServiceGetCredentialsRequest extends Message<ClusterServiceGetCredentialsRequest> {
   /**
+   * Uuid of the cluster
+   *
    * @generated from field: string uuid = 1;
    */
   uuid = "";
 
   /**
+   * Project of the cluster
+   *
    * @generated from field: string project = 2;
    */
   project = "";
 
   /**
+   * Expiration defines the duration after which the requested kubernetes access token can not be used anymore
+   *
    * @generated from field: optional google.protobuf.Duration expiration = 4;
    */
   expiration?: Duration;
@@ -483,10 +624,14 @@ export class ClusterServiceGetCredentialsRequest extends Message<ClusterServiceG
 }
 
 /**
+ * ClusterServiceListRequest is the request payload for a cluster list request
+ *
  * @generated from message api.v1.ClusterServiceListRequest
  */
 export class ClusterServiceListRequest extends Message<ClusterServiceListRequest> {
   /**
+   * Project of the cluster
+   *
    * @generated from field: string project = 2;
    */
   project = "";
@@ -520,37 +665,49 @@ export class ClusterServiceListRequest extends Message<ClusterServiceListRequest
 }
 
 /**
+ * ClusterServiceCreateRequest is the request payload for a cluster create request
+ *
  * @generated from message api.v1.ClusterServiceCreateRequest
  */
 export class ClusterServiceCreateRequest extends Message<ClusterServiceCreateRequest> {
   /**
+   * Name of the cluster to create
+   *
    * @generated from field: string name = 2;
    */
   name = "";
 
   /**
+   * Project of the cluster
+   *
    * @generated from field: string project = 3;
    */
   project = "";
 
   /**
-   * partition is part of a region
+   * Partition of the cluster
    *
    * @generated from field: string partition = 4;
    */
   partition = "";
 
   /**
+   * Kubernetes specification of the cluster
+   *
    * @generated from field: api.v1.KubernetesSpec kubernetes = 6;
    */
   kubernetes?: KubernetesSpec;
 
   /**
+   * Worker specification of the cluster
+   *
    * @generated from field: repeated api.v1.Worker workers = 7;
    */
   workers: Worker[] = [];
 
   /**
+   * Maintenance specification of the cluster
+   *
    * @generated from field: api.v1.Maintenance maintenance = 8;
    */
   maintenance?: Maintenance;
@@ -589,30 +746,42 @@ export class ClusterServiceCreateRequest extends Message<ClusterServiceCreateReq
 }
 
 /**
+ * ClusterServiceUpdateRequest is the request payload for a cluster update request
+ *
  * @generated from message api.v1.ClusterServiceUpdateRequest
  */
 export class ClusterServiceUpdateRequest extends Message<ClusterServiceUpdateRequest> {
   /**
+   * Uuid of the cluster
+   *
    * @generated from field: string uuid = 1;
    */
   uuid = "";
 
   /**
+   * Project of the cluster
+   *
    * @generated from field: string project = 2;
    */
   project = "";
 
   /**
+   * Kubernetes specification of the cluster
+   *
    * @generated from field: optional api.v1.KubernetesSpec kubernetes = 3;
    */
   kubernetes?: KubernetesSpec;
 
   /**
+   * Worker specification of the cluster
+   *
    * @generated from field: repeated api.v1.WorkerUpdate workers = 4;
    */
   workers: WorkerUpdate[] = [];
 
   /**
+   * Maintenance specification of the cluster
+   *
    * @generated from field: optional api.v1.Maintenance maintenance = 5;
    */
   maintenance?: Maintenance;
@@ -650,15 +819,21 @@ export class ClusterServiceUpdateRequest extends Message<ClusterServiceUpdateReq
 }
 
 /**
+ * ClusterServiceDeleteRequest is the request payload for a cluster delete request
+ *
  * @generated from message api.v1.ClusterServiceDeleteRequest
  */
 export class ClusterServiceDeleteRequest extends Message<ClusterServiceDeleteRequest> {
   /**
+   * Uuid of the cluster
+   *
    * @generated from field: string uuid = 1;
    */
   uuid = "";
 
   /**
+   * Project of the cluster
+   *
    * @generated from field: string project = 2;
    */
   project = "";
@@ -693,15 +868,21 @@ export class ClusterServiceDeleteRequest extends Message<ClusterServiceDeleteReq
 }
 
 /**
+ * ClusterServiceWatchStatusRequest is the request payload for a cluster watch status request
+ *
  * @generated from message api.v1.ClusterServiceWatchStatusRequest
  */
 export class ClusterServiceWatchStatusRequest extends Message<ClusterServiceWatchStatusRequest> {
   /**
+   * Uuid of the cluster
+   *
    * @generated from field: optional string uuid = 1;
    */
   uuid?: string;
 
   /**
+   * Project of the cluster
+   *
    * @generated from field: string project = 2;
    */
   project = "";
@@ -736,50 +917,70 @@ export class ClusterServiceWatchStatusRequest extends Message<ClusterServiceWatc
 }
 
 /**
+ * ClusterStatus
+ *
  * @generated from message api.v1.ClusterStatus
  */
 export class ClusterStatus extends Message<ClusterStatus> {
   /**
+   * Uuid of the cluster
+   *
    * @generated from field: string uuid = 1;
    */
   uuid = "";
 
   /**
+   * Progress of the cluster reconcilation
+   *
    * @generated from field: uint32 progress = 2;
    */
   progress = 0;
 
   /**
+   * State of the cluster
+   *
    * @generated from field: string state = 3;
    */
   state = "";
 
   /**
+   * Type of the cluster status
+   *
    * @generated from field: string type = 4;
    */
   type = "";
 
   /**
+   * ApiServerReady represents the ready state of the kubernetes api server
+   *
    * @generated from field: string api_server_ready = 10;
    */
   apiServerReady = "";
 
   /**
+   * ControlPlaneReady represents the ready state of the control plane components
+   *
    * @generated from field: string control_plane_ready = 11;
    */
   controlPlaneReady = "";
 
   /**
+   * NodesReady represents the ready state of the worker nodes
+   *
    * @generated from field: string nodes_ready = 12;
    */
   nodesReady = "";
 
   /**
+   * SystemComponentsReady represents the ready state of the system components
+   *
    * @generated from field: string system_components_ready = 13;
    */
   systemComponentsReady = "";
 
   /**
+   * LastErrors is a list of the last known errors occured during the cluster reconcilation
+   *
    * @generated from field: repeated api.v1.ClusterStatusLastError last_errors = 14;
    */
   lastErrors: ClusterStatusLastError[] = [];
@@ -821,18 +1022,20 @@ export class ClusterStatus extends Message<ClusterStatus> {
 }
 
 /**
+ * ClusterStatusLastError is the last known cluster status error
+ *
  * @generated from message api.v1.ClusterStatusLastError
  */
 export class ClusterStatusLastError extends Message<ClusterStatusLastError> {
   /**
-   * A human readable message indicating details about the last error.
+   * Description a human readable message indicating details about the last error.
    *
    * @generated from field: string description = 1;
    */
   description = "";
 
   /**
-   * ID of the task which caused this last error
+   * TaskId ID of the task which caused this last error
    * +optional
    *
    * @generated from field: optional string task_id = 2;
@@ -840,7 +1043,7 @@ export class ClusterStatusLastError extends Message<ClusterStatusLastError> {
   taskId?: string;
 
   /**
-   * Well-defined error codes of the last error(s).
+   * Codes well-defined error codes of the last error(s).
    * +optional
    *
    * @generated from field: repeated string codes = 3;
@@ -848,7 +1051,7 @@ export class ClusterStatusLastError extends Message<ClusterStatusLastError> {
   codes: string[] = [];
 
   /**
-   * Last time the error was reported
+   * LastUpdateTime last time the error was reported
    * +optional
    *
    * @generated from field: google.protobuf.Timestamp last_update_time = 4;
@@ -887,20 +1090,28 @@ export class ClusterStatusLastError extends Message<ClusterStatusLastError> {
 }
 
 /**
+ * ClusterMonitoring contains details howto access the cluster monitoring
+ *
  * @generated from message api.v1.ClusterMonitoring
  */
 export class ClusterMonitoring extends Message<ClusterMonitoring> {
   /**
+   * Username to access the monitoring
+   *
    * @generated from field: string username = 1;
    */
   username = "";
 
   /**
+   * Password to access the monitoring
+   *
    * @generated from field: string password = 2;
    */
   password = "";
 
   /**
+   * Endpoint is the url to access the monitoring
+   *
    * @generated from field: string endpoint = 3;
    */
   endpoint = "";
@@ -936,12 +1147,14 @@ export class ClusterMonitoring extends Message<ClusterMonitoring> {
 }
 
 /**
- * Responses
+ * ClusterServiceCreateResponse is the response payload of a cluster create request
  *
  * @generated from message api.v1.ClusterServiceCreateResponse
  */
 export class ClusterServiceCreateResponse extends Message<ClusterServiceCreateResponse> {
   /**
+   * Cluster is the cluster
+   *
    * @generated from field: api.v1.Cluster cluster = 1;
    */
   cluster?: Cluster;
@@ -975,10 +1188,14 @@ export class ClusterServiceCreateResponse extends Message<ClusterServiceCreateRe
 }
 
 /**
+ * ClusterServiceGetResponse is the response payload of a cluster get request
+ *
  * @generated from message api.v1.ClusterServiceGetResponse
  */
 export class ClusterServiceGetResponse extends Message<ClusterServiceGetResponse> {
   /**
+   * Cluster is the cluster
+   *
    * @generated from field: api.v1.Cluster cluster = 1;
    */
   cluster?: Cluster;
@@ -1012,10 +1229,14 @@ export class ClusterServiceGetResponse extends Message<ClusterServiceGetResponse
 }
 
 /**
+ * ClusterServiceGetCredentialsResponse is the response payload of a cluster get credentials request
+ *
  * @generated from message api.v1.ClusterServiceGetCredentialsResponse
  */
 export class ClusterServiceGetCredentialsResponse extends Message<ClusterServiceGetCredentialsResponse> {
   /**
+   * Cluster is the cluster
+   *
    * @generated from field: string kubeconfig = 1;
    */
   kubeconfig = "";
@@ -1049,10 +1270,14 @@ export class ClusterServiceGetCredentialsResponse extends Message<ClusterService
 }
 
 /**
+ * ClusterServiceDeleteResponse is the response payload of a cluster delete request
+ *
  * @generated from message api.v1.ClusterServiceDeleteResponse
  */
 export class ClusterServiceDeleteResponse extends Message<ClusterServiceDeleteResponse> {
   /**
+   * Cluster is the cluster
+   *
    * @generated from field: api.v1.Cluster cluster = 1;
    */
   cluster?: Cluster;
@@ -1086,10 +1311,14 @@ export class ClusterServiceDeleteResponse extends Message<ClusterServiceDeleteRe
 }
 
 /**
+ * ClusterServiceUpdateResponse is the response payload of a cluster update request
+ *
  * @generated from message api.v1.ClusterServiceUpdateResponse
  */
 export class ClusterServiceUpdateResponse extends Message<ClusterServiceUpdateResponse> {
   /**
+   * Cluster is the cluster
+   *
    * @generated from field: api.v1.Cluster cluster = 1;
    */
   cluster?: Cluster;
@@ -1123,10 +1352,14 @@ export class ClusterServiceUpdateResponse extends Message<ClusterServiceUpdateRe
 }
 
 /**
+ * ClusterServiceListResponse is the response payload of a cluster list request
+ *
  * @generated from message api.v1.ClusterServiceListResponse
  */
 export class ClusterServiceListResponse extends Message<ClusterServiceListResponse> {
   /**
+   * Clusters a list of clusters
+   *
    * @generated from field: repeated api.v1.Cluster clusters = 1;
    */
   clusters: Cluster[] = [];
@@ -1160,10 +1393,14 @@ export class ClusterServiceListResponse extends Message<ClusterServiceListRespon
 }
 
 /**
+ * ClusterServiceWatchStatusResponse is the response payload of a cluster watch status request
+ *
  * @generated from message api.v1.ClusterServiceWatchStatusResponse
  */
 export class ClusterServiceWatchStatusResponse extends Message<ClusterServiceWatchStatusResponse> {
   /**
+   * Status the cluster status
+   *
    * @generated from field: api.v1.ClusterStatus status = 1;
    */
   status?: ClusterStatus;

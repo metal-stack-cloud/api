@@ -6,44 +6,73 @@ import "api/v1/common.proto";
 import "api/v1/tenant.proto";
 import "validate/validate.proto";
 
+// TenantService serves tenant related functions
 service TenantService {
+  // List tenants
   rpc List(TenantServiceListRequest) returns (TenantServiceListResponse) {
     option (api.v1.admin_roles) = ADMIN_ROLE_EDITOR;
     option (api.v1.admin_roles) = ADMIN_ROLE_VIEWER;
   }
+  // Admit a tenant
   rpc Admit(TenantServiceAdmitRequest) returns (TenantServiceAdmitResponse) {
     option (api.v1.admin_roles) = ADMIN_ROLE_EDITOR;
   }
+  // Revoke a tenant
   rpc Revoke(TenantServiceRevokeRequest) returns (TenantServiceRevokeResponse) {
     option (api.v1.admin_roles) = ADMIN_ROLE_EDITOR;
   }
 }
 
+// TenantServiceListRequest is the request payload for a tenant list request
 message TenantServiceListRequest {
+  // Login of the tenant to list
   optional string login = 1;
+  // Name of the tenant to list
   optional string name = 2;
+  // Email of the tenant to list
   optional string email = 3;
+  // OrganisationId of the tenant to list
   optional string organisation_id = 4;
+  // OauthProvide of the tenant to list
   optional api.v1.OAuthProvider oauth_provider = 5;
+  // Admitted on show admitted tenants
   optional bool admitted = 6;
+  // Paging details for the list request
   api.v1.Paging paging = 7;
 }
+
+// TenantServiceListResponse is the response payload for a tenant list request
 message TenantServiceListResponse {
+  // Tenants are the list of tenants
   repeated api.v1.Tenant tenants = 1;
-  // next_page is used for pagination, returns the next page to be fetched and must then be provided in the list request.
+  // NextPage is used for pagination, returns the next page to be fetched and must then be provided in the list request.
   optional uint64 next_page = 2;
 }
+
+// TenantServiceAdmitRequest is the request payload for a tenant admit request
 message TenantServiceAdmitRequest {
+  // TenantId is the id of the tenant to admit
   string tenant_id = 1;
+  // CouponId is the id of the coupon this tenant should get
   optional string coupon_id = 2;
+  // BalanceToAdd is the amount of balance he should be granted
   optional int64 balance_to_add = 3 [(validate.rules).int64.gt = 0];
 }
+
+// TenantServiceAdmitResponse is the response payload for a tenant admit request
 message TenantServiceAdmitResponse {
+  // Tenant the tenant
   api.v1.Tenant tenant = 1;
 }
+
+// TenantServiceRevokeRequest is the request payload for a tenant revoke request
 message TenantServiceRevokeRequest {
+  // TenantId is the id of the tenant to revoke
   string tenant_id = 1;
 }
+
+// TenantServiceRevokeResponse is the response payload for a tenant revoke request
 message TenantServiceRevokeResponse {
+  // Tenant the tenant
   api.v1.Tenant tenant = 1;
 }

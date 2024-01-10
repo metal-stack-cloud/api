@@ -90,17 +90,29 @@ var (
 
 // PaymentServiceClient is a client for the api.v1.PaymentService service.
 type PaymentServiceClient interface {
+	// CreateOrUpdateCustomer the payment data on the payment processor
 	CreateOrUpdateCustomer(context.Context, *connect.Request[v1.PaymentServiceCreateOrUpdateCustomerRequest]) (*connect.Response[v1.PaymentServiceCreateOrUpdateCustomerResponse], error)
+	// GetCustomer from the payment processor
 	GetCustomer(context.Context, *connect.Request[v1.PaymentServiceGetCustomerRequest]) (*connect.Response[v1.PaymentServiceGetCustomerResponse], error)
+	// GetCustomerWithLogin from the payment processor
 	GetCustomerWithLogin(context.Context, *connect.Request[v1.PaymentServiceGetCustomerWithLoginRequest]) (*connect.Response[v1.PaymentServiceGetCustomerWithLoginResponse], error)
+	// CheckIfCustomerExists at the payment processor
 	CheckIfCustomerExists(context.Context, *connect.Request[v1.PaymentServiceCheckIfCustomerExistsRequest]) (*connect.Response[v1.PaymentServiceCheckIfCustomerExistsResponse], error)
+	// HasPaymentMethod check if the customer has a payment method provided
 	HasPaymentMethod(context.Context, *connect.Request[v1.PaymentServiceHasPaymentMethodRequest]) (*connect.Response[v1.PaymentServiceHasPaymentMethodResponse], error)
+	// DeletePaymentMethod of the customer
 	DeletePaymentMethod(context.Context, *connect.Request[v1.PaymentServiceDeletePaymentMethodRequest]) (*connect.Response[v1.PaymentServiceDeletePaymentMethodResponse], error)
+	// GetSubscriptionUsage of the customer
 	GetSubscriptionUsage(context.Context, *connect.Request[v1.PaymentServiceGetSubscriptionUsageRequest]) (*connect.Response[v1.PaymentServiceGetSubscriptionUsageResponse], error)
+	// GetInvoices of the customer
 	GetInvoices(context.Context, *connect.Request[v1.PaymentServiceGetInvoicesRequest]) (*connect.Response[v1.PaymentServiceGetInvoicesResponse], error)
+	// GetDefaultPrices of the products on the platform
 	GetDefaultPrices(context.Context, *connect.Request[v1.PaymentServiceGetDefaultPricesRequest]) (*connect.Response[v1.PaymentServiceGetDefaultPricesResponse], error)
+	// CheckAdmitted if the customer is allowed to use the service on the platform
 	CheckAdmitted(context.Context, *connect.Request[v1.PaymentServiceCheckAdmittedRequest]) (*connect.Response[v1.PaymentServiceCheckAdmittedResponse], error)
+	// RequestAdmission for a customer to get allowed to used the service
 	RequestAdmission(context.Context, *connect.Request[v1.PaymentServiceRequestAdmissionRequest]) (*connect.Response[v1.PaymentServiceRequestAdmissionResponse], error)
+	// HasChargeableResources checks if the customer has resources actually consumed which are chargeable
 	HasChargeableResources(context.Context, *connect.Request[v1.PaymentServiceHasChargeableResourcesRequest]) (*connect.Response[v1.PaymentServiceHasChargeableResourcesResponse], error)
 }
 
@@ -267,17 +279,29 @@ func (c *paymentServiceClient) HasChargeableResources(ctx context.Context, req *
 
 // PaymentServiceHandler is an implementation of the api.v1.PaymentService service.
 type PaymentServiceHandler interface {
+	// CreateOrUpdateCustomer the payment data on the payment processor
 	CreateOrUpdateCustomer(context.Context, *connect.Request[v1.PaymentServiceCreateOrUpdateCustomerRequest]) (*connect.Response[v1.PaymentServiceCreateOrUpdateCustomerResponse], error)
+	// GetCustomer from the payment processor
 	GetCustomer(context.Context, *connect.Request[v1.PaymentServiceGetCustomerRequest]) (*connect.Response[v1.PaymentServiceGetCustomerResponse], error)
+	// GetCustomerWithLogin from the payment processor
 	GetCustomerWithLogin(context.Context, *connect.Request[v1.PaymentServiceGetCustomerWithLoginRequest]) (*connect.Response[v1.PaymentServiceGetCustomerWithLoginResponse], error)
+	// CheckIfCustomerExists at the payment processor
 	CheckIfCustomerExists(context.Context, *connect.Request[v1.PaymentServiceCheckIfCustomerExistsRequest]) (*connect.Response[v1.PaymentServiceCheckIfCustomerExistsResponse], error)
+	// HasPaymentMethod check if the customer has a payment method provided
 	HasPaymentMethod(context.Context, *connect.Request[v1.PaymentServiceHasPaymentMethodRequest]) (*connect.Response[v1.PaymentServiceHasPaymentMethodResponse], error)
+	// DeletePaymentMethod of the customer
 	DeletePaymentMethod(context.Context, *connect.Request[v1.PaymentServiceDeletePaymentMethodRequest]) (*connect.Response[v1.PaymentServiceDeletePaymentMethodResponse], error)
+	// GetSubscriptionUsage of the customer
 	GetSubscriptionUsage(context.Context, *connect.Request[v1.PaymentServiceGetSubscriptionUsageRequest]) (*connect.Response[v1.PaymentServiceGetSubscriptionUsageResponse], error)
+	// GetInvoices of the customer
 	GetInvoices(context.Context, *connect.Request[v1.PaymentServiceGetInvoicesRequest]) (*connect.Response[v1.PaymentServiceGetInvoicesResponse], error)
+	// GetDefaultPrices of the products on the platform
 	GetDefaultPrices(context.Context, *connect.Request[v1.PaymentServiceGetDefaultPricesRequest]) (*connect.Response[v1.PaymentServiceGetDefaultPricesResponse], error)
+	// CheckAdmitted if the customer is allowed to use the service on the platform
 	CheckAdmitted(context.Context, *connect.Request[v1.PaymentServiceCheckAdmittedRequest]) (*connect.Response[v1.PaymentServiceCheckAdmittedResponse], error)
+	// RequestAdmission for a customer to get allowed to used the service
 	RequestAdmission(context.Context, *connect.Request[v1.PaymentServiceRequestAdmissionRequest]) (*connect.Response[v1.PaymentServiceRequestAdmissionResponse], error)
+	// HasChargeableResources checks if the customer has resources actually consumed which are chargeable
 	HasChargeableResources(context.Context, *connect.Request[v1.PaymentServiceHasChargeableResourcesRequest]) (*connect.Response[v1.PaymentServiceHasChargeableResourcesResponse], error)
 }
 

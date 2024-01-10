@@ -6,29 +6,35 @@ import "api/v1/common.proto";
 import "google/protobuf/timestamp.proto";
 import "validate/validate.proto";
 
+// IPService serves ip address related functions
 service IPService {
+  // Get a ip
   rpc Get(IPServiceGetRequest) returns (IPServiceGetResponse) {
     option (project_roles) = PROJECT_ROLE_OWNER;
     option (project_roles) = PROJECT_ROLE_EDITOR;
     option (project_roles) = PROJECT_ROLE_VIEWER;
     option (auditing) = AUDITING_EXCLUDED;
   }
+  // Allocate a ip
   rpc Allocate(IPServiceAllocateRequest) returns (IPServiceAllocateResponse) {
     option (project_roles) = PROJECT_ROLE_OWNER;
     option (project_roles) = PROJECT_ROLE_EDITOR;
     option (chargeable) = CHARGEABLE_TRUE;
   }
+  // Update a ip
   rpc Update(IPServiceUpdateRequest) returns (IPServiceUpdateResponse) {
     option (project_roles) = PROJECT_ROLE_OWNER;
     option (project_roles) = PROJECT_ROLE_EDITOR;
     option (chargeable) = CHARGEABLE_TRUE;
   }
+  // List all ips
   rpc List(IPServiceListRequest) returns (IPServiceListResponse) {
     option (project_roles) = PROJECT_ROLE_OWNER;
     option (project_roles) = PROJECT_ROLE_EDITOR;
     option (project_roles) = PROJECT_ROLE_VIEWER;
     option (auditing) = AUDITING_EXCLUDED;
   }
+  // Delete a ip
   rpc Delete(IPServiceDeleteRequest) returns (IPServiceDeleteResponse) {
     option (project_roles) = PROJECT_ROLE_OWNER;
     option (project_roles) = PROJECT_ROLE_EDITOR;
@@ -36,94 +42,139 @@ service IPService {
   }
 }
 
+// IPType specifies different ip address types
 enum IPType {
+  // IP_TYPE_UNSPECIFIED is not specified
   IP_TYPE_UNSPECIFIED = 0;
+  // IP_TYPE_EPHEMERAL defines a ephemeral ip address which is freed/deleted after usage
   IP_TYPE_EPHEMERAL = 1;
+  // IP_TYPE_STATIC defines a static ip address which must be freed/deleted explicitly
   IP_TYPE_STATIC = 2;
 }
 
-// Types
+// IP is a ip address which can be used as loadbalancer addresses
 message IP {
+  // Uuid of this ip
   string uuid = 1 [(validate.rules).string.uuid = true];
+  // Ip is either ipv4 or ipv6 address
   string ip = 2 [(validate.rules).string.ip = true];
+  // Name of this ip
   string name = 3 [(validate.rules).string = {
     min_len: 2,
     max_len: 128
   }];
+  // Description of this ip
   string description = 4 [(validate.rules).string = {max_len: 128}];
+  // Network is the network this ip belongs to
   string network = 5 [(validate.rules).string = {
     min_len: 2,
     max_len: 128
   }];
+  // Project where this ip address belongs to
   string project = 6 [(validate.rules).string = {
     min_len: 2,
     max_len: 128
   }];
+  // Type of this ip
   IPType type = 7;
+  // Tags on this ip
   repeated string tags = 8 [(validate.rules).repeated.max_items = 100];
+  // CreatedAt is the date when this ip was created
   google.protobuf.Timestamp created_at = 10;
+  // UpdatedAt is the date when this ip was updated
   google.protobuf.Timestamp updated_at = 11;
+  // DeletedAt is the date when this ip was deleted
   google.protobuf.Timestamp deleted_at = 12;
 }
 
-// Requests
+// IPServiceGetRequest is the request payload for a ip get request
 message IPServiceGetRequest {
+  // Uuid of the ip to get
   string uuid = 1 [(validate.rules).string.uuid = true];
+  // Project of the ip
   string project = 2 [(validate.rules).string = {
     min_len: 2,
     max_len: 128
   }];
 }
+
+// IPServiceGetRequest is the request payload for a ip get request
 message IPServiceAllocateRequest {
+  // Project of the ip
   string project = 2 [(validate.rules).string = {
     min_len: 2,
     max_len: 128
   }];
+  // Name of the ip
   string name = 3 [(validate.rules).string = {
     min_len: 2,
     max_len: 128
   }];
+  // Description of the ip
   string description = 4 [(validate.rules).string = {max_len: 128}];
+  // Tags to put onto the ip
   repeated string tags = 8 [(validate.rules).repeated.max_items = 100];
+  // Static if set to true, this will be a Static ip
   bool static = 9;
 }
+
+// IPServiceUpdateRequest is the request payload for a ip update request
 message IPServiceUpdateRequest {
+  // Project of the ip
   string project = 1 [(validate.rules).string = {
     min_len: 2,
     max_len: 128
   }];
+  // Ip the ip to update
   IP ip = 2;
 }
+
+// IPServiceListRequest is the request payload for a ip list request
 message IPServiceListRequest {
-  string project = 2 [(validate.rules).string = {
-    min_len: 2,
-    max_len: 128
-  }];
-}
-message IPServiceDeleteRequest {
-  string uuid = 1 [(validate.rules).string.uuid = true];
+  // Project of the ips to list
   string project = 2 [(validate.rules).string = {
     min_len: 2,
     max_len: 128
   }];
 }
 
-// Responses
+// IPServiceDeleteRequest is the request payload for a ip delete request
+message IPServiceDeleteRequest {
+  // Uuid of the ip to delete
+  string uuid = 1 [(validate.rules).string.uuid = true];
+  // Project of the ip
+  string project = 2 [(validate.rules).string = {
+    min_len: 2,
+    max_len: 128
+  }];
+}
+
+// IPServiceGetResponse is the response payload for a ip get request
 message IPServiceGetResponse {
+  // Ip the ip
   IP ip = 1;
 }
+
+// IPServiceUpdateResponse is the response payload for a ip update request
 message IPServiceUpdateResponse {
+  // Ip the ip
   IP ip = 1;
 }
+
+// IPServiceAllocateResponse is the response payload for a ip allocate request
 message IPServiceAllocateResponse {
+  // Ip the ip
   IP ip = 1;
 }
-message IPServiceStaticResponse {
-  IP ip = 1;
-}
+
+// IPServiceListResponse is the response payload for a ip list request
 message IPServiceListResponse {
+  // Ips the ips
   repeated IP ips = 1;
 }
+
+// IPServiceDeleteResponse is the response payload for a ip delete request
 message IPServiceDeleteResponse {
+  // Ip the ip
   IP ip = 1;
 }

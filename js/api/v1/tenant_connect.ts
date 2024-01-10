@@ -7,12 +7,16 @@ import { TenantServiceCreateOrUpdateRequest, TenantServiceCreateOrUpdateResponse
 import { MethodKind } from "@bufbuild/protobuf";
 
 /**
+ * TenantService serves tenant related functions
+ *
  * @generated from service api.v1.TenantService
  */
 export const TenantService = {
   typeName: "api.v1.TenantService",
   methods: {
     /**
+     * Create a tenant
+     *
      * @generated from rpc api.v1.TenantService.Create
      */
     create: {
@@ -34,6 +38,8 @@ export const TenantService = {
       kind: MethodKind.Unary,
     },
     /**
+     * Get a tenant
+     *
      * @generated from rpc api.v1.TenantService.Get
      */
     get: {
@@ -43,6 +49,8 @@ export const TenantService = {
       kind: MethodKind.Unary,
     },
     /**
+     * Update a tenant
+     *
      * @generated from rpc api.v1.TenantService.Update
      */
     update: {
@@ -52,6 +60,8 @@ export const TenantService = {
       kind: MethodKind.Unary,
     },
     /**
+     * Delete a tenant
+     *
      * @generated from rpc api.v1.TenantService.Delete
      */
     delete: {

@@ -705,15 +705,33 @@ func (m *MaintenanceTimeWindow) validate(all bool) error {
 
 	var errors []error
 
-	if m.GetBegin() == nil {
-		err := MaintenanceTimeWindowValidationError{
-			field:  "Begin",
-			reason: "value is required",
+	if all {
+		switch v := interface{}(m.GetBegin()).(type) {
+		case interface{ ValidateAll() error }:
+			if err := v.ValidateAll(); err != nil {
+				errors = append(errors, MaintenanceTimeWindowValidationError{
+					field:  "Begin",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		case interface{ Validate() error }:
+			if err := v.Validate(); err != nil {
+				errors = append(errors, MaintenanceTimeWindowValidationError{
+					field:  "Begin",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
 		}
-		if !all {
-			return err
+	} else if v, ok := interface{}(m.GetBegin()).(interface{ Validate() error }); ok {
+		if err := v.Validate(); err != nil {
+			return MaintenanceTimeWindowValidationError{
+				field:  "Begin",
+				reason: "embedded message failed validation",
+				cause:  err,
+			}
 		}
-		errors = append(errors, err)
 	}
 
 	if d := m.GetDuration(); d != nil {
@@ -826,6 +844,128 @@ var _ interface {
 	Cause() error
 	ErrorName() string
 } = MaintenanceTimeWindowValidationError{}
+
+// Validate checks the field values on Time with the rules defined in the proto
+// definition for this message. If any rules are violated, the first error
+// encountered is returned, or nil if there are no violations.
+func (m *Time) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on Time with the rules defined in the
+// proto definition for this message. If any rules are violated, the result is
+// a list of violation errors wrapped in TimeMultiError, or nil if none found.
+func (m *Time) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *Time) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	if m.GetHour() > 24 {
+		err := TimeValidationError{
+			field:  "Hour",
+			reason: "value must be less than or equal to 24",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
+	if m.GetMinute() > 60 {
+		err := TimeValidationError{
+			field:  "Minute",
+			reason: "value must be less than or equal to 60",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
+	// no validation rules for Timezone
+
+	if len(errors) > 0 {
+		return TimeMultiError(errors)
+	}
+
+	return nil
+}
+
+// TimeMultiError is an error wrapping multiple validation errors returned by
+// Time.ValidateAll() if the designated constraints aren't met.
+type TimeMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m TimeMultiError) Error() string {
+	var msgs []string
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m TimeMultiError) AllErrors() []error { return m }
+
+// TimeValidationError is the validation error returned by Time.Validate if the
+// designated constraints aren't met.
+type TimeValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e TimeValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e TimeValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e TimeValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e TimeValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e TimeValidationError) ErrorName() string { return "TimeValidationError" }
+
+// Error satisfies the builtin error interface
+func (e TimeValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sTime.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = TimeValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = TimeValidationError{}
 
 // Validate checks the field values on Worker with the rules defined in the
 // proto definition for this message. If any rules are violated, the first

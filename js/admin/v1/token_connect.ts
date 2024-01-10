@@ -7,12 +7,16 @@ import { TokenServiceListRequest, TokenServiceListResponse, TokenServiceRevokeRe
 import { MethodKind } from "@bufbuild/protobuf";
 
 /**
+ * TokenService serves token related functions
+ *
  * @generated from service admin.v1.TokenService
  */
 export const TokenService = {
   typeName: "admin.v1.TokenService",
   methods: {
     /**
+     * List tokens
+     *
      * @generated from rpc admin.v1.TokenService.List
      */
     list: {
@@ -22,6 +26,8 @@ export const TokenService = {
       kind: MethodKind.Unary,
     },
     /**
+     * Revoke a token
+     *
      * @generated from rpc admin.v1.TokenService.Revoke
      */
     revoke: {

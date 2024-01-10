@@ -7,12 +7,16 @@ import { PaymentServiceAddBalanceToCustomerRequest, PaymentServiceAddBalanceToCu
 import { MethodKind } from "@bufbuild/protobuf";
 
 /**
+ * PaymentService serves payment related functions
+ *
  * @generated from service admin.v1.PaymentService
  */
 export const PaymentService = {
   typeName: "admin.v1.PaymentService",
   methods: {
     /**
+     * ListCoupons list all available coupons
+     *
      * @generated from rpc admin.v1.PaymentService.ListCoupons
      */
     listCoupons: {
@@ -22,6 +26,8 @@ export const PaymentService = {
       kind: MethodKind.Unary,
     },
     /**
+     * AddCouponToCustomer adds a coupon to a customer
+     *
      * @generated from rpc admin.v1.PaymentService.AddCouponToCustomer
      */
     addCouponToCustomer: {
@@ -31,6 +37,8 @@ export const PaymentService = {
       kind: MethodKind.Unary,
     },
     /**
+     * AddBalanceToCustomer adds balance to a customer
+     *
      * @generated from rpc admin.v1.PaymentService.AddBalanceToCustomer
      */
     addBalanceToCustomer: {

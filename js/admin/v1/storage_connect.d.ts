@@ -1,12 +1,16 @@
 import { StorageServiceClusterInfoRequest, StorageServiceClusterInfoResponse, StorageServiceListSnapshotsRequest, StorageServiceListSnapshotsResponse, StorageServiceListVolumesRequest, StorageServiceListVolumesResponse } from "./storage_pb.js";
 import { MethodKind } from "@bufbuild/protobuf";
 /**
+ * StorageService serves storage related functions
+ *
  * @generated from service admin.v1.StorageService
  */
 export declare const StorageService: {
     readonly typeName: "admin.v1.StorageService";
     readonly methods: {
         /**
+         * ClusterInfo returns overall statistics of the storage system
+         *
          * @generated from rpc admin.v1.StorageService.ClusterInfo
          */
         readonly clusterInfo: {
@@ -16,6 +20,8 @@ export declare const StorageService: {
             readonly kind: MethodKind.Unary;
         };
         /**
+         * ListVolumes list all volumes
+         *
          * @generated from rpc admin.v1.StorageService.ListVolumes
          */
         readonly listVolumes: {
@@ -25,6 +31,8 @@ export declare const StorageService: {
             readonly kind: MethodKind.Unary;
         };
         /**
+         * ListSnapshots list all snapshots
+         *
          * @generated from rpc admin.v1.StorageService.ListSnapshots
          */
         readonly listSnapshots: {

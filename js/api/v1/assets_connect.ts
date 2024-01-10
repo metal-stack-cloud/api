@@ -7,12 +7,16 @@ import { AssetServiceListRequest, AssetServiceListResponse } from "./assets_pb.j
 import { MethodKind } from "@bufbuild/protobuf";
 
 /**
+ * AssetService serves asset related functions
+ *
  * @generated from service api.v1.AssetService
  */
 export const AssetService = {
   typeName: "api.v1.AssetService",
   methods: {
     /**
+     * List available assets
+     *
      * @generated from rpc api.v1.AssetService.List
      */
     list: {

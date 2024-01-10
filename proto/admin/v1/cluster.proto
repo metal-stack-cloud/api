@@ -8,78 +8,122 @@ import "api/v1/common.proto";
 import "google/protobuf/duration.proto";
 import "validate/validate.proto";
 
+// ClusterService serves cluster related functions
 service ClusterService {
+  // Get a cluster
   rpc Get(ClusterServiceGetRequest) returns (ClusterServiceGetResponse) {
     option (api.v1.admin_roles) = ADMIN_ROLE_EDITOR;
     option (api.v1.admin_roles) = ADMIN_ROLE_VIEWER;
   }
+  // List clusters
   rpc List(ClusterServiceListRequest) returns (ClusterServiceListResponse) {
     option (api.v1.admin_roles) = ADMIN_ROLE_EDITOR;
     option (api.v1.admin_roles) = ADMIN_ROLE_VIEWER;
   }
+  // Credentials of a cluster
   rpc Credentials(ClusterServiceCredentialsRequest) returns (ClusterServiceCredentialsResponse) {
     option (api.v1.admin_roles) = ADMIN_ROLE_EDITOR;
   }
+  // Operate on a cluster
   rpc Operate(ClusterServiceOperateRequest) returns (ClusterServiceOperateResponse) {
     option (api.v1.admin_roles) = ADMIN_ROLE_EDITOR;
   }
 }
 
+// ClusterServiceGetRequest is the request payload for the cluster get request
 message ClusterServiceGetRequest {
+  // Uuid of the cluster to get
   string uuid = 1 [(validate.rules).string.uuid = true];
+  // WithMachines if set to true machines of all worker groups are also returned
   bool with_machines = 2;
 }
 
+// ClusterServiceListRequest is the request payload for the cluster list request
 message ClusterServiceListRequest {
+  // Uuid of the cluster
   optional string uuid = 1;
+  // Project of the cluster
   optional string project = 2;
+  // Tenant of the cluster
   optional string tenant = 3;
+  // Partiton of the cluster
   optional string partition = 4;
+  // Seed of the cluster
   optional string seed = 5;
+  // Name of the cluster
   optional string name = 6;
+  // Purpose of the cluster
   optional string purpose = 7;
+  // Labels of the cluster
   map<string, string> labels = 8;
 }
 
+// ClusterServiceCredentialsRequest is the request payload for the cluster credentials request
 message ClusterServiceCredentialsRequest {
+  // Uuid of the cluster
   string uuid = 1 [(validate.rules).string.uuid = true];
+  // WithVpn if set VPN details are returned
   bool with_vpn = 2;
+  // WithSsh if set ssh access credentials are returned
   bool with_ssh = 3;
+  // Expiration defines the duration after which the kubernetes token is not valid anymore
   optional google.protobuf.Duration expiration = 4;
 }
 
+// ClusterServiceOperateRequest is the request payload for the cluster operate request
 message ClusterServiceOperateRequest {
+  // Uuid of the cluster
   string uuid = 1 [(validate.rules).string.uuid = true];
+  // Operate is the reconcilation operation which should be performed
   Operate operate = 2;
 }
 
+// ClusterServiceGetResponse is the response payload for the cluster get request
 message ClusterServiceGetResponse {
+  // Cluster is the cluster
   api.v1.Cluster cluster = 1;
+  // Machines is a list of all machines in all worker groups
   repeated admin.v1.Machine machines = 2;
 }
 
+// ClusterServiceListResponse is the response payload for the cluster list request
 message ClusterServiceListResponse {
+  // Clusters is the list of clusters
   repeated api.v1.Cluster clusters = 1;
 }
 
+// ClusterServiceCredentialsResponse is the response payload for the cluster credentials request
 message ClusterServiceCredentialsResponse {
+  // Kubeconfig is the access token for the kubernetes api of this cluster
   string kubeconfig = 1;
+  // SshKeypair is the keypair to access the firewall of the cluster with ssh
   SSHKeyPair ssh_keypair = 2;
+  // Vpn are the VPN access details
   admin.v1.VPN vpn = 3;
 }
 
+// ClusterServiceOperateResponse is the response payload for the cluster operate request
 message ClusterServiceOperateResponse {
+  // Cluster is the cluster
   api.v1.Cluster cluster = 1;
 }
 
+// Operate defines the types of reconcilation to be triggered
 enum Operate {
+  // OPERATE_UNSPECIFIED is not specified
   OPERATE_UNSPECIFIED = 0;
+  // OPERATE_RECONCILE reconcile the cluster
   OPERATE_RECONCILE = 1;
+  // OPERATE_MAINTAIN maintain the cluster
   OPERATE_MAINTAIN = 2;
+  // OPERATE_RETRY retry the reconcilation of the cluster
   OPERATE_RETRY = 3;
 }
 
+// SSHKeyPair details to access a firewall via ssh
 message SSHKeyPair {
+  // Publickey is the public key
   bytes publickey = 1;
+  // Privatekey is the private key
   bytes privatekey = 2;
 }

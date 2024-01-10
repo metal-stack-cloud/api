@@ -8,6 +8,8 @@ import { Message, proto3, protoInt64 } from "@bufbuild/protobuf";
 import { Coupon, PaymentCustomer } from "../../api/v1/payment_pb.js";
 
 /**
+ * PaymentServiceListCouponsRequest is the request payload for the coupons list request
+ *
  * @generated from message admin.v1.PaymentServiceListCouponsRequest
  */
 export class PaymentServiceListCouponsRequest extends Message<PaymentServiceListCouponsRequest> {
@@ -39,10 +41,14 @@ export class PaymentServiceListCouponsRequest extends Message<PaymentServiceList
 }
 
 /**
+ * PaymentServiceListCouponsResponse is the response payload for the coupons list request
+ *
  * @generated from message admin.v1.PaymentServiceListCouponsResponse
  */
 export class PaymentServiceListCouponsResponse extends Message<PaymentServiceListCouponsResponse> {
   /**
+   * Coupons is the list of all coupons
+   *
    * @generated from field: repeated api.v1.Coupon coupons = 1;
    */
   coupons: Coupon[] = [];
@@ -76,15 +82,21 @@ export class PaymentServiceListCouponsResponse extends Message<PaymentServiceLis
 }
 
 /**
+ * PaymentServiceAddCouponToCustomerRequest is the request payload for the coupons add to customer request
+ *
  * @generated from message admin.v1.PaymentServiceAddCouponToCustomerRequest
  */
 export class PaymentServiceAddCouponToCustomerRequest extends Message<PaymentServiceAddCouponToCustomerRequest> {
   /**
+   * Customer is the customer
+   *
    * @generated from field: api.v1.PaymentCustomer customer = 1;
    */
   customer?: PaymentCustomer;
 
   /**
+   * CouponId is the id of the coupon which should be granted to the customer
+   *
    * @generated from field: string coupon_id = 2;
    */
   couponId = "";
@@ -119,10 +131,14 @@ export class PaymentServiceAddCouponToCustomerRequest extends Message<PaymentSer
 }
 
 /**
+ * PaymentServiceAddCouponToCustomerResponse is the response payload for the coupons add to customer request
+ *
  * @generated from message admin.v1.PaymentServiceAddCouponToCustomerResponse
  */
 export class PaymentServiceAddCouponToCustomerResponse extends Message<PaymentServiceAddCouponToCustomerResponse> {
   /**
+   * Customer is the customer
+   *
    * @generated from field: api.v1.PaymentCustomer customer = 1;
    */
   customer?: PaymentCustomer;
@@ -156,15 +172,21 @@ export class PaymentServiceAddCouponToCustomerResponse extends Message<PaymentSe
 }
 
 /**
+ * PaymentServiceAddBalanceToCustomerRequest is the request payload for the balance to customer request
+ *
  * @generated from message admin.v1.PaymentServiceAddBalanceToCustomerRequest
  */
 export class PaymentServiceAddBalanceToCustomerRequest extends Message<PaymentServiceAddBalanceToCustomerRequest> {
   /**
+   * Customer is the customer
+   *
    * @generated from field: api.v1.PaymentCustomer customer = 1;
    */
   customer?: PaymentCustomer;
 
   /**
+   * BalanceToAdd is the balance which should be added to the customer
+   *
    * @generated from field: int64 balance_to_add = 2;
    */
   balanceToAdd = protoInt64.zero;
@@ -199,10 +221,14 @@ export class PaymentServiceAddBalanceToCustomerRequest extends Message<PaymentSe
 }
 
 /**
+ * PaymentServiceAddBalanceToCustomerResponse is the response payload for the balance to customer request
+ *
  * @generated from message admin.v1.PaymentServiceAddBalanceToCustomerResponse
  */
 export class PaymentServiceAddBalanceToCustomerResponse extends Message<PaymentServiceAddBalanceToCustomerResponse> {
   /**
+   * Customer is the customer
+   *
    * @generated from field: api.v1.PaymentCustomer customer = 1;
    */
   customer?: PaymentCustomer;

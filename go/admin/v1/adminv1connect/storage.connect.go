@@ -54,8 +54,11 @@ var (
 
 // StorageServiceClient is a client for the admin.v1.StorageService service.
 type StorageServiceClient interface {
+	// ClusterInfo returns overall statistics of the storage system
 	ClusterInfo(context.Context, *connect.Request[v1.StorageServiceClusterInfoRequest]) (*connect.Response[v1.StorageServiceClusterInfoResponse], error)
+	// ListVolumes list all volumes
 	ListVolumes(context.Context, *connect.Request[v1.StorageServiceListVolumesRequest]) (*connect.Response[v1.StorageServiceListVolumesResponse], error)
+	// ListSnapshots list all snapshots
 	ListSnapshots(context.Context, *connect.Request[v1.StorageServiceListSnapshotsRequest]) (*connect.Response[v1.StorageServiceListSnapshotsResponse], error)
 }
 
@@ -114,8 +117,11 @@ func (c *storageServiceClient) ListSnapshots(ctx context.Context, req *connect.R
 
 // StorageServiceHandler is an implementation of the admin.v1.StorageService service.
 type StorageServiceHandler interface {
+	// ClusterInfo returns overall statistics of the storage system
 	ClusterInfo(context.Context, *connect.Request[v1.StorageServiceClusterInfoRequest]) (*connect.Response[v1.StorageServiceClusterInfoResponse], error)
+	// ListVolumes list all volumes
 	ListVolumes(context.Context, *connect.Request[v1.StorageServiceListVolumesRequest]) (*connect.Response[v1.StorageServiceListVolumesResponse], error)
+	// ListSnapshots list all snapshots
 	ListSnapshots(context.Context, *connect.Request[v1.StorageServiceListSnapshotsRequest]) (*connect.Response[v1.StorageServiceListSnapshotsResponse], error)
 }
 

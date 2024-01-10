@@ -48,7 +48,9 @@ var (
 
 // TokenServiceClient is a client for the admin.v1.TokenService service.
 type TokenServiceClient interface {
+	// List tokens
 	List(context.Context, *connect.Request[v1.TokenServiceListRequest]) (*connect.Response[v1.TokenServiceListResponse], error)
+	// Revoke a token
 	Revoke(context.Context, *connect.Request[v1.TokenServiceRevokeRequest]) (*connect.Response[v1.TokenServiceRevokeResponse], error)
 }
 
@@ -95,7 +97,9 @@ func (c *tokenServiceClient) Revoke(ctx context.Context, req *connect.Request[v1
 
 // TokenServiceHandler is an implementation of the admin.v1.TokenService service.
 type TokenServiceHandler interface {
+	// List tokens
 	List(context.Context, *connect.Request[v1.TokenServiceListRequest]) (*connect.Response[v1.TokenServiceListResponse], error)
+	// Revoke a token
 	Revoke(context.Context, *connect.Request[v1.TokenServiceRevokeRequest]) (*connect.Response[v1.TokenServiceRevokeResponse], error)
 }
 

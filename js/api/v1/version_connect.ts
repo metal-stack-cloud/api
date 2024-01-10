@@ -7,12 +7,16 @@ import { VersionServiceGetRequest, VersionServiceGetResponse } from "./version_p
 import { MethodKind } from "@bufbuild/protobuf";
 
 /**
+ * VersionService serves version related functions
+ *
  * @generated from service api.v1.VersionService
  */
 export const VersionService = {
   typeName: "api.v1.VersionService",
   methods: {
     /**
+     * Get the version
+     *
      * @generated from rpc api.v1.VersionService.Get
      */
     get: {

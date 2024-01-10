@@ -2,10 +2,14 @@ import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialM
 import { Message, proto3 } from "@bufbuild/protobuf";
 import { Token } from "../../api/v1/token_pb.js";
 /**
+ * TokenServiceListRequest is the request payload for the token list request
+ *
  * @generated from message admin.v1.TokenServiceListRequest
  */
 export declare class TokenServiceListRequest extends Message<TokenServiceListRequest> {
     /**
+     * UserId is the id of the user for which the tokens should be listed
+     *
      * @generated from field: optional string user_id = 1;
      */
     userId?: string;
@@ -19,10 +23,14 @@ export declare class TokenServiceListRequest extends Message<TokenServiceListReq
     static equals(a: TokenServiceListRequest | PlainMessage<TokenServiceListRequest> | undefined, b: TokenServiceListRequest | PlainMessage<TokenServiceListRequest> | undefined): boolean;
 }
 /**
+ * TokenServiceListResponse is the response payload for the token list request
+ *
  * @generated from message admin.v1.TokenServiceListResponse
  */
 export declare class TokenServiceListResponse extends Message<TokenServiceListResponse> {
     /**
+     * Tokens is the list of tokens
+     *
      * @generated from field: repeated api.v1.Token tokens = 1;
      */
     tokens: Token[];
@@ -36,14 +44,20 @@ export declare class TokenServiceListResponse extends Message<TokenServiceListRe
     static equals(a: TokenServiceListResponse | PlainMessage<TokenServiceListResponse> | undefined, b: TokenServiceListResponse | PlainMessage<TokenServiceListResponse> | undefined): boolean;
 }
 /**
+ * TokenServiceRevokeRequest is the request payload for the token revoke request
+ *
  * @generated from message admin.v1.TokenServiceRevokeRequest
  */
 export declare class TokenServiceRevokeRequest extends Message<TokenServiceRevokeRequest> {
     /**
+     * Uuid is the uuid of the token which should be revoked
+     *
      * @generated from field: string uuid = 1;
      */
     uuid: string;
     /**
+     * UserId is the id of the user for which the token should be revoked
+     *
      * @generated from field: string user_id = 2;
      */
     userId: string;
@@ -57,6 +71,8 @@ export declare class TokenServiceRevokeRequest extends Message<TokenServiceRevok
     static equals(a: TokenServiceRevokeRequest | PlainMessage<TokenServiceRevokeRequest> | undefined, b: TokenServiceRevokeRequest | PlainMessage<TokenServiceRevokeRequest> | undefined): boolean;
 }
 /**
+ * TokenServiceRevokeResponse is the response payload for the token revoke request
+ *
  * @generated from message admin.v1.TokenServiceRevokeResponse
  */
 export declare class TokenServiceRevokeResponse extends Message<TokenServiceRevokeResponse> {

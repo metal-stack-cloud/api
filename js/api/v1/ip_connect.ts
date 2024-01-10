@@ -7,12 +7,16 @@ import { IPServiceAllocateRequest, IPServiceAllocateResponse, IPServiceDeleteReq
 import { MethodKind } from "@bufbuild/protobuf";
 
 /**
+ * IPService serves ip address related functions
+ *
  * @generated from service api.v1.IPService
  */
 export const IPService = {
   typeName: "api.v1.IPService",
   methods: {
     /**
+     * Get a ip
+     *
      * @generated from rpc api.v1.IPService.Get
      */
     get: {
@@ -22,6 +26,8 @@ export const IPService = {
       kind: MethodKind.Unary,
     },
     /**
+     * Allocate a ip
+     *
      * @generated from rpc api.v1.IPService.Allocate
      */
     allocate: {
@@ -31,6 +37,8 @@ export const IPService = {
       kind: MethodKind.Unary,
     },
     /**
+     * Update a ip
+     *
      * @generated from rpc api.v1.IPService.Update
      */
     update: {
@@ -40,6 +48,8 @@ export const IPService = {
       kind: MethodKind.Unary,
     },
     /**
+     * List all ips
+     *
      * @generated from rpc api.v1.IPService.List
      */
     list: {
@@ -49,6 +59,8 @@ export const IPService = {
       kind: MethodKind.Unary,
     },
     /**
+     * Delete a ip
+     *
      * @generated from rpc api.v1.IPService.Delete
      */
     delete: {

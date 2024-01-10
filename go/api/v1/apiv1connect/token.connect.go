@@ -51,8 +51,11 @@ var (
 
 // TokenServiceClient is a client for the api.v1.TokenService service.
 type TokenServiceClient interface {
+	// Create a token to authenticate against the platform, the secret will be only visible in the response
 	Create(context.Context, *connect.Request[v1.TokenServiceCreateRequest]) (*connect.Response[v1.TokenServiceCreateResponse], error)
+	// List all your tokens
 	List(context.Context, *connect.Request[v1.TokenServiceListRequest]) (*connect.Response[v1.TokenServiceListResponse], error)
+	// Revoke a token, no further usage is possible afterwards
 	Revoke(context.Context, *connect.Request[v1.TokenServiceRevokeRequest]) (*connect.Response[v1.TokenServiceRevokeResponse], error)
 }
 
@@ -111,8 +114,11 @@ func (c *tokenServiceClient) Revoke(ctx context.Context, req *connect.Request[v1
 
 // TokenServiceHandler is an implementation of the api.v1.TokenService service.
 type TokenServiceHandler interface {
+	// Create a token to authenticate against the platform, the secret will be only visible in the response
 	Create(context.Context, *connect.Request[v1.TokenServiceCreateRequest]) (*connect.Response[v1.TokenServiceCreateResponse], error)
+	// List all your tokens
 	List(context.Context, *connect.Request[v1.TokenServiceListRequest]) (*connect.Response[v1.TokenServiceListResponse], error)
+	// Revoke a token, no further usage is possible afterwards
 	Revoke(context.Context, *connect.Request[v1.TokenServiceRevokeRequest]) (*connect.Response[v1.TokenServiceRevokeResponse], error)
 }
 

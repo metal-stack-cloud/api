@@ -1,69 +1,99 @@
 import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
 import { Message, proto3, Timestamp } from "@bufbuild/protobuf";
 /**
+ * IPType specifies different ip address types
+ *
  * @generated from enum api.v1.IPType
  */
 export declare enum IPType {
     /**
+     * IP_TYPE_UNSPECIFIED is not specified
+     *
      * @generated from enum value: IP_TYPE_UNSPECIFIED = 0;
      */
     IP_TYPE_UNSPECIFIED = 0,
     /**
+     * IP_TYPE_EPHEMERAL defines a ephemeral ip address which is freed/deleted after usage
+     *
      * @generated from enum value: IP_TYPE_EPHEMERAL = 1;
      */
     IP_TYPE_EPHEMERAL = 1,
     /**
+     * IP_TYPE_STATIC defines a static ip address which must be freed/deleted explicitly
+     *
      * @generated from enum value: IP_TYPE_STATIC = 2;
      */
     IP_TYPE_STATIC = 2
 }
 /**
- * Types
+ * IP is a ip address which can be used as loadbalancer addresses
  *
  * @generated from message api.v1.IP
  */
 export declare class IP extends Message<IP> {
     /**
+     * Uuid of this ip
+     *
      * @generated from field: string uuid = 1;
      */
     uuid: string;
     /**
+     * Ip is either ipv4 or ipv6 address
+     *
      * @generated from field: string ip = 2;
      */
     ip: string;
     /**
+     * Name of this ip
+     *
      * @generated from field: string name = 3;
      */
     name: string;
     /**
+     * Description of this ip
+     *
      * @generated from field: string description = 4;
      */
     description: string;
     /**
+     * Network is the network this ip belongs to
+     *
      * @generated from field: string network = 5;
      */
     network: string;
     /**
+     * Project where this ip address belongs to
+     *
      * @generated from field: string project = 6;
      */
     project: string;
     /**
+     * Type of this ip
+     *
      * @generated from field: api.v1.IPType type = 7;
      */
     type: IPType;
     /**
+     * Tags on this ip
+     *
      * @generated from field: repeated string tags = 8;
      */
     tags: string[];
     /**
+     * CreatedAt is the date when this ip was created
+     *
      * @generated from field: google.protobuf.Timestamp created_at = 10;
      */
     createdAt?: Timestamp;
     /**
+     * UpdatedAt is the date when this ip was updated
+     *
      * @generated from field: google.protobuf.Timestamp updated_at = 11;
      */
     updatedAt?: Timestamp;
     /**
+     * DeletedAt is the date when this ip was deleted
+     *
      * @generated from field: google.protobuf.Timestamp deleted_at = 12;
      */
     deletedAt?: Timestamp;
@@ -77,16 +107,20 @@ export declare class IP extends Message<IP> {
     static equals(a: IP | PlainMessage<IP> | undefined, b: IP | PlainMessage<IP> | undefined): boolean;
 }
 /**
- * Requests
+ * IPServiceGetRequest is the request payload for a ip get request
  *
  * @generated from message api.v1.IPServiceGetRequest
  */
 export declare class IPServiceGetRequest extends Message<IPServiceGetRequest> {
     /**
+     * Uuid of the ip to get
+     *
      * @generated from field: string uuid = 1;
      */
     uuid: string;
     /**
+     * Project of the ip
+     *
      * @generated from field: string project = 2;
      */
     project: string;
@@ -100,26 +134,38 @@ export declare class IPServiceGetRequest extends Message<IPServiceGetRequest> {
     static equals(a: IPServiceGetRequest | PlainMessage<IPServiceGetRequest> | undefined, b: IPServiceGetRequest | PlainMessage<IPServiceGetRequest> | undefined): boolean;
 }
 /**
+ * IPServiceGetRequest is the request payload for a ip get request
+ *
  * @generated from message api.v1.IPServiceAllocateRequest
  */
 export declare class IPServiceAllocateRequest extends Message<IPServiceAllocateRequest> {
     /**
+     * Project of the ip
+     *
      * @generated from field: string project = 2;
      */
     project: string;
     /**
+     * Name of the ip
+     *
      * @generated from field: string name = 3;
      */
     name: string;
     /**
+     * Description of the ip
+     *
      * @generated from field: string description = 4;
      */
     description: string;
     /**
+     * Tags to put onto the ip
+     *
      * @generated from field: repeated string tags = 8;
      */
     tags: string[];
     /**
+     * Static if set to true, this will be a Static ip
+     *
      * @generated from field: bool static = 9;
      */
     static: boolean;
@@ -133,14 +179,20 @@ export declare class IPServiceAllocateRequest extends Message<IPServiceAllocateR
     static equals(a: IPServiceAllocateRequest | PlainMessage<IPServiceAllocateRequest> | undefined, b: IPServiceAllocateRequest | PlainMessage<IPServiceAllocateRequest> | undefined): boolean;
 }
 /**
+ * IPServiceUpdateRequest is the request payload for a ip update request
+ *
  * @generated from message api.v1.IPServiceUpdateRequest
  */
 export declare class IPServiceUpdateRequest extends Message<IPServiceUpdateRequest> {
     /**
+     * Project of the ip
+     *
      * @generated from field: string project = 1;
      */
     project: string;
     /**
+     * Ip the ip to update
+     *
      * @generated from field: api.v1.IP ip = 2;
      */
     ip?: IP;
@@ -154,10 +206,14 @@ export declare class IPServiceUpdateRequest extends Message<IPServiceUpdateReque
     static equals(a: IPServiceUpdateRequest | PlainMessage<IPServiceUpdateRequest> | undefined, b: IPServiceUpdateRequest | PlainMessage<IPServiceUpdateRequest> | undefined): boolean;
 }
 /**
+ * IPServiceListRequest is the request payload for a ip list request
+ *
  * @generated from message api.v1.IPServiceListRequest
  */
 export declare class IPServiceListRequest extends Message<IPServiceListRequest> {
     /**
+     * Project of the ips to list
+     *
      * @generated from field: string project = 2;
      */
     project: string;
@@ -171,14 +227,20 @@ export declare class IPServiceListRequest extends Message<IPServiceListRequest> 
     static equals(a: IPServiceListRequest | PlainMessage<IPServiceListRequest> | undefined, b: IPServiceListRequest | PlainMessage<IPServiceListRequest> | undefined): boolean;
 }
 /**
+ * IPServiceDeleteRequest is the request payload for a ip delete request
+ *
  * @generated from message api.v1.IPServiceDeleteRequest
  */
 export declare class IPServiceDeleteRequest extends Message<IPServiceDeleteRequest> {
     /**
+     * Uuid of the ip to delete
+     *
      * @generated from field: string uuid = 1;
      */
     uuid: string;
     /**
+     * Project of the ip
+     *
      * @generated from field: string project = 2;
      */
     project: string;
@@ -192,12 +254,14 @@ export declare class IPServiceDeleteRequest extends Message<IPServiceDeleteReque
     static equals(a: IPServiceDeleteRequest | PlainMessage<IPServiceDeleteRequest> | undefined, b: IPServiceDeleteRequest | PlainMessage<IPServiceDeleteRequest> | undefined): boolean;
 }
 /**
- * Responses
+ * IPServiceGetResponse is the response payload for a ip get request
  *
  * @generated from message api.v1.IPServiceGetResponse
  */
 export declare class IPServiceGetResponse extends Message<IPServiceGetResponse> {
     /**
+     * Ip the ip
+     *
      * @generated from field: api.v1.IP ip = 1;
      */
     ip?: IP;
@@ -211,10 +275,14 @@ export declare class IPServiceGetResponse extends Message<IPServiceGetResponse> 
     static equals(a: IPServiceGetResponse | PlainMessage<IPServiceGetResponse> | undefined, b: IPServiceGetResponse | PlainMessage<IPServiceGetResponse> | undefined): boolean;
 }
 /**
+ * IPServiceUpdateResponse is the response payload for a ip update request
+ *
  * @generated from message api.v1.IPServiceUpdateResponse
  */
 export declare class IPServiceUpdateResponse extends Message<IPServiceUpdateResponse> {
     /**
+     * Ip the ip
+     *
      * @generated from field: api.v1.IP ip = 1;
      */
     ip?: IP;
@@ -228,10 +296,14 @@ export declare class IPServiceUpdateResponse extends Message<IPServiceUpdateResp
     static equals(a: IPServiceUpdateResponse | PlainMessage<IPServiceUpdateResponse> | undefined, b: IPServiceUpdateResponse | PlainMessage<IPServiceUpdateResponse> | undefined): boolean;
 }
 /**
+ * IPServiceAllocateResponse is the response payload for a ip allocate request
+ *
  * @generated from message api.v1.IPServiceAllocateResponse
  */
 export declare class IPServiceAllocateResponse extends Message<IPServiceAllocateResponse> {
     /**
+     * Ip the ip
+     *
      * @generated from field: api.v1.IP ip = 1;
      */
     ip?: IP;
@@ -245,27 +317,14 @@ export declare class IPServiceAllocateResponse extends Message<IPServiceAllocate
     static equals(a: IPServiceAllocateResponse | PlainMessage<IPServiceAllocateResponse> | undefined, b: IPServiceAllocateResponse | PlainMessage<IPServiceAllocateResponse> | undefined): boolean;
 }
 /**
- * @generated from message api.v1.IPServiceStaticResponse
- */
-export declare class IPServiceStaticResponse extends Message<IPServiceStaticResponse> {
-    /**
-     * @generated from field: api.v1.IP ip = 1;
-     */
-    ip?: IP;
-    constructor(data?: PartialMessage<IPServiceStaticResponse>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "api.v1.IPServiceStaticResponse";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): IPServiceStaticResponse;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): IPServiceStaticResponse;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): IPServiceStaticResponse;
-    static equals(a: IPServiceStaticResponse | PlainMessage<IPServiceStaticResponse> | undefined, b: IPServiceStaticResponse | PlainMessage<IPServiceStaticResponse> | undefined): boolean;
-}
-/**
+ * IPServiceListResponse is the response payload for a ip list request
+ *
  * @generated from message api.v1.IPServiceListResponse
  */
 export declare class IPServiceListResponse extends Message<IPServiceListResponse> {
     /**
+     * Ips the ips
+     *
      * @generated from field: repeated api.v1.IP ips = 1;
      */
     ips: IP[];
@@ -279,10 +338,14 @@ export declare class IPServiceListResponse extends Message<IPServiceListResponse
     static equals(a: IPServiceListResponse | PlainMessage<IPServiceListResponse> | undefined, b: IPServiceListResponse | PlainMessage<IPServiceListResponse> | undefined): boolean;
 }
 /**
+ * IPServiceDeleteResponse is the response payload for a ip delete request
+ *
  * @generated from message api.v1.IPServiceDeleteResponse
  */
 export declare class IPServiceDeleteResponse extends Message<IPServiceDeleteResponse> {
     /**
+     * Ip the ip
+     *
      * @generated from field: api.v1.IP ip = 1;
      */
     ip?: IP;

@@ -54,8 +54,11 @@ var (
 
 // PaymentServiceClient is a client for the admin.v1.PaymentService service.
 type PaymentServiceClient interface {
+	// ListCoupons list all available coupons
 	ListCoupons(context.Context, *connect.Request[v1.PaymentServiceListCouponsRequest]) (*connect.Response[v1.PaymentServiceListCouponsResponse], error)
+	// AddCouponToCustomer adds a coupon to a customer
 	AddCouponToCustomer(context.Context, *connect.Request[v1.PaymentServiceAddCouponToCustomerRequest]) (*connect.Response[v1.PaymentServiceAddCouponToCustomerResponse], error)
+	// AddBalanceToCustomer adds balance to a customer
 	AddBalanceToCustomer(context.Context, *connect.Request[v1.PaymentServiceAddBalanceToCustomerRequest]) (*connect.Response[v1.PaymentServiceAddBalanceToCustomerResponse], error)
 }
 
@@ -114,8 +117,11 @@ func (c *paymentServiceClient) AddBalanceToCustomer(ctx context.Context, req *co
 
 // PaymentServiceHandler is an implementation of the admin.v1.PaymentService service.
 type PaymentServiceHandler interface {
+	// ListCoupons list all available coupons
 	ListCoupons(context.Context, *connect.Request[v1.PaymentServiceListCouponsRequest]) (*connect.Response[v1.PaymentServiceListCouponsResponse], error)
+	// AddCouponToCustomer adds a coupon to a customer
 	AddCouponToCustomer(context.Context, *connect.Request[v1.PaymentServiceAddCouponToCustomerRequest]) (*connect.Response[v1.PaymentServiceAddCouponToCustomerResponse], error)
+	// AddBalanceToCustomer adds balance to a customer
 	AddBalanceToCustomer(context.Context, *connect.Request[v1.PaymentServiceAddBalanceToCustomerRequest]) (*connect.Response[v1.PaymentServiceAddBalanceToCustomerResponse], error)
 }
 

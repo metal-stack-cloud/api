@@ -58,12 +58,16 @@ var (
 
 // TenantServiceClient is a client for the api.v1.TenantService service.
 type TenantServiceClient interface {
+	// Create a tenant
 	Create(context.Context, *connect.Request[v1.TenantServiceCreateRequest]) (*connect.Response[v1.TenantServiceCreateResponse], error)
 	// CreateOrUpdate should only be used from within the application
 	// will check if tenant already exists and updates if necessary, otherwise create a new tenant
 	CreateOrUpdate(context.Context, *connect.Request[v1.TenantServiceCreateOrUpdateRequest]) (*connect.Response[v1.TenantServiceCreateOrUpdateResponse], error)
+	// Get a tenant
 	Get(context.Context, *connect.Request[v1.TenantServiceGetRequest]) (*connect.Response[v1.TenantServiceGetResponse], error)
+	// Update a tenant
 	Update(context.Context, *connect.Request[v1.TenantServiceUpdateRequest]) (*connect.Response[v1.TenantServiceUpdateResponse], error)
+	// Delete a tenant
 	Delete(context.Context, *connect.Request[v1.TenantServiceDeleteRequest]) (*connect.Response[v1.TenantServiceDeleteResponse], error)
 }
 
@@ -146,12 +150,16 @@ func (c *tenantServiceClient) Delete(ctx context.Context, req *connect.Request[v
 
 // TenantServiceHandler is an implementation of the api.v1.TenantService service.
 type TenantServiceHandler interface {
+	// Create a tenant
 	Create(context.Context, *connect.Request[v1.TenantServiceCreateRequest]) (*connect.Response[v1.TenantServiceCreateResponse], error)
 	// CreateOrUpdate should only be used from within the application
 	// will check if tenant already exists and updates if necessary, otherwise create a new tenant
 	CreateOrUpdate(context.Context, *connect.Request[v1.TenantServiceCreateOrUpdateRequest]) (*connect.Response[v1.TenantServiceCreateOrUpdateResponse], error)
+	// Get a tenant
 	Get(context.Context, *connect.Request[v1.TenantServiceGetRequest]) (*connect.Response[v1.TenantServiceGetResponse], error)
+	// Update a tenant
 	Update(context.Context, *connect.Request[v1.TenantServiceUpdateRequest]) (*connect.Response[v1.TenantServiceUpdateResponse], error)
+	// Delete a tenant
 	Delete(context.Context, *connect.Request[v1.TenantServiceDeleteRequest]) (*connect.Response[v1.TenantServiceDeleteResponse], error)
 }
 
