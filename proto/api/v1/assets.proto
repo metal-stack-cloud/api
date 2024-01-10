@@ -63,6 +63,10 @@ message MachineType {
   uint64 memory = 4;
   // Storage in this machine / server
   uint64 storage = 5;
+  // CpuDescription descibes the CPUs of this machine / server
+  string cpu_description = 6;
+  // StorageDescription descibes the disks of this machine / server
+  string storage_desription = 7;
 }
 
 // Kubernetes related configurations available
