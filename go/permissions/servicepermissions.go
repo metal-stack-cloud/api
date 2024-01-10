@@ -238,14 +238,10 @@ func GetServicePermissions() *ServicePermissions {
 			},
 		},
 		Chargeable: map[string]bool{
-			"/api.v1.ClusterService/Create":  true,
-			"/api.v1.ClusterService/Delete":  true,
-			"/api.v1.ClusterService/Update":  true,
-			"/api.v1.IPService/Allocate":     true,
-			"/api.v1.IPService/Delete":       true,
-			"/api.v1.IPService/Update":       true,
-			"/api.v1.SnapshotService/Delete": true,
-			"/api.v1.VolumeService/Delete":   true,
+			"/api.v1.ClusterService/Create": true,
+			"/api.v1.ClusterService/Update": true,
+			"/api.v1.IPService/Allocate":    true,
+			"/api.v1.IPService/Update":      true,
 		},
 		Auditable: map[string]bool{
 			"/admin.v1.ClusterService/Credentials":          true,
