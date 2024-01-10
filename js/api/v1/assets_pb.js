@@ -201,6 +201,18 @@ export class MachineType extends Message {
          * @generated from field: uint64 storage = 5;
          */
         this.storage = protoInt64.zero;
+        /**
+         * CpuDescription descibes the CPUs of this machine / server
+         *
+         * @generated from field: string cpu_description = 6;
+         */
+        this.cpuDescription = "";
+        /**
+         * StorageDescription descibes the disks of this machine / server
+         *
+         * @generated from field: string storage_desription = 7;
+         */
+        this.storageDesription = "";
         proto3.util.initPartial(data, this);
     }
     static fromBinary(bytes, options) {
@@ -224,6 +236,8 @@ MachineType.fields = proto3.util.newFieldList(() => [
     { no: 3, name: "cpus", kind: "scalar", T: 13 /* ScalarType.UINT32 */ },
     { no: 4, name: "memory", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
     { no: 5, name: "storage", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
+    { no: 6, name: "cpu_description", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 7, name: "storage_desription", kind: "scalar", T: 9 /* ScalarType.STRING */ },
 ]);
 /**
  * Kubernetes related configurations available

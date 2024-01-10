@@ -562,6 +562,10 @@ func (m *MachineType) validate(all bool) error {
 
 	// no validation rules for Storage
 
+	// no validation rules for CpuDescription
+
+	// no validation rules for StorageDesription
+
 	if len(errors) > 0 {
 		return MachineTypeMultiError(errors)
 	}
