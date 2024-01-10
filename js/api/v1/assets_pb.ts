@@ -4,7 +4,7 @@
 // @ts-nocheck
 
 import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
-import { Message, proto3, protoInt64 } from "@bufbuild/protobuf";
+import { Message, proto3, protoInt64, Timestamp } from "@bufbuild/protobuf";
 
 /**
  * Asset defines the available resources which can be used
@@ -111,6 +111,13 @@ export class Region extends Message<Region> {
    */
   defaults?: AssetDefaults;
 
+  /**
+   * Description of the region
+   *
+   * @generated from field: string description = 7;
+   */
+  description = "";
+
   constructor(data?: PartialMessage<Region>) {
     super();
     proto3.util.initPartial(data, this);
@@ -125,6 +132,7 @@ export class Region extends Message<Region> {
     { no: 4, name: "active", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
     { no: 5, name: "partitions", kind: "map", K: 9 /* ScalarType.STRING */, V: {kind: "message", T: Partition} },
     { no: 6, name: "defaults", kind: "message", T: AssetDefaults },
+    { no: 7, name: "description", kind: "scalar", T: 9 /* ScalarType.STRING */ },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Region {
@@ -251,14 +259,14 @@ export class MachineType extends Message<MachineType> {
   storage = protoInt64.zero;
 
   /**
-   * CpuDescription descibes the CPUs of this machine / server
+   * CpuDescription describes the CPUs of this machine / server
    *
    * @generated from field: string cpu_description = 6;
    */
   cpuDescription = "";
 
   /**
-   * StorageDescription descibes the disks of this machine / server
+   * StorageDescription describes the disks of this machine / server
    *
    * @generated from field: string storage_desription = 7;
    */
@@ -311,6 +319,13 @@ export class Kubernetes extends Message<Kubernetes> {
    */
   version = "";
 
+  /**
+   * Expiration sets the date on which the platform support for this kubernetes version expires
+   *
+   * @generated from field: google.protobuf.Timestamp expiration = 2;
+   */
+  expiration?: Timestamp;
+
   constructor(data?: PartialMessage<Kubernetes>) {
     super();
     proto3.util.initPartial(data, this);
@@ -320,6 +335,7 @@ export class Kubernetes extends Message<Kubernetes> {
   static readonly typeName = "api.v1.Kubernetes";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
     { no: 1, name: "version", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "expiration", kind: "message", T: Timestamp },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Kubernetes {

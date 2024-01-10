@@ -346,6 +346,8 @@ func (m *Region) validate(all bool) error {
 		}
 	}
 
+	// no validation rules for Description
+
 	if len(errors) > 0 {
 		return RegionMultiError(errors)
 	}
@@ -666,6 +668,35 @@ func (m *Kubernetes) validate(all bool) error {
 	var errors []error
 
 	// no validation rules for Version
+
+	if all {
+		switch v := interface{}(m.GetExpiration()).(type) {
+		case interface{ ValidateAll() error }:
+			if err := v.ValidateAll(); err != nil {
+				errors = append(errors, KubernetesValidationError{
+					field:  "Expiration",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		case interface{ Validate() error }:
+			if err := v.Validate(); err != nil {
+				errors = append(errors, KubernetesValidationError{
+					field:  "Expiration",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		}
+	} else if v, ok := interface{}(m.GetExpiration()).(interface{ Validate() error }); ok {
+		if err := v.Validate(); err != nil {
+			return KubernetesValidationError{
+				field:  "Expiration",
+				reason: "embedded message failed validation",
+				cause:  err,
+			}
+		}
+	}
 
 	if len(errors) > 0 {
 		return KubernetesMultiError(errors)

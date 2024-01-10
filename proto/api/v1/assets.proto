@@ -3,6 +3,7 @@ syntax = "proto3";
 package api.v1;
 
 import "api/v1/common.proto";
+import "google/protobuf/timestamp.proto";
 
 // AssetService serves asset related functions
 service AssetService {
@@ -37,6 +38,8 @@ message Region {
   map<string, Partition> partitions = 5;
   // Defaults are the default assets used if not otherwise speecified.
   AssetDefaults defaults = 6;
+  // Description of the region
+  string description = 7;
 }
 
 // Partition defines a failure domain in one Region.
@@ -63,9 +66,9 @@ message MachineType {
   uint64 memory = 4;
   // Storage in this machine / server
   uint64 storage = 5;
-  // CpuDescription descibes the CPUs of this machine / server
+  // CpuDescription describes the CPUs of this machine / server
   string cpu_description = 6;
-  // StorageDescription descibes the disks of this machine / server
+  // StorageDescription describes the disks of this machine / server
   string storage_desription = 7;
 }
 
@@ -73,6 +76,8 @@ message MachineType {
 message Kubernetes {
   // Version of kubernetes
   string version = 1;
+  // Expiration sets the date on which the platform support for this kubernetes version expires
+  google.protobuf.Timestamp expiration = 2;
 }
 
 // AssetDefaults apply if no specific properties are specified

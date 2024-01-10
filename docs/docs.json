@@ -8983,6 +8983,18 @@
               "isoneof": false,
               "oneofdecl": "",
               "defaultValue": ""
+            },
+            {
+              "name": "expiration",
+              "description": "Expiration sets the date on which the platform support for this kubernetes version expires",
+              "label": "",
+              "type": "Timestamp",
+              "longType": "google.protobuf.Timestamp",
+              "fullType": "google.protobuf.Timestamp",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
             }
           ]
         },
@@ -9058,7 +9070,7 @@
             },
             {
               "name": "cpu_description",
-              "description": "CpuDescription descibes the CPUs of this machine / server",
+              "description": "CpuDescription describes the CPUs of this machine / server",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -9070,7 +9082,7 @@
             },
             {
               "name": "storage_desription",
-              "description": "StorageDescription descibes the disks of this machine / server",
+              "description": "StorageDescription describes the disks of this machine / server",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -9219,6 +9231,18 @@
               "type": "AssetDefaults",
               "longType": "AssetDefaults",
               "fullType": "api.v1.AssetDefaults",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "description",
+              "description": "Description of the region",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",

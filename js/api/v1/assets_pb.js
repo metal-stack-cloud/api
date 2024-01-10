@@ -2,7 +2,7 @@
 // @generated from file api/v1/assets.proto (package api.v1, syntax proto3)
 /* eslint-disable */
 // @ts-nocheck
-import { Message, proto3, protoInt64 } from "@bufbuild/protobuf";
+import { Message, proto3, protoInt64, Timestamp } from "@bufbuild/protobuf";
 /**
  * Asset defines the available resources which can be used
  *
@@ -83,6 +83,12 @@ export class Region extends Message {
          * @generated from field: map<string, api.v1.Partition> partitions = 5;
          */
         this.partitions = {};
+        /**
+         * Description of the region
+         *
+         * @generated from field: string description = 7;
+         */
+        this.description = "";
         proto3.util.initPartial(data, this);
     }
     static fromBinary(bytes, options) {
@@ -107,6 +113,7 @@ Region.fields = proto3.util.newFieldList(() => [
     { no: 4, name: "active", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
     { no: 5, name: "partitions", kind: "map", K: 9 /* ScalarType.STRING */, V: { kind: "message", T: Partition } },
     { no: 6, name: "defaults", kind: "message", T: AssetDefaults },
+    { no: 7, name: "description", kind: "scalar", T: 9 /* ScalarType.STRING */ },
 ]);
 /**
  * Partition defines a failure domain in one Region.
@@ -202,13 +209,13 @@ export class MachineType extends Message {
          */
         this.storage = protoInt64.zero;
         /**
-         * CpuDescription descibes the CPUs of this machine / server
+         * CpuDescription describes the CPUs of this machine / server
          *
          * @generated from field: string cpu_description = 6;
          */
         this.cpuDescription = "";
         /**
-         * StorageDescription descibes the disks of this machine / server
+         * StorageDescription describes the disks of this machine / server
          *
          * @generated from field: string storage_desription = 7;
          */
@@ -272,6 +279,7 @@ Kubernetes.runtime = proto3;
 Kubernetes.typeName = "api.v1.Kubernetes";
 Kubernetes.fields = proto3.util.newFieldList(() => [
     { no: 1, name: "version", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "expiration", kind: "message", T: Timestamp },
 ]);
 /**
  * AssetDefaults apply if no specific properties are specified
