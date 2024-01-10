@@ -27,7 +27,6 @@ service VolumeService {
   rpc Delete(VolumeServiceDeleteRequest) returns (VolumeServiceDeleteResponse) {
     option (project_roles) = PROJECT_ROLE_OWNER;
     option (project_roles) = PROJECT_ROLE_EDITOR;
-    option (chargeable) = CHARGEABLE_TRUE;
   }
 }
 
@@ -51,7 +50,6 @@ service SnapshotService {
   rpc Delete(SnapshotServiceDeleteRequest) returns (SnapshotServiceDeleteResponse) {
     option (project_roles) = PROJECT_ROLE_OWNER;
     option (project_roles) = PROJECT_ROLE_EDITOR;
-    option (chargeable) = CHARGEABLE_TRUE;
   }
 }
 
