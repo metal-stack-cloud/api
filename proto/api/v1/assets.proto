@@ -52,6 +52,8 @@ message Partition {
   string address = 3;
   // Active indicates if this partition is usable
   bool active = 4;
+  // Description of this partition
+  string description = 5;
 }
 
 // MachineType defines a server type

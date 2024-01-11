@@ -147,6 +147,12 @@ export class Partition extends Message {
          * @generated from field: bool active = 4;
          */
         this.active = false;
+        /**
+         * Description of this partition
+         *
+         * @generated from field: string description = 5;
+         */
+        this.description = "";
         proto3.util.initPartial(data, this);
     }
     static fromBinary(bytes, options) {
@@ -169,6 +175,7 @@ Partition.fields = proto3.util.newFieldList(() => [
     { no: 2, name: "name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 3, name: "address", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 4, name: "active", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
+    { no: 5, name: "description", kind: "scalar", T: 9 /* ScalarType.STRING */ },
 ]);
 /**
  * MachineType defines a server type

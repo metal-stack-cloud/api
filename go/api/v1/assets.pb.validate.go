@@ -455,6 +455,8 @@ func (m *Partition) validate(all bool) error {
 
 	// no validation rules for Active
 
+	// no validation rules for Description
+
 	if len(errors) > 0 {
 		return PartitionMultiError(errors)
 	}

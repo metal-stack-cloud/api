@@ -124,6 +124,12 @@ export declare class Partition extends Message<Partition> {
      * @generated from field: bool active = 4;
      */
     active: boolean;
+    /**
+     * Description of this partition
+     *
+     * @generated from field: string description = 5;
+     */
+    description: string;
     constructor(data?: PartialMessage<Partition>);
     static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.Partition";

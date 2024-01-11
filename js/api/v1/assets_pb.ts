@@ -186,6 +186,13 @@ export class Partition extends Message<Partition> {
    */
   active = false;
 
+  /**
+   * Description of this partition
+   *
+   * @generated from field: string description = 5;
+   */
+  description = "";
+
   constructor(data?: PartialMessage<Partition>) {
     super();
     proto3.util.initPartial(data, this);
@@ -198,6 +205,7 @@ export class Partition extends Message<Partition> {
     { no: 2, name: "name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 3, name: "address", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 4, name: "active", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
+    { no: 5, name: "description", kind: "scalar", T: 9 /* ScalarType.STRING */ },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Partition {
