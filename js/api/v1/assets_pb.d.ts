@@ -1,5 +1,5 @@
 import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
-import { Message, proto3 } from "@bufbuild/protobuf";
+import { Message, proto3, Timestamp } from "@bufbuild/protobuf";
 /**
  * Asset defines the available resources which can be used
  *
@@ -79,6 +79,12 @@ export declare class Region extends Message<Region> {
      * @generated from field: api.v1.AssetDefaults defaults = 6;
      */
     defaults?: AssetDefaults;
+    /**
+     * Description of the region
+     *
+     * @generated from field: string description = 7;
+     */
+    description: string;
     constructor(data?: PartialMessage<Region>);
     static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.Region";
@@ -118,6 +124,12 @@ export declare class Partition extends Message<Partition> {
      * @generated from field: bool active = 4;
      */
     active: boolean;
+    /**
+     * Description of this partition
+     *
+     * @generated from field: string description = 5;
+     */
+    description: string;
     constructor(data?: PartialMessage<Partition>);
     static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.Partition";
@@ -163,6 +175,18 @@ export declare class MachineType extends Message<MachineType> {
      * @generated from field: uint64 storage = 5;
      */
     storage: bigint;
+    /**
+     * CpuDescription describes the CPUs of this machine / server
+     *
+     * @generated from field: string cpu_description = 6;
+     */
+    cpuDescription: string;
+    /**
+     * StorageDescription describes the disks of this machine / server
+     *
+     * @generated from field: string storage_desription = 7;
+     */
+    storageDesription: string;
     constructor(data?: PartialMessage<MachineType>);
     static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.MachineType";
@@ -184,6 +208,12 @@ export declare class Kubernetes extends Message<Kubernetes> {
      * @generated from field: string version = 1;
      */
     version: string;
+    /**
+     * Expiration sets the date on which the platform support for this kubernetes version expires
+     *
+     * @generated from field: google.protobuf.Timestamp expiration = 2;
+     */
+    expiration?: Timestamp;
     constructor(data?: PartialMessage<Kubernetes>);
     static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.Kubernetes";
@@ -260,13 +290,11 @@ export declare class AssetServiceListRequest extends Message<AssetServiceListReq
  */
 export declare class AssetServiceListResponse extends Message<AssetServiceListResponse> {
     /**
-     * Assets maps the Assets by Region
+     * Assets defines a list of assets
      *
-     * @generated from field: map<string, api.v1.Asset> assets = 1;
+     * @generated from field: repeated api.v1.Asset assets = 2;
      */
-    assets: {
-        [key: string]: Asset;
-    };
+    assets: Asset[];
     constructor(data?: PartialMessage<AssetServiceListResponse>);
     static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.AssetServiceListResponse";

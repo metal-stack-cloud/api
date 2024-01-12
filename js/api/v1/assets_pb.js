@@ -2,7 +2,7 @@
 // @generated from file api/v1/assets.proto (package api.v1, syntax proto3)
 /* eslint-disable */
 // @ts-nocheck
-import { Message, proto3, protoInt64 } from "@bufbuild/protobuf";
+import { Message, proto3, protoInt64, Timestamp } from "@bufbuild/protobuf";
 /**
  * Asset defines the available resources which can be used
  *
@@ -83,6 +83,12 @@ export class Region extends Message {
          * @generated from field: map<string, api.v1.Partition> partitions = 5;
          */
         this.partitions = {};
+        /**
+         * Description of the region
+         *
+         * @generated from field: string description = 7;
+         */
+        this.description = "";
         proto3.util.initPartial(data, this);
     }
     static fromBinary(bytes, options) {
@@ -107,6 +113,7 @@ Region.fields = proto3.util.newFieldList(() => [
     { no: 4, name: "active", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
     { no: 5, name: "partitions", kind: "map", K: 9 /* ScalarType.STRING */, V: { kind: "message", T: Partition } },
     { no: 6, name: "defaults", kind: "message", T: AssetDefaults },
+    { no: 7, name: "description", kind: "scalar", T: 9 /* ScalarType.STRING */ },
 ]);
 /**
  * Partition defines a failure domain in one Region.
@@ -140,6 +147,12 @@ export class Partition extends Message {
          * @generated from field: bool active = 4;
          */
         this.active = false;
+        /**
+         * Description of this partition
+         *
+         * @generated from field: string description = 5;
+         */
+        this.description = "";
         proto3.util.initPartial(data, this);
     }
     static fromBinary(bytes, options) {
@@ -162,6 +175,7 @@ Partition.fields = proto3.util.newFieldList(() => [
     { no: 2, name: "name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 3, name: "address", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 4, name: "active", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
+    { no: 5, name: "description", kind: "scalar", T: 9 /* ScalarType.STRING */ },
 ]);
 /**
  * MachineType defines a server type
@@ -201,6 +215,18 @@ export class MachineType extends Message {
          * @generated from field: uint64 storage = 5;
          */
         this.storage = protoInt64.zero;
+        /**
+         * CpuDescription describes the CPUs of this machine / server
+         *
+         * @generated from field: string cpu_description = 6;
+         */
+        this.cpuDescription = "";
+        /**
+         * StorageDescription describes the disks of this machine / server
+         *
+         * @generated from field: string storage_desription = 7;
+         */
+        this.storageDesription = "";
         proto3.util.initPartial(data, this);
     }
     static fromBinary(bytes, options) {
@@ -224,6 +250,8 @@ MachineType.fields = proto3.util.newFieldList(() => [
     { no: 3, name: "cpus", kind: "scalar", T: 13 /* ScalarType.UINT32 */ },
     { no: 4, name: "memory", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
     { no: 5, name: "storage", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
+    { no: 6, name: "cpu_description", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 7, name: "storage_desription", kind: "scalar", T: 9 /* ScalarType.STRING */ },
 ]);
 /**
  * Kubernetes related configurations available
@@ -258,6 +286,7 @@ Kubernetes.runtime = proto3;
 Kubernetes.typeName = "api.v1.Kubernetes";
 Kubernetes.fields = proto3.util.newFieldList(() => [
     { no: 1, name: "version", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "expiration", kind: "message", T: Timestamp },
 ]);
 /**
  * AssetDefaults apply if no specific properties are specified
@@ -356,11 +385,11 @@ export class AssetServiceListResponse extends Message {
     constructor(data) {
         super();
         /**
-         * Assets maps the Assets by Region
+         * Assets defines a list of assets
          *
-         * @generated from field: map<string, api.v1.Asset> assets = 1;
+         * @generated from field: repeated api.v1.Asset assets = 2;
          */
-        this.assets = {};
+        this.assets = [];
         proto3.util.initPartial(data, this);
     }
     static fromBinary(bytes, options) {
@@ -379,5 +408,5 @@ export class AssetServiceListResponse extends Message {
 AssetServiceListResponse.runtime = proto3;
 AssetServiceListResponse.typeName = "api.v1.AssetServiceListResponse";
 AssetServiceListResponse.fields = proto3.util.newFieldList(() => [
-    { no: 1, name: "assets", kind: "map", K: 9 /* ScalarType.STRING */, V: { kind: "message", T: Asset } },
+    { no: 2, name: "assets", kind: "message", T: Asset, repeated: true },
 ]);

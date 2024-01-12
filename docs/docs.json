@@ -8950,44 +8950,8 @@
           "fields": [
             {
               "name": "assets",
-              "description": "Assets maps the Assets by Region",
+              "description": "Assets defines a list of assets",
               "label": "repeated",
-              "type": "AssetsEntry",
-              "longType": "AssetServiceListResponse.AssetsEntry",
-              "fullType": "api.v1.AssetServiceListResponse.AssetsEntry",
-              "ismap": true,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            }
-          ]
-        },
-        {
-          "name": "AssetsEntry",
-          "longName": "AssetServiceListResponse.AssetsEntry",
-          "fullName": "api.v1.AssetServiceListResponse.AssetsEntry",
-          "description": "",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "key",
-              "description": "",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "value",
-              "description": "",
-              "label": "",
               "type": "Asset",
               "longType": "Asset",
               "fullType": "api.v1.Asset",
@@ -9015,6 +8979,18 @@
               "type": "string",
               "longType": "string",
               "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "expiration",
+              "description": "Expiration sets the date on which the platform support for this kubernetes version expires",
+              "label": "",
+              "type": "Timestamp",
+              "longType": "google.protobuf.Timestamp",
+              "fullType": "google.protobuf.Timestamp",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
@@ -9091,6 +9067,30 @@
               "isoneof": false,
               "oneofdecl": "",
               "defaultValue": ""
+            },
+            {
+              "name": "cpu_description",
+              "description": "CpuDescription describes the CPUs of this machine / server",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "storage_desription",
+              "description": "StorageDescription describes the disks of this machine / server",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
             }
           ]
         },
@@ -9147,6 +9147,18 @@
               "type": "bool",
               "longType": "bool",
               "fullType": "bool",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "description",
+              "description": "Description of this partition",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
@@ -9231,6 +9243,18 @@
               "type": "AssetDefaults",
               "longType": "AssetDefaults",
               "fullType": "api.v1.AssetDefaults",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "description",
+              "description": "Description of the region",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
