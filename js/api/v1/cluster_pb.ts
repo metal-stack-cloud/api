@@ -622,9 +622,16 @@ export class ClusterServiceOperateRequest extends Message<ClusterServiceOperateR
   uuid = "";
 
   /**
-   * Operate is the reconcilation operation which should be performed
+   * Project of the cluster
    *
-   * @generated from field: api.v1.Operate operate = 2;
+   * @generated from field: string project = 2;
+   */
+  project = "";
+
+  /**
+   * Operate is the operation which should be performed
+   *
+   * @generated from field: api.v1.Operate operate = 3;
    */
   operate = Operate.UNSPECIFIED;
 
@@ -637,7 +644,8 @@ export class ClusterServiceOperateRequest extends Message<ClusterServiceOperateR
   static readonly typeName = "api.v1.ClusterServiceOperateRequest";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
     { no: 1, name: "uuid", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 2, name: "operate", kind: "enum", T: proto3.getEnumType(Operate) },
+    { no: 2, name: "project", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 3, name: "operate", kind: "enum", T: proto3.getEnumType(Operate) },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ClusterServiceOperateRequest {

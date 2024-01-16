@@ -1483,6 +1483,17 @@ func (m *ClusterServiceOperateRequest) validate(all bool) error {
 		errors = append(errors, err)
 	}
 
+	if l := utf8.RuneCountInString(m.GetProject()); l < 2 || l > 128 {
+		err := ClusterServiceOperateRequestValidationError{
+			field:  "Project",
+			reason: "value length must be between 2 and 128 runes, inclusive",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
 	// no validation rules for Operate
 
 	if len(errors) > 0 {

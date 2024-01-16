@@ -54,7 +54,8 @@ service ClusterService {
   }
   // Operate on a cluster
   rpc Operate(ClusterServiceOperateRequest) returns (ClusterServiceOperateResponse) {
-    option (api.v1.admin_roles) = ADMIN_ROLE_EDITOR;
+    option (project_roles) = PROJECT_ROLE_OWNER;
+    option (project_roles) = PROJECT_ROLE_EDITOR;
   }
 }
 
@@ -195,8 +196,13 @@ message ClusterServiceGetRequest {
 message ClusterServiceOperateRequest {
   // Uuid of the cluster
   string uuid = 1 [(validate.rules).string.uuid = true];
-  // Operate is the reconcilation operation which should be performed
-  Operate operate = 2;
+  // Project of the cluster
+  string project = 2 [(validate.rules).string = {
+    min_len: 2,
+    max_len: 128,
+  }];
+  // Operate is the operation which should be performed
+  Operate operate = 3;
 }
 
 // ClusterServiceGetRequest is the request payload for a cluster get request
@@ -394,7 +400,7 @@ message ClusterServiceWatchStatusResponse {
 // ClusterServiceOperateResponse is the response payload for the cluster operate request
 message ClusterServiceOperateResponse {
   // Cluster is the cluster
-  api.v1.Cluster cluster = 1;
+  Cluster cluster = 1;
 }
 
 // Operate defines the types of reconcilation to be triggered
