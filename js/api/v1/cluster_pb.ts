@@ -7,6 +7,48 @@ import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialM
 import { Duration, Message, proto3, Timestamp } from "@bufbuild/protobuf";
 
 /**
+ * Operate defines the types of reconcilation to be triggered
+ *
+ * @generated from enum api.v1.Operate
+ */
+export enum Operate {
+  /**
+   * OPERATE_UNSPECIFIED is not specified
+   *
+   * @generated from enum value: OPERATE_UNSPECIFIED = 0;
+   */
+  UNSPECIFIED = 0,
+
+  /**
+   * OPERATE_RECONCILE reconcile the cluster
+   *
+   * @generated from enum value: OPERATE_RECONCILE = 1;
+   */
+  RECONCILE = 1,
+
+  /**
+   * OPERATE_MAINTAIN maintain the cluster
+   *
+   * @generated from enum value: OPERATE_MAINTAIN = 2;
+   */
+  MAINTAIN = 2,
+
+  /**
+   * OPERATE_RETRY retry the reconcilation of the cluster
+   *
+   * @generated from enum value: OPERATE_RETRY = 3;
+   */
+  RETRY = 3,
+}
+// Retrieve enum metadata with: proto3.getEnumType(Operate)
+proto3.util.setEnumType(Operate, "api.v1.Operate", [
+  { no: 0, name: "OPERATE_UNSPECIFIED" },
+  { no: 1, name: "OPERATE_RECONCILE" },
+  { no: 2, name: "OPERATE_MAINTAIN" },
+  { no: 3, name: "OPERATE_RETRY" },
+]);
+
+/**
  * Cluster describes a kubernetes cluster
  *
  * @generated from message api.v1.Cluster
@@ -567,6 +609,55 @@ export class ClusterServiceGetRequest extends Message<ClusterServiceGetRequest> 
 }
 
 /**
+ * ClusterServiceOperateRequest is the request payload for the cluster operate request
+ *
+ * @generated from message api.v1.ClusterServiceOperateRequest
+ */
+export class ClusterServiceOperateRequest extends Message<ClusterServiceOperateRequest> {
+  /**
+   * Uuid of the cluster
+   *
+   * @generated from field: string uuid = 1;
+   */
+  uuid = "";
+
+  /**
+   * Operate is the reconcilation operation which should be performed
+   *
+   * @generated from field: api.v1.Operate operate = 2;
+   */
+  operate = Operate.UNSPECIFIED;
+
+  constructor(data?: PartialMessage<ClusterServiceOperateRequest>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "api.v1.ClusterServiceOperateRequest";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "uuid", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "operate", kind: "enum", T: proto3.getEnumType(Operate) },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ClusterServiceOperateRequest {
+    return new ClusterServiceOperateRequest().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ClusterServiceOperateRequest {
+    return new ClusterServiceOperateRequest().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ClusterServiceOperateRequest {
+    return new ClusterServiceOperateRequest().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: ClusterServiceOperateRequest | PlainMessage<ClusterServiceOperateRequest> | undefined, b: ClusterServiceOperateRequest | PlainMessage<ClusterServiceOperateRequest> | undefined): boolean {
+    return proto3.util.equals(ClusterServiceOperateRequest, a, b);
+  }
+}
+
+/**
  * ClusterServiceGetRequest is the request payload for a cluster get request
  *
  * @generated from message api.v1.ClusterServiceGetCredentialsRequest
@@ -985,6 +1076,13 @@ export class ClusterStatus extends Message<ClusterStatus> {
    */
   lastErrors: ClusterStatusLastError[] = [];
 
+  /**
+   * ClusterStatusConditions is a list of status conditions of the cluster
+   *
+   * @generated from field: repeated api.v1.ClusterStatusCondition conditions = 15;
+   */
+  conditions: ClusterStatusCondition[] = [];
+
   constructor(data?: PartialMessage<ClusterStatus>) {
     super();
     proto3.util.initPartial(data, this);
@@ -1002,6 +1100,7 @@ export class ClusterStatus extends Message<ClusterStatus> {
     { no: 12, name: "nodes_ready", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 13, name: "system_components_ready", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 14, name: "last_errors", kind: "message", T: ClusterStatusLastError, repeated: true },
+    { no: 15, name: "conditions", kind: "message", T: ClusterStatusCondition, repeated: true },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ClusterStatus {
@@ -1028,7 +1127,7 @@ export class ClusterStatus extends Message<ClusterStatus> {
  */
 export class ClusterStatusLastError extends Message<ClusterStatusLastError> {
   /**
-   * Description a human readable message indicating details about the last error.
+   * Description a human readable message indicating details about the last error
    *
    * @generated from field: string description = 1;
    */
@@ -1036,15 +1135,13 @@ export class ClusterStatusLastError extends Message<ClusterStatusLastError> {
 
   /**
    * TaskId ID of the task which caused this last error
-   * +optional
    *
    * @generated from field: optional string task_id = 2;
    */
   taskId?: string;
 
   /**
-   * Codes well-defined error codes of the last error(s).
-   * +optional
+   * Codes well-defined error codes of the last error(s)
    *
    * @generated from field: repeated string codes = 3;
    */
@@ -1052,7 +1149,6 @@ export class ClusterStatusLastError extends Message<ClusterStatusLastError> {
 
   /**
    * LastUpdateTime last time the error was reported
-   * +optional
    *
    * @generated from field: google.protobuf.Timestamp last_update_time = 4;
    */
@@ -1086,6 +1182,95 @@ export class ClusterStatusLastError extends Message<ClusterStatusLastError> {
 
   static equals(a: ClusterStatusLastError | PlainMessage<ClusterStatusLastError> | undefined, b: ClusterStatusLastError | PlainMessage<ClusterStatusLastError> | undefined): boolean {
     return proto3.util.equals(ClusterStatusLastError, a, b);
+  }
+}
+
+/**
+ * ClusterStatusCondition contains status conditions of a cluster
+ *
+ * @generated from message api.v1.ClusterStatusCondition
+ */
+export class ClusterStatusCondition extends Message<ClusterStatusCondition> {
+  /**
+   * Type is the type of the condition
+   *
+   * @generated from field: string type = 1;
+   */
+  type = "";
+
+  /**
+   * Status is the status of the condition
+   *
+   * @generated from field: string status = 2;
+   */
+  status = "";
+
+  /**
+   * Reason describes the reason for the condition's last transition
+   *
+   * @generated from field: string reason = 3;
+   */
+  reason = "";
+
+  /**
+   * StatusMessage is a human readable message indicating details about the transition
+   *
+   * @generated from field: string status_message = 4;
+   */
+  statusMessage = "";
+
+  /**
+   * Codes well-defined error codes of the last error(s).
+   *
+   * @generated from field: repeated string codes = 5;
+   */
+  codes: string[] = [];
+
+  /**
+   * LastUpdateTime last time the condition transitioned
+   *
+   * @generated from field: google.protobuf.Timestamp last_transition_time = 6;
+   */
+  lastTransitionTime?: Timestamp;
+
+  /**
+   * LastUpdateTime last time the condition was updated
+   *
+   * @generated from field: google.protobuf.Timestamp last_update_time = 7;
+   */
+  lastUpdateTime?: Timestamp;
+
+  constructor(data?: PartialMessage<ClusterStatusCondition>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "api.v1.ClusterStatusCondition";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "type", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "status", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 3, name: "reason", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 4, name: "status_message", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 5, name: "codes", kind: "scalar", T: 9 /* ScalarType.STRING */, repeated: true },
+    { no: 6, name: "last_transition_time", kind: "message", T: Timestamp },
+    { no: 7, name: "last_update_time", kind: "message", T: Timestamp },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ClusterStatusCondition {
+    return new ClusterStatusCondition().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ClusterStatusCondition {
+    return new ClusterStatusCondition().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ClusterStatusCondition {
+    return new ClusterStatusCondition().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: ClusterStatusCondition | PlainMessage<ClusterStatusCondition> | undefined, b: ClusterStatusCondition | PlainMessage<ClusterStatusCondition> | undefined): boolean {
+    return proto3.util.equals(ClusterStatusCondition, a, b);
   }
 }
 
@@ -1430,6 +1615,47 @@ export class ClusterServiceWatchStatusResponse extends Message<ClusterServiceWat
 
   static equals(a: ClusterServiceWatchStatusResponse | PlainMessage<ClusterServiceWatchStatusResponse> | undefined, b: ClusterServiceWatchStatusResponse | PlainMessage<ClusterServiceWatchStatusResponse> | undefined): boolean {
     return proto3.util.equals(ClusterServiceWatchStatusResponse, a, b);
+  }
+}
+
+/**
+ * ClusterServiceOperateResponse is the response payload for the cluster operate request
+ *
+ * @generated from message api.v1.ClusterServiceOperateResponse
+ */
+export class ClusterServiceOperateResponse extends Message<ClusterServiceOperateResponse> {
+  /**
+   * Cluster is the cluster
+   *
+   * @generated from field: api.v1.Cluster cluster = 1;
+   */
+  cluster?: Cluster;
+
+  constructor(data?: PartialMessage<ClusterServiceOperateResponse>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "api.v1.ClusterServiceOperateResponse";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "cluster", kind: "message", T: Cluster },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ClusterServiceOperateResponse {
+    return new ClusterServiceOperateResponse().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ClusterServiceOperateResponse {
+    return new ClusterServiceOperateResponse().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ClusterServiceOperateResponse {
+    return new ClusterServiceOperateResponse().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: ClusterServiceOperateResponse | PlainMessage<ClusterServiceOperateResponse> | undefined, b: ClusterServiceOperateResponse | PlainMessage<ClusterServiceOperateResponse> | undefined): boolean {
+    return proto3.util.equals(ClusterServiceOperateResponse, a, b);
   }
 }
 

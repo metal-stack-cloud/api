@@ -4,6 +4,45 @@
 // @ts-nocheck
 import { Duration, Message, proto3, Timestamp } from "@bufbuild/protobuf";
 /**
+ * Operate defines the types of reconcilation to be triggered
+ *
+ * @generated from enum api.v1.Operate
+ */
+export var Operate;
+(function (Operate) {
+    /**
+     * OPERATE_UNSPECIFIED is not specified
+     *
+     * @generated from enum value: OPERATE_UNSPECIFIED = 0;
+     */
+    Operate[Operate["UNSPECIFIED"] = 0] = "UNSPECIFIED";
+    /**
+     * OPERATE_RECONCILE reconcile the cluster
+     *
+     * @generated from enum value: OPERATE_RECONCILE = 1;
+     */
+    Operate[Operate["RECONCILE"] = 1] = "RECONCILE";
+    /**
+     * OPERATE_MAINTAIN maintain the cluster
+     *
+     * @generated from enum value: OPERATE_MAINTAIN = 2;
+     */
+    Operate[Operate["MAINTAIN"] = 2] = "MAINTAIN";
+    /**
+     * OPERATE_RETRY retry the reconcilation of the cluster
+     *
+     * @generated from enum value: OPERATE_RETRY = 3;
+     */
+    Operate[Operate["RETRY"] = 3] = "RETRY";
+})(Operate || (Operate = {}));
+// Retrieve enum metadata with: proto3.getEnumType(Operate)
+proto3.util.setEnumType(Operate, "api.v1.Operate", [
+    { no: 0, name: "OPERATE_UNSPECIFIED" },
+    { no: 1, name: "OPERATE_RECONCILE" },
+    { no: 2, name: "OPERATE_MAINTAIN" },
+    { no: 3, name: "OPERATE_RETRY" },
+]);
+/**
  * Cluster describes a kubernetes cluster
  *
  * @generated from message api.v1.Cluster
@@ -371,6 +410,47 @@ ClusterServiceGetRequest.fields = proto3.util.newFieldList(() => [
     { no: 2, name: "project", kind: "scalar", T: 9 /* ScalarType.STRING */ },
 ]);
 /**
+ * ClusterServiceOperateRequest is the request payload for the cluster operate request
+ *
+ * @generated from message api.v1.ClusterServiceOperateRequest
+ */
+export class ClusterServiceOperateRequest extends Message {
+    constructor(data) {
+        super();
+        /**
+         * Uuid of the cluster
+         *
+         * @generated from field: string uuid = 1;
+         */
+        this.uuid = "";
+        /**
+         * Operate is the reconcilation operation which should be performed
+         *
+         * @generated from field: api.v1.Operate operate = 2;
+         */
+        this.operate = Operate.UNSPECIFIED;
+        proto3.util.initPartial(data, this);
+    }
+    static fromBinary(bytes, options) {
+        return new ClusterServiceOperateRequest().fromBinary(bytes, options);
+    }
+    static fromJson(jsonValue, options) {
+        return new ClusterServiceOperateRequest().fromJson(jsonValue, options);
+    }
+    static fromJsonString(jsonString, options) {
+        return new ClusterServiceOperateRequest().fromJsonString(jsonString, options);
+    }
+    static equals(a, b) {
+        return proto3.util.equals(ClusterServiceOperateRequest, a, b);
+    }
+}
+ClusterServiceOperateRequest.runtime = proto3;
+ClusterServiceOperateRequest.typeName = "api.v1.ClusterServiceOperateRequest";
+ClusterServiceOperateRequest.fields = proto3.util.newFieldList(() => [
+    { no: 1, name: "uuid", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "operate", kind: "enum", T: proto3.getEnumType(Operate) },
+]);
+/**
  * ClusterServiceGetRequest is the request payload for a cluster get request
  *
  * @generated from message api.v1.ClusterServiceGetCredentialsRequest
@@ -691,6 +771,12 @@ export class ClusterStatus extends Message {
          * @generated from field: repeated api.v1.ClusterStatusLastError last_errors = 14;
          */
         this.lastErrors = [];
+        /**
+         * ClusterStatusConditions is a list of status conditions of the cluster
+         *
+         * @generated from field: repeated api.v1.ClusterStatusCondition conditions = 15;
+         */
+        this.conditions = [];
         proto3.util.initPartial(data, this);
     }
     static fromBinary(bytes, options) {
@@ -718,6 +804,7 @@ ClusterStatus.fields = proto3.util.newFieldList(() => [
     { no: 12, name: "nodes_ready", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 13, name: "system_components_ready", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 14, name: "last_errors", kind: "message", T: ClusterStatusLastError, repeated: true },
+    { no: 15, name: "conditions", kind: "message", T: ClusterStatusCondition, repeated: true },
 ]);
 /**
  * ClusterStatusLastError is the last known cluster status error
@@ -728,14 +815,13 @@ export class ClusterStatusLastError extends Message {
     constructor(data) {
         super();
         /**
-         * Description a human readable message indicating details about the last error.
+         * Description a human readable message indicating details about the last error
          *
          * @generated from field: string description = 1;
          */
         this.description = "";
         /**
-         * Codes well-defined error codes of the last error(s).
-         * +optional
+         * Codes well-defined error codes of the last error(s)
          *
          * @generated from field: repeated string codes = 3;
          */
@@ -762,6 +848,70 @@ ClusterStatusLastError.fields = proto3.util.newFieldList(() => [
     { no: 2, name: "task_id", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
     { no: 3, name: "codes", kind: "scalar", T: 9 /* ScalarType.STRING */, repeated: true },
     { no: 4, name: "last_update_time", kind: "message", T: Timestamp },
+]);
+/**
+ * ClusterStatusCondition contains status conditions of a cluster
+ *
+ * @generated from message api.v1.ClusterStatusCondition
+ */
+export class ClusterStatusCondition extends Message {
+    constructor(data) {
+        super();
+        /**
+         * Type is the type of the condition
+         *
+         * @generated from field: string type = 1;
+         */
+        this.type = "";
+        /**
+         * Status is the status of the condition
+         *
+         * @generated from field: string status = 2;
+         */
+        this.status = "";
+        /**
+         * Reason describes the reason for the condition's last transition
+         *
+         * @generated from field: string reason = 3;
+         */
+        this.reason = "";
+        /**
+         * StatusMessage is a human readable message indicating details about the transition
+         *
+         * @generated from field: string status_message = 4;
+         */
+        this.statusMessage = "";
+        /**
+         * Codes well-defined error codes of the last error(s).
+         *
+         * @generated from field: repeated string codes = 5;
+         */
+        this.codes = [];
+        proto3.util.initPartial(data, this);
+    }
+    static fromBinary(bytes, options) {
+        return new ClusterStatusCondition().fromBinary(bytes, options);
+    }
+    static fromJson(jsonValue, options) {
+        return new ClusterStatusCondition().fromJson(jsonValue, options);
+    }
+    static fromJsonString(jsonString, options) {
+        return new ClusterStatusCondition().fromJsonString(jsonString, options);
+    }
+    static equals(a, b) {
+        return proto3.util.equals(ClusterStatusCondition, a, b);
+    }
+}
+ClusterStatusCondition.runtime = proto3;
+ClusterStatusCondition.typeName = "api.v1.ClusterStatusCondition";
+ClusterStatusCondition.fields = proto3.util.newFieldList(() => [
+    { no: 1, name: "type", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "status", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 3, name: "reason", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 4, name: "status_message", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 5, name: "codes", kind: "scalar", T: 9 /* ScalarType.STRING */, repeated: true },
+    { no: 6, name: "last_transition_time", kind: "message", T: Timestamp },
+    { no: 7, name: "last_update_time", kind: "message", T: Timestamp },
 ]);
 /**
  * ClusterMonitoring contains details howto access the cluster monitoring
@@ -1018,4 +1168,32 @@ ClusterServiceWatchStatusResponse.runtime = proto3;
 ClusterServiceWatchStatusResponse.typeName = "api.v1.ClusterServiceWatchStatusResponse";
 ClusterServiceWatchStatusResponse.fields = proto3.util.newFieldList(() => [
     { no: 1, name: "status", kind: "message", T: ClusterStatus },
+]);
+/**
+ * ClusterServiceOperateResponse is the response payload for the cluster operate request
+ *
+ * @generated from message api.v1.ClusterServiceOperateResponse
+ */
+export class ClusterServiceOperateResponse extends Message {
+    constructor(data) {
+        super();
+        proto3.util.initPartial(data, this);
+    }
+    static fromBinary(bytes, options) {
+        return new ClusterServiceOperateResponse().fromBinary(bytes, options);
+    }
+    static fromJson(jsonValue, options) {
+        return new ClusterServiceOperateResponse().fromJson(jsonValue, options);
+    }
+    static fromJsonString(jsonString, options) {
+        return new ClusterServiceOperateResponse().fromJsonString(jsonString, options);
+    }
+    static equals(a, b) {
+        return proto3.util.equals(ClusterServiceOperateResponse, a, b);
+    }
+}
+ClusterServiceOperateResponse.runtime = proto3;
+ClusterServiceOperateResponse.typeName = "api.v1.ClusterServiceOperateResponse";
+ClusterServiceOperateResponse.fields = proto3.util.newFieldList(() => [
+    { no: 1, name: "cluster", kind: "message", T: Cluster },
 ]);

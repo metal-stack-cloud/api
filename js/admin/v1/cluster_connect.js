@@ -2,7 +2,7 @@
 // @generated from file admin/v1/cluster.proto (package admin.v1, syntax proto3)
 /* eslint-disable */
 // @ts-nocheck
-import { ClusterServiceCredentialsRequest, ClusterServiceCredentialsResponse, ClusterServiceGetRequest, ClusterServiceGetResponse, ClusterServiceListRequest, ClusterServiceListResponse, ClusterServiceOperateRequest, ClusterServiceOperateResponse } from "./cluster_pb.js";
+import { ClusterServiceCredentialsRequest, ClusterServiceCredentialsResponse, ClusterServiceGetRequest, ClusterServiceGetResponse, ClusterServiceListRequest, ClusterServiceListResponse } from "./cluster_pb.js";
 import { MethodKind } from "@bufbuild/protobuf";
 /**
  * ClusterService serves cluster related functions
@@ -43,17 +43,6 @@ export const ClusterService = {
             name: "Credentials",
             I: ClusterServiceCredentialsRequest,
             O: ClusterServiceCredentialsResponse,
-            kind: MethodKind.Unary,
-        },
-        /**
-         * Operate on a cluster
-         *
-         * @generated from rpc admin.v1.ClusterService.Operate
-         */
-        operate: {
-            name: "Operate",
-            I: ClusterServiceOperateRequest,
-            O: ClusterServiceOperateResponse,
             kind: MethodKind.Unary,
         },
     }

@@ -6,45 +6,6 @@ import { Duration, Message, proto3 } from "@bufbuild/protobuf";
 import { Cluster } from "../../api/v1/cluster_pb.js";
 import { Machine, VPN } from "./machine_pb.js";
 /**
- * Operate defines the types of reconcilation to be triggered
- *
- * @generated from enum admin.v1.Operate
- */
-export var Operate;
-(function (Operate) {
-    /**
-     * OPERATE_UNSPECIFIED is not specified
-     *
-     * @generated from enum value: OPERATE_UNSPECIFIED = 0;
-     */
-    Operate[Operate["UNSPECIFIED"] = 0] = "UNSPECIFIED";
-    /**
-     * OPERATE_RECONCILE reconcile the cluster
-     *
-     * @generated from enum value: OPERATE_RECONCILE = 1;
-     */
-    Operate[Operate["RECONCILE"] = 1] = "RECONCILE";
-    /**
-     * OPERATE_MAINTAIN maintain the cluster
-     *
-     * @generated from enum value: OPERATE_MAINTAIN = 2;
-     */
-    Operate[Operate["MAINTAIN"] = 2] = "MAINTAIN";
-    /**
-     * OPERATE_RETRY retry the reconcilation of the cluster
-     *
-     * @generated from enum value: OPERATE_RETRY = 3;
-     */
-    Operate[Operate["RETRY"] = 3] = "RETRY";
-})(Operate || (Operate = {}));
-// Retrieve enum metadata with: proto3.getEnumType(Operate)
-proto3.util.setEnumType(Operate, "admin.v1.Operate", [
-    { no: 0, name: "OPERATE_UNSPECIFIED" },
-    { no: 1, name: "OPERATE_RECONCILE" },
-    { no: 2, name: "OPERATE_MAINTAIN" },
-    { no: 3, name: "OPERATE_RETRY" },
-]);
-/**
  * ClusterServiceGetRequest is the request payload for the cluster get request
  *
  * @generated from message admin.v1.ClusterServiceGetRequest
@@ -176,47 +137,6 @@ ClusterServiceCredentialsRequest.fields = proto3.util.newFieldList(() => [
     { no: 4, name: "expiration", kind: "message", T: Duration, opt: true },
 ]);
 /**
- * ClusterServiceOperateRequest is the request payload for the cluster operate request
- *
- * @generated from message admin.v1.ClusterServiceOperateRequest
- */
-export class ClusterServiceOperateRequest extends Message {
-    constructor(data) {
-        super();
-        /**
-         * Uuid of the cluster
-         *
-         * @generated from field: string uuid = 1;
-         */
-        this.uuid = "";
-        /**
-         * Operate is the reconcilation operation which should be performed
-         *
-         * @generated from field: admin.v1.Operate operate = 2;
-         */
-        this.operate = Operate.UNSPECIFIED;
-        proto3.util.initPartial(data, this);
-    }
-    static fromBinary(bytes, options) {
-        return new ClusterServiceOperateRequest().fromBinary(bytes, options);
-    }
-    static fromJson(jsonValue, options) {
-        return new ClusterServiceOperateRequest().fromJson(jsonValue, options);
-    }
-    static fromJsonString(jsonString, options) {
-        return new ClusterServiceOperateRequest().fromJsonString(jsonString, options);
-    }
-    static equals(a, b) {
-        return proto3.util.equals(ClusterServiceOperateRequest, a, b);
-    }
-}
-ClusterServiceOperateRequest.runtime = proto3;
-ClusterServiceOperateRequest.typeName = "admin.v1.ClusterServiceOperateRequest";
-ClusterServiceOperateRequest.fields = proto3.util.newFieldList(() => [
-    { no: 1, name: "uuid", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 2, name: "operate", kind: "enum", T: proto3.getEnumType(Operate) },
-]);
-/**
  * ClusterServiceGetResponse is the response payload for the cluster get request
  *
  * @generated from message admin.v1.ClusterServiceGetResponse
@@ -320,34 +240,6 @@ ClusterServiceCredentialsResponse.fields = proto3.util.newFieldList(() => [
     { no: 1, name: "kubeconfig", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 2, name: "ssh_keypair", kind: "message", T: SSHKeyPair },
     { no: 3, name: "vpn", kind: "message", T: VPN },
-]);
-/**
- * ClusterServiceOperateResponse is the response payload for the cluster operate request
- *
- * @generated from message admin.v1.ClusterServiceOperateResponse
- */
-export class ClusterServiceOperateResponse extends Message {
-    constructor(data) {
-        super();
-        proto3.util.initPartial(data, this);
-    }
-    static fromBinary(bytes, options) {
-        return new ClusterServiceOperateResponse().fromBinary(bytes, options);
-    }
-    static fromJson(jsonValue, options) {
-        return new ClusterServiceOperateResponse().fromJson(jsonValue, options);
-    }
-    static fromJsonString(jsonString, options) {
-        return new ClusterServiceOperateResponse().fromJsonString(jsonString, options);
-    }
-    static equals(a, b) {
-        return proto3.util.equals(ClusterServiceOperateResponse, a, b);
-    }
-}
-ClusterServiceOperateResponse.runtime = proto3;
-ClusterServiceOperateResponse.typeName = "admin.v1.ClusterServiceOperateResponse";
-ClusterServiceOperateResponse.fields = proto3.util.newFieldList(() => [
-    { no: 1, name: "cluster", kind: "message", T: Cluster },
 ]);
 /**
  * SSHKeyPair details to access a firewall via ssh

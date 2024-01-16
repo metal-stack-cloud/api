@@ -52,6 +52,10 @@ service ClusterService {
     option (project_roles) = PROJECT_ROLE_OWNER;
     option (project_roles) = PROJECT_ROLE_EDITOR;
   }
+  // Operate on a cluster
+  rpc Operate(ClusterServiceOperateRequest) returns (ClusterServiceOperateResponse) {
+    option (api.v1.admin_roles) = ADMIN_ROLE_EDITOR;
+  }
 }
 
 // Cluster describes a kubernetes cluster
@@ -187,6 +191,14 @@ message ClusterServiceGetRequest {
   }];
 }
 
+// ClusterServiceOperateRequest is the request payload for the cluster operate request
+message ClusterServiceOperateRequest {
+  // Uuid of the cluster
+  string uuid = 1 [(validate.rules).string.uuid = true];
+  // Operate is the reconcilation operation which should be performed
+  Operate operate = 2;
+}
+
 // ClusterServiceGetRequest is the request payload for a cluster get request
 message ClusterServiceGetCredentialsRequest {
   // Uuid of the cluster
@@ -293,21 +305,38 @@ message ClusterStatus {
   string system_components_ready = 13;
   // LastErrors is a list of the last known errors occured during the cluster reconcilation
   repeated ClusterStatusLastError last_errors = 14;
+  // ClusterStatusConditions is a list of status conditions of the cluster
+  repeated ClusterStatusCondition conditions = 15;
 }
 
 // ClusterStatusLastError is the last known cluster status error
 message ClusterStatusLastError {
-  // Description a human readable message indicating details about the last error.
+  // Description a human readable message indicating details about the last error
   string description = 1;
   // TaskId ID of the task which caused this last error
-  // +optional
   optional string task_id = 2;
-  // Codes well-defined error codes of the last error(s).
-  // +optional
+  // Codes well-defined error codes of the last error(s)
   repeated string codes = 3;
   // LastUpdateTime last time the error was reported
-  // +optional
   google.protobuf.Timestamp last_update_time = 4;
+}
+
+// ClusterStatusCondition contains status conditions of a cluster
+message ClusterStatusCondition {
+  // Type is the type of the condition
+  string type = 1;
+  // Status is the status of the condition
+  string status = 2;
+  // Reason describes the reason for the condition's last transition
+  string reason = 3;
+  // StatusMessage is a human readable message indicating details about the transition
+  string status_message = 4;
+  // Codes well-defined error codes of the last error(s).
+  repeated string codes = 5;
+  // LastUpdateTime last time the condition transitioned
+  google.protobuf.Timestamp last_transition_time = 6;
+  // LastUpdateTime last time the condition was updated
+  google.protobuf.Timestamp last_update_time = 7;
 }
 
 // ClusterMonitoring contains details howto access the cluster monitoring
@@ -360,4 +389,22 @@ message ClusterServiceListResponse {
 message ClusterServiceWatchStatusResponse {
   // Status the cluster status
   ClusterStatus status = 1;
+}
+
+// ClusterServiceOperateResponse is the response payload for the cluster operate request
+message ClusterServiceOperateResponse {
+  // Cluster is the cluster
+  api.v1.Cluster cluster = 1;
+}
+
+// Operate defines the types of reconcilation to be triggered
+enum Operate {
+  // OPERATE_UNSPECIFIED is not specified
+  OPERATE_UNSPECIFIED = 0;
+  // OPERATE_RECONCILE reconcile the cluster
+  OPERATE_RECONCILE = 1;
+  // OPERATE_MAINTAIN maintain the cluster
+  OPERATE_MAINTAIN = 2;
+  // OPERATE_RETRY retry the reconcilation of the cluster
+  OPERATE_RETRY = 3;
 }

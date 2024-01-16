@@ -2,7 +2,7 @@
 // @generated from file api/v1/cluster.proto (package api.v1, syntax proto3)
 /* eslint-disable */
 // @ts-nocheck
-import { ClusterServiceCreateRequest, ClusterServiceCreateResponse, ClusterServiceDeleteRequest, ClusterServiceDeleteResponse, ClusterServiceGetCredentialsRequest, ClusterServiceGetCredentialsResponse, ClusterServiceGetRequest, ClusterServiceGetResponse, ClusterServiceListRequest, ClusterServiceListResponse, ClusterServiceUpdateRequest, ClusterServiceUpdateResponse, ClusterServiceWatchStatusRequest, ClusterServiceWatchStatusResponse } from "./cluster_pb.js";
+import { ClusterServiceCreateRequest, ClusterServiceCreateResponse, ClusterServiceDeleteRequest, ClusterServiceDeleteResponse, ClusterServiceGetCredentialsRequest, ClusterServiceGetCredentialsResponse, ClusterServiceGetRequest, ClusterServiceGetResponse, ClusterServiceListRequest, ClusterServiceListResponse, ClusterServiceOperateRequest, ClusterServiceOperateResponse, ClusterServiceUpdateRequest, ClusterServiceUpdateResponse, ClusterServiceWatchStatusRequest, ClusterServiceWatchStatusResponse } from "./cluster_pb.js";
 import { MethodKind } from "@bufbuild/protobuf";
 /**
  * ClusterService serves kubernetes cluster related functions
@@ -87,6 +87,17 @@ export const ClusterService = {
             name: "GetCredentials",
             I: ClusterServiceGetCredentialsRequest,
             O: ClusterServiceGetCredentialsResponse,
+            kind: MethodKind.Unary,
+        },
+        /**
+         * Operate on a cluster
+         *
+         * @generated from rpc api.v1.ClusterService.Operate
+         */
+        operate: {
+            name: "Operate",
+            I: ClusterServiceOperateRequest,
+            O: ClusterServiceOperateResponse,
             kind: MethodKind.Unary,
         },
     }

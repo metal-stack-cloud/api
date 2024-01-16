@@ -24,10 +24,6 @@ service ClusterService {
   rpc Credentials(ClusterServiceCredentialsRequest) returns (ClusterServiceCredentialsResponse) {
     option (api.v1.admin_roles) = ADMIN_ROLE_EDITOR;
   }
-  // Operate on a cluster
-  rpc Operate(ClusterServiceOperateRequest) returns (ClusterServiceOperateResponse) {
-    option (api.v1.admin_roles) = ADMIN_ROLE_EDITOR;
-  }
 }
 
 // ClusterServiceGetRequest is the request payload for the cluster get request
@@ -70,14 +66,6 @@ message ClusterServiceCredentialsRequest {
   optional google.protobuf.Duration expiration = 4;
 }
 
-// ClusterServiceOperateRequest is the request payload for the cluster operate request
-message ClusterServiceOperateRequest {
-  // Uuid of the cluster
-  string uuid = 1 [(validate.rules).string.uuid = true];
-  // Operate is the reconcilation operation which should be performed
-  Operate operate = 2;
-}
-
 // ClusterServiceGetResponse is the response payload for the cluster get request
 message ClusterServiceGetResponse {
   // Cluster is the cluster
@@ -100,24 +88,6 @@ message ClusterServiceCredentialsResponse {
   SSHKeyPair ssh_keypair = 2;
   // Vpn are the VPN access details
   admin.v1.VPN vpn = 3;
-}
-
-// ClusterServiceOperateResponse is the response payload for the cluster operate request
-message ClusterServiceOperateResponse {
-  // Cluster is the cluster
-  api.v1.Cluster cluster = 1;
-}
-
-// Operate defines the types of reconcilation to be triggered
-enum Operate {
-  // OPERATE_UNSPECIFIED is not specified
-  OPERATE_UNSPECIFIED = 0;
-  // OPERATE_RECONCILE reconcile the cluster
-  OPERATE_RECONCILE = 1;
-  // OPERATE_MAINTAIN maintain the cluster
-  OPERATE_MAINTAIN = 2;
-  // OPERATE_RETRY retry the reconcilation of the cluster
-  OPERATE_RETRY = 3;
 }
 
 // SSHKeyPair details to access a firewall via ssh
