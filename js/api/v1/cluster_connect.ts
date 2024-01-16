@@ -3,7 +3,7 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import { ClusterServiceCreateRequest, ClusterServiceCreateResponse, ClusterServiceDeleteRequest, ClusterServiceDeleteResponse, ClusterServiceGetCredentialsRequest, ClusterServiceGetCredentialsResponse, ClusterServiceGetRequest, ClusterServiceGetResponse, ClusterServiceListRequest, ClusterServiceListResponse, ClusterServiceUpdateRequest, ClusterServiceUpdateResponse, ClusterServiceWatchStatusRequest, ClusterServiceWatchStatusResponse } from "./cluster_pb.js";
+import { ClusterServiceCreateRequest, ClusterServiceCreateResponse, ClusterServiceDeleteRequest, ClusterServiceDeleteResponse, ClusterServiceGetCredentialsRequest, ClusterServiceGetCredentialsResponse, ClusterServiceGetRequest, ClusterServiceGetResponse, ClusterServiceListRequest, ClusterServiceListResponse, ClusterServiceOperateRequest, ClusterServiceOperateResponse, ClusterServiceUpdateRequest, ClusterServiceUpdateResponse, ClusterServiceWatchStatusRequest, ClusterServiceWatchStatusResponse } from "./cluster_pb.js";
 import { MethodKind } from "@bufbuild/protobuf";
 
 /**
@@ -89,6 +89,17 @@ export const ClusterService = {
       name: "GetCredentials",
       I: ClusterServiceGetCredentialsRequest,
       O: ClusterServiceGetCredentialsResponse,
+      kind: MethodKind.Unary,
+    },
+    /**
+     * Operate on a cluster
+     *
+     * @generated from rpc api.v1.ClusterService.Operate
+     */
+    operate: {
+      name: "Operate",
+      I: ClusterServiceOperateRequest,
+      O: ClusterServiceOperateResponse,
       kind: MethodKind.Unary,
     },
   }

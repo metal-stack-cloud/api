@@ -9,48 +9,6 @@ import { Cluster } from "../../api/v1/cluster_pb.js";
 import { Machine, VPN } from "./machine_pb.js";
 
 /**
- * Operate defines the types of reconcilation to be triggered
- *
- * @generated from enum admin.v1.Operate
- */
-export enum Operate {
-  /**
-   * OPERATE_UNSPECIFIED is not specified
-   *
-   * @generated from enum value: OPERATE_UNSPECIFIED = 0;
-   */
-  UNSPECIFIED = 0,
-
-  /**
-   * OPERATE_RECONCILE reconcile the cluster
-   *
-   * @generated from enum value: OPERATE_RECONCILE = 1;
-   */
-  RECONCILE = 1,
-
-  /**
-   * OPERATE_MAINTAIN maintain the cluster
-   *
-   * @generated from enum value: OPERATE_MAINTAIN = 2;
-   */
-  MAINTAIN = 2,
-
-  /**
-   * OPERATE_RETRY retry the reconcilation of the cluster
-   *
-   * @generated from enum value: OPERATE_RETRY = 3;
-   */
-  RETRY = 3,
-}
-// Retrieve enum metadata with: proto3.getEnumType(Operate)
-proto3.util.setEnumType(Operate, "admin.v1.Operate", [
-  { no: 0, name: "OPERATE_UNSPECIFIED" },
-  { no: 1, name: "OPERATE_RECONCILE" },
-  { no: 2, name: "OPERATE_MAINTAIN" },
-  { no: 3, name: "OPERATE_RETRY" },
-]);
-
-/**
  * ClusterServiceGetRequest is the request payload for the cluster get request
  *
  * @generated from message admin.v1.ClusterServiceGetRequest
@@ -262,55 +220,6 @@ export class ClusterServiceCredentialsRequest extends Message<ClusterServiceCred
 }
 
 /**
- * ClusterServiceOperateRequest is the request payload for the cluster operate request
- *
- * @generated from message admin.v1.ClusterServiceOperateRequest
- */
-export class ClusterServiceOperateRequest extends Message<ClusterServiceOperateRequest> {
-  /**
-   * Uuid of the cluster
-   *
-   * @generated from field: string uuid = 1;
-   */
-  uuid = "";
-
-  /**
-   * Operate is the reconcilation operation which should be performed
-   *
-   * @generated from field: admin.v1.Operate operate = 2;
-   */
-  operate = Operate.UNSPECIFIED;
-
-  constructor(data?: PartialMessage<ClusterServiceOperateRequest>) {
-    super();
-    proto3.util.initPartial(data, this);
-  }
-
-  static readonly runtime: typeof proto3 = proto3;
-  static readonly typeName = "admin.v1.ClusterServiceOperateRequest";
-  static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "uuid", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 2, name: "operate", kind: "enum", T: proto3.getEnumType(Operate) },
-  ]);
-
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ClusterServiceOperateRequest {
-    return new ClusterServiceOperateRequest().fromBinary(bytes, options);
-  }
-
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ClusterServiceOperateRequest {
-    return new ClusterServiceOperateRequest().fromJson(jsonValue, options);
-  }
-
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ClusterServiceOperateRequest {
-    return new ClusterServiceOperateRequest().fromJsonString(jsonString, options);
-  }
-
-  static equals(a: ClusterServiceOperateRequest | PlainMessage<ClusterServiceOperateRequest> | undefined, b: ClusterServiceOperateRequest | PlainMessage<ClusterServiceOperateRequest> | undefined): boolean {
-    return proto3.util.equals(ClusterServiceOperateRequest, a, b);
-  }
-}
-
-/**
  * ClusterServiceGetResponse is the response payload for the cluster get request
  *
  * @generated from message admin.v1.ClusterServiceGetResponse
@@ -454,47 +363,6 @@ export class ClusterServiceCredentialsResponse extends Message<ClusterServiceCre
 
   static equals(a: ClusterServiceCredentialsResponse | PlainMessage<ClusterServiceCredentialsResponse> | undefined, b: ClusterServiceCredentialsResponse | PlainMessage<ClusterServiceCredentialsResponse> | undefined): boolean {
     return proto3.util.equals(ClusterServiceCredentialsResponse, a, b);
-  }
-}
-
-/**
- * ClusterServiceOperateResponse is the response payload for the cluster operate request
- *
- * @generated from message admin.v1.ClusterServiceOperateResponse
- */
-export class ClusterServiceOperateResponse extends Message<ClusterServiceOperateResponse> {
-  /**
-   * Cluster is the cluster
-   *
-   * @generated from field: api.v1.Cluster cluster = 1;
-   */
-  cluster?: Cluster;
-
-  constructor(data?: PartialMessage<ClusterServiceOperateResponse>) {
-    super();
-    proto3.util.initPartial(data, this);
-  }
-
-  static readonly runtime: typeof proto3 = proto3;
-  static readonly typeName = "admin.v1.ClusterServiceOperateResponse";
-  static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "cluster", kind: "message", T: Cluster },
-  ]);
-
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ClusterServiceOperateResponse {
-    return new ClusterServiceOperateResponse().fromBinary(bytes, options);
-  }
-
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ClusterServiceOperateResponse {
-    return new ClusterServiceOperateResponse().fromJson(jsonValue, options);
-  }
-
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ClusterServiceOperateResponse {
-    return new ClusterServiceOperateResponse().fromJsonString(jsonString, options);
-  }
-
-  static equals(a: ClusterServiceOperateResponse | PlainMessage<ClusterServiceOperateResponse> | undefined, b: ClusterServiceOperateResponse | PlainMessage<ClusterServiceOperateResponse> | undefined): boolean {
-    return proto3.util.equals(ClusterServiceOperateResponse, a, b);
   }
 }
 

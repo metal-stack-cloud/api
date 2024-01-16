@@ -1,4 +1,4 @@
-import { ClusterServiceCredentialsRequest, ClusterServiceCredentialsResponse, ClusterServiceGetRequest, ClusterServiceGetResponse, ClusterServiceListRequest, ClusterServiceListResponse, ClusterServiceOperateRequest, ClusterServiceOperateResponse } from "./cluster_pb.js";
+import { ClusterServiceCredentialsRequest, ClusterServiceCredentialsResponse, ClusterServiceGetRequest, ClusterServiceGetResponse, ClusterServiceListRequest, ClusterServiceListResponse } from "./cluster_pb.js";
 import { MethodKind } from "@bufbuild/protobuf";
 /**
  * ClusterService serves cluster related functions
@@ -39,17 +39,6 @@ export declare const ClusterService: {
             readonly name: "Credentials";
             readonly I: typeof ClusterServiceCredentialsRequest;
             readonly O: typeof ClusterServiceCredentialsResponse;
-            readonly kind: MethodKind.Unary;
-        };
-        /**
-         * Operate on a cluster
-         *
-         * @generated from rpc admin.v1.ClusterService.Operate
-         */
-        readonly operate: {
-            readonly name: "Operate";
-            readonly I: typeof ClusterServiceOperateRequest;
-            readonly O: typeof ClusterServiceOperateResponse;
             readonly kind: MethodKind.Unary;
         };
     };

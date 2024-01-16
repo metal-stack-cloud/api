@@ -729,11 +729,40 @@
       "name": "api/v1/cluster.proto",
       "description": "",
       "package": "api.v1",
-      "hasEnums": false,
+      "hasEnums": true,
       "hasExtensions": false,
       "hasMessages": true,
       "hasServices": true,
-      "enums": [],
+      "enums": [
+        {
+          "name": "Operate",
+          "longName": "Operate",
+          "fullName": "api.v1.Operate",
+          "description": "Operate defines the types of reconcilation to be triggered",
+          "values": [
+            {
+              "name": "OPERATE_UNSPECIFIED",
+              "number": "0",
+              "description": "OPERATE_UNSPECIFIED is not specified"
+            },
+            {
+              "name": "OPERATE_RECONCILE",
+              "number": "1",
+              "description": "OPERATE_RECONCILE reconcile the cluster"
+            },
+            {
+              "name": "OPERATE_MAINTAIN",
+              "number": "2",
+              "description": "OPERATE_MAINTAIN maintain the cluster"
+            },
+            {
+              "name": "OPERATE_RETRY",
+              "number": "3",
+              "description": "OPERATE_RETRY retry the reconcilation of the cluster"
+            }
+          ]
+        }
+      ],
       "extensions": [],
       "messages": [
         {
@@ -1445,6 +1474,98 @@
           ]
         },
         {
+          "name": "ClusterServiceOperateRequest",
+          "longName": "ClusterServiceOperateRequest",
+          "fullName": "api.v1.ClusterServiceOperateRequest",
+          "description": "ClusterServiceOperateRequest is the request payload for the cluster operate request",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "uuid",
+              "description": "Uuid of the cluster",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": "",
+              "options": {
+                "validate.rules": [
+                  {
+                    "name": "string.uuid",
+                    "value": true
+                  }
+                ]
+              }
+            },
+            {
+              "name": "project",
+              "description": "Project of the cluster",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": "",
+              "options": {
+                "validate.rules": [
+                  {
+                    "name": "string.min_len",
+                    "value": 2
+                  },
+                  {
+                    "name": "string.max_len",
+                    "value": 128
+                  }
+                ]
+              }
+            },
+            {
+              "name": "operate",
+              "description": "Operate is the operation which should be performed",
+              "label": "",
+              "type": "Operate",
+              "longType": "Operate",
+              "fullType": "api.v1.Operate",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "ClusterServiceOperateResponse",
+          "longName": "ClusterServiceOperateResponse",
+          "fullName": "api.v1.ClusterServiceOperateResponse",
+          "description": "ClusterServiceOperateResponse is the response payload for the cluster operate request",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "cluster",
+              "description": "Cluster is the cluster",
+              "label": "",
+              "type": "Cluster",
+              "longType": "Cluster",
+              "fullType": "api.v1.Cluster",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
           "name": "ClusterServiceUpdateRequest",
           "longName": "ClusterServiceUpdateRequest",
           "fullName": "api.v1.ClusterServiceUpdateRequest",
@@ -1757,6 +1878,102 @@
               "isoneof": false,
               "oneofdecl": "",
               "defaultValue": ""
+            },
+            {
+              "name": "conditions",
+              "description": "ClusterStatusConditions is a list of status conditions of the cluster",
+              "label": "repeated",
+              "type": "ClusterStatusCondition",
+              "longType": "ClusterStatusCondition",
+              "fullType": "api.v1.ClusterStatusCondition",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "ClusterStatusCondition",
+          "longName": "ClusterStatusCondition",
+          "fullName": "api.v1.ClusterStatusCondition",
+          "description": "ClusterStatusCondition contains status conditions of a cluster",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "type",
+              "description": "Type is the type of the condition",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "status",
+              "description": "Status is the status of the condition",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "reason",
+              "description": "Reason describes the reason for the condition's last transition",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "status_message",
+              "description": "StatusMessage is a human readable message indicating details about the transition",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "last_transition_time",
+              "description": "LastUpdateTime last time the condition transitioned",
+              "label": "",
+              "type": "Timestamp",
+              "longType": "google.protobuf.Timestamp",
+              "fullType": "google.protobuf.Timestamp",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "last_update_time",
+              "description": "LastUpdateTime last time the condition was updated",
+              "label": "",
+              "type": "Timestamp",
+              "longType": "google.protobuf.Timestamp",
+              "fullType": "google.protobuf.Timestamp",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
             }
           ]
         },
@@ -1772,7 +1989,7 @@
           "fields": [
             {
               "name": "description",
-              "description": "Description a human readable message indicating details about the last error.",
+              "description": "Description a human readable message indicating details about the last error",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -1784,7 +2001,7 @@
             },
             {
               "name": "task_id",
-              "description": "TaskId ID of the task which caused this last error\n+optional",
+              "description": "TaskId ID of the task which caused this last error",
               "label": "optional",
               "type": "string",
               "longType": "string",
@@ -1795,20 +2012,8 @@
               "defaultValue": ""
             },
             {
-              "name": "codes",
-              "description": "Codes well-defined error codes of the last error(s).\n+optional",
-              "label": "repeated",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
               "name": "last_update_time",
-              "description": "LastUpdateTime last time the error was reported\n+optional",
+              "description": "LastUpdateTime last time the error was reported",
               "label": "",
               "type": "Timestamp",
               "longType": "google.protobuf.Timestamp",
@@ -2395,6 +2600,18 @@
               "responseLongType": "ClusterServiceGetCredentialsResponse",
               "responseFullType": "api.v1.ClusterServiceGetCredentialsResponse",
               "responseStreaming": false
+            },
+            {
+              "name": "Operate",
+              "description": "Operate on a cluster",
+              "requestType": "ClusterServiceOperateRequest",
+              "requestLongType": "ClusterServiceOperateRequest",
+              "requestFullType": "api.v1.ClusterServiceOperateRequest",
+              "requestStreaming": false,
+              "responseType": "ClusterServiceOperateResponse",
+              "responseLongType": "ClusterServiceOperateResponse",
+              "responseFullType": "api.v1.ClusterServiceOperateResponse",
+              "responseStreaming": false
             }
           ]
         }
@@ -2404,40 +2621,11 @@
       "name": "admin/v1/cluster.proto",
       "description": "",
       "package": "admin.v1",
-      "hasEnums": true,
+      "hasEnums": false,
       "hasExtensions": false,
       "hasMessages": true,
       "hasServices": true,
-      "enums": [
-        {
-          "name": "Operate",
-          "longName": "Operate",
-          "fullName": "admin.v1.Operate",
-          "description": "Operate defines the types of reconcilation to be triggered",
-          "values": [
-            {
-              "name": "OPERATE_UNSPECIFIED",
-              "number": "0",
-              "description": "OPERATE_UNSPECIFIED is not specified"
-            },
-            {
-              "name": "OPERATE_RECONCILE",
-              "number": "1",
-              "description": "OPERATE_RECONCILE reconcile the cluster"
-            },
-            {
-              "name": "OPERATE_MAINTAIN",
-              "number": "2",
-              "description": "OPERATE_MAINTAIN maintain the cluster"
-            },
-            {
-              "name": "OPERATE_RETRY",
-              "number": "3",
-              "description": "OPERATE_RETRY retry the reconcilation of the cluster"
-            }
-          ]
-        }
-      ],
+      "enums": [],
       "extensions": [],
       "messages": [
         {
@@ -2805,74 +2993,6 @@
           ]
         },
         {
-          "name": "ClusterServiceOperateRequest",
-          "longName": "ClusterServiceOperateRequest",
-          "fullName": "admin.v1.ClusterServiceOperateRequest",
-          "description": "ClusterServiceOperateRequest is the request payload for the cluster operate request",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "uuid",
-              "description": "Uuid of the cluster",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.uuid",
-                    "value": true
-                  }
-                ]
-              }
-            },
-            {
-              "name": "operate",
-              "description": "Operate is the reconcilation operation which should be performed",
-              "label": "",
-              "type": "Operate",
-              "longType": "Operate",
-              "fullType": "admin.v1.Operate",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            }
-          ]
-        },
-        {
-          "name": "ClusterServiceOperateResponse",
-          "longName": "ClusterServiceOperateResponse",
-          "fullName": "admin.v1.ClusterServiceOperateResponse",
-          "description": "ClusterServiceOperateResponse is the response payload for the cluster operate request",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "cluster",
-              "description": "Cluster is the cluster",
-              "label": "",
-              "type": "Cluster",
-              "longType": "api.v1.Cluster",
-              "fullType": "api.v1.Cluster",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            }
-          ]
-        },
-        {
           "name": "SSHKeyPair",
           "longName": "SSHKeyPair",
           "fullName": "admin.v1.SSHKeyPair",
@@ -2950,18 +3070,6 @@
               "responseType": "ClusterServiceCredentialsResponse",
               "responseLongType": "ClusterServiceCredentialsResponse",
               "responseFullType": "admin.v1.ClusterServiceCredentialsResponse",
-              "responseStreaming": false
-            },
-            {
-              "name": "Operate",
-              "description": "Operate on a cluster",
-              "requestType": "ClusterServiceOperateRequest",
-              "requestLongType": "ClusterServiceOperateRequest",
-              "requestFullType": "admin.v1.ClusterServiceOperateRequest",
-              "requestStreaming": false,
-              "responseType": "ClusterServiceOperateResponse",
-              "responseLongType": "ClusterServiceOperateResponse",
-              "responseFullType": "admin.v1.ClusterServiceOperateResponse",
               "responseStreaming": false
             }
           ]

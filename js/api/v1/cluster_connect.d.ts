@@ -1,4 +1,4 @@
-import { ClusterServiceCreateRequest, ClusterServiceCreateResponse, ClusterServiceDeleteRequest, ClusterServiceDeleteResponse, ClusterServiceGetCredentialsRequest, ClusterServiceGetCredentialsResponse, ClusterServiceGetRequest, ClusterServiceGetResponse, ClusterServiceListRequest, ClusterServiceListResponse, ClusterServiceUpdateRequest, ClusterServiceUpdateResponse, ClusterServiceWatchStatusRequest, ClusterServiceWatchStatusResponse } from "./cluster_pb.js";
+import { ClusterServiceCreateRequest, ClusterServiceCreateResponse, ClusterServiceDeleteRequest, ClusterServiceDeleteResponse, ClusterServiceGetCredentialsRequest, ClusterServiceGetCredentialsResponse, ClusterServiceGetRequest, ClusterServiceGetResponse, ClusterServiceListRequest, ClusterServiceListResponse, ClusterServiceOperateRequest, ClusterServiceOperateResponse, ClusterServiceUpdateRequest, ClusterServiceUpdateResponse, ClusterServiceWatchStatusRequest, ClusterServiceWatchStatusResponse } from "./cluster_pb.js";
 import { MethodKind } from "@bufbuild/protobuf";
 /**
  * ClusterService serves kubernetes cluster related functions
@@ -83,6 +83,17 @@ export declare const ClusterService: {
             readonly name: "GetCredentials";
             readonly I: typeof ClusterServiceGetCredentialsRequest;
             readonly O: typeof ClusterServiceGetCredentialsResponse;
+            readonly kind: MethodKind.Unary;
+        };
+        /**
+         * Operate on a cluster
+         *
+         * @generated from rpc api.v1.ClusterService.Operate
+         */
+        readonly operate: {
+            readonly name: "Operate";
+            readonly I: typeof ClusterServiceOperateRequest;
+            readonly O: typeof ClusterServiceOperateResponse;
             readonly kind: MethodKind.Unary;
         };
     };
