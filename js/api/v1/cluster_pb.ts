@@ -1149,13 +1149,6 @@ export class ClusterStatusLastError extends Message<ClusterStatusLastError> {
   taskId?: string;
 
   /**
-   * Codes well-defined error codes of the last error(s)
-   *
-   * @generated from field: repeated string codes = 3;
-   */
-  codes: string[] = [];
-
-  /**
    * LastUpdateTime last time the error was reported
    *
    * @generated from field: google.protobuf.Timestamp last_update_time = 4;
@@ -1172,7 +1165,6 @@ export class ClusterStatusLastError extends Message<ClusterStatusLastError> {
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
     { no: 1, name: "description", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 2, name: "task_id", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
-    { no: 3, name: "codes", kind: "scalar", T: 9 /* ScalarType.STRING */, repeated: true },
     { no: 4, name: "last_update_time", kind: "message", T: Timestamp },
   ]);
 
@@ -1228,23 +1220,16 @@ export class ClusterStatusCondition extends Message<ClusterStatusCondition> {
   statusMessage = "";
 
   /**
-   * Codes well-defined error codes of the last error(s).
-   *
-   * @generated from field: repeated string codes = 5;
-   */
-  codes: string[] = [];
-
-  /**
    * LastUpdateTime last time the condition transitioned
    *
-   * @generated from field: google.protobuf.Timestamp last_transition_time = 6;
+   * @generated from field: google.protobuf.Timestamp last_transition_time = 5;
    */
   lastTransitionTime?: Timestamp;
 
   /**
    * LastUpdateTime last time the condition was updated
    *
-   * @generated from field: google.protobuf.Timestamp last_update_time = 7;
+   * @generated from field: google.protobuf.Timestamp last_update_time = 6;
    */
   lastUpdateTime?: Timestamp;
 
@@ -1260,9 +1245,8 @@ export class ClusterStatusCondition extends Message<ClusterStatusCondition> {
     { no: 2, name: "status", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 3, name: "reason", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 4, name: "status_message", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 5, name: "codes", kind: "scalar", T: 9 /* ScalarType.STRING */, repeated: true },
-    { no: 6, name: "last_transition_time", kind: "message", T: Timestamp },
-    { no: 7, name: "last_update_time", kind: "message", T: Timestamp },
+    { no: 5, name: "last_transition_time", kind: "message", T: Timestamp },
+    { no: 6, name: "last_update_time", kind: "message", T: Timestamp },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ClusterStatusCondition {

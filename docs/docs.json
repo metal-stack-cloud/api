@@ -1952,18 +1952,6 @@
               "defaultValue": ""
             },
             {
-              "name": "codes",
-              "description": "Codes well-defined error codes of the last error(s).",
-              "label": "repeated",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
               "name": "last_transition_time",
               "description": "LastUpdateTime last time the condition transitioned",
               "label": "",
@@ -2021,18 +2009,6 @@
               "ismap": false,
               "isoneof": true,
               "oneofdecl": "_task_id",
-              "defaultValue": ""
-            },
-            {
-              "name": "codes",
-              "description": "Codes well-defined error codes of the last error(s)",
-              "label": "repeated",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
               "defaultValue": ""
             },
             {

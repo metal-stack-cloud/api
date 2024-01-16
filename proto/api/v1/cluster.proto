@@ -321,8 +321,6 @@ message ClusterStatusLastError {
   string description = 1;
   // TaskId ID of the task which caused this last error
   optional string task_id = 2;
-  // Codes well-defined error codes of the last error(s)
-  repeated string codes = 3;
   // LastUpdateTime last time the error was reported
   google.protobuf.Timestamp last_update_time = 4;
 }
@@ -337,12 +335,10 @@ message ClusterStatusCondition {
   string reason = 3;
   // StatusMessage is a human readable message indicating details about the transition
   string status_message = 4;
-  // Codes well-defined error codes of the last error(s).
-  repeated string codes = 5;
   // LastUpdateTime last time the condition transitioned
-  google.protobuf.Timestamp last_transition_time = 6;
+  google.protobuf.Timestamp last_transition_time = 5;
   // LastUpdateTime last time the condition was updated
-  google.protobuf.Timestamp last_update_time = 7;
+  google.protobuf.Timestamp last_update_time = 6;
 }
 
 // ClusterMonitoring contains details howto access the cluster monitoring

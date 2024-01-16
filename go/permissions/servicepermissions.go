@@ -44,7 +44,6 @@ func GetServicePermissions() *ServicePermissions {
 					"/admin.v1.TenantService/Revoke",
 					"/admin.v1.TokenService/List",
 					"/admin.v1.TokenService/Revoke",
-					"/api.v1.ClusterService/Operate",
 				},
 				Viewer: []string{
 					"/admin.v1.ClusterService/Get",
@@ -102,6 +101,7 @@ func GetServicePermissions() *ServicePermissions {
 					"/api.v1.ClusterService/Delete",
 					"/api.v1.ClusterService/Update",
 					"/api.v1.ClusterService/GetCredentials",
+					"/api.v1.ClusterService/Operate",
 					"/api.v1.IPService/Get",
 					"/api.v1.IPService/Allocate",
 					"/api.v1.IPService/Update",
@@ -123,6 +123,7 @@ func GetServicePermissions() *ServicePermissions {
 					"/api.v1.ClusterService/Delete",
 					"/api.v1.ClusterService/Update",
 					"/api.v1.ClusterService/GetCredentials",
+					"/api.v1.ClusterService/Operate",
 					"/api.v1.IPService/Get",
 					"/api.v1.IPService/Allocate",
 					"/api.v1.IPService/Update",
