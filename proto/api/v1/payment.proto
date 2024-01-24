@@ -383,12 +383,14 @@ message PaymentServiceCheckAdmittedResponse {
 message PaymentServiceRequestAdmissionRequest {
   // Login of the customer
   string login = 1;
-  // Customer is the customer
-  PaymentCustomer customer = 2;
   // AcceptedTermsAndConditions indicates if the customer already accepted the terms and conditions
   bool accepted_terms_and_conditions = 3;
   // EmailConsent indicates if the customer already gave consent to email
   bool email_consent = 4;
+  // Customer's name
+  string name = 9;
+  // Customer's email address
+  string email = 10;
 }
 
 // PaymentServiceRequestAdmissionResponse is the response payload for a admission request
