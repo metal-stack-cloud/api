@@ -1569,13 +1569,6 @@ export class PaymentServiceRequestAdmissionRequest extends Message<PaymentServic
   login = "";
 
   /**
-   * Customer is the customer
-   *
-   * @generated from field: api.v1.PaymentCustomer customer = 2;
-   */
-  customer?: PaymentCustomer;
-
-  /**
    * AcceptedTermsAndConditions indicates if the customer already accepted the terms and conditions
    *
    * @generated from field: bool accepted_terms_and_conditions = 3;
@@ -1589,6 +1582,20 @@ export class PaymentServiceRequestAdmissionRequest extends Message<PaymentServic
    */
   emailConsent = false;
 
+  /**
+   * Customer's name
+   *
+   * @generated from field: string name = 9;
+   */
+  name = "";
+
+  /**
+   * Customer's email address
+   *
+   * @generated from field: string email = 10;
+   */
+  email = "";
+
   constructor(data?: PartialMessage<PaymentServiceRequestAdmissionRequest>) {
     super();
     proto3.util.initPartial(data, this);
@@ -1598,9 +1605,10 @@ export class PaymentServiceRequestAdmissionRequest extends Message<PaymentServic
   static readonly typeName = "api.v1.PaymentServiceRequestAdmissionRequest";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
     { no: 1, name: "login", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 2, name: "customer", kind: "message", T: PaymentCustomer },
     { no: 3, name: "accepted_terms_and_conditions", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
     { no: 4, name: "email_consent", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
+    { no: 9, name: "name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 10, name: "email", kind: "scalar", T: 9 /* ScalarType.STRING */ },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): PaymentServiceRequestAdmissionRequest {
