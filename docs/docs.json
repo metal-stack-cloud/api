@@ -472,6 +472,11 @@
               "name": "O_AUTH_PROVIDER_AZURE",
               "number": "2",
               "description": "O_AUTH_PROVIDER_AZURE specifies azure as oauth login provider"
+            },
+            {
+              "name": "O_AUTH_PROVIDER_GOOGLE",
+              "number": "3",
+              "description": "O_AUTH_PROVIDER_GOOGLE specifies google as oauth login provider"
             }
           ]
         },

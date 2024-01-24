@@ -32,12 +32,20 @@ export enum OAuthProvider {
    * @generated from enum value: O_AUTH_PROVIDER_AZURE = 2;
    */
   AZURE = 2,
+
+  /**
+   * O_AUTH_PROVIDER_GOOGLE specifies google as oauth login provider
+   *
+   * @generated from enum value: O_AUTH_PROVIDER_GOOGLE = 3;
+   */
+  GOOGLE = 3,
 }
 // Retrieve enum metadata with: proto3.getEnumType(OAuthProvider)
 proto3.util.setEnumType(OAuthProvider, "api.v1.OAuthProvider", [
   { no: 0, name: "O_AUTH_PROVIDER_UNSPECIFIED" },
   { no: 1, name: "O_AUTH_PROVIDER_GITHUB" },
   { no: 2, name: "O_AUTH_PROVIDER_AZURE" },
+  { no: 3, name: "O_AUTH_PROVIDER_GOOGLE" },
 ]);
 
 /**

@@ -23,7 +23,13 @@ export declare enum OAuthProvider {
      *
      * @generated from enum value: O_AUTH_PROVIDER_AZURE = 2;
      */
-    AZURE = 2
+    AZURE = 2,
+    /**
+     * O_AUTH_PROVIDER_GOOGLE specifies google as oauth login provider
+     *
+     * @generated from enum value: O_AUTH_PROVIDER_GOOGLE = 3;
+     */
+    GOOGLE = 3
 }
 /**
  * Role defines which role the logged in user got from the login provider
