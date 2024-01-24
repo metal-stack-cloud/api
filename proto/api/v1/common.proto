@@ -12,6 +12,8 @@ enum OAuthProvider {
   O_AUTH_PROVIDER_GITHUB = 1;
   // O_AUTH_PROVIDER_AZURE specifies azure as oauth login provider
   O_AUTH_PROVIDER_AZURE = 2;
+  // O_AUTH_PROVIDER_GOOGLE specifies google as oauth login provider
+  O_AUTH_PROVIDER_GOOGLE = 3;
 }
 
 // Role defines which role the logged in user got from the login provider
