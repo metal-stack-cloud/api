@@ -1280,26 +1280,34 @@ func (m *ProjectServiceUpdateRequest) validate(all bool) error {
 		errors = append(errors, err)
 	}
 
-	if l := utf8.RuneCountInString(m.GetName()); l < 2 || l > 64 {
-		err := ProjectServiceUpdateRequestValidationError{
-			field:  "Name",
-			reason: "value length must be between 2 and 64 runes, inclusive",
+	if m.Name != nil {
+
+		if l := utf8.RuneCountInString(m.GetName()); l < 2 || l > 64 {
+			err := ProjectServiceUpdateRequestValidationError{
+				field:  "Name",
+				reason: "value length must be between 2 and 64 runes, inclusive",
+			}
+			if !all {
+				return err
+			}
+			errors = append(errors, err)
 		}
-		if !all {
-			return err
-		}
-		errors = append(errors, err)
+
 	}
 
-	if l := utf8.RuneCountInString(m.GetDescription()); l < 2 || l > 512 {
-		err := ProjectServiceUpdateRequestValidationError{
-			field:  "Description",
-			reason: "value length must be between 2 and 512 runes, inclusive",
+	if m.Description != nil {
+
+		if l := utf8.RuneCountInString(m.GetDescription()); l < 2 || l > 512 {
+			err := ProjectServiceUpdateRequestValidationError{
+				field:  "Description",
+				reason: "value length must be between 2 and 512 runes, inclusive",
+			}
+			if !all {
+				return err
+			}
+			errors = append(errors, err)
 		}
-		if !all {
-			return err
-		}
-		errors = append(errors, err)
+
 	}
 
 	if len(errors) > 0 {

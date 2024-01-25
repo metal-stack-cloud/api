@@ -11000,7 +11000,7 @@
           "description": "ProjectServiceUpdateRequest is the request payload to update a project",
           "hasExtensions": false,
           "hasFields": true,
-          "hasOneofs": false,
+          "hasOneofs": true,
           "extensions": [],
           "fields": [
             {
@@ -11026,13 +11026,13 @@
             {
               "name": "name",
               "description": "Name of this project unique per tenant",
-              "label": "",
+              "label": "optional",
               "type": "string",
               "longType": "string",
               "fullType": "string",
               "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
+              "isoneof": true,
+              "oneofdecl": "_name",
               "defaultValue": "",
               "options": {
                 "validate.rules": [
@@ -11050,13 +11050,13 @@
             {
               "name": "description",
               "description": "Description of this project",
-              "label": "",
+              "label": "optional",
               "type": "string",
               "longType": "string",
               "fullType": "string",
               "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
+              "isoneof": true,
+              "oneofdecl": "_description",
               "defaultValue": "",
               "options": {
                 "validate.rules": [

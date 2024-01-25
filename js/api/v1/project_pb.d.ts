@@ -253,15 +253,15 @@ export declare class ProjectServiceUpdateRequest extends Message<ProjectServiceU
     /**
      * Name of this project unique per tenant
      *
-     * @generated from field: string name = 2;
+     * @generated from field: optional string name = 2;
      */
-    name: string;
+    name?: string;
     /**
      * Description of this project
      *
-     * @generated from field: string description = 3;
+     * @generated from field: optional string description = 3;
      */
-    description: string;
+    description?: string;
     constructor(data?: PartialMessage<ProjectServiceUpdateRequest>);
     static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.ProjectServiceUpdateRequest";

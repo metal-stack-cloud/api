@@ -130,12 +130,12 @@ message ProjectServiceUpdateRequest {
   // Project is the uuid of the project to get
   string project = 1 [(validate.rules).string.uuid = true];
   // Name of this project unique per tenant
-  string name = 2 [(validate.rules).string = {
+  optional string name = 2 [(validate.rules).string = {
     min_len: 2,
     max_len: 64,
   }];
   // Description of this project
-  string description = 3 [(validate.rules).string = {
+  optional string description = 3 [(validate.rules).string = {
     min_len: 2,
     max_len: 512,
   }];

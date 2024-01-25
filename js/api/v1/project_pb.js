@@ -338,18 +338,6 @@ export class ProjectServiceUpdateRequest extends Message {
          * @generated from field: string project = 1;
          */
         this.project = "";
-        /**
-         * Name of this project unique per tenant
-         *
-         * @generated from field: string name = 2;
-         */
-        this.name = "";
-        /**
-         * Description of this project
-         *
-         * @generated from field: string description = 3;
-         */
-        this.description = "";
         proto3.util.initPartial(data, this);
     }
     static fromBinary(bytes, options) {
@@ -369,8 +357,8 @@ ProjectServiceUpdateRequest.runtime = proto3;
 ProjectServiceUpdateRequest.typeName = "api.v1.ProjectServiceUpdateRequest";
 ProjectServiceUpdateRequest.fields = proto3.util.newFieldList(() => [
     { no: 1, name: "project", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 2, name: "name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 3, name: "description", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "name", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
+    { no: 3, name: "description", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
 ]);
 /**
  * ProjectServiceUpdateResponse is the response payload to update a project
