@@ -37,6 +37,17 @@ service ProjectService {
     option (project_roles) = PROJECT_ROLE_EDITOR;
     option (auditing) = AUDITING_INCLUDED;
   }
+  // Invite a user to a project
+  rpc InviteMember(ProjectServiceInviteMemberRequest) returns (ProjectServiceInviteMemberResponse) {
+    option (project_roles) = PROJECT_ROLE_OWNER;
+    option (auditing) = AUDITING_INCLUDED;
+  }
+  // RemoveMember a user from a project
+  rpc RemoveMember(ProjectServiceRemoveMemberRequest) returns (ProjectServiceRemoveMemberResponse) {
+    option (project_roles) = PROJECT_ROLE_OWNER;
+    option (auditing) = AUDITING_INCLUDED;
+  }
+  
 }
 
 // Project defines a group of resources belonging to a tenant
@@ -50,10 +61,21 @@ message Project {
   string description = 3;
   // Tenant this project belongs to
   string tenant = 4;
+  // ProjectMembers in this project
+  repeated ProjectMember project_members = 5;
   // CreatedAt the date when this project was created
   google.protobuf.Timestamp created_at = 10;
   // UpdatedAt the date when this project was updated
   google.protobuf.Timestamp updated_at = 11;
+}
+
+message ProjectMember {
+  string id = 1;  
+  ProjectRole role = 2;
+  bool pending_invitation = 3;
+
+  google.protobuf.Timestamp created_at = 10;
+ 
 }
 
 // ProjectServiceListRequest is the request payload to list all projects
@@ -146,4 +168,28 @@ message ProjectServiceUpdateRequest {
 message ProjectServiceUpdateResponse {
   // Project is the project
   Project project = 1;
+}
+
+// ProjectServiceInviteMemberRequest
+message ProjectServiceInviteMemberRequest {
+  // Project is the uuid of the project to get
+  string project = 1 [(validate.rules).string.uuid = true];
+
+  // Email of the user to invite
+  string email = 2 [(validate.rules).string.email = true];
+
+  // Role of this user in this project
+  ProjectRole role = 3;
+}
+
+message ProjectServiceInviteMemberResponse {
+  
+}
+
+message ProjectServiceRemoveMemberRequest {
+
+}
+
+message ProjectServiceRemoveMemberResponse {
+  
 }
