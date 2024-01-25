@@ -10664,6 +10664,18 @@
               "defaultValue": ""
             },
             {
+              "name": "project_members",
+              "description": "ProjectMembers in this project",
+              "label": "repeated",
+              "type": "ProjectMember",
+              "longType": "ProjectMember",
+              "fullType": "api.v1.ProjectMember",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
               "name": "created_at",
               "description": "CreatedAt the date when this project was created",
               "label": "",
@@ -10678,6 +10690,66 @@
             {
               "name": "updated_at",
               "description": "UpdatedAt the date when this project was updated",
+              "label": "",
+              "type": "Timestamp",
+              "longType": "google.protobuf.Timestamp",
+              "fullType": "google.protobuf.Timestamp",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "ProjectMember",
+          "longName": "ProjectMember",
+          "fullName": "api.v1.ProjectMember",
+          "description": "ProjectMember defines a user that participates at a project",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "id",
+              "description": "Id is the user id of the member",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "role",
+              "description": "Role is the role of the member",
+              "label": "",
+              "type": "ProjectRole",
+              "longType": "ProjectRole",
+              "fullType": "api.v1.ProjectRole",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "invite_pending",
+              "description": "InivitePending is true as long as the member has not accepted the invite",
+              "label": "",
+              "type": "bool",
+              "longType": "bool",
+              "fullType": "bool",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "created_at",
+              "description": "CreatedAt the date when the member was added to the project",
               "label": "",
               "type": "Timestamp",
               "longType": "google.protobuf.Timestamp",
@@ -10910,6 +10982,144 @@
           ]
         },
         {
+          "name": "ProjectServiceInviteRefreshRequest",
+          "longName": "ProjectServiceInviteRefreshRequest",
+          "fullName": "api.v1.ProjectServiceInviteRefreshRequest",
+          "description": "ProjectServiceInviteRefreshRequest is used to re-send an invite for a member",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "project",
+              "description": "Project is the uuid of the project",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": "",
+              "options": {
+                "validate.rules": [
+                  {
+                    "name": "string.uuid",
+                    "value": true
+                  }
+                ]
+              }
+            },
+            {
+              "name": "email",
+              "description": "Email of the user to invite",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": "",
+              "options": {
+                "validate.rules": [
+                  {
+                    "name": "string.email",
+                    "value": true
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "ProjectServiceInviteRefreshResponse",
+          "longName": "ProjectServiceInviteRefreshResponse",
+          "fullName": "api.v1.ProjectServiceInviteRefreshResponse",
+          "description": "ProjectServiceInviteRefreshResponse is the response payload to a invite member request",
+          "hasExtensions": false,
+          "hasFields": false,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": []
+        },
+        {
+          "name": "ProjectServiceInviteRequest",
+          "longName": "ProjectServiceInviteRequest",
+          "fullName": "api.v1.ProjectServiceInviteRequest",
+          "description": "ProjectServiceInviteRequest is used to invite a member to a project",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "project",
+              "description": "Project is the uuid of the project",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": "",
+              "options": {
+                "validate.rules": [
+                  {
+                    "name": "string.uuid",
+                    "value": true
+                  }
+                ]
+              }
+            },
+            {
+              "name": "email",
+              "description": "Email of the user to invite",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": "",
+              "options": {
+                "validate.rules": [
+                  {
+                    "name": "string.email",
+                    "value": true
+                  }
+                ]
+              }
+            },
+            {
+              "name": "role",
+              "description": "Role of this user in this project",
+              "label": "",
+              "type": "ProjectRole",
+              "longType": "ProjectRole",
+              "fullType": "api.v1.ProjectRole",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "ProjectServiceInviteResponse",
+          "longName": "ProjectServiceInviteResponse",
+          "fullName": "api.v1.ProjectServiceInviteResponse",
+          "description": "ProjectServiceInviteRequest is the response payload to a invite member request",
+          "hasExtensions": false,
+          "hasFields": false,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": []
+        },
+        {
           "name": "ProjectServiceListRequest",
           "longName": "ProjectServiceListRequest",
           "fullName": "api.v1.ProjectServiceListRequest",
@@ -10992,6 +11202,69 @@
               "defaultValue": ""
             }
           ]
+        },
+        {
+          "name": "ProjectServiceRemoveMemberRequest",
+          "longName": "ProjectServiceRemoveMemberRequest",
+          "fullName": "api.v1.ProjectServiceRemoveMemberRequest",
+          "description": "ProjectServiceRemoveMemberRequest is used to remove a member from a project",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "project",
+              "description": "Project is the uuid of the project",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": "",
+              "options": {
+                "validate.rules": [
+                  {
+                    "name": "string.uuid",
+                    "value": true
+                  }
+                ]
+              }
+            },
+            {
+              "name": "member_id",
+              "description": "MemberID ist the id of the member to remove from this project",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": "",
+              "options": {
+                "validate.rules": [
+                  {
+                    "name": "string.uuid",
+                    "value": true
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "ProjectServiceRemoveMemberResponse",
+          "longName": "ProjectServiceRemoveMemberResponse",
+          "fullName": "api.v1.ProjectServiceRemoveMemberResponse",
+          "description": "ProjectServiceRemoveMemberResponse is the response payload to a remove member request",
+          "hasExtensions": false,
+          "hasFields": false,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": []
         },
         {
           "name": "ProjectServiceUpdateRequest",
@@ -11163,6 +11436,42 @@
               "responseType": "ProjectServiceUpdateResponse",
               "responseLongType": "ProjectServiceUpdateResponse",
               "responseFullType": "api.v1.ProjectServiceUpdateResponse",
+              "responseStreaming": false
+            },
+            {
+              "name": "Invite",
+              "description": "Invite a user to a project",
+              "requestType": "ProjectServiceInviteRequest",
+              "requestLongType": "ProjectServiceInviteRequest",
+              "requestFullType": "api.v1.ProjectServiceInviteRequest",
+              "requestStreaming": false,
+              "responseType": "ProjectServiceInviteResponse",
+              "responseLongType": "ProjectServiceInviteResponse",
+              "responseFullType": "api.v1.ProjectServiceInviteResponse",
+              "responseStreaming": false
+            },
+            {
+              "name": "InviteRefresh",
+              "description": "InviteRefresh re-sends an invite to the user and expires the previous invitation link",
+              "requestType": "ProjectServiceInviteRefreshRequest",
+              "requestLongType": "ProjectServiceInviteRefreshRequest",
+              "requestFullType": "api.v1.ProjectServiceInviteRefreshRequest",
+              "requestStreaming": false,
+              "responseType": "ProjectServiceInviteRefreshResponse",
+              "responseLongType": "ProjectServiceInviteRefreshResponse",
+              "responseFullType": "api.v1.ProjectServiceInviteRefreshResponse",
+              "responseStreaming": false
+            },
+            {
+              "name": "RemoveMember",
+              "description": "RemoveMember a user from a project",
+              "requestType": "ProjectServiceRemoveMemberRequest",
+              "requestLongType": "ProjectServiceRemoveMemberRequest",
+              "requestFullType": "api.v1.ProjectServiceRemoveMemberRequest",
+              "requestStreaming": false,
+              "responseType": "ProjectServiceRemoveMemberResponse",
+              "responseLongType": "ProjectServiceRemoveMemberResponse",
+              "responseFullType": "api.v1.ProjectServiceRemoveMemberResponse",
               "responseStreaming": false
             }
           ]

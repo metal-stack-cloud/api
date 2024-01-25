@@ -3,7 +3,7 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import { ProjectServiceCreateRequest, ProjectServiceCreateResponse, ProjectServiceDeleteRequest, ProjectServiceDeleteResponse, ProjectServiceGetRequest, ProjectServiceGetResponse, ProjectServiceListRequest, ProjectServiceListResponse, ProjectServiceUpdateRequest, ProjectServiceUpdateResponse } from "./project_pb.js";
+import { ProjectServiceCreateRequest, ProjectServiceCreateResponse, ProjectServiceDeleteRequest, ProjectServiceDeleteResponse, ProjectServiceGetRequest, ProjectServiceGetResponse, ProjectServiceInviteRefreshRequest, ProjectServiceInviteRefreshResponse, ProjectServiceInviteRequest, ProjectServiceInviteResponse, ProjectServiceListRequest, ProjectServiceListResponse, ProjectServiceRemoveMemberRequest, ProjectServiceRemoveMemberResponse, ProjectServiceUpdateRequest, ProjectServiceUpdateResponse } from "./project_pb.js";
 import { MethodKind } from "@bufbuild/protobuf";
 
 /**
@@ -67,6 +67,39 @@ export const ProjectService = {
       name: "Update",
       I: ProjectServiceUpdateRequest,
       O: ProjectServiceUpdateResponse,
+      kind: MethodKind.Unary,
+    },
+    /**
+     * Invite a user to a project
+     *
+     * @generated from rpc api.v1.ProjectService.Invite
+     */
+    invite: {
+      name: "Invite",
+      I: ProjectServiceInviteRequest,
+      O: ProjectServiceInviteResponse,
+      kind: MethodKind.Unary,
+    },
+    /**
+     * InviteRefresh re-sends an invite to the user and expires the previous invitation link
+     *
+     * @generated from rpc api.v1.ProjectService.InviteRefresh
+     */
+    inviteRefresh: {
+      name: "InviteRefresh",
+      I: ProjectServiceInviteRefreshRequest,
+      O: ProjectServiceInviteRefreshResponse,
+      kind: MethodKind.Unary,
+    },
+    /**
+     * RemoveMember a user from a project
+     *
+     * @generated from rpc api.v1.ProjectService.RemoveMember
+     */
+    removeMember: {
+      name: "RemoveMember",
+      I: ProjectServiceRemoveMemberRequest,
+      O: ProjectServiceRemoveMemberResponse,
       kind: MethodKind.Unary,
     },
   }

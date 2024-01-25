@@ -106,6 +106,66 @@ func (_m *ProjectServiceClient) Get(_a0 context.Context, _a1 *connect.Request[ap
 	return r0, r1
 }
 
+// Invite provides a mock function with given fields: _a0, _a1
+func (_m *ProjectServiceClient) Invite(_a0 context.Context, _a1 *connect.Request[apiv1.ProjectServiceInviteRequest]) (*connect.Response[apiv1.ProjectServiceInviteResponse], error) {
+	ret := _m.Called(_a0, _a1)
+
+	if len(ret) == 0 {
+		panic("no return value specified for Invite")
+	}
+
+	var r0 *connect.Response[apiv1.ProjectServiceInviteResponse]
+	var r1 error
+	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[apiv1.ProjectServiceInviteRequest]) (*connect.Response[apiv1.ProjectServiceInviteResponse], error)); ok {
+		return rf(_a0, _a1)
+	}
+	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[apiv1.ProjectServiceInviteRequest]) *connect.Response[apiv1.ProjectServiceInviteResponse]); ok {
+		r0 = rf(_a0, _a1)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*connect.Response[apiv1.ProjectServiceInviteResponse])
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(context.Context, *connect.Request[apiv1.ProjectServiceInviteRequest]) error); ok {
+		r1 = rf(_a0, _a1)
+	} else {
+		r1 = ret.Error(1)
+	}
+
+	return r0, r1
+}
+
+// InviteRefresh provides a mock function with given fields: _a0, _a1
+func (_m *ProjectServiceClient) InviteRefresh(_a0 context.Context, _a1 *connect.Request[apiv1.ProjectServiceInviteRefreshRequest]) (*connect.Response[apiv1.ProjectServiceInviteRefreshResponse], error) {
+	ret := _m.Called(_a0, _a1)
+
+	if len(ret) == 0 {
+		panic("no return value specified for InviteRefresh")
+	}
+
+	var r0 *connect.Response[apiv1.ProjectServiceInviteRefreshResponse]
+	var r1 error
+	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[apiv1.ProjectServiceInviteRefreshRequest]) (*connect.Response[apiv1.ProjectServiceInviteRefreshResponse], error)); ok {
+		return rf(_a0, _a1)
+	}
+	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[apiv1.ProjectServiceInviteRefreshRequest]) *connect.Response[apiv1.ProjectServiceInviteRefreshResponse]); ok {
+		r0 = rf(_a0, _a1)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*connect.Response[apiv1.ProjectServiceInviteRefreshResponse])
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(context.Context, *connect.Request[apiv1.ProjectServiceInviteRefreshRequest]) error); ok {
+		r1 = rf(_a0, _a1)
+	} else {
+		r1 = ret.Error(1)
+	}
+
+	return r0, r1
+}
+
 // List provides a mock function with given fields: _a0, _a1
 func (_m *ProjectServiceClient) List(_a0 context.Context, _a1 *connect.Request[apiv1.ProjectServiceListRequest]) (*connect.Response[apiv1.ProjectServiceListResponse], error) {
 	ret := _m.Called(_a0, _a1)
@@ -128,6 +188,36 @@ func (_m *ProjectServiceClient) List(_a0 context.Context, _a1 *connect.Request[a
 	}
 
 	if rf, ok := ret.Get(1).(func(context.Context, *connect.Request[apiv1.ProjectServiceListRequest]) error); ok {
+		r1 = rf(_a0, _a1)
+	} else {
+		r1 = ret.Error(1)
+	}
+
+	return r0, r1
+}
+
+// RemoveMember provides a mock function with given fields: _a0, _a1
+func (_m *ProjectServiceClient) RemoveMember(_a0 context.Context, _a1 *connect.Request[apiv1.ProjectServiceRemoveMemberRequest]) (*connect.Response[apiv1.ProjectServiceRemoveMemberResponse], error) {
+	ret := _m.Called(_a0, _a1)
+
+	if len(ret) == 0 {
+		panic("no return value specified for RemoveMember")
+	}
+
+	var r0 *connect.Response[apiv1.ProjectServiceRemoveMemberResponse]
+	var r1 error
+	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[apiv1.ProjectServiceRemoveMemberRequest]) (*connect.Response[apiv1.ProjectServiceRemoveMemberResponse], error)); ok {
+		return rf(_a0, _a1)
+	}
+	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[apiv1.ProjectServiceRemoveMemberRequest]) *connect.Response[apiv1.ProjectServiceRemoveMemberResponse]); ok {
+		r0 = rf(_a0, _a1)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*connect.Response[apiv1.ProjectServiceRemoveMemberResponse])
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(context.Context, *connect.Request[apiv1.ProjectServiceRemoveMemberRequest]) error); ok {
 		r1 = rf(_a0, _a1)
 	} else {
 		r1 = ret.Error(1)

@@ -38,7 +38,12 @@ service ProjectService {
     option (auditing) = AUDITING_INCLUDED;
   }
   // Invite a user to a project
-  rpc InviteMember(ProjectServiceInviteMemberRequest) returns (ProjectServiceInviteMemberResponse) {
+  rpc Invite(ProjectServiceInviteRequest) returns (ProjectServiceInviteResponse) {
+    option (project_roles) = PROJECT_ROLE_OWNER;
+    option (auditing) = AUDITING_INCLUDED;
+  }
+  // InviteRefresh re-sends an invite to the user and expires the previous invitation link
+  rpc InviteRefresh(ProjectServiceInviteRefreshRequest) returns (ProjectServiceInviteRefreshResponse) {
     option (project_roles) = PROJECT_ROLE_OWNER;
     option (auditing) = AUDITING_INCLUDED;
   }
@@ -47,7 +52,6 @@ service ProjectService {
     option (project_roles) = PROJECT_ROLE_OWNER;
     option (auditing) = AUDITING_INCLUDED;
   }
-  
 }
 
 // Project defines a group of resources belonging to a tenant
@@ -69,13 +73,16 @@ message Project {
   google.protobuf.Timestamp updated_at = 11;
 }
 
+// ProjectMember defines a user that participates at a project
 message ProjectMember {
-  string id = 1;  
+  // Id is the user id of the member
+  string id = 1;
+  // Role is the role of the member
   ProjectRole role = 2;
-  bool pending_invitation = 3;
-
+  // InivitePending is true as long as the member has not accepted the invite
+  bool invite_pending = 3;
+  // CreatedAt the date when the member was added to the project
   google.protobuf.Timestamp created_at = 10;
- 
 }
 
 // ProjectServiceListRequest is the request payload to list all projects
@@ -170,9 +177,9 @@ message ProjectServiceUpdateResponse {
   Project project = 1;
 }
 
-// ProjectServiceInviteMemberRequest
-message ProjectServiceInviteMemberRequest {
-  // Project is the uuid of the project to get
+// ProjectServiceInviteRequest is used to invite a member to a project
+message ProjectServiceInviteRequest {
+  // Project is the uuid of the project
   string project = 1 [(validate.rules).string.uuid = true];
 
   // Email of the user to invite
@@ -182,14 +189,29 @@ message ProjectServiceInviteMemberRequest {
   ProjectRole role = 3;
 }
 
-message ProjectServiceInviteMemberResponse {
-  
+// ProjectServiceInviteRequest is the response payload to a invite member request
+message ProjectServiceInviteResponse {}
+
+// ProjectServiceInviteRefreshRequest is used to re-send an invite for a member
+message ProjectServiceInviteRefreshRequest {
+  // Project is the uuid of the project
+  string project = 1 [(validate.rules).string.uuid = true];
+
+  // Email of the user to invite
+  string email = 2 [(validate.rules).string.email = true];
 }
 
+// ProjectServiceInviteRefreshResponse is the response payload to a invite member request
+message ProjectServiceInviteRefreshResponse {}
+
+// ProjectServiceRemoveMemberRequest is used to remove a member from a project
 message ProjectServiceRemoveMemberRequest {
+  // Project is the uuid of the project
+  string project = 1 [(validate.rules).string.uuid = true];
 
+  // MemberID ist the id of the member to remove from this project
+  string member_id = 2 [(validate.rules).string.uuid = true];
 }
 
-message ProjectServiceRemoveMemberResponse {
-  
-}
+// ProjectServiceRemoveMemberResponse is the response payload to a remove member request
+message ProjectServiceRemoveMemberResponse {}
