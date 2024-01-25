@@ -186,3 +186,217 @@ ProjectServiceGetResponse.typeName = "api.v1.ProjectServiceGetResponse";
 ProjectServiceGetResponse.fields = proto3.util.newFieldList(() => [
     { no: 1, name: "project", kind: "message", T: Project },
 ]);
+/**
+ * ProjectServiceCreateRequest is the request payload to Create a project
+ *
+ * @generated from message api.v1.ProjectServiceCreateRequest
+ */
+export class ProjectServiceCreateRequest extends Message {
+    constructor(data) {
+        super();
+        /**
+         * Tenant is the owner of this project
+         *
+         * @generated from field: string tenant = 1;
+         */
+        this.tenant = "";
+        /**
+         * Name of this project
+         *
+         * @generated from field: string name = 2;
+         */
+        this.name = "";
+        /**
+         * Description of this project
+         *
+         * @generated from field: string description = 3;
+         */
+        this.description = "";
+        proto3.util.initPartial(data, this);
+    }
+    static fromBinary(bytes, options) {
+        return new ProjectServiceCreateRequest().fromBinary(bytes, options);
+    }
+    static fromJson(jsonValue, options) {
+        return new ProjectServiceCreateRequest().fromJson(jsonValue, options);
+    }
+    static fromJsonString(jsonString, options) {
+        return new ProjectServiceCreateRequest().fromJsonString(jsonString, options);
+    }
+    static equals(a, b) {
+        return proto3.util.equals(ProjectServiceCreateRequest, a, b);
+    }
+}
+ProjectServiceCreateRequest.runtime = proto3;
+ProjectServiceCreateRequest.typeName = "api.v1.ProjectServiceCreateRequest";
+ProjectServiceCreateRequest.fields = proto3.util.newFieldList(() => [
+    { no: 1, name: "tenant", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 3, name: "description", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+]);
+/**
+ * ProjectServiceCreateResponse is the response payload of creation of a project
+ *
+ * @generated from message api.v1.ProjectServiceCreateResponse
+ */
+export class ProjectServiceCreateResponse extends Message {
+    constructor(data) {
+        super();
+        proto3.util.initPartial(data, this);
+    }
+    static fromBinary(bytes, options) {
+        return new ProjectServiceCreateResponse().fromBinary(bytes, options);
+    }
+    static fromJson(jsonValue, options) {
+        return new ProjectServiceCreateResponse().fromJson(jsonValue, options);
+    }
+    static fromJsonString(jsonString, options) {
+        return new ProjectServiceCreateResponse().fromJsonString(jsonString, options);
+    }
+    static equals(a, b) {
+        return proto3.util.equals(ProjectServiceCreateResponse, a, b);
+    }
+}
+ProjectServiceCreateResponse.runtime = proto3;
+ProjectServiceCreateResponse.typeName = "api.v1.ProjectServiceCreateResponse";
+ProjectServiceCreateResponse.fields = proto3.util.newFieldList(() => [
+    { no: 1, name: "project", kind: "message", T: Project },
+]);
+/**
+ * ProjectServiceDeleteRequest is the request payload to delete a project
+ *
+ * @generated from message api.v1.ProjectServiceDeleteRequest
+ */
+export class ProjectServiceDeleteRequest extends Message {
+    constructor(data) {
+        super();
+        /**
+         * Project is the uuid of the project to get
+         *
+         * @generated from field: string project = 1;
+         */
+        this.project = "";
+        proto3.util.initPartial(data, this);
+    }
+    static fromBinary(bytes, options) {
+        return new ProjectServiceDeleteRequest().fromBinary(bytes, options);
+    }
+    static fromJson(jsonValue, options) {
+        return new ProjectServiceDeleteRequest().fromJson(jsonValue, options);
+    }
+    static fromJsonString(jsonString, options) {
+        return new ProjectServiceDeleteRequest().fromJsonString(jsonString, options);
+    }
+    static equals(a, b) {
+        return proto3.util.equals(ProjectServiceDeleteRequest, a, b);
+    }
+}
+ProjectServiceDeleteRequest.runtime = proto3;
+ProjectServiceDeleteRequest.typeName = "api.v1.ProjectServiceDeleteRequest";
+ProjectServiceDeleteRequest.fields = proto3.util.newFieldList(() => [
+    { no: 1, name: "project", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+]);
+/**
+ * ProjectServiceDeleteResponse is the response payload to delete a project
+ *
+ * @generated from message api.v1.ProjectServiceDeleteResponse
+ */
+export class ProjectServiceDeleteResponse extends Message {
+    constructor(data) {
+        super();
+        proto3.util.initPartial(data, this);
+    }
+    static fromBinary(bytes, options) {
+        return new ProjectServiceDeleteResponse().fromBinary(bytes, options);
+    }
+    static fromJson(jsonValue, options) {
+        return new ProjectServiceDeleteResponse().fromJson(jsonValue, options);
+    }
+    static fromJsonString(jsonString, options) {
+        return new ProjectServiceDeleteResponse().fromJsonString(jsonString, options);
+    }
+    static equals(a, b) {
+        return proto3.util.equals(ProjectServiceDeleteResponse, a, b);
+    }
+}
+ProjectServiceDeleteResponse.runtime = proto3;
+ProjectServiceDeleteResponse.typeName = "api.v1.ProjectServiceDeleteResponse";
+ProjectServiceDeleteResponse.fields = proto3.util.newFieldList(() => [
+    { no: 1, name: "project", kind: "message", T: Project },
+]);
+/**
+ * ProjectServiceUpdateRequest is the request payload to update a project
+ *
+ * @generated from message api.v1.ProjectServiceUpdateRequest
+ */
+export class ProjectServiceUpdateRequest extends Message {
+    constructor(data) {
+        super();
+        /**
+         * Project is the uuid of the project to get
+         *
+         * @generated from field: string project = 1;
+         */
+        this.project = "";
+        /**
+         * Name of this project
+         *
+         * @generated from field: string name = 2;
+         */
+        this.name = "";
+        /**
+         * Description of this project
+         *
+         * @generated from field: string description = 3;
+         */
+        this.description = "";
+        proto3.util.initPartial(data, this);
+    }
+    static fromBinary(bytes, options) {
+        return new ProjectServiceUpdateRequest().fromBinary(bytes, options);
+    }
+    static fromJson(jsonValue, options) {
+        return new ProjectServiceUpdateRequest().fromJson(jsonValue, options);
+    }
+    static fromJsonString(jsonString, options) {
+        return new ProjectServiceUpdateRequest().fromJsonString(jsonString, options);
+    }
+    static equals(a, b) {
+        return proto3.util.equals(ProjectServiceUpdateRequest, a, b);
+    }
+}
+ProjectServiceUpdateRequest.runtime = proto3;
+ProjectServiceUpdateRequest.typeName = "api.v1.ProjectServiceUpdateRequest";
+ProjectServiceUpdateRequest.fields = proto3.util.newFieldList(() => [
+    { no: 1, name: "project", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 3, name: "description", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+]);
+/**
+ * ProjectServiceUpdateResponse is the response payload to update a project
+ *
+ * @generated from message api.v1.ProjectServiceUpdateResponse
+ */
+export class ProjectServiceUpdateResponse extends Message {
+    constructor(data) {
+        super();
+        proto3.util.initPartial(data, this);
+    }
+    static fromBinary(bytes, options) {
+        return new ProjectServiceUpdateResponse().fromBinary(bytes, options);
+    }
+    static fromJson(jsonValue, options) {
+        return new ProjectServiceUpdateResponse().fromJson(jsonValue, options);
+    }
+    static fromJsonString(jsonString, options) {
+        return new ProjectServiceUpdateResponse().fromJsonString(jsonString, options);
+    }
+    static equals(a, b) {
+        return proto3.util.equals(ProjectServiceUpdateResponse, a, b);
+    }
+}
+ProjectServiceUpdateResponse.runtime = proto3;
+ProjectServiceUpdateResponse.typeName = "api.v1.ProjectServiceUpdateResponse";
+ProjectServiceUpdateResponse.fields = proto3.util.newFieldList(() => [
+    { no: 1, name: "project", kind: "message", T: Project },
+]);

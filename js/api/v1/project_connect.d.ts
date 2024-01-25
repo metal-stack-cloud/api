@@ -1,4 +1,4 @@
-import { ProjectServiceGetRequest, ProjectServiceGetResponse, ProjectServiceListRequest, ProjectServiceListResponse } from "./project_pb.js";
+import { ProjectServiceCreateRequest, ProjectServiceCreateResponse, ProjectServiceDeleteRequest, ProjectServiceDeleteResponse, ProjectServiceGetRequest, ProjectServiceGetResponse, ProjectServiceListRequest, ProjectServiceListResponse, ProjectServiceUpdateRequest, ProjectServiceUpdateResponse } from "./project_pb.js";
 import { MethodKind } from "@bufbuild/protobuf";
 /**
  * ProjectService serves project related functions
@@ -28,6 +28,39 @@ export declare const ProjectService: {
             readonly name: "Get";
             readonly I: typeof ProjectServiceGetRequest;
             readonly O: typeof ProjectServiceGetResponse;
+            readonly kind: MethodKind.Unary;
+        };
+        /**
+         * Create a project
+         *
+         * @generated from rpc api.v1.ProjectService.Create
+         */
+        readonly create: {
+            readonly name: "Create";
+            readonly I: typeof ProjectServiceCreateRequest;
+            readonly O: typeof ProjectServiceCreateResponse;
+            readonly kind: MethodKind.Unary;
+        };
+        /**
+         * Delete a project
+         *
+         * @generated from rpc api.v1.ProjectService.Delete
+         */
+        readonly delete: {
+            readonly name: "Delete";
+            readonly I: typeof ProjectServiceDeleteRequest;
+            readonly O: typeof ProjectServiceDeleteResponse;
+            readonly kind: MethodKind.Unary;
+        };
+        /**
+         * Update a project
+         *
+         * @generated from rpc api.v1.ProjectService.Update
+         */
+        readonly update: {
+            readonly name: "Update";
+            readonly I: typeof ProjectServiceUpdateRequest;
+            readonly O: typeof ProjectServiceUpdateResponse;
             readonly kind: MethodKind.Unary;
         };
     };

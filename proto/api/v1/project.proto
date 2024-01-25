@@ -20,6 +20,24 @@ service ProjectService {
     option (project_roles) = PROJECT_ROLE_VIEWER;
     option (auditing) = AUDITING_EXCLUDED;
   }
+  // Create a project
+  rpc Create(ProjectServiceCreateRequest) returns (ProjectServiceCreateResponse) {
+    option (tenant_roles) = TENANT_ROLE_OWNER;
+    option (tenant_roles) = TENANT_ROLE_EDITOR;
+    option (auditing) = AUDITING_INCLUDED;
+  }
+  // Delete a project
+  rpc Delete(ProjectServiceDeleteRequest) returns (ProjectServiceDeleteResponse) {
+    option (project_roles) = PROJECT_ROLE_OWNER;
+    option (project_roles) = PROJECT_ROLE_EDITOR;
+    option (auditing) = AUDITING_INCLUDED;
+  }
+  // Update a project
+  rpc Update(ProjectServiceUpdateRequest) returns (ProjectServiceUpdateResponse) {
+    option (project_roles) = PROJECT_ROLE_OWNER;
+    option (project_roles) = PROJECT_ROLE_EDITOR;
+    option (auditing) = AUDITING_INCLUDED;
+  }
 }
 
 // Project defines a group of resources belonging to a tenant
@@ -27,7 +45,7 @@ service ProjectService {
 message Project {
   // Uuid of this project
   string uuid = 1;
-  // Name of this project
+  // Name of this project must be unique per tenant
   string name = 2;
   // Description of this project
   string description = 3;
@@ -67,6 +85,65 @@ message ProjectServiceGetRequest {
 
 // ProjectServiceGetResponse is the response payload to get a projects
 message ProjectServiceGetResponse {
+  // Project is the project
+  Project project = 1;
+}
+
+// ProjectServiceCreateRequest is the request payload to Create a project
+message ProjectServiceCreateRequest {
+  // Tenant is the owner of this project
+  string tenant = 1 [(validate.rules).string = {
+    min_len: 2,
+    max_len: 128,
+  }];
+  // Name of this project, unique per tenant
+  string name = 2 [(validate.rules).string = {
+    min_len: 2,
+    max_len: 64,
+  }];
+  // Description of this project
+  string description = 3 [(validate.rules).string = {
+    min_len: 2,
+    max_len: 512,
+  }];
+}
+
+// ProjectServiceCreateResponse is the response payload of creation of a project
+message ProjectServiceCreateResponse {
+  // Project is the project
+  Project project = 1;
+}
+
+// ProjectServiceDeleteRequest is the request payload to delete a project
+message ProjectServiceDeleteRequest {
+  // Project is the uuid of the project to get
+  string project = 1 [(validate.rules).string.uuid = true];
+}
+
+// ProjectServiceDeleteResponse is the response payload to delete a project
+message ProjectServiceDeleteResponse {
+  // Project is the project
+  Project project = 1;
+}
+
+// ProjectServiceUpdateRequest is the request payload to update a project
+message ProjectServiceUpdateRequest {
+  // Project is the uuid of the project to get
+  string project = 1 [(validate.rules).string.uuid = true];
+  // Name of this project unique per tenant
+  string name = 2 [(validate.rules).string = {
+    min_len: 2,
+    max_len: 64,
+  }];
+  // Description of this project
+  string description = 3 [(validate.rules).string = {
+    min_len: 2,
+    max_len: 512,
+  }];
+}
+
+// ProjectServiceUpdateResponse is the response payload to update a project
+message ProjectServiceUpdateResponse {
   // Project is the project
   Project project = 1;
 }

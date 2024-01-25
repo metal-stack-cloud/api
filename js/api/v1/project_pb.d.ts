@@ -142,3 +142,153 @@ export declare class ProjectServiceGetResponse extends Message<ProjectServiceGet
     static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ProjectServiceGetResponse;
     static equals(a: ProjectServiceGetResponse | PlainMessage<ProjectServiceGetResponse> | undefined, b: ProjectServiceGetResponse | PlainMessage<ProjectServiceGetResponse> | undefined): boolean;
 }
+/**
+ * ProjectServiceCreateRequest is the request payload to Create a project
+ *
+ * @generated from message api.v1.ProjectServiceCreateRequest
+ */
+export declare class ProjectServiceCreateRequest extends Message<ProjectServiceCreateRequest> {
+    /**
+     * Tenant is the owner of this project
+     *
+     * @generated from field: string tenant = 1;
+     */
+    tenant: string;
+    /**
+     * Name of this project
+     *
+     * @generated from field: string name = 2;
+     */
+    name: string;
+    /**
+     * Description of this project
+     *
+     * @generated from field: string description = 3;
+     */
+    description: string;
+    constructor(data?: PartialMessage<ProjectServiceCreateRequest>);
+    static readonly runtime: typeof proto3;
+    static readonly typeName = "api.v1.ProjectServiceCreateRequest";
+    static readonly fields: FieldList;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ProjectServiceCreateRequest;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ProjectServiceCreateRequest;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ProjectServiceCreateRequest;
+    static equals(a: ProjectServiceCreateRequest | PlainMessage<ProjectServiceCreateRequest> | undefined, b: ProjectServiceCreateRequest | PlainMessage<ProjectServiceCreateRequest> | undefined): boolean;
+}
+/**
+ * ProjectServiceCreateResponse is the response payload of creation of a project
+ *
+ * @generated from message api.v1.ProjectServiceCreateResponse
+ */
+export declare class ProjectServiceCreateResponse extends Message<ProjectServiceCreateResponse> {
+    /**
+     * Project is the project
+     *
+     * @generated from field: api.v1.Project project = 1;
+     */
+    project?: Project;
+    constructor(data?: PartialMessage<ProjectServiceCreateResponse>);
+    static readonly runtime: typeof proto3;
+    static readonly typeName = "api.v1.ProjectServiceCreateResponse";
+    static readonly fields: FieldList;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ProjectServiceCreateResponse;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ProjectServiceCreateResponse;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ProjectServiceCreateResponse;
+    static equals(a: ProjectServiceCreateResponse | PlainMessage<ProjectServiceCreateResponse> | undefined, b: ProjectServiceCreateResponse | PlainMessage<ProjectServiceCreateResponse> | undefined): boolean;
+}
+/**
+ * ProjectServiceDeleteRequest is the request payload to delete a project
+ *
+ * @generated from message api.v1.ProjectServiceDeleteRequest
+ */
+export declare class ProjectServiceDeleteRequest extends Message<ProjectServiceDeleteRequest> {
+    /**
+     * Project is the uuid of the project to get
+     *
+     * @generated from field: string project = 1;
+     */
+    project: string;
+    constructor(data?: PartialMessage<ProjectServiceDeleteRequest>);
+    static readonly runtime: typeof proto3;
+    static readonly typeName = "api.v1.ProjectServiceDeleteRequest";
+    static readonly fields: FieldList;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ProjectServiceDeleteRequest;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ProjectServiceDeleteRequest;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ProjectServiceDeleteRequest;
+    static equals(a: ProjectServiceDeleteRequest | PlainMessage<ProjectServiceDeleteRequest> | undefined, b: ProjectServiceDeleteRequest | PlainMessage<ProjectServiceDeleteRequest> | undefined): boolean;
+}
+/**
+ * ProjectServiceDeleteResponse is the response payload to delete a project
+ *
+ * @generated from message api.v1.ProjectServiceDeleteResponse
+ */
+export declare class ProjectServiceDeleteResponse extends Message<ProjectServiceDeleteResponse> {
+    /**
+     * Project is the project
+     *
+     * @generated from field: api.v1.Project project = 1;
+     */
+    project?: Project;
+    constructor(data?: PartialMessage<ProjectServiceDeleteResponse>);
+    static readonly runtime: typeof proto3;
+    static readonly typeName = "api.v1.ProjectServiceDeleteResponse";
+    static readonly fields: FieldList;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ProjectServiceDeleteResponse;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ProjectServiceDeleteResponse;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ProjectServiceDeleteResponse;
+    static equals(a: ProjectServiceDeleteResponse | PlainMessage<ProjectServiceDeleteResponse> | undefined, b: ProjectServiceDeleteResponse | PlainMessage<ProjectServiceDeleteResponse> | undefined): boolean;
+}
+/**
+ * ProjectServiceUpdateRequest is the request payload to update a project
+ *
+ * @generated from message api.v1.ProjectServiceUpdateRequest
+ */
+export declare class ProjectServiceUpdateRequest extends Message<ProjectServiceUpdateRequest> {
+    /**
+     * Project is the uuid of the project to get
+     *
+     * @generated from field: string project = 1;
+     */
+    project: string;
+    /**
+     * Name of this project
+     *
+     * @generated from field: string name = 2;
+     */
+    name: string;
+    /**
+     * Description of this project
+     *
+     * @generated from field: string description = 3;
+     */
+    description: string;
+    constructor(data?: PartialMessage<ProjectServiceUpdateRequest>);
+    static readonly runtime: typeof proto3;
+    static readonly typeName = "api.v1.ProjectServiceUpdateRequest";
+    static readonly fields: FieldList;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ProjectServiceUpdateRequest;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ProjectServiceUpdateRequest;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ProjectServiceUpdateRequest;
+    static equals(a: ProjectServiceUpdateRequest | PlainMessage<ProjectServiceUpdateRequest> | undefined, b: ProjectServiceUpdateRequest | PlainMessage<ProjectServiceUpdateRequest> | undefined): boolean;
+}
+/**
+ * ProjectServiceUpdateResponse is the response payload to update a project
+ *
+ * @generated from message api.v1.ProjectServiceUpdateResponse
+ */
+export declare class ProjectServiceUpdateResponse extends Message<ProjectServiceUpdateResponse> {
+    /**
+     * Project is the project
+     *
+     * @generated from field: api.v1.Project project = 1;
+     */
+    project?: Project;
+    constructor(data?: PartialMessage<ProjectServiceUpdateResponse>);
+    static readonly runtime: typeof proto3;
+    static readonly typeName = "api.v1.ProjectServiceUpdateResponse";
+    static readonly fields: FieldList;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ProjectServiceUpdateResponse;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ProjectServiceUpdateResponse;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ProjectServiceUpdateResponse;
+    static equals(a: ProjectServiceUpdateResponse | PlainMessage<ProjectServiceUpdateResponse> | undefined, b: ProjectServiceUpdateResponse | PlainMessage<ProjectServiceUpdateResponse> | undefined): boolean;
+}
