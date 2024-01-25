@@ -134,7 +134,6 @@ func GetServicePermissions() *ServicePermissions {
 					"/api.v1.IPService/List",
 					"/api.v1.IPService/Delete",
 					"/api.v1.ProjectService/Get",
-					"/api.v1.ProjectService/Delete",
 					"/api.v1.ProjectService/Update",
 					"/api.v1.VolumeService/Get",
 					"/api.v1.VolumeService/List",

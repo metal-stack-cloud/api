@@ -21,7 +21,7 @@ export class Project extends Message<Project> {
   uuid = "";
 
   /**
-   * Name of this project
+   * Name of this project must be unique per tenant
    *
    * @generated from field: string name = 2;
    */
@@ -274,7 +274,7 @@ export class ProjectServiceCreateRequest extends Message<ProjectServiceCreateReq
   tenant = "";
 
   /**
-   * Name of this project
+   * Name of this project, unique per tenant
    *
    * @generated from field: string name = 2;
    */
@@ -454,7 +454,7 @@ export class ProjectServiceUpdateRequest extends Message<ProjectServiceUpdateReq
   project = "";
 
   /**
-   * Name of this project
+   * Name of this project unique per tenant
    *
    * @generated from field: string name = 2;
    */

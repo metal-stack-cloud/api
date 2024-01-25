@@ -10629,7 +10629,7 @@
             },
             {
               "name": "name",
-              "description": "Name of this project",
+              "description": "Name of this project must be unique per tenant",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -10725,7 +10725,7 @@
             },
             {
               "name": "name",
-              "description": "Name of this project",
+              "description": "Name of this project, unique per tenant",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -11025,7 +11025,7 @@
             },
             {
               "name": "name",
-              "description": "Name of this project",
+              "description": "Name of this project unique per tenant",
               "label": "",
               "type": "string",
               "longType": "string",

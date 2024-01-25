@@ -29,7 +29,6 @@ service ProjectService {
   // Delete a project
   rpc Delete(ProjectServiceDeleteRequest) returns (ProjectServiceDeleteResponse) {
     option (project_roles) = PROJECT_ROLE_OWNER;
-    option (project_roles) = PROJECT_ROLE_EDITOR;
     option (auditing) = AUDITING_INCLUDED;
   }
   // Update a project
