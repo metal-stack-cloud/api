@@ -10629,7 +10629,7 @@
             },
             {
               "name": "name",
-              "description": "Name of this project",
+              "description": "Name of this project must be unique per tenant",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -10682,6 +10682,170 @@
               "type": "Timestamp",
               "longType": "google.protobuf.Timestamp",
               "fullType": "google.protobuf.Timestamp",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "ProjectServiceCreateRequest",
+          "longName": "ProjectServiceCreateRequest",
+          "fullName": "api.v1.ProjectServiceCreateRequest",
+          "description": "ProjectServiceCreateRequest is the request payload to Create a project",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "login",
+              "description": "Login is the tenant of this project\nTODO: is login really a good name?",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": "",
+              "options": {
+                "validate.rules": [
+                  {
+                    "name": "string.min_len",
+                    "value": 2
+                  },
+                  {
+                    "name": "string.max_len",
+                    "value": 128
+                  }
+                ]
+              }
+            },
+            {
+              "name": "name",
+              "description": "Name of this project, unique per tenant",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": "",
+              "options": {
+                "validate.rules": [
+                  {
+                    "name": "string.min_len",
+                    "value": 2
+                  },
+                  {
+                    "name": "string.max_len",
+                    "value": 64
+                  }
+                ]
+              }
+            },
+            {
+              "name": "description",
+              "description": "Description of this project",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": "",
+              "options": {
+                "validate.rules": [
+                  {
+                    "name": "string.min_len",
+                    "value": 2
+                  },
+                  {
+                    "name": "string.max_len",
+                    "value": 512
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "ProjectServiceCreateResponse",
+          "longName": "ProjectServiceCreateResponse",
+          "fullName": "api.v1.ProjectServiceCreateResponse",
+          "description": "ProjectServiceCreateResponse is the response payload of creation of a project",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "project",
+              "description": "Project is the project",
+              "label": "",
+              "type": "Project",
+              "longType": "Project",
+              "fullType": "api.v1.Project",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "ProjectServiceDeleteRequest",
+          "longName": "ProjectServiceDeleteRequest",
+          "fullName": "api.v1.ProjectServiceDeleteRequest",
+          "description": "ProjectServiceDeleteRequest is the request payload to delete a project",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "project",
+              "description": "Project is the uuid of the project to get",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": "",
+              "options": {
+                "validate.rules": [
+                  {
+                    "name": "string.uuid",
+                    "value": true
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "ProjectServiceDeleteResponse",
+          "longName": "ProjectServiceDeleteResponse",
+          "fullName": "api.v1.ProjectServiceDeleteResponse",
+          "description": "ProjectServiceDeleteResponse is the response payload to delete a project",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "project",
+              "description": "Project is the project",
+              "label": "",
+              "type": "Project",
+              "longType": "Project",
+              "fullType": "api.v1.Project",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
@@ -10828,6 +10992,110 @@
               "defaultValue": ""
             }
           ]
+        },
+        {
+          "name": "ProjectServiceUpdateRequest",
+          "longName": "ProjectServiceUpdateRequest",
+          "fullName": "api.v1.ProjectServiceUpdateRequest",
+          "description": "ProjectServiceUpdateRequest is the request payload to update a project",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": true,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "project",
+              "description": "Project is the uuid of the project to get",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": "",
+              "options": {
+                "validate.rules": [
+                  {
+                    "name": "string.uuid",
+                    "value": true
+                  }
+                ]
+              }
+            },
+            {
+              "name": "name",
+              "description": "Name of this project unique per tenant",
+              "label": "optional",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "_name",
+              "defaultValue": "",
+              "options": {
+                "validate.rules": [
+                  {
+                    "name": "string.min_len",
+                    "value": 2
+                  },
+                  {
+                    "name": "string.max_len",
+                    "value": 64
+                  }
+                ]
+              }
+            },
+            {
+              "name": "description",
+              "description": "Description of this project",
+              "label": "optional",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "_description",
+              "defaultValue": "",
+              "options": {
+                "validate.rules": [
+                  {
+                    "name": "string.min_len",
+                    "value": 2
+                  },
+                  {
+                    "name": "string.max_len",
+                    "value": 512
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "ProjectServiceUpdateResponse",
+          "longName": "ProjectServiceUpdateResponse",
+          "fullName": "api.v1.ProjectServiceUpdateResponse",
+          "description": "ProjectServiceUpdateResponse is the response payload to update a project",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "project",
+              "description": "Project is the project",
+              "label": "",
+              "type": "Project",
+              "longType": "Project",
+              "fullType": "api.v1.Project",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
         }
       ],
       "services": [
@@ -10859,6 +11127,42 @@
               "responseType": "ProjectServiceGetResponse",
               "responseLongType": "ProjectServiceGetResponse",
               "responseFullType": "api.v1.ProjectServiceGetResponse",
+              "responseStreaming": false
+            },
+            {
+              "name": "Create",
+              "description": "Create a project",
+              "requestType": "ProjectServiceCreateRequest",
+              "requestLongType": "ProjectServiceCreateRequest",
+              "requestFullType": "api.v1.ProjectServiceCreateRequest",
+              "requestStreaming": false,
+              "responseType": "ProjectServiceCreateResponse",
+              "responseLongType": "ProjectServiceCreateResponse",
+              "responseFullType": "api.v1.ProjectServiceCreateResponse",
+              "responseStreaming": false
+            },
+            {
+              "name": "Delete",
+              "description": "Delete a project",
+              "requestType": "ProjectServiceDeleteRequest",
+              "requestLongType": "ProjectServiceDeleteRequest",
+              "requestFullType": "api.v1.ProjectServiceDeleteRequest",
+              "requestStreaming": false,
+              "responseType": "ProjectServiceDeleteResponse",
+              "responseLongType": "ProjectServiceDeleteResponse",
+              "responseFullType": "api.v1.ProjectServiceDeleteResponse",
+              "responseStreaming": false
+            },
+            {
+              "name": "Update",
+              "description": "Update a project",
+              "requestType": "ProjectServiceUpdateRequest",
+              "requestLongType": "ProjectServiceUpdateRequest",
+              "requestFullType": "api.v1.ProjectServiceUpdateRequest",
+              "requestStreaming": false,
+              "responseType": "ProjectServiceUpdateResponse",
+              "responseLongType": "ProjectServiceUpdateResponse",
+              "responseFullType": "api.v1.ProjectServiceUpdateResponse",
               "responseStreaming": false
             }
           ]

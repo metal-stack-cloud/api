@@ -3,7 +3,7 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import { ProjectServiceGetRequest, ProjectServiceGetResponse, ProjectServiceListRequest, ProjectServiceListResponse } from "./project_pb.js";
+import { ProjectServiceCreateRequest, ProjectServiceCreateResponse, ProjectServiceDeleteRequest, ProjectServiceDeleteResponse, ProjectServiceGetRequest, ProjectServiceGetResponse, ProjectServiceListRequest, ProjectServiceListResponse, ProjectServiceUpdateRequest, ProjectServiceUpdateResponse } from "./project_pb.js";
 import { MethodKind } from "@bufbuild/protobuf";
 
 /**
@@ -34,6 +34,39 @@ export const ProjectService = {
       name: "Get",
       I: ProjectServiceGetRequest,
       O: ProjectServiceGetResponse,
+      kind: MethodKind.Unary,
+    },
+    /**
+     * Create a project
+     *
+     * @generated from rpc api.v1.ProjectService.Create
+     */
+    create: {
+      name: "Create",
+      I: ProjectServiceCreateRequest,
+      O: ProjectServiceCreateResponse,
+      kind: MethodKind.Unary,
+    },
+    /**
+     * Delete a project
+     *
+     * @generated from rpc api.v1.ProjectService.Delete
+     */
+    delete: {
+      name: "Delete",
+      I: ProjectServiceDeleteRequest,
+      O: ProjectServiceDeleteResponse,
+      kind: MethodKind.Unary,
+    },
+    /**
+     * Update a project
+     *
+     * @generated from rpc api.v1.ProjectService.Update
+     */
+    update: {
+      name: "Update",
+      I: ProjectServiceUpdateRequest,
+      O: ProjectServiceUpdateResponse,
       kind: MethodKind.Unary,
     },
   }
