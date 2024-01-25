@@ -267,11 +267,12 @@ export class ProjectServiceGetResponse extends Message<ProjectServiceGetResponse
  */
 export class ProjectServiceCreateRequest extends Message<ProjectServiceCreateRequest> {
   /**
-   * Tenant is the owner of this project
+   * Login is the tenant of this project
+   * TODO: is login really a good name?
    *
-   * @generated from field: string tenant = 1;
+   * @generated from field: string login = 1;
    */
-  tenant = "";
+  login = "";
 
   /**
    * Name of this project, unique per tenant
@@ -295,7 +296,7 @@ export class ProjectServiceCreateRequest extends Message<ProjectServiceCreateReq
   static readonly runtime: typeof proto3 = proto3;
   static readonly typeName = "api.v1.ProjectServiceCreateRequest";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "tenant", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 1, name: "login", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 2, name: "name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 3, name: "description", kind: "scalar", T: 9 /* ScalarType.STRING */ },
   ]);
@@ -324,12 +325,11 @@ export class ProjectServiceCreateRequest extends Message<ProjectServiceCreateReq
  */
 export class ProjectServiceCreateResponse extends Message<ProjectServiceCreateResponse> {
   /**
-   * Login is the tenant of the project to create
-   * TODO: is login really a good name?
+   * Project is the project
    *
-   * @generated from field: string login = 1;
+   * @generated from field: api.v1.Project project = 1;
    */
-  login = "";
+  project?: Project;
 
   constructor(data?: PartialMessage<ProjectServiceCreateResponse>) {
     super();
@@ -339,7 +339,7 @@ export class ProjectServiceCreateResponse extends Message<ProjectServiceCreateRe
   static readonly runtime: typeof proto3 = proto3;
   static readonly typeName = "api.v1.ProjectServiceCreateResponse";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "login", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 1, name: "project", kind: "message", T: Project },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ProjectServiceCreateResponse {

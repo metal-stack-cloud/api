@@ -195,11 +195,12 @@ export class ProjectServiceCreateRequest extends Message {
     constructor(data) {
         super();
         /**
-         * Tenant is the owner of this project
+         * Login is the tenant of this project
+         * TODO: is login really a good name?
          *
-         * @generated from field: string tenant = 1;
+         * @generated from field: string login = 1;
          */
-        this.tenant = "";
+        this.login = "";
         /**
          * Name of this project, unique per tenant
          *
@@ -230,7 +231,7 @@ export class ProjectServiceCreateRequest extends Message {
 ProjectServiceCreateRequest.runtime = proto3;
 ProjectServiceCreateRequest.typeName = "api.v1.ProjectServiceCreateRequest";
 ProjectServiceCreateRequest.fields = proto3.util.newFieldList(() => [
-    { no: 1, name: "tenant", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 1, name: "login", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 2, name: "name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 3, name: "description", kind: "scalar", T: 9 /* ScalarType.STRING */ },
 ]);
@@ -242,13 +243,6 @@ ProjectServiceCreateRequest.fields = proto3.util.newFieldList(() => [
 export class ProjectServiceCreateResponse extends Message {
     constructor(data) {
         super();
-        /**
-         * Login is the tenant of the project to create
-         * TODO: is login really a good name?
-         *
-         * @generated from field: string login = 1;
-         */
-        this.login = "";
         proto3.util.initPartial(data, this);
     }
     static fromBinary(bytes, options) {
@@ -267,7 +261,7 @@ export class ProjectServiceCreateResponse extends Message {
 ProjectServiceCreateResponse.runtime = proto3;
 ProjectServiceCreateResponse.typeName = "api.v1.ProjectServiceCreateResponse";
 ProjectServiceCreateResponse.fields = proto3.util.newFieldList(() => [
-    { no: 1, name: "login", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 1, name: "project", kind: "message", T: Project },
 ]);
 /**
  * ProjectServiceDeleteRequest is the request payload to delete a project

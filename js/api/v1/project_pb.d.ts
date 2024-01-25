@@ -149,11 +149,12 @@ export declare class ProjectServiceGetResponse extends Message<ProjectServiceGet
  */
 export declare class ProjectServiceCreateRequest extends Message<ProjectServiceCreateRequest> {
     /**
-     * Tenant is the owner of this project
+     * Login is the tenant of this project
+     * TODO: is login really a good name?
      *
-     * @generated from field: string tenant = 1;
+     * @generated from field: string login = 1;
      */
-    tenant: string;
+    login: string;
     /**
      * Name of this project, unique per tenant
      *
@@ -182,12 +183,11 @@ export declare class ProjectServiceCreateRequest extends Message<ProjectServiceC
  */
 export declare class ProjectServiceCreateResponse extends Message<ProjectServiceCreateResponse> {
     /**
-     * Login is the tenant of the project to create
-     * TODO: is login really a good name?
+     * Project is the project
      *
-     * @generated from field: string login = 1;
+     * @generated from field: api.v1.Project project = 1;
      */
-    login: string;
+    project?: Project;
     constructor(data?: PartialMessage<ProjectServiceCreateResponse>);
     static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.ProjectServiceCreateResponse";

@@ -10700,8 +10700,8 @@
           "extensions": [],
           "fields": [
             {
-              "name": "tenant",
-              "description": "Tenant is the owner of this project",
+              "name": "login",
+              "description": "Login is the tenant of this project\nTODO: is login really a good name?",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -10784,28 +10784,16 @@
           "extensions": [],
           "fields": [
             {
-              "name": "login",
-              "description": "Login is the tenant of the project to create\nTODO: is login really a good name?",
+              "name": "project",
+              "description": "Project is the project",
               "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
+              "type": "Project",
+              "longType": "Project",
+              "fullType": "api.v1.Project",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.min_len",
-                    "value": 2
-                  },
-                  {
-                    "name": "string.max_len",
-                    "value": 128
-                  }
-                ]
-              }
+              "defaultValue": ""
             }
           ]
         },

@@ -90,8 +90,9 @@ message ProjectServiceGetResponse {
 
 // ProjectServiceCreateRequest is the request payload to Create a project
 message ProjectServiceCreateRequest {
-  // Tenant is the owner of this project
-  string tenant = 1 [(validate.rules).string = {
+  // Login is the tenant of this project
+  // TODO: is login really a good name?
+  string login = 1 [(validate.rules).string = {
     min_len: 2,
     max_len: 128,
   }];
@@ -109,12 +110,8 @@ message ProjectServiceCreateRequest {
 
 // ProjectServiceCreateResponse is the response payload of creation of a project
 message ProjectServiceCreateResponse {
-  // Login is the tenant of the project to create
-  // TODO: is login really a good name?
-  string login = 1 [(validate.rules).string = {
-    min_len: 2,
-    max_len: 128,
-  }];
+  // Project is the project
+  Project project = 1;
 }
 
 // ProjectServiceDeleteRequest is the request payload to delete a project
