@@ -324,11 +324,12 @@ export class ProjectServiceCreateRequest extends Message<ProjectServiceCreateReq
  */
 export class ProjectServiceCreateResponse extends Message<ProjectServiceCreateResponse> {
   /**
-   * Project is the project
+   * Login is the tenant of the project to create
+   * TODO: is login really a good name?
    *
-   * @generated from field: api.v1.Project project = 1;
+   * @generated from field: string login = 1;
    */
-  project?: Project;
+  login = "";
 
   constructor(data?: PartialMessage<ProjectServiceCreateResponse>) {
     super();
@@ -338,7 +339,7 @@ export class ProjectServiceCreateResponse extends Message<ProjectServiceCreateRe
   static readonly runtime: typeof proto3 = proto3;
   static readonly typeName = "api.v1.ProjectServiceCreateResponse";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "project", kind: "message", T: Project },
+    { no: 1, name: "login", kind: "scalar", T: 9 /* ScalarType.STRING */ },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ProjectServiceCreateResponse {

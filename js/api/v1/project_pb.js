@@ -242,6 +242,13 @@ ProjectServiceCreateRequest.fields = proto3.util.newFieldList(() => [
 export class ProjectServiceCreateResponse extends Message {
     constructor(data) {
         super();
+        /**
+         * Login is the tenant of the project to create
+         * TODO: is login really a good name?
+         *
+         * @generated from field: string login = 1;
+         */
+        this.login = "";
         proto3.util.initPartial(data, this);
     }
     static fromBinary(bytes, options) {
@@ -260,7 +267,7 @@ export class ProjectServiceCreateResponse extends Message {
 ProjectServiceCreateResponse.runtime = proto3;
 ProjectServiceCreateResponse.typeName = "api.v1.ProjectServiceCreateResponse";
 ProjectServiceCreateResponse.fields = proto3.util.newFieldList(() => [
-    { no: 1, name: "project", kind: "message", T: Project },
+    { no: 1, name: "login", kind: "scalar", T: 9 /* ScalarType.STRING */ },
 ]);
 /**
  * ProjectServiceDeleteRequest is the request payload to delete a project

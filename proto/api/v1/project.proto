@@ -109,8 +109,12 @@ message ProjectServiceCreateRequest {
 
 // ProjectServiceCreateResponse is the response payload of creation of a project
 message ProjectServiceCreateResponse {
-  // Project is the project
-  Project project = 1;
+  // Login is the tenant of the project to create
+  // TODO: is login really a good name?
+  string login = 1 [(validate.rules).string = {
+    min_len: 2,
+    max_len: 128,
+  }];
 }
 
 // ProjectServiceDeleteRequest is the request payload to delete a project

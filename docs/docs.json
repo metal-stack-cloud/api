@@ -10784,16 +10784,28 @@
           "extensions": [],
           "fields": [
             {
-              "name": "project",
-              "description": "Project is the project",
+              "name": "login",
+              "description": "Login is the tenant of the project to create\nTODO: is login really a good name?",
               "label": "",
-              "type": "Project",
-              "longType": "Project",
-              "fullType": "api.v1.Project",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": ""
+              "defaultValue": "",
+              "options": {
+                "validate.rules": [
+                  {
+                    "name": "string.min_len",
+                    "value": 2
+                  },
+                  {
+                    "name": "string.max_len",
+                    "value": 128
+                  }
+                ]
+              }
             }
           ]
         },

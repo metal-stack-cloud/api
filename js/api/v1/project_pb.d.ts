@@ -182,11 +182,12 @@ export declare class ProjectServiceCreateRequest extends Message<ProjectServiceC
  */
 export declare class ProjectServiceCreateResponse extends Message<ProjectServiceCreateResponse> {
     /**
-     * Project is the project
+     * Login is the tenant of the project to create
+     * TODO: is login really a good name?
      *
-     * @generated from field: api.v1.Project project = 1;
+     * @generated from field: string login = 1;
      */
-    project?: Project;
+    login: string;
     constructor(data?: PartialMessage<ProjectServiceCreateResponse>);
     static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.ProjectServiceCreateResponse";
