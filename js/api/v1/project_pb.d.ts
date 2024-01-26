@@ -545,6 +545,18 @@ export declare class ProjectServiceInviteAcceptRequest extends Message<ProjectSe
  * @generated from message api.v1.ProjectServiceInviteAcceptResponse
  */
 export declare class ProjectServiceInviteAcceptResponse extends Message<ProjectServiceInviteAcceptResponse> {
+    /**
+     * Project ID of the project joined
+     *
+     * @generated from field: string project = 1;
+     */
+    project: string;
+    /**
+     * ProjectName if the project joined
+     *
+     * @generated from field: string project_name = 2;
+     */
+    projectName: string;
     constructor(data?: PartialMessage<ProjectServiceInviteAcceptResponse>);
     static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.ProjectServiceInviteAcceptResponse";

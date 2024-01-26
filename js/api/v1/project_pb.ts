@@ -989,6 +989,20 @@ export class ProjectServiceInviteAcceptRequest extends Message<ProjectServiceInv
  * @generated from message api.v1.ProjectServiceInviteAcceptResponse
  */
 export class ProjectServiceInviteAcceptResponse extends Message<ProjectServiceInviteAcceptResponse> {
+  /**
+   * Project ID of the project joined
+   *
+   * @generated from field: string project = 1;
+   */
+  project = "";
+
+  /**
+   * ProjectName if the project joined
+   *
+   * @generated from field: string project_name = 2;
+   */
+  projectName = "";
+
   constructor(data?: PartialMessage<ProjectServiceInviteAcceptResponse>) {
     super();
     proto3.util.initPartial(data, this);
@@ -997,6 +1011,8 @@ export class ProjectServiceInviteAcceptResponse extends Message<ProjectServiceIn
   static readonly runtime: typeof proto3 = proto3;
   static readonly typeName = "api.v1.ProjectServiceInviteAcceptResponse";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "project", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "project_name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ProjectServiceInviteAcceptResponse {

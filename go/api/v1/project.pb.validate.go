@@ -2730,6 +2730,10 @@ func (m *ProjectServiceInviteAcceptResponse) validate(all bool) error {
 
 	var errors []error
 
+	// no validation rules for Project
+
+	// no validation rules for ProjectName
+
 	if len(errors) > 0 {
 		return ProjectServiceInviteAcceptResponseMultiError(errors)
 	}

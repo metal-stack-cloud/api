@@ -250,7 +250,12 @@ message ProjectServiceInviteAcceptRequest {
 }
 
 // ProjectServiceInvitesListResponse is the response payload to a accept invite request
-message ProjectServiceInviteAcceptResponse {}
+message ProjectServiceInviteAcceptResponse {
+  // Project ID of the project joined
+  string project = 1;
+  // ProjectName if the project joined
+  string project_name = 2;
+}
 
 // ProjectServiceInviteDeleteRequest is the request payload to a delete invite
 message ProjectServiceInviteDeleteRequest {

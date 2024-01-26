@@ -750,6 +750,18 @@ ProjectServiceInviteAcceptRequest.fields = proto3.util.newFieldList(() => [
 export class ProjectServiceInviteAcceptResponse extends Message {
     constructor(data) {
         super();
+        /**
+         * Project ID of the project joined
+         *
+         * @generated from field: string project = 1;
+         */
+        this.project = "";
+        /**
+         * ProjectName if the project joined
+         *
+         * @generated from field: string project_name = 2;
+         */
+        this.projectName = "";
         proto3.util.initPartial(data, this);
     }
     static fromBinary(bytes, options) {
@@ -767,7 +779,10 @@ export class ProjectServiceInviteAcceptResponse extends Message {
 }
 ProjectServiceInviteAcceptResponse.runtime = proto3;
 ProjectServiceInviteAcceptResponse.typeName = "api.v1.ProjectServiceInviteAcceptResponse";
-ProjectServiceInviteAcceptResponse.fields = proto3.util.newFieldList(() => []);
+ProjectServiceInviteAcceptResponse.fields = proto3.util.newFieldList(() => [
+    { no: 1, name: "project", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "project_name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+]);
 /**
  * ProjectServiceInviteDeleteRequest is the request payload to a delete invite
  *

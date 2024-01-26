@@ -11071,10 +11071,35 @@
           "fullName": "api.v1.ProjectServiceInviteAcceptResponse",
           "description": "ProjectServiceInvitesListResponse is the response payload to a accept invite request",
           "hasExtensions": false,
-          "hasFields": false,
+          "hasFields": true,
           "hasOneofs": false,
           "extensions": [],
-          "fields": []
+          "fields": [
+            {
+              "name": "project",
+              "description": "Project ID of the project joined",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "project_name",
+              "description": "ProjectName if the project joined",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
         },
         {
           "name": "ProjectServiceInviteDeleteRequest",
