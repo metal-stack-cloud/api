@@ -120,11 +120,11 @@ export class ProjectInvite extends Message {
     constructor(data) {
         super();
         /**
-         * Id is the id of the invite, typically part of the url
+         * Secret is the secret part of the invite, typically part of the url
          *
-         * @generated from field: string id = 1;
+         * @generated from field: string secret = 1;
          */
-        this.id = "";
+        this.secret = "";
         /**
          * Project is the project id for which this invite was created
          *
@@ -161,7 +161,7 @@ export class ProjectInvite extends Message {
 ProjectInvite.runtime = proto3;
 ProjectInvite.typeName = "api.v1.ProjectInvite";
 ProjectInvite.fields = proto3.util.newFieldList(() => [
-    { no: 1, name: "id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 1, name: "secret", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 2, name: "project", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 3, name: "role", kind: "enum", T: proto3.getEnumType(ProjectRole) },
     { no: 4, name: "joined", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
@@ -545,12 +545,13 @@ export class ProjectServiceInviteResponse extends Message {
     constructor(data) {
         super();
         /**
-         * InviteLink which can be sent to a potential user
-         * sample link from tailscale  https://login.tailscale.com/uinv/i3c143aaba75e512e
+         * Secret which can be sent to a potential user
+         * can appended to the invitation endpoint at our api server like
+         * console.metalstack.cloud/invite/<secret>
          *
-         * @generated from field: string invite_link = 1;
+         * @generated from field: string secret = 1;
          */
-        this.inviteLink = "";
+        this.secret = "";
         proto3.util.initPartial(data, this);
     }
     static fromBinary(bytes, options) {
@@ -569,14 +570,15 @@ export class ProjectServiceInviteResponse extends Message {
 ProjectServiceInviteResponse.runtime = proto3;
 ProjectServiceInviteResponse.typeName = "api.v1.ProjectServiceInviteResponse";
 ProjectServiceInviteResponse.fields = proto3.util.newFieldList(() => [
-    { no: 1, name: "invite_link", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 1, name: "secret", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 10, name: "expires_at", kind: "message", T: Timestamp },
 ]);
 /**
- * ProjectServiceListInvitesRequest is the request payload to a list invites request
+ * ProjectServiceInvitesListRequest is the request payload to a list invites request
  *
- * @generated from message api.v1.ProjectServiceListInvitesRequest
+ * @generated from message api.v1.ProjectServiceInvitesListRequest
  */
-export class ProjectServiceListInvitesRequest extends Message {
+export class ProjectServiceInvitesListRequest extends Message {
     constructor(data) {
         super();
         /**
@@ -588,29 +590,29 @@ export class ProjectServiceListInvitesRequest extends Message {
         proto3.util.initPartial(data, this);
     }
     static fromBinary(bytes, options) {
-        return new ProjectServiceListInvitesRequest().fromBinary(bytes, options);
+        return new ProjectServiceInvitesListRequest().fromBinary(bytes, options);
     }
     static fromJson(jsonValue, options) {
-        return new ProjectServiceListInvitesRequest().fromJson(jsonValue, options);
+        return new ProjectServiceInvitesListRequest().fromJson(jsonValue, options);
     }
     static fromJsonString(jsonString, options) {
-        return new ProjectServiceListInvitesRequest().fromJsonString(jsonString, options);
+        return new ProjectServiceInvitesListRequest().fromJsonString(jsonString, options);
     }
     static equals(a, b) {
-        return proto3.util.equals(ProjectServiceListInvitesRequest, a, b);
+        return proto3.util.equals(ProjectServiceInvitesListRequest, a, b);
     }
 }
-ProjectServiceListInvitesRequest.runtime = proto3;
-ProjectServiceListInvitesRequest.typeName = "api.v1.ProjectServiceListInvitesRequest";
-ProjectServiceListInvitesRequest.fields = proto3.util.newFieldList(() => [
+ProjectServiceInvitesListRequest.runtime = proto3;
+ProjectServiceInvitesListRequest.typeName = "api.v1.ProjectServiceInvitesListRequest";
+ProjectServiceInvitesListRequest.fields = proto3.util.newFieldList(() => [
     { no: 1, name: "project", kind: "scalar", T: 9 /* ScalarType.STRING */ },
 ]);
 /**
- * ProjectServiceListInvitesResponse is the response payload to a list invites request
+ * ProjectServiceInvitesListResponse is the response payload to a list invites request
  *
- * @generated from message api.v1.ProjectServiceListInvitesResponse
+ * @generated from message api.v1.ProjectServiceInvitesListResponse
  */
-export class ProjectServiceListInvitesResponse extends Message {
+export class ProjectServiceInvitesListResponse extends Message {
     constructor(data) {
         super();
         /**
@@ -622,21 +624,21 @@ export class ProjectServiceListInvitesResponse extends Message {
         proto3.util.initPartial(data, this);
     }
     static fromBinary(bytes, options) {
-        return new ProjectServiceListInvitesResponse().fromBinary(bytes, options);
+        return new ProjectServiceInvitesListResponse().fromBinary(bytes, options);
     }
     static fromJson(jsonValue, options) {
-        return new ProjectServiceListInvitesResponse().fromJson(jsonValue, options);
+        return new ProjectServiceInvitesListResponse().fromJson(jsonValue, options);
     }
     static fromJsonString(jsonString, options) {
-        return new ProjectServiceListInvitesResponse().fromJsonString(jsonString, options);
+        return new ProjectServiceInvitesListResponse().fromJsonString(jsonString, options);
     }
     static equals(a, b) {
-        return proto3.util.equals(ProjectServiceListInvitesResponse, a, b);
+        return proto3.util.equals(ProjectServiceInvitesListResponse, a, b);
     }
 }
-ProjectServiceListInvitesResponse.runtime = proto3;
-ProjectServiceListInvitesResponse.typeName = "api.v1.ProjectServiceListInvitesResponse";
-ProjectServiceListInvitesResponse.fields = proto3.util.newFieldList(() => [
+ProjectServiceInvitesListResponse.runtime = proto3;
+ProjectServiceInvitesListResponse.typeName = "api.v1.ProjectServiceInvitesListResponse";
+ProjectServiceInvitesListResponse.fields = proto3.util.newFieldList(() => [
     { no: 1, name: "invites", kind: "message", T: ProjectInvite, repeated: true },
 ]);
 /**
@@ -706,3 +708,130 @@ export class ProjectServiceRemoveMemberResponse extends Message {
 ProjectServiceRemoveMemberResponse.runtime = proto3;
 ProjectServiceRemoveMemberResponse.typeName = "api.v1.ProjectServiceRemoveMemberResponse";
 ProjectServiceRemoveMemberResponse.fields = proto3.util.newFieldList(() => []);
+/**
+ * ProjectServiceInviteAcceptRequest is the request payload to a accept invite request
+ *
+ * @generated from message api.v1.ProjectServiceInviteAcceptRequest
+ */
+export class ProjectServiceInviteAcceptRequest extends Message {
+    constructor(data) {
+        super();
+        /**
+         * Secret is the invitation secret part of the invitation url
+         *
+         * @generated from field: string secret = 1;
+         */
+        this.secret = "";
+        proto3.util.initPartial(data, this);
+    }
+    static fromBinary(bytes, options) {
+        return new ProjectServiceInviteAcceptRequest().fromBinary(bytes, options);
+    }
+    static fromJson(jsonValue, options) {
+        return new ProjectServiceInviteAcceptRequest().fromJson(jsonValue, options);
+    }
+    static fromJsonString(jsonString, options) {
+        return new ProjectServiceInviteAcceptRequest().fromJsonString(jsonString, options);
+    }
+    static equals(a, b) {
+        return proto3.util.equals(ProjectServiceInviteAcceptRequest, a, b);
+    }
+}
+ProjectServiceInviteAcceptRequest.runtime = proto3;
+ProjectServiceInviteAcceptRequest.typeName = "api.v1.ProjectServiceInviteAcceptRequest";
+ProjectServiceInviteAcceptRequest.fields = proto3.util.newFieldList(() => [
+    { no: 1, name: "secret", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+]);
+/**
+ * ProjectServiceInvitesListResponse is the response payload to a accept invite request
+ *
+ * @generated from message api.v1.ProjectServiceInviteAcceptResponse
+ */
+export class ProjectServiceInviteAcceptResponse extends Message {
+    constructor(data) {
+        super();
+        proto3.util.initPartial(data, this);
+    }
+    static fromBinary(bytes, options) {
+        return new ProjectServiceInviteAcceptResponse().fromBinary(bytes, options);
+    }
+    static fromJson(jsonValue, options) {
+        return new ProjectServiceInviteAcceptResponse().fromJson(jsonValue, options);
+    }
+    static fromJsonString(jsonString, options) {
+        return new ProjectServiceInviteAcceptResponse().fromJsonString(jsonString, options);
+    }
+    static equals(a, b) {
+        return proto3.util.equals(ProjectServiceInviteAcceptResponse, a, b);
+    }
+}
+ProjectServiceInviteAcceptResponse.runtime = proto3;
+ProjectServiceInviteAcceptResponse.typeName = "api.v1.ProjectServiceInviteAcceptResponse";
+ProjectServiceInviteAcceptResponse.fields = proto3.util.newFieldList(() => []);
+/**
+ * ProjectServiceInviteDeleteRequest is the request payload to a delete invite
+ *
+ * @generated from message api.v1.ProjectServiceInviteDeleteRequest
+ */
+export class ProjectServiceInviteDeleteRequest extends Message {
+    constructor(data) {
+        super();
+        /**
+         * Project is the uuid of the project
+         *
+         * @generated from field: string project = 1;
+         */
+        this.project = "";
+        /**
+         * Secret of the invite to delete
+         *
+         * @generated from field: string secret = 2;
+         */
+        this.secret = "";
+        proto3.util.initPartial(data, this);
+    }
+    static fromBinary(bytes, options) {
+        return new ProjectServiceInviteDeleteRequest().fromBinary(bytes, options);
+    }
+    static fromJson(jsonValue, options) {
+        return new ProjectServiceInviteDeleteRequest().fromJson(jsonValue, options);
+    }
+    static fromJsonString(jsonString, options) {
+        return new ProjectServiceInviteDeleteRequest().fromJsonString(jsonString, options);
+    }
+    static equals(a, b) {
+        return proto3.util.equals(ProjectServiceInviteDeleteRequest, a, b);
+    }
+}
+ProjectServiceInviteDeleteRequest.runtime = proto3;
+ProjectServiceInviteDeleteRequest.typeName = "api.v1.ProjectServiceInviteDeleteRequest";
+ProjectServiceInviteDeleteRequest.fields = proto3.util.newFieldList(() => [
+    { no: 1, name: "project", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "secret", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+]);
+/**
+ * ProjectServiceInviteDeleteResponse is the response payload of a delete invite request
+ *
+ * @generated from message api.v1.ProjectServiceInviteDeleteResponse
+ */
+export class ProjectServiceInviteDeleteResponse extends Message {
+    constructor(data) {
+        super();
+        proto3.util.initPartial(data, this);
+    }
+    static fromBinary(bytes, options) {
+        return new ProjectServiceInviteDeleteResponse().fromBinary(bytes, options);
+    }
+    static fromJson(jsonValue, options) {
+        return new ProjectServiceInviteDeleteResponse().fromJson(jsonValue, options);
+    }
+    static fromJsonString(jsonString, options) {
+        return new ProjectServiceInviteDeleteResponse().fromJsonString(jsonString, options);
+    }
+    static equals(a, b) {
+        return proto3.util.equals(ProjectServiceInviteDeleteResponse, a, b);
+    }
+}
+ProjectServiceInviteDeleteResponse.runtime = proto3;
+ProjectServiceInviteDeleteResponse.typeName = "api.v1.ProjectServiceInviteDeleteResponse";
+ProjectServiceInviteDeleteResponse.fields = proto3.util.newFieldList(() => []);

@@ -37,18 +37,28 @@ service ProjectService {
     option (project_roles) = PROJECT_ROLE_EDITOR;
     option (auditing) = AUDITING_INCLUDED;
   }
+  // RemoveMember a user from a project
+  rpc RemoveMember(ProjectServiceRemoveMemberRequest) returns (ProjectServiceRemoveMemberResponse) {
+    option (project_roles) = PROJECT_ROLE_OWNER;
+    option (auditing) = AUDITING_INCLUDED;
+  }
   // Invite a user to a project
   rpc Invite(ProjectServiceInviteRequest) returns (ProjectServiceInviteResponse) {
     option (project_roles) = PROJECT_ROLE_OWNER;
     option (auditing) = AUDITING_INCLUDED;
   }
-  // ListInvites list all invites to a project
-  rpc ListInvites(ProjectServiceListInvitesRequest) returns (ProjectServiceListInvitesResponse) {
+  // InviteAccept is called from a user to accept a invitation
+  rpc InviteAccept(ProjectServiceInviteAcceptRequest) returns (ProjectServiceInviteAcceptResponse) {
+    option (visibility) = VISIBILITY_SELF;
+    option (auditing) = AUDITING_INCLUDED;
+  }
+  // InviteDelete deletes a pending invitation
+  rpc InviteDelete(ProjectServiceInviteDeleteRequest) returns (ProjectServiceInviteDeleteResponse) {
     option (project_roles) = PROJECT_ROLE_OWNER;
     option (auditing) = AUDITING_INCLUDED;
   }
-  // RemoveMember a user from a project
-  rpc RemoveMember(ProjectServiceRemoveMemberRequest) returns (ProjectServiceRemoveMemberResponse) {
+  // InvitesList list all invites to a project
+  rpc InvitesList(ProjectServiceInvitesListRequest) returns (ProjectServiceInvitesListResponse) {
     option (project_roles) = PROJECT_ROLE_OWNER;
     option (auditing) = AUDITING_INCLUDED;
   }
@@ -85,8 +95,8 @@ message ProjectMember {
 
 // ProjectInvite defines invite to project
 message ProjectInvite {
-  // Id is the id of the invite, typically part of the url
-  string id = 1;
+  // Secret is the secret part of the invite, typically part of the url
+  string secret = 1;
   // Project is the project id for which this invite was created
   string project = 2;
   // Role is the role in this project the user will get after accepting the invitation
@@ -200,19 +210,23 @@ message ProjectServiceInviteRequest {
 
 // ProjectServiceInviteRequest is the response payload to a invite member request
 message ProjectServiceInviteResponse {
-  // InviteLink which can be sent to a potential user
-  // sample link from tailscale  https://login.tailscale.com/uinv/i3c143aaba75e512e
-  string invite_link = 1;
+  // Secret which can be sent to a potential user
+  // can appended to the invitation endpoint at our api server like
+  // console.metalstack.cloud/invite/<secret>
+  string secret = 1;
+
+  // ExpiresAt the date when this invite expires, will be deleted in the backend after this date
+  google.protobuf.Timestamp expires_at = 10;
 }
 
-// ProjectServiceListInvitesRequest is the request payload to a list invites request
-message ProjectServiceListInvitesRequest {
+// ProjectServiceInvitesListRequest is the request payload to a list invites request
+message ProjectServiceInvitesListRequest {
   // Project is the uuid of the project
   string project = 1 [(validate.rules).string.uuid = true];
 }
 
-// ProjectServiceListInvitesResponse is the response payload to a list invites request
-message ProjectServiceListInvitesResponse {
+// ProjectServiceInvitesListResponse is the response payload to a list invites request
+message ProjectServiceInvitesListResponse {
   // Invites not already accepted the invitation to this project
   repeated ProjectInvite invites = 1;
 }
@@ -228,3 +242,23 @@ message ProjectServiceRemoveMemberRequest {
 
 // ProjectServiceRemoveMemberResponse is the response payload to a remove member request
 message ProjectServiceRemoveMemberResponse {}
+
+// ProjectServiceInviteAcceptRequest is the request payload to a accept invite request
+message ProjectServiceInviteAcceptRequest {
+  // Secret is the invitation secret part of the invitation url
+  string secret = 1;
+}
+
+// ProjectServiceInvitesListResponse is the response payload to a accept invite request
+message ProjectServiceInviteAcceptResponse {}
+
+// ProjectServiceInviteDeleteRequest is the request payload to a delete invite
+message ProjectServiceInviteDeleteRequest {
+  // Project is the uuid of the project
+  string project = 1 [(validate.rules).string.uuid = true];
+  // Secret of the invite to delete
+  string secret = 2;
+}
+
+// ProjectServiceInviteDeleteResponse is the response payload of a delete invite request
+message ProjectServiceInviteDeleteResponse {}

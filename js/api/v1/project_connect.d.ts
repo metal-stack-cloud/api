@@ -1,4 +1,4 @@
-import { ProjectServiceCreateRequest, ProjectServiceCreateResponse, ProjectServiceDeleteRequest, ProjectServiceDeleteResponse, ProjectServiceGetRequest, ProjectServiceGetResponse, ProjectServiceInviteRequest, ProjectServiceInviteResponse, ProjectServiceListInvitesRequest, ProjectServiceListInvitesResponse, ProjectServiceListRequest, ProjectServiceListResponse, ProjectServiceRemoveMemberRequest, ProjectServiceRemoveMemberResponse, ProjectServiceUpdateRequest, ProjectServiceUpdateResponse } from "./project_pb.js";
+import { ProjectServiceCreateRequest, ProjectServiceCreateResponse, ProjectServiceDeleteRequest, ProjectServiceDeleteResponse, ProjectServiceGetRequest, ProjectServiceGetResponse, ProjectServiceInviteAcceptRequest, ProjectServiceInviteAcceptResponse, ProjectServiceInviteDeleteRequest, ProjectServiceInviteDeleteResponse, ProjectServiceInviteRequest, ProjectServiceInviteResponse, ProjectServiceInvitesListRequest, ProjectServiceInvitesListResponse, ProjectServiceListRequest, ProjectServiceListResponse, ProjectServiceRemoveMemberRequest, ProjectServiceRemoveMemberResponse, ProjectServiceUpdateRequest, ProjectServiceUpdateResponse } from "./project_pb.js";
 import { MethodKind } from "@bufbuild/protobuf";
 /**
  * ProjectService serves project related functions
@@ -64,6 +64,17 @@ export declare const ProjectService: {
             readonly kind: MethodKind.Unary;
         };
         /**
+         * RemoveMember a user from a project
+         *
+         * @generated from rpc api.v1.ProjectService.RemoveMember
+         */
+        readonly removeMember: {
+            readonly name: "RemoveMember";
+            readonly I: typeof ProjectServiceRemoveMemberRequest;
+            readonly O: typeof ProjectServiceRemoveMemberResponse;
+            readonly kind: MethodKind.Unary;
+        };
+        /**
          * Invite a user to a project
          *
          * @generated from rpc api.v1.ProjectService.Invite
@@ -75,25 +86,36 @@ export declare const ProjectService: {
             readonly kind: MethodKind.Unary;
         };
         /**
-         * ListInvites list all invites to a project
+         * InviteAccept is called from a user to accept a invitation
          *
-         * @generated from rpc api.v1.ProjectService.ListInvites
+         * @generated from rpc api.v1.ProjectService.InviteAccept
          */
-        readonly listInvites: {
-            readonly name: "ListInvites";
-            readonly I: typeof ProjectServiceListInvitesRequest;
-            readonly O: typeof ProjectServiceListInvitesResponse;
+        readonly inviteAccept: {
+            readonly name: "InviteAccept";
+            readonly I: typeof ProjectServiceInviteAcceptRequest;
+            readonly O: typeof ProjectServiceInviteAcceptResponse;
             readonly kind: MethodKind.Unary;
         };
         /**
-         * RemoveMember a user from a project
+         * InviteDelete deletes a pending invitation
          *
-         * @generated from rpc api.v1.ProjectService.RemoveMember
+         * @generated from rpc api.v1.ProjectService.InviteDelete
          */
-        readonly removeMember: {
-            readonly name: "RemoveMember";
-            readonly I: typeof ProjectServiceRemoveMemberRequest;
-            readonly O: typeof ProjectServiceRemoveMemberResponse;
+        readonly inviteDelete: {
+            readonly name: "InviteDelete";
+            readonly I: typeof ProjectServiceInviteDeleteRequest;
+            readonly O: typeof ProjectServiceInviteDeleteResponse;
+            readonly kind: MethodKind.Unary;
+        };
+        /**
+         * InvitesList list all invites to a project
+         *
+         * @generated from rpc api.v1.ProjectService.InvitesList
+         */
+        readonly invitesList: {
+            readonly name: "InvitesList";
+            readonly I: typeof ProjectServiceInvitesListRequest;
+            readonly O: typeof ProjectServiceInvitesListResponse;
             readonly kind: MethodKind.Unary;
         };
     };
