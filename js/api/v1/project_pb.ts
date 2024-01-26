@@ -189,9 +189,16 @@ export class ProjectInvite extends Message<ProjectInvite> {
   joined = false;
 
   /**
+   * ExpiresAt the date when this invite expires
+   *
+   * @generated from field: google.protobuf.Timestamp expires_at = 10;
+   */
+  expiresAt?: Timestamp;
+
+  /**
    * JoinedAt the date when the member accepted this invite
    *
-   * @generated from field: google.protobuf.Timestamp joined_at = 10;
+   * @generated from field: google.protobuf.Timestamp joined_at = 11;
    */
   joinedAt?: Timestamp;
 
@@ -207,7 +214,8 @@ export class ProjectInvite extends Message<ProjectInvite> {
     { no: 2, name: "project", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 3, name: "role", kind: "enum", T: proto3.getEnumType(ProjectRole) },
     { no: 4, name: "joined", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
-    { no: 10, name: "joined_at", kind: "message", T: Timestamp },
+    { no: 10, name: "expires_at", kind: "message", T: Timestamp },
+    { no: 11, name: "joined_at", kind: "message", T: Timestamp },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ProjectInvite {
@@ -734,20 +742,13 @@ export class ProjectServiceInviteRequest extends Message<ProjectServiceInviteReq
  */
 export class ProjectServiceInviteResponse extends Message<ProjectServiceInviteResponse> {
   /**
-   * Secret which can be sent to a potential user
+   * Inviter contains a secret which can be sent to a potential user
    * can appended to the invitation endpoint at our api server like
    * console.metalstack.cloud/invite/<secret>
    *
-   * @generated from field: string secret = 1;
+   * @generated from field: api.v1.ProjectInvite invite = 1;
    */
-  secret = "";
-
-  /**
-   * ExpiresAt the date when this invite expires, will be deleted in the backend after this date
-   *
-   * @generated from field: google.protobuf.Timestamp expires_at = 10;
-   */
-  expiresAt?: Timestamp;
+  invite?: ProjectInvite;
 
   constructor(data?: PartialMessage<ProjectServiceInviteResponse>) {
     super();
@@ -757,8 +758,7 @@ export class ProjectServiceInviteResponse extends Message<ProjectServiceInviteRe
   static readonly runtime: typeof proto3 = proto3;
   static readonly typeName = "api.v1.ProjectServiceInviteResponse";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "secret", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 10, name: "expires_at", kind: "message", T: Timestamp },
+    { no: 1, name: "invite", kind: "message", T: ProjectInvite },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ProjectServiceInviteResponse {

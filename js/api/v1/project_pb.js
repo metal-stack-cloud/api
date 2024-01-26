@@ -165,7 +165,8 @@ ProjectInvite.fields = proto3.util.newFieldList(() => [
     { no: 2, name: "project", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 3, name: "role", kind: "enum", T: proto3.getEnumType(ProjectRole) },
     { no: 4, name: "joined", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
-    { no: 10, name: "joined_at", kind: "message", T: Timestamp },
+    { no: 10, name: "expires_at", kind: "message", T: Timestamp },
+    { no: 11, name: "joined_at", kind: "message", T: Timestamp },
 ]);
 /**
  * ProjectServiceListRequest is the request payload to list all projects
@@ -544,14 +545,6 @@ ProjectServiceInviteRequest.fields = proto3.util.newFieldList(() => [
 export class ProjectServiceInviteResponse extends Message {
     constructor(data) {
         super();
-        /**
-         * Secret which can be sent to a potential user
-         * can appended to the invitation endpoint at our api server like
-         * console.metalstack.cloud/invite/<secret>
-         *
-         * @generated from field: string secret = 1;
-         */
-        this.secret = "";
         proto3.util.initPartial(data, this);
     }
     static fromBinary(bytes, options) {
@@ -570,8 +563,7 @@ export class ProjectServiceInviteResponse extends Message {
 ProjectServiceInviteResponse.runtime = proto3;
 ProjectServiceInviteResponse.typeName = "api.v1.ProjectServiceInviteResponse";
 ProjectServiceInviteResponse.fields = proto3.util.newFieldList(() => [
-    { no: 1, name: "secret", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 10, name: "expires_at", kind: "message", T: Timestamp },
+    { no: 1, name: "invite", kind: "message", T: ProjectInvite },
 ]);
 /**
  * ProjectServiceInvitesListRequest is the request payload to a list invites request

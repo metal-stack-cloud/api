@@ -123,9 +123,15 @@ export declare class ProjectInvite extends Message<ProjectInvite> {
      */
     joined: boolean;
     /**
+     * ExpiresAt the date when this invite expires
+     *
+     * @generated from field: google.protobuf.Timestamp expires_at = 10;
+     */
+    expiresAt?: Timestamp;
+    /**
      * JoinedAt the date when the member accepted this invite
      *
-     * @generated from field: google.protobuf.Timestamp joined_at = 10;
+     * @generated from field: google.protobuf.Timestamp joined_at = 11;
      */
     joinedAt?: Timestamp;
     constructor(data?: PartialMessage<ProjectInvite>);
@@ -412,19 +418,13 @@ export declare class ProjectServiceInviteRequest extends Message<ProjectServiceI
  */
 export declare class ProjectServiceInviteResponse extends Message<ProjectServiceInviteResponse> {
     /**
-     * Secret which can be sent to a potential user
+     * Inviter contains a secret which can be sent to a potential user
      * can appended to the invitation endpoint at our api server like
      * console.metalstack.cloud/invite/<secret>
      *
-     * @generated from field: string secret = 1;
+     * @generated from field: api.v1.ProjectInvite invite = 1;
      */
-    secret: string;
-    /**
-     * ExpiresAt the date when this invite expires, will be deleted in the backend after this date
-     *
-     * @generated from field: google.protobuf.Timestamp expires_at = 10;
-     */
-    expiresAt?: Timestamp;
+    invite?: ProjectInvite;
     constructor(data?: PartialMessage<ProjectServiceInviteResponse>);
     static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.ProjectServiceInviteResponse";

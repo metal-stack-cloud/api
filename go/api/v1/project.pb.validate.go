@@ -400,6 +400,35 @@ func (m *ProjectInvite) validate(all bool) error {
 	// no validation rules for Joined
 
 	if all {
+		switch v := interface{}(m.GetExpiresAt()).(type) {
+		case interface{ ValidateAll() error }:
+			if err := v.ValidateAll(); err != nil {
+				errors = append(errors, ProjectInviteValidationError{
+					field:  "ExpiresAt",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		case interface{ Validate() error }:
+			if err := v.Validate(); err != nil {
+				errors = append(errors, ProjectInviteValidationError{
+					field:  "ExpiresAt",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		}
+	} else if v, ok := interface{}(m.GetExpiresAt()).(interface{ Validate() error }); ok {
+		if err := v.Validate(); err != nil {
+			return ProjectInviteValidationError{
+				field:  "ExpiresAt",
+				reason: "embedded message failed validation",
+				cause:  err,
+			}
+		}
+	}
+
+	if all {
 		switch v := interface{}(m.GetJoinedAt()).(type) {
 		case interface{ ValidateAll() error }:
 			if err := v.ValidateAll(); err != nil {
@@ -1982,14 +2011,12 @@ func (m *ProjectServiceInviteResponse) validate(all bool) error {
 
 	var errors []error
 
-	// no validation rules for Secret
-
 	if all {
-		switch v := interface{}(m.GetExpiresAt()).(type) {
+		switch v := interface{}(m.GetInvite()).(type) {
 		case interface{ ValidateAll() error }:
 			if err := v.ValidateAll(); err != nil {
 				errors = append(errors, ProjectServiceInviteResponseValidationError{
-					field:  "ExpiresAt",
+					field:  "Invite",
 					reason: "embedded message failed validation",
 					cause:  err,
 				})
@@ -1997,16 +2024,16 @@ func (m *ProjectServiceInviteResponse) validate(all bool) error {
 		case interface{ Validate() error }:
 			if err := v.Validate(); err != nil {
 				errors = append(errors, ProjectServiceInviteResponseValidationError{
-					field:  "ExpiresAt",
+					field:  "Invite",
 					reason: "embedded message failed validation",
 					cause:  err,
 				})
 			}
 		}
-	} else if v, ok := interface{}(m.GetExpiresAt()).(interface{ Validate() error }); ok {
+	} else if v, ok := interface{}(m.GetInvite()).(interface{ Validate() error }); ok {
 		if err := v.Validate(); err != nil {
 			return ProjectServiceInviteResponseValidationError{
-				field:  "ExpiresAt",
+				field:  "Invite",
 				reason: "embedded message failed validation",
 				cause:  err,
 			}

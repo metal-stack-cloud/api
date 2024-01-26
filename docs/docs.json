@@ -10760,6 +10760,18 @@
               "defaultValue": ""
             },
             {
+              "name": "expires_at",
+              "description": "ExpiresAt the date when this invite expires",
+              "label": "",
+              "type": "Timestamp",
+              "longType": "google.protobuf.Timestamp",
+              "fullType": "google.protobuf.Timestamp",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
               "name": "joined_at",
               "description": "JoinedAt the date when the member accepted this invite",
               "label": "",
@@ -11211,24 +11223,12 @@
           "extensions": [],
           "fields": [
             {
-              "name": "secret",
-              "description": "Secret which can be sent to a potential user\ncan appended to the invitation endpoint at our api server like\nconsole.metalstack.cloud/invite/\u003csecret\u003e",
+              "name": "invite",
+              "description": "Inviter contains a secret which can be sent to a potential user\ncan appended to the invitation endpoint at our api server like\nconsole.metalstack.cloud/invite/\u003csecret\u003e",
               "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "expires_at",
-              "description": "ExpiresAt the date when this invite expires, will be deleted in the backend after this date",
-              "label": "",
-              "type": "Timestamp",
-              "longType": "google.protobuf.Timestamp",
-              "fullType": "google.protobuf.Timestamp",
+              "type": "ProjectInvite",
+              "longType": "ProjectInvite",
+              "fullType": "api.v1.ProjectInvite",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",

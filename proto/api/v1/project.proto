@@ -103,8 +103,10 @@ message ProjectInvite {
   ProjectRole role = 3;
   // Joined is false as long as a user has not accepted the invite
   bool joined = 4;
+  // ExpiresAt the date when this invite expires
+  google.protobuf.Timestamp expires_at = 10;
   // JoinedAt the date when the member accepted this invite
-  google.protobuf.Timestamp joined_at = 10;
+  google.protobuf.Timestamp joined_at = 11;
 }
 
 // ProjectServiceListRequest is the request payload to list all projects
@@ -210,13 +212,10 @@ message ProjectServiceInviteRequest {
 
 // ProjectServiceInviteRequest is the response payload to a invite member request
 message ProjectServiceInviteResponse {
-  // Secret which can be sent to a potential user
+  // Inviter contains a secret which can be sent to a potential user
   // can appended to the invitation endpoint at our api server like
   // console.metalstack.cloud/invite/<secret>
-  string secret = 1;
-
-  // ExpiresAt the date when this invite expires, will be deleted in the backend after this date
-  google.protobuf.Timestamp expires_at = 10;
+  ProjectInvite invite = 1;
 }
 
 // ProjectServiceInvitesListRequest is the request payload to a list invites request
