@@ -1,4 +1,4 @@
-import { ProjectServiceCreateRequest, ProjectServiceCreateResponse, ProjectServiceDeleteRequest, ProjectServiceDeleteResponse, ProjectServiceGetRequest, ProjectServiceGetResponse, ProjectServiceInviteRefreshRequest, ProjectServiceInviteRefreshResponse, ProjectServiceInviteRequest, ProjectServiceInviteResponse, ProjectServiceListRequest, ProjectServiceListResponse, ProjectServiceRemoveMemberRequest, ProjectServiceRemoveMemberResponse, ProjectServiceUpdateRequest, ProjectServiceUpdateResponse } from "./project_pb.js";
+import { ProjectServiceCreateRequest, ProjectServiceCreateResponse, ProjectServiceDeleteRequest, ProjectServiceDeleteResponse, ProjectServiceGetRequest, ProjectServiceGetResponse, ProjectServiceInviteRefreshRequest, ProjectServiceInviteRefreshResponse, ProjectServiceInviteRequest, ProjectServiceInviteResponse, ProjectServiceListInvitesRequest, ProjectServiceListInvitesResponse, ProjectServiceListRequest, ProjectServiceListResponse, ProjectServiceRemoveMemberRequest, ProjectServiceRemoveMemberResponse, ProjectServiceUpdateRequest, ProjectServiceUpdateResponse } from "./project_pb.js";
 import { MethodKind } from "@bufbuild/protobuf";
 /**
  * ProjectService serves project related functions
@@ -72,6 +72,17 @@ export declare const ProjectService: {
             readonly name: "Invite";
             readonly I: typeof ProjectServiceInviteRequest;
             readonly O: typeof ProjectServiceInviteResponse;
+            readonly kind: MethodKind.Unary;
+        };
+        /**
+         * ListInvites list all invites to a project
+         *
+         * @generated from rpc api.v1.ProjectService.ListInvites
+         */
+        readonly listInvites: {
+            readonly name: "ListInvites";
+            readonly I: typeof ProjectServiceListInvitesRequest;
+            readonly O: typeof ProjectServiceListInvitesResponse;
             readonly kind: MethodKind.Unary;
         };
         /**

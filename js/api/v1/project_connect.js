@@ -2,7 +2,7 @@
 // @generated from file api/v1/project.proto (package api.v1, syntax proto3)
 /* eslint-disable */
 // @ts-nocheck
-import { ProjectServiceCreateRequest, ProjectServiceCreateResponse, ProjectServiceDeleteRequest, ProjectServiceDeleteResponse, ProjectServiceGetRequest, ProjectServiceGetResponse, ProjectServiceInviteRefreshRequest, ProjectServiceInviteRefreshResponse, ProjectServiceInviteRequest, ProjectServiceInviteResponse, ProjectServiceListRequest, ProjectServiceListResponse, ProjectServiceRemoveMemberRequest, ProjectServiceRemoveMemberResponse, ProjectServiceUpdateRequest, ProjectServiceUpdateResponse } from "./project_pb.js";
+import { ProjectServiceCreateRequest, ProjectServiceCreateResponse, ProjectServiceDeleteRequest, ProjectServiceDeleteResponse, ProjectServiceGetRequest, ProjectServiceGetResponse, ProjectServiceInviteRefreshRequest, ProjectServiceInviteRefreshResponse, ProjectServiceInviteRequest, ProjectServiceInviteResponse, ProjectServiceListInvitesRequest, ProjectServiceListInvitesResponse, ProjectServiceListRequest, ProjectServiceListResponse, ProjectServiceRemoveMemberRequest, ProjectServiceRemoveMemberResponse, ProjectServiceUpdateRequest, ProjectServiceUpdateResponse } from "./project_pb.js";
 import { MethodKind } from "@bufbuild/protobuf";
 /**
  * ProjectService serves project related functions
@@ -76,6 +76,17 @@ export const ProjectService = {
             name: "Invite",
             I: ProjectServiceInviteRequest,
             O: ProjectServiceInviteResponse,
+            kind: MethodKind.Unary,
+        },
+        /**
+         * ListInvites list all invites to a project
+         *
+         * @generated from rpc api.v1.ProjectService.ListInvites
+         */
+        listInvites: {
+            name: "ListInvites",
+            I: ProjectServiceListInvitesRequest,
+            O: ProjectServiceListInvitesResponse,
             kind: MethodKind.Unary,
         },
         /**

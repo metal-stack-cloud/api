@@ -388,6 +388,48 @@ export declare class ProjectServiceInviteResponse extends Message<ProjectService
     static equals(a: ProjectServiceInviteResponse | PlainMessage<ProjectServiceInviteResponse> | undefined, b: ProjectServiceInviteResponse | PlainMessage<ProjectServiceInviteResponse> | undefined): boolean;
 }
 /**
+ * ProjectServiceInviteRequest is used to list invites of a project
+ *
+ * @generated from message api.v1.ProjectServiceListInvitesRequest
+ */
+export declare class ProjectServiceListInvitesRequest extends Message<ProjectServiceListInvitesRequest> {
+    /**
+     * Project is the uuid of the project
+     *
+     * @generated from field: string project = 1;
+     */
+    project: string;
+    constructor(data?: PartialMessage<ProjectServiceListInvitesRequest>);
+    static readonly runtime: typeof proto3;
+    static readonly typeName = "api.v1.ProjectServiceListInvitesRequest";
+    static readonly fields: FieldList;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ProjectServiceListInvitesRequest;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ProjectServiceListInvitesRequest;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ProjectServiceListInvitesRequest;
+    static equals(a: ProjectServiceListInvitesRequest | PlainMessage<ProjectServiceListInvitesRequest> | undefined, b: ProjectServiceListInvitesRequest | PlainMessage<ProjectServiceListInvitesRequest> | undefined): boolean;
+}
+/**
+ * ProjectServiceListInvitesResponse is the response payload to a list invites request
+ *
+ * @generated from message api.v1.ProjectServiceListInvitesResponse
+ */
+export declare class ProjectServiceListInvitesResponse extends Message<ProjectServiceListInvitesResponse> {
+    /**
+     * ProjectMembers not already accepted the invitation to this project
+     *
+     * @generated from field: repeated api.v1.ProjectMember project_members = 1;
+     */
+    projectMembers: ProjectMember[];
+    constructor(data?: PartialMessage<ProjectServiceListInvitesResponse>);
+    static readonly runtime: typeof proto3;
+    static readonly typeName = "api.v1.ProjectServiceListInvitesResponse";
+    static readonly fields: FieldList;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ProjectServiceListInvitesResponse;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ProjectServiceListInvitesResponse;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ProjectServiceListInvitesResponse;
+    static equals(a: ProjectServiceListInvitesResponse | PlainMessage<ProjectServiceListInvitesResponse> | undefined, b: ProjectServiceListInvitesResponse | PlainMessage<ProjectServiceListInvitesResponse> | undefined): boolean;
+}
+/**
  * ProjectServiceInviteRefreshRequest is used to re-send an invite for a member
  *
  * @generated from message api.v1.ProjectServiceInviteRefreshRequest

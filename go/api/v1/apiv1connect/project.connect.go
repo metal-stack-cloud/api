@@ -45,6 +45,9 @@ const (
 	ProjectServiceUpdateProcedure = "/api.v1.ProjectService/Update"
 	// ProjectServiceInviteProcedure is the fully-qualified name of the ProjectService's Invite RPC.
 	ProjectServiceInviteProcedure = "/api.v1.ProjectService/Invite"
+	// ProjectServiceListInvitesProcedure is the fully-qualified name of the ProjectService's
+	// ListInvites RPC.
+	ProjectServiceListInvitesProcedure = "/api.v1.ProjectService/ListInvites"
 	// ProjectServiceInviteRefreshProcedure is the fully-qualified name of the ProjectService's
 	// InviteRefresh RPC.
 	ProjectServiceInviteRefreshProcedure = "/api.v1.ProjectService/InviteRefresh"
@@ -62,6 +65,7 @@ var (
 	projectServiceDeleteMethodDescriptor        = projectServiceServiceDescriptor.Methods().ByName("Delete")
 	projectServiceUpdateMethodDescriptor        = projectServiceServiceDescriptor.Methods().ByName("Update")
 	projectServiceInviteMethodDescriptor        = projectServiceServiceDescriptor.Methods().ByName("Invite")
+	projectServiceListInvitesMethodDescriptor   = projectServiceServiceDescriptor.Methods().ByName("ListInvites")
 	projectServiceInviteRefreshMethodDescriptor = projectServiceServiceDescriptor.Methods().ByName("InviteRefresh")
 	projectServiceRemoveMemberMethodDescriptor  = projectServiceServiceDescriptor.Methods().ByName("RemoveMember")
 )
@@ -80,6 +84,8 @@ type ProjectServiceClient interface {
 	Update(context.Context, *connect.Request[v1.ProjectServiceUpdateRequest]) (*connect.Response[v1.ProjectServiceUpdateResponse], error)
 	// Invite a user to a project
 	Invite(context.Context, *connect.Request[v1.ProjectServiceInviteRequest]) (*connect.Response[v1.ProjectServiceInviteResponse], error)
+	// ListInvites list all invites to a project
+	ListInvites(context.Context, *connect.Request[v1.ProjectServiceListInvitesRequest]) (*connect.Response[v1.ProjectServiceListInvitesResponse], error)
 	// InviteRefresh re-sends an invite to the user and expires the previous invitation link
 	InviteRefresh(context.Context, *connect.Request[v1.ProjectServiceInviteRefreshRequest]) (*connect.Response[v1.ProjectServiceInviteRefreshResponse], error)
 	// RemoveMember a user from a project
@@ -132,6 +138,12 @@ func NewProjectServiceClient(httpClient connect.HTTPClient, baseURL string, opts
 			connect.WithSchema(projectServiceInviteMethodDescriptor),
 			connect.WithClientOptions(opts...),
 		),
+		listInvites: connect.NewClient[v1.ProjectServiceListInvitesRequest, v1.ProjectServiceListInvitesResponse](
+			httpClient,
+			baseURL+ProjectServiceListInvitesProcedure,
+			connect.WithSchema(projectServiceListInvitesMethodDescriptor),
+			connect.WithClientOptions(opts...),
+		),
 		inviteRefresh: connect.NewClient[v1.ProjectServiceInviteRefreshRequest, v1.ProjectServiceInviteRefreshResponse](
 			httpClient,
 			baseURL+ProjectServiceInviteRefreshProcedure,
@@ -155,6 +167,7 @@ type projectServiceClient struct {
 	delete        *connect.Client[v1.ProjectServiceDeleteRequest, v1.ProjectServiceDeleteResponse]
 	update        *connect.Client[v1.ProjectServiceUpdateRequest, v1.ProjectServiceUpdateResponse]
 	invite        *connect.Client[v1.ProjectServiceInviteRequest, v1.ProjectServiceInviteResponse]
+	listInvites   *connect.Client[v1.ProjectServiceListInvitesRequest, v1.ProjectServiceListInvitesResponse]
 	inviteRefresh *connect.Client[v1.ProjectServiceInviteRefreshRequest, v1.ProjectServiceInviteRefreshResponse]
 	removeMember  *connect.Client[v1.ProjectServiceRemoveMemberRequest, v1.ProjectServiceRemoveMemberResponse]
 }
@@ -189,6 +202,11 @@ func (c *projectServiceClient) Invite(ctx context.Context, req *connect.Request[
 	return c.invite.CallUnary(ctx, req)
 }
 
+// ListInvites calls api.v1.ProjectService.ListInvites.
+func (c *projectServiceClient) ListInvites(ctx context.Context, req *connect.Request[v1.ProjectServiceListInvitesRequest]) (*connect.Response[v1.ProjectServiceListInvitesResponse], error) {
+	return c.listInvites.CallUnary(ctx, req)
+}
+
 // InviteRefresh calls api.v1.ProjectService.InviteRefresh.
 func (c *projectServiceClient) InviteRefresh(ctx context.Context, req *connect.Request[v1.ProjectServiceInviteRefreshRequest]) (*connect.Response[v1.ProjectServiceInviteRefreshResponse], error) {
 	return c.inviteRefresh.CallUnary(ctx, req)
@@ -213,6 +231,8 @@ type ProjectServiceHandler interface {
 	Update(context.Context, *connect.Request[v1.ProjectServiceUpdateRequest]) (*connect.Response[v1.ProjectServiceUpdateResponse], error)
 	// Invite a user to a project
 	Invite(context.Context, *connect.Request[v1.ProjectServiceInviteRequest]) (*connect.Response[v1.ProjectServiceInviteResponse], error)
+	// ListInvites list all invites to a project
+	ListInvites(context.Context, *connect.Request[v1.ProjectServiceListInvitesRequest]) (*connect.Response[v1.ProjectServiceListInvitesResponse], error)
 	// InviteRefresh re-sends an invite to the user and expires the previous invitation link
 	InviteRefresh(context.Context, *connect.Request[v1.ProjectServiceInviteRefreshRequest]) (*connect.Response[v1.ProjectServiceInviteRefreshResponse], error)
 	// RemoveMember a user from a project
@@ -261,6 +281,12 @@ func NewProjectServiceHandler(svc ProjectServiceHandler, opts ...connect.Handler
 		connect.WithSchema(projectServiceInviteMethodDescriptor),
 		connect.WithHandlerOptions(opts...),
 	)
+	projectServiceListInvitesHandler := connect.NewUnaryHandler(
+		ProjectServiceListInvitesProcedure,
+		svc.ListInvites,
+		connect.WithSchema(projectServiceListInvitesMethodDescriptor),
+		connect.WithHandlerOptions(opts...),
+	)
 	projectServiceInviteRefreshHandler := connect.NewUnaryHandler(
 		ProjectServiceInviteRefreshProcedure,
 		svc.InviteRefresh,
@@ -287,6 +313,8 @@ func NewProjectServiceHandler(svc ProjectServiceHandler, opts ...connect.Handler
 			projectServiceUpdateHandler.ServeHTTP(w, r)
 		case ProjectServiceInviteProcedure:
 			projectServiceInviteHandler.ServeHTTP(w, r)
+		case ProjectServiceListInvitesProcedure:
+			projectServiceListInvitesHandler.ServeHTTP(w, r)
 		case ProjectServiceInviteRefreshProcedure:
 			projectServiceInviteRefreshHandler.ServeHTTP(w, r)
 		case ProjectServiceRemoveMemberProcedure:
@@ -322,6 +350,10 @@ func (UnimplementedProjectServiceHandler) Update(context.Context, *connect.Reque
 
 func (UnimplementedProjectServiceHandler) Invite(context.Context, *connect.Request[v1.ProjectServiceInviteRequest]) (*connect.Response[v1.ProjectServiceInviteResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("api.v1.ProjectService.Invite is not implemented"))
+}
+
+func (UnimplementedProjectServiceHandler) ListInvites(context.Context, *connect.Request[v1.ProjectServiceListInvitesRequest]) (*connect.Response[v1.ProjectServiceListInvitesResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("api.v1.ProjectService.ListInvites is not implemented"))
 }
 
 func (UnimplementedProjectServiceHandler) InviteRefresh(context.Context, *connect.Request[v1.ProjectServiceInviteRefreshRequest]) (*connect.Response[v1.ProjectServiceInviteRefreshResponse], error) {

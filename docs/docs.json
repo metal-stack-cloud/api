@@ -11120,6 +11120,62 @@
           "fields": []
         },
         {
+          "name": "ProjectServiceListInvitesRequest",
+          "longName": "ProjectServiceListInvitesRequest",
+          "fullName": "api.v1.ProjectServiceListInvitesRequest",
+          "description": "ProjectServiceInviteRequest is used to list invites of a project",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "project",
+              "description": "Project is the uuid of the project",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": "",
+              "options": {
+                "validate.rules": [
+                  {
+                    "name": "string.uuid",
+                    "value": true
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "ProjectServiceListInvitesResponse",
+          "longName": "ProjectServiceListInvitesResponse",
+          "fullName": "api.v1.ProjectServiceListInvitesResponse",
+          "description": "ProjectServiceListInvitesResponse is the response payload to a list invites request",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "project_members",
+              "description": "ProjectMembers not already accepted the invitation to this project",
+              "label": "repeated",
+              "type": "ProjectMember",
+              "longType": "ProjectMember",
+              "fullType": "api.v1.ProjectMember",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
           "name": "ProjectServiceListRequest",
           "longName": "ProjectServiceListRequest",
           "fullName": "api.v1.ProjectServiceListRequest",
@@ -11448,6 +11504,18 @@
               "responseType": "ProjectServiceInviteResponse",
               "responseLongType": "ProjectServiceInviteResponse",
               "responseFullType": "api.v1.ProjectServiceInviteResponse",
+              "responseStreaming": false
+            },
+            {
+              "name": "ListInvites",
+              "description": "ListInvites list all invites to a project",
+              "requestType": "ProjectServiceListInvitesRequest",
+              "requestLongType": "ProjectServiceListInvitesRequest",
+              "requestFullType": "api.v1.ProjectServiceListInvitesRequest",
+              "requestStreaming": false,
+              "responseType": "ProjectServiceListInvitesResponse",
+              "responseLongType": "ProjectServiceListInvitesResponse",
+              "responseFullType": "api.v1.ProjectServiceListInvitesResponse",
               "responseStreaming": false
             },
             {

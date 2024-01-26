@@ -704,6 +704,88 @@ export class ProjectServiceInviteResponse extends Message<ProjectServiceInviteRe
 }
 
 /**
+ * ProjectServiceInviteRequest is used to list invites of a project
+ *
+ * @generated from message api.v1.ProjectServiceListInvitesRequest
+ */
+export class ProjectServiceListInvitesRequest extends Message<ProjectServiceListInvitesRequest> {
+  /**
+   * Project is the uuid of the project
+   *
+   * @generated from field: string project = 1;
+   */
+  project = "";
+
+  constructor(data?: PartialMessage<ProjectServiceListInvitesRequest>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "api.v1.ProjectServiceListInvitesRequest";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "project", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ProjectServiceListInvitesRequest {
+    return new ProjectServiceListInvitesRequest().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ProjectServiceListInvitesRequest {
+    return new ProjectServiceListInvitesRequest().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ProjectServiceListInvitesRequest {
+    return new ProjectServiceListInvitesRequest().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: ProjectServiceListInvitesRequest | PlainMessage<ProjectServiceListInvitesRequest> | undefined, b: ProjectServiceListInvitesRequest | PlainMessage<ProjectServiceListInvitesRequest> | undefined): boolean {
+    return proto3.util.equals(ProjectServiceListInvitesRequest, a, b);
+  }
+}
+
+/**
+ * ProjectServiceListInvitesResponse is the response payload to a list invites request
+ *
+ * @generated from message api.v1.ProjectServiceListInvitesResponse
+ */
+export class ProjectServiceListInvitesResponse extends Message<ProjectServiceListInvitesResponse> {
+  /**
+   * ProjectMembers not already accepted the invitation to this project
+   *
+   * @generated from field: repeated api.v1.ProjectMember project_members = 1;
+   */
+  projectMembers: ProjectMember[] = [];
+
+  constructor(data?: PartialMessage<ProjectServiceListInvitesResponse>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "api.v1.ProjectServiceListInvitesResponse";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "project_members", kind: "message", T: ProjectMember, repeated: true },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ProjectServiceListInvitesResponse {
+    return new ProjectServiceListInvitesResponse().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ProjectServiceListInvitesResponse {
+    return new ProjectServiceListInvitesResponse().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ProjectServiceListInvitesResponse {
+    return new ProjectServiceListInvitesResponse().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: ProjectServiceListInvitesResponse | PlainMessage<ProjectServiceListInvitesResponse> | undefined, b: ProjectServiceListInvitesResponse | PlainMessage<ProjectServiceListInvitesResponse> | undefined): boolean {
+    return proto3.util.equals(ProjectServiceListInvitesResponse, a, b);
+  }
+}
+
+/**
  * ProjectServiceInviteRefreshRequest is used to re-send an invite for a member
  *
  * @generated from message api.v1.ProjectServiceInviteRefreshRequest

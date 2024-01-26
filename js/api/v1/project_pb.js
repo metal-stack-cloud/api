@@ -521,6 +521,74 @@ ProjectServiceInviteResponse.runtime = proto3;
 ProjectServiceInviteResponse.typeName = "api.v1.ProjectServiceInviteResponse";
 ProjectServiceInviteResponse.fields = proto3.util.newFieldList(() => []);
 /**
+ * ProjectServiceInviteRequest is used to list invites of a project
+ *
+ * @generated from message api.v1.ProjectServiceListInvitesRequest
+ */
+export class ProjectServiceListInvitesRequest extends Message {
+    constructor(data) {
+        super();
+        /**
+         * Project is the uuid of the project
+         *
+         * @generated from field: string project = 1;
+         */
+        this.project = "";
+        proto3.util.initPartial(data, this);
+    }
+    static fromBinary(bytes, options) {
+        return new ProjectServiceListInvitesRequest().fromBinary(bytes, options);
+    }
+    static fromJson(jsonValue, options) {
+        return new ProjectServiceListInvitesRequest().fromJson(jsonValue, options);
+    }
+    static fromJsonString(jsonString, options) {
+        return new ProjectServiceListInvitesRequest().fromJsonString(jsonString, options);
+    }
+    static equals(a, b) {
+        return proto3.util.equals(ProjectServiceListInvitesRequest, a, b);
+    }
+}
+ProjectServiceListInvitesRequest.runtime = proto3;
+ProjectServiceListInvitesRequest.typeName = "api.v1.ProjectServiceListInvitesRequest";
+ProjectServiceListInvitesRequest.fields = proto3.util.newFieldList(() => [
+    { no: 1, name: "project", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+]);
+/**
+ * ProjectServiceListInvitesResponse is the response payload to a list invites request
+ *
+ * @generated from message api.v1.ProjectServiceListInvitesResponse
+ */
+export class ProjectServiceListInvitesResponse extends Message {
+    constructor(data) {
+        super();
+        /**
+         * ProjectMembers not already accepted the invitation to this project
+         *
+         * @generated from field: repeated api.v1.ProjectMember project_members = 1;
+         */
+        this.projectMembers = [];
+        proto3.util.initPartial(data, this);
+    }
+    static fromBinary(bytes, options) {
+        return new ProjectServiceListInvitesResponse().fromBinary(bytes, options);
+    }
+    static fromJson(jsonValue, options) {
+        return new ProjectServiceListInvitesResponse().fromJson(jsonValue, options);
+    }
+    static fromJsonString(jsonString, options) {
+        return new ProjectServiceListInvitesResponse().fromJsonString(jsonString, options);
+    }
+    static equals(a, b) {
+        return proto3.util.equals(ProjectServiceListInvitesResponse, a, b);
+    }
+}
+ProjectServiceListInvitesResponse.runtime = proto3;
+ProjectServiceListInvitesResponse.typeName = "api.v1.ProjectServiceListInvitesResponse";
+ProjectServiceListInvitesResponse.fields = proto3.util.newFieldList(() => [
+    { no: 1, name: "project_members", kind: "message", T: ProjectMember, repeated: true },
+]);
+/**
  * ProjectServiceInviteRefreshRequest is used to re-send an invite for a member
  *
  * @generated from message api.v1.ProjectServiceInviteRefreshRequest

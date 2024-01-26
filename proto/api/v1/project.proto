@@ -42,6 +42,11 @@ service ProjectService {
     option (project_roles) = PROJECT_ROLE_OWNER;
     option (auditing) = AUDITING_INCLUDED;
   }
+  // ListInvites list all invites to a project
+  rpc ListInvites(ProjectServiceListInvitesRequest) returns (ProjectServiceListInvitesResponse) {
+    option (project_roles) = PROJECT_ROLE_OWNER;
+    option (auditing) = AUDITING_INCLUDED;
+  }
   // InviteRefresh re-sends an invite to the user and expires the previous invitation link
   rpc InviteRefresh(ProjectServiceInviteRefreshRequest) returns (ProjectServiceInviteRefreshResponse) {
     option (project_roles) = PROJECT_ROLE_OWNER;
@@ -191,6 +196,18 @@ message ProjectServiceInviteRequest {
 
 // ProjectServiceInviteRequest is the response payload to a invite member request
 message ProjectServiceInviteResponse {}
+
+// ProjectServiceInviteRequest is used to list invites of a project
+message ProjectServiceListInvitesRequest {
+  // Project is the uuid of the project
+  string project = 1 [(validate.rules).string.uuid = true];
+}
+
+// ProjectServiceListInvitesResponse is the response payload to a list invites request
+message ProjectServiceListInvitesResponse {
+  // ProjectMembers not already accepted the invitation to this project
+  repeated ProjectMember project_members = 1;
+}
 
 // ProjectServiceInviteRefreshRequest is used to re-send an invite for a member
 message ProjectServiceInviteRefreshRequest {
