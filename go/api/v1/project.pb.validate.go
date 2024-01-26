@@ -262,8 +262,6 @@ func (m *ProjectMember) validate(all bool) error {
 
 	// no validation rules for Role
 
-	// no validation rules for InvitePending
-
 	if all {
 		switch v := interface{}(m.GetCreatedAt()).(type) {
 		case interface{ ValidateAll() error }:

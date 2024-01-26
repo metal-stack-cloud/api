@@ -10808,18 +10808,6 @@
               "defaultValue": ""
             },
             {
-              "name": "invite_pending",
-              "description": "InivitePending is true as long as the member has not accepted the invite",
-              "label": "",
-              "type": "bool",
-              "longType": "bool",
-              "fullType": "bool",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
               "name": "created_at",
               "description": "CreatedAt the date when the member was added to the project",
               "label": "",

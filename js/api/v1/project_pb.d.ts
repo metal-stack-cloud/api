@@ -78,12 +78,6 @@ export declare class ProjectMember extends Message<ProjectMember> {
      */
     role: ProjectRole;
     /**
-     * InivitePending is true as long as the member has not accepted the invite
-     *
-     * @generated from field: bool invite_pending = 3;
-     */
-    invitePending: boolean;
-    /**
      * CreatedAt the date when the member was added to the project
      *
      * @generated from field: google.protobuf.Timestamp created_at = 10;

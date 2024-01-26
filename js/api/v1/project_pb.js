@@ -89,12 +89,6 @@ export class ProjectMember extends Message {
          * @generated from field: api.v1.ProjectRole role = 2;
          */
         this.role = ProjectRole.UNSPECIFIED;
-        /**
-         * InivitePending is true as long as the member has not accepted the invite
-         *
-         * @generated from field: bool invite_pending = 3;
-         */
-        this.invitePending = false;
         proto3.util.initPartial(data, this);
     }
     static fromBinary(bytes, options) {
@@ -115,7 +109,6 @@ ProjectMember.typeName = "api.v1.ProjectMember";
 ProjectMember.fields = proto3.util.newFieldList(() => [
     { no: 1, name: "id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 2, name: "role", kind: "enum", T: proto3.getEnumType(ProjectRole) },
-    { no: 3, name: "invite_pending", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
     { no: 10, name: "created_at", kind: "message", T: Timestamp },
 ]);
 /**

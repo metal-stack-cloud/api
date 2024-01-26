@@ -79,8 +79,6 @@ message ProjectMember {
   string id = 1;
   // Role is the role of the member
   ProjectRole role = 2;
-  // InivitePending is true as long as the member has not accepted the invite
-  bool invite_pending = 3;
   // CreatedAt the date when the member was added to the project
   google.protobuf.Timestamp created_at = 10;
 }

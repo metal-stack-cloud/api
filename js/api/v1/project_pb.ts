@@ -118,13 +118,6 @@ export class ProjectMember extends Message<ProjectMember> {
   role = ProjectRole.UNSPECIFIED;
 
   /**
-   * InivitePending is true as long as the member has not accepted the invite
-   *
-   * @generated from field: bool invite_pending = 3;
-   */
-  invitePending = false;
-
-  /**
    * CreatedAt the date when the member was added to the project
    *
    * @generated from field: google.protobuf.Timestamp created_at = 10;
@@ -141,7 +134,6 @@ export class ProjectMember extends Message<ProjectMember> {
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
     { no: 1, name: "id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 2, name: "role", kind: "enum", T: proto3.getEnumType(ProjectRole) },
-    { no: 3, name: "invite_pending", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
     { no: 10, name: "created_at", kind: "message", T: Timestamp },
   ]);
 
