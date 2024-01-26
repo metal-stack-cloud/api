@@ -99,6 +99,51 @@ export declare class ProjectMember extends Message<ProjectMember> {
     static equals(a: ProjectMember | PlainMessage<ProjectMember> | undefined, b: ProjectMember | PlainMessage<ProjectMember> | undefined): boolean;
 }
 /**
+ * ProjectInvite defines invite to project
+ *
+ * @generated from message api.v1.ProjectInvite
+ */
+export declare class ProjectInvite extends Message<ProjectInvite> {
+    /**
+     * Id is the id of the invite, typically part of the url
+     *
+     * @generated from field: string id = 1;
+     */
+    id: string;
+    /**
+     * Project is the project id for which this invite was created
+     *
+     * @generated from field: string project = 2;
+     */
+    project: string;
+    /**
+     * Role is the role in this project the user will get after accepting the invitation
+     *
+     * @generated from field: api.v1.ProjectRole role = 3;
+     */
+    role: ProjectRole;
+    /**
+     * Joined is false as long as a user has not accepted the invite
+     *
+     * @generated from field: bool joined = 4;
+     */
+    joined: boolean;
+    /**
+     * JoinedAt the date when the member accepted this invite
+     *
+     * @generated from field: google.protobuf.Timestamp joined_at = 10;
+     */
+    joinedAt?: Timestamp;
+    constructor(data?: PartialMessage<ProjectInvite>);
+    static readonly runtime: typeof proto3;
+    static readonly typeName = "api.v1.ProjectInvite";
+    static readonly fields: FieldList;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ProjectInvite;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ProjectInvite;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ProjectInvite;
+    static equals(a: ProjectInvite | PlainMessage<ProjectInvite> | undefined, b: ProjectInvite | PlainMessage<ProjectInvite> | undefined): boolean;
+}
+/**
  * ProjectServiceListRequest is the request payload to list all projects
  *
  * @generated from message api.v1.ProjectServiceListRequest
@@ -352,12 +397,6 @@ export declare class ProjectServiceInviteRequest extends Message<ProjectServiceI
      */
     project: string;
     /**
-     * Email of the user to invite
-     *
-     * @generated from field: string email = 2;
-     */
-    email: string;
-    /**
      * Role of this user in this project
      *
      * @generated from field: api.v1.ProjectRole role = 3;
@@ -378,6 +417,13 @@ export declare class ProjectServiceInviteRequest extends Message<ProjectServiceI
  * @generated from message api.v1.ProjectServiceInviteResponse
  */
 export declare class ProjectServiceInviteResponse extends Message<ProjectServiceInviteResponse> {
+    /**
+     * InviteLink which can be sent to a potential user
+     * sample link from tailscale  https://login.tailscale.com/uinv/i3c143aaba75e512e
+     *
+     * @generated from field: string invite_link = 1;
+     */
+    inviteLink: string;
     constructor(data?: PartialMessage<ProjectServiceInviteResponse>);
     static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.ProjectServiceInviteResponse";
@@ -388,7 +434,7 @@ export declare class ProjectServiceInviteResponse extends Message<ProjectService
     static equals(a: ProjectServiceInviteResponse | PlainMessage<ProjectServiceInviteResponse> | undefined, b: ProjectServiceInviteResponse | PlainMessage<ProjectServiceInviteResponse> | undefined): boolean;
 }
 /**
- * ProjectServiceInviteRequest is used to list invites of a project
+ * ProjectServiceListInvitesRequest is the request payload to a list invites request
  *
  * @generated from message api.v1.ProjectServiceListInvitesRequest
  */
@@ -415,11 +461,11 @@ export declare class ProjectServiceListInvitesRequest extends Message<ProjectSer
  */
 export declare class ProjectServiceListInvitesResponse extends Message<ProjectServiceListInvitesResponse> {
     /**
-     * ProjectMembers not already accepted the invitation to this project
+     * Invites not already accepted the invitation to this project
      *
-     * @generated from field: repeated api.v1.ProjectMember project_members = 1;
+     * @generated from field: repeated api.v1.ProjectInvite invites = 1;
      */
-    projectMembers: ProjectMember[];
+    invites: ProjectInvite[];
     constructor(data?: PartialMessage<ProjectServiceListInvitesResponse>);
     static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.ProjectServiceListInvitesResponse";
@@ -428,48 +474,6 @@ export declare class ProjectServiceListInvitesResponse extends Message<ProjectSe
     static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ProjectServiceListInvitesResponse;
     static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ProjectServiceListInvitesResponse;
     static equals(a: ProjectServiceListInvitesResponse | PlainMessage<ProjectServiceListInvitesResponse> | undefined, b: ProjectServiceListInvitesResponse | PlainMessage<ProjectServiceListInvitesResponse> | undefined): boolean;
-}
-/**
- * ProjectServiceInviteRefreshRequest is used to re-send an invite for a member
- *
- * @generated from message api.v1.ProjectServiceInviteRefreshRequest
- */
-export declare class ProjectServiceInviteRefreshRequest extends Message<ProjectServiceInviteRefreshRequest> {
-    /**
-     * Project is the uuid of the project
-     *
-     * @generated from field: string project = 1;
-     */
-    project: string;
-    /**
-     * Email of the user to invite
-     *
-     * @generated from field: string email = 2;
-     */
-    email: string;
-    constructor(data?: PartialMessage<ProjectServiceInviteRefreshRequest>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "api.v1.ProjectServiceInviteRefreshRequest";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ProjectServiceInviteRefreshRequest;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ProjectServiceInviteRefreshRequest;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ProjectServiceInviteRefreshRequest;
-    static equals(a: ProjectServiceInviteRefreshRequest | PlainMessage<ProjectServiceInviteRefreshRequest> | undefined, b: ProjectServiceInviteRefreshRequest | PlainMessage<ProjectServiceInviteRefreshRequest> | undefined): boolean;
-}
-/**
- * ProjectServiceInviteRefreshResponse is the response payload to a invite member request
- *
- * @generated from message api.v1.ProjectServiceInviteRefreshResponse
- */
-export declare class ProjectServiceInviteRefreshResponse extends Message<ProjectServiceInviteRefreshResponse> {
-    constructor(data?: PartialMessage<ProjectServiceInviteRefreshResponse>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "api.v1.ProjectServiceInviteRefreshResponse";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ProjectServiceInviteRefreshResponse;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ProjectServiceInviteRefreshResponse;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ProjectServiceInviteRefreshResponse;
-    static equals(a: ProjectServiceInviteRefreshResponse | PlainMessage<ProjectServiceInviteRefreshResponse> | undefined, b: ProjectServiceInviteRefreshResponse | PlainMessage<ProjectServiceInviteRefreshResponse> | undefined): boolean;
 }
 /**
  * ProjectServiceRemoveMemberRequest is used to remove a member from a project

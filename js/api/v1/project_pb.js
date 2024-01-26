@@ -119,6 +119,62 @@ ProjectMember.fields = proto3.util.newFieldList(() => [
     { no: 10, name: "created_at", kind: "message", T: Timestamp },
 ]);
 /**
+ * ProjectInvite defines invite to project
+ *
+ * @generated from message api.v1.ProjectInvite
+ */
+export class ProjectInvite extends Message {
+    constructor(data) {
+        super();
+        /**
+         * Id is the id of the invite, typically part of the url
+         *
+         * @generated from field: string id = 1;
+         */
+        this.id = "";
+        /**
+         * Project is the project id for which this invite was created
+         *
+         * @generated from field: string project = 2;
+         */
+        this.project = "";
+        /**
+         * Role is the role in this project the user will get after accepting the invitation
+         *
+         * @generated from field: api.v1.ProjectRole role = 3;
+         */
+        this.role = ProjectRole.UNSPECIFIED;
+        /**
+         * Joined is false as long as a user has not accepted the invite
+         *
+         * @generated from field: bool joined = 4;
+         */
+        this.joined = false;
+        proto3.util.initPartial(data, this);
+    }
+    static fromBinary(bytes, options) {
+        return new ProjectInvite().fromBinary(bytes, options);
+    }
+    static fromJson(jsonValue, options) {
+        return new ProjectInvite().fromJson(jsonValue, options);
+    }
+    static fromJsonString(jsonString, options) {
+        return new ProjectInvite().fromJsonString(jsonString, options);
+    }
+    static equals(a, b) {
+        return proto3.util.equals(ProjectInvite, a, b);
+    }
+}
+ProjectInvite.runtime = proto3;
+ProjectInvite.typeName = "api.v1.ProjectInvite";
+ProjectInvite.fields = proto3.util.newFieldList(() => [
+    { no: 1, name: "id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "project", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 3, name: "role", kind: "enum", T: proto3.getEnumType(ProjectRole) },
+    { no: 4, name: "joined", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
+    { no: 10, name: "joined_at", kind: "message", T: Timestamp },
+]);
+/**
  * ProjectServiceListRequest is the request payload to list all projects
  *
  * @generated from message api.v1.ProjectServiceListRequest
@@ -461,12 +517,6 @@ export class ProjectServiceInviteRequest extends Message {
          */
         this.project = "";
         /**
-         * Email of the user to invite
-         *
-         * @generated from field: string email = 2;
-         */
-        this.email = "";
-        /**
          * Role of this user in this project
          *
          * @generated from field: api.v1.ProjectRole role = 3;
@@ -491,7 +541,6 @@ ProjectServiceInviteRequest.runtime = proto3;
 ProjectServiceInviteRequest.typeName = "api.v1.ProjectServiceInviteRequest";
 ProjectServiceInviteRequest.fields = proto3.util.newFieldList(() => [
     { no: 1, name: "project", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 2, name: "email", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 3, name: "role", kind: "enum", T: proto3.getEnumType(ProjectRole) },
 ]);
 /**
@@ -502,6 +551,13 @@ ProjectServiceInviteRequest.fields = proto3.util.newFieldList(() => [
 export class ProjectServiceInviteResponse extends Message {
     constructor(data) {
         super();
+        /**
+         * InviteLink which can be sent to a potential user
+         * sample link from tailscale  https://login.tailscale.com/uinv/i3c143aaba75e512e
+         *
+         * @generated from field: string invite_link = 1;
+         */
+        this.inviteLink = "";
         proto3.util.initPartial(data, this);
     }
     static fromBinary(bytes, options) {
@@ -519,9 +575,11 @@ export class ProjectServiceInviteResponse extends Message {
 }
 ProjectServiceInviteResponse.runtime = proto3;
 ProjectServiceInviteResponse.typeName = "api.v1.ProjectServiceInviteResponse";
-ProjectServiceInviteResponse.fields = proto3.util.newFieldList(() => []);
+ProjectServiceInviteResponse.fields = proto3.util.newFieldList(() => [
+    { no: 1, name: "invite_link", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+]);
 /**
- * ProjectServiceInviteRequest is used to list invites of a project
+ * ProjectServiceListInvitesRequest is the request payload to a list invites request
  *
  * @generated from message api.v1.ProjectServiceListInvitesRequest
  */
@@ -563,11 +621,11 @@ export class ProjectServiceListInvitesResponse extends Message {
     constructor(data) {
         super();
         /**
-         * ProjectMembers not already accepted the invitation to this project
+         * Invites not already accepted the invitation to this project
          *
-         * @generated from field: repeated api.v1.ProjectMember project_members = 1;
+         * @generated from field: repeated api.v1.ProjectInvite invites = 1;
          */
-        this.projectMembers = [];
+        this.invites = [];
         proto3.util.initPartial(data, this);
     }
     static fromBinary(bytes, options) {
@@ -586,75 +644,8 @@ export class ProjectServiceListInvitesResponse extends Message {
 ProjectServiceListInvitesResponse.runtime = proto3;
 ProjectServiceListInvitesResponse.typeName = "api.v1.ProjectServiceListInvitesResponse";
 ProjectServiceListInvitesResponse.fields = proto3.util.newFieldList(() => [
-    { no: 1, name: "project_members", kind: "message", T: ProjectMember, repeated: true },
+    { no: 1, name: "invites", kind: "message", T: ProjectInvite, repeated: true },
 ]);
-/**
- * ProjectServiceInviteRefreshRequest is used to re-send an invite for a member
- *
- * @generated from message api.v1.ProjectServiceInviteRefreshRequest
- */
-export class ProjectServiceInviteRefreshRequest extends Message {
-    constructor(data) {
-        super();
-        /**
-         * Project is the uuid of the project
-         *
-         * @generated from field: string project = 1;
-         */
-        this.project = "";
-        /**
-         * Email of the user to invite
-         *
-         * @generated from field: string email = 2;
-         */
-        this.email = "";
-        proto3.util.initPartial(data, this);
-    }
-    static fromBinary(bytes, options) {
-        return new ProjectServiceInviteRefreshRequest().fromBinary(bytes, options);
-    }
-    static fromJson(jsonValue, options) {
-        return new ProjectServiceInviteRefreshRequest().fromJson(jsonValue, options);
-    }
-    static fromJsonString(jsonString, options) {
-        return new ProjectServiceInviteRefreshRequest().fromJsonString(jsonString, options);
-    }
-    static equals(a, b) {
-        return proto3.util.equals(ProjectServiceInviteRefreshRequest, a, b);
-    }
-}
-ProjectServiceInviteRefreshRequest.runtime = proto3;
-ProjectServiceInviteRefreshRequest.typeName = "api.v1.ProjectServiceInviteRefreshRequest";
-ProjectServiceInviteRefreshRequest.fields = proto3.util.newFieldList(() => [
-    { no: 1, name: "project", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 2, name: "email", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-]);
-/**
- * ProjectServiceInviteRefreshResponse is the response payload to a invite member request
- *
- * @generated from message api.v1.ProjectServiceInviteRefreshResponse
- */
-export class ProjectServiceInviteRefreshResponse extends Message {
-    constructor(data) {
-        super();
-        proto3.util.initPartial(data, this);
-    }
-    static fromBinary(bytes, options) {
-        return new ProjectServiceInviteRefreshResponse().fromBinary(bytes, options);
-    }
-    static fromJson(jsonValue, options) {
-        return new ProjectServiceInviteRefreshResponse().fromJson(jsonValue, options);
-    }
-    static fromJsonString(jsonString, options) {
-        return new ProjectServiceInviteRefreshResponse().fromJsonString(jsonString, options);
-    }
-    static equals(a, b) {
-        return proto3.util.equals(ProjectServiceInviteRefreshResponse, a, b);
-    }
-}
-ProjectServiceInviteRefreshResponse.runtime = proto3;
-ProjectServiceInviteRefreshResponse.typeName = "api.v1.ProjectServiceInviteRefreshResponse";
-ProjectServiceInviteRefreshResponse.fields = proto3.util.newFieldList(() => []);
 /**
  * ProjectServiceRemoveMemberRequest is used to remove a member from a project
  *

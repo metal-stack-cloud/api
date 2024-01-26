@@ -2,7 +2,7 @@
 // @generated from file api/v1/project.proto (package api.v1, syntax proto3)
 /* eslint-disable */
 // @ts-nocheck
-import { ProjectServiceCreateRequest, ProjectServiceCreateResponse, ProjectServiceDeleteRequest, ProjectServiceDeleteResponse, ProjectServiceGetRequest, ProjectServiceGetResponse, ProjectServiceInviteRefreshRequest, ProjectServiceInviteRefreshResponse, ProjectServiceInviteRequest, ProjectServiceInviteResponse, ProjectServiceListInvitesRequest, ProjectServiceListInvitesResponse, ProjectServiceListRequest, ProjectServiceListResponse, ProjectServiceRemoveMemberRequest, ProjectServiceRemoveMemberResponse, ProjectServiceUpdateRequest, ProjectServiceUpdateResponse } from "./project_pb.js";
+import { ProjectServiceCreateRequest, ProjectServiceCreateResponse, ProjectServiceDeleteRequest, ProjectServiceDeleteResponse, ProjectServiceGetRequest, ProjectServiceGetResponse, ProjectServiceInviteRequest, ProjectServiceInviteResponse, ProjectServiceListInvitesRequest, ProjectServiceListInvitesResponse, ProjectServiceListRequest, ProjectServiceListResponse, ProjectServiceRemoveMemberRequest, ProjectServiceRemoveMemberResponse, ProjectServiceUpdateRequest, ProjectServiceUpdateResponse } from "./project_pb.js";
 import { MethodKind } from "@bufbuild/protobuf";
 /**
  * ProjectService serves project related functions
@@ -87,17 +87,6 @@ export const ProjectService = {
             name: "ListInvites",
             I: ProjectServiceListInvitesRequest,
             O: ProjectServiceListInvitesResponse,
-            kind: MethodKind.Unary,
-        },
-        /**
-         * InviteRefresh re-sends an invite to the user and expires the previous invitation link
-         *
-         * @generated from rpc api.v1.ProjectService.InviteRefresh
-         */
-        inviteRefresh: {
-            name: "InviteRefresh",
-            I: ProjectServiceInviteRefreshRequest,
-            O: ProjectServiceInviteRefreshResponse,
             kind: MethodKind.Unary,
         },
         /**

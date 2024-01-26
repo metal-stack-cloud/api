@@ -10702,6 +10702,78 @@
           ]
         },
         {
+          "name": "ProjectInvite",
+          "longName": "ProjectInvite",
+          "fullName": "api.v1.ProjectInvite",
+          "description": "ProjectInvite defines invite to project",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "id",
+              "description": "Id is the id of the invite, typically part of the url",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "project",
+              "description": "Project is the project id for which this invite was created",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "role",
+              "description": "Role is the role in this project the user will get after accepting the invitation",
+              "label": "",
+              "type": "ProjectRole",
+              "longType": "ProjectRole",
+              "fullType": "api.v1.ProjectRole",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "joined",
+              "description": "Joined is false as long as a user has not accepted the invite",
+              "label": "",
+              "type": "bool",
+              "longType": "bool",
+              "fullType": "bool",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "joined_at",
+              "description": "JoinedAt the date when the member accepted this invite",
+              "label": "",
+              "type": "Timestamp",
+              "longType": "google.protobuf.Timestamp",
+              "fullType": "google.protobuf.Timestamp",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
           "name": "ProjectMember",
           "longName": "ProjectMember",
           "fullName": "api.v1.ProjectMember",
@@ -10982,69 +11054,6 @@
           ]
         },
         {
-          "name": "ProjectServiceInviteRefreshRequest",
-          "longName": "ProjectServiceInviteRefreshRequest",
-          "fullName": "api.v1.ProjectServiceInviteRefreshRequest",
-          "description": "ProjectServiceInviteRefreshRequest is used to re-send an invite for a member",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "project",
-              "description": "Project is the uuid of the project",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.uuid",
-                    "value": true
-                  }
-                ]
-              }
-            },
-            {
-              "name": "email",
-              "description": "Email of the user to invite",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.email",
-                    "value": true
-                  }
-                ]
-              }
-            }
-          ]
-        },
-        {
-          "name": "ProjectServiceInviteRefreshResponse",
-          "longName": "ProjectServiceInviteRefreshResponse",
-          "fullName": "api.v1.ProjectServiceInviteRefreshResponse",
-          "description": "ProjectServiceInviteRefreshResponse is the response payload to a invite member request",
-          "hasExtensions": false,
-          "hasFields": false,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": []
-        },
-        {
           "name": "ProjectServiceInviteRequest",
           "longName": "ProjectServiceInviteRequest",
           "fullName": "api.v1.ProjectServiceInviteRequest",
@@ -11075,26 +11084,6 @@
               }
             },
             {
-              "name": "email",
-              "description": "Email of the user to invite",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.email",
-                    "value": true
-                  }
-                ]
-              }
-            },
-            {
               "name": "role",
               "description": "Role of this user in this project",
               "label": "",
@@ -11114,16 +11103,29 @@
           "fullName": "api.v1.ProjectServiceInviteResponse",
           "description": "ProjectServiceInviteRequest is the response payload to a invite member request",
           "hasExtensions": false,
-          "hasFields": false,
+          "hasFields": true,
           "hasOneofs": false,
           "extensions": [],
-          "fields": []
+          "fields": [
+            {
+              "name": "invite_link",
+              "description": "InviteLink which can be sent to a potential user\nsample link from tailscale  https://login.tailscale.com/uinv/i3c143aaba75e512e",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
         },
         {
           "name": "ProjectServiceListInvitesRequest",
           "longName": "ProjectServiceListInvitesRequest",
           "fullName": "api.v1.ProjectServiceListInvitesRequest",
-          "description": "ProjectServiceInviteRequest is used to list invites of a project",
+          "description": "ProjectServiceListInvitesRequest is the request payload to a list invites request",
           "hasExtensions": false,
           "hasFields": true,
           "hasOneofs": false,
@@ -11162,12 +11164,12 @@
           "extensions": [],
           "fields": [
             {
-              "name": "project_members",
-              "description": "ProjectMembers not already accepted the invitation to this project",
+              "name": "invites",
+              "description": "Invites not already accepted the invitation to this project",
               "label": "repeated",
-              "type": "ProjectMember",
-              "longType": "ProjectMember",
-              "fullType": "api.v1.ProjectMember",
+              "type": "ProjectInvite",
+              "longType": "ProjectInvite",
+              "fullType": "api.v1.ProjectInvite",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
@@ -11516,18 +11518,6 @@
               "responseType": "ProjectServiceListInvitesResponse",
               "responseLongType": "ProjectServiceListInvitesResponse",
               "responseFullType": "api.v1.ProjectServiceListInvitesResponse",
-              "responseStreaming": false
-            },
-            {
-              "name": "InviteRefresh",
-              "description": "InviteRefresh re-sends an invite to the user and expires the previous invitation link",
-              "requestType": "ProjectServiceInviteRefreshRequest",
-              "requestLongType": "ProjectServiceInviteRefreshRequest",
-              "requestFullType": "api.v1.ProjectServiceInviteRefreshRequest",
-              "requestStreaming": false,
-              "responseType": "ProjectServiceInviteRefreshResponse",
-              "responseLongType": "ProjectServiceInviteRefreshResponse",
-              "responseFullType": "api.v1.ProjectServiceInviteRefreshResponse",
               "responseStreaming": false
             },
             {

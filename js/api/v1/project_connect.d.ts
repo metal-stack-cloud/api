@@ -1,4 +1,4 @@
-import { ProjectServiceCreateRequest, ProjectServiceCreateResponse, ProjectServiceDeleteRequest, ProjectServiceDeleteResponse, ProjectServiceGetRequest, ProjectServiceGetResponse, ProjectServiceInviteRefreshRequest, ProjectServiceInviteRefreshResponse, ProjectServiceInviteRequest, ProjectServiceInviteResponse, ProjectServiceListInvitesRequest, ProjectServiceListInvitesResponse, ProjectServiceListRequest, ProjectServiceListResponse, ProjectServiceRemoveMemberRequest, ProjectServiceRemoveMemberResponse, ProjectServiceUpdateRequest, ProjectServiceUpdateResponse } from "./project_pb.js";
+import { ProjectServiceCreateRequest, ProjectServiceCreateResponse, ProjectServiceDeleteRequest, ProjectServiceDeleteResponse, ProjectServiceGetRequest, ProjectServiceGetResponse, ProjectServiceInviteRequest, ProjectServiceInviteResponse, ProjectServiceListInvitesRequest, ProjectServiceListInvitesResponse, ProjectServiceListRequest, ProjectServiceListResponse, ProjectServiceRemoveMemberRequest, ProjectServiceRemoveMemberResponse, ProjectServiceUpdateRequest, ProjectServiceUpdateResponse } from "./project_pb.js";
 import { MethodKind } from "@bufbuild/protobuf";
 /**
  * ProjectService serves project related functions
@@ -83,17 +83,6 @@ export declare const ProjectService: {
             readonly name: "ListInvites";
             readonly I: typeof ProjectServiceListInvitesRequest;
             readonly O: typeof ProjectServiceListInvitesResponse;
-            readonly kind: MethodKind.Unary;
-        };
-        /**
-         * InviteRefresh re-sends an invite to the user and expires the previous invitation link
-         *
-         * @generated from rpc api.v1.ProjectService.InviteRefresh
-         */
-        readonly inviteRefresh: {
-            readonly name: "InviteRefresh";
-            readonly I: typeof ProjectServiceInviteRefreshRequest;
-            readonly O: typeof ProjectServiceInviteRefreshResponse;
             readonly kind: MethodKind.Unary;
         };
         /**

@@ -47,11 +47,6 @@ service ProjectService {
     option (project_roles) = PROJECT_ROLE_OWNER;
     option (auditing) = AUDITING_INCLUDED;
   }
-  // InviteRefresh re-sends an invite to the user and expires the previous invitation link
-  rpc InviteRefresh(ProjectServiceInviteRefreshRequest) returns (ProjectServiceInviteRefreshResponse) {
-    option (project_roles) = PROJECT_ROLE_OWNER;
-    option (auditing) = AUDITING_INCLUDED;
-  }
   // RemoveMember a user from a project
   rpc RemoveMember(ProjectServiceRemoveMemberRequest) returns (ProjectServiceRemoveMemberResponse) {
     option (project_roles) = PROJECT_ROLE_OWNER;
@@ -88,6 +83,20 @@ message ProjectMember {
   bool invite_pending = 3;
   // CreatedAt the date when the member was added to the project
   google.protobuf.Timestamp created_at = 10;
+}
+
+// ProjectInvite defines invite to project
+message ProjectInvite {
+  // Id is the id of the invite, typically part of the url
+  string id = 1;
+  // Project is the project id for which this invite was created
+  string project = 2;
+  // Role is the role in this project the user will get after accepting the invitation
+  ProjectRole role = 3;
+  // Joined is false as long as a user has not accepted the invite
+  bool joined = 4;
+  // JoinedAt the date when the member accepted this invite
+  google.protobuf.Timestamp joined_at = 10;
 }
 
 // ProjectServiceListRequest is the request payload to list all projects
@@ -187,17 +196,18 @@ message ProjectServiceInviteRequest {
   // Project is the uuid of the project
   string project = 1 [(validate.rules).string.uuid = true];
 
-  // Email of the user to invite
-  string email = 2 [(validate.rules).string.email = true];
-
   // Role of this user in this project
   ProjectRole role = 3;
 }
 
 // ProjectServiceInviteRequest is the response payload to a invite member request
-message ProjectServiceInviteResponse {}
+message ProjectServiceInviteResponse {
+  // InviteLink which can be sent to a potential user
+  // sample link from tailscale  https://login.tailscale.com/uinv/i3c143aaba75e512e
+  string invite_link = 1;
+}
 
-// ProjectServiceInviteRequest is used to list invites of a project
+// ProjectServiceListInvitesRequest is the request payload to a list invites request
 message ProjectServiceListInvitesRequest {
   // Project is the uuid of the project
   string project = 1 [(validate.rules).string.uuid = true];
@@ -205,21 +215,9 @@ message ProjectServiceListInvitesRequest {
 
 // ProjectServiceListInvitesResponse is the response payload to a list invites request
 message ProjectServiceListInvitesResponse {
-  // ProjectMembers not already accepted the invitation to this project
-  repeated ProjectMember project_members = 1;
+  // Invites not already accepted the invitation to this project
+  repeated ProjectInvite invites = 1;
 }
-
-// ProjectServiceInviteRefreshRequest is used to re-send an invite for a member
-message ProjectServiceInviteRefreshRequest {
-  // Project is the uuid of the project
-  string project = 1 [(validate.rules).string.uuid = true];
-
-  // Email of the user to invite
-  string email = 2 [(validate.rules).string.email = true];
-}
-
-// ProjectServiceInviteRefreshResponse is the response payload to a invite member request
-message ProjectServiceInviteRefreshResponse {}
 
 // ProjectServiceRemoveMemberRequest is used to remove a member from a project
 message ProjectServiceRemoveMemberRequest {
