@@ -85,6 +85,13 @@ export class Tenant extends Message<Tenant> {
   emailConsent = false;
 
   /**
+   * Onboarded checks if the tenant was asked to be onboared
+   *
+   * @generated from field: bool onboarded = 13;
+   */
+  onboarded = false;
+
+  /**
    * CreatedAt the date when this tenant was created
    *
    * @generated from field: google.protobuf.Timestamp created_at = 20;
@@ -123,6 +130,7 @@ export class Tenant extends Message<Tenant> {
     { no: 10, name: "phone_number", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 11, name: "terms_and_conditions", kind: "message", T: TermsAndConditions },
     { no: 12, name: "email_consent", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
+    { no: 13, name: "onboarded", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
     { no: 20, name: "created_at", kind: "message", T: Timestamp },
     { no: 21, name: "updated_at", kind: "message", T: Timestamp },
     { no: 22, name: "deleted_at", kind: "message", T: Timestamp },
@@ -552,6 +560,13 @@ export class TenantServiceUpdateRequest extends Message<TenantServiceUpdateReque
    */
   termsAndConditions?: TermsAndConditionsUpdate;
 
+  /**
+   * Onboarded checks if the tenant was asked to be onboared
+   *
+   * @generated from field: optional bool onboarded = 13;
+   */
+  onboarded?: boolean;
+
   constructor(data?: PartialMessage<TenantServiceUpdateRequest>) {
     super();
     proto3.util.initPartial(data, this);
@@ -566,6 +581,7 @@ export class TenantServiceUpdateRequest extends Message<TenantServiceUpdateReque
     { no: 5, name: "avatar_url", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
     { no: 8, name: "payment_details", kind: "message", T: PaymentDetailsUpdate, opt: true },
     { no: 9, name: "terms_and_conditions", kind: "message", T: TermsAndConditionsUpdate, opt: true },
+    { no: 13, name: "onboarded", kind: "scalar", T: 8 /* ScalarType.BOOL */, opt: true },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): TenantServiceUpdateRequest {

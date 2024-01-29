@@ -994,3 +994,93 @@ export declare class PaymentServiceHasChargeableResourcesResponse extends Messag
     static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): PaymentServiceHasChargeableResourcesResponse;
     static equals(a: PaymentServiceHasChargeableResourcesResponse | PlainMessage<PaymentServiceHasChargeableResourcesResponse> | undefined, b: PaymentServiceHasChargeableResourcesResponse | PlainMessage<PaymentServiceHasChargeableResourcesResponse> | undefined): boolean;
 }
+/**
+ * PayentServiceSetOnboardedRequest changes the onboarded status of the given customer
+ *
+ * @generated from message api.v1.PaymentServiceSetOnboardedRequest
+ */
+export declare class PaymentServiceSetOnboardedRequest extends Message<PaymentServiceSetOnboardedRequest> {
+    /**
+     * Login of the customer
+     *
+     * @generated from field: string login = 1;
+     */
+    login: string;
+    /**
+     * Onboarded indicates if the customer has seen the onboarde message
+     *
+     * @generated from field: bool onboarded = 2;
+     */
+    onboarded: boolean;
+    constructor(data?: PartialMessage<PaymentServiceSetOnboardedRequest>);
+    static readonly runtime: typeof proto3;
+    static readonly typeName = "api.v1.PaymentServiceSetOnboardedRequest";
+    static readonly fields: FieldList;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): PaymentServiceSetOnboardedRequest;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): PaymentServiceSetOnboardedRequest;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): PaymentServiceSetOnboardedRequest;
+    static equals(a: PaymentServiceSetOnboardedRequest | PlainMessage<PaymentServiceSetOnboardedRequest> | undefined, b: PaymentServiceSetOnboardedRequest | PlainMessage<PaymentServiceSetOnboardedRequest> | undefined): boolean;
+}
+/**
+ * PaymentServiceSetOnboardedResponse respond to the changed status of the given customer
+ *
+ * @generated from message api.v1.PaymentServiceSetOnboardedResponse
+ */
+export declare class PaymentServiceSetOnboardedResponse extends Message<PaymentServiceSetOnboardedResponse> {
+    /**
+     * Onboarded indicates if the customer has seen the onboarde message
+     *
+     * @generated from field: bool onboarded = 1;
+     */
+    onboarded: boolean;
+    constructor(data?: PartialMessage<PaymentServiceSetOnboardedResponse>);
+    static readonly runtime: typeof proto3;
+    static readonly typeName = "api.v1.PaymentServiceSetOnboardedResponse";
+    static readonly fields: FieldList;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): PaymentServiceSetOnboardedResponse;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): PaymentServiceSetOnboardedResponse;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): PaymentServiceSetOnboardedResponse;
+    static equals(a: PaymentServiceSetOnboardedResponse | PlainMessage<PaymentServiceSetOnboardedResponse> | undefined, b: PaymentServiceSetOnboardedResponse | PlainMessage<PaymentServiceSetOnboardedResponse> | undefined): boolean;
+}
+/**
+ * PaymentServiceGetOnboardedRequest check the onboarded status
+ *
+ * @generated from message api.v1.PaymentServiceGetOnboardedRequest
+ */
+export declare class PaymentServiceGetOnboardedRequest extends Message<PaymentServiceGetOnboardedRequest> {
+    /**
+     * Login of the customer
+     *
+     * @generated from field: string login = 1;
+     */
+    login: string;
+    constructor(data?: PartialMessage<PaymentServiceGetOnboardedRequest>);
+    static readonly runtime: typeof proto3;
+    static readonly typeName = "api.v1.PaymentServiceGetOnboardedRequest";
+    static readonly fields: FieldList;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): PaymentServiceGetOnboardedRequest;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): PaymentServiceGetOnboardedRequest;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): PaymentServiceGetOnboardedRequest;
+    static equals(a: PaymentServiceGetOnboardedRequest | PlainMessage<PaymentServiceGetOnboardedRequest> | undefined, b: PaymentServiceGetOnboardedRequest | PlainMessage<PaymentServiceGetOnboardedRequest> | undefined): boolean;
+}
+/**
+ * PaymentServiceGetOnboardedRequest returns the onboarded status
+ *
+ * @generated from message api.v1.PaymentServiceGetOnboardedResponse
+ */
+export declare class PaymentServiceGetOnboardedResponse extends Message<PaymentServiceGetOnboardedResponse> {
+    /**
+     * Onboarded indicates if the customer has seen the onboarde message
+     *
+     * @generated from field: bool onboarded = 1;
+     */
+    onboarded: boolean;
+    constructor(data?: PartialMessage<PaymentServiceGetOnboardedResponse>);
+    static readonly runtime: typeof proto3;
+    static readonly typeName = "api.v1.PaymentServiceGetOnboardedResponse";
+    static readonly fields: FieldList;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): PaymentServiceGetOnboardedResponse;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): PaymentServiceGetOnboardedResponse;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): PaymentServiceGetOnboardedResponse;
+    static equals(a: PaymentServiceGetOnboardedResponse | PlainMessage<PaymentServiceGetOnboardedResponse> | undefined, b: PaymentServiceGetOnboardedResponse | PlainMessage<PaymentServiceGetOnboardedResponse> | undefined): boolean;
+}

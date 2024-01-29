@@ -4157,6 +4157,54 @@
           ]
         },
         {
+          "name": "PaymentServiceGetOnboardedRequest",
+          "longName": "PaymentServiceGetOnboardedRequest",
+          "fullName": "api.v1.PaymentServiceGetOnboardedRequest",
+          "description": "PaymentServiceGetOnboardedRequest check the onboarded status",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "login",
+              "description": "Login of the customer",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "PaymentServiceGetOnboardedResponse",
+          "longName": "PaymentServiceGetOnboardedResponse",
+          "fullName": "api.v1.PaymentServiceGetOnboardedResponse",
+          "description": "PaymentServiceGetOnboardedRequest returns the onboarded status",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "onboarded",
+              "description": "Onboarded indicates if the customer has seen the onboarde message",
+              "label": "",
+              "type": "bool",
+              "longType": "bool",
+              "fullType": "bool",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
           "name": "PaymentServiceGetSubscriptionUsageRequest",
           "longName": "PaymentServiceGetSubscriptionUsageRequest",
           "fullName": "api.v1.PaymentServiceGetSubscriptionUsageRequest",
@@ -4442,6 +4490,66 @@
           "hasOneofs": false,
           "extensions": [],
           "fields": []
+        },
+        {
+          "name": "PaymentServiceSetOnboardedRequest",
+          "longName": "PaymentServiceSetOnboardedRequest",
+          "fullName": "api.v1.PaymentServiceSetOnboardedRequest",
+          "description": "PayentServiceSetOnboardedRequest changes the onboarded status of the given customer",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "login",
+              "description": "Login of the customer",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "onboarded",
+              "description": "Onboarded indicates if the customer has seen the onboarde message",
+              "label": "",
+              "type": "bool",
+              "longType": "bool",
+              "fullType": "bool",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "PaymentServiceSetOnboardedResponse",
+          "longName": "PaymentServiceSetOnboardedResponse",
+          "fullName": "api.v1.PaymentServiceSetOnboardedResponse",
+          "description": "PaymentServiceSetOnboardedResponse respond to the changed status of the given customer",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "onboarded",
+              "description": "Onboarded indicates if the customer has seen the onboarde message",
+              "label": "",
+              "type": "bool",
+              "longType": "bool",
+              "fullType": "bool",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
         },
         {
           "name": "Price",
@@ -4761,6 +4869,30 @@
               "responseType": "PaymentServiceHasChargeableResourcesResponse",
               "responseLongType": "PaymentServiceHasChargeableResourcesResponse",
               "responseFullType": "api.v1.PaymentServiceHasChargeableResourcesResponse",
+              "responseStreaming": false
+            },
+            {
+              "name": "SetOnboarded",
+              "description": "SetOnboarded set the onboarded status",
+              "requestType": "PaymentServiceSetOnboardedRequest",
+              "requestLongType": "PaymentServiceSetOnboardedRequest",
+              "requestFullType": "api.v1.PaymentServiceSetOnboardedRequest",
+              "requestStreaming": false,
+              "responseType": "PaymentServiceSetOnboardedResponse",
+              "responseLongType": "PaymentServiceSetOnboardedResponse",
+              "responseFullType": "api.v1.PaymentServiceSetOnboardedResponse",
+              "responseStreaming": false
+            },
+            {
+              "name": "GetOnboarded",
+              "description": "GetOnboarded get the onboarded status",
+              "requestType": "PaymentServiceGetOnboardedRequest",
+              "requestLongType": "PaymentServiceGetOnboardedRequest",
+              "requestFullType": "api.v1.PaymentServiceGetOnboardedRequest",
+              "requestStreaming": false,
+              "responseType": "PaymentServiceGetOnboardedResponse",
+              "responseLongType": "PaymentServiceGetOnboardedResponse",
+              "responseFullType": "api.v1.PaymentServiceGetOnboardedResponse",
               "responseStreaming": false
             }
           ]
@@ -7385,6 +7517,18 @@
               "defaultValue": ""
             },
             {
+              "name": "onboarded",
+              "description": "Onboarded checks if the tenant was asked to be onboared",
+              "label": "",
+              "type": "bool",
+              "longType": "bool",
+              "fullType": "bool",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
               "name": "created_at",
               "description": "CreatedAt the date when this tenant was created",
               "label": "",
@@ -7694,6 +7838,18 @@
               "ismap": false,
               "isoneof": true,
               "oneofdecl": "_terms_and_conditions",
+              "defaultValue": ""
+            },
+            {
+              "name": "onboarded",
+              "description": "Onboarded checks if the tenant was asked to be onboared",
+              "label": "optional",
+              "type": "bool",
+              "longType": "bool",
+              "fullType": "bool",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "_onboarded",
               "defaultValue": ""
             }
           ]

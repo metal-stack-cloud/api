@@ -1319,3 +1319,146 @@ PaymentServiceHasChargeableResourcesResponse.typeName = "api.v1.PaymentServiceHa
 PaymentServiceHasChargeableResourcesResponse.fields = proto3.util.newFieldList(() => [
     { no: 1, name: "has_resources", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
 ]);
+/**
+ * PayentServiceSetOnboardedRequest changes the onboarded status of the given customer
+ *
+ * @generated from message api.v1.PaymentServiceSetOnboardedRequest
+ */
+export class PaymentServiceSetOnboardedRequest extends Message {
+    constructor(data) {
+        super();
+        /**
+         * Login of the customer
+         *
+         * @generated from field: string login = 1;
+         */
+        this.login = "";
+        /**
+         * Onboarded indicates if the customer has seen the onboarde message
+         *
+         * @generated from field: bool onboarded = 2;
+         */
+        this.onboarded = false;
+        proto3.util.initPartial(data, this);
+    }
+    static fromBinary(bytes, options) {
+        return new PaymentServiceSetOnboardedRequest().fromBinary(bytes, options);
+    }
+    static fromJson(jsonValue, options) {
+        return new PaymentServiceSetOnboardedRequest().fromJson(jsonValue, options);
+    }
+    static fromJsonString(jsonString, options) {
+        return new PaymentServiceSetOnboardedRequest().fromJsonString(jsonString, options);
+    }
+    static equals(a, b) {
+        return proto3.util.equals(PaymentServiceSetOnboardedRequest, a, b);
+    }
+}
+PaymentServiceSetOnboardedRequest.runtime = proto3;
+PaymentServiceSetOnboardedRequest.typeName = "api.v1.PaymentServiceSetOnboardedRequest";
+PaymentServiceSetOnboardedRequest.fields = proto3.util.newFieldList(() => [
+    { no: 1, name: "login", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "onboarded", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
+]);
+/**
+ * PaymentServiceSetOnboardedResponse respond to the changed status of the given customer
+ *
+ * @generated from message api.v1.PaymentServiceSetOnboardedResponse
+ */
+export class PaymentServiceSetOnboardedResponse extends Message {
+    constructor(data) {
+        super();
+        /**
+         * Onboarded indicates if the customer has seen the onboarde message
+         *
+         * @generated from field: bool onboarded = 1;
+         */
+        this.onboarded = false;
+        proto3.util.initPartial(data, this);
+    }
+    static fromBinary(bytes, options) {
+        return new PaymentServiceSetOnboardedResponse().fromBinary(bytes, options);
+    }
+    static fromJson(jsonValue, options) {
+        return new PaymentServiceSetOnboardedResponse().fromJson(jsonValue, options);
+    }
+    static fromJsonString(jsonString, options) {
+        return new PaymentServiceSetOnboardedResponse().fromJsonString(jsonString, options);
+    }
+    static equals(a, b) {
+        return proto3.util.equals(PaymentServiceSetOnboardedResponse, a, b);
+    }
+}
+PaymentServiceSetOnboardedResponse.runtime = proto3;
+PaymentServiceSetOnboardedResponse.typeName = "api.v1.PaymentServiceSetOnboardedResponse";
+PaymentServiceSetOnboardedResponse.fields = proto3.util.newFieldList(() => [
+    { no: 1, name: "onboarded", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
+]);
+/**
+ * PaymentServiceGetOnboardedRequest check the onboarded status
+ *
+ * @generated from message api.v1.PaymentServiceGetOnboardedRequest
+ */
+export class PaymentServiceGetOnboardedRequest extends Message {
+    constructor(data) {
+        super();
+        /**
+         * Login of the customer
+         *
+         * @generated from field: string login = 1;
+         */
+        this.login = "";
+        proto3.util.initPartial(data, this);
+    }
+    static fromBinary(bytes, options) {
+        return new PaymentServiceGetOnboardedRequest().fromBinary(bytes, options);
+    }
+    static fromJson(jsonValue, options) {
+        return new PaymentServiceGetOnboardedRequest().fromJson(jsonValue, options);
+    }
+    static fromJsonString(jsonString, options) {
+        return new PaymentServiceGetOnboardedRequest().fromJsonString(jsonString, options);
+    }
+    static equals(a, b) {
+        return proto3.util.equals(PaymentServiceGetOnboardedRequest, a, b);
+    }
+}
+PaymentServiceGetOnboardedRequest.runtime = proto3;
+PaymentServiceGetOnboardedRequest.typeName = "api.v1.PaymentServiceGetOnboardedRequest";
+PaymentServiceGetOnboardedRequest.fields = proto3.util.newFieldList(() => [
+    { no: 1, name: "login", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+]);
+/**
+ * PaymentServiceGetOnboardedRequest returns the onboarded status
+ *
+ * @generated from message api.v1.PaymentServiceGetOnboardedResponse
+ */
+export class PaymentServiceGetOnboardedResponse extends Message {
+    constructor(data) {
+        super();
+        /**
+         * Onboarded indicates if the customer has seen the onboarde message
+         *
+         * @generated from field: bool onboarded = 1;
+         */
+        this.onboarded = false;
+        proto3.util.initPartial(data, this);
+    }
+    static fromBinary(bytes, options) {
+        return new PaymentServiceGetOnboardedResponse().fromBinary(bytes, options);
+    }
+    static fromJson(jsonValue, options) {
+        return new PaymentServiceGetOnboardedResponse().fromJson(jsonValue, options);
+    }
+    static fromJsonString(jsonString, options) {
+        return new PaymentServiceGetOnboardedResponse().fromJsonString(jsonString, options);
+    }
+    static equals(a, b) {
+        return proto3.util.equals(PaymentServiceGetOnboardedResponse, a, b);
+    }
+}
+PaymentServiceGetOnboardedResponse.runtime = proto3;
+PaymentServiceGetOnboardedResponse.typeName = "api.v1.PaymentServiceGetOnboardedResponse";
+PaymentServiceGetOnboardedResponse.fields = proto3.util.newFieldList(() => [
+    { no: 1, name: "onboarded", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
+]);

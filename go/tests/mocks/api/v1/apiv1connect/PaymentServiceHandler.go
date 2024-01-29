@@ -256,6 +256,36 @@ func (_m *PaymentServiceHandler) GetInvoices(_a0 context.Context, _a1 *connect.R
 	return r0, r1
 }
 
+// GetOnboarded provides a mock function with given fields: _a0, _a1
+func (_m *PaymentServiceHandler) GetOnboarded(_a0 context.Context, _a1 *connect.Request[apiv1.PaymentServiceGetOnboardedRequest]) (*connect.Response[apiv1.PaymentServiceGetOnboardedResponse], error) {
+	ret := _m.Called(_a0, _a1)
+
+	if len(ret) == 0 {
+		panic("no return value specified for GetOnboarded")
+	}
+
+	var r0 *connect.Response[apiv1.PaymentServiceGetOnboardedResponse]
+	var r1 error
+	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[apiv1.PaymentServiceGetOnboardedRequest]) (*connect.Response[apiv1.PaymentServiceGetOnboardedResponse], error)); ok {
+		return rf(_a0, _a1)
+	}
+	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[apiv1.PaymentServiceGetOnboardedRequest]) *connect.Response[apiv1.PaymentServiceGetOnboardedResponse]); ok {
+		r0 = rf(_a0, _a1)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*connect.Response[apiv1.PaymentServiceGetOnboardedResponse])
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(context.Context, *connect.Request[apiv1.PaymentServiceGetOnboardedRequest]) error); ok {
+		r1 = rf(_a0, _a1)
+	} else {
+		r1 = ret.Error(1)
+	}
+
+	return r0, r1
+}
+
 // GetSubscriptionUsage provides a mock function with given fields: _a0, _a1
 func (_m *PaymentServiceHandler) GetSubscriptionUsage(_a0 context.Context, _a1 *connect.Request[apiv1.PaymentServiceGetSubscriptionUsageRequest]) (*connect.Response[apiv1.PaymentServiceGetSubscriptionUsageResponse], error) {
 	ret := _m.Called(_a0, _a1)
@@ -368,6 +398,36 @@ func (_m *PaymentServiceHandler) RequestAdmission(_a0 context.Context, _a1 *conn
 	}
 
 	if rf, ok := ret.Get(1).(func(context.Context, *connect.Request[apiv1.PaymentServiceRequestAdmissionRequest]) error); ok {
+		r1 = rf(_a0, _a1)
+	} else {
+		r1 = ret.Error(1)
+	}
+
+	return r0, r1
+}
+
+// SetOnboarded provides a mock function with given fields: _a0, _a1
+func (_m *PaymentServiceHandler) SetOnboarded(_a0 context.Context, _a1 *connect.Request[apiv1.PaymentServiceSetOnboardedRequest]) (*connect.Response[apiv1.PaymentServiceSetOnboardedResponse], error) {
+	ret := _m.Called(_a0, _a1)
+
+	if len(ret) == 0 {
+		panic("no return value specified for SetOnboarded")
+	}
+
+	var r0 *connect.Response[apiv1.PaymentServiceSetOnboardedResponse]
+	var r1 error
+	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[apiv1.PaymentServiceSetOnboardedRequest]) (*connect.Response[apiv1.PaymentServiceSetOnboardedResponse], error)); ok {
+		return rf(_a0, _a1)
+	}
+	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[apiv1.PaymentServiceSetOnboardedRequest]) *connect.Response[apiv1.PaymentServiceSetOnboardedResponse]); ok {
+		r0 = rf(_a0, _a1)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*connect.Response[apiv1.PaymentServiceSetOnboardedResponse])
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(context.Context, *connect.Request[apiv1.PaymentServiceSetOnboardedRequest]) error); ok {
 		r1 = rf(_a0, _a1)
 	} else {
 		r1 = ret.Error(1)
