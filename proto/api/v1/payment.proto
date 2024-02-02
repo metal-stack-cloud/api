@@ -424,7 +424,7 @@ message PaymentServiceSetOnboardedRequest {
 
 // PaymentServiceSetOnboardedResponse respond to the changed status of the given customer
 message PaymentServiceSetOnboardedResponse {
-  // Onboarded indicates if the customer has seen the onboarde message
+  // Onboarded indicates if the customer has seen the onboarded message
   bool onboarded = 1;
 }
 
