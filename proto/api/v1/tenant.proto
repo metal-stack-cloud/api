@@ -59,6 +59,8 @@ message Tenant {
   TermsAndConditions terms_and_conditions = 11;
   // EmailConsent the tenant made
   bool email_consent = 12;
+  // Onboarded checks if the tenant was asked to be onboarded
+  bool onboarded = 13;
   // CreatedAt the date when this tenant was created
   google.protobuf.Timestamp created_at = 20;
   // UpdatedAt the date when this tenant was updated
@@ -141,6 +143,8 @@ message TenantServiceUpdateRequest {
   optional PaymentDetailsUpdate payment_details = 8;
   // TermsAndConditions of the tenant
   optional TermsAndConditionsUpdate terms_and_conditions = 9;
+  // Onboarded checks if the tenant was asked to be onboarded
+  optional bool onboarded = 13;
 }
 
 // TenantServiceDeleteRequest is the request payload of the tenant delete request

@@ -72,6 +72,14 @@ service PaymentService {
     option (tenant_roles) = TENANT_ROLE_VIEWER;
     option (auditing) = AUDITING_EXCLUDED;
   }
+  // SetOnboarded set the onboarded status
+  rpc SetOnboarded(PaymentServiceSetOnboardedRequest) returns (PaymentServiceSetOnboardedResponse) {
+    option (tenant_roles) = TENANT_ROLE_OWNER;
+  }
+  // GetOnboarded get the onboarded status
+  rpc GetOnboarded(PaymentServiceGetOnboardedRequest) returns (PaymentServiceGetOnboardedResponse) {
+    option (tenant_roles) = TENANT_ROLE_OWNER;
+  }
 }
 
 // PaymentCustomer is a customer at the payment processor
@@ -404,4 +412,30 @@ message PaymentServiceHasChargeableResourcesRequest {
 message PaymentServiceHasChargeableResourcesResponse {
   // HasResources indicates if the customer has actually chargable resources
   bool has_resources = 1;
+}
+
+// PayentServiceSetOnboardedRequest changes the onboarded status of the given customer
+message PaymentServiceSetOnboardedRequest {
+  // Login of the customer
+  string login = 1;
+  // Onboarded indicates if the customer has seen the onboarde message
+  bool onboarded = 2;
+}
+
+// PaymentServiceSetOnboardedResponse respond to the changed status of the given customer
+message PaymentServiceSetOnboardedResponse {
+  // Onboarded indicates if the customer has seen the onboarded message
+  bool onboarded = 1;
+}
+
+// PaymentServiceGetOnboardedRequest check the onboarded status
+message PaymentServiceGetOnboardedRequest {
+  // Login of the customer
+  string login = 1;
+}
+
+// PaymentServiceGetOnboardedRequest returns the onboarded status
+message PaymentServiceGetOnboardedResponse {
+  // Onboarded indicates if the customer has seen the onboarded message
+  bool onboarded = 1;
 }

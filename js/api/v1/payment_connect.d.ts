@@ -1,4 +1,4 @@
-import { PaymentServiceCheckAdmittedRequest, PaymentServiceCheckAdmittedResponse, PaymentServiceCheckIfCustomerExistsRequest, PaymentServiceCheckIfCustomerExistsResponse, PaymentServiceCreateOrUpdateCustomerRequest, PaymentServiceCreateOrUpdateCustomerResponse, PaymentServiceDeletePaymentMethodRequest, PaymentServiceDeletePaymentMethodResponse, PaymentServiceGetCustomerRequest, PaymentServiceGetCustomerResponse, PaymentServiceGetCustomerWithLoginRequest, PaymentServiceGetCustomerWithLoginResponse, PaymentServiceGetDefaultPricesRequest, PaymentServiceGetDefaultPricesResponse, PaymentServiceGetInvoicesRequest, PaymentServiceGetInvoicesResponse, PaymentServiceGetSubscriptionUsageRequest, PaymentServiceGetSubscriptionUsageResponse, PaymentServiceHasChargeableResourcesRequest, PaymentServiceHasChargeableResourcesResponse, PaymentServiceHasPaymentMethodRequest, PaymentServiceHasPaymentMethodResponse, PaymentServiceRequestAdmissionRequest, PaymentServiceRequestAdmissionResponse } from "./payment_pb.js";
+import { PaymentServiceCheckAdmittedRequest, PaymentServiceCheckAdmittedResponse, PaymentServiceCheckIfCustomerExistsRequest, PaymentServiceCheckIfCustomerExistsResponse, PaymentServiceCreateOrUpdateCustomerRequest, PaymentServiceCreateOrUpdateCustomerResponse, PaymentServiceDeletePaymentMethodRequest, PaymentServiceDeletePaymentMethodResponse, PaymentServiceGetCustomerRequest, PaymentServiceGetCustomerResponse, PaymentServiceGetCustomerWithLoginRequest, PaymentServiceGetCustomerWithLoginResponse, PaymentServiceGetDefaultPricesRequest, PaymentServiceGetDefaultPricesResponse, PaymentServiceGetInvoicesRequest, PaymentServiceGetInvoicesResponse, PaymentServiceGetOnboardedRequest, PaymentServiceGetOnboardedResponse, PaymentServiceGetSubscriptionUsageRequest, PaymentServiceGetSubscriptionUsageResponse, PaymentServiceHasChargeableResourcesRequest, PaymentServiceHasChargeableResourcesResponse, PaymentServiceHasPaymentMethodRequest, PaymentServiceHasPaymentMethodResponse, PaymentServiceRequestAdmissionRequest, PaymentServiceRequestAdmissionResponse, PaymentServiceSetOnboardedRequest, PaymentServiceSetOnboardedResponse } from "./payment_pb.js";
 import { MethodKind } from "@bufbuild/protobuf";
 /**
  * PaymentService serves payment related functions
@@ -138,6 +138,28 @@ export declare const PaymentService: {
             readonly name: "HasChargeableResources";
             readonly I: typeof PaymentServiceHasChargeableResourcesRequest;
             readonly O: typeof PaymentServiceHasChargeableResourcesResponse;
+            readonly kind: MethodKind.Unary;
+        };
+        /**
+         * SetOnboarded set the onboarded status
+         *
+         * @generated from rpc api.v1.PaymentService.SetOnboarded
+         */
+        readonly setOnboarded: {
+            readonly name: "SetOnboarded";
+            readonly I: typeof PaymentServiceSetOnboardedRequest;
+            readonly O: typeof PaymentServiceSetOnboardedResponse;
+            readonly kind: MethodKind.Unary;
+        };
+        /**
+         * GetOnboarded get the onboarded status
+         *
+         * @generated from rpc api.v1.PaymentService.GetOnboarded
+         */
+        readonly getOnboarded: {
+            readonly name: "GetOnboarded";
+            readonly I: typeof PaymentServiceGetOnboardedRequest;
+            readonly O: typeof PaymentServiceGetOnboardedResponse;
             readonly kind: MethodKind.Unary;
         };
     };
