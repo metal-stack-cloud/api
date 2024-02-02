@@ -143,7 +143,7 @@ message TenantServiceUpdateRequest {
   optional PaymentDetailsUpdate payment_details = 8;
   // TermsAndConditions of the tenant
   optional TermsAndConditionsUpdate terms_and_conditions = 9;
-  // Onboarded checks if the tenant was asked to be onboared
+  // Onboarded checks if the tenant was asked to be onboarded
   optional bool onboarded = 13;
 }
 
