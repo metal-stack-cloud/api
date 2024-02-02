@@ -2122,7 +2122,7 @@ type PaymentServiceSetOnboardedResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Onboarded indicates if the customer has seen the onboarde message
+	// Onboarded indicates if the customer has seen the onboarded message
 	Onboarded bool `protobuf:"varint,1,opt,name=onboarded,proto3" json:"onboarded,omitempty"`
 }
 
@@ -2220,7 +2220,7 @@ type PaymentServiceGetOnboardedResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Onboarded indicates if the customer has seen the onboarde message
+	// Onboarded indicates if the customer has seen the onboarded message
 	Onboarded bool `protobuf:"varint,1,opt,name=onboarded,proto3" json:"onboarded,omitempty"`
 }
 

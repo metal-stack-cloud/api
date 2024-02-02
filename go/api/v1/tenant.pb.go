@@ -47,7 +47,7 @@ type Tenant struct {
 	TermsAndConditions *TermsAndConditions `protobuf:"bytes,11,opt,name=terms_and_conditions,json=termsAndConditions,proto3" json:"terms_and_conditions,omitempty"`
 	// EmailConsent the tenant made
 	EmailConsent bool `protobuf:"varint,12,opt,name=email_consent,json=emailConsent,proto3" json:"email_consent,omitempty"`
-	// Onboarded checks if the tenant was asked to be onboared
+	// Onboarded checks if the tenant was asked to be onboarded
 	Onboarded bool `protobuf:"varint,13,opt,name=onboarded,proto3" json:"onboarded,omitempty"`
 	// CreatedAt the date when this tenant was created
 	CreatedAt *timestamppb.Timestamp `protobuf:"bytes,20,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
@@ -629,7 +629,7 @@ type TenantServiceUpdateRequest struct {
 	PaymentDetails *PaymentDetailsUpdate `protobuf:"bytes,8,opt,name=payment_details,json=paymentDetails,proto3,oneof" json:"payment_details,omitempty"`
 	// TermsAndConditions of the tenant
 	TermsAndConditions *TermsAndConditionsUpdate `protobuf:"bytes,9,opt,name=terms_and_conditions,json=termsAndConditions,proto3,oneof" json:"terms_and_conditions,omitempty"`
-	// Onboarded checks if the tenant was asked to be onboared
+	// Onboarded checks if the tenant was asked to be onboarded
 	Onboarded *bool `protobuf:"varint,13,opt,name=onboarded,proto3,oneof" json:"onboarded,omitempty"`
 }
 

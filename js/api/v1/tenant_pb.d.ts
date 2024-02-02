@@ -69,7 +69,7 @@ export declare class Tenant extends Message<Tenant> {
      */
     emailConsent: boolean;
     /**
-     * Onboarded checks if the tenant was asked to be onboared
+     * Onboarded checks if the tenant was asked to be onboarded
      *
      * @generated from field: bool onboarded = 13;
      */
@@ -345,7 +345,7 @@ export declare class TenantServiceUpdateRequest extends Message<TenantServiceUpd
      */
     termsAndConditions?: TermsAndConditionsUpdate;
     /**
-     * Onboarded checks if the tenant was asked to be onboared
+     * Onboarded checks if the tenant was asked to be onboarded
      *
      * @generated from field: optional bool onboarded = 13;
      */

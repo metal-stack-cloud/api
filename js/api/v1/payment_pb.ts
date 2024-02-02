@@ -1791,7 +1791,7 @@ export class PaymentServiceSetOnboardedRequest extends Message<PaymentServiceSet
  */
 export class PaymentServiceSetOnboardedResponse extends Message<PaymentServiceSetOnboardedResponse> {
   /**
-   * Onboarded indicates if the customer has seen the onboarde message
+   * Onboarded indicates if the customer has seen the onboarded message
    *
    * @generated from field: bool onboarded = 1;
    */
@@ -1873,7 +1873,7 @@ export class PaymentServiceGetOnboardedRequest extends Message<PaymentServiceGet
  */
 export class PaymentServiceGetOnboardedResponse extends Message<PaymentServiceGetOnboardedResponse> {
   /**
-   * Onboarded indicates if the customer has seen the onboarde message
+   * Onboarded indicates if the customer has seen the onboarded message
    *
    * @generated from field: bool onboarded = 1;
    */

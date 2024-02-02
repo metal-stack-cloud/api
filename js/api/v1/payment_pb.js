@@ -1369,7 +1369,7 @@ export class PaymentServiceSetOnboardedResponse extends Message {
     constructor(data) {
         super();
         /**
-         * Onboarded indicates if the customer has seen the onboarde message
+         * Onboarded indicates if the customer has seen the onboarded message
          *
          * @generated from field: bool onboarded = 1;
          */
@@ -1437,7 +1437,7 @@ export class PaymentServiceGetOnboardedResponse extends Message {
     constructor(data) {
         super();
         /**
-         * Onboarded indicates if the customer has seen the onboarde message
+         * Onboarded indicates if the customer has seen the onboarded message
          *
          * @generated from field: bool onboarded = 1;
          */

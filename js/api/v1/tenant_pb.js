@@ -62,7 +62,7 @@ export class Tenant extends Message {
          */
         this.emailConsent = false;
         /**
-         * Onboarded checks if the tenant was asked to be onboared
+         * Onboarded checks if the tenant was asked to be onboarded
          *
          * @generated from field: bool onboarded = 13;
          */
