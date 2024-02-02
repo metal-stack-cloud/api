@@ -59,7 +59,7 @@ message Tenant {
   TermsAndConditions terms_and_conditions = 11;
   // EmailConsent the tenant made
   bool email_consent = 12;
-  // Onboarded checks if the tenant was asked to be onboared
+  // Onboarded checks if the tenant was asked to be onboarded
   bool onboarded = 13;
   // CreatedAt the date when this tenant was created
   google.protobuf.Timestamp created_at = 20;
