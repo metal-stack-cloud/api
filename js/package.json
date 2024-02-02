@@ -10,7 +10,6 @@
   "author": "",
   "license": "MIT",
   "type": "module",
-  "version": "1.0.0",
   "dependencies": {
     "@bufbuild/connect-web": "^0.13.0",
     "@bufbuild/protobuf": "^1.6.0"
