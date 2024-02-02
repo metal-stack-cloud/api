@@ -4086,3 +4086,433 @@ var _ interface {
 	Cause() error
 	ErrorName() string
 } = PaymentServiceHasChargeableResourcesResponseValidationError{}
+
+// Validate checks the field values on PaymentServiceSetOnboardedRequest with
+// the rules defined in the proto definition for this message. If any rules
+// are violated, the first error encountered is returned, or nil if there are
+// no violations.
+func (m *PaymentServiceSetOnboardedRequest) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on PaymentServiceSetOnboardedRequest
+// with the rules defined in the proto definition for this message. If any
+// rules are violated, the result is a list of violation errors wrapped in
+// PaymentServiceSetOnboardedRequestMultiError, or nil if none found.
+func (m *PaymentServiceSetOnboardedRequest) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *PaymentServiceSetOnboardedRequest) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	// no validation rules for Login
+
+	// no validation rules for Onboarded
+
+	if len(errors) > 0 {
+		return PaymentServiceSetOnboardedRequestMultiError(errors)
+	}
+
+	return nil
+}
+
+// PaymentServiceSetOnboardedRequestMultiError is an error wrapping multiple
+// validation errors returned by
+// PaymentServiceSetOnboardedRequest.ValidateAll() if the designated
+// constraints aren't met.
+type PaymentServiceSetOnboardedRequestMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m PaymentServiceSetOnboardedRequestMultiError) Error() string {
+	var msgs []string
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m PaymentServiceSetOnboardedRequestMultiError) AllErrors() []error { return m }
+
+// PaymentServiceSetOnboardedRequestValidationError is the validation error
+// returned by PaymentServiceSetOnboardedRequest.Validate if the designated
+// constraints aren't met.
+type PaymentServiceSetOnboardedRequestValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e PaymentServiceSetOnboardedRequestValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e PaymentServiceSetOnboardedRequestValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e PaymentServiceSetOnboardedRequestValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e PaymentServiceSetOnboardedRequestValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e PaymentServiceSetOnboardedRequestValidationError) ErrorName() string {
+	return "PaymentServiceSetOnboardedRequestValidationError"
+}
+
+// Error satisfies the builtin error interface
+func (e PaymentServiceSetOnboardedRequestValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sPaymentServiceSetOnboardedRequest.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = PaymentServiceSetOnboardedRequestValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = PaymentServiceSetOnboardedRequestValidationError{}
+
+// Validate checks the field values on PaymentServiceSetOnboardedResponse with
+// the rules defined in the proto definition for this message. If any rules
+// are violated, the first error encountered is returned, or nil if there are
+// no violations.
+func (m *PaymentServiceSetOnboardedResponse) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on PaymentServiceSetOnboardedResponse
+// with the rules defined in the proto definition for this message. If any
+// rules are violated, the result is a list of violation errors wrapped in
+// PaymentServiceSetOnboardedResponseMultiError, or nil if none found.
+func (m *PaymentServiceSetOnboardedResponse) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *PaymentServiceSetOnboardedResponse) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	// no validation rules for Onboarded
+
+	if len(errors) > 0 {
+		return PaymentServiceSetOnboardedResponseMultiError(errors)
+	}
+
+	return nil
+}
+
+// PaymentServiceSetOnboardedResponseMultiError is an error wrapping multiple
+// validation errors returned by
+// PaymentServiceSetOnboardedResponse.ValidateAll() if the designated
+// constraints aren't met.
+type PaymentServiceSetOnboardedResponseMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m PaymentServiceSetOnboardedResponseMultiError) Error() string {
+	var msgs []string
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m PaymentServiceSetOnboardedResponseMultiError) AllErrors() []error { return m }
+
+// PaymentServiceSetOnboardedResponseValidationError is the validation error
+// returned by PaymentServiceSetOnboardedResponse.Validate if the designated
+// constraints aren't met.
+type PaymentServiceSetOnboardedResponseValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e PaymentServiceSetOnboardedResponseValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e PaymentServiceSetOnboardedResponseValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e PaymentServiceSetOnboardedResponseValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e PaymentServiceSetOnboardedResponseValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e PaymentServiceSetOnboardedResponseValidationError) ErrorName() string {
+	return "PaymentServiceSetOnboardedResponseValidationError"
+}
+
+// Error satisfies the builtin error interface
+func (e PaymentServiceSetOnboardedResponseValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sPaymentServiceSetOnboardedResponse.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = PaymentServiceSetOnboardedResponseValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = PaymentServiceSetOnboardedResponseValidationError{}
+
+// Validate checks the field values on PaymentServiceGetOnboardedRequest with
+// the rules defined in the proto definition for this message. If any rules
+// are violated, the first error encountered is returned, or nil if there are
+// no violations.
+func (m *PaymentServiceGetOnboardedRequest) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on PaymentServiceGetOnboardedRequest
+// with the rules defined in the proto definition for this message. If any
+// rules are violated, the result is a list of violation errors wrapped in
+// PaymentServiceGetOnboardedRequestMultiError, or nil if none found.
+func (m *PaymentServiceGetOnboardedRequest) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *PaymentServiceGetOnboardedRequest) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	// no validation rules for Login
+
+	if len(errors) > 0 {
+		return PaymentServiceGetOnboardedRequestMultiError(errors)
+	}
+
+	return nil
+}
+
+// PaymentServiceGetOnboardedRequestMultiError is an error wrapping multiple
+// validation errors returned by
+// PaymentServiceGetOnboardedRequest.ValidateAll() if the designated
+// constraints aren't met.
+type PaymentServiceGetOnboardedRequestMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m PaymentServiceGetOnboardedRequestMultiError) Error() string {
+	var msgs []string
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m PaymentServiceGetOnboardedRequestMultiError) AllErrors() []error { return m }
+
+// PaymentServiceGetOnboardedRequestValidationError is the validation error
+// returned by PaymentServiceGetOnboardedRequest.Validate if the designated
+// constraints aren't met.
+type PaymentServiceGetOnboardedRequestValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e PaymentServiceGetOnboardedRequestValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e PaymentServiceGetOnboardedRequestValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e PaymentServiceGetOnboardedRequestValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e PaymentServiceGetOnboardedRequestValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e PaymentServiceGetOnboardedRequestValidationError) ErrorName() string {
+	return "PaymentServiceGetOnboardedRequestValidationError"
+}
+
+// Error satisfies the builtin error interface
+func (e PaymentServiceGetOnboardedRequestValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sPaymentServiceGetOnboardedRequest.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = PaymentServiceGetOnboardedRequestValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = PaymentServiceGetOnboardedRequestValidationError{}
+
+// Validate checks the field values on PaymentServiceGetOnboardedResponse with
+// the rules defined in the proto definition for this message. If any rules
+// are violated, the first error encountered is returned, or nil if there are
+// no violations.
+func (m *PaymentServiceGetOnboardedResponse) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on PaymentServiceGetOnboardedResponse
+// with the rules defined in the proto definition for this message. If any
+// rules are violated, the result is a list of violation errors wrapped in
+// PaymentServiceGetOnboardedResponseMultiError, or nil if none found.
+func (m *PaymentServiceGetOnboardedResponse) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *PaymentServiceGetOnboardedResponse) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	// no validation rules for Onboarded
+
+	if len(errors) > 0 {
+		return PaymentServiceGetOnboardedResponseMultiError(errors)
+	}
+
+	return nil
+}
+
+// PaymentServiceGetOnboardedResponseMultiError is an error wrapping multiple
+// validation errors returned by
+// PaymentServiceGetOnboardedResponse.ValidateAll() if the designated
+// constraints aren't met.
+type PaymentServiceGetOnboardedResponseMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m PaymentServiceGetOnboardedResponseMultiError) Error() string {
+	var msgs []string
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m PaymentServiceGetOnboardedResponseMultiError) AllErrors() []error { return m }
+
+// PaymentServiceGetOnboardedResponseValidationError is the validation error
+// returned by PaymentServiceGetOnboardedResponse.Validate if the designated
+// constraints aren't met.
+type PaymentServiceGetOnboardedResponseValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e PaymentServiceGetOnboardedResponseValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e PaymentServiceGetOnboardedResponseValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e PaymentServiceGetOnboardedResponseValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e PaymentServiceGetOnboardedResponseValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e PaymentServiceGetOnboardedResponseValidationError) ErrorName() string {
+	return "PaymentServiceGetOnboardedResponseValidationError"
+}
+
+// Error satisfies the builtin error interface
+func (e PaymentServiceGetOnboardedResponseValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sPaymentServiceGetOnboardedResponse.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = PaymentServiceGetOnboardedResponseValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = PaymentServiceGetOnboardedResponseValidationError{}

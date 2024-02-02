@@ -61,6 +61,12 @@ export class Tenant extends Message {
          * @generated from field: bool email_consent = 12;
          */
         this.emailConsent = false;
+        /**
+         * Onboarded checks if the tenant was asked to be onboarded
+         *
+         * @generated from field: bool onboarded = 13;
+         */
+        this.onboarded = false;
         proto3.util.initPartial(data, this);
     }
     static fromBinary(bytes, options) {
@@ -89,6 +95,7 @@ Tenant.fields = proto3.util.newFieldList(() => [
     { no: 10, name: "phone_number", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 11, name: "terms_and_conditions", kind: "message", T: TermsAndConditions },
     { no: 12, name: "email_consent", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
+    { no: 13, name: "onboarded", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
     { no: 20, name: "created_at", kind: "message", T: Timestamp },
     { no: 21, name: "updated_at", kind: "message", T: Timestamp },
     { no: 22, name: "deleted_at", kind: "message", T: Timestamp },
@@ -372,6 +379,7 @@ TenantServiceUpdateRequest.fields = proto3.util.newFieldList(() => [
     { no: 5, name: "avatar_url", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
     { no: 8, name: "payment_details", kind: "message", T: PaymentDetailsUpdate, opt: true },
     { no: 9, name: "terms_and_conditions", kind: "message", T: TermsAndConditionsUpdate, opt: true },
+    { no: 13, name: "onboarded", kind: "scalar", T: 8 /* ScalarType.BOOL */, opt: true },
 ]);
 /**
  * TenantServiceDeleteRequest is the request payload of the tenant delete request

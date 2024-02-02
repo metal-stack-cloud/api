@@ -130,6 +130,8 @@ func (m *Tenant) validate(all bool) error {
 
 	// no validation rules for EmailConsent
 
+	// no validation rules for Onboarded
+
 	if all {
 		switch v := interface{}(m.GetCreatedAt()).(type) {
 		case interface{ ValidateAll() error }:
@@ -1297,6 +1299,10 @@ func (m *TenantServiceUpdateRequest) validate(all bool) error {
 			}
 		}
 
+	}
+
+	if m.Onboarded != nil {
+		// no validation rules for Onboarded
 	}
 
 	if len(errors) > 0 {

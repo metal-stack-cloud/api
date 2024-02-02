@@ -69,6 +69,12 @@ export declare class Tenant extends Message<Tenant> {
      */
     emailConsent: boolean;
     /**
+     * Onboarded checks if the tenant was asked to be onboarded
+     *
+     * @generated from field: bool onboarded = 13;
+     */
+    onboarded: boolean;
+    /**
      * CreatedAt the date when this tenant was created
      *
      * @generated from field: google.protobuf.Timestamp created_at = 20;
@@ -338,6 +344,12 @@ export declare class TenantServiceUpdateRequest extends Message<TenantServiceUpd
      * @generated from field: optional api.v1.TermsAndConditionsUpdate terms_and_conditions = 9;
      */
     termsAndConditions?: TermsAndConditionsUpdate;
+    /**
+     * Onboarded checks if the tenant was asked to be onboarded
+     *
+     * @generated from field: optional bool onboarded = 13;
+     */
+    onboarded?: boolean;
     constructor(data?: PartialMessage<TenantServiceUpdateRequest>);
     static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.TenantServiceUpdateRequest";
