@@ -1,6 +1,6 @@
 module github.com/metal-stack-cloud/api
 
-go 1.22
+go 1.21
 
 require (
 	connectrpc.com/connect v1.14.0
