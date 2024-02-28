@@ -2420,17 +2420,7 @@ func (m *ProjectServiceRemoveMemberRequest) validate(all bool) error {
 		errors = append(errors, err)
 	}
 
-	if err := m._validateUuid(m.GetMemberId()); err != nil {
-		err = ProjectServiceRemoveMemberRequestValidationError{
-			field:  "MemberId",
-			reason: "value must be a valid UUID",
-			cause:  err,
-		}
-		if !all {
-			return err
-		}
-		errors = append(errors, err)
-	}
+	// no validation rules for MemberId
 
 	if len(errors) > 0 {
 		return ProjectServiceRemoveMemberRequestMultiError(errors)

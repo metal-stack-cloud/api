@@ -236,7 +236,7 @@ message ProjectServiceRemoveMemberRequest {
   string project = 1 [(validate.rules).string.uuid = true];
 
   // MemberID is the id of the member to remove from this project
-  string member_id = 2 [(validate.rules).string.uuid = true];
+  string member_id = 2;
 }
 
 // ProjectServiceRemoveMemberResponse is the response payload to a remove member request
