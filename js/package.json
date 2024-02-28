@@ -12,7 +12,7 @@
   "type": "module",
   "dependencies": {
     "@bufbuild/connect-web": "^0.13.0",
-    "@bufbuild/protobuf": "^1.6.0"
+    "@bufbuild/protobuf": "^1.7.2"
   },
   "devDependencies": {
     "typescript": "^5.3.3"

@@ -1,5 +1,5 @@
 import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
-import { Message, proto3 } from "@bufbuild/protobuf";
+import { Message, MethodOptions, proto3 } from "@bufbuild/protobuf";
 /**
  * OAuthProvider defines which login providers are supported
  *
@@ -271,34 +271,34 @@ export declare class Paging extends Message<Paging> {
  *
  * @generated from extension: repeated api.v1.TenantRole tenant_roles = 51000;
  */
-export declare const tenant_roles: any;
+export declare const tenant_roles: import("@bufbuild/protobuf").Extension<MethodOptions, TenantRole[]>;
 /**
  * ProjectRoles are used to define which project role a logged in user must provide to call this method
  *
  * @generated from extension: repeated api.v1.ProjectRole project_roles = 51001;
  */
-export declare const project_roles: any;
+export declare const project_roles: import("@bufbuild/protobuf").Extension<MethodOptions, ProjectRole[]>;
 /**
  * AdminRoles are used to define which admin role a logged in user must provide to call this method
  *
  * @generated from extension: repeated api.v1.AdminRole admin_roles = 51002;
  */
-export declare const admin_roles: any;
+export declare const admin_roles: import("@bufbuild/protobuf").Extension<MethodOptions, AdminRole[]>;
 /**
  * Visibility defines the visibility of this method, this is used to have public, private or self visible methods
  *
  * @generated from extension: api.v1.Visibility visibility = 51003;
  */
-export declare const visibility: any;
+export declare const visibility: import("@bufbuild/protobuf").Extension<MethodOptions, Visibility>;
 /**
  * Chargeable if this is set on a method, calling it requires that billing credentials are present
  *
  * @generated from extension: api.v1.Chargeable chargeable = 51004;
  */
-export declare const chargeable: any;
+export declare const chargeable: import("@bufbuild/protobuf").Extension<MethodOptions, Chargeable>;
 /**
  * Auditing defines if calls to this method should be audited or not
  *
  * @generated from extension: api.v1.Auditing auditing = 51005;
  */
-export declare const auditing: any;
+export declare const auditing: import("@bufbuild/protobuf").Extension<MethodOptions, Auditing>;
