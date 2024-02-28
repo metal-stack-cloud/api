@@ -11325,6 +11325,54 @@
           "fields": []
         },
         {
+          "name": "ProjectServiceInviteGetRequest",
+          "longName": "ProjectServiceInviteGetRequest",
+          "fullName": "api.v1.ProjectServiceInviteGetRequest",
+          "description": "ProjectServiceInviteGetRequest is the request payload to get a invite",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "secret",
+              "description": "Secret of the invite to list",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "ProjectServiceInviteGetResponse",
+          "longName": "ProjectServiceInviteGetResponse",
+          "fullName": "api.v1.ProjectServiceInviteGetResponse",
+          "description": "ProjectServiceInviteGetResponse is the response payload to a get invite request",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "invite",
+              "description": "Invite is the invite",
+              "label": "",
+              "type": "ProjectInvite",
+              "longType": "ProjectInvite",
+              "fullType": "api.v1.ProjectInvite",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
           "name": "ProjectServiceInviteRequest",
           "longName": "ProjectServiceInviteRequest",
           "fullName": "api.v1.ProjectServiceInviteRequest",
@@ -11588,6 +11636,86 @@
           "fields": []
         },
         {
+          "name": "ProjectServiceUpdateMemberRequest",
+          "longName": "ProjectServiceUpdateMemberRequest",
+          "fullName": "api.v1.ProjectServiceUpdateMemberRequest",
+          "description": "ProjectServiceUpdateMemberRequest is used to update a member of a project",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "project",
+              "description": "Project is the uuid of the project",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": "",
+              "options": {
+                "validate.rules": [
+                  {
+                    "name": "string.uuid",
+                    "value": true
+                  }
+                ]
+              }
+            },
+            {
+              "name": "member_id",
+              "description": "MemberID is the id of the member to remove from this project",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "role",
+              "description": "Role is the role in this project the user will get after the update",
+              "label": "",
+              "type": "ProjectRole",
+              "longType": "ProjectRole",
+              "fullType": "api.v1.ProjectRole",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "ProjectServiceUpdateMemberResponse",
+          "longName": "ProjectServiceUpdateMemberResponse",
+          "fullName": "api.v1.ProjectServiceUpdateMemberResponse",
+          "description": "ProjectServiceUpdateMemberResponse is the response payload to a update member request",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "project_member",
+              "description": "ProjectMember is the updated project member",
+              "label": "",
+              "type": "ProjectMember",
+              "longType": "ProjectMember",
+              "fullType": "api.v1.ProjectMember",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
           "name": "ProjectServiceUpdateRequest",
           "longName": "ProjectServiceUpdateRequest",
           "fullName": "api.v1.ProjectServiceUpdateRequest",
@@ -11761,7 +11889,7 @@
             },
             {
               "name": "RemoveMember",
-              "description": "RemoveMember a user from a project",
+              "description": "RemoveMember remove a user from a project",
               "requestType": "ProjectServiceRemoveMemberRequest",
               "requestLongType": "ProjectServiceRemoveMemberRequest",
               "requestFullType": "api.v1.ProjectServiceRemoveMemberRequest",
@@ -11769,6 +11897,18 @@
               "responseType": "ProjectServiceRemoveMemberResponse",
               "responseLongType": "ProjectServiceRemoveMemberResponse",
               "responseFullType": "api.v1.ProjectServiceRemoveMemberResponse",
+              "responseStreaming": false
+            },
+            {
+              "name": "UpdateMember",
+              "description": "UpdateMember update a user for a project",
+              "requestType": "ProjectServiceUpdateMemberRequest",
+              "requestLongType": "ProjectServiceUpdateMemberRequest",
+              "requestFullType": "api.v1.ProjectServiceUpdateMemberRequest",
+              "requestStreaming": false,
+              "responseType": "ProjectServiceUpdateMemberResponse",
+              "responseLongType": "ProjectServiceUpdateMemberResponse",
+              "responseFullType": "api.v1.ProjectServiceUpdateMemberResponse",
               "responseStreaming": false
             },
             {
@@ -11817,6 +11957,18 @@
               "responseType": "ProjectServiceInvitesListResponse",
               "responseLongType": "ProjectServiceInvitesListResponse",
               "responseFullType": "api.v1.ProjectServiceInvitesListResponse",
+              "responseStreaming": false
+            },
+            {
+              "name": "InviteGet",
+              "description": "InviteGet get an invite",
+              "requestType": "ProjectServiceInviteGetRequest",
+              "requestLongType": "ProjectServiceInviteGetRequest",
+              "requestFullType": "api.v1.ProjectServiceInviteGetRequest",
+              "requestStreaming": false,
+              "responseType": "ProjectServiceInviteGetResponse",
+              "responseLongType": "ProjectServiceInviteGetResponse",
+              "responseFullType": "api.v1.ProjectServiceInviteGetResponse",
               "responseStreaming": false
             }
           ]

@@ -37,8 +37,13 @@ service ProjectService {
     option (project_roles) = PROJECT_ROLE_EDITOR;
     option (auditing) = AUDITING_INCLUDED;
   }
-  // RemoveMember a user from a project
+  // RemoveMember remove a user from a project
   rpc RemoveMember(ProjectServiceRemoveMemberRequest) returns (ProjectServiceRemoveMemberResponse) {
+    option (project_roles) = PROJECT_ROLE_OWNER;
+    option (auditing) = AUDITING_INCLUDED;
+  }
+  // UpdateMember update a user for a project
+  rpc UpdateMember(ProjectServiceUpdateMemberRequest) returns (ProjectServiceUpdateMemberResponse) {
     option (project_roles) = PROJECT_ROLE_OWNER;
     option (auditing) = AUDITING_INCLUDED;
   }
@@ -60,7 +65,12 @@ service ProjectService {
   // InvitesList list all invites to a project
   rpc InvitesList(ProjectServiceInvitesListRequest) returns (ProjectServiceInvitesListResponse) {
     option (project_roles) = PROJECT_ROLE_OWNER;
-    option (auditing) = AUDITING_INCLUDED;
+    option (auditing) = AUDITING_EXCLUDED;
+  }
+  // InviteGet get an invite
+  rpc InviteGet(ProjectServiceInviteGetRequest) returns (ProjectServiceInviteGetResponse) {
+    option (visibility) = VISIBILITY_SELF;
+    option (auditing) = AUDITING_EXCLUDED;
   }
 }
 
@@ -230,17 +240,44 @@ message ProjectServiceInvitesListResponse {
   repeated ProjectInvite invites = 1;
 }
 
+// ProjectServiceInviteGetRequest is the request payload to get a invite
+message ProjectServiceInviteGetRequest {
+  // Secret of the invite to list
+  string secret = 1;
+}
+
+// ProjectServiceInviteGetResponse is the response payload to a get invite request
+message ProjectServiceInviteGetResponse {
+  // Invite is the invite
+  ProjectInvite invite = 1;
+}
+
 // ProjectServiceRemoveMemberRequest is used to remove a member from a project
 message ProjectServiceRemoveMemberRequest {
   // Project is the uuid of the project
   string project = 1 [(validate.rules).string.uuid = true];
-
   // MemberID is the id of the member to remove from this project
   string member_id = 2;
 }
 
 // ProjectServiceRemoveMemberResponse is the response payload to a remove member request
 message ProjectServiceRemoveMemberResponse {}
+
+// ProjectServiceUpdateMemberRequest is used to update a member of a project
+message ProjectServiceUpdateMemberRequest {
+  // Project is the uuid of the project
+  string project = 1 [(validate.rules).string.uuid = true];
+  // MemberID is the id of the member to remove from this project
+  string member_id = 2;
+  // Role is the role in this project the user will get after the update
+  ProjectRole role = 3;
+}
+
+// ProjectServiceUpdateMemberResponse is the response payload to a update member request
+message ProjectServiceUpdateMemberResponse {
+  // ProjectMember is the updated project member
+  ProjectMember project_member = 5;
+}
 
 // ProjectServiceInviteAcceptRequest is the request payload to a accept invite request
 message ProjectServiceInviteAcceptRequest {

@@ -3,7 +3,7 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import { ProjectServiceCreateRequest, ProjectServiceCreateResponse, ProjectServiceDeleteRequest, ProjectServiceDeleteResponse, ProjectServiceGetRequest, ProjectServiceGetResponse, ProjectServiceInviteAcceptRequest, ProjectServiceInviteAcceptResponse, ProjectServiceInviteDeleteRequest, ProjectServiceInviteDeleteResponse, ProjectServiceInviteRequest, ProjectServiceInviteResponse, ProjectServiceInvitesListRequest, ProjectServiceInvitesListResponse, ProjectServiceListRequest, ProjectServiceListResponse, ProjectServiceRemoveMemberRequest, ProjectServiceRemoveMemberResponse, ProjectServiceUpdateRequest, ProjectServiceUpdateResponse } from "./project_pb.js";
+import { ProjectServiceCreateRequest, ProjectServiceCreateResponse, ProjectServiceDeleteRequest, ProjectServiceDeleteResponse, ProjectServiceGetRequest, ProjectServiceGetResponse, ProjectServiceInviteAcceptRequest, ProjectServiceInviteAcceptResponse, ProjectServiceInviteDeleteRequest, ProjectServiceInviteDeleteResponse, ProjectServiceInviteGetRequest, ProjectServiceInviteGetResponse, ProjectServiceInviteRequest, ProjectServiceInviteResponse, ProjectServiceInvitesListRequest, ProjectServiceInvitesListResponse, ProjectServiceListRequest, ProjectServiceListResponse, ProjectServiceRemoveMemberRequest, ProjectServiceRemoveMemberResponse, ProjectServiceUpdateMemberRequest, ProjectServiceUpdateMemberResponse, ProjectServiceUpdateRequest, ProjectServiceUpdateResponse } from "./project_pb.js";
 import { MethodKind } from "@bufbuild/protobuf";
 
 /**
@@ -70,7 +70,7 @@ export const ProjectService = {
       kind: MethodKind.Unary,
     },
     /**
-     * RemoveMember a user from a project
+     * RemoveMember remove a user from a project
      *
      * @generated from rpc api.v1.ProjectService.RemoveMember
      */
@@ -78,6 +78,17 @@ export const ProjectService = {
       name: "RemoveMember",
       I: ProjectServiceRemoveMemberRequest,
       O: ProjectServiceRemoveMemberResponse,
+      kind: MethodKind.Unary,
+    },
+    /**
+     * UpdateMember update a user for a project
+     *
+     * @generated from rpc api.v1.ProjectService.UpdateMember
+     */
+    updateMember: {
+      name: "UpdateMember",
+      I: ProjectServiceUpdateMemberRequest,
+      O: ProjectServiceUpdateMemberResponse,
       kind: MethodKind.Unary,
     },
     /**
@@ -122,6 +133,17 @@ export const ProjectService = {
       name: "InvitesList",
       I: ProjectServiceInvitesListRequest,
       O: ProjectServiceInvitesListResponse,
+      kind: MethodKind.Unary,
+    },
+    /**
+     * InviteGet get an invite
+     *
+     * @generated from rpc api.v1.ProjectService.InviteGet
+     */
+    inviteGet: {
+      name: "InviteGet",
+      I: ProjectServiceInviteGetRequest,
+      O: ProjectServiceInviteGetResponse,
       kind: MethodKind.Unary,
     },
   }
