@@ -10820,6 +10820,18 @@
               "defaultValue": ""
             },
             {
+              "name": "project_members",
+              "description": "ProjectMembers in this project",
+              "label": "repeated",
+              "type": "ProjectMember",
+              "longType": "ProjectMember",
+              "fullType": "api.v1.ProjectMember",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
               "name": "created_at",
               "description": "CreatedAt the date when this project was created",
               "label": "",
@@ -10834,6 +10846,138 @@
             {
               "name": "updated_at",
               "description": "UpdatedAt the date when this project was updated",
+              "label": "",
+              "type": "Timestamp",
+              "longType": "google.protobuf.Timestamp",
+              "fullType": "google.protobuf.Timestamp",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "ProjectInvite",
+          "longName": "ProjectInvite",
+          "fullName": "api.v1.ProjectInvite",
+          "description": "ProjectInvite defines invite to project",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "secret",
+              "description": "Secret is the secret part of the invite, typically part of the url",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "project",
+              "description": "Project is the project id for which this invite was created",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "role",
+              "description": "Role is the role in this project the user will get after accepting the invitation",
+              "label": "",
+              "type": "ProjectRole",
+              "longType": "ProjectRole",
+              "fullType": "api.v1.ProjectRole",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "joined",
+              "description": "Joined is false as long as a user has not accepted the invite",
+              "label": "",
+              "type": "bool",
+              "longType": "bool",
+              "fullType": "bool",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "expires_at",
+              "description": "ExpiresAt the date when this invite expires",
+              "label": "",
+              "type": "Timestamp",
+              "longType": "google.protobuf.Timestamp",
+              "fullType": "google.protobuf.Timestamp",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "joined_at",
+              "description": "JoinedAt the date when the member accepted this invite",
+              "label": "",
+              "type": "Timestamp",
+              "longType": "google.protobuf.Timestamp",
+              "fullType": "google.protobuf.Timestamp",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "ProjectMember",
+          "longName": "ProjectMember",
+          "fullName": "api.v1.ProjectMember",
+          "description": "ProjectMember defines a user that participates at a project",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "id",
+              "description": "Id is the user id of the member",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "role",
+              "description": "Role is the role of the member",
+              "label": "",
+              "type": "ProjectRole",
+              "longType": "ProjectRole",
+              "fullType": "api.v1.ProjectRole",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "created_at",
+              "description": "CreatedAt the date when the member was added to the project",
               "label": "",
               "type": "Timestamp",
               "longType": "google.protobuf.Timestamp",
@@ -11066,6 +11210,245 @@
           ]
         },
         {
+          "name": "ProjectServiceInviteAcceptRequest",
+          "longName": "ProjectServiceInviteAcceptRequest",
+          "fullName": "api.v1.ProjectServiceInviteAcceptRequest",
+          "description": "ProjectServiceInviteAcceptRequest is the request payload to a accept invite request",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "secret",
+              "description": "Secret is the invitation secret part of the invitation url",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "ProjectServiceInviteAcceptResponse",
+          "longName": "ProjectServiceInviteAcceptResponse",
+          "fullName": "api.v1.ProjectServiceInviteAcceptResponse",
+          "description": "ProjectServiceInvitesListResponse is the response payload to a accept invite request",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "project",
+              "description": "Project ID of the project joined",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "project_name",
+              "description": "ProjectName if the project joined",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "ProjectServiceInviteDeleteRequest",
+          "longName": "ProjectServiceInviteDeleteRequest",
+          "fullName": "api.v1.ProjectServiceInviteDeleteRequest",
+          "description": "ProjectServiceInviteDeleteRequest is the request payload to a delete invite",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "project",
+              "description": "Project is the uuid of the project",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": "",
+              "options": {
+                "validate.rules": [
+                  {
+                    "name": "string.uuid",
+                    "value": true
+                  }
+                ]
+              }
+            },
+            {
+              "name": "secret",
+              "description": "Secret of the invite to delete",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "ProjectServiceInviteDeleteResponse",
+          "longName": "ProjectServiceInviteDeleteResponse",
+          "fullName": "api.v1.ProjectServiceInviteDeleteResponse",
+          "description": "ProjectServiceInviteDeleteResponse is the response payload of a delete invite request",
+          "hasExtensions": false,
+          "hasFields": false,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": []
+        },
+        {
+          "name": "ProjectServiceInviteRequest",
+          "longName": "ProjectServiceInviteRequest",
+          "fullName": "api.v1.ProjectServiceInviteRequest",
+          "description": "ProjectServiceInviteRequest is used to invite a member to a project",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "project",
+              "description": "Project is the uuid of the project",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": "",
+              "options": {
+                "validate.rules": [
+                  {
+                    "name": "string.uuid",
+                    "value": true
+                  }
+                ]
+              }
+            },
+            {
+              "name": "role",
+              "description": "Role of this user in this project",
+              "label": "",
+              "type": "ProjectRole",
+              "longType": "ProjectRole",
+              "fullType": "api.v1.ProjectRole",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "ProjectServiceInviteResponse",
+          "longName": "ProjectServiceInviteResponse",
+          "fullName": "api.v1.ProjectServiceInviteResponse",
+          "description": "ProjectServiceInviteRequest is the response payload to a invite member request",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "invite",
+              "description": "Inviter contains a secret which can be sent to a potential user\ncan appended to the invitation endpoint at our api server like\nconsole.metalstack.cloud/invite/\u003csecret\u003e",
+              "label": "",
+              "type": "ProjectInvite",
+              "longType": "ProjectInvite",
+              "fullType": "api.v1.ProjectInvite",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "ProjectServiceInvitesListRequest",
+          "longName": "ProjectServiceInvitesListRequest",
+          "fullName": "api.v1.ProjectServiceInvitesListRequest",
+          "description": "ProjectServiceInvitesListRequest is the request payload to a list invites request",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "project",
+              "description": "Project is the uuid of the project",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": "",
+              "options": {
+                "validate.rules": [
+                  {
+                    "name": "string.uuid",
+                    "value": true
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "ProjectServiceInvitesListResponse",
+          "longName": "ProjectServiceInvitesListResponse",
+          "fullName": "api.v1.ProjectServiceInvitesListResponse",
+          "description": "ProjectServiceInvitesListResponse is the response payload to a list invites request",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "invites",
+              "description": "Invites not already accepted the invitation to this project",
+              "label": "repeated",
+              "type": "ProjectInvite",
+              "longType": "ProjectInvite",
+              "fullType": "api.v1.ProjectInvite",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
           "name": "ProjectServiceListRequest",
           "longName": "ProjectServiceListRequest",
           "fullName": "api.v1.ProjectServiceListRequest",
@@ -11148,6 +11531,69 @@
               "defaultValue": ""
             }
           ]
+        },
+        {
+          "name": "ProjectServiceRemoveMemberRequest",
+          "longName": "ProjectServiceRemoveMemberRequest",
+          "fullName": "api.v1.ProjectServiceRemoveMemberRequest",
+          "description": "ProjectServiceRemoveMemberRequest is used to remove a member from a project",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "project",
+              "description": "Project is the uuid of the project",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": "",
+              "options": {
+                "validate.rules": [
+                  {
+                    "name": "string.uuid",
+                    "value": true
+                  }
+                ]
+              }
+            },
+            {
+              "name": "member_id",
+              "description": "MemberID is the id of the member to remove from this project",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": "",
+              "options": {
+                "validate.rules": [
+                  {
+                    "name": "string.uuid",
+                    "value": true
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "ProjectServiceRemoveMemberResponse",
+          "longName": "ProjectServiceRemoveMemberResponse",
+          "fullName": "api.v1.ProjectServiceRemoveMemberResponse",
+          "description": "ProjectServiceRemoveMemberResponse is the response payload to a remove member request",
+          "hasExtensions": false,
+          "hasFields": false,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": []
         },
         {
           "name": "ProjectServiceUpdateRequest",
@@ -11319,6 +11765,66 @@
               "responseType": "ProjectServiceUpdateResponse",
               "responseLongType": "ProjectServiceUpdateResponse",
               "responseFullType": "api.v1.ProjectServiceUpdateResponse",
+              "responseStreaming": false
+            },
+            {
+              "name": "RemoveMember",
+              "description": "RemoveMember a user from a project",
+              "requestType": "ProjectServiceRemoveMemberRequest",
+              "requestLongType": "ProjectServiceRemoveMemberRequest",
+              "requestFullType": "api.v1.ProjectServiceRemoveMemberRequest",
+              "requestStreaming": false,
+              "responseType": "ProjectServiceRemoveMemberResponse",
+              "responseLongType": "ProjectServiceRemoveMemberResponse",
+              "responseFullType": "api.v1.ProjectServiceRemoveMemberResponse",
+              "responseStreaming": false
+            },
+            {
+              "name": "Invite",
+              "description": "Invite a user to a project",
+              "requestType": "ProjectServiceInviteRequest",
+              "requestLongType": "ProjectServiceInviteRequest",
+              "requestFullType": "api.v1.ProjectServiceInviteRequest",
+              "requestStreaming": false,
+              "responseType": "ProjectServiceInviteResponse",
+              "responseLongType": "ProjectServiceInviteResponse",
+              "responseFullType": "api.v1.ProjectServiceInviteResponse",
+              "responseStreaming": false
+            },
+            {
+              "name": "InviteAccept",
+              "description": "InviteAccept is called from a user to accept a invitation",
+              "requestType": "ProjectServiceInviteAcceptRequest",
+              "requestLongType": "ProjectServiceInviteAcceptRequest",
+              "requestFullType": "api.v1.ProjectServiceInviteAcceptRequest",
+              "requestStreaming": false,
+              "responseType": "ProjectServiceInviteAcceptResponse",
+              "responseLongType": "ProjectServiceInviteAcceptResponse",
+              "responseFullType": "api.v1.ProjectServiceInviteAcceptResponse",
+              "responseStreaming": false
+            },
+            {
+              "name": "InviteDelete",
+              "description": "InviteDelete deletes a pending invitation",
+              "requestType": "ProjectServiceInviteDeleteRequest",
+              "requestLongType": "ProjectServiceInviteDeleteRequest",
+              "requestFullType": "api.v1.ProjectServiceInviteDeleteRequest",
+              "requestStreaming": false,
+              "responseType": "ProjectServiceInviteDeleteResponse",
+              "responseLongType": "ProjectServiceInviteDeleteResponse",
+              "responseFullType": "api.v1.ProjectServiceInviteDeleteResponse",
+              "responseStreaming": false
+            },
+            {
+              "name": "InvitesList",
+              "description": "InvitesList list all invites to a project",
+              "requestType": "ProjectServiceInvitesListRequest",
+              "requestLongType": "ProjectServiceInvitesListRequest",
+              "requestFullType": "api.v1.ProjectServiceInvitesListRequest",
+              "requestStreaming": false,
+              "responseType": "ProjectServiceInvitesListResponse",
+              "responseLongType": "ProjectServiceInvitesListResponse",
+              "responseFullType": "api.v1.ProjectServiceInvitesListResponse",
               "responseStreaming": false
             }
           ]

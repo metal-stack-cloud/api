@@ -12,11 +12,11 @@ plugins:
     out: ../go
     opt: paths=source_relative
   # generate go structs for protocol buffer definition
-  - plugin: buf.build/connectrpc/go:v1.14.0
+  - plugin: buf.build/connectrpc/go:v1.15.0
     out: ../go
     opt: paths=source_relative
   # generate ts structs for protocol buffer definition
-  - plugin: buf.build/bufbuild/es:v1.6.0
+  - plugin: buf.build/bufbuild/es:v1.7.2
     out: ../js
     opt: target=ts
   - plugin: buf.build/connectrpc/es:v1.3.0
@@ -36,7 +36,7 @@ plugins:
   # - plugin: buf.build/community/neoeinstein-tonic:v0.3.0
   #   out: ../rs
   # Create python client
-  # - plugin: buf.build/protocolbuffers/python:v23.4
+  # - plugin: buf.build/protocolbuffers/python:v25.2
   #   out: ../python
-  # - plugin: buf.build/grpc/python:v1.56.0
+  # - plugin: buf.build/grpc/python:v1.61.0
   #   out: ../python

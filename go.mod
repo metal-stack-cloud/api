@@ -1,9 +1,9 @@
 module github.com/metal-stack-cloud/api
 
-go 1.21
+go 1.22
 
 require (
-	connectrpc.com/connect v1.14.0
+	connectrpc.com/connect v1.15.0
 	github.com/bufbuild/protocompile v0.8.0
 	github.com/envoyproxy/protoc-gen-validate v1.0.4
 	github.com/go-task/slim-sprig/v3 v3.0.0
@@ -14,7 +14,7 @@ require (
 
 require (
 	github.com/davecgh/go-spew v1.1.1 // indirect
-	github.com/klauspost/compress v1.17.4 // indirect
+	github.com/klauspost/compress v1.17.7 // indirect
 	github.com/kr/pretty v0.3.1 // indirect
 	github.com/pmezard/go-difflib v1.0.0 // indirect
 	github.com/stretchr/objx v0.5.1 // indirect
