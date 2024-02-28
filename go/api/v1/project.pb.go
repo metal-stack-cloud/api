@@ -1038,7 +1038,7 @@ type ProjectServiceRemoveMemberRequest struct {
 
 	// Project is the uuid of the project
 	Project string `protobuf:"bytes,1,opt,name=project,proto3" json:"project,omitempty"`
-	// MemberID ist the id of the member to remove from this project
+	// MemberID is the id of the member to remove from this project
 	MemberId string `protobuf:"bytes,2,opt,name=member_id,json=memberId,proto3" json:"member_id,omitempty"`
 }
 

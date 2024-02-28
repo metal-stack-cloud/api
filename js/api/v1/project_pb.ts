@@ -874,7 +874,7 @@ export class ProjectServiceRemoveMemberRequest extends Message<ProjectServiceRem
   project = "";
 
   /**
-   * MemberID ist the id of the member to remove from this project
+   * MemberID is the id of the member to remove from this project
    *
    * @generated from field: string member_id = 2;
    */

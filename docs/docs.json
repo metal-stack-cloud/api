@@ -11564,7 +11564,7 @@
             },
             {
               "name": "member_id",
-              "description": "MemberID ist the id of the member to remove from this project",
+              "description": "MemberID is the id of the member to remove from this project",
               "label": "",
               "type": "string",
               "longType": "string",
