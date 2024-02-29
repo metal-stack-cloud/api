@@ -196,6 +196,36 @@ func (_m *ProjectServiceHandler) InviteDelete(_a0 context.Context, _a1 *connect.
 	return r0, r1
 }
 
+// InviteGet provides a mock function with given fields: _a0, _a1
+func (_m *ProjectServiceHandler) InviteGet(_a0 context.Context, _a1 *connect.Request[apiv1.ProjectServiceInviteGetRequest]) (*connect.Response[apiv1.ProjectServiceInviteGetResponse], error) {
+	ret := _m.Called(_a0, _a1)
+
+	if len(ret) == 0 {
+		panic("no return value specified for InviteGet")
+	}
+
+	var r0 *connect.Response[apiv1.ProjectServiceInviteGetResponse]
+	var r1 error
+	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[apiv1.ProjectServiceInviteGetRequest]) (*connect.Response[apiv1.ProjectServiceInviteGetResponse], error)); ok {
+		return rf(_a0, _a1)
+	}
+	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[apiv1.ProjectServiceInviteGetRequest]) *connect.Response[apiv1.ProjectServiceInviteGetResponse]); ok {
+		r0 = rf(_a0, _a1)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*connect.Response[apiv1.ProjectServiceInviteGetResponse])
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(context.Context, *connect.Request[apiv1.ProjectServiceInviteGetRequest]) error); ok {
+		r1 = rf(_a0, _a1)
+	} else {
+		r1 = ret.Error(1)
+	}
+
+	return r0, r1
+}
+
 // InvitesList provides a mock function with given fields: _a0, _a1
 func (_m *ProjectServiceHandler) InvitesList(_a0 context.Context, _a1 *connect.Request[apiv1.ProjectServiceInvitesListRequest]) (*connect.Response[apiv1.ProjectServiceInvitesListResponse], error) {
 	ret := _m.Called(_a0, _a1)
@@ -308,6 +338,36 @@ func (_m *ProjectServiceHandler) Update(_a0 context.Context, _a1 *connect.Reques
 	}
 
 	if rf, ok := ret.Get(1).(func(context.Context, *connect.Request[apiv1.ProjectServiceUpdateRequest]) error); ok {
+		r1 = rf(_a0, _a1)
+	} else {
+		r1 = ret.Error(1)
+	}
+
+	return r0, r1
+}
+
+// UpdateMember provides a mock function with given fields: _a0, _a1
+func (_m *ProjectServiceHandler) UpdateMember(_a0 context.Context, _a1 *connect.Request[apiv1.ProjectServiceUpdateMemberRequest]) (*connect.Response[apiv1.ProjectServiceUpdateMemberResponse], error) {
+	ret := _m.Called(_a0, _a1)
+
+	if len(ret) == 0 {
+		panic("no return value specified for UpdateMember")
+	}
+
+	var r0 *connect.Response[apiv1.ProjectServiceUpdateMemberResponse]
+	var r1 error
+	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[apiv1.ProjectServiceUpdateMemberRequest]) (*connect.Response[apiv1.ProjectServiceUpdateMemberResponse], error)); ok {
+		return rf(_a0, _a1)
+	}
+	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[apiv1.ProjectServiceUpdateMemberRequest]) *connect.Response[apiv1.ProjectServiceUpdateMemberResponse]); ok {
+		r0 = rf(_a0, _a1)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*connect.Response[apiv1.ProjectServiceUpdateMemberResponse])
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(context.Context, *connect.Request[apiv1.ProjectServiceUpdateMemberRequest]) error); ok {
 		r1 = rf(_a0, _a1)
 	} else {
 		r1 = ret.Error(1)

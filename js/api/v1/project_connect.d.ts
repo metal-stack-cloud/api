@@ -1,4 +1,4 @@
-import { ProjectServiceCreateRequest, ProjectServiceCreateResponse, ProjectServiceDeleteRequest, ProjectServiceDeleteResponse, ProjectServiceGetRequest, ProjectServiceGetResponse, ProjectServiceInviteAcceptRequest, ProjectServiceInviteAcceptResponse, ProjectServiceInviteDeleteRequest, ProjectServiceInviteDeleteResponse, ProjectServiceInviteRequest, ProjectServiceInviteResponse, ProjectServiceInvitesListRequest, ProjectServiceInvitesListResponse, ProjectServiceListRequest, ProjectServiceListResponse, ProjectServiceRemoveMemberRequest, ProjectServiceRemoveMemberResponse, ProjectServiceUpdateRequest, ProjectServiceUpdateResponse } from "./project_pb.js";
+import { ProjectServiceCreateRequest, ProjectServiceCreateResponse, ProjectServiceDeleteRequest, ProjectServiceDeleteResponse, ProjectServiceGetRequest, ProjectServiceGetResponse, ProjectServiceInviteAcceptRequest, ProjectServiceInviteAcceptResponse, ProjectServiceInviteDeleteRequest, ProjectServiceInviteDeleteResponse, ProjectServiceInviteGetRequest, ProjectServiceInviteGetResponse, ProjectServiceInviteRequest, ProjectServiceInviteResponse, ProjectServiceInvitesListRequest, ProjectServiceInvitesListResponse, ProjectServiceListRequest, ProjectServiceListResponse, ProjectServiceRemoveMemberRequest, ProjectServiceRemoveMemberResponse, ProjectServiceUpdateMemberRequest, ProjectServiceUpdateMemberResponse, ProjectServiceUpdateRequest, ProjectServiceUpdateResponse } from "./project_pb.js";
 import { MethodKind } from "@bufbuild/protobuf";
 /**
  * ProjectService serves project related functions
@@ -64,7 +64,7 @@ export declare const ProjectService: {
             readonly kind: MethodKind.Unary;
         };
         /**
-         * RemoveMember a user from a project
+         * RemoveMember remove a user from a project
          *
          * @generated from rpc api.v1.ProjectService.RemoveMember
          */
@@ -72,6 +72,17 @@ export declare const ProjectService: {
             readonly name: "RemoveMember";
             readonly I: typeof ProjectServiceRemoveMemberRequest;
             readonly O: typeof ProjectServiceRemoveMemberResponse;
+            readonly kind: MethodKind.Unary;
+        };
+        /**
+         * UpdateMember update a user for a project
+         *
+         * @generated from rpc api.v1.ProjectService.UpdateMember
+         */
+        readonly updateMember: {
+            readonly name: "UpdateMember";
+            readonly I: typeof ProjectServiceUpdateMemberRequest;
+            readonly O: typeof ProjectServiceUpdateMemberResponse;
             readonly kind: MethodKind.Unary;
         };
         /**
@@ -116,6 +127,17 @@ export declare const ProjectService: {
             readonly name: "InvitesList";
             readonly I: typeof ProjectServiceInvitesListRequest;
             readonly O: typeof ProjectServiceInvitesListResponse;
+            readonly kind: MethodKind.Unary;
+        };
+        /**
+         * InviteGet get an invite
+         *
+         * @generated from rpc api.v1.ProjectService.InviteGet
+         */
+        readonly inviteGet: {
+            readonly name: "InviteGet";
+            readonly I: typeof ProjectServiceInviteGetRequest;
+            readonly O: typeof ProjectServiceInviteGetResponse;
             readonly kind: MethodKind.Unary;
         };
     };
