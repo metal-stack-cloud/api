@@ -31,12 +31,12 @@ plugins:
     out: ../docs
     opt: json,docs.json
   # generate rust client
-  # - plugin: buf.build/community/neoeinstein-prost:v0.2.3
+  # - plugin: buf.build/community/neoeinstein-prost:v0.3.1
   #   out: ../rs
-  # - plugin: buf.build/community/neoeinstein-tonic:v0.3.0
+  # - plugin: buf.build/community/neoeinstein-tonic:v0.4.0
   #   out: ../rs
   # Create python client
-  # - plugin: buf.build/protocolbuffers/python:v25.2
+  # - plugin: buf.build/protocolbuffers/python:v25.3
   #   out: ../python
-  # - plugin: buf.build/grpc/python:v1.61.0
+  # - plugin: buf.build/grpc/python:v1.62.0
   #   out: ../python
