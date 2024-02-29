@@ -399,6 +399,12 @@ func (m *ProjectInvite) validate(all bool) error {
 
 	// no validation rules for Joined
 
+	// no validation rules for ProjectName
+
+	// no validation rules for Tenant
+
+	// no validation rules for TenantName
+
 	if all {
 		switch v := interface{}(m.GetExpiresAt()).(type) {
 		case interface{ ValidateAll() error }:

@@ -113,6 +113,12 @@ message ProjectInvite {
   ProjectRole role = 3;
   // Joined is false as long as a user has not accepted the invite
   bool joined = 4;
+  // ProjectName is the project name for which this invite was created
+  string project_name = 5;
+  // Tenant is the login of tenant who invites to join this project
+  string tenant = 6;
+  // TenantName is the name of tenant who invites to join this project
+  string tenant_name = 7;
   // ExpiresAt the date when this invite expires
   google.protobuf.Timestamp expires_at = 10;
   // JoinedAt the date when the member accepted this invite

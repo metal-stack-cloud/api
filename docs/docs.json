@@ -10916,6 +10916,42 @@
               "defaultValue": ""
             },
             {
+              "name": "project_name",
+              "description": "ProjectName is the project name for which this invite was created",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "tenant",
+              "description": "Tenant is the login of tenant who invites to join this project",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "tenant_name",
+              "description": "TenantName is the name of tenant who invites to join this project",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
               "name": "expires_at",
               "description": "ExpiresAt the date when this invite expires",
               "label": "",

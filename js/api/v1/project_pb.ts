@@ -189,6 +189,27 @@ export class ProjectInvite extends Message<ProjectInvite> {
   joined = false;
 
   /**
+   * ProjectName is the project name for which this invite was created
+   *
+   * @generated from field: string project_name = 5;
+   */
+  projectName = "";
+
+  /**
+   * Tenant is the login of tenant who invites to join this project
+   *
+   * @generated from field: string tenant = 6;
+   */
+  tenant = "";
+
+  /**
+   * TenantName is the name of tenant who invites to join this project
+   *
+   * @generated from field: string tenant_name = 7;
+   */
+  tenantName = "";
+
+  /**
    * ExpiresAt the date when this invite expires
    *
    * @generated from field: google.protobuf.Timestamp expires_at = 10;
@@ -214,6 +235,9 @@ export class ProjectInvite extends Message<ProjectInvite> {
     { no: 2, name: "project", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 3, name: "role", kind: "enum", T: proto3.getEnumType(ProjectRole) },
     { no: 4, name: "joined", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
+    { no: 5, name: "project_name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 6, name: "tenant", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 7, name: "tenant_name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 10, name: "expires_at", kind: "message", T: Timestamp },
     { no: 11, name: "joined_at", kind: "message", T: Timestamp },
   ]);

@@ -123,6 +123,24 @@ export declare class ProjectInvite extends Message<ProjectInvite> {
      */
     joined: boolean;
     /**
+     * ProjectName is the project name for which this invite was created
+     *
+     * @generated from field: string project_name = 5;
+     */
+    projectName: string;
+    /**
+     * Tenant is the login of tenant who invites to join this project
+     *
+     * @generated from field: string tenant = 6;
+     */
+    tenant: string;
+    /**
+     * TenantName is the name of tenant who invites to join this project
+     *
+     * @generated from field: string tenant_name = 7;
+     */
+    tenantName: string;
+    /**
      * ExpiresAt the date when this invite expires
      *
      * @generated from field: google.protobuf.Timestamp expires_at = 10;
