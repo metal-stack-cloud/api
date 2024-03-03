@@ -1,6 +1,6 @@
 import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
 import { Message, proto3, Timestamp } from "@bufbuild/protobuf";
-import { OAuthProvider } from "./common_pb.js";
+import { OAuthProvider, TenantRole } from "./common_pb.js";
 import { Coupon } from "./payment_pb.js";
 /**
  * Tenant is a customer of the platform
@@ -75,6 +75,12 @@ export declare class Tenant extends Message<Tenant> {
      */
     onboarded: boolean;
     /**
+     * TenantMembers in this tenant
+     *
+     * @generated from field: repeated api.v1.TenantMember tenant_members = 14;
+     */
+    tenantMembers: TenantMember[];
+    /**
      * CreatedAt the date when this tenant was created
      *
      * @generated from field: google.protobuf.Timestamp created_at = 20;
@@ -100,6 +106,108 @@ export declare class Tenant extends Message<Tenant> {
     static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): Tenant;
     static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): Tenant;
     static equals(a: Tenant | PlainMessage<Tenant> | undefined, b: Tenant | PlainMessage<Tenant> | undefined): boolean;
+}
+/**
+ * TenantMember defines a user that participates at a tenant
+ *
+ * @generated from message api.v1.TenantMember
+ */
+export declare class TenantMember extends Message<TenantMember> {
+    /**
+     * Id is the user id of the member
+     *
+     * @generated from field: string id = 1;
+     */
+    id: string;
+    /**
+     * Role is the role of the member
+     *
+     * @generated from field: api.v1.TenantRole role = 2;
+     */
+    role: TenantRole;
+    /**
+     * CreatedAt the date when the member was added to the tenant
+     *
+     * @generated from field: google.protobuf.Timestamp created_at = 10;
+     */
+    createdAt?: Timestamp;
+    constructor(data?: PartialMessage<TenantMember>);
+    static readonly runtime: typeof proto3;
+    static readonly typeName = "api.v1.TenantMember";
+    static readonly fields: FieldList;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): TenantMember;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): TenantMember;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): TenantMember;
+    static equals(a: TenantMember | PlainMessage<TenantMember> | undefined, b: TenantMember | PlainMessage<TenantMember> | undefined): boolean;
+}
+/**
+ * TenantInvite defines invite to tenant
+ *
+ * @generated from message api.v1.TenantInvite
+ */
+export declare class TenantInvite extends Message<TenantInvite> {
+    /**
+     * Secret is the secret part of the invite, typically part of the url
+     *
+     * @generated from field: string secret = 1;
+     */
+    secret: string;
+    /**
+     * TargetTenant is the tenant id for which this invite was created
+     *
+     * @generated from field: string target_tenant = 2;
+     */
+    targetTenant: string;
+    /**
+     * Role is the role in this tenant the user will get after accepting the invitation
+     *
+     * @generated from field: api.v1.TenantRole role = 3;
+     */
+    role: TenantRole;
+    /**
+     * Joined is false as long as a user has not accepted the invite
+     *
+     * @generated from field: bool joined = 4;
+     */
+    joined: boolean;
+    /**
+     * TargetTenantName is the tenant name for which this invite was created
+     *
+     * @generated from field: string target_tenant_name = 5;
+     */
+    targetTenantName: string;
+    /**
+     * Tenant is the login of tenant who invites to join this tenant
+     *
+     * @generated from field: string tenant = 6;
+     */
+    tenant: string;
+    /**
+     * TenantName is the name of tenant who invites to join this tenant
+     *
+     * @generated from field: string tenant_name = 7;
+     */
+    tenantName: string;
+    /**
+     * ExpiresAt the date when this invite expires
+     *
+     * @generated from field: google.protobuf.Timestamp expires_at = 10;
+     */
+    expiresAt?: Timestamp;
+    /**
+     * JoinedAt the date when the member accepted this invite
+     *
+     * @generated from field: google.protobuf.Timestamp joined_at = 11;
+     */
+    joinedAt?: Timestamp;
+    constructor(data?: PartialMessage<TenantInvite>);
+    static readonly runtime: typeof proto3;
+    static readonly typeName = "api.v1.TenantInvite";
+    static readonly fields: FieldList;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): TenantInvite;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): TenantInvite;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): TenantInvite;
+    static equals(a: TenantInvite | PlainMessage<TenantInvite> | undefined, b: TenantInvite | PlainMessage<TenantInvite> | undefined): boolean;
 }
 /**
  * PaymentDetails of a tenant
@@ -484,4 +592,270 @@ export declare class TenantServiceDeleteResponse extends Message<TenantServiceDe
     static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): TenantServiceDeleteResponse;
     static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): TenantServiceDeleteResponse;
     static equals(a: TenantServiceDeleteResponse | PlainMessage<TenantServiceDeleteResponse> | undefined, b: TenantServiceDeleteResponse | PlainMessage<TenantServiceDeleteResponse> | undefined): boolean;
+}
+/**
+ * TenantServiceInviteRequest is used to invite a member to a tenant
+ *
+ * @generated from message api.v1.TenantServiceInviteRequest
+ */
+export declare class TenantServiceInviteRequest extends Message<TenantServiceInviteRequest> {
+    /**
+     * Tenant is the uuid of the tenant
+     *
+     * @generated from field: string tenant = 1;
+     */
+    tenant: string;
+    /**
+     * Role of this user in this tenant
+     *
+     * @generated from field: api.v1.TenantRole role = 3;
+     */
+    role: TenantRole;
+    constructor(data?: PartialMessage<TenantServiceInviteRequest>);
+    static readonly runtime: typeof proto3;
+    static readonly typeName = "api.v1.TenantServiceInviteRequest";
+    static readonly fields: FieldList;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): TenantServiceInviteRequest;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): TenantServiceInviteRequest;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): TenantServiceInviteRequest;
+    static equals(a: TenantServiceInviteRequest | PlainMessage<TenantServiceInviteRequest> | undefined, b: TenantServiceInviteRequest | PlainMessage<TenantServiceInviteRequest> | undefined): boolean;
+}
+/**
+ * TenantServiceInviteRequest is the response payload to a invite member request
+ *
+ * @generated from message api.v1.TenantServiceInviteResponse
+ */
+export declare class TenantServiceInviteResponse extends Message<TenantServiceInviteResponse> {
+    /**
+     * Inviter contains a secret which can be sent to a potential user
+     * can appended to the invitation endpoint at our api server like
+     * console.metalstack.cloud/invite/<secret>
+     *
+     * @generated from field: api.v1.TenantInvite invite = 1;
+     */
+    invite?: TenantInvite;
+    constructor(data?: PartialMessage<TenantServiceInviteResponse>);
+    static readonly runtime: typeof proto3;
+    static readonly typeName = "api.v1.TenantServiceInviteResponse";
+    static readonly fields: FieldList;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): TenantServiceInviteResponse;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): TenantServiceInviteResponse;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): TenantServiceInviteResponse;
+    static equals(a: TenantServiceInviteResponse | PlainMessage<TenantServiceInviteResponse> | undefined, b: TenantServiceInviteResponse | PlainMessage<TenantServiceInviteResponse> | undefined): boolean;
+}
+/**
+ * TenantServiceInvitesListRequest is the request payload to a list invites request
+ *
+ * @generated from message api.v1.TenantServiceInvitesListRequest
+ */
+export declare class TenantServiceInvitesListRequest extends Message<TenantServiceInvitesListRequest> {
+    /**
+     * Tenant is the uuid of the tenant
+     *
+     * @generated from field: string tenant = 1;
+     */
+    tenant: string;
+    constructor(data?: PartialMessage<TenantServiceInvitesListRequest>);
+    static readonly runtime: typeof proto3;
+    static readonly typeName = "api.v1.TenantServiceInvitesListRequest";
+    static readonly fields: FieldList;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): TenantServiceInvitesListRequest;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): TenantServiceInvitesListRequest;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): TenantServiceInvitesListRequest;
+    static equals(a: TenantServiceInvitesListRequest | PlainMessage<TenantServiceInvitesListRequest> | undefined, b: TenantServiceInvitesListRequest | PlainMessage<TenantServiceInvitesListRequest> | undefined): boolean;
+}
+/**
+ * TenantServiceInvitesListResponse is the response payload to a list invites request
+ *
+ * @generated from message api.v1.TenantServiceInvitesListResponse
+ */
+export declare class TenantServiceInvitesListResponse extends Message<TenantServiceInvitesListResponse> {
+    /**
+     * Invites not already accepted the invitation to this tenant
+     *
+     * @generated from field: repeated api.v1.TenantInvite invites = 1;
+     */
+    invites: TenantInvite[];
+    constructor(data?: PartialMessage<TenantServiceInvitesListResponse>);
+    static readonly runtime: typeof proto3;
+    static readonly typeName = "api.v1.TenantServiceInvitesListResponse";
+    static readonly fields: FieldList;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): TenantServiceInvitesListResponse;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): TenantServiceInvitesListResponse;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): TenantServiceInvitesListResponse;
+    static equals(a: TenantServiceInvitesListResponse | PlainMessage<TenantServiceInvitesListResponse> | undefined, b: TenantServiceInvitesListResponse | PlainMessage<TenantServiceInvitesListResponse> | undefined): boolean;
+}
+/**
+ * TenantServiceInviteGetRequest is the request payload to get a invite
+ *
+ * @generated from message api.v1.TenantServiceInviteGetRequest
+ */
+export declare class TenantServiceInviteGetRequest extends Message<TenantServiceInviteGetRequest> {
+    /**
+     * Secret of the invite to list
+     *
+     * @generated from field: string secret = 1;
+     */
+    secret: string;
+    constructor(data?: PartialMessage<TenantServiceInviteGetRequest>);
+    static readonly runtime: typeof proto3;
+    static readonly typeName = "api.v1.TenantServiceInviteGetRequest";
+    static readonly fields: FieldList;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): TenantServiceInviteGetRequest;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): TenantServiceInviteGetRequest;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): TenantServiceInviteGetRequest;
+    static equals(a: TenantServiceInviteGetRequest | PlainMessage<TenantServiceInviteGetRequest> | undefined, b: TenantServiceInviteGetRequest | PlainMessage<TenantServiceInviteGetRequest> | undefined): boolean;
+}
+/**
+ * TenantServiceInviteGetResponse is the response payload to a get invite request
+ *
+ * @generated from message api.v1.TenantServiceInviteGetResponse
+ */
+export declare class TenantServiceInviteGetResponse extends Message<TenantServiceInviteGetResponse> {
+    /**
+     * Invite is the invite
+     *
+     * @generated from field: api.v1.TenantInvite invite = 1;
+     */
+    invite?: TenantInvite;
+    constructor(data?: PartialMessage<TenantServiceInviteGetResponse>);
+    static readonly runtime: typeof proto3;
+    static readonly typeName = "api.v1.TenantServiceInviteGetResponse";
+    static readonly fields: FieldList;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): TenantServiceInviteGetResponse;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): TenantServiceInviteGetResponse;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): TenantServiceInviteGetResponse;
+    static equals(a: TenantServiceInviteGetResponse | PlainMessage<TenantServiceInviteGetResponse> | undefined, b: TenantServiceInviteGetResponse | PlainMessage<TenantServiceInviteGetResponse> | undefined): boolean;
+}
+/**
+ * TenantServiceRemoveMemberRequest is used to remove a member from a tenant
+ *
+ * @generated from message api.v1.TenantServiceRemoveMemberRequest
+ */
+export declare class TenantServiceRemoveMemberRequest extends Message<TenantServiceRemoveMemberRequest> {
+    /**
+     * Tenant is the uuid of the tenant
+     *
+     * @generated from field: string tenant = 1;
+     */
+    tenant: string;
+    /**
+     * MemberID is the id of the member to remove from this tenant
+     *
+     * @generated from field: string member_id = 2;
+     */
+    memberId: string;
+    constructor(data?: PartialMessage<TenantServiceRemoveMemberRequest>);
+    static readonly runtime: typeof proto3;
+    static readonly typeName = "api.v1.TenantServiceRemoveMemberRequest";
+    static readonly fields: FieldList;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): TenantServiceRemoveMemberRequest;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): TenantServiceRemoveMemberRequest;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): TenantServiceRemoveMemberRequest;
+    static equals(a: TenantServiceRemoveMemberRequest | PlainMessage<TenantServiceRemoveMemberRequest> | undefined, b: TenantServiceRemoveMemberRequest | PlainMessage<TenantServiceRemoveMemberRequest> | undefined): boolean;
+}
+/**
+ * TenantServiceRemoveMemberResponse is the response payload to a remove member request
+ *
+ * @generated from message api.v1.TenantServiceRemoveMemberResponse
+ */
+export declare class TenantServiceRemoveMemberResponse extends Message<TenantServiceRemoveMemberResponse> {
+    constructor(data?: PartialMessage<TenantServiceRemoveMemberResponse>);
+    static readonly runtime: typeof proto3;
+    static readonly typeName = "api.v1.TenantServiceRemoveMemberResponse";
+    static readonly fields: FieldList;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): TenantServiceRemoveMemberResponse;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): TenantServiceRemoveMemberResponse;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): TenantServiceRemoveMemberResponse;
+    static equals(a: TenantServiceRemoveMemberResponse | PlainMessage<TenantServiceRemoveMemberResponse> | undefined, b: TenantServiceRemoveMemberResponse | PlainMessage<TenantServiceRemoveMemberResponse> | undefined): boolean;
+}
+/**
+ * TenantServiceInviteAcceptRequest is the request payload to a accept invite request
+ *
+ * @generated from message api.v1.TenantServiceInviteAcceptRequest
+ */
+export declare class TenantServiceInviteAcceptRequest extends Message<TenantServiceInviteAcceptRequest> {
+    /**
+     * Secret is the invitation secret part of the invitation url
+     *
+     * @generated from field: string secret = 1;
+     */
+    secret: string;
+    constructor(data?: PartialMessage<TenantServiceInviteAcceptRequest>);
+    static readonly runtime: typeof proto3;
+    static readonly typeName = "api.v1.TenantServiceInviteAcceptRequest";
+    static readonly fields: FieldList;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): TenantServiceInviteAcceptRequest;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): TenantServiceInviteAcceptRequest;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): TenantServiceInviteAcceptRequest;
+    static equals(a: TenantServiceInviteAcceptRequest | PlainMessage<TenantServiceInviteAcceptRequest> | undefined, b: TenantServiceInviteAcceptRequest | PlainMessage<TenantServiceInviteAcceptRequest> | undefined): boolean;
+}
+/**
+ * TenantServiceInvitesListResponse is the response payload to a accept invite request
+ *
+ * @generated from message api.v1.TenantServiceInviteAcceptResponse
+ */
+export declare class TenantServiceInviteAcceptResponse extends Message<TenantServiceInviteAcceptResponse> {
+    /**
+     * Tenant ID of the tenant joined
+     *
+     * @generated from field: string tenant = 1;
+     */
+    tenant: string;
+    /**
+     * TenantName if the tenant joined
+     *
+     * @generated from field: string tenant_name = 2;
+     */
+    tenantName: string;
+    constructor(data?: PartialMessage<TenantServiceInviteAcceptResponse>);
+    static readonly runtime: typeof proto3;
+    static readonly typeName = "api.v1.TenantServiceInviteAcceptResponse";
+    static readonly fields: FieldList;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): TenantServiceInviteAcceptResponse;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): TenantServiceInviteAcceptResponse;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): TenantServiceInviteAcceptResponse;
+    static equals(a: TenantServiceInviteAcceptResponse | PlainMessage<TenantServiceInviteAcceptResponse> | undefined, b: TenantServiceInviteAcceptResponse | PlainMessage<TenantServiceInviteAcceptResponse> | undefined): boolean;
+}
+/**
+ * TenantServiceInviteDeleteRequest is the request payload to a delete invite
+ *
+ * @generated from message api.v1.TenantServiceInviteDeleteRequest
+ */
+export declare class TenantServiceInviteDeleteRequest extends Message<TenantServiceInviteDeleteRequest> {
+    /**
+     * Tenant is the uuid of the tenant
+     *
+     * @generated from field: string tenant = 1;
+     */
+    tenant: string;
+    /**
+     * Secret of the invite to delete
+     *
+     * @generated from field: string secret = 2;
+     */
+    secret: string;
+    constructor(data?: PartialMessage<TenantServiceInviteDeleteRequest>);
+    static readonly runtime: typeof proto3;
+    static readonly typeName = "api.v1.TenantServiceInviteDeleteRequest";
+    static readonly fields: FieldList;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): TenantServiceInviteDeleteRequest;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): TenantServiceInviteDeleteRequest;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): TenantServiceInviteDeleteRequest;
+    static equals(a: TenantServiceInviteDeleteRequest | PlainMessage<TenantServiceInviteDeleteRequest> | undefined, b: TenantServiceInviteDeleteRequest | PlainMessage<TenantServiceInviteDeleteRequest> | undefined): boolean;
+}
+/**
+ * TenantServiceInviteDeleteResponse is the response payload of a delete invite request
+ *
+ * @generated from message api.v1.TenantServiceInviteDeleteResponse
+ */
+export declare class TenantServiceInviteDeleteResponse extends Message<TenantServiceInviteDeleteResponse> {
+    constructor(data?: PartialMessage<TenantServiceInviteDeleteResponse>);
+    static readonly runtime: typeof proto3;
+    static readonly typeName = "api.v1.TenantServiceInviteDeleteResponse";
+    static readonly fields: FieldList;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): TenantServiceInviteDeleteResponse;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): TenantServiceInviteDeleteResponse;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): TenantServiceInviteDeleteResponse;
+    static equals(a: TenantServiceInviteDeleteResponse | PlainMessage<TenantServiceInviteDeleteResponse> | undefined, b: TenantServiceInviteDeleteResponse | PlainMessage<TenantServiceInviteDeleteResponse> | undefined): boolean;
 }

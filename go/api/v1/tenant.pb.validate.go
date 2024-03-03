@@ -35,6 +35,9 @@ var (
 	_ = sort.Sort
 )
 
+// define the regex for a UUID once up-front
+var _tenant_uuidPattern = regexp.MustCompile("^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$")
+
 // Validate checks the field values on Tenant with the rules defined in the
 // proto definition for this message. If any rules are violated, the first
 // error encountered is returned, or nil if there are no violations.
@@ -131,6 +134,40 @@ func (m *Tenant) validate(all bool) error {
 	// no validation rules for EmailConsent
 
 	// no validation rules for Onboarded
+
+	for idx, item := range m.GetTenantMembers() {
+		_, _ = idx, item
+
+		if all {
+			switch v := interface{}(item).(type) {
+			case interface{ ValidateAll() error }:
+				if err := v.ValidateAll(); err != nil {
+					errors = append(errors, TenantValidationError{
+						field:  fmt.Sprintf("TenantMembers[%v]", idx),
+						reason: "embedded message failed validation",
+						cause:  err,
+					})
+				}
+			case interface{ Validate() error }:
+				if err := v.Validate(); err != nil {
+					errors = append(errors, TenantValidationError{
+						field:  fmt.Sprintf("TenantMembers[%v]", idx),
+						reason: "embedded message failed validation",
+						cause:  err,
+					})
+				}
+			}
+		} else if v, ok := interface{}(item).(interface{ Validate() error }); ok {
+			if err := v.Validate(); err != nil {
+				return TenantValidationError{
+					field:  fmt.Sprintf("TenantMembers[%v]", idx),
+					reason: "embedded message failed validation",
+					cause:  err,
+				}
+			}
+		}
+
+	}
 
 	if all {
 		switch v := interface{}(m.GetCreatedAt()).(type) {
@@ -295,6 +332,309 @@ var _ interface {
 	Cause() error
 	ErrorName() string
 } = TenantValidationError{}
+
+// Validate checks the field values on TenantMember with the rules defined in
+// the proto definition for this message. If any rules are violated, the first
+// error encountered is returned, or nil if there are no violations.
+func (m *TenantMember) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on TenantMember with the rules defined
+// in the proto definition for this message. If any rules are violated, the
+// result is a list of violation errors wrapped in TenantMemberMultiError, or
+// nil if none found.
+func (m *TenantMember) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *TenantMember) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	// no validation rules for Id
+
+	// no validation rules for Role
+
+	if all {
+		switch v := interface{}(m.GetCreatedAt()).(type) {
+		case interface{ ValidateAll() error }:
+			if err := v.ValidateAll(); err != nil {
+				errors = append(errors, TenantMemberValidationError{
+					field:  "CreatedAt",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		case interface{ Validate() error }:
+			if err := v.Validate(); err != nil {
+				errors = append(errors, TenantMemberValidationError{
+					field:  "CreatedAt",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		}
+	} else if v, ok := interface{}(m.GetCreatedAt()).(interface{ Validate() error }); ok {
+		if err := v.Validate(); err != nil {
+			return TenantMemberValidationError{
+				field:  "CreatedAt",
+				reason: "embedded message failed validation",
+				cause:  err,
+			}
+		}
+	}
+
+	if len(errors) > 0 {
+		return TenantMemberMultiError(errors)
+	}
+
+	return nil
+}
+
+// TenantMemberMultiError is an error wrapping multiple validation errors
+// returned by TenantMember.ValidateAll() if the designated constraints aren't met.
+type TenantMemberMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m TenantMemberMultiError) Error() string {
+	var msgs []string
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m TenantMemberMultiError) AllErrors() []error { return m }
+
+// TenantMemberValidationError is the validation error returned by
+// TenantMember.Validate if the designated constraints aren't met.
+type TenantMemberValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e TenantMemberValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e TenantMemberValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e TenantMemberValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e TenantMemberValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e TenantMemberValidationError) ErrorName() string { return "TenantMemberValidationError" }
+
+// Error satisfies the builtin error interface
+func (e TenantMemberValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sTenantMember.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = TenantMemberValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = TenantMemberValidationError{}
+
+// Validate checks the field values on TenantInvite with the rules defined in
+// the proto definition for this message. If any rules are violated, the first
+// error encountered is returned, or nil if there are no violations.
+func (m *TenantInvite) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on TenantInvite with the rules defined
+// in the proto definition for this message. If any rules are violated, the
+// result is a list of violation errors wrapped in TenantInviteMultiError, or
+// nil if none found.
+func (m *TenantInvite) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *TenantInvite) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	// no validation rules for Secret
+
+	// no validation rules for TargetTenant
+
+	// no validation rules for Role
+
+	// no validation rules for Joined
+
+	// no validation rules for TargetTenantName
+
+	// no validation rules for Tenant
+
+	// no validation rules for TenantName
+
+	if all {
+		switch v := interface{}(m.GetExpiresAt()).(type) {
+		case interface{ ValidateAll() error }:
+			if err := v.ValidateAll(); err != nil {
+				errors = append(errors, TenantInviteValidationError{
+					field:  "ExpiresAt",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		case interface{ Validate() error }:
+			if err := v.Validate(); err != nil {
+				errors = append(errors, TenantInviteValidationError{
+					field:  "ExpiresAt",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		}
+	} else if v, ok := interface{}(m.GetExpiresAt()).(interface{ Validate() error }); ok {
+		if err := v.Validate(); err != nil {
+			return TenantInviteValidationError{
+				field:  "ExpiresAt",
+				reason: "embedded message failed validation",
+				cause:  err,
+			}
+		}
+	}
+
+	if all {
+		switch v := interface{}(m.GetJoinedAt()).(type) {
+		case interface{ ValidateAll() error }:
+			if err := v.ValidateAll(); err != nil {
+				errors = append(errors, TenantInviteValidationError{
+					field:  "JoinedAt",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		case interface{ Validate() error }:
+			if err := v.Validate(); err != nil {
+				errors = append(errors, TenantInviteValidationError{
+					field:  "JoinedAt",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		}
+	} else if v, ok := interface{}(m.GetJoinedAt()).(interface{ Validate() error }); ok {
+		if err := v.Validate(); err != nil {
+			return TenantInviteValidationError{
+				field:  "JoinedAt",
+				reason: "embedded message failed validation",
+				cause:  err,
+			}
+		}
+	}
+
+	if len(errors) > 0 {
+		return TenantInviteMultiError(errors)
+	}
+
+	return nil
+}
+
+// TenantInviteMultiError is an error wrapping multiple validation errors
+// returned by TenantInvite.ValidateAll() if the designated constraints aren't met.
+type TenantInviteMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m TenantInviteMultiError) Error() string {
+	var msgs []string
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m TenantInviteMultiError) AllErrors() []error { return m }
+
+// TenantInviteValidationError is the validation error returned by
+// TenantInvite.Validate if the designated constraints aren't met.
+type TenantInviteValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e TenantInviteValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e TenantInviteValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e TenantInviteValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e TenantInviteValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e TenantInviteValidationError) ErrorName() string { return "TenantInviteValidationError" }
+
+// Error satisfies the builtin error interface
+func (e TenantInviteValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sTenantInvite.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = TenantInviteValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = TenantInviteValidationError{}
 
 // Validate checks the field values on PaymentDetails with the rules defined in
 // the proto definition for this message. If any rules are violated, the first
@@ -2149,3 +2489,1438 @@ var _ interface {
 	Cause() error
 	ErrorName() string
 } = TenantServiceDeleteResponseValidationError{}
+
+// Validate checks the field values on TenantServiceInviteRequest with the
+// rules defined in the proto definition for this message. If any rules are
+// violated, the first error encountered is returned, or nil if there are no violations.
+func (m *TenantServiceInviteRequest) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on TenantServiceInviteRequest with the
+// rules defined in the proto definition for this message. If any rules are
+// violated, the result is a list of violation errors wrapped in
+// TenantServiceInviteRequestMultiError, or nil if none found.
+func (m *TenantServiceInviteRequest) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *TenantServiceInviteRequest) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	if err := m._validateUuid(m.GetTenant()); err != nil {
+		err = TenantServiceInviteRequestValidationError{
+			field:  "Tenant",
+			reason: "value must be a valid UUID",
+			cause:  err,
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
+	// no validation rules for Role
+
+	if len(errors) > 0 {
+		return TenantServiceInviteRequestMultiError(errors)
+	}
+
+	return nil
+}
+
+func (m *TenantServiceInviteRequest) _validateUuid(uuid string) error {
+	if matched := _tenant_uuidPattern.MatchString(uuid); !matched {
+		return errors.New("invalid uuid format")
+	}
+
+	return nil
+}
+
+// TenantServiceInviteRequestMultiError is an error wrapping multiple
+// validation errors returned by TenantServiceInviteRequest.ValidateAll() if
+// the designated constraints aren't met.
+type TenantServiceInviteRequestMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m TenantServiceInviteRequestMultiError) Error() string {
+	var msgs []string
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m TenantServiceInviteRequestMultiError) AllErrors() []error { return m }
+
+// TenantServiceInviteRequestValidationError is the validation error returned
+// by TenantServiceInviteRequest.Validate if the designated constraints aren't met.
+type TenantServiceInviteRequestValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e TenantServiceInviteRequestValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e TenantServiceInviteRequestValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e TenantServiceInviteRequestValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e TenantServiceInviteRequestValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e TenantServiceInviteRequestValidationError) ErrorName() string {
+	return "TenantServiceInviteRequestValidationError"
+}
+
+// Error satisfies the builtin error interface
+func (e TenantServiceInviteRequestValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sTenantServiceInviteRequest.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = TenantServiceInviteRequestValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = TenantServiceInviteRequestValidationError{}
+
+// Validate checks the field values on TenantServiceInviteResponse with the
+// rules defined in the proto definition for this message. If any rules are
+// violated, the first error encountered is returned, or nil if there are no violations.
+func (m *TenantServiceInviteResponse) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on TenantServiceInviteResponse with the
+// rules defined in the proto definition for this message. If any rules are
+// violated, the result is a list of violation errors wrapped in
+// TenantServiceInviteResponseMultiError, or nil if none found.
+func (m *TenantServiceInviteResponse) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *TenantServiceInviteResponse) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	if all {
+		switch v := interface{}(m.GetInvite()).(type) {
+		case interface{ ValidateAll() error }:
+			if err := v.ValidateAll(); err != nil {
+				errors = append(errors, TenantServiceInviteResponseValidationError{
+					field:  "Invite",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		case interface{ Validate() error }:
+			if err := v.Validate(); err != nil {
+				errors = append(errors, TenantServiceInviteResponseValidationError{
+					field:  "Invite",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		}
+	} else if v, ok := interface{}(m.GetInvite()).(interface{ Validate() error }); ok {
+		if err := v.Validate(); err != nil {
+			return TenantServiceInviteResponseValidationError{
+				field:  "Invite",
+				reason: "embedded message failed validation",
+				cause:  err,
+			}
+		}
+	}
+
+	if len(errors) > 0 {
+		return TenantServiceInviteResponseMultiError(errors)
+	}
+
+	return nil
+}
+
+// TenantServiceInviteResponseMultiError is an error wrapping multiple
+// validation errors returned by TenantServiceInviteResponse.ValidateAll() if
+// the designated constraints aren't met.
+type TenantServiceInviteResponseMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m TenantServiceInviteResponseMultiError) Error() string {
+	var msgs []string
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m TenantServiceInviteResponseMultiError) AllErrors() []error { return m }
+
+// TenantServiceInviteResponseValidationError is the validation error returned
+// by TenantServiceInviteResponse.Validate if the designated constraints
+// aren't met.
+type TenantServiceInviteResponseValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e TenantServiceInviteResponseValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e TenantServiceInviteResponseValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e TenantServiceInviteResponseValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e TenantServiceInviteResponseValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e TenantServiceInviteResponseValidationError) ErrorName() string {
+	return "TenantServiceInviteResponseValidationError"
+}
+
+// Error satisfies the builtin error interface
+func (e TenantServiceInviteResponseValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sTenantServiceInviteResponse.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = TenantServiceInviteResponseValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = TenantServiceInviteResponseValidationError{}
+
+// Validate checks the field values on TenantServiceInvitesListRequest with the
+// rules defined in the proto definition for this message. If any rules are
+// violated, the first error encountered is returned, or nil if there are no violations.
+func (m *TenantServiceInvitesListRequest) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on TenantServiceInvitesListRequest with
+// the rules defined in the proto definition for this message. If any rules
+// are violated, the result is a list of violation errors wrapped in
+// TenantServiceInvitesListRequestMultiError, or nil if none found.
+func (m *TenantServiceInvitesListRequest) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *TenantServiceInvitesListRequest) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	if err := m._validateUuid(m.GetTenant()); err != nil {
+		err = TenantServiceInvitesListRequestValidationError{
+			field:  "Tenant",
+			reason: "value must be a valid UUID",
+			cause:  err,
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
+	if len(errors) > 0 {
+		return TenantServiceInvitesListRequestMultiError(errors)
+	}
+
+	return nil
+}
+
+func (m *TenantServiceInvitesListRequest) _validateUuid(uuid string) error {
+	if matched := _tenant_uuidPattern.MatchString(uuid); !matched {
+		return errors.New("invalid uuid format")
+	}
+
+	return nil
+}
+
+// TenantServiceInvitesListRequestMultiError is an error wrapping multiple
+// validation errors returned by TenantServiceInvitesListRequest.ValidateAll()
+// if the designated constraints aren't met.
+type TenantServiceInvitesListRequestMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m TenantServiceInvitesListRequestMultiError) Error() string {
+	var msgs []string
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m TenantServiceInvitesListRequestMultiError) AllErrors() []error { return m }
+
+// TenantServiceInvitesListRequestValidationError is the validation error
+// returned by TenantServiceInvitesListRequest.Validate if the designated
+// constraints aren't met.
+type TenantServiceInvitesListRequestValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e TenantServiceInvitesListRequestValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e TenantServiceInvitesListRequestValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e TenantServiceInvitesListRequestValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e TenantServiceInvitesListRequestValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e TenantServiceInvitesListRequestValidationError) ErrorName() string {
+	return "TenantServiceInvitesListRequestValidationError"
+}
+
+// Error satisfies the builtin error interface
+func (e TenantServiceInvitesListRequestValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sTenantServiceInvitesListRequest.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = TenantServiceInvitesListRequestValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = TenantServiceInvitesListRequestValidationError{}
+
+// Validate checks the field values on TenantServiceInvitesListResponse with
+// the rules defined in the proto definition for this message. If any rules
+// are violated, the first error encountered is returned, or nil if there are
+// no violations.
+func (m *TenantServiceInvitesListResponse) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on TenantServiceInvitesListResponse with
+// the rules defined in the proto definition for this message. If any rules
+// are violated, the result is a list of violation errors wrapped in
+// TenantServiceInvitesListResponseMultiError, or nil if none found.
+func (m *TenantServiceInvitesListResponse) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *TenantServiceInvitesListResponse) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	for idx, item := range m.GetInvites() {
+		_, _ = idx, item
+
+		if all {
+			switch v := interface{}(item).(type) {
+			case interface{ ValidateAll() error }:
+				if err := v.ValidateAll(); err != nil {
+					errors = append(errors, TenantServiceInvitesListResponseValidationError{
+						field:  fmt.Sprintf("Invites[%v]", idx),
+						reason: "embedded message failed validation",
+						cause:  err,
+					})
+				}
+			case interface{ Validate() error }:
+				if err := v.Validate(); err != nil {
+					errors = append(errors, TenantServiceInvitesListResponseValidationError{
+						field:  fmt.Sprintf("Invites[%v]", idx),
+						reason: "embedded message failed validation",
+						cause:  err,
+					})
+				}
+			}
+		} else if v, ok := interface{}(item).(interface{ Validate() error }); ok {
+			if err := v.Validate(); err != nil {
+				return TenantServiceInvitesListResponseValidationError{
+					field:  fmt.Sprintf("Invites[%v]", idx),
+					reason: "embedded message failed validation",
+					cause:  err,
+				}
+			}
+		}
+
+	}
+
+	if len(errors) > 0 {
+		return TenantServiceInvitesListResponseMultiError(errors)
+	}
+
+	return nil
+}
+
+// TenantServiceInvitesListResponseMultiError is an error wrapping multiple
+// validation errors returned by
+// TenantServiceInvitesListResponse.ValidateAll() if the designated
+// constraints aren't met.
+type TenantServiceInvitesListResponseMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m TenantServiceInvitesListResponseMultiError) Error() string {
+	var msgs []string
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m TenantServiceInvitesListResponseMultiError) AllErrors() []error { return m }
+
+// TenantServiceInvitesListResponseValidationError is the validation error
+// returned by TenantServiceInvitesListResponse.Validate if the designated
+// constraints aren't met.
+type TenantServiceInvitesListResponseValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e TenantServiceInvitesListResponseValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e TenantServiceInvitesListResponseValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e TenantServiceInvitesListResponseValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e TenantServiceInvitesListResponseValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e TenantServiceInvitesListResponseValidationError) ErrorName() string {
+	return "TenantServiceInvitesListResponseValidationError"
+}
+
+// Error satisfies the builtin error interface
+func (e TenantServiceInvitesListResponseValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sTenantServiceInvitesListResponse.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = TenantServiceInvitesListResponseValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = TenantServiceInvitesListResponseValidationError{}
+
+// Validate checks the field values on TenantServiceInviteGetRequest with the
+// rules defined in the proto definition for this message. If any rules are
+// violated, the first error encountered is returned, or nil if there are no violations.
+func (m *TenantServiceInviteGetRequest) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on TenantServiceInviteGetRequest with
+// the rules defined in the proto definition for this message. If any rules
+// are violated, the result is a list of violation errors wrapped in
+// TenantServiceInviteGetRequestMultiError, or nil if none found.
+func (m *TenantServiceInviteGetRequest) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *TenantServiceInviteGetRequest) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	// no validation rules for Secret
+
+	if len(errors) > 0 {
+		return TenantServiceInviteGetRequestMultiError(errors)
+	}
+
+	return nil
+}
+
+// TenantServiceInviteGetRequestMultiError is an error wrapping multiple
+// validation errors returned by TenantServiceInviteGetRequest.ValidateAll()
+// if the designated constraints aren't met.
+type TenantServiceInviteGetRequestMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m TenantServiceInviteGetRequestMultiError) Error() string {
+	var msgs []string
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m TenantServiceInviteGetRequestMultiError) AllErrors() []error { return m }
+
+// TenantServiceInviteGetRequestValidationError is the validation error
+// returned by TenantServiceInviteGetRequest.Validate if the designated
+// constraints aren't met.
+type TenantServiceInviteGetRequestValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e TenantServiceInviteGetRequestValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e TenantServiceInviteGetRequestValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e TenantServiceInviteGetRequestValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e TenantServiceInviteGetRequestValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e TenantServiceInviteGetRequestValidationError) ErrorName() string {
+	return "TenantServiceInviteGetRequestValidationError"
+}
+
+// Error satisfies the builtin error interface
+func (e TenantServiceInviteGetRequestValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sTenantServiceInviteGetRequest.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = TenantServiceInviteGetRequestValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = TenantServiceInviteGetRequestValidationError{}
+
+// Validate checks the field values on TenantServiceInviteGetResponse with the
+// rules defined in the proto definition for this message. If any rules are
+// violated, the first error encountered is returned, or nil if there are no violations.
+func (m *TenantServiceInviteGetResponse) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on TenantServiceInviteGetResponse with
+// the rules defined in the proto definition for this message. If any rules
+// are violated, the result is a list of violation errors wrapped in
+// TenantServiceInviteGetResponseMultiError, or nil if none found.
+func (m *TenantServiceInviteGetResponse) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *TenantServiceInviteGetResponse) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	if all {
+		switch v := interface{}(m.GetInvite()).(type) {
+		case interface{ ValidateAll() error }:
+			if err := v.ValidateAll(); err != nil {
+				errors = append(errors, TenantServiceInviteGetResponseValidationError{
+					field:  "Invite",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		case interface{ Validate() error }:
+			if err := v.Validate(); err != nil {
+				errors = append(errors, TenantServiceInviteGetResponseValidationError{
+					field:  "Invite",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		}
+	} else if v, ok := interface{}(m.GetInvite()).(interface{ Validate() error }); ok {
+		if err := v.Validate(); err != nil {
+			return TenantServiceInviteGetResponseValidationError{
+				field:  "Invite",
+				reason: "embedded message failed validation",
+				cause:  err,
+			}
+		}
+	}
+
+	if len(errors) > 0 {
+		return TenantServiceInviteGetResponseMultiError(errors)
+	}
+
+	return nil
+}
+
+// TenantServiceInviteGetResponseMultiError is an error wrapping multiple
+// validation errors returned by TenantServiceInviteGetResponse.ValidateAll()
+// if the designated constraints aren't met.
+type TenantServiceInviteGetResponseMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m TenantServiceInviteGetResponseMultiError) Error() string {
+	var msgs []string
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m TenantServiceInviteGetResponseMultiError) AllErrors() []error { return m }
+
+// TenantServiceInviteGetResponseValidationError is the validation error
+// returned by TenantServiceInviteGetResponse.Validate if the designated
+// constraints aren't met.
+type TenantServiceInviteGetResponseValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e TenantServiceInviteGetResponseValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e TenantServiceInviteGetResponseValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e TenantServiceInviteGetResponseValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e TenantServiceInviteGetResponseValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e TenantServiceInviteGetResponseValidationError) ErrorName() string {
+	return "TenantServiceInviteGetResponseValidationError"
+}
+
+// Error satisfies the builtin error interface
+func (e TenantServiceInviteGetResponseValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sTenantServiceInviteGetResponse.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = TenantServiceInviteGetResponseValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = TenantServiceInviteGetResponseValidationError{}
+
+// Validate checks the field values on TenantServiceRemoveMemberRequest with
+// the rules defined in the proto definition for this message. If any rules
+// are violated, the first error encountered is returned, or nil if there are
+// no violations.
+func (m *TenantServiceRemoveMemberRequest) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on TenantServiceRemoveMemberRequest with
+// the rules defined in the proto definition for this message. If any rules
+// are violated, the result is a list of violation errors wrapped in
+// TenantServiceRemoveMemberRequestMultiError, or nil if none found.
+func (m *TenantServiceRemoveMemberRequest) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *TenantServiceRemoveMemberRequest) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	if err := m._validateUuid(m.GetTenant()); err != nil {
+		err = TenantServiceRemoveMemberRequestValidationError{
+			field:  "Tenant",
+			reason: "value must be a valid UUID",
+			cause:  err,
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
+	// no validation rules for MemberId
+
+	if len(errors) > 0 {
+		return TenantServiceRemoveMemberRequestMultiError(errors)
+	}
+
+	return nil
+}
+
+func (m *TenantServiceRemoveMemberRequest) _validateUuid(uuid string) error {
+	if matched := _tenant_uuidPattern.MatchString(uuid); !matched {
+		return errors.New("invalid uuid format")
+	}
+
+	return nil
+}
+
+// TenantServiceRemoveMemberRequestMultiError is an error wrapping multiple
+// validation errors returned by
+// TenantServiceRemoveMemberRequest.ValidateAll() if the designated
+// constraints aren't met.
+type TenantServiceRemoveMemberRequestMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m TenantServiceRemoveMemberRequestMultiError) Error() string {
+	var msgs []string
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m TenantServiceRemoveMemberRequestMultiError) AllErrors() []error { return m }
+
+// TenantServiceRemoveMemberRequestValidationError is the validation error
+// returned by TenantServiceRemoveMemberRequest.Validate if the designated
+// constraints aren't met.
+type TenantServiceRemoveMemberRequestValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e TenantServiceRemoveMemberRequestValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e TenantServiceRemoveMemberRequestValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e TenantServiceRemoveMemberRequestValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e TenantServiceRemoveMemberRequestValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e TenantServiceRemoveMemberRequestValidationError) ErrorName() string {
+	return "TenantServiceRemoveMemberRequestValidationError"
+}
+
+// Error satisfies the builtin error interface
+func (e TenantServiceRemoveMemberRequestValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sTenantServiceRemoveMemberRequest.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = TenantServiceRemoveMemberRequestValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = TenantServiceRemoveMemberRequestValidationError{}
+
+// Validate checks the field values on TenantServiceRemoveMemberResponse with
+// the rules defined in the proto definition for this message. If any rules
+// are violated, the first error encountered is returned, or nil if there are
+// no violations.
+func (m *TenantServiceRemoveMemberResponse) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on TenantServiceRemoveMemberResponse
+// with the rules defined in the proto definition for this message. If any
+// rules are violated, the result is a list of violation errors wrapped in
+// TenantServiceRemoveMemberResponseMultiError, or nil if none found.
+func (m *TenantServiceRemoveMemberResponse) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *TenantServiceRemoveMemberResponse) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	if len(errors) > 0 {
+		return TenantServiceRemoveMemberResponseMultiError(errors)
+	}
+
+	return nil
+}
+
+// TenantServiceRemoveMemberResponseMultiError is an error wrapping multiple
+// validation errors returned by
+// TenantServiceRemoveMemberResponse.ValidateAll() if the designated
+// constraints aren't met.
+type TenantServiceRemoveMemberResponseMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m TenantServiceRemoveMemberResponseMultiError) Error() string {
+	var msgs []string
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m TenantServiceRemoveMemberResponseMultiError) AllErrors() []error { return m }
+
+// TenantServiceRemoveMemberResponseValidationError is the validation error
+// returned by TenantServiceRemoveMemberResponse.Validate if the designated
+// constraints aren't met.
+type TenantServiceRemoveMemberResponseValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e TenantServiceRemoveMemberResponseValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e TenantServiceRemoveMemberResponseValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e TenantServiceRemoveMemberResponseValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e TenantServiceRemoveMemberResponseValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e TenantServiceRemoveMemberResponseValidationError) ErrorName() string {
+	return "TenantServiceRemoveMemberResponseValidationError"
+}
+
+// Error satisfies the builtin error interface
+func (e TenantServiceRemoveMemberResponseValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sTenantServiceRemoveMemberResponse.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = TenantServiceRemoveMemberResponseValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = TenantServiceRemoveMemberResponseValidationError{}
+
+// Validate checks the field values on TenantServiceInviteAcceptRequest with
+// the rules defined in the proto definition for this message. If any rules
+// are violated, the first error encountered is returned, or nil if there are
+// no violations.
+func (m *TenantServiceInviteAcceptRequest) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on TenantServiceInviteAcceptRequest with
+// the rules defined in the proto definition for this message. If any rules
+// are violated, the result is a list of violation errors wrapped in
+// TenantServiceInviteAcceptRequestMultiError, or nil if none found.
+func (m *TenantServiceInviteAcceptRequest) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *TenantServiceInviteAcceptRequest) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	// no validation rules for Secret
+
+	if len(errors) > 0 {
+		return TenantServiceInviteAcceptRequestMultiError(errors)
+	}
+
+	return nil
+}
+
+// TenantServiceInviteAcceptRequestMultiError is an error wrapping multiple
+// validation errors returned by
+// TenantServiceInviteAcceptRequest.ValidateAll() if the designated
+// constraints aren't met.
+type TenantServiceInviteAcceptRequestMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m TenantServiceInviteAcceptRequestMultiError) Error() string {
+	var msgs []string
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m TenantServiceInviteAcceptRequestMultiError) AllErrors() []error { return m }
+
+// TenantServiceInviteAcceptRequestValidationError is the validation error
+// returned by TenantServiceInviteAcceptRequest.Validate if the designated
+// constraints aren't met.
+type TenantServiceInviteAcceptRequestValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e TenantServiceInviteAcceptRequestValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e TenantServiceInviteAcceptRequestValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e TenantServiceInviteAcceptRequestValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e TenantServiceInviteAcceptRequestValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e TenantServiceInviteAcceptRequestValidationError) ErrorName() string {
+	return "TenantServiceInviteAcceptRequestValidationError"
+}
+
+// Error satisfies the builtin error interface
+func (e TenantServiceInviteAcceptRequestValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sTenantServiceInviteAcceptRequest.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = TenantServiceInviteAcceptRequestValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = TenantServiceInviteAcceptRequestValidationError{}
+
+// Validate checks the field values on TenantServiceInviteAcceptResponse with
+// the rules defined in the proto definition for this message. If any rules
+// are violated, the first error encountered is returned, or nil if there are
+// no violations.
+func (m *TenantServiceInviteAcceptResponse) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on TenantServiceInviteAcceptResponse
+// with the rules defined in the proto definition for this message. If any
+// rules are violated, the result is a list of violation errors wrapped in
+// TenantServiceInviteAcceptResponseMultiError, or nil if none found.
+func (m *TenantServiceInviteAcceptResponse) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *TenantServiceInviteAcceptResponse) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	// no validation rules for Tenant
+
+	// no validation rules for TenantName
+
+	if len(errors) > 0 {
+		return TenantServiceInviteAcceptResponseMultiError(errors)
+	}
+
+	return nil
+}
+
+// TenantServiceInviteAcceptResponseMultiError is an error wrapping multiple
+// validation errors returned by
+// TenantServiceInviteAcceptResponse.ValidateAll() if the designated
+// constraints aren't met.
+type TenantServiceInviteAcceptResponseMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m TenantServiceInviteAcceptResponseMultiError) Error() string {
+	var msgs []string
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m TenantServiceInviteAcceptResponseMultiError) AllErrors() []error { return m }
+
+// TenantServiceInviteAcceptResponseValidationError is the validation error
+// returned by TenantServiceInviteAcceptResponse.Validate if the designated
+// constraints aren't met.
+type TenantServiceInviteAcceptResponseValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e TenantServiceInviteAcceptResponseValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e TenantServiceInviteAcceptResponseValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e TenantServiceInviteAcceptResponseValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e TenantServiceInviteAcceptResponseValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e TenantServiceInviteAcceptResponseValidationError) ErrorName() string {
+	return "TenantServiceInviteAcceptResponseValidationError"
+}
+
+// Error satisfies the builtin error interface
+func (e TenantServiceInviteAcceptResponseValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sTenantServiceInviteAcceptResponse.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = TenantServiceInviteAcceptResponseValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = TenantServiceInviteAcceptResponseValidationError{}
+
+// Validate checks the field values on TenantServiceInviteDeleteRequest with
+// the rules defined in the proto definition for this message. If any rules
+// are violated, the first error encountered is returned, or nil if there are
+// no violations.
+func (m *TenantServiceInviteDeleteRequest) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on TenantServiceInviteDeleteRequest with
+// the rules defined in the proto definition for this message. If any rules
+// are violated, the result is a list of violation errors wrapped in
+// TenantServiceInviteDeleteRequestMultiError, or nil if none found.
+func (m *TenantServiceInviteDeleteRequest) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *TenantServiceInviteDeleteRequest) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	if err := m._validateUuid(m.GetTenant()); err != nil {
+		err = TenantServiceInviteDeleteRequestValidationError{
+			field:  "Tenant",
+			reason: "value must be a valid UUID",
+			cause:  err,
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
+	// no validation rules for Secret
+
+	if len(errors) > 0 {
+		return TenantServiceInviteDeleteRequestMultiError(errors)
+	}
+
+	return nil
+}
+
+func (m *TenantServiceInviteDeleteRequest) _validateUuid(uuid string) error {
+	if matched := _tenant_uuidPattern.MatchString(uuid); !matched {
+		return errors.New("invalid uuid format")
+	}
+
+	return nil
+}
+
+// TenantServiceInviteDeleteRequestMultiError is an error wrapping multiple
+// validation errors returned by
+// TenantServiceInviteDeleteRequest.ValidateAll() if the designated
+// constraints aren't met.
+type TenantServiceInviteDeleteRequestMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m TenantServiceInviteDeleteRequestMultiError) Error() string {
+	var msgs []string
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m TenantServiceInviteDeleteRequestMultiError) AllErrors() []error { return m }
+
+// TenantServiceInviteDeleteRequestValidationError is the validation error
+// returned by TenantServiceInviteDeleteRequest.Validate if the designated
+// constraints aren't met.
+type TenantServiceInviteDeleteRequestValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e TenantServiceInviteDeleteRequestValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e TenantServiceInviteDeleteRequestValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e TenantServiceInviteDeleteRequestValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e TenantServiceInviteDeleteRequestValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e TenantServiceInviteDeleteRequestValidationError) ErrorName() string {
+	return "TenantServiceInviteDeleteRequestValidationError"
+}
+
+// Error satisfies the builtin error interface
+func (e TenantServiceInviteDeleteRequestValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sTenantServiceInviteDeleteRequest.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = TenantServiceInviteDeleteRequestValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = TenantServiceInviteDeleteRequestValidationError{}
+
+// Validate checks the field values on TenantServiceInviteDeleteResponse with
+// the rules defined in the proto definition for this message. If any rules
+// are violated, the first error encountered is returned, or nil if there are
+// no violations.
+func (m *TenantServiceInviteDeleteResponse) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on TenantServiceInviteDeleteResponse
+// with the rules defined in the proto definition for this message. If any
+// rules are violated, the result is a list of violation errors wrapped in
+// TenantServiceInviteDeleteResponseMultiError, or nil if none found.
+func (m *TenantServiceInviteDeleteResponse) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *TenantServiceInviteDeleteResponse) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	if len(errors) > 0 {
+		return TenantServiceInviteDeleteResponseMultiError(errors)
+	}
+
+	return nil
+}
+
+// TenantServiceInviteDeleteResponseMultiError is an error wrapping multiple
+// validation errors returned by
+// TenantServiceInviteDeleteResponse.ValidateAll() if the designated
+// constraints aren't met.
+type TenantServiceInviteDeleteResponseMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m TenantServiceInviteDeleteResponseMultiError) Error() string {
+	var msgs []string
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m TenantServiceInviteDeleteResponseMultiError) AllErrors() []error { return m }
+
+// TenantServiceInviteDeleteResponseValidationError is the validation error
+// returned by TenantServiceInviteDeleteResponse.Validate if the designated
+// constraints aren't met.
+type TenantServiceInviteDeleteResponseValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e TenantServiceInviteDeleteResponseValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e TenantServiceInviteDeleteResponseValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e TenantServiceInviteDeleteResponseValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e TenantServiceInviteDeleteResponseValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e TenantServiceInviteDeleteResponseValidationError) ErrorName() string {
+	return "TenantServiceInviteDeleteResponseValidationError"
+}
+
+// Error satisfies the builtin error interface
+func (e TenantServiceInviteDeleteResponseValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sTenantServiceInviteDeleteResponse.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = TenantServiceInviteDeleteResponseValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = TenantServiceInviteDeleteResponseValidationError{}

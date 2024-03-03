@@ -1,4 +1,4 @@
-import { TenantServiceCreateOrUpdateRequest, TenantServiceCreateOrUpdateResponse, TenantServiceCreateRequest, TenantServiceCreateResponse, TenantServiceDeleteRequest, TenantServiceDeleteResponse, TenantServiceGetRequest, TenantServiceGetResponse, TenantServiceUpdateRequest, TenantServiceUpdateResponse } from "./tenant_pb.js";
+import { TenantServiceCreateOrUpdateRequest, TenantServiceCreateOrUpdateResponse, TenantServiceCreateRequest, TenantServiceCreateResponse, TenantServiceDeleteRequest, TenantServiceDeleteResponse, TenantServiceGetRequest, TenantServiceGetResponse, TenantServiceInviteAcceptRequest, TenantServiceInviteAcceptResponse, TenantServiceInviteDeleteRequest, TenantServiceInviteDeleteResponse, TenantServiceInviteGetRequest, TenantServiceInviteGetResponse, TenantServiceInviteRequest, TenantServiceInviteResponse, TenantServiceInvitesListRequest, TenantServiceInvitesListResponse, TenantServiceRemoveMemberRequest, TenantServiceRemoveMemberResponse, TenantServiceUpdateRequest, TenantServiceUpdateResponse } from "./tenant_pb.js";
 import { MethodKind } from "@bufbuild/protobuf";
 /**
  * TenantService serves tenant related functions
@@ -62,6 +62,72 @@ export declare const TenantService: {
             readonly name: "Delete";
             readonly I: typeof TenantServiceDeleteRequest;
             readonly O: typeof TenantServiceDeleteResponse;
+            readonly kind: MethodKind.Unary;
+        };
+        /**
+         * RemoveMember remove a user from a tenant
+         *
+         * @generated from rpc api.v1.TenantService.RemoveMember
+         */
+        readonly removeMember: {
+            readonly name: "RemoveMember";
+            readonly I: typeof TenantServiceRemoveMemberRequest;
+            readonly O: typeof TenantServiceRemoveMemberResponse;
+            readonly kind: MethodKind.Unary;
+        };
+        /**
+         * Invite a user to a tenant
+         *
+         * @generated from rpc api.v1.TenantService.Invite
+         */
+        readonly invite: {
+            readonly name: "Invite";
+            readonly I: typeof TenantServiceInviteRequest;
+            readonly O: typeof TenantServiceInviteResponse;
+            readonly kind: MethodKind.Unary;
+        };
+        /**
+         * InviteAccept is called from a user to accept a invitation
+         *
+         * @generated from rpc api.v1.TenantService.InviteAccept
+         */
+        readonly inviteAccept: {
+            readonly name: "InviteAccept";
+            readonly I: typeof TenantServiceInviteAcceptRequest;
+            readonly O: typeof TenantServiceInviteAcceptResponse;
+            readonly kind: MethodKind.Unary;
+        };
+        /**
+         * InviteDelete deletes a pending invitation
+         *
+         * @generated from rpc api.v1.TenantService.InviteDelete
+         */
+        readonly inviteDelete: {
+            readonly name: "InviteDelete";
+            readonly I: typeof TenantServiceInviteDeleteRequest;
+            readonly O: typeof TenantServiceInviteDeleteResponse;
+            readonly kind: MethodKind.Unary;
+        };
+        /**
+         * InvitesList list all invites to a tenant
+         *
+         * @generated from rpc api.v1.TenantService.InvitesList
+         */
+        readonly invitesList: {
+            readonly name: "InvitesList";
+            readonly I: typeof TenantServiceInvitesListRequest;
+            readonly O: typeof TenantServiceInvitesListResponse;
+            readonly kind: MethodKind.Unary;
+        };
+        /**
+         * InviteGet get an invite
+         *
+         * @generated from rpc api.v1.TenantService.InviteGet
+         */
+        readonly inviteGet: {
+            readonly name: "InviteGet";
+            readonly I: typeof TenantServiceInviteGetRequest;
+            readonly O: typeof TenantServiceInviteGetResponse;
             readonly kind: MethodKind.Unary;
         };
     };
