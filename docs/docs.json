@@ -12018,7 +12018,7 @@
       "hasEnums": false,
       "hasExtensions": false,
       "hasMessages": true,
-      "hasServices": false,
+      "hasServices": true,
       "enums": [],
       "extensions": [],
       "messages": [
@@ -12115,11 +12115,91 @@
               "isoneof": false,
               "oneofdecl": "",
               "defaultValue": ""
+            },
+            {
+              "name": "default_tenant",
+              "description": "DefaultTenant this user belongs to",
+              "label": "",
+              "type": "Tenant",
+              "longType": "Tenant",
+              "fullType": "api.v1.Tenant",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "default_project",
+              "description": "DefaultProject this user belongs to",
+              "label": "",
+              "type": "Project",
+              "longType": "Project",
+              "fullType": "api.v1.Project",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "UserServiceGetRequest",
+          "longName": "UserServiceGetRequest",
+          "fullName": "api.v1.UserServiceGetRequest",
+          "description": "UserServiceGetRequest is the request to get the user",
+          "hasExtensions": false,
+          "hasFields": false,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": []
+        },
+        {
+          "name": "UserServiceGetResponse",
+          "longName": "UserServiceGetResponse",
+          "fullName": "api.v1.UserServiceGetResponse",
+          "description": "UserServiceGetResponse the response when userservice get request was called",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "user",
+              "description": "User is the user",
+              "label": "",
+              "type": "User",
+              "longType": "User",
+              "fullType": "api.v1.User",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
             }
           ]
         }
       ],
-      "services": []
+      "services": [
+        {
+          "name": "UserService",
+          "longName": "UserService",
+          "fullName": "api.v1.UserService",
+          "description": "UserService exposes rpc calls for users",
+          "methods": [
+            {
+              "name": "Get",
+              "description": "Get a User",
+              "requestType": "UserServiceGetRequest",
+              "requestLongType": "UserServiceGetRequest",
+              "requestFullType": "api.v1.UserServiceGetRequest",
+              "requestStreaming": false,
+              "responseType": "UserServiceGetResponse",
+              "responseLongType": "UserServiceGetResponse",
+              "responseFullType": "api.v1.UserServiceGetResponse",
+              "responseStreaming": false
+            }
+          ]
+        }
+      ]
     },
     {
       "name": "api/v1/version.proto",

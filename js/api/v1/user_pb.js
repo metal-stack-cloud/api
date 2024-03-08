@@ -81,4 +81,60 @@ User.fields = proto3.util.newFieldList(() => [
     { no: 6, name: "oauth_provider", kind: "enum", T: proto3.getEnumType(OAuthProvider) },
     { no: 7, name: "tenants", kind: "message", T: Tenant, repeated: true },
     { no: 8, name: "projects", kind: "message", T: Project, repeated: true },
+    { no: 9, name: "default_tenant", kind: "message", T: Tenant },
+    { no: 10, name: "default_project", kind: "message", T: Project },
+]);
+/**
+ * UserServiceGetRequest is the request to get the user
+ *
+ * @generated from message api.v1.UserServiceGetRequest
+ */
+export class UserServiceGetRequest extends Message {
+    constructor(data) {
+        super();
+        proto3.util.initPartial(data, this);
+    }
+    static fromBinary(bytes, options) {
+        return new UserServiceGetRequest().fromBinary(bytes, options);
+    }
+    static fromJson(jsonValue, options) {
+        return new UserServiceGetRequest().fromJson(jsonValue, options);
+    }
+    static fromJsonString(jsonString, options) {
+        return new UserServiceGetRequest().fromJsonString(jsonString, options);
+    }
+    static equals(a, b) {
+        return proto3.util.equals(UserServiceGetRequest, a, b);
+    }
+}
+UserServiceGetRequest.runtime = proto3;
+UserServiceGetRequest.typeName = "api.v1.UserServiceGetRequest";
+UserServiceGetRequest.fields = proto3.util.newFieldList(() => []);
+/**
+ * UserServiceGetResponse the response when userservice get request was called
+ *
+ * @generated from message api.v1.UserServiceGetResponse
+ */
+export class UserServiceGetResponse extends Message {
+    constructor(data) {
+        super();
+        proto3.util.initPartial(data, this);
+    }
+    static fromBinary(bytes, options) {
+        return new UserServiceGetResponse().fromBinary(bytes, options);
+    }
+    static fromJson(jsonValue, options) {
+        return new UserServiceGetResponse().fromJson(jsonValue, options);
+    }
+    static fromJsonString(jsonString, options) {
+        return new UserServiceGetResponse().fromJsonString(jsonString, options);
+    }
+    static equals(a, b) {
+        return proto3.util.equals(UserServiceGetResponse, a, b);
+    }
+}
+UserServiceGetResponse.runtime = proto3;
+UserServiceGetResponse.typeName = "api.v1.UserServiceGetResponse";
+UserServiceGetResponse.fields = proto3.util.newFieldList(() => [
+    { no: 1, name: "user", kind: "message", T: User },
 ]);

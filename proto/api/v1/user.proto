@@ -6,6 +6,15 @@ import "api/v1/common.proto";
 import "api/v1/project.proto";
 import "api/v1/tenant.proto";
 
+// UserService exposes rpc calls for users
+service UserService {
+  // Get a User
+  rpc Get(UserServiceGetRequest) returns (UserServiceGetResponse) {
+    option (visibility) = VISIBILITY_SELF;
+    option (auditing) = AUDITING_INCLUDED;
+  }
+}
+
 // User is a end user of the platform
 message User {
   // Login the login at the provider
@@ -22,4 +31,17 @@ message User {
   repeated Tenant tenants = 7;
   // Projects the user belongs to
   repeated Project projects = 8;
+  // DefaultTenant this user belongs to
+  Tenant default_tenant = 9;
+  // DefaultProject this user belongs to
+  Project default_project = 10;
+}
+
+// UserServiceGetRequest is the request to get the user
+message UserServiceGetRequest {}
+
+// UserServiceGetResponse the response when userservice get request was called
+message UserServiceGetResponse {
+  // User is the user
+  User user = 1;
 }

@@ -64,6 +64,20 @@ export class User extends Message<User> {
    */
   projects: Project[] = [];
 
+  /**
+   * DefaultTenant this user belongs to
+   *
+   * @generated from field: api.v1.Tenant default_tenant = 9;
+   */
+  defaultTenant?: Tenant;
+
+  /**
+   * DefaultProject this user belongs to
+   *
+   * @generated from field: api.v1.Project default_project = 10;
+   */
+  defaultProject?: Project;
+
   constructor(data?: PartialMessage<User>) {
     super();
     proto3.util.initPartial(data, this);
@@ -79,6 +93,8 @@ export class User extends Message<User> {
     { no: 6, name: "oauth_provider", kind: "enum", T: proto3.getEnumType(OAuthProvider) },
     { no: 7, name: "tenants", kind: "message", T: Tenant, repeated: true },
     { no: 8, name: "projects", kind: "message", T: Project, repeated: true },
+    { no: 9, name: "default_tenant", kind: "message", T: Tenant },
+    { no: 10, name: "default_project", kind: "message", T: Project },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): User {
@@ -95,6 +111,80 @@ export class User extends Message<User> {
 
   static equals(a: User | PlainMessage<User> | undefined, b: User | PlainMessage<User> | undefined): boolean {
     return proto3.util.equals(User, a, b);
+  }
+}
+
+/**
+ * UserServiceGetRequest is the request to get the user
+ *
+ * @generated from message api.v1.UserServiceGetRequest
+ */
+export class UserServiceGetRequest extends Message<UserServiceGetRequest> {
+  constructor(data?: PartialMessage<UserServiceGetRequest>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "api.v1.UserServiceGetRequest";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): UserServiceGetRequest {
+    return new UserServiceGetRequest().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): UserServiceGetRequest {
+    return new UserServiceGetRequest().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): UserServiceGetRequest {
+    return new UserServiceGetRequest().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: UserServiceGetRequest | PlainMessage<UserServiceGetRequest> | undefined, b: UserServiceGetRequest | PlainMessage<UserServiceGetRequest> | undefined): boolean {
+    return proto3.util.equals(UserServiceGetRequest, a, b);
+  }
+}
+
+/**
+ * UserServiceGetResponse the response when userservice get request was called
+ *
+ * @generated from message api.v1.UserServiceGetResponse
+ */
+export class UserServiceGetResponse extends Message<UserServiceGetResponse> {
+  /**
+   * User is the user
+   *
+   * @generated from field: api.v1.User user = 1;
+   */
+  user?: User;
+
+  constructor(data?: PartialMessage<UserServiceGetResponse>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "api.v1.UserServiceGetResponse";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "user", kind: "message", T: User },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): UserServiceGetResponse {
+    return new UserServiceGetResponse().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): UserServiceGetResponse {
+    return new UserServiceGetResponse().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): UserServiceGetResponse {
+    return new UserServiceGetResponse().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: UserServiceGetResponse | PlainMessage<UserServiceGetResponse> | undefined, b: UserServiceGetResponse | PlainMessage<UserServiceGetResponse> | undefined): boolean {
+    return proto3.util.equals(UserServiceGetResponse, a, b);
   }
 }
 
