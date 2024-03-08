@@ -108,3 +108,18 @@ message Paging {
   // Count is the number of results returned per page, if not given server side defaults apply
   optional uint64 count = 2;
 }
+
+// Role defines which role the logged in user got from the login provider
+// Deprecated
+enum Role {
+  // ROLE_UNSPECIFIED is not specified
+  ROLE_UNSPECIFIED = 0;
+  // ROLE_MEMBER the user has member role in the scope
+  ROLE_MEMBER = 1;
+  // ROLE_MAINTAINER the user has maintainer role in the scope
+  ROLE_MAINTAINER = 2;
+  // ROLE_ADMIN the user has admin role in the scope
+  ROLE_ADMIN = 3;
+  // ROLE_OWNER the user has owner role in the scope
+  ROLE_OWNER = 4;
+}
