@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package api.v1;
+
+import "api/v1/common.proto";
+import "api/v1/project.proto";
+import "api/v1/tenant.proto";
+
+// User is a end user of the platform
+message User {
+  // Login the login at the provider
+  string login = 1;
+  // Name of the user
+  string name = 2;
+  // Email of the user
+  string email = 3;
+  // AvatarUrl of the user
+  string avatar_url = 5;
+  // OauthProvider of the user
+  OAuthProvider oauth_provider = 6;
+  // Tenants the user belongs to
+  repeated Tenant tenants = 7;
+  // Projects the user belongs to
+  repeated Project projects = 8;
+}
