@@ -509,39 +509,6 @@
           ]
         },
         {
-          "name": "Role",
-          "longName": "Role",
-          "fullName": "api.v1.Role",
-          "description": "Role defines which role the logged in user got from the login provider",
-          "values": [
-            {
-              "name": "ROLE_UNSPECIFIED",
-              "number": "0",
-              "description": "ROLE_UNSPECIFIED is not specified"
-            },
-            {
-              "name": "ROLE_MEMBER",
-              "number": "1",
-              "description": "ROLE_MEMBER the user has member role in the scope"
-            },
-            {
-              "name": "ROLE_MAINTAINER",
-              "number": "2",
-              "description": "ROLE_MAINTAINER the user has maintainer role in the scope"
-            },
-            {
-              "name": "ROLE_ADMIN",
-              "number": "3",
-              "description": "ROLE_ADMIN the user has admin role in the scope"
-            },
-            {
-              "name": "ROLE_OWNER",
-              "number": "4",
-              "description": "ROLE_OWNER the user has owner role in the scope"
-            }
-          ]
-        },
-        {
           "name": "TenantRole",
           "longName": "TenantRole",
           "fullName": "api.v1.TenantRole",
