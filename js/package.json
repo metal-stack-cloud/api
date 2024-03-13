@@ -11,10 +11,10 @@
   "license": "MIT",
   "type": "module",
   "dependencies": {
-    "@bufbuild/connect-web": "^0.13.0",
-    "@bufbuild/protobuf": "^1.7.2"
+    "@bufbuild/protobuf": "^1.7.2",
+    "@connectrpc/connect-web": "^1.4.0"
   },
   "devDependencies": {
-    "typescript": "^5.3.3"
+    "typescript": "^5.4.2"
   }
 }
