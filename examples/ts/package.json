@@ -1,15 +1,15 @@
 {
-    "name": "cluster-list",
-    "version": "1.0.0",
-    "type": "module",
-    "main": "cluster-list.ts",
-    "dependencies": {
-        "@bufbuild/protobuf": "^1.7.2",
-        "@connectrpc/connect": "^1.4.0",
-        "@connectrpc/connect-node": "^1.4.0",
-        "@connectrpc/connect-web": "^1.4.0",
-        "@metal-stack-cloud/api": "^0.8.2",
-        "dotenv": "^16.4.5",
-        "ts-node": "^10.9.2"
-    }
+  "name": "cluster-list",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "cluster-list.ts",
+  "dependencies": {
+    "@bufbuild/protobuf": "^1.7.2",
+    "@connectrpc/connect": "^1.4.0",
+    "@connectrpc/connect-node": "^1.4.0",
+    "@metal-stack-cloud/api": "^0.8.2",
+    "dotenv": "^16.4.5",
+    "ts-node": "^10.9.2",
+    "@connectrpc/connect-web": "^1.4.0"
+  }
 }
