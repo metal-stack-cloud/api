@@ -8419,7 +8419,7 @@
           "description": "Token is a jwt authentication token to access the api",
           "hasExtensions": false,
           "hasFields": true,
-          "hasOneofs": false,
+          "hasOneofs": true,
           "extensions": [],
           "fields": [
             {
@@ -8565,13 +8565,13 @@
             {
               "name": "admin_role",
               "description": "AdminRole defines the admin role of the token owner",
-              "label": "",
+              "label": "optional",
               "type": "AdminRole",
               "longType": "AdminRole",
               "fullType": "api.v1.AdminRole",
               "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
+              "isoneof": true,
+              "oneofdecl": "_admin_role",
               "defaultValue": ""
             }
           ]

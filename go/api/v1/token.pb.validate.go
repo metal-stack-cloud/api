@@ -191,7 +191,9 @@ func (m *Token) validate(all bool) error {
 
 	// no validation rules for TenantRoles
 
-	// no validation rules for AdminRole
+	if m.AdminRole != nil {
+		// no validation rules for AdminRole
+	}
 
 	if len(errors) > 0 {
 		return TokenMultiError(errors)

@@ -86,12 +86,6 @@ export class Token extends Message {
          * @generated from field: map<string, api.v1.TenantRole> tenant_roles = 10;
          */
         this.tenantRoles = {};
-        /**
-         * AdminRole defines the admin role of the token owner
-         *
-         * @generated from field: api.v1.AdminRole admin_role = 11;
-         */
-        this.adminRole = AdminRole.UNSPECIFIED;
         proto3.util.initPartial(data, this);
     }
     static fromBinary(bytes, options) {
@@ -119,7 +113,7 @@ Token.fields = proto3.util.newFieldList(() => [
     { no: 8, name: "token_type", kind: "enum", T: proto3.getEnumType(TokenType) },
     { no: 9, name: "project_roles", kind: "map", K: 9 /* ScalarType.STRING */, V: { kind: "enum", T: proto3.getEnumType(ProjectRole) } },
     { no: 10, name: "tenant_roles", kind: "map", K: 9 /* ScalarType.STRING */, V: { kind: "enum", T: proto3.getEnumType(TenantRole) } },
-    { no: 11, name: "admin_role", kind: "enum", T: proto3.getEnumType(AdminRole) },
+    { no: 11, name: "admin_role", kind: "enum", T: proto3.getEnumType(AdminRole), opt: true },
 ]);
 /**
  * TokenServiceCreateRequest is the request payload to create a token

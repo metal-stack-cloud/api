@@ -95,9 +95,9 @@ export declare class Token extends Message<Token> {
     /**
      * AdminRole defines the admin role of the token owner
      *
-     * @generated from field: api.v1.AdminRole admin_role = 11;
+     * @generated from field: optional api.v1.AdminRole admin_role = 11;
      */
-    adminRole: AdminRole;
+    adminRole?: AdminRole;
     constructor(data?: PartialMessage<Token>);
     static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.Token";

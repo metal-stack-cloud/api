@@ -52,7 +52,7 @@ message Token {
   // TenantRoles associates a tenant id with the corresponding role of the token owner
   map<string, TenantRole> tenant_roles = 10;
   // AdminRole defines the admin role of the token owner
-  AdminRole admin_role = 11;
+  optional AdminRole admin_role = 11;
 }
 
 // TokenType specifies different use cases of tokens

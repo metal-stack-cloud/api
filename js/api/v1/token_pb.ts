@@ -115,9 +115,9 @@ export class Token extends Message<Token> {
   /**
    * AdminRole defines the admin role of the token owner
    *
-   * @generated from field: api.v1.AdminRole admin_role = 11;
+   * @generated from field: optional api.v1.AdminRole admin_role = 11;
    */
-  adminRole = AdminRole.UNSPECIFIED;
+  adminRole?: AdminRole;
 
   constructor(data?: PartialMessage<Token>) {
     super();
@@ -136,7 +136,7 @@ export class Token extends Message<Token> {
     { no: 8, name: "token_type", kind: "enum", T: proto3.getEnumType(TokenType) },
     { no: 9, name: "project_roles", kind: "map", K: 9 /* ScalarType.STRING */, V: {kind: "enum", T: proto3.getEnumType(ProjectRole)} },
     { no: 10, name: "tenant_roles", kind: "map", K: 9 /* ScalarType.STRING */, V: {kind: "enum", T: proto3.getEnumType(TenantRole)} },
-    { no: 11, name: "admin_role", kind: "enum", T: proto3.getEnumType(AdminRole) },
+    { no: 11, name: "admin_role", kind: "enum", T: proto3.getEnumType(AdminRole), opt: true },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Token {
