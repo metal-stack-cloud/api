@@ -32,43 +32,6 @@ export declare enum OAuthProvider {
     GOOGLE = 3
 }
 /**
- * Role defines which role the logged in user got from the login provider
- *
- * @generated from enum api.v1.Role
- */
-export declare enum Role {
-    /**
-     * ROLE_UNSPECIFIED is not specified
-     *
-     * @generated from enum value: ROLE_UNSPECIFIED = 0;
-     */
-    UNSPECIFIED = 0,
-    /**
-     * ROLE_MEMBER the user has member role in the scope
-     *
-     * @generated from enum value: ROLE_MEMBER = 1;
-     */
-    MEMBER = 1,
-    /**
-     * ROLE_MAINTAINER the user has maintainer role in the scope
-     *
-     * @generated from enum value: ROLE_MAINTAINER = 2;
-     */
-    MAINTAINER = 2,
-    /**
-     * ROLE_ADMIN the user has admin role in the scope
-     *
-     * @generated from enum value: ROLE_ADMIN = 3;
-     */
-    ADMIN = 3,
-    /**
-     * ROLE_OWNER the user has owner role in the scope
-     *
-     * @generated from enum value: ROLE_OWNER = 4;
-     */
-    OWNER = 4
-}
-/**
  * TenantRole specifies what role a logged in user needs to call this tenant scoped service
  *
  * @generated from enum api.v1.TenantRole
@@ -237,6 +200,44 @@ export declare enum Auditing {
      * @generated from enum value: AUDITING_EXCLUDED = 2;
      */
     EXCLUDED = 2
+}
+/**
+ * Role defines which role the logged in user got from the login provider
+ * Deprecated
+ *
+ * @generated from enum api.v1.Role
+ */
+export declare enum Role {
+    /**
+     * ROLE_UNSPECIFIED is not specified
+     *
+     * @generated from enum value: ROLE_UNSPECIFIED = 0;
+     */
+    UNSPECIFIED = 0,
+    /**
+     * ROLE_MEMBER the user has member role in the scope
+     *
+     * @generated from enum value: ROLE_MEMBER = 1;
+     */
+    MEMBER = 1,
+    /**
+     * ROLE_MAINTAINER the user has maintainer role in the scope
+     *
+     * @generated from enum value: ROLE_MAINTAINER = 2;
+     */
+    MAINTAINER = 2,
+    /**
+     * ROLE_ADMIN the user has admin role in the scope
+     *
+     * @generated from enum value: ROLE_ADMIN = 3;
+     */
+    ADMIN = 3,
+    /**
+     * ROLE_OWNER the user has owner role in the scope
+     *
+     * @generated from enum value: ROLE_OWNER = 4;
+     */
+    OWNER = 4
 }
 /**
  * Paging defines paging for methods with a lot of results

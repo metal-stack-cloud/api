@@ -56,6 +56,7 @@ type (
 		projectservice  *apiv1mocks.ProjectServiceClient
 		tenantservice   *apiv1mocks.TenantServiceClient
 		tokenservice    *apiv1mocks.TokenServiceClient
+		userservice     *apiv1mocks.UserServiceClient
 		versionservice  *apiv1mocks.VersionServiceClient
 		volumeservice   *apiv1mocks.VolumeServiceClient
 		snapshotservice *apiv1mocks.SnapshotServiceClient
@@ -71,6 +72,7 @@ type (
 		Project  func(m *mock.Mock)
 		Tenant   func(m *mock.Mock)
 		Token    func(m *mock.Mock)
+		User     func(m *mock.Mock)
 		Version  func(m *mock.Mock)
 		Volume   func(m *mock.Mock)
 		Snapshot func(m *mock.Mock)
@@ -174,6 +176,7 @@ func newapiv1(t *testing.T, fns *Apiv1MockFns) *apiv1 {
 		projectservice:  apiv1mocks.NewProjectServiceClient(t),
 		tenantservice:   apiv1mocks.NewTenantServiceClient(t),
 		tokenservice:    apiv1mocks.NewTokenServiceClient(t),
+		userservice:     apiv1mocks.NewUserServiceClient(t),
 		versionservice:  apiv1mocks.NewVersionServiceClient(t),
 		volumeservice:   apiv1mocks.NewVolumeServiceClient(t),
 		snapshotservice: apiv1mocks.NewSnapshotServiceClient(t),
@@ -206,6 +209,9 @@ func newapiv1(t *testing.T, fns *Apiv1MockFns) *apiv1 {
 		}
 		if fns.Token != nil {
 			fns.Token(&a.tokenservice.Mock)
+		}
+		if fns.User != nil {
+			fns.User(&a.userservice.Mock)
 		}
 		if fns.Version != nil {
 			fns.Version(&a.versionservice.Mock)
@@ -248,6 +254,9 @@ func (c *apiv1) Tenant() apiv1connect.TenantServiceClient {
 }
 func (c *apiv1) Token() apiv1connect.TokenServiceClient {
 	return c.tokenservice
+}
+func (c *apiv1) User() apiv1connect.UserServiceClient {
+	return c.userservice
 }
 func (c *apiv1) Version() apiv1connect.VersionServiceClient {
 	return c.versionservice
