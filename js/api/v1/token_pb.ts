@@ -5,6 +5,7 @@
 
 import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
 import { Duration, Message, proto3, Timestamp } from "@bufbuild/protobuf";
+import { AdminRole, ProjectRole, TenantRole } from "./common_pb.js";
 
 /**
  * TokenType specifies different use cases of tokens
@@ -77,7 +78,8 @@ export class Token extends Message<Token> {
   /**
    * Roles is a list of roles this token can be used for
    *
-   * @generated from field: repeated api.v1.TokenRole roles = 5;
+   * @generated from field: repeated api.v1.TokenRole roles = 5 [deprecated = true];
+   * @deprecated
    */
   roles: TokenRole[] = [];
 
@@ -102,6 +104,27 @@ export class Token extends Message<Token> {
    */
   tokenType = TokenType.UNSPECIFIED;
 
+  /**
+   * ProjectRoles associates a project id with the corresponding role of the token owner
+   *
+   * @generated from field: map<string, api.v1.ProjectRole> project_roles = 9;
+   */
+  projectRoles: { [key: string]: ProjectRole } = {};
+
+  /**
+   * TenantRoles associates a tenant id with the corresponding role of the token owner
+   *
+   * @generated from field: map<string, api.v1.TenantRole> tenant_roles = 10;
+   */
+  tenantRoles: { [key: string]: TenantRole } = {};
+
+  /**
+   * AdminRole defines the admin role of the token owner
+   *
+   * @generated from field: api.v1.AdminRole admin_role = 11;
+   */
+  adminRole = AdminRole.UNSPECIFIED;
+
   constructor(data?: PartialMessage<Token>) {
     super();
     proto3.util.initPartial(data, this);
@@ -118,6 +141,9 @@ export class Token extends Message<Token> {
     { no: 6, name: "expires", kind: "message", T: Timestamp },
     { no: 7, name: "issued_at", kind: "message", T: Timestamp },
     { no: 8, name: "token_type", kind: "enum", T: proto3.getEnumType(TokenType) },
+    { no: 9, name: "project_roles", kind: "map", K: 9 /* ScalarType.STRING */, V: {kind: "enum", T: proto3.getEnumType(ProjectRole)} },
+    { no: 10, name: "tenant_roles", kind: "map", K: 9 /* ScalarType.STRING */, V: {kind: "enum", T: proto3.getEnumType(TenantRole)} },
+    { no: 11, name: "admin_role", kind: "enum", T: proto3.getEnumType(AdminRole) },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Token {

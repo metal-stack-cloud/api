@@ -40,13 +40,19 @@ message Token {
   // Permissions is a list of service methods this token can be used for
   repeated MethodPermission permissions = 4;
   // Roles is a list of roles this token can be used for
-  repeated TokenRole roles = 5;
+  repeated TokenRole roles = 5 [deprecated = true];
   // Expires gives the date in the future after which this token can not be used anymore
   google.protobuf.Timestamp expires = 6;
   // IssuedAt gives the date when this token was created
   google.protobuf.Timestamp issued_at = 7;
   // TokenType describes the type of this token
   TokenType token_type = 8;
+  // ProjectRoles associates a project id with the corresponding role of the token owner
+  map<string, ProjectRole> project_roles = 9;
+  // TenantRoles associates a tenant id with the corresponding role of the token owner
+  map<string, TenantRole> tenant_roles = 10;
+  // AdminRole defines the admin role of the token owner
+  AdminRole admin_role = 11;
 }
 
 // TokenType specifies different use cases of tokens

@@ -8512,7 +8512,10 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": ""
+              "defaultValue": "",
+              "options": {
+                "deprecated": true
+              }
             },
             {
               "name": "expires",
@@ -8545,6 +8548,114 @@
               "type": "TokenType",
               "longType": "TokenType",
               "fullType": "api.v1.TokenType",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "project_roles",
+              "description": "ProjectRoles associates a project id with the corresponding role of the token owner",
+              "label": "repeated",
+              "type": "ProjectRolesEntry",
+              "longType": "Token.ProjectRolesEntry",
+              "fullType": "api.v1.Token.ProjectRolesEntry",
+              "ismap": true,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "tenant_roles",
+              "description": "TenantRoles associates a tenant id with the corresponding role of the token owner",
+              "label": "repeated",
+              "type": "TenantRolesEntry",
+              "longType": "Token.TenantRolesEntry",
+              "fullType": "api.v1.Token.TenantRolesEntry",
+              "ismap": true,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "admin_role",
+              "description": "AdminRole defines the admin role of the token owner",
+              "label": "",
+              "type": "AdminRole",
+              "longType": "AdminRole",
+              "fullType": "api.v1.AdminRole",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "ProjectRolesEntry",
+          "longName": "Token.ProjectRolesEntry",
+          "fullName": "api.v1.Token.ProjectRolesEntry",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "key",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "value",
+              "description": "",
+              "label": "",
+              "type": "ProjectRole",
+              "longType": "ProjectRole",
+              "fullType": "api.v1.ProjectRole",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "TenantRolesEntry",
+          "longName": "Token.TenantRolesEntry",
+          "fullName": "api.v1.Token.TenantRolesEntry",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "key",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "value",
+              "description": "",
+              "label": "",
+              "type": "TenantRole",
+              "longType": "TenantRole",
+              "fullType": "api.v1.TenantRole",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",

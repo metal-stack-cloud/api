@@ -221,6 +221,12 @@ func (m *Token) validate(all bool) error {
 
 	// no validation rules for TokenType
 
+	// no validation rules for ProjectRoles
+
+	// no validation rules for TenantRoles
+
+	// no validation rules for AdminRole
+
 	if len(errors) > 0 {
 		return TokenMultiError(errors)
 	}

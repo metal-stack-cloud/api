@@ -1,5 +1,6 @@
 import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
 import { Duration, Message, proto3, Timestamp } from "@bufbuild/protobuf";
+import { AdminRole, ProjectRole, TenantRole } from "./common_pb.js";
 /**
  * TokenType specifies different use cases of tokens
  *
@@ -58,7 +59,8 @@ export declare class Token extends Message<Token> {
     /**
      * Roles is a list of roles this token can be used for
      *
-     * @generated from field: repeated api.v1.TokenRole roles = 5;
+     * @generated from field: repeated api.v1.TokenRole roles = 5 [deprecated = true];
+     * @deprecated
      */
     roles: TokenRole[];
     /**
@@ -79,6 +81,28 @@ export declare class Token extends Message<Token> {
      * @generated from field: api.v1.TokenType token_type = 8;
      */
     tokenType: TokenType;
+    /**
+     * ProjectRoles associates a project id with the corresponding role of the token owner
+     *
+     * @generated from field: map<string, api.v1.ProjectRole> project_roles = 9;
+     */
+    projectRoles: {
+        [key: string]: ProjectRole;
+    };
+    /**
+     * TenantRoles associates a tenant id with the corresponding role of the token owner
+     *
+     * @generated from field: map<string, api.v1.TenantRole> tenant_roles = 10;
+     */
+    tenantRoles: {
+        [key: string]: TenantRole;
+    };
+    /**
+     * AdminRole defines the admin role of the token owner
+     *
+     * @generated from field: api.v1.AdminRole admin_role = 11;
+     */
+    adminRole: AdminRole;
     constructor(data?: PartialMessage<Token>);
     static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.Token";
