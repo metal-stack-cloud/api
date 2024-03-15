@@ -77,13 +77,7 @@ export class Token extends Message<Token> {
 
   /**
    * Roles is a list of roles this token can be used for
-   *
-   * @generated from field: repeated api.v1.TokenRole roles = 5 [deprecated = true];
-   * @deprecated
-   */
-  roles: TokenRole[] = [];
-
-  /**
+   * repeated TokenRole roles = 5 [deprecated = true];
    * Expires gives the date in the future after which this token can not be used anymore
    *
    * @generated from field: google.protobuf.Timestamp expires = 6;
@@ -137,7 +131,6 @@ export class Token extends Message<Token> {
     { no: 2, name: "user_id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 3, name: "description", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 4, name: "permissions", kind: "message", T: MethodPermission, repeated: true },
-    { no: 5, name: "roles", kind: "message", T: TokenRole, repeated: true },
     { no: 6, name: "expires", kind: "message", T: Timestamp },
     { no: 7, name: "issued_at", kind: "message", T: Timestamp },
     { no: 8, name: "token_type", kind: "enum", T: proto3.getEnumType(TokenType) },
@@ -185,17 +178,33 @@ export class TokenServiceCreateRequest extends Message<TokenServiceCreateRequest
 
   /**
    * Roles is a list of roles this token can be used for
-   *
-   * @generated from field: repeated api.v1.TokenRole roles = 3;
-   */
-  roles: TokenRole[] = [];
-
-  /**
+   * repeated TokenRole roles = 3;
    * Expires gives the duration since now, after which this token can not be used anymore
    *
    * @generated from field: google.protobuf.Duration expires = 4;
    */
   expires?: Duration;
+
+  /**
+   * ProjectRoles associates a project id with the corresponding role of the token owner
+   *
+   * @generated from field: map<string, api.v1.ProjectRole> project_roles = 5;
+   */
+  projectRoles: { [key: string]: ProjectRole } = {};
+
+  /**
+   * TenantRoles associates a tenant id with the corresponding role of the token owner
+   *
+   * @generated from field: map<string, api.v1.TenantRole> tenant_roles = 6;
+   */
+  tenantRoles: { [key: string]: TenantRole } = {};
+
+  /**
+   * AdminRole defines the admin role of the token owner
+   *
+   * @generated from field: optional api.v1.AdminRole admin_role = 7;
+   */
+  adminRole?: AdminRole;
 
   constructor(data?: PartialMessage<TokenServiceCreateRequest>) {
     super();
@@ -207,8 +216,10 @@ export class TokenServiceCreateRequest extends Message<TokenServiceCreateRequest
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
     { no: 1, name: "description", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 2, name: "permissions", kind: "message", T: MethodPermission, repeated: true },
-    { no: 3, name: "roles", kind: "message", T: TokenRole, repeated: true },
     { no: 4, name: "expires", kind: "message", T: Duration },
+    { no: 5, name: "project_roles", kind: "map", K: 9 /* ScalarType.STRING */, V: {kind: "enum", T: proto3.getEnumType(ProjectRole)} },
+    { no: 6, name: "tenant_roles", kind: "map", K: 9 /* ScalarType.STRING */, V: {kind: "enum", T: proto3.getEnumType(TenantRole)} },
+    { no: 7, name: "admin_role", kind: "enum", T: proto3.getEnumType(AdminRole), opt: true },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): TokenServiceCreateRequest {
@@ -275,55 +286,6 @@ export class MethodPermission extends Message<MethodPermission> {
 
   static equals(a: MethodPermission | PlainMessage<MethodPermission> | undefined, b: MethodPermission | PlainMessage<MethodPermission> | undefined): boolean {
     return proto3.util.equals(MethodPermission, a, b);
-  }
-}
-
-/**
- * TokenRole is a mapping from subject to role there
- *
- * @generated from message api.v1.TokenRole
- */
-export class TokenRole extends Message<TokenRole> {
-  /**
-   * Subject specifies the subject (project or organization) this role applies to
-   *
-   * @generated from field: string subject = 1;
-   */
-  subject = "";
-
-  /**
-   * Role defines the string representation of a tenantrole, projectrole or a global adminrole
-   *
-   * @generated from field: string role = 2;
-   */
-  role = "";
-
-  constructor(data?: PartialMessage<TokenRole>) {
-    super();
-    proto3.util.initPartial(data, this);
-  }
-
-  static readonly runtime: typeof proto3 = proto3;
-  static readonly typeName = "api.v1.TokenRole";
-  static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "subject", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 2, name: "role", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-  ]);
-
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): TokenRole {
-    return new TokenRole().fromBinary(bytes, options);
-  }
-
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): TokenRole {
-    return new TokenRole().fromJson(jsonValue, options);
-  }
-
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): TokenRole {
-    return new TokenRole().fromJsonString(jsonString, options);
-  }
-
-  static equals(a: TokenRole | PlainMessage<TokenRole> | undefined, b: TokenRole | PlainMessage<TokenRole> | undefined): boolean {
-    return proto3.util.equals(TokenRole, a, b);
   }
 }
 

@@ -5,7 +5,8 @@
 
 import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
 import { Message, proto3 } from "@bufbuild/protobuf";
-import { MethodPermission, TokenRole } from "./token_pb.js";
+import { MethodPermission } from "./token_pb.js";
+import { AdminRole, ProjectRole, TenantRole } from "./common_pb.js";
 
 /**
  * MethodServiceListRequest is the request payload to list all public methods
@@ -129,10 +130,26 @@ export class MethodServiceTokenScopedListResponse extends Message<MethodServiceT
 
   /**
    * Roles a list of roles the presented token contains
+   * repeated TokenRole roles = 2;
+   * ProjectRoles associates a project id with the corresponding role of the token owner
    *
-   * @generated from field: repeated api.v1.TokenRole roles = 2;
+   * @generated from field: map<string, api.v1.ProjectRole> project_roles = 3;
    */
-  roles: TokenRole[] = [];
+  projectRoles: { [key: string]: ProjectRole } = {};
+
+  /**
+   * TenantRoles associates a tenant id with the corresponding role of the token owner
+   *
+   * @generated from field: map<string, api.v1.TenantRole> tenant_roles = 4;
+   */
+  tenantRoles: { [key: string]: TenantRole } = {};
+
+  /**
+   * AdminRole defines the admin role of the token owner
+   *
+   * @generated from field: optional api.v1.AdminRole admin_role = 5;
+   */
+  adminRole?: AdminRole;
 
   constructor(data?: PartialMessage<MethodServiceTokenScopedListResponse>) {
     super();
@@ -143,7 +160,9 @@ export class MethodServiceTokenScopedListResponse extends Message<MethodServiceT
   static readonly typeName = "api.v1.MethodServiceTokenScopedListResponse";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
     { no: 1, name: "permissions", kind: "message", T: MethodPermission, repeated: true },
-    { no: 2, name: "roles", kind: "message", T: TokenRole, repeated: true },
+    { no: 3, name: "project_roles", kind: "map", K: 9 /* ScalarType.STRING */, V: {kind: "enum", T: proto3.getEnumType(ProjectRole)} },
+    { no: 4, name: "tenant_roles", kind: "map", K: 9 /* ScalarType.STRING */, V: {kind: "enum", T: proto3.getEnumType(TenantRole)} },
+    { no: 5, name: "admin_role", kind: "enum", T: proto3.getEnumType(AdminRole), opt: true },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): MethodServiceTokenScopedListResponse {

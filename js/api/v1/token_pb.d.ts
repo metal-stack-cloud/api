@@ -58,12 +58,7 @@ export declare class Token extends Message<Token> {
     permissions: MethodPermission[];
     /**
      * Roles is a list of roles this token can be used for
-     *
-     * @generated from field: repeated api.v1.TokenRole roles = 5 [deprecated = true];
-     * @deprecated
-     */
-    roles: TokenRole[];
-    /**
+     * repeated TokenRole roles = 5 [deprecated = true];
      * Expires gives the date in the future after which this token can not be used anymore
      *
      * @generated from field: google.protobuf.Timestamp expires = 6;
@@ -132,16 +127,34 @@ export declare class TokenServiceCreateRequest extends Message<TokenServiceCreat
     permissions: MethodPermission[];
     /**
      * Roles is a list of roles this token can be used for
-     *
-     * @generated from field: repeated api.v1.TokenRole roles = 3;
-     */
-    roles: TokenRole[];
-    /**
+     * repeated TokenRole roles = 3;
      * Expires gives the duration since now, after which this token can not be used anymore
      *
      * @generated from field: google.protobuf.Duration expires = 4;
      */
     expires?: Duration;
+    /**
+     * ProjectRoles associates a project id with the corresponding role of the token owner
+     *
+     * @generated from field: map<string, api.v1.ProjectRole> project_roles = 5;
+     */
+    projectRoles: {
+        [key: string]: ProjectRole;
+    };
+    /**
+     * TenantRoles associates a tenant id with the corresponding role of the token owner
+     *
+     * @generated from field: map<string, api.v1.TenantRole> tenant_roles = 6;
+     */
+    tenantRoles: {
+        [key: string]: TenantRole;
+    };
+    /**
+     * AdminRole defines the admin role of the token owner
+     *
+     * @generated from field: optional api.v1.AdminRole admin_role = 7;
+     */
+    adminRole?: AdminRole;
     constructor(data?: PartialMessage<TokenServiceCreateRequest>);
     static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.TokenServiceCreateRequest";
@@ -178,33 +191,6 @@ export declare class MethodPermission extends Message<MethodPermission> {
     static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): MethodPermission;
     static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): MethodPermission;
     static equals(a: MethodPermission | PlainMessage<MethodPermission> | undefined, b: MethodPermission | PlainMessage<MethodPermission> | undefined): boolean;
-}
-/**
- * TokenRole is a mapping from subject to role there
- *
- * @generated from message api.v1.TokenRole
- */
-export declare class TokenRole extends Message<TokenRole> {
-    /**
-     * Subject specifies the subject (project or organization) this role applies to
-     *
-     * @generated from field: string subject = 1;
-     */
-    subject: string;
-    /**
-     * Role defines the string representation of a tenantrole, projectrole or a global adminrole
-     *
-     * @generated from field: string role = 2;
-     */
-    role: string;
-    constructor(data?: PartialMessage<TokenRole>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "api.v1.TokenRole";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): TokenRole;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): TokenRole;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): TokenRole;
-    static equals(a: TokenRole | PlainMessage<TokenRole> | undefined, b: TokenRole | PlainMessage<TokenRole> | undefined): boolean;
 }
 /**
  * TokenServiceCreateResponse is the response payload of a token create request

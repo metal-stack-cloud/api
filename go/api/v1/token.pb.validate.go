@@ -127,40 +127,6 @@ func (m *Token) validate(all bool) error {
 
 	}
 
-	for idx, item := range m.GetRoles() {
-		_, _ = idx, item
-
-		if all {
-			switch v := interface{}(item).(type) {
-			case interface{ ValidateAll() error }:
-				if err := v.ValidateAll(); err != nil {
-					errors = append(errors, TokenValidationError{
-						field:  fmt.Sprintf("Roles[%v]", idx),
-						reason: "embedded message failed validation",
-						cause:  err,
-					})
-				}
-			case interface{ Validate() error }:
-				if err := v.Validate(); err != nil {
-					errors = append(errors, TokenValidationError{
-						field:  fmt.Sprintf("Roles[%v]", idx),
-						reason: "embedded message failed validation",
-						cause:  err,
-					})
-				}
-			}
-		} else if v, ok := interface{}(item).(interface{ Validate() error }); ok {
-			if err := v.Validate(); err != nil {
-				return TokenValidationError{
-					field:  fmt.Sprintf("Roles[%v]", idx),
-					reason: "embedded message failed validation",
-					cause:  err,
-				}
-			}
-		}
-
-	}
-
 	if all {
 		switch v := interface{}(m.GetExpires()).(type) {
 		case interface{ ValidateAll() error }:
@@ -379,40 +345,6 @@ func (m *TokenServiceCreateRequest) validate(all bool) error {
 
 	}
 
-	for idx, item := range m.GetRoles() {
-		_, _ = idx, item
-
-		if all {
-			switch v := interface{}(item).(type) {
-			case interface{ ValidateAll() error }:
-				if err := v.ValidateAll(); err != nil {
-					errors = append(errors, TokenServiceCreateRequestValidationError{
-						field:  fmt.Sprintf("Roles[%v]", idx),
-						reason: "embedded message failed validation",
-						cause:  err,
-					})
-				}
-			case interface{ Validate() error }:
-				if err := v.Validate(); err != nil {
-					errors = append(errors, TokenServiceCreateRequestValidationError{
-						field:  fmt.Sprintf("Roles[%v]", idx),
-						reason: "embedded message failed validation",
-						cause:  err,
-					})
-				}
-			}
-		} else if v, ok := interface{}(item).(interface{ Validate() error }); ok {
-			if err := v.Validate(); err != nil {
-				return TokenServiceCreateRequestValidationError{
-					field:  fmt.Sprintf("Roles[%v]", idx),
-					reason: "embedded message failed validation",
-					cause:  err,
-				}
-			}
-		}
-
-	}
-
 	if d := m.GetExpires(); d != nil {
 		dur, err := d.AsDuration(), d.CheckValid()
 		if err != nil {
@@ -442,6 +374,14 @@ func (m *TokenServiceCreateRequest) validate(all bool) error {
 			}
 
 		}
+	}
+
+	// no validation rules for ProjectRoles
+
+	// no validation rules for TenantRoles
+
+	if m.AdminRole != nil {
+		// no validation rules for AdminRole
 	}
 
 	if len(errors) > 0 {
@@ -625,134 +565,6 @@ var _ interface {
 	Cause() error
 	ErrorName() string
 } = MethodPermissionValidationError{}
-
-// Validate checks the field values on TokenRole with the rules defined in the
-// proto definition for this message. If any rules are violated, the first
-// error encountered is returned, or nil if there are no violations.
-func (m *TokenRole) Validate() error {
-	return m.validate(false)
-}
-
-// ValidateAll checks the field values on TokenRole with the rules defined in
-// the proto definition for this message. If any rules are violated, the
-// result is a list of violation errors wrapped in TokenRoleMultiError, or nil
-// if none found.
-func (m *TokenRole) ValidateAll() error {
-	return m.validate(true)
-}
-
-func (m *TokenRole) validate(all bool) error {
-	if m == nil {
-		return nil
-	}
-
-	var errors []error
-
-	if l := utf8.RuneCountInString(m.GetSubject()); l < 1 || l > 256 {
-		err := TokenRoleValidationError{
-			field:  "Subject",
-			reason: "value length must be between 1 and 256 runes, inclusive",
-		}
-		if !all {
-			return err
-		}
-		errors = append(errors, err)
-	}
-
-	if _, ok := _TokenRole_Role_InLookup[m.GetRole()]; !ok {
-		err := TokenRoleValidationError{
-			field:  "Role",
-			reason: "value must be in list [admin owner editor viewer]",
-		}
-		if !all {
-			return err
-		}
-		errors = append(errors, err)
-	}
-
-	if len(errors) > 0 {
-		return TokenRoleMultiError(errors)
-	}
-
-	return nil
-}
-
-// TokenRoleMultiError is an error wrapping multiple validation errors returned
-// by TokenRole.ValidateAll() if the designated constraints aren't met.
-type TokenRoleMultiError []error
-
-// Error returns a concatenation of all the error messages it wraps.
-func (m TokenRoleMultiError) Error() string {
-	var msgs []string
-	for _, err := range m {
-		msgs = append(msgs, err.Error())
-	}
-	return strings.Join(msgs, "; ")
-}
-
-// AllErrors returns a list of validation violation errors.
-func (m TokenRoleMultiError) AllErrors() []error { return m }
-
-// TokenRoleValidationError is the validation error returned by
-// TokenRole.Validate if the designated constraints aren't met.
-type TokenRoleValidationError struct {
-	field  string
-	reason string
-	cause  error
-	key    bool
-}
-
-// Field function returns field value.
-func (e TokenRoleValidationError) Field() string { return e.field }
-
-// Reason function returns reason value.
-func (e TokenRoleValidationError) Reason() string { return e.reason }
-
-// Cause function returns cause value.
-func (e TokenRoleValidationError) Cause() error { return e.cause }
-
-// Key function returns key value.
-func (e TokenRoleValidationError) Key() bool { return e.key }
-
-// ErrorName returns error name.
-func (e TokenRoleValidationError) ErrorName() string { return "TokenRoleValidationError" }
-
-// Error satisfies the builtin error interface
-func (e TokenRoleValidationError) Error() string {
-	cause := ""
-	if e.cause != nil {
-		cause = fmt.Sprintf(" | caused by: %v", e.cause)
-	}
-
-	key := ""
-	if e.key {
-		key = "key for "
-	}
-
-	return fmt.Sprintf(
-		"invalid %sTokenRole.%s: %s%s",
-		key,
-		e.field,
-		e.reason,
-		cause)
-}
-
-var _ error = TokenRoleValidationError{}
-
-var _ interface {
-	Field() string
-	Reason() string
-	Key() bool
-	Cause() error
-	ErrorName() string
-} = TokenRoleValidationError{}
-
-var _TokenRole_Role_InLookup = map[string]struct{}{
-	"admin":  {},
-	"owner":  {},
-	"editor": {},
-	"viewer": {},
-}
 
 // Validate checks the field values on TokenServiceCreateResponse with the
 // rules defined in the proto definition for this message. If any rules are
