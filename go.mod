@@ -4,12 +4,12 @@ go 1.22
 
 require (
 	connectrpc.com/connect v1.15.0
-	github.com/bufbuild/protocompile v0.8.0
+	github.com/bufbuild/protocompile v0.9.0
 	github.com/envoyproxy/protoc-gen-validate v1.0.4
 	github.com/go-task/slim-sprig/v3 v3.0.0
 	github.com/klauspost/connect-compress/v2 v2.0.0
 	github.com/stretchr/testify v1.9.0
-	google.golang.org/protobuf v1.32.0
+	google.golang.org/protobuf v1.33.0
 )
 
 require (

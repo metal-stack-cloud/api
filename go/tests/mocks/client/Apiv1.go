@@ -213,6 +213,26 @@ func (_m *Apiv1) Token() apiv1connect.TokenServiceClient {
 	return r0
 }
 
+// User provides a mock function with given fields:
+func (_m *Apiv1) User() apiv1connect.UserServiceClient {
+	ret := _m.Called()
+
+	if len(ret) == 0 {
+		panic("no return value specified for User")
+	}
+
+	var r0 apiv1connect.UserServiceClient
+	if rf, ok := ret.Get(0).(func() apiv1connect.UserServiceClient); ok {
+		r0 = rf()
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(apiv1connect.UserServiceClient)
+		}
+	}
+
+	return r0
+}
+
 // Version provides a mock function with given fields:
 func (_m *Apiv1) Version() apiv1connect.VersionServiceClient {
 	ret := _m.Called()
