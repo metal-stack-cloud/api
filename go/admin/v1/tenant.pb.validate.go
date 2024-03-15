@@ -39,6 +39,9 @@ var (
 	_ = apiv1.OAuthProvider(0)
 )
 
+// define the regex for a UUID once up-front
+var _tenant_uuidPattern = regexp.MustCompile("^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$")
+
 // Validate checks the field values on TenantServiceListRequest with the rules
 // defined in the proto definition for this message. If any rules are
 // violated, the first error encountered is returned, or nil if there are no violations.
@@ -102,10 +105,6 @@ func (m *TenantServiceListRequest) validate(all bool) error {
 		// no validation rules for Email
 	}
 
-	if m.OrganisationId != nil {
-		// no validation rules for OrganisationId
-	}
-
 	if m.OauthProvider != nil {
 		// no validation rules for OauthProvider
 	}
@@ -114,8 +113,32 @@ func (m *TenantServiceListRequest) validate(all bool) error {
 		// no validation rules for Admitted
 	}
 
+	if m.Uuid != nil {
+
+		if err := m._validateUuid(m.GetUuid()); err != nil {
+			err = TenantServiceListRequestValidationError{
+				field:  "Uuid",
+				reason: "value must be a valid UUID",
+				cause:  err,
+			}
+			if !all {
+				return err
+			}
+			errors = append(errors, err)
+		}
+
+	}
+
 	if len(errors) > 0 {
 		return TenantServiceListRequestMultiError(errors)
+	}
+
+	return nil
+}
+
+func (m *TenantServiceListRequest) _validateUuid(uuid string) error {
+	if matched := _tenant_uuidPattern.MatchString(uuid); !matched {
+		return errors.New("invalid uuid format")
 	}
 
 	return nil

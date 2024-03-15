@@ -270,7 +270,7 @@ type MethodPermission struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Subject maybe either the project or the organization
+	// Subject maybe either the project or the tenant
 	// for which the methods should be allowed
 	Subject string `protobuf:"bytes,1,opt,name=subject,proto3" json:"subject,omitempty"`
 	// Methods which should be accessible
@@ -329,7 +329,7 @@ type TokenRole struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Subject specifies the subject (project or organization) this role applies to
+	// Subject specifies the subject (project or tenant) this role applies to
 	Subject string `protobuf:"bytes,1,opt,name=subject,proto3" json:"subject,omitempty"`
 	// Role defines the string representation of a tenantrole, projectrole or a global adminrole
 	Role string `protobuf:"bytes,2,opt,name=role,proto3" json:"role,omitempty"`

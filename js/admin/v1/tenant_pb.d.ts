@@ -27,12 +27,6 @@ export declare class TenantServiceListRequest extends Message<TenantServiceListR
      */
     email?: string;
     /**
-     * OrganisationId of the tenant to list
-     *
-     * @generated from field: optional string organisation_id = 4;
-     */
-    organisationId?: string;
-    /**
      * OauthProvide of the tenant to list
      *
      * @generated from field: optional api.v1.OAuthProvider oauth_provider = 5;
@@ -50,6 +44,12 @@ export declare class TenantServiceListRequest extends Message<TenantServiceListR
      * @generated from field: api.v1.Paging paging = 7;
      */
     paging?: Paging;
+    /**
+     * Uuid of the tenant to list
+     *
+     * @generated from field: optional string uuid = 8;
+     */
+    uuid?: string;
     constructor(data?: PartialMessage<TenantServiceListRequest>);
     static readonly runtime: typeof proto3;
     static readonly typeName = "admin.v1.TenantServiceListRequest";

@@ -164,7 +164,7 @@ export class MethodPermission extends Message {
     constructor(data) {
         super();
         /**
-         * Subject maybe either the project or the organization
+         * Subject maybe either the project or the tenant
          * for which the methods should be allowed
          *
          * @generated from field: string subject = 1;
@@ -206,7 +206,7 @@ export class TokenRole extends Message {
     constructor(data) {
         super();
         /**
-         * Subject specifies the subject (project or organization) this role applies to
+         * Subject specifies the subject (project or tenant) this role applies to
          *
          * @generated from field: string subject = 1;
          */

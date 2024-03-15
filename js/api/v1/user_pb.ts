@@ -5,7 +5,7 @@
 
 import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
 import { Message, proto3 } from "@bufbuild/protobuf";
-import { OAuthProvider, Role } from "./common_pb.js";
+import { OAuthProvider } from "./common_pb.js";
 import { Tenant } from "./tenant_pb.js";
 import { Project } from "./project_pb.js";
 
@@ -51,14 +51,6 @@ export class User extends Message<User> {
   oauthProvider = OAuthProvider.UNSPECIFIED;
 
   /**
-   * Organisations the user belongs to
-   *
-   * @generated from field: repeated api.v1.Organization organizations = 7 [deprecated = true];
-   * @deprecated
-   */
-  organizations: Organization[] = [];
-
-  /**
    * Tenants the user belongs to
    *
    * @generated from field: repeated api.v1.Tenant tenants = 8;
@@ -99,7 +91,6 @@ export class User extends Message<User> {
     { no: 3, name: "email", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 5, name: "avatar_url", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 6, name: "oauth_provider", kind: "enum", T: proto3.getEnumType(OAuthProvider) },
-    { no: 7, name: "organizations", kind: "message", T: Organization, repeated: true },
     { no: 8, name: "tenants", kind: "message", T: Tenant, repeated: true },
     { no: 9, name: "projects", kind: "message", T: Project, repeated: true },
     { no: 10, name: "default_tenant", kind: "message", T: Tenant },
@@ -194,190 +185,6 @@ export class UserServiceGetResponse extends Message<UserServiceGetResponse> {
 
   static equals(a: UserServiceGetResponse | PlainMessage<UserServiceGetResponse> | undefined, b: UserServiceGetResponse | PlainMessage<UserServiceGetResponse> | undefined): boolean {
     return proto3.util.equals(UserServiceGetResponse, a, b);
-  }
-}
-
-/**
- * Organization which is a customer of the platform
- * can be a company or some other form of business
- * Deprecated
- *
- * @generated from message api.v1.Organization
- */
-export class Organization extends Message<Organization> {
-  /**
-   * Id of this organization
-   *
-   * @generated from field: string id = 1;
-   */
-  id = "";
-
-  /**
-   * Login of this organization
-   *
-   * @generated from field: string login = 2;
-   */
-  login = "";
-
-  /**
-   * Name of this organization
-   *
-   * @generated from field: string name = 3;
-   */
-  name = "";
-
-  /**
-   * Email of this organization
-   *
-   * @generated from field: string email = 4;
-   */
-  email = "";
-
-  /**
-   * BillingEmail of this organization
-   *
-   * @generated from field: string billing_email = 5;
-   */
-  billingEmail = "";
-
-  /**
-   * AvatarUrl of this organization
-   *
-   * @generated from field: string avatar_url = 6;
-   */
-  avatarUrl = "";
-
-  /**
-   * Role of this organization
-   *
-   * @generated from field: api.v1.Role role = 7 [deprecated = true];
-   * @deprecated
-   */
-  role = Role.UNSPECIFIED;
-
-  /**
-   * Teams which belong to this organization
-   *
-   * @generated from field: repeated api.v1.Team teams = 8;
-   */
-  teams: Team[] = [];
-
-  /**
-   * Admitted if set to true, this organization is allowed to use the platform
-   *
-   * @generated from field: optional bool admitted = 9;
-   */
-  admitted?: boolean;
-
-  constructor(data?: PartialMessage<Organization>) {
-    super();
-    proto3.util.initPartial(data, this);
-  }
-
-  static readonly runtime: typeof proto3 = proto3;
-  static readonly typeName = "api.v1.Organization";
-  static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 2, name: "login", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 3, name: "name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 4, name: "email", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 5, name: "billing_email", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 6, name: "avatar_url", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 7, name: "role", kind: "enum", T: proto3.getEnumType(Role) },
-    { no: 8, name: "teams", kind: "message", T: Team, repeated: true },
-    { no: 9, name: "admitted", kind: "scalar", T: 8 /* ScalarType.BOOL */, opt: true },
-  ]);
-
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Organization {
-    return new Organization().fromBinary(bytes, options);
-  }
-
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): Organization {
-    return new Organization().fromJson(jsonValue, options);
-  }
-
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): Organization {
-    return new Organization().fromJsonString(jsonString, options);
-  }
-
-  static equals(a: Organization | PlainMessage<Organization> | undefined, b: Organization | PlainMessage<Organization> | undefined): boolean {
-    return proto3.util.equals(Organization, a, b);
-  }
-}
-
-/**
- * Team is a sub structure of users in a organizations
- * Deprecated
- *
- * @generated from message api.v1.Team
- */
-export class Team extends Message<Team> {
-  /**
-   * Id of this team
-   *
-   * @generated from field: string id = 1;
-   */
-  id = "";
-
-  /**
-   * Name of this team
-   *
-   * @generated from field: string name = 2;
-   */
-  name = "";
-
-  /**
-   * AvatarUrl of this team
-   *
-   * @generated from field: string avatar_url = 3;
-   */
-  avatarUrl = "";
-
-  /**
-   * Role of this team
-   *
-   * @generated from field: api.v1.Role role = 4 [deprecated = true];
-   * @deprecated
-   */
-  role = Role.UNSPECIFIED;
-
-  /**
-   * ProjectId of this team
-   * a project is created in the backend for every team
-   *
-   * @generated from field: string project_id = 5;
-   */
-  projectId = "";
-
-  constructor(data?: PartialMessage<Team>) {
-    super();
-    proto3.util.initPartial(data, this);
-  }
-
-  static readonly runtime: typeof proto3 = proto3;
-  static readonly typeName = "api.v1.Team";
-  static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 2, name: "name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 3, name: "avatar_url", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 4, name: "role", kind: "enum", T: proto3.getEnumType(Role) },
-    { no: 5, name: "project_id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-  ]);
-
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Team {
-    return new Team().fromBinary(bytes, options);
-  }
-
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): Team {
-    return new Team().fromJson(jsonValue, options);
-  }
-
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): Team {
-    return new Team().fromJsonString(jsonString, options);
-  }
-
-  static equals(a: Team | PlainMessage<Team> | undefined, b: Team | PlainMessage<Team> | undefined): boolean {
-    return proto3.util.equals(Team, a, b);
   }
 }
 

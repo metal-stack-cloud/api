@@ -80,7 +80,7 @@ message TokenServiceCreateRequest {
 
 // MethodPermission is a mapping from a subject/project to a service method
 message MethodPermission {
-  // Subject maybe either the project or the organization
+  // Subject maybe either the project or the tenant
   // for which the methods should be allowed
   string subject = 1;
   // Methods which should be accessible
@@ -89,7 +89,7 @@ message MethodPermission {
 
 // TokenRole is a mapping from subject to role there
 message TokenRole {
-  // Subject specifies the subject (project or organization) this role applies to
+  // Subject specifies the subject (project or tenant) this role applies to
   string subject = 1 [(validate.rules).string = {
     min_len: 1, // when requesting admin permissions with *
     max_len: 256,
