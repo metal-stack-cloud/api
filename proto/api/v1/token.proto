@@ -25,6 +25,9 @@ service TokenService {
 
 // Token is a jwt authentication token to access the api
 message Token {
+  reserved 5;
+  reserved "roles";
+
   // Uuid of the jwt token, used to reference it by revoke
   string uuid = 1 [(validate.rules).string.uuid = true];
   // UserId who created this token
@@ -39,8 +42,6 @@ message Token {
   }];
   // Permissions is a list of service methods this token can be used for
   repeated MethodPermission permissions = 4;
-  // Roles is a list of roles this token can be used for
-  // repeated TokenRole roles = 5 [deprecated = true];
   // Expires gives the date in the future after which this token can not be used anymore
   google.protobuf.Timestamp expires = 6;
   // IssuedAt gives the date when this token was created
@@ -67,6 +68,9 @@ enum TokenType {
 
 // TokenServiceCreateRequest is the request payload to create a token
 message TokenServiceCreateRequest {
+  reserved 3;
+  reserved "roles";
+
   // Description of the token
   string description = 1 [(validate.rules).string = {
     min_len: 2,
@@ -74,8 +78,6 @@ message TokenServiceCreateRequest {
   }];
   // Permissions is a list of service methods this token can be used for
   repeated MethodPermission permissions = 2;
-  // Roles is a list of roles this token can be used for
-  // repeated TokenRole roles = 3;
   // Expires gives the duration since now, after which this token can not be used anymore
   google.protobuf.Duration expires = 4 [(validate.rules).duration = {
     // Between 10min and 1year
@@ -98,24 +100,6 @@ message MethodPermission {
   // Methods which should be accessible
   repeated string methods = 2;
 }
-
-// // TokenRole is a mapping from subject to role there
-// message TokenRole {
-//   // Subject specifies the subject (project or organization) this role applies to
-//   string subject = 1 [(validate.rules).string = {
-//     min_len: 1, // when requesting admin permissions with *
-//     max_len: 256,
-//   }];
-//   // Role defines the string representation of a tenantrole, projectrole or a global adminrole
-//   string role = 2 [(validate.rules).string = {
-//     in: [
-//       "admin",
-//       "owner",
-//       "editor",
-//       "viewer"
-//     ]
-//   }];
-// }
 
 // TokenServiceCreateResponse is the response payload of a token create request
 message TokenServiceCreateResponse {

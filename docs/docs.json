@@ -8504,7 +8504,7 @@
             },
             {
               "name": "expires",
-              "description": "Roles is a list of roles this token can be used for\nrepeated TokenRole roles = 5 [deprecated = true];\nExpires gives the date in the future after which this token can not be used anymore",
+              "description": "Expires gives the date in the future after which this token can not be used anymore",
               "label": "",
               "type": "Timestamp",
               "longType": "google.protobuf.Timestamp",
@@ -8696,7 +8696,7 @@
             },
             {
               "name": "expires",
-              "description": "Roles is a list of roles this token can be used for\nrepeated TokenRole roles = 3;\nExpires gives the duration since now, after which this token can not be used anymore",
+              "description": "Expires gives the duration since now, after which this token can not be used anymore",
               "label": "",
               "type": "Duration",
               "longType": "google.protobuf.Duration",

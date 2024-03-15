@@ -76,8 +76,6 @@ export class Token extends Message<Token> {
   permissions: MethodPermission[] = [];
 
   /**
-   * Roles is a list of roles this token can be used for
-   * repeated TokenRole roles = 5 [deprecated = true];
    * Expires gives the date in the future after which this token can not be used anymore
    *
    * @generated from field: google.protobuf.Timestamp expires = 6;
@@ -177,8 +175,6 @@ export class TokenServiceCreateRequest extends Message<TokenServiceCreateRequest
   permissions: MethodPermission[] = [];
 
   /**
-   * Roles is a list of roles this token can be used for
-   * repeated TokenRole roles = 3;
    * Expires gives the duration since now, after which this token can not be used anymore
    *
    * @generated from field: google.protobuf.Duration expires = 4;
