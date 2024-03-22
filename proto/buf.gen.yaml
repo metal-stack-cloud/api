@@ -12,7 +12,7 @@ plugins:
     out: ../go
     opt: paths=source_relative
   # generate go structs for protocol buffer definition
-  - plugin: buf.build/connectrpc/go:v1.15.0
+  - plugin: buf.build/connectrpc/go:v1.16.0
     out: ../go
     opt: paths=source_relative
   # generate ts structs for protocol buffer definition
