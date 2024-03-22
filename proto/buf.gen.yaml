@@ -8,18 +8,18 @@ managed:
       - buf.build/envoyproxy/protoc-gen-validate
 plugins:
   # generate go structs for protocol buffer definition
-  - plugin: buf.build/protocolbuffers/go:v1.32.0
+  - plugin: buf.build/protocolbuffers/go:v1.33.0
     out: ../go
     opt: paths=source_relative
   # generate go structs for protocol buffer definition
-  - plugin: buf.build/connectrpc/go:v1.15.0
+  - plugin: buf.build/connectrpc/go:v1.16.0
     out: ../go
     opt: paths=source_relative
   # generate ts structs for protocol buffer definition
-  - plugin: buf.build/bufbuild/es:v1.7.2
+  - plugin: buf.build/bufbuild/es:v1.8.0
     out: ../js
     opt: target=ts
-  - plugin: buf.build/connectrpc/es:v1.3.0
+  - plugin: buf.build/connectrpc/es:v1.4.0
     out: ../js
     opt: target=ts
   # generate validate methods
