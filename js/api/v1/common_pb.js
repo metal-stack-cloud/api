@@ -258,53 +258,6 @@ proto3.util.setEnumType(Auditing, "api.v1.Auditing", [
     { no: 2, name: "AUDITING_EXCLUDED" },
 ]);
 /**
- * Role defines which role the logged in user got from the login provider
- * Deprecated
- *
- * @generated from enum api.v1.Role
- */
-export var Role;
-(function (Role) {
-    /**
-     * ROLE_UNSPECIFIED is not specified
-     *
-     * @generated from enum value: ROLE_UNSPECIFIED = 0;
-     */
-    Role[Role["UNSPECIFIED"] = 0] = "UNSPECIFIED";
-    /**
-     * ROLE_MEMBER the user has member role in the scope
-     *
-     * @generated from enum value: ROLE_MEMBER = 1;
-     */
-    Role[Role["MEMBER"] = 1] = "MEMBER";
-    /**
-     * ROLE_MAINTAINER the user has maintainer role in the scope
-     *
-     * @generated from enum value: ROLE_MAINTAINER = 2;
-     */
-    Role[Role["MAINTAINER"] = 2] = "MAINTAINER";
-    /**
-     * ROLE_ADMIN the user has admin role in the scope
-     *
-     * @generated from enum value: ROLE_ADMIN = 3;
-     */
-    Role[Role["ADMIN"] = 3] = "ADMIN";
-    /**
-     * ROLE_OWNER the user has owner role in the scope
-     *
-     * @generated from enum value: ROLE_OWNER = 4;
-     */
-    Role[Role["OWNER"] = 4] = "OWNER";
-})(Role || (Role = {}));
-// Retrieve enum metadata with: proto3.getEnumType(Role)
-proto3.util.setEnumType(Role, "api.v1.Role", [
-    { no: 0, name: "ROLE_UNSPECIFIED" },
-    { no: 1, name: "ROLE_MEMBER" },
-    { no: 2, name: "ROLE_MAINTAINER" },
-    { no: 3, name: "ROLE_ADMIN" },
-    { no: 4, name: "ROLE_OWNER" },
-]);
-/**
  * Paging defines paging for methods with a lot of results
  *
  * @generated from message api.v1.Paging

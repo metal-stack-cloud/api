@@ -509,39 +509,6 @@
           ]
         },
         {
-          "name": "Role",
-          "longName": "Role",
-          "fullName": "api.v1.Role",
-          "description": "Role defines which role the logged in user got from the login provider\nDeprecated",
-          "values": [
-            {
-              "name": "ROLE_UNSPECIFIED",
-              "number": "0",
-              "description": "ROLE_UNSPECIFIED is not specified"
-            },
-            {
-              "name": "ROLE_MEMBER",
-              "number": "1",
-              "description": "ROLE_MEMBER the user has member role in the scope"
-            },
-            {
-              "name": "ROLE_MAINTAINER",
-              "number": "2",
-              "description": "ROLE_MAINTAINER the user has maintainer role in the scope"
-            },
-            {
-              "name": "ROLE_ADMIN",
-              "number": "3",
-              "description": "ROLE_ADMIN the user has admin role in the scope"
-            },
-            {
-              "name": "ROLE_OWNER",
-              "number": "4",
-              "description": "ROLE_OWNER the user has owner role in the scope"
-            }
-          ]
-        },
-        {
           "name": "TenantRole",
           "longName": "TenantRole",
           "fullName": "api.v1.TenantRole",
@@ -8160,18 +8127,6 @@
               "defaultValue": ""
             },
             {
-              "name": "organisation_id",
-              "description": "OrganisationId of the tenant to list",
-              "label": "optional",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": true,
-              "oneofdecl": "_organisation_id",
-              "defaultValue": ""
-            },
-            {
               "name": "oauth_provider",
               "description": "OauthProvide of the tenant to list",
               "label": "optional",
@@ -8206,6 +8161,26 @@
               "isoneof": false,
               "oneofdecl": "",
               "defaultValue": ""
+            },
+            {
+              "name": "uuid",
+              "description": "Uuid of the tenant to list",
+              "label": "optional",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "_uuid",
+              "defaultValue": "",
+              "options": {
+                "validate.rules": [
+                  {
+                    "name": "string.uuid",
+                    "value": true
+                  }
+                ]
+              }
             }
           ]
         },
@@ -8388,7 +8363,7 @@
           "fields": [
             {
               "name": "subject",
-              "description": "Subject maybe either the project or the organization\nfor which the methods should be allowed",
+              "description": "Subject maybe either the project or the tenant\nfor which the methods should be allowed",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -12250,204 +12225,6 @@
       "extensions": [],
       "messages": [
         {
-          "name": "Organization",
-          "longName": "Organization",
-          "fullName": "api.v1.Organization",
-          "description": "Organization which is a customer of the platform\ncan be a company or some other form of business\nDeprecated",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": true,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "id",
-              "description": "Id of this organization",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "login",
-              "description": "Login of this organization",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "name",
-              "description": "Name of this organization",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "email",
-              "description": "Email of this organization",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "billing_email",
-              "description": "BillingEmail of this organization",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "avatar_url",
-              "description": "AvatarUrl of this organization",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "role",
-              "description": "Role of this organization",
-              "label": "",
-              "type": "Role",
-              "longType": "Role",
-              "fullType": "api.v1.Role",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "deprecated": true
-              }
-            },
-            {
-              "name": "teams",
-              "description": "Teams which belong to this organization",
-              "label": "repeated",
-              "type": "Team",
-              "longType": "Team",
-              "fullType": "api.v1.Team",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "admitted",
-              "description": "Admitted if set to true, this organization is allowed to use the platform",
-              "label": "optional",
-              "type": "bool",
-              "longType": "bool",
-              "fullType": "bool",
-              "ismap": false,
-              "isoneof": true,
-              "oneofdecl": "_admitted",
-              "defaultValue": ""
-            }
-          ]
-        },
-        {
-          "name": "Team",
-          "longName": "Team",
-          "fullName": "api.v1.Team",
-          "description": "Team is a sub structure of users in a organizations\nDeprecated",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "id",
-              "description": "Id of this team",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "name",
-              "description": "Name of this team",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "avatar_url",
-              "description": "AvatarUrl of this team",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "role",
-              "description": "Role of this team",
-              "label": "",
-              "type": "Role",
-              "longType": "Role",
-              "fullType": "api.v1.Role",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "deprecated": true
-              }
-            },
-            {
-              "name": "project_id",
-              "description": "ProjectId of this team\na project is created in the backend for every team",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            }
-          ]
-        },
-        {
           "name": "User",
           "longName": "User",
           "fullName": "api.v1.User",
@@ -12516,21 +12293,6 @@
               "isoneof": false,
               "oneofdecl": "",
               "defaultValue": ""
-            },
-            {
-              "name": "organizations",
-              "description": "Organisations the user belongs to",
-              "label": "repeated",
-              "type": "Organization",
-              "longType": "Organization",
-              "fullType": "api.v1.Organization",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "deprecated": true
-              }
             },
             {
               "name": "tenants",

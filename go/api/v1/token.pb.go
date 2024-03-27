@@ -306,7 +306,7 @@ type MethodPermission struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Subject maybe either the project or the organization
+	// Subject maybe either the project or the tenant
 	// for which the methods should be allowed
 	Subject string `protobuf:"bytes,1,opt,name=subject,proto3" json:"subject,omitempty"`
 	// Methods which should be accessible
