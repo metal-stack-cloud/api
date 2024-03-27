@@ -16,7 +16,6 @@ service TokenService {
   // Revoke a token
   rpc Revoke(TokenServiceRevokeRequest) returns (TokenServiceRevokeResponse) {
     option (api.v1.admin_roles) = ADMIN_ROLE_EDITOR;
-    option (api.v1.admin_roles) = ADMIN_ROLE_VIEWER;
   }
 }
 

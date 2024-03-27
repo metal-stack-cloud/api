@@ -25,8 +25,7 @@
         "/admin.v1.StorageService/ListVolumes",
         "/admin.v1.StorageService/ListSnapshots",
         "/admin.v1.TenantService/List",
-        "/admin.v1.TokenService/List",
-        "/admin.v1.TokenService/Revoke"
+        "/admin.v1.TokenService/List"
       ]
     },
     "tenant": {

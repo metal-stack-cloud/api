@@ -55,7 +55,6 @@ func GetServicePermissions() *ServicePermissions {
 					"/admin.v1.StorageService/ListSnapshots",
 					"/admin.v1.TenantService/List",
 					"/admin.v1.TokenService/List",
-					"/admin.v1.TokenService/Revoke",
 				},
 			},
 			Tenant: Tenant{
