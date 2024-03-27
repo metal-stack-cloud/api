@@ -12,7 +12,7 @@ import (
 	"slices"
 	"strings"
 
-	"github.com/go-task/slim-sprig/v3"
+	sprig "github.com/go-task/slim-sprig/v3"
 	v1 "github.com/metal-stack-cloud/api/go/api/v1"
 	"github.com/metal-stack-cloud/api/go/permissions"
 	"github.com/metal-stack-cloud/api/go/tests/protoparser"
@@ -101,9 +101,9 @@ func servicePermissions(root string) (*permissions.ServicePermissions, error) {
 			return files, err
 		}
 		roles = permissions.Roles{
-			Admin:   &permissions.Admin{},
-			Tenant:  &permissions.Tenant{},
-			Project: &permissions.Project{},
+			Admin:   permissions.Admin{},
+			Tenant:  permissions.Tenant{},
+			Project: permissions.Project{},
 		}
 		methods    = permissions.Methods{}
 		visibility = permissions.Visibility{
@@ -149,27 +149,27 @@ func servicePermissions(root string) (*permissions.ServicePermissions, error) {
 						// Tenant
 						switch *methodOpt.IdentifierValue {
 						case v1.TenantRole_TENANT_ROLE_OWNER.String():
-							roles.Tenant.Owner = append(roles.Tenant.Owner, methodName)
+							roles.Tenant[v1.TenantRole_TENANT_ROLE_OWNER.String()] = append(roles.Tenant[v1.TenantRole_TENANT_ROLE_OWNER.String()], methodName)
 						case v1.TenantRole_TENANT_ROLE_EDITOR.String():
-							roles.Tenant.Editor = append(roles.Tenant.Editor, methodName)
+							roles.Tenant[v1.TenantRole_TENANT_ROLE_EDITOR.String()] = append(roles.Tenant[v1.TenantRole_TENANT_ROLE_EDITOR.String()], methodName)
 						case v1.TenantRole_TENANT_ROLE_VIEWER.String():
-							roles.Tenant.Viewer = append(roles.Tenant.Viewer, methodName)
+							roles.Tenant[v1.TenantRole_TENANT_ROLE_VIEWER.String()] = append(roles.Tenant[v1.TenantRole_TENANT_ROLE_VIEWER.String()], methodName)
 						case v1.TenantRole_TENANT_ROLE_UNSPECIFIED.String():
 							// noop
 						// Project
 						case v1.ProjectRole_PROJECT_ROLE_OWNER.String():
-							roles.Project.Owner = append(roles.Project.Owner, methodName)
+							roles.Project[v1.ProjectRole_PROJECT_ROLE_OWNER.String()] = append(roles.Project[v1.ProjectRole_PROJECT_ROLE_OWNER.String()], methodName)
 						case v1.ProjectRole_PROJECT_ROLE_EDITOR.String():
-							roles.Project.Editor = append(roles.Project.Editor, methodName)
+							roles.Project[v1.ProjectRole_PROJECT_ROLE_EDITOR.String()] = append(roles.Project[v1.ProjectRole_PROJECT_ROLE_EDITOR.String()], methodName)
 						case v1.ProjectRole_PROJECT_ROLE_VIEWER.String():
-							roles.Project.Viewer = append(roles.Project.Viewer, methodName)
+							roles.Project[v1.ProjectRole_PROJECT_ROLE_VIEWER.String()] = append(roles.Project[v1.ProjectRole_PROJECT_ROLE_VIEWER.String()], methodName)
 						case v1.ProjectRole_PROJECT_ROLE_UNSPECIFIED.String():
 							// noop
 						// Admin
 						case v1.AdminRole_ADMIN_ROLE_EDITOR.String():
-							roles.Admin.Editor = append(roles.Admin.Editor, methodName)
+							roles.Admin[v1.AdminRole_ADMIN_ROLE_EDITOR.String()] = append(roles.Admin[v1.AdminRole_ADMIN_ROLE_EDITOR.String()], methodName)
 						case v1.AdminRole_ADMIN_ROLE_VIEWER.String():
-							roles.Admin.Viewer = append(roles.Admin.Viewer, methodName)
+							roles.Admin[v1.AdminRole_ADMIN_ROLE_VIEWER.String()] = append(roles.Admin[v1.AdminRole_ADMIN_ROLE_VIEWER.String()], methodName)
 						case v1.AdminRole_ADMIN_ROLE_UNSPECIFIED.String():
 							// noop
 						// Visibility

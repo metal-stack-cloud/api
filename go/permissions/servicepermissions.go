@@ -29,8 +29,8 @@ func GetServices() []string {
 func GetServicePermissions() *ServicePermissions {
 	return &ServicePermissions{
 		Roles: Roles{
-			Admin: &Admin{
-				Editor: []string{
+			Admin: Admin{
+				"ADMIN_ROLE_EDITOR": []string{
 					"/admin.v1.ClusterService/Get",
 					"/admin.v1.ClusterService/List",
 					"/admin.v1.ClusterService/Credentials",
@@ -46,7 +46,7 @@ func GetServicePermissions() *ServicePermissions {
 					"/admin.v1.TokenService/List",
 					"/admin.v1.TokenService/Revoke",
 				},
-				Viewer: []string{
+				"ADMIN_ROLE_VIEWER": []string{
 					"/admin.v1.ClusterService/Get",
 					"/admin.v1.ClusterService/List",
 					"/admin.v1.PaymentService/ListCoupons",
@@ -55,11 +55,21 @@ func GetServicePermissions() *ServicePermissions {
 					"/admin.v1.StorageService/ListSnapshots",
 					"/admin.v1.TenantService/List",
 					"/admin.v1.TokenService/List",
-					"/admin.v1.TokenService/Revoke",
 				},
 			},
-			Tenant: &Tenant{
-				Owner: []string{
+			Tenant: Tenant{
+				"TENANT_ROLE_EDITOR": []string{
+					"/api.v1.PaymentService/HasPaymentMethod",
+					"/api.v1.PaymentService/CheckAdmitted",
+					"/api.v1.PaymentService/RequestAdmission",
+					"/api.v1.PaymentService/HasChargeableResources",
+					"/api.v1.ProjectService/Create",
+					"/api.v1.TenantService/Create",
+					"/api.v1.TenantService/Get",
+					"/api.v1.TenantService/Update",
+					"/api.v1.TenantService/Delete",
+				},
+				"TENANT_ROLE_OWNER": []string{
 					"/api.v1.PaymentService/CreateOrUpdateCustomer",
 					"/api.v1.PaymentService/GetCustomer",
 					"/api.v1.PaymentService/GetCustomerWithLogin",
@@ -83,26 +93,38 @@ func GetServicePermissions() *ServicePermissions {
 					"/api.v1.TenantService/InviteDelete",
 					"/api.v1.TenantService/InvitesList",
 				},
-				Editor: []string{
-					"/api.v1.PaymentService/HasPaymentMethod",
-					"/api.v1.PaymentService/CheckAdmitted",
-					"/api.v1.PaymentService/RequestAdmission",
-					"/api.v1.PaymentService/HasChargeableResources",
-					"/api.v1.ProjectService/Create",
-					"/api.v1.TenantService/Create",
-					"/api.v1.TenantService/Get",
-					"/api.v1.TenantService/Update",
-					"/api.v1.TenantService/Delete",
-				},
-				Viewer: []string{
+				"TENANT_ROLE_VIEWER": []string{
 					"/api.v1.PaymentService/HasPaymentMethod",
 					"/api.v1.PaymentService/CheckAdmitted",
 					"/api.v1.PaymentService/HasChargeableResources",
 					"/api.v1.TenantService/Get",
 				},
 			},
-			Project: &Project{
-				Owner: []string{
+			Project: Project{
+				"PROJECT_ROLE_EDITOR": []string{
+					"/api.v1.ClusterService/Create",
+					"/api.v1.ClusterService/Get",
+					"/api.v1.ClusterService/List",
+					"/api.v1.ClusterService/WatchStatus",
+					"/api.v1.ClusterService/Delete",
+					"/api.v1.ClusterService/Update",
+					"/api.v1.ClusterService/GetCredentials",
+					"/api.v1.ClusterService/Operate",
+					"/api.v1.IPService/Get",
+					"/api.v1.IPService/Allocate",
+					"/api.v1.IPService/Update",
+					"/api.v1.IPService/List",
+					"/api.v1.IPService/Delete",
+					"/api.v1.ProjectService/Get",
+					"/api.v1.ProjectService/Update",
+					"/api.v1.VolumeService/Get",
+					"/api.v1.VolumeService/List",
+					"/api.v1.VolumeService/Delete",
+					"/api.v1.SnapshotService/Get",
+					"/api.v1.SnapshotService/List",
+					"/api.v1.SnapshotService/Delete",
+				},
+				"PROJECT_ROLE_OWNER": []string{
 					"/api.v1.ClusterService/Create",
 					"/api.v1.ClusterService/Get",
 					"/api.v1.ClusterService/List",
@@ -131,30 +153,7 @@ func GetServicePermissions() *ServicePermissions {
 					"/api.v1.SnapshotService/List",
 					"/api.v1.SnapshotService/Delete",
 				},
-				Editor: []string{
-					"/api.v1.ClusterService/Create",
-					"/api.v1.ClusterService/Get",
-					"/api.v1.ClusterService/List",
-					"/api.v1.ClusterService/WatchStatus",
-					"/api.v1.ClusterService/Delete",
-					"/api.v1.ClusterService/Update",
-					"/api.v1.ClusterService/GetCredentials",
-					"/api.v1.ClusterService/Operate",
-					"/api.v1.IPService/Get",
-					"/api.v1.IPService/Allocate",
-					"/api.v1.IPService/Update",
-					"/api.v1.IPService/List",
-					"/api.v1.IPService/Delete",
-					"/api.v1.ProjectService/Get",
-					"/api.v1.ProjectService/Update",
-					"/api.v1.VolumeService/Get",
-					"/api.v1.VolumeService/List",
-					"/api.v1.VolumeService/Delete",
-					"/api.v1.SnapshotService/Get",
-					"/api.v1.SnapshotService/List",
-					"/api.v1.SnapshotService/Delete",
-				},
-				Viewer: []string{
+				"PROJECT_ROLE_VIEWER": []string{
 					"/api.v1.ClusterService/Get",
 					"/api.v1.ClusterService/List",
 					"/api.v1.ClusterService/WatchStatus",

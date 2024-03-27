@@ -1,6 +1,7 @@
 import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
 import { Message, proto3 } from "@bufbuild/protobuf";
-import { MethodPermission, TokenRole } from "./token_pb.js";
+import { MethodPermission } from "./token_pb.js";
+import { AdminRole, ProjectRole, TenantRole } from "./common_pb.js";
 /**
  * MethodServiceListRequest is the request payload to list all public methods
  *
@@ -65,11 +66,27 @@ export declare class MethodServiceTokenScopedListResponse extends Message<Method
      */
     permissions: MethodPermission[];
     /**
-     * Roles a list of roles the presented token contains
+     * ProjectRoles associates a project id with the corresponding role of the token owner
      *
-     * @generated from field: repeated api.v1.TokenRole roles = 2;
+     * @generated from field: map<string, api.v1.ProjectRole> project_roles = 3;
      */
-    roles: TokenRole[];
+    projectRoles: {
+        [key: string]: ProjectRole;
+    };
+    /**
+     * TenantRoles associates a tenant id with the corresponding role of the token owner
+     *
+     * @generated from field: map<string, api.v1.TenantRole> tenant_roles = 4;
+     */
+    tenantRoles: {
+        [key: string]: TenantRole;
+    };
+    /**
+     * AdminRole defines the admin role of the token owner
+     *
+     * @generated from field: optional api.v1.AdminRole admin_role = 5;
+     */
+    adminRole?: AdminRole;
     constructor(data?: PartialMessage<MethodServiceTokenScopedListResponse>);
     static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.MethodServiceTokenScopedListResponse";
