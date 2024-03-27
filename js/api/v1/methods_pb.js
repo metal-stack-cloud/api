@@ -3,7 +3,8 @@
 /* eslint-disable */
 // @ts-nocheck
 import { Message, proto3 } from "@bufbuild/protobuf";
-import { MethodPermission, TokenRole } from "./token_pb.js";
+import { MethodPermission } from "./token_pb.js";
+import { AdminRole, ProjectRole, TenantRole } from "./common_pb.js";
 /**
  * MethodServiceListRequest is the request payload to list all public methods
  *
@@ -105,11 +106,17 @@ export class MethodServiceTokenScopedListResponse extends Message {
          */
         this.permissions = [];
         /**
-         * Roles a list of roles the presented token contains
+         * ProjectRoles associates a project id with the corresponding role of the token owner
          *
-         * @generated from field: repeated api.v1.TokenRole roles = 2;
+         * @generated from field: map<string, api.v1.ProjectRole> project_roles = 3;
          */
-        this.roles = [];
+        this.projectRoles = {};
+        /**
+         * TenantRoles associates a tenant id with the corresponding role of the token owner
+         *
+         * @generated from field: map<string, api.v1.TenantRole> tenant_roles = 4;
+         */
+        this.tenantRoles = {};
         proto3.util.initPartial(data, this);
     }
     static fromBinary(bytes, options) {
@@ -129,5 +136,7 @@ MethodServiceTokenScopedListResponse.runtime = proto3;
 MethodServiceTokenScopedListResponse.typeName = "api.v1.MethodServiceTokenScopedListResponse";
 MethodServiceTokenScopedListResponse.fields = proto3.util.newFieldList(() => [
     { no: 1, name: "permissions", kind: "message", T: MethodPermission, repeated: true },
-    { no: 2, name: "roles", kind: "message", T: TokenRole, repeated: true },
+    { no: 3, name: "project_roles", kind: "map", K: 9 /* ScalarType.STRING */, V: { kind: "enum", T: proto3.getEnumType(ProjectRole) } },
+    { no: 4, name: "tenant_roles", kind: "map", K: 9 /* ScalarType.STRING */, V: { kind: "enum", T: proto3.getEnumType(TenantRole) } },
+    { no: 5, name: "admin_role", kind: "enum", T: proto3.getEnumType(AdminRole), opt: true },
 ]);

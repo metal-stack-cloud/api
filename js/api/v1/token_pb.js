@@ -3,6 +3,7 @@
 /* eslint-disable */
 // @ts-nocheck
 import { Duration, Message, proto3, Timestamp } from "@bufbuild/protobuf";
+import { AdminRole, ProjectRole, TenantRole } from "./common_pb.js";
 /**
  * TokenType specifies different use cases of tokens
  *
@@ -68,17 +69,23 @@ export class Token extends Message {
          */
         this.permissions = [];
         /**
-         * Roles is a list of roles this token can be used for
-         *
-         * @generated from field: repeated api.v1.TokenRole roles = 5;
-         */
-        this.roles = [];
-        /**
          * TokenType describes the type of this token
          *
          * @generated from field: api.v1.TokenType token_type = 8;
          */
         this.tokenType = TokenType.UNSPECIFIED;
+        /**
+         * ProjectRoles associates a project id with the corresponding role of the token owner
+         *
+         * @generated from field: map<string, api.v1.ProjectRole> project_roles = 9;
+         */
+        this.projectRoles = {};
+        /**
+         * TenantRoles associates a tenant id with the corresponding role of the token owner
+         *
+         * @generated from field: map<string, api.v1.TenantRole> tenant_roles = 10;
+         */
+        this.tenantRoles = {};
         proto3.util.initPartial(data, this);
     }
     static fromBinary(bytes, options) {
@@ -101,10 +108,12 @@ Token.fields = proto3.util.newFieldList(() => [
     { no: 2, name: "user_id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 3, name: "description", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 4, name: "permissions", kind: "message", T: MethodPermission, repeated: true },
-    { no: 5, name: "roles", kind: "message", T: TokenRole, repeated: true },
     { no: 6, name: "expires", kind: "message", T: Timestamp },
     { no: 7, name: "issued_at", kind: "message", T: Timestamp },
     { no: 8, name: "token_type", kind: "enum", T: proto3.getEnumType(TokenType) },
+    { no: 9, name: "project_roles", kind: "map", K: 9 /* ScalarType.STRING */, V: { kind: "enum", T: proto3.getEnumType(ProjectRole) } },
+    { no: 10, name: "tenant_roles", kind: "map", K: 9 /* ScalarType.STRING */, V: { kind: "enum", T: proto3.getEnumType(TenantRole) } },
+    { no: 11, name: "admin_role", kind: "enum", T: proto3.getEnumType(AdminRole), opt: true },
 ]);
 /**
  * TokenServiceCreateRequest is the request payload to create a token
@@ -127,11 +136,17 @@ export class TokenServiceCreateRequest extends Message {
          */
         this.permissions = [];
         /**
-         * Roles is a list of roles this token can be used for
+         * ProjectRoles associates a project id with the corresponding role of the token owner
          *
-         * @generated from field: repeated api.v1.TokenRole roles = 3;
+         * @generated from field: map<string, api.v1.ProjectRole> project_roles = 5;
          */
-        this.roles = [];
+        this.projectRoles = {};
+        /**
+         * TenantRoles associates a tenant id with the corresponding role of the token owner
+         *
+         * @generated from field: map<string, api.v1.TenantRole> tenant_roles = 6;
+         */
+        this.tenantRoles = {};
         proto3.util.initPartial(data, this);
     }
     static fromBinary(bytes, options) {
@@ -152,8 +167,10 @@ TokenServiceCreateRequest.typeName = "api.v1.TokenServiceCreateRequest";
 TokenServiceCreateRequest.fields = proto3.util.newFieldList(() => [
     { no: 1, name: "description", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 2, name: "permissions", kind: "message", T: MethodPermission, repeated: true },
-    { no: 3, name: "roles", kind: "message", T: TokenRole, repeated: true },
     { no: 4, name: "expires", kind: "message", T: Duration },
+    { no: 5, name: "project_roles", kind: "map", K: 9 /* ScalarType.STRING */, V: { kind: "enum", T: proto3.getEnumType(ProjectRole) } },
+    { no: 6, name: "tenant_roles", kind: "map", K: 9 /* ScalarType.STRING */, V: { kind: "enum", T: proto3.getEnumType(TenantRole) } },
+    { no: 7, name: "admin_role", kind: "enum", T: proto3.getEnumType(AdminRole), opt: true },
 ]);
 /**
  * MethodPermission is a mapping from a subject/project to a service method
@@ -196,47 +213,6 @@ MethodPermission.typeName = "api.v1.MethodPermission";
 MethodPermission.fields = proto3.util.newFieldList(() => [
     { no: 1, name: "subject", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 2, name: "methods", kind: "scalar", T: 9 /* ScalarType.STRING */, repeated: true },
-]);
-/**
- * TokenRole is a mapping from subject to role there
- *
- * @generated from message api.v1.TokenRole
- */
-export class TokenRole extends Message {
-    constructor(data) {
-        super();
-        /**
-         * Subject specifies the subject (project or tenant) this role applies to
-         *
-         * @generated from field: string subject = 1;
-         */
-        this.subject = "";
-        /**
-         * Role defines the string representation of a tenantrole, projectrole or a global adminrole
-         *
-         * @generated from field: string role = 2;
-         */
-        this.role = "";
-        proto3.util.initPartial(data, this);
-    }
-    static fromBinary(bytes, options) {
-        return new TokenRole().fromBinary(bytes, options);
-    }
-    static fromJson(jsonValue, options) {
-        return new TokenRole().fromJson(jsonValue, options);
-    }
-    static fromJsonString(jsonString, options) {
-        return new TokenRole().fromJsonString(jsonString, options);
-    }
-    static equals(a, b) {
-        return proto3.util.equals(TokenRole, a, b);
-    }
-}
-TokenRole.runtime = proto3;
-TokenRole.typeName = "api.v1.TokenRole";
-TokenRole.fields = proto3.util.newFieldList(() => [
-    { no: 1, name: "subject", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 2, name: "role", kind: "scalar", T: 9 /* ScalarType.STRING */ },
 ]);
 /**
  * TokenServiceCreateResponse is the response payload of a token create request
