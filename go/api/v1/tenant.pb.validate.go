@@ -35,9 +35,6 @@ var (
 	_ = sort.Sort
 )
 
-// define the regex for a UUID once up-front
-var _tenant_uuidPattern = regexp.MustCompile("^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$")
-
 // Validate checks the field values on Tenant with the rules defined in the
 // proto definition for this message. If any rules are violated, the first
 // error encountered is returned, or nil if there are no violations.
@@ -2512,30 +2509,12 @@ func (m *TenantServiceInviteRequest) validate(all bool) error {
 
 	var errors []error
 
-	if err := m._validateUuid(m.GetTenant()); err != nil {
-		err = TenantServiceInviteRequestValidationError{
-			field:  "Tenant",
-			reason: "value must be a valid UUID",
-			cause:  err,
-		}
-		if !all {
-			return err
-		}
-		errors = append(errors, err)
-	}
+	// no validation rules for Tenant
 
 	// no validation rules for Role
 
 	if len(errors) > 0 {
 		return TenantServiceInviteRequestMultiError(errors)
-	}
-
-	return nil
-}
-
-func (m *TenantServiceInviteRequest) _validateUuid(uuid string) error {
-	if matched := _tenant_uuidPattern.MatchString(uuid); !matched {
-		return errors.New("invalid uuid format")
 	}
 
 	return nil
@@ -2768,28 +2747,10 @@ func (m *TenantServiceInvitesListRequest) validate(all bool) error {
 
 	var errors []error
 
-	if err := m._validateUuid(m.GetTenant()); err != nil {
-		err = TenantServiceInvitesListRequestValidationError{
-			field:  "Tenant",
-			reason: "value must be a valid UUID",
-			cause:  err,
-		}
-		if !all {
-			return err
-		}
-		errors = append(errors, err)
-	}
+	// no validation rules for Tenant
 
 	if len(errors) > 0 {
 		return TenantServiceInvitesListRequestMultiError(errors)
-	}
-
-	return nil
-}
-
-func (m *TenantServiceInvitesListRequest) _validateUuid(uuid string) error {
-	if matched := _tenant_uuidPattern.MatchString(uuid); !matched {
-		return errors.New("invalid uuid format")
 	}
 
 	return nil
@@ -3268,30 +3229,12 @@ func (m *TenantServiceRemoveMemberRequest) validate(all bool) error {
 
 	var errors []error
 
-	if err := m._validateUuid(m.GetTenant()); err != nil {
-		err = TenantServiceRemoveMemberRequestValidationError{
-			field:  "Tenant",
-			reason: "value must be a valid UUID",
-			cause:  err,
-		}
-		if !all {
-			return err
-		}
-		errors = append(errors, err)
-	}
+	// no validation rules for Tenant
 
 	// no validation rules for MemberId
 
 	if len(errors) > 0 {
 		return TenantServiceRemoveMemberRequestMultiError(errors)
-	}
-
-	return nil
-}
-
-func (m *TenantServiceRemoveMemberRequest) _validateUuid(uuid string) error {
-	if matched := _tenant_uuidPattern.MatchString(uuid); !matched {
-		return errors.New("invalid uuid format")
 	}
 
 	return nil
@@ -3716,30 +3659,12 @@ func (m *TenantServiceInviteDeleteRequest) validate(all bool) error {
 
 	var errors []error
 
-	if err := m._validateUuid(m.GetTenant()); err != nil {
-		err = TenantServiceInviteDeleteRequestValidationError{
-			field:  "Tenant",
-			reason: "value must be a valid UUID",
-			cause:  err,
-		}
-		if !all {
-			return err
-		}
-		errors = append(errors, err)
-	}
+	// no validation rules for Tenant
 
 	// no validation rules for Secret
 
 	if len(errors) > 0 {
 		return TenantServiceInviteDeleteRequestMultiError(errors)
-	}
-
-	return nil
-}
-
-func (m *TenantServiceInviteDeleteRequest) _validateUuid(uuid string) error {
-	if matched := _tenant_uuidPattern.MatchString(uuid); !matched {
-		return errors.New("invalid uuid format")
 	}
 
 	return nil

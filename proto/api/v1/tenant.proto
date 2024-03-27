@@ -5,7 +5,6 @@ package api.v1;
 import "api/v1/common.proto";
 import "api/v1/payment.proto";
 import "google/protobuf/timestamp.proto";
-import "validate/validate.proto";
 
 // TenantService serves tenant related functions
 service TenantService {
@@ -252,7 +251,7 @@ message TenantServiceDeleteResponse {
 // TenantServiceInviteRequest is used to invite a member to a tenant
 message TenantServiceInviteRequest {
   // Tenant is the uuid of the tenant
-  string tenant = 1 [(validate.rules).string.uuid = true];
+  string tenant = 1;
 
   // Role of this user in this tenant
   TenantRole role = 3;
@@ -260,8 +259,8 @@ message TenantServiceInviteRequest {
 
 // TenantServiceInviteRequest is the response payload to a invite member request
 message TenantServiceInviteResponse {
-  // Inviter contains a secret which can be sent to a potential user
-  // can appended to the invitation endpoint at our api server like
+  // Invite contains a secret which can be sent to a potential user
+  // can be appended to the invitation endpoint at our api server like
   // console.metalstack.cloud/invite/<secret>
   TenantInvite invite = 1;
 }
@@ -269,7 +268,7 @@ message TenantServiceInviteResponse {
 // TenantServiceInvitesListRequest is the request payload to a list invites request
 message TenantServiceInvitesListRequest {
   // Tenant is the uuid of the tenant
-  string tenant = 1 [(validate.rules).string.uuid = true];
+  string tenant = 1;
 }
 
 // TenantServiceInvitesListResponse is the response payload to a list invites request
@@ -293,7 +292,7 @@ message TenantServiceInviteGetResponse {
 // TenantServiceRemoveMemberRequest is used to remove a member from a tenant
 message TenantServiceRemoveMemberRequest {
   // Tenant is the uuid of the tenant
-  string tenant = 1 [(validate.rules).string.uuid = true];
+  string tenant = 1;
   // MemberID is the id of the member to remove from this tenant
   string member_id = 2;
 }
@@ -318,7 +317,7 @@ message TenantServiceInviteAcceptResponse {
 // TenantServiceInviteDeleteRequest is the request payload to a delete invite
 message TenantServiceInviteDeleteRequest {
   // Tenant is the uuid of the tenant
-  string tenant = 1 [(validate.rules).string.uuid = true];
+  string tenant = 1;
   // Secret of the invite to delete
   string secret = 2;
 }

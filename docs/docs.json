@@ -7985,15 +7985,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.uuid",
-                    "value": true
-                  }
-                ]
-              }
+              "defaultValue": ""
             },
             {
               "name": "secret",
@@ -8088,15 +8080,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.uuid",
-                    "value": true
-                  }
-                ]
-              }
+              "defaultValue": ""
             },
             {
               "name": "role",
@@ -8124,7 +8108,7 @@
           "fields": [
             {
               "name": "invite",
-              "description": "Inviter contains a secret which can be sent to a potential user\ncan appended to the invitation endpoint at our api server like\nconsole.metalstack.cloud/invite/\u003csecret\u003e",
+              "description": "Invite contains a secret which can be sent to a potential user\ncan be appended to the invitation endpoint at our api server like\nconsole.metalstack.cloud/invite/\u003csecret\u003e",
               "label": "",
               "type": "TenantInvite",
               "longType": "TenantInvite",
@@ -8156,15 +8140,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.uuid",
-                    "value": true
-                  }
-                ]
-              }
+              "defaultValue": ""
             }
           ]
         },
@@ -8212,15 +8188,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.uuid",
-                    "value": true
-                  }
-                ]
-              }
+              "defaultValue": ""
             },
             {
               "name": "member_id",

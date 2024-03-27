@@ -1073,8 +1073,8 @@ export class TenantServiceInviteRequest extends Message<TenantServiceInviteReque
  */
 export class TenantServiceInviteResponse extends Message<TenantServiceInviteResponse> {
   /**
-   * Inviter contains a secret which can be sent to a potential user
-   * can appended to the invitation endpoint at our api server like
+   * Invite contains a secret which can be sent to a potential user
+   * can be appended to the invitation endpoint at our api server like
    * console.metalstack.cloud/invite/<secret>
    *
    * @generated from field: api.v1.TenantInvite invite = 1;
