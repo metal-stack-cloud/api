@@ -10833,7 +10833,7 @@
             },
             {
               "name": "project_roles",
-              "description": "Roles a list of roles the presented token contains\nrepeated TokenRole roles = 2;\nProjectRoles associates a project id with the corresponding role of the token owner",
+              "description": "ProjectRoles associates a project id with the corresponding role of the token owner",
               "label": "repeated",
               "type": "ProjectRolesEntry",
               "longType": "MethodServiceTokenScopedListResponse.ProjectRolesEntry",

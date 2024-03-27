@@ -106,8 +106,6 @@ export class MethodServiceTokenScopedListResponse extends Message {
          */
         this.permissions = [];
         /**
-         * Roles a list of roles the presented token contains
-         * repeated TokenRole roles = 2;
          * ProjectRoles associates a project id with the corresponding role of the token owner
          *
          * @generated from field: map<string, api.v1.ProjectRole> project_roles = 3;
