@@ -25,6 +25,9 @@ service TenantService {
 
 // TenantServiceListRequest is the request payload for a tenant list request
 message TenantServiceListRequest {
+  reserved 4;
+  reserved "organisation_id";
+
   // Login of the tenant to list
   optional string login = 1;
   // Name of the tenant to list

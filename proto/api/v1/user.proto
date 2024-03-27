@@ -17,6 +17,9 @@ service UserService {
 
 // User is a end user of the platform
 message User {
+  reserved 7;
+  reserved "organizations";
+
   // Login the login at the provider
   string login = 1;
   // Name of the user
