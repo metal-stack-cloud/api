@@ -167,7 +167,7 @@ export declare class TokenServiceCreateRequest extends Message<TokenServiceCreat
  */
 export declare class MethodPermission extends Message<MethodPermission> {
     /**
-     * Subject maybe either the project or the organization
+     * Subject maybe either the project or the tenant
      * for which the methods should be allowed
      *
      * @generated from field: string subject = 1;

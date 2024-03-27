@@ -25,20 +25,23 @@ service TenantService {
 
 // TenantServiceListRequest is the request payload for a tenant list request
 message TenantServiceListRequest {
+  reserved 4;
+  reserved "organisation_id";
+
   // Login of the tenant to list
   optional string login = 1;
   // Name of the tenant to list
   optional string name = 2;
   // Email of the tenant to list
   optional string email = 3;
-  // OrganisationId of the tenant to list
-  optional string organisation_id = 4;
   // OauthProvide of the tenant to list
   optional api.v1.OAuthProvider oauth_provider = 5;
   // Admitted on show admitted tenants
   optional bool admitted = 6;
   // Paging details for the list request
   api.v1.Paging paging = 7;
+  // Uuid of the tenant to list
+  optional string uuid = 8 [(validate.rules).string.uuid = true];
 }
 
 // TenantServiceListResponse is the response payload for a tenant list request

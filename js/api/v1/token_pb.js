@@ -181,7 +181,7 @@ export class MethodPermission extends Message {
     constructor(data) {
         super();
         /**
-         * Subject maybe either the project or the organization
+         * Subject maybe either the project or the tenant
          * for which the methods should be allowed
          *
          * @generated from field: string subject = 1;
