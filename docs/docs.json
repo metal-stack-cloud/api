@@ -8419,7 +8419,7 @@
           "description": "Token is a jwt authentication token to access the api",
           "hasExtensions": false,
           "hasFields": true,
-          "hasOneofs": false,
+          "hasOneofs": true,
           "extensions": [],
           "fields": [
             {
@@ -8503,18 +8503,6 @@
               "defaultValue": ""
             },
             {
-              "name": "roles",
-              "description": "Roles is a list of roles this token can be used for",
-              "label": "repeated",
-              "type": "TokenRole",
-              "longType": "TokenRole",
-              "fullType": "api.v1.TokenRole",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
               "name": "expires",
               "description": "Expires gives the date in the future after which this token can not be used anymore",
               "label": "",
@@ -8549,22 +8537,58 @@
               "isoneof": false,
               "oneofdecl": "",
               "defaultValue": ""
+            },
+            {
+              "name": "project_roles",
+              "description": "ProjectRoles associates a project id with the corresponding role of the token owner",
+              "label": "repeated",
+              "type": "ProjectRolesEntry",
+              "longType": "Token.ProjectRolesEntry",
+              "fullType": "api.v1.Token.ProjectRolesEntry",
+              "ismap": true,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "tenant_roles",
+              "description": "TenantRoles associates a tenant id with the corresponding role of the token owner",
+              "label": "repeated",
+              "type": "TenantRolesEntry",
+              "longType": "Token.TenantRolesEntry",
+              "fullType": "api.v1.Token.TenantRolesEntry",
+              "ismap": true,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "admin_role",
+              "description": "AdminRole defines the admin role of the token owner",
+              "label": "optional",
+              "type": "AdminRole",
+              "longType": "AdminRole",
+              "fullType": "api.v1.AdminRole",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "_admin_role",
+              "defaultValue": ""
             }
           ]
         },
         {
-          "name": "TokenRole",
-          "longName": "TokenRole",
-          "fullName": "api.v1.TokenRole",
-          "description": "TokenRole is a mapping from subject to role there",
+          "name": "ProjectRolesEntry",
+          "longName": "Token.ProjectRolesEntry",
+          "fullName": "api.v1.Token.ProjectRolesEntry",
+          "description": "",
           "hasExtensions": false,
           "hasFields": true,
           "hasOneofs": false,
           "extensions": [],
           "fields": [
             {
-              "name": "subject",
-              "description": "Subject specifies the subject (project or organization) this role applies to",
+              "name": "key",
+              "description": "",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -8572,23 +8596,35 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.min_len",
-                    "value": 1
-                  },
-                  {
-                    "name": "string.max_len",
-                    "value": 256
-                  }
-                ]
-              }
+              "defaultValue": ""
             },
             {
-              "name": "role",
-              "description": "Role defines the string representation of a tenantrole, projectrole or a global adminrole",
+              "name": "value",
+              "description": "",
+              "label": "",
+              "type": "ProjectRole",
+              "longType": "ProjectRole",
+              "fullType": "api.v1.ProjectRole",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "TenantRolesEntry",
+          "longName": "Token.TenantRolesEntry",
+          "fullName": "api.v1.Token.TenantRolesEntry",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "key",
+              "description": "",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -8596,20 +8632,19 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.in",
-                    "value": [
-                      "admin",
-                      "owner",
-                      "editor",
-                      "viewer"
-                    ]
-                  }
-                ]
-              }
+              "defaultValue": ""
+            },
+            {
+              "name": "value",
+              "description": "",
+              "label": "",
+              "type": "TenantRole",
+              "longType": "TenantRole",
+              "fullType": "api.v1.TenantRole",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
             }
           ]
         },
@@ -8620,7 +8655,7 @@
           "description": "TokenServiceCreateRequest is the request payload to create a token",
           "hasExtensions": false,
           "hasFields": true,
-          "hasOneofs": false,
+          "hasOneofs": true,
           "extensions": [],
           "fields": [
             {
@@ -8660,18 +8695,6 @@
               "defaultValue": ""
             },
             {
-              "name": "roles",
-              "description": "Roles is a list of roles this token can be used for",
-              "label": "repeated",
-              "type": "TokenRole",
-              "longType": "TokenRole",
-              "fullType": "api.v1.TokenRole",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
               "name": "expires",
               "description": "Expires gives the duration since now, after which this token can not be used anymore",
               "label": "",
@@ -8702,6 +8725,114 @@
                   }
                 ]
               }
+            },
+            {
+              "name": "project_roles",
+              "description": "ProjectRoles associates a project id with the corresponding role of the token owner",
+              "label": "repeated",
+              "type": "ProjectRolesEntry",
+              "longType": "TokenServiceCreateRequest.ProjectRolesEntry",
+              "fullType": "api.v1.TokenServiceCreateRequest.ProjectRolesEntry",
+              "ismap": true,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "tenant_roles",
+              "description": "TenantRoles associates a tenant id with the corresponding role of the token owner",
+              "label": "repeated",
+              "type": "TenantRolesEntry",
+              "longType": "TokenServiceCreateRequest.TenantRolesEntry",
+              "fullType": "api.v1.TokenServiceCreateRequest.TenantRolesEntry",
+              "ismap": true,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "admin_role",
+              "description": "AdminRole defines the admin role of the token owner",
+              "label": "optional",
+              "type": "AdminRole",
+              "longType": "AdminRole",
+              "fullType": "api.v1.AdminRole",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "_admin_role",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "ProjectRolesEntry",
+          "longName": "TokenServiceCreateRequest.ProjectRolesEntry",
+          "fullName": "api.v1.TokenServiceCreateRequest.ProjectRolesEntry",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "key",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "value",
+              "description": "",
+              "label": "",
+              "type": "ProjectRole",
+              "longType": "ProjectRole",
+              "fullType": "api.v1.ProjectRole",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "TenantRolesEntry",
+          "longName": "TokenServiceCreateRequest.TenantRolesEntry",
+          "fullName": "api.v1.TokenServiceCreateRequest.TenantRolesEntry",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "key",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "value",
+              "description": "",
+              "label": "",
+              "type": "TenantRole",
+              "longType": "TenantRole",
+              "fullType": "api.v1.TenantRole",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
             }
           ]
         },
@@ -10685,7 +10816,7 @@
           "description": "MethodServiceTokenScopedListResponse is the response payload which contains all methods which are callable with the given token",
           "hasExtensions": false,
           "hasFields": true,
-          "hasOneofs": false,
+          "hasOneofs": true,
           "extensions": [],
           "fields": [
             {
@@ -10701,12 +10832,108 @@
               "defaultValue": ""
             },
             {
-              "name": "roles",
-              "description": "Roles a list of roles the presented token contains",
+              "name": "project_roles",
+              "description": "ProjectRoles associates a project id with the corresponding role of the token owner",
               "label": "repeated",
-              "type": "TokenRole",
-              "longType": "TokenRole",
-              "fullType": "api.v1.TokenRole",
+              "type": "ProjectRolesEntry",
+              "longType": "MethodServiceTokenScopedListResponse.ProjectRolesEntry",
+              "fullType": "api.v1.MethodServiceTokenScopedListResponse.ProjectRolesEntry",
+              "ismap": true,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "tenant_roles",
+              "description": "TenantRoles associates a tenant id with the corresponding role of the token owner",
+              "label": "repeated",
+              "type": "TenantRolesEntry",
+              "longType": "MethodServiceTokenScopedListResponse.TenantRolesEntry",
+              "fullType": "api.v1.MethodServiceTokenScopedListResponse.TenantRolesEntry",
+              "ismap": true,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "admin_role",
+              "description": "AdminRole defines the admin role of the token owner",
+              "label": "optional",
+              "type": "AdminRole",
+              "longType": "AdminRole",
+              "fullType": "api.v1.AdminRole",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "_admin_role",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "ProjectRolesEntry",
+          "longName": "MethodServiceTokenScopedListResponse.ProjectRolesEntry",
+          "fullName": "api.v1.MethodServiceTokenScopedListResponse.ProjectRolesEntry",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "key",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "value",
+              "description": "",
+              "label": "",
+              "type": "ProjectRole",
+              "longType": "ProjectRole",
+              "fullType": "api.v1.ProjectRole",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "TenantRolesEntry",
+          "longName": "MethodServiceTokenScopedListResponse.TenantRolesEntry",
+          "fullName": "api.v1.MethodServiceTokenScopedListResponse.TenantRolesEntry",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "key",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "value",
+              "description": "",
+              "label": "",
+              "type": "TenantRole",
+              "longType": "TenantRole",
+              "fullType": "api.v1.TenantRole",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",

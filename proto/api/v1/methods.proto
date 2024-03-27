@@ -32,8 +32,15 @@ message MethodServiceTokenScopedListRequest {}
 
 // MethodServiceTokenScopedListResponse is the response payload which contains all methods which are callable with the given token
 message MethodServiceTokenScopedListResponse {
+  reserved 2;
+  reserved "roles";
+
   // Permissions a list of methods which can be called
   repeated MethodPermission permissions = 1;
-  // Roles a list of roles the presented token contains
-  repeated TokenRole roles = 2;
+  // ProjectRoles associates a project id with the corresponding role of the token owner
+  map<string, ProjectRole> project_roles = 3;
+  // TenantRoles associates a tenant id with the corresponding role of the token owner
+  map<string, TenantRole> tenant_roles = 4;
+  // AdminRole defines the admin role of the token owner
+  optional AdminRole admin_role = 5;
 }

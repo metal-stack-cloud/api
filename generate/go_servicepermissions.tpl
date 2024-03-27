@@ -12,51 +12,32 @@ func GetServices() []string {
 func GetServicePermissions() *ServicePermissions {
 	return &ServicePermissions{
 		Roles:      Roles{
-			Admin:   &Admin{
-				Editor: []string{
-					{{- range $role := .Roles.Admin.Editor }}
-						"{{ $role }}",
-					{{- end }}
-				},
-				Viewer: []string{
-					{{- range $role := .Roles.Admin.Viewer }}
-						"{{ $role }}",
-					{{- end }}
-				},
+			Admin:   Admin{
+				{{- range $role, $methods := .Roles.Admin }}
+					"{{ $role }}": []string{
+						{{- range $method := $methods }}
+							"{{ $method }}",
+						{{- end }}
+					},
+				{{- end }}
 			},
-			Tenant:  &Tenant{
-				Owner:  []string{
-					{{- range $role := .Roles.Tenant.Owner }}
-						"{{ $role }}",
-					{{- end }}
-				},
-				Editor: []string{
-					{{- range $role := .Roles.Tenant.Editor }}
-						"{{ $role }}",
-					{{- end }}
-				},
-				Viewer: []string{
-					{{- range $role := .Roles.Tenant.Viewer }}
-						"{{ $role }}",
-					{{- end }}
-				},
+			Tenant:  Tenant{
+				{{- range $role, $methods := .Roles.Tenant }}
+					"{{ $role }}": []string{
+						{{- range $method := $methods }}
+							"{{ $method }}",
+						{{- end }}
+					},
+				{{- end }}
 			},
-			Project: &Project{
-				Owner:  []string{
-					{{- range $role := .Roles.Project.Owner }}
-						"{{ $role }}",
-					{{- end }}
-				},
-				Editor: []string{
-					{{- range $role := .Roles.Project.Editor }}
-						"{{ $role }}",
-					{{- end }}
-				},
-				Viewer: []string{
-					{{- range $role := .Roles.Project.Viewer }}
-						"{{ $role }}",
-					{{- end }}
-				},
+			Project: Project{
+				{{- range $role, $methods := .Roles.Project }}
+					"{{ $role }}": []string{
+						{{- range $method := $methods }}
+							"{{ $method }}",
+						{{- end }}
+					},
+				{{- end }}
 			},
 		},
 		Methods:    map[string]bool{

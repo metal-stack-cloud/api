@@ -401,38 +401,12 @@ func (m *MethodServiceTokenScopedListResponse) validate(all bool) error {
 
 	}
 
-	for idx, item := range m.GetRoles() {
-		_, _ = idx, item
+	// no validation rules for ProjectRoles
 
-		if all {
-			switch v := interface{}(item).(type) {
-			case interface{ ValidateAll() error }:
-				if err := v.ValidateAll(); err != nil {
-					errors = append(errors, MethodServiceTokenScopedListResponseValidationError{
-						field:  fmt.Sprintf("Roles[%v]", idx),
-						reason: "embedded message failed validation",
-						cause:  err,
-					})
-				}
-			case interface{ Validate() error }:
-				if err := v.Validate(); err != nil {
-					errors = append(errors, MethodServiceTokenScopedListResponseValidationError{
-						field:  fmt.Sprintf("Roles[%v]", idx),
-						reason: "embedded message failed validation",
-						cause:  err,
-					})
-				}
-			}
-		} else if v, ok := interface{}(item).(interface{ Validate() error }); ok {
-			if err := v.Validate(); err != nil {
-				return MethodServiceTokenScopedListResponseValidationError{
-					field:  fmt.Sprintf("Roles[%v]", idx),
-					reason: "embedded message failed validation",
-					cause:  err,
-				}
-			}
-		}
+	// no validation rules for TenantRoles
 
+	if m.AdminRole != nil {
+		// no validation rules for AdminRole
 	}
 
 	if len(errors) > 0 {
