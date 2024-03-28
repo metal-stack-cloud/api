@@ -106,6 +106,13 @@ export class Tenant extends Message<Tenant> {
   tenantMembers: TenantMember[] = [];
 
   /**
+   * CreatedBy stores who created this tenant
+   *
+   * @generated from field: string created_by = 15;
+   */
+  createdBy = "";
+
+  /**
    * CreatedAt the date when this tenant was created
    *
    * @generated from field: google.protobuf.Timestamp created_at = 20;
@@ -147,6 +154,7 @@ export class Tenant extends Message<Tenant> {
     { no: 12, name: "email_consent", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
     { no: 13, name: "onboarded", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
     { no: 14, name: "tenant_members", kind: "message", T: TenantMember, repeated: true },
+    { no: 15, name: "created_by", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 20, name: "created_at", kind: "message", T: Timestamp },
     { no: 21, name: "updated_at", kind: "message", T: Timestamp },
     { no: 22, name: "deleted_at", kind: "message", T: Timestamp },
@@ -673,30 +681,30 @@ export class TenantServiceCreateRequest extends Message<TenantServiceCreateReque
   /**
    * Description of this tenant
    *
-   * @generated from field: string description = 2;
+   * @generated from field: optional string description = 2;
    */
-  description = "";
+  description?: string;
 
   /**
-   * Email of the tenant
+   * Email of the tenant, if not set will be inherited from the creator
    *
-   * @generated from field: string email = 3;
+   * @generated from field: optional string email = 3;
    */
-  email = "";
+  email?: string;
 
   /**
    * AvatarUrl of the tenant
    *
-   * @generated from field: string avatar_url = 4;
+   * @generated from field: optional string avatar_url = 4;
    */
-  avatarUrl = "";
+  avatarUrl?: string;
 
   /**
    * PhoneNumber of the tenant
    *
-   * @generated from field: string phone_number = 5;
+   * @generated from field: optional string phone_number = 5;
    */
-  phoneNumber = "";
+  phoneNumber?: string;
 
   constructor(data?: PartialMessage<TenantServiceCreateRequest>) {
     super();
@@ -707,10 +715,10 @@ export class TenantServiceCreateRequest extends Message<TenantServiceCreateReque
   static readonly typeName = "api.v1.TenantServiceCreateRequest";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
     { no: 1, name: "name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 2, name: "description", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 3, name: "email", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 4, name: "avatar_url", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 5, name: "phone_number", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "description", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
+    { no: 3, name: "email", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
+    { no: 4, name: "avatar_url", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
+    { no: 5, name: "phone_number", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): TenantServiceCreateRequest {

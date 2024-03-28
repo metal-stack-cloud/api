@@ -168,6 +168,8 @@ func (m *Tenant) validate(all bool) error {
 
 	}
 
+	// no validation rules for CreatedBy
+
 	if all {
 		switch v := interface{}(m.GetCreatedAt()).(type) {
 		case interface{ ValidateAll() error }:
@@ -1427,51 +1429,44 @@ func (m *TenantServiceCreateRequest) validate(all bool) error {
 		errors = append(errors, err)
 	}
 
-	if l := utf8.RuneCountInString(m.GetDescription()); l < 2 || l > 512 {
-		err := TenantServiceCreateRequestValidationError{
-			field:  "Description",
-			reason: "value length must be between 2 and 512 runes, inclusive",
+	if m.Description != nil {
+
+		if l := utf8.RuneCountInString(m.GetDescription()); l < 2 || l > 512 {
+			err := TenantServiceCreateRequestValidationError{
+				field:  "Description",
+				reason: "value length must be between 2 and 512 runes, inclusive",
+			}
+			if !all {
+				return err
+			}
+			errors = append(errors, err)
 		}
-		if !all {
-			return err
-		}
-		errors = append(errors, err)
+
 	}
 
-	if err := m._validateEmail(m.GetEmail()); err != nil {
-		err = TenantServiceCreateRequestValidationError{
-			field:  "Email",
-			reason: "value must be a valid email address",
-			cause:  err,
+	if m.Email != nil {
+
+		if err := m._validateEmail(m.GetEmail()); err != nil {
+			err = TenantServiceCreateRequestValidationError{
+				field:  "Email",
+				reason: "value must be a valid email address",
+				cause:  err,
+			}
+			if !all {
+				return err
+			}
+			errors = append(errors, err)
 		}
-		if !all {
-			return err
-		}
-		errors = append(errors, err)
+
 	}
 
-	if uri, err := url.Parse(m.GetAvatarUrl()); err != nil {
-		err = TenantServiceCreateRequestValidationError{
-			field:  "AvatarUrl",
-			reason: "value must be a valid URI",
-			cause:  err,
-		}
-		if !all {
-			return err
-		}
-		errors = append(errors, err)
-	} else if !uri.IsAbs() {
-		err := TenantServiceCreateRequestValidationError{
-			field:  "AvatarUrl",
-			reason: "value must be absolute",
-		}
-		if !all {
-			return err
-		}
-		errors = append(errors, err)
+	if m.AvatarUrl != nil {
+		// no validation rules for AvatarUrl
 	}
 
-	// no validation rules for PhoneNumber
+	if m.PhoneNumber != nil {
+		// no validation rules for PhoneNumber
+	}
 
 	if len(errors) > 0 {
 		return TenantServiceCreateRequestMultiError(errors)
@@ -1808,28 +1803,7 @@ func (m *TenantServiceUpdateRequest) validate(all bool) error {
 	}
 
 	if m.AvatarUrl != nil {
-
-		if uri, err := url.Parse(m.GetAvatarUrl()); err != nil {
-			err = TenantServiceUpdateRequestValidationError{
-				field:  "AvatarUrl",
-				reason: "value must be a valid URI",
-				cause:  err,
-			}
-			if !all {
-				return err
-			}
-			errors = append(errors, err)
-		} else if !uri.IsAbs() {
-			err := TenantServiceUpdateRequestValidationError{
-				field:  "AvatarUrl",
-				reason: "value must be absolute",
-			}
-			if !all {
-				return err
-			}
-			errors = append(errors, err)
-		}
-
+		// no validation rules for AvatarUrl
 	}
 
 	if m.PaymentDetails != nil {

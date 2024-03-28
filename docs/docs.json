@@ -7528,6 +7528,18 @@
               "defaultValue": ""
             },
             {
+              "name": "created_by",
+              "description": "CreatedBy stores who created this tenant",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
               "name": "created_at",
               "description": "CreatedAt the date when this tenant was created",
               "label": "",
@@ -7788,7 +7800,7 @@
           "description": "TenantServiceCreateRequest is the request payload of the tenant create request",
           "hasExtensions": false,
           "hasFields": true,
-          "hasOneofs": false,
+          "hasOneofs": true,
           "extensions": [],
           "fields": [
             {
@@ -7818,13 +7830,13 @@
             {
               "name": "description",
               "description": "Description of this tenant",
-              "label": "",
+              "label": "optional",
               "type": "string",
               "longType": "string",
               "fullType": "string",
               "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
+              "isoneof": true,
+              "oneofdecl": "_description",
               "defaultValue": "",
               "options": {
                 "validate.rules": [
@@ -7841,14 +7853,14 @@
             },
             {
               "name": "email",
-              "description": "Email of the tenant",
-              "label": "",
+              "description": "Email of the tenant, if not set will be inherited from the creator",
+              "label": "optional",
               "type": "string",
               "longType": "string",
               "fullType": "string",
               "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
+              "isoneof": true,
+              "oneofdecl": "_email",
               "defaultValue": "",
               "options": {
                 "validate.rules": [
@@ -7862,33 +7874,25 @@
             {
               "name": "avatar_url",
               "description": "AvatarUrl of the tenant",
-              "label": "",
+              "label": "optional",
               "type": "string",
               "longType": "string",
               "fullType": "string",
               "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.uri",
-                    "value": true
-                  }
-                ]
-              }
+              "isoneof": true,
+              "oneofdecl": "_avatar_url",
+              "defaultValue": ""
             },
             {
               "name": "phone_number",
               "description": "PhoneNumber of the tenant",
-              "label": "",
+              "label": "optional",
               "type": "string",
               "longType": "string",
               "fullType": "string",
               "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
+              "isoneof": true,
+              "oneofdecl": "_phone_number",
               "defaultValue": ""
             }
           ]
@@ -8567,15 +8571,7 @@
               "ismap": false,
               "isoneof": true,
               "oneofdecl": "_avatar_url",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.uri",
-                    "value": true
-                  }
-                ]
-              }
+              "defaultValue": ""
             },
             {
               "name": "payment_details",

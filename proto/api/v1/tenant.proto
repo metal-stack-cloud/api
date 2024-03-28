@@ -111,6 +111,8 @@ message Tenant {
   bool onboarded = 13;
   // TenantMembers in this tenant
   repeated TenantMember tenant_members = 14;
+  // CreatedBy stores who created this tenant
+  string created_by = 15;
   // CreatedAt the date when this tenant was created
   google.protobuf.Timestamp created_at = 20;
   // UpdatedAt the date when this tenant was updated
@@ -218,16 +220,16 @@ message TenantServiceCreateRequest {
     max_len: 64,
   }];
   // Description of this tenant
-  string description = 2 [(validate.rules).string = {
+  optional string description = 2 [(validate.rules).string = {
     min_len: 2,
     max_len: 512,
   }];
-  // Email of the tenant
-  string email = 3 [(validate.rules).string.email = true];
+  // Email of the tenant, if not set will be inherited from the creator
+  optional string email = 3 [(validate.rules).string.email = true];
   // AvatarUrl of the tenant
-  string avatar_url = 4 [(validate.rules).string.uri = true];
+  optional string avatar_url = 4;
   // PhoneNumber of the tenant
-  string phone_number = 5;
+  optional string phone_number = 5;
 }
 
 // TenantServiceCreateOrUpdateRequest is the request payload of the tenant create or update request
@@ -253,7 +255,7 @@ message TenantServiceUpdateRequest {
     max_len: 512,
   }];
   // AvatarUrl of the tenant
-  optional string avatar_url = 5 [(validate.rules).string.uri = true];
+  optional string avatar_url = 5;
   // PaymentDetails of the tenant
   optional PaymentDetailsUpdate payment_details = 8;
   // TermsAndConditions of the tenant

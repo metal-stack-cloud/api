@@ -87,6 +87,12 @@ export declare class Tenant extends Message<Tenant> {
      */
     tenantMembers: TenantMember[];
     /**
+     * CreatedBy stores who created this tenant
+     *
+     * @generated from field: string created_by = 15;
+     */
+    createdBy: string;
+    /**
      * CreatedAt the date when this tenant was created
      *
      * @generated from field: google.protobuf.Timestamp created_at = 20;
@@ -416,27 +422,27 @@ export declare class TenantServiceCreateRequest extends Message<TenantServiceCre
     /**
      * Description of this tenant
      *
-     * @generated from field: string description = 2;
+     * @generated from field: optional string description = 2;
      */
-    description: string;
+    description?: string;
     /**
-     * Email of the tenant
+     * Email of the tenant, if not set will be inherited from the creator
      *
-     * @generated from field: string email = 3;
+     * @generated from field: optional string email = 3;
      */
-    email: string;
+    email?: string;
     /**
      * AvatarUrl of the tenant
      *
-     * @generated from field: string avatar_url = 4;
+     * @generated from field: optional string avatar_url = 4;
      */
-    avatarUrl: string;
+    avatarUrl?: string;
     /**
      * PhoneNumber of the tenant
      *
-     * @generated from field: string phone_number = 5;
+     * @generated from field: optional string phone_number = 5;
      */
-    phoneNumber: string;
+    phoneNumber?: string;
     constructor(data?: PartialMessage<TenantServiceCreateRequest>);
     static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.TenantServiceCreateRequest";

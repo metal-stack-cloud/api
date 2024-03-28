@@ -79,6 +79,12 @@ export class Tenant extends Message {
          * @generated from field: repeated api.v1.TenantMember tenant_members = 14;
          */
         this.tenantMembers = [];
+        /**
+         * CreatedBy stores who created this tenant
+         *
+         * @generated from field: string created_by = 15;
+         */
+        this.createdBy = "";
         proto3.util.initPartial(data, this);
     }
     static fromBinary(bytes, options) {
@@ -110,6 +116,7 @@ Tenant.fields = proto3.util.newFieldList(() => [
     { no: 12, name: "email_consent", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
     { no: 13, name: "onboarded", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
     { no: 14, name: "tenant_members", kind: "message", T: TenantMember, repeated: true },
+    { no: 15, name: "created_by", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 20, name: "created_at", kind: "message", T: Timestamp },
     { no: 21, name: "updated_at", kind: "message", T: Timestamp },
     { no: 22, name: "deleted_at", kind: "message", T: Timestamp },
@@ -462,30 +469,6 @@ export class TenantServiceCreateRequest extends Message {
          * @generated from field: string name = 1;
          */
         this.name = "";
-        /**
-         * Description of this tenant
-         *
-         * @generated from field: string description = 2;
-         */
-        this.description = "";
-        /**
-         * Email of the tenant
-         *
-         * @generated from field: string email = 3;
-         */
-        this.email = "";
-        /**
-         * AvatarUrl of the tenant
-         *
-         * @generated from field: string avatar_url = 4;
-         */
-        this.avatarUrl = "";
-        /**
-         * PhoneNumber of the tenant
-         *
-         * @generated from field: string phone_number = 5;
-         */
-        this.phoneNumber = "";
         proto3.util.initPartial(data, this);
     }
     static fromBinary(bytes, options) {
@@ -505,10 +488,10 @@ TenantServiceCreateRequest.runtime = proto3;
 TenantServiceCreateRequest.typeName = "api.v1.TenantServiceCreateRequest";
 TenantServiceCreateRequest.fields = proto3.util.newFieldList(() => [
     { no: 1, name: "name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 2, name: "description", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 3, name: "email", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 4, name: "avatar_url", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 5, name: "phone_number", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "description", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
+    { no: 3, name: "email", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
+    { no: 4, name: "avatar_url", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
+    { no: 5, name: "phone_number", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
 ]);
 /**
  * TenantServiceCreateOrUpdateRequest is the request payload of the tenant create or update request
