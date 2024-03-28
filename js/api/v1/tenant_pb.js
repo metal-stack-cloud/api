@@ -420,6 +420,14 @@ TenantServiceGetRequest.fields = proto3.util.newFieldList(() => [
 export class TenantServiceCreateRequest extends Message {
     constructor(data) {
         super();
+        /**
+         * Login of the tenant
+         *
+         * FIXME:  ? this endpoint was probably never used
+         *
+         * @generated from field: string login = 2;
+         */
+        this.login = "";
         proto3.util.initPartial(data, this);
     }
     static fromBinary(bytes, options) {
@@ -439,6 +447,7 @@ TenantServiceCreateRequest.runtime = proto3;
 TenantServiceCreateRequest.typeName = "api.v1.TenantServiceCreateRequest";
 TenantServiceCreateRequest.fields = proto3.util.newFieldList(() => [
     { no: 1, name: "tenant", kind: "message", T: Tenant },
+    { no: 2, name: "login", kind: "scalar", T: 9 /* ScalarType.STRING */ },
 ]);
 /**
  * TenantServiceCreateOrUpdateRequest is the request payload of the tenant create or update request
@@ -691,11 +700,11 @@ export class TenantServiceInviteRequest extends Message {
     constructor(data) {
         super();
         /**
-         * Tenant is the uuid of the tenant
+         * Login of the tenant
          *
-         * @generated from field: string tenant = 1;
+         * @generated from field: string login = 1;
          */
-        this.tenant = "";
+        this.login = "";
         /**
          * Role of this user in this tenant
          *
@@ -720,7 +729,7 @@ export class TenantServiceInviteRequest extends Message {
 TenantServiceInviteRequest.runtime = proto3;
 TenantServiceInviteRequest.typeName = "api.v1.TenantServiceInviteRequest";
 TenantServiceInviteRequest.fields = proto3.util.newFieldList(() => [
-    { no: 1, name: "tenant", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 1, name: "login", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 3, name: "role", kind: "enum", T: proto3.getEnumType(TenantRole) },
 ]);
 /**
@@ -760,11 +769,11 @@ export class TenantServiceInvitesListRequest extends Message {
     constructor(data) {
         super();
         /**
-         * Tenant is the uuid of the tenant
+         * Login of the tenant
          *
-         * @generated from field: string tenant = 1;
+         * @generated from field: string login = 1;
          */
-        this.tenant = "";
+        this.login = "";
         proto3.util.initPartial(data, this);
     }
     static fromBinary(bytes, options) {
@@ -783,7 +792,7 @@ export class TenantServiceInvitesListRequest extends Message {
 TenantServiceInvitesListRequest.runtime = proto3;
 TenantServiceInvitesListRequest.typeName = "api.v1.TenantServiceInvitesListRequest";
 TenantServiceInvitesListRequest.fields = proto3.util.newFieldList(() => [
-    { no: 1, name: "tenant", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 1, name: "login", kind: "scalar", T: 9 /* ScalarType.STRING */ },
 ]);
 /**
  * TenantServiceInvitesListResponse is the response payload to a list invites request
@@ -890,11 +899,11 @@ export class TenantServiceRemoveMemberRequest extends Message {
     constructor(data) {
         super();
         /**
-         * Tenant is the uuid of the tenant
+         * Login of the tenant
          *
-         * @generated from field: string tenant = 1;
+         * @generated from field: string login = 1;
          */
-        this.tenant = "";
+        this.login = "";
         /**
          * MemberID is the id of the member to remove from this tenant
          *
@@ -919,7 +928,7 @@ export class TenantServiceRemoveMemberRequest extends Message {
 TenantServiceRemoveMemberRequest.runtime = proto3;
 TenantServiceRemoveMemberRequest.typeName = "api.v1.TenantServiceRemoveMemberRequest";
 TenantServiceRemoveMemberRequest.fields = proto3.util.newFieldList(() => [
-    { no: 1, name: "tenant", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 1, name: "login", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 2, name: "member_id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
 ]);
 /**
@@ -1032,11 +1041,11 @@ export class TenantServiceInviteDeleteRequest extends Message {
     constructor(data) {
         super();
         /**
-         * Tenant is the uuid of the tenant
+         * Login of the tenant
          *
-         * @generated from field: string tenant = 1;
+         * @generated from field: string login = 1;
          */
-        this.tenant = "";
+        this.login = "";
         /**
          * Secret of the invite to delete
          *
@@ -1061,7 +1070,7 @@ export class TenantServiceInviteDeleteRequest extends Message {
 TenantServiceInviteDeleteRequest.runtime = proto3;
 TenantServiceInviteDeleteRequest.typeName = "api.v1.TenantServiceInviteDeleteRequest";
 TenantServiceInviteDeleteRequest.fields = proto3.util.newFieldList(() => [
-    { no: 1, name: "tenant", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 1, name: "login", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 2, name: "secret", kind: "scalar", T: 9 /* ScalarType.STRING */ },
 ]);
 /**
@@ -1099,11 +1108,11 @@ export class TenantServiceUpdateMemberRequest extends Message {
     constructor(data) {
         super();
         /**
-         * Tenant is the uuid of the tenant
+         * Login of the tenant
          *
-         * @generated from field: string tenant = 1;
+         * @generated from field: string login = 1;
          */
-        this.tenant = "";
+        this.login = "";
         /**
          * MemberID is the id of the member to update in this tenant
          *
@@ -1134,7 +1143,7 @@ export class TenantServiceUpdateMemberRequest extends Message {
 TenantServiceUpdateMemberRequest.runtime = proto3;
 TenantServiceUpdateMemberRequest.typeName = "api.v1.TenantServiceUpdateMemberRequest";
 TenantServiceUpdateMemberRequest.fields = proto3.util.newFieldList(() => [
-    { no: 1, name: "tenant", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 1, name: "login", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 2, name: "member_id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 3, name: "role", kind: "enum", T: proto3.getEnumType(TenantRole) },
 ]);

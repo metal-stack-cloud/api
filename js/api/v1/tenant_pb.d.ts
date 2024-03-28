@@ -380,6 +380,14 @@ export declare class TenantServiceCreateRequest extends Message<TenantServiceCre
      * @generated from field: api.v1.Tenant tenant = 1;
      */
     tenant?: Tenant;
+    /**
+     * Login of the tenant
+     *
+     * FIXME:  ? this endpoint was probably never used
+     *
+     * @generated from field: string login = 2;
+     */
+    login: string;
     constructor(data?: PartialMessage<TenantServiceCreateRequest>);
     static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.TenantServiceCreateRequest";
@@ -600,11 +608,11 @@ export declare class TenantServiceDeleteResponse extends Message<TenantServiceDe
  */
 export declare class TenantServiceInviteRequest extends Message<TenantServiceInviteRequest> {
     /**
-     * Tenant is the uuid of the tenant
+     * Login of the tenant
      *
-     * @generated from field: string tenant = 1;
+     * @generated from field: string login = 1;
      */
-    tenant: string;
+    login: string;
     /**
      * Role of this user in this tenant
      *
@@ -650,11 +658,11 @@ export declare class TenantServiceInviteResponse extends Message<TenantServiceIn
  */
 export declare class TenantServiceInvitesListRequest extends Message<TenantServiceInvitesListRequest> {
     /**
-     * Tenant is the uuid of the tenant
+     * Login of the tenant
      *
-     * @generated from field: string tenant = 1;
+     * @generated from field: string login = 1;
      */
-    tenant: string;
+    login: string;
     constructor(data?: PartialMessage<TenantServiceInvitesListRequest>);
     static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.TenantServiceInvitesListRequest";
@@ -734,11 +742,11 @@ export declare class TenantServiceInviteGetResponse extends Message<TenantServic
  */
 export declare class TenantServiceRemoveMemberRequest extends Message<TenantServiceRemoveMemberRequest> {
     /**
-     * Tenant is the uuid of the tenant
+     * Login of the tenant
      *
-     * @generated from field: string tenant = 1;
+     * @generated from field: string login = 1;
      */
-    tenant: string;
+    login: string;
     /**
      * MemberID is the id of the member to remove from this tenant
      *
@@ -824,11 +832,11 @@ export declare class TenantServiceInviteAcceptResponse extends Message<TenantSer
  */
 export declare class TenantServiceInviteDeleteRequest extends Message<TenantServiceInviteDeleteRequest> {
     /**
-     * Tenant is the uuid of the tenant
+     * Login of the tenant
      *
-     * @generated from field: string tenant = 1;
+     * @generated from field: string login = 1;
      */
-    tenant: string;
+    login: string;
     /**
      * Secret of the invite to delete
      *
@@ -866,11 +874,11 @@ export declare class TenantServiceInviteDeleteResponse extends Message<TenantSer
  */
 export declare class TenantServiceUpdateMemberRequest extends Message<TenantServiceUpdateMemberRequest> {
     /**
-     * Tenant is the uuid of the tenant
+     * Login of the tenant
      *
-     * @generated from field: string tenant = 1;
+     * @generated from field: string login = 1;
      */
-    tenant: string;
+    login: string;
     /**
      * MemberID is the id of the member to update in this tenant
      *

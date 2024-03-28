@@ -7782,6 +7782,18 @@
               "isoneof": false,
               "oneofdecl": "",
               "defaultValue": ""
+            },
+            {
+              "name": "login",
+              "description": "Login of the tenant\n\nFIXME:  ? this endpoint was probably never used",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
             }
           ]
         },
@@ -7976,8 +7988,8 @@
           "extensions": [],
           "fields": [
             {
-              "name": "tenant",
-              "description": "Tenant is the uuid of the tenant",
+              "name": "login",
+              "description": "Login of the tenant",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -8071,8 +8083,8 @@
           "extensions": [],
           "fields": [
             {
-              "name": "tenant",
-              "description": "Tenant is the uuid of the tenant",
+              "name": "login",
+              "description": "Login of the tenant",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -8131,8 +8143,8 @@
           "extensions": [],
           "fields": [
             {
-              "name": "tenant",
-              "description": "Tenant is the uuid of the tenant",
+              "name": "login",
+              "description": "Login of the tenant",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -8179,8 +8191,8 @@
           "extensions": [],
           "fields": [
             {
-              "name": "tenant",
-              "description": "Tenant is the uuid of the tenant",
+              "name": "login",
+              "description": "Login of the tenant",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -8226,8 +8238,8 @@
           "extensions": [],
           "fields": [
             {
-              "name": "tenant",
-              "description": "Tenant is the uuid of the tenant",
+              "name": "login",
+              "description": "Login of the tenant",
               "label": "",
               "type": "string",
               "longType": "string",

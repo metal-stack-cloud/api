@@ -613,6 +613,15 @@ export class TenantServiceCreateRequest extends Message<TenantServiceCreateReque
    */
   tenant?: Tenant;
 
+  /**
+   * Login of the tenant
+   *
+   * FIXME:  ? this endpoint was probably never used
+   *
+   * @generated from field: string login = 2;
+   */
+  login = "";
+
   constructor(data?: PartialMessage<TenantServiceCreateRequest>) {
     super();
     proto3.util.initPartial(data, this);
@@ -622,6 +631,7 @@ export class TenantServiceCreateRequest extends Message<TenantServiceCreateReque
   static readonly typeName = "api.v1.TenantServiceCreateRequest";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
     { no: 1, name: "tenant", kind: "message", T: Tenant },
+    { no: 2, name: "login", kind: "scalar", T: 9 /* ScalarType.STRING */ },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): TenantServiceCreateRequest {
@@ -1024,11 +1034,11 @@ export class TenantServiceDeleteResponse extends Message<TenantServiceDeleteResp
  */
 export class TenantServiceInviteRequest extends Message<TenantServiceInviteRequest> {
   /**
-   * Tenant is the uuid of the tenant
+   * Login of the tenant
    *
-   * @generated from field: string tenant = 1;
+   * @generated from field: string login = 1;
    */
-  tenant = "";
+  login = "";
 
   /**
    * Role of this user in this tenant
@@ -1045,7 +1055,7 @@ export class TenantServiceInviteRequest extends Message<TenantServiceInviteReque
   static readonly runtime: typeof proto3 = proto3;
   static readonly typeName = "api.v1.TenantServiceInviteRequest";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "tenant", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 1, name: "login", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 3, name: "role", kind: "enum", T: proto3.getEnumType(TenantRole) },
   ]);
 
@@ -1116,11 +1126,11 @@ export class TenantServiceInviteResponse extends Message<TenantServiceInviteResp
  */
 export class TenantServiceInvitesListRequest extends Message<TenantServiceInvitesListRequest> {
   /**
-   * Tenant is the uuid of the tenant
+   * Login of the tenant
    *
-   * @generated from field: string tenant = 1;
+   * @generated from field: string login = 1;
    */
-  tenant = "";
+  login = "";
 
   constructor(data?: PartialMessage<TenantServiceInvitesListRequest>) {
     super();
@@ -1130,7 +1140,7 @@ export class TenantServiceInvitesListRequest extends Message<TenantServiceInvite
   static readonly runtime: typeof proto3 = proto3;
   static readonly typeName = "api.v1.TenantServiceInvitesListRequest";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "tenant", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 1, name: "login", kind: "scalar", T: 9 /* ScalarType.STRING */ },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): TenantServiceInvitesListRequest {
@@ -1280,11 +1290,11 @@ export class TenantServiceInviteGetResponse extends Message<TenantServiceInviteG
  */
 export class TenantServiceRemoveMemberRequest extends Message<TenantServiceRemoveMemberRequest> {
   /**
-   * Tenant is the uuid of the tenant
+   * Login of the tenant
    *
-   * @generated from field: string tenant = 1;
+   * @generated from field: string login = 1;
    */
-  tenant = "";
+  login = "";
 
   /**
    * MemberID is the id of the member to remove from this tenant
@@ -1301,7 +1311,7 @@ export class TenantServiceRemoveMemberRequest extends Message<TenantServiceRemov
   static readonly runtime: typeof proto3 = proto3;
   static readonly typeName = "api.v1.TenantServiceRemoveMemberRequest";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "tenant", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 1, name: "login", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 2, name: "member_id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
   ]);
 
@@ -1452,11 +1462,11 @@ export class TenantServiceInviteAcceptResponse extends Message<TenantServiceInvi
  */
 export class TenantServiceInviteDeleteRequest extends Message<TenantServiceInviteDeleteRequest> {
   /**
-   * Tenant is the uuid of the tenant
+   * Login of the tenant
    *
-   * @generated from field: string tenant = 1;
+   * @generated from field: string login = 1;
    */
-  tenant = "";
+  login = "";
 
   /**
    * Secret of the invite to delete
@@ -1473,7 +1483,7 @@ export class TenantServiceInviteDeleteRequest extends Message<TenantServiceInvit
   static readonly runtime: typeof proto3 = proto3;
   static readonly typeName = "api.v1.TenantServiceInviteDeleteRequest";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "tenant", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 1, name: "login", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 2, name: "secret", kind: "scalar", T: 9 /* ScalarType.STRING */ },
   ]);
 
@@ -1534,11 +1544,11 @@ export class TenantServiceInviteDeleteResponse extends Message<TenantServiceInvi
  */
 export class TenantServiceUpdateMemberRequest extends Message<TenantServiceUpdateMemberRequest> {
   /**
-   * Tenant is the uuid of the tenant
+   * Login of the tenant
    *
-   * @generated from field: string tenant = 1;
+   * @generated from field: string login = 1;
    */
-  tenant = "";
+  login = "";
 
   /**
    * MemberID is the id of the member to update in this tenant
@@ -1562,7 +1572,7 @@ export class TenantServiceUpdateMemberRequest extends Message<TenantServiceUpdat
   static readonly runtime: typeof proto3 = proto3;
   static readonly typeName = "api.v1.TenantServiceUpdateMemberRequest";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "tenant", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 1, name: "login", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 2, name: "member_id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 3, name: "role", kind: "enum", T: proto3.getEnumType(TenantRole) },
   ]);

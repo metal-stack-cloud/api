@@ -1322,6 +1322,8 @@ func (m *TenantServiceCreateRequest) validate(all bool) error {
 		}
 	}
 
+	// no validation rules for Login
+
 	if len(errors) > 0 {
 		return TenantServiceCreateRequestMultiError(errors)
 	}
@@ -2509,7 +2511,7 @@ func (m *TenantServiceInviteRequest) validate(all bool) error {
 
 	var errors []error
 
-	// no validation rules for Tenant
+	// no validation rules for Login
 
 	// no validation rules for Role
 
@@ -2747,7 +2749,7 @@ func (m *TenantServiceInvitesListRequest) validate(all bool) error {
 
 	var errors []error
 
-	// no validation rules for Tenant
+	// no validation rules for Login
 
 	if len(errors) > 0 {
 		return TenantServiceInvitesListRequestMultiError(errors)
@@ -3229,7 +3231,7 @@ func (m *TenantServiceRemoveMemberRequest) validate(all bool) error {
 
 	var errors []error
 
-	// no validation rules for Tenant
+	// no validation rules for Login
 
 	// no validation rules for MemberId
 
@@ -3659,7 +3661,7 @@ func (m *TenantServiceInviteDeleteRequest) validate(all bool) error {
 
 	var errors []error
 
-	// no validation rules for Tenant
+	// no validation rules for Login
 
 	// no validation rules for Secret
 
@@ -3873,7 +3875,7 @@ func (m *TenantServiceUpdateMemberRequest) validate(all bool) error {
 
 	var errors []error
 
-	// no validation rules for Tenant
+	// no validation rules for Login
 
 	// no validation rules for MemberId
 
