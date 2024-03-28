@@ -200,9 +200,9 @@ message TenantServiceListRequest {
   // Login of the tenant
   string login = 1;
   // Id filters tenants by id
-  string id = 2;
+  optional string id = 2;
   // Name filters tenants by name
-  string name = 3 [(validate.rules).string = {
+  optional string name = 3 [(validate.rules).string = {
     min_len: 2,
     max_len: 64,
   }];

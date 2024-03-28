@@ -399,18 +399,6 @@ export class TenantServiceListRequest extends Message {
          * @generated from field: string login = 1;
          */
         this.login = "";
-        /**
-         * Id filters tenants by id
-         *
-         * @generated from field: string id = 2;
-         */
-        this.id = "";
-        /**
-         * Name filters tenants by name
-         *
-         * @generated from field: string name = 3;
-         */
-        this.name = "";
         proto3.util.initPartial(data, this);
     }
     static fromBinary(bytes, options) {
@@ -430,8 +418,8 @@ TenantServiceListRequest.runtime = proto3;
 TenantServiceListRequest.typeName = "api.v1.TenantServiceListRequest";
 TenantServiceListRequest.fields = proto3.util.newFieldList(() => [
     { no: 1, name: "login", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 2, name: "id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 3, name: "name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "id", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
+    { no: 3, name: "name", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
 ]);
 /**
  * TenantServiceGetRequest is the request payload of the tenant get request

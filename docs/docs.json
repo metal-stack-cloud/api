@@ -8283,7 +8283,7 @@
           "description": "TenantServiceListRequest is the request payload of the tenant list request",
           "hasExtensions": false,
           "hasFields": true,
-          "hasOneofs": false,
+          "hasOneofs": true,
           "extensions": [],
           "fields": [
             {
@@ -8301,25 +8301,25 @@
             {
               "name": "id",
               "description": "Id filters tenants by id",
-              "label": "",
+              "label": "optional",
               "type": "string",
               "longType": "string",
               "fullType": "string",
               "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
+              "isoneof": true,
+              "oneofdecl": "_id",
               "defaultValue": ""
             },
             {
               "name": "name",
               "description": "Name filters tenants by name",
-              "label": "",
+              "label": "optional",
               "type": "string",
               "longType": "string",
               "fullType": "string",
               "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
+              "isoneof": true,
+              "oneofdecl": "_name",
               "defaultValue": "",
               "options": {
                 "validate.rules": [

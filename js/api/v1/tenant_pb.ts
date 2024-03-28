@@ -583,16 +583,16 @@ export class TenantServiceListRequest extends Message<TenantServiceListRequest> 
   /**
    * Id filters tenants by id
    *
-   * @generated from field: string id = 2;
+   * @generated from field: optional string id = 2;
    */
-  id = "";
+  id?: string;
 
   /**
    * Name filters tenants by name
    *
-   * @generated from field: string name = 3;
+   * @generated from field: optional string name = 3;
    */
-  name = "";
+  name?: string;
 
   constructor(data?: PartialMessage<TenantServiceListRequest>) {
     super();
@@ -603,8 +603,8 @@ export class TenantServiceListRequest extends Message<TenantServiceListRequest> 
   static readonly typeName = "api.v1.TenantServiceListRequest";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
     { no: 1, name: "login", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 2, name: "id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 3, name: "name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "id", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
+    { no: 3, name: "name", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): TenantServiceListRequest {

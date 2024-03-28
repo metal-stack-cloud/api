@@ -368,15 +368,15 @@ export declare class TenantServiceListRequest extends Message<TenantServiceListR
     /**
      * Id filters tenants by id
      *
-     * @generated from field: string id = 2;
+     * @generated from field: optional string id = 2;
      */
-    id: string;
+    id?: string;
     /**
      * Name filters tenants by name
      *
-     * @generated from field: string name = 3;
+     * @generated from field: optional string name = 3;
      */
-    name: string;
+    name?: string;
     constructor(data?: PartialMessage<TenantServiceListRequest>);
     static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.TenantServiceListRequest";

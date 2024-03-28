@@ -1193,17 +1193,23 @@ func (m *TenantServiceListRequest) validate(all bool) error {
 
 	// no validation rules for Login
 
-	// no validation rules for Id
+	if m.Id != nil {
+		// no validation rules for Id
+	}
 
-	if l := utf8.RuneCountInString(m.GetName()); l < 2 || l > 64 {
-		err := TenantServiceListRequestValidationError{
-			field:  "Name",
-			reason: "value length must be between 2 and 64 runes, inclusive",
+	if m.Name != nil {
+
+		if l := utf8.RuneCountInString(m.GetName()); l < 2 || l > 64 {
+			err := TenantServiceListRequestValidationError{
+				field:  "Name",
+				reason: "value length must be between 2 and 64 runes, inclusive",
+			}
+			if !all {
+				return err
+			}
+			errors = append(errors, err)
 		}
-		if !all {
-			return err
-		}
-		errors = append(errors, err)
+
 	}
 
 	if len(errors) > 0 {
