@@ -2,7 +2,7 @@
 // @generated from file api/v1/tenant.proto (package api.v1, syntax proto3)
 /* eslint-disable */
 // @ts-nocheck
-import { TenantServiceCreateOrUpdateRequest, TenantServiceCreateOrUpdateResponse, TenantServiceCreateRequest, TenantServiceCreateResponse, TenantServiceDeleteRequest, TenantServiceDeleteResponse, TenantServiceGetRequest, TenantServiceGetResponse, TenantServiceInviteAcceptRequest, TenantServiceInviteAcceptResponse, TenantServiceInviteDeleteRequest, TenantServiceInviteDeleteResponse, TenantServiceInviteGetRequest, TenantServiceInviteGetResponse, TenantServiceInviteRequest, TenantServiceInviteResponse, TenantServiceInvitesListRequest, TenantServiceInvitesListResponse, TenantServiceRemoveMemberRequest, TenantServiceRemoveMemberResponse, TenantServiceUpdateMemberRequest, TenantServiceUpdateMemberResponse, TenantServiceUpdateRequest, TenantServiceUpdateResponse } from "./tenant_pb.js";
+import { TenantServiceCreateOrUpdateRequest, TenantServiceCreateOrUpdateResponse, TenantServiceCreateRequest, TenantServiceCreateResponse, TenantServiceDeleteRequest, TenantServiceDeleteResponse, TenantServiceGetRequest, TenantServiceGetResponse, TenantServiceInviteAcceptRequest, TenantServiceInviteAcceptResponse, TenantServiceInviteDeleteRequest, TenantServiceInviteDeleteResponse, TenantServiceInviteGetRequest, TenantServiceInviteGetResponse, TenantServiceInviteRequest, TenantServiceInviteResponse, TenantServiceInvitesListRequest, TenantServiceInvitesListResponse, TenantServiceListRequest, TenantServiceListResponse, TenantServiceRemoveMemberRequest, TenantServiceRemoveMemberResponse, TenantServiceUpdateMemberRequest, TenantServiceUpdateMemberResponse, TenantServiceUpdateRequest, TenantServiceUpdateResponse } from "./tenant_pb.js";
 import { MethodKind } from "@bufbuild/protobuf";
 /**
  * TenantService serves tenant related functions
@@ -33,6 +33,17 @@ export const TenantService = {
             name: "CreateOrUpdate",
             I: TenantServiceCreateOrUpdateRequest,
             O: TenantServiceCreateOrUpdateResponse,
+            kind: MethodKind.Unary,
+        },
+        /**
+         * List tenants
+         *
+         * @generated from rpc api.v1.TenantService.List
+         */
+        list: {
+            name: "List",
+            I: TenantServiceListRequest,
+            O: TenantServiceListResponse,
             kind: MethodKind.Unary,
         },
         /**

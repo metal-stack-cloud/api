@@ -27,6 +27,12 @@ export declare class Tenant extends Message<Tenant> {
      */
     email: string;
     /**
+     * Description of this tenant
+     *
+     * @generated from field: string description = 4;
+     */
+    description: string;
+    /**
      * AvatarUrl of the tenant
      *
      * @generated from field: string avatar_url = 5;
@@ -348,6 +354,39 @@ export declare class TermsAndConditionsUpdate extends Message<TermsAndConditions
     static equals(a: TermsAndConditionsUpdate | PlainMessage<TermsAndConditionsUpdate> | undefined, b: TermsAndConditionsUpdate | PlainMessage<TermsAndConditionsUpdate> | undefined): boolean;
 }
 /**
+ * TenantServiceListRequest is the request payload of the tenant list request
+ *
+ * @generated from message api.v1.TenantServiceListRequest
+ */
+export declare class TenantServiceListRequest extends Message<TenantServiceListRequest> {
+    /**
+     * Login of the tenant
+     *
+     * @generated from field: string login = 1;
+     */
+    login: string;
+    /**
+     * Id filters tenants by id
+     *
+     * @generated from field: string id = 2;
+     */
+    id: string;
+    /**
+     * Name filters tenants by name
+     *
+     * @generated from field: string name = 3;
+     */
+    name: string;
+    constructor(data?: PartialMessage<TenantServiceListRequest>);
+    static readonly runtime: typeof proto3;
+    static readonly typeName = "api.v1.TenantServiceListRequest";
+    static readonly fields: FieldList;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): TenantServiceListRequest;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): TenantServiceListRequest;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): TenantServiceListRequest;
+    static equals(a: TenantServiceListRequest | PlainMessage<TenantServiceListRequest> | undefined, b: TenantServiceListRequest | PlainMessage<TenantServiceListRequest> | undefined): boolean;
+}
+/**
  * TenantServiceGetRequest is the request payload of the tenant get request
  *
  * @generated from message api.v1.TenantServiceGetRequest
@@ -459,6 +498,12 @@ export declare class TenantServiceUpdateRequest extends Message<TenantServiceUpd
      */
     email?: string;
     /**
+     * Description of this tenant
+     *
+     * @generated from field: optional string description = 4;
+     */
+    description?: string;
+    /**
      * AvatarUrl of the tenant
      *
      * @generated from field: optional string avatar_url = 5;
@@ -532,6 +577,27 @@ export declare class TenantServiceGetResponse extends Message<TenantServiceGetRe
     static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): TenantServiceGetResponse;
     static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): TenantServiceGetResponse;
     static equals(a: TenantServiceGetResponse | PlainMessage<TenantServiceGetResponse> | undefined, b: TenantServiceGetResponse | PlainMessage<TenantServiceGetResponse> | undefined): boolean;
+}
+/**
+ * TenantServiceListResponse is the response payload of the tenant list request
+ *
+ * @generated from message api.v1.TenantServiceListResponse
+ */
+export declare class TenantServiceListResponse extends Message<TenantServiceListResponse> {
+    /**
+     * Tenants is the list of tenants
+     *
+     * @generated from field: repeated api.v1.Tenant tenants = 1;
+     */
+    tenants: Tenant[];
+    constructor(data?: PartialMessage<TenantServiceListResponse>);
+    static readonly runtime: typeof proto3;
+    static readonly typeName = "api.v1.TenantServiceListResponse";
+    static readonly fields: FieldList;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): TenantServiceListResponse;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): TenantServiceListResponse;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): TenantServiceListResponse;
+    static equals(a: TenantServiceListResponse | PlainMessage<TenantServiceListResponse> | undefined, b: TenantServiceListResponse | PlainMessage<TenantServiceListResponse> | undefined): boolean;
 }
 /**
  * TenantServiceCreateResponse is the response payload of the tenant create request

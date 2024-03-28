@@ -32,6 +32,12 @@ export class Tenant extends Message {
          */
         this.email = "";
         /**
+         * Description of this tenant
+         *
+         * @generated from field: string description = 4;
+         */
+        this.description = "";
+        /**
          * AvatarUrl of the tenant
          *
          * @generated from field: string avatar_url = 5;
@@ -94,6 +100,7 @@ Tenant.fields = proto3.util.newFieldList(() => [
     { no: 1, name: "login", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 2, name: "name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 3, name: "email", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 4, name: "description", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 5, name: "avatar_url", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 6, name: "oauth_provider", kind: "enum", T: proto3.getEnumType(OAuthProvider) },
     { no: 8, name: "payment_details", kind: "message", T: PaymentDetails },
@@ -379,6 +386,54 @@ TermsAndConditionsUpdate.fields = proto3.util.newFieldList(() => [
     { no: 2, name: "when", kind: "message", T: Timestamp, opt: true },
 ]);
 /**
+ * TenantServiceListRequest is the request payload of the tenant list request
+ *
+ * @generated from message api.v1.TenantServiceListRequest
+ */
+export class TenantServiceListRequest extends Message {
+    constructor(data) {
+        super();
+        /**
+         * Login of the tenant
+         *
+         * @generated from field: string login = 1;
+         */
+        this.login = "";
+        /**
+         * Id filters tenants by id
+         *
+         * @generated from field: string id = 2;
+         */
+        this.id = "";
+        /**
+         * Name filters tenants by name
+         *
+         * @generated from field: string name = 3;
+         */
+        this.name = "";
+        proto3.util.initPartial(data, this);
+    }
+    static fromBinary(bytes, options) {
+        return new TenantServiceListRequest().fromBinary(bytes, options);
+    }
+    static fromJson(jsonValue, options) {
+        return new TenantServiceListRequest().fromJson(jsonValue, options);
+    }
+    static fromJsonString(jsonString, options) {
+        return new TenantServiceListRequest().fromJsonString(jsonString, options);
+    }
+    static equals(a, b) {
+        return proto3.util.equals(TenantServiceListRequest, a, b);
+    }
+}
+TenantServiceListRequest.runtime = proto3;
+TenantServiceListRequest.typeName = "api.v1.TenantServiceListRequest";
+TenantServiceListRequest.fields = proto3.util.newFieldList(() => [
+    { no: 1, name: "login", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 3, name: "name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+]);
+/**
  * TenantServiceGetRequest is the request payload of the tenant get request
  *
  * @generated from message api.v1.TenantServiceGetRequest
@@ -537,6 +592,7 @@ TenantServiceUpdateRequest.fields = proto3.util.newFieldList(() => [
     { no: 1, name: "login", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 2, name: "name", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
     { no: 3, name: "email", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
+    { no: 4, name: "description", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
     { no: 5, name: "avatar_url", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
     { no: 8, name: "payment_details", kind: "message", T: PaymentDetailsUpdate, opt: true },
     { no: 9, name: "terms_and_conditions", kind: "message", T: TermsAndConditionsUpdate, opt: true },
@@ -603,6 +659,40 @@ TenantServiceGetResponse.runtime = proto3;
 TenantServiceGetResponse.typeName = "api.v1.TenantServiceGetResponse";
 TenantServiceGetResponse.fields = proto3.util.newFieldList(() => [
     { no: 1, name: "tenant", kind: "message", T: Tenant },
+]);
+/**
+ * TenantServiceListResponse is the response payload of the tenant list request
+ *
+ * @generated from message api.v1.TenantServiceListResponse
+ */
+export class TenantServiceListResponse extends Message {
+    constructor(data) {
+        super();
+        /**
+         * Tenants is the list of tenants
+         *
+         * @generated from field: repeated api.v1.Tenant tenants = 1;
+         */
+        this.tenants = [];
+        proto3.util.initPartial(data, this);
+    }
+    static fromBinary(bytes, options) {
+        return new TenantServiceListResponse().fromBinary(bytes, options);
+    }
+    static fromJson(jsonValue, options) {
+        return new TenantServiceListResponse().fromJson(jsonValue, options);
+    }
+    static fromJsonString(jsonString, options) {
+        return new TenantServiceListResponse().fromJsonString(jsonString, options);
+    }
+    static equals(a, b) {
+        return proto3.util.equals(TenantServiceListResponse, a, b);
+    }
+}
+TenantServiceListResponse.runtime = proto3;
+TenantServiceListResponse.typeName = "api.v1.TenantServiceListResponse";
+TenantServiceListResponse.fields = proto3.util.newFieldList(() => [
+    { no: 1, name: "tenants", kind: "message", T: Tenant, repeated: true },
 ]);
 /**
  * TenantServiceCreateResponse is the response payload of the tenant create request

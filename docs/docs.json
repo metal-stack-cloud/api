@@ -7408,6 +7408,18 @@
               "defaultValue": ""
             },
             {
+              "name": "description",
+              "description": "Description of this tenant",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
               "name": "avatar_url",
               "description": "AvatarUrl of the tenant",
               "label": "",
@@ -8265,6 +8277,90 @@
           ]
         },
         {
+          "name": "TenantServiceListRequest",
+          "longName": "TenantServiceListRequest",
+          "fullName": "api.v1.TenantServiceListRequest",
+          "description": "TenantServiceListRequest is the request payload of the tenant list request",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "login",
+              "description": "Login of the tenant",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "id",
+              "description": "Id filters tenants by id",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "name",
+              "description": "Name filters tenants by name",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": "",
+              "options": {
+                "validate.rules": [
+                  {
+                    "name": "string.min_len",
+                    "value": 2
+                  },
+                  {
+                    "name": "string.max_len",
+                    "value": 64
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "TenantServiceListResponse",
+          "longName": "TenantServiceListResponse",
+          "fullName": "api.v1.TenantServiceListResponse",
+          "description": "TenantServiceListResponse is the response payload of the tenant list request",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "tenants",
+              "description": "Tenants is the list of tenants",
+              "label": "repeated",
+              "type": "Tenant",
+              "longType": "Tenant",
+              "fullType": "api.v1.Tenant",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
           "name": "TenantServiceRemoveMemberRequest",
           "longName": "TenantServiceRemoveMemberRequest",
           "fullName": "api.v1.TenantServiceRemoveMemberRequest",
@@ -8415,7 +8511,19 @@
               "ismap": false,
               "isoneof": true,
               "oneofdecl": "_name",
-              "defaultValue": ""
+              "defaultValue": "",
+              "options": {
+                "validate.rules": [
+                  {
+                    "name": "string.min_len",
+                    "value": 2
+                  },
+                  {
+                    "name": "string.max_len",
+                    "value": 64
+                  }
+                ]
+              }
             },
             {
               "name": "email",
@@ -8427,7 +8535,39 @@
               "ismap": false,
               "isoneof": true,
               "oneofdecl": "_email",
-              "defaultValue": ""
+              "defaultValue": "",
+              "options": {
+                "validate.rules": [
+                  {
+                    "name": "string.email",
+                    "value": true
+                  }
+                ]
+              }
+            },
+            {
+              "name": "description",
+              "description": "Description of this tenant",
+              "label": "optional",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "_description",
+              "defaultValue": "",
+              "options": {
+                "validate.rules": [
+                  {
+                    "name": "string.min_len",
+                    "value": 2
+                  },
+                  {
+                    "name": "string.max_len",
+                    "value": 512
+                  }
+                ]
+              }
             },
             {
               "name": "avatar_url",
@@ -8439,7 +8579,15 @@
               "ismap": false,
               "isoneof": true,
               "oneofdecl": "_avatar_url",
-              "defaultValue": ""
+              "defaultValue": "",
+              "options": {
+                "validate.rules": [
+                  {
+                    "name": "string.uri",
+                    "value": true
+                  }
+                ]
+              }
             },
             {
               "name": "payment_details",
@@ -8605,6 +8753,18 @@
               "responseType": "TenantServiceCreateOrUpdateResponse",
               "responseLongType": "TenantServiceCreateOrUpdateResponse",
               "responseFullType": "api.v1.TenantServiceCreateOrUpdateResponse",
+              "responseStreaming": false
+            },
+            {
+              "name": "List",
+              "description": "List tenants",
+              "requestType": "TenantServiceListRequest",
+              "requestLongType": "TenantServiceListRequest",
+              "requestFullType": "api.v1.TenantServiceListRequest",
+              "requestStreaming": false,
+              "responseType": "TenantServiceListResponse",
+              "responseLongType": "TenantServiceListResponse",
+              "responseFullType": "api.v1.TenantServiceListResponse",
               "responseStreaming": false
             },
             {

@@ -36,6 +36,13 @@ export class Tenant extends Message<Tenant> {
   email = "";
 
   /**
+   * Description of this tenant
+   *
+   * @generated from field: string description = 4;
+   */
+  description = "";
+
+  /**
    * AvatarUrl of the tenant
    *
    * @generated from field: string avatar_url = 5;
@@ -130,6 +137,7 @@ export class Tenant extends Message<Tenant> {
     { no: 1, name: "login", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 2, name: "name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 3, name: "email", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 4, name: "description", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 5, name: "avatar_url", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 6, name: "oauth_provider", kind: "enum", T: proto3.getEnumType(OAuthProvider) },
     { no: 8, name: "payment_details", kind: "message", T: PaymentDetails },
@@ -560,6 +568,63 @@ export class TermsAndConditionsUpdate extends Message<TermsAndConditionsUpdate> 
 }
 
 /**
+ * TenantServiceListRequest is the request payload of the tenant list request
+ *
+ * @generated from message api.v1.TenantServiceListRequest
+ */
+export class TenantServiceListRequest extends Message<TenantServiceListRequest> {
+  /**
+   * Login of the tenant
+   *
+   * @generated from field: string login = 1;
+   */
+  login = "";
+
+  /**
+   * Id filters tenants by id
+   *
+   * @generated from field: string id = 2;
+   */
+  id = "";
+
+  /**
+   * Name filters tenants by name
+   *
+   * @generated from field: string name = 3;
+   */
+  name = "";
+
+  constructor(data?: PartialMessage<TenantServiceListRequest>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "api.v1.TenantServiceListRequest";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "login", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 3, name: "name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): TenantServiceListRequest {
+    return new TenantServiceListRequest().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): TenantServiceListRequest {
+    return new TenantServiceListRequest().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): TenantServiceListRequest {
+    return new TenantServiceListRequest().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: TenantServiceListRequest | PlainMessage<TenantServiceListRequest> | undefined, b: TenantServiceListRequest | PlainMessage<TenantServiceListRequest> | undefined): boolean {
+    return proto3.util.equals(TenantServiceListRequest, a, b);
+  }
+}
+
+/**
  * TenantServiceGetRequest is the request payload of the tenant get request
  *
  * @generated from message api.v1.TenantServiceGetRequest
@@ -742,6 +807,13 @@ export class TenantServiceUpdateRequest extends Message<TenantServiceUpdateReque
   email?: string;
 
   /**
+   * Description of this tenant
+   *
+   * @generated from field: optional string description = 4;
+   */
+  description?: string;
+
+  /**
    * AvatarUrl of the tenant
    *
    * @generated from field: optional string avatar_url = 5;
@@ -780,6 +852,7 @@ export class TenantServiceUpdateRequest extends Message<TenantServiceUpdateReque
     { no: 1, name: "login", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 2, name: "name", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
     { no: 3, name: "email", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
+    { no: 4, name: "description", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
     { no: 5, name: "avatar_url", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
     { no: 8, name: "payment_details", kind: "message", T: PaymentDetailsUpdate, opt: true },
     { no: 9, name: "terms_and_conditions", kind: "message", T: TermsAndConditionsUpdate, opt: true },
@@ -882,6 +955,47 @@ export class TenantServiceGetResponse extends Message<TenantServiceGetResponse> 
 
   static equals(a: TenantServiceGetResponse | PlainMessage<TenantServiceGetResponse> | undefined, b: TenantServiceGetResponse | PlainMessage<TenantServiceGetResponse> | undefined): boolean {
     return proto3.util.equals(TenantServiceGetResponse, a, b);
+  }
+}
+
+/**
+ * TenantServiceListResponse is the response payload of the tenant list request
+ *
+ * @generated from message api.v1.TenantServiceListResponse
+ */
+export class TenantServiceListResponse extends Message<TenantServiceListResponse> {
+  /**
+   * Tenants is the list of tenants
+   *
+   * @generated from field: repeated api.v1.Tenant tenants = 1;
+   */
+  tenants: Tenant[] = [];
+
+  constructor(data?: PartialMessage<TenantServiceListResponse>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "api.v1.TenantServiceListResponse";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "tenants", kind: "message", T: Tenant, repeated: true },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): TenantServiceListResponse {
+    return new TenantServiceListResponse().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): TenantServiceListResponse {
+    return new TenantServiceListResponse().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): TenantServiceListResponse {
+    return new TenantServiceListResponse().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: TenantServiceListResponse | PlainMessage<TenantServiceListResponse> | undefined, b: TenantServiceListResponse | PlainMessage<TenantServiceListResponse> | undefined): boolean {
+    return proto3.util.equals(TenantServiceListResponse, a, b);
   }
 }
 

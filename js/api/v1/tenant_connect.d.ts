@@ -1,4 +1,4 @@
-import { TenantServiceCreateOrUpdateRequest, TenantServiceCreateOrUpdateResponse, TenantServiceCreateRequest, TenantServiceCreateResponse, TenantServiceDeleteRequest, TenantServiceDeleteResponse, TenantServiceGetRequest, TenantServiceGetResponse, TenantServiceInviteAcceptRequest, TenantServiceInviteAcceptResponse, TenantServiceInviteDeleteRequest, TenantServiceInviteDeleteResponse, TenantServiceInviteGetRequest, TenantServiceInviteGetResponse, TenantServiceInviteRequest, TenantServiceInviteResponse, TenantServiceInvitesListRequest, TenantServiceInvitesListResponse, TenantServiceRemoveMemberRequest, TenantServiceRemoveMemberResponse, TenantServiceUpdateMemberRequest, TenantServiceUpdateMemberResponse, TenantServiceUpdateRequest, TenantServiceUpdateResponse } from "./tenant_pb.js";
+import { TenantServiceCreateOrUpdateRequest, TenantServiceCreateOrUpdateResponse, TenantServiceCreateRequest, TenantServiceCreateResponse, TenantServiceDeleteRequest, TenantServiceDeleteResponse, TenantServiceGetRequest, TenantServiceGetResponse, TenantServiceInviteAcceptRequest, TenantServiceInviteAcceptResponse, TenantServiceInviteDeleteRequest, TenantServiceInviteDeleteResponse, TenantServiceInviteGetRequest, TenantServiceInviteGetResponse, TenantServiceInviteRequest, TenantServiceInviteResponse, TenantServiceInvitesListRequest, TenantServiceInvitesListResponse, TenantServiceListRequest, TenantServiceListResponse, TenantServiceRemoveMemberRequest, TenantServiceRemoveMemberResponse, TenantServiceUpdateMemberRequest, TenantServiceUpdateMemberResponse, TenantServiceUpdateRequest, TenantServiceUpdateResponse } from "./tenant_pb.js";
 import { MethodKind } from "@bufbuild/protobuf";
 /**
  * TenantService serves tenant related functions
@@ -29,6 +29,17 @@ export declare const TenantService: {
             readonly name: "CreateOrUpdate";
             readonly I: typeof TenantServiceCreateOrUpdateRequest;
             readonly O: typeof TenantServiceCreateOrUpdateResponse;
+            readonly kind: MethodKind.Unary;
+        };
+        /**
+         * List tenants
+         *
+         * @generated from rpc api.v1.TenantService.List
+         */
+        readonly list: {
+            readonly name: "List";
+            readonly I: typeof TenantServiceListRequest;
+            readonly O: typeof TenantServiceListResponse;
             readonly kind: MethodKind.Unary;
         };
         /**

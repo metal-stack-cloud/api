@@ -38,6 +38,8 @@ const (
 	// TenantServiceCreateOrUpdateProcedure is the fully-qualified name of the TenantService's
 	// CreateOrUpdate RPC.
 	TenantServiceCreateOrUpdateProcedure = "/api.v1.TenantService/CreateOrUpdate"
+	// TenantServiceListProcedure is the fully-qualified name of the TenantService's List RPC.
+	TenantServiceListProcedure = "/api.v1.TenantService/List"
 	// TenantServiceGetProcedure is the fully-qualified name of the TenantService's Get RPC.
 	TenantServiceGetProcedure = "/api.v1.TenantService/Get"
 	// TenantServiceUpdateProcedure is the fully-qualified name of the TenantService's Update RPC.
@@ -70,6 +72,7 @@ var (
 	tenantServiceServiceDescriptor              = v1.File_api_v1_tenant_proto.Services().ByName("TenantService")
 	tenantServiceCreateMethodDescriptor         = tenantServiceServiceDescriptor.Methods().ByName("Create")
 	tenantServiceCreateOrUpdateMethodDescriptor = tenantServiceServiceDescriptor.Methods().ByName("CreateOrUpdate")
+	tenantServiceListMethodDescriptor           = tenantServiceServiceDescriptor.Methods().ByName("List")
 	tenantServiceGetMethodDescriptor            = tenantServiceServiceDescriptor.Methods().ByName("Get")
 	tenantServiceUpdateMethodDescriptor         = tenantServiceServiceDescriptor.Methods().ByName("Update")
 	tenantServiceDeleteMethodDescriptor         = tenantServiceServiceDescriptor.Methods().ByName("Delete")
@@ -89,6 +92,8 @@ type TenantServiceClient interface {
 	// CreateOrUpdate should only be used from within the application
 	// will check if tenant already exists and updates if necessary, otherwise create a new tenant
 	CreateOrUpdate(context.Context, *connect.Request[v1.TenantServiceCreateOrUpdateRequest]) (*connect.Response[v1.TenantServiceCreateOrUpdateResponse], error)
+	// List tenants
+	List(context.Context, *connect.Request[v1.TenantServiceListRequest]) (*connect.Response[v1.TenantServiceListResponse], error)
 	// Get a tenant
 	Get(context.Context, *connect.Request[v1.TenantServiceGetRequest]) (*connect.Response[v1.TenantServiceGetResponse], error)
 	// Update a tenant
@@ -131,6 +136,12 @@ func NewTenantServiceClient(httpClient connect.HTTPClient, baseURL string, opts 
 			httpClient,
 			baseURL+TenantServiceCreateOrUpdateProcedure,
 			connect.WithSchema(tenantServiceCreateOrUpdateMethodDescriptor),
+			connect.WithClientOptions(opts...),
+		),
+		list: connect.NewClient[v1.TenantServiceListRequest, v1.TenantServiceListResponse](
+			httpClient,
+			baseURL+TenantServiceListProcedure,
+			connect.WithSchema(tenantServiceListMethodDescriptor),
 			connect.WithClientOptions(opts...),
 		),
 		get: connect.NewClient[v1.TenantServiceGetRequest, v1.TenantServiceGetResponse](
@@ -200,6 +211,7 @@ func NewTenantServiceClient(httpClient connect.HTTPClient, baseURL string, opts 
 type tenantServiceClient struct {
 	create         *connect.Client[v1.TenantServiceCreateRequest, v1.TenantServiceCreateResponse]
 	createOrUpdate *connect.Client[v1.TenantServiceCreateOrUpdateRequest, v1.TenantServiceCreateOrUpdateResponse]
+	list           *connect.Client[v1.TenantServiceListRequest, v1.TenantServiceListResponse]
 	get            *connect.Client[v1.TenantServiceGetRequest, v1.TenantServiceGetResponse]
 	update         *connect.Client[v1.TenantServiceUpdateRequest, v1.TenantServiceUpdateResponse]
 	delete         *connect.Client[v1.TenantServiceDeleteRequest, v1.TenantServiceDeleteResponse]
@@ -220,6 +232,11 @@ func (c *tenantServiceClient) Create(ctx context.Context, req *connect.Request[v
 // CreateOrUpdate calls api.v1.TenantService.CreateOrUpdate.
 func (c *tenantServiceClient) CreateOrUpdate(ctx context.Context, req *connect.Request[v1.TenantServiceCreateOrUpdateRequest]) (*connect.Response[v1.TenantServiceCreateOrUpdateResponse], error) {
 	return c.createOrUpdate.CallUnary(ctx, req)
+}
+
+// List calls api.v1.TenantService.List.
+func (c *tenantServiceClient) List(ctx context.Context, req *connect.Request[v1.TenantServiceListRequest]) (*connect.Response[v1.TenantServiceListResponse], error) {
+	return c.list.CallUnary(ctx, req)
 }
 
 // Get calls api.v1.TenantService.Get.
@@ -279,6 +296,8 @@ type TenantServiceHandler interface {
 	// CreateOrUpdate should only be used from within the application
 	// will check if tenant already exists and updates if necessary, otherwise create a new tenant
 	CreateOrUpdate(context.Context, *connect.Request[v1.TenantServiceCreateOrUpdateRequest]) (*connect.Response[v1.TenantServiceCreateOrUpdateResponse], error)
+	// List tenants
+	List(context.Context, *connect.Request[v1.TenantServiceListRequest]) (*connect.Response[v1.TenantServiceListResponse], error)
 	// Get a tenant
 	Get(context.Context, *connect.Request[v1.TenantServiceGetRequest]) (*connect.Response[v1.TenantServiceGetResponse], error)
 	// Update a tenant
@@ -317,6 +336,12 @@ func NewTenantServiceHandler(svc TenantServiceHandler, opts ...connect.HandlerOp
 		TenantServiceCreateOrUpdateProcedure,
 		svc.CreateOrUpdate,
 		connect.WithSchema(tenantServiceCreateOrUpdateMethodDescriptor),
+		connect.WithHandlerOptions(opts...),
+	)
+	tenantServiceListHandler := connect.NewUnaryHandler(
+		TenantServiceListProcedure,
+		svc.List,
+		connect.WithSchema(tenantServiceListMethodDescriptor),
 		connect.WithHandlerOptions(opts...),
 	)
 	tenantServiceGetHandler := connect.NewUnaryHandler(
@@ -385,6 +410,8 @@ func NewTenantServiceHandler(svc TenantServiceHandler, opts ...connect.HandlerOp
 			tenantServiceCreateHandler.ServeHTTP(w, r)
 		case TenantServiceCreateOrUpdateProcedure:
 			tenantServiceCreateOrUpdateHandler.ServeHTTP(w, r)
+		case TenantServiceListProcedure:
+			tenantServiceListHandler.ServeHTTP(w, r)
 		case TenantServiceGetProcedure:
 			tenantServiceGetHandler.ServeHTTP(w, r)
 		case TenantServiceUpdateProcedure:
@@ -420,6 +447,10 @@ func (UnimplementedTenantServiceHandler) Create(context.Context, *connect.Reques
 
 func (UnimplementedTenantServiceHandler) CreateOrUpdate(context.Context, *connect.Request[v1.TenantServiceCreateOrUpdateRequest]) (*connect.Response[v1.TenantServiceCreateOrUpdateResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("api.v1.TenantService.CreateOrUpdate is not implemented"))
+}
+
+func (UnimplementedTenantServiceHandler) List(context.Context, *connect.Request[v1.TenantServiceListRequest]) (*connect.Response[v1.TenantServiceListResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("api.v1.TenantService.List is not implemented"))
 }
 
 func (UnimplementedTenantServiceHandler) Get(context.Context, *connect.Request[v1.TenantServiceGetRequest]) (*connect.Response[v1.TenantServiceGetResponse], error) {

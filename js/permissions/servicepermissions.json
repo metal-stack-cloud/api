@@ -35,6 +35,7 @@
         "/api.v1.PaymentService/RequestAdmission",
         "/api.v1.PaymentService/HasChargeableResources",
         "/api.v1.ProjectService/Create",
+        "/api.v1.TenantService/List",
         "/api.v1.TenantService/Get",
         "/api.v1.TenantService/Update",
         "/api.v1.TenantService/Delete"
@@ -54,6 +55,7 @@
         "/api.v1.PaymentService/SetOnboarded",
         "/api.v1.PaymentService/GetOnboarded",
         "/api.v1.ProjectService/Create",
+        "/api.v1.TenantService/List",
         "/api.v1.TenantService/Get",
         "/api.v1.TenantService/Update",
         "/api.v1.TenantService/Delete",
@@ -67,6 +69,7 @@
         "/api.v1.PaymentService/HasPaymentMethod",
         "/api.v1.PaymentService/CheckAdmitted",
         "/api.v1.PaymentService/HasChargeableResources",
+        "/api.v1.TenantService/List",
         "/api.v1.TenantService/Get"
       ]
     },
@@ -207,6 +210,7 @@
     "/api.v1.TenantService/InviteDelete": true,
     "/api.v1.TenantService/InviteGet": true,
     "/api.v1.TenantService/InvitesList": true,
+    "/api.v1.TenantService/List": true,
     "/api.v1.TenantService/RemoveMember": true,
     "/api.v1.TenantService/Update": true,
     "/api.v1.TenantService/UpdateMember": true,
@@ -326,6 +330,7 @@
     "/api.v1.TenantService/InviteDelete": true,
     "/api.v1.TenantService/InviteGet": false,
     "/api.v1.TenantService/InvitesList": false,
+    "/api.v1.TenantService/List": false,
     "/api.v1.TenantService/RemoveMember": true,
     "/api.v1.TenantService/Update": false,
     "/api.v1.TenantService/UpdateMember": true,
