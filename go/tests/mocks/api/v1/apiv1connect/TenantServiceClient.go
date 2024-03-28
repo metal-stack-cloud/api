@@ -346,6 +346,36 @@ func (_m *TenantServiceClient) Update(_a0 context.Context, _a1 *connect.Request[
 	return r0, r1
 }
 
+// UpdateMember provides a mock function with given fields: _a0, _a1
+func (_m *TenantServiceClient) UpdateMember(_a0 context.Context, _a1 *connect.Request[apiv1.TenantServiceUpdateMemberRequest]) (*connect.Response[apiv1.TenantServiceUpdateMemberResponse], error) {
+	ret := _m.Called(_a0, _a1)
+
+	if len(ret) == 0 {
+		panic("no return value specified for UpdateMember")
+	}
+
+	var r0 *connect.Response[apiv1.TenantServiceUpdateMemberResponse]
+	var r1 error
+	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[apiv1.TenantServiceUpdateMemberRequest]) (*connect.Response[apiv1.TenantServiceUpdateMemberResponse], error)); ok {
+		return rf(_a0, _a1)
+	}
+	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[apiv1.TenantServiceUpdateMemberRequest]) *connect.Response[apiv1.TenantServiceUpdateMemberResponse]); ok {
+		r0 = rf(_a0, _a1)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*connect.Response[apiv1.TenantServiceUpdateMemberResponse])
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(context.Context, *connect.Request[apiv1.TenantServiceUpdateMemberRequest]) error); ok {
+		r1 = rf(_a0, _a1)
+	} else {
+		r1 = ret.Error(1)
+	}
+
+	return r0, r1
+}
+
 // NewTenantServiceClient creates a new instance of TenantServiceClient. It also registers a testing interface on the mock and a cleanup function to assert the mocks expectations.
 // The first argument is typically a *testing.T value.
 func NewTenantServiceClient(t interface {

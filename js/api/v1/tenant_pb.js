@@ -1090,3 +1090,77 @@ export class TenantServiceInviteDeleteResponse extends Message {
 TenantServiceInviteDeleteResponse.runtime = proto3;
 TenantServiceInviteDeleteResponse.typeName = "api.v1.TenantServiceInviteDeleteResponse";
 TenantServiceInviteDeleteResponse.fields = proto3.util.newFieldList(() => []);
+/**
+ * TenantServiceUpdateMemberRequest is used to update a member from a tenant
+ *
+ * @generated from message api.v1.TenantServiceUpdateMemberRequest
+ */
+export class TenantServiceUpdateMemberRequest extends Message {
+    constructor(data) {
+        super();
+        /**
+         * Tenant is the uuid of the tenant
+         *
+         * @generated from field: string tenant = 1;
+         */
+        this.tenant = "";
+        /**
+         * MemberID is the id of the member to update in this tenant
+         *
+         * @generated from field: string member_id = 2;
+         */
+        this.memberId = "";
+        /**
+         * Role of this user in this tenant
+         *
+         * @generated from field: api.v1.TenantRole role = 3;
+         */
+        this.role = TenantRole.UNSPECIFIED;
+        proto3.util.initPartial(data, this);
+    }
+    static fromBinary(bytes, options) {
+        return new TenantServiceUpdateMemberRequest().fromBinary(bytes, options);
+    }
+    static fromJson(jsonValue, options) {
+        return new TenantServiceUpdateMemberRequest().fromJson(jsonValue, options);
+    }
+    static fromJsonString(jsonString, options) {
+        return new TenantServiceUpdateMemberRequest().fromJsonString(jsonString, options);
+    }
+    static equals(a, b) {
+        return proto3.util.equals(TenantServiceUpdateMemberRequest, a, b);
+    }
+}
+TenantServiceUpdateMemberRequest.runtime = proto3;
+TenantServiceUpdateMemberRequest.typeName = "api.v1.TenantServiceUpdateMemberRequest";
+TenantServiceUpdateMemberRequest.fields = proto3.util.newFieldList(() => [
+    { no: 1, name: "tenant", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "member_id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 3, name: "role", kind: "enum", T: proto3.getEnumType(TenantRole) },
+]);
+/**
+ * TenantServiceUpdateMemberResponse is the response payload to a update member request
+ *
+ * @generated from message api.v1.TenantServiceUpdateMemberResponse
+ */
+export class TenantServiceUpdateMemberResponse extends Message {
+    constructor(data) {
+        super();
+        proto3.util.initPartial(data, this);
+    }
+    static fromBinary(bytes, options) {
+        return new TenantServiceUpdateMemberResponse().fromBinary(bytes, options);
+    }
+    static fromJson(jsonValue, options) {
+        return new TenantServiceUpdateMemberResponse().fromJson(jsonValue, options);
+    }
+    static fromJsonString(jsonString, options) {
+        return new TenantServiceUpdateMemberResponse().fromJsonString(jsonString, options);
+    }
+    static equals(a, b) {
+        return proto3.util.equals(TenantServiceUpdateMemberResponse, a, b);
+    }
+}
+TenantServiceUpdateMemberResponse.runtime = proto3;
+TenantServiceUpdateMemberResponse.typeName = "api.v1.TenantServiceUpdateMemberResponse";
+TenantServiceUpdateMemberResponse.fields = proto3.util.newFieldList(() => []);

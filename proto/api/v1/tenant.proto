@@ -41,6 +41,13 @@ service TenantService {
     option (tenant_roles) = TENANT_ROLE_OWNER;
     option (auditing) = AUDITING_INCLUDED;
   }
+
+  // UpdateMember update a user from a tenant
+  rpc UpdateMember(TenantServiceUpdateMemberRequest) returns (TenantServiceUpdateMemberResponse) {
+    option (tenant_roles) = TENANT_ROLE_OWNER;
+    option (auditing) = AUDITING_INCLUDED;
+  }
+
   // Invite a user to a tenant
   rpc Invite(TenantServiceInviteRequest) returns (TenantServiceInviteResponse) {
     option (tenant_roles) = TENANT_ROLE_OWNER;
@@ -324,3 +331,16 @@ message TenantServiceInviteDeleteRequest {
 
 // TenantServiceInviteDeleteResponse is the response payload of a delete invite request
 message TenantServiceInviteDeleteResponse {}
+
+// TenantServiceUpdateMemberRequest is used to update a member from a tenant
+message TenantServiceUpdateMemberRequest {
+  // Tenant is the uuid of the tenant
+  string tenant = 1;
+  // MemberID is the id of the member to update in this tenant
+  string member_id = 2;
+  // Role of this user in this tenant
+  TenantRole role = 3;
+}
+
+// TenantServiceUpdateMemberResponse is the response payload to a update member request
+message TenantServiceUpdateMemberResponse {}

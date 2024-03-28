@@ -8216,6 +8216,65 @@
           "fields": []
         },
         {
+          "name": "TenantServiceUpdateMemberRequest",
+          "longName": "TenantServiceUpdateMemberRequest",
+          "fullName": "api.v1.TenantServiceUpdateMemberRequest",
+          "description": "TenantServiceUpdateMemberRequest is used to update a member from a tenant",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "tenant",
+              "description": "Tenant is the uuid of the tenant",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "member_id",
+              "description": "MemberID is the id of the member to update in this tenant",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "role",
+              "description": "Role of this user in this tenant",
+              "label": "",
+              "type": "TenantRole",
+              "longType": "TenantRole",
+              "fullType": "api.v1.TenantRole",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "TenantServiceUpdateMemberResponse",
+          "longName": "TenantServiceUpdateMemberResponse",
+          "fullName": "api.v1.TenantServiceUpdateMemberResponse",
+          "description": "TenantServiceUpdateMemberResponse is the response payload to a update member request",
+          "hasExtensions": false,
+          "hasFields": false,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": []
+        },
+        {
           "name": "TenantServiceUpdateRequest",
           "longName": "TenantServiceUpdateRequest",
           "fullName": "api.v1.TenantServiceUpdateRequest",
@@ -8485,6 +8544,18 @@
               "responseType": "TenantServiceRemoveMemberResponse",
               "responseLongType": "TenantServiceRemoveMemberResponse",
               "responseFullType": "api.v1.TenantServiceRemoveMemberResponse",
+              "responseStreaming": false
+            },
+            {
+              "name": "UpdateMember",
+              "description": "UpdateMember update a user from a tenant",
+              "requestType": "TenantServiceUpdateMemberRequest",
+              "requestLongType": "TenantServiceUpdateMemberRequest",
+              "requestFullType": "api.v1.TenantServiceUpdateMemberRequest",
+              "requestStreaming": false,
+              "responseType": "TenantServiceUpdateMemberResponse",
+              "responseLongType": "TenantServiceUpdateMemberResponse",
+              "responseFullType": "api.v1.TenantServiceUpdateMemberResponse",
               "responseStreaming": false
             },
             {

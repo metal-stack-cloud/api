@@ -1527,3 +1527,93 @@ export class TenantServiceInviteDeleteResponse extends Message<TenantServiceInvi
   }
 }
 
+/**
+ * TenantServiceUpdateMemberRequest is used to update a member from a tenant
+ *
+ * @generated from message api.v1.TenantServiceUpdateMemberRequest
+ */
+export class TenantServiceUpdateMemberRequest extends Message<TenantServiceUpdateMemberRequest> {
+  /**
+   * Tenant is the uuid of the tenant
+   *
+   * @generated from field: string tenant = 1;
+   */
+  tenant = "";
+
+  /**
+   * MemberID is the id of the member to update in this tenant
+   *
+   * @generated from field: string member_id = 2;
+   */
+  memberId = "";
+
+  /**
+   * Role of this user in this tenant
+   *
+   * @generated from field: api.v1.TenantRole role = 3;
+   */
+  role = TenantRole.UNSPECIFIED;
+
+  constructor(data?: PartialMessage<TenantServiceUpdateMemberRequest>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "api.v1.TenantServiceUpdateMemberRequest";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "tenant", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "member_id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 3, name: "role", kind: "enum", T: proto3.getEnumType(TenantRole) },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): TenantServiceUpdateMemberRequest {
+    return new TenantServiceUpdateMemberRequest().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): TenantServiceUpdateMemberRequest {
+    return new TenantServiceUpdateMemberRequest().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): TenantServiceUpdateMemberRequest {
+    return new TenantServiceUpdateMemberRequest().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: TenantServiceUpdateMemberRequest | PlainMessage<TenantServiceUpdateMemberRequest> | undefined, b: TenantServiceUpdateMemberRequest | PlainMessage<TenantServiceUpdateMemberRequest> | undefined): boolean {
+    return proto3.util.equals(TenantServiceUpdateMemberRequest, a, b);
+  }
+}
+
+/**
+ * TenantServiceUpdateMemberResponse is the response payload to a update member request
+ *
+ * @generated from message api.v1.TenantServiceUpdateMemberResponse
+ */
+export class TenantServiceUpdateMemberResponse extends Message<TenantServiceUpdateMemberResponse> {
+  constructor(data?: PartialMessage<TenantServiceUpdateMemberResponse>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "api.v1.TenantServiceUpdateMemberResponse";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): TenantServiceUpdateMemberResponse {
+    return new TenantServiceUpdateMemberResponse().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): TenantServiceUpdateMemberResponse {
+    return new TenantServiceUpdateMemberResponse().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): TenantServiceUpdateMemberResponse {
+    return new TenantServiceUpdateMemberResponse().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: TenantServiceUpdateMemberResponse | PlainMessage<TenantServiceUpdateMemberResponse> | undefined, b: TenantServiceUpdateMemberResponse | PlainMessage<TenantServiceUpdateMemberResponse> | undefined): boolean {
+    return proto3.util.equals(TenantServiceUpdateMemberResponse, a, b);
+  }
+}
+

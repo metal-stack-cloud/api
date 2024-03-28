@@ -859,3 +859,51 @@ export declare class TenantServiceInviteDeleteResponse extends Message<TenantSer
     static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): TenantServiceInviteDeleteResponse;
     static equals(a: TenantServiceInviteDeleteResponse | PlainMessage<TenantServiceInviteDeleteResponse> | undefined, b: TenantServiceInviteDeleteResponse | PlainMessage<TenantServiceInviteDeleteResponse> | undefined): boolean;
 }
+/**
+ * TenantServiceUpdateMemberRequest is used to update a member from a tenant
+ *
+ * @generated from message api.v1.TenantServiceUpdateMemberRequest
+ */
+export declare class TenantServiceUpdateMemberRequest extends Message<TenantServiceUpdateMemberRequest> {
+    /**
+     * Tenant is the uuid of the tenant
+     *
+     * @generated from field: string tenant = 1;
+     */
+    tenant: string;
+    /**
+     * MemberID is the id of the member to update in this tenant
+     *
+     * @generated from field: string member_id = 2;
+     */
+    memberId: string;
+    /**
+     * Role of this user in this tenant
+     *
+     * @generated from field: api.v1.TenantRole role = 3;
+     */
+    role: TenantRole;
+    constructor(data?: PartialMessage<TenantServiceUpdateMemberRequest>);
+    static readonly runtime: typeof proto3;
+    static readonly typeName = "api.v1.TenantServiceUpdateMemberRequest";
+    static readonly fields: FieldList;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): TenantServiceUpdateMemberRequest;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): TenantServiceUpdateMemberRequest;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): TenantServiceUpdateMemberRequest;
+    static equals(a: TenantServiceUpdateMemberRequest | PlainMessage<TenantServiceUpdateMemberRequest> | undefined, b: TenantServiceUpdateMemberRequest | PlainMessage<TenantServiceUpdateMemberRequest> | undefined): boolean;
+}
+/**
+ * TenantServiceUpdateMemberResponse is the response payload to a update member request
+ *
+ * @generated from message api.v1.TenantServiceUpdateMemberResponse
+ */
+export declare class TenantServiceUpdateMemberResponse extends Message<TenantServiceUpdateMemberResponse> {
+    constructor(data?: PartialMessage<TenantServiceUpdateMemberResponse>);
+    static readonly runtime: typeof proto3;
+    static readonly typeName = "api.v1.TenantServiceUpdateMemberResponse";
+    static readonly fields: FieldList;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): TenantServiceUpdateMemberResponse;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): TenantServiceUpdateMemberResponse;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): TenantServiceUpdateMemberResponse;
+    static equals(a: TenantServiceUpdateMemberResponse | PlainMessage<TenantServiceUpdateMemberResponse> | undefined, b: TenantServiceUpdateMemberResponse | PlainMessage<TenantServiceUpdateMemberResponse> | undefined): boolean;
+}
