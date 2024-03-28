@@ -1293,36 +1293,13 @@ func (m *TenantServiceCreateRequest) validate(all bool) error {
 
 	var errors []error
 
-	if all {
-		switch v := interface{}(m.GetTenant()).(type) {
-		case interface{ ValidateAll() error }:
-			if err := v.ValidateAll(); err != nil {
-				errors = append(errors, TenantServiceCreateRequestValidationError{
-					field:  "Tenant",
-					reason: "embedded message failed validation",
-					cause:  err,
-				})
-			}
-		case interface{ Validate() error }:
-			if err := v.Validate(); err != nil {
-				errors = append(errors, TenantServiceCreateRequestValidationError{
-					field:  "Tenant",
-					reason: "embedded message failed validation",
-					cause:  err,
-				})
-			}
-		}
-	} else if v, ok := interface{}(m.GetTenant()).(interface{ Validate() error }); ok {
-		if err := v.Validate(); err != nil {
-			return TenantServiceCreateRequestValidationError{
-				field:  "Tenant",
-				reason: "embedded message failed validation",
-				cause:  err,
-			}
-		}
-	}
+	// no validation rules for Name
 
-	// no validation rules for Login
+	// no validation rules for Email
+
+	// no validation rules for AvatarUrl
+
+	// no validation rules for PhoneNumber
 
 	if len(errors) > 0 {
 		return TenantServiceCreateRequestMultiError(errors)

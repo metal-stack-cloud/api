@@ -375,19 +375,29 @@ export declare class TenantServiceGetRequest extends Message<TenantServiceGetReq
  */
 export declare class TenantServiceCreateRequest extends Message<TenantServiceCreateRequest> {
     /**
-     * Tenant the tenant to create
+     * Name if the tenant
      *
-     * @generated from field: api.v1.Tenant tenant = 1;
+     * @generated from field: string name = 1;
      */
-    tenant?: Tenant;
+    name: string;
     /**
-     * Login of the tenant
+     * Email of the tenant
      *
-     * FIXME:  ? this endpoint was probably never used
-     *
-     * @generated from field: string login = 2;
+     * @generated from field: string email = 2;
      */
-    login: string;
+    email: string;
+    /**
+     * AvatarUrl of the tenant
+     *
+     * @generated from field: string avatar_url = 3;
+     */
+    avatarUrl: string;
+    /**
+     * PhoneNumber of the tenant
+     *
+     * @generated from field: string phone_number = 4;
+     */
+    phoneNumber: string;
     constructor(data?: PartialMessage<TenantServiceCreateRequest>);
     static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.TenantServiceCreateRequest";

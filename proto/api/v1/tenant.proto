@@ -10,8 +10,8 @@ import "google/protobuf/timestamp.proto";
 service TenantService {
   // Create a tenant
   rpc Create(TenantServiceCreateRequest) returns (TenantServiceCreateResponse) {
-    option (tenant_roles) = TENANT_ROLE_OWNER;
-    option (tenant_roles) = TENANT_ROLE_EDITOR;
+    option (visibility) = VISIBILITY_SELF;
+    option (auditing) = AUDITING_INCLUDED;
   }
   // CreateOrUpdate should only be used from within the application
   // will check if tenant already exists and updates if necessary, otherwise create a new tenant
@@ -29,11 +29,13 @@ service TenantService {
   rpc Update(TenantServiceUpdateRequest) returns (TenantServiceUpdateResponse) {
     option (tenant_roles) = TENANT_ROLE_OWNER;
     option (tenant_roles) = TENANT_ROLE_EDITOR;
+    option (auditing) = AUDITING_EXCLUDED;
   }
   // Delete a tenant
   rpc Delete(TenantServiceDeleteRequest) returns (TenantServiceDeleteResponse) {
     option (tenant_roles) = TENANT_ROLE_OWNER;
     option (tenant_roles) = TENANT_ROLE_EDITOR;
+    option (auditing) = AUDITING_EXCLUDED;
   }
 
   // RemoveMember remove a user from a tenant
@@ -191,10 +193,14 @@ message TenantServiceGetRequest {
 
 // TenantServiceCreateRequest is the request payload of the tenant create request
 message TenantServiceCreateRequest {
-  // Tenant the tenant to create
-  Tenant tenant = 1;
-  // Login of the tenant
-  string login = 2; // FIXME:  ? this endpoint was probably never used
+  // Name if the tenant
+  string name = 1;
+  // Email of the tenant
+  string email = 2;
+  // AvatarUrl of the tenant
+  string avatar_url = 3;
+  // PhoneNumber of the tenant
+  string phone_number = 4;
 }
 
 // TenantServiceCreateOrUpdateRequest is the request payload of the tenant create or update request

@@ -421,13 +421,29 @@ export class TenantServiceCreateRequest extends Message {
     constructor(data) {
         super();
         /**
-         * Login of the tenant
+         * Name if the tenant
          *
-         * FIXME:  ? this endpoint was probably never used
-         *
-         * @generated from field: string login = 2;
+         * @generated from field: string name = 1;
          */
-        this.login = "";
+        this.name = "";
+        /**
+         * Email of the tenant
+         *
+         * @generated from field: string email = 2;
+         */
+        this.email = "";
+        /**
+         * AvatarUrl of the tenant
+         *
+         * @generated from field: string avatar_url = 3;
+         */
+        this.avatarUrl = "";
+        /**
+         * PhoneNumber of the tenant
+         *
+         * @generated from field: string phone_number = 4;
+         */
+        this.phoneNumber = "";
         proto3.util.initPartial(data, this);
     }
     static fromBinary(bytes, options) {
@@ -446,8 +462,10 @@ export class TenantServiceCreateRequest extends Message {
 TenantServiceCreateRequest.runtime = proto3;
 TenantServiceCreateRequest.typeName = "api.v1.TenantServiceCreateRequest";
 TenantServiceCreateRequest.fields = proto3.util.newFieldList(() => [
-    { no: 1, name: "tenant", kind: "message", T: Tenant },
-    { no: 2, name: "login", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 1, name: "name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "email", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 3, name: "avatar_url", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 4, name: "phone_number", kind: "scalar", T: 9 /* ScalarType.STRING */ },
 ]);
 /**
  * TenantServiceCreateOrUpdateRequest is the request payload of the tenant create or update request
