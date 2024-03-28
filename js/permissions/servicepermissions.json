@@ -35,7 +35,6 @@
         "/api.v1.PaymentService/RequestAdmission",
         "/api.v1.PaymentService/HasChargeableResources",
         "/api.v1.ProjectService/Create",
-        "/api.v1.TenantService/List",
         "/api.v1.TenantService/Get",
         "/api.v1.TenantService/Update",
         "/api.v1.TenantService/Delete"
@@ -55,7 +54,6 @@
         "/api.v1.PaymentService/SetOnboarded",
         "/api.v1.PaymentService/GetOnboarded",
         "/api.v1.ProjectService/Create",
-        "/api.v1.TenantService/List",
         "/api.v1.TenantService/Get",
         "/api.v1.TenantService/Update",
         "/api.v1.TenantService/Delete",
@@ -69,7 +67,6 @@
         "/api.v1.PaymentService/HasPaymentMethod",
         "/api.v1.PaymentService/CheckAdmitted",
         "/api.v1.PaymentService/HasChargeableResources",
-        "/api.v1.TenantService/List",
         "/api.v1.TenantService/Get"
       ]
     },
@@ -248,6 +245,7 @@
       "/api.v1.TenantService/Create": true,
       "/api.v1.TenantService/InviteAccept": true,
       "/api.v1.TenantService/InviteGet": true,
+      "/api.v1.TenantService/List": true,
       "/api.v1.TokenService/Create": true,
       "/api.v1.TokenService/List": true,
       "/api.v1.TokenService/Revoke": true,

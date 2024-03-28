@@ -393,12 +393,6 @@ TermsAndConditionsUpdate.fields = proto3.util.newFieldList(() => [
 export class TenantServiceListRequest extends Message {
     constructor(data) {
         super();
-        /**
-         * Login of the tenant
-         *
-         * @generated from field: string login = 1;
-         */
-        this.login = "";
         proto3.util.initPartial(data, this);
     }
     static fromBinary(bytes, options) {
@@ -417,9 +411,8 @@ export class TenantServiceListRequest extends Message {
 TenantServiceListRequest.runtime = proto3;
 TenantServiceListRequest.typeName = "api.v1.TenantServiceListRequest";
 TenantServiceListRequest.fields = proto3.util.newFieldList(() => [
-    { no: 1, name: "login", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 2, name: "id", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
-    { no: 3, name: "name", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
+    { no: 1, name: "id", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
+    { no: 2, name: "name", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
 ]);
 /**
  * TenantServiceGetRequest is the request payload of the tenant get request

@@ -1191,8 +1191,6 @@ func (m *TenantServiceListRequest) validate(all bool) error {
 
 	var errors []error
 
-	// no validation rules for Login
-
 	if m.Id != nil {
 		// no validation rules for Id
 	}

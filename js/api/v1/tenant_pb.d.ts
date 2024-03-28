@@ -360,21 +360,15 @@ export declare class TermsAndConditionsUpdate extends Message<TermsAndConditions
  */
 export declare class TenantServiceListRequest extends Message<TenantServiceListRequest> {
     /**
-     * Login of the tenant
-     *
-     * @generated from field: string login = 1;
-     */
-    login: string;
-    /**
      * Id filters tenants by id
      *
-     * @generated from field: optional string id = 2;
+     * @generated from field: optional string id = 1;
      */
     id?: string;
     /**
      * Name filters tenants by name
      *
-     * @generated from field: optional string name = 3;
+     * @generated from field: optional string name = 2;
      */
     name?: string;
     constructor(data?: PartialMessage<TenantServiceListRequest>);

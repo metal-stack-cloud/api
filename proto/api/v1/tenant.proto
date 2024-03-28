@@ -21,9 +21,7 @@ service TenantService {
   }
   // List tenants
   rpc List(TenantServiceListRequest) returns (TenantServiceListResponse) {
-    option (tenant_roles) = TENANT_ROLE_OWNER;
-    option (tenant_roles) = TENANT_ROLE_EDITOR;
-    option (tenant_roles) = TENANT_ROLE_VIEWER;
+    option (visibility) = VISIBILITY_SELF;
     option (auditing) = AUDITING_EXCLUDED;
   }
   // Get a tenant
@@ -197,12 +195,10 @@ message TermsAndConditionsUpdate {
 
 // TenantServiceListRequest is the request payload of the tenant list request
 message TenantServiceListRequest {
-  // Login of the tenant
-  string login = 1;
   // Id filters tenants by id
-  optional string id = 2;
+  optional string id = 1;
   // Name filters tenants by name
-  optional string name = 3 [(validate.rules).string = {
+  optional string name = 2 [(validate.rules).string = {
     min_len: 2,
     max_len: 64,
   }];

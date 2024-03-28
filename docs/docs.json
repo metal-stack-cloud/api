@@ -8287,18 +8287,6 @@
           "extensions": [],
           "fields": [
             {
-              "name": "login",
-              "description": "Login of the tenant",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
               "name": "id",
               "description": "Id filters tenants by id",
               "label": "optional",

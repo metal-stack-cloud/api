@@ -574,23 +574,16 @@ export class TermsAndConditionsUpdate extends Message<TermsAndConditionsUpdate> 
  */
 export class TenantServiceListRequest extends Message<TenantServiceListRequest> {
   /**
-   * Login of the tenant
-   *
-   * @generated from field: string login = 1;
-   */
-  login = "";
-
-  /**
    * Id filters tenants by id
    *
-   * @generated from field: optional string id = 2;
+   * @generated from field: optional string id = 1;
    */
   id?: string;
 
   /**
    * Name filters tenants by name
    *
-   * @generated from field: optional string name = 3;
+   * @generated from field: optional string name = 2;
    */
   name?: string;
 
@@ -602,9 +595,8 @@ export class TenantServiceListRequest extends Message<TenantServiceListRequest> 
   static readonly runtime: typeof proto3 = proto3;
   static readonly typeName = "api.v1.TenantServiceListRequest";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "login", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 2, name: "id", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
-    { no: 3, name: "name", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
+    { no: 1, name: "id", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
+    { no: 2, name: "name", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): TenantServiceListRequest {
