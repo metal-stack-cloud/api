@@ -898,6 +898,12 @@ export declare class TenantServiceUpdateMemberRequest extends Message<TenantServ
  * @generated from message api.v1.TenantServiceUpdateMemberResponse
  */
 export declare class TenantServiceUpdateMemberResponse extends Message<TenantServiceUpdateMemberResponse> {
+    /**
+     * TenantMember is the updated membership
+     *
+     * @generated from field: api.v1.TenantMember tenant_member = 1;
+     */
+    tenantMember?: TenantMember;
     constructor(data?: PartialMessage<TenantServiceUpdateMemberResponse>);
     static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.TenantServiceUpdateMemberResponse";

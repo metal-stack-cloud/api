@@ -1163,4 +1163,6 @@ export class TenantServiceUpdateMemberResponse extends Message {
 }
 TenantServiceUpdateMemberResponse.runtime = proto3;
 TenantServiceUpdateMemberResponse.typeName = "api.v1.TenantServiceUpdateMemberResponse";
-TenantServiceUpdateMemberResponse.fields = proto3.util.newFieldList(() => []);
+TenantServiceUpdateMemberResponse.fields = proto3.util.newFieldList(() => [
+    { no: 1, name: "tenant_member", kind: "message", T: TenantMember },
+]);

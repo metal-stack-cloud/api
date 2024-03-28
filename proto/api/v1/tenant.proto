@@ -343,4 +343,7 @@ message TenantServiceUpdateMemberRequest {
 }
 
 // TenantServiceUpdateMemberResponse is the response payload to a update member request
-message TenantServiceUpdateMemberResponse {}
+message TenantServiceUpdateMemberResponse {
+  // TenantMember is the updated membership
+  TenantMember tenant_member = 1;
+}

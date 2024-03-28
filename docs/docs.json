@@ -8269,10 +8269,23 @@
           "fullName": "api.v1.TenantServiceUpdateMemberResponse",
           "description": "TenantServiceUpdateMemberResponse is the response payload to a update member request",
           "hasExtensions": false,
-          "hasFields": false,
+          "hasFields": true,
           "hasOneofs": false,
           "extensions": [],
-          "fields": []
+          "fields": [
+            {
+              "name": "tenant_member",
+              "description": "TenantMember is the updated membership",
+              "label": "",
+              "type": "TenantMember",
+              "longType": "TenantMember",
+              "fullType": "api.v1.TenantMember",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
         },
         {
           "name": "TenantServiceUpdateRequest",

@@ -1590,6 +1590,13 @@ export class TenantServiceUpdateMemberRequest extends Message<TenantServiceUpdat
  * @generated from message api.v1.TenantServiceUpdateMemberResponse
  */
 export class TenantServiceUpdateMemberResponse extends Message<TenantServiceUpdateMemberResponse> {
+  /**
+   * TenantMember is the updated membership
+   *
+   * @generated from field: api.v1.TenantMember tenant_member = 1;
+   */
+  tenantMember?: TenantMember;
+
   constructor(data?: PartialMessage<TenantServiceUpdateMemberResponse>) {
     super();
     proto3.util.initPartial(data, this);
@@ -1598,6 +1605,7 @@ export class TenantServiceUpdateMemberResponse extends Message<TenantServiceUpda
   static readonly runtime: typeof proto3 = proto3;
   static readonly typeName = "api.v1.TenantServiceUpdateMemberResponse";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "tenant_member", kind: "message", T: TenantMember },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): TenantServiceUpdateMemberResponse {
