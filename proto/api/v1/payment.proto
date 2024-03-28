@@ -95,7 +95,7 @@ message PaymentCustomer {
   // SubscriptionId of the customer
   string subscription_id = 5;
   // Email of the customer
-  optional string email = 6;
+  optional string email = 6 [(validate.rules).string.email = true];
   // Card the customer supplied
   optional Card card = 7;
   // Prices which apply to customer resources
