@@ -3521,7 +3521,15 @@
               "ismap": false,
               "isoneof": true,
               "oneofdecl": "_email",
-              "defaultValue": ""
+              "defaultValue": "",
+              "options": {
+                "validate.rules": [
+                  {
+                    "name": "string.email",
+                    "value": true
+                  }
+                ]
+              }
             },
             {
               "name": "card",
@@ -7773,7 +7781,7 @@
           "fields": [
             {
               "name": "name",
-              "description": "Name if the tenant",
+              "description": "Name of this tenant",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -7781,7 +7789,43 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": ""
+              "defaultValue": "",
+              "options": {
+                "validate.rules": [
+                  {
+                    "name": "string.min_len",
+                    "value": 2
+                  },
+                  {
+                    "name": "string.max_len",
+                    "value": 64
+                  }
+                ]
+              }
+            },
+            {
+              "name": "description",
+              "description": "Description of this tenant",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": "",
+              "options": {
+                "validate.rules": [
+                  {
+                    "name": "string.min_len",
+                    "value": 2
+                  },
+                  {
+                    "name": "string.max_len",
+                    "value": 512
+                  }
+                ]
+              }
             },
             {
               "name": "email",
@@ -7793,7 +7837,15 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": ""
+              "defaultValue": "",
+              "options": {
+                "validate.rules": [
+                  {
+                    "name": "string.email",
+                    "value": true
+                  }
+                ]
+              }
             },
             {
               "name": "avatar_url",
@@ -7805,7 +7857,15 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": ""
+              "defaultValue": "",
+              "options": {
+                "validate.rules": [
+                  {
+                    "name": "string.uri",
+                    "value": true
+                  }
+                ]
+              }
             },
             {
               "name": "phone_number",

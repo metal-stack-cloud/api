@@ -375,27 +375,33 @@ export declare class TenantServiceGetRequest extends Message<TenantServiceGetReq
  */
 export declare class TenantServiceCreateRequest extends Message<TenantServiceCreateRequest> {
     /**
-     * Name if the tenant
+     * Name of this tenant
      *
      * @generated from field: string name = 1;
      */
     name: string;
     /**
+     * Description of this tenant
+     *
+     * @generated from field: string description = 2;
+     */
+    description: string;
+    /**
      * Email of the tenant
      *
-     * @generated from field: string email = 2;
+     * @generated from field: string email = 3;
      */
     email: string;
     /**
      * AvatarUrl of the tenant
      *
-     * @generated from field: string avatar_url = 3;
+     * @generated from field: string avatar_url = 4;
      */
     avatarUrl: string;
     /**
      * PhoneNumber of the tenant
      *
-     * @generated from field: string phone_number = 4;
+     * @generated from field: string phone_number = 5;
      */
     phoneNumber: string;
     constructor(data?: PartialMessage<TenantServiceCreateRequest>);

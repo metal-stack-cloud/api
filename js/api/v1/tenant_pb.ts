@@ -607,30 +607,37 @@ export class TenantServiceGetRequest extends Message<TenantServiceGetRequest> {
  */
 export class TenantServiceCreateRequest extends Message<TenantServiceCreateRequest> {
   /**
-   * Name if the tenant
+   * Name of this tenant
    *
    * @generated from field: string name = 1;
    */
   name = "";
 
   /**
+   * Description of this tenant
+   *
+   * @generated from field: string description = 2;
+   */
+  description = "";
+
+  /**
    * Email of the tenant
    *
-   * @generated from field: string email = 2;
+   * @generated from field: string email = 3;
    */
   email = "";
 
   /**
    * AvatarUrl of the tenant
    *
-   * @generated from field: string avatar_url = 3;
+   * @generated from field: string avatar_url = 4;
    */
   avatarUrl = "";
 
   /**
    * PhoneNumber of the tenant
    *
-   * @generated from field: string phone_number = 4;
+   * @generated from field: string phone_number = 5;
    */
   phoneNumber = "";
 
@@ -643,9 +650,10 @@ export class TenantServiceCreateRequest extends Message<TenantServiceCreateReque
   static readonly typeName = "api.v1.TenantServiceCreateRequest";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
     { no: 1, name: "name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 2, name: "email", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 3, name: "avatar_url", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 4, name: "phone_number", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "description", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 3, name: "email", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 4, name: "avatar_url", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 5, name: "phone_number", kind: "scalar", T: 9 /* ScalarType.STRING */ },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): TenantServiceCreateRequest {

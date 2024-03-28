@@ -5,6 +5,7 @@ package api.v1;
 import "api/v1/common.proto";
 import "api/v1/payment.proto";
 import "google/protobuf/timestamp.proto";
+import "validate/validate.proto";
 
 // TenantService serves tenant related functions
 service TenantService {
@@ -193,14 +194,22 @@ message TenantServiceGetRequest {
 
 // TenantServiceCreateRequest is the request payload of the tenant create request
 message TenantServiceCreateRequest {
-  // Name if the tenant
-  string name = 1;
+  // Name of this tenant
+  string name = 1 [(validate.rules).string = {
+    min_len: 2,
+    max_len: 64,
+  }];
+  // Description of this tenant
+  string description = 2 [(validate.rules).string = {
+    min_len: 2,
+    max_len: 512,
+  }];
   // Email of the tenant
-  string email = 2;
+  string email = 3 [(validate.rules).string.email = true];
   // AvatarUrl of the tenant
-  string avatar_url = 3;
+  string avatar_url = 4 [(validate.rules).string.uri = true];
   // PhoneNumber of the tenant
-  string phone_number = 4;
+  string phone_number = 5;
 }
 
 // TenantServiceCreateOrUpdateRequest is the request payload of the tenant create or update request
