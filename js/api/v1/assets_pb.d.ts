@@ -284,7 +284,7 @@ export declare class AssetServiceListRequest extends Message<AssetServiceListReq
     static equals(a: AssetServiceListRequest | PlainMessage<AssetServiceListRequest> | undefined, b: AssetServiceListRequest | PlainMessage<AssetServiceListRequest> | undefined): boolean;
 }
 /**
- * AssetServiceListResponse is the response payload which containes the the Asset list
+ * AssetServiceListResponse is the response payload which contains the the Asset list
  *
  * @generated from message api.v1.AssetServiceListResponse
  */

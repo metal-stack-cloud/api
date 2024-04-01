@@ -109,11 +109,11 @@ message VolumeStatistics {
   //
   // Physical storage space used by volume excluding parity, given in bytes.
   uint64 physical_used_storage = 2;
-  // CommpressionRatio
+  // CompressionRatio
   //
   // compression ratio userWritten/physicalCapacity
   double compression_ratio = 3;
-  // TotalCommpressionRatio
+  // TotalCompressionRatio
   //
   // compression ratio sum(userWritten) / sum(physical capacity)
   double total_compression_ratio = 4;

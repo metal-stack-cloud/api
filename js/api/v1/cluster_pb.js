@@ -4,7 +4,7 @@
 // @ts-nocheck
 import { Duration, Message, proto3, Timestamp } from "@bufbuild/protobuf";
 /**
- * Operate defines the types of reconcilation to be triggered
+ * Operate defines the types of reconciliation to be triggered
  *
  * @generated from enum api.v1.Operate
  */
@@ -29,7 +29,7 @@ export var Operate;
      */
     Operate[Operate["MAINTAIN"] = 2] = "MAINTAIN";
     /**
-     * OPERATE_RETRY retry the reconcilation of the cluster
+     * OPERATE_RETRY retry the reconciliation of the cluster
      *
      * @generated from enum value: OPERATE_RETRY = 3;
      */
@@ -731,7 +731,7 @@ export class ClusterStatus extends Message {
          */
         this.uuid = "";
         /**
-         * Progress of the cluster reconcilation
+         * Progress of the cluster reconciliation
          *
          * @generated from field: uint32 progress = 2;
          */
@@ -773,7 +773,7 @@ export class ClusterStatus extends Message {
          */
         this.systemComponentsReady = "";
         /**
-         * LastErrors is a list of the last known errors occured during the cluster reconcilation
+         * LastErrors is a list of the last known errors occurred during the cluster reconciliation
          *
          * @generated from field: repeated api.v1.ClusterStatusLastError last_errors = 14;
          */

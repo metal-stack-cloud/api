@@ -93,7 +93,7 @@ type ClusterServiceListRequest struct {
 	Project *string `protobuf:"bytes,2,opt,name=project,proto3,oneof" json:"project,omitempty"`
 	// Tenant of the cluster
 	Tenant *string `protobuf:"bytes,3,opt,name=tenant,proto3,oneof" json:"tenant,omitempty"`
-	// Partiton of the cluster
+	// Partition of the cluster
 	Partition *string `protobuf:"bytes,4,opt,name=partition,proto3,oneof" json:"partition,omitempty"`
 	// Seed of the cluster
 	Seed *string `protobuf:"bytes,5,opt,name=seed,proto3,oneof" json:"seed,omitempty"`

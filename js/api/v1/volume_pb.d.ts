@@ -164,7 +164,7 @@ export declare class VolumeStatistics extends Message<VolumeStatistics> {
      */
     physicalUsedStorage: bigint;
     /**
-     * CommpressionRatio
+     * CompressionRatio
      *
      * compression ratio userWritten/physicalCapacity
      *
@@ -172,7 +172,7 @@ export declare class VolumeStatistics extends Message<VolumeStatistics> {
      */
     compressionRatio: number;
     /**
-     * TotalCommpressionRatio
+     * TotalCompressionRatio
      *
      * compression ratio sum(userWritten) / sum(physical capacity)
      *

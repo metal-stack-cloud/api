@@ -159,7 +159,7 @@ export class MachineNetwork extends Message {
          */
         this.network = "";
         /**
-         * Prefixes availalble in this network
+         * Prefixes available in this network
          *
          * @generated from field: repeated string prefixes = 2;
          */

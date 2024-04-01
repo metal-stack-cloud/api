@@ -295,7 +295,7 @@ message ClusterServiceWatchStatusRequest {
 message ClusterStatus {
   // Uuid of the cluster
   string uuid = 1;
-  // Progress of the cluster reconcilation
+  // Progress of the cluster reconciliation
   uint32 progress = 2;
   // State of the cluster
   string state = 3;
@@ -309,7 +309,7 @@ message ClusterStatus {
   string nodes_ready = 12;
   // SystemComponentsReady represents the ready state of the system components
   string system_components_ready = 13;
-  // LastErrors is a list of the last known errors occured during the cluster reconcilation
+  // LastErrors is a list of the last known errors occurred during the cluster reconciliation
   repeated ClusterStatusLastError last_errors = 14;
   // ClusterStatusConditions is a list of status conditions of the cluster
   repeated ClusterStatusCondition conditions = 15;
@@ -399,7 +399,7 @@ message ClusterServiceOperateResponse {
   Cluster cluster = 1;
 }
 
-// Operate defines the types of reconcilation to be triggered
+// Operate defines the types of reconciliation to be triggered
 enum Operate {
   // OPERATE_UNSPECIFIED is not specified
   OPERATE_UNSPECIFIED = 0;
@@ -407,6 +407,6 @@ enum Operate {
   OPERATE_RECONCILE = 1;
   // OPERATE_MAINTAIN maintain the cluster
   OPERATE_MAINTAIN = 2;
-  // OPERATE_RETRY retry the reconcilation of the cluster
+  // OPERATE_RETRY retry the reconciliation of the cluster
   OPERATE_RETRY = 3;
 }

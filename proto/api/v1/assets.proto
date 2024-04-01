@@ -99,7 +99,7 @@ message AssetDefaults {
 // AssetServiceListRequest is the request payload to list all Assets
 message AssetServiceListRequest {}
 
-// AssetServiceListResponse is the response payload which containes the the Asset list
+// AssetServiceListResponse is the response payload which contains the the Asset list
 message AssetServiceListResponse {
   // Assets defines a list of assets
   repeated Asset assets = 2;

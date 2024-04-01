@@ -85,7 +85,7 @@ export class ClusterServiceListRequest extends Message<ClusterServiceListRequest
   tenant?: string;
 
   /**
-   * Partiton of the cluster
+   * Partition of the cluster
    *
    * @generated from field: optional string partition = 4;
    */

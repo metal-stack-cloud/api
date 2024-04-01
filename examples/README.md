@@ -9,7 +9,7 @@ export API_TOKEN=yourapitoken
 export PROJECT_ID=yourprojectuuid
 ```
 
-Then you can execute them as follwoing:
+Then you can execute them as following:
 
 ```bash
 Golang:

@@ -1,7 +1,7 @@
 import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
 import { Duration, Message, proto3, Timestamp } from "@bufbuild/protobuf";
 /**
- * Operate defines the types of reconcilation to be triggered
+ * Operate defines the types of reconciliation to be triggered
  *
  * @generated from enum api.v1.Operate
  */
@@ -25,7 +25,7 @@ export declare enum Operate {
      */
     MAINTAIN = 2,
     /**
-     * OPERATE_RETRY retry the reconcilation of the cluster
+     * OPERATE_RETRY retry the reconciliation of the cluster
      *
      * @generated from enum value: OPERATE_RETRY = 3;
      */
@@ -623,7 +623,7 @@ export declare class ClusterStatus extends Message<ClusterStatus> {
      */
     uuid: string;
     /**
-     * Progress of the cluster reconcilation
+     * Progress of the cluster reconciliation
      *
      * @generated from field: uint32 progress = 2;
      */
@@ -665,7 +665,7 @@ export declare class ClusterStatus extends Message<ClusterStatus> {
      */
     systemComponentsReady: string;
     /**
-     * LastErrors is a list of the last known errors occured during the cluster reconcilation
+     * LastErrors is a list of the last known errors occurred during the cluster reconciliation
      *
      * @generated from field: repeated api.v1.ClusterStatusLastError last_errors = 14;
      */

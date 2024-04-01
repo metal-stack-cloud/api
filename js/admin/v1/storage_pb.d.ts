@@ -319,7 +319,7 @@ export declare class ClusterStatisticsApi extends Message<ClusterStatisticsApi> 
      */
     estimatedLogicalStorage: bigint;
     /**
-     * commpression ratio
+     * compression ratio
      *
      * compression ratio logicalUsedStorage/physicalUsedStorage
      *

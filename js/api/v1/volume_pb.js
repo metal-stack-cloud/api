@@ -196,7 +196,7 @@ export class VolumeStatistics extends Message {
          */
         this.physicalUsedStorage = protoInt64.zero;
         /**
-         * CommpressionRatio
+         * CompressionRatio
          *
          * compression ratio userWritten/physicalCapacity
          *
@@ -204,7 +204,7 @@ export class VolumeStatistics extends Message {
          */
         this.compressionRatio = 0;
         /**
-         * TotalCommpressionRatio
+         * TotalCompressionRatio
          *
          * compression ratio sum(userWritten) / sum(physical capacity)
          *

@@ -470,7 +470,7 @@ export class AssetServiceListRequest extends Message<AssetServiceListRequest> {
 }
 
 /**
- * AssetServiceListResponse is the response payload which containes the the Asset list
+ * AssetServiceListResponse is the response payload which contains the the Asset list
  *
  * @generated from message api.v1.AssetServiceListResponse
  */
