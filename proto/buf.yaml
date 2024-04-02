@@ -7,6 +7,7 @@ lint:
     - DEFAULT
     - COMMENTS
     - PACKAGE_NO_IMPORT_CYCLE
+    - RPC_NO_CLIENT_STREAMING
 deps:
   - buf.build/envoyproxy/protoc-gen-validate
   - buf.build/googleapis/googleapis
