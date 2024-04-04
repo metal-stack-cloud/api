@@ -377,7 +377,7 @@ AssetServiceListRequest.runtime = proto3;
 AssetServiceListRequest.typeName = "api.v1.AssetServiceListRequest";
 AssetServiceListRequest.fields = proto3.util.newFieldList(() => []);
 /**
- * AssetServiceListResponse is the response payload which containes the the Asset list
+ * AssetServiceListResponse is the response payload which contains the the Asset list
  *
  * @generated from message api.v1.AssetServiceListResponse
  */

@@ -561,7 +561,7 @@ func (*AssetServiceListRequest) Descriptor() ([]byte, []int) {
 	return file_api_v1_assets_proto_rawDescGZIP(), []int{6}
 }
 
-// AssetServiceListResponse is the response payload which containes the the Asset list
+// AssetServiceListResponse is the response payload which contains the the Asset list
 type AssetServiceListResponse struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache

@@ -48,7 +48,7 @@ message Machine {
 message MachineNetwork {
   // Network is the uuid of this network
   string network = 1;
-  // Prefixes availalble in this network
+  // Prefixes available in this network
   repeated string prefixes = 2;
   // Ips attached for the machine in this network
   repeated string ips = 3;

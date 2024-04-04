@@ -42,7 +42,7 @@ message ClusterServiceListRequest {
   optional string project = 2;
   // Tenant of the cluster
   optional string tenant = 3;
-  // Partiton of the cluster
+  // Partition of the cluster
   optional string partition = 4;
   // Seed of the cluster
   optional string seed = 5;

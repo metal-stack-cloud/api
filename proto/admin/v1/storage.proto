@@ -139,7 +139,7 @@ message ClusterStatisticsApi {
   //
   // Estimate of total available logical storage based on current compression ratio (effective * compression)
   uint64 estimated_logical_storage = 10;
-  // commpression ratio
+  // compression ratio
   //
   // compression ratio logicalUsedStorage/physicalUsedStorage
   double compression_ratio = 11;

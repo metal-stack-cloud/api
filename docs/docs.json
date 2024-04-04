@@ -263,7 +263,7 @@
             },
             {
               "name": "prefixes",
-              "description": "Prefixes availalble in this network",
+              "description": "Prefixes available in this network",
               "label": "repeated",
               "type": "string",
               "longType": "string",
@@ -710,7 +710,7 @@
           "name": "Operate",
           "longName": "Operate",
           "fullName": "api.v1.Operate",
-          "description": "Operate defines the types of reconcilation to be triggered",
+          "description": "Operate defines the types of reconciliation to be triggered",
           "values": [
             {
               "name": "OPERATE_UNSPECIFIED",
@@ -730,7 +730,7 @@
             {
               "name": "OPERATE_RETRY",
               "number": "3",
-              "description": "OPERATE_RETRY retry the reconcilation of the cluster"
+              "description": "OPERATE_RETRY retry the reconciliation of the cluster"
             }
           ]
         }
@@ -1757,7 +1757,7 @@
             },
             {
               "name": "progress",
-              "description": "Progress of the cluster reconcilation",
+              "description": "Progress of the cluster reconciliation",
               "label": "",
               "type": "uint32",
               "longType": "uint32",
@@ -1841,7 +1841,7 @@
             },
             {
               "name": "last_errors",
-              "description": "LastErrors is a list of the last known errors occured during the cluster reconcilation",
+              "description": "LastErrors is a list of the last known errors occurred during the cluster reconciliation",
               "label": "repeated",
               "type": "ClusterStatusLastError",
               "longType": "ClusterStatusLastError",
@@ -2844,7 +2844,7 @@
             },
             {
               "name": "partition",
-              "description": "Partiton of the cluster",
+              "description": "Partition of the cluster",
               "label": "optional",
               "type": "string",
               "longType": "string",
@@ -3521,7 +3521,15 @@
               "ismap": false,
               "isoneof": true,
               "oneofdecl": "_email",
-              "defaultValue": ""
+              "defaultValue": "",
+              "options": {
+                "validate.rules": [
+                  {
+                    "name": "string.email",
+                    "value": true
+                  }
+                ]
+              }
             },
             {
               "name": "card",
@@ -6203,7 +6211,7 @@
             },
             {
               "name": "compression_ratio",
-              "description": "CommpressionRatio\n\ncompression ratio userWritten/physicalCapacity",
+              "description": "CompressionRatio\n\ncompression ratio userWritten/physicalCapacity",
               "label": "",
               "type": "double",
               "longType": "double",
@@ -6215,7 +6223,7 @@
             },
             {
               "name": "total_compression_ratio",
-              "description": "TotalCommpressionRatio\n\ncompression ratio sum(userWritten) / sum(physical capacity)",
+              "description": "TotalCompressionRatio\n\ncompression ratio sum(userWritten) / sum(physical capacity)",
               "label": "",
               "type": "double",
               "longType": "double",
@@ -6618,7 +6626,7 @@
             },
             {
               "name": "compression_ratio",
-              "description": "commpression ratio\n\ncompression ratio logicalUsedStorage/physicalUsedStorage",
+              "description": "compression ratio\n\ncompression ratio logicalUsedStorage/physicalUsedStorage",
               "label": "",
               "type": "double",
               "longType": "double",
@@ -7377,7 +7385,7 @@
             },
             {
               "name": "name",
-              "description": "Name if the tenant",
+              "description": "Name of the tenant",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -7390,6 +7398,18 @@
             {
               "name": "email",
               "description": "Email of the tenant",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "description",
+              "description": "Description of this tenant",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -7496,6 +7516,30 @@
               "defaultValue": ""
             },
             {
+              "name": "tenant_members",
+              "description": "TenantMembers of this tenant",
+              "label": "repeated",
+              "type": "TenantMember",
+              "longType": "TenantMember",
+              "fullType": "api.v1.TenantMember",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "created_by",
+              "description": "CreatedBy stores who created this tenant",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
               "name": "created_at",
               "description": "CreatedAt the date when this tenant was created",
               "label": "",
@@ -7522,6 +7566,174 @@
             {
               "name": "deleted_at",
               "description": "DeletedAt the date when this tenant was deleted",
+              "label": "",
+              "type": "Timestamp",
+              "longType": "google.protobuf.Timestamp",
+              "fullType": "google.protobuf.Timestamp",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "TenantInvite",
+          "longName": "TenantInvite",
+          "fullName": "api.v1.TenantInvite",
+          "description": "TenantInvite defines invite to tenant",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "secret",
+              "description": "Secret is the secret part of the invite, typically part of the url",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "target_tenant",
+              "description": "TargetTenant is the tenant id for which this invite was created",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "role",
+              "description": "Role is the role in this tenant the user will get after accepting the invitation",
+              "label": "",
+              "type": "TenantRole",
+              "longType": "TenantRole",
+              "fullType": "api.v1.TenantRole",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "joined",
+              "description": "Joined is false as long as a user has not accepted the invite",
+              "label": "",
+              "type": "bool",
+              "longType": "bool",
+              "fullType": "bool",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "target_tenant_name",
+              "description": "TargetTenantName is the tenant name for which this invite was created",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "tenant",
+              "description": "Tenant is the login of tenant who invites to join this tenant",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "tenant_name",
+              "description": "TenantName is the name of tenant who invites to join this tenant",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "expires_at",
+              "description": "ExpiresAt the date when this invite expires",
+              "label": "",
+              "type": "Timestamp",
+              "longType": "google.protobuf.Timestamp",
+              "fullType": "google.protobuf.Timestamp",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "joined_at",
+              "description": "JoinedAt the date when the member accepted this invite",
+              "label": "",
+              "type": "Timestamp",
+              "longType": "google.protobuf.Timestamp",
+              "fullType": "google.protobuf.Timestamp",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "TenantMember",
+          "longName": "TenantMember",
+          "fullName": "api.v1.TenantMember",
+          "description": "TenantMember defines a user that participates at a tenant",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "id",
+              "description": "Id is the user id of the member",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "role",
+              "description": "Role is the role of the member",
+              "label": "",
+              "type": "TenantRole",
+              "longType": "TenantRole",
+              "fullType": "api.v1.TenantRole",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "created_at",
+              "description": "CreatedAt the date when the member was added to the tenant",
               "label": "",
               "type": "Timestamp",
               "longType": "google.protobuf.Timestamp",
@@ -7588,19 +7800,99 @@
           "description": "TenantServiceCreateRequest is the request payload of the tenant create request",
           "hasExtensions": false,
           "hasFields": true,
-          "hasOneofs": false,
+          "hasOneofs": true,
           "extensions": [],
           "fields": [
             {
-              "name": "tenant",
-              "description": "Tenant the tenant to create",
+              "name": "name",
+              "description": "Name of this tenant",
               "label": "",
-              "type": "Tenant",
-              "longType": "Tenant",
-              "fullType": "api.v1.Tenant",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
+              "defaultValue": "",
+              "options": {
+                "validate.rules": [
+                  {
+                    "name": "string.min_len",
+                    "value": 2
+                  },
+                  {
+                    "name": "string.max_len",
+                    "value": 64
+                  }
+                ]
+              }
+            },
+            {
+              "name": "description",
+              "description": "Description of this tenant",
+              "label": "optional",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "_description",
+              "defaultValue": "",
+              "options": {
+                "validate.rules": [
+                  {
+                    "name": "string.min_len",
+                    "value": 2
+                  },
+                  {
+                    "name": "string.max_len",
+                    "value": 512
+                  }
+                ]
+              }
+            },
+            {
+              "name": "email",
+              "description": "Email of the tenant, if not set will be inherited from the creator",
+              "label": "optional",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "_email",
+              "defaultValue": "",
+              "options": {
+                "validate.rules": [
+                  {
+                    "name": "string.email",
+                    "value": true
+                  }
+                ]
+              }
+            },
+            {
+              "name": "avatar_url",
+              "description": "AvatarUrl of the tenant",
+              "label": "optional",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "_avatar_url",
+              "defaultValue": ""
+            },
+            {
+              "name": "phone_number",
+              "description": "PhoneNumber of the tenant",
+              "label": "optional",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "_phone_number",
               "defaultValue": ""
             }
           ]
@@ -7726,6 +8018,460 @@
           ]
         },
         {
+          "name": "TenantServiceInviteAcceptRequest",
+          "longName": "TenantServiceInviteAcceptRequest",
+          "fullName": "api.v1.TenantServiceInviteAcceptRequest",
+          "description": "TenantServiceInviteAcceptRequest is the request payload to a accept invite request",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "secret",
+              "description": "Secret is the invitation secret part of the invitation url",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "TenantServiceInviteAcceptResponse",
+          "longName": "TenantServiceInviteAcceptResponse",
+          "fullName": "api.v1.TenantServiceInviteAcceptResponse",
+          "description": "TenantServiceInvitesListResponse is the response payload to a accept invite request",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "tenant",
+              "description": "Tenant ID of the joined tenant",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "tenant_name",
+              "description": "TenantName of the joined tenant",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "TenantServiceInviteDeleteRequest",
+          "longName": "TenantServiceInviteDeleteRequest",
+          "fullName": "api.v1.TenantServiceInviteDeleteRequest",
+          "description": "TenantServiceInviteDeleteRequest is the request payload to a delete invite",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "login",
+              "description": "Login of the tenant",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "secret",
+              "description": "Secret of the invite to delete",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "TenantServiceInviteDeleteResponse",
+          "longName": "TenantServiceInviteDeleteResponse",
+          "fullName": "api.v1.TenantServiceInviteDeleteResponse",
+          "description": "TenantServiceInviteDeleteResponse is the response payload of a delete invite request",
+          "hasExtensions": false,
+          "hasFields": false,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": []
+        },
+        {
+          "name": "TenantServiceInviteGetRequest",
+          "longName": "TenantServiceInviteGetRequest",
+          "fullName": "api.v1.TenantServiceInviteGetRequest",
+          "description": "TenantServiceInviteGetRequest is the request payload to get a invite",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "secret",
+              "description": "Secret of the invite to get",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "TenantServiceInviteGetResponse",
+          "longName": "TenantServiceInviteGetResponse",
+          "fullName": "api.v1.TenantServiceInviteGetResponse",
+          "description": "TenantServiceInviteGetResponse is the response payload to a get invite request",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "invite",
+              "description": "Invite is the invite",
+              "label": "",
+              "type": "TenantInvite",
+              "longType": "TenantInvite",
+              "fullType": "api.v1.TenantInvite",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "TenantServiceInviteRequest",
+          "longName": "TenantServiceInviteRequest",
+          "fullName": "api.v1.TenantServiceInviteRequest",
+          "description": "TenantServiceInviteRequest is used to invite a member to a tenant",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "login",
+              "description": "Login of the tenant",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "role",
+              "description": "Role of this user in this tenant",
+              "label": "",
+              "type": "TenantRole",
+              "longType": "TenantRole",
+              "fullType": "api.v1.TenantRole",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "TenantServiceInviteResponse",
+          "longName": "TenantServiceInviteResponse",
+          "fullName": "api.v1.TenantServiceInviteResponse",
+          "description": "TenantServiceInviteRequest is the response payload to a invite member request",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "invite",
+              "description": "Invite contains a secret which can be sent to a potential user\ncan be appended to the invitation endpoint at our cloud console like\nconsole.metalstack.cloud/invite/\u003csecret\u003e",
+              "label": "",
+              "type": "TenantInvite",
+              "longType": "TenantInvite",
+              "fullType": "api.v1.TenantInvite",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "TenantServiceInvitesListRequest",
+          "longName": "TenantServiceInvitesListRequest",
+          "fullName": "api.v1.TenantServiceInvitesListRequest",
+          "description": "TenantServiceInvitesListRequest is the request payload to a list invites request",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "login",
+              "description": "Login of the tenant",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "TenantServiceInvitesListResponse",
+          "longName": "TenantServiceInvitesListResponse",
+          "fullName": "api.v1.TenantServiceInvitesListResponse",
+          "description": "TenantServiceInvitesListResponse is the response payload to a list invites request",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "invites",
+              "description": "Invites not already accepted the invitation to this tenant",
+              "label": "repeated",
+              "type": "TenantInvite",
+              "longType": "TenantInvite",
+              "fullType": "api.v1.TenantInvite",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "TenantServiceListRequest",
+          "longName": "TenantServiceListRequest",
+          "fullName": "api.v1.TenantServiceListRequest",
+          "description": "TenantServiceListRequest is the request payload of the tenant list request",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": true,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "id",
+              "description": "Id filters tenants by id",
+              "label": "optional",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "_id",
+              "defaultValue": ""
+            },
+            {
+              "name": "name",
+              "description": "Name filters tenants by name",
+              "label": "optional",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "_name",
+              "defaultValue": "",
+              "options": {
+                "validate.rules": [
+                  {
+                    "name": "string.min_len",
+                    "value": 2
+                  },
+                  {
+                    "name": "string.max_len",
+                    "value": 64
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "TenantServiceListResponse",
+          "longName": "TenantServiceListResponse",
+          "fullName": "api.v1.TenantServiceListResponse",
+          "description": "TenantServiceListResponse is the response payload of the tenant list request",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "tenants",
+              "description": "Tenants is the list of tenants",
+              "label": "repeated",
+              "type": "Tenant",
+              "longType": "Tenant",
+              "fullType": "api.v1.Tenant",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "TenantServiceRemoveMemberRequest",
+          "longName": "TenantServiceRemoveMemberRequest",
+          "fullName": "api.v1.TenantServiceRemoveMemberRequest",
+          "description": "TenantServiceRemoveMemberRequest is used to remove a member from a tenant",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "login",
+              "description": "Login of the tenant",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "member_id",
+              "description": "MemberID is the id of the member to remove from this tenant",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "TenantServiceRemoveMemberResponse",
+          "longName": "TenantServiceRemoveMemberResponse",
+          "fullName": "api.v1.TenantServiceRemoveMemberResponse",
+          "description": "TenantServiceRemoveMemberResponse is the response payload to a remove member request",
+          "hasExtensions": false,
+          "hasFields": false,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": []
+        },
+        {
+          "name": "TenantServiceUpdateMemberRequest",
+          "longName": "TenantServiceUpdateMemberRequest",
+          "fullName": "api.v1.TenantServiceUpdateMemberRequest",
+          "description": "TenantServiceUpdateMemberRequest is used to update a member from a tenant",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "login",
+              "description": "Login of the tenant",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "member_id",
+              "description": "MemberID is the id of the member to update in this tenant",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "role",
+              "description": "Role of this user in this tenant",
+              "label": "",
+              "type": "TenantRole",
+              "longType": "TenantRole",
+              "fullType": "api.v1.TenantRole",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "TenantServiceUpdateMemberResponse",
+          "longName": "TenantServiceUpdateMemberResponse",
+          "fullName": "api.v1.TenantServiceUpdateMemberResponse",
+          "description": "TenantServiceUpdateMemberResponse is the response payload to a update member request",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "tenant_member",
+              "description": "TenantMember is the updated membership",
+              "label": "",
+              "type": "TenantMember",
+              "longType": "TenantMember",
+              "fullType": "api.v1.TenantMember",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
           "name": "TenantServiceUpdateRequest",
           "longName": "TenantServiceUpdateRequest",
           "fullName": "api.v1.TenantServiceUpdateRequest",
@@ -7757,7 +8503,19 @@
               "ismap": false,
               "isoneof": true,
               "oneofdecl": "_name",
-              "defaultValue": ""
+              "defaultValue": "",
+              "options": {
+                "validate.rules": [
+                  {
+                    "name": "string.min_len",
+                    "value": 2
+                  },
+                  {
+                    "name": "string.max_len",
+                    "value": 64
+                  }
+                ]
+              }
             },
             {
               "name": "email",
@@ -7769,7 +8527,39 @@
               "ismap": false,
               "isoneof": true,
               "oneofdecl": "_email",
-              "defaultValue": ""
+              "defaultValue": "",
+              "options": {
+                "validate.rules": [
+                  {
+                    "name": "string.email",
+                    "value": true
+                  }
+                ]
+              }
+            },
+            {
+              "name": "description",
+              "description": "Description of this tenant",
+              "label": "optional",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "_description",
+              "defaultValue": "",
+              "options": {
+                "validate.rules": [
+                  {
+                    "name": "string.min_len",
+                    "value": 2
+                  },
+                  {
+                    "name": "string.max_len",
+                    "value": 512
+                  }
+                ]
+              }
             },
             {
               "name": "avatar_url",
@@ -7950,6 +8740,18 @@
               "responseStreaming": false
             },
             {
+              "name": "List",
+              "description": "List tenants",
+              "requestType": "TenantServiceListRequest",
+              "requestLongType": "TenantServiceListRequest",
+              "requestFullType": "api.v1.TenantServiceListRequest",
+              "requestStreaming": false,
+              "responseType": "TenantServiceListResponse",
+              "responseLongType": "TenantServiceListResponse",
+              "responseFullType": "api.v1.TenantServiceListResponse",
+              "responseStreaming": false
+            },
+            {
               "name": "Get",
               "description": "Get a tenant",
               "requestType": "TenantServiceGetRequest",
@@ -7983,6 +8785,90 @@
               "responseType": "TenantServiceDeleteResponse",
               "responseLongType": "TenantServiceDeleteResponse",
               "responseFullType": "api.v1.TenantServiceDeleteResponse",
+              "responseStreaming": false
+            },
+            {
+              "name": "RemoveMember",
+              "description": "RemoveMember remove a member of a tenant",
+              "requestType": "TenantServiceRemoveMemberRequest",
+              "requestLongType": "TenantServiceRemoveMemberRequest",
+              "requestFullType": "api.v1.TenantServiceRemoveMemberRequest",
+              "requestStreaming": false,
+              "responseType": "TenantServiceRemoveMemberResponse",
+              "responseLongType": "TenantServiceRemoveMemberResponse",
+              "responseFullType": "api.v1.TenantServiceRemoveMemberResponse",
+              "responseStreaming": false
+            },
+            {
+              "name": "UpdateMember",
+              "description": "UpdateMember update a member of a tenant",
+              "requestType": "TenantServiceUpdateMemberRequest",
+              "requestLongType": "TenantServiceUpdateMemberRequest",
+              "requestFullType": "api.v1.TenantServiceUpdateMemberRequest",
+              "requestStreaming": false,
+              "responseType": "TenantServiceUpdateMemberResponse",
+              "responseLongType": "TenantServiceUpdateMemberResponse",
+              "responseFullType": "api.v1.TenantServiceUpdateMemberResponse",
+              "responseStreaming": false
+            },
+            {
+              "name": "Invite",
+              "description": "Invite a user to a tenant",
+              "requestType": "TenantServiceInviteRequest",
+              "requestLongType": "TenantServiceInviteRequest",
+              "requestFullType": "api.v1.TenantServiceInviteRequest",
+              "requestStreaming": false,
+              "responseType": "TenantServiceInviteResponse",
+              "responseLongType": "TenantServiceInviteResponse",
+              "responseFullType": "api.v1.TenantServiceInviteResponse",
+              "responseStreaming": false
+            },
+            {
+              "name": "InviteAccept",
+              "description": "InviteAccept is called from a user to accept an invitation",
+              "requestType": "TenantServiceInviteAcceptRequest",
+              "requestLongType": "TenantServiceInviteAcceptRequest",
+              "requestFullType": "api.v1.TenantServiceInviteAcceptRequest",
+              "requestStreaming": false,
+              "responseType": "TenantServiceInviteAcceptResponse",
+              "responseLongType": "TenantServiceInviteAcceptResponse",
+              "responseFullType": "api.v1.TenantServiceInviteAcceptResponse",
+              "responseStreaming": false
+            },
+            {
+              "name": "InviteDelete",
+              "description": "InviteDelete deletes a pending invitation",
+              "requestType": "TenantServiceInviteDeleteRequest",
+              "requestLongType": "TenantServiceInviteDeleteRequest",
+              "requestFullType": "api.v1.TenantServiceInviteDeleteRequest",
+              "requestStreaming": false,
+              "responseType": "TenantServiceInviteDeleteResponse",
+              "responseLongType": "TenantServiceInviteDeleteResponse",
+              "responseFullType": "api.v1.TenantServiceInviteDeleteResponse",
+              "responseStreaming": false
+            },
+            {
+              "name": "InvitesList",
+              "description": "InvitesList list all invites to a tenant",
+              "requestType": "TenantServiceInvitesListRequest",
+              "requestLongType": "TenantServiceInvitesListRequest",
+              "requestFullType": "api.v1.TenantServiceInvitesListRequest",
+              "requestStreaming": false,
+              "responseType": "TenantServiceInvitesListResponse",
+              "responseLongType": "TenantServiceInvitesListResponse",
+              "responseFullType": "api.v1.TenantServiceInvitesListResponse",
+              "responseStreaming": false
+            },
+            {
+              "name": "InviteGet",
+              "description": "InviteGet get an invite",
+              "requestType": "TenantServiceInviteGetRequest",
+              "requestLongType": "TenantServiceInviteGetRequest",
+              "requestFullType": "api.v1.TenantServiceInviteGetRequest",
+              "requestStreaming": false,
+              "responseType": "TenantServiceInviteGetResponse",
+              "responseLongType": "TenantServiceInviteGetResponse",
+              "responseFullType": "api.v1.TenantServiceInviteGetResponse",
               "responseStreaming": false
             }
           ]
@@ -9317,7 +10203,7 @@
           "name": "AssetServiceListResponse",
           "longName": "AssetServiceListResponse",
           "fullName": "api.v1.AssetServiceListResponse",
-          "description": "AssetServiceListResponse is the response payload which containes the the Asset list",
+          "description": "AssetServiceListResponse is the response payload which contains the the Asset list",
           "hasExtensions": false,
           "hasFields": true,
           "hasOneofs": false,
@@ -11666,7 +12552,7 @@
           "fields": [
             {
               "name": "invite",
-              "description": "Inviter contains a secret which can be sent to a potential user\ncan appended to the invitation endpoint at our api server like\nconsole.metalstack.cloud/invite/\u003csecret\u003e",
+              "description": "Inviter contains a secret which can be sent to a potential user\ncan be appended to the invitation endpoint at our cloud console like\nconsole.metalstack.cloud/invite/\u003csecret\u003e",
               "label": "",
               "type": "ProjectInvite",
               "longType": "ProjectInvite",

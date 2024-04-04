@@ -266,11 +266,11 @@ type VolumeStatistics struct {
 	//
 	// Physical storage space used by volume excluding parity, given in bytes.
 	PhysicalUsedStorage uint64 `protobuf:"varint,2,opt,name=physical_used_storage,json=physicalUsedStorage,proto3" json:"physical_used_storage,omitempty"`
-	// CommpressionRatio
+	// CompressionRatio
 	//
 	// compression ratio userWritten/physicalCapacity
 	CompressionRatio float64 `protobuf:"fixed64,3,opt,name=compression_ratio,json=compressionRatio,proto3" json:"compression_ratio,omitempty"`
-	// TotalCommpressionRatio
+	// TotalCompressionRatio
 	//
 	// compression ratio sum(userWritten) / sum(physical capacity)
 	TotalCompressionRatio float64 `protobuf:"fixed64,4,opt,name=total_compression_ratio,json=totalCompressionRatio,proto3" json:"total_compression_ratio,omitempty"`

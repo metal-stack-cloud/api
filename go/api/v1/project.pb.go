@@ -915,7 +915,7 @@ type ProjectServiceInviteResponse struct {
 	unknownFields protoimpl.UnknownFields
 
 	// Inviter contains a secret which can be sent to a potential user
-	// can appended to the invitation endpoint at our api server like
+	// can be appended to the invitation endpoint at our cloud console like
 	// console.metalstack.cloud/invite/<secret>
 	Invite *ProjectInvite `protobuf:"bytes,1,opt,name=invite,proto3" json:"invite,omitempty"`
 }

@@ -3,7 +3,7 @@
 /* eslint-disable */
 // @ts-nocheck
 import { Message, proto3, Timestamp } from "@bufbuild/protobuf";
-import { OAuthProvider } from "./common_pb.js";
+import { OAuthProvider, TenantRole } from "./common_pb.js";
 import { Coupon } from "./payment_pb.js";
 /**
  * Tenant is a customer of the platform
@@ -20,7 +20,7 @@ export class Tenant extends Message {
          */
         this.login = "";
         /**
-         * Name if the tenant
+         * Name of the tenant
          *
          * @generated from field: string name = 2;
          */
@@ -31,6 +31,12 @@ export class Tenant extends Message {
          * @generated from field: string email = 3;
          */
         this.email = "";
+        /**
+         * Description of this tenant
+         *
+         * @generated from field: string description = 4;
+         */
+        this.description = "";
         /**
          * AvatarUrl of the tenant
          *
@@ -67,6 +73,18 @@ export class Tenant extends Message {
          * @generated from field: bool onboarded = 13;
          */
         this.onboarded = false;
+        /**
+         * TenantMembers of this tenant
+         *
+         * @generated from field: repeated api.v1.TenantMember tenant_members = 14;
+         */
+        this.tenantMembers = [];
+        /**
+         * CreatedBy stores who created this tenant
+         *
+         * @generated from field: string created_by = 15;
+         */
+        this.createdBy = "";
         proto3.util.initPartial(data, this);
     }
     static fromBinary(bytes, options) {
@@ -88,6 +106,7 @@ Tenant.fields = proto3.util.newFieldList(() => [
     { no: 1, name: "login", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 2, name: "name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 3, name: "email", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 4, name: "description", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 5, name: "avatar_url", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 6, name: "oauth_provider", kind: "enum", T: proto3.getEnumType(OAuthProvider) },
     { no: 8, name: "payment_details", kind: "message", T: PaymentDetails },
@@ -96,9 +115,131 @@ Tenant.fields = proto3.util.newFieldList(() => [
     { no: 11, name: "terms_and_conditions", kind: "message", T: TermsAndConditions },
     { no: 12, name: "email_consent", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
     { no: 13, name: "onboarded", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
+    { no: 14, name: "tenant_members", kind: "message", T: TenantMember, repeated: true },
+    { no: 15, name: "created_by", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 20, name: "created_at", kind: "message", T: Timestamp },
     { no: 21, name: "updated_at", kind: "message", T: Timestamp },
     { no: 22, name: "deleted_at", kind: "message", T: Timestamp },
+]);
+/**
+ * TenantMember defines a user that participates at a tenant
+ *
+ * @generated from message api.v1.TenantMember
+ */
+export class TenantMember extends Message {
+    constructor(data) {
+        super();
+        /**
+         * Id is the user id of the member
+         *
+         * @generated from field: string id = 1;
+         */
+        this.id = "";
+        /**
+         * Role is the role of the member
+         *
+         * @generated from field: api.v1.TenantRole role = 2;
+         */
+        this.role = TenantRole.UNSPECIFIED;
+        proto3.util.initPartial(data, this);
+    }
+    static fromBinary(bytes, options) {
+        return new TenantMember().fromBinary(bytes, options);
+    }
+    static fromJson(jsonValue, options) {
+        return new TenantMember().fromJson(jsonValue, options);
+    }
+    static fromJsonString(jsonString, options) {
+        return new TenantMember().fromJsonString(jsonString, options);
+    }
+    static equals(a, b) {
+        return proto3.util.equals(TenantMember, a, b);
+    }
+}
+TenantMember.runtime = proto3;
+TenantMember.typeName = "api.v1.TenantMember";
+TenantMember.fields = proto3.util.newFieldList(() => [
+    { no: 1, name: "id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "role", kind: "enum", T: proto3.getEnumType(TenantRole) },
+    { no: 10, name: "created_at", kind: "message", T: Timestamp },
+]);
+/**
+ * TenantInvite defines invite to tenant
+ *
+ * @generated from message api.v1.TenantInvite
+ */
+export class TenantInvite extends Message {
+    constructor(data) {
+        super();
+        /**
+         * Secret is the secret part of the invite, typically part of the url
+         *
+         * @generated from field: string secret = 1;
+         */
+        this.secret = "";
+        /**
+         * TargetTenant is the tenant id for which this invite was created
+         *
+         * @generated from field: string target_tenant = 2;
+         */
+        this.targetTenant = "";
+        /**
+         * Role is the role in this tenant the user will get after accepting the invitation
+         *
+         * @generated from field: api.v1.TenantRole role = 3;
+         */
+        this.role = TenantRole.UNSPECIFIED;
+        /**
+         * Joined is false as long as a user has not accepted the invite
+         *
+         * @generated from field: bool joined = 4;
+         */
+        this.joined = false;
+        /**
+         * TargetTenantName is the tenant name for which this invite was created
+         *
+         * @generated from field: string target_tenant_name = 5;
+         */
+        this.targetTenantName = "";
+        /**
+         * Tenant is the login of tenant who invites to join this tenant
+         *
+         * @generated from field: string tenant = 6;
+         */
+        this.tenant = "";
+        /**
+         * TenantName is the name of tenant who invites to join this tenant
+         *
+         * @generated from field: string tenant_name = 7;
+         */
+        this.tenantName = "";
+        proto3.util.initPartial(data, this);
+    }
+    static fromBinary(bytes, options) {
+        return new TenantInvite().fromBinary(bytes, options);
+    }
+    static fromJson(jsonValue, options) {
+        return new TenantInvite().fromJson(jsonValue, options);
+    }
+    static fromJsonString(jsonString, options) {
+        return new TenantInvite().fromJsonString(jsonString, options);
+    }
+    static equals(a, b) {
+        return proto3.util.equals(TenantInvite, a, b);
+    }
+}
+TenantInvite.runtime = proto3;
+TenantInvite.typeName = "api.v1.TenantInvite";
+TenantInvite.fields = proto3.util.newFieldList(() => [
+    { no: 1, name: "secret", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "target_tenant", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 3, name: "role", kind: "enum", T: proto3.getEnumType(TenantRole) },
+    { no: 4, name: "joined", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
+    { no: 5, name: "target_tenant_name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 6, name: "tenant", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 7, name: "tenant_name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 10, name: "expires_at", kind: "message", T: Timestamp },
+    { no: 11, name: "joined_at", kind: "message", T: Timestamp },
 ]);
 /**
  * PaymentDetails of a tenant
@@ -252,6 +393,35 @@ TermsAndConditionsUpdate.fields = proto3.util.newFieldList(() => [
     { no: 2, name: "when", kind: "message", T: Timestamp, opt: true },
 ]);
 /**
+ * TenantServiceListRequest is the request payload of the tenant list request
+ *
+ * @generated from message api.v1.TenantServiceListRequest
+ */
+export class TenantServiceListRequest extends Message {
+    constructor(data) {
+        super();
+        proto3.util.initPartial(data, this);
+    }
+    static fromBinary(bytes, options) {
+        return new TenantServiceListRequest().fromBinary(bytes, options);
+    }
+    static fromJson(jsonValue, options) {
+        return new TenantServiceListRequest().fromJson(jsonValue, options);
+    }
+    static fromJsonString(jsonString, options) {
+        return new TenantServiceListRequest().fromJsonString(jsonString, options);
+    }
+    static equals(a, b) {
+        return proto3.util.equals(TenantServiceListRequest, a, b);
+    }
+}
+TenantServiceListRequest.runtime = proto3;
+TenantServiceListRequest.typeName = "api.v1.TenantServiceListRequest";
+TenantServiceListRequest.fields = proto3.util.newFieldList(() => [
+    { no: 1, name: "id", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
+    { no: 2, name: "name", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
+]);
+/**
  * TenantServiceGetRequest is the request payload of the tenant get request
  *
  * @generated from message api.v1.TenantServiceGetRequest
@@ -293,6 +463,12 @@ TenantServiceGetRequest.fields = proto3.util.newFieldList(() => [
 export class TenantServiceCreateRequest extends Message {
     constructor(data) {
         super();
+        /**
+         * Name of this tenant
+         *
+         * @generated from field: string name = 1;
+         */
+        this.name = "";
         proto3.util.initPartial(data, this);
     }
     static fromBinary(bytes, options) {
@@ -311,7 +487,11 @@ export class TenantServiceCreateRequest extends Message {
 TenantServiceCreateRequest.runtime = proto3;
 TenantServiceCreateRequest.typeName = "api.v1.TenantServiceCreateRequest";
 TenantServiceCreateRequest.fields = proto3.util.newFieldList(() => [
-    { no: 1, name: "tenant", kind: "message", T: Tenant },
+    { no: 1, name: "name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "description", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
+    { no: 3, name: "email", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
+    { no: 4, name: "avatar_url", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
+    { no: 5, name: "phone_number", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
 ]);
 /**
  * TenantServiceCreateOrUpdateRequest is the request payload of the tenant create or update request
@@ -376,6 +556,7 @@ TenantServiceUpdateRequest.fields = proto3.util.newFieldList(() => [
     { no: 1, name: "login", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 2, name: "name", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
     { no: 3, name: "email", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
+    { no: 4, name: "description", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
     { no: 5, name: "avatar_url", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
     { no: 8, name: "payment_details", kind: "message", T: PaymentDetailsUpdate, opt: true },
     { no: 9, name: "terms_and_conditions", kind: "message", T: TermsAndConditionsUpdate, opt: true },
@@ -442,6 +623,40 @@ TenantServiceGetResponse.runtime = proto3;
 TenantServiceGetResponse.typeName = "api.v1.TenantServiceGetResponse";
 TenantServiceGetResponse.fields = proto3.util.newFieldList(() => [
     { no: 1, name: "tenant", kind: "message", T: Tenant },
+]);
+/**
+ * TenantServiceListResponse is the response payload of the tenant list request
+ *
+ * @generated from message api.v1.TenantServiceListResponse
+ */
+export class TenantServiceListResponse extends Message {
+    constructor(data) {
+        super();
+        /**
+         * Tenants is the list of tenants
+         *
+         * @generated from field: repeated api.v1.Tenant tenants = 1;
+         */
+        this.tenants = [];
+        proto3.util.initPartial(data, this);
+    }
+    static fromBinary(bytes, options) {
+        return new TenantServiceListResponse().fromBinary(bytes, options);
+    }
+    static fromJson(jsonValue, options) {
+        return new TenantServiceListResponse().fromJson(jsonValue, options);
+    }
+    static fromJsonString(jsonString, options) {
+        return new TenantServiceListResponse().fromJsonString(jsonString, options);
+    }
+    static equals(a, b) {
+        return proto3.util.equals(TenantServiceListResponse, a, b);
+    }
+}
+TenantServiceListResponse.runtime = proto3;
+TenantServiceListResponse.typeName = "api.v1.TenantServiceListResponse";
+TenantServiceListResponse.fields = proto3.util.newFieldList(() => [
+    { no: 1, name: "tenants", kind: "message", T: Tenant, repeated: true },
 ]);
 /**
  * TenantServiceCreateResponse is the response payload of the tenant create request
@@ -554,4 +769,488 @@ TenantServiceDeleteResponse.runtime = proto3;
 TenantServiceDeleteResponse.typeName = "api.v1.TenantServiceDeleteResponse";
 TenantServiceDeleteResponse.fields = proto3.util.newFieldList(() => [
     { no: 1, name: "tenant", kind: "message", T: Tenant },
+]);
+/**
+ * TenantServiceInviteRequest is used to invite a member to a tenant
+ *
+ * @generated from message api.v1.TenantServiceInviteRequest
+ */
+export class TenantServiceInviteRequest extends Message {
+    constructor(data) {
+        super();
+        /**
+         * Login of the tenant
+         *
+         * @generated from field: string login = 1;
+         */
+        this.login = "";
+        /**
+         * Role of this user in this tenant
+         *
+         * @generated from field: api.v1.TenantRole role = 2;
+         */
+        this.role = TenantRole.UNSPECIFIED;
+        proto3.util.initPartial(data, this);
+    }
+    static fromBinary(bytes, options) {
+        return new TenantServiceInviteRequest().fromBinary(bytes, options);
+    }
+    static fromJson(jsonValue, options) {
+        return new TenantServiceInviteRequest().fromJson(jsonValue, options);
+    }
+    static fromJsonString(jsonString, options) {
+        return new TenantServiceInviteRequest().fromJsonString(jsonString, options);
+    }
+    static equals(a, b) {
+        return proto3.util.equals(TenantServiceInviteRequest, a, b);
+    }
+}
+TenantServiceInviteRequest.runtime = proto3;
+TenantServiceInviteRequest.typeName = "api.v1.TenantServiceInviteRequest";
+TenantServiceInviteRequest.fields = proto3.util.newFieldList(() => [
+    { no: 1, name: "login", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "role", kind: "enum", T: proto3.getEnumType(TenantRole) },
+]);
+/**
+ * TenantServiceInviteRequest is the response payload to a invite member request
+ *
+ * @generated from message api.v1.TenantServiceInviteResponse
+ */
+export class TenantServiceInviteResponse extends Message {
+    constructor(data) {
+        super();
+        proto3.util.initPartial(data, this);
+    }
+    static fromBinary(bytes, options) {
+        return new TenantServiceInviteResponse().fromBinary(bytes, options);
+    }
+    static fromJson(jsonValue, options) {
+        return new TenantServiceInviteResponse().fromJson(jsonValue, options);
+    }
+    static fromJsonString(jsonString, options) {
+        return new TenantServiceInviteResponse().fromJsonString(jsonString, options);
+    }
+    static equals(a, b) {
+        return proto3.util.equals(TenantServiceInviteResponse, a, b);
+    }
+}
+TenantServiceInviteResponse.runtime = proto3;
+TenantServiceInviteResponse.typeName = "api.v1.TenantServiceInviteResponse";
+TenantServiceInviteResponse.fields = proto3.util.newFieldList(() => [
+    { no: 1, name: "invite", kind: "message", T: TenantInvite },
+]);
+/**
+ * TenantServiceInvitesListRequest is the request payload to a list invites request
+ *
+ * @generated from message api.v1.TenantServiceInvitesListRequest
+ */
+export class TenantServiceInvitesListRequest extends Message {
+    constructor(data) {
+        super();
+        /**
+         * Login of the tenant
+         *
+         * @generated from field: string login = 1;
+         */
+        this.login = "";
+        proto3.util.initPartial(data, this);
+    }
+    static fromBinary(bytes, options) {
+        return new TenantServiceInvitesListRequest().fromBinary(bytes, options);
+    }
+    static fromJson(jsonValue, options) {
+        return new TenantServiceInvitesListRequest().fromJson(jsonValue, options);
+    }
+    static fromJsonString(jsonString, options) {
+        return new TenantServiceInvitesListRequest().fromJsonString(jsonString, options);
+    }
+    static equals(a, b) {
+        return proto3.util.equals(TenantServiceInvitesListRequest, a, b);
+    }
+}
+TenantServiceInvitesListRequest.runtime = proto3;
+TenantServiceInvitesListRequest.typeName = "api.v1.TenantServiceInvitesListRequest";
+TenantServiceInvitesListRequest.fields = proto3.util.newFieldList(() => [
+    { no: 1, name: "login", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+]);
+/**
+ * TenantServiceInvitesListResponse is the response payload to a list invites request
+ *
+ * @generated from message api.v1.TenantServiceInvitesListResponse
+ */
+export class TenantServiceInvitesListResponse extends Message {
+    constructor(data) {
+        super();
+        /**
+         * Invites not already accepted the invitation to this tenant
+         *
+         * @generated from field: repeated api.v1.TenantInvite invites = 1;
+         */
+        this.invites = [];
+        proto3.util.initPartial(data, this);
+    }
+    static fromBinary(bytes, options) {
+        return new TenantServiceInvitesListResponse().fromBinary(bytes, options);
+    }
+    static fromJson(jsonValue, options) {
+        return new TenantServiceInvitesListResponse().fromJson(jsonValue, options);
+    }
+    static fromJsonString(jsonString, options) {
+        return new TenantServiceInvitesListResponse().fromJsonString(jsonString, options);
+    }
+    static equals(a, b) {
+        return proto3.util.equals(TenantServiceInvitesListResponse, a, b);
+    }
+}
+TenantServiceInvitesListResponse.runtime = proto3;
+TenantServiceInvitesListResponse.typeName = "api.v1.TenantServiceInvitesListResponse";
+TenantServiceInvitesListResponse.fields = proto3.util.newFieldList(() => [
+    { no: 1, name: "invites", kind: "message", T: TenantInvite, repeated: true },
+]);
+/**
+ * TenantServiceInviteGetRequest is the request payload to get a invite
+ *
+ * @generated from message api.v1.TenantServiceInviteGetRequest
+ */
+export class TenantServiceInviteGetRequest extends Message {
+    constructor(data) {
+        super();
+        /**
+         * Secret of the invite to get
+         *
+         * @generated from field: string secret = 1;
+         */
+        this.secret = "";
+        proto3.util.initPartial(data, this);
+    }
+    static fromBinary(bytes, options) {
+        return new TenantServiceInviteGetRequest().fromBinary(bytes, options);
+    }
+    static fromJson(jsonValue, options) {
+        return new TenantServiceInviteGetRequest().fromJson(jsonValue, options);
+    }
+    static fromJsonString(jsonString, options) {
+        return new TenantServiceInviteGetRequest().fromJsonString(jsonString, options);
+    }
+    static equals(a, b) {
+        return proto3.util.equals(TenantServiceInviteGetRequest, a, b);
+    }
+}
+TenantServiceInviteGetRequest.runtime = proto3;
+TenantServiceInviteGetRequest.typeName = "api.v1.TenantServiceInviteGetRequest";
+TenantServiceInviteGetRequest.fields = proto3.util.newFieldList(() => [
+    { no: 1, name: "secret", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+]);
+/**
+ * TenantServiceInviteGetResponse is the response payload to a get invite request
+ *
+ * @generated from message api.v1.TenantServiceInviteGetResponse
+ */
+export class TenantServiceInviteGetResponse extends Message {
+    constructor(data) {
+        super();
+        proto3.util.initPartial(data, this);
+    }
+    static fromBinary(bytes, options) {
+        return new TenantServiceInviteGetResponse().fromBinary(bytes, options);
+    }
+    static fromJson(jsonValue, options) {
+        return new TenantServiceInviteGetResponse().fromJson(jsonValue, options);
+    }
+    static fromJsonString(jsonString, options) {
+        return new TenantServiceInviteGetResponse().fromJsonString(jsonString, options);
+    }
+    static equals(a, b) {
+        return proto3.util.equals(TenantServiceInviteGetResponse, a, b);
+    }
+}
+TenantServiceInviteGetResponse.runtime = proto3;
+TenantServiceInviteGetResponse.typeName = "api.v1.TenantServiceInviteGetResponse";
+TenantServiceInviteGetResponse.fields = proto3.util.newFieldList(() => [
+    { no: 1, name: "invite", kind: "message", T: TenantInvite },
+]);
+/**
+ * TenantServiceRemoveMemberRequest is used to remove a member from a tenant
+ *
+ * @generated from message api.v1.TenantServiceRemoveMemberRequest
+ */
+export class TenantServiceRemoveMemberRequest extends Message {
+    constructor(data) {
+        super();
+        /**
+         * Login of the tenant
+         *
+         * @generated from field: string login = 1;
+         */
+        this.login = "";
+        /**
+         * MemberID is the id of the member to remove from this tenant
+         *
+         * @generated from field: string member_id = 2;
+         */
+        this.memberId = "";
+        proto3.util.initPartial(data, this);
+    }
+    static fromBinary(bytes, options) {
+        return new TenantServiceRemoveMemberRequest().fromBinary(bytes, options);
+    }
+    static fromJson(jsonValue, options) {
+        return new TenantServiceRemoveMemberRequest().fromJson(jsonValue, options);
+    }
+    static fromJsonString(jsonString, options) {
+        return new TenantServiceRemoveMemberRequest().fromJsonString(jsonString, options);
+    }
+    static equals(a, b) {
+        return proto3.util.equals(TenantServiceRemoveMemberRequest, a, b);
+    }
+}
+TenantServiceRemoveMemberRequest.runtime = proto3;
+TenantServiceRemoveMemberRequest.typeName = "api.v1.TenantServiceRemoveMemberRequest";
+TenantServiceRemoveMemberRequest.fields = proto3.util.newFieldList(() => [
+    { no: 1, name: "login", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "member_id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+]);
+/**
+ * TenantServiceRemoveMemberResponse is the response payload to a remove member request
+ *
+ * @generated from message api.v1.TenantServiceRemoveMemberResponse
+ */
+export class TenantServiceRemoveMemberResponse extends Message {
+    constructor(data) {
+        super();
+        proto3.util.initPartial(data, this);
+    }
+    static fromBinary(bytes, options) {
+        return new TenantServiceRemoveMemberResponse().fromBinary(bytes, options);
+    }
+    static fromJson(jsonValue, options) {
+        return new TenantServiceRemoveMemberResponse().fromJson(jsonValue, options);
+    }
+    static fromJsonString(jsonString, options) {
+        return new TenantServiceRemoveMemberResponse().fromJsonString(jsonString, options);
+    }
+    static equals(a, b) {
+        return proto3.util.equals(TenantServiceRemoveMemberResponse, a, b);
+    }
+}
+TenantServiceRemoveMemberResponse.runtime = proto3;
+TenantServiceRemoveMemberResponse.typeName = "api.v1.TenantServiceRemoveMemberResponse";
+TenantServiceRemoveMemberResponse.fields = proto3.util.newFieldList(() => []);
+/**
+ * TenantServiceInviteAcceptRequest is the request payload to a accept invite request
+ *
+ * @generated from message api.v1.TenantServiceInviteAcceptRequest
+ */
+export class TenantServiceInviteAcceptRequest extends Message {
+    constructor(data) {
+        super();
+        /**
+         * Secret is the invitation secret part of the invitation url
+         *
+         * @generated from field: string secret = 1;
+         */
+        this.secret = "";
+        proto3.util.initPartial(data, this);
+    }
+    static fromBinary(bytes, options) {
+        return new TenantServiceInviteAcceptRequest().fromBinary(bytes, options);
+    }
+    static fromJson(jsonValue, options) {
+        return new TenantServiceInviteAcceptRequest().fromJson(jsonValue, options);
+    }
+    static fromJsonString(jsonString, options) {
+        return new TenantServiceInviteAcceptRequest().fromJsonString(jsonString, options);
+    }
+    static equals(a, b) {
+        return proto3.util.equals(TenantServiceInviteAcceptRequest, a, b);
+    }
+}
+TenantServiceInviteAcceptRequest.runtime = proto3;
+TenantServiceInviteAcceptRequest.typeName = "api.v1.TenantServiceInviteAcceptRequest";
+TenantServiceInviteAcceptRequest.fields = proto3.util.newFieldList(() => [
+    { no: 1, name: "secret", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+]);
+/**
+ * TenantServiceInvitesListResponse is the response payload to a accept invite request
+ *
+ * @generated from message api.v1.TenantServiceInviteAcceptResponse
+ */
+export class TenantServiceInviteAcceptResponse extends Message {
+    constructor(data) {
+        super();
+        /**
+         * Tenant ID of the joined tenant
+         *
+         * @generated from field: string tenant = 1;
+         */
+        this.tenant = "";
+        /**
+         * TenantName of the joined tenant
+         *
+         * @generated from field: string tenant_name = 2;
+         */
+        this.tenantName = "";
+        proto3.util.initPartial(data, this);
+    }
+    static fromBinary(bytes, options) {
+        return new TenantServiceInviteAcceptResponse().fromBinary(bytes, options);
+    }
+    static fromJson(jsonValue, options) {
+        return new TenantServiceInviteAcceptResponse().fromJson(jsonValue, options);
+    }
+    static fromJsonString(jsonString, options) {
+        return new TenantServiceInviteAcceptResponse().fromJsonString(jsonString, options);
+    }
+    static equals(a, b) {
+        return proto3.util.equals(TenantServiceInviteAcceptResponse, a, b);
+    }
+}
+TenantServiceInviteAcceptResponse.runtime = proto3;
+TenantServiceInviteAcceptResponse.typeName = "api.v1.TenantServiceInviteAcceptResponse";
+TenantServiceInviteAcceptResponse.fields = proto3.util.newFieldList(() => [
+    { no: 1, name: "tenant", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "tenant_name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+]);
+/**
+ * TenantServiceInviteDeleteRequest is the request payload to a delete invite
+ *
+ * @generated from message api.v1.TenantServiceInviteDeleteRequest
+ */
+export class TenantServiceInviteDeleteRequest extends Message {
+    constructor(data) {
+        super();
+        /**
+         * Login of the tenant
+         *
+         * @generated from field: string login = 1;
+         */
+        this.login = "";
+        /**
+         * Secret of the invite to delete
+         *
+         * @generated from field: string secret = 2;
+         */
+        this.secret = "";
+        proto3.util.initPartial(data, this);
+    }
+    static fromBinary(bytes, options) {
+        return new TenantServiceInviteDeleteRequest().fromBinary(bytes, options);
+    }
+    static fromJson(jsonValue, options) {
+        return new TenantServiceInviteDeleteRequest().fromJson(jsonValue, options);
+    }
+    static fromJsonString(jsonString, options) {
+        return new TenantServiceInviteDeleteRequest().fromJsonString(jsonString, options);
+    }
+    static equals(a, b) {
+        return proto3.util.equals(TenantServiceInviteDeleteRequest, a, b);
+    }
+}
+TenantServiceInviteDeleteRequest.runtime = proto3;
+TenantServiceInviteDeleteRequest.typeName = "api.v1.TenantServiceInviteDeleteRequest";
+TenantServiceInviteDeleteRequest.fields = proto3.util.newFieldList(() => [
+    { no: 1, name: "login", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "secret", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+]);
+/**
+ * TenantServiceInviteDeleteResponse is the response payload of a delete invite request
+ *
+ * @generated from message api.v1.TenantServiceInviteDeleteResponse
+ */
+export class TenantServiceInviteDeleteResponse extends Message {
+    constructor(data) {
+        super();
+        proto3.util.initPartial(data, this);
+    }
+    static fromBinary(bytes, options) {
+        return new TenantServiceInviteDeleteResponse().fromBinary(bytes, options);
+    }
+    static fromJson(jsonValue, options) {
+        return new TenantServiceInviteDeleteResponse().fromJson(jsonValue, options);
+    }
+    static fromJsonString(jsonString, options) {
+        return new TenantServiceInviteDeleteResponse().fromJsonString(jsonString, options);
+    }
+    static equals(a, b) {
+        return proto3.util.equals(TenantServiceInviteDeleteResponse, a, b);
+    }
+}
+TenantServiceInviteDeleteResponse.runtime = proto3;
+TenantServiceInviteDeleteResponse.typeName = "api.v1.TenantServiceInviteDeleteResponse";
+TenantServiceInviteDeleteResponse.fields = proto3.util.newFieldList(() => []);
+/**
+ * TenantServiceUpdateMemberRequest is used to update a member from a tenant
+ *
+ * @generated from message api.v1.TenantServiceUpdateMemberRequest
+ */
+export class TenantServiceUpdateMemberRequest extends Message {
+    constructor(data) {
+        super();
+        /**
+         * Login of the tenant
+         *
+         * @generated from field: string login = 1;
+         */
+        this.login = "";
+        /**
+         * MemberID is the id of the member to update in this tenant
+         *
+         * @generated from field: string member_id = 2;
+         */
+        this.memberId = "";
+        /**
+         * Role of this user in this tenant
+         *
+         * @generated from field: api.v1.TenantRole role = 3;
+         */
+        this.role = TenantRole.UNSPECIFIED;
+        proto3.util.initPartial(data, this);
+    }
+    static fromBinary(bytes, options) {
+        return new TenantServiceUpdateMemberRequest().fromBinary(bytes, options);
+    }
+    static fromJson(jsonValue, options) {
+        return new TenantServiceUpdateMemberRequest().fromJson(jsonValue, options);
+    }
+    static fromJsonString(jsonString, options) {
+        return new TenantServiceUpdateMemberRequest().fromJsonString(jsonString, options);
+    }
+    static equals(a, b) {
+        return proto3.util.equals(TenantServiceUpdateMemberRequest, a, b);
+    }
+}
+TenantServiceUpdateMemberRequest.runtime = proto3;
+TenantServiceUpdateMemberRequest.typeName = "api.v1.TenantServiceUpdateMemberRequest";
+TenantServiceUpdateMemberRequest.fields = proto3.util.newFieldList(() => [
+    { no: 1, name: "login", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "member_id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 3, name: "role", kind: "enum", T: proto3.getEnumType(TenantRole) },
+]);
+/**
+ * TenantServiceUpdateMemberResponse is the response payload to a update member request
+ *
+ * @generated from message api.v1.TenantServiceUpdateMemberResponse
+ */
+export class TenantServiceUpdateMemberResponse extends Message {
+    constructor(data) {
+        super();
+        proto3.util.initPartial(data, this);
+    }
+    static fromBinary(bytes, options) {
+        return new TenantServiceUpdateMemberResponse().fromBinary(bytes, options);
+    }
+    static fromJson(jsonValue, options) {
+        return new TenantServiceUpdateMemberResponse().fromJson(jsonValue, options);
+    }
+    static fromJsonString(jsonString, options) {
+        return new TenantServiceUpdateMemberResponse().fromJsonString(jsonString, options);
+    }
+    static equals(a, b) {
+        return proto3.util.equals(TenantServiceUpdateMemberResponse, a, b);
+    }
+}
+TenantServiceUpdateMemberResponse.runtime = proto3;
+TenantServiceUpdateMemberResponse.typeName = "api.v1.TenantServiceUpdateMemberResponse";
+TenantServiceUpdateMemberResponse.fields = proto3.util.newFieldList(() => [
+    { no: 1, name: "tenant_member", kind: "message", T: TenantMember },
 ]);

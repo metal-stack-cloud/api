@@ -23,7 +23,7 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-// Operate defines the types of reconcilation to be triggered
+// Operate defines the types of reconciliation to be triggered
 type Operate int32
 
 const (
@@ -33,7 +33,7 @@ const (
 	Operate_OPERATE_RECONCILE Operate = 1
 	// OPERATE_MAINTAIN maintain the cluster
 	Operate_OPERATE_MAINTAIN Operate = 2
-	// OPERATE_RETRY retry the reconcilation of the cluster
+	// OPERATE_RETRY retry the reconciliation of the cluster
 	Operate_OPERATE_RETRY Operate = 3
 )
 
@@ -1219,7 +1219,7 @@ type ClusterStatus struct {
 
 	// Uuid of the cluster
 	Uuid string `protobuf:"bytes,1,opt,name=uuid,proto3" json:"uuid,omitempty"`
-	// Progress of the cluster reconcilation
+	// Progress of the cluster reconciliation
 	Progress uint32 `protobuf:"varint,2,opt,name=progress,proto3" json:"progress,omitempty"`
 	// State of the cluster
 	State string `protobuf:"bytes,3,opt,name=state,proto3" json:"state,omitempty"`
@@ -1233,7 +1233,7 @@ type ClusterStatus struct {
 	NodesReady string `protobuf:"bytes,12,opt,name=nodes_ready,json=nodesReady,proto3" json:"nodes_ready,omitempty"`
 	// SystemComponentsReady represents the ready state of the system components
 	SystemComponentsReady string `protobuf:"bytes,13,opt,name=system_components_ready,json=systemComponentsReady,proto3" json:"system_components_ready,omitempty"`
-	// LastErrors is a list of the last known errors occured during the cluster reconcilation
+	// LastErrors is a list of the last known errors occurred during the cluster reconciliation
 	LastErrors []*ClusterStatusLastError `protobuf:"bytes,14,rep,name=last_errors,json=lastErrors,proto3" json:"last_errors,omitempty"`
 	// ClusterStatusConditions is a list of status conditions of the cluster
 	Conditions []*ClusterStatusCondition `protobuf:"bytes,15,rep,name=conditions,proto3" json:"conditions,omitempty"`

@@ -197,7 +197,7 @@ export class MachineNetwork extends Message<MachineNetwork> {
   network = "";
 
   /**
-   * Prefixes availalble in this network
+   * Prefixes available in this network
    *
    * @generated from field: repeated string prefixes = 2;
    */

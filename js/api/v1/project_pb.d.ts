@@ -437,7 +437,7 @@ export declare class ProjectServiceInviteRequest extends Message<ProjectServiceI
 export declare class ProjectServiceInviteResponse extends Message<ProjectServiceInviteResponse> {
     /**
      * Inviter contains a secret which can be sent to a potential user
-     * can appended to the invitation endpoint at our api server like
+     * can be appended to the invitation endpoint at our cloud console like
      * console.metalstack.cloud/invite/<secret>
      *
      * @generated from field: api.v1.ProjectInvite invite = 1;

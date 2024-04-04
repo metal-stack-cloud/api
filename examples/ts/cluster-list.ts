@@ -5,8 +5,8 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 const tokenInterceptor: Interceptor = (next) => (req) => {
-  req.header.append('Authorization', 'Bearer ' + process.env.API_TOKEN)
-  return next(req)
+  req.header.append('Authorization', 'Bearer ' + process.env.API_TOKEN);
+  return next(req);
 }
 
 const transport = createConnectTransport({

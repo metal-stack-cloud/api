@@ -392,7 +392,7 @@ export class ClusterStatisticsApi extends Message {
          */
         this.estimatedLogicalStorage = protoInt64.zero;
         /**
-         * commpression ratio
+         * compression ratio
          *
          * compression ratio logicalUsedStorage/physicalUsedStorage
          *

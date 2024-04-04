@@ -502,7 +502,7 @@ type ClusterStatisticsApi struct {
 	//
 	// Estimate of total available logical storage based on current compression ratio (effective * compression)
 	EstimatedLogicalStorage uint64 `protobuf:"varint,10,opt,name=estimated_logical_storage,json=estimatedLogicalStorage,proto3" json:"estimated_logical_storage,omitempty"`
-	// commpression ratio
+	// compression ratio
 	//
 	// compression ratio logicalUsedStorage/physicalUsedStorage
 	CompressionRatio float64 `protobuf:"fixed64,11,opt,name=compression_ratio,json=compressionRatio,proto3" json:"compression_ratio,omitempty"`

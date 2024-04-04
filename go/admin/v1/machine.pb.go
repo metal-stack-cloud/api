@@ -231,7 +231,7 @@ type MachineNetwork struct {
 
 	// Network is the uuid of this network
 	Network string `protobuf:"bytes,1,opt,name=network,proto3" json:"network,omitempty"`
-	// Prefixes availalble in this network
+	// Prefixes available in this network
 	Prefixes []string `protobuf:"bytes,2,rep,name=prefixes,proto3" json:"prefixes,omitempty"`
 	// Ips attached for the machine in this network
 	Ips []string `protobuf:"bytes,3,rep,name=ips,proto3" json:"ips,omitempty"`
