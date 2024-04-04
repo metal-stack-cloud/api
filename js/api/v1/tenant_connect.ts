@@ -82,7 +82,7 @@ export const TenantService = {
       kind: MethodKind.Unary,
     },
     /**
-     * RemoveMember remove a user from a tenant
+     * RemoveMember remove a member of a tenant
      *
      * @generated from rpc api.v1.TenantService.RemoveMember
      */
@@ -93,7 +93,7 @@ export const TenantService = {
       kind: MethodKind.Unary,
     },
     /**
-     * UpdateMember update a user from a tenant
+     * UpdateMember update a member of a tenant
      *
      * @generated from rpc api.v1.TenantService.UpdateMember
      */
@@ -115,7 +115,7 @@ export const TenantService = {
       kind: MethodKind.Unary,
     },
     /**
-     * InviteAccept is called from a user to accept a invitation
+     * InviteAccept is called from a user to accept an invitation
      *
      * @generated from rpc api.v1.TenantService.InviteAccept
      */

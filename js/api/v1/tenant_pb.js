@@ -20,7 +20,7 @@ export class Tenant extends Message {
          */
         this.login = "";
         /**
-         * Name if the tenant
+         * Name of the tenant
          *
          * @generated from field: string name = 2;
          */
@@ -74,7 +74,7 @@ export class Tenant extends Message {
          */
         this.onboarded = false;
         /**
-         * TenantMembers in this tenant
+         * TenantMembers of this tenant
          *
          * @generated from field: repeated api.v1.TenantMember tenant_members = 14;
          */
@@ -787,7 +787,7 @@ export class TenantServiceInviteRequest extends Message {
         /**
          * Role of this user in this tenant
          *
-         * @generated from field: api.v1.TenantRole role = 3;
+         * @generated from field: api.v1.TenantRole role = 2;
          */
         this.role = TenantRole.UNSPECIFIED;
         proto3.util.initPartial(data, this);
@@ -809,7 +809,7 @@ TenantServiceInviteRequest.runtime = proto3;
 TenantServiceInviteRequest.typeName = "api.v1.TenantServiceInviteRequest";
 TenantServiceInviteRequest.fields = proto3.util.newFieldList(() => [
     { no: 1, name: "login", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 3, name: "role", kind: "enum", T: proto3.getEnumType(TenantRole) },
+    { no: 2, name: "role", kind: "enum", T: proto3.getEnumType(TenantRole) },
 ]);
 /**
  * TenantServiceInviteRequest is the response payload to a invite member request
@@ -916,7 +916,7 @@ export class TenantServiceInviteGetRequest extends Message {
     constructor(data) {
         super();
         /**
-         * Secret of the invite to list
+         * Secret of the invite to get
          *
          * @generated from field: string secret = 1;
          */
@@ -1079,13 +1079,13 @@ export class TenantServiceInviteAcceptResponse extends Message {
     constructor(data) {
         super();
         /**
-         * Tenant ID of the tenant joined
+         * Tenant ID of the joined tenant
          *
          * @generated from field: string tenant = 1;
          */
         this.tenant = "";
         /**
-         * TenantName if the tenant joined
+         * TenantName of the joined tenant
          *
          * @generated from field: string tenant_name = 2;
          */

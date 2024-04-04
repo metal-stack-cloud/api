@@ -15,7 +15,7 @@ export declare class Tenant extends Message<Tenant> {
      */
     login: string;
     /**
-     * Name if the tenant
+     * Name of the tenant
      *
      * @generated from field: string name = 2;
      */
@@ -81,7 +81,7 @@ export declare class Tenant extends Message<Tenant> {
      */
     onboarded: boolean;
     /**
-     * TenantMembers in this tenant
+     * TenantMembers of this tenant
      *
      * @generated from field: repeated api.v1.TenantMember tenant_members = 14;
      */
@@ -698,7 +698,7 @@ export declare class TenantServiceInviteRequest extends Message<TenantServiceInv
     /**
      * Role of this user in this tenant
      *
-     * @generated from field: api.v1.TenantRole role = 3;
+     * @generated from field: api.v1.TenantRole role = 2;
      */
     role: TenantRole;
     constructor(data?: PartialMessage<TenantServiceInviteRequest>);
@@ -718,7 +718,7 @@ export declare class TenantServiceInviteRequest extends Message<TenantServiceInv
 export declare class TenantServiceInviteResponse extends Message<TenantServiceInviteResponse> {
     /**
      * Invite contains a secret which can be sent to a potential user
-     * can be appended to the invitation endpoint at our api server like
+     * can be appended to the invitation endpoint at our cloud console like
      * console.metalstack.cloud/invite/<secret>
      *
      * @generated from field: api.v1.TenantInvite invite = 1;
@@ -782,7 +782,7 @@ export declare class TenantServiceInvitesListResponse extends Message<TenantServ
  */
 export declare class TenantServiceInviteGetRequest extends Message<TenantServiceInviteGetRequest> {
     /**
-     * Secret of the invite to list
+     * Secret of the invite to get
      *
      * @generated from field: string secret = 1;
      */
@@ -887,13 +887,13 @@ export declare class TenantServiceInviteAcceptRequest extends Message<TenantServ
  */
 export declare class TenantServiceInviteAcceptResponse extends Message<TenantServiceInviteAcceptResponse> {
     /**
-     * Tenant ID of the tenant joined
+     * Tenant ID of the joined tenant
      *
      * @generated from field: string tenant = 1;
      */
     tenant: string;
     /**
-     * TenantName if the tenant joined
+     * TenantName of the joined tenant
      *
      * @generated from field: string tenant_name = 2;
      */

@@ -22,7 +22,7 @@ export class Tenant extends Message<Tenant> {
   login = "";
 
   /**
-   * Name if the tenant
+   * Name of the tenant
    *
    * @generated from field: string name = 2;
    */
@@ -99,7 +99,7 @@ export class Tenant extends Message<Tenant> {
   onboarded = false;
 
   /**
-   * TenantMembers in this tenant
+   * TenantMembers of this tenant
    *
    * @generated from field: repeated api.v1.TenantMember tenant_members = 14;
    */
@@ -1179,7 +1179,7 @@ export class TenantServiceInviteRequest extends Message<TenantServiceInviteReque
   /**
    * Role of this user in this tenant
    *
-   * @generated from field: api.v1.TenantRole role = 3;
+   * @generated from field: api.v1.TenantRole role = 2;
    */
   role = TenantRole.UNSPECIFIED;
 
@@ -1192,7 +1192,7 @@ export class TenantServiceInviteRequest extends Message<TenantServiceInviteReque
   static readonly typeName = "api.v1.TenantServiceInviteRequest";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
     { no: 1, name: "login", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 3, name: "role", kind: "enum", T: proto3.getEnumType(TenantRole) },
+    { no: 2, name: "role", kind: "enum", T: proto3.getEnumType(TenantRole) },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): TenantServiceInviteRequest {
@@ -1220,7 +1220,7 @@ export class TenantServiceInviteRequest extends Message<TenantServiceInviteReque
 export class TenantServiceInviteResponse extends Message<TenantServiceInviteResponse> {
   /**
    * Invite contains a secret which can be sent to a potential user
-   * can be appended to the invitation endpoint at our api server like
+   * can be appended to the invitation endpoint at our cloud console like
    * console.metalstack.cloud/invite/<secret>
    *
    * @generated from field: api.v1.TenantInvite invite = 1;
@@ -1344,7 +1344,7 @@ export class TenantServiceInvitesListResponse extends Message<TenantServiceInvit
  */
 export class TenantServiceInviteGetRequest extends Message<TenantServiceInviteGetRequest> {
   /**
-   * Secret of the invite to list
+   * Secret of the invite to get
    *
    * @generated from field: string secret = 1;
    */
@@ -1549,14 +1549,14 @@ export class TenantServiceInviteAcceptRequest extends Message<TenantServiceInvit
  */
 export class TenantServiceInviteAcceptResponse extends Message<TenantServiceInviteAcceptResponse> {
   /**
-   * Tenant ID of the tenant joined
+   * Tenant ID of the joined tenant
    *
    * @generated from field: string tenant = 1;
    */
   tenant = "";
 
   /**
-   * TenantName if the tenant joined
+   * TenantName of the joined tenant
    *
    * @generated from field: string tenant_name = 2;
    */

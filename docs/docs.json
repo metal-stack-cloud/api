@@ -7385,7 +7385,7 @@
             },
             {
               "name": "name",
-              "description": "Name if the tenant",
+              "description": "Name of the tenant",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -7517,7 +7517,7 @@
             },
             {
               "name": "tenant_members",
-              "description": "TenantMembers in this tenant",
+              "description": "TenantMembers of this tenant",
               "label": "repeated",
               "type": "TenantMember",
               "longType": "TenantMember",
@@ -8053,7 +8053,7 @@
           "fields": [
             {
               "name": "tenant",
-              "description": "Tenant ID of the tenant joined",
+              "description": "Tenant ID of the joined tenant",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -8065,7 +8065,7 @@
             },
             {
               "name": "tenant_name",
-              "description": "TenantName if the tenant joined",
+              "description": "TenantName of the joined tenant",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -8136,7 +8136,7 @@
           "fields": [
             {
               "name": "secret",
-              "description": "Secret of the invite to list",
+              "description": "Secret of the invite to get",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -8220,7 +8220,7 @@
           "fields": [
             {
               "name": "invite",
-              "description": "Invite contains a secret which can be sent to a potential user\ncan be appended to the invitation endpoint at our api server like\nconsole.metalstack.cloud/invite/\u003csecret\u003e",
+              "description": "Invite contains a secret which can be sent to a potential user\ncan be appended to the invitation endpoint at our cloud console like\nconsole.metalstack.cloud/invite/\u003csecret\u003e",
               "label": "",
               "type": "TenantInvite",
               "longType": "TenantInvite",
@@ -8789,7 +8789,7 @@
             },
             {
               "name": "RemoveMember",
-              "description": "RemoveMember remove a user from a tenant",
+              "description": "RemoveMember remove a member of a tenant",
               "requestType": "TenantServiceRemoveMemberRequest",
               "requestLongType": "TenantServiceRemoveMemberRequest",
               "requestFullType": "api.v1.TenantServiceRemoveMemberRequest",
@@ -8801,7 +8801,7 @@
             },
             {
               "name": "UpdateMember",
-              "description": "UpdateMember update a user from a tenant",
+              "description": "UpdateMember update a member of a tenant",
               "requestType": "TenantServiceUpdateMemberRequest",
               "requestLongType": "TenantServiceUpdateMemberRequest",
               "requestFullType": "api.v1.TenantServiceUpdateMemberRequest",
@@ -8825,7 +8825,7 @@
             },
             {
               "name": "InviteAccept",
-              "description": "InviteAccept is called from a user to accept a invitation",
+              "description": "InviteAccept is called from a user to accept an invitation",
               "requestType": "TenantServiceInviteAcceptRequest",
               "requestLongType": "TenantServiceInviteAcceptRequest",
               "requestFullType": "api.v1.TenantServiceInviteAcceptRequest",
@@ -12552,7 +12552,7 @@
           "fields": [
             {
               "name": "invite",
-              "description": "Inviter contains a secret which can be sent to a potential user\ncan appended to the invitation endpoint at our api server like\nconsole.metalstack.cloud/invite/\u003csecret\u003e",
+              "description": "Inviter contains a secret which can be sent to a potential user\ncan be appended to the invitation endpoint at our cloud console like\nconsole.metalstack.cloud/invite/\u003csecret\u003e",
               "label": "",
               "type": "ProjectInvite",
               "longType": "ProjectInvite",

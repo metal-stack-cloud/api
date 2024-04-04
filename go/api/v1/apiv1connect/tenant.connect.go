@@ -100,13 +100,13 @@ type TenantServiceClient interface {
 	Update(context.Context, *connect.Request[v1.TenantServiceUpdateRequest]) (*connect.Response[v1.TenantServiceUpdateResponse], error)
 	// Delete a tenant
 	Delete(context.Context, *connect.Request[v1.TenantServiceDeleteRequest]) (*connect.Response[v1.TenantServiceDeleteResponse], error)
-	// RemoveMember remove a user from a tenant
+	// RemoveMember remove a member of a tenant
 	RemoveMember(context.Context, *connect.Request[v1.TenantServiceRemoveMemberRequest]) (*connect.Response[v1.TenantServiceRemoveMemberResponse], error)
-	// UpdateMember update a user from a tenant
+	// UpdateMember update a member of a tenant
 	UpdateMember(context.Context, *connect.Request[v1.TenantServiceUpdateMemberRequest]) (*connect.Response[v1.TenantServiceUpdateMemberResponse], error)
 	// Invite a user to a tenant
 	Invite(context.Context, *connect.Request[v1.TenantServiceInviteRequest]) (*connect.Response[v1.TenantServiceInviteResponse], error)
-	// InviteAccept is called from a user to accept a invitation
+	// InviteAccept is called from a user to accept an invitation
 	InviteAccept(context.Context, *connect.Request[v1.TenantServiceInviteAcceptRequest]) (*connect.Response[v1.TenantServiceInviteAcceptResponse], error)
 	// InviteDelete deletes a pending invitation
 	InviteDelete(context.Context, *connect.Request[v1.TenantServiceInviteDeleteRequest]) (*connect.Response[v1.TenantServiceInviteDeleteResponse], error)
@@ -304,13 +304,13 @@ type TenantServiceHandler interface {
 	Update(context.Context, *connect.Request[v1.TenantServiceUpdateRequest]) (*connect.Response[v1.TenantServiceUpdateResponse], error)
 	// Delete a tenant
 	Delete(context.Context, *connect.Request[v1.TenantServiceDeleteRequest]) (*connect.Response[v1.TenantServiceDeleteResponse], error)
-	// RemoveMember remove a user from a tenant
+	// RemoveMember remove a member of a tenant
 	RemoveMember(context.Context, *connect.Request[v1.TenantServiceRemoveMemberRequest]) (*connect.Response[v1.TenantServiceRemoveMemberResponse], error)
-	// UpdateMember update a user from a tenant
+	// UpdateMember update a member of a tenant
 	UpdateMember(context.Context, *connect.Request[v1.TenantServiceUpdateMemberRequest]) (*connect.Response[v1.TenantServiceUpdateMemberResponse], error)
 	// Invite a user to a tenant
 	Invite(context.Context, *connect.Request[v1.TenantServiceInviteRequest]) (*connect.Response[v1.TenantServiceInviteResponse], error)
-	// InviteAccept is called from a user to accept a invitation
+	// InviteAccept is called from a user to accept an invitation
 	InviteAccept(context.Context, *connect.Request[v1.TenantServiceInviteAcceptRequest]) (*connect.Response[v1.TenantServiceInviteAcceptResponse], error)
 	// InviteDelete deletes a pending invitation
 	InviteDelete(context.Context, *connect.Request[v1.TenantServiceInviteDeleteRequest]) (*connect.Response[v1.TenantServiceInviteDeleteResponse], error)

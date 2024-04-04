@@ -35,22 +35,22 @@ service TenantService {
   rpc Update(TenantServiceUpdateRequest) returns (TenantServiceUpdateResponse) {
     option (tenant_roles) = TENANT_ROLE_OWNER;
     option (tenant_roles) = TENANT_ROLE_EDITOR;
-    option (auditing) = AUDITING_EXCLUDED;
+    option (auditing) = AUDITING_INCLUDED;
   }
   // Delete a tenant
   rpc Delete(TenantServiceDeleteRequest) returns (TenantServiceDeleteResponse) {
     option (tenant_roles) = TENANT_ROLE_OWNER;
     option (tenant_roles) = TENANT_ROLE_EDITOR;
-    option (auditing) = AUDITING_EXCLUDED;
+    option (auditing) = AUDITING_INCLUDED;
   }
 
-  // RemoveMember remove a user from a tenant
+  // RemoveMember remove a member of a tenant
   rpc RemoveMember(TenantServiceRemoveMemberRequest) returns (TenantServiceRemoveMemberResponse) {
     option (tenant_roles) = TENANT_ROLE_OWNER;
     option (auditing) = AUDITING_INCLUDED;
   }
 
-  // UpdateMember update a user from a tenant
+  // UpdateMember update a member of a tenant
   rpc UpdateMember(TenantServiceUpdateMemberRequest) returns (TenantServiceUpdateMemberResponse) {
     option (tenant_roles) = TENANT_ROLE_OWNER;
     option (auditing) = AUDITING_INCLUDED;
@@ -61,7 +61,7 @@ service TenantService {
     option (tenant_roles) = TENANT_ROLE_OWNER;
     option (auditing) = AUDITING_INCLUDED;
   }
-  // InviteAccept is called from a user to accept a invitation
+  // InviteAccept is called from a user to accept an invitation
   rpc InviteAccept(TenantServiceInviteAcceptRequest) returns (TenantServiceInviteAcceptResponse) {
     option (visibility) = VISIBILITY_SELF;
     option (auditing) = AUDITING_INCLUDED;
@@ -87,7 +87,7 @@ service TenantService {
 message Tenant {
   // Login of the tenant
   string login = 1;
-  // Name if the tenant
+  // Name of the tenant
   string name = 2;
   // Email of the tenant
   string email = 3;
@@ -109,7 +109,7 @@ message Tenant {
   bool email_consent = 12;
   // Onboarded checks if the tenant was asked to be onboarded
   bool onboarded = 13;
-  // TenantMembers in this tenant
+  // TenantMembers of this tenant
   repeated TenantMember tenant_members = 14;
   // CreatedBy stores who created this tenant
   string created_by = 15;
@@ -310,15 +310,14 @@ message TenantServiceDeleteResponse {
 message TenantServiceInviteRequest {
   // Login of the tenant
   string login = 1;
-
   // Role of this user in this tenant
-  TenantRole role = 3;
+  TenantRole role = 2;
 }
 
 // TenantServiceInviteRequest is the response payload to a invite member request
 message TenantServiceInviteResponse {
   // Invite contains a secret which can be sent to a potential user
-  // can be appended to the invitation endpoint at our api server like
+  // can be appended to the invitation endpoint at our cloud console like
   // console.metalstack.cloud/invite/<secret>
   TenantInvite invite = 1;
 }
@@ -337,7 +336,7 @@ message TenantServiceInvitesListResponse {
 
 // TenantServiceInviteGetRequest is the request payload to get a invite
 message TenantServiceInviteGetRequest {
-  // Secret of the invite to list
+  // Secret of the invite to get
   string secret = 1;
 }
 
@@ -366,9 +365,9 @@ message TenantServiceInviteAcceptRequest {
 
 // TenantServiceInvitesListResponse is the response payload to a accept invite request
 message TenantServiceInviteAcceptResponse {
-  // Tenant ID of the tenant joined
+  // Tenant ID of the joined tenant
   string tenant = 1;
-  // TenantName if the tenant joined
+  // TenantName of the joined tenant
   string tenant_name = 2;
 }
 
