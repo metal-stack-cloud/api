@@ -71,7 +71,7 @@ message MachineType {
   // CpuDescription describes the CPUs of this machine / server
   string cpu_description = 6;
   // StorageDescription describes the disks of this machine / server
-  string storage_desription = 7;
+  string storage_description = 7;
 }
 
 // Kubernetes related configurations available

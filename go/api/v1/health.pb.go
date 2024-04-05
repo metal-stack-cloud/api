@@ -134,7 +134,7 @@ func (Service) EnumDescriptor() ([]byte, []int) {
 	return file_api_v1_health_proto_rawDescGZIP(), []int{1}
 }
 
-// Health reports the healt status of all services
+// Health reports the health status of all services
 type Health struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache

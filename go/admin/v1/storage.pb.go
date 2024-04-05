@@ -371,7 +371,7 @@ func (x *StorageServerInfo) GetLightOsVersion() string {
 	return ""
 }
 
-// ClusterHealth the healt of the cluster
+// ClusterHealth the health of the cluster
 type ClusterHealth struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache

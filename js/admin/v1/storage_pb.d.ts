@@ -188,7 +188,7 @@ export declare class StorageServerInfo extends Message<StorageServerInfo> {
     static equals(a: StorageServerInfo | PlainMessage<StorageServerInfo> | undefined, b: StorageServerInfo | PlainMessage<StorageServerInfo> | undefined): boolean;
 }
 /**
- * ClusterHealth the healt of the cluster
+ * ClusterHealth the health of the cluster
  *
  * @generated from message admin.v1.ClusterHealth
  */

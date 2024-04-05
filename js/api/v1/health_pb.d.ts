@@ -63,7 +63,7 @@ export declare enum Service {
     MACHINES = 3
 }
 /**
- * Health reports the healt status of all services
+ * Health reports the health status of all services
  *
  * @generated from message api.v1.Health
  */

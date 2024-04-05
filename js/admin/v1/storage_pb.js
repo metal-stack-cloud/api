@@ -242,7 +242,7 @@ StorageServerInfo.fields = proto3.util.newFieldList(() => [
     { no: 6, name: "light_os_version", kind: "scalar", T: 9 /* ScalarType.STRING */ },
 ]);
 /**
- * ClusterHealth the healt of the cluster
+ * ClusterHealth the health of the cluster
  *
  * @generated from message admin.v1.ClusterHealth
  */
