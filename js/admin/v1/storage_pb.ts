@@ -308,7 +308,7 @@ export class StorageServerInfo extends Message<StorageServerInfo> {
 }
 
 /**
- * ClusterHealth the healt of the cluster
+ * ClusterHealth the health of the cluster
  *
  * @generated from message admin.v1.ClusterHealth
  */

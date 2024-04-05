@@ -6426,7 +6426,7 @@
           "name": "ClusterHealth",
           "longName": "ClusterHealth",
           "fullName": "admin.v1.ClusterHealth",
-          "description": "ClusterHealth the healt of the cluster",
+          "description": "ClusterHealth the health of the cluster",
           "hasExtensions": false,
           "hasFields": true,
           "hasOneofs": false,
@@ -10342,7 +10342,7 @@
               "defaultValue": ""
             },
             {
-              "name": "storage_desription",
+              "name": "storage_description",
               "description": "StorageDescription describes the disks of this machine / server",
               "label": "",
               "type": "string",
@@ -10655,7 +10655,7 @@
           "name": "Health",
           "longName": "Health",
           "fullName": "api.v1.Health",
-          "description": "Health reports the healt status of all services",
+          "description": "Health reports the health status of all services",
           "hasExtensions": false,
           "hasFields": true,
           "hasOneofs": false,

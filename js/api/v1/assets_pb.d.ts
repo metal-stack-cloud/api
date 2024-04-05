@@ -184,9 +184,9 @@ export declare class MachineType extends Message<MachineType> {
     /**
      * StorageDescription describes the disks of this machine / server
      *
-     * @generated from field: string storage_desription = 7;
+     * @generated from field: string storage_description = 7;
      */
-    storageDesription: string;
+    storageDescription: string;
     constructor(data?: PartialMessage<MachineType>);
     static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.MachineType";

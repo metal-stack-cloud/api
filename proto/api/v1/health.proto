@@ -37,7 +37,7 @@ enum Service {
   SERVICE_MACHINES = 3;
 }
 
-// Health reports the healt status of all services
+// Health reports the health status of all services
 message Health {
   // Services the health of all individual services
   repeated HealthStatus services = 1;

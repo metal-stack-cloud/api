@@ -83,7 +83,7 @@ message StorageServerInfo {
   string light_os_version = 6;
 }
 
-// ClusterHealth the healt of the cluster
+// ClusterHealth the health of the cluster
 message ClusterHealth {
   // State of the cluster
   string state = 1;

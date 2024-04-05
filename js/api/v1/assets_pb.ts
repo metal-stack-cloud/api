@@ -276,9 +276,9 @@ export class MachineType extends Message<MachineType> {
   /**
    * StorageDescription describes the disks of this machine / server
    *
-   * @generated from field: string storage_desription = 7;
+   * @generated from field: string storage_description = 7;
    */
-  storageDesription = "";
+  storageDescription = "";
 
   constructor(data?: PartialMessage<MachineType>) {
     super();
@@ -294,7 +294,7 @@ export class MachineType extends Message<MachineType> {
     { no: 4, name: "memory", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
     { no: 5, name: "storage", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
     { no: 6, name: "cpu_description", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 7, name: "storage_desription", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 7, name: "storage_description", kind: "scalar", T: 9 /* ScalarType.STRING */ },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): MachineType {
