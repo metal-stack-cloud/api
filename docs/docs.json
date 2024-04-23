@@ -537,7 +537,7 @@
             {
               "name": "TENANT_ROLE_GUEST",
               "number": "4",
-              "description": "TENANT_ROLE_GUEST the logged in user needs at least guest role to call this method"
+              "description": "TENANT_ROLE_GUEST the logged in user needs at least guest role to call this method\nThe guest role is assumed by users who are invited to a tenant's project without them\nhaving a direct membership within the tenant."
             }
           ]
         },

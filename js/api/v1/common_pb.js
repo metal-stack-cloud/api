@@ -75,6 +75,8 @@ export var TenantRole;
     TenantRole[TenantRole["VIEWER"] = 3] = "VIEWER";
     /**
      * TENANT_ROLE_GUEST the logged in user needs at least guest role to call this method
+     * The guest role is assumed by users who are invited to a tenant's project without them
+     * having a direct membership within the tenant.
      *
      * @generated from enum value: TENANT_ROLE_GUEST = 4;
      */

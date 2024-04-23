@@ -91,6 +91,8 @@ const (
 	// TENANT_ROLE_VIEWER the logged in user needs at least viewer role to call this method
 	TenantRole_TENANT_ROLE_VIEWER TenantRole = 3
 	// TENANT_ROLE_GUEST the logged in user needs at least guest role to call this method
+	// The guest role is assumed by users who are invited to a tenant's project without them
+	// having a direct membership within the tenant.
 	TenantRole_TENANT_ROLE_GUEST TenantRole = 4
 )
 
