@@ -60,7 +60,13 @@ export declare enum TenantRole {
      *
      * @generated from enum value: TENANT_ROLE_VIEWER = 3;
      */
-    VIEWER = 3
+    VIEWER = 3,
+    /**
+     * TENANT_ROLE_GUEST the logged in user needs at least guest role to call this method
+     *
+     * @generated from enum value: TENANT_ROLE_GUEST = 4;
+     */
+    GUEST = 4
 }
 /**
  * ProjectRole specifies what role a logged in user needs to call this project scoped service

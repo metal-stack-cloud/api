@@ -15,6 +15,6 @@
     "@connectrpc/connect-web": "^1.4.0"
   },
   "devDependencies": {
-    "typescript": "^5.4.3"
+    "typescript": "^5.4.5"
   }
 }

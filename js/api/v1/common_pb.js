@@ -73,6 +73,12 @@ export var TenantRole;
      * @generated from enum value: TENANT_ROLE_VIEWER = 3;
      */
     TenantRole[TenantRole["VIEWER"] = 3] = "VIEWER";
+    /**
+     * TENANT_ROLE_GUEST the logged in user needs at least guest role to call this method
+     *
+     * @generated from enum value: TENANT_ROLE_GUEST = 4;
+     */
+    TenantRole[TenantRole["GUEST"] = 4] = "GUEST";
 })(TenantRole || (TenantRole = {}));
 // Retrieve enum metadata with: proto3.getEnumType(TenantRole)
 proto3.util.setEnumType(TenantRole, "api.v1.TenantRole", [
@@ -80,6 +86,7 @@ proto3.util.setEnumType(TenantRole, "api.v1.TenantRole", [
     { no: 1, name: "TENANT_ROLE_OWNER" },
     { no: 2, name: "TENANT_ROLE_EDITOR" },
     { no: 3, name: "TENANT_ROLE_VIEWER" },
+    { no: 4, name: "TENANT_ROLE_GUEST" },
 ]);
 /**
  * ProjectRole specifies what role a logged in user needs to call this project scoped service

@@ -533,6 +533,11 @@
               "name": "TENANT_ROLE_VIEWER",
               "number": "3",
               "description": "TENANT_ROLE_VIEWER the logged in user needs at least viewer role to call this method"
+            },
+            {
+              "name": "TENANT_ROLE_GUEST",
+              "number": "4",
+              "description": "TENANT_ROLE_GUEST the logged in user needs at least guest role to call this method"
             }
           ]
         },

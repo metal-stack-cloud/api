@@ -81,6 +81,13 @@ export enum TenantRole {
    * @generated from enum value: TENANT_ROLE_VIEWER = 3;
    */
   VIEWER = 3,
+
+  /**
+   * TENANT_ROLE_GUEST the logged in user needs at least guest role to call this method
+   *
+   * @generated from enum value: TENANT_ROLE_GUEST = 4;
+   */
+  GUEST = 4,
 }
 // Retrieve enum metadata with: proto3.getEnumType(TenantRole)
 proto3.util.setEnumType(TenantRole, "api.v1.TenantRole", [
@@ -88,6 +95,7 @@ proto3.util.setEnumType(TenantRole, "api.v1.TenantRole", [
   { no: 1, name: "TENANT_ROLE_OWNER" },
   { no: 2, name: "TENANT_ROLE_EDITOR" },
   { no: 3, name: "TENANT_ROLE_VIEWER" },
+  { no: 4, name: "TENANT_ROLE_GUEST" },
 ]);
 
 /**
