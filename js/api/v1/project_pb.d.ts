@@ -33,12 +33,6 @@ export declare class Project extends Message<Project> {
      */
     tenant: string;
     /**
-     * ProjectMembers in this project
-     *
-     * @generated from field: repeated api.v1.ProjectMember project_members = 5;
-     */
-    projectMembers: ProjectMember[];
-    /**
      * CreatedAt the date when this project was created
      *
      * @generated from field: google.protobuf.Timestamp created_at = 10;
@@ -77,6 +71,15 @@ export declare class ProjectMember extends Message<ProjectMember> {
      * @generated from field: api.v1.ProjectRole role = 2;
      */
     role: ProjectRole;
+    /**
+     * ImplicitMembership indicates that this member has implicit permissions on the project through his membership within the tenant.
+     * This member does not have direct project membership but gains permissions on this project from the role he has in the tenant.
+     * Implicit members are not included for users with guest permission on a project but only for direct tenant members.
+     * Permissions cannot be updated through Project Member Update for this member.
+     *
+     * @generated from field: bool implicit_membership = 3;
+     */
+    implicitMembership: boolean;
     /**
      * CreatedAt the date when the member was added to the project
      *
@@ -242,6 +245,12 @@ export declare class ProjectServiceGetResponse extends Message<ProjectServiceGet
      * @generated from field: api.v1.Project project = 1;
      */
     project?: Project;
+    /**
+     * ProjectMembers in this project, projects guests will only see direct project members and not implicit memberships from tenant permissions
+     *
+     * @generated from field: repeated api.v1.ProjectMember project_members = 2;
+     */
+    projectMembers: ProjectMember[];
     constructor(data?: PartialMessage<ProjectServiceGetResponse>);
     static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.ProjectServiceGetResponse";

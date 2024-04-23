@@ -81,12 +81,6 @@ export declare class Tenant extends Message<Tenant> {
      */
     onboarded: boolean;
     /**
-     * TenantMembers of this tenant
-     *
-     * @generated from field: repeated api.v1.TenantMember tenant_members = 14;
-     */
-    tenantMembers: TenantMember[];
-    /**
      * CreatedBy stores who created this tenant
      *
      * @generated from field: string created_by = 15;
@@ -569,6 +563,12 @@ export declare class TenantServiceGetResponse extends Message<TenantServiceGetRe
      * @generated from field: api.v1.Tenant tenant = 1;
      */
     tenant?: Tenant;
+    /**
+     * TenantMembers of this tenant
+     *
+     * @generated from field: repeated api.v1.TenantMember tenant_members = 2;
+     */
+    tenantMembers: TenantMember[];
     constructor(data?: PartialMessage<TenantServiceGetResponse>);
     static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.TenantServiceGetResponse";

@@ -7521,18 +7521,6 @@
               "defaultValue": ""
             },
             {
-              "name": "tenant_members",
-              "description": "TenantMembers of this tenant",
-              "label": "repeated",
-              "type": "TenantMember",
-              "longType": "TenantMember",
-              "fullType": "api.v1.TenantMember",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
               "name": "created_by",
               "description": "CreatedBy stores who created this tenant",
               "label": "",
@@ -8015,6 +8003,18 @@
               "type": "Tenant",
               "longType": "Tenant",
               "fullType": "api.v1.Tenant",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "tenant_members",
+              "description": "TenantMembers of this tenant",
+              "label": "repeated",
+              "type": "TenantMember",
+              "longType": "TenantMember",
+              "fullType": "api.v1.TenantMember",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
@@ -11913,18 +11913,6 @@
               "defaultValue": ""
             },
             {
-              "name": "project_members",
-              "description": "ProjectMembers in this project",
-              "label": "repeated",
-              "type": "ProjectMember",
-              "longType": "ProjectMember",
-              "fullType": "api.v1.ProjectMember",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
               "name": "created_at",
               "description": "CreatedAt the date when this project was created",
               "label": "",
@@ -12099,6 +12087,18 @@
               "type": "ProjectRole",
               "longType": "ProjectRole",
               "fullType": "api.v1.ProjectRole",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "implicit_membership",
+              "description": "ImplicitMembership indicates that this member has implicit permissions on the project through his membership within the tenant.\nThis member does not have direct project membership but gains permissions on this project from the role he has in the tenant.\nImplicit members are not included for users with guest permission on a project but only for direct tenant members.\nPermissions cannot be updated through Project Member Update for this member.",
+              "label": "",
+              "type": "bool",
+              "longType": "bool",
+              "fullType": "bool",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
@@ -12331,6 +12331,18 @@
               "type": "Project",
               "longType": "Project",
               "fullType": "api.v1.Project",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "project_members",
+              "description": "ProjectMembers in this project, projects guests will only see direct project members and not implicit memberships from tenant permissions",
+              "label": "repeated",
+              "type": "ProjectMember",
+              "longType": "ProjectMember",
+              "fullType": "api.v1.ProjectMember",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",

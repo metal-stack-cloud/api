@@ -74,12 +74,6 @@ export class Tenant extends Message {
          */
         this.onboarded = false;
         /**
-         * TenantMembers of this tenant
-         *
-         * @generated from field: repeated api.v1.TenantMember tenant_members = 14;
-         */
-        this.tenantMembers = [];
-        /**
          * CreatedBy stores who created this tenant
          *
          * @generated from field: string created_by = 15;
@@ -115,7 +109,6 @@ Tenant.fields = proto3.util.newFieldList(() => [
     { no: 11, name: "terms_and_conditions", kind: "message", T: TermsAndConditions },
     { no: 12, name: "email_consent", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
     { no: 13, name: "onboarded", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
-    { no: 14, name: "tenant_members", kind: "message", T: TenantMember, repeated: true },
     { no: 15, name: "created_by", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 20, name: "created_at", kind: "message", T: Timestamp },
     { no: 21, name: "updated_at", kind: "message", T: Timestamp },
@@ -604,6 +597,12 @@ TenantServiceDeleteRequest.fields = proto3.util.newFieldList(() => [
 export class TenantServiceGetResponse extends Message {
     constructor(data) {
         super();
+        /**
+         * TenantMembers of this tenant
+         *
+         * @generated from field: repeated api.v1.TenantMember tenant_members = 2;
+         */
+        this.tenantMembers = [];
         proto3.util.initPartial(data, this);
     }
     static fromBinary(bytes, options) {
@@ -623,6 +622,7 @@ TenantServiceGetResponse.runtime = proto3;
 TenantServiceGetResponse.typeName = "api.v1.TenantServiceGetResponse";
 TenantServiceGetResponse.fields = proto3.util.newFieldList(() => [
     { no: 1, name: "tenant", kind: "message", T: Tenant },
+    { no: 2, name: "tenant_members", kind: "message", T: TenantMember, repeated: true },
 ]);
 /**
  * TenantServiceListResponse is the response payload of the tenant list request

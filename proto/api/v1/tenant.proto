@@ -110,8 +110,6 @@ message Tenant {
   bool email_consent = 12;
   // Onboarded checks if the tenant was asked to be onboarded
   bool onboarded = 13;
-  // TenantMembers of this tenant
-  repeated TenantMember tenant_members = 14;
   // CreatedBy stores who created this tenant
   string created_by = 15;
   // CreatedAt the date when this tenant was created
@@ -275,6 +273,8 @@ message TenantServiceDeleteRequest {
 message TenantServiceGetResponse {
   // Tenant is the tenant
   Tenant tenant = 1;
+  // TenantMembers of this tenant
+  repeated TenantMember tenant_members = 2;
 }
 
 // TenantServiceListResponse is the response payload of the tenant list request
