@@ -83,14 +83,13 @@ export class ProjectMember extends Message {
          */
         this.role = ProjectRole.UNSPECIFIED;
         /**
-         * ImplicitMembership indicates that this member has implicit permissions on the project through his membership within the tenant.
+         * InheritedMembership indicates that this member has implicit permissions on the project through his membership within the tenant.
          * This member does not have direct project membership but gains permissions on this project from the role he has in the tenant.
-         * Implicit members are not included for users with guest permission on a project but only for direct tenant members.
-         * Permissions cannot be updated through Project Member Update for this member.
+         * Inherited memberships are not included in member lists for users with guest permission but only for direct tenant members.
          *
-         * @generated from field: bool implicit_membership = 3;
+         * @generated from field: bool inherited_membership = 3;
          */
-        this.implicitMembership = false;
+        this.inheritedMembership = false;
         proto3.util.initPartial(data, this);
     }
     static fromBinary(bytes, options) {
@@ -111,7 +110,7 @@ ProjectMember.typeName = "api.v1.ProjectMember";
 ProjectMember.fields = proto3.util.newFieldList(() => [
     { no: 1, name: "id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 2, name: "role", kind: "enum", T: proto3.getEnumType(ProjectRole) },
-    { no: 3, name: "implicit_membership", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
+    { no: 3, name: "inherited_membership", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
     { no: 10, name: "created_at", kind: "message", T: Timestamp },
 ]);
 /**

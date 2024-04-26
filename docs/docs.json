@@ -12093,8 +12093,8 @@
               "defaultValue": ""
             },
             {
-              "name": "implicit_membership",
-              "description": "ImplicitMembership indicates that this member has implicit permissions on the project through his membership within the tenant.\nThis member does not have direct project membership but gains permissions on this project from the role he has in the tenant.\nImplicit members are not included for users with guest permission on a project but only for direct tenant members.\nPermissions cannot be updated through Project Member Update for this member.",
+              "name": "inherited_membership",
+              "description": "InheritedMembership indicates that this member has implicit permissions on the project through his membership within the tenant.\nThis member does not have direct project membership but gains permissions on this project from the role he has in the tenant.\nInherited memberships are not included in member lists for users with guest permission but only for direct tenant members.",
               "label": "",
               "type": "bool",
               "longType": "bool",

@@ -228,7 +228,7 @@ func (m *ProjectMember) validate(all bool) error {
 
 	// no validation rules for Role
 
-	// no validation rules for ImplicitMembership
+	// no validation rules for InheritedMembership
 
 	if all {
 		switch v := interface{}(m.GetCreatedAt()).(type) {

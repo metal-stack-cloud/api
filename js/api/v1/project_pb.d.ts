@@ -72,14 +72,13 @@ export declare class ProjectMember extends Message<ProjectMember> {
      */
     role: ProjectRole;
     /**
-     * ImplicitMembership indicates that this member has implicit permissions on the project through his membership within the tenant.
+     * InheritedMembership indicates that this member has implicit permissions on the project through his membership within the tenant.
      * This member does not have direct project membership but gains permissions on this project from the role he has in the tenant.
-     * Implicit members are not included for users with guest permission on a project but only for direct tenant members.
-     * Permissions cannot be updated through Project Member Update for this member.
+     * Inherited memberships are not included in member lists for users with guest permission but only for direct tenant members.
      *
-     * @generated from field: bool implicit_membership = 3;
+     * @generated from field: bool inherited_membership = 3;
      */
-    implicitMembership: boolean;
+    inheritedMembership: boolean;
     /**
      * CreatedAt the date when the member was added to the project
      *

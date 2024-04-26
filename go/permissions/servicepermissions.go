@@ -69,6 +69,9 @@ func GetServicePermissions() *ServicePermissions {
 					"/api.v1.TenantService/Delete",
 				},
 				"TENANT_ROLE_GUEST": []string{
+					"/api.v1.PaymentService/HasPaymentMethod",
+					"/api.v1.PaymentService/CheckAdmitted",
+					"/api.v1.PaymentService/HasChargeableResources",
 					"/api.v1.TenantService/Get",
 				},
 				"TENANT_ROLE_OWNER": []string{
