@@ -17,7 +17,7 @@ plugins:
     out: ../go
     opt: paths=source_relative
   # generate ts structs for protocol buffer definition
-  - plugin: buf.build/bufbuild/es:v1.8.0
+  - plugin: buf.build/bufbuild/es:v1.9.0
     out: ../js
     opt: target=ts
   - plugin: buf.build/connectrpc/es:v1.4.0
