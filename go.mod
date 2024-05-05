@@ -9,7 +9,7 @@ require (
 	github.com/go-task/slim-sprig/v3 v3.0.0
 	github.com/klauspost/connect-compress/v2 v2.0.0
 	github.com/stretchr/testify v1.9.0
-	google.golang.org/protobuf v1.33.1-0.20240408130810-98873a205002
+	google.golang.org/protobuf v1.34.0
 )
 
 require (
