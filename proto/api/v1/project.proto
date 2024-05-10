@@ -85,8 +85,6 @@ message Project {
   string description = 3;
   // Tenant this project belongs to
   string tenant = 4;
-  // ProjectMembers in this project
-  repeated ProjectMember project_members = 5;
   // CreatedAt the date when this project was created
   google.protobuf.Timestamp created_at = 10;
   // UpdatedAt the date when this project was updated
@@ -99,6 +97,10 @@ message ProjectMember {
   string id = 1;
   // Role is the role of the member
   ProjectRole role = 2;
+  // InheritedMembership indicates that this member has implicit permissions on the project through his membership within the tenant.
+  // This member does not have direct project membership but gains permissions on this project from the role he has in the tenant.
+  // Inherited memberships are not included in member lists for users with guest permission but only for direct tenant members.
+  bool inherited_membership = 3;
   // CreatedAt the date when the member was added to the project
   google.protobuf.Timestamp created_at = 10;
 }
@@ -155,6 +157,8 @@ message ProjectServiceGetRequest {
 message ProjectServiceGetResponse {
   // Project is the project
   Project project = 1;
+  // ProjectMembers in this project, projects guests will only see direct project members and not implicit memberships from tenant permissions
+  repeated ProjectMember project_members = 2;
 }
 
 // ProjectServiceCreateRequest is the request payload to Create a project

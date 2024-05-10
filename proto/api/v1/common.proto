@@ -26,6 +26,10 @@ enum TenantRole {
   TENANT_ROLE_EDITOR = 2;
   // TENANT_ROLE_VIEWER the logged in user needs at least viewer role to call this method
   TENANT_ROLE_VIEWER = 3;
+  // TENANT_ROLE_GUEST the logged in user needs at least guest role to call this method
+  // The guest role is assumed by users who are invited to a tenant's project without them
+  // having a direct membership within the tenant.
+  TENANT_ROLE_GUEST = 4;
 }
 
 // ProjectRole specifies what role a logged in user needs to call this project scoped service

@@ -67,40 +67,6 @@ func (m *Project) validate(all bool) error {
 
 	// no validation rules for Tenant
 
-	for idx, item := range m.GetProjectMembers() {
-		_, _ = idx, item
-
-		if all {
-			switch v := interface{}(item).(type) {
-			case interface{ ValidateAll() error }:
-				if err := v.ValidateAll(); err != nil {
-					errors = append(errors, ProjectValidationError{
-						field:  fmt.Sprintf("ProjectMembers[%v]", idx),
-						reason: "embedded message failed validation",
-						cause:  err,
-					})
-				}
-			case interface{ Validate() error }:
-				if err := v.Validate(); err != nil {
-					errors = append(errors, ProjectValidationError{
-						field:  fmt.Sprintf("ProjectMembers[%v]", idx),
-						reason: "embedded message failed validation",
-						cause:  err,
-					})
-				}
-			}
-		} else if v, ok := interface{}(item).(interface{ Validate() error }); ok {
-			if err := v.Validate(); err != nil {
-				return ProjectValidationError{
-					field:  fmt.Sprintf("ProjectMembers[%v]", idx),
-					reason: "embedded message failed validation",
-					cause:  err,
-				}
-			}
-		}
-
-	}
-
 	if all {
 		switch v := interface{}(m.GetCreatedAt()).(type) {
 		case interface{ ValidateAll() error }:
@@ -261,6 +227,8 @@ func (m *ProjectMember) validate(all bool) error {
 	// no validation rules for Id
 
 	// no validation rules for Role
+
+	// no validation rules for InheritedMembership
 
 	if all {
 		switch v := interface{}(m.GetCreatedAt()).(type) {
@@ -980,6 +948,40 @@ func (m *ProjectServiceGetResponse) validate(all bool) error {
 				cause:  err,
 			}
 		}
+	}
+
+	for idx, item := range m.GetProjectMembers() {
+		_, _ = idx, item
+
+		if all {
+			switch v := interface{}(item).(type) {
+			case interface{ ValidateAll() error }:
+				if err := v.ValidateAll(); err != nil {
+					errors = append(errors, ProjectServiceGetResponseValidationError{
+						field:  fmt.Sprintf("ProjectMembers[%v]", idx),
+						reason: "embedded message failed validation",
+						cause:  err,
+					})
+				}
+			case interface{ Validate() error }:
+				if err := v.Validate(); err != nil {
+					errors = append(errors, ProjectServiceGetResponseValidationError{
+						field:  fmt.Sprintf("ProjectMembers[%v]", idx),
+						reason: "embedded message failed validation",
+						cause:  err,
+					})
+				}
+			}
+		} else if v, ok := interface{}(item).(interface{ Validate() error }); ok {
+			if err := v.Validate(); err != nil {
+				return ProjectServiceGetResponseValidationError{
+					field:  fmt.Sprintf("ProjectMembers[%v]", idx),
+					reason: "embedded message failed validation",
+					cause:  err,
+				}
+			}
+		}
+
 	}
 
 	if len(errors) > 0 {
