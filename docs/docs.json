@@ -11713,7 +11713,7 @@
           "fields": [
             {
               "name": "to",
-              "description": "to is the destination email adress(es)",
+              "description": "to is the destination email address(es)",
               "label": "repeated",
               "type": "string",
               "longType": "string",

@@ -121,7 +121,7 @@ proto3.util.setEnumType(MailFunction, "api.v1.MailFunction", [
  */
 export class Email extends Message<Email> {
   /**
-   * to is the destination email adress(es)
+   * to is the destination email address(es)
    *
    * @generated from field: repeated string to = 1;
    */

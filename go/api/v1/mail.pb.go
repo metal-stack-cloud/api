@@ -154,7 +154,7 @@ type Email struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// to is the destination email adress(es)
+	// to is the destination email address(es)
 	To []string `protobuf:"bytes,1,rep,name=to,proto3" json:"to,omitempty"`
 	// subject is the the title of the mail
 	Subject *string `protobuf:"bytes,2,opt,name=subject,proto3,oneof" json:"subject,omitempty"`

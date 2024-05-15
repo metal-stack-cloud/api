@@ -87,7 +87,7 @@ export declare enum MailFunction {
  */
 export declare class Email extends Message<Email> {
     /**
-     * to is the destination email adress(es)
+     * to is the destination email address(es)
      *
      * @generated from field: repeated string to = 1;
      */

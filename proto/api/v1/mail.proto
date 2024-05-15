@@ -37,7 +37,7 @@ enum MailFunction {
 
 // Email is an email we can send from the api-server
 message Email {
-  // to is the destination email adress(es)
+  // to is the destination email address(es)
   repeated string to = 1 [(validate.rules).repeated = {
     unique: true
     min_items: 1

@@ -111,7 +111,7 @@ export class Email extends Message {
     constructor(data) {
         super();
         /**
-         * to is the destination email adress(es)
+         * to is the destination email address(es)
          *
          * @generated from field: repeated string to = 1;
          */
