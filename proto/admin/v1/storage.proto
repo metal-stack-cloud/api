@@ -6,62 +6,98 @@ import "api/v1/common.proto";
 import "api/v1/volume.proto";
 import "validate/validate.proto";
 
+// StorageService serves storage related functions
 service StorageService {
+  // ClusterInfo returns overall statistics of the storage system
   rpc ClusterInfo(StorageServiceClusterInfoRequest) returns (StorageServiceClusterInfoResponse) {
     option (api.v1.admin_roles) = ADMIN_ROLE_EDITOR;
     option (api.v1.admin_roles) = ADMIN_ROLE_VIEWER;
   }
+  // ListVolumes list all volumes
   rpc ListVolumes(StorageServiceListVolumesRequest) returns (StorageServiceListVolumesResponse) {
     option (api.v1.admin_roles) = ADMIN_ROLE_EDITOR;
     option (api.v1.admin_roles) = ADMIN_ROLE_VIEWER;
   }
+  // ListSnapshots list all snapshots
   rpc ListSnapshots(StorageServiceListSnapshotsRequest) returns (StorageServiceListSnapshotsResponse) {
     option (api.v1.admin_roles) = ADMIN_ROLE_EDITOR;
     option (api.v1.admin_roles) = ADMIN_ROLE_VIEWER;
   }
 }
 
+// StorageServiceClusterInfoRequest is the request payload for the cluster info request
 message StorageServiceClusterInfoRequest {
+  // Partition for which the cluster info should be returned
   optional string partition = 1;
 }
 
+// StorageServiceClusterInfoResponse is the response payload for the cluster info request
 message StorageServiceClusterInfoResponse {
+  // Infos about the storage systems
   repeated StorageClusterInfo infos = 1;
 }
 
+// StorageClusterInfo represents details about a storage system
 message StorageClusterInfo {
+  // Partition where this storage system is present
   string partition = 1;
+  // Uuid of this storage system
   string uuid = 2;
+  // SubsystemNqn is the subsystem nqn
   string subsystem_nqn = 3;
+  // CurrentMaxReplicas defines how many replicas a volume can have currently
   uint32 current_max_replicas = 4;
+  // SupportedMaxReplicas defines how many replicas a volume can have at max
   uint32 supported_max_replicas = 5;
+  // Statistics of the storage system
   ClusterStatisticsApi statistics = 6;
+  // Health of the storage system
   ClusterHealth health = 7;
+  // MinVersionInCluster is the minimum server version in this cluster
   string min_version_in_cluster = 8;
+  // MinAllowedVersion is the minimum possible server version in this cluster
   string min_allowed_version = 9;
+  // MaxAllowedVersion is the maximum possible server version in this cluster
   string max_allowed_version = 10;
+  // ApiEndpoints is a list of ips of all api endpoints this cluster has
   repeated string api_endpoints = 11;
+  // DiscoveryEndpoints is a list of ips of all discovery endpoints this cluster has
   repeated string discovery_endpoints = 12;
+  // Servers is a list of storage servers in this storage system
   repeated StorageServerInfo servers = 13;
 }
 
+// StorageServerInfo contains details about a single storage server
 message StorageServerInfo {
+  // Uuid of this server
   string uuid = 1;
+  // Name of this server
   string name = 2;
+  // RiskOfServiceLossState describes the risk of service loss
   string risk_of_service_loss_state = 3;
+  // State of this server
   string state = 4;
+  // ServerEndpoints is a list of ips this server offers
   repeated string server_endpoints = 5;
+  // LightOsVersion is the version of the storage server version
   string light_os_version = 6;
 }
 
+// ClusterHealth the health of the cluster
 message ClusterHealth {
+  // State of the cluster
   string state = 1;
+  // NumDegradedVolumes is the number of degraded volumes
   uint32 num_degraded_volumes = 2;
+  // NumReadonlyVolumes is the number of read only volumes
   uint32 num_read_only_volumes = 3;
+  // NumNotAvailableVolumes is the number of not available volumes
   uint32 num_not_available_volumes = 4;
+  // NumInactiveVolumes is the number of inactive volumes
   uint32 num_inactive_nodes = 5;
 }
 
+// ClusterStatisticsApi detailed statistics of the storage cluster
 message ClusterStatisticsApi {
   // Installed Physical Storage
   //
@@ -103,38 +139,54 @@ message ClusterStatisticsApi {
   //
   // Estimate of total available logical storage based on current compression ratio (effective * compression)
   uint64 estimated_logical_storage = 10;
-  // commpression ratio
+  // compression ratio
   //
   // compression ratio logicalUsedStorage/physicalUsedStorage
   double compression_ratio = 11;
 }
 
+// StorageServiceListVolumesRequest is the request payload for the volume list request
 message StorageServiceListVolumesRequest {
+  // Uuid is the uuid of the volume to list
   optional string uuid = 1 [(validate.rules).string.uuid = true];
+  // Project is the project of the volume to list
   optional string project = 2 [(validate.rules).string = {
     min_len: 2,
     max_len: 128
   }];
+  // Partition is the partition of the volume to list
   optional string partition = 3;
+  // Name is the name of the volume to list
   optional string name = 4;
+  // Tenant is the tenant of the volume to list
   optional string tenant = 5;
 }
 
+// StorageServiceListVolumesResponse is the response payload for the volume list request
 message StorageServiceListVolumesResponse {
+  // Volumes is the list of volumes
   repeated api.v1.Volume volumes = 1;
 }
 
+// StorageServiceListVolumesRequest is the request payload for the snapshot list request
 message StorageServiceListSnapshotsRequest {
+  // Uuid is the uuid of the snapshot to list
   optional string uuid = 1 [(validate.rules).string.uuid = true];
+  // Project is the project of the snapshot to list
   optional string project = 2 [(validate.rules).string = {
     min_len: 2,
     max_len: 128
   }];
+  // Partition is the partition of the snapshot to list
   optional string partition = 3;
+  // Name is the name of the snapshot to list
   optional string name = 4;
+  // Tenant is the tenant of the snapshot to list
   optional string tenant = 5;
 }
 
+// StorageServiceListSnapshotsResponse is the response payload for the snapshot list request
 message StorageServiceListSnapshotsResponse {
+  // Snapshots is the list of snapshots
   repeated api.v1.Snapshot snapshots = 1;
 }

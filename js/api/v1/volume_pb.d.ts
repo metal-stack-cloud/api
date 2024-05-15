@@ -1,88 +1,128 @@
 import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
 import { Duration, Message, proto3, Timestamp } from "@bufbuild/protobuf";
 /**
- * Types
+ * Volume is a unit of block storage
  *
  * @generated from message api.v1.Volume
  */
 export declare class Volume extends Message<Volume> {
     /**
+     * Uuid is the unique identifier of the volume
+     *
      * @generated from field: string uuid = 1;
      */
     uuid: string;
     /**
+     * Name of the volume
+     *
      * @generated from field: string name = 2;
      */
     name: string;
     /**
+     * Project this volume belongs to
+     *
      * @generated from field: string project = 3;
      */
     project: string;
     /**
+     * Partition where this volume resides
+     *
      * @generated from field: string partition = 4;
      */
     partition: string;
     /**
+     * StorageClass where this volume is created
+     *
      * @generated from field: string storage_class = 5;
      */
     storageClass: string;
     /**
+     * Size in bytes of the volume
+     *
      * @generated from field: uint64 size = 6;
      */
     size: bigint;
     /**
+     * Usage in bytes of the volume
+     *
      * @generated from field: uint64 usage = 7;
      */
     usage: bigint;
     /**
+     * State of the volume
+     *
      * @generated from field: string state = 8;
      */
     state: string;
     /**
+     * AttachedTo us a list of nodes this volume is attached
+     *
      * @generated from field: repeated string attached_to = 9;
      */
     attachedTo: string[];
     /**
+     * SourceSnapshotUuid if this volume was created from a snapshot, this was the uuid source
+     *
      * @generated from field: string source_snapshot_uuid = 10;
      */
     sourceSnapshotUuid: string;
     /**
+     * SourceSnapshotName if this volume was created from a snapshot, this was the name of the source
+     *
      * @generated from field: string source_snapshot_name = 11;
      */
     sourceSnapshotName: string;
     /**
+     * VolumeHandle is the handle to mount this volume manually
+     *
      * @generated from field: string volume_handle = 12;
      */
     volumeHandle: string;
     /**
+     * NodeIps is a list of storage server node ips
+     *
      * @generated from field: repeated string node_ips = 13;
      */
     nodeIps: string[];
     /**
+     * RebuildProgress shows the progress of a rebuild if any
+     *
      * @generated from field: string rebuild_progress = 14;
      */
     rebuildProgress: string;
     /**
+     * PrimaryNodeUuid is the uuid of the storage server node where the primary replica of this volume resides
+     *
      * @generated from field: string primary_node_uuid = 15;
      */
     primaryNodeUuid: string;
     /**
+     * QosPolicyUuid is the uuid of the QOS policy if any
+     *
      * @generated from field: string qos_policy_uuid = 16;
      */
     qosPolicyUuid: string;
     /**
+     * QosPolicyName is the name of the QOS policy if any
+     *
      * @generated from field: string qos_policy_name = 17;
      */
     qosPolicyName: string;
     /**
+     * ReplicaCount shows how many replicas of this volume exist
+     *
      * @generated from field: uint32 replica_count = 18;
      */
     replicaCount: number;
     /**
+     * ProtectionState shows the state of failure protection of this volume
+     *
      * @generated from field: string protection_state = 19;
      */
     protectionState: string;
     /**
+     * LogicalUsedStorage in bytes of the volume
+     *
      * @generated from field: uint64 logical_used_storage = 20;
      */
     logicalUsedStorage: bigint;
@@ -102,11 +142,13 @@ export declare class Volume extends Message<Volume> {
     static equals(a: Volume | PlainMessage<Volume> | undefined, b: Volume | PlainMessage<Volume> | undefined): boolean;
 }
 /**
+ * VolumeStatistics are all detailed statistics of a volume
+ *
  * @generated from message api.v1.VolumeStatistics
  */
 export declare class VolumeStatistics extends Message<VolumeStatistics> {
     /**
-     * Logical Used Storage
+     * LogicalUsedStorage
      *
      * Logical storage space used by volume, given in bytes.
      *
@@ -114,7 +156,7 @@ export declare class VolumeStatistics extends Message<VolumeStatistics> {
      */
     logicalUsedStorage: bigint;
     /**
-     * Physical Used Storage
+     * PhysicalUsedStorage
      *
      * Physical storage space used by volume excluding parity, given in bytes.
      *
@@ -122,7 +164,7 @@ export declare class VolumeStatistics extends Message<VolumeStatistics> {
      */
     physicalUsedStorage: bigint;
     /**
-     * commpression ratio
+     * CompressionRatio
      *
      * compression ratio userWritten/physicalCapacity
      *
@@ -130,7 +172,7 @@ export declare class VolumeStatistics extends Message<VolumeStatistics> {
      */
     compressionRatio: number;
     /**
-     * total commpression ratio
+     * TotalCompressionRatio
      *
      * compression ratio sum(userWritten) / sum(physical capacity)
      *
@@ -146,7 +188,7 @@ export declare class VolumeStatistics extends Message<VolumeStatistics> {
      */
     physicalCapacity: bigint;
     /**
-     * Physical Owned storage Capacity
+     * PhysicalOwnedStorageCapacity
      *
      * The capacity that would be freed when volume is deleted
      *
@@ -154,19 +196,31 @@ export declare class VolumeStatistics extends Message<VolumeStatistics> {
      */
     physicalOwnedCapacity: bigint;
     /**
+     * PhysicalOwnedMemory
+     *
+     * The memory that would be freed when volume is deleted
+     *
      * @generated from field: uint64 physical_owned_memory = 7;
      */
     physicalOwnedMemory: bigint;
     /**
+     * PhysicalMemory
+     *
+     * The memory that exists for this volume
+     *
      * @generated from field: uint64 physical_memory = 8;
      */
     physicalMemory: bigint;
     /**
+     * UserWritten
+     *
+     * The amount of bytes written to this volume by the user
+     *
      * @generated from field: uint64 user_written = 9;
      */
     userWritten: bigint;
     /**
-     * Unrecoverable Data Integrity Errors
+     * UnrecoverableDataIntegrityErrors
      *
      * Number of data integrity errors that could no be recovered by the system.
      *
@@ -174,7 +228,7 @@ export declare class VolumeStatistics extends Message<VolumeStatistics> {
      */
     unrecoverableDataIntegrityErrors: number;
     /**
-     * Recoverable Data Integrity Errors
+     * RecoverableDataIntegrityErrors
      *
      * Number of data integrity errors that were recovered by the system.
      *
@@ -191,62 +245,92 @@ export declare class VolumeStatistics extends Message<VolumeStatistics> {
     static equals(a: VolumeStatistics | PlainMessage<VolumeStatistics> | undefined, b: VolumeStatistics | PlainMessage<VolumeStatistics> | undefined): boolean;
 }
 /**
+ * Snapshot is a unit of block storage create as a point in time block copy of a volume
+ *
  * @generated from message api.v1.Snapshot
  */
 export declare class Snapshot extends Message<Snapshot> {
     /**
+     * Uuid is the unique identifier of the snapshot
+     *
      * @generated from field: string uuid = 1;
      */
     uuid: string;
     /**
+     * Name of the snapshot
+     *
      * @generated from field: string name = 2;
      */
     name: string;
     /**
+     * Description of this snapshot
+     *
      * @generated from field: string description = 3;
      */
     description: string;
     /**
+     * Project this snapshot belongs to
+     *
      * @generated from field: string project = 4;
      */
     project: string;
     /**
+     * Partition where this snapshot resides
+     *
      * @generated from field: string partition = 5;
      */
     partition: string;
     /**
+     * StorageClass where this snapshot is created
+     *
      * @generated from field: string storage_class = 6;
      */
     storageClass: string;
     /**
+     * Size in bytes of the snapshot
+     *
      * @generated from field: uint64 size = 7;
      */
     size: bigint;
     /**
+     * Usage in bytes of the snapshot
+     *
      * @generated from field: uint64 usage = 8;
      */
     usage: bigint;
     /**
+     * State of the snapshot
+     *
      * @generated from field: string state = 9;
      */
     state: string;
     /**
+     * SourceVolumeUuid is the uuid of the snapshot this snapshot was created from
+     *
      * @generated from field: string source_volume_uuid = 10;
      */
     sourceVolumeUuid: string;
     /**
+     * SourceVolumeName is the name of the snapshot this snapshot was created from
+     *
      * @generated from field: string source_volume_name = 11;
      */
     sourceVolumeName: string;
     /**
+     * ReplicaCount shows how many replicas of this snapshot exist
+     *
      * @generated from field: uint32 replica_count = 12;
      */
     replicaCount: number;
     /**
+     * PrimaryNodeUuid is the uuid of the storage server node where the primary replica of this snapshot resides
+     *
      * @generated from field: string primary_node_uuid = 13;
      */
     primaryNodeUuid: string;
     /**
+     * Retention is the duration after creation, after which this snapshot will be deleted
+     *
      * @generated from field: google.protobuf.Duration retention = 14;
      */
     retention?: Duration;
@@ -257,6 +341,8 @@ export declare class Snapshot extends Message<Snapshot> {
      */
     statistics?: SnapshotStatistics;
     /**
+     * CreatedAt is the date when this snapshot was created
+     *
      * @generated from field: google.protobuf.Timestamp created_at = 20;
      */
     createdAt?: Timestamp;
@@ -270,26 +356,48 @@ export declare class Snapshot extends Message<Snapshot> {
     static equals(a: Snapshot | PlainMessage<Snapshot> | undefined, b: Snapshot | PlainMessage<Snapshot> | undefined): boolean;
 }
 /**
+ * SnapshotStatistics are all detailed statistics of a snapshot
+ *
  * @generated from message api.v1.SnapshotStatistics
  */
 export declare class SnapshotStatistics extends Message<SnapshotStatistics> {
     /**
+     * PhysicalCapacity
+     *
+     * The physical capacity that exists in this snapshot layer
+     *
      * @generated from field: uint64 physical_capacity = 1;
      */
     physicalCapacity: bigint;
     /**
+     * PhysicalOwnedStorageCapacity
+     *
+     * The capacity that would be freed when snapshot is deleted
+     *
      * @generated from field: uint64 physical_owned_capacity = 2;
      */
     physicalOwnedCapacity: bigint;
     /**
+     * PhysicalOwnedMemory
+     *
+     * The memory that would be freed when snapshot is deleted
+     *
      * @generated from field: uint64 physical_owned_memory = 3;
      */
     physicalOwnedMemory: bigint;
     /**
+     * PhysicalMemory
+     *
+     * The memory that exists for this snapshot
+     *
      * @generated from field: uint64 physical_memory = 4;
      */
     physicalMemory: bigint;
     /**
+     * UserWritten
+     *
+     * The amount of bytes written to this snapshot by the user
+     *
      * @generated from field: uint64 user_written = 5;
      */
     userWritten: bigint;
@@ -303,16 +411,20 @@ export declare class SnapshotStatistics extends Message<SnapshotStatistics> {
     static equals(a: SnapshotStatistics | PlainMessage<SnapshotStatistics> | undefined, b: SnapshotStatistics | PlainMessage<SnapshotStatistics> | undefined): boolean;
 }
 /**
- * Requests
+ * VolumeServiceGetRequest is the request payload of the volume get request
  *
  * @generated from message api.v1.VolumeServiceGetRequest
  */
 export declare class VolumeServiceGetRequest extends Message<VolumeServiceGetRequest> {
     /**
+     * Uuid of the volume
+     *
      * @generated from field: string uuid = 1;
      */
     uuid: string;
     /**
+     * Project of the volume
+     *
      * @generated from field: string project = 2;
      */
     project: string;
@@ -326,22 +438,32 @@ export declare class VolumeServiceGetRequest extends Message<VolumeServiceGetReq
     static equals(a: VolumeServiceGetRequest | PlainMessage<VolumeServiceGetRequest> | undefined, b: VolumeServiceGetRequest | PlainMessage<VolumeServiceGetRequest> | undefined): boolean;
 }
 /**
+ * VolumeServiceListRequest is the request payload of a volume list request
+ *
  * @generated from message api.v1.VolumeServiceListRequest
  */
 export declare class VolumeServiceListRequest extends Message<VolumeServiceListRequest> {
     /**
+     * Uuid of the volume
+     *
      * @generated from field: optional string uuid = 1;
      */
     uuid?: string;
     /**
+     * Project of the volume
+     *
      * @generated from field: string project = 2;
      */
     project: string;
     /**
+     * Partition where the volumes should be listed
+     *
      * @generated from field: optional string partition = 3;
      */
     partition?: string;
     /**
+     * Name of the volume
+     *
      * @generated from field: optional string name = 4;
      */
     name?: string;
@@ -355,14 +477,20 @@ export declare class VolumeServiceListRequest extends Message<VolumeServiceListR
     static equals(a: VolumeServiceListRequest | PlainMessage<VolumeServiceListRequest> | undefined, b: VolumeServiceListRequest | PlainMessage<VolumeServiceListRequest> | undefined): boolean;
 }
 /**
+ * VolumeServiceDeleteRequest is the request payload of a volume delete request
+ *
  * @generated from message api.v1.VolumeServiceDeleteRequest
  */
 export declare class VolumeServiceDeleteRequest extends Message<VolumeServiceDeleteRequest> {
     /**
+     * Uuid of the volume
+     *
      * @generated from field: string uuid = 1;
      */
     uuid: string;
     /**
+     * Project of the volume
+     *
      * @generated from field: string project = 2;
      */
     project: string;
@@ -376,14 +504,20 @@ export declare class VolumeServiceDeleteRequest extends Message<VolumeServiceDel
     static equals(a: VolumeServiceDeleteRequest | PlainMessage<VolumeServiceDeleteRequest> | undefined, b: VolumeServiceDeleteRequest | PlainMessage<VolumeServiceDeleteRequest> | undefined): boolean;
 }
 /**
+ * SnapshotServiceGetRequest is the request payload of a snapshot list request
+ *
  * @generated from message api.v1.SnapshotServiceGetRequest
  */
 export declare class SnapshotServiceGetRequest extends Message<SnapshotServiceGetRequest> {
     /**
+     * Uuid of the snapshot
+     *
      * @generated from field: string uuid = 1;
      */
     uuid: string;
     /**
+     * Project of the snapshot
+     *
      * @generated from field: string project = 2;
      */
     project: string;
@@ -397,22 +531,32 @@ export declare class SnapshotServiceGetRequest extends Message<SnapshotServiceGe
     static equals(a: SnapshotServiceGetRequest | PlainMessage<SnapshotServiceGetRequest> | undefined, b: SnapshotServiceGetRequest | PlainMessage<SnapshotServiceGetRequest> | undefined): boolean;
 }
 /**
+ * SnapshotServiceListRequest is the request payload of a snapshot list request
+ *
  * @generated from message api.v1.SnapshotServiceListRequest
  */
 export declare class SnapshotServiceListRequest extends Message<SnapshotServiceListRequest> {
     /**
+     * Uuid of the snapshot
+     *
      * @generated from field: optional string uuid = 1;
      */
     uuid?: string;
     /**
+     * Project of the snapshot
+     *
      * @generated from field: string project = 2;
      */
     project: string;
     /**
+     * Partition where the snapshots should be listed
+     *
      * @generated from field: optional string partition = 3;
      */
     partition?: string;
     /**
+     * Name of the snapshot
+     *
      * @generated from field: optional string name = 4;
      */
     name?: string;
@@ -426,14 +570,20 @@ export declare class SnapshotServiceListRequest extends Message<SnapshotServiceL
     static equals(a: SnapshotServiceListRequest | PlainMessage<SnapshotServiceListRequest> | undefined, b: SnapshotServiceListRequest | PlainMessage<SnapshotServiceListRequest> | undefined): boolean;
 }
 /**
+ * SnapshotServiceDeleteRequest is the request payload of a snapshot delete request
+ *
  * @generated from message api.v1.SnapshotServiceDeleteRequest
  */
 export declare class SnapshotServiceDeleteRequest extends Message<SnapshotServiceDeleteRequest> {
     /**
+     * Uuid of the snapshot
+     *
      * @generated from field: string uuid = 1;
      */
     uuid: string;
     /**
+     * Project of the snapshot
+     *
      * @generated from field: string project = 2;
      */
     project: string;
@@ -447,12 +597,14 @@ export declare class SnapshotServiceDeleteRequest extends Message<SnapshotServic
     static equals(a: SnapshotServiceDeleteRequest | PlainMessage<SnapshotServiceDeleteRequest> | undefined, b: SnapshotServiceDeleteRequest | PlainMessage<SnapshotServiceDeleteRequest> | undefined): boolean;
 }
 /**
- * Responses
+ * VolumeServiceGetResponse is the response payload of a volume get request
  *
  * @generated from message api.v1.VolumeServiceGetResponse
  */
 export declare class VolumeServiceGetResponse extends Message<VolumeServiceGetResponse> {
     /**
+     * Volume the volume
+     *
      * @generated from field: api.v1.Volume volume = 1;
      */
     volume?: Volume;
@@ -466,10 +618,14 @@ export declare class VolumeServiceGetResponse extends Message<VolumeServiceGetRe
     static equals(a: VolumeServiceGetResponse | PlainMessage<VolumeServiceGetResponse> | undefined, b: VolumeServiceGetResponse | PlainMessage<VolumeServiceGetResponse> | undefined): boolean;
 }
 /**
+ * VolumeServiceListResponse is the response payload of a volume list request
+ *
  * @generated from message api.v1.VolumeServiceListResponse
  */
 export declare class VolumeServiceListResponse extends Message<VolumeServiceListResponse> {
     /**
+     * Volumes the volumes
+     *
      * @generated from field: repeated api.v1.Volume volumes = 1;
      */
     volumes: Volume[];
@@ -483,10 +639,14 @@ export declare class VolumeServiceListResponse extends Message<VolumeServiceList
     static equals(a: VolumeServiceListResponse | PlainMessage<VolumeServiceListResponse> | undefined, b: VolumeServiceListResponse | PlainMessage<VolumeServiceListResponse> | undefined): boolean;
 }
 /**
+ * VolumeServiceDeleteResponse is the response payload of a volume delete request
+ *
  * @generated from message api.v1.VolumeServiceDeleteResponse
  */
 export declare class VolumeServiceDeleteResponse extends Message<VolumeServiceDeleteResponse> {
     /**
+     * Volume the volume
+     *
      * @generated from field: api.v1.Volume volume = 1;
      */
     volume?: Volume;
@@ -500,10 +660,14 @@ export declare class VolumeServiceDeleteResponse extends Message<VolumeServiceDe
     static equals(a: VolumeServiceDeleteResponse | PlainMessage<VolumeServiceDeleteResponse> | undefined, b: VolumeServiceDeleteResponse | PlainMessage<VolumeServiceDeleteResponse> | undefined): boolean;
 }
 /**
+ * SnapshotServiceGetResponse is the response payload of a snapshot get request
+ *
  * @generated from message api.v1.SnapshotServiceGetResponse
  */
 export declare class SnapshotServiceGetResponse extends Message<SnapshotServiceGetResponse> {
     /**
+     * Snapshot the snapshot
+     *
      * @generated from field: api.v1.Snapshot snapshot = 1;
      */
     snapshot?: Snapshot;
@@ -517,10 +681,14 @@ export declare class SnapshotServiceGetResponse extends Message<SnapshotServiceG
     static equals(a: SnapshotServiceGetResponse | PlainMessage<SnapshotServiceGetResponse> | undefined, b: SnapshotServiceGetResponse | PlainMessage<SnapshotServiceGetResponse> | undefined): boolean;
 }
 /**
+ * SnapshotServiceListResponse is the response payload of a snapshot list request
+ *
  * @generated from message api.v1.SnapshotServiceListResponse
  */
 export declare class SnapshotServiceListResponse extends Message<SnapshotServiceListResponse> {
     /**
+     * Snapshots the snapshots
+     *
      * @generated from field: repeated api.v1.Snapshot snapshots = 1;
      */
     snapshots: Snapshot[];
@@ -534,10 +702,14 @@ export declare class SnapshotServiceListResponse extends Message<SnapshotService
     static equals(a: SnapshotServiceListResponse | PlainMessage<SnapshotServiceListResponse> | undefined, b: SnapshotServiceListResponse | PlainMessage<SnapshotServiceListResponse> | undefined): boolean;
 }
 /**
+ * SnapshotServiceDeleteResponse is the response payload of a snapshot delete request
+ *
  * @generated from message api.v1.SnapshotServiceDeleteResponse
  */
 export declare class SnapshotServiceDeleteResponse extends Message<SnapshotServiceDeleteResponse> {
     /**
+     * Snapshot the snapshot
+     *
      * @generated from field: api.v1.Snapshot snapshot = 1;
      */
     snapshot?: Snapshot;

@@ -1,0 +1,22 @@
+---
+- hosts: localhost
+  tasks:
+  - name: List all clusters in a project
+    ansible.builtin.uri:
+      url: https://api.metalstack.cloud/api.v1.ClusterService/List
+      method: POST
+      body_format: json
+      status_code: [200, 202]
+      return_content: true
+      headers:
+        Content-Type: application/json
+        Authorization: Bearer {{ lookup('ansible.builtin.env', 'API_TOKEN') }}
+      body: 
+        project: "{{ lookup('ansible.builtin.env', 'PROJECT_ID') }}"
+    register: result
+
+  - name: Display clusters
+    ansible.builtin.debug:
+      msg: "{{ item.name }} - {{ item.uuid }}"
+    loop: "{{ result.json.clusters }}"
+  

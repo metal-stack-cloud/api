@@ -18,7 +18,7 @@ import (
 // generated with a version of connect newer than the one compiled into your binary. You can fix the
 // problem by either regenerating this code with an older version of connect or updating the connect
 // version compiled into your binary.
-const _ = connect.IsAtLeastVersion0_1_0
+const _ = connect.IsAtLeastVersion1_13_0
 
 const (
 	// StatusServiceName is the fully-qualified name of the StatusService service.
@@ -37,8 +37,15 @@ const (
 	StatusServiceGetProcedure = "/status.v1.StatusService/Get"
 )
 
+// These variables are the protoreflect.Descriptor objects for the RPCs defined in this package.
+var (
+	statusServiceServiceDescriptor   = v1.File_status_v1_status_proto.Services().ByName("StatusService")
+	statusServiceGetMethodDescriptor = statusServiceServiceDescriptor.Methods().ByName("Get")
+)
+
 // StatusServiceClient is a client for the status.v1.StatusService service.
 type StatusServiceClient interface {
+	// Get the system status
 	Get(context.Context, *connect.Request[v1.StatusServiceGetRequest]) (*connect.Response[v1.StatusServiceGetResponse], error)
 }
 
@@ -55,7 +62,8 @@ func NewStatusServiceClient(httpClient connect.HTTPClient, baseURL string, opts 
 		get: connect.NewClient[v1.StatusServiceGetRequest, v1.StatusServiceGetResponse](
 			httpClient,
 			baseURL+StatusServiceGetProcedure,
-			opts...,
+			connect.WithSchema(statusServiceGetMethodDescriptor),
+			connect.WithClientOptions(opts...),
 		),
 	}
 }
@@ -72,6 +80,7 @@ func (c *statusServiceClient) Get(ctx context.Context, req *connect.Request[v1.S
 
 // StatusServiceHandler is an implementation of the status.v1.StatusService service.
 type StatusServiceHandler interface {
+	// Get the system status
 	Get(context.Context, *connect.Request[v1.StatusServiceGetRequest]) (*connect.Response[v1.StatusServiceGetResponse], error)
 }
 
@@ -84,7 +93,8 @@ func NewStatusServiceHandler(svc StatusServiceHandler, opts ...connect.HandlerOp
 	statusServiceGetHandler := connect.NewUnaryHandler(
 		StatusServiceGetProcedure,
 		svc.Get,
-		opts...,
+		connect.WithSchema(statusServiceGetMethodDescriptor),
+		connect.WithHandlerOptions(opts...),
 	)
 	return "/status.v1.StatusService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {

@@ -4,47 +4,75 @@ package api.v1;
 
 import "google/protobuf/descriptor.proto";
 
+// OAuthProvider defines which login providers are supported
 enum OAuthProvider {
+  // O_AUTH_PROVIDER_UNSPECIFIED is an unknown login provider
   O_AUTH_PROVIDER_UNSPECIFIED = 0;
+  // O_AUTH_PROVIDER_GITHUB specifies github as oauth login provider
   O_AUTH_PROVIDER_GITHUB = 1;
+  // O_AUTH_PROVIDER_AZURE specifies azure as oauth login provider
   O_AUTH_PROVIDER_AZURE = 2;
+  // O_AUTH_PROVIDER_GOOGLE specifies google as oauth login provider
+  O_AUTH_PROVIDER_GOOGLE = 3;
 }
 
-enum Role {
-  ROLE_UNSPECIFIED = 0;
-  ROLE_MEMBER = 1;
-  ROLE_MAINTAINER = 2;
-  ROLE_ADMIN = 3;
-  ROLE_OWNER = 4;
-}
+// TenantRole specifies what role a logged in user needs to call this tenant scoped service
 enum TenantRole {
+  // TENANT_ROLE_UNSPECIFIED is not specified
   TENANT_ROLE_UNSPECIFIED = 0;
+  // TENANT_ROLE_OWNER the logged in user needs at least owner role to call this method
   TENANT_ROLE_OWNER = 1;
+  // TENANT_ROLE_EDITOR the logged in user needs at least editor role to call this method
   TENANT_ROLE_EDITOR = 2;
+  // TENANT_ROLE_VIEWER the logged in user needs at least viewer role to call this method
   TENANT_ROLE_VIEWER = 3;
+  // TENANT_ROLE_GUEST the logged in user needs at least guest role to call this method
+  // The guest role is assumed by users who are invited to a tenant's project without them
+  // having a direct membership within the tenant.
+  TENANT_ROLE_GUEST = 4;
 }
+
+// ProjectRole specifies what role a logged in user needs to call this project scoped service
 enum ProjectRole {
+  // PROJECT_ROLE_UNSPECIFIED is not specified
   PROJECT_ROLE_UNSPECIFIED = 0;
+  // PROJECT_ROLE_OWNER the logged in user needs at least owner role to call this method
   PROJECT_ROLE_OWNER = 1;
+  // PROJECT_ROLE_EDITOR the logged in user needs at least editor role to call this method
   PROJECT_ROLE_EDITOR = 2;
+  // PROJECT_ROLE_VIEWER the logged in user needs at least viewer role to call this method
   PROJECT_ROLE_VIEWER = 3;
 }
+
+// AdminRole specifies what role a logged in user needs to call this admin service
 enum AdminRole {
+  // ADMIN_ROLE_UNSPECIFIED is not specified
   ADMIN_ROLE_UNSPECIFIED = 0;
+  // ADMIN_ROLE_EDITOR the logged in user needs at least editor role to call this method
   ADMIN_ROLE_EDITOR = 1;
+  // ADMIN_ROLE_VIEWER the logged in user needs at least viewer role to call this method
   ADMIN_ROLE_VIEWER = 2;
 }
+
+// Visibility of a method
 enum Visibility {
+  // VISIBILITY_UNSPECIFIED is not defined
   VISIBILITY_UNSPECIFIED = 0;
   // VISIBILITY_PUBLIC specifies that this service is accessible without authentication
   VISIBILITY_PUBLIC = 1;
   // VISIBILITY_PRIVATE makes this service blocked
   VISIBILITY_PRIVATE = 2;
+  // VISIBILITY_SELF enable call this endpoint from the authenticated user only
+  VISIBILITY_SELF = 3;
 }
 
+// Chargable defines if calling a method requires that billing credentials are present or not
 enum Chargeable {
+  // CHARGEABLE_UNSPECIFIED no chargeable option is set
   CHARGEABLE_UNSPECIFIED = 0;
+  // CHARGEABLE_TRUE if this is set on a method, calling it requires that billing credentials are present
   CHARGEABLE_TRUE = 1;
+  // CHARGEABLE_FALSE if this is set on a method, no billing credentials are required
   CHARGEABLE_FALSE = 2;
 }
 
@@ -52,24 +80,35 @@ enum Chargeable {
 // by default all service methods are included
 // add the auditing option if you want to exclude a method in auditing
 enum Auditing {
+  // AUDITING_UNSPECIFIED is not specified
   AUDITING_UNSPECIFIED = 0;
+  // AUDITING_INCLUDED if a method is annotated with this, all calls are audited
   AUDITING_INCLUDED = 1;
+  // AUDITING_EXCLUDED if a method is annotated with this, no calls are audited
   AUDITING_EXCLUDED = 2;
 }
 
+// MethodOptions to specify specific annotations to methods
 extend google.protobuf.MethodOptions {
+  // TenantRoles are used to define which tenant role a logged in user must provide to call this method
   repeated TenantRole tenant_roles = 51000;
+  // ProjectRoles are used to define which project role a logged in user must provide to call this method
   repeated ProjectRole project_roles = 51001;
+  // AdminRoles are used to define which admin role a logged in user must provide to call this method
   repeated AdminRole admin_roles = 51002;
+  // Visibility defines the visibility of this method, this is used to have public, private or self visible methods
   Visibility visibility = 51003;
+  // Chargeable if this is set on a method, calling it requires that billing credentials are present
   Chargeable chargeable = 51004;
+  // Auditing defines if calls to this method should be audited or not
   Auditing auditing = 51005;
 }
 
+// Paging defines paging for methods with a lot of results
 message Paging {
-  // page is used for pagination, if unset only the first page is returned,
+  // Page is used for pagination, if unset only the first page is returned,
   // the list response contains then the page number for the next page.
   optional uint64 page = 1;
-  // count is the number of results returned per page, if not given server side defaults apply
+  // Count is the number of results returned per page, if not given server side defaults apply
   optional uint64 count = 2;
 }

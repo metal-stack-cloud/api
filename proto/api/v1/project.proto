@@ -1,0 +1,315 @@
+syntax = "proto3";
+
+package api.v1;
+
+import "api/v1/common.proto";
+import "google/protobuf/timestamp.proto";
+import "validate/validate.proto";
+
+// ProjectService serves project related functions
+service ProjectService {
+  // List all accessible projects
+  rpc List(ProjectServiceListRequest) returns (ProjectServiceListResponse) {
+    option (visibility) = VISIBILITY_SELF;
+    option (auditing) = AUDITING_EXCLUDED;
+  }
+  // Get a project
+  rpc Get(ProjectServiceGetRequest) returns (ProjectServiceGetResponse) {
+    option (project_roles) = PROJECT_ROLE_OWNER;
+    option (project_roles) = PROJECT_ROLE_EDITOR;
+    option (project_roles) = PROJECT_ROLE_VIEWER;
+    option (auditing) = AUDITING_EXCLUDED;
+  }
+  // Create a project
+  rpc Create(ProjectServiceCreateRequest) returns (ProjectServiceCreateResponse) {
+    option (tenant_roles) = TENANT_ROLE_OWNER;
+    option (tenant_roles) = TENANT_ROLE_EDITOR;
+    option (auditing) = AUDITING_INCLUDED;
+  }
+  // Delete a project
+  rpc Delete(ProjectServiceDeleteRequest) returns (ProjectServiceDeleteResponse) {
+    option (project_roles) = PROJECT_ROLE_OWNER;
+    option (auditing) = AUDITING_INCLUDED;
+  }
+  // Update a project
+  rpc Update(ProjectServiceUpdateRequest) returns (ProjectServiceUpdateResponse) {
+    option (project_roles) = PROJECT_ROLE_OWNER;
+    option (project_roles) = PROJECT_ROLE_EDITOR;
+    option (auditing) = AUDITING_INCLUDED;
+  }
+  // RemoveMember remove a user from a project
+  rpc RemoveMember(ProjectServiceRemoveMemberRequest) returns (ProjectServiceRemoveMemberResponse) {
+    option (project_roles) = PROJECT_ROLE_OWNER;
+    option (auditing) = AUDITING_INCLUDED;
+  }
+  // UpdateMember update a user for a project
+  rpc UpdateMember(ProjectServiceUpdateMemberRequest) returns (ProjectServiceUpdateMemberResponse) {
+    option (project_roles) = PROJECT_ROLE_OWNER;
+    option (auditing) = AUDITING_INCLUDED;
+  }
+  // Invite a user to a project
+  rpc Invite(ProjectServiceInviteRequest) returns (ProjectServiceInviteResponse) {
+    option (project_roles) = PROJECT_ROLE_OWNER;
+    option (auditing) = AUDITING_INCLUDED;
+  }
+  // InviteAccept is called from a user to accept a invitation
+  rpc InviteAccept(ProjectServiceInviteAcceptRequest) returns (ProjectServiceInviteAcceptResponse) {
+    option (visibility) = VISIBILITY_SELF;
+    option (auditing) = AUDITING_INCLUDED;
+  }
+  // InviteDelete deletes a pending invitation
+  rpc InviteDelete(ProjectServiceInviteDeleteRequest) returns (ProjectServiceInviteDeleteResponse) {
+    option (project_roles) = PROJECT_ROLE_OWNER;
+    option (auditing) = AUDITING_INCLUDED;
+  }
+  // InvitesList list all invites to a project
+  rpc InvitesList(ProjectServiceInvitesListRequest) returns (ProjectServiceInvitesListResponse) {
+    option (project_roles) = PROJECT_ROLE_OWNER;
+    option (auditing) = AUDITING_EXCLUDED;
+  }
+  // InviteGet get an invite
+  rpc InviteGet(ProjectServiceInviteGetRequest) returns (ProjectServiceInviteGetResponse) {
+    option (visibility) = VISIBILITY_SELF;
+    option (auditing) = AUDITING_EXCLUDED;
+  }
+}
+
+// Project defines a group of resources belonging to a tenant
+// a tenant can have multiple projects
+message Project {
+  // Uuid of this project
+  string uuid = 1;
+  // Name of this project must be unique per tenant
+  string name = 2;
+  // Description of this project
+  string description = 3;
+  // Tenant this project belongs to
+  string tenant = 4;
+  // CreatedAt the date when this project was created
+  google.protobuf.Timestamp created_at = 10;
+  // UpdatedAt the date when this project was updated
+  google.protobuf.Timestamp updated_at = 11;
+}
+
+// ProjectMember defines a user that participates at a project
+message ProjectMember {
+  // Id is the user id of the member
+  string id = 1;
+  // Role is the role of the member
+  ProjectRole role = 2;
+  // InheritedMembership indicates that this member has implicit permissions on the project through his membership within the tenant.
+  // This member does not have direct project membership but gains permissions on this project from the role he has in the tenant.
+  // Inherited memberships are not included in member lists for users with guest permission but only for direct tenant members.
+  bool inherited_membership = 3;
+  // CreatedAt the date when the member was added to the project
+  google.protobuf.Timestamp created_at = 10;
+}
+
+// ProjectInvite defines invite to project
+message ProjectInvite {
+  // Secret is the secret part of the invite, typically part of the url
+  string secret = 1;
+  // Project is the project id for which this invite was created
+  string project = 2;
+  // Role is the role in this project the user will get after accepting the invitation
+  ProjectRole role = 3;
+  // Joined is false as long as a user has not accepted the invite
+  bool joined = 4;
+  // ProjectName is the project name for which this invite was created
+  string project_name = 5;
+  // Tenant is the login of tenant who invites to join this project
+  string tenant = 6;
+  // TenantName is the name of tenant who invites to join this project
+  string tenant_name = 7;
+  // ExpiresAt the date when this invite expires
+  google.protobuf.Timestamp expires_at = 10;
+  // JoinedAt the date when the member accepted this invite
+  google.protobuf.Timestamp joined_at = 11;
+}
+
+// ProjectServiceListRequest is the request payload to list all projects
+message ProjectServiceListRequest {
+  // Name list only projects with this name
+  optional string name = 1 [(validate.rules).string = {
+    min_len: 2,
+    max_len: 128,
+  }];
+  // Tenant list only projects of this tenant
+  optional string tenant = 2 [(validate.rules).string = {
+    min_len: 2,
+    max_len: 128,
+  }];
+}
+
+// ProjectServiceListResponse is the response payload to list all projects
+message ProjectServiceListResponse {
+  // Projects is a list of all your projects
+  repeated Project projects = 1;
+}
+
+// ProjectServiceGetRequest is the request payload to get a project
+message ProjectServiceGetRequest {
+  // Project is the uuid of the project to get
+  string project = 1 [(validate.rules).string.uuid = true];
+}
+
+// ProjectServiceGetResponse is the response payload to get a projects
+message ProjectServiceGetResponse {
+  // Project is the project
+  Project project = 1;
+  // ProjectMembers in this project, projects guests will only see direct project members and not implicit memberships from tenant permissions
+  repeated ProjectMember project_members = 2;
+}
+
+// ProjectServiceCreateRequest is the request payload to Create a project
+message ProjectServiceCreateRequest {
+  // Login is the tenant of this project
+  // TODO: is login really a good name?
+  string login = 1 [(validate.rules).string = {
+    min_len: 2,
+    max_len: 128,
+  }];
+  // Name of this project, unique per tenant
+  string name = 2 [(validate.rules).string = {
+    min_len: 2,
+    max_len: 64,
+  }];
+  // Description of this project
+  string description = 3 [(validate.rules).string = {
+    min_len: 2,
+    max_len: 512,
+  }];
+}
+
+// ProjectServiceCreateResponse is the response payload of creation of a project
+message ProjectServiceCreateResponse {
+  // Project is the project
+  Project project = 1;
+}
+
+// ProjectServiceDeleteRequest is the request payload to delete a project
+message ProjectServiceDeleteRequest {
+  // Project is the uuid of the project to get
+  string project = 1 [(validate.rules).string.uuid = true];
+}
+
+// ProjectServiceDeleteResponse is the response payload to delete a project
+message ProjectServiceDeleteResponse {
+  // Project is the project
+  Project project = 1;
+}
+
+// ProjectServiceUpdateRequest is the request payload to update a project
+message ProjectServiceUpdateRequest {
+  // Project is the uuid of the project to get
+  string project = 1 [(validate.rules).string.uuid = true];
+  // Name of this project unique per tenant
+  optional string name = 2 [(validate.rules).string = {
+    min_len: 2,
+    max_len: 64,
+  }];
+  // Description of this project
+  optional string description = 3 [(validate.rules).string = {
+    min_len: 2,
+    max_len: 512,
+  }];
+}
+
+// ProjectServiceUpdateResponse is the response payload to update a project
+message ProjectServiceUpdateResponse {
+  // Project is the project
+  Project project = 1;
+}
+
+// ProjectServiceInviteRequest is used to invite a member to a project
+message ProjectServiceInviteRequest {
+  // Project is the uuid of the project
+  string project = 1 [(validate.rules).string.uuid = true];
+
+  // Role of this user in this project
+  ProjectRole role = 3;
+}
+
+// ProjectServiceInviteRequest is the response payload to a invite member request
+message ProjectServiceInviteResponse {
+  // Inviter contains a secret which can be sent to a potential user
+  // can be appended to the invitation endpoint at our cloud console like
+  // console.metalstack.cloud/invite/<secret>
+  ProjectInvite invite = 1;
+}
+
+// ProjectServiceInvitesListRequest is the request payload to a list invites request
+message ProjectServiceInvitesListRequest {
+  // Project is the uuid of the project
+  string project = 1 [(validate.rules).string.uuid = true];
+}
+
+// ProjectServiceInvitesListResponse is the response payload to a list invites request
+message ProjectServiceInvitesListResponse {
+  // Invites not already accepted the invitation to this project
+  repeated ProjectInvite invites = 1;
+}
+
+// ProjectServiceInviteGetRequest is the request payload to get a invite
+message ProjectServiceInviteGetRequest {
+  // Secret of the invite to list
+  string secret = 1;
+}
+
+// ProjectServiceInviteGetResponse is the response payload to a get invite request
+message ProjectServiceInviteGetResponse {
+  // Invite is the invite
+  ProjectInvite invite = 1;
+}
+
+// ProjectServiceRemoveMemberRequest is used to remove a member from a project
+message ProjectServiceRemoveMemberRequest {
+  // Project is the uuid of the project
+  string project = 1 [(validate.rules).string.uuid = true];
+  // MemberID is the id of the member to remove from this project
+  string member_id = 2;
+}
+
+// ProjectServiceRemoveMemberResponse is the response payload to a remove member request
+message ProjectServiceRemoveMemberResponse {}
+
+// ProjectServiceUpdateMemberRequest is used to update a member of a project
+message ProjectServiceUpdateMemberRequest {
+  // Project is the uuid of the project
+  string project = 1 [(validate.rules).string.uuid = true];
+  // MemberID is the id of the member to remove from this project
+  string member_id = 2;
+  // Role is the role in this project the user will get after the update
+  ProjectRole role = 3;
+}
+
+// ProjectServiceUpdateMemberResponse is the response payload to a update member request
+message ProjectServiceUpdateMemberResponse {
+  // ProjectMember is the updated project member
+  ProjectMember project_member = 5;
+}
+
+// ProjectServiceInviteAcceptRequest is the request payload to a accept invite request
+message ProjectServiceInviteAcceptRequest {
+  // Secret is the invitation secret part of the invitation url
+  string secret = 1;
+}
+
+// ProjectServiceInvitesListResponse is the response payload to a accept invite request
+message ProjectServiceInviteAcceptResponse {
+  // Project ID of the project joined
+  string project = 1;
+  // ProjectName if the project joined
+  string project_name = 2;
+}
+
+// ProjectServiceInviteDeleteRequest is the request payload to a delete invite
+message ProjectServiceInviteDeleteRequest {
+  // Project is the uuid of the project
+  string project = 1 [(validate.rules).string.uuid = true];
+  // Secret of the invite to delete
+  string secret = 2;
+}
+
+// ProjectServiceInviteDeleteResponse is the response payload of a delete invite request
+message ProjectServiceInviteDeleteResponse {}

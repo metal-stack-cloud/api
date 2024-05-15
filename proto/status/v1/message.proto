@@ -5,39 +5,64 @@ package status.v1;
 import "api/v1/common.proto";
 import "google/protobuf/timestamp.proto";
 
+// MessageService serves status message related functions
+// this service is used as backend for the status dashboard
 service MessageService {
+  // List returns all messages of interest
   rpc List(MessageServiceListRequest) returns (MessageServiceListResponse) {
     option (api.v1.visibility) = VISIBILITY_PUBLIC;
   }
 }
 
+// MessageServiceListRequest is the request payload to get the messages
 message MessageServiceListRequest {}
 
+// MessageServiceListResponse is the response payload with the messages
 message MessageServiceListResponse {
+  // Items is a slice of all messages
   repeated Message items = 1;
+  // PinnedItems are messages which are of special interest
   repeated Message pinned_items = 2;
 }
 
+// Message is a test message to be displayed in the status
 message Message {
+  // Id of the message
   string id = 1;
+  // Text of the message
   string text = 2;
+  // Kind of the message, this is to distinguish between the importance of a message
   MessageKind kind = 3;
+  // Timestamp when this message was created
   google.protobuf.Timestamp timestamp = 4;
+  // Replies are messages which are followups to the initial message
   repeated ReplyMessage replies = 5;
 }
 
+// ReplyMessage is a message as a followup of a initial message
 message ReplyMessage {
+  // Id of the message
   string id = 1;
+  // Text of the message
   string text = 2;
+  // Kind of the message, this is to distinguish between the importance of a message
   MessageKind kind = 3;
+  // Timestamp when this message was created
   google.protobuf.Timestamp timestamp = 4;
 }
 
+// MessageKind defines what type of message it is
 enum MessageKind {
+  // MESSAGE_KIND_UNSPECIFIED is not specified
   MESSAGE_KIND_UNSPECIFIED = 0;
+  // MESSAGE_KIND_INFO is a informational message
   MESSAGE_KIND_INFO = 1;
+  // MESSAGE_KIND_INCIDENT is a incident message
   MESSAGE_KIND_INCIDENT = 2;
+  // MESSAGE_KIND_CHANGE is a change message
   MESSAGE_KIND_CHANGE = 3;
+  // MESSAGE_KIND_RESOLVED is a resolved message
   MESSAGE_KIND_RESOLVED = 4;
+  // MESSAGE_KIND_UPDATE is a update message
   MESSAGE_KIND_UPDATE = 5;
 }

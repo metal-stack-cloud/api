@@ -550,3 +550,284 @@ var _ interface {
 	Cause() error
 	ErrorName() string
 } = PaymentServiceAddCouponToCustomerResponseValidationError{}
+
+// Validate checks the field values on
+// PaymentServiceAddBalanceToCustomerRequest with the rules defined in the
+// proto definition for this message. If any rules are violated, the first
+// error encountered is returned, or nil if there are no violations.
+func (m *PaymentServiceAddBalanceToCustomerRequest) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on
+// PaymentServiceAddBalanceToCustomerRequest with the rules defined in the
+// proto definition for this message. If any rules are violated, the result is
+// a list of violation errors wrapped in
+// PaymentServiceAddBalanceToCustomerRequestMultiError, or nil if none found.
+func (m *PaymentServiceAddBalanceToCustomerRequest) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *PaymentServiceAddBalanceToCustomerRequest) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	if all {
+		switch v := interface{}(m.GetCustomer()).(type) {
+		case interface{ ValidateAll() error }:
+			if err := v.ValidateAll(); err != nil {
+				errors = append(errors, PaymentServiceAddBalanceToCustomerRequestValidationError{
+					field:  "Customer",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		case interface{ Validate() error }:
+			if err := v.Validate(); err != nil {
+				errors = append(errors, PaymentServiceAddBalanceToCustomerRequestValidationError{
+					field:  "Customer",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		}
+	} else if v, ok := interface{}(m.GetCustomer()).(interface{ Validate() error }); ok {
+		if err := v.Validate(); err != nil {
+			return PaymentServiceAddBalanceToCustomerRequestValidationError{
+				field:  "Customer",
+				reason: "embedded message failed validation",
+				cause:  err,
+			}
+		}
+	}
+
+	if m.GetBalanceToAdd() <= 0 {
+		err := PaymentServiceAddBalanceToCustomerRequestValidationError{
+			field:  "BalanceToAdd",
+			reason: "value must be greater than 0",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
+	if len(errors) > 0 {
+		return PaymentServiceAddBalanceToCustomerRequestMultiError(errors)
+	}
+
+	return nil
+}
+
+// PaymentServiceAddBalanceToCustomerRequestMultiError is an error wrapping
+// multiple validation errors returned by
+// PaymentServiceAddBalanceToCustomerRequest.ValidateAll() if the designated
+// constraints aren't met.
+type PaymentServiceAddBalanceToCustomerRequestMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m PaymentServiceAddBalanceToCustomerRequestMultiError) Error() string {
+	var msgs []string
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m PaymentServiceAddBalanceToCustomerRequestMultiError) AllErrors() []error { return m }
+
+// PaymentServiceAddBalanceToCustomerRequestValidationError is the validation
+// error returned by PaymentServiceAddBalanceToCustomerRequest.Validate if the
+// designated constraints aren't met.
+type PaymentServiceAddBalanceToCustomerRequestValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e PaymentServiceAddBalanceToCustomerRequestValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e PaymentServiceAddBalanceToCustomerRequestValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e PaymentServiceAddBalanceToCustomerRequestValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e PaymentServiceAddBalanceToCustomerRequestValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e PaymentServiceAddBalanceToCustomerRequestValidationError) ErrorName() string {
+	return "PaymentServiceAddBalanceToCustomerRequestValidationError"
+}
+
+// Error satisfies the builtin error interface
+func (e PaymentServiceAddBalanceToCustomerRequestValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sPaymentServiceAddBalanceToCustomerRequest.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = PaymentServiceAddBalanceToCustomerRequestValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = PaymentServiceAddBalanceToCustomerRequestValidationError{}
+
+// Validate checks the field values on
+// PaymentServiceAddBalanceToCustomerResponse with the rules defined in the
+// proto definition for this message. If any rules are violated, the first
+// error encountered is returned, or nil if there are no violations.
+func (m *PaymentServiceAddBalanceToCustomerResponse) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on
+// PaymentServiceAddBalanceToCustomerResponse with the rules defined in the
+// proto definition for this message. If any rules are violated, the result is
+// a list of violation errors wrapped in
+// PaymentServiceAddBalanceToCustomerResponseMultiError, or nil if none found.
+func (m *PaymentServiceAddBalanceToCustomerResponse) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *PaymentServiceAddBalanceToCustomerResponse) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	if all {
+		switch v := interface{}(m.GetCustomer()).(type) {
+		case interface{ ValidateAll() error }:
+			if err := v.ValidateAll(); err != nil {
+				errors = append(errors, PaymentServiceAddBalanceToCustomerResponseValidationError{
+					field:  "Customer",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		case interface{ Validate() error }:
+			if err := v.Validate(); err != nil {
+				errors = append(errors, PaymentServiceAddBalanceToCustomerResponseValidationError{
+					field:  "Customer",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		}
+	} else if v, ok := interface{}(m.GetCustomer()).(interface{ Validate() error }); ok {
+		if err := v.Validate(); err != nil {
+			return PaymentServiceAddBalanceToCustomerResponseValidationError{
+				field:  "Customer",
+				reason: "embedded message failed validation",
+				cause:  err,
+			}
+		}
+	}
+
+	if len(errors) > 0 {
+		return PaymentServiceAddBalanceToCustomerResponseMultiError(errors)
+	}
+
+	return nil
+}
+
+// PaymentServiceAddBalanceToCustomerResponseMultiError is an error wrapping
+// multiple validation errors returned by
+// PaymentServiceAddBalanceToCustomerResponse.ValidateAll() if the designated
+// constraints aren't met.
+type PaymentServiceAddBalanceToCustomerResponseMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m PaymentServiceAddBalanceToCustomerResponseMultiError) Error() string {
+	var msgs []string
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m PaymentServiceAddBalanceToCustomerResponseMultiError) AllErrors() []error { return m }
+
+// PaymentServiceAddBalanceToCustomerResponseValidationError is the validation
+// error returned by PaymentServiceAddBalanceToCustomerResponse.Validate if
+// the designated constraints aren't met.
+type PaymentServiceAddBalanceToCustomerResponseValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e PaymentServiceAddBalanceToCustomerResponseValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e PaymentServiceAddBalanceToCustomerResponseValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e PaymentServiceAddBalanceToCustomerResponseValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e PaymentServiceAddBalanceToCustomerResponseValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e PaymentServiceAddBalanceToCustomerResponseValidationError) ErrorName() string {
+	return "PaymentServiceAddBalanceToCustomerResponseValidationError"
+}
+
+// Error satisfies the builtin error interface
+func (e PaymentServiceAddBalanceToCustomerResponseValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sPaymentServiceAddBalanceToCustomerResponse.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = PaymentServiceAddBalanceToCustomerResponseValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = PaymentServiceAddBalanceToCustomerResponseValidationError{}

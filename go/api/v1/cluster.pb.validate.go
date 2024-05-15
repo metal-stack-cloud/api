@@ -705,15 +705,33 @@ func (m *MaintenanceTimeWindow) validate(all bool) error {
 
 	var errors []error
 
-	if m.GetBegin() == nil {
-		err := MaintenanceTimeWindowValidationError{
-			field:  "Begin",
-			reason: "value is required",
+	if all {
+		switch v := interface{}(m.GetBegin()).(type) {
+		case interface{ ValidateAll() error }:
+			if err := v.ValidateAll(); err != nil {
+				errors = append(errors, MaintenanceTimeWindowValidationError{
+					field:  "Begin",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		case interface{ Validate() error }:
+			if err := v.Validate(); err != nil {
+				errors = append(errors, MaintenanceTimeWindowValidationError{
+					field:  "Begin",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
 		}
-		if !all {
-			return err
+	} else if v, ok := interface{}(m.GetBegin()).(interface{ Validate() error }); ok {
+		if err := v.Validate(); err != nil {
+			return MaintenanceTimeWindowValidationError{
+				field:  "Begin",
+				reason: "embedded message failed validation",
+				cause:  err,
+			}
 		}
-		errors = append(errors, err)
 	}
 
 	if d := m.GetDuration(); d != nil {
@@ -826,6 +844,128 @@ var _ interface {
 	Cause() error
 	ErrorName() string
 } = MaintenanceTimeWindowValidationError{}
+
+// Validate checks the field values on Time with the rules defined in the proto
+// definition for this message. If any rules are violated, the first error
+// encountered is returned, or nil if there are no violations.
+func (m *Time) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on Time with the rules defined in the
+// proto definition for this message. If any rules are violated, the result is
+// a list of violation errors wrapped in TimeMultiError, or nil if none found.
+func (m *Time) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *Time) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	if m.GetHour() > 24 {
+		err := TimeValidationError{
+			field:  "Hour",
+			reason: "value must be less than or equal to 24",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
+	if m.GetMinute() > 60 {
+		err := TimeValidationError{
+			field:  "Minute",
+			reason: "value must be less than or equal to 60",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
+	// no validation rules for Timezone
+
+	if len(errors) > 0 {
+		return TimeMultiError(errors)
+	}
+
+	return nil
+}
+
+// TimeMultiError is an error wrapping multiple validation errors returned by
+// Time.ValidateAll() if the designated constraints aren't met.
+type TimeMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m TimeMultiError) Error() string {
+	var msgs []string
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m TimeMultiError) AllErrors() []error { return m }
+
+// TimeValidationError is the validation error returned by Time.Validate if the
+// designated constraints aren't met.
+type TimeValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e TimeValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e TimeValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e TimeValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e TimeValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e TimeValidationError) ErrorName() string { return "TimeValidationError" }
+
+// Error satisfies the builtin error interface
+func (e TimeValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sTime.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = TimeValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = TimeValidationError{}
 
 // Validate checks the field values on Worker with the rules defined in the
 // proto definition for this message. If any rules are violated, the first
@@ -1308,6 +1448,142 @@ var _ interface {
 	Cause() error
 	ErrorName() string
 } = ClusterServiceGetRequestValidationError{}
+
+// Validate checks the field values on ClusterServiceOperateRequest with the
+// rules defined in the proto definition for this message. If any rules are
+// violated, the first error encountered is returned, or nil if there are no violations.
+func (m *ClusterServiceOperateRequest) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on ClusterServiceOperateRequest with the
+// rules defined in the proto definition for this message. If any rules are
+// violated, the result is a list of violation errors wrapped in
+// ClusterServiceOperateRequestMultiError, or nil if none found.
+func (m *ClusterServiceOperateRequest) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *ClusterServiceOperateRequest) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	if err := m._validateUuid(m.GetUuid()); err != nil {
+		err = ClusterServiceOperateRequestValidationError{
+			field:  "Uuid",
+			reason: "value must be a valid UUID",
+			cause:  err,
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
+	if l := utf8.RuneCountInString(m.GetProject()); l < 2 || l > 128 {
+		err := ClusterServiceOperateRequestValidationError{
+			field:  "Project",
+			reason: "value length must be between 2 and 128 runes, inclusive",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
+	// no validation rules for Operate
+
+	if len(errors) > 0 {
+		return ClusterServiceOperateRequestMultiError(errors)
+	}
+
+	return nil
+}
+
+func (m *ClusterServiceOperateRequest) _validateUuid(uuid string) error {
+	if matched := _cluster_uuidPattern.MatchString(uuid); !matched {
+		return errors.New("invalid uuid format")
+	}
+
+	return nil
+}
+
+// ClusterServiceOperateRequestMultiError is an error wrapping multiple
+// validation errors returned by ClusterServiceOperateRequest.ValidateAll() if
+// the designated constraints aren't met.
+type ClusterServiceOperateRequestMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m ClusterServiceOperateRequestMultiError) Error() string {
+	var msgs []string
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m ClusterServiceOperateRequestMultiError) AllErrors() []error { return m }
+
+// ClusterServiceOperateRequestValidationError is the validation error returned
+// by ClusterServiceOperateRequest.Validate if the designated constraints
+// aren't met.
+type ClusterServiceOperateRequestValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e ClusterServiceOperateRequestValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e ClusterServiceOperateRequestValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e ClusterServiceOperateRequestValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e ClusterServiceOperateRequestValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e ClusterServiceOperateRequestValidationError) ErrorName() string {
+	return "ClusterServiceOperateRequestValidationError"
+}
+
+// Error satisfies the builtin error interface
+func (e ClusterServiceOperateRequestValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sClusterServiceOperateRequest.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = ClusterServiceOperateRequestValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = ClusterServiceOperateRequestValidationError{}
 
 // Validate checks the field values on ClusterServiceGetCredentialsRequest with
 // the rules defined in the proto definition for this message. If any rules
@@ -2432,6 +2708,40 @@ func (m *ClusterStatus) validate(all bool) error {
 
 	}
 
+	for idx, item := range m.GetConditions() {
+		_, _ = idx, item
+
+		if all {
+			switch v := interface{}(item).(type) {
+			case interface{ ValidateAll() error }:
+				if err := v.ValidateAll(); err != nil {
+					errors = append(errors, ClusterStatusValidationError{
+						field:  fmt.Sprintf("Conditions[%v]", idx),
+						reason: "embedded message failed validation",
+						cause:  err,
+					})
+				}
+			case interface{ Validate() error }:
+				if err := v.Validate(); err != nil {
+					errors = append(errors, ClusterStatusValidationError{
+						field:  fmt.Sprintf("Conditions[%v]", idx),
+						reason: "embedded message failed validation",
+						cause:  err,
+					})
+				}
+			}
+		} else if v, ok := interface{}(item).(interface{ Validate() error }); ok {
+			if err := v.Validate(); err != nil {
+				return ClusterStatusValidationError{
+					field:  fmt.Sprintf("Conditions[%v]", idx),
+					reason: "embedded message failed validation",
+					cause:  err,
+				}
+			}
+		}
+
+	}
+
 	if len(errors) > 0 {
 		return ClusterStatusMultiError(errors)
 	}
@@ -2646,6 +2956,174 @@ var _ interface {
 	Cause() error
 	ErrorName() string
 } = ClusterStatusLastErrorValidationError{}
+
+// Validate checks the field values on ClusterStatusCondition with the rules
+// defined in the proto definition for this message. If any rules are
+// violated, the first error encountered is returned, or nil if there are no violations.
+func (m *ClusterStatusCondition) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on ClusterStatusCondition with the rules
+// defined in the proto definition for this message. If any rules are
+// violated, the result is a list of violation errors wrapped in
+// ClusterStatusConditionMultiError, or nil if none found.
+func (m *ClusterStatusCondition) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *ClusterStatusCondition) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	// no validation rules for Type
+
+	// no validation rules for Status
+
+	// no validation rules for Reason
+
+	// no validation rules for StatusMessage
+
+	if all {
+		switch v := interface{}(m.GetLastTransitionTime()).(type) {
+		case interface{ ValidateAll() error }:
+			if err := v.ValidateAll(); err != nil {
+				errors = append(errors, ClusterStatusConditionValidationError{
+					field:  "LastTransitionTime",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		case interface{ Validate() error }:
+			if err := v.Validate(); err != nil {
+				errors = append(errors, ClusterStatusConditionValidationError{
+					field:  "LastTransitionTime",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		}
+	} else if v, ok := interface{}(m.GetLastTransitionTime()).(interface{ Validate() error }); ok {
+		if err := v.Validate(); err != nil {
+			return ClusterStatusConditionValidationError{
+				field:  "LastTransitionTime",
+				reason: "embedded message failed validation",
+				cause:  err,
+			}
+		}
+	}
+
+	if all {
+		switch v := interface{}(m.GetLastUpdateTime()).(type) {
+		case interface{ ValidateAll() error }:
+			if err := v.ValidateAll(); err != nil {
+				errors = append(errors, ClusterStatusConditionValidationError{
+					field:  "LastUpdateTime",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		case interface{ Validate() error }:
+			if err := v.Validate(); err != nil {
+				errors = append(errors, ClusterStatusConditionValidationError{
+					field:  "LastUpdateTime",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		}
+	} else if v, ok := interface{}(m.GetLastUpdateTime()).(interface{ Validate() error }); ok {
+		if err := v.Validate(); err != nil {
+			return ClusterStatusConditionValidationError{
+				field:  "LastUpdateTime",
+				reason: "embedded message failed validation",
+				cause:  err,
+			}
+		}
+	}
+
+	if len(errors) > 0 {
+		return ClusterStatusConditionMultiError(errors)
+	}
+
+	return nil
+}
+
+// ClusterStatusConditionMultiError is an error wrapping multiple validation
+// errors returned by ClusterStatusCondition.ValidateAll() if the designated
+// constraints aren't met.
+type ClusterStatusConditionMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m ClusterStatusConditionMultiError) Error() string {
+	var msgs []string
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m ClusterStatusConditionMultiError) AllErrors() []error { return m }
+
+// ClusterStatusConditionValidationError is the validation error returned by
+// ClusterStatusCondition.Validate if the designated constraints aren't met.
+type ClusterStatusConditionValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e ClusterStatusConditionValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e ClusterStatusConditionValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e ClusterStatusConditionValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e ClusterStatusConditionValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e ClusterStatusConditionValidationError) ErrorName() string {
+	return "ClusterStatusConditionValidationError"
+}
+
+// Error satisfies the builtin error interface
+func (e ClusterStatusConditionValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sClusterStatusCondition.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = ClusterStatusConditionValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = ClusterStatusConditionValidationError{}
 
 // Validate checks the field values on ClusterMonitoring with the rules defined
 // in the proto definition for this message. If any rules are violated, the
@@ -3658,3 +4136,135 @@ var _ interface {
 	Cause() error
 	ErrorName() string
 } = ClusterServiceWatchStatusResponseValidationError{}
+
+// Validate checks the field values on ClusterServiceOperateResponse with the
+// rules defined in the proto definition for this message. If any rules are
+// violated, the first error encountered is returned, or nil if there are no violations.
+func (m *ClusterServiceOperateResponse) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on ClusterServiceOperateResponse with
+// the rules defined in the proto definition for this message. If any rules
+// are violated, the result is a list of violation errors wrapped in
+// ClusterServiceOperateResponseMultiError, or nil if none found.
+func (m *ClusterServiceOperateResponse) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *ClusterServiceOperateResponse) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	if all {
+		switch v := interface{}(m.GetCluster()).(type) {
+		case interface{ ValidateAll() error }:
+			if err := v.ValidateAll(); err != nil {
+				errors = append(errors, ClusterServiceOperateResponseValidationError{
+					field:  "Cluster",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		case interface{ Validate() error }:
+			if err := v.Validate(); err != nil {
+				errors = append(errors, ClusterServiceOperateResponseValidationError{
+					field:  "Cluster",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		}
+	} else if v, ok := interface{}(m.GetCluster()).(interface{ Validate() error }); ok {
+		if err := v.Validate(); err != nil {
+			return ClusterServiceOperateResponseValidationError{
+				field:  "Cluster",
+				reason: "embedded message failed validation",
+				cause:  err,
+			}
+		}
+	}
+
+	if len(errors) > 0 {
+		return ClusterServiceOperateResponseMultiError(errors)
+	}
+
+	return nil
+}
+
+// ClusterServiceOperateResponseMultiError is an error wrapping multiple
+// validation errors returned by ClusterServiceOperateResponse.ValidateAll()
+// if the designated constraints aren't met.
+type ClusterServiceOperateResponseMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m ClusterServiceOperateResponseMultiError) Error() string {
+	var msgs []string
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m ClusterServiceOperateResponseMultiError) AllErrors() []error { return m }
+
+// ClusterServiceOperateResponseValidationError is the validation error
+// returned by ClusterServiceOperateResponse.Validate if the designated
+// constraints aren't met.
+type ClusterServiceOperateResponseValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e ClusterServiceOperateResponseValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e ClusterServiceOperateResponseValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e ClusterServiceOperateResponseValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e ClusterServiceOperateResponseValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e ClusterServiceOperateResponseValidationError) ErrorName() string {
+	return "ClusterServiceOperateResponseValidationError"
+}
+
+// Error satisfies the builtin error interface
+func (e ClusterServiceOperateResponseValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sClusterServiceOperateResponse.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = ClusterServiceOperateResponseValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = ClusterServiceOperateResponseValidationError{}

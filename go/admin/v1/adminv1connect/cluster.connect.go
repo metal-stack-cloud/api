@@ -18,7 +18,7 @@ import (
 // generated with a version of connect newer than the one compiled into your binary. You can fix the
 // problem by either regenerating this code with an older version of connect or updating the connect
 // version compiled into your binary.
-const _ = connect.IsAtLeastVersion0_1_0
+const _ = connect.IsAtLeastVersion1_13_0
 
 const (
 	// ClusterServiceName is the fully-qualified name of the ClusterService service.
@@ -40,16 +40,24 @@ const (
 	// ClusterServiceCredentialsProcedure is the fully-qualified name of the ClusterService's
 	// Credentials RPC.
 	ClusterServiceCredentialsProcedure = "/admin.v1.ClusterService/Credentials"
-	// ClusterServiceOperateProcedure is the fully-qualified name of the ClusterService's Operate RPC.
-	ClusterServiceOperateProcedure = "/admin.v1.ClusterService/Operate"
+)
+
+// These variables are the protoreflect.Descriptor objects for the RPCs defined in this package.
+var (
+	clusterServiceServiceDescriptor           = v1.File_admin_v1_cluster_proto.Services().ByName("ClusterService")
+	clusterServiceGetMethodDescriptor         = clusterServiceServiceDescriptor.Methods().ByName("Get")
+	clusterServiceListMethodDescriptor        = clusterServiceServiceDescriptor.Methods().ByName("List")
+	clusterServiceCredentialsMethodDescriptor = clusterServiceServiceDescriptor.Methods().ByName("Credentials")
 )
 
 // ClusterServiceClient is a client for the admin.v1.ClusterService service.
 type ClusterServiceClient interface {
+	// Get a cluster
 	Get(context.Context, *connect.Request[v1.ClusterServiceGetRequest]) (*connect.Response[v1.ClusterServiceGetResponse], error)
+	// List clusters
 	List(context.Context, *connect.Request[v1.ClusterServiceListRequest]) (*connect.Response[v1.ClusterServiceListResponse], error)
+	// Credentials of a cluster
 	Credentials(context.Context, *connect.Request[v1.ClusterServiceCredentialsRequest]) (*connect.Response[v1.ClusterServiceCredentialsResponse], error)
-	Operate(context.Context, *connect.Request[v1.ClusterServiceOperateRequest]) (*connect.Response[v1.ClusterServiceOperateResponse], error)
 }
 
 // NewClusterServiceClient constructs a client for the admin.v1.ClusterService service. By default,
@@ -65,22 +73,20 @@ func NewClusterServiceClient(httpClient connect.HTTPClient, baseURL string, opts
 		get: connect.NewClient[v1.ClusterServiceGetRequest, v1.ClusterServiceGetResponse](
 			httpClient,
 			baseURL+ClusterServiceGetProcedure,
-			opts...,
+			connect.WithSchema(clusterServiceGetMethodDescriptor),
+			connect.WithClientOptions(opts...),
 		),
 		list: connect.NewClient[v1.ClusterServiceListRequest, v1.ClusterServiceListResponse](
 			httpClient,
 			baseURL+ClusterServiceListProcedure,
-			opts...,
+			connect.WithSchema(clusterServiceListMethodDescriptor),
+			connect.WithClientOptions(opts...),
 		),
 		credentials: connect.NewClient[v1.ClusterServiceCredentialsRequest, v1.ClusterServiceCredentialsResponse](
 			httpClient,
 			baseURL+ClusterServiceCredentialsProcedure,
-			opts...,
-		),
-		operate: connect.NewClient[v1.ClusterServiceOperateRequest, v1.ClusterServiceOperateResponse](
-			httpClient,
-			baseURL+ClusterServiceOperateProcedure,
-			opts...,
+			connect.WithSchema(clusterServiceCredentialsMethodDescriptor),
+			connect.WithClientOptions(opts...),
 		),
 	}
 }
@@ -90,7 +96,6 @@ type clusterServiceClient struct {
 	get         *connect.Client[v1.ClusterServiceGetRequest, v1.ClusterServiceGetResponse]
 	list        *connect.Client[v1.ClusterServiceListRequest, v1.ClusterServiceListResponse]
 	credentials *connect.Client[v1.ClusterServiceCredentialsRequest, v1.ClusterServiceCredentialsResponse]
-	operate     *connect.Client[v1.ClusterServiceOperateRequest, v1.ClusterServiceOperateResponse]
 }
 
 // Get calls admin.v1.ClusterService.Get.
@@ -108,17 +113,14 @@ func (c *clusterServiceClient) Credentials(ctx context.Context, req *connect.Req
 	return c.credentials.CallUnary(ctx, req)
 }
 
-// Operate calls admin.v1.ClusterService.Operate.
-func (c *clusterServiceClient) Operate(ctx context.Context, req *connect.Request[v1.ClusterServiceOperateRequest]) (*connect.Response[v1.ClusterServiceOperateResponse], error) {
-	return c.operate.CallUnary(ctx, req)
-}
-
 // ClusterServiceHandler is an implementation of the admin.v1.ClusterService service.
 type ClusterServiceHandler interface {
+	// Get a cluster
 	Get(context.Context, *connect.Request[v1.ClusterServiceGetRequest]) (*connect.Response[v1.ClusterServiceGetResponse], error)
+	// List clusters
 	List(context.Context, *connect.Request[v1.ClusterServiceListRequest]) (*connect.Response[v1.ClusterServiceListResponse], error)
+	// Credentials of a cluster
 	Credentials(context.Context, *connect.Request[v1.ClusterServiceCredentialsRequest]) (*connect.Response[v1.ClusterServiceCredentialsResponse], error)
-	Operate(context.Context, *connect.Request[v1.ClusterServiceOperateRequest]) (*connect.Response[v1.ClusterServiceOperateResponse], error)
 }
 
 // NewClusterServiceHandler builds an HTTP handler from the service implementation. It returns the
@@ -130,22 +132,20 @@ func NewClusterServiceHandler(svc ClusterServiceHandler, opts ...connect.Handler
 	clusterServiceGetHandler := connect.NewUnaryHandler(
 		ClusterServiceGetProcedure,
 		svc.Get,
-		opts...,
+		connect.WithSchema(clusterServiceGetMethodDescriptor),
+		connect.WithHandlerOptions(opts...),
 	)
 	clusterServiceListHandler := connect.NewUnaryHandler(
 		ClusterServiceListProcedure,
 		svc.List,
-		opts...,
+		connect.WithSchema(clusterServiceListMethodDescriptor),
+		connect.WithHandlerOptions(opts...),
 	)
 	clusterServiceCredentialsHandler := connect.NewUnaryHandler(
 		ClusterServiceCredentialsProcedure,
 		svc.Credentials,
-		opts...,
-	)
-	clusterServiceOperateHandler := connect.NewUnaryHandler(
-		ClusterServiceOperateProcedure,
-		svc.Operate,
-		opts...,
+		connect.WithSchema(clusterServiceCredentialsMethodDescriptor),
+		connect.WithHandlerOptions(opts...),
 	)
 	return "/admin.v1.ClusterService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
@@ -155,8 +155,6 @@ func NewClusterServiceHandler(svc ClusterServiceHandler, opts ...connect.Handler
 			clusterServiceListHandler.ServeHTTP(w, r)
 		case ClusterServiceCredentialsProcedure:
 			clusterServiceCredentialsHandler.ServeHTTP(w, r)
-		case ClusterServiceOperateProcedure:
-			clusterServiceOperateHandler.ServeHTTP(w, r)
 		default:
 			http.NotFound(w, r)
 		}
@@ -176,8 +174,4 @@ func (UnimplementedClusterServiceHandler) List(context.Context, *connect.Request
 
 func (UnimplementedClusterServiceHandler) Credentials(context.Context, *connect.Request[v1.ClusterServiceCredentialsRequest]) (*connect.Response[v1.ClusterServiceCredentialsResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("admin.v1.ClusterService.Credentials is not implemented"))
-}
-
-func (UnimplementedClusterServiceHandler) Operate(context.Context, *connect.Request[v1.ClusterServiceOperateRequest]) (*connect.Response[v1.ClusterServiceOperateResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("admin.v1.ClusterService.Operate is not implemented"))
 }

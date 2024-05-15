@@ -18,7 +18,7 @@ import (
 // generated with a version of connect newer than the one compiled into your binary. You can fix the
 // problem by either regenerating this code with an older version of connect or updating the connect
 // version compiled into your binary.
-const _ = connect.IsAtLeastVersion0_1_0
+const _ = connect.IsAtLeastVersion1_13_0
 
 const (
 	// MessageServiceName is the fully-qualified name of the MessageService service.
@@ -37,8 +37,15 @@ const (
 	MessageServiceListProcedure = "/status.v1.MessageService/List"
 )
 
+// These variables are the protoreflect.Descriptor objects for the RPCs defined in this package.
+var (
+	messageServiceServiceDescriptor    = v1.File_status_v1_message_proto.Services().ByName("MessageService")
+	messageServiceListMethodDescriptor = messageServiceServiceDescriptor.Methods().ByName("List")
+)
+
 // MessageServiceClient is a client for the status.v1.MessageService service.
 type MessageServiceClient interface {
+	// List returns all messages of interest
 	List(context.Context, *connect.Request[v1.MessageServiceListRequest]) (*connect.Response[v1.MessageServiceListResponse], error)
 }
 
@@ -55,7 +62,8 @@ func NewMessageServiceClient(httpClient connect.HTTPClient, baseURL string, opts
 		list: connect.NewClient[v1.MessageServiceListRequest, v1.MessageServiceListResponse](
 			httpClient,
 			baseURL+MessageServiceListProcedure,
-			opts...,
+			connect.WithSchema(messageServiceListMethodDescriptor),
+			connect.WithClientOptions(opts...),
 		),
 	}
 }
@@ -72,6 +80,7 @@ func (c *messageServiceClient) List(ctx context.Context, req *connect.Request[v1
 
 // MessageServiceHandler is an implementation of the status.v1.MessageService service.
 type MessageServiceHandler interface {
+	// List returns all messages of interest
 	List(context.Context, *connect.Request[v1.MessageServiceListRequest]) (*connect.Response[v1.MessageServiceListResponse], error)
 }
 
@@ -84,7 +93,8 @@ func NewMessageServiceHandler(svc MessageServiceHandler, opts ...connect.Handler
 	messageServiceListHandler := connect.NewUnaryHandler(
 		MessageServiceListProcedure,
 		svc.List,
-		opts...,
+		connect.WithSchema(messageServiceListMethodDescriptor),
+		connect.WithHandlerOptions(opts...),
 	)
 	return "/status.v1.MessageService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {

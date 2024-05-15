@@ -23,6 +23,7 @@ type (
 		Payment() adminv1connect.PaymentServiceClient
 		Storage() adminv1connect.StorageServiceClient
 		Tenant() adminv1connect.TenantServiceClient
+		Token() adminv1connect.TokenServiceClient
 	}
 
 	adminv1 struct {
@@ -30,6 +31,7 @@ type (
 		paymentservice adminv1connect.PaymentServiceClient
 		storageservice adminv1connect.StorageServiceClient
 		tenantservice  adminv1connect.TenantServiceClient
+		tokenservice   adminv1connect.TokenServiceClient
 	}
 
 	Apiv1 interface {
@@ -37,9 +39,12 @@ type (
 		Cluster() apiv1connect.ClusterServiceClient
 		Health() apiv1connect.HealthServiceClient
 		IP() apiv1connect.IPServiceClient
+		Method() apiv1connect.MethodServiceClient
 		Payment() apiv1connect.PaymentServiceClient
+		Project() apiv1connect.ProjectServiceClient
 		Tenant() apiv1connect.TenantServiceClient
 		Token() apiv1connect.TokenServiceClient
+		User() apiv1connect.UserServiceClient
 		Version() apiv1connect.VersionServiceClient
 		Volume() apiv1connect.VolumeServiceClient
 		Snapshot() apiv1connect.SnapshotServiceClient
@@ -50,9 +55,12 @@ type (
 		clusterservice  apiv1connect.ClusterServiceClient
 		healthservice   apiv1connect.HealthServiceClient
 		ipservice       apiv1connect.IPServiceClient
+		methodservice   apiv1connect.MethodServiceClient
 		paymentservice  apiv1connect.PaymentServiceClient
+		projectservice  apiv1connect.ProjectServiceClient
 		tenantservice   apiv1connect.TenantServiceClient
 		tokenservice    apiv1connect.TokenServiceClient
+		userservice     apiv1connect.UserServiceClient
 		versionservice  apiv1connect.VersionServiceClient
 		volumeservice   apiv1connect.VolumeServiceClient
 		snapshotservice apiv1connect.SnapshotServiceClient
@@ -97,6 +105,11 @@ func (c client) Adminv1() Adminv1 {
 			c.config.BaseURL,
 			compress.WithAll(compress.LevelBalanced),
 		),
+		tokenservice: adminv1connect.NewTokenServiceClient(
+			c.config.HttpClient(),
+			c.config.BaseURL,
+			compress.WithAll(compress.LevelBalanced),
+		),
 	}
 	return a
 }
@@ -112,6 +125,9 @@ func (c *adminv1) Storage() adminv1connect.StorageServiceClient {
 }
 func (c *adminv1) Tenant() adminv1connect.TenantServiceClient {
 	return c.tenantservice
+}
+func (c *adminv1) Token() adminv1connect.TokenServiceClient {
+	return c.tokenservice
 }
 
 func (c client) Apiv1() Apiv1 {
@@ -136,7 +152,17 @@ func (c client) Apiv1() Apiv1 {
 			c.config.BaseURL,
 			compress.WithAll(compress.LevelBalanced),
 		),
+		methodservice: apiv1connect.NewMethodServiceClient(
+			c.config.HttpClient(),
+			c.config.BaseURL,
+			compress.WithAll(compress.LevelBalanced),
+		),
 		paymentservice: apiv1connect.NewPaymentServiceClient(
+			c.config.HttpClient(),
+			c.config.BaseURL,
+			compress.WithAll(compress.LevelBalanced),
+		),
+		projectservice: apiv1connect.NewProjectServiceClient(
 			c.config.HttpClient(),
 			c.config.BaseURL,
 			compress.WithAll(compress.LevelBalanced),
@@ -147,6 +173,11 @@ func (c client) Apiv1() Apiv1 {
 			compress.WithAll(compress.LevelBalanced),
 		),
 		tokenservice: apiv1connect.NewTokenServiceClient(
+			c.config.HttpClient(),
+			c.config.BaseURL,
+			compress.WithAll(compress.LevelBalanced),
+		),
+		userservice: apiv1connect.NewUserServiceClient(
 			c.config.HttpClient(),
 			c.config.BaseURL,
 			compress.WithAll(compress.LevelBalanced),
@@ -182,14 +213,23 @@ func (c *apiv1) Health() apiv1connect.HealthServiceClient {
 func (c *apiv1) IP() apiv1connect.IPServiceClient {
 	return c.ipservice
 }
+func (c *apiv1) Method() apiv1connect.MethodServiceClient {
+	return c.methodservice
+}
 func (c *apiv1) Payment() apiv1connect.PaymentServiceClient {
 	return c.paymentservice
+}
+func (c *apiv1) Project() apiv1connect.ProjectServiceClient {
+	return c.projectservice
 }
 func (c *apiv1) Tenant() apiv1connect.TenantServiceClient {
 	return c.tenantservice
 }
 func (c *apiv1) Token() apiv1connect.TokenServiceClient {
 	return c.tokenservice
+}
+func (c *apiv1) User() apiv1connect.UserServiceClient {
+	return c.userservice
 }
 func (c *apiv1) Version() apiv1connect.VersionServiceClient {
 	return c.versionservice

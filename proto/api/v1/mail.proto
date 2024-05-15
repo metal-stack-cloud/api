@@ -5,31 +5,51 @@ package api.v1;
 import "google/protobuf/struct.proto";
 import "validate/validate.proto";
 
+// MailType specifies the different mail types we send
 enum MailType {
+  // MAIL_TYPE_UNSPECIFIED the mail is unspecified
   MAIL_TYPE_UNSPECIFIED = 0;
+  // MAIL_TYPE_ADMITTED mail send to users when they are admitted
   MAIL_TYPE_ADMITTED = 1;
+  // MAIL_TYPE_COUPON_PERCENTAGE_USED_WARNING mail send to users when they used a certain amount of their coupon
   MAIL_TYPE_COUPON_PERCENTAGE_USED_WARNING = 2;
+  // MAIL_TYPE_COUPON_COMPLETELY_USED_WARNING mail send to users when the used their coupon completely
   MAIL_TYPE_COUPON_COMPLETELY_USED_WARNING = 3;
+  // MAIL_TYPE_PAYMENT_UPDATED mail send to user when he updates the payment information
   MAIL_TYPE_PAYMENT_UPDATED = 4;
+  // MAIL_TYPE_ADMISSION_REQUESTED mail send to support if a user requests the admission
   MAIL_TYPE_ADMISSION_REQUESTED = 5;
+  // MAIL_TYPE_WELCOME welcome mail if a user registers
   MAIL_TYPE_WELCOME = 6;
 }
 
+// MailFunction specifies how a mail should be send
 enum MailFunction {
+  // MAIL_FUNCTION_UNSPECIFIED the function is unspecified
   MAIL_FUNCTION_UNSPECIFIED = 0;
+  // MAIL_FUNCTION_SEND send a mail with a message from code
   MAIL_FUNCTION_SEND = 1;
+  // MAIL_FUNCTION_SEND_TEMPLATE send a mail template
   MAIL_FUNCTION_SEND_TEMPLATE = 2;
+  // MAIL_FUNCTION_NOTIFY send a mail to our support address
   MAIL_FUNCTION_NOTIFY = 3;
 }
 
+// Email is an email we can send from the api-server
 message Email {
+  // to is the destination email adress(es)
   repeated string to = 1 [(validate.rules).repeated = {
     unique: true
     min_items: 1
   }];
+  // subject is the the title of the mail
   optional string subject = 2;
+  // mail_type is what mail is send
   MailType mail_type = 3;
+  // values is used in templates
   google.protobuf.Struct values = 4;
+  // msg is used if the mail text is specified directly in code
   optional string msg = 5;
+  // mail_function is how the mail is send
   MailFunction mail_function = 6;
 }

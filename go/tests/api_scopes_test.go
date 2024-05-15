@@ -13,8 +13,6 @@ import (
 	"github.com/metal-stack-cloud/api/go/tests/protoparser"
 	"github.com/stretchr/testify/require"
 	"google.golang.org/protobuf/types/descriptorpb"
-
-	"golang.org/x/exp/maps"
 )
 
 type (
@@ -55,6 +53,7 @@ func (visibility) Get(methodOpts []*descriptorpb.UninterpretedOption) (scopes []
 	scopes = getScopes(methodOpts, []string{
 		v1.Visibility_VISIBILITY_PUBLIC.String(),
 		v1.Visibility_VISIBILITY_PRIVATE.String(),
+		v1.Visibility_VISIBILITY_SELF.String(),
 	})
 	return
 }
@@ -134,7 +133,13 @@ func validateProto(root string) error {
 		ars = fmt.Sprintf("%T", ar)
 		vrs = fmt.Sprintf("%T", vr)
 		crs = fmt.Sprintf("%T", cr)
+
+		// add all *rs from above here
+		scopeKeys = []string{
+			trs, prs, ars, vrs, crs,
+		}
 	)
+	slices.Sort(scopeKeys)
 	files, err := getProtos(root)
 	if err != nil {
 		return err
@@ -169,8 +174,6 @@ func validateProto(root string) error {
 
 				// Sort all to have stable results
 				slices.Sort(allScopeNames)
-				scopeKeys := maps.Keys(scopes)
-				slices.Sort(scopeKeys)
 
 				for _, name := range scopeKeys {
 					s := scopes[name]

@@ -18,7 +18,7 @@ import (
 // generated with a version of connect newer than the one compiled into your binary. You can fix the
 // problem by either regenerating this code with an older version of connect or updating the connect
 // version compiled into your binary.
-const _ = connect.IsAtLeastVersion0_1_0
+const _ = connect.IsAtLeastVersion1_13_0
 
 const (
 	// IPServiceName is the fully-qualified name of the IPService service.
@@ -45,12 +45,27 @@ const (
 	IPServiceDeleteProcedure = "/api.v1.IPService/Delete"
 )
 
+// These variables are the protoreflect.Descriptor objects for the RPCs defined in this package.
+var (
+	iPServiceServiceDescriptor        = v1.File_api_v1_ip_proto.Services().ByName("IPService")
+	iPServiceGetMethodDescriptor      = iPServiceServiceDescriptor.Methods().ByName("Get")
+	iPServiceAllocateMethodDescriptor = iPServiceServiceDescriptor.Methods().ByName("Allocate")
+	iPServiceUpdateMethodDescriptor   = iPServiceServiceDescriptor.Methods().ByName("Update")
+	iPServiceListMethodDescriptor     = iPServiceServiceDescriptor.Methods().ByName("List")
+	iPServiceDeleteMethodDescriptor   = iPServiceServiceDescriptor.Methods().ByName("Delete")
+)
+
 // IPServiceClient is a client for the api.v1.IPService service.
 type IPServiceClient interface {
+	// Get a ip
 	Get(context.Context, *connect.Request[v1.IPServiceGetRequest]) (*connect.Response[v1.IPServiceGetResponse], error)
+	// Allocate a ip
 	Allocate(context.Context, *connect.Request[v1.IPServiceAllocateRequest]) (*connect.Response[v1.IPServiceAllocateResponse], error)
+	// Update a ip
 	Update(context.Context, *connect.Request[v1.IPServiceUpdateRequest]) (*connect.Response[v1.IPServiceUpdateResponse], error)
+	// List all ips
 	List(context.Context, *connect.Request[v1.IPServiceListRequest]) (*connect.Response[v1.IPServiceListResponse], error)
+	// Delete a ip
 	Delete(context.Context, *connect.Request[v1.IPServiceDeleteRequest]) (*connect.Response[v1.IPServiceDeleteResponse], error)
 }
 
@@ -67,27 +82,32 @@ func NewIPServiceClient(httpClient connect.HTTPClient, baseURL string, opts ...c
 		get: connect.NewClient[v1.IPServiceGetRequest, v1.IPServiceGetResponse](
 			httpClient,
 			baseURL+IPServiceGetProcedure,
-			opts...,
+			connect.WithSchema(iPServiceGetMethodDescriptor),
+			connect.WithClientOptions(opts...),
 		),
 		allocate: connect.NewClient[v1.IPServiceAllocateRequest, v1.IPServiceAllocateResponse](
 			httpClient,
 			baseURL+IPServiceAllocateProcedure,
-			opts...,
+			connect.WithSchema(iPServiceAllocateMethodDescriptor),
+			connect.WithClientOptions(opts...),
 		),
 		update: connect.NewClient[v1.IPServiceUpdateRequest, v1.IPServiceUpdateResponse](
 			httpClient,
 			baseURL+IPServiceUpdateProcedure,
-			opts...,
+			connect.WithSchema(iPServiceUpdateMethodDescriptor),
+			connect.WithClientOptions(opts...),
 		),
 		list: connect.NewClient[v1.IPServiceListRequest, v1.IPServiceListResponse](
 			httpClient,
 			baseURL+IPServiceListProcedure,
-			opts...,
+			connect.WithSchema(iPServiceListMethodDescriptor),
+			connect.WithClientOptions(opts...),
 		),
 		delete: connect.NewClient[v1.IPServiceDeleteRequest, v1.IPServiceDeleteResponse](
 			httpClient,
 			baseURL+IPServiceDeleteProcedure,
-			opts...,
+			connect.WithSchema(iPServiceDeleteMethodDescriptor),
+			connect.WithClientOptions(opts...),
 		),
 	}
 }
@@ -128,10 +148,15 @@ func (c *iPServiceClient) Delete(ctx context.Context, req *connect.Request[v1.IP
 
 // IPServiceHandler is an implementation of the api.v1.IPService service.
 type IPServiceHandler interface {
+	// Get a ip
 	Get(context.Context, *connect.Request[v1.IPServiceGetRequest]) (*connect.Response[v1.IPServiceGetResponse], error)
+	// Allocate a ip
 	Allocate(context.Context, *connect.Request[v1.IPServiceAllocateRequest]) (*connect.Response[v1.IPServiceAllocateResponse], error)
+	// Update a ip
 	Update(context.Context, *connect.Request[v1.IPServiceUpdateRequest]) (*connect.Response[v1.IPServiceUpdateResponse], error)
+	// List all ips
 	List(context.Context, *connect.Request[v1.IPServiceListRequest]) (*connect.Response[v1.IPServiceListResponse], error)
+	// Delete a ip
 	Delete(context.Context, *connect.Request[v1.IPServiceDeleteRequest]) (*connect.Response[v1.IPServiceDeleteResponse], error)
 }
 
@@ -144,27 +169,32 @@ func NewIPServiceHandler(svc IPServiceHandler, opts ...connect.HandlerOption) (s
 	iPServiceGetHandler := connect.NewUnaryHandler(
 		IPServiceGetProcedure,
 		svc.Get,
-		opts...,
+		connect.WithSchema(iPServiceGetMethodDescriptor),
+		connect.WithHandlerOptions(opts...),
 	)
 	iPServiceAllocateHandler := connect.NewUnaryHandler(
 		IPServiceAllocateProcedure,
 		svc.Allocate,
-		opts...,
+		connect.WithSchema(iPServiceAllocateMethodDescriptor),
+		connect.WithHandlerOptions(opts...),
 	)
 	iPServiceUpdateHandler := connect.NewUnaryHandler(
 		IPServiceUpdateProcedure,
 		svc.Update,
-		opts...,
+		connect.WithSchema(iPServiceUpdateMethodDescriptor),
+		connect.WithHandlerOptions(opts...),
 	)
 	iPServiceListHandler := connect.NewUnaryHandler(
 		IPServiceListProcedure,
 		svc.List,
-		opts...,
+		connect.WithSchema(iPServiceListMethodDescriptor),
+		connect.WithHandlerOptions(opts...),
 	)
 	iPServiceDeleteHandler := connect.NewUnaryHandler(
 		IPServiceDeleteProcedure,
 		svc.Delete,
-		opts...,
+		connect.WithSchema(iPServiceDeleteMethodDescriptor),
+		connect.WithHandlerOptions(opts...),
 	)
 	return "/api.v1.IPService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {

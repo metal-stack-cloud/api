@@ -1,38 +1,68 @@
 import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
 import { Message, proto3 } from "@bufbuild/protobuf";
-import { OAuthProvider, Role } from "./common_pb.js";
+import { OAuthProvider } from "./common_pb.js";
+import { Tenant } from "./tenant_pb.js";
+import { Project } from "./project_pb.js";
 /**
- * User
+ * User is a end user of the platform
  *
  * @generated from message api.v1.User
  */
 export declare class User extends Message<User> {
     /**
-     * the login at the provider
+     * Login the login at the provider
      *
      * @generated from field: string login = 1;
      */
     login: string;
     /**
+     * Name of the user
+     *
      * @generated from field: string name = 2;
      */
     name: string;
     /**
+     * Email of the user
+     *
      * @generated from field: string email = 3;
      */
     email: string;
     /**
+     * AvatarUrl of the user
+     *
      * @generated from field: string avatar_url = 5;
      */
     avatarUrl: string;
     /**
+     * OauthProvider of the user
+     *
      * @generated from field: api.v1.OAuthProvider oauth_provider = 6;
      */
     oauthProvider: OAuthProvider;
     /**
-     * @generated from field: repeated api.v1.Organization organizations = 7;
+     * Tenants the user belongs to
+     *
+     * @generated from field: repeated api.v1.Tenant tenants = 8;
      */
-    organizations: Organization[];
+    tenants: Tenant[];
+    /**
+     * Projects the user belongs to
+     *
+     * @generated from field: repeated api.v1.Project projects = 9;
+     */
+    projects: Project[];
+    /**
+     * DefaultTenant this user belongs to
+     *
+     * @generated from field: api.v1.Tenant default_tenant = 10;
+     */
+    defaultTenant?: Tenant;
+    /**
+     * DefaultProject this user belongs to
+     *
+     * @generated from field: api.v1.Project default_project = 11;
+     */
+    defaultProject?: Project;
     constructor(data?: PartialMessage<User>);
     static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.User";
@@ -43,84 +73,38 @@ export declare class User extends Message<User> {
     static equals(a: User | PlainMessage<User> | undefined, b: User | PlainMessage<User> | undefined): boolean;
 }
 /**
- * @generated from message api.v1.Organization
+ * UserServiceGetRequest is the request to get the user
+ *
+ * @generated from message api.v1.UserServiceGetRequest
  */
-export declare class Organization extends Message<Organization> {
-    /**
-     * @generated from field: string id = 1;
-     */
-    id: string;
-    /**
-     * @generated from field: string login = 2;
-     */
-    login: string;
-    /**
-     * @generated from field: string name = 3;
-     */
-    name: string;
-    /**
-     * @generated from field: string email = 4;
-     */
-    email: string;
-    /**
-     * @generated from field: string billing_email = 5;
-     */
-    billingEmail: string;
-    /**
-     * @generated from field: string avatar_url = 6;
-     */
-    avatarUrl: string;
-    /**
-     * @generated from field: api.v1.Role role = 7;
-     */
-    role: Role;
-    /**
-     * @generated from field: repeated api.v1.Team teams = 8;
-     */
-    teams: Team[];
-    /**
-     * @generated from field: optional bool admitted = 9;
-     */
-    admitted?: boolean;
-    constructor(data?: PartialMessage<Organization>);
+export declare class UserServiceGetRequest extends Message<UserServiceGetRequest> {
+    constructor(data?: PartialMessage<UserServiceGetRequest>);
     static readonly runtime: typeof proto3;
-    static readonly typeName = "api.v1.Organization";
+    static readonly typeName = "api.v1.UserServiceGetRequest";
     static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Organization;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): Organization;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): Organization;
-    static equals(a: Organization | PlainMessage<Organization> | undefined, b: Organization | PlainMessage<Organization> | undefined): boolean;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): UserServiceGetRequest;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): UserServiceGetRequest;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): UserServiceGetRequest;
+    static equals(a: UserServiceGetRequest | PlainMessage<UserServiceGetRequest> | undefined, b: UserServiceGetRequest | PlainMessage<UserServiceGetRequest> | undefined): boolean;
 }
 /**
- * @generated from message api.v1.Team
+ * UserServiceGetResponse the response when userservice get request was called
+ *
+ * @generated from message api.v1.UserServiceGetResponse
  */
-export declare class Team extends Message<Team> {
+export declare class UserServiceGetResponse extends Message<UserServiceGetResponse> {
     /**
-     * @generated from field: string id = 1;
+     * User is the user
+     *
+     * @generated from field: api.v1.User user = 1;
      */
-    id: string;
-    /**
-     * @generated from field: string name = 2;
-     */
-    name: string;
-    /**
-     * @generated from field: string avatar_url = 3;
-     */
-    avatarUrl: string;
-    /**
-     * @generated from field: api.v1.Role role = 4;
-     */
-    role: Role;
-    /**
-     * @generated from field: string project_id = 5;
-     */
-    projectId: string;
-    constructor(data?: PartialMessage<Team>);
+    user?: User;
+    constructor(data?: PartialMessage<UserServiceGetResponse>);
     static readonly runtime: typeof proto3;
-    static readonly typeName = "api.v1.Team";
+    static readonly typeName = "api.v1.UserServiceGetResponse";
     static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Team;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): Team;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): Team;
-    static equals(a: Team | PlainMessage<Team> | undefined, b: Team | PlainMessage<Team> | undefined): boolean;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): UserServiceGetResponse;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): UserServiceGetResponse;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): UserServiceGetResponse;
+    static equals(a: UserServiceGetResponse | PlainMessage<UserServiceGetResponse> | undefined, b: UserServiceGetResponse | PlainMessage<UserServiceGetResponse> | undefined): boolean;
 }

@@ -2,10 +2,14 @@ import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialM
 import { Message, proto3 } from "@bufbuild/protobuf";
 import { Snapshot, Volume } from "../../api/v1/volume_pb.js";
 /**
+ * StorageServiceClusterInfoRequest is the request payload for the cluster info request
+ *
  * @generated from message admin.v1.StorageServiceClusterInfoRequest
  */
 export declare class StorageServiceClusterInfoRequest extends Message<StorageServiceClusterInfoRequest> {
     /**
+     * Partition for which the cluster info should be returned
+     *
      * @generated from field: optional string partition = 1;
      */
     partition?: string;
@@ -19,10 +23,14 @@ export declare class StorageServiceClusterInfoRequest extends Message<StorageSer
     static equals(a: StorageServiceClusterInfoRequest | PlainMessage<StorageServiceClusterInfoRequest> | undefined, b: StorageServiceClusterInfoRequest | PlainMessage<StorageServiceClusterInfoRequest> | undefined): boolean;
 }
 /**
+ * StorageServiceClusterInfoResponse is the response payload for the cluster info request
+ *
  * @generated from message admin.v1.StorageServiceClusterInfoResponse
  */
 export declare class StorageServiceClusterInfoResponse extends Message<StorageServiceClusterInfoResponse> {
     /**
+     * Infos about the storage systems
+     *
      * @generated from field: repeated admin.v1.StorageClusterInfo infos = 1;
      */
     infos: StorageClusterInfo[];
@@ -36,58 +44,86 @@ export declare class StorageServiceClusterInfoResponse extends Message<StorageSe
     static equals(a: StorageServiceClusterInfoResponse | PlainMessage<StorageServiceClusterInfoResponse> | undefined, b: StorageServiceClusterInfoResponse | PlainMessage<StorageServiceClusterInfoResponse> | undefined): boolean;
 }
 /**
+ * StorageClusterInfo represents details about a storage system
+ *
  * @generated from message admin.v1.StorageClusterInfo
  */
 export declare class StorageClusterInfo extends Message<StorageClusterInfo> {
     /**
+     * Partition where this storage system is present
+     *
      * @generated from field: string partition = 1;
      */
     partition: string;
     /**
+     * Uuid of this storage system
+     *
      * @generated from field: string uuid = 2;
      */
     uuid: string;
     /**
+     * SubsystemNqn is the subsystem nqn
+     *
      * @generated from field: string subsystem_nqn = 3;
      */
     subsystemNqn: string;
     /**
+     * CurrentMaxReplicas defines how many replicas a volume can have currently
+     *
      * @generated from field: uint32 current_max_replicas = 4;
      */
     currentMaxReplicas: number;
     /**
+     * SupportedMaxReplicas defines how many replicas a volume can have at max
+     *
      * @generated from field: uint32 supported_max_replicas = 5;
      */
     supportedMaxReplicas: number;
     /**
+     * Statistics of the storage system
+     *
      * @generated from field: admin.v1.ClusterStatisticsApi statistics = 6;
      */
     statistics?: ClusterStatisticsApi;
     /**
+     * Health of the storage system
+     *
      * @generated from field: admin.v1.ClusterHealth health = 7;
      */
     health?: ClusterHealth;
     /**
+     * MinVersionInCluster is the minimum server version in this cluster
+     *
      * @generated from field: string min_version_in_cluster = 8;
      */
     minVersionInCluster: string;
     /**
+     * MinAllowedVersion is the minimum possible server version in this cluster
+     *
      * @generated from field: string min_allowed_version = 9;
      */
     minAllowedVersion: string;
     /**
+     * MaxAllowedVersion is the maximum possible server version in this cluster
+     *
      * @generated from field: string max_allowed_version = 10;
      */
     maxAllowedVersion: string;
     /**
+     * ApiEndpoints is a list of ips of all api endpoints this cluster has
+     *
      * @generated from field: repeated string api_endpoints = 11;
      */
     apiEndpoints: string[];
     /**
+     * DiscoveryEndpoints is a list of ips of all discovery endpoints this cluster has
+     *
      * @generated from field: repeated string discovery_endpoints = 12;
      */
     discoveryEndpoints: string[];
     /**
+     * Servers is a list of storage servers in this storage system
+     *
      * @generated from field: repeated admin.v1.StorageServerInfo servers = 13;
      */
     servers: StorageServerInfo[];
@@ -101,30 +137,44 @@ export declare class StorageClusterInfo extends Message<StorageClusterInfo> {
     static equals(a: StorageClusterInfo | PlainMessage<StorageClusterInfo> | undefined, b: StorageClusterInfo | PlainMessage<StorageClusterInfo> | undefined): boolean;
 }
 /**
+ * StorageServerInfo contains details about a single storage server
+ *
  * @generated from message admin.v1.StorageServerInfo
  */
 export declare class StorageServerInfo extends Message<StorageServerInfo> {
     /**
+     * Uuid of this server
+     *
      * @generated from field: string uuid = 1;
      */
     uuid: string;
     /**
+     * Name of this server
+     *
      * @generated from field: string name = 2;
      */
     name: string;
     /**
+     * RiskOfServiceLossState describes the risk of service loss
+     *
      * @generated from field: string risk_of_service_loss_state = 3;
      */
     riskOfServiceLossState: string;
     /**
+     * State of this server
+     *
      * @generated from field: string state = 4;
      */
     state: string;
     /**
+     * ServerEndpoints is a list of ips this server offers
+     *
      * @generated from field: repeated string server_endpoints = 5;
      */
     serverEndpoints: string[];
     /**
+     * LightOsVersion is the version of the storage server version
+     *
      * @generated from field: string light_os_version = 6;
      */
     lightOsVersion: string;
@@ -138,26 +188,38 @@ export declare class StorageServerInfo extends Message<StorageServerInfo> {
     static equals(a: StorageServerInfo | PlainMessage<StorageServerInfo> | undefined, b: StorageServerInfo | PlainMessage<StorageServerInfo> | undefined): boolean;
 }
 /**
+ * ClusterHealth the health of the cluster
+ *
  * @generated from message admin.v1.ClusterHealth
  */
 export declare class ClusterHealth extends Message<ClusterHealth> {
     /**
+     * State of the cluster
+     *
      * @generated from field: string state = 1;
      */
     state: string;
     /**
+     * NumDegradedVolumes is the number of degraded volumes
+     *
      * @generated from field: uint32 num_degraded_volumes = 2;
      */
     numDegradedVolumes: number;
     /**
+     * NumReadonlyVolumes is the number of read only volumes
+     *
      * @generated from field: uint32 num_read_only_volumes = 3;
      */
     numReadOnlyVolumes: number;
     /**
+     * NumNotAvailableVolumes is the number of not available volumes
+     *
      * @generated from field: uint32 num_not_available_volumes = 4;
      */
     numNotAvailableVolumes: number;
     /**
+     * NumInactiveVolumes is the number of inactive volumes
+     *
      * @generated from field: uint32 num_inactive_nodes = 5;
      */
     numInactiveNodes: number;
@@ -171,6 +233,8 @@ export declare class ClusterHealth extends Message<ClusterHealth> {
     static equals(a: ClusterHealth | PlainMessage<ClusterHealth> | undefined, b: ClusterHealth | PlainMessage<ClusterHealth> | undefined): boolean;
 }
 /**
+ * ClusterStatisticsApi detailed statistics of the storage cluster
+ *
  * @generated from message admin.v1.ClusterStatisticsApi
  */
 export declare class ClusterStatisticsApi extends Message<ClusterStatisticsApi> {
@@ -255,7 +319,7 @@ export declare class ClusterStatisticsApi extends Message<ClusterStatisticsApi> 
      */
     estimatedLogicalStorage: bigint;
     /**
-     * commpression ratio
+     * compression ratio
      *
      * compression ratio logicalUsedStorage/physicalUsedStorage
      *
@@ -272,26 +336,38 @@ export declare class ClusterStatisticsApi extends Message<ClusterStatisticsApi> 
     static equals(a: ClusterStatisticsApi | PlainMessage<ClusterStatisticsApi> | undefined, b: ClusterStatisticsApi | PlainMessage<ClusterStatisticsApi> | undefined): boolean;
 }
 /**
+ * StorageServiceListVolumesRequest is the request payload for the volume list request
+ *
  * @generated from message admin.v1.StorageServiceListVolumesRequest
  */
 export declare class StorageServiceListVolumesRequest extends Message<StorageServiceListVolumesRequest> {
     /**
+     * Uuid is the uuid of the volume to list
+     *
      * @generated from field: optional string uuid = 1;
      */
     uuid?: string;
     /**
+     * Project is the project of the volume to list
+     *
      * @generated from field: optional string project = 2;
      */
     project?: string;
     /**
+     * Partition is the partition of the volume to list
+     *
      * @generated from field: optional string partition = 3;
      */
     partition?: string;
     /**
+     * Name is the name of the volume to list
+     *
      * @generated from field: optional string name = 4;
      */
     name?: string;
     /**
+     * Tenant is the tenant of the volume to list
+     *
      * @generated from field: optional string tenant = 5;
      */
     tenant?: string;
@@ -305,10 +381,14 @@ export declare class StorageServiceListVolumesRequest extends Message<StorageSer
     static equals(a: StorageServiceListVolumesRequest | PlainMessage<StorageServiceListVolumesRequest> | undefined, b: StorageServiceListVolumesRequest | PlainMessage<StorageServiceListVolumesRequest> | undefined): boolean;
 }
 /**
+ * StorageServiceListVolumesResponse is the response payload for the volume list request
+ *
  * @generated from message admin.v1.StorageServiceListVolumesResponse
  */
 export declare class StorageServiceListVolumesResponse extends Message<StorageServiceListVolumesResponse> {
     /**
+     * Volumes is the list of volumes
+     *
      * @generated from field: repeated api.v1.Volume volumes = 1;
      */
     volumes: Volume[];
@@ -322,26 +402,38 @@ export declare class StorageServiceListVolumesResponse extends Message<StorageSe
     static equals(a: StorageServiceListVolumesResponse | PlainMessage<StorageServiceListVolumesResponse> | undefined, b: StorageServiceListVolumesResponse | PlainMessage<StorageServiceListVolumesResponse> | undefined): boolean;
 }
 /**
+ * StorageServiceListVolumesRequest is the request payload for the snapshot list request
+ *
  * @generated from message admin.v1.StorageServiceListSnapshotsRequest
  */
 export declare class StorageServiceListSnapshotsRequest extends Message<StorageServiceListSnapshotsRequest> {
     /**
+     * Uuid is the uuid of the snapshot to list
+     *
      * @generated from field: optional string uuid = 1;
      */
     uuid?: string;
     /**
+     * Project is the project of the snapshot to list
+     *
      * @generated from field: optional string project = 2;
      */
     project?: string;
     /**
+     * Partition is the partition of the snapshot to list
+     *
      * @generated from field: optional string partition = 3;
      */
     partition?: string;
     /**
+     * Name is the name of the snapshot to list
+     *
      * @generated from field: optional string name = 4;
      */
     name?: string;
     /**
+     * Tenant is the tenant of the snapshot to list
+     *
      * @generated from field: optional string tenant = 5;
      */
     tenant?: string;
@@ -355,10 +447,14 @@ export declare class StorageServiceListSnapshotsRequest extends Message<StorageS
     static equals(a: StorageServiceListSnapshotsRequest | PlainMessage<StorageServiceListSnapshotsRequest> | undefined, b: StorageServiceListSnapshotsRequest | PlainMessage<StorageServiceListSnapshotsRequest> | undefined): boolean;
 }
 /**
+ * StorageServiceListSnapshotsResponse is the response payload for the snapshot list request
+ *
  * @generated from message admin.v1.StorageServiceListSnapshotsResponse
  */
 export declare class StorageServiceListSnapshotsResponse extends Message<StorageServiceListSnapshotsResponse> {
     /**
+     * Snapshots is the list of snapshots
+     *
      * @generated from field: repeated api.v1.Snapshot snapshots = 1;
      */
     snapshots: Snapshot[];

@@ -6,12 +6,9 @@ import (
 	"github.com/stretchr/testify/require"
 )
 
-func TestGet(t *testing.T) {
-
-	perms, err := Get()
-	require.NoError(t, err)
+func TestGetServicePermissions(t *testing.T) {
+	perms := GetServicePermissions()
 	require.NotNil(t, perms)
 	require.Contains(t, perms.Methods, "/api.v1.AssetService/List")
-	require.Contains(t, perms.Visibility.Private, "/api.v1.TokenService/Create")
-
+	require.Contains(t, perms.Visibility.Self, "/api.v1.TokenService/Create")
 }

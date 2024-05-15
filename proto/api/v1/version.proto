@@ -4,13 +4,16 @@ package api.v1;
 
 import "api/v1/common.proto";
 
+// VersionService serves version related functions
 service VersionService {
+  // Get the version
   rpc Get(VersionServiceGetRequest) returns (VersionServiceGetResponse) {
     option (visibility) = VISIBILITY_PUBLIC;
     option (auditing) = AUDITING_EXCLUDED;
   }
 }
 
+// Version of the application
 message Version {
   // Version of the application
   string version = 1;
@@ -22,10 +25,11 @@ message Version {
   string build_date = 4;
 }
 
+// VersionServiceGetRequest is the request payload to get the version
 message VersionServiceGetRequest {}
 
-// Version
-
+// VersionServiceGetResponse is the response payload with the version
 message VersionServiceGetResponse {
+  // Version of the application
   Version version = 1;
 }

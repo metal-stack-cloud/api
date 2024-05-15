@@ -1,0 +1,46 @@
+syntax = "proto3";
+
+package admin.v1;
+
+import "api/v1/common.proto";
+import "api/v1/token.proto";
+import "validate/validate.proto";
+
+// TokenService serves token related functions
+service TokenService {
+  // List tokens
+  rpc List(TokenServiceListRequest) returns (TokenServiceListResponse) {
+    option (api.v1.admin_roles) = ADMIN_ROLE_EDITOR;
+    option (api.v1.admin_roles) = ADMIN_ROLE_VIEWER;
+  }
+  // Revoke a token
+  rpc Revoke(TokenServiceRevokeRequest) returns (TokenServiceRevokeResponse) {
+    option (api.v1.admin_roles) = ADMIN_ROLE_EDITOR;
+  }
+}
+
+// TokenServiceListRequest is the request payload for the token list request
+message TokenServiceListRequest {
+  // UserId is the id of the user for which the tokens should be listed
+  optional string user_id = 1;
+}
+
+// TokenServiceListResponse is the response payload for the token list request
+message TokenServiceListResponse {
+  // Tokens is the list of tokens
+  repeated api.v1.Token tokens = 1;
+}
+
+// TokenServiceRevokeRequest is the request payload for the token revoke request
+message TokenServiceRevokeRequest {
+  // Uuid is the uuid of the token which should be revoked
+  string uuid = 1 [(validate.rules).string.uuid = true];
+  // UserId is the id of the user for which the token should be revoked
+  string user_id = 2 [(validate.rules).string = {
+    min_len: 2,
+    max_len: 512,
+  }];
+}
+
+// TokenServiceRevokeResponse is the response payload for the token revoke request
+message TokenServiceRevokeResponse {}
