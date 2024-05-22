@@ -67,6 +67,8 @@ func (m *Project) validate(all bool) error {
 
 	// no validation rules for Tenant
 
+	// no validation rules for IsDefaultProject
+
 	if all {
 		switch v := interface{}(m.GetCreatedAt()).(type) {
 		case interface{ ValidateAll() error }:

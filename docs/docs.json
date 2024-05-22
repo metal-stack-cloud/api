@@ -11913,6 +11913,18 @@
               "defaultValue": ""
             },
             {
+              "name": "is_default_project",
+              "description": "IsDefaultProject is true if this is the default project of the tenant.",
+              "label": "",
+              "type": "bool",
+              "longType": "bool",
+              "fullType": "bool",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
               "name": "created_at",
               "description": "CreatedAt the date when this project was created",
               "label": "",
