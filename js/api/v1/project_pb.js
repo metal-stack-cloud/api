@@ -37,6 +37,12 @@ export class Project extends Message {
          * @generated from field: string tenant = 4;
          */
         this.tenant = "";
+        /**
+         * IsDefaultProject is true if this is the default project of the tenant.
+         *
+         * @generated from field: bool is_default_project = 5;
+         */
+        this.isDefaultProject = false;
         proto3.util.initPartial(data, this);
     }
     static fromBinary(bytes, options) {
@@ -59,6 +65,7 @@ Project.fields = proto3.util.newFieldList(() => [
     { no: 2, name: "name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 3, name: "description", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 4, name: "tenant", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 5, name: "is_default_project", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
     { no: 10, name: "created_at", kind: "message", T: Timestamp },
     { no: 11, name: "updated_at", kind: "message", T: Timestamp },
 ]);

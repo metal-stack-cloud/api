@@ -85,6 +85,8 @@ message Project {
   string description = 3;
   // Tenant this project belongs to
   string tenant = 4;
+  // IsDefaultProject is true if this is the default project of the tenant.
+  bool is_default_project = 5;
   // CreatedAt the date when this project was created
   google.protobuf.Timestamp created_at = 10;
   // UpdatedAt the date when this project was updated

@@ -43,6 +43,13 @@ export class Project extends Message<Project> {
   tenant = "";
 
   /**
+   * IsDefaultProject is true if this is the default project of the tenant.
+   *
+   * @generated from field: bool is_default_project = 5;
+   */
+  isDefaultProject = false;
+
+  /**
    * CreatedAt the date when this project was created
    *
    * @generated from field: google.protobuf.Timestamp created_at = 10;
@@ -68,6 +75,7 @@ export class Project extends Message<Project> {
     { no: 2, name: "name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 3, name: "description", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 4, name: "tenant", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 5, name: "is_default_project", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
     { no: 10, name: "created_at", kind: "message", T: Timestamp },
     { no: 11, name: "updated_at", kind: "message", T: Timestamp },
   ]);

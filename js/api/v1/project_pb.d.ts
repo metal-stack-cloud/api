@@ -33,6 +33,12 @@ export declare class Project extends Message<Project> {
      */
     tenant: string;
     /**
+     * IsDefaultProject is true if this is the default project of the tenant.
+     *
+     * @generated from field: bool is_default_project = 5;
+     */
+    isDefaultProject: boolean;
+    /**
      * CreatedAt the date when this project was created
      *
      * @generated from field: google.protobuf.Timestamp created_at = 10;
