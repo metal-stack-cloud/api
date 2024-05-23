@@ -303,11 +303,6 @@ message PaymentServiceHasPaymentMethodRequest {
     min_len: 2,
     max_len: 128,
   }];
-  // Project for which the payment method should be checked
-  string project = 2 [(validate.rules).string = {
-    min_len: 2,
-    max_len: 128,
-  }];
 }
 
 // PaymentServiceHasPaymentMethodResponse is the response payload for a has payment request
