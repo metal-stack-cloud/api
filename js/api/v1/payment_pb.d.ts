@@ -640,12 +640,6 @@ export declare class PaymentServiceHasPaymentMethodRequest extends Message<Payme
      * @generated from field: string login = 1;
      */
     login: string;
-    /**
-     * Project for which the payment method should be checked
-     *
-     * @generated from field: string project = 2;
-     */
-    project: string;
     constructor(data?: PartialMessage<PaymentServiceHasPaymentMethodRequest>);
     static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.PaymentServiceHasPaymentMethodRequest";

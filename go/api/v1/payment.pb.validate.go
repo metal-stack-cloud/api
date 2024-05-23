@@ -2273,17 +2273,6 @@ func (m *PaymentServiceHasPaymentMethodRequest) validate(all bool) error {
 		errors = append(errors, err)
 	}
 
-	if l := utf8.RuneCountInString(m.GetProject()); l < 2 || l > 128 {
-		err := PaymentServiceHasPaymentMethodRequestValidationError{
-			field:  "Project",
-			reason: "value length must be between 2 and 128 runes, inclusive",
-		}
-		if !all {
-			return err
-		}
-		errors = append(errors, err)
-	}
-
 	if len(errors) > 0 {
 		return PaymentServiceHasPaymentMethodRequestMultiError(errors)
 	}

@@ -763,12 +763,6 @@ export class PaymentServiceHasPaymentMethodRequest extends Message {
          * @generated from field: string login = 1;
          */
         this.login = "";
-        /**
-         * Project for which the payment method should be checked
-         *
-         * @generated from field: string project = 2;
-         */
-        this.project = "";
         proto3.util.initPartial(data, this);
     }
     static fromBinary(bytes, options) {
@@ -788,7 +782,6 @@ PaymentServiceHasPaymentMethodRequest.runtime = proto3;
 PaymentServiceHasPaymentMethodRequest.typeName = "api.v1.PaymentServiceHasPaymentMethodRequest";
 PaymentServiceHasPaymentMethodRequest.fields = proto3.util.newFieldList(() => [
     { no: 1, name: "login", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 2, name: "project", kind: "scalar", T: 9 /* ScalarType.STRING */ },
 ]);
 /**
  * PaymentServiceHasPaymentMethodResponse is the response payload for a has payment request

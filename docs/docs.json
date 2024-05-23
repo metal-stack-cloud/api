@@ -4325,30 +4325,6 @@
                   }
                 ]
               }
-            },
-            {
-              "name": "project",
-              "description": "Project for which the payment method should be checked",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.min_len",
-                    "value": 2
-                  },
-                  {
-                    "name": "string.max_len",
-                    "value": 128
-                  }
-                ]
-              }
             }
           ]
         },
