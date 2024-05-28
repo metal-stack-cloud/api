@@ -43,7 +43,7 @@ type Machine struct {
 	MachineNetworks []*MachineNetwork `protobuf:"bytes,7,rep,name=machine_networks,json=machineNetworks,proto3" json:"machine_networks,omitempty"`
 	// Hostname of this machine
 	Hostname string `protobuf:"bytes,8,opt,name=hostname,proto3" json:"hostname,omitempty"`
-	// UserDate which are used for bootstrapping
+	// UserData which are used for bootstrapping
 	UserData string `protobuf:"bytes,9,opt,name=user_data,json=userData,proto3" json:"user_data,omitempty"`
 	// Role of this machine, can be either machine or firewall
 	Role string `protobuf:"bytes,10,opt,name=role,proto3" json:"role,omitempty"`

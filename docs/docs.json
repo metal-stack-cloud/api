@@ -119,7 +119,7 @@
             },
             {
               "name": "user_data",
-              "description": "UserDate which are used for bootstrapping",
+              "description": "UserData which are used for bootstrapping",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -11588,6 +11588,837 @@
               "responseType": "IPServiceDeleteResponse",
               "responseLongType": "IPServiceDeleteResponse",
               "responseFullType": "api.v1.IPServiceDeleteResponse",
+              "responseStreaming": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "api/v1/machine.proto",
+      "description": "",
+      "package": "api.v1",
+      "hasEnums": true,
+      "hasExtensions": false,
+      "hasMessages": true,
+      "hasServices": true,
+      "enums": [
+        {
+          "name": "MachineRole",
+          "longName": "MachineRole",
+          "fullName": "api.v1.MachineRole",
+          "description": "MachineRole defines the machine roles.",
+          "values": [
+            {
+              "name": "MACHINE_ROLE_UNSPECIFIED",
+              "number": "0",
+              "description": "MACHINE_ROLE_UNSPECIFIED is not specified"
+            },
+            {
+              "name": "MACHINE_ROLE_MACHINE",
+              "number": "1",
+              "description": "MACHINE_ROLE_MACHINE is a machine that serves as a normal machine"
+            },
+            {
+              "name": "MACHINE_ROLE_FIREWALL",
+              "number": "2",
+              "description": "MACHINE_ROLE_FIREWALL is a machine that serves as a firewall"
+            }
+          ]
+        },
+        {
+          "name": "MachineState",
+          "longName": "MachineState",
+          "fullName": "api.v1.MachineState",
+          "description": "MachineState defines the machine states.",
+          "values": [
+            {
+              "name": "MACHINE_STATE_UNSPECIFIED",
+              "number": "0",
+              "description": "MACHINE_ROLE_UNSPECIFIED is not specified"
+            },
+            {
+              "name": "MACHINE_STATE_HEALTHY",
+              "number": "1",
+              "description": "MACHINE_STATE_HEALTHY describes an healthy machine state."
+            },
+            {
+              "name": "MACHINE_STATE_UNHEALTHY",
+              "number": "2",
+              "description": "MACHINE_STATE_UNHEALTHY describes an unhealthy machine state."
+            },
+            {
+              "name": "MACHINE_STATE_PROVISIONING",
+              "number": "3",
+              "description": "MACHINE_STATE_PROVISIONING describes a machine that is currently being provisioned."
+            }
+          ]
+        }
+      ],
+      "extensions": [],
+      "messages": [
+        {
+          "name": "Machine",
+          "longName": "Machine",
+          "fullName": "api.v1.Machine",
+          "description": "Machine describes a kubernetes machine",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "uuid",
+              "description": "Uuid of the machine",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": "",
+              "options": {
+                "validate.rules": [
+                  {
+                    "name": "string.uuid",
+                    "value": true
+                  }
+                ]
+              }
+            },
+            {
+              "name": "name",
+              "description": "Name of the machine",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": "",
+              "options": {
+                "validate.rules": [
+                  {
+                    "name": "string.min_len",
+                    "value": 2
+                  },
+                  {
+                    "name": "string.max_len",
+                    "value": 12
+                  }
+                ]
+              }
+            },
+            {
+              "name": "project",
+              "description": "Project where this machine belongs to",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": "",
+              "options": {
+                "validate.rules": [
+                  {
+                    "name": "string.min_len",
+                    "value": 2
+                  },
+                  {
+                    "name": "string.max_len",
+                    "value": 128
+                  }
+                ]
+              }
+            },
+            {
+              "name": "allocation_uuid",
+              "description": "AllocationUUID is a unique identifier for this machine allocation, can be used to distinguish between machine allocations over time",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": "",
+              "options": {
+                "validate.rules": [
+                  {
+                    "name": "string.uuid",
+                    "value": true
+                  }
+                ]
+              }
+            },
+            {
+              "name": "hostname",
+              "description": "Hostname is the hostname of this machine",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "role",
+              "description": "Role defines the role of this machine",
+              "label": "",
+              "type": "MachineRole",
+              "longType": "MachineRole",
+              "fullType": "api.v1.MachineRole",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "partition",
+              "description": "Partition where this machine was created",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "image",
+              "description": "Image is the OS image provisioned on this machine",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "size",
+              "description": "Size is the size of this machine.",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "tags",
+              "description": "Tags are the tags associated with this machine",
+              "label": "repeated",
+              "type": "TagsEntry",
+              "longType": "Machine.TagsEntry",
+              "fullType": "api.v1.Machine.TagsEntry",
+              "ismap": true,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "created_at",
+              "description": "CreatedAt defines the date when this machine was created",
+              "label": "",
+              "type": "Timestamp",
+              "longType": "google.protobuf.Timestamp",
+              "fullType": "google.protobuf.Timestamp",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "updated_at",
+              "description": "UpdatedAt defines the date when this machine was updated",
+              "label": "",
+              "type": "Timestamp",
+              "longType": "google.protobuf.Timestamp",
+              "fullType": "google.protobuf.Timestamp",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "deleted_at",
+              "description": "DeletedAt defines the date when this machine was deleted",
+              "label": "",
+              "type": "Timestamp",
+              "longType": "google.protobuf.Timestamp",
+              "fullType": "google.protobuf.Timestamp",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "status",
+              "description": "MachineStatus describes the status of this machine",
+              "label": "",
+              "type": "MachineStatus",
+              "longType": "MachineStatus",
+              "fullType": "api.v1.MachineStatus",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "TagsEntry",
+          "longName": "Machine.TagsEntry",
+          "fullName": "api.v1.Machine.TagsEntry",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "key",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "value",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "MachineServiceCreateRequest",
+          "longName": "MachineServiceCreateRequest",
+          "fullName": "api.v1.MachineServiceCreateRequest",
+          "description": "MachineServiceCreateRequest is the request payload for a machine create request",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "name",
+              "description": "Name of the machine to create",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": "",
+              "options": {
+                "validate.rules": [
+                  {
+                    "name": "string.min_len",
+                    "value": 2
+                  },
+                  {
+                    "name": "string.max_len",
+                    "value": 12
+                  },
+                  {
+                    "name": "string.hostname",
+                    "value": true
+                  }
+                ]
+              }
+            },
+            {
+              "name": "project",
+              "description": "Project of the machine",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": "",
+              "options": {
+                "validate.rules": [
+                  {
+                    "name": "string.min_len",
+                    "value": 2
+                  },
+                  {
+                    "name": "string.max_len",
+                    "value": 128
+                  }
+                ]
+              }
+            },
+            {
+              "name": "partition",
+              "description": "Partition of the machine",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "size",
+              "description": "Size is the size of the machine",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "image",
+              "description": "Image is the OS image provisioned on this machine",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "user_data",
+              "description": "UserData is the ignition or cloudinit configuration to bootstrap this machine with",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "tags",
+              "description": "Tags are additional tags to attach to this machine",
+              "label": "repeated",
+              "type": "TagsEntry",
+              "longType": "MachineServiceCreateRequest.TagsEntry",
+              "fullType": "api.v1.MachineServiceCreateRequest.TagsEntry",
+              "ismap": true,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "TagsEntry",
+          "longName": "MachineServiceCreateRequest.TagsEntry",
+          "fullName": "api.v1.MachineServiceCreateRequest.TagsEntry",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "key",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "value",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "MachineServiceCreateResponse",
+          "longName": "MachineServiceCreateResponse",
+          "fullName": "api.v1.MachineServiceCreateResponse",
+          "description": "MachineServiceCreateResponse is the response payload of a machine create request",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "machine",
+              "description": "Machine is the machine",
+              "label": "",
+              "type": "Machine",
+              "longType": "Machine",
+              "fullType": "api.v1.Machine",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "MachineServiceDeleteRequest",
+          "longName": "MachineServiceDeleteRequest",
+          "fullName": "api.v1.MachineServiceDeleteRequest",
+          "description": "MachineServiceDeleteRequest is the request payload for a machine delete request",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "uuid",
+              "description": "Uuid of the machine",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": "",
+              "options": {
+                "validate.rules": [
+                  {
+                    "name": "string.uuid",
+                    "value": true
+                  }
+                ]
+              }
+            },
+            {
+              "name": "project",
+              "description": "Project of the machine",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": "",
+              "options": {
+                "validate.rules": [
+                  {
+                    "name": "string.min_len",
+                    "value": 2
+                  },
+                  {
+                    "name": "string.max_len",
+                    "value": 128
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "MachineServiceDeleteResponse",
+          "longName": "MachineServiceDeleteResponse",
+          "fullName": "api.v1.MachineServiceDeleteResponse",
+          "description": "MachineServiceDeleteResponse is the response payload of a machine delete request",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "machine",
+              "description": "Machine is the machine",
+              "label": "",
+              "type": "Machine",
+              "longType": "Machine",
+              "fullType": "api.v1.Machine",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "MachineServiceGetRequest",
+          "longName": "MachineServiceGetRequest",
+          "fullName": "api.v1.MachineServiceGetRequest",
+          "description": "MachineServiceGetRequest is the request payload for a machine get request",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "uuid",
+              "description": "Uuid of the machine",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": "",
+              "options": {
+                "validate.rules": [
+                  {
+                    "name": "string.uuid",
+                    "value": true
+                  }
+                ]
+              }
+            },
+            {
+              "name": "project",
+              "description": "Project of the machine",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": "",
+              "options": {
+                "validate.rules": [
+                  {
+                    "name": "string.min_len",
+                    "value": 2
+                  },
+                  {
+                    "name": "string.max_len",
+                    "value": 128
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "MachineServiceGetResponse",
+          "longName": "MachineServiceGetResponse",
+          "fullName": "api.v1.MachineServiceGetResponse",
+          "description": "MachineServiceGetResponse is the response payload of a machine get request",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "machine",
+              "description": "Machine is the machine",
+              "label": "",
+              "type": "Machine",
+              "longType": "Machine",
+              "fullType": "api.v1.Machine",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "MachineServiceListRequest",
+          "longName": "MachineServiceListRequest",
+          "fullName": "api.v1.MachineServiceListRequest",
+          "description": "MachineServiceListRequest is the request payload for a machine list request",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "project",
+              "description": "Project of the machine",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": "",
+              "options": {
+                "validate.rules": [
+                  {
+                    "name": "string.min_len",
+                    "value": 2
+                  },
+                  {
+                    "name": "string.max_len",
+                    "value": 128
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "MachineServiceListResponse",
+          "longName": "MachineServiceListResponse",
+          "fullName": "api.v1.MachineServiceListResponse",
+          "description": "MachineServiceListResponse is the response payload of a machine list request",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "machines",
+              "description": "Machines a list of machines",
+              "label": "repeated",
+              "type": "Machine",
+              "longType": "Machine",
+              "fullType": "api.v1.Machine",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "MachineStatus",
+          "longName": "MachineStatus",
+          "fullName": "api.v1.MachineStatus",
+          "description": "MachineStatus",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "state",
+              "description": "State describes the current state of the machine",
+              "label": "",
+              "type": "MachineState",
+              "longType": "MachineState",
+              "fullType": "api.v1.MachineState",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "state_message",
+              "description": "StateMessage describes the current state.",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "timestamp",
+              "description": "Timestamp is the timestamp of the state.",
+              "label": "",
+              "type": "Timestamp",
+              "longType": "google.protobuf.Timestamp",
+              "fullType": "google.protobuf.Timestamp",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        }
+      ],
+      "services": [
+        {
+          "name": "MachineService",
+          "longName": "MachineService",
+          "fullName": "api.v1.MachineService",
+          "description": "MachineService serves machine related functions",
+          "methods": [
+            {
+              "name": "Create",
+              "description": "Create a machine",
+              "requestType": "MachineServiceCreateRequest",
+              "requestLongType": "MachineServiceCreateRequest",
+              "requestFullType": "api.v1.MachineServiceCreateRequest",
+              "requestStreaming": false,
+              "responseType": "MachineServiceCreateResponse",
+              "responseLongType": "MachineServiceCreateResponse",
+              "responseFullType": "api.v1.MachineServiceCreateResponse",
+              "responseStreaming": false
+            },
+            {
+              "name": "Get",
+              "description": "Get a machine",
+              "requestType": "MachineServiceGetRequest",
+              "requestLongType": "MachineServiceGetRequest",
+              "requestFullType": "api.v1.MachineServiceGetRequest",
+              "requestStreaming": false,
+              "responseType": "MachineServiceGetResponse",
+              "responseLongType": "MachineServiceGetResponse",
+              "responseFullType": "api.v1.MachineServiceGetResponse",
+              "responseStreaming": false
+            },
+            {
+              "name": "List",
+              "description": "List machines",
+              "requestType": "MachineServiceListRequest",
+              "requestLongType": "MachineServiceListRequest",
+              "requestFullType": "api.v1.MachineServiceListRequest",
+              "requestStreaming": false,
+              "responseType": "MachineServiceListResponse",
+              "responseLongType": "MachineServiceListResponse",
+              "responseFullType": "api.v1.MachineServiceListResponse",
+              "responseStreaming": false
+            },
+            {
+              "name": "Delete",
+              "description": "Delete a machine",
+              "requestType": "MachineServiceDeleteRequest",
+              "requestLongType": "MachineServiceDeleteRequest",
+              "requestFullType": "api.v1.MachineServiceDeleteRequest",
+              "requestStreaming": false,
+              "responseType": "MachineServiceDeleteResponse",
+              "responseLongType": "MachineServiceDeleteResponse",
+              "responseFullType": "api.v1.MachineServiceDeleteResponse",
               "responseStreaming": false
             }
           ]

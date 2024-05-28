@@ -1,0 +1,187 @@
+syntax = "proto3";
+
+package api.v1;
+
+import "api/v1/common.proto";
+import "google/protobuf/timestamp.proto";
+import "validate/validate.proto";
+
+// MachineService serves machine related functions
+service MachineService {
+  // Create a machine
+  rpc Create(MachineServiceCreateRequest) returns (MachineServiceCreateResponse) {
+    option (project_roles) = PROJECT_ROLE_OWNER;
+    option (project_roles) = PROJECT_ROLE_EDITOR;
+    option (chargeable) = CHARGEABLE_TRUE;
+  }
+  // Get a machine
+  rpc Get(MachineServiceGetRequest) returns (MachineServiceGetResponse) {
+    option (project_roles) = PROJECT_ROLE_OWNER;
+    option (project_roles) = PROJECT_ROLE_EDITOR;
+    option (project_roles) = PROJECT_ROLE_VIEWER;
+    option (auditing) = AUDITING_EXCLUDED;
+  }
+  // List machines
+  rpc List(MachineServiceListRequest) returns (MachineServiceListResponse) {
+    option (project_roles) = PROJECT_ROLE_OWNER;
+    option (project_roles) = PROJECT_ROLE_EDITOR;
+    option (project_roles) = PROJECT_ROLE_VIEWER;
+    option (auditing) = AUDITING_EXCLUDED;
+  }
+  // Delete a machine
+  rpc Delete(MachineServiceDeleteRequest) returns (MachineServiceDeleteResponse) {
+    option (project_roles) = PROJECT_ROLE_OWNER;
+    option (project_roles) = PROJECT_ROLE_EDITOR;
+  }
+}
+
+// Machine describes a kubernetes machine
+message Machine {
+  // Uuid of the machine
+  string uuid = 1 [(validate.rules).string.uuid = true];
+  // Name of the machine
+  string name = 2 [(validate.rules).string = {
+    min_len: 2,
+    max_len: 12,
+  }];
+  // Project where this machine belongs to
+  string project = 3 [(validate.rules).string = {
+    min_len: 2,
+    max_len: 128,
+  }];
+  // AllocationUUID is a unique identifier for this machine allocation, can be used to distinguish between machine allocations over time
+  string allocation_uuid = 4 [(validate.rules).string.uuid = true];
+  // Hostname is the hostname of this machine
+  string hostname = 5;
+  // Role defines the role of this machine
+  MachineRole role = 6;
+  // Partition where this machine was created
+  string partition = 7;
+  // Image is the OS image provisioned on this machine
+  string image = 8;
+  // Size is the size of this machine.
+  string size = 9;
+  // Tags are the tags associated with this machine
+  map<string, string> tags = 10;
+  // CreatedAt defines the date when this machine was created
+  google.protobuf.Timestamp created_at = 15;
+  // UpdatedAt defines the date when this machine was updated
+  google.protobuf.Timestamp updated_at = 16;
+  // DeletedAt defines the date when this machine was deleted
+  google.protobuf.Timestamp deleted_at = 17;
+  // MachineStatus describes the status of this machine
+  MachineStatus status = 20;
+}
+
+// MachineServiceGetRequest is the request payload for a machine get request
+message MachineServiceGetRequest {
+  // Uuid of the machine
+  string uuid = 1 [(validate.rules).string.uuid = true];
+  // Project of the machine
+  string project = 2 [(validate.rules).string = {
+    min_len: 2,
+    max_len: 128,
+  }];
+}
+
+// MachineServiceListRequest is the request payload for a machine list request
+message MachineServiceListRequest {
+  // Project of the machine
+  string project = 2 [(validate.rules).string = {
+    min_len: 2,
+    max_len: 128,
+  }];
+}
+
+// MachineServiceCreateRequest is the request payload for a machine create request
+message MachineServiceCreateRequest {
+  // Name of the machine to create
+  string name = 2 [(validate.rules).string = {
+    min_len: 2,
+    max_len: 12,
+    hostname: true,
+  }];
+  // Project of the machine
+  string project = 3 [(validate.rules).string = {
+    min_len: 2,
+    max_len: 128,
+  }];
+  // Partition of the machine
+  string partition = 4;
+  // Size is the size of the machine
+  string size = 5;
+  // Image is the OS image provisioned on this machine
+  string image = 6;
+  // UserData is the ignition or cloudinit configuration to bootstrap this machine with
+  string user_data = 7;
+  // Tags are additional tags to attach to this machine
+  map<string, string> tags = 8;
+}
+
+// MachineServiceDeleteRequest is the request payload for a machine delete request
+message MachineServiceDeleteRequest {
+  // Uuid of the machine
+  string uuid = 1 [(validate.rules).string.uuid = true];
+
+  // Project of the machine
+  string project = 2 [(validate.rules).string = {
+    min_len: 2,
+    max_len: 128,
+  }];
+}
+
+// MachineStatus
+message MachineStatus {
+  // State describes the current state of the machine
+  MachineState state = 1;
+  // StateMessage describes the current state.
+  string state_message = 2;
+  // Timestamp is the timestamp of the state.
+  google.protobuf.Timestamp timestamp = 3;
+}
+
+// MachineServiceCreateResponse is the response payload of a machine create request
+message MachineServiceCreateResponse {
+  // Machine is the machine
+  Machine machine = 1;
+}
+
+// MachineServiceGetResponse is the response payload of a machine get request
+message MachineServiceGetResponse {
+  // Machine is the machine
+  Machine machine = 1;
+}
+
+// MachineServiceDeleteResponse is the response payload of a machine delete request
+message MachineServiceDeleteResponse {
+  // Machine is the machine
+  Machine machine = 1;
+}
+
+// MachineServiceListResponse is the response payload of a machine list request
+message MachineServiceListResponse {
+  // Machines a list of machines
+  repeated Machine machines = 1;
+}
+
+// MachineRole defines the machine roles.
+enum MachineRole {
+  // MACHINE_ROLE_UNSPECIFIED is not specified
+  MACHINE_ROLE_UNSPECIFIED = 0;
+  // MACHINE_ROLE_MACHINE is a machine that serves as a normal machine
+  MACHINE_ROLE_MACHINE = 1;
+  // MACHINE_ROLE_FIREWALL is a machine that serves as a firewall
+  MACHINE_ROLE_FIREWALL = 2;
+}
+
+// MachineState defines the machine states.
+enum MachineState {
+  // MACHINE_ROLE_UNSPECIFIED is not specified
+  MACHINE_STATE_UNSPECIFIED = 0;
+  // MACHINE_STATE_HEALTHY describes an healthy machine state.
+  MACHINE_STATE_HEALTHY = 1;
+  // MACHINE_STATE_UNHEALTHY describes an unhealthy machine state.
+  MACHINE_STATE_UNHEALTHY = 2;
+  // MACHINE_STATE_PROVISIONING describes a machine that is currently being provisioned.
+  MACHINE_STATE_PROVISIONING = 3;
+}

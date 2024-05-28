@@ -51,6 +51,7 @@ type (
 		clusterservice  *apiv1mocks.ClusterServiceClient
 		healthservice   *apiv1mocks.HealthServiceClient
 		ipservice       *apiv1mocks.IPServiceClient
+		machineservice  *apiv1mocks.MachineServiceClient
 		methodservice   *apiv1mocks.MethodServiceClient
 		paymentservice  *apiv1mocks.PaymentServiceClient
 		projectservice  *apiv1mocks.ProjectServiceClient
@@ -67,6 +68,7 @@ type (
 		Cluster  func(m *mock.Mock)
 		Health   func(m *mock.Mock)
 		IP       func(m *mock.Mock)
+		Machine  func(m *mock.Mock)
 		Method   func(m *mock.Mock)
 		Payment  func(m *mock.Mock)
 		Project  func(m *mock.Mock)
@@ -171,6 +173,7 @@ func newapiv1(t *testing.T, fns *Apiv1MockFns) *apiv1 {
 		clusterservice:  apiv1mocks.NewClusterServiceClient(t),
 		healthservice:   apiv1mocks.NewHealthServiceClient(t),
 		ipservice:       apiv1mocks.NewIPServiceClient(t),
+		machineservice:  apiv1mocks.NewMachineServiceClient(t),
 		methodservice:   apiv1mocks.NewMethodServiceClient(t),
 		paymentservice:  apiv1mocks.NewPaymentServiceClient(t),
 		projectservice:  apiv1mocks.NewProjectServiceClient(t),
@@ -194,6 +197,9 @@ func newapiv1(t *testing.T, fns *Apiv1MockFns) *apiv1 {
 		}
 		if fns.IP != nil {
 			fns.IP(&a.ipservice.Mock)
+		}
+		if fns.Machine != nil {
+			fns.Machine(&a.machineservice.Mock)
 		}
 		if fns.Method != nil {
 			fns.Method(&a.methodservice.Mock)
@@ -239,6 +245,9 @@ func (c *apiv1) Health() apiv1connect.HealthServiceClient {
 }
 func (c *apiv1) IP() apiv1connect.IPServiceClient {
 	return c.ipservice
+}
+func (c *apiv1) Machine() apiv1connect.MachineServiceClient {
+	return c.machineservice
 }
 func (c *apiv1) Method() apiv1connect.MethodServiceClient {
 	return c.methodservice

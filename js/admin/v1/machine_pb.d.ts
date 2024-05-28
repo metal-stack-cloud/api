@@ -55,7 +55,7 @@ export declare class Machine extends Message<Machine> {
      */
     hostname: string;
     /**
-     * UserDate which are used for bootstrapping
+     * UserData which are used for bootstrapping
      *
      * @generated from field: string user_data = 9;
      */

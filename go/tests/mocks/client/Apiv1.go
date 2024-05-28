@@ -93,6 +93,26 @@ func (_m *Apiv1) IP() apiv1connect.IPServiceClient {
 	return r0
 }
 
+// Machine provides a mock function with given fields:
+func (_m *Apiv1) Machine() apiv1connect.MachineServiceClient {
+	ret := _m.Called()
+
+	if len(ret) == 0 {
+		panic("no return value specified for Machine")
+	}
+
+	var r0 apiv1connect.MachineServiceClient
+	if rf, ok := ret.Get(0).(func() apiv1connect.MachineServiceClient); ok {
+		r0 = rf()
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(apiv1connect.MachineServiceClient)
+		}
+	}
+
+	return r0
+}
+
 // Method provides a mock function with given fields:
 func (_m *Apiv1) Method() apiv1connect.MethodServiceClient {
 	ret := _m.Called()

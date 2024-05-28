@@ -39,6 +39,7 @@ type (
 		Cluster() apiv1connect.ClusterServiceClient
 		Health() apiv1connect.HealthServiceClient
 		IP() apiv1connect.IPServiceClient
+		Machine() apiv1connect.MachineServiceClient
 		Method() apiv1connect.MethodServiceClient
 		Payment() apiv1connect.PaymentServiceClient
 		Project() apiv1connect.ProjectServiceClient
@@ -55,6 +56,7 @@ type (
 		clusterservice  apiv1connect.ClusterServiceClient
 		healthservice   apiv1connect.HealthServiceClient
 		ipservice       apiv1connect.IPServiceClient
+		machineservice  apiv1connect.MachineServiceClient
 		methodservice   apiv1connect.MethodServiceClient
 		paymentservice  apiv1connect.PaymentServiceClient
 		projectservice  apiv1connect.ProjectServiceClient
@@ -152,6 +154,11 @@ func (c client) Apiv1() Apiv1 {
 			c.config.BaseURL,
 			compress.WithAll(compress.LevelBalanced),
 		),
+		machineservice: apiv1connect.NewMachineServiceClient(
+			c.config.HttpClient(),
+			c.config.BaseURL,
+			compress.WithAll(compress.LevelBalanced),
+		),
 		methodservice: apiv1connect.NewMethodServiceClient(
 			c.config.HttpClient(),
 			c.config.BaseURL,
@@ -212,6 +219,9 @@ func (c *apiv1) Health() apiv1connect.HealthServiceClient {
 }
 func (c *apiv1) IP() apiv1connect.IPServiceClient {
 	return c.ipservice
+}
+func (c *apiv1) Machine() apiv1connect.MachineServiceClient {
+	return c.machineservice
 }
 func (c *apiv1) Method() apiv1connect.MethodServiceClient {
 	return c.methodservice

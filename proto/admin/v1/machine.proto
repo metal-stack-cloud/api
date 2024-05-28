@@ -22,7 +22,7 @@ message Machine {
   repeated MachineNetwork machine_networks = 7;
   // Hostname of this machine
   string hostname = 8;
-  // UserDate which are used for bootstrapping
+  // UserData which are used for bootstrapping
   string user_data = 9;
   // Role of this machine, can be either machine or firewall
   string role = 10;
