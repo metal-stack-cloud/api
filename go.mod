@@ -3,7 +3,7 @@ module github.com/metal-stack-cloud/api
 go 1.22
 
 require (
-	connectrpc.com/connect v1.16.1
+	connectrpc.com/connect v1.16.2
 	github.com/bufbuild/protocompile v0.13.0
 	github.com/envoyproxy/protoc-gen-validate v1.0.4
 	github.com/go-task/slim-sprig/v3 v3.0.0
