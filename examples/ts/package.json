@@ -7,7 +7,7 @@
     "@bufbuild/protobuf": "^1.9.0",
     "@connectrpc/connect": "^1.4.0",
     "@connectrpc/connect-node": "^1.4.0",
-    "@metal-stack-cloud/api": "^0.9.2",
+    "@metal-stack-cloud/api": "^0.9.5",
     "dotenv": "^16.4.5",
     "ts-node": "^10.9.2",
     "@connectrpc/connect-web": "^1.4.0"

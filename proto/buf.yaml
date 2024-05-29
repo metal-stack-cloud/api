@@ -1,14 +1,18 @@
-version: v1
+version: v2
+deps:
+  - buf.build/envoyproxy/protoc-gen-validate
+lint:
+  use:
+    - COMMENTS
+    - DEFAULT
+    - PACKAGE_NO_IMPORT_CYCLE
+    - RPC_NO_CLIENT_STREAMING
+  except:
+    - FIELD_NOT_REQUIRED
+  disallow_comment_ignores: true
 breaking:
   use:
     - FILE
-lint:
-  use:
-    - DEFAULT
-    - COMMENTS
-    - PACKAGE_NO_IMPORT_CYCLE
-    - RPC_NO_CLIENT_STREAMING
-deps:
-  - buf.build/envoyproxy/protoc-gen-validate
-  - buf.build/googleapis/googleapis
-#  - buf.build/bufbuild/protovalidate
+  except:
+    - EXTENSION_NO_DELETE
+    - FIELD_SAME_DEFAULT

@@ -8,8 +8,7 @@ service WrongProjectService {
   rpc Get(WrongProjectServiceGetRequest) returns (WrongProjectServiceGetResponse) {
     option (project_roles) = PROJECT_ROLE_OWNER;
   }
-  rpc List(WrongProjectServiceGetRequest) returns (WrongProjectServiceGetResponse) {
-  }
+  rpc List(WrongProjectServiceGetRequest) returns (WrongProjectServiceGetResponse) {}
   rpc Update(WrongProjectServiceUpdateRequest) returns (WrongProjectServiceUpdateResponse) {
     option (admin_roles) = ADMIN_ROLE_VIEWER;
     option (project_roles) = PROJECT_ROLE_OWNER;
@@ -24,17 +23,17 @@ service WrongProjectService {
 }
 
 message WrongProjectServiceGetRequest {
-    string uuid = 1;
+  string uuid = 1;
 }
 
 message WrongProjectServiceGetResponse {
-    string uuid = 1;
+  string uuid = 1;
 }
 message WrongProjectServiceUpdateRequest {
-    string uuid = 1;
-    string project = 2;
+  string uuid = 1;
+  string project = 2;
 }
 
 message WrongProjectServiceUpdateResponse {
-    string uuid = 1;
+  string uuid = 1;
 }
