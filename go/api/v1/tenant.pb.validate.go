@@ -355,6 +355,10 @@ func (m *TenantMember) validate(all bool) error {
 		}
 	}
 
+	if m.ProjectId != nil {
+		// no validation rules for ProjectId
+	}
+
 	if len(errors) > 0 {
 		return TenantMemberMultiError(errors)
 	}

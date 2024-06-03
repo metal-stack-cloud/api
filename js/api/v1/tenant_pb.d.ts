@@ -137,6 +137,12 @@ export declare class TenantMember extends Message<TenantMember> {
      * @generated from field: google.protobuf.Timestamp created_at = 10;
      */
     createdAt?: Timestamp;
+    /**
+     * ProjectId of the member
+     *
+     * @generated from field: optional string project_id = 11;
+     */
+    projectId?: string;
     constructor(data?: PartialMessage<TenantMember>);
     static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.TenantMember";

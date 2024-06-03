@@ -155,6 +155,7 @@ TenantMember.fields = proto3.util.newFieldList(() => [
     { no: 1, name: "id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 2, name: "role", kind: "enum", T: proto3.getEnumType(TenantRole) },
     { no: 10, name: "created_at", kind: "message", T: Timestamp },
+    { no: 11, name: "project_id", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
 ]);
 /**
  * TenantInvite defines invite to tenant

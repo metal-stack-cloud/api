@@ -196,6 +196,13 @@ export class TenantMember extends Message<TenantMember> {
    */
   createdAt?: Timestamp;
 
+  /**
+   * ProjectId of the member
+   *
+   * @generated from field: optional string project_id = 11;
+   */
+  projectId?: string;
+
   constructor(data?: PartialMessage<TenantMember>) {
     super();
     proto3.util.initPartial(data, this);
@@ -207,6 +214,7 @@ export class TenantMember extends Message<TenantMember> {
     { no: 1, name: "id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 2, name: "role", kind: "enum", T: proto3.getEnumType(TenantRole) },
     { no: 10, name: "created_at", kind: "message", T: Timestamp },
+    { no: 11, name: "project_id", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): TenantMember {

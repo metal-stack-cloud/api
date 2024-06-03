@@ -7673,7 +7673,7 @@
           "description": "TenantMember defines a user that participates at a tenant",
           "hasExtensions": false,
           "hasFields": true,
-          "hasOneofs": false,
+          "hasOneofs": true,
           "extensions": [],
           "fields": [
             {
@@ -7710,6 +7710,18 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "project_id",
+              "description": "ProjectId of the member",
+              "label": "optional",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "_project_id",
               "defaultValue": ""
             }
           ]

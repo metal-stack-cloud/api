@@ -128,6 +128,8 @@ message TenantMember {
   TenantRole role = 2;
   // CreatedAt the date when the member was added to the tenant
   google.protobuf.Timestamp created_at = 10;
+  // ProjectId of the member
+  optional string project_id = 11;
 }
 
 // TenantInvite defines invite to tenant
