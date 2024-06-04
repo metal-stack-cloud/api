@@ -21,6 +21,7 @@ type (
 	Adminv1 interface {
 		Cluster() adminv1connect.ClusterServiceClient
 		Payment() adminv1connect.PaymentServiceClient
+		Project() adminv1connect.ProjectServiceClient
 		Storage() adminv1connect.StorageServiceClient
 		Tenant() adminv1connect.TenantServiceClient
 		Token() adminv1connect.TokenServiceClient
@@ -29,6 +30,7 @@ type (
 	adminv1 struct {
 		clusterservice adminv1connect.ClusterServiceClient
 		paymentservice adminv1connect.PaymentServiceClient
+		projectservice adminv1connect.ProjectServiceClient
 		storageservice adminv1connect.StorageServiceClient
 		tenantservice  adminv1connect.TenantServiceClient
 		tokenservice   adminv1connect.TokenServiceClient
@@ -95,6 +97,11 @@ func (c client) Adminv1() Adminv1 {
 			c.config.BaseURL,
 			compress.WithAll(compress.LevelBalanced),
 		),
+		projectservice: adminv1connect.NewProjectServiceClient(
+			c.config.HttpClient(),
+			c.config.BaseURL,
+			compress.WithAll(compress.LevelBalanced),
+		),
 		storageservice: adminv1connect.NewStorageServiceClient(
 			c.config.HttpClient(),
 			c.config.BaseURL,
@@ -119,6 +126,9 @@ func (c *adminv1) Cluster() adminv1connect.ClusterServiceClient {
 }
 func (c *adminv1) Payment() adminv1connect.PaymentServiceClient {
 	return c.paymentservice
+}
+func (c *adminv1) Project() adminv1connect.ProjectServiceClient {
+	return c.projectservice
 }
 func (c *adminv1) Storage() adminv1connect.StorageServiceClient {
 	return c.storageservice
