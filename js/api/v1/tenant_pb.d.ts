@@ -1,6 +1,7 @@
 import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
 import { Message, proto3, Timestamp } from "@bufbuild/protobuf";
 import { OAuthProvider, TenantRole } from "./common_pb.js";
+import { Project } from "./project_pb.js";
 import { Coupon } from "./payment_pb.js";
 /**
  * Tenant is a customer of the platform
@@ -132,17 +133,17 @@ export declare class TenantMember extends Message<TenantMember> {
      */
     role: TenantRole;
     /**
+     * Projects of the member
+     *
+     * @generated from field: repeated api.v1.Project projects = 3;
+     */
+    projects: Project[];
+    /**
      * CreatedAt the date when the member was added to the tenant
      *
      * @generated from field: google.protobuf.Timestamp created_at = 10;
      */
     createdAt?: Timestamp;
-    /**
-     * ProjectId of the member
-     *
-     * @generated from field: optional string project_id = 11;
-     */
-    projectId?: string;
     constructor(data?: PartialMessage<TenantMember>);
     static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.TenantMember";

@@ -191,18 +191,18 @@ export class TenantMember extends Message<TenantMember> {
   role = TenantRole.UNSPECIFIED;
 
   /**
+   * Projects of the member
+   *
+   * @generated from field: repeated api.v1.Project projects = 3;
+   */
+  projects: Project[] = [];
+
+  /**
    * CreatedAt the date when the member was added to the tenant
    *
    * @generated from field: google.protobuf.Timestamp created_at = 10;
    */
   createdAt?: Timestamp;
-
-  /**
-   * ProjectId of the member
-   *
-   * @generated from field: repeated api.v1.Project projects = 12;
-   */
-  projects: Project[] = [];
 
   constructor(data?: PartialMessage<TenantMember>) {
     super();
@@ -214,8 +214,8 @@ export class TenantMember extends Message<TenantMember> {
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
     { no: 1, name: "id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 2, name: "role", kind: "enum", T: proto3.getEnumType(TenantRole) },
+    { no: 3, name: "projects", kind: "message", T: Project, repeated: true },
     { no: 10, name: "created_at", kind: "message", T: Timestamp },
-    { no: 12, name: "projects", kind: "message", T: Project, repeated: true },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): TenantMember {

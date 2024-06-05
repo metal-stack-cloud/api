@@ -127,10 +127,10 @@ message TenantMember {
   string id = 1;
   // Role is the role of the member
   TenantRole role = 2;
+  // Projects of the member
+  repeated Project projects = 3;
   // CreatedAt the date when the member was added to the tenant
   google.protobuf.Timestamp created_at = 10;
-  // ProjectId of the member
-  repeated Project projects = 12;
 }
 
 // TenantInvite defines invite to tenant
