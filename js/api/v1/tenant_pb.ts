@@ -6,6 +6,7 @@
 import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
 import { Message, proto3, Timestamp } from "@bufbuild/protobuf";
 import { OAuthProvider, TenantRole } from "./common_pb.js";
+import { Project } from "./project_pb.js";
 import { Coupon } from "./payment_pb.js";
 
 /**
@@ -199,9 +200,9 @@ export class TenantMember extends Message<TenantMember> {
   /**
    * ProjectId of the member
    *
-   * @generated from field: optional string project_id = 11;
+   * @generated from field: repeated api.v1.Project projects = 12;
    */
-  projectId?: string;
+  projects: Project[] = [];
 
   constructor(data?: PartialMessage<TenantMember>) {
     super();
@@ -214,7 +215,7 @@ export class TenantMember extends Message<TenantMember> {
     { no: 1, name: "id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 2, name: "role", kind: "enum", T: proto3.getEnumType(TenantRole) },
     { no: 10, name: "created_at", kind: "message", T: Timestamp },
-    { no: 11, name: "project_id", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
+    { no: 12, name: "projects", kind: "message", T: Project, repeated: true },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): TenantMember {

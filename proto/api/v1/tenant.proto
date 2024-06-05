@@ -4,6 +4,7 @@ package api.v1;
 
 import "api/v1/common.proto";
 import "api/v1/payment.proto";
+import "api/v1/project.proto";
 import "google/protobuf/timestamp.proto";
 import "validate/validate.proto";
 
@@ -129,7 +130,7 @@ message TenantMember {
   // CreatedAt the date when the member was added to the tenant
   google.protobuf.Timestamp created_at = 10;
   // ProjectId of the member
-  optional string project_id = 11;
+  repeated Project projects = 12;
 }
 
 // TenantInvite defines invite to tenant
