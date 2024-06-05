@@ -15,6 +15,7 @@
         "/admin.v1.TenantService/List",
         "/admin.v1.TenantService/Admit",
         "/admin.v1.TenantService/Revoke",
+        "/admin.v1.TenantService/AddMember",
         "/admin.v1.TokenService/List",
         "/admin.v1.TokenService/Revoke"
       ],
@@ -156,6 +157,7 @@
     "/admin.v1.StorageService/ClusterInfo": true,
     "/admin.v1.StorageService/ListSnapshots": true,
     "/admin.v1.StorageService/ListVolumes": true,
+    "/admin.v1.TenantService/AddMember": true,
     "/admin.v1.TenantService/Admit": true,
     "/admin.v1.TenantService/List": true,
     "/admin.v1.TenantService/Revoke": true,
@@ -278,6 +280,7 @@
     "/admin.v1.StorageService/ClusterInfo": true,
     "/admin.v1.StorageService/ListSnapshots": true,
     "/admin.v1.StorageService/ListVolumes": true,
+    "/admin.v1.TenantService/AddMember": true,
     "/admin.v1.TenantService/Admit": true,
     "/admin.v1.TenantService/List": true,
     "/admin.v1.TenantService/Revoke": true,

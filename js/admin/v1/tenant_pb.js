@@ -3,8 +3,8 @@
 /* eslint-disable */
 // @ts-nocheck
 import { Message, proto3 } from "@bufbuild/protobuf";
-import { OAuthProvider, Paging } from "../../api/v1/common_pb.js";
-import { Tenant } from "../../api/v1/tenant_pb.js";
+import { OAuthProvider, Paging, TenantRole } from "../../api/v1/common_pb.js";
+import { Tenant, TenantMember } from "../../api/v1/tenant_pb.js";
 /**
  * TenantServiceListRequest is the request payload for a tenant list request
  *
@@ -199,4 +199,87 @@ TenantServiceRevokeResponse.runtime = proto3;
 TenantServiceRevokeResponse.typeName = "admin.v1.TenantServiceRevokeResponse";
 TenantServiceRevokeResponse.fields = proto3.util.newFieldList(() => [
     { no: 1, name: "tenant", kind: "message", T: Tenant },
+]);
+/**
+ * TenantServiceAddMemberRequest is the request payload for adding a member to a tenant
+ *
+ * @generated from message admin.v1.TenantServiceAddMemberRequest
+ */
+export class TenantServiceAddMemberRequest extends Message {
+    constructor(data) {
+        super();
+        /**
+         * Tenant ID to which the member will be added
+         *
+         * @generated from field: string tenant_id = 1;
+         */
+        this.tenantId = "";
+        /**
+         * Email of the member to add
+         *
+         * @generated from field: string member_id = 2;
+         */
+        this.memberId = "";
+        /**
+         * Role to assign to the new member
+         *
+         * @generated from field: api.v1.TenantRole role = 3;
+         */
+        this.role = TenantRole.UNSPECIFIED;
+        proto3.util.initPartial(data, this);
+    }
+    static fromBinary(bytes, options) {
+        return new TenantServiceAddMemberRequest().fromBinary(bytes, options);
+    }
+    static fromJson(jsonValue, options) {
+        return new TenantServiceAddMemberRequest().fromJson(jsonValue, options);
+    }
+    static fromJsonString(jsonString, options) {
+        return new TenantServiceAddMemberRequest().fromJsonString(jsonString, options);
+    }
+    static equals(a, b) {
+        return proto3.util.equals(TenantServiceAddMemberRequest, a, b);
+    }
+}
+TenantServiceAddMemberRequest.runtime = proto3;
+TenantServiceAddMemberRequest.typeName = "admin.v1.TenantServiceAddMemberRequest";
+TenantServiceAddMemberRequest.fields = proto3.util.newFieldList(() => [
+    { no: 1, name: "tenant_id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "member_id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 3, name: "role", kind: "enum", T: proto3.getEnumType(TenantRole) },
+]);
+/**
+ * TenantServiceAddMemberResponse is the response payload for the add member request
+ *
+ * @generated from message admin.v1.TenantServiceAddMemberResponse
+ */
+export class TenantServiceAddMemberResponse extends Message {
+    constructor(data) {
+        super();
+        /**
+         * Confirmation of the addition
+         *
+         * @generated from field: bool success = 1;
+         */
+        this.success = false;
+        proto3.util.initPartial(data, this);
+    }
+    static fromBinary(bytes, options) {
+        return new TenantServiceAddMemberResponse().fromBinary(bytes, options);
+    }
+    static fromJson(jsonValue, options) {
+        return new TenantServiceAddMemberResponse().fromJson(jsonValue, options);
+    }
+    static fromJsonString(jsonString, options) {
+        return new TenantServiceAddMemberResponse().fromJsonString(jsonString, options);
+    }
+    static equals(a, b) {
+        return proto3.util.equals(TenantServiceAddMemberResponse, a, b);
+    }
+}
+TenantServiceAddMemberResponse.runtime = proto3;
+TenantServiceAddMemberResponse.typeName = "admin.v1.TenantServiceAddMemberResponse";
+TenantServiceAddMemberResponse.fields = proto3.util.newFieldList(() => [
+    { no: 1, name: "success", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
+    { no: 2, name: "member", kind: "message", T: TenantMember },
 ]);

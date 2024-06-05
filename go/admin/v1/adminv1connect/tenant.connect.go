@@ -39,14 +39,17 @@ const (
 	TenantServiceAdmitProcedure = "/admin.v1.TenantService/Admit"
 	// TenantServiceRevokeProcedure is the fully-qualified name of the TenantService's Revoke RPC.
 	TenantServiceRevokeProcedure = "/admin.v1.TenantService/Revoke"
+	// TenantServiceAddMemberProcedure is the fully-qualified name of the TenantService's AddMember RPC.
+	TenantServiceAddMemberProcedure = "/admin.v1.TenantService/AddMember"
 )
 
 // These variables are the protoreflect.Descriptor objects for the RPCs defined in this package.
 var (
-	tenantServiceServiceDescriptor      = v1.File_admin_v1_tenant_proto.Services().ByName("TenantService")
-	tenantServiceListMethodDescriptor   = tenantServiceServiceDescriptor.Methods().ByName("List")
-	tenantServiceAdmitMethodDescriptor  = tenantServiceServiceDescriptor.Methods().ByName("Admit")
-	tenantServiceRevokeMethodDescriptor = tenantServiceServiceDescriptor.Methods().ByName("Revoke")
+	tenantServiceServiceDescriptor         = v1.File_admin_v1_tenant_proto.Services().ByName("TenantService")
+	tenantServiceListMethodDescriptor      = tenantServiceServiceDescriptor.Methods().ByName("List")
+	tenantServiceAdmitMethodDescriptor     = tenantServiceServiceDescriptor.Methods().ByName("Admit")
+	tenantServiceRevokeMethodDescriptor    = tenantServiceServiceDescriptor.Methods().ByName("Revoke")
+	tenantServiceAddMemberMethodDescriptor = tenantServiceServiceDescriptor.Methods().ByName("AddMember")
 )
 
 // TenantServiceClient is a client for the admin.v1.TenantService service.
@@ -57,6 +60,8 @@ type TenantServiceClient interface {
 	Admit(context.Context, *connect.Request[v1.TenantServiceAdmitRequest]) (*connect.Response[v1.TenantServiceAdmitResponse], error)
 	// Revoke a tenant
 	Revoke(context.Context, *connect.Request[v1.TenantServiceRevokeRequest]) (*connect.Response[v1.TenantServiceRevokeResponse], error)
+	// Add a member to a tenant
+	AddMember(context.Context, *connect.Request[v1.TenantServiceAddMemberRequest]) (*connect.Response[v1.TenantServiceAddMemberResponse], error)
 }
 
 // NewTenantServiceClient constructs a client for the admin.v1.TenantService service. By default, it
@@ -87,14 +92,21 @@ func NewTenantServiceClient(httpClient connect.HTTPClient, baseURL string, opts 
 			connect.WithSchema(tenantServiceRevokeMethodDescriptor),
 			connect.WithClientOptions(opts...),
 		),
+		addMember: connect.NewClient[v1.TenantServiceAddMemberRequest, v1.TenantServiceAddMemberResponse](
+			httpClient,
+			baseURL+TenantServiceAddMemberProcedure,
+			connect.WithSchema(tenantServiceAddMemberMethodDescriptor),
+			connect.WithClientOptions(opts...),
+		),
 	}
 }
 
 // tenantServiceClient implements TenantServiceClient.
 type tenantServiceClient struct {
-	list   *connect.Client[v1.TenantServiceListRequest, v1.TenantServiceListResponse]
-	admit  *connect.Client[v1.TenantServiceAdmitRequest, v1.TenantServiceAdmitResponse]
-	revoke *connect.Client[v1.TenantServiceRevokeRequest, v1.TenantServiceRevokeResponse]
+	list      *connect.Client[v1.TenantServiceListRequest, v1.TenantServiceListResponse]
+	admit     *connect.Client[v1.TenantServiceAdmitRequest, v1.TenantServiceAdmitResponse]
+	revoke    *connect.Client[v1.TenantServiceRevokeRequest, v1.TenantServiceRevokeResponse]
+	addMember *connect.Client[v1.TenantServiceAddMemberRequest, v1.TenantServiceAddMemberResponse]
 }
 
 // List calls admin.v1.TenantService.List.
@@ -112,6 +124,11 @@ func (c *tenantServiceClient) Revoke(ctx context.Context, req *connect.Request[v
 	return c.revoke.CallUnary(ctx, req)
 }
 
+// AddMember calls admin.v1.TenantService.AddMember.
+func (c *tenantServiceClient) AddMember(ctx context.Context, req *connect.Request[v1.TenantServiceAddMemberRequest]) (*connect.Response[v1.TenantServiceAddMemberResponse], error) {
+	return c.addMember.CallUnary(ctx, req)
+}
+
 // TenantServiceHandler is an implementation of the admin.v1.TenantService service.
 type TenantServiceHandler interface {
 	// List tenants
@@ -120,6 +137,8 @@ type TenantServiceHandler interface {
 	Admit(context.Context, *connect.Request[v1.TenantServiceAdmitRequest]) (*connect.Response[v1.TenantServiceAdmitResponse], error)
 	// Revoke a tenant
 	Revoke(context.Context, *connect.Request[v1.TenantServiceRevokeRequest]) (*connect.Response[v1.TenantServiceRevokeResponse], error)
+	// Add a member to a tenant
+	AddMember(context.Context, *connect.Request[v1.TenantServiceAddMemberRequest]) (*connect.Response[v1.TenantServiceAddMemberResponse], error)
 }
 
 // NewTenantServiceHandler builds an HTTP handler from the service implementation. It returns the
@@ -146,6 +165,12 @@ func NewTenantServiceHandler(svc TenantServiceHandler, opts ...connect.HandlerOp
 		connect.WithSchema(tenantServiceRevokeMethodDescriptor),
 		connect.WithHandlerOptions(opts...),
 	)
+	tenantServiceAddMemberHandler := connect.NewUnaryHandler(
+		TenantServiceAddMemberProcedure,
+		svc.AddMember,
+		connect.WithSchema(tenantServiceAddMemberMethodDescriptor),
+		connect.WithHandlerOptions(opts...),
+	)
 	return "/admin.v1.TenantService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
 		case TenantServiceListProcedure:
@@ -154,6 +179,8 @@ func NewTenantServiceHandler(svc TenantServiceHandler, opts ...connect.HandlerOp
 			tenantServiceAdmitHandler.ServeHTTP(w, r)
 		case TenantServiceRevokeProcedure:
 			tenantServiceRevokeHandler.ServeHTTP(w, r)
+		case TenantServiceAddMemberProcedure:
+			tenantServiceAddMemberHandler.ServeHTTP(w, r)
 		default:
 			http.NotFound(w, r)
 		}
@@ -173,4 +200,8 @@ func (UnimplementedTenantServiceHandler) Admit(context.Context, *connect.Request
 
 func (UnimplementedTenantServiceHandler) Revoke(context.Context, *connect.Request[v1.TenantServiceRevokeRequest]) (*connect.Response[v1.TenantServiceRevokeResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("admin.v1.TenantService.Revoke is not implemented"))
+}
+
+func (UnimplementedTenantServiceHandler) AddMember(context.Context, *connect.Request[v1.TenantServiceAddMemberRequest]) (*connect.Response[v1.TenantServiceAddMemberResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("admin.v1.TenantService.AddMember is not implemented"))
 }

@@ -10248,6 +10248,90 @@
       "extensions": [],
       "messages": [
         {
+          "name": "TenantServiceAddMemberRequest",
+          "longName": "TenantServiceAddMemberRequest",
+          "fullName": "admin.v1.TenantServiceAddMemberRequest",
+          "description": "TenantServiceAddMemberRequest is the request payload for adding a member to a tenant",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "tenant_id",
+              "description": "Tenant ID to which the member will be added",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "member_id",
+              "description": "Email of the member to add",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "role",
+              "description": "Role to assign to the new member",
+              "label": "",
+              "type": "TenantRole",
+              "longType": "api.v1.TenantRole",
+              "fullType": "api.v1.TenantRole",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "TenantServiceAddMemberResponse",
+          "longName": "TenantServiceAddMemberResponse",
+          "fullName": "admin.v1.TenantServiceAddMemberResponse",
+          "description": "TenantServiceAddMemberResponse is the response payload for the add member request",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "success",
+              "description": "Confirmation of the addition",
+              "label": "",
+              "type": "bool",
+              "longType": "bool",
+              "fullType": "bool",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "member",
+              "description": "Member details after addition",
+              "label": "",
+              "type": "TenantMember",
+              "longType": "api.v1.TenantMember",
+              "fullType": "api.v1.TenantMember",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
           "name": "TenantServiceAdmitRequest",
           "longName": "TenantServiceAdmitRequest",
           "fullName": "admin.v1.TenantServiceAdmitRequest",
@@ -10557,6 +10641,18 @@
               "responseType": "TenantServiceRevokeResponse",
               "responseLongType": "TenantServiceRevokeResponse",
               "responseFullType": "admin.v1.TenantServiceRevokeResponse",
+              "responseStreaming": false
+            },
+            {
+              "name": "AddMember",
+              "description": "Add a member to a tenant",
+              "requestType": "TenantServiceAddMemberRequest",
+              "requestLongType": "TenantServiceAddMemberRequest",
+              "requestFullType": "admin.v1.TenantServiceAddMemberRequest",
+              "requestStreaming": false,
+              "responseType": "TenantServiceAddMemberResponse",
+              "responseLongType": "TenantServiceAddMemberResponse",
+              "responseFullType": "admin.v1.TenantServiceAddMemberResponse",
               "responseStreaming": false
             }
           ]
