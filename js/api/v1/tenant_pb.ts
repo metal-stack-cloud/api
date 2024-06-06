@@ -6,7 +6,6 @@
 import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
 import { Message, proto3, Timestamp } from "@bufbuild/protobuf";
 import { OAuthProvider, TenantRole } from "./common_pb.js";
-import { Project } from "./project_pb.js";
 import { Coupon } from "./payment_pb.js";
 
 /**
@@ -191,11 +190,11 @@ export class TenantMember extends Message<TenantMember> {
   role = TenantRole.UNSPECIFIED;
 
   /**
-   * Projects of the member
+   * Project ids of which a user is a member
    *
-   * @generated from field: repeated api.v1.Project projects = 3;
+   * @generated from field: repeated string project_id = 4;
    */
-  projects: Project[] = [];
+  projectId: string[] = [];
 
   /**
    * CreatedAt the date when the member was added to the tenant
@@ -214,7 +213,7 @@ export class TenantMember extends Message<TenantMember> {
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
     { no: 1, name: "id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 2, name: "role", kind: "enum", T: proto3.getEnumType(TenantRole) },
-    { no: 3, name: "projects", kind: "message", T: Project, repeated: true },
+    { no: 4, name: "project_id", kind: "scalar", T: 9 /* ScalarType.STRING */, repeated: true },
     { no: 10, name: "created_at", kind: "message", T: Timestamp },
   ]);
 

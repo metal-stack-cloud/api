@@ -1,7 +1,6 @@
 import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
 import { Message, proto3, Timestamp } from "@bufbuild/protobuf";
 import { OAuthProvider, TenantRole } from "./common_pb.js";
-import { Project } from "./project_pb.js";
 import { Coupon } from "./payment_pb.js";
 /**
  * Tenant is a customer of the platform
@@ -133,11 +132,11 @@ export declare class TenantMember extends Message<TenantMember> {
      */
     role: TenantRole;
     /**
-     * Projects of the member
+     * Project ids of which a user is a member
      *
-     * @generated from field: repeated api.v1.Project projects = 3;
+     * @generated from field: repeated string project_id = 4;
      */
-    projects: Project[];
+    projectId: string[];
     /**
      * CreatedAt the date when the member was added to the tenant
      *

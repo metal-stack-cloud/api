@@ -4,7 +4,6 @@
 // @ts-nocheck
 import { Message, proto3, Timestamp } from "@bufbuild/protobuf";
 import { OAuthProvider, TenantRole } from "./common_pb.js";
-import { Project } from "./project_pb.js";
 import { Coupon } from "./payment_pb.js";
 /**
  * Tenant is a customer of the platform
@@ -136,11 +135,11 @@ export class TenantMember extends Message {
          */
         this.role = TenantRole.UNSPECIFIED;
         /**
-         * Projects of the member
+         * Project ids of which a user is a member
          *
-         * @generated from field: repeated api.v1.Project projects = 3;
+         * @generated from field: repeated string project_id = 4;
          */
-        this.projects = [];
+        this.projectId = [];
         proto3.util.initPartial(data, this);
     }
     static fromBinary(bytes, options) {
@@ -161,7 +160,7 @@ TenantMember.typeName = "api.v1.TenantMember";
 TenantMember.fields = proto3.util.newFieldList(() => [
     { no: 1, name: "id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 2, name: "role", kind: "enum", T: proto3.getEnumType(TenantRole) },
-    { no: 3, name: "projects", kind: "message", T: Project, repeated: true },
+    { no: 4, name: "project_id", kind: "scalar", T: 9 /* ScalarType.STRING */, repeated: true },
     { no: 10, name: "created_at", kind: "message", T: Timestamp },
 ]);
 /**
