@@ -6432,6 +6432,66 @@
               "defaultValue": ""
             }
           ]
+        },
+        {
+          "name": "ProjectServiceRemoveProjectRequest",
+          "longName": "ProjectServiceRemoveProjectRequest",
+          "fullName": "admin.v1.ProjectServiceRemoveProjectRequest",
+          "description": "ProjectServiceRemoveProjectRequest is the request payload for the project remove member request",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "project_id",
+              "description": "ProjectId is the id of the project from which the member is to be removed",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "member_id",
+              "description": "MemberId is the id of the member to be removed",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "ProjectServiceRemoveProjectResponse",
+          "longName": "ProjectServiceRemoveProjectResponse",
+          "fullName": "admin.v1.ProjectServiceRemoveProjectResponse",
+          "description": "ProjectServiceRemoveProjectResponse is the response payload for the project remove member request",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "success",
+              "description": "Success is a flag indicating if the member was removed successfully",
+              "label": "",
+              "type": "bool",
+              "longType": "bool",
+              "fullType": "bool",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
         }
       ],
       "services": [
@@ -6451,6 +6511,18 @@
               "responseType": "ProjectServiceListResponse",
               "responseLongType": "ProjectServiceListResponse",
               "responseFullType": "admin.v1.ProjectServiceListResponse",
+              "responseStreaming": false
+            },
+            {
+              "name": "RemoveProject",
+              "description": "Remove a member from a project",
+              "requestType": "ProjectServiceRemoveProjectRequest",
+              "requestLongType": "ProjectServiceRemoveProjectRequest",
+              "requestFullType": "admin.v1.ProjectServiceRemoveProjectRequest",
+              "requestStreaming": false,
+              "responseType": "ProjectServiceRemoveProjectResponse",
+              "responseLongType": "ProjectServiceRemoveProjectResponse",
+              "responseFullType": "admin.v1.ProjectServiceRemoveProjectResponse",
               "responseStreaming": false
             }
           ]

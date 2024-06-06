@@ -305,3 +305,219 @@ var _ interface {
 	Cause() error
 	ErrorName() string
 } = ProjectServiceListResponseValidationError{}
+
+// Validate checks the field values on ProjectServiceRemoveProjectRequest with
+// the rules defined in the proto definition for this message. If any rules
+// are violated, the first error encountered is returned, or nil if there are
+// no violations.
+func (m *ProjectServiceRemoveProjectRequest) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on ProjectServiceRemoveProjectRequest
+// with the rules defined in the proto definition for this message. If any
+// rules are violated, the result is a list of violation errors wrapped in
+// ProjectServiceRemoveProjectRequestMultiError, or nil if none found.
+func (m *ProjectServiceRemoveProjectRequest) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *ProjectServiceRemoveProjectRequest) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	// no validation rules for ProjectId
+
+	// no validation rules for MemberId
+
+	if len(errors) > 0 {
+		return ProjectServiceRemoveProjectRequestMultiError(errors)
+	}
+
+	return nil
+}
+
+// ProjectServiceRemoveProjectRequestMultiError is an error wrapping multiple
+// validation errors returned by
+// ProjectServiceRemoveProjectRequest.ValidateAll() if the designated
+// constraints aren't met.
+type ProjectServiceRemoveProjectRequestMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m ProjectServiceRemoveProjectRequestMultiError) Error() string {
+	var msgs []string
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m ProjectServiceRemoveProjectRequestMultiError) AllErrors() []error { return m }
+
+// ProjectServiceRemoveProjectRequestValidationError is the validation error
+// returned by ProjectServiceRemoveProjectRequest.Validate if the designated
+// constraints aren't met.
+type ProjectServiceRemoveProjectRequestValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e ProjectServiceRemoveProjectRequestValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e ProjectServiceRemoveProjectRequestValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e ProjectServiceRemoveProjectRequestValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e ProjectServiceRemoveProjectRequestValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e ProjectServiceRemoveProjectRequestValidationError) ErrorName() string {
+	return "ProjectServiceRemoveProjectRequestValidationError"
+}
+
+// Error satisfies the builtin error interface
+func (e ProjectServiceRemoveProjectRequestValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sProjectServiceRemoveProjectRequest.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = ProjectServiceRemoveProjectRequestValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = ProjectServiceRemoveProjectRequestValidationError{}
+
+// Validate checks the field values on ProjectServiceRemoveProjectResponse with
+// the rules defined in the proto definition for this message. If any rules
+// are violated, the first error encountered is returned, or nil if there are
+// no violations.
+func (m *ProjectServiceRemoveProjectResponse) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on ProjectServiceRemoveProjectResponse
+// with the rules defined in the proto definition for this message. If any
+// rules are violated, the result is a list of violation errors wrapped in
+// ProjectServiceRemoveProjectResponseMultiError, or nil if none found.
+func (m *ProjectServiceRemoveProjectResponse) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *ProjectServiceRemoveProjectResponse) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	// no validation rules for Success
+
+	if len(errors) > 0 {
+		return ProjectServiceRemoveProjectResponseMultiError(errors)
+	}
+
+	return nil
+}
+
+// ProjectServiceRemoveProjectResponseMultiError is an error wrapping multiple
+// validation errors returned by
+// ProjectServiceRemoveProjectResponse.ValidateAll() if the designated
+// constraints aren't met.
+type ProjectServiceRemoveProjectResponseMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m ProjectServiceRemoveProjectResponseMultiError) Error() string {
+	var msgs []string
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m ProjectServiceRemoveProjectResponseMultiError) AllErrors() []error { return m }
+
+// ProjectServiceRemoveProjectResponseValidationError is the validation error
+// returned by ProjectServiceRemoveProjectResponse.Validate if the designated
+// constraints aren't met.
+type ProjectServiceRemoveProjectResponseValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e ProjectServiceRemoveProjectResponseValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e ProjectServiceRemoveProjectResponseValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e ProjectServiceRemoveProjectResponseValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e ProjectServiceRemoveProjectResponseValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e ProjectServiceRemoveProjectResponseValidationError) ErrorName() string {
+	return "ProjectServiceRemoveProjectResponseValidationError"
+}
+
+// Error satisfies the builtin error interface
+func (e ProjectServiceRemoveProjectResponseValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sProjectServiceRemoveProjectResponse.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = ProjectServiceRemoveProjectResponseValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = ProjectServiceRemoveProjectResponseValidationError{}

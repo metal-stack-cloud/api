@@ -68,3 +68,78 @@ ProjectServiceListResponse.fields = proto3.util.newFieldList(() => [
     { no: 1, name: "projects", kind: "message", T: Project, repeated: true },
     { no: 2, name: "next_page", kind: "scalar", T: 4 /* ScalarType.UINT64 */, opt: true },
 ]);
+/**
+ * ProjectServiceRemoveProjectRequest is the request payload for the project remove member request
+ *
+ * @generated from message admin.v1.ProjectServiceRemoveProjectRequest
+ */
+export class ProjectServiceRemoveProjectRequest extends Message {
+    constructor(data) {
+        super();
+        /**
+         * ProjectId is the id of the project from which the member is to be removed
+         *
+         * @generated from field: string project_id = 1;
+         */
+        this.projectId = "";
+        /**
+         * MemberId is the id of the member to be removed
+         *
+         * @generated from field: string member_id = 2;
+         */
+        this.memberId = "";
+        proto3.util.initPartial(data, this);
+    }
+    static fromBinary(bytes, options) {
+        return new ProjectServiceRemoveProjectRequest().fromBinary(bytes, options);
+    }
+    static fromJson(jsonValue, options) {
+        return new ProjectServiceRemoveProjectRequest().fromJson(jsonValue, options);
+    }
+    static fromJsonString(jsonString, options) {
+        return new ProjectServiceRemoveProjectRequest().fromJsonString(jsonString, options);
+    }
+    static equals(a, b) {
+        return proto3.util.equals(ProjectServiceRemoveProjectRequest, a, b);
+    }
+}
+ProjectServiceRemoveProjectRequest.runtime = proto3;
+ProjectServiceRemoveProjectRequest.typeName = "admin.v1.ProjectServiceRemoveProjectRequest";
+ProjectServiceRemoveProjectRequest.fields = proto3.util.newFieldList(() => [
+    { no: 1, name: "project_id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "member_id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+]);
+/**
+ * ProjectServiceRemoveProjectResponse is the response payload for the project remove member request
+ *
+ * @generated from message admin.v1.ProjectServiceRemoveProjectResponse
+ */
+export class ProjectServiceRemoveProjectResponse extends Message {
+    constructor(data) {
+        super();
+        /**
+         * Success is a flag indicating if the member was removed successfully
+         *
+         * @generated from field: bool success = 1;
+         */
+        this.success = false;
+        proto3.util.initPartial(data, this);
+    }
+    static fromBinary(bytes, options) {
+        return new ProjectServiceRemoveProjectResponse().fromBinary(bytes, options);
+    }
+    static fromJson(jsonValue, options) {
+        return new ProjectServiceRemoveProjectResponse().fromJson(jsonValue, options);
+    }
+    static fromJsonString(jsonString, options) {
+        return new ProjectServiceRemoveProjectResponse().fromJsonString(jsonString, options);
+    }
+    static equals(a, b) {
+        return proto3.util.equals(ProjectServiceRemoveProjectResponse, a, b);
+    }
+}
+ProjectServiceRemoveProjectResponse.runtime = proto3;
+ProjectServiceRemoveProjectResponse.typeName = "admin.v1.ProjectServiceRemoveProjectResponse";
+ProjectServiceRemoveProjectResponse.fields = proto3.util.newFieldList(() => [
+    { no: 1, name: "success", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
+]);

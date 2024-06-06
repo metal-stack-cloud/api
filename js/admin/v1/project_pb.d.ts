@@ -50,3 +50,51 @@ export declare class ProjectServiceListResponse extends Message<ProjectServiceLi
     static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ProjectServiceListResponse;
     static equals(a: ProjectServiceListResponse | PlainMessage<ProjectServiceListResponse> | undefined, b: ProjectServiceListResponse | PlainMessage<ProjectServiceListResponse> | undefined): boolean;
 }
+/**
+ * ProjectServiceRemoveProjectRequest is the request payload for the project remove member request
+ *
+ * @generated from message admin.v1.ProjectServiceRemoveProjectRequest
+ */
+export declare class ProjectServiceRemoveProjectRequest extends Message<ProjectServiceRemoveProjectRequest> {
+    /**
+     * ProjectId is the id of the project from which the member is to be removed
+     *
+     * @generated from field: string project_id = 1;
+     */
+    projectId: string;
+    /**
+     * MemberId is the id of the member to be removed
+     *
+     * @generated from field: string member_id = 2;
+     */
+    memberId: string;
+    constructor(data?: PartialMessage<ProjectServiceRemoveProjectRequest>);
+    static readonly runtime: typeof proto3;
+    static readonly typeName = "admin.v1.ProjectServiceRemoveProjectRequest";
+    static readonly fields: FieldList;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ProjectServiceRemoveProjectRequest;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ProjectServiceRemoveProjectRequest;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ProjectServiceRemoveProjectRequest;
+    static equals(a: ProjectServiceRemoveProjectRequest | PlainMessage<ProjectServiceRemoveProjectRequest> | undefined, b: ProjectServiceRemoveProjectRequest | PlainMessage<ProjectServiceRemoveProjectRequest> | undefined): boolean;
+}
+/**
+ * ProjectServiceRemoveProjectResponse is the response payload for the project remove member request
+ *
+ * @generated from message admin.v1.ProjectServiceRemoveProjectResponse
+ */
+export declare class ProjectServiceRemoveProjectResponse extends Message<ProjectServiceRemoveProjectResponse> {
+    /**
+     * Success is a flag indicating if the member was removed successfully
+     *
+     * @generated from field: bool success = 1;
+     */
+    success: boolean;
+    constructor(data?: PartialMessage<ProjectServiceRemoveProjectResponse>);
+    static readonly runtime: typeof proto3;
+    static readonly typeName = "admin.v1.ProjectServiceRemoveProjectResponse";
+    static readonly fields: FieldList;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ProjectServiceRemoveProjectResponse;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ProjectServiceRemoveProjectResponse;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ProjectServiceRemoveProjectResponse;
+    static equals(a: ProjectServiceRemoveProjectResponse | PlainMessage<ProjectServiceRemoveProjectResponse> | undefined, b: ProjectServiceRemoveProjectResponse | PlainMessage<ProjectServiceRemoveProjectResponse> | undefined): boolean;
+}

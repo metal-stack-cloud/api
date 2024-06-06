@@ -35,18 +35,24 @@ const (
 const (
 	// ProjectServiceListProcedure is the fully-qualified name of the ProjectService's List RPC.
 	ProjectServiceListProcedure = "/admin.v1.ProjectService/List"
+	// ProjectServiceRemoveProjectProcedure is the fully-qualified name of the ProjectService's
+	// RemoveProject RPC.
+	ProjectServiceRemoveProjectProcedure = "/admin.v1.ProjectService/RemoveProject"
 )
 
 // These variables are the protoreflect.Descriptor objects for the RPCs defined in this package.
 var (
-	projectServiceServiceDescriptor    = v1.File_admin_v1_project_proto.Services().ByName("ProjectService")
-	projectServiceListMethodDescriptor = projectServiceServiceDescriptor.Methods().ByName("List")
+	projectServiceServiceDescriptor             = v1.File_admin_v1_project_proto.Services().ByName("ProjectService")
+	projectServiceListMethodDescriptor          = projectServiceServiceDescriptor.Methods().ByName("List")
+	projectServiceRemoveProjectMethodDescriptor = projectServiceServiceDescriptor.Methods().ByName("RemoveProject")
 )
 
 // ProjectServiceClient is a client for the admin.v1.ProjectService service.
 type ProjectServiceClient interface {
 	// List projects based on various filter criteria
 	List(context.Context, *connect.Request[v1.ProjectServiceListRequest]) (*connect.Response[v1.ProjectServiceListResponse], error)
+	// Remove a member from a project
+	RemoveProject(context.Context, *connect.Request[v1.ProjectServiceRemoveProjectRequest]) (*connect.Response[v1.ProjectServiceRemoveProjectResponse], error)
 }
 
 // NewProjectServiceClient constructs a client for the admin.v1.ProjectService service. By default,
@@ -65,12 +71,19 @@ func NewProjectServiceClient(httpClient connect.HTTPClient, baseURL string, opts
 			connect.WithSchema(projectServiceListMethodDescriptor),
 			connect.WithClientOptions(opts...),
 		),
+		removeProject: connect.NewClient[v1.ProjectServiceRemoveProjectRequest, v1.ProjectServiceRemoveProjectResponse](
+			httpClient,
+			baseURL+ProjectServiceRemoveProjectProcedure,
+			connect.WithSchema(projectServiceRemoveProjectMethodDescriptor),
+			connect.WithClientOptions(opts...),
+		),
 	}
 }
 
 // projectServiceClient implements ProjectServiceClient.
 type projectServiceClient struct {
-	list *connect.Client[v1.ProjectServiceListRequest, v1.ProjectServiceListResponse]
+	list          *connect.Client[v1.ProjectServiceListRequest, v1.ProjectServiceListResponse]
+	removeProject *connect.Client[v1.ProjectServiceRemoveProjectRequest, v1.ProjectServiceRemoveProjectResponse]
 }
 
 // List calls admin.v1.ProjectService.List.
@@ -78,10 +91,17 @@ func (c *projectServiceClient) List(ctx context.Context, req *connect.Request[v1
 	return c.list.CallUnary(ctx, req)
 }
 
+// RemoveProject calls admin.v1.ProjectService.RemoveProject.
+func (c *projectServiceClient) RemoveProject(ctx context.Context, req *connect.Request[v1.ProjectServiceRemoveProjectRequest]) (*connect.Response[v1.ProjectServiceRemoveProjectResponse], error) {
+	return c.removeProject.CallUnary(ctx, req)
+}
+
 // ProjectServiceHandler is an implementation of the admin.v1.ProjectService service.
 type ProjectServiceHandler interface {
 	// List projects based on various filter criteria
 	List(context.Context, *connect.Request[v1.ProjectServiceListRequest]) (*connect.Response[v1.ProjectServiceListResponse], error)
+	// Remove a member from a project
+	RemoveProject(context.Context, *connect.Request[v1.ProjectServiceRemoveProjectRequest]) (*connect.Response[v1.ProjectServiceRemoveProjectResponse], error)
 }
 
 // NewProjectServiceHandler builds an HTTP handler from the service implementation. It returns the
@@ -96,10 +116,18 @@ func NewProjectServiceHandler(svc ProjectServiceHandler, opts ...connect.Handler
 		connect.WithSchema(projectServiceListMethodDescriptor),
 		connect.WithHandlerOptions(opts...),
 	)
+	projectServiceRemoveProjectHandler := connect.NewUnaryHandler(
+		ProjectServiceRemoveProjectProcedure,
+		svc.RemoveProject,
+		connect.WithSchema(projectServiceRemoveProjectMethodDescriptor),
+		connect.WithHandlerOptions(opts...),
+	)
 	return "/admin.v1.ProjectService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
 		case ProjectServiceListProcedure:
 			projectServiceListHandler.ServeHTTP(w, r)
+		case ProjectServiceRemoveProjectProcedure:
+			projectServiceRemoveProjectHandler.ServeHTTP(w, r)
 		default:
 			http.NotFound(w, r)
 		}
@@ -111,4 +139,8 @@ type UnimplementedProjectServiceHandler struct{}
 
 func (UnimplementedProjectServiceHandler) List(context.Context, *connect.Request[v1.ProjectServiceListRequest]) (*connect.Response[v1.ProjectServiceListResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("admin.v1.ProjectService.List is not implemented"))
+}
+
+func (UnimplementedProjectServiceHandler) RemoveProject(context.Context, *connect.Request[v1.ProjectServiceRemoveProjectRequest]) (*connect.Response[v1.ProjectServiceRemoveProjectResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("admin.v1.ProjectService.RemoveProject is not implemented"))
 }

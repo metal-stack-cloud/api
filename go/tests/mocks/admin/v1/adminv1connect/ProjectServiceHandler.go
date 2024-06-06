@@ -46,6 +46,36 @@ func (_m *ProjectServiceHandler) List(_a0 context.Context, _a1 *connect.Request[
 	return r0, r1
 }
 
+// RemoveProject provides a mock function with given fields: _a0, _a1
+func (_m *ProjectServiceHandler) RemoveProject(_a0 context.Context, _a1 *connect.Request[adminv1.ProjectServiceRemoveProjectRequest]) (*connect.Response[adminv1.ProjectServiceRemoveProjectResponse], error) {
+	ret := _m.Called(_a0, _a1)
+
+	if len(ret) == 0 {
+		panic("no return value specified for RemoveProject")
+	}
+
+	var r0 *connect.Response[adminv1.ProjectServiceRemoveProjectResponse]
+	var r1 error
+	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[adminv1.ProjectServiceRemoveProjectRequest]) (*connect.Response[adminv1.ProjectServiceRemoveProjectResponse], error)); ok {
+		return rf(_a0, _a1)
+	}
+	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[adminv1.ProjectServiceRemoveProjectRequest]) *connect.Response[adminv1.ProjectServiceRemoveProjectResponse]); ok {
+		r0 = rf(_a0, _a1)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*connect.Response[adminv1.ProjectServiceRemoveProjectResponse])
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(context.Context, *connect.Request[adminv1.ProjectServiceRemoveProjectRequest]) error); ok {
+		r1 = rf(_a0, _a1)
+	} else {
+		r1 = ret.Error(1)
+	}
+
+	return r0, r1
+}
+
 // NewProjectServiceHandler creates a new instance of ProjectServiceHandler. It also registers a testing interface on the mock and a cleanup function to assert the mocks expectations.
 // The first argument is typically a *testing.T value.
 func NewProjectServiceHandler(t interface {

@@ -32,17 +32,16 @@ message ProjectServiceListResponse {
   optional uint64 next_page = 2;
 }
 
-
-message ProjectServiceRemoveProjectRequest{
+// ProjectServiceRemoveProjectRequest is the request payload for the project remove member request
+message ProjectServiceRemoveProjectRequest {
   // ProjectId is the id of the project from which the member is to be removed
   string project_id = 1;
   // MemberId is the id of the member to be removed
   string member_id = 2;
-
 }
 
-
-message ProjectServiceRemoveProjectResponse{
+// ProjectServiceRemoveProjectResponse is the response payload for the project remove member request
+message ProjectServiceRemoveProjectResponse {
   // Success is a flag indicating if the member was removed successfully
   bool success = 1;
 }
