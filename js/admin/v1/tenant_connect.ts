@@ -3,7 +3,7 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import { TenantServiceAddMemberRequest, TenantServiceAddMemberResponse, TenantServiceAdmitRequest, TenantServiceAdmitResponse, TenantServiceListRequest, TenantServiceListResponse, TenantServiceRevokeRequest, TenantServiceRevokeResponse } from "./tenant_pb.js";
+import { TenantServiceAddMemberRequest, TenantServiceAddMemberResponse, TenantServiceAdmitRequest, TenantServiceAdmitResponse, TenantServiceListRequest, TenantServiceListResponse, TenantServiceRemoveMemberRequest, TenantServiceRemoveMemberResponse, TenantServiceRemoveTenantRequest, TenantServiceRemoveTenantResponse, TenantServiceRevokeRequest, TenantServiceRevokeResponse } from "./tenant_pb.js";
 import { MethodKind } from "@bufbuild/protobuf";
 
 /**
@@ -56,6 +56,28 @@ export const TenantService = {
       name: "AddMember",
       I: TenantServiceAddMemberRequest,
       O: TenantServiceAddMemberResponse,
+      kind: MethodKind.Unary,
+    },
+    /**
+     * remove a member from a tenant
+     *
+     * @generated from rpc admin.v1.TenantService.RemoveMember
+     */
+    removeMember: {
+      name: "RemoveMember",
+      I: TenantServiceRemoveMemberRequest,
+      O: TenantServiceRemoveMemberResponse,
+      kind: MethodKind.Unary,
+    },
+    /**
+     * Remove a tenant
+     *
+     * @generated from rpc admin.v1.TenantService.RemoveTenant
+     */
+    removeTenant: {
+      name: "RemoveTenant",
+      I: TenantServiceRemoveTenantRequest,
+      O: TenantServiceRemoveTenantResponse,
       kind: MethodKind.Unary,
     },
   }

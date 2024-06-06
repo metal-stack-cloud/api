@@ -106,6 +106,66 @@ func (_m *TenantServiceClient) List(_a0 context.Context, _a1 *connect.Request[ad
 	return r0, r1
 }
 
+// RemoveMember provides a mock function with given fields: _a0, _a1
+func (_m *TenantServiceClient) RemoveMember(_a0 context.Context, _a1 *connect.Request[adminv1.TenantServiceRemoveMemberRequest]) (*connect.Response[adminv1.TenantServiceRemoveMemberResponse], error) {
+	ret := _m.Called(_a0, _a1)
+
+	if len(ret) == 0 {
+		panic("no return value specified for RemoveMember")
+	}
+
+	var r0 *connect.Response[adminv1.TenantServiceRemoveMemberResponse]
+	var r1 error
+	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[adminv1.TenantServiceRemoveMemberRequest]) (*connect.Response[adminv1.TenantServiceRemoveMemberResponse], error)); ok {
+		return rf(_a0, _a1)
+	}
+	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[adminv1.TenantServiceRemoveMemberRequest]) *connect.Response[adminv1.TenantServiceRemoveMemberResponse]); ok {
+		r0 = rf(_a0, _a1)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*connect.Response[adminv1.TenantServiceRemoveMemberResponse])
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(context.Context, *connect.Request[adminv1.TenantServiceRemoveMemberRequest]) error); ok {
+		r1 = rf(_a0, _a1)
+	} else {
+		r1 = ret.Error(1)
+	}
+
+	return r0, r1
+}
+
+// RemoveTenant provides a mock function with given fields: _a0, _a1
+func (_m *TenantServiceClient) RemoveTenant(_a0 context.Context, _a1 *connect.Request[adminv1.TenantServiceRemoveTenantRequest]) (*connect.Response[adminv1.TenantServiceRemoveTenantResponse], error) {
+	ret := _m.Called(_a0, _a1)
+
+	if len(ret) == 0 {
+		panic("no return value specified for RemoveTenant")
+	}
+
+	var r0 *connect.Response[adminv1.TenantServiceRemoveTenantResponse]
+	var r1 error
+	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[adminv1.TenantServiceRemoveTenantRequest]) (*connect.Response[adminv1.TenantServiceRemoveTenantResponse], error)); ok {
+		return rf(_a0, _a1)
+	}
+	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[adminv1.TenantServiceRemoveTenantRequest]) *connect.Response[adminv1.TenantServiceRemoveTenantResponse]); ok {
+		r0 = rf(_a0, _a1)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*connect.Response[adminv1.TenantServiceRemoveTenantResponse])
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(context.Context, *connect.Request[adminv1.TenantServiceRemoveTenantRequest]) error); ok {
+		r1 = rf(_a0, _a1)
+	} else {
+		r1 = ret.Error(1)
+	}
+
+	return r0, r1
+}
+
 // Revoke provides a mock function with given fields: _a0, _a1
 func (_m *TenantServiceClient) Revoke(_a0 context.Context, _a1 *connect.Request[adminv1.TenantServiceRevokeRequest]) (*connect.Response[adminv1.TenantServiceRevokeResponse], error) {
 	ret := _m.Called(_a0, _a1)

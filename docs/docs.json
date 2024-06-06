@@ -10552,6 +10552,126 @@
           ]
         },
         {
+          "name": "TenantServiceRemoveMemberRequest",
+          "longName": "TenantServiceRemoveMemberRequest",
+          "fullName": "admin.v1.TenantServiceRemoveMemberRequest",
+          "description": "Request payload for removing a member from a tenant",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "tenant_id",
+              "description": "TenantId is the ID of the tenant from which the member is to be removed",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "member_id",
+              "description": "MemberId is the ID of the member to remove",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "TenantServiceRemoveMemberResponse",
+          "longName": "TenantServiceRemoveMemberResponse",
+          "fullName": "admin.v1.TenantServiceRemoveMemberResponse",
+          "description": "Response payload for the remove member request",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "success",
+              "description": "Confirmation of the removal",
+              "label": "",
+              "type": "bool",
+              "longType": "bool",
+              "fullType": "bool",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "TenantServiceRemoveTenantRequest",
+          "longName": "TenantServiceRemoveTenantRequest",
+          "fullName": "admin.v1.TenantServiceRemoveTenantRequest",
+          "description": "Request payload for removing a tenant",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "tenant_id",
+              "description": "TenantId is the ID of the tenant to be removed",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "TenantServiceRemoveTenantResponse",
+          "longName": "TenantServiceRemoveTenantResponse",
+          "fullName": "admin.v1.TenantServiceRemoveTenantResponse",
+          "description": "Response payload for the remove tenant request",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "success",
+              "description": "Confirmation of the removal",
+              "label": "",
+              "type": "bool",
+              "longType": "bool",
+              "fullType": "bool",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "message",
+              "description": "Optional message to provide additional details",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
           "name": "TenantServiceRevokeRequest",
           "longName": "TenantServiceRevokeRequest",
           "fullName": "admin.v1.TenantServiceRevokeRequest",
@@ -10653,6 +10773,30 @@
               "responseType": "TenantServiceAddMemberResponse",
               "responseLongType": "TenantServiceAddMemberResponse",
               "responseFullType": "admin.v1.TenantServiceAddMemberResponse",
+              "responseStreaming": false
+            },
+            {
+              "name": "RemoveMember",
+              "description": "remove a member from a tenant",
+              "requestType": "TenantServiceRemoveMemberRequest",
+              "requestLongType": "TenantServiceRemoveMemberRequest",
+              "requestFullType": "admin.v1.TenantServiceRemoveMemberRequest",
+              "requestStreaming": false,
+              "responseType": "TenantServiceRemoveMemberResponse",
+              "responseLongType": "TenantServiceRemoveMemberResponse",
+              "responseFullType": "admin.v1.TenantServiceRemoveMemberResponse",
+              "responseStreaming": false
+            },
+            {
+              "name": "RemoveTenant",
+              "description": "Remove a tenant",
+              "requestType": "TenantServiceRemoveTenantRequest",
+              "requestLongType": "TenantServiceRemoveTenantRequest",
+              "requestFullType": "admin.v1.TenantServiceRemoveTenantRequest",
+              "requestStreaming": false,
+              "responseType": "TenantServiceRemoveTenantResponse",
+              "responseLongType": "TenantServiceRemoveTenantResponse",
+              "responseFullType": "admin.v1.TenantServiceRemoveTenantResponse",
               "responseStreaming": false
             }
           ]
