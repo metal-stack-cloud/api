@@ -13,7 +13,7 @@ service ProjectService {
     option (api.v1.admin_roles) = ADMIN_ROLE_VIEWER;
   }
   // Remove a member from a project
-  rpc RemoveMember(ProjectServiceRemoveMemberRequest) returns (ProjectServiceRemoveMemberResponse) {
+  rpc RemoveMember(ProjectServiceRemoveProjectRequest) returns (ProjectServiceRemoveProjectResponse) {
     option (api.v1.admin_roles) = ADMIN_ROLE_EDITOR;
   }
 }
@@ -33,7 +33,7 @@ message ProjectServiceListResponse {
 }
 
 
-message ProjectServiceRemoveMemberRequest{
+message ProjectServiceRemoveProjectRequest{
   // ProjectId is the id of the project from which the member is to be removed
   string project_id = 1;
   // MemberId is the id of the member to be removed
@@ -42,7 +42,7 @@ message ProjectServiceRemoveMemberRequest{
 }
 
 
-message ProjectServiceRemoveMemberResponse{
+message ProjectServiceRemoveProjectResponse{
   // Success is a flag indicating if the member was removed successfully
   bool success = 1;
 }
