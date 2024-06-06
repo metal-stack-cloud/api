@@ -13,7 +13,7 @@ service ProjectService {
     option (api.v1.admin_roles) = ADMIN_ROLE_VIEWER;
   }
   // Remove a member from a project
-  rpc RemoveMember(ProjectServiceRemoveProjectRequest) returns (ProjectServiceRemoveProjectResponse) {
+  rpc RemoveProject(ProjectServiceRemoveProjectRequest) returns (ProjectServiceRemoveProjectResponse) {
     option (api.v1.admin_roles) = ADMIN_ROLE_EDITOR;
   }
 }
