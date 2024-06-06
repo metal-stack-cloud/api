@@ -132,11 +132,11 @@ export declare class TenantMember extends Message<TenantMember> {
      */
     role: TenantRole;
     /**
-     * Project ids of which a user is a member
+     * ProjectIds of which a user is a member
      *
-     * @generated from field: repeated string project_id = 4;
+     * @generated from field: repeated string project_ids = 4;
      */
-    projectId: string[];
+    projectIds: string[];
     /**
      * CreatedAt the date when the member was added to the tenant
      *

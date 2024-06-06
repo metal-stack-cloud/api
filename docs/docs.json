@@ -7701,8 +7701,8 @@
               "defaultValue": ""
             },
             {
-              "name": "project_id",
-              "description": "Project ids of which a user is a member",
+              "name": "project_ids",
+              "description": "ProjectIds of which a user is a member",
               "label": "repeated",
               "type": "string",
               "longType": "string",

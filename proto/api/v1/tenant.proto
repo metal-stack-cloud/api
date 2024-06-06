@@ -126,8 +126,8 @@ message TenantMember {
   string id = 1;
   // Role is the role of the member
   TenantRole role = 2;
-  // Project ids of which a user is a member
-  repeated string project_id = 4;
+  // ProjectIds of which a user is a member
+  repeated string project_ids = 4;
   // CreatedAt the date when the member was added to the tenant
   google.protobuf.Timestamp created_at = 10;
 }

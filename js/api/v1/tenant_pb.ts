@@ -190,11 +190,11 @@ export class TenantMember extends Message<TenantMember> {
   role = TenantRole.UNSPECIFIED;
 
   /**
-   * Project ids of which a user is a member
+   * ProjectIds of which a user is a member
    *
-   * @generated from field: repeated string project_id = 4;
+   * @generated from field: repeated string project_ids = 4;
    */
-  projectId: string[] = [];
+  projectIds: string[] = [];
 
   /**
    * CreatedAt the date when the member was added to the tenant
@@ -213,7 +213,7 @@ export class TenantMember extends Message<TenantMember> {
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
     { no: 1, name: "id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 2, name: "role", kind: "enum", T: proto3.getEnumType(TenantRole) },
-    { no: 4, name: "project_id", kind: "scalar", T: 9 /* ScalarType.STRING */, repeated: true },
+    { no: 4, name: "project_ids", kind: "scalar", T: 9 /* ScalarType.STRING */, repeated: true },
     { no: 10, name: "created_at", kind: "message", T: Timestamp },
   ]);
 
