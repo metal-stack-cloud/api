@@ -12,6 +12,10 @@ service ProjectService {
     option (api.v1.admin_roles) = ADMIN_ROLE_EDITOR;
     option (api.v1.admin_roles) = ADMIN_ROLE_VIEWER;
   }
+  // Remove a member from a project
+  rpc RemoveMember(ProjectServiceRemoveMemberRequest) returns (ProjectServiceRemoveMemberResponse) {
+    option (api.v1.admin_roles) = ADMIN_ROLE_EDITOR;
+  }
 }
 
 // ProjectServiceListRequest is the request payload for the project list request
@@ -26,4 +30,19 @@ message ProjectServiceListResponse {
   repeated api.v1.Project projects = 1;
   // NextPage is used for pagination, returns the next page to be fetched and must then be provided in the list request.
   optional uint64 next_page = 2;
+}
+
+
+message ProjectServiceRemoveMemberRequest{
+  // ProjectId is the id of the project from which the member is to be removed
+  string project_id = 1;
+  // MemberId is the id of the member to be removed
+  string member_id = 2;
+
+}
+
+
+message ProjectServiceRemoveMemberResponse{
+  // Success is a flag indicating if the member was removed successfully
+  bool success = 1;
 }
