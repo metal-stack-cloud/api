@@ -25,14 +25,6 @@ service TenantService {
   rpc AddMember(TenantServiceAddMemberRequest) returns (TenantServiceAddMemberResponse) {
     option (api.v1.admin_roles) = ADMIN_ROLE_EDITOR;
   }
-  //remove a member from a tenant
-  rpc RemoveMember(TenantServiceRemoveMemberRequest) returns (TenantServiceRemoveMemberResponse) {
-    option (api.v1.admin_roles) = ADMIN_ROLE_EDITOR;
-  }
-  // Remove a tenant
-  rpc RemoveTenant(TenantServiceRemoveTenantRequest) returns (TenantServiceRemoveTenantResponse) {
-    option (api.v1.admin_roles) = ADMIN_ROLE_EDITOR;
-  }
 }
 
 // TenantServiceListRequest is the request payload for a tenant list request
@@ -105,31 +97,5 @@ message TenantServiceAddMemberRequest {
 // TenantServiceAddMemberResponse is the response payload for the add member request
 message TenantServiceAddMemberResponse {
   // Confirmation of the addition
-  bool success = 1;
-}
-
-// Request payload for removing a member from a tenant
-message TenantServiceRemoveMemberRequest {
-  // TenantId is the ID of the tenant from which the member is to be removed
-  string tenant_id = 1;
-  // MemberId is the ID of the member to remove
-  string member_id = 2;
-}
-
-// Response payload for the remove member request
-message TenantServiceRemoveMemberResponse {
-  // Confirmation of the removal
-  bool success = 1;
-}
-
-// Request payload for removing a tenant
-message TenantServiceRemoveTenantRequest {
-  // TenantId is the ID of the tenant to be removed
-  string tenant_id = 1;
-}
-
-// Response payload for the remove tenant request
-message TenantServiceRemoveTenantResponse {
-  // Confirmation of the removal
   bool success = 1;
 }

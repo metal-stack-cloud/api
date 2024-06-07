@@ -41,23 +41,15 @@ const (
 	TenantServiceRevokeProcedure = "/admin.v1.TenantService/Revoke"
 	// TenantServiceAddMemberProcedure is the fully-qualified name of the TenantService's AddMember RPC.
 	TenantServiceAddMemberProcedure = "/admin.v1.TenantService/AddMember"
-	// TenantServiceRemoveMemberProcedure is the fully-qualified name of the TenantService's
-	// RemoveMember RPC.
-	TenantServiceRemoveMemberProcedure = "/admin.v1.TenantService/RemoveMember"
-	// TenantServiceRemoveTenantProcedure is the fully-qualified name of the TenantService's
-	// RemoveTenant RPC.
-	TenantServiceRemoveTenantProcedure = "/admin.v1.TenantService/RemoveTenant"
 )
 
 // These variables are the protoreflect.Descriptor objects for the RPCs defined in this package.
 var (
-	tenantServiceServiceDescriptor            = v1.File_admin_v1_tenant_proto.Services().ByName("TenantService")
-	tenantServiceListMethodDescriptor         = tenantServiceServiceDescriptor.Methods().ByName("List")
-	tenantServiceAdmitMethodDescriptor        = tenantServiceServiceDescriptor.Methods().ByName("Admit")
-	tenantServiceRevokeMethodDescriptor       = tenantServiceServiceDescriptor.Methods().ByName("Revoke")
-	tenantServiceAddMemberMethodDescriptor    = tenantServiceServiceDescriptor.Methods().ByName("AddMember")
-	tenantServiceRemoveMemberMethodDescriptor = tenantServiceServiceDescriptor.Methods().ByName("RemoveMember")
-	tenantServiceRemoveTenantMethodDescriptor = tenantServiceServiceDescriptor.Methods().ByName("RemoveTenant")
+	tenantServiceServiceDescriptor         = v1.File_admin_v1_tenant_proto.Services().ByName("TenantService")
+	tenantServiceListMethodDescriptor      = tenantServiceServiceDescriptor.Methods().ByName("List")
+	tenantServiceAdmitMethodDescriptor     = tenantServiceServiceDescriptor.Methods().ByName("Admit")
+	tenantServiceRevokeMethodDescriptor    = tenantServiceServiceDescriptor.Methods().ByName("Revoke")
+	tenantServiceAddMemberMethodDescriptor = tenantServiceServiceDescriptor.Methods().ByName("AddMember")
 )
 
 // TenantServiceClient is a client for the admin.v1.TenantService service.
@@ -70,10 +62,6 @@ type TenantServiceClient interface {
 	Revoke(context.Context, *connect.Request[v1.TenantServiceRevokeRequest]) (*connect.Response[v1.TenantServiceRevokeResponse], error)
 	// Add a member to a tenant
 	AddMember(context.Context, *connect.Request[v1.TenantServiceAddMemberRequest]) (*connect.Response[v1.TenantServiceAddMemberResponse], error)
-	// remove a member from a tenant
-	RemoveMember(context.Context, *connect.Request[v1.TenantServiceRemoveMemberRequest]) (*connect.Response[v1.TenantServiceRemoveMemberResponse], error)
-	// Remove a tenant
-	RemoveTenant(context.Context, *connect.Request[v1.TenantServiceRemoveTenantRequest]) (*connect.Response[v1.TenantServiceRemoveTenantResponse], error)
 }
 
 // NewTenantServiceClient constructs a client for the admin.v1.TenantService service. By default, it
@@ -110,29 +98,15 @@ func NewTenantServiceClient(httpClient connect.HTTPClient, baseURL string, opts 
 			connect.WithSchema(tenantServiceAddMemberMethodDescriptor),
 			connect.WithClientOptions(opts...),
 		),
-		removeMember: connect.NewClient[v1.TenantServiceRemoveMemberRequest, v1.TenantServiceRemoveMemberResponse](
-			httpClient,
-			baseURL+TenantServiceRemoveMemberProcedure,
-			connect.WithSchema(tenantServiceRemoveMemberMethodDescriptor),
-			connect.WithClientOptions(opts...),
-		),
-		removeTenant: connect.NewClient[v1.TenantServiceRemoveTenantRequest, v1.TenantServiceRemoveTenantResponse](
-			httpClient,
-			baseURL+TenantServiceRemoveTenantProcedure,
-			connect.WithSchema(tenantServiceRemoveTenantMethodDescriptor),
-			connect.WithClientOptions(opts...),
-		),
 	}
 }
 
 // tenantServiceClient implements TenantServiceClient.
 type tenantServiceClient struct {
-	list         *connect.Client[v1.TenantServiceListRequest, v1.TenantServiceListResponse]
-	admit        *connect.Client[v1.TenantServiceAdmitRequest, v1.TenantServiceAdmitResponse]
-	revoke       *connect.Client[v1.TenantServiceRevokeRequest, v1.TenantServiceRevokeResponse]
-	addMember    *connect.Client[v1.TenantServiceAddMemberRequest, v1.TenantServiceAddMemberResponse]
-	removeMember *connect.Client[v1.TenantServiceRemoveMemberRequest, v1.TenantServiceRemoveMemberResponse]
-	removeTenant *connect.Client[v1.TenantServiceRemoveTenantRequest, v1.TenantServiceRemoveTenantResponse]
+	list      *connect.Client[v1.TenantServiceListRequest, v1.TenantServiceListResponse]
+	admit     *connect.Client[v1.TenantServiceAdmitRequest, v1.TenantServiceAdmitResponse]
+	revoke    *connect.Client[v1.TenantServiceRevokeRequest, v1.TenantServiceRevokeResponse]
+	addMember *connect.Client[v1.TenantServiceAddMemberRequest, v1.TenantServiceAddMemberResponse]
 }
 
 // List calls admin.v1.TenantService.List.
@@ -155,16 +129,6 @@ func (c *tenantServiceClient) AddMember(ctx context.Context, req *connect.Reques
 	return c.addMember.CallUnary(ctx, req)
 }
 
-// RemoveMember calls admin.v1.TenantService.RemoveMember.
-func (c *tenantServiceClient) RemoveMember(ctx context.Context, req *connect.Request[v1.TenantServiceRemoveMemberRequest]) (*connect.Response[v1.TenantServiceRemoveMemberResponse], error) {
-	return c.removeMember.CallUnary(ctx, req)
-}
-
-// RemoveTenant calls admin.v1.TenantService.RemoveTenant.
-func (c *tenantServiceClient) RemoveTenant(ctx context.Context, req *connect.Request[v1.TenantServiceRemoveTenantRequest]) (*connect.Response[v1.TenantServiceRemoveTenantResponse], error) {
-	return c.removeTenant.CallUnary(ctx, req)
-}
-
 // TenantServiceHandler is an implementation of the admin.v1.TenantService service.
 type TenantServiceHandler interface {
 	// List tenants
@@ -175,10 +139,6 @@ type TenantServiceHandler interface {
 	Revoke(context.Context, *connect.Request[v1.TenantServiceRevokeRequest]) (*connect.Response[v1.TenantServiceRevokeResponse], error)
 	// Add a member to a tenant
 	AddMember(context.Context, *connect.Request[v1.TenantServiceAddMemberRequest]) (*connect.Response[v1.TenantServiceAddMemberResponse], error)
-	// remove a member from a tenant
-	RemoveMember(context.Context, *connect.Request[v1.TenantServiceRemoveMemberRequest]) (*connect.Response[v1.TenantServiceRemoveMemberResponse], error)
-	// Remove a tenant
-	RemoveTenant(context.Context, *connect.Request[v1.TenantServiceRemoveTenantRequest]) (*connect.Response[v1.TenantServiceRemoveTenantResponse], error)
 }
 
 // NewTenantServiceHandler builds an HTTP handler from the service implementation. It returns the
@@ -211,18 +171,6 @@ func NewTenantServiceHandler(svc TenantServiceHandler, opts ...connect.HandlerOp
 		connect.WithSchema(tenantServiceAddMemberMethodDescriptor),
 		connect.WithHandlerOptions(opts...),
 	)
-	tenantServiceRemoveMemberHandler := connect.NewUnaryHandler(
-		TenantServiceRemoveMemberProcedure,
-		svc.RemoveMember,
-		connect.WithSchema(tenantServiceRemoveMemberMethodDescriptor),
-		connect.WithHandlerOptions(opts...),
-	)
-	tenantServiceRemoveTenantHandler := connect.NewUnaryHandler(
-		TenantServiceRemoveTenantProcedure,
-		svc.RemoveTenant,
-		connect.WithSchema(tenantServiceRemoveTenantMethodDescriptor),
-		connect.WithHandlerOptions(opts...),
-	)
 	return "/admin.v1.TenantService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
 		case TenantServiceListProcedure:
@@ -233,10 +181,6 @@ func NewTenantServiceHandler(svc TenantServiceHandler, opts ...connect.HandlerOp
 			tenantServiceRevokeHandler.ServeHTTP(w, r)
 		case TenantServiceAddMemberProcedure:
 			tenantServiceAddMemberHandler.ServeHTTP(w, r)
-		case TenantServiceRemoveMemberProcedure:
-			tenantServiceRemoveMemberHandler.ServeHTTP(w, r)
-		case TenantServiceRemoveTenantProcedure:
-			tenantServiceRemoveTenantHandler.ServeHTTP(w, r)
 		default:
 			http.NotFound(w, r)
 		}
@@ -260,12 +204,4 @@ func (UnimplementedTenantServiceHandler) Revoke(context.Context, *connect.Reques
 
 func (UnimplementedTenantServiceHandler) AddMember(context.Context, *connect.Request[v1.TenantServiceAddMemberRequest]) (*connect.Response[v1.TenantServiceAddMemberResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("admin.v1.TenantService.AddMember is not implemented"))
-}
-
-func (UnimplementedTenantServiceHandler) RemoveMember(context.Context, *connect.Request[v1.TenantServiceRemoveMemberRequest]) (*connect.Response[v1.TenantServiceRemoveMemberResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("admin.v1.TenantService.RemoveMember is not implemented"))
-}
-
-func (UnimplementedTenantServiceHandler) RemoveTenant(context.Context, *connect.Request[v1.TenantServiceRemoveTenantRequest]) (*connect.Response[v1.TenantServiceRemoveTenantResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("admin.v1.TenantService.RemoveTenant is not implemented"))
 }
