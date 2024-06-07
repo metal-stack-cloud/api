@@ -106,8 +106,6 @@ message TenantServiceAddMemberRequest {
 message TenantServiceAddMemberResponse {
   // Confirmation of the addition
   bool success = 1;
-  // Optional message to provide additional details
-  optional string message = 2;
 }
 
 // Request payload for removing a member from a tenant
@@ -122,8 +120,6 @@ message TenantServiceRemoveMemberRequest {
 message TenantServiceRemoveMemberResponse {
   // Confirmation of the removal
   bool success = 1;
-  // Optional message to provide additional details
-  optional string message = 2;
 }
 
 // Request payload for removing a tenant
@@ -136,6 +132,4 @@ message TenantServiceRemoveTenantRequest {
 message TenantServiceRemoveTenantResponse {
   // Confirmation of the removal
   bool success = 1;
-  // Optional message to provide additional details
-  string message = 2;
 }
