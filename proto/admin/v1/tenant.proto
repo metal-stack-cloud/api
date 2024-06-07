@@ -106,8 +106,8 @@ message TenantServiceAddMemberRequest {
 message TenantServiceAddMemberResponse {
   // Confirmation of the addition
   bool success = 1;
-  // Member details after addition
-  api.v1.TenantMember member = 2;
+  // Optional message to provide additional details
+  optional string message = 2;
 }
 
 // Request payload for removing a member from a tenant
@@ -122,6 +122,8 @@ message TenantServiceRemoveMemberRequest {
 message TenantServiceRemoveMemberResponse {
   // Confirmation of the removal
   bool success = 1;
+  // Optional message to provide additional details
+  optional string message = 2;
 }
 
 // Request payload for removing a tenant

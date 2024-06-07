@@ -6,7 +6,7 @@
 import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
 import { Message, proto3 } from "@bufbuild/protobuf";
 import { OAuthProvider, Paging, TenantRole } from "../../api/v1/common_pb.js";
-import { Tenant, TenantMember } from "../../api/v1/tenant_pb.js";
+import { Tenant } from "../../api/v1/tenant_pb.js";
 
 /**
  * TenantServiceListRequest is the request payload for a tenant list request
@@ -397,11 +397,11 @@ export class TenantServiceAddMemberResponse extends Message<TenantServiceAddMemb
   success = false;
 
   /**
-   * Member details after addition
+   * Optional message to provide additional details
    *
-   * @generated from field: api.v1.TenantMember member = 2;
+   * @generated from field: optional string message = 2;
    */
-  member?: TenantMember;
+  message?: string;
 
   constructor(data?: PartialMessage<TenantServiceAddMemberResponse>) {
     super();
@@ -412,7 +412,7 @@ export class TenantServiceAddMemberResponse extends Message<TenantServiceAddMemb
   static readonly typeName = "admin.v1.TenantServiceAddMemberResponse";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
     { no: 1, name: "success", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
-    { no: 2, name: "member", kind: "message", T: TenantMember },
+    { no: 2, name: "message", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): TenantServiceAddMemberResponse {
@@ -494,6 +494,13 @@ export class TenantServiceRemoveMemberResponse extends Message<TenantServiceRemo
    */
   success = false;
 
+  /**
+   * Optional message to provide additional details
+   *
+   * @generated from field: optional string message = 2;
+   */
+  message?: string;
+
   constructor(data?: PartialMessage<TenantServiceRemoveMemberResponse>) {
     super();
     proto3.util.initPartial(data, this);
@@ -503,6 +510,7 @@ export class TenantServiceRemoveMemberResponse extends Message<TenantServiceRemo
   static readonly typeName = "admin.v1.TenantServiceRemoveMemberResponse";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
     { no: 1, name: "success", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
+    { no: 2, name: "message", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): TenantServiceRemoveMemberResponse {

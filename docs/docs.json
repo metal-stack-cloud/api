@@ -6476,7 +6476,7 @@
           "description": "ProjectServiceRemoveProjectResponse is the response payload for the project remove member request",
           "hasExtensions": false,
           "hasFields": true,
-          "hasOneofs": false,
+          "hasOneofs": true,
           "extensions": [],
           "fields": [
             {
@@ -6489,6 +6489,18 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "message",
+              "description": "Optional message to provide additional details",
+              "label": "optional",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "_message",
               "defaultValue": ""
             }
           ]
@@ -10374,7 +10386,7 @@
           "description": "TenantServiceAddMemberResponse is the response payload for the add member request",
           "hasExtensions": false,
           "hasFields": true,
-          "hasOneofs": false,
+          "hasOneofs": true,
           "extensions": [],
           "fields": [
             {
@@ -10390,15 +10402,15 @@
               "defaultValue": ""
             },
             {
-              "name": "member",
-              "description": "Member details after addition",
-              "label": "",
-              "type": "TenantMember",
-              "longType": "api.v1.TenantMember",
-              "fullType": "api.v1.TenantMember",
+              "name": "message",
+              "description": "Optional message to provide additional details",
+              "label": "optional",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
               "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
+              "isoneof": true,
+              "oneofdecl": "_message",
               "defaultValue": ""
             }
           ]
@@ -10666,7 +10678,7 @@
           "description": "Response payload for the remove member request",
           "hasExtensions": false,
           "hasFields": true,
-          "hasOneofs": false,
+          "hasOneofs": true,
           "extensions": [],
           "fields": [
             {
@@ -10679,6 +10691,18 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "message",
+              "description": "Optional message to provide additional details",
+              "label": "optional",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "_message",
               "defaultValue": ""
             }
           ]

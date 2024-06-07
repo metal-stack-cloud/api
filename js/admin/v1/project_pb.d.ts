@@ -89,6 +89,12 @@ export declare class ProjectServiceRemoveProjectResponse extends Message<Project
      * @generated from field: bool success = 1;
      */
     success: boolean;
+    /**
+     * Optional message to provide additional details
+     *
+     * @generated from field: optional string message = 2;
+     */
+    message?: string;
     constructor(data?: PartialMessage<ProjectServiceRemoveProjectResponse>);
     static readonly runtime: typeof proto3;
     static readonly typeName = "admin.v1.ProjectServiceRemoveProjectResponse";

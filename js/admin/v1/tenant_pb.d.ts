@@ -1,7 +1,7 @@
 import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
 import { Message, proto3 } from "@bufbuild/protobuf";
 import { OAuthProvider, Paging, TenantRole } from "../../api/v1/common_pb.js";
-import { Tenant, TenantMember } from "../../api/v1/tenant_pb.js";
+import { Tenant } from "../../api/v1/tenant_pb.js";
 /**
  * TenantServiceListRequest is the request payload for a tenant list request
  *
@@ -228,11 +228,11 @@ export declare class TenantServiceAddMemberResponse extends Message<TenantServic
      */
     success: boolean;
     /**
-     * Member details after addition
+     * Optional message to provide additional details
      *
-     * @generated from field: api.v1.TenantMember member = 2;
+     * @generated from field: optional string message = 2;
      */
-    member?: TenantMember;
+    message?: string;
     constructor(data?: PartialMessage<TenantServiceAddMemberResponse>);
     static readonly runtime: typeof proto3;
     static readonly typeName = "admin.v1.TenantServiceAddMemberResponse";
@@ -281,6 +281,12 @@ export declare class TenantServiceRemoveMemberResponse extends Message<TenantSer
      * @generated from field: bool success = 1;
      */
     success: boolean;
+    /**
+     * Optional message to provide additional details
+     *
+     * @generated from field: optional string message = 2;
+     */
+    message?: string;
     constructor(data?: PartialMessage<TenantServiceRemoveMemberResponse>);
     static readonly runtime: typeof proto3;
     static readonly typeName = "admin.v1.TenantServiceRemoveMemberResponse";

@@ -4,7 +4,7 @@
 // @ts-nocheck
 import { Message, proto3 } from "@bufbuild/protobuf";
 import { OAuthProvider, Paging, TenantRole } from "../../api/v1/common_pb.js";
-import { Tenant, TenantMember } from "../../api/v1/tenant_pb.js";
+import { Tenant } from "../../api/v1/tenant_pb.js";
 /**
  * TenantServiceListRequest is the request payload for a tenant list request
  *
@@ -281,7 +281,7 @@ TenantServiceAddMemberResponse.runtime = proto3;
 TenantServiceAddMemberResponse.typeName = "admin.v1.TenantServiceAddMemberResponse";
 TenantServiceAddMemberResponse.fields = proto3.util.newFieldList(() => [
     { no: 1, name: "success", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
-    { no: 2, name: "member", kind: "message", T: TenantMember },
+    { no: 2, name: "message", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
 ]);
 /**
  * Request payload for removing a member from a tenant
@@ -357,6 +357,7 @@ TenantServiceRemoveMemberResponse.runtime = proto3;
 TenantServiceRemoveMemberResponse.typeName = "admin.v1.TenantServiceRemoveMemberResponse";
 TenantServiceRemoveMemberResponse.fields = proto3.util.newFieldList(() => [
     { no: 1, name: "success", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
+    { no: 2, name: "message", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
 ]);
 /**
  * Request payload for removing a tenant
