@@ -980,10 +980,6 @@ func (m *TenantServiceAddMemberResponse) validate(all bool) error {
 
 	// no validation rules for Success
 
-	if m.Message != nil {
-		// no validation rules for Message
-	}
-
 	if len(errors) > 0 {
 		return TenantServiceAddMemberResponseMultiError(errors)
 	}
@@ -1199,10 +1195,6 @@ func (m *TenantServiceRemoveMemberResponse) validate(all bool) error {
 
 	// no validation rules for Success
 
-	if m.Message != nil {
-		// no validation rules for Message
-	}
-
 	if len(errors) > 0 {
 		return TenantServiceRemoveMemberResponseMultiError(errors)
 	}
@@ -1416,8 +1408,6 @@ func (m *TenantServiceRemoveTenantResponse) validate(all bool) error {
 	var errors []error
 
 	// no validation rules for Success
-
-	// no validation rules for Message
 
 	if len(errors) > 0 {
 		return TenantServiceRemoveTenantResponseMultiError(errors)

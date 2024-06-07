@@ -396,13 +396,6 @@ export class TenantServiceAddMemberResponse extends Message<TenantServiceAddMemb
    */
   success = false;
 
-  /**
-   * Optional message to provide additional details
-   *
-   * @generated from field: optional string message = 2;
-   */
-  message?: string;
-
   constructor(data?: PartialMessage<TenantServiceAddMemberResponse>) {
     super();
     proto3.util.initPartial(data, this);
@@ -412,7 +405,6 @@ export class TenantServiceAddMemberResponse extends Message<TenantServiceAddMemb
   static readonly typeName = "admin.v1.TenantServiceAddMemberResponse";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
     { no: 1, name: "success", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
-    { no: 2, name: "message", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): TenantServiceAddMemberResponse {
@@ -494,13 +486,6 @@ export class TenantServiceRemoveMemberResponse extends Message<TenantServiceRemo
    */
   success = false;
 
-  /**
-   * Optional message to provide additional details
-   *
-   * @generated from field: optional string message = 2;
-   */
-  message?: string;
-
   constructor(data?: PartialMessage<TenantServiceRemoveMemberResponse>) {
     super();
     proto3.util.initPartial(data, this);
@@ -510,7 +495,6 @@ export class TenantServiceRemoveMemberResponse extends Message<TenantServiceRemo
   static readonly typeName = "admin.v1.TenantServiceRemoveMemberResponse";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
     { no: 1, name: "success", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
-    { no: 2, name: "message", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): TenantServiceRemoveMemberResponse {
@@ -584,13 +568,6 @@ export class TenantServiceRemoveTenantResponse extends Message<TenantServiceRemo
    */
   success = false;
 
-  /**
-   * Optional message to provide additional details
-   *
-   * @generated from field: string message = 2;
-   */
-  message = "";
-
   constructor(data?: PartialMessage<TenantServiceRemoveTenantResponse>) {
     super();
     proto3.util.initPartial(data, this);
@@ -600,7 +577,6 @@ export class TenantServiceRemoveTenantResponse extends Message<TenantServiceRemo
   static readonly typeName = "admin.v1.TenantServiceRemoveTenantResponse";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
     { no: 1, name: "success", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
-    { no: 2, name: "message", kind: "scalar", T: 9 /* ScalarType.STRING */ },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): TenantServiceRemoveTenantResponse {

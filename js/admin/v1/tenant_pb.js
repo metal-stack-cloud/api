@@ -281,7 +281,6 @@ TenantServiceAddMemberResponse.runtime = proto3;
 TenantServiceAddMemberResponse.typeName = "admin.v1.TenantServiceAddMemberResponse";
 TenantServiceAddMemberResponse.fields = proto3.util.newFieldList(() => [
     { no: 1, name: "success", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
-    { no: 2, name: "message", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
 ]);
 /**
  * Request payload for removing a member from a tenant
@@ -357,7 +356,6 @@ TenantServiceRemoveMemberResponse.runtime = proto3;
 TenantServiceRemoveMemberResponse.typeName = "admin.v1.TenantServiceRemoveMemberResponse";
 TenantServiceRemoveMemberResponse.fields = proto3.util.newFieldList(() => [
     { no: 1, name: "success", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
-    { no: 2, name: "message", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
 ]);
 /**
  * Request payload for removing a tenant
@@ -407,12 +405,6 @@ export class TenantServiceRemoveTenantResponse extends Message {
          * @generated from field: bool success = 1;
          */
         this.success = false;
-        /**
-         * Optional message to provide additional details
-         *
-         * @generated from field: string message = 2;
-         */
-        this.message = "";
         proto3.util.initPartial(data, this);
     }
     static fromBinary(bytes, options) {
@@ -432,5 +424,4 @@ TenantServiceRemoveTenantResponse.runtime = proto3;
 TenantServiceRemoveTenantResponse.typeName = "admin.v1.TenantServiceRemoveTenantResponse";
 TenantServiceRemoveTenantResponse.fields = proto3.util.newFieldList(() => [
     { no: 1, name: "success", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
-    { no: 2, name: "message", kind: "scalar", T: 9 /* ScalarType.STRING */ },
 ]);

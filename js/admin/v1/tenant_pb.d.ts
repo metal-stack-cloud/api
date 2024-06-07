@@ -227,12 +227,6 @@ export declare class TenantServiceAddMemberResponse extends Message<TenantServic
      * @generated from field: bool success = 1;
      */
     success: boolean;
-    /**
-     * Optional message to provide additional details
-     *
-     * @generated from field: optional string message = 2;
-     */
-    message?: string;
     constructor(data?: PartialMessage<TenantServiceAddMemberResponse>);
     static readonly runtime: typeof proto3;
     static readonly typeName = "admin.v1.TenantServiceAddMemberResponse";
@@ -281,12 +275,6 @@ export declare class TenantServiceRemoveMemberResponse extends Message<TenantSer
      * @generated from field: bool success = 1;
      */
     success: boolean;
-    /**
-     * Optional message to provide additional details
-     *
-     * @generated from field: optional string message = 2;
-     */
-    message?: string;
     constructor(data?: PartialMessage<TenantServiceRemoveMemberResponse>);
     static readonly runtime: typeof proto3;
     static readonly typeName = "admin.v1.TenantServiceRemoveMemberResponse";
@@ -329,12 +317,6 @@ export declare class TenantServiceRemoveTenantResponse extends Message<TenantSer
      * @generated from field: bool success = 1;
      */
     success: boolean;
-    /**
-     * Optional message to provide additional details
-     *
-     * @generated from field: string message = 2;
-     */
-    message: string;
     constructor(data?: PartialMessage<TenantServiceRemoveTenantResponse>);
     static readonly runtime: typeof proto3;
     static readonly typeName = "admin.v1.TenantServiceRemoveTenantResponse";

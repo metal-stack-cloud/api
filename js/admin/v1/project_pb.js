@@ -142,5 +142,4 @@ ProjectServiceRemoveProjectResponse.runtime = proto3;
 ProjectServiceRemoveProjectResponse.typeName = "admin.v1.ProjectServiceRemoveProjectResponse";
 ProjectServiceRemoveProjectResponse.fields = proto3.util.newFieldList(() => [
     { no: 1, name: "success", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
-    { no: 2, name: "message", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
 ]);

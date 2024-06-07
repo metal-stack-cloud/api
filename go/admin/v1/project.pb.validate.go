@@ -440,10 +440,6 @@ func (m *ProjectServiceRemoveProjectResponse) validate(all bool) error {
 
 	// no validation rules for Success
 
-	if m.Message != nil {
-		// no validation rules for Message
-	}
-
 	if len(errors) > 0 {
 		return ProjectServiceRemoveProjectResponseMultiError(errors)
 	}

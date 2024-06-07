@@ -6476,7 +6476,7 @@
           "description": "ProjectServiceRemoveProjectResponse is the response payload for the project remove member request",
           "hasExtensions": false,
           "hasFields": true,
-          "hasOneofs": true,
+          "hasOneofs": false,
           "extensions": [],
           "fields": [
             {
@@ -6489,18 +6489,6 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "message",
-              "description": "Optional message to provide additional details",
-              "label": "optional",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": true,
-              "oneofdecl": "_message",
               "defaultValue": ""
             }
           ]
@@ -10386,7 +10374,7 @@
           "description": "TenantServiceAddMemberResponse is the response payload for the add member request",
           "hasExtensions": false,
           "hasFields": true,
-          "hasOneofs": true,
+          "hasOneofs": false,
           "extensions": [],
           "fields": [
             {
@@ -10399,18 +10387,6 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "message",
-              "description": "Optional message to provide additional details",
-              "label": "optional",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": true,
-              "oneofdecl": "_message",
               "defaultValue": ""
             }
           ]
@@ -10678,7 +10654,7 @@
           "description": "Response payload for the remove member request",
           "hasExtensions": false,
           "hasFields": true,
-          "hasOneofs": true,
+          "hasOneofs": false,
           "extensions": [],
           "fields": [
             {
@@ -10691,18 +10667,6 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "message",
-              "description": "Optional message to provide additional details",
-              "label": "optional",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": true,
-              "oneofdecl": "_message",
               "defaultValue": ""
             }
           ]
@@ -10748,18 +10712,6 @@
               "type": "bool",
               "longType": "bool",
               "fullType": "bool",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "message",
-              "description": "Optional message to provide additional details",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
