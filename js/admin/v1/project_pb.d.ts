@@ -14,6 +14,20 @@ export declare class ProjectServiceListRequest extends Message<ProjectServiceLis
      * @generated from field: api.v1.Paging paging = 1;
      */
     paging?: Paging;
+    /**
+     * TenantId to filter for all projects
+     *
+     * @generated from field: optional string tenant_id = 2;
+     */
+    tenantId?: string;
+    /**
+     * Annotations to filter for
+     *
+     * @generated from field: map<string, string> annotations = 3;
+     */
+    annotations: {
+        [key: string]: string;
+    };
     constructor(data?: PartialMessage<ProjectServiceListRequest>);
     static readonly runtime: typeof proto3;
     static readonly typeName = "admin.v1.ProjectServiceListRequest";

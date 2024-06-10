@@ -86,6 +86,12 @@ func (m *ProjectServiceListRequest) validate(all bool) error {
 		}
 	}
 
+	// no validation rules for Annotations
+
+	if m.TenantId != nil {
+		// no validation rules for TenantId
+	}
+
 	if len(errors) > 0 {
 		return ProjectServiceListRequestMultiError(errors)
 	}

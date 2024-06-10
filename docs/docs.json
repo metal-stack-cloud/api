@@ -6380,7 +6380,7 @@
           "description": "ProjectServiceListRequest is the request payload for the project list request",
           "hasExtensions": false,
           "hasFields": true,
-          "hasOneofs": false,
+          "hasOneofs": true,
           "extensions": [],
           "fields": [
             {
@@ -6390,6 +6390,66 @@
               "type": "Paging",
               "longType": "api.v1.Paging",
               "fullType": "api.v1.Paging",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "tenant_id",
+              "description": "TenantId to filter for all projects",
+              "label": "optional",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "_tenant_id",
+              "defaultValue": ""
+            },
+            {
+              "name": "annotations",
+              "description": "Annotations to filter for",
+              "label": "repeated",
+              "type": "AnnotationsEntry",
+              "longType": "ProjectServiceListRequest.AnnotationsEntry",
+              "fullType": "admin.v1.ProjectServiceListRequest.AnnotationsEntry",
+              "ismap": true,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "AnnotationsEntry",
+          "longName": "ProjectServiceListRequest.AnnotationsEntry",
+          "fullName": "admin.v1.ProjectServiceListRequest.AnnotationsEntry",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "key",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "value",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",

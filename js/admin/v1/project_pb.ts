@@ -21,6 +21,20 @@ export class ProjectServiceListRequest extends Message<ProjectServiceListRequest
    */
   paging?: Paging;
 
+  /**
+   * TenantId to filter for all projects
+   *
+   * @generated from field: optional string tenant_id = 2;
+   */
+  tenantId?: string;
+
+  /**
+   * Annotations to filter for
+   *
+   * @generated from field: map<string, string> annotations = 3;
+   */
+  annotations: { [key: string]: string } = {};
+
   constructor(data?: PartialMessage<ProjectServiceListRequest>) {
     super();
     proto3.util.initPartial(data, this);
@@ -30,6 +44,8 @@ export class ProjectServiceListRequest extends Message<ProjectServiceListRequest
   static readonly typeName = "admin.v1.ProjectServiceListRequest";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
     { no: 1, name: "paging", kind: "message", T: Paging },
+    { no: 2, name: "tenant_id", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
+    { no: 3, name: "annotations", kind: "map", K: 9 /* ScalarType.STRING */, V: {kind: "scalar", T: 9 /* ScalarType.STRING */} },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ProjectServiceListRequest {

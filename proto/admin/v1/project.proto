@@ -18,6 +18,10 @@ service ProjectService {
 message ProjectServiceListRequest {
   // Paging details for the list request
   api.v1.Paging paging = 1;
+  // TenantId to filter for all projects
+  optional string tenant_id = 2;
+  // Annotations to filter for
+  map<string, string> annotations = 3;
 }
 
 // ProjectServiceListResponse is the response payload for the project list request

@@ -13,6 +13,12 @@ import { Project } from "../../api/v1/project_pb.js";
 export class ProjectServiceListRequest extends Message {
     constructor(data) {
         super();
+        /**
+         * Annotations to filter for
+         *
+         * @generated from field: map<string, string> annotations = 3;
+         */
+        this.annotations = {};
         proto3.util.initPartial(data, this);
     }
     static fromBinary(bytes, options) {
@@ -32,6 +38,8 @@ ProjectServiceListRequest.runtime = proto3;
 ProjectServiceListRequest.typeName = "admin.v1.ProjectServiceListRequest";
 ProjectServiceListRequest.fields = proto3.util.newFieldList(() => [
     { no: 1, name: "paging", kind: "message", T: Paging },
+    { no: 2, name: "tenant_id", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
+    { no: 3, name: "annotations", kind: "map", K: 9 /* ScalarType.STRING */, V: { kind: "scalar", T: 9 /* ScalarType.STRING */ } },
 ]);
 /**
  * ProjectServiceListResponse is the response payload for the project list request
