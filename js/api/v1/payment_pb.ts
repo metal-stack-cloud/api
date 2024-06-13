@@ -7,6 +7,40 @@ import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialM
 import { Message, proto3, protoInt64, Timestamp } from "@bufbuild/protobuf";
 
 /**
+ * PaymentMethod indicates which way the user wants to pay
+ *
+ * @generated from enum api.v1.PaymentMethod
+ */
+export enum PaymentMethod {
+  /**
+   * PAYMENT_METHOD_UNSPECIFIED is not specified
+   *
+   * @generated from enum value: PAYMENT_METHOD_UNSPECIFIED = 0;
+   */
+  UNSPECIFIED = 0,
+
+  /**
+   * PAYMENT_METHOD_CREDIT_CARD user wants to pay per credit card
+   *
+   * @generated from enum value: PAYMENT_METHOD_CREDIT_CARD = 2;
+   */
+  CREDIT_CARD = 2,
+
+  /**
+   * PAYMENT_METHOD_INVOICE user wants to pay per invoice
+   *
+   * @generated from enum value: PAYMENT_METHOD_INVOICE = 3;
+   */
+  INVOICE = 3,
+}
+// Retrieve enum metadata with: proto3.getEnumType(PaymentMethod)
+proto3.util.setEnumType(PaymentMethod, "api.v1.PaymentMethod", [
+  { no: 0, name: "PAYMENT_METHOD_UNSPECIFIED" },
+  { no: 2, name: "PAYMENT_METHOD_CREDIT_CARD" },
+  { no: 3, name: "PAYMENT_METHOD_INVOICE" },
+]);
+
+/**
  * ProductType defines for which type of product a price applies
  *
  * @generated from enum api.v1.ProductType
@@ -154,11 +188,11 @@ export class PaymentCustomer extends Message<PaymentCustomer> {
   balance?: bigint;
 
   /**
-   * PayPerInvoice indicates if the user choose to pay per invoice
+   * PaymentMethod indicates which way the user wants to pay
    *
-   * @generated from field: optional bool pay_per_invoice = 14;
+   * @generated from field: optional api.v1.PaymentMethod payment_method = 14;
    */
-  payPerInvoice?: boolean;
+  paymentMethod?: PaymentMethod;
 
   constructor(data?: PartialMessage<PaymentCustomer>) {
     super();
@@ -181,7 +215,7 @@ export class PaymentCustomer extends Message<PaymentCustomer> {
     { no: 11, name: "vat", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
     { no: 12, name: "phone_number", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
     { no: 13, name: "balance", kind: "scalar", T: 3 /* ScalarType.INT64 */, opt: true },
-    { no: 14, name: "pay_per_invoice", kind: "scalar", T: 8 /* ScalarType.BOOL */, opt: true },
+    { no: 14, name: "payment_method", kind: "enum", T: proto3.getEnumType(PaymentMethod), opt: true },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): PaymentCustomer {

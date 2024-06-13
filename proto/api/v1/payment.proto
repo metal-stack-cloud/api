@@ -113,8 +113,18 @@ message PaymentCustomer {
   optional string phone_number = 12;
   // Balance actual balance of the customer
   optional int64 balance = 13;
-  // PayPerInvoice indicates if the user choose to pay per invoice
-  optional bool pay_per_invoice = 14;
+  // PaymentMethod indicates which way the user wants to pay
+  optional PaymentMethod payment_method = 14;
+}
+
+// PaymentMethod indicates which way the user wants to pay
+enum PaymentMethod {
+  // PAYMENT_METHOD_UNSPECIFIED is not specified
+  PAYMENT_METHOD_UNSPECIFIED = 0;
+  // PAYMENT_METHOD_CREDIT_CARD user wants to pay per credit card
+  PAYMENT_METHOD_CREDIT_CARD = 2;
+  // PAYMENT_METHOD_INVOICE user wants to pay per invoice
+  PAYMENT_METHOD_INVOICE = 3;
 }
 
 // Card is the payment card the customer pays with

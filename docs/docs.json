@@ -3063,6 +3063,29 @@
       "hasServices": true,
       "enums": [
         {
+          "name": "PaymentMethod",
+          "longName": "PaymentMethod",
+          "fullName": "api.v1.PaymentMethod",
+          "description": "PaymentMethod indicates which way the user wants to pay",
+          "values": [
+            {
+              "name": "PAYMENT_METHOD_UNSPECIFIED",
+              "number": "0",
+              "description": "PAYMENT_METHOD_UNSPECIFIED is not specified"
+            },
+            {
+              "name": "PAYMENT_METHOD_CREDIT_CARD",
+              "number": "2",
+              "description": "PAYMENT_METHOD_CREDIT_CARD user wants to pay per credit card"
+            },
+            {
+              "name": "PAYMENT_METHOD_INVOICE",
+              "number": "3",
+              "description": "PAYMENT_METHOD_INVOICE user wants to pay per invoice"
+            }
+          ]
+        },
+        {
           "name": "ProductType",
           "longName": "ProductType",
           "fullName": "api.v1.ProductType",
@@ -3621,15 +3644,15 @@
               "defaultValue": ""
             },
             {
-              "name": "pay_per_invoice",
-              "description": "PayPerInvoice indicates if the user choose to pay per invoice",
+              "name": "payment_method",
+              "description": "PaymentMethod indicates which way the user wants to pay",
               "label": "optional",
-              "type": "bool",
-              "longType": "bool",
-              "fullType": "bool",
+              "type": "PaymentMethod",
+              "longType": "PaymentMethod",
+              "fullType": "api.v1.PaymentMethod",
               "ismap": false,
               "isoneof": true,
-              "oneofdecl": "_pay_per_invoice",
+              "oneofdecl": "_payment_method",
               "defaultValue": ""
             }
           ]
