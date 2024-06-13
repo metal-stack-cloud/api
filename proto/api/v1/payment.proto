@@ -113,6 +113,8 @@ message PaymentCustomer {
   optional string phone_number = 12;
   // Balance actual balance of the customer
   optional int64 balance = 13;
+  // PayPerInvoice indicates if the user choose to pay per invoice
+  optional bool pay_per_invoice = 14;
 }
 
 // Card is the payment card the customer pays with

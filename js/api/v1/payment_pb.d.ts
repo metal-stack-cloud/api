@@ -121,6 +121,12 @@ export declare class PaymentCustomer extends Message<PaymentCustomer> {
      * @generated from field: optional int64 balance = 13;
      */
     balance?: bigint;
+    /**
+     * PayPerInvoice indicates if the user choose to pay per invoice
+     *
+     * @generated from field: optional bool pay_per_invoice = 14;
+     */
+    payPerInvoice?: boolean;
     constructor(data?: PartialMessage<PaymentCustomer>);
     static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.PaymentCustomer";

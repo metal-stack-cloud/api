@@ -153,6 +153,13 @@ export class PaymentCustomer extends Message<PaymentCustomer> {
    */
   balance?: bigint;
 
+  /**
+   * PayPerInvoice indicates if the user choose to pay per invoice
+   *
+   * @generated from field: optional bool pay_per_invoice = 14;
+   */
+  payPerInvoice?: boolean;
+
   constructor(data?: PartialMessage<PaymentCustomer>) {
     super();
     proto3.util.initPartial(data, this);
@@ -174,6 +181,7 @@ export class PaymentCustomer extends Message<PaymentCustomer> {
     { no: 11, name: "vat", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
     { no: 12, name: "phone_number", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
     { no: 13, name: "balance", kind: "scalar", T: 3 /* ScalarType.INT64 */, opt: true },
+    { no: 14, name: "pay_per_invoice", kind: "scalar", T: 8 /* ScalarType.BOOL */, opt: true },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): PaymentCustomer {

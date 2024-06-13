@@ -3619,6 +3619,18 @@
               "isoneof": true,
               "oneofdecl": "_balance",
               "defaultValue": ""
+            },
+            {
+              "name": "pay_per_invoice",
+              "description": "PayPerInvoice indicates if the user choose to pay per invoice",
+              "label": "optional",
+              "type": "bool",
+              "longType": "bool",
+              "fullType": "bool",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "_pay_per_invoice",
+              "defaultValue": ""
             }
           ]
         },

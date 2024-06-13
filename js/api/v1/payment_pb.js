@@ -106,6 +106,7 @@ PaymentCustomer.fields = proto3.util.newFieldList(() => [
     { no: 11, name: "vat", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
     { no: 12, name: "phone_number", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
     { no: 13, name: "balance", kind: "scalar", T: 3 /* ScalarType.INT64 */, opt: true },
+    { no: 14, name: "pay_per_invoice", kind: "scalar", T: 8 /* ScalarType.BOOL */, opt: true },
 ]);
 /**
  * Card is the payment card the customer pays with

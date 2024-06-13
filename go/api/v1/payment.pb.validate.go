@@ -230,6 +230,10 @@ func (m *PaymentCustomer) validate(all bool) error {
 		// no validation rules for Balance
 	}
 
+	if m.PayPerInvoice != nil {
+		// no validation rules for PayPerInvoice
+	}
+
 	if len(errors) > 0 {
 		return PaymentCustomerMultiError(errors)
 	}
