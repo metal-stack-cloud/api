@@ -114,7 +114,7 @@ message PaymentCustomer {
   // Balance actual balance of the customer
   optional int64 balance = 13;
   // PaymentMethod indicates which way the user wants to pay
-  optional PaymentMethod payment_method = 14;
+  PaymentMethod payment_method = 14;
 }
 
 // PaymentMethod indicates which way the user wants to pay

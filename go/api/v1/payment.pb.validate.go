@@ -124,6 +124,8 @@ func (m *PaymentCustomer) validate(all bool) error {
 		}
 	}
 
+	// no validation rules for PaymentMethod
+
 	if m.Name != nil {
 		// no validation rules for Name
 	}
@@ -228,10 +230,6 @@ func (m *PaymentCustomer) validate(all bool) error {
 
 	if m.Balance != nil {
 		// no validation rules for Balance
-	}
-
-	if m.PaymentMethod != nil {
-		// no validation rules for PaymentMethod
 	}
 
 	if len(errors) > 0 {

@@ -107,6 +107,12 @@ export class PaymentCustomer extends Message {
          * @generated from field: repeated api.v1.Price prices = 8;
          */
         this.prices = [];
+        /**
+         * PaymentMethod indicates which way the user wants to pay
+         *
+         * @generated from field: api.v1.PaymentMethod payment_method = 14;
+         */
+        this.paymentMethod = PaymentMethod.UNSPECIFIED;
         proto3.util.initPartial(data, this);
     }
     static fromBinary(bytes, options) {
@@ -138,7 +144,7 @@ PaymentCustomer.fields = proto3.util.newFieldList(() => [
     { no: 11, name: "vat", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
     { no: 12, name: "phone_number", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
     { no: 13, name: "balance", kind: "scalar", T: 3 /* ScalarType.INT64 */, opt: true },
-    { no: 14, name: "payment_method", kind: "enum", T: proto3.getEnumType(PaymentMethod), opt: true },
+    { no: 14, name: "payment_method", kind: "enum", T: proto3.getEnumType(PaymentMethod) },
 ]);
 /**
  * Card is the payment card the customer pays with
