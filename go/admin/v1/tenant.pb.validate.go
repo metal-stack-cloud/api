@@ -873,10 +873,10 @@ func (m *TenantServiceAddMemberRequest) validate(all bool) error {
 
 	// no validation rules for MemberId
 
-	if _, ok := _TenantServiceAddMemberRequest_Role_NotInLookup[m.GetRole()]; ok {
+	if _, ok := apiv1.TenantRole_name[int32(m.GetRole())]; !ok {
 		err := TenantServiceAddMemberRequestValidationError{
 			field:  "Role",
-			reason: "value must not be in list [TENANT_ROLE_UNSPECIFIED]",
+			reason: "value must be one of the defined enum values",
 		}
 		if !all {
 			return err
@@ -964,10 +964,6 @@ var _ interface {
 	Cause() error
 	ErrorName() string
 } = TenantServiceAddMemberRequestValidationError{}
-
-var _TenantServiceAddMemberRequest_Role_NotInLookup = map[apiv1.TenantRole]struct{}{
-	0: {},
-}
 
 // Validate checks the field values on TenantServiceAddMemberResponse with the
 // rules defined in the proto definition for this message. If any rules are
