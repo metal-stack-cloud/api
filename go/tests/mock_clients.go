@@ -34,6 +34,7 @@ type (
 	adminv1 struct {
 		clusterservice *adminv1mocks.ClusterServiceClient
 		paymentservice *adminv1mocks.PaymentServiceClient
+		projectservice *adminv1mocks.ProjectServiceClient
 		storageservice *adminv1mocks.StorageServiceClient
 		tenantservice  *adminv1mocks.TenantServiceClient
 		tokenservice   *adminv1mocks.TokenServiceClient
@@ -42,6 +43,7 @@ type (
 	Adminv1MockFns struct {
 		Cluster func(m *mock.Mock)
 		Payment func(m *mock.Mock)
+		Project func(m *mock.Mock)
 		Storage func(m *mock.Mock)
 		Tenant  func(m *mock.Mock)
 		Token   func(m *mock.Mock)
@@ -118,6 +120,7 @@ func newadminv1(t *testing.T, fns *Adminv1MockFns) *adminv1 {
 	a := &adminv1{
 		clusterservice: adminv1mocks.NewClusterServiceClient(t),
 		paymentservice: adminv1mocks.NewPaymentServiceClient(t),
+		projectservice: adminv1mocks.NewProjectServiceClient(t),
 		storageservice: adminv1mocks.NewStorageServiceClient(t),
 		tenantservice:  adminv1mocks.NewTenantServiceClient(t),
 		tokenservice:   adminv1mocks.NewTokenServiceClient(t),
@@ -129,6 +132,9 @@ func newadminv1(t *testing.T, fns *Adminv1MockFns) *adminv1 {
 		}
 		if fns.Payment != nil {
 			fns.Payment(&a.paymentservice.Mock)
+		}
+		if fns.Project != nil {
+			fns.Project(&a.projectservice.Mock)
 		}
 		if fns.Storage != nil {
 			fns.Storage(&a.storageservice.Mock)
@@ -150,6 +156,9 @@ func (c *adminv1) Cluster() adminv1connect.ClusterServiceClient {
 }
 func (c *adminv1) Payment() adminv1connect.PaymentServiceClient {
 	return c.paymentservice
+}
+func (c *adminv1) Project() adminv1connect.ProjectServiceClient {
+	return c.projectservice
 }
 func (c *adminv1) Storage() adminv1connect.StorageServiceClient {
 	return c.storageservice

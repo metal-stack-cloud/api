@@ -1,6 +1,6 @@
 import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
 import { Message, proto3 } from "@bufbuild/protobuf";
-import { OAuthProvider, Paging } from "../../api/v1/common_pb.js";
+import { OAuthProvider, Paging, TenantRole } from "../../api/v1/common_pb.js";
 import { Tenant } from "../../api/v1/tenant_pb.js";
 /**
  * TenantServiceListRequest is the request payload for a tenant list request
@@ -181,4 +181,52 @@ export declare class TenantServiceRevokeResponse extends Message<TenantServiceRe
     static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): TenantServiceRevokeResponse;
     static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): TenantServiceRevokeResponse;
     static equals(a: TenantServiceRevokeResponse | PlainMessage<TenantServiceRevokeResponse> | undefined, b: TenantServiceRevokeResponse | PlainMessage<TenantServiceRevokeResponse> | undefined): boolean;
+}
+/**
+ * TenantServiceAddMemberRequest is the request payload for adding a member to a tenant
+ *
+ * @generated from message admin.v1.TenantServiceAddMemberRequest
+ */
+export declare class TenantServiceAddMemberRequest extends Message<TenantServiceAddMemberRequest> {
+    /**
+     * Tenant ID to which the member will be added
+     *
+     * @generated from field: string tenant_id = 1;
+     */
+    tenantId: string;
+    /**
+     * Email of the member to add
+     *
+     * @generated from field: string member_id = 2;
+     */
+    memberId: string;
+    /**
+     * Role to assign to the new member
+     *
+     * @generated from field: api.v1.TenantRole role = 3;
+     */
+    role: TenantRole;
+    constructor(data?: PartialMessage<TenantServiceAddMemberRequest>);
+    static readonly runtime: typeof proto3;
+    static readonly typeName = "admin.v1.TenantServiceAddMemberRequest";
+    static readonly fields: FieldList;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): TenantServiceAddMemberRequest;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): TenantServiceAddMemberRequest;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): TenantServiceAddMemberRequest;
+    static equals(a: TenantServiceAddMemberRequest | PlainMessage<TenantServiceAddMemberRequest> | undefined, b: TenantServiceAddMemberRequest | PlainMessage<TenantServiceAddMemberRequest> | undefined): boolean;
+}
+/**
+ * TenantServiceAddMemberResponse is the response payload for the add member request
+ *
+ * @generated from message admin.v1.TenantServiceAddMemberResponse
+ */
+export declare class TenantServiceAddMemberResponse extends Message<TenantServiceAddMemberResponse> {
+    constructor(data?: PartialMessage<TenantServiceAddMemberResponse>);
+    static readonly runtime: typeof proto3;
+    static readonly typeName = "admin.v1.TenantServiceAddMemberResponse";
+    static readonly fields: FieldList;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): TenantServiceAddMemberResponse;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): TenantServiceAddMemberResponse;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): TenantServiceAddMemberResponse;
+    static equals(a: TenantServiceAddMemberResponse | PlainMessage<TenantServiceAddMemberResponse> | undefined, b: TenantServiceAddMemberResponse | PlainMessage<TenantServiceAddMemberResponse> | undefined): boolean;
 }
