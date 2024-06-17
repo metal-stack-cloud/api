@@ -324,16 +324,7 @@ func (m *TenantMember) validate(all bool) error {
 
 	// no validation rules for Id
 
-	if _, ok := TenantRole_name[int32(m.GetRole())]; !ok {
-		err := TenantMemberValidationError{
-			field:  "Role",
-			reason: "value must be one of the defined enum values",
-		}
-		if !all {
-			return err
-		}
-		errors = append(errors, err)
-	}
+	// no validation rules for Role
 
 	if all {
 		switch v := interface{}(m.GetCreatedAt()).(type) {
@@ -467,16 +458,7 @@ func (m *TenantInvite) validate(all bool) error {
 
 	// no validation rules for TargetTenant
 
-	if _, ok := TenantRole_name[int32(m.GetRole())]; !ok {
-		err := TenantInviteValidationError{
-			field:  "Role",
-			reason: "value must be one of the defined enum values",
-		}
-		if !all {
-			return err
-		}
-		errors = append(errors, err)
-	}
+	// no validation rules for Role
 
 	// no validation rules for Joined
 
@@ -2949,16 +2931,7 @@ func (m *TenantServiceInviteRequest) validate(all bool) error {
 
 	// no validation rules for Login
 
-	if _, ok := TenantRole_name[int32(m.GetRole())]; !ok {
-		err := TenantServiceInviteRequestValidationError{
-			field:  "Role",
-			reason: "value must be one of the defined enum values",
-		}
-		if !all {
-			return err
-		}
-		errors = append(errors, err)
-	}
+	// no validation rules for Role
 
 	if len(errors) > 0 {
 		return TenantServiceInviteRequestMultiError(errors)
@@ -4324,16 +4297,7 @@ func (m *TenantServiceUpdateMemberRequest) validate(all bool) error {
 
 	// no validation rules for MemberId
 
-	if _, ok := TenantRole_name[int32(m.GetRole())]; !ok {
-		err := TenantServiceUpdateMemberRequestValidationError{
-			field:  "Role",
-			reason: "value must be one of the defined enum values",
-		}
-		if !all {
-			return err
-		}
-		errors = append(errors, err)
-	}
+	// no validation rules for Role
 
 	if len(errors) > 0 {
 		return TenantServiceUpdateMemberRequestMultiError(errors)

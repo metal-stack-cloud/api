@@ -125,7 +125,7 @@ message TenantMember {
   // Id is the user id of the member
   string id = 1;
   // Role is the role of the member
-  TenantRole role = 2 [(validate.rules).enum.defined_only = true];
+  TenantRole role = 2;
   // CreatedAt the date when the member was added to the tenant
   google.protobuf.Timestamp created_at = 10;
 }
@@ -137,7 +137,7 @@ message TenantInvite {
   // TargetTenant is the tenant id for which this invite was created
   string target_tenant = 2;
   // Role is the role in this tenant the user will get after accepting the invitation
-  TenantRole role = 3 [(validate.rules).enum.defined_only = true];
+  TenantRole role = 3;
   // Joined is false as long as a user has not accepted the invite
   bool joined = 4;
   // TargetTenantName is the tenant name for which this invite was created
@@ -312,7 +312,7 @@ message TenantServiceInviteRequest {
   // Login of the tenant
   string login = 1;
   // Role of this user in this tenant
-  TenantRole role = 2 [(validate.rules).enum.defined_only = true];
+  TenantRole role = 2;
 }
 
 // TenantServiceInviteRequest is the response payload to a invite member request
@@ -390,7 +390,7 @@ message TenantServiceUpdateMemberRequest {
   // MemberID is the id of the member to update in this tenant
   string member_id = 2;
   // Role of this user in this tenant
-  TenantRole role = 3 [(validate.rules).enum.defined_only = true];
+  TenantRole role = 3;
 }
 
 // TenantServiceUpdateMemberResponse is the response payload to a update member request
