@@ -256,12 +256,6 @@ TenantServiceAddMemberRequest.fields = proto3.util.newFieldList(() => [
 export class TenantServiceAddMemberResponse extends Message {
     constructor(data) {
         super();
-        /**
-         * Confirmation of the addition
-         *
-         * @generated from field: bool success = 1;
-         */
-        this.success = false;
         proto3.util.initPartial(data, this);
     }
     static fromBinary(bytes, options) {
@@ -279,6 +273,4 @@ export class TenantServiceAddMemberResponse extends Message {
 }
 TenantServiceAddMemberResponse.runtime = proto3;
 TenantServiceAddMemberResponse.typeName = "admin.v1.TenantServiceAddMemberResponse";
-TenantServiceAddMemberResponse.fields = proto3.util.newFieldList(() => [
-    { no: 1, name: "success", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
-]);
+TenantServiceAddMemberResponse.fields = proto3.util.newFieldList(() => []);

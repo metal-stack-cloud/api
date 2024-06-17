@@ -873,7 +873,16 @@ func (m *TenantServiceAddMemberRequest) validate(all bool) error {
 
 	// no validation rules for MemberId
 
-	// no validation rules for Role
+	if _, ok := _TenantServiceAddMemberRequest_Role_NotInLookup[m.GetRole()]; ok {
+		err := TenantServiceAddMemberRequestValidationError{
+			field:  "Role",
+			reason: "value must not be in list [TENANT_ROLE_UNSPECIFIED]",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
 
 	if len(errors) > 0 {
 		return TenantServiceAddMemberRequestMultiError(errors)
@@ -956,6 +965,10 @@ var _ interface {
 	ErrorName() string
 } = TenantServiceAddMemberRequestValidationError{}
 
+var _TenantServiceAddMemberRequest_Role_NotInLookup = map[apiv1.TenantRole]struct{}{
+	0: {},
+}
+
 // Validate checks the field values on TenantServiceAddMemberResponse with the
 // rules defined in the proto definition for this message. If any rules are
 // violated, the first error encountered is returned, or nil if there are no violations.
@@ -977,8 +990,6 @@ func (m *TenantServiceAddMemberResponse) validate(all bool) error {
 	}
 
 	var errors []error
-
-	// no validation rules for Success
 
 	if len(errors) > 0 {
 		return TenantServiceAddMemberResponseMultiError(errors)

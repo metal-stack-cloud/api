@@ -221,12 +221,6 @@ export declare class TenantServiceAddMemberRequest extends Message<TenantService
  * @generated from message admin.v1.TenantServiceAddMemberResponse
  */
 export declare class TenantServiceAddMemberResponse extends Message<TenantServiceAddMemberResponse> {
-    /**
-     * Confirmation of the addition
-     *
-     * @generated from field: bool success = 1;
-     */
-    success: boolean;
     constructor(data?: PartialMessage<TenantServiceAddMemberResponse>);
     static readonly runtime: typeof proto3;
     static readonly typeName = "admin.v1.TenantServiceAddMemberResponse";

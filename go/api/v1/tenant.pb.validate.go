@@ -324,7 +324,16 @@ func (m *TenantMember) validate(all bool) error {
 
 	// no validation rules for Id
 
-	// no validation rules for Role
+	if _, ok := _TenantMember_Role_NotInLookup[m.GetRole()]; ok {
+		err := TenantMemberValidationError{
+			field:  "Role",
+			reason: "value must not be in list [TENANT_ROLE_UNSPECIFIED]",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
 
 	if all {
 		switch v := interface{}(m.GetCreatedAt()).(type) {
@@ -432,6 +441,10 @@ var _ interface {
 	ErrorName() string
 } = TenantMemberValidationError{}
 
+var _TenantMember_Role_NotInLookup = map[TenantRole]struct{}{
+	0: {},
+}
+
 // Validate checks the field values on TenantInvite with the rules defined in
 // the proto definition for this message. If any rules are violated, the first
 // error encountered is returned, or nil if there are no violations.
@@ -458,7 +471,16 @@ func (m *TenantInvite) validate(all bool) error {
 
 	// no validation rules for TargetTenant
 
-	// no validation rules for Role
+	if _, ok := _TenantInvite_Role_NotInLookup[m.GetRole()]; ok {
+		err := TenantInviteValidationError{
+			field:  "Role",
+			reason: "value must not be in list [TENANT_ROLE_UNSPECIFIED]",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
 
 	// no validation rules for Joined
 
@@ -602,6 +624,10 @@ var _ interface {
 	Cause() error
 	ErrorName() string
 } = TenantInviteValidationError{}
+
+var _TenantInvite_Role_NotInLookup = map[TenantRole]struct{}{
+	0: {},
+}
 
 // Validate checks the field values on PaymentDetails with the rules defined in
 // the proto definition for this message. If any rules are violated, the first
@@ -2931,7 +2957,16 @@ func (m *TenantServiceInviteRequest) validate(all bool) error {
 
 	// no validation rules for Login
 
-	// no validation rules for Role
+	if _, ok := _TenantServiceInviteRequest_Role_NotInLookup[m.GetRole()]; ok {
+		err := TenantServiceInviteRequestValidationError{
+			field:  "Role",
+			reason: "value must not be in list [TENANT_ROLE_UNSPECIFIED]",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
 
 	if len(errors) > 0 {
 		return TenantServiceInviteRequestMultiError(errors)
@@ -3012,6 +3047,10 @@ var _ interface {
 	Cause() error
 	ErrorName() string
 } = TenantServiceInviteRequestValidationError{}
+
+var _TenantServiceInviteRequest_Role_NotInLookup = map[TenantRole]struct{}{
+	0: {},
+}
 
 // Validate checks the field values on TenantServiceInviteResponse with the
 // rules defined in the proto definition for this message. If any rules are
@@ -4297,7 +4336,16 @@ func (m *TenantServiceUpdateMemberRequest) validate(all bool) error {
 
 	// no validation rules for MemberId
 
-	// no validation rules for Role
+	if _, ok := _TenantServiceUpdateMemberRequest_Role_NotInLookup[m.GetRole()]; ok {
+		err := TenantServiceUpdateMemberRequestValidationError{
+			field:  "Role",
+			reason: "value must not be in list [TENANT_ROLE_UNSPECIFIED]",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
 
 	if len(errors) > 0 {
 		return TenantServiceUpdateMemberRequestMultiError(errors)
@@ -4380,6 +4428,10 @@ var _ interface {
 	Cause() error
 	ErrorName() string
 } = TenantServiceUpdateMemberRequestValidationError{}
+
+var _TenantServiceUpdateMemberRequest_Role_NotInLookup = map[TenantRole]struct{}{
+	0: {},
+}
 
 // Validate checks the field values on TenantServiceUpdateMemberResponse with
 // the rules defined in the proto definition for this message. If any rules

@@ -91,11 +91,10 @@ message TenantServiceAddMemberRequest {
   // Email of the member to add
   string member_id = 2;
   // Role to assign to the new member
-  api.v1.TenantRole role = 3;
+  api.v1.TenantRole role = 3 [(validate.rules).enum = {
+    not_in: [0]
+  }];
 }
 
 // TenantServiceAddMemberResponse is the response payload for the add member request
-message TenantServiceAddMemberResponse {
-  // Confirmation of the addition
-  bool success = 1;
-}
+message TenantServiceAddMemberResponse {}
