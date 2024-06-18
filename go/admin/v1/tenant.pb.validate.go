@@ -39,9 +39,6 @@ var (
 	_ = apiv1.OAuthProvider(0)
 )
 
-// define the regex for a UUID once up-front
-var _tenant_uuidPattern = regexp.MustCompile("^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$")
-
 // Validate checks the field values on TenantServiceListRequest with the rules
 // defined in the proto definition for this message. If any rules are
 // violated, the first error encountered is returned, or nil if there are no violations.
@@ -114,31 +111,11 @@ func (m *TenantServiceListRequest) validate(all bool) error {
 	}
 
 	if m.Uuid != nil {
-
-		if err := m._validateUuid(m.GetUuid()); err != nil {
-			err = TenantServiceListRequestValidationError{
-				field:  "Uuid",
-				reason: "value must be a valid UUID",
-				cause:  err,
-			}
-			if !all {
-				return err
-			}
-			errors = append(errors, err)
-		}
-
+		// no validation rules for Uuid
 	}
 
 	if len(errors) > 0 {
 		return TenantServiceListRequestMultiError(errors)
-	}
-
-	return nil
-}
-
-func (m *TenantServiceListRequest) _validateUuid(uuid string) error {
-	if matched := _tenant_uuidPattern.MatchString(uuid); !matched {
-		return errors.New("invalid uuid format")
 	}
 
 	return nil
@@ -386,18 +363,7 @@ func (m *TenantServiceAdmitRequest) validate(all bool) error {
 	}
 
 	if m.BalanceToAdd != nil {
-
-		if m.GetBalanceToAdd() <= 0 {
-			err := TenantServiceAdmitRequestValidationError{
-				field:  "BalanceToAdd",
-				reason: "value must be greater than 0",
-			}
-			if !all {
-				return err
-			}
-			errors = append(errors, err)
-		}
-
+		// no validation rules for BalanceToAdd
 	}
 
 	if len(errors) > 0 {
@@ -873,16 +839,7 @@ func (m *TenantServiceAddMemberRequest) validate(all bool) error {
 
 	// no validation rules for MemberId
 
-	if _, ok := apiv1.TenantRole_name[int32(m.GetRole())]; !ok {
-		err := TenantServiceAddMemberRequestValidationError{
-			field:  "Role",
-			reason: "value must be one of the defined enum values",
-		}
-		if !all {
-			return err
-		}
-		errors = append(errors, err)
-	}
+	// no validation rules for Role
 
 	if len(errors) > 0 {
 		return TenantServiceAddMemberRequestMultiError(errors)

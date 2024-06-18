@@ -35,9 +35,6 @@ var (
 	_ = sort.Sort
 )
 
-// define the regex for a UUID once up-front
-var _volume_uuidPattern = regexp.MustCompile("^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$")
-
 // Validate checks the field values on Volume with the rules defined in the
 // proto definition for this message. If any rules are violated, the first
 // error encountered is returned, or nil if there are no violations.
@@ -669,39 +666,12 @@ func (m *VolumeServiceGetRequest) validate(all bool) error {
 
 	var errors []error
 
-	if err := m._validateUuid(m.GetUuid()); err != nil {
-		err = VolumeServiceGetRequestValidationError{
-			field:  "Uuid",
-			reason: "value must be a valid UUID",
-			cause:  err,
-		}
-		if !all {
-			return err
-		}
-		errors = append(errors, err)
-	}
+	// no validation rules for Uuid
 
-	if l := utf8.RuneCountInString(m.GetProject()); l < 2 || l > 128 {
-		err := VolumeServiceGetRequestValidationError{
-			field:  "Project",
-			reason: "value length must be between 2 and 128 runes, inclusive",
-		}
-		if !all {
-			return err
-		}
-		errors = append(errors, err)
-	}
+	// no validation rules for Project
 
 	if len(errors) > 0 {
 		return VolumeServiceGetRequestMultiError(errors)
-	}
-
-	return nil
-}
-
-func (m *VolumeServiceGetRequest) _validateUuid(uuid string) error {
-	if matched := _volume_uuidPattern.MatchString(uuid); !matched {
-		return errors.New("invalid uuid format")
 	}
 
 	return nil
@@ -802,31 +772,10 @@ func (m *VolumeServiceListRequest) validate(all bool) error {
 
 	var errors []error
 
-	if l := utf8.RuneCountInString(m.GetProject()); l < 2 || l > 128 {
-		err := VolumeServiceListRequestValidationError{
-			field:  "Project",
-			reason: "value length must be between 2 and 128 runes, inclusive",
-		}
-		if !all {
-			return err
-		}
-		errors = append(errors, err)
-	}
+	// no validation rules for Project
 
 	if m.Uuid != nil {
-
-		if err := m._validateUuid(m.GetUuid()); err != nil {
-			err = VolumeServiceListRequestValidationError{
-				field:  "Uuid",
-				reason: "value must be a valid UUID",
-				cause:  err,
-			}
-			if !all {
-				return err
-			}
-			errors = append(errors, err)
-		}
-
+		// no validation rules for Uuid
 	}
 
 	if m.Partition != nil {
@@ -839,14 +788,6 @@ func (m *VolumeServiceListRequest) validate(all bool) error {
 
 	if len(errors) > 0 {
 		return VolumeServiceListRequestMultiError(errors)
-	}
-
-	return nil
-}
-
-func (m *VolumeServiceListRequest) _validateUuid(uuid string) error {
-	if matched := _volume_uuidPattern.MatchString(uuid); !matched {
-		return errors.New("invalid uuid format")
 	}
 
 	return nil
@@ -947,39 +888,12 @@ func (m *VolumeServiceDeleteRequest) validate(all bool) error {
 
 	var errors []error
 
-	if err := m._validateUuid(m.GetUuid()); err != nil {
-		err = VolumeServiceDeleteRequestValidationError{
-			field:  "Uuid",
-			reason: "value must be a valid UUID",
-			cause:  err,
-		}
-		if !all {
-			return err
-		}
-		errors = append(errors, err)
-	}
+	// no validation rules for Uuid
 
-	if l := utf8.RuneCountInString(m.GetProject()); l < 2 || l > 128 {
-		err := VolumeServiceDeleteRequestValidationError{
-			field:  "Project",
-			reason: "value length must be between 2 and 128 runes, inclusive",
-		}
-		if !all {
-			return err
-		}
-		errors = append(errors, err)
-	}
+	// no validation rules for Project
 
 	if len(errors) > 0 {
 		return VolumeServiceDeleteRequestMultiError(errors)
-	}
-
-	return nil
-}
-
-func (m *VolumeServiceDeleteRequest) _validateUuid(uuid string) error {
-	if matched := _volume_uuidPattern.MatchString(uuid); !matched {
-		return errors.New("invalid uuid format")
 	}
 
 	return nil
@@ -1080,39 +994,12 @@ func (m *SnapshotServiceGetRequest) validate(all bool) error {
 
 	var errors []error
 
-	if err := m._validateUuid(m.GetUuid()); err != nil {
-		err = SnapshotServiceGetRequestValidationError{
-			field:  "Uuid",
-			reason: "value must be a valid UUID",
-			cause:  err,
-		}
-		if !all {
-			return err
-		}
-		errors = append(errors, err)
-	}
+	// no validation rules for Uuid
 
-	if l := utf8.RuneCountInString(m.GetProject()); l < 2 || l > 128 {
-		err := SnapshotServiceGetRequestValidationError{
-			field:  "Project",
-			reason: "value length must be between 2 and 128 runes, inclusive",
-		}
-		if !all {
-			return err
-		}
-		errors = append(errors, err)
-	}
+	// no validation rules for Project
 
 	if len(errors) > 0 {
 		return SnapshotServiceGetRequestMultiError(errors)
-	}
-
-	return nil
-}
-
-func (m *SnapshotServiceGetRequest) _validateUuid(uuid string) error {
-	if matched := _volume_uuidPattern.MatchString(uuid); !matched {
-		return errors.New("invalid uuid format")
 	}
 
 	return nil
@@ -1213,31 +1100,10 @@ func (m *SnapshotServiceListRequest) validate(all bool) error {
 
 	var errors []error
 
-	if l := utf8.RuneCountInString(m.GetProject()); l < 2 || l > 128 {
-		err := SnapshotServiceListRequestValidationError{
-			field:  "Project",
-			reason: "value length must be between 2 and 128 runes, inclusive",
-		}
-		if !all {
-			return err
-		}
-		errors = append(errors, err)
-	}
+	// no validation rules for Project
 
 	if m.Uuid != nil {
-
-		if err := m._validateUuid(m.GetUuid()); err != nil {
-			err = SnapshotServiceListRequestValidationError{
-				field:  "Uuid",
-				reason: "value must be a valid UUID",
-				cause:  err,
-			}
-			if !all {
-				return err
-			}
-			errors = append(errors, err)
-		}
-
+		// no validation rules for Uuid
 	}
 
 	if m.Partition != nil {
@@ -1250,14 +1116,6 @@ func (m *SnapshotServiceListRequest) validate(all bool) error {
 
 	if len(errors) > 0 {
 		return SnapshotServiceListRequestMultiError(errors)
-	}
-
-	return nil
-}
-
-func (m *SnapshotServiceListRequest) _validateUuid(uuid string) error {
-	if matched := _volume_uuidPattern.MatchString(uuid); !matched {
-		return errors.New("invalid uuid format")
 	}
 
 	return nil
@@ -1358,39 +1216,12 @@ func (m *SnapshotServiceDeleteRequest) validate(all bool) error {
 
 	var errors []error
 
-	if err := m._validateUuid(m.GetUuid()); err != nil {
-		err = SnapshotServiceDeleteRequestValidationError{
-			field:  "Uuid",
-			reason: "value must be a valid UUID",
-			cause:  err,
-		}
-		if !all {
-			return err
-		}
-		errors = append(errors, err)
-	}
+	// no validation rules for Uuid
 
-	if l := utf8.RuneCountInString(m.GetProject()); l < 2 || l > 128 {
-		err := SnapshotServiceDeleteRequestValidationError{
-			field:  "Project",
-			reason: "value length must be between 2 and 128 runes, inclusive",
-		}
-		if !all {
-			return err
-		}
-		errors = append(errors, err)
-	}
+	// no validation rules for Project
 
 	if len(errors) > 0 {
 		return SnapshotServiceDeleteRequestMultiError(errors)
-	}
-
-	return nil
-}
-
-func (m *SnapshotServiceDeleteRequest) _validateUuid(uuid string) error {
-	if matched := _volume_uuidPattern.MatchString(uuid); !matched {
-		return errors.New("invalid uuid format")
 	}
 
 	return nil

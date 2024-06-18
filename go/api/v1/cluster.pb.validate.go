@@ -35,9 +35,6 @@ var (
 	_ = sort.Sort
 )
 
-// define the regex for a UUID once up-front
-var _cluster_uuidPattern = regexp.MustCompile("^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$")
-
 // Validate checks the field values on Cluster with the rules defined in the
 // proto definition for this message. If any rules are violated, the first
 // error encountered is returned, or nil if there are no violations.
@@ -59,39 +56,11 @@ func (m *Cluster) validate(all bool) error {
 
 	var errors []error
 
-	if err := m._validateUuid(m.GetUuid()); err != nil {
-		err = ClusterValidationError{
-			field:  "Uuid",
-			reason: "value must be a valid UUID",
-			cause:  err,
-		}
-		if !all {
-			return err
-		}
-		errors = append(errors, err)
-	}
+	// no validation rules for Uuid
 
-	if l := utf8.RuneCountInString(m.GetName()); l < 2 || l > 12 {
-		err := ClusterValidationError{
-			field:  "Name",
-			reason: "value length must be between 2 and 12 runes, inclusive",
-		}
-		if !all {
-			return err
-		}
-		errors = append(errors, err)
-	}
+	// no validation rules for Name
 
-	if l := utf8.RuneCountInString(m.GetProject()); l < 2 || l > 128 {
-		err := ClusterValidationError{
-			field:  "Project",
-			reason: "value length must be between 2 and 128 runes, inclusive",
-		}
-		if !all {
-			return err
-		}
-		errors = append(errors, err)
-	}
+	// no validation rules for Project
 
 	// no validation rules for Partition
 
@@ -345,14 +314,6 @@ func (m *Cluster) validate(all bool) error {
 	return nil
 }
 
-func (m *Cluster) _validateUuid(uuid string) error {
-	if matched := _cluster_uuidPattern.MatchString(uuid); !matched {
-		return errors.New("invalid uuid format")
-	}
-
-	return nil
-}
-
 // ClusterMultiError is an error wrapping multiple validation errors returned
 // by Cluster.ValidateAll() if the designated constraints aren't met.
 type ClusterMultiError []error
@@ -445,27 +406,7 @@ func (m *KubernetesSpec) validate(all bool) error {
 
 	var errors []error
 
-	if len(m.GetVersion()) > 8 {
-		err := KubernetesSpecValidationError{
-			field:  "Version",
-			reason: "value length must be at most 8 bytes",
-		}
-		if !all {
-			return err
-		}
-		errors = append(errors, err)
-	}
-
-	if !_KubernetesSpec_Version_Pattern.MatchString(m.GetVersion()) {
-		err := KubernetesSpecValidationError{
-			field:  "Version",
-			reason: "value does not match regex pattern \"[0-9]+.[0-9]+.[0-9]\"",
-		}
-		if !all {
-			return err
-		}
-		errors = append(errors, err)
-	}
+	// no validation rules for Version
 
 	if len(errors) > 0 {
 		return KubernetesSpecMultiError(errors)
@@ -544,8 +485,6 @@ var _ interface {
 	Cause() error
 	ErrorName() string
 } = KubernetesSpecValidationError{}
-
-var _KubernetesSpec_Version_Pattern = regexp.MustCompile("[0-9]+.[0-9]+.[0-9]")
 
 // Validate checks the field values on Maintenance with the rules defined in
 // the proto definition for this message. If any rules are violated, the first
@@ -734,34 +673,32 @@ func (m *MaintenanceTimeWindow) validate(all bool) error {
 		}
 	}
 
-	if d := m.GetDuration(); d != nil {
-		dur, err := d.AsDuration(), d.CheckValid()
-		if err != nil {
-			err = MaintenanceTimeWindowValidationError{
+	if all {
+		switch v := interface{}(m.GetDuration()).(type) {
+		case interface{ ValidateAll() error }:
+			if err := v.ValidateAll(); err != nil {
+				errors = append(errors, MaintenanceTimeWindowValidationError{
+					field:  "Duration",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		case interface{ Validate() error }:
+			if err := v.Validate(); err != nil {
+				errors = append(errors, MaintenanceTimeWindowValidationError{
+					field:  "Duration",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		}
+	} else if v, ok := interface{}(m.GetDuration()).(interface{ Validate() error }); ok {
+		if err := v.Validate(); err != nil {
+			return MaintenanceTimeWindowValidationError{
 				field:  "Duration",
-				reason: "value is not a valid duration",
+				reason: "embedded message failed validation",
 				cause:  err,
 			}
-			if !all {
-				return err
-			}
-			errors = append(errors, err)
-		} else {
-
-			lt := time.Duration(14400*time.Second + 0*time.Nanosecond)
-			gte := time.Duration(3600*time.Second + 0*time.Nanosecond)
-
-			if dur < gte || dur >= lt {
-				err := MaintenanceTimeWindowValidationError{
-					field:  "Duration",
-					reason: "value must be inside range [1h0m0s, 4h0m0s)",
-				}
-				if !all {
-					return err
-				}
-				errors = append(errors, err)
-			}
-
 		}
 	}
 
@@ -866,27 +803,9 @@ func (m *Time) validate(all bool) error {
 
 	var errors []error
 
-	if m.GetHour() > 24 {
-		err := TimeValidationError{
-			field:  "Hour",
-			reason: "value must be less than or equal to 24",
-		}
-		if !all {
-			return err
-		}
-		errors = append(errors, err)
-	}
+	// no validation rules for Hour
 
-	if m.GetMinute() > 60 {
-		err := TimeValidationError{
-			field:  "Minute",
-			reason: "value must be less than or equal to 60",
-		}
-		if !all {
-			return err
-		}
-		errors = append(errors, err)
-	}
+	// no validation rules for Minute
 
 	// no validation rules for Timezone
 
@@ -988,71 +907,17 @@ func (m *Worker) validate(all bool) error {
 
 	var errors []error
 
-	if l := utf8.RuneCountInString(m.GetName()); l < 2 || l > 128 {
-		err := WorkerValidationError{
-			field:  "Name",
-			reason: "value length must be between 2 and 128 runes, inclusive",
-		}
-		if !all {
-			return err
-		}
-		errors = append(errors, err)
-	}
+	// no validation rules for Name
 
-	if l := utf8.RuneCountInString(m.GetMachineType()); l < 2 || l > 128 {
-		err := WorkerValidationError{
-			field:  "MachineType",
-			reason: "value length must be between 2 and 128 runes, inclusive",
-		}
-		if !all {
-			return err
-		}
-		errors = append(errors, err)
-	}
+	// no validation rules for MachineType
 
-	if m.GetMinsize() > 32 {
-		err := WorkerValidationError{
-			field:  "Minsize",
-			reason: "value must be less than or equal to 32",
-		}
-		if !all {
-			return err
-		}
-		errors = append(errors, err)
-	}
+	// no validation rules for Minsize
 
-	if m.GetMaxsize() > 64 {
-		err := WorkerValidationError{
-			field:  "Maxsize",
-			reason: "value must be less than or equal to 64",
-		}
-		if !all {
-			return err
-		}
-		errors = append(errors, err)
-	}
+	// no validation rules for Maxsize
 
-	if m.GetMaxsurge() > 64 {
-		err := WorkerValidationError{
-			field:  "Maxsurge",
-			reason: "value must be less than or equal to 64",
-		}
-		if !all {
-			return err
-		}
-		errors = append(errors, err)
-	}
+	// no validation rules for Maxsurge
 
-	if m.GetMaxunavailable() > 64 {
-		err := WorkerValidationError{
-			field:  "Maxunavailable",
-			reason: "value must be less than or equal to 64",
-		}
-		if !all {
-			return err
-		}
-		errors = append(errors, err)
-	}
+	// no validation rules for Maxunavailable
 
 	if len(errors) > 0 {
 		return WorkerMultiError(errors)
@@ -1153,90 +1018,26 @@ func (m *WorkerUpdate) validate(all bool) error {
 
 	var errors []error
 
-	if l := utf8.RuneCountInString(m.GetName()); l < 2 || l > 128 {
-		err := WorkerUpdateValidationError{
-			field:  "Name",
-			reason: "value length must be between 2 and 128 runes, inclusive",
-		}
-		if !all {
-			return err
-		}
-		errors = append(errors, err)
-	}
+	// no validation rules for Name
 
 	if m.MachineType != nil {
-
-		if l := utf8.RuneCountInString(m.GetMachineType()); l < 2 || l > 128 {
-			err := WorkerUpdateValidationError{
-				field:  "MachineType",
-				reason: "value length must be between 2 and 128 runes, inclusive",
-			}
-			if !all {
-				return err
-			}
-			errors = append(errors, err)
-		}
-
+		// no validation rules for MachineType
 	}
 
 	if m.Minsize != nil {
-
-		if m.GetMinsize() > 32 {
-			err := WorkerUpdateValidationError{
-				field:  "Minsize",
-				reason: "value must be less than or equal to 32",
-			}
-			if !all {
-				return err
-			}
-			errors = append(errors, err)
-		}
-
+		// no validation rules for Minsize
 	}
 
 	if m.Maxsize != nil {
-
-		if m.GetMaxsize() > 64 {
-			err := WorkerUpdateValidationError{
-				field:  "Maxsize",
-				reason: "value must be less than or equal to 64",
-			}
-			if !all {
-				return err
-			}
-			errors = append(errors, err)
-		}
-
+		// no validation rules for Maxsize
 	}
 
 	if m.Maxsurge != nil {
-
-		if m.GetMaxsurge() > 64 {
-			err := WorkerUpdateValidationError{
-				field:  "Maxsurge",
-				reason: "value must be less than or equal to 64",
-			}
-			if !all {
-				return err
-			}
-			errors = append(errors, err)
-		}
-
+		// no validation rules for Maxsurge
 	}
 
 	if m.Maxunavailable != nil {
-
-		if m.GetMaxunavailable() > 64 {
-			err := WorkerUpdateValidationError{
-				field:  "Maxunavailable",
-				reason: "value must be less than or equal to 64",
-			}
-			if !all {
-				return err
-			}
-			errors = append(errors, err)
-		}
-
+		// no validation rules for Maxunavailable
 	}
 
 	if len(errors) > 0 {
@@ -1338,39 +1139,12 @@ func (m *ClusterServiceGetRequest) validate(all bool) error {
 
 	var errors []error
 
-	if err := m._validateUuid(m.GetUuid()); err != nil {
-		err = ClusterServiceGetRequestValidationError{
-			field:  "Uuid",
-			reason: "value must be a valid UUID",
-			cause:  err,
-		}
-		if !all {
-			return err
-		}
-		errors = append(errors, err)
-	}
+	// no validation rules for Uuid
 
-	if l := utf8.RuneCountInString(m.GetProject()); l < 2 || l > 128 {
-		err := ClusterServiceGetRequestValidationError{
-			field:  "Project",
-			reason: "value length must be between 2 and 128 runes, inclusive",
-		}
-		if !all {
-			return err
-		}
-		errors = append(errors, err)
-	}
+	// no validation rules for Project
 
 	if len(errors) > 0 {
 		return ClusterServiceGetRequestMultiError(errors)
-	}
-
-	return nil
-}
-
-func (m *ClusterServiceGetRequest) _validateUuid(uuid string) error {
-	if matched := _cluster_uuidPattern.MatchString(uuid); !matched {
-		return errors.New("invalid uuid format")
 	}
 
 	return nil
@@ -1471,41 +1245,14 @@ func (m *ClusterServiceOperateRequest) validate(all bool) error {
 
 	var errors []error
 
-	if err := m._validateUuid(m.GetUuid()); err != nil {
-		err = ClusterServiceOperateRequestValidationError{
-			field:  "Uuid",
-			reason: "value must be a valid UUID",
-			cause:  err,
-		}
-		if !all {
-			return err
-		}
-		errors = append(errors, err)
-	}
+	// no validation rules for Uuid
 
-	if l := utf8.RuneCountInString(m.GetProject()); l < 2 || l > 128 {
-		err := ClusterServiceOperateRequestValidationError{
-			field:  "Project",
-			reason: "value length must be between 2 and 128 runes, inclusive",
-		}
-		if !all {
-			return err
-		}
-		errors = append(errors, err)
-	}
+	// no validation rules for Project
 
 	// no validation rules for Operate
 
 	if len(errors) > 0 {
 		return ClusterServiceOperateRequestMultiError(errors)
-	}
-
-	return nil
-}
-
-func (m *ClusterServiceOperateRequest) _validateUuid(uuid string) error {
-	if matched := _cluster_uuidPattern.MatchString(uuid); !matched {
-		return errors.New("invalid uuid format")
 	}
 
 	return nil
@@ -1608,28 +1355,9 @@ func (m *ClusterServiceGetCredentialsRequest) validate(all bool) error {
 
 	var errors []error
 
-	if err := m._validateUuid(m.GetUuid()); err != nil {
-		err = ClusterServiceGetCredentialsRequestValidationError{
-			field:  "Uuid",
-			reason: "value must be a valid UUID",
-			cause:  err,
-		}
-		if !all {
-			return err
-		}
-		errors = append(errors, err)
-	}
+	// no validation rules for Uuid
 
-	if l := utf8.RuneCountInString(m.GetProject()); l < 2 || l > 128 {
-		err := ClusterServiceGetCredentialsRequestValidationError{
-			field:  "Project",
-			reason: "value length must be between 2 and 128 runes, inclusive",
-		}
-		if !all {
-			return err
-		}
-		errors = append(errors, err)
-	}
+	// no validation rules for Project
 
 	if m.Expiration != nil {
 
@@ -1666,14 +1394,6 @@ func (m *ClusterServiceGetCredentialsRequest) validate(all bool) error {
 
 	if len(errors) > 0 {
 		return ClusterServiceGetCredentialsRequestMultiError(errors)
-	}
-
-	return nil
-}
-
-func (m *ClusterServiceGetCredentialsRequest) _validateUuid(uuid string) error {
-	if matched := _cluster_uuidPattern.MatchString(uuid); !matched {
-		return errors.New("invalid uuid format")
 	}
 
 	return nil
@@ -1776,16 +1496,7 @@ func (m *ClusterServiceListRequest) validate(all bool) error {
 
 	var errors []error
 
-	if l := utf8.RuneCountInString(m.GetProject()); l < 2 || l > 128 {
-		err := ClusterServiceListRequestValidationError{
-			field:  "Project",
-			reason: "value length must be between 2 and 128 runes, inclusive",
-		}
-		if !all {
-			return err
-		}
-		errors = append(errors, err)
-	}
+	// no validation rules for Project
 
 	if len(errors) > 0 {
 		return ClusterServiceListRequestMultiError(errors)
@@ -1889,39 +1600,9 @@ func (m *ClusterServiceCreateRequest) validate(all bool) error {
 
 	var errors []error
 
-	if l := utf8.RuneCountInString(m.GetName()); l < 2 || l > 12 {
-		err := ClusterServiceCreateRequestValidationError{
-			field:  "Name",
-			reason: "value length must be between 2 and 12 runes, inclusive",
-		}
-		if !all {
-			return err
-		}
-		errors = append(errors, err)
-	}
+	// no validation rules for Name
 
-	if err := m._validateHostname(m.GetName()); err != nil {
-		err = ClusterServiceCreateRequestValidationError{
-			field:  "Name",
-			reason: "value must be a valid hostname",
-			cause:  err,
-		}
-		if !all {
-			return err
-		}
-		errors = append(errors, err)
-	}
-
-	if l := utf8.RuneCountInString(m.GetProject()); l < 2 || l > 128 {
-		err := ClusterServiceCreateRequestValidationError{
-			field:  "Project",
-			reason: "value length must be between 2 and 128 runes, inclusive",
-		}
-		if !all {
-			return err
-		}
-		errors = append(errors, err)
-	}
+	// no validation rules for Project
 
 	// no validation rules for Partition
 
@@ -2024,36 +1705,6 @@ func (m *ClusterServiceCreateRequest) validate(all bool) error {
 	return nil
 }
 
-func (m *ClusterServiceCreateRequest) _validateHostname(host string) error {
-	s := strings.ToLower(strings.TrimSuffix(host, "."))
-
-	if len(host) > 253 {
-		return errors.New("hostname cannot exceed 253 characters")
-	}
-
-	for _, part := range strings.Split(s, ".") {
-		if l := len(part); l == 0 || l > 63 {
-			return errors.New("hostname part must be non-empty and cannot exceed 63 characters")
-		}
-
-		if part[0] == '-' {
-			return errors.New("hostname parts cannot begin with hyphens")
-		}
-
-		if part[len(part)-1] == '-' {
-			return errors.New("hostname parts cannot end with hyphens")
-		}
-
-		for _, r := range part {
-			if (r < 'a' || r > 'z') && (r < '0' || r > '9') && r != '-' {
-				return fmt.Errorf("hostname parts can only contain alphanumeric characters or hyphens, got %q", string(r))
-			}
-		}
-	}
-
-	return nil
-}
-
 // ClusterServiceCreateRequestMultiError is an error wrapping multiple
 // validation errors returned by ClusterServiceCreateRequest.ValidateAll() if
 // the designated constraints aren't met.
@@ -2150,28 +1801,9 @@ func (m *ClusterServiceUpdateRequest) validate(all bool) error {
 
 	var errors []error
 
-	if err := m._validateUuid(m.GetUuid()); err != nil {
-		err = ClusterServiceUpdateRequestValidationError{
-			field:  "Uuid",
-			reason: "value must be a valid UUID",
-			cause:  err,
-		}
-		if !all {
-			return err
-		}
-		errors = append(errors, err)
-	}
+	// no validation rules for Uuid
 
-	if l := utf8.RuneCountInString(m.GetProject()); l < 2 || l > 128 {
-		err := ClusterServiceUpdateRequestValidationError{
-			field:  "Project",
-			reason: "value length must be between 2 and 128 runes, inclusive",
-		}
-		if !all {
-			return err
-		}
-		errors = append(errors, err)
-	}
+	// no validation rules for Project
 
 	for idx, item := range m.GetWorkers() {
 		_, _ = idx, item
@@ -2280,14 +1912,6 @@ func (m *ClusterServiceUpdateRequest) validate(all bool) error {
 	return nil
 }
 
-func (m *ClusterServiceUpdateRequest) _validateUuid(uuid string) error {
-	if matched := _cluster_uuidPattern.MatchString(uuid); !matched {
-		return errors.New("invalid uuid format")
-	}
-
-	return nil
-}
-
 // ClusterServiceUpdateRequestMultiError is an error wrapping multiple
 // validation errors returned by ClusterServiceUpdateRequest.ValidateAll() if
 // the designated constraints aren't met.
@@ -2384,39 +2008,12 @@ func (m *ClusterServiceDeleteRequest) validate(all bool) error {
 
 	var errors []error
 
-	if err := m._validateUuid(m.GetUuid()); err != nil {
-		err = ClusterServiceDeleteRequestValidationError{
-			field:  "Uuid",
-			reason: "value must be a valid UUID",
-			cause:  err,
-		}
-		if !all {
-			return err
-		}
-		errors = append(errors, err)
-	}
+	// no validation rules for Uuid
 
-	if l := utf8.RuneCountInString(m.GetProject()); l < 2 || l > 128 {
-		err := ClusterServiceDeleteRequestValidationError{
-			field:  "Project",
-			reason: "value length must be between 2 and 128 runes, inclusive",
-		}
-		if !all {
-			return err
-		}
-		errors = append(errors, err)
-	}
+	// no validation rules for Project
 
 	if len(errors) > 0 {
 		return ClusterServiceDeleteRequestMultiError(errors)
-	}
-
-	return nil
-}
-
-func (m *ClusterServiceDeleteRequest) _validateUuid(uuid string) error {
-	if matched := _cluster_uuidPattern.MatchString(uuid); !matched {
-		return errors.New("invalid uuid format")
 	}
 
 	return nil
@@ -2519,43 +2116,14 @@ func (m *ClusterServiceWatchStatusRequest) validate(all bool) error {
 
 	var errors []error
 
-	if l := utf8.RuneCountInString(m.GetProject()); l < 2 || l > 128 {
-		err := ClusterServiceWatchStatusRequestValidationError{
-			field:  "Project",
-			reason: "value length must be between 2 and 128 runes, inclusive",
-		}
-		if !all {
-			return err
-		}
-		errors = append(errors, err)
-	}
+	// no validation rules for Project
 
 	if m.Uuid != nil {
-
-		if err := m._validateUuid(m.GetUuid()); err != nil {
-			err = ClusterServiceWatchStatusRequestValidationError{
-				field:  "Uuid",
-				reason: "value must be a valid UUID",
-				cause:  err,
-			}
-			if !all {
-				return err
-			}
-			errors = append(errors, err)
-		}
-
+		// no validation rules for Uuid
 	}
 
 	if len(errors) > 0 {
 		return ClusterServiceWatchStatusRequestMultiError(errors)
-	}
-
-	return nil
-}
-
-func (m *ClusterServiceWatchStatusRequest) _validateUuid(uuid string) error {
-	if matched := _cluster_uuidPattern.MatchString(uuid); !matched {
-		return errors.New("invalid uuid format")
 	}
 
 	return nil

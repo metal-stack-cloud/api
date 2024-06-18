@@ -35,9 +35,6 @@ var (
 	_ = sort.Sort
 )
 
-// define the regex for a UUID once up-front
-var _ip_uuidPattern = regexp.MustCompile("^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$")
-
 // Validate checks the field values on IP with the rules defined in the proto
 // definition for this message. If any rules are violated, the first error
 // encountered is returned, or nil if there are no violations.
@@ -59,85 +56,19 @@ func (m *IP) validate(all bool) error {
 
 	var errors []error
 
-	if err := m._validateUuid(m.GetUuid()); err != nil {
-		err = IPValidationError{
-			field:  "Uuid",
-			reason: "value must be a valid UUID",
-			cause:  err,
-		}
-		if !all {
-			return err
-		}
-		errors = append(errors, err)
-	}
+	// no validation rules for Uuid
 
-	if ip := net.ParseIP(m.GetIp()); ip == nil {
-		err := IPValidationError{
-			field:  "Ip",
-			reason: "value must be a valid IP address",
-		}
-		if !all {
-			return err
-		}
-		errors = append(errors, err)
-	}
+	// no validation rules for Ip
 
-	if l := utf8.RuneCountInString(m.GetName()); l < 2 || l > 128 {
-		err := IPValidationError{
-			field:  "Name",
-			reason: "value length must be between 2 and 128 runes, inclusive",
-		}
-		if !all {
-			return err
-		}
-		errors = append(errors, err)
-	}
+	// no validation rules for Name
 
-	if utf8.RuneCountInString(m.GetDescription()) > 128 {
-		err := IPValidationError{
-			field:  "Description",
-			reason: "value length must be at most 128 runes",
-		}
-		if !all {
-			return err
-		}
-		errors = append(errors, err)
-	}
+	// no validation rules for Description
 
-	if l := utf8.RuneCountInString(m.GetNetwork()); l < 2 || l > 128 {
-		err := IPValidationError{
-			field:  "Network",
-			reason: "value length must be between 2 and 128 runes, inclusive",
-		}
-		if !all {
-			return err
-		}
-		errors = append(errors, err)
-	}
+	// no validation rules for Network
 
-	if l := utf8.RuneCountInString(m.GetProject()); l < 2 || l > 128 {
-		err := IPValidationError{
-			field:  "Project",
-			reason: "value length must be between 2 and 128 runes, inclusive",
-		}
-		if !all {
-			return err
-		}
-		errors = append(errors, err)
-	}
+	// no validation rules for Project
 
 	// no validation rules for Type
-
-	if len(m.GetTags()) > 100 {
-		err := IPValidationError{
-			field:  "Tags",
-			reason: "value must contain no more than 100 item(s)",
-		}
-		if !all {
-			return err
-		}
-		errors = append(errors, err)
-	}
 
 	if all {
 		switch v := interface{}(m.GetCreatedAt()).(type) {
@@ -228,14 +159,6 @@ func (m *IP) validate(all bool) error {
 
 	if len(errors) > 0 {
 		return IPMultiError(errors)
-	}
-
-	return nil
-}
-
-func (m *IP) _validateUuid(uuid string) error {
-	if matched := _ip_uuidPattern.MatchString(uuid); !matched {
-		return errors.New("invalid uuid format")
 	}
 
 	return nil
@@ -333,39 +256,12 @@ func (m *IPServiceGetRequest) validate(all bool) error {
 
 	var errors []error
 
-	if err := m._validateUuid(m.GetUuid()); err != nil {
-		err = IPServiceGetRequestValidationError{
-			field:  "Uuid",
-			reason: "value must be a valid UUID",
-			cause:  err,
-		}
-		if !all {
-			return err
-		}
-		errors = append(errors, err)
-	}
+	// no validation rules for Uuid
 
-	if l := utf8.RuneCountInString(m.GetProject()); l < 2 || l > 128 {
-		err := IPServiceGetRequestValidationError{
-			field:  "Project",
-			reason: "value length must be between 2 and 128 runes, inclusive",
-		}
-		if !all {
-			return err
-		}
-		errors = append(errors, err)
-	}
+	// no validation rules for Project
 
 	if len(errors) > 0 {
 		return IPServiceGetRequestMultiError(errors)
-	}
-
-	return nil
-}
-
-func (m *IPServiceGetRequest) _validateUuid(uuid string) error {
-	if matched := _ip_uuidPattern.MatchString(uuid); !matched {
-		return errors.New("invalid uuid format")
 	}
 
 	return nil
@@ -466,49 +362,11 @@ func (m *IPServiceAllocateRequest) validate(all bool) error {
 
 	var errors []error
 
-	if l := utf8.RuneCountInString(m.GetProject()); l < 2 || l > 128 {
-		err := IPServiceAllocateRequestValidationError{
-			field:  "Project",
-			reason: "value length must be between 2 and 128 runes, inclusive",
-		}
-		if !all {
-			return err
-		}
-		errors = append(errors, err)
-	}
+	// no validation rules for Project
 
-	if l := utf8.RuneCountInString(m.GetName()); l < 2 || l > 128 {
-		err := IPServiceAllocateRequestValidationError{
-			field:  "Name",
-			reason: "value length must be between 2 and 128 runes, inclusive",
-		}
-		if !all {
-			return err
-		}
-		errors = append(errors, err)
-	}
+	// no validation rules for Name
 
-	if utf8.RuneCountInString(m.GetDescription()) > 128 {
-		err := IPServiceAllocateRequestValidationError{
-			field:  "Description",
-			reason: "value length must be at most 128 runes",
-		}
-		if !all {
-			return err
-		}
-		errors = append(errors, err)
-	}
-
-	if len(m.GetTags()) > 100 {
-		err := IPServiceAllocateRequestValidationError{
-			field:  "Tags",
-			reason: "value must contain no more than 100 item(s)",
-		}
-		if !all {
-			return err
-		}
-		errors = append(errors, err)
-	}
+	// no validation rules for Description
 
 	// no validation rules for Static
 
@@ -614,16 +472,7 @@ func (m *IPServiceUpdateRequest) validate(all bool) error {
 
 	var errors []error
 
-	if l := utf8.RuneCountInString(m.GetProject()); l < 2 || l > 128 {
-		err := IPServiceUpdateRequestValidationError{
-			field:  "Project",
-			reason: "value length must be between 2 and 128 runes, inclusive",
-		}
-		if !all {
-			return err
-		}
-		errors = append(errors, err)
-	}
+	// no validation rules for Project
 
 	if all {
 		switch v := interface{}(m.GetIp()).(type) {
@@ -756,16 +605,7 @@ func (m *IPServiceListRequest) validate(all bool) error {
 
 	var errors []error
 
-	if l := utf8.RuneCountInString(m.GetProject()); l < 2 || l > 128 {
-		err := IPServiceListRequestValidationError{
-			field:  "Project",
-			reason: "value length must be between 2 and 128 runes, inclusive",
-		}
-		if !all {
-			return err
-		}
-		errors = append(errors, err)
-	}
+	// no validation rules for Project
 
 	if len(errors) > 0 {
 		return IPServiceListRequestMultiError(errors)
@@ -869,39 +709,12 @@ func (m *IPServiceDeleteRequest) validate(all bool) error {
 
 	var errors []error
 
-	if err := m._validateUuid(m.GetUuid()); err != nil {
-		err = IPServiceDeleteRequestValidationError{
-			field:  "Uuid",
-			reason: "value must be a valid UUID",
-			cause:  err,
-		}
-		if !all {
-			return err
-		}
-		errors = append(errors, err)
-	}
+	// no validation rules for Uuid
 
-	if l := utf8.RuneCountInString(m.GetProject()); l < 2 || l > 128 {
-		err := IPServiceDeleteRequestValidationError{
-			field:  "Project",
-			reason: "value length must be between 2 and 128 runes, inclusive",
-		}
-		if !all {
-			return err
-		}
-		errors = append(errors, err)
-	}
+	// no validation rules for Project
 
 	if len(errors) > 0 {
 		return IPServiceDeleteRequestMultiError(errors)
-	}
-
-	return nil
-}
-
-func (m *IPServiceDeleteRequest) _validateUuid(uuid string) error {
-	if matched := _ip_uuidPattern.MatchString(uuid); !matched {
-		return errors.New("invalid uuid format")
 	}
 
 	return nil
