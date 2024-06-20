@@ -68,6 +68,7 @@ Project.fields = proto3.util.newFieldList(() => [
     { no: 5, name: "is_default_project", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
     { no: 10, name: "created_at", kind: "message", T: Timestamp },
     { no: 11, name: "updated_at", kind: "message", T: Timestamp },
+    { no: 12, name: "avatar_url", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
 ]);
 /**
  * ProjectMember defines a user that participates at a project
@@ -504,6 +505,7 @@ ProjectServiceUpdateRequest.fields = proto3.util.newFieldList(() => [
     { no: 1, name: "project", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 2, name: "name", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
     { no: 3, name: "description", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
+    { no: 4, name: "avatar_url", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
 ]);
 /**
  * ProjectServiceUpdateResponse is the response payload to update a project

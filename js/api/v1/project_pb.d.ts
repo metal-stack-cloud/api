@@ -50,6 +50,12 @@ export declare class Project extends Message<Project> {
      * @generated from field: google.protobuf.Timestamp updated_at = 11;
      */
     updatedAt?: Timestamp;
+    /**
+     * AvatarUrl of the Project
+     *
+     * @generated from field: optional string avatar_url = 12;
+     */
+    avatarUrl?: string;
     constructor(data?: PartialMessage<Project>);
     static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.Project";
@@ -386,6 +392,12 @@ export declare class ProjectServiceUpdateRequest extends Message<ProjectServiceU
      * @generated from field: optional string description = 3;
      */
     description?: string;
+    /**
+     * Avatar URL of the project
+     *
+     * @generated from field: optional string avatar_url = 4;
+     */
+    avatarUrl?: string;
     constructor(data?: PartialMessage<ProjectServiceUpdateRequest>);
     static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.ProjectServiceUpdateRequest";
