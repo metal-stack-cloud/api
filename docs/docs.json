@@ -5383,7 +5383,7 @@
           "description": "ProjectServiceCreateRequest is the request payload to Create a project",
           "hasExtensions": false,
           "hasFields": true,
-          "hasOneofs": false,
+          "hasOneofs": true,
           "extensions": [],
           "fields": [
             {
@@ -5457,6 +5457,18 @@
                   }
                 ]
               }
+            },
+            {
+              "name": "avatar_url",
+              "description": "Avatar URL of the project",
+              "label": "optional",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "_avatar_url",
+              "defaultValue": ""
             }
           ]
         },

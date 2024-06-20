@@ -296,6 +296,12 @@ export declare class ProjectServiceCreateRequest extends Message<ProjectServiceC
      * @generated from field: string description = 3;
      */
     description: string;
+    /**
+     * Avatar URL of the project
+     *
+     * @generated from field: optional string avatar_url = 4;
+     */
+    avatarUrl?: string;
     constructor(data?: PartialMessage<ProjectServiceCreateRequest>);
     static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.ProjectServiceCreateRequest";

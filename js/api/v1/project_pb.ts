@@ -485,6 +485,13 @@ export class ProjectServiceCreateRequest extends Message<ProjectServiceCreateReq
    */
   description = "";
 
+  /**
+   * Avatar URL of the project
+   *
+   * @generated from field: optional string avatar_url = 4;
+   */
+  avatarUrl?: string;
+
   constructor(data?: PartialMessage<ProjectServiceCreateRequest>) {
     super();
     proto3.util.initPartial(data, this);
@@ -496,6 +503,7 @@ export class ProjectServiceCreateRequest extends Message<ProjectServiceCreateReq
     { no: 1, name: "login", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 2, name: "name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 3, name: "description", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 4, name: "avatar_url", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ProjectServiceCreateRequest {

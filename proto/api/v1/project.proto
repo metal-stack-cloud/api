@@ -183,6 +183,8 @@ message ProjectServiceCreateRequest {
     min_len: 2,
     max_len: 512,
   }];
+  // Avatar URL of the project
+  optional string avatar_url = 4;
 }
 
 // ProjectServiceCreateResponse is the response payload of creation of a project
