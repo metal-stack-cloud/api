@@ -165,7 +165,7 @@ message PaymentDetails {
   // Vat which applies to this tenant
   string vat = 5;
   // PaymentMethod indicates which way the user wants to pay
-  PaymentMethod payment_method = 6;
+  PaymentMethod payment_method = 6 [(buf.validate.field).enum.defined_only = true];
 }
 
 // PaymentDetailsUpdate is used to update PaymentDetails
@@ -179,7 +179,7 @@ message PaymentDetailsUpdate {
   // Vat which applies to this tenant
   optional string vat = 4;
   // PaymentMethod indicates which way the user wants to pay
-  optional PaymentMethod payment_method = 5;
+  optional PaymentMethod payment_method = 5 [(buf.validate.field).enum.defined_only = true];
 }
 
 // TermsAndConditions the tenant accepted
