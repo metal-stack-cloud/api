@@ -1,6 +1,7 @@
 package validation
 
 import (
+	"fmt"
 	"testing"
 	"time"
 
@@ -42,18 +43,39 @@ func TestValidateTokenServiceCreateRequest(t *testing.T) {
 	validator, err := protovalidate.New()
 	require.NoError(t, err)
 
+	allProjectRoles := make(map[string]apiv1.ProjectRole)
+	count := 1
+	for _, projectRole := range apiv1.ProjectRole_value {
+		allProjectRoles[fmt.Sprintf("p-%d", count)] = apiv1.ProjectRole(projectRole)
+		count++
+	}
+
+	allTenantRoles := make(map[string]apiv1.TenantRole)
+	count = 1
+	for _, tenantRole := range apiv1.TenantRole_value {
+		allTenantRoles[fmt.Sprintf("t-%d", count)] = apiv1.TenantRole(tenantRole)
+		count++
+	}
+
+	// Ensure all existing Roles pass
 	tscr := &apiv1.TokenServiceCreateRequest{
+		Description:  "New Token",
+		ProjectRoles: allProjectRoles,
+		TenantRoles:  allTenantRoles,
+		Expires:      durationpb.New(1 * time.Hour),
+	}
+
+	err = validator.Validate(tscr)
+	require.NoError(t, err)
+
+	// But a unknown Role will not
+	tscr = &apiv1.TokenServiceCreateRequest{
 		Description: "New Token",
 		ProjectRoles: map[string]apiv1.ProjectRole{
-			"project-1": apiv1.ProjectRole_PROJECT_ROLE_OWNER,
-			"project-2": apiv1.ProjectRole_PROJECT_ROLE_EDITOR,
-			"project-3": -4,
+			"project-3": -1,
 		},
-		TenantRoles: map[string]apiv1.TenantRole{
-			"tenant-1": apiv1.TenantRole_TENANT_ROLE_GUEST,
-			"tenant-2": apiv1.TenantRole_TENANT_ROLE_OWNER,
-		},
-		Expires: durationpb.New(1 * time.Hour),
+		TenantRoles: allTenantRoles,
+		Expires:     durationpb.New(1 * time.Hour),
 	}
 
 	err = validator.Validate(tscr)
