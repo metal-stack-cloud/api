@@ -1623,6 +1623,13 @@ export class PaymentServiceRequestAdmissionRequest extends Message<PaymentServic
    */
   emailConsent = false;
 
+  /**
+   * PaymentMethod indicates which way the user wants to pay
+   *
+   * @generated from field: api.v1.PaymentMethod payment_method = 5;
+   */
+  paymentMethod = PaymentMethod.UNSPECIFIED;
+
   constructor(data?: PartialMessage<PaymentServiceRequestAdmissionRequest>) {
     super();
     proto3.util.initPartial(data, this);
@@ -1635,6 +1642,7 @@ export class PaymentServiceRequestAdmissionRequest extends Message<PaymentServic
     { no: 2, name: "customer", kind: "message", T: PaymentCustomer },
     { no: 3, name: "accepted_terms_and_conditions", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
     { no: 4, name: "email_consent", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
+    { no: 5, name: "payment_method", kind: "enum", T: proto3.getEnumType(PaymentMethod) },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): PaymentServiceRequestAdmissionRequest {

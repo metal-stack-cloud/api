@@ -407,6 +407,8 @@ message PaymentServiceRequestAdmissionRequest {
   bool accepted_terms_and_conditions = 3;
   // EmailConsent indicates if the customer already gave consent to email
   bool email_consent = 4;
+  // PaymentMethod indicates which way the user wants to pay
+  PaymentMethod payment_method = 5;
 }
 
 // PaymentServiceRequestAdmissionResponse is the response payload for a admission request

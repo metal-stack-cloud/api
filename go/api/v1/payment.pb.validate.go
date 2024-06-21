@@ -3735,6 +3735,8 @@ func (m *PaymentServiceRequestAdmissionRequest) validate(all bool) error {
 
 	// no validation rules for EmailConsent
 
+	// no validation rules for PaymentMethod
+
 	if len(errors) > 0 {
 		return PaymentServiceRequestAdmissionRequestMultiError(errors)
 	}

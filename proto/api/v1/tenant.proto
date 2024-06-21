@@ -164,7 +164,7 @@ message PaymentDetails {
   repeated Coupon coupons = 4;
   // Vat which applies to this tenant
   string vat = 5;
-  // PaymentMethod is the type of payment method
+  // PaymentMethod indicates which way the user wants to pay
   PaymentMethod payment_method = 6;
 }
 

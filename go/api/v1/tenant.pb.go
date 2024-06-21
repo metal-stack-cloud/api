@@ -410,7 +410,7 @@ type PaymentDetails struct {
 	Coupons []*Coupon `protobuf:"bytes,4,rep,name=coupons,proto3" json:"coupons,omitempty"`
 	// Vat which applies to this tenant
 	Vat string `protobuf:"bytes,5,opt,name=vat,proto3" json:"vat,omitempty"`
-	// PaymentMethod is the type of payment method
+	// PaymentMethod indicates which way the user wants to pay
 	PaymentMethod PaymentMethod `protobuf:"varint,6,opt,name=payment_method,json=paymentMethod,proto3,enum=api.v1.PaymentMethod" json:"payment_method,omitempty"`
 }
 

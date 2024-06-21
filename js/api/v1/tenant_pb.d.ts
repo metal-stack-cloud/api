@@ -252,7 +252,7 @@ export declare class PaymentDetails extends Message<PaymentDetails> {
      */
     vat: string;
     /**
-     * PaymentMethod is the type of payment method
+     * PaymentMethod indicates which way the user wants to pay
      *
      * @generated from field: api.v1.PaymentMethod payment_method = 6;
      */
