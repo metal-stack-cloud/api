@@ -665,6 +665,8 @@ func (m *PaymentDetails) validate(all bool) error {
 
 	// no validation rules for Vat
 
+	// no validation rules for PaymentMethod
+
 	if m.PaymentMethodId != nil {
 		// no validation rules for PaymentMethodId
 	}

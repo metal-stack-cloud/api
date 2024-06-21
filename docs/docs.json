@@ -7314,6 +7314,18 @@
               "isoneof": false,
               "oneofdecl": "",
               "defaultValue": ""
+            },
+            {
+              "name": "payment_method",
+              "description": "PaymentMethod is the type of payment method",
+              "label": "",
+              "type": "PaymentMethod",
+              "longType": "PaymentMethod",
+              "fullType": "api.v1.PaymentMethod",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
             }
           ]
         },
