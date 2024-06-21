@@ -4468,18 +4468,6 @@
               "isoneof": false,
               "oneofdecl": "",
               "defaultValue": ""
-            },
-            {
-              "name": "payment_method",
-              "description": "PaymentMethod indicates which way the user wants to pay",
-              "label": "",
-              "type": "PaymentMethod",
-              "longType": "PaymentMethod",
-              "fullType": "api.v1.PaymentMethod",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
             }
           ]
         },
@@ -7397,6 +7385,18 @@
               "ismap": false,
               "isoneof": true,
               "oneofdecl": "_vat",
+              "defaultValue": ""
+            },
+            {
+              "name": "payment_method",
+              "description": "PaymentMethod indicates which way the user wants to pay",
+              "label": "",
+              "type": "PaymentMethod",
+              "longType": "PaymentMethod",
+              "fullType": "api.v1.PaymentMethod",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
               "defaultValue": ""
             }
           ]

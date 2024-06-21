@@ -953,12 +953,6 @@ export declare class PaymentServiceRequestAdmissionRequest extends Message<Payme
      * @generated from field: bool email_consent = 4;
      */
     emailConsent: boolean;
-    /**
-     * PaymentMethod indicates which way the user wants to pay
-     *
-     * @generated from field: api.v1.PaymentMethod payment_method = 5;
-     */
-    paymentMethod: PaymentMethod;
     constructor(data?: PartialMessage<PaymentServiceRequestAdmissionRequest>);
     static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.PaymentServiceRequestAdmissionRequest";

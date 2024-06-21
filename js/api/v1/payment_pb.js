@@ -1234,12 +1234,6 @@ export class PaymentServiceRequestAdmissionRequest extends Message {
          * @generated from field: bool email_consent = 4;
          */
         this.emailConsent = false;
-        /**
-         * PaymentMethod indicates which way the user wants to pay
-         *
-         * @generated from field: api.v1.PaymentMethod payment_method = 5;
-         */
-        this.paymentMethod = PaymentMethod.UNSPECIFIED;
         proto3.util.initPartial(data, this);
     }
     static fromBinary(bytes, options) {
@@ -1262,7 +1256,6 @@ PaymentServiceRequestAdmissionRequest.fields = proto3.util.newFieldList(() => [
     { no: 2, name: "customer", kind: "message", T: PaymentCustomer },
     { no: 3, name: "accepted_terms_and_conditions", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
     { no: 4, name: "email_consent", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
-    { no: 5, name: "payment_method", kind: "enum", T: proto3.getEnumType(PaymentMethod) },
 ]);
 /**
  * PaymentServiceRequestAdmissionResponse is the response payload for a admission request

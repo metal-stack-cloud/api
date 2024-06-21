@@ -296,6 +296,12 @@ export declare class PaymentDetailsUpdate extends Message<PaymentDetailsUpdate> 
      * @generated from field: optional string vat = 4;
      */
     vat?: string;
+    /**
+     * PaymentMethod indicates which way the user wants to pay
+     *
+     * @generated from field: api.v1.PaymentMethod payment_method = 5;
+     */
+    paymentMethod: PaymentMethod;
     constructor(data?: PartialMessage<PaymentDetailsUpdate>);
     static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.PaymentDetailsUpdate";
