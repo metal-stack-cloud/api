@@ -79,13 +79,10 @@ message TokenServiceCreateRequest {
   // Permissions is a list of service methods this token can be used for
   repeated MethodPermission permissions = 2;
   // Expires gives the duration since now, after which this token can not be used anymore
-  google.protobuf.Duration expires = 4 [
-    (buf.validate.field).required = true,
-    (buf.validate.field).duration = {
-      lt: {seconds: 31536001}
-      gte: {seconds: 600}
-    }
-  ];
+  google.protobuf.Duration expires = 4 [(buf.validate.field).duration = {
+    lt: {seconds: 31536001}
+    gte: {seconds: 600}
+  }];
   // ProjectRoles associates a project id with the corresponding role of the token owner
   map<string, ProjectRole> project_roles = 5 [(buf.validate.field).map = {
     keys: {
