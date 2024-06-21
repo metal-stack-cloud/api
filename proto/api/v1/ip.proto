@@ -3,8 +3,8 @@ syntax = "proto3";
 package api.v1;
 
 import "api/v1/common.proto";
+import "buf/validate/validate.proto";
 import "google/protobuf/timestamp.proto";
-import "validate/validate.proto";
 
 // IPService serves ip address related functions
 service IPService {
@@ -54,30 +54,27 @@ enum IPType {
 // IP is a ip address which can be used as loadbalancer addresses
 message IP {
   // Uuid of this ip
-  string uuid = 1 [(validate.rules).string.uuid = true];
+  string uuid = 1 [(buf.validate.field).string.uuid = true];
   // Ip is either ipv4 or ipv6 address
-  string ip = 2 [(validate.rules).string.ip = true];
+  string ip = 2 [(buf.validate.field).string.ip = true];
   // Name of this ip
-  string name = 3 [(validate.rules).string = {
-    min_len: 2,
+  string name = 3 [(buf.validate.field).string = {
+    min_len: 2
     max_len: 128
   }];
   // Description of this ip
-  string description = 4 [(validate.rules).string = {max_len: 128}];
+  string description = 4 [(buf.validate.field).string = {max_len: 128}];
   // Network is the network this ip belongs to
-  string network = 5 [(validate.rules).string = {
-    min_len: 2,
+  string network = 5 [(buf.validate.field).string = {
+    min_len: 2
     max_len: 128
   }];
   // Project where this ip address belongs to
-  string project = 6 [(validate.rules).string = {
-    min_len: 2,
-    max_len: 128
-  }];
+  string project = 6 [(buf.validate.field).string.uuid = true];
   // Type of this ip
-  IPType type = 7;
+  IPType type = 7 [(buf.validate.field).enum.defined_only = true];
   // Tags on this ip
-  repeated string tags = 8 [(validate.rules).repeated.max_items = 100];
+  repeated string tags = 8 [(buf.validate.field).repeated.max_items = 100];
   // CreatedAt is the date when this ip was created
   google.protobuf.Timestamp created_at = 10;
   // UpdatedAt is the date when this ip was updated
@@ -89,10 +86,10 @@ message IP {
 // IPServiceGetRequest is the request payload for a ip get request
 message IPServiceGetRequest {
   // Uuid of the ip to get
-  string uuid = 1 [(validate.rules).string.uuid = true];
+  string uuid = 1 [(buf.validate.field).string.uuid = true];
   // Project of the ip
-  string project = 2 [(validate.rules).string = {
-    min_len: 2,
+  string project = 2 [(buf.validate.field).string = {
+    min_len: 2
     max_len: 128
   }];
 }
@@ -100,19 +97,19 @@ message IPServiceGetRequest {
 // IPServiceGetRequest is the request payload for a ip get request
 message IPServiceAllocateRequest {
   // Project of the ip
-  string project = 2 [(validate.rules).string = {
-    min_len: 2,
+  string project = 2 [(buf.validate.field).string = {
+    min_len: 2
     max_len: 128
   }];
   // Name of the ip
-  string name = 3 [(validate.rules).string = {
-    min_len: 2,
+  string name = 3 [(buf.validate.field).string = {
+    min_len: 2
     max_len: 128
   }];
   // Description of the ip
-  string description = 4 [(validate.rules).string = {max_len: 128}];
+  string description = 4 [(buf.validate.field).string = {max_len: 128}];
   // Tags to put onto the ip
-  repeated string tags = 8 [(validate.rules).repeated.max_items = 100];
+  repeated string tags = 8 [(buf.validate.field).repeated.max_items = 100];
   // Static if set to true, this will be a Static ip
   bool static = 9;
 }
@@ -120,8 +117,8 @@ message IPServiceAllocateRequest {
 // IPServiceUpdateRequest is the request payload for a ip update request
 message IPServiceUpdateRequest {
   // Project of the ip
-  string project = 1 [(validate.rules).string = {
-    min_len: 2,
+  string project = 1 [(buf.validate.field).string = {
+    min_len: 2
     max_len: 128
   }];
   // Ip the ip to update
@@ -131,8 +128,8 @@ message IPServiceUpdateRequest {
 // IPServiceListRequest is the request payload for a ip list request
 message IPServiceListRequest {
   // Project of the ips to list
-  string project = 2 [(validate.rules).string = {
-    min_len: 2,
+  string project = 2 [(buf.validate.field).string = {
+    min_len: 2
     max_len: 128
   }];
 }
@@ -140,10 +137,10 @@ message IPServiceListRequest {
 // IPServiceDeleteRequest is the request payload for a ip delete request
 message IPServiceDeleteRequest {
   // Uuid of the ip to delete
-  string uuid = 1 [(validate.rules).string.uuid = true];
+  string uuid = 1 [(buf.validate.field).string.uuid = true];
   // Project of the ip
-  string project = 2 [(validate.rules).string = {
-    min_len: 2,
+  string project = 2 [(buf.validate.field).string = {
+    min_len: 2
     max_len: 128
   }];
 }

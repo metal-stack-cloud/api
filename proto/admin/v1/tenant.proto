@@ -4,7 +4,7 @@ package admin.v1;
 
 import "api/v1/common.proto";
 import "api/v1/tenant.proto";
-import "validate/validate.proto";
+import "buf/validate/validate.proto";
 
 // TenantService serves tenant related functions
 service TenantService {
@@ -45,7 +45,7 @@ message TenantServiceListRequest {
   // Paging details for the list request
   api.v1.Paging paging = 7;
   // Uuid of the tenant to list
-  optional string uuid = 8 [(validate.rules).string.uuid = true];
+  optional string uuid = 8 [(buf.validate.field).string.uuid = true];
 }
 
 // TenantServiceListResponse is the response payload for a tenant list request
@@ -63,7 +63,7 @@ message TenantServiceAdmitRequest {
   // CouponId is the id of the coupon this tenant should get
   optional string coupon_id = 2;
   // BalanceToAdd is the amount of balance he should be granted
-  optional int64 balance_to_add = 3 [(validate.rules).int64.gt = 0];
+  optional int64 balance_to_add = 3 [(buf.validate.field).int64.gt = 0];
 }
 
 // TenantServiceAdmitResponse is the response payload for a tenant admit request
@@ -91,7 +91,7 @@ message TenantServiceAddMemberRequest {
   // Email of the member to add
   string member_id = 2;
   // Role to assign to the new member
-  api.v1.TenantRole role = 3 [(validate.rules).enum.defined_only = true];
+  api.v1.TenantRole role = 3 [(buf.validate.field).enum.defined_only = true];
 }
 
 // TenantServiceAddMemberResponse is the response payload for the add member request
