@@ -72,7 +72,7 @@ message IP {
   // Project where this ip address belongs to
   string project = 6 [(buf.validate.field).string.uuid = true];
   // Type of this ip
-  IPType type = 7;
+  IPType type = 7 [(buf.validate.field).enum.defined_only = true];
   // Tags on this ip
   repeated string tags = 8 [(buf.validate.field).repeated.max_items = 100];
   // CreatedAt is the date when this ip was created

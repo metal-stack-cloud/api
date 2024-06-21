@@ -202,7 +202,7 @@ message ClusterServiceOperateRequest {
     max_len: 128
   }];
   // Operate is the operation which should be performed
-  Operate operate = 3;
+  Operate operate = 3 [(buf.validate.field).enum.defined_only = true];
 }
 
 // ClusterServiceGetRequest is the request payload for a cluster get request

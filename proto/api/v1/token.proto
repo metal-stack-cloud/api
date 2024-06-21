@@ -47,7 +47,7 @@ message Token {
   // IssuedAt gives the date when this token was created
   google.protobuf.Timestamp issued_at = 7;
   // TokenType describes the type of this token
-  TokenType token_type = 8;
+  TokenType token_type = 8 [(buf.validate.field).enum.defined_only = true];
   // ProjectRoles associates a project id with the corresponding role of the token owner
   map<string, ProjectRole> project_roles = 9;
   // TenantRoles associates a tenant id with the corresponding role of the token owner
