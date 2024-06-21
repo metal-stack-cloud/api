@@ -7390,13 +7390,13 @@
             {
               "name": "payment_method",
               "description": "PaymentMethod indicates which way the user wants to pay",
-              "label": "",
+              "label": "optional",
               "type": "PaymentMethod",
               "longType": "PaymentMethod",
               "fullType": "api.v1.PaymentMethod",
               "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
+              "isoneof": true,
+              "oneofdecl": "_payment_method",
               "defaultValue": ""
             }
           ]

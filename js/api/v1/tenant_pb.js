@@ -305,12 +305,6 @@ PaymentDetails.fields = proto3.util.newFieldList(() => [
 export class PaymentDetailsUpdate extends Message {
     constructor(data) {
         super();
-        /**
-         * PaymentMethod indicates which way the user wants to pay
-         *
-         * @generated from field: api.v1.PaymentMethod payment_method = 5;
-         */
-        this.paymentMethod = PaymentMethod.UNSPECIFIED;
         proto3.util.initPartial(data, this);
     }
     static fromBinary(bytes, options) {
@@ -333,7 +327,7 @@ PaymentDetailsUpdate.fields = proto3.util.newFieldList(() => [
     { no: 2, name: "payment_method_id", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
     { no: 3, name: "subscription_id", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
     { no: 4, name: "vat", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
-    { no: 5, name: "payment_method", kind: "enum", T: proto3.getEnumType(PaymentMethod) },
+    { no: 5, name: "payment_method", kind: "enum", T: proto3.getEnumType(PaymentMethod), opt: true },
 ]);
 /**
  * TermsAndConditions the tenant accepted

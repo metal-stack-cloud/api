@@ -179,7 +179,7 @@ message PaymentDetailsUpdate {
   // Vat which applies to this tenant
   optional string vat = 4;
   // PaymentMethod indicates which way the user wants to pay
-  PaymentMethod payment_method = 5;
+  optional PaymentMethod payment_method = 5;
 }
 
 // TermsAndConditions the tenant accepted

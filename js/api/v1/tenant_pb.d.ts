@@ -299,9 +299,9 @@ export declare class PaymentDetailsUpdate extends Message<PaymentDetailsUpdate> 
     /**
      * PaymentMethod indicates which way the user wants to pay
      *
-     * @generated from field: api.v1.PaymentMethod payment_method = 5;
+     * @generated from field: optional api.v1.PaymentMethod payment_method = 5;
      */
-    paymentMethod: PaymentMethod;
+    paymentMethod?: PaymentMethod;
     constructor(data?: PartialMessage<PaymentDetailsUpdate>);
     static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.PaymentDetailsUpdate";

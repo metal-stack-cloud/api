@@ -771,8 +771,6 @@ func (m *PaymentDetailsUpdate) validate(all bool) error {
 
 	var errors []error
 
-	// no validation rules for PaymentMethod
-
 	if m.CustomerId != nil {
 		// no validation rules for CustomerId
 	}
@@ -787,6 +785,10 @@ func (m *PaymentDetailsUpdate) validate(all bool) error {
 
 	if m.Vat != nil {
 		// no validation rules for Vat
+	}
+
+	if m.PaymentMethod != nil {
+		// no validation rules for PaymentMethod
 	}
 
 	if len(errors) > 0 {

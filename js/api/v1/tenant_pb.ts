@@ -449,9 +449,9 @@ export class PaymentDetailsUpdate extends Message<PaymentDetailsUpdate> {
   /**
    * PaymentMethod indicates which way the user wants to pay
    *
-   * @generated from field: api.v1.PaymentMethod payment_method = 5;
+   * @generated from field: optional api.v1.PaymentMethod payment_method = 5;
    */
-  paymentMethod = PaymentMethod.UNSPECIFIED;
+  paymentMethod?: PaymentMethod;
 
   constructor(data?: PartialMessage<PaymentDetailsUpdate>) {
     super();
@@ -465,7 +465,7 @@ export class PaymentDetailsUpdate extends Message<PaymentDetailsUpdate> {
     { no: 2, name: "payment_method_id", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
     { no: 3, name: "subscription_id", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
     { no: 4, name: "vat", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
-    { no: 5, name: "payment_method", kind: "enum", T: proto3.getEnumType(PaymentMethod) },
+    { no: 5, name: "payment_method", kind: "enum", T: proto3.getEnumType(PaymentMethod), opt: true },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): PaymentDetailsUpdate {
