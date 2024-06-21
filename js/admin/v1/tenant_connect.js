@@ -2,7 +2,7 @@
 // @generated from file admin/v1/tenant.proto (package admin.v1, syntax proto3)
 /* eslint-disable */
 // @ts-nocheck
-import { TenantServiceAdmitRequest, TenantServiceAdmitResponse, TenantServiceListRequest, TenantServiceListResponse, TenantServiceRevokeRequest, TenantServiceRevokeResponse } from "./tenant_pb.js";
+import { TenantServiceAddMemberRequest, TenantServiceAddMemberResponse, TenantServiceAdmitRequest, TenantServiceAdmitResponse, TenantServiceListRequest, TenantServiceListResponse, TenantServiceRevokeRequest, TenantServiceRevokeResponse } from "./tenant_pb.js";
 import { MethodKind } from "@bufbuild/protobuf";
 /**
  * TenantService serves tenant related functions
@@ -43,6 +43,17 @@ export const TenantService = {
             name: "Revoke",
             I: TenantServiceRevokeRequest,
             O: TenantServiceRevokeResponse,
+            kind: MethodKind.Unary,
+        },
+        /**
+         * Add a member to a tenant
+         *
+         * @generated from rpc admin.v1.TenantService.AddMember
+         */
+        addMember: {
+            name: "AddMember",
+            I: TenantServiceAddMemberRequest,
+            O: TenantServiceAddMemberResponse,
             kind: MethodKind.Unary,
         },
     }

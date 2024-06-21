@@ -3,8 +3,8 @@ syntax = "proto3";
 package api.v1;
 
 import "api/v1/common.proto";
+import "buf/validate/validate.proto";
 import "google/protobuf/timestamp.proto";
-import "validate/validate.proto";
 
 // PaymentService serves payment related functions
 service PaymentService {
@@ -98,7 +98,7 @@ message PaymentCustomer {
   // SubscriptionId of the customer
   string subscription_id = 5;
   // Email of the customer
-  optional string email = 6 [(validate.rules).string.email = true];
+  optional string email = 6 [(buf.validate.field).string.email = true];
   // Card the customer supplied
   optional Card card = 7;
   // Prices which apply to customer resources
@@ -154,9 +154,9 @@ message Price {
   // ProductType this price applies to
   ProductType product_type = 5;
   // Description of this price
-  optional string description = 6 [(validate.rules).string = {
-    min_len: 2,
-    max_len: 500,
+  optional string description = 6 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 500
   }];
 }
 
@@ -243,9 +243,9 @@ message Coupon {
 // PaymentServiceCreateOrUpdateCustomerRequest is the request payload for a payment create or update customer request
 message PaymentServiceCreateOrUpdateCustomerRequest {
   // Login of the customer
-  string login = 1 [(validate.rules).string = {
-    min_len: 2,
-    max_len: 128,
+  string login = 1 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
   }];
   // Customer is the customer to modify
   PaymentCustomer customer = 2;
@@ -262,9 +262,9 @@ message PaymentServiceCreateOrUpdateCustomerResponse {
 // PaymentServiceGetCustomerRequest is the request payload for a payment get customer request
 message PaymentServiceGetCustomerRequest {
   // Login of the customer
-  string login = 1 [(validate.rules).string = {
-    min_len: 2,
-    max_len: 128,
+  string login = 1 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
   }];
   // CustomerId of the customer
   string customer_id = 2;
@@ -279,9 +279,9 @@ message PaymentServiceGetCustomerResponse {
 // PaymentServiceGetCustomerWithLoginRequest is the request payload for a payment get customer request
 message PaymentServiceGetCustomerWithLoginRequest {
   // Login of the customer
-  string login = 1 [(validate.rules).string = {
-    min_len: 2,
-    max_len: 128,
+  string login = 1 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
   }];
 }
 
@@ -294,9 +294,9 @@ message PaymentServiceGetCustomerWithLoginResponse {
 // PaymentServiceCheckIfCustomerExistsRequest is the request payload for a payment check if customer exists request
 message PaymentServiceCheckIfCustomerExistsRequest {
   // Login of the customer
-  string login = 1 [(validate.rules).string = {
-    min_len: 2,
-    max_len: 128,
+  string login = 1 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
   }];
 }
 
@@ -311,9 +311,9 @@ message PaymentServiceCheckIfCustomerExistsResponse {
 // PaymentServiceHasPaymentMethodRequest is the request payload for a has payment request
 message PaymentServiceHasPaymentMethodRequest {
   // Login of the customer
-  string login = 1 [(validate.rules).string = {
-    min_len: 2,
-    max_len: 128,
+  string login = 1 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
   }];
 }
 
@@ -330,9 +330,9 @@ message PaymentServiceHasPaymentMethodResponse {
 // PaymentServiceDeletePaymentMethodRequest is the request payload for a delete payment request
 message PaymentServiceDeletePaymentMethodRequest {
   // Login of the customer
-  string login = 1 [(validate.rules).string = {
-    min_len: 2,
-    max_len: 128,
+  string login = 1 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
   }];
 }
 
@@ -342,9 +342,9 @@ message PaymentServiceDeletePaymentMethodResponse {}
 // PaymentServiceGetSubscriptionUsageRequest is the request payload for a get subscription usage request
 message PaymentServiceGetSubscriptionUsageRequest {
   // Login of the customer
-  string login = 1 [(validate.rules).string = {
-    min_len: 2,
-    max_len: 128,
+  string login = 1 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
   }];
 }
 
@@ -357,15 +357,12 @@ message PaymentServiceGetSubscriptionUsageResponse {
 // PaymentServiceHasPaymentMethodRequest is the request payload for a get invoices request
 message PaymentServiceGetInvoicesRequest {
   // Login of the customer
-  string login = 1 [(validate.rules).string = {
-    min_len: 2,
-    max_len: 128,
+  string login = 1 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
   }];
   // CustomerId is the id of the customer
-  string customer_id = 2 [(validate.rules).string = {
-    min_len: 18,
-    max_len: 18,
-  }];
+  string customer_id = 2 [(buf.validate.field).string.len = 18];
 }
 
 // PaymentServiceGetInvoicesResponse is the response payload for a get invoices request

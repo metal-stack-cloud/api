@@ -604,16 +604,7 @@ func (m *PaymentServiceAddBalanceToCustomerRequest) validate(all bool) error {
 		}
 	}
 
-	if m.GetBalanceToAdd() <= 0 {
-		err := PaymentServiceAddBalanceToCustomerRequestValidationError{
-			field:  "BalanceToAdd",
-			reason: "value must be greater than 0",
-		}
-		if !all {
-			return err
-		}
-		errors = append(errors, err)
-	}
+	// no validation rules for BalanceToAdd
 
 	if len(errors) > 0 {
 		return PaymentServiceAddBalanceToCustomerRequestMultiError(errors)

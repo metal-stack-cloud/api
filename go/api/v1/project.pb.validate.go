@@ -35,9 +35,6 @@ var (
 	_ = sort.Sort
 )
 
-// define the regex for a UUID once up-front
-var _project_uuidPattern = regexp.MustCompile("^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$")
-
 // Validate checks the field values on Project with the rules defined in the
 // proto definition for this message. If any rules are violated, the first
 // error encountered is returned, or nil if there are no violations.
@@ -534,33 +531,11 @@ func (m *ProjectServiceListRequest) validate(all bool) error {
 	var errors []error
 
 	if m.Name != nil {
-
-		if l := utf8.RuneCountInString(m.GetName()); l < 2 || l > 128 {
-			err := ProjectServiceListRequestValidationError{
-				field:  "Name",
-				reason: "value length must be between 2 and 128 runes, inclusive",
-			}
-			if !all {
-				return err
-			}
-			errors = append(errors, err)
-		}
-
+		// no validation rules for Name
 	}
 
 	if m.Tenant != nil {
-
-		if l := utf8.RuneCountInString(m.GetTenant()); l < 2 || l > 128 {
-			err := ProjectServiceListRequestValidationError{
-				field:  "Tenant",
-				reason: "value length must be between 2 and 128 runes, inclusive",
-			}
-			if !all {
-				return err
-			}
-			errors = append(errors, err)
-		}
-
+		// no validation rules for Tenant
 	}
 
 	if len(errors) > 0 {
@@ -801,28 +776,10 @@ func (m *ProjectServiceGetRequest) validate(all bool) error {
 
 	var errors []error
 
-	if err := m._validateUuid(m.GetProject()); err != nil {
-		err = ProjectServiceGetRequestValidationError{
-			field:  "Project",
-			reason: "value must be a valid UUID",
-			cause:  err,
-		}
-		if !all {
-			return err
-		}
-		errors = append(errors, err)
-	}
+	// no validation rules for Project
 
 	if len(errors) > 0 {
 		return ProjectServiceGetRequestMultiError(errors)
-	}
-
-	return nil
-}
-
-func (m *ProjectServiceGetRequest) _validateUuid(uuid string) error {
-	if matched := _project_uuidPattern.MatchString(uuid); !matched {
-		return errors.New("invalid uuid format")
 	}
 
 	return nil
@@ -1088,38 +1045,11 @@ func (m *ProjectServiceCreateRequest) validate(all bool) error {
 
 	var errors []error
 
-	if l := utf8.RuneCountInString(m.GetLogin()); l < 2 || l > 128 {
-		err := ProjectServiceCreateRequestValidationError{
-			field:  "Login",
-			reason: "value length must be between 2 and 128 runes, inclusive",
-		}
-		if !all {
-			return err
-		}
-		errors = append(errors, err)
-	}
+	// no validation rules for Login
 
-	if l := utf8.RuneCountInString(m.GetName()); l < 2 || l > 64 {
-		err := ProjectServiceCreateRequestValidationError{
-			field:  "Name",
-			reason: "value length must be between 2 and 64 runes, inclusive",
-		}
-		if !all {
-			return err
-		}
-		errors = append(errors, err)
-	}
+	// no validation rules for Name
 
-	if l := utf8.RuneCountInString(m.GetDescription()); l < 2 || l > 512 {
-		err := ProjectServiceCreateRequestValidationError{
-			field:  "Description",
-			reason: "value length must be between 2 and 512 runes, inclusive",
-		}
-		if !all {
-			return err
-		}
-		errors = append(errors, err)
-	}
+	// no validation rules for Description
 
 	if len(errors) > 0 {
 		return ProjectServiceCreateRequestMultiError(errors)
@@ -1356,28 +1286,10 @@ func (m *ProjectServiceDeleteRequest) validate(all bool) error {
 
 	var errors []error
 
-	if err := m._validateUuid(m.GetProject()); err != nil {
-		err = ProjectServiceDeleteRequestValidationError{
-			field:  "Project",
-			reason: "value must be a valid UUID",
-			cause:  err,
-		}
-		if !all {
-			return err
-		}
-		errors = append(errors, err)
-	}
+	// no validation rules for Project
 
 	if len(errors) > 0 {
 		return ProjectServiceDeleteRequestMultiError(errors)
-	}
-
-	return nil
-}
-
-func (m *ProjectServiceDeleteRequest) _validateUuid(uuid string) error {
-	if matched := _project_uuidPattern.MatchString(uuid); !matched {
-		return errors.New("invalid uuid format")
 	}
 
 	return nil
@@ -1611,58 +1523,18 @@ func (m *ProjectServiceUpdateRequest) validate(all bool) error {
 
 	var errors []error
 
-	if err := m._validateUuid(m.GetProject()); err != nil {
-		err = ProjectServiceUpdateRequestValidationError{
-			field:  "Project",
-			reason: "value must be a valid UUID",
-			cause:  err,
-		}
-		if !all {
-			return err
-		}
-		errors = append(errors, err)
-	}
+	// no validation rules for Project
 
 	if m.Name != nil {
-
-		if l := utf8.RuneCountInString(m.GetName()); l < 2 || l > 64 {
-			err := ProjectServiceUpdateRequestValidationError{
-				field:  "Name",
-				reason: "value length must be between 2 and 64 runes, inclusive",
-			}
-			if !all {
-				return err
-			}
-			errors = append(errors, err)
-		}
-
+		// no validation rules for Name
 	}
 
 	if m.Description != nil {
-
-		if l := utf8.RuneCountInString(m.GetDescription()); l < 2 || l > 512 {
-			err := ProjectServiceUpdateRequestValidationError{
-				field:  "Description",
-				reason: "value length must be between 2 and 512 runes, inclusive",
-			}
-			if !all {
-				return err
-			}
-			errors = append(errors, err)
-		}
-
+		// no validation rules for Description
 	}
 
 	if len(errors) > 0 {
 		return ProjectServiceUpdateRequestMultiError(errors)
-	}
-
-	return nil
-}
-
-func (m *ProjectServiceUpdateRequest) _validateUuid(uuid string) error {
-	if matched := _project_uuidPattern.MatchString(uuid); !matched {
-		return errors.New("invalid uuid format")
 	}
 
 	return nil
@@ -1896,30 +1768,12 @@ func (m *ProjectServiceInviteRequest) validate(all bool) error {
 
 	var errors []error
 
-	if err := m._validateUuid(m.GetProject()); err != nil {
-		err = ProjectServiceInviteRequestValidationError{
-			field:  "Project",
-			reason: "value must be a valid UUID",
-			cause:  err,
-		}
-		if !all {
-			return err
-		}
-		errors = append(errors, err)
-	}
+	// no validation rules for Project
 
 	// no validation rules for Role
 
 	if len(errors) > 0 {
 		return ProjectServiceInviteRequestMultiError(errors)
-	}
-
-	return nil
-}
-
-func (m *ProjectServiceInviteRequest) _validateUuid(uuid string) error {
-	if matched := _project_uuidPattern.MatchString(uuid); !matched {
-		return errors.New("invalid uuid format")
 	}
 
 	return nil
@@ -2154,28 +2008,10 @@ func (m *ProjectServiceInvitesListRequest) validate(all bool) error {
 
 	var errors []error
 
-	if err := m._validateUuid(m.GetProject()); err != nil {
-		err = ProjectServiceInvitesListRequestValidationError{
-			field:  "Project",
-			reason: "value must be a valid UUID",
-			cause:  err,
-		}
-		if !all {
-			return err
-		}
-		errors = append(errors, err)
-	}
+	// no validation rules for Project
 
 	if len(errors) > 0 {
 		return ProjectServiceInvitesListRequestMultiError(errors)
-	}
-
-	return nil
-}
-
-func (m *ProjectServiceInvitesListRequest) _validateUuid(uuid string) error {
-	if matched := _project_uuidPattern.MatchString(uuid); !matched {
-		return errors.New("invalid uuid format")
 	}
 
 	return nil
@@ -2655,30 +2491,12 @@ func (m *ProjectServiceRemoveMemberRequest) validate(all bool) error {
 
 	var errors []error
 
-	if err := m._validateUuid(m.GetProject()); err != nil {
-		err = ProjectServiceRemoveMemberRequestValidationError{
-			field:  "Project",
-			reason: "value must be a valid UUID",
-			cause:  err,
-		}
-		if !all {
-			return err
-		}
-		errors = append(errors, err)
-	}
+	// no validation rules for Project
 
 	// no validation rules for MemberId
 
 	if len(errors) > 0 {
 		return ProjectServiceRemoveMemberRequestMultiError(errors)
-	}
-
-	return nil
-}
-
-func (m *ProjectServiceRemoveMemberRequest) _validateUuid(uuid string) error {
-	if matched := _project_uuidPattern.MatchString(uuid); !matched {
-		return errors.New("invalid uuid format")
 	}
 
 	return nil
@@ -2887,17 +2705,7 @@ func (m *ProjectServiceUpdateMemberRequest) validate(all bool) error {
 
 	var errors []error
 
-	if err := m._validateUuid(m.GetProject()); err != nil {
-		err = ProjectServiceUpdateMemberRequestValidationError{
-			field:  "Project",
-			reason: "value must be a valid UUID",
-			cause:  err,
-		}
-		if !all {
-			return err
-		}
-		errors = append(errors, err)
-	}
+	// no validation rules for Project
 
 	// no validation rules for MemberId
 
@@ -2905,14 +2713,6 @@ func (m *ProjectServiceUpdateMemberRequest) validate(all bool) error {
 
 	if len(errors) > 0 {
 		return ProjectServiceUpdateMemberRequestMultiError(errors)
-	}
-
-	return nil
-}
-
-func (m *ProjectServiceUpdateMemberRequest) _validateUuid(uuid string) error {
-	if matched := _project_uuidPattern.MatchString(uuid); !matched {
-		return errors.New("invalid uuid format")
 	}
 
 	return nil
@@ -3366,30 +3166,12 @@ func (m *ProjectServiceInviteDeleteRequest) validate(all bool) error {
 
 	var errors []error
 
-	if err := m._validateUuid(m.GetProject()); err != nil {
-		err = ProjectServiceInviteDeleteRequestValidationError{
-			field:  "Project",
-			reason: "value must be a valid UUID",
-			cause:  err,
-		}
-		if !all {
-			return err
-		}
-		errors = append(errors, err)
-	}
+	// no validation rules for Project
 
 	// no validation rules for Secret
 
 	if len(errors) > 0 {
 		return ProjectServiceInviteDeleteRequestMultiError(errors)
-	}
-
-	return nil
-}
-
-func (m *ProjectServiceInviteDeleteRequest) _validateUuid(uuid string) error {
-	if matched := _project_uuidPattern.MatchString(uuid); !matched {
-		return errors.New("invalid uuid format")
 	}
 
 	return nil

@@ -35,9 +35,6 @@ var (
 	_ = sort.Sort
 )
 
-// define the regex for a UUID once up-front
-var _token_uuidPattern = regexp.MustCompile("^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$")
-
 // Validate checks the field values on Token with the rules defined in the
 // proto definition for this message. If any rules are violated, the first
 // error encountered is returned, or nil if there are no violations.
@@ -59,39 +56,11 @@ func (m *Token) validate(all bool) error {
 
 	var errors []error
 
-	if err := m._validateUuid(m.GetUuid()); err != nil {
-		err = TokenValidationError{
-			field:  "Uuid",
-			reason: "value must be a valid UUID",
-			cause:  err,
-		}
-		if !all {
-			return err
-		}
-		errors = append(errors, err)
-	}
+	// no validation rules for Uuid
 
-	if l := utf8.RuneCountInString(m.GetUserId()); l < 2 || l > 512 {
-		err := TokenValidationError{
-			field:  "UserId",
-			reason: "value length must be between 2 and 512 runes, inclusive",
-		}
-		if !all {
-			return err
-		}
-		errors = append(errors, err)
-	}
+	// no validation rules for UserId
 
-	if l := utf8.RuneCountInString(m.GetDescription()); l < 2 || l > 256 {
-		err := TokenValidationError{
-			field:  "Description",
-			reason: "value length must be between 2 and 256 runes, inclusive",
-		}
-		if !all {
-			return err
-		}
-		errors = append(errors, err)
-	}
+	// no validation rules for Description
 
 	for idx, item := range m.GetPermissions() {
 		_, _ = idx, item
@@ -202,14 +171,6 @@ func (m *Token) validate(all bool) error {
 	return nil
 }
 
-func (m *Token) _validateUuid(uuid string) error {
-	if matched := _token_uuidPattern.MatchString(uuid); !matched {
-		return errors.New("invalid uuid format")
-	}
-
-	return nil
-}
-
 // TokenMultiError is an error wrapping multiple validation errors returned by
 // Token.ValidateAll() if the designated constraints aren't met.
 type TokenMultiError []error
@@ -302,16 +263,7 @@ func (m *TokenServiceCreateRequest) validate(all bool) error {
 
 	var errors []error
 
-	if l := utf8.RuneCountInString(m.GetDescription()); l < 2 || l > 256 {
-		err := TokenServiceCreateRequestValidationError{
-			field:  "Description",
-			reason: "value length must be between 2 and 256 runes, inclusive",
-		}
-		if !all {
-			return err
-		}
-		errors = append(errors, err)
-	}
+	// no validation rules for Description
 
 	for idx, item := range m.GetPermissions() {
 		_, _ = idx, item
@@ -347,34 +299,32 @@ func (m *TokenServiceCreateRequest) validate(all bool) error {
 
 	}
 
-	if d := m.GetExpires(); d != nil {
-		dur, err := d.AsDuration(), d.CheckValid()
-		if err != nil {
-			err = TokenServiceCreateRequestValidationError{
+	if all {
+		switch v := interface{}(m.GetExpires()).(type) {
+		case interface{ ValidateAll() error }:
+			if err := v.ValidateAll(); err != nil {
+				errors = append(errors, TokenServiceCreateRequestValidationError{
+					field:  "Expires",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		case interface{ Validate() error }:
+			if err := v.Validate(); err != nil {
+				errors = append(errors, TokenServiceCreateRequestValidationError{
+					field:  "Expires",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		}
+	} else if v, ok := interface{}(m.GetExpires()).(interface{ Validate() error }); ok {
+		if err := v.Validate(); err != nil {
+			return TokenServiceCreateRequestValidationError{
 				field:  "Expires",
-				reason: "value is not a valid duration",
+				reason: "embedded message failed validation",
 				cause:  err,
 			}
-			if !all {
-				return err
-			}
-			errors = append(errors, err)
-		} else {
-
-			lt := time.Duration(31536001*time.Second + 0*time.Nanosecond)
-			gte := time.Duration(600*time.Second + 0*time.Nanosecond)
-
-			if dur < gte || dur >= lt {
-				err := TokenServiceCreateRequestValidationError{
-					field:  "Expires",
-					reason: "value must be inside range [10m0s, 8760h0m1s)",
-				}
-				if !all {
-					return err
-				}
-				errors = append(errors, err)
-			}
-
 		}
 	}
 
@@ -961,28 +911,10 @@ func (m *TokenServiceRevokeRequest) validate(all bool) error {
 
 	var errors []error
 
-	if err := m._validateUuid(m.GetUuid()); err != nil {
-		err = TokenServiceRevokeRequestValidationError{
-			field:  "Uuid",
-			reason: "value must be a valid UUID",
-			cause:  err,
-		}
-		if !all {
-			return err
-		}
-		errors = append(errors, err)
-	}
+	// no validation rules for Uuid
 
 	if len(errors) > 0 {
 		return TokenServiceRevokeRequestMultiError(errors)
-	}
-
-	return nil
-}
-
-func (m *TokenServiceRevokeRequest) _validateUuid(uuid string) error {
-	if matched := _token_uuidPattern.MatchString(uuid); !matched {
-		return errors.New("invalid uuid format")
 	}
 
 	return nil

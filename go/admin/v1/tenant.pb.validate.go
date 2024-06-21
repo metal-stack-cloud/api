@@ -39,9 +39,6 @@ var (
 	_ = apiv1.OAuthProvider(0)
 )
 
-// define the regex for a UUID once up-front
-var _tenant_uuidPattern = regexp.MustCompile("^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$")
-
 // Validate checks the field values on TenantServiceListRequest with the rules
 // defined in the proto definition for this message. If any rules are
 // violated, the first error encountered is returned, or nil if there are no violations.
@@ -114,31 +111,11 @@ func (m *TenantServiceListRequest) validate(all bool) error {
 	}
 
 	if m.Uuid != nil {
-
-		if err := m._validateUuid(m.GetUuid()); err != nil {
-			err = TenantServiceListRequestValidationError{
-				field:  "Uuid",
-				reason: "value must be a valid UUID",
-				cause:  err,
-			}
-			if !all {
-				return err
-			}
-			errors = append(errors, err)
-		}
-
+		// no validation rules for Uuid
 	}
 
 	if len(errors) > 0 {
 		return TenantServiceListRequestMultiError(errors)
-	}
-
-	return nil
-}
-
-func (m *TenantServiceListRequest) _validateUuid(uuid string) error {
-	if matched := _tenant_uuidPattern.MatchString(uuid); !matched {
-		return errors.New("invalid uuid format")
 	}
 
 	return nil
@@ -386,18 +363,7 @@ func (m *TenantServiceAdmitRequest) validate(all bool) error {
 	}
 
 	if m.BalanceToAdd != nil {
-
-		if m.GetBalanceToAdd() <= 0 {
-			err := TenantServiceAdmitRequestValidationError{
-				field:  "BalanceToAdd",
-				reason: "value must be greater than 0",
-			}
-			if !all {
-				return err
-			}
-			errors = append(errors, err)
-		}
-
+		// no validation rules for BalanceToAdd
 	}
 
 	if len(errors) > 0 {
@@ -846,3 +812,215 @@ var _ interface {
 	Cause() error
 	ErrorName() string
 } = TenantServiceRevokeResponseValidationError{}
+
+// Validate checks the field values on TenantServiceAddMemberRequest with the
+// rules defined in the proto definition for this message. If any rules are
+// violated, the first error encountered is returned, or nil if there are no violations.
+func (m *TenantServiceAddMemberRequest) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on TenantServiceAddMemberRequest with
+// the rules defined in the proto definition for this message. If any rules
+// are violated, the result is a list of violation errors wrapped in
+// TenantServiceAddMemberRequestMultiError, or nil if none found.
+func (m *TenantServiceAddMemberRequest) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *TenantServiceAddMemberRequest) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	// no validation rules for TenantId
+
+	// no validation rules for MemberId
+
+	// no validation rules for Role
+
+	if len(errors) > 0 {
+		return TenantServiceAddMemberRequestMultiError(errors)
+	}
+
+	return nil
+}
+
+// TenantServiceAddMemberRequestMultiError is an error wrapping multiple
+// validation errors returned by TenantServiceAddMemberRequest.ValidateAll()
+// if the designated constraints aren't met.
+type TenantServiceAddMemberRequestMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m TenantServiceAddMemberRequestMultiError) Error() string {
+	var msgs []string
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m TenantServiceAddMemberRequestMultiError) AllErrors() []error { return m }
+
+// TenantServiceAddMemberRequestValidationError is the validation error
+// returned by TenantServiceAddMemberRequest.Validate if the designated
+// constraints aren't met.
+type TenantServiceAddMemberRequestValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e TenantServiceAddMemberRequestValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e TenantServiceAddMemberRequestValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e TenantServiceAddMemberRequestValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e TenantServiceAddMemberRequestValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e TenantServiceAddMemberRequestValidationError) ErrorName() string {
+	return "TenantServiceAddMemberRequestValidationError"
+}
+
+// Error satisfies the builtin error interface
+func (e TenantServiceAddMemberRequestValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sTenantServiceAddMemberRequest.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = TenantServiceAddMemberRequestValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = TenantServiceAddMemberRequestValidationError{}
+
+// Validate checks the field values on TenantServiceAddMemberResponse with the
+// rules defined in the proto definition for this message. If any rules are
+// violated, the first error encountered is returned, or nil if there are no violations.
+func (m *TenantServiceAddMemberResponse) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on TenantServiceAddMemberResponse with
+// the rules defined in the proto definition for this message. If any rules
+// are violated, the result is a list of violation errors wrapped in
+// TenantServiceAddMemberResponseMultiError, or nil if none found.
+func (m *TenantServiceAddMemberResponse) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *TenantServiceAddMemberResponse) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	if len(errors) > 0 {
+		return TenantServiceAddMemberResponseMultiError(errors)
+	}
+
+	return nil
+}
+
+// TenantServiceAddMemberResponseMultiError is an error wrapping multiple
+// validation errors returned by TenantServiceAddMemberResponse.ValidateAll()
+// if the designated constraints aren't met.
+type TenantServiceAddMemberResponseMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m TenantServiceAddMemberResponseMultiError) Error() string {
+	var msgs []string
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m TenantServiceAddMemberResponseMultiError) AllErrors() []error { return m }
+
+// TenantServiceAddMemberResponseValidationError is the validation error
+// returned by TenantServiceAddMemberResponse.Validate if the designated
+// constraints aren't met.
+type TenantServiceAddMemberResponseValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e TenantServiceAddMemberResponseValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e TenantServiceAddMemberResponseValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e TenantServiceAddMemberResponseValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e TenantServiceAddMemberResponseValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e TenantServiceAddMemberResponseValidationError) ErrorName() string {
+	return "TenantServiceAddMemberResponseValidationError"
+}
+
+// Error satisfies the builtin error interface
+func (e TenantServiceAddMemberResponseValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sTenantServiceAddMemberResponse.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = TenantServiceAddMemberResponseValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = TenantServiceAddMemberResponseValidationError{}

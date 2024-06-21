@@ -139,19 +139,7 @@ func (m *PaymentCustomer) validate(all bool) error {
 	}
 
 	if m.Email != nil {
-
-		if err := m._validateEmail(m.GetEmail()); err != nil {
-			err = PaymentCustomerValidationError{
-				field:  "Email",
-				reason: "value must be a valid email address",
-				cause:  err,
-			}
-			if !all {
-				return err
-			}
-			errors = append(errors, err)
-		}
-
+		// no validation rules for Email
 	}
 
 	if m.Card != nil {
@@ -237,56 +225,6 @@ func (m *PaymentCustomer) validate(all bool) error {
 	}
 
 	return nil
-}
-
-func (m *PaymentCustomer) _validateHostname(host string) error {
-	s := strings.ToLower(strings.TrimSuffix(host, "."))
-
-	if len(host) > 253 {
-		return errors.New("hostname cannot exceed 253 characters")
-	}
-
-	for _, part := range strings.Split(s, ".") {
-		if l := len(part); l == 0 || l > 63 {
-			return errors.New("hostname part must be non-empty and cannot exceed 63 characters")
-		}
-
-		if part[0] == '-' {
-			return errors.New("hostname parts cannot begin with hyphens")
-		}
-
-		if part[len(part)-1] == '-' {
-			return errors.New("hostname parts cannot end with hyphens")
-		}
-
-		for _, r := range part {
-			if (r < 'a' || r > 'z') && (r < '0' || r > '9') && r != '-' {
-				return fmt.Errorf("hostname parts can only contain alphanumeric characters or hyphens, got %q", string(r))
-			}
-		}
-	}
-
-	return nil
-}
-
-func (m *PaymentCustomer) _validateEmail(addr string) error {
-	a, err := mail.ParseAddress(addr)
-	if err != nil {
-		return err
-	}
-	addr = a.Address
-
-	if len(addr) > 254 {
-		return errors.New("email addresses cannot exceed 254 characters")
-	}
-
-	parts := strings.SplitN(addr, "@", 2)
-
-	if len(parts[0]) > 64 {
-		return errors.New("email address local phrase cannot exceed 64 characters")
-	}
-
-	return m._validateHostname(parts[1])
 }
 
 // PaymentCustomerMultiError is an error wrapping multiple validation errors
@@ -500,18 +438,7 @@ func (m *Price) validate(all bool) error {
 	// no validation rules for ProductType
 
 	if m.Description != nil {
-
-		if l := utf8.RuneCountInString(m.GetDescription()); l < 2 || l > 500 {
-			err := PriceValidationError{
-				field:  "Description",
-				reason: "value length must be between 2 and 500 runes, inclusive",
-			}
-			if !all {
-				return err
-			}
-			errors = append(errors, err)
-		}
-
+		// no validation rules for Description
 	}
 
 	if len(errors) > 0 {
@@ -1223,16 +1150,7 @@ func (m *PaymentServiceCreateOrUpdateCustomerRequest) validate(all bool) error {
 
 	var errors []error
 
-	if l := utf8.RuneCountInString(m.GetLogin()); l < 2 || l > 128 {
-		err := PaymentServiceCreateOrUpdateCustomerRequestValidationError{
-			field:  "Login",
-			reason: "value length must be between 2 and 128 runes, inclusive",
-		}
-		if !all {
-			return err
-		}
-		errors = append(errors, err)
-	}
+	// no validation rules for Login
 
 	if all {
 		switch v := interface{}(m.GetCustomer()).(type) {
@@ -1506,16 +1424,7 @@ func (m *PaymentServiceGetCustomerRequest) validate(all bool) error {
 
 	var errors []error
 
-	if l := utf8.RuneCountInString(m.GetLogin()); l < 2 || l > 128 {
-		err := PaymentServiceGetCustomerRequestValidationError{
-			field:  "Login",
-			reason: "value length must be between 2 and 128 runes, inclusive",
-		}
-		if !all {
-			return err
-		}
-		errors = append(errors, err)
-	}
+	// no validation rules for Login
 
 	// no validation rules for CustomerId
 
@@ -1759,16 +1668,7 @@ func (m *PaymentServiceGetCustomerWithLoginRequest) validate(all bool) error {
 
 	var errors []error
 
-	if l := utf8.RuneCountInString(m.GetLogin()); l < 2 || l > 128 {
-		err := PaymentServiceGetCustomerWithLoginRequestValidationError{
-			field:  "Login",
-			reason: "value length must be between 2 and 128 runes, inclusive",
-		}
-		if !all {
-			return err
-		}
-		errors = append(errors, err)
-	}
+	// no validation rules for Login
 
 	if len(errors) > 0 {
 		return PaymentServiceGetCustomerWithLoginRequestMultiError(errors)
@@ -2011,16 +1911,7 @@ func (m *PaymentServiceCheckIfCustomerExistsRequest) validate(all bool) error {
 
 	var errors []error
 
-	if l := utf8.RuneCountInString(m.GetLogin()); l < 2 || l > 128 {
-		err := PaymentServiceCheckIfCustomerExistsRequestValidationError{
-			field:  "Login",
-			reason: "value length must be between 2 and 128 runes, inclusive",
-		}
-		if !all {
-			return err
-		}
-		errors = append(errors, err)
-	}
+	// no validation rules for Login
 
 	if len(errors) > 0 {
 		return PaymentServiceCheckIfCustomerExistsRequestMultiError(errors)
@@ -2264,16 +2155,7 @@ func (m *PaymentServiceHasPaymentMethodRequest) validate(all bool) error {
 
 	var errors []error
 
-	if l := utf8.RuneCountInString(m.GetLogin()); l < 2 || l > 128 {
-		err := PaymentServiceHasPaymentMethodRequestValidationError{
-			field:  "Login",
-			reason: "value length must be between 2 and 128 runes, inclusive",
-		}
-		if !all {
-			return err
-		}
-		errors = append(errors, err)
-	}
+	// no validation rules for Login
 
 	if len(errors) > 0 {
 		return PaymentServiceHasPaymentMethodRequestMultiError(errors)
@@ -2493,16 +2375,7 @@ func (m *PaymentServiceDeletePaymentMethodRequest) validate(all bool) error {
 
 	var errors []error
 
-	if l := utf8.RuneCountInString(m.GetLogin()); l < 2 || l > 128 {
-		err := PaymentServiceDeletePaymentMethodRequestValidationError{
-			field:  "Login",
-			reason: "value length must be between 2 and 128 runes, inclusive",
-		}
-		if !all {
-			return err
-		}
-		errors = append(errors, err)
-	}
+	// no validation rules for Login
 
 	if len(errors) > 0 {
 		return PaymentServiceDeletePaymentMethodRequestMultiError(errors)
@@ -2716,16 +2589,7 @@ func (m *PaymentServiceGetSubscriptionUsageRequest) validate(all bool) error {
 
 	var errors []error
 
-	if l := utf8.RuneCountInString(m.GetLogin()); l < 2 || l > 128 {
-		err := PaymentServiceGetSubscriptionUsageRequestValidationError{
-			field:  "Login",
-			reason: "value length must be between 2 and 128 runes, inclusive",
-		}
-		if !all {
-			return err
-		}
-		errors = append(errors, err)
-	}
+	// no validation rules for Login
 
 	if len(errors) > 0 {
 		return PaymentServiceGetSubscriptionUsageRequestMultiError(errors)
@@ -2972,28 +2836,9 @@ func (m *PaymentServiceGetInvoicesRequest) validate(all bool) error {
 
 	var errors []error
 
-	if l := utf8.RuneCountInString(m.GetLogin()); l < 2 || l > 128 {
-		err := PaymentServiceGetInvoicesRequestValidationError{
-			field:  "Login",
-			reason: "value length must be between 2 and 128 runes, inclusive",
-		}
-		if !all {
-			return err
-		}
-		errors = append(errors, err)
-	}
+	// no validation rules for Login
 
-	if utf8.RuneCountInString(m.GetCustomerId()) != 18 {
-		err := PaymentServiceGetInvoicesRequestValidationError{
-			field:  "CustomerId",
-			reason: "value length must be 18 runes",
-		}
-		if !all {
-			return err
-		}
-		errors = append(errors, err)
-
-	}
+	// no validation rules for CustomerId
 
 	if len(errors) > 0 {
 		return PaymentServiceGetInvoicesRequestMultiError(errors)

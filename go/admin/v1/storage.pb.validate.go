@@ -35,9 +35,6 @@ var (
 	_ = sort.Sort
 )
 
-// define the regex for a UUID once up-front
-var _storage_uuidPattern = regexp.MustCompile("^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$")
-
 // Validate checks the field values on StorageServiceClusterInfoRequest with
 // the rules defined in the proto definition for this message. If any rules
 // are violated, the first error encountered is returned, or nil if there are
@@ -866,34 +863,11 @@ func (m *StorageServiceListVolumesRequest) validate(all bool) error {
 	var errors []error
 
 	if m.Uuid != nil {
-
-		if err := m._validateUuid(m.GetUuid()); err != nil {
-			err = StorageServiceListVolumesRequestValidationError{
-				field:  "Uuid",
-				reason: "value must be a valid UUID",
-				cause:  err,
-			}
-			if !all {
-				return err
-			}
-			errors = append(errors, err)
-		}
-
+		// no validation rules for Uuid
 	}
 
 	if m.Project != nil {
-
-		if l := utf8.RuneCountInString(m.GetProject()); l < 2 || l > 128 {
-			err := StorageServiceListVolumesRequestValidationError{
-				field:  "Project",
-				reason: "value length must be between 2 and 128 runes, inclusive",
-			}
-			if !all {
-				return err
-			}
-			errors = append(errors, err)
-		}
-
+		// no validation rules for Project
 	}
 
 	if m.Partition != nil {
@@ -910,14 +884,6 @@ func (m *StorageServiceListVolumesRequest) validate(all bool) error {
 
 	if len(errors) > 0 {
 		return StorageServiceListVolumesRequestMultiError(errors)
-	}
-
-	return nil
-}
-
-func (m *StorageServiceListVolumesRequest) _validateUuid(uuid string) error {
-	if matched := _storage_uuidPattern.MatchString(uuid); !matched {
-		return errors.New("invalid uuid format")
 	}
 
 	return nil
@@ -1161,34 +1127,11 @@ func (m *StorageServiceListSnapshotsRequest) validate(all bool) error {
 	var errors []error
 
 	if m.Uuid != nil {
-
-		if err := m._validateUuid(m.GetUuid()); err != nil {
-			err = StorageServiceListSnapshotsRequestValidationError{
-				field:  "Uuid",
-				reason: "value must be a valid UUID",
-				cause:  err,
-			}
-			if !all {
-				return err
-			}
-			errors = append(errors, err)
-		}
-
+		// no validation rules for Uuid
 	}
 
 	if m.Project != nil {
-
-		if l := utf8.RuneCountInString(m.GetProject()); l < 2 || l > 128 {
-			err := StorageServiceListSnapshotsRequestValidationError{
-				field:  "Project",
-				reason: "value length must be between 2 and 128 runes, inclusive",
-			}
-			if !all {
-				return err
-			}
-			errors = append(errors, err)
-		}
-
+		// no validation rules for Project
 	}
 
 	if m.Partition != nil {
@@ -1205,14 +1148,6 @@ func (m *StorageServiceListSnapshotsRequest) validate(all bool) error {
 
 	if len(errors) > 0 {
 		return StorageServiceListSnapshotsRequestMultiError(errors)
-	}
-
-	return nil
-}
-
-func (m *StorageServiceListSnapshotsRequest) _validateUuid(uuid string) error {
-	if matched := _storage_uuidPattern.MatchString(uuid); !matched {
-		return errors.New("invalid uuid format")
 	}
 
 	return nil

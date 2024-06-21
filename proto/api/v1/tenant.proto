@@ -4,8 +4,8 @@ package api.v1;
 
 import "api/v1/common.proto";
 import "api/v1/payment.proto";
+import "buf/validate/validate.proto";
 import "google/protobuf/timestamp.proto";
-import "validate/validate.proto";
 
 // TenantService serves tenant related functions
 service TenantService {
@@ -125,7 +125,7 @@ message TenantMember {
   // Id is the user id of the member
   string id = 1;
   // Role is the role of the member
-  TenantRole role = 2;
+  TenantRole role = 2 [(buf.validate.field).enum.defined_only = true];
   // CreatedAt the date when the member was added to the tenant
   google.protobuf.Timestamp created_at = 10;
 }
@@ -137,7 +137,7 @@ message TenantInvite {
   // TargetTenant is the tenant id for which this invite was created
   string target_tenant = 2;
   // Role is the role in this tenant the user will get after accepting the invitation
-  TenantRole role = 3;
+  TenantRole role = 3 [(buf.validate.field).enum.defined_only = true];
   // Joined is false as long as a user has not accepted the invite
   bool joined = 4;
   // TargetTenantName is the tenant name for which this invite was created
@@ -203,9 +203,9 @@ message TenantServiceListRequest {
   // Id filters tenants by id
   optional string id = 1;
   // Name filters tenants by name
-  optional string name = 2 [(validate.rules).string = {
-    min_len: 2,
-    max_len: 64,
+  optional string name = 2 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 64
   }];
 }
 
@@ -218,17 +218,17 @@ message TenantServiceGetRequest {
 // TenantServiceCreateRequest is the request payload of the tenant create request
 message TenantServiceCreateRequest {
   // Name of this tenant
-  string name = 1 [(validate.rules).string = {
-    min_len: 2,
-    max_len: 64,
+  string name = 1 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 64
   }];
   // Description of this tenant
-  optional string description = 2 [(validate.rules).string = {
-    min_len: 2,
-    max_len: 512,
+  optional string description = 2 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 512
   }];
   // Email of the tenant, if not set will be inherited from the creator
-  optional string email = 3 [(validate.rules).string.email = true];
+  optional string email = 3 [(buf.validate.field).string.email = true];
   // AvatarUrl of the tenant
   optional string avatar_url = 4;
   // PhoneNumber of the tenant
@@ -246,16 +246,16 @@ message TenantServiceUpdateRequest {
   // Login of the tenant
   string login = 1;
   // Name of the tenant
-  optional string name = 2 [(validate.rules).string = {
-    min_len: 2,
-    max_len: 64,
+  optional string name = 2 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 64
   }];
   // Email of the tenant
-  optional string email = 3 [(validate.rules).string.email = true];
+  optional string email = 3 [(buf.validate.field).string.email = true];
   // Description of this tenant
-  optional string description = 4 [(validate.rules).string = {
-    min_len: 2,
-    max_len: 512,
+  optional string description = 4 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 512
   }];
   // AvatarUrl of the tenant
   optional string avatar_url = 5;
@@ -316,7 +316,7 @@ message TenantServiceInviteRequest {
   // Login of the tenant
   string login = 1;
   // Role of this user in this tenant
-  TenantRole role = 2;
+  TenantRole role = 2 [(buf.validate.field).enum.defined_only = true];
 }
 
 // TenantServiceInviteRequest is the response payload to a invite member request
@@ -394,7 +394,7 @@ message TenantServiceUpdateMemberRequest {
   // MemberID is the id of the member to update in this tenant
   string member_id = 2;
   // Role of this user in this tenant
-  TenantRole role = 3;
+  TenantRole role = 3 [(buf.validate.field).enum.defined_only = true];
 }
 
 // TenantServiceUpdateMemberResponse is the response payload to a update member request
