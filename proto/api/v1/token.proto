@@ -3,9 +3,9 @@ syntax = "proto3";
 package api.v1;
 
 import "api/v1/common.proto";
+import "buf/validate/validate.proto";
 import "google/protobuf/duration.proto";
 import "google/protobuf/timestamp.proto";
-import "validate/validate.proto";
 
 // TokenService serves token related functions
 service TokenService {
@@ -29,16 +29,16 @@ message Token {
   reserved "roles";
 
   // Uuid of the jwt token, used to reference it by revoke
-  string uuid = 1 [(validate.rules).string.uuid = true];
+  string uuid = 1 [(buf.validate.field).string.uuid = true];
   // UserId who created this token
-  string user_id = 2 [(validate.rules).string = {
-    min_len: 2,
-    max_len: 512,
+  string user_id = 2 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 512
   }];
   // Description is a user given description of this token.
-  string description = 3 [(validate.rules).string = {
-    min_len: 2,
-    max_len: 256,
+  string description = 3 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 256
   }];
   // Permissions is a list of service methods this token can be used for
   repeated MethodPermission permissions = 4;
@@ -47,13 +47,13 @@ message Token {
   // IssuedAt gives the date when this token was created
   google.protobuf.Timestamp issued_at = 7;
   // TokenType describes the type of this token
-  TokenType token_type = 8;
+  TokenType token_type = 8 [(buf.validate.field).enum.defined_only = true];
   // ProjectRoles associates a project id with the corresponding role of the token owner
   map<string, ProjectRole> project_roles = 9;
   // TenantRoles associates a tenant id with the corresponding role of the token owner
   map<string, TenantRole> tenant_roles = 10;
   // AdminRole defines the admin role of the token owner
-  optional AdminRole admin_role = 11;
+  optional AdminRole admin_role = 11 [(buf.validate.field).enum.defined_only = true];
 }
 
 // TokenType specifies different use cases of tokens
@@ -72,24 +72,51 @@ message TokenServiceCreateRequest {
   reserved "roles";
 
   // Description of the token
-  string description = 1 [(validate.rules).string = {
-    min_len: 2,
-    max_len: 256,
+  string description = 1 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 256
   }];
   // Permissions is a list of service methods this token can be used for
   repeated MethodPermission permissions = 2;
   // Expires gives the duration since now, after which this token can not be used anymore
-  google.protobuf.Duration expires = 4 [(validate.rules).duration = {
-    // Between 10min and 1year
-    lt: {seconds: 31536001},
+  google.protobuf.Duration expires = 4 [(buf.validate.field).duration = {
+    lt: {seconds: 31536001}
     gte: {seconds: 600}
   }];
   // ProjectRoles associates a project id with the corresponding role of the token owner
-  map<string, ProjectRole> project_roles = 5;
+  map<string, ProjectRole> project_roles = 5 [(buf.validate.field).map = {
+    keys: {
+      string: {
+        min_len: 3
+        max_len: 128
+      }
+    }
+    values: {
+      cel: {
+        id: "role-specified"
+        message: "project role must be specified"
+        expression: "this >= 0 && this <= 3"
+      }
+    }
+  }];
   // TenantRoles associates a tenant id with the corresponding role of the token owner
-  map<string, TenantRole> tenant_roles = 6;
+  map<string, TenantRole> tenant_roles = 6 [(buf.validate.field).map = {
+    keys: {
+      string: {
+        min_len: 3
+        max_len: 128
+      }
+    }
+    values: {
+      cel: {
+        id: "role-specified"
+        message: "tenant role must be specified"
+        expression: "this >= 0 && this <= 4"
+      }
+    }
+  }];
   // AdminRole defines the admin role of the token owner
-  optional AdminRole admin_role = 7;
+  optional AdminRole admin_role = 7 [(buf.validate.field).enum.defined_only = true];
 }
 
 // MethodPermission is a mapping from a subject/project to a service method
@@ -121,7 +148,7 @@ message TokenServiceListResponse {
 // TokenServiceRevokeRequest is the request payload of a token revoke request
 message TokenServiceRevokeRequest {
   // Uuid of the token to revoke
-  string uuid = 1 [(validate.rules).string.uuid = true];
+  string uuid = 1 [(buf.validate.field).string.uuid = true];
 }
 
 // TokenServiceRevokeResponse is the response payload of a token revoke request

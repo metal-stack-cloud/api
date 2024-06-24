@@ -762,15 +762,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.uuid",
-                    "value": true
-                  }
-                ]
-              }
+              "defaultValue": ""
             },
             {
               "name": "name",
@@ -782,19 +774,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.min_len",
-                    "value": 2
-                  },
-                  {
-                    "name": "string.max_len",
-                    "value": 12
-                  }
-                ]
-              }
+              "defaultValue": ""
             },
             {
               "name": "project",
@@ -806,19 +786,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.min_len",
-                    "value": 2
-                  },
-                  {
-                    "name": "string.max_len",
-                    "value": 128
-                  }
-                ]
-              }
+              "defaultValue": ""
             },
             {
               "name": "partition",
@@ -1022,23 +990,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.min_len",
-                    "value": 2
-                  },
-                  {
-                    "name": "string.max_len",
-                    "value": 12
-                  },
-                  {
-                    "name": "string.hostname",
-                    "value": true
-                  }
-                ]
-              }
+              "defaultValue": ""
             },
             {
               "name": "project",
@@ -1050,19 +1002,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.min_len",
-                    "value": 2
-                  },
-                  {
-                    "name": "string.max_len",
-                    "value": 128
-                  }
-                ]
-              }
+              "defaultValue": ""
             },
             {
               "name": "partition",
@@ -1158,15 +1098,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.uuid",
-                    "value": true
-                  }
-                ]
-              }
+              "defaultValue": ""
             },
             {
               "name": "project",
@@ -1178,19 +1110,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.min_len",
-                    "value": 2
-                  },
-                  {
-                    "name": "string.max_len",
-                    "value": 128
-                  }
-                ]
-              }
+              "defaultValue": ""
             }
           ]
         },
@@ -1238,15 +1158,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.uuid",
-                    "value": true
-                  }
-                ]
-              }
+              "defaultValue": ""
             },
             {
               "name": "project",
@@ -1258,19 +1170,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.min_len",
-                    "value": 2
-                  },
-                  {
-                    "name": "string.max_len",
-                    "value": 128
-                  }
-                ]
-              }
+              "defaultValue": ""
             },
             {
               "name": "expiration",
@@ -1330,15 +1230,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.uuid",
-                    "value": true
-                  }
-                ]
-              }
+              "defaultValue": ""
             },
             {
               "name": "project",
@@ -1350,19 +1242,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.min_len",
-                    "value": 2
-                  },
-                  {
-                    "name": "string.max_len",
-                    "value": 128
-                  }
-                ]
-              }
+              "defaultValue": ""
             }
           ]
         },
@@ -1410,19 +1290,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.min_len",
-                    "value": 2
-                  },
-                  {
-                    "name": "string.max_len",
-                    "value": 128
-                  }
-                ]
-              }
+              "defaultValue": ""
             }
           ]
         },
@@ -1470,15 +1338,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.uuid",
-                    "value": true
-                  }
-                ]
-              }
+              "defaultValue": ""
             },
             {
               "name": "project",
@@ -1490,19 +1350,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.min_len",
-                    "value": 2
-                  },
-                  {
-                    "name": "string.max_len",
-                    "value": 128
-                  }
-                ]
-              }
+              "defaultValue": ""
             },
             {
               "name": "operate",
@@ -1562,15 +1410,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.uuid",
-                    "value": true
-                  }
-                ]
-              }
+              "defaultValue": ""
             },
             {
               "name": "project",
@@ -1582,19 +1422,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.min_len",
-                    "value": 2
-                  },
-                  {
-                    "name": "string.max_len",
-                    "value": 128
-                  }
-                ]
-              }
+              "defaultValue": ""
             },
             {
               "name": "kubernetes",
@@ -1678,15 +1506,7 @@
               "ismap": false,
               "isoneof": true,
               "oneofdecl": "_uuid",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.uuid",
-                    "value": true
-                  }
-                ]
-              }
+              "defaultValue": ""
             },
             {
               "name": "project",
@@ -1698,19 +1518,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.min_len",
-                    "value": 2
-                  },
-                  {
-                    "name": "string.max_len",
-                    "value": 128
-                  }
-                ]
-              }
+              "defaultValue": ""
             }
           ]
         },
@@ -2022,19 +1830,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.max_bytes",
-                    "value": 8
-                  },
-                  {
-                    "name": "string.pattern",
-                    "value": "[0-9]+.[0-9]+.[0-9]"
-                  }
-                ]
-              }
+              "defaultValue": ""
             }
           ]
         },
@@ -2118,27 +1914,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "duration.lt.seconds",
-                    "value": 14400
-                  },
-                  {
-                    "name": "duration.lt.nanos",
-                    "value": 0
-                  },
-                  {
-                    "name": "duration.gte.seconds",
-                    "value": 3600
-                  },
-                  {
-                    "name": "duration.gte.nanos",
-                    "value": 0
-                  }
-                ]
-              }
+              "defaultValue": ""
             }
           ]
         },
@@ -2162,15 +1938,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "uint32.lte",
-                    "value": 24
-                  }
-                ]
-              }
+              "defaultValue": ""
             },
             {
               "name": "minute",
@@ -2182,15 +1950,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "uint32.lte",
-                    "value": 60
-                  }
-                ]
-              }
+              "defaultValue": ""
             },
             {
               "name": "timezone",
@@ -2226,19 +1986,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.min_len",
-                    "value": 2
-                  },
-                  {
-                    "name": "string.max_len",
-                    "value": 128
-                  }
-                ]
-              }
+              "defaultValue": ""
             },
             {
               "name": "machine_type",
@@ -2250,19 +1998,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.min_len",
-                    "value": 2
-                  },
-                  {
-                    "name": "string.max_len",
-                    "value": 128
-                  }
-                ]
-              }
+              "defaultValue": ""
             },
             {
               "name": "minsize",
@@ -2274,15 +2010,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "uint32.lte",
-                    "value": 32
-                  }
-                ]
-              }
+              "defaultValue": ""
             },
             {
               "name": "maxsize",
@@ -2294,15 +2022,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "uint32.lte",
-                    "value": 64
-                  }
-                ]
-              }
+              "defaultValue": ""
             },
             {
               "name": "maxsurge",
@@ -2314,15 +2034,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "uint32.lte",
-                    "value": 64
-                  }
-                ]
-              }
+              "defaultValue": ""
             },
             {
               "name": "maxunavailable",
@@ -2334,15 +2046,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "uint32.lte",
-                    "value": 64
-                  }
-                ]
-              }
+              "defaultValue": ""
             }
           ]
         },
@@ -2366,19 +2070,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.min_len",
-                    "value": 2
-                  },
-                  {
-                    "name": "string.max_len",
-                    "value": 128
-                  }
-                ]
-              }
+              "defaultValue": ""
             },
             {
               "name": "machine_type",
@@ -2390,19 +2082,7 @@
               "ismap": false,
               "isoneof": true,
               "oneofdecl": "_machine_type",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.min_len",
-                    "value": 2
-                  },
-                  {
-                    "name": "string.max_len",
-                    "value": 128
-                  }
-                ]
-              }
+              "defaultValue": ""
             },
             {
               "name": "minsize",
@@ -2414,15 +2094,7 @@
               "ismap": false,
               "isoneof": true,
               "oneofdecl": "_minsize",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "uint32.lte",
-                    "value": 32
-                  }
-                ]
-              }
+              "defaultValue": ""
             },
             {
               "name": "maxsize",
@@ -2434,15 +2106,7 @@
               "ismap": false,
               "isoneof": true,
               "oneofdecl": "_maxsize",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "uint32.lte",
-                    "value": 64
-                  }
-                ]
-              }
+              "defaultValue": ""
             },
             {
               "name": "maxsurge",
@@ -2454,15 +2118,7 @@
               "ismap": false,
               "isoneof": true,
               "oneofdecl": "_maxsurge",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "uint32.lte",
-                    "value": 64
-                  }
-                ]
-              }
+              "defaultValue": ""
             },
             {
               "name": "maxunavailable",
@@ -2474,15 +2130,7 @@
               "ismap": false,
               "isoneof": true,
               "oneofdecl": "_maxunavailable",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "uint32.lte",
-                    "value": 64
-                  }
-                ]
-              }
+              "defaultValue": ""
             }
           ]
         }
@@ -2625,15 +2273,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.uuid",
-                    "value": true
-                  }
-                ]
-              }
+              "defaultValue": ""
             },
             {
               "name": "with_vpn",
@@ -2741,15 +2381,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.uuid",
-                    "value": true
-                  }
-                ]
-              }
+              "defaultValue": ""
             },
             {
               "name": "with_machines",
@@ -3526,15 +3158,7 @@
               "ismap": false,
               "isoneof": true,
               "oneofdecl": "_email",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.email",
-                    "value": true
-                  }
-                ]
-              }
+              "defaultValue": ""
             },
             {
               "name": "card",
@@ -3702,19 +3326,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.min_len",
-                    "value": 2
-                  },
-                  {
-                    "name": "string.max_len",
-                    "value": 128
-                  }
-                ]
-              }
+              "defaultValue": ""
             }
           ]
         },
@@ -3774,19 +3386,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.min_len",
-                    "value": 2
-                  },
-                  {
-                    "name": "string.max_len",
-                    "value": 128
-                  }
-                ]
-              }
+              "defaultValue": ""
             },
             {
               "name": "customer",
@@ -3858,19 +3458,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.min_len",
-                    "value": 2
-                  },
-                  {
-                    "name": "string.max_len",
-                    "value": 128
-                  }
-                ]
-              }
+              "defaultValue": ""
             }
           ]
         },
@@ -3905,19 +3493,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.min_len",
-                    "value": 2
-                  },
-                  {
-                    "name": "string.max_len",
-                    "value": 128
-                  }
-                ]
-              }
+              "defaultValue": ""
             },
             {
               "name": "customer_id",
@@ -3977,19 +3553,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.min_len",
-                    "value": 2
-                  },
-                  {
-                    "name": "string.max_len",
-                    "value": 128
-                  }
-                ]
-              }
+              "defaultValue": ""
             }
           ]
         },
@@ -4072,19 +3636,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.min_len",
-                    "value": 2
-                  },
-                  {
-                    "name": "string.max_len",
-                    "value": 128
-                  }
-                ]
-              }
+              "defaultValue": ""
             },
             {
               "name": "customer_id",
@@ -4096,19 +3648,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.min_len",
-                    "value": 18
-                  },
-                  {
-                    "name": "string.max_len",
-                    "value": 18
-                  }
-                ]
-              }
+              "defaultValue": ""
             }
           ]
         },
@@ -4204,19 +3744,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.min_len",
-                    "value": 2
-                  },
-                  {
-                    "name": "string.max_len",
-                    "value": 128
-                  }
-                ]
-              }
+              "defaultValue": ""
             }
           ]
         },
@@ -4312,19 +3840,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.min_len",
-                    "value": 2
-                  },
-                  {
-                    "name": "string.max_len",
-                    "value": 128
-                  }
-                ]
-              }
+              "defaultValue": ""
             }
           ]
         },
@@ -4587,19 +4103,7 @@
               "ismap": false,
               "isoneof": true,
               "oneofdecl": "_description",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.min_len",
-                    "value": 2
-                  },
-                  {
-                    "name": "string.max_len",
-                    "value": 500
-                  }
-                ]
-              }
+              "defaultValue": ""
             }
           ]
         },
@@ -4898,15 +4402,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "int64.gt",
-                    "value": 0
-                  }
-                ]
-              }
+              "defaultValue": ""
             }
           ]
         },
@@ -5396,19 +4892,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.min_len",
-                    "value": 2
-                  },
-                  {
-                    "name": "string.max_len",
-                    "value": 128
-                  }
-                ]
-              }
+              "defaultValue": ""
             },
             {
               "name": "name",
@@ -5420,19 +4904,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.min_len",
-                    "value": 2
-                  },
-                  {
-                    "name": "string.max_len",
-                    "value": 64
-                  }
-                ]
-              }
+              "defaultValue": ""
             },
             {
               "name": "description",
@@ -5444,19 +4916,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.min_len",
-                    "value": 2
-                  },
-                  {
-                    "name": "string.max_len",
-                    "value": 512
-                  }
-                ]
-              }
+              "defaultValue": ""
             },
             {
               "name": "avatar_url",
@@ -5516,15 +4976,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.uuid",
-                    "value": true
-                  }
-                ]
-              }
+              "defaultValue": ""
             }
           ]
         },
@@ -5572,15 +5024,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.uuid",
-                    "value": true
-                  }
-                ]
-              }
+              "defaultValue": ""
             }
           ]
         },
@@ -5700,15 +5144,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.uuid",
-                    "value": true
-                  }
-                ]
-              }
+              "defaultValue": ""
             },
             {
               "name": "secret",
@@ -5803,15 +5239,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.uuid",
-                    "value": true
-                  }
-                ]
-              }
+              "defaultValue": ""
             },
             {
               "name": "role",
@@ -5871,15 +5299,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.uuid",
-                    "value": true
-                  }
-                ]
-              }
+              "defaultValue": ""
             }
           ]
         },
@@ -5927,19 +5347,7 @@
               "ismap": false,
               "isoneof": true,
               "oneofdecl": "_name",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.min_len",
-                    "value": 2
-                  },
-                  {
-                    "name": "string.max_len",
-                    "value": 128
-                  }
-                ]
-              }
+              "defaultValue": ""
             },
             {
               "name": "tenant",
@@ -5951,19 +5359,7 @@
               "ismap": false,
               "isoneof": true,
               "oneofdecl": "_tenant",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.min_len",
-                    "value": 2
-                  },
-                  {
-                    "name": "string.max_len",
-                    "value": 128
-                  }
-                ]
-              }
+              "defaultValue": ""
             }
           ]
         },
@@ -6011,15 +5407,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.uuid",
-                    "value": true
-                  }
-                ]
-              }
+              "defaultValue": ""
             },
             {
               "name": "member_id",
@@ -6066,15 +5454,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.uuid",
-                    "value": true
-                  }
-                ]
-              }
+              "defaultValue": ""
             },
             {
               "name": "member_id",
@@ -6146,15 +5526,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.uuid",
-                    "value": true
-                  }
-                ]
-              }
+              "defaultValue": ""
             },
             {
               "name": "name",
@@ -6166,19 +5538,7 @@
               "ismap": false,
               "isoneof": true,
               "oneofdecl": "_name",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.min_len",
-                    "value": 2
-                  },
-                  {
-                    "name": "string.max_len",
-                    "value": 64
-                  }
-                ]
-              }
+              "defaultValue": ""
             },
             {
               "name": "description",
@@ -6190,19 +5550,7 @@
               "ismap": false,
               "isoneof": true,
               "oneofdecl": "_description",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.min_len",
-                    "value": 2
-                  },
-                  {
-                    "name": "string.max_len",
-                    "value": 512
-                  }
-                ]
-              }
+              "defaultValue": ""
             },
             {
               "name": "avatar_url",
@@ -6788,15 +6136,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.uuid",
-                    "value": true
-                  }
-                ]
-              }
+              "defaultValue": ""
             },
             {
               "name": "project",
@@ -6808,19 +6148,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.min_len",
-                    "value": 2
-                  },
-                  {
-                    "name": "string.max_len",
-                    "value": 128
-                  }
-                ]
-              }
+              "defaultValue": ""
             }
           ]
         },
@@ -6868,15 +6196,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.uuid",
-                    "value": true
-                  }
-                ]
-              }
+              "defaultValue": ""
             },
             {
               "name": "project",
@@ -6888,19 +6208,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.min_len",
-                    "value": 2
-                  },
-                  {
-                    "name": "string.max_len",
-                    "value": 128
-                  }
-                ]
-              }
+              "defaultValue": ""
             }
           ]
         },
@@ -6948,15 +6256,7 @@
               "ismap": false,
               "isoneof": true,
               "oneofdecl": "_uuid",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.uuid",
-                    "value": true
-                  }
-                ]
-              }
+              "defaultValue": ""
             },
             {
               "name": "project",
@@ -6968,19 +6268,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.min_len",
-                    "value": 2
-                  },
-                  {
-                    "name": "string.max_len",
-                    "value": 128
-                  }
-                ]
-              }
+              "defaultValue": ""
             },
             {
               "name": "partition",
@@ -7388,15 +6676,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.uuid",
-                    "value": true
-                  }
-                ]
-              }
+              "defaultValue": ""
             },
             {
               "name": "project",
@@ -7408,19 +6688,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.min_len",
-                    "value": 2
-                  },
-                  {
-                    "name": "string.max_len",
-                    "value": 128
-                  }
-                ]
-              }
+              "defaultValue": ""
             }
           ]
         },
@@ -7468,15 +6736,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.uuid",
-                    "value": true
-                  }
-                ]
-              }
+              "defaultValue": ""
             },
             {
               "name": "project",
@@ -7488,19 +6748,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.min_len",
-                    "value": 2
-                  },
-                  {
-                    "name": "string.max_len",
-                    "value": 128
-                  }
-                ]
-              }
+              "defaultValue": ""
             }
           ]
         },
@@ -7548,15 +6796,7 @@
               "ismap": false,
               "isoneof": true,
               "oneofdecl": "_uuid",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.uuid",
-                    "value": true
-                  }
-                ]
-              }
+              "defaultValue": ""
             },
             {
               "name": "project",
@@ -7568,19 +6808,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.min_len",
-                    "value": 2
-                  },
-                  {
-                    "name": "string.max_len",
-                    "value": 128
-                  }
-                ]
-              }
+              "defaultValue": ""
             },
             {
               "name": "partition",
@@ -8415,15 +7643,7 @@
               "ismap": false,
               "isoneof": true,
               "oneofdecl": "_uuid",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.uuid",
-                    "value": true
-                  }
-                ]
-              }
+              "defaultValue": ""
             },
             {
               "name": "project",
@@ -8435,19 +7655,7 @@
               "ismap": false,
               "isoneof": true,
               "oneofdecl": "_project",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.min_len",
-                    "value": 2
-                  },
-                  {
-                    "name": "string.max_len",
-                    "value": 128
-                  }
-                ]
-              }
+              "defaultValue": ""
             },
             {
               "name": "partition",
@@ -8531,15 +7739,7 @@
               "ismap": false,
               "isoneof": true,
               "oneofdecl": "_uuid",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.uuid",
-                    "value": true
-                  }
-                ]
-              }
+              "defaultValue": ""
             },
             {
               "name": "project",
@@ -8551,19 +7751,7 @@
               "ismap": false,
               "isoneof": true,
               "oneofdecl": "_project",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.min_len",
-                    "value": 2
-                  },
-                  {
-                    "name": "string.max_len",
-                    "value": 128
-                  }
-                ]
-              }
+              "defaultValue": ""
             },
             {
               "name": "partition",
@@ -9258,19 +8446,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.min_len",
-                    "value": 2
-                  },
-                  {
-                    "name": "string.max_len",
-                    "value": 64
-                  }
-                ]
-              }
+              "defaultValue": ""
             },
             {
               "name": "description",
@@ -9282,19 +8458,7 @@
               "ismap": false,
               "isoneof": true,
               "oneofdecl": "_description",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.min_len",
-                    "value": 2
-                  },
-                  {
-                    "name": "string.max_len",
-                    "value": 512
-                  }
-                ]
-              }
+              "defaultValue": ""
             },
             {
               "name": "email",
@@ -9306,15 +8470,7 @@
               "ismap": false,
               "isoneof": true,
               "oneofdecl": "_email",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.email",
-                    "value": true
-                  }
-                ]
-              }
+              "defaultValue": ""
             },
             {
               "name": "avatar_url",
@@ -9769,19 +8925,7 @@
               "ismap": false,
               "isoneof": true,
               "oneofdecl": "_name",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.min_len",
-                    "value": 2
-                  },
-                  {
-                    "name": "string.max_len",
-                    "value": 64
-                  }
-                ]
-              }
+              "defaultValue": ""
             }
           ]
         },
@@ -9960,19 +9104,7 @@
               "ismap": false,
               "isoneof": true,
               "oneofdecl": "_name",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.min_len",
-                    "value": 2
-                  },
-                  {
-                    "name": "string.max_len",
-                    "value": 64
-                  }
-                ]
-              }
+              "defaultValue": ""
             },
             {
               "name": "email",
@@ -9984,15 +9116,7 @@
               "ismap": false,
               "isoneof": true,
               "oneofdecl": "_email",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.email",
-                    "value": true
-                  }
-                ]
-              }
+              "defaultValue": ""
             },
             {
               "name": "description",
@@ -10004,19 +9128,7 @@
               "ismap": false,
               "isoneof": true,
               "oneofdecl": "_description",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.min_len",
-                    "value": 2
-                  },
-                  {
-                    "name": "string.max_len",
-                    "value": 512
-                  }
-                ]
-              }
+              "defaultValue": ""
             },
             {
               "name": "avatar_url",
@@ -10387,15 +9499,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "enum.defined_only",
-                    "value": true
-                  }
-                ]
-              }
+              "defaultValue": ""
             }
           ]
         },
@@ -10454,15 +9558,7 @@
               "ismap": false,
               "isoneof": true,
               "oneofdecl": "_balance_to_add",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "int64.gt",
-                    "value": 0
-                  }
-                ]
-              }
+              "defaultValue": ""
             }
           ]
         },
@@ -10582,15 +9678,7 @@
               "ismap": false,
               "isoneof": true,
               "oneofdecl": "_uuid",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.uuid",
-                    "value": true
-                  }
-                ]
-              }
+              "defaultValue": ""
             }
           ]
         },
@@ -10829,15 +9917,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.uuid",
-                    "value": true
-                  }
-                ]
-              }
+              "defaultValue": ""
             },
             {
               "name": "user_id",
@@ -10849,19 +9929,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.min_len",
-                    "value": 2
-                  },
-                  {
-                    "name": "string.max_len",
-                    "value": 512
-                  }
-                ]
-              }
+              "defaultValue": ""
             },
             {
               "name": "description",
@@ -10873,19 +9941,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.min_len",
-                    "value": 2
-                  },
-                  {
-                    "name": "string.max_len",
-                    "value": 256
-                  }
-                ]
-              }
+              "defaultValue": ""
             },
             {
               "name": "permissions",
@@ -11065,19 +10121,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.min_len",
-                    "value": 2
-                  },
-                  {
-                    "name": "string.max_len",
-                    "value": 256
-                  }
-                ]
-              }
+              "defaultValue": ""
             },
             {
               "name": "permissions",
@@ -11101,27 +10145,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "duration.lt.seconds",
-                    "value": 31536001
-                  },
-                  {
-                    "name": "duration.lt.nanos",
-                    "value": 0
-                  },
-                  {
-                    "name": "duration.gte.seconds",
-                    "value": 600
-                  },
-                  {
-                    "name": "duration.gte.nanos",
-                    "value": 0
-                  }
-                ]
-              }
+              "defaultValue": ""
             },
             {
               "name": "project_roles",
@@ -11324,15 +10348,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.uuid",
-                    "value": true
-                  }
-                ]
-              }
+              "defaultValue": ""
             }
           ]
         },
@@ -11474,15 +10490,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.uuid",
-                    "value": true
-                  }
-                ]
-              }
+              "defaultValue": ""
             },
             {
               "name": "user_id",
@@ -11494,19 +10502,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.min_len",
-                    "value": 2
-                  },
-                  {
-                    "name": "string.max_len",
-                    "value": 512
-                  }
-                ]
-              }
+              "defaultValue": ""
             }
           ]
         },
@@ -12457,15 +11453,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.uuid",
-                    "value": true
-                  }
-                ]
-              }
+              "defaultValue": ""
             },
             {
               "name": "ip",
@@ -12477,15 +11465,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.ip",
-                    "value": true
-                  }
-                ]
-              }
+              "defaultValue": ""
             },
             {
               "name": "name",
@@ -12497,19 +11477,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.min_len",
-                    "value": 2
-                  },
-                  {
-                    "name": "string.max_len",
-                    "value": 128
-                  }
-                ]
-              }
+              "defaultValue": ""
             },
             {
               "name": "description",
@@ -12521,15 +11489,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.max_len",
-                    "value": 128
-                  }
-                ]
-              }
+              "defaultValue": ""
             },
             {
               "name": "network",
@@ -12541,19 +11501,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.min_len",
-                    "value": 2
-                  },
-                  {
-                    "name": "string.max_len",
-                    "value": 128
-                  }
-                ]
-              }
+              "defaultValue": ""
             },
             {
               "name": "project",
@@ -12565,19 +11513,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.min_len",
-                    "value": 2
-                  },
-                  {
-                    "name": "string.max_len",
-                    "value": 128
-                  }
-                ]
-              }
+              "defaultValue": ""
             },
             {
               "name": "type",
@@ -12601,15 +11537,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "repeated.max_items",
-                    "value": 100
-                  }
-                ]
-              }
+              "defaultValue": ""
             },
             {
               "name": "created_at",
@@ -12669,19 +11597,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.min_len",
-                    "value": 2
-                  },
-                  {
-                    "name": "string.max_len",
-                    "value": 128
-                  }
-                ]
-              }
+              "defaultValue": ""
             },
             {
               "name": "name",
@@ -12693,19 +11609,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.min_len",
-                    "value": 2
-                  },
-                  {
-                    "name": "string.max_len",
-                    "value": 128
-                  }
-                ]
-              }
+              "defaultValue": ""
             },
             {
               "name": "description",
@@ -12717,15 +11621,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.max_len",
-                    "value": 128
-                  }
-                ]
-              }
+              "defaultValue": ""
             },
             {
               "name": "tags",
@@ -12737,15 +11633,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "repeated.max_items",
-                    "value": 100
-                  }
-                ]
-              }
+              "defaultValue": ""
             },
             {
               "name": "static",
@@ -12805,15 +11693,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.uuid",
-                    "value": true
-                  }
-                ]
-              }
+              "defaultValue": ""
             },
             {
               "name": "project",
@@ -12825,19 +11705,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.min_len",
-                    "value": 2
-                  },
-                  {
-                    "name": "string.max_len",
-                    "value": 128
-                  }
-                ]
-              }
+              "defaultValue": ""
             }
           ]
         },
@@ -12885,15 +11753,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.uuid",
-                    "value": true
-                  }
-                ]
-              }
+              "defaultValue": ""
             },
             {
               "name": "project",
@@ -12905,19 +11765,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.min_len",
-                    "value": 2
-                  },
-                  {
-                    "name": "string.max_len",
-                    "value": 128
-                  }
-                ]
-              }
+              "defaultValue": ""
             }
           ]
         },
@@ -12965,19 +11813,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.min_len",
-                    "value": 2
-                  },
-                  {
-                    "name": "string.max_len",
-                    "value": 128
-                  }
-                ]
-              }
+              "defaultValue": ""
             }
           ]
         },
@@ -13025,19 +11861,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.min_len",
-                    "value": 2
-                  },
-                  {
-                    "name": "string.max_len",
-                    "value": 128
-                  }
-                ]
-              }
+              "defaultValue": ""
             },
             {
               "name": "ip",

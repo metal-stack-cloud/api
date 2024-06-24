@@ -3,9 +3,9 @@ syntax = "proto3";
 package api.v1;
 
 import "api/v1/common.proto";
+import "buf/validate/validate.proto";
 import "google/protobuf/duration.proto";
 import "google/protobuf/timestamp.proto";
-import "validate/validate.proto";
 
 // VolumeService serves volume related functions
 service VolumeService {
@@ -210,10 +210,10 @@ message SnapshotStatistics {
 // VolumeServiceGetRequest is the request payload of the volume get request
 message VolumeServiceGetRequest {
   // Uuid of the volume
-  string uuid = 1 [(validate.rules).string.uuid = true];
+  string uuid = 1 [(buf.validate.field).string.uuid = true];
   // Project of the volume
-  string project = 2 [(validate.rules).string = {
-    min_len: 2,
+  string project = 2 [(buf.validate.field).string = {
+    min_len: 2
     max_len: 128
   }];
 }
@@ -221,10 +221,10 @@ message VolumeServiceGetRequest {
 // VolumeServiceListRequest is the request payload of a volume list request
 message VolumeServiceListRequest {
   // Uuid of the volume
-  optional string uuid = 1 [(validate.rules).string.uuid = true];
+  optional string uuid = 1 [(buf.validate.field).string.uuid = true];
   // Project of the volume
-  string project = 2 [(validate.rules).string = {
-    min_len: 2,
+  string project = 2 [(buf.validate.field).string = {
+    min_len: 2
     max_len: 128
   }];
   // Partition where the volumes should be listed
@@ -236,10 +236,10 @@ message VolumeServiceListRequest {
 // VolumeServiceDeleteRequest is the request payload of a volume delete request
 message VolumeServiceDeleteRequest {
   // Uuid of the volume
-  string uuid = 1 [(validate.rules).string.uuid = true];
+  string uuid = 1 [(buf.validate.field).string.uuid = true];
   // Project of the volume
-  string project = 2 [(validate.rules).string = {
-    min_len: 2,
+  string project = 2 [(buf.validate.field).string = {
+    min_len: 2
     max_len: 128
   }];
 }
@@ -247,10 +247,10 @@ message VolumeServiceDeleteRequest {
 // SnapshotServiceGetRequest is the request payload of a snapshot list request
 message SnapshotServiceGetRequest {
   // Uuid of the snapshot
-  string uuid = 1 [(validate.rules).string.uuid = true];
+  string uuid = 1 [(buf.validate.field).string.uuid = true];
   // Project of the snapshot
-  string project = 2 [(validate.rules).string = {
-    min_len: 2,
+  string project = 2 [(buf.validate.field).string = {
+    min_len: 2
     max_len: 128
   }];
 }
@@ -258,10 +258,10 @@ message SnapshotServiceGetRequest {
 // SnapshotServiceListRequest is the request payload of a snapshot list request
 message SnapshotServiceListRequest {
   // Uuid of the snapshot
-  optional string uuid = 1 [(validate.rules).string.uuid = true];
+  optional string uuid = 1 [(buf.validate.field).string.uuid = true];
   // Project of the snapshot
-  string project = 2 [(validate.rules).string = {
-    min_len: 2,
+  string project = 2 [(buf.validate.field).string = {
+    min_len: 2
     max_len: 128
   }];
   // Partition where the snapshots should be listed
@@ -273,10 +273,10 @@ message SnapshotServiceListRequest {
 // SnapshotServiceDeleteRequest is the request payload of a snapshot delete request
 message SnapshotServiceDeleteRequest {
   // Uuid of the snapshot
-  string uuid = 1 [(validate.rules).string.uuid = true];
+  string uuid = 1 [(buf.validate.field).string.uuid = true];
   // Project of the snapshot
-  string project = 2 [(validate.rules).string = {
-    min_len: 2,
+  string project = 2 [(buf.validate.field).string = {
+    min_len: 2
     max_len: 128
   }];
 }

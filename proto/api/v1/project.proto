@@ -3,8 +3,8 @@ syntax = "proto3";
 package api.v1;
 
 import "api/v1/common.proto";
+import "buf/validate/validate.proto";
 import "google/protobuf/timestamp.proto";
-import "validate/validate.proto";
 
 // ProjectService serves project related functions
 service ProjectService {
@@ -100,7 +100,7 @@ message ProjectMember {
   // Id is the user id of the member
   string id = 1;
   // Role is the role of the member
-  ProjectRole role = 2;
+  ProjectRole role = 2 [(buf.validate.field).enum.defined_only = true];
   // InheritedMembership indicates that this member has implicit permissions on the project through his membership within the tenant.
   // This member does not have direct project membership but gains permissions on this project from the role he has in the tenant.
   // Inherited memberships are not included in member lists for users with guest permission but only for direct tenant members.
@@ -116,7 +116,7 @@ message ProjectInvite {
   // Project is the project id for which this invite was created
   string project = 2;
   // Role is the role in this project the user will get after accepting the invitation
-  ProjectRole role = 3;
+  ProjectRole role = 3 [(buf.validate.field).enum.defined_only = true];
   // Joined is false as long as a user has not accepted the invite
   bool joined = 4;
   // ProjectName is the project name for which this invite was created
@@ -134,14 +134,14 @@ message ProjectInvite {
 // ProjectServiceListRequest is the request payload to list all projects
 message ProjectServiceListRequest {
   // Name list only projects with this name
-  optional string name = 1 [(validate.rules).string = {
-    min_len: 2,
-    max_len: 128,
+  optional string name = 1 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
   }];
   // Tenant list only projects of this tenant
-  optional string tenant = 2 [(validate.rules).string = {
-    min_len: 2,
-    max_len: 128,
+  optional string tenant = 2 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
   }];
 }
 
@@ -154,7 +154,7 @@ message ProjectServiceListResponse {
 // ProjectServiceGetRequest is the request payload to get a project
 message ProjectServiceGetRequest {
   // Project is the uuid of the project to get
-  string project = 1 [(validate.rules).string.uuid = true];
+  string project = 1 [(buf.validate.field).string.uuid = true];
 }
 
 // ProjectServiceGetResponse is the response payload to get a projects
@@ -169,19 +169,19 @@ message ProjectServiceGetResponse {
 message ProjectServiceCreateRequest {
   // Login is the tenant of this project
   // TODO: is login really a good name?
-  string login = 1 [(validate.rules).string = {
-    min_len: 2,
-    max_len: 128,
+  string login = 1 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
   }];
   // Name of this project, unique per tenant
-  string name = 2 [(validate.rules).string = {
-    min_len: 2,
-    max_len: 64,
+  string name = 2 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 64
   }];
   // Description of this project
-  string description = 3 [(validate.rules).string = {
-    min_len: 2,
-    max_len: 512,
+  string description = 3 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 512
   }];
   // Avatar URL of the project
   optional string avatar_url = 4;
@@ -196,7 +196,7 @@ message ProjectServiceCreateResponse {
 // ProjectServiceDeleteRequest is the request payload to delete a project
 message ProjectServiceDeleteRequest {
   // Project is the uuid of the project to get
-  string project = 1 [(validate.rules).string.uuid = true];
+  string project = 1 [(buf.validate.field).string.uuid = true];
 }
 
 // ProjectServiceDeleteResponse is the response payload to delete a project
@@ -208,16 +208,16 @@ message ProjectServiceDeleteResponse {
 // ProjectServiceUpdateRequest is the request payload to update a project
 message ProjectServiceUpdateRequest {
   // Project is the uuid of the project to get
-  string project = 1 [(validate.rules).string.uuid = true];
+  string project = 1 [(buf.validate.field).string.uuid = true];
   // Name of this project unique per tenant
-  optional string name = 2 [(validate.rules).string = {
-    min_len: 2,
-    max_len: 64,
+  optional string name = 2 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 64
   }];
   // Description of this project
-  optional string description = 3 [(validate.rules).string = {
-    min_len: 2,
-    max_len: 512,
+  optional string description = 3 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 512
   }];
   // Avatar URL of the project
   optional string avatar_url = 4;
@@ -232,10 +232,10 @@ message ProjectServiceUpdateResponse {
 // ProjectServiceInviteRequest is used to invite a member to a project
 message ProjectServiceInviteRequest {
   // Project is the uuid of the project
-  string project = 1 [(validate.rules).string.uuid = true];
+  string project = 1 [(buf.validate.field).string.uuid = true];
 
   // Role of this user in this project
-  ProjectRole role = 3;
+  ProjectRole role = 3 [(buf.validate.field).enum.defined_only = true];
 }
 
 // ProjectServiceInviteRequest is the response payload to a invite member request
@@ -249,7 +249,7 @@ message ProjectServiceInviteResponse {
 // ProjectServiceInvitesListRequest is the request payload to a list invites request
 message ProjectServiceInvitesListRequest {
   // Project is the uuid of the project
-  string project = 1 [(validate.rules).string.uuid = true];
+  string project = 1 [(buf.validate.field).string.uuid = true];
 }
 
 // ProjectServiceInvitesListResponse is the response payload to a list invites request
@@ -273,7 +273,7 @@ message ProjectServiceInviteGetResponse {
 // ProjectServiceRemoveMemberRequest is used to remove a member from a project
 message ProjectServiceRemoveMemberRequest {
   // Project is the uuid of the project
-  string project = 1 [(validate.rules).string.uuid = true];
+  string project = 1 [(buf.validate.field).string.uuid = true];
   // MemberID is the id of the member to remove from this project
   string member_id = 2;
 }
@@ -284,11 +284,11 @@ message ProjectServiceRemoveMemberResponse {}
 // ProjectServiceUpdateMemberRequest is used to update a member of a project
 message ProjectServiceUpdateMemberRequest {
   // Project is the uuid of the project
-  string project = 1 [(validate.rules).string.uuid = true];
+  string project = 1 [(buf.validate.field).string.uuid = true];
   // MemberID is the id of the member to remove from this project
   string member_id = 2;
   // Role is the role in this project the user will get after the update
-  ProjectRole role = 3;
+  ProjectRole role = 3 [(buf.validate.field).enum.defined_only = true];
 }
 
 // ProjectServiceUpdateMemberResponse is the response payload to a update member request
@@ -314,7 +314,7 @@ message ProjectServiceInviteAcceptResponse {
 // ProjectServiceInviteDeleteRequest is the request payload to a delete invite
 message ProjectServiceInviteDeleteRequest {
   // Project is the uuid of the project
-  string project = 1 [(validate.rules).string.uuid = true];
+  string project = 1 [(buf.validate.field).string.uuid = true];
   // Secret of the invite to delete
   string secret = 2;
 }

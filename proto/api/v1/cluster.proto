@@ -3,9 +3,9 @@ syntax = "proto3";
 package api.v1;
 
 import "api/v1/common.proto";
+import "buf/validate/validate.proto";
 import "google/protobuf/duration.proto";
 import "google/protobuf/timestamp.proto";
-import "validate/validate.proto";
 
 // ClusterService serves kubernetes cluster related functions
 service ClusterService {
@@ -62,16 +62,16 @@ service ClusterService {
 // Cluster describes a kubernetes cluster
 message Cluster {
   // Uuid of the cluster
-  string uuid = 1 [(validate.rules).string.uuid = true];
+  string uuid = 1 [(buf.validate.field).string.uuid = true];
   // Name of the cluster
-  string name = 2 [(validate.rules).string = {
-    min_len: 2,
-    max_len: 12,
+  string name = 2 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 12
   }];
   // Project where this cluster belongs to
-  string project = 3 [(validate.rules).string = {
-    min_len: 2,
-    max_len: 128,
+  string project = 3 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
   }];
   // Partition where this cluster was created
   string partition = 4;
@@ -100,9 +100,9 @@ message Cluster {
 // KubernetesSpec details of kubernetes this cluster
 message KubernetesSpec {
   // Version of kubernetes
-  string version = 1 [(validate.rules).string = {
-    pattern: "[0-9]+.[0-9]+.[0-9]",
-    max_bytes: 8,
+  string version = 1 [(buf.validate.field).string = {
+    pattern: "[0-9]+.[0-9]+.[0-9]"
+    max_bytes: 8
   }];
 }
 
@@ -121,8 +121,8 @@ message MaintenanceTimeWindow {
   // Begin of the MaintenanceTimeWindow
   Time begin = 1;
   // Duration of the MaintenanceTimeWindow
-  google.protobuf.Duration duration = 2 [(validate.rules).duration = {
-    gte: {seconds: 3600}, // 1 hour minimum
+  google.protobuf.Duration duration = 2 [(buf.validate.field).duration = {
+    gte: {seconds: 3600} /* 1 hour minimum */
     lt: {seconds: 14400} /* 4 hours maximum */
   }];
 }
@@ -130,9 +130,9 @@ message MaintenanceTimeWindow {
 // Time of day
 message Time {
   // hour begin of the maintenance window, specified in 24 hour format.
-  uint32 hour = 1 [(validate.rules).uint32.lte = 24];
+  uint32 hour = 1 [(buf.validate.field).uint32.lte = 24];
   // hour:minute begin of the maintenance window.
-  uint32 minute = 2 [(validate.rules).uint32.lte = 60];
+  uint32 minute = 2 [(buf.validate.field).uint32.lte = 60];
   // timezone specifies for which region in the world the given hour:minute should apply.
   string timezone = 3;
 }
@@ -140,79 +140,79 @@ message Time {
 // Worker defines a set of worker nodes with identical properties
 message Worker {
   // Name of this worker group
-  string name = 1 [(validate.rules).string = {
-    min_len: 2,
-    max_len: 128,
+  string name = 1 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
   }];
   // MachineType of machines which should be used for the worker nodes in this group
-  string machine_type = 2 [(validate.rules).string = {
-    min_len: 2,
-    max_len: 128,
+  string machine_type = 2 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
   }];
   // Minsize defines the minimum amount of machines present in this worker group
-  uint32 minsize = 3 [(validate.rules).uint32.lte = 32];
+  uint32 minsize = 3 [(buf.validate.field).uint32.lte = 32];
   // Maxsize defines the maximum amount of machines present in this worker group
-  uint32 maxsize = 4 [(validate.rules).uint32.lte = 64];
+  uint32 maxsize = 4 [(buf.validate.field).uint32.lte = 64];
   // Maxsurge defines the maximum amount of machines which are spun up in this worker group during a rolling upgrade
-  uint32 maxsurge = 5 [(validate.rules).uint32.lte = 64];
+  uint32 maxsurge = 5 [(buf.validate.field).uint32.lte = 64];
   // Maxunavailable defines the maximum amount of not available machines in this worker group during a rolling upgrade
-  uint32 maxunavailable = 6 [(validate.rules).uint32.lte = 64];
+  uint32 maxunavailable = 6 [(buf.validate.field).uint32.lte = 64];
 }
 
 // WorkerUpdate is used to update a Worker group
 message WorkerUpdate {
   // Name of the worker group to update
-  string name = 1 [(validate.rules).string = {
-    min_len: 2,
-    max_len: 128,
+  string name = 1 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
   }];
   // MachineType to change in this worker group
-  optional string machine_type = 2 [(validate.rules).string = {
-    min_len: 2,
-    max_len: 128,
+  optional string machine_type = 2 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
   }];
   // Minsize defines the minimum amount of machines present in this worker group
-  optional uint32 minsize = 3 [(validate.rules).uint32.lte = 32];
+  optional uint32 minsize = 3 [(buf.validate.field).uint32.lte = 32];
   // Maxsize defines the maximum amount of machines present in this worker group
-  optional uint32 maxsize = 4 [(validate.rules).uint32.lte = 64];
+  optional uint32 maxsize = 4 [(buf.validate.field).uint32.lte = 64];
   // Maxsurge defines the maximum amount of machines which are spun up in this worker group during a rolling upgrade
-  optional uint32 maxsurge = 5 [(validate.rules).uint32.lte = 64];
+  optional uint32 maxsurge = 5 [(buf.validate.field).uint32.lte = 64];
   // Maxunavailable defines the maximum amount of not available machines in this worker group during a rolling upgrade
-  optional uint32 maxunavailable = 6 [(validate.rules).uint32.lte = 64];
+  optional uint32 maxunavailable = 6 [(buf.validate.field).uint32.lte = 64];
 }
 
 // ClusterServiceGetRequest is the request payload for a cluster get request
 message ClusterServiceGetRequest {
   // Uuid of the cluster
-  string uuid = 1 [(validate.rules).string.uuid = true];
+  string uuid = 1 [(buf.validate.field).string.uuid = true];
   // Project of the cluster
-  string project = 2 [(validate.rules).string = {
-    min_len: 2,
-    max_len: 128,
+  string project = 2 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
   }];
 }
 
 // ClusterServiceOperateRequest is the request payload for the cluster operate request
 message ClusterServiceOperateRequest {
   // Uuid of the cluster
-  string uuid = 1 [(validate.rules).string.uuid = true];
+  string uuid = 1 [(buf.validate.field).string.uuid = true];
   // Project of the cluster
-  string project = 2 [(validate.rules).string = {
-    min_len: 2,
-    max_len: 128,
+  string project = 2 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
   }];
   // Operate is the operation which should be performed
-  Operate operate = 3;
+  Operate operate = 3 [(buf.validate.field).enum.defined_only = true];
 }
 
 // ClusterServiceGetRequest is the request payload for a cluster get request
 message ClusterServiceGetCredentialsRequest {
   // Uuid of the cluster
-  string uuid = 1 [(validate.rules).string.uuid = true];
+  string uuid = 1 [(buf.validate.field).string.uuid = true];
   // Project of the cluster
-  string project = 2 [(validate.rules).string = {
-    min_len: 2,
-    max_len: 128,
+  string project = 2 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
   }];
   // Expiration defines the duration after which the requested kubernetes access token can not be used anymore
   optional google.protobuf.Duration expiration = 4;
@@ -221,24 +221,24 @@ message ClusterServiceGetCredentialsRequest {
 // ClusterServiceListRequest is the request payload for a cluster list request
 message ClusterServiceListRequest {
   // Project of the cluster
-  string project = 2 [(validate.rules).string = {
-    min_len: 2,
-    max_len: 128,
+  string project = 2 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
   }];
 }
 
 // ClusterServiceCreateRequest is the request payload for a cluster create request
 message ClusterServiceCreateRequest {
   // Name of the cluster to create
-  string name = 2 [(validate.rules).string = {
-    min_len: 2,
-    max_len: 12,
-    hostname: true,
+  string name = 2 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 12
+    hostname: true
   }];
   // Project of the cluster
-  string project = 3 [(validate.rules).string = {
-    min_len: 2,
-    max_len: 128,
+  string project = 3 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
   }];
   // Partition of the cluster
   string partition = 4;
@@ -253,12 +253,12 @@ message ClusterServiceCreateRequest {
 // ClusterServiceUpdateRequest is the request payload for a cluster update request
 message ClusterServiceUpdateRequest {
   // Uuid of the cluster
-  string uuid = 1 [(validate.rules).string.uuid = true];
+  string uuid = 1 [(buf.validate.field).string.uuid = true];
 
   // Project of the cluster
-  string project = 2 [(validate.rules).string = {
-    min_len: 2,
-    max_len: 128,
+  string project = 2 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
   }];
   // Kubernetes specification of the cluster
   optional KubernetesSpec kubernetes = 3;
@@ -271,23 +271,23 @@ message ClusterServiceUpdateRequest {
 // ClusterServiceDeleteRequest is the request payload for a cluster delete request
 message ClusterServiceDeleteRequest {
   // Uuid of the cluster
-  string uuid = 1 [(validate.rules).string.uuid = true];
+  string uuid = 1 [(buf.validate.field).string.uuid = true];
 
   // Project of the cluster
-  string project = 2 [(validate.rules).string = {
-    min_len: 2,
-    max_len: 128,
+  string project = 2 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
   }];
 }
 
 // ClusterServiceWatchStatusRequest is the request payload for a cluster watch status request
 message ClusterServiceWatchStatusRequest {
   // Uuid of the cluster
-  optional string uuid = 1 [(validate.rules).string.uuid = true];
+  optional string uuid = 1 [(buf.validate.field).string.uuid = true];
   // Project of the cluster
-  string project = 2 [(validate.rules).string = {
-    min_len: 2,
-    max_len: 128,
+  string project = 2 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
   }];
 }
 

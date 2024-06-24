@@ -4,7 +4,7 @@ package admin.v1;
 
 import "api/v1/common.proto";
 import "api/v1/volume.proto";
-import "validate/validate.proto";
+import "buf/validate/validate.proto";
 
 // StorageService serves storage related functions
 service StorageService {
@@ -148,10 +148,10 @@ message ClusterStatisticsApi {
 // StorageServiceListVolumesRequest is the request payload for the volume list request
 message StorageServiceListVolumesRequest {
   // Uuid is the uuid of the volume to list
-  optional string uuid = 1 [(validate.rules).string.uuid = true];
+  optional string uuid = 1 [(buf.validate.field).string.uuid = true];
   // Project is the project of the volume to list
-  optional string project = 2 [(validate.rules).string = {
-    min_len: 2,
+  optional string project = 2 [(buf.validate.field).string = {
+    min_len: 2
     max_len: 128
   }];
   // Partition is the partition of the volume to list
@@ -171,10 +171,10 @@ message StorageServiceListVolumesResponse {
 // StorageServiceListVolumesRequest is the request payload for the snapshot list request
 message StorageServiceListSnapshotsRequest {
   // Uuid is the uuid of the snapshot to list
-  optional string uuid = 1 [(validate.rules).string.uuid = true];
+  optional string uuid = 1 [(buf.validate.field).string.uuid = true];
   // Project is the project of the snapshot to list
-  optional string project = 2 [(validate.rules).string = {
-    min_len: 2,
+  optional string project = 2 [(buf.validate.field).string = {
+    min_len: 2
     max_len: 128
   }];
   // Partition is the partition of the snapshot to list

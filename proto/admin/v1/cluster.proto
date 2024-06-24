@@ -5,8 +5,8 @@ package admin.v1;
 import "admin/v1/machine.proto";
 import "api/v1/cluster.proto";
 import "api/v1/common.proto";
+import "buf/validate/validate.proto";
 import "google/protobuf/duration.proto";
-import "validate/validate.proto";
 
 // ClusterService serves cluster related functions
 service ClusterService {
@@ -29,7 +29,7 @@ service ClusterService {
 // ClusterServiceGetRequest is the request payload for the cluster get request
 message ClusterServiceGetRequest {
   // Uuid of the cluster to get
-  string uuid = 1 [(validate.rules).string.uuid = true];
+  string uuid = 1 [(buf.validate.field).string.uuid = true];
   // WithMachines if set to true machines of all worker groups are also returned
   bool with_machines = 2;
 }
@@ -57,7 +57,7 @@ message ClusterServiceListRequest {
 // ClusterServiceCredentialsRequest is the request payload for the cluster credentials request
 message ClusterServiceCredentialsRequest {
   // Uuid of the cluster
-  string uuid = 1 [(validate.rules).string.uuid = true];
+  string uuid = 1 [(buf.validate.field).string.uuid = true];
   // WithVpn if set VPN details are returned
   bool with_vpn = 2;
   // WithSsh if set ssh access credentials are returned
