@@ -762,15 +762,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.uuid",
-                    "value": true
-                  }
-                ]
-              }
+              "defaultValue": ""
             },
             {
               "name": "name",
@@ -782,19 +774,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.min_len",
-                    "value": 2
-                  },
-                  {
-                    "name": "string.max_len",
-                    "value": 12
-                  }
-                ]
-              }
+              "defaultValue": ""
             },
             {
               "name": "project",
@@ -806,19 +786,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.min_len",
-                    "value": 2
-                  },
-                  {
-                    "name": "string.max_len",
-                    "value": 128
-                  }
-                ]
-              }
+              "defaultValue": ""
             },
             {
               "name": "partition",
@@ -1022,23 +990,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.min_len",
-                    "value": 2
-                  },
-                  {
-                    "name": "string.max_len",
-                    "value": 12
-                  },
-                  {
-                    "name": "string.hostname",
-                    "value": true
-                  }
-                ]
-              }
+              "defaultValue": ""
             },
             {
               "name": "project",
@@ -1050,19 +1002,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.min_len",
-                    "value": 2
-                  },
-                  {
-                    "name": "string.max_len",
-                    "value": 128
-                  }
-                ]
-              }
+              "defaultValue": ""
             },
             {
               "name": "partition",
@@ -1158,15 +1098,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.uuid",
-                    "value": true
-                  }
-                ]
-              }
+              "defaultValue": ""
             },
             {
               "name": "project",
@@ -1178,19 +1110,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.min_len",
-                    "value": 2
-                  },
-                  {
-                    "name": "string.max_len",
-                    "value": 128
-                  }
-                ]
-              }
+              "defaultValue": ""
             }
           ]
         },
@@ -1238,15 +1158,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.uuid",
-                    "value": true
-                  }
-                ]
-              }
+              "defaultValue": ""
             },
             {
               "name": "project",
@@ -1258,19 +1170,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.min_len",
-                    "value": 2
-                  },
-                  {
-                    "name": "string.max_len",
-                    "value": 128
-                  }
-                ]
-              }
+              "defaultValue": ""
             },
             {
               "name": "expiration",
@@ -1330,15 +1230,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.uuid",
-                    "value": true
-                  }
-                ]
-              }
+              "defaultValue": ""
             },
             {
               "name": "project",
@@ -1350,19 +1242,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.min_len",
-                    "value": 2
-                  },
-                  {
-                    "name": "string.max_len",
-                    "value": 128
-                  }
-                ]
-              }
+              "defaultValue": ""
             }
           ]
         },
@@ -1410,19 +1290,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.min_len",
-                    "value": 2
-                  },
-                  {
-                    "name": "string.max_len",
-                    "value": 128
-                  }
-                ]
-              }
+              "defaultValue": ""
             }
           ]
         },
@@ -1470,15 +1338,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.uuid",
-                    "value": true
-                  }
-                ]
-              }
+              "defaultValue": ""
             },
             {
               "name": "project",
@@ -1490,19 +1350,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.min_len",
-                    "value": 2
-                  },
-                  {
-                    "name": "string.max_len",
-                    "value": 128
-                  }
-                ]
-              }
+              "defaultValue": ""
             },
             {
               "name": "operate",
@@ -1562,15 +1410,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.uuid",
-                    "value": true
-                  }
-                ]
-              }
+              "defaultValue": ""
             },
             {
               "name": "project",
@@ -1582,19 +1422,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.min_len",
-                    "value": 2
-                  },
-                  {
-                    "name": "string.max_len",
-                    "value": 128
-                  }
-                ]
-              }
+              "defaultValue": ""
             },
             {
               "name": "kubernetes",
@@ -1678,15 +1506,7 @@
               "ismap": false,
               "isoneof": true,
               "oneofdecl": "_uuid",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.uuid",
-                    "value": true
-                  }
-                ]
-              }
+              "defaultValue": ""
             },
             {
               "name": "project",
@@ -1698,19 +1518,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.min_len",
-                    "value": 2
-                  },
-                  {
-                    "name": "string.max_len",
-                    "value": 128
-                  }
-                ]
-              }
+              "defaultValue": ""
             }
           ]
         },
@@ -2022,19 +1830,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.max_bytes",
-                    "value": 8
-                  },
-                  {
-                    "name": "string.pattern",
-                    "value": "[0-9]+.[0-9]+.[0-9]"
-                  }
-                ]
-              }
+              "defaultValue": ""
             }
           ]
         },
@@ -2118,27 +1914,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "duration.lt.seconds",
-                    "value": 14400
-                  },
-                  {
-                    "name": "duration.lt.nanos",
-                    "value": 0
-                  },
-                  {
-                    "name": "duration.gte.seconds",
-                    "value": 3600
-                  },
-                  {
-                    "name": "duration.gte.nanos",
-                    "value": 0
-                  }
-                ]
-              }
+              "defaultValue": ""
             }
           ]
         },
@@ -2162,15 +1938,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "uint32.lte",
-                    "value": 24
-                  }
-                ]
-              }
+              "defaultValue": ""
             },
             {
               "name": "minute",
@@ -2182,15 +1950,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "uint32.lte",
-                    "value": 60
-                  }
-                ]
-              }
+              "defaultValue": ""
             },
             {
               "name": "timezone",
@@ -2226,19 +1986,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.min_len",
-                    "value": 2
-                  },
-                  {
-                    "name": "string.max_len",
-                    "value": 128
-                  }
-                ]
-              }
+              "defaultValue": ""
             },
             {
               "name": "machine_type",
@@ -2250,19 +1998,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.min_len",
-                    "value": 2
-                  },
-                  {
-                    "name": "string.max_len",
-                    "value": 128
-                  }
-                ]
-              }
+              "defaultValue": ""
             },
             {
               "name": "minsize",
@@ -2274,15 +2010,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "uint32.lte",
-                    "value": 32
-                  }
-                ]
-              }
+              "defaultValue": ""
             },
             {
               "name": "maxsize",
@@ -2294,15 +2022,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "uint32.lte",
-                    "value": 64
-                  }
-                ]
-              }
+              "defaultValue": ""
             },
             {
               "name": "maxsurge",
@@ -2314,15 +2034,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "uint32.lte",
-                    "value": 64
-                  }
-                ]
-              }
+              "defaultValue": ""
             },
             {
               "name": "maxunavailable",
@@ -2334,15 +2046,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "uint32.lte",
-                    "value": 64
-                  }
-                ]
-              }
+              "defaultValue": ""
             }
           ]
         },
@@ -2366,19 +2070,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.min_len",
-                    "value": 2
-                  },
-                  {
-                    "name": "string.max_len",
-                    "value": 128
-                  }
-                ]
-              }
+              "defaultValue": ""
             },
             {
               "name": "machine_type",
@@ -2390,19 +2082,7 @@
               "ismap": false,
               "isoneof": true,
               "oneofdecl": "_machine_type",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.min_len",
-                    "value": 2
-                  },
-                  {
-                    "name": "string.max_len",
-                    "value": 128
-                  }
-                ]
-              }
+              "defaultValue": ""
             },
             {
               "name": "minsize",
@@ -2414,15 +2094,7 @@
               "ismap": false,
               "isoneof": true,
               "oneofdecl": "_minsize",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "uint32.lte",
-                    "value": 32
-                  }
-                ]
-              }
+              "defaultValue": ""
             },
             {
               "name": "maxsize",
@@ -2434,15 +2106,7 @@
               "ismap": false,
               "isoneof": true,
               "oneofdecl": "_maxsize",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "uint32.lte",
-                    "value": 64
-                  }
-                ]
-              }
+              "defaultValue": ""
             },
             {
               "name": "maxsurge",
@@ -2454,15 +2118,7 @@
               "ismap": false,
               "isoneof": true,
               "oneofdecl": "_maxsurge",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "uint32.lte",
-                    "value": 64
-                  }
-                ]
-              }
+              "defaultValue": ""
             },
             {
               "name": "maxunavailable",
@@ -2474,15 +2130,7 @@
               "ismap": false,
               "isoneof": true,
               "oneofdecl": "_maxunavailable",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "uint32.lte",
-                    "value": 64
-                  }
-                ]
-              }
+              "defaultValue": ""
             }
           ]
         }
@@ -2625,15 +2273,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.uuid",
-                    "value": true
-                  }
-                ]
-              }
+              "defaultValue": ""
             },
             {
               "name": "with_vpn",
@@ -2741,15 +2381,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.uuid",
-                    "value": true
-                  }
-                ]
-              }
+              "defaultValue": ""
             },
             {
               "name": "with_machines",
@@ -3526,15 +3158,7 @@
               "ismap": false,
               "isoneof": true,
               "oneofdecl": "_email",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.email",
-                    "value": true
-                  }
-                ]
-              }
+              "defaultValue": ""
             },
             {
               "name": "card",
@@ -3702,19 +3326,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.min_len",
-                    "value": 2
-                  },
-                  {
-                    "name": "string.max_len",
-                    "value": 128
-                  }
-                ]
-              }
+              "defaultValue": ""
             }
           ]
         },
@@ -3774,19 +3386,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.min_len",
-                    "value": 2
-                  },
-                  {
-                    "name": "string.max_len",
-                    "value": 128
-                  }
-                ]
-              }
+              "defaultValue": ""
             },
             {
               "name": "customer",
@@ -3858,19 +3458,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.min_len",
-                    "value": 2
-                  },
-                  {
-                    "name": "string.max_len",
-                    "value": 128
-                  }
-                ]
-              }
+              "defaultValue": ""
             }
           ]
         },
@@ -3905,19 +3493,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.min_len",
-                    "value": 2
-                  },
-                  {
-                    "name": "string.max_len",
-                    "value": 128
-                  }
-                ]
-              }
+              "defaultValue": ""
             },
             {
               "name": "customer_id",
@@ -3977,19 +3553,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.min_len",
-                    "value": 2
-                  },
-                  {
-                    "name": "string.max_len",
-                    "value": 128
-                  }
-                ]
-              }
+              "defaultValue": ""
             }
           ]
         },
@@ -4072,19 +3636,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.min_len",
-                    "value": 2
-                  },
-                  {
-                    "name": "string.max_len",
-                    "value": 128
-                  }
-                ]
-              }
+              "defaultValue": ""
             },
             {
               "name": "customer_id",
@@ -4096,19 +3648,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.min_len",
-                    "value": 18
-                  },
-                  {
-                    "name": "string.max_len",
-                    "value": 18
-                  }
-                ]
-              }
+              "defaultValue": ""
             }
           ]
         },
@@ -4204,19 +3744,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.min_len",
-                    "value": 2
-                  },
-                  {
-                    "name": "string.max_len",
-                    "value": 128
-                  }
-                ]
-              }
+              "defaultValue": ""
             }
           ]
         },
@@ -4312,19 +3840,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.min_len",
-                    "value": 2
-                  },
-                  {
-                    "name": "string.max_len",
-                    "value": 128
-                  }
-                ]
-              }
+              "defaultValue": ""
             }
           ]
         },
@@ -4587,19 +4103,7 @@
               "ismap": false,
               "isoneof": true,
               "oneofdecl": "_description",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.min_len",
-                    "value": 2
-                  },
-                  {
-                    "name": "string.max_len",
-                    "value": 500
-                  }
-                ]
-              }
+              "defaultValue": ""
             }
           ]
         },
@@ -4898,15 +4402,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "int64.gt",
-                    "value": 0
-                  }
-                ]
-              }
+              "defaultValue": ""
             }
           ]
         },
@@ -5071,6 +4567,1298 @@
               "responseType": "PaymentServiceAddBalanceToCustomerResponse",
               "responseLongType": "PaymentServiceAddBalanceToCustomerResponse",
               "responseFullType": "admin.v1.PaymentServiceAddBalanceToCustomerResponse",
+              "responseStreaming": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "api/v1/project.proto",
+      "description": "",
+      "package": "api.v1",
+      "hasEnums": false,
+      "hasExtensions": false,
+      "hasMessages": true,
+      "hasServices": true,
+      "enums": [],
+      "extensions": [],
+      "messages": [
+        {
+          "name": "Project",
+          "longName": "Project",
+          "fullName": "api.v1.Project",
+          "description": "Project defines a group of resources belonging to a tenant\na tenant can have multiple projects",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "uuid",
+              "description": "Uuid of this project",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "name",
+              "description": "Name of this project must be unique per tenant",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "description",
+              "description": "Description of this project",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "tenant",
+              "description": "Tenant this project belongs to",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "is_default_project",
+              "description": "IsDefaultProject is true if this is the default project of the tenant.",
+              "label": "",
+              "type": "bool",
+              "longType": "bool",
+              "fullType": "bool",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "created_at",
+              "description": "CreatedAt the date when this project was created",
+              "label": "",
+              "type": "Timestamp",
+              "longType": "google.protobuf.Timestamp",
+              "fullType": "google.protobuf.Timestamp",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "updated_at",
+              "description": "UpdatedAt the date when this project was updated",
+              "label": "",
+              "type": "Timestamp",
+              "longType": "google.protobuf.Timestamp",
+              "fullType": "google.protobuf.Timestamp",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "ProjectInvite",
+          "longName": "ProjectInvite",
+          "fullName": "api.v1.ProjectInvite",
+          "description": "ProjectInvite defines invite to project",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "secret",
+              "description": "Secret is the secret part of the invite, typically part of the url",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "project",
+              "description": "Project is the project id for which this invite was created",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "role",
+              "description": "Role is the role in this project the user will get after accepting the invitation",
+              "label": "",
+              "type": "ProjectRole",
+              "longType": "ProjectRole",
+              "fullType": "api.v1.ProjectRole",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "joined",
+              "description": "Joined is false as long as a user has not accepted the invite",
+              "label": "",
+              "type": "bool",
+              "longType": "bool",
+              "fullType": "bool",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "project_name",
+              "description": "ProjectName is the project name for which this invite was created",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "tenant",
+              "description": "Tenant is the login of tenant who invites to join this project",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "tenant_name",
+              "description": "TenantName is the name of tenant who invites to join this project",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "expires_at",
+              "description": "ExpiresAt the date when this invite expires",
+              "label": "",
+              "type": "Timestamp",
+              "longType": "google.protobuf.Timestamp",
+              "fullType": "google.protobuf.Timestamp",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "joined_at",
+              "description": "JoinedAt the date when the member accepted this invite",
+              "label": "",
+              "type": "Timestamp",
+              "longType": "google.protobuf.Timestamp",
+              "fullType": "google.protobuf.Timestamp",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "ProjectMember",
+          "longName": "ProjectMember",
+          "fullName": "api.v1.ProjectMember",
+          "description": "ProjectMember defines a user that participates at a project",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "id",
+              "description": "Id is the user id of the member",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "role",
+              "description": "Role is the role of the member",
+              "label": "",
+              "type": "ProjectRole",
+              "longType": "ProjectRole",
+              "fullType": "api.v1.ProjectRole",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "inherited_membership",
+              "description": "InheritedMembership indicates that this member has implicit permissions on the project through his membership within the tenant.\nThis member does not have direct project membership but gains permissions on this project from the role he has in the tenant.\nInherited memberships are not included in member lists for users with guest permission but only for direct tenant members.",
+              "label": "",
+              "type": "bool",
+              "longType": "bool",
+              "fullType": "bool",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "created_at",
+              "description": "CreatedAt the date when the member was added to the project",
+              "label": "",
+              "type": "Timestamp",
+              "longType": "google.protobuf.Timestamp",
+              "fullType": "google.protobuf.Timestamp",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "ProjectServiceCreateRequest",
+          "longName": "ProjectServiceCreateRequest",
+          "fullName": "api.v1.ProjectServiceCreateRequest",
+          "description": "ProjectServiceCreateRequest is the request payload to Create a project",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "login",
+              "description": "Login is the tenant of this project\nTODO: is login really a good name?",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "name",
+              "description": "Name of this project, unique per tenant",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "description",
+              "description": "Description of this project",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "ProjectServiceCreateResponse",
+          "longName": "ProjectServiceCreateResponse",
+          "fullName": "api.v1.ProjectServiceCreateResponse",
+          "description": "ProjectServiceCreateResponse is the response payload of creation of a project",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "project",
+              "description": "Project is the project",
+              "label": "",
+              "type": "Project",
+              "longType": "Project",
+              "fullType": "api.v1.Project",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "ProjectServiceDeleteRequest",
+          "longName": "ProjectServiceDeleteRequest",
+          "fullName": "api.v1.ProjectServiceDeleteRequest",
+          "description": "ProjectServiceDeleteRequest is the request payload to delete a project",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "project",
+              "description": "Project is the uuid of the project to get",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "ProjectServiceDeleteResponse",
+          "longName": "ProjectServiceDeleteResponse",
+          "fullName": "api.v1.ProjectServiceDeleteResponse",
+          "description": "ProjectServiceDeleteResponse is the response payload to delete a project",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "project",
+              "description": "Project is the project",
+              "label": "",
+              "type": "Project",
+              "longType": "Project",
+              "fullType": "api.v1.Project",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "ProjectServiceGetRequest",
+          "longName": "ProjectServiceGetRequest",
+          "fullName": "api.v1.ProjectServiceGetRequest",
+          "description": "ProjectServiceGetRequest is the request payload to get a project",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "project",
+              "description": "Project is the uuid of the project to get",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "ProjectServiceGetResponse",
+          "longName": "ProjectServiceGetResponse",
+          "fullName": "api.v1.ProjectServiceGetResponse",
+          "description": "ProjectServiceGetResponse is the response payload to get a projects",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "project",
+              "description": "Project is the project",
+              "label": "",
+              "type": "Project",
+              "longType": "Project",
+              "fullType": "api.v1.Project",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "project_members",
+              "description": "ProjectMembers in this project, projects guests will only see direct project members and not implicit memberships from tenant permissions",
+              "label": "repeated",
+              "type": "ProjectMember",
+              "longType": "ProjectMember",
+              "fullType": "api.v1.ProjectMember",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "ProjectServiceInviteAcceptRequest",
+          "longName": "ProjectServiceInviteAcceptRequest",
+          "fullName": "api.v1.ProjectServiceInviteAcceptRequest",
+          "description": "ProjectServiceInviteAcceptRequest is the request payload to a accept invite request",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "secret",
+              "description": "Secret is the invitation secret part of the invitation url",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "ProjectServiceInviteAcceptResponse",
+          "longName": "ProjectServiceInviteAcceptResponse",
+          "fullName": "api.v1.ProjectServiceInviteAcceptResponse",
+          "description": "ProjectServiceInvitesListResponse is the response payload to a accept invite request",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "project",
+              "description": "Project ID of the project joined",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "project_name",
+              "description": "ProjectName if the project joined",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "ProjectServiceInviteDeleteRequest",
+          "longName": "ProjectServiceInviteDeleteRequest",
+          "fullName": "api.v1.ProjectServiceInviteDeleteRequest",
+          "description": "ProjectServiceInviteDeleteRequest is the request payload to a delete invite",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "project",
+              "description": "Project is the uuid of the project",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "secret",
+              "description": "Secret of the invite to delete",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "ProjectServiceInviteDeleteResponse",
+          "longName": "ProjectServiceInviteDeleteResponse",
+          "fullName": "api.v1.ProjectServiceInviteDeleteResponse",
+          "description": "ProjectServiceInviteDeleteResponse is the response payload of a delete invite request",
+          "hasExtensions": false,
+          "hasFields": false,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": []
+        },
+        {
+          "name": "ProjectServiceInviteGetRequest",
+          "longName": "ProjectServiceInviteGetRequest",
+          "fullName": "api.v1.ProjectServiceInviteGetRequest",
+          "description": "ProjectServiceInviteGetRequest is the request payload to get a invite",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "secret",
+              "description": "Secret of the invite to list",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "ProjectServiceInviteGetResponse",
+          "longName": "ProjectServiceInviteGetResponse",
+          "fullName": "api.v1.ProjectServiceInviteGetResponse",
+          "description": "ProjectServiceInviteGetResponse is the response payload to a get invite request",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "invite",
+              "description": "Invite is the invite",
+              "label": "",
+              "type": "ProjectInvite",
+              "longType": "ProjectInvite",
+              "fullType": "api.v1.ProjectInvite",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "ProjectServiceInviteRequest",
+          "longName": "ProjectServiceInviteRequest",
+          "fullName": "api.v1.ProjectServiceInviteRequest",
+          "description": "ProjectServiceInviteRequest is used to invite a member to a project",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "project",
+              "description": "Project is the uuid of the project",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "role",
+              "description": "Role of this user in this project",
+              "label": "",
+              "type": "ProjectRole",
+              "longType": "ProjectRole",
+              "fullType": "api.v1.ProjectRole",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "ProjectServiceInviteResponse",
+          "longName": "ProjectServiceInviteResponse",
+          "fullName": "api.v1.ProjectServiceInviteResponse",
+          "description": "ProjectServiceInviteRequest is the response payload to a invite member request",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "invite",
+              "description": "Inviter contains a secret which can be sent to a potential user\ncan be appended to the invitation endpoint at our cloud console like\nconsole.metalstack.cloud/invite/\u003csecret\u003e",
+              "label": "",
+              "type": "ProjectInvite",
+              "longType": "ProjectInvite",
+              "fullType": "api.v1.ProjectInvite",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "ProjectServiceInvitesListRequest",
+          "longName": "ProjectServiceInvitesListRequest",
+          "fullName": "api.v1.ProjectServiceInvitesListRequest",
+          "description": "ProjectServiceInvitesListRequest is the request payload to a list invites request",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "project",
+              "description": "Project is the uuid of the project",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "ProjectServiceInvitesListResponse",
+          "longName": "ProjectServiceInvitesListResponse",
+          "fullName": "api.v1.ProjectServiceInvitesListResponse",
+          "description": "ProjectServiceInvitesListResponse is the response payload to a list invites request",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "invites",
+              "description": "Invites not already accepted the invitation to this project",
+              "label": "repeated",
+              "type": "ProjectInvite",
+              "longType": "ProjectInvite",
+              "fullType": "api.v1.ProjectInvite",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "ProjectServiceListRequest",
+          "longName": "ProjectServiceListRequest",
+          "fullName": "api.v1.ProjectServiceListRequest",
+          "description": "ProjectServiceListRequest is the request payload to list all projects",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": true,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "name",
+              "description": "Name list only projects with this name",
+              "label": "optional",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "_name",
+              "defaultValue": ""
+            },
+            {
+              "name": "tenant",
+              "description": "Tenant list only projects of this tenant",
+              "label": "optional",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "_tenant",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "ProjectServiceListResponse",
+          "longName": "ProjectServiceListResponse",
+          "fullName": "api.v1.ProjectServiceListResponse",
+          "description": "ProjectServiceListResponse is the response payload to list all projects",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "projects",
+              "description": "Projects is a list of all your projects",
+              "label": "repeated",
+              "type": "Project",
+              "longType": "Project",
+              "fullType": "api.v1.Project",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "ProjectServiceRemoveMemberRequest",
+          "longName": "ProjectServiceRemoveMemberRequest",
+          "fullName": "api.v1.ProjectServiceRemoveMemberRequest",
+          "description": "ProjectServiceRemoveMemberRequest is used to remove a member from a project",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "project",
+              "description": "Project is the uuid of the project",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "member_id",
+              "description": "MemberID is the id of the member to remove from this project",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "ProjectServiceRemoveMemberResponse",
+          "longName": "ProjectServiceRemoveMemberResponse",
+          "fullName": "api.v1.ProjectServiceRemoveMemberResponse",
+          "description": "ProjectServiceRemoveMemberResponse is the response payload to a remove member request",
+          "hasExtensions": false,
+          "hasFields": false,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": []
+        },
+        {
+          "name": "ProjectServiceUpdateMemberRequest",
+          "longName": "ProjectServiceUpdateMemberRequest",
+          "fullName": "api.v1.ProjectServiceUpdateMemberRequest",
+          "description": "ProjectServiceUpdateMemberRequest is used to update a member of a project",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "project",
+              "description": "Project is the uuid of the project",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "member_id",
+              "description": "MemberID is the id of the member to remove from this project",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "role",
+              "description": "Role is the role in this project the user will get after the update",
+              "label": "",
+              "type": "ProjectRole",
+              "longType": "ProjectRole",
+              "fullType": "api.v1.ProjectRole",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "ProjectServiceUpdateMemberResponse",
+          "longName": "ProjectServiceUpdateMemberResponse",
+          "fullName": "api.v1.ProjectServiceUpdateMemberResponse",
+          "description": "ProjectServiceUpdateMemberResponse is the response payload to a update member request",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "project_member",
+              "description": "ProjectMember is the updated project member",
+              "label": "",
+              "type": "ProjectMember",
+              "longType": "ProjectMember",
+              "fullType": "api.v1.ProjectMember",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "ProjectServiceUpdateRequest",
+          "longName": "ProjectServiceUpdateRequest",
+          "fullName": "api.v1.ProjectServiceUpdateRequest",
+          "description": "ProjectServiceUpdateRequest is the request payload to update a project",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": true,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "project",
+              "description": "Project is the uuid of the project to get",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "name",
+              "description": "Name of this project unique per tenant",
+              "label": "optional",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "_name",
+              "defaultValue": ""
+            },
+            {
+              "name": "description",
+              "description": "Description of this project",
+              "label": "optional",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "_description",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "ProjectServiceUpdateResponse",
+          "longName": "ProjectServiceUpdateResponse",
+          "fullName": "api.v1.ProjectServiceUpdateResponse",
+          "description": "ProjectServiceUpdateResponse is the response payload to update a project",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "project",
+              "description": "Project is the project",
+              "label": "",
+              "type": "Project",
+              "longType": "Project",
+              "fullType": "api.v1.Project",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        }
+      ],
+      "services": [
+        {
+          "name": "ProjectService",
+          "longName": "ProjectService",
+          "fullName": "api.v1.ProjectService",
+          "description": "ProjectService serves project related functions",
+          "methods": [
+            {
+              "name": "List",
+              "description": "List all accessible projects",
+              "requestType": "ProjectServiceListRequest",
+              "requestLongType": "ProjectServiceListRequest",
+              "requestFullType": "api.v1.ProjectServiceListRequest",
+              "requestStreaming": false,
+              "responseType": "ProjectServiceListResponse",
+              "responseLongType": "ProjectServiceListResponse",
+              "responseFullType": "api.v1.ProjectServiceListResponse",
+              "responseStreaming": false
+            },
+            {
+              "name": "Get",
+              "description": "Get a project",
+              "requestType": "ProjectServiceGetRequest",
+              "requestLongType": "ProjectServiceGetRequest",
+              "requestFullType": "api.v1.ProjectServiceGetRequest",
+              "requestStreaming": false,
+              "responseType": "ProjectServiceGetResponse",
+              "responseLongType": "ProjectServiceGetResponse",
+              "responseFullType": "api.v1.ProjectServiceGetResponse",
+              "responseStreaming": false
+            },
+            {
+              "name": "Create",
+              "description": "Create a project",
+              "requestType": "ProjectServiceCreateRequest",
+              "requestLongType": "ProjectServiceCreateRequest",
+              "requestFullType": "api.v1.ProjectServiceCreateRequest",
+              "requestStreaming": false,
+              "responseType": "ProjectServiceCreateResponse",
+              "responseLongType": "ProjectServiceCreateResponse",
+              "responseFullType": "api.v1.ProjectServiceCreateResponse",
+              "responseStreaming": false
+            },
+            {
+              "name": "Delete",
+              "description": "Delete a project",
+              "requestType": "ProjectServiceDeleteRequest",
+              "requestLongType": "ProjectServiceDeleteRequest",
+              "requestFullType": "api.v1.ProjectServiceDeleteRequest",
+              "requestStreaming": false,
+              "responseType": "ProjectServiceDeleteResponse",
+              "responseLongType": "ProjectServiceDeleteResponse",
+              "responseFullType": "api.v1.ProjectServiceDeleteResponse",
+              "responseStreaming": false
+            },
+            {
+              "name": "Update",
+              "description": "Update a project",
+              "requestType": "ProjectServiceUpdateRequest",
+              "requestLongType": "ProjectServiceUpdateRequest",
+              "requestFullType": "api.v1.ProjectServiceUpdateRequest",
+              "requestStreaming": false,
+              "responseType": "ProjectServiceUpdateResponse",
+              "responseLongType": "ProjectServiceUpdateResponse",
+              "responseFullType": "api.v1.ProjectServiceUpdateResponse",
+              "responseStreaming": false
+            },
+            {
+              "name": "RemoveMember",
+              "description": "RemoveMember remove a user from a project",
+              "requestType": "ProjectServiceRemoveMemberRequest",
+              "requestLongType": "ProjectServiceRemoveMemberRequest",
+              "requestFullType": "api.v1.ProjectServiceRemoveMemberRequest",
+              "requestStreaming": false,
+              "responseType": "ProjectServiceRemoveMemberResponse",
+              "responseLongType": "ProjectServiceRemoveMemberResponse",
+              "responseFullType": "api.v1.ProjectServiceRemoveMemberResponse",
+              "responseStreaming": false
+            },
+            {
+              "name": "UpdateMember",
+              "description": "UpdateMember update a user for a project",
+              "requestType": "ProjectServiceUpdateMemberRequest",
+              "requestLongType": "ProjectServiceUpdateMemberRequest",
+              "requestFullType": "api.v1.ProjectServiceUpdateMemberRequest",
+              "requestStreaming": false,
+              "responseType": "ProjectServiceUpdateMemberResponse",
+              "responseLongType": "ProjectServiceUpdateMemberResponse",
+              "responseFullType": "api.v1.ProjectServiceUpdateMemberResponse",
+              "responseStreaming": false
+            },
+            {
+              "name": "Invite",
+              "description": "Invite a user to a project",
+              "requestType": "ProjectServiceInviteRequest",
+              "requestLongType": "ProjectServiceInviteRequest",
+              "requestFullType": "api.v1.ProjectServiceInviteRequest",
+              "requestStreaming": false,
+              "responseType": "ProjectServiceInviteResponse",
+              "responseLongType": "ProjectServiceInviteResponse",
+              "responseFullType": "api.v1.ProjectServiceInviteResponse",
+              "responseStreaming": false
+            },
+            {
+              "name": "InviteAccept",
+              "description": "InviteAccept is called from a user to accept a invitation",
+              "requestType": "ProjectServiceInviteAcceptRequest",
+              "requestLongType": "ProjectServiceInviteAcceptRequest",
+              "requestFullType": "api.v1.ProjectServiceInviteAcceptRequest",
+              "requestStreaming": false,
+              "responseType": "ProjectServiceInviteAcceptResponse",
+              "responseLongType": "ProjectServiceInviteAcceptResponse",
+              "responseFullType": "api.v1.ProjectServiceInviteAcceptResponse",
+              "responseStreaming": false
+            },
+            {
+              "name": "InviteDelete",
+              "description": "InviteDelete deletes a pending invitation",
+              "requestType": "ProjectServiceInviteDeleteRequest",
+              "requestLongType": "ProjectServiceInviteDeleteRequest",
+              "requestFullType": "api.v1.ProjectServiceInviteDeleteRequest",
+              "requestStreaming": false,
+              "responseType": "ProjectServiceInviteDeleteResponse",
+              "responseLongType": "ProjectServiceInviteDeleteResponse",
+              "responseFullType": "api.v1.ProjectServiceInviteDeleteResponse",
+              "responseStreaming": false
+            },
+            {
+              "name": "InvitesList",
+              "description": "InvitesList list all invites to a project",
+              "requestType": "ProjectServiceInvitesListRequest",
+              "requestLongType": "ProjectServiceInvitesListRequest",
+              "requestFullType": "api.v1.ProjectServiceInvitesListRequest",
+              "requestStreaming": false,
+              "responseType": "ProjectServiceInvitesListResponse",
+              "responseLongType": "ProjectServiceInvitesListResponse",
+              "responseFullType": "api.v1.ProjectServiceInvitesListResponse",
+              "responseStreaming": false
+            },
+            {
+              "name": "InviteGet",
+              "description": "InviteGet get an invite",
+              "requestType": "ProjectServiceInviteGetRequest",
+              "requestLongType": "ProjectServiceInviteGetRequest",
+              "requestFullType": "api.v1.ProjectServiceInviteGetRequest",
+              "requestStreaming": false,
+              "responseType": "ProjectServiceInviteGetResponse",
+              "responseLongType": "ProjectServiceInviteGetResponse",
+              "responseFullType": "api.v1.ProjectServiceInviteGetResponse",
+              "responseStreaming": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "admin/v1/project.proto",
+      "description": "",
+      "package": "admin.v1",
+      "hasEnums": false,
+      "hasExtensions": false,
+      "hasMessages": true,
+      "hasServices": true,
+      "enums": [],
+      "extensions": [],
+      "messages": [
+        {
+          "name": "ProjectServiceListRequest",
+          "longName": "ProjectServiceListRequest",
+          "fullName": "admin.v1.ProjectServiceListRequest",
+          "description": "ProjectServiceListRequest is the request payload for the project list request",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": true,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "paging",
+              "description": "Paging details for the list request",
+              "label": "",
+              "type": "Paging",
+              "longType": "api.v1.Paging",
+              "fullType": "api.v1.Paging",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "tenant_id",
+              "description": "TenantId to filter for all projects",
+              "label": "optional",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "_tenant_id",
+              "defaultValue": ""
+            },
+            {
+              "name": "annotations",
+              "description": "Annotations to filter for",
+              "label": "repeated",
+              "type": "AnnotationsEntry",
+              "longType": "ProjectServiceListRequest.AnnotationsEntry",
+              "fullType": "admin.v1.ProjectServiceListRequest.AnnotationsEntry",
+              "ismap": true,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "AnnotationsEntry",
+          "longName": "ProjectServiceListRequest.AnnotationsEntry",
+          "fullName": "admin.v1.ProjectServiceListRequest.AnnotationsEntry",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "key",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "value",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "ProjectServiceListResponse",
+          "longName": "ProjectServiceListResponse",
+          "fullName": "admin.v1.ProjectServiceListResponse",
+          "description": "ProjectServiceListResponse is the response payload for the project list request",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": true,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "projects",
+              "description": "Projects is the list of projects that match the filters",
+              "label": "repeated",
+              "type": "Project",
+              "longType": "api.v1.Project",
+              "fullType": "api.v1.Project",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "next_page",
+              "description": "NextPage is used for pagination, returns the next page to be fetched and must then be provided in the list request.",
+              "label": "optional",
+              "type": "uint64",
+              "longType": "uint64",
+              "fullType": "uint64",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "_next_page",
+              "defaultValue": ""
+            }
+          ]
+        }
+      ],
+      "services": [
+        {
+          "name": "ProjectService",
+          "longName": "ProjectService",
+          "fullName": "admin.v1.ProjectService",
+          "description": "ProjectService serves project related functions",
+          "methods": [
+            {
+              "name": "List",
+              "description": "List projects based on various filter criteria",
+              "requestType": "ProjectServiceListRequest",
+              "requestLongType": "ProjectServiceListRequest",
+              "requestFullType": "admin.v1.ProjectServiceListRequest",
+              "requestStreaming": false,
+              "responseType": "ProjectServiceListResponse",
+              "responseLongType": "ProjectServiceListResponse",
+              "responseFullType": "admin.v1.ProjectServiceListResponse",
               "responseStreaming": false
             }
           ]
@@ -5312,15 +6100,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.uuid",
-                    "value": true
-                  }
-                ]
-              }
+              "defaultValue": ""
             },
             {
               "name": "project",
@@ -5332,19 +6112,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.min_len",
-                    "value": 2
-                  },
-                  {
-                    "name": "string.max_len",
-                    "value": 128
-                  }
-                ]
-              }
+              "defaultValue": ""
             }
           ]
         },
@@ -5392,15 +6160,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.uuid",
-                    "value": true
-                  }
-                ]
-              }
+              "defaultValue": ""
             },
             {
               "name": "project",
@@ -5412,19 +6172,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.min_len",
-                    "value": 2
-                  },
-                  {
-                    "name": "string.max_len",
-                    "value": 128
-                  }
-                ]
-              }
+              "defaultValue": ""
             }
           ]
         },
@@ -5472,15 +6220,7 @@
               "ismap": false,
               "isoneof": true,
               "oneofdecl": "_uuid",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.uuid",
-                    "value": true
-                  }
-                ]
-              }
+              "defaultValue": ""
             },
             {
               "name": "project",
@@ -5492,19 +6232,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.min_len",
-                    "value": 2
-                  },
-                  {
-                    "name": "string.max_len",
-                    "value": 128
-                  }
-                ]
-              }
+              "defaultValue": ""
             },
             {
               "name": "partition",
@@ -5912,15 +6640,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.uuid",
-                    "value": true
-                  }
-                ]
-              }
+              "defaultValue": ""
             },
             {
               "name": "project",
@@ -5932,19 +6652,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.min_len",
-                    "value": 2
-                  },
-                  {
-                    "name": "string.max_len",
-                    "value": 128
-                  }
-                ]
-              }
+              "defaultValue": ""
             }
           ]
         },
@@ -5992,15 +6700,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.uuid",
-                    "value": true
-                  }
-                ]
-              }
+              "defaultValue": ""
             },
             {
               "name": "project",
@@ -6012,19 +6712,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.min_len",
-                    "value": 2
-                  },
-                  {
-                    "name": "string.max_len",
-                    "value": 128
-                  }
-                ]
-              }
+              "defaultValue": ""
             }
           ]
         },
@@ -6072,15 +6760,7 @@
               "ismap": false,
               "isoneof": true,
               "oneofdecl": "_uuid",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.uuid",
-                    "value": true
-                  }
-                ]
-              }
+              "defaultValue": ""
             },
             {
               "name": "project",
@@ -6092,19 +6772,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.min_len",
-                    "value": 2
-                  },
-                  {
-                    "name": "string.max_len",
-                    "value": 128
-                  }
-                ]
-              }
+              "defaultValue": ""
             },
             {
               "name": "partition",
@@ -6939,15 +7607,7 @@
               "ismap": false,
               "isoneof": true,
               "oneofdecl": "_uuid",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.uuid",
-                    "value": true
-                  }
-                ]
-              }
+              "defaultValue": ""
             },
             {
               "name": "project",
@@ -6959,19 +7619,7 @@
               "ismap": false,
               "isoneof": true,
               "oneofdecl": "_project",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.min_len",
-                    "value": 2
-                  },
-                  {
-                    "name": "string.max_len",
-                    "value": 128
-                  }
-                ]
-              }
+              "defaultValue": ""
             },
             {
               "name": "partition",
@@ -7055,15 +7703,7 @@
               "ismap": false,
               "isoneof": true,
               "oneofdecl": "_uuid",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.uuid",
-                    "value": true
-                  }
-                ]
-              }
+              "defaultValue": ""
             },
             {
               "name": "project",
@@ -7075,19 +7715,7 @@
               "ismap": false,
               "isoneof": true,
               "oneofdecl": "_project",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.min_len",
-                    "value": 2
-                  },
-                  {
-                    "name": "string.max_len",
-                    "value": 128
-                  }
-                ]
-              }
+              "defaultValue": ""
             },
             {
               "name": "partition",
@@ -7794,19 +8422,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.min_len",
-                    "value": 2
-                  },
-                  {
-                    "name": "string.max_len",
-                    "value": 64
-                  }
-                ]
-              }
+              "defaultValue": ""
             },
             {
               "name": "description",
@@ -7818,19 +8434,7 @@
               "ismap": false,
               "isoneof": true,
               "oneofdecl": "_description",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.min_len",
-                    "value": 2
-                  },
-                  {
-                    "name": "string.max_len",
-                    "value": 512
-                  }
-                ]
-              }
+              "defaultValue": ""
             },
             {
               "name": "email",
@@ -7842,15 +8446,7 @@
               "ismap": false,
               "isoneof": true,
               "oneofdecl": "_email",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.email",
-                    "value": true
-                  }
-                ]
-              }
+              "defaultValue": ""
             },
             {
               "name": "avatar_url",
@@ -8305,19 +8901,7 @@
               "ismap": false,
               "isoneof": true,
               "oneofdecl": "_name",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.min_len",
-                    "value": 2
-                  },
-                  {
-                    "name": "string.max_len",
-                    "value": 64
-                  }
-                ]
-              }
+              "defaultValue": ""
             }
           ]
         },
@@ -8496,19 +9080,7 @@
               "ismap": false,
               "isoneof": true,
               "oneofdecl": "_name",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.min_len",
-                    "value": 2
-                  },
-                  {
-                    "name": "string.max_len",
-                    "value": 64
-                  }
-                ]
-              }
+              "defaultValue": ""
             },
             {
               "name": "email",
@@ -8520,15 +9092,7 @@
               "ismap": false,
               "isoneof": true,
               "oneofdecl": "_email",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.email",
-                    "value": true
-                  }
-                ]
-              }
+              "defaultValue": ""
             },
             {
               "name": "description",
@@ -8540,19 +9104,7 @@
               "ismap": false,
               "isoneof": true,
               "oneofdecl": "_description",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.min_len",
-                    "value": 2
-                  },
-                  {
-                    "name": "string.max_len",
-                    "value": 512
-                  }
-                ]
-              }
+              "defaultValue": ""
             },
             {
               "name": "avatar_url",
@@ -8880,6 +9432,65 @@
       "extensions": [],
       "messages": [
         {
+          "name": "TenantServiceAddMemberRequest",
+          "longName": "TenantServiceAddMemberRequest",
+          "fullName": "admin.v1.TenantServiceAddMemberRequest",
+          "description": "TenantServiceAddMemberRequest is the request payload for adding a member to a tenant",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "tenant_id",
+              "description": "Tenant ID to which the member will be added",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "member_id",
+              "description": "Email of the member to add",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "role",
+              "description": "Role to assign to the new member",
+              "label": "",
+              "type": "TenantRole",
+              "longType": "api.v1.TenantRole",
+              "fullType": "api.v1.TenantRole",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "TenantServiceAddMemberResponse",
+          "longName": "TenantServiceAddMemberResponse",
+          "fullName": "admin.v1.TenantServiceAddMemberResponse",
+          "description": "TenantServiceAddMemberResponse is the response payload for the add member request",
+          "hasExtensions": false,
+          "hasFields": false,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": []
+        },
+        {
           "name": "TenantServiceAdmitRequest",
           "longName": "TenantServiceAdmitRequest",
           "fullName": "admin.v1.TenantServiceAdmitRequest",
@@ -8923,15 +9534,7 @@
               "ismap": false,
               "isoneof": true,
               "oneofdecl": "_balance_to_add",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "int64.gt",
-                    "value": 0
-                  }
-                ]
-              }
+              "defaultValue": ""
             }
           ]
         },
@@ -9051,15 +9654,7 @@
               "ismap": false,
               "isoneof": true,
               "oneofdecl": "_uuid",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.uuid",
-                    "value": true
-                  }
-                ]
-              }
+              "defaultValue": ""
             }
           ]
         },
@@ -9190,6 +9785,18 @@
               "responseLongType": "TenantServiceRevokeResponse",
               "responseFullType": "admin.v1.TenantServiceRevokeResponse",
               "responseStreaming": false
+            },
+            {
+              "name": "AddMember",
+              "description": "Add a member to a tenant",
+              "requestType": "TenantServiceAddMemberRequest",
+              "requestLongType": "TenantServiceAddMemberRequest",
+              "requestFullType": "admin.v1.TenantServiceAddMemberRequest",
+              "requestStreaming": false,
+              "responseType": "TenantServiceAddMemberResponse",
+              "responseLongType": "TenantServiceAddMemberResponse",
+              "responseFullType": "admin.v1.TenantServiceAddMemberResponse",
+              "responseStreaming": false
             }
           ]
         }
@@ -9286,15 +9893,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.uuid",
-                    "value": true
-                  }
-                ]
-              }
+              "defaultValue": ""
             },
             {
               "name": "user_id",
@@ -9306,19 +9905,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.min_len",
-                    "value": 2
-                  },
-                  {
-                    "name": "string.max_len",
-                    "value": 512
-                  }
-                ]
-              }
+              "defaultValue": ""
             },
             {
               "name": "description",
@@ -9330,19 +9917,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.min_len",
-                    "value": 2
-                  },
-                  {
-                    "name": "string.max_len",
-                    "value": 256
-                  }
-                ]
-              }
+              "defaultValue": ""
             },
             {
               "name": "permissions",
@@ -9522,19 +10097,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.min_len",
-                    "value": 2
-                  },
-                  {
-                    "name": "string.max_len",
-                    "value": 256
-                  }
-                ]
-              }
+              "defaultValue": ""
             },
             {
               "name": "permissions",
@@ -9558,27 +10121,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "duration.lt.seconds",
-                    "value": 31536001
-                  },
-                  {
-                    "name": "duration.lt.nanos",
-                    "value": 0
-                  },
-                  {
-                    "name": "duration.gte.seconds",
-                    "value": 600
-                  },
-                  {
-                    "name": "duration.gte.nanos",
-                    "value": 0
-                  }
-                ]
-              }
+              "defaultValue": ""
             },
             {
               "name": "project_roles",
@@ -9781,15 +10324,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.uuid",
-                    "value": true
-                  }
-                ]
-              }
+              "defaultValue": ""
             }
           ]
         },
@@ -9931,15 +10466,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.uuid",
-                    "value": true
-                  }
-                ]
-              }
+              "defaultValue": ""
             },
             {
               "name": "user_id",
@@ -9951,19 +10478,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.min_len",
-                    "value": 2
-                  },
-                  {
-                    "name": "string.max_len",
-                    "value": 512
-                  }
-                ]
-              }
+              "defaultValue": ""
             }
           ]
         },
@@ -10914,15 +11429,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.uuid",
-                    "value": true
-                  }
-                ]
-              }
+              "defaultValue": ""
             },
             {
               "name": "ip",
@@ -10934,15 +11441,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.ip",
-                    "value": true
-                  }
-                ]
-              }
+              "defaultValue": ""
             },
             {
               "name": "name",
@@ -10954,19 +11453,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.min_len",
-                    "value": 2
-                  },
-                  {
-                    "name": "string.max_len",
-                    "value": 128
-                  }
-                ]
-              }
+              "defaultValue": ""
             },
             {
               "name": "description",
@@ -10978,15 +11465,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.max_len",
-                    "value": 128
-                  }
-                ]
-              }
+              "defaultValue": ""
             },
             {
               "name": "network",
@@ -10998,19 +11477,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.min_len",
-                    "value": 2
-                  },
-                  {
-                    "name": "string.max_len",
-                    "value": 128
-                  }
-                ]
-              }
+              "defaultValue": ""
             },
             {
               "name": "project",
@@ -11022,19 +11489,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.min_len",
-                    "value": 2
-                  },
-                  {
-                    "name": "string.max_len",
-                    "value": 128
-                  }
-                ]
-              }
+              "defaultValue": ""
             },
             {
               "name": "type",
@@ -11058,15 +11513,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "repeated.max_items",
-                    "value": 100
-                  }
-                ]
-              }
+              "defaultValue": ""
             },
             {
               "name": "created_at",
@@ -11126,19 +11573,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.min_len",
-                    "value": 2
-                  },
-                  {
-                    "name": "string.max_len",
-                    "value": 128
-                  }
-                ]
-              }
+              "defaultValue": ""
             },
             {
               "name": "name",
@@ -11150,19 +11585,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.min_len",
-                    "value": 2
-                  },
-                  {
-                    "name": "string.max_len",
-                    "value": 128
-                  }
-                ]
-              }
+              "defaultValue": ""
             },
             {
               "name": "description",
@@ -11174,15 +11597,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.max_len",
-                    "value": 128
-                  }
-                ]
-              }
+              "defaultValue": ""
             },
             {
               "name": "tags",
@@ -11194,15 +11609,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "repeated.max_items",
-                    "value": 100
-                  }
-                ]
-              }
+              "defaultValue": ""
             },
             {
               "name": "static",
@@ -11262,15 +11669,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.uuid",
-                    "value": true
-                  }
-                ]
-              }
+              "defaultValue": ""
             },
             {
               "name": "project",
@@ -11282,19 +11681,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.min_len",
-                    "value": 2
-                  },
-                  {
-                    "name": "string.max_len",
-                    "value": 128
-                  }
-                ]
-              }
+              "defaultValue": ""
             }
           ]
         },
@@ -11342,15 +11729,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.uuid",
-                    "value": true
-                  }
-                ]
-              }
+              "defaultValue": ""
             },
             {
               "name": "project",
@@ -11362,19 +11741,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.min_len",
-                    "value": 2
-                  },
-                  {
-                    "name": "string.max_len",
-                    "value": 128
-                  }
-                ]
-              }
+              "defaultValue": ""
             }
           ]
         },
@@ -11422,19 +11789,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.min_len",
-                    "value": 2
-                  },
-                  {
-                    "name": "string.max_len",
-                    "value": 128
-                  }
-                ]
-              }
+              "defaultValue": ""
             }
           ]
         },
@@ -11482,19 +11837,7 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.min_len",
-                    "value": 2
-                  },
-                  {
-                    "name": "string.max_len",
-                    "value": 128
-                  }
-                ]
-              }
+              "defaultValue": ""
             },
             {
               "name": "ip",
@@ -11825,1291 +12168,6 @@
               "responseType": "MethodServiceTokenScopedListResponse",
               "responseLongType": "MethodServiceTokenScopedListResponse",
               "responseFullType": "api.v1.MethodServiceTokenScopedListResponse",
-              "responseStreaming": false
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "name": "api/v1/project.proto",
-      "description": "",
-      "package": "api.v1",
-      "hasEnums": false,
-      "hasExtensions": false,
-      "hasMessages": true,
-      "hasServices": true,
-      "enums": [],
-      "extensions": [],
-      "messages": [
-        {
-          "name": "Project",
-          "longName": "Project",
-          "fullName": "api.v1.Project",
-          "description": "Project defines a group of resources belonging to a tenant\na tenant can have multiple projects",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "uuid",
-              "description": "Uuid of this project",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "name",
-              "description": "Name of this project must be unique per tenant",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "description",
-              "description": "Description of this project",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "tenant",
-              "description": "Tenant this project belongs to",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "is_default_project",
-              "description": "IsDefaultProject is true if this is the default project of the tenant.",
-              "label": "",
-              "type": "bool",
-              "longType": "bool",
-              "fullType": "bool",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "created_at",
-              "description": "CreatedAt the date when this project was created",
-              "label": "",
-              "type": "Timestamp",
-              "longType": "google.protobuf.Timestamp",
-              "fullType": "google.protobuf.Timestamp",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "updated_at",
-              "description": "UpdatedAt the date when this project was updated",
-              "label": "",
-              "type": "Timestamp",
-              "longType": "google.protobuf.Timestamp",
-              "fullType": "google.protobuf.Timestamp",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            }
-          ]
-        },
-        {
-          "name": "ProjectInvite",
-          "longName": "ProjectInvite",
-          "fullName": "api.v1.ProjectInvite",
-          "description": "ProjectInvite defines invite to project",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "secret",
-              "description": "Secret is the secret part of the invite, typically part of the url",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "project",
-              "description": "Project is the project id for which this invite was created",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "role",
-              "description": "Role is the role in this project the user will get after accepting the invitation",
-              "label": "",
-              "type": "ProjectRole",
-              "longType": "ProjectRole",
-              "fullType": "api.v1.ProjectRole",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "joined",
-              "description": "Joined is false as long as a user has not accepted the invite",
-              "label": "",
-              "type": "bool",
-              "longType": "bool",
-              "fullType": "bool",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "project_name",
-              "description": "ProjectName is the project name for which this invite was created",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "tenant",
-              "description": "Tenant is the login of tenant who invites to join this project",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "tenant_name",
-              "description": "TenantName is the name of tenant who invites to join this project",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "expires_at",
-              "description": "ExpiresAt the date when this invite expires",
-              "label": "",
-              "type": "Timestamp",
-              "longType": "google.protobuf.Timestamp",
-              "fullType": "google.protobuf.Timestamp",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "joined_at",
-              "description": "JoinedAt the date when the member accepted this invite",
-              "label": "",
-              "type": "Timestamp",
-              "longType": "google.protobuf.Timestamp",
-              "fullType": "google.protobuf.Timestamp",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            }
-          ]
-        },
-        {
-          "name": "ProjectMember",
-          "longName": "ProjectMember",
-          "fullName": "api.v1.ProjectMember",
-          "description": "ProjectMember defines a user that participates at a project",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "id",
-              "description": "Id is the user id of the member",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "role",
-              "description": "Role is the role of the member",
-              "label": "",
-              "type": "ProjectRole",
-              "longType": "ProjectRole",
-              "fullType": "api.v1.ProjectRole",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "inherited_membership",
-              "description": "InheritedMembership indicates that this member has implicit permissions on the project through his membership within the tenant.\nThis member does not have direct project membership but gains permissions on this project from the role he has in the tenant.\nInherited memberships are not included in member lists for users with guest permission but only for direct tenant members.",
-              "label": "",
-              "type": "bool",
-              "longType": "bool",
-              "fullType": "bool",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "created_at",
-              "description": "CreatedAt the date when the member was added to the project",
-              "label": "",
-              "type": "Timestamp",
-              "longType": "google.protobuf.Timestamp",
-              "fullType": "google.protobuf.Timestamp",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            }
-          ]
-        },
-        {
-          "name": "ProjectServiceCreateRequest",
-          "longName": "ProjectServiceCreateRequest",
-          "fullName": "api.v1.ProjectServiceCreateRequest",
-          "description": "ProjectServiceCreateRequest is the request payload to Create a project",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "login",
-              "description": "Login is the tenant of this project\nTODO: is login really a good name?",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.min_len",
-                    "value": 2
-                  },
-                  {
-                    "name": "string.max_len",
-                    "value": 128
-                  }
-                ]
-              }
-            },
-            {
-              "name": "name",
-              "description": "Name of this project, unique per tenant",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.min_len",
-                    "value": 2
-                  },
-                  {
-                    "name": "string.max_len",
-                    "value": 64
-                  }
-                ]
-              }
-            },
-            {
-              "name": "description",
-              "description": "Description of this project",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.min_len",
-                    "value": 2
-                  },
-                  {
-                    "name": "string.max_len",
-                    "value": 512
-                  }
-                ]
-              }
-            }
-          ]
-        },
-        {
-          "name": "ProjectServiceCreateResponse",
-          "longName": "ProjectServiceCreateResponse",
-          "fullName": "api.v1.ProjectServiceCreateResponse",
-          "description": "ProjectServiceCreateResponse is the response payload of creation of a project",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "project",
-              "description": "Project is the project",
-              "label": "",
-              "type": "Project",
-              "longType": "Project",
-              "fullType": "api.v1.Project",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            }
-          ]
-        },
-        {
-          "name": "ProjectServiceDeleteRequest",
-          "longName": "ProjectServiceDeleteRequest",
-          "fullName": "api.v1.ProjectServiceDeleteRequest",
-          "description": "ProjectServiceDeleteRequest is the request payload to delete a project",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "project",
-              "description": "Project is the uuid of the project to get",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.uuid",
-                    "value": true
-                  }
-                ]
-              }
-            }
-          ]
-        },
-        {
-          "name": "ProjectServiceDeleteResponse",
-          "longName": "ProjectServiceDeleteResponse",
-          "fullName": "api.v1.ProjectServiceDeleteResponse",
-          "description": "ProjectServiceDeleteResponse is the response payload to delete a project",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "project",
-              "description": "Project is the project",
-              "label": "",
-              "type": "Project",
-              "longType": "Project",
-              "fullType": "api.v1.Project",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            }
-          ]
-        },
-        {
-          "name": "ProjectServiceGetRequest",
-          "longName": "ProjectServiceGetRequest",
-          "fullName": "api.v1.ProjectServiceGetRequest",
-          "description": "ProjectServiceGetRequest is the request payload to get a project",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "project",
-              "description": "Project is the uuid of the project to get",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.uuid",
-                    "value": true
-                  }
-                ]
-              }
-            }
-          ]
-        },
-        {
-          "name": "ProjectServiceGetResponse",
-          "longName": "ProjectServiceGetResponse",
-          "fullName": "api.v1.ProjectServiceGetResponse",
-          "description": "ProjectServiceGetResponse is the response payload to get a projects",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "project",
-              "description": "Project is the project",
-              "label": "",
-              "type": "Project",
-              "longType": "Project",
-              "fullType": "api.v1.Project",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "project_members",
-              "description": "ProjectMembers in this project, projects guests will only see direct project members and not implicit memberships from tenant permissions",
-              "label": "repeated",
-              "type": "ProjectMember",
-              "longType": "ProjectMember",
-              "fullType": "api.v1.ProjectMember",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            }
-          ]
-        },
-        {
-          "name": "ProjectServiceInviteAcceptRequest",
-          "longName": "ProjectServiceInviteAcceptRequest",
-          "fullName": "api.v1.ProjectServiceInviteAcceptRequest",
-          "description": "ProjectServiceInviteAcceptRequest is the request payload to a accept invite request",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "secret",
-              "description": "Secret is the invitation secret part of the invitation url",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            }
-          ]
-        },
-        {
-          "name": "ProjectServiceInviteAcceptResponse",
-          "longName": "ProjectServiceInviteAcceptResponse",
-          "fullName": "api.v1.ProjectServiceInviteAcceptResponse",
-          "description": "ProjectServiceInvitesListResponse is the response payload to a accept invite request",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "project",
-              "description": "Project ID of the project joined",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "project_name",
-              "description": "ProjectName if the project joined",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            }
-          ]
-        },
-        {
-          "name": "ProjectServiceInviteDeleteRequest",
-          "longName": "ProjectServiceInviteDeleteRequest",
-          "fullName": "api.v1.ProjectServiceInviteDeleteRequest",
-          "description": "ProjectServiceInviteDeleteRequest is the request payload to a delete invite",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "project",
-              "description": "Project is the uuid of the project",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.uuid",
-                    "value": true
-                  }
-                ]
-              }
-            },
-            {
-              "name": "secret",
-              "description": "Secret of the invite to delete",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            }
-          ]
-        },
-        {
-          "name": "ProjectServiceInviteDeleteResponse",
-          "longName": "ProjectServiceInviteDeleteResponse",
-          "fullName": "api.v1.ProjectServiceInviteDeleteResponse",
-          "description": "ProjectServiceInviteDeleteResponse is the response payload of a delete invite request",
-          "hasExtensions": false,
-          "hasFields": false,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": []
-        },
-        {
-          "name": "ProjectServiceInviteGetRequest",
-          "longName": "ProjectServiceInviteGetRequest",
-          "fullName": "api.v1.ProjectServiceInviteGetRequest",
-          "description": "ProjectServiceInviteGetRequest is the request payload to get a invite",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "secret",
-              "description": "Secret of the invite to list",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            }
-          ]
-        },
-        {
-          "name": "ProjectServiceInviteGetResponse",
-          "longName": "ProjectServiceInviteGetResponse",
-          "fullName": "api.v1.ProjectServiceInviteGetResponse",
-          "description": "ProjectServiceInviteGetResponse is the response payload to a get invite request",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "invite",
-              "description": "Invite is the invite",
-              "label": "",
-              "type": "ProjectInvite",
-              "longType": "ProjectInvite",
-              "fullType": "api.v1.ProjectInvite",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            }
-          ]
-        },
-        {
-          "name": "ProjectServiceInviteRequest",
-          "longName": "ProjectServiceInviteRequest",
-          "fullName": "api.v1.ProjectServiceInviteRequest",
-          "description": "ProjectServiceInviteRequest is used to invite a member to a project",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "project",
-              "description": "Project is the uuid of the project",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.uuid",
-                    "value": true
-                  }
-                ]
-              }
-            },
-            {
-              "name": "role",
-              "description": "Role of this user in this project",
-              "label": "",
-              "type": "ProjectRole",
-              "longType": "ProjectRole",
-              "fullType": "api.v1.ProjectRole",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            }
-          ]
-        },
-        {
-          "name": "ProjectServiceInviteResponse",
-          "longName": "ProjectServiceInviteResponse",
-          "fullName": "api.v1.ProjectServiceInviteResponse",
-          "description": "ProjectServiceInviteRequest is the response payload to a invite member request",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "invite",
-              "description": "Inviter contains a secret which can be sent to a potential user\ncan be appended to the invitation endpoint at our cloud console like\nconsole.metalstack.cloud/invite/\u003csecret\u003e",
-              "label": "",
-              "type": "ProjectInvite",
-              "longType": "ProjectInvite",
-              "fullType": "api.v1.ProjectInvite",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            }
-          ]
-        },
-        {
-          "name": "ProjectServiceInvitesListRequest",
-          "longName": "ProjectServiceInvitesListRequest",
-          "fullName": "api.v1.ProjectServiceInvitesListRequest",
-          "description": "ProjectServiceInvitesListRequest is the request payload to a list invites request",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "project",
-              "description": "Project is the uuid of the project",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.uuid",
-                    "value": true
-                  }
-                ]
-              }
-            }
-          ]
-        },
-        {
-          "name": "ProjectServiceInvitesListResponse",
-          "longName": "ProjectServiceInvitesListResponse",
-          "fullName": "api.v1.ProjectServiceInvitesListResponse",
-          "description": "ProjectServiceInvitesListResponse is the response payload to a list invites request",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "invites",
-              "description": "Invites not already accepted the invitation to this project",
-              "label": "repeated",
-              "type": "ProjectInvite",
-              "longType": "ProjectInvite",
-              "fullType": "api.v1.ProjectInvite",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            }
-          ]
-        },
-        {
-          "name": "ProjectServiceListRequest",
-          "longName": "ProjectServiceListRequest",
-          "fullName": "api.v1.ProjectServiceListRequest",
-          "description": "ProjectServiceListRequest is the request payload to list all projects",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": true,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "name",
-              "description": "Name list only projects with this name",
-              "label": "optional",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": true,
-              "oneofdecl": "_name",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.min_len",
-                    "value": 2
-                  },
-                  {
-                    "name": "string.max_len",
-                    "value": 128
-                  }
-                ]
-              }
-            },
-            {
-              "name": "tenant",
-              "description": "Tenant list only projects of this tenant",
-              "label": "optional",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": true,
-              "oneofdecl": "_tenant",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.min_len",
-                    "value": 2
-                  },
-                  {
-                    "name": "string.max_len",
-                    "value": 128
-                  }
-                ]
-              }
-            }
-          ]
-        },
-        {
-          "name": "ProjectServiceListResponse",
-          "longName": "ProjectServiceListResponse",
-          "fullName": "api.v1.ProjectServiceListResponse",
-          "description": "ProjectServiceListResponse is the response payload to list all projects",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "projects",
-              "description": "Projects is a list of all your projects",
-              "label": "repeated",
-              "type": "Project",
-              "longType": "Project",
-              "fullType": "api.v1.Project",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            }
-          ]
-        },
-        {
-          "name": "ProjectServiceRemoveMemberRequest",
-          "longName": "ProjectServiceRemoveMemberRequest",
-          "fullName": "api.v1.ProjectServiceRemoveMemberRequest",
-          "description": "ProjectServiceRemoveMemberRequest is used to remove a member from a project",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "project",
-              "description": "Project is the uuid of the project",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.uuid",
-                    "value": true
-                  }
-                ]
-              }
-            },
-            {
-              "name": "member_id",
-              "description": "MemberID is the id of the member to remove from this project",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            }
-          ]
-        },
-        {
-          "name": "ProjectServiceRemoveMemberResponse",
-          "longName": "ProjectServiceRemoveMemberResponse",
-          "fullName": "api.v1.ProjectServiceRemoveMemberResponse",
-          "description": "ProjectServiceRemoveMemberResponse is the response payload to a remove member request",
-          "hasExtensions": false,
-          "hasFields": false,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": []
-        },
-        {
-          "name": "ProjectServiceUpdateMemberRequest",
-          "longName": "ProjectServiceUpdateMemberRequest",
-          "fullName": "api.v1.ProjectServiceUpdateMemberRequest",
-          "description": "ProjectServiceUpdateMemberRequest is used to update a member of a project",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "project",
-              "description": "Project is the uuid of the project",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.uuid",
-                    "value": true
-                  }
-                ]
-              }
-            },
-            {
-              "name": "member_id",
-              "description": "MemberID is the id of the member to remove from this project",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "role",
-              "description": "Role is the role in this project the user will get after the update",
-              "label": "",
-              "type": "ProjectRole",
-              "longType": "ProjectRole",
-              "fullType": "api.v1.ProjectRole",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            }
-          ]
-        },
-        {
-          "name": "ProjectServiceUpdateMemberResponse",
-          "longName": "ProjectServiceUpdateMemberResponse",
-          "fullName": "api.v1.ProjectServiceUpdateMemberResponse",
-          "description": "ProjectServiceUpdateMemberResponse is the response payload to a update member request",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "project_member",
-              "description": "ProjectMember is the updated project member",
-              "label": "",
-              "type": "ProjectMember",
-              "longType": "ProjectMember",
-              "fullType": "api.v1.ProjectMember",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            }
-          ]
-        },
-        {
-          "name": "ProjectServiceUpdateRequest",
-          "longName": "ProjectServiceUpdateRequest",
-          "fullName": "api.v1.ProjectServiceUpdateRequest",
-          "description": "ProjectServiceUpdateRequest is the request payload to update a project",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": true,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "project",
-              "description": "Project is the uuid of the project to get",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.uuid",
-                    "value": true
-                  }
-                ]
-              }
-            },
-            {
-              "name": "name",
-              "description": "Name of this project unique per tenant",
-              "label": "optional",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": true,
-              "oneofdecl": "_name",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.min_len",
-                    "value": 2
-                  },
-                  {
-                    "name": "string.max_len",
-                    "value": 64
-                  }
-                ]
-              }
-            },
-            {
-              "name": "description",
-              "description": "Description of this project",
-              "label": "optional",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": true,
-              "oneofdecl": "_description",
-              "defaultValue": "",
-              "options": {
-                "validate.rules": [
-                  {
-                    "name": "string.min_len",
-                    "value": 2
-                  },
-                  {
-                    "name": "string.max_len",
-                    "value": 512
-                  }
-                ]
-              }
-            }
-          ]
-        },
-        {
-          "name": "ProjectServiceUpdateResponse",
-          "longName": "ProjectServiceUpdateResponse",
-          "fullName": "api.v1.ProjectServiceUpdateResponse",
-          "description": "ProjectServiceUpdateResponse is the response payload to update a project",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "project",
-              "description": "Project is the project",
-              "label": "",
-              "type": "Project",
-              "longType": "Project",
-              "fullType": "api.v1.Project",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            }
-          ]
-        }
-      ],
-      "services": [
-        {
-          "name": "ProjectService",
-          "longName": "ProjectService",
-          "fullName": "api.v1.ProjectService",
-          "description": "ProjectService serves project related functions",
-          "methods": [
-            {
-              "name": "List",
-              "description": "List all accessible projects",
-              "requestType": "ProjectServiceListRequest",
-              "requestLongType": "ProjectServiceListRequest",
-              "requestFullType": "api.v1.ProjectServiceListRequest",
-              "requestStreaming": false,
-              "responseType": "ProjectServiceListResponse",
-              "responseLongType": "ProjectServiceListResponse",
-              "responseFullType": "api.v1.ProjectServiceListResponse",
-              "responseStreaming": false
-            },
-            {
-              "name": "Get",
-              "description": "Get a project",
-              "requestType": "ProjectServiceGetRequest",
-              "requestLongType": "ProjectServiceGetRequest",
-              "requestFullType": "api.v1.ProjectServiceGetRequest",
-              "requestStreaming": false,
-              "responseType": "ProjectServiceGetResponse",
-              "responseLongType": "ProjectServiceGetResponse",
-              "responseFullType": "api.v1.ProjectServiceGetResponse",
-              "responseStreaming": false
-            },
-            {
-              "name": "Create",
-              "description": "Create a project",
-              "requestType": "ProjectServiceCreateRequest",
-              "requestLongType": "ProjectServiceCreateRequest",
-              "requestFullType": "api.v1.ProjectServiceCreateRequest",
-              "requestStreaming": false,
-              "responseType": "ProjectServiceCreateResponse",
-              "responseLongType": "ProjectServiceCreateResponse",
-              "responseFullType": "api.v1.ProjectServiceCreateResponse",
-              "responseStreaming": false
-            },
-            {
-              "name": "Delete",
-              "description": "Delete a project",
-              "requestType": "ProjectServiceDeleteRequest",
-              "requestLongType": "ProjectServiceDeleteRequest",
-              "requestFullType": "api.v1.ProjectServiceDeleteRequest",
-              "requestStreaming": false,
-              "responseType": "ProjectServiceDeleteResponse",
-              "responseLongType": "ProjectServiceDeleteResponse",
-              "responseFullType": "api.v1.ProjectServiceDeleteResponse",
-              "responseStreaming": false
-            },
-            {
-              "name": "Update",
-              "description": "Update a project",
-              "requestType": "ProjectServiceUpdateRequest",
-              "requestLongType": "ProjectServiceUpdateRequest",
-              "requestFullType": "api.v1.ProjectServiceUpdateRequest",
-              "requestStreaming": false,
-              "responseType": "ProjectServiceUpdateResponse",
-              "responseLongType": "ProjectServiceUpdateResponse",
-              "responseFullType": "api.v1.ProjectServiceUpdateResponse",
-              "responseStreaming": false
-            },
-            {
-              "name": "RemoveMember",
-              "description": "RemoveMember remove a user from a project",
-              "requestType": "ProjectServiceRemoveMemberRequest",
-              "requestLongType": "ProjectServiceRemoveMemberRequest",
-              "requestFullType": "api.v1.ProjectServiceRemoveMemberRequest",
-              "requestStreaming": false,
-              "responseType": "ProjectServiceRemoveMemberResponse",
-              "responseLongType": "ProjectServiceRemoveMemberResponse",
-              "responseFullType": "api.v1.ProjectServiceRemoveMemberResponse",
-              "responseStreaming": false
-            },
-            {
-              "name": "UpdateMember",
-              "description": "UpdateMember update a user for a project",
-              "requestType": "ProjectServiceUpdateMemberRequest",
-              "requestLongType": "ProjectServiceUpdateMemberRequest",
-              "requestFullType": "api.v1.ProjectServiceUpdateMemberRequest",
-              "requestStreaming": false,
-              "responseType": "ProjectServiceUpdateMemberResponse",
-              "responseLongType": "ProjectServiceUpdateMemberResponse",
-              "responseFullType": "api.v1.ProjectServiceUpdateMemberResponse",
-              "responseStreaming": false
-            },
-            {
-              "name": "Invite",
-              "description": "Invite a user to a project",
-              "requestType": "ProjectServiceInviteRequest",
-              "requestLongType": "ProjectServiceInviteRequest",
-              "requestFullType": "api.v1.ProjectServiceInviteRequest",
-              "requestStreaming": false,
-              "responseType": "ProjectServiceInviteResponse",
-              "responseLongType": "ProjectServiceInviteResponse",
-              "responseFullType": "api.v1.ProjectServiceInviteResponse",
-              "responseStreaming": false
-            },
-            {
-              "name": "InviteAccept",
-              "description": "InviteAccept is called from a user to accept a invitation",
-              "requestType": "ProjectServiceInviteAcceptRequest",
-              "requestLongType": "ProjectServiceInviteAcceptRequest",
-              "requestFullType": "api.v1.ProjectServiceInviteAcceptRequest",
-              "requestStreaming": false,
-              "responseType": "ProjectServiceInviteAcceptResponse",
-              "responseLongType": "ProjectServiceInviteAcceptResponse",
-              "responseFullType": "api.v1.ProjectServiceInviteAcceptResponse",
-              "responseStreaming": false
-            },
-            {
-              "name": "InviteDelete",
-              "description": "InviteDelete deletes a pending invitation",
-              "requestType": "ProjectServiceInviteDeleteRequest",
-              "requestLongType": "ProjectServiceInviteDeleteRequest",
-              "requestFullType": "api.v1.ProjectServiceInviteDeleteRequest",
-              "requestStreaming": false,
-              "responseType": "ProjectServiceInviteDeleteResponse",
-              "responseLongType": "ProjectServiceInviteDeleteResponse",
-              "responseFullType": "api.v1.ProjectServiceInviteDeleteResponse",
-              "responseStreaming": false
-            },
-            {
-              "name": "InvitesList",
-              "description": "InvitesList list all invites to a project",
-              "requestType": "ProjectServiceInvitesListRequest",
-              "requestLongType": "ProjectServiceInvitesListRequest",
-              "requestFullType": "api.v1.ProjectServiceInvitesListRequest",
-              "requestStreaming": false,
-              "responseType": "ProjectServiceInvitesListResponse",
-              "responseLongType": "ProjectServiceInvitesListResponse",
-              "responseFullType": "api.v1.ProjectServiceInvitesListResponse",
-              "responseStreaming": false
-            },
-            {
-              "name": "InviteGet",
-              "description": "InviteGet get an invite",
-              "requestType": "ProjectServiceInviteGetRequest",
-              "requestLongType": "ProjectServiceInviteGetRequest",
-              "requestFullType": "api.v1.ProjectServiceInviteGetRequest",
-              "requestStreaming": false,
-              "responseType": "ProjectServiceInviteGetResponse",
-              "responseLongType": "ProjectServiceInviteGetResponse",
-              "responseFullType": "api.v1.ProjectServiceInviteGetResponse",
               "responseStreaming": false
             }
           ]

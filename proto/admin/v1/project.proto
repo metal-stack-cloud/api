@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+package admin.v1;
+
+import "api/v1/common.proto";
+import "api/v1/project.proto";
+
+// ProjectService serves project related functions
+service ProjectService {
+  // List projects based on various filter criteria
+  rpc List(ProjectServiceListRequest) returns (ProjectServiceListResponse) {
+    option (api.v1.admin_roles) = ADMIN_ROLE_EDITOR;
+    option (api.v1.admin_roles) = ADMIN_ROLE_VIEWER;
+  }
+}
+
+// ProjectServiceListRequest is the request payload for the project list request
+message ProjectServiceListRequest {
+  // Paging details for the list request
+  api.v1.Paging paging = 1;
+  // TenantId to filter for all projects
+  optional string tenant_id = 2;
+  // Annotations to filter for
+  map<string, string> annotations = 3;
+}
+
+// ProjectServiceListResponse is the response payload for the project list request
+message ProjectServiceListResponse {
+  // Projects is the list of projects that match the filters
+  repeated api.v1.Project projects = 1;
+  // NextPage is used for pagination, returns the next page to be fetched and must then be provided in the list request.
+  optional uint64 next_page = 2;
+}
