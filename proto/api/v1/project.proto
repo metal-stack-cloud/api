@@ -91,6 +91,8 @@ message Project {
   google.protobuf.Timestamp created_at = 10;
   // UpdatedAt the date when this project was updated
   google.protobuf.Timestamp updated_at = 11;
+  // AvatarUrl of the Project
+  optional string avatar_url = 12;
 }
 
 // ProjectMember defines a user that participates at a project
@@ -181,6 +183,8 @@ message ProjectServiceCreateRequest {
     min_len: 2
     max_len: 512
   }];
+  // Avatar URL of the project
+  optional string avatar_url = 4;
 }
 
 // ProjectServiceCreateResponse is the response payload of creation of a project
@@ -215,6 +219,8 @@ message ProjectServiceUpdateRequest {
     min_len: 2
     max_len: 512
   }];
+  // Avatar URL of the project
+  optional string avatar_url = 4;
 }
 
 // ProjectServiceUpdateResponse is the response payload to update a project

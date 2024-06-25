@@ -4626,7 +4626,7 @@
           "description": "Project defines a group of resources belonging to a tenant\na tenant can have multiple projects",
           "hasExtensions": false,
           "hasFields": true,
-          "hasOneofs": false,
+          "hasOneofs": true,
           "extensions": [],
           "fields": [
             {
@@ -4711,6 +4711,18 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "avatar_url",
+              "description": "AvatarUrl of the Project",
+              "label": "optional",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "_avatar_url",
               "defaultValue": ""
             }
           ]
@@ -4902,7 +4914,7 @@
           "description": "ProjectServiceCreateRequest is the request payload to Create a project",
           "hasExtensions": false,
           "hasFields": true,
-          "hasOneofs": false,
+          "hasOneofs": true,
           "extensions": [],
           "fields": [
             {
@@ -4939,6 +4951,18 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "avatar_url",
+              "description": "Avatar URL of the project",
+              "label": "optional",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "_avatar_url",
               "defaultValue": ""
             }
           ]
@@ -5561,6 +5585,18 @@
               "ismap": false,
               "isoneof": true,
               "oneofdecl": "_description",
+              "defaultValue": ""
+            },
+            {
+              "name": "avatar_url",
+              "description": "Avatar URL of the project",
+              "label": "optional",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "_avatar_url",
               "defaultValue": ""
             }
           ]
