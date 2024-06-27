@@ -132,6 +132,12 @@ export declare class TenantMember extends Message<TenantMember> {
      */
     role: TenantRole;
     /**
+     * ProjectIds of which a user is a member
+     *
+     * @generated from field: repeated string project_ids = 4;
+     */
+    projectIds: string[];
+    /**
      * CreatedAt the date when the member was added to the tenant
      *
      * @generated from field: google.protobuf.Timestamp created_at = 10;
