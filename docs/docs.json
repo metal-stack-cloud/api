@@ -2726,6 +2726,29 @@
               "description": "PRODUCT_TYPE_KUBERNETES for kubernetes, e.g. the control plane"
             }
           ]
+        },
+        {
+          "name": "UsageType",
+          "longName": "UsageType",
+          "fullName": "api.v1.UsageType",
+          "description": "UsageType indicates how a price is measured",
+          "values": [
+            {
+              "name": "USAGE_TYPE_UNSPECIFIED",
+              "number": "0",
+              "description": "USAGE_TYPE_UNSPECIFIED is unspecified"
+            },
+            {
+              "name": "USAGE_TYPE_METERED",
+              "number": "1",
+              "description": "USAGE_TYPE_METERED price is sent per usage"
+            },
+            {
+              "name": "USAGE_TYPE_LICENSED",
+              "number": "2",
+              "description": "USAGE_TYPE_LICENSED price is set in invoice (s3 for example)"
+            }
+          ]
         }
       ],
       "extensions": [],
@@ -4103,6 +4126,18 @@
               "ismap": false,
               "isoneof": true,
               "oneofdecl": "_description",
+              "defaultValue": ""
+            },
+            {
+              "name": "usage_type",
+              "description": "UsageType indicates how a price is measured",
+              "label": "",
+              "type": "UsageType",
+              "longType": "UsageType",
+              "fullType": "api.v1.UsageType",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
               "defaultValue": ""
             }
           ]

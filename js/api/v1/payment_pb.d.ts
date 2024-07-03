@@ -38,6 +38,31 @@ export declare enum ProductType {
     KUBERNETES = 5
 }
 /**
+ * UsageType indicates how a price is measured
+ *
+ * @generated from enum api.v1.UsageType
+ */
+export declare enum UsageType {
+    /**
+     * USAGE_TYPE_UNSPECIFIED is unspecified
+     *
+     * @generated from enum value: USAGE_TYPE_UNSPECIFIED = 0;
+     */
+    UNSPECIFIED = 0,
+    /**
+     * USAGE_TYPE_METERED price is sent per usage
+     *
+     * @generated from enum value: USAGE_TYPE_METERED = 1;
+     */
+    METERED = 1,
+    /**
+     * USAGE_TYPE_LICENSED price is set in invoice (s3 for example)
+     *
+     * @generated from enum value: USAGE_TYPE_LICENSED = 2;
+     */
+    LICENSED = 2
+}
+/**
  * PaymentCustomer is a customer at the payment processor
  *
  * @generated from message api.v1.PaymentCustomer
@@ -217,6 +242,12 @@ export declare class Price extends Message<Price> {
      * @generated from field: optional string description = 6;
      */
     description?: string;
+    /**
+     * UsageType indicates how a price is measured
+     *
+     * @generated from field: api.v1.UsageType usage_type = 7;
+     */
+    usageType: UsageType;
     constructor(data?: PartialMessage<Price>);
     static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.Price";

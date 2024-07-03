@@ -50,6 +50,38 @@ proto3.util.setEnumType(ProductType, "api.v1.ProductType", [
     { no: 5, name: "PRODUCT_TYPE_KUBERNETES" },
 ]);
 /**
+ * UsageType indicates how a price is measured
+ *
+ * @generated from enum api.v1.UsageType
+ */
+export var UsageType;
+(function (UsageType) {
+    /**
+     * USAGE_TYPE_UNSPECIFIED is unspecified
+     *
+     * @generated from enum value: USAGE_TYPE_UNSPECIFIED = 0;
+     */
+    UsageType[UsageType["UNSPECIFIED"] = 0] = "UNSPECIFIED";
+    /**
+     * USAGE_TYPE_METERED price is sent per usage
+     *
+     * @generated from enum value: USAGE_TYPE_METERED = 1;
+     */
+    UsageType[UsageType["METERED"] = 1] = "METERED";
+    /**
+     * USAGE_TYPE_LICENSED price is set in invoice (s3 for example)
+     *
+     * @generated from enum value: USAGE_TYPE_LICENSED = 2;
+     */
+    UsageType[UsageType["LICENSED"] = 2] = "LICENSED";
+})(UsageType || (UsageType = {}));
+// Retrieve enum metadata with: proto3.getEnumType(UsageType)
+proto3.util.setEnumType(UsageType, "api.v1.UsageType", [
+    { no: 0, name: "USAGE_TYPE_UNSPECIFIED" },
+    { no: 1, name: "USAGE_TYPE_METERED" },
+    { no: 2, name: "USAGE_TYPE_LICENSED" },
+]);
+/**
  * PaymentCustomer is a customer at the payment processor
  *
  * @generated from message api.v1.PaymentCustomer
@@ -207,6 +239,12 @@ export class Price extends Message {
          * @generated from field: api.v1.ProductType product_type = 5;
          */
         this.productType = ProductType.UNSPECIFIED;
+        /**
+         * UsageType indicates how a price is measured
+         *
+         * @generated from field: api.v1.UsageType usage_type = 7;
+         */
+        this.usageType = UsageType.UNSPECIFIED;
         proto3.util.initPartial(data, this);
     }
     static fromBinary(bytes, options) {
@@ -231,6 +269,7 @@ Price.fields = proto3.util.newFieldList(() => [
     { no: 4, name: "unit_label", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 5, name: "product_type", kind: "enum", T: proto3.getEnumType(ProductType) },
     { no: 6, name: "description", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
+    { no: 7, name: "usage_type", kind: "enum", T: proto3.getEnumType(UsageType) },
 ]);
 /**
  * Address postal address of a customer

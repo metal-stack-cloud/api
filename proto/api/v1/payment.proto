@@ -146,6 +146,8 @@ message Price {
     min_len: 2
     max_len: 500
   }];
+  // UsageType indicates how a price is measured
+  UsageType usage_type = 7;
 }
 
 // ProductType defines for which type of product a price applies
@@ -160,6 +162,16 @@ enum ProductType {
   PRODUCT_TYPE_NETWORK = 3;
   // PRODUCT_TYPE_KUBERNETES for kubernetes, e.g. the control plane
   PRODUCT_TYPE_KUBERNETES = 5;
+}
+
+// UsageType indicates how a price is measured
+enum UsageType {
+  // USAGE_TYPE_UNSPECIFIED is unspecified
+  USAGE_TYPE_UNSPECIFIED = 0;
+  // USAGE_TYPE_METERED price is sent per usage
+  USAGE_TYPE_METERED = 1;
+  // USAGE_TYPE_LICENSED price is set in invoice (s3 for example)
+  USAGE_TYPE_LICENSED = 2;
 }
 
 // Address postal address of a customer
