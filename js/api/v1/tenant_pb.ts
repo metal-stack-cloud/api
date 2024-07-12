@@ -6,7 +6,7 @@
 import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
 import { Message, proto3, Timestamp } from "@bufbuild/protobuf";
 import { OAuthProvider, TenantRole } from "./common_pb.js";
-import { Coupon } from "./payment_pb.js";
+import { Coupon, PaymentMethod } from "./payment_pb.js";
 
 /**
  * Tenant is a customer of the platform
@@ -372,6 +372,13 @@ export class PaymentDetails extends Message<PaymentDetails> {
    */
   vat = "";
 
+  /**
+   * PaymentMethod indicates which way the user wants to pay
+   *
+   * @generated from field: api.v1.PaymentMethod payment_method = 6;
+   */
+  paymentMethod = PaymentMethod.UNSPECIFIED;
+
   constructor(data?: PartialMessage<PaymentDetails>) {
     super();
     proto3.util.initPartial(data, this);
@@ -385,6 +392,7 @@ export class PaymentDetails extends Message<PaymentDetails> {
     { no: 3, name: "subscription_id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 4, name: "coupons", kind: "message", T: Coupon, repeated: true },
     { no: 5, name: "vat", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 6, name: "payment_method", kind: "enum", T: proto3.getEnumType(PaymentMethod) },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): PaymentDetails {
@@ -438,6 +446,13 @@ export class PaymentDetailsUpdate extends Message<PaymentDetailsUpdate> {
    */
   vat?: string;
 
+  /**
+   * PaymentMethod indicates which way the user wants to pay
+   *
+   * @generated from field: optional api.v1.PaymentMethod payment_method = 5;
+   */
+  paymentMethod?: PaymentMethod;
+
   constructor(data?: PartialMessage<PaymentDetailsUpdate>) {
     super();
     proto3.util.initPartial(data, this);
@@ -450,6 +465,7 @@ export class PaymentDetailsUpdate extends Message<PaymentDetailsUpdate> {
     { no: 2, name: "payment_method_id", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
     { no: 3, name: "subscription_id", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
     { no: 4, name: "vat", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
+    { no: 5, name: "payment_method", kind: "enum", T: proto3.getEnumType(PaymentMethod), opt: true },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): PaymentDetailsUpdate {

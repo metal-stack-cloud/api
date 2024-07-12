@@ -1,7 +1,7 @@
 import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
 import { Message, proto3, Timestamp } from "@bufbuild/protobuf";
 import { OAuthProvider, TenantRole } from "./common_pb.js";
-import { Coupon } from "./payment_pb.js";
+import { Coupon, PaymentMethod } from "./payment_pb.js";
 /**
  * Tenant is a customer of the platform
  *
@@ -251,6 +251,12 @@ export declare class PaymentDetails extends Message<PaymentDetails> {
      * @generated from field: string vat = 5;
      */
     vat: string;
+    /**
+     * PaymentMethod indicates which way the user wants to pay
+     *
+     * @generated from field: api.v1.PaymentMethod payment_method = 6;
+     */
+    paymentMethod: PaymentMethod;
     constructor(data?: PartialMessage<PaymentDetails>);
     static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.PaymentDetails";
@@ -290,6 +296,12 @@ export declare class PaymentDetailsUpdate extends Message<PaymentDetailsUpdate> 
      * @generated from field: optional string vat = 4;
      */
     vat?: string;
+    /**
+     * PaymentMethod indicates which way the user wants to pay
+     *
+     * @generated from field: optional api.v1.PaymentMethod payment_method = 5;
+     */
+    paymentMethod?: PaymentMethod;
     constructor(data?: PartialMessage<PaymentDetailsUpdate>);
     static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.PaymentDetailsUpdate";

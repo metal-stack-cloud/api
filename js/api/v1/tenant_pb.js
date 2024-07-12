@@ -4,7 +4,7 @@
 // @ts-nocheck
 import { Message, proto3, Timestamp } from "@bufbuild/protobuf";
 import { OAuthProvider, TenantRole } from "./common_pb.js";
-import { Coupon } from "./payment_pb.js";
+import { Coupon, PaymentMethod } from "./payment_pb.js";
 /**
  * Tenant is a customer of the platform
  *
@@ -266,6 +266,12 @@ export class PaymentDetails extends Message {
          * @generated from field: string vat = 5;
          */
         this.vat = "";
+        /**
+         * PaymentMethod indicates which way the user wants to pay
+         *
+         * @generated from field: api.v1.PaymentMethod payment_method = 6;
+         */
+        this.paymentMethod = PaymentMethod.UNSPECIFIED;
         proto3.util.initPartial(data, this);
     }
     static fromBinary(bytes, options) {
@@ -289,6 +295,7 @@ PaymentDetails.fields = proto3.util.newFieldList(() => [
     { no: 3, name: "subscription_id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 4, name: "coupons", kind: "message", T: Coupon, repeated: true },
     { no: 5, name: "vat", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 6, name: "payment_method", kind: "enum", T: proto3.getEnumType(PaymentMethod) },
 ]);
 /**
  * PaymentDetailsUpdate is used to update PaymentDetails
@@ -320,6 +327,7 @@ PaymentDetailsUpdate.fields = proto3.util.newFieldList(() => [
     { no: 2, name: "payment_method_id", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
     { no: 3, name: "subscription_id", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
     { no: 4, name: "vat", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
+    { no: 5, name: "payment_method", kind: "enum", T: proto3.getEnumType(PaymentMethod), opt: true },
 ]);
 /**
  * TermsAndConditions the tenant accepted

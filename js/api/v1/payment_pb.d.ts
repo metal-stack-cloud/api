@@ -1,6 +1,31 @@
 import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
 import { Message, proto3, Timestamp } from "@bufbuild/protobuf";
 /**
+ * PaymentMethod indicates which way the user wants to pay
+ *
+ * @generated from enum api.v1.PaymentMethod
+ */
+export declare enum PaymentMethod {
+    /**
+     * PAYMENT_METHOD_UNSPECIFIED is not specified
+     *
+     * @generated from enum value: PAYMENT_METHOD_UNSPECIFIED = 0;
+     */
+    UNSPECIFIED = 0,
+    /**
+     * PAYMENT_METHOD_CREDIT_CARD user wants to pay per credit card
+     *
+     * @generated from enum value: PAYMENT_METHOD_CREDIT_CARD = 2;
+     */
+    CREDIT_CARD = 2,
+    /**
+     * PAYMENT_METHOD_INVOICE user wants to pay per invoice
+     *
+     * @generated from enum value: PAYMENT_METHOD_INVOICE = 3;
+     */
+    INVOICE = 3
+}
+/**
  * ProductType defines for which type of product a price applies
  *
  * @generated from enum api.v1.ProductType
@@ -146,6 +171,12 @@ export declare class PaymentCustomer extends Message<PaymentCustomer> {
      * @generated from field: optional int64 balance = 13;
      */
     balance?: bigint;
+    /**
+     * PaymentMethod indicates which way the user wants to pay
+     *
+     * @generated from field: api.v1.PaymentMethod payment_method = 14;
+     */
+    paymentMethod: PaymentMethod;
     constructor(data?: PartialMessage<PaymentCustomer>);
     static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.PaymentCustomer";

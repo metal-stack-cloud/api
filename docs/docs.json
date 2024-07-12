@@ -2695,6 +2695,29 @@
       "hasServices": true,
       "enums": [
         {
+          "name": "PaymentMethod",
+          "longName": "PaymentMethod",
+          "fullName": "api.v1.PaymentMethod",
+          "description": "PaymentMethod indicates which way the user wants to pay",
+          "values": [
+            {
+              "name": "PAYMENT_METHOD_UNSPECIFIED",
+              "number": "0",
+              "description": "PAYMENT_METHOD_UNSPECIFIED is not specified"
+            },
+            {
+              "name": "PAYMENT_METHOD_CREDIT_CARD",
+              "number": "2",
+              "description": "PAYMENT_METHOD_CREDIT_CARD user wants to pay per credit card"
+            },
+            {
+              "name": "PAYMENT_METHOD_INVOICE",
+              "number": "3",
+              "description": "PAYMENT_METHOD_INVOICE user wants to pay per invoice"
+            }
+          ]
+        },
+        {
           "name": "ProductType",
           "longName": "ProductType",
           "fullName": "api.v1.ProductType",
@@ -3265,6 +3288,18 @@
               "ismap": false,
               "isoneof": true,
               "oneofdecl": "_balance",
+              "defaultValue": ""
+            },
+            {
+              "name": "payment_method",
+              "description": "PaymentMethod indicates which way the user wants to pay",
+              "label": "",
+              "type": "PaymentMethod",
+              "longType": "PaymentMethod",
+              "fullType": "api.v1.PaymentMethod",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
               "defaultValue": ""
             }
           ]
@@ -7978,6 +8013,18 @@
               "isoneof": false,
               "oneofdecl": "",
               "defaultValue": ""
+            },
+            {
+              "name": "payment_method",
+              "description": "PaymentMethod indicates which way the user wants to pay",
+              "label": "",
+              "type": "PaymentMethod",
+              "longType": "PaymentMethod",
+              "fullType": "api.v1.PaymentMethod",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
             }
           ]
         },
@@ -8037,6 +8084,18 @@
               "ismap": false,
               "isoneof": true,
               "oneofdecl": "_vat",
+              "defaultValue": ""
+            },
+            {
+              "name": "payment_method",
+              "description": "PaymentMethod indicates which way the user wants to pay",
+              "label": "optional",
+              "type": "PaymentMethod",
+              "longType": "PaymentMethod",
+              "fullType": "api.v1.PaymentMethod",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "_payment_method",
               "defaultValue": ""
             }
           ]
