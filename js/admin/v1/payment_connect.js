@@ -2,7 +2,7 @@
 // @generated from file admin/v1/payment.proto (package admin.v1, syntax proto3)
 /* eslint-disable */
 // @ts-nocheck
-import { PaymentServiceAddBalanceToCustomerRequest, PaymentServiceAddBalanceToCustomerResponse, PaymentServiceAddCouponToCustomerRequest, PaymentServiceAddCouponToCustomerResponse, PaymentServiceListCouponsRequest, PaymentServiceListCouponsResponse } from "./payment_pb.js";
+import { PaymentServiceAddBalanceToCustomerRequest, PaymentServiceAddBalanceToCustomerResponse, PaymentServiceListCouponsRequest, PaymentServiceListCouponsResponse } from "./payment_pb.js";
 import { MethodKind } from "@bufbuild/protobuf";
 /**
  * PaymentService serves payment related functions
@@ -21,17 +21,6 @@ export const PaymentService = {
             name: "ListCoupons",
             I: PaymentServiceListCouponsRequest,
             O: PaymentServiceListCouponsResponse,
-            kind: MethodKind.Unary,
-        },
-        /**
-         * AddCouponToCustomer adds a coupon to a customer
-         *
-         * @generated from rpc admin.v1.PaymentService.AddCouponToCustomer
-         */
-        addCouponToCustomer: {
-            name: "AddCouponToCustomer",
-            I: PaymentServiceAddCouponToCustomerRequest,
-            O: PaymentServiceAddCouponToCustomerResponse,
             kind: MethodKind.Unary,
         },
         /**

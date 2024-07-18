@@ -38,69 +38,21 @@ export declare class PaymentServiceListCouponsResponse extends Message<PaymentSe
     static equals(a: PaymentServiceListCouponsResponse | PlainMessage<PaymentServiceListCouponsResponse> | undefined, b: PaymentServiceListCouponsResponse | PlainMessage<PaymentServiceListCouponsResponse> | undefined): boolean;
 }
 /**
- * PaymentServiceAddCouponToCustomerRequest is the request payload for the coupons add to customer request
- *
- * @generated from message admin.v1.PaymentServiceAddCouponToCustomerRequest
- */
-export declare class PaymentServiceAddCouponToCustomerRequest extends Message<PaymentServiceAddCouponToCustomerRequest> {
-    /**
-     * Customer is the customer
-     *
-     * @generated from field: api.v1.PaymentCustomer customer = 1;
-     */
-    customer?: PaymentCustomer;
-    /**
-     * CouponId is the id of the coupon which should be granted to the customer
-     *
-     * @generated from field: string coupon_id = 2;
-     */
-    couponId: string;
-    constructor(data?: PartialMessage<PaymentServiceAddCouponToCustomerRequest>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "admin.v1.PaymentServiceAddCouponToCustomerRequest";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): PaymentServiceAddCouponToCustomerRequest;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): PaymentServiceAddCouponToCustomerRequest;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): PaymentServiceAddCouponToCustomerRequest;
-    static equals(a: PaymentServiceAddCouponToCustomerRequest | PlainMessage<PaymentServiceAddCouponToCustomerRequest> | undefined, b: PaymentServiceAddCouponToCustomerRequest | PlainMessage<PaymentServiceAddCouponToCustomerRequest> | undefined): boolean;
-}
-/**
- * PaymentServiceAddCouponToCustomerResponse is the response payload for the coupons add to customer request
- *
- * @generated from message admin.v1.PaymentServiceAddCouponToCustomerResponse
- */
-export declare class PaymentServiceAddCouponToCustomerResponse extends Message<PaymentServiceAddCouponToCustomerResponse> {
-    /**
-     * Customer is the customer
-     *
-     * @generated from field: api.v1.PaymentCustomer customer = 1;
-     */
-    customer?: PaymentCustomer;
-    constructor(data?: PartialMessage<PaymentServiceAddCouponToCustomerResponse>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "admin.v1.PaymentServiceAddCouponToCustomerResponse";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): PaymentServiceAddCouponToCustomerResponse;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): PaymentServiceAddCouponToCustomerResponse;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): PaymentServiceAddCouponToCustomerResponse;
-    static equals(a: PaymentServiceAddCouponToCustomerResponse | PlainMessage<PaymentServiceAddCouponToCustomerResponse> | undefined, b: PaymentServiceAddCouponToCustomerResponse | PlainMessage<PaymentServiceAddCouponToCustomerResponse> | undefined): boolean;
-}
-/**
  * PaymentServiceAddBalanceToCustomerRequest is the request payload for the balance to customer request
  *
  * @generated from message admin.v1.PaymentServiceAddBalanceToCustomerRequest
  */
 export declare class PaymentServiceAddBalanceToCustomerRequest extends Message<PaymentServiceAddBalanceToCustomerRequest> {
     /**
-     * Customer is the customer
+     * Tenant is the tenant
      *
-     * @generated from field: api.v1.PaymentCustomer customer = 1;
+     * @generated from field: string tenant_id = 1;
      */
-    customer?: PaymentCustomer;
+    tenantId: string;
     /**
-     * BalanceToAdd is the balance which should be added to the customer
+     * BalanceToAdd is the balance in euro cent which should be added to the customer
      *
-     * @generated from field: int64 balance_to_add = 2;
+     * @generated from field: uint64 balance_to_add = 2;
      */
     balanceToAdd: bigint;
     constructor(data?: PartialMessage<PaymentServiceAddBalanceToCustomerRequest>);
