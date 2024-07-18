@@ -82,6 +82,12 @@ service TenantService {
     option (visibility) = VISIBILITY_SELF;
     option (auditing) = AUDITING_EXCLUDED;
   }
+  // RequestAdmission requests admission for a tenant to use the service
+  rpc RequestAdmission(TenantServiceRequestAdmissionRequest) returns (TenantServiceRequestAdmissionResponse) {
+    option (tenant_roles) = TENANT_ROLE_OWNER;
+    option (tenant_roles) = TENANT_ROLE_EDITOR;
+    option (auditing) = AUDITING_EXCLUDED;
+  }
 }
 
 // Tenant is a customer of the platform
@@ -398,3 +404,20 @@ message TenantServiceUpdateMemberResponse {
   // TenantMember is the updated membership
   TenantMember tenant_member = 1;
 }
+
+// TenantServiceRequestAdmissionRequest is used to request admission for a tenant
+message TenantServiceRequestAdmissionRequest {
+  // Login of the tenant for whom admission is requested
+  string login = 1;
+  // Name of the user
+  string name = 2;
+  // Email of the user
+  string email = 3 [(buf.validate.field).string.email = true];
+  // AcceptedTermsAndConditions indicates if the user has accepted the terms and conditions
+  bool accepted_terms_and_conditions = 4;
+  // EmailConsent indicates if the user gave consent to receive emails
+  bool email_consent = 5;
+}
+
+// TenantServiceRequestAdmissionResponse is the response payload an admission request
+message TenantServiceRequestAdmissionResponse {}

@@ -1003,3 +1003,63 @@ export declare class TenantServiceUpdateMemberResponse extends Message<TenantSer
     static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): TenantServiceUpdateMemberResponse;
     static equals(a: TenantServiceUpdateMemberResponse | PlainMessage<TenantServiceUpdateMemberResponse> | undefined, b: TenantServiceUpdateMemberResponse | PlainMessage<TenantServiceUpdateMemberResponse> | undefined): boolean;
 }
+/**
+ * TenantServiceRequestAdmissionRequest is used to request admission for a tenant
+ *
+ * @generated from message api.v1.TenantServiceRequestAdmissionRequest
+ */
+export declare class TenantServiceRequestAdmissionRequest extends Message<TenantServiceRequestAdmissionRequest> {
+    /**
+     * Login of the tenant for whom admission is requested
+     *
+     * @generated from field: string login = 1;
+     */
+    login: string;
+    /**
+     * Name of the user
+     *
+     * @generated from field: string name = 2;
+     */
+    name: string;
+    /**
+     * Email of the user
+     *
+     * @generated from field: string email = 3;
+     */
+    email: string;
+    /**
+     * AcceptedTermsAndConditions indicates if the user has accepted the terms and conditions
+     *
+     * @generated from field: bool accepted_terms_and_conditions = 4;
+     */
+    acceptedTermsAndConditions: boolean;
+    /**
+     * EmailConsent indicates if the user gave consent to receive emails
+     *
+     * @generated from field: bool email_consent = 5;
+     */
+    emailConsent: boolean;
+    constructor(data?: PartialMessage<TenantServiceRequestAdmissionRequest>);
+    static readonly runtime: typeof proto3;
+    static readonly typeName = "api.v1.TenantServiceRequestAdmissionRequest";
+    static readonly fields: FieldList;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): TenantServiceRequestAdmissionRequest;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): TenantServiceRequestAdmissionRequest;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): TenantServiceRequestAdmissionRequest;
+    static equals(a: TenantServiceRequestAdmissionRequest | PlainMessage<TenantServiceRequestAdmissionRequest> | undefined, b: TenantServiceRequestAdmissionRequest | PlainMessage<TenantServiceRequestAdmissionRequest> | undefined): boolean;
+}
+/**
+ * TenantServiceRequestAdmissionResponse is the response payload an admission request
+ *
+ * @generated from message api.v1.TenantServiceRequestAdmissionResponse
+ */
+export declare class TenantServiceRequestAdmissionResponse extends Message<TenantServiceRequestAdmissionResponse> {
+    constructor(data?: PartialMessage<TenantServiceRequestAdmissionResponse>);
+    static readonly runtime: typeof proto3;
+    static readonly typeName = "api.v1.TenantServiceRequestAdmissionResponse";
+    static readonly fields: FieldList;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): TenantServiceRequestAdmissionResponse;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): TenantServiceRequestAdmissionResponse;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): TenantServiceRequestAdmissionResponse;
+    static equals(a: TenantServiceRequestAdmissionResponse | PlainMessage<TenantServiceRequestAdmissionResponse> | undefined, b: TenantServiceRequestAdmissionResponse | PlainMessage<TenantServiceRequestAdmissionResponse> | undefined): boolean;
+}

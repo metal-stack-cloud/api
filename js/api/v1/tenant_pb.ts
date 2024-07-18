@@ -1771,3 +1771,109 @@ export class TenantServiceUpdateMemberResponse extends Message<TenantServiceUpda
   }
 }
 
+/**
+ * TenantServiceRequestAdmissionRequest is used to request admission for a tenant
+ *
+ * @generated from message api.v1.TenantServiceRequestAdmissionRequest
+ */
+export class TenantServiceRequestAdmissionRequest extends Message<TenantServiceRequestAdmissionRequest> {
+  /**
+   * Login of the tenant for whom admission is requested
+   *
+   * @generated from field: string login = 1;
+   */
+  login = "";
+
+  /**
+   * Name of the user
+   *
+   * @generated from field: string name = 2;
+   */
+  name = "";
+
+  /**
+   * Email of the user
+   *
+   * @generated from field: string email = 3;
+   */
+  email = "";
+
+  /**
+   * AcceptedTermsAndConditions indicates if the user has accepted the terms and conditions
+   *
+   * @generated from field: bool accepted_terms_and_conditions = 4;
+   */
+  acceptedTermsAndConditions = false;
+
+  /**
+   * EmailConsent indicates if the user gave consent to receive emails
+   *
+   * @generated from field: bool email_consent = 5;
+   */
+  emailConsent = false;
+
+  constructor(data?: PartialMessage<TenantServiceRequestAdmissionRequest>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "api.v1.TenantServiceRequestAdmissionRequest";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "login", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 3, name: "email", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 4, name: "accepted_terms_and_conditions", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
+    { no: 5, name: "email_consent", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): TenantServiceRequestAdmissionRequest {
+    return new TenantServiceRequestAdmissionRequest().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): TenantServiceRequestAdmissionRequest {
+    return new TenantServiceRequestAdmissionRequest().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): TenantServiceRequestAdmissionRequest {
+    return new TenantServiceRequestAdmissionRequest().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: TenantServiceRequestAdmissionRequest | PlainMessage<TenantServiceRequestAdmissionRequest> | undefined, b: TenantServiceRequestAdmissionRequest | PlainMessage<TenantServiceRequestAdmissionRequest> | undefined): boolean {
+    return proto3.util.equals(TenantServiceRequestAdmissionRequest, a, b);
+  }
+}
+
+/**
+ * TenantServiceRequestAdmissionResponse is the response payload an admission request
+ *
+ * @generated from message api.v1.TenantServiceRequestAdmissionResponse
+ */
+export class TenantServiceRequestAdmissionResponse extends Message<TenantServiceRequestAdmissionResponse> {
+  constructor(data?: PartialMessage<TenantServiceRequestAdmissionResponse>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "api.v1.TenantServiceRequestAdmissionResponse";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): TenantServiceRequestAdmissionResponse {
+    return new TenantServiceRequestAdmissionResponse().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): TenantServiceRequestAdmissionResponse {
+    return new TenantServiceRequestAdmissionResponse().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): TenantServiceRequestAdmissionResponse {
+    return new TenantServiceRequestAdmissionResponse().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: TenantServiceRequestAdmissionResponse | PlainMessage<TenantServiceRequestAdmissionResponse> | undefined, b: TenantServiceRequestAdmissionResponse | PlainMessage<TenantServiceRequestAdmissionResponse> | undefined): boolean {
+    return proto3.util.equals(TenantServiceRequestAdmissionResponse, a, b);
+  }
+}
+

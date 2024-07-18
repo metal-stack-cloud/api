@@ -1254,3 +1254,91 @@ TenantServiceUpdateMemberResponse.typeName = "api.v1.TenantServiceUpdateMemberRe
 TenantServiceUpdateMemberResponse.fields = proto3.util.newFieldList(() => [
     { no: 1, name: "tenant_member", kind: "message", T: TenantMember },
 ]);
+/**
+ * TenantServiceRequestAdmissionRequest is used to request admission for a tenant
+ *
+ * @generated from message api.v1.TenantServiceRequestAdmissionRequest
+ */
+export class TenantServiceRequestAdmissionRequest extends Message {
+    constructor(data) {
+        super();
+        /**
+         * Login of the tenant for whom admission is requested
+         *
+         * @generated from field: string login = 1;
+         */
+        this.login = "";
+        /**
+         * Name of the user
+         *
+         * @generated from field: string name = 2;
+         */
+        this.name = "";
+        /**
+         * Email of the user
+         *
+         * @generated from field: string email = 3;
+         */
+        this.email = "";
+        /**
+         * AcceptedTermsAndConditions indicates if the user has accepted the terms and conditions
+         *
+         * @generated from field: bool accepted_terms_and_conditions = 4;
+         */
+        this.acceptedTermsAndConditions = false;
+        /**
+         * EmailConsent indicates if the user gave consent to receive emails
+         *
+         * @generated from field: bool email_consent = 5;
+         */
+        this.emailConsent = false;
+        proto3.util.initPartial(data, this);
+    }
+    static fromBinary(bytes, options) {
+        return new TenantServiceRequestAdmissionRequest().fromBinary(bytes, options);
+    }
+    static fromJson(jsonValue, options) {
+        return new TenantServiceRequestAdmissionRequest().fromJson(jsonValue, options);
+    }
+    static fromJsonString(jsonString, options) {
+        return new TenantServiceRequestAdmissionRequest().fromJsonString(jsonString, options);
+    }
+    static equals(a, b) {
+        return proto3.util.equals(TenantServiceRequestAdmissionRequest, a, b);
+    }
+}
+TenantServiceRequestAdmissionRequest.runtime = proto3;
+TenantServiceRequestAdmissionRequest.typeName = "api.v1.TenantServiceRequestAdmissionRequest";
+TenantServiceRequestAdmissionRequest.fields = proto3.util.newFieldList(() => [
+    { no: 1, name: "login", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 3, name: "email", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 4, name: "accepted_terms_and_conditions", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
+    { no: 5, name: "email_consent", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
+]);
+/**
+ * TenantServiceRequestAdmissionResponse is the response payload an admission request
+ *
+ * @generated from message api.v1.TenantServiceRequestAdmissionResponse
+ */
+export class TenantServiceRequestAdmissionResponse extends Message {
+    constructor(data) {
+        super();
+        proto3.util.initPartial(data, this);
+    }
+    static fromBinary(bytes, options) {
+        return new TenantServiceRequestAdmissionResponse().fromBinary(bytes, options);
+    }
+    static fromJson(jsonValue, options) {
+        return new TenantServiceRequestAdmissionResponse().fromJson(jsonValue, options);
+    }
+    static fromJsonString(jsonString, options) {
+        return new TenantServiceRequestAdmissionResponse().fromJsonString(jsonString, options);
+    }
+    static equals(a, b) {
+        return proto3.util.equals(TenantServiceRequestAdmissionResponse, a, b);
+    }
+}
+TenantServiceRequestAdmissionResponse.runtime = proto3;
+TenantServiceRequestAdmissionResponse.typeName = "api.v1.TenantServiceRequestAdmissionResponse";
+TenantServiceRequestAdmissionResponse.fields = proto3.util.newFieldList(() => []);
