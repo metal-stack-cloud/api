@@ -1,4 +1,4 @@
-import { TenantServiceAddMemberRequest, TenantServiceAddMemberResponse, TenantServiceAdmitRequest, TenantServiceAdmitResponse, TenantServiceListRequest, TenantServiceListResponse, TenantServiceRevokeRequest, TenantServiceRevokeResponse } from "./tenant_pb.js";
+import { TenantServiceAddBalanceRequest, TenantServiceAddBalanceResponse, TenantServiceAddMemberRequest, TenantServiceAddMemberResponse, TenantServiceAdmitRequest, TenantServiceAdmitResponse, TenantServiceListRequest, TenantServiceListResponse, TenantServiceRevokeRequest, TenantServiceRevokeResponse } from "./tenant_pb.js";
 import { MethodKind } from "@bufbuild/protobuf";
 /**
  * TenantService serves tenant related functions
@@ -28,6 +28,17 @@ export declare const TenantService: {
             readonly name: "Admit";
             readonly I: typeof TenantServiceAdmitRequest;
             readonly O: typeof TenantServiceAdmitResponse;
+            readonly kind: MethodKind.Unary;
+        };
+        /**
+         * AddBalance to a tenant
+         *
+         * @generated from rpc admin.v1.TenantService.AddBalance
+         */
+        readonly addBalance: {
+            readonly name: "AddBalance";
+            readonly I: typeof TenantServiceAddBalanceRequest;
+            readonly O: typeof TenantServiceAddBalanceResponse;
             readonly kind: MethodKind.Unary;
         };
         /**

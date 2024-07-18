@@ -107,8 +107,6 @@ TenantServiceAdmitRequest.runtime = proto3;
 TenantServiceAdmitRequest.typeName = "admin.v1.TenantServiceAdmitRequest";
 TenantServiceAdmitRequest.fields = proto3.util.newFieldList(() => [
     { no: 1, name: "tenant_id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 2, name: "coupon_id", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
-    { no: 3, name: "balance_to_add", kind: "scalar", T: 3 /* ScalarType.INT64 */, opt: true },
 ]);
 /**
  * TenantServiceAdmitResponse is the response payload for a tenant admit request
@@ -136,6 +134,69 @@ export class TenantServiceAdmitResponse extends Message {
 TenantServiceAdmitResponse.runtime = proto3;
 TenantServiceAdmitResponse.typeName = "admin.v1.TenantServiceAdmitResponse";
 TenantServiceAdmitResponse.fields = proto3.util.newFieldList(() => [
+    { no: 1, name: "tenant", kind: "message", T: Tenant },
+]);
+/**
+ * TenantServiceAddBalanceRequest is the request payload for a tenant add balance request
+ *
+ * @generated from message admin.v1.TenantServiceAddBalanceRequest
+ */
+export class TenantServiceAddBalanceRequest extends Message {
+    constructor(data) {
+        super();
+        /**
+         * TenantId is the id of the tenant to admit
+         *
+         * @generated from field: string tenant_id = 1;
+         */
+        this.tenantId = "";
+        proto3.util.initPartial(data, this);
+    }
+    static fromBinary(bytes, options) {
+        return new TenantServiceAddBalanceRequest().fromBinary(bytes, options);
+    }
+    static fromJson(jsonValue, options) {
+        return new TenantServiceAddBalanceRequest().fromJson(jsonValue, options);
+    }
+    static fromJsonString(jsonString, options) {
+        return new TenantServiceAddBalanceRequest().fromJsonString(jsonString, options);
+    }
+    static equals(a, b) {
+        return proto3.util.equals(TenantServiceAddBalanceRequest, a, b);
+    }
+}
+TenantServiceAddBalanceRequest.runtime = proto3;
+TenantServiceAddBalanceRequest.typeName = "admin.v1.TenantServiceAddBalanceRequest";
+TenantServiceAddBalanceRequest.fields = proto3.util.newFieldList(() => [
+    { no: 1, name: "tenant_id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 3, name: "balance_to_add", kind: "scalar", T: 4 /* ScalarType.UINT64 */, opt: true },
+]);
+/**
+ * TenantServiceAdmitResponse is the response payload for a tenant admit request
+ *
+ * @generated from message admin.v1.TenantServiceAddBalanceResponse
+ */
+export class TenantServiceAddBalanceResponse extends Message {
+    constructor(data) {
+        super();
+        proto3.util.initPartial(data, this);
+    }
+    static fromBinary(bytes, options) {
+        return new TenantServiceAddBalanceResponse().fromBinary(bytes, options);
+    }
+    static fromJson(jsonValue, options) {
+        return new TenantServiceAddBalanceResponse().fromJson(jsonValue, options);
+    }
+    static fromJsonString(jsonString, options) {
+        return new TenantServiceAddBalanceResponse().fromJsonString(jsonString, options);
+    }
+    static equals(a, b) {
+        return proto3.util.equals(TenantServiceAddBalanceResponse, a, b);
+    }
+}
+TenantServiceAddBalanceResponse.runtime = proto3;
+TenantServiceAddBalanceResponse.typeName = "admin.v1.TenantServiceAddBalanceResponse";
+TenantServiceAddBalanceResponse.fields = proto3.util.newFieldList(() => [
     { no: 1, name: "tenant", kind: "message", T: Tenant },
 ]);
 /**

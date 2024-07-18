@@ -17,6 +17,10 @@ service TenantService {
   rpc Admit(TenantServiceAdmitRequest) returns (TenantServiceAdmitResponse) {
     option (api.v1.admin_roles) = ADMIN_ROLE_EDITOR;
   }
+  // AddBalance to a tenant
+  rpc AddBalance(TenantServiceAddBalanceRequest) returns (TenantServiceAddBalanceResponse) {
+    option (api.v1.admin_roles) = ADMIN_ROLE_EDITOR;
+  }
   // Revoke a tenant
   rpc Revoke(TenantServiceRevokeRequest) returns (TenantServiceRevokeResponse) {
     option (api.v1.admin_roles) = ADMIN_ROLE_EDITOR;
@@ -60,14 +64,24 @@ message TenantServiceListResponse {
 message TenantServiceAdmitRequest {
   // TenantId is the id of the tenant to admit
   string tenant_id = 1;
-  // CouponId is the id of the coupon this tenant should get
-  optional string coupon_id = 2;
-  // BalanceToAdd is the amount of balance he should be granted
-  optional int64 balance_to_add = 3 [(buf.validate.field).int64.gt = 0];
 }
 
 // TenantServiceAdmitResponse is the response payload for a tenant admit request
 message TenantServiceAdmitResponse {
+  // Tenant the tenant
+  api.v1.Tenant tenant = 1;
+}
+
+// TenantServiceAddBalanceRequest is the request payload for a tenant add balance request
+message TenantServiceAddBalanceRequest {
+  // TenantId is the id of the tenant to admit
+  string tenant_id = 1;
+  // BalanceToAdd is the amount of balance he should be granted
+  optional uint64 balance_to_add = 3;
+}
+
+// TenantServiceAdmitResponse is the response payload for a tenant admit request
+message TenantServiceAddBalanceResponse {
   // Tenant the tenant
   api.v1.Tenant tenant = 1;
 }

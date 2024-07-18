@@ -159,20 +159,6 @@ export class TenantServiceAdmitRequest extends Message<TenantServiceAdmitRequest
    */
   tenantId = "";
 
-  /**
-   * CouponId is the id of the coupon this tenant should get
-   *
-   * @generated from field: optional string coupon_id = 2;
-   */
-  couponId?: string;
-
-  /**
-   * BalanceToAdd is the amount of balance he should be granted
-   *
-   * @generated from field: optional int64 balance_to_add = 3;
-   */
-  balanceToAdd?: bigint;
-
   constructor(data?: PartialMessage<TenantServiceAdmitRequest>) {
     super();
     proto3.util.initPartial(data, this);
@@ -182,8 +168,6 @@ export class TenantServiceAdmitRequest extends Message<TenantServiceAdmitRequest
   static readonly typeName = "admin.v1.TenantServiceAdmitRequest";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
     { no: 1, name: "tenant_id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 2, name: "coupon_id", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
-    { no: 3, name: "balance_to_add", kind: "scalar", T: 3 /* ScalarType.INT64 */, opt: true },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): TenantServiceAdmitRequest {
@@ -241,6 +225,96 @@ export class TenantServiceAdmitResponse extends Message<TenantServiceAdmitRespon
 
   static equals(a: TenantServiceAdmitResponse | PlainMessage<TenantServiceAdmitResponse> | undefined, b: TenantServiceAdmitResponse | PlainMessage<TenantServiceAdmitResponse> | undefined): boolean {
     return proto3.util.equals(TenantServiceAdmitResponse, a, b);
+  }
+}
+
+/**
+ * TenantServiceAddBalanceRequest is the request payload for a tenant add balance request
+ *
+ * @generated from message admin.v1.TenantServiceAddBalanceRequest
+ */
+export class TenantServiceAddBalanceRequest extends Message<TenantServiceAddBalanceRequest> {
+  /**
+   * TenantId is the id of the tenant to admit
+   *
+   * @generated from field: string tenant_id = 1;
+   */
+  tenantId = "";
+
+  /**
+   * BalanceToAdd is the amount of balance he should be granted
+   *
+   * @generated from field: optional uint64 balance_to_add = 3;
+   */
+  balanceToAdd?: bigint;
+
+  constructor(data?: PartialMessage<TenantServiceAddBalanceRequest>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "admin.v1.TenantServiceAddBalanceRequest";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "tenant_id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 3, name: "balance_to_add", kind: "scalar", T: 4 /* ScalarType.UINT64 */, opt: true },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): TenantServiceAddBalanceRequest {
+    return new TenantServiceAddBalanceRequest().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): TenantServiceAddBalanceRequest {
+    return new TenantServiceAddBalanceRequest().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): TenantServiceAddBalanceRequest {
+    return new TenantServiceAddBalanceRequest().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: TenantServiceAddBalanceRequest | PlainMessage<TenantServiceAddBalanceRequest> | undefined, b: TenantServiceAddBalanceRequest | PlainMessage<TenantServiceAddBalanceRequest> | undefined): boolean {
+    return proto3.util.equals(TenantServiceAddBalanceRequest, a, b);
+  }
+}
+
+/**
+ * TenantServiceAdmitResponse is the response payload for a tenant admit request
+ *
+ * @generated from message admin.v1.TenantServiceAddBalanceResponse
+ */
+export class TenantServiceAddBalanceResponse extends Message<TenantServiceAddBalanceResponse> {
+  /**
+   * Tenant the tenant
+   *
+   * @generated from field: api.v1.Tenant tenant = 1;
+   */
+  tenant?: Tenant;
+
+  constructor(data?: PartialMessage<TenantServiceAddBalanceResponse>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "admin.v1.TenantServiceAddBalanceResponse";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "tenant", kind: "message", T: Tenant },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): TenantServiceAddBalanceResponse {
+    return new TenantServiceAddBalanceResponse().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): TenantServiceAddBalanceResponse {
+    return new TenantServiceAddBalanceResponse().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): TenantServiceAddBalanceResponse {
+    return new TenantServiceAddBalanceResponse().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: TenantServiceAddBalanceResponse | PlainMessage<TenantServiceAddBalanceResponse> | undefined, b: TenantServiceAddBalanceResponse | PlainMessage<TenantServiceAddBalanceResponse> | undefined): boolean {
+    return proto3.util.equals(TenantServiceAddBalanceResponse, a, b);
   }
 }
 

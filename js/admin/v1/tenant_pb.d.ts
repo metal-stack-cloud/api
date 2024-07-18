@@ -98,18 +98,6 @@ export declare class TenantServiceAdmitRequest extends Message<TenantServiceAdmi
      * @generated from field: string tenant_id = 1;
      */
     tenantId: string;
-    /**
-     * CouponId is the id of the coupon this tenant should get
-     *
-     * @generated from field: optional string coupon_id = 2;
-     */
-    couponId?: string;
-    /**
-     * BalanceToAdd is the amount of balance he should be granted
-     *
-     * @generated from field: optional int64 balance_to_add = 3;
-     */
-    balanceToAdd?: bigint;
     constructor(data?: PartialMessage<TenantServiceAdmitRequest>);
     static readonly runtime: typeof proto3;
     static readonly typeName = "admin.v1.TenantServiceAdmitRequest";
@@ -139,6 +127,54 @@ export declare class TenantServiceAdmitResponse extends Message<TenantServiceAdm
     static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): TenantServiceAdmitResponse;
     static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): TenantServiceAdmitResponse;
     static equals(a: TenantServiceAdmitResponse | PlainMessage<TenantServiceAdmitResponse> | undefined, b: TenantServiceAdmitResponse | PlainMessage<TenantServiceAdmitResponse> | undefined): boolean;
+}
+/**
+ * TenantServiceAddBalanceRequest is the request payload for a tenant add balance request
+ *
+ * @generated from message admin.v1.TenantServiceAddBalanceRequest
+ */
+export declare class TenantServiceAddBalanceRequest extends Message<TenantServiceAddBalanceRequest> {
+    /**
+     * TenantId is the id of the tenant to admit
+     *
+     * @generated from field: string tenant_id = 1;
+     */
+    tenantId: string;
+    /**
+     * BalanceToAdd is the amount of balance he should be granted
+     *
+     * @generated from field: optional uint64 balance_to_add = 3;
+     */
+    balanceToAdd?: bigint;
+    constructor(data?: PartialMessage<TenantServiceAddBalanceRequest>);
+    static readonly runtime: typeof proto3;
+    static readonly typeName = "admin.v1.TenantServiceAddBalanceRequest";
+    static readonly fields: FieldList;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): TenantServiceAddBalanceRequest;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): TenantServiceAddBalanceRequest;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): TenantServiceAddBalanceRequest;
+    static equals(a: TenantServiceAddBalanceRequest | PlainMessage<TenantServiceAddBalanceRequest> | undefined, b: TenantServiceAddBalanceRequest | PlainMessage<TenantServiceAddBalanceRequest> | undefined): boolean;
+}
+/**
+ * TenantServiceAdmitResponse is the response payload for a tenant admit request
+ *
+ * @generated from message admin.v1.TenantServiceAddBalanceResponse
+ */
+export declare class TenantServiceAddBalanceResponse extends Message<TenantServiceAddBalanceResponse> {
+    /**
+     * Tenant the tenant
+     *
+     * @generated from field: api.v1.Tenant tenant = 1;
+     */
+    tenant?: Tenant;
+    constructor(data?: PartialMessage<TenantServiceAddBalanceResponse>);
+    static readonly runtime: typeof proto3;
+    static readonly typeName = "admin.v1.TenantServiceAddBalanceResponse";
+    static readonly fields: FieldList;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): TenantServiceAddBalanceResponse;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): TenantServiceAddBalanceResponse;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): TenantServiceAddBalanceResponse;
+    static equals(a: TenantServiceAddBalanceResponse | PlainMessage<TenantServiceAddBalanceResponse> | undefined, b: TenantServiceAddBalanceResponse | PlainMessage<TenantServiceAddBalanceResponse> | undefined): boolean;
 }
 /**
  * TenantServiceRevokeRequest is the request payload for a tenant revoke request

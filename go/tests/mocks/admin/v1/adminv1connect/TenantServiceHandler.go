@@ -16,6 +16,36 @@ type TenantServiceHandler struct {
 	mock.Mock
 }
 
+// AddBalance provides a mock function with given fields: _a0, _a1
+func (_m *TenantServiceHandler) AddBalance(_a0 context.Context, _a1 *connect.Request[adminv1.TenantServiceAddBalanceRequest]) (*connect.Response[adminv1.TenantServiceAddBalanceResponse], error) {
+	ret := _m.Called(_a0, _a1)
+
+	if len(ret) == 0 {
+		panic("no return value specified for AddBalance")
+	}
+
+	var r0 *connect.Response[adminv1.TenantServiceAddBalanceResponse]
+	var r1 error
+	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[adminv1.TenantServiceAddBalanceRequest]) (*connect.Response[adminv1.TenantServiceAddBalanceResponse], error)); ok {
+		return rf(_a0, _a1)
+	}
+	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[adminv1.TenantServiceAddBalanceRequest]) *connect.Response[adminv1.TenantServiceAddBalanceResponse]); ok {
+		r0 = rf(_a0, _a1)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*connect.Response[adminv1.TenantServiceAddBalanceResponse])
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(context.Context, *connect.Request[adminv1.TenantServiceAddBalanceRequest]) error); ok {
+		r1 = rf(_a0, _a1)
+	} else {
+		r1 = ret.Error(1)
+	}
+
+	return r0, r1
+}
+
 // AddMember provides a mock function with given fields: _a0, _a1
 func (_m *TenantServiceHandler) AddMember(_a0 context.Context, _a1 *connect.Request[adminv1.TenantServiceAddMemberRequest]) (*connect.Response[adminv1.TenantServiceAddMemberResponse], error) {
 	ret := _m.Called(_a0, _a1)

@@ -37,6 +37,9 @@ const (
 	TenantServiceListProcedure = "/admin.v1.TenantService/List"
 	// TenantServiceAdmitProcedure is the fully-qualified name of the TenantService's Admit RPC.
 	TenantServiceAdmitProcedure = "/admin.v1.TenantService/Admit"
+	// TenantServiceAddBalanceProcedure is the fully-qualified name of the TenantService's AddBalance
+	// RPC.
+	TenantServiceAddBalanceProcedure = "/admin.v1.TenantService/AddBalance"
 	// TenantServiceRevokeProcedure is the fully-qualified name of the TenantService's Revoke RPC.
 	TenantServiceRevokeProcedure = "/admin.v1.TenantService/Revoke"
 	// TenantServiceAddMemberProcedure is the fully-qualified name of the TenantService's AddMember RPC.
@@ -45,11 +48,12 @@ const (
 
 // These variables are the protoreflect.Descriptor objects for the RPCs defined in this package.
 var (
-	tenantServiceServiceDescriptor         = v1.File_admin_v1_tenant_proto.Services().ByName("TenantService")
-	tenantServiceListMethodDescriptor      = tenantServiceServiceDescriptor.Methods().ByName("List")
-	tenantServiceAdmitMethodDescriptor     = tenantServiceServiceDescriptor.Methods().ByName("Admit")
-	tenantServiceRevokeMethodDescriptor    = tenantServiceServiceDescriptor.Methods().ByName("Revoke")
-	tenantServiceAddMemberMethodDescriptor = tenantServiceServiceDescriptor.Methods().ByName("AddMember")
+	tenantServiceServiceDescriptor          = v1.File_admin_v1_tenant_proto.Services().ByName("TenantService")
+	tenantServiceListMethodDescriptor       = tenantServiceServiceDescriptor.Methods().ByName("List")
+	tenantServiceAdmitMethodDescriptor      = tenantServiceServiceDescriptor.Methods().ByName("Admit")
+	tenantServiceAddBalanceMethodDescriptor = tenantServiceServiceDescriptor.Methods().ByName("AddBalance")
+	tenantServiceRevokeMethodDescriptor     = tenantServiceServiceDescriptor.Methods().ByName("Revoke")
+	tenantServiceAddMemberMethodDescriptor  = tenantServiceServiceDescriptor.Methods().ByName("AddMember")
 )
 
 // TenantServiceClient is a client for the admin.v1.TenantService service.
@@ -58,6 +62,8 @@ type TenantServiceClient interface {
 	List(context.Context, *connect.Request[v1.TenantServiceListRequest]) (*connect.Response[v1.TenantServiceListResponse], error)
 	// Admit a tenant
 	Admit(context.Context, *connect.Request[v1.TenantServiceAdmitRequest]) (*connect.Response[v1.TenantServiceAdmitResponse], error)
+	// AddBalance to a tenant
+	AddBalance(context.Context, *connect.Request[v1.TenantServiceAddBalanceRequest]) (*connect.Response[v1.TenantServiceAddBalanceResponse], error)
 	// Revoke a tenant
 	Revoke(context.Context, *connect.Request[v1.TenantServiceRevokeRequest]) (*connect.Response[v1.TenantServiceRevokeResponse], error)
 	// Add a member to a tenant
@@ -86,6 +92,12 @@ func NewTenantServiceClient(httpClient connect.HTTPClient, baseURL string, opts 
 			connect.WithSchema(tenantServiceAdmitMethodDescriptor),
 			connect.WithClientOptions(opts...),
 		),
+		addBalance: connect.NewClient[v1.TenantServiceAddBalanceRequest, v1.TenantServiceAddBalanceResponse](
+			httpClient,
+			baseURL+TenantServiceAddBalanceProcedure,
+			connect.WithSchema(tenantServiceAddBalanceMethodDescriptor),
+			connect.WithClientOptions(opts...),
+		),
 		revoke: connect.NewClient[v1.TenantServiceRevokeRequest, v1.TenantServiceRevokeResponse](
 			httpClient,
 			baseURL+TenantServiceRevokeProcedure,
@@ -103,10 +115,11 @@ func NewTenantServiceClient(httpClient connect.HTTPClient, baseURL string, opts 
 
 // tenantServiceClient implements TenantServiceClient.
 type tenantServiceClient struct {
-	list      *connect.Client[v1.TenantServiceListRequest, v1.TenantServiceListResponse]
-	admit     *connect.Client[v1.TenantServiceAdmitRequest, v1.TenantServiceAdmitResponse]
-	revoke    *connect.Client[v1.TenantServiceRevokeRequest, v1.TenantServiceRevokeResponse]
-	addMember *connect.Client[v1.TenantServiceAddMemberRequest, v1.TenantServiceAddMemberResponse]
+	list       *connect.Client[v1.TenantServiceListRequest, v1.TenantServiceListResponse]
+	admit      *connect.Client[v1.TenantServiceAdmitRequest, v1.TenantServiceAdmitResponse]
+	addBalance *connect.Client[v1.TenantServiceAddBalanceRequest, v1.TenantServiceAddBalanceResponse]
+	revoke     *connect.Client[v1.TenantServiceRevokeRequest, v1.TenantServiceRevokeResponse]
+	addMember  *connect.Client[v1.TenantServiceAddMemberRequest, v1.TenantServiceAddMemberResponse]
 }
 
 // List calls admin.v1.TenantService.List.
@@ -117,6 +130,11 @@ func (c *tenantServiceClient) List(ctx context.Context, req *connect.Request[v1.
 // Admit calls admin.v1.TenantService.Admit.
 func (c *tenantServiceClient) Admit(ctx context.Context, req *connect.Request[v1.TenantServiceAdmitRequest]) (*connect.Response[v1.TenantServiceAdmitResponse], error) {
 	return c.admit.CallUnary(ctx, req)
+}
+
+// AddBalance calls admin.v1.TenantService.AddBalance.
+func (c *tenantServiceClient) AddBalance(ctx context.Context, req *connect.Request[v1.TenantServiceAddBalanceRequest]) (*connect.Response[v1.TenantServiceAddBalanceResponse], error) {
+	return c.addBalance.CallUnary(ctx, req)
 }
 
 // Revoke calls admin.v1.TenantService.Revoke.
@@ -135,6 +153,8 @@ type TenantServiceHandler interface {
 	List(context.Context, *connect.Request[v1.TenantServiceListRequest]) (*connect.Response[v1.TenantServiceListResponse], error)
 	// Admit a tenant
 	Admit(context.Context, *connect.Request[v1.TenantServiceAdmitRequest]) (*connect.Response[v1.TenantServiceAdmitResponse], error)
+	// AddBalance to a tenant
+	AddBalance(context.Context, *connect.Request[v1.TenantServiceAddBalanceRequest]) (*connect.Response[v1.TenantServiceAddBalanceResponse], error)
 	// Revoke a tenant
 	Revoke(context.Context, *connect.Request[v1.TenantServiceRevokeRequest]) (*connect.Response[v1.TenantServiceRevokeResponse], error)
 	// Add a member to a tenant
@@ -159,6 +179,12 @@ func NewTenantServiceHandler(svc TenantServiceHandler, opts ...connect.HandlerOp
 		connect.WithSchema(tenantServiceAdmitMethodDescriptor),
 		connect.WithHandlerOptions(opts...),
 	)
+	tenantServiceAddBalanceHandler := connect.NewUnaryHandler(
+		TenantServiceAddBalanceProcedure,
+		svc.AddBalance,
+		connect.WithSchema(tenantServiceAddBalanceMethodDescriptor),
+		connect.WithHandlerOptions(opts...),
+	)
 	tenantServiceRevokeHandler := connect.NewUnaryHandler(
 		TenantServiceRevokeProcedure,
 		svc.Revoke,
@@ -177,6 +203,8 @@ func NewTenantServiceHandler(svc TenantServiceHandler, opts ...connect.HandlerOp
 			tenantServiceListHandler.ServeHTTP(w, r)
 		case TenantServiceAdmitProcedure:
 			tenantServiceAdmitHandler.ServeHTTP(w, r)
+		case TenantServiceAddBalanceProcedure:
+			tenantServiceAddBalanceHandler.ServeHTTP(w, r)
 		case TenantServiceRevokeProcedure:
 			tenantServiceRevokeHandler.ServeHTTP(w, r)
 		case TenantServiceAddMemberProcedure:
@@ -196,6 +224,10 @@ func (UnimplementedTenantServiceHandler) List(context.Context, *connect.Request[
 
 func (UnimplementedTenantServiceHandler) Admit(context.Context, *connect.Request[v1.TenantServiceAdmitRequest]) (*connect.Response[v1.TenantServiceAdmitResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("admin.v1.TenantService.Admit is not implemented"))
+}
+
+func (UnimplementedTenantServiceHandler) AddBalance(context.Context, *connect.Request[v1.TenantServiceAddBalanceRequest]) (*connect.Response[v1.TenantServiceAddBalanceResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("admin.v1.TenantService.AddBalance is not implemented"))
 }
 
 func (UnimplementedTenantServiceHandler) Revoke(context.Context, *connect.Request[v1.TenantServiceRevokeRequest]) (*connect.Response[v1.TenantServiceRevokeResponse], error) {
