@@ -4,7 +4,6 @@ package admin.v1;
 
 import "api/v1/common.proto";
 import "api/v1/payment.proto";
-import "buf/validate/validate.proto";
 
 // PaymentService serves payment related functions
 service PaymentService {
@@ -12,10 +11,6 @@ service PaymentService {
   rpc ListCoupons(PaymentServiceListCouponsRequest) returns (PaymentServiceListCouponsResponse) {
     option (api.v1.admin_roles) = ADMIN_ROLE_EDITOR;
     option (api.v1.admin_roles) = ADMIN_ROLE_VIEWER;
-  }
-  // AddCouponToCustomer adds a coupon to a customer
-  rpc AddCouponToCustomer(PaymentServiceAddCouponToCustomerRequest) returns (PaymentServiceAddCouponToCustomerResponse) {
-    option (api.v1.admin_roles) = ADMIN_ROLE_EDITOR;
   }
   // AddBalanceToCustomer adds balance to a customer
   rpc AddBalanceToCustomer(PaymentServiceAddBalanceToCustomerRequest) returns (PaymentServiceAddBalanceToCustomerResponse) {
@@ -32,26 +27,12 @@ message PaymentServiceListCouponsResponse {
   repeated api.v1.Coupon coupons = 1;
 }
 
-// PaymentServiceAddCouponToCustomerRequest is the request payload for the coupons add to customer request
-message PaymentServiceAddCouponToCustomerRequest {
-  // Customer is the customer
-  api.v1.PaymentCustomer customer = 1;
-  // CouponId is the id of the coupon which should be granted to the customer
-  string coupon_id = 2;
-}
-
-// PaymentServiceAddCouponToCustomerResponse is the response payload for the coupons add to customer request
-message PaymentServiceAddCouponToCustomerResponse {
-  // Customer is the customer
-  api.v1.PaymentCustomer customer = 1;
-}
-
 // PaymentServiceAddBalanceToCustomerRequest is the request payload for the balance to customer request
 message PaymentServiceAddBalanceToCustomerRequest {
-  // Customer is the customer
-  api.v1.PaymentCustomer customer = 1;
-  // BalanceToAdd is the balance which should be added to the customer
-  int64 balance_to_add = 2 [(buf.validate.field).int64.gt = 0];
+  // Tenant is the tenant
+  string tenant_id = 1;
+  // BalanceToAdd is the balance in euro cent which should be added to the customer
+  uint64 balance_to_add = 2;
 }
 
 // PaymentServiceAddBalanceToCustomerResponse is the response payload for the balance to customer request

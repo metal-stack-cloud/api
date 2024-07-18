@@ -98,18 +98,6 @@ export declare class TenantServiceAdmitRequest extends Message<TenantServiceAdmi
      * @generated from field: string tenant_id = 1;
      */
     tenantId: string;
-    /**
-     * CouponId is the id of the coupon this tenant should get
-     *
-     * @generated from field: optional string coupon_id = 2;
-     */
-    couponId?: string;
-    /**
-     * BalanceToAdd is the amount of balance he should be granted
-     *
-     * @generated from field: optional int64 balance_to_add = 3;
-     */
-    balanceToAdd?: bigint;
     constructor(data?: PartialMessage<TenantServiceAdmitRequest>);
     static readonly runtime: typeof proto3;
     static readonly typeName = "admin.v1.TenantServiceAdmitRequest";

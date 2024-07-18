@@ -60,10 +60,6 @@ message TenantServiceListResponse {
 message TenantServiceAdmitRequest {
   // TenantId is the id of the tenant to admit
   string tenant_id = 1;
-  // CouponId is the id of the coupon this tenant should get
-  optional string coupon_id = 2;
-  // BalanceToAdd is the amount of balance he should be granted
-  optional int64 balance_to_add = 3 [(buf.validate.field).int64.gt = 0];
 }
 
 // TenantServiceAdmitResponse is the response payload for a tenant admit request

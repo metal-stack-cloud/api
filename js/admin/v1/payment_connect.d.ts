@@ -1,4 +1,4 @@
-import { PaymentServiceAddBalanceToCustomerRequest, PaymentServiceAddBalanceToCustomerResponse, PaymentServiceAddCouponToCustomerRequest, PaymentServiceAddCouponToCustomerResponse, PaymentServiceListCouponsRequest, PaymentServiceListCouponsResponse } from "./payment_pb.js";
+import { PaymentServiceAddBalanceToCustomerRequest, PaymentServiceAddBalanceToCustomerResponse, PaymentServiceListCouponsRequest, PaymentServiceListCouponsResponse } from "./payment_pb.js";
 import { MethodKind } from "@bufbuild/protobuf";
 /**
  * PaymentService serves payment related functions
@@ -17,17 +17,6 @@ export declare const PaymentService: {
             readonly name: "ListCoupons";
             readonly I: typeof PaymentServiceListCouponsRequest;
             readonly O: typeof PaymentServiceListCouponsResponse;
-            readonly kind: MethodKind.Unary;
-        };
-        /**
-         * AddCouponToCustomer adds a coupon to a customer
-         *
-         * @generated from rpc admin.v1.PaymentService.AddCouponToCustomer
-         */
-        readonly addCouponToCustomer: {
-            readonly name: "AddCouponToCustomer";
-            readonly I: typeof PaymentServiceAddCouponToCustomerRequest;
-            readonly O: typeof PaymentServiceAddCouponToCustomerResponse;
             readonly kind: MethodKind.Unary;
         };
         /**

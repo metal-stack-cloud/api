@@ -107,8 +107,6 @@ TenantServiceAdmitRequest.runtime = proto3;
 TenantServiceAdmitRequest.typeName = "admin.v1.TenantServiceAdmitRequest";
 TenantServiceAdmitRequest.fields = proto3.util.newFieldList(() => [
     { no: 1, name: "tenant_id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 2, name: "coupon_id", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
-    { no: 3, name: "balance_to_add", kind: "scalar", T: 3 /* ScalarType.INT64 */, opt: true },
 ]);
 /**
  * TenantServiceAdmitResponse is the response payload for a tenant admit request

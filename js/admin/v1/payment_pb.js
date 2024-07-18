@@ -65,69 +65,6 @@ PaymentServiceListCouponsResponse.fields = proto3.util.newFieldList(() => [
     { no: 1, name: "coupons", kind: "message", T: Coupon, repeated: true },
 ]);
 /**
- * PaymentServiceAddCouponToCustomerRequest is the request payload for the coupons add to customer request
- *
- * @generated from message admin.v1.PaymentServiceAddCouponToCustomerRequest
- */
-export class PaymentServiceAddCouponToCustomerRequest extends Message {
-    constructor(data) {
-        super();
-        /**
-         * CouponId is the id of the coupon which should be granted to the customer
-         *
-         * @generated from field: string coupon_id = 2;
-         */
-        this.couponId = "";
-        proto3.util.initPartial(data, this);
-    }
-    static fromBinary(bytes, options) {
-        return new PaymentServiceAddCouponToCustomerRequest().fromBinary(bytes, options);
-    }
-    static fromJson(jsonValue, options) {
-        return new PaymentServiceAddCouponToCustomerRequest().fromJson(jsonValue, options);
-    }
-    static fromJsonString(jsonString, options) {
-        return new PaymentServiceAddCouponToCustomerRequest().fromJsonString(jsonString, options);
-    }
-    static equals(a, b) {
-        return proto3.util.equals(PaymentServiceAddCouponToCustomerRequest, a, b);
-    }
-}
-PaymentServiceAddCouponToCustomerRequest.runtime = proto3;
-PaymentServiceAddCouponToCustomerRequest.typeName = "admin.v1.PaymentServiceAddCouponToCustomerRequest";
-PaymentServiceAddCouponToCustomerRequest.fields = proto3.util.newFieldList(() => [
-    { no: 1, name: "customer", kind: "message", T: PaymentCustomer },
-    { no: 2, name: "coupon_id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-]);
-/**
- * PaymentServiceAddCouponToCustomerResponse is the response payload for the coupons add to customer request
- *
- * @generated from message admin.v1.PaymentServiceAddCouponToCustomerResponse
- */
-export class PaymentServiceAddCouponToCustomerResponse extends Message {
-    constructor(data) {
-        super();
-        proto3.util.initPartial(data, this);
-    }
-    static fromBinary(bytes, options) {
-        return new PaymentServiceAddCouponToCustomerResponse().fromBinary(bytes, options);
-    }
-    static fromJson(jsonValue, options) {
-        return new PaymentServiceAddCouponToCustomerResponse().fromJson(jsonValue, options);
-    }
-    static fromJsonString(jsonString, options) {
-        return new PaymentServiceAddCouponToCustomerResponse().fromJsonString(jsonString, options);
-    }
-    static equals(a, b) {
-        return proto3.util.equals(PaymentServiceAddCouponToCustomerResponse, a, b);
-    }
-}
-PaymentServiceAddCouponToCustomerResponse.runtime = proto3;
-PaymentServiceAddCouponToCustomerResponse.typeName = "admin.v1.PaymentServiceAddCouponToCustomerResponse";
-PaymentServiceAddCouponToCustomerResponse.fields = proto3.util.newFieldList(() => [
-    { no: 1, name: "customer", kind: "message", T: PaymentCustomer },
-]);
-/**
  * PaymentServiceAddBalanceToCustomerRequest is the request payload for the balance to customer request
  *
  * @generated from message admin.v1.PaymentServiceAddBalanceToCustomerRequest
@@ -136,9 +73,15 @@ export class PaymentServiceAddBalanceToCustomerRequest extends Message {
     constructor(data) {
         super();
         /**
-         * BalanceToAdd is the balance which should be added to the customer
+         * Tenant is the tenant
          *
-         * @generated from field: int64 balance_to_add = 2;
+         * @generated from field: string tenant_id = 1;
+         */
+        this.tenantId = "";
+        /**
+         * BalanceToAdd is the balance in euro cent which should be added to the customer
+         *
+         * @generated from field: uint64 balance_to_add = 2;
          */
         this.balanceToAdd = protoInt64.zero;
         proto3.util.initPartial(data, this);
@@ -159,8 +102,8 @@ export class PaymentServiceAddBalanceToCustomerRequest extends Message {
 PaymentServiceAddBalanceToCustomerRequest.runtime = proto3;
 PaymentServiceAddBalanceToCustomerRequest.typeName = "admin.v1.PaymentServiceAddBalanceToCustomerRequest";
 PaymentServiceAddBalanceToCustomerRequest.fields = proto3.util.newFieldList(() => [
-    { no: 1, name: "customer", kind: "message", T: PaymentCustomer },
-    { no: 2, name: "balance_to_add", kind: "scalar", T: 3 /* ScalarType.INT64 */ },
+    { no: 1, name: "tenant_id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "balance_to_add", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
 ]);
 /**
  * PaymentServiceAddBalanceToCustomerResponse is the response payload for the balance to customer request
