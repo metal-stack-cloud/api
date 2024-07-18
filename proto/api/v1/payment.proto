@@ -53,20 +53,6 @@ service PaymentService {
     option (visibility) = VISIBILITY_PUBLIC;
     option (auditing) = AUDITING_EXCLUDED;
   }
-  // CheckAdmitted if the customer is allowed to use the service on the platform
-  rpc CheckAdmitted(PaymentServiceCheckAdmittedRequest) returns (PaymentServiceCheckAdmittedResponse) {
-    option (tenant_roles) = TENANT_ROLE_OWNER;
-    option (tenant_roles) = TENANT_ROLE_EDITOR;
-    option (tenant_roles) = TENANT_ROLE_VIEWER;
-    option (tenant_roles) = TENANT_ROLE_GUEST;
-    option (auditing) = AUDITING_EXCLUDED;
-  }
-  // RequestAdmission for a customer to get allowed to used the service
-  rpc RequestAdmission(PaymentServiceRequestAdmissionRequest) returns (PaymentServiceRequestAdmissionResponse) {
-    option (tenant_roles) = TENANT_ROLE_OWNER;
-    option (tenant_roles) = TENANT_ROLE_EDITOR;
-    option (auditing) = AUDITING_EXCLUDED;
-  }
   // HasChargeableResources checks if the customer has resources actually consumed which are chargeable
   rpc HasChargeableResources(PaymentServiceHasChargeableResourcesRequest) returns (PaymentServiceHasChargeableResourcesResponse) {
     option (tenant_roles) = TENANT_ROLE_OWNER;
@@ -379,35 +365,6 @@ message PaymentServiceGetDefaultPricesResponse {
   // Prices is the list of default prices
   repeated Price prices = 1;
 }
-
-// PaymentServiceCheckAdmittedRequest is the request payload for a check admitted request
-message PaymentServiceCheckAdmittedRequest {
-  // Login of the customer
-  string login = 1;
-}
-
-// PaymentServiceCheckAdmittedResponse is the response payload for a check admitted request
-message PaymentServiceCheckAdmittedResponse {
-  // Admitted indicates if the customer is already admitted to use the service
-  bool admitted = 1;
-  // Requested indicates if the customer requested admittance
-  bool requested = 2;
-}
-
-// PaymentServiceRequestAdmissionRequest is the request payload for a admission request
-message PaymentServiceRequestAdmissionRequest {
-  // Login of the customer
-  string login = 1;
-  // Customer is the customer
-  PaymentCustomer customer = 2;
-  // AcceptedTermsAndConditions indicates if the customer already accepted the terms and conditions
-  bool accepted_terms_and_conditions = 3;
-  // EmailConsent indicates if the customer already gave consent to email
-  bool email_consent = 4;
-}
-
-// PaymentServiceRequestAdmissionResponse is the response payload for a admission request
-message PaymentServiceRequestAdmissionResponse {}
 
 // PaymentServiceHasChargeableResourcesRequest is the request payload for a has chargeable request
 message PaymentServiceHasChargeableResourcesRequest {
