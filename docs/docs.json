@@ -10970,7 +10970,7 @@
             },
             {
               "name": "defaults",
-              "description": "Defaults are the default assets used if not otherwise speecified.",
+              "description": "Defaults are the default assets used if not otherwise specified.",
               "label": "",
               "type": "AssetDefaults",
               "longType": "AssetDefaults",
