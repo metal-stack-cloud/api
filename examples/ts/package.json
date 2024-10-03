@@ -5,9 +5,9 @@
   "main": "cluster-list.ts",
   "dependencies": {
     "@bufbuild/protobuf": "^1.10.0",
-    "@connectrpc/connect": "^1.4.0",
-    "@connectrpc/connect-node": "^1.4.0",
-    "@connectrpc/connect-web": "^1.4.0",
+    "@connectrpc/connect": "^1.5.0",
+    "@connectrpc/connect-node": "^1.5.0",
+    "@connectrpc/connect-web": "^1.5.0",
     "@metal-stack-cloud/api": "^0.10.2",
     "dotenv": "^16.4.5",
     "ts-node": "^10.9.2"

@@ -4,7 +4,7 @@ deps:
 lint:
   use:
     - COMMENTS
-    - DEFAULT
+    - STANDARD
     - PACKAGE_NO_IMPORT_CYCLE
     - RPC_NO_CLIENT_STREAMING
   except:
