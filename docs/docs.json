@@ -8401,7 +8401,7 @@
             },
             {
               "name": "project_ids",
-              "description": "ProjectIds of which a user is a member",
+              "description": "ProjectIds for the projects in which a user is a direct member",
               "label": "repeated",
               "type": "string",
               "longType": "string",

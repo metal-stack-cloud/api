@@ -216,7 +216,7 @@ type TenantMember struct {
 	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 	// Role is the role of the member
 	Role TenantRole `protobuf:"varint,2,opt,name=role,proto3,enum=api.v1.TenantRole" json:"role,omitempty"`
-	// ProjectIds of which a user is a member
+	// ProjectIds for the projects in which a user is a direct member
 	ProjectIds []string `protobuf:"bytes,4,rep,name=project_ids,json=projectIds,proto3" json:"project_ids,omitempty"`
 	// CreatedAt the date when the member was added to the tenant
 	CreatedAt *timestamppb.Timestamp `protobuf:"bytes,10,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
