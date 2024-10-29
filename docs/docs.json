@@ -8328,6 +8328,18 @@
               "defaultValue": ""
             },
             {
+              "name": "project_ids",
+              "description": "ProjectIds for the projects in which a user is a direct member",
+              "label": "repeated",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
               "name": "created_at",
               "description": "CreatedAt the date when the member was added to the tenant",
               "label": "",
