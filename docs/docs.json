@@ -4416,12 +4416,12 @@
           "extensions": [],
           "fields": [
             {
-              "name": "customer",
-              "description": "Customer is the customer",
+              "name": "tenant_id",
+              "description": "Tenant is the tenant",
               "label": "",
-              "type": "PaymentCustomer",
-              "longType": "api.v1.PaymentCustomer",
-              "fullType": "api.v1.PaymentCustomer",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
@@ -4429,11 +4429,11 @@
             },
             {
               "name": "balance_to_add",
-              "description": "BalanceToAdd is the balance which should be added to the customer",
+              "description": "BalanceToAdd is the balance in euro cent which should be added to the customer",
               "label": "",
-              "type": "int64",
-              "longType": "int64",
-              "fullType": "int64",
+              "type": "uint64",
+              "longType": "uint64",
+              "fullType": "uint64",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
@@ -4446,66 +4446,6 @@
           "longName": "PaymentServiceAddBalanceToCustomerResponse",
           "fullName": "admin.v1.PaymentServiceAddBalanceToCustomerResponse",
           "description": "PaymentServiceAddBalanceToCustomerResponse is the response payload for the balance to customer request",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "customer",
-              "description": "Customer is the customer",
-              "label": "",
-              "type": "PaymentCustomer",
-              "longType": "api.v1.PaymentCustomer",
-              "fullType": "api.v1.PaymentCustomer",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            }
-          ]
-        },
-        {
-          "name": "PaymentServiceAddCouponToCustomerRequest",
-          "longName": "PaymentServiceAddCouponToCustomerRequest",
-          "fullName": "admin.v1.PaymentServiceAddCouponToCustomerRequest",
-          "description": "PaymentServiceAddCouponToCustomerRequest is the request payload for the coupons add to customer request",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "customer",
-              "description": "Customer is the customer",
-              "label": "",
-              "type": "PaymentCustomer",
-              "longType": "api.v1.PaymentCustomer",
-              "fullType": "api.v1.PaymentCustomer",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "coupon_id",
-              "description": "CouponId is the id of the coupon which should be granted to the customer",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            }
-          ]
-        },
-        {
-          "name": "PaymentServiceAddCouponToCustomerResponse",
-          "longName": "PaymentServiceAddCouponToCustomerResponse",
-          "fullName": "admin.v1.PaymentServiceAddCouponToCustomerResponse",
-          "description": "PaymentServiceAddCouponToCustomerResponse is the response payload for the coupons add to customer request",
           "hasExtensions": false,
           "hasFields": true,
           "hasOneofs": false,
@@ -4578,18 +4518,6 @@
               "responseType": "PaymentServiceListCouponsResponse",
               "responseLongType": "PaymentServiceListCouponsResponse",
               "responseFullType": "admin.v1.PaymentServiceListCouponsResponse",
-              "responseStreaming": false
-            },
-            {
-              "name": "AddCouponToCustomer",
-              "description": "AddCouponToCustomer adds a coupon to a customer",
-              "requestType": "PaymentServiceAddCouponToCustomerRequest",
-              "requestLongType": "PaymentServiceAddCouponToCustomerRequest",
-              "requestFullType": "admin.v1.PaymentServiceAddCouponToCustomerRequest",
-              "requestStreaming": false,
-              "responseType": "PaymentServiceAddCouponToCustomerResponse",
-              "responseLongType": "PaymentServiceAddCouponToCustomerResponse",
-              "responseFullType": "admin.v1.PaymentServiceAddCouponToCustomerResponse",
               "responseStreaming": false
             },
             {
@@ -9568,7 +9496,7 @@
           "description": "TenantServiceAdmitRequest is the request payload for a tenant admit request",
           "hasExtensions": false,
           "hasFields": true,
-          "hasOneofs": true,
+          "hasOneofs": false,
           "extensions": [],
           "fields": [
             {
@@ -9581,30 +9509,6 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "coupon_id",
-              "description": "CouponId is the id of the coupon this tenant should get",
-              "label": "optional",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": true,
-              "oneofdecl": "_coupon_id",
-              "defaultValue": ""
-            },
-            {
-              "name": "balance_to_add",
-              "description": "BalanceToAdd is the amount of balance he should be granted",
-              "label": "optional",
-              "type": "int64",
-              "longType": "int64",
-              "fullType": "int64",
-              "ismap": false,
-              "isoneof": true,
-              "oneofdecl": "_balance_to_add",
               "defaultValue": ""
             }
           ]

@@ -82,112 +82,22 @@ export class PaymentServiceListCouponsResponse extends Message<PaymentServiceLis
 }
 
 /**
- * PaymentServiceAddCouponToCustomerRequest is the request payload for the coupons add to customer request
- *
- * @generated from message admin.v1.PaymentServiceAddCouponToCustomerRequest
- */
-export class PaymentServiceAddCouponToCustomerRequest extends Message<PaymentServiceAddCouponToCustomerRequest> {
-  /**
-   * Customer is the customer
-   *
-   * @generated from field: api.v1.PaymentCustomer customer = 1;
-   */
-  customer?: PaymentCustomer;
-
-  /**
-   * CouponId is the id of the coupon which should be granted to the customer
-   *
-   * @generated from field: string coupon_id = 2;
-   */
-  couponId = "";
-
-  constructor(data?: PartialMessage<PaymentServiceAddCouponToCustomerRequest>) {
-    super();
-    proto3.util.initPartial(data, this);
-  }
-
-  static readonly runtime: typeof proto3 = proto3;
-  static readonly typeName = "admin.v1.PaymentServiceAddCouponToCustomerRequest";
-  static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "customer", kind: "message", T: PaymentCustomer },
-    { no: 2, name: "coupon_id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-  ]);
-
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): PaymentServiceAddCouponToCustomerRequest {
-    return new PaymentServiceAddCouponToCustomerRequest().fromBinary(bytes, options);
-  }
-
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): PaymentServiceAddCouponToCustomerRequest {
-    return new PaymentServiceAddCouponToCustomerRequest().fromJson(jsonValue, options);
-  }
-
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): PaymentServiceAddCouponToCustomerRequest {
-    return new PaymentServiceAddCouponToCustomerRequest().fromJsonString(jsonString, options);
-  }
-
-  static equals(a: PaymentServiceAddCouponToCustomerRequest | PlainMessage<PaymentServiceAddCouponToCustomerRequest> | undefined, b: PaymentServiceAddCouponToCustomerRequest | PlainMessage<PaymentServiceAddCouponToCustomerRequest> | undefined): boolean {
-    return proto3.util.equals(PaymentServiceAddCouponToCustomerRequest, a, b);
-  }
-}
-
-/**
- * PaymentServiceAddCouponToCustomerResponse is the response payload for the coupons add to customer request
- *
- * @generated from message admin.v1.PaymentServiceAddCouponToCustomerResponse
- */
-export class PaymentServiceAddCouponToCustomerResponse extends Message<PaymentServiceAddCouponToCustomerResponse> {
-  /**
-   * Customer is the customer
-   *
-   * @generated from field: api.v1.PaymentCustomer customer = 1;
-   */
-  customer?: PaymentCustomer;
-
-  constructor(data?: PartialMessage<PaymentServiceAddCouponToCustomerResponse>) {
-    super();
-    proto3.util.initPartial(data, this);
-  }
-
-  static readonly runtime: typeof proto3 = proto3;
-  static readonly typeName = "admin.v1.PaymentServiceAddCouponToCustomerResponse";
-  static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "customer", kind: "message", T: PaymentCustomer },
-  ]);
-
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): PaymentServiceAddCouponToCustomerResponse {
-    return new PaymentServiceAddCouponToCustomerResponse().fromBinary(bytes, options);
-  }
-
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): PaymentServiceAddCouponToCustomerResponse {
-    return new PaymentServiceAddCouponToCustomerResponse().fromJson(jsonValue, options);
-  }
-
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): PaymentServiceAddCouponToCustomerResponse {
-    return new PaymentServiceAddCouponToCustomerResponse().fromJsonString(jsonString, options);
-  }
-
-  static equals(a: PaymentServiceAddCouponToCustomerResponse | PlainMessage<PaymentServiceAddCouponToCustomerResponse> | undefined, b: PaymentServiceAddCouponToCustomerResponse | PlainMessage<PaymentServiceAddCouponToCustomerResponse> | undefined): boolean {
-    return proto3.util.equals(PaymentServiceAddCouponToCustomerResponse, a, b);
-  }
-}
-
-/**
  * PaymentServiceAddBalanceToCustomerRequest is the request payload for the balance to customer request
  *
  * @generated from message admin.v1.PaymentServiceAddBalanceToCustomerRequest
  */
 export class PaymentServiceAddBalanceToCustomerRequest extends Message<PaymentServiceAddBalanceToCustomerRequest> {
   /**
-   * Customer is the customer
+   * Tenant is the tenant
    *
-   * @generated from field: api.v1.PaymentCustomer customer = 1;
+   * @generated from field: string tenant_id = 1;
    */
-  customer?: PaymentCustomer;
+  tenantId = "";
 
   /**
-   * BalanceToAdd is the balance which should be added to the customer
+   * BalanceToAdd is the balance in euro cent which should be added to the customer
    *
-   * @generated from field: int64 balance_to_add = 2;
+   * @generated from field: uint64 balance_to_add = 2;
    */
   balanceToAdd = protoInt64.zero;
 
@@ -199,8 +109,8 @@ export class PaymentServiceAddBalanceToCustomerRequest extends Message<PaymentSe
   static readonly runtime: typeof proto3 = proto3;
   static readonly typeName = "admin.v1.PaymentServiceAddBalanceToCustomerRequest";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "customer", kind: "message", T: PaymentCustomer },
-    { no: 2, name: "balance_to_add", kind: "scalar", T: 3 /* ScalarType.INT64 */ },
+    { no: 1, name: "tenant_id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "balance_to_add", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): PaymentServiceAddBalanceToCustomerRequest {
