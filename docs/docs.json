@@ -8400,6 +8400,18 @@
               "defaultValue": ""
             },
             {
+              "name": "project_ids",
+              "description": "ProjectIds for the projects in which a user is a direct member",
+              "label": "repeated",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
               "name": "created_at",
               "description": "CreatedAt the date when the member was added to the tenant",
               "label": "",
@@ -11066,7 +11078,7 @@
             },
             {
               "name": "defaults",
-              "description": "Defaults are the default assets used if not otherwise speecified.",
+              "description": "Defaults are the default assets used if not otherwise specified.",
               "label": "",
               "type": "AssetDefaults",
               "longType": "AssetDefaults",

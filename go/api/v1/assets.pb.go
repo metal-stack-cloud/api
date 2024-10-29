@@ -104,7 +104,7 @@ type Region struct {
 	Active bool `protobuf:"varint,4,opt,name=active,proto3" json:"active,omitempty"`
 	// Partitions in this region
 	Partitions map[string]*Partition `protobuf:"bytes,5,rep,name=partitions,proto3" json:"partitions,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
-	// Defaults are the default assets used if not otherwise speecified.
+	// Defaults are the default assets used if not otherwise specified.
 	Defaults *AssetDefaults `protobuf:"bytes,6,opt,name=defaults,proto3" json:"defaults,omitempty"`
 	// Description of the region
 	Description string `protobuf:"bytes,7,opt,name=description,proto3" json:"description,omitempty"`
