@@ -97,6 +97,8 @@ message Volume {
   uint64 logical_used_storage = 20;
   // VolumeStatistics are only visible to admins
   VolumeStatistics statistics = 21;
+  // ClusterName if set points to the cluster this volume is attached to
+  string cluster_name = 22;
 }
 
 // VolumeStatistics are all detailed statistics of a volume
