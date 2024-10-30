@@ -190,6 +190,13 @@ export class TenantMember extends Message<TenantMember> {
   role = TenantRole.UNSPECIFIED;
 
   /**
+   * ProjectIds for the projects in which a user is a direct member
+   *
+   * @generated from field: repeated string project_ids = 4;
+   */
+  projectIds: string[] = [];
+
+  /**
    * CreatedAt the date when the member was added to the tenant
    *
    * @generated from field: google.protobuf.Timestamp created_at = 10;
@@ -206,6 +213,7 @@ export class TenantMember extends Message<TenantMember> {
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
     { no: 1, name: "id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 2, name: "role", kind: "enum", T: proto3.getEnumType(TenantRole) },
+    { no: 4, name: "project_ids", kind: "scalar", T: 9 /* ScalarType.STRING */, repeated: true },
     { no: 10, name: "created_at", kind: "message", T: Timestamp },
   ]);
 

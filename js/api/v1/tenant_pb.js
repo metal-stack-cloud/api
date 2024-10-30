@@ -134,6 +134,12 @@ export class TenantMember extends Message {
          * @generated from field: api.v1.TenantRole role = 2;
          */
         this.role = TenantRole.UNSPECIFIED;
+        /**
+         * ProjectIds for the projects in which a user is a direct member
+         *
+         * @generated from field: repeated string project_ids = 4;
+         */
+        this.projectIds = [];
         proto3.util.initPartial(data, this);
     }
     static fromBinary(bytes, options) {
@@ -154,6 +160,7 @@ TenantMember.typeName = "api.v1.TenantMember";
 TenantMember.fields = proto3.util.newFieldList(() => [
     { no: 1, name: "id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 2, name: "role", kind: "enum", T: proto3.getEnumType(TenantRole) },
+    { no: 4, name: "project_ids", kind: "scalar", T: 9 /* ScalarType.STRING */, repeated: true },
     { no: 10, name: "created_at", kind: "message", T: Timestamp },
 ]);
 /**

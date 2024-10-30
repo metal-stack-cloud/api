@@ -74,7 +74,7 @@ export declare class Region extends Message<Region> {
         [key: string]: Partition;
     };
     /**
-     * Defaults are the default assets used if not otherwise speecified.
+     * Defaults are the default assets used if not otherwise specified.
      *
      * @generated from field: api.v1.AssetDefaults defaults = 6;
      */

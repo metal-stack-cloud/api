@@ -36,7 +36,7 @@ message Region {
   bool active = 4;
   // Partitions in this region
   map<string, Partition> partitions = 5;
-  // Defaults are the default assets used if not otherwise speecified.
+  // Defaults are the default assets used if not otherwise specified.
   AssetDefaults defaults = 6;
   // Description of the region
   string description = 7;
