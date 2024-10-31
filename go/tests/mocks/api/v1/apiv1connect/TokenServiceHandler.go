@@ -46,6 +46,36 @@ func (_m *TokenServiceHandler) Create(_a0 context.Context, _a1 *connect.Request[
 	return r0, r1
 }
 
+// Get provides a mock function with given fields: _a0, _a1
+func (_m *TokenServiceHandler) Get(_a0 context.Context, _a1 *connect.Request[apiv1.TokenServiceGetRequest]) (*connect.Response[apiv1.TokenServiceGetResponse], error) {
+	ret := _m.Called(_a0, _a1)
+
+	if len(ret) == 0 {
+		panic("no return value specified for Get")
+	}
+
+	var r0 *connect.Response[apiv1.TokenServiceGetResponse]
+	var r1 error
+	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[apiv1.TokenServiceGetRequest]) (*connect.Response[apiv1.TokenServiceGetResponse], error)); ok {
+		return rf(_a0, _a1)
+	}
+	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[apiv1.TokenServiceGetRequest]) *connect.Response[apiv1.TokenServiceGetResponse]); ok {
+		r0 = rf(_a0, _a1)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*connect.Response[apiv1.TokenServiceGetResponse])
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(context.Context, *connect.Request[apiv1.TokenServiceGetRequest]) error); ok {
+		r1 = rf(_a0, _a1)
+	} else {
+		r1 = ret.Error(1)
+	}
+
+	return r0, r1
+}
+
 // List provides a mock function with given fields: _a0, _a1
 func (_m *TokenServiceHandler) List(_a0 context.Context, _a1 *connect.Request[apiv1.TokenServiceListRequest]) (*connect.Response[apiv1.TokenServiceListResponse], error) {
 	ret := _m.Called(_a0, _a1)
@@ -98,6 +128,36 @@ func (_m *TokenServiceHandler) Revoke(_a0 context.Context, _a1 *connect.Request[
 	}
 
 	if rf, ok := ret.Get(1).(func(context.Context, *connect.Request[apiv1.TokenServiceRevokeRequest]) error); ok {
+		r1 = rf(_a0, _a1)
+	} else {
+		r1 = ret.Error(1)
+	}
+
+	return r0, r1
+}
+
+// Update provides a mock function with given fields: _a0, _a1
+func (_m *TokenServiceHandler) Update(_a0 context.Context, _a1 *connect.Request[apiv1.TokenServiceUpdateRequest]) (*connect.Response[apiv1.TokenServiceUpdateResponse], error) {
+	ret := _m.Called(_a0, _a1)
+
+	if len(ret) == 0 {
+		panic("no return value specified for Update")
+	}
+
+	var r0 *connect.Response[apiv1.TokenServiceUpdateResponse]
+	var r1 error
+	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[apiv1.TokenServiceUpdateRequest]) (*connect.Response[apiv1.TokenServiceUpdateResponse], error)); ok {
+		return rf(_a0, _a1)
+	}
+	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[apiv1.TokenServiceUpdateRequest]) *connect.Response[apiv1.TokenServiceUpdateResponse]); ok {
+		r0 = rf(_a0, _a1)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*connect.Response[apiv1.TokenServiceUpdateResponse])
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(context.Context, *connect.Request[apiv1.TokenServiceUpdateRequest]) error); ok {
 		r1 = rf(_a0, _a1)
 	} else {
 		r1 = ret.Error(1)

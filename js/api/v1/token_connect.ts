@@ -3,7 +3,7 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import { TokenServiceCreateRequest, TokenServiceCreateResponse, TokenServiceListRequest, TokenServiceListResponse, TokenServiceRevokeRequest, TokenServiceRevokeResponse } from "./token_pb.js";
+import { TokenServiceCreateRequest, TokenServiceCreateResponse, TokenServiceGetRequest, TokenServiceGetResponse, TokenServiceListRequest, TokenServiceListResponse, TokenServiceRevokeRequest, TokenServiceRevokeResponse, TokenServiceUpdateRequest, TokenServiceUpdateResponse } from "./token_pb.js";
 import { MethodKind } from "@bufbuild/protobuf";
 
 /**
@@ -15,6 +15,17 @@ export const TokenService = {
   typeName: "api.v1.TokenService",
   methods: {
     /**
+     * Get a token
+     *
+     * @generated from rpc api.v1.TokenService.Get
+     */
+    get: {
+      name: "Get",
+      I: TokenServiceGetRequest,
+      O: TokenServiceGetResponse,
+      kind: MethodKind.Unary,
+    },
+    /**
      * Create a token to authenticate against the platform, the secret will be only visible in the response
      *
      * @generated from rpc api.v1.TokenService.Create
@@ -23,6 +34,17 @@ export const TokenService = {
       name: "Create",
       I: TokenServiceCreateRequest,
       O: TokenServiceCreateResponse,
+      kind: MethodKind.Unary,
+    },
+    /**
+     * Update a token
+     *
+     * @generated from rpc api.v1.TokenService.Update
+     */
+    update: {
+      name: "Update",
+      I: TokenServiceUpdateRequest,
+      O: TokenServiceUpdateResponse,
       kind: MethodKind.Unary,
     },
     /**
