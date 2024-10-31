@@ -99,6 +99,8 @@ message Volume {
   VolumeStatistics statistics = 21;
   // ClusterName if set points to the cluster this volume is attached to
   string cluster_name = 22;
+  // ClusterID if set points to the cluster this volume is attached to
+  string cluster_id = 23;
 }
 
 // VolumeStatistics are all detailed statistics of a volume
