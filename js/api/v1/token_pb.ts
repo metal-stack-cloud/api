@@ -482,3 +482,125 @@ export class TokenServiceRevokeResponse extends Message<TokenServiceRevokeRespon
   }
 }
 
+/**
+ * TokenServiceUpdateRequest is the request payload of a token update request
+ *
+ * @generated from message api.v1.TokenServiceUpdateRequest
+ */
+export class TokenServiceUpdateRequest extends Message<TokenServiceUpdateRequest> {
+  /**
+   * Uuid of the token to update
+   *
+   * @generated from field: string uuid = 1;
+   */
+  uuid = "";
+
+  constructor(data?: PartialMessage<TokenServiceUpdateRequest>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "api.v1.TokenServiceUpdateRequest";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "uuid", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): TokenServiceUpdateRequest {
+    return new TokenServiceUpdateRequest().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): TokenServiceUpdateRequest {
+    return new TokenServiceUpdateRequest().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): TokenServiceUpdateRequest {
+    return new TokenServiceUpdateRequest().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: TokenServiceUpdateRequest | PlainMessage<TokenServiceUpdateRequest> | undefined, b: TokenServiceUpdateRequest | PlainMessage<TokenServiceUpdateRequest> | undefined): boolean {
+    return proto3.util.equals(TokenServiceUpdateRequest, a, b);
+  }
+}
+
+/**
+ * TokenServiceUpdateResponse is the response payload of a token update request
+ *
+ * @generated from message api.v1.TokenServiceUpdateResponse
+ */
+export class TokenServiceUpdateResponse extends Message<TokenServiceUpdateResponse> {
+  /**
+   * Token is the updated token
+   *
+   * @generated from field: api.v1.Token token = 1;
+   */
+  token?: Token;
+
+  /**
+   * Description is a user given description of this token.
+   *
+   * @generated from field: string description = 2;
+   */
+  description = "";
+
+  /**
+   * Permissions is a list of service methods this token can be used for
+   *
+   * @generated from field: repeated api.v1.MethodPermission permissions = 3;
+   */
+  permissions: MethodPermission[] = [];
+
+  /**
+   * ProjectRoles associates a project id with the corresponding role of the token owner
+   *
+   * @generated from field: map<string, api.v1.ProjectRole> project_roles = 4;
+   */
+  projectRoles: { [key: string]: ProjectRole } = {};
+
+  /**
+   * TenantRoles associates a tenant id with the corresponding role of the token owner
+   *
+   * @generated from field: map<string, api.v1.TenantRole> tenant_roles = 5;
+   */
+  tenantRoles: { [key: string]: TenantRole } = {};
+
+  /**
+   * AdminRole defines the admin role of the token owner
+   *
+   * @generated from field: optional api.v1.AdminRole admin_role = 6;
+   */
+  adminRole?: AdminRole;
+
+  constructor(data?: PartialMessage<TokenServiceUpdateResponse>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "api.v1.TokenServiceUpdateResponse";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "token", kind: "message", T: Token },
+    { no: 2, name: "description", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 3, name: "permissions", kind: "message", T: MethodPermission, repeated: true },
+    { no: 4, name: "project_roles", kind: "map", K: 9 /* ScalarType.STRING */, V: {kind: "enum", T: proto3.getEnumType(ProjectRole)} },
+    { no: 5, name: "tenant_roles", kind: "map", K: 9 /* ScalarType.STRING */, V: {kind: "enum", T: proto3.getEnumType(TenantRole)} },
+    { no: 6, name: "admin_role", kind: "enum", T: proto3.getEnumType(AdminRole), opt: true },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): TokenServiceUpdateResponse {
+    return new TokenServiceUpdateResponse().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): TokenServiceUpdateResponse {
+    return new TokenServiceUpdateResponse().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): TokenServiceUpdateResponse {
+    return new TokenServiceUpdateResponse().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: TokenServiceUpdateResponse | PlainMessage<TokenServiceUpdateResponse> | undefined, b: TokenServiceUpdateResponse | PlainMessage<TokenServiceUpdateResponse> | undefined): boolean {
+    return proto3.util.equals(TokenServiceUpdateResponse, a, b);
+  }
+}
+

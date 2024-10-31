@@ -1,4 +1,4 @@
-import { TokenServiceCreateRequest, TokenServiceCreateResponse, TokenServiceListRequest, TokenServiceListResponse, TokenServiceRevokeRequest, TokenServiceRevokeResponse } from "./token_pb.js";
+import { TokenServiceCreateRequest, TokenServiceCreateResponse, TokenServiceListRequest, TokenServiceListResponse, TokenServiceRevokeRequest, TokenServiceRevokeResponse, TokenServiceUpdateRequest, TokenServiceUpdateResponse } from "./token_pb.js";
 import { MethodKind } from "@bufbuild/protobuf";
 /**
  * TokenService serves token related functions
@@ -17,6 +17,17 @@ export declare const TokenService: {
             readonly name: "Create";
             readonly I: typeof TokenServiceCreateRequest;
             readonly O: typeof TokenServiceCreateResponse;
+            readonly kind: MethodKind.Unary;
+        };
+        /**
+         * Update a token
+         *
+         * @generated from rpc api.v1.TokenService.Update
+         */
+        readonly update: {
+            readonly name: "Update";
+            readonly I: typeof TokenServiceUpdateRequest;
+            readonly O: typeof TokenServiceUpdateResponse;
             readonly kind: MethodKind.Unary;
         };
         /**

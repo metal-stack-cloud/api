@@ -369,3 +369,94 @@ export class TokenServiceRevokeResponse extends Message {
 TokenServiceRevokeResponse.runtime = proto3;
 TokenServiceRevokeResponse.typeName = "api.v1.TokenServiceRevokeResponse";
 TokenServiceRevokeResponse.fields = proto3.util.newFieldList(() => []);
+/**
+ * TokenServiceUpdateRequest is the request payload of a token update request
+ *
+ * @generated from message api.v1.TokenServiceUpdateRequest
+ */
+export class TokenServiceUpdateRequest extends Message {
+    constructor(data) {
+        super();
+        /**
+         * Uuid of the token to update
+         *
+         * @generated from field: string uuid = 1;
+         */
+        this.uuid = "";
+        proto3.util.initPartial(data, this);
+    }
+    static fromBinary(bytes, options) {
+        return new TokenServiceUpdateRequest().fromBinary(bytes, options);
+    }
+    static fromJson(jsonValue, options) {
+        return new TokenServiceUpdateRequest().fromJson(jsonValue, options);
+    }
+    static fromJsonString(jsonString, options) {
+        return new TokenServiceUpdateRequest().fromJsonString(jsonString, options);
+    }
+    static equals(a, b) {
+        return proto3.util.equals(TokenServiceUpdateRequest, a, b);
+    }
+}
+TokenServiceUpdateRequest.runtime = proto3;
+TokenServiceUpdateRequest.typeName = "api.v1.TokenServiceUpdateRequest";
+TokenServiceUpdateRequest.fields = proto3.util.newFieldList(() => [
+    { no: 1, name: "uuid", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+]);
+/**
+ * TokenServiceUpdateResponse is the response payload of a token update request
+ *
+ * @generated from message api.v1.TokenServiceUpdateResponse
+ */
+export class TokenServiceUpdateResponse extends Message {
+    constructor(data) {
+        super();
+        /**
+         * Description is a user given description of this token.
+         *
+         * @generated from field: string description = 2;
+         */
+        this.description = "";
+        /**
+         * Permissions is a list of service methods this token can be used for
+         *
+         * @generated from field: repeated api.v1.MethodPermission permissions = 3;
+         */
+        this.permissions = [];
+        /**
+         * ProjectRoles associates a project id with the corresponding role of the token owner
+         *
+         * @generated from field: map<string, api.v1.ProjectRole> project_roles = 4;
+         */
+        this.projectRoles = {};
+        /**
+         * TenantRoles associates a tenant id with the corresponding role of the token owner
+         *
+         * @generated from field: map<string, api.v1.TenantRole> tenant_roles = 5;
+         */
+        this.tenantRoles = {};
+        proto3.util.initPartial(data, this);
+    }
+    static fromBinary(bytes, options) {
+        return new TokenServiceUpdateResponse().fromBinary(bytes, options);
+    }
+    static fromJson(jsonValue, options) {
+        return new TokenServiceUpdateResponse().fromJson(jsonValue, options);
+    }
+    static fromJsonString(jsonString, options) {
+        return new TokenServiceUpdateResponse().fromJsonString(jsonString, options);
+    }
+    static equals(a, b) {
+        return proto3.util.equals(TokenServiceUpdateResponse, a, b);
+    }
+}
+TokenServiceUpdateResponse.runtime = proto3;
+TokenServiceUpdateResponse.typeName = "api.v1.TokenServiceUpdateResponse";
+TokenServiceUpdateResponse.fields = proto3.util.newFieldList(() => [
+    { no: 1, name: "token", kind: "message", T: Token },
+    { no: 2, name: "description", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 3, name: "permissions", kind: "message", T: MethodPermission, repeated: true },
+    { no: 4, name: "project_roles", kind: "map", K: 9 /* ScalarType.STRING */, V: { kind: "enum", T: proto3.getEnumType(ProjectRole) } },
+    { no: 5, name: "tenant_roles", kind: "map", K: 9 /* ScalarType.STRING */, V: { kind: "enum", T: proto3.getEnumType(TenantRole) } },
+    { no: 6, name: "admin_role", kind: "enum", T: proto3.getEnumType(AdminRole), opt: true },
+]);

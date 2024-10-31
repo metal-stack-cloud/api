@@ -35,6 +35,8 @@ const (
 const (
 	// TokenServiceCreateProcedure is the fully-qualified name of the TokenService's Create RPC.
 	TokenServiceCreateProcedure = "/api.v1.TokenService/Create"
+	// TokenServiceUpdateProcedure is the fully-qualified name of the TokenService's Update RPC.
+	TokenServiceUpdateProcedure = "/api.v1.TokenService/Update"
 	// TokenServiceListProcedure is the fully-qualified name of the TokenService's List RPC.
 	TokenServiceListProcedure = "/api.v1.TokenService/List"
 	// TokenServiceRevokeProcedure is the fully-qualified name of the TokenService's Revoke RPC.
@@ -45,6 +47,7 @@ const (
 var (
 	tokenServiceServiceDescriptor      = v1.File_api_v1_token_proto.Services().ByName("TokenService")
 	tokenServiceCreateMethodDescriptor = tokenServiceServiceDescriptor.Methods().ByName("Create")
+	tokenServiceUpdateMethodDescriptor = tokenServiceServiceDescriptor.Methods().ByName("Update")
 	tokenServiceListMethodDescriptor   = tokenServiceServiceDescriptor.Methods().ByName("List")
 	tokenServiceRevokeMethodDescriptor = tokenServiceServiceDescriptor.Methods().ByName("Revoke")
 )
@@ -53,6 +56,8 @@ var (
 type TokenServiceClient interface {
 	// Create a token to authenticate against the platform, the secret will be only visible in the response
 	Create(context.Context, *connect.Request[v1.TokenServiceCreateRequest]) (*connect.Response[v1.TokenServiceCreateResponse], error)
+	// Update a token
+	Update(context.Context, *connect.Request[v1.TokenServiceUpdateRequest]) (*connect.Response[v1.TokenServiceUpdateResponse], error)
 	// List all your tokens
 	List(context.Context, *connect.Request[v1.TokenServiceListRequest]) (*connect.Response[v1.TokenServiceListResponse], error)
 	// Revoke a token, no further usage is possible afterwards
@@ -75,6 +80,12 @@ func NewTokenServiceClient(httpClient connect.HTTPClient, baseURL string, opts .
 			connect.WithSchema(tokenServiceCreateMethodDescriptor),
 			connect.WithClientOptions(opts...),
 		),
+		update: connect.NewClient[v1.TokenServiceUpdateRequest, v1.TokenServiceUpdateResponse](
+			httpClient,
+			baseURL+TokenServiceUpdateProcedure,
+			connect.WithSchema(tokenServiceUpdateMethodDescriptor),
+			connect.WithClientOptions(opts...),
+		),
 		list: connect.NewClient[v1.TokenServiceListRequest, v1.TokenServiceListResponse](
 			httpClient,
 			baseURL+TokenServiceListProcedure,
@@ -93,6 +104,7 @@ func NewTokenServiceClient(httpClient connect.HTTPClient, baseURL string, opts .
 // tokenServiceClient implements TokenServiceClient.
 type tokenServiceClient struct {
 	create *connect.Client[v1.TokenServiceCreateRequest, v1.TokenServiceCreateResponse]
+	update *connect.Client[v1.TokenServiceUpdateRequest, v1.TokenServiceUpdateResponse]
 	list   *connect.Client[v1.TokenServiceListRequest, v1.TokenServiceListResponse]
 	revoke *connect.Client[v1.TokenServiceRevokeRequest, v1.TokenServiceRevokeResponse]
 }
@@ -100,6 +112,11 @@ type tokenServiceClient struct {
 // Create calls api.v1.TokenService.Create.
 func (c *tokenServiceClient) Create(ctx context.Context, req *connect.Request[v1.TokenServiceCreateRequest]) (*connect.Response[v1.TokenServiceCreateResponse], error) {
 	return c.create.CallUnary(ctx, req)
+}
+
+// Update calls api.v1.TokenService.Update.
+func (c *tokenServiceClient) Update(ctx context.Context, req *connect.Request[v1.TokenServiceUpdateRequest]) (*connect.Response[v1.TokenServiceUpdateResponse], error) {
+	return c.update.CallUnary(ctx, req)
 }
 
 // List calls api.v1.TokenService.List.
@@ -116,6 +133,8 @@ func (c *tokenServiceClient) Revoke(ctx context.Context, req *connect.Request[v1
 type TokenServiceHandler interface {
 	// Create a token to authenticate against the platform, the secret will be only visible in the response
 	Create(context.Context, *connect.Request[v1.TokenServiceCreateRequest]) (*connect.Response[v1.TokenServiceCreateResponse], error)
+	// Update a token
+	Update(context.Context, *connect.Request[v1.TokenServiceUpdateRequest]) (*connect.Response[v1.TokenServiceUpdateResponse], error)
 	// List all your tokens
 	List(context.Context, *connect.Request[v1.TokenServiceListRequest]) (*connect.Response[v1.TokenServiceListResponse], error)
 	// Revoke a token, no further usage is possible afterwards
@@ -134,6 +153,12 @@ func NewTokenServiceHandler(svc TokenServiceHandler, opts ...connect.HandlerOpti
 		connect.WithSchema(tokenServiceCreateMethodDescriptor),
 		connect.WithHandlerOptions(opts...),
 	)
+	tokenServiceUpdateHandler := connect.NewUnaryHandler(
+		TokenServiceUpdateProcedure,
+		svc.Update,
+		connect.WithSchema(tokenServiceUpdateMethodDescriptor),
+		connect.WithHandlerOptions(opts...),
+	)
 	tokenServiceListHandler := connect.NewUnaryHandler(
 		TokenServiceListProcedure,
 		svc.List,
@@ -150,6 +175,8 @@ func NewTokenServiceHandler(svc TokenServiceHandler, opts ...connect.HandlerOpti
 		switch r.URL.Path {
 		case TokenServiceCreateProcedure:
 			tokenServiceCreateHandler.ServeHTTP(w, r)
+		case TokenServiceUpdateProcedure:
+			tokenServiceUpdateHandler.ServeHTTP(w, r)
 		case TokenServiceListProcedure:
 			tokenServiceListHandler.ServeHTTP(w, r)
 		case TokenServiceRevokeProcedure:
@@ -165,6 +192,10 @@ type UnimplementedTokenServiceHandler struct{}
 
 func (UnimplementedTokenServiceHandler) Create(context.Context, *connect.Request[v1.TokenServiceCreateRequest]) (*connect.Response[v1.TokenServiceCreateResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("api.v1.TokenService.Create is not implemented"))
+}
+
+func (UnimplementedTokenServiceHandler) Update(context.Context, *connect.Request[v1.TokenServiceUpdateRequest]) (*connect.Response[v1.TokenServiceUpdateResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("api.v1.TokenService.Update is not implemented"))
 }
 
 func (UnimplementedTokenServiceHandler) List(context.Context, *connect.Request[v1.TokenServiceListRequest]) (*connect.Response[v1.TokenServiceListResponse], error) {

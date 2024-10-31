@@ -2,7 +2,7 @@
 // @generated from file api/v1/token.proto (package api.v1, syntax proto3)
 /* eslint-disable */
 // @ts-nocheck
-import { TokenServiceCreateRequest, TokenServiceCreateResponse, TokenServiceListRequest, TokenServiceListResponse, TokenServiceRevokeRequest, TokenServiceRevokeResponse } from "./token_pb.js";
+import { TokenServiceCreateRequest, TokenServiceCreateResponse, TokenServiceListRequest, TokenServiceListResponse, TokenServiceRevokeRequest, TokenServiceRevokeResponse, TokenServiceUpdateRequest, TokenServiceUpdateResponse } from "./token_pb.js";
 import { MethodKind } from "@bufbuild/protobuf";
 /**
  * TokenService serves token related functions
@@ -21,6 +21,17 @@ export const TokenService = {
             name: "Create",
             I: TokenServiceCreateRequest,
             O: TokenServiceCreateResponse,
+            kind: MethodKind.Unary,
+        },
+        /**
+         * Update a token
+         *
+         * @generated from rpc api.v1.TokenService.Update
+         */
+        update: {
+            name: "Update",
+            I: TokenServiceUpdateRequest,
+            O: TokenServiceUpdateResponse,
             kind: MethodKind.Unary,
         },
         /**

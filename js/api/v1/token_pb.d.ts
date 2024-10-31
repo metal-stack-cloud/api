@@ -287,3 +287,79 @@ export declare class TokenServiceRevokeResponse extends Message<TokenServiceRevo
     static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): TokenServiceRevokeResponse;
     static equals(a: TokenServiceRevokeResponse | PlainMessage<TokenServiceRevokeResponse> | undefined, b: TokenServiceRevokeResponse | PlainMessage<TokenServiceRevokeResponse> | undefined): boolean;
 }
+/**
+ * TokenServiceUpdateRequest is the request payload of a token update request
+ *
+ * @generated from message api.v1.TokenServiceUpdateRequest
+ */
+export declare class TokenServiceUpdateRequest extends Message<TokenServiceUpdateRequest> {
+    /**
+     * Uuid of the token to update
+     *
+     * @generated from field: string uuid = 1;
+     */
+    uuid: string;
+    constructor(data?: PartialMessage<TokenServiceUpdateRequest>);
+    static readonly runtime: typeof proto3;
+    static readonly typeName = "api.v1.TokenServiceUpdateRequest";
+    static readonly fields: FieldList;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): TokenServiceUpdateRequest;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): TokenServiceUpdateRequest;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): TokenServiceUpdateRequest;
+    static equals(a: TokenServiceUpdateRequest | PlainMessage<TokenServiceUpdateRequest> | undefined, b: TokenServiceUpdateRequest | PlainMessage<TokenServiceUpdateRequest> | undefined): boolean;
+}
+/**
+ * TokenServiceUpdateResponse is the response payload of a token update request
+ *
+ * @generated from message api.v1.TokenServiceUpdateResponse
+ */
+export declare class TokenServiceUpdateResponse extends Message<TokenServiceUpdateResponse> {
+    /**
+     * Token is the updated token
+     *
+     * @generated from field: api.v1.Token token = 1;
+     */
+    token?: Token;
+    /**
+     * Description is a user given description of this token.
+     *
+     * @generated from field: string description = 2;
+     */
+    description: string;
+    /**
+     * Permissions is a list of service methods this token can be used for
+     *
+     * @generated from field: repeated api.v1.MethodPermission permissions = 3;
+     */
+    permissions: MethodPermission[];
+    /**
+     * ProjectRoles associates a project id with the corresponding role of the token owner
+     *
+     * @generated from field: map<string, api.v1.ProjectRole> project_roles = 4;
+     */
+    projectRoles: {
+        [key: string]: ProjectRole;
+    };
+    /**
+     * TenantRoles associates a tenant id with the corresponding role of the token owner
+     *
+     * @generated from field: map<string, api.v1.TenantRole> tenant_roles = 5;
+     */
+    tenantRoles: {
+        [key: string]: TenantRole;
+    };
+    /**
+     * AdminRole defines the admin role of the token owner
+     *
+     * @generated from field: optional api.v1.AdminRole admin_role = 6;
+     */
+    adminRole?: AdminRole;
+    constructor(data?: PartialMessage<TokenServiceUpdateResponse>);
+    static readonly runtime: typeof proto3;
+    static readonly typeName = "api.v1.TokenServiceUpdateResponse";
+    static readonly fields: FieldList;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): TokenServiceUpdateResponse;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): TokenServiceUpdateResponse;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): TokenServiceUpdateResponse;
+    static equals(a: TokenServiceUpdateResponse | PlainMessage<TokenServiceUpdateResponse> | undefined, b: TokenServiceUpdateResponse | PlainMessage<TokenServiceUpdateResponse> | undefined): boolean;
+}
