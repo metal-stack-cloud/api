@@ -137,6 +137,12 @@ export class Volume extends Message {
          * @generated from field: string cluster_name = 22;
          */
         this.clusterName = "";
+        /**
+         * ClusterID if set points to the cluster this volume is attached to
+         *
+         * @generated from field: string cluster_id = 23;
+         */
+        this.clusterId = "";
         proto3.util.initPartial(data, this);
     }
     static fromBinary(bytes, options) {
@@ -177,6 +183,7 @@ Volume.fields = proto3.util.newFieldList(() => [
     { no: 20, name: "logical_used_storage", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
     { no: 21, name: "statistics", kind: "message", T: VolumeStatistics },
     { no: 22, name: "cluster_name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 23, name: "cluster_id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
 ]);
 /**
  * VolumeStatistics are all detailed statistics of a volume

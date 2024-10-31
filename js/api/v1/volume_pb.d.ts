@@ -138,6 +138,12 @@ export declare class Volume extends Message<Volume> {
      * @generated from field: string cluster_name = 22;
      */
     clusterName: string;
+    /**
+     * ClusterID if set points to the cluster this volume is attached to
+     *
+     * @generated from field: string cluster_id = 23;
+     */
+    clusterId: string;
     constructor(data?: PartialMessage<Volume>);
     static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.Volume";

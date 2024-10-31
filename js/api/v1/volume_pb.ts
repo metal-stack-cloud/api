@@ -166,6 +166,13 @@ export class Volume extends Message<Volume> {
    */
   clusterName = "";
 
+  /**
+   * ClusterID if set points to the cluster this volume is attached to
+   *
+   * @generated from field: string cluster_id = 23;
+   */
+  clusterId = "";
+
   constructor(data?: PartialMessage<Volume>) {
     super();
     proto3.util.initPartial(data, this);
@@ -196,6 +203,7 @@ export class Volume extends Message<Volume> {
     { no: 20, name: "logical_used_storage", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
     { no: 21, name: "statistics", kind: "message", T: VolumeStatistics },
     { no: 22, name: "cluster_name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 23, name: "cluster_id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Volume {
