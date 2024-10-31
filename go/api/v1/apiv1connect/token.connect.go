@@ -33,6 +33,8 @@ const (
 // reflection-formatted method names, remove the leading slash and convert the remaining slash to a
 // period.
 const (
+	// TokenServiceGetProcedure is the fully-qualified name of the TokenService's Get RPC.
+	TokenServiceGetProcedure = "/api.v1.TokenService/Get"
 	// TokenServiceCreateProcedure is the fully-qualified name of the TokenService's Create RPC.
 	TokenServiceCreateProcedure = "/api.v1.TokenService/Create"
 	// TokenServiceUpdateProcedure is the fully-qualified name of the TokenService's Update RPC.
@@ -46,6 +48,7 @@ const (
 // These variables are the protoreflect.Descriptor objects for the RPCs defined in this package.
 var (
 	tokenServiceServiceDescriptor      = v1.File_api_v1_token_proto.Services().ByName("TokenService")
+	tokenServiceGetMethodDescriptor    = tokenServiceServiceDescriptor.Methods().ByName("Get")
 	tokenServiceCreateMethodDescriptor = tokenServiceServiceDescriptor.Methods().ByName("Create")
 	tokenServiceUpdateMethodDescriptor = tokenServiceServiceDescriptor.Methods().ByName("Update")
 	tokenServiceListMethodDescriptor   = tokenServiceServiceDescriptor.Methods().ByName("List")
@@ -54,6 +57,8 @@ var (
 
 // TokenServiceClient is a client for the api.v1.TokenService service.
 type TokenServiceClient interface {
+	// Get a token
+	Get(context.Context, *connect.Request[v1.TokenServiceGetRequest]) (*connect.Response[v1.TokenServiceGetResponse], error)
 	// Create a token to authenticate against the platform, the secret will be only visible in the response
 	Create(context.Context, *connect.Request[v1.TokenServiceCreateRequest]) (*connect.Response[v1.TokenServiceCreateResponse], error)
 	// Update a token
@@ -74,6 +79,12 @@ type TokenServiceClient interface {
 func NewTokenServiceClient(httpClient connect.HTTPClient, baseURL string, opts ...connect.ClientOption) TokenServiceClient {
 	baseURL = strings.TrimRight(baseURL, "/")
 	return &tokenServiceClient{
+		get: connect.NewClient[v1.TokenServiceGetRequest, v1.TokenServiceGetResponse](
+			httpClient,
+			baseURL+TokenServiceGetProcedure,
+			connect.WithSchema(tokenServiceGetMethodDescriptor),
+			connect.WithClientOptions(opts...),
+		),
 		create: connect.NewClient[v1.TokenServiceCreateRequest, v1.TokenServiceCreateResponse](
 			httpClient,
 			baseURL+TokenServiceCreateProcedure,
@@ -103,10 +114,16 @@ func NewTokenServiceClient(httpClient connect.HTTPClient, baseURL string, opts .
 
 // tokenServiceClient implements TokenServiceClient.
 type tokenServiceClient struct {
+	get    *connect.Client[v1.TokenServiceGetRequest, v1.TokenServiceGetResponse]
 	create *connect.Client[v1.TokenServiceCreateRequest, v1.TokenServiceCreateResponse]
 	update *connect.Client[v1.TokenServiceUpdateRequest, v1.TokenServiceUpdateResponse]
 	list   *connect.Client[v1.TokenServiceListRequest, v1.TokenServiceListResponse]
 	revoke *connect.Client[v1.TokenServiceRevokeRequest, v1.TokenServiceRevokeResponse]
+}
+
+// Get calls api.v1.TokenService.Get.
+func (c *tokenServiceClient) Get(ctx context.Context, req *connect.Request[v1.TokenServiceGetRequest]) (*connect.Response[v1.TokenServiceGetResponse], error) {
+	return c.get.CallUnary(ctx, req)
 }
 
 // Create calls api.v1.TokenService.Create.
@@ -131,6 +148,8 @@ func (c *tokenServiceClient) Revoke(ctx context.Context, req *connect.Request[v1
 
 // TokenServiceHandler is an implementation of the api.v1.TokenService service.
 type TokenServiceHandler interface {
+	// Get a token
+	Get(context.Context, *connect.Request[v1.TokenServiceGetRequest]) (*connect.Response[v1.TokenServiceGetResponse], error)
 	// Create a token to authenticate against the platform, the secret will be only visible in the response
 	Create(context.Context, *connect.Request[v1.TokenServiceCreateRequest]) (*connect.Response[v1.TokenServiceCreateResponse], error)
 	// Update a token
@@ -147,6 +166,12 @@ type TokenServiceHandler interface {
 // By default, handlers support the Connect, gRPC, and gRPC-Web protocols with the binary Protobuf
 // and JSON codecs. They also support gzip compression.
 func NewTokenServiceHandler(svc TokenServiceHandler, opts ...connect.HandlerOption) (string, http.Handler) {
+	tokenServiceGetHandler := connect.NewUnaryHandler(
+		TokenServiceGetProcedure,
+		svc.Get,
+		connect.WithSchema(tokenServiceGetMethodDescriptor),
+		connect.WithHandlerOptions(opts...),
+	)
 	tokenServiceCreateHandler := connect.NewUnaryHandler(
 		TokenServiceCreateProcedure,
 		svc.Create,
@@ -173,6 +198,8 @@ func NewTokenServiceHandler(svc TokenServiceHandler, opts ...connect.HandlerOpti
 	)
 	return "/api.v1.TokenService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
+		case TokenServiceGetProcedure:
+			tokenServiceGetHandler.ServeHTTP(w, r)
 		case TokenServiceCreateProcedure:
 			tokenServiceCreateHandler.ServeHTTP(w, r)
 		case TokenServiceUpdateProcedure:
@@ -189,6 +216,10 @@ func NewTokenServiceHandler(svc TokenServiceHandler, opts ...connect.HandlerOpti
 
 // UnimplementedTokenServiceHandler returns CodeUnimplemented from all methods.
 type UnimplementedTokenServiceHandler struct{}
+
+func (UnimplementedTokenServiceHandler) Get(context.Context, *connect.Request[v1.TokenServiceGetRequest]) (*connect.Response[v1.TokenServiceGetResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("api.v1.TokenService.Get is not implemented"))
+}
 
 func (UnimplementedTokenServiceHandler) Create(context.Context, *connect.Request[v1.TokenServiceCreateRequest]) (*connect.Response[v1.TokenServiceCreateResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("api.v1.TokenService.Create is not implemented"))

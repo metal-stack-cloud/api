@@ -10269,6 +10269,54 @@
           ]
         },
         {
+          "name": "TokenServiceGetRequest",
+          "longName": "TokenServiceGetRequest",
+          "fullName": "api.v1.TokenServiceGetRequest",
+          "description": "TokenServiceGetRequest is the request payload of a token get request",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "uuid",
+              "description": "Uuid of the token to get",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "TokenServiceGetResponse",
+          "longName": "TokenServiceGetResponse",
+          "fullName": "api.v1.TokenServiceGetResponse",
+          "description": "TokenServiceGetResponse is the response payload of a token get request",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "token",
+              "description": "Token is the token",
+              "label": "",
+              "type": "Token",
+              "longType": "Token",
+              "fullType": "api.v1.Token",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
           "name": "TokenServiceListRequest",
           "longName": "TokenServiceListRequest",
           "fullName": "api.v1.TokenServiceListRequest",
@@ -10345,7 +10393,7 @@
           "description": "TokenServiceUpdateRequest is the request payload of a token update request",
           "hasExtensions": false,
           "hasFields": true,
-          "hasOneofs": false,
+          "hasOneofs": true,
           "extensions": [],
           "fields": [
             {
@@ -10355,30 +10403,6 @@
               "type": "string",
               "longType": "string",
               "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            }
-          ]
-        },
-        {
-          "name": "TokenServiceUpdateResponse",
-          "longName": "TokenServiceUpdateResponse",
-          "fullName": "api.v1.TokenServiceUpdateResponse",
-          "description": "TokenServiceUpdateResponse is the response payload of a token update request",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": true,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "token",
-              "description": "Token is the updated token",
-              "label": "",
-              "type": "Token",
-              "longType": "Token",
-              "fullType": "api.v1.Token",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
@@ -10413,8 +10437,8 @@
               "description": "ProjectRoles associates a project id with the corresponding role of the token owner",
               "label": "repeated",
               "type": "ProjectRolesEntry",
-              "longType": "TokenServiceUpdateResponse.ProjectRolesEntry",
-              "fullType": "api.v1.TokenServiceUpdateResponse.ProjectRolesEntry",
+              "longType": "TokenServiceUpdateRequest.ProjectRolesEntry",
+              "fullType": "api.v1.TokenServiceUpdateRequest.ProjectRolesEntry",
               "ismap": true,
               "isoneof": false,
               "oneofdecl": "",
@@ -10425,8 +10449,8 @@
               "description": "TenantRoles associates a tenant id with the corresponding role of the token owner",
               "label": "repeated",
               "type": "TenantRolesEntry",
-              "longType": "TokenServiceUpdateResponse.TenantRolesEntry",
-              "fullType": "api.v1.TokenServiceUpdateResponse.TenantRolesEntry",
+              "longType": "TokenServiceUpdateRequest.TenantRolesEntry",
+              "fullType": "api.v1.TokenServiceUpdateRequest.TenantRolesEntry",
               "ismap": true,
               "isoneof": false,
               "oneofdecl": "",
@@ -10448,8 +10472,8 @@
         },
         {
           "name": "ProjectRolesEntry",
-          "longName": "TokenServiceUpdateResponse.ProjectRolesEntry",
-          "fullName": "api.v1.TokenServiceUpdateResponse.ProjectRolesEntry",
+          "longName": "TokenServiceUpdateRequest.ProjectRolesEntry",
+          "fullName": "api.v1.TokenServiceUpdateRequest.ProjectRolesEntry",
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
@@ -10484,8 +10508,8 @@
         },
         {
           "name": "TenantRolesEntry",
-          "longName": "TokenServiceUpdateResponse.TenantRolesEntry",
-          "fullName": "api.v1.TokenServiceUpdateResponse.TenantRolesEntry",
+          "longName": "TokenServiceUpdateRequest.TenantRolesEntry",
+          "fullName": "api.v1.TokenServiceUpdateRequest.TenantRolesEntry",
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
@@ -10517,6 +10541,30 @@
               "defaultValue": ""
             }
           ]
+        },
+        {
+          "name": "TokenServiceUpdateResponse",
+          "longName": "TokenServiceUpdateResponse",
+          "fullName": "api.v1.TokenServiceUpdateResponse",
+          "description": "TokenServiceUpdateResponse is the response payload of a token update request",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "token",
+              "description": "Token is the updated token",
+              "label": "",
+              "type": "Token",
+              "longType": "Token",
+              "fullType": "api.v1.Token",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
         }
       ],
       "services": [
@@ -10526,6 +10574,18 @@
           "fullName": "api.v1.TokenService",
           "description": "TokenService serves token related functions",
           "methods": [
+            {
+              "name": "Get",
+              "description": "Get a token",
+              "requestType": "TokenServiceGetRequest",
+              "requestLongType": "TokenServiceGetRequest",
+              "requestFullType": "api.v1.TokenServiceGetRequest",
+              "requestStreaming": false,
+              "responseType": "TokenServiceGetResponse",
+              "responseLongType": "TokenServiceGetResponse",
+              "responseFullType": "api.v1.TokenServiceGetResponse",
+              "responseStreaming": false
+            },
             {
               "name": "Create",
               "description": "Create a token to authenticate against the platform, the secret will be only visible in the response",

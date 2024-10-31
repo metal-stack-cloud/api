@@ -2,7 +2,7 @@
 // @generated from file api/v1/token.proto (package api.v1, syntax proto3)
 /* eslint-disable */
 // @ts-nocheck
-import { TokenServiceCreateRequest, TokenServiceCreateResponse, TokenServiceListRequest, TokenServiceListResponse, TokenServiceRevokeRequest, TokenServiceRevokeResponse, TokenServiceUpdateRequest, TokenServiceUpdateResponse } from "./token_pb.js";
+import { TokenServiceCreateRequest, TokenServiceCreateResponse, TokenServiceGetRequest, TokenServiceGetResponse, TokenServiceListRequest, TokenServiceListResponse, TokenServiceRevokeRequest, TokenServiceRevokeResponse, TokenServiceUpdateRequest, TokenServiceUpdateResponse } from "./token_pb.js";
 import { MethodKind } from "@bufbuild/protobuf";
 /**
  * TokenService serves token related functions
@@ -12,6 +12,17 @@ import { MethodKind } from "@bufbuild/protobuf";
 export const TokenService = {
     typeName: "api.v1.TokenService",
     methods: {
+        /**
+         * Get a token
+         *
+         * @generated from rpc api.v1.TokenService.Get
+         */
+        get: {
+            name: "Get",
+            I: TokenServiceGetRequest,
+            O: TokenServiceGetResponse,
+            kind: MethodKind.Unary,
+        },
         /**
          * Create a token to authenticate against the platform, the secret will be only visible in the response
          *

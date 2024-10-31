@@ -299,27 +299,6 @@ export declare class TokenServiceUpdateRequest extends Message<TokenServiceUpdat
      * @generated from field: string uuid = 1;
      */
     uuid: string;
-    constructor(data?: PartialMessage<TokenServiceUpdateRequest>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "api.v1.TokenServiceUpdateRequest";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): TokenServiceUpdateRequest;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): TokenServiceUpdateRequest;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): TokenServiceUpdateRequest;
-    static equals(a: TokenServiceUpdateRequest | PlainMessage<TokenServiceUpdateRequest> | undefined, b: TokenServiceUpdateRequest | PlainMessage<TokenServiceUpdateRequest> | undefined): boolean;
-}
-/**
- * TokenServiceUpdateResponse is the response payload of a token update request
- *
- * @generated from message api.v1.TokenServiceUpdateResponse
- */
-export declare class TokenServiceUpdateResponse extends Message<TokenServiceUpdateResponse> {
-    /**
-     * Token is the updated token
-     *
-     * @generated from field: api.v1.Token token = 1;
-     */
-    token?: Token;
     /**
      * Description is a user given description of this token.
      *
@@ -354,6 +333,27 @@ export declare class TokenServiceUpdateResponse extends Message<TokenServiceUpda
      * @generated from field: optional api.v1.AdminRole admin_role = 6;
      */
     adminRole?: AdminRole;
+    constructor(data?: PartialMessage<TokenServiceUpdateRequest>);
+    static readonly runtime: typeof proto3;
+    static readonly typeName = "api.v1.TokenServiceUpdateRequest";
+    static readonly fields: FieldList;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): TokenServiceUpdateRequest;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): TokenServiceUpdateRequest;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): TokenServiceUpdateRequest;
+    static equals(a: TokenServiceUpdateRequest | PlainMessage<TokenServiceUpdateRequest> | undefined, b: TokenServiceUpdateRequest | PlainMessage<TokenServiceUpdateRequest> | undefined): boolean;
+}
+/**
+ * TokenServiceUpdateResponse is the response payload of a token update request
+ *
+ * @generated from message api.v1.TokenServiceUpdateResponse
+ */
+export declare class TokenServiceUpdateResponse extends Message<TokenServiceUpdateResponse> {
+    /**
+     * Token is the updated token
+     *
+     * @generated from field: api.v1.Token token = 1;
+     */
+    token?: Token;
     constructor(data?: PartialMessage<TokenServiceUpdateResponse>);
     static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.TokenServiceUpdateResponse";
@@ -362,4 +362,46 @@ export declare class TokenServiceUpdateResponse extends Message<TokenServiceUpda
     static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): TokenServiceUpdateResponse;
     static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): TokenServiceUpdateResponse;
     static equals(a: TokenServiceUpdateResponse | PlainMessage<TokenServiceUpdateResponse> | undefined, b: TokenServiceUpdateResponse | PlainMessage<TokenServiceUpdateResponse> | undefined): boolean;
+}
+/**
+ * TokenServiceGetRequest is the request payload of a token get request
+ *
+ * @generated from message api.v1.TokenServiceGetRequest
+ */
+export declare class TokenServiceGetRequest extends Message<TokenServiceGetRequest> {
+    /**
+     * Uuid of the token to get
+     *
+     * @generated from field: string uuid = 1;
+     */
+    uuid: string;
+    constructor(data?: PartialMessage<TokenServiceGetRequest>);
+    static readonly runtime: typeof proto3;
+    static readonly typeName = "api.v1.TokenServiceGetRequest";
+    static readonly fields: FieldList;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): TokenServiceGetRequest;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): TokenServiceGetRequest;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): TokenServiceGetRequest;
+    static equals(a: TokenServiceGetRequest | PlainMessage<TokenServiceGetRequest> | undefined, b: TokenServiceGetRequest | PlainMessage<TokenServiceGetRequest> | undefined): boolean;
+}
+/**
+ * TokenServiceGetResponse is the response payload of a token get request
+ *
+ * @generated from message api.v1.TokenServiceGetResponse
+ */
+export declare class TokenServiceGetResponse extends Message<TokenServiceGetResponse> {
+    /**
+     * Token is the token
+     *
+     * @generated from field: api.v1.Token token = 1;
+     */
+    token?: Token;
+    constructor(data?: PartialMessage<TokenServiceGetResponse>);
+    static readonly runtime: typeof proto3;
+    static readonly typeName = "api.v1.TokenServiceGetResponse";
+    static readonly fields: FieldList;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): TokenServiceGetResponse;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): TokenServiceGetResponse;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): TokenServiceGetResponse;
+    static equals(a: TokenServiceGetResponse | PlainMessage<TokenServiceGetResponse> | undefined, b: TokenServiceGetResponse | PlainMessage<TokenServiceGetResponse> | undefined): boolean;
 }

@@ -9,6 +9,10 @@ import "google/protobuf/timestamp.proto";
 
 // TokenService serves token related functions
 service TokenService {
+  // Get a token
+  rpc Get(TokenServiceGetRequest) returns (TokenServiceGetResponse) {
+    option (visibility) = VISIBILITY_SELF;
+  }
   // Create a token to authenticate against the platform, the secret will be only visible in the response
   rpc Create(TokenServiceCreateRequest) returns (TokenServiceCreateResponse) {
     option (visibility) = VISIBILITY_SELF;
@@ -162,12 +166,6 @@ message TokenServiceRevokeResponse {}
 message TokenServiceUpdateRequest {
   // Uuid of the token to update
   string uuid = 1 [(buf.validate.field).string.uuid = true];
-}
-
-// TokenServiceUpdateResponse is the response payload of a token update request
-message TokenServiceUpdateResponse {
-  // Token is the updated token
-  Token token = 1;
   // Description is a user given description of this token.
   string description = 2 [(buf.validate.field).string = {
     min_len: 2
@@ -181,4 +179,22 @@ message TokenServiceUpdateResponse {
   map<string, TenantRole> tenant_roles = 5;
   // AdminRole defines the admin role of the token owner
   optional AdminRole admin_role = 6 [(buf.validate.field).enum.defined_only = true];
+}
+
+// TokenServiceUpdateResponse is the response payload of a token update request
+message TokenServiceUpdateResponse {
+  // Token is the updated token
+  Token token = 1;
+}
+
+// TokenServiceGetRequest is the request payload of a token get request
+message TokenServiceGetRequest {
+  // Uuid of the token to get
+  string uuid = 1 [(buf.validate.field).string.uuid = true];
+}
+
+// TokenServiceGetResponse is the response payload of a token get request
+message TokenServiceGetResponse {
+  // Token is the token
+  Token token = 1;
 }

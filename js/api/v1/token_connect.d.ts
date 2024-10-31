@@ -1,4 +1,4 @@
-import { TokenServiceCreateRequest, TokenServiceCreateResponse, TokenServiceListRequest, TokenServiceListResponse, TokenServiceRevokeRequest, TokenServiceRevokeResponse, TokenServiceUpdateRequest, TokenServiceUpdateResponse } from "./token_pb.js";
+import { TokenServiceCreateRequest, TokenServiceCreateResponse, TokenServiceGetRequest, TokenServiceGetResponse, TokenServiceListRequest, TokenServiceListResponse, TokenServiceRevokeRequest, TokenServiceRevokeResponse, TokenServiceUpdateRequest, TokenServiceUpdateResponse } from "./token_pb.js";
 import { MethodKind } from "@bufbuild/protobuf";
 /**
  * TokenService serves token related functions
@@ -8,6 +8,17 @@ import { MethodKind } from "@bufbuild/protobuf";
 export declare const TokenService: {
     readonly typeName: "api.v1.TokenService";
     readonly methods: {
+        /**
+         * Get a token
+         *
+         * @generated from rpc api.v1.TokenService.Get
+         */
+        readonly get: {
+            readonly name: "Get";
+            readonly I: typeof TokenServiceGetRequest;
+            readonly O: typeof TokenServiceGetResponse;
+            readonly kind: MethodKind.Unary;
+        };
         /**
          * Create a token to authenticate against the platform, the secret will be only visible in the response
          *
