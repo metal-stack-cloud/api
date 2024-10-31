@@ -65,24 +65,28 @@ const (
 	TenantServiceInvitesListProcedure = "/api.v1.TenantService/InvitesList"
 	// TenantServiceInviteGetProcedure is the fully-qualified name of the TenantService's InviteGet RPC.
 	TenantServiceInviteGetProcedure = "/api.v1.TenantService/InviteGet"
+	// TenantServiceRequestAdmissionProcedure is the fully-qualified name of the TenantService's
+	// RequestAdmission RPC.
+	TenantServiceRequestAdmissionProcedure = "/api.v1.TenantService/RequestAdmission"
 )
 
 // These variables are the protoreflect.Descriptor objects for the RPCs defined in this package.
 var (
-	tenantServiceServiceDescriptor              = v1.File_api_v1_tenant_proto.Services().ByName("TenantService")
-	tenantServiceCreateMethodDescriptor         = tenantServiceServiceDescriptor.Methods().ByName("Create")
-	tenantServiceCreateOrUpdateMethodDescriptor = tenantServiceServiceDescriptor.Methods().ByName("CreateOrUpdate")
-	tenantServiceListMethodDescriptor           = tenantServiceServiceDescriptor.Methods().ByName("List")
-	tenantServiceGetMethodDescriptor            = tenantServiceServiceDescriptor.Methods().ByName("Get")
-	tenantServiceUpdateMethodDescriptor         = tenantServiceServiceDescriptor.Methods().ByName("Update")
-	tenantServiceDeleteMethodDescriptor         = tenantServiceServiceDescriptor.Methods().ByName("Delete")
-	tenantServiceRemoveMemberMethodDescriptor   = tenantServiceServiceDescriptor.Methods().ByName("RemoveMember")
-	tenantServiceUpdateMemberMethodDescriptor   = tenantServiceServiceDescriptor.Methods().ByName("UpdateMember")
-	tenantServiceInviteMethodDescriptor         = tenantServiceServiceDescriptor.Methods().ByName("Invite")
-	tenantServiceInviteAcceptMethodDescriptor   = tenantServiceServiceDescriptor.Methods().ByName("InviteAccept")
-	tenantServiceInviteDeleteMethodDescriptor   = tenantServiceServiceDescriptor.Methods().ByName("InviteDelete")
-	tenantServiceInvitesListMethodDescriptor    = tenantServiceServiceDescriptor.Methods().ByName("InvitesList")
-	tenantServiceInviteGetMethodDescriptor      = tenantServiceServiceDescriptor.Methods().ByName("InviteGet")
+	tenantServiceServiceDescriptor                = v1.File_api_v1_tenant_proto.Services().ByName("TenantService")
+	tenantServiceCreateMethodDescriptor           = tenantServiceServiceDescriptor.Methods().ByName("Create")
+	tenantServiceCreateOrUpdateMethodDescriptor   = tenantServiceServiceDescriptor.Methods().ByName("CreateOrUpdate")
+	tenantServiceListMethodDescriptor             = tenantServiceServiceDescriptor.Methods().ByName("List")
+	tenantServiceGetMethodDescriptor              = tenantServiceServiceDescriptor.Methods().ByName("Get")
+	tenantServiceUpdateMethodDescriptor           = tenantServiceServiceDescriptor.Methods().ByName("Update")
+	tenantServiceDeleteMethodDescriptor           = tenantServiceServiceDescriptor.Methods().ByName("Delete")
+	tenantServiceRemoveMemberMethodDescriptor     = tenantServiceServiceDescriptor.Methods().ByName("RemoveMember")
+	tenantServiceUpdateMemberMethodDescriptor     = tenantServiceServiceDescriptor.Methods().ByName("UpdateMember")
+	tenantServiceInviteMethodDescriptor           = tenantServiceServiceDescriptor.Methods().ByName("Invite")
+	tenantServiceInviteAcceptMethodDescriptor     = tenantServiceServiceDescriptor.Methods().ByName("InviteAccept")
+	tenantServiceInviteDeleteMethodDescriptor     = tenantServiceServiceDescriptor.Methods().ByName("InviteDelete")
+	tenantServiceInvitesListMethodDescriptor      = tenantServiceServiceDescriptor.Methods().ByName("InvitesList")
+	tenantServiceInviteGetMethodDescriptor        = tenantServiceServiceDescriptor.Methods().ByName("InviteGet")
+	tenantServiceRequestAdmissionMethodDescriptor = tenantServiceServiceDescriptor.Methods().ByName("RequestAdmission")
 )
 
 // TenantServiceClient is a client for the api.v1.TenantService service.
@@ -114,6 +118,8 @@ type TenantServiceClient interface {
 	InvitesList(context.Context, *connect.Request[v1.TenantServiceInvitesListRequest]) (*connect.Response[v1.TenantServiceInvitesListResponse], error)
 	// InviteGet get an invite
 	InviteGet(context.Context, *connect.Request[v1.TenantServiceInviteGetRequest]) (*connect.Response[v1.TenantServiceInviteGetResponse], error)
+	// RequestAdmission requests admission for a tenant to use the service
+	RequestAdmission(context.Context, *connect.Request[v1.TenantServiceRequestAdmissionRequest]) (*connect.Response[v1.TenantServiceRequestAdmissionResponse], error)
 }
 
 // NewTenantServiceClient constructs a client for the api.v1.TenantService service. By default, it
@@ -204,24 +210,31 @@ func NewTenantServiceClient(httpClient connect.HTTPClient, baseURL string, opts 
 			connect.WithSchema(tenantServiceInviteGetMethodDescriptor),
 			connect.WithClientOptions(opts...),
 		),
+		requestAdmission: connect.NewClient[v1.TenantServiceRequestAdmissionRequest, v1.TenantServiceRequestAdmissionResponse](
+			httpClient,
+			baseURL+TenantServiceRequestAdmissionProcedure,
+			connect.WithSchema(tenantServiceRequestAdmissionMethodDescriptor),
+			connect.WithClientOptions(opts...),
+		),
 	}
 }
 
 // tenantServiceClient implements TenantServiceClient.
 type tenantServiceClient struct {
-	create         *connect.Client[v1.TenantServiceCreateRequest, v1.TenantServiceCreateResponse]
-	createOrUpdate *connect.Client[v1.TenantServiceCreateOrUpdateRequest, v1.TenantServiceCreateOrUpdateResponse]
-	list           *connect.Client[v1.TenantServiceListRequest, v1.TenantServiceListResponse]
-	get            *connect.Client[v1.TenantServiceGetRequest, v1.TenantServiceGetResponse]
-	update         *connect.Client[v1.TenantServiceUpdateRequest, v1.TenantServiceUpdateResponse]
-	delete         *connect.Client[v1.TenantServiceDeleteRequest, v1.TenantServiceDeleteResponse]
-	removeMember   *connect.Client[v1.TenantServiceRemoveMemberRequest, v1.TenantServiceRemoveMemberResponse]
-	updateMember   *connect.Client[v1.TenantServiceUpdateMemberRequest, v1.TenantServiceUpdateMemberResponse]
-	invite         *connect.Client[v1.TenantServiceInviteRequest, v1.TenantServiceInviteResponse]
-	inviteAccept   *connect.Client[v1.TenantServiceInviteAcceptRequest, v1.TenantServiceInviteAcceptResponse]
-	inviteDelete   *connect.Client[v1.TenantServiceInviteDeleteRequest, v1.TenantServiceInviteDeleteResponse]
-	invitesList    *connect.Client[v1.TenantServiceInvitesListRequest, v1.TenantServiceInvitesListResponse]
-	inviteGet      *connect.Client[v1.TenantServiceInviteGetRequest, v1.TenantServiceInviteGetResponse]
+	create           *connect.Client[v1.TenantServiceCreateRequest, v1.TenantServiceCreateResponse]
+	createOrUpdate   *connect.Client[v1.TenantServiceCreateOrUpdateRequest, v1.TenantServiceCreateOrUpdateResponse]
+	list             *connect.Client[v1.TenantServiceListRequest, v1.TenantServiceListResponse]
+	get              *connect.Client[v1.TenantServiceGetRequest, v1.TenantServiceGetResponse]
+	update           *connect.Client[v1.TenantServiceUpdateRequest, v1.TenantServiceUpdateResponse]
+	delete           *connect.Client[v1.TenantServiceDeleteRequest, v1.TenantServiceDeleteResponse]
+	removeMember     *connect.Client[v1.TenantServiceRemoveMemberRequest, v1.TenantServiceRemoveMemberResponse]
+	updateMember     *connect.Client[v1.TenantServiceUpdateMemberRequest, v1.TenantServiceUpdateMemberResponse]
+	invite           *connect.Client[v1.TenantServiceInviteRequest, v1.TenantServiceInviteResponse]
+	inviteAccept     *connect.Client[v1.TenantServiceInviteAcceptRequest, v1.TenantServiceInviteAcceptResponse]
+	inviteDelete     *connect.Client[v1.TenantServiceInviteDeleteRequest, v1.TenantServiceInviteDeleteResponse]
+	invitesList      *connect.Client[v1.TenantServiceInvitesListRequest, v1.TenantServiceInvitesListResponse]
+	inviteGet        *connect.Client[v1.TenantServiceInviteGetRequest, v1.TenantServiceInviteGetResponse]
+	requestAdmission *connect.Client[v1.TenantServiceRequestAdmissionRequest, v1.TenantServiceRequestAdmissionResponse]
 }
 
 // Create calls api.v1.TenantService.Create.
@@ -289,6 +302,11 @@ func (c *tenantServiceClient) InviteGet(ctx context.Context, req *connect.Reques
 	return c.inviteGet.CallUnary(ctx, req)
 }
 
+// RequestAdmission calls api.v1.TenantService.RequestAdmission.
+func (c *tenantServiceClient) RequestAdmission(ctx context.Context, req *connect.Request[v1.TenantServiceRequestAdmissionRequest]) (*connect.Response[v1.TenantServiceRequestAdmissionResponse], error) {
+	return c.requestAdmission.CallUnary(ctx, req)
+}
+
 // TenantServiceHandler is an implementation of the api.v1.TenantService service.
 type TenantServiceHandler interface {
 	// Create a tenant
@@ -318,6 +336,8 @@ type TenantServiceHandler interface {
 	InvitesList(context.Context, *connect.Request[v1.TenantServiceInvitesListRequest]) (*connect.Response[v1.TenantServiceInvitesListResponse], error)
 	// InviteGet get an invite
 	InviteGet(context.Context, *connect.Request[v1.TenantServiceInviteGetRequest]) (*connect.Response[v1.TenantServiceInviteGetResponse], error)
+	// RequestAdmission requests admission for a tenant to use the service
+	RequestAdmission(context.Context, *connect.Request[v1.TenantServiceRequestAdmissionRequest]) (*connect.Response[v1.TenantServiceRequestAdmissionResponse], error)
 }
 
 // NewTenantServiceHandler builds an HTTP handler from the service implementation. It returns the
@@ -404,6 +424,12 @@ func NewTenantServiceHandler(svc TenantServiceHandler, opts ...connect.HandlerOp
 		connect.WithSchema(tenantServiceInviteGetMethodDescriptor),
 		connect.WithHandlerOptions(opts...),
 	)
+	tenantServiceRequestAdmissionHandler := connect.NewUnaryHandler(
+		TenantServiceRequestAdmissionProcedure,
+		svc.RequestAdmission,
+		connect.WithSchema(tenantServiceRequestAdmissionMethodDescriptor),
+		connect.WithHandlerOptions(opts...),
+	)
 	return "/api.v1.TenantService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
 		case TenantServiceCreateProcedure:
@@ -432,6 +458,8 @@ func NewTenantServiceHandler(svc TenantServiceHandler, opts ...connect.HandlerOp
 			tenantServiceInvitesListHandler.ServeHTTP(w, r)
 		case TenantServiceInviteGetProcedure:
 			tenantServiceInviteGetHandler.ServeHTTP(w, r)
+		case TenantServiceRequestAdmissionProcedure:
+			tenantServiceRequestAdmissionHandler.ServeHTTP(w, r)
 		default:
 			http.NotFound(w, r)
 		}
@@ -491,4 +519,8 @@ func (UnimplementedTenantServiceHandler) InvitesList(context.Context, *connect.R
 
 func (UnimplementedTenantServiceHandler) InviteGet(context.Context, *connect.Request[v1.TenantServiceInviteGetRequest]) (*connect.Response[v1.TenantServiceInviteGetResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("api.v1.TenantService.InviteGet is not implemented"))
+}
+
+func (UnimplementedTenantServiceHandler) RequestAdmission(context.Context, *connect.Request[v1.TenantServiceRequestAdmissionRequest]) (*connect.Response[v1.TenantServiceRequestAdmissionResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("api.v1.TenantService.RequestAdmission is not implemented"))
 }
