@@ -144,6 +144,12 @@ export declare class Volume extends Message<Volume> {
      * @generated from field: string cluster_id = 23;
      */
     clusterId: string;
+    /**
+     * Labels stored in the volume
+     *
+     * @generated from field: repeated api.v1.VolumeLabel labels = 24;
+     */
+    labels: VolumeLabel[];
     constructor(data?: PartialMessage<Volume>);
     static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.Volume";
@@ -152,6 +158,35 @@ export declare class Volume extends Message<Volume> {
     static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): Volume;
     static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): Volume;
     static equals(a: Volume | PlainMessage<Volume> | undefined, b: Volume | PlainMessage<Volume> | undefined): boolean;
+}
+/**
+ * label-key and label-value length must be between 1 and 253 characters and
+ * may contain any of: alphanumeric characters (a-z, A-Z, 0-9), hyphen (-),
+ * underscore (_) and dot (.).
+ *
+ * @generated from message api.v1.VolumeLabel
+ */
+export declare class VolumeLabel extends Message<VolumeLabel> {
+    /**
+     * key under which the value is stored
+     *
+     * @generated from field: string key = 1;
+     */
+    key: string;
+    /**
+     * value of this label
+     *
+     * @generated from field: string value = 2;
+     */
+    value: string;
+    constructor(data?: PartialMessage<VolumeLabel>);
+    static readonly runtime: typeof proto3;
+    static readonly typeName = "api.v1.VolumeLabel";
+    static readonly fields: FieldList;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): VolumeLabel;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): VolumeLabel;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): VolumeLabel;
+    static equals(a: VolumeLabel | PlainMessage<VolumeLabel> | undefined, b: VolumeLabel | PlainMessage<VolumeLabel> | undefined): boolean;
 }
 /**
  * VolumeStatistics are all detailed statistics of a volume
@@ -516,6 +551,39 @@ export declare class VolumeServiceDeleteRequest extends Message<VolumeServiceDel
     static equals(a: VolumeServiceDeleteRequest | PlainMessage<VolumeServiceDeleteRequest> | undefined, b: VolumeServiceDeleteRequest | PlainMessage<VolumeServiceDeleteRequest> | undefined): boolean;
 }
 /**
+ * VolumeServiceUpdateRequest is the request payload of a volume update request
+ *
+ * @generated from message api.v1.VolumeServiceUpdateRequest
+ */
+export declare class VolumeServiceUpdateRequest extends Message<VolumeServiceUpdateRequest> {
+    /**
+     * Uuid of the volume
+     *
+     * @generated from field: string uuid = 1;
+     */
+    uuid: string;
+    /**
+     * Project of the volume
+     *
+     * @generated from field: string project = 2;
+     */
+    project: string;
+    /**
+     * Labels stored in the volume
+     *
+     * @generated from field: repeated api.v1.VolumeLabel labels = 24;
+     */
+    labels: VolumeLabel[];
+    constructor(data?: PartialMessage<VolumeServiceUpdateRequest>);
+    static readonly runtime: typeof proto3;
+    static readonly typeName = "api.v1.VolumeServiceUpdateRequest";
+    static readonly fields: FieldList;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): VolumeServiceUpdateRequest;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): VolumeServiceUpdateRequest;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): VolumeServiceUpdateRequest;
+    static equals(a: VolumeServiceUpdateRequest | PlainMessage<VolumeServiceUpdateRequest> | undefined, b: VolumeServiceUpdateRequest | PlainMessage<VolumeServiceUpdateRequest> | undefined): boolean;
+}
+/**
  * SnapshotServiceGetRequest is the request payload of a snapshot list request
  *
  * @generated from message api.v1.SnapshotServiceGetRequest
@@ -670,6 +738,27 @@ export declare class VolumeServiceDeleteResponse extends Message<VolumeServiceDe
     static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): VolumeServiceDeleteResponse;
     static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): VolumeServiceDeleteResponse;
     static equals(a: VolumeServiceDeleteResponse | PlainMessage<VolumeServiceDeleteResponse> | undefined, b: VolumeServiceDeleteResponse | PlainMessage<VolumeServiceDeleteResponse> | undefined): boolean;
+}
+/**
+ * VolumeServiceUpdateResponse is the response payload of a volume update request
+ *
+ * @generated from message api.v1.VolumeServiceUpdateResponse
+ */
+export declare class VolumeServiceUpdateResponse extends Message<VolumeServiceUpdateResponse> {
+    /**
+     * Volume the volume
+     *
+     * @generated from field: api.v1.Volume volume = 1;
+     */
+    volume?: Volume;
+    constructor(data?: PartialMessage<VolumeServiceUpdateResponse>);
+    static readonly runtime: typeof proto3;
+    static readonly typeName = "api.v1.VolumeServiceUpdateResponse";
+    static readonly fields: FieldList;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): VolumeServiceUpdateResponse;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): VolumeServiceUpdateResponse;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): VolumeServiceUpdateResponse;
+    static equals(a: VolumeServiceUpdateResponse | PlainMessage<VolumeServiceUpdateResponse> | undefined, b: VolumeServiceUpdateResponse | PlainMessage<VolumeServiceUpdateResponse> | undefined): boolean;
 }
 /**
  * SnapshotServiceGetResponse is the response payload of a snapshot get request

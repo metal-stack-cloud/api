@@ -143,6 +143,12 @@ export class Volume extends Message {
          * @generated from field: string cluster_id = 23;
          */
         this.clusterId = "";
+        /**
+         * Labels stored in the volume
+         *
+         * @generated from field: repeated api.v1.VolumeLabel labels = 24;
+         */
+        this.labels = [];
         proto3.util.initPartial(data, this);
     }
     static fromBinary(bytes, options) {
@@ -184,6 +190,50 @@ Volume.fields = proto3.util.newFieldList(() => [
     { no: 21, name: "statistics", kind: "message", T: VolumeStatistics },
     { no: 22, name: "cluster_name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 23, name: "cluster_id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 24, name: "labels", kind: "message", T: VolumeLabel, repeated: true },
+]);
+/**
+ * label-key and label-value length must be between 1 and 253 characters and
+ * may contain any of: alphanumeric characters (a-z, A-Z, 0-9), hyphen (-),
+ * underscore (_) and dot (.).
+ *
+ * @generated from message api.v1.VolumeLabel
+ */
+export class VolumeLabel extends Message {
+    constructor(data) {
+        super();
+        /**
+         * key under which the value is stored
+         *
+         * @generated from field: string key = 1;
+         */
+        this.key = "";
+        /**
+         * value of this label
+         *
+         * @generated from field: string value = 2;
+         */
+        this.value = "";
+        proto3.util.initPartial(data, this);
+    }
+    static fromBinary(bytes, options) {
+        return new VolumeLabel().fromBinary(bytes, options);
+    }
+    static fromJson(jsonValue, options) {
+        return new VolumeLabel().fromJson(jsonValue, options);
+    }
+    static fromJsonString(jsonString, options) {
+        return new VolumeLabel().fromJsonString(jsonString, options);
+    }
+    static equals(a, b) {
+        return proto3.util.equals(VolumeLabel, a, b);
+    }
+}
+VolumeLabel.runtime = proto3;
+VolumeLabel.typeName = "api.v1.VolumeLabel";
+VolumeLabel.fields = proto3.util.newFieldList(() => [
+    { no: 1, name: "key", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "value", kind: "scalar", T: 9 /* ScalarType.STRING */ },
 ]);
 /**
  * VolumeStatistics are all detailed statistics of a volume
@@ -624,6 +674,54 @@ VolumeServiceDeleteRequest.fields = proto3.util.newFieldList(() => [
     { no: 2, name: "project", kind: "scalar", T: 9 /* ScalarType.STRING */ },
 ]);
 /**
+ * VolumeServiceUpdateRequest is the request payload of a volume update request
+ *
+ * @generated from message api.v1.VolumeServiceUpdateRequest
+ */
+export class VolumeServiceUpdateRequest extends Message {
+    constructor(data) {
+        super();
+        /**
+         * Uuid of the volume
+         *
+         * @generated from field: string uuid = 1;
+         */
+        this.uuid = "";
+        /**
+         * Project of the volume
+         *
+         * @generated from field: string project = 2;
+         */
+        this.project = "";
+        /**
+         * Labels stored in the volume
+         *
+         * @generated from field: repeated api.v1.VolumeLabel labels = 24;
+         */
+        this.labels = [];
+        proto3.util.initPartial(data, this);
+    }
+    static fromBinary(bytes, options) {
+        return new VolumeServiceUpdateRequest().fromBinary(bytes, options);
+    }
+    static fromJson(jsonValue, options) {
+        return new VolumeServiceUpdateRequest().fromJson(jsonValue, options);
+    }
+    static fromJsonString(jsonString, options) {
+        return new VolumeServiceUpdateRequest().fromJsonString(jsonString, options);
+    }
+    static equals(a, b) {
+        return proto3.util.equals(VolumeServiceUpdateRequest, a, b);
+    }
+}
+VolumeServiceUpdateRequest.runtime = proto3;
+VolumeServiceUpdateRequest.typeName = "api.v1.VolumeServiceUpdateRequest";
+VolumeServiceUpdateRequest.fields = proto3.util.newFieldList(() => [
+    { no: 1, name: "uuid", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "project", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 24, name: "labels", kind: "message", T: VolumeLabel, repeated: true },
+]);
+/**
  * SnapshotServiceGetRequest is the request payload of a snapshot list request
  *
  * @generated from message api.v1.SnapshotServiceGetRequest
@@ -830,6 +928,34 @@ export class VolumeServiceDeleteResponse extends Message {
 VolumeServiceDeleteResponse.runtime = proto3;
 VolumeServiceDeleteResponse.typeName = "api.v1.VolumeServiceDeleteResponse";
 VolumeServiceDeleteResponse.fields = proto3.util.newFieldList(() => [
+    { no: 1, name: "volume", kind: "message", T: Volume },
+]);
+/**
+ * VolumeServiceUpdateResponse is the response payload of a volume update request
+ *
+ * @generated from message api.v1.VolumeServiceUpdateResponse
+ */
+export class VolumeServiceUpdateResponse extends Message {
+    constructor(data) {
+        super();
+        proto3.util.initPartial(data, this);
+    }
+    static fromBinary(bytes, options) {
+        return new VolumeServiceUpdateResponse().fromBinary(bytes, options);
+    }
+    static fromJson(jsonValue, options) {
+        return new VolumeServiceUpdateResponse().fromJson(jsonValue, options);
+    }
+    static fromJsonString(jsonString, options) {
+        return new VolumeServiceUpdateResponse().fromJsonString(jsonString, options);
+    }
+    static equals(a, b) {
+        return proto3.util.equals(VolumeServiceUpdateResponse, a, b);
+    }
+}
+VolumeServiceUpdateResponse.runtime = proto3;
+VolumeServiceUpdateResponse.typeName = "api.v1.VolumeServiceUpdateResponse";
+VolumeServiceUpdateResponse.fields = proto3.util.newFieldList(() => [
     { no: 1, name: "volume", kind: "message", T: Volume },
 ]);
 /**
