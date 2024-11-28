@@ -238,7 +238,6 @@ func GetServicePermissions() *ServicePermissions {
 			"/api.v1.SnapshotService/Get":                   true,
 			"/api.v1.SnapshotService/List":                  true,
 			"/api.v1.TenantService/Create":                  true,
-			"/api.v1.TenantService/CreateOrUpdate":          true,
 			"/api.v1.TenantService/Delete":                  true,
 			"/api.v1.TenantService/Get":                     true,
 			"/api.v1.TenantService/Invite":                  true,
@@ -274,9 +273,6 @@ func GetServicePermissions() *ServicePermissions {
 				"/grpc.reflection.v1alpha.ServerReflection/ServerReflectionInfo": true,
 				"/status.v1.MessageService/List":                                 true,
 				"/status.v1.StatusService/Get":                                   true,
-			},
-			Private: map[string]bool{
-				"/api.v1.TenantService/CreateOrUpdate": true,
 			},
 			Self: map[string]bool{
 				"/api.v1.MethodService/TokenScopedList": true,
@@ -364,7 +360,6 @@ func GetServicePermissions() *ServicePermissions {
 			"/api.v1.SnapshotService/Get":                   false,
 			"/api.v1.SnapshotService/List":                  false,
 			"/api.v1.TenantService/Create":                  true,
-			"/api.v1.TenantService/CreateOrUpdate":          true,
 			"/api.v1.TenantService/Delete":                  true,
 			"/api.v1.TenantService/Get":                     false,
 			"/api.v1.TenantService/Invite":                  true,

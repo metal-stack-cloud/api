@@ -112,8 +112,7 @@ func servicePermissions(root string) (*permissions.ServicePermissions, error) {
 				serverReflectionInfov1alpha1: true,
 				serverReflectionInfo:         true,
 			},
-			Private: map[string]bool{},
-			Self:    map[string]bool{},
+			Self: map[string]bool{},
 		}
 		chargeable = permissions.Chargeable{}
 		auditable  = permissions.Auditable{}
@@ -177,8 +176,6 @@ func servicePermissions(root string) (*permissions.ServicePermissions, error) {
 						// Visibility
 						case v1.Visibility_VISIBILITY_PUBLIC.String():
 							visibility.Public[methodName] = true
-						case v1.Visibility_VISIBILITY_PRIVATE.String():
-							visibility.Private[methodName] = true
 						case v1.Visibility_VISIBILITY_SELF.String():
 							visibility.Self[methodName] = true
 						case v1.Visibility_VISIBILITY_UNSPECIFIED.String():

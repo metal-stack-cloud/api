@@ -3,7 +3,7 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import { TenantServiceCreateOrUpdateRequest, TenantServiceCreateOrUpdateResponse, TenantServiceCreateRequest, TenantServiceCreateResponse, TenantServiceDeleteRequest, TenantServiceDeleteResponse, TenantServiceGetRequest, TenantServiceGetResponse, TenantServiceInviteAcceptRequest, TenantServiceInviteAcceptResponse, TenantServiceInviteDeleteRequest, TenantServiceInviteDeleteResponse, TenantServiceInviteGetRequest, TenantServiceInviteGetResponse, TenantServiceInviteRequest, TenantServiceInviteResponse, TenantServiceInvitesListRequest, TenantServiceInvitesListResponse, TenantServiceListRequest, TenantServiceListResponse, TenantServiceRemoveMemberRequest, TenantServiceRemoveMemberResponse, TenantServiceUpdateMemberRequest, TenantServiceUpdateMemberResponse, TenantServiceUpdateRequest, TenantServiceUpdateResponse } from "./tenant_pb.js";
+import { TenantServiceCreateRequest, TenantServiceCreateResponse, TenantServiceDeleteRequest, TenantServiceDeleteResponse, TenantServiceGetRequest, TenantServiceGetResponse, TenantServiceInviteAcceptRequest, TenantServiceInviteAcceptResponse, TenantServiceInviteDeleteRequest, TenantServiceInviteDeleteResponse, TenantServiceInviteGetRequest, TenantServiceInviteGetResponse, TenantServiceInviteRequest, TenantServiceInviteResponse, TenantServiceInvitesListRequest, TenantServiceInvitesListResponse, TenantServiceListRequest, TenantServiceListResponse, TenantServiceRemoveMemberRequest, TenantServiceRemoveMemberResponse, TenantServiceUpdateMemberRequest, TenantServiceUpdateMemberResponse, TenantServiceUpdateRequest, TenantServiceUpdateResponse } from "./tenant_pb.js";
 import { MethodKind } from "@bufbuild/protobuf";
 
 /**
@@ -23,18 +23,6 @@ export const TenantService = {
       name: "Create",
       I: TenantServiceCreateRequest,
       O: TenantServiceCreateResponse,
-      kind: MethodKind.Unary,
-    },
-    /**
-     * CreateOrUpdate should only be used from within the application
-     * will check if tenant already exists and updates if necessary, otherwise create a new tenant
-     *
-     * @generated from rpc api.v1.TenantService.CreateOrUpdate
-     */
-    createOrUpdate: {
-      name: "CreateOrUpdate",
-      I: TenantServiceCreateOrUpdateRequest,
-      O: TenantServiceCreateOrUpdateResponse,
       kind: MethodKind.Unary,
     },
     /**
