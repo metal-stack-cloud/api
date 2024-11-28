@@ -112,8 +112,7 @@ func servicePermissions(root string) (*permissions.ServicePermissions, error) {
 				serverReflectionInfov1alpha1: true,
 				serverReflectionInfo:         true,
 			},
-			Private: map[string]bool{},
-			Self:    map[string]bool{},
+			Self: map[string]bool{},
 		}
 		chargeable = permissions.Chargeable{}
 		auditable  = permissions.Auditable{}

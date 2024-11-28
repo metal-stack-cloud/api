@@ -51,11 +51,6 @@ func GetServicePermissions() *ServicePermissions {
 	"{{ $key }}": {{ $value }} ,
 {{- end }}
 			},
-			Private: map[string]bool{
-{{- range $key, $value := .Visibility.Private }}
-	"{{ $key }}": {{ $value }} ,
-{{- end }}
-			},
 			Self:    map[string]bool{
 {{- range $key, $value := .Visibility.Self }}
 	"{{ $key }}": {{ $value }} ,

@@ -274,7 +274,6 @@ func GetServicePermissions() *ServicePermissions {
 				"/status.v1.MessageService/List":                                 true,
 				"/status.v1.StatusService/Get":                                   true,
 			},
-			Private: map[string]bool{},
 			Self: map[string]bool{
 				"/api.v1.MethodService/TokenScopedList": true,
 				"/api.v1.ProjectService/InviteAccept":   true,
