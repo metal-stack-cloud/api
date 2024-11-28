@@ -302,9 +302,9 @@ export declare class TokenServiceUpdateRequest extends Message<TokenServiceUpdat
     /**
      * Description is a user given description of this token.
      *
-     * @generated from field: string description = 2;
+     * @generated from field: optional string description = 2;
      */
-    description: string;
+    description?: string;
     /**
      * Permissions is a list of service methods this token can be used for
      *

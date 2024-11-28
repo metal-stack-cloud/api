@@ -167,7 +167,7 @@ message TokenServiceUpdateRequest {
   // Uuid of the token to update
   string uuid = 1 [(buf.validate.field).string.uuid = true];
   // Description is a user given description of this token.
-  string description = 2 [(buf.validate.field).string = {
+  optional string description = 2 [(buf.validate.field).string = {
     min_len: 2
     max_len: 256
   }];

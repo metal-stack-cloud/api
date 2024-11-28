@@ -498,9 +498,9 @@ export class TokenServiceUpdateRequest extends Message<TokenServiceUpdateRequest
   /**
    * Description is a user given description of this token.
    *
-   * @generated from field: string description = 2;
+   * @generated from field: optional string description = 2;
    */
-  description = "";
+  description?: string;
 
   /**
    * Permissions is a list of service methods this token can be used for
@@ -539,7 +539,7 @@ export class TokenServiceUpdateRequest extends Message<TokenServiceUpdateRequest
   static readonly typeName = "api.v1.TokenServiceUpdateRequest";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
     { no: 1, name: "uuid", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 2, name: "description", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "description", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
     { no: 3, name: "permissions", kind: "message", T: MethodPermission, repeated: true },
     { no: 4, name: "project_roles", kind: "map", K: 9 /* ScalarType.STRING */, V: {kind: "enum", T: proto3.getEnumType(ProjectRole)} },
     { no: 5, name: "tenant_roles", kind: "map", K: 9 /* ScalarType.STRING */, V: {kind: "enum", T: proto3.getEnumType(TenantRole)} },

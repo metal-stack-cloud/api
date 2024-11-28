@@ -10411,13 +10411,13 @@
             {
               "name": "description",
               "description": "Description is a user given description of this token.",
-              "label": "",
+              "label": "optional",
               "type": "string",
               "longType": "string",
               "fullType": "string",
               "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
+              "isoneof": true,
+              "oneofdecl": "_description",
               "defaultValue": ""
             },
             {
