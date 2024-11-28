@@ -145,12 +145,6 @@ export declare enum Visibility {
      */
     PUBLIC = 1,
     /**
-     * VISIBILITY_PRIVATE makes this service blocked
-     *
-     * @generated from enum value: VISIBILITY_PRIVATE = 2;
-     */
-    PRIVATE = 2,
-    /**
      * VISIBILITY_SELF enable call this endpoint from the authenticated user only
      *
      * @generated from enum value: VISIBILITY_SELF = 3;

@@ -1,4 +1,4 @@
-import { TenantServiceCreateOrUpdateRequest, TenantServiceCreateOrUpdateResponse, TenantServiceCreateRequest, TenantServiceCreateResponse, TenantServiceDeleteRequest, TenantServiceDeleteResponse, TenantServiceGetRequest, TenantServiceGetResponse, TenantServiceInviteAcceptRequest, TenantServiceInviteAcceptResponse, TenantServiceInviteDeleteRequest, TenantServiceInviteDeleteResponse, TenantServiceInviteGetRequest, TenantServiceInviteGetResponse, TenantServiceInviteRequest, TenantServiceInviteResponse, TenantServiceInvitesListRequest, TenantServiceInvitesListResponse, TenantServiceListRequest, TenantServiceListResponse, TenantServiceRemoveMemberRequest, TenantServiceRemoveMemberResponse, TenantServiceUpdateMemberRequest, TenantServiceUpdateMemberResponse, TenantServiceUpdateRequest, TenantServiceUpdateResponse } from "./tenant_pb.js";
+import { TenantServiceCreateRequest, TenantServiceCreateResponse, TenantServiceDeleteRequest, TenantServiceDeleteResponse, TenantServiceGetRequest, TenantServiceGetResponse, TenantServiceInviteAcceptRequest, TenantServiceInviteAcceptResponse, TenantServiceInviteDeleteRequest, TenantServiceInviteDeleteResponse, TenantServiceInviteGetRequest, TenantServiceInviteGetResponse, TenantServiceInviteRequest, TenantServiceInviteResponse, TenantServiceInvitesListRequest, TenantServiceInvitesListResponse, TenantServiceListRequest, TenantServiceListResponse, TenantServiceRemoveMemberRequest, TenantServiceRemoveMemberResponse, TenantServiceUpdateMemberRequest, TenantServiceUpdateMemberResponse, TenantServiceUpdateRequest, TenantServiceUpdateResponse } from "./tenant_pb.js";
 import { MethodKind } from "@bufbuild/protobuf";
 /**
  * TenantService serves tenant related functions
@@ -17,18 +17,6 @@ export declare const TenantService: {
             readonly name: "Create";
             readonly I: typeof TenantServiceCreateRequest;
             readonly O: typeof TenantServiceCreateResponse;
-            readonly kind: MethodKind.Unary;
-        };
-        /**
-         * CreateOrUpdate should only be used from within the application
-         * will check if tenant already exists and updates if necessary, otherwise create a new tenant
-         *
-         * @generated from rpc api.v1.TenantService.CreateOrUpdate
-         */
-        readonly createOrUpdate: {
-            readonly name: "CreateOrUpdate";
-            readonly I: typeof TenantServiceCreateOrUpdateRequest;
-            readonly O: typeof TenantServiceCreateOrUpdateResponse;
             readonly kind: MethodKind.Unary;
         };
         /**

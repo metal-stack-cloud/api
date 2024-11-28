@@ -558,11 +558,6 @@
               "description": "VISIBILITY_PUBLIC specifies that this service is accessible without authentication"
             },
             {
-              "name": "VISIBILITY_PRIVATE",
-              "number": "2",
-              "description": "VISIBILITY_PRIVATE makes this service blocked"
-            },
-            {
               "name": "VISIBILITY_SELF",
               "number": "3",
               "description": "VISIBILITY_SELF enable call this endpoint from the authenticated user only"
@@ -9293,18 +9288,6 @@
               "responseType": "TenantServiceCreateResponse",
               "responseLongType": "TenantServiceCreateResponse",
               "responseFullType": "api.v1.TenantServiceCreateResponse",
-              "responseStreaming": false
-            },
-            {
-              "name": "CreateOrUpdate",
-              "description": "CreateOrUpdate should only be used from within the application\nwill check if tenant already exists and updates if necessary, otherwise create a new tenant",
-              "requestType": "TenantServiceCreateOrUpdateRequest",
-              "requestLongType": "TenantServiceCreateOrUpdateRequest",
-              "requestFullType": "api.v1.TenantServiceCreateOrUpdateRequest",
-              "requestStreaming": false,
-              "responseType": "TenantServiceCreateOrUpdateResponse",
-              "responseLongType": "TenantServiceCreateOrUpdateResponse",
-              "responseFullType": "api.v1.TenantServiceCreateOrUpdateResponse",
               "responseStreaming": false
             },
             {
