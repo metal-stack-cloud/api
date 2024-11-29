@@ -38,6 +38,7 @@ type (
 
 	Apiv1 interface {
 		Asset() apiv1connect.AssetServiceClient
+		Audit() apiv1connect.AuditServiceClient
 		Cluster() apiv1connect.ClusterServiceClient
 		Health() apiv1connect.HealthServiceClient
 		IP() apiv1connect.IPServiceClient
@@ -54,6 +55,7 @@ type (
 
 	apiv1 struct {
 		assetservice    apiv1connect.AssetServiceClient
+		auditservice    apiv1connect.AuditServiceClient
 		clusterservice  apiv1connect.ClusterServiceClient
 		healthservice   apiv1connect.HealthServiceClient
 		ipservice       apiv1connect.IPServiceClient
@@ -147,6 +149,11 @@ func (c client) Apiv1() Apiv1 {
 			c.config.BaseURL,
 			compress.WithAll(compress.LevelBalanced),
 		),
+		auditservice: apiv1connect.NewAuditServiceClient(
+			c.config.HttpClient(),
+			c.config.BaseURL,
+			compress.WithAll(compress.LevelBalanced),
+		),
 		clusterservice: apiv1connect.NewClusterServiceClient(
 			c.config.HttpClient(),
 			c.config.BaseURL,
@@ -213,6 +220,9 @@ func (c client) Apiv1() Apiv1 {
 
 func (c *apiv1) Asset() apiv1connect.AssetServiceClient {
 	return c.assetservice
+}
+func (c *apiv1) Audit() apiv1connect.AuditServiceClient {
+	return c.auditservice
 }
 func (c *apiv1) Cluster() apiv1connect.ClusterServiceClient {
 	return c.clusterservice
