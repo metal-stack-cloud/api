@@ -11266,6 +11266,341 @@
       ]
     },
     {
+      "name": "api/v1/audit.proto",
+      "description": "",
+      "package": "api.v1",
+      "hasEnums": false,
+      "hasExtensions": false,
+      "hasMessages": true,
+      "hasServices": true,
+      "enums": [],
+      "extensions": [],
+      "messages": [
+        {
+          "name": "AuditServiceGetRequest",
+          "longName": "AuditServiceGetRequest",
+          "fullName": "api.v1.AuditServiceGetRequest",
+          "description": "AuditServiceGetRequest is the request payload of a audit get request",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "uuid",
+              "description": "Uuid of the audit trace",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "AuditServiceGetResponse",
+          "longName": "AuditServiceGetResponse",
+          "fullName": "api.v1.AuditServiceGetResponse",
+          "description": "AuditServiceGetResponse is the response payload of a audit get request",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "audit",
+              "description": "Audit is the audit",
+              "label": "",
+              "type": "AuditTrace",
+              "longType": "AuditTrace",
+              "fullType": "api.v1.AuditTrace",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "AuditServiceListRequest",
+          "longName": "AuditServiceListRequest",
+          "fullName": "api.v1.AuditServiceListRequest",
+          "description": "AuditServiceListRequest is the request payload to list audits",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "uuid",
+              "description": "Uuid of the audit trace",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "from",
+              "description": "From describes the start of the time window in which to list audit traces",
+              "label": "",
+              "type": "Timestamp",
+              "longType": "google.protobuf.Timestamp",
+              "fullType": "google.protobuf.Timestamp",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "to",
+              "description": "To describes the end of the time window in which to list audit traces",
+              "label": "",
+              "type": "Timestamp",
+              "longType": "google.protobuf.Timestamp",
+              "fullType": "google.protobuf.Timestamp",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "user",
+              "description": "User is the user who called the api method",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "tenant",
+              "description": "Tenant is the tenant targeted by the api call",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "method",
+              "description": "Method is the api method that was called",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "result_code",
+              "description": "ResultCode is a string describing the result of the api call",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "AuditServiceListResponse",
+          "longName": "AuditServiceListResponse",
+          "fullName": "api.v1.AuditServiceListResponse",
+          "description": "AuditServiceListResponse is the response payload of a audit list request",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "audits",
+              "description": "Audits is a list of audits without the secrets",
+              "label": "repeated",
+              "type": "AuditTrace",
+              "longType": "AuditTrace",
+              "fullType": "api.v1.AuditTrace",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "AuditTrace",
+          "longName": "AuditTrace",
+          "fullName": "api.v1.AuditTrace",
+          "description": "AuditTrace is an audit trace",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "uuid",
+              "description": "Uuid of the audit trace",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "timestamp",
+              "description": "Timestamp is the timestamp when the request arrived at the api",
+              "label": "",
+              "type": "Timestamp",
+              "longType": "google.protobuf.Timestamp",
+              "fullType": "google.protobuf.Timestamp",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "user",
+              "description": "User is the user who called the api method",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "tenant",
+              "description": "Tenant is the tenant targeted by the api call",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "method",
+              "description": "Method is the api method that was called",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "request_payload",
+              "description": "Request is the payload of the request",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "response_payload",
+              "description": "Response is the payload of the response",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "source_ip",
+              "description": "SourceIP contains the ip address of the caller",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "result_code",
+              "description": "ResultCode is a string describing the result of the api call",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        }
+      ],
+      "services": [
+        {
+          "name": "AuditService",
+          "longName": "AuditService",
+          "fullName": "api.v1.AuditService",
+          "description": "AuditService serves audit related functions",
+          "methods": [
+            {
+              "name": "Get",
+              "description": "Get a audit",
+              "requestType": "AuditServiceGetRequest",
+              "requestLongType": "AuditServiceGetRequest",
+              "requestFullType": "api.v1.AuditServiceGetRequest",
+              "requestStreaming": false,
+              "responseType": "AuditServiceGetResponse",
+              "responseLongType": "AuditServiceGetResponse",
+              "responseFullType": "api.v1.AuditServiceGetResponse",
+              "responseStreaming": false
+            },
+            {
+              "name": "List",
+              "description": "List your audit traces",
+              "requestType": "AuditServiceListRequest",
+              "requestLongType": "AuditServiceListRequest",
+              "requestFullType": "api.v1.AuditServiceListRequest",
+              "requestStreaming": false,
+              "responseType": "AuditServiceListResponse",
+              "responseLongType": "AuditServiceListResponse",
+              "responseFullType": "api.v1.AuditServiceListResponse",
+              "responseStreaming": false
+            }
+          ]
+        }
+      ]
+    },
+    {
       "name": "api/v1/health.proto",
       "description": "",
       "package": "api.v1",

@@ -1,0 +1,191 @@
+import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
+import { Message, proto3, Timestamp } from "@bufbuild/protobuf";
+/**
+ * AuditTrace is an audit trace
+ *
+ * @generated from message api.v1.AuditTrace
+ */
+export declare class AuditTrace extends Message<AuditTrace> {
+    /**
+     * Uuid of the audit trace
+     *
+     * @generated from field: string uuid = 1;
+     */
+    uuid: string;
+    /**
+     * Timestamp is the timestamp when the request arrived at the api
+     *
+     * @generated from field: google.protobuf.Timestamp timestamp = 2;
+     */
+    timestamp?: Timestamp;
+    /**
+     * User is the user who called the api method
+     *
+     * @generated from field: string user = 3;
+     */
+    user: string;
+    /**
+     * Tenant is the tenant targeted by the api call
+     *
+     * @generated from field: string tenant = 4;
+     */
+    tenant: string;
+    /**
+     * Method is the api method that was called
+     *
+     * @generated from field: string method = 5;
+     */
+    method: string;
+    /**
+     * Request is the payload of the request
+     *
+     * @generated from field: string request_payload = 6;
+     */
+    requestPayload: string;
+    /**
+     * Response is the payload of the response
+     *
+     * @generated from field: string response_payload = 7;
+     */
+    responsePayload: string;
+    /**
+     * SourceIP contains the ip address of the caller
+     *
+     * @generated from field: string source_ip = 8;
+     */
+    sourceIp: string;
+    /**
+     * ResultCode is a string describing the result of the api call
+     *
+     * @generated from field: string result_code = 9;
+     */
+    resultCode: string;
+    constructor(data?: PartialMessage<AuditTrace>);
+    static readonly runtime: typeof proto3;
+    static readonly typeName = "api.v1.AuditTrace";
+    static readonly fields: FieldList;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): AuditTrace;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): AuditTrace;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): AuditTrace;
+    static equals(a: AuditTrace | PlainMessage<AuditTrace> | undefined, b: AuditTrace | PlainMessage<AuditTrace> | undefined): boolean;
+}
+/**
+ * AuditServiceListRequest is the request payload to list audits
+ *
+ * @generated from message api.v1.AuditServiceListRequest
+ */
+export declare class AuditServiceListRequest extends Message<AuditServiceListRequest> {
+    /**
+     * Uuid of the audit trace
+     *
+     * @generated from field: string uuid = 1;
+     */
+    uuid: string;
+    /**
+     * From describes the start of the time window in which to list audit traces
+     *
+     * @generated from field: google.protobuf.Timestamp from = 2;
+     */
+    from?: Timestamp;
+    /**
+     * To describes the end of the time window in which to list audit traces
+     *
+     * @generated from field: google.protobuf.Timestamp to = 3;
+     */
+    to?: Timestamp;
+    /**
+     * User is the user who called the api method
+     *
+     * @generated from field: string user = 4;
+     */
+    user: string;
+    /**
+     * Tenant is the tenant targeted by the api call
+     *
+     * @generated from field: string tenant = 5;
+     */
+    tenant: string;
+    /**
+     * Method is the api method that was called
+     *
+     * @generated from field: string method = 6;
+     */
+    method: string;
+    /**
+     * ResultCode is a string describing the result of the api call
+     *
+     * @generated from field: string result_code = 7;
+     */
+    resultCode: string;
+    constructor(data?: PartialMessage<AuditServiceListRequest>);
+    static readonly runtime: typeof proto3;
+    static readonly typeName = "api.v1.AuditServiceListRequest";
+    static readonly fields: FieldList;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): AuditServiceListRequest;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): AuditServiceListRequest;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): AuditServiceListRequest;
+    static equals(a: AuditServiceListRequest | PlainMessage<AuditServiceListRequest> | undefined, b: AuditServiceListRequest | PlainMessage<AuditServiceListRequest> | undefined): boolean;
+}
+/**
+ * AuditServiceListResponse is the response payload of a audit list request
+ *
+ * @generated from message api.v1.AuditServiceListResponse
+ */
+export declare class AuditServiceListResponse extends Message<AuditServiceListResponse> {
+    /**
+     * Audits is a list of audits without the secrets
+     *
+     * @generated from field: repeated api.v1.AuditTrace audits = 1;
+     */
+    audits: AuditTrace[];
+    constructor(data?: PartialMessage<AuditServiceListResponse>);
+    static readonly runtime: typeof proto3;
+    static readonly typeName = "api.v1.AuditServiceListResponse";
+    static readonly fields: FieldList;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): AuditServiceListResponse;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): AuditServiceListResponse;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): AuditServiceListResponse;
+    static equals(a: AuditServiceListResponse | PlainMessage<AuditServiceListResponse> | undefined, b: AuditServiceListResponse | PlainMessage<AuditServiceListResponse> | undefined): boolean;
+}
+/**
+ * AuditServiceGetRequest is the request payload of a audit get request
+ *
+ * @generated from message api.v1.AuditServiceGetRequest
+ */
+export declare class AuditServiceGetRequest extends Message<AuditServiceGetRequest> {
+    /**
+     * Uuid of the audit trace
+     *
+     * @generated from field: string uuid = 1;
+     */
+    uuid: string;
+    constructor(data?: PartialMessage<AuditServiceGetRequest>);
+    static readonly runtime: typeof proto3;
+    static readonly typeName = "api.v1.AuditServiceGetRequest";
+    static readonly fields: FieldList;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): AuditServiceGetRequest;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): AuditServiceGetRequest;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): AuditServiceGetRequest;
+    static equals(a: AuditServiceGetRequest | PlainMessage<AuditServiceGetRequest> | undefined, b: AuditServiceGetRequest | PlainMessage<AuditServiceGetRequest> | undefined): boolean;
+}
+/**
+ * AuditServiceGetResponse is the response payload of a audit get request
+ *
+ * @generated from message api.v1.AuditServiceGetResponse
+ */
+export declare class AuditServiceGetResponse extends Message<AuditServiceGetResponse> {
+    /**
+     * Audit is the audit
+     *
+     * @generated from field: api.v1.AuditTrace audit = 1;
+     */
+    audit?: AuditTrace;
+    constructor(data?: PartialMessage<AuditServiceGetResponse>);
+    static readonly runtime: typeof proto3;
+    static readonly typeName = "api.v1.AuditServiceGetResponse";
+    static readonly fields: FieldList;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): AuditServiceGetResponse;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): AuditServiceGetResponse;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): AuditServiceGetResponse;
+    static equals(a: AuditServiceGetResponse | PlainMessage<AuditServiceGetResponse> | undefined, b: AuditServiceGetResponse | PlainMessage<AuditServiceGetResponse> | undefined): boolean;
+}

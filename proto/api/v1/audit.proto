@@ -1,0 +1,80 @@
+syntax = "proto3";
+
+package api.v1;
+
+import "api/v1/common.proto";
+import "buf/validate/validate.proto";
+import "google/protobuf/timestamp.proto";
+
+// AuditService serves audit related functions
+//
+service AuditService {
+  // Get a audit
+  rpc Get(AuditServiceGetRequest) returns (AuditServiceGetResponse) {
+    option (tenant_roles) = TENANT_ROLE_OWNER;
+    option (auditing) = AUDITING_EXCLUDED;
+  }
+  // List your audit traces
+  rpc List(AuditServiceListRequest) returns (AuditServiceListResponse) {
+    option (tenant_roles) = TENANT_ROLE_OWNER;
+    option (auditing) = AUDITING_EXCLUDED;
+  }
+}
+
+// AuditTrace is an audit trace
+message AuditTrace {
+  // Uuid of the audit trace
+  string uuid = 1 [(buf.validate.field).string.uuid = true];
+  // Timestamp is the timestamp when the request arrived at the api
+  google.protobuf.Timestamp timestamp = 2;
+  // User is the user who called the api method
+  string user = 3;
+  // Tenant is the tenant targeted by the api call
+  string tenant = 4;
+  // Method is the api method that was called
+  string method = 5;
+  // Request is the payload of the request
+  string request_payload = 6;
+  // Response is the payload of the response
+  string response_payload = 7;
+  // SourceIP contains the ip address of the caller
+  string source_ip = 8;
+  // ResultCode is a string describing the result of the api call
+  string result_code = 9;
+}
+
+// AuditServiceListRequest is the request payload to list audits
+message AuditServiceListRequest {
+  // Uuid of the audit trace
+  string uuid = 1 [(buf.validate.field).string.uuid = true];
+  // From describes the start of the time window in which to list audit traces
+  google.protobuf.Timestamp from = 2;
+  // To describes the end of the time window in which to list audit traces
+  google.protobuf.Timestamp to = 3;
+  // User is the user who called the api method
+  string user = 4;
+  // Tenant is the tenant targeted by the api call
+  string tenant = 5;
+  // Method is the api method that was called
+  string method = 6;
+  // ResultCode is a string describing the result of the api call
+  string result_code = 7;
+}
+
+// AuditServiceListResponse is the response payload of a audit list request
+message AuditServiceListResponse {
+  // Audits is a list of audits without the secrets
+  repeated AuditTrace audits = 1;
+}
+
+// AuditServiceGetRequest is the request payload of a audit get request
+message AuditServiceGetRequest {
+  // Uuid of the audit trace
+  string uuid = 1 [(buf.validate.field).string.uuid = true];
+}
+
+// AuditServiceGetResponse is the response payload of a audit get request
+message AuditServiceGetResponse {
+  // Audit is the audit
+  AuditTrace audit = 1;
+}
