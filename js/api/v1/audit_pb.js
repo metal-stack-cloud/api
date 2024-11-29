@@ -96,33 +96,39 @@ export class AuditServiceListRequest extends Message {
     constructor(data) {
         super();
         /**
+         * Login of the tenant
+         *
+         * @generated from field: string login = 1;
+         */
+        this.login = "";
+        /**
          * Uuid of the audit trace
          *
-         * @generated from field: string uuid = 1;
+         * @generated from field: string uuid = 2;
          */
         this.uuid = "";
         /**
          * User is the user who called the api method
          *
-         * @generated from field: string user = 4;
+         * @generated from field: string user = 5;
          */
         this.user = "";
         /**
          * Tenant is the tenant targeted by the api call
          *
-         * @generated from field: string tenant = 5;
+         * @generated from field: string tenant = 6;
          */
         this.tenant = "";
         /**
          * Method is the api method that was called
          *
-         * @generated from field: string method = 6;
+         * @generated from field: string method = 7;
          */
         this.method = "";
         /**
          * ResultCode is a string describing the result of the api call
          *
-         * @generated from field: string result_code = 7;
+         * @generated from field: string result_code = 8;
          */
         this.resultCode = "";
         proto3.util.initPartial(data, this);
@@ -143,13 +149,14 @@ export class AuditServiceListRequest extends Message {
 AuditServiceListRequest.runtime = proto3;
 AuditServiceListRequest.typeName = "api.v1.AuditServiceListRequest";
 AuditServiceListRequest.fields = proto3.util.newFieldList(() => [
-    { no: 1, name: "uuid", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 2, name: "from", kind: "message", T: Timestamp },
-    { no: 3, name: "to", kind: "message", T: Timestamp },
-    { no: 4, name: "user", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 5, name: "tenant", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 6, name: "method", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 7, name: "result_code", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 1, name: "login", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "uuid", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 3, name: "from", kind: "message", T: Timestamp },
+    { no: 4, name: "to", kind: "message", T: Timestamp },
+    { no: 5, name: "user", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 6, name: "tenant", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 7, name: "method", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 8, name: "result_code", kind: "scalar", T: 9 /* ScalarType.STRING */ },
 ]);
 /**
  * AuditServiceListResponse is the response payload of a audit list request
@@ -194,9 +201,15 @@ export class AuditServiceGetRequest extends Message {
     constructor(data) {
         super();
         /**
+         * Login of the tenant
+         *
+         * @generated from field: string login = 1;
+         */
+        this.login = "";
+        /**
          * Uuid of the audit trace
          *
-         * @generated from field: string uuid = 1;
+         * @generated from field: string uuid = 2;
          */
         this.uuid = "";
         proto3.util.initPartial(data, this);
@@ -217,7 +230,8 @@ export class AuditServiceGetRequest extends Message {
 AuditServiceGetRequest.runtime = proto3;
 AuditServiceGetRequest.typeName = "api.v1.AuditServiceGetRequest";
 AuditServiceGetRequest.fields = proto3.util.newFieldList(() => [
-    { no: 1, name: "uuid", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 1, name: "login", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "uuid", kind: "scalar", T: 9 /* ScalarType.STRING */ },
 ]);
 /**
  * AuditServiceGetResponse is the response payload of a audit get request
@@ -245,5 +259,5 @@ export class AuditServiceGetResponse extends Message {
 AuditServiceGetResponse.runtime = proto3;
 AuditServiceGetResponse.typeName = "api.v1.AuditServiceGetResponse";
 AuditServiceGetResponse.fields = proto3.util.newFieldList(() => [
-    { no: 1, name: "audit", kind: "message", T: AuditTrace },
+    { no: 2, name: "audit", kind: "message", T: AuditTrace },
 ]);

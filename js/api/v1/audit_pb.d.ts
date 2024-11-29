@@ -76,45 +76,51 @@ export declare class AuditTrace extends Message<AuditTrace> {
  */
 export declare class AuditServiceListRequest extends Message<AuditServiceListRequest> {
     /**
+     * Login of the tenant
+     *
+     * @generated from field: string login = 1;
+     */
+    login: string;
+    /**
      * Uuid of the audit trace
      *
-     * @generated from field: string uuid = 1;
+     * @generated from field: string uuid = 2;
      */
     uuid: string;
     /**
      * From describes the start of the time window in which to list audit traces
      *
-     * @generated from field: google.protobuf.Timestamp from = 2;
+     * @generated from field: google.protobuf.Timestamp from = 3;
      */
     from?: Timestamp;
     /**
      * To describes the end of the time window in which to list audit traces
      *
-     * @generated from field: google.protobuf.Timestamp to = 3;
+     * @generated from field: google.protobuf.Timestamp to = 4;
      */
     to?: Timestamp;
     /**
      * User is the user who called the api method
      *
-     * @generated from field: string user = 4;
+     * @generated from field: string user = 5;
      */
     user: string;
     /**
      * Tenant is the tenant targeted by the api call
      *
-     * @generated from field: string tenant = 5;
+     * @generated from field: string tenant = 6;
      */
     tenant: string;
     /**
      * Method is the api method that was called
      *
-     * @generated from field: string method = 6;
+     * @generated from field: string method = 7;
      */
     method: string;
     /**
      * ResultCode is a string describing the result of the api call
      *
-     * @generated from field: string result_code = 7;
+     * @generated from field: string result_code = 8;
      */
     resultCode: string;
     constructor(data?: PartialMessage<AuditServiceListRequest>);
@@ -154,9 +160,15 @@ export declare class AuditServiceListResponse extends Message<AuditServiceListRe
  */
 export declare class AuditServiceGetRequest extends Message<AuditServiceGetRequest> {
     /**
+     * Login of the tenant
+     *
+     * @generated from field: string login = 1;
+     */
+    login: string;
+    /**
      * Uuid of the audit trace
      *
-     * @generated from field: string uuid = 1;
+     * @generated from field: string uuid = 2;
      */
     uuid: string;
     constructor(data?: PartialMessage<AuditServiceGetRequest>);
@@ -177,7 +189,7 @@ export declare class AuditServiceGetResponse extends Message<AuditServiceGetResp
     /**
      * Audit is the audit
      *
-     * @generated from field: api.v1.AuditTrace audit = 1;
+     * @generated from field: api.v1.AuditTrace audit = 2;
      */
     audit?: AuditTrace;
     constructor(data?: PartialMessage<AuditServiceGetResponse>);

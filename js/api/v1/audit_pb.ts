@@ -118,51 +118,58 @@ export class AuditTrace extends Message<AuditTrace> {
  */
 export class AuditServiceListRequest extends Message<AuditServiceListRequest> {
   /**
+   * Login of the tenant
+   *
+   * @generated from field: string login = 1;
+   */
+  login = "";
+
+  /**
    * Uuid of the audit trace
    *
-   * @generated from field: string uuid = 1;
+   * @generated from field: string uuid = 2;
    */
   uuid = "";
 
   /**
    * From describes the start of the time window in which to list audit traces
    *
-   * @generated from field: google.protobuf.Timestamp from = 2;
+   * @generated from field: google.protobuf.Timestamp from = 3;
    */
   from?: Timestamp;
 
   /**
    * To describes the end of the time window in which to list audit traces
    *
-   * @generated from field: google.protobuf.Timestamp to = 3;
+   * @generated from field: google.protobuf.Timestamp to = 4;
    */
   to?: Timestamp;
 
   /**
    * User is the user who called the api method
    *
-   * @generated from field: string user = 4;
+   * @generated from field: string user = 5;
    */
   user = "";
 
   /**
    * Tenant is the tenant targeted by the api call
    *
-   * @generated from field: string tenant = 5;
+   * @generated from field: string tenant = 6;
    */
   tenant = "";
 
   /**
    * Method is the api method that was called
    *
-   * @generated from field: string method = 6;
+   * @generated from field: string method = 7;
    */
   method = "";
 
   /**
    * ResultCode is a string describing the result of the api call
    *
-   * @generated from field: string result_code = 7;
+   * @generated from field: string result_code = 8;
    */
   resultCode = "";
 
@@ -174,13 +181,14 @@ export class AuditServiceListRequest extends Message<AuditServiceListRequest> {
   static readonly runtime: typeof proto3 = proto3;
   static readonly typeName = "api.v1.AuditServiceListRequest";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "uuid", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 2, name: "from", kind: "message", T: Timestamp },
-    { no: 3, name: "to", kind: "message", T: Timestamp },
-    { no: 4, name: "user", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 5, name: "tenant", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 6, name: "method", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 7, name: "result_code", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 1, name: "login", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "uuid", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 3, name: "from", kind: "message", T: Timestamp },
+    { no: 4, name: "to", kind: "message", T: Timestamp },
+    { no: 5, name: "user", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 6, name: "tenant", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 7, name: "method", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 8, name: "result_code", kind: "scalar", T: 9 /* ScalarType.STRING */ },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): AuditServiceListRequest {
@@ -248,9 +256,16 @@ export class AuditServiceListResponse extends Message<AuditServiceListResponse> 
  */
 export class AuditServiceGetRequest extends Message<AuditServiceGetRequest> {
   /**
+   * Login of the tenant
+   *
+   * @generated from field: string login = 1;
+   */
+  login = "";
+
+  /**
    * Uuid of the audit trace
    *
-   * @generated from field: string uuid = 1;
+   * @generated from field: string uuid = 2;
    */
   uuid = "";
 
@@ -262,7 +277,8 @@ export class AuditServiceGetRequest extends Message<AuditServiceGetRequest> {
   static readonly runtime: typeof proto3 = proto3;
   static readonly typeName = "api.v1.AuditServiceGetRequest";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "uuid", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 1, name: "login", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "uuid", kind: "scalar", T: 9 /* ScalarType.STRING */ },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): AuditServiceGetRequest {
@@ -291,7 +307,7 @@ export class AuditServiceGetResponse extends Message<AuditServiceGetResponse> {
   /**
    * Audit is the audit
    *
-   * @generated from field: api.v1.AuditTrace audit = 1;
+   * @generated from field: api.v1.AuditTrace audit = 2;
    */
   audit?: AuditTrace;
 
@@ -303,7 +319,7 @@ export class AuditServiceGetResponse extends Message<AuditServiceGetResponse> {
   static readonly runtime: typeof proto3 = proto3;
   static readonly typeName = "api.v1.AuditServiceGetResponse";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "audit", kind: "message", T: AuditTrace },
+    { no: 2, name: "audit", kind: "message", T: AuditTrace },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): AuditServiceGetResponse {

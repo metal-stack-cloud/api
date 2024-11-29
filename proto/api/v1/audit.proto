@@ -45,20 +45,22 @@ message AuditTrace {
 
 // AuditServiceListRequest is the request payload to list audits
 message AuditServiceListRequest {
+  // Login of the tenant
+  string login = 1;
   // Uuid of the audit trace
-  string uuid = 1 [(buf.validate.field).string.uuid = true];
+  string uuid = 2 [(buf.validate.field).string.uuid = true];
   // From describes the start of the time window in which to list audit traces
-  google.protobuf.Timestamp from = 2;
+  google.protobuf.Timestamp from = 3;
   // To describes the end of the time window in which to list audit traces
-  google.protobuf.Timestamp to = 3;
+  google.protobuf.Timestamp to = 4;
   // User is the user who called the api method
-  string user = 4;
+  string user = 5;
   // Tenant is the tenant targeted by the api call
-  string tenant = 5;
+  string tenant = 6;
   // Method is the api method that was called
-  string method = 6;
+  string method = 7;
   // ResultCode is a string describing the result of the api call
-  string result_code = 7;
+  string result_code = 8;
 }
 
 // AuditServiceListResponse is the response payload of a audit list request
@@ -69,12 +71,14 @@ message AuditServiceListResponse {
 
 // AuditServiceGetRequest is the request payload of a audit get request
 message AuditServiceGetRequest {
+  // Login of the tenant
+  string login = 1;
   // Uuid of the audit trace
-  string uuid = 1 [(buf.validate.field).string.uuid = true];
+  string uuid = 2 [(buf.validate.field).string.uuid = true];
 }
 
 // AuditServiceGetResponse is the response payload of a audit get request
 message AuditServiceGetResponse {
   // Audit is the audit
-  AuditTrace audit = 1;
+  AuditTrace audit = 2;
 }

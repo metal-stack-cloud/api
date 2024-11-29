@@ -11287,6 +11287,18 @@
           "extensions": [],
           "fields": [
             {
+              "name": "login",
+              "description": "Login of the tenant",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
               "name": "uuid",
               "description": "Uuid of the audit trace",
               "label": "",
@@ -11334,6 +11346,18 @@
           "hasOneofs": false,
           "extensions": [],
           "fields": [
+            {
+              "name": "login",
+              "description": "Login of the tenant",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
             {
               "name": "uuid",
               "description": "Uuid of the audit trace",
