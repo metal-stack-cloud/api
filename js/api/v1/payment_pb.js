@@ -658,68 +658,6 @@ PaymentServiceGetCustomerResponse.fields = proto3.util.newFieldList(() => [
     { no: 1, name: "customer", kind: "message", T: PaymentCustomer },
 ]);
 /**
- * PaymentServiceGetCustomerWithLoginRequest is the request payload for a payment get customer request
- *
- * @generated from message api.v1.PaymentServiceGetCustomerWithLoginRequest
- */
-export class PaymentServiceGetCustomerWithLoginRequest extends Message {
-    constructor(data) {
-        super();
-        /**
-         * Login of the customer
-         *
-         * @generated from field: string login = 1;
-         */
-        this.login = "";
-        proto3.util.initPartial(data, this);
-    }
-    static fromBinary(bytes, options) {
-        return new PaymentServiceGetCustomerWithLoginRequest().fromBinary(bytes, options);
-    }
-    static fromJson(jsonValue, options) {
-        return new PaymentServiceGetCustomerWithLoginRequest().fromJson(jsonValue, options);
-    }
-    static fromJsonString(jsonString, options) {
-        return new PaymentServiceGetCustomerWithLoginRequest().fromJsonString(jsonString, options);
-    }
-    static equals(a, b) {
-        return proto3.util.equals(PaymentServiceGetCustomerWithLoginRequest, a, b);
-    }
-}
-PaymentServiceGetCustomerWithLoginRequest.runtime = proto3;
-PaymentServiceGetCustomerWithLoginRequest.typeName = "api.v1.PaymentServiceGetCustomerWithLoginRequest";
-PaymentServiceGetCustomerWithLoginRequest.fields = proto3.util.newFieldList(() => [
-    { no: 1, name: "login", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-]);
-/**
- * PaymentServiceGetCustomerWithLoginResponse is the response payload for a payment get customer request
- *
- * @generated from message api.v1.PaymentServiceGetCustomerWithLoginResponse
- */
-export class PaymentServiceGetCustomerWithLoginResponse extends Message {
-    constructor(data) {
-        super();
-        proto3.util.initPartial(data, this);
-    }
-    static fromBinary(bytes, options) {
-        return new PaymentServiceGetCustomerWithLoginResponse().fromBinary(bytes, options);
-    }
-    static fromJson(jsonValue, options) {
-        return new PaymentServiceGetCustomerWithLoginResponse().fromJson(jsonValue, options);
-    }
-    static fromJsonString(jsonString, options) {
-        return new PaymentServiceGetCustomerWithLoginResponse().fromJsonString(jsonString, options);
-    }
-    static equals(a, b) {
-        return proto3.util.equals(PaymentServiceGetCustomerWithLoginResponse, a, b);
-    }
-}
-PaymentServiceGetCustomerWithLoginResponse.runtime = proto3;
-PaymentServiceGetCustomerWithLoginResponse.typeName = "api.v1.PaymentServiceGetCustomerWithLoginResponse";
-PaymentServiceGetCustomerWithLoginResponse.fields = proto3.util.newFieldList(() => [
-    { no: 1, name: "customer", kind: "message", T: PaymentCustomer },
-]);
-/**
  * PaymentServiceCheckIfCustomerExistsRequest is the request payload for a payment check if customer exists request
  *
  * @generated from message api.v1.PaymentServiceCheckIfCustomerExistsRequest

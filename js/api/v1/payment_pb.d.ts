@@ -570,48 +570,6 @@ export declare class PaymentServiceGetCustomerResponse extends Message<PaymentSe
     static equals(a: PaymentServiceGetCustomerResponse | PlainMessage<PaymentServiceGetCustomerResponse> | undefined, b: PaymentServiceGetCustomerResponse | PlainMessage<PaymentServiceGetCustomerResponse> | undefined): boolean;
 }
 /**
- * PaymentServiceGetCustomerWithLoginRequest is the request payload for a payment get customer request
- *
- * @generated from message api.v1.PaymentServiceGetCustomerWithLoginRequest
- */
-export declare class PaymentServiceGetCustomerWithLoginRequest extends Message<PaymentServiceGetCustomerWithLoginRequest> {
-    /**
-     * Login of the customer
-     *
-     * @generated from field: string login = 1;
-     */
-    login: string;
-    constructor(data?: PartialMessage<PaymentServiceGetCustomerWithLoginRequest>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "api.v1.PaymentServiceGetCustomerWithLoginRequest";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): PaymentServiceGetCustomerWithLoginRequest;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): PaymentServiceGetCustomerWithLoginRequest;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): PaymentServiceGetCustomerWithLoginRequest;
-    static equals(a: PaymentServiceGetCustomerWithLoginRequest | PlainMessage<PaymentServiceGetCustomerWithLoginRequest> | undefined, b: PaymentServiceGetCustomerWithLoginRequest | PlainMessage<PaymentServiceGetCustomerWithLoginRequest> | undefined): boolean;
-}
-/**
- * PaymentServiceGetCustomerWithLoginResponse is the response payload for a payment get customer request
- *
- * @generated from message api.v1.PaymentServiceGetCustomerWithLoginResponse
- */
-export declare class PaymentServiceGetCustomerWithLoginResponse extends Message<PaymentServiceGetCustomerWithLoginResponse> {
-    /**
-     * Customer is the customer
-     *
-     * @generated from field: api.v1.PaymentCustomer customer = 1;
-     */
-    customer?: PaymentCustomer;
-    constructor(data?: PartialMessage<PaymentServiceGetCustomerWithLoginResponse>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "api.v1.PaymentServiceGetCustomerWithLoginResponse";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): PaymentServiceGetCustomerWithLoginResponse;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): PaymentServiceGetCustomerWithLoginResponse;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): PaymentServiceGetCustomerWithLoginResponse;
-    static equals(a: PaymentServiceGetCustomerWithLoginResponse | PlainMessage<PaymentServiceGetCustomerWithLoginResponse> | undefined, b: PaymentServiceGetCustomerWithLoginResponse | PlainMessage<PaymentServiceGetCustomerWithLoginResponse> | undefined): boolean;
-}
-/**
  * PaymentServiceCheckIfCustomerExistsRequest is the request payload for a payment check if customer exists request
  *
  * @generated from message api.v1.PaymentServiceCheckIfCustomerExistsRequest
