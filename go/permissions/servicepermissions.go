@@ -80,7 +80,6 @@ func GetServicePermissions() *ServicePermissions {
 				"TENANT_ROLE_OWNER": []string{
 					"/api.v1.PaymentService/CreateOrUpdateCustomer",
 					"/api.v1.PaymentService/GetCustomer",
-					"/api.v1.PaymentService/GetCustomerWithLogin",
 					"/api.v1.PaymentService/CheckIfCustomerExists",
 					"/api.v1.PaymentService/HasPaymentMethod",
 					"/api.v1.PaymentService/DeletePaymentMethod",
@@ -213,7 +212,6 @@ func GetServicePermissions() *ServicePermissions {
 			"/api.v1.PaymentService/CreateOrUpdateCustomer": true,
 			"/api.v1.PaymentService/DeletePaymentMethod":    true,
 			"/api.v1.PaymentService/GetCustomer":            true,
-			"/api.v1.PaymentService/GetCustomerWithLogin":   true,
 			"/api.v1.PaymentService/GetDefaultPrices":       true,
 			"/api.v1.PaymentService/GetInvoices":            true,
 			"/api.v1.PaymentService/GetOnboarded":           true,
@@ -335,7 +333,6 @@ func GetServicePermissions() *ServicePermissions {
 			"/api.v1.PaymentService/CreateOrUpdateCustomer": true,
 			"/api.v1.PaymentService/DeletePaymentMethod":    true,
 			"/api.v1.PaymentService/GetCustomer":            false,
-			"/api.v1.PaymentService/GetCustomerWithLogin":   true,
 			"/api.v1.PaymentService/GetDefaultPrices":       false,
 			"/api.v1.PaymentService/GetInvoices":            false,
 			"/api.v1.PaymentService/GetOnboarded":           true,
