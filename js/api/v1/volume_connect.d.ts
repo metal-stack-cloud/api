@@ -1,4 +1,4 @@
-import { SnapshotServiceDeleteRequest, SnapshotServiceDeleteResponse, SnapshotServiceGetRequest, SnapshotServiceGetResponse, SnapshotServiceListRequest, SnapshotServiceListResponse, VolumeServiceDeleteRequest, VolumeServiceDeleteResponse, VolumeServiceGetRequest, VolumeServiceGetResponse, VolumeServiceListRequest, VolumeServiceListResponse } from "./volume_pb.js";
+import { SnapshotServiceDeleteRequest, SnapshotServiceDeleteResponse, SnapshotServiceGetRequest, SnapshotServiceGetResponse, SnapshotServiceListRequest, SnapshotServiceListResponse, VolumeServiceDeleteRequest, VolumeServiceDeleteResponse, VolumeServiceGetRequest, VolumeServiceGetResponse, VolumeServiceListRequest, VolumeServiceListResponse, VolumeServiceUpdateRequest, VolumeServiceUpdateResponse } from "./volume_pb.js";
 import { MethodKind } from "@bufbuild/protobuf";
 /**
  * VolumeService serves volume related functions
@@ -39,6 +39,17 @@ export declare const VolumeService: {
             readonly name: "Delete";
             readonly I: typeof VolumeServiceDeleteRequest;
             readonly O: typeof VolumeServiceDeleteResponse;
+            readonly kind: MethodKind.Unary;
+        };
+        /**
+         * Update a volume
+         *
+         * @generated from rpc api.v1.VolumeService.Update
+         */
+        readonly update: {
+            readonly name: "Update";
+            readonly I: typeof VolumeServiceUpdateRequest;
+            readonly O: typeof VolumeServiceUpdateResponse;
             readonly kind: MethodKind.Unary;
         };
     };

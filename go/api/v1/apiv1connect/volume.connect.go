@@ -41,6 +41,8 @@ const (
 	VolumeServiceListProcedure = "/api.v1.VolumeService/List"
 	// VolumeServiceDeleteProcedure is the fully-qualified name of the VolumeService's Delete RPC.
 	VolumeServiceDeleteProcedure = "/api.v1.VolumeService/Delete"
+	// VolumeServiceUpdateProcedure is the fully-qualified name of the VolumeService's Update RPC.
+	VolumeServiceUpdateProcedure = "/api.v1.VolumeService/Update"
 	// SnapshotServiceGetProcedure is the fully-qualified name of the SnapshotService's Get RPC.
 	SnapshotServiceGetProcedure = "/api.v1.SnapshotService/Get"
 	// SnapshotServiceListProcedure is the fully-qualified name of the SnapshotService's List RPC.
@@ -55,6 +57,7 @@ var (
 	volumeServiceGetMethodDescriptor      = volumeServiceServiceDescriptor.Methods().ByName("Get")
 	volumeServiceListMethodDescriptor     = volumeServiceServiceDescriptor.Methods().ByName("List")
 	volumeServiceDeleteMethodDescriptor   = volumeServiceServiceDescriptor.Methods().ByName("Delete")
+	volumeServiceUpdateMethodDescriptor   = volumeServiceServiceDescriptor.Methods().ByName("Update")
 	snapshotServiceServiceDescriptor      = v1.File_api_v1_volume_proto.Services().ByName("SnapshotService")
 	snapshotServiceGetMethodDescriptor    = snapshotServiceServiceDescriptor.Methods().ByName("Get")
 	snapshotServiceListMethodDescriptor   = snapshotServiceServiceDescriptor.Methods().ByName("List")
@@ -69,6 +72,8 @@ type VolumeServiceClient interface {
 	List(context.Context, *connect.Request[v1.VolumeServiceListRequest]) (*connect.Response[v1.VolumeServiceListResponse], error)
 	// Delete a volume
 	Delete(context.Context, *connect.Request[v1.VolumeServiceDeleteRequest]) (*connect.Response[v1.VolumeServiceDeleteResponse], error)
+	// Update a volume
+	Update(context.Context, *connect.Request[v1.VolumeServiceUpdateRequest]) (*connect.Response[v1.VolumeServiceUpdateResponse], error)
 }
 
 // NewVolumeServiceClient constructs a client for the api.v1.VolumeService service. By default, it
@@ -99,6 +104,12 @@ func NewVolumeServiceClient(httpClient connect.HTTPClient, baseURL string, opts 
 			connect.WithSchema(volumeServiceDeleteMethodDescriptor),
 			connect.WithClientOptions(opts...),
 		),
+		update: connect.NewClient[v1.VolumeServiceUpdateRequest, v1.VolumeServiceUpdateResponse](
+			httpClient,
+			baseURL+VolumeServiceUpdateProcedure,
+			connect.WithSchema(volumeServiceUpdateMethodDescriptor),
+			connect.WithClientOptions(opts...),
+		),
 	}
 }
 
@@ -107,6 +118,7 @@ type volumeServiceClient struct {
 	get    *connect.Client[v1.VolumeServiceGetRequest, v1.VolumeServiceGetResponse]
 	list   *connect.Client[v1.VolumeServiceListRequest, v1.VolumeServiceListResponse]
 	delete *connect.Client[v1.VolumeServiceDeleteRequest, v1.VolumeServiceDeleteResponse]
+	update *connect.Client[v1.VolumeServiceUpdateRequest, v1.VolumeServiceUpdateResponse]
 }
 
 // Get calls api.v1.VolumeService.Get.
@@ -124,6 +136,11 @@ func (c *volumeServiceClient) Delete(ctx context.Context, req *connect.Request[v
 	return c.delete.CallUnary(ctx, req)
 }
 
+// Update calls api.v1.VolumeService.Update.
+func (c *volumeServiceClient) Update(ctx context.Context, req *connect.Request[v1.VolumeServiceUpdateRequest]) (*connect.Response[v1.VolumeServiceUpdateResponse], error) {
+	return c.update.CallUnary(ctx, req)
+}
+
 // VolumeServiceHandler is an implementation of the api.v1.VolumeService service.
 type VolumeServiceHandler interface {
 	// Get a volume
@@ -132,6 +149,8 @@ type VolumeServiceHandler interface {
 	List(context.Context, *connect.Request[v1.VolumeServiceListRequest]) (*connect.Response[v1.VolumeServiceListResponse], error)
 	// Delete a volume
 	Delete(context.Context, *connect.Request[v1.VolumeServiceDeleteRequest]) (*connect.Response[v1.VolumeServiceDeleteResponse], error)
+	// Update a volume
+	Update(context.Context, *connect.Request[v1.VolumeServiceUpdateRequest]) (*connect.Response[v1.VolumeServiceUpdateResponse], error)
 }
 
 // NewVolumeServiceHandler builds an HTTP handler from the service implementation. It returns the
@@ -158,6 +177,12 @@ func NewVolumeServiceHandler(svc VolumeServiceHandler, opts ...connect.HandlerOp
 		connect.WithSchema(volumeServiceDeleteMethodDescriptor),
 		connect.WithHandlerOptions(opts...),
 	)
+	volumeServiceUpdateHandler := connect.NewUnaryHandler(
+		VolumeServiceUpdateProcedure,
+		svc.Update,
+		connect.WithSchema(volumeServiceUpdateMethodDescriptor),
+		connect.WithHandlerOptions(opts...),
+	)
 	return "/api.v1.VolumeService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
 		case VolumeServiceGetProcedure:
@@ -166,6 +191,8 @@ func NewVolumeServiceHandler(svc VolumeServiceHandler, opts ...connect.HandlerOp
 			volumeServiceListHandler.ServeHTTP(w, r)
 		case VolumeServiceDeleteProcedure:
 			volumeServiceDeleteHandler.ServeHTTP(w, r)
+		case VolumeServiceUpdateProcedure:
+			volumeServiceUpdateHandler.ServeHTTP(w, r)
 		default:
 			http.NotFound(w, r)
 		}
@@ -185,6 +212,10 @@ func (UnimplementedVolumeServiceHandler) List(context.Context, *connect.Request[
 
 func (UnimplementedVolumeServiceHandler) Delete(context.Context, *connect.Request[v1.VolumeServiceDeleteRequest]) (*connect.Response[v1.VolumeServiceDeleteResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("api.v1.VolumeService.Delete is not implemented"))
+}
+
+func (UnimplementedVolumeServiceHandler) Update(context.Context, *connect.Request[v1.VolumeServiceUpdateRequest]) (*connect.Response[v1.VolumeServiceUpdateResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("api.v1.VolumeService.Update is not implemented"))
 }
 
 // SnapshotServiceClient is a client for the api.v1.SnapshotService service.

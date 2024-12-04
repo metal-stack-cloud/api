@@ -106,6 +106,36 @@ func (_m *VolumeServiceClient) List(_a0 context.Context, _a1 *connect.Request[ap
 	return r0, r1
 }
 
+// Update provides a mock function with given fields: _a0, _a1
+func (_m *VolumeServiceClient) Update(_a0 context.Context, _a1 *connect.Request[apiv1.VolumeServiceUpdateRequest]) (*connect.Response[apiv1.VolumeServiceUpdateResponse], error) {
+	ret := _m.Called(_a0, _a1)
+
+	if len(ret) == 0 {
+		panic("no return value specified for Update")
+	}
+
+	var r0 *connect.Response[apiv1.VolumeServiceUpdateResponse]
+	var r1 error
+	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[apiv1.VolumeServiceUpdateRequest]) (*connect.Response[apiv1.VolumeServiceUpdateResponse], error)); ok {
+		return rf(_a0, _a1)
+	}
+	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[apiv1.VolumeServiceUpdateRequest]) *connect.Response[apiv1.VolumeServiceUpdateResponse]); ok {
+		r0 = rf(_a0, _a1)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*connect.Response[apiv1.VolumeServiceUpdateResponse])
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(context.Context, *connect.Request[apiv1.VolumeServiceUpdateRequest]) error); ok {
+		r1 = rf(_a0, _a1)
+	} else {
+		r1 = ret.Error(1)
+	}
+
+	return r0, r1
+}
+
 // NewVolumeServiceClient creates a new instance of VolumeServiceClient. It also registers a testing interface on the mock and a cleanup function to assert the mocks expectations.
 // The first argument is typically a *testing.T value.
 func NewVolumeServiceClient(t interface {
