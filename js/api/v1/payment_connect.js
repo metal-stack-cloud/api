@@ -2,7 +2,7 @@
 // @generated from file api/v1/payment.proto (package api.v1, syntax proto3)
 /* eslint-disable */
 // @ts-nocheck
-import { PaymentServiceCheckAdmittedRequest, PaymentServiceCheckAdmittedResponse, PaymentServiceCheckIfCustomerExistsRequest, PaymentServiceCheckIfCustomerExistsResponse, PaymentServiceCreateOrUpdateCustomerRequest, PaymentServiceCreateOrUpdateCustomerResponse, PaymentServiceDeletePaymentMethodRequest, PaymentServiceDeletePaymentMethodResponse, PaymentServiceGetCustomerRequest, PaymentServiceGetCustomerResponse, PaymentServiceGetCustomerWithLoginRequest, PaymentServiceGetCustomerWithLoginResponse, PaymentServiceGetDefaultPricesRequest, PaymentServiceGetDefaultPricesResponse, PaymentServiceGetInvoicesRequest, PaymentServiceGetInvoicesResponse, PaymentServiceGetOnboardedRequest, PaymentServiceGetOnboardedResponse, PaymentServiceGetSubscriptionUsageRequest, PaymentServiceGetSubscriptionUsageResponse, PaymentServiceHasChargeableResourcesRequest, PaymentServiceHasChargeableResourcesResponse, PaymentServiceHasPaymentMethodRequest, PaymentServiceHasPaymentMethodResponse, PaymentServiceRequestAdmissionRequest, PaymentServiceRequestAdmissionResponse, PaymentServiceSetOnboardedRequest, PaymentServiceSetOnboardedResponse } from "./payment_pb.js";
+import { PaymentServiceCheckAdmittedRequest, PaymentServiceCheckAdmittedResponse, PaymentServiceCheckIfCustomerExistsRequest, PaymentServiceCheckIfCustomerExistsResponse, PaymentServiceCreateOrUpdateCustomerRequest, PaymentServiceCreateOrUpdateCustomerResponse, PaymentServiceDeletePaymentMethodRequest, PaymentServiceDeletePaymentMethodResponse, PaymentServiceGetCustomerRequest, PaymentServiceGetCustomerResponse, PaymentServiceGetDefaultPricesRequest, PaymentServiceGetDefaultPricesResponse, PaymentServiceGetInvoicesRequest, PaymentServiceGetInvoicesResponse, PaymentServiceGetOnboardedRequest, PaymentServiceGetOnboardedResponse, PaymentServiceGetSubscriptionUsageRequest, PaymentServiceGetSubscriptionUsageResponse, PaymentServiceHasChargeableResourcesRequest, PaymentServiceHasChargeableResourcesResponse, PaymentServiceHasPaymentMethodRequest, PaymentServiceHasPaymentMethodResponse, PaymentServiceRequestAdmissionRequest, PaymentServiceRequestAdmissionResponse, PaymentServiceSetOnboardedRequest, PaymentServiceSetOnboardedResponse } from "./payment_pb.js";
 import { MethodKind } from "@bufbuild/protobuf";
 /**
  * PaymentService serves payment related functions
@@ -32,17 +32,6 @@ export const PaymentService = {
             name: "GetCustomer",
             I: PaymentServiceGetCustomerRequest,
             O: PaymentServiceGetCustomerResponse,
-            kind: MethodKind.Unary,
-        },
-        /**
-         * GetCustomerWithLogin from the payment processor
-         *
-         * @generated from rpc api.v1.PaymentService.GetCustomerWithLogin
-         */
-        getCustomerWithLogin: {
-            name: "GetCustomerWithLogin",
-            I: PaymentServiceGetCustomerWithLoginRequest,
-            O: PaymentServiceGetCustomerWithLoginResponse,
             kind: MethodKind.Unary,
         },
         /**
