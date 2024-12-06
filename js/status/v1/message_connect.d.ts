@@ -1,4 +1,4 @@
-import { MessageServiceListRequest, MessageServiceListResponse } from "./message_pb.js";
+import { MessageServiceListRequest, MessageServiceListResponse, MessageServiceWatchRequest, MessageServiceWatchResponse } from "./message_pb.js";
 import { MethodKind } from "@bufbuild/protobuf";
 /**
  * MessageService serves status message related functions
@@ -19,6 +19,17 @@ export declare const MessageService: {
             readonly I: typeof MessageServiceListRequest;
             readonly O: typeof MessageServiceListResponse;
             readonly kind: MethodKind.Unary;
+        };
+        /**
+         * Watch returns all messages of interest
+         *
+         * @generated from rpc status.v1.MessageService.Watch
+         */
+        readonly watch: {
+            readonly name: "Watch";
+            readonly I: typeof MessageServiceWatchRequest;
+            readonly O: typeof MessageServiceWatchResponse;
+            readonly kind: MethodKind.ServerStreaming;
         };
     };
 };

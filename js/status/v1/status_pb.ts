@@ -41,6 +41,39 @@ export class StatusServiceGetRequest extends Message<StatusServiceGetRequest> {
 }
 
 /**
+ * StatusServiceWatchRequest is the request payload to get the status
+ *
+ * @generated from message status.v1.StatusServiceWatchRequest
+ */
+export class StatusServiceWatchRequest extends Message<StatusServiceWatchRequest> {
+  constructor(data?: PartialMessage<StatusServiceWatchRequest>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "status.v1.StatusServiceWatchRequest";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): StatusServiceWatchRequest {
+    return new StatusServiceWatchRequest().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): StatusServiceWatchRequest {
+    return new StatusServiceWatchRequest().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): StatusServiceWatchRequest {
+    return new StatusServiceWatchRequest().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: StatusServiceWatchRequest | PlainMessage<StatusServiceWatchRequest> | undefined, b: StatusServiceWatchRequest | PlainMessage<StatusServiceWatchRequest> | undefined): boolean {
+    return proto3.util.equals(StatusServiceWatchRequest, a, b);
+  }
+}
+
+/**
  * StatusServiceGetResponse is the response payload which describes the system status
  *
  * @generated from message status.v1.StatusServiceGetResponse
@@ -102,6 +135,71 @@ export class StatusServiceGetResponse extends Message<StatusServiceGetResponse> 
 
   static equals(a: StatusServiceGetResponse | PlainMessage<StatusServiceGetResponse> | undefined, b: StatusServiceGetResponse | PlainMessage<StatusServiceGetResponse> | undefined): boolean {
     return proto3.util.equals(StatusServiceGetResponse, a, b);
+  }
+}
+
+/**
+ * StatusServiceWatchResponse is the response payload which describes the system status
+ *
+ * @generated from message status.v1.StatusServiceWatchResponse
+ */
+export class StatusServiceWatchResponse extends Message<StatusServiceWatchResponse> {
+  /**
+   * Health of the individual services
+   *
+   * @generated from field: api.v1.Health health = 1;
+   */
+  health?: Health;
+
+  /**
+   * OverallStatus is the status of the system
+   *
+   * @generated from field: api.v1.ServiceStatus overall_status = 2;
+   */
+  overallStatus = ServiceStatus.UNSPECIFIED;
+
+  /**
+   * ConnectionBroken shows if the connection to the system is broken
+   *
+   * @generated from field: bool connection_broken = 3;
+   */
+  connectionBroken = false;
+
+  /**
+   * ApiVersion of the system
+   *
+   * @generated from field: string api_version = 4;
+   */
+  apiVersion = "";
+
+  constructor(data?: PartialMessage<StatusServiceWatchResponse>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "status.v1.StatusServiceWatchResponse";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "health", kind: "message", T: Health },
+    { no: 2, name: "overall_status", kind: "enum", T: proto3.getEnumType(ServiceStatus) },
+    { no: 3, name: "connection_broken", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
+    { no: 4, name: "api_version", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): StatusServiceWatchResponse {
+    return new StatusServiceWatchResponse().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): StatusServiceWatchResponse {
+    return new StatusServiceWatchResponse().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): StatusServiceWatchResponse {
+    return new StatusServiceWatchResponse().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: StatusServiceWatchResponse | PlainMessage<StatusServiceWatchResponse> | undefined, b: StatusServiceWatchResponse | PlainMessage<StatusServiceWatchResponse> | undefined): boolean {
+    return proto3.util.equals(StatusServiceWatchResponse, a, b);
   }
 }
 

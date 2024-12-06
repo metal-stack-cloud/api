@@ -1,4 +1,4 @@
-import { StatusServiceGetRequest, StatusServiceGetResponse } from "./status_pb.js";
+import { StatusServiceGetRequest, StatusServiceGetResponse, StatusServiceWatchRequest, StatusServiceWatchResponse } from "./status_pb.js";
 import { MethodKind } from "@bufbuild/protobuf";
 /**
  * StatusService serves status related functions
@@ -19,6 +19,17 @@ export declare const StatusService: {
             readonly I: typeof StatusServiceGetRequest;
             readonly O: typeof StatusServiceGetResponse;
             readonly kind: MethodKind.Unary;
+        };
+        /**
+         * Watch the system status
+         *
+         * @generated from rpc status.v1.StatusService.Watch
+         */
+        readonly watch: {
+            readonly name: "Watch";
+            readonly I: typeof StatusServiceWatchRequest;
+            readonly O: typeof StatusServiceWatchResponse;
+            readonly kind: MethodKind.ServerStreaming;
         };
     };
 };

@@ -12,13 +12,29 @@ service MessageService {
   rpc List(MessageServiceListRequest) returns (MessageServiceListResponse) {
     option (api.v1.visibility) = VISIBILITY_PUBLIC;
   }
+
+  // Watch returns all messages of interest
+  rpc Watch(MessageServiceWatchRequest) returns (stream MessageServiceWatchResponse) {
+    option (api.v1.visibility) = VISIBILITY_PUBLIC;
+  }
 }
 
 // MessageServiceListRequest is the request payload to get the messages
 message MessageServiceListRequest {}
 
+// MessageServiceWatchRequest is the request payload to watch the messages
+message MessageServiceWatchRequest {}
+
 // MessageServiceListResponse is the response payload with the messages
 message MessageServiceListResponse {
+  // Items is a slice of all messages
+  repeated Message items = 1;
+  // PinnedItems are messages which are of special interest
+  repeated Message pinned_items = 2;
+}
+
+// MessageServiceWatchResponse is the response payload with the messages
+message MessageServiceWatchResponse {
   // Items is a slice of all messages
   repeated Message items = 1;
   // PinnedItems are messages which are of special interest

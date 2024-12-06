@@ -3,7 +3,7 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import { MessageServiceListRequest, MessageServiceListResponse } from "./message_pb.js";
+import { MessageServiceListRequest, MessageServiceListResponse, MessageServiceWatchRequest, MessageServiceWatchResponse } from "./message_pb.js";
 import { MethodKind } from "@bufbuild/protobuf";
 
 /**
@@ -25,6 +25,17 @@ export const MessageService = {
       I: MessageServiceListRequest,
       O: MessageServiceListResponse,
       kind: MethodKind.Unary,
+    },
+    /**
+     * Watch returns all messages of interest
+     *
+     * @generated from rpc status.v1.MessageService.Watch
+     */
+    watch: {
+      name: "Watch",
+      I: MessageServiceWatchRequest,
+      O: MessageServiceWatchResponse,
+      kind: MethodKind.ServerStreaming,
     },
   }
 } as const;

@@ -2,7 +2,7 @@
 // @generated from file status/v1/status.proto (package status.v1, syntax proto3)
 /* eslint-disable */
 // @ts-nocheck
-import { StatusServiceGetRequest, StatusServiceGetResponse } from "./status_pb.js";
+import { StatusServiceGetRequest, StatusServiceGetResponse, StatusServiceWatchRequest, StatusServiceWatchResponse } from "./status_pb.js";
 import { MethodKind } from "@bufbuild/protobuf";
 /**
  * StatusService serves status related functions
@@ -23,6 +23,17 @@ export const StatusService = {
             I: StatusServiceGetRequest,
             O: StatusServiceGetResponse,
             kind: MethodKind.Unary,
+        },
+        /**
+         * Watch the system status
+         *
+         * @generated from rpc status.v1.StatusService.Watch
+         */
+        watch: {
+            name: "Watch",
+            I: StatusServiceWatchRequest,
+            O: StatusServiceWatchResponse,
+            kind: MethodKind.ServerStreaming,
         },
     }
 };

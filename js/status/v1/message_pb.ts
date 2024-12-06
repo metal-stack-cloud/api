@@ -98,6 +98,39 @@ export class MessageServiceListRequest extends Message$1<MessageServiceListReque
 }
 
 /**
+ * MessageServiceWatchRequest is the request payload to watch the messages
+ *
+ * @generated from message status.v1.MessageServiceWatchRequest
+ */
+export class MessageServiceWatchRequest extends Message$1<MessageServiceWatchRequest> {
+  constructor(data?: PartialMessage<MessageServiceWatchRequest>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "status.v1.MessageServiceWatchRequest";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): MessageServiceWatchRequest {
+    return new MessageServiceWatchRequest().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): MessageServiceWatchRequest {
+    return new MessageServiceWatchRequest().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): MessageServiceWatchRequest {
+    return new MessageServiceWatchRequest().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: MessageServiceWatchRequest | PlainMessage<MessageServiceWatchRequest> | undefined, b: MessageServiceWatchRequest | PlainMessage<MessageServiceWatchRequest> | undefined): boolean {
+    return proto3.util.equals(MessageServiceWatchRequest, a, b);
+  }
+}
+
+/**
  * MessageServiceListResponse is the response payload with the messages
  *
  * @generated from message status.v1.MessageServiceListResponse
@@ -143,6 +176,55 @@ export class MessageServiceListResponse extends Message$1<MessageServiceListResp
 
   static equals(a: MessageServiceListResponse | PlainMessage<MessageServiceListResponse> | undefined, b: MessageServiceListResponse | PlainMessage<MessageServiceListResponse> | undefined): boolean {
     return proto3.util.equals(MessageServiceListResponse, a, b);
+  }
+}
+
+/**
+ * MessageServiceWatchResponse is the response payload with the messages
+ *
+ * @generated from message status.v1.MessageServiceWatchResponse
+ */
+export class MessageServiceWatchResponse extends Message$1<MessageServiceWatchResponse> {
+  /**
+   * Items is a slice of all messages
+   *
+   * @generated from field: repeated status.v1.Message items = 1;
+   */
+  items: Message[] = [];
+
+  /**
+   * PinnedItems are messages which are of special interest
+   *
+   * @generated from field: repeated status.v1.Message pinned_items = 2;
+   */
+  pinnedItems: Message[] = [];
+
+  constructor(data?: PartialMessage<MessageServiceWatchResponse>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "status.v1.MessageServiceWatchResponse";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "items", kind: "message", T: Message, repeated: true },
+    { no: 2, name: "pinned_items", kind: "message", T: Message, repeated: true },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): MessageServiceWatchResponse {
+    return new MessageServiceWatchResponse().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): MessageServiceWatchResponse {
+    return new MessageServiceWatchResponse().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): MessageServiceWatchResponse {
+    return new MessageServiceWatchResponse().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: MessageServiceWatchResponse | PlainMessage<MessageServiceWatchResponse> | undefined, b: MessageServiceWatchResponse | PlainMessage<MessageServiceWatchResponse> | undefined): boolean {
+    return proto3.util.equals(MessageServiceWatchResponse, a, b);
   }
 }
 

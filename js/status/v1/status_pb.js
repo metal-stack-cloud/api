@@ -31,6 +31,32 @@ StatusServiceGetRequest.runtime = proto3;
 StatusServiceGetRequest.typeName = "status.v1.StatusServiceGetRequest";
 StatusServiceGetRequest.fields = proto3.util.newFieldList(() => []);
 /**
+ * StatusServiceWatchRequest is the request payload to get the status
+ *
+ * @generated from message status.v1.StatusServiceWatchRequest
+ */
+export class StatusServiceWatchRequest extends Message {
+    constructor(data) {
+        super();
+        proto3.util.initPartial(data, this);
+    }
+    static fromBinary(bytes, options) {
+        return new StatusServiceWatchRequest().fromBinary(bytes, options);
+    }
+    static fromJson(jsonValue, options) {
+        return new StatusServiceWatchRequest().fromJson(jsonValue, options);
+    }
+    static fromJsonString(jsonString, options) {
+        return new StatusServiceWatchRequest().fromJsonString(jsonString, options);
+    }
+    static equals(a, b) {
+        return proto3.util.equals(StatusServiceWatchRequest, a, b);
+    }
+}
+StatusServiceWatchRequest.runtime = proto3;
+StatusServiceWatchRequest.typeName = "status.v1.StatusServiceWatchRequest";
+StatusServiceWatchRequest.fields = proto3.util.newFieldList(() => []);
+/**
  * StatusServiceGetResponse is the response payload which describes the system status
  *
  * @generated from message status.v1.StatusServiceGetResponse
@@ -74,6 +100,55 @@ export class StatusServiceGetResponse extends Message {
 StatusServiceGetResponse.runtime = proto3;
 StatusServiceGetResponse.typeName = "status.v1.StatusServiceGetResponse";
 StatusServiceGetResponse.fields = proto3.util.newFieldList(() => [
+    { no: 1, name: "health", kind: "message", T: Health },
+    { no: 2, name: "overall_status", kind: "enum", T: proto3.getEnumType(ServiceStatus) },
+    { no: 3, name: "connection_broken", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
+    { no: 4, name: "api_version", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+]);
+/**
+ * StatusServiceWatchResponse is the response payload which describes the system status
+ *
+ * @generated from message status.v1.StatusServiceWatchResponse
+ */
+export class StatusServiceWatchResponse extends Message {
+    constructor(data) {
+        super();
+        /**
+         * OverallStatus is the status of the system
+         *
+         * @generated from field: api.v1.ServiceStatus overall_status = 2;
+         */
+        this.overallStatus = ServiceStatus.UNSPECIFIED;
+        /**
+         * ConnectionBroken shows if the connection to the system is broken
+         *
+         * @generated from field: bool connection_broken = 3;
+         */
+        this.connectionBroken = false;
+        /**
+         * ApiVersion of the system
+         *
+         * @generated from field: string api_version = 4;
+         */
+        this.apiVersion = "";
+        proto3.util.initPartial(data, this);
+    }
+    static fromBinary(bytes, options) {
+        return new StatusServiceWatchResponse().fromBinary(bytes, options);
+    }
+    static fromJson(jsonValue, options) {
+        return new StatusServiceWatchResponse().fromJson(jsonValue, options);
+    }
+    static fromJsonString(jsonString, options) {
+        return new StatusServiceWatchResponse().fromJsonString(jsonString, options);
+    }
+    static equals(a, b) {
+        return proto3.util.equals(StatusServiceWatchResponse, a, b);
+    }
+}
+StatusServiceWatchResponse.runtime = proto3;
+StatusServiceWatchResponse.typeName = "status.v1.StatusServiceWatchResponse";
+StatusServiceWatchResponse.fields = proto3.util.newFieldList(() => [
     { no: 1, name: "health", kind: "message", T: Health },
     { no: 2, name: "overall_status", kind: "enum", T: proto3.getEnumType(ServiceStatus) },
     { no: 3, name: "connection_broken", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
