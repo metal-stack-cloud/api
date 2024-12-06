@@ -17,6 +17,21 @@ export declare class StatusServiceGetRequest extends Message<StatusServiceGetReq
     static equals(a: StatusServiceGetRequest | PlainMessage<StatusServiceGetRequest> | undefined, b: StatusServiceGetRequest | PlainMessage<StatusServiceGetRequest> | undefined): boolean;
 }
 /**
+ * StatusServiceWatchRequest is the request payload to get the status
+ *
+ * @generated from message status.v1.StatusServiceWatchRequest
+ */
+export declare class StatusServiceWatchRequest extends Message<StatusServiceWatchRequest> {
+    constructor(data?: PartialMessage<StatusServiceWatchRequest>);
+    static readonly runtime: typeof proto3;
+    static readonly typeName = "status.v1.StatusServiceWatchRequest";
+    static readonly fields: FieldList;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): StatusServiceWatchRequest;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): StatusServiceWatchRequest;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): StatusServiceWatchRequest;
+    static equals(a: StatusServiceWatchRequest | PlainMessage<StatusServiceWatchRequest> | undefined, b: StatusServiceWatchRequest | PlainMessage<StatusServiceWatchRequest> | undefined): boolean;
+}
+/**
  * StatusServiceGetResponse is the response payload which describes the system status
  *
  * @generated from message status.v1.StatusServiceGetResponse
@@ -54,4 +69,43 @@ export declare class StatusServiceGetResponse extends Message<StatusServiceGetRe
     static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): StatusServiceGetResponse;
     static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): StatusServiceGetResponse;
     static equals(a: StatusServiceGetResponse | PlainMessage<StatusServiceGetResponse> | undefined, b: StatusServiceGetResponse | PlainMessage<StatusServiceGetResponse> | undefined): boolean;
+}
+/**
+ * StatusServiceWatchResponse is the response payload which describes the system status
+ *
+ * @generated from message status.v1.StatusServiceWatchResponse
+ */
+export declare class StatusServiceWatchResponse extends Message<StatusServiceWatchResponse> {
+    /**
+     * Health of the individual services
+     *
+     * @generated from field: api.v1.Health health = 1;
+     */
+    health?: Health;
+    /**
+     * OverallStatus is the status of the system
+     *
+     * @generated from field: api.v1.ServiceStatus overall_status = 2;
+     */
+    overallStatus: ServiceStatus;
+    /**
+     * ConnectionBroken shows if the connection to the system is broken
+     *
+     * @generated from field: bool connection_broken = 3;
+     */
+    connectionBroken: boolean;
+    /**
+     * ApiVersion of the system
+     *
+     * @generated from field: string api_version = 4;
+     */
+    apiVersion: string;
+    constructor(data?: PartialMessage<StatusServiceWatchResponse>);
+    static readonly runtime: typeof proto3;
+    static readonly typeName = "status.v1.StatusServiceWatchResponse";
+    static readonly fields: FieldList;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): StatusServiceWatchResponse;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): StatusServiceWatchResponse;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): StatusServiceWatchResponse;
+    static equals(a: StatusServiceWatchResponse | PlainMessage<StatusServiceWatchResponse> | undefined, b: StatusServiceWatchResponse | PlainMessage<StatusServiceWatchResponse> | undefined): boolean;
 }

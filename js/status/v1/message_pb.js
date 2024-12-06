@@ -83,6 +83,32 @@ MessageServiceListRequest.runtime = proto3;
 MessageServiceListRequest.typeName = "status.v1.MessageServiceListRequest";
 MessageServiceListRequest.fields = proto3.util.newFieldList(() => []);
 /**
+ * MessageServiceWatchRequest is the request payload to watch the messages
+ *
+ * @generated from message status.v1.MessageServiceWatchRequest
+ */
+export class MessageServiceWatchRequest extends Message$1 {
+    constructor(data) {
+        super();
+        proto3.util.initPartial(data, this);
+    }
+    static fromBinary(bytes, options) {
+        return new MessageServiceWatchRequest().fromBinary(bytes, options);
+    }
+    static fromJson(jsonValue, options) {
+        return new MessageServiceWatchRequest().fromJson(jsonValue, options);
+    }
+    static fromJsonString(jsonString, options) {
+        return new MessageServiceWatchRequest().fromJsonString(jsonString, options);
+    }
+    static equals(a, b) {
+        return proto3.util.equals(MessageServiceWatchRequest, a, b);
+    }
+}
+MessageServiceWatchRequest.runtime = proto3;
+MessageServiceWatchRequest.typeName = "status.v1.MessageServiceWatchRequest";
+MessageServiceWatchRequest.fields = proto3.util.newFieldList(() => []);
+/**
  * MessageServiceListResponse is the response payload with the messages
  *
  * @generated from message status.v1.MessageServiceListResponse
@@ -120,6 +146,47 @@ export class MessageServiceListResponse extends Message$1 {
 MessageServiceListResponse.runtime = proto3;
 MessageServiceListResponse.typeName = "status.v1.MessageServiceListResponse";
 MessageServiceListResponse.fields = proto3.util.newFieldList(() => [
+    { no: 1, name: "items", kind: "message", T: Message, repeated: true },
+    { no: 2, name: "pinned_items", kind: "message", T: Message, repeated: true },
+]);
+/**
+ * MessageServiceWatchResponse is the response payload with the messages
+ *
+ * @generated from message status.v1.MessageServiceWatchResponse
+ */
+export class MessageServiceWatchResponse extends Message$1 {
+    constructor(data) {
+        super();
+        /**
+         * Items is a slice of all messages
+         *
+         * @generated from field: repeated status.v1.Message items = 1;
+         */
+        this.items = [];
+        /**
+         * PinnedItems are messages which are of special interest
+         *
+         * @generated from field: repeated status.v1.Message pinned_items = 2;
+         */
+        this.pinnedItems = [];
+        proto3.util.initPartial(data, this);
+    }
+    static fromBinary(bytes, options) {
+        return new MessageServiceWatchResponse().fromBinary(bytes, options);
+    }
+    static fromJson(jsonValue, options) {
+        return new MessageServiceWatchResponse().fromJson(jsonValue, options);
+    }
+    static fromJsonString(jsonString, options) {
+        return new MessageServiceWatchResponse().fromJsonString(jsonString, options);
+    }
+    static equals(a, b) {
+        return proto3.util.equals(MessageServiceWatchResponse, a, b);
+    }
+}
+MessageServiceWatchResponse.runtime = proto3;
+MessageServiceWatchResponse.typeName = "status.v1.MessageServiceWatchResponse";
+MessageServiceWatchResponse.fields = proto3.util.newFieldList(() => [
     { no: 1, name: "items", kind: "message", T: Message, repeated: true },
     { no: 2, name: "pinned_items", kind: "message", T: Message, repeated: true },
 ]);

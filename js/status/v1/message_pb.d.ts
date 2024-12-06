@@ -59,6 +59,21 @@ export declare class MessageServiceListRequest extends Message$1<MessageServiceL
     static equals(a: MessageServiceListRequest | PlainMessage<MessageServiceListRequest> | undefined, b: MessageServiceListRequest | PlainMessage<MessageServiceListRequest> | undefined): boolean;
 }
 /**
+ * MessageServiceWatchRequest is the request payload to watch the messages
+ *
+ * @generated from message status.v1.MessageServiceWatchRequest
+ */
+export declare class MessageServiceWatchRequest extends Message$1<MessageServiceWatchRequest> {
+    constructor(data?: PartialMessage<MessageServiceWatchRequest>);
+    static readonly runtime: typeof proto3;
+    static readonly typeName = "status.v1.MessageServiceWatchRequest";
+    static readonly fields: FieldList;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): MessageServiceWatchRequest;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): MessageServiceWatchRequest;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): MessageServiceWatchRequest;
+    static equals(a: MessageServiceWatchRequest | PlainMessage<MessageServiceWatchRequest> | undefined, b: MessageServiceWatchRequest | PlainMessage<MessageServiceWatchRequest> | undefined): boolean;
+}
+/**
  * MessageServiceListResponse is the response payload with the messages
  *
  * @generated from message status.v1.MessageServiceListResponse
@@ -84,6 +99,33 @@ export declare class MessageServiceListResponse extends Message$1<MessageService
     static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): MessageServiceListResponse;
     static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): MessageServiceListResponse;
     static equals(a: MessageServiceListResponse | PlainMessage<MessageServiceListResponse> | undefined, b: MessageServiceListResponse | PlainMessage<MessageServiceListResponse> | undefined): boolean;
+}
+/**
+ * MessageServiceWatchResponse is the response payload with the messages
+ *
+ * @generated from message status.v1.MessageServiceWatchResponse
+ */
+export declare class MessageServiceWatchResponse extends Message$1<MessageServiceWatchResponse> {
+    /**
+     * Items is a slice of all messages
+     *
+     * @generated from field: repeated status.v1.Message items = 1;
+     */
+    items: Message[];
+    /**
+     * PinnedItems are messages which are of special interest
+     *
+     * @generated from field: repeated status.v1.Message pinned_items = 2;
+     */
+    pinnedItems: Message[];
+    constructor(data?: PartialMessage<MessageServiceWatchResponse>);
+    static readonly runtime: typeof proto3;
+    static readonly typeName = "status.v1.MessageServiceWatchResponse";
+    static readonly fields: FieldList;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): MessageServiceWatchResponse;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): MessageServiceWatchResponse;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): MessageServiceWatchResponse;
+    static equals(a: MessageServiceWatchResponse | PlainMessage<MessageServiceWatchResponse> | undefined, b: MessageServiceWatchResponse | PlainMessage<MessageServiceWatchResponse> | undefined): boolean;
 }
 /**
  * Message is a test message to be displayed in the status

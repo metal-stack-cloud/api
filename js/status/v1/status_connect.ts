@@ -3,7 +3,7 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import { StatusServiceGetRequest, StatusServiceGetResponse } from "./status_pb.js";
+import { StatusServiceGetRequest, StatusServiceGetResponse, StatusServiceWatchRequest, StatusServiceWatchResponse } from "./status_pb.js";
 import { MethodKind } from "@bufbuild/protobuf";
 
 /**
@@ -25,6 +25,17 @@ export const StatusService = {
       I: StatusServiceGetRequest,
       O: StatusServiceGetResponse,
       kind: MethodKind.Unary,
+    },
+    /**
+     * Watch the system status
+     *
+     * @generated from rpc status.v1.StatusService.Watch
+     */
+    watch: {
+      name: "Watch",
+      I: StatusServiceWatchRequest,
+      O: StatusServiceWatchResponse,
+      kind: MethodKind.ServerStreaming,
     },
   }
 } as const;
