@@ -41,37 +41,44 @@ export class AuditTrace extends Message<AuditTrace> {
   tenant = "";
 
   /**
+   * Project is the project targeted by the api call
+   *
+   * @generated from field: string project = 5;
+   */
+  project = "";
+
+  /**
    * Method is the api method that was called
    *
-   * @generated from field: string method = 5;
+   * @generated from field: string method = 6;
    */
   method = "";
 
   /**
    * Request is the payload of the request
    *
-   * @generated from field: string request_payload = 6;
+   * @generated from field: string request_payload = 7;
    */
   requestPayload = "";
 
   /**
    * Response is the payload of the response
    *
-   * @generated from field: string response_payload = 7;
+   * @generated from field: string response_payload = 8;
    */
   responsePayload = "";
 
   /**
    * SourceIP contains the ip address of the caller
    *
-   * @generated from field: string source_ip = 8;
+   * @generated from field: string source_ip = 9;
    */
   sourceIp = "";
 
   /**
    * ResultCode is a string describing the result of the api call
    *
-   * @generated from field: string result_code = 9;
+   * @generated from field: string result_code = 10;
    */
   resultCode = "";
 
@@ -87,11 +94,12 @@ export class AuditTrace extends Message<AuditTrace> {
     { no: 2, name: "timestamp", kind: "message", T: Timestamp },
     { no: 3, name: "user", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 4, name: "tenant", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 5, name: "method", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 6, name: "request_payload", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 7, name: "response_payload", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 8, name: "source_ip", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 9, name: "result_code", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 5, name: "project", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 6, name: "method", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 7, name: "request_payload", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 8, name: "response_payload", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 9, name: "source_ip", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 10, name: "result_code", kind: "scalar", T: 9 /* ScalarType.STRING */ },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): AuditTrace {
@@ -160,16 +168,23 @@ export class AuditServiceListRequest extends Message<AuditServiceListRequest> {
   tenant = "";
 
   /**
+   * Project is the project targeted by the api call
+   *
+   * @generated from field: string project = 7;
+   */
+  project = "";
+
+  /**
    * Method is the api method that was called
    *
-   * @generated from field: string method = 7;
+   * @generated from field: string method = 8;
    */
   method = "";
 
   /**
    * ResultCode is a string describing the result of the api call
    *
-   * @generated from field: string result_code = 8;
+   * @generated from field: string result_code = 9;
    */
   resultCode = "";
 
@@ -187,8 +202,9 @@ export class AuditServiceListRequest extends Message<AuditServiceListRequest> {
     { no: 4, name: "to", kind: "message", T: Timestamp },
     { no: 5, name: "user", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 6, name: "tenant", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 7, name: "method", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 8, name: "result_code", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 7, name: "project", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 8, name: "method", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 9, name: "result_code", kind: "scalar", T: 9 /* ScalarType.STRING */ },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): AuditServiceListRequest {

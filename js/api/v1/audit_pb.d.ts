@@ -31,33 +31,39 @@ export declare class AuditTrace extends Message<AuditTrace> {
      */
     tenant: string;
     /**
+     * Project is the project targeted by the api call
+     *
+     * @generated from field: string project = 5;
+     */
+    project: string;
+    /**
      * Method is the api method that was called
      *
-     * @generated from field: string method = 5;
+     * @generated from field: string method = 6;
      */
     method: string;
     /**
      * Request is the payload of the request
      *
-     * @generated from field: string request_payload = 6;
+     * @generated from field: string request_payload = 7;
      */
     requestPayload: string;
     /**
      * Response is the payload of the response
      *
-     * @generated from field: string response_payload = 7;
+     * @generated from field: string response_payload = 8;
      */
     responsePayload: string;
     /**
      * SourceIP contains the ip address of the caller
      *
-     * @generated from field: string source_ip = 8;
+     * @generated from field: string source_ip = 9;
      */
     sourceIp: string;
     /**
      * ResultCode is a string describing the result of the api call
      *
-     * @generated from field: string result_code = 9;
+     * @generated from field: string result_code = 10;
      */
     resultCode: string;
     constructor(data?: PartialMessage<AuditTrace>);
@@ -112,15 +118,21 @@ export declare class AuditServiceListRequest extends Message<AuditServiceListReq
      */
     tenant: string;
     /**
+     * Project is the project targeted by the api call
+     *
+     * @generated from field: string project = 7;
+     */
+    project: string;
+    /**
      * Method is the api method that was called
      *
-     * @generated from field: string method = 7;
+     * @generated from field: string method = 8;
      */
     method: string;
     /**
      * ResultCode is a string describing the result of the api call
      *
-     * @generated from field: string result_code = 8;
+     * @generated from field: string result_code = 9;
      */
     resultCode: string;
     constructor(data?: PartialMessage<AuditServiceListRequest>);

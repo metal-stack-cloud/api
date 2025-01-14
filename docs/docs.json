@@ -11419,6 +11419,18 @@
               "defaultValue": ""
             },
             {
+              "name": "project",
+              "description": "Project is the project targeted by the api call",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
               "name": "method",
               "description": "Method is the api method that was called",
               "label": "",
@@ -11517,6 +11529,18 @@
             {
               "name": "tenant",
               "description": "Tenant is the tenant targeted by the api call",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "project",
+              "description": "Project is the project targeted by the api call",
               "label": "",
               "type": "string",
               "longType": "string",
