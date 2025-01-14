@@ -31,16 +31,18 @@ message AuditTrace {
   string user = 3;
   // Tenant is the tenant targeted by the api call
   string tenant = 4;
+  // Project is the project targeted by the api call
+  string project = 5;
   // Method is the api method that was called
-  string method = 5;
+  string method = 6;
   // Request is the payload of the request
-  string request_payload = 6;
+  string request_payload = 7;
   // Response is the payload of the response
-  string response_payload = 7;
+  string response_payload = 8;
   // SourceIP contains the ip address of the caller
-  string source_ip = 8;
+  string source_ip = 9;
   // ResultCode is a string describing the result of the api call
-  string result_code = 9;
+  string result_code = 10;
 }
 
 // AuditServiceListRequest is the request payload to list audits
@@ -57,10 +59,12 @@ message AuditServiceListRequest {
   string user = 5;
   // Tenant is the tenant targeted by the api call
   string tenant = 6;
+  // Project is the project targeted by the api call
+  string project = 7;
   // Method is the api method that was called
-  string method = 7;
+  string method = 8;
   // ResultCode is a string describing the result of the api call
-  string result_code = 8;
+  string result_code = 9;
 }
 
 // AuditServiceListResponse is the response payload of a audit list request
