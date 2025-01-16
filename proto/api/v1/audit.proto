@@ -50,7 +50,7 @@ message AuditServiceListRequest {
   // Login of the tenant
   string login = 1;
   // Uuid of the audit trace
-  string uuid = 2 [(buf.validate.field).string.uuid = true];
+  optional string uuid = 2 [(buf.validate.field).string.uuid = true];
   // From describes the start of the time window in which to list audit traces
   google.protobuf.Timestamp from = 3;
   // To describes the end of the time window in which to list audit traces

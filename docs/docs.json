@@ -11343,7 +11343,7 @@
           "description": "AuditServiceListRequest is the request payload to list audits",
           "hasExtensions": false,
           "hasFields": true,
-          "hasOneofs": false,
+          "hasOneofs": true,
           "extensions": [],
           "fields": [
             {
@@ -11361,13 +11361,13 @@
             {
               "name": "uuid",
               "description": "Uuid of the audit trace",
-              "label": "",
+              "label": "optional",
               "type": "string",
               "longType": "string",
               "fullType": "string",
               "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
+              "isoneof": true,
+              "oneofdecl": "_uuid",
               "defaultValue": ""
             },
             {

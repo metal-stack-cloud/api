@@ -90,9 +90,9 @@ export declare class AuditServiceListRequest extends Message<AuditServiceListReq
     /**
      * Uuid of the audit trace
      *
-     * @generated from field: string uuid = 2;
+     * @generated from field: optional string uuid = 2;
      */
-    uuid: string;
+    uuid?: string;
     /**
      * From describes the start of the time window in which to list audit traces
      *

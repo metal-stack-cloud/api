@@ -109,12 +109,6 @@ export class AuditServiceListRequest extends Message {
          */
         this.login = "";
         /**
-         * Uuid of the audit trace
-         *
-         * @generated from field: string uuid = 2;
-         */
-        this.uuid = "";
-        /**
          * User is the user who called the api method
          *
          * @generated from field: string user = 5;
@@ -163,7 +157,7 @@ AuditServiceListRequest.runtime = proto3;
 AuditServiceListRequest.typeName = "api.v1.AuditServiceListRequest";
 AuditServiceListRequest.fields = proto3.util.newFieldList(() => [
     { no: 1, name: "login", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 2, name: "uuid", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "uuid", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
     { no: 3, name: "from", kind: "message", T: Timestamp },
     { no: 4, name: "to", kind: "message", T: Timestamp },
     { no: 5, name: "user", kind: "scalar", T: 9 /* ScalarType.STRING */ },

@@ -135,9 +135,9 @@ export class AuditServiceListRequest extends Message<AuditServiceListRequest> {
   /**
    * Uuid of the audit trace
    *
-   * @generated from field: string uuid = 2;
+   * @generated from field: optional string uuid = 2;
    */
-  uuid = "";
+  uuid?: string;
 
   /**
    * From describes the start of the time window in which to list audit traces
@@ -197,7 +197,7 @@ export class AuditServiceListRequest extends Message<AuditServiceListRequest> {
   static readonly typeName = "api.v1.AuditServiceListRequest";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
     { no: 1, name: "login", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 2, name: "uuid", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "uuid", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
     { no: 3, name: "from", kind: "message", T: Timestamp },
     { no: 4, name: "to", kind: "message", T: Timestamp },
     { no: 5, name: "user", kind: "scalar", T: 9 /* ScalarType.STRING */ },
