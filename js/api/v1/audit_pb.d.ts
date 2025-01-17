@@ -108,9 +108,9 @@ export declare class AuditServiceListRequest extends Message<AuditServiceListReq
     /**
      * User is the user who called the api method
      *
-     * @generated from field: string user = 5;
+     * @generated from field: optional string user = 5;
      */
-    user: string;
+    user?: string;
     /**
      * Tenant is the tenant targeted by the api call
      *
@@ -120,21 +120,21 @@ export declare class AuditServiceListRequest extends Message<AuditServiceListReq
     /**
      * Project is the project targeted by the api call
      *
-     * @generated from field: string project = 7;
+     * @generated from field: optional string project = 7;
      */
-    project: string;
+    project?: string;
     /**
      * Method is the api method that was called
      *
-     * @generated from field: string method = 8;
+     * @generated from field: optional string method = 8;
      */
-    method: string;
+    method?: string;
     /**
      * ResultCode is a string describing the result of the api call
      *
-     * @generated from field: string result_code = 9;
+     * @generated from field: optional string result_code = 9;
      */
-    resultCode: string;
+    resultCode?: string;
     constructor(data?: PartialMessage<AuditServiceListRequest>);
     static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.AuditServiceListRequest";

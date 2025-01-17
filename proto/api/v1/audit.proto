@@ -56,15 +56,15 @@ message AuditServiceListRequest {
   // To describes the end of the time window in which to list audit traces
   google.protobuf.Timestamp to = 4;
   // User is the user who called the api method
-  string user = 5;
+  optional string user = 5;
   // Tenant is the tenant targeted by the api call
   string tenant = 6;
   // Project is the project targeted by the api call
-  string project = 7;
+  optional string project = 7;
   // Method is the api method that was called
-  string method = 8;
+  optional string method = 8;
   // ResultCode is a string describing the result of the api call
-  string result_code = 9;
+  optional string result_code = 9;
 }
 
 // AuditServiceListResponse is the response payload of a audit list request

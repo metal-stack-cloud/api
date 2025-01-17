@@ -109,35 +109,11 @@ export class AuditServiceListRequest extends Message {
          */
         this.login = "";
         /**
-         * User is the user who called the api method
-         *
-         * @generated from field: string user = 5;
-         */
-        this.user = "";
-        /**
          * Tenant is the tenant targeted by the api call
          *
          * @generated from field: string tenant = 6;
          */
         this.tenant = "";
-        /**
-         * Project is the project targeted by the api call
-         *
-         * @generated from field: string project = 7;
-         */
-        this.project = "";
-        /**
-         * Method is the api method that was called
-         *
-         * @generated from field: string method = 8;
-         */
-        this.method = "";
-        /**
-         * ResultCode is a string describing the result of the api call
-         *
-         * @generated from field: string result_code = 9;
-         */
-        this.resultCode = "";
         proto3.util.initPartial(data, this);
     }
     static fromBinary(bytes, options) {
@@ -160,11 +136,11 @@ AuditServiceListRequest.fields = proto3.util.newFieldList(() => [
     { no: 2, name: "uuid", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
     { no: 3, name: "from", kind: "message", T: Timestamp },
     { no: 4, name: "to", kind: "message", T: Timestamp },
-    { no: 5, name: "user", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 5, name: "user", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
     { no: 6, name: "tenant", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 7, name: "project", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 8, name: "method", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 9, name: "result_code", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 7, name: "project", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
+    { no: 8, name: "method", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
+    { no: 9, name: "result_code", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
 ]);
 /**
  * AuditServiceListResponse is the response payload of a audit list request

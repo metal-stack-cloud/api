@@ -11397,13 +11397,13 @@
             {
               "name": "user",
               "description": "User is the user who called the api method",
-              "label": "",
+              "label": "optional",
               "type": "string",
               "longType": "string",
               "fullType": "string",
               "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
+              "isoneof": true,
+              "oneofdecl": "_user",
               "defaultValue": ""
             },
             {
@@ -11421,37 +11421,37 @@
             {
               "name": "project",
               "description": "Project is the project targeted by the api call",
-              "label": "",
+              "label": "optional",
               "type": "string",
               "longType": "string",
               "fullType": "string",
               "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
+              "isoneof": true,
+              "oneofdecl": "_project",
               "defaultValue": ""
             },
             {
               "name": "method",
               "description": "Method is the api method that was called",
-              "label": "",
+              "label": "optional",
               "type": "string",
               "longType": "string",
               "fullType": "string",
               "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
+              "isoneof": true,
+              "oneofdecl": "_method",
               "defaultValue": ""
             },
             {
               "name": "result_code",
               "description": "ResultCode is a string describing the result of the api call",
-              "label": "",
+              "label": "optional",
               "type": "string",
               "longType": "string",
               "fullType": "string",
               "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
+              "isoneof": true,
+              "oneofdecl": "_result_code",
               "defaultValue": ""
             }
           ]
