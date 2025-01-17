@@ -135,6 +135,12 @@ export declare class AuditServiceListRequest extends Message<AuditServiceListReq
      * @generated from field: optional string result_code = 9;
      */
     resultCode?: string;
+    /**
+     * Limit is the maximum number of audits to return
+     *
+     * @generated from field: optional uint64 limit = 10;
+     */
+    limit?: bigint;
     constructor(data?: PartialMessage<AuditServiceListRequest>);
     static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.AuditServiceListRequest";

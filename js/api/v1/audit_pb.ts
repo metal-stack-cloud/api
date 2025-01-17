@@ -188,6 +188,13 @@ export class AuditServiceListRequest extends Message<AuditServiceListRequest> {
    */
   resultCode?: string;
 
+  /**
+   * Limit is the maximum number of audits to return
+   *
+   * @generated from field: optional uint64 limit = 10;
+   */
+  limit?: bigint;
+
   constructor(data?: PartialMessage<AuditServiceListRequest>) {
     super();
     proto3.util.initPartial(data, this);
@@ -205,6 +212,7 @@ export class AuditServiceListRequest extends Message<AuditServiceListRequest> {
     { no: 7, name: "project", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
     { no: 8, name: "method", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
     { no: 9, name: "result_code", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
+    { no: 10, name: "limit", kind: "scalar", T: 4 /* ScalarType.UINT64 */, opt: true },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): AuditServiceListRequest {
