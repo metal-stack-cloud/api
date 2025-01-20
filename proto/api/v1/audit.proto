@@ -64,7 +64,11 @@ message AuditServiceListRequest {
   // Method is the api method that was called
   optional string method = 8;
   // ResultCode is a string describing the result of the api call
-  optional string result_code = 9;
+  optional int32 result_code = 9;
+  // Error is a string providing text-search of the error field
+  optional string error = 10;
+  // Body is a string providing text-search of the body field
+  optional string body = 11;
 }
 
 // AuditServiceListResponse is the response payload of a audit list request

@@ -11446,12 +11446,36 @@
               "name": "result_code",
               "description": "ResultCode is a string describing the result of the api call",
               "label": "optional",
+              "type": "int32",
+              "longType": "int32",
+              "fullType": "int32",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "_result_code",
+              "defaultValue": ""
+            },
+            {
+              "name": "error",
+              "description": "Error is a string providing text-search of the error field",
+              "label": "optional",
               "type": "string",
               "longType": "string",
               "fullType": "string",
               "ismap": false,
               "isoneof": true,
-              "oneofdecl": "_result_code",
+              "oneofdecl": "_error",
+              "defaultValue": ""
+            },
+            {
+              "name": "body",
+              "description": "Body is a string providing text-search of the body field",
+              "label": "optional",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "_body",
               "defaultValue": ""
             }
           ]

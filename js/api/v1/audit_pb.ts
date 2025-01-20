@@ -184,9 +184,23 @@ export class AuditServiceListRequest extends Message<AuditServiceListRequest> {
   /**
    * ResultCode is a string describing the result of the api call
    *
-   * @generated from field: optional string result_code = 9;
+   * @generated from field: optional int32 result_code = 9;
    */
-  resultCode?: string;
+  resultCode?: number;
+
+  /**
+   * Error is a string providing text-search of the error field
+   *
+   * @generated from field: optional string error = 10;
+   */
+  error?: string;
+
+  /**
+   * Body is a string providing text-search of the body field
+   *
+   * @generated from field: optional string body = 11;
+   */
+  body?: string;
 
   constructor(data?: PartialMessage<AuditServiceListRequest>) {
     super();
@@ -204,7 +218,9 @@ export class AuditServiceListRequest extends Message<AuditServiceListRequest> {
     { no: 6, name: "tenant", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 7, name: "project", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
     { no: 8, name: "method", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
-    { no: 9, name: "result_code", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
+    { no: 9, name: "result_code", kind: "scalar", T: 5 /* ScalarType.INT32 */, opt: true },
+    { no: 10, name: "error", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
+    { no: 11, name: "body", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): AuditServiceListRequest {

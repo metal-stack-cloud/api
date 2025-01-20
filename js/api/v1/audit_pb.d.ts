@@ -132,9 +132,21 @@ export declare class AuditServiceListRequest extends Message<AuditServiceListReq
     /**
      * ResultCode is a string describing the result of the api call
      *
-     * @generated from field: optional string result_code = 9;
+     * @generated from field: optional int32 result_code = 9;
      */
-    resultCode?: string;
+    resultCode?: number;
+    /**
+     * Error is a string providing text-search of the error field
+     *
+     * @generated from field: optional string error = 10;
+     */
+    error?: string;
+    /**
+     * Body is a string providing text-search of the body field
+     *
+     * @generated from field: optional string body = 11;
+     */
+    body?: string;
     constructor(data?: PartialMessage<AuditServiceListRequest>);
     static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.AuditServiceListRequest";
