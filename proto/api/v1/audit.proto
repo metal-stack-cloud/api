@@ -65,8 +65,6 @@ message AuditServiceListRequest {
   optional string method = 8;
   // ResultCode is a string describing the result of the api call
   optional string result_code = 9;
-  // Limit is the maximum number of audits to return
-  optional uint64 limit = 10;
 }
 
 // AuditServiceListResponse is the response payload of a audit list request

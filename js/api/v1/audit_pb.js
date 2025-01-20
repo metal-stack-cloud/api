@@ -141,7 +141,6 @@ AuditServiceListRequest.fields = proto3.util.newFieldList(() => [
     { no: 7, name: "project", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
     { no: 8, name: "method", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
     { no: 9, name: "result_code", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
-    { no: 10, name: "limit", kind: "scalar", T: 4 /* ScalarType.UINT64 */, opt: true },
 ]);
 /**
  * AuditServiceListResponse is the response payload of a audit list request
