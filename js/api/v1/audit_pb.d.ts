@@ -66,6 +66,12 @@ export declare class AuditTrace extends Message<AuditTrace> {
      * @generated from field: string result_code = 10;
      */
     resultCode: string;
+    /**
+     * Error is a string describing the error of the api call
+     *
+     * @generated from field: string error = 11;
+     */
+    error: string;
     constructor(data?: PartialMessage<AuditTrace>);
     static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.AuditTrace";

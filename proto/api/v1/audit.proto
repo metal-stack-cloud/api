@@ -43,6 +43,8 @@ message AuditTrace {
   string source_ip = 9;
   // ResultCode is a string describing the result of the api call
   string result_code = 10;
+  // Error is a string describing the error of the api call
+  string error = 11;
 }
 
 // AuditServiceListRequest is the request payload to list audits

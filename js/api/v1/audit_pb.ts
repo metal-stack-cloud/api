@@ -82,6 +82,13 @@ export class AuditTrace extends Message<AuditTrace> {
    */
   resultCode = "";
 
+  /**
+   * Error is a string describing the error of the api call
+   *
+   * @generated from field: string error = 11;
+   */
+  error = "";
+
   constructor(data?: PartialMessage<AuditTrace>) {
     super();
     proto3.util.initPartial(data, this);
@@ -100,6 +107,7 @@ export class AuditTrace extends Message<AuditTrace> {
     { no: 8, name: "response_payload", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 9, name: "source_ip", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 10, name: "result_code", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 11, name: "error", kind: "scalar", T: 9 /* ScalarType.STRING */ },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): AuditTrace {

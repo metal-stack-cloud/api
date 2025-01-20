@@ -65,6 +65,12 @@ export class AuditTrace extends Message {
          * @generated from field: string result_code = 10;
          */
         this.resultCode = "";
+        /**
+         * Error is a string describing the error of the api call
+         *
+         * @generated from field: string error = 11;
+         */
+        this.error = "";
         proto3.util.initPartial(data, this);
     }
     static fromBinary(bytes, options) {
@@ -93,6 +99,7 @@ AuditTrace.fields = proto3.util.newFieldList(() => [
     { no: 8, name: "response_payload", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 9, name: "source_ip", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 10, name: "result_code", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 11, name: "error", kind: "scalar", T: 9 /* ScalarType.STRING */ },
 ]);
 /**
  * AuditServiceListRequest is the request payload to list audits
