@@ -78,9 +78,9 @@ export class AuditTrace extends Message<AuditTrace> {
   /**
    * ResultCode is a string describing the result of the api call
    *
-   * @generated from field: string result_code = 10;
+   * @generated from field: int32 result_code = 10;
    */
-  resultCode = "";
+  resultCode = 0;
 
   /**
    * Error is a string describing the error of the api call
@@ -106,7 +106,7 @@ export class AuditTrace extends Message<AuditTrace> {
     { no: 7, name: "request_payload", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 8, name: "response_payload", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 9, name: "source_ip", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 10, name: "result_code", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 10, name: "result_code", kind: "scalar", T: 5 /* ScalarType.INT32 */ },
     { no: 11, name: "error", kind: "scalar", T: 9 /* ScalarType.STRING */ },
   ]);
 

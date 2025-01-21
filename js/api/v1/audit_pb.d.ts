@@ -63,9 +63,9 @@ export declare class AuditTrace extends Message<AuditTrace> {
     /**
      * ResultCode is a string describing the result of the api call
      *
-     * @generated from field: string result_code = 10;
+     * @generated from field: int32 result_code = 10;
      */
-    resultCode: string;
+    resultCode: number;
     /**
      * Error is a string describing the error of the api call
      *

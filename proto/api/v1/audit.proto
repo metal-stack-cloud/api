@@ -42,7 +42,7 @@ message AuditTrace {
   // SourceIP contains the ip address of the caller
   string source_ip = 9;
   // ResultCode is a string describing the result of the api call
-  string result_code = 10;
+  int32 result_code = 10;
   // Error is a string describing the error of the api call
   string error = 11;
 }
