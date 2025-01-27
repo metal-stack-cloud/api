@@ -66,12 +66,6 @@ export declare class AuditTrace extends Message<AuditTrace> {
      * @generated from field: int32 result_code = 10;
      */
     resultCode: number;
-    /**
-     * Error is a string describing the error of the api call
-     *
-     * @generated from field: string error = 11;
-     */
-    error: string;
     constructor(data?: PartialMessage<AuditTrace>);
     static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.AuditTrace";
@@ -148,15 +142,9 @@ export declare class AuditServiceListRequest extends Message<AuditServiceListReq
      */
     resultCode?: number;
     /**
-     * Error is a string providing text-search of the error field
-     *
-     * @generated from field: optional string error = 11;
-     */
-    error?: string;
-    /**
      * Body is a string providing text-search of the body field
      *
-     * @generated from field: optional string body = 12;
+     * @generated from field: optional string body = 11;
      */
     body?: string;
     constructor(data?: PartialMessage<AuditServiceListRequest>);

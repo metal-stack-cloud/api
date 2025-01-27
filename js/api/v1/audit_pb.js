@@ -65,12 +65,6 @@ export class AuditTrace extends Message {
          * @generated from field: int32 result_code = 10;
          */
         this.resultCode = 0;
-        /**
-         * Error is a string describing the error of the api call
-         *
-         * @generated from field: string error = 11;
-         */
-        this.error = "";
         proto3.util.initPartial(data, this);
     }
     static fromBinary(bytes, options) {
@@ -99,7 +93,6 @@ AuditTrace.fields = proto3.util.newFieldList(() => [
     { no: 8, name: "response_payload", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 9, name: "source_ip", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 10, name: "result_code", kind: "scalar", T: 5 /* ScalarType.INT32 */ },
-    { no: 11, name: "error", kind: "scalar", T: 9 /* ScalarType.STRING */ },
 ]);
 /**
  * AuditServiceListRequest is the request payload to list audits
@@ -149,8 +142,7 @@ AuditServiceListRequest.fields = proto3.util.newFieldList(() => [
     { no: 8, name: "method", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
     { no: 9, name: "source_ip", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
     { no: 10, name: "result_code", kind: "scalar", T: 5 /* ScalarType.INT32 */, opt: true },
-    { no: 11, name: "error", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
-    { no: 12, name: "body", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
+    { no: 11, name: "body", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
 ]);
 /**
  * AuditServiceListResponse is the response payload of a audit list request

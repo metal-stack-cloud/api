@@ -82,13 +82,6 @@ export class AuditTrace extends Message<AuditTrace> {
    */
   resultCode = 0;
 
-  /**
-   * Error is a string describing the error of the api call
-   *
-   * @generated from field: string error = 11;
-   */
-  error = "";
-
   constructor(data?: PartialMessage<AuditTrace>) {
     super();
     proto3.util.initPartial(data, this);
@@ -107,7 +100,6 @@ export class AuditTrace extends Message<AuditTrace> {
     { no: 8, name: "response_payload", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 9, name: "source_ip", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 10, name: "result_code", kind: "scalar", T: 5 /* ScalarType.INT32 */ },
-    { no: 11, name: "error", kind: "scalar", T: 9 /* ScalarType.STRING */ },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): AuditTrace {
@@ -204,16 +196,9 @@ export class AuditServiceListRequest extends Message<AuditServiceListRequest> {
   resultCode?: number;
 
   /**
-   * Error is a string providing text-search of the error field
-   *
-   * @generated from field: optional string error = 11;
-   */
-  error?: string;
-
-  /**
    * Body is a string providing text-search of the body field
    *
-   * @generated from field: optional string body = 12;
+   * @generated from field: optional string body = 11;
    */
   body?: string;
 
@@ -235,8 +220,7 @@ export class AuditServiceListRequest extends Message<AuditServiceListRequest> {
     { no: 8, name: "method", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
     { no: 9, name: "source_ip", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
     { no: 10, name: "result_code", kind: "scalar", T: 5 /* ScalarType.INT32 */, opt: true },
-    { no: 11, name: "error", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
-    { no: 12, name: "body", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
+    { no: 11, name: "body", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): AuditServiceListRequest {
