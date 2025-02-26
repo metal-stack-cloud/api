@@ -31,13 +31,12 @@ export class TenantServiceListRequest extends Message {
 TenantServiceListRequest.runtime = proto3;
 TenantServiceListRequest.typeName = "admin.v1.TenantServiceListRequest";
 TenantServiceListRequest.fields = proto3.util.newFieldList(() => [
-    { no: 1, name: "login", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
+    { no: 9, name: "tenant", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
     { no: 2, name: "name", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
     { no: 3, name: "email", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
     { no: 5, name: "oauth_provider", kind: "enum", T: proto3.getEnumType(OAuthProvider), opt: true },
     { no: 6, name: "admitted", kind: "scalar", T: 8 /* ScalarType.BOOL */, opt: true },
     { no: 7, name: "paging", kind: "message", T: Paging },
-    { no: 8, name: "uuid", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
 ]);
 /**
  * TenantServiceListResponse is the response payload for a tenant list request

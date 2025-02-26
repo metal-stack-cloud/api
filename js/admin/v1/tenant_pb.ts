@@ -15,14 +15,14 @@ import { Tenant } from "../../api/v1/tenant_pb.js";
  */
 export class TenantServiceListRequest extends Message<TenantServiceListRequest> {
   /**
-   * Login of the tenant to list
+   * Tenant filters the result list by the given tenant id
    *
-   * @generated from field: optional string login = 1;
+   * @generated from field: optional string tenant = 9;
    */
-  login?: string;
+  tenant?: string;
 
   /**
-   * Name of the tenant to list
+   * Name filters the result list by the given tenant name
    *
    * @generated from field: optional string name = 2;
    */
@@ -56,13 +56,6 @@ export class TenantServiceListRequest extends Message<TenantServiceListRequest> 
    */
   paging?: Paging;
 
-  /**
-   * Uuid of the tenant to list
-   *
-   * @generated from field: optional string uuid = 8;
-   */
-  uuid?: string;
-
   constructor(data?: PartialMessage<TenantServiceListRequest>) {
     super();
     proto3.util.initPartial(data, this);
@@ -71,13 +64,12 @@ export class TenantServiceListRequest extends Message<TenantServiceListRequest> 
   static readonly runtime: typeof proto3 = proto3;
   static readonly typeName = "admin.v1.TenantServiceListRequest";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "login", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
+    { no: 9, name: "tenant", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
     { no: 2, name: "name", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
     { no: 3, name: "email", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
     { no: 5, name: "oauth_provider", kind: "enum", T: proto3.getEnumType(OAuthProvider), opt: true },
     { no: 6, name: "admitted", kind: "scalar", T: 8 /* ScalarType.BOOL */, opt: true },
     { no: 7, name: "paging", kind: "message", T: Paging },
-    { no: 8, name: "uuid", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): TenantServiceListRequest {
