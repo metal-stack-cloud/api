@@ -44,14 +44,6 @@ const (
 	StorageServiceListSnapshotsProcedure = "/admin.v1.StorageService/ListSnapshots"
 )
 
-// These variables are the protoreflect.Descriptor objects for the RPCs defined in this package.
-var (
-	storageServiceServiceDescriptor             = v1.File_admin_v1_storage_proto.Services().ByName("StorageService")
-	storageServiceClusterInfoMethodDescriptor   = storageServiceServiceDescriptor.Methods().ByName("ClusterInfo")
-	storageServiceListVolumesMethodDescriptor   = storageServiceServiceDescriptor.Methods().ByName("ListVolumes")
-	storageServiceListSnapshotsMethodDescriptor = storageServiceServiceDescriptor.Methods().ByName("ListSnapshots")
-)
-
 // StorageServiceClient is a client for the admin.v1.StorageService service.
 type StorageServiceClient interface {
 	// ClusterInfo returns overall statistics of the storage system
@@ -71,23 +63,24 @@ type StorageServiceClient interface {
 // http://api.acme.com or https://acme.com/grpc).
 func NewStorageServiceClient(httpClient connect.HTTPClient, baseURL string, opts ...connect.ClientOption) StorageServiceClient {
 	baseURL = strings.TrimRight(baseURL, "/")
+	storageServiceMethods := v1.File_admin_v1_storage_proto.Services().ByName("StorageService").Methods()
 	return &storageServiceClient{
 		clusterInfo: connect.NewClient[v1.StorageServiceClusterInfoRequest, v1.StorageServiceClusterInfoResponse](
 			httpClient,
 			baseURL+StorageServiceClusterInfoProcedure,
-			connect.WithSchema(storageServiceClusterInfoMethodDescriptor),
+			connect.WithSchema(storageServiceMethods.ByName("ClusterInfo")),
 			connect.WithClientOptions(opts...),
 		),
 		listVolumes: connect.NewClient[v1.StorageServiceListVolumesRequest, v1.StorageServiceListVolumesResponse](
 			httpClient,
 			baseURL+StorageServiceListVolumesProcedure,
-			connect.WithSchema(storageServiceListVolumesMethodDescriptor),
+			connect.WithSchema(storageServiceMethods.ByName("ListVolumes")),
 			connect.WithClientOptions(opts...),
 		),
 		listSnapshots: connect.NewClient[v1.StorageServiceListSnapshotsRequest, v1.StorageServiceListSnapshotsResponse](
 			httpClient,
 			baseURL+StorageServiceListSnapshotsProcedure,
-			connect.WithSchema(storageServiceListSnapshotsMethodDescriptor),
+			connect.WithSchema(storageServiceMethods.ByName("ListSnapshots")),
 			connect.WithClientOptions(opts...),
 		),
 	}
@@ -131,22 +124,23 @@ type StorageServiceHandler interface {
 // By default, handlers support the Connect, gRPC, and gRPC-Web protocols with the binary Protobuf
 // and JSON codecs. They also support gzip compression.
 func NewStorageServiceHandler(svc StorageServiceHandler, opts ...connect.HandlerOption) (string, http.Handler) {
+	storageServiceMethods := v1.File_admin_v1_storage_proto.Services().ByName("StorageService").Methods()
 	storageServiceClusterInfoHandler := connect.NewUnaryHandler(
 		StorageServiceClusterInfoProcedure,
 		svc.ClusterInfo,
-		connect.WithSchema(storageServiceClusterInfoMethodDescriptor),
+		connect.WithSchema(storageServiceMethods.ByName("ClusterInfo")),
 		connect.WithHandlerOptions(opts...),
 	)
 	storageServiceListVolumesHandler := connect.NewUnaryHandler(
 		StorageServiceListVolumesProcedure,
 		svc.ListVolumes,
-		connect.WithSchema(storageServiceListVolumesMethodDescriptor),
+		connect.WithSchema(storageServiceMethods.ByName("ListVolumes")),
 		connect.WithHandlerOptions(opts...),
 	)
 	storageServiceListSnapshotsHandler := connect.NewUnaryHandler(
 		StorageServiceListSnapshotsProcedure,
 		svc.ListSnapshots,
-		connect.WithSchema(storageServiceListSnapshotsMethodDescriptor),
+		connect.WithSchema(storageServiceMethods.ByName("ListSnapshots")),
 		connect.WithHandlerOptions(opts...),
 	)
 	return "/admin.v1.StorageService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {

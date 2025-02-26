@@ -45,16 +45,6 @@ const (
 	IPServiceDeleteProcedure = "/api.v1.IPService/Delete"
 )
 
-// These variables are the protoreflect.Descriptor objects for the RPCs defined in this package.
-var (
-	iPServiceServiceDescriptor        = v1.File_api_v1_ip_proto.Services().ByName("IPService")
-	iPServiceGetMethodDescriptor      = iPServiceServiceDescriptor.Methods().ByName("Get")
-	iPServiceAllocateMethodDescriptor = iPServiceServiceDescriptor.Methods().ByName("Allocate")
-	iPServiceUpdateMethodDescriptor   = iPServiceServiceDescriptor.Methods().ByName("Update")
-	iPServiceListMethodDescriptor     = iPServiceServiceDescriptor.Methods().ByName("List")
-	iPServiceDeleteMethodDescriptor   = iPServiceServiceDescriptor.Methods().ByName("Delete")
-)
-
 // IPServiceClient is a client for the api.v1.IPService service.
 type IPServiceClient interface {
 	// Get a ip
@@ -78,35 +68,36 @@ type IPServiceClient interface {
 // http://api.acme.com or https://acme.com/grpc).
 func NewIPServiceClient(httpClient connect.HTTPClient, baseURL string, opts ...connect.ClientOption) IPServiceClient {
 	baseURL = strings.TrimRight(baseURL, "/")
+	iPServiceMethods := v1.File_api_v1_ip_proto.Services().ByName("IPService").Methods()
 	return &iPServiceClient{
 		get: connect.NewClient[v1.IPServiceGetRequest, v1.IPServiceGetResponse](
 			httpClient,
 			baseURL+IPServiceGetProcedure,
-			connect.WithSchema(iPServiceGetMethodDescriptor),
+			connect.WithSchema(iPServiceMethods.ByName("Get")),
 			connect.WithClientOptions(opts...),
 		),
 		allocate: connect.NewClient[v1.IPServiceAllocateRequest, v1.IPServiceAllocateResponse](
 			httpClient,
 			baseURL+IPServiceAllocateProcedure,
-			connect.WithSchema(iPServiceAllocateMethodDescriptor),
+			connect.WithSchema(iPServiceMethods.ByName("Allocate")),
 			connect.WithClientOptions(opts...),
 		),
 		update: connect.NewClient[v1.IPServiceUpdateRequest, v1.IPServiceUpdateResponse](
 			httpClient,
 			baseURL+IPServiceUpdateProcedure,
-			connect.WithSchema(iPServiceUpdateMethodDescriptor),
+			connect.WithSchema(iPServiceMethods.ByName("Update")),
 			connect.WithClientOptions(opts...),
 		),
 		list: connect.NewClient[v1.IPServiceListRequest, v1.IPServiceListResponse](
 			httpClient,
 			baseURL+IPServiceListProcedure,
-			connect.WithSchema(iPServiceListMethodDescriptor),
+			connect.WithSchema(iPServiceMethods.ByName("List")),
 			connect.WithClientOptions(opts...),
 		),
 		delete: connect.NewClient[v1.IPServiceDeleteRequest, v1.IPServiceDeleteResponse](
 			httpClient,
 			baseURL+IPServiceDeleteProcedure,
-			connect.WithSchema(iPServiceDeleteMethodDescriptor),
+			connect.WithSchema(iPServiceMethods.ByName("Delete")),
 			connect.WithClientOptions(opts...),
 		),
 	}
@@ -166,34 +157,35 @@ type IPServiceHandler interface {
 // By default, handlers support the Connect, gRPC, and gRPC-Web protocols with the binary Protobuf
 // and JSON codecs. They also support gzip compression.
 func NewIPServiceHandler(svc IPServiceHandler, opts ...connect.HandlerOption) (string, http.Handler) {
+	iPServiceMethods := v1.File_api_v1_ip_proto.Services().ByName("IPService").Methods()
 	iPServiceGetHandler := connect.NewUnaryHandler(
 		IPServiceGetProcedure,
 		svc.Get,
-		connect.WithSchema(iPServiceGetMethodDescriptor),
+		connect.WithSchema(iPServiceMethods.ByName("Get")),
 		connect.WithHandlerOptions(opts...),
 	)
 	iPServiceAllocateHandler := connect.NewUnaryHandler(
 		IPServiceAllocateProcedure,
 		svc.Allocate,
-		connect.WithSchema(iPServiceAllocateMethodDescriptor),
+		connect.WithSchema(iPServiceMethods.ByName("Allocate")),
 		connect.WithHandlerOptions(opts...),
 	)
 	iPServiceUpdateHandler := connect.NewUnaryHandler(
 		IPServiceUpdateProcedure,
 		svc.Update,
-		connect.WithSchema(iPServiceUpdateMethodDescriptor),
+		connect.WithSchema(iPServiceMethods.ByName("Update")),
 		connect.WithHandlerOptions(opts...),
 	)
 	iPServiceListHandler := connect.NewUnaryHandler(
 		IPServiceListProcedure,
 		svc.List,
-		connect.WithSchema(iPServiceListMethodDescriptor),
+		connect.WithSchema(iPServiceMethods.ByName("List")),
 		connect.WithHandlerOptions(opts...),
 	)
 	iPServiceDeleteHandler := connect.NewUnaryHandler(
 		IPServiceDeleteProcedure,
 		svc.Delete,
-		connect.WithSchema(iPServiceDeleteMethodDescriptor),
+		connect.WithSchema(iPServiceMethods.ByName("Delete")),
 		connect.WithHandlerOptions(opts...),
 	)
 	return "/api.v1.IPService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {

@@ -42,14 +42,6 @@ const (
 	ClusterServiceCredentialsProcedure = "/admin.v1.ClusterService/Credentials"
 )
 
-// These variables are the protoreflect.Descriptor objects for the RPCs defined in this package.
-var (
-	clusterServiceServiceDescriptor           = v1.File_admin_v1_cluster_proto.Services().ByName("ClusterService")
-	clusterServiceGetMethodDescriptor         = clusterServiceServiceDescriptor.Methods().ByName("Get")
-	clusterServiceListMethodDescriptor        = clusterServiceServiceDescriptor.Methods().ByName("List")
-	clusterServiceCredentialsMethodDescriptor = clusterServiceServiceDescriptor.Methods().ByName("Credentials")
-)
-
 // ClusterServiceClient is a client for the admin.v1.ClusterService service.
 type ClusterServiceClient interface {
 	// Get a cluster
@@ -69,23 +61,24 @@ type ClusterServiceClient interface {
 // http://api.acme.com or https://acme.com/grpc).
 func NewClusterServiceClient(httpClient connect.HTTPClient, baseURL string, opts ...connect.ClientOption) ClusterServiceClient {
 	baseURL = strings.TrimRight(baseURL, "/")
+	clusterServiceMethods := v1.File_admin_v1_cluster_proto.Services().ByName("ClusterService").Methods()
 	return &clusterServiceClient{
 		get: connect.NewClient[v1.ClusterServiceGetRequest, v1.ClusterServiceGetResponse](
 			httpClient,
 			baseURL+ClusterServiceGetProcedure,
-			connect.WithSchema(clusterServiceGetMethodDescriptor),
+			connect.WithSchema(clusterServiceMethods.ByName("Get")),
 			connect.WithClientOptions(opts...),
 		),
 		list: connect.NewClient[v1.ClusterServiceListRequest, v1.ClusterServiceListResponse](
 			httpClient,
 			baseURL+ClusterServiceListProcedure,
-			connect.WithSchema(clusterServiceListMethodDescriptor),
+			connect.WithSchema(clusterServiceMethods.ByName("List")),
 			connect.WithClientOptions(opts...),
 		),
 		credentials: connect.NewClient[v1.ClusterServiceCredentialsRequest, v1.ClusterServiceCredentialsResponse](
 			httpClient,
 			baseURL+ClusterServiceCredentialsProcedure,
-			connect.WithSchema(clusterServiceCredentialsMethodDescriptor),
+			connect.WithSchema(clusterServiceMethods.ByName("Credentials")),
 			connect.WithClientOptions(opts...),
 		),
 	}
@@ -129,22 +122,23 @@ type ClusterServiceHandler interface {
 // By default, handlers support the Connect, gRPC, and gRPC-Web protocols with the binary Protobuf
 // and JSON codecs. They also support gzip compression.
 func NewClusterServiceHandler(svc ClusterServiceHandler, opts ...connect.HandlerOption) (string, http.Handler) {
+	clusterServiceMethods := v1.File_admin_v1_cluster_proto.Services().ByName("ClusterService").Methods()
 	clusterServiceGetHandler := connect.NewUnaryHandler(
 		ClusterServiceGetProcedure,
 		svc.Get,
-		connect.WithSchema(clusterServiceGetMethodDescriptor),
+		connect.WithSchema(clusterServiceMethods.ByName("Get")),
 		connect.WithHandlerOptions(opts...),
 	)
 	clusterServiceListHandler := connect.NewUnaryHandler(
 		ClusterServiceListProcedure,
 		svc.List,
-		connect.WithSchema(clusterServiceListMethodDescriptor),
+		connect.WithSchema(clusterServiceMethods.ByName("List")),
 		connect.WithHandlerOptions(opts...),
 	)
 	clusterServiceCredentialsHandler := connect.NewUnaryHandler(
 		ClusterServiceCredentialsProcedure,
 		svc.Credentials,
-		connect.WithSchema(clusterServiceCredentialsMethodDescriptor),
+		connect.WithSchema(clusterServiceMethods.ByName("Credentials")),
 		connect.WithHandlerOptions(opts...),
 	)
 	return "/admin.v1.ClusterService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {

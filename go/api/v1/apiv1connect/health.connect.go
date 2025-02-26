@@ -37,12 +37,6 @@ const (
 	HealthServiceGetProcedure = "/api.v1.HealthService/Get"
 )
 
-// These variables are the protoreflect.Descriptor objects for the RPCs defined in this package.
-var (
-	healthServiceServiceDescriptor   = v1.File_api_v1_health_proto.Services().ByName("HealthService")
-	healthServiceGetMethodDescriptor = healthServiceServiceDescriptor.Methods().ByName("Get")
-)
-
 // HealthServiceClient is a client for the api.v1.HealthService service.
 type HealthServiceClient interface {
 	// Get the health of the platform
@@ -58,11 +52,12 @@ type HealthServiceClient interface {
 // http://api.acme.com or https://acme.com/grpc).
 func NewHealthServiceClient(httpClient connect.HTTPClient, baseURL string, opts ...connect.ClientOption) HealthServiceClient {
 	baseURL = strings.TrimRight(baseURL, "/")
+	healthServiceMethods := v1.File_api_v1_health_proto.Services().ByName("HealthService").Methods()
 	return &healthServiceClient{
 		get: connect.NewClient[v1.HealthServiceGetRequest, v1.HealthServiceGetResponse](
 			httpClient,
 			baseURL+HealthServiceGetProcedure,
-			connect.WithSchema(healthServiceGetMethodDescriptor),
+			connect.WithSchema(healthServiceMethods.ByName("Get")),
 			connect.WithClientOptions(opts...),
 		),
 	}
@@ -90,10 +85,11 @@ type HealthServiceHandler interface {
 // By default, handlers support the Connect, gRPC, and gRPC-Web protocols with the binary Protobuf
 // and JSON codecs. They also support gzip compression.
 func NewHealthServiceHandler(svc HealthServiceHandler, opts ...connect.HandlerOption) (string, http.Handler) {
+	healthServiceMethods := v1.File_api_v1_health_proto.Services().ByName("HealthService").Methods()
 	healthServiceGetHandler := connect.NewUnaryHandler(
 		HealthServiceGetProcedure,
 		svc.Get,
-		connect.WithSchema(healthServiceGetMethodDescriptor),
+		connect.WithSchema(healthServiceMethods.ByName("Get")),
 		connect.WithHandlerOptions(opts...),
 	)
 	return "/api.v1.HealthService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {

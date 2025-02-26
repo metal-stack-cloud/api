@@ -40,13 +40,6 @@ const (
 	MethodServiceTokenScopedListProcedure = "/api.v1.MethodService/TokenScopedList"
 )
 
-// These variables are the protoreflect.Descriptor objects for the RPCs defined in this package.
-var (
-	methodServiceServiceDescriptor               = v1.File_api_v1_methods_proto.Services().ByName("MethodService")
-	methodServiceListMethodDescriptor            = methodServiceServiceDescriptor.Methods().ByName("List")
-	methodServiceTokenScopedListMethodDescriptor = methodServiceServiceDescriptor.Methods().ByName("TokenScopedList")
-)
-
 // MethodServiceClient is a client for the api.v1.MethodService service.
 type MethodServiceClient interface {
 	// List all public visible methods
@@ -64,17 +57,18 @@ type MethodServiceClient interface {
 // http://api.acme.com or https://acme.com/grpc).
 func NewMethodServiceClient(httpClient connect.HTTPClient, baseURL string, opts ...connect.ClientOption) MethodServiceClient {
 	baseURL = strings.TrimRight(baseURL, "/")
+	methodServiceMethods := v1.File_api_v1_methods_proto.Services().ByName("MethodService").Methods()
 	return &methodServiceClient{
 		list: connect.NewClient[v1.MethodServiceListRequest, v1.MethodServiceListResponse](
 			httpClient,
 			baseURL+MethodServiceListProcedure,
-			connect.WithSchema(methodServiceListMethodDescriptor),
+			connect.WithSchema(methodServiceMethods.ByName("List")),
 			connect.WithClientOptions(opts...),
 		),
 		tokenScopedList: connect.NewClient[v1.MethodServiceTokenScopedListRequest, v1.MethodServiceTokenScopedListResponse](
 			httpClient,
 			baseURL+MethodServiceTokenScopedListProcedure,
-			connect.WithSchema(methodServiceTokenScopedListMethodDescriptor),
+			connect.WithSchema(methodServiceMethods.ByName("TokenScopedList")),
 			connect.WithClientOptions(opts...),
 		),
 	}
@@ -110,16 +104,17 @@ type MethodServiceHandler interface {
 // By default, handlers support the Connect, gRPC, and gRPC-Web protocols with the binary Protobuf
 // and JSON codecs. They also support gzip compression.
 func NewMethodServiceHandler(svc MethodServiceHandler, opts ...connect.HandlerOption) (string, http.Handler) {
+	methodServiceMethods := v1.File_api_v1_methods_proto.Services().ByName("MethodService").Methods()
 	methodServiceListHandler := connect.NewUnaryHandler(
 		MethodServiceListProcedure,
 		svc.List,
-		connect.WithSchema(methodServiceListMethodDescriptor),
+		connect.WithSchema(methodServiceMethods.ByName("List")),
 		connect.WithHandlerOptions(opts...),
 	)
 	methodServiceTokenScopedListHandler := connect.NewUnaryHandler(
 		MethodServiceTokenScopedListProcedure,
 		svc.TokenScopedList,
-		connect.WithSchema(methodServiceTokenScopedListMethodDescriptor),
+		connect.WithSchema(methodServiceMethods.ByName("TokenScopedList")),
 		connect.WithHandlerOptions(opts...),
 	)
 	return "/api.v1.MethodService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
