@@ -65,23 +65,6 @@ const (
 	ProjectServiceInviteGetProcedure = "/api.v1.ProjectService/InviteGet"
 )
 
-// These variables are the protoreflect.Descriptor objects for the RPCs defined in this package.
-var (
-	projectServiceServiceDescriptor            = v1.File_api_v1_project_proto.Services().ByName("ProjectService")
-	projectServiceListMethodDescriptor         = projectServiceServiceDescriptor.Methods().ByName("List")
-	projectServiceGetMethodDescriptor          = projectServiceServiceDescriptor.Methods().ByName("Get")
-	projectServiceCreateMethodDescriptor       = projectServiceServiceDescriptor.Methods().ByName("Create")
-	projectServiceDeleteMethodDescriptor       = projectServiceServiceDescriptor.Methods().ByName("Delete")
-	projectServiceUpdateMethodDescriptor       = projectServiceServiceDescriptor.Methods().ByName("Update")
-	projectServiceRemoveMemberMethodDescriptor = projectServiceServiceDescriptor.Methods().ByName("RemoveMember")
-	projectServiceUpdateMemberMethodDescriptor = projectServiceServiceDescriptor.Methods().ByName("UpdateMember")
-	projectServiceInviteMethodDescriptor       = projectServiceServiceDescriptor.Methods().ByName("Invite")
-	projectServiceInviteAcceptMethodDescriptor = projectServiceServiceDescriptor.Methods().ByName("InviteAccept")
-	projectServiceInviteDeleteMethodDescriptor = projectServiceServiceDescriptor.Methods().ByName("InviteDelete")
-	projectServiceInvitesListMethodDescriptor  = projectServiceServiceDescriptor.Methods().ByName("InvitesList")
-	projectServiceInviteGetMethodDescriptor    = projectServiceServiceDescriptor.Methods().ByName("InviteGet")
-)
-
 // ProjectServiceClient is a client for the api.v1.ProjectService service.
 type ProjectServiceClient interface {
 	// List all accessible projects
@@ -119,77 +102,78 @@ type ProjectServiceClient interface {
 // http://api.acme.com or https://acme.com/grpc).
 func NewProjectServiceClient(httpClient connect.HTTPClient, baseURL string, opts ...connect.ClientOption) ProjectServiceClient {
 	baseURL = strings.TrimRight(baseURL, "/")
+	projectServiceMethods := v1.File_api_v1_project_proto.Services().ByName("ProjectService").Methods()
 	return &projectServiceClient{
 		list: connect.NewClient[v1.ProjectServiceListRequest, v1.ProjectServiceListResponse](
 			httpClient,
 			baseURL+ProjectServiceListProcedure,
-			connect.WithSchema(projectServiceListMethodDescriptor),
+			connect.WithSchema(projectServiceMethods.ByName("List")),
 			connect.WithClientOptions(opts...),
 		),
 		get: connect.NewClient[v1.ProjectServiceGetRequest, v1.ProjectServiceGetResponse](
 			httpClient,
 			baseURL+ProjectServiceGetProcedure,
-			connect.WithSchema(projectServiceGetMethodDescriptor),
+			connect.WithSchema(projectServiceMethods.ByName("Get")),
 			connect.WithClientOptions(opts...),
 		),
 		create: connect.NewClient[v1.ProjectServiceCreateRequest, v1.ProjectServiceCreateResponse](
 			httpClient,
 			baseURL+ProjectServiceCreateProcedure,
-			connect.WithSchema(projectServiceCreateMethodDescriptor),
+			connect.WithSchema(projectServiceMethods.ByName("Create")),
 			connect.WithClientOptions(opts...),
 		),
 		delete: connect.NewClient[v1.ProjectServiceDeleteRequest, v1.ProjectServiceDeleteResponse](
 			httpClient,
 			baseURL+ProjectServiceDeleteProcedure,
-			connect.WithSchema(projectServiceDeleteMethodDescriptor),
+			connect.WithSchema(projectServiceMethods.ByName("Delete")),
 			connect.WithClientOptions(opts...),
 		),
 		update: connect.NewClient[v1.ProjectServiceUpdateRequest, v1.ProjectServiceUpdateResponse](
 			httpClient,
 			baseURL+ProjectServiceUpdateProcedure,
-			connect.WithSchema(projectServiceUpdateMethodDescriptor),
+			connect.WithSchema(projectServiceMethods.ByName("Update")),
 			connect.WithClientOptions(opts...),
 		),
 		removeMember: connect.NewClient[v1.ProjectServiceRemoveMemberRequest, v1.ProjectServiceRemoveMemberResponse](
 			httpClient,
 			baseURL+ProjectServiceRemoveMemberProcedure,
-			connect.WithSchema(projectServiceRemoveMemberMethodDescriptor),
+			connect.WithSchema(projectServiceMethods.ByName("RemoveMember")),
 			connect.WithClientOptions(opts...),
 		),
 		updateMember: connect.NewClient[v1.ProjectServiceUpdateMemberRequest, v1.ProjectServiceUpdateMemberResponse](
 			httpClient,
 			baseURL+ProjectServiceUpdateMemberProcedure,
-			connect.WithSchema(projectServiceUpdateMemberMethodDescriptor),
+			connect.WithSchema(projectServiceMethods.ByName("UpdateMember")),
 			connect.WithClientOptions(opts...),
 		),
 		invite: connect.NewClient[v1.ProjectServiceInviteRequest, v1.ProjectServiceInviteResponse](
 			httpClient,
 			baseURL+ProjectServiceInviteProcedure,
-			connect.WithSchema(projectServiceInviteMethodDescriptor),
+			connect.WithSchema(projectServiceMethods.ByName("Invite")),
 			connect.WithClientOptions(opts...),
 		),
 		inviteAccept: connect.NewClient[v1.ProjectServiceInviteAcceptRequest, v1.ProjectServiceInviteAcceptResponse](
 			httpClient,
 			baseURL+ProjectServiceInviteAcceptProcedure,
-			connect.WithSchema(projectServiceInviteAcceptMethodDescriptor),
+			connect.WithSchema(projectServiceMethods.ByName("InviteAccept")),
 			connect.WithClientOptions(opts...),
 		),
 		inviteDelete: connect.NewClient[v1.ProjectServiceInviteDeleteRequest, v1.ProjectServiceInviteDeleteResponse](
 			httpClient,
 			baseURL+ProjectServiceInviteDeleteProcedure,
-			connect.WithSchema(projectServiceInviteDeleteMethodDescriptor),
+			connect.WithSchema(projectServiceMethods.ByName("InviteDelete")),
 			connect.WithClientOptions(opts...),
 		),
 		invitesList: connect.NewClient[v1.ProjectServiceInvitesListRequest, v1.ProjectServiceInvitesListResponse](
 			httpClient,
 			baseURL+ProjectServiceInvitesListProcedure,
-			connect.WithSchema(projectServiceInvitesListMethodDescriptor),
+			connect.WithSchema(projectServiceMethods.ByName("InvitesList")),
 			connect.WithClientOptions(opts...),
 		),
 		inviteGet: connect.NewClient[v1.ProjectServiceInviteGetRequest, v1.ProjectServiceInviteGetResponse](
 			httpClient,
 			baseURL+ProjectServiceInviteGetProcedure,
-			connect.WithSchema(projectServiceInviteGetMethodDescriptor),
+			connect.WithSchema(projectServiceMethods.ByName("InviteGet")),
 			connect.WithClientOptions(opts...),
 		),
 	}
@@ -305,76 +289,77 @@ type ProjectServiceHandler interface {
 // By default, handlers support the Connect, gRPC, and gRPC-Web protocols with the binary Protobuf
 // and JSON codecs. They also support gzip compression.
 func NewProjectServiceHandler(svc ProjectServiceHandler, opts ...connect.HandlerOption) (string, http.Handler) {
+	projectServiceMethods := v1.File_api_v1_project_proto.Services().ByName("ProjectService").Methods()
 	projectServiceListHandler := connect.NewUnaryHandler(
 		ProjectServiceListProcedure,
 		svc.List,
-		connect.WithSchema(projectServiceListMethodDescriptor),
+		connect.WithSchema(projectServiceMethods.ByName("List")),
 		connect.WithHandlerOptions(opts...),
 	)
 	projectServiceGetHandler := connect.NewUnaryHandler(
 		ProjectServiceGetProcedure,
 		svc.Get,
-		connect.WithSchema(projectServiceGetMethodDescriptor),
+		connect.WithSchema(projectServiceMethods.ByName("Get")),
 		connect.WithHandlerOptions(opts...),
 	)
 	projectServiceCreateHandler := connect.NewUnaryHandler(
 		ProjectServiceCreateProcedure,
 		svc.Create,
-		connect.WithSchema(projectServiceCreateMethodDescriptor),
+		connect.WithSchema(projectServiceMethods.ByName("Create")),
 		connect.WithHandlerOptions(opts...),
 	)
 	projectServiceDeleteHandler := connect.NewUnaryHandler(
 		ProjectServiceDeleteProcedure,
 		svc.Delete,
-		connect.WithSchema(projectServiceDeleteMethodDescriptor),
+		connect.WithSchema(projectServiceMethods.ByName("Delete")),
 		connect.WithHandlerOptions(opts...),
 	)
 	projectServiceUpdateHandler := connect.NewUnaryHandler(
 		ProjectServiceUpdateProcedure,
 		svc.Update,
-		connect.WithSchema(projectServiceUpdateMethodDescriptor),
+		connect.WithSchema(projectServiceMethods.ByName("Update")),
 		connect.WithHandlerOptions(opts...),
 	)
 	projectServiceRemoveMemberHandler := connect.NewUnaryHandler(
 		ProjectServiceRemoveMemberProcedure,
 		svc.RemoveMember,
-		connect.WithSchema(projectServiceRemoveMemberMethodDescriptor),
+		connect.WithSchema(projectServiceMethods.ByName("RemoveMember")),
 		connect.WithHandlerOptions(opts...),
 	)
 	projectServiceUpdateMemberHandler := connect.NewUnaryHandler(
 		ProjectServiceUpdateMemberProcedure,
 		svc.UpdateMember,
-		connect.WithSchema(projectServiceUpdateMemberMethodDescriptor),
+		connect.WithSchema(projectServiceMethods.ByName("UpdateMember")),
 		connect.WithHandlerOptions(opts...),
 	)
 	projectServiceInviteHandler := connect.NewUnaryHandler(
 		ProjectServiceInviteProcedure,
 		svc.Invite,
-		connect.WithSchema(projectServiceInviteMethodDescriptor),
+		connect.WithSchema(projectServiceMethods.ByName("Invite")),
 		connect.WithHandlerOptions(opts...),
 	)
 	projectServiceInviteAcceptHandler := connect.NewUnaryHandler(
 		ProjectServiceInviteAcceptProcedure,
 		svc.InviteAccept,
-		connect.WithSchema(projectServiceInviteAcceptMethodDescriptor),
+		connect.WithSchema(projectServiceMethods.ByName("InviteAccept")),
 		connect.WithHandlerOptions(opts...),
 	)
 	projectServiceInviteDeleteHandler := connect.NewUnaryHandler(
 		ProjectServiceInviteDeleteProcedure,
 		svc.InviteDelete,
-		connect.WithSchema(projectServiceInviteDeleteMethodDescriptor),
+		connect.WithSchema(projectServiceMethods.ByName("InviteDelete")),
 		connect.WithHandlerOptions(opts...),
 	)
 	projectServiceInvitesListHandler := connect.NewUnaryHandler(
 		ProjectServiceInvitesListProcedure,
 		svc.InvitesList,
-		connect.WithSchema(projectServiceInvitesListMethodDescriptor),
+		connect.WithSchema(projectServiceMethods.ByName("InvitesList")),
 		connect.WithHandlerOptions(opts...),
 	)
 	projectServiceInviteGetHandler := connect.NewUnaryHandler(
 		ProjectServiceInviteGetProcedure,
 		svc.InviteGet,
-		connect.WithSchema(projectServiceInviteGetMethodDescriptor),
+		connect.WithSchema(projectServiceMethods.ByName("InviteGet")),
 		connect.WithHandlerOptions(opts...),
 	)
 	return "/api.v1.ProjectService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {

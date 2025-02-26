@@ -43,15 +43,6 @@ const (
 	TenantServiceAddMemberProcedure = "/admin.v1.TenantService/AddMember"
 )
 
-// These variables are the protoreflect.Descriptor objects for the RPCs defined in this package.
-var (
-	tenantServiceServiceDescriptor         = v1.File_admin_v1_tenant_proto.Services().ByName("TenantService")
-	tenantServiceListMethodDescriptor      = tenantServiceServiceDescriptor.Methods().ByName("List")
-	tenantServiceAdmitMethodDescriptor     = tenantServiceServiceDescriptor.Methods().ByName("Admit")
-	tenantServiceRevokeMethodDescriptor    = tenantServiceServiceDescriptor.Methods().ByName("Revoke")
-	tenantServiceAddMemberMethodDescriptor = tenantServiceServiceDescriptor.Methods().ByName("AddMember")
-)
-
 // TenantServiceClient is a client for the admin.v1.TenantService service.
 type TenantServiceClient interface {
 	// List tenants
@@ -73,29 +64,30 @@ type TenantServiceClient interface {
 // http://api.acme.com or https://acme.com/grpc).
 func NewTenantServiceClient(httpClient connect.HTTPClient, baseURL string, opts ...connect.ClientOption) TenantServiceClient {
 	baseURL = strings.TrimRight(baseURL, "/")
+	tenantServiceMethods := v1.File_admin_v1_tenant_proto.Services().ByName("TenantService").Methods()
 	return &tenantServiceClient{
 		list: connect.NewClient[v1.TenantServiceListRequest, v1.TenantServiceListResponse](
 			httpClient,
 			baseURL+TenantServiceListProcedure,
-			connect.WithSchema(tenantServiceListMethodDescriptor),
+			connect.WithSchema(tenantServiceMethods.ByName("List")),
 			connect.WithClientOptions(opts...),
 		),
 		admit: connect.NewClient[v1.TenantServiceAdmitRequest, v1.TenantServiceAdmitResponse](
 			httpClient,
 			baseURL+TenantServiceAdmitProcedure,
-			connect.WithSchema(tenantServiceAdmitMethodDescriptor),
+			connect.WithSchema(tenantServiceMethods.ByName("Admit")),
 			connect.WithClientOptions(opts...),
 		),
 		revoke: connect.NewClient[v1.TenantServiceRevokeRequest, v1.TenantServiceRevokeResponse](
 			httpClient,
 			baseURL+TenantServiceRevokeProcedure,
-			connect.WithSchema(tenantServiceRevokeMethodDescriptor),
+			connect.WithSchema(tenantServiceMethods.ByName("Revoke")),
 			connect.WithClientOptions(opts...),
 		),
 		addMember: connect.NewClient[v1.TenantServiceAddMemberRequest, v1.TenantServiceAddMemberResponse](
 			httpClient,
 			baseURL+TenantServiceAddMemberProcedure,
-			connect.WithSchema(tenantServiceAddMemberMethodDescriptor),
+			connect.WithSchema(tenantServiceMethods.ByName("AddMember")),
 			connect.WithClientOptions(opts...),
 		),
 	}
@@ -147,28 +139,29 @@ type TenantServiceHandler interface {
 // By default, handlers support the Connect, gRPC, and gRPC-Web protocols with the binary Protobuf
 // and JSON codecs. They also support gzip compression.
 func NewTenantServiceHandler(svc TenantServiceHandler, opts ...connect.HandlerOption) (string, http.Handler) {
+	tenantServiceMethods := v1.File_admin_v1_tenant_proto.Services().ByName("TenantService").Methods()
 	tenantServiceListHandler := connect.NewUnaryHandler(
 		TenantServiceListProcedure,
 		svc.List,
-		connect.WithSchema(tenantServiceListMethodDescriptor),
+		connect.WithSchema(tenantServiceMethods.ByName("List")),
 		connect.WithHandlerOptions(opts...),
 	)
 	tenantServiceAdmitHandler := connect.NewUnaryHandler(
 		TenantServiceAdmitProcedure,
 		svc.Admit,
-		connect.WithSchema(tenantServiceAdmitMethodDescriptor),
+		connect.WithSchema(tenantServiceMethods.ByName("Admit")),
 		connect.WithHandlerOptions(opts...),
 	)
 	tenantServiceRevokeHandler := connect.NewUnaryHandler(
 		TenantServiceRevokeProcedure,
 		svc.Revoke,
-		connect.WithSchema(tenantServiceRevokeMethodDescriptor),
+		connect.WithSchema(tenantServiceMethods.ByName("Revoke")),
 		connect.WithHandlerOptions(opts...),
 	)
 	tenantServiceAddMemberHandler := connect.NewUnaryHandler(
 		TenantServiceAddMemberProcedure,
 		svc.AddMember,
-		connect.WithSchema(tenantServiceAddMemberMethodDescriptor),
+		connect.WithSchema(tenantServiceMethods.ByName("AddMember")),
 		connect.WithHandlerOptions(opts...),
 	)
 	return "/admin.v1.TenantService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {

@@ -49,18 +49,6 @@ const (
 	SnapshotServiceDeleteProcedure = "/api.v1.SnapshotService/Delete"
 )
 
-// These variables are the protoreflect.Descriptor objects for the RPCs defined in this package.
-var (
-	volumeServiceServiceDescriptor        = v1.File_api_v1_volume_proto.Services().ByName("VolumeService")
-	volumeServiceGetMethodDescriptor      = volumeServiceServiceDescriptor.Methods().ByName("Get")
-	volumeServiceListMethodDescriptor     = volumeServiceServiceDescriptor.Methods().ByName("List")
-	volumeServiceDeleteMethodDescriptor   = volumeServiceServiceDescriptor.Methods().ByName("Delete")
-	snapshotServiceServiceDescriptor      = v1.File_api_v1_volume_proto.Services().ByName("SnapshotService")
-	snapshotServiceGetMethodDescriptor    = snapshotServiceServiceDescriptor.Methods().ByName("Get")
-	snapshotServiceListMethodDescriptor   = snapshotServiceServiceDescriptor.Methods().ByName("List")
-	snapshotServiceDeleteMethodDescriptor = snapshotServiceServiceDescriptor.Methods().ByName("Delete")
-)
-
 // VolumeServiceClient is a client for the api.v1.VolumeService service.
 type VolumeServiceClient interface {
 	// Get a volume
@@ -80,23 +68,24 @@ type VolumeServiceClient interface {
 // http://api.acme.com or https://acme.com/grpc).
 func NewVolumeServiceClient(httpClient connect.HTTPClient, baseURL string, opts ...connect.ClientOption) VolumeServiceClient {
 	baseURL = strings.TrimRight(baseURL, "/")
+	volumeServiceMethods := v1.File_api_v1_volume_proto.Services().ByName("VolumeService").Methods()
 	return &volumeServiceClient{
 		get: connect.NewClient[v1.VolumeServiceGetRequest, v1.VolumeServiceGetResponse](
 			httpClient,
 			baseURL+VolumeServiceGetProcedure,
-			connect.WithSchema(volumeServiceGetMethodDescriptor),
+			connect.WithSchema(volumeServiceMethods.ByName("Get")),
 			connect.WithClientOptions(opts...),
 		),
 		list: connect.NewClient[v1.VolumeServiceListRequest, v1.VolumeServiceListResponse](
 			httpClient,
 			baseURL+VolumeServiceListProcedure,
-			connect.WithSchema(volumeServiceListMethodDescriptor),
+			connect.WithSchema(volumeServiceMethods.ByName("List")),
 			connect.WithClientOptions(opts...),
 		),
 		delete: connect.NewClient[v1.VolumeServiceDeleteRequest, v1.VolumeServiceDeleteResponse](
 			httpClient,
 			baseURL+VolumeServiceDeleteProcedure,
-			connect.WithSchema(volumeServiceDeleteMethodDescriptor),
+			connect.WithSchema(volumeServiceMethods.ByName("Delete")),
 			connect.WithClientOptions(opts...),
 		),
 	}
@@ -140,22 +129,23 @@ type VolumeServiceHandler interface {
 // By default, handlers support the Connect, gRPC, and gRPC-Web protocols with the binary Protobuf
 // and JSON codecs. They also support gzip compression.
 func NewVolumeServiceHandler(svc VolumeServiceHandler, opts ...connect.HandlerOption) (string, http.Handler) {
+	volumeServiceMethods := v1.File_api_v1_volume_proto.Services().ByName("VolumeService").Methods()
 	volumeServiceGetHandler := connect.NewUnaryHandler(
 		VolumeServiceGetProcedure,
 		svc.Get,
-		connect.WithSchema(volumeServiceGetMethodDescriptor),
+		connect.WithSchema(volumeServiceMethods.ByName("Get")),
 		connect.WithHandlerOptions(opts...),
 	)
 	volumeServiceListHandler := connect.NewUnaryHandler(
 		VolumeServiceListProcedure,
 		svc.List,
-		connect.WithSchema(volumeServiceListMethodDescriptor),
+		connect.WithSchema(volumeServiceMethods.ByName("List")),
 		connect.WithHandlerOptions(opts...),
 	)
 	volumeServiceDeleteHandler := connect.NewUnaryHandler(
 		VolumeServiceDeleteProcedure,
 		svc.Delete,
-		connect.WithSchema(volumeServiceDeleteMethodDescriptor),
+		connect.WithSchema(volumeServiceMethods.ByName("Delete")),
 		connect.WithHandlerOptions(opts...),
 	)
 	return "/api.v1.VolumeService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
@@ -206,23 +196,24 @@ type SnapshotServiceClient interface {
 // http://api.acme.com or https://acme.com/grpc).
 func NewSnapshotServiceClient(httpClient connect.HTTPClient, baseURL string, opts ...connect.ClientOption) SnapshotServiceClient {
 	baseURL = strings.TrimRight(baseURL, "/")
+	snapshotServiceMethods := v1.File_api_v1_volume_proto.Services().ByName("SnapshotService").Methods()
 	return &snapshotServiceClient{
 		get: connect.NewClient[v1.SnapshotServiceGetRequest, v1.SnapshotServiceGetResponse](
 			httpClient,
 			baseURL+SnapshotServiceGetProcedure,
-			connect.WithSchema(snapshotServiceGetMethodDescriptor),
+			connect.WithSchema(snapshotServiceMethods.ByName("Get")),
 			connect.WithClientOptions(opts...),
 		),
 		list: connect.NewClient[v1.SnapshotServiceListRequest, v1.SnapshotServiceListResponse](
 			httpClient,
 			baseURL+SnapshotServiceListProcedure,
-			connect.WithSchema(snapshotServiceListMethodDescriptor),
+			connect.WithSchema(snapshotServiceMethods.ByName("List")),
 			connect.WithClientOptions(opts...),
 		),
 		delete: connect.NewClient[v1.SnapshotServiceDeleteRequest, v1.SnapshotServiceDeleteResponse](
 			httpClient,
 			baseURL+SnapshotServiceDeleteProcedure,
-			connect.WithSchema(snapshotServiceDeleteMethodDescriptor),
+			connect.WithSchema(snapshotServiceMethods.ByName("Delete")),
 			connect.WithClientOptions(opts...),
 		),
 	}
@@ -266,22 +257,23 @@ type SnapshotServiceHandler interface {
 // By default, handlers support the Connect, gRPC, and gRPC-Web protocols with the binary Protobuf
 // and JSON codecs. They also support gzip compression.
 func NewSnapshotServiceHandler(svc SnapshotServiceHandler, opts ...connect.HandlerOption) (string, http.Handler) {
+	snapshotServiceMethods := v1.File_api_v1_volume_proto.Services().ByName("SnapshotService").Methods()
 	snapshotServiceGetHandler := connect.NewUnaryHandler(
 		SnapshotServiceGetProcedure,
 		svc.Get,
-		connect.WithSchema(snapshotServiceGetMethodDescriptor),
+		connect.WithSchema(snapshotServiceMethods.ByName("Get")),
 		connect.WithHandlerOptions(opts...),
 	)
 	snapshotServiceListHandler := connect.NewUnaryHandler(
 		SnapshotServiceListProcedure,
 		svc.List,
-		connect.WithSchema(snapshotServiceListMethodDescriptor),
+		connect.WithSchema(snapshotServiceMethods.ByName("List")),
 		connect.WithHandlerOptions(opts...),
 	)
 	snapshotServiceDeleteHandler := connect.NewUnaryHandler(
 		SnapshotServiceDeleteProcedure,
 		svc.Delete,
-		connect.WithSchema(snapshotServiceDeleteMethodDescriptor),
+		connect.WithSchema(snapshotServiceMethods.ByName("Delete")),
 		connect.WithHandlerOptions(opts...),
 	)
 	return "/api.v1.SnapshotService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
