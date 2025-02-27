@@ -15,7 +15,7 @@ These are used to generate "ServicePermissions", which can be utilized for authe
 
 > [!IMPORTANT]
 >
-> Every operation needs at least an option, which references the scope of the request: **ROLE** or **VISIBILTY**
+> Every operation needs at least an option, which references the scope of the request: **ROLE** or **VISIBILITY**
 
 ### Options regarding authorization:
 
@@ -46,17 +46,17 @@ These options specify the RBAC of the api-endpoint.
 
 These options specify additional behavior of the api-endpoint.
 
-| Option       | Description                                  | Values      | Explanation                                           |
-| ------------ | -------------------------------------------- | ----------- | ----------------------------------------------------- |
-| CHARGEABLE\_ | Specifies if the api-endpoint is chargeable  | UNSPECIFIED |                                                       |
-|              |                                              | TRUE        | operation is charged                                  |
-|              |                                              | FALSE       | operation is not charged                              |
-| AUDITING\_   | Specifies if the api-endpoint is audited     | UNSPECIFIED |                                                       |
-|              |                                              | INCLUDED    | operation is audited                                  |
-|              |                                              | EXCLUDED    | operation is not audited                              |
-| VISIBILITY\_ | Specifies the visibility of the api-endpoint | UNSPECIFIED |                                                       |
-|              |                                              | PUBLIC      | operation is visbile to public and requires not token |
-|              |                                              | SELF        | operation is scoped to owner resources                |
+| Option       | Description                                  | Values      | Explanation                                          |
+| ------------ | -------------------------------------------- | ----------- | ---------------------------------------------------- |
+| CHARGEABLE\_ | Specifies if the api-endpoint is chargeable  | UNSPECIFIED |                                                      |
+|              |                                              | TRUE        | operation is charged                                 |
+|              |                                              | FALSE       | operation is not charged                             |
+| AUDITING\_   | Specifies if the api-endpoint is audited     | UNSPECIFIED |                                                      |
+|              |                                              | INCLUDED    | operation is audited                                 |
+|              |                                              | EXCLUDED    | operation is not audited                             |
+| VISIBILITY\_ | Specifies the visibility of the api-endpoint | UNSPECIFIED |                                                      |
+|              |                                              | PUBLIC      | operation is visbile to public and requires no token |
+|              |                                              | SELF        | operation is scoped to owner resources               |
 
 ### Example
 
