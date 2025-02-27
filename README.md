@@ -10,8 +10,12 @@ Can be found in the [examples](examples/) folder.
 
 ## Method-Options
 
-MethodOptions specify the additional behavior and restrictions of api-endpoints.
+MethodOptions specify the additional behavior, restrictions and scopes of api-endpoints.
 These are used to generate "ServicePermissions", which can be utilized for authentication, authorization, auditing and payment (mainly in interceptors).
+
+> [!IMPORTANT]
+>
+> Every operation needs at least an option, which references the scope of the request: **ROLE** or **VISIBILTY**
 
 ### Options regarding authorization:
 
@@ -32,21 +36,27 @@ These options specify the RBAC of the api-endpoint.
 |                |                                     | EDITOR      | admin editor   |
 |                |                                     | VIEWER      | admin viewer   |
 
+> [!CAUTION]
+>
+> If we use a Tenant or Project role, the request will be respectively scoped as Tenant or Project request.
+> Tenant-Requests must have the field **login**, which is the tenant id.
+> Project-Requests must have the field **project**, which is the project id.
+
 ### Options regarding additional behavior:
 
 These options specify additional behavior of the api-endpoint.
 
-| Option       | Description                                  | Values      | Explanation                            |
-| ------------ | -------------------------------------------- | ----------- | -------------------------------------- |
-| CHARGEABLE\_ | Specifies if the api-endpoint is chargeable  | UNSPECIFIED |                                        |
-|              |                                              | TRUE        | operation is charged                   |
-|              |                                              | FALSE       | operation is not charged               |
-| AUDITING\_   | Specifies if the api-endpoint is audited     | UNSPECIFIED |                                        |
-|              |                                              | INCLUDED    | operation is audited                   |
-|              |                                              | EXCLUDED    | operation is not audited               |
-| VISIBILITY\_ | Specifies the visibility of the api-endpoint | UNSPECIFIED |                                        |
-|              |                                              | PUBLIC      | operation is visbile to public         |
-|              |                                              | SELF        | operation is scoped to owner resources |
+| Option       | Description                                  | Values      | Explanation                                           |
+| ------------ | -------------------------------------------- | ----------- | ----------------------------------------------------- |
+| CHARGEABLE\_ | Specifies if the api-endpoint is chargeable  | UNSPECIFIED |                                                       |
+|              |                                              | TRUE        | operation is charged                                  |
+|              |                                              | FALSE       | operation is not charged                              |
+| AUDITING\_   | Specifies if the api-endpoint is audited     | UNSPECIFIED |                                                       |
+|              |                                              | INCLUDED    | operation is audited                                  |
+|              |                                              | EXCLUDED    | operation is not audited                              |
+| VISIBILITY\_ | Specifies the visibility of the api-endpoint | UNSPECIFIED |                                                       |
+|              |                                              | PUBLIC      | operation is visbile to public and requires not token |
+|              |                                              | SELF        | operation is scoped to owner resources                |
 
 ### Example
 
