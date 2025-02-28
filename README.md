@@ -87,7 +87,7 @@ These options specify the RBAC of the api-endpoint.
 > Tenant-Requests must have the field **login**, which is the tenant id and specifies the tenant on which the service-method is scoped.
 > Project-Requests must have the field **project**, which is the project id and specifies the project on which the service-method is scoped.
 
-### Payment:
+### Payment
 
 Some api-methods are associated with payment and will result in costs. In order to use these kind of operations the user must have deposited its payment information.
 If the payment information are not deposited the user is not allowed to issue these actions.
