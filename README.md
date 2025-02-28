@@ -55,7 +55,7 @@ In this example we can see the motivation behind the method options.
 
 Further explanations are explained in the following:
 
-### Auth:
+### Auth
 
 These options specify the RBAC of the api-endpoint.
 
