@@ -59,23 +59,23 @@ Further explanations are explained in the following:
 
 These options specify the RBAC of the api-endpoint.
 
-| Option         | Description                                  | Values      | Explanation                                           |
-| -------------- | -------------------------------------------- | ----------- | ----------------------------------------------------- |
-| TENANT_ROLE\_  | Specifies the required tenant role           | UNSPECIFIED |                                                       |
-|                |                                              | OWNER       | tenant owner                                          |
-|                |                                              | EDITOR      | tenant editor                                         |
-|                |                                              | VIEWER      | tenant viewer                                         |
-|                |                                              | GUEST       | tenant guest                                          |
-| PROJECT_ROLE\_ | Specifies the required project role          | UNSPECIFIED |                                                       |
-|                |                                              | OWNER       | project owner                                         |
-|                |                                              | EDITOR      | project editor                                        |
-|                |                                              | VIEWER      | project viewer                                        |
-| ADMIN_ROLE\_   | Specifies the required admin role            | UNSPECIFIED |                                                       |
-|                |                                              | EDITOR      | admin editor                                          |
-|                |                                              | VIEWER      | admin viewer                                          |
-| VISIBILITY\_   | Specifies the visibility of the api-endpoint | UNSPECIFIED |                                                       |
-|                |                                              | PUBLIC      | api-method is visbile to public and requires no token |
-|                |                                              | SELF        | api-method is scoped to owner resources               |
+| Option         | Description                                  | Values      | Explanation                                            |
+| -------------- | -------------------------------------------- | ----------- | ------------------------------------------------------ |
+| TENANT_ROLE\_  | Specifies the required tenant role           | UNSPECIFIED |                                                        |
+|                |                                              | OWNER       | tenant owner                                           |
+|                |                                              | EDITOR      | tenant editor                                          |
+|                |                                              | VIEWER      | tenant viewer                                          |
+|                |                                              | GUEST       | tenant guest                                           |
+| PROJECT_ROLE\_ | Specifies the required project role          | UNSPECIFIED |                                                        |
+|                |                                              | OWNER       | project owner                                          |
+|                |                                              | EDITOR      | project editor                                         |
+|                |                                              | VIEWER      | project viewer                                         |
+| ADMIN_ROLE\_   | Specifies the required admin role            | UNSPECIFIED |                                                        |
+|                |                                              | EDITOR      | admin editor                                           |
+|                |                                              | VIEWER      | admin viewer                                           |
+| VISIBILITY\_   | Specifies the visibility of the api-endpoint | UNSPECIFIED |                                                        |
+|                |                                              | PUBLIC      | api-method is visbile to public, a token is not needed |
+|                |                                              | SELF        | api-method is scoped to owner resources                |
 
 > [!IMPORTANT]
 >
