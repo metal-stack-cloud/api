@@ -114,6 +114,11 @@ func IsProjectScope(req connect.AnyRequest) bool {
 	return ok
 }
 
+func IsChargeableScope(req connect.AnyRequest) bool {
+	_, ok := GetServicePermissions().Chargeable[req.Spec().Procedure]
+	return ok
+}
+
 func GetTenantFromRequest(req connect.AnyRequest) (string, bool) {
 	if !IsTenantScope(req) {
 		return "", false
