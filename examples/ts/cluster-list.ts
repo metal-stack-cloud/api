@@ -1,5 +1,5 @@
-import { Interceptor, createPromiseClient } from "@connectrpc/connect";
-import { ClusterService } from '@metal-stack-cloud/api/api/v1/cluster_connect'
+import { Interceptor, createClient } from "@connectrpc/connect";
+import { ClusterService } from "@metal-stack-cloud/api/api/v1/cluster_pb"
 import { createConnectTransport } from "@connectrpc/connect-node";
 import dotenv from 'dotenv'; 
 dotenv.config();
@@ -17,7 +17,7 @@ const transport = createConnectTransport({
 
 
 async function main() {
-  const client = createPromiseClient(ClusterService, transport);
+  const client = createClient(ClusterService, transport);
   const res = await client.list({ project: process.env.PROJECT_ID });
 
   for (let cluster of res.clusters) {
