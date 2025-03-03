@@ -482,8 +482,13 @@ func IsProjectScope(req connect.AnyRequest) bool {
 	return ok
 }
 
-func IsChargeableScope(req connect.AnyRequest) bool {
+func IsChargeable(req connect.AnyRequest) bool {
 	_, ok := GetServicePermissions().Chargeable[req.Spec().Procedure]
+	return ok
+}
+
+func IsAuditable(req connect.AnyRequest) bool {
+	_, ok := GetServicePermissions().Auditable[req.Spec().Procedure]
 	return ok
 }
 
