@@ -1,6 +1,10 @@
 // Code generated discover.go. DO NOT EDIT.
 package permissions
 
+import (
+	"connectrpc.com/connect"
+)
+
 func GetServices() []string {
 	return []string{
 {{- range $s := .Services }}
@@ -56,6 +60,21 @@ func GetServicePermissions() *ServicePermissions {
 	"{{ $key }}": {{ $value }} ,
 {{- end }}
 			},
+			Admin:    map[string]bool{
+{{- range $key, $value := .Visibility.Admin }}
+	"{{ $key }}": {{ $value }} ,
+{{- end }}
+			},
+			Tenant:    map[string]bool{
+{{- range $key, $value := .Visibility.Tenant }}
+	"{{ $key }}": {{ $value }} ,
+{{- end }}
+			},
+			Project:    map[string]bool{
+{{- range $key, $value := .Visibility.Project }}
+	"{{ $key }}": {{ $value }} ,
+{{- end }}
+			},
 		},
 		Chargeable: map[string]bool{
 {{- range $key, $value := .Chargeable }}
@@ -68,4 +87,51 @@ func GetServicePermissions() *ServicePermissions {
 {{- end }}
 		},
 	}
+}
+
+func IsPublicScope(req connect.AnyRequest) bool {
+	_, ok := GetServicePermissions().Visibility.Public[req.Spec().Procedure]
+	return ok
+}
+
+func IsSelfScope(req connect.AnyRequest) bool {
+	_, ok := GetServicePermissions().Visibility.Self[req.Spec().Procedure]
+	return ok
+}
+
+func IsAdminScope(req connect.AnyRequest) bool {
+	_, ok := GetServicePermissions().Visibility.Admin[req.Spec().Procedure]
+	return ok
+}
+
+func IsTenantScope(req connect.AnyRequest) bool {
+	_, ok := GetServicePermissions().Visibility.Tenant[req.Spec().Procedure]
+	return ok
+}
+
+func IsProjectScope(req connect.AnyRequest) bool {
+	_, ok := GetServicePermissions().Visibility.Project[req.Spec().Procedure]
+	return ok
+}
+
+func GetTenantFromRequest(req connect.AnyRequest) (string, bool) {
+	if !IsTenantScope(req) {
+		return "", false
+	}
+	switch rq := req.Any().(type) {
+	case interface{ GetLogin() string }:
+		return rq.GetLogin(), true
+	}
+	return "", false
+}
+
+func GetProjectFromRequest(req connect.AnyRequest) (string, bool) {
+	if !IsProjectScope(req) {
+		return "", false
+	}
+	switch rq := req.Any().(type) {
+	case interface{ GetProject() string }:
+		return rq.GetProject(), true
+	}
+	return "", false
 }

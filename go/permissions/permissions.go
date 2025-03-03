@@ -33,4 +33,7 @@ type Roles struct {
 type Visibility struct {
 	Public map[string]bool `json:"public,omitempty"`
 	Self   map[string]bool `json:"self,omitempty"`
+	Admin   map[string]bool `json:"admin,omitempty"`
+	Tenant  map[string]bool `json:"tenant,omitempty"`
+	Project map[string]bool `json:"project,omitempty"`
 }
