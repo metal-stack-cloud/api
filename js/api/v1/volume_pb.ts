@@ -173,6 +173,13 @@ export class Volume extends Message<Volume> {
    */
   clusterId = "";
 
+  /**
+   * Labels stored in the volume
+   *
+   * @generated from field: repeated api.v1.VolumeLabel labels = 24;
+   */
+  labels: VolumeLabel[] = [];
+
   constructor(data?: PartialMessage<Volume>) {
     super();
     proto3.util.initPartial(data, this);
@@ -204,6 +211,7 @@ export class Volume extends Message<Volume> {
     { no: 21, name: "statistics", kind: "message", T: VolumeStatistics },
     { no: 22, name: "cluster_name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 23, name: "cluster_id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 24, name: "labels", kind: "message", T: VolumeLabel, repeated: true },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Volume {
@@ -220,6 +228,57 @@ export class Volume extends Message<Volume> {
 
   static equals(a: Volume | PlainMessage<Volume> | undefined, b: Volume | PlainMessage<Volume> | undefined): boolean {
     return proto3.util.equals(Volume, a, b);
+  }
+}
+
+/**
+ * label-key and label-value length must be between 1 and 253 characters and
+ * may contain any of: alphanumeric characters (a-z, A-Z, 0-9), hyphen (-),
+ * underscore (_) and dot (.).
+ *
+ * @generated from message api.v1.VolumeLabel
+ */
+export class VolumeLabel extends Message<VolumeLabel> {
+  /**
+   * key under which the value is stored
+   *
+   * @generated from field: string key = 1;
+   */
+  key = "";
+
+  /**
+   * value of this label
+   *
+   * @generated from field: string value = 2;
+   */
+  value = "";
+
+  constructor(data?: PartialMessage<VolumeLabel>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "api.v1.VolumeLabel";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "key", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "value", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): VolumeLabel {
+    return new VolumeLabel().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): VolumeLabel {
+    return new VolumeLabel().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): VolumeLabel {
+    return new VolumeLabel().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: VolumeLabel | PlainMessage<VolumeLabel> | undefined, b: VolumeLabel | PlainMessage<VolumeLabel> | undefined): boolean {
+    return proto3.util.equals(VolumeLabel, a, b);
   }
 }
 
@@ -774,6 +833,63 @@ export class VolumeServiceDeleteRequest extends Message<VolumeServiceDeleteReque
 }
 
 /**
+ * VolumeServiceUpdateRequest is the request payload of a volume update request
+ *
+ * @generated from message api.v1.VolumeServiceUpdateRequest
+ */
+export class VolumeServiceUpdateRequest extends Message<VolumeServiceUpdateRequest> {
+  /**
+   * Uuid of the volume
+   *
+   * @generated from field: string uuid = 1;
+   */
+  uuid = "";
+
+  /**
+   * Project of the volume
+   *
+   * @generated from field: string project = 2;
+   */
+  project = "";
+
+  /**
+   * Labels stored in the volume
+   *
+   * @generated from field: repeated api.v1.VolumeLabel labels = 24;
+   */
+  labels: VolumeLabel[] = [];
+
+  constructor(data?: PartialMessage<VolumeServiceUpdateRequest>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "api.v1.VolumeServiceUpdateRequest";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "uuid", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "project", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 24, name: "labels", kind: "message", T: VolumeLabel, repeated: true },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): VolumeServiceUpdateRequest {
+    return new VolumeServiceUpdateRequest().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): VolumeServiceUpdateRequest {
+    return new VolumeServiceUpdateRequest().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): VolumeServiceUpdateRequest {
+    return new VolumeServiceUpdateRequest().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: VolumeServiceUpdateRequest | PlainMessage<VolumeServiceUpdateRequest> | undefined, b: VolumeServiceUpdateRequest | PlainMessage<VolumeServiceUpdateRequest> | undefined): boolean {
+    return proto3.util.equals(VolumeServiceUpdateRequest, a, b);
+  }
+}
+
+/**
  * SnapshotServiceGetRequest is the request payload of a snapshot list request
  *
  * @generated from message api.v1.SnapshotServiceGetRequest
@@ -1056,6 +1172,47 @@ export class VolumeServiceDeleteResponse extends Message<VolumeServiceDeleteResp
 
   static equals(a: VolumeServiceDeleteResponse | PlainMessage<VolumeServiceDeleteResponse> | undefined, b: VolumeServiceDeleteResponse | PlainMessage<VolumeServiceDeleteResponse> | undefined): boolean {
     return proto3.util.equals(VolumeServiceDeleteResponse, a, b);
+  }
+}
+
+/**
+ * VolumeServiceUpdateResponse is the response payload of a volume update request
+ *
+ * @generated from message api.v1.VolumeServiceUpdateResponse
+ */
+export class VolumeServiceUpdateResponse extends Message<VolumeServiceUpdateResponse> {
+  /**
+   * Volume the volume
+   *
+   * @generated from field: api.v1.Volume volume = 1;
+   */
+  volume?: Volume;
+
+  constructor(data?: PartialMessage<VolumeServiceUpdateResponse>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "api.v1.VolumeServiceUpdateResponse";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "volume", kind: "message", T: Volume },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): VolumeServiceUpdateResponse {
+    return new VolumeServiceUpdateResponse().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): VolumeServiceUpdateResponse {
+    return new VolumeServiceUpdateResponse().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): VolumeServiceUpdateResponse {
+    return new VolumeServiceUpdateResponse().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: VolumeServiceUpdateResponse | PlainMessage<VolumeServiceUpdateResponse> | undefined, b: VolumeServiceUpdateResponse | PlainMessage<VolumeServiceUpdateResponse> | undefined): boolean {
+    return proto3.util.equals(VolumeServiceUpdateResponse, a, b);
   }
 }
 

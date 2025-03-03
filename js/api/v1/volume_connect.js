@@ -2,7 +2,7 @@
 // @generated from file api/v1/volume.proto (package api.v1, syntax proto3)
 /* eslint-disable */
 // @ts-nocheck
-import { SnapshotServiceDeleteRequest, SnapshotServiceDeleteResponse, SnapshotServiceGetRequest, SnapshotServiceGetResponse, SnapshotServiceListRequest, SnapshotServiceListResponse, VolumeServiceDeleteRequest, VolumeServiceDeleteResponse, VolumeServiceGetRequest, VolumeServiceGetResponse, VolumeServiceListRequest, VolumeServiceListResponse } from "./volume_pb.js";
+import { SnapshotServiceDeleteRequest, SnapshotServiceDeleteResponse, SnapshotServiceGetRequest, SnapshotServiceGetResponse, SnapshotServiceListRequest, SnapshotServiceListResponse, VolumeServiceDeleteRequest, VolumeServiceDeleteResponse, VolumeServiceGetRequest, VolumeServiceGetResponse, VolumeServiceListRequest, VolumeServiceListResponse, VolumeServiceUpdateRequest, VolumeServiceUpdateResponse } from "./volume_pb.js";
 import { MethodKind } from "@bufbuild/protobuf";
 /**
  * VolumeService serves volume related functions
@@ -43,6 +43,17 @@ export const VolumeService = {
             name: "Delete",
             I: VolumeServiceDeleteRequest,
             O: VolumeServiceDeleteResponse,
+            kind: MethodKind.Unary,
+        },
+        /**
+         * Update a volume
+         *
+         * @generated from rpc api.v1.VolumeService.Update
+         */
+        update: {
+            name: "Update",
+            I: VolumeServiceUpdateRequest,
+            O: VolumeServiceUpdateResponse,
             kind: MethodKind.Unary,
         },
     }
