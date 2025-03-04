@@ -53,19 +53,6 @@ const (
 	ClusterServiceOperateProcedure = "/api.v1.ClusterService/Operate"
 )
 
-// These variables are the protoreflect.Descriptor objects for the RPCs defined in this package.
-var (
-	clusterServiceServiceDescriptor              = v1.File_api_v1_cluster_proto.Services().ByName("ClusterService")
-	clusterServiceCreateMethodDescriptor         = clusterServiceServiceDescriptor.Methods().ByName("Create")
-	clusterServiceGetMethodDescriptor            = clusterServiceServiceDescriptor.Methods().ByName("Get")
-	clusterServiceListMethodDescriptor           = clusterServiceServiceDescriptor.Methods().ByName("List")
-	clusterServiceWatchStatusMethodDescriptor    = clusterServiceServiceDescriptor.Methods().ByName("WatchStatus")
-	clusterServiceDeleteMethodDescriptor         = clusterServiceServiceDescriptor.Methods().ByName("Delete")
-	clusterServiceUpdateMethodDescriptor         = clusterServiceServiceDescriptor.Methods().ByName("Update")
-	clusterServiceGetCredentialsMethodDescriptor = clusterServiceServiceDescriptor.Methods().ByName("GetCredentials")
-	clusterServiceOperateMethodDescriptor        = clusterServiceServiceDescriptor.Methods().ByName("Operate")
-)
-
 // ClusterServiceClient is a client for the api.v1.ClusterService service.
 type ClusterServiceClient interface {
 	// Create a cluster
@@ -95,53 +82,54 @@ type ClusterServiceClient interface {
 // http://api.acme.com or https://acme.com/grpc).
 func NewClusterServiceClient(httpClient connect.HTTPClient, baseURL string, opts ...connect.ClientOption) ClusterServiceClient {
 	baseURL = strings.TrimRight(baseURL, "/")
+	clusterServiceMethods := v1.File_api_v1_cluster_proto.Services().ByName("ClusterService").Methods()
 	return &clusterServiceClient{
 		create: connect.NewClient[v1.ClusterServiceCreateRequest, v1.ClusterServiceCreateResponse](
 			httpClient,
 			baseURL+ClusterServiceCreateProcedure,
-			connect.WithSchema(clusterServiceCreateMethodDescriptor),
+			connect.WithSchema(clusterServiceMethods.ByName("Create")),
 			connect.WithClientOptions(opts...),
 		),
 		get: connect.NewClient[v1.ClusterServiceGetRequest, v1.ClusterServiceGetResponse](
 			httpClient,
 			baseURL+ClusterServiceGetProcedure,
-			connect.WithSchema(clusterServiceGetMethodDescriptor),
+			connect.WithSchema(clusterServiceMethods.ByName("Get")),
 			connect.WithClientOptions(opts...),
 		),
 		list: connect.NewClient[v1.ClusterServiceListRequest, v1.ClusterServiceListResponse](
 			httpClient,
 			baseURL+ClusterServiceListProcedure,
-			connect.WithSchema(clusterServiceListMethodDescriptor),
+			connect.WithSchema(clusterServiceMethods.ByName("List")),
 			connect.WithClientOptions(opts...),
 		),
 		watchStatus: connect.NewClient[v1.ClusterServiceWatchStatusRequest, v1.ClusterServiceWatchStatusResponse](
 			httpClient,
 			baseURL+ClusterServiceWatchStatusProcedure,
-			connect.WithSchema(clusterServiceWatchStatusMethodDescriptor),
+			connect.WithSchema(clusterServiceMethods.ByName("WatchStatus")),
 			connect.WithClientOptions(opts...),
 		),
 		delete: connect.NewClient[v1.ClusterServiceDeleteRequest, v1.ClusterServiceDeleteResponse](
 			httpClient,
 			baseURL+ClusterServiceDeleteProcedure,
-			connect.WithSchema(clusterServiceDeleteMethodDescriptor),
+			connect.WithSchema(clusterServiceMethods.ByName("Delete")),
 			connect.WithClientOptions(opts...),
 		),
 		update: connect.NewClient[v1.ClusterServiceUpdateRequest, v1.ClusterServiceUpdateResponse](
 			httpClient,
 			baseURL+ClusterServiceUpdateProcedure,
-			connect.WithSchema(clusterServiceUpdateMethodDescriptor),
+			connect.WithSchema(clusterServiceMethods.ByName("Update")),
 			connect.WithClientOptions(opts...),
 		),
 		getCredentials: connect.NewClient[v1.ClusterServiceGetCredentialsRequest, v1.ClusterServiceGetCredentialsResponse](
 			httpClient,
 			baseURL+ClusterServiceGetCredentialsProcedure,
-			connect.WithSchema(clusterServiceGetCredentialsMethodDescriptor),
+			connect.WithSchema(clusterServiceMethods.ByName("GetCredentials")),
 			connect.WithClientOptions(opts...),
 		),
 		operate: connect.NewClient[v1.ClusterServiceOperateRequest, v1.ClusterServiceOperateResponse](
 			httpClient,
 			baseURL+ClusterServiceOperateProcedure,
-			connect.WithSchema(clusterServiceOperateMethodDescriptor),
+			connect.WithSchema(clusterServiceMethods.ByName("Operate")),
 			connect.WithClientOptions(opts...),
 		),
 	}
@@ -225,52 +213,53 @@ type ClusterServiceHandler interface {
 // By default, handlers support the Connect, gRPC, and gRPC-Web protocols with the binary Protobuf
 // and JSON codecs. They also support gzip compression.
 func NewClusterServiceHandler(svc ClusterServiceHandler, opts ...connect.HandlerOption) (string, http.Handler) {
+	clusterServiceMethods := v1.File_api_v1_cluster_proto.Services().ByName("ClusterService").Methods()
 	clusterServiceCreateHandler := connect.NewUnaryHandler(
 		ClusterServiceCreateProcedure,
 		svc.Create,
-		connect.WithSchema(clusterServiceCreateMethodDescriptor),
+		connect.WithSchema(clusterServiceMethods.ByName("Create")),
 		connect.WithHandlerOptions(opts...),
 	)
 	clusterServiceGetHandler := connect.NewUnaryHandler(
 		ClusterServiceGetProcedure,
 		svc.Get,
-		connect.WithSchema(clusterServiceGetMethodDescriptor),
+		connect.WithSchema(clusterServiceMethods.ByName("Get")),
 		connect.WithHandlerOptions(opts...),
 	)
 	clusterServiceListHandler := connect.NewUnaryHandler(
 		ClusterServiceListProcedure,
 		svc.List,
-		connect.WithSchema(clusterServiceListMethodDescriptor),
+		connect.WithSchema(clusterServiceMethods.ByName("List")),
 		connect.WithHandlerOptions(opts...),
 	)
 	clusterServiceWatchStatusHandler := connect.NewServerStreamHandler(
 		ClusterServiceWatchStatusProcedure,
 		svc.WatchStatus,
-		connect.WithSchema(clusterServiceWatchStatusMethodDescriptor),
+		connect.WithSchema(clusterServiceMethods.ByName("WatchStatus")),
 		connect.WithHandlerOptions(opts...),
 	)
 	clusterServiceDeleteHandler := connect.NewUnaryHandler(
 		ClusterServiceDeleteProcedure,
 		svc.Delete,
-		connect.WithSchema(clusterServiceDeleteMethodDescriptor),
+		connect.WithSchema(clusterServiceMethods.ByName("Delete")),
 		connect.WithHandlerOptions(opts...),
 	)
 	clusterServiceUpdateHandler := connect.NewUnaryHandler(
 		ClusterServiceUpdateProcedure,
 		svc.Update,
-		connect.WithSchema(clusterServiceUpdateMethodDescriptor),
+		connect.WithSchema(clusterServiceMethods.ByName("Update")),
 		connect.WithHandlerOptions(opts...),
 	)
 	clusterServiceGetCredentialsHandler := connect.NewUnaryHandler(
 		ClusterServiceGetCredentialsProcedure,
 		svc.GetCredentials,
-		connect.WithSchema(clusterServiceGetCredentialsMethodDescriptor),
+		connect.WithSchema(clusterServiceMethods.ByName("GetCredentials")),
 		connect.WithHandlerOptions(opts...),
 	)
 	clusterServiceOperateHandler := connect.NewUnaryHandler(
 		ClusterServiceOperateProcedure,
 		svc.Operate,
-		connect.WithSchema(clusterServiceOperateMethodDescriptor),
+		connect.WithSchema(clusterServiceMethods.ByName("Operate")),
 		connect.WithHandlerOptions(opts...),
 	)
 	return "/api.v1.ClusterService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {

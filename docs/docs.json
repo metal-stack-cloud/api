@@ -9495,20 +9495,20 @@
           "extensions": [],
           "fields": [
             {
-              "name": "login",
-              "description": "Login of the tenant to list",
+              "name": "tenant",
+              "description": "Tenant filters the result list by the given tenant id",
               "label": "optional",
               "type": "string",
               "longType": "string",
               "fullType": "string",
               "ismap": false,
               "isoneof": true,
-              "oneofdecl": "_login",
+              "oneofdecl": "_tenant",
               "defaultValue": ""
             },
             {
               "name": "name",
-              "description": "Name of the tenant to list",
+              "description": "Name filters the result list by the given tenant name",
               "label": "optional",
               "type": "string",
               "longType": "string",
@@ -9564,18 +9564,6 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "uuid",
-              "description": "Uuid of the tenant to list",
-              "label": "optional",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": true,
-              "oneofdecl": "_uuid",
               "defaultValue": ""
             }
           ]

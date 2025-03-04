@@ -37,12 +37,6 @@ const (
 	VersionServiceGetProcedure = "/api.v1.VersionService/Get"
 )
 
-// These variables are the protoreflect.Descriptor objects for the RPCs defined in this package.
-var (
-	versionServiceServiceDescriptor   = v1.File_api_v1_version_proto.Services().ByName("VersionService")
-	versionServiceGetMethodDescriptor = versionServiceServiceDescriptor.Methods().ByName("Get")
-)
-
 // VersionServiceClient is a client for the api.v1.VersionService service.
 type VersionServiceClient interface {
 	// Get the version
@@ -58,11 +52,12 @@ type VersionServiceClient interface {
 // http://api.acme.com or https://acme.com/grpc).
 func NewVersionServiceClient(httpClient connect.HTTPClient, baseURL string, opts ...connect.ClientOption) VersionServiceClient {
 	baseURL = strings.TrimRight(baseURL, "/")
+	versionServiceMethods := v1.File_api_v1_version_proto.Services().ByName("VersionService").Methods()
 	return &versionServiceClient{
 		get: connect.NewClient[v1.VersionServiceGetRequest, v1.VersionServiceGetResponse](
 			httpClient,
 			baseURL+VersionServiceGetProcedure,
-			connect.WithSchema(versionServiceGetMethodDescriptor),
+			connect.WithSchema(versionServiceMethods.ByName("Get")),
 			connect.WithClientOptions(opts...),
 		),
 	}
@@ -90,10 +85,11 @@ type VersionServiceHandler interface {
 // By default, handlers support the Connect, gRPC, and gRPC-Web protocols with the binary Protobuf
 // and JSON codecs. They also support gzip compression.
 func NewVersionServiceHandler(svc VersionServiceHandler, opts ...connect.HandlerOption) (string, http.Handler) {
+	versionServiceMethods := v1.File_api_v1_version_proto.Services().ByName("VersionService").Methods()
 	versionServiceGetHandler := connect.NewUnaryHandler(
 		VersionServiceGetProcedure,
 		svc.Get,
-		connect.WithSchema(versionServiceGetMethodDescriptor),
+		connect.WithSchema(versionServiceMethods.ByName("Get")),
 		connect.WithHandlerOptions(opts...),
 	)
 	return "/api.v1.VersionService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {

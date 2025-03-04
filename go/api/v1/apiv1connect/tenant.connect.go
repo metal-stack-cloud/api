@@ -64,23 +64,6 @@ const (
 	TenantServiceInviteGetProcedure = "/api.v1.TenantService/InviteGet"
 )
 
-// These variables are the protoreflect.Descriptor objects for the RPCs defined in this package.
-var (
-	tenantServiceServiceDescriptor            = v1.File_api_v1_tenant_proto.Services().ByName("TenantService")
-	tenantServiceCreateMethodDescriptor       = tenantServiceServiceDescriptor.Methods().ByName("Create")
-	tenantServiceListMethodDescriptor         = tenantServiceServiceDescriptor.Methods().ByName("List")
-	tenantServiceGetMethodDescriptor          = tenantServiceServiceDescriptor.Methods().ByName("Get")
-	tenantServiceUpdateMethodDescriptor       = tenantServiceServiceDescriptor.Methods().ByName("Update")
-	tenantServiceDeleteMethodDescriptor       = tenantServiceServiceDescriptor.Methods().ByName("Delete")
-	tenantServiceRemoveMemberMethodDescriptor = tenantServiceServiceDescriptor.Methods().ByName("RemoveMember")
-	tenantServiceUpdateMemberMethodDescriptor = tenantServiceServiceDescriptor.Methods().ByName("UpdateMember")
-	tenantServiceInviteMethodDescriptor       = tenantServiceServiceDescriptor.Methods().ByName("Invite")
-	tenantServiceInviteAcceptMethodDescriptor = tenantServiceServiceDescriptor.Methods().ByName("InviteAccept")
-	tenantServiceInviteDeleteMethodDescriptor = tenantServiceServiceDescriptor.Methods().ByName("InviteDelete")
-	tenantServiceInvitesListMethodDescriptor  = tenantServiceServiceDescriptor.Methods().ByName("InvitesList")
-	tenantServiceInviteGetMethodDescriptor    = tenantServiceServiceDescriptor.Methods().ByName("InviteGet")
-)
-
 // TenantServiceClient is a client for the api.v1.TenantService service.
 type TenantServiceClient interface {
 	// Create a tenant
@@ -118,77 +101,78 @@ type TenantServiceClient interface {
 // http://api.acme.com or https://acme.com/grpc).
 func NewTenantServiceClient(httpClient connect.HTTPClient, baseURL string, opts ...connect.ClientOption) TenantServiceClient {
 	baseURL = strings.TrimRight(baseURL, "/")
+	tenantServiceMethods := v1.File_api_v1_tenant_proto.Services().ByName("TenantService").Methods()
 	return &tenantServiceClient{
 		create: connect.NewClient[v1.TenantServiceCreateRequest, v1.TenantServiceCreateResponse](
 			httpClient,
 			baseURL+TenantServiceCreateProcedure,
-			connect.WithSchema(tenantServiceCreateMethodDescriptor),
+			connect.WithSchema(tenantServiceMethods.ByName("Create")),
 			connect.WithClientOptions(opts...),
 		),
 		list: connect.NewClient[v1.TenantServiceListRequest, v1.TenantServiceListResponse](
 			httpClient,
 			baseURL+TenantServiceListProcedure,
-			connect.WithSchema(tenantServiceListMethodDescriptor),
+			connect.WithSchema(tenantServiceMethods.ByName("List")),
 			connect.WithClientOptions(opts...),
 		),
 		get: connect.NewClient[v1.TenantServiceGetRequest, v1.TenantServiceGetResponse](
 			httpClient,
 			baseURL+TenantServiceGetProcedure,
-			connect.WithSchema(tenantServiceGetMethodDescriptor),
+			connect.WithSchema(tenantServiceMethods.ByName("Get")),
 			connect.WithClientOptions(opts...),
 		),
 		update: connect.NewClient[v1.TenantServiceUpdateRequest, v1.TenantServiceUpdateResponse](
 			httpClient,
 			baseURL+TenantServiceUpdateProcedure,
-			connect.WithSchema(tenantServiceUpdateMethodDescriptor),
+			connect.WithSchema(tenantServiceMethods.ByName("Update")),
 			connect.WithClientOptions(opts...),
 		),
 		delete: connect.NewClient[v1.TenantServiceDeleteRequest, v1.TenantServiceDeleteResponse](
 			httpClient,
 			baseURL+TenantServiceDeleteProcedure,
-			connect.WithSchema(tenantServiceDeleteMethodDescriptor),
+			connect.WithSchema(tenantServiceMethods.ByName("Delete")),
 			connect.WithClientOptions(opts...),
 		),
 		removeMember: connect.NewClient[v1.TenantServiceRemoveMemberRequest, v1.TenantServiceRemoveMemberResponse](
 			httpClient,
 			baseURL+TenantServiceRemoveMemberProcedure,
-			connect.WithSchema(tenantServiceRemoveMemberMethodDescriptor),
+			connect.WithSchema(tenantServiceMethods.ByName("RemoveMember")),
 			connect.WithClientOptions(opts...),
 		),
 		updateMember: connect.NewClient[v1.TenantServiceUpdateMemberRequest, v1.TenantServiceUpdateMemberResponse](
 			httpClient,
 			baseURL+TenantServiceUpdateMemberProcedure,
-			connect.WithSchema(tenantServiceUpdateMemberMethodDescriptor),
+			connect.WithSchema(tenantServiceMethods.ByName("UpdateMember")),
 			connect.WithClientOptions(opts...),
 		),
 		invite: connect.NewClient[v1.TenantServiceInviteRequest, v1.TenantServiceInviteResponse](
 			httpClient,
 			baseURL+TenantServiceInviteProcedure,
-			connect.WithSchema(tenantServiceInviteMethodDescriptor),
+			connect.WithSchema(tenantServiceMethods.ByName("Invite")),
 			connect.WithClientOptions(opts...),
 		),
 		inviteAccept: connect.NewClient[v1.TenantServiceInviteAcceptRequest, v1.TenantServiceInviteAcceptResponse](
 			httpClient,
 			baseURL+TenantServiceInviteAcceptProcedure,
-			connect.WithSchema(tenantServiceInviteAcceptMethodDescriptor),
+			connect.WithSchema(tenantServiceMethods.ByName("InviteAccept")),
 			connect.WithClientOptions(opts...),
 		),
 		inviteDelete: connect.NewClient[v1.TenantServiceInviteDeleteRequest, v1.TenantServiceInviteDeleteResponse](
 			httpClient,
 			baseURL+TenantServiceInviteDeleteProcedure,
-			connect.WithSchema(tenantServiceInviteDeleteMethodDescriptor),
+			connect.WithSchema(tenantServiceMethods.ByName("InviteDelete")),
 			connect.WithClientOptions(opts...),
 		),
 		invitesList: connect.NewClient[v1.TenantServiceInvitesListRequest, v1.TenantServiceInvitesListResponse](
 			httpClient,
 			baseURL+TenantServiceInvitesListProcedure,
-			connect.WithSchema(tenantServiceInvitesListMethodDescriptor),
+			connect.WithSchema(tenantServiceMethods.ByName("InvitesList")),
 			connect.WithClientOptions(opts...),
 		),
 		inviteGet: connect.NewClient[v1.TenantServiceInviteGetRequest, v1.TenantServiceInviteGetResponse](
 			httpClient,
 			baseURL+TenantServiceInviteGetProcedure,
-			connect.WithSchema(tenantServiceInviteGetMethodDescriptor),
+			connect.WithSchema(tenantServiceMethods.ByName("InviteGet")),
 			connect.WithClientOptions(opts...),
 		),
 	}
@@ -304,76 +288,77 @@ type TenantServiceHandler interface {
 // By default, handlers support the Connect, gRPC, and gRPC-Web protocols with the binary Protobuf
 // and JSON codecs. They also support gzip compression.
 func NewTenantServiceHandler(svc TenantServiceHandler, opts ...connect.HandlerOption) (string, http.Handler) {
+	tenantServiceMethods := v1.File_api_v1_tenant_proto.Services().ByName("TenantService").Methods()
 	tenantServiceCreateHandler := connect.NewUnaryHandler(
 		TenantServiceCreateProcedure,
 		svc.Create,
-		connect.WithSchema(tenantServiceCreateMethodDescriptor),
+		connect.WithSchema(tenantServiceMethods.ByName("Create")),
 		connect.WithHandlerOptions(opts...),
 	)
 	tenantServiceListHandler := connect.NewUnaryHandler(
 		TenantServiceListProcedure,
 		svc.List,
-		connect.WithSchema(tenantServiceListMethodDescriptor),
+		connect.WithSchema(tenantServiceMethods.ByName("List")),
 		connect.WithHandlerOptions(opts...),
 	)
 	tenantServiceGetHandler := connect.NewUnaryHandler(
 		TenantServiceGetProcedure,
 		svc.Get,
-		connect.WithSchema(tenantServiceGetMethodDescriptor),
+		connect.WithSchema(tenantServiceMethods.ByName("Get")),
 		connect.WithHandlerOptions(opts...),
 	)
 	tenantServiceUpdateHandler := connect.NewUnaryHandler(
 		TenantServiceUpdateProcedure,
 		svc.Update,
-		connect.WithSchema(tenantServiceUpdateMethodDescriptor),
+		connect.WithSchema(tenantServiceMethods.ByName("Update")),
 		connect.WithHandlerOptions(opts...),
 	)
 	tenantServiceDeleteHandler := connect.NewUnaryHandler(
 		TenantServiceDeleteProcedure,
 		svc.Delete,
-		connect.WithSchema(tenantServiceDeleteMethodDescriptor),
+		connect.WithSchema(tenantServiceMethods.ByName("Delete")),
 		connect.WithHandlerOptions(opts...),
 	)
 	tenantServiceRemoveMemberHandler := connect.NewUnaryHandler(
 		TenantServiceRemoveMemberProcedure,
 		svc.RemoveMember,
-		connect.WithSchema(tenantServiceRemoveMemberMethodDescriptor),
+		connect.WithSchema(tenantServiceMethods.ByName("RemoveMember")),
 		connect.WithHandlerOptions(opts...),
 	)
 	tenantServiceUpdateMemberHandler := connect.NewUnaryHandler(
 		TenantServiceUpdateMemberProcedure,
 		svc.UpdateMember,
-		connect.WithSchema(tenantServiceUpdateMemberMethodDescriptor),
+		connect.WithSchema(tenantServiceMethods.ByName("UpdateMember")),
 		connect.WithHandlerOptions(opts...),
 	)
 	tenantServiceInviteHandler := connect.NewUnaryHandler(
 		TenantServiceInviteProcedure,
 		svc.Invite,
-		connect.WithSchema(tenantServiceInviteMethodDescriptor),
+		connect.WithSchema(tenantServiceMethods.ByName("Invite")),
 		connect.WithHandlerOptions(opts...),
 	)
 	tenantServiceInviteAcceptHandler := connect.NewUnaryHandler(
 		TenantServiceInviteAcceptProcedure,
 		svc.InviteAccept,
-		connect.WithSchema(tenantServiceInviteAcceptMethodDescriptor),
+		connect.WithSchema(tenantServiceMethods.ByName("InviteAccept")),
 		connect.WithHandlerOptions(opts...),
 	)
 	tenantServiceInviteDeleteHandler := connect.NewUnaryHandler(
 		TenantServiceInviteDeleteProcedure,
 		svc.InviteDelete,
-		connect.WithSchema(tenantServiceInviteDeleteMethodDescriptor),
+		connect.WithSchema(tenantServiceMethods.ByName("InviteDelete")),
 		connect.WithHandlerOptions(opts...),
 	)
 	tenantServiceInvitesListHandler := connect.NewUnaryHandler(
 		TenantServiceInvitesListProcedure,
 		svc.InvitesList,
-		connect.WithSchema(tenantServiceInvitesListMethodDescriptor),
+		connect.WithSchema(tenantServiceMethods.ByName("InvitesList")),
 		connect.WithHandlerOptions(opts...),
 	)
 	tenantServiceInviteGetHandler := connect.NewUnaryHandler(
 		TenantServiceInviteGetProcedure,
 		svc.InviteGet,
-		connect.WithSchema(tenantServiceInviteGetMethodDescriptor),
+		connect.WithSchema(tenantServiceMethods.ByName("InviteGet")),
 		connect.WithHandlerOptions(opts...),
 	)
 	return "/api.v1.TenantService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {

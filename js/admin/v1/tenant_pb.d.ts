@@ -9,13 +9,13 @@ import { Tenant } from "../../api/v1/tenant_pb.js";
  */
 export declare class TenantServiceListRequest extends Message<TenantServiceListRequest> {
     /**
-     * Login of the tenant to list
+     * Tenant filters the result list by the given tenant id
      *
-     * @generated from field: optional string login = 1;
+     * @generated from field: optional string tenant = 9;
      */
-    login?: string;
+    tenant?: string;
     /**
-     * Name of the tenant to list
+     * Name filters the result list by the given tenant name
      *
      * @generated from field: optional string name = 2;
      */
@@ -44,12 +44,6 @@ export declare class TenantServiceListRequest extends Message<TenantServiceListR
      * @generated from field: api.v1.Paging paging = 7;
      */
     paging?: Paging;
-    /**
-     * Uuid of the tenant to list
-     *
-     * @generated from field: optional string uuid = 8;
-     */
-    uuid?: string;
     constructor(data?: PartialMessage<TenantServiceListRequest>);
     static readonly runtime: typeof proto3;
     static readonly typeName = "admin.v1.TenantServiceListRequest";
