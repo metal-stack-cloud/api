@@ -44,25 +44,19 @@ export class AuditTrace extends Message {
         /**
          * Request is the payload of the request
          *
-         * @generated from field: string request_payload = 7;
+         * @generated from field: string body = 7;
          */
-        this.requestPayload = "";
+        this.body = "";
         /**
          * Response is the payload of the response
          *
-         * @generated from field: string response_payload = 8;
-         */
-        this.responsePayload = "";
-        /**
-         * SourceIP contains the ip address of the caller
-         *
-         * @generated from field: string source_ip = 9;
+         * @generated from field: string source_ip = 8;
          */
         this.sourceIp = "";
         /**
          * ResultCode is a string describing the result of the api call
          *
-         * @generated from field: int32 result_code = 10;
+         * @generated from field: int32 result_code = 9;
          */
         this.resultCode = 0;
         proto3.util.initPartial(data, this);
@@ -89,10 +83,9 @@ AuditTrace.fields = proto3.util.newFieldList(() => [
     { no: 4, name: "tenant", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 5, name: "project", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 6, name: "method", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 7, name: "request_payload", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 8, name: "response_payload", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 9, name: "source_ip", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 10, name: "result_code", kind: "scalar", T: 5 /* ScalarType.INT32 */ },
+    { no: 7, name: "body", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 8, name: "source_ip", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 9, name: "result_code", kind: "scalar", T: 5 /* ScalarType.INT32 */ },
 ]);
 /**
  * AuditServiceListRequest is the request payload to list audits

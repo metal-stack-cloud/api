@@ -45,25 +45,19 @@ export declare class AuditTrace extends Message<AuditTrace> {
     /**
      * Request is the payload of the request
      *
-     * @generated from field: string request_payload = 7;
+     * @generated from field: string body = 7;
      */
-    requestPayload: string;
+    body: string;
     /**
      * Response is the payload of the response
      *
-     * @generated from field: string response_payload = 8;
-     */
-    responsePayload: string;
-    /**
-     * SourceIP contains the ip address of the caller
-     *
-     * @generated from field: string source_ip = 9;
+     * @generated from field: string source_ip = 8;
      */
     sourceIp: string;
     /**
      * ResultCode is a string describing the result of the api call
      *
-     * @generated from field: int32 result_code = 10;
+     * @generated from field: int32 result_code = 9;
      */
     resultCode: number;
     constructor(data?: PartialMessage<AuditTrace>);

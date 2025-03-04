@@ -11575,7 +11575,7 @@
               "defaultValue": ""
             },
             {
-              "name": "request_payload",
+              "name": "body",
               "description": "Request is the payload of the request",
               "label": "",
               "type": "string",
@@ -11587,20 +11587,8 @@
               "defaultValue": ""
             },
             {
-              "name": "response_payload",
-              "description": "Response is the payload of the response",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
               "name": "source_ip",
-              "description": "SourceIP contains the ip address of the caller",
+              "description": "Response is the payload of the response",
               "label": "",
               "type": "string",
               "longType": "string",

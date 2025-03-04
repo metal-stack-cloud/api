@@ -36,13 +36,11 @@ message AuditTrace {
   // Method is the api method that was called
   string method = 6;
   // Request is the payload of the request
-  string request_payload = 7;
+  string body = 7;
   // Response is the payload of the response
-  string response_payload = 8;
-  // SourceIP contains the ip address of the caller
-  string source_ip = 9;
+  string source_ip = 8;
   // ResultCode is a string describing the result of the api call
-  int32 result_code = 10;
+  int32 result_code = 9;
 }
 
 // AuditServiceListRequest is the request payload to list audits
