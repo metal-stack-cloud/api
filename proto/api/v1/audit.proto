@@ -69,6 +69,8 @@ message AuditServiceListRequest {
   optional int32 result_code = 10;
   // Body is a string providing text-search of the body field
   optional string body = 11;
+  // Limit is a number limiting the length of the response
+  optional int32 limit = 12;
 }
 
 // AuditServiceListResponse is the response payload of a audit list request

@@ -202,6 +202,13 @@ export class AuditServiceListRequest extends Message<AuditServiceListRequest> {
    */
   body?: string;
 
+  /**
+   * Limit is a number limiting the length of the response
+   *
+   * @generated from field: optional int32 limit = 12;
+   */
+  limit?: number;
+
   constructor(data?: PartialMessage<AuditServiceListRequest>) {
     super();
     proto3.util.initPartial(data, this);
@@ -221,6 +228,7 @@ export class AuditServiceListRequest extends Message<AuditServiceListRequest> {
     { no: 9, name: "source_ip", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
     { no: 10, name: "result_code", kind: "scalar", T: 5 /* ScalarType.INT32 */, opt: true },
     { no: 11, name: "body", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
+    { no: 12, name: "limit", kind: "scalar", T: 5 /* ScalarType.INT32 */, opt: true },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): AuditServiceListRequest {

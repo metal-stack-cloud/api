@@ -147,6 +147,12 @@ export declare class AuditServiceListRequest extends Message<AuditServiceListReq
      * @generated from field: optional string body = 11;
      */
     body?: string;
+    /**
+     * Limit is a number limiting the length of the response
+     *
+     * @generated from field: optional int32 limit = 12;
+     */
+    limit?: number;
     constructor(data?: PartialMessage<AuditServiceListRequest>);
     static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.AuditServiceListRequest";
