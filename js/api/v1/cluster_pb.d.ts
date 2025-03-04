@@ -1,42 +1,16 @@
-import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
-import { Duration, Message, proto3, Timestamp } from "@bufbuild/protobuf";
+import type { GenEnum, GenFile, GenMessage, GenService } from "@bufbuild/protobuf/codegenv1";
+import type { Duration, Timestamp } from "@bufbuild/protobuf/wkt";
+import type { Message } from "@bufbuild/protobuf";
 /**
- * Operate defines the types of reconciliation to be triggered
- *
- * @generated from enum api.v1.Operate
+ * Describes the file api/v1/cluster.proto.
  */
-export declare enum Operate {
-    /**
-     * OPERATE_UNSPECIFIED is not specified
-     *
-     * @generated from enum value: OPERATE_UNSPECIFIED = 0;
-     */
-    UNSPECIFIED = 0,
-    /**
-     * OPERATE_RECONCILE reconcile the cluster
-     *
-     * @generated from enum value: OPERATE_RECONCILE = 1;
-     */
-    RECONCILE = 1,
-    /**
-     * OPERATE_MAINTAIN maintain the cluster
-     *
-     * @generated from enum value: OPERATE_MAINTAIN = 2;
-     */
-    MAINTAIN = 2,
-    /**
-     * OPERATE_RETRY retry the reconciliation of the cluster
-     *
-     * @generated from enum value: OPERATE_RETRY = 3;
-     */
-    RETRY = 3
-}
+export declare const file_api_v1_cluster: GenFile;
 /**
  * Cluster describes a kubernetes cluster
  *
  * @generated from message api.v1.Cluster
  */
-export declare class Cluster extends Message<Cluster> {
+export type Cluster = Message<"api.v1.Cluster"> & {
     /**
      * Uuid of the cluster
      *
@@ -121,42 +95,36 @@ export declare class Cluster extends Message<Cluster> {
      * @generated from field: api.v1.ClusterMonitoring monitoring = 22;
      */
     monitoring?: ClusterMonitoring;
-    constructor(data?: PartialMessage<Cluster>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "api.v1.Cluster";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Cluster;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): Cluster;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): Cluster;
-    static equals(a: Cluster | PlainMessage<Cluster> | undefined, b: Cluster | PlainMessage<Cluster> | undefined): boolean;
-}
+};
+/**
+ * Describes the message api.v1.Cluster.
+ * Use `create(ClusterSchema)` to create a new message.
+ */
+export declare const ClusterSchema: GenMessage<Cluster>;
 /**
  * KubernetesSpec details of kubernetes this cluster
  *
  * @generated from message api.v1.KubernetesSpec
  */
-export declare class KubernetesSpec extends Message<KubernetesSpec> {
+export type KubernetesSpec = Message<"api.v1.KubernetesSpec"> & {
     /**
      * Version of kubernetes
      *
      * @generated from field: string version = 1;
      */
     version: string;
-    constructor(data?: PartialMessage<KubernetesSpec>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "api.v1.KubernetesSpec";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): KubernetesSpec;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): KubernetesSpec;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): KubernetesSpec;
-    static equals(a: KubernetesSpec | PlainMessage<KubernetesSpec> | undefined, b: KubernetesSpec | PlainMessage<KubernetesSpec> | undefined): boolean;
-}
+};
+/**
+ * Describes the message api.v1.KubernetesSpec.
+ * Use `create(KubernetesSpecSchema)` to create a new message.
+ */
+export declare const KubernetesSpecSchema: GenMessage<KubernetesSpec>;
 /**
  * Maintenance defines when automatic actions should be scheduled on this cluster
  *
  * @generated from message api.v1.Maintenance
  */
-export declare class Maintenance extends Message<Maintenance> {
+export type Maintenance = Message<"api.v1.Maintenance"> & {
     /**
      * KubernetesAutoupdate if set to true, kubernetes patch version updates will be done in the maintenance window
      *
@@ -175,21 +143,18 @@ export declare class Maintenance extends Message<Maintenance> {
      * @generated from field: api.v1.MaintenanceTimeWindow time_window = 3;
      */
     timeWindow?: MaintenanceTimeWindow;
-    constructor(data?: PartialMessage<Maintenance>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "api.v1.Maintenance";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Maintenance;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): Maintenance;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): Maintenance;
-    static equals(a: Maintenance | PlainMessage<Maintenance> | undefined, b: Maintenance | PlainMessage<Maintenance> | undefined): boolean;
-}
+};
+/**
+ * Describes the message api.v1.Maintenance.
+ * Use `create(MaintenanceSchema)` to create a new message.
+ */
+export declare const MaintenanceSchema: GenMessage<Maintenance>;
 /**
  * MaintenanceTimeWindow defines the start time and duration during which automatic actions will be performed
  *
  * @generated from message api.v1.MaintenanceTimeWindow
  */
-export declare class MaintenanceTimeWindow extends Message<MaintenanceTimeWindow> {
+export type MaintenanceTimeWindow = Message<"api.v1.MaintenanceTimeWindow"> & {
     /**
      * Begin of the MaintenanceTimeWindow
      *
@@ -202,21 +167,18 @@ export declare class MaintenanceTimeWindow extends Message<MaintenanceTimeWindow
      * @generated from field: google.protobuf.Duration duration = 2;
      */
     duration?: Duration;
-    constructor(data?: PartialMessage<MaintenanceTimeWindow>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "api.v1.MaintenanceTimeWindow";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): MaintenanceTimeWindow;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): MaintenanceTimeWindow;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): MaintenanceTimeWindow;
-    static equals(a: MaintenanceTimeWindow | PlainMessage<MaintenanceTimeWindow> | undefined, b: MaintenanceTimeWindow | PlainMessage<MaintenanceTimeWindow> | undefined): boolean;
-}
+};
+/**
+ * Describes the message api.v1.MaintenanceTimeWindow.
+ * Use `create(MaintenanceTimeWindowSchema)` to create a new message.
+ */
+export declare const MaintenanceTimeWindowSchema: GenMessage<MaintenanceTimeWindow>;
 /**
  * Time of day
  *
  * @generated from message api.v1.Time
  */
-export declare class Time extends Message<Time> {
+export type Time = Message<"api.v1.Time"> & {
     /**
      * hour begin of the maintenance window, specified in 24 hour format.
      *
@@ -235,21 +197,18 @@ export declare class Time extends Message<Time> {
      * @generated from field: string timezone = 3;
      */
     timezone: string;
-    constructor(data?: PartialMessage<Time>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "api.v1.Time";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Time;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): Time;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): Time;
-    static equals(a: Time | PlainMessage<Time> | undefined, b: Time | PlainMessage<Time> | undefined): boolean;
-}
+};
+/**
+ * Describes the message api.v1.Time.
+ * Use `create(TimeSchema)` to create a new message.
+ */
+export declare const TimeSchema: GenMessage<Time>;
 /**
  * Worker defines a set of worker nodes with identical properties
  *
  * @generated from message api.v1.Worker
  */
-export declare class Worker extends Message<Worker> {
+export type Worker = Message<"api.v1.Worker"> & {
     /**
      * Name of this worker group
      *
@@ -286,21 +245,18 @@ export declare class Worker extends Message<Worker> {
      * @generated from field: uint32 maxunavailable = 6;
      */
     maxunavailable: number;
-    constructor(data?: PartialMessage<Worker>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "api.v1.Worker";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Worker;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): Worker;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): Worker;
-    static equals(a: Worker | PlainMessage<Worker> | undefined, b: Worker | PlainMessage<Worker> | undefined): boolean;
-}
+};
+/**
+ * Describes the message api.v1.Worker.
+ * Use `create(WorkerSchema)` to create a new message.
+ */
+export declare const WorkerSchema: GenMessage<Worker>;
 /**
  * WorkerUpdate is used to update a Worker group
  *
  * @generated from message api.v1.WorkerUpdate
  */
-export declare class WorkerUpdate extends Message<WorkerUpdate> {
+export type WorkerUpdate = Message<"api.v1.WorkerUpdate"> & {
     /**
      * Name of the worker group to update
      *
@@ -337,21 +293,18 @@ export declare class WorkerUpdate extends Message<WorkerUpdate> {
      * @generated from field: optional uint32 maxunavailable = 6;
      */
     maxunavailable?: number;
-    constructor(data?: PartialMessage<WorkerUpdate>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "api.v1.WorkerUpdate";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): WorkerUpdate;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): WorkerUpdate;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): WorkerUpdate;
-    static equals(a: WorkerUpdate | PlainMessage<WorkerUpdate> | undefined, b: WorkerUpdate | PlainMessage<WorkerUpdate> | undefined): boolean;
-}
+};
+/**
+ * Describes the message api.v1.WorkerUpdate.
+ * Use `create(WorkerUpdateSchema)` to create a new message.
+ */
+export declare const WorkerUpdateSchema: GenMessage<WorkerUpdate>;
 /**
  * ClusterServiceGetRequest is the request payload for a cluster get request
  *
  * @generated from message api.v1.ClusterServiceGetRequest
  */
-export declare class ClusterServiceGetRequest extends Message<ClusterServiceGetRequest> {
+export type ClusterServiceGetRequest = Message<"api.v1.ClusterServiceGetRequest"> & {
     /**
      * Uuid of the cluster
      *
@@ -364,21 +317,18 @@ export declare class ClusterServiceGetRequest extends Message<ClusterServiceGetR
      * @generated from field: string project = 2;
      */
     project: string;
-    constructor(data?: PartialMessage<ClusterServiceGetRequest>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "api.v1.ClusterServiceGetRequest";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ClusterServiceGetRequest;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ClusterServiceGetRequest;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ClusterServiceGetRequest;
-    static equals(a: ClusterServiceGetRequest | PlainMessage<ClusterServiceGetRequest> | undefined, b: ClusterServiceGetRequest | PlainMessage<ClusterServiceGetRequest> | undefined): boolean;
-}
+};
+/**
+ * Describes the message api.v1.ClusterServiceGetRequest.
+ * Use `create(ClusterServiceGetRequestSchema)` to create a new message.
+ */
+export declare const ClusterServiceGetRequestSchema: GenMessage<ClusterServiceGetRequest>;
 /**
  * ClusterServiceOperateRequest is the request payload for the cluster operate request
  *
  * @generated from message api.v1.ClusterServiceOperateRequest
  */
-export declare class ClusterServiceOperateRequest extends Message<ClusterServiceOperateRequest> {
+export type ClusterServiceOperateRequest = Message<"api.v1.ClusterServiceOperateRequest"> & {
     /**
      * Uuid of the cluster
      *
@@ -397,21 +347,18 @@ export declare class ClusterServiceOperateRequest extends Message<ClusterService
      * @generated from field: api.v1.Operate operate = 3;
      */
     operate: Operate;
-    constructor(data?: PartialMessage<ClusterServiceOperateRequest>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "api.v1.ClusterServiceOperateRequest";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ClusterServiceOperateRequest;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ClusterServiceOperateRequest;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ClusterServiceOperateRequest;
-    static equals(a: ClusterServiceOperateRequest | PlainMessage<ClusterServiceOperateRequest> | undefined, b: ClusterServiceOperateRequest | PlainMessage<ClusterServiceOperateRequest> | undefined): boolean;
-}
+};
+/**
+ * Describes the message api.v1.ClusterServiceOperateRequest.
+ * Use `create(ClusterServiceOperateRequestSchema)` to create a new message.
+ */
+export declare const ClusterServiceOperateRequestSchema: GenMessage<ClusterServiceOperateRequest>;
 /**
  * ClusterServiceGetRequest is the request payload for a cluster get request
  *
  * @generated from message api.v1.ClusterServiceGetCredentialsRequest
  */
-export declare class ClusterServiceGetCredentialsRequest extends Message<ClusterServiceGetCredentialsRequest> {
+export type ClusterServiceGetCredentialsRequest = Message<"api.v1.ClusterServiceGetCredentialsRequest"> & {
     /**
      * Uuid of the cluster
      *
@@ -430,42 +377,36 @@ export declare class ClusterServiceGetCredentialsRequest extends Message<Cluster
      * @generated from field: optional google.protobuf.Duration expiration = 4;
      */
     expiration?: Duration;
-    constructor(data?: PartialMessage<ClusterServiceGetCredentialsRequest>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "api.v1.ClusterServiceGetCredentialsRequest";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ClusterServiceGetCredentialsRequest;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ClusterServiceGetCredentialsRequest;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ClusterServiceGetCredentialsRequest;
-    static equals(a: ClusterServiceGetCredentialsRequest | PlainMessage<ClusterServiceGetCredentialsRequest> | undefined, b: ClusterServiceGetCredentialsRequest | PlainMessage<ClusterServiceGetCredentialsRequest> | undefined): boolean;
-}
+};
+/**
+ * Describes the message api.v1.ClusterServiceGetCredentialsRequest.
+ * Use `create(ClusterServiceGetCredentialsRequestSchema)` to create a new message.
+ */
+export declare const ClusterServiceGetCredentialsRequestSchema: GenMessage<ClusterServiceGetCredentialsRequest>;
 /**
  * ClusterServiceListRequest is the request payload for a cluster list request
  *
  * @generated from message api.v1.ClusterServiceListRequest
  */
-export declare class ClusterServiceListRequest extends Message<ClusterServiceListRequest> {
+export type ClusterServiceListRequest = Message<"api.v1.ClusterServiceListRequest"> & {
     /**
      * Project of the cluster
      *
      * @generated from field: string project = 2;
      */
     project: string;
-    constructor(data?: PartialMessage<ClusterServiceListRequest>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "api.v1.ClusterServiceListRequest";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ClusterServiceListRequest;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ClusterServiceListRequest;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ClusterServiceListRequest;
-    static equals(a: ClusterServiceListRequest | PlainMessage<ClusterServiceListRequest> | undefined, b: ClusterServiceListRequest | PlainMessage<ClusterServiceListRequest> | undefined): boolean;
-}
+};
+/**
+ * Describes the message api.v1.ClusterServiceListRequest.
+ * Use `create(ClusterServiceListRequestSchema)` to create a new message.
+ */
+export declare const ClusterServiceListRequestSchema: GenMessage<ClusterServiceListRequest>;
 /**
  * ClusterServiceCreateRequest is the request payload for a cluster create request
  *
  * @generated from message api.v1.ClusterServiceCreateRequest
  */
-export declare class ClusterServiceCreateRequest extends Message<ClusterServiceCreateRequest> {
+export type ClusterServiceCreateRequest = Message<"api.v1.ClusterServiceCreateRequest"> & {
     /**
      * Name of the cluster to create
      *
@@ -502,21 +443,18 @@ export declare class ClusterServiceCreateRequest extends Message<ClusterServiceC
      * @generated from field: api.v1.Maintenance maintenance = 8;
      */
     maintenance?: Maintenance;
-    constructor(data?: PartialMessage<ClusterServiceCreateRequest>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "api.v1.ClusterServiceCreateRequest";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ClusterServiceCreateRequest;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ClusterServiceCreateRequest;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ClusterServiceCreateRequest;
-    static equals(a: ClusterServiceCreateRequest | PlainMessage<ClusterServiceCreateRequest> | undefined, b: ClusterServiceCreateRequest | PlainMessage<ClusterServiceCreateRequest> | undefined): boolean;
-}
+};
+/**
+ * Describes the message api.v1.ClusterServiceCreateRequest.
+ * Use `create(ClusterServiceCreateRequestSchema)` to create a new message.
+ */
+export declare const ClusterServiceCreateRequestSchema: GenMessage<ClusterServiceCreateRequest>;
 /**
  * ClusterServiceUpdateRequest is the request payload for a cluster update request
  *
  * @generated from message api.v1.ClusterServiceUpdateRequest
  */
-export declare class ClusterServiceUpdateRequest extends Message<ClusterServiceUpdateRequest> {
+export type ClusterServiceUpdateRequest = Message<"api.v1.ClusterServiceUpdateRequest"> & {
     /**
      * Uuid of the cluster
      *
@@ -547,21 +485,18 @@ export declare class ClusterServiceUpdateRequest extends Message<ClusterServiceU
      * @generated from field: optional api.v1.Maintenance maintenance = 5;
      */
     maintenance?: Maintenance;
-    constructor(data?: PartialMessage<ClusterServiceUpdateRequest>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "api.v1.ClusterServiceUpdateRequest";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ClusterServiceUpdateRequest;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ClusterServiceUpdateRequest;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ClusterServiceUpdateRequest;
-    static equals(a: ClusterServiceUpdateRequest | PlainMessage<ClusterServiceUpdateRequest> | undefined, b: ClusterServiceUpdateRequest | PlainMessage<ClusterServiceUpdateRequest> | undefined): boolean;
-}
+};
+/**
+ * Describes the message api.v1.ClusterServiceUpdateRequest.
+ * Use `create(ClusterServiceUpdateRequestSchema)` to create a new message.
+ */
+export declare const ClusterServiceUpdateRequestSchema: GenMessage<ClusterServiceUpdateRequest>;
 /**
  * ClusterServiceDeleteRequest is the request payload for a cluster delete request
  *
  * @generated from message api.v1.ClusterServiceDeleteRequest
  */
-export declare class ClusterServiceDeleteRequest extends Message<ClusterServiceDeleteRequest> {
+export type ClusterServiceDeleteRequest = Message<"api.v1.ClusterServiceDeleteRequest"> & {
     /**
      * Uuid of the cluster
      *
@@ -574,21 +509,18 @@ export declare class ClusterServiceDeleteRequest extends Message<ClusterServiceD
      * @generated from field: string project = 2;
      */
     project: string;
-    constructor(data?: PartialMessage<ClusterServiceDeleteRequest>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "api.v1.ClusterServiceDeleteRequest";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ClusterServiceDeleteRequest;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ClusterServiceDeleteRequest;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ClusterServiceDeleteRequest;
-    static equals(a: ClusterServiceDeleteRequest | PlainMessage<ClusterServiceDeleteRequest> | undefined, b: ClusterServiceDeleteRequest | PlainMessage<ClusterServiceDeleteRequest> | undefined): boolean;
-}
+};
+/**
+ * Describes the message api.v1.ClusterServiceDeleteRequest.
+ * Use `create(ClusterServiceDeleteRequestSchema)` to create a new message.
+ */
+export declare const ClusterServiceDeleteRequestSchema: GenMessage<ClusterServiceDeleteRequest>;
 /**
  * ClusterServiceWatchStatusRequest is the request payload for a cluster watch status request
  *
  * @generated from message api.v1.ClusterServiceWatchStatusRequest
  */
-export declare class ClusterServiceWatchStatusRequest extends Message<ClusterServiceWatchStatusRequest> {
+export type ClusterServiceWatchStatusRequest = Message<"api.v1.ClusterServiceWatchStatusRequest"> & {
     /**
      * Uuid of the cluster
      *
@@ -601,21 +533,18 @@ export declare class ClusterServiceWatchStatusRequest extends Message<ClusterSer
      * @generated from field: string project = 2;
      */
     project: string;
-    constructor(data?: PartialMessage<ClusterServiceWatchStatusRequest>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "api.v1.ClusterServiceWatchStatusRequest";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ClusterServiceWatchStatusRequest;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ClusterServiceWatchStatusRequest;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ClusterServiceWatchStatusRequest;
-    static equals(a: ClusterServiceWatchStatusRequest | PlainMessage<ClusterServiceWatchStatusRequest> | undefined, b: ClusterServiceWatchStatusRequest | PlainMessage<ClusterServiceWatchStatusRequest> | undefined): boolean;
-}
+};
+/**
+ * Describes the message api.v1.ClusterServiceWatchStatusRequest.
+ * Use `create(ClusterServiceWatchStatusRequestSchema)` to create a new message.
+ */
+export declare const ClusterServiceWatchStatusRequestSchema: GenMessage<ClusterServiceWatchStatusRequest>;
 /**
  * ClusterStatus
  *
  * @generated from message api.v1.ClusterStatus
  */
-export declare class ClusterStatus extends Message<ClusterStatus> {
+export type ClusterStatus = Message<"api.v1.ClusterStatus"> & {
     /**
      * Uuid of the cluster
      *
@@ -676,21 +605,18 @@ export declare class ClusterStatus extends Message<ClusterStatus> {
      * @generated from field: repeated api.v1.ClusterStatusCondition conditions = 15;
      */
     conditions: ClusterStatusCondition[];
-    constructor(data?: PartialMessage<ClusterStatus>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "api.v1.ClusterStatus";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ClusterStatus;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ClusterStatus;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ClusterStatus;
-    static equals(a: ClusterStatus | PlainMessage<ClusterStatus> | undefined, b: ClusterStatus | PlainMessage<ClusterStatus> | undefined): boolean;
-}
+};
+/**
+ * Describes the message api.v1.ClusterStatus.
+ * Use `create(ClusterStatusSchema)` to create a new message.
+ */
+export declare const ClusterStatusSchema: GenMessage<ClusterStatus>;
 /**
  * ClusterStatusLastError is the last known cluster status error
  *
  * @generated from message api.v1.ClusterStatusLastError
  */
-export declare class ClusterStatusLastError extends Message<ClusterStatusLastError> {
+export type ClusterStatusLastError = Message<"api.v1.ClusterStatusLastError"> & {
     /**
      * Description a human readable message indicating details about the last error
      *
@@ -709,21 +635,18 @@ export declare class ClusterStatusLastError extends Message<ClusterStatusLastErr
      * @generated from field: google.protobuf.Timestamp last_update_time = 4;
      */
     lastUpdateTime?: Timestamp;
-    constructor(data?: PartialMessage<ClusterStatusLastError>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "api.v1.ClusterStatusLastError";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ClusterStatusLastError;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ClusterStatusLastError;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ClusterStatusLastError;
-    static equals(a: ClusterStatusLastError | PlainMessage<ClusterStatusLastError> | undefined, b: ClusterStatusLastError | PlainMessage<ClusterStatusLastError> | undefined): boolean;
-}
+};
+/**
+ * Describes the message api.v1.ClusterStatusLastError.
+ * Use `create(ClusterStatusLastErrorSchema)` to create a new message.
+ */
+export declare const ClusterStatusLastErrorSchema: GenMessage<ClusterStatusLastError>;
 /**
  * ClusterStatusCondition contains status conditions of a cluster
  *
  * @generated from message api.v1.ClusterStatusCondition
  */
-export declare class ClusterStatusCondition extends Message<ClusterStatusCondition> {
+export type ClusterStatusCondition = Message<"api.v1.ClusterStatusCondition"> & {
     /**
      * Type is the type of the condition
      *
@@ -760,21 +683,18 @@ export declare class ClusterStatusCondition extends Message<ClusterStatusConditi
      * @generated from field: google.protobuf.Timestamp last_update_time = 6;
      */
     lastUpdateTime?: Timestamp;
-    constructor(data?: PartialMessage<ClusterStatusCondition>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "api.v1.ClusterStatusCondition";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ClusterStatusCondition;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ClusterStatusCondition;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ClusterStatusCondition;
-    static equals(a: ClusterStatusCondition | PlainMessage<ClusterStatusCondition> | undefined, b: ClusterStatusCondition | PlainMessage<ClusterStatusCondition> | undefined): boolean;
-}
+};
+/**
+ * Describes the message api.v1.ClusterStatusCondition.
+ * Use `create(ClusterStatusConditionSchema)` to create a new message.
+ */
+export declare const ClusterStatusConditionSchema: GenMessage<ClusterStatusCondition>;
 /**
  * ClusterMonitoring contains details howto access the cluster monitoring
  *
  * @generated from message api.v1.ClusterMonitoring
  */
-export declare class ClusterMonitoring extends Message<ClusterMonitoring> {
+export type ClusterMonitoring = Message<"api.v1.ClusterMonitoring"> & {
     /**
      * Username to access the monitoring
      *
@@ -793,180 +713,275 @@ export declare class ClusterMonitoring extends Message<ClusterMonitoring> {
      * @generated from field: string endpoint = 3;
      */
     endpoint: string;
-    constructor(data?: PartialMessage<ClusterMonitoring>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "api.v1.ClusterMonitoring";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ClusterMonitoring;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ClusterMonitoring;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ClusterMonitoring;
-    static equals(a: ClusterMonitoring | PlainMessage<ClusterMonitoring> | undefined, b: ClusterMonitoring | PlainMessage<ClusterMonitoring> | undefined): boolean;
-}
+};
+/**
+ * Describes the message api.v1.ClusterMonitoring.
+ * Use `create(ClusterMonitoringSchema)` to create a new message.
+ */
+export declare const ClusterMonitoringSchema: GenMessage<ClusterMonitoring>;
 /**
  * ClusterServiceCreateResponse is the response payload of a cluster create request
  *
  * @generated from message api.v1.ClusterServiceCreateResponse
  */
-export declare class ClusterServiceCreateResponse extends Message<ClusterServiceCreateResponse> {
+export type ClusterServiceCreateResponse = Message<"api.v1.ClusterServiceCreateResponse"> & {
     /**
      * Cluster is the cluster
      *
      * @generated from field: api.v1.Cluster cluster = 1;
      */
     cluster?: Cluster;
-    constructor(data?: PartialMessage<ClusterServiceCreateResponse>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "api.v1.ClusterServiceCreateResponse";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ClusterServiceCreateResponse;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ClusterServiceCreateResponse;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ClusterServiceCreateResponse;
-    static equals(a: ClusterServiceCreateResponse | PlainMessage<ClusterServiceCreateResponse> | undefined, b: ClusterServiceCreateResponse | PlainMessage<ClusterServiceCreateResponse> | undefined): boolean;
-}
+};
+/**
+ * Describes the message api.v1.ClusterServiceCreateResponse.
+ * Use `create(ClusterServiceCreateResponseSchema)` to create a new message.
+ */
+export declare const ClusterServiceCreateResponseSchema: GenMessage<ClusterServiceCreateResponse>;
 /**
  * ClusterServiceGetResponse is the response payload of a cluster get request
  *
  * @generated from message api.v1.ClusterServiceGetResponse
  */
-export declare class ClusterServiceGetResponse extends Message<ClusterServiceGetResponse> {
+export type ClusterServiceGetResponse = Message<"api.v1.ClusterServiceGetResponse"> & {
     /**
      * Cluster is the cluster
      *
      * @generated from field: api.v1.Cluster cluster = 1;
      */
     cluster?: Cluster;
-    constructor(data?: PartialMessage<ClusterServiceGetResponse>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "api.v1.ClusterServiceGetResponse";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ClusterServiceGetResponse;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ClusterServiceGetResponse;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ClusterServiceGetResponse;
-    static equals(a: ClusterServiceGetResponse | PlainMessage<ClusterServiceGetResponse> | undefined, b: ClusterServiceGetResponse | PlainMessage<ClusterServiceGetResponse> | undefined): boolean;
-}
+};
+/**
+ * Describes the message api.v1.ClusterServiceGetResponse.
+ * Use `create(ClusterServiceGetResponseSchema)` to create a new message.
+ */
+export declare const ClusterServiceGetResponseSchema: GenMessage<ClusterServiceGetResponse>;
 /**
  * ClusterServiceGetCredentialsResponse is the response payload of a cluster get credentials request
  *
  * @generated from message api.v1.ClusterServiceGetCredentialsResponse
  */
-export declare class ClusterServiceGetCredentialsResponse extends Message<ClusterServiceGetCredentialsResponse> {
+export type ClusterServiceGetCredentialsResponse = Message<"api.v1.ClusterServiceGetCredentialsResponse"> & {
     /**
      * Cluster is the cluster
      *
      * @generated from field: string kubeconfig = 1;
      */
     kubeconfig: string;
-    constructor(data?: PartialMessage<ClusterServiceGetCredentialsResponse>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "api.v1.ClusterServiceGetCredentialsResponse";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ClusterServiceGetCredentialsResponse;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ClusterServiceGetCredentialsResponse;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ClusterServiceGetCredentialsResponse;
-    static equals(a: ClusterServiceGetCredentialsResponse | PlainMessage<ClusterServiceGetCredentialsResponse> | undefined, b: ClusterServiceGetCredentialsResponse | PlainMessage<ClusterServiceGetCredentialsResponse> | undefined): boolean;
-}
+};
+/**
+ * Describes the message api.v1.ClusterServiceGetCredentialsResponse.
+ * Use `create(ClusterServiceGetCredentialsResponseSchema)` to create a new message.
+ */
+export declare const ClusterServiceGetCredentialsResponseSchema: GenMessage<ClusterServiceGetCredentialsResponse>;
 /**
  * ClusterServiceDeleteResponse is the response payload of a cluster delete request
  *
  * @generated from message api.v1.ClusterServiceDeleteResponse
  */
-export declare class ClusterServiceDeleteResponse extends Message<ClusterServiceDeleteResponse> {
+export type ClusterServiceDeleteResponse = Message<"api.v1.ClusterServiceDeleteResponse"> & {
     /**
      * Cluster is the cluster
      *
      * @generated from field: api.v1.Cluster cluster = 1;
      */
     cluster?: Cluster;
-    constructor(data?: PartialMessage<ClusterServiceDeleteResponse>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "api.v1.ClusterServiceDeleteResponse";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ClusterServiceDeleteResponse;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ClusterServiceDeleteResponse;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ClusterServiceDeleteResponse;
-    static equals(a: ClusterServiceDeleteResponse | PlainMessage<ClusterServiceDeleteResponse> | undefined, b: ClusterServiceDeleteResponse | PlainMessage<ClusterServiceDeleteResponse> | undefined): boolean;
-}
+};
+/**
+ * Describes the message api.v1.ClusterServiceDeleteResponse.
+ * Use `create(ClusterServiceDeleteResponseSchema)` to create a new message.
+ */
+export declare const ClusterServiceDeleteResponseSchema: GenMessage<ClusterServiceDeleteResponse>;
 /**
  * ClusterServiceUpdateResponse is the response payload of a cluster update request
  *
  * @generated from message api.v1.ClusterServiceUpdateResponse
  */
-export declare class ClusterServiceUpdateResponse extends Message<ClusterServiceUpdateResponse> {
+export type ClusterServiceUpdateResponse = Message<"api.v1.ClusterServiceUpdateResponse"> & {
     /**
      * Cluster is the cluster
      *
      * @generated from field: api.v1.Cluster cluster = 1;
      */
     cluster?: Cluster;
-    constructor(data?: PartialMessage<ClusterServiceUpdateResponse>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "api.v1.ClusterServiceUpdateResponse";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ClusterServiceUpdateResponse;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ClusterServiceUpdateResponse;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ClusterServiceUpdateResponse;
-    static equals(a: ClusterServiceUpdateResponse | PlainMessage<ClusterServiceUpdateResponse> | undefined, b: ClusterServiceUpdateResponse | PlainMessage<ClusterServiceUpdateResponse> | undefined): boolean;
-}
+};
+/**
+ * Describes the message api.v1.ClusterServiceUpdateResponse.
+ * Use `create(ClusterServiceUpdateResponseSchema)` to create a new message.
+ */
+export declare const ClusterServiceUpdateResponseSchema: GenMessage<ClusterServiceUpdateResponse>;
 /**
  * ClusterServiceListResponse is the response payload of a cluster list request
  *
  * @generated from message api.v1.ClusterServiceListResponse
  */
-export declare class ClusterServiceListResponse extends Message<ClusterServiceListResponse> {
+export type ClusterServiceListResponse = Message<"api.v1.ClusterServiceListResponse"> & {
     /**
      * Clusters a list of clusters
      *
      * @generated from field: repeated api.v1.Cluster clusters = 1;
      */
     clusters: Cluster[];
-    constructor(data?: PartialMessage<ClusterServiceListResponse>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "api.v1.ClusterServiceListResponse";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ClusterServiceListResponse;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ClusterServiceListResponse;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ClusterServiceListResponse;
-    static equals(a: ClusterServiceListResponse | PlainMessage<ClusterServiceListResponse> | undefined, b: ClusterServiceListResponse | PlainMessage<ClusterServiceListResponse> | undefined): boolean;
-}
+};
+/**
+ * Describes the message api.v1.ClusterServiceListResponse.
+ * Use `create(ClusterServiceListResponseSchema)` to create a new message.
+ */
+export declare const ClusterServiceListResponseSchema: GenMessage<ClusterServiceListResponse>;
 /**
  * ClusterServiceWatchStatusResponse is the response payload of a cluster watch status request
  *
  * @generated from message api.v1.ClusterServiceWatchStatusResponse
  */
-export declare class ClusterServiceWatchStatusResponse extends Message<ClusterServiceWatchStatusResponse> {
+export type ClusterServiceWatchStatusResponse = Message<"api.v1.ClusterServiceWatchStatusResponse"> & {
     /**
      * Status the cluster status
      *
      * @generated from field: api.v1.ClusterStatus status = 1;
      */
     status?: ClusterStatus;
-    constructor(data?: PartialMessage<ClusterServiceWatchStatusResponse>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "api.v1.ClusterServiceWatchStatusResponse";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ClusterServiceWatchStatusResponse;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ClusterServiceWatchStatusResponse;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ClusterServiceWatchStatusResponse;
-    static equals(a: ClusterServiceWatchStatusResponse | PlainMessage<ClusterServiceWatchStatusResponse> | undefined, b: ClusterServiceWatchStatusResponse | PlainMessage<ClusterServiceWatchStatusResponse> | undefined): boolean;
-}
+};
+/**
+ * Describes the message api.v1.ClusterServiceWatchStatusResponse.
+ * Use `create(ClusterServiceWatchStatusResponseSchema)` to create a new message.
+ */
+export declare const ClusterServiceWatchStatusResponseSchema: GenMessage<ClusterServiceWatchStatusResponse>;
 /**
  * ClusterServiceOperateResponse is the response payload for the cluster operate request
  *
  * @generated from message api.v1.ClusterServiceOperateResponse
  */
-export declare class ClusterServiceOperateResponse extends Message<ClusterServiceOperateResponse> {
+export type ClusterServiceOperateResponse = Message<"api.v1.ClusterServiceOperateResponse"> & {
     /**
      * Cluster is the cluster
      *
      * @generated from field: api.v1.Cluster cluster = 1;
      */
     cluster?: Cluster;
-    constructor(data?: PartialMessage<ClusterServiceOperateResponse>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "api.v1.ClusterServiceOperateResponse";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ClusterServiceOperateResponse;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ClusterServiceOperateResponse;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ClusterServiceOperateResponse;
-    static equals(a: ClusterServiceOperateResponse | PlainMessage<ClusterServiceOperateResponse> | undefined, b: ClusterServiceOperateResponse | PlainMessage<ClusterServiceOperateResponse> | undefined): boolean;
+};
+/**
+ * Describes the message api.v1.ClusterServiceOperateResponse.
+ * Use `create(ClusterServiceOperateResponseSchema)` to create a new message.
+ */
+export declare const ClusterServiceOperateResponseSchema: GenMessage<ClusterServiceOperateResponse>;
+/**
+ * Operate defines the types of reconciliation to be triggered
+ *
+ * @generated from enum api.v1.Operate
+ */
+export declare enum Operate {
+    /**
+     * OPERATE_UNSPECIFIED is not specified
+     *
+     * @generated from enum value: OPERATE_UNSPECIFIED = 0;
+     */
+    UNSPECIFIED = 0,
+    /**
+     * OPERATE_RECONCILE reconcile the cluster
+     *
+     * @generated from enum value: OPERATE_RECONCILE = 1;
+     */
+    RECONCILE = 1,
+    /**
+     * OPERATE_MAINTAIN maintain the cluster
+     *
+     * @generated from enum value: OPERATE_MAINTAIN = 2;
+     */
+    MAINTAIN = 2,
+    /**
+     * OPERATE_RETRY retry the reconciliation of the cluster
+     *
+     * @generated from enum value: OPERATE_RETRY = 3;
+     */
+    RETRY = 3
 }
+/**
+ * Describes the enum api.v1.Operate.
+ */
+export declare const OperateSchema: GenEnum<Operate>;
+/**
+ * ClusterService serves kubernetes cluster related functions
+ *
+ * @generated from service api.v1.ClusterService
+ */
+export declare const ClusterService: GenService<{
+    /**
+     * Create a cluster
+     *
+     * @generated from rpc api.v1.ClusterService.Create
+     */
+    create: {
+        methodKind: "unary";
+        input: typeof ClusterServiceCreateRequestSchema;
+        output: typeof ClusterServiceCreateResponseSchema;
+    };
+    /**
+     * Get a cluster
+     *
+     * @generated from rpc api.v1.ClusterService.Get
+     */
+    get: {
+        methodKind: "unary";
+        input: typeof ClusterServiceGetRequestSchema;
+        output: typeof ClusterServiceGetResponseSchema;
+    };
+    /**
+     * List clusters
+     *
+     * @generated from rpc api.v1.ClusterService.List
+     */
+    list: {
+        methodKind: "unary";
+        input: typeof ClusterServiceListRequestSchema;
+        output: typeof ClusterServiceListResponseSchema;
+    };
+    /**
+     * WatchStatus of a cluster
+     *
+     * @generated from rpc api.v1.ClusterService.WatchStatus
+     */
+    watchStatus: {
+        methodKind: "server_streaming";
+        input: typeof ClusterServiceWatchStatusRequestSchema;
+        output: typeof ClusterServiceWatchStatusResponseSchema;
+    };
+    /**
+     * Delete a cluster
+     *
+     * @generated from rpc api.v1.ClusterService.Delete
+     */
+    delete: {
+        methodKind: "unary";
+        input: typeof ClusterServiceDeleteRequestSchema;
+        output: typeof ClusterServiceDeleteResponseSchema;
+    };
+    /**
+     * Update a cluster
+     *
+     * @generated from rpc api.v1.ClusterService.Update
+     */
+    update: {
+        methodKind: "unary";
+        input: typeof ClusterServiceUpdateRequestSchema;
+        output: typeof ClusterServiceUpdateResponseSchema;
+    };
+    /**
+     * GetCredentials of a cluster
+     *
+     * @generated from rpc api.v1.ClusterService.GetCredentials
+     */
+    getCredentials: {
+        methodKind: "unary";
+        input: typeof ClusterServiceGetCredentialsRequestSchema;
+        output: typeof ClusterServiceGetCredentialsResponseSchema;
+    };
+    /**
+     * Operate on a cluster
+     *
+     * @generated from rpc api.v1.ClusterService.Operate
+     */
+    operate: {
+        methodKind: "unary";
+        input: typeof ClusterServiceOperateRequestSchema;
+        output: typeof ClusterServiceOperateResponseSchema;
+    };
+}>;

@@ -1,11 +1,15 @@
-import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
-import { Message, proto3 } from "@bufbuild/protobuf";
+import type { GenFile, GenMessage, GenService } from "@bufbuild/protobuf/codegenv1";
+import type { Message } from "@bufbuild/protobuf";
+/**
+ * Describes the file api/v1/version.proto.
+ */
+export declare const file_api_v1_version: GenFile;
 /**
  * Version of the application
  *
  * @generated from message api.v1.Version
  */
-export declare class Version extends Message<Version> {
+export type Version = Message<"api.v1.Version"> & {
     /**
      * Version of the application
      *
@@ -30,48 +34,55 @@ export declare class Version extends Message<Version> {
      * @generated from field: string build_date = 4;
      */
     buildDate: string;
-    constructor(data?: PartialMessage<Version>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "api.v1.Version";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Version;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): Version;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): Version;
-    static equals(a: Version | PlainMessage<Version> | undefined, b: Version | PlainMessage<Version> | undefined): boolean;
-}
+};
+/**
+ * Describes the message api.v1.Version.
+ * Use `create(VersionSchema)` to create a new message.
+ */
+export declare const VersionSchema: GenMessage<Version>;
 /**
  * VersionServiceGetRequest is the request payload to get the version
  *
  * @generated from message api.v1.VersionServiceGetRequest
  */
-export declare class VersionServiceGetRequest extends Message<VersionServiceGetRequest> {
-    constructor(data?: PartialMessage<VersionServiceGetRequest>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "api.v1.VersionServiceGetRequest";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): VersionServiceGetRequest;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): VersionServiceGetRequest;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): VersionServiceGetRequest;
-    static equals(a: VersionServiceGetRequest | PlainMessage<VersionServiceGetRequest> | undefined, b: VersionServiceGetRequest | PlainMessage<VersionServiceGetRequest> | undefined): boolean;
-}
+export type VersionServiceGetRequest = Message<"api.v1.VersionServiceGetRequest"> & {};
+/**
+ * Describes the message api.v1.VersionServiceGetRequest.
+ * Use `create(VersionServiceGetRequestSchema)` to create a new message.
+ */
+export declare const VersionServiceGetRequestSchema: GenMessage<VersionServiceGetRequest>;
 /**
  * VersionServiceGetResponse is the response payload with the version
  *
  * @generated from message api.v1.VersionServiceGetResponse
  */
-export declare class VersionServiceGetResponse extends Message<VersionServiceGetResponse> {
+export type VersionServiceGetResponse = Message<"api.v1.VersionServiceGetResponse"> & {
     /**
      * Version of the application
      *
      * @generated from field: api.v1.Version version = 1;
      */
     version?: Version;
-    constructor(data?: PartialMessage<VersionServiceGetResponse>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "api.v1.VersionServiceGetResponse";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): VersionServiceGetResponse;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): VersionServiceGetResponse;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): VersionServiceGetResponse;
-    static equals(a: VersionServiceGetResponse | PlainMessage<VersionServiceGetResponse> | undefined, b: VersionServiceGetResponse | PlainMessage<VersionServiceGetResponse> | undefined): boolean;
-}
+};
+/**
+ * Describes the message api.v1.VersionServiceGetResponse.
+ * Use `create(VersionServiceGetResponseSchema)` to create a new message.
+ */
+export declare const VersionServiceGetResponseSchema: GenMessage<VersionServiceGetResponse>;
+/**
+ * VersionService serves version related functions
+ *
+ * @generated from service api.v1.VersionService
+ */
+export declare const VersionService: GenService<{
+    /**
+     * Get the version
+     *
+     * @generated from rpc api.v1.VersionService.Get
+     */
+    get: {
+        methodKind: "unary";
+        input: typeof VersionServiceGetRequestSchema;
+        output: typeof VersionServiceGetResponseSchema;
+    };
+}>;

@@ -1,13 +1,18 @@
-import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
-import { Message, proto3, Timestamp } from "@bufbuild/protobuf";
-import { ProjectRole } from "./common_pb.js";
+import type { GenFile, GenMessage, GenService } from "@bufbuild/protobuf/codegenv1";
+import type { ProjectRole } from "./common_pb";
+import type { Timestamp } from "@bufbuild/protobuf/wkt";
+import type { Message } from "@bufbuild/protobuf";
+/**
+ * Describes the file api/v1/project.proto.
+ */
+export declare const file_api_v1_project: GenFile;
 /**
  * Project defines a group of resources belonging to a tenant
  * a tenant can have multiple projects
  *
  * @generated from message api.v1.Project
  */
-export declare class Project extends Message<Project> {
+export type Project = Message<"api.v1.Project"> & {
     /**
      * Uuid of this project
      *
@@ -56,21 +61,18 @@ export declare class Project extends Message<Project> {
      * @generated from field: optional string avatar_url = 12;
      */
     avatarUrl?: string;
-    constructor(data?: PartialMessage<Project>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "api.v1.Project";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Project;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): Project;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): Project;
-    static equals(a: Project | PlainMessage<Project> | undefined, b: Project | PlainMessage<Project> | undefined): boolean;
-}
+};
+/**
+ * Describes the message api.v1.Project.
+ * Use `create(ProjectSchema)` to create a new message.
+ */
+export declare const ProjectSchema: GenMessage<Project>;
 /**
  * ProjectMember defines a user that participates at a project
  *
  * @generated from message api.v1.ProjectMember
  */
-export declare class ProjectMember extends Message<ProjectMember> {
+export type ProjectMember = Message<"api.v1.ProjectMember"> & {
     /**
      * Id is the user id of the member
      *
@@ -97,21 +99,18 @@ export declare class ProjectMember extends Message<ProjectMember> {
      * @generated from field: google.protobuf.Timestamp created_at = 10;
      */
     createdAt?: Timestamp;
-    constructor(data?: PartialMessage<ProjectMember>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "api.v1.ProjectMember";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ProjectMember;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ProjectMember;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ProjectMember;
-    static equals(a: ProjectMember | PlainMessage<ProjectMember> | undefined, b: ProjectMember | PlainMessage<ProjectMember> | undefined): boolean;
-}
+};
+/**
+ * Describes the message api.v1.ProjectMember.
+ * Use `create(ProjectMemberSchema)` to create a new message.
+ */
+export declare const ProjectMemberSchema: GenMessage<ProjectMember>;
 /**
  * ProjectInvite defines invite to project
  *
  * @generated from message api.v1.ProjectInvite
  */
-export declare class ProjectInvite extends Message<ProjectInvite> {
+export type ProjectInvite = Message<"api.v1.ProjectInvite"> & {
     /**
      * Secret is the secret part of the invite, typically part of the url
      *
@@ -166,21 +165,18 @@ export declare class ProjectInvite extends Message<ProjectInvite> {
      * @generated from field: google.protobuf.Timestamp joined_at = 11;
      */
     joinedAt?: Timestamp;
-    constructor(data?: PartialMessage<ProjectInvite>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "api.v1.ProjectInvite";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ProjectInvite;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ProjectInvite;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ProjectInvite;
-    static equals(a: ProjectInvite | PlainMessage<ProjectInvite> | undefined, b: ProjectInvite | PlainMessage<ProjectInvite> | undefined): boolean;
-}
+};
+/**
+ * Describes the message api.v1.ProjectInvite.
+ * Use `create(ProjectInviteSchema)` to create a new message.
+ */
+export declare const ProjectInviteSchema: GenMessage<ProjectInvite>;
 /**
  * ProjectServiceListRequest is the request payload to list all projects
  *
  * @generated from message api.v1.ProjectServiceListRequest
  */
-export declare class ProjectServiceListRequest extends Message<ProjectServiceListRequest> {
+export type ProjectServiceListRequest = Message<"api.v1.ProjectServiceListRequest"> & {
     /**
      * Name list only projects with this name
      *
@@ -193,63 +189,54 @@ export declare class ProjectServiceListRequest extends Message<ProjectServiceLis
      * @generated from field: optional string tenant = 2;
      */
     tenant?: string;
-    constructor(data?: PartialMessage<ProjectServiceListRequest>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "api.v1.ProjectServiceListRequest";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ProjectServiceListRequest;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ProjectServiceListRequest;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ProjectServiceListRequest;
-    static equals(a: ProjectServiceListRequest | PlainMessage<ProjectServiceListRequest> | undefined, b: ProjectServiceListRequest | PlainMessage<ProjectServiceListRequest> | undefined): boolean;
-}
+};
+/**
+ * Describes the message api.v1.ProjectServiceListRequest.
+ * Use `create(ProjectServiceListRequestSchema)` to create a new message.
+ */
+export declare const ProjectServiceListRequestSchema: GenMessage<ProjectServiceListRequest>;
 /**
  * ProjectServiceListResponse is the response payload to list all projects
  *
  * @generated from message api.v1.ProjectServiceListResponse
  */
-export declare class ProjectServiceListResponse extends Message<ProjectServiceListResponse> {
+export type ProjectServiceListResponse = Message<"api.v1.ProjectServiceListResponse"> & {
     /**
      * Projects is a list of all your projects
      *
      * @generated from field: repeated api.v1.Project projects = 1;
      */
     projects: Project[];
-    constructor(data?: PartialMessage<ProjectServiceListResponse>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "api.v1.ProjectServiceListResponse";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ProjectServiceListResponse;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ProjectServiceListResponse;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ProjectServiceListResponse;
-    static equals(a: ProjectServiceListResponse | PlainMessage<ProjectServiceListResponse> | undefined, b: ProjectServiceListResponse | PlainMessage<ProjectServiceListResponse> | undefined): boolean;
-}
+};
+/**
+ * Describes the message api.v1.ProjectServiceListResponse.
+ * Use `create(ProjectServiceListResponseSchema)` to create a new message.
+ */
+export declare const ProjectServiceListResponseSchema: GenMessage<ProjectServiceListResponse>;
 /**
  * ProjectServiceGetRequest is the request payload to get a project
  *
  * @generated from message api.v1.ProjectServiceGetRequest
  */
-export declare class ProjectServiceGetRequest extends Message<ProjectServiceGetRequest> {
+export type ProjectServiceGetRequest = Message<"api.v1.ProjectServiceGetRequest"> & {
     /**
      * Project is the uuid of the project to get
      *
      * @generated from field: string project = 1;
      */
     project: string;
-    constructor(data?: PartialMessage<ProjectServiceGetRequest>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "api.v1.ProjectServiceGetRequest";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ProjectServiceGetRequest;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ProjectServiceGetRequest;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ProjectServiceGetRequest;
-    static equals(a: ProjectServiceGetRequest | PlainMessage<ProjectServiceGetRequest> | undefined, b: ProjectServiceGetRequest | PlainMessage<ProjectServiceGetRequest> | undefined): boolean;
-}
+};
+/**
+ * Describes the message api.v1.ProjectServiceGetRequest.
+ * Use `create(ProjectServiceGetRequestSchema)` to create a new message.
+ */
+export declare const ProjectServiceGetRequestSchema: GenMessage<ProjectServiceGetRequest>;
 /**
  * ProjectServiceGetResponse is the response payload to get a projects
  *
  * @generated from message api.v1.ProjectServiceGetResponse
  */
-export declare class ProjectServiceGetResponse extends Message<ProjectServiceGetResponse> {
+export type ProjectServiceGetResponse = Message<"api.v1.ProjectServiceGetResponse"> & {
     /**
      * Project is the project
      *
@@ -262,21 +249,18 @@ export declare class ProjectServiceGetResponse extends Message<ProjectServiceGet
      * @generated from field: repeated api.v1.ProjectMember project_members = 2;
      */
     projectMembers: ProjectMember[];
-    constructor(data?: PartialMessage<ProjectServiceGetResponse>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "api.v1.ProjectServiceGetResponse";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ProjectServiceGetResponse;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ProjectServiceGetResponse;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ProjectServiceGetResponse;
-    static equals(a: ProjectServiceGetResponse | PlainMessage<ProjectServiceGetResponse> | undefined, b: ProjectServiceGetResponse | PlainMessage<ProjectServiceGetResponse> | undefined): boolean;
-}
+};
+/**
+ * Describes the message api.v1.ProjectServiceGetResponse.
+ * Use `create(ProjectServiceGetResponseSchema)` to create a new message.
+ */
+export declare const ProjectServiceGetResponseSchema: GenMessage<ProjectServiceGetResponse>;
 /**
  * ProjectServiceCreateRequest is the request payload to Create a project
  *
  * @generated from message api.v1.ProjectServiceCreateRequest
  */
-export declare class ProjectServiceCreateRequest extends Message<ProjectServiceCreateRequest> {
+export type ProjectServiceCreateRequest = Message<"api.v1.ProjectServiceCreateRequest"> & {
     /**
      * Login is the tenant of this project
      * TODO: is login really a good name?
@@ -302,84 +286,72 @@ export declare class ProjectServiceCreateRequest extends Message<ProjectServiceC
      * @generated from field: optional string avatar_url = 4;
      */
     avatarUrl?: string;
-    constructor(data?: PartialMessage<ProjectServiceCreateRequest>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "api.v1.ProjectServiceCreateRequest";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ProjectServiceCreateRequest;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ProjectServiceCreateRequest;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ProjectServiceCreateRequest;
-    static equals(a: ProjectServiceCreateRequest | PlainMessage<ProjectServiceCreateRequest> | undefined, b: ProjectServiceCreateRequest | PlainMessage<ProjectServiceCreateRequest> | undefined): boolean;
-}
+};
+/**
+ * Describes the message api.v1.ProjectServiceCreateRequest.
+ * Use `create(ProjectServiceCreateRequestSchema)` to create a new message.
+ */
+export declare const ProjectServiceCreateRequestSchema: GenMessage<ProjectServiceCreateRequest>;
 /**
  * ProjectServiceCreateResponse is the response payload of creation of a project
  *
  * @generated from message api.v1.ProjectServiceCreateResponse
  */
-export declare class ProjectServiceCreateResponse extends Message<ProjectServiceCreateResponse> {
+export type ProjectServiceCreateResponse = Message<"api.v1.ProjectServiceCreateResponse"> & {
     /**
      * Project is the project
      *
      * @generated from field: api.v1.Project project = 1;
      */
     project?: Project;
-    constructor(data?: PartialMessage<ProjectServiceCreateResponse>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "api.v1.ProjectServiceCreateResponse";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ProjectServiceCreateResponse;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ProjectServiceCreateResponse;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ProjectServiceCreateResponse;
-    static equals(a: ProjectServiceCreateResponse | PlainMessage<ProjectServiceCreateResponse> | undefined, b: ProjectServiceCreateResponse | PlainMessage<ProjectServiceCreateResponse> | undefined): boolean;
-}
+};
+/**
+ * Describes the message api.v1.ProjectServiceCreateResponse.
+ * Use `create(ProjectServiceCreateResponseSchema)` to create a new message.
+ */
+export declare const ProjectServiceCreateResponseSchema: GenMessage<ProjectServiceCreateResponse>;
 /**
  * ProjectServiceDeleteRequest is the request payload to delete a project
  *
  * @generated from message api.v1.ProjectServiceDeleteRequest
  */
-export declare class ProjectServiceDeleteRequest extends Message<ProjectServiceDeleteRequest> {
+export type ProjectServiceDeleteRequest = Message<"api.v1.ProjectServiceDeleteRequest"> & {
     /**
      * Project is the uuid of the project to get
      *
      * @generated from field: string project = 1;
      */
     project: string;
-    constructor(data?: PartialMessage<ProjectServiceDeleteRequest>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "api.v1.ProjectServiceDeleteRequest";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ProjectServiceDeleteRequest;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ProjectServiceDeleteRequest;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ProjectServiceDeleteRequest;
-    static equals(a: ProjectServiceDeleteRequest | PlainMessage<ProjectServiceDeleteRequest> | undefined, b: ProjectServiceDeleteRequest | PlainMessage<ProjectServiceDeleteRequest> | undefined): boolean;
-}
+};
+/**
+ * Describes the message api.v1.ProjectServiceDeleteRequest.
+ * Use `create(ProjectServiceDeleteRequestSchema)` to create a new message.
+ */
+export declare const ProjectServiceDeleteRequestSchema: GenMessage<ProjectServiceDeleteRequest>;
 /**
  * ProjectServiceDeleteResponse is the response payload to delete a project
  *
  * @generated from message api.v1.ProjectServiceDeleteResponse
  */
-export declare class ProjectServiceDeleteResponse extends Message<ProjectServiceDeleteResponse> {
+export type ProjectServiceDeleteResponse = Message<"api.v1.ProjectServiceDeleteResponse"> & {
     /**
      * Project is the project
      *
      * @generated from field: api.v1.Project project = 1;
      */
     project?: Project;
-    constructor(data?: PartialMessage<ProjectServiceDeleteResponse>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "api.v1.ProjectServiceDeleteResponse";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ProjectServiceDeleteResponse;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ProjectServiceDeleteResponse;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ProjectServiceDeleteResponse;
-    static equals(a: ProjectServiceDeleteResponse | PlainMessage<ProjectServiceDeleteResponse> | undefined, b: ProjectServiceDeleteResponse | PlainMessage<ProjectServiceDeleteResponse> | undefined): boolean;
-}
+};
+/**
+ * Describes the message api.v1.ProjectServiceDeleteResponse.
+ * Use `create(ProjectServiceDeleteResponseSchema)` to create a new message.
+ */
+export declare const ProjectServiceDeleteResponseSchema: GenMessage<ProjectServiceDeleteResponse>;
 /**
  * ProjectServiceUpdateRequest is the request payload to update a project
  *
  * @generated from message api.v1.ProjectServiceUpdateRequest
  */
-export declare class ProjectServiceUpdateRequest extends Message<ProjectServiceUpdateRequest> {
+export type ProjectServiceUpdateRequest = Message<"api.v1.ProjectServiceUpdateRequest"> & {
     /**
      * Project is the uuid of the project to get
      *
@@ -404,42 +376,36 @@ export declare class ProjectServiceUpdateRequest extends Message<ProjectServiceU
      * @generated from field: optional string avatar_url = 4;
      */
     avatarUrl?: string;
-    constructor(data?: PartialMessage<ProjectServiceUpdateRequest>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "api.v1.ProjectServiceUpdateRequest";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ProjectServiceUpdateRequest;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ProjectServiceUpdateRequest;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ProjectServiceUpdateRequest;
-    static equals(a: ProjectServiceUpdateRequest | PlainMessage<ProjectServiceUpdateRequest> | undefined, b: ProjectServiceUpdateRequest | PlainMessage<ProjectServiceUpdateRequest> | undefined): boolean;
-}
+};
+/**
+ * Describes the message api.v1.ProjectServiceUpdateRequest.
+ * Use `create(ProjectServiceUpdateRequestSchema)` to create a new message.
+ */
+export declare const ProjectServiceUpdateRequestSchema: GenMessage<ProjectServiceUpdateRequest>;
 /**
  * ProjectServiceUpdateResponse is the response payload to update a project
  *
  * @generated from message api.v1.ProjectServiceUpdateResponse
  */
-export declare class ProjectServiceUpdateResponse extends Message<ProjectServiceUpdateResponse> {
+export type ProjectServiceUpdateResponse = Message<"api.v1.ProjectServiceUpdateResponse"> & {
     /**
      * Project is the project
      *
      * @generated from field: api.v1.Project project = 1;
      */
     project?: Project;
-    constructor(data?: PartialMessage<ProjectServiceUpdateResponse>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "api.v1.ProjectServiceUpdateResponse";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ProjectServiceUpdateResponse;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ProjectServiceUpdateResponse;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ProjectServiceUpdateResponse;
-    static equals(a: ProjectServiceUpdateResponse | PlainMessage<ProjectServiceUpdateResponse> | undefined, b: ProjectServiceUpdateResponse | PlainMessage<ProjectServiceUpdateResponse> | undefined): boolean;
-}
+};
+/**
+ * Describes the message api.v1.ProjectServiceUpdateResponse.
+ * Use `create(ProjectServiceUpdateResponseSchema)` to create a new message.
+ */
+export declare const ProjectServiceUpdateResponseSchema: GenMessage<ProjectServiceUpdateResponse>;
 /**
  * ProjectServiceInviteRequest is used to invite a member to a project
  *
  * @generated from message api.v1.ProjectServiceInviteRequest
  */
-export declare class ProjectServiceInviteRequest extends Message<ProjectServiceInviteRequest> {
+export type ProjectServiceInviteRequest = Message<"api.v1.ProjectServiceInviteRequest"> & {
     /**
      * Project is the uuid of the project
      *
@@ -452,21 +418,18 @@ export declare class ProjectServiceInviteRequest extends Message<ProjectServiceI
      * @generated from field: api.v1.ProjectRole role = 3;
      */
     role: ProjectRole;
-    constructor(data?: PartialMessage<ProjectServiceInviteRequest>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "api.v1.ProjectServiceInviteRequest";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ProjectServiceInviteRequest;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ProjectServiceInviteRequest;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ProjectServiceInviteRequest;
-    static equals(a: ProjectServiceInviteRequest | PlainMessage<ProjectServiceInviteRequest> | undefined, b: ProjectServiceInviteRequest | PlainMessage<ProjectServiceInviteRequest> | undefined): boolean;
-}
+};
+/**
+ * Describes the message api.v1.ProjectServiceInviteRequest.
+ * Use `create(ProjectServiceInviteRequestSchema)` to create a new message.
+ */
+export declare const ProjectServiceInviteRequestSchema: GenMessage<ProjectServiceInviteRequest>;
 /**
  * ProjectServiceInviteRequest is the response payload to a invite member request
  *
  * @generated from message api.v1.ProjectServiceInviteResponse
  */
-export declare class ProjectServiceInviteResponse extends Message<ProjectServiceInviteResponse> {
+export type ProjectServiceInviteResponse = Message<"api.v1.ProjectServiceInviteResponse"> & {
     /**
      * Inviter contains a secret which can be sent to a potential user
      * can be appended to the invitation endpoint at our cloud console like
@@ -475,105 +438,90 @@ export declare class ProjectServiceInviteResponse extends Message<ProjectService
      * @generated from field: api.v1.ProjectInvite invite = 1;
      */
     invite?: ProjectInvite;
-    constructor(data?: PartialMessage<ProjectServiceInviteResponse>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "api.v1.ProjectServiceInviteResponse";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ProjectServiceInviteResponse;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ProjectServiceInviteResponse;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ProjectServiceInviteResponse;
-    static equals(a: ProjectServiceInviteResponse | PlainMessage<ProjectServiceInviteResponse> | undefined, b: ProjectServiceInviteResponse | PlainMessage<ProjectServiceInviteResponse> | undefined): boolean;
-}
+};
+/**
+ * Describes the message api.v1.ProjectServiceInviteResponse.
+ * Use `create(ProjectServiceInviteResponseSchema)` to create a new message.
+ */
+export declare const ProjectServiceInviteResponseSchema: GenMessage<ProjectServiceInviteResponse>;
 /**
  * ProjectServiceInvitesListRequest is the request payload to a list invites request
  *
  * @generated from message api.v1.ProjectServiceInvitesListRequest
  */
-export declare class ProjectServiceInvitesListRequest extends Message<ProjectServiceInvitesListRequest> {
+export type ProjectServiceInvitesListRequest = Message<"api.v1.ProjectServiceInvitesListRequest"> & {
     /**
      * Project is the uuid of the project
      *
      * @generated from field: string project = 1;
      */
     project: string;
-    constructor(data?: PartialMessage<ProjectServiceInvitesListRequest>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "api.v1.ProjectServiceInvitesListRequest";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ProjectServiceInvitesListRequest;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ProjectServiceInvitesListRequest;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ProjectServiceInvitesListRequest;
-    static equals(a: ProjectServiceInvitesListRequest | PlainMessage<ProjectServiceInvitesListRequest> | undefined, b: ProjectServiceInvitesListRequest | PlainMessage<ProjectServiceInvitesListRequest> | undefined): boolean;
-}
+};
+/**
+ * Describes the message api.v1.ProjectServiceInvitesListRequest.
+ * Use `create(ProjectServiceInvitesListRequestSchema)` to create a new message.
+ */
+export declare const ProjectServiceInvitesListRequestSchema: GenMessage<ProjectServiceInvitesListRequest>;
 /**
  * ProjectServiceInvitesListResponse is the response payload to a list invites request
  *
  * @generated from message api.v1.ProjectServiceInvitesListResponse
  */
-export declare class ProjectServiceInvitesListResponse extends Message<ProjectServiceInvitesListResponse> {
+export type ProjectServiceInvitesListResponse = Message<"api.v1.ProjectServiceInvitesListResponse"> & {
     /**
      * Invites not already accepted the invitation to this project
      *
      * @generated from field: repeated api.v1.ProjectInvite invites = 1;
      */
     invites: ProjectInvite[];
-    constructor(data?: PartialMessage<ProjectServiceInvitesListResponse>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "api.v1.ProjectServiceInvitesListResponse";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ProjectServiceInvitesListResponse;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ProjectServiceInvitesListResponse;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ProjectServiceInvitesListResponse;
-    static equals(a: ProjectServiceInvitesListResponse | PlainMessage<ProjectServiceInvitesListResponse> | undefined, b: ProjectServiceInvitesListResponse | PlainMessage<ProjectServiceInvitesListResponse> | undefined): boolean;
-}
+};
+/**
+ * Describes the message api.v1.ProjectServiceInvitesListResponse.
+ * Use `create(ProjectServiceInvitesListResponseSchema)` to create a new message.
+ */
+export declare const ProjectServiceInvitesListResponseSchema: GenMessage<ProjectServiceInvitesListResponse>;
 /**
  * ProjectServiceInviteGetRequest is the request payload to get a invite
  *
  * @generated from message api.v1.ProjectServiceInviteGetRequest
  */
-export declare class ProjectServiceInviteGetRequest extends Message<ProjectServiceInviteGetRequest> {
+export type ProjectServiceInviteGetRequest = Message<"api.v1.ProjectServiceInviteGetRequest"> & {
     /**
      * Secret of the invite to list
      *
      * @generated from field: string secret = 1;
      */
     secret: string;
-    constructor(data?: PartialMessage<ProjectServiceInviteGetRequest>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "api.v1.ProjectServiceInviteGetRequest";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ProjectServiceInviteGetRequest;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ProjectServiceInviteGetRequest;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ProjectServiceInviteGetRequest;
-    static equals(a: ProjectServiceInviteGetRequest | PlainMessage<ProjectServiceInviteGetRequest> | undefined, b: ProjectServiceInviteGetRequest | PlainMessage<ProjectServiceInviteGetRequest> | undefined): boolean;
-}
+};
+/**
+ * Describes the message api.v1.ProjectServiceInviteGetRequest.
+ * Use `create(ProjectServiceInviteGetRequestSchema)` to create a new message.
+ */
+export declare const ProjectServiceInviteGetRequestSchema: GenMessage<ProjectServiceInviteGetRequest>;
 /**
  * ProjectServiceInviteGetResponse is the response payload to a get invite request
  *
  * @generated from message api.v1.ProjectServiceInviteGetResponse
  */
-export declare class ProjectServiceInviteGetResponse extends Message<ProjectServiceInviteGetResponse> {
+export type ProjectServiceInviteGetResponse = Message<"api.v1.ProjectServiceInviteGetResponse"> & {
     /**
      * Invite is the invite
      *
      * @generated from field: api.v1.ProjectInvite invite = 1;
      */
     invite?: ProjectInvite;
-    constructor(data?: PartialMessage<ProjectServiceInviteGetResponse>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "api.v1.ProjectServiceInviteGetResponse";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ProjectServiceInviteGetResponse;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ProjectServiceInviteGetResponse;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ProjectServiceInviteGetResponse;
-    static equals(a: ProjectServiceInviteGetResponse | PlainMessage<ProjectServiceInviteGetResponse> | undefined, b: ProjectServiceInviteGetResponse | PlainMessage<ProjectServiceInviteGetResponse> | undefined): boolean;
-}
+};
+/**
+ * Describes the message api.v1.ProjectServiceInviteGetResponse.
+ * Use `create(ProjectServiceInviteGetResponseSchema)` to create a new message.
+ */
+export declare const ProjectServiceInviteGetResponseSchema: GenMessage<ProjectServiceInviteGetResponse>;
 /**
  * ProjectServiceRemoveMemberRequest is used to remove a member from a project
  *
  * @generated from message api.v1.ProjectServiceRemoveMemberRequest
  */
-export declare class ProjectServiceRemoveMemberRequest extends Message<ProjectServiceRemoveMemberRequest> {
+export type ProjectServiceRemoveMemberRequest = Message<"api.v1.ProjectServiceRemoveMemberRequest"> & {
     /**
      * Project is the uuid of the project
      *
@@ -586,36 +534,29 @@ export declare class ProjectServiceRemoveMemberRequest extends Message<ProjectSe
      * @generated from field: string member_id = 2;
      */
     memberId: string;
-    constructor(data?: PartialMessage<ProjectServiceRemoveMemberRequest>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "api.v1.ProjectServiceRemoveMemberRequest";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ProjectServiceRemoveMemberRequest;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ProjectServiceRemoveMemberRequest;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ProjectServiceRemoveMemberRequest;
-    static equals(a: ProjectServiceRemoveMemberRequest | PlainMessage<ProjectServiceRemoveMemberRequest> | undefined, b: ProjectServiceRemoveMemberRequest | PlainMessage<ProjectServiceRemoveMemberRequest> | undefined): boolean;
-}
+};
+/**
+ * Describes the message api.v1.ProjectServiceRemoveMemberRequest.
+ * Use `create(ProjectServiceRemoveMemberRequestSchema)` to create a new message.
+ */
+export declare const ProjectServiceRemoveMemberRequestSchema: GenMessage<ProjectServiceRemoveMemberRequest>;
 /**
  * ProjectServiceRemoveMemberResponse is the response payload to a remove member request
  *
  * @generated from message api.v1.ProjectServiceRemoveMemberResponse
  */
-export declare class ProjectServiceRemoveMemberResponse extends Message<ProjectServiceRemoveMemberResponse> {
-    constructor(data?: PartialMessage<ProjectServiceRemoveMemberResponse>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "api.v1.ProjectServiceRemoveMemberResponse";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ProjectServiceRemoveMemberResponse;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ProjectServiceRemoveMemberResponse;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ProjectServiceRemoveMemberResponse;
-    static equals(a: ProjectServiceRemoveMemberResponse | PlainMessage<ProjectServiceRemoveMemberResponse> | undefined, b: ProjectServiceRemoveMemberResponse | PlainMessage<ProjectServiceRemoveMemberResponse> | undefined): boolean;
-}
+export type ProjectServiceRemoveMemberResponse = Message<"api.v1.ProjectServiceRemoveMemberResponse"> & {};
+/**
+ * Describes the message api.v1.ProjectServiceRemoveMemberResponse.
+ * Use `create(ProjectServiceRemoveMemberResponseSchema)` to create a new message.
+ */
+export declare const ProjectServiceRemoveMemberResponseSchema: GenMessage<ProjectServiceRemoveMemberResponse>;
 /**
  * ProjectServiceUpdateMemberRequest is used to update a member of a project
  *
  * @generated from message api.v1.ProjectServiceUpdateMemberRequest
  */
-export declare class ProjectServiceUpdateMemberRequest extends Message<ProjectServiceUpdateMemberRequest> {
+export type ProjectServiceUpdateMemberRequest = Message<"api.v1.ProjectServiceUpdateMemberRequest"> & {
     /**
      * Project is the uuid of the project
      *
@@ -634,63 +575,54 @@ export declare class ProjectServiceUpdateMemberRequest extends Message<ProjectSe
      * @generated from field: api.v1.ProjectRole role = 3;
      */
     role: ProjectRole;
-    constructor(data?: PartialMessage<ProjectServiceUpdateMemberRequest>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "api.v1.ProjectServiceUpdateMemberRequest";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ProjectServiceUpdateMemberRequest;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ProjectServiceUpdateMemberRequest;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ProjectServiceUpdateMemberRequest;
-    static equals(a: ProjectServiceUpdateMemberRequest | PlainMessage<ProjectServiceUpdateMemberRequest> | undefined, b: ProjectServiceUpdateMemberRequest | PlainMessage<ProjectServiceUpdateMemberRequest> | undefined): boolean;
-}
+};
+/**
+ * Describes the message api.v1.ProjectServiceUpdateMemberRequest.
+ * Use `create(ProjectServiceUpdateMemberRequestSchema)` to create a new message.
+ */
+export declare const ProjectServiceUpdateMemberRequestSchema: GenMessage<ProjectServiceUpdateMemberRequest>;
 /**
  * ProjectServiceUpdateMemberResponse is the response payload to a update member request
  *
  * @generated from message api.v1.ProjectServiceUpdateMemberResponse
  */
-export declare class ProjectServiceUpdateMemberResponse extends Message<ProjectServiceUpdateMemberResponse> {
+export type ProjectServiceUpdateMemberResponse = Message<"api.v1.ProjectServiceUpdateMemberResponse"> & {
     /**
      * ProjectMember is the updated project member
      *
      * @generated from field: api.v1.ProjectMember project_member = 5;
      */
     projectMember?: ProjectMember;
-    constructor(data?: PartialMessage<ProjectServiceUpdateMemberResponse>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "api.v1.ProjectServiceUpdateMemberResponse";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ProjectServiceUpdateMemberResponse;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ProjectServiceUpdateMemberResponse;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ProjectServiceUpdateMemberResponse;
-    static equals(a: ProjectServiceUpdateMemberResponse | PlainMessage<ProjectServiceUpdateMemberResponse> | undefined, b: ProjectServiceUpdateMemberResponse | PlainMessage<ProjectServiceUpdateMemberResponse> | undefined): boolean;
-}
+};
+/**
+ * Describes the message api.v1.ProjectServiceUpdateMemberResponse.
+ * Use `create(ProjectServiceUpdateMemberResponseSchema)` to create a new message.
+ */
+export declare const ProjectServiceUpdateMemberResponseSchema: GenMessage<ProjectServiceUpdateMemberResponse>;
 /**
  * ProjectServiceInviteAcceptRequest is the request payload to a accept invite request
  *
  * @generated from message api.v1.ProjectServiceInviteAcceptRequest
  */
-export declare class ProjectServiceInviteAcceptRequest extends Message<ProjectServiceInviteAcceptRequest> {
+export type ProjectServiceInviteAcceptRequest = Message<"api.v1.ProjectServiceInviteAcceptRequest"> & {
     /**
      * Secret is the invitation secret part of the invitation url
      *
      * @generated from field: string secret = 1;
      */
     secret: string;
-    constructor(data?: PartialMessage<ProjectServiceInviteAcceptRequest>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "api.v1.ProjectServiceInviteAcceptRequest";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ProjectServiceInviteAcceptRequest;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ProjectServiceInviteAcceptRequest;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ProjectServiceInviteAcceptRequest;
-    static equals(a: ProjectServiceInviteAcceptRequest | PlainMessage<ProjectServiceInviteAcceptRequest> | undefined, b: ProjectServiceInviteAcceptRequest | PlainMessage<ProjectServiceInviteAcceptRequest> | undefined): boolean;
-}
+};
+/**
+ * Describes the message api.v1.ProjectServiceInviteAcceptRequest.
+ * Use `create(ProjectServiceInviteAcceptRequestSchema)` to create a new message.
+ */
+export declare const ProjectServiceInviteAcceptRequestSchema: GenMessage<ProjectServiceInviteAcceptRequest>;
 /**
  * ProjectServiceInvitesListResponse is the response payload to a accept invite request
  *
  * @generated from message api.v1.ProjectServiceInviteAcceptResponse
  */
-export declare class ProjectServiceInviteAcceptResponse extends Message<ProjectServiceInviteAcceptResponse> {
+export type ProjectServiceInviteAcceptResponse = Message<"api.v1.ProjectServiceInviteAcceptResponse"> & {
     /**
      * Project ID of the project joined
      *
@@ -703,21 +635,18 @@ export declare class ProjectServiceInviteAcceptResponse extends Message<ProjectS
      * @generated from field: string project_name = 2;
      */
     projectName: string;
-    constructor(data?: PartialMessage<ProjectServiceInviteAcceptResponse>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "api.v1.ProjectServiceInviteAcceptResponse";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ProjectServiceInviteAcceptResponse;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ProjectServiceInviteAcceptResponse;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ProjectServiceInviteAcceptResponse;
-    static equals(a: ProjectServiceInviteAcceptResponse | PlainMessage<ProjectServiceInviteAcceptResponse> | undefined, b: ProjectServiceInviteAcceptResponse | PlainMessage<ProjectServiceInviteAcceptResponse> | undefined): boolean;
-}
+};
+/**
+ * Describes the message api.v1.ProjectServiceInviteAcceptResponse.
+ * Use `create(ProjectServiceInviteAcceptResponseSchema)` to create a new message.
+ */
+export declare const ProjectServiceInviteAcceptResponseSchema: GenMessage<ProjectServiceInviteAcceptResponse>;
 /**
  * ProjectServiceInviteDeleteRequest is the request payload to a delete invite
  *
  * @generated from message api.v1.ProjectServiceInviteDeleteRequest
  */
-export declare class ProjectServiceInviteDeleteRequest extends Message<ProjectServiceInviteDeleteRequest> {
+export type ProjectServiceInviteDeleteRequest = Message<"api.v1.ProjectServiceInviteDeleteRequest"> & {
     /**
      * Project is the uuid of the project
      *
@@ -730,27 +659,147 @@ export declare class ProjectServiceInviteDeleteRequest extends Message<ProjectSe
      * @generated from field: string secret = 2;
      */
     secret: string;
-    constructor(data?: PartialMessage<ProjectServiceInviteDeleteRequest>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "api.v1.ProjectServiceInviteDeleteRequest";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ProjectServiceInviteDeleteRequest;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ProjectServiceInviteDeleteRequest;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ProjectServiceInviteDeleteRequest;
-    static equals(a: ProjectServiceInviteDeleteRequest | PlainMessage<ProjectServiceInviteDeleteRequest> | undefined, b: ProjectServiceInviteDeleteRequest | PlainMessage<ProjectServiceInviteDeleteRequest> | undefined): boolean;
-}
+};
+/**
+ * Describes the message api.v1.ProjectServiceInviteDeleteRequest.
+ * Use `create(ProjectServiceInviteDeleteRequestSchema)` to create a new message.
+ */
+export declare const ProjectServiceInviteDeleteRequestSchema: GenMessage<ProjectServiceInviteDeleteRequest>;
 /**
  * ProjectServiceInviteDeleteResponse is the response payload of a delete invite request
  *
  * @generated from message api.v1.ProjectServiceInviteDeleteResponse
  */
-export declare class ProjectServiceInviteDeleteResponse extends Message<ProjectServiceInviteDeleteResponse> {
-    constructor(data?: PartialMessage<ProjectServiceInviteDeleteResponse>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "api.v1.ProjectServiceInviteDeleteResponse";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ProjectServiceInviteDeleteResponse;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ProjectServiceInviteDeleteResponse;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ProjectServiceInviteDeleteResponse;
-    static equals(a: ProjectServiceInviteDeleteResponse | PlainMessage<ProjectServiceInviteDeleteResponse> | undefined, b: ProjectServiceInviteDeleteResponse | PlainMessage<ProjectServiceInviteDeleteResponse> | undefined): boolean;
-}
+export type ProjectServiceInviteDeleteResponse = Message<"api.v1.ProjectServiceInviteDeleteResponse"> & {};
+/**
+ * Describes the message api.v1.ProjectServiceInviteDeleteResponse.
+ * Use `create(ProjectServiceInviteDeleteResponseSchema)` to create a new message.
+ */
+export declare const ProjectServiceInviteDeleteResponseSchema: GenMessage<ProjectServiceInviteDeleteResponse>;
+/**
+ * ProjectService serves project related functions
+ *
+ * @generated from service api.v1.ProjectService
+ */
+export declare const ProjectService: GenService<{
+    /**
+     * List all accessible projects
+     *
+     * @generated from rpc api.v1.ProjectService.List
+     */
+    list: {
+        methodKind: "unary";
+        input: typeof ProjectServiceListRequestSchema;
+        output: typeof ProjectServiceListResponseSchema;
+    };
+    /**
+     * Get a project
+     *
+     * @generated from rpc api.v1.ProjectService.Get
+     */
+    get: {
+        methodKind: "unary";
+        input: typeof ProjectServiceGetRequestSchema;
+        output: typeof ProjectServiceGetResponseSchema;
+    };
+    /**
+     * Create a project
+     *
+     * @generated from rpc api.v1.ProjectService.Create
+     */
+    create: {
+        methodKind: "unary";
+        input: typeof ProjectServiceCreateRequestSchema;
+        output: typeof ProjectServiceCreateResponseSchema;
+    };
+    /**
+     * Delete a project
+     *
+     * @generated from rpc api.v1.ProjectService.Delete
+     */
+    delete: {
+        methodKind: "unary";
+        input: typeof ProjectServiceDeleteRequestSchema;
+        output: typeof ProjectServiceDeleteResponseSchema;
+    };
+    /**
+     * Update a project
+     *
+     * @generated from rpc api.v1.ProjectService.Update
+     */
+    update: {
+        methodKind: "unary";
+        input: typeof ProjectServiceUpdateRequestSchema;
+        output: typeof ProjectServiceUpdateResponseSchema;
+    };
+    /**
+     * RemoveMember remove a user from a project
+     *
+     * @generated from rpc api.v1.ProjectService.RemoveMember
+     */
+    removeMember: {
+        methodKind: "unary";
+        input: typeof ProjectServiceRemoveMemberRequestSchema;
+        output: typeof ProjectServiceRemoveMemberResponseSchema;
+    };
+    /**
+     * UpdateMember update a user for a project
+     *
+     * @generated from rpc api.v1.ProjectService.UpdateMember
+     */
+    updateMember: {
+        methodKind: "unary";
+        input: typeof ProjectServiceUpdateMemberRequestSchema;
+        output: typeof ProjectServiceUpdateMemberResponseSchema;
+    };
+    /**
+     * Invite a user to a project
+     *
+     * @generated from rpc api.v1.ProjectService.Invite
+     */
+    invite: {
+        methodKind: "unary";
+        input: typeof ProjectServiceInviteRequestSchema;
+        output: typeof ProjectServiceInviteResponseSchema;
+    };
+    /**
+     * InviteAccept is called from a user to accept a invitation
+     *
+     * @generated from rpc api.v1.ProjectService.InviteAccept
+     */
+    inviteAccept: {
+        methodKind: "unary";
+        input: typeof ProjectServiceInviteAcceptRequestSchema;
+        output: typeof ProjectServiceInviteAcceptResponseSchema;
+    };
+    /**
+     * InviteDelete deletes a pending invitation
+     *
+     * @generated from rpc api.v1.ProjectService.InviteDelete
+     */
+    inviteDelete: {
+        methodKind: "unary";
+        input: typeof ProjectServiceInviteDeleteRequestSchema;
+        output: typeof ProjectServiceInviteDeleteResponseSchema;
+    };
+    /**
+     * InvitesList list all invites to a project
+     *
+     * @generated from rpc api.v1.ProjectService.InvitesList
+     */
+    invitesList: {
+        methodKind: "unary";
+        input: typeof ProjectServiceInvitesListRequestSchema;
+        output: typeof ProjectServiceInvitesListResponseSchema;
+    };
+    /**
+     * InviteGet get an invite
+     *
+     * @generated from rpc api.v1.ProjectService.InviteGet
+     */
+    inviteGet: {
+        methodKind: "unary";
+        input: typeof ProjectServiceInviteGetRequestSchema;
+        output: typeof ProjectServiceInviteGetResponseSchema;
+    };
+}>;

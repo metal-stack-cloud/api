@@ -1,13 +1,17 @@
-import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
-import { Message, proto3 } from "@bufbuild/protobuf";
-import { Paging } from "../../api/v1/common_pb.js";
-import { Project } from "../../api/v1/project_pb.js";
+import type { GenFile, GenMessage, GenService } from "@bufbuild/protobuf/codegenv1";
+import type { Paging } from "../../api/v1/common_pb";
+import type { Project } from "../../api/v1/project_pb";
+import type { Message } from "@bufbuild/protobuf";
+/**
+ * Describes the file admin/v1/project.proto.
+ */
+export declare const file_admin_v1_project: GenFile;
 /**
  * ProjectServiceListRequest is the request payload for the project list request
  *
  * @generated from message admin.v1.ProjectServiceListRequest
  */
-export declare class ProjectServiceListRequest extends Message<ProjectServiceListRequest> {
+export type ProjectServiceListRequest = Message<"admin.v1.ProjectServiceListRequest"> & {
     /**
      * Paging details for the list request
      *
@@ -28,21 +32,18 @@ export declare class ProjectServiceListRequest extends Message<ProjectServiceLis
     annotations: {
         [key: string]: string;
     };
-    constructor(data?: PartialMessage<ProjectServiceListRequest>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "admin.v1.ProjectServiceListRequest";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ProjectServiceListRequest;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ProjectServiceListRequest;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ProjectServiceListRequest;
-    static equals(a: ProjectServiceListRequest | PlainMessage<ProjectServiceListRequest> | undefined, b: ProjectServiceListRequest | PlainMessage<ProjectServiceListRequest> | undefined): boolean;
-}
+};
+/**
+ * Describes the message admin.v1.ProjectServiceListRequest.
+ * Use `create(ProjectServiceListRequestSchema)` to create a new message.
+ */
+export declare const ProjectServiceListRequestSchema: GenMessage<ProjectServiceListRequest>;
 /**
  * ProjectServiceListResponse is the response payload for the project list request
  *
  * @generated from message admin.v1.ProjectServiceListResponse
  */
-export declare class ProjectServiceListResponse extends Message<ProjectServiceListResponse> {
+export type ProjectServiceListResponse = Message<"admin.v1.ProjectServiceListResponse"> & {
     /**
      * Projects is the list of projects that match the filters
      *
@@ -55,12 +56,26 @@ export declare class ProjectServiceListResponse extends Message<ProjectServiceLi
      * @generated from field: optional uint64 next_page = 2;
      */
     nextPage?: bigint;
-    constructor(data?: PartialMessage<ProjectServiceListResponse>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "admin.v1.ProjectServiceListResponse";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ProjectServiceListResponse;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ProjectServiceListResponse;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ProjectServiceListResponse;
-    static equals(a: ProjectServiceListResponse | PlainMessage<ProjectServiceListResponse> | undefined, b: ProjectServiceListResponse | PlainMessage<ProjectServiceListResponse> | undefined): boolean;
-}
+};
+/**
+ * Describes the message admin.v1.ProjectServiceListResponse.
+ * Use `create(ProjectServiceListResponseSchema)` to create a new message.
+ */
+export declare const ProjectServiceListResponseSchema: GenMessage<ProjectServiceListResponse>;
+/**
+ * ProjectService serves project related functions
+ *
+ * @generated from service admin.v1.ProjectService
+ */
+export declare const ProjectService: GenService<{
+    /**
+     * List projects based on various filter criteria
+     *
+     * @generated from rpc admin.v1.ProjectService.List
+     */
+    list: {
+        methodKind: "unary";
+        input: typeof ProjectServiceListRequestSchema;
+        output: typeof ProjectServiceListResponseSchema;
+    };
+}>;

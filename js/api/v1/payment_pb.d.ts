@@ -1,73 +1,16 @@
-import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
-import { Message, proto3, Timestamp } from "@bufbuild/protobuf";
+import type { GenEnum, GenFile, GenMessage, GenService } from "@bufbuild/protobuf/codegenv1";
+import type { Timestamp } from "@bufbuild/protobuf/wkt";
+import type { Message } from "@bufbuild/protobuf";
 /**
- * ProductType defines for which type of product a price applies
- *
- * @generated from enum api.v1.ProductType
+ * Describes the file api/v1/payment.proto.
  */
-export declare enum ProductType {
-    /**
-     * PRODUCT_TYPE_UNSPECIFIED is unspecified
-     *
-     * @generated from enum value: PRODUCT_TYPE_UNSPECIFIED = 0;
-     */
-    UNSPECIFIED = 0,
-    /**
-     * PRODUCT_TYPE_STORAGE for storage
-     *
-     * @generated from enum value: PRODUCT_TYPE_STORAGE = 1;
-     */
-    STORAGE = 1,
-    /**
-     * PRODUCT_TYPE_COMPUTE for compute, e.g. machines
-     *
-     * @generated from enum value: PRODUCT_TYPE_COMPUTE = 2;
-     */
-    COMPUTE = 2,
-    /**
-     * PRODUCT_TYPE_NETWORK for network, e.g. ips and traffic
-     *
-     * @generated from enum value: PRODUCT_TYPE_NETWORK = 3;
-     */
-    NETWORK = 3,
-    /**
-     * PRODUCT_TYPE_KUBERNETES for kubernetes, e.g. the control plane
-     *
-     * @generated from enum value: PRODUCT_TYPE_KUBERNETES = 5;
-     */
-    KUBERNETES = 5
-}
-/**
- * UsageType indicates how a price is measured
- *
- * @generated from enum api.v1.UsageType
- */
-export declare enum UsageType {
-    /**
-     * USAGE_TYPE_UNSPECIFIED is unspecified
-     *
-     * @generated from enum value: USAGE_TYPE_UNSPECIFIED = 0;
-     */
-    UNSPECIFIED = 0,
-    /**
-     * USAGE_TYPE_METERED price is sent per usage
-     *
-     * @generated from enum value: USAGE_TYPE_METERED = 1;
-     */
-    METERED = 1,
-    /**
-     * USAGE_TYPE_LICENSED price is set in invoice (s3 for example)
-     *
-     * @generated from enum value: USAGE_TYPE_LICENSED = 2;
-     */
-    LICENSED = 2
-}
+export declare const file_api_v1_payment: GenFile;
 /**
  * PaymentCustomer is a customer at the payment processor
  *
  * @generated from message api.v1.PaymentCustomer
  */
-export declare class PaymentCustomer extends Message<PaymentCustomer> {
+export type PaymentCustomer = Message<"api.v1.PaymentCustomer"> & {
     /**
      * Login of the customer
      *
@@ -146,21 +89,18 @@ export declare class PaymentCustomer extends Message<PaymentCustomer> {
      * @generated from field: optional int64 balance = 13;
      */
     balance?: bigint;
-    constructor(data?: PartialMessage<PaymentCustomer>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "api.v1.PaymentCustomer";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): PaymentCustomer;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): PaymentCustomer;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): PaymentCustomer;
-    static equals(a: PaymentCustomer | PlainMessage<PaymentCustomer> | undefined, b: PaymentCustomer | PlainMessage<PaymentCustomer> | undefined): boolean;
-}
+};
+/**
+ * Describes the message api.v1.PaymentCustomer.
+ * Use `create(PaymentCustomerSchema)` to create a new message.
+ */
+export declare const PaymentCustomerSchema: GenMessage<PaymentCustomer>;
 /**
  * Card is the payment card the customer pays with
  *
  * @generated from message api.v1.Card
  */
-export declare class Card extends Message<Card> {
+export type Card = Message<"api.v1.Card"> & {
     /**
      * Brand of the card
      *
@@ -191,21 +131,18 @@ export declare class Card extends Message<Card> {
      * @generated from field: string last_4 = 5;
      */
     last4: string;
-    constructor(data?: PartialMessage<Card>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "api.v1.Card";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Card;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): Card;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): Card;
-    static equals(a: Card | PlainMessage<Card> | undefined, b: Card | PlainMessage<Card> | undefined): boolean;
-}
+};
+/**
+ * Describes the message api.v1.Card.
+ * Use `create(CardSchema)` to create a new message.
+ */
+export declare const CardSchema: GenMessage<Card>;
 /**
  * Price of a product
  *
  * @generated from message api.v1.Price
  */
-export declare class Price extends Message<Price> {
+export type Price = Message<"api.v1.Price"> & {
     /**
      * Name of the price
      *
@@ -248,21 +185,18 @@ export declare class Price extends Message<Price> {
      * @generated from field: api.v1.UsageType usage_type = 7;
      */
     usageType: UsageType;
-    constructor(data?: PartialMessage<Price>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "api.v1.Price";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Price;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): Price;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): Price;
-    static equals(a: Price | PlainMessage<Price> | undefined, b: Price | PlainMessage<Price> | undefined): boolean;
-}
+};
+/**
+ * Describes the message api.v1.Price.
+ * Use `create(PriceSchema)` to create a new message.
+ */
+export declare const PriceSchema: GenMessage<Price>;
 /**
  * Address postal address of a customer
  *
  * @generated from message api.v1.Address
  */
-export declare class Address extends Message<Address> {
+export type Address = Message<"api.v1.Address"> & {
     /**
      * Line1 the first address line
      *
@@ -299,21 +233,18 @@ export declare class Address extends Message<Address> {
      * @generated from field: string country = 6;
      */
     country: string;
-    constructor(data?: PartialMessage<Address>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "api.v1.Address";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Address;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): Address;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): Address;
-    static equals(a: Address | PlainMessage<Address> | undefined, b: Address | PlainMessage<Address> | undefined): boolean;
-}
+};
+/**
+ * Describes the message api.v1.Address.
+ * Use `create(AddressSchema)` to create a new message.
+ */
+export declare const AddressSchema: GenMessage<Address>;
 /**
  * SubscriptionUsageItem details of a subscription
  *
  * @generated from message api.v1.SubscriptionUsageItem
  */
-export declare class SubscriptionUsageItem extends Message<SubscriptionUsageItem> {
+export type SubscriptionUsageItem = Message<"api.v1.SubscriptionUsageItem"> & {
     /**
      * SubscriptionItemId is the id of the subscription
      *
@@ -344,21 +275,18 @@ export declare class SubscriptionUsageItem extends Message<SubscriptionUsageItem
      * @generated from field: google.protobuf.Timestamp period_end = 5;
      */
     periodEnd?: Timestamp;
-    constructor(data?: PartialMessage<SubscriptionUsageItem>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "api.v1.SubscriptionUsageItem";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): SubscriptionUsageItem;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): SubscriptionUsageItem;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): SubscriptionUsageItem;
-    static equals(a: SubscriptionUsageItem | PlainMessage<SubscriptionUsageItem> | undefined, b: SubscriptionUsageItem | PlainMessage<SubscriptionUsageItem> | undefined): boolean;
-}
+};
+/**
+ * Describes the message api.v1.SubscriptionUsageItem.
+ * Use `create(SubscriptionUsageItemSchema)` to create a new message.
+ */
+export declare const SubscriptionUsageItemSchema: GenMessage<SubscriptionUsageItem>;
 /**
  * Invoice a customer has to pay for subscription usage
  *
  * @generated from message api.v1.Invoice
  */
-export declare class Invoice extends Message<Invoice> {
+export type Invoice = Message<"api.v1.Invoice"> & {
     /**
      * Id of the invoice
      *
@@ -383,21 +311,18 @@ export declare class Invoice extends Message<Invoice> {
      * @generated from field: google.protobuf.Timestamp period_end = 5;
      */
     periodEnd?: Timestamp;
-    constructor(data?: PartialMessage<Invoice>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "api.v1.Invoice";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Invoice;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): Invoice;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): Invoice;
-    static equals(a: Invoice | PlainMessage<Invoice> | undefined, b: Invoice | PlainMessage<Invoice> | undefined): boolean;
-}
+};
+/**
+ * Describes the message api.v1.Invoice.
+ * Use `create(InvoiceSchema)` to create a new message.
+ */
+export declare const InvoiceSchema: GenMessage<Invoice>;
 /**
  * Coupon is a amount of free usage which can be granted to a customer
  *
  * @generated from message api.v1.Coupon
  */
-export declare class Coupon extends Message<Coupon> {
+export type Coupon = Message<"api.v1.Coupon"> & {
     /**
      * Id of the coupon
      *
@@ -458,21 +383,18 @@ export declare class Coupon extends Message<Coupon> {
      * @generated from field: int64 amount_left = 10;
      */
     amountLeft: bigint;
-    constructor(data?: PartialMessage<Coupon>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "api.v1.Coupon";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Coupon;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): Coupon;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): Coupon;
-    static equals(a: Coupon | PlainMessage<Coupon> | undefined, b: Coupon | PlainMessage<Coupon> | undefined): boolean;
-}
+};
+/**
+ * Describes the message api.v1.Coupon.
+ * Use `create(CouponSchema)` to create a new message.
+ */
+export declare const CouponSchema: GenMessage<Coupon>;
 /**
  * PaymentServiceCreateOrUpdateCustomerRequest is the request payload for a payment create or update customer request
  *
  * @generated from message api.v1.PaymentServiceCreateOrUpdateCustomerRequest
  */
-export declare class PaymentServiceCreateOrUpdateCustomerRequest extends Message<PaymentServiceCreateOrUpdateCustomerRequest> {
+export type PaymentServiceCreateOrUpdateCustomerRequest = Message<"api.v1.PaymentServiceCreateOrUpdateCustomerRequest"> & {
     /**
      * Login of the customer
      *
@@ -491,42 +413,36 @@ export declare class PaymentServiceCreateOrUpdateCustomerRequest extends Message
      * @generated from field: bool accepted_terms_and_conditions = 3;
      */
     acceptedTermsAndConditions: boolean;
-    constructor(data?: PartialMessage<PaymentServiceCreateOrUpdateCustomerRequest>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "api.v1.PaymentServiceCreateOrUpdateCustomerRequest";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): PaymentServiceCreateOrUpdateCustomerRequest;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): PaymentServiceCreateOrUpdateCustomerRequest;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): PaymentServiceCreateOrUpdateCustomerRequest;
-    static equals(a: PaymentServiceCreateOrUpdateCustomerRequest | PlainMessage<PaymentServiceCreateOrUpdateCustomerRequest> | undefined, b: PaymentServiceCreateOrUpdateCustomerRequest | PlainMessage<PaymentServiceCreateOrUpdateCustomerRequest> | undefined): boolean;
-}
+};
+/**
+ * Describes the message api.v1.PaymentServiceCreateOrUpdateCustomerRequest.
+ * Use `create(PaymentServiceCreateOrUpdateCustomerRequestSchema)` to create a new message.
+ */
+export declare const PaymentServiceCreateOrUpdateCustomerRequestSchema: GenMessage<PaymentServiceCreateOrUpdateCustomerRequest>;
 /**
  * PaymentServiceCreateOrUpdateCustomerResponse is the response payload for a payment create or update customer request
  *
  * @generated from message api.v1.PaymentServiceCreateOrUpdateCustomerResponse
  */
-export declare class PaymentServiceCreateOrUpdateCustomerResponse extends Message<PaymentServiceCreateOrUpdateCustomerResponse> {
+export type PaymentServiceCreateOrUpdateCustomerResponse = Message<"api.v1.PaymentServiceCreateOrUpdateCustomerResponse"> & {
     /**
      * Customer is the customer
      *
      * @generated from field: api.v1.PaymentCustomer customer = 1;
      */
     customer?: PaymentCustomer;
-    constructor(data?: PartialMessage<PaymentServiceCreateOrUpdateCustomerResponse>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "api.v1.PaymentServiceCreateOrUpdateCustomerResponse";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): PaymentServiceCreateOrUpdateCustomerResponse;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): PaymentServiceCreateOrUpdateCustomerResponse;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): PaymentServiceCreateOrUpdateCustomerResponse;
-    static equals(a: PaymentServiceCreateOrUpdateCustomerResponse | PlainMessage<PaymentServiceCreateOrUpdateCustomerResponse> | undefined, b: PaymentServiceCreateOrUpdateCustomerResponse | PlainMessage<PaymentServiceCreateOrUpdateCustomerResponse> | undefined): boolean;
-}
+};
+/**
+ * Describes the message api.v1.PaymentServiceCreateOrUpdateCustomerResponse.
+ * Use `create(PaymentServiceCreateOrUpdateCustomerResponseSchema)` to create a new message.
+ */
+export declare const PaymentServiceCreateOrUpdateCustomerResponseSchema: GenMessage<PaymentServiceCreateOrUpdateCustomerResponse>;
 /**
  * PaymentServiceGetCustomerRequest is the request payload for a payment get customer request
  *
  * @generated from message api.v1.PaymentServiceGetCustomerRequest
  */
-export declare class PaymentServiceGetCustomerRequest extends Message<PaymentServiceGetCustomerRequest> {
+export type PaymentServiceGetCustomerRequest = Message<"api.v1.PaymentServiceGetCustomerRequest"> & {
     /**
      * Login of the customer
      *
@@ -539,63 +455,54 @@ export declare class PaymentServiceGetCustomerRequest extends Message<PaymentSer
      * @generated from field: string customer_id = 2;
      */
     customerId: string;
-    constructor(data?: PartialMessage<PaymentServiceGetCustomerRequest>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "api.v1.PaymentServiceGetCustomerRequest";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): PaymentServiceGetCustomerRequest;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): PaymentServiceGetCustomerRequest;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): PaymentServiceGetCustomerRequest;
-    static equals(a: PaymentServiceGetCustomerRequest | PlainMessage<PaymentServiceGetCustomerRequest> | undefined, b: PaymentServiceGetCustomerRequest | PlainMessage<PaymentServiceGetCustomerRequest> | undefined): boolean;
-}
+};
+/**
+ * Describes the message api.v1.PaymentServiceGetCustomerRequest.
+ * Use `create(PaymentServiceGetCustomerRequestSchema)` to create a new message.
+ */
+export declare const PaymentServiceGetCustomerRequestSchema: GenMessage<PaymentServiceGetCustomerRequest>;
 /**
  * PaymentServiceGetCustomerResponse is the response payload for a payment get customer request
  *
  * @generated from message api.v1.PaymentServiceGetCustomerResponse
  */
-export declare class PaymentServiceGetCustomerResponse extends Message<PaymentServiceGetCustomerResponse> {
+export type PaymentServiceGetCustomerResponse = Message<"api.v1.PaymentServiceGetCustomerResponse"> & {
     /**
      * Customer is the customer
      *
      * @generated from field: api.v1.PaymentCustomer customer = 1;
      */
     customer?: PaymentCustomer;
-    constructor(data?: PartialMessage<PaymentServiceGetCustomerResponse>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "api.v1.PaymentServiceGetCustomerResponse";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): PaymentServiceGetCustomerResponse;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): PaymentServiceGetCustomerResponse;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): PaymentServiceGetCustomerResponse;
-    static equals(a: PaymentServiceGetCustomerResponse | PlainMessage<PaymentServiceGetCustomerResponse> | undefined, b: PaymentServiceGetCustomerResponse | PlainMessage<PaymentServiceGetCustomerResponse> | undefined): boolean;
-}
+};
+/**
+ * Describes the message api.v1.PaymentServiceGetCustomerResponse.
+ * Use `create(PaymentServiceGetCustomerResponseSchema)` to create a new message.
+ */
+export declare const PaymentServiceGetCustomerResponseSchema: GenMessage<PaymentServiceGetCustomerResponse>;
 /**
  * PaymentServiceCheckIfCustomerExistsRequest is the request payload for a payment check if customer exists request
  *
  * @generated from message api.v1.PaymentServiceCheckIfCustomerExistsRequest
  */
-export declare class PaymentServiceCheckIfCustomerExistsRequest extends Message<PaymentServiceCheckIfCustomerExistsRequest> {
+export type PaymentServiceCheckIfCustomerExistsRequest = Message<"api.v1.PaymentServiceCheckIfCustomerExistsRequest"> & {
     /**
      * Login of the customer
      *
      * @generated from field: string login = 1;
      */
     login: string;
-    constructor(data?: PartialMessage<PaymentServiceCheckIfCustomerExistsRequest>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "api.v1.PaymentServiceCheckIfCustomerExistsRequest";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): PaymentServiceCheckIfCustomerExistsRequest;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): PaymentServiceCheckIfCustomerExistsRequest;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): PaymentServiceCheckIfCustomerExistsRequest;
-    static equals(a: PaymentServiceCheckIfCustomerExistsRequest | PlainMessage<PaymentServiceCheckIfCustomerExistsRequest> | undefined, b: PaymentServiceCheckIfCustomerExistsRequest | PlainMessage<PaymentServiceCheckIfCustomerExistsRequest> | undefined): boolean;
-}
+};
+/**
+ * Describes the message api.v1.PaymentServiceCheckIfCustomerExistsRequest.
+ * Use `create(PaymentServiceCheckIfCustomerExistsRequestSchema)` to create a new message.
+ */
+export declare const PaymentServiceCheckIfCustomerExistsRequestSchema: GenMessage<PaymentServiceCheckIfCustomerExistsRequest>;
 /**
  * PaymentServiceCheckIfCustomerExistsResponse is the response payload for a payment check if customer exists request
  *
  * @generated from message api.v1.PaymentServiceCheckIfCustomerExistsResponse
  */
-export declare class PaymentServiceCheckIfCustomerExistsResponse extends Message<PaymentServiceCheckIfCustomerExistsResponse> {
+export type PaymentServiceCheckIfCustomerExistsResponse = Message<"api.v1.PaymentServiceCheckIfCustomerExistsResponse"> & {
     /**
      * Customer is the customer
      *
@@ -608,42 +515,36 @@ export declare class PaymentServiceCheckIfCustomerExistsResponse extends Message
      * @generated from field: bool exists = 2;
      */
     exists: boolean;
-    constructor(data?: PartialMessage<PaymentServiceCheckIfCustomerExistsResponse>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "api.v1.PaymentServiceCheckIfCustomerExistsResponse";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): PaymentServiceCheckIfCustomerExistsResponse;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): PaymentServiceCheckIfCustomerExistsResponse;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): PaymentServiceCheckIfCustomerExistsResponse;
-    static equals(a: PaymentServiceCheckIfCustomerExistsResponse | PlainMessage<PaymentServiceCheckIfCustomerExistsResponse> | undefined, b: PaymentServiceCheckIfCustomerExistsResponse | PlainMessage<PaymentServiceCheckIfCustomerExistsResponse> | undefined): boolean;
-}
+};
+/**
+ * Describes the message api.v1.PaymentServiceCheckIfCustomerExistsResponse.
+ * Use `create(PaymentServiceCheckIfCustomerExistsResponseSchema)` to create a new message.
+ */
+export declare const PaymentServiceCheckIfCustomerExistsResponseSchema: GenMessage<PaymentServiceCheckIfCustomerExistsResponse>;
 /**
  * PaymentServiceHasPaymentMethodRequest is the request payload for a has payment request
  *
  * @generated from message api.v1.PaymentServiceHasPaymentMethodRequest
  */
-export declare class PaymentServiceHasPaymentMethodRequest extends Message<PaymentServiceHasPaymentMethodRequest> {
+export type PaymentServiceHasPaymentMethodRequest = Message<"api.v1.PaymentServiceHasPaymentMethodRequest"> & {
     /**
      * Login of the customer
      *
      * @generated from field: string login = 1;
      */
     login: string;
-    constructor(data?: PartialMessage<PaymentServiceHasPaymentMethodRequest>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "api.v1.PaymentServiceHasPaymentMethodRequest";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): PaymentServiceHasPaymentMethodRequest;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): PaymentServiceHasPaymentMethodRequest;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): PaymentServiceHasPaymentMethodRequest;
-    static equals(a: PaymentServiceHasPaymentMethodRequest | PlainMessage<PaymentServiceHasPaymentMethodRequest> | undefined, b: PaymentServiceHasPaymentMethodRequest | PlainMessage<PaymentServiceHasPaymentMethodRequest> | undefined): boolean;
-}
+};
+/**
+ * Describes the message api.v1.PaymentServiceHasPaymentMethodRequest.
+ * Use `create(PaymentServiceHasPaymentMethodRequestSchema)` to create a new message.
+ */
+export declare const PaymentServiceHasPaymentMethodRequestSchema: GenMessage<PaymentServiceHasPaymentMethodRequest>;
 /**
  * PaymentServiceHasPaymentMethodResponse is the response payload for a has payment request
  *
  * @generated from message api.v1.PaymentServiceHasPaymentMethodResponse
  */
-export declare class PaymentServiceHasPaymentMethodResponse extends Message<PaymentServiceHasPaymentMethodResponse> {
+export type PaymentServiceHasPaymentMethodResponse = Message<"api.v1.PaymentServiceHasPaymentMethodResponse"> & {
     /**
      * Exists indicates if this customer has a payment method
      *
@@ -662,99 +563,83 @@ export declare class PaymentServiceHasPaymentMethodResponse extends Message<Paym
      * @generated from field: bool positive_balance = 3;
      */
     positiveBalance: boolean;
-    constructor(data?: PartialMessage<PaymentServiceHasPaymentMethodResponse>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "api.v1.PaymentServiceHasPaymentMethodResponse";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): PaymentServiceHasPaymentMethodResponse;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): PaymentServiceHasPaymentMethodResponse;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): PaymentServiceHasPaymentMethodResponse;
-    static equals(a: PaymentServiceHasPaymentMethodResponse | PlainMessage<PaymentServiceHasPaymentMethodResponse> | undefined, b: PaymentServiceHasPaymentMethodResponse | PlainMessage<PaymentServiceHasPaymentMethodResponse> | undefined): boolean;
-}
+};
+/**
+ * Describes the message api.v1.PaymentServiceHasPaymentMethodResponse.
+ * Use `create(PaymentServiceHasPaymentMethodResponseSchema)` to create a new message.
+ */
+export declare const PaymentServiceHasPaymentMethodResponseSchema: GenMessage<PaymentServiceHasPaymentMethodResponse>;
 /**
  * PaymentServiceDeletePaymentMethodRequest is the request payload for a delete payment request
  *
  * @generated from message api.v1.PaymentServiceDeletePaymentMethodRequest
  */
-export declare class PaymentServiceDeletePaymentMethodRequest extends Message<PaymentServiceDeletePaymentMethodRequest> {
+export type PaymentServiceDeletePaymentMethodRequest = Message<"api.v1.PaymentServiceDeletePaymentMethodRequest"> & {
     /**
      * Login of the customer
      *
      * @generated from field: string login = 1;
      */
     login: string;
-    constructor(data?: PartialMessage<PaymentServiceDeletePaymentMethodRequest>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "api.v1.PaymentServiceDeletePaymentMethodRequest";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): PaymentServiceDeletePaymentMethodRequest;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): PaymentServiceDeletePaymentMethodRequest;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): PaymentServiceDeletePaymentMethodRequest;
-    static equals(a: PaymentServiceDeletePaymentMethodRequest | PlainMessage<PaymentServiceDeletePaymentMethodRequest> | undefined, b: PaymentServiceDeletePaymentMethodRequest | PlainMessage<PaymentServiceDeletePaymentMethodRequest> | undefined): boolean;
-}
+};
+/**
+ * Describes the message api.v1.PaymentServiceDeletePaymentMethodRequest.
+ * Use `create(PaymentServiceDeletePaymentMethodRequestSchema)` to create a new message.
+ */
+export declare const PaymentServiceDeletePaymentMethodRequestSchema: GenMessage<PaymentServiceDeletePaymentMethodRequest>;
 /**
  * PaymentServiceDeletePaymentMethodResponse is the response payload for a delete payment request
  *
  * @generated from message api.v1.PaymentServiceDeletePaymentMethodResponse
  */
-export declare class PaymentServiceDeletePaymentMethodResponse extends Message<PaymentServiceDeletePaymentMethodResponse> {
-    constructor(data?: PartialMessage<PaymentServiceDeletePaymentMethodResponse>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "api.v1.PaymentServiceDeletePaymentMethodResponse";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): PaymentServiceDeletePaymentMethodResponse;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): PaymentServiceDeletePaymentMethodResponse;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): PaymentServiceDeletePaymentMethodResponse;
-    static equals(a: PaymentServiceDeletePaymentMethodResponse | PlainMessage<PaymentServiceDeletePaymentMethodResponse> | undefined, b: PaymentServiceDeletePaymentMethodResponse | PlainMessage<PaymentServiceDeletePaymentMethodResponse> | undefined): boolean;
-}
+export type PaymentServiceDeletePaymentMethodResponse = Message<"api.v1.PaymentServiceDeletePaymentMethodResponse"> & {};
+/**
+ * Describes the message api.v1.PaymentServiceDeletePaymentMethodResponse.
+ * Use `create(PaymentServiceDeletePaymentMethodResponseSchema)` to create a new message.
+ */
+export declare const PaymentServiceDeletePaymentMethodResponseSchema: GenMessage<PaymentServiceDeletePaymentMethodResponse>;
 /**
  * PaymentServiceGetSubscriptionUsageRequest is the request payload for a get subscription usage request
  *
  * @generated from message api.v1.PaymentServiceGetSubscriptionUsageRequest
  */
-export declare class PaymentServiceGetSubscriptionUsageRequest extends Message<PaymentServiceGetSubscriptionUsageRequest> {
+export type PaymentServiceGetSubscriptionUsageRequest = Message<"api.v1.PaymentServiceGetSubscriptionUsageRequest"> & {
     /**
      * Login of the customer
      *
      * @generated from field: string login = 1;
      */
     login: string;
-    constructor(data?: PartialMessage<PaymentServiceGetSubscriptionUsageRequest>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "api.v1.PaymentServiceGetSubscriptionUsageRequest";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): PaymentServiceGetSubscriptionUsageRequest;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): PaymentServiceGetSubscriptionUsageRequest;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): PaymentServiceGetSubscriptionUsageRequest;
-    static equals(a: PaymentServiceGetSubscriptionUsageRequest | PlainMessage<PaymentServiceGetSubscriptionUsageRequest> | undefined, b: PaymentServiceGetSubscriptionUsageRequest | PlainMessage<PaymentServiceGetSubscriptionUsageRequest> | undefined): boolean;
-}
+};
+/**
+ * Describes the message api.v1.PaymentServiceGetSubscriptionUsageRequest.
+ * Use `create(PaymentServiceGetSubscriptionUsageRequestSchema)` to create a new message.
+ */
+export declare const PaymentServiceGetSubscriptionUsageRequestSchema: GenMessage<PaymentServiceGetSubscriptionUsageRequest>;
 /**
  * PaymentServiceGetSubscriptionUsageResponse is the response payload for a get subscription usage request
  *
  * @generated from message api.v1.PaymentServiceGetSubscriptionUsageResponse
  */
-export declare class PaymentServiceGetSubscriptionUsageResponse extends Message<PaymentServiceGetSubscriptionUsageResponse> {
+export type PaymentServiceGetSubscriptionUsageResponse = Message<"api.v1.PaymentServiceGetSubscriptionUsageResponse"> & {
     /**
      * SubscriptionUsageItems is a list of usage for all subscriptions
      *
      * @generated from field: repeated api.v1.SubscriptionUsageItem subscription_usage_items = 1;
      */
     subscriptionUsageItems: SubscriptionUsageItem[];
-    constructor(data?: PartialMessage<PaymentServiceGetSubscriptionUsageResponse>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "api.v1.PaymentServiceGetSubscriptionUsageResponse";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): PaymentServiceGetSubscriptionUsageResponse;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): PaymentServiceGetSubscriptionUsageResponse;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): PaymentServiceGetSubscriptionUsageResponse;
-    static equals(a: PaymentServiceGetSubscriptionUsageResponse | PlainMessage<PaymentServiceGetSubscriptionUsageResponse> | undefined, b: PaymentServiceGetSubscriptionUsageResponse | PlainMessage<PaymentServiceGetSubscriptionUsageResponse> | undefined): boolean;
-}
+};
+/**
+ * Describes the message api.v1.PaymentServiceGetSubscriptionUsageResponse.
+ * Use `create(PaymentServiceGetSubscriptionUsageResponseSchema)` to create a new message.
+ */
+export declare const PaymentServiceGetSubscriptionUsageResponseSchema: GenMessage<PaymentServiceGetSubscriptionUsageResponse>;
 /**
  * PaymentServiceHasPaymentMethodRequest is the request payload for a get invoices request
  *
  * @generated from message api.v1.PaymentServiceGetInvoicesRequest
  */
-export declare class PaymentServiceGetInvoicesRequest extends Message<PaymentServiceGetInvoicesRequest> {
+export type PaymentServiceGetInvoicesRequest = Message<"api.v1.PaymentServiceGetInvoicesRequest"> & {
     /**
      * Login of the customer
      *
@@ -767,99 +652,83 @@ export declare class PaymentServiceGetInvoicesRequest extends Message<PaymentSer
      * @generated from field: string customer_id = 2;
      */
     customerId: string;
-    constructor(data?: PartialMessage<PaymentServiceGetInvoicesRequest>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "api.v1.PaymentServiceGetInvoicesRequest";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): PaymentServiceGetInvoicesRequest;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): PaymentServiceGetInvoicesRequest;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): PaymentServiceGetInvoicesRequest;
-    static equals(a: PaymentServiceGetInvoicesRequest | PlainMessage<PaymentServiceGetInvoicesRequest> | undefined, b: PaymentServiceGetInvoicesRequest | PlainMessage<PaymentServiceGetInvoicesRequest> | undefined): boolean;
-}
+};
+/**
+ * Describes the message api.v1.PaymentServiceGetInvoicesRequest.
+ * Use `create(PaymentServiceGetInvoicesRequestSchema)` to create a new message.
+ */
+export declare const PaymentServiceGetInvoicesRequestSchema: GenMessage<PaymentServiceGetInvoicesRequest>;
 /**
  * PaymentServiceGetInvoicesResponse is the response payload for a get invoices request
  *
  * @generated from message api.v1.PaymentServiceGetInvoicesResponse
  */
-export declare class PaymentServiceGetInvoicesResponse extends Message<PaymentServiceGetInvoicesResponse> {
+export type PaymentServiceGetInvoicesResponse = Message<"api.v1.PaymentServiceGetInvoicesResponse"> & {
     /**
      * Invoices is the list of invoices
      *
      * @generated from field: repeated api.v1.Invoice invoices = 1;
      */
     invoices: Invoice[];
-    constructor(data?: PartialMessage<PaymentServiceGetInvoicesResponse>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "api.v1.PaymentServiceGetInvoicesResponse";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): PaymentServiceGetInvoicesResponse;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): PaymentServiceGetInvoicesResponse;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): PaymentServiceGetInvoicesResponse;
-    static equals(a: PaymentServiceGetInvoicesResponse | PlainMessage<PaymentServiceGetInvoicesResponse> | undefined, b: PaymentServiceGetInvoicesResponse | PlainMessage<PaymentServiceGetInvoicesResponse> | undefined): boolean;
-}
+};
+/**
+ * Describes the message api.v1.PaymentServiceGetInvoicesResponse.
+ * Use `create(PaymentServiceGetInvoicesResponseSchema)` to create a new message.
+ */
+export declare const PaymentServiceGetInvoicesResponseSchema: GenMessage<PaymentServiceGetInvoicesResponse>;
 /**
  * PaymentServiceGetDefaultPricesRequest is the request payload for a get default prices request
  *
  * @generated from message api.v1.PaymentServiceGetDefaultPricesRequest
  */
-export declare class PaymentServiceGetDefaultPricesRequest extends Message<PaymentServiceGetDefaultPricesRequest> {
-    constructor(data?: PartialMessage<PaymentServiceGetDefaultPricesRequest>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "api.v1.PaymentServiceGetDefaultPricesRequest";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): PaymentServiceGetDefaultPricesRequest;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): PaymentServiceGetDefaultPricesRequest;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): PaymentServiceGetDefaultPricesRequest;
-    static equals(a: PaymentServiceGetDefaultPricesRequest | PlainMessage<PaymentServiceGetDefaultPricesRequest> | undefined, b: PaymentServiceGetDefaultPricesRequest | PlainMessage<PaymentServiceGetDefaultPricesRequest> | undefined): boolean;
-}
+export type PaymentServiceGetDefaultPricesRequest = Message<"api.v1.PaymentServiceGetDefaultPricesRequest"> & {};
+/**
+ * Describes the message api.v1.PaymentServiceGetDefaultPricesRequest.
+ * Use `create(PaymentServiceGetDefaultPricesRequestSchema)` to create a new message.
+ */
+export declare const PaymentServiceGetDefaultPricesRequestSchema: GenMessage<PaymentServiceGetDefaultPricesRequest>;
 /**
  * PaymentServiceGetDefaultPricesResponse is the response payload for a get default prices request
  *
  * @generated from message api.v1.PaymentServiceGetDefaultPricesResponse
  */
-export declare class PaymentServiceGetDefaultPricesResponse extends Message<PaymentServiceGetDefaultPricesResponse> {
+export type PaymentServiceGetDefaultPricesResponse = Message<"api.v1.PaymentServiceGetDefaultPricesResponse"> & {
     /**
      * Prices is the list of default prices
      *
      * @generated from field: repeated api.v1.Price prices = 1;
      */
     prices: Price[];
-    constructor(data?: PartialMessage<PaymentServiceGetDefaultPricesResponse>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "api.v1.PaymentServiceGetDefaultPricesResponse";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): PaymentServiceGetDefaultPricesResponse;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): PaymentServiceGetDefaultPricesResponse;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): PaymentServiceGetDefaultPricesResponse;
-    static equals(a: PaymentServiceGetDefaultPricesResponse | PlainMessage<PaymentServiceGetDefaultPricesResponse> | undefined, b: PaymentServiceGetDefaultPricesResponse | PlainMessage<PaymentServiceGetDefaultPricesResponse> | undefined): boolean;
-}
+};
+/**
+ * Describes the message api.v1.PaymentServiceGetDefaultPricesResponse.
+ * Use `create(PaymentServiceGetDefaultPricesResponseSchema)` to create a new message.
+ */
+export declare const PaymentServiceGetDefaultPricesResponseSchema: GenMessage<PaymentServiceGetDefaultPricesResponse>;
 /**
  * PaymentServiceCheckAdmittedRequest is the request payload for a check admitted request
  *
  * @generated from message api.v1.PaymentServiceCheckAdmittedRequest
  */
-export declare class PaymentServiceCheckAdmittedRequest extends Message<PaymentServiceCheckAdmittedRequest> {
+export type PaymentServiceCheckAdmittedRequest = Message<"api.v1.PaymentServiceCheckAdmittedRequest"> & {
     /**
      * Login of the customer
      *
      * @generated from field: string login = 1;
      */
     login: string;
-    constructor(data?: PartialMessage<PaymentServiceCheckAdmittedRequest>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "api.v1.PaymentServiceCheckAdmittedRequest";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): PaymentServiceCheckAdmittedRequest;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): PaymentServiceCheckAdmittedRequest;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): PaymentServiceCheckAdmittedRequest;
-    static equals(a: PaymentServiceCheckAdmittedRequest | PlainMessage<PaymentServiceCheckAdmittedRequest> | undefined, b: PaymentServiceCheckAdmittedRequest | PlainMessage<PaymentServiceCheckAdmittedRequest> | undefined): boolean;
-}
+};
+/**
+ * Describes the message api.v1.PaymentServiceCheckAdmittedRequest.
+ * Use `create(PaymentServiceCheckAdmittedRequestSchema)` to create a new message.
+ */
+export declare const PaymentServiceCheckAdmittedRequestSchema: GenMessage<PaymentServiceCheckAdmittedRequest>;
 /**
  * PaymentServiceCheckAdmittedResponse is the response payload for a check admitted request
  *
  * @generated from message api.v1.PaymentServiceCheckAdmittedResponse
  */
-export declare class PaymentServiceCheckAdmittedResponse extends Message<PaymentServiceCheckAdmittedResponse> {
+export type PaymentServiceCheckAdmittedResponse = Message<"api.v1.PaymentServiceCheckAdmittedResponse"> & {
     /**
      * Admitted indicates if the customer is already admitted to use the service
      *
@@ -872,21 +741,18 @@ export declare class PaymentServiceCheckAdmittedResponse extends Message<Payment
      * @generated from field: bool requested = 2;
      */
     requested: boolean;
-    constructor(data?: PartialMessage<PaymentServiceCheckAdmittedResponse>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "api.v1.PaymentServiceCheckAdmittedResponse";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): PaymentServiceCheckAdmittedResponse;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): PaymentServiceCheckAdmittedResponse;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): PaymentServiceCheckAdmittedResponse;
-    static equals(a: PaymentServiceCheckAdmittedResponse | PlainMessage<PaymentServiceCheckAdmittedResponse> | undefined, b: PaymentServiceCheckAdmittedResponse | PlainMessage<PaymentServiceCheckAdmittedResponse> | undefined): boolean;
-}
+};
+/**
+ * Describes the message api.v1.PaymentServiceCheckAdmittedResponse.
+ * Use `create(PaymentServiceCheckAdmittedResponseSchema)` to create a new message.
+ */
+export declare const PaymentServiceCheckAdmittedResponseSchema: GenMessage<PaymentServiceCheckAdmittedResponse>;
 /**
  * PaymentServiceRequestAdmissionRequest is the request payload for a admission request
  *
  * @generated from message api.v1.PaymentServiceRequestAdmissionRequest
  */
-export declare class PaymentServiceRequestAdmissionRequest extends Message<PaymentServiceRequestAdmissionRequest> {
+export type PaymentServiceRequestAdmissionRequest = Message<"api.v1.PaymentServiceRequestAdmissionRequest"> & {
     /**
      * Login of the customer
      *
@@ -911,78 +777,65 @@ export declare class PaymentServiceRequestAdmissionRequest extends Message<Payme
      * @generated from field: bool email_consent = 4;
      */
     emailConsent: boolean;
-    constructor(data?: PartialMessage<PaymentServiceRequestAdmissionRequest>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "api.v1.PaymentServiceRequestAdmissionRequest";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): PaymentServiceRequestAdmissionRequest;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): PaymentServiceRequestAdmissionRequest;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): PaymentServiceRequestAdmissionRequest;
-    static equals(a: PaymentServiceRequestAdmissionRequest | PlainMessage<PaymentServiceRequestAdmissionRequest> | undefined, b: PaymentServiceRequestAdmissionRequest | PlainMessage<PaymentServiceRequestAdmissionRequest> | undefined): boolean;
-}
+};
+/**
+ * Describes the message api.v1.PaymentServiceRequestAdmissionRequest.
+ * Use `create(PaymentServiceRequestAdmissionRequestSchema)` to create a new message.
+ */
+export declare const PaymentServiceRequestAdmissionRequestSchema: GenMessage<PaymentServiceRequestAdmissionRequest>;
 /**
  * PaymentServiceRequestAdmissionResponse is the response payload for a admission request
  *
  * @generated from message api.v1.PaymentServiceRequestAdmissionResponse
  */
-export declare class PaymentServiceRequestAdmissionResponse extends Message<PaymentServiceRequestAdmissionResponse> {
-    constructor(data?: PartialMessage<PaymentServiceRequestAdmissionResponse>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "api.v1.PaymentServiceRequestAdmissionResponse";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): PaymentServiceRequestAdmissionResponse;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): PaymentServiceRequestAdmissionResponse;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): PaymentServiceRequestAdmissionResponse;
-    static equals(a: PaymentServiceRequestAdmissionResponse | PlainMessage<PaymentServiceRequestAdmissionResponse> | undefined, b: PaymentServiceRequestAdmissionResponse | PlainMessage<PaymentServiceRequestAdmissionResponse> | undefined): boolean;
-}
+export type PaymentServiceRequestAdmissionResponse = Message<"api.v1.PaymentServiceRequestAdmissionResponse"> & {};
+/**
+ * Describes the message api.v1.PaymentServiceRequestAdmissionResponse.
+ * Use `create(PaymentServiceRequestAdmissionResponseSchema)` to create a new message.
+ */
+export declare const PaymentServiceRequestAdmissionResponseSchema: GenMessage<PaymentServiceRequestAdmissionResponse>;
 /**
  * PaymentServiceHasChargeableResourcesRequest is the request payload for a has chargeable request
  *
  * @generated from message api.v1.PaymentServiceHasChargeableResourcesRequest
  */
-export declare class PaymentServiceHasChargeableResourcesRequest extends Message<PaymentServiceHasChargeableResourcesRequest> {
+export type PaymentServiceHasChargeableResourcesRequest = Message<"api.v1.PaymentServiceHasChargeableResourcesRequest"> & {
     /**
      * Login of the customer
      *
      * @generated from field: string login = 1;
      */
     login: string;
-    constructor(data?: PartialMessage<PaymentServiceHasChargeableResourcesRequest>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "api.v1.PaymentServiceHasChargeableResourcesRequest";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): PaymentServiceHasChargeableResourcesRequest;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): PaymentServiceHasChargeableResourcesRequest;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): PaymentServiceHasChargeableResourcesRequest;
-    static equals(a: PaymentServiceHasChargeableResourcesRequest | PlainMessage<PaymentServiceHasChargeableResourcesRequest> | undefined, b: PaymentServiceHasChargeableResourcesRequest | PlainMessage<PaymentServiceHasChargeableResourcesRequest> | undefined): boolean;
-}
+};
+/**
+ * Describes the message api.v1.PaymentServiceHasChargeableResourcesRequest.
+ * Use `create(PaymentServiceHasChargeableResourcesRequestSchema)` to create a new message.
+ */
+export declare const PaymentServiceHasChargeableResourcesRequestSchema: GenMessage<PaymentServiceHasChargeableResourcesRequest>;
 /**
  * PaymentServiceHasChargeableResourcesResponse is the response payload for a has chargeable request
  *
  * @generated from message api.v1.PaymentServiceHasChargeableResourcesResponse
  */
-export declare class PaymentServiceHasChargeableResourcesResponse extends Message<PaymentServiceHasChargeableResourcesResponse> {
+export type PaymentServiceHasChargeableResourcesResponse = Message<"api.v1.PaymentServiceHasChargeableResourcesResponse"> & {
     /**
      * HasResources indicates if the customer has actually chargable resources
      *
      * @generated from field: bool has_resources = 1;
      */
     hasResources: boolean;
-    constructor(data?: PartialMessage<PaymentServiceHasChargeableResourcesResponse>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "api.v1.PaymentServiceHasChargeableResourcesResponse";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): PaymentServiceHasChargeableResourcesResponse;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): PaymentServiceHasChargeableResourcesResponse;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): PaymentServiceHasChargeableResourcesResponse;
-    static equals(a: PaymentServiceHasChargeableResourcesResponse | PlainMessage<PaymentServiceHasChargeableResourcesResponse> | undefined, b: PaymentServiceHasChargeableResourcesResponse | PlainMessage<PaymentServiceHasChargeableResourcesResponse> | undefined): boolean;
-}
+};
+/**
+ * Describes the message api.v1.PaymentServiceHasChargeableResourcesResponse.
+ * Use `create(PaymentServiceHasChargeableResourcesResponseSchema)` to create a new message.
+ */
+export declare const PaymentServiceHasChargeableResourcesResponseSchema: GenMessage<PaymentServiceHasChargeableResourcesResponse>;
 /**
  * PayentServiceSetOnboardedRequest changes the onboarded status of the given customer
  *
  * @generated from message api.v1.PaymentServiceSetOnboardedRequest
  */
-export declare class PaymentServiceSetOnboardedRequest extends Message<PaymentServiceSetOnboardedRequest> {
+export type PaymentServiceSetOnboardedRequest = Message<"api.v1.PaymentServiceSetOnboardedRequest"> & {
     /**
      * Login of the customer
      *
@@ -995,75 +848,270 @@ export declare class PaymentServiceSetOnboardedRequest extends Message<PaymentSe
      * @generated from field: bool onboarded = 2;
      */
     onboarded: boolean;
-    constructor(data?: PartialMessage<PaymentServiceSetOnboardedRequest>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "api.v1.PaymentServiceSetOnboardedRequest";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): PaymentServiceSetOnboardedRequest;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): PaymentServiceSetOnboardedRequest;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): PaymentServiceSetOnboardedRequest;
-    static equals(a: PaymentServiceSetOnboardedRequest | PlainMessage<PaymentServiceSetOnboardedRequest> | undefined, b: PaymentServiceSetOnboardedRequest | PlainMessage<PaymentServiceSetOnboardedRequest> | undefined): boolean;
-}
+};
+/**
+ * Describes the message api.v1.PaymentServiceSetOnboardedRequest.
+ * Use `create(PaymentServiceSetOnboardedRequestSchema)` to create a new message.
+ */
+export declare const PaymentServiceSetOnboardedRequestSchema: GenMessage<PaymentServiceSetOnboardedRequest>;
 /**
  * PaymentServiceSetOnboardedResponse respond to the changed status of the given customer
  *
  * @generated from message api.v1.PaymentServiceSetOnboardedResponse
  */
-export declare class PaymentServiceSetOnboardedResponse extends Message<PaymentServiceSetOnboardedResponse> {
+export type PaymentServiceSetOnboardedResponse = Message<"api.v1.PaymentServiceSetOnboardedResponse"> & {
     /**
      * Onboarded indicates if the customer has seen the onboarded message
      *
      * @generated from field: bool onboarded = 1;
      */
     onboarded: boolean;
-    constructor(data?: PartialMessage<PaymentServiceSetOnboardedResponse>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "api.v1.PaymentServiceSetOnboardedResponse";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): PaymentServiceSetOnboardedResponse;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): PaymentServiceSetOnboardedResponse;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): PaymentServiceSetOnboardedResponse;
-    static equals(a: PaymentServiceSetOnboardedResponse | PlainMessage<PaymentServiceSetOnboardedResponse> | undefined, b: PaymentServiceSetOnboardedResponse | PlainMessage<PaymentServiceSetOnboardedResponse> | undefined): boolean;
-}
+};
+/**
+ * Describes the message api.v1.PaymentServiceSetOnboardedResponse.
+ * Use `create(PaymentServiceSetOnboardedResponseSchema)` to create a new message.
+ */
+export declare const PaymentServiceSetOnboardedResponseSchema: GenMessage<PaymentServiceSetOnboardedResponse>;
 /**
  * PaymentServiceGetOnboardedRequest check the onboarded status
  *
  * @generated from message api.v1.PaymentServiceGetOnboardedRequest
  */
-export declare class PaymentServiceGetOnboardedRequest extends Message<PaymentServiceGetOnboardedRequest> {
+export type PaymentServiceGetOnboardedRequest = Message<"api.v1.PaymentServiceGetOnboardedRequest"> & {
     /**
      * Login of the customer
      *
      * @generated from field: string login = 1;
      */
     login: string;
-    constructor(data?: PartialMessage<PaymentServiceGetOnboardedRequest>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "api.v1.PaymentServiceGetOnboardedRequest";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): PaymentServiceGetOnboardedRequest;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): PaymentServiceGetOnboardedRequest;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): PaymentServiceGetOnboardedRequest;
-    static equals(a: PaymentServiceGetOnboardedRequest | PlainMessage<PaymentServiceGetOnboardedRequest> | undefined, b: PaymentServiceGetOnboardedRequest | PlainMessage<PaymentServiceGetOnboardedRequest> | undefined): boolean;
-}
+};
+/**
+ * Describes the message api.v1.PaymentServiceGetOnboardedRequest.
+ * Use `create(PaymentServiceGetOnboardedRequestSchema)` to create a new message.
+ */
+export declare const PaymentServiceGetOnboardedRequestSchema: GenMessage<PaymentServiceGetOnboardedRequest>;
 /**
  * PaymentServiceGetOnboardedRequest returns the onboarded status
  *
  * @generated from message api.v1.PaymentServiceGetOnboardedResponse
  */
-export declare class PaymentServiceGetOnboardedResponse extends Message<PaymentServiceGetOnboardedResponse> {
+export type PaymentServiceGetOnboardedResponse = Message<"api.v1.PaymentServiceGetOnboardedResponse"> & {
     /**
      * Onboarded indicates if the customer has seen the onboarded message
      *
      * @generated from field: bool onboarded = 1;
      */
     onboarded: boolean;
-    constructor(data?: PartialMessage<PaymentServiceGetOnboardedResponse>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "api.v1.PaymentServiceGetOnboardedResponse";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): PaymentServiceGetOnboardedResponse;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): PaymentServiceGetOnboardedResponse;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): PaymentServiceGetOnboardedResponse;
-    static equals(a: PaymentServiceGetOnboardedResponse | PlainMessage<PaymentServiceGetOnboardedResponse> | undefined, b: PaymentServiceGetOnboardedResponse | PlainMessage<PaymentServiceGetOnboardedResponse> | undefined): boolean;
+};
+/**
+ * Describes the message api.v1.PaymentServiceGetOnboardedResponse.
+ * Use `create(PaymentServiceGetOnboardedResponseSchema)` to create a new message.
+ */
+export declare const PaymentServiceGetOnboardedResponseSchema: GenMessage<PaymentServiceGetOnboardedResponse>;
+/**
+ * ProductType defines for which type of product a price applies
+ *
+ * @generated from enum api.v1.ProductType
+ */
+export declare enum ProductType {
+    /**
+     * PRODUCT_TYPE_UNSPECIFIED is unspecified
+     *
+     * @generated from enum value: PRODUCT_TYPE_UNSPECIFIED = 0;
+     */
+    UNSPECIFIED = 0,
+    /**
+     * PRODUCT_TYPE_STORAGE for storage
+     *
+     * @generated from enum value: PRODUCT_TYPE_STORAGE = 1;
+     */
+    STORAGE = 1,
+    /**
+     * PRODUCT_TYPE_COMPUTE for compute, e.g. machines
+     *
+     * @generated from enum value: PRODUCT_TYPE_COMPUTE = 2;
+     */
+    COMPUTE = 2,
+    /**
+     * PRODUCT_TYPE_NETWORK for network, e.g. ips and traffic
+     *
+     * @generated from enum value: PRODUCT_TYPE_NETWORK = 3;
+     */
+    NETWORK = 3,
+    /**
+     * PRODUCT_TYPE_KUBERNETES for kubernetes, e.g. the control plane
+     *
+     * @generated from enum value: PRODUCT_TYPE_KUBERNETES = 5;
+     */
+    KUBERNETES = 5
 }
+/**
+ * Describes the enum api.v1.ProductType.
+ */
+export declare const ProductTypeSchema: GenEnum<ProductType>;
+/**
+ * UsageType indicates how a price is measured
+ *
+ * @generated from enum api.v1.UsageType
+ */
+export declare enum UsageType {
+    /**
+     * USAGE_TYPE_UNSPECIFIED is unspecified
+     *
+     * @generated from enum value: USAGE_TYPE_UNSPECIFIED = 0;
+     */
+    UNSPECIFIED = 0,
+    /**
+     * USAGE_TYPE_METERED price is sent per usage
+     *
+     * @generated from enum value: USAGE_TYPE_METERED = 1;
+     */
+    METERED = 1,
+    /**
+     * USAGE_TYPE_LICENSED price is set in invoice (s3 for example)
+     *
+     * @generated from enum value: USAGE_TYPE_LICENSED = 2;
+     */
+    LICENSED = 2
+}
+/**
+ * Describes the enum api.v1.UsageType.
+ */
+export declare const UsageTypeSchema: GenEnum<UsageType>;
+/**
+ * PaymentService serves payment related functions
+ *
+ * @generated from service api.v1.PaymentService
+ */
+export declare const PaymentService: GenService<{
+    /**
+     * CreateOrUpdateCustomer the payment data on the payment processor
+     *
+     * @generated from rpc api.v1.PaymentService.CreateOrUpdateCustomer
+     */
+    createOrUpdateCustomer: {
+        methodKind: "unary";
+        input: typeof PaymentServiceCreateOrUpdateCustomerRequestSchema;
+        output: typeof PaymentServiceCreateOrUpdateCustomerResponseSchema;
+    };
+    /**
+     * GetCustomer from the payment processor
+     *
+     * @generated from rpc api.v1.PaymentService.GetCustomer
+     */
+    getCustomer: {
+        methodKind: "unary";
+        input: typeof PaymentServiceGetCustomerRequestSchema;
+        output: typeof PaymentServiceGetCustomerResponseSchema;
+    };
+    /**
+     * CheckIfCustomerExists at the payment processor
+     *
+     * @generated from rpc api.v1.PaymentService.CheckIfCustomerExists
+     */
+    checkIfCustomerExists: {
+        methodKind: "unary";
+        input: typeof PaymentServiceCheckIfCustomerExistsRequestSchema;
+        output: typeof PaymentServiceCheckIfCustomerExistsResponseSchema;
+    };
+    /**
+     * HasPaymentMethod check if the customer has a payment method provided
+     *
+     * @generated from rpc api.v1.PaymentService.HasPaymentMethod
+     */
+    hasPaymentMethod: {
+        methodKind: "unary";
+        input: typeof PaymentServiceHasPaymentMethodRequestSchema;
+        output: typeof PaymentServiceHasPaymentMethodResponseSchema;
+    };
+    /**
+     * DeletePaymentMethod of the customer
+     *
+     * @generated from rpc api.v1.PaymentService.DeletePaymentMethod
+     */
+    deletePaymentMethod: {
+        methodKind: "unary";
+        input: typeof PaymentServiceDeletePaymentMethodRequestSchema;
+        output: typeof PaymentServiceDeletePaymentMethodResponseSchema;
+    };
+    /**
+     * GetSubscriptionUsage of the customer
+     *
+     * @generated from rpc api.v1.PaymentService.GetSubscriptionUsage
+     */
+    getSubscriptionUsage: {
+        methodKind: "unary";
+        input: typeof PaymentServiceGetSubscriptionUsageRequestSchema;
+        output: typeof PaymentServiceGetSubscriptionUsageResponseSchema;
+    };
+    /**
+     * GetInvoices of the customer
+     *
+     * @generated from rpc api.v1.PaymentService.GetInvoices
+     */
+    getInvoices: {
+        methodKind: "unary";
+        input: typeof PaymentServiceGetInvoicesRequestSchema;
+        output: typeof PaymentServiceGetInvoicesResponseSchema;
+    };
+    /**
+     * GetDefaultPrices of the products on the platform
+     *
+     * @generated from rpc api.v1.PaymentService.GetDefaultPrices
+     */
+    getDefaultPrices: {
+        methodKind: "unary";
+        input: typeof PaymentServiceGetDefaultPricesRequestSchema;
+        output: typeof PaymentServiceGetDefaultPricesResponseSchema;
+    };
+    /**
+     * CheckAdmitted if the customer is allowed to use the service on the platform
+     *
+     * @generated from rpc api.v1.PaymentService.CheckAdmitted
+     */
+    checkAdmitted: {
+        methodKind: "unary";
+        input: typeof PaymentServiceCheckAdmittedRequestSchema;
+        output: typeof PaymentServiceCheckAdmittedResponseSchema;
+    };
+    /**
+     * RequestAdmission for a customer to get allowed to used the service
+     *
+     * @generated from rpc api.v1.PaymentService.RequestAdmission
+     */
+    requestAdmission: {
+        methodKind: "unary";
+        input: typeof PaymentServiceRequestAdmissionRequestSchema;
+        output: typeof PaymentServiceRequestAdmissionResponseSchema;
+    };
+    /**
+     * HasChargeableResources checks if the customer has resources actually consumed which are chargeable
+     *
+     * @generated from rpc api.v1.PaymentService.HasChargeableResources
+     */
+    hasChargeableResources: {
+        methodKind: "unary";
+        input: typeof PaymentServiceHasChargeableResourcesRequestSchema;
+        output: typeof PaymentServiceHasChargeableResourcesResponseSchema;
+    };
+    /**
+     * SetOnboarded set the onboarded status
+     *
+     * @generated from rpc api.v1.PaymentService.SetOnboarded
+     */
+    setOnboarded: {
+        methodKind: "unary";
+        input: typeof PaymentServiceSetOnboardedRequestSchema;
+        output: typeof PaymentServiceSetOnboardedResponseSchema;
+    };
+    /**
+     * GetOnboarded get the onboarded status
+     *
+     * @generated from rpc api.v1.PaymentService.GetOnboarded
+     */
+    getOnboarded: {
+        methodKind: "unary";
+        input: typeof PaymentServiceGetOnboardedRequestSchema;
+        output: typeof PaymentServiceGetOnboardedResponseSchema;
+    };
+}>;
