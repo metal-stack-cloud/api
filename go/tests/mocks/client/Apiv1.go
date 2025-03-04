@@ -33,7 +33,7 @@ func (_m *Apiv1) Asset() apiv1connect.AssetServiceClient {
 	return r0
 }
 
-// Audit provides a mock function with given fields:
+// Audit provides a mock function with no fields
 func (_m *Apiv1) Audit() apiv1connect.AuditServiceClient {
 	ret := _m.Called()
 
@@ -53,7 +53,7 @@ func (_m *Apiv1) Audit() apiv1connect.AuditServiceClient {
 	return r0
 }
 
-// Cluster provides a mock function with given fields:
+// Cluster provides a mock function with no fields
 func (_m *Apiv1) Cluster() apiv1connect.ClusterServiceClient {
 	ret := _m.Called()
 

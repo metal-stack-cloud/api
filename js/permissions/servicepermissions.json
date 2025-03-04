@@ -280,6 +280,8 @@
       "/admin.v1.TokenService/Revoke": true
     },
     "tenant": {
+      "/api.v1.AuditService/Get": true,
+      "/api.v1.AuditService/List": true,
       "/api.v1.PaymentService/CheckAdmitted": true,
       "/api.v1.PaymentService/CheckIfCustomerExists": true,
       "/api.v1.PaymentService/CreateOrUpdateCustomer": true,

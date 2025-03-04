@@ -315,6 +315,8 @@ func GetServicePermissions() *ServicePermissions {
 				"/admin.v1.TokenService/Revoke":                 true,
 			},
 			Tenant: map[string]bool{
+				"/api.v1.AuditService/Get":                      true,
+				"/api.v1.AuditService/List":                     true,
 				"/api.v1.PaymentService/CheckAdmitted":          true,
 				"/api.v1.PaymentService/CheckIfCustomerExists":  true,
 				"/api.v1.PaymentService/CreateOrUpdateCustomer": true,

@@ -39,13 +39,6 @@ const (
 	AuditServiceListProcedure = "/api.v1.AuditService/List"
 )
 
-// These variables are the protoreflect.Descriptor objects for the RPCs defined in this package.
-var (
-	auditServiceServiceDescriptor    = v1.File_api_v1_audit_proto.Services().ByName("AuditService")
-	auditServiceGetMethodDescriptor  = auditServiceServiceDescriptor.Methods().ByName("Get")
-	auditServiceListMethodDescriptor = auditServiceServiceDescriptor.Methods().ByName("List")
-)
-
 // AuditServiceClient is a client for the api.v1.AuditService service.
 type AuditServiceClient interface {
 	// Get a audit
@@ -63,17 +56,18 @@ type AuditServiceClient interface {
 // http://api.acme.com or https://acme.com/grpc).
 func NewAuditServiceClient(httpClient connect.HTTPClient, baseURL string, opts ...connect.ClientOption) AuditServiceClient {
 	baseURL = strings.TrimRight(baseURL, "/")
+	auditServiceMethods := v1.File_api_v1_audit_proto.Services().ByName("AuditService").Methods()
 	return &auditServiceClient{
 		get: connect.NewClient[v1.AuditServiceGetRequest, v1.AuditServiceGetResponse](
 			httpClient,
 			baseURL+AuditServiceGetProcedure,
-			connect.WithSchema(auditServiceGetMethodDescriptor),
+			connect.WithSchema(auditServiceMethods.ByName("Get")),
 			connect.WithClientOptions(opts...),
 		),
 		list: connect.NewClient[v1.AuditServiceListRequest, v1.AuditServiceListResponse](
 			httpClient,
 			baseURL+AuditServiceListProcedure,
-			connect.WithSchema(auditServiceListMethodDescriptor),
+			connect.WithSchema(auditServiceMethods.ByName("List")),
 			connect.WithClientOptions(opts...),
 		),
 	}
@@ -109,16 +103,17 @@ type AuditServiceHandler interface {
 // By default, handlers support the Connect, gRPC, and gRPC-Web protocols with the binary Protobuf
 // and JSON codecs. They also support gzip compression.
 func NewAuditServiceHandler(svc AuditServiceHandler, opts ...connect.HandlerOption) (string, http.Handler) {
+	auditServiceMethods := v1.File_api_v1_audit_proto.Services().ByName("AuditService").Methods()
 	auditServiceGetHandler := connect.NewUnaryHandler(
 		AuditServiceGetProcedure,
 		svc.Get,
-		connect.WithSchema(auditServiceGetMethodDescriptor),
+		connect.WithSchema(auditServiceMethods.ByName("Get")),
 		connect.WithHandlerOptions(opts...),
 	)
 	auditServiceListHandler := connect.NewUnaryHandler(
 		AuditServiceListProcedure,
 		svc.List,
-		connect.WithSchema(auditServiceListMethodDescriptor),
+		connect.WithSchema(auditServiceMethods.ByName("List")),
 		connect.WithHandlerOptions(opts...),
 	)
 	return "/api.v1.AuditService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
