@@ -75,6 +75,13 @@ export class AuditTrace extends Message<AuditTrace> {
    */
   resultCode = 0;
 
+  /**
+   * Phase is a string representing the request phase
+   *
+   * @generated from field: string phase = 10;
+   */
+  phase = "";
+
   constructor(data?: PartialMessage<AuditTrace>) {
     super();
     proto3.util.initPartial(data, this);
@@ -92,6 +99,7 @@ export class AuditTrace extends Message<AuditTrace> {
     { no: 7, name: "body", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 8, name: "source_ip", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 9, name: "result_code", kind: "scalar", T: 5 /* ScalarType.INT32 */ },
+    { no: 10, name: "phase", kind: "scalar", T: 9 /* ScalarType.STRING */ },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): AuditTrace {

@@ -60,6 +60,12 @@ export declare class AuditTrace extends Message<AuditTrace> {
      * @generated from field: int32 result_code = 9;
      */
     resultCode: number;
+    /**
+     * Phase is a string representing the request phase
+     *
+     * @generated from field: string phase = 10;
+     */
+    phase: string;
     constructor(data?: PartialMessage<AuditTrace>);
     static readonly runtime: typeof proto3;
     static readonly typeName = "api.v1.AuditTrace";

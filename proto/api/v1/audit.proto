@@ -41,6 +41,8 @@ message AuditTrace {
   string source_ip = 8;
   // ResultCode is a string describing the result of the api call
   int32 result_code = 9;
+  //Phase is a string representing the request phase
+  string phase = 10;
 }
 
 // AuditServiceListRequest is the request payload to list audits

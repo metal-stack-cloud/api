@@ -59,6 +59,12 @@ export class AuditTrace extends Message {
          * @generated from field: int32 result_code = 9;
          */
         this.resultCode = 0;
+        /**
+         * Phase is a string representing the request phase
+         *
+         * @generated from field: string phase = 10;
+         */
+        this.phase = "";
         proto3.util.initPartial(data, this);
     }
     static fromBinary(bytes, options) {
@@ -86,6 +92,7 @@ AuditTrace.fields = proto3.util.newFieldList(() => [
     { no: 7, name: "body", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 8, name: "source_ip", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 9, name: "result_code", kind: "scalar", T: 5 /* ScalarType.INT32 */ },
+    { no: 10, name: "phase", kind: "scalar", T: 9 /* ScalarType.STRING */ },
 ]);
 /**
  * AuditServiceListRequest is the request payload to list audits
