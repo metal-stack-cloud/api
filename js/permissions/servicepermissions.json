@@ -230,7 +230,7 @@
     "/status.v1.MessageService/List": true,
     "/status.v1.StatusService/Get": true
   },
-  "visibility": {
+  "scope": {
     "public": {
       "/api.v1.AssetService/List": true,
       "/api.v1.HealthService/Get": true,
