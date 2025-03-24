@@ -1,11 +1,16 @@
-import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
-import { Duration, Message, proto3, Timestamp } from "@bufbuild/protobuf";
+import type { GenFile, GenMessage, GenService } from "@bufbuild/protobuf/codegenv1";
+import type { Duration, Timestamp } from "@bufbuild/protobuf/wkt";
+import type { Message } from "@bufbuild/protobuf";
+/**
+ * Describes the file api/v1/audit.proto.
+ */
+export declare const file_api_v1_audit: GenFile;
 /**
  * AuditTrace is an audit trace
  *
  * @generated from message api.v1.AuditTrace
  */
-export declare class AuditTrace extends Message<AuditTrace> {
+export type AuditTrace = Message<"api.v1.AuditTrace"> & {
     /**
      * Uuid of the audit trace
      *
@@ -66,21 +71,18 @@ export declare class AuditTrace extends Message<AuditTrace> {
      * @generated from field: string phase = 10;
      */
     phase: string;
-    constructor(data?: PartialMessage<AuditTrace>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "api.v1.AuditTrace";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): AuditTrace;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): AuditTrace;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): AuditTrace;
-    static equals(a: AuditTrace | PlainMessage<AuditTrace> | undefined, b: AuditTrace | PlainMessage<AuditTrace> | undefined): boolean;
-}
+};
+/**
+ * Describes the message api.v1.AuditTrace.
+ * Use `create(AuditTraceSchema)` to create a new message.
+ */
+export declare const AuditTraceSchema: GenMessage<AuditTrace>;
 /**
  * AuditServiceListRequest is the request payload to list audits
  *
  * @generated from message api.v1.AuditServiceListRequest
  */
-export declare class AuditServiceListRequest extends Message<AuditServiceListRequest> {
+export type AuditServiceListRequest = Message<"api.v1.AuditServiceListRequest"> & {
     /**
      * Login of the tenant
      *
@@ -172,42 +174,36 @@ export declare class AuditServiceListRequest extends Message<AuditServiceListReq
      * @generated from field: optional int32 limit = 13;
      */
     limit?: number;
-    constructor(data?: PartialMessage<AuditServiceListRequest>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "api.v1.AuditServiceListRequest";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): AuditServiceListRequest;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): AuditServiceListRequest;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): AuditServiceListRequest;
-    static equals(a: AuditServiceListRequest | PlainMessage<AuditServiceListRequest> | undefined, b: AuditServiceListRequest | PlainMessage<AuditServiceListRequest> | undefined): boolean;
-}
+};
+/**
+ * Describes the message api.v1.AuditServiceListRequest.
+ * Use `create(AuditServiceListRequestSchema)` to create a new message.
+ */
+export declare const AuditServiceListRequestSchema: GenMessage<AuditServiceListRequest>;
 /**
  * AuditServiceListResponse is the response payload of a audit list request
  *
  * @generated from message api.v1.AuditServiceListResponse
  */
-export declare class AuditServiceListResponse extends Message<AuditServiceListResponse> {
+export type AuditServiceListResponse = Message<"api.v1.AuditServiceListResponse"> & {
     /**
      * Audits is a list of audits without the secrets
      *
      * @generated from field: repeated api.v1.AuditTrace audits = 1;
      */
     audits: AuditTrace[];
-    constructor(data?: PartialMessage<AuditServiceListResponse>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "api.v1.AuditServiceListResponse";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): AuditServiceListResponse;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): AuditServiceListResponse;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): AuditServiceListResponse;
-    static equals(a: AuditServiceListResponse | PlainMessage<AuditServiceListResponse> | undefined, b: AuditServiceListResponse | PlainMessage<AuditServiceListResponse> | undefined): boolean;
-}
+};
+/**
+ * Describes the message api.v1.AuditServiceListResponse.
+ * Use `create(AuditServiceListResponseSchema)` to create a new message.
+ */
+export declare const AuditServiceListResponseSchema: GenMessage<AuditServiceListResponse>;
 /**
  * AuditServiceGetRequest is the request payload of a audit get request
  *
  * @generated from message api.v1.AuditServiceGetRequest
  */
-export declare class AuditServiceGetRequest extends Message<AuditServiceGetRequest> {
+export type AuditServiceGetRequest = Message<"api.v1.AuditServiceGetRequest"> & {
     /**
      * Login of the tenant
      *
@@ -220,33 +216,55 @@ export declare class AuditServiceGetRequest extends Message<AuditServiceGetReque
      * @generated from field: string uuid = 2;
      */
     uuid: string;
-    constructor(data?: PartialMessage<AuditServiceGetRequest>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "api.v1.AuditServiceGetRequest";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): AuditServiceGetRequest;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): AuditServiceGetRequest;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): AuditServiceGetRequest;
-    static equals(a: AuditServiceGetRequest | PlainMessage<AuditServiceGetRequest> | undefined, b: AuditServiceGetRequest | PlainMessage<AuditServiceGetRequest> | undefined): boolean;
-}
+};
+/**
+ * Describes the message api.v1.AuditServiceGetRequest.
+ * Use `create(AuditServiceGetRequestSchema)` to create a new message.
+ */
+export declare const AuditServiceGetRequestSchema: GenMessage<AuditServiceGetRequest>;
 /**
  * AuditServiceGetResponse is the response payload of a audit get request
  *
  * @generated from message api.v1.AuditServiceGetResponse
  */
-export declare class AuditServiceGetResponse extends Message<AuditServiceGetResponse> {
+export type AuditServiceGetResponse = Message<"api.v1.AuditServiceGetResponse"> & {
     /**
      * Audit is the audit
      *
      * @generated from field: api.v1.AuditTrace audit = 2;
      */
     audit?: AuditTrace;
-    constructor(data?: PartialMessage<AuditServiceGetResponse>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "api.v1.AuditServiceGetResponse";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): AuditServiceGetResponse;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): AuditServiceGetResponse;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): AuditServiceGetResponse;
-    static equals(a: AuditServiceGetResponse | PlainMessage<AuditServiceGetResponse> | undefined, b: AuditServiceGetResponse | PlainMessage<AuditServiceGetResponse> | undefined): boolean;
-}
+};
+/**
+ * Describes the message api.v1.AuditServiceGetResponse.
+ * Use `create(AuditServiceGetResponseSchema)` to create a new message.
+ */
+export declare const AuditServiceGetResponseSchema: GenMessage<AuditServiceGetResponse>;
+/**
+ * AuditService serves audit related functions
+ *
+ *
+ * @generated from service api.v1.AuditService
+ */
+export declare const AuditService: GenService<{
+    /**
+     * Get a audit
+     *
+     * @generated from rpc api.v1.AuditService.Get
+     */
+    get: {
+        methodKind: "unary";
+        input: typeof AuditServiceGetRequestSchema;
+        output: typeof AuditServiceGetResponseSchema;
+    };
+    /**
+     * List your audit traces
+     *
+     * @generated from rpc api.v1.AuditService.List
+     */
+    list: {
+        methodKind: "unary";
+        input: typeof AuditServiceListRequestSchema;
+        output: typeof AuditServiceListResponseSchema;
+    };
+}>;
