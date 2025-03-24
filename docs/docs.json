@@ -11378,8 +11378,20 @@
               "longType": "google.protobuf.Timestamp",
               "fullType": "google.protobuf.Timestamp",
               "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
+              "isoneof": true,
+              "oneofdecl": "from_option",
+              "defaultValue": ""
+            },
+            {
+              "name": "duration",
+              "description": "Duration describes a relative time window dependent on from",
+              "label": "",
+              "type": "Duration",
+              "longType": "google.protobuf.Duration",
+              "fullType": "google.protobuf.Duration",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "from_option",
               "defaultValue": ""
             },
             {
@@ -11511,7 +11523,7 @@
           "description": "AuditTrace is an audit trace",
           "hasExtensions": false,
           "hasFields": true,
-          "hasOneofs": false,
+          "hasOneofs": true,
           "extensions": [],
           "fields": [
             {
@@ -11565,13 +11577,13 @@
             {
               "name": "project",
               "description": "Project is the project targeted by the api call",
-              "label": "",
+              "label": "optional",
               "type": "string",
               "longType": "string",
               "fullType": "string",
               "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
+              "isoneof": true,
+              "oneofdecl": "_project",
               "defaultValue": ""
             },
             {
@@ -11589,13 +11601,13 @@
             {
               "name": "body",
               "description": "Request is the payload of the request",
-              "label": "",
+              "label": "optional",
               "type": "string",
               "longType": "string",
               "fullType": "string",
               "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
+              "isoneof": true,
+              "oneofdecl": "_body",
               "defaultValue": ""
             },
             {
@@ -11613,13 +11625,13 @@
             {
               "name": "result_code",
               "description": "ResultCode is a string describing the result of the api call",
-              "label": "",
+              "label": "optional",
               "type": "int32",
               "longType": "int32",
               "fullType": "int32",
               "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
+              "isoneof": true,
+              "oneofdecl": "_result_code",
               "defaultValue": ""
             },
             {

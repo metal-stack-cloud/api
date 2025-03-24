@@ -2,7 +2,7 @@
 // @generated from file api/v1/audit.proto (package api.v1, syntax proto3)
 /* eslint-disable */
 // @ts-nocheck
-import { Message, proto3, Timestamp } from "@bufbuild/protobuf";
+import { Duration, Message, proto3, Timestamp } from "@bufbuild/protobuf";
 /**
  * AuditTrace is an audit trace
  *
@@ -30,35 +30,17 @@ export class AuditTrace extends Message {
          */
         this.tenant = "";
         /**
-         * Project is the project targeted by the api call
-         *
-         * @generated from field: string project = 5;
-         */
-        this.project = "";
-        /**
          * Method is the api method that was called
          *
          * @generated from field: string method = 6;
          */
         this.method = "";
         /**
-         * Request is the payload of the request
-         *
-         * @generated from field: string body = 7;
-         */
-        this.body = "";
-        /**
          * Response is the payload of the response
          *
          * @generated from field: string source_ip = 8;
          */
         this.sourceIp = "";
-        /**
-         * ResultCode is a string describing the result of the api call
-         *
-         * @generated from field: int32 result_code = 9;
-         */
-        this.resultCode = 0;
         /**
          * Phase is a string representing the request phase
          *
@@ -87,11 +69,11 @@ AuditTrace.fields = proto3.util.newFieldList(() => [
     { no: 2, name: "timestamp", kind: "message", T: Timestamp },
     { no: 3, name: "user", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 4, name: "tenant", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 5, name: "project", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 5, name: "project", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
     { no: 6, name: "method", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 7, name: "body", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 7, name: "body", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
     { no: 8, name: "source_ip", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 9, name: "result_code", kind: "scalar", T: 5 /* ScalarType.INT32 */ },
+    { no: 9, name: "result_code", kind: "scalar", T: 5 /* ScalarType.INT32 */, opt: true },
     { no: 10, name: "phase", kind: "scalar", T: 9 /* ScalarType.STRING */ },
 ]);
 /**
@@ -109,9 +91,15 @@ export class AuditServiceListRequest extends Message {
          */
         this.login = "";
         /**
+         * FromOptions describes the type of window (exact by referencing to or relative by duration)
+         *
+         * @generated from oneof api.v1.AuditServiceListRequest.from_option
+         */
+        this.fromOption = { case: undefined };
+        /**
          * Tenant is the tenant targeted by the api call
          *
-         * @generated from field: string tenant = 6;
+         * @generated from field: string tenant = 7;
          */
         this.tenant = "";
         proto3.util.initPartial(data, this);
@@ -135,15 +123,16 @@ AuditServiceListRequest.fields = proto3.util.newFieldList(() => [
     { no: 1, name: "login", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 2, name: "uuid", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
     { no: 3, name: "from", kind: "message", T: Timestamp },
-    { no: 4, name: "to", kind: "message", T: Timestamp },
-    { no: 5, name: "user", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
-    { no: 6, name: "tenant", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 7, name: "project", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
-    { no: 8, name: "method", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
-    { no: 9, name: "source_ip", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
-    { no: 10, name: "result_code", kind: "scalar", T: 5 /* ScalarType.INT32 */, opt: true },
-    { no: 11, name: "body", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
-    { no: 12, name: "limit", kind: "scalar", T: 5 /* ScalarType.INT32 */, opt: true },
+    { no: 4, name: "to", kind: "message", T: Timestamp, oneof: "from_option" },
+    { no: 5, name: "duration", kind: "message", T: Duration, oneof: "from_option" },
+    { no: 6, name: "user", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
+    { no: 7, name: "tenant", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 8, name: "project", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
+    { no: 9, name: "method", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
+    { no: 10, name: "source_ip", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
+    { no: 11, name: "result_code", kind: "scalar", T: 5 /* ScalarType.INT32 */, opt: true },
+    { no: 12, name: "body", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
+    { no: 13, name: "limit", kind: "scalar", T: 5 /* ScalarType.INT32 */, opt: true },
 ]);
 /**
  * AuditServiceListResponse is the response payload of a audit list request

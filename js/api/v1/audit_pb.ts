@@ -4,7 +4,7 @@
 // @ts-nocheck
 
 import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
-import { Message, proto3, Timestamp } from "@bufbuild/protobuf";
+import { Duration, Message, proto3, Timestamp } from "@bufbuild/protobuf";
 
 /**
  * AuditTrace is an audit trace
@@ -43,9 +43,9 @@ export class AuditTrace extends Message<AuditTrace> {
   /**
    * Project is the project targeted by the api call
    *
-   * @generated from field: string project = 5;
+   * @generated from field: optional string project = 5;
    */
-  project = "";
+  project?: string;
 
   /**
    * Method is the api method that was called
@@ -57,9 +57,9 @@ export class AuditTrace extends Message<AuditTrace> {
   /**
    * Request is the payload of the request
    *
-   * @generated from field: string body = 7;
+   * @generated from field: optional string body = 7;
    */
-  body = "";
+  body?: string;
 
   /**
    * Response is the payload of the response
@@ -71,9 +71,9 @@ export class AuditTrace extends Message<AuditTrace> {
   /**
    * ResultCode is a string describing the result of the api call
    *
-   * @generated from field: int32 result_code = 9;
+   * @generated from field: optional int32 result_code = 9;
    */
-  resultCode = 0;
+  resultCode?: number;
 
   /**
    * Phase is a string representing the request phase
@@ -94,11 +94,11 @@ export class AuditTrace extends Message<AuditTrace> {
     { no: 2, name: "timestamp", kind: "message", T: Timestamp },
     { no: 3, name: "user", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 4, name: "tenant", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 5, name: "project", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 5, name: "project", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
     { no: 6, name: "method", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 7, name: "body", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 7, name: "body", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
     { no: 8, name: "source_ip", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 9, name: "result_code", kind: "scalar", T: 5 /* ScalarType.INT32 */ },
+    { no: 9, name: "result_code", kind: "scalar", T: 5 /* ScalarType.INT32 */, opt: true },
     { no: 10, name: "phase", kind: "scalar", T: 9 /* ScalarType.STRING */ },
   ]);
 
@@ -147,65 +147,81 @@ export class AuditServiceListRequest extends Message<AuditServiceListRequest> {
   from?: Timestamp;
 
   /**
-   * To describes the end of the time window in which to list audit traces
+   * FromOptions describes the type of window (exact by referencing to or relative by duration)
    *
-   * @generated from field: google.protobuf.Timestamp to = 4;
+   * @generated from oneof api.v1.AuditServiceListRequest.from_option
    */
-  to?: Timestamp;
+  fromOption: {
+    /**
+     * To describes the end of the time window in which to list audit traces
+     *
+     * @generated from field: google.protobuf.Timestamp to = 4;
+     */
+    value: Timestamp;
+    case: "to";
+  } | {
+    /**
+     * Duration describes a relative time window dependent on from
+     *
+     * @generated from field: google.protobuf.Duration duration = 5;
+     */
+    value: Duration;
+    case: "duration";
+  } | { case: undefined; value?: undefined } = { case: undefined };
 
   /**
    * User is the user who called the api method
    *
-   * @generated from field: optional string user = 5;
+   * @generated from field: optional string user = 6;
    */
   user?: string;
 
   /**
    * Tenant is the tenant targeted by the api call
    *
-   * @generated from field: string tenant = 6;
+   * @generated from field: string tenant = 7;
    */
   tenant = "";
 
   /**
    * Project is the project targeted by the api call
    *
-   * @generated from field: optional string project = 7;
+   * @generated from field: optional string project = 8;
    */
   project?: string;
 
   /**
    * Method is the api method that was called
    *
-   * @generated from field: optional string method = 8;
+   * @generated from field: optional string method = 9;
    */
   method?: string;
 
   /**
    * SourceIP contains the ip address of the caller
    *
-   * @generated from field: optional string source_ip = 9;
+   * @generated from field: optional string source_ip = 10;
    */
   sourceIp?: string;
 
   /**
    * ResultCode is a string describing the result of the api call
    *
-   * @generated from field: optional int32 result_code = 10;
+   * @generated from field: optional int32 result_code = 11;
    */
   resultCode?: number;
 
   /**
    * Body is a string providing text-search of the body field
    *
-   * @generated from field: optional string body = 11;
+   * @generated from field: optional string body = 12;
    */
   body?: string;
 
   /**
    * Limit is a number limiting the length of the response
    *
-   * @generated from field: optional int32 limit = 12;
+   * @generated from field: optional int32 limit = 13;
    */
   limit?: number;
 
@@ -220,15 +236,16 @@ export class AuditServiceListRequest extends Message<AuditServiceListRequest> {
     { no: 1, name: "login", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 2, name: "uuid", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
     { no: 3, name: "from", kind: "message", T: Timestamp },
-    { no: 4, name: "to", kind: "message", T: Timestamp },
-    { no: 5, name: "user", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
-    { no: 6, name: "tenant", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 7, name: "project", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
-    { no: 8, name: "method", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
-    { no: 9, name: "source_ip", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
-    { no: 10, name: "result_code", kind: "scalar", T: 5 /* ScalarType.INT32 */, opt: true },
-    { no: 11, name: "body", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
-    { no: 12, name: "limit", kind: "scalar", T: 5 /* ScalarType.INT32 */, opt: true },
+    { no: 4, name: "to", kind: "message", T: Timestamp, oneof: "from_option" },
+    { no: 5, name: "duration", kind: "message", T: Duration, oneof: "from_option" },
+    { no: 6, name: "user", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
+    { no: 7, name: "tenant", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 8, name: "project", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
+    { no: 9, name: "method", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
+    { no: 10, name: "source_ip", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
+    { no: 11, name: "result_code", kind: "scalar", T: 5 /* ScalarType.INT32 */, opt: true },
+    { no: 12, name: "body", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
+    { no: 13, name: "limit", kind: "scalar", T: 5 /* ScalarType.INT32 */, opt: true },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): AuditServiceListRequest {
