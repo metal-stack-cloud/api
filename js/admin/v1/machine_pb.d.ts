@@ -1,11 +1,16 @@
-import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
-import { Message, proto3, Timestamp } from "@bufbuild/protobuf";
+import type { GenFile, GenMessage } from "@bufbuild/protobuf/codegenv1";
+import type { Timestamp } from "@bufbuild/protobuf/wkt";
+import type { Message } from "@bufbuild/protobuf";
+/**
+ * Describes the file admin/v1/machine.proto.
+ */
+export declare const file_admin_v1_machine: GenFile;
 /**
  * Machine is a metal-api machine
  *
  * @generated from message admin.v1.Machine
  */
-export declare class Machine extends Message<Machine> {
+export type Machine = Message<"admin.v1.Machine"> & {
     /**
      * Uuid of this machine
      *
@@ -114,21 +119,18 @@ export declare class Machine extends Message<Machine> {
      * @generated from field: admin.v1.VPN vpn = 18;
      */
     vpn?: VPN;
-    constructor(data?: PartialMessage<Machine>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "admin.v1.Machine";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Machine;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): Machine;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): Machine;
-    static equals(a: Machine | PlainMessage<Machine> | undefined, b: Machine | PlainMessage<Machine> | undefined): boolean;
-}
+};
+/**
+ * Describes the message admin.v1.Machine.
+ * Use `create(MachineSchema)` to create a new message.
+ */
+export declare const MachineSchema: GenMessage<Machine>;
 /**
  * MachineNetwork describes the details of the network connectivity of a machine
  *
  * @generated from message admin.v1.MachineNetwork
  */
-export declare class MachineNetwork extends Message<MachineNetwork> {
+export type MachineNetwork = Message<"admin.v1.MachineNetwork"> & {
     /**
      * Network is the uuid of this network
      *
@@ -171,21 +173,18 @@ export declare class MachineNetwork extends Message<MachineNetwork> {
      * @generated from field: int64 asn = 7;
      */
     asn: bigint;
-    constructor(data?: PartialMessage<MachineNetwork>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "admin.v1.MachineNetwork";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): MachineNetwork;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): MachineNetwork;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): MachineNetwork;
-    static equals(a: MachineNetwork | PlainMessage<MachineNetwork> | undefined, b: MachineNetwork | PlainMessage<MachineNetwork> | undefined): boolean;
-}
+};
+/**
+ * Describes the message admin.v1.MachineNetwork.
+ * Use `create(MachineNetworkSchema)` to create a new message.
+ */
+export declare const MachineNetworkSchema: GenMessage<MachineNetwork>;
 /**
  * VPN Details for a machine
  *
  * @generated from message admin.v1.VPN
  */
-export declare class VPN extends Message<VPN> {
+export type VPN = Message<"admin.v1.VPN"> & {
     /**
      * Address is the ipv4 or ipv6 ip address of the machine in the VPN
      *
@@ -198,12 +197,9 @@ export declare class VPN extends Message<VPN> {
      * @generated from field: string authkey = 2;
      */
     authkey: string;
-    constructor(data?: PartialMessage<VPN>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "admin.v1.VPN";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): VPN;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): VPN;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): VPN;
-    static equals(a: VPN | PlainMessage<VPN> | undefined, b: VPN | PlainMessage<VPN> | undefined): boolean;
-}
+};
+/**
+ * Describes the message admin.v1.VPN.
+ * Use `create(VPNSchema)` to create a new message.
+ */
+export declare const VPNSchema: GenMessage<VPN>;

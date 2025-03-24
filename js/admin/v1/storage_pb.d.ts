@@ -1,54 +1,52 @@
-import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
-import { Message, proto3 } from "@bufbuild/protobuf";
-import { Snapshot, Volume } from "../../api/v1/volume_pb.js";
+import type { GenFile, GenMessage, GenService } from "@bufbuild/protobuf/codegenv1";
+import type { Snapshot, Volume } from "../../api/v1/volume_pb";
+import type { Message } from "@bufbuild/protobuf";
+/**
+ * Describes the file admin/v1/storage.proto.
+ */
+export declare const file_admin_v1_storage: GenFile;
 /**
  * StorageServiceClusterInfoRequest is the request payload for the cluster info request
  *
  * @generated from message admin.v1.StorageServiceClusterInfoRequest
  */
-export declare class StorageServiceClusterInfoRequest extends Message<StorageServiceClusterInfoRequest> {
+export type StorageServiceClusterInfoRequest = Message<"admin.v1.StorageServiceClusterInfoRequest"> & {
     /**
      * Partition for which the cluster info should be returned
      *
      * @generated from field: optional string partition = 1;
      */
     partition?: string;
-    constructor(data?: PartialMessage<StorageServiceClusterInfoRequest>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "admin.v1.StorageServiceClusterInfoRequest";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): StorageServiceClusterInfoRequest;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): StorageServiceClusterInfoRequest;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): StorageServiceClusterInfoRequest;
-    static equals(a: StorageServiceClusterInfoRequest | PlainMessage<StorageServiceClusterInfoRequest> | undefined, b: StorageServiceClusterInfoRequest | PlainMessage<StorageServiceClusterInfoRequest> | undefined): boolean;
-}
+};
+/**
+ * Describes the message admin.v1.StorageServiceClusterInfoRequest.
+ * Use `create(StorageServiceClusterInfoRequestSchema)` to create a new message.
+ */
+export declare const StorageServiceClusterInfoRequestSchema: GenMessage<StorageServiceClusterInfoRequest>;
 /**
  * StorageServiceClusterInfoResponse is the response payload for the cluster info request
  *
  * @generated from message admin.v1.StorageServiceClusterInfoResponse
  */
-export declare class StorageServiceClusterInfoResponse extends Message<StorageServiceClusterInfoResponse> {
+export type StorageServiceClusterInfoResponse = Message<"admin.v1.StorageServiceClusterInfoResponse"> & {
     /**
      * Infos about the storage systems
      *
      * @generated from field: repeated admin.v1.StorageClusterInfo infos = 1;
      */
     infos: StorageClusterInfo[];
-    constructor(data?: PartialMessage<StorageServiceClusterInfoResponse>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "admin.v1.StorageServiceClusterInfoResponse";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): StorageServiceClusterInfoResponse;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): StorageServiceClusterInfoResponse;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): StorageServiceClusterInfoResponse;
-    static equals(a: StorageServiceClusterInfoResponse | PlainMessage<StorageServiceClusterInfoResponse> | undefined, b: StorageServiceClusterInfoResponse | PlainMessage<StorageServiceClusterInfoResponse> | undefined): boolean;
-}
+};
+/**
+ * Describes the message admin.v1.StorageServiceClusterInfoResponse.
+ * Use `create(StorageServiceClusterInfoResponseSchema)` to create a new message.
+ */
+export declare const StorageServiceClusterInfoResponseSchema: GenMessage<StorageServiceClusterInfoResponse>;
 /**
  * StorageClusterInfo represents details about a storage system
  *
  * @generated from message admin.v1.StorageClusterInfo
  */
-export declare class StorageClusterInfo extends Message<StorageClusterInfo> {
+export type StorageClusterInfo = Message<"admin.v1.StorageClusterInfo"> & {
     /**
      * Partition where this storage system is present
      *
@@ -127,21 +125,18 @@ export declare class StorageClusterInfo extends Message<StorageClusterInfo> {
      * @generated from field: repeated admin.v1.StorageServerInfo servers = 13;
      */
     servers: StorageServerInfo[];
-    constructor(data?: PartialMessage<StorageClusterInfo>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "admin.v1.StorageClusterInfo";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): StorageClusterInfo;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): StorageClusterInfo;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): StorageClusterInfo;
-    static equals(a: StorageClusterInfo | PlainMessage<StorageClusterInfo> | undefined, b: StorageClusterInfo | PlainMessage<StorageClusterInfo> | undefined): boolean;
-}
+};
+/**
+ * Describes the message admin.v1.StorageClusterInfo.
+ * Use `create(StorageClusterInfoSchema)` to create a new message.
+ */
+export declare const StorageClusterInfoSchema: GenMessage<StorageClusterInfo>;
 /**
  * StorageServerInfo contains details about a single storage server
  *
  * @generated from message admin.v1.StorageServerInfo
  */
-export declare class StorageServerInfo extends Message<StorageServerInfo> {
+export type StorageServerInfo = Message<"admin.v1.StorageServerInfo"> & {
     /**
      * Uuid of this server
      *
@@ -178,21 +173,18 @@ export declare class StorageServerInfo extends Message<StorageServerInfo> {
      * @generated from field: string light_os_version = 6;
      */
     lightOsVersion: string;
-    constructor(data?: PartialMessage<StorageServerInfo>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "admin.v1.StorageServerInfo";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): StorageServerInfo;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): StorageServerInfo;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): StorageServerInfo;
-    static equals(a: StorageServerInfo | PlainMessage<StorageServerInfo> | undefined, b: StorageServerInfo | PlainMessage<StorageServerInfo> | undefined): boolean;
-}
+};
+/**
+ * Describes the message admin.v1.StorageServerInfo.
+ * Use `create(StorageServerInfoSchema)` to create a new message.
+ */
+export declare const StorageServerInfoSchema: GenMessage<StorageServerInfo>;
 /**
  * ClusterHealth the health of the cluster
  *
  * @generated from message admin.v1.ClusterHealth
  */
-export declare class ClusterHealth extends Message<ClusterHealth> {
+export type ClusterHealth = Message<"admin.v1.ClusterHealth"> & {
     /**
      * State of the cluster
      *
@@ -223,21 +215,18 @@ export declare class ClusterHealth extends Message<ClusterHealth> {
      * @generated from field: uint32 num_inactive_nodes = 5;
      */
     numInactiveNodes: number;
-    constructor(data?: PartialMessage<ClusterHealth>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "admin.v1.ClusterHealth";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ClusterHealth;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ClusterHealth;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ClusterHealth;
-    static equals(a: ClusterHealth | PlainMessage<ClusterHealth> | undefined, b: ClusterHealth | PlainMessage<ClusterHealth> | undefined): boolean;
-}
+};
+/**
+ * Describes the message admin.v1.ClusterHealth.
+ * Use `create(ClusterHealthSchema)` to create a new message.
+ */
+export declare const ClusterHealthSchema: GenMessage<ClusterHealth>;
 /**
  * ClusterStatisticsApi detailed statistics of the storage cluster
  *
  * @generated from message admin.v1.ClusterStatisticsApi
  */
-export declare class ClusterStatisticsApi extends Message<ClusterStatisticsApi> {
+export type ClusterStatisticsApi = Message<"admin.v1.ClusterStatisticsApi"> & {
     /**
      * Installed Physical Storage
      *
@@ -326,21 +315,18 @@ export declare class ClusterStatisticsApi extends Message<ClusterStatisticsApi> 
      * @generated from field: double compression_ratio = 11;
      */
     compressionRatio: number;
-    constructor(data?: PartialMessage<ClusterStatisticsApi>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "admin.v1.ClusterStatisticsApi";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ClusterStatisticsApi;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ClusterStatisticsApi;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ClusterStatisticsApi;
-    static equals(a: ClusterStatisticsApi | PlainMessage<ClusterStatisticsApi> | undefined, b: ClusterStatisticsApi | PlainMessage<ClusterStatisticsApi> | undefined): boolean;
-}
+};
+/**
+ * Describes the message admin.v1.ClusterStatisticsApi.
+ * Use `create(ClusterStatisticsApiSchema)` to create a new message.
+ */
+export declare const ClusterStatisticsApiSchema: GenMessage<ClusterStatisticsApi>;
 /**
  * StorageServiceListVolumesRequest is the request payload for the volume list request
  *
  * @generated from message admin.v1.StorageServiceListVolumesRequest
  */
-export declare class StorageServiceListVolumesRequest extends Message<StorageServiceListVolumesRequest> {
+export type StorageServiceListVolumesRequest = Message<"admin.v1.StorageServiceListVolumesRequest"> & {
     /**
      * Uuid is the uuid of the volume to list
      *
@@ -371,42 +357,36 @@ export declare class StorageServiceListVolumesRequest extends Message<StorageSer
      * @generated from field: optional string tenant = 5;
      */
     tenant?: string;
-    constructor(data?: PartialMessage<StorageServiceListVolumesRequest>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "admin.v1.StorageServiceListVolumesRequest";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): StorageServiceListVolumesRequest;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): StorageServiceListVolumesRequest;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): StorageServiceListVolumesRequest;
-    static equals(a: StorageServiceListVolumesRequest | PlainMessage<StorageServiceListVolumesRequest> | undefined, b: StorageServiceListVolumesRequest | PlainMessage<StorageServiceListVolumesRequest> | undefined): boolean;
-}
+};
+/**
+ * Describes the message admin.v1.StorageServiceListVolumesRequest.
+ * Use `create(StorageServiceListVolumesRequestSchema)` to create a new message.
+ */
+export declare const StorageServiceListVolumesRequestSchema: GenMessage<StorageServiceListVolumesRequest>;
 /**
  * StorageServiceListVolumesResponse is the response payload for the volume list request
  *
  * @generated from message admin.v1.StorageServiceListVolumesResponse
  */
-export declare class StorageServiceListVolumesResponse extends Message<StorageServiceListVolumesResponse> {
+export type StorageServiceListVolumesResponse = Message<"admin.v1.StorageServiceListVolumesResponse"> & {
     /**
      * Volumes is the list of volumes
      *
      * @generated from field: repeated api.v1.Volume volumes = 1;
      */
     volumes: Volume[];
-    constructor(data?: PartialMessage<StorageServiceListVolumesResponse>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "admin.v1.StorageServiceListVolumesResponse";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): StorageServiceListVolumesResponse;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): StorageServiceListVolumesResponse;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): StorageServiceListVolumesResponse;
-    static equals(a: StorageServiceListVolumesResponse | PlainMessage<StorageServiceListVolumesResponse> | undefined, b: StorageServiceListVolumesResponse | PlainMessage<StorageServiceListVolumesResponse> | undefined): boolean;
-}
+};
+/**
+ * Describes the message admin.v1.StorageServiceListVolumesResponse.
+ * Use `create(StorageServiceListVolumesResponseSchema)` to create a new message.
+ */
+export declare const StorageServiceListVolumesResponseSchema: GenMessage<StorageServiceListVolumesResponse>;
 /**
  * StorageServiceListVolumesRequest is the request payload for the snapshot list request
  *
  * @generated from message admin.v1.StorageServiceListSnapshotsRequest
  */
-export declare class StorageServiceListSnapshotsRequest extends Message<StorageServiceListSnapshotsRequest> {
+export type StorageServiceListSnapshotsRequest = Message<"admin.v1.StorageServiceListSnapshotsRequest"> & {
     /**
      * Uuid is the uuid of the snapshot to list
      *
@@ -437,33 +417,64 @@ export declare class StorageServiceListSnapshotsRequest extends Message<StorageS
      * @generated from field: optional string tenant = 5;
      */
     tenant?: string;
-    constructor(data?: PartialMessage<StorageServiceListSnapshotsRequest>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "admin.v1.StorageServiceListSnapshotsRequest";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): StorageServiceListSnapshotsRequest;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): StorageServiceListSnapshotsRequest;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): StorageServiceListSnapshotsRequest;
-    static equals(a: StorageServiceListSnapshotsRequest | PlainMessage<StorageServiceListSnapshotsRequest> | undefined, b: StorageServiceListSnapshotsRequest | PlainMessage<StorageServiceListSnapshotsRequest> | undefined): boolean;
-}
+};
+/**
+ * Describes the message admin.v1.StorageServiceListSnapshotsRequest.
+ * Use `create(StorageServiceListSnapshotsRequestSchema)` to create a new message.
+ */
+export declare const StorageServiceListSnapshotsRequestSchema: GenMessage<StorageServiceListSnapshotsRequest>;
 /**
  * StorageServiceListSnapshotsResponse is the response payload for the snapshot list request
  *
  * @generated from message admin.v1.StorageServiceListSnapshotsResponse
  */
-export declare class StorageServiceListSnapshotsResponse extends Message<StorageServiceListSnapshotsResponse> {
+export type StorageServiceListSnapshotsResponse = Message<"admin.v1.StorageServiceListSnapshotsResponse"> & {
     /**
      * Snapshots is the list of snapshots
      *
      * @generated from field: repeated api.v1.Snapshot snapshots = 1;
      */
     snapshots: Snapshot[];
-    constructor(data?: PartialMessage<StorageServiceListSnapshotsResponse>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "admin.v1.StorageServiceListSnapshotsResponse";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): StorageServiceListSnapshotsResponse;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): StorageServiceListSnapshotsResponse;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): StorageServiceListSnapshotsResponse;
-    static equals(a: StorageServiceListSnapshotsResponse | PlainMessage<StorageServiceListSnapshotsResponse> | undefined, b: StorageServiceListSnapshotsResponse | PlainMessage<StorageServiceListSnapshotsResponse> | undefined): boolean;
-}
+};
+/**
+ * Describes the message admin.v1.StorageServiceListSnapshotsResponse.
+ * Use `create(StorageServiceListSnapshotsResponseSchema)` to create a new message.
+ */
+export declare const StorageServiceListSnapshotsResponseSchema: GenMessage<StorageServiceListSnapshotsResponse>;
+/**
+ * StorageService serves storage related functions
+ *
+ * @generated from service admin.v1.StorageService
+ */
+export declare const StorageService: GenService<{
+    /**
+     * ClusterInfo returns overall statistics of the storage system
+     *
+     * @generated from rpc admin.v1.StorageService.ClusterInfo
+     */
+    clusterInfo: {
+        methodKind: "unary";
+        input: typeof StorageServiceClusterInfoRequestSchema;
+        output: typeof StorageServiceClusterInfoResponseSchema;
+    };
+    /**
+     * ListVolumes list all volumes
+     *
+     * @generated from rpc admin.v1.StorageService.ListVolumes
+     */
+    listVolumes: {
+        methodKind: "unary";
+        input: typeof StorageServiceListVolumesRequestSchema;
+        output: typeof StorageServiceListVolumesResponseSchema;
+    };
+    /**
+     * ListSnapshots list all snapshots
+     *
+     * @generated from rpc admin.v1.StorageService.ListSnapshots
+     */
+    listSnapshots: {
+        methodKind: "unary";
+        input: typeof StorageServiceListSnapshotsRequestSchema;
+        output: typeof StorageServiceListSnapshotsResponseSchema;
+    };
+}>;
