@@ -61,10 +61,10 @@ message AuditServiceListRequest {
   oneof from_option {
     // To describes the end of the time window in which to list audit traces
     google.protobuf.Timestamp to = 4;
-    // Duration describes a relative time window dependent on from
+    // Duration describes a relative time window dependent on from (min: 60 seconds, max: 24h in seconds)
     google.protobuf.Duration duration = 5 [(buf.validate.field).duration = {
-      lt: {seconds: 31536001}
-      gte: {seconds: 600}
+      lt: {seconds: 86400}
+      gte: {seconds: 60}
     }];
   }
   // User is the user who called the api method
@@ -90,7 +90,7 @@ message AuditServiceListRequest {
     min_len: 2
     max_len: 256
   }];
-  // Limit is a number limiting the length of the response
+  // Limit is a number limiting the length of the response (min: 1, max: 1000)
   optional int32 limit = 13 [(buf.validate.field).int32 = {
     gt: 0
     lte: 1000
