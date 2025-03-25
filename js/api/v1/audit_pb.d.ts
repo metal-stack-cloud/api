@@ -1,5 +1,5 @@
 import type { GenFile, GenMessage, GenService } from "@bufbuild/protobuf/codegenv1";
-import type { Duration, Timestamp } from "@bufbuild/protobuf/wkt";
+import type { Timestamp } from "@bufbuild/protobuf/wkt";
 import type { Message } from "@bufbuild/protobuf";
 /**
  * Describes the file api/v1/audit.proto.
@@ -102,76 +102,57 @@ export type AuditServiceListRequest = Message<"api.v1.AuditServiceListRequest"> 
      */
     from?: Timestamp;
     /**
-     * FromOptions describes the type of window (exact by referencing to or relative by duration)
+     * To describes the end of the time window in which to list audit traces
      *
-     * @generated from oneof api.v1.AuditServiceListRequest.from_option
+     * @generated from field: google.protobuf.Timestamp to = 4;
      */
-    fromOption: {
-        /**
-         * To describes the end of the time window in which to list audit traces
-         *
-         * @generated from field: google.protobuf.Timestamp to = 4;
-         */
-        value: Timestamp;
-        case: "to";
-    } | {
-        /**
-         * Duration describes a relative time window dependent on from
-         *
-         * @generated from field: google.protobuf.Duration duration = 5;
-         */
-        value: Duration;
-        case: "duration";
-    } | {
-        case: undefined;
-        value?: undefined;
-    };
+    to?: Timestamp;
     /**
      * User is the user who called the api method
      *
-     * @generated from field: optional string user = 6;
+     * @generated from field: optional string user = 5;
      */
     user?: string;
     /**
      * Tenant is the tenant targeted by the api call
      *
-     * @generated from field: string tenant = 7;
+     * @generated from field: string tenant = 6;
      */
     tenant: string;
     /**
      * Project is the project targeted by the api call
      *
-     * @generated from field: optional string project = 8;
+     * @generated from field: optional string project = 7;
      */
     project?: string;
     /**
      * Method is the api method that was called
      *
-     * @generated from field: optional string method = 9;
+     * @generated from field: optional string method = 8;
      */
     method?: string;
     /**
      * SourceIP contains the ip address of the caller
      *
-     * @generated from field: optional string source_ip = 10;
+     * @generated from field: optional string source_ip = 9;
      */
     sourceIp?: string;
     /**
      * ResultCode is a string describing the result of the api call
      *
-     * @generated from field: optional int32 result_code = 11;
+     * @generated from field: optional int32 result_code = 10;
      */
     resultCode?: number;
     /**
      * Body is a string providing text-search of the body field
      *
-     * @generated from field: optional string body = 12;
+     * @generated from field: optional string body = 11;
      */
     body?: string;
     /**
-     * Limit is a number limiting the length of the response
+     * Limit is a number limiting the length of the response (min: 1, max: 1000)
      *
-     * @generated from field: optional int32 limit = 13;
+     * @generated from field: optional int32 limit = 12;
      */
     limit?: number;
 };

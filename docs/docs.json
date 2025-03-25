@@ -11378,20 +11378,8 @@
               "longType": "google.protobuf.Timestamp",
               "fullType": "google.protobuf.Timestamp",
               "ismap": false,
-              "isoneof": true,
-              "oneofdecl": "from_option",
-              "defaultValue": ""
-            },
-            {
-              "name": "duration",
-              "description": "Duration describes a relative time window dependent on from",
-              "label": "",
-              "type": "Duration",
-              "longType": "google.protobuf.Duration",
-              "fullType": "google.protobuf.Duration",
-              "ismap": false,
-              "isoneof": true,
-              "oneofdecl": "from_option",
+              "isoneof": false,
+              "oneofdecl": "",
               "defaultValue": ""
             },
             {
@@ -11480,7 +11468,7 @@
             },
             {
               "name": "limit",
-              "description": "Limit is a number limiting the length of the response",
+              "description": "Limit is a number limiting the length of the response (min: 1, max: 1000)",
               "label": "optional",
               "type": "int32",
               "longType": "int32",

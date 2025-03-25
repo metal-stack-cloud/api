@@ -4,7 +4,6 @@ package api.v1;
 
 import "api/v1/common.proto";
 import "buf/validate/validate.proto";
-import "google/protobuf/duration.proto";
 import "google/protobuf/timestamp.proto";
 
 // AuditService serves audit related functions
@@ -57,41 +56,33 @@ message AuditServiceListRequest {
   optional string uuid = 2 [(buf.validate.field).string.uuid = true];
   // From describes the start of the time window in which to list audit traces
   google.protobuf.Timestamp from = 3 [(buf.validate.field).required = true];
-  // FromOptions describes the type of window (exact by referencing to or relative by duration)
-  oneof from_option {
-    // To describes the end of the time window in which to list audit traces
-    google.protobuf.Timestamp to = 4;
-    // Duration describes a relative time window dependent on from (min: 60 seconds, max: 24h in seconds)
-    google.protobuf.Duration duration = 5 [(buf.validate.field).duration = {
-      lt: {seconds: 86400}
-      gte: {seconds: 60}
-    }];
-  }
+  // To describes the end of the time window in which to list audit traces
+  google.protobuf.Timestamp to = 4 [(buf.validate.field).required = true];
   // User is the user who called the api method
-  optional string user = 6 [(buf.validate.field).string = {
+  optional string user = 5 [(buf.validate.field).string = {
     min_len: 2
     max_len: 128
   }];
   // Tenant is the tenant targeted by the api call
-  string tenant = 7 [(buf.validate.field).string.uuid = true];
+  string tenant = 6 [(buf.validate.field).string.uuid = true];
   // Project is the project targeted by the api call
-  optional string project = 8 [(buf.validate.field).string.uuid = true];
+  optional string project = 7 [(buf.validate.field).string.uuid = true];
   // Method is the api method that was called
-  optional string method = 9 [(buf.validate.field).string = {
+  optional string method = 8 [(buf.validate.field).string = {
     min_len: 2
     max_len: 256
   }];
   // SourceIP contains the ip address of the caller
-  optional string source_ip = 10 [(buf.validate.field).string.ip = true];
+  optional string source_ip = 9 [(buf.validate.field).string.ip = true];
   // ResultCode is a string describing the result of the api call
-  optional int32 result_code = 11 [(buf.validate.field).int32 = {gte: 0}];
+  optional int32 result_code = 10 [(buf.validate.field).int32 = {gte: 0}];
   // Body is a string providing text-search of the body field
-  optional string body = 12 [(buf.validate.field).string = {
+  optional string body = 11 [(buf.validate.field).string = {
     min_len: 2
     max_len: 256
   }];
   // Limit is a number limiting the length of the response (min: 1, max: 1000)
-  optional int32 limit = 13 [(buf.validate.field).int32 = {
+  optional int32 limit = 12 [(buf.validate.field).int32 = {
     gt: 0
     lte: 1000
   }];

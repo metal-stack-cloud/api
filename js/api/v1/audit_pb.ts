@@ -6,15 +6,15 @@ import type { GenFile, GenMessage, GenService } from "@bufbuild/protobuf/codegen
 import { fileDesc, messageDesc, serviceDesc } from "@bufbuild/protobuf/codegenv1";
 import { file_api_v1_common } from "./common_pb";
 import { file_buf_validate_validate } from "../../buf/validate/validate_pb";
-import type { Duration, Timestamp } from "@bufbuild/protobuf/wkt";
-import { file_google_protobuf_duration, file_google_protobuf_timestamp } from "@bufbuild/protobuf/wkt";
+import type { Timestamp } from "@bufbuild/protobuf/wkt";
+import { file_google_protobuf_timestamp } from "@bufbuild/protobuf/wkt";
 import type { Message } from "@bufbuild/protobuf";
 
 /**
  * Describes the file api/v1/audit.proto.
  */
 export const file_api_v1_audit: GenFile = /*@__PURE__*/
-  fileDesc("ChJhcGkvdjEvYXVkaXQucHJvdG8SBmFwaS52MSKLAgoKQXVkaXRUcmFjZRIWCgR1dWlkGAEgASgJQgi6SAVyA7ABARItCgl0aW1lc3RhbXAYAiABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wEgwKBHVzZXIYAyABKAkSDgoGdGVuYW50GAQgASgJEhQKB3Byb2plY3QYBSABKAlIAIgBARIOCgZtZXRob2QYBiABKAkSEQoEYm9keRgHIAEoCUgBiAEBEhEKCXNvdXJjZV9pcBgIIAEoCRIYCgtyZXN1bHRfY29kZRgJIAEoBUgCiAEBEg0KBXBoYXNlGAogASgJQgoKCF9wcm9qZWN0QgcKBV9ib2R5Qg4KDF9yZXN1bHRfY29kZSLWBAoXQXVkaXRTZXJ2aWNlTGlzdFJlcXVlc3QSGQoFbG9naW4YASABKAlCCrpIB3IFEAIYgAESGwoEdXVpZBgCIAEoCUIIukgFcgOwAQFIAYgBARIwCgRmcm9tGAMgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcEIGukgDyAEBEigKAnRvGAQgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcEgAEkEKCGR1cmF0aW9uGAUgASgLMhkuZ29vZ2xlLnByb3RvYnVmLkR1cmF0aW9uQhK6SA+qAQwaBQiB54QPMgMI2ARIABIdCgR1c2VyGAYgASgJQgq6SAdyBRACGIABSAKIAQESGAoGdGVuYW50GAcgASgJQgi6SAVyA7ABARIeCgdwcm9qZWN0GAggASgJQgi6SAVyA7ABAUgDiAEBEh8KBm1ldGhvZBgJIAEoCUIKukgHcgUQAhiAAkgEiAEBEh8KCXNvdXJjZV9pcBgKIAEoCUIHukgEcgJwAUgFiAEBEiEKC3Jlc3VsdF9jb2RlGAsgASgFQge6SAQaAigASAaIAQESHQoEYm9keRgMIAEoCUIKukgHcgUQAhiAAkgHiAEBEh4KBWxpbWl0GA0gASgFQgq6SAcaBRjoByAASAiIAQFCDQoLZnJvbV9vcHRpb25CBwoFX3V1aWRCBwoFX3VzZXJCCgoIX3Byb2plY3RCCQoHX21ldGhvZEIMCgpfc291cmNlX2lwQg4KDF9yZXN1bHRfY29kZUIHCgVfYm9keUIICgZfbGltaXQiPgoYQXVkaXRTZXJ2aWNlTGlzdFJlc3BvbnNlEiIKBmF1ZGl0cxgBIAMoCzISLmFwaS52MS5BdWRpdFRyYWNlIksKFkF1ZGl0U2VydmljZUdldFJlcXVlc3QSGQoFbG9naW4YASABKAlCCrpIB3IFEAIYgAESFgoEdXVpZBgCIAEoCUIIukgFcgOwAQEiPAoXQXVkaXRTZXJ2aWNlR2V0UmVzcG9uc2USIQoFYXVkaXQYAiABKAsyEi5hcGkudjEuQXVkaXRUcmFjZTK3AQoMQXVkaXRTZXJ2aWNlElEKA0dldBIeLmFwaS52MS5BdWRpdFNlcnZpY2VHZXRSZXF1ZXN0Gh8uYXBpLnYxLkF1ZGl0U2VydmljZUdldFJlc3BvbnNlIgnC8xgBAejzGAISVAoETGlzdBIfLmFwaS52MS5BdWRpdFNlcnZpY2VMaXN0UmVxdWVzdBogLmFwaS52MS5BdWRpdFNlcnZpY2VMaXN0UmVzcG9uc2UiCcLzGAEB6PMYAkKDAQoKY29tLmFwaS52MUIKQXVkaXRQcm90b1ABWjBnaXRodWIuY29tL21ldGFsLXN0YWNrLWNsb3VkL2FwaS9nby9hcGkvdjE7YXBpdjGiAgNBWFiqAgZBcGkuVjHKAgZBcGlcVjHiAhJBcGlcVjFcR1BCTWV0YWRhdGHqAgdBcGk6OlYxYgZwcm90bzM", [file_api_v1_common, file_buf_validate_validate, file_google_protobuf_duration, file_google_protobuf_timestamp]);
+  fileDesc("ChJhcGkvdjEvYXVkaXQucHJvdG8SBmFwaS52MSKLAgoKQXVkaXRUcmFjZRIWCgR1dWlkGAEgASgJQgi6SAVyA7ABARItCgl0aW1lc3RhbXAYAiABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wEgwKBHVzZXIYAyABKAkSDgoGdGVuYW50GAQgASgJEhQKB3Byb2plY3QYBSABKAlIAIgBARIOCgZtZXRob2QYBiABKAkSEQoEYm9keRgHIAEoCUgBiAEBEhEKCXNvdXJjZV9pcBgIIAEoCRIYCgtyZXN1bHRfY29kZRgJIAEoBUgCiAEBEg0KBXBoYXNlGAogASgJQgoKCF9wcm9qZWN0QgcKBV9ib2R5Qg4KDF9yZXN1bHRfY29kZSKKBAoXQXVkaXRTZXJ2aWNlTGlzdFJlcXVlc3QSGQoFbG9naW4YASABKAlCCrpIB3IFEAIYgAESGwoEdXVpZBgCIAEoCUIIukgFcgOwAQFIAIgBARIwCgRmcm9tGAMgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcEIGukgDyAEBEi4KAnRvGAQgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcEIGukgDyAEBEh0KBHVzZXIYBSABKAlCCrpIB3IFEAIYgAFIAYgBARIYCgZ0ZW5hbnQYBiABKAlCCLpIBXIDsAEBEh4KB3Byb2plY3QYByABKAlCCLpIBXIDsAEBSAKIAQESHwoGbWV0aG9kGAggASgJQgq6SAdyBRACGIACSAOIAQESHwoJc291cmNlX2lwGAkgASgJQge6SARyAnABSASIAQESIQoLcmVzdWx0X2NvZGUYCiABKAVCB7pIBBoCKABIBYgBARIdCgRib2R5GAsgASgJQgq6SAdyBRACGIACSAaIAQESHgoFbGltaXQYDCABKAVCCrpIBxoFGOgHIABIB4gBAUIHCgVfdXVpZEIHCgVfdXNlckIKCghfcHJvamVjdEIJCgdfbWV0aG9kQgwKCl9zb3VyY2VfaXBCDgoMX3Jlc3VsdF9jb2RlQgcKBV9ib2R5QggKBl9saW1pdCI+ChhBdWRpdFNlcnZpY2VMaXN0UmVzcG9uc2USIgoGYXVkaXRzGAEgAygLMhIuYXBpLnYxLkF1ZGl0VHJhY2UiSwoWQXVkaXRTZXJ2aWNlR2V0UmVxdWVzdBIZCgVsb2dpbhgBIAEoCUIKukgHcgUQAhiAARIWCgR1dWlkGAIgASgJQgi6SAVyA7ABASI8ChdBdWRpdFNlcnZpY2VHZXRSZXNwb25zZRIhCgVhdWRpdBgCIAEoCzISLmFwaS52MS5BdWRpdFRyYWNlMrcBCgxBdWRpdFNlcnZpY2USUQoDR2V0Eh4uYXBpLnYxLkF1ZGl0U2VydmljZUdldFJlcXVlc3QaHy5hcGkudjEuQXVkaXRTZXJ2aWNlR2V0UmVzcG9uc2UiCcLzGAEB6PMYAhJUCgRMaXN0Eh8uYXBpLnYxLkF1ZGl0U2VydmljZUxpc3RSZXF1ZXN0GiAuYXBpLnYxLkF1ZGl0U2VydmljZUxpc3RSZXNwb25zZSIJwvMYAQHo8xgCQoMBCgpjb20uYXBpLnYxQgpBdWRpdFByb3RvUAFaMGdpdGh1Yi5jb20vbWV0YWwtc3RhY2stY2xvdWQvYXBpL2dvL2FwaS92MTthcGl2MaICA0FYWKoCBkFwaS5WMcoCBkFwaVxWMeICEkFwaVxWMVxHUEJNZXRhZGF0YeoCB0FwaTo6VjFiBnByb3RvMw", [file_api_v1_common, file_buf_validate_validate, file_google_protobuf_timestamp]);
 
 /**
  * AuditTrace is an audit trace
@@ -128,81 +128,65 @@ export type AuditServiceListRequest = Message<"api.v1.AuditServiceListRequest"> 
   from?: Timestamp;
 
   /**
-   * FromOptions describes the type of window (exact by referencing to or relative by duration)
+   * To describes the end of the time window in which to list audit traces
    *
-   * @generated from oneof api.v1.AuditServiceListRequest.from_option
+   * @generated from field: google.protobuf.Timestamp to = 4;
    */
-  fromOption: {
-    /**
-     * To describes the end of the time window in which to list audit traces
-     *
-     * @generated from field: google.protobuf.Timestamp to = 4;
-     */
-    value: Timestamp;
-    case: "to";
-  } | {
-    /**
-     * Duration describes a relative time window dependent on from
-     *
-     * @generated from field: google.protobuf.Duration duration = 5;
-     */
-    value: Duration;
-    case: "duration";
-  } | { case: undefined; value?: undefined };
+  to?: Timestamp;
 
   /**
    * User is the user who called the api method
    *
-   * @generated from field: optional string user = 6;
+   * @generated from field: optional string user = 5;
    */
   user?: string;
 
   /**
    * Tenant is the tenant targeted by the api call
    *
-   * @generated from field: string tenant = 7;
+   * @generated from field: string tenant = 6;
    */
   tenant: string;
 
   /**
    * Project is the project targeted by the api call
    *
-   * @generated from field: optional string project = 8;
+   * @generated from field: optional string project = 7;
    */
   project?: string;
 
   /**
    * Method is the api method that was called
    *
-   * @generated from field: optional string method = 9;
+   * @generated from field: optional string method = 8;
    */
   method?: string;
 
   /**
    * SourceIP contains the ip address of the caller
    *
-   * @generated from field: optional string source_ip = 10;
+   * @generated from field: optional string source_ip = 9;
    */
   sourceIp?: string;
 
   /**
    * ResultCode is a string describing the result of the api call
    *
-   * @generated from field: optional int32 result_code = 11;
+   * @generated from field: optional int32 result_code = 10;
    */
   resultCode?: number;
 
   /**
    * Body is a string providing text-search of the body field
    *
-   * @generated from field: optional string body = 12;
+   * @generated from field: optional string body = 11;
    */
   body?: string;
 
   /**
-   * Limit is a number limiting the length of the response
+   * Limit is a number limiting the length of the response (min: 1, max: 1000)
    *
-   * @generated from field: optional int32 limit = 13;
+   * @generated from field: optional int32 limit = 12;
    */
   limit?: number;
 };
