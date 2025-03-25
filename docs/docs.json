@@ -11395,18 +11395,6 @@
               "defaultValue": ""
             },
             {
-              "name": "tenant",
-              "description": "Tenant is the tenant targeted by the api call",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
               "name": "project",
               "description": "Project is the project targeted by the api call",
               "label": "optional",

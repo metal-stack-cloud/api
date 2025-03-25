@@ -114,45 +114,39 @@ export type AuditServiceListRequest = Message<"api.v1.AuditServiceListRequest"> 
      */
     user?: string;
     /**
-     * Tenant is the tenant targeted by the api call
-     *
-     * @generated from field: string tenant = 6;
-     */
-    tenant: string;
-    /**
      * Project is the project targeted by the api call
      *
-     * @generated from field: optional string project = 7;
+     * @generated from field: optional string project = 6;
      */
     project?: string;
     /**
      * Method is the api method that was called
      *
-     * @generated from field: optional string method = 8;
+     * @generated from field: optional string method = 7;
      */
     method?: string;
     /**
      * SourceIP contains the ip address of the caller
      *
-     * @generated from field: optional string source_ip = 9;
+     * @generated from field: optional string source_ip = 8;
      */
     sourceIp?: string;
     /**
      * ResultCode is a string describing the result of the api call
      *
-     * @generated from field: optional int32 result_code = 10;
+     * @generated from field: optional int32 result_code = 9;
      */
     resultCode?: number;
     /**
      * Body is a string providing text-search of the body field
      *
-     * @generated from field: optional string body = 11;
+     * @generated from field: optional string body = 10;
      */
     body?: string;
     /**
      * Limit is a number limiting the length of the response (min: 1, max: 1000)
      *
-     * @generated from field: optional int32 limit = 12;
+     * @generated from field: optional int32 limit = 11;
      */
     limit?: number;
 };
