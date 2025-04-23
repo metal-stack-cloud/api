@@ -1,27 +1,27 @@
-import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
-import { Message, proto3 } from "@bufbuild/protobuf";
-import { Health, ServiceStatus } from "../../api/v1/health_pb.js";
+import type { GenFile, GenMessage, GenService } from "@bufbuild/protobuf/codegenv1";
+import type { Health, ServiceStatus } from "../../api/v1/health_pb";
+import type { Message } from "@bufbuild/protobuf";
+/**
+ * Describes the file status/v1/status.proto.
+ */
+export declare const file_status_v1_status: GenFile;
 /**
  * StatusServiceGetRequest is the request payload to get the status
  *
  * @generated from message status.v1.StatusServiceGetRequest
  */
-export declare class StatusServiceGetRequest extends Message<StatusServiceGetRequest> {
-    constructor(data?: PartialMessage<StatusServiceGetRequest>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "status.v1.StatusServiceGetRequest";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): StatusServiceGetRequest;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): StatusServiceGetRequest;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): StatusServiceGetRequest;
-    static equals(a: StatusServiceGetRequest | PlainMessage<StatusServiceGetRequest> | undefined, b: StatusServiceGetRequest | PlainMessage<StatusServiceGetRequest> | undefined): boolean;
-}
+export type StatusServiceGetRequest = Message<"status.v1.StatusServiceGetRequest"> & {};
+/**
+ * Describes the message status.v1.StatusServiceGetRequest.
+ * Use `create(StatusServiceGetRequestSchema)` to create a new message.
+ */
+export declare const StatusServiceGetRequestSchema: GenMessage<StatusServiceGetRequest>;
 /**
  * StatusServiceGetResponse is the response payload which describes the system status
  *
  * @generated from message status.v1.StatusServiceGetResponse
  */
-export declare class StatusServiceGetResponse extends Message<StatusServiceGetResponse> {
+export type StatusServiceGetResponse = Message<"status.v1.StatusServiceGetResponse"> & {
     /**
      * Health of the individual services
      *
@@ -46,12 +46,27 @@ export declare class StatusServiceGetResponse extends Message<StatusServiceGetRe
      * @generated from field: string api_version = 4;
      */
     apiVersion: string;
-    constructor(data?: PartialMessage<StatusServiceGetResponse>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "status.v1.StatusServiceGetResponse";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): StatusServiceGetResponse;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): StatusServiceGetResponse;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): StatusServiceGetResponse;
-    static equals(a: StatusServiceGetResponse | PlainMessage<StatusServiceGetResponse> | undefined, b: StatusServiceGetResponse | PlainMessage<StatusServiceGetResponse> | undefined): boolean;
-}
+};
+/**
+ * Describes the message status.v1.StatusServiceGetResponse.
+ * Use `create(StatusServiceGetResponseSchema)` to create a new message.
+ */
+export declare const StatusServiceGetResponseSchema: GenMessage<StatusServiceGetResponse>;
+/**
+ * StatusService serves status related functions
+ * this service is used as backend for the status dashboard
+ *
+ * @generated from service status.v1.StatusService
+ */
+export declare const StatusService: GenService<{
+    /**
+     * Get the system status
+     *
+     * @generated from rpc status.v1.StatusService.Get
+     */
+    get: {
+        methodKind: "unary";
+        input: typeof StatusServiceGetRequestSchema;
+        output: typeof StatusServiceGetResponseSchema;
+    };
+}>;

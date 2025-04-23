@@ -1,64 +1,57 @@
-import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
-import { Message, proto3 } from "@bufbuild/protobuf";
-import { MethodPermission } from "./token_pb.js";
-import { AdminRole, ProjectRole, TenantRole } from "./common_pb.js";
+import type { GenFile, GenMessage, GenService } from "@bufbuild/protobuf/codegenv1";
+import type { AdminRole, ProjectRole, TenantRole } from "./common_pb";
+import type { MethodPermission } from "./token_pb";
+import type { Message } from "@bufbuild/protobuf";
+/**
+ * Describes the file api/v1/methods.proto.
+ */
+export declare const file_api_v1_methods: GenFile;
 /**
  * MethodServiceListRequest is the request payload to list all public methods
  *
  * @generated from message api.v1.MethodServiceListRequest
  */
-export declare class MethodServiceListRequest extends Message<MethodServiceListRequest> {
-    constructor(data?: PartialMessage<MethodServiceListRequest>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "api.v1.MethodServiceListRequest";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): MethodServiceListRequest;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): MethodServiceListRequest;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): MethodServiceListRequest;
-    static equals(a: MethodServiceListRequest | PlainMessage<MethodServiceListRequest> | undefined, b: MethodServiceListRequest | PlainMessage<MethodServiceListRequest> | undefined): boolean;
-}
+export type MethodServiceListRequest = Message<"api.v1.MethodServiceListRequest"> & {};
+/**
+ * Describes the message api.v1.MethodServiceListRequest.
+ * Use `create(MethodServiceListRequestSchema)` to create a new message.
+ */
+export declare const MethodServiceListRequestSchema: GenMessage<MethodServiceListRequest>;
 /**
  * MethodServiceListResponse is the response payload with all public visible methods
  *
  * @generated from message api.v1.MethodServiceListResponse
  */
-export declare class MethodServiceListResponse extends Message<MethodServiceListResponse> {
+export type MethodServiceListResponse = Message<"api.v1.MethodServiceListResponse"> & {
     /**
      * Methods is a list of methods public callable
      *
      * @generated from field: repeated string methods = 1;
      */
     methods: string[];
-    constructor(data?: PartialMessage<MethodServiceListResponse>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "api.v1.MethodServiceListResponse";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): MethodServiceListResponse;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): MethodServiceListResponse;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): MethodServiceListResponse;
-    static equals(a: MethodServiceListResponse | PlainMessage<MethodServiceListResponse> | undefined, b: MethodServiceListResponse | PlainMessage<MethodServiceListResponse> | undefined): boolean;
-}
+};
+/**
+ * Describes the message api.v1.MethodServiceListResponse.
+ * Use `create(MethodServiceListResponseSchema)` to create a new message.
+ */
+export declare const MethodServiceListResponseSchema: GenMessage<MethodServiceListResponse>;
 /**
  * MethodServiceTokenScopedListRequest is the request payload to list all methods callable with the token present in the request
  *
  * @generated from message api.v1.MethodServiceTokenScopedListRequest
  */
-export declare class MethodServiceTokenScopedListRequest extends Message<MethodServiceTokenScopedListRequest> {
-    constructor(data?: PartialMessage<MethodServiceTokenScopedListRequest>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "api.v1.MethodServiceTokenScopedListRequest";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): MethodServiceTokenScopedListRequest;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): MethodServiceTokenScopedListRequest;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): MethodServiceTokenScopedListRequest;
-    static equals(a: MethodServiceTokenScopedListRequest | PlainMessage<MethodServiceTokenScopedListRequest> | undefined, b: MethodServiceTokenScopedListRequest | PlainMessage<MethodServiceTokenScopedListRequest> | undefined): boolean;
-}
+export type MethodServiceTokenScopedListRequest = Message<"api.v1.MethodServiceTokenScopedListRequest"> & {};
+/**
+ * Describes the message api.v1.MethodServiceTokenScopedListRequest.
+ * Use `create(MethodServiceTokenScopedListRequestSchema)` to create a new message.
+ */
+export declare const MethodServiceTokenScopedListRequestSchema: GenMessage<MethodServiceTokenScopedListRequest>;
 /**
  * MethodServiceTokenScopedListResponse is the response payload which contains all methods which are callable with the given token
  *
  * @generated from message api.v1.MethodServiceTokenScopedListResponse
  */
-export declare class MethodServiceTokenScopedListResponse extends Message<MethodServiceTokenScopedListResponse> {
+export type MethodServiceTokenScopedListResponse = Message<"api.v1.MethodServiceTokenScopedListResponse"> & {
     /**
      * Permissions a list of methods which can be called
      *
@@ -87,12 +80,37 @@ export declare class MethodServiceTokenScopedListResponse extends Message<Method
      * @generated from field: optional api.v1.AdminRole admin_role = 5;
      */
     adminRole?: AdminRole;
-    constructor(data?: PartialMessage<MethodServiceTokenScopedListResponse>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "api.v1.MethodServiceTokenScopedListResponse";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): MethodServiceTokenScopedListResponse;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): MethodServiceTokenScopedListResponse;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): MethodServiceTokenScopedListResponse;
-    static equals(a: MethodServiceTokenScopedListResponse | PlainMessage<MethodServiceTokenScopedListResponse> | undefined, b: MethodServiceTokenScopedListResponse | PlainMessage<MethodServiceTokenScopedListResponse> | undefined): boolean;
-}
+};
+/**
+ * Describes the message api.v1.MethodServiceTokenScopedListResponse.
+ * Use `create(MethodServiceTokenScopedListResponseSchema)` to create a new message.
+ */
+export declare const MethodServiceTokenScopedListResponseSchema: GenMessage<MethodServiceTokenScopedListResponse>;
+/**
+ * MethodService serves method related functions
+ * methods are functions in services
+ *
+ * @generated from service api.v1.MethodService
+ */
+export declare const MethodService: GenService<{
+    /**
+     * List all public visible methods
+     *
+     * @generated from rpc api.v1.MethodService.List
+     */
+    list: {
+        methodKind: "unary";
+        input: typeof MethodServiceListRequestSchema;
+        output: typeof MethodServiceListResponseSchema;
+    };
+    /**
+     * TokenScopedList all methods callable with the token present in the request
+     *
+     * @generated from rpc api.v1.MethodService.TokenScopedList
+     */
+    tokenScopedList: {
+        methodKind: "unary";
+        input: typeof MethodServiceTokenScopedListRequestSchema;
+        output: typeof MethodServiceTokenScopedListResponseSchema;
+    };
+}>;

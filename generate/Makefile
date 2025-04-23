@@ -17,4 +17,4 @@ go-mocks:
 		--user $$(id -u):$$(id -g) \
 		-w /work \
 		-v $(PWD):/work \
-		vektra/mockery:v2.52.3 --keeptree --inpackage --dir go --output go/tests/mocks --all --log-level debug
+		vektra/mockery:v2.53.0 --keeptree --inpackage --dir go --output go/tests/mocks --all --log-level debug

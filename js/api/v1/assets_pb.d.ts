@@ -1,11 +1,16 @@
-import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
-import { Message, proto3, Timestamp } from "@bufbuild/protobuf";
+import type { GenFile, GenMessage, GenService } from "@bufbuild/protobuf/codegenv1";
+import type { Timestamp } from "@bufbuild/protobuf/wkt";
+import type { Message } from "@bufbuild/protobuf";
+/**
+ * Describes the file api/v1/assets.proto.
+ */
+export declare const file_api_v1_assets: GenFile;
 /**
  * Asset defines the available resources which can be used
  *
  * @generated from message api.v1.Asset
  */
-export declare class Asset extends Message<Asset> {
+export type Asset = Message<"api.v1.Asset"> & {
     /**
      * Region defines a datacenter location, e.g. a city.
      *
@@ -26,21 +31,18 @@ export declare class Asset extends Message<Asset> {
      * @generated from field: repeated api.v1.Kubernetes kubernetes = 3;
      */
     kubernetes: Kubernetes[];
-    constructor(data?: PartialMessage<Asset>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "api.v1.Asset";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Asset;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): Asset;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): Asset;
-    static equals(a: Asset | PlainMessage<Asset> | undefined, b: Asset | PlainMessage<Asset> | undefined): boolean;
-}
+};
+/**
+ * Describes the message api.v1.Asset.
+ * Use `create(AssetSchema)` to create a new message.
+ */
+export declare const AssetSchema: GenMessage<Asset>;
 /**
  * Region defines a datacenter location
  *
  * @generated from message api.v1.Region
  */
-export declare class Region extends Message<Region> {
+export type Region = Message<"api.v1.Region"> & {
     /**
      * Id is the technical identifier of this region
      *
@@ -85,21 +87,18 @@ export declare class Region extends Message<Region> {
      * @generated from field: string description = 7;
      */
     description: string;
-    constructor(data?: PartialMessage<Region>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "api.v1.Region";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Region;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): Region;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): Region;
-    static equals(a: Region | PlainMessage<Region> | undefined, b: Region | PlainMessage<Region> | undefined): boolean;
-}
+};
+/**
+ * Describes the message api.v1.Region.
+ * Use `create(RegionSchema)` to create a new message.
+ */
+export declare const RegionSchema: GenMessage<Region>;
 /**
  * Partition defines a failure domain in one Region.
  *
  * @generated from message api.v1.Partition
  */
-export declare class Partition extends Message<Partition> {
+export type Partition = Message<"api.v1.Partition"> & {
     /**
      * Id is the technical id of this partition
      *
@@ -130,21 +129,18 @@ export declare class Partition extends Message<Partition> {
      * @generated from field: string description = 5;
      */
     description: string;
-    constructor(data?: PartialMessage<Partition>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "api.v1.Partition";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Partition;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): Partition;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): Partition;
-    static equals(a: Partition | PlainMessage<Partition> | undefined, b: Partition | PlainMessage<Partition> | undefined): boolean;
-}
+};
+/**
+ * Describes the message api.v1.Partition.
+ * Use `create(PartitionSchema)` to create a new message.
+ */
+export declare const PartitionSchema: GenMessage<Partition>;
 /**
  * MachineType defines a server type
  *
  * @generated from message api.v1.MachineType
  */
-export declare class MachineType extends Message<MachineType> {
+export type MachineType = Message<"api.v1.MachineType"> & {
     /**
      * Id is the technical id of this machine type
      *
@@ -187,21 +183,18 @@ export declare class MachineType extends Message<MachineType> {
      * @generated from field: string storage_description = 7;
      */
     storageDescription: string;
-    constructor(data?: PartialMessage<MachineType>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "api.v1.MachineType";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): MachineType;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): MachineType;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): MachineType;
-    static equals(a: MachineType | PlainMessage<MachineType> | undefined, b: MachineType | PlainMessage<MachineType> | undefined): boolean;
-}
+};
+/**
+ * Describes the message api.v1.MachineType.
+ * Use `create(MachineTypeSchema)` to create a new message.
+ */
+export declare const MachineTypeSchema: GenMessage<MachineType>;
 /**
  * Kubernetes related configurations available
  *
  * @generated from message api.v1.Kubernetes
  */
-export declare class Kubernetes extends Message<Kubernetes> {
+export type Kubernetes = Message<"api.v1.Kubernetes"> & {
     /**
      * Version of kubernetes
      *
@@ -214,21 +207,18 @@ export declare class Kubernetes extends Message<Kubernetes> {
      * @generated from field: google.protobuf.Timestamp expiration = 2;
      */
     expiration?: Timestamp;
-    constructor(data?: PartialMessage<Kubernetes>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "api.v1.Kubernetes";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Kubernetes;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): Kubernetes;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): Kubernetes;
-    static equals(a: Kubernetes | PlainMessage<Kubernetes> | undefined, b: Kubernetes | PlainMessage<Kubernetes> | undefined): boolean;
-}
+};
+/**
+ * Describes the message api.v1.Kubernetes.
+ * Use `create(KubernetesSchema)` to create a new message.
+ */
+export declare const KubernetesSchema: GenMessage<Kubernetes>;
 /**
  * AssetDefaults apply if no specific properties are specified
  *
  * @generated from message api.v1.AssetDefaults
  */
-export declare class AssetDefaults extends Message<AssetDefaults> {
+export type AssetDefaults = Message<"api.v1.AssetDefaults"> & {
     /**
      * MachineType defines the default machine type used
      *
@@ -259,48 +249,55 @@ export declare class AssetDefaults extends Message<AssetDefaults> {
      * @generated from field: string partition = 7;
      */
     partition: string;
-    constructor(data?: PartialMessage<AssetDefaults>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "api.v1.AssetDefaults";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): AssetDefaults;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): AssetDefaults;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): AssetDefaults;
-    static equals(a: AssetDefaults | PlainMessage<AssetDefaults> | undefined, b: AssetDefaults | PlainMessage<AssetDefaults> | undefined): boolean;
-}
+};
+/**
+ * Describes the message api.v1.AssetDefaults.
+ * Use `create(AssetDefaultsSchema)` to create a new message.
+ */
+export declare const AssetDefaultsSchema: GenMessage<AssetDefaults>;
 /**
  * AssetServiceListRequest is the request payload to list all Assets
  *
  * @generated from message api.v1.AssetServiceListRequest
  */
-export declare class AssetServiceListRequest extends Message<AssetServiceListRequest> {
-    constructor(data?: PartialMessage<AssetServiceListRequest>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "api.v1.AssetServiceListRequest";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): AssetServiceListRequest;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): AssetServiceListRequest;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): AssetServiceListRequest;
-    static equals(a: AssetServiceListRequest | PlainMessage<AssetServiceListRequest> | undefined, b: AssetServiceListRequest | PlainMessage<AssetServiceListRequest> | undefined): boolean;
-}
+export type AssetServiceListRequest = Message<"api.v1.AssetServiceListRequest"> & {};
+/**
+ * Describes the message api.v1.AssetServiceListRequest.
+ * Use `create(AssetServiceListRequestSchema)` to create a new message.
+ */
+export declare const AssetServiceListRequestSchema: GenMessage<AssetServiceListRequest>;
 /**
  * AssetServiceListResponse is the response payload which contains the the Asset list
  *
  * @generated from message api.v1.AssetServiceListResponse
  */
-export declare class AssetServiceListResponse extends Message<AssetServiceListResponse> {
+export type AssetServiceListResponse = Message<"api.v1.AssetServiceListResponse"> & {
     /**
      * Assets defines a list of assets
      *
      * @generated from field: repeated api.v1.Asset assets = 2;
      */
     assets: Asset[];
-    constructor(data?: PartialMessage<AssetServiceListResponse>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "api.v1.AssetServiceListResponse";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): AssetServiceListResponse;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): AssetServiceListResponse;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): AssetServiceListResponse;
-    static equals(a: AssetServiceListResponse | PlainMessage<AssetServiceListResponse> | undefined, b: AssetServiceListResponse | PlainMessage<AssetServiceListResponse> | undefined): boolean;
-}
+};
+/**
+ * Describes the message api.v1.AssetServiceListResponse.
+ * Use `create(AssetServiceListResponseSchema)` to create a new message.
+ */
+export declare const AssetServiceListResponseSchema: GenMessage<AssetServiceListResponse>;
+/**
+ * AssetService serves asset related functions
+ *
+ * @generated from service api.v1.AssetService
+ */
+export declare const AssetService: GenService<{
+    /**
+     * List available assets
+     *
+     * @generated from rpc api.v1.AssetService.List
+     */
+    list: {
+        methodKind: "unary";
+        input: typeof AssetServiceListRequestSchema;
+        output: typeof AssetServiceListResponseSchema;
+    };
+}>;
