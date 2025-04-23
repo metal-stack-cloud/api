@@ -27,7 +27,7 @@ message AuditTrace {
   string uuid = 1 [(buf.validate.field).string.uuid = true];
   // Timestamp is the timestamp when the request arrived at the api
   google.protobuf.Timestamp timestamp = 2;
-  // User is the user who called the api method
+  // User is the login user who called the api method
   string user = 3;
   // Tenant is the tenant targeted by the api call
   string tenant = 4;
@@ -35,11 +35,11 @@ message AuditTrace {
   optional string project = 5;
   // Method is the api method that was called
   string method = 6;
-  // Request is the payload of the request
+  // Body is the payload of the api call. In the request phase this contains the payload sent by the client, in the request phase it contains the payload returned by the api server.
   optional string body = 7;
-  // Response is the payload of the response
+  // Source  IP is contains the source ip address of the api call
   string source_ip = 8;
-  // ResultCode is a string describing the result of the api call
+  // ResultCode is a status code describing the result of the api call. it is set for traces in the response phase and contains official gRPC status codes.
   optional int32 result_code = 9;
   // Phase is a string representing the request phase
   string phase = 10;
@@ -54,9 +54,9 @@ message AuditServiceListRequest {
   }];
   // Uuid of the audit trace
   optional string uuid = 2 [(buf.validate.field).string.uuid = true];
-  // From describes the start of the time window in which to list audit traces
+  // From describes the start of the time window in which to list audit traces (if not specified this defaults to the last eight hours)
   google.protobuf.Timestamp from = 3 [(buf.validate.field).required = true];
-  // To describes the end of the time window in which to list audit traces
+  // To describes the end of the time window in which to list audit traces (if not specified this defaults to the time the request was issued)
   google.protobuf.Timestamp to = 4 [(buf.validate.field).required = true];
   // User is the user who called the api method
   optional string user = 5 [(buf.validate.field).string = {
@@ -88,8 +88,8 @@ message AuditServiceListRequest {
 
 // AuditServiceListResponse is the response payload of a audit list request
 message AuditServiceListResponse {
-  // Audits is a list of audits without the secrets
-  repeated AuditTrace audits = 1;
+  // Traces is a list of audit traces without the secrets
+  repeated AuditTrace traces = 1;
 }
 
 // AuditServiceGetRequest is the request payload of a audit get request
@@ -105,6 +105,6 @@ message AuditServiceGetRequest {
 
 // AuditServiceGetResponse is the response payload of a audit get request
 message AuditServiceGetResponse {
-  // Audit is the audit
-  AuditTrace audit = 2;
+  // Trace is the audit trace
+  AuditTrace trace = 2;
 }
