@@ -11324,7 +11324,7 @@
             },
             {
               "name": "phase",
-              "description": "Phase specifies the audit phase.",
+              "description": "Phase specifies the audit phase, defaults to request",
               "label": "optional",
               "type": "AuditPhase",
               "longType": "AuditPhase",
@@ -11500,6 +11500,18 @@
               "ismap": false,
               "isoneof": true,
               "oneofdecl": "_limit",
+              "defaultValue": ""
+            },
+            {
+              "name": "phase",
+              "description": "Phase specifies the audit phase",
+              "label": "optional",
+              "type": "AuditPhase",
+              "longType": "AuditPhase",
+              "fullType": "api.v1.AuditPhase",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "_phase",
               "defaultValue": ""
             }
           ]

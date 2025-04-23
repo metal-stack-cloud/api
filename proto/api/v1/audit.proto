@@ -94,6 +94,8 @@ message AuditServiceListRequest {
     gt: 0
     lte: 1000
   }];
+  // Phase specifies the audit phase
+  optional AuditPhase phase = 12 [(buf.validate.field).enum.defined_only = true];
 }
 
 // AuditServiceListResponse is the response payload of a audit list request
@@ -111,7 +113,7 @@ message AuditServiceGetRequest {
   }];
   // Uuid of the audit trace
   string uuid = 2 [(buf.validate.field).string.uuid = true];
-  // Phase specifies the audit phase.
+  // Phase specifies the audit phase, defaults to request
   optional AuditPhase phase = 3 [(buf.validate.field).enum.defined_only = true];
 }
 

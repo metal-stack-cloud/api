@@ -149,6 +149,12 @@ export type AuditServiceListRequest = Message<"api.v1.AuditServiceListRequest"> 
      * @generated from field: optional int32 limit = 11;
      */
     limit?: number;
+    /**
+     * Phase specifies the audit phase
+     *
+     * @generated from field: optional api.v1.AuditPhase phase = 12;
+     */
+    phase?: AuditPhase;
 };
 /**
  * Describes the message api.v1.AuditServiceListRequest.
@@ -192,7 +198,7 @@ export type AuditServiceGetRequest = Message<"api.v1.AuditServiceGetRequest"> & 
      */
     uuid: string;
     /**
-     * Phase specifies the audit phase.
+     * Phase specifies the audit phase, defaults to request
      *
      * @generated from field: optional api.v1.AuditPhase phase = 3;
      */
