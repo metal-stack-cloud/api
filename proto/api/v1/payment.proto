@@ -78,6 +78,7 @@ service PaymentService {
   // GetOnboarded get the onboarded status
   rpc GetOnboarded(PaymentServiceGetOnboardedRequest) returns (PaymentServiceGetOnboardedResponse) {
     option (tenant_roles) = TENANT_ROLE_OWNER;
+        option (auditing) = AUDITING_EXCLUDED;
   }
 }
 
