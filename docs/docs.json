@@ -11324,7 +11324,7 @@
             },
             {
               "name": "phase",
-              "description": "Phase specifies the audit phase, defaults to request",
+              "description": "Phase specifies the audit phase. Defaults to request",
               "label": "optional",
               "type": "AuditPhase",
               "longType": "AuditPhase",
@@ -11396,7 +11396,7 @@
             },
             {
               "name": "from",
-              "description": "From describes the start of the time window in which to list audit traces (if not specified this defaults to the last eight hours)",
+              "description": "From describes the start of the time window in which to list audit traces. Defaults to the last eight hours",
               "label": "optional",
               "type": "Timestamp",
               "longType": "google.protobuf.Timestamp",
@@ -11408,7 +11408,7 @@
             },
             {
               "name": "to",
-              "description": "To describes the end of the time window in which to list audit traces (if not specified this defaults to the time the request was issued)",
+              "description": "To describes the end of the time window in which to list audit traces. Defaults to the time the request was issued",
               "label": "optional",
               "type": "Timestamp",
               "longType": "google.protobuf.Timestamp",
@@ -11456,7 +11456,7 @@
             },
             {
               "name": "source_ip",
-              "description": "SourceIP contains the ip address of the caller",
+              "description": "Source IP contains the ip address of the caller",
               "label": "optional",
               "type": "string",
               "longType": "string",
@@ -11468,7 +11468,7 @@
             },
             {
               "name": "result_code",
-              "description": "ResultCode is a string describing the result of the api call",
+              "description": "Result Code is a string describing the result of the api call",
               "label": "optional",
               "type": "int32",
               "longType": "int32",
@@ -11528,7 +11528,7 @@
           "fields": [
             {
               "name": "traces",
-              "description": "Traces is a list of audit traces without the secrets",
+              "description": "Traces is a list of audit traces",
               "label": "repeated",
               "type": "AuditTrace",
               "longType": "AuditTrace",
@@ -11636,7 +11636,7 @@
             },
             {
               "name": "source_ip",
-              "description": "Source  IP is contains the source ip address of the api call",
+              "description": "Source IP contains the source ip address of the api call",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -11648,7 +11648,7 @@
             },
             {
               "name": "result_code",
-              "description": "ResultCode is a status code describing the result of the api call. it is set for traces in the response phase and contains official gRPC status codes",
+              "description": "Result Code is a status code describing the result of the api call. It is set for traces in the response phase and contains official gRPC status codes",
               "label": "optional",
               "type": "int32",
               "longType": "int32",

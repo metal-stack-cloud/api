@@ -7,7 +7,6 @@ import "buf/validate/validate.proto";
 import "google/protobuf/timestamp.proto";
 
 // AuditService serves audit related functions
-//
 service AuditService {
   // Get an audit trace
   rpc Get(AuditServiceGetRequest) returns (AuditServiceGetResponse) {
@@ -47,9 +46,9 @@ message AuditTrace {
   string method = 6;
   // Body is the payload of the api call. In the request phase this contains the payload sent by the client, in the request phase it contains the payload returned by the api server
   optional string body = 7;
-  // Source  IP is contains the source ip address of the api call
+  // Source IP contains the source ip address of the api call
   string source_ip = 8;
-  // ResultCode is a status code describing the result of the api call. it is set for traces in the response phase and contains official gRPC status codes
+  // Result Code is a status code describing the result of the api call. It is set for traces in the response phase and contains official gRPC status codes
   optional int32 result_code = 9;
   // Phase represents the phase of the audit trace
   AuditPhase phase = 10;
@@ -64,9 +63,9 @@ message AuditServiceListRequest {
   }];
   // Uuid of the audit trace
   optional string uuid = 2 [(buf.validate.field).string.uuid = true];
-  // From describes the start of the time window in which to list audit traces (if not specified this defaults to the last eight hours)
+  // From describes the start of the time window in which to list audit traces. Defaults to the last eight hours
   optional google.protobuf.Timestamp from = 3;
-  // To describes the end of the time window in which to list audit traces (if not specified this defaults to the time the request was issued)
+  // To describes the end of the time window in which to list audit traces. Defaults to the time the request was issued
   optional google.protobuf.Timestamp to = 4;
   // User is the user who called the api method
   optional string user = 5 [(buf.validate.field).string = {
@@ -80,9 +79,9 @@ message AuditServiceListRequest {
     min_len: 2
     max_len: 256
   }];
-  // SourceIP contains the ip address of the caller
+  // Source IP contains the ip address of the caller
   optional string source_ip = 8 [(buf.validate.field).string.ip = true];
-  // ResultCode is a string describing the result of the api call
+  // Result Code is a string describing the result of the api call
   optional int32 result_code = 9 [(buf.validate.field).int32 = {gte: 0}];
   // Body is a string providing text-search of the body field
   optional string body = 10 [(buf.validate.field).string = {
@@ -100,7 +99,7 @@ message AuditServiceListRequest {
 
 // AuditServiceListResponse is the response payload of a audit list request
 message AuditServiceListResponse {
-  // Traces is a list of audit traces without the secrets
+  // Traces is a list of audit traces
   repeated AuditTrace traces = 1;
 }
 
@@ -113,7 +112,7 @@ message AuditServiceGetRequest {
   }];
   // Uuid of the audit trace
   string uuid = 2 [(buf.validate.field).string.uuid = true];
-  // Phase specifies the audit phase, defaults to request
+  // Phase specifies the audit phase. Defaults to request
   optional AuditPhase phase = 3 [(buf.validate.field).enum.defined_only = true];
 }
 

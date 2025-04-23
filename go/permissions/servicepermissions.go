@@ -417,7 +417,7 @@ func GetServicePermissions() *ServicePermissions {
 			"/api.v1.PaymentService/GetCustomer":            false,
 			"/api.v1.PaymentService/GetDefaultPrices":       false,
 			"/api.v1.PaymentService/GetInvoices":            false,
-			"/api.v1.PaymentService/GetOnboarded":           true,
+			"/api.v1.PaymentService/GetOnboarded":           false,
 			"/api.v1.PaymentService/GetSubscriptionUsage":   false,
 			"/api.v1.PaymentService/HasChargeableResources": false,
 			"/api.v1.PaymentService/HasPaymentMethod":       false,

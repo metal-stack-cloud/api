@@ -54,13 +54,13 @@ export type AuditTrace = Message<"api.v1.AuditTrace"> & {
      */
     body?: string;
     /**
-     * Source  IP is contains the source ip address of the api call
+     * Source IP contains the source ip address of the api call
      *
      * @generated from field: string source_ip = 8;
      */
     sourceIp: string;
     /**
-     * ResultCode is a status code describing the result of the api call. it is set for traces in the response phase and contains official gRPC status codes
+     * Result Code is a status code describing the result of the api call. It is set for traces in the response phase and contains official gRPC status codes
      *
      * @generated from field: optional int32 result_code = 9;
      */
@@ -96,13 +96,13 @@ export type AuditServiceListRequest = Message<"api.v1.AuditServiceListRequest"> 
      */
     uuid?: string;
     /**
-     * From describes the start of the time window in which to list audit traces (if not specified this defaults to the last eight hours)
+     * From describes the start of the time window in which to list audit traces. Defaults to the last eight hours
      *
      * @generated from field: optional google.protobuf.Timestamp from = 3;
      */
     from?: Timestamp;
     /**
-     * To describes the end of the time window in which to list audit traces (if not specified this defaults to the time the request was issued)
+     * To describes the end of the time window in which to list audit traces. Defaults to the time the request was issued
      *
      * @generated from field: optional google.protobuf.Timestamp to = 4;
      */
@@ -126,13 +126,13 @@ export type AuditServiceListRequest = Message<"api.v1.AuditServiceListRequest"> 
      */
     method?: string;
     /**
-     * SourceIP contains the ip address of the caller
+     * Source IP contains the ip address of the caller
      *
      * @generated from field: optional string source_ip = 8;
      */
     sourceIp?: string;
     /**
-     * ResultCode is a string describing the result of the api call
+     * Result Code is a string describing the result of the api call
      *
      * @generated from field: optional int32 result_code = 9;
      */
@@ -168,7 +168,7 @@ export declare const AuditServiceListRequestSchema: GenMessage<AuditServiceListR
  */
 export type AuditServiceListResponse = Message<"api.v1.AuditServiceListResponse"> & {
     /**
-     * Traces is a list of audit traces without the secrets
+     * Traces is a list of audit traces
      *
      * @generated from field: repeated api.v1.AuditTrace traces = 1;
      */
@@ -198,7 +198,7 @@ export type AuditServiceGetRequest = Message<"api.v1.AuditServiceGetRequest"> & 
      */
     uuid: string;
     /**
-     * Phase specifies the audit phase, defaults to request
+     * Phase specifies the audit phase. Defaults to request
      *
      * @generated from field: optional api.v1.AuditPhase phase = 3;
      */
@@ -258,7 +258,6 @@ export declare enum AuditPhase {
 export declare const AuditPhaseSchema: GenEnum<AuditPhase>;
 /**
  * AuditService serves audit related functions
- *
  *
  * @generated from service api.v1.AuditService
  */

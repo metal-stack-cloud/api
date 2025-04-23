@@ -67,7 +67,6 @@ export const AuditPhaseSchema = /*@__PURE__*/ enumDesc(file_api_v1_audit, 0);
 /**
  * AuditService serves audit related functions
  *
- *
  * @generated from service api.v1.AuditService
  */
 export const AuditService = /*@__PURE__*/ serviceDesc(file_api_v1_audit, 0);

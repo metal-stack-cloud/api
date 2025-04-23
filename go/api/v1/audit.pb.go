@@ -93,9 +93,9 @@ type AuditTrace struct {
 	Method string `protobuf:"bytes,6,opt,name=method,proto3" json:"method,omitempty"`
 	// Body is the payload of the api call. In the request phase this contains the payload sent by the client, in the request phase it contains the payload returned by the api server
 	Body *string `protobuf:"bytes,7,opt,name=body,proto3,oneof" json:"body,omitempty"`
-	// Source  IP is contains the source ip address of the api call
+	// Source IP contains the source ip address of the api call
 	SourceIp string `protobuf:"bytes,8,opt,name=source_ip,json=sourceIp,proto3" json:"source_ip,omitempty"`
-	// ResultCode is a status code describing the result of the api call. it is set for traces in the response phase and contains official gRPC status codes
+	// Result Code is a status code describing the result of the api call. It is set for traces in the response phase and contains official gRPC status codes
 	ResultCode *int32 `protobuf:"varint,9,opt,name=result_code,json=resultCode,proto3,oneof" json:"result_code,omitempty"`
 	// Phase represents the phase of the audit trace
 	Phase         AuditPhase `protobuf:"varint,10,opt,name=phase,proto3,enum=api.v1.AuditPhase" json:"phase,omitempty"`
@@ -210,9 +210,9 @@ type AuditServiceListRequest struct {
 	Login string `protobuf:"bytes,1,opt,name=login,proto3" json:"login,omitempty"`
 	// Uuid of the audit trace
 	Uuid *string `protobuf:"bytes,2,opt,name=uuid,proto3,oneof" json:"uuid,omitempty"`
-	// From describes the start of the time window in which to list audit traces (if not specified this defaults to the last eight hours)
+	// From describes the start of the time window in which to list audit traces. Defaults to the last eight hours
 	From *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=from,proto3,oneof" json:"from,omitempty"`
-	// To describes the end of the time window in which to list audit traces (if not specified this defaults to the time the request was issued)
+	// To describes the end of the time window in which to list audit traces. Defaults to the time the request was issued
 	To *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=to,proto3,oneof" json:"to,omitempty"`
 	// User is the user who called the api method
 	User *string `protobuf:"bytes,5,opt,name=user,proto3,oneof" json:"user,omitempty"`
@@ -220,9 +220,9 @@ type AuditServiceListRequest struct {
 	Project *string `protobuf:"bytes,6,opt,name=project,proto3,oneof" json:"project,omitempty"`
 	// Method is the api method that was called
 	Method *string `protobuf:"bytes,7,opt,name=method,proto3,oneof" json:"method,omitempty"`
-	// SourceIP contains the ip address of the caller
+	// Source IP contains the ip address of the caller
 	SourceIp *string `protobuf:"bytes,8,opt,name=source_ip,json=sourceIp,proto3,oneof" json:"source_ip,omitempty"`
-	// ResultCode is a string describing the result of the api call
+	// Result Code is a string describing the result of the api call
 	ResultCode *int32 `protobuf:"varint,9,opt,name=result_code,json=resultCode,proto3,oneof" json:"result_code,omitempty"`
 	// Body is a string providing text-search of the body field
 	Body *string `protobuf:"bytes,10,opt,name=body,proto3,oneof" json:"body,omitempty"`
@@ -351,7 +351,7 @@ func (x *AuditServiceListRequest) GetPhase() AuditPhase {
 // AuditServiceListResponse is the response payload of a audit list request
 type AuditServiceListResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Traces is a list of audit traces without the secrets
+	// Traces is a list of audit traces
 	Traces        []*AuditTrace `protobuf:"bytes,1,rep,name=traces,proto3" json:"traces,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -401,7 +401,7 @@ type AuditServiceGetRequest struct {
 	Login string `protobuf:"bytes,1,opt,name=login,proto3" json:"login,omitempty"`
 	// Uuid of the audit trace
 	Uuid string `protobuf:"bytes,2,opt,name=uuid,proto3" json:"uuid,omitempty"`
-	// Phase specifies the audit phase, defaults to request
+	// Phase specifies the audit phase. Defaults to request
 	Phase         *AuditPhase `protobuf:"varint,3,opt,name=phase,proto3,enum=api.v1.AuditPhase,oneof" json:"phase,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
