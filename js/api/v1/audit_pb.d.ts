@@ -1,4 +1,4 @@
-import type { GenFile, GenMessage, GenService } from "@bufbuild/protobuf/codegenv1";
+import type { GenEnum, GenFile, GenMessage, GenService } from "@bufbuild/protobuf/codegenv1";
 import type { Timestamp } from "@bufbuild/protobuf/wkt";
 import type { Message } from "@bufbuild/protobuf";
 /**
@@ -24,7 +24,7 @@ export type AuditTrace = Message<"api.v1.AuditTrace"> & {
      */
     timestamp?: Timestamp;
     /**
-     * User is the user who called the api method
+     * User is the login user who called the api method
      *
      * @generated from field: string user = 3;
      */
@@ -48,29 +48,29 @@ export type AuditTrace = Message<"api.v1.AuditTrace"> & {
      */
     method: string;
     /**
-     * Request is the payload of the request
+     * Body is the payload of the api call. In the request phase this contains the payload sent by the client, in the request phase it contains the payload returned by the api server
      *
      * @generated from field: optional string body = 7;
      */
     body?: string;
     /**
-     * Response is the payload of the response
+     * Source  IP is contains the source ip address of the api call
      *
      * @generated from field: string source_ip = 8;
      */
     sourceIp: string;
     /**
-     * ResultCode is a string describing the result of the api call
+     * ResultCode is a status code describing the result of the api call. it is set for traces in the response phase and contains official gRPC status codes
      *
      * @generated from field: optional int32 result_code = 9;
      */
     resultCode?: number;
     /**
-     * Phase is a string representing the request phase
+     * Phase represents the phase of the audit trace
      *
-     * @generated from field: string phase = 10;
+     * @generated from field: api.v1.AuditPhase phase = 10;
      */
-    phase: string;
+    phase: AuditPhase;
 };
 /**
  * Describes the message api.v1.AuditTrace.
@@ -96,15 +96,15 @@ export type AuditServiceListRequest = Message<"api.v1.AuditServiceListRequest"> 
      */
     uuid?: string;
     /**
-     * From describes the start of the time window in which to list audit traces
+     * From describes the start of the time window in which to list audit traces (if not specified this defaults to the last eight hours)
      *
-     * @generated from field: google.protobuf.Timestamp from = 3;
+     * @generated from field: optional google.protobuf.Timestamp from = 3;
      */
     from?: Timestamp;
     /**
-     * To describes the end of the time window in which to list audit traces
+     * To describes the end of the time window in which to list audit traces (if not specified this defaults to the time the request was issued)
      *
-     * @generated from field: google.protobuf.Timestamp to = 4;
+     * @generated from field: optional google.protobuf.Timestamp to = 4;
      */
     to?: Timestamp;
     /**
@@ -144,7 +144,7 @@ export type AuditServiceListRequest = Message<"api.v1.AuditServiceListRequest"> 
      */
     body?: string;
     /**
-     * Limit is a number limiting the length of the response (min: 1, max: 1000)
+     * Limit is a number limiting the length of the response (min: 1, max: 1000, defaults to 200)
      *
      * @generated from field: optional int32 limit = 11;
      */
@@ -162,11 +162,11 @@ export declare const AuditServiceListRequestSchema: GenMessage<AuditServiceListR
  */
 export type AuditServiceListResponse = Message<"api.v1.AuditServiceListResponse"> & {
     /**
-     * Audits is a list of audits without the secrets
+     * Traces is a list of audit traces without the secrets
      *
-     * @generated from field: repeated api.v1.AuditTrace audits = 1;
+     * @generated from field: repeated api.v1.AuditTrace traces = 1;
      */
-    audits: AuditTrace[];
+    traces: AuditTrace[];
 };
 /**
  * Describes the message api.v1.AuditServiceListResponse.
@@ -191,6 +191,12 @@ export type AuditServiceGetRequest = Message<"api.v1.AuditServiceGetRequest"> & 
      * @generated from field: string uuid = 2;
      */
     uuid: string;
+    /**
+     * Phase specifies the audit phase.
+     *
+     * @generated from field: optional api.v1.AuditPhase phase = 3;
+     */
+    phase?: AuditPhase;
 };
 /**
  * Describes the message api.v1.AuditServiceGetRequest.
@@ -204,17 +210,46 @@ export declare const AuditServiceGetRequestSchema: GenMessage<AuditServiceGetReq
  */
 export type AuditServiceGetResponse = Message<"api.v1.AuditServiceGetResponse"> & {
     /**
-     * Audit is the audit
+     * Trace is the audit trace
      *
-     * @generated from field: api.v1.AuditTrace audit = 2;
+     * @generated from field: api.v1.AuditTrace trace = 1;
      */
-    audit?: AuditTrace;
+    trace?: AuditTrace;
 };
 /**
  * Describes the message api.v1.AuditServiceGetResponse.
  * Use `create(AuditServiceGetResponseSchema)` to create a new message.
  */
 export declare const AuditServiceGetResponseSchema: GenMessage<AuditServiceGetResponse>;
+/**
+ * AuditPhase specifies phase of an audit trace
+ *
+ * @generated from enum api.v1.AuditPhase
+ */
+export declare enum AuditPhase {
+    /**
+     * AUDIT_PHASE_UNSPECIFIED is not specified
+     *
+     * @generated from enum value: AUDIT_PHASE_UNSPECIFIED = 0;
+     */
+    UNSPECIFIED = 0,
+    /**
+     * AUDIT_PHASE_REQUEST defines an audit trace in the request phase
+     *
+     * @generated from enum value: AUDIT_PHASE_REQUEST = 1;
+     */
+    REQUEST = 1,
+    /**
+     * AUDIT_PHASE_REQUEST defines an audit trace in the response phase
+     *
+     * @generated from enum value: AUDIT_PHASE_RESPONSE = 2;
+     */
+    RESPONSE = 2
+}
+/**
+ * Describes the enum api.v1.AuditPhase.
+ */
+export declare const AuditPhaseSchema: GenEnum<AuditPhase>;
 /**
  * AuditService serves audit related functions
  *
@@ -223,7 +258,7 @@ export declare const AuditServiceGetResponseSchema: GenMessage<AuditServiceGetRe
  */
 export declare const AuditService: GenService<{
     /**
-     * Get a audit
+     * Get an audit trace
      *
      * @generated from rpc api.v1.AuditService.Get
      */
@@ -233,7 +268,7 @@ export declare const AuditService: GenService<{
         output: typeof AuditServiceGetResponseSchema;
     };
     /**
-     * List your audit traces
+     * List audit traces
      *
      * @generated from rpc api.v1.AuditService.List
      */

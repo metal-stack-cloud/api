@@ -41,9 +41,9 @@ const (
 
 // AuditServiceClient is a client for the api.v1.AuditService service.
 type AuditServiceClient interface {
-	// Get a audit
+	// Get an audit trace
 	Get(context.Context, *connect.Request[v1.AuditServiceGetRequest]) (*connect.Response[v1.AuditServiceGetResponse], error)
-	// List your audit traces
+	// List audit traces
 	List(context.Context, *connect.Request[v1.AuditServiceListRequest]) (*connect.Response[v1.AuditServiceListResponse], error)
 }
 
@@ -91,9 +91,9 @@ func (c *auditServiceClient) List(ctx context.Context, req *connect.Request[v1.A
 
 // AuditServiceHandler is an implementation of the api.v1.AuditService service.
 type AuditServiceHandler interface {
-	// Get a audit
+	// Get an audit trace
 	Get(context.Context, *connect.Request[v1.AuditServiceGetRequest]) (*connect.Response[v1.AuditServiceGetResponse], error)
-	// List your audit traces
+	// List audit traces
 	List(context.Context, *connect.Request[v1.AuditServiceListRequest]) (*connect.Response[v1.AuditServiceListResponse], error)
 }
 

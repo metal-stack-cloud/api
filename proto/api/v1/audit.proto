@@ -9,16 +9,26 @@ import "google/protobuf/timestamp.proto";
 // AuditService serves audit related functions
 //
 service AuditService {
-  // Get a audit
+  // Get an audit trace
   rpc Get(AuditServiceGetRequest) returns (AuditServiceGetResponse) {
     option (tenant_roles) = TENANT_ROLE_OWNER;
     option (auditing) = AUDITING_EXCLUDED;
   }
-  // List your audit traces
+  // List audit traces
   rpc List(AuditServiceListRequest) returns (AuditServiceListResponse) {
     option (tenant_roles) = TENANT_ROLE_OWNER;
     option (auditing) = AUDITING_EXCLUDED;
   }
+}
+
+// AuditPhase specifies phase of an audit trace
+enum AuditPhase {
+  // AUDIT_PHASE_UNSPECIFIED is not specified
+  AUDIT_PHASE_UNSPECIFIED = 0;
+  // AUDIT_PHASE_REQUEST defines an audit trace in the request phase
+  AUDIT_PHASE_REQUEST = 1;
+  // AUDIT_PHASE_REQUEST defines an audit trace in the response phase
+  AUDIT_PHASE_RESPONSE = 2;
 }
 
 // AuditTrace is an audit trace
@@ -35,14 +45,14 @@ message AuditTrace {
   optional string project = 5;
   // Method is the api method that was called
   string method = 6;
-  // Body is the payload of the api call. In the request phase this contains the payload sent by the client, in the request phase it contains the payload returned by the api server.
+  // Body is the payload of the api call. In the request phase this contains the payload sent by the client, in the request phase it contains the payload returned by the api server
   optional string body = 7;
   // Source  IP is contains the source ip address of the api call
   string source_ip = 8;
-  // ResultCode is a status code describing the result of the api call. it is set for traces in the response phase and contains official gRPC status codes.
+  // ResultCode is a status code describing the result of the api call. it is set for traces in the response phase and contains official gRPC status codes
   optional int32 result_code = 9;
-  // Phase is a string representing the request phase
-  string phase = 10;
+  // Phase represents the phase of the audit trace
+  AuditPhase phase = 10;
 }
 
 // AuditServiceListRequest is the request payload to list audits
@@ -55,9 +65,9 @@ message AuditServiceListRequest {
   // Uuid of the audit trace
   optional string uuid = 2 [(buf.validate.field).string.uuid = true];
   // From describes the start of the time window in which to list audit traces (if not specified this defaults to the last eight hours)
-  google.protobuf.Timestamp from = 3 [(buf.validate.field).required = true];
+  optional google.protobuf.Timestamp from = 3 [(buf.validate.field).required = true];
   // To describes the end of the time window in which to list audit traces (if not specified this defaults to the time the request was issued)
-  google.protobuf.Timestamp to = 4 [(buf.validate.field).required = true];
+  optional google.protobuf.Timestamp to = 4 [(buf.validate.field).required = true];
   // User is the user who called the api method
   optional string user = 5 [(buf.validate.field).string = {
     min_len: 2
@@ -79,7 +89,7 @@ message AuditServiceListRequest {
     min_len: 2
     max_len: 256
   }];
-  // Limit is a number limiting the length of the response (min: 1, max: 1000)
+  // Limit is a number limiting the length of the response (min: 1, max: 1000, defaults to 200)
   optional int32 limit = 11 [(buf.validate.field).int32 = {
     gt: 0
     lte: 1000
@@ -101,10 +111,12 @@ message AuditServiceGetRequest {
   }];
   // Uuid of the audit trace
   string uuid = 2 [(buf.validate.field).string.uuid = true];
+  // Phase specifies the audit phase.
+  optional AuditPhase phase = 3 [(buf.validate.field).enum.defined_only = true];
 }
 
 // AuditServiceGetResponse is the response payload of a audit get request
 message AuditServiceGetResponse {
   // Trace is the audit trace
-  AuditTrace trace = 2;
+  AuditTrace trace = 1;
 }

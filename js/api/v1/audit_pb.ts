@@ -2,8 +2,8 @@
 // @generated from file api/v1/audit.proto (package api.v1, syntax proto3)
 /* eslint-disable */
 
-import type { GenFile, GenMessage, GenService } from "@bufbuild/protobuf/codegenv1";
-import { fileDesc, messageDesc, serviceDesc } from "@bufbuild/protobuf/codegenv1";
+import type { GenEnum, GenFile, GenMessage, GenService } from "@bufbuild/protobuf/codegenv1";
+import { enumDesc, fileDesc, messageDesc, serviceDesc } from "@bufbuild/protobuf/codegenv1";
 import { file_api_v1_common } from "./common_pb";
 import { file_buf_validate_validate } from "../../buf/validate/validate_pb";
 import type { Timestamp } from "@bufbuild/protobuf/wkt";
@@ -14,7 +14,7 @@ import type { Message } from "@bufbuild/protobuf";
  * Describes the file api/v1/audit.proto.
  */
 export const file_api_v1_audit: GenFile = /*@__PURE__*/
-  fileDesc("ChJhcGkvdjEvYXVkaXQucHJvdG8SBmFwaS52MSKLAgoKQXVkaXRUcmFjZRIWCgR1dWlkGAEgASgJQgi6SAVyA7ABARItCgl0aW1lc3RhbXAYAiABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wEgwKBHVzZXIYAyABKAkSDgoGdGVuYW50GAQgASgJEhQKB3Byb2plY3QYBSABKAlIAIgBARIOCgZtZXRob2QYBiABKAkSEQoEYm9keRgHIAEoCUgBiAEBEhEKCXNvdXJjZV9pcBgIIAEoCRIYCgtyZXN1bHRfY29kZRgJIAEoBUgCiAEBEg0KBXBoYXNlGAogASgJQgoKCF9wcm9qZWN0QgcKBV9ib2R5Qg4KDF9yZXN1bHRfY29kZSLwAwoXQXVkaXRTZXJ2aWNlTGlzdFJlcXVlc3QSGQoFbG9naW4YASABKAlCCrpIB3IFEAIYgAESGwoEdXVpZBgCIAEoCUIIukgFcgOwAQFIAIgBARIwCgRmcm9tGAMgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcEIGukgDyAEBEi4KAnRvGAQgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcEIGukgDyAEBEh0KBHVzZXIYBSABKAlCCrpIB3IFEAIYgAFIAYgBARIeCgdwcm9qZWN0GAYgASgJQgi6SAVyA7ABAUgCiAEBEh8KBm1ldGhvZBgHIAEoCUIKukgHcgUQAhiAAkgDiAEBEh8KCXNvdXJjZV9pcBgIIAEoCUIHukgEcgJwAUgEiAEBEiEKC3Jlc3VsdF9jb2RlGAkgASgFQge6SAQaAigASAWIAQESHQoEYm9keRgKIAEoCUIKukgHcgUQAhiAAkgGiAEBEh4KBWxpbWl0GAsgASgFQgq6SAcaBRjoByAASAeIAQFCBwoFX3V1aWRCBwoFX3VzZXJCCgoIX3Byb2plY3RCCQoHX21ldGhvZEIMCgpfc291cmNlX2lwQg4KDF9yZXN1bHRfY29kZUIHCgVfYm9keUIICgZfbGltaXQiPgoYQXVkaXRTZXJ2aWNlTGlzdFJlc3BvbnNlEiIKBmF1ZGl0cxgBIAMoCzISLmFwaS52MS5BdWRpdFRyYWNlIksKFkF1ZGl0U2VydmljZUdldFJlcXVlc3QSGQoFbG9naW4YASABKAlCCrpIB3IFEAIYgAESFgoEdXVpZBgCIAEoCUIIukgFcgOwAQEiPAoXQXVkaXRTZXJ2aWNlR2V0UmVzcG9uc2USIQoFYXVkaXQYAiABKAsyEi5hcGkudjEuQXVkaXRUcmFjZTK3AQoMQXVkaXRTZXJ2aWNlElEKA0dldBIeLmFwaS52MS5BdWRpdFNlcnZpY2VHZXRSZXF1ZXN0Gh8uYXBpLnYxLkF1ZGl0U2VydmljZUdldFJlc3BvbnNlIgnC8xgBAejzGAISVAoETGlzdBIfLmFwaS52MS5BdWRpdFNlcnZpY2VMaXN0UmVxdWVzdBogLmFwaS52MS5BdWRpdFNlcnZpY2VMaXN0UmVzcG9uc2UiCcLzGAEB6PMYAkKDAQoKY29tLmFwaS52MUIKQXVkaXRQcm90b1ABWjBnaXRodWIuY29tL21ldGFsLXN0YWNrLWNsb3VkL2FwaS9nby9hcGkvdjE7YXBpdjGiAgNBWFiqAgZBcGkuVjHKAgZBcGlcVjHiAhJBcGlcVjFcR1BCTWV0YWRhdGHqAgdBcGk6OlYxYgZwcm90bzM", [file_api_v1_common, file_buf_validate_validate, file_google_protobuf_timestamp]);
+  fileDesc("ChJhcGkvdjEvYXVkaXQucHJvdG8SBmFwaS52MSKfAgoKQXVkaXRUcmFjZRIWCgR1dWlkGAEgASgJQgi6SAVyA7ABARItCgl0aW1lc3RhbXAYAiABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wEgwKBHVzZXIYAyABKAkSDgoGdGVuYW50GAQgASgJEhQKB3Byb2plY3QYBSABKAlIAIgBARIOCgZtZXRob2QYBiABKAkSEQoEYm9keRgHIAEoCUgBiAEBEhEKCXNvdXJjZV9pcBgIIAEoCRIYCgtyZXN1bHRfY29kZRgJIAEoBUgCiAEBEiEKBXBoYXNlGAogASgOMhIuYXBpLnYxLkF1ZGl0UGhhc2VCCgoIX3Byb2plY3RCBwoFX2JvZHlCDgoMX3Jlc3VsdF9jb2RlIooEChdBdWRpdFNlcnZpY2VMaXN0UmVxdWVzdBIZCgVsb2dpbhgBIAEoCUIKukgHcgUQAhiAARIbCgR1dWlkGAIgASgJQgi6SAVyA7ABAUgAiAEBEjUKBGZyb20YAyABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wQga6SAPIAQFIAYgBARIzCgJ0bxgEIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXBCBrpIA8gBAUgCiAEBEh0KBHVzZXIYBSABKAlCCrpIB3IFEAIYgAFIA4gBARIeCgdwcm9qZWN0GAYgASgJQgi6SAVyA7ABAUgEiAEBEh8KBm1ldGhvZBgHIAEoCUIKukgHcgUQAhiAAkgFiAEBEh8KCXNvdXJjZV9pcBgIIAEoCUIHukgEcgJwAUgGiAEBEiEKC3Jlc3VsdF9jb2RlGAkgASgFQge6SAQaAigASAeIAQESHQoEYm9keRgKIAEoCUIKukgHcgUQAhiAAkgIiAEBEh4KBWxpbWl0GAsgASgFQgq6SAcaBRjoByAASAmIAQFCBwoFX3V1aWRCBwoFX2Zyb21CBQoDX3RvQgcKBV91c2VyQgoKCF9wcm9qZWN0QgkKB19tZXRob2RCDAoKX3NvdXJjZV9pcEIOCgxfcmVzdWx0X2NvZGVCBwoFX2JvZHlCCAoGX2xpbWl0Ij4KGEF1ZGl0U2VydmljZUxpc3RSZXNwb25zZRIiCgZ0cmFjZXMYASADKAsyEi5hcGkudjEuQXVkaXRUcmFjZSKHAQoWQXVkaXRTZXJ2aWNlR2V0UmVxdWVzdBIZCgVsb2dpbhgBIAEoCUIKukgHcgUQAhiAARIWCgR1dWlkGAIgASgJQgi6SAVyA7ABARIwCgVwaGFzZRgDIAEoDjISLmFwaS52MS5BdWRpdFBoYXNlQgi6SAWCAQIQAUgAiAEBQggKBl9waGFzZSI8ChdBdWRpdFNlcnZpY2VHZXRSZXNwb25zZRIhCgV0cmFjZRgBIAEoCzISLmFwaS52MS5BdWRpdFRyYWNlKlwKCkF1ZGl0UGhhc2USGwoXQVVESVRfUEhBU0VfVU5TUEVDSUZJRUQQABIXChNBVURJVF9QSEFTRV9SRVFVRVNUEAESGAoUQVVESVRfUEhBU0VfUkVTUE9OU0UQAjK3AQoMQXVkaXRTZXJ2aWNlElEKA0dldBIeLmFwaS52MS5BdWRpdFNlcnZpY2VHZXRSZXF1ZXN0Gh8uYXBpLnYxLkF1ZGl0U2VydmljZUdldFJlc3BvbnNlIgnC8xgBAejzGAISVAoETGlzdBIfLmFwaS52MS5BdWRpdFNlcnZpY2VMaXN0UmVxdWVzdBogLmFwaS52MS5BdWRpdFNlcnZpY2VMaXN0UmVzcG9uc2UiCcLzGAEB6PMYAkKDAQoKY29tLmFwaS52MUIKQXVkaXRQcm90b1ABWjBnaXRodWIuY29tL21ldGFsLXN0YWNrLWNsb3VkL2FwaS9nby9hcGkvdjE7YXBpdjGiAgNBWFiqAgZBcGkuVjHKAgZBcGlcVjHiAhJBcGlcVjFcR1BCTWV0YWRhdGHqAgdBcGk6OlYxYgZwcm90bzM", [file_api_v1_common, file_buf_validate_validate, file_google_protobuf_timestamp]);
 
 /**
  * AuditTrace is an audit trace
@@ -37,7 +37,7 @@ export type AuditTrace = Message<"api.v1.AuditTrace"> & {
   timestamp?: Timestamp;
 
   /**
-   * User is the user who called the api method
+   * User is the login user who called the api method
    *
    * @generated from field: string user = 3;
    */
@@ -65,32 +65,32 @@ export type AuditTrace = Message<"api.v1.AuditTrace"> & {
   method: string;
 
   /**
-   * Request is the payload of the request
+   * Body is the payload of the api call. In the request phase this contains the payload sent by the client, in the request phase it contains the payload returned by the api server
    *
    * @generated from field: optional string body = 7;
    */
   body?: string;
 
   /**
-   * Response is the payload of the response
+   * Source  IP is contains the source ip address of the api call
    *
    * @generated from field: string source_ip = 8;
    */
   sourceIp: string;
 
   /**
-   * ResultCode is a string describing the result of the api call
+   * ResultCode is a status code describing the result of the api call. it is set for traces in the response phase and contains official gRPC status codes
    *
    * @generated from field: optional int32 result_code = 9;
    */
   resultCode?: number;
 
   /**
-   * Phase is a string representing the request phase
+   * Phase represents the phase of the audit trace
    *
-   * @generated from field: string phase = 10;
+   * @generated from field: api.v1.AuditPhase phase = 10;
    */
-  phase: string;
+  phase: AuditPhase;
 };
 
 /**
@@ -121,16 +121,16 @@ export type AuditServiceListRequest = Message<"api.v1.AuditServiceListRequest"> 
   uuid?: string;
 
   /**
-   * From describes the start of the time window in which to list audit traces
+   * From describes the start of the time window in which to list audit traces (if not specified this defaults to the last eight hours)
    *
-   * @generated from field: google.protobuf.Timestamp from = 3;
+   * @generated from field: optional google.protobuf.Timestamp from = 3;
    */
   from?: Timestamp;
 
   /**
-   * To describes the end of the time window in which to list audit traces
+   * To describes the end of the time window in which to list audit traces (if not specified this defaults to the time the request was issued)
    *
-   * @generated from field: google.protobuf.Timestamp to = 4;
+   * @generated from field: optional google.protobuf.Timestamp to = 4;
    */
   to?: Timestamp;
 
@@ -177,7 +177,7 @@ export type AuditServiceListRequest = Message<"api.v1.AuditServiceListRequest"> 
   body?: string;
 
   /**
-   * Limit is a number limiting the length of the response (min: 1, max: 1000)
+   * Limit is a number limiting the length of the response (min: 1, max: 1000, defaults to 200)
    *
    * @generated from field: optional int32 limit = 11;
    */
@@ -198,11 +198,11 @@ export const AuditServiceListRequestSchema: GenMessage<AuditServiceListRequest> 
  */
 export type AuditServiceListResponse = Message<"api.v1.AuditServiceListResponse"> & {
   /**
-   * Audits is a list of audits without the secrets
+   * Traces is a list of audit traces without the secrets
    *
-   * @generated from field: repeated api.v1.AuditTrace audits = 1;
+   * @generated from field: repeated api.v1.AuditTrace traces = 1;
    */
-  audits: AuditTrace[];
+  traces: AuditTrace[];
 };
 
 /**
@@ -231,6 +231,13 @@ export type AuditServiceGetRequest = Message<"api.v1.AuditServiceGetRequest"> & 
    * @generated from field: string uuid = 2;
    */
   uuid: string;
+
+  /**
+   * Phase specifies the audit phase.
+   *
+   * @generated from field: optional api.v1.AuditPhase phase = 3;
+   */
+  phase?: AuditPhase;
 };
 
 /**
@@ -247,11 +254,11 @@ export const AuditServiceGetRequestSchema: GenMessage<AuditServiceGetRequest> = 
  */
 export type AuditServiceGetResponse = Message<"api.v1.AuditServiceGetResponse"> & {
   /**
-   * Audit is the audit
+   * Trace is the audit trace
    *
-   * @generated from field: api.v1.AuditTrace audit = 2;
+   * @generated from field: api.v1.AuditTrace trace = 1;
    */
-  audit?: AuditTrace;
+  trace?: AuditTrace;
 };
 
 /**
@@ -262,6 +269,40 @@ export const AuditServiceGetResponseSchema: GenMessage<AuditServiceGetResponse> 
   messageDesc(file_api_v1_audit, 4);
 
 /**
+ * AuditPhase specifies phase of an audit trace
+ *
+ * @generated from enum api.v1.AuditPhase
+ */
+export enum AuditPhase {
+  /**
+   * AUDIT_PHASE_UNSPECIFIED is not specified
+   *
+   * @generated from enum value: AUDIT_PHASE_UNSPECIFIED = 0;
+   */
+  UNSPECIFIED = 0,
+
+  /**
+   * AUDIT_PHASE_REQUEST defines an audit trace in the request phase
+   *
+   * @generated from enum value: AUDIT_PHASE_REQUEST = 1;
+   */
+  REQUEST = 1,
+
+  /**
+   * AUDIT_PHASE_REQUEST defines an audit trace in the response phase
+   *
+   * @generated from enum value: AUDIT_PHASE_RESPONSE = 2;
+   */
+  RESPONSE = 2,
+}
+
+/**
+ * Describes the enum api.v1.AuditPhase.
+ */
+export const AuditPhaseSchema: GenEnum<AuditPhase> = /*@__PURE__*/
+  enumDesc(file_api_v1_audit, 0);
+
+/**
  * AuditService serves audit related functions
  *
  *
@@ -269,7 +310,7 @@ export const AuditServiceGetResponseSchema: GenMessage<AuditServiceGetResponse> 
  */
 export const AuditService: GenService<{
   /**
-   * Get a audit
+   * Get an audit trace
    *
    * @generated from rpc api.v1.AuditService.Get
    */
@@ -279,7 +320,7 @@ export const AuditService: GenService<{
     output: typeof AuditServiceGetResponseSchema;
   },
   /**
-   * List your audit traces
+   * List audit traces
    *
    * @generated from rpc api.v1.AuditService.List
    */

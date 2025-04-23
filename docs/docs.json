@@ -11257,11 +11257,35 @@
       "name": "api/v1/audit.proto",
       "description": "",
       "package": "api.v1",
-      "hasEnums": false,
+      "hasEnums": true,
       "hasExtensions": false,
       "hasMessages": true,
       "hasServices": true,
-      "enums": [],
+      "enums": [
+        {
+          "name": "AuditPhase",
+          "longName": "AuditPhase",
+          "fullName": "api.v1.AuditPhase",
+          "description": "AuditPhase specifies phase of an audit trace",
+          "values": [
+            {
+              "name": "AUDIT_PHASE_UNSPECIFIED",
+              "number": "0",
+              "description": "AUDIT_PHASE_UNSPECIFIED is not specified"
+            },
+            {
+              "name": "AUDIT_PHASE_REQUEST",
+              "number": "1",
+              "description": "AUDIT_PHASE_REQUEST defines an audit trace in the request phase"
+            },
+            {
+              "name": "AUDIT_PHASE_RESPONSE",
+              "number": "2",
+              "description": "AUDIT_PHASE_REQUEST defines an audit trace in the response phase"
+            }
+          ]
+        }
+      ],
       "extensions": [],
       "messages": [
         {
@@ -11271,7 +11295,7 @@
           "description": "AuditServiceGetRequest is the request payload of a audit get request",
           "hasExtensions": false,
           "hasFields": true,
-          "hasOneofs": false,
+          "hasOneofs": true,
           "extensions": [],
           "fields": [
             {
@@ -11297,6 +11321,18 @@
               "isoneof": false,
               "oneofdecl": "",
               "defaultValue": ""
+            },
+            {
+              "name": "phase",
+              "description": "Phase specifies the audit phase.",
+              "label": "optional",
+              "type": "AuditPhase",
+              "longType": "AuditPhase",
+              "fullType": "api.v1.AuditPhase",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "_phase",
+              "defaultValue": ""
             }
           ]
         },
@@ -11311,8 +11347,8 @@
           "extensions": [],
           "fields": [
             {
-              "name": "audit",
-              "description": "Audit is the audit",
+              "name": "trace",
+              "description": "Trace is the audit trace",
               "label": "",
               "type": "AuditTrace",
               "longType": "AuditTrace",
@@ -11360,26 +11396,26 @@
             },
             {
               "name": "from",
-              "description": "From describes the start of the time window in which to list audit traces",
-              "label": "",
+              "description": "From describes the start of the time window in which to list audit traces (if not specified this defaults to the last eight hours)",
+              "label": "optional",
               "type": "Timestamp",
               "longType": "google.protobuf.Timestamp",
               "fullType": "google.protobuf.Timestamp",
               "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
+              "isoneof": true,
+              "oneofdecl": "_from",
               "defaultValue": ""
             },
             {
               "name": "to",
-              "description": "To describes the end of the time window in which to list audit traces",
-              "label": "",
+              "description": "To describes the end of the time window in which to list audit traces (if not specified this defaults to the time the request was issued)",
+              "label": "optional",
               "type": "Timestamp",
               "longType": "google.protobuf.Timestamp",
               "fullType": "google.protobuf.Timestamp",
               "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
+              "isoneof": true,
+              "oneofdecl": "_to",
               "defaultValue": ""
             },
             {
@@ -11456,7 +11492,7 @@
             },
             {
               "name": "limit",
-              "description": "Limit is a number limiting the length of the response (min: 1, max: 1000)",
+              "description": "Limit is a number limiting the length of the response (min: 1, max: 1000, defaults to 200)",
               "label": "optional",
               "type": "int32",
               "longType": "int32",
@@ -11479,8 +11515,8 @@
           "extensions": [],
           "fields": [
             {
-              "name": "audits",
-              "description": "Audits is a list of audits without the secrets",
+              "name": "traces",
+              "description": "Traces is a list of audit traces without the secrets",
               "label": "repeated",
               "type": "AuditTrace",
               "longType": "AuditTrace",
@@ -11528,7 +11564,7 @@
             },
             {
               "name": "user",
-              "description": "User is the user who called the api method",
+              "description": "User is the login user who called the api method",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -11576,7 +11612,7 @@
             },
             {
               "name": "body",
-              "description": "Request is the payload of the request",
+              "description": "Body is the payload of the api call. In the request phase this contains the payload sent by the client, in the request phase it contains the payload returned by the api server",
               "label": "optional",
               "type": "string",
               "longType": "string",
@@ -11588,7 +11624,7 @@
             },
             {
               "name": "source_ip",
-              "description": "Response is the payload of the response",
+              "description": "Source  IP is contains the source ip address of the api call",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -11600,7 +11636,7 @@
             },
             {
               "name": "result_code",
-              "description": "ResultCode is a string describing the result of the api call",
+              "description": "ResultCode is a status code describing the result of the api call. it is set for traces in the response phase and contains official gRPC status codes",
               "label": "optional",
               "type": "int32",
               "longType": "int32",
@@ -11612,11 +11648,11 @@
             },
             {
               "name": "phase",
-              "description": "Phase is a string representing the request phase",
+              "description": "Phase represents the phase of the audit trace",
               "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
+              "type": "AuditPhase",
+              "longType": "AuditPhase",
+              "fullType": "api.v1.AuditPhase",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
@@ -11634,7 +11670,7 @@
           "methods": [
             {
               "name": "Get",
-              "description": "Get a audit",
+              "description": "Get an audit trace",
               "requestType": "AuditServiceGetRequest",
               "requestLongType": "AuditServiceGetRequest",
               "requestFullType": "api.v1.AuditServiceGetRequest",
@@ -11646,7 +11682,7 @@
             },
             {
               "name": "List",
-              "description": "List your audit traces",
+              "description": "List audit traces",
               "requestType": "AuditServiceListRequest",
               "requestLongType": "AuditServiceListRequest",
               "requestFullType": "api.v1.AuditServiceListRequest",
