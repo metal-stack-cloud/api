@@ -65,9 +65,9 @@ message AuditServiceListRequest {
   // Uuid of the audit trace
   optional string uuid = 2 [(buf.validate.field).string.uuid = true];
   // From describes the start of the time window in which to list audit traces (if not specified this defaults to the last eight hours)
-  optional google.protobuf.Timestamp from = 3 [(buf.validate.field).required = true];
+  optional google.protobuf.Timestamp from = 3;
   // To describes the end of the time window in which to list audit traces (if not specified this defaults to the time the request was issued)
-  optional google.protobuf.Timestamp to = 4 [(buf.validate.field).required = true];
+  optional google.protobuf.Timestamp to = 4;
   // User is the user who called the api method
   optional string user = 5 [(buf.validate.field).string = {
     min_len: 2
