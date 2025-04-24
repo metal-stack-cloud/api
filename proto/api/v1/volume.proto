@@ -126,6 +126,14 @@ message VolumeLabel {
   }];
 }
 
+// UpdateVolumeLabels allows updating the labels
+message UpdateVolumeLabels {
+  // Update volume labels. New ones will be added, existing ones overwritten
+  repeated VolumeLabel update = 1;
+  // Remove volume labels
+  repeated string remove = 2;
+}
+
 // VolumeStatistics are all detailed statistics of a volume
 message VolumeStatistics {
   // LogicalUsedStorage
@@ -280,8 +288,8 @@ message VolumeServiceUpdateRequest {
     min_len: 2
     max_len: 128
   }];
-  // Labels stored in the volume
-  repeated VolumeLabel labels = 24;
+  // Update Volume Labels stored in the volume. Some labels are immutable and cannot be changed.
+  optional UpdateVolumeLabels labels = 24;
 }
 
 // SnapshotServiceGetRequest is the request payload of a snapshot list request

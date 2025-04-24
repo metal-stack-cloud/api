@@ -6291,6 +6291,42 @@
           ]
         },
         {
+          "name": "UpdateVolumeLabels",
+          "longName": "UpdateVolumeLabels",
+          "fullName": "api.v1.UpdateVolumeLabels",
+          "description": "UpdateVolumeLabels allows updating the labels",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "update",
+              "description": "Update volume labels. New ones will be added, existing ones overwritten",
+              "label": "repeated",
+              "type": "VolumeLabel",
+              "longType": "VolumeLabel",
+              "fullType": "api.v1.VolumeLabel",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "remove",
+              "description": "Remove volume labels",
+              "label": "repeated",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
           "name": "Volume",
           "longName": "Volume",
           "fullName": "api.v1.Volume",
@@ -6837,7 +6873,7 @@
           "description": "VolumeServiceUpdateRequest is the request payload of a volume update request",
           "hasExtensions": false,
           "hasFields": true,
-          "hasOneofs": false,
+          "hasOneofs": true,
           "extensions": [],
           "fields": [
             {
@@ -6866,14 +6902,14 @@
             },
             {
               "name": "labels",
-              "description": "Labels stored in the volume",
-              "label": "repeated",
-              "type": "VolumeLabel",
-              "longType": "VolumeLabel",
-              "fullType": "api.v1.VolumeLabel",
+              "description": "Update Volume Labels stored in the volume. Some labels are immutable and cannot be changed.",
+              "label": "optional",
+              "type": "UpdateVolumeLabels",
+              "longType": "UpdateVolumeLabels",
+              "fullType": "api.v1.UpdateVolumeLabels",
               "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
+              "isoneof": true,
+              "oneofdecl": "_labels",
               "defaultValue": ""
             }
           ]

@@ -188,6 +188,30 @@ export type VolumeLabel = Message<"api.v1.VolumeLabel"> & {
  */
 export declare const VolumeLabelSchema: GenMessage<VolumeLabel>;
 /**
+ * UpdateVolumeLabels allows updating the labels
+ *
+ * @generated from message api.v1.UpdateVolumeLabels
+ */
+export type UpdateVolumeLabels = Message<"api.v1.UpdateVolumeLabels"> & {
+    /**
+     * Update volume labels. New ones will be added, existing ones overwritten
+     *
+     * @generated from field: repeated api.v1.VolumeLabel update = 1;
+     */
+    update: VolumeLabel[];
+    /**
+     * Remove volume labels
+     *
+     * @generated from field: repeated string remove = 2;
+     */
+    remove: string[];
+};
+/**
+ * Describes the message api.v1.UpdateVolumeLabels.
+ * Use `create(UpdateVolumeLabelsSchema)` to create a new message.
+ */
+export declare const UpdateVolumeLabelsSchema: GenMessage<UpdateVolumeLabels>;
+/**
  * VolumeStatistics are all detailed statistics of a volume
  *
  * @generated from message api.v1.VolumeStatistics
@@ -550,11 +574,11 @@ export type VolumeServiceUpdateRequest = Message<"api.v1.VolumeServiceUpdateRequ
      */
     project: string;
     /**
-     * Labels stored in the volume
+     * Update Volume Labels stored in the volume. Some labels are immutable and cannot be changed.
      *
-     * @generated from field: repeated api.v1.VolumeLabel labels = 24;
+     * @generated from field: optional api.v1.UpdateVolumeLabels labels = 24;
      */
-    labels: VolumeLabel[];
+    labels?: UpdateVolumeLabels;
 };
 /**
  * Describes the message api.v1.VolumeServiceUpdateRequest.
