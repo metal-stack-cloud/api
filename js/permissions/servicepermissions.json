@@ -48,6 +48,8 @@
         "/api.v1.TenantService/Get"
       ],
       "TENANT_ROLE_OWNER": [
+        "/api.v1.AuditService/Get",
+        "/api.v1.AuditService/List",
         "/api.v1.PaymentService/CreateOrUpdateCustomer",
         "/api.v1.PaymentService/GetCustomer",
         "/api.v1.PaymentService/CheckIfCustomerExists",
@@ -163,6 +165,8 @@
     "/admin.v1.TokenService/List": true,
     "/admin.v1.TokenService/Revoke": true,
     "/api.v1.AssetService/List": true,
+    "/api.v1.AuditService/Get": true,
+    "/api.v1.AuditService/List": true,
     "/api.v1.ClusterService/Create": true,
     "/api.v1.ClusterService/Delete": true,
     "/api.v1.ClusterService/Get": true,
@@ -279,6 +283,8 @@
       "/admin.v1.TokenService/Revoke": true
     },
     "tenant": {
+      "/api.v1.AuditService/Get": true,
+      "/api.v1.AuditService/List": true,
       "/api.v1.PaymentService/CheckAdmitted": true,
       "/api.v1.PaymentService/CheckIfCustomerExists": true,
       "/api.v1.PaymentService/CreateOrUpdateCustomer": true,
@@ -355,6 +361,8 @@
     "/admin.v1.TokenService/List": true,
     "/admin.v1.TokenService/Revoke": true,
     "/api.v1.AssetService/List": false,
+    "/api.v1.AuditService/Get": false,
+    "/api.v1.AuditService/List": false,
     "/api.v1.ClusterService/Create": true,
     "/api.v1.ClusterService/Delete": true,
     "/api.v1.ClusterService/Get": false,
@@ -378,7 +386,7 @@
     "/api.v1.PaymentService/GetCustomer": false,
     "/api.v1.PaymentService/GetDefaultPrices": false,
     "/api.v1.PaymentService/GetInvoices": false,
-    "/api.v1.PaymentService/GetOnboarded": true,
+    "/api.v1.PaymentService/GetOnboarded": false,
     "/api.v1.PaymentService/GetSubscriptionUsage": false,
     "/api.v1.PaymentService/HasChargeableResources": false,
     "/api.v1.PaymentService/HasPaymentMethod": false,
@@ -433,6 +441,7 @@
     "admin.v1.TenantService",
     "admin.v1.TokenService",
     "api.v1.AssetService",
+    "api.v1.AuditService",
     "api.v1.ClusterService",
     "api.v1.HealthService",
     "api.v1.IPService",

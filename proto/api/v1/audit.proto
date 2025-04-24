@@ -1,0 +1,123 @@
+syntax = "proto3";
+
+package api.v1;
+
+import "api/v1/common.proto";
+import "buf/validate/validate.proto";
+import "google/protobuf/timestamp.proto";
+
+// AuditService serves audit related functions
+service AuditService {
+  // Get an audit trace
+  rpc Get(AuditServiceGetRequest) returns (AuditServiceGetResponse) {
+    option (tenant_roles) = TENANT_ROLE_OWNER;
+    option (auditing) = AUDITING_EXCLUDED;
+  }
+  // List audit traces
+  rpc List(AuditServiceListRequest) returns (AuditServiceListResponse) {
+    option (tenant_roles) = TENANT_ROLE_OWNER;
+    option (auditing) = AUDITING_EXCLUDED;
+  }
+}
+
+// AuditPhase specifies phase of an audit trace
+enum AuditPhase {
+  // AUDIT_PHASE_UNSPECIFIED is not specified
+  AUDIT_PHASE_UNSPECIFIED = 0;
+  // AUDIT_PHASE_REQUEST defines an audit trace in the request phase
+  AUDIT_PHASE_REQUEST = 1;
+  // AUDIT_PHASE_REQUEST defines an audit trace in the response phase
+  AUDIT_PHASE_RESPONSE = 2;
+}
+
+// AuditTrace is an audit trace
+message AuditTrace {
+  // Uuid of the audit trace
+  string uuid = 1 [(buf.validate.field).string.uuid = true];
+  // Timestamp is the timestamp when the request arrived at the api
+  google.protobuf.Timestamp timestamp = 2;
+  // User is the login user who called the api method
+  string user = 3;
+  // Tenant is the tenant targeted by the api call
+  string tenant = 4;
+  // Project is the project targeted by the api call
+  optional string project = 5;
+  // Method is the api method that was called
+  string method = 6;
+  // Body is the payload of the api call. In the request phase this contains the payload sent by the client, in the request phase it contains the payload returned by the api server
+  optional string body = 7;
+  // Source IP contains the source ip address of the api call
+  string source_ip = 8;
+  // Result Code is a status code describing the result of the api call. It is set for traces in the response phase and contains official gRPC status codes
+  optional int32 result_code = 9;
+  // Phase represents the phase of the audit trace
+  AuditPhase phase = 10;
+}
+
+// AuditServiceListRequest is the request payload to list audits
+message AuditServiceListRequest {
+  // Login of the tenant
+  string login = 1 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
+  }];
+  // Uuid of the audit trace
+  optional string uuid = 2 [(buf.validate.field).string.uuid = true];
+  // From describes the start of the time window in which to list audit traces. Defaults to the last eight hours
+  optional google.protobuf.Timestamp from = 3;
+  // To describes the end of the time window in which to list audit traces. Defaults to the time the request was issued
+  optional google.protobuf.Timestamp to = 4;
+  // User is the user who called the api method
+  optional string user = 5 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
+  }];
+  // Project is the project targeted by the api call
+  optional string project = 6 [(buf.validate.field).string.uuid = true];
+  // Method is the api method that was called
+  optional string method = 7 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 256
+  }];
+  // Source IP contains the ip address of the caller
+  optional string source_ip = 8 [(buf.validate.field).string.ip = true];
+  // Result Code is a string describing the result of the api call
+  optional int32 result_code = 9 [(buf.validate.field).int32 = {gte: 0}];
+  // Body is a string providing text-search of the body field
+  optional string body = 10 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 256
+  }];
+  // Limit is a number limiting the length of the response (min: 1, max: 1000, defaults to 200)
+  optional int32 limit = 11 [(buf.validate.field).int32 = {
+    gt: 0
+    lte: 1000
+  }];
+  // Phase specifies the audit phase
+  optional AuditPhase phase = 12 [(buf.validate.field).enum.defined_only = true];
+}
+
+// AuditServiceListResponse is the response payload of a audit list request
+message AuditServiceListResponse {
+  // Traces is a list of audit traces
+  repeated AuditTrace traces = 1;
+}
+
+// AuditServiceGetRequest is the request payload of a audit get request
+message AuditServiceGetRequest {
+  // Login of the tenant
+  string login = 1 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
+  }];
+  // Uuid of the audit trace
+  string uuid = 2 [(buf.validate.field).string.uuid = true];
+  // Phase specifies the audit phase. Defaults to request
+  optional AuditPhase phase = 3 [(buf.validate.field).enum.defined_only = true];
+}
+
+// AuditServiceGetResponse is the response payload of a audit get request
+message AuditServiceGetResponse {
+  // Trace is the audit trace
+  AuditTrace trace = 1;
+}
