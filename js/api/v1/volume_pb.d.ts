@@ -149,12 +149,68 @@ export type Volume = Message<"api.v1.Volume"> & {
      * @generated from field: string cluster_id = 23;
      */
     clusterId: string;
+    /**
+     * Labels stored in the volume
+     *
+     * @generated from field: repeated api.v1.VolumeLabel labels = 24;
+     */
+    labels: VolumeLabel[];
 };
 /**
  * Describes the message api.v1.Volume.
  * Use `create(VolumeSchema)` to create a new message.
  */
 export declare const VolumeSchema: GenMessage<Volume>;
+/**
+ * label-key and label-value length must be between 1 and 253 characters and
+ * may contain any of: alphanumeric characters (a-z, A-Z, 0-9), hyphen (-),
+ * underscore (_) and dot (.).
+ *
+ * @generated from message api.v1.VolumeLabel
+ */
+export type VolumeLabel = Message<"api.v1.VolumeLabel"> & {
+    /**
+     * key under which the value is stored
+     *
+     * @generated from field: string key = 1;
+     */
+    key: string;
+    /**
+     * value of this label
+     *
+     * @generated from field: string value = 2;
+     */
+    value: string;
+};
+/**
+ * Describes the message api.v1.VolumeLabel.
+ * Use `create(VolumeLabelSchema)` to create a new message.
+ */
+export declare const VolumeLabelSchema: GenMessage<VolumeLabel>;
+/**
+ * UpdateVolumeLabels allows updating the labels
+ *
+ * @generated from message api.v1.UpdateVolumeLabels
+ */
+export type UpdateVolumeLabels = Message<"api.v1.UpdateVolumeLabels"> & {
+    /**
+     * Update volume labels. New ones will be added, existing ones overwritten
+     *
+     * @generated from field: repeated api.v1.VolumeLabel update = 1;
+     */
+    update: VolumeLabel[];
+    /**
+     * Remove volume labels
+     *
+     * @generated from field: repeated string remove = 2;
+     */
+    remove: string[];
+};
+/**
+ * Describes the message api.v1.UpdateVolumeLabels.
+ * Use `create(UpdateVolumeLabelsSchema)` to create a new message.
+ */
+export declare const UpdateVolumeLabelsSchema: GenMessage<UpdateVolumeLabels>;
 /**
  * VolumeStatistics are all detailed statistics of a volume
  *
@@ -500,6 +556,36 @@ export type VolumeServiceDeleteRequest = Message<"api.v1.VolumeServiceDeleteRequ
  */
 export declare const VolumeServiceDeleteRequestSchema: GenMessage<VolumeServiceDeleteRequest>;
 /**
+ * VolumeServiceUpdateRequest is the request payload of a volume update request
+ *
+ * @generated from message api.v1.VolumeServiceUpdateRequest
+ */
+export type VolumeServiceUpdateRequest = Message<"api.v1.VolumeServiceUpdateRequest"> & {
+    /**
+     * Uuid of the volume
+     *
+     * @generated from field: string uuid = 1;
+     */
+    uuid: string;
+    /**
+     * Project of the volume
+     *
+     * @generated from field: string project = 2;
+     */
+    project: string;
+    /**
+     * Update Volume Labels stored in the volume. Some labels are immutable and cannot be changed.
+     *
+     * @generated from field: optional api.v1.UpdateVolumeLabels labels = 24;
+     */
+    labels?: UpdateVolumeLabels;
+};
+/**
+ * Describes the message api.v1.VolumeServiceUpdateRequest.
+ * Use `create(VolumeServiceUpdateRequestSchema)` to create a new message.
+ */
+export declare const VolumeServiceUpdateRequestSchema: GenMessage<VolumeServiceUpdateRequest>;
+/**
  * SnapshotServiceGetRequest is the request payload of a snapshot list request
  *
  * @generated from message api.v1.SnapshotServiceGetRequest
@@ -638,6 +724,24 @@ export type VolumeServiceDeleteResponse = Message<"api.v1.VolumeServiceDeleteRes
  */
 export declare const VolumeServiceDeleteResponseSchema: GenMessage<VolumeServiceDeleteResponse>;
 /**
+ * VolumeServiceUpdateResponse is the response payload of a volume update request
+ *
+ * @generated from message api.v1.VolumeServiceUpdateResponse
+ */
+export type VolumeServiceUpdateResponse = Message<"api.v1.VolumeServiceUpdateResponse"> & {
+    /**
+     * Volume the volume
+     *
+     * @generated from field: api.v1.Volume volume = 1;
+     */
+    volume?: Volume;
+};
+/**
+ * Describes the message api.v1.VolumeServiceUpdateResponse.
+ * Use `create(VolumeServiceUpdateResponseSchema)` to create a new message.
+ */
+export declare const VolumeServiceUpdateResponseSchema: GenMessage<VolumeServiceUpdateResponse>;
+/**
  * SnapshotServiceGetResponse is the response payload of a snapshot get request
  *
  * @generated from message api.v1.SnapshotServiceGetResponse
@@ -726,6 +830,16 @@ export declare const VolumeService: GenService<{
         methodKind: "unary";
         input: typeof VolumeServiceDeleteRequestSchema;
         output: typeof VolumeServiceDeleteResponseSchema;
+    };
+    /**
+     * Update a volume
+     *
+     * @generated from rpc api.v1.VolumeService.Update
+     */
+    update: {
+        methodKind: "unary";
+        input: typeof VolumeServiceUpdateRequestSchema;
+        output: typeof VolumeServiceUpdateResponseSchema;
     };
 }>;
 /**

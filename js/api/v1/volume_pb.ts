@@ -14,7 +14,7 @@ import type { Message } from "@bufbuild/protobuf";
  * Describes the file api/v1/volume.proto.
  */
 export const file_api_v1_volume: GenFile = /*@__PURE__*/
-  fileDesc("ChNhcGkvdjEvdm9sdW1lLnByb3RvEgZhcGkudjEikwQKBlZvbHVtZRIMCgR1dWlkGAEgASgJEgwKBG5hbWUYAiABKAkSDwoHcHJvamVjdBgDIAEoCRIRCglwYXJ0aXRpb24YBCABKAkSFQoNc3RvcmFnZV9jbGFzcxgFIAEoCRIMCgRzaXplGAYgASgEEg0KBXVzYWdlGAcgASgEEg0KBXN0YXRlGAggASgJEhMKC2F0dGFjaGVkX3RvGAkgAygJEhwKFHNvdXJjZV9zbmFwc2hvdF91dWlkGAogASgJEhwKFHNvdXJjZV9zbmFwc2hvdF9uYW1lGAsgASgJEhUKDXZvbHVtZV9oYW5kbGUYDCABKAkSEAoIbm9kZV9pcHMYDSADKAkSGAoQcmVidWlsZF9wcm9ncmVzcxgOIAEoCRIZChFwcmltYXJ5X25vZGVfdXVpZBgPIAEoCRIXCg9xb3NfcG9saWN5X3V1aWQYECABKAkSFwoPcW9zX3BvbGljeV9uYW1lGBEgASgJEhUKDXJlcGxpY2FfY291bnQYEiABKA0SGAoQcHJvdGVjdGlvbl9zdGF0ZRgTIAEoCRIcChRsb2dpY2FsX3VzZWRfc3RvcmFnZRgUIAEoBBIsCgpzdGF0aXN0aWNzGBUgASgLMhguYXBpLnYxLlZvbHVtZVN0YXRpc3RpY3MSFAoMY2x1c3Rlcl9uYW1lGBYgASgJEhIKCmNsdXN0ZXJfaWQYFyABKAki7QIKEFZvbHVtZVN0YXRpc3RpY3MSHAoUbG9naWNhbF91c2VkX3N0b3JhZ2UYASABKAQSHQoVcGh5c2ljYWxfdXNlZF9zdG9yYWdlGAIgASgEEhkKEWNvbXByZXNzaW9uX3JhdGlvGAMgASgBEh8KF3RvdGFsX2NvbXByZXNzaW9uX3JhdGlvGAQgASgBEhkKEXBoeXNpY2FsX2NhcGFjaXR5GAUgASgEEh8KF3BoeXNpY2FsX293bmVkX2NhcGFjaXR5GAYgASgEEh0KFXBoeXNpY2FsX293bmVkX21lbW9yeRgHIAEoBBIXCg9waHlzaWNhbF9tZW1vcnkYCCABKAQSFAoMdXNlcl93cml0dGVuGAkgASgEEisKI3VucmVjb3ZlcmFibGVfZGF0YV9pbnRlZ3JpdHlfZXJyb3JzGAogASgNEikKIXJlY292ZXJhYmxlX2RhdGFfaW50ZWdyaXR5X2Vycm9ycxgMIAEoDSKaAwoIU25hcHNob3QSDAoEdXVpZBgBIAEoCRIMCgRuYW1lGAIgASgJEhMKC2Rlc2NyaXB0aW9uGAMgASgJEg8KB3Byb2plY3QYBCABKAkSEQoJcGFydGl0aW9uGAUgASgJEhUKDXN0b3JhZ2VfY2xhc3MYBiABKAkSDAoEc2l6ZRgHIAEoBBINCgV1c2FnZRgIIAEoBBINCgVzdGF0ZRgJIAEoCRIaChJzb3VyY2Vfdm9sdW1lX3V1aWQYCiABKAkSGgoSc291cmNlX3ZvbHVtZV9uYW1lGAsgASgJEhUKDXJlcGxpY2FfY291bnQYDCABKA0SGQoRcHJpbWFyeV9ub2RlX3V1aWQYDSABKAkSLAoJcmV0ZW50aW9uGA4gASgLMhkuZ29vZ2xlLnByb3RvYnVmLkR1cmF0aW9uEi4KCnN0YXRpc3RpY3MYDyABKAsyGi5hcGkudjEuU25hcHNob3RTdGF0aXN0aWNzEi4KCmNyZWF0ZWRfYXQYFCABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wIp4BChJTbmFwc2hvdFN0YXRpc3RpY3MSGQoRcGh5c2ljYWxfY2FwYWNpdHkYASABKAQSHwoXcGh5c2ljYWxfb3duZWRfY2FwYWNpdHkYAiABKAQSHQoVcGh5c2ljYWxfb3duZWRfbWVtb3J5GAMgASgEEhcKD3BoeXNpY2FsX21lbW9yeRgEIAEoBBIUCgx1c2VyX3dyaXR0ZW4YBSABKAQiTgoXVm9sdW1lU2VydmljZUdldFJlcXVlc3QSFgoEdXVpZBgBIAEoCUIIukgFcgOwAQESGwoHcHJvamVjdBgCIAEoCUIKukgHcgUQAhiAASKfAQoYVm9sdW1lU2VydmljZUxpc3RSZXF1ZXN0EhsKBHV1aWQYASABKAlCCLpIBXIDsAEBSACIAQESGwoHcHJvamVjdBgCIAEoCUIKukgHcgUQAhiAARIWCglwYXJ0aXRpb24YAyABKAlIAYgBARIRCgRuYW1lGAQgASgJSAKIAQFCBwoFX3V1aWRCDAoKX3BhcnRpdGlvbkIHCgVfbmFtZSJRChpWb2x1bWVTZXJ2aWNlRGVsZXRlUmVxdWVzdBIWCgR1dWlkGAEgASgJQgi6SAVyA7ABARIbCgdwcm9qZWN0GAIgASgJQgq6SAdyBRACGIABIlAKGVNuYXBzaG90U2VydmljZUdldFJlcXVlc3QSFgoEdXVpZBgBIAEoCUIIukgFcgOwAQESGwoHcHJvamVjdBgCIAEoCUIKukgHcgUQAhiAASKhAQoaU25hcHNob3RTZXJ2aWNlTGlzdFJlcXVlc3QSGwoEdXVpZBgBIAEoCUIIukgFcgOwAQFIAIgBARIbCgdwcm9qZWN0GAIgASgJQgq6SAdyBRACGIABEhYKCXBhcnRpdGlvbhgDIAEoCUgBiAEBEhEKBG5hbWUYBCABKAlIAogBAUIHCgVfdXVpZEIMCgpfcGFydGl0aW9uQgcKBV9uYW1lIlMKHFNuYXBzaG90U2VydmljZURlbGV0ZVJlcXVlc3QSFgoEdXVpZBgBIAEoCUIIukgFcgOwAQESGwoHcHJvamVjdBgCIAEoCUIKukgHcgUQAhiAASI6ChhWb2x1bWVTZXJ2aWNlR2V0UmVzcG9uc2USHgoGdm9sdW1lGAEgASgLMg4uYXBpLnYxLlZvbHVtZSI8ChlWb2x1bWVTZXJ2aWNlTGlzdFJlc3BvbnNlEh8KB3ZvbHVtZXMYASADKAsyDi5hcGkudjEuVm9sdW1lIj0KG1ZvbHVtZVNlcnZpY2VEZWxldGVSZXNwb25zZRIeCgZ2b2x1bWUYASABKAsyDi5hcGkudjEuVm9sdW1lIkAKGlNuYXBzaG90U2VydmljZUdldFJlc3BvbnNlEiIKCHNuYXBzaG90GAEgASgLMhAuYXBpLnYxLlNuYXBzaG90IkIKG1NuYXBzaG90U2VydmljZUxpc3RSZXNwb25zZRIjCglzbmFwc2hvdHMYASADKAsyEC5hcGkudjEuU25hcHNob3QiQwodU25hcHNob3RTZXJ2aWNlRGVsZXRlUmVzcG9uc2USIgoIc25hcHNob3QYASABKAsyEC5hcGkudjEuU25hcHNob3QymwIKDVZvbHVtZVNlcnZpY2USVQoDR2V0Eh8uYXBpLnYxLlZvbHVtZVNlcnZpY2VHZXRSZXF1ZXN0GiAuYXBpLnYxLlZvbHVtZVNlcnZpY2VHZXRSZXNwb25zZSILyvMYAwECA+jzGAISWAoETGlzdBIgLmFwaS52MS5Wb2x1bWVTZXJ2aWNlTGlzdFJlcXVlc3QaIS5hcGkudjEuVm9sdW1lU2VydmljZUxpc3RSZXNwb25zZSILyvMYAwECA+jzGAISWQoGRGVsZXRlEiIuYXBpLnYxLlZvbHVtZVNlcnZpY2VEZWxldGVSZXF1ZXN0GiMuYXBpLnYxLlZvbHVtZVNlcnZpY2VEZWxldGVSZXNwb25zZSIGyvMYAgECMqkCCg9TbmFwc2hvdFNlcnZpY2USWQoDR2V0EiEuYXBpLnYxLlNuYXBzaG90U2VydmljZUdldFJlcXVlc3QaIi5hcGkudjEuU25hcHNob3RTZXJ2aWNlR2V0UmVzcG9uc2UiC8rzGAMBAgPo8xgCElwKBExpc3QSIi5hcGkudjEuU25hcHNob3RTZXJ2aWNlTGlzdFJlcXVlc3QaIy5hcGkudjEuU25hcHNob3RTZXJ2aWNlTGlzdFJlc3BvbnNlIgvK8xgDAQID6PMYAhJdCgZEZWxldGUSJC5hcGkudjEuU25hcHNob3RTZXJ2aWNlRGVsZXRlUmVxdWVzdBolLmFwaS52MS5TbmFwc2hvdFNlcnZpY2VEZWxldGVSZXNwb25zZSIGyvMYAgECQoQBCgpjb20uYXBpLnYxQgtWb2x1bWVQcm90b1ABWjBnaXRodWIuY29tL21ldGFsLXN0YWNrLWNsb3VkL2FwaS9nby9hcGkvdjE7YXBpdjGiAgNBWFiqAgZBcGkuVjHKAgZBcGlcVjHiAhJBcGlcVjFcR1BCTWV0YWRhdGHqAgdBcGk6OlYxYgZwcm90bzM", [file_api_v1_common, file_buf_validate_validate, file_google_protobuf_duration, file_google_protobuf_timestamp]);
+  fileDesc("ChNhcGkvdjEvdm9sdW1lLnByb3RvEgZhcGkudjEiuAQKBlZvbHVtZRIMCgR1dWlkGAEgASgJEgwKBG5hbWUYAiABKAkSDwoHcHJvamVjdBgDIAEoCRIRCglwYXJ0aXRpb24YBCABKAkSFQoNc3RvcmFnZV9jbGFzcxgFIAEoCRIMCgRzaXplGAYgASgEEg0KBXVzYWdlGAcgASgEEg0KBXN0YXRlGAggASgJEhMKC2F0dGFjaGVkX3RvGAkgAygJEhwKFHNvdXJjZV9zbmFwc2hvdF91dWlkGAogASgJEhwKFHNvdXJjZV9zbmFwc2hvdF9uYW1lGAsgASgJEhUKDXZvbHVtZV9oYW5kbGUYDCABKAkSEAoIbm9kZV9pcHMYDSADKAkSGAoQcmVidWlsZF9wcm9ncmVzcxgOIAEoCRIZChFwcmltYXJ5X25vZGVfdXVpZBgPIAEoCRIXCg9xb3NfcG9saWN5X3V1aWQYECABKAkSFwoPcW9zX3BvbGljeV9uYW1lGBEgASgJEhUKDXJlcGxpY2FfY291bnQYEiABKA0SGAoQcHJvdGVjdGlvbl9zdGF0ZRgTIAEoCRIcChRsb2dpY2FsX3VzZWRfc3RvcmFnZRgUIAEoBBIsCgpzdGF0aXN0aWNzGBUgASgLMhguYXBpLnYxLlZvbHVtZVN0YXRpc3RpY3MSFAoMY2x1c3Rlcl9uYW1lGBYgASgJEhIKCmNsdXN0ZXJfaWQYFyABKAkSIwoGbGFiZWxzGBggAygLMhMuYXBpLnYxLlZvbHVtZUxhYmVsIkEKC1ZvbHVtZUxhYmVsEhcKA2tleRgBIAEoCUIKukgHcgUQARj9ARIZCgV2YWx1ZRgCIAEoCUIKukgHcgUQARj9ASJJChJVcGRhdGVWb2x1bWVMYWJlbHMSIwoGdXBkYXRlGAEgAygLMhMuYXBpLnYxLlZvbHVtZUxhYmVsEg4KBnJlbW92ZRgCIAMoCSLtAgoQVm9sdW1lU3RhdGlzdGljcxIcChRsb2dpY2FsX3VzZWRfc3RvcmFnZRgBIAEoBBIdChVwaHlzaWNhbF91c2VkX3N0b3JhZ2UYAiABKAQSGQoRY29tcHJlc3Npb25fcmF0aW8YAyABKAESHwoXdG90YWxfY29tcHJlc3Npb25fcmF0aW8YBCABKAESGQoRcGh5c2ljYWxfY2FwYWNpdHkYBSABKAQSHwoXcGh5c2ljYWxfb3duZWRfY2FwYWNpdHkYBiABKAQSHQoVcGh5c2ljYWxfb3duZWRfbWVtb3J5GAcgASgEEhcKD3BoeXNpY2FsX21lbW9yeRgIIAEoBBIUCgx1c2VyX3dyaXR0ZW4YCSABKAQSKwojdW5yZWNvdmVyYWJsZV9kYXRhX2ludGVncml0eV9lcnJvcnMYCiABKA0SKQohcmVjb3ZlcmFibGVfZGF0YV9pbnRlZ3JpdHlfZXJyb3JzGAwgASgNIpoDCghTbmFwc2hvdBIMCgR1dWlkGAEgASgJEgwKBG5hbWUYAiABKAkSEwoLZGVzY3JpcHRpb24YAyABKAkSDwoHcHJvamVjdBgEIAEoCRIRCglwYXJ0aXRpb24YBSABKAkSFQoNc3RvcmFnZV9jbGFzcxgGIAEoCRIMCgRzaXplGAcgASgEEg0KBXVzYWdlGAggASgEEg0KBXN0YXRlGAkgASgJEhoKEnNvdXJjZV92b2x1bWVfdXVpZBgKIAEoCRIaChJzb3VyY2Vfdm9sdW1lX25hbWUYCyABKAkSFQoNcmVwbGljYV9jb3VudBgMIAEoDRIZChFwcmltYXJ5X25vZGVfdXVpZBgNIAEoCRIsCglyZXRlbnRpb24YDiABKAsyGS5nb29nbGUucHJvdG9idWYuRHVyYXRpb24SLgoKc3RhdGlzdGljcxgPIAEoCzIaLmFwaS52MS5TbmFwc2hvdFN0YXRpc3RpY3MSLgoKY3JlYXRlZF9hdBgUIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXAingEKElNuYXBzaG90U3RhdGlzdGljcxIZChFwaHlzaWNhbF9jYXBhY2l0eRgBIAEoBBIfChdwaHlzaWNhbF9vd25lZF9jYXBhY2l0eRgCIAEoBBIdChVwaHlzaWNhbF9vd25lZF9tZW1vcnkYAyABKAQSFwoPcGh5c2ljYWxfbWVtb3J5GAQgASgEEhQKDHVzZXJfd3JpdHRlbhgFIAEoBCJOChdWb2x1bWVTZXJ2aWNlR2V0UmVxdWVzdBIWCgR1dWlkGAEgASgJQgi6SAVyA7ABARIbCgdwcm9qZWN0GAIgASgJQgq6SAdyBRACGIABIp8BChhWb2x1bWVTZXJ2aWNlTGlzdFJlcXVlc3QSGwoEdXVpZBgBIAEoCUIIukgFcgOwAQFIAIgBARIbCgdwcm9qZWN0GAIgASgJQgq6SAdyBRACGIABEhYKCXBhcnRpdGlvbhgDIAEoCUgBiAEBEhEKBG5hbWUYBCABKAlIAogBAUIHCgVfdXVpZEIMCgpfcGFydGl0aW9uQgcKBV9uYW1lIlEKGlZvbHVtZVNlcnZpY2VEZWxldGVSZXF1ZXN0EhYKBHV1aWQYASABKAlCCLpIBXIDsAEBEhsKB3Byb2plY3QYAiABKAlCCrpIB3IFEAIYgAEijQEKGlZvbHVtZVNlcnZpY2VVcGRhdGVSZXF1ZXN0EhYKBHV1aWQYASABKAlCCLpIBXIDsAEBEhsKB3Byb2plY3QYAiABKAlCCrpIB3IFEAIYgAESLwoGbGFiZWxzGBggASgLMhouYXBpLnYxLlVwZGF0ZVZvbHVtZUxhYmVsc0gAiAEBQgkKB19sYWJlbHMiUAoZU25hcHNob3RTZXJ2aWNlR2V0UmVxdWVzdBIWCgR1dWlkGAEgASgJQgi6SAVyA7ABARIbCgdwcm9qZWN0GAIgASgJQgq6SAdyBRACGIABIqEBChpTbmFwc2hvdFNlcnZpY2VMaXN0UmVxdWVzdBIbCgR1dWlkGAEgASgJQgi6SAVyA7ABAUgAiAEBEhsKB3Byb2plY3QYAiABKAlCCrpIB3IFEAIYgAESFgoJcGFydGl0aW9uGAMgASgJSAGIAQESEQoEbmFtZRgEIAEoCUgCiAEBQgcKBV91dWlkQgwKCl9wYXJ0aXRpb25CBwoFX25hbWUiUwocU25hcHNob3RTZXJ2aWNlRGVsZXRlUmVxdWVzdBIWCgR1dWlkGAEgASgJQgi6SAVyA7ABARIbCgdwcm9qZWN0GAIgASgJQgq6SAdyBRACGIABIjoKGFZvbHVtZVNlcnZpY2VHZXRSZXNwb25zZRIeCgZ2b2x1bWUYASABKAsyDi5hcGkudjEuVm9sdW1lIjwKGVZvbHVtZVNlcnZpY2VMaXN0UmVzcG9uc2USHwoHdm9sdW1lcxgBIAMoCzIOLmFwaS52MS5Wb2x1bWUiPQobVm9sdW1lU2VydmljZURlbGV0ZVJlc3BvbnNlEh4KBnZvbHVtZRgBIAEoCzIOLmFwaS52MS5Wb2x1bWUiPQobVm9sdW1lU2VydmljZVVwZGF0ZVJlc3BvbnNlEh4KBnZvbHVtZRgBIAEoCzIOLmFwaS52MS5Wb2x1bWUiQAoaU25hcHNob3RTZXJ2aWNlR2V0UmVzcG9uc2USIgoIc25hcHNob3QYASABKAsyEC5hcGkudjEuU25hcHNob3QiQgobU25hcHNob3RTZXJ2aWNlTGlzdFJlc3BvbnNlEiMKCXNuYXBzaG90cxgBIAMoCzIQLmFwaS52MS5TbmFwc2hvdCJDCh1TbmFwc2hvdFNlcnZpY2VEZWxldGVSZXNwb25zZRIiCghzbmFwc2hvdBgBIAEoCzIQLmFwaS52MS5TbmFwc2hvdDL2AgoNVm9sdW1lU2VydmljZRJVCgNHZXQSHy5hcGkudjEuVm9sdW1lU2VydmljZUdldFJlcXVlc3QaIC5hcGkudjEuVm9sdW1lU2VydmljZUdldFJlc3BvbnNlIgvK8xgDAQID6PMYAhJYCgRMaXN0EiAuYXBpLnYxLlZvbHVtZVNlcnZpY2VMaXN0UmVxdWVzdBohLmFwaS52MS5Wb2x1bWVTZXJ2aWNlTGlzdFJlc3BvbnNlIgvK8xgDAQID6PMYAhJZCgZEZWxldGUSIi5hcGkudjEuVm9sdW1lU2VydmljZURlbGV0ZVJlcXVlc3QaIy5hcGkudjEuVm9sdW1lU2VydmljZURlbGV0ZVJlc3BvbnNlIgbK8xgCAQISWQoGVXBkYXRlEiIuYXBpLnYxLlZvbHVtZVNlcnZpY2VVcGRhdGVSZXF1ZXN0GiMuYXBpLnYxLlZvbHVtZVNlcnZpY2VVcGRhdGVSZXNwb25zZSIGyvMYAgECMqkCCg9TbmFwc2hvdFNlcnZpY2USWQoDR2V0EiEuYXBpLnYxLlNuYXBzaG90U2VydmljZUdldFJlcXVlc3QaIi5hcGkudjEuU25hcHNob3RTZXJ2aWNlR2V0UmVzcG9uc2UiC8rzGAMBAgPo8xgCElwKBExpc3QSIi5hcGkudjEuU25hcHNob3RTZXJ2aWNlTGlzdFJlcXVlc3QaIy5hcGkudjEuU25hcHNob3RTZXJ2aWNlTGlzdFJlc3BvbnNlIgvK8xgDAQID6PMYAhJdCgZEZWxldGUSJC5hcGkudjEuU25hcHNob3RTZXJ2aWNlRGVsZXRlUmVxdWVzdBolLmFwaS52MS5TbmFwc2hvdFNlcnZpY2VEZWxldGVSZXNwb25zZSIGyvMYAgECQoQBCgpjb20uYXBpLnYxQgtWb2x1bWVQcm90b1ABWjBnaXRodWIuY29tL21ldGFsLXN0YWNrLWNsb3VkL2FwaS9nby9hcGkvdjE7YXBpdjGiAgNBWFiqAgZBcGkuVjHKAgZBcGlcVjHiAhJBcGlcVjFcR1BCTWV0YWRhdGHqAgdBcGk6OlYxYgZwcm90bzM", [file_api_v1_common, file_buf_validate_validate, file_google_protobuf_duration, file_google_protobuf_timestamp]);
 
 /**
  * Volume is a unit of block storage
@@ -182,6 +182,13 @@ export type Volume = Message<"api.v1.Volume"> & {
    * @generated from field: string cluster_id = 23;
    */
   clusterId: string;
+
+  /**
+   * Labels stored in the volume
+   *
+   * @generated from field: repeated api.v1.VolumeLabel labels = 24;
+   */
+  labels: VolumeLabel[];
 };
 
 /**
@@ -190,6 +197,64 @@ export type Volume = Message<"api.v1.Volume"> & {
  */
 export const VolumeSchema: GenMessage<Volume> = /*@__PURE__*/
   messageDesc(file_api_v1_volume, 0);
+
+/**
+ * label-key and label-value length must be between 1 and 253 characters and
+ * may contain any of: alphanumeric characters (a-z, A-Z, 0-9), hyphen (-),
+ * underscore (_) and dot (.).
+ *
+ * @generated from message api.v1.VolumeLabel
+ */
+export type VolumeLabel = Message<"api.v1.VolumeLabel"> & {
+  /**
+   * key under which the value is stored
+   *
+   * @generated from field: string key = 1;
+   */
+  key: string;
+
+  /**
+   * value of this label
+   *
+   * @generated from field: string value = 2;
+   */
+  value: string;
+};
+
+/**
+ * Describes the message api.v1.VolumeLabel.
+ * Use `create(VolumeLabelSchema)` to create a new message.
+ */
+export const VolumeLabelSchema: GenMessage<VolumeLabel> = /*@__PURE__*/
+  messageDesc(file_api_v1_volume, 1);
+
+/**
+ * UpdateVolumeLabels allows updating the labels
+ *
+ * @generated from message api.v1.UpdateVolumeLabels
+ */
+export type UpdateVolumeLabels = Message<"api.v1.UpdateVolumeLabels"> & {
+  /**
+   * Update volume labels. New ones will be added, existing ones overwritten
+   *
+   * @generated from field: repeated api.v1.VolumeLabel update = 1;
+   */
+  update: VolumeLabel[];
+
+  /**
+   * Remove volume labels
+   *
+   * @generated from field: repeated string remove = 2;
+   */
+  remove: string[];
+};
+
+/**
+ * Describes the message api.v1.UpdateVolumeLabels.
+ * Use `create(UpdateVolumeLabelsSchema)` to create a new message.
+ */
+export const UpdateVolumeLabelsSchema: GenMessage<UpdateVolumeLabels> = /*@__PURE__*/
+  messageDesc(file_api_v1_volume, 2);
 
 /**
  * VolumeStatistics are all detailed statistics of a volume
@@ -302,7 +367,7 @@ export type VolumeStatistics = Message<"api.v1.VolumeStatistics"> & {
  * Use `create(VolumeStatisticsSchema)` to create a new message.
  */
 export const VolumeStatisticsSchema: GenMessage<VolumeStatistics> = /*@__PURE__*/
-  messageDesc(file_api_v1_volume, 1);
+  messageDesc(file_api_v1_volume, 3);
 
 /**
  * Snapshot is a unit of block storage create as a point in time block copy of a volume
@@ -428,7 +493,7 @@ export type Snapshot = Message<"api.v1.Snapshot"> & {
  * Use `create(SnapshotSchema)` to create a new message.
  */
 export const SnapshotSchema: GenMessage<Snapshot> = /*@__PURE__*/
-  messageDesc(file_api_v1_volume, 2);
+  messageDesc(file_api_v1_volume, 4);
 
 /**
  * SnapshotStatistics are all detailed statistics of a snapshot
@@ -487,7 +552,7 @@ export type SnapshotStatistics = Message<"api.v1.SnapshotStatistics"> & {
  * Use `create(SnapshotStatisticsSchema)` to create a new message.
  */
 export const SnapshotStatisticsSchema: GenMessage<SnapshotStatistics> = /*@__PURE__*/
-  messageDesc(file_api_v1_volume, 3);
+  messageDesc(file_api_v1_volume, 5);
 
 /**
  * VolumeServiceGetRequest is the request payload of the volume get request
@@ -515,7 +580,7 @@ export type VolumeServiceGetRequest = Message<"api.v1.VolumeServiceGetRequest"> 
  * Use `create(VolumeServiceGetRequestSchema)` to create a new message.
  */
 export const VolumeServiceGetRequestSchema: GenMessage<VolumeServiceGetRequest> = /*@__PURE__*/
-  messageDesc(file_api_v1_volume, 4);
+  messageDesc(file_api_v1_volume, 6);
 
 /**
  * VolumeServiceListRequest is the request payload of a volume list request
@@ -557,7 +622,7 @@ export type VolumeServiceListRequest = Message<"api.v1.VolumeServiceListRequest"
  * Use `create(VolumeServiceListRequestSchema)` to create a new message.
  */
 export const VolumeServiceListRequestSchema: GenMessage<VolumeServiceListRequest> = /*@__PURE__*/
-  messageDesc(file_api_v1_volume, 5);
+  messageDesc(file_api_v1_volume, 7);
 
 /**
  * VolumeServiceDeleteRequest is the request payload of a volume delete request
@@ -585,7 +650,42 @@ export type VolumeServiceDeleteRequest = Message<"api.v1.VolumeServiceDeleteRequ
  * Use `create(VolumeServiceDeleteRequestSchema)` to create a new message.
  */
 export const VolumeServiceDeleteRequestSchema: GenMessage<VolumeServiceDeleteRequest> = /*@__PURE__*/
-  messageDesc(file_api_v1_volume, 6);
+  messageDesc(file_api_v1_volume, 8);
+
+/**
+ * VolumeServiceUpdateRequest is the request payload of a volume update request
+ *
+ * @generated from message api.v1.VolumeServiceUpdateRequest
+ */
+export type VolumeServiceUpdateRequest = Message<"api.v1.VolumeServiceUpdateRequest"> & {
+  /**
+   * Uuid of the volume
+   *
+   * @generated from field: string uuid = 1;
+   */
+  uuid: string;
+
+  /**
+   * Project of the volume
+   *
+   * @generated from field: string project = 2;
+   */
+  project: string;
+
+  /**
+   * Update Volume Labels stored in the volume. Some labels are immutable and cannot be changed.
+   *
+   * @generated from field: optional api.v1.UpdateVolumeLabels labels = 24;
+   */
+  labels?: UpdateVolumeLabels;
+};
+
+/**
+ * Describes the message api.v1.VolumeServiceUpdateRequest.
+ * Use `create(VolumeServiceUpdateRequestSchema)` to create a new message.
+ */
+export const VolumeServiceUpdateRequestSchema: GenMessage<VolumeServiceUpdateRequest> = /*@__PURE__*/
+  messageDesc(file_api_v1_volume, 9);
 
 /**
  * SnapshotServiceGetRequest is the request payload of a snapshot list request
@@ -613,7 +713,7 @@ export type SnapshotServiceGetRequest = Message<"api.v1.SnapshotServiceGetReques
  * Use `create(SnapshotServiceGetRequestSchema)` to create a new message.
  */
 export const SnapshotServiceGetRequestSchema: GenMessage<SnapshotServiceGetRequest> = /*@__PURE__*/
-  messageDesc(file_api_v1_volume, 7);
+  messageDesc(file_api_v1_volume, 10);
 
 /**
  * SnapshotServiceListRequest is the request payload of a snapshot list request
@@ -655,7 +755,7 @@ export type SnapshotServiceListRequest = Message<"api.v1.SnapshotServiceListRequ
  * Use `create(SnapshotServiceListRequestSchema)` to create a new message.
  */
 export const SnapshotServiceListRequestSchema: GenMessage<SnapshotServiceListRequest> = /*@__PURE__*/
-  messageDesc(file_api_v1_volume, 8);
+  messageDesc(file_api_v1_volume, 11);
 
 /**
  * SnapshotServiceDeleteRequest is the request payload of a snapshot delete request
@@ -683,7 +783,7 @@ export type SnapshotServiceDeleteRequest = Message<"api.v1.SnapshotServiceDelete
  * Use `create(SnapshotServiceDeleteRequestSchema)` to create a new message.
  */
 export const SnapshotServiceDeleteRequestSchema: GenMessage<SnapshotServiceDeleteRequest> = /*@__PURE__*/
-  messageDesc(file_api_v1_volume, 9);
+  messageDesc(file_api_v1_volume, 12);
 
 /**
  * VolumeServiceGetResponse is the response payload of a volume get request
@@ -704,7 +804,7 @@ export type VolumeServiceGetResponse = Message<"api.v1.VolumeServiceGetResponse"
  * Use `create(VolumeServiceGetResponseSchema)` to create a new message.
  */
 export const VolumeServiceGetResponseSchema: GenMessage<VolumeServiceGetResponse> = /*@__PURE__*/
-  messageDesc(file_api_v1_volume, 10);
+  messageDesc(file_api_v1_volume, 13);
 
 /**
  * VolumeServiceListResponse is the response payload of a volume list request
@@ -725,7 +825,7 @@ export type VolumeServiceListResponse = Message<"api.v1.VolumeServiceListRespons
  * Use `create(VolumeServiceListResponseSchema)` to create a new message.
  */
 export const VolumeServiceListResponseSchema: GenMessage<VolumeServiceListResponse> = /*@__PURE__*/
-  messageDesc(file_api_v1_volume, 11);
+  messageDesc(file_api_v1_volume, 14);
 
 /**
  * VolumeServiceDeleteResponse is the response payload of a volume delete request
@@ -746,7 +846,28 @@ export type VolumeServiceDeleteResponse = Message<"api.v1.VolumeServiceDeleteRes
  * Use `create(VolumeServiceDeleteResponseSchema)` to create a new message.
  */
 export const VolumeServiceDeleteResponseSchema: GenMessage<VolumeServiceDeleteResponse> = /*@__PURE__*/
-  messageDesc(file_api_v1_volume, 12);
+  messageDesc(file_api_v1_volume, 15);
+
+/**
+ * VolumeServiceUpdateResponse is the response payload of a volume update request
+ *
+ * @generated from message api.v1.VolumeServiceUpdateResponse
+ */
+export type VolumeServiceUpdateResponse = Message<"api.v1.VolumeServiceUpdateResponse"> & {
+  /**
+   * Volume the volume
+   *
+   * @generated from field: api.v1.Volume volume = 1;
+   */
+  volume?: Volume;
+};
+
+/**
+ * Describes the message api.v1.VolumeServiceUpdateResponse.
+ * Use `create(VolumeServiceUpdateResponseSchema)` to create a new message.
+ */
+export const VolumeServiceUpdateResponseSchema: GenMessage<VolumeServiceUpdateResponse> = /*@__PURE__*/
+  messageDesc(file_api_v1_volume, 16);
 
 /**
  * SnapshotServiceGetResponse is the response payload of a snapshot get request
@@ -767,7 +888,7 @@ export type SnapshotServiceGetResponse = Message<"api.v1.SnapshotServiceGetRespo
  * Use `create(SnapshotServiceGetResponseSchema)` to create a new message.
  */
 export const SnapshotServiceGetResponseSchema: GenMessage<SnapshotServiceGetResponse> = /*@__PURE__*/
-  messageDesc(file_api_v1_volume, 13);
+  messageDesc(file_api_v1_volume, 17);
 
 /**
  * SnapshotServiceListResponse is the response payload of a snapshot list request
@@ -788,7 +909,7 @@ export type SnapshotServiceListResponse = Message<"api.v1.SnapshotServiceListRes
  * Use `create(SnapshotServiceListResponseSchema)` to create a new message.
  */
 export const SnapshotServiceListResponseSchema: GenMessage<SnapshotServiceListResponse> = /*@__PURE__*/
-  messageDesc(file_api_v1_volume, 14);
+  messageDesc(file_api_v1_volume, 18);
 
 /**
  * SnapshotServiceDeleteResponse is the response payload of a snapshot delete request
@@ -809,7 +930,7 @@ export type SnapshotServiceDeleteResponse = Message<"api.v1.SnapshotServiceDelet
  * Use `create(SnapshotServiceDeleteResponseSchema)` to create a new message.
  */
 export const SnapshotServiceDeleteResponseSchema: GenMessage<SnapshotServiceDeleteResponse> = /*@__PURE__*/
-  messageDesc(file_api_v1_volume, 15);
+  messageDesc(file_api_v1_volume, 19);
 
 /**
  * VolumeService serves volume related functions
@@ -846,6 +967,16 @@ export const VolumeService: GenService<{
     methodKind: "unary";
     input: typeof VolumeServiceDeleteRequestSchema;
     output: typeof VolumeServiceDeleteResponseSchema;
+  },
+  /**
+   * Update a volume
+   *
+   * @generated from rpc api.v1.VolumeService.Update
+   */
+  update: {
+    methodKind: "unary";
+    input: typeof VolumeServiceUpdateRequestSchema;
+    output: typeof VolumeServiceUpdateResponseSchema;
   },
 }> = /*@__PURE__*/
   serviceDesc(file_api_v1_volume, 0);

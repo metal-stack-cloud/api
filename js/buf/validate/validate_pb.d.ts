@@ -1,5 +1,5 @@
 import type { GenEnum, GenExtension, GenFile, GenMessage } from "@bufbuild/protobuf/codegenv1";
-import type { Duration, FieldOptions, MessageOptions, OneofOptions, Timestamp } from "@bufbuild/protobuf/wkt";
+import type { Duration, FieldDescriptorProto_Type, FieldOptions, MessageOptions, OneofOptions, Timestamp } from "@bufbuild/protobuf/wkt";
 import type { Message } from "@bufbuild/protobuf";
 /**
  * Describes the file buf/validate/validate.proto.
@@ -344,20 +344,6 @@ export type FieldConstraints = Message<"buf.validate.FieldConstraints"> & {
         case: undefined;
         value?: undefined;
     };
-    /**
-     * DEPRECATED: use ignore=IGNORE_ALWAYS instead. TODO: remove this field pre-v1.
-     *
-     * @generated from field: optional bool skipped = 24 [deprecated = true];
-     * @deprecated
-     */
-    skipped: boolean;
-    /**
-     * DEPRECATED: use ignore=IGNORE_IF_UNPOPULATED instead. TODO: remove this field pre-v1.
-     *
-     * @generated from field: optional bool ignore_empty = 26 [deprecated = true];
-     * @deprecated
-     */
-    ignoreEmpty: boolean;
 };
 /**
  * Describes the message buf.validate.FieldConstraints.
@@ -2742,7 +2728,7 @@ export type StringRules = Message<"buf.validate.StringRules"> & {
     wellKnown: {
         /**
          * `email` specifies that the field value must be a valid email address
-         * (addr-spec only) as defined by [RFC 5322](https://tools.ietf.org/html/rfc5322#section-3.4.1).
+         * (addr-spec only) as defined by [RFC 5322](https://datatracker.ietf.org/doc/html/rfc5322#section-3.4.1).
          * If the field value isn't a valid email address, an error message will be generated.
          *
          * ```proto
@@ -2759,7 +2745,7 @@ export type StringRules = Message<"buf.validate.StringRules"> & {
     } | {
         /**
          * `hostname` specifies that the field value must be a valid
-         * hostname as defined by [RFC 1034](https://tools.ietf.org/html/rfc1034#section-3.5). This constraint doesn't support
+         * hostname as defined by [RFC 1034](https://datatracker.ietf.org/doc/html/rfc1034#section-3.5). This constraint doesn't support
          * internationalized domain names (IDNs). If the field value isn't a
          * valid hostname, an error message will be generated.
          *
@@ -2828,9 +2814,10 @@ export type StringRules = Message<"buf.validate.StringRules"> & {
         case: "ipv6";
     } | {
         /**
-         * `uri` specifies that the field value must be a valid,
-         * absolute URI as defined by [RFC 3986](https://tools.ietf.org/html/rfc3986#section-3). If the field value isn't a valid,
-         * absolute URI, an error message will be generated.
+         * `uri` specifies that the field value must be a valid URI as defined by
+         * [RFC 3986](https://datatracker.ietf.org/doc/html/rfc3986#section-3).
+         *
+         * If the field value isn't a valid URI, an error message will be generated.
          *
          * ```proto
          * message MyString {
@@ -2845,13 +2832,18 @@ export type StringRules = Message<"buf.validate.StringRules"> & {
         case: "uri";
     } | {
         /**
-         * `uri_ref` specifies that the field value must be a valid URI
-         * as defined by [RFC 3986](https://tools.ietf.org/html/rfc3986#section-3) and may be either relative or absolute. If the
-         * field value isn't a valid URI, an error message will be generated.
+         * `uri_ref` specifies that the field value must be a valid URI Reference as
+         * defined by [RFC 3986](https://datatracker.ietf.org/doc/html/rfc3986#section-4.1).
+         *
+         * A URI Reference is either a [URI](https://datatracker.ietf.org/doc/html/rfc3986#section-3),
+         * or a [Relative Reference](https://datatracker.ietf.org/doc/html/rfc3986#section-4.2).
+         *
+         * If the field value isn't a valid URI Reference, an error message will be
+         * generated.
          *
          * ```proto
          * message MyString {
-         *   // value must be a valid URI
+         *   // value must be a valid URI Reference
          *   string value = 1 [(buf.validate.field).string.uri_ref = true];
          * }
          * ```
@@ -2863,7 +2855,7 @@ export type StringRules = Message<"buf.validate.StringRules"> & {
     } | {
         /**
          * `address` specifies that the field value must be either a valid hostname
-         * as defined by [RFC 1034](https://tools.ietf.org/html/rfc1034#section-3.5)
+         * as defined by [RFC 1034](https://datatracker.ietf.org/doc/html/rfc1034#section-3.5)
          * (which doesn't support internationalized domain names or IDNs) or a valid
          * IP (v4 or v6). If the field value isn't a valid hostname or IP, an error
          * message will be generated.
@@ -2882,7 +2874,7 @@ export type StringRules = Message<"buf.validate.StringRules"> & {
     } | {
         /**
          * `uuid` specifies that the field value must be a valid UUID as defined by
-         * [RFC 4122](https://tools.ietf.org/html/rfc4122#section-4.1.2). If the
+         * [RFC 4122](https://datatracker.ietf.org/doc/html/rfc4122#section-4.1.2). If the
          * field value isn't a valid UUID, an error message will be generated.
          *
          * ```proto
@@ -2899,7 +2891,7 @@ export type StringRules = Message<"buf.validate.StringRules"> & {
     } | {
         /**
          * `tuuid` (trimmed UUID) specifies that the field value must be a valid UUID as
-         * defined by [RFC 4122](https://tools.ietf.org/html/rfc4122#section-4.1.2) with all dashes
+         * defined by [RFC 4122](https://datatracker.ietf.org/doc/html/rfc4122#section-4.1.2) with all dashes
          * omitted. If the field value isn't a valid UUID without dashes, an error message
          * will be generated.
          *
@@ -3053,8 +3045,8 @@ export type StringRules = Message<"buf.validate.StringRules"> & {
          * | Name                          | Number | Description                               |
          * |-------------------------------|--------|-------------------------------------------|
          * | KNOWN_REGEX_UNSPECIFIED       | 0      |                                           |
-         * | KNOWN_REGEX_HTTP_HEADER_NAME  | 1      | HTTP header name as defined by [RFC 7230](https://tools.ietf.org/html/rfc7230#section-3.2)  |
-         * | KNOWN_REGEX_HTTP_HEADER_VALUE | 2      | HTTP header value as defined by [RFC 7230](https://tools.ietf.org/html/rfc7230#section-3.2.4) |
+         * | KNOWN_REGEX_HTTP_HEADER_NAME  | 1      | HTTP header name as defined by [RFC 7230](https://datatracker.ietf.org/doc/html/rfc7230#section-3.2)  |
+         * | KNOWN_REGEX_HTTP_HEADER_VALUE | 2      | HTTP header value as defined by [RFC 7230](https://datatracker.ietf.org/doc/html/rfc7230#section-3.2.4) |
          *
          * @generated from field: buf.validate.KnownRegex well_known_regex = 24;
          */
@@ -3067,7 +3059,7 @@ export type StringRules = Message<"buf.validate.StringRules"> & {
     /**
      * This applies to regexes `HTTP_HEADER_NAME` and `HTTP_HEADER_VALUE` to
      * enable strict header validation. By default, this is true, and HTTP header
-     * validations are [RFC-compliant](https://tools.ietf.org/html/rfc7230#section-3). Setting to false will enable looser
+     * validations are [RFC-compliant](https://datatracker.ietf.org/doc/html/rfc7230#section-3). Setting to false will enable looser
      * validations that only disallow `\r\n\0` characters, which can be used to
      * bypass header matching rules.
      *
@@ -3089,8 +3081,8 @@ export type StringRules = Message<"buf.validate.StringRules"> & {
      * ```proto
      * message MyString {
      *   string value = 1 [
-     *     (buf.validate.field).string.example = 1,
-     *     (buf.validate.field).string.example = 2
+     *     (buf.validate.field).string.example = "hello",
+     *     (buf.validate.field).string.example = "world"
      *   ];
      * }
      * ```
@@ -4031,12 +4023,62 @@ export declare const ViolationsSchema: GenMessage<Violations>;
  */
 export type Violation = Message<"buf.validate.Violation"> & {
     /**
-     * `field_path` is a machine-readable identifier that points to the specific field that failed the validation.
+     * `field` is a machine-readable path to the field that failed validation.
      * This could be a nested field, in which case the path will include all the parent fields leading to the actual field that caused the violation.
      *
-     * @generated from field: optional string field_path = 1;
+     * For example, consider the following message:
+     *
+     * ```proto
+     * message Message {
+     *   bool a = 1 [(buf.validate.field).required = true];
+     * }
+     * ```
+     *
+     * It could produce the following violation:
+     *
+     * ```textproto
+     * violation {
+     *   field { element { field_number: 1, field_name: "a", field_type: 8 } }
+     *   ...
+     * }
+     * ```
+     *
+     * @generated from field: optional buf.validate.FieldPath field = 5;
      */
-    fieldPath: string;
+    field?: FieldPath;
+    /**
+     * `rule` is a machine-readable path that points to the specific constraint rule that failed validation.
+     * This will be a nested field starting from the FieldConstraints of the field that failed validation.
+     * For custom constraints, this will provide the path of the constraint, e.g. `cel[0]`.
+     *
+     * For example, consider the following message:
+     *
+     * ```proto
+     * message Message {
+     *   bool a = 1 [(buf.validate.field).required = true];
+     *   bool b = 2 [(buf.validate.field).cel = {
+     *     id: "custom_constraint",
+     *     expression: "!this ? 'b must be true': ''"
+     *   }]
+     * }
+     * ```
+     *
+     * It could produce the following violations:
+     *
+     * ```textproto
+     * violation {
+     *   rule { element { field_number: 25, field_name: "required", field_type: 8 } }
+     *   ...
+     * }
+     * violation {
+     *   rule { element { field_number: 23, field_name: "cel", field_type: 11, index: 0 } }
+     *   ...
+     * }
+     * ```
+     *
+     * @generated from field: optional buf.validate.FieldPath rule = 6;
+     */
+    rule?: FieldPath;
     /**
      * `constraint_id` is the unique identifier of the `Constraint` that was not fulfilled.
      * This is the same `id` that was specified in the `Constraint` message, allowing easy tracing of which rule was violated.
@@ -4063,6 +4105,135 @@ export type Violation = Message<"buf.validate.Violation"> & {
  * Use `create(ViolationSchema)` to create a new message.
  */
 export declare const ViolationSchema: GenMessage<Violation>;
+/**
+ * `FieldPath` provides a path to a nested protobuf field.
+ *
+ * This message provides enough information to render a dotted field path even without protobuf descriptors.
+ * It also provides enough information to resolve a nested field through unknown wire data.
+ *
+ * @generated from message buf.validate.FieldPath
+ */
+export type FieldPath = Message<"buf.validate.FieldPath"> & {
+    /**
+     * `elements` contains each element of the path, starting from the root and recursing downward.
+     *
+     * @generated from field: repeated buf.validate.FieldPathElement elements = 1;
+     */
+    elements: FieldPathElement[];
+};
+/**
+ * Describes the message buf.validate.FieldPath.
+ * Use `create(FieldPathSchema)` to create a new message.
+ */
+export declare const FieldPathSchema: GenMessage<FieldPath>;
+/**
+ * `FieldPathElement` provides enough information to nest through a single protobuf field.
+ *
+ * If the selected field is a map or repeated field, the `subscript` value selects a specific element from it.
+ * A path that refers to a value nested under a map key or repeated field index will have a `subscript` value.
+ * The `field_type` field allows unambiguous resolution of a field even if descriptors are not available.
+ *
+ * @generated from message buf.validate.FieldPathElement
+ */
+export type FieldPathElement = Message<"buf.validate.FieldPathElement"> & {
+    /**
+     * `field_number` is the field number this path element refers to.
+     *
+     * @generated from field: optional int32 field_number = 1;
+     */
+    fieldNumber: number;
+    /**
+     * `field_name` contains the field name this path element refers to.
+     * This can be used to display a human-readable path even if the field number is unknown.
+     *
+     * @generated from field: optional string field_name = 2;
+     */
+    fieldName: string;
+    /**
+     * `field_type` specifies the type of this field. When using reflection, this value is not needed.
+     *
+     * This value is provided to make it possible to traverse unknown fields through wire data.
+     * When traversing wire data, be mindful of both packed[1] and delimited[2] encoding schemes.
+     *
+     * [1]: https://protobuf.dev/programming-guides/encoding/#packed
+     * [2]: https://protobuf.dev/programming-guides/encoding/#groups
+     *
+     * N.B.: Although groups are deprecated, the corresponding delimited encoding scheme is not, and
+     * can be explicitly used in Protocol Buffers 2023 Edition.
+     *
+     * @generated from field: optional google.protobuf.FieldDescriptorProto.Type field_type = 3;
+     */
+    fieldType: FieldDescriptorProto_Type;
+    /**
+     * `key_type` specifies the map key type of this field. This value is useful when traversing
+     * unknown fields through wire data: specifically, it allows handling the differences between
+     * different integer encodings.
+     *
+     * @generated from field: optional google.protobuf.FieldDescriptorProto.Type key_type = 4;
+     */
+    keyType: FieldDescriptorProto_Type;
+    /**
+     * `value_type` specifies map value type of this field. This is useful if you want to display a
+     * value inside unknown fields through wire data.
+     *
+     * @generated from field: optional google.protobuf.FieldDescriptorProto.Type value_type = 5;
+     */
+    valueType: FieldDescriptorProto_Type;
+    /**
+     * `subscript` contains a repeated index or map key, if this path element nests into a repeated or map field.
+     *
+     * @generated from oneof buf.validate.FieldPathElement.subscript
+     */
+    subscript: {
+        /**
+         * `index` specifies a 0-based index into a repeated field.
+         *
+         * @generated from field: uint64 index = 6;
+         */
+        value: bigint;
+        case: "index";
+    } | {
+        /**
+         * `bool_key` specifies a map key of type bool.
+         *
+         * @generated from field: bool bool_key = 7;
+         */
+        value: boolean;
+        case: "boolKey";
+    } | {
+        /**
+         * `int_key` specifies a map key of type int32, int64, sint32, sint64, sfixed32 or sfixed64.
+         *
+         * @generated from field: int64 int_key = 8;
+         */
+        value: bigint;
+        case: "intKey";
+    } | {
+        /**
+         * `uint_key` specifies a map key of type uint32, uint64, fixed32 or fixed64.
+         *
+         * @generated from field: uint64 uint_key = 9;
+         */
+        value: bigint;
+        case: "uintKey";
+    } | {
+        /**
+         * `string_key` specifies a map key of type string.
+         *
+         * @generated from field: string string_key = 10;
+         */
+        value: string;
+        case: "stringKey";
+    } | {
+        case: undefined;
+        value?: undefined;
+    };
+};
+/**
+ * Describes the message buf.validate.FieldPathElement.
+ * Use `create(FieldPathElementSchema)` to create a new message.
+ */
+export declare const FieldPathElementSchema: GenMessage<FieldPathElement>;
 /**
  * Specifies how FieldConstraints.ignore behaves. See the documentation for
  * FieldConstraints.required for definitions of "populated" and "nullable".
@@ -4106,8 +4277,7 @@ export declare enum Ignore {
     UNSPECIFIED = 0,
     /**
      * Validation is skipped if the field is unpopulated. This rule is redundant
-     * if the field is already nullable. This value is equivalent behavior to the
-     * deprecated ignore_empty rule.
+     * if the field is already nullable.
      *
      * ```proto
      * syntax="proto3
@@ -4224,21 +4394,7 @@ export declare enum Ignore {
      *
      * @generated from enum value: IGNORE_ALWAYS = 3;
      */
-    ALWAYS = 3,
-    /**
-     * Deprecated: Use IGNORE_IF_UNPOPULATED instead. TODO: Remove this value pre-v1.
-     *
-     * @generated from enum value: IGNORE_EMPTY = 1 [deprecated = true];
-     * @deprecated
-     */
-    EMPTY = 1,
-    /**
-     * Deprecated: Use IGNORE_IF_DEFAULT_VALUE. TODO: Remove this value pre-v1.
-     *
-     * @generated from enum value: IGNORE_DEFAULT = 2 [deprecated = true];
-     * @deprecated
-     */
-    DEFAULT = 2
+    ALWAYS = 3
 }
 /**
  * Describes the enum buf.validate.Ignore.
@@ -4255,13 +4411,13 @@ export declare enum KnownRegex {
      */
     UNSPECIFIED = 0,
     /**
-     * HTTP header name as defined by [RFC 7230](https://tools.ietf.org/html/rfc7230#section-3.2).
+     * HTTP header name as defined by [RFC 7230](https://datatracker.ietf.org/doc/html/rfc7230#section-3.2).
      *
      * @generated from enum value: KNOWN_REGEX_HTTP_HEADER_NAME = 1;
      */
     HTTP_HEADER_NAME = 1,
     /**
-     * HTTP header value as defined by [RFC 7230](https://tools.ietf.org/html/rfc7230#section-3.2.4).
+     * HTTP header value as defined by [RFC 7230](https://datatracker.ietf.org/doc/html/rfc7230#section-3.2.4).
      *
      * @generated from enum value: KNOWN_REGEX_HTTP_HEADER_VALUE = 2;
      */

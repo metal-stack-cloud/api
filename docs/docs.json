@@ -6291,6 +6291,42 @@
           ]
         },
         {
+          "name": "UpdateVolumeLabels",
+          "longName": "UpdateVolumeLabels",
+          "fullName": "api.v1.UpdateVolumeLabels",
+          "description": "UpdateVolumeLabels allows updating the labels",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "update",
+              "description": "Update volume labels. New ones will be added, existing ones overwritten",
+              "label": "repeated",
+              "type": "VolumeLabel",
+              "longType": "VolumeLabel",
+              "fullType": "api.v1.VolumeLabel",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "remove",
+              "description": "Remove volume labels",
+              "label": "repeated",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
           "name": "Volume",
           "longName": "Volume",
           "fullName": "api.v1.Volume",
@@ -6575,6 +6611,54 @@
               "isoneof": false,
               "oneofdecl": "",
               "defaultValue": ""
+            },
+            {
+              "name": "labels",
+              "description": "Labels stored in the volume",
+              "label": "repeated",
+              "type": "VolumeLabel",
+              "longType": "VolumeLabel",
+              "fullType": "api.v1.VolumeLabel",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "VolumeLabel",
+          "longName": "VolumeLabel",
+          "fullName": "api.v1.VolumeLabel",
+          "description": "label-key and label-value length must be between 1 and 253 characters and\nmay contain any of: alphanumeric characters (a-z, A-Z, 0-9), hyphen (-),\nunderscore (_) and dot (.).",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "key",
+              "description": "key under which the value is stored",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "value",
+              "description": "value of this label",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
             }
           ]
         },
@@ -6772,6 +6856,78 @@
               "name": "volumes",
               "description": "Volumes the volumes",
               "label": "repeated",
+              "type": "Volume",
+              "longType": "Volume",
+              "fullType": "api.v1.Volume",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "VolumeServiceUpdateRequest",
+          "longName": "VolumeServiceUpdateRequest",
+          "fullName": "api.v1.VolumeServiceUpdateRequest",
+          "description": "VolumeServiceUpdateRequest is the request payload of a volume update request",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": true,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "uuid",
+              "description": "Uuid of the volume",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "project",
+              "description": "Project of the volume",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "labels",
+              "description": "Update Volume Labels stored in the volume. Some labels are immutable and cannot be changed.",
+              "label": "optional",
+              "type": "UpdateVolumeLabels",
+              "longType": "UpdateVolumeLabels",
+              "fullType": "api.v1.UpdateVolumeLabels",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "_labels",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "VolumeServiceUpdateResponse",
+          "longName": "VolumeServiceUpdateResponse",
+          "fullName": "api.v1.VolumeServiceUpdateResponse",
+          "description": "VolumeServiceUpdateResponse is the response payload of a volume update request",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "volume",
+              "description": "Volume the volume",
+              "label": "",
               "type": "Volume",
               "longType": "Volume",
               "fullType": "api.v1.Volume",
@@ -7012,6 +7168,18 @@
               "responseType": "VolumeServiceDeleteResponse",
               "responseLongType": "VolumeServiceDeleteResponse",
               "responseFullType": "api.v1.VolumeServiceDeleteResponse",
+              "responseStreaming": false
+            },
+            {
+              "name": "Update",
+              "description": "Update a volume",
+              "requestType": "VolumeServiceUpdateRequest",
+              "requestLongType": "VolumeServiceUpdateRequest",
+              "requestFullType": "api.v1.VolumeServiceUpdateRequest",
+              "requestStreaming": false,
+              "responseType": "VolumeServiceUpdateResponse",
+              "responseLongType": "VolumeServiceUpdateResponse",
+              "responseFullType": "api.v1.VolumeServiceUpdateResponse",
               "responseStreaming": false
             }
           ]
