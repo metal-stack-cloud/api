@@ -41,6 +41,41 @@ export type MessageServiceListResponse = Message$1<"status.v1.MessageServiceList
  */
 export declare const MessageServiceListResponseSchema: GenMessage<MessageServiceListResponse>;
 /**
+ * MessageServiceWatchRequest is the request payload to watch the messages
+ *
+ * @generated from message status.v1.MessageServiceWatchRequest
+ */
+export type MessageServiceWatchRequest = Message$1<"status.v1.MessageServiceWatchRequest"> & {};
+/**
+ * Describes the message status.v1.MessageServiceWatchRequest.
+ * Use `create(MessageServiceWatchRequestSchema)` to create a new message.
+ */
+export declare const MessageServiceWatchRequestSchema: GenMessage<MessageServiceWatchRequest>;
+/**
+ * MessageServiceWatchResponse is the response payload with the messages
+ *
+ * @generated from message status.v1.MessageServiceWatchResponse
+ */
+export type MessageServiceWatchResponse = Message$1<"status.v1.MessageServiceWatchResponse"> & {
+    /**
+     * Items is a slice of all messages
+     *
+     * @generated from field: repeated status.v1.Message items = 1;
+     */
+    items: Message[];
+    /**
+     * PinnedItems are messages which are of special interest
+     *
+     * @generated from field: repeated status.v1.Message pinned_items = 2;
+     */
+    pinnedItems: Message[];
+};
+/**
+ * Describes the message status.v1.MessageServiceWatchResponse.
+ * Use `create(MessageServiceWatchResponseSchema)` to create a new message.
+ */
+export declare const MessageServiceWatchResponseSchema: GenMessage<MessageServiceWatchResponse>;
+/**
  * Message is a test message to be displayed in the status
  *
  * @generated from message status.v1.Message
@@ -181,5 +216,15 @@ export declare const MessageService: GenService<{
         methodKind: "unary";
         input: typeof MessageServiceListRequestSchema;
         output: typeof MessageServiceListResponseSchema;
+    };
+    /**
+     * Watch returns all messages of interest
+     *
+     * @generated from rpc status.v1.MessageService.Watch
+     */
+    watch: {
+        methodKind: "server_streaming";
+        input: typeof MessageServiceWatchRequestSchema;
+        output: typeof MessageServiceWatchResponseSchema;
     };
 }>;
