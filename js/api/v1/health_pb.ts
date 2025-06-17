@@ -2,16 +2,30 @@
 // @generated from file api/v1/health.proto (package api.v1, syntax proto3)
 /* eslint-disable */
 
-import type { GenEnum, GenFile, GenMessage, GenService } from "@bufbuild/protobuf/codegenv1";
-import { enumDesc, fileDesc, messageDesc, serviceDesc } from "@bufbuild/protobuf/codegenv1";
+import type {
+  GenEnum,
+  GenFile,
+  GenMessage,
+  GenService,
+} from "@bufbuild/protobuf/codegenv1";
+import {
+  enumDesc,
+  fileDesc,
+  messageDesc,
+  serviceDesc,
+} from "@bufbuild/protobuf/codegenv1";
 import { file_api_v1_common } from "./common_pb";
 import type { Message } from "@bufbuild/protobuf";
 
 /**
  * Describes the file api/v1/health.proto.
  */
-export const file_api_v1_health: GenFile = /*@__PURE__*/
-  fileDesc("ChNhcGkvdjEvaGVhbHRoLnByb3RvEgZhcGkudjEiMAoGSGVhbHRoEiYKCHNlcnZpY2VzGAEgAygLMhQuYXBpLnYxLkhlYWx0aFN0YXR1cyLrAQoMSGVhbHRoU3RhdHVzEh0KBG5hbWUYASABKA4yDy5hcGkudjEuU2VydmljZRIlCgZzdGF0dXMYAiABKA4yFS5hcGkudjEuU2VydmljZVN0YXR1cxIPCgdtZXNzYWdlGAMgASgJEjgKCnBhcnRpdGlvbnMYBCADKAsyJC5hcGkudjEuSGVhbHRoU3RhdHVzLlBhcnRpdGlvbnNFbnRyeRpKCg9QYXJ0aXRpb25zRW50cnkSCwoDa2V5GAEgASgJEiYKBXZhbHVlGAIgASgLMhcuYXBpLnYxLlBhcnRpdGlvbkhlYWx0aDoCOAEiSQoPUGFydGl0aW9uSGVhbHRoEiUKBnN0YXR1cxgBIAEoDjIVLmFwaS52MS5TZXJ2aWNlU3RhdHVzEg8KB21lc3NhZ2UYAiABKAkiGQoXSGVhbHRoU2VydmljZUdldFJlcXVlc3QiOgoYSGVhbHRoU2VydmljZUdldFJlc3BvbnNlEh4KBmhlYWx0aBgBIAEoCzIOLmFwaS52MS5IZWFsdGgqhgEKDVNlcnZpY2VTdGF0dXMSHgoaU0VSVklDRV9TVEFUVVNfVU5TUEVDSUZJRUQQABIbChdTRVJWSUNFX1NUQVRVU19ERUdSQURFRBABEhwKGFNFUlZJQ0VfU1RBVFVTX1VOSEVBTFRIWRACEhoKFlNFUlZJQ0VfU1RBVFVTX0hFQUxUSFkQAyphCgdTZXJ2aWNlEhcKE1NFUlZJQ0VfVU5TUEVDSUZJRUQQABITCg9TRVJWSUNFX0NMVVNURVIQARISCg5TRVJWSUNFX1ZPTFVNRRACEhQKEFNFUlZJQ0VfTUFDSElORVMQAzJjCg1IZWFsdGhTZXJ2aWNlElIKA0dldBIfLmFwaS52MS5IZWFsdGhTZXJ2aWNlR2V0UmVxdWVzdBogLmFwaS52MS5IZWFsdGhTZXJ2aWNlR2V0UmVzcG9uc2UiCNjzGAHo8xgCQoQBCgpjb20uYXBpLnYxQgtIZWFsdGhQcm90b1ABWjBnaXRodWIuY29tL21ldGFsLXN0YWNrLWNsb3VkL2FwaS9nby9hcGkvdjE7YXBpdjGiAgNBWFiqAgZBcGkuVjHKAgZBcGlcVjHiAhJBcGlcVjFcR1BCTWV0YWRhdGHqAgdBcGk6OlYxYgZwcm90bzM", [file_api_v1_common]);
+export const file_api_v1_health: GenFile =
+  /*@__PURE__*/
+  fileDesc(
+    "ChNhcGkvdjEvaGVhbHRoLnByb3RvEgZhcGkudjEiMAoGSGVhbHRoEiYKCHNlcnZpY2VzGAEgAygLMhQuYXBpLnYxLkhlYWx0aFN0YXR1cyLrAQoMSGVhbHRoU3RhdHVzEh0KBG5hbWUYASABKA4yDy5hcGkudjEuU2VydmljZRIlCgZzdGF0dXMYAiABKA4yFS5hcGkudjEuU2VydmljZVN0YXR1cxIPCgdtZXNzYWdlGAMgASgJEjgKCnBhcnRpdGlvbnMYBCADKAsyJC5hcGkudjEuSGVhbHRoU3RhdHVzLlBhcnRpdGlvbnNFbnRyeRpKCg9QYXJ0aXRpb25zRW50cnkSCwoDa2V5GAEgASgJEiYKBXZhbHVlGAIgASgLMhcuYXBpLnYxLlBhcnRpdGlvbkhlYWx0aDoCOAEiSQoPUGFydGl0aW9uSGVhbHRoEiUKBnN0YXR1cxgBIAEoDjIVLmFwaS52MS5TZXJ2aWNlU3RhdHVzEg8KB21lc3NhZ2UYAiABKAkiGQoXSGVhbHRoU2VydmljZUdldFJlcXVlc3QiOgoYSGVhbHRoU2VydmljZUdldFJlc3BvbnNlEh4KBmhlYWx0aBgBIAEoCzIOLmFwaS52MS5IZWFsdGgqhgEKDVNlcnZpY2VTdGF0dXMSHgoaU0VSVklDRV9TVEFUVVNfVU5TUEVDSUZJRUQQABIbChdTRVJWSUNFX1NUQVRVU19ERUdSQURFRBABEhwKGFNFUlZJQ0VfU1RBVFVTX1VOSEVBTFRIWRACEhoKFlNFUlZJQ0VfU1RBVFVTX0hFQUxUSFkQAyphCgdTZXJ2aWNlEhcKE1NFUlZJQ0VfVU5TUEVDSUZJRUQQABITCg9TRVJWSUNFX0NMVVNURVIQARISCg5TRVJWSUNFX1ZPTFVNRRACEhQKEFNFUlZJQ0VfTUFDSElORVMQAzJjCg1IZWFsdGhTZXJ2aWNlElIKA0dldBIfLmFwaS52MS5IZWFsdGhTZXJ2aWNlR2V0UmVxdWVzdBogLmFwaS52MS5IZWFsdGhTZXJ2aWNlR2V0UmVzcG9uc2UiCNjzGAHo8xgCQoQBCgpjb20uYXBpLnYxQgtIZWFsdGhQcm90b1ABWjBnaXRodWIuY29tL21ldGFsLXN0YWNrLWNsb3VkL2FwaS9nby9hcGkvdjE7YXBpdjGiAgNBWFiqAgZBcGkuVjHKAgZBcGlcVjHiAhJBcGlcVjFcR1BCTWV0YWRhdGHqAgdBcGk6OlYxYgZwcm90bzM",
+    [file_api_v1_common]
+  );
 
 /**
  * Health reports the health status of all services
@@ -31,7 +45,8 @@ export type Health = Message<"api.v1.Health"> & {
  * Describes the message api.v1.Health.
  * Use `create(HealthSchema)` to create a new message.
  */
-export const HealthSchema: GenMessage<Health> = /*@__PURE__*/
+export const HealthSchema: GenMessage<Health> =
+  /*@__PURE__*/
   messageDesc(file_api_v1_health, 0);
 
 /**
@@ -73,7 +88,8 @@ export type HealthStatus = Message<"api.v1.HealthStatus"> & {
  * Describes the message api.v1.HealthStatus.
  * Use `create(HealthStatusSchema)` to create a new message.
  */
-export const HealthStatusSchema: GenMessage<HealthStatus> = /*@__PURE__*/
+export const HealthStatusSchema: GenMessage<HealthStatus> =
+  /*@__PURE__*/
   messageDesc(file_api_v1_health, 1);
 
 /**
@@ -101,7 +117,8 @@ export type PartitionHealth = Message<"api.v1.PartitionHealth"> & {
  * Describes the message api.v1.PartitionHealth.
  * Use `create(PartitionHealthSchema)` to create a new message.
  */
-export const PartitionHealthSchema: GenMessage<PartitionHealth> = /*@__PURE__*/
+export const PartitionHealthSchema: GenMessage<PartitionHealth> =
+  /*@__PURE__*/
   messageDesc(file_api_v1_health, 2);
 
 /**
@@ -109,14 +126,15 @@ export const PartitionHealthSchema: GenMessage<PartitionHealth> = /*@__PURE__*/
  *
  * @generated from message api.v1.HealthServiceGetRequest
  */
-export type HealthServiceGetRequest = Message<"api.v1.HealthServiceGetRequest"> & {
-};
+export type HealthServiceGetRequest =
+  Message<"api.v1.HealthServiceGetRequest"> & {};
 
 /**
  * Describes the message api.v1.HealthServiceGetRequest.
  * Use `create(HealthServiceGetRequestSchema)` to create a new message.
  */
-export const HealthServiceGetRequestSchema: GenMessage<HealthServiceGetRequest> = /*@__PURE__*/
+export const HealthServiceGetRequestSchema: GenMessage<HealthServiceGetRequest> =
+  /*@__PURE__*/
   messageDesc(file_api_v1_health, 3);
 
 /**
@@ -124,20 +142,22 @@ export const HealthServiceGetRequestSchema: GenMessage<HealthServiceGetRequest> 
  *
  * @generated from message api.v1.HealthServiceGetResponse
  */
-export type HealthServiceGetResponse = Message<"api.v1.HealthServiceGetResponse"> & {
-  /**
-   * Health is the overall health of the system
-   *
-   * @generated from field: api.v1.Health health = 1;
-   */
-  health?: Health;
-};
+export type HealthServiceGetResponse =
+  Message<"api.v1.HealthServiceGetResponse"> & {
+    /**
+     * Health is the overall health of the system
+     *
+     * @generated from field: api.v1.Health health = 1;
+     */
+    health?: Health;
+  };
 
 /**
  * Describes the message api.v1.HealthServiceGetResponse.
  * Use `create(HealthServiceGetResponseSchema)` to create a new message.
  */
-export const HealthServiceGetResponseSchema: GenMessage<HealthServiceGetResponse> = /*@__PURE__*/
+export const HealthServiceGetResponseSchema: GenMessage<HealthServiceGetResponse> =
+  /*@__PURE__*/
   messageDesc(file_api_v1_health, 4);
 
 /**
@@ -178,7 +198,8 @@ export enum ServiceStatus {
 /**
  * Describes the enum api.v1.ServiceStatus.
  */
-export const ServiceStatusSchema: GenEnum<ServiceStatus> = /*@__PURE__*/
+export const ServiceStatusSchema: GenEnum<ServiceStatus> =
+  /*@__PURE__*/
   enumDesc(file_api_v1_health, 0);
 
 /**
@@ -219,7 +240,8 @@ export enum Service {
 /**
  * Describes the enum api.v1.Service.
  */
-export const ServiceSchema: GenEnum<Service> = /*@__PURE__*/
+export const ServiceSchema: GenEnum<Service> =
+  /*@__PURE__*/
   enumDesc(file_api_v1_health, 1);
 
 /**
@@ -237,7 +259,5 @@ export const HealthService: GenService<{
     methodKind: "unary";
     input: typeof HealthServiceGetRequestSchema;
     output: typeof HealthServiceGetResponseSchema;
-  },
-}> = /*@__PURE__*/
-  serviceDesc(file_api_v1_health, 0);
-
+  };
+}> = /*@__PURE__*/ serviceDesc(file_api_v1_health, 0);

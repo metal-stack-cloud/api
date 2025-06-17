@@ -13449,6 +13449,53 @@
           ]
         },
         {
+          "name": "MessageServiceWatchRequest",
+          "longName": "MessageServiceWatchRequest",
+          "fullName": "status.v1.MessageServiceWatchRequest",
+          "description": "MessageServiceWatchRequest is the request payload to watch the messages",
+          "hasExtensions": false,
+          "hasFields": false,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": []
+        },
+        {
+          "name": "MessageServiceWatchResponse",
+          "longName": "MessageServiceWatchResponse",
+          "fullName": "status.v1.MessageServiceWatchResponse",
+          "description": "MessageServiceWatchResponse is the response payload with the messages",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "items",
+              "description": "Items is a slice of all messages",
+              "label": "repeated",
+              "type": "Message",
+              "longType": "Message",
+              "fullType": "status.v1.Message",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "pinned_items",
+              "description": "PinnedItems are messages which are of special interest",
+              "label": "repeated",
+              "type": "Message",
+              "longType": "Message",
+              "fullType": "status.v1.Message",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
           "name": "ReplyMessage",
           "longName": "ReplyMessage",
           "fullName": "status.v1.ReplyMessage",
@@ -13527,6 +13574,18 @@
               "responseLongType": "MessageServiceListResponse",
               "responseFullType": "status.v1.MessageServiceListResponse",
               "responseStreaming": false
+            },
+            {
+              "name": "Watch",
+              "description": "Watch returns all messages of interest",
+              "requestType": "MessageServiceWatchRequest",
+              "requestLongType": "MessageServiceWatchRequest",
+              "requestFullType": "status.v1.MessageServiceWatchRequest",
+              "requestStreaming": false,
+              "responseType": "MessageServiceWatchResponse",
+              "responseLongType": "MessageServiceWatchResponse",
+              "responseFullType": "status.v1.MessageServiceWatchResponse",
+              "responseStreaming": true
             }
           ]
         }
@@ -13613,6 +13672,77 @@
               "defaultValue": ""
             }
           ]
+        },
+        {
+          "name": "StatusServiceWatchRequest",
+          "longName": "StatusServiceWatchRequest",
+          "fullName": "status.v1.StatusServiceWatchRequest",
+          "description": "StatusServiceWatchRequest is the request payload to get the status",
+          "hasExtensions": false,
+          "hasFields": false,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": []
+        },
+        {
+          "name": "StatusServiceWatchResponse",
+          "longName": "StatusServiceWatchResponse",
+          "fullName": "status.v1.StatusServiceWatchResponse",
+          "description": "StatusServiceWatchResponse is the response payload which describes the system status",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "health",
+              "description": "Health of the individual services",
+              "label": "",
+              "type": "Health",
+              "longType": "api.v1.Health",
+              "fullType": "api.v1.Health",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "overall_status",
+              "description": "OverallStatus is the status of the system",
+              "label": "",
+              "type": "ServiceStatus",
+              "longType": "api.v1.ServiceStatus",
+              "fullType": "api.v1.ServiceStatus",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "connection_broken",
+              "description": "ConnectionBroken shows if the connection to the system is broken",
+              "label": "",
+              "type": "bool",
+              "longType": "bool",
+              "fullType": "bool",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "api_version",
+              "description": "ApiVersion of the system",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
         }
       ],
       "services": [
@@ -13633,6 +13763,18 @@
               "responseLongType": "StatusServiceGetResponse",
               "responseFullType": "status.v1.StatusServiceGetResponse",
               "responseStreaming": false
+            },
+            {
+              "name": "Watch",
+              "description": "Watch the system status",
+              "requestType": "StatusServiceWatchRequest",
+              "requestLongType": "StatusServiceWatchRequest",
+              "requestFullType": "status.v1.StatusServiceWatchRequest",
+              "requestStreaming": false,
+              "responseType": "StatusServiceWatchResponse",
+              "responseLongType": "StatusServiceWatchResponse",
+              "responseFullType": "status.v1.StatusServiceWatchResponse",
+              "responseStreaming": true
             }
           ]
         }
