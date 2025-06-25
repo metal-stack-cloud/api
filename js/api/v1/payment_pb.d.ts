@@ -407,12 +407,6 @@ export type PaymentServiceCreateOrUpdateCustomerRequest = Message<"api.v1.Paymen
      * @generated from field: api.v1.PaymentCustomer customer = 2;
      */
     customer?: PaymentCustomer;
-    /**
-     * AcceptedTermsAndConditions indicates the modification of the terms and conditions acceptance
-     *
-     * @generated from field: bool accepted_terms_and_conditions = 3;
-     */
-    acceptedTermsAndConditions: boolean;
 };
 /**
  * Describes the message api.v1.PaymentServiceCreateOrUpdateCustomerRequest.
