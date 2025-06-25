@@ -1,6 +1,5 @@
 import type { GenFile, GenMessage, GenService } from "@bufbuild/protobuf/codegenv1";
 import type { OAuthProvider, TenantRole } from "./common_pb";
-import type { Coupon } from "./payment_pb";
 import type { Timestamp } from "@bufbuild/protobuf/wkt";
 import type { Message } from "@bufbuild/protobuf";
 /**
@@ -49,12 +48,6 @@ export type Tenant = Message<"api.v1.Tenant"> & {
      * @generated from field: api.v1.OAuthProvider oauth_provider = 6;
      */
     oauthProvider: OAuthProvider;
-    /**
-     * PaymentDetails the tenant provides
-     *
-     * @generated from field: api.v1.PaymentDetails payment_details = 8;
-     */
-    paymentDetails?: PaymentDetails;
     /**
      * Admitted indicates if this tenant is allowed to use the platform
      *
@@ -217,84 +210,6 @@ export type TenantInvite = Message<"api.v1.TenantInvite"> & {
  * Use `create(TenantInviteSchema)` to create a new message.
  */
 export declare const TenantInviteSchema: GenMessage<TenantInvite>;
-/**
- * PaymentDetails of a tenant
- *
- * @generated from message api.v1.PaymentDetails
- */
-export type PaymentDetails = Message<"api.v1.PaymentDetails"> & {
-    /**
-     * CustomerId at the payment processor
-     *
-     * @generated from field: string customer_id = 1;
-     */
-    customerId: string;
-    /**
-     * PaymentMethodId of the tenant at the payment processor
-     *
-     * @generated from field: optional string payment_method_id = 2;
-     */
-    paymentMethodId?: string;
-    /**
-     * SubscriptionId at the payment processor
-     *
-     * @generated from field: string subscription_id = 3;
-     */
-    subscriptionId: string;
-    /**
-     * Coupons a list of coupons the tenant has
-     *
-     * @generated from field: repeated api.v1.Coupon coupons = 4;
-     */
-    coupons: Coupon[];
-    /**
-     * Vat which applies to this tenant
-     *
-     * @generated from field: string vat = 5;
-     */
-    vat: string;
-};
-/**
- * Describes the message api.v1.PaymentDetails.
- * Use `create(PaymentDetailsSchema)` to create a new message.
- */
-export declare const PaymentDetailsSchema: GenMessage<PaymentDetails>;
-/**
- * PaymentDetailsUpdate is used to update PaymentDetails
- *
- * @generated from message api.v1.PaymentDetailsUpdate
- */
-export type PaymentDetailsUpdate = Message<"api.v1.PaymentDetailsUpdate"> & {
-    /**
-     * CustomerId at the payment processor
-     *
-     * @generated from field: optional string customer_id = 1;
-     */
-    customerId?: string;
-    /**
-     * PaymentMethodId of the tenant at the payment processor
-     *
-     * @generated from field: optional string payment_method_id = 2;
-     */
-    paymentMethodId?: string;
-    /**
-     * SubscriptionId at the payment processor
-     *
-     * @generated from field: optional string subscription_id = 3;
-     */
-    subscriptionId?: string;
-    /**
-     * Vat which applies to this tenant
-     *
-     * @generated from field: optional string vat = 4;
-     */
-    vat?: string;
-};
-/**
- * Describes the message api.v1.PaymentDetailsUpdate.
- * Use `create(PaymentDetailsUpdateSchema)` to create a new message.
- */
-export declare const PaymentDetailsUpdateSchema: GenMessage<PaymentDetailsUpdate>;
 /**
  * TermsAndConditions the tenant accepted
  *
@@ -481,12 +396,6 @@ export type TenantServiceUpdateRequest = Message<"api.v1.TenantServiceUpdateRequ
      * @generated from field: optional string avatar_url = 5;
      */
     avatarUrl?: string;
-    /**
-     * PaymentDetails of the tenant
-     *
-     * @generated from field: optional api.v1.PaymentDetailsUpdate payment_details = 8;
-     */
-    paymentDetails?: PaymentDetailsUpdate;
     /**
      * TermsAndConditions of the tenant
      *

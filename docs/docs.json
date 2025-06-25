@@ -7810,138 +7810,6 @@
       "extensions": [],
       "messages": [
         {
-          "name": "PaymentDetails",
-          "longName": "PaymentDetails",
-          "fullName": "api.v1.PaymentDetails",
-          "description": "PaymentDetails of a tenant",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": true,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "customer_id",
-              "description": "CustomerId at the payment processor",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "payment_method_id",
-              "description": "PaymentMethodId of the tenant at the payment processor",
-              "label": "optional",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": true,
-              "oneofdecl": "_payment_method_id",
-              "defaultValue": ""
-            },
-            {
-              "name": "subscription_id",
-              "description": "SubscriptionId at the payment processor",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "coupons",
-              "description": "Coupons a list of coupons the tenant has",
-              "label": "repeated",
-              "type": "Coupon",
-              "longType": "Coupon",
-              "fullType": "api.v1.Coupon",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "vat",
-              "description": "Vat which applies to this tenant",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            }
-          ]
-        },
-        {
-          "name": "PaymentDetailsUpdate",
-          "longName": "PaymentDetailsUpdate",
-          "fullName": "api.v1.PaymentDetailsUpdate",
-          "description": "PaymentDetailsUpdate is used to update PaymentDetails",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": true,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "customer_id",
-              "description": "CustomerId at the payment processor",
-              "label": "optional",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": true,
-              "oneofdecl": "_customer_id",
-              "defaultValue": ""
-            },
-            {
-              "name": "payment_method_id",
-              "description": "PaymentMethodId of the tenant at the payment processor",
-              "label": "optional",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": true,
-              "oneofdecl": "_payment_method_id",
-              "defaultValue": ""
-            },
-            {
-              "name": "subscription_id",
-              "description": "SubscriptionId at the payment processor",
-              "label": "optional",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": true,
-              "oneofdecl": "_subscription_id",
-              "defaultValue": ""
-            },
-            {
-              "name": "vat",
-              "description": "Vat which applies to this tenant",
-              "label": "optional",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": true,
-              "oneofdecl": "_vat",
-              "defaultValue": ""
-            }
-          ]
-        },
-        {
           "name": "Tenant",
           "longName": "Tenant",
           "fullName": "api.v1.Tenant",
@@ -8018,18 +7886,6 @@
               "type": "OAuthProvider",
               "longType": "OAuthProvider",
               "fullType": "api.v1.OAuthProvider",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "payment_details",
-              "description": "PaymentDetails the tenant provides",
-              "label": "",
-              "type": "PaymentDetails",
-              "longType": "PaymentDetails",
-              "fullType": "api.v1.PaymentDetails",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
@@ -9170,18 +9026,6 @@
               "ismap": false,
               "isoneof": true,
               "oneofdecl": "_avatar_url",
-              "defaultValue": ""
-            },
-            {
-              "name": "payment_details",
-              "description": "PaymentDetails of the tenant",
-              "label": "optional",
-              "type": "PaymentDetailsUpdate",
-              "longType": "PaymentDetailsUpdate",
-              "fullType": "api.v1.PaymentDetailsUpdate",
-              "ismap": false,
-              "isoneof": true,
-              "oneofdecl": "_payment_details",
               "defaultValue": ""
             },
             {
