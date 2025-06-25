@@ -1,11 +1,16 @@
-import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
-import { Duration, Message, proto3, Timestamp } from "@bufbuild/protobuf";
+import type { GenFile, GenMessage, GenService } from "@bufbuild/protobuf/codegenv1";
+import type { Duration, Timestamp } from "@bufbuild/protobuf/wkt";
+import type { Message } from "@bufbuild/protobuf";
+/**
+ * Describes the file api/v1/volume.proto.
+ */
+export declare const file_api_v1_volume: GenFile;
 /**
  * Volume is a unit of block storage
  *
  * @generated from message api.v1.Volume
  */
-export declare class Volume extends Message<Volume> {
+export type Volume = Message<"api.v1.Volume"> & {
     /**
      * Uuid is the unique identifier of the volume
      *
@@ -132,21 +137,86 @@ export declare class Volume extends Message<Volume> {
      * @generated from field: api.v1.VolumeStatistics statistics = 21;
      */
     statistics?: VolumeStatistics;
-    constructor(data?: PartialMessage<Volume>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "api.v1.Volume";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Volume;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): Volume;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): Volume;
-    static equals(a: Volume | PlainMessage<Volume> | undefined, b: Volume | PlainMessage<Volume> | undefined): boolean;
-}
+    /**
+     * ClusterName if set points to the cluster this volume is attached to
+     *
+     * @generated from field: string cluster_name = 22;
+     */
+    clusterName: string;
+    /**
+     * ClusterID if set points to the cluster this volume is attached to
+     *
+     * @generated from field: string cluster_id = 23;
+     */
+    clusterId: string;
+    /**
+     * Labels stored in the volume
+     *
+     * @generated from field: repeated api.v1.VolumeLabel labels = 24;
+     */
+    labels: VolumeLabel[];
+};
+/**
+ * Describes the message api.v1.Volume.
+ * Use `create(VolumeSchema)` to create a new message.
+ */
+export declare const VolumeSchema: GenMessage<Volume>;
+/**
+ * label-key and label-value length must be between 1 and 253 characters and
+ * may contain any of: alphanumeric characters (a-z, A-Z, 0-9), hyphen (-),
+ * underscore (_) and dot (.).
+ *
+ * @generated from message api.v1.VolumeLabel
+ */
+export type VolumeLabel = Message<"api.v1.VolumeLabel"> & {
+    /**
+     * key under which the value is stored
+     *
+     * @generated from field: string key = 1;
+     */
+    key: string;
+    /**
+     * value of this label
+     *
+     * @generated from field: string value = 2;
+     */
+    value: string;
+};
+/**
+ * Describes the message api.v1.VolumeLabel.
+ * Use `create(VolumeLabelSchema)` to create a new message.
+ */
+export declare const VolumeLabelSchema: GenMessage<VolumeLabel>;
+/**
+ * UpdateVolumeLabels allows updating the labels
+ *
+ * @generated from message api.v1.UpdateVolumeLabels
+ */
+export type UpdateVolumeLabels = Message<"api.v1.UpdateVolumeLabels"> & {
+    /**
+     * Update volume labels. New ones will be added, existing ones overwritten
+     *
+     * @generated from field: repeated api.v1.VolumeLabel update = 1;
+     */
+    update: VolumeLabel[];
+    /**
+     * Remove volume labels
+     *
+     * @generated from field: repeated string remove = 2;
+     */
+    remove: string[];
+};
+/**
+ * Describes the message api.v1.UpdateVolumeLabels.
+ * Use `create(UpdateVolumeLabelsSchema)` to create a new message.
+ */
+export declare const UpdateVolumeLabelsSchema: GenMessage<UpdateVolumeLabels>;
 /**
  * VolumeStatistics are all detailed statistics of a volume
  *
  * @generated from message api.v1.VolumeStatistics
  */
-export declare class VolumeStatistics extends Message<VolumeStatistics> {
+export type VolumeStatistics = Message<"api.v1.VolumeStatistics"> & {
     /**
      * LogicalUsedStorage
      *
@@ -235,21 +305,18 @@ export declare class VolumeStatistics extends Message<VolumeStatistics> {
      * @generated from field: uint32 recoverable_data_integrity_errors = 12;
      */
     recoverableDataIntegrityErrors: number;
-    constructor(data?: PartialMessage<VolumeStatistics>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "api.v1.VolumeStatistics";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): VolumeStatistics;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): VolumeStatistics;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): VolumeStatistics;
-    static equals(a: VolumeStatistics | PlainMessage<VolumeStatistics> | undefined, b: VolumeStatistics | PlainMessage<VolumeStatistics> | undefined): boolean;
-}
+};
+/**
+ * Describes the message api.v1.VolumeStatistics.
+ * Use `create(VolumeStatisticsSchema)` to create a new message.
+ */
+export declare const VolumeStatisticsSchema: GenMessage<VolumeStatistics>;
 /**
  * Snapshot is a unit of block storage create as a point in time block copy of a volume
  *
  * @generated from message api.v1.Snapshot
  */
-export declare class Snapshot extends Message<Snapshot> {
+export type Snapshot = Message<"api.v1.Snapshot"> & {
     /**
      * Uuid is the unique identifier of the snapshot
      *
@@ -346,21 +413,18 @@ export declare class Snapshot extends Message<Snapshot> {
      * @generated from field: google.protobuf.Timestamp created_at = 20;
      */
     createdAt?: Timestamp;
-    constructor(data?: PartialMessage<Snapshot>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "api.v1.Snapshot";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Snapshot;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): Snapshot;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): Snapshot;
-    static equals(a: Snapshot | PlainMessage<Snapshot> | undefined, b: Snapshot | PlainMessage<Snapshot> | undefined): boolean;
-}
+};
+/**
+ * Describes the message api.v1.Snapshot.
+ * Use `create(SnapshotSchema)` to create a new message.
+ */
+export declare const SnapshotSchema: GenMessage<Snapshot>;
 /**
  * SnapshotStatistics are all detailed statistics of a snapshot
  *
  * @generated from message api.v1.SnapshotStatistics
  */
-export declare class SnapshotStatistics extends Message<SnapshotStatistics> {
+export type SnapshotStatistics = Message<"api.v1.SnapshotStatistics"> & {
     /**
      * PhysicalCapacity
      *
@@ -401,21 +465,18 @@ export declare class SnapshotStatistics extends Message<SnapshotStatistics> {
      * @generated from field: uint64 user_written = 5;
      */
     userWritten: bigint;
-    constructor(data?: PartialMessage<SnapshotStatistics>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "api.v1.SnapshotStatistics";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): SnapshotStatistics;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): SnapshotStatistics;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): SnapshotStatistics;
-    static equals(a: SnapshotStatistics | PlainMessage<SnapshotStatistics> | undefined, b: SnapshotStatistics | PlainMessage<SnapshotStatistics> | undefined): boolean;
-}
+};
+/**
+ * Describes the message api.v1.SnapshotStatistics.
+ * Use `create(SnapshotStatisticsSchema)` to create a new message.
+ */
+export declare const SnapshotStatisticsSchema: GenMessage<SnapshotStatistics>;
 /**
  * VolumeServiceGetRequest is the request payload of the volume get request
  *
  * @generated from message api.v1.VolumeServiceGetRequest
  */
-export declare class VolumeServiceGetRequest extends Message<VolumeServiceGetRequest> {
+export type VolumeServiceGetRequest = Message<"api.v1.VolumeServiceGetRequest"> & {
     /**
      * Uuid of the volume
      *
@@ -428,21 +489,18 @@ export declare class VolumeServiceGetRequest extends Message<VolumeServiceGetReq
      * @generated from field: string project = 2;
      */
     project: string;
-    constructor(data?: PartialMessage<VolumeServiceGetRequest>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "api.v1.VolumeServiceGetRequest";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): VolumeServiceGetRequest;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): VolumeServiceGetRequest;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): VolumeServiceGetRequest;
-    static equals(a: VolumeServiceGetRequest | PlainMessage<VolumeServiceGetRequest> | undefined, b: VolumeServiceGetRequest | PlainMessage<VolumeServiceGetRequest> | undefined): boolean;
-}
+};
+/**
+ * Describes the message api.v1.VolumeServiceGetRequest.
+ * Use `create(VolumeServiceGetRequestSchema)` to create a new message.
+ */
+export declare const VolumeServiceGetRequestSchema: GenMessage<VolumeServiceGetRequest>;
 /**
  * VolumeServiceListRequest is the request payload of a volume list request
  *
  * @generated from message api.v1.VolumeServiceListRequest
  */
-export declare class VolumeServiceListRequest extends Message<VolumeServiceListRequest> {
+export type VolumeServiceListRequest = Message<"api.v1.VolumeServiceListRequest"> & {
     /**
      * Uuid of the volume
      *
@@ -467,21 +525,18 @@ export declare class VolumeServiceListRequest extends Message<VolumeServiceListR
      * @generated from field: optional string name = 4;
      */
     name?: string;
-    constructor(data?: PartialMessage<VolumeServiceListRequest>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "api.v1.VolumeServiceListRequest";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): VolumeServiceListRequest;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): VolumeServiceListRequest;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): VolumeServiceListRequest;
-    static equals(a: VolumeServiceListRequest | PlainMessage<VolumeServiceListRequest> | undefined, b: VolumeServiceListRequest | PlainMessage<VolumeServiceListRequest> | undefined): boolean;
-}
+};
+/**
+ * Describes the message api.v1.VolumeServiceListRequest.
+ * Use `create(VolumeServiceListRequestSchema)` to create a new message.
+ */
+export declare const VolumeServiceListRequestSchema: GenMessage<VolumeServiceListRequest>;
 /**
  * VolumeServiceDeleteRequest is the request payload of a volume delete request
  *
  * @generated from message api.v1.VolumeServiceDeleteRequest
  */
-export declare class VolumeServiceDeleteRequest extends Message<VolumeServiceDeleteRequest> {
+export type VolumeServiceDeleteRequest = Message<"api.v1.VolumeServiceDeleteRequest"> & {
     /**
      * Uuid of the volume
      *
@@ -494,21 +549,48 @@ export declare class VolumeServiceDeleteRequest extends Message<VolumeServiceDel
      * @generated from field: string project = 2;
      */
     project: string;
-    constructor(data?: PartialMessage<VolumeServiceDeleteRequest>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "api.v1.VolumeServiceDeleteRequest";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): VolumeServiceDeleteRequest;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): VolumeServiceDeleteRequest;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): VolumeServiceDeleteRequest;
-    static equals(a: VolumeServiceDeleteRequest | PlainMessage<VolumeServiceDeleteRequest> | undefined, b: VolumeServiceDeleteRequest | PlainMessage<VolumeServiceDeleteRequest> | undefined): boolean;
-}
+};
+/**
+ * Describes the message api.v1.VolumeServiceDeleteRequest.
+ * Use `create(VolumeServiceDeleteRequestSchema)` to create a new message.
+ */
+export declare const VolumeServiceDeleteRequestSchema: GenMessage<VolumeServiceDeleteRequest>;
+/**
+ * VolumeServiceUpdateRequest is the request payload of a volume update request
+ *
+ * @generated from message api.v1.VolumeServiceUpdateRequest
+ */
+export type VolumeServiceUpdateRequest = Message<"api.v1.VolumeServiceUpdateRequest"> & {
+    /**
+     * Uuid of the volume
+     *
+     * @generated from field: string uuid = 1;
+     */
+    uuid: string;
+    /**
+     * Project of the volume
+     *
+     * @generated from field: string project = 2;
+     */
+    project: string;
+    /**
+     * Update Volume Labels stored in the volume. Some labels are immutable and cannot be changed.
+     *
+     * @generated from field: optional api.v1.UpdateVolumeLabels labels = 24;
+     */
+    labels?: UpdateVolumeLabels;
+};
+/**
+ * Describes the message api.v1.VolumeServiceUpdateRequest.
+ * Use `create(VolumeServiceUpdateRequestSchema)` to create a new message.
+ */
+export declare const VolumeServiceUpdateRequestSchema: GenMessage<VolumeServiceUpdateRequest>;
 /**
  * SnapshotServiceGetRequest is the request payload of a snapshot list request
  *
  * @generated from message api.v1.SnapshotServiceGetRequest
  */
-export declare class SnapshotServiceGetRequest extends Message<SnapshotServiceGetRequest> {
+export type SnapshotServiceGetRequest = Message<"api.v1.SnapshotServiceGetRequest"> & {
     /**
      * Uuid of the snapshot
      *
@@ -521,21 +603,18 @@ export declare class SnapshotServiceGetRequest extends Message<SnapshotServiceGe
      * @generated from field: string project = 2;
      */
     project: string;
-    constructor(data?: PartialMessage<SnapshotServiceGetRequest>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "api.v1.SnapshotServiceGetRequest";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): SnapshotServiceGetRequest;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): SnapshotServiceGetRequest;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): SnapshotServiceGetRequest;
-    static equals(a: SnapshotServiceGetRequest | PlainMessage<SnapshotServiceGetRequest> | undefined, b: SnapshotServiceGetRequest | PlainMessage<SnapshotServiceGetRequest> | undefined): boolean;
-}
+};
+/**
+ * Describes the message api.v1.SnapshotServiceGetRequest.
+ * Use `create(SnapshotServiceGetRequestSchema)` to create a new message.
+ */
+export declare const SnapshotServiceGetRequestSchema: GenMessage<SnapshotServiceGetRequest>;
 /**
  * SnapshotServiceListRequest is the request payload of a snapshot list request
  *
  * @generated from message api.v1.SnapshotServiceListRequest
  */
-export declare class SnapshotServiceListRequest extends Message<SnapshotServiceListRequest> {
+export type SnapshotServiceListRequest = Message<"api.v1.SnapshotServiceListRequest"> & {
     /**
      * Uuid of the snapshot
      *
@@ -560,21 +639,18 @@ export declare class SnapshotServiceListRequest extends Message<SnapshotServiceL
      * @generated from field: optional string name = 4;
      */
     name?: string;
-    constructor(data?: PartialMessage<SnapshotServiceListRequest>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "api.v1.SnapshotServiceListRequest";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): SnapshotServiceListRequest;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): SnapshotServiceListRequest;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): SnapshotServiceListRequest;
-    static equals(a: SnapshotServiceListRequest | PlainMessage<SnapshotServiceListRequest> | undefined, b: SnapshotServiceListRequest | PlainMessage<SnapshotServiceListRequest> | undefined): boolean;
-}
+};
+/**
+ * Describes the message api.v1.SnapshotServiceListRequest.
+ * Use `create(SnapshotServiceListRequestSchema)` to create a new message.
+ */
+export declare const SnapshotServiceListRequestSchema: GenMessage<SnapshotServiceListRequest>;
 /**
  * SnapshotServiceDeleteRequest is the request payload of a snapshot delete request
  *
  * @generated from message api.v1.SnapshotServiceDeleteRequest
  */
-export declare class SnapshotServiceDeleteRequest extends Message<SnapshotServiceDeleteRequest> {
+export type SnapshotServiceDeleteRequest = Message<"api.v1.SnapshotServiceDeleteRequest"> & {
     /**
      * Uuid of the snapshot
      *
@@ -587,138 +663,219 @@ export declare class SnapshotServiceDeleteRequest extends Message<SnapshotServic
      * @generated from field: string project = 2;
      */
     project: string;
-    constructor(data?: PartialMessage<SnapshotServiceDeleteRequest>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "api.v1.SnapshotServiceDeleteRequest";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): SnapshotServiceDeleteRequest;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): SnapshotServiceDeleteRequest;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): SnapshotServiceDeleteRequest;
-    static equals(a: SnapshotServiceDeleteRequest | PlainMessage<SnapshotServiceDeleteRequest> | undefined, b: SnapshotServiceDeleteRequest | PlainMessage<SnapshotServiceDeleteRequest> | undefined): boolean;
-}
+};
+/**
+ * Describes the message api.v1.SnapshotServiceDeleteRequest.
+ * Use `create(SnapshotServiceDeleteRequestSchema)` to create a new message.
+ */
+export declare const SnapshotServiceDeleteRequestSchema: GenMessage<SnapshotServiceDeleteRequest>;
 /**
  * VolumeServiceGetResponse is the response payload of a volume get request
  *
  * @generated from message api.v1.VolumeServiceGetResponse
  */
-export declare class VolumeServiceGetResponse extends Message<VolumeServiceGetResponse> {
+export type VolumeServiceGetResponse = Message<"api.v1.VolumeServiceGetResponse"> & {
     /**
      * Volume the volume
      *
      * @generated from field: api.v1.Volume volume = 1;
      */
     volume?: Volume;
-    constructor(data?: PartialMessage<VolumeServiceGetResponse>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "api.v1.VolumeServiceGetResponse";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): VolumeServiceGetResponse;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): VolumeServiceGetResponse;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): VolumeServiceGetResponse;
-    static equals(a: VolumeServiceGetResponse | PlainMessage<VolumeServiceGetResponse> | undefined, b: VolumeServiceGetResponse | PlainMessage<VolumeServiceGetResponse> | undefined): boolean;
-}
+};
+/**
+ * Describes the message api.v1.VolumeServiceGetResponse.
+ * Use `create(VolumeServiceGetResponseSchema)` to create a new message.
+ */
+export declare const VolumeServiceGetResponseSchema: GenMessage<VolumeServiceGetResponse>;
 /**
  * VolumeServiceListResponse is the response payload of a volume list request
  *
  * @generated from message api.v1.VolumeServiceListResponse
  */
-export declare class VolumeServiceListResponse extends Message<VolumeServiceListResponse> {
+export type VolumeServiceListResponse = Message<"api.v1.VolumeServiceListResponse"> & {
     /**
      * Volumes the volumes
      *
      * @generated from field: repeated api.v1.Volume volumes = 1;
      */
     volumes: Volume[];
-    constructor(data?: PartialMessage<VolumeServiceListResponse>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "api.v1.VolumeServiceListResponse";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): VolumeServiceListResponse;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): VolumeServiceListResponse;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): VolumeServiceListResponse;
-    static equals(a: VolumeServiceListResponse | PlainMessage<VolumeServiceListResponse> | undefined, b: VolumeServiceListResponse | PlainMessage<VolumeServiceListResponse> | undefined): boolean;
-}
+};
+/**
+ * Describes the message api.v1.VolumeServiceListResponse.
+ * Use `create(VolumeServiceListResponseSchema)` to create a new message.
+ */
+export declare const VolumeServiceListResponseSchema: GenMessage<VolumeServiceListResponse>;
 /**
  * VolumeServiceDeleteResponse is the response payload of a volume delete request
  *
  * @generated from message api.v1.VolumeServiceDeleteResponse
  */
-export declare class VolumeServiceDeleteResponse extends Message<VolumeServiceDeleteResponse> {
+export type VolumeServiceDeleteResponse = Message<"api.v1.VolumeServiceDeleteResponse"> & {
     /**
      * Volume the volume
      *
      * @generated from field: api.v1.Volume volume = 1;
      */
     volume?: Volume;
-    constructor(data?: PartialMessage<VolumeServiceDeleteResponse>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "api.v1.VolumeServiceDeleteResponse";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): VolumeServiceDeleteResponse;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): VolumeServiceDeleteResponse;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): VolumeServiceDeleteResponse;
-    static equals(a: VolumeServiceDeleteResponse | PlainMessage<VolumeServiceDeleteResponse> | undefined, b: VolumeServiceDeleteResponse | PlainMessage<VolumeServiceDeleteResponse> | undefined): boolean;
-}
+};
+/**
+ * Describes the message api.v1.VolumeServiceDeleteResponse.
+ * Use `create(VolumeServiceDeleteResponseSchema)` to create a new message.
+ */
+export declare const VolumeServiceDeleteResponseSchema: GenMessage<VolumeServiceDeleteResponse>;
+/**
+ * VolumeServiceUpdateResponse is the response payload of a volume update request
+ *
+ * @generated from message api.v1.VolumeServiceUpdateResponse
+ */
+export type VolumeServiceUpdateResponse = Message<"api.v1.VolumeServiceUpdateResponse"> & {
+    /**
+     * Volume the volume
+     *
+     * @generated from field: api.v1.Volume volume = 1;
+     */
+    volume?: Volume;
+};
+/**
+ * Describes the message api.v1.VolumeServiceUpdateResponse.
+ * Use `create(VolumeServiceUpdateResponseSchema)` to create a new message.
+ */
+export declare const VolumeServiceUpdateResponseSchema: GenMessage<VolumeServiceUpdateResponse>;
 /**
  * SnapshotServiceGetResponse is the response payload of a snapshot get request
  *
  * @generated from message api.v1.SnapshotServiceGetResponse
  */
-export declare class SnapshotServiceGetResponse extends Message<SnapshotServiceGetResponse> {
+export type SnapshotServiceGetResponse = Message<"api.v1.SnapshotServiceGetResponse"> & {
     /**
      * Snapshot the snapshot
      *
      * @generated from field: api.v1.Snapshot snapshot = 1;
      */
     snapshot?: Snapshot;
-    constructor(data?: PartialMessage<SnapshotServiceGetResponse>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "api.v1.SnapshotServiceGetResponse";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): SnapshotServiceGetResponse;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): SnapshotServiceGetResponse;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): SnapshotServiceGetResponse;
-    static equals(a: SnapshotServiceGetResponse | PlainMessage<SnapshotServiceGetResponse> | undefined, b: SnapshotServiceGetResponse | PlainMessage<SnapshotServiceGetResponse> | undefined): boolean;
-}
+};
+/**
+ * Describes the message api.v1.SnapshotServiceGetResponse.
+ * Use `create(SnapshotServiceGetResponseSchema)` to create a new message.
+ */
+export declare const SnapshotServiceGetResponseSchema: GenMessage<SnapshotServiceGetResponse>;
 /**
  * SnapshotServiceListResponse is the response payload of a snapshot list request
  *
  * @generated from message api.v1.SnapshotServiceListResponse
  */
-export declare class SnapshotServiceListResponse extends Message<SnapshotServiceListResponse> {
+export type SnapshotServiceListResponse = Message<"api.v1.SnapshotServiceListResponse"> & {
     /**
      * Snapshots the snapshots
      *
      * @generated from field: repeated api.v1.Snapshot snapshots = 1;
      */
     snapshots: Snapshot[];
-    constructor(data?: PartialMessage<SnapshotServiceListResponse>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "api.v1.SnapshotServiceListResponse";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): SnapshotServiceListResponse;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): SnapshotServiceListResponse;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): SnapshotServiceListResponse;
-    static equals(a: SnapshotServiceListResponse | PlainMessage<SnapshotServiceListResponse> | undefined, b: SnapshotServiceListResponse | PlainMessage<SnapshotServiceListResponse> | undefined): boolean;
-}
+};
+/**
+ * Describes the message api.v1.SnapshotServiceListResponse.
+ * Use `create(SnapshotServiceListResponseSchema)` to create a new message.
+ */
+export declare const SnapshotServiceListResponseSchema: GenMessage<SnapshotServiceListResponse>;
 /**
  * SnapshotServiceDeleteResponse is the response payload of a snapshot delete request
  *
  * @generated from message api.v1.SnapshotServiceDeleteResponse
  */
-export declare class SnapshotServiceDeleteResponse extends Message<SnapshotServiceDeleteResponse> {
+export type SnapshotServiceDeleteResponse = Message<"api.v1.SnapshotServiceDeleteResponse"> & {
     /**
      * Snapshot the snapshot
      *
      * @generated from field: api.v1.Snapshot snapshot = 1;
      */
     snapshot?: Snapshot;
-    constructor(data?: PartialMessage<SnapshotServiceDeleteResponse>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "api.v1.SnapshotServiceDeleteResponse";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): SnapshotServiceDeleteResponse;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): SnapshotServiceDeleteResponse;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): SnapshotServiceDeleteResponse;
-    static equals(a: SnapshotServiceDeleteResponse | PlainMessage<SnapshotServiceDeleteResponse> | undefined, b: SnapshotServiceDeleteResponse | PlainMessage<SnapshotServiceDeleteResponse> | undefined): boolean;
-}
+};
+/**
+ * Describes the message api.v1.SnapshotServiceDeleteResponse.
+ * Use `create(SnapshotServiceDeleteResponseSchema)` to create a new message.
+ */
+export declare const SnapshotServiceDeleteResponseSchema: GenMessage<SnapshotServiceDeleteResponse>;
+/**
+ * VolumeService serves volume related functions
+ *
+ * @generated from service api.v1.VolumeService
+ */
+export declare const VolumeService: GenService<{
+    /**
+     * Get a volume
+     *
+     * @generated from rpc api.v1.VolumeService.Get
+     */
+    get: {
+        methodKind: "unary";
+        input: typeof VolumeServiceGetRequestSchema;
+        output: typeof VolumeServiceGetResponseSchema;
+    };
+    /**
+     * List the volumes
+     *
+     * @generated from rpc api.v1.VolumeService.List
+     */
+    list: {
+        methodKind: "unary";
+        input: typeof VolumeServiceListRequestSchema;
+        output: typeof VolumeServiceListResponseSchema;
+    };
+    /**
+     * Delete a volume
+     *
+     * @generated from rpc api.v1.VolumeService.Delete
+     */
+    delete: {
+        methodKind: "unary";
+        input: typeof VolumeServiceDeleteRequestSchema;
+        output: typeof VolumeServiceDeleteResponseSchema;
+    };
+    /**
+     * Update a volume
+     *
+     * @generated from rpc api.v1.VolumeService.Update
+     */
+    update: {
+        methodKind: "unary";
+        input: typeof VolumeServiceUpdateRequestSchema;
+        output: typeof VolumeServiceUpdateResponseSchema;
+    };
+}>;
+/**
+ * SnapshotService serves snapshot related functions
+ *
+ * @generated from service api.v1.SnapshotService
+ */
+export declare const SnapshotService: GenService<{
+    /**
+     * Get a snapshot
+     *
+     * @generated from rpc api.v1.SnapshotService.Get
+     */
+    get: {
+        methodKind: "unary";
+        input: typeof SnapshotServiceGetRequestSchema;
+        output: typeof SnapshotServiceGetResponseSchema;
+    };
+    /**
+     * List snapshots
+     *
+     * @generated from rpc api.v1.SnapshotService.List
+     */
+    list: {
+        methodKind: "unary";
+        input: typeof SnapshotServiceListRequestSchema;
+        output: typeof SnapshotServiceListResponseSchema;
+    };
+    /**
+     * Delete a snapshot
+     *
+     * @generated from rpc api.v1.SnapshotService.Delete
+     */
+    delete: {
+        methodKind: "unary";
+        input: typeof SnapshotServiceDeleteRequestSchema;
+        output: typeof SnapshotServiceDeleteResponseSchema;
+    };
+}>;

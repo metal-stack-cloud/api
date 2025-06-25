@@ -41,13 +41,6 @@ const (
 	PaymentServiceAddBalanceToCustomerProcedure = "/admin.v1.PaymentService/AddBalanceToCustomer"
 )
 
-// These variables are the protoreflect.Descriptor objects for the RPCs defined in this package.
-var (
-	paymentServiceServiceDescriptor                    = v1.File_admin_v1_payment_proto.Services().ByName("PaymentService")
-	paymentServiceListCouponsMethodDescriptor          = paymentServiceServiceDescriptor.Methods().ByName("ListCoupons")
-	paymentServiceAddBalanceToCustomerMethodDescriptor = paymentServiceServiceDescriptor.Methods().ByName("AddBalanceToCustomer")
-)
-
 // PaymentServiceClient is a client for the admin.v1.PaymentService service.
 type PaymentServiceClient interface {
 	// ListCoupons list all available coupons
@@ -65,17 +58,18 @@ type PaymentServiceClient interface {
 // http://api.acme.com or https://acme.com/grpc).
 func NewPaymentServiceClient(httpClient connect.HTTPClient, baseURL string, opts ...connect.ClientOption) PaymentServiceClient {
 	baseURL = strings.TrimRight(baseURL, "/")
+	paymentServiceMethods := v1.File_admin_v1_payment_proto.Services().ByName("PaymentService").Methods()
 	return &paymentServiceClient{
 		listCoupons: connect.NewClient[v1.PaymentServiceListCouponsRequest, v1.PaymentServiceListCouponsResponse](
 			httpClient,
 			baseURL+PaymentServiceListCouponsProcedure,
-			connect.WithSchema(paymentServiceListCouponsMethodDescriptor),
+			connect.WithSchema(paymentServiceMethods.ByName("ListCoupons")),
 			connect.WithClientOptions(opts...),
 		),
 		addBalanceToCustomer: connect.NewClient[v1.PaymentServiceAddBalanceToCustomerRequest, v1.PaymentServiceAddBalanceToCustomerResponse](
 			httpClient,
 			baseURL+PaymentServiceAddBalanceToCustomerProcedure,
-			connect.WithSchema(paymentServiceAddBalanceToCustomerMethodDescriptor),
+			connect.WithSchema(paymentServiceMethods.ByName("AddBalanceToCustomer")),
 			connect.WithClientOptions(opts...),
 		),
 	}
@@ -111,16 +105,17 @@ type PaymentServiceHandler interface {
 // By default, handlers support the Connect, gRPC, and gRPC-Web protocols with the binary Protobuf
 // and JSON codecs. They also support gzip compression.
 func NewPaymentServiceHandler(svc PaymentServiceHandler, opts ...connect.HandlerOption) (string, http.Handler) {
+	paymentServiceMethods := v1.File_admin_v1_payment_proto.Services().ByName("PaymentService").Methods()
 	paymentServiceListCouponsHandler := connect.NewUnaryHandler(
 		PaymentServiceListCouponsProcedure,
 		svc.ListCoupons,
-		connect.WithSchema(paymentServiceListCouponsMethodDescriptor),
+		connect.WithSchema(paymentServiceMethods.ByName("ListCoupons")),
 		connect.WithHandlerOptions(opts...),
 	)
 	paymentServiceAddBalanceToCustomerHandler := connect.NewUnaryHandler(
 		PaymentServiceAddBalanceToCustomerProcedure,
 		svc.AddBalanceToCustomer,
-		connect.WithSchema(paymentServiceAddBalanceToCustomerMethodDescriptor),
+		connect.WithSchema(paymentServiceMethods.ByName("AddBalanceToCustomer")),
 		connect.WithHandlerOptions(opts...),
 	)
 	return "/admin.v1.PaymentService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {

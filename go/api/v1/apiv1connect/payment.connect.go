@@ -39,9 +39,6 @@ const (
 	// PaymentServiceGetCustomerProcedure is the fully-qualified name of the PaymentService's
 	// GetCustomer RPC.
 	PaymentServiceGetCustomerProcedure = "/api.v1.PaymentService/GetCustomer"
-	// PaymentServiceGetCustomerWithLoginProcedure is the fully-qualified name of the PaymentService's
-	// GetCustomerWithLogin RPC.
-	PaymentServiceGetCustomerWithLoginProcedure = "/api.v1.PaymentService/GetCustomerWithLogin"
 	// PaymentServiceCheckIfCustomerExistsProcedure is the fully-qualified name of the PaymentService's
 	// CheckIfCustomerExists RPC.
 	PaymentServiceCheckIfCustomerExistsProcedure = "/api.v1.PaymentService/CheckIfCustomerExists"
@@ -71,31 +68,12 @@ const (
 	PaymentServiceGetOnboardedProcedure = "/api.v1.PaymentService/GetOnboarded"
 )
 
-// These variables are the protoreflect.Descriptor objects for the RPCs defined in this package.
-var (
-	paymentServiceServiceDescriptor                      = v1.File_api_v1_payment_proto.Services().ByName("PaymentService")
-	paymentServiceCreateOrUpdateCustomerMethodDescriptor = paymentServiceServiceDescriptor.Methods().ByName("CreateOrUpdateCustomer")
-	paymentServiceGetCustomerMethodDescriptor            = paymentServiceServiceDescriptor.Methods().ByName("GetCustomer")
-	paymentServiceGetCustomerWithLoginMethodDescriptor   = paymentServiceServiceDescriptor.Methods().ByName("GetCustomerWithLogin")
-	paymentServiceCheckIfCustomerExistsMethodDescriptor  = paymentServiceServiceDescriptor.Methods().ByName("CheckIfCustomerExists")
-	paymentServiceHasPaymentMethodMethodDescriptor       = paymentServiceServiceDescriptor.Methods().ByName("HasPaymentMethod")
-	paymentServiceDeletePaymentMethodMethodDescriptor    = paymentServiceServiceDescriptor.Methods().ByName("DeletePaymentMethod")
-	paymentServiceGetSubscriptionUsageMethodDescriptor   = paymentServiceServiceDescriptor.Methods().ByName("GetSubscriptionUsage")
-	paymentServiceGetInvoicesMethodDescriptor            = paymentServiceServiceDescriptor.Methods().ByName("GetInvoices")
-	paymentServiceGetDefaultPricesMethodDescriptor       = paymentServiceServiceDescriptor.Methods().ByName("GetDefaultPrices")
-	paymentServiceHasChargeableResourcesMethodDescriptor = paymentServiceServiceDescriptor.Methods().ByName("HasChargeableResources")
-	paymentServiceSetOnboardedMethodDescriptor           = paymentServiceServiceDescriptor.Methods().ByName("SetOnboarded")
-	paymentServiceGetOnboardedMethodDescriptor           = paymentServiceServiceDescriptor.Methods().ByName("GetOnboarded")
-)
-
 // PaymentServiceClient is a client for the api.v1.PaymentService service.
 type PaymentServiceClient interface {
 	// CreateOrUpdateCustomer the payment data on the payment processor
 	CreateOrUpdateCustomer(context.Context, *connect.Request[v1.PaymentServiceCreateOrUpdateCustomerRequest]) (*connect.Response[v1.PaymentServiceCreateOrUpdateCustomerResponse], error)
 	// GetCustomer from the payment processor
 	GetCustomer(context.Context, *connect.Request[v1.PaymentServiceGetCustomerRequest]) (*connect.Response[v1.PaymentServiceGetCustomerResponse], error)
-	// GetCustomerWithLogin from the payment processor
-	GetCustomerWithLogin(context.Context, *connect.Request[v1.PaymentServiceGetCustomerWithLoginRequest]) (*connect.Response[v1.PaymentServiceGetCustomerWithLoginResponse], error)
 	// CheckIfCustomerExists at the payment processor
 	CheckIfCustomerExists(context.Context, *connect.Request[v1.PaymentServiceCheckIfCustomerExistsRequest]) (*connect.Response[v1.PaymentServiceCheckIfCustomerExistsResponse], error)
 	// HasPaymentMethod check if the customer has a payment method provided
@@ -125,77 +103,72 @@ type PaymentServiceClient interface {
 // http://api.acme.com or https://acme.com/grpc).
 func NewPaymentServiceClient(httpClient connect.HTTPClient, baseURL string, opts ...connect.ClientOption) PaymentServiceClient {
 	baseURL = strings.TrimRight(baseURL, "/")
+	paymentServiceMethods := v1.File_api_v1_payment_proto.Services().ByName("PaymentService").Methods()
 	return &paymentServiceClient{
 		createOrUpdateCustomer: connect.NewClient[v1.PaymentServiceCreateOrUpdateCustomerRequest, v1.PaymentServiceCreateOrUpdateCustomerResponse](
 			httpClient,
 			baseURL+PaymentServiceCreateOrUpdateCustomerProcedure,
-			connect.WithSchema(paymentServiceCreateOrUpdateCustomerMethodDescriptor),
+			connect.WithSchema(paymentServiceMethods.ByName("CreateOrUpdateCustomer")),
 			connect.WithClientOptions(opts...),
 		),
 		getCustomer: connect.NewClient[v1.PaymentServiceGetCustomerRequest, v1.PaymentServiceGetCustomerResponse](
 			httpClient,
 			baseURL+PaymentServiceGetCustomerProcedure,
-			connect.WithSchema(paymentServiceGetCustomerMethodDescriptor),
-			connect.WithClientOptions(opts...),
-		),
-		getCustomerWithLogin: connect.NewClient[v1.PaymentServiceGetCustomerWithLoginRequest, v1.PaymentServiceGetCustomerWithLoginResponse](
-			httpClient,
-			baseURL+PaymentServiceGetCustomerWithLoginProcedure,
-			connect.WithSchema(paymentServiceGetCustomerWithLoginMethodDescriptor),
+			connect.WithSchema(paymentServiceMethods.ByName("GetCustomer")),
 			connect.WithClientOptions(opts...),
 		),
 		checkIfCustomerExists: connect.NewClient[v1.PaymentServiceCheckIfCustomerExistsRequest, v1.PaymentServiceCheckIfCustomerExistsResponse](
 			httpClient,
 			baseURL+PaymentServiceCheckIfCustomerExistsProcedure,
-			connect.WithSchema(paymentServiceCheckIfCustomerExistsMethodDescriptor),
+			connect.WithSchema(paymentServiceMethods.ByName("CheckIfCustomerExists")),
 			connect.WithClientOptions(opts...),
 		),
 		hasPaymentMethod: connect.NewClient[v1.PaymentServiceHasPaymentMethodRequest, v1.PaymentServiceHasPaymentMethodResponse](
 			httpClient,
 			baseURL+PaymentServiceHasPaymentMethodProcedure,
-			connect.WithSchema(paymentServiceHasPaymentMethodMethodDescriptor),
+			connect.WithSchema(paymentServiceMethods.ByName("HasPaymentMethod")),
 			connect.WithClientOptions(opts...),
 		),
 		deletePaymentMethod: connect.NewClient[v1.PaymentServiceDeletePaymentMethodRequest, v1.PaymentServiceDeletePaymentMethodResponse](
 			httpClient,
 			baseURL+PaymentServiceDeletePaymentMethodProcedure,
-			connect.WithSchema(paymentServiceDeletePaymentMethodMethodDescriptor),
+			connect.WithSchema(paymentServiceMethods.ByName("DeletePaymentMethod")),
 			connect.WithClientOptions(opts...),
 		),
 		getSubscriptionUsage: connect.NewClient[v1.PaymentServiceGetSubscriptionUsageRequest, v1.PaymentServiceGetSubscriptionUsageResponse](
 			httpClient,
 			baseURL+PaymentServiceGetSubscriptionUsageProcedure,
-			connect.WithSchema(paymentServiceGetSubscriptionUsageMethodDescriptor),
+			connect.WithSchema(paymentServiceMethods.ByName("GetSubscriptionUsage")),
 			connect.WithClientOptions(opts...),
 		),
 		getInvoices: connect.NewClient[v1.PaymentServiceGetInvoicesRequest, v1.PaymentServiceGetInvoicesResponse](
 			httpClient,
 			baseURL+PaymentServiceGetInvoicesProcedure,
-			connect.WithSchema(paymentServiceGetInvoicesMethodDescriptor),
+			connect.WithSchema(paymentServiceMethods.ByName("GetInvoices")),
 			connect.WithClientOptions(opts...),
 		),
 		getDefaultPrices: connect.NewClient[v1.PaymentServiceGetDefaultPricesRequest, v1.PaymentServiceGetDefaultPricesResponse](
 			httpClient,
 			baseURL+PaymentServiceGetDefaultPricesProcedure,
-			connect.WithSchema(paymentServiceGetDefaultPricesMethodDescriptor),
+			connect.WithSchema(paymentServiceMethods.ByName("GetDefaultPrices")),
 			connect.WithClientOptions(opts...),
 		),
 		hasChargeableResources: connect.NewClient[v1.PaymentServiceHasChargeableResourcesRequest, v1.PaymentServiceHasChargeableResourcesResponse](
 			httpClient,
 			baseURL+PaymentServiceHasChargeableResourcesProcedure,
-			connect.WithSchema(paymentServiceHasChargeableResourcesMethodDescriptor),
+			connect.WithSchema(paymentServiceMethods.ByName("HasChargeableResources")),
 			connect.WithClientOptions(opts...),
 		),
 		setOnboarded: connect.NewClient[v1.PaymentServiceSetOnboardedRequest, v1.PaymentServiceSetOnboardedResponse](
 			httpClient,
 			baseURL+PaymentServiceSetOnboardedProcedure,
-			connect.WithSchema(paymentServiceSetOnboardedMethodDescriptor),
+			connect.WithSchema(paymentServiceMethods.ByName("SetOnboarded")),
 			connect.WithClientOptions(opts...),
 		),
 		getOnboarded: connect.NewClient[v1.PaymentServiceGetOnboardedRequest, v1.PaymentServiceGetOnboardedResponse](
 			httpClient,
 			baseURL+PaymentServiceGetOnboardedProcedure,
-			connect.WithSchema(paymentServiceGetOnboardedMethodDescriptor),
+			connect.WithSchema(paymentServiceMethods.ByName("GetOnboarded")),
 			connect.WithClientOptions(opts...),
 		),
 	}
@@ -205,7 +178,6 @@ func NewPaymentServiceClient(httpClient connect.HTTPClient, baseURL string, opts
 type paymentServiceClient struct {
 	createOrUpdateCustomer *connect.Client[v1.PaymentServiceCreateOrUpdateCustomerRequest, v1.PaymentServiceCreateOrUpdateCustomerResponse]
 	getCustomer            *connect.Client[v1.PaymentServiceGetCustomerRequest, v1.PaymentServiceGetCustomerResponse]
-	getCustomerWithLogin   *connect.Client[v1.PaymentServiceGetCustomerWithLoginRequest, v1.PaymentServiceGetCustomerWithLoginResponse]
 	checkIfCustomerExists  *connect.Client[v1.PaymentServiceCheckIfCustomerExistsRequest, v1.PaymentServiceCheckIfCustomerExistsResponse]
 	hasPaymentMethod       *connect.Client[v1.PaymentServiceHasPaymentMethodRequest, v1.PaymentServiceHasPaymentMethodResponse]
 	deletePaymentMethod    *connect.Client[v1.PaymentServiceDeletePaymentMethodRequest, v1.PaymentServiceDeletePaymentMethodResponse]
@@ -225,11 +197,6 @@ func (c *paymentServiceClient) CreateOrUpdateCustomer(ctx context.Context, req *
 // GetCustomer calls api.v1.PaymentService.GetCustomer.
 func (c *paymentServiceClient) GetCustomer(ctx context.Context, req *connect.Request[v1.PaymentServiceGetCustomerRequest]) (*connect.Response[v1.PaymentServiceGetCustomerResponse], error) {
 	return c.getCustomer.CallUnary(ctx, req)
-}
-
-// GetCustomerWithLogin calls api.v1.PaymentService.GetCustomerWithLogin.
-func (c *paymentServiceClient) GetCustomerWithLogin(ctx context.Context, req *connect.Request[v1.PaymentServiceGetCustomerWithLoginRequest]) (*connect.Response[v1.PaymentServiceGetCustomerWithLoginResponse], error) {
-	return c.getCustomerWithLogin.CallUnary(ctx, req)
 }
 
 // CheckIfCustomerExists calls api.v1.PaymentService.CheckIfCustomerExists.
@@ -283,8 +250,6 @@ type PaymentServiceHandler interface {
 	CreateOrUpdateCustomer(context.Context, *connect.Request[v1.PaymentServiceCreateOrUpdateCustomerRequest]) (*connect.Response[v1.PaymentServiceCreateOrUpdateCustomerResponse], error)
 	// GetCustomer from the payment processor
 	GetCustomer(context.Context, *connect.Request[v1.PaymentServiceGetCustomerRequest]) (*connect.Response[v1.PaymentServiceGetCustomerResponse], error)
-	// GetCustomerWithLogin from the payment processor
-	GetCustomerWithLogin(context.Context, *connect.Request[v1.PaymentServiceGetCustomerWithLoginRequest]) (*connect.Response[v1.PaymentServiceGetCustomerWithLoginResponse], error)
 	// CheckIfCustomerExists at the payment processor
 	CheckIfCustomerExists(context.Context, *connect.Request[v1.PaymentServiceCheckIfCustomerExistsRequest]) (*connect.Response[v1.PaymentServiceCheckIfCustomerExistsResponse], error)
 	// HasPaymentMethod check if the customer has a payment method provided
@@ -311,76 +276,71 @@ type PaymentServiceHandler interface {
 // By default, handlers support the Connect, gRPC, and gRPC-Web protocols with the binary Protobuf
 // and JSON codecs. They also support gzip compression.
 func NewPaymentServiceHandler(svc PaymentServiceHandler, opts ...connect.HandlerOption) (string, http.Handler) {
+	paymentServiceMethods := v1.File_api_v1_payment_proto.Services().ByName("PaymentService").Methods()
 	paymentServiceCreateOrUpdateCustomerHandler := connect.NewUnaryHandler(
 		PaymentServiceCreateOrUpdateCustomerProcedure,
 		svc.CreateOrUpdateCustomer,
-		connect.WithSchema(paymentServiceCreateOrUpdateCustomerMethodDescriptor),
+		connect.WithSchema(paymentServiceMethods.ByName("CreateOrUpdateCustomer")),
 		connect.WithHandlerOptions(opts...),
 	)
 	paymentServiceGetCustomerHandler := connect.NewUnaryHandler(
 		PaymentServiceGetCustomerProcedure,
 		svc.GetCustomer,
-		connect.WithSchema(paymentServiceGetCustomerMethodDescriptor),
-		connect.WithHandlerOptions(opts...),
-	)
-	paymentServiceGetCustomerWithLoginHandler := connect.NewUnaryHandler(
-		PaymentServiceGetCustomerWithLoginProcedure,
-		svc.GetCustomerWithLogin,
-		connect.WithSchema(paymentServiceGetCustomerWithLoginMethodDescriptor),
+		connect.WithSchema(paymentServiceMethods.ByName("GetCustomer")),
 		connect.WithHandlerOptions(opts...),
 	)
 	paymentServiceCheckIfCustomerExistsHandler := connect.NewUnaryHandler(
 		PaymentServiceCheckIfCustomerExistsProcedure,
 		svc.CheckIfCustomerExists,
-		connect.WithSchema(paymentServiceCheckIfCustomerExistsMethodDescriptor),
+		connect.WithSchema(paymentServiceMethods.ByName("CheckIfCustomerExists")),
 		connect.WithHandlerOptions(opts...),
 	)
 	paymentServiceHasPaymentMethodHandler := connect.NewUnaryHandler(
 		PaymentServiceHasPaymentMethodProcedure,
 		svc.HasPaymentMethod,
-		connect.WithSchema(paymentServiceHasPaymentMethodMethodDescriptor),
+		connect.WithSchema(paymentServiceMethods.ByName("HasPaymentMethod")),
 		connect.WithHandlerOptions(opts...),
 	)
 	paymentServiceDeletePaymentMethodHandler := connect.NewUnaryHandler(
 		PaymentServiceDeletePaymentMethodProcedure,
 		svc.DeletePaymentMethod,
-		connect.WithSchema(paymentServiceDeletePaymentMethodMethodDescriptor),
+		connect.WithSchema(paymentServiceMethods.ByName("DeletePaymentMethod")),
 		connect.WithHandlerOptions(opts...),
 	)
 	paymentServiceGetSubscriptionUsageHandler := connect.NewUnaryHandler(
 		PaymentServiceGetSubscriptionUsageProcedure,
 		svc.GetSubscriptionUsage,
-		connect.WithSchema(paymentServiceGetSubscriptionUsageMethodDescriptor),
+		connect.WithSchema(paymentServiceMethods.ByName("GetSubscriptionUsage")),
 		connect.WithHandlerOptions(opts...),
 	)
 	paymentServiceGetInvoicesHandler := connect.NewUnaryHandler(
 		PaymentServiceGetInvoicesProcedure,
 		svc.GetInvoices,
-		connect.WithSchema(paymentServiceGetInvoicesMethodDescriptor),
+		connect.WithSchema(paymentServiceMethods.ByName("GetInvoices")),
 		connect.WithHandlerOptions(opts...),
 	)
 	paymentServiceGetDefaultPricesHandler := connect.NewUnaryHandler(
 		PaymentServiceGetDefaultPricesProcedure,
 		svc.GetDefaultPrices,
-		connect.WithSchema(paymentServiceGetDefaultPricesMethodDescriptor),
+		connect.WithSchema(paymentServiceMethods.ByName("GetDefaultPrices")),
 		connect.WithHandlerOptions(opts...),
 	)
 	paymentServiceHasChargeableResourcesHandler := connect.NewUnaryHandler(
 		PaymentServiceHasChargeableResourcesProcedure,
 		svc.HasChargeableResources,
-		connect.WithSchema(paymentServiceHasChargeableResourcesMethodDescriptor),
+		connect.WithSchema(paymentServiceMethods.ByName("HasChargeableResources")),
 		connect.WithHandlerOptions(opts...),
 	)
 	paymentServiceSetOnboardedHandler := connect.NewUnaryHandler(
 		PaymentServiceSetOnboardedProcedure,
 		svc.SetOnboarded,
-		connect.WithSchema(paymentServiceSetOnboardedMethodDescriptor),
+		connect.WithSchema(paymentServiceMethods.ByName("SetOnboarded")),
 		connect.WithHandlerOptions(opts...),
 	)
 	paymentServiceGetOnboardedHandler := connect.NewUnaryHandler(
 		PaymentServiceGetOnboardedProcedure,
 		svc.GetOnboarded,
-		connect.WithSchema(paymentServiceGetOnboardedMethodDescriptor),
+		connect.WithSchema(paymentServiceMethods.ByName("GetOnboarded")),
 		connect.WithHandlerOptions(opts...),
 	)
 	return "/api.v1.PaymentService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
@@ -389,8 +349,6 @@ func NewPaymentServiceHandler(svc PaymentServiceHandler, opts ...connect.Handler
 			paymentServiceCreateOrUpdateCustomerHandler.ServeHTTP(w, r)
 		case PaymentServiceGetCustomerProcedure:
 			paymentServiceGetCustomerHandler.ServeHTTP(w, r)
-		case PaymentServiceGetCustomerWithLoginProcedure:
-			paymentServiceGetCustomerWithLoginHandler.ServeHTTP(w, r)
 		case PaymentServiceCheckIfCustomerExistsProcedure:
 			paymentServiceCheckIfCustomerExistsHandler.ServeHTTP(w, r)
 		case PaymentServiceHasPaymentMethodProcedure:
@@ -424,10 +382,6 @@ func (UnimplementedPaymentServiceHandler) CreateOrUpdateCustomer(context.Context
 
 func (UnimplementedPaymentServiceHandler) GetCustomer(context.Context, *connect.Request[v1.PaymentServiceGetCustomerRequest]) (*connect.Response[v1.PaymentServiceGetCustomerResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("api.v1.PaymentService.GetCustomer is not implemented"))
-}
-
-func (UnimplementedPaymentServiceHandler) GetCustomerWithLogin(context.Context, *connect.Request[v1.PaymentServiceGetCustomerWithLoginRequest]) (*connect.Response[v1.PaymentServiceGetCustomerWithLoginResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("api.v1.PaymentService.GetCustomerWithLogin is not implemented"))
 }
 
 func (UnimplementedPaymentServiceHandler) CheckIfCustomerExists(context.Context, *connect.Request[v1.PaymentServiceCheckIfCustomerExistsRequest]) (*connect.Response[v1.PaymentServiceCheckIfCustomerExistsResponse], error) {

@@ -14,11 +14,6 @@ service TenantService {
     option (visibility) = VISIBILITY_SELF;
     option (auditing) = AUDITING_INCLUDED;
   }
-  // CreateOrUpdate should only be used from within the application
-  // will check if tenant already exists and updates if necessary, otherwise create a new tenant
-  rpc CreateOrUpdate(TenantServiceCreateOrUpdateRequest) returns (TenantServiceCreateOrUpdateResponse) {
-    option (visibility) = VISIBILITY_PRIVATE;
-  }
   // List tenants
   rpc List(TenantServiceListRequest) returns (TenantServiceListResponse) {
     option (visibility) = VISIBILITY_SELF;

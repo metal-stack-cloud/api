@@ -39,13 +39,6 @@ const (
 	TokenServiceRevokeProcedure = "/admin.v1.TokenService/Revoke"
 )
 
-// These variables are the protoreflect.Descriptor objects for the RPCs defined in this package.
-var (
-	tokenServiceServiceDescriptor      = v1.File_admin_v1_token_proto.Services().ByName("TokenService")
-	tokenServiceListMethodDescriptor   = tokenServiceServiceDescriptor.Methods().ByName("List")
-	tokenServiceRevokeMethodDescriptor = tokenServiceServiceDescriptor.Methods().ByName("Revoke")
-)
-
 // TokenServiceClient is a client for the admin.v1.TokenService service.
 type TokenServiceClient interface {
 	// List tokens
@@ -63,17 +56,18 @@ type TokenServiceClient interface {
 // http://api.acme.com or https://acme.com/grpc).
 func NewTokenServiceClient(httpClient connect.HTTPClient, baseURL string, opts ...connect.ClientOption) TokenServiceClient {
 	baseURL = strings.TrimRight(baseURL, "/")
+	tokenServiceMethods := v1.File_admin_v1_token_proto.Services().ByName("TokenService").Methods()
 	return &tokenServiceClient{
 		list: connect.NewClient[v1.TokenServiceListRequest, v1.TokenServiceListResponse](
 			httpClient,
 			baseURL+TokenServiceListProcedure,
-			connect.WithSchema(tokenServiceListMethodDescriptor),
+			connect.WithSchema(tokenServiceMethods.ByName("List")),
 			connect.WithClientOptions(opts...),
 		),
 		revoke: connect.NewClient[v1.TokenServiceRevokeRequest, v1.TokenServiceRevokeResponse](
 			httpClient,
 			baseURL+TokenServiceRevokeProcedure,
-			connect.WithSchema(tokenServiceRevokeMethodDescriptor),
+			connect.WithSchema(tokenServiceMethods.ByName("Revoke")),
 			connect.WithClientOptions(opts...),
 		),
 	}
@@ -109,16 +103,17 @@ type TokenServiceHandler interface {
 // By default, handlers support the Connect, gRPC, and gRPC-Web protocols with the binary Protobuf
 // and JSON codecs. They also support gzip compression.
 func NewTokenServiceHandler(svc TokenServiceHandler, opts ...connect.HandlerOption) (string, http.Handler) {
+	tokenServiceMethods := v1.File_admin_v1_token_proto.Services().ByName("TokenService").Methods()
 	tokenServiceListHandler := connect.NewUnaryHandler(
 		TokenServiceListProcedure,
 		svc.List,
-		connect.WithSchema(tokenServiceListMethodDescriptor),
+		connect.WithSchema(tokenServiceMethods.ByName("List")),
 		connect.WithHandlerOptions(opts...),
 	)
 	tokenServiceRevokeHandler := connect.NewUnaryHandler(
 		TokenServiceRevokeProcedure,
 		svc.Revoke,
-		connect.WithSchema(tokenServiceRevokeMethodDescriptor),
+		connect.WithSchema(tokenServiceMethods.ByName("Revoke")),
 		connect.WithHandlerOptions(opts...),
 	)
 	return "/admin.v1.TokenService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {

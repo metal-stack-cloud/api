@@ -1,14 +1,18 @@
-import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
-import { Message, proto3 } from "@bufbuild/protobuf";
-import { OAuthProvider } from "./common_pb.js";
-import { Tenant } from "./tenant_pb.js";
-import { Project } from "./project_pb.js";
+import type { GenFile, GenMessage, GenService } from "@bufbuild/protobuf/codegenv1";
+import type { OAuthProvider } from "./common_pb";
+import type { Project } from "./project_pb";
+import type { Tenant } from "./tenant_pb";
+import type { Message } from "@bufbuild/protobuf";
+/**
+ * Describes the file api/v1/user.proto.
+ */
+export declare const file_api_v1_user: GenFile;
 /**
  * User is a end user of the platform
  *
  * @generated from message api.v1.User
  */
-export declare class User extends Message<User> {
+export type User = Message<"api.v1.User"> & {
     /**
      * Login the login at the provider
      *
@@ -63,48 +67,55 @@ export declare class User extends Message<User> {
      * @generated from field: api.v1.Project default_project = 11;
      */
     defaultProject?: Project;
-    constructor(data?: PartialMessage<User>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "api.v1.User";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): User;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): User;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): User;
-    static equals(a: User | PlainMessage<User> | undefined, b: User | PlainMessage<User> | undefined): boolean;
-}
+};
+/**
+ * Describes the message api.v1.User.
+ * Use `create(UserSchema)` to create a new message.
+ */
+export declare const UserSchema: GenMessage<User>;
 /**
  * UserServiceGetRequest is the request to get the user
  *
  * @generated from message api.v1.UserServiceGetRequest
  */
-export declare class UserServiceGetRequest extends Message<UserServiceGetRequest> {
-    constructor(data?: PartialMessage<UserServiceGetRequest>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "api.v1.UserServiceGetRequest";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): UserServiceGetRequest;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): UserServiceGetRequest;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): UserServiceGetRequest;
-    static equals(a: UserServiceGetRequest | PlainMessage<UserServiceGetRequest> | undefined, b: UserServiceGetRequest | PlainMessage<UserServiceGetRequest> | undefined): boolean;
-}
+export type UserServiceGetRequest = Message<"api.v1.UserServiceGetRequest"> & {};
+/**
+ * Describes the message api.v1.UserServiceGetRequest.
+ * Use `create(UserServiceGetRequestSchema)` to create a new message.
+ */
+export declare const UserServiceGetRequestSchema: GenMessage<UserServiceGetRequest>;
 /**
  * UserServiceGetResponse the response when userservice get request was called
  *
  * @generated from message api.v1.UserServiceGetResponse
  */
-export declare class UserServiceGetResponse extends Message<UserServiceGetResponse> {
+export type UserServiceGetResponse = Message<"api.v1.UserServiceGetResponse"> & {
     /**
      * User is the user
      *
      * @generated from field: api.v1.User user = 1;
      */
     user?: User;
-    constructor(data?: PartialMessage<UserServiceGetResponse>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "api.v1.UserServiceGetResponse";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): UserServiceGetResponse;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): UserServiceGetResponse;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): UserServiceGetResponse;
-    static equals(a: UserServiceGetResponse | PlainMessage<UserServiceGetResponse> | undefined, b: UserServiceGetResponse | PlainMessage<UserServiceGetResponse> | undefined): boolean;
-}
+};
+/**
+ * Describes the message api.v1.UserServiceGetResponse.
+ * Use `create(UserServiceGetResponseSchema)` to create a new message.
+ */
+export declare const UserServiceGetResponseSchema: GenMessage<UserServiceGetResponse>;
+/**
+ * UserService exposes rpc calls for users
+ *
+ * @generated from service api.v1.UserService
+ */
+export declare const UserService: GenService<{
+    /**
+     * Get a User
+     *
+     * @generated from rpc api.v1.UserService.Get
+     */
+    get: {
+        methodKind: "unary";
+        input: typeof UserServiceGetRequestSchema;
+        output: typeof UserServiceGetResponseSchema;
+    };
+}>;

@@ -558,11 +558,6 @@
               "description": "VISIBILITY_PUBLIC specifies that this service is accessible without authentication"
             },
             {
-              "name": "VISIBILITY_PRIVATE",
-              "number": "2",
-              "description": "VISIBILITY_PRIVATE makes this service blocked"
-            },
-            {
               "name": "VISIBILITY_SELF",
               "number": "3",
               "description": "VISIBILITY_SELF enable call this endpoint from the authenticated user only"
@@ -3497,54 +3492,6 @@
           ]
         },
         {
-          "name": "PaymentServiceGetCustomerWithLoginRequest",
-          "longName": "PaymentServiceGetCustomerWithLoginRequest",
-          "fullName": "api.v1.PaymentServiceGetCustomerWithLoginRequest",
-          "description": "PaymentServiceGetCustomerWithLoginRequest is the request payload for a payment get customer request",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "login",
-              "description": "Login of the customer",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            }
-          ]
-        },
-        {
-          "name": "PaymentServiceGetCustomerWithLoginResponse",
-          "longName": "PaymentServiceGetCustomerWithLoginResponse",
-          "fullName": "api.v1.PaymentServiceGetCustomerWithLoginResponse",
-          "description": "PaymentServiceGetCustomerWithLoginResponse is the response payload for a payment get customer request",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "customer",
-              "description": "Customer is the customer",
-              "label": "",
-              "type": "PaymentCustomer",
-              "longType": "PaymentCustomer",
-              "fullType": "api.v1.PaymentCustomer",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            }
-          ]
-        },
-        {
           "name": "PaymentServiceGetDefaultPricesRequest",
           "longName": "PaymentServiceGetDefaultPricesRequest",
           "fullName": "api.v1.PaymentServiceGetDefaultPricesRequest",
@@ -4113,18 +4060,6 @@
               "responseType": "PaymentServiceGetCustomerResponse",
               "responseLongType": "PaymentServiceGetCustomerResponse",
               "responseFullType": "api.v1.PaymentServiceGetCustomerResponse",
-              "responseStreaming": false
-            },
-            {
-              "name": "GetCustomerWithLogin",
-              "description": "GetCustomerWithLogin from the payment processor",
-              "requestType": "PaymentServiceGetCustomerWithLoginRequest",
-              "requestLongType": "PaymentServiceGetCustomerWithLoginRequest",
-              "requestFullType": "api.v1.PaymentServiceGetCustomerWithLoginRequest",
-              "requestStreaming": false,
-              "responseType": "PaymentServiceGetCustomerWithLoginResponse",
-              "responseLongType": "PaymentServiceGetCustomerWithLoginResponse",
-              "responseFullType": "api.v1.PaymentServiceGetCustomerWithLoginResponse",
               "responseStreaming": false
             },
             {
@@ -6201,6 +6136,42 @@
           ]
         },
         {
+          "name": "UpdateVolumeLabels",
+          "longName": "UpdateVolumeLabels",
+          "fullName": "api.v1.UpdateVolumeLabels",
+          "description": "UpdateVolumeLabels allows updating the labels",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "update",
+              "description": "Update volume labels. New ones will be added, existing ones overwritten",
+              "label": "repeated",
+              "type": "VolumeLabel",
+              "longType": "VolumeLabel",
+              "fullType": "api.v1.VolumeLabel",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "remove",
+              "description": "Remove volume labels",
+              "label": "repeated",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
           "name": "Volume",
           "longName": "Volume",
           "fullName": "api.v1.Volume",
@@ -6461,6 +6432,78 @@
               "isoneof": false,
               "oneofdecl": "",
               "defaultValue": ""
+            },
+            {
+              "name": "cluster_name",
+              "description": "ClusterName if set points to the cluster this volume is attached to",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "cluster_id",
+              "description": "ClusterID if set points to the cluster this volume is attached to",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "labels",
+              "description": "Labels stored in the volume",
+              "label": "repeated",
+              "type": "VolumeLabel",
+              "longType": "VolumeLabel",
+              "fullType": "api.v1.VolumeLabel",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "VolumeLabel",
+          "longName": "VolumeLabel",
+          "fullName": "api.v1.VolumeLabel",
+          "description": "label-key and label-value length must be between 1 and 253 characters and\nmay contain any of: alphanumeric characters (a-z, A-Z, 0-9), hyphen (-),\nunderscore (_) and dot (.).",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "key",
+              "description": "key under which the value is stored",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "value",
+              "description": "value of this label",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
             }
           ]
         },
@@ -6658,6 +6701,78 @@
               "name": "volumes",
               "description": "Volumes the volumes",
               "label": "repeated",
+              "type": "Volume",
+              "longType": "Volume",
+              "fullType": "api.v1.Volume",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "VolumeServiceUpdateRequest",
+          "longName": "VolumeServiceUpdateRequest",
+          "fullName": "api.v1.VolumeServiceUpdateRequest",
+          "description": "VolumeServiceUpdateRequest is the request payload of a volume update request",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": true,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "uuid",
+              "description": "Uuid of the volume",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "project",
+              "description": "Project of the volume",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "labels",
+              "description": "Update Volume Labels stored in the volume. Some labels are immutable and cannot be changed.",
+              "label": "optional",
+              "type": "UpdateVolumeLabels",
+              "longType": "UpdateVolumeLabels",
+              "fullType": "api.v1.UpdateVolumeLabels",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "_labels",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "VolumeServiceUpdateResponse",
+          "longName": "VolumeServiceUpdateResponse",
+          "fullName": "api.v1.VolumeServiceUpdateResponse",
+          "description": "VolumeServiceUpdateResponse is the response payload of a volume update request",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "volume",
+              "description": "Volume the volume",
+              "label": "",
               "type": "Volume",
               "longType": "Volume",
               "fullType": "api.v1.Volume",
@@ -6898,6 +7013,18 @@
               "responseType": "VolumeServiceDeleteResponse",
               "responseLongType": "VolumeServiceDeleteResponse",
               "responseFullType": "api.v1.VolumeServiceDeleteResponse",
+              "responseStreaming": false
+            },
+            {
+              "name": "Update",
+              "description": "Update a volume",
+              "requestType": "VolumeServiceUpdateRequest",
+              "requestLongType": "VolumeServiceUpdateRequest",
+              "requestFullType": "api.v1.VolumeServiceUpdateRequest",
+              "requestStreaming": false,
+              "responseType": "VolumeServiceUpdateResponse",
+              "responseLongType": "VolumeServiceUpdateResponse",
+              "responseFullType": "api.v1.VolumeServiceUpdateResponse",
               "responseStreaming": false
             }
           ]
@@ -9200,18 +9327,6 @@
               "responseStreaming": false
             },
             {
-              "name": "CreateOrUpdate",
-              "description": "CreateOrUpdate should only be used from within the application\nwill check if tenant already exists and updates if necessary, otherwise create a new tenant",
-              "requestType": "TenantServiceCreateOrUpdateRequest",
-              "requestLongType": "TenantServiceCreateOrUpdateRequest",
-              "requestFullType": "api.v1.TenantServiceCreateOrUpdateRequest",
-              "requestStreaming": false,
-              "responseType": "TenantServiceCreateOrUpdateResponse",
-              "responseLongType": "TenantServiceCreateOrUpdateResponse",
-              "responseFullType": "api.v1.TenantServiceCreateOrUpdateResponse",
-              "responseStreaming": false
-            },
-            {
               "name": "List",
               "description": "List tenants",
               "requestType": "TenantServiceListRequest",
@@ -9488,20 +9603,20 @@
           "extensions": [],
           "fields": [
             {
-              "name": "login",
-              "description": "Login of the tenant to list",
+              "name": "tenant",
+              "description": "Tenant filters the result list by the given tenant id",
               "label": "optional",
               "type": "string",
               "longType": "string",
               "fullType": "string",
               "ismap": false,
               "isoneof": true,
-              "oneofdecl": "_login",
+              "oneofdecl": "_tenant",
               "defaultValue": ""
             },
             {
               "name": "name",
-              "description": "Name of the tenant to list",
+              "description": "Name filters the result list by the given tenant name",
               "label": "optional",
               "type": "string",
               "longType": "string",
@@ -9557,18 +9672,6 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "uuid",
-              "description": "Uuid of the tenant to list",
-              "label": "optional",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": true,
-              "oneofdecl": "_uuid",
               "defaultValue": ""
             }
           ]
@@ -10185,6 +10288,54 @@
           ]
         },
         {
+          "name": "TokenServiceGetRequest",
+          "longName": "TokenServiceGetRequest",
+          "fullName": "api.v1.TokenServiceGetRequest",
+          "description": "TokenServiceGetRequest is the request payload of a token get request",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "uuid",
+              "description": "Uuid of the token to get",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "TokenServiceGetResponse",
+          "longName": "TokenServiceGetResponse",
+          "fullName": "api.v1.TokenServiceGetResponse",
+          "description": "TokenServiceGetResponse is the response payload of a token get request",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "token",
+              "description": "Token is the token",
+              "label": "",
+              "type": "Token",
+              "longType": "Token",
+              "fullType": "api.v1.Token",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
           "name": "TokenServiceListRequest",
           "longName": "TokenServiceListRequest",
           "fullName": "api.v1.TokenServiceListRequest",
@@ -10253,6 +10404,186 @@
           "hasOneofs": false,
           "extensions": [],
           "fields": []
+        },
+        {
+          "name": "TokenServiceUpdateRequest",
+          "longName": "TokenServiceUpdateRequest",
+          "fullName": "api.v1.TokenServiceUpdateRequest",
+          "description": "TokenServiceUpdateRequest is the request payload of a token update request",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": true,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "uuid",
+              "description": "Uuid of the token to update",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "description",
+              "description": "Description is a user given description of this token.",
+              "label": "optional",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "_description",
+              "defaultValue": ""
+            },
+            {
+              "name": "permissions",
+              "description": "Permissions is a list of service methods this token can be used for",
+              "label": "repeated",
+              "type": "MethodPermission",
+              "longType": "MethodPermission",
+              "fullType": "api.v1.MethodPermission",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "project_roles",
+              "description": "ProjectRoles associates a project id with the corresponding role of the token owner",
+              "label": "repeated",
+              "type": "ProjectRolesEntry",
+              "longType": "TokenServiceUpdateRequest.ProjectRolesEntry",
+              "fullType": "api.v1.TokenServiceUpdateRequest.ProjectRolesEntry",
+              "ismap": true,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "tenant_roles",
+              "description": "TenantRoles associates a tenant id with the corresponding role of the token owner",
+              "label": "repeated",
+              "type": "TenantRolesEntry",
+              "longType": "TokenServiceUpdateRequest.TenantRolesEntry",
+              "fullType": "api.v1.TokenServiceUpdateRequest.TenantRolesEntry",
+              "ismap": true,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "admin_role",
+              "description": "AdminRole defines the admin role of the token owner",
+              "label": "optional",
+              "type": "AdminRole",
+              "longType": "AdminRole",
+              "fullType": "api.v1.AdminRole",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "_admin_role",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "ProjectRolesEntry",
+          "longName": "TokenServiceUpdateRequest.ProjectRolesEntry",
+          "fullName": "api.v1.TokenServiceUpdateRequest.ProjectRolesEntry",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "key",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "value",
+              "description": "",
+              "label": "",
+              "type": "ProjectRole",
+              "longType": "ProjectRole",
+              "fullType": "api.v1.ProjectRole",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "TenantRolesEntry",
+          "longName": "TokenServiceUpdateRequest.TenantRolesEntry",
+          "fullName": "api.v1.TokenServiceUpdateRequest.TenantRolesEntry",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "key",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "value",
+              "description": "",
+              "label": "",
+              "type": "TenantRole",
+              "longType": "TenantRole",
+              "fullType": "api.v1.TenantRole",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "TokenServiceUpdateResponse",
+          "longName": "TokenServiceUpdateResponse",
+          "fullName": "api.v1.TokenServiceUpdateResponse",
+          "description": "TokenServiceUpdateResponse is the response payload of a token update request",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "token",
+              "description": "Token is the updated token",
+              "label": "",
+              "type": "Token",
+              "longType": "Token",
+              "fullType": "api.v1.Token",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
         }
       ],
       "services": [
@@ -10263,6 +10594,18 @@
           "description": "TokenService serves token related functions",
           "methods": [
             {
+              "name": "Get",
+              "description": "Get a token",
+              "requestType": "TokenServiceGetRequest",
+              "requestLongType": "TokenServiceGetRequest",
+              "requestFullType": "api.v1.TokenServiceGetRequest",
+              "requestStreaming": false,
+              "responseType": "TokenServiceGetResponse",
+              "responseLongType": "TokenServiceGetResponse",
+              "responseFullType": "api.v1.TokenServiceGetResponse",
+              "responseStreaming": false
+            },
+            {
               "name": "Create",
               "description": "Create a token to authenticate against the platform, the secret will be only visible in the response",
               "requestType": "TokenServiceCreateRequest",
@@ -10272,6 +10615,18 @@
               "responseType": "TokenServiceCreateResponse",
               "responseLongType": "TokenServiceCreateResponse",
               "responseFullType": "api.v1.TokenServiceCreateResponse",
+              "responseStreaming": false
+            },
+            {
+              "name": "Update",
+              "description": "Update a token",
+              "requestType": "TokenServiceUpdateRequest",
+              "requestLongType": "TokenServiceUpdateRequest",
+              "requestFullType": "api.v1.TokenServiceUpdateRequest",
+              "requestStreaming": false,
+              "responseType": "TokenServiceUpdateResponse",
+              "responseLongType": "TokenServiceUpdateResponse",
+              "responseFullType": "api.v1.TokenServiceUpdateResponse",
               "responseStreaming": false
             },
             {
@@ -11000,6 +11355,461 @@
               "responseType": "AssetServiceListResponse",
               "responseLongType": "AssetServiceListResponse",
               "responseFullType": "api.v1.AssetServiceListResponse",
+              "responseStreaming": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "api/v1/audit.proto",
+      "description": "",
+      "package": "api.v1",
+      "hasEnums": true,
+      "hasExtensions": false,
+      "hasMessages": true,
+      "hasServices": true,
+      "enums": [
+        {
+          "name": "AuditPhase",
+          "longName": "AuditPhase",
+          "fullName": "api.v1.AuditPhase",
+          "description": "AuditPhase specifies phase of an audit trace",
+          "values": [
+            {
+              "name": "AUDIT_PHASE_UNSPECIFIED",
+              "number": "0",
+              "description": "AUDIT_PHASE_UNSPECIFIED is not specified"
+            },
+            {
+              "name": "AUDIT_PHASE_REQUEST",
+              "number": "1",
+              "description": "AUDIT_PHASE_REQUEST defines an audit trace in the request phase"
+            },
+            {
+              "name": "AUDIT_PHASE_RESPONSE",
+              "number": "2",
+              "description": "AUDIT_PHASE_REQUEST defines an audit trace in the response phase"
+            }
+          ]
+        }
+      ],
+      "extensions": [],
+      "messages": [
+        {
+          "name": "AuditServiceGetRequest",
+          "longName": "AuditServiceGetRequest",
+          "fullName": "api.v1.AuditServiceGetRequest",
+          "description": "AuditServiceGetRequest is the request payload of a audit get request",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": true,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "login",
+              "description": "Login of the tenant",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "uuid",
+              "description": "Uuid of the audit trace",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "phase",
+              "description": "Phase specifies the audit phase. Defaults to request",
+              "label": "optional",
+              "type": "AuditPhase",
+              "longType": "AuditPhase",
+              "fullType": "api.v1.AuditPhase",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "_phase",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "AuditServiceGetResponse",
+          "longName": "AuditServiceGetResponse",
+          "fullName": "api.v1.AuditServiceGetResponse",
+          "description": "AuditServiceGetResponse is the response payload of a audit get request",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "trace",
+              "description": "Trace is the audit trace",
+              "label": "",
+              "type": "AuditTrace",
+              "longType": "AuditTrace",
+              "fullType": "api.v1.AuditTrace",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "AuditServiceListRequest",
+          "longName": "AuditServiceListRequest",
+          "fullName": "api.v1.AuditServiceListRequest",
+          "description": "AuditServiceListRequest is the request payload to list audits",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": true,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "login",
+              "description": "Login of the tenant",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "uuid",
+              "description": "Uuid of the audit trace",
+              "label": "optional",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "_uuid",
+              "defaultValue": ""
+            },
+            {
+              "name": "from",
+              "description": "From describes the start of the time window in which to list audit traces. Defaults to the last eight hours",
+              "label": "optional",
+              "type": "Timestamp",
+              "longType": "google.protobuf.Timestamp",
+              "fullType": "google.protobuf.Timestamp",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "_from",
+              "defaultValue": ""
+            },
+            {
+              "name": "to",
+              "description": "To describes the end of the time window in which to list audit traces. Defaults to the time the request was issued",
+              "label": "optional",
+              "type": "Timestamp",
+              "longType": "google.protobuf.Timestamp",
+              "fullType": "google.protobuf.Timestamp",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "_to",
+              "defaultValue": ""
+            },
+            {
+              "name": "user",
+              "description": "User is the user who called the api method",
+              "label": "optional",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "_user",
+              "defaultValue": ""
+            },
+            {
+              "name": "project",
+              "description": "Project is the project targeted by the api call",
+              "label": "optional",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "_project",
+              "defaultValue": ""
+            },
+            {
+              "name": "method",
+              "description": "Method is the api method that was called",
+              "label": "optional",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "_method",
+              "defaultValue": ""
+            },
+            {
+              "name": "source_ip",
+              "description": "Source IP contains the ip address of the caller",
+              "label": "optional",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "_source_ip",
+              "defaultValue": ""
+            },
+            {
+              "name": "result_code",
+              "description": "Result Code is a string describing the result of the api call",
+              "label": "optional",
+              "type": "int32",
+              "longType": "int32",
+              "fullType": "int32",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "_result_code",
+              "defaultValue": ""
+            },
+            {
+              "name": "body",
+              "description": "Body is a string providing text-search of the body field",
+              "label": "optional",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "_body",
+              "defaultValue": ""
+            },
+            {
+              "name": "limit",
+              "description": "Limit is a number limiting the length of the response (min: 1, max: 1000, defaults to 200)",
+              "label": "optional",
+              "type": "int32",
+              "longType": "int32",
+              "fullType": "int32",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "_limit",
+              "defaultValue": ""
+            },
+            {
+              "name": "phase",
+              "description": "Phase specifies the audit phase",
+              "label": "optional",
+              "type": "AuditPhase",
+              "longType": "AuditPhase",
+              "fullType": "api.v1.AuditPhase",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "_phase",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "AuditServiceListResponse",
+          "longName": "AuditServiceListResponse",
+          "fullName": "api.v1.AuditServiceListResponse",
+          "description": "AuditServiceListResponse is the response payload of a audit list request",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "traces",
+              "description": "Traces is a list of audit traces",
+              "label": "repeated",
+              "type": "AuditTrace",
+              "longType": "AuditTrace",
+              "fullType": "api.v1.AuditTrace",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "AuditTrace",
+          "longName": "AuditTrace",
+          "fullName": "api.v1.AuditTrace",
+          "description": "AuditTrace is an audit trace",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": true,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "uuid",
+              "description": "Uuid of the audit trace",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "timestamp",
+              "description": "Timestamp is the timestamp when the request arrived at the api",
+              "label": "",
+              "type": "Timestamp",
+              "longType": "google.protobuf.Timestamp",
+              "fullType": "google.protobuf.Timestamp",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "user",
+              "description": "User is the login user who called the api method",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "tenant",
+              "description": "Tenant is the tenant targeted by the api call",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "project",
+              "description": "Project is the project targeted by the api call",
+              "label": "optional",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "_project",
+              "defaultValue": ""
+            },
+            {
+              "name": "method",
+              "description": "Method is the api method that was called",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "body",
+              "description": "Body is the payload of the api call. In the request phase this contains the payload sent by the client, in the request phase it contains the payload returned by the api server",
+              "label": "optional",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "_body",
+              "defaultValue": ""
+            },
+            {
+              "name": "source_ip",
+              "description": "Source IP contains the source ip address of the api call",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "result_code",
+              "description": "Result Code is a status code describing the result of the api call. It is set for traces in the response phase and contains official gRPC status codes",
+              "label": "optional",
+              "type": "int32",
+              "longType": "int32",
+              "fullType": "int32",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "_result_code",
+              "defaultValue": ""
+            },
+            {
+              "name": "phase",
+              "description": "Phase represents the phase of the audit trace",
+              "label": "",
+              "type": "AuditPhase",
+              "longType": "AuditPhase",
+              "fullType": "api.v1.AuditPhase",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        }
+      ],
+      "services": [
+        {
+          "name": "AuditService",
+          "longName": "AuditService",
+          "fullName": "api.v1.AuditService",
+          "description": "AuditService serves audit related functions",
+          "methods": [
+            {
+              "name": "Get",
+              "description": "Get an audit trace",
+              "requestType": "AuditServiceGetRequest",
+              "requestLongType": "AuditServiceGetRequest",
+              "requestFullType": "api.v1.AuditServiceGetRequest",
+              "requestStreaming": false,
+              "responseType": "AuditServiceGetResponse",
+              "responseLongType": "AuditServiceGetResponse",
+              "responseFullType": "api.v1.AuditServiceGetResponse",
+              "responseStreaming": false
+            },
+            {
+              "name": "List",
+              "description": "List audit traces",
+              "requestType": "AuditServiceListRequest",
+              "requestLongType": "AuditServiceListRequest",
+              "requestFullType": "api.v1.AuditServiceListRequest",
+              "requestStreaming": false,
+              "responseType": "AuditServiceListResponse",
+              "responseLongType": "AuditServiceListResponse",
+              "responseFullType": "api.v1.AuditServiceListResponse",
               "responseStreaming": false
             }
           ]

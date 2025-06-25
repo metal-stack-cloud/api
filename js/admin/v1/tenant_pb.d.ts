@@ -1,21 +1,25 @@
-import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
-import { Message, proto3 } from "@bufbuild/protobuf";
-import { OAuthProvider, Paging, TenantRole } from "../../api/v1/common_pb.js";
-import { Tenant } from "../../api/v1/tenant_pb.js";
+import type { GenFile, GenMessage, GenService } from "@bufbuild/protobuf/codegenv1";
+import type { OAuthProvider, Paging, TenantRole } from "../../api/v1/common_pb";
+import type { Tenant } from "../../api/v1/tenant_pb";
+import type { Message } from "@bufbuild/protobuf";
+/**
+ * Describes the file admin/v1/tenant.proto.
+ */
+export declare const file_admin_v1_tenant: GenFile;
 /**
  * TenantServiceListRequest is the request payload for a tenant list request
  *
  * @generated from message admin.v1.TenantServiceListRequest
  */
-export declare class TenantServiceListRequest extends Message<TenantServiceListRequest> {
+export type TenantServiceListRequest = Message<"admin.v1.TenantServiceListRequest"> & {
     /**
-     * Login of the tenant to list
+     * Tenant filters the result list by the given tenant id
      *
-     * @generated from field: optional string login = 1;
+     * @generated from field: optional string tenant = 9;
      */
-    login?: string;
+    tenant?: string;
     /**
-     * Name of the tenant to list
+     * Name filters the result list by the given tenant name
      *
      * @generated from field: optional string name = 2;
      */
@@ -44,27 +48,18 @@ export declare class TenantServiceListRequest extends Message<TenantServiceListR
      * @generated from field: api.v1.Paging paging = 7;
      */
     paging?: Paging;
-    /**
-     * Uuid of the tenant to list
-     *
-     * @generated from field: optional string uuid = 8;
-     */
-    uuid?: string;
-    constructor(data?: PartialMessage<TenantServiceListRequest>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "admin.v1.TenantServiceListRequest";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): TenantServiceListRequest;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): TenantServiceListRequest;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): TenantServiceListRequest;
-    static equals(a: TenantServiceListRequest | PlainMessage<TenantServiceListRequest> | undefined, b: TenantServiceListRequest | PlainMessage<TenantServiceListRequest> | undefined): boolean;
-}
+};
+/**
+ * Describes the message admin.v1.TenantServiceListRequest.
+ * Use `create(TenantServiceListRequestSchema)` to create a new message.
+ */
+export declare const TenantServiceListRequestSchema: GenMessage<TenantServiceListRequest>;
 /**
  * TenantServiceListResponse is the response payload for a tenant list request
  *
  * @generated from message admin.v1.TenantServiceListResponse
  */
-export declare class TenantServiceListResponse extends Message<TenantServiceListResponse> {
+export type TenantServiceListResponse = Message<"admin.v1.TenantServiceListResponse"> & {
     /**
      * Tenants are the list of tenants
      *
@@ -77,105 +72,90 @@ export declare class TenantServiceListResponse extends Message<TenantServiceList
      * @generated from field: optional uint64 next_page = 2;
      */
     nextPage?: bigint;
-    constructor(data?: PartialMessage<TenantServiceListResponse>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "admin.v1.TenantServiceListResponse";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): TenantServiceListResponse;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): TenantServiceListResponse;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): TenantServiceListResponse;
-    static equals(a: TenantServiceListResponse | PlainMessage<TenantServiceListResponse> | undefined, b: TenantServiceListResponse | PlainMessage<TenantServiceListResponse> | undefined): boolean;
-}
+};
+/**
+ * Describes the message admin.v1.TenantServiceListResponse.
+ * Use `create(TenantServiceListResponseSchema)` to create a new message.
+ */
+export declare const TenantServiceListResponseSchema: GenMessage<TenantServiceListResponse>;
 /**
  * TenantServiceAdmitRequest is the request payload for a tenant admit request
  *
  * @generated from message admin.v1.TenantServiceAdmitRequest
  */
-export declare class TenantServiceAdmitRequest extends Message<TenantServiceAdmitRequest> {
+export type TenantServiceAdmitRequest = Message<"admin.v1.TenantServiceAdmitRequest"> & {
     /**
      * TenantId is the id of the tenant to admit
      *
      * @generated from field: string tenant_id = 1;
      */
     tenantId: string;
-    constructor(data?: PartialMessage<TenantServiceAdmitRequest>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "admin.v1.TenantServiceAdmitRequest";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): TenantServiceAdmitRequest;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): TenantServiceAdmitRequest;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): TenantServiceAdmitRequest;
-    static equals(a: TenantServiceAdmitRequest | PlainMessage<TenantServiceAdmitRequest> | undefined, b: TenantServiceAdmitRequest | PlainMessage<TenantServiceAdmitRequest> | undefined): boolean;
-}
+};
+/**
+ * Describes the message admin.v1.TenantServiceAdmitRequest.
+ * Use `create(TenantServiceAdmitRequestSchema)` to create a new message.
+ */
+export declare const TenantServiceAdmitRequestSchema: GenMessage<TenantServiceAdmitRequest>;
 /**
  * TenantServiceAdmitResponse is the response payload for a tenant admit request
  *
  * @generated from message admin.v1.TenantServiceAdmitResponse
  */
-export declare class TenantServiceAdmitResponse extends Message<TenantServiceAdmitResponse> {
+export type TenantServiceAdmitResponse = Message<"admin.v1.TenantServiceAdmitResponse"> & {
     /**
      * Tenant the tenant
      *
      * @generated from field: api.v1.Tenant tenant = 1;
      */
     tenant?: Tenant;
-    constructor(data?: PartialMessage<TenantServiceAdmitResponse>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "admin.v1.TenantServiceAdmitResponse";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): TenantServiceAdmitResponse;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): TenantServiceAdmitResponse;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): TenantServiceAdmitResponse;
-    static equals(a: TenantServiceAdmitResponse | PlainMessage<TenantServiceAdmitResponse> | undefined, b: TenantServiceAdmitResponse | PlainMessage<TenantServiceAdmitResponse> | undefined): boolean;
-}
+};
+/**
+ * Describes the message admin.v1.TenantServiceAdmitResponse.
+ * Use `create(TenantServiceAdmitResponseSchema)` to create a new message.
+ */
+export declare const TenantServiceAdmitResponseSchema: GenMessage<TenantServiceAdmitResponse>;
 /**
  * TenantServiceRevokeRequest is the request payload for a tenant revoke request
  *
  * @generated from message admin.v1.TenantServiceRevokeRequest
  */
-export declare class TenantServiceRevokeRequest extends Message<TenantServiceRevokeRequest> {
+export type TenantServiceRevokeRequest = Message<"admin.v1.TenantServiceRevokeRequest"> & {
     /**
      * TenantId is the id of the tenant to revoke
      *
      * @generated from field: string tenant_id = 1;
      */
     tenantId: string;
-    constructor(data?: PartialMessage<TenantServiceRevokeRequest>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "admin.v1.TenantServiceRevokeRequest";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): TenantServiceRevokeRequest;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): TenantServiceRevokeRequest;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): TenantServiceRevokeRequest;
-    static equals(a: TenantServiceRevokeRequest | PlainMessage<TenantServiceRevokeRequest> | undefined, b: TenantServiceRevokeRequest | PlainMessage<TenantServiceRevokeRequest> | undefined): boolean;
-}
+};
+/**
+ * Describes the message admin.v1.TenantServiceRevokeRequest.
+ * Use `create(TenantServiceRevokeRequestSchema)` to create a new message.
+ */
+export declare const TenantServiceRevokeRequestSchema: GenMessage<TenantServiceRevokeRequest>;
 /**
  * TenantServiceRevokeResponse is the response payload for a tenant revoke request
  *
  * @generated from message admin.v1.TenantServiceRevokeResponse
  */
-export declare class TenantServiceRevokeResponse extends Message<TenantServiceRevokeResponse> {
+export type TenantServiceRevokeResponse = Message<"admin.v1.TenantServiceRevokeResponse"> & {
     /**
      * Tenant the tenant
      *
      * @generated from field: api.v1.Tenant tenant = 1;
      */
     tenant?: Tenant;
-    constructor(data?: PartialMessage<TenantServiceRevokeResponse>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "admin.v1.TenantServiceRevokeResponse";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): TenantServiceRevokeResponse;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): TenantServiceRevokeResponse;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): TenantServiceRevokeResponse;
-    static equals(a: TenantServiceRevokeResponse | PlainMessage<TenantServiceRevokeResponse> | undefined, b: TenantServiceRevokeResponse | PlainMessage<TenantServiceRevokeResponse> | undefined): boolean;
-}
+};
+/**
+ * Describes the message admin.v1.TenantServiceRevokeResponse.
+ * Use `create(TenantServiceRevokeResponseSchema)` to create a new message.
+ */
+export declare const TenantServiceRevokeResponseSchema: GenMessage<TenantServiceRevokeResponse>;
 /**
  * TenantServiceAddMemberRequest is the request payload for adding a member to a tenant
  *
  * @generated from message admin.v1.TenantServiceAddMemberRequest
  */
-export declare class TenantServiceAddMemberRequest extends Message<TenantServiceAddMemberRequest> {
+export type TenantServiceAddMemberRequest = Message<"admin.v1.TenantServiceAddMemberRequest"> & {
     /**
      * Tenant ID to which the member will be added
      *
@@ -194,27 +174,67 @@ export declare class TenantServiceAddMemberRequest extends Message<TenantService
      * @generated from field: api.v1.TenantRole role = 3;
      */
     role: TenantRole;
-    constructor(data?: PartialMessage<TenantServiceAddMemberRequest>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "admin.v1.TenantServiceAddMemberRequest";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): TenantServiceAddMemberRequest;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): TenantServiceAddMemberRequest;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): TenantServiceAddMemberRequest;
-    static equals(a: TenantServiceAddMemberRequest | PlainMessage<TenantServiceAddMemberRequest> | undefined, b: TenantServiceAddMemberRequest | PlainMessage<TenantServiceAddMemberRequest> | undefined): boolean;
-}
+};
+/**
+ * Describes the message admin.v1.TenantServiceAddMemberRequest.
+ * Use `create(TenantServiceAddMemberRequestSchema)` to create a new message.
+ */
+export declare const TenantServiceAddMemberRequestSchema: GenMessage<TenantServiceAddMemberRequest>;
 /**
  * TenantServiceAddMemberResponse is the response payload for the add member request
  *
  * @generated from message admin.v1.TenantServiceAddMemberResponse
  */
-export declare class TenantServiceAddMemberResponse extends Message<TenantServiceAddMemberResponse> {
-    constructor(data?: PartialMessage<TenantServiceAddMemberResponse>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "admin.v1.TenantServiceAddMemberResponse";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): TenantServiceAddMemberResponse;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): TenantServiceAddMemberResponse;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): TenantServiceAddMemberResponse;
-    static equals(a: TenantServiceAddMemberResponse | PlainMessage<TenantServiceAddMemberResponse> | undefined, b: TenantServiceAddMemberResponse | PlainMessage<TenantServiceAddMemberResponse> | undefined): boolean;
-}
+export type TenantServiceAddMemberResponse = Message<"admin.v1.TenantServiceAddMemberResponse"> & {};
+/**
+ * Describes the message admin.v1.TenantServiceAddMemberResponse.
+ * Use `create(TenantServiceAddMemberResponseSchema)` to create a new message.
+ */
+export declare const TenantServiceAddMemberResponseSchema: GenMessage<TenantServiceAddMemberResponse>;
+/**
+ * TenantService serves tenant related functions
+ *
+ * @generated from service admin.v1.TenantService
+ */
+export declare const TenantService: GenService<{
+    /**
+     * List tenants
+     *
+     * @generated from rpc admin.v1.TenantService.List
+     */
+    list: {
+        methodKind: "unary";
+        input: typeof TenantServiceListRequestSchema;
+        output: typeof TenantServiceListResponseSchema;
+    };
+    /**
+     * Admit a tenant
+     *
+     * @generated from rpc admin.v1.TenantService.Admit
+     */
+    admit: {
+        methodKind: "unary";
+        input: typeof TenantServiceAdmitRequestSchema;
+        output: typeof TenantServiceAdmitResponseSchema;
+    };
+    /**
+     * Revoke a tenant
+     *
+     * @generated from rpc admin.v1.TenantService.Revoke
+     */
+    revoke: {
+        methodKind: "unary";
+        input: typeof TenantServiceRevokeRequestSchema;
+        output: typeof TenantServiceRevokeResponseSchema;
+    };
+    /**
+     * Add a member to a tenant
+     *
+     * @generated from rpc admin.v1.TenantService.AddMember
+     */
+    addMember: {
+        methodKind: "unary";
+        input: typeof TenantServiceAddMemberRequestSchema;
+        output: typeof TenantServiceAddMemberResponseSchema;
+    };
+}>;

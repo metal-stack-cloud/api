@@ -17,10 +17,6 @@ service PaymentService {
     option (tenant_roles) = TENANT_ROLE_OWNER;
     option (auditing) = AUDITING_EXCLUDED;
   }
-  // GetCustomerWithLogin from the payment processor
-  rpc GetCustomerWithLogin(PaymentServiceGetCustomerWithLoginRequest) returns (PaymentServiceGetCustomerWithLoginResponse) {
-    option (tenant_roles) = TENANT_ROLE_OWNER;
-  }
   // CheckIfCustomerExists at the payment processor
   rpc CheckIfCustomerExists(PaymentServiceCheckIfCustomerExistsRequest) returns (PaymentServiceCheckIfCustomerExistsResponse) {
     option (tenant_roles) = TENANT_ROLE_OWNER;
@@ -68,6 +64,7 @@ service PaymentService {
   // GetOnboarded get the onboarded status
   rpc GetOnboarded(PaymentServiceGetOnboardedRequest) returns (PaymentServiceGetOnboardedResponse) {
     option (tenant_roles) = TENANT_ROLE_OWNER;
+    option (auditing) = AUDITING_EXCLUDED;
   }
 }
 
@@ -258,21 +255,6 @@ message PaymentServiceGetCustomerRequest {
 
 // PaymentServiceGetCustomerResponse is the response payload for a payment get customer request
 message PaymentServiceGetCustomerResponse {
-  // Customer is the customer
-  PaymentCustomer customer = 1;
-}
-
-// PaymentServiceGetCustomerWithLoginRequest is the request payload for a payment get customer request
-message PaymentServiceGetCustomerWithLoginRequest {
-  // Login of the customer
-  string login = 1 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
-}
-
-// PaymentServiceGetCustomerWithLoginResponse is the response payload for a payment get customer request
-message PaymentServiceGetCustomerWithLoginResponse {
   // Customer is the customer
   PaymentCustomer customer = 1;
 }

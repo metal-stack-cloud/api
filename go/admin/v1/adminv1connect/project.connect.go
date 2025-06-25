@@ -37,12 +37,6 @@ const (
 	ProjectServiceListProcedure = "/admin.v1.ProjectService/List"
 )
 
-// These variables are the protoreflect.Descriptor objects for the RPCs defined in this package.
-var (
-	projectServiceServiceDescriptor    = v1.File_admin_v1_project_proto.Services().ByName("ProjectService")
-	projectServiceListMethodDescriptor = projectServiceServiceDescriptor.Methods().ByName("List")
-)
-
 // ProjectServiceClient is a client for the admin.v1.ProjectService service.
 type ProjectServiceClient interface {
 	// List projects based on various filter criteria
@@ -58,11 +52,12 @@ type ProjectServiceClient interface {
 // http://api.acme.com or https://acme.com/grpc).
 func NewProjectServiceClient(httpClient connect.HTTPClient, baseURL string, opts ...connect.ClientOption) ProjectServiceClient {
 	baseURL = strings.TrimRight(baseURL, "/")
+	projectServiceMethods := v1.File_admin_v1_project_proto.Services().ByName("ProjectService").Methods()
 	return &projectServiceClient{
 		list: connect.NewClient[v1.ProjectServiceListRequest, v1.ProjectServiceListResponse](
 			httpClient,
 			baseURL+ProjectServiceListProcedure,
-			connect.WithSchema(projectServiceListMethodDescriptor),
+			connect.WithSchema(projectServiceMethods.ByName("List")),
 			connect.WithClientOptions(opts...),
 		),
 	}
@@ -90,10 +85,11 @@ type ProjectServiceHandler interface {
 // By default, handlers support the Connect, gRPC, and gRPC-Web protocols with the binary Protobuf
 // and JSON codecs. They also support gzip compression.
 func NewProjectServiceHandler(svc ProjectServiceHandler, opts ...connect.HandlerOption) (string, http.Handler) {
+	projectServiceMethods := v1.File_admin_v1_project_proto.Services().ByName("ProjectService").Methods()
 	projectServiceListHandler := connect.NewUnaryHandler(
 		ProjectServiceListProcedure,
 		svc.List,
-		connect.WithSchema(projectServiceListMethodDescriptor),
+		connect.WithSchema(projectServiceMethods.ByName("List")),
 		connect.WithHandlerOptions(opts...),
 	)
 	return "/admin.v1.ProjectService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {

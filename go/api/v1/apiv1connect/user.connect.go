@@ -37,12 +37,6 @@ const (
 	UserServiceGetProcedure = "/api.v1.UserService/Get"
 )
 
-// These variables are the protoreflect.Descriptor objects for the RPCs defined in this package.
-var (
-	userServiceServiceDescriptor   = v1.File_api_v1_user_proto.Services().ByName("UserService")
-	userServiceGetMethodDescriptor = userServiceServiceDescriptor.Methods().ByName("Get")
-)
-
 // UserServiceClient is a client for the api.v1.UserService service.
 type UserServiceClient interface {
 	// Get a User
@@ -58,11 +52,12 @@ type UserServiceClient interface {
 // http://api.acme.com or https://acme.com/grpc).
 func NewUserServiceClient(httpClient connect.HTTPClient, baseURL string, opts ...connect.ClientOption) UserServiceClient {
 	baseURL = strings.TrimRight(baseURL, "/")
+	userServiceMethods := v1.File_api_v1_user_proto.Services().ByName("UserService").Methods()
 	return &userServiceClient{
 		get: connect.NewClient[v1.UserServiceGetRequest, v1.UserServiceGetResponse](
 			httpClient,
 			baseURL+UserServiceGetProcedure,
-			connect.WithSchema(userServiceGetMethodDescriptor),
+			connect.WithSchema(userServiceMethods.ByName("Get")),
 			connect.WithClientOptions(opts...),
 		),
 	}
@@ -90,10 +85,11 @@ type UserServiceHandler interface {
 // By default, handlers support the Connect, gRPC, and gRPC-Web protocols with the binary Protobuf
 // and JSON codecs. They also support gzip compression.
 func NewUserServiceHandler(svc UserServiceHandler, opts ...connect.HandlerOption) (string, http.Handler) {
+	userServiceMethods := v1.File_api_v1_user_proto.Services().ByName("UserService").Methods()
 	userServiceGetHandler := connect.NewUnaryHandler(
 		UserServiceGetProcedure,
 		svc.Get,
-		connect.WithSchema(userServiceGetMethodDescriptor),
+		connect.WithSchema(userServiceMethods.ByName("Get")),
 		connect.WithHandlerOptions(opts...),
 	)
 	return "/api.v1.UserService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {

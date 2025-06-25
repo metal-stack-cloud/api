@@ -1,6 +1,10 @@
 // Code generated discover.go. DO NOT EDIT.
 package permissions
 
+import (
+	"connectrpc.com/connect"
+)
+
 func GetServices() []string {
 	return []string{
 		"admin.v1.ClusterService",
@@ -10,6 +14,7 @@ func GetServices() []string {
 		"admin.v1.TenantService",
 		"admin.v1.TokenService",
 		"api.v1.AssetService",
+		"api.v1.AuditService",
 		"api.v1.ClusterService",
 		"api.v1.HealthService",
 		"api.v1.IPService",
@@ -76,9 +81,10 @@ func GetServicePermissions() *ServicePermissions {
 					"/api.v1.TenantService/Get",
 				},
 				"TENANT_ROLE_OWNER": []string{
+					"/api.v1.AuditService/Get",
+					"/api.v1.AuditService/List",
 					"/api.v1.PaymentService/CreateOrUpdateCustomer",
 					"/api.v1.PaymentService/GetCustomer",
-					"/api.v1.PaymentService/GetCustomerWithLogin",
 					"/api.v1.PaymentService/CheckIfCustomerExists",
 					"/api.v1.PaymentService/HasPaymentMethod",
 					"/api.v1.PaymentService/DeletePaymentMethod",
@@ -124,6 +130,7 @@ func GetServicePermissions() *ServicePermissions {
 					"/api.v1.VolumeService/Get",
 					"/api.v1.VolumeService/List",
 					"/api.v1.VolumeService/Delete",
+					"/api.v1.VolumeService/Update",
 					"/api.v1.SnapshotService/Get",
 					"/api.v1.SnapshotService/List",
 					"/api.v1.SnapshotService/Delete",
@@ -153,6 +160,7 @@ func GetServicePermissions() *ServicePermissions {
 					"/api.v1.VolumeService/Get",
 					"/api.v1.VolumeService/List",
 					"/api.v1.VolumeService/Delete",
+					"/api.v1.VolumeService/Update",
 					"/api.v1.SnapshotService/Get",
 					"/api.v1.SnapshotService/List",
 					"/api.v1.SnapshotService/Delete",
@@ -188,6 +196,8 @@ func GetServicePermissions() *ServicePermissions {
 			"/admin.v1.TokenService/List":                   true,
 			"/admin.v1.TokenService/Revoke":                 true,
 			"/api.v1.AssetService/List":                     true,
+			"/api.v1.AuditService/Get":                      true,
+			"/api.v1.AuditService/List":                     true,
 			"/api.v1.ClusterService/Create":                 true,
 			"/api.v1.ClusterService/Delete":                 true,
 			"/api.v1.ClusterService/Get":                    true,
@@ -208,7 +218,6 @@ func GetServicePermissions() *ServicePermissions {
 			"/api.v1.PaymentService/CreateOrUpdateCustomer": true,
 			"/api.v1.PaymentService/DeletePaymentMethod":    true,
 			"/api.v1.PaymentService/GetCustomer":            true,
-			"/api.v1.PaymentService/GetCustomerWithLogin":   true,
 			"/api.v1.PaymentService/GetDefaultPrices":       true,
 			"/api.v1.PaymentService/GetInvoices":            true,
 			"/api.v1.PaymentService/GetOnboarded":           true,
@@ -232,7 +241,6 @@ func GetServicePermissions() *ServicePermissions {
 			"/api.v1.SnapshotService/Get":                   true,
 			"/api.v1.SnapshotService/List":                  true,
 			"/api.v1.TenantService/Create":                  true,
-			"/api.v1.TenantService/CreateOrUpdate":          true,
 			"/api.v1.TenantService/Delete":                  true,
 			"/api.v1.TenantService/Get":                     true,
 			"/api.v1.TenantService/Invite":                  true,
@@ -246,13 +254,16 @@ func GetServicePermissions() *ServicePermissions {
 			"/api.v1.TenantService/Update":                  true,
 			"/api.v1.TenantService/UpdateMember":            true,
 			"/api.v1.TokenService/Create":                   true,
+			"/api.v1.TokenService/Get":                      true,
 			"/api.v1.TokenService/List":                     true,
 			"/api.v1.TokenService/Revoke":                   true,
+			"/api.v1.TokenService/Update":                   true,
 			"/api.v1.UserService/Get":                       true,
 			"/api.v1.VersionService/Get":                    true,
 			"/api.v1.VolumeService/Delete":                  true,
 			"/api.v1.VolumeService/Get":                     true,
 			"/api.v1.VolumeService/List":                    true,
+			"/api.v1.VolumeService/Update":                  true,
 			"/status.v1.MessageService/List":                true,
 			"/status.v1.StatusService/Get":                  true,
 		},
@@ -268,9 +279,6 @@ func GetServicePermissions() *ServicePermissions {
 				"/status.v1.MessageService/List":                                 true,
 				"/status.v1.StatusService/Get":                                   true,
 			},
-			Private: map[string]bool{
-				"/api.v1.TenantService/CreateOrUpdate": true,
-			},
 			Self: map[string]bool{
 				"/api.v1.MethodService/TokenScopedList": true,
 				"/api.v1.ProjectService/InviteAccept":   true,
@@ -281,9 +289,82 @@ func GetServicePermissions() *ServicePermissions {
 				"/api.v1.TenantService/InviteGet":       true,
 				"/api.v1.TenantService/List":            true,
 				"/api.v1.TokenService/Create":           true,
+				"/api.v1.TokenService/Get":              true,
 				"/api.v1.TokenService/List":             true,
 				"/api.v1.TokenService/Revoke":           true,
+				"/api.v1.TokenService/Update":           true,
 				"/api.v1.UserService/Get":               true,
+			},
+			Admin: map[string]bool{
+				"/admin.v1.ClusterService/Credentials":          true,
+				"/admin.v1.ClusterService/Get":                  true,
+				"/admin.v1.ClusterService/List":                 true,
+				"/admin.v1.PaymentService/AddBalanceToCustomer": true,
+				"/admin.v1.PaymentService/ListCoupons":          true,
+				"/admin.v1.ProjectService/List":                 true,
+				"/admin.v1.StorageService/ClusterInfo":          true,
+				"/admin.v1.StorageService/ListSnapshots":        true,
+				"/admin.v1.StorageService/ListVolumes":          true,
+				"/admin.v1.TenantService/AddMember":             true,
+				"/admin.v1.TenantService/Admit":                 true,
+				"/admin.v1.TenantService/List":                  true,
+				"/admin.v1.TenantService/Revoke":                true,
+				"/admin.v1.TokenService/List":                   true,
+				"/admin.v1.TokenService/Revoke":                 true,
+			},
+			Tenant: map[string]bool{
+				"/api.v1.AuditService/Get":                      true,
+				"/api.v1.AuditService/List":                     true,
+				"/api.v1.PaymentService/CheckIfCustomerExists":  true,
+				"/api.v1.PaymentService/CreateOrUpdateCustomer": true,
+				"/api.v1.PaymentService/DeletePaymentMethod":    true,
+				"/api.v1.PaymentService/GetCustomer":            true,
+				"/api.v1.PaymentService/GetInvoices":            true,
+				"/api.v1.PaymentService/GetOnboarded":           true,
+				"/api.v1.PaymentService/GetSubscriptionUsage":   true,
+				"/api.v1.PaymentService/HasChargeableResources": true,
+				"/api.v1.PaymentService/HasPaymentMethod":       true,
+				"/api.v1.PaymentService/SetOnboarded":           true,
+				"/api.v1.ProjectService/Create":                 true,
+				"/api.v1.TenantService/Delete":                  true,
+				"/api.v1.TenantService/Get":                     true,
+				"/api.v1.TenantService/Invite":                  true,
+				"/api.v1.TenantService/InviteDelete":            true,
+				"/api.v1.TenantService/InvitesList":             true,
+				"/api.v1.TenantService/RemoveMember":            true,
+				"/api.v1.TenantService/RequestAdmission":        true,
+				"/api.v1.TenantService/Update":                  true,
+				"/api.v1.TenantService/UpdateMember":            true,
+			},
+			Project: map[string]bool{
+				"/api.v1.ClusterService/Create":         true,
+				"/api.v1.ClusterService/Delete":         true,
+				"/api.v1.ClusterService/Get":            true,
+				"/api.v1.ClusterService/GetCredentials": true,
+				"/api.v1.ClusterService/List":           true,
+				"/api.v1.ClusterService/Operate":        true,
+				"/api.v1.ClusterService/Update":         true,
+				"/api.v1.ClusterService/WatchStatus":    true,
+				"/api.v1.IPService/Allocate":            true,
+				"/api.v1.IPService/Delete":              true,
+				"/api.v1.IPService/Get":                 true,
+				"/api.v1.IPService/List":                true,
+				"/api.v1.IPService/Update":              true,
+				"/api.v1.ProjectService/Delete":         true,
+				"/api.v1.ProjectService/Get":            true,
+				"/api.v1.ProjectService/Invite":         true,
+				"/api.v1.ProjectService/InviteDelete":   true,
+				"/api.v1.ProjectService/InvitesList":    true,
+				"/api.v1.ProjectService/RemoveMember":   true,
+				"/api.v1.ProjectService/Update":         true,
+				"/api.v1.ProjectService/UpdateMember":   true,
+				"/api.v1.SnapshotService/Delete":        true,
+				"/api.v1.SnapshotService/Get":           true,
+				"/api.v1.SnapshotService/List":          true,
+				"/api.v1.VolumeService/Delete":          true,
+				"/api.v1.VolumeService/Get":             true,
+				"/api.v1.VolumeService/List":            true,
+				"/api.v1.VolumeService/Update":          true,
 			},
 		},
 		Chargeable: map[string]bool{
@@ -309,6 +390,8 @@ func GetServicePermissions() *ServicePermissions {
 			"/admin.v1.TokenService/List":                   true,
 			"/admin.v1.TokenService/Revoke":                 true,
 			"/api.v1.AssetService/List":                     false,
+			"/api.v1.AuditService/Get":                      false,
+			"/api.v1.AuditService/List":                     false,
 			"/api.v1.ClusterService/Create":                 true,
 			"/api.v1.ClusterService/Delete":                 true,
 			"/api.v1.ClusterService/Get":                    false,
@@ -329,10 +412,9 @@ func GetServicePermissions() *ServicePermissions {
 			"/api.v1.PaymentService/CreateOrUpdateCustomer": true,
 			"/api.v1.PaymentService/DeletePaymentMethod":    true,
 			"/api.v1.PaymentService/GetCustomer":            false,
-			"/api.v1.PaymentService/GetCustomerWithLogin":   true,
 			"/api.v1.PaymentService/GetDefaultPrices":       false,
 			"/api.v1.PaymentService/GetInvoices":            false,
-			"/api.v1.PaymentService/GetOnboarded":           true,
+			"/api.v1.PaymentService/GetOnboarded":           false,
 			"/api.v1.PaymentService/GetSubscriptionUsage":   false,
 			"/api.v1.PaymentService/HasChargeableResources": false,
 			"/api.v1.PaymentService/HasPaymentMethod":       false,
@@ -353,7 +435,6 @@ func GetServicePermissions() *ServicePermissions {
 			"/api.v1.SnapshotService/Get":                   false,
 			"/api.v1.SnapshotService/List":                  false,
 			"/api.v1.TenantService/Create":                  true,
-			"/api.v1.TenantService/CreateOrUpdate":          true,
 			"/api.v1.TenantService/Delete":                  true,
 			"/api.v1.TenantService/Get":                     false,
 			"/api.v1.TenantService/Invite":                  true,
@@ -367,15 +448,75 @@ func GetServicePermissions() *ServicePermissions {
 			"/api.v1.TenantService/Update":                  true,
 			"/api.v1.TenantService/UpdateMember":            true,
 			"/api.v1.TokenService/Create":                   true,
+			"/api.v1.TokenService/Get":                      true,
 			"/api.v1.TokenService/List":                     true,
 			"/api.v1.TokenService/Revoke":                   true,
+			"/api.v1.TokenService/Update":                   true,
 			"/api.v1.UserService/Get":                       true,
 			"/api.v1.VersionService/Get":                    false,
 			"/api.v1.VolumeService/Delete":                  true,
 			"/api.v1.VolumeService/Get":                     false,
 			"/api.v1.VolumeService/List":                    false,
+			"/api.v1.VolumeService/Update":                  true,
 			"/status.v1.MessageService/List":                true,
 			"/status.v1.StatusService/Get":                  true,
 		},
 	}
+}
+
+func IsPublicScope(req connect.AnyRequest) bool {
+	_, ok := GetServicePermissions().Visibility.Public[req.Spec().Procedure]
+	return ok
+}
+
+func IsSelfScope(req connect.AnyRequest) bool {
+	_, ok := GetServicePermissions().Visibility.Self[req.Spec().Procedure]
+	return ok
+}
+
+func IsAdminScope(req connect.AnyRequest) bool {
+	_, ok := GetServicePermissions().Visibility.Admin[req.Spec().Procedure]
+	return ok
+}
+
+func IsTenantScope(req connect.AnyRequest) bool {
+	_, ok := GetServicePermissions().Visibility.Tenant[req.Spec().Procedure]
+	return ok
+}
+
+func IsProjectScope(req connect.AnyRequest) bool {
+	_, ok := GetServicePermissions().Visibility.Project[req.Spec().Procedure]
+	return ok
+}
+
+func IsChargeable(req connect.AnyRequest) bool {
+	_, ok := GetServicePermissions().Chargeable[req.Spec().Procedure]
+	return ok
+}
+
+func IsAuditable(req connect.AnyRequest) bool {
+	_, ok := GetServicePermissions().Auditable[req.Spec().Procedure]
+	return ok
+}
+
+func GetTenantFromRequest(req connect.AnyRequest) (string, bool) {
+	if !IsTenantScope(req) {
+		return "", false
+	}
+	switch rq := req.Any().(type) {
+	case interface{ GetLogin() string }:
+		return rq.GetLogin(), true
+	}
+	return "", false
+}
+
+func GetProjectFromRequest(req connect.AnyRequest) (string, bool) {
+	if !IsProjectScope(req) {
+		return "", false
+	}
+	switch rq := req.Any().(type) {
+	case interface{ GetProject() string }:
+		return rq.GetProject(), true
+	}
+	return "", false
 }

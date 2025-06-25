@@ -29,12 +29,16 @@ service TenantService {
 
 // TenantServiceListRequest is the request payload for a tenant list request
 message TenantServiceListRequest {
+  reserved 1;
+  reserved "login";
   reserved 4;
   reserved "organisation_id";
+  reserved 8;
+  reserved "uuid";
 
-  // Login of the tenant to list
-  optional string login = 1;
-  // Name of the tenant to list
+  // Tenant filters the result list by the given tenant id
+  optional string tenant = 9;
+  // Name filters the result list by the given tenant name
   optional string name = 2;
   // Email of the tenant to list
   optional string email = 3;
@@ -44,8 +48,6 @@ message TenantServiceListRequest {
   optional bool admitted = 6;
   // Paging details for the list request
   api.v1.Paging paging = 7;
-  // Uuid of the tenant to list
-  optional string uuid = 8 [(buf.validate.field).string.uuid = true];
 }
 
 // TenantServiceListResponse is the response payload for a tenant list request

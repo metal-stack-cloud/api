@@ -37,12 +37,6 @@ const (
 	StatusServiceGetProcedure = "/status.v1.StatusService/Get"
 )
 
-// These variables are the protoreflect.Descriptor objects for the RPCs defined in this package.
-var (
-	statusServiceServiceDescriptor   = v1.File_status_v1_status_proto.Services().ByName("StatusService")
-	statusServiceGetMethodDescriptor = statusServiceServiceDescriptor.Methods().ByName("Get")
-)
-
 // StatusServiceClient is a client for the status.v1.StatusService service.
 type StatusServiceClient interface {
 	// Get the system status
@@ -58,11 +52,12 @@ type StatusServiceClient interface {
 // http://api.acme.com or https://acme.com/grpc).
 func NewStatusServiceClient(httpClient connect.HTTPClient, baseURL string, opts ...connect.ClientOption) StatusServiceClient {
 	baseURL = strings.TrimRight(baseURL, "/")
+	statusServiceMethods := v1.File_status_v1_status_proto.Services().ByName("StatusService").Methods()
 	return &statusServiceClient{
 		get: connect.NewClient[v1.StatusServiceGetRequest, v1.StatusServiceGetResponse](
 			httpClient,
 			baseURL+StatusServiceGetProcedure,
-			connect.WithSchema(statusServiceGetMethodDescriptor),
+			connect.WithSchema(statusServiceMethods.ByName("Get")),
 			connect.WithClientOptions(opts...),
 		),
 	}
@@ -90,10 +85,11 @@ type StatusServiceHandler interface {
 // By default, handlers support the Connect, gRPC, and gRPC-Web protocols with the binary Protobuf
 // and JSON codecs. They also support gzip compression.
 func NewStatusServiceHandler(svc StatusServiceHandler, opts ...connect.HandlerOption) (string, http.Handler) {
+	statusServiceMethods := v1.File_status_v1_status_proto.Services().ByName("StatusService").Methods()
 	statusServiceGetHandler := connect.NewUnaryHandler(
 		StatusServiceGetProcedure,
 		svc.Get,
-		connect.WithSchema(statusServiceGetMethodDescriptor),
+		connect.WithSchema(statusServiceMethods.ByName("Get")),
 		connect.WithHandlerOptions(opts...),
 	)
 	return "/status.v1.StatusService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
