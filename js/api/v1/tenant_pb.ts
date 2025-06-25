@@ -6,6 +6,8 @@ import type { GenFile, GenMessage, GenService } from "@bufbuild/protobuf/codegen
 import { fileDesc, messageDesc, serviceDesc } from "@bufbuild/protobuf/codegenv1";
 import type { OAuthProvider, TenantRole } from "./common_pb";
 import { file_api_v1_common } from "./common_pb";
+import type { Coupon } from "./payment_pb";
+import { file_api_v1_payment } from "./payment_pb";
 import { file_buf_validate_validate } from "../../buf/validate/validate_pb";
 import type { Timestamp } from "@bufbuild/protobuf/wkt";
 import { file_google_protobuf_timestamp } from "@bufbuild/protobuf/wkt";
@@ -15,7 +17,7 @@ import type { Message } from "@bufbuild/protobuf";
  * Describes the file api/v1/tenant.proto.
  */
 export const file_api_v1_tenant: GenFile = /*@__PURE__*/
-  fileDesc("ChNhcGkvdjEvdGVuYW50LnByb3RvEgZhcGkudjEi0wMKBlRlbmFudBINCgVsb2dpbhgBIAEoCRIMCgRuYW1lGAIgASgJEg0KBWVtYWlsGAMgASgJEhMKC2Rlc2NyaXB0aW9uGAQgASgJEhIKCmF2YXRhcl91cmwYBSABKAkSLQoOb2F1dGhfcHJvdmlkZXIYBiABKA4yFS5hcGkudjEuT0F1dGhQcm92aWRlchIQCghhZG1pdHRlZBgJIAEoCBIUCgxwaG9uZV9udW1iZXIYCiABKAkSOAoUdGVybXNfYW5kX2NvbmRpdGlvbnMYCyABKAsyGi5hcGkudjEuVGVybXNBbmRDb25kaXRpb25zEhUKDWVtYWlsX2NvbnNlbnQYDCABKAgSEQoJb25ib2FyZGVkGA0gASgIEhIKCmNyZWF0ZWRfYnkYDyABKAkSLgoKY3JlYXRlZF9hdBgUIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXASLgoKdXBkYXRlZF9hdBgVIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXASLgoKZGVsZXRlZF9hdBgWIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXBKBAgIEAlSD3BheW1lbnRfZGV0YWlscyKLAQoMVGVuYW50TWVtYmVyEgoKAmlkGAEgASgJEioKBHJvbGUYAiABKA4yEi5hcGkudjEuVGVuYW50Um9sZUIIukgFggECEAESEwoLcHJvamVjdF9pZHMYBCADKAkSLgoKY3JlYXRlZF9hdBgKIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXAikQIKDFRlbmFudEludml0ZRIOCgZzZWNyZXQYASABKAkSFQoNdGFyZ2V0X3RlbmFudBgCIAEoCRIqCgRyb2xlGAMgASgOMhIuYXBpLnYxLlRlbmFudFJvbGVCCLpIBYIBAhABEg4KBmpvaW5lZBgEIAEoCBIaChJ0YXJnZXRfdGVuYW50X25hbWUYBSABKAkSDgoGdGVuYW50GAYgASgJEhMKC3RlbmFudF9uYW1lGAcgASgJEi4KCmV4cGlyZXNfYXQYCiABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wEi0KCWpvaW5lZF9hdBgLIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXAiUAoSVGVybXNBbmRDb25kaXRpb25zEhAKCGFjY2VwdGVkGAEgASgIEigKBHdoZW4YAiABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wInYKGFRlcm1zQW5kQ29uZGl0aW9uc1VwZGF0ZRIVCghhY2NlcHRlZBgBIAEoCEgAiAEBEi0KBHdoZW4YAiABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wSAGIAQFCCwoJX2FjY2VwdGVkQgcKBV93aGVuIlkKGFRlbmFudFNlcnZpY2VMaXN0UmVxdWVzdBIPCgJpZBgBIAEoCUgAiAEBEhwKBG5hbWUYAiABKAlCCbpIBnIEEAIYQEgBiAEBQgUKA19pZEIHCgVfbmFtZSIoChdUZW5hbnRTZXJ2aWNlR2V0UmVxdWVzdBINCgVsb2dpbhgBIAEoCSLmAQoaVGVuYW50U2VydmljZUNyZWF0ZVJlcXVlc3QSFwoEbmFtZRgBIAEoCUIJukgGcgQQAhhAEiQKC2Rlc2NyaXB0aW9uGAIgASgJQgq6SAdyBRACGIAESACIAQESGwoFZW1haWwYAyABKAlCB7pIBHICYAFIAYgBARIXCgphdmF0YXJfdXJsGAQgASgJSAKIAQESGQoMcGhvbmVfbnVtYmVyGAUgASgJSAOIAQFCDgoMX2Rlc2NyaXB0aW9uQggKBl9lbWFpbEINCgtfYXZhdGFyX3VybEIPCg1fcGhvbmVfbnVtYmVyIkQKIlRlbmFudFNlcnZpY2VDcmVhdGVPclVwZGF0ZVJlcXVlc3QSHgoGdGVuYW50GAEgASgLMg4uYXBpLnYxLlRlbmFudCLyAgoaVGVuYW50U2VydmljZVVwZGF0ZVJlcXVlc3QSDQoFbG9naW4YASABKAkSHAoEbmFtZRgCIAEoCUIJukgGcgQQAhhASACIAQESGwoFZW1haWwYAyABKAlCB7pIBHICYAFIAYgBARIkCgtkZXNjcmlwdGlvbhgEIAEoCUIKukgHcgUQAhiABEgCiAEBEhcKCmF2YXRhcl91cmwYBSABKAlIA4gBARJDChR0ZXJtc19hbmRfY29uZGl0aW9ucxgJIAEoCzIgLmFwaS52MS5UZXJtc0FuZENvbmRpdGlvbnNVcGRhdGVIBIgBARIWCglvbmJvYXJkZWQYDSABKAhIBYgBAUIHCgVfbmFtZUIICgZfZW1haWxCDgoMX2Rlc2NyaXB0aW9uQg0KC19hdmF0YXJfdXJsQhcKFV90ZXJtc19hbmRfY29uZGl0aW9uc0IMCgpfb25ib2FyZGVkSgQICBAJUg9wYXltZW50X2RldGFpbHMiKwoaVGVuYW50U2VydmljZURlbGV0ZVJlcXVlc3QSDQoFbG9naW4YASABKAkiaAoYVGVuYW50U2VydmljZUdldFJlc3BvbnNlEh4KBnRlbmFudBgBIAEoCzIOLmFwaS52MS5UZW5hbnQSLAoOdGVuYW50X21lbWJlcnMYAiADKAsyFC5hcGkudjEuVGVuYW50TWVtYmVyIjwKGVRlbmFudFNlcnZpY2VMaXN0UmVzcG9uc2USHwoHdGVuYW50cxgBIAMoCzIOLmFwaS52MS5UZW5hbnQiPQobVGVuYW50U2VydmljZUNyZWF0ZVJlc3BvbnNlEh4KBnRlbmFudBgBIAEoCzIOLmFwaS52MS5UZW5hbnQiRQojVGVuYW50U2VydmljZUNyZWF0ZU9yVXBkYXRlUmVzcG9uc2USHgoGdGVuYW50GAEgASgLMg4uYXBpLnYxLlRlbmFudCI9ChtUZW5hbnRTZXJ2aWNlVXBkYXRlUmVzcG9uc2USHgoGdGVuYW50GAEgASgLMg4uYXBpLnYxLlRlbmFudCI9ChtUZW5hbnRTZXJ2aWNlRGVsZXRlUmVzcG9uc2USHgoGdGVuYW50GAEgASgLMg4uYXBpLnYxLlRlbmFudCJXChpUZW5hbnRTZXJ2aWNlSW52aXRlUmVxdWVzdBINCgVsb2dpbhgBIAEoCRIqCgRyb2xlGAIgASgOMhIuYXBpLnYxLlRlbmFudFJvbGVCCLpIBYIBAhABIkMKG1RlbmFudFNlcnZpY2VJbnZpdGVSZXNwb25zZRIkCgZpbnZpdGUYASABKAsyFC5hcGkudjEuVGVuYW50SW52aXRlIjAKH1RlbmFudFNlcnZpY2VJbnZpdGVzTGlzdFJlcXVlc3QSDQoFbG9naW4YASABKAkiSQogVGVuYW50U2VydmljZUludml0ZXNMaXN0UmVzcG9uc2USJQoHaW52aXRlcxgBIAMoCzIULmFwaS52MS5UZW5hbnRJbnZpdGUiLwodVGVuYW50U2VydmljZUludml0ZUdldFJlcXVlc3QSDgoGc2VjcmV0GAEgASgJIkYKHlRlbmFudFNlcnZpY2VJbnZpdGVHZXRSZXNwb25zZRIkCgZpbnZpdGUYASABKAsyFC5hcGkudjEuVGVuYW50SW52aXRlIkQKIFRlbmFudFNlcnZpY2VSZW1vdmVNZW1iZXJSZXF1ZXN0Eg0KBWxvZ2luGAEgASgJEhEKCW1lbWJlcl9pZBgCIAEoCSIjCiFUZW5hbnRTZXJ2aWNlUmVtb3ZlTWVtYmVyUmVzcG9uc2UiMgogVGVuYW50U2VydmljZUludml0ZUFjY2VwdFJlcXVlc3QSDgoGc2VjcmV0GAEgASgJIkgKIVRlbmFudFNlcnZpY2VJbnZpdGVBY2NlcHRSZXNwb25zZRIOCgZ0ZW5hbnQYASABKAkSEwoLdGVuYW50X25hbWUYAiABKAkiQQogVGVuYW50U2VydmljZUludml0ZURlbGV0ZVJlcXVlc3QSDQoFbG9naW4YASABKAkSDgoGc2VjcmV0GAIgASgJIiMKIVRlbmFudFNlcnZpY2VJbnZpdGVEZWxldGVSZXNwb25zZSJwCiBUZW5hbnRTZXJ2aWNlVXBkYXRlTWVtYmVyUmVxdWVzdBINCgVsb2dpbhgBIAEoCRIRCgltZW1iZXJfaWQYAiABKAkSKgoEcm9sZRgDIAEoDjISLmFwaS52MS5UZW5hbnRSb2xlQgi6SAWCAQIQASJQCiFUZW5hbnRTZXJ2aWNlVXBkYXRlTWVtYmVyUmVzcG9uc2USKwoNdGVuYW50X21lbWJlchgBIAEoCzIULmFwaS52MS5UZW5hbnRNZW1iZXIimQEKJFRlbmFudFNlcnZpY2VSZXF1ZXN0QWRtaXNzaW9uUmVxdWVzdBINCgVsb2dpbhgBIAEoCRIMCgRuYW1lGAIgASgJEhYKBWVtYWlsGAMgASgJQge6SARyAmABEiUKHWFjY2VwdGVkX3Rlcm1zX2FuZF9jb25kaXRpb25zGAQgASgIEhUKDWVtYWlsX2NvbnNlbnQYBSABKAgiJwolVGVuYW50U2VydmljZVJlcXVlc3RBZG1pc3Npb25SZXNwb25zZTLGCgoNVGVuYW50U2VydmljZRJbCgZDcmVhdGUSIi5hcGkudjEuVGVuYW50U2VydmljZUNyZWF0ZVJlcXVlc3QaIy5hcGkudjEuVGVuYW50U2VydmljZUNyZWF0ZVJlc3BvbnNlIgjY8xgD6PMYARJVCgRMaXN0EiAuYXBpLnYxLlRlbmFudFNlcnZpY2VMaXN0UmVxdWVzdBohLmFwaS52MS5UZW5hbnRTZXJ2aWNlTGlzdFJlc3BvbnNlIgjY8xgD6PMYAhJWCgNHZXQSHy5hcGkudjEuVGVuYW50U2VydmljZUdldFJlcXVlc3QaIC5hcGkudjEuVGVuYW50U2VydmljZUdldFJlc3BvbnNlIgzC8xgEAQIDBOjzGAISXQoGVXBkYXRlEiIuYXBpLnYxLlRlbmFudFNlcnZpY2VVcGRhdGVSZXF1ZXN0GiMuYXBpLnYxLlRlbmFudFNlcnZpY2VVcGRhdGVSZXNwb25zZSIKwvMYAgEC6PMYARJdCgZEZWxldGUSIi5hcGkudjEuVGVuYW50U2VydmljZURlbGV0ZVJlcXVlc3QaIy5hcGkudjEuVGVuYW50U2VydmljZURlbGV0ZVJlc3BvbnNlIgrC8xgCAQLo8xgBEm4KDFJlbW92ZU1lbWJlchIoLmFwaS52MS5UZW5hbnRTZXJ2aWNlUmVtb3ZlTWVtYmVyUmVxdWVzdBopLmFwaS52MS5UZW5hbnRTZXJ2aWNlUmVtb3ZlTWVtYmVyUmVzcG9uc2UiCcLzGAEB6PMYARJuCgxVcGRhdGVNZW1iZXISKC5hcGkudjEuVGVuYW50U2VydmljZVVwZGF0ZU1lbWJlclJlcXVlc3QaKS5hcGkudjEuVGVuYW50U2VydmljZVVwZGF0ZU1lbWJlclJlc3BvbnNlIgnC8xgBAejzGAESXAoGSW52aXRlEiIuYXBpLnYxLlRlbmFudFNlcnZpY2VJbnZpdGVSZXF1ZXN0GiMuYXBpLnYxLlRlbmFudFNlcnZpY2VJbnZpdGVSZXNwb25zZSIJwvMYAQHo8xgBEm0KDEludml0ZUFjY2VwdBIoLmFwaS52MS5UZW5hbnRTZXJ2aWNlSW52aXRlQWNjZXB0UmVxdWVzdBopLmFwaS52MS5UZW5hbnRTZXJ2aWNlSW52aXRlQWNjZXB0UmVzcG9uc2UiCNjzGAPo8xgBEm4KDEludml0ZURlbGV0ZRIoLmFwaS52MS5UZW5hbnRTZXJ2aWNlSW52aXRlRGVsZXRlUmVxdWVzdBopLmFwaS52MS5UZW5hbnRTZXJ2aWNlSW52aXRlRGVsZXRlUmVzcG9uc2UiCcLzGAEB6PMYARJrCgtJbnZpdGVzTGlzdBInLmFwaS52MS5UZW5hbnRTZXJ2aWNlSW52aXRlc0xpc3RSZXF1ZXN0GiguYXBpLnYxLlRlbmFudFNlcnZpY2VJbnZpdGVzTGlzdFJlc3BvbnNlIgnC8xgBAejzGAISZAoJSW52aXRlR2V0EiUuYXBpLnYxLlRlbmFudFNlcnZpY2VJbnZpdGVHZXRSZXF1ZXN0GiYuYXBpLnYxLlRlbmFudFNlcnZpY2VJbnZpdGVHZXRSZXNwb25zZSII2PMYA+jzGAISewoQUmVxdWVzdEFkbWlzc2lvbhIsLmFwaS52MS5UZW5hbnRTZXJ2aWNlUmVxdWVzdEFkbWlzc2lvblJlcXVlc3QaLS5hcGkudjEuVGVuYW50U2VydmljZVJlcXVlc3RBZG1pc3Npb25SZXNwb25zZSIKwvMYAgEC6PMYAkKEAQoKY29tLmFwaS52MUILVGVuYW50UHJvdG9QAVowZ2l0aHViLmNvbS9tZXRhbC1zdGFjay1jbG91ZC9hcGkvZ28vYXBpL3YxO2FwaXYxogIDQVhYqgIGQXBpLlYxygIGQXBpXFYx4gISQXBpXFYxXEdQQk1ldGFkYXRh6gIHQXBpOjpWMWIGcHJvdG8z", [file_api_v1_common, file_buf_validate_validate, file_google_protobuf_timestamp]);
+  fileDesc("ChNhcGkvdjEvdGVuYW50LnByb3RvEgZhcGkudjEi7QMKBlRlbmFudBINCgVsb2dpbhgBIAEoCRIMCgRuYW1lGAIgASgJEg0KBWVtYWlsGAMgASgJEhMKC2Rlc2NyaXB0aW9uGAQgASgJEhIKCmF2YXRhcl91cmwYBSABKAkSLQoOb2F1dGhfcHJvdmlkZXIYBiABKA4yFS5hcGkudjEuT0F1dGhQcm92aWRlchIvCg9wYXltZW50X2RldGFpbHMYCCABKAsyFi5hcGkudjEuUGF5bWVudERldGFpbHMSEAoIYWRtaXR0ZWQYCSABKAgSFAoMcGhvbmVfbnVtYmVyGAogASgJEjgKFHRlcm1zX2FuZF9jb25kaXRpb25zGAsgASgLMhouYXBpLnYxLlRlcm1zQW5kQ29uZGl0aW9ucxIVCg1lbWFpbF9jb25zZW50GAwgASgIEhEKCW9uYm9hcmRlZBgNIAEoCBISCgpjcmVhdGVkX2J5GA8gASgJEi4KCmNyZWF0ZWRfYXQYFCABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wEi4KCnVwZGF0ZWRfYXQYFSABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wEi4KCmRlbGV0ZWRfYXQYFiABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wIosBCgxUZW5hbnRNZW1iZXISCgoCaWQYASABKAkSKgoEcm9sZRgCIAEoDjISLmFwaS52MS5UZW5hbnRSb2xlQgi6SAWCAQIQARITCgtwcm9qZWN0X2lkcxgEIAMoCRIuCgpjcmVhdGVkX2F0GAogASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcCKRAgoMVGVuYW50SW52aXRlEg4KBnNlY3JldBgBIAEoCRIVCg10YXJnZXRfdGVuYW50GAIgASgJEioKBHJvbGUYAyABKA4yEi5hcGkudjEuVGVuYW50Um9sZUIIukgFggECEAESDgoGam9pbmVkGAQgASgIEhoKEnRhcmdldF90ZW5hbnRfbmFtZRgFIAEoCRIOCgZ0ZW5hbnQYBiABKAkSEwoLdGVuYW50X25hbWUYByABKAkSLgoKZXhwaXJlc19hdBgKIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXASLQoJam9pbmVkX2F0GAsgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcCKiAQoOUGF5bWVudERldGFpbHMSEwoLY3VzdG9tZXJfaWQYASABKAkSHgoRcGF5bWVudF9tZXRob2RfaWQYAiABKAlIAIgBARIXCg9zdWJzY3JpcHRpb25faWQYAyABKAkSHwoHY291cG9ucxgEIAMoCzIOLmFwaS52MS5Db3Vwb24SCwoDdmF0GAUgASgJQhQKEl9wYXltZW50X21ldGhvZF9pZCJQChJUZXJtc0FuZENvbmRpdGlvbnMSEAoIYWNjZXB0ZWQYASABKAgSKAoEd2hlbhgCIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXAidgoYVGVybXNBbmRDb25kaXRpb25zVXBkYXRlEhUKCGFjY2VwdGVkGAEgASgISACIAQESLQoEd2hlbhgCIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXBIAYgBAUILCglfYWNjZXB0ZWRCBwoFX3doZW4iWQoYVGVuYW50U2VydmljZUxpc3RSZXF1ZXN0Eg8KAmlkGAEgASgJSACIAQESHAoEbmFtZRgCIAEoCUIJukgGcgQQAhhASAGIAQFCBQoDX2lkQgcKBV9uYW1lIigKF1RlbmFudFNlcnZpY2VHZXRSZXF1ZXN0Eg0KBWxvZ2luGAEgASgJIuYBChpUZW5hbnRTZXJ2aWNlQ3JlYXRlUmVxdWVzdBIXCgRuYW1lGAEgASgJQgm6SAZyBBACGEASJAoLZGVzY3JpcHRpb24YAiABKAlCCrpIB3IFEAIYgARIAIgBARIbCgVlbWFpbBgDIAEoCUIHukgEcgJgAUgBiAEBEhcKCmF2YXRhcl91cmwYBCABKAlIAogBARIZCgxwaG9uZV9udW1iZXIYBSABKAlIA4gBAUIOCgxfZGVzY3JpcHRpb25CCAoGX2VtYWlsQg0KC19hdmF0YXJfdXJsQg8KDV9waG9uZV9udW1iZXIiRAoiVGVuYW50U2VydmljZUNyZWF0ZU9yVXBkYXRlUmVxdWVzdBIeCgZ0ZW5hbnQYASABKAsyDi5hcGkudjEuVGVuYW50IvICChpUZW5hbnRTZXJ2aWNlVXBkYXRlUmVxdWVzdBINCgVsb2dpbhgBIAEoCRIcCgRuYW1lGAIgASgJQgm6SAZyBBACGEBIAIgBARIbCgVlbWFpbBgDIAEoCUIHukgEcgJgAUgBiAEBEiQKC2Rlc2NyaXB0aW9uGAQgASgJQgq6SAdyBRACGIAESAKIAQESFwoKYXZhdGFyX3VybBgFIAEoCUgDiAEBEkMKFHRlcm1zX2FuZF9jb25kaXRpb25zGAkgASgLMiAuYXBpLnYxLlRlcm1zQW5kQ29uZGl0aW9uc1VwZGF0ZUgEiAEBEhYKCW9uYm9hcmRlZBgNIAEoCEgFiAEBQgcKBV9uYW1lQggKBl9lbWFpbEIOCgxfZGVzY3JpcHRpb25CDQoLX2F2YXRhcl91cmxCFwoVX3Rlcm1zX2FuZF9jb25kaXRpb25zQgwKCl9vbmJvYXJkZWRKBAgIEAlSD3BheW1lbnRfZGV0YWlscyIrChpUZW5hbnRTZXJ2aWNlRGVsZXRlUmVxdWVzdBINCgVsb2dpbhgBIAEoCSJoChhUZW5hbnRTZXJ2aWNlR2V0UmVzcG9uc2USHgoGdGVuYW50GAEgASgLMg4uYXBpLnYxLlRlbmFudBIsCg50ZW5hbnRfbWVtYmVycxgCIAMoCzIULmFwaS52MS5UZW5hbnRNZW1iZXIiPAoZVGVuYW50U2VydmljZUxpc3RSZXNwb25zZRIfCgd0ZW5hbnRzGAEgAygLMg4uYXBpLnYxLlRlbmFudCI9ChtUZW5hbnRTZXJ2aWNlQ3JlYXRlUmVzcG9uc2USHgoGdGVuYW50GAEgASgLMg4uYXBpLnYxLlRlbmFudCJFCiNUZW5hbnRTZXJ2aWNlQ3JlYXRlT3JVcGRhdGVSZXNwb25zZRIeCgZ0ZW5hbnQYASABKAsyDi5hcGkudjEuVGVuYW50Ij0KG1RlbmFudFNlcnZpY2VVcGRhdGVSZXNwb25zZRIeCgZ0ZW5hbnQYASABKAsyDi5hcGkudjEuVGVuYW50Ij0KG1RlbmFudFNlcnZpY2VEZWxldGVSZXNwb25zZRIeCgZ0ZW5hbnQYASABKAsyDi5hcGkudjEuVGVuYW50IlcKGlRlbmFudFNlcnZpY2VJbnZpdGVSZXF1ZXN0Eg0KBWxvZ2luGAEgASgJEioKBHJvbGUYAiABKA4yEi5hcGkudjEuVGVuYW50Um9sZUIIukgFggECEAEiQwobVGVuYW50U2VydmljZUludml0ZVJlc3BvbnNlEiQKBmludml0ZRgBIAEoCzIULmFwaS52MS5UZW5hbnRJbnZpdGUiMAofVGVuYW50U2VydmljZUludml0ZXNMaXN0UmVxdWVzdBINCgVsb2dpbhgBIAEoCSJJCiBUZW5hbnRTZXJ2aWNlSW52aXRlc0xpc3RSZXNwb25zZRIlCgdpbnZpdGVzGAEgAygLMhQuYXBpLnYxLlRlbmFudEludml0ZSIvCh1UZW5hbnRTZXJ2aWNlSW52aXRlR2V0UmVxdWVzdBIOCgZzZWNyZXQYASABKAkiRgoeVGVuYW50U2VydmljZUludml0ZUdldFJlc3BvbnNlEiQKBmludml0ZRgBIAEoCzIULmFwaS52MS5UZW5hbnRJbnZpdGUiRAogVGVuYW50U2VydmljZVJlbW92ZU1lbWJlclJlcXVlc3QSDQoFbG9naW4YASABKAkSEQoJbWVtYmVyX2lkGAIgASgJIiMKIVRlbmFudFNlcnZpY2VSZW1vdmVNZW1iZXJSZXNwb25zZSIyCiBUZW5hbnRTZXJ2aWNlSW52aXRlQWNjZXB0UmVxdWVzdBIOCgZzZWNyZXQYASABKAkiSAohVGVuYW50U2VydmljZUludml0ZUFjY2VwdFJlc3BvbnNlEg4KBnRlbmFudBgBIAEoCRITCgt0ZW5hbnRfbmFtZRgCIAEoCSJBCiBUZW5hbnRTZXJ2aWNlSW52aXRlRGVsZXRlUmVxdWVzdBINCgVsb2dpbhgBIAEoCRIOCgZzZWNyZXQYAiABKAkiIwohVGVuYW50U2VydmljZUludml0ZURlbGV0ZVJlc3BvbnNlInAKIFRlbmFudFNlcnZpY2VVcGRhdGVNZW1iZXJSZXF1ZXN0Eg0KBWxvZ2luGAEgASgJEhEKCW1lbWJlcl9pZBgCIAEoCRIqCgRyb2xlGAMgASgOMhIuYXBpLnYxLlRlbmFudFJvbGVCCLpIBYIBAhABIlAKIVRlbmFudFNlcnZpY2VVcGRhdGVNZW1iZXJSZXNwb25zZRIrCg10ZW5hbnRfbWVtYmVyGAEgASgLMhQuYXBpLnYxLlRlbmFudE1lbWJlciKZAQokVGVuYW50U2VydmljZVJlcXVlc3RBZG1pc3Npb25SZXF1ZXN0Eg0KBWxvZ2luGAEgASgJEgwKBG5hbWUYAiABKAkSFgoFZW1haWwYAyABKAlCB7pIBHICYAESJQodYWNjZXB0ZWRfdGVybXNfYW5kX2NvbmRpdGlvbnMYBCABKAgSFQoNZW1haWxfY29uc2VudBgFIAEoCCInCiVUZW5hbnRTZXJ2aWNlUmVxdWVzdEFkbWlzc2lvblJlc3BvbnNlMsYKCg1UZW5hbnRTZXJ2aWNlElsKBkNyZWF0ZRIiLmFwaS52MS5UZW5hbnRTZXJ2aWNlQ3JlYXRlUmVxdWVzdBojLmFwaS52MS5UZW5hbnRTZXJ2aWNlQ3JlYXRlUmVzcG9uc2UiCNjzGAPo8xgBElUKBExpc3QSIC5hcGkudjEuVGVuYW50U2VydmljZUxpc3RSZXF1ZXN0GiEuYXBpLnYxLlRlbmFudFNlcnZpY2VMaXN0UmVzcG9uc2UiCNjzGAPo8xgCElYKA0dldBIfLmFwaS52MS5UZW5hbnRTZXJ2aWNlR2V0UmVxdWVzdBogLmFwaS52MS5UZW5hbnRTZXJ2aWNlR2V0UmVzcG9uc2UiDMLzGAQBAgME6PMYAhJdCgZVcGRhdGUSIi5hcGkudjEuVGVuYW50U2VydmljZVVwZGF0ZVJlcXVlc3QaIy5hcGkudjEuVGVuYW50U2VydmljZVVwZGF0ZVJlc3BvbnNlIgrC8xgCAQLo8xgBEl0KBkRlbGV0ZRIiLmFwaS52MS5UZW5hbnRTZXJ2aWNlRGVsZXRlUmVxdWVzdBojLmFwaS52MS5UZW5hbnRTZXJ2aWNlRGVsZXRlUmVzcG9uc2UiCsLzGAIBAujzGAESbgoMUmVtb3ZlTWVtYmVyEiguYXBpLnYxLlRlbmFudFNlcnZpY2VSZW1vdmVNZW1iZXJSZXF1ZXN0GikuYXBpLnYxLlRlbmFudFNlcnZpY2VSZW1vdmVNZW1iZXJSZXNwb25zZSIJwvMYAQHo8xgBEm4KDFVwZGF0ZU1lbWJlchIoLmFwaS52MS5UZW5hbnRTZXJ2aWNlVXBkYXRlTWVtYmVyUmVxdWVzdBopLmFwaS52MS5UZW5hbnRTZXJ2aWNlVXBkYXRlTWVtYmVyUmVzcG9uc2UiCcLzGAEB6PMYARJcCgZJbnZpdGUSIi5hcGkudjEuVGVuYW50U2VydmljZUludml0ZVJlcXVlc3QaIy5hcGkudjEuVGVuYW50U2VydmljZUludml0ZVJlc3BvbnNlIgnC8xgBAejzGAESbQoMSW52aXRlQWNjZXB0EiguYXBpLnYxLlRlbmFudFNlcnZpY2VJbnZpdGVBY2NlcHRSZXF1ZXN0GikuYXBpLnYxLlRlbmFudFNlcnZpY2VJbnZpdGVBY2NlcHRSZXNwb25zZSII2PMYA+jzGAESbgoMSW52aXRlRGVsZXRlEiguYXBpLnYxLlRlbmFudFNlcnZpY2VJbnZpdGVEZWxldGVSZXF1ZXN0GikuYXBpLnYxLlRlbmFudFNlcnZpY2VJbnZpdGVEZWxldGVSZXNwb25zZSIJwvMYAQHo8xgBEmsKC0ludml0ZXNMaXN0EicuYXBpLnYxLlRlbmFudFNlcnZpY2VJbnZpdGVzTGlzdFJlcXVlc3QaKC5hcGkudjEuVGVuYW50U2VydmljZUludml0ZXNMaXN0UmVzcG9uc2UiCcLzGAEB6PMYAhJkCglJbnZpdGVHZXQSJS5hcGkudjEuVGVuYW50U2VydmljZUludml0ZUdldFJlcXVlc3QaJi5hcGkudjEuVGVuYW50U2VydmljZUludml0ZUdldFJlc3BvbnNlIgjY8xgD6PMYAhJ7ChBSZXF1ZXN0QWRtaXNzaW9uEiwuYXBpLnYxLlRlbmFudFNlcnZpY2VSZXF1ZXN0QWRtaXNzaW9uUmVxdWVzdBotLmFwaS52MS5UZW5hbnRTZXJ2aWNlUmVxdWVzdEFkbWlzc2lvblJlc3BvbnNlIgrC8xgCAQLo8xgCQoQBCgpjb20uYXBpLnYxQgtUZW5hbnRQcm90b1ABWjBnaXRodWIuY29tL21ldGFsLXN0YWNrLWNsb3VkL2FwaS9nby9hcGkvdjE7YXBpdjGiAgNBWFiqAgZBcGkuVjHKAgZBcGlcVjHiAhJBcGlcVjFcR1BCTWV0YWRhdGHqAgdBcGk6OlYxYgZwcm90bzM", [file_api_v1_common, file_api_v1_payment, file_buf_validate_validate, file_google_protobuf_timestamp]);
 
 /**
  * Tenant is a customer of the platform
@@ -64,6 +66,13 @@ export type Tenant = Message<"api.v1.Tenant"> & {
    * @generated from field: api.v1.OAuthProvider oauth_provider = 6;
    */
   oauthProvider: OAuthProvider;
+
+  /**
+   * PaymentDetails the tenant provides
+   *
+   * @generated from field: api.v1.PaymentDetails payment_details = 8;
+   */
+  paymentDetails?: PaymentDetails;
 
   /**
    * Admitted indicates if this tenant is allowed to use the platform
@@ -256,6 +265,55 @@ export const TenantInviteSchema: GenMessage<TenantInvite> = /*@__PURE__*/
   messageDesc(file_api_v1_tenant, 2);
 
 /**
+ * PaymentDetails of a tenant
+ *
+ * @generated from message api.v1.PaymentDetails
+ */
+export type PaymentDetails = Message<"api.v1.PaymentDetails"> & {
+  /**
+   * CustomerId at the payment processor
+   *
+   * @generated from field: string customer_id = 1;
+   */
+  customerId: string;
+
+  /**
+   * PaymentMethodId of the tenant at the payment processor
+   *
+   * @generated from field: optional string payment_method_id = 2;
+   */
+  paymentMethodId?: string;
+
+  /**
+   * SubscriptionId at the payment processor
+   *
+   * @generated from field: string subscription_id = 3;
+   */
+  subscriptionId: string;
+
+  /**
+   * Coupons a list of coupons the tenant has
+   *
+   * @generated from field: repeated api.v1.Coupon coupons = 4;
+   */
+  coupons: Coupon[];
+
+  /**
+   * Vat which applies to this tenant
+   *
+   * @generated from field: string vat = 5;
+   */
+  vat: string;
+};
+
+/**
+ * Describes the message api.v1.PaymentDetails.
+ * Use `create(PaymentDetailsSchema)` to create a new message.
+ */
+export const PaymentDetailsSchema: GenMessage<PaymentDetails> = /*@__PURE__*/
+  messageDesc(file_api_v1_tenant, 3);
+
+/**
  * TermsAndConditions the tenant accepted
  *
  * @generated from message api.v1.TermsAndConditions
@@ -281,7 +339,7 @@ export type TermsAndConditions = Message<"api.v1.TermsAndConditions"> & {
  * Use `create(TermsAndConditionsSchema)` to create a new message.
  */
 export const TermsAndConditionsSchema: GenMessage<TermsAndConditions> = /*@__PURE__*/
-  messageDesc(file_api_v1_tenant, 3);
+  messageDesc(file_api_v1_tenant, 4);
 
 /**
  * TermsAndConditionsUpdate
@@ -309,7 +367,7 @@ export type TermsAndConditionsUpdate = Message<"api.v1.TermsAndConditionsUpdate"
  * Use `create(TermsAndConditionsUpdateSchema)` to create a new message.
  */
 export const TermsAndConditionsUpdateSchema: GenMessage<TermsAndConditionsUpdate> = /*@__PURE__*/
-  messageDesc(file_api_v1_tenant, 4);
+  messageDesc(file_api_v1_tenant, 5);
 
 /**
  * TenantServiceListRequest is the request payload of the tenant list request
@@ -337,7 +395,7 @@ export type TenantServiceListRequest = Message<"api.v1.TenantServiceListRequest"
  * Use `create(TenantServiceListRequestSchema)` to create a new message.
  */
 export const TenantServiceListRequestSchema: GenMessage<TenantServiceListRequest> = /*@__PURE__*/
-  messageDesc(file_api_v1_tenant, 5);
+  messageDesc(file_api_v1_tenant, 6);
 
 /**
  * TenantServiceGetRequest is the request payload of the tenant get request
@@ -358,7 +416,7 @@ export type TenantServiceGetRequest = Message<"api.v1.TenantServiceGetRequest"> 
  * Use `create(TenantServiceGetRequestSchema)` to create a new message.
  */
 export const TenantServiceGetRequestSchema: GenMessage<TenantServiceGetRequest> = /*@__PURE__*/
-  messageDesc(file_api_v1_tenant, 6);
+  messageDesc(file_api_v1_tenant, 7);
 
 /**
  * TenantServiceCreateRequest is the request payload of the tenant create request
@@ -407,7 +465,7 @@ export type TenantServiceCreateRequest = Message<"api.v1.TenantServiceCreateRequ
  * Use `create(TenantServiceCreateRequestSchema)` to create a new message.
  */
 export const TenantServiceCreateRequestSchema: GenMessage<TenantServiceCreateRequest> = /*@__PURE__*/
-  messageDesc(file_api_v1_tenant, 7);
+  messageDesc(file_api_v1_tenant, 8);
 
 /**
  * TenantServiceCreateOrUpdateRequest is the request payload of the tenant create or update request
@@ -428,7 +486,7 @@ export type TenantServiceCreateOrUpdateRequest = Message<"api.v1.TenantServiceCr
  * Use `create(TenantServiceCreateOrUpdateRequestSchema)` to create a new message.
  */
 export const TenantServiceCreateOrUpdateRequestSchema: GenMessage<TenantServiceCreateOrUpdateRequest> = /*@__PURE__*/
-  messageDesc(file_api_v1_tenant, 8);
+  messageDesc(file_api_v1_tenant, 9);
 
 /**
  * TenantServiceUpdateRequest is the request payload of the tenant update request
@@ -491,7 +549,7 @@ export type TenantServiceUpdateRequest = Message<"api.v1.TenantServiceUpdateRequ
  * Use `create(TenantServiceUpdateRequestSchema)` to create a new message.
  */
 export const TenantServiceUpdateRequestSchema: GenMessage<TenantServiceUpdateRequest> = /*@__PURE__*/
-  messageDesc(file_api_v1_tenant, 9);
+  messageDesc(file_api_v1_tenant, 10);
 
 /**
  * TenantServiceDeleteRequest is the request payload of the tenant delete request
@@ -512,7 +570,7 @@ export type TenantServiceDeleteRequest = Message<"api.v1.TenantServiceDeleteRequ
  * Use `create(TenantServiceDeleteRequestSchema)` to create a new message.
  */
 export const TenantServiceDeleteRequestSchema: GenMessage<TenantServiceDeleteRequest> = /*@__PURE__*/
-  messageDesc(file_api_v1_tenant, 10);
+  messageDesc(file_api_v1_tenant, 11);
 
 /**
  * TenantServiceGetResponse is the response payload of the tenant get request
@@ -540,7 +598,7 @@ export type TenantServiceGetResponse = Message<"api.v1.TenantServiceGetResponse"
  * Use `create(TenantServiceGetResponseSchema)` to create a new message.
  */
 export const TenantServiceGetResponseSchema: GenMessage<TenantServiceGetResponse> = /*@__PURE__*/
-  messageDesc(file_api_v1_tenant, 11);
+  messageDesc(file_api_v1_tenant, 12);
 
 /**
  * TenantServiceListResponse is the response payload of the tenant list request
@@ -561,7 +619,7 @@ export type TenantServiceListResponse = Message<"api.v1.TenantServiceListRespons
  * Use `create(TenantServiceListResponseSchema)` to create a new message.
  */
 export const TenantServiceListResponseSchema: GenMessage<TenantServiceListResponse> = /*@__PURE__*/
-  messageDesc(file_api_v1_tenant, 12);
+  messageDesc(file_api_v1_tenant, 13);
 
 /**
  * TenantServiceCreateResponse is the response payload of the tenant create request
@@ -582,7 +640,7 @@ export type TenantServiceCreateResponse = Message<"api.v1.TenantServiceCreateRes
  * Use `create(TenantServiceCreateResponseSchema)` to create a new message.
  */
 export const TenantServiceCreateResponseSchema: GenMessage<TenantServiceCreateResponse> = /*@__PURE__*/
-  messageDesc(file_api_v1_tenant, 13);
+  messageDesc(file_api_v1_tenant, 14);
 
 /**
  * TenantServiceCreateOrUpdateResponse is the response payload of the tenant create or update request
@@ -603,7 +661,7 @@ export type TenantServiceCreateOrUpdateResponse = Message<"api.v1.TenantServiceC
  * Use `create(TenantServiceCreateOrUpdateResponseSchema)` to create a new message.
  */
 export const TenantServiceCreateOrUpdateResponseSchema: GenMessage<TenantServiceCreateOrUpdateResponse> = /*@__PURE__*/
-  messageDesc(file_api_v1_tenant, 14);
+  messageDesc(file_api_v1_tenant, 15);
 
 /**
  * TenantServiceUpdateResponse is the response payload of the tenant update request
@@ -624,7 +682,7 @@ export type TenantServiceUpdateResponse = Message<"api.v1.TenantServiceUpdateRes
  * Use `create(TenantServiceUpdateResponseSchema)` to create a new message.
  */
 export const TenantServiceUpdateResponseSchema: GenMessage<TenantServiceUpdateResponse> = /*@__PURE__*/
-  messageDesc(file_api_v1_tenant, 15);
+  messageDesc(file_api_v1_tenant, 16);
 
 /**
  * TenantServiceDeleteResponse is the response payload of the tenant delete request
@@ -645,7 +703,7 @@ export type TenantServiceDeleteResponse = Message<"api.v1.TenantServiceDeleteRes
  * Use `create(TenantServiceDeleteResponseSchema)` to create a new message.
  */
 export const TenantServiceDeleteResponseSchema: GenMessage<TenantServiceDeleteResponse> = /*@__PURE__*/
-  messageDesc(file_api_v1_tenant, 16);
+  messageDesc(file_api_v1_tenant, 17);
 
 /**
  * TenantServiceInviteRequest is used to invite a member to a tenant
@@ -673,7 +731,7 @@ export type TenantServiceInviteRequest = Message<"api.v1.TenantServiceInviteRequ
  * Use `create(TenantServiceInviteRequestSchema)` to create a new message.
  */
 export const TenantServiceInviteRequestSchema: GenMessage<TenantServiceInviteRequest> = /*@__PURE__*/
-  messageDesc(file_api_v1_tenant, 17);
+  messageDesc(file_api_v1_tenant, 18);
 
 /**
  * TenantServiceInviteRequest is the response payload to a invite member request
@@ -696,7 +754,7 @@ export type TenantServiceInviteResponse = Message<"api.v1.TenantServiceInviteRes
  * Use `create(TenantServiceInviteResponseSchema)` to create a new message.
  */
 export const TenantServiceInviteResponseSchema: GenMessage<TenantServiceInviteResponse> = /*@__PURE__*/
-  messageDesc(file_api_v1_tenant, 18);
+  messageDesc(file_api_v1_tenant, 19);
 
 /**
  * TenantServiceInvitesListRequest is the request payload to a list invites request
@@ -717,7 +775,7 @@ export type TenantServiceInvitesListRequest = Message<"api.v1.TenantServiceInvit
  * Use `create(TenantServiceInvitesListRequestSchema)` to create a new message.
  */
 export const TenantServiceInvitesListRequestSchema: GenMessage<TenantServiceInvitesListRequest> = /*@__PURE__*/
-  messageDesc(file_api_v1_tenant, 19);
+  messageDesc(file_api_v1_tenant, 20);
 
 /**
  * TenantServiceInvitesListResponse is the response payload to a list invites request
@@ -738,7 +796,7 @@ export type TenantServiceInvitesListResponse = Message<"api.v1.TenantServiceInvi
  * Use `create(TenantServiceInvitesListResponseSchema)` to create a new message.
  */
 export const TenantServiceInvitesListResponseSchema: GenMessage<TenantServiceInvitesListResponse> = /*@__PURE__*/
-  messageDesc(file_api_v1_tenant, 20);
+  messageDesc(file_api_v1_tenant, 21);
 
 /**
  * TenantServiceInviteGetRequest is the request payload to get a invite
@@ -759,7 +817,7 @@ export type TenantServiceInviteGetRequest = Message<"api.v1.TenantServiceInviteG
  * Use `create(TenantServiceInviteGetRequestSchema)` to create a new message.
  */
 export const TenantServiceInviteGetRequestSchema: GenMessage<TenantServiceInviteGetRequest> = /*@__PURE__*/
-  messageDesc(file_api_v1_tenant, 21);
+  messageDesc(file_api_v1_tenant, 22);
 
 /**
  * TenantServiceInviteGetResponse is the response payload to a get invite request
@@ -780,7 +838,7 @@ export type TenantServiceInviteGetResponse = Message<"api.v1.TenantServiceInvite
  * Use `create(TenantServiceInviteGetResponseSchema)` to create a new message.
  */
 export const TenantServiceInviteGetResponseSchema: GenMessage<TenantServiceInviteGetResponse> = /*@__PURE__*/
-  messageDesc(file_api_v1_tenant, 22);
+  messageDesc(file_api_v1_tenant, 23);
 
 /**
  * TenantServiceRemoveMemberRequest is used to remove a member from a tenant
@@ -808,7 +866,7 @@ export type TenantServiceRemoveMemberRequest = Message<"api.v1.TenantServiceRemo
  * Use `create(TenantServiceRemoveMemberRequestSchema)` to create a new message.
  */
 export const TenantServiceRemoveMemberRequestSchema: GenMessage<TenantServiceRemoveMemberRequest> = /*@__PURE__*/
-  messageDesc(file_api_v1_tenant, 23);
+  messageDesc(file_api_v1_tenant, 24);
 
 /**
  * TenantServiceRemoveMemberResponse is the response payload to a remove member request
@@ -823,7 +881,7 @@ export type TenantServiceRemoveMemberResponse = Message<"api.v1.TenantServiceRem
  * Use `create(TenantServiceRemoveMemberResponseSchema)` to create a new message.
  */
 export const TenantServiceRemoveMemberResponseSchema: GenMessage<TenantServiceRemoveMemberResponse> = /*@__PURE__*/
-  messageDesc(file_api_v1_tenant, 24);
+  messageDesc(file_api_v1_tenant, 25);
 
 /**
  * TenantServiceInviteAcceptRequest is the request payload to a accept invite request
@@ -844,7 +902,7 @@ export type TenantServiceInviteAcceptRequest = Message<"api.v1.TenantServiceInvi
  * Use `create(TenantServiceInviteAcceptRequestSchema)` to create a new message.
  */
 export const TenantServiceInviteAcceptRequestSchema: GenMessage<TenantServiceInviteAcceptRequest> = /*@__PURE__*/
-  messageDesc(file_api_v1_tenant, 25);
+  messageDesc(file_api_v1_tenant, 26);
 
 /**
  * TenantServiceInvitesListResponse is the response payload to a accept invite request
@@ -872,7 +930,7 @@ export type TenantServiceInviteAcceptResponse = Message<"api.v1.TenantServiceInv
  * Use `create(TenantServiceInviteAcceptResponseSchema)` to create a new message.
  */
 export const TenantServiceInviteAcceptResponseSchema: GenMessage<TenantServiceInviteAcceptResponse> = /*@__PURE__*/
-  messageDesc(file_api_v1_tenant, 26);
+  messageDesc(file_api_v1_tenant, 27);
 
 /**
  * TenantServiceInviteDeleteRequest is the request payload to a delete invite
@@ -900,7 +958,7 @@ export type TenantServiceInviteDeleteRequest = Message<"api.v1.TenantServiceInvi
  * Use `create(TenantServiceInviteDeleteRequestSchema)` to create a new message.
  */
 export const TenantServiceInviteDeleteRequestSchema: GenMessage<TenantServiceInviteDeleteRequest> = /*@__PURE__*/
-  messageDesc(file_api_v1_tenant, 27);
+  messageDesc(file_api_v1_tenant, 28);
 
 /**
  * TenantServiceInviteDeleteResponse is the response payload of a delete invite request
@@ -915,7 +973,7 @@ export type TenantServiceInviteDeleteResponse = Message<"api.v1.TenantServiceInv
  * Use `create(TenantServiceInviteDeleteResponseSchema)` to create a new message.
  */
 export const TenantServiceInviteDeleteResponseSchema: GenMessage<TenantServiceInviteDeleteResponse> = /*@__PURE__*/
-  messageDesc(file_api_v1_tenant, 28);
+  messageDesc(file_api_v1_tenant, 29);
 
 /**
  * TenantServiceUpdateMemberRequest is used to update a member from a tenant
@@ -950,7 +1008,7 @@ export type TenantServiceUpdateMemberRequest = Message<"api.v1.TenantServiceUpda
  * Use `create(TenantServiceUpdateMemberRequestSchema)` to create a new message.
  */
 export const TenantServiceUpdateMemberRequestSchema: GenMessage<TenantServiceUpdateMemberRequest> = /*@__PURE__*/
-  messageDesc(file_api_v1_tenant, 29);
+  messageDesc(file_api_v1_tenant, 30);
 
 /**
  * TenantServiceUpdateMemberResponse is the response payload to a update member request
@@ -971,7 +1029,7 @@ export type TenantServiceUpdateMemberResponse = Message<"api.v1.TenantServiceUpd
  * Use `create(TenantServiceUpdateMemberResponseSchema)` to create a new message.
  */
 export const TenantServiceUpdateMemberResponseSchema: GenMessage<TenantServiceUpdateMemberResponse> = /*@__PURE__*/
-  messageDesc(file_api_v1_tenant, 30);
+  messageDesc(file_api_v1_tenant, 31);
 
 /**
  * TenantServiceRequestAdmissionRequest is used to request admission for a tenant
@@ -1020,7 +1078,7 @@ export type TenantServiceRequestAdmissionRequest = Message<"api.v1.TenantService
  * Use `create(TenantServiceRequestAdmissionRequestSchema)` to create a new message.
  */
 export const TenantServiceRequestAdmissionRequestSchema: GenMessage<TenantServiceRequestAdmissionRequest> = /*@__PURE__*/
-  messageDesc(file_api_v1_tenant, 31);
+  messageDesc(file_api_v1_tenant, 32);
 
 /**
  * TenantServiceRequestAdmissionResponse is the response payload an admission request
@@ -1035,7 +1093,7 @@ export type TenantServiceRequestAdmissionResponse = Message<"api.v1.TenantServic
  * Use `create(TenantServiceRequestAdmissionResponseSchema)` to create a new message.
  */
 export const TenantServiceRequestAdmissionResponseSchema: GenMessage<TenantServiceRequestAdmissionResponse> = /*@__PURE__*/
-  messageDesc(file_api_v1_tenant, 32);
+  messageDesc(file_api_v1_tenant, 33);
 
 /**
  * TenantService serves tenant related functions
