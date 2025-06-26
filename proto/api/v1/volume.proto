@@ -28,6 +28,11 @@ service VolumeService {
     option (project_roles) = PROJECT_ROLE_OWNER;
     option (project_roles) = PROJECT_ROLE_EDITOR;
   }
+  // Update a volume
+  rpc Update(VolumeServiceUpdateRequest) returns (VolumeServiceUpdateResponse) {
+    option (project_roles) = PROJECT_ROLE_OWNER;
+    option (project_roles) = PROJECT_ROLE_EDITOR;
+  }
 }
 
 // SnapshotService serves snapshot related functions
@@ -101,6 +106,32 @@ message Volume {
   string cluster_name = 22;
   // ClusterID if set points to the cluster this volume is attached to
   string cluster_id = 23;
+  // Labels stored in the volume
+  repeated VolumeLabel labels = 24;
+}
+
+// label-key and label-value length must be between 1 and 253 characters and
+// may contain any of: alphanumeric characters (a-z, A-Z, 0-9), hyphen (-),
+// underscore (_) and dot (.).
+message VolumeLabel {
+  // key under which the value is stored
+  string key = 1 [(buf.validate.field).string = {
+    min_len: 1
+    max_len: 253
+  }];
+  // value of this label
+  string value = 2 [(buf.validate.field).string = {
+    min_len: 1
+    max_len: 253
+  }];
+}
+
+// UpdateVolumeLabels allows updating the labels
+message UpdateVolumeLabels {
+  // Update volume labels. New ones will be added, existing ones overwritten
+  repeated VolumeLabel update = 1;
+  // Remove volume labels
+  repeated string remove = 2;
 }
 
 // VolumeStatistics are all detailed statistics of a volume
@@ -248,6 +279,19 @@ message VolumeServiceDeleteRequest {
   }];
 }
 
+// VolumeServiceUpdateRequest is the request payload of a volume update request
+message VolumeServiceUpdateRequest {
+  // Uuid of the volume
+  string uuid = 1 [(buf.validate.field).string.uuid = true];
+  // Project of the volume
+  string project = 2 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
+  }];
+  // Update Volume Labels stored in the volume. Some labels are immutable and cannot be changed.
+  optional UpdateVolumeLabels labels = 24;
+}
+
 // SnapshotServiceGetRequest is the request payload of a snapshot list request
 message SnapshotServiceGetRequest {
   // Uuid of the snapshot
@@ -299,6 +343,12 @@ message VolumeServiceListResponse {
 
 // VolumeServiceDeleteResponse is the response payload of a volume delete request
 message VolumeServiceDeleteResponse {
+  // Volume the volume
+  Volume volume = 1;
+}
+
+// VolumeServiceUpdateResponse is the response payload of a volume update request
+message VolumeServiceUpdateResponse {
   // Volume the volume
   Volume volume = 1;
 }

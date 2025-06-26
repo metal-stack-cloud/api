@@ -1,48 +1,45 @@
-import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
-import { Message, proto3 } from "@bufbuild/protobuf";
-import { Coupon, PaymentCustomer } from "../../api/v1/payment_pb.js";
+import type { GenFile, GenMessage, GenService } from "@bufbuild/protobuf/codegenv1";
+import type { Coupon, PaymentCustomer } from "../../api/v1/payment_pb";
+import type { Message } from "@bufbuild/protobuf";
+/**
+ * Describes the file admin/v1/payment.proto.
+ */
+export declare const file_admin_v1_payment: GenFile;
 /**
  * PaymentServiceListCouponsRequest is the request payload for the coupons list request
  *
  * @generated from message admin.v1.PaymentServiceListCouponsRequest
  */
-export declare class PaymentServiceListCouponsRequest extends Message<PaymentServiceListCouponsRequest> {
-    constructor(data?: PartialMessage<PaymentServiceListCouponsRequest>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "admin.v1.PaymentServiceListCouponsRequest";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): PaymentServiceListCouponsRequest;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): PaymentServiceListCouponsRequest;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): PaymentServiceListCouponsRequest;
-    static equals(a: PaymentServiceListCouponsRequest | PlainMessage<PaymentServiceListCouponsRequest> | undefined, b: PaymentServiceListCouponsRequest | PlainMessage<PaymentServiceListCouponsRequest> | undefined): boolean;
-}
+export type PaymentServiceListCouponsRequest = Message<"admin.v1.PaymentServiceListCouponsRequest"> & {};
+/**
+ * Describes the message admin.v1.PaymentServiceListCouponsRequest.
+ * Use `create(PaymentServiceListCouponsRequestSchema)` to create a new message.
+ */
+export declare const PaymentServiceListCouponsRequestSchema: GenMessage<PaymentServiceListCouponsRequest>;
 /**
  * PaymentServiceListCouponsResponse is the response payload for the coupons list request
  *
  * @generated from message admin.v1.PaymentServiceListCouponsResponse
  */
-export declare class PaymentServiceListCouponsResponse extends Message<PaymentServiceListCouponsResponse> {
+export type PaymentServiceListCouponsResponse = Message<"admin.v1.PaymentServiceListCouponsResponse"> & {
     /**
      * Coupons is the list of all coupons
      *
      * @generated from field: repeated api.v1.Coupon coupons = 1;
      */
     coupons: Coupon[];
-    constructor(data?: PartialMessage<PaymentServiceListCouponsResponse>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "admin.v1.PaymentServiceListCouponsResponse";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): PaymentServiceListCouponsResponse;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): PaymentServiceListCouponsResponse;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): PaymentServiceListCouponsResponse;
-    static equals(a: PaymentServiceListCouponsResponse | PlainMessage<PaymentServiceListCouponsResponse> | undefined, b: PaymentServiceListCouponsResponse | PlainMessage<PaymentServiceListCouponsResponse> | undefined): boolean;
-}
+};
+/**
+ * Describes the message admin.v1.PaymentServiceListCouponsResponse.
+ * Use `create(PaymentServiceListCouponsResponseSchema)` to create a new message.
+ */
+export declare const PaymentServiceListCouponsResponseSchema: GenMessage<PaymentServiceListCouponsResponse>;
 /**
  * PaymentServiceAddBalanceToCustomerRequest is the request payload for the balance to customer request
  *
  * @generated from message admin.v1.PaymentServiceAddBalanceToCustomerRequest
  */
-export declare class PaymentServiceAddBalanceToCustomerRequest extends Message<PaymentServiceAddBalanceToCustomerRequest> {
+export type PaymentServiceAddBalanceToCustomerRequest = Message<"admin.v1.PaymentServiceAddBalanceToCustomerRequest"> & {
     /**
      * Tenant is the tenant
      *
@@ -55,33 +52,54 @@ export declare class PaymentServiceAddBalanceToCustomerRequest extends Message<P
      * @generated from field: uint64 balance_to_add = 2;
      */
     balanceToAdd: bigint;
-    constructor(data?: PartialMessage<PaymentServiceAddBalanceToCustomerRequest>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "admin.v1.PaymentServiceAddBalanceToCustomerRequest";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): PaymentServiceAddBalanceToCustomerRequest;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): PaymentServiceAddBalanceToCustomerRequest;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): PaymentServiceAddBalanceToCustomerRequest;
-    static equals(a: PaymentServiceAddBalanceToCustomerRequest | PlainMessage<PaymentServiceAddBalanceToCustomerRequest> | undefined, b: PaymentServiceAddBalanceToCustomerRequest | PlainMessage<PaymentServiceAddBalanceToCustomerRequest> | undefined): boolean;
-}
+};
+/**
+ * Describes the message admin.v1.PaymentServiceAddBalanceToCustomerRequest.
+ * Use `create(PaymentServiceAddBalanceToCustomerRequestSchema)` to create a new message.
+ */
+export declare const PaymentServiceAddBalanceToCustomerRequestSchema: GenMessage<PaymentServiceAddBalanceToCustomerRequest>;
 /**
  * PaymentServiceAddBalanceToCustomerResponse is the response payload for the balance to customer request
  *
  * @generated from message admin.v1.PaymentServiceAddBalanceToCustomerResponse
  */
-export declare class PaymentServiceAddBalanceToCustomerResponse extends Message<PaymentServiceAddBalanceToCustomerResponse> {
+export type PaymentServiceAddBalanceToCustomerResponse = Message<"admin.v1.PaymentServiceAddBalanceToCustomerResponse"> & {
     /**
      * Customer is the customer
      *
      * @generated from field: api.v1.PaymentCustomer customer = 1;
      */
     customer?: PaymentCustomer;
-    constructor(data?: PartialMessage<PaymentServiceAddBalanceToCustomerResponse>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "admin.v1.PaymentServiceAddBalanceToCustomerResponse";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): PaymentServiceAddBalanceToCustomerResponse;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): PaymentServiceAddBalanceToCustomerResponse;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): PaymentServiceAddBalanceToCustomerResponse;
-    static equals(a: PaymentServiceAddBalanceToCustomerResponse | PlainMessage<PaymentServiceAddBalanceToCustomerResponse> | undefined, b: PaymentServiceAddBalanceToCustomerResponse | PlainMessage<PaymentServiceAddBalanceToCustomerResponse> | undefined): boolean;
-}
+};
+/**
+ * Describes the message admin.v1.PaymentServiceAddBalanceToCustomerResponse.
+ * Use `create(PaymentServiceAddBalanceToCustomerResponseSchema)` to create a new message.
+ */
+export declare const PaymentServiceAddBalanceToCustomerResponseSchema: GenMessage<PaymentServiceAddBalanceToCustomerResponse>;
+/**
+ * PaymentService serves payment related functions
+ *
+ * @generated from service admin.v1.PaymentService
+ */
+export declare const PaymentService: GenService<{
+    /**
+     * ListCoupons list all available coupons
+     *
+     * @generated from rpc admin.v1.PaymentService.ListCoupons
+     */
+    listCoupons: {
+        methodKind: "unary";
+        input: typeof PaymentServiceListCouponsRequestSchema;
+        output: typeof PaymentServiceListCouponsResponseSchema;
+    };
+    /**
+     * AddBalanceToCustomer adds balance to a customer
+     *
+     * @generated from rpc admin.v1.PaymentService.AddBalanceToCustomer
+     */
+    addBalanceToCustomer: {
+        methodKind: "unary";
+        input: typeof PaymentServiceAddBalanceToCustomerRequestSchema;
+        output: typeof PaymentServiceAddBalanceToCustomerResponseSchema;
+    };
+}>;

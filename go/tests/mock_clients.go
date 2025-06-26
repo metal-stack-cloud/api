@@ -50,6 +50,7 @@ type (
 	}
 	apiv1 struct {
 		assetservice    *apiv1mocks.AssetServiceClient
+		auditservice    *apiv1mocks.AuditServiceClient
 		clusterservice  *apiv1mocks.ClusterServiceClient
 		healthservice   *apiv1mocks.HealthServiceClient
 		ipservice       *apiv1mocks.IPServiceClient
@@ -66,6 +67,7 @@ type (
 
 	Apiv1MockFns struct {
 		Asset    func(m *mock.Mock)
+		Audit    func(m *mock.Mock)
 		Cluster  func(m *mock.Mock)
 		Health   func(m *mock.Mock)
 		IP       func(m *mock.Mock)
@@ -177,6 +179,7 @@ func (w wrapper) Apiv1(fns *Apiv1MockFns) *apiv1 {
 func newapiv1(t *testing.T, fns *Apiv1MockFns) *apiv1 {
 	a := &apiv1{
 		assetservice:    apiv1mocks.NewAssetServiceClient(t),
+		auditservice:    apiv1mocks.NewAuditServiceClient(t),
 		clusterservice:  apiv1mocks.NewClusterServiceClient(t),
 		healthservice:   apiv1mocks.NewHealthServiceClient(t),
 		ipservice:       apiv1mocks.NewIPServiceClient(t),
@@ -194,6 +197,9 @@ func newapiv1(t *testing.T, fns *Apiv1MockFns) *apiv1 {
 	if fns != nil {
 		if fns.Asset != nil {
 			fns.Asset(&a.assetservice.Mock)
+		}
+		if fns.Audit != nil {
+			fns.Audit(&a.auditservice.Mock)
 		}
 		if fns.Cluster != nil {
 			fns.Cluster(&a.clusterservice.Mock)
@@ -239,6 +245,9 @@ func newapiv1(t *testing.T, fns *Apiv1MockFns) *apiv1 {
 
 func (c *apiv1) Asset() apiv1connect.AssetServiceClient {
 	return c.assetservice
+}
+func (c *apiv1) Audit() apiv1connect.AuditServiceClient {
+	return c.auditservice
 }
 func (c *apiv1) Cluster() apiv1connect.ClusterServiceClient {
 	return c.clusterservice
