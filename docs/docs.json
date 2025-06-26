@@ -3331,7 +3331,7 @@
           "description": "PaymentServiceCreateOrUpdateCustomerRequest is the request payload for a payment create or update customer request",
           "hasExtensions": false,
           "hasFields": true,
-          "hasOneofs": false,
+          "hasOneofs": true,
           "extensions": [],
           "fields": [
             {
@@ -3347,15 +3347,75 @@
               "defaultValue": ""
             },
             {
-              "name": "customer",
-              "description": "Customer is the customer to modify",
+              "name": "name",
+              "description": "Name of the customer to be billed",
+              "label": "optional",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "_name",
+              "defaultValue": ""
+            },
+            {
+              "name": "email",
+              "description": "Email of the customer to be billed",
+              "label": "optional",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "_email",
+              "defaultValue": ""
+            },
+            {
+              "name": "card",
+              "description": "Card the customer to be billed",
+              "label": "optional",
+              "type": "Card",
+              "longType": "Card",
+              "fullType": "api.v1.Card",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "_card",
+              "defaultValue": ""
+            },
+            {
+              "name": "address",
+              "description": "Address is the postal address of the customer to be billed",
               "label": "",
-              "type": "PaymentCustomer",
-              "longType": "PaymentCustomer",
-              "fullType": "api.v1.PaymentCustomer",
+              "type": "Address",
+              "longType": "Address",
+              "fullType": "api.v1.Address",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "vat",
+              "description": "Vat which applies to the customer to be billed",
+              "label": "optional",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "_vat",
+              "defaultValue": ""
+            },
+            {
+              "name": "phone_number",
+              "description": "PhoneNumber of the customer to be billed",
+              "label": "optional",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "_phone_number",
               "defaultValue": ""
             }
           ]

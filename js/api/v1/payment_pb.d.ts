@@ -402,11 +402,41 @@ export type PaymentServiceCreateOrUpdateCustomerRequest = Message<"api.v1.Paymen
      */
     login: string;
     /**
-     * Customer is the customer to modify
+     * Name of the customer to be billed
      *
-     * @generated from field: api.v1.PaymentCustomer customer = 2;
+     * @generated from field: optional string name = 3;
      */
-    customer?: PaymentCustomer;
+    name?: string;
+    /**
+     * Email of the customer to be billed
+     *
+     * @generated from field: optional string email = 4;
+     */
+    email?: string;
+    /**
+     * Card the customer to be billed
+     *
+     * @generated from field: optional api.v1.Card card = 5;
+     */
+    card?: Card;
+    /**
+     * Address is the postal address of the customer to be billed
+     *
+     * @generated from field: api.v1.Address address = 6;
+     */
+    address?: Address;
+    /**
+     * Vat which applies to the customer to be billed
+     *
+     * @generated from field: optional string vat = 7;
+     */
+    vat?: string;
+    /**
+     * PhoneNumber of the customer to be billed
+     *
+     * @generated from field: optional string phone_number = 8;
+     */
+    phoneNumber?: string;
 };
 /**
  * Describes the message api.v1.PaymentServiceCreateOrUpdateCustomerRequest.
