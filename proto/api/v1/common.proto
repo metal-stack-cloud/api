@@ -14,6 +14,8 @@ enum OAuthProvider {
   O_AUTH_PROVIDER_AZURE = 2;
   // O_AUTH_PROVIDER_GOOGLE specifies google as oauth login provider
   O_AUTH_PROVIDER_GOOGLE = 3;
+  // O_AUTH_PROVIDER_EMAIL specifies email as oauth login provider with otp token login
+  O_AUTH_PROVIDER_EMAIL = 4;
 }
 
 // TenantRole specifies what role a logged in user needs to call this tenant scoped service

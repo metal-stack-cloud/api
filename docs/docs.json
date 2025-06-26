@@ -477,6 +477,11 @@
               "name": "O_AUTH_PROVIDER_GOOGLE",
               "number": "3",
               "description": "O_AUTH_PROVIDER_GOOGLE specifies google as oauth login provider"
+            },
+            {
+              "name": "O_AUTH_PROVIDER_EMAIL",
+              "number": "4",
+              "description": "O_AUTH_PROVIDER_EMAIL specifies email as oauth login provider with otp token login"
             }
           ]
         },
