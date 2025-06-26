@@ -408,33 +408,39 @@ export type PaymentServiceCreateOrUpdateCustomerRequest = Message<"api.v1.Paymen
      */
     name?: string;
     /**
+     * PaymentMethodId at the payment provider, the client receives this from the payment provider and passes it on to the api
+     *
+     * @generated from field: optional string payment_method_id = 4;
+     */
+    paymentMethodId?: string;
+    /**
      * Email of the customer to be billed
      *
-     * @generated from field: optional string email = 4;
+     * @generated from field: optional string email = 5;
      */
     email?: string;
     /**
      * Card the customer to be billed
      *
-     * @generated from field: optional api.v1.Card card = 5;
+     * @generated from field: optional api.v1.Card card = 6;
      */
     card?: Card;
     /**
      * Address is the postal address of the customer to be billed
      *
-     * @generated from field: api.v1.Address address = 6;
+     * @generated from field: api.v1.Address address = 7;
      */
     address?: Address;
     /**
      * Vat which applies to the customer to be billed
      *
-     * @generated from field: optional string vat = 7;
+     * @generated from field: optional string vat = 8;
      */
     vat?: string;
     /**
      * PhoneNumber of the customer to be billed
      *
-     * @generated from field: optional string phone_number = 8;
+     * @generated from field: optional string phone_number = 9;
      */
     phoneNumber?: string;
 };

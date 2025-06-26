@@ -3359,6 +3359,18 @@
               "defaultValue": ""
             },
             {
+              "name": "payment_method_id",
+              "description": "PaymentMethodId at the payment provider, the client receives this from the payment provider and passes it on to the api",
+              "label": "optional",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "_payment_method_id",
+              "defaultValue": ""
+            },
+            {
               "name": "email",
               "description": "Email of the customer to be billed",
               "label": "optional",
