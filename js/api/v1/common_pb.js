@@ -34,6 +34,12 @@ export var OAuthProvider;
      * @generated from enum value: O_AUTH_PROVIDER_GOOGLE = 3;
      */
     OAuthProvider[OAuthProvider["GOOGLE"] = 3] = "GOOGLE";
+    /**
+     * O_AUTH_PROVIDER_EMAIL specifies email as oauth login provider with otp token login
+     *
+     * @generated from enum value: O_AUTH_PROVIDER_EMAIL = 4;
+     */
+    OAuthProvider[OAuthProvider["EMAIL"] = 4] = "EMAIL";
 })(OAuthProvider || (OAuthProvider = {}));
 // Retrieve enum metadata with: proto3.getEnumType(OAuthProvider)
 proto3.util.setEnumType(OAuthProvider, "api.v1.OAuthProvider", [
@@ -41,6 +47,7 @@ proto3.util.setEnumType(OAuthProvider, "api.v1.OAuthProvider", [
     { no: 1, name: "O_AUTH_PROVIDER_GITHUB" },
     { no: 2, name: "O_AUTH_PROVIDER_AZURE" },
     { no: 3, name: "O_AUTH_PROVIDER_GOOGLE" },
+    { no: 4, name: "O_AUTH_PROVIDER_EMAIL" },
 ]);
 /**
  * TenantRole specifies what role a logged in user needs to call this tenant scoped service

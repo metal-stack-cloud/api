@@ -29,7 +29,13 @@ export declare enum OAuthProvider {
      *
      * @generated from enum value: O_AUTH_PROVIDER_GOOGLE = 3;
      */
-    GOOGLE = 3
+    GOOGLE = 3,
+    /**
+     * O_AUTH_PROVIDER_EMAIL specifies email as oauth login provider with otp token login
+     *
+     * @generated from enum value: O_AUTH_PROVIDER_EMAIL = 4;
+     */
+    EMAIL = 4
 }
 /**
  * TenantRole specifies what role a logged in user needs to call this tenant scoped service
