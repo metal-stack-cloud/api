@@ -736,84 +736,6 @@ export type PaymentServiceHasChargeableResourcesResponse = Message<"api.v1.Payme
  */
 export declare const PaymentServiceHasChargeableResourcesResponseSchema: GenMessage<PaymentServiceHasChargeableResourcesResponse>;
 /**
- * PayentServiceSetOnboardedRequest changes the onboarded status of the given customer
- *
- * @generated from message api.v1.PaymentServiceSetOnboardedRequest
- */
-export type PaymentServiceSetOnboardedRequest = Message<"api.v1.PaymentServiceSetOnboardedRequest"> & {
-    /**
-     * Login of the customer
-     *
-     * @generated from field: string login = 1;
-     */
-    login: string;
-    /**
-     * Onboarded indicates if the customer has seen the onboarde message
-     *
-     * @generated from field: bool onboarded = 2;
-     */
-    onboarded: boolean;
-};
-/**
- * Describes the message api.v1.PaymentServiceSetOnboardedRequest.
- * Use `create(PaymentServiceSetOnboardedRequestSchema)` to create a new message.
- */
-export declare const PaymentServiceSetOnboardedRequestSchema: GenMessage<PaymentServiceSetOnboardedRequest>;
-/**
- * PaymentServiceSetOnboardedResponse respond to the changed status of the given customer
- *
- * @generated from message api.v1.PaymentServiceSetOnboardedResponse
- */
-export type PaymentServiceSetOnboardedResponse = Message<"api.v1.PaymentServiceSetOnboardedResponse"> & {
-    /**
-     * Onboarded indicates if the customer has seen the onboarded message
-     *
-     * @generated from field: bool onboarded = 1;
-     */
-    onboarded: boolean;
-};
-/**
- * Describes the message api.v1.PaymentServiceSetOnboardedResponse.
- * Use `create(PaymentServiceSetOnboardedResponseSchema)` to create a new message.
- */
-export declare const PaymentServiceSetOnboardedResponseSchema: GenMessage<PaymentServiceSetOnboardedResponse>;
-/**
- * PaymentServiceGetOnboardedRequest check the onboarded status
- *
- * @generated from message api.v1.PaymentServiceGetOnboardedRequest
- */
-export type PaymentServiceGetOnboardedRequest = Message<"api.v1.PaymentServiceGetOnboardedRequest"> & {
-    /**
-     * Login of the customer
-     *
-     * @generated from field: string login = 1;
-     */
-    login: string;
-};
-/**
- * Describes the message api.v1.PaymentServiceGetOnboardedRequest.
- * Use `create(PaymentServiceGetOnboardedRequestSchema)` to create a new message.
- */
-export declare const PaymentServiceGetOnboardedRequestSchema: GenMessage<PaymentServiceGetOnboardedRequest>;
-/**
- * PaymentServiceGetOnboardedRequest returns the onboarded status
- *
- * @generated from message api.v1.PaymentServiceGetOnboardedResponse
- */
-export type PaymentServiceGetOnboardedResponse = Message<"api.v1.PaymentServiceGetOnboardedResponse"> & {
-    /**
-     * Onboarded indicates if the customer has seen the onboarded message
-     *
-     * @generated from field: bool onboarded = 1;
-     */
-    onboarded: boolean;
-};
-/**
- * Describes the message api.v1.PaymentServiceGetOnboardedResponse.
- * Use `create(PaymentServiceGetOnboardedResponseSchema)` to create a new message.
- */
-export declare const PaymentServiceGetOnboardedResponseSchema: GenMessage<PaymentServiceGetOnboardedResponse>;
-/**
  * ProductType defines for which type of product a price applies
  *
  * @generated from enum api.v1.ProductType
@@ -978,25 +900,5 @@ export declare const PaymentService: GenService<{
         methodKind: "unary";
         input: typeof PaymentServiceHasChargeableResourcesRequestSchema;
         output: typeof PaymentServiceHasChargeableResourcesResponseSchema;
-    };
-    /**
-     * SetOnboarded set the onboarded status
-     *
-     * @generated from rpc api.v1.PaymentService.SetOnboarded
-     */
-    setOnboarded: {
-        methodKind: "unary";
-        input: typeof PaymentServiceSetOnboardedRequestSchema;
-        output: typeof PaymentServiceSetOnboardedResponseSchema;
-    };
-    /**
-     * GetOnboarded get the onboarded status
-     *
-     * @generated from rpc api.v1.PaymentService.GetOnboarded
-     */
-    getOnboarded: {
-        methodKind: "unary";
-        input: typeof PaymentServiceGetOnboardedRequestSchema;
-        output: typeof PaymentServiceGetOnboardedResponseSchema;
     };
 }>;

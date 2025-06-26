@@ -74,7 +74,7 @@ These options specify the RBAC of the api-endpoint.
 |                |                                              | EDITOR      | admin editor                                           |
 |                |                                              | VIEWER      | admin viewer                                           |
 | VISIBILITY\_   | Specifies the visibility of the api-endpoint | UNSPECIFIED |                                                        |
-|                |                                              | PUBLIC      | api-method is visbile to public, a token is not needed |
+|                |                                              | PUBLIC      | api-method is visible to public, a token is not needed |
 |                |                                              | SELF        | api-method is scoped to owner resources                |
 
 > [!IMPORTANT]
