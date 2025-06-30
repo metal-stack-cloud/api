@@ -9,7 +9,7 @@ import (
 	apiv1 "github.com/metal-stack-cloud/api/go/api/v1"
 	"google.golang.org/protobuf/types/known/durationpb"
 
-	"github.com/bufbuild/protovalidate-go"
+	"buf.build/go/protovalidate"
 	"github.com/stretchr/testify/require"
 )
 

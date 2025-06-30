@@ -1,4 +1,4 @@
-import type { GenFile, GenMessage, GenService } from "@bufbuild/protobuf/codegenv1";
+import type { GenFile, GenMessage, GenService } from "@bufbuild/protobuf/codegenv2";
 import type { OAuthProvider } from "./common_pb";
 import type { Project } from "./project_pb";
 import type { Tenant } from "./tenant_pb";

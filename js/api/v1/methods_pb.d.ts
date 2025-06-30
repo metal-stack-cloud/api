@@ -1,4 +1,4 @@
-import type { GenFile, GenMessage, GenService } from "@bufbuild/protobuf/codegenv1";
+import type { GenFile, GenMessage, GenService } from "@bufbuild/protobuf/codegenv2";
 import type { AdminRole, ProjectRole, TenantRole } from "./common_pb";
 import type { MethodPermission } from "./token_pb";
 import type { Message } from "@bufbuild/protobuf";
