@@ -49,29 +49,29 @@ func GetServicePermissions() *ServicePermissions {
 	"{{ $key }}": {{ $value }} ,
 {{- end }}
 		},
-		Visibility: Visibility{
+		Scope: Scope{
 			Public:  map[string]bool{
-{{- range $key, $value := .Visibility.Public }}
+{{- range $key, $value := .Scope.Public }}
 	"{{ $key }}": {{ $value }} ,
 {{- end }}
 			},
 			Self:    map[string]bool{
-{{- range $key, $value := .Visibility.Self }}
+{{- range $key, $value := .Scope.Self }}
 	"{{ $key }}": {{ $value }} ,
 {{- end }}
 			},
 			Admin:    map[string]bool{
-{{- range $key, $value := .Visibility.Admin }}
+{{- range $key, $value := .Scope.Admin }}
 	"{{ $key }}": {{ $value }} ,
 {{- end }}
 			},
 			Tenant:    map[string]bool{
-{{- range $key, $value := .Visibility.Tenant }}
+{{- range $key, $value := .Scope.Tenant }}
 	"{{ $key }}": {{ $value }} ,
 {{- end }}
 			},
 			Project:    map[string]bool{
-{{- range $key, $value := .Visibility.Project }}
+{{- range $key, $value := .Scope.Project }}
 	"{{ $key }}": {{ $value }} ,
 {{- end }}
 			},
@@ -90,27 +90,27 @@ func GetServicePermissions() *ServicePermissions {
 }
 
 func IsPublicScope(req connect.AnyRequest) bool {
-	_, ok := GetServicePermissions().Visibility.Public[req.Spec().Procedure]
+	_, ok := GetServicePermissions().Scope.Public[req.Spec().Procedure]
 	return ok
 }
 
 func IsSelfScope(req connect.AnyRequest) bool {
-	_, ok := GetServicePermissions().Visibility.Self[req.Spec().Procedure]
+	_, ok := GetServicePermissions().Scope.Self[req.Spec().Procedure]
 	return ok
 }
 
 func IsAdminScope(req connect.AnyRequest) bool {
-	_, ok := GetServicePermissions().Visibility.Admin[req.Spec().Procedure]
+	_, ok := GetServicePermissions().Scope.Admin[req.Spec().Procedure]
 	return ok
 }
 
 func IsTenantScope(req connect.AnyRequest) bool {
-	_, ok := GetServicePermissions().Visibility.Tenant[req.Spec().Procedure]
+	_, ok := GetServicePermissions().Scope.Tenant[req.Spec().Procedure]
 	return ok
 }
 
 func IsProjectScope(req connect.AnyRequest) bool {
-	_, ok := GetServicePermissions().Visibility.Project[req.Spec().Procedure]
+	_, ok := GetServicePermissions().Scope.Project[req.Spec().Procedure]
 	return ok
 }
 
