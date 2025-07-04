@@ -2104,17 +2104,7 @@ const file_api_v1_tenant_proto_rawDesc = "" +
 	"\x0fsubscription_id\x18\x03 \x01(\tR\x0esubscriptionId\x12(\n" +
 	"\acoupons\x18\x04 \x03(\v2\x0e.api.v1.CouponR\acoupons\x12\x10\n" +
 	"\x03vat\x18\x05 \x01(\tR\x03vatB\x14\n" +
-	"\x12_payment_method_id\"\xf4\x01\n" +
-	"\x14PaymentDetailsUpdate\x12$\n" +
-	"\vcustomer_id\x18\x01 \x01(\tH\x00R\n" +
-	"customerId\x88\x01\x01\x12/\n" +
-	"\x11payment_method_id\x18\x02 \x01(\tH\x01R\x0fpaymentMethodId\x88\x01\x01\x12,\n" +
-	"\x0fsubscription_id\x18\x03 \x01(\tH\x02R\x0esubscriptionId\x88\x01\x01\x12\x15\n" +
-	"\x03vat\x18\x04 \x01(\tH\x03R\x03vat\x88\x01\x01B\x0e\n" +
-	"\f_customer_idB\x14\n" +
-	"\x12_payment_method_idB\x12\n" +
-	"\x10_subscription_idB\x06\n" +
-	"\x04_vat\"`\n" +
+	"\x12_payment_method_id\"`\n" +
 	"\x12TermsAndConditions\x12\x1a\n" +
 	"\baccepted\x18\x01 \x01(\bR\baccepted\x12.\n" +
 	"\x04when\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampR\x04when\"\x86\x01\n" +
@@ -2143,7 +2133,7 @@ const file_api_v1_tenant_proto_rawDesc = "" +
 	"\v_avatar_urlB\x0f\n" +
 	"\r_phone_number\"L\n" +
 	"\"TenantServiceCreateOrUpdateRequest\x12&\n" +
-	"\x06tenant\x18\x01 \x01(\v2\x0e.api.v1.TenantR\x06tenant\"\x86\x04\n" +
+	"\x06tenant\x18\x01 \x01(\v2\x0e.api.v1.TenantR\x06tenant\"\xbd\x03\n" +
 	"\x1aTenantServiceUpdateRequest\x12\x14\n" +
 	"\x05login\x18\x01 \x01(\tR\x05login\x12\"\n" +
 	"\x04name\x18\x02 \x01(\tB\t\xbaH\x06r\x04\x10\x02\x18@H\x00R\x04name\x88\x01\x01\x12\"\n" +
@@ -2151,18 +2141,16 @@ const file_api_v1_tenant_proto_rawDesc = "" +
 	"\vdescription\x18\x04 \x01(\tB\n" +
 	"\xbaH\ar\x05\x10\x02\x18\x80\x04H\x02R\vdescription\x88\x01\x01\x12\"\n" +
 	"\n" +
-	"avatar_url\x18\x05 \x01(\tH\x03R\tavatarUrl\x88\x01\x01\x12J\n" +
-	"\x0fpayment_details\x18\b \x01(\v2\x1c.api.v1.PaymentDetailsUpdateH\x04R\x0epaymentDetails\x88\x01\x01\x12W\n" +
-	"\x14terms_and_conditions\x18\t \x01(\v2 .api.v1.TermsAndConditionsUpdateH\x05R\x12termsAndConditions\x88\x01\x01\x12!\n" +
-	"\tonboarded\x18\r \x01(\bH\x06R\tonboarded\x88\x01\x01B\a\n" +
+	"avatar_url\x18\x05 \x01(\tH\x03R\tavatarUrl\x88\x01\x01\x12W\n" +
+	"\x14terms_and_conditions\x18\t \x01(\v2 .api.v1.TermsAndConditionsUpdateH\x04R\x12termsAndConditions\x88\x01\x01\x12!\n" +
+	"\tonboarded\x18\r \x01(\bH\x05R\tonboarded\x88\x01\x01B\a\n" +
 	"\x05_nameB\b\n" +
 	"\x06_emailB\x0e\n" +
 	"\f_descriptionB\r\n" +
-	"\v_avatar_urlB\x12\n" +
-	"\x10_payment_detailsB\x17\n" +
+	"\v_avatar_urlB\x17\n" +
 	"\x15_terms_and_conditionsB\f\n" +
 	"\n" +
-	"_onboarded\"2\n" +
+	"_onboardedJ\x04\b\b\x10\tR\x0fpayment_details\"2\n" +
 	"\x1aTenantServiceDeleteRequest\x12\x14\n" +
 	"\x05login\x18\x01 \x01(\tR\x05login\"\x7f\n" +
 	"\x18TenantServiceGetResponse\x12&\n" +
@@ -2210,7 +2198,15 @@ const file_api_v1_tenant_proto_rawDesc = "" +
 	"\tmember_id\x18\x02 \x01(\tR\bmemberId\x120\n" +
 	"\x04role\x18\x03 \x01(\x0e2\x12.api.v1.TenantRoleB\b\xbaH\x05\x82\x01\x02\x10\x01R\x04role\"^\n" +
 	"!TenantServiceUpdateMemberResponse\x129\n" +
-	"\rtenant_member\x18\x01 \x01(\v2\x14.api.v1.TenantMemberR\ftenantMember2\xc9\t\n" +
+	"\rtenant_member\x18\x01 \x01(\v2\x14.api.v1.TenantMemberR\ftenantMember\"\xd7\x01\n" +
+	"$TenantServiceRequestAdmissionRequest\x12\x14\n" +
+	"\x05login\x18\x01 \x01(\tR\x05login\x12\x12\n" +
+	"\x04name\x18\x02 \x01(\tR\x04name\x12\x1d\n" +
+	"\x05email\x18\x03 \x01(\tB\a\xbaH\x04r\x02`\x01R\x05email\x12A\n" +
+	"\x1daccepted_terms_and_conditions\x18\x04 \x01(\bR\x1aacceptedTermsAndConditions\x12#\n" +
+	"\remail_consent\x18\x05 \x01(\bR\femailConsent\"'\n" +
+	"%TenantServiceRequestAdmissionResponse2\xc6\n" +
+	"\n" +
 	"\rTenantService\x12[\n" +
 	"\x06Create\x12\".api.v1.TenantServiceCreateRequest\x1a#.api.v1.TenantServiceCreateResponse\"\b\xd8\xf3\x18\x03\xe8\xf3\x18\x01\x12U\n" +
 	"\x04List\x12 .api.v1.TenantServiceListRequest\x1a!.api.v1.TenantServiceListResponse\"\b\xd8\xf3\x18\x03\xe8\xf3\x18\x02\x12V\n" +
@@ -2225,7 +2221,9 @@ const file_api_v1_tenant_proto_rawDesc = "" +
 	"\fInviteAccept\x12(.api.v1.TenantServiceInviteAcceptRequest\x1a).api.v1.TenantServiceInviteAcceptResponse\"\b\xd8\xf3\x18\x03\xe8\xf3\x18\x01\x12n\n" +
 	"\fInviteDelete\x12(.api.v1.TenantServiceInviteDeleteRequest\x1a).api.v1.TenantServiceInviteDeleteResponse\"\t\xc2\xf3\x18\x01\x01\xe8\xf3\x18\x01\x12k\n" +
 	"\vInvitesList\x12'.api.v1.TenantServiceInvitesListRequest\x1a(.api.v1.TenantServiceInvitesListResponse\"\t\xc2\xf3\x18\x01\x01\xe8\xf3\x18\x02\x12d\n" +
-	"\tInviteGet\x12%.api.v1.TenantServiceInviteGetRequest\x1a&.api.v1.TenantServiceInviteGetResponse\"\b\xd8\xf3\x18\x03\xe8\xf3\x18\x02B\x84\x01\n" +
+	"\tInviteGet\x12%.api.v1.TenantServiceInviteGetRequest\x1a&.api.v1.TenantServiceInviteGetResponse\"\b\xd8\xf3\x18\x03\xe8\xf3\x18\x02\x12{\n" +
+	"\x10RequestAdmission\x12,.api.v1.TenantServiceRequestAdmissionRequest\x1a-.api.v1.TenantServiceRequestAdmissionResponse\"\n" +
+	"\xc2\xf3\x18\x02\x01\x02\xe8\xf3\x18\x02B\x84\x01\n" +
 	"\n" +
 	"com.api.v1B\vTenantProtoP\x01Z0github.com/metal-stack-cloud/api/go/api/v1;apiv1\xa2\x02\x03AXX\xaa\x02\x06Api.V1\xca\x02\x06Api\\V1\xe2\x02\x12Api\\V1\\GPBMetadata\xea\x02\aApi::V1b\x06proto3"
 

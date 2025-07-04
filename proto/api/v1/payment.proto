@@ -218,6 +218,8 @@ message Coupon {
 message PaymentServiceCreateOrUpdateCustomerRequest {
   reserved 2;
   reserved "customer";
+  reserved 3;
+  reserved "accepted_terms_and_conditions";
 
   // Login of the customer
   string login = 1 [(buf.validate.field).string = {
@@ -226,19 +228,19 @@ message PaymentServiceCreateOrUpdateCustomerRequest {
   }];
 
   // Name of the customer to be billed
-  optional string name = 3;
+  optional string name = 4;
   // PaymentMethodId at the payment provider, the client receives this from the payment provider and passes it on to the api
-  optional string payment_method_id = 4;
+  optional string payment_method_id = 5;
   // Email of the customer to be billed
-  optional string email = 5 [(buf.validate.field).string.email = true];
+  optional string email = 6 [(buf.validate.field).string.email = true];
   // Card the customer to be billed
-  optional Card card = 6;
+  optional Card card = 7;
   // Address is the postal address of the customer to be billed
-  Address address = 7;
+  Address address = 8;
   // Vat which applies to the customer to be billed
-  optional string vat = 8;
+  optional string vat = 9;
   // PhoneNumber of the customer to be billed
-  optional string phone_number = 9;
+  optional string phone_number = 10;
 }
 
 // PaymentServiceCreateOrUpdateCustomerResponse is the response payload for a payment create or update customer request
