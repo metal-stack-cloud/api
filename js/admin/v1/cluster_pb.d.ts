@@ -1,4 +1,4 @@
-import type { GenFile, GenMessage, GenService } from "@bufbuild/protobuf/codegenv1";
+import type { GenFile, GenMessage, GenService } from "@bufbuild/protobuf/codegenv2";
 import type { Machine, VPN } from "./machine_pb";
 import type { Cluster } from "../../api/v1/cluster_pb";
 import type { Duration } from "@bufbuild/protobuf/wkt";

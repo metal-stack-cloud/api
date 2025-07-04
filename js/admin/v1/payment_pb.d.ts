@@ -1,4 +1,4 @@
-import type { GenFile, GenMessage, GenService } from "@bufbuild/protobuf/codegenv1";
+import type { GenFile, GenMessage, GenService } from "@bufbuild/protobuf/codegenv2";
 import type { Coupon, PaymentCustomer } from "../../api/v1/payment_pb";
 import type { Message } from "@bufbuild/protobuf";
 /**

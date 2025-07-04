@@ -5,7 +5,7 @@ import (
 
 	apiv1 "github.com/metal-stack-cloud/api/go/api/v1"
 
-	"github.com/bufbuild/protovalidate-go"
+	"buf.build/go/protovalidate"
 	"github.com/stretchr/testify/require"
 )
 

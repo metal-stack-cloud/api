@@ -1,4 +1,4 @@
-import type { GenEnum, GenExtension, GenFile, GenMessage } from "@bufbuild/protobuf/codegenv1";
+import type { GenEnum, GenExtension, GenFile, GenMessage } from "@bufbuild/protobuf/codegenv2";
 import type { Duration, FieldDescriptorProto_Type, FieldOptions, MessageOptions, OneofOptions, Timestamp } from "@bufbuild/protobuf/wkt";
 import type { Message } from "@bufbuild/protobuf";
 /**
@@ -6,10 +6,10 @@ import type { Message } from "@bufbuild/protobuf";
  */
 export declare const file_buf_validate_validate: GenFile;
 /**
- * `Constraint` represents a validation rule written in the Common Expression
- * Language (CEL) syntax. Each Constraint includes a unique identifier, an
+ * `Rule` represents a validation rule written in the Common Expression
+ * Language (CEL) syntax. Each Rule includes a unique identifier, an
  * optional error message, and the CEL expression to evaluate. For more
- * information on CEL, [see our documentation](https://github.com/bufbuild/protovalidate/blob/main/docs/cel.md).
+ * information, [see our documentation](https://buf.build/docs/protovalidate/schemas/custom-rules/).
  *
  * ```proto
  * message Foo {
@@ -22,11 +22,11 @@ export declare const file_buf_validate_validate: GenFile;
  * }
  * ```
  *
- * @generated from message buf.validate.Constraint
+ * @generated from message buf.validate.Rule
  */
-export type Constraint = Message<"buf.validate.Constraint"> & {
+export type Rule = Message<"buf.validate.Rule"> & {
     /**
-     * `id` is a string that serves as a machine-readable name for this Constraint.
+     * `id` is a string that serves as a machine-readable name for this Rule.
      * It should be unique within its scope, which could be either a message or a field.
      *
      * @generated from field: optional string id = 1;
@@ -34,7 +34,7 @@ export type Constraint = Message<"buf.validate.Constraint"> & {
     id: string;
     /**
      * `message` is an optional field that provides a human-readable error message
-     * for this Constraint when the CEL expression evaluates to false. If a
+     * for this Rule when the CEL expression evaluates to false. If a
      * non-empty message is provided, any strings resulting from the CEL
      * expression evaluation are ignored.
      *
@@ -52,17 +52,17 @@ export type Constraint = Message<"buf.validate.Constraint"> & {
     expression: string;
 };
 /**
- * Describes the message buf.validate.Constraint.
- * Use `create(ConstraintSchema)` to create a new message.
+ * Describes the message buf.validate.Rule.
+ * Use `create(RuleSchema)` to create a new message.
  */
-export declare const ConstraintSchema: GenMessage<Constraint>;
+export declare const RuleSchema: GenMessage<Rule>;
 /**
- * MessageConstraints represents validation rules that are applied to the entire message.
- * It includes disabling options and a list of Constraint messages representing Common Expression Language (CEL) validation rules.
+ * MessageRules represents validation rules that are applied to the entire message.
+ * It includes disabling options and a list of Rule messages representing Common Expression Language (CEL) validation rules.
  *
- * @generated from message buf.validate.MessageConstraints
+ * @generated from message buf.validate.MessageRules
  */
-export type MessageConstraints = Message<"buf.validate.MessageConstraints"> & {
+export type MessageRules = Message<"buf.validate.MessageRules"> & {
     /**
      * `disabled` is a boolean flag that, when set to true, nullifies any validation rules for this message.
      * This includes any fields within the message that would otherwise support validation.
@@ -78,9 +78,9 @@ export type MessageConstraints = Message<"buf.validate.MessageConstraints"> & {
      */
     disabled: boolean;
     /**
-     * `cel` is a repeated field of type Constraint. Each Constraint specifies a validation rule to be applied to this message.
-     * These constraints are written in Common Expression Language (CEL) syntax. For more information on
-     * CEL, [see our documentation](https://github.com/bufbuild/protovalidate/blob/main/docs/cel.md).
+     * `cel` is a repeated field of type Rule. Each Rule specifies a validation rule to be applied to this message.
+     * These rules are written in Common Expression Language (CEL) syntax. For more information,
+     * [see our documentation](https://buf.build/docs/protovalidate/schemas/custom-rules/).
      *
      *
      * ```proto
@@ -95,26 +95,89 @@ export type MessageConstraints = Message<"buf.validate.MessageConstraints"> & {
      * }
      * ```
      *
-     * @generated from field: repeated buf.validate.Constraint cel = 3;
+     * @generated from field: repeated buf.validate.Rule cel = 3;
      */
-    cel: Constraint[];
+    cel: Rule[];
+    /**
+     * `oneof` is a repeated field of type MessageOneofRule that specifies a list of fields
+     * of which at most one can be present. If `required` is also specified, then exactly one
+     * of the specified fields _must_ be present.
+     *
+     * This will enforce oneof-like constraints with a few features not provided by
+     * actual Protobuf oneof declarations:
+     *   1. Repeated and map fields are allowed in this validation. In a Protobuf oneof,
+     *      only scalar fields are allowed.
+     *   2. Fields with implicit presence are allowed. In a Protobuf oneof, all member
+     *      fields have explicit presence. This means that, for the purpose of determining
+     *      how many fields are set, explicitly setting such a field to its zero value is
+     *      effectively the same as not setting it at all.
+     *   3. This will always generate validation errors for a message unmarshalled from
+     *      serialized data that sets more than one field. With a Protobuf oneof, when
+     *      multiple fields are present in the serialized form, earlier values are usually
+     *      silently ignored when unmarshalling, with only the last field being set when
+     *      unmarshalling completes.
+     *
+     * Note that adding a field to a `oneof` will also set the IGNORE_IF_UNPOPULATED on the fields. This means
+     * only the field that is set will be validated and the unset fields are not validated according to the field rules.
+     * This behavior can be overridden by setting `ignore` against a field.
+     *
+     * ```proto
+     * message MyMessage {
+     *   // Only one of `field1` or `field2` _can_ be present in this message.
+     *   option (buf.validate.message).oneof = { fields: ["field1", "field2"] };
+     *   // Exactly one of `field3` or `field4` _must_ be present in this message.
+     *   option (buf.validate.message).oneof = { fields: ["field3", "field4"], required: true };
+     *   string field1 = 1;
+     *   bytes field2 = 2;
+     *   bool field3 = 3;
+     *   int32 field4 = 4;
+     * }
+     * ```
+     *
+     * @generated from field: repeated buf.validate.MessageOneofRule oneof = 4;
+     */
+    oneof: MessageOneofRule[];
 };
 /**
- * Describes the message buf.validate.MessageConstraints.
- * Use `create(MessageConstraintsSchema)` to create a new message.
+ * Describes the message buf.validate.MessageRules.
+ * Use `create(MessageRulesSchema)` to create a new message.
  */
-export declare const MessageConstraintsSchema: GenMessage<MessageConstraints>;
+export declare const MessageRulesSchema: GenMessage<MessageRules>;
 /**
- * The `OneofConstraints` message type enables you to manage constraints for
+ * @generated from message buf.validate.MessageOneofRule
+ */
+export type MessageOneofRule = Message<"buf.validate.MessageOneofRule"> & {
+    /**
+     * A list of field names to include in the oneof. All field names must be
+     * defined in the message. At least one field must be specified, and
+     * duplicates are not permitted.
+     *
+     * @generated from field: repeated string fields = 1;
+     */
+    fields: string[];
+    /**
+     * If true, one of the fields specified _must_ be set.
+     *
+     * @generated from field: optional bool required = 2;
+     */
+    required: boolean;
+};
+/**
+ * Describes the message buf.validate.MessageOneofRule.
+ * Use `create(MessageOneofRuleSchema)` to create a new message.
+ */
+export declare const MessageOneofRuleSchema: GenMessage<MessageOneofRule>;
+/**
+ * The `OneofRules` message type enables you to manage rules for
  * oneof fields in your protobuf messages.
  *
- * @generated from message buf.validate.OneofConstraints
+ * @generated from message buf.validate.OneofRules
  */
-export type OneofConstraints = Message<"buf.validate.OneofConstraints"> & {
+export type OneofRules = Message<"buf.validate.OneofRules"> & {
     /**
      * If `required` is true, exactly one field of the oneof must be present. A
      * validation error is returned if no fields in the oneof are present. The
-     * field itself may still be a default value; further constraints
+     * field itself may still be a default value; further rules
      * should be placed on the fields themselves to ensure they are valid values,
      * such as `min_len` or `gt`.
      *
@@ -135,21 +198,21 @@ export type OneofConstraints = Message<"buf.validate.OneofConstraints"> & {
     required: boolean;
 };
 /**
- * Describes the message buf.validate.OneofConstraints.
- * Use `create(OneofConstraintsSchema)` to create a new message.
+ * Describes the message buf.validate.OneofRules.
+ * Use `create(OneofRulesSchema)` to create a new message.
  */
-export declare const OneofConstraintsSchema: GenMessage<OneofConstraints>;
+export declare const OneofRulesSchema: GenMessage<OneofRules>;
 /**
- * FieldConstraints encapsulates the rules for each type of field. Depending on
+ * FieldRules encapsulates the rules for each type of field. Depending on
  * the field, the correct set should be used to ensure proper validations.
  *
- * @generated from message buf.validate.FieldConstraints
+ * @generated from message buf.validate.FieldRules
  */
-export type FieldConstraints = Message<"buf.validate.FieldConstraints"> & {
+export type FieldRules = Message<"buf.validate.FieldRules"> & {
     /**
      * `cel` is a repeated field used to represent a textual expression
-     * in the Common Expression Language (CEL) syntax. For more information on
-     * CEL, [see our documentation](https://github.com/bufbuild/protovalidate/blob/main/docs/cel.md).
+     * in the Common Expression Language (CEL) syntax. For more information,
+     * [see our documentation](https://buf.build/docs/protovalidate/schemas/custom-rules/).
      *
      * ```proto
      * message MyMessage {
@@ -162,9 +225,9 @@ export type FieldConstraints = Message<"buf.validate.FieldConstraints"> & {
      * }
      * ```
      *
-     * @generated from field: repeated buf.validate.Constraint cel = 23;
+     * @generated from field: repeated buf.validate.Rule cel = 23;
      */
-    cel: Constraint[];
+    cel: Rule[];
     /**
      * If `required` is true, the field must be populated. A populated field can be
      * described as "serialized in the wire format," which includes:
@@ -176,6 +239,7 @@ export type FieldConstraints = Message<"buf.validate.FieldConstraints"> & {
      *   - proto2 scalar fields (both optional and required)
      * - proto3 scalar fields must be non-zero to be considered populated
      * - repeated and map fields must be non-empty to be considered populated
+     * - map keys/values and repeated items are always considered populated
      *
      * ```proto
      * message MyMessage {
@@ -206,7 +270,7 @@ export type FieldConstraints = Message<"buf.validate.FieldConstraints"> & {
      */
     ignore: Ignore;
     /**
-     * @generated from oneof buf.validate.FieldConstraints.type
+     * @generated from oneof buf.validate.FieldRules.type
      */
     type: {
         /**
@@ -346,21 +410,21 @@ export type FieldConstraints = Message<"buf.validate.FieldConstraints"> & {
     };
 };
 /**
- * Describes the message buf.validate.FieldConstraints.
- * Use `create(FieldConstraintsSchema)` to create a new message.
+ * Describes the message buf.validate.FieldRules.
+ * Use `create(FieldRulesSchema)` to create a new message.
  */
-export declare const FieldConstraintsSchema: GenMessage<FieldConstraints>;
+export declare const FieldRulesSchema: GenMessage<FieldRules>;
 /**
- * PredefinedConstraints are custom constraints that can be re-used with
+ * PredefinedRules are custom rules that can be re-used with
  * multiple fields.
  *
- * @generated from message buf.validate.PredefinedConstraints
+ * @generated from message buf.validate.PredefinedRules
  */
-export type PredefinedConstraints = Message<"buf.validate.PredefinedConstraints"> & {
+export type PredefinedRules = Message<"buf.validate.PredefinedRules"> & {
     /**
      * `cel` is a repeated field used to represent a textual expression
-     * in the Common Expression Language (CEL) syntax. For more information on
-     * CEL, [see our documentation](https://github.com/bufbuild/protovalidate/blob/main/docs/cel.md).
+     * in the Common Expression Language (CEL) syntax. For more information,
+     * [see our documentation](https://buf.build/docs/protovalidate/schemas/predefined-rules/).
      *
      * ```proto
      * message MyMessage {
@@ -373,17 +437,17 @@ export type PredefinedConstraints = Message<"buf.validate.PredefinedConstraints"
      * }
      * ```
      *
-     * @generated from field: repeated buf.validate.Constraint cel = 1;
+     * @generated from field: repeated buf.validate.Rule cel = 1;
      */
-    cel: Constraint[];
+    cel: Rule[];
 };
 /**
- * Describes the message buf.validate.PredefinedConstraints.
- * Use `create(PredefinedConstraintsSchema)` to create a new message.
+ * Describes the message buf.validate.PredefinedRules.
+ * Use `create(PredefinedRulesSchema)` to create a new message.
  */
-export declare const PredefinedConstraintsSchema: GenMessage<PredefinedConstraints>;
+export declare const PredefinedRulesSchema: GenMessage<PredefinedRules>;
 /**
- * FloatRules describes the constraints applied to `float` values. These
+ * FloatRules describes the rules applied to `float` values. These
  * rules may also be applied to the `google.protobuf.FloatValue` Well-Known-Type.
  *
  * @generated from message buf.validate.FloatRules
@@ -509,7 +573,7 @@ export type FloatRules = Message<"buf.validate.FloatRules"> & {
      * ```proto
      * message MyFloat {
      *   // value must be in list [1.0, 2.0, 3.0]
-     *   repeated float value = 1 (buf.validate.field).float = { in: [1.0, 2.0, 3.0] };
+     *   float value = 1 [(buf.validate.field).float = { in: [1.0, 2.0, 3.0] }];
      * }
      * ```
      *
@@ -524,7 +588,7 @@ export type FloatRules = Message<"buf.validate.FloatRules"> & {
      * ```proto
      * message MyFloat {
      *   // value must not be in list [1.0, 2.0, 3.0]
-     *   repeated float value = 1 (buf.validate.field).float = { not_in: [1.0, 2.0, 3.0] };
+     *   float value = 1 [(buf.validate.field).float = { not_in: [1.0, 2.0, 3.0] }];
      * }
      * ```
      *
@@ -540,14 +604,14 @@ export type FloatRules = Message<"buf.validate.FloatRules"> & {
     finite: boolean;
     /**
      * `example` specifies values that the field may have. These values SHOULD
-     * conform to other constraints. `example` values will not impact validation
+     * conform to other rules. `example` values will not impact validation
      * but may be used as helpful guidance on how to populate the given field.
      *
      * ```proto
      * message MyFloat {
      *   float value = 1 [
      *     (buf.validate.field).float.example = 1.0,
-     *     (buf.validate.field).float.example = "Infinity"
+     *     (buf.validate.field).float.example = inf
      *   ];
      * }
      * ```
@@ -562,7 +626,7 @@ export type FloatRules = Message<"buf.validate.FloatRules"> & {
  */
 export declare const FloatRulesSchema: GenMessage<FloatRules>;
 /**
- * DoubleRules describes the constraints applied to `double` values. These
+ * DoubleRules describes the rules applied to `double` values. These
  * rules may also be applied to the `google.protobuf.DoubleValue` Well-Known-Type.
  *
  * @generated from message buf.validate.DoubleRules
@@ -688,7 +752,7 @@ export type DoubleRules = Message<"buf.validate.DoubleRules"> & {
      * ```proto
      * message MyDouble {
      *   // value must be in list [1.0, 2.0, 3.0]
-     *   repeated double value = 1 (buf.validate.field).double = { in: [1.0, 2.0, 3.0] };
+     *   double value = 1 [(buf.validate.field).double = { in: [1.0, 2.0, 3.0] }];
      * }
      * ```
      *
@@ -703,7 +767,7 @@ export type DoubleRules = Message<"buf.validate.DoubleRules"> & {
      * ```proto
      * message MyDouble {
      *   // value must not be in list [1.0, 2.0, 3.0]
-     *   repeated double value = 1 (buf.validate.field).double = { not_in: [1.0, 2.0, 3.0] };
+     *   double value = 1 [(buf.validate.field).double = { not_in: [1.0, 2.0, 3.0] }];
      * }
      * ```
      *
@@ -719,14 +783,14 @@ export type DoubleRules = Message<"buf.validate.DoubleRules"> & {
     finite: boolean;
     /**
      * `example` specifies values that the field may have. These values SHOULD
-     * conform to other constraints. `example` values will not impact validation
+     * conform to other rules. `example` values will not impact validation
      * but may be used as helpful guidance on how to populate the given field.
      *
      * ```proto
      * message MyDouble {
      *   double value = 1 [
      *     (buf.validate.field).double.example = 1.0,
-     *     (buf.validate.field).double.example = "Infinity"
+     *     (buf.validate.field).double.example = inf
      *   ];
      * }
      * ```
@@ -741,7 +805,7 @@ export type DoubleRules = Message<"buf.validate.DoubleRules"> & {
  */
 export declare const DoubleRulesSchema: GenMessage<DoubleRules>;
 /**
- * Int32Rules describes the constraints applied to `int32` values. These
+ * Int32Rules describes the rules applied to `int32` values. These
  * rules may also be applied to the `google.protobuf.Int32Value` Well-Known-Type.
  *
  * @generated from message buf.validate.Int32Rules
@@ -867,7 +931,7 @@ export type Int32Rules = Message<"buf.validate.Int32Rules"> & {
      * ```proto
      * message MyInt32 {
      *   // value must be in list [1, 2, 3]
-     *   repeated int32 value = 1 (buf.validate.field).int32 = { in: [1, 2, 3] };
+     *   int32 value = 1 [(buf.validate.field).int32 = { in: [1, 2, 3] }];
      * }
      * ```
      *
@@ -882,7 +946,7 @@ export type Int32Rules = Message<"buf.validate.Int32Rules"> & {
      * ```proto
      * message MyInt32 {
      *   // value must not be in list [1, 2, 3]
-     *   repeated int32 value = 1 (buf.validate.field).int32 = { not_in: [1, 2, 3] };
+     *   int32 value = 1 [(buf.validate.field).int32 = { not_in: [1, 2, 3] }];
      * }
      * ```
      *
@@ -891,7 +955,7 @@ export type Int32Rules = Message<"buf.validate.Int32Rules"> & {
     notIn: number[];
     /**
      * `example` specifies values that the field may have. These values SHOULD
-     * conform to other constraints. `example` values will not impact validation
+     * conform to other rules. `example` values will not impact validation
      * but may be used as helpful guidance on how to populate the given field.
      *
      * ```proto
@@ -913,7 +977,7 @@ export type Int32Rules = Message<"buf.validate.Int32Rules"> & {
  */
 export declare const Int32RulesSchema: GenMessage<Int32Rules>;
 /**
- * Int64Rules describes the constraints applied to `int64` values. These
+ * Int64Rules describes the rules applied to `int64` values. These
  * rules may also be applied to the `google.protobuf.Int64Value` Well-Known-Type.
  *
  * @generated from message buf.validate.Int64Rules
@@ -1039,7 +1103,7 @@ export type Int64Rules = Message<"buf.validate.Int64Rules"> & {
      * ```proto
      * message MyInt64 {
      *   // value must be in list [1, 2, 3]
-     *   repeated int64 value = 1 (buf.validate.field).int64 = { in: [1, 2, 3] };
+     *   int64 value = 1 [(buf.validate.field).int64 = { in: [1, 2, 3] }];
      * }
      * ```
      *
@@ -1054,7 +1118,7 @@ export type Int64Rules = Message<"buf.validate.Int64Rules"> & {
      * ```proto
      * message MyInt64 {
      *   // value must not be in list [1, 2, 3]
-     *   repeated int64 value = 1 (buf.validate.field).int64 = { not_in: [1, 2, 3] };
+     *   int64 value = 1 [(buf.validate.field).int64 = { not_in: [1, 2, 3] }];
      * }
      * ```
      *
@@ -1063,7 +1127,7 @@ export type Int64Rules = Message<"buf.validate.Int64Rules"> & {
     notIn: bigint[];
     /**
      * `example` specifies values that the field may have. These values SHOULD
-     * conform to other constraints. `example` values will not impact validation
+     * conform to other rules. `example` values will not impact validation
      * but may be used as helpful guidance on how to populate the given field.
      *
      * ```proto
@@ -1085,7 +1149,7 @@ export type Int64Rules = Message<"buf.validate.Int64Rules"> & {
  */
 export declare const Int64RulesSchema: GenMessage<Int64Rules>;
 /**
- * UInt32Rules describes the constraints applied to `uint32` values. These
+ * UInt32Rules describes the rules applied to `uint32` values. These
  * rules may also be applied to the `google.protobuf.UInt32Value` Well-Known-Type.
  *
  * @generated from message buf.validate.UInt32Rules
@@ -1211,7 +1275,7 @@ export type UInt32Rules = Message<"buf.validate.UInt32Rules"> & {
      * ```proto
      * message MyUInt32 {
      *   // value must be in list [1, 2, 3]
-     *   repeated uint32 value = 1 (buf.validate.field).uint32 = { in: [1, 2, 3] };
+     *   uint32 value = 1 [(buf.validate.field).uint32 = { in: [1, 2, 3] }];
      * }
      * ```
      *
@@ -1226,7 +1290,7 @@ export type UInt32Rules = Message<"buf.validate.UInt32Rules"> & {
      * ```proto
      * message MyUInt32 {
      *   // value must not be in list [1, 2, 3]
-     *   repeated uint32 value = 1 (buf.validate.field).uint32 = { not_in: [1, 2, 3] };
+     *   uint32 value = 1 [(buf.validate.field).uint32 = { not_in: [1, 2, 3] }];
      * }
      * ```
      *
@@ -1235,7 +1299,7 @@ export type UInt32Rules = Message<"buf.validate.UInt32Rules"> & {
     notIn: number[];
     /**
      * `example` specifies values that the field may have. These values SHOULD
-     * conform to other constraints. `example` values will not impact validation
+     * conform to other rules. `example` values will not impact validation
      * but may be used as helpful guidance on how to populate the given field.
      *
      * ```proto
@@ -1257,7 +1321,7 @@ export type UInt32Rules = Message<"buf.validate.UInt32Rules"> & {
  */
 export declare const UInt32RulesSchema: GenMessage<UInt32Rules>;
 /**
- * UInt64Rules describes the constraints applied to `uint64` values. These
+ * UInt64Rules describes the rules applied to `uint64` values. These
  * rules may also be applied to the `google.protobuf.UInt64Value` Well-Known-Type.
  *
  * @generated from message buf.validate.UInt64Rules
@@ -1383,7 +1447,7 @@ export type UInt64Rules = Message<"buf.validate.UInt64Rules"> & {
      * ```proto
      * message MyUInt64 {
      *   // value must be in list [1, 2, 3]
-     *   repeated uint64 value = 1 (buf.validate.field).uint64 = { in: [1, 2, 3] };
+     *   uint64 value = 1 [(buf.validate.field).uint64 = { in: [1, 2, 3] }];
      * }
      * ```
      *
@@ -1398,7 +1462,7 @@ export type UInt64Rules = Message<"buf.validate.UInt64Rules"> & {
      * ```proto
      * message MyUInt64 {
      *   // value must not be in list [1, 2, 3]
-     *   repeated uint64 value = 1 (buf.validate.field).uint64 = { not_in: [1, 2, 3] };
+     *   uint64 value = 1 [(buf.validate.field).uint64 = { not_in: [1, 2, 3] }];
      * }
      * ```
      *
@@ -1407,7 +1471,7 @@ export type UInt64Rules = Message<"buf.validate.UInt64Rules"> & {
     notIn: bigint[];
     /**
      * `example` specifies values that the field may have. These values SHOULD
-     * conform to other constraints. `example` values will not impact validation
+     * conform to other rules. `example` values will not impact validation
      * but may be used as helpful guidance on how to populate the given field.
      *
      * ```proto
@@ -1429,7 +1493,7 @@ export type UInt64Rules = Message<"buf.validate.UInt64Rules"> & {
  */
 export declare const UInt64RulesSchema: GenMessage<UInt64Rules>;
 /**
- * SInt32Rules describes the constraints applied to `sint32` values.
+ * SInt32Rules describes the rules applied to `sint32` values.
  *
  * @generated from message buf.validate.SInt32Rules
  */
@@ -1554,7 +1618,7 @@ export type SInt32Rules = Message<"buf.validate.SInt32Rules"> & {
      * ```proto
      * message MySInt32 {
      *   // value must be in list [1, 2, 3]
-     *   repeated sint32 value = 1 (buf.validate.field).sint32 = { in: [1, 2, 3] };
+     *   sint32 value = 1 [(buf.validate.field).sint32 = { in: [1, 2, 3] }];
      * }
      * ```
      *
@@ -1569,7 +1633,7 @@ export type SInt32Rules = Message<"buf.validate.SInt32Rules"> & {
      * ```proto
      * message MySInt32 {
      *   // value must not be in list [1, 2, 3]
-     *   repeated sint32 value = 1 (buf.validate.field).sint32 = { not_in: [1, 2, 3] };
+     *   sint32 value = 1 [(buf.validate.field).sint32 = { not_in: [1, 2, 3] }];
      * }
      * ```
      *
@@ -1578,7 +1642,7 @@ export type SInt32Rules = Message<"buf.validate.SInt32Rules"> & {
     notIn: number[];
     /**
      * `example` specifies values that the field may have. These values SHOULD
-     * conform to other constraints. `example` values will not impact validation
+     * conform to other rules. `example` values will not impact validation
      * but may be used as helpful guidance on how to populate the given field.
      *
      * ```proto
@@ -1600,7 +1664,7 @@ export type SInt32Rules = Message<"buf.validate.SInt32Rules"> & {
  */
 export declare const SInt32RulesSchema: GenMessage<SInt32Rules>;
 /**
- * SInt64Rules describes the constraints applied to `sint64` values.
+ * SInt64Rules describes the rules applied to `sint64` values.
  *
  * @generated from message buf.validate.SInt64Rules
  */
@@ -1725,7 +1789,7 @@ export type SInt64Rules = Message<"buf.validate.SInt64Rules"> & {
      * ```proto
      * message MySInt64 {
      *   // value must be in list [1, 2, 3]
-     *   repeated sint64 value = 1 (buf.validate.field).sint64 = { in: [1, 2, 3] };
+     *   sint64 value = 1 [(buf.validate.field).sint64 = { in: [1, 2, 3] }];
      * }
      * ```
      *
@@ -1740,7 +1804,7 @@ export type SInt64Rules = Message<"buf.validate.SInt64Rules"> & {
      * ```proto
      * message MySInt64 {
      *   // value must not be in list [1, 2, 3]
-     *   repeated sint64 value = 1 (buf.validate.field).sint64 = { not_in: [1, 2, 3] };
+     *   sint64 value = 1 [(buf.validate.field).sint64 = { not_in: [1, 2, 3] }];
      * }
      * ```
      *
@@ -1749,7 +1813,7 @@ export type SInt64Rules = Message<"buf.validate.SInt64Rules"> & {
     notIn: bigint[];
     /**
      * `example` specifies values that the field may have. These values SHOULD
-     * conform to other constraints. `example` values will not impact validation
+     * conform to other rules. `example` values will not impact validation
      * but may be used as helpful guidance on how to populate the given field.
      *
      * ```proto
@@ -1771,7 +1835,7 @@ export type SInt64Rules = Message<"buf.validate.SInt64Rules"> & {
  */
 export declare const SInt64RulesSchema: GenMessage<SInt64Rules>;
 /**
- * Fixed32Rules describes the constraints applied to `fixed32` values.
+ * Fixed32Rules describes the rules applied to `fixed32` values.
  *
  * @generated from message buf.validate.Fixed32Rules
  */
@@ -1896,7 +1960,7 @@ export type Fixed32Rules = Message<"buf.validate.Fixed32Rules"> & {
      * ```proto
      * message MyFixed32 {
      *   // value must be in list [1, 2, 3]
-     *   repeated fixed32 value = 1 (buf.validate.field).fixed32 = { in: [1, 2, 3] };
+     *   fixed32 value = 1 [(buf.validate.field).fixed32 = { in: [1, 2, 3] }];
      * }
      * ```
      *
@@ -1911,7 +1975,7 @@ export type Fixed32Rules = Message<"buf.validate.Fixed32Rules"> & {
      * ```proto
      * message MyFixed32 {
      *   // value must not be in list [1, 2, 3]
-     *   repeated fixed32 value = 1 (buf.validate.field).fixed32 = { not_in: [1, 2, 3] };
+     *   fixed32 value = 1 [(buf.validate.field).fixed32 = { not_in: [1, 2, 3] }];
      * }
      * ```
      *
@@ -1920,7 +1984,7 @@ export type Fixed32Rules = Message<"buf.validate.Fixed32Rules"> & {
     notIn: number[];
     /**
      * `example` specifies values that the field may have. These values SHOULD
-     * conform to other constraints. `example` values will not impact validation
+     * conform to other rules. `example` values will not impact validation
      * but may be used as helpful guidance on how to populate the given field.
      *
      * ```proto
@@ -1942,7 +2006,7 @@ export type Fixed32Rules = Message<"buf.validate.Fixed32Rules"> & {
  */
 export declare const Fixed32RulesSchema: GenMessage<Fixed32Rules>;
 /**
- * Fixed64Rules describes the constraints applied to `fixed64` values.
+ * Fixed64Rules describes the rules applied to `fixed64` values.
  *
  * @generated from message buf.validate.Fixed64Rules
  */
@@ -2067,7 +2131,7 @@ export type Fixed64Rules = Message<"buf.validate.Fixed64Rules"> & {
      * ```proto
      * message MyFixed64 {
      *   // value must be in list [1, 2, 3]
-     *   repeated fixed64 value = 1 (buf.validate.field).fixed64 = { in: [1, 2, 3] };
+     *   fixed64 value = 1 [(buf.validate.field).fixed64 = { in: [1, 2, 3] }];
      * }
      * ```
      *
@@ -2082,7 +2146,7 @@ export type Fixed64Rules = Message<"buf.validate.Fixed64Rules"> & {
      * ```proto
      * message MyFixed64 {
      *   // value must not be in list [1, 2, 3]
-     *   repeated fixed64 value = 1 (buf.validate.field).fixed64 = { not_in: [1, 2, 3] };
+     *   fixed64 value = 1 [(buf.validate.field).fixed64 = { not_in: [1, 2, 3] }];
      * }
      * ```
      *
@@ -2091,7 +2155,7 @@ export type Fixed64Rules = Message<"buf.validate.Fixed64Rules"> & {
     notIn: bigint[];
     /**
      * `example` specifies values that the field may have. These values SHOULD
-     * conform to other constraints. `example` values will not impact validation
+     * conform to other rules. `example` values will not impact validation
      * but may be used as helpful guidance on how to populate the given field.
      *
      * ```proto
@@ -2113,7 +2177,7 @@ export type Fixed64Rules = Message<"buf.validate.Fixed64Rules"> & {
  */
 export declare const Fixed64RulesSchema: GenMessage<Fixed64Rules>;
 /**
- * SFixed32Rules describes the constraints applied to `fixed32` values.
+ * SFixed32Rules describes the rules applied to `fixed32` values.
  *
  * @generated from message buf.validate.SFixed32Rules
  */
@@ -2238,7 +2302,7 @@ export type SFixed32Rules = Message<"buf.validate.SFixed32Rules"> & {
      * ```proto
      * message MySFixed32 {
      *   // value must be in list [1, 2, 3]
-     *   repeated sfixed32 value = 1 (buf.validate.field).sfixed32 = { in: [1, 2, 3] };
+     *   sfixed32 value = 1 [(buf.validate.field).sfixed32 = { in: [1, 2, 3] }];
      * }
      * ```
      *
@@ -2253,7 +2317,7 @@ export type SFixed32Rules = Message<"buf.validate.SFixed32Rules"> & {
      * ```proto
      * message MySFixed32 {
      *   // value must not be in list [1, 2, 3]
-     *   repeated sfixed32 value = 1 (buf.validate.field).sfixed32 = { not_in: [1, 2, 3] };
+     *   sfixed32 value = 1 [(buf.validate.field).sfixed32 = { not_in: [1, 2, 3] }];
      * }
      * ```
      *
@@ -2262,7 +2326,7 @@ export type SFixed32Rules = Message<"buf.validate.SFixed32Rules"> & {
     notIn: number[];
     /**
      * `example` specifies values that the field may have. These values SHOULD
-     * conform to other constraints. `example` values will not impact validation
+     * conform to other rules. `example` values will not impact validation
      * but may be used as helpful guidance on how to populate the given field.
      *
      * ```proto
@@ -2284,7 +2348,7 @@ export type SFixed32Rules = Message<"buf.validate.SFixed32Rules"> & {
  */
 export declare const SFixed32RulesSchema: GenMessage<SFixed32Rules>;
 /**
- * SFixed64Rules describes the constraints applied to `fixed64` values.
+ * SFixed64Rules describes the rules applied to `fixed64` values.
  *
  * @generated from message buf.validate.SFixed64Rules
  */
@@ -2409,7 +2473,7 @@ export type SFixed64Rules = Message<"buf.validate.SFixed64Rules"> & {
      * ```proto
      * message MySFixed64 {
      *   // value must be in list [1, 2, 3]
-     *   repeated sfixed64 value = 1 (buf.validate.field).sfixed64 = { in: [1, 2, 3] };
+     *   sfixed64 value = 1 [(buf.validate.field).sfixed64 = { in: [1, 2, 3] }];
      * }
      * ```
      *
@@ -2424,7 +2488,7 @@ export type SFixed64Rules = Message<"buf.validate.SFixed64Rules"> & {
      * ```proto
      * message MySFixed64 {
      *   // value must not be in list [1, 2, 3]
-     *   repeated sfixed64 value = 1 (buf.validate.field).sfixed64 = { not_in: [1, 2, 3] };
+     *   sfixed64 value = 1 [(buf.validate.field).sfixed64 = { not_in: [1, 2, 3] }];
      * }
      * ```
      *
@@ -2433,7 +2497,7 @@ export type SFixed64Rules = Message<"buf.validate.SFixed64Rules"> & {
     notIn: bigint[];
     /**
      * `example` specifies values that the field may have. These values SHOULD
-     * conform to other constraints. `example` values will not impact validation
+     * conform to other rules. `example` values will not impact validation
      * but may be used as helpful guidance on how to populate the given field.
      *
      * ```proto
@@ -2455,7 +2519,7 @@ export type SFixed64Rules = Message<"buf.validate.SFixed64Rules"> & {
  */
 export declare const SFixed64RulesSchema: GenMessage<SFixed64Rules>;
 /**
- * BoolRules describes the constraints applied to `bool` values. These rules
+ * BoolRules describes the rules applied to `bool` values. These rules
  * may also be applied to the `google.protobuf.BoolValue` Well-Known-Type.
  *
  * @generated from message buf.validate.BoolRules
@@ -2477,7 +2541,7 @@ export type BoolRules = Message<"buf.validate.BoolRules"> & {
     const: boolean;
     /**
      * `example` specifies values that the field may have. These values SHOULD
-     * conform to other constraints. `example` values will not impact validation
+     * conform to other rules. `example` values will not impact validation
      * but may be used as helpful guidance on how to populate the given field.
      *
      * ```proto
@@ -2499,7 +2563,7 @@ export type BoolRules = Message<"buf.validate.BoolRules"> & {
  */
 export declare const BoolRulesSchema: GenMessage<BoolRules>;
 /**
- * StringRules describes the constraints applied to `string` values These
+ * StringRules describes the rules applied to `string` values These
  * rules may also be applied to the `google.protobuf.StringValue` Well-Known-Type.
  *
  * @generated from message buf.validate.StringRules
@@ -2698,7 +2762,7 @@ export type StringRules = Message<"buf.validate.StringRules"> & {
      * ```proto
      * message MyString {
      *   // value must be in list ["apple", "banana"]
-     *   repeated string value = 1 [(buf.validate.field).string.in = "apple", (buf.validate.field).string.in = "banana"];
+     *   string value = 1 [(buf.validate.field).string.in = "apple", (buf.validate.field).string.in = "banana"];
      * }
      * ```
      *
@@ -2712,7 +2776,7 @@ export type StringRules = Message<"buf.validate.StringRules"> & {
      * ```proto
      * message MyString {
      *   // value must not be in list ["orange", "grape"]
-     *   repeated string value = 1 [(buf.validate.field).string.not_in = "orange", (buf.validate.field).string.not_in = "grape"];
+     *   string value = 1 [(buf.validate.field).string.not_in = "orange", (buf.validate.field).string.not_in = "grape"];
      * }
      * ```
      *
@@ -2720,15 +2784,21 @@ export type StringRules = Message<"buf.validate.StringRules"> & {
      */
     notIn: string[];
     /**
-     * `WellKnown` rules provide advanced constraints against common string
-     * patterns
+     * `WellKnown` rules provide advanced rules against common string
+     * patterns.
      *
      * @generated from oneof buf.validate.StringRules.well_known
      */
     wellKnown: {
         /**
-         * `email` specifies that the field value must be a valid email address
-         * (addr-spec only) as defined by [RFC 5322](https://datatracker.ietf.org/doc/html/rfc5322#section-3.4.1).
+         * `email` specifies that the field value must be a valid email address, for
+         * example "foo@example.com".
+         *
+         * Conforms to the definition for a valid email address from the [HTML standard](https://html.spec.whatwg.org/multipage/input.html#valid-e-mail-address).
+         * Note that this standard willfully deviates from [RFC 5322](https://datatracker.ietf.org/doc/html/rfc5322),
+         * which allows many unexpected forms of email addresses and will easily match
+         * a typographical error.
+         *
          * If the field value isn't a valid email address, an error message will be generated.
          *
          * ```proto
@@ -2744,10 +2814,18 @@ export type StringRules = Message<"buf.validate.StringRules"> & {
         case: "email";
     } | {
         /**
-         * `hostname` specifies that the field value must be a valid
-         * hostname as defined by [RFC 1034](https://datatracker.ietf.org/doc/html/rfc1034#section-3.5). This constraint doesn't support
-         * internationalized domain names (IDNs). If the field value isn't a
-         * valid hostname, an error message will be generated.
+         * `hostname` specifies that the field value must be a valid hostname, for
+         * example "foo.example.com".
+         *
+         * A valid hostname follows the rules below:
+         * - The name consists of one or more labels, separated by a dot (".").
+         * - Each label can be 1 to 63 alphanumeric characters.
+         * - A label can contain hyphens ("-"), but must not start or end with a hyphen.
+         * - The right-most label must not be digits only.
+         * - The name can have a trailing dot—for example, "foo.example.com.".
+         * - The name can be 253 characters at most, excluding the optional trailing dot.
+         *
+         * If the field value isn't a valid hostname, an error message will be generated.
          *
          * ```proto
          * message MyString {
@@ -2762,8 +2840,15 @@ export type StringRules = Message<"buf.validate.StringRules"> & {
         case: "hostname";
     } | {
         /**
-         * `ip` specifies that the field value must be a valid IP
-         * (v4 or v6) address, without surrounding square brackets for IPv6 addresses.
+         * `ip` specifies that the field value must be a valid IP (v4 or v6) address.
+         *
+         * IPv4 addresses are expected in the dotted decimal format—for example, "192.168.5.21".
+         * IPv6 addresses are expected in their text representation—for example, "::1",
+         * or "2001:0DB8:ABCD:0012::0".
+         *
+         * Both formats are well-defined in the internet standard [RFC 3986](https://datatracker.ietf.org/doc/html/rfc3986).
+         * Zone identifiers for IPv6 addresses (for example, "fe80::a%en1") are supported.
+         *
          * If the field value isn't a valid IP address, an error message will be
          * generated.
          *
@@ -2780,9 +2865,9 @@ export type StringRules = Message<"buf.validate.StringRules"> & {
         case: "ip";
     } | {
         /**
-         * `ipv4` specifies that the field value must be a valid IPv4
-         * address. If the field value isn't a valid IPv4 address, an error message
-         * will be generated.
+         * `ipv4` specifies that the field value must be a valid IPv4 address—for
+         * example "192.168.5.21". If the field value isn't a valid IPv4 address, an
+         * error message will be generated.
          *
          * ```proto
          * message MyString {
@@ -2797,9 +2882,9 @@ export type StringRules = Message<"buf.validate.StringRules"> & {
         case: "ipv4";
     } | {
         /**
-         * `ipv6` specifies that the field value must be a valid
-         * IPv6 address, without surrounding square brackets. If the field value is
-         * not a valid IPv6 address, an error message will be generated.
+         * `ipv6` specifies that the field value must be a valid IPv6 address—for
+         * example "::1", or "d7a:115c:a1e0:ab12:4843:cd96:626b:430b". If the field
+         * value is not a valid IPv6 address, an error message will be generated.
          *
          * ```proto
          * message MyString {
@@ -2814,8 +2899,11 @@ export type StringRules = Message<"buf.validate.StringRules"> & {
         case: "ipv6";
     } | {
         /**
-         * `uri` specifies that the field value must be a valid URI as defined by
-         * [RFC 3986](https://datatracker.ietf.org/doc/html/rfc3986#section-3).
+         * `uri` specifies that the field value must be a valid URI, for example
+         * "https://example.com/foo/bar?baz=quux#frag".
+         *
+         * URI is defined in the internet standard [RFC 3986](https://datatracker.ietf.org/doc/html/rfc3986).
+         * Zone Identifiers in IPv6 address literals are supported ([RFC 6874](https://datatracker.ietf.org/doc/html/rfc6874)).
          *
          * If the field value isn't a valid URI, an error message will be generated.
          *
@@ -2832,11 +2920,13 @@ export type StringRules = Message<"buf.validate.StringRules"> & {
         case: "uri";
     } | {
         /**
-         * `uri_ref` specifies that the field value must be a valid URI Reference as
-         * defined by [RFC 3986](https://datatracker.ietf.org/doc/html/rfc3986#section-4.1).
+         * `uri_ref` specifies that the field value must be a valid URI Reference—either
+         * a URI such as "https://example.com/foo/bar?baz=quux#frag", or a Relative
+         * Reference such as "./foo/bar?query".
          *
-         * A URI Reference is either a [URI](https://datatracker.ietf.org/doc/html/rfc3986#section-3),
-         * or a [Relative Reference](https://datatracker.ietf.org/doc/html/rfc3986#section-4.2).
+         * URI, URI Reference, and Relative Reference are defined in the internet
+         * standard [RFC 3986](https://datatracker.ietf.org/doc/html/rfc3986). Zone
+         * Identifiers in IPv6 address literals are supported ([RFC 6874](https://datatracker.ietf.org/doc/html/rfc6874)).
          *
          * If the field value isn't a valid URI Reference, an error message will be
          * generated.
@@ -2855,10 +2945,9 @@ export type StringRules = Message<"buf.validate.StringRules"> & {
     } | {
         /**
          * `address` specifies that the field value must be either a valid hostname
-         * as defined by [RFC 1034](https://datatracker.ietf.org/doc/html/rfc1034#section-3.5)
-         * (which doesn't support internationalized domain names or IDNs) or a valid
-         * IP (v4 or v6). If the field value isn't a valid hostname or IP, an error
-         * message will be generated.
+         * (for example, "example.com"), or a valid IP (v4 or v6) address (for example,
+         * "192.168.0.1", or "::1"). If the field value isn't a valid hostname or IP,
+         * an error message will be generated.
          *
          * ```proto
          * message MyString {
@@ -2908,10 +2997,10 @@ export type StringRules = Message<"buf.validate.StringRules"> & {
         case: "tuuid";
     } | {
         /**
-         * `ip_with_prefixlen` specifies that the field value must be a valid IP (v4 or v6)
-         * address with prefix length. If the field value isn't a valid IP with prefix
-         * length, an error message will be generated.
-         *
+         * `ip_with_prefixlen` specifies that the field value must be a valid IP
+         * (v4 or v6) address with prefix length—for example, "192.168.5.21/16" or
+         * "2001:0DB8:ABCD:0012::F1/64". If the field value isn't a valid IP with
+         * prefix length, an error message will be generated.
          *
          * ```proto
          * message MyString {
@@ -2927,9 +3016,9 @@ export type StringRules = Message<"buf.validate.StringRules"> & {
     } | {
         /**
          * `ipv4_with_prefixlen` specifies that the field value must be a valid
-         * IPv4 address with prefix.
-         * If the field value isn't a valid IPv4 address with prefix length,
-         * an error message will be generated.
+         * IPv4 address with prefix length—for example, "192.168.5.21/16". If the
+         * field value isn't a valid IPv4 address with prefix length, an error
+         * message will be generated.
          *
          * ```proto
          * message MyString {
@@ -2945,7 +3034,7 @@ export type StringRules = Message<"buf.validate.StringRules"> & {
     } | {
         /**
          * `ipv6_with_prefixlen` specifies that the field value must be a valid
-         * IPv6 address with prefix length.
+         * IPv6 address with prefix length—for example, "2001:0DB8:ABCD:0012::F1/64".
          * If the field value is not a valid IPv6 address with prefix length,
          * an error message will be generated.
          *
@@ -2962,10 +3051,15 @@ export type StringRules = Message<"buf.validate.StringRules"> & {
         case: "ipv6WithPrefixlen";
     } | {
         /**
-         * `ip_prefix` specifies that the field value must be a valid IP (v4 or v6) prefix.
+         * `ip_prefix` specifies that the field value must be a valid IP (v4 or v6)
+         * prefix—for example, "192.168.0.0/16" or "2001:0DB8:ABCD:0012::0/64".
+         *
+         * The prefix must have all zeros for the unmasked bits. For example,
+         * "2001:0DB8:ABCD:0012::0/64" designates the left-most 64 bits for the
+         * prefix, and the remaining 64 bits must be zero.
+         *
          * If the field value isn't a valid IP prefix, an error message will be
-         * generated. The prefix must have all zeros for the masked bits of the prefix (e.g.,
-         * `127.0.0.0/16`, not `127.0.0.1/16`).
+         * generated.
          *
          * ```proto
          * message MyString {
@@ -2981,9 +3075,14 @@ export type StringRules = Message<"buf.validate.StringRules"> & {
     } | {
         /**
          * `ipv4_prefix` specifies that the field value must be a valid IPv4
-         * prefix. If the field value isn't a valid IPv4 prefix, an error message
-         * will be generated. The prefix must have all zeros for the masked bits of
-         * the prefix (e.g., `127.0.0.0/16`, not `127.0.0.1/16`).
+         * prefix, for example "192.168.0.0/16".
+         *
+         * The prefix must have all zeros for the unmasked bits. For example,
+         * "192.168.0.0/16" designates the left-most 16 bits for the prefix,
+         * and the remaining 16 bits must be zero.
+         *
+         * If the field value isn't a valid IPv4 prefix, an error message
+         * will be generated.
          *
          * ```proto
          * message MyString {
@@ -2998,10 +3097,15 @@ export type StringRules = Message<"buf.validate.StringRules"> & {
         case: "ipv4Prefix";
     } | {
         /**
-         * `ipv6_prefix` specifies that the field value must be a valid IPv6 prefix.
+         * `ipv6_prefix` specifies that the field value must be a valid IPv6 prefix—for
+         * example, "2001:0DB8:ABCD:0012::0/64".
+         *
+         * The prefix must have all zeros for the unmasked bits. For example,
+         * "2001:0DB8:ABCD:0012::0/64" designates the left-most 64 bits for the
+         * prefix, and the remaining 64 bits must be zero.
+         *
          * If the field value is not a valid IPv6 prefix, an error message will be
-         * generated. The prefix must have all zeros for the masked bits of the prefix
-         * (e.g., `2001:db8::/48`, not `2001:db8::1/48`).
+         * generated.
          *
          * ```proto
          * message MyString {
@@ -3016,10 +3120,16 @@ export type StringRules = Message<"buf.validate.StringRules"> & {
         case: "ipv6Prefix";
     } | {
         /**
-         * `host_and_port` specifies the field value must be a valid host and port
-         * pair. The host must be a valid hostname or IP address while the port
-         * must be in the range of 0-65535, inclusive. IPv6 addresses must be delimited
-         * with square brackets (e.g., `[::1]:1234`).
+         * `host_and_port` specifies that the field value must be valid host/port
+         * pair—for example, "example.com:8080".
+         *
+         * The host can be one of:
+         * - An IPv4 address in dotted decimal format—for example, "192.168.5.21".
+         * - An IPv6 address enclosed in square brackets—for example, "[2001:0DB8:ABCD:0012::F1]".
+         * - A hostname—for example, "example.com".
+         *
+         * The port is separated by a colon. It must be non-empty, with a decimal number
+         * in the range of 0-65535, inclusive.
          *
          * @generated from field: bool host_and_port = 32;
          */
@@ -3075,7 +3185,7 @@ export type StringRules = Message<"buf.validate.StringRules"> & {
     strict: boolean;
     /**
      * `example` specifies values that the field may have. These values SHOULD
-     * conform to other constraints. `example` values will not impact validation
+     * conform to other rules. `example` values will not impact validation
      * but may be used as helpful guidance on how to populate the given field.
      *
      * ```proto
@@ -3097,7 +3207,7 @@ export type StringRules = Message<"buf.validate.StringRules"> & {
  */
 export declare const StringRulesSchema: GenMessage<StringRules>;
 /**
- * BytesRules describe the constraints applied to `bytes` values. These rules
+ * BytesRules describe the rules applied to `bytes` values. These rules
  * may also be applied to the `google.protobuf.BytesValue` Well-Known-Type.
  *
  * @generated from message buf.validate.BytesRules
@@ -3255,7 +3365,7 @@ export type BytesRules = Message<"buf.validate.BytesRules"> & {
      */
     notIn: Uint8Array[];
     /**
-     * WellKnown rules provide advanced constraints against common byte
+     * WellKnown rules provide advanced rules against common byte
      * patterns
      *
      * @generated from oneof buf.validate.BytesRules.well_known
@@ -3263,7 +3373,7 @@ export type BytesRules = Message<"buf.validate.BytesRules"> & {
     wellKnown: {
         /**
          * `ip` ensures that the field `value` is a valid IP address (v4 or v6) in byte format.
-         * If the field value doesn't meet this constraint, an error message is generated.
+         * If the field value doesn't meet this rule, an error message is generated.
          *
          * ```proto
          * message MyBytes {
@@ -3279,7 +3389,7 @@ export type BytesRules = Message<"buf.validate.BytesRules"> & {
     } | {
         /**
          * `ipv4` ensures that the field `value` is a valid IPv4 address in byte format.
-         * If the field value doesn't meet this constraint, an error message is generated.
+         * If the field value doesn't meet this rule, an error message is generated.
          *
          * ```proto
          * message MyBytes {
@@ -3295,7 +3405,7 @@ export type BytesRules = Message<"buf.validate.BytesRules"> & {
     } | {
         /**
          * `ipv6` ensures that the field `value` is a valid IPv6 address in byte format.
-         * If the field value doesn't meet this constraint, an error message is generated.
+         * If the field value doesn't meet this rule, an error message is generated.
          * ```proto
          * message MyBytes {
          *   // value must be a valid IPv6 address
@@ -3313,7 +3423,7 @@ export type BytesRules = Message<"buf.validate.BytesRules"> & {
     };
     /**
      * `example` specifies values that the field may have. These values SHOULD
-     * conform to other constraints. `example` values will not impact validation
+     * conform to other rules. `example` values will not impact validation
      * but may be used as helpful guidance on how to populate the given field.
      *
      * ```proto
@@ -3335,7 +3445,7 @@ export type BytesRules = Message<"buf.validate.BytesRules"> & {
  */
 export declare const BytesRulesSchema: GenMessage<BytesRules>;
 /**
- * EnumRules describe the constraints applied to `enum` values.
+ * EnumRules describe the rules applied to `enum` values.
  *
  * @generated from message buf.validate.EnumRules
  */
@@ -3424,7 +3534,7 @@ export type EnumRules = Message<"buf.validate.EnumRules"> & {
     notIn: number[];
     /**
      * `example` specifies values that the field may have. These values SHOULD
-     * conform to other constraints. `example` values will not impact validation
+     * conform to other rules. `example` values will not impact validation
      * but may be used as helpful guidance on how to populate the given field.
      *
      * ```proto
@@ -3450,7 +3560,7 @@ export type EnumRules = Message<"buf.validate.EnumRules"> & {
  */
 export declare const EnumRulesSchema: GenMessage<EnumRules>;
 /**
- * RepeatedRules describe the constraints applied to `repeated` values.
+ * RepeatedRules describe the rules applied to `repeated` values.
  *
  * @generated from message buf.validate.RepeatedRules
  */
@@ -3489,7 +3599,7 @@ export type RepeatedRules = Message<"buf.validate.RepeatedRules"> & {
     maxItems: bigint;
     /**
      * `unique` indicates that all elements in this field must
-     * be unique. This constraint is strictly applicable to scalar and enum
+     * be unique. This rule is strictly applicable to scalar and enum
      * types, with message types not being supported.
      *
      * ```proto
@@ -3503,13 +3613,16 @@ export type RepeatedRules = Message<"buf.validate.RepeatedRules"> & {
      */
     unique: boolean;
     /**
-     * `items` details the constraints to be applied to each item
+     * `items` details the rules to be applied to each item
      * in the field. Even for repeated message fields, validation is executed
      * against each item unless skip is explicitly specified.
      *
+     * Note that repeated items are always considered populated. The `required`
+     * rule does not apply.
+     *
      * ```proto
      * message MyRepeated {
-     *   // The items in the field `value` must follow the specified constraints.
+     *   // The items in the field `value` must follow the specified rules.
      *   repeated string value = 1 [(buf.validate.field).repeated.items = {
      *     string: {
      *       min_len: 3
@@ -3519,9 +3632,9 @@ export type RepeatedRules = Message<"buf.validate.RepeatedRules"> & {
      * }
      * ```
      *
-     * @generated from field: optional buf.validate.FieldConstraints items = 4;
+     * @generated from field: optional buf.validate.FieldRules items = 4;
      */
-    items?: FieldConstraints;
+    items?: FieldRules;
 };
 /**
  * Describes the message buf.validate.RepeatedRules.
@@ -3529,7 +3642,7 @@ export type RepeatedRules = Message<"buf.validate.RepeatedRules"> & {
  */
 export declare const RepeatedRulesSchema: GenMessage<RepeatedRules>;
 /**
- * MapRules describe the constraints applied to `map` values.
+ * MapRules describe the rules applied to `map` values.
  *
  * @generated from message buf.validate.MapRules
  */
@@ -3563,11 +3676,14 @@ export type MapRules = Message<"buf.validate.MapRules"> & {
      */
     maxPairs: bigint;
     /**
-     * Specifies the constraints to be applied to each key in the field.
+     * Specifies the rules to be applied to each key in the field.
+     *
+     * Note that map keys are always considered populated. The `required`
+     * rule does not apply.
      *
      * ```proto
      * message MyMap {
-     *   // The keys in the field `value` must follow the specified constraints.
+     *   // The keys in the field `value` must follow the specified rules.
      *   map<string, string> value = 1 [(buf.validate.field).map.keys = {
      *     string: {
      *       min_len: 3
@@ -3577,17 +3693,20 @@ export type MapRules = Message<"buf.validate.MapRules"> & {
      * }
      * ```
      *
-     * @generated from field: optional buf.validate.FieldConstraints keys = 4;
+     * @generated from field: optional buf.validate.FieldRules keys = 4;
      */
-    keys?: FieldConstraints;
+    keys?: FieldRules;
     /**
-     * Specifies the constraints to be applied to the value of each key in the
+     * Specifies the rules to be applied to the value of each key in the
      * field. Message values will still have their validations evaluated unless
      * skip is specified here.
      *
+     * Note that map values are always considered populated. The `required`
+     * rule does not apply.
+     *
      * ```proto
      * message MyMap {
-     *   // The values in the field `value` must follow the specified constraints.
+     *   // The values in the field `value` must follow the specified rules.
      *   map<string, string> value = 1 [(buf.validate.field).map.values = {
      *     string: {
      *       min_len: 5
@@ -3597,9 +3716,9 @@ export type MapRules = Message<"buf.validate.MapRules"> & {
      * }
      * ```
      *
-     * @generated from field: optional buf.validate.FieldConstraints values = 5;
+     * @generated from field: optional buf.validate.FieldRules values = 5;
      */
-    values?: FieldConstraints;
+    values?: FieldRules;
 };
 /**
  * Describes the message buf.validate.MapRules.
@@ -3607,7 +3726,7 @@ export type MapRules = Message<"buf.validate.MapRules"> & {
  */
 export declare const MapRulesSchema: GenMessage<MapRules>;
 /**
- * AnyRules describe constraints applied exclusively to the `google.protobuf.Any` well-known type.
+ * AnyRules describe rules applied exclusively to the `google.protobuf.Any` well-known type.
  *
  * @generated from message buf.validate.AnyRules
  */
@@ -3620,7 +3739,9 @@ export type AnyRules = Message<"buf.validate.AnyRules"> & {
      * ```proto
      * message MyAny {
      *   //  The `value` field must have a `type_url` equal to one of the specified values.
-     *   google.protobuf.Any value = 1 [(buf.validate.field).any.in = ["type.googleapis.com/MyType1", "type.googleapis.com/MyType2"]];
+     *   google.protobuf.Any value = 1 [(buf.validate.field).any = {
+     *       in: ["type.googleapis.com/MyType1", "type.googleapis.com/MyType2"]
+     *   }];
      * }
      * ```
      *
@@ -3632,8 +3753,10 @@ export type AnyRules = Message<"buf.validate.AnyRules"> & {
      *
      * ```proto
      * message MyAny {
-     *   // The field `value` must not have a `type_url` equal to any of the specified values.
-     *   google.protobuf.Any value = 1 [(buf.validate.field).any.not_in = ["type.googleapis.com/ForbiddenType1", "type.googleapis.com/ForbiddenType2"]];
+     *   //  The `value` field must not have a `type_url` equal to any of the specified values.
+     *   google.protobuf.Any value = 1 [(buf.validate.field).any = {
+     *       not_in: ["type.googleapis.com/ForbiddenType1", "type.googleapis.com/ForbiddenType2"]
+     *   }];
      * }
      * ```
      *
@@ -3647,7 +3770,7 @@ export type AnyRules = Message<"buf.validate.AnyRules"> & {
  */
 export declare const AnyRulesSchema: GenMessage<AnyRules>;
 /**
- * DurationRules describe the constraints applied exclusively to the `google.protobuf.Duration` well-known type.
+ * DurationRules describe the rules applied exclusively to the `google.protobuf.Duration` well-known type.
  *
  * @generated from message buf.validate.DurationRules
  */
@@ -3798,7 +3921,7 @@ export type DurationRules = Message<"buf.validate.DurationRules"> & {
     notIn: Duration[];
     /**
      * `example` specifies values that the field may have. These values SHOULD
-     * conform to other constraints. `example` values will not impact validation
+     * conform to other rules. `example` values will not impact validation
      * but may be used as helpful guidance on how to populate the given field.
      *
      * ```proto
@@ -3820,7 +3943,7 @@ export type DurationRules = Message<"buf.validate.DurationRules"> & {
  */
 export declare const DurationRulesSchema: GenMessage<DurationRules>;
 /**
- * TimestampRules describe the constraints applied exclusively to the `google.protobuf.Timestamp` well-known type.
+ * TimestampRules describe the rules applied exclusively to the `google.protobuf.Timestamp` well-known type.
  *
  * @generated from message buf.validate.TimestampRules
  */
@@ -3976,6 +4099,19 @@ export type TimestampRules = Message<"buf.validate.TimestampRules"> & {
      */
     within?: Duration;
     /**
+     * `example` specifies values that the field may have. These values SHOULD
+     * conform to other rules. `example` values will not impact validation
+     * but may be used as helpful guidance on how to populate the given field.
+     *
+     * ```proto
+     * message MyTimestamp {
+     *   google.protobuf.Timestamp value = 1 [
+     *     (buf.validate.field).timestamp.example = { seconds: 1672444800 },
+     *     (buf.validate.field).timestamp.example = { seconds: 1672531200 },
+     *   ];
+     * }
+     * ```
+     *
      * @generated from field: repeated google.protobuf.Timestamp example = 10;
      */
     example: Timestamp[];
@@ -3987,7 +4123,7 @@ export type TimestampRules = Message<"buf.validate.TimestampRules"> & {
 export declare const TimestampRulesSchema: GenMessage<TimestampRules>;
 /**
  * `Violations` is a collection of `Violation` messages. This message type is returned by
- * protovalidate when a proto message fails to meet the requirements set by the `Constraint` validation rules.
+ * Protovalidate when a proto message fails to meet the requirements set by the `Rule` validation rules.
  * Each individual violation is represented by a `Violation` message.
  *
  * @generated from message buf.validate.Violations
@@ -4007,15 +4143,46 @@ export type Violations = Message<"buf.validate.Violations"> & {
 export declare const ViolationsSchema: GenMessage<Violations>;
 /**
  * `Violation` represents a single instance where a validation rule, expressed
- * as a `Constraint`, was not met. It provides information about the field that
- * caused the violation, the specific constraint that wasn't fulfilled, and a
+ * as a `Rule`, was not met. It provides information about the field that
+ * caused the violation, the specific rule that wasn't fulfilled, and a
  * human-readable error message.
+ *
+ * For example, consider the following message:
+ *
+ * ```proto
+ * message User {
+ *     int32 age = 1 [(buf.validate.field).cel = {
+ *         id: "user.age",
+ *         expression: "this < 18 ? 'User must be at least 18 years old' : ''",
+ *     }];
+ * }
+ * ```
+ *
+ * It could produce the following violation:
  *
  * ```json
  * {
- *   "fieldPath": "bar",
- *   "constraintId": "foo.bar",
- *   "message": "bar must be greater than 0"
+ *   "ruleId": "user.age",
+ *   "message": "User must be at least 18 years old",
+ *   "field": {
+ *     "elements": [
+ *       {
+ *         "fieldNumber": 1,
+ *         "fieldName": "age",
+ *         "fieldType": "TYPE_INT32"
+ *       }
+ *     ]
+ *   },
+ *   "rule": {
+ *     "elements": [
+ *       {
+ *         "fieldNumber": 23,
+ *         "fieldName": "cel",
+ *         "fieldType": "TYPE_MESSAGE",
+ *         "index": "0"
+ *       }
+ *     ]
+ *   }
  * }
  * ```
  *
@@ -4047,9 +4214,9 @@ export type Violation = Message<"buf.validate.Violation"> & {
      */
     field?: FieldPath;
     /**
-     * `rule` is a machine-readable path that points to the specific constraint rule that failed validation.
-     * This will be a nested field starting from the FieldConstraints of the field that failed validation.
-     * For custom constraints, this will provide the path of the constraint, e.g. `cel[0]`.
+     * `rule` is a machine-readable path that points to the specific rule that failed validation.
+     * This will be a nested field starting from the FieldRules of the field that failed validation.
+     * For custom rules, this will provide the path of the rule, e.g. `cel[0]`.
      *
      * For example, consider the following message:
      *
@@ -4057,7 +4224,7 @@ export type Violation = Message<"buf.validate.Violation"> & {
      * message Message {
      *   bool a = 1 [(buf.validate.field).required = true];
      *   bool b = 2 [(buf.validate.field).cel = {
-     *     id: "custom_constraint",
+     *     id: "custom_rule",
      *     expression: "!this ? 'b must be true': ''"
      *   }]
      * }
@@ -4080,15 +4247,15 @@ export type Violation = Message<"buf.validate.Violation"> & {
      */
     rule?: FieldPath;
     /**
-     * `constraint_id` is the unique identifier of the `Constraint` that was not fulfilled.
-     * This is the same `id` that was specified in the `Constraint` message, allowing easy tracing of which rule was violated.
+     * `rule_id` is the unique identifier of the `Rule` that was not fulfilled.
+     * This is the same `id` that was specified in the `Rule` message, allowing easy tracing of which rule was violated.
      *
-     * @generated from field: optional string constraint_id = 2;
+     * @generated from field: optional string rule_id = 2;
      */
-    constraintId: string;
+    ruleId: string;
     /**
      * `message` is a human-readable error message that describes the nature of the violation.
-     * This can be the default error message from the violated `Constraint`, or it can be a custom message that gives more context about the violation.
+     * This can be the default error message from the violated `Rule`, or it can be a custom message that gives more context about the violation.
      *
      * @generated from field: optional string message = 3;
      */
@@ -4235,14 +4402,14 @@ export type FieldPathElement = Message<"buf.validate.FieldPathElement"> & {
  */
 export declare const FieldPathElementSchema: GenMessage<FieldPathElement>;
 /**
- * Specifies how FieldConstraints.ignore behaves. See the documentation for
- * FieldConstraints.required for definitions of "populated" and "nullable".
+ * Specifies how FieldRules.ignore behaves. See the documentation for
+ * FieldRules.required for definitions of "populated" and "nullable".
  *
  * @generated from enum buf.validate.Ignore
  */
 export declare enum Ignore {
     /**
-     * Validation is only skipped if it's an unpopulated nullable fields.
+     * Validation is only skipped if it's an unpopulated nullable field.
      *
      * ```proto
      * syntax="proto3";
@@ -4381,7 +4548,7 @@ export declare enum Ignore {
      * The validation rules of this field will be skipped and not evaluated. This
      * is useful for situations that necessitate turning off the rules of a field
      * containing a message that may not make sense in the current context, or to
-     * temporarily disable constraints during development.
+     * temporarily disable rules during development.
      *
      * ```proto
      * message MyMessage {
@@ -4401,7 +4568,7 @@ export declare enum Ignore {
  */
 export declare const IgnoreSchema: GenEnum<Ignore>;
 /**
- * WellKnownRegex contain some well-known patterns.
+ * KnownRegex contains some well-known patterns.
  *
  * @generated from enum buf.validate.KnownRegex
  */
@@ -4431,25 +4598,25 @@ export declare const KnownRegexSchema: GenEnum<KnownRegex>;
  * Rules specify the validations to be performed on this message. By default,
  * no validation is performed against a message.
  *
- * @generated from extension: optional buf.validate.MessageConstraints message = 1159;
+ * @generated from extension: optional buf.validate.MessageRules message = 1159;
  */
-export declare const message: GenExtension<MessageOptions, MessageConstraints>;
+export declare const message: GenExtension<MessageOptions, MessageRules>;
 /**
  * Rules specify the validations to be performed on this oneof. By default,
  * no validation is performed against a oneof.
  *
- * @generated from extension: optional buf.validate.OneofConstraints oneof = 1159;
+ * @generated from extension: optional buf.validate.OneofRules oneof = 1159;
  */
-export declare const oneof: GenExtension<OneofOptions, OneofConstraints>;
+export declare const oneof: GenExtension<OneofOptions, OneofRules>;
 /**
  * Rules specify the validations to be performed on this field. By default,
  * no validation is performed against a field.
  *
- * @generated from extension: optional buf.validate.FieldConstraints field = 1159;
+ * @generated from extension: optional buf.validate.FieldRules field = 1159;
  */
-export declare const field: GenExtension<FieldOptions, FieldConstraints>;
+export declare const field: GenExtension<FieldOptions, FieldRules>;
 /**
- * Specifies predefined rules. When extending a standard constraint message,
+ * Specifies predefined rules. When extending a standard rule message,
  * this adds additional CEL expressions that apply when the extension is used.
  *
  * ```proto
@@ -4466,6 +4633,6 @@ export declare const field: GenExtension<FieldOptions, FieldConstraints>;
  * }
  * ```
  *
- * @generated from extension: optional buf.validate.PredefinedConstraints predefined = 1160;
+ * @generated from extension: optional buf.validate.PredefinedRules predefined = 1160;
  */
-export declare const predefined: GenExtension<FieldOptions, PredefinedConstraints>;
+export declare const predefined: GenExtension<FieldOptions, PredefinedRules>;

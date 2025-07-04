@@ -1,4 +1,4 @@
-import type { GenFile, GenMessage, GenService } from "@bufbuild/protobuf/codegenv1";
+import type { GenFile, GenMessage, GenService } from "@bufbuild/protobuf/codegenv2";
 import type { OAuthProvider, TenantRole } from "./common_pb";
 import type { Coupon } from "./payment_pb";
 import type { Timestamp } from "@bufbuild/protobuf/wkt";
