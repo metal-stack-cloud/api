@@ -3265,66 +3265,6 @@
           ]
         },
         {
-          "name": "PaymentServiceCheckAdmittedRequest",
-          "longName": "PaymentServiceCheckAdmittedRequest",
-          "fullName": "api.v1.PaymentServiceCheckAdmittedRequest",
-          "description": "PaymentServiceCheckAdmittedRequest is the request payload for a check admitted request",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "login",
-              "description": "Login of the customer",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            }
-          ]
-        },
-        {
-          "name": "PaymentServiceCheckAdmittedResponse",
-          "longName": "PaymentServiceCheckAdmittedResponse",
-          "fullName": "api.v1.PaymentServiceCheckAdmittedResponse",
-          "description": "PaymentServiceCheckAdmittedResponse is the response payload for a check admitted request",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "admitted",
-              "description": "Admitted indicates if the customer is already admitted to use the service",
-              "label": "",
-              "type": "bool",
-              "longType": "bool",
-              "fullType": "bool",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "requested",
-              "description": "Requested indicates if the customer requested admittance",
-              "label": "",
-              "type": "bool",
-              "longType": "bool",
-              "fullType": "bool",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            }
-          ]
-        },
-        {
           "name": "PaymentServiceCheckIfCustomerExistsRequest",
           "longName": "PaymentServiceCheckIfCustomerExistsRequest",
           "fullName": "api.v1.PaymentServiceCheckIfCustomerExistsRequest",
@@ -3391,7 +3331,7 @@
           "description": "PaymentServiceCreateOrUpdateCustomerRequest is the request payload for a payment create or update customer request",
           "hasExtensions": false,
           "hasFields": true,
-          "hasOneofs": false,
+          "hasOneofs": true,
           "extensions": [],
           "fields": [
             {
@@ -3407,27 +3347,87 @@
               "defaultValue": ""
             },
             {
-              "name": "customer",
-              "description": "Customer is the customer to modify",
+              "name": "name",
+              "description": "Name of the customer to be billed",
+              "label": "optional",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "_name",
+              "defaultValue": ""
+            },
+            {
+              "name": "payment_method_id",
+              "description": "PaymentMethodId at the payment provider, the client receives this from the payment provider and passes it on to the api",
+              "label": "optional",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "_payment_method_id",
+              "defaultValue": ""
+            },
+            {
+              "name": "email",
+              "description": "Email of the customer to be billed",
+              "label": "optional",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "_email",
+              "defaultValue": ""
+            },
+            {
+              "name": "card",
+              "description": "Card the customer to be billed",
+              "label": "optional",
+              "type": "Card",
+              "longType": "Card",
+              "fullType": "api.v1.Card",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "_card",
+              "defaultValue": ""
+            },
+            {
+              "name": "address",
+              "description": "Address is the postal address of the customer to be billed",
               "label": "",
-              "type": "PaymentCustomer",
-              "longType": "PaymentCustomer",
-              "fullType": "api.v1.PaymentCustomer",
+              "type": "Address",
+              "longType": "Address",
+              "fullType": "api.v1.Address",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
               "defaultValue": ""
             },
             {
-              "name": "accepted_terms_and_conditions",
-              "description": "AcceptedTermsAndConditions indicates the modification of the terms and conditions acceptance",
-              "label": "",
-              "type": "bool",
-              "longType": "bool",
-              "fullType": "bool",
+              "name": "vat",
+              "description": "Vat which applies to the customer to be billed",
+              "label": "optional",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
               "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
+              "isoneof": true,
+              "oneofdecl": "_vat",
+              "defaultValue": ""
+            },
+            {
+              "name": "phone_number",
+              "description": "PhoneNumber of the customer to be billed",
+              "label": "optional",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "_phone_number",
               "defaultValue": ""
             }
           ]
@@ -3647,54 +3647,6 @@
           ]
         },
         {
-          "name": "PaymentServiceGetOnboardedRequest",
-          "longName": "PaymentServiceGetOnboardedRequest",
-          "fullName": "api.v1.PaymentServiceGetOnboardedRequest",
-          "description": "PaymentServiceGetOnboardedRequest check the onboarded status",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "login",
-              "description": "Login of the customer",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            }
-          ]
-        },
-        {
-          "name": "PaymentServiceGetOnboardedResponse",
-          "longName": "PaymentServiceGetOnboardedResponse",
-          "fullName": "api.v1.PaymentServiceGetOnboardedResponse",
-          "description": "PaymentServiceGetOnboardedRequest returns the onboarded status",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "onboarded",
-              "description": "Onboarded indicates if the customer has seen the onboarded message",
-              "label": "",
-              "type": "bool",
-              "longType": "bool",
-              "fullType": "bool",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            }
-          ]
-        },
-        {
           "name": "PaymentServiceGetSubscriptionUsageRequest",
           "longName": "PaymentServiceGetSubscriptionUsageRequest",
           "fullName": "api.v1.PaymentServiceGetSubscriptionUsageRequest",
@@ -3851,137 +3803,6 @@
             {
               "name": "positive_balance",
               "description": "PositiveBalance indicates if the customer still has positive balance",
-              "label": "",
-              "type": "bool",
-              "longType": "bool",
-              "fullType": "bool",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            }
-          ]
-        },
-        {
-          "name": "PaymentServiceRequestAdmissionRequest",
-          "longName": "PaymentServiceRequestAdmissionRequest",
-          "fullName": "api.v1.PaymentServiceRequestAdmissionRequest",
-          "description": "PaymentServiceRequestAdmissionRequest is the request payload for a admission request",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "login",
-              "description": "Login of the customer",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "customer",
-              "description": "Customer is the customer",
-              "label": "",
-              "type": "PaymentCustomer",
-              "longType": "PaymentCustomer",
-              "fullType": "api.v1.PaymentCustomer",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "accepted_terms_and_conditions",
-              "description": "AcceptedTermsAndConditions indicates if the customer already accepted the terms and conditions",
-              "label": "",
-              "type": "bool",
-              "longType": "bool",
-              "fullType": "bool",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "email_consent",
-              "description": "EmailConsent indicates if the customer already gave consent to email",
-              "label": "",
-              "type": "bool",
-              "longType": "bool",
-              "fullType": "bool",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            }
-          ]
-        },
-        {
-          "name": "PaymentServiceRequestAdmissionResponse",
-          "longName": "PaymentServiceRequestAdmissionResponse",
-          "fullName": "api.v1.PaymentServiceRequestAdmissionResponse",
-          "description": "PaymentServiceRequestAdmissionResponse is the response payload for a admission request",
-          "hasExtensions": false,
-          "hasFields": false,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": []
-        },
-        {
-          "name": "PaymentServiceSetOnboardedRequest",
-          "longName": "PaymentServiceSetOnboardedRequest",
-          "fullName": "api.v1.PaymentServiceSetOnboardedRequest",
-          "description": "PayentServiceSetOnboardedRequest changes the onboarded status of the given customer",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "login",
-              "description": "Login of the customer",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "onboarded",
-              "description": "Onboarded indicates if the customer has seen the onboarde message",
-              "label": "",
-              "type": "bool",
-              "longType": "bool",
-              "fullType": "bool",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            }
-          ]
-        },
-        {
-          "name": "PaymentServiceSetOnboardedResponse",
-          "longName": "PaymentServiceSetOnboardedResponse",
-          "fullName": "api.v1.PaymentServiceSetOnboardedResponse",
-          "description": "PaymentServiceSetOnboardedResponse respond to the changed status of the given customer",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "onboarded",
-              "description": "Onboarded indicates if the customer has seen the onboarded message",
               "label": "",
               "type": "bool",
               "longType": "bool",
@@ -4266,30 +4087,6 @@
               "responseStreaming": false
             },
             {
-              "name": "CheckAdmitted",
-              "description": "CheckAdmitted if the customer is allowed to use the service on the platform",
-              "requestType": "PaymentServiceCheckAdmittedRequest",
-              "requestLongType": "PaymentServiceCheckAdmittedRequest",
-              "requestFullType": "api.v1.PaymentServiceCheckAdmittedRequest",
-              "requestStreaming": false,
-              "responseType": "PaymentServiceCheckAdmittedResponse",
-              "responseLongType": "PaymentServiceCheckAdmittedResponse",
-              "responseFullType": "api.v1.PaymentServiceCheckAdmittedResponse",
-              "responseStreaming": false
-            },
-            {
-              "name": "RequestAdmission",
-              "description": "RequestAdmission for a customer to get allowed to used the service",
-              "requestType": "PaymentServiceRequestAdmissionRequest",
-              "requestLongType": "PaymentServiceRequestAdmissionRequest",
-              "requestFullType": "api.v1.PaymentServiceRequestAdmissionRequest",
-              "requestStreaming": false,
-              "responseType": "PaymentServiceRequestAdmissionResponse",
-              "responseLongType": "PaymentServiceRequestAdmissionResponse",
-              "responseFullType": "api.v1.PaymentServiceRequestAdmissionResponse",
-              "responseStreaming": false
-            },
-            {
               "name": "HasChargeableResources",
               "description": "HasChargeableResources checks if the customer has resources actually consumed which are chargeable",
               "requestType": "PaymentServiceHasChargeableResourcesRequest",
@@ -4299,30 +4096,6 @@
               "responseType": "PaymentServiceHasChargeableResourcesResponse",
               "responseLongType": "PaymentServiceHasChargeableResourcesResponse",
               "responseFullType": "api.v1.PaymentServiceHasChargeableResourcesResponse",
-              "responseStreaming": false
-            },
-            {
-              "name": "SetOnboarded",
-              "description": "SetOnboarded set the onboarded status",
-              "requestType": "PaymentServiceSetOnboardedRequest",
-              "requestLongType": "PaymentServiceSetOnboardedRequest",
-              "requestFullType": "api.v1.PaymentServiceSetOnboardedRequest",
-              "requestStreaming": false,
-              "responseType": "PaymentServiceSetOnboardedResponse",
-              "responseLongType": "PaymentServiceSetOnboardedResponse",
-              "responseFullType": "api.v1.PaymentServiceSetOnboardedResponse",
-              "responseStreaming": false
-            },
-            {
-              "name": "GetOnboarded",
-              "description": "GetOnboarded get the onboarded status",
-              "requestType": "PaymentServiceGetOnboardedRequest",
-              "requestLongType": "PaymentServiceGetOnboardedRequest",
-              "requestFullType": "api.v1.PaymentServiceGetOnboardedRequest",
-              "requestStreaming": false,
-              "responseType": "PaymentServiceGetOnboardedResponse",
-              "responseLongType": "PaymentServiceGetOnboardedResponse",
-              "responseFullType": "api.v1.PaymentServiceGetOnboardedResponse",
               "responseStreaming": false
             }
           ]
@@ -8037,66 +7810,6 @@
           ]
         },
         {
-          "name": "PaymentDetailsUpdate",
-          "longName": "PaymentDetailsUpdate",
-          "fullName": "api.v1.PaymentDetailsUpdate",
-          "description": "PaymentDetailsUpdate is used to update PaymentDetails",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": true,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "customer_id",
-              "description": "CustomerId at the payment processor",
-              "label": "optional",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": true,
-              "oneofdecl": "_customer_id",
-              "defaultValue": ""
-            },
-            {
-              "name": "payment_method_id",
-              "description": "PaymentMethodId of the tenant at the payment processor",
-              "label": "optional",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": true,
-              "oneofdecl": "_payment_method_id",
-              "defaultValue": ""
-            },
-            {
-              "name": "subscription_id",
-              "description": "SubscriptionId at the payment processor",
-              "label": "optional",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": true,
-              "oneofdecl": "_subscription_id",
-              "defaultValue": ""
-            },
-            {
-              "name": "vat",
-              "description": "Vat which applies to this tenant",
-              "label": "optional",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": true,
-              "oneofdecl": "_vat",
-              "defaultValue": ""
-            }
-          ]
-        },
-        {
           "name": "Tenant",
           "longName": "Tenant",
           "fullName": "api.v1.Tenant",
@@ -9103,6 +8816,89 @@
           "fields": []
         },
         {
+          "name": "TenantServiceRequestAdmissionRequest",
+          "longName": "TenantServiceRequestAdmissionRequest",
+          "fullName": "api.v1.TenantServiceRequestAdmissionRequest",
+          "description": "TenantServiceRequestAdmissionRequest is used to request admission for a tenant",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "login",
+              "description": "Login of the tenant for whom admission is requested",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "name",
+              "description": "Name of the user",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "email",
+              "description": "Email of the user",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "accepted_terms_and_conditions",
+              "description": "AcceptedTermsAndConditions indicates if the user has accepted the terms and conditions",
+              "label": "",
+              "type": "bool",
+              "longType": "bool",
+              "fullType": "bool",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "email_consent",
+              "description": "EmailConsent indicates if the user gave consent to receive emails",
+              "label": "",
+              "type": "bool",
+              "longType": "bool",
+              "fullType": "bool",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "TenantServiceRequestAdmissionResponse",
+          "longName": "TenantServiceRequestAdmissionResponse",
+          "fullName": "api.v1.TenantServiceRequestAdmissionResponse",
+          "description": "TenantServiceRequestAdmissionResponse is the response payload an admission request",
+          "hasExtensions": false,
+          "hasFields": false,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": []
+        },
+        {
           "name": "TenantServiceUpdateMemberRequest",
           "longName": "TenantServiceUpdateMemberRequest",
           "fullName": "api.v1.TenantServiceUpdateMemberRequest",
@@ -9245,30 +9041,6 @@
               "defaultValue": ""
             },
             {
-              "name": "payment_details",
-              "description": "PaymentDetails of the tenant",
-              "label": "optional",
-              "type": "PaymentDetailsUpdate",
-              "longType": "PaymentDetailsUpdate",
-              "fullType": "api.v1.PaymentDetailsUpdate",
-              "ismap": false,
-              "isoneof": true,
-              "oneofdecl": "_payment_details",
-              "defaultValue": ""
-            },
-            {
-              "name": "terms_and_conditions",
-              "description": "TermsAndConditions of the tenant",
-              "label": "optional",
-              "type": "TermsAndConditionsUpdate",
-              "longType": "TermsAndConditionsUpdate",
-              "fullType": "api.v1.TermsAndConditionsUpdate",
-              "ismap": false,
-              "isoneof": true,
-              "oneofdecl": "_terms_and_conditions",
-              "defaultValue": ""
-            },
-            {
               "name": "onboarded",
               "description": "Onboarded checks if the tenant was asked to be onboarded",
               "label": "optional",
@@ -9278,6 +9050,18 @@
               "ismap": false,
               "isoneof": true,
               "oneofdecl": "_onboarded",
+              "defaultValue": ""
+            },
+            {
+              "name": "accept_terms_and_conditions",
+              "description": "AcceptTermsAndConditions can be used to accept the terms and conditions",
+              "label": "optional",
+              "type": "bool",
+              "longType": "bool",
+              "fullType": "bool",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "_accept_terms_and_conditions",
               "defaultValue": ""
             }
           ]
@@ -9338,42 +9122,6 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": ""
-            }
-          ]
-        },
-        {
-          "name": "TermsAndConditionsUpdate",
-          "longName": "TermsAndConditionsUpdate",
-          "fullName": "api.v1.TermsAndConditionsUpdate",
-          "description": "TermsAndConditionsUpdate",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": true,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "accepted",
-              "description": "Accepted indicates if the tenant accepted the terms and conditions",
-              "label": "optional",
-              "type": "bool",
-              "longType": "bool",
-              "fullType": "bool",
-              "ismap": false,
-              "isoneof": true,
-              "oneofdecl": "_accepted",
-              "defaultValue": ""
-            },
-            {
-              "name": "when",
-              "description": "When is the date when the tenant accepted the terms and conditions",
-              "label": "optional",
-              "type": "Timestamp",
-              "longType": "google.protobuf.Timestamp",
-              "fullType": "google.protobuf.Timestamp",
-              "ismap": false,
-              "isoneof": true,
-              "oneofdecl": "_when",
               "defaultValue": ""
             }
           ]
@@ -9528,6 +9276,18 @@
               "responseType": "TenantServiceInviteGetResponse",
               "responseLongType": "TenantServiceInviteGetResponse",
               "responseFullType": "api.v1.TenantServiceInviteGetResponse",
+              "responseStreaming": false
+            },
+            {
+              "name": "RequestAdmission",
+              "description": "RequestAdmission requests admission for a tenant to use the service",
+              "requestType": "TenantServiceRequestAdmissionRequest",
+              "requestLongType": "TenantServiceRequestAdmissionRequest",
+              "requestFullType": "api.v1.TenantServiceRequestAdmissionRequest",
+              "requestStreaming": false,
+              "responseType": "TenantServiceRequestAdmissionResponse",
+              "responseLongType": "TenantServiceRequestAdmissionResponse",
+              "responseFullType": "api.v1.TenantServiceRequestAdmissionResponse",
               "responseStreaming": false
             }
           ]

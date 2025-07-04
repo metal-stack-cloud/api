@@ -402,17 +402,47 @@ export type PaymentServiceCreateOrUpdateCustomerRequest = Message<"api.v1.Paymen
      */
     login: string;
     /**
-     * Customer is the customer to modify
+     * Name of the customer to be billed
      *
-     * @generated from field: api.v1.PaymentCustomer customer = 2;
+     * @generated from field: optional string name = 4;
      */
-    customer?: PaymentCustomer;
+    name?: string;
     /**
-     * AcceptedTermsAndConditions indicates the modification of the terms and conditions acceptance
+     * PaymentMethodId at the payment provider, the client receives this from the payment provider and passes it on to the api
      *
-     * @generated from field: bool accepted_terms_and_conditions = 3;
+     * @generated from field: optional string payment_method_id = 5;
      */
-    acceptedTermsAndConditions: boolean;
+    paymentMethodId?: string;
+    /**
+     * Email of the customer to be billed
+     *
+     * @generated from field: optional string email = 6;
+     */
+    email?: string;
+    /**
+     * Card the customer to be billed
+     *
+     * @generated from field: optional api.v1.Card card = 7;
+     */
+    card?: Card;
+    /**
+     * Address is the postal address of the customer to be billed
+     *
+     * @generated from field: api.v1.Address address = 8;
+     */
+    address?: Address;
+    /**
+     * Vat which applies to the customer to be billed
+     *
+     * @generated from field: optional string vat = 9;
+     */
+    vat?: string;
+    /**
+     * PhoneNumber of the customer to be billed
+     *
+     * @generated from field: optional string phone_number = 10;
+     */
+    phoneNumber?: string;
 };
 /**
  * Describes the message api.v1.PaymentServiceCreateOrUpdateCustomerRequest.
@@ -706,95 +736,6 @@ export type PaymentServiceGetDefaultPricesResponse = Message<"api.v1.PaymentServ
  */
 export declare const PaymentServiceGetDefaultPricesResponseSchema: GenMessage<PaymentServiceGetDefaultPricesResponse>;
 /**
- * PaymentServiceCheckAdmittedRequest is the request payload for a check admitted request
- *
- * @generated from message api.v1.PaymentServiceCheckAdmittedRequest
- */
-export type PaymentServiceCheckAdmittedRequest = Message<"api.v1.PaymentServiceCheckAdmittedRequest"> & {
-    /**
-     * Login of the customer
-     *
-     * @generated from field: string login = 1;
-     */
-    login: string;
-};
-/**
- * Describes the message api.v1.PaymentServiceCheckAdmittedRequest.
- * Use `create(PaymentServiceCheckAdmittedRequestSchema)` to create a new message.
- */
-export declare const PaymentServiceCheckAdmittedRequestSchema: GenMessage<PaymentServiceCheckAdmittedRequest>;
-/**
- * PaymentServiceCheckAdmittedResponse is the response payload for a check admitted request
- *
- * @generated from message api.v1.PaymentServiceCheckAdmittedResponse
- */
-export type PaymentServiceCheckAdmittedResponse = Message<"api.v1.PaymentServiceCheckAdmittedResponse"> & {
-    /**
-     * Admitted indicates if the customer is already admitted to use the service
-     *
-     * @generated from field: bool admitted = 1;
-     */
-    admitted: boolean;
-    /**
-     * Requested indicates if the customer requested admittance
-     *
-     * @generated from field: bool requested = 2;
-     */
-    requested: boolean;
-};
-/**
- * Describes the message api.v1.PaymentServiceCheckAdmittedResponse.
- * Use `create(PaymentServiceCheckAdmittedResponseSchema)` to create a new message.
- */
-export declare const PaymentServiceCheckAdmittedResponseSchema: GenMessage<PaymentServiceCheckAdmittedResponse>;
-/**
- * PaymentServiceRequestAdmissionRequest is the request payload for a admission request
- *
- * @generated from message api.v1.PaymentServiceRequestAdmissionRequest
- */
-export type PaymentServiceRequestAdmissionRequest = Message<"api.v1.PaymentServiceRequestAdmissionRequest"> & {
-    /**
-     * Login of the customer
-     *
-     * @generated from field: string login = 1;
-     */
-    login: string;
-    /**
-     * Customer is the customer
-     *
-     * @generated from field: api.v1.PaymentCustomer customer = 2;
-     */
-    customer?: PaymentCustomer;
-    /**
-     * AcceptedTermsAndConditions indicates if the customer already accepted the terms and conditions
-     *
-     * @generated from field: bool accepted_terms_and_conditions = 3;
-     */
-    acceptedTermsAndConditions: boolean;
-    /**
-     * EmailConsent indicates if the customer already gave consent to email
-     *
-     * @generated from field: bool email_consent = 4;
-     */
-    emailConsent: boolean;
-};
-/**
- * Describes the message api.v1.PaymentServiceRequestAdmissionRequest.
- * Use `create(PaymentServiceRequestAdmissionRequestSchema)` to create a new message.
- */
-export declare const PaymentServiceRequestAdmissionRequestSchema: GenMessage<PaymentServiceRequestAdmissionRequest>;
-/**
- * PaymentServiceRequestAdmissionResponse is the response payload for a admission request
- *
- * @generated from message api.v1.PaymentServiceRequestAdmissionResponse
- */
-export type PaymentServiceRequestAdmissionResponse = Message<"api.v1.PaymentServiceRequestAdmissionResponse"> & {};
-/**
- * Describes the message api.v1.PaymentServiceRequestAdmissionResponse.
- * Use `create(PaymentServiceRequestAdmissionResponseSchema)` to create a new message.
- */
-export declare const PaymentServiceRequestAdmissionResponseSchema: GenMessage<PaymentServiceRequestAdmissionResponse>;
-/**
  * PaymentServiceHasChargeableResourcesRequest is the request payload for a has chargeable request
  *
  * @generated from message api.v1.PaymentServiceHasChargeableResourcesRequest
@@ -830,84 +771,6 @@ export type PaymentServiceHasChargeableResourcesResponse = Message<"api.v1.Payme
  * Use `create(PaymentServiceHasChargeableResourcesResponseSchema)` to create a new message.
  */
 export declare const PaymentServiceHasChargeableResourcesResponseSchema: GenMessage<PaymentServiceHasChargeableResourcesResponse>;
-/**
- * PayentServiceSetOnboardedRequest changes the onboarded status of the given customer
- *
- * @generated from message api.v1.PaymentServiceSetOnboardedRequest
- */
-export type PaymentServiceSetOnboardedRequest = Message<"api.v1.PaymentServiceSetOnboardedRequest"> & {
-    /**
-     * Login of the customer
-     *
-     * @generated from field: string login = 1;
-     */
-    login: string;
-    /**
-     * Onboarded indicates if the customer has seen the onboarde message
-     *
-     * @generated from field: bool onboarded = 2;
-     */
-    onboarded: boolean;
-};
-/**
- * Describes the message api.v1.PaymentServiceSetOnboardedRequest.
- * Use `create(PaymentServiceSetOnboardedRequestSchema)` to create a new message.
- */
-export declare const PaymentServiceSetOnboardedRequestSchema: GenMessage<PaymentServiceSetOnboardedRequest>;
-/**
- * PaymentServiceSetOnboardedResponse respond to the changed status of the given customer
- *
- * @generated from message api.v1.PaymentServiceSetOnboardedResponse
- */
-export type PaymentServiceSetOnboardedResponse = Message<"api.v1.PaymentServiceSetOnboardedResponse"> & {
-    /**
-     * Onboarded indicates if the customer has seen the onboarded message
-     *
-     * @generated from field: bool onboarded = 1;
-     */
-    onboarded: boolean;
-};
-/**
- * Describes the message api.v1.PaymentServiceSetOnboardedResponse.
- * Use `create(PaymentServiceSetOnboardedResponseSchema)` to create a new message.
- */
-export declare const PaymentServiceSetOnboardedResponseSchema: GenMessage<PaymentServiceSetOnboardedResponse>;
-/**
- * PaymentServiceGetOnboardedRequest check the onboarded status
- *
- * @generated from message api.v1.PaymentServiceGetOnboardedRequest
- */
-export type PaymentServiceGetOnboardedRequest = Message<"api.v1.PaymentServiceGetOnboardedRequest"> & {
-    /**
-     * Login of the customer
-     *
-     * @generated from field: string login = 1;
-     */
-    login: string;
-};
-/**
- * Describes the message api.v1.PaymentServiceGetOnboardedRequest.
- * Use `create(PaymentServiceGetOnboardedRequestSchema)` to create a new message.
- */
-export declare const PaymentServiceGetOnboardedRequestSchema: GenMessage<PaymentServiceGetOnboardedRequest>;
-/**
- * PaymentServiceGetOnboardedRequest returns the onboarded status
- *
- * @generated from message api.v1.PaymentServiceGetOnboardedResponse
- */
-export type PaymentServiceGetOnboardedResponse = Message<"api.v1.PaymentServiceGetOnboardedResponse"> & {
-    /**
-     * Onboarded indicates if the customer has seen the onboarded message
-     *
-     * @generated from field: bool onboarded = 1;
-     */
-    onboarded: boolean;
-};
-/**
- * Describes the message api.v1.PaymentServiceGetOnboardedResponse.
- * Use `create(PaymentServiceGetOnboardedResponseSchema)` to create a new message.
- */
-export declare const PaymentServiceGetOnboardedResponseSchema: GenMessage<PaymentServiceGetOnboardedResponse>;
 /**
  * ProductType defines for which type of product a price applies
  *
@@ -1065,26 +928,6 @@ export declare const PaymentService: GenService<{
         output: typeof PaymentServiceGetDefaultPricesResponseSchema;
     };
     /**
-     * CheckAdmitted if the customer is allowed to use the service on the platform
-     *
-     * @generated from rpc api.v1.PaymentService.CheckAdmitted
-     */
-    checkAdmitted: {
-        methodKind: "unary";
-        input: typeof PaymentServiceCheckAdmittedRequestSchema;
-        output: typeof PaymentServiceCheckAdmittedResponseSchema;
-    };
-    /**
-     * RequestAdmission for a customer to get allowed to used the service
-     *
-     * @generated from rpc api.v1.PaymentService.RequestAdmission
-     */
-    requestAdmission: {
-        methodKind: "unary";
-        input: typeof PaymentServiceRequestAdmissionRequestSchema;
-        output: typeof PaymentServiceRequestAdmissionResponseSchema;
-    };
-    /**
      * HasChargeableResources checks if the customer has resources actually consumed which are chargeable
      *
      * @generated from rpc api.v1.PaymentService.HasChargeableResources
@@ -1093,25 +936,5 @@ export declare const PaymentService: GenService<{
         methodKind: "unary";
         input: typeof PaymentServiceHasChargeableResourcesRequestSchema;
         output: typeof PaymentServiceHasChargeableResourcesResponseSchema;
-    };
-    /**
-     * SetOnboarded set the onboarded status
-     *
-     * @generated from rpc api.v1.PaymentService.SetOnboarded
-     */
-    setOnboarded: {
-        methodKind: "unary";
-        input: typeof PaymentServiceSetOnboardedRequestSchema;
-        output: typeof PaymentServiceSetOnboardedResponseSchema;
-    };
-    /**
-     * GetOnboarded get the onboarded status
-     *
-     * @generated from rpc api.v1.PaymentService.GetOnboarded
-     */
-    getOnboarded: {
-        methodKind: "unary";
-        input: typeof PaymentServiceGetOnboardedRequestSchema;
-        output: typeof PaymentServiceGetOnboardedResponseSchema;
     };
 }>;
