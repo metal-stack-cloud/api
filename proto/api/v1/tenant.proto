@@ -177,14 +177,6 @@ message TermsAndConditions {
   google.protobuf.Timestamp when = 2;
 }
 
-// TermsAndConditionsUpdate
-message TermsAndConditionsUpdate {
-  // Accepted indicates if the tenant accepted the terms and conditions
-  optional bool accepted = 1;
-  // When is the date when the tenant accepted the terms and conditions
-  optional google.protobuf.Timestamp when = 2;
-}
-
 // TenantServiceListRequest is the request payload of the tenant list request
 message TenantServiceListRequest {
   // Id filters tenants by id
@@ -232,6 +224,8 @@ message TenantServiceCreateOrUpdateRequest {
 message TenantServiceUpdateRequest {
   reserved 8;
   reserved "payment_details";
+  reserved 9;
+  reserved "terms_and_conditions";
 
   // Login of the tenant
   string login = 1;
@@ -249,10 +243,10 @@ message TenantServiceUpdateRequest {
   }];
   // AvatarUrl of the tenant
   optional string avatar_url = 5;
-  // TermsAndConditions of the tenant
-  optional TermsAndConditionsUpdate terms_and_conditions = 9;
   // Onboarded checks if the tenant was asked to be onboarded
   optional bool onboarded = 13;
+  // AcceptTermsAndConditions can be used to accept the terms and conditions
+  optional bool accept_terms_and_conditions = 14;
 }
 
 // TenantServiceDeleteRequest is the request payload of the tenant delete request

@@ -9041,18 +9041,6 @@
               "defaultValue": ""
             },
             {
-              "name": "terms_and_conditions",
-              "description": "TermsAndConditions of the tenant",
-              "label": "optional",
-              "type": "TermsAndConditionsUpdate",
-              "longType": "TermsAndConditionsUpdate",
-              "fullType": "api.v1.TermsAndConditionsUpdate",
-              "ismap": false,
-              "isoneof": true,
-              "oneofdecl": "_terms_and_conditions",
-              "defaultValue": ""
-            },
-            {
               "name": "onboarded",
               "description": "Onboarded checks if the tenant was asked to be onboarded",
               "label": "optional",
@@ -9062,6 +9050,18 @@
               "ismap": false,
               "isoneof": true,
               "oneofdecl": "_onboarded",
+              "defaultValue": ""
+            },
+            {
+              "name": "accept_terms_and_conditions",
+              "description": "AcceptTermsAndConditions can be used to accept the terms and conditions",
+              "label": "optional",
+              "type": "bool",
+              "longType": "bool",
+              "fullType": "bool",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "_accept_terms_and_conditions",
               "defaultValue": ""
             }
           ]
@@ -9122,42 +9122,6 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": ""
-            }
-          ]
-        },
-        {
-          "name": "TermsAndConditionsUpdate",
-          "longName": "TermsAndConditionsUpdate",
-          "fullName": "api.v1.TermsAndConditionsUpdate",
-          "description": "TermsAndConditionsUpdate",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": true,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "accepted",
-              "description": "Accepted indicates if the tenant accepted the terms and conditions",
-              "label": "optional",
-              "type": "bool",
-              "longType": "bool",
-              "fullType": "bool",
-              "ismap": false,
-              "isoneof": true,
-              "oneofdecl": "_accepted",
-              "defaultValue": ""
-            },
-            {
-              "name": "when",
-              "description": "When is the date when the tenant accepted the terms and conditions",
-              "label": "optional",
-              "type": "Timestamp",
-              "longType": "google.protobuf.Timestamp",
-              "fullType": "google.protobuf.Timestamp",
-              "ismap": false,
-              "isoneof": true,
-              "oneofdecl": "_when",
               "defaultValue": ""
             }
           ]

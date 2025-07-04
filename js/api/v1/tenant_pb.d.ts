@@ -284,30 +284,6 @@ export type TermsAndConditions = Message<"api.v1.TermsAndConditions"> & {
  */
 export declare const TermsAndConditionsSchema: GenMessage<TermsAndConditions>;
 /**
- * TermsAndConditionsUpdate
- *
- * @generated from message api.v1.TermsAndConditionsUpdate
- */
-export type TermsAndConditionsUpdate = Message<"api.v1.TermsAndConditionsUpdate"> & {
-    /**
-     * Accepted indicates if the tenant accepted the terms and conditions
-     *
-     * @generated from field: optional bool accepted = 1;
-     */
-    accepted?: boolean;
-    /**
-     * When is the date when the tenant accepted the terms and conditions
-     *
-     * @generated from field: optional google.protobuf.Timestamp when = 2;
-     */
-    when?: Timestamp;
-};
-/**
- * Describes the message api.v1.TermsAndConditionsUpdate.
- * Use `create(TermsAndConditionsUpdateSchema)` to create a new message.
- */
-export declare const TermsAndConditionsUpdateSchema: GenMessage<TermsAndConditionsUpdate>;
-/**
  * TenantServiceListRequest is the request payload of the tenant list request
  *
  * @generated from message api.v1.TenantServiceListRequest
@@ -446,17 +422,17 @@ export type TenantServiceUpdateRequest = Message<"api.v1.TenantServiceUpdateRequ
      */
     avatarUrl?: string;
     /**
-     * TermsAndConditions of the tenant
-     *
-     * @generated from field: optional api.v1.TermsAndConditionsUpdate terms_and_conditions = 9;
-     */
-    termsAndConditions?: TermsAndConditionsUpdate;
-    /**
      * Onboarded checks if the tenant was asked to be onboarded
      *
      * @generated from field: optional bool onboarded = 13;
      */
     onboarded?: boolean;
+    /**
+     * AcceptTermsAndConditions can be used to accept the terms and conditions
+     *
+     * @generated from field: optional bool accept_terms_and_conditions = 14;
+     */
+    acceptTermsAndConditions?: boolean;
 };
 /**
  * Describes the message api.v1.TenantServiceUpdateRequest.
