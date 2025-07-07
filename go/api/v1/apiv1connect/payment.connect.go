@@ -41,9 +41,6 @@ const (
 	PaymentServiceDeleteProcedure = "/api.v1.PaymentService/Delete"
 	// PaymentServiceGetProcedure is the fully-qualified name of the PaymentService's Get RPC.
 	PaymentServiceGetProcedure = "/api.v1.PaymentService/Get"
-	// PaymentServiceCheckIfCustomerExistsProcedure is the fully-qualified name of the PaymentService's
-	// CheckIfCustomerExists RPC.
-	PaymentServiceCheckIfCustomerExistsProcedure = "/api.v1.PaymentService/CheckIfCustomerExists"
 	// PaymentServiceHasPaymentMethodProcedure is the fully-qualified name of the PaymentService's
 	// HasPaymentMethod RPC.
 	PaymentServiceHasPaymentMethodProcedure = "/api.v1.PaymentService/HasPaymentMethod"
@@ -71,8 +68,6 @@ type PaymentServiceClient interface {
 	Delete(context.Context, *connect.Request[v1.PaymentServiceDeleteRequest]) (*connect.Response[v1.PaymentServiceDeleteResponse], error)
 	// Get the payment data
 	Get(context.Context, *connect.Request[v1.PaymentServiceGetRequest]) (*connect.Response[v1.PaymentServiceGetResponse], error)
-	// CheckIfCustomerExists at the payment processor
-	CheckIfCustomerExists(context.Context, *connect.Request[v1.PaymentServiceCheckIfCustomerExistsRequest]) (*connect.Response[v1.PaymentServiceCheckIfCustomerExistsResponse], error)
 	// HasPaymentMethod check if the customer has a payment method provided
 	HasPaymentMethod(context.Context, *connect.Request[v1.PaymentServiceHasPaymentMethodRequest]) (*connect.Response[v1.PaymentServiceHasPaymentMethodResponse], error)
 	// GetSubscriptionUsage of the customer
@@ -120,12 +115,6 @@ func NewPaymentServiceClient(httpClient connect.HTTPClient, baseURL string, opts
 			connect.WithSchema(paymentServiceMethods.ByName("Get")),
 			connect.WithClientOptions(opts...),
 		),
-		checkIfCustomerExists: connect.NewClient[v1.PaymentServiceCheckIfCustomerExistsRequest, v1.PaymentServiceCheckIfCustomerExistsResponse](
-			httpClient,
-			baseURL+PaymentServiceCheckIfCustomerExistsProcedure,
-			connect.WithSchema(paymentServiceMethods.ByName("CheckIfCustomerExists")),
-			connect.WithClientOptions(opts...),
-		),
 		hasPaymentMethod: connect.NewClient[v1.PaymentServiceHasPaymentMethodRequest, v1.PaymentServiceHasPaymentMethodResponse](
 			httpClient,
 			baseURL+PaymentServiceHasPaymentMethodProcedure,
@@ -165,7 +154,6 @@ type paymentServiceClient struct {
 	update                 *connect.Client[v1.PaymentServiceUpdateRequest, v1.PaymentServiceUpdateResponse]
 	delete                 *connect.Client[v1.PaymentServiceDeleteRequest, v1.PaymentServiceDeleteResponse]
 	get                    *connect.Client[v1.PaymentServiceGetRequest, v1.PaymentServiceGetResponse]
-	checkIfCustomerExists  *connect.Client[v1.PaymentServiceCheckIfCustomerExistsRequest, v1.PaymentServiceCheckIfCustomerExistsResponse]
 	hasPaymentMethod       *connect.Client[v1.PaymentServiceHasPaymentMethodRequest, v1.PaymentServiceHasPaymentMethodResponse]
 	getSubscriptionUsage   *connect.Client[v1.PaymentServiceGetSubscriptionUsageRequest, v1.PaymentServiceGetSubscriptionUsageResponse]
 	getInvoices            *connect.Client[v1.PaymentServiceGetInvoicesRequest, v1.PaymentServiceGetInvoicesResponse]
@@ -191,11 +179,6 @@ func (c *paymentServiceClient) Delete(ctx context.Context, req *connect.Request[
 // Get calls api.v1.PaymentService.Get.
 func (c *paymentServiceClient) Get(ctx context.Context, req *connect.Request[v1.PaymentServiceGetRequest]) (*connect.Response[v1.PaymentServiceGetResponse], error) {
 	return c.get.CallUnary(ctx, req)
-}
-
-// CheckIfCustomerExists calls api.v1.PaymentService.CheckIfCustomerExists.
-func (c *paymentServiceClient) CheckIfCustomerExists(ctx context.Context, req *connect.Request[v1.PaymentServiceCheckIfCustomerExistsRequest]) (*connect.Response[v1.PaymentServiceCheckIfCustomerExistsResponse], error) {
-	return c.checkIfCustomerExists.CallUnary(ctx, req)
 }
 
 // HasPaymentMethod calls api.v1.PaymentService.HasPaymentMethod.
@@ -233,8 +216,6 @@ type PaymentServiceHandler interface {
 	Delete(context.Context, *connect.Request[v1.PaymentServiceDeleteRequest]) (*connect.Response[v1.PaymentServiceDeleteResponse], error)
 	// Get the payment data
 	Get(context.Context, *connect.Request[v1.PaymentServiceGetRequest]) (*connect.Response[v1.PaymentServiceGetResponse], error)
-	// CheckIfCustomerExists at the payment processor
-	CheckIfCustomerExists(context.Context, *connect.Request[v1.PaymentServiceCheckIfCustomerExistsRequest]) (*connect.Response[v1.PaymentServiceCheckIfCustomerExistsResponse], error)
 	// HasPaymentMethod check if the customer has a payment method provided
 	HasPaymentMethod(context.Context, *connect.Request[v1.PaymentServiceHasPaymentMethodRequest]) (*connect.Response[v1.PaymentServiceHasPaymentMethodResponse], error)
 	// GetSubscriptionUsage of the customer
@@ -278,12 +259,6 @@ func NewPaymentServiceHandler(svc PaymentServiceHandler, opts ...connect.Handler
 		connect.WithSchema(paymentServiceMethods.ByName("Get")),
 		connect.WithHandlerOptions(opts...),
 	)
-	paymentServiceCheckIfCustomerExistsHandler := connect.NewUnaryHandler(
-		PaymentServiceCheckIfCustomerExistsProcedure,
-		svc.CheckIfCustomerExists,
-		connect.WithSchema(paymentServiceMethods.ByName("CheckIfCustomerExists")),
-		connect.WithHandlerOptions(opts...),
-	)
 	paymentServiceHasPaymentMethodHandler := connect.NewUnaryHandler(
 		PaymentServiceHasPaymentMethodProcedure,
 		svc.HasPaymentMethod,
@@ -324,8 +299,6 @@ func NewPaymentServiceHandler(svc PaymentServiceHandler, opts ...connect.Handler
 			paymentServiceDeleteHandler.ServeHTTP(w, r)
 		case PaymentServiceGetProcedure:
 			paymentServiceGetHandler.ServeHTTP(w, r)
-		case PaymentServiceCheckIfCustomerExistsProcedure:
-			paymentServiceCheckIfCustomerExistsHandler.ServeHTTP(w, r)
 		case PaymentServiceHasPaymentMethodProcedure:
 			paymentServiceHasPaymentMethodHandler.ServeHTTP(w, r)
 		case PaymentServiceGetSubscriptionUsageProcedure:
@@ -359,10 +332,6 @@ func (UnimplementedPaymentServiceHandler) Delete(context.Context, *connect.Reque
 
 func (UnimplementedPaymentServiceHandler) Get(context.Context, *connect.Request[v1.PaymentServiceGetRequest]) (*connect.Response[v1.PaymentServiceGetResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("api.v1.PaymentService.Get is not implemented"))
-}
-
-func (UnimplementedPaymentServiceHandler) CheckIfCustomerExists(context.Context, *connect.Request[v1.PaymentServiceCheckIfCustomerExistsRequest]) (*connect.Response[v1.PaymentServiceCheckIfCustomerExistsResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("api.v1.PaymentService.CheckIfCustomerExists is not implemented"))
 }
 
 func (UnimplementedPaymentServiceHandler) HasPaymentMethod(context.Context, *connect.Request[v1.PaymentServiceHasPaymentMethodRequest]) (*connect.Response[v1.PaymentServiceHasPaymentMethodResponse], error) {

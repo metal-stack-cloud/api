@@ -582,48 +582,6 @@ export type PaymentServiceGetResponse = Message<"api.v1.PaymentServiceGetRespons
  */
 export declare const PaymentServiceGetResponseSchema: GenMessage<PaymentServiceGetResponse>;
 /**
- * PaymentServiceCheckIfCustomerExistsRequest is the request payload for a payment check if customer exists request
- *
- * @generated from message api.v1.PaymentServiceCheckIfCustomerExistsRequest
- */
-export type PaymentServiceCheckIfCustomerExistsRequest = Message<"api.v1.PaymentServiceCheckIfCustomerExistsRequest"> & {
-    /**
-     * Login of the tenant
-     *
-     * @generated from field: string login = 1;
-     */
-    login: string;
-};
-/**
- * Describes the message api.v1.PaymentServiceCheckIfCustomerExistsRequest.
- * Use `create(PaymentServiceCheckIfCustomerExistsRequestSchema)` to create a new message.
- */
-export declare const PaymentServiceCheckIfCustomerExistsRequestSchema: GenMessage<PaymentServiceCheckIfCustomerExistsRequest>;
-/**
- * PaymentServiceCheckIfCustomerExistsResponse is the response payload for a payment check if customer exists request
- *
- * @generated from message api.v1.PaymentServiceCheckIfCustomerExistsResponse
- */
-export type PaymentServiceCheckIfCustomerExistsResponse = Message<"api.v1.PaymentServiceCheckIfCustomerExistsResponse"> & {
-    /**
-     * Customer is the customer
-     *
-     * @generated from field: api.v1.PaymentCustomer customer = 1;
-     */
-    customer?: PaymentCustomer;
-    /**
-     * Exists indicates if this customer exists
-     *
-     * @generated from field: bool exists = 2;
-     */
-    exists: boolean;
-};
-/**
- * Describes the message api.v1.PaymentServiceCheckIfCustomerExistsResponse.
- * Use `create(PaymentServiceCheckIfCustomerExistsResponseSchema)` to create a new message.
- */
-export declare const PaymentServiceCheckIfCustomerExistsResponseSchema: GenMessage<PaymentServiceCheckIfCustomerExistsResponse>;
-/**
  * PaymentServiceHasPaymentMethodRequest is the request payload for a has payment request
  *
  * @generated from message api.v1.PaymentServiceHasPaymentMethodRequest
@@ -958,16 +916,6 @@ export declare const PaymentService: GenService<{
         methodKind: "unary";
         input: typeof PaymentServiceGetRequestSchema;
         output: typeof PaymentServiceGetResponseSchema;
-    };
-    /**
-     * CheckIfCustomerExists at the payment processor
-     *
-     * @generated from rpc api.v1.PaymentService.CheckIfCustomerExists
-     */
-    checkIfCustomerExists: {
-        methodKind: "unary";
-        input: typeof PaymentServiceCheckIfCustomerExistsRequestSchema;
-        output: typeof PaymentServiceCheckIfCustomerExistsResponseSchema;
     };
     /**
      * HasPaymentMethod check if the customer has a payment method provided

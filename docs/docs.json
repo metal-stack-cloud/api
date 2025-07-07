@@ -3265,66 +3265,6 @@
           ]
         },
         {
-          "name": "PaymentServiceCheckIfCustomerExistsRequest",
-          "longName": "PaymentServiceCheckIfCustomerExistsRequest",
-          "fullName": "api.v1.PaymentServiceCheckIfCustomerExistsRequest",
-          "description": "PaymentServiceCheckIfCustomerExistsRequest is the request payload for a payment check if customer exists request",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "login",
-              "description": "Login of the tenant",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            }
-          ]
-        },
-        {
-          "name": "PaymentServiceCheckIfCustomerExistsResponse",
-          "longName": "PaymentServiceCheckIfCustomerExistsResponse",
-          "fullName": "api.v1.PaymentServiceCheckIfCustomerExistsResponse",
-          "description": "PaymentServiceCheckIfCustomerExistsResponse is the response payload for a payment check if customer exists request",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "customer",
-              "description": "Customer is the customer",
-              "label": "",
-              "type": "PaymentCustomer",
-              "longType": "PaymentCustomer",
-              "fullType": "api.v1.PaymentCustomer",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "exists",
-              "description": "Exists indicates if this customer exists",
-              "label": "",
-              "type": "bool",
-              "longType": "bool",
-              "fullType": "bool",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            }
-          ]
-        },
-        {
           "name": "PaymentServiceCreateRequest",
           "longName": "PaymentServiceCreateRequest",
           "fullName": "api.v1.PaymentServiceCreateRequest",
@@ -4156,18 +4096,6 @@
               "responseType": "PaymentServiceGetResponse",
               "responseLongType": "PaymentServiceGetResponse",
               "responseFullType": "api.v1.PaymentServiceGetResponse",
-              "responseStreaming": false
-            },
-            {
-              "name": "CheckIfCustomerExists",
-              "description": "CheckIfCustomerExists at the payment processor",
-              "requestType": "PaymentServiceCheckIfCustomerExistsRequest",
-              "requestLongType": "PaymentServiceCheckIfCustomerExistsRequest",
-              "requestFullType": "api.v1.PaymentServiceCheckIfCustomerExistsRequest",
-              "requestStreaming": false,
-              "responseType": "PaymentServiceCheckIfCustomerExistsResponse",
-              "responseLongType": "PaymentServiceCheckIfCustomerExistsResponse",
-              "responseFullType": "api.v1.PaymentServiceCheckIfCustomerExistsResponse",
               "responseStreaming": false
             },
             {
