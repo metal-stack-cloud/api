@@ -57,21 +57,9 @@ const (
 	// PaymentServiceGetDefaultPricesProcedure is the fully-qualified name of the PaymentService's
 	// GetDefaultPrices RPC.
 	PaymentServiceGetDefaultPricesProcedure = "/api.v1.PaymentService/GetDefaultPrices"
-	// PaymentServiceCheckAdmittedProcedure is the fully-qualified name of the PaymentService's
-	// CheckAdmitted RPC.
-	PaymentServiceCheckAdmittedProcedure = "/api.v1.PaymentService/CheckAdmitted"
-	// PaymentServiceRequestAdmissionProcedure is the fully-qualified name of the PaymentService's
-	// RequestAdmission RPC.
-	PaymentServiceRequestAdmissionProcedure = "/api.v1.PaymentService/RequestAdmission"
 	// PaymentServiceHasChargeableResourcesProcedure is the fully-qualified name of the PaymentService's
 	// HasChargeableResources RPC.
 	PaymentServiceHasChargeableResourcesProcedure = "/api.v1.PaymentService/HasChargeableResources"
-	// PaymentServiceSetOnboardedProcedure is the fully-qualified name of the PaymentService's
-	// SetOnboarded RPC.
-	PaymentServiceSetOnboardedProcedure = "/api.v1.PaymentService/SetOnboarded"
-	// PaymentServiceGetOnboardedProcedure is the fully-qualified name of the PaymentService's
-	// GetOnboarded RPC.
-	PaymentServiceGetOnboardedProcedure = "/api.v1.PaymentService/GetOnboarded"
 )
 
 // PaymentServiceClient is a client for the api.v1.PaymentService service.
@@ -92,16 +80,8 @@ type PaymentServiceClient interface {
 	GetInvoices(context.Context, *connect.Request[v1.PaymentServiceGetInvoicesRequest]) (*connect.Response[v1.PaymentServiceGetInvoicesResponse], error)
 	// GetDefaultPrices of the products on the platform
 	GetDefaultPrices(context.Context, *connect.Request[v1.PaymentServiceGetDefaultPricesRequest]) (*connect.Response[v1.PaymentServiceGetDefaultPricesResponse], error)
-	// CheckAdmitted if the customer is allowed to use the service on the platform
-	CheckAdmitted(context.Context, *connect.Request[v1.PaymentServiceCheckAdmittedRequest]) (*connect.Response[v1.PaymentServiceCheckAdmittedResponse], error)
-	// RequestAdmission for a customer to get allowed to used the service
-	RequestAdmission(context.Context, *connect.Request[v1.PaymentServiceRequestAdmissionRequest]) (*connect.Response[v1.PaymentServiceRequestAdmissionResponse], error)
 	// HasChargeableResources checks if the customer has resources actually consumed which are chargeable
 	HasChargeableResources(context.Context, *connect.Request[v1.PaymentServiceHasChargeableResourcesRequest]) (*connect.Response[v1.PaymentServiceHasChargeableResourcesResponse], error)
-	// SetOnboarded set the onboarded status
-	SetOnboarded(context.Context, *connect.Request[v1.PaymentServiceSetOnboardedRequest]) (*connect.Response[v1.PaymentServiceSetOnboardedResponse], error)
-	// GetOnboarded get the onboarded status
-	GetOnboarded(context.Context, *connect.Request[v1.PaymentServiceGetOnboardedRequest]) (*connect.Response[v1.PaymentServiceGetOnboardedResponse], error)
 }
 
 // NewPaymentServiceClient constructs a client for the api.v1.PaymentService service. By default, it
@@ -163,34 +143,10 @@ func NewPaymentServiceClient(httpClient connect.HTTPClient, baseURL string, opts
 			connect.WithSchema(paymentServiceMethods.ByName("GetDefaultPrices")),
 			connect.WithClientOptions(opts...),
 		),
-		checkAdmitted: connect.NewClient[v1.PaymentServiceCheckAdmittedRequest, v1.PaymentServiceCheckAdmittedResponse](
-			httpClient,
-			baseURL+PaymentServiceCheckAdmittedProcedure,
-			connect.WithSchema(paymentServiceMethods.ByName("CheckAdmitted")),
-			connect.WithClientOptions(opts...),
-		),
-		requestAdmission: connect.NewClient[v1.PaymentServiceRequestAdmissionRequest, v1.PaymentServiceRequestAdmissionResponse](
-			httpClient,
-			baseURL+PaymentServiceRequestAdmissionProcedure,
-			connect.WithSchema(paymentServiceMethods.ByName("RequestAdmission")),
-			connect.WithClientOptions(opts...),
-		),
 		hasChargeableResources: connect.NewClient[v1.PaymentServiceHasChargeableResourcesRequest, v1.PaymentServiceHasChargeableResourcesResponse](
 			httpClient,
 			baseURL+PaymentServiceHasChargeableResourcesProcedure,
 			connect.WithSchema(paymentServiceMethods.ByName("HasChargeableResources")),
-			connect.WithClientOptions(opts...),
-		),
-		setOnboarded: connect.NewClient[v1.PaymentServiceSetOnboardedRequest, v1.PaymentServiceSetOnboardedResponse](
-			httpClient,
-			baseURL+PaymentServiceSetOnboardedProcedure,
-			connect.WithSchema(paymentServiceMethods.ByName("SetOnboarded")),
-			connect.WithClientOptions(opts...),
-		),
-		getOnboarded: connect.NewClient[v1.PaymentServiceGetOnboardedRequest, v1.PaymentServiceGetOnboardedResponse](
-			httpClient,
-			baseURL+PaymentServiceGetOnboardedProcedure,
-			connect.WithSchema(paymentServiceMethods.ByName("GetOnboarded")),
 			connect.WithClientOptions(opts...),
 		),
 	}
@@ -206,11 +162,7 @@ type paymentServiceClient struct {
 	getSubscriptionUsage   *connect.Client[v1.PaymentServiceGetSubscriptionUsageRequest, v1.PaymentServiceGetSubscriptionUsageResponse]
 	getInvoices            *connect.Client[v1.PaymentServiceGetInvoicesRequest, v1.PaymentServiceGetInvoicesResponse]
 	getDefaultPrices       *connect.Client[v1.PaymentServiceGetDefaultPricesRequest, v1.PaymentServiceGetDefaultPricesResponse]
-	checkAdmitted          *connect.Client[v1.PaymentServiceCheckAdmittedRequest, v1.PaymentServiceCheckAdmittedResponse]
-	requestAdmission       *connect.Client[v1.PaymentServiceRequestAdmissionRequest, v1.PaymentServiceRequestAdmissionResponse]
 	hasChargeableResources *connect.Client[v1.PaymentServiceHasChargeableResourcesRequest, v1.PaymentServiceHasChargeableResourcesResponse]
-	setOnboarded           *connect.Client[v1.PaymentServiceSetOnboardedRequest, v1.PaymentServiceSetOnboardedResponse]
-	getOnboarded           *connect.Client[v1.PaymentServiceGetOnboardedRequest, v1.PaymentServiceGetOnboardedResponse]
 }
 
 // CreateOrUpdateCustomer calls api.v1.PaymentService.CreateOrUpdateCustomer.
@@ -253,29 +205,9 @@ func (c *paymentServiceClient) GetDefaultPrices(ctx context.Context, req *connec
 	return c.getDefaultPrices.CallUnary(ctx, req)
 }
 
-// CheckAdmitted calls api.v1.PaymentService.CheckAdmitted.
-func (c *paymentServiceClient) CheckAdmitted(ctx context.Context, req *connect.Request[v1.PaymentServiceCheckAdmittedRequest]) (*connect.Response[v1.PaymentServiceCheckAdmittedResponse], error) {
-	return c.checkAdmitted.CallUnary(ctx, req)
-}
-
-// RequestAdmission calls api.v1.PaymentService.RequestAdmission.
-func (c *paymentServiceClient) RequestAdmission(ctx context.Context, req *connect.Request[v1.PaymentServiceRequestAdmissionRequest]) (*connect.Response[v1.PaymentServiceRequestAdmissionResponse], error) {
-	return c.requestAdmission.CallUnary(ctx, req)
-}
-
 // HasChargeableResources calls api.v1.PaymentService.HasChargeableResources.
 func (c *paymentServiceClient) HasChargeableResources(ctx context.Context, req *connect.Request[v1.PaymentServiceHasChargeableResourcesRequest]) (*connect.Response[v1.PaymentServiceHasChargeableResourcesResponse], error) {
 	return c.hasChargeableResources.CallUnary(ctx, req)
-}
-
-// SetOnboarded calls api.v1.PaymentService.SetOnboarded.
-func (c *paymentServiceClient) SetOnboarded(ctx context.Context, req *connect.Request[v1.PaymentServiceSetOnboardedRequest]) (*connect.Response[v1.PaymentServiceSetOnboardedResponse], error) {
-	return c.setOnboarded.CallUnary(ctx, req)
-}
-
-// GetOnboarded calls api.v1.PaymentService.GetOnboarded.
-func (c *paymentServiceClient) GetOnboarded(ctx context.Context, req *connect.Request[v1.PaymentServiceGetOnboardedRequest]) (*connect.Response[v1.PaymentServiceGetOnboardedResponse], error) {
-	return c.getOnboarded.CallUnary(ctx, req)
 }
 
 // PaymentServiceHandler is an implementation of the api.v1.PaymentService service.
@@ -296,16 +228,8 @@ type PaymentServiceHandler interface {
 	GetInvoices(context.Context, *connect.Request[v1.PaymentServiceGetInvoicesRequest]) (*connect.Response[v1.PaymentServiceGetInvoicesResponse], error)
 	// GetDefaultPrices of the products on the platform
 	GetDefaultPrices(context.Context, *connect.Request[v1.PaymentServiceGetDefaultPricesRequest]) (*connect.Response[v1.PaymentServiceGetDefaultPricesResponse], error)
-	// CheckAdmitted if the customer is allowed to use the service on the platform
-	CheckAdmitted(context.Context, *connect.Request[v1.PaymentServiceCheckAdmittedRequest]) (*connect.Response[v1.PaymentServiceCheckAdmittedResponse], error)
-	// RequestAdmission for a customer to get allowed to used the service
-	RequestAdmission(context.Context, *connect.Request[v1.PaymentServiceRequestAdmissionRequest]) (*connect.Response[v1.PaymentServiceRequestAdmissionResponse], error)
 	// HasChargeableResources checks if the customer has resources actually consumed which are chargeable
 	HasChargeableResources(context.Context, *connect.Request[v1.PaymentServiceHasChargeableResourcesRequest]) (*connect.Response[v1.PaymentServiceHasChargeableResourcesResponse], error)
-	// SetOnboarded set the onboarded status
-	SetOnboarded(context.Context, *connect.Request[v1.PaymentServiceSetOnboardedRequest]) (*connect.Response[v1.PaymentServiceSetOnboardedResponse], error)
-	// GetOnboarded get the onboarded status
-	GetOnboarded(context.Context, *connect.Request[v1.PaymentServiceGetOnboardedRequest]) (*connect.Response[v1.PaymentServiceGetOnboardedResponse], error)
 }
 
 // NewPaymentServiceHandler builds an HTTP handler from the service implementation. It returns the
@@ -363,34 +287,10 @@ func NewPaymentServiceHandler(svc PaymentServiceHandler, opts ...connect.Handler
 		connect.WithSchema(paymentServiceMethods.ByName("GetDefaultPrices")),
 		connect.WithHandlerOptions(opts...),
 	)
-	paymentServiceCheckAdmittedHandler := connect.NewUnaryHandler(
-		PaymentServiceCheckAdmittedProcedure,
-		svc.CheckAdmitted,
-		connect.WithSchema(paymentServiceMethods.ByName("CheckAdmitted")),
-		connect.WithHandlerOptions(opts...),
-	)
-	paymentServiceRequestAdmissionHandler := connect.NewUnaryHandler(
-		PaymentServiceRequestAdmissionProcedure,
-		svc.RequestAdmission,
-		connect.WithSchema(paymentServiceMethods.ByName("RequestAdmission")),
-		connect.WithHandlerOptions(opts...),
-	)
 	paymentServiceHasChargeableResourcesHandler := connect.NewUnaryHandler(
 		PaymentServiceHasChargeableResourcesProcedure,
 		svc.HasChargeableResources,
 		connect.WithSchema(paymentServiceMethods.ByName("HasChargeableResources")),
-		connect.WithHandlerOptions(opts...),
-	)
-	paymentServiceSetOnboardedHandler := connect.NewUnaryHandler(
-		PaymentServiceSetOnboardedProcedure,
-		svc.SetOnboarded,
-		connect.WithSchema(paymentServiceMethods.ByName("SetOnboarded")),
-		connect.WithHandlerOptions(opts...),
-	)
-	paymentServiceGetOnboardedHandler := connect.NewUnaryHandler(
-		PaymentServiceGetOnboardedProcedure,
-		svc.GetOnboarded,
-		connect.WithSchema(paymentServiceMethods.ByName("GetOnboarded")),
 		connect.WithHandlerOptions(opts...),
 	)
 	return "/api.v1.PaymentService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
@@ -411,16 +311,8 @@ func NewPaymentServiceHandler(svc PaymentServiceHandler, opts ...connect.Handler
 			paymentServiceGetInvoicesHandler.ServeHTTP(w, r)
 		case PaymentServiceGetDefaultPricesProcedure:
 			paymentServiceGetDefaultPricesHandler.ServeHTTP(w, r)
-		case PaymentServiceCheckAdmittedProcedure:
-			paymentServiceCheckAdmittedHandler.ServeHTTP(w, r)
-		case PaymentServiceRequestAdmissionProcedure:
-			paymentServiceRequestAdmissionHandler.ServeHTTP(w, r)
 		case PaymentServiceHasChargeableResourcesProcedure:
 			paymentServiceHasChargeableResourcesHandler.ServeHTTP(w, r)
-		case PaymentServiceSetOnboardedProcedure:
-			paymentServiceSetOnboardedHandler.ServeHTTP(w, r)
-		case PaymentServiceGetOnboardedProcedure:
-			paymentServiceGetOnboardedHandler.ServeHTTP(w, r)
 		default:
 			http.NotFound(w, r)
 		}
@@ -462,22 +354,6 @@ func (UnimplementedPaymentServiceHandler) GetDefaultPrices(context.Context, *con
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("api.v1.PaymentService.GetDefaultPrices is not implemented"))
 }
 
-func (UnimplementedPaymentServiceHandler) CheckAdmitted(context.Context, *connect.Request[v1.PaymentServiceCheckAdmittedRequest]) (*connect.Response[v1.PaymentServiceCheckAdmittedResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("api.v1.PaymentService.CheckAdmitted is not implemented"))
-}
-
-func (UnimplementedPaymentServiceHandler) RequestAdmission(context.Context, *connect.Request[v1.PaymentServiceRequestAdmissionRequest]) (*connect.Response[v1.PaymentServiceRequestAdmissionResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("api.v1.PaymentService.RequestAdmission is not implemented"))
-}
-
 func (UnimplementedPaymentServiceHandler) HasChargeableResources(context.Context, *connect.Request[v1.PaymentServiceHasChargeableResourcesRequest]) (*connect.Response[v1.PaymentServiceHasChargeableResourcesResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("api.v1.PaymentService.HasChargeableResources is not implemented"))
-}
-
-func (UnimplementedPaymentServiceHandler) SetOnboarded(context.Context, *connect.Request[v1.PaymentServiceSetOnboardedRequest]) (*connect.Response[v1.PaymentServiceSetOnboardedResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("api.v1.PaymentService.SetOnboarded is not implemented"))
-}
-
-func (UnimplementedPaymentServiceHandler) GetOnboarded(context.Context, *connect.Request[v1.PaymentServiceGetOnboardedRequest]) (*connect.Response[v1.PaymentServiceGetOnboardedResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("api.v1.PaymentService.GetOnboarded is not implemented"))
 }

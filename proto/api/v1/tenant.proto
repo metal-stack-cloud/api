@@ -77,6 +77,12 @@ service TenantService {
     option (visibility) = VISIBILITY_SELF;
     option (auditing) = AUDITING_EXCLUDED;
   }
+  // RequestAdmission requests admission for a tenant to use the service
+  rpc RequestAdmission(TenantServiceRequestAdmissionRequest) returns (TenantServiceRequestAdmissionResponse) {
+    option (tenant_roles) = TENANT_ROLE_OWNER;
+    option (tenant_roles) = TENANT_ROLE_EDITOR;
+    option (auditing) = AUDITING_EXCLUDED;
+  }
 }
 
 // Tenant is a customer of the platform
@@ -163,32 +169,12 @@ message PaymentDetails {
   string vat = 5;
 }
 
-// PaymentDetailsUpdate is used to update PaymentDetails
-message PaymentDetailsUpdate {
-  // CustomerId at the payment processor
-  optional string customer_id = 1;
-  // PaymentMethodId of the tenant at the payment processor
-  optional string payment_method_id = 2;
-  // SubscriptionId at the payment processor
-  optional string subscription_id = 3;
-  // Vat which applies to this tenant
-  optional string vat = 4;
-}
-
 // TermsAndConditions the tenant accepted
 message TermsAndConditions {
   // Accepted indicates if the tenant accepted the terms and conditions
   bool accepted = 1;
   // When is the date when the tenant accepted the terms and conditions
   google.protobuf.Timestamp when = 2;
-}
-
-// TermsAndConditionsUpdate
-message TermsAndConditionsUpdate {
-  // Accepted indicates if the tenant accepted the terms and conditions
-  optional bool accepted = 1;
-  // When is the date when the tenant accepted the terms and conditions
-  optional google.protobuf.Timestamp when = 2;
 }
 
 // TenantServiceListRequest is the request payload of the tenant list request
@@ -236,6 +222,11 @@ message TenantServiceCreateOrUpdateRequest {
 
 // TenantServiceUpdateRequest is the request payload of the tenant update request
 message TenantServiceUpdateRequest {
+  reserved 8;
+  reserved "payment_details";
+  reserved 9;
+  reserved "terms_and_conditions";
+
   // Login of the tenant
   string login = 1;
   // Name of the tenant
@@ -252,12 +243,10 @@ message TenantServiceUpdateRequest {
   }];
   // AvatarUrl of the tenant
   optional string avatar_url = 5;
-  // PaymentDetails of the tenant
-  optional PaymentDetailsUpdate payment_details = 8;
-  // TermsAndConditions of the tenant
-  optional TermsAndConditionsUpdate terms_and_conditions = 9;
   // Onboarded checks if the tenant was asked to be onboarded
   optional bool onboarded = 13;
+  // AcceptTermsAndConditions can be used to accept the terms and conditions
+  optional bool accept_terms_and_conditions = 14;
 }
 
 // TenantServiceDeleteRequest is the request payload of the tenant delete request
@@ -395,3 +384,20 @@ message TenantServiceUpdateMemberResponse {
   // TenantMember is the updated membership
   TenantMember tenant_member = 1;
 }
+
+// TenantServiceRequestAdmissionRequest is used to request admission for a tenant
+message TenantServiceRequestAdmissionRequest {
+  // Login of the tenant for whom admission is requested
+  string login = 1;
+  // Name of the user
+  string name = 2;
+  // Email of the user
+  string email = 3 [(buf.validate.field).string.email = true];
+  // AcceptedTermsAndConditions indicates if the user has accepted the terms and conditions
+  bool accepted_terms_and_conditions = 4;
+  // EmailConsent indicates if the user gave consent to receive emails
+  bool email_consent = 5;
+}
+
+// TenantServiceRequestAdmissionResponse is the response payload an admission request
+message TenantServiceRequestAdmissionResponse {}

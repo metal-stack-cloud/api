@@ -49,35 +49,12 @@ service PaymentService {
     option (visibility) = VISIBILITY_PUBLIC;
     option (auditing) = AUDITING_EXCLUDED;
   }
-  // CheckAdmitted if the customer is allowed to use the service on the platform
-  rpc CheckAdmitted(PaymentServiceCheckAdmittedRequest) returns (PaymentServiceCheckAdmittedResponse) {
-    option (tenant_roles) = TENANT_ROLE_OWNER;
-    option (tenant_roles) = TENANT_ROLE_EDITOR;
-    option (tenant_roles) = TENANT_ROLE_VIEWER;
-    option (tenant_roles) = TENANT_ROLE_GUEST;
-    option (auditing) = AUDITING_EXCLUDED;
-  }
-  // RequestAdmission for a customer to get allowed to used the service
-  rpc RequestAdmission(PaymentServiceRequestAdmissionRequest) returns (PaymentServiceRequestAdmissionResponse) {
-    option (tenant_roles) = TENANT_ROLE_OWNER;
-    option (tenant_roles) = TENANT_ROLE_EDITOR;
-    option (auditing) = AUDITING_EXCLUDED;
-  }
   // HasChargeableResources checks if the customer has resources actually consumed which are chargeable
   rpc HasChargeableResources(PaymentServiceHasChargeableResourcesRequest) returns (PaymentServiceHasChargeableResourcesResponse) {
     option (tenant_roles) = TENANT_ROLE_OWNER;
     option (tenant_roles) = TENANT_ROLE_EDITOR;
     option (tenant_roles) = TENANT_ROLE_VIEWER;
     option (tenant_roles) = TENANT_ROLE_GUEST;
-    option (auditing) = AUDITING_EXCLUDED;
-  }
-  // SetOnboarded set the onboarded status
-  rpc SetOnboarded(PaymentServiceSetOnboardedRequest) returns (PaymentServiceSetOnboardedResponse) {
-    option (tenant_roles) = TENANT_ROLE_OWNER;
-  }
-  // GetOnboarded get the onboarded status
-  rpc GetOnboarded(PaymentServiceGetOnboardedRequest) returns (PaymentServiceGetOnboardedResponse) {
-    option (tenant_roles) = TENANT_ROLE_OWNER;
     option (auditing) = AUDITING_EXCLUDED;
   }
 }
@@ -239,15 +216,31 @@ message Coupon {
 
 // PaymentServiceCreateOrUpdateCustomerRequest is the request payload for a payment create or update customer request
 message PaymentServiceCreateOrUpdateCustomerRequest {
+  reserved 2;
+  reserved "customer";
+  reserved 3;
+  reserved "accepted_terms_and_conditions";
+
   // Login of the customer
   string login = 1 [(buf.validate.field).string = {
     min_len: 2
     max_len: 128
   }];
-  // Customer is the customer to modify
-  PaymentCustomer customer = 2;
-  // AcceptedTermsAndConditions indicates the modification of the terms and conditions acceptance
-  bool accepted_terms_and_conditions = 3;
+
+  // Name of the customer to be billed
+  optional string name = 4;
+  // PaymentMethodId at the payment provider, the client receives this from the payment provider and passes it on to the api
+  optional string payment_method_id = 5;
+  // Email of the customer to be billed
+  optional string email = 6 [(buf.validate.field).string.email = true];
+  // Card the customer to be billed
+  optional Card card = 7;
+  // Address is the postal address of the customer to be billed
+  Address address = 8;
+  // Vat which applies to the customer to be billed
+  optional string vat = 9;
+  // PhoneNumber of the customer to be billed
+  optional string phone_number = 10;
 }
 
 // PaymentServiceCreateOrUpdateCustomerResponse is the response payload for a payment create or update customer request
@@ -362,35 +355,6 @@ message PaymentServiceGetDefaultPricesResponse {
   repeated Price prices = 1;
 }
 
-// PaymentServiceCheckAdmittedRequest is the request payload for a check admitted request
-message PaymentServiceCheckAdmittedRequest {
-  // Login of the customer
-  string login = 1;
-}
-
-// PaymentServiceCheckAdmittedResponse is the response payload for a check admitted request
-message PaymentServiceCheckAdmittedResponse {
-  // Admitted indicates if the customer is already admitted to use the service
-  bool admitted = 1;
-  // Requested indicates if the customer requested admittance
-  bool requested = 2;
-}
-
-// PaymentServiceRequestAdmissionRequest is the request payload for a admission request
-message PaymentServiceRequestAdmissionRequest {
-  // Login of the customer
-  string login = 1;
-  // Customer is the customer
-  PaymentCustomer customer = 2;
-  // AcceptedTermsAndConditions indicates if the customer already accepted the terms and conditions
-  bool accepted_terms_and_conditions = 3;
-  // EmailConsent indicates if the customer already gave consent to email
-  bool email_consent = 4;
-}
-
-// PaymentServiceRequestAdmissionResponse is the response payload for a admission request
-message PaymentServiceRequestAdmissionResponse {}
-
 // PaymentServiceHasChargeableResourcesRequest is the request payload for a has chargeable request
 message PaymentServiceHasChargeableResourcesRequest {
   // Login of the customer
@@ -401,30 +365,4 @@ message PaymentServiceHasChargeableResourcesRequest {
 message PaymentServiceHasChargeableResourcesResponse {
   // HasResources indicates if the customer has actually chargable resources
   bool has_resources = 1;
-}
-
-// PayentServiceSetOnboardedRequest changes the onboarded status of the given customer
-message PaymentServiceSetOnboardedRequest {
-  // Login of the customer
-  string login = 1;
-  // Onboarded indicates if the customer has seen the onboarde message
-  bool onboarded = 2;
-}
-
-// PaymentServiceSetOnboardedResponse respond to the changed status of the given customer
-message PaymentServiceSetOnboardedResponse {
-  // Onboarded indicates if the customer has seen the onboarded message
-  bool onboarded = 1;
-}
-
-// PaymentServiceGetOnboardedRequest check the onboarded status
-message PaymentServiceGetOnboardedRequest {
-  // Login of the customer
-  string login = 1;
-}
-
-// PaymentServiceGetOnboardedRequest returns the onboarded status
-message PaymentServiceGetOnboardedResponse {
-  // Onboarded indicates if the customer has seen the onboarded message
-  bool onboarded = 1;
 }
