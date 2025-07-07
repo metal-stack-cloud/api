@@ -47,6 +47,36 @@ func (_m *StatusServiceClient) Get(_a0 context.Context, _a1 *connect.Request[sta
 	return r0, r1
 }
 
+// Watch provides a mock function with given fields: _a0, _a1
+func (_m *StatusServiceClient) Watch(_a0 context.Context, _a1 *connect.Request[statusv1.StatusServiceWatchRequest]) (*connect.ServerStreamForClient[statusv1.StatusServiceWatchResponse], error) {
+	ret := _m.Called(_a0, _a1)
+
+	if len(ret) == 0 {
+		panic("no return value specified for Watch")
+	}
+
+	var r0 *connect.ServerStreamForClient[statusv1.StatusServiceWatchResponse]
+	var r1 error
+	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[statusv1.StatusServiceWatchRequest]) (*connect.ServerStreamForClient[statusv1.StatusServiceWatchResponse], error)); ok {
+		return rf(_a0, _a1)
+	}
+	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[statusv1.StatusServiceWatchRequest]) *connect.ServerStreamForClient[statusv1.StatusServiceWatchResponse]); ok {
+		r0 = rf(_a0, _a1)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*connect.ServerStreamForClient[statusv1.StatusServiceWatchResponse])
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(context.Context, *connect.Request[statusv1.StatusServiceWatchRequest]) error); ok {
+		r1 = rf(_a0, _a1)
+	} else {
+		r1 = ret.Error(1)
+	}
+
+	return r0, r1
+}
+
 // NewStatusServiceClient creates a new instance of StatusServiceClient. It also registers a testing interface on the mock and a cleanup function to assert the mocks expectations.
 // The first argument is typically a *testing.T value.
 func NewStatusServiceClient(t interface {

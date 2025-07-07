@@ -47,6 +47,24 @@ func (_m *StatusServiceHandler) Get(_a0 context.Context, _a1 *connect.Request[st
 	return r0, r1
 }
 
+// Watch provides a mock function with given fields: _a0, _a1, _a2
+func (_m *StatusServiceHandler) Watch(_a0 context.Context, _a1 *connect.Request[statusv1.StatusServiceWatchRequest], _a2 *connect.ServerStream[statusv1.StatusServiceWatchResponse]) error {
+	ret := _m.Called(_a0, _a1, _a2)
+
+	if len(ret) == 0 {
+		panic("no return value specified for Watch")
+	}
+
+	var r0 error
+	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[statusv1.StatusServiceWatchRequest], *connect.ServerStream[statusv1.StatusServiceWatchResponse]) error); ok {
+		r0 = rf(_a0, _a1, _a2)
+	} else {
+		r0 = ret.Error(0)
+	}
+
+	return r0
+}
+
 // NewStatusServiceHandler creates a new instance of StatusServiceHandler. It also registers a testing interface on the mock and a cleanup function to assert the mocks expectations.
 // The first argument is typically a *testing.T value.
 func NewStatusServiceHandler(t interface {

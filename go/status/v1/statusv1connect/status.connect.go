@@ -35,12 +35,16 @@ const (
 const (
 	// StatusServiceGetProcedure is the fully-qualified name of the StatusService's Get RPC.
 	StatusServiceGetProcedure = "/status.v1.StatusService/Get"
+	// StatusServiceWatchProcedure is the fully-qualified name of the StatusService's Watch RPC.
+	StatusServiceWatchProcedure = "/status.v1.StatusService/Watch"
 )
 
 // StatusServiceClient is a client for the status.v1.StatusService service.
 type StatusServiceClient interface {
 	// Get the system status
 	Get(context.Context, *connect.Request[v1.StatusServiceGetRequest]) (*connect.Response[v1.StatusServiceGetResponse], error)
+	// Watch the system status
+	Watch(context.Context, *connect.Request[v1.StatusServiceWatchRequest]) (*connect.ServerStreamForClient[v1.StatusServiceWatchResponse], error)
 }
 
 // NewStatusServiceClient constructs a client for the status.v1.StatusService service. By default,
@@ -60,12 +64,19 @@ func NewStatusServiceClient(httpClient connect.HTTPClient, baseURL string, opts 
 			connect.WithSchema(statusServiceMethods.ByName("Get")),
 			connect.WithClientOptions(opts...),
 		),
+		watch: connect.NewClient[v1.StatusServiceWatchRequest, v1.StatusServiceWatchResponse](
+			httpClient,
+			baseURL+StatusServiceWatchProcedure,
+			connect.WithSchema(statusServiceMethods.ByName("Watch")),
+			connect.WithClientOptions(opts...),
+		),
 	}
 }
 
 // statusServiceClient implements StatusServiceClient.
 type statusServiceClient struct {
-	get *connect.Client[v1.StatusServiceGetRequest, v1.StatusServiceGetResponse]
+	get   *connect.Client[v1.StatusServiceGetRequest, v1.StatusServiceGetResponse]
+	watch *connect.Client[v1.StatusServiceWatchRequest, v1.StatusServiceWatchResponse]
 }
 
 // Get calls status.v1.StatusService.Get.
@@ -73,10 +84,17 @@ func (c *statusServiceClient) Get(ctx context.Context, req *connect.Request[v1.S
 	return c.get.CallUnary(ctx, req)
 }
 
+// Watch calls status.v1.StatusService.Watch.
+func (c *statusServiceClient) Watch(ctx context.Context, req *connect.Request[v1.StatusServiceWatchRequest]) (*connect.ServerStreamForClient[v1.StatusServiceWatchResponse], error) {
+	return c.watch.CallServerStream(ctx, req)
+}
+
 // StatusServiceHandler is an implementation of the status.v1.StatusService service.
 type StatusServiceHandler interface {
 	// Get the system status
 	Get(context.Context, *connect.Request[v1.StatusServiceGetRequest]) (*connect.Response[v1.StatusServiceGetResponse], error)
+	// Watch the system status
+	Watch(context.Context, *connect.Request[v1.StatusServiceWatchRequest], *connect.ServerStream[v1.StatusServiceWatchResponse]) error
 }
 
 // NewStatusServiceHandler builds an HTTP handler from the service implementation. It returns the
@@ -92,10 +110,18 @@ func NewStatusServiceHandler(svc StatusServiceHandler, opts ...connect.HandlerOp
 		connect.WithSchema(statusServiceMethods.ByName("Get")),
 		connect.WithHandlerOptions(opts...),
 	)
+	statusServiceWatchHandler := connect.NewServerStreamHandler(
+		StatusServiceWatchProcedure,
+		svc.Watch,
+		connect.WithSchema(statusServiceMethods.ByName("Watch")),
+		connect.WithHandlerOptions(opts...),
+	)
 	return "/status.v1.StatusService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
 		case StatusServiceGetProcedure:
 			statusServiceGetHandler.ServeHTTP(w, r)
+		case StatusServiceWatchProcedure:
+			statusServiceWatchHandler.ServeHTTP(w, r)
 		default:
 			http.NotFound(w, r)
 		}
@@ -107,4 +133,8 @@ type UnimplementedStatusServiceHandler struct{}
 
 func (UnimplementedStatusServiceHandler) Get(context.Context, *connect.Request[v1.StatusServiceGetRequest]) (*connect.Response[v1.StatusServiceGetResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("status.v1.StatusService.Get is not implemented"))
+}
+
+func (UnimplementedStatusServiceHandler) Watch(context.Context, *connect.Request[v1.StatusServiceWatchRequest], *connect.ServerStream[v1.StatusServiceWatchResponse]) error {
+	return connect.NewError(connect.CodeUnimplemented, errors.New("status.v1.StatusService.Watch is not implemented"))
 }
