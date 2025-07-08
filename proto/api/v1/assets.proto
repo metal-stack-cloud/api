@@ -22,6 +22,18 @@ message Asset {
   map<string, MachineType> machine_types = 2;
   // Kubernetes a list of kubernetes versions
   repeated Kubernetes kubernetes = 3;
+  // Environment contains information on the environment.
+  Environment environment = 4;
+}
+
+// Environment defines information on the installation environment of the metalstack.cloud installation.
+message Environment {
+  // ConsoleURL is the URL to the metalstack.cloud cloud console (aka frontend).
+  string console_url = 1;
+  // AfterLoginURL is the URL to redirect clients to after successful login.
+  string after_login_url = 2;
+  // StripePublicToken can be used by clients to use certain endpoints of the payment service api.
+  string stripe_public_token = 3;
 }
 
 // Region defines a datacenter location

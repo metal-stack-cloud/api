@@ -7,47 +7,52 @@ import { file_google_protobuf_timestamp } from "@bufbuild/protobuf/wkt";
 /**
  * Describes the file api/v1/assets.proto.
  */
-export const file_api_v1_assets = /*@__PURE__*/ fileDesc("ChNhcGkvdjEvYXNzZXRzLnByb3RvEgZhcGkudjEi0QEKBUFzc2V0Eh4KBnJlZ2lvbhgBIAEoCzIOLmFwaS52MS5SZWdpb24SNgoNbWFjaGluZV90eXBlcxgCIAMoCzIfLmFwaS52MS5Bc3NldC5NYWNoaW5lVHlwZXNFbnRyeRImCgprdWJlcm5ldGVzGAMgAygLMhIuYXBpLnYxLkt1YmVybmV0ZXMaSAoRTWFjaGluZVR5cGVzRW50cnkSCwoDa2V5GAEgASgJEiIKBXZhbHVlGAIgASgLMhMuYXBpLnYxLk1hY2hpbmVUeXBlOgI4ASL7AQoGUmVnaW9uEgoKAmlkGAEgASgJEgwKBG5hbWUYAiABKAkSDwoHYWRkcmVzcxgDIAEoCRIOCgZhY3RpdmUYBCABKAgSMgoKcGFydGl0aW9ucxgFIAMoCzIeLmFwaS52MS5SZWdpb24uUGFydGl0aW9uc0VudHJ5EicKCGRlZmF1bHRzGAYgASgLMhUuYXBpLnYxLkFzc2V0RGVmYXVsdHMSEwoLZGVzY3JpcHRpb24YByABKAkaRAoPUGFydGl0aW9uc0VudHJ5EgsKA2tleRgBIAEoCRIgCgV2YWx1ZRgCIAEoCzIRLmFwaS52MS5QYXJ0aXRpb246AjgBIlsKCVBhcnRpdGlvbhIKCgJpZBgBIAEoCRIMCgRuYW1lGAIgASgJEg8KB2FkZHJlc3MYAyABKAkSDgoGYWN0aXZlGAQgASgIEhMKC2Rlc2NyaXB0aW9uGAUgASgJIowBCgtNYWNoaW5lVHlwZRIKCgJpZBgBIAEoCRIMCgRuYW1lGAIgASgJEgwKBGNwdXMYAyABKA0SDgoGbWVtb3J5GAQgASgEEg8KB3N0b3JhZ2UYBSABKAQSFwoPY3B1X2Rlc2NyaXB0aW9uGAYgASgJEhsKE3N0b3JhZ2VfZGVzY3JpcHRpb24YByABKAkiTQoKS3ViZXJuZXRlcxIPCgd2ZXJzaW9uGAEgASgJEi4KCmV4cGlyYXRpb24YAiABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wInwKDUFzc2V0RGVmYXVsdHMSFAoMbWFjaGluZV90eXBlGAEgASgJEhoKEmt1YmVybmV0ZXNfdmVyc2lvbhgCIAEoCRISCgp3b3JrZXJfbWluGAMgASgNEhIKCndvcmtlcl9tYXgYBCABKA0SEQoJcGFydGl0aW9uGAcgASgJIhkKF0Fzc2V0U2VydmljZUxpc3RSZXF1ZXN0IjkKGEFzc2V0U2VydmljZUxpc3RSZXNwb25zZRIdCgZhc3NldHMYAiADKAsyDS5hcGkudjEuQXNzZXQyYwoMQXNzZXRTZXJ2aWNlElMKBExpc3QSHy5hcGkudjEuQXNzZXRTZXJ2aWNlTGlzdFJlcXVlc3QaIC5hcGkudjEuQXNzZXRTZXJ2aWNlTGlzdFJlc3BvbnNlIgjY8xgB6PMYAkKEAQoKY29tLmFwaS52MUILQXNzZXRzUHJvdG9QAVowZ2l0aHViLmNvbS9tZXRhbC1zdGFjay1jbG91ZC9hcGkvZ28vYXBpL3YxO2FwaXYxogIDQVhYqgIGQXBpLlYxygIGQXBpXFYx4gISQXBpXFYxXEdQQk1ldGFkYXRh6gIHQXBpOjpWMWIGcHJvdG8z", [file_api_v1_common, file_google_protobuf_timestamp]);
+export const file_api_v1_assets = /*@__PURE__*/ fileDesc("ChNhcGkvdjEvYXNzZXRzLnByb3RvEgZhcGkudjEi+wEKBUFzc2V0Eh4KBnJlZ2lvbhgBIAEoCzIOLmFwaS52MS5SZWdpb24SNgoNbWFjaGluZV90eXBlcxgCIAMoCzIfLmFwaS52MS5Bc3NldC5NYWNoaW5lVHlwZXNFbnRyeRImCgprdWJlcm5ldGVzGAMgAygLMhIuYXBpLnYxLkt1YmVybmV0ZXMSKAoLZW52aXJvbm1lbnQYBCABKAsyEy5hcGkudjEuRW52aXJvbm1lbnQaSAoRTWFjaGluZVR5cGVzRW50cnkSCwoDa2V5GAEgASgJEiIKBXZhbHVlGAIgASgLMhMuYXBpLnYxLk1hY2hpbmVUeXBlOgI4ASJYCgtFbnZpcm9ubWVudBITCgtjb25zb2xlX3VybBgBIAEoCRIXCg9hZnRlcl9sb2dpbl91cmwYAiABKAkSGwoTc3RyaXBlX3B1YmxpY190b2tlbhgDIAEoCSL7AQoGUmVnaW9uEgoKAmlkGAEgASgJEgwKBG5hbWUYAiABKAkSDwoHYWRkcmVzcxgDIAEoCRIOCgZhY3RpdmUYBCABKAgSMgoKcGFydGl0aW9ucxgFIAMoCzIeLmFwaS52MS5SZWdpb24uUGFydGl0aW9uc0VudHJ5EicKCGRlZmF1bHRzGAYgASgLMhUuYXBpLnYxLkFzc2V0RGVmYXVsdHMSEwoLZGVzY3JpcHRpb24YByABKAkaRAoPUGFydGl0aW9uc0VudHJ5EgsKA2tleRgBIAEoCRIgCgV2YWx1ZRgCIAEoCzIRLmFwaS52MS5QYXJ0aXRpb246AjgBIlsKCVBhcnRpdGlvbhIKCgJpZBgBIAEoCRIMCgRuYW1lGAIgASgJEg8KB2FkZHJlc3MYAyABKAkSDgoGYWN0aXZlGAQgASgIEhMKC2Rlc2NyaXB0aW9uGAUgASgJIowBCgtNYWNoaW5lVHlwZRIKCgJpZBgBIAEoCRIMCgRuYW1lGAIgASgJEgwKBGNwdXMYAyABKA0SDgoGbWVtb3J5GAQgASgEEg8KB3N0b3JhZ2UYBSABKAQSFwoPY3B1X2Rlc2NyaXB0aW9uGAYgASgJEhsKE3N0b3JhZ2VfZGVzY3JpcHRpb24YByABKAkiTQoKS3ViZXJuZXRlcxIPCgd2ZXJzaW9uGAEgASgJEi4KCmV4cGlyYXRpb24YAiABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wInwKDUFzc2V0RGVmYXVsdHMSFAoMbWFjaGluZV90eXBlGAEgASgJEhoKEmt1YmVybmV0ZXNfdmVyc2lvbhgCIAEoCRISCgp3b3JrZXJfbWluGAMgASgNEhIKCndvcmtlcl9tYXgYBCABKA0SEQoJcGFydGl0aW9uGAcgASgJIhkKF0Fzc2V0U2VydmljZUxpc3RSZXF1ZXN0IjkKGEFzc2V0U2VydmljZUxpc3RSZXNwb25zZRIdCgZhc3NldHMYAiADKAsyDS5hcGkudjEuQXNzZXQyYwoMQXNzZXRTZXJ2aWNlElMKBExpc3QSHy5hcGkudjEuQXNzZXRTZXJ2aWNlTGlzdFJlcXVlc3QaIC5hcGkudjEuQXNzZXRTZXJ2aWNlTGlzdFJlc3BvbnNlIgjY8xgB6PMYAkKEAQoKY29tLmFwaS52MUILQXNzZXRzUHJvdG9QAVowZ2l0aHViLmNvbS9tZXRhbC1zdGFjay1jbG91ZC9hcGkvZ28vYXBpL3YxO2FwaXYxogIDQVhYqgIGQXBpLlYxygIGQXBpXFYx4gISQXBpXFYxXEdQQk1ldGFkYXRh6gIHQXBpOjpWMWIGcHJvdG8z", [file_api_v1_common, file_google_protobuf_timestamp]);
 /**
  * Describes the message api.v1.Asset.
  * Use `create(AssetSchema)` to create a new message.
  */
 export const AssetSchema = /*@__PURE__*/ messageDesc(file_api_v1_assets, 0);
 /**
+ * Describes the message api.v1.Environment.
+ * Use `create(EnvironmentSchema)` to create a new message.
+ */
+export const EnvironmentSchema = /*@__PURE__*/ messageDesc(file_api_v1_assets, 1);
+/**
  * Describes the message api.v1.Region.
  * Use `create(RegionSchema)` to create a new message.
  */
-export const RegionSchema = /*@__PURE__*/ messageDesc(file_api_v1_assets, 1);
+export const RegionSchema = /*@__PURE__*/ messageDesc(file_api_v1_assets, 2);
 /**
  * Describes the message api.v1.Partition.
  * Use `create(PartitionSchema)` to create a new message.
  */
-export const PartitionSchema = /*@__PURE__*/ messageDesc(file_api_v1_assets, 2);
+export const PartitionSchema = /*@__PURE__*/ messageDesc(file_api_v1_assets, 3);
 /**
  * Describes the message api.v1.MachineType.
  * Use `create(MachineTypeSchema)` to create a new message.
  */
-export const MachineTypeSchema = /*@__PURE__*/ messageDesc(file_api_v1_assets, 3);
+export const MachineTypeSchema = /*@__PURE__*/ messageDesc(file_api_v1_assets, 4);
 /**
  * Describes the message api.v1.Kubernetes.
  * Use `create(KubernetesSchema)` to create a new message.
  */
-export const KubernetesSchema = /*@__PURE__*/ messageDesc(file_api_v1_assets, 4);
+export const KubernetesSchema = /*@__PURE__*/ messageDesc(file_api_v1_assets, 5);
 /**
  * Describes the message api.v1.AssetDefaults.
  * Use `create(AssetDefaultsSchema)` to create a new message.
  */
-export const AssetDefaultsSchema = /*@__PURE__*/ messageDesc(file_api_v1_assets, 5);
+export const AssetDefaultsSchema = /*@__PURE__*/ messageDesc(file_api_v1_assets, 6);
 /**
  * Describes the message api.v1.AssetServiceListRequest.
  * Use `create(AssetServiceListRequestSchema)` to create a new message.
  */
-export const AssetServiceListRequestSchema = /*@__PURE__*/ messageDesc(file_api_v1_assets, 6);
+export const AssetServiceListRequestSchema = /*@__PURE__*/ messageDesc(file_api_v1_assets, 7);
 /**
  * Describes the message api.v1.AssetServiceListResponse.
  * Use `create(AssetServiceListResponseSchema)` to create a new message.
  */
-export const AssetServiceListResponseSchema = /*@__PURE__*/ messageDesc(file_api_v1_assets, 7);
+export const AssetServiceListResponseSchema = /*@__PURE__*/ messageDesc(file_api_v1_assets, 8);
 /**
  * AssetService serves asset related functions
  *

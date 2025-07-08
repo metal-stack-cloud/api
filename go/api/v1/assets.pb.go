@@ -30,7 +30,9 @@ type Asset struct {
 	// MachineTypes available by region
 	MachineTypes map[string]*MachineType `protobuf:"bytes,2,rep,name=machine_types,json=machineTypes,proto3" json:"machine_types,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
 	// Kubernetes a list of kubernetes versions
-	Kubernetes    []*Kubernetes `protobuf:"bytes,3,rep,name=kubernetes,proto3" json:"kubernetes,omitempty"`
+	Kubernetes []*Kubernetes `protobuf:"bytes,3,rep,name=kubernetes,proto3" json:"kubernetes,omitempty"`
+	// Environment contains information on the environment.
+	Environment   *Environment `protobuf:"bytes,4,opt,name=environment,proto3" json:"environment,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -86,6 +88,77 @@ func (x *Asset) GetKubernetes() []*Kubernetes {
 	return nil
 }
 
+func (x *Asset) GetEnvironment() *Environment {
+	if x != nil {
+		return x.Environment
+	}
+	return nil
+}
+
+// Environment defines information on the installation environment of the metalstack.cloud installation.
+type Environment struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// ConsoleURL is the URL to the metalstack.cloud cloud console (aka frontend).
+	ConsoleUrl string `protobuf:"bytes,1,opt,name=console_url,json=consoleUrl,proto3" json:"console_url,omitempty"`
+	// AfterLoginURL is the URL to redirect clients to after successful login.
+	AfterLoginUrl string `protobuf:"bytes,2,opt,name=after_login_url,json=afterLoginUrl,proto3" json:"after_login_url,omitempty"`
+	// StripePublicToken can be used by clients to use certain endpoints of the payment service api.
+	StripePublicToken string `protobuf:"bytes,3,opt,name=stripe_public_token,json=stripePublicToken,proto3" json:"stripe_public_token,omitempty"`
+	unknownFields     protoimpl.UnknownFields
+	sizeCache         protoimpl.SizeCache
+}
+
+func (x *Environment) Reset() {
+	*x = Environment{}
+	mi := &file_api_v1_assets_proto_msgTypes[1]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *Environment) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Environment) ProtoMessage() {}
+
+func (x *Environment) ProtoReflect() protoreflect.Message {
+	mi := &file_api_v1_assets_proto_msgTypes[1]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Environment.ProtoReflect.Descriptor instead.
+func (*Environment) Descriptor() ([]byte, []int) {
+	return file_api_v1_assets_proto_rawDescGZIP(), []int{1}
+}
+
+func (x *Environment) GetConsoleUrl() string {
+	if x != nil {
+		return x.ConsoleUrl
+	}
+	return ""
+}
+
+func (x *Environment) GetAfterLoginUrl() string {
+	if x != nil {
+		return x.AfterLoginUrl
+	}
+	return ""
+}
+
+func (x *Environment) GetStripePublicToken() string {
+	if x != nil {
+		return x.StripePublicToken
+	}
+	return ""
+}
+
 // Region defines a datacenter location
 type Region struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
@@ -109,7 +182,7 @@ type Region struct {
 
 func (x *Region) Reset() {
 	*x = Region{}
-	mi := &file_api_v1_assets_proto_msgTypes[1]
+	mi := &file_api_v1_assets_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -121,7 +194,7 @@ func (x *Region) String() string {
 func (*Region) ProtoMessage() {}
 
 func (x *Region) ProtoReflect() protoreflect.Message {
-	mi := &file_api_v1_assets_proto_msgTypes[1]
+	mi := &file_api_v1_assets_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -134,7 +207,7 @@ func (x *Region) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Region.ProtoReflect.Descriptor instead.
 func (*Region) Descriptor() ([]byte, []int) {
-	return file_api_v1_assets_proto_rawDescGZIP(), []int{1}
+	return file_api_v1_assets_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *Region) GetId() string {
@@ -205,7 +278,7 @@ type Partition struct {
 
 func (x *Partition) Reset() {
 	*x = Partition{}
-	mi := &file_api_v1_assets_proto_msgTypes[2]
+	mi := &file_api_v1_assets_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -217,7 +290,7 @@ func (x *Partition) String() string {
 func (*Partition) ProtoMessage() {}
 
 func (x *Partition) ProtoReflect() protoreflect.Message {
-	mi := &file_api_v1_assets_proto_msgTypes[2]
+	mi := &file_api_v1_assets_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -230,7 +303,7 @@ func (x *Partition) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Partition.ProtoReflect.Descriptor instead.
 func (*Partition) Descriptor() ([]byte, []int) {
-	return file_api_v1_assets_proto_rawDescGZIP(), []int{2}
+	return file_api_v1_assets_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *Partition) GetId() string {
@@ -291,7 +364,7 @@ type MachineType struct {
 
 func (x *MachineType) Reset() {
 	*x = MachineType{}
-	mi := &file_api_v1_assets_proto_msgTypes[3]
+	mi := &file_api_v1_assets_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -303,7 +376,7 @@ func (x *MachineType) String() string {
 func (*MachineType) ProtoMessage() {}
 
 func (x *MachineType) ProtoReflect() protoreflect.Message {
-	mi := &file_api_v1_assets_proto_msgTypes[3]
+	mi := &file_api_v1_assets_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -316,7 +389,7 @@ func (x *MachineType) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MachineType.ProtoReflect.Descriptor instead.
 func (*MachineType) Descriptor() ([]byte, []int) {
-	return file_api_v1_assets_proto_rawDescGZIP(), []int{3}
+	return file_api_v1_assets_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *MachineType) GetId() string {
@@ -381,7 +454,7 @@ type Kubernetes struct {
 
 func (x *Kubernetes) Reset() {
 	*x = Kubernetes{}
-	mi := &file_api_v1_assets_proto_msgTypes[4]
+	mi := &file_api_v1_assets_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -393,7 +466,7 @@ func (x *Kubernetes) String() string {
 func (*Kubernetes) ProtoMessage() {}
 
 func (x *Kubernetes) ProtoReflect() protoreflect.Message {
-	mi := &file_api_v1_assets_proto_msgTypes[4]
+	mi := &file_api_v1_assets_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -406,7 +479,7 @@ func (x *Kubernetes) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Kubernetes.ProtoReflect.Descriptor instead.
 func (*Kubernetes) Descriptor() ([]byte, []int) {
-	return file_api_v1_assets_proto_rawDescGZIP(), []int{4}
+	return file_api_v1_assets_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *Kubernetes) GetVersion() string {
@@ -442,7 +515,7 @@ type AssetDefaults struct {
 
 func (x *AssetDefaults) Reset() {
 	*x = AssetDefaults{}
-	mi := &file_api_v1_assets_proto_msgTypes[5]
+	mi := &file_api_v1_assets_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -454,7 +527,7 @@ func (x *AssetDefaults) String() string {
 func (*AssetDefaults) ProtoMessage() {}
 
 func (x *AssetDefaults) ProtoReflect() protoreflect.Message {
-	mi := &file_api_v1_assets_proto_msgTypes[5]
+	mi := &file_api_v1_assets_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -467,7 +540,7 @@ func (x *AssetDefaults) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AssetDefaults.ProtoReflect.Descriptor instead.
 func (*AssetDefaults) Descriptor() ([]byte, []int) {
-	return file_api_v1_assets_proto_rawDescGZIP(), []int{5}
+	return file_api_v1_assets_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *AssetDefaults) GetMachineType() string {
@@ -514,7 +587,7 @@ type AssetServiceListRequest struct {
 
 func (x *AssetServiceListRequest) Reset() {
 	*x = AssetServiceListRequest{}
-	mi := &file_api_v1_assets_proto_msgTypes[6]
+	mi := &file_api_v1_assets_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -526,7 +599,7 @@ func (x *AssetServiceListRequest) String() string {
 func (*AssetServiceListRequest) ProtoMessage() {}
 
 func (x *AssetServiceListRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_api_v1_assets_proto_msgTypes[6]
+	mi := &file_api_v1_assets_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -539,7 +612,7 @@ func (x *AssetServiceListRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AssetServiceListRequest.ProtoReflect.Descriptor instead.
 func (*AssetServiceListRequest) Descriptor() ([]byte, []int) {
-	return file_api_v1_assets_proto_rawDescGZIP(), []int{6}
+	return file_api_v1_assets_proto_rawDescGZIP(), []int{7}
 }
 
 // AssetServiceListResponse is the response payload which contains the the Asset list
@@ -553,7 +626,7 @@ type AssetServiceListResponse struct {
 
 func (x *AssetServiceListResponse) Reset() {
 	*x = AssetServiceListResponse{}
-	mi := &file_api_v1_assets_proto_msgTypes[7]
+	mi := &file_api_v1_assets_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -565,7 +638,7 @@ func (x *AssetServiceListResponse) String() string {
 func (*AssetServiceListResponse) ProtoMessage() {}
 
 func (x *AssetServiceListResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_api_v1_assets_proto_msgTypes[7]
+	mi := &file_api_v1_assets_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -578,7 +651,7 @@ func (x *AssetServiceListResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AssetServiceListResponse.ProtoReflect.Descriptor instead.
 func (*AssetServiceListResponse) Descriptor() ([]byte, []int) {
-	return file_api_v1_assets_proto_rawDescGZIP(), []int{7}
+	return file_api_v1_assets_proto_rawDescGZIP(), []int{8}
 }
 
 func (x *AssetServiceListResponse) GetAssets() []*Asset {
@@ -592,16 +665,22 @@ var File_api_v1_assets_proto protoreflect.FileDescriptor
 
 const file_api_v1_assets_proto_rawDesc = "" +
 	"\n" +
-	"\x13api/v1/assets.proto\x12\x06api.v1\x1a\x13api/v1/common.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\xff\x01\n" +
+	"\x13api/v1/assets.proto\x12\x06api.v1\x1a\x13api/v1/common.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\xb6\x02\n" +
 	"\x05Asset\x12&\n" +
 	"\x06region\x18\x01 \x01(\v2\x0e.api.v1.RegionR\x06region\x12D\n" +
 	"\rmachine_types\x18\x02 \x03(\v2\x1f.api.v1.Asset.MachineTypesEntryR\fmachineTypes\x122\n" +
 	"\n" +
 	"kubernetes\x18\x03 \x03(\v2\x12.api.v1.KubernetesR\n" +
-	"kubernetes\x1aT\n" +
+	"kubernetes\x125\n" +
+	"\venvironment\x18\x04 \x01(\v2\x13.api.v1.EnvironmentR\venvironment\x1aT\n" +
 	"\x11MachineTypesEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12)\n" +
-	"\x05value\x18\x02 \x01(\v2\x13.api.v1.MachineTypeR\x05value:\x028\x01\"\xc5\x02\n" +
+	"\x05value\x18\x02 \x01(\v2\x13.api.v1.MachineTypeR\x05value:\x028\x01\"\x86\x01\n" +
+	"\vEnvironment\x12\x1f\n" +
+	"\vconsole_url\x18\x01 \x01(\tR\n" +
+	"consoleUrl\x12&\n" +
+	"\x0fafter_login_url\x18\x02 \x01(\tR\rafterLoginUrl\x12.\n" +
+	"\x13stripe_public_token\x18\x03 \x01(\tR\x11stripePublicToken\"\xc5\x02\n" +
 	"\x06Region\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x18\n" +
@@ -663,37 +742,39 @@ func file_api_v1_assets_proto_rawDescGZIP() []byte {
 	return file_api_v1_assets_proto_rawDescData
 }
 
-var file_api_v1_assets_proto_msgTypes = make([]protoimpl.MessageInfo, 10)
+var file_api_v1_assets_proto_msgTypes = make([]protoimpl.MessageInfo, 11)
 var file_api_v1_assets_proto_goTypes = []any{
 	(*Asset)(nil),                    // 0: api.v1.Asset
-	(*Region)(nil),                   // 1: api.v1.Region
-	(*Partition)(nil),                // 2: api.v1.Partition
-	(*MachineType)(nil),              // 3: api.v1.MachineType
-	(*Kubernetes)(nil),               // 4: api.v1.Kubernetes
-	(*AssetDefaults)(nil),            // 5: api.v1.AssetDefaults
-	(*AssetServiceListRequest)(nil),  // 6: api.v1.AssetServiceListRequest
-	(*AssetServiceListResponse)(nil), // 7: api.v1.AssetServiceListResponse
-	nil,                              // 8: api.v1.Asset.MachineTypesEntry
-	nil,                              // 9: api.v1.Region.PartitionsEntry
-	(*timestamppb.Timestamp)(nil),    // 10: google.protobuf.Timestamp
+	(*Environment)(nil),              // 1: api.v1.Environment
+	(*Region)(nil),                   // 2: api.v1.Region
+	(*Partition)(nil),                // 3: api.v1.Partition
+	(*MachineType)(nil),              // 4: api.v1.MachineType
+	(*Kubernetes)(nil),               // 5: api.v1.Kubernetes
+	(*AssetDefaults)(nil),            // 6: api.v1.AssetDefaults
+	(*AssetServiceListRequest)(nil),  // 7: api.v1.AssetServiceListRequest
+	(*AssetServiceListResponse)(nil), // 8: api.v1.AssetServiceListResponse
+	nil,                              // 9: api.v1.Asset.MachineTypesEntry
+	nil,                              // 10: api.v1.Region.PartitionsEntry
+	(*timestamppb.Timestamp)(nil),    // 11: google.protobuf.Timestamp
 }
 var file_api_v1_assets_proto_depIdxs = []int32{
-	1,  // 0: api.v1.Asset.region:type_name -> api.v1.Region
-	8,  // 1: api.v1.Asset.machine_types:type_name -> api.v1.Asset.MachineTypesEntry
-	4,  // 2: api.v1.Asset.kubernetes:type_name -> api.v1.Kubernetes
-	9,  // 3: api.v1.Region.partitions:type_name -> api.v1.Region.PartitionsEntry
-	5,  // 4: api.v1.Region.defaults:type_name -> api.v1.AssetDefaults
-	10, // 5: api.v1.Kubernetes.expiration:type_name -> google.protobuf.Timestamp
-	0,  // 6: api.v1.AssetServiceListResponse.assets:type_name -> api.v1.Asset
-	3,  // 7: api.v1.Asset.MachineTypesEntry.value:type_name -> api.v1.MachineType
-	2,  // 8: api.v1.Region.PartitionsEntry.value:type_name -> api.v1.Partition
-	6,  // 9: api.v1.AssetService.List:input_type -> api.v1.AssetServiceListRequest
-	7,  // 10: api.v1.AssetService.List:output_type -> api.v1.AssetServiceListResponse
-	10, // [10:11] is the sub-list for method output_type
-	9,  // [9:10] is the sub-list for method input_type
-	9,  // [9:9] is the sub-list for extension type_name
-	9,  // [9:9] is the sub-list for extension extendee
-	0,  // [0:9] is the sub-list for field type_name
+	2,  // 0: api.v1.Asset.region:type_name -> api.v1.Region
+	9,  // 1: api.v1.Asset.machine_types:type_name -> api.v1.Asset.MachineTypesEntry
+	5,  // 2: api.v1.Asset.kubernetes:type_name -> api.v1.Kubernetes
+	1,  // 3: api.v1.Asset.environment:type_name -> api.v1.Environment
+	10, // 4: api.v1.Region.partitions:type_name -> api.v1.Region.PartitionsEntry
+	6,  // 5: api.v1.Region.defaults:type_name -> api.v1.AssetDefaults
+	11, // 6: api.v1.Kubernetes.expiration:type_name -> google.protobuf.Timestamp
+	0,  // 7: api.v1.AssetServiceListResponse.assets:type_name -> api.v1.Asset
+	4,  // 8: api.v1.Asset.MachineTypesEntry.value:type_name -> api.v1.MachineType
+	3,  // 9: api.v1.Region.PartitionsEntry.value:type_name -> api.v1.Partition
+	7,  // 10: api.v1.AssetService.List:input_type -> api.v1.AssetServiceListRequest
+	8,  // 11: api.v1.AssetService.List:output_type -> api.v1.AssetServiceListResponse
+	11, // [11:12] is the sub-list for method output_type
+	10, // [10:11] is the sub-list for method input_type
+	10, // [10:10] is the sub-list for extension type_name
+	10, // [10:10] is the sub-list for extension extendee
+	0,  // [0:10] is the sub-list for field type_name
 }
 
 func init() { file_api_v1_assets_proto_init() }
@@ -708,7 +789,7 @@ func file_api_v1_assets_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_api_v1_assets_proto_rawDesc), len(file_api_v1_assets_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   10,
+			NumMessages:   11,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

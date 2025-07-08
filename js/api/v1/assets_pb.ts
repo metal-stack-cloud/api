@@ -13,7 +13,7 @@ import type { Message } from "@bufbuild/protobuf";
  * Describes the file api/v1/assets.proto.
  */
 export const file_api_v1_assets: GenFile = /*@__PURE__*/
-  fileDesc("ChNhcGkvdjEvYXNzZXRzLnByb3RvEgZhcGkudjEi0QEKBUFzc2V0Eh4KBnJlZ2lvbhgBIAEoCzIOLmFwaS52MS5SZWdpb24SNgoNbWFjaGluZV90eXBlcxgCIAMoCzIfLmFwaS52MS5Bc3NldC5NYWNoaW5lVHlwZXNFbnRyeRImCgprdWJlcm5ldGVzGAMgAygLMhIuYXBpLnYxLkt1YmVybmV0ZXMaSAoRTWFjaGluZVR5cGVzRW50cnkSCwoDa2V5GAEgASgJEiIKBXZhbHVlGAIgASgLMhMuYXBpLnYxLk1hY2hpbmVUeXBlOgI4ASL7AQoGUmVnaW9uEgoKAmlkGAEgASgJEgwKBG5hbWUYAiABKAkSDwoHYWRkcmVzcxgDIAEoCRIOCgZhY3RpdmUYBCABKAgSMgoKcGFydGl0aW9ucxgFIAMoCzIeLmFwaS52MS5SZWdpb24uUGFydGl0aW9uc0VudHJ5EicKCGRlZmF1bHRzGAYgASgLMhUuYXBpLnYxLkFzc2V0RGVmYXVsdHMSEwoLZGVzY3JpcHRpb24YByABKAkaRAoPUGFydGl0aW9uc0VudHJ5EgsKA2tleRgBIAEoCRIgCgV2YWx1ZRgCIAEoCzIRLmFwaS52MS5QYXJ0aXRpb246AjgBIlsKCVBhcnRpdGlvbhIKCgJpZBgBIAEoCRIMCgRuYW1lGAIgASgJEg8KB2FkZHJlc3MYAyABKAkSDgoGYWN0aXZlGAQgASgIEhMKC2Rlc2NyaXB0aW9uGAUgASgJIowBCgtNYWNoaW5lVHlwZRIKCgJpZBgBIAEoCRIMCgRuYW1lGAIgASgJEgwKBGNwdXMYAyABKA0SDgoGbWVtb3J5GAQgASgEEg8KB3N0b3JhZ2UYBSABKAQSFwoPY3B1X2Rlc2NyaXB0aW9uGAYgASgJEhsKE3N0b3JhZ2VfZGVzY3JpcHRpb24YByABKAkiTQoKS3ViZXJuZXRlcxIPCgd2ZXJzaW9uGAEgASgJEi4KCmV4cGlyYXRpb24YAiABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wInwKDUFzc2V0RGVmYXVsdHMSFAoMbWFjaGluZV90eXBlGAEgASgJEhoKEmt1YmVybmV0ZXNfdmVyc2lvbhgCIAEoCRISCgp3b3JrZXJfbWluGAMgASgNEhIKCndvcmtlcl9tYXgYBCABKA0SEQoJcGFydGl0aW9uGAcgASgJIhkKF0Fzc2V0U2VydmljZUxpc3RSZXF1ZXN0IjkKGEFzc2V0U2VydmljZUxpc3RSZXNwb25zZRIdCgZhc3NldHMYAiADKAsyDS5hcGkudjEuQXNzZXQyYwoMQXNzZXRTZXJ2aWNlElMKBExpc3QSHy5hcGkudjEuQXNzZXRTZXJ2aWNlTGlzdFJlcXVlc3QaIC5hcGkudjEuQXNzZXRTZXJ2aWNlTGlzdFJlc3BvbnNlIgjY8xgB6PMYAkKEAQoKY29tLmFwaS52MUILQXNzZXRzUHJvdG9QAVowZ2l0aHViLmNvbS9tZXRhbC1zdGFjay1jbG91ZC9hcGkvZ28vYXBpL3YxO2FwaXYxogIDQVhYqgIGQXBpLlYxygIGQXBpXFYx4gISQXBpXFYxXEdQQk1ldGFkYXRh6gIHQXBpOjpWMWIGcHJvdG8z", [file_api_v1_common, file_google_protobuf_timestamp]);
+  fileDesc("ChNhcGkvdjEvYXNzZXRzLnByb3RvEgZhcGkudjEi+wEKBUFzc2V0Eh4KBnJlZ2lvbhgBIAEoCzIOLmFwaS52MS5SZWdpb24SNgoNbWFjaGluZV90eXBlcxgCIAMoCzIfLmFwaS52MS5Bc3NldC5NYWNoaW5lVHlwZXNFbnRyeRImCgprdWJlcm5ldGVzGAMgAygLMhIuYXBpLnYxLkt1YmVybmV0ZXMSKAoLZW52aXJvbm1lbnQYBCABKAsyEy5hcGkudjEuRW52aXJvbm1lbnQaSAoRTWFjaGluZVR5cGVzRW50cnkSCwoDa2V5GAEgASgJEiIKBXZhbHVlGAIgASgLMhMuYXBpLnYxLk1hY2hpbmVUeXBlOgI4ASJYCgtFbnZpcm9ubWVudBITCgtjb25zb2xlX3VybBgBIAEoCRIXCg9hZnRlcl9sb2dpbl91cmwYAiABKAkSGwoTc3RyaXBlX3B1YmxpY190b2tlbhgDIAEoCSL7AQoGUmVnaW9uEgoKAmlkGAEgASgJEgwKBG5hbWUYAiABKAkSDwoHYWRkcmVzcxgDIAEoCRIOCgZhY3RpdmUYBCABKAgSMgoKcGFydGl0aW9ucxgFIAMoCzIeLmFwaS52MS5SZWdpb24uUGFydGl0aW9uc0VudHJ5EicKCGRlZmF1bHRzGAYgASgLMhUuYXBpLnYxLkFzc2V0RGVmYXVsdHMSEwoLZGVzY3JpcHRpb24YByABKAkaRAoPUGFydGl0aW9uc0VudHJ5EgsKA2tleRgBIAEoCRIgCgV2YWx1ZRgCIAEoCzIRLmFwaS52MS5QYXJ0aXRpb246AjgBIlsKCVBhcnRpdGlvbhIKCgJpZBgBIAEoCRIMCgRuYW1lGAIgASgJEg8KB2FkZHJlc3MYAyABKAkSDgoGYWN0aXZlGAQgASgIEhMKC2Rlc2NyaXB0aW9uGAUgASgJIowBCgtNYWNoaW5lVHlwZRIKCgJpZBgBIAEoCRIMCgRuYW1lGAIgASgJEgwKBGNwdXMYAyABKA0SDgoGbWVtb3J5GAQgASgEEg8KB3N0b3JhZ2UYBSABKAQSFwoPY3B1X2Rlc2NyaXB0aW9uGAYgASgJEhsKE3N0b3JhZ2VfZGVzY3JpcHRpb24YByABKAkiTQoKS3ViZXJuZXRlcxIPCgd2ZXJzaW9uGAEgASgJEi4KCmV4cGlyYXRpb24YAiABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wInwKDUFzc2V0RGVmYXVsdHMSFAoMbWFjaGluZV90eXBlGAEgASgJEhoKEmt1YmVybmV0ZXNfdmVyc2lvbhgCIAEoCRISCgp3b3JrZXJfbWluGAMgASgNEhIKCndvcmtlcl9tYXgYBCABKA0SEQoJcGFydGl0aW9uGAcgASgJIhkKF0Fzc2V0U2VydmljZUxpc3RSZXF1ZXN0IjkKGEFzc2V0U2VydmljZUxpc3RSZXNwb25zZRIdCgZhc3NldHMYAiADKAsyDS5hcGkudjEuQXNzZXQyYwoMQXNzZXRTZXJ2aWNlElMKBExpc3QSHy5hcGkudjEuQXNzZXRTZXJ2aWNlTGlzdFJlcXVlc3QaIC5hcGkudjEuQXNzZXRTZXJ2aWNlTGlzdFJlc3BvbnNlIgjY8xgB6PMYAkKEAQoKY29tLmFwaS52MUILQXNzZXRzUHJvdG9QAVowZ2l0aHViLmNvbS9tZXRhbC1zdGFjay1jbG91ZC9hcGkvZ28vYXBpL3YxO2FwaXYxogIDQVhYqgIGQXBpLlYxygIGQXBpXFYx4gISQXBpXFYxXEdQQk1ldGFkYXRh6gIHQXBpOjpWMWIGcHJvdG8z", [file_api_v1_common, file_google_protobuf_timestamp]);
 
 /**
  * Asset defines the available resources which can be used
@@ -41,6 +41,13 @@ export type Asset = Message<"api.v1.Asset"> & {
    * @generated from field: repeated api.v1.Kubernetes kubernetes = 3;
    */
   kubernetes: Kubernetes[];
+
+  /**
+   * Environment contains information on the environment.
+   *
+   * @generated from field: api.v1.Environment environment = 4;
+   */
+  environment?: Environment;
 };
 
 /**
@@ -49,6 +56,41 @@ export type Asset = Message<"api.v1.Asset"> & {
  */
 export const AssetSchema: GenMessage<Asset> = /*@__PURE__*/
   messageDesc(file_api_v1_assets, 0);
+
+/**
+ * Environment defines information on the installation environment of the metalstack.cloud installation.
+ *
+ * @generated from message api.v1.Environment
+ */
+export type Environment = Message<"api.v1.Environment"> & {
+  /**
+   * ConsoleURL is the URL to the metalstack.cloud cloud console (aka frontend).
+   *
+   * @generated from field: string console_url = 1;
+   */
+  consoleUrl: string;
+
+  /**
+   * AfterLoginURL is the URL to redirect clients to after successful login.
+   *
+   * @generated from field: string after_login_url = 2;
+   */
+  afterLoginUrl: string;
+
+  /**
+   * StripePublicToken can be used by clients to use certain endpoints of the payment service api.
+   *
+   * @generated from field: string stripe_public_token = 3;
+   */
+  stripePublicToken: string;
+};
+
+/**
+ * Describes the message api.v1.Environment.
+ * Use `create(EnvironmentSchema)` to create a new message.
+ */
+export const EnvironmentSchema: GenMessage<Environment> = /*@__PURE__*/
+  messageDesc(file_api_v1_assets, 1);
 
 /**
  * Region defines a datacenter location
@@ -111,7 +153,7 @@ export type Region = Message<"api.v1.Region"> & {
  * Use `create(RegionSchema)` to create a new message.
  */
 export const RegionSchema: GenMessage<Region> = /*@__PURE__*/
-  messageDesc(file_api_v1_assets, 1);
+  messageDesc(file_api_v1_assets, 2);
 
 /**
  * Partition defines a failure domain in one Region.
@@ -160,7 +202,7 @@ export type Partition = Message<"api.v1.Partition"> & {
  * Use `create(PartitionSchema)` to create a new message.
  */
 export const PartitionSchema: GenMessage<Partition> = /*@__PURE__*/
-  messageDesc(file_api_v1_assets, 2);
+  messageDesc(file_api_v1_assets, 3);
 
 /**
  * MachineType defines a server type
@@ -223,7 +265,7 @@ export type MachineType = Message<"api.v1.MachineType"> & {
  * Use `create(MachineTypeSchema)` to create a new message.
  */
 export const MachineTypeSchema: GenMessage<MachineType> = /*@__PURE__*/
-  messageDesc(file_api_v1_assets, 3);
+  messageDesc(file_api_v1_assets, 4);
 
 /**
  * Kubernetes related configurations available
@@ -251,7 +293,7 @@ export type Kubernetes = Message<"api.v1.Kubernetes"> & {
  * Use `create(KubernetesSchema)` to create a new message.
  */
 export const KubernetesSchema: GenMessage<Kubernetes> = /*@__PURE__*/
-  messageDesc(file_api_v1_assets, 4);
+  messageDesc(file_api_v1_assets, 5);
 
 /**
  * AssetDefaults apply if no specific properties are specified
@@ -300,7 +342,7 @@ export type AssetDefaults = Message<"api.v1.AssetDefaults"> & {
  * Use `create(AssetDefaultsSchema)` to create a new message.
  */
 export const AssetDefaultsSchema: GenMessage<AssetDefaults> = /*@__PURE__*/
-  messageDesc(file_api_v1_assets, 5);
+  messageDesc(file_api_v1_assets, 6);
 
 /**
  * AssetServiceListRequest is the request payload to list all Assets
@@ -315,7 +357,7 @@ export type AssetServiceListRequest = Message<"api.v1.AssetServiceListRequest"> 
  * Use `create(AssetServiceListRequestSchema)` to create a new message.
  */
 export const AssetServiceListRequestSchema: GenMessage<AssetServiceListRequest> = /*@__PURE__*/
-  messageDesc(file_api_v1_assets, 6);
+  messageDesc(file_api_v1_assets, 7);
 
 /**
  * AssetServiceListResponse is the response payload which contains the the Asset list
@@ -336,7 +378,7 @@ export type AssetServiceListResponse = Message<"api.v1.AssetServiceListResponse"
  * Use `create(AssetServiceListResponseSchema)` to create a new message.
  */
 export const AssetServiceListResponseSchema: GenMessage<AssetServiceListResponse> = /*@__PURE__*/
-  messageDesc(file_api_v1_assets, 7);
+  messageDesc(file_api_v1_assets, 8);
 
 /**
  * AssetService serves asset related functions

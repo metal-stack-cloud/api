@@ -10675,6 +10675,18 @@
               "isoneof": false,
               "oneofdecl": "",
               "defaultValue": ""
+            },
+            {
+              "name": "environment",
+              "description": "Environment contains information on the environment.",
+              "label": "",
+              "type": "Environment",
+              "longType": "Environment",
+              "fullType": "api.v1.Environment",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
             }
           ]
         },
@@ -10814,6 +10826,54 @@
               "type": "Asset",
               "longType": "Asset",
               "fullType": "api.v1.Asset",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "Environment",
+          "longName": "Environment",
+          "fullName": "api.v1.Environment",
+          "description": "Environment defines information on the installation environment of the metalstack.cloud installation.",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "console_url",
+              "description": "ConsoleURL is the URL to the metalstack.cloud cloud console (aka frontend).",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "after_login_url",
+              "description": "AfterLoginURL is the URL to redirect clients to after successful login.",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "stripe_public_token",
+              "description": "StripePublicToken can be used by clients to use certain endpoints of the payment service api.",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
