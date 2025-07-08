@@ -260,42 +260,6 @@ export type PaymentDetails = Message<"api.v1.PaymentDetails"> & {
  */
 export declare const PaymentDetailsSchema: GenMessage<PaymentDetails>;
 /**
- * PaymentDetailsUpdate is used to update PaymentDetails
- *
- * @generated from message api.v1.PaymentDetailsUpdate
- */
-export type PaymentDetailsUpdate = Message<"api.v1.PaymentDetailsUpdate"> & {
-    /**
-     * CustomerId at the payment processor
-     *
-     * @generated from field: optional string customer_id = 1;
-     */
-    customerId?: string;
-    /**
-     * PaymentMethodId of the tenant at the payment processor
-     *
-     * @generated from field: optional string payment_method_id = 2;
-     */
-    paymentMethodId?: string;
-    /**
-     * SubscriptionId at the payment processor
-     *
-     * @generated from field: optional string subscription_id = 3;
-     */
-    subscriptionId?: string;
-    /**
-     * Vat which applies to this tenant
-     *
-     * @generated from field: optional string vat = 4;
-     */
-    vat?: string;
-};
-/**
- * Describes the message api.v1.PaymentDetailsUpdate.
- * Use `create(PaymentDetailsUpdateSchema)` to create a new message.
- */
-export declare const PaymentDetailsUpdateSchema: GenMessage<PaymentDetailsUpdate>;
-/**
  * TermsAndConditions the tenant accepted
  *
  * @generated from message api.v1.TermsAndConditions
@@ -319,30 +283,6 @@ export type TermsAndConditions = Message<"api.v1.TermsAndConditions"> & {
  * Use `create(TermsAndConditionsSchema)` to create a new message.
  */
 export declare const TermsAndConditionsSchema: GenMessage<TermsAndConditions>;
-/**
- * TermsAndConditionsUpdate
- *
- * @generated from message api.v1.TermsAndConditionsUpdate
- */
-export type TermsAndConditionsUpdate = Message<"api.v1.TermsAndConditionsUpdate"> & {
-    /**
-     * Accepted indicates if the tenant accepted the terms and conditions
-     *
-     * @generated from field: optional bool accepted = 1;
-     */
-    accepted?: boolean;
-    /**
-     * When is the date when the tenant accepted the terms and conditions
-     *
-     * @generated from field: optional google.protobuf.Timestamp when = 2;
-     */
-    when?: Timestamp;
-};
-/**
- * Describes the message api.v1.TermsAndConditionsUpdate.
- * Use `create(TermsAndConditionsUpdateSchema)` to create a new message.
- */
-export declare const TermsAndConditionsUpdateSchema: GenMessage<TermsAndConditionsUpdate>;
 /**
  * TenantServiceListRequest is the request payload of the tenant list request
  *
@@ -482,23 +422,17 @@ export type TenantServiceUpdateRequest = Message<"api.v1.TenantServiceUpdateRequ
      */
     avatarUrl?: string;
     /**
-     * PaymentDetails of the tenant
-     *
-     * @generated from field: optional api.v1.PaymentDetailsUpdate payment_details = 8;
-     */
-    paymentDetails?: PaymentDetailsUpdate;
-    /**
-     * TermsAndConditions of the tenant
-     *
-     * @generated from field: optional api.v1.TermsAndConditionsUpdate terms_and_conditions = 9;
-     */
-    termsAndConditions?: TermsAndConditionsUpdate;
-    /**
      * Onboarded checks if the tenant was asked to be onboarded
      *
      * @generated from field: optional bool onboarded = 13;
      */
     onboarded?: boolean;
+    /**
+     * AcceptTermsAndConditions can be used to accept the terms and conditions
+     *
+     * @generated from field: optional bool accept_terms_and_conditions = 14;
+     */
+    acceptTermsAndConditions?: boolean;
 };
 /**
  * Describes the message api.v1.TenantServiceUpdateRequest.
@@ -914,6 +848,59 @@ export type TenantServiceUpdateMemberResponse = Message<"api.v1.TenantServiceUpd
  */
 export declare const TenantServiceUpdateMemberResponseSchema: GenMessage<TenantServiceUpdateMemberResponse>;
 /**
+ * TenantServiceRequestAdmissionRequest is used to request admission for a tenant
+ *
+ * @generated from message api.v1.TenantServiceRequestAdmissionRequest
+ */
+export type TenantServiceRequestAdmissionRequest = Message<"api.v1.TenantServiceRequestAdmissionRequest"> & {
+    /**
+     * Login of the tenant for whom admission is requested
+     *
+     * @generated from field: string login = 1;
+     */
+    login: string;
+    /**
+     * Name of the user
+     *
+     * @generated from field: string name = 2;
+     */
+    name: string;
+    /**
+     * Email of the user
+     *
+     * @generated from field: string email = 3;
+     */
+    email: string;
+    /**
+     * AcceptedTermsAndConditions indicates if the user has accepted the terms and conditions
+     *
+     * @generated from field: bool accepted_terms_and_conditions = 4;
+     */
+    acceptedTermsAndConditions: boolean;
+    /**
+     * EmailConsent indicates if the user gave consent to receive emails
+     *
+     * @generated from field: bool email_consent = 5;
+     */
+    emailConsent: boolean;
+};
+/**
+ * Describes the message api.v1.TenantServiceRequestAdmissionRequest.
+ * Use `create(TenantServiceRequestAdmissionRequestSchema)` to create a new message.
+ */
+export declare const TenantServiceRequestAdmissionRequestSchema: GenMessage<TenantServiceRequestAdmissionRequest>;
+/**
+ * TenantServiceRequestAdmissionResponse is the response payload an admission request
+ *
+ * @generated from message api.v1.TenantServiceRequestAdmissionResponse
+ */
+export type TenantServiceRequestAdmissionResponse = Message<"api.v1.TenantServiceRequestAdmissionResponse"> & {};
+/**
+ * Describes the message api.v1.TenantServiceRequestAdmissionResponse.
+ * Use `create(TenantServiceRequestAdmissionResponseSchema)` to create a new message.
+ */
+export declare const TenantServiceRequestAdmissionResponseSchema: GenMessage<TenantServiceRequestAdmissionResponse>;
+/**
  * TenantService serves tenant related functions
  *
  * @generated from service api.v1.TenantService
@@ -1038,5 +1025,15 @@ export declare const TenantService: GenService<{
         methodKind: "unary";
         input: typeof TenantServiceInviteGetRequestSchema;
         output: typeof TenantServiceInviteGetResponseSchema;
+    };
+    /**
+     * RequestAdmission requests admission for a tenant to use the service
+     *
+     * @generated from rpc api.v1.TenantService.RequestAdmission
+     */
+    requestAdmission: {
+        methodKind: "unary";
+        input: typeof TenantServiceRequestAdmissionRequestSchema;
+        output: typeof TenantServiceRequestAdmissionResponseSchema;
     };
 }>;
