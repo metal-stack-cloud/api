@@ -224,19 +224,20 @@ message PaymentServiceCreateRequest {
   }];
 
   // Name of the customer to be billed
-  string name = 2;
+  string name = 2 [(buf.validate.field).required = true];
   // PaymentMethodId at the payment provider, the client receives this from the payment provider and passes it on to the api
-  string payment_method_id = 3;
+  string payment_method_id = 3 [
+    (buf.validate.field).string = {min_len: 3},
+    (buf.validate.field).string.pattern = "pm_[a-zA-Z0-9]*$"
+  ];
   // Email of the customer to be billed
   string email = 4 [(buf.validate.field).string.email = true];
-  // Card the customer to be billed
-  Card card = 5;
   // Address is the postal address of the customer to be billed
-  Address address = 6;
+  Address address = 5;
   // Vat which applies to the customer to be billed
-  string vat = 7;
+  string vat = 6 [(buf.validate.field).required = true];
   // PhoneNumber of the customer to be billed
-  optional string phone_number = 8;
+  optional string phone_number = 7 [(buf.validate.field).string = {min_len: 1}];
 }
 
 // PaymentServiceCreateResponse is the response payload for a payment create request
@@ -254,19 +255,20 @@ message PaymentServiceUpdateRequest {
   }];
 
   // Name of the customer to be billed
-  optional string name = 2;
+  optional string name = 2 [(buf.validate.field).string = {min_len: 1}];
   // PaymentMethodId at the payment provider, the client receives this from the payment provider and passes it on to the api
-  optional string payment_method_id = 3;
+  optional string payment_method_id = 3 [
+    (buf.validate.field).string = {min_len: 3},
+    (buf.validate.field).string.pattern = "pm_[a-zA-Z0-9]*$"
+  ];
   // Email of the customer to be billed
   optional string email = 4 [(buf.validate.field).string.email = true];
-  // Card the customer to be billed
-  optional Card card = 5;
   // Address is the postal address of the customer to be billed
-  Address address = 6;
+  Address address = 5;
   // Vat which applies to the customer to be billed
-  optional string vat = 7;
+  optional string vat = 6 [(buf.validate.field).string = {min_len: 1}];
   // PhoneNumber of the customer to be billed
-  optional string phone_number = 8;
+  optional string phone_number = 7 [(buf.validate.field).string = {min_len: 1}];
 }
 
 // PaymentServiceUpdateResponse is the response payload for a payment update request

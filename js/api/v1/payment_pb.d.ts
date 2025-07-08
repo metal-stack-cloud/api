@@ -420,27 +420,21 @@ export type PaymentServiceCreateRequest = Message<"api.v1.PaymentServiceCreateRe
      */
     email: string;
     /**
-     * Card the customer to be billed
-     *
-     * @generated from field: api.v1.Card card = 5;
-     */
-    card?: Card;
-    /**
      * Address is the postal address of the customer to be billed
      *
-     * @generated from field: api.v1.Address address = 6;
+     * @generated from field: api.v1.Address address = 5;
      */
     address?: Address;
     /**
      * Vat which applies to the customer to be billed
      *
-     * @generated from field: string vat = 7;
+     * @generated from field: string vat = 6;
      */
     vat: string;
     /**
      * PhoneNumber of the customer to be billed
      *
-     * @generated from field: optional string phone_number = 8;
+     * @generated from field: optional string phone_number = 7;
      */
     phoneNumber?: string;
 };
@@ -498,27 +492,21 @@ export type PaymentServiceUpdateRequest = Message<"api.v1.PaymentServiceUpdateRe
      */
     email?: string;
     /**
-     * Card the customer to be billed
-     *
-     * @generated from field: optional api.v1.Card card = 5;
-     */
-    card?: Card;
-    /**
      * Address is the postal address of the customer to be billed
      *
-     * @generated from field: api.v1.Address address = 6;
+     * @generated from field: api.v1.Address address = 5;
      */
     address?: Address;
     /**
      * Vat which applies to the customer to be billed
      *
-     * @generated from field: optional string vat = 7;
+     * @generated from field: optional string vat = 6;
      */
     vat?: string;
     /**
      * PhoneNumber of the customer to be billed
      *
-     * @generated from field: optional string phone_number = 8;
+     * @generated from field: optional string phone_number = 7;
      */
     phoneNumber?: string;
 };

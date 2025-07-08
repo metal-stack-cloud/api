@@ -3323,18 +3323,6 @@
               "defaultValue": ""
             },
             {
-              "name": "card",
-              "description": "Card the customer to be billed",
-              "label": "",
-              "type": "Card",
-              "longType": "Card",
-              "fullType": "api.v1.Card",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
               "name": "address",
               "description": "Address is the postal address of the customer to be billed",
               "label": "",
@@ -3798,18 +3786,6 @@
               "ismap": false,
               "isoneof": true,
               "oneofdecl": "_email",
-              "defaultValue": ""
-            },
-            {
-              "name": "card",
-              "description": "Card the customer to be billed",
-              "label": "optional",
-              "type": "Card",
-              "longType": "Card",
-              "fullType": "api.v1.Card",
-              "ismap": false,
-              "isoneof": true,
-              "oneofdecl": "_card",
               "defaultValue": ""
             },
             {

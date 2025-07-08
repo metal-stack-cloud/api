@@ -857,14 +857,12 @@ type PaymentServiceCreateRequest struct {
 	PaymentMethodId string `protobuf:"bytes,3,opt,name=payment_method_id,json=paymentMethodId,proto3" json:"payment_method_id,omitempty"`
 	// Email of the customer to be billed
 	Email string `protobuf:"bytes,4,opt,name=email,proto3" json:"email,omitempty"`
-	// Card the customer to be billed
-	Card *Card `protobuf:"bytes,5,opt,name=card,proto3" json:"card,omitempty"`
 	// Address is the postal address of the customer to be billed
-	Address *Address `protobuf:"bytes,6,opt,name=address,proto3" json:"address,omitempty"`
+	Address *Address `protobuf:"bytes,5,opt,name=address,proto3" json:"address,omitempty"`
 	// Vat which applies to the customer to be billed
-	Vat string `protobuf:"bytes,7,opt,name=vat,proto3" json:"vat,omitempty"`
+	Vat string `protobuf:"bytes,6,opt,name=vat,proto3" json:"vat,omitempty"`
 	// PhoneNumber of the customer to be billed
-	PhoneNumber   *string `protobuf:"bytes,8,opt,name=phone_number,json=phoneNumber,proto3,oneof" json:"phone_number,omitempty"`
+	PhoneNumber   *string `protobuf:"bytes,7,opt,name=phone_number,json=phoneNumber,proto3,oneof" json:"phone_number,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -925,13 +923,6 @@ func (x *PaymentServiceCreateRequest) GetEmail() string {
 		return x.Email
 	}
 	return ""
-}
-
-func (x *PaymentServiceCreateRequest) GetCard() *Card {
-	if x != nil {
-		return x.Card
-	}
-	return nil
 }
 
 func (x *PaymentServiceCreateRequest) GetAddress() *Address {
@@ -1012,14 +1003,12 @@ type PaymentServiceUpdateRequest struct {
 	PaymentMethodId *string `protobuf:"bytes,3,opt,name=payment_method_id,json=paymentMethodId,proto3,oneof" json:"payment_method_id,omitempty"`
 	// Email of the customer to be billed
 	Email *string `protobuf:"bytes,4,opt,name=email,proto3,oneof" json:"email,omitempty"`
-	// Card the customer to be billed
-	Card *Card `protobuf:"bytes,5,opt,name=card,proto3,oneof" json:"card,omitempty"`
 	// Address is the postal address of the customer to be billed
-	Address *Address `protobuf:"bytes,6,opt,name=address,proto3" json:"address,omitempty"`
+	Address *Address `protobuf:"bytes,5,opt,name=address,proto3" json:"address,omitempty"`
 	// Vat which applies to the customer to be billed
-	Vat *string `protobuf:"bytes,7,opt,name=vat,proto3,oneof" json:"vat,omitempty"`
+	Vat *string `protobuf:"bytes,6,opt,name=vat,proto3,oneof" json:"vat,omitempty"`
 	// PhoneNumber of the customer to be billed
-	PhoneNumber   *string `protobuf:"bytes,8,opt,name=phone_number,json=phoneNumber,proto3,oneof" json:"phone_number,omitempty"`
+	PhoneNumber   *string `protobuf:"bytes,7,opt,name=phone_number,json=phoneNumber,proto3,oneof" json:"phone_number,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1080,13 +1069,6 @@ func (x *PaymentServiceUpdateRequest) GetEmail() string {
 		return *x.Email
 	}
 	return ""
-}
-
-func (x *PaymentServiceUpdateRequest) GetCard() *Card {
-	if x != nil {
-		return x.Card
-	}
-	return nil
 }
 
 func (x *PaymentServiceUpdateRequest) GetAddress() *Address {
@@ -1894,34 +1876,31 @@ const file_api_v1_payment_proto_rawDesc = "" +
 	"\x0fmax_redemptions\x18\t \x01(\x03R\x0emaxRedemptions\x12\x1f\n" +
 	"\vamount_left\x18\n" +
 	" \x01(\x03R\n" +
-	"amountLeft\"\xb6\x02\n" +
+	"amountLeft\"\xc8\x02\n" +
 	"\x1bPaymentServiceCreateRequest\x12 \n" +
 	"\x05login\x18\x01 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\x05login\x12\x12\n" +
-	"\x04name\x18\x02 \x01(\tR\x04name\x12*\n" +
-	"\x11payment_method_id\x18\x03 \x01(\tR\x0fpaymentMethodId\x12\x1d\n" +
-	"\x05email\x18\x04 \x01(\tB\a\xbaH\x04r\x02`\x01R\x05email\x12 \n" +
-	"\x04card\x18\x05 \x01(\v2\f.api.v1.CardR\x04card\x12)\n" +
-	"\aaddress\x18\x06 \x01(\v2\x0f.api.v1.AddressR\aaddress\x12\x10\n" +
-	"\x03vat\x18\a \x01(\tR\x03vat\x12&\n" +
-	"\fphone_number\x18\b \x01(\tH\x00R\vphoneNumber\x88\x01\x01B\x0f\n" +
+	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\x05login\x12\x1a\n" +
+	"\x04name\x18\x02 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\x04name\x12E\n" +
+	"\x11payment_method_id\x18\x03 \x01(\tB\x19\xbaH\x16r\x14\x10\x032\x10pm_[a-zA-Z0-9]*$R\x0fpaymentMethodId\x12\x1d\n" +
+	"\x05email\x18\x04 \x01(\tB\a\xbaH\x04r\x02`\x01R\x05email\x12)\n" +
+	"\aaddress\x18\x05 \x01(\v2\x0f.api.v1.AddressR\aaddress\x12\x18\n" +
+	"\x03vat\x18\x06 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\x03vat\x12/\n" +
+	"\fphone_number\x18\a \x01(\tB\a\xbaH\x04r\x02\x10\x01H\x00R\vphoneNumber\x88\x01\x01B\x0f\n" +
 	"\r_phone_number\"S\n" +
 	"\x1cPaymentServiceCreateResponse\x123\n" +
-	"\bcustomer\x18\x01 \x01(\v2\x17.api.v1.PaymentCustomerR\bcustomer\"\x89\x03\n" +
+	"\bcustomer\x18\x01 \x01(\v2\x17.api.v1.PaymentCustomerR\bcustomer\"\x8f\x03\n" +
 	"\x1bPaymentServiceUpdateRequest\x12 \n" +
 	"\x05login\x18\x01 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\x05login\x12\x17\n" +
-	"\x04name\x18\x02 \x01(\tH\x00R\x04name\x88\x01\x01\x12/\n" +
-	"\x11payment_method_id\x18\x03 \x01(\tH\x01R\x0fpaymentMethodId\x88\x01\x01\x12\"\n" +
-	"\x05email\x18\x04 \x01(\tB\a\xbaH\x04r\x02`\x01H\x02R\x05email\x88\x01\x01\x12%\n" +
-	"\x04card\x18\x05 \x01(\v2\f.api.v1.CardH\x03R\x04card\x88\x01\x01\x12)\n" +
-	"\aaddress\x18\x06 \x01(\v2\x0f.api.v1.AddressR\aaddress\x12\x15\n" +
-	"\x03vat\x18\a \x01(\tH\x04R\x03vat\x88\x01\x01\x12&\n" +
-	"\fphone_number\x18\b \x01(\tH\x05R\vphoneNumber\x88\x01\x01B\a\n" +
+	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\x05login\x12 \n" +
+	"\x04name\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x10\x01H\x00R\x04name\x88\x01\x01\x12J\n" +
+	"\x11payment_method_id\x18\x03 \x01(\tB\x19\xbaH\x16r\x14\x10\x032\x10pm_[a-zA-Z0-9]*$H\x01R\x0fpaymentMethodId\x88\x01\x01\x12\"\n" +
+	"\x05email\x18\x04 \x01(\tB\a\xbaH\x04r\x02`\x01H\x02R\x05email\x88\x01\x01\x12)\n" +
+	"\aaddress\x18\x05 \x01(\v2\x0f.api.v1.AddressR\aaddress\x12\x1e\n" +
+	"\x03vat\x18\x06 \x01(\tB\a\xbaH\x04r\x02\x10\x01H\x03R\x03vat\x88\x01\x01\x12/\n" +
+	"\fphone_number\x18\a \x01(\tB\a\xbaH\x04r\x02\x10\x01H\x04R\vphoneNumber\x88\x01\x01B\a\n" +
 	"\x05_nameB\x14\n" +
 	"\x12_payment_method_idB\b\n" +
-	"\x06_emailB\a\n" +
-	"\x05_cardB\x06\n" +
+	"\x06_emailB\x06\n" +
 	"\x04_vatB\x0f\n" +
 	"\r_phone_number\"S\n" +
 	"\x1cPaymentServiceUpdateResponse\x123\n" +
@@ -2042,39 +2021,37 @@ var file_api_v1_payment_proto_depIdxs = []int32{
 	27, // 9: api.v1.Invoice.period_end:type_name -> google.protobuf.Timestamp
 	27, // 10: api.v1.Coupon.created_at:type_name -> google.protobuf.Timestamp
 	27, // 11: api.v1.Coupon.redeem_by:type_name -> google.protobuf.Timestamp
-	3,  // 12: api.v1.PaymentServiceCreateRequest.card:type_name -> api.v1.Card
-	5,  // 13: api.v1.PaymentServiceCreateRequest.address:type_name -> api.v1.Address
-	2,  // 14: api.v1.PaymentServiceCreateResponse.customer:type_name -> api.v1.PaymentCustomer
-	3,  // 15: api.v1.PaymentServiceUpdateRequest.card:type_name -> api.v1.Card
-	5,  // 16: api.v1.PaymentServiceUpdateRequest.address:type_name -> api.v1.Address
-	2,  // 17: api.v1.PaymentServiceUpdateResponse.customer:type_name -> api.v1.PaymentCustomer
-	2,  // 18: api.v1.PaymentServiceGetResponse.customer:type_name -> api.v1.PaymentCustomer
-	6,  // 19: api.v1.PaymentServiceGetSubscriptionUsageResponse.subscription_usage_items:type_name -> api.v1.SubscriptionUsageItem
-	7,  // 20: api.v1.PaymentServiceGetInvoicesResponse.invoices:type_name -> api.v1.Invoice
-	4,  // 21: api.v1.PaymentServiceGetDefaultPricesResponse.prices:type_name -> api.v1.Price
-	9,  // 22: api.v1.PaymentService.Create:input_type -> api.v1.PaymentServiceCreateRequest
-	11, // 23: api.v1.PaymentService.Update:input_type -> api.v1.PaymentServiceUpdateRequest
-	17, // 24: api.v1.PaymentService.Delete:input_type -> api.v1.PaymentServiceDeleteRequest
-	13, // 25: api.v1.PaymentService.Get:input_type -> api.v1.PaymentServiceGetRequest
-	15, // 26: api.v1.PaymentService.HasPaymentMethod:input_type -> api.v1.PaymentServiceHasPaymentMethodRequest
-	19, // 27: api.v1.PaymentService.GetSubscriptionUsage:input_type -> api.v1.PaymentServiceGetSubscriptionUsageRequest
-	21, // 28: api.v1.PaymentService.GetInvoices:input_type -> api.v1.PaymentServiceGetInvoicesRequest
-	23, // 29: api.v1.PaymentService.GetDefaultPrices:input_type -> api.v1.PaymentServiceGetDefaultPricesRequest
-	25, // 30: api.v1.PaymentService.HasChargeableResources:input_type -> api.v1.PaymentServiceHasChargeableResourcesRequest
-	10, // 31: api.v1.PaymentService.Create:output_type -> api.v1.PaymentServiceCreateResponse
-	12, // 32: api.v1.PaymentService.Update:output_type -> api.v1.PaymentServiceUpdateResponse
-	18, // 33: api.v1.PaymentService.Delete:output_type -> api.v1.PaymentServiceDeleteResponse
-	14, // 34: api.v1.PaymentService.Get:output_type -> api.v1.PaymentServiceGetResponse
-	16, // 35: api.v1.PaymentService.HasPaymentMethod:output_type -> api.v1.PaymentServiceHasPaymentMethodResponse
-	20, // 36: api.v1.PaymentService.GetSubscriptionUsage:output_type -> api.v1.PaymentServiceGetSubscriptionUsageResponse
-	22, // 37: api.v1.PaymentService.GetInvoices:output_type -> api.v1.PaymentServiceGetInvoicesResponse
-	24, // 38: api.v1.PaymentService.GetDefaultPrices:output_type -> api.v1.PaymentServiceGetDefaultPricesResponse
-	26, // 39: api.v1.PaymentService.HasChargeableResources:output_type -> api.v1.PaymentServiceHasChargeableResourcesResponse
-	31, // [31:40] is the sub-list for method output_type
-	22, // [22:31] is the sub-list for method input_type
-	22, // [22:22] is the sub-list for extension type_name
-	22, // [22:22] is the sub-list for extension extendee
-	0,  // [0:22] is the sub-list for field type_name
+	5,  // 12: api.v1.PaymentServiceCreateRequest.address:type_name -> api.v1.Address
+	2,  // 13: api.v1.PaymentServiceCreateResponse.customer:type_name -> api.v1.PaymentCustomer
+	5,  // 14: api.v1.PaymentServiceUpdateRequest.address:type_name -> api.v1.Address
+	2,  // 15: api.v1.PaymentServiceUpdateResponse.customer:type_name -> api.v1.PaymentCustomer
+	2,  // 16: api.v1.PaymentServiceGetResponse.customer:type_name -> api.v1.PaymentCustomer
+	6,  // 17: api.v1.PaymentServiceGetSubscriptionUsageResponse.subscription_usage_items:type_name -> api.v1.SubscriptionUsageItem
+	7,  // 18: api.v1.PaymentServiceGetInvoicesResponse.invoices:type_name -> api.v1.Invoice
+	4,  // 19: api.v1.PaymentServiceGetDefaultPricesResponse.prices:type_name -> api.v1.Price
+	9,  // 20: api.v1.PaymentService.Create:input_type -> api.v1.PaymentServiceCreateRequest
+	11, // 21: api.v1.PaymentService.Update:input_type -> api.v1.PaymentServiceUpdateRequest
+	17, // 22: api.v1.PaymentService.Delete:input_type -> api.v1.PaymentServiceDeleteRequest
+	13, // 23: api.v1.PaymentService.Get:input_type -> api.v1.PaymentServiceGetRequest
+	15, // 24: api.v1.PaymentService.HasPaymentMethod:input_type -> api.v1.PaymentServiceHasPaymentMethodRequest
+	19, // 25: api.v1.PaymentService.GetSubscriptionUsage:input_type -> api.v1.PaymentServiceGetSubscriptionUsageRequest
+	21, // 26: api.v1.PaymentService.GetInvoices:input_type -> api.v1.PaymentServiceGetInvoicesRequest
+	23, // 27: api.v1.PaymentService.GetDefaultPrices:input_type -> api.v1.PaymentServiceGetDefaultPricesRequest
+	25, // 28: api.v1.PaymentService.HasChargeableResources:input_type -> api.v1.PaymentServiceHasChargeableResourcesRequest
+	10, // 29: api.v1.PaymentService.Create:output_type -> api.v1.PaymentServiceCreateResponse
+	12, // 30: api.v1.PaymentService.Update:output_type -> api.v1.PaymentServiceUpdateResponse
+	18, // 31: api.v1.PaymentService.Delete:output_type -> api.v1.PaymentServiceDeleteResponse
+	14, // 32: api.v1.PaymentService.Get:output_type -> api.v1.PaymentServiceGetResponse
+	16, // 33: api.v1.PaymentService.HasPaymentMethod:output_type -> api.v1.PaymentServiceHasPaymentMethodResponse
+	20, // 34: api.v1.PaymentService.GetSubscriptionUsage:output_type -> api.v1.PaymentServiceGetSubscriptionUsageResponse
+	22, // 35: api.v1.PaymentService.GetInvoices:output_type -> api.v1.PaymentServiceGetInvoicesResponse
+	24, // 36: api.v1.PaymentService.GetDefaultPrices:output_type -> api.v1.PaymentServiceGetDefaultPricesResponse
+	26, // 37: api.v1.PaymentService.HasChargeableResources:output_type -> api.v1.PaymentServiceHasChargeableResourcesResponse
+	29, // [29:38] is the sub-list for method output_type
+	20, // [20:29] is the sub-list for method input_type
+	20, // [20:20] is the sub-list for extension type_name
+	20, // [20:20] is the sub-list for extension extendee
+	0,  // [0:20] is the sub-list for field type_name
 }
 
 func init() { file_api_v1_payment_proto_init() }
