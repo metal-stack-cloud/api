@@ -7,6 +7,7 @@
 package apiv1
 
 import (
+	_ "buf.build/gen/go/bufbuild/protovalidate/protocolbuffers/go/buf/validate"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
@@ -665,7 +666,7 @@ var File_api_v1_assets_proto protoreflect.FileDescriptor
 
 const file_api_v1_assets_proto_rawDesc = "" +
 	"\n" +
-	"\x13api/v1/assets.proto\x12\x06api.v1\x1a\x13api/v1/common.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\xb6\x02\n" +
+	"\x13api/v1/assets.proto\x12\x06api.v1\x1a\x13api/v1/common.proto\x1a\x1bbuf/validate/validate.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\xb6\x02\n" +
 	"\x05Asset\x12&\n" +
 	"\x06region\x18\x01 \x01(\v2\x0e.api.v1.RegionR\x06region\x12D\n" +
 	"\rmachine_types\x18\x02 \x03(\v2\x1f.api.v1.Asset.MachineTypesEntryR\fmachineTypes\x122\n" +
@@ -675,12 +676,12 @@ const file_api_v1_assets_proto_rawDesc = "" +
 	"\venvironment\x18\x04 \x01(\v2\x13.api.v1.EnvironmentR\venvironment\x1aT\n" +
 	"\x11MachineTypesEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12)\n" +
-	"\x05value\x18\x02 \x01(\v2\x13.api.v1.MachineTypeR\x05value:\x028\x01\"\x86\x01\n" +
-	"\vEnvironment\x12\x1f\n" +
-	"\vconsole_url\x18\x01 \x01(\tR\n" +
-	"consoleUrl\x12&\n" +
-	"\x0fafter_login_url\x18\x02 \x01(\tR\rafterLoginUrl\x12.\n" +
-	"\x13stripe_public_token\x18\x03 \x01(\tR\x11stripePublicToken\"\xc5\x02\n" +
+	"\x05value\x18\x02 \x01(\v2\x13.api.v1.MachineTypeR\x05value:\x028\x01\"\xb5\x01\n" +
+	"\vEnvironment\x12)\n" +
+	"\vconsole_url\x18\x01 \x01(\tB\b\xbaH\x05r\x03\x88\x01\x01R\n" +
+	"consoleUrl\x120\n" +
+	"\x0fafter_login_url\x18\x02 \x01(\tB\b\xbaH\x05r\x03\x88\x01\x01R\rafterLoginUrl\x12I\n" +
+	"\x13stripe_public_token\x18\x03 \x01(\tB\x19\xbaH\x16r\x14\x10\x032\x10pk_[a-zA-Z0-9]*$R\x11stripePublicToken\"\xc5\x02\n" +
 	"\x06Region\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x18\n" +
