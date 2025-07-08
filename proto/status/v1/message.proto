@@ -8,17 +8,17 @@ import "google/protobuf/timestamp.proto";
 // MessageService serves status message related functions
 // this service is used as backend for the status dashboard
 service MessageService {
-  // List returns all messages of interest
-  rpc List(MessageServiceListRequest) returns (MessageServiceListResponse) {
+  // Watch returns all messages of interest
+  rpc Watch(MessageServiceWatchRequest) returns (stream MessageServiceWatchResponse) {
     option (api.v1.visibility) = VISIBILITY_PUBLIC;
   }
 }
 
-// MessageServiceListRequest is the request payload to get the messages
-message MessageServiceListRequest {}
+// MessageServiceWatchRequest is the request payload to watch the messages
+message MessageServiceWatchRequest {}
 
-// MessageServiceListResponse is the response payload with the messages
-message MessageServiceListResponse {
+// MessageServiceWatchResponse is the response payload with the messages
+message MessageServiceWatchResponse {
   // Items is a slice of all messages
   repeated Message items = 1;
   // PinnedItems are messages which are of special interest

@@ -6,22 +6,22 @@ import type { Message } from "@bufbuild/protobuf";
  */
 export declare const file_status_v1_status: GenFile;
 /**
- * StatusServiceGetRequest is the request payload to get the status
+ * StatusServiceWatchRequest is the request payload to get the status
  *
- * @generated from message status.v1.StatusServiceGetRequest
+ * @generated from message status.v1.StatusServiceWatchRequest
  */
-export type StatusServiceGetRequest = Message<"status.v1.StatusServiceGetRequest"> & {};
+export type StatusServiceWatchRequest = Message<"status.v1.StatusServiceWatchRequest"> & {};
 /**
- * Describes the message status.v1.StatusServiceGetRequest.
- * Use `create(StatusServiceGetRequestSchema)` to create a new message.
+ * Describes the message status.v1.StatusServiceWatchRequest.
+ * Use `create(StatusServiceWatchRequestSchema)` to create a new message.
  */
-export declare const StatusServiceGetRequestSchema: GenMessage<StatusServiceGetRequest>;
+export declare const StatusServiceWatchRequestSchema: GenMessage<StatusServiceWatchRequest>;
 /**
- * StatusServiceGetResponse is the response payload which describes the system status
+ * StatusServiceWatchResponse is the response payload which describes the system status
  *
- * @generated from message status.v1.StatusServiceGetResponse
+ * @generated from message status.v1.StatusServiceWatchResponse
  */
-export type StatusServiceGetResponse = Message<"status.v1.StatusServiceGetResponse"> & {
+export type StatusServiceWatchResponse = Message<"status.v1.StatusServiceWatchResponse"> & {
     /**
      * Health of the individual services
      *
@@ -48,10 +48,10 @@ export type StatusServiceGetResponse = Message<"status.v1.StatusServiceGetRespon
     apiVersion: string;
 };
 /**
- * Describes the message status.v1.StatusServiceGetResponse.
- * Use `create(StatusServiceGetResponseSchema)` to create a new message.
+ * Describes the message status.v1.StatusServiceWatchResponse.
+ * Use `create(StatusServiceWatchResponseSchema)` to create a new message.
  */
-export declare const StatusServiceGetResponseSchema: GenMessage<StatusServiceGetResponse>;
+export declare const StatusServiceWatchResponseSchema: GenMessage<StatusServiceWatchResponse>;
 /**
  * StatusService serves status related functions
  * this service is used as backend for the status dashboard
@@ -60,13 +60,13 @@ export declare const StatusServiceGetResponseSchema: GenMessage<StatusServiceGet
  */
 export declare const StatusService: GenService<{
     /**
-     * Get the system status
+     * Watch the system status
      *
-     * @generated from rpc status.v1.StatusService.Get
+     * @generated from rpc status.v1.StatusService.Watch
      */
-    get: {
-        methodKind: "unary";
-        input: typeof StatusServiceGetRequestSchema;
-        output: typeof StatusServiceGetResponseSchema;
+    watch: {
+        methodKind: "server_streaming";
+        input: typeof StatusServiceWatchRequestSchema;
+        output: typeof StatusServiceWatchResponseSchema;
     };
 }>;
