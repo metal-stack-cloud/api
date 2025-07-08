@@ -10675,18 +10675,6 @@
               "isoneof": false,
               "oneofdecl": "",
               "defaultValue": ""
-            },
-            {
-              "name": "environment",
-              "description": "Environment contains information on the environment.",
-              "label": "",
-              "type": "Environment",
-              "longType": "Environment",
-              "fullType": "api.v1.Environment",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
             }
           ]
         },
@@ -10826,6 +10814,18 @@
               "type": "Asset",
               "longType": "Asset",
               "fullType": "api.v1.Asset",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "environment",
+              "description": "Environment contains information on the environment.",
+              "label": "",
+              "type": "Environment",
+              "longType": "Environment",
+              "fullType": "api.v1.Environment",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",

@@ -31,48 +31,12 @@ export type Asset = Message<"api.v1.Asset"> & {
      * @generated from field: repeated api.v1.Kubernetes kubernetes = 3;
      */
     kubernetes: Kubernetes[];
-    /**
-     * Environment contains information on the environment.
-     *
-     * @generated from field: api.v1.Environment environment = 4;
-     */
-    environment?: Environment;
 };
 /**
  * Describes the message api.v1.Asset.
  * Use `create(AssetSchema)` to create a new message.
  */
 export declare const AssetSchema: GenMessage<Asset>;
-/**
- * Environment defines information on the installation environment of the metalstack.cloud installation.
- *
- * @generated from message api.v1.Environment
- */
-export type Environment = Message<"api.v1.Environment"> & {
-    /**
-     * ConsoleURL is the URL to the metalstack.cloud cloud console (aka frontend).
-     *
-     * @generated from field: string console_url = 1;
-     */
-    consoleUrl: string;
-    /**
-     * AfterLoginURL is the URL to redirect clients to after successful login.
-     *
-     * @generated from field: string after_login_url = 2;
-     */
-    afterLoginUrl: string;
-    /**
-     * StripePublicToken can be used by clients to use certain endpoints of the payment service api.
-     *
-     * @generated from field: string stripe_public_token = 3;
-     */
-    stripePublicToken: string;
-};
-/**
- * Describes the message api.v1.Environment.
- * Use `create(EnvironmentSchema)` to create a new message.
- */
-export declare const EnvironmentSchema: GenMessage<Environment>;
 /**
  * Region defines a datacenter location
  *
@@ -314,12 +278,48 @@ export type AssetServiceListResponse = Message<"api.v1.AssetServiceListResponse"
      * @generated from field: repeated api.v1.Asset assets = 2;
      */
     assets: Asset[];
+    /**
+     * Environment contains information on the environment.
+     *
+     * @generated from field: api.v1.Environment environment = 3;
+     */
+    environment?: Environment;
 };
 /**
  * Describes the message api.v1.AssetServiceListResponse.
  * Use `create(AssetServiceListResponseSchema)` to create a new message.
  */
 export declare const AssetServiceListResponseSchema: GenMessage<AssetServiceListResponse>;
+/**
+ * Environment defines information on the installation environment of the metalstack.cloud installation.
+ *
+ * @generated from message api.v1.Environment
+ */
+export type Environment = Message<"api.v1.Environment"> & {
+    /**
+     * ConsoleURL is the URL to the metalstack.cloud cloud console (aka frontend).
+     *
+     * @generated from field: string console_url = 1;
+     */
+    consoleUrl: string;
+    /**
+     * AfterLoginURL is the URL to redirect clients to after successful login.
+     *
+     * @generated from field: string after_login_url = 2;
+     */
+    afterLoginUrl: string;
+    /**
+     * StripePublicToken can be used by clients to use certain endpoints of the payment service api.
+     *
+     * @generated from field: string stripe_public_token = 3;
+     */
+    stripePublicToken: string;
+};
+/**
+ * Describes the message api.v1.Environment.
+ * Use `create(EnvironmentSchema)` to create a new message.
+ */
+export declare const EnvironmentSchema: GenMessage<Environment>;
 /**
  * AssetService serves asset related functions
  *
