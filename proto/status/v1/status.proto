@@ -8,30 +8,10 @@ import "api/v1/health.proto";
 // StatusService serves status related functions
 // this service is used as backend for the status dashboard
 service StatusService {
-  // Get the system status
-  rpc Get(StatusServiceGetRequest) returns (StatusServiceGetResponse) {
-    option (api.v1.visibility) = VISIBILITY_PUBLIC;
-  }
-
   // Watch the system status
   rpc Watch(StatusServiceWatchRequest) returns (stream StatusServiceWatchResponse) {
     option (api.v1.visibility) = VISIBILITY_PUBLIC;
   }
-}
-
-// StatusServiceGetRequest is the request payload to get the status
-message StatusServiceGetRequest {}
-
-// StatusServiceGetResponse is the response payload which describes the system status
-message StatusServiceGetResponse {
-  // Health of the individual services
-  api.v1.Health health = 1;
-  // OverallStatus is the status of the system
-  api.v1.ServiceStatus overall_status = 2;
-  // ConnectionBroken shows if the connection to the system is broken
-  bool connection_broken = 3;
-  // ApiVersion of the system
-  string api_version = 4;
 }
 
 // StatusServiceWatchRequest is the request payload to get the status

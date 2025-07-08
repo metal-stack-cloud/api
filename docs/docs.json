@@ -13162,53 +13162,6 @@
           ]
         },
         {
-          "name": "MessageServiceListRequest",
-          "longName": "MessageServiceListRequest",
-          "fullName": "status.v1.MessageServiceListRequest",
-          "description": "MessageServiceListRequest is the request payload to get the messages",
-          "hasExtensions": false,
-          "hasFields": false,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": []
-        },
-        {
-          "name": "MessageServiceListResponse",
-          "longName": "MessageServiceListResponse",
-          "fullName": "status.v1.MessageServiceListResponse",
-          "description": "MessageServiceListResponse is the response payload with the messages",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "items",
-              "description": "Items is a slice of all messages",
-              "label": "repeated",
-              "type": "Message",
-              "longType": "Message",
-              "fullType": "status.v1.Message",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "pinned_items",
-              "description": "PinnedItems are messages which are of special interest",
-              "label": "repeated",
-              "type": "Message",
-              "longType": "Message",
-              "fullType": "status.v1.Message",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            }
-          ]
-        },
-        {
           "name": "MessageServiceWatchRequest",
           "longName": "MessageServiceWatchRequest",
           "fullName": "status.v1.MessageServiceWatchRequest",
@@ -13324,18 +13277,6 @@
           "description": "MessageService serves status message related functions\nthis service is used as backend for the status dashboard",
           "methods": [
             {
-              "name": "List",
-              "description": "List returns all messages of interest",
-              "requestType": "MessageServiceListRequest",
-              "requestLongType": "MessageServiceListRequest",
-              "requestFullType": "status.v1.MessageServiceListRequest",
-              "requestStreaming": false,
-              "responseType": "MessageServiceListResponse",
-              "responseLongType": "MessageServiceListResponse",
-              "responseFullType": "status.v1.MessageServiceListResponse",
-              "responseStreaming": false
-            },
-            {
               "name": "Watch",
               "description": "Watch returns all messages of interest",
               "requestType": "MessageServiceWatchRequest",
@@ -13362,77 +13303,6 @@
       "enums": [],
       "extensions": [],
       "messages": [
-        {
-          "name": "StatusServiceGetRequest",
-          "longName": "StatusServiceGetRequest",
-          "fullName": "status.v1.StatusServiceGetRequest",
-          "description": "StatusServiceGetRequest is the request payload to get the status",
-          "hasExtensions": false,
-          "hasFields": false,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": []
-        },
-        {
-          "name": "StatusServiceGetResponse",
-          "longName": "StatusServiceGetResponse",
-          "fullName": "status.v1.StatusServiceGetResponse",
-          "description": "StatusServiceGetResponse is the response payload which describes the system status",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "health",
-              "description": "Health of the individual services",
-              "label": "",
-              "type": "Health",
-              "longType": "api.v1.Health",
-              "fullType": "api.v1.Health",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "overall_status",
-              "description": "OverallStatus is the status of the system",
-              "label": "",
-              "type": "ServiceStatus",
-              "longType": "api.v1.ServiceStatus",
-              "fullType": "api.v1.ServiceStatus",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "connection_broken",
-              "description": "ConnectionBroken shows if the connection to the system is broken",
-              "label": "",
-              "type": "bool",
-              "longType": "bool",
-              "fullType": "bool",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "api_version",
-              "description": "ApiVersion of the system",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            }
-          ]
-        },
         {
           "name": "StatusServiceWatchRequest",
           "longName": "StatusServiceWatchRequest",
@@ -13512,18 +13382,6 @@
           "fullName": "status.v1.StatusService",
           "description": "StatusService serves status related functions\nthis service is used as backend for the status dashboard",
           "methods": [
-            {
-              "name": "Get",
-              "description": "Get the system status",
-              "requestType": "StatusServiceGetRequest",
-              "requestLongType": "StatusServiceGetRequest",
-              "requestFullType": "status.v1.StatusServiceGetRequest",
-              "requestStreaming": false,
-              "responseType": "StatusServiceGetResponse",
-              "responseLongType": "StatusServiceGetResponse",
-              "responseFullType": "status.v1.StatusServiceGetResponse",
-              "responseStreaming": false
-            },
             {
               "name": "Watch",
               "description": "Watch the system status",

@@ -88,98 +88,6 @@ func (MessageKind) EnumDescriptor() ([]byte, []int) {
 	return file_status_v1_message_proto_rawDescGZIP(), []int{0}
 }
 
-// MessageServiceListRequest is the request payload to get the messages
-type MessageServiceListRequest struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *MessageServiceListRequest) Reset() {
-	*x = MessageServiceListRequest{}
-	mi := &file_status_v1_message_proto_msgTypes[0]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *MessageServiceListRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*MessageServiceListRequest) ProtoMessage() {}
-
-func (x *MessageServiceListRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_status_v1_message_proto_msgTypes[0]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use MessageServiceListRequest.ProtoReflect.Descriptor instead.
-func (*MessageServiceListRequest) Descriptor() ([]byte, []int) {
-	return file_status_v1_message_proto_rawDescGZIP(), []int{0}
-}
-
-// MessageServiceListResponse is the response payload with the messages
-type MessageServiceListResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// Items is a slice of all messages
-	Items []*Message `protobuf:"bytes,1,rep,name=items,proto3" json:"items,omitempty"`
-	// PinnedItems are messages which are of special interest
-	PinnedItems   []*Message `protobuf:"bytes,2,rep,name=pinned_items,json=pinnedItems,proto3" json:"pinned_items,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *MessageServiceListResponse) Reset() {
-	*x = MessageServiceListResponse{}
-	mi := &file_status_v1_message_proto_msgTypes[1]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *MessageServiceListResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*MessageServiceListResponse) ProtoMessage() {}
-
-func (x *MessageServiceListResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_status_v1_message_proto_msgTypes[1]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use MessageServiceListResponse.ProtoReflect.Descriptor instead.
-func (*MessageServiceListResponse) Descriptor() ([]byte, []int) {
-	return file_status_v1_message_proto_rawDescGZIP(), []int{1}
-}
-
-func (x *MessageServiceListResponse) GetItems() []*Message {
-	if x != nil {
-		return x.Items
-	}
-	return nil
-}
-
-func (x *MessageServiceListResponse) GetPinnedItems() []*Message {
-	if x != nil {
-		return x.PinnedItems
-	}
-	return nil
-}
-
 // MessageServiceWatchRequest is the request payload to watch the messages
 type MessageServiceWatchRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
@@ -189,7 +97,7 @@ type MessageServiceWatchRequest struct {
 
 func (x *MessageServiceWatchRequest) Reset() {
 	*x = MessageServiceWatchRequest{}
-	mi := &file_status_v1_message_proto_msgTypes[2]
+	mi := &file_status_v1_message_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -201,7 +109,7 @@ func (x *MessageServiceWatchRequest) String() string {
 func (*MessageServiceWatchRequest) ProtoMessage() {}
 
 func (x *MessageServiceWatchRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_status_v1_message_proto_msgTypes[2]
+	mi := &file_status_v1_message_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -214,7 +122,7 @@ func (x *MessageServiceWatchRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MessageServiceWatchRequest.ProtoReflect.Descriptor instead.
 func (*MessageServiceWatchRequest) Descriptor() ([]byte, []int) {
-	return file_status_v1_message_proto_rawDescGZIP(), []int{2}
+	return file_status_v1_message_proto_rawDescGZIP(), []int{0}
 }
 
 // MessageServiceWatchResponse is the response payload with the messages
@@ -230,7 +138,7 @@ type MessageServiceWatchResponse struct {
 
 func (x *MessageServiceWatchResponse) Reset() {
 	*x = MessageServiceWatchResponse{}
-	mi := &file_status_v1_message_proto_msgTypes[3]
+	mi := &file_status_v1_message_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -242,7 +150,7 @@ func (x *MessageServiceWatchResponse) String() string {
 func (*MessageServiceWatchResponse) ProtoMessage() {}
 
 func (x *MessageServiceWatchResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_status_v1_message_proto_msgTypes[3]
+	mi := &file_status_v1_message_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -255,7 +163,7 @@ func (x *MessageServiceWatchResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MessageServiceWatchResponse.ProtoReflect.Descriptor instead.
 func (*MessageServiceWatchResponse) Descriptor() ([]byte, []int) {
-	return file_status_v1_message_proto_rawDescGZIP(), []int{3}
+	return file_status_v1_message_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *MessageServiceWatchResponse) GetItems() []*Message {
@@ -291,7 +199,7 @@ type Message struct {
 
 func (x *Message) Reset() {
 	*x = Message{}
-	mi := &file_status_v1_message_proto_msgTypes[4]
+	mi := &file_status_v1_message_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -303,7 +211,7 @@ func (x *Message) String() string {
 func (*Message) ProtoMessage() {}
 
 func (x *Message) ProtoReflect() protoreflect.Message {
-	mi := &file_status_v1_message_proto_msgTypes[4]
+	mi := &file_status_v1_message_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -316,7 +224,7 @@ func (x *Message) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Message.ProtoReflect.Descriptor instead.
 func (*Message) Descriptor() ([]byte, []int) {
-	return file_status_v1_message_proto_rawDescGZIP(), []int{4}
+	return file_status_v1_message_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *Message) GetId() string {
@@ -371,7 +279,7 @@ type ReplyMessage struct {
 
 func (x *ReplyMessage) Reset() {
 	*x = ReplyMessage{}
-	mi := &file_status_v1_message_proto_msgTypes[5]
+	mi := &file_status_v1_message_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -383,7 +291,7 @@ func (x *ReplyMessage) String() string {
 func (*ReplyMessage) ProtoMessage() {}
 
 func (x *ReplyMessage) ProtoReflect() protoreflect.Message {
-	mi := &file_status_v1_message_proto_msgTypes[5]
+	mi := &file_status_v1_message_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -396,7 +304,7 @@ func (x *ReplyMessage) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ReplyMessage.ProtoReflect.Descriptor instead.
 func (*ReplyMessage) Descriptor() ([]byte, []int) {
-	return file_status_v1_message_proto_rawDescGZIP(), []int{5}
+	return file_status_v1_message_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *ReplyMessage) GetId() string {
@@ -431,11 +339,7 @@ var File_status_v1_message_proto protoreflect.FileDescriptor
 
 const file_status_v1_message_proto_rawDesc = "" +
 	"\n" +
-	"\x17status/v1/message.proto\x12\tstatus.v1\x1a\x13api/v1/common.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\x1b\n" +
-	"\x19MessageServiceListRequest\"}\n" +
-	"\x1aMessageServiceListResponse\x12(\n" +
-	"\x05items\x18\x01 \x03(\v2\x12.status.v1.MessageR\x05items\x125\n" +
-	"\fpinned_items\x18\x02 \x03(\v2\x12.status.v1.MessageR\vpinnedItems\"\x1c\n" +
+	"\x17status/v1/message.proto\x12\tstatus.v1\x1a\x13api/v1/common.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\x1c\n" +
 	"\x1aMessageServiceWatchRequest\"~\n" +
 	"\x1bMessageServiceWatchResponse\x12(\n" +
 	"\x05items\x18\x01 \x03(\v2\x12.status.v1.MessageR\x05items\x125\n" +
@@ -457,9 +361,8 @@ const file_status_v1_message_proto_rawDesc = "" +
 	"\x15MESSAGE_KIND_INCIDENT\x10\x02\x12\x17\n" +
 	"\x13MESSAGE_KIND_CHANGE\x10\x03\x12\x19\n" +
 	"\x15MESSAGE_KIND_RESOLVED\x10\x04\x12\x17\n" +
-	"\x13MESSAGE_KIND_UPDATE\x10\x052\xcb\x01\n" +
-	"\x0eMessageService\x12Y\n" +
-	"\x04List\x12$.status.v1.MessageServiceListRequest\x1a%.status.v1.MessageServiceListResponse\"\x04\xd8\xf3\x18\x01\x12^\n" +
+	"\x13MESSAGE_KIND_UPDATE\x10\x052p\n" +
+	"\x0eMessageService\x12^\n" +
 	"\x05Watch\x12%.status.v1.MessageServiceWatchRequest\x1a&.status.v1.MessageServiceWatchResponse\"\x04\xd8\xf3\x18\x010\x01B\x9a\x01\n" +
 	"\rcom.status.v1B\fMessageProtoP\x01Z6github.com/metal-stack-cloud/api/go/status/v1;statusv1\xa2\x02\x03SXX\xaa\x02\tStatus.V1\xca\x02\tStatus\\V1\xe2\x02\x15Status\\V1\\GPBMetadata\xea\x02\n" +
 	"Status::V1b\x06proto3"
@@ -477,36 +380,30 @@ func file_status_v1_message_proto_rawDescGZIP() []byte {
 }
 
 var file_status_v1_message_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
-var file_status_v1_message_proto_msgTypes = make([]protoimpl.MessageInfo, 6)
+var file_status_v1_message_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
 var file_status_v1_message_proto_goTypes = []any{
 	(MessageKind)(0),                    // 0: status.v1.MessageKind
-	(*MessageServiceListRequest)(nil),   // 1: status.v1.MessageServiceListRequest
-	(*MessageServiceListResponse)(nil),  // 2: status.v1.MessageServiceListResponse
-	(*MessageServiceWatchRequest)(nil),  // 3: status.v1.MessageServiceWatchRequest
-	(*MessageServiceWatchResponse)(nil), // 4: status.v1.MessageServiceWatchResponse
-	(*Message)(nil),                     // 5: status.v1.Message
-	(*ReplyMessage)(nil),                // 6: status.v1.ReplyMessage
-	(*timestamppb.Timestamp)(nil),       // 7: google.protobuf.Timestamp
+	(*MessageServiceWatchRequest)(nil),  // 1: status.v1.MessageServiceWatchRequest
+	(*MessageServiceWatchResponse)(nil), // 2: status.v1.MessageServiceWatchResponse
+	(*Message)(nil),                     // 3: status.v1.Message
+	(*ReplyMessage)(nil),                // 4: status.v1.ReplyMessage
+	(*timestamppb.Timestamp)(nil),       // 5: google.protobuf.Timestamp
 }
 var file_status_v1_message_proto_depIdxs = []int32{
-	5,  // 0: status.v1.MessageServiceListResponse.items:type_name -> status.v1.Message
-	5,  // 1: status.v1.MessageServiceListResponse.pinned_items:type_name -> status.v1.Message
-	5,  // 2: status.v1.MessageServiceWatchResponse.items:type_name -> status.v1.Message
-	5,  // 3: status.v1.MessageServiceWatchResponse.pinned_items:type_name -> status.v1.Message
-	0,  // 4: status.v1.Message.kind:type_name -> status.v1.MessageKind
-	7,  // 5: status.v1.Message.timestamp:type_name -> google.protobuf.Timestamp
-	6,  // 6: status.v1.Message.replies:type_name -> status.v1.ReplyMessage
-	0,  // 7: status.v1.ReplyMessage.kind:type_name -> status.v1.MessageKind
-	7,  // 8: status.v1.ReplyMessage.timestamp:type_name -> google.protobuf.Timestamp
-	1,  // 9: status.v1.MessageService.List:input_type -> status.v1.MessageServiceListRequest
-	3,  // 10: status.v1.MessageService.Watch:input_type -> status.v1.MessageServiceWatchRequest
-	2,  // 11: status.v1.MessageService.List:output_type -> status.v1.MessageServiceListResponse
-	4,  // 12: status.v1.MessageService.Watch:output_type -> status.v1.MessageServiceWatchResponse
-	11, // [11:13] is the sub-list for method output_type
-	9,  // [9:11] is the sub-list for method input_type
-	9,  // [9:9] is the sub-list for extension type_name
-	9,  // [9:9] is the sub-list for extension extendee
-	0,  // [0:9] is the sub-list for field type_name
+	3, // 0: status.v1.MessageServiceWatchResponse.items:type_name -> status.v1.Message
+	3, // 1: status.v1.MessageServiceWatchResponse.pinned_items:type_name -> status.v1.Message
+	0, // 2: status.v1.Message.kind:type_name -> status.v1.MessageKind
+	5, // 3: status.v1.Message.timestamp:type_name -> google.protobuf.Timestamp
+	4, // 4: status.v1.Message.replies:type_name -> status.v1.ReplyMessage
+	0, // 5: status.v1.ReplyMessage.kind:type_name -> status.v1.MessageKind
+	5, // 6: status.v1.ReplyMessage.timestamp:type_name -> google.protobuf.Timestamp
+	1, // 7: status.v1.MessageService.Watch:input_type -> status.v1.MessageServiceWatchRequest
+	2, // 8: status.v1.MessageService.Watch:output_type -> status.v1.MessageServiceWatchResponse
+	8, // [8:9] is the sub-list for method output_type
+	7, // [7:8] is the sub-list for method input_type
+	7, // [7:7] is the sub-list for extension type_name
+	7, // [7:7] is the sub-list for extension extendee
+	0, // [0:7] is the sub-list for field type_name
 }
 
 func init() { file_status_v1_message_proto_init() }
@@ -520,7 +417,7 @@ func file_status_v1_message_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_status_v1_message_proto_rawDesc), len(file_status_v1_message_proto_rawDesc)),
 			NumEnums:      1,
-			NumMessages:   6,
+			NumMessages:   4,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

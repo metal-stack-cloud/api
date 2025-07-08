@@ -22,116 +22,6 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-// StatusServiceGetRequest is the request payload to get the status
-type StatusServiceGetRequest struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *StatusServiceGetRequest) Reset() {
-	*x = StatusServiceGetRequest{}
-	mi := &file_status_v1_status_proto_msgTypes[0]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *StatusServiceGetRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*StatusServiceGetRequest) ProtoMessage() {}
-
-func (x *StatusServiceGetRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_status_v1_status_proto_msgTypes[0]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use StatusServiceGetRequest.ProtoReflect.Descriptor instead.
-func (*StatusServiceGetRequest) Descriptor() ([]byte, []int) {
-	return file_status_v1_status_proto_rawDescGZIP(), []int{0}
-}
-
-// StatusServiceGetResponse is the response payload which describes the system status
-type StatusServiceGetResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// Health of the individual services
-	Health *v1.Health `protobuf:"bytes,1,opt,name=health,proto3" json:"health,omitempty"`
-	// OverallStatus is the status of the system
-	OverallStatus v1.ServiceStatus `protobuf:"varint,2,opt,name=overall_status,json=overallStatus,proto3,enum=api.v1.ServiceStatus" json:"overall_status,omitempty"`
-	// ConnectionBroken shows if the connection to the system is broken
-	ConnectionBroken bool `protobuf:"varint,3,opt,name=connection_broken,json=connectionBroken,proto3" json:"connection_broken,omitempty"`
-	// ApiVersion of the system
-	ApiVersion    string `protobuf:"bytes,4,opt,name=api_version,json=apiVersion,proto3" json:"api_version,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *StatusServiceGetResponse) Reset() {
-	*x = StatusServiceGetResponse{}
-	mi := &file_status_v1_status_proto_msgTypes[1]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *StatusServiceGetResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*StatusServiceGetResponse) ProtoMessage() {}
-
-func (x *StatusServiceGetResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_status_v1_status_proto_msgTypes[1]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use StatusServiceGetResponse.ProtoReflect.Descriptor instead.
-func (*StatusServiceGetResponse) Descriptor() ([]byte, []int) {
-	return file_status_v1_status_proto_rawDescGZIP(), []int{1}
-}
-
-func (x *StatusServiceGetResponse) GetHealth() *v1.Health {
-	if x != nil {
-		return x.Health
-	}
-	return nil
-}
-
-func (x *StatusServiceGetResponse) GetOverallStatus() v1.ServiceStatus {
-	if x != nil {
-		return x.OverallStatus
-	}
-	return v1.ServiceStatus(0)
-}
-
-func (x *StatusServiceGetResponse) GetConnectionBroken() bool {
-	if x != nil {
-		return x.ConnectionBroken
-	}
-	return false
-}
-
-func (x *StatusServiceGetResponse) GetApiVersion() string {
-	if x != nil {
-		return x.ApiVersion
-	}
-	return ""
-}
-
 // StatusServiceWatchRequest is the request payload to get the status
 type StatusServiceWatchRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
@@ -141,7 +31,7 @@ type StatusServiceWatchRequest struct {
 
 func (x *StatusServiceWatchRequest) Reset() {
 	*x = StatusServiceWatchRequest{}
-	mi := &file_status_v1_status_proto_msgTypes[2]
+	mi := &file_status_v1_status_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -153,7 +43,7 @@ func (x *StatusServiceWatchRequest) String() string {
 func (*StatusServiceWatchRequest) ProtoMessage() {}
 
 func (x *StatusServiceWatchRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_status_v1_status_proto_msgTypes[2]
+	mi := &file_status_v1_status_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -166,7 +56,7 @@ func (x *StatusServiceWatchRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use StatusServiceWatchRequest.ProtoReflect.Descriptor instead.
 func (*StatusServiceWatchRequest) Descriptor() ([]byte, []int) {
-	return file_status_v1_status_proto_rawDescGZIP(), []int{2}
+	return file_status_v1_status_proto_rawDescGZIP(), []int{0}
 }
 
 // StatusServiceWatchResponse is the response payload which describes the system status
@@ -186,7 +76,7 @@ type StatusServiceWatchResponse struct {
 
 func (x *StatusServiceWatchResponse) Reset() {
 	*x = StatusServiceWatchResponse{}
-	mi := &file_status_v1_status_proto_msgTypes[3]
+	mi := &file_status_v1_status_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -198,7 +88,7 @@ func (x *StatusServiceWatchResponse) String() string {
 func (*StatusServiceWatchResponse) ProtoMessage() {}
 
 func (x *StatusServiceWatchResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_status_v1_status_proto_msgTypes[3]
+	mi := &file_status_v1_status_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -211,7 +101,7 @@ func (x *StatusServiceWatchResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use StatusServiceWatchResponse.ProtoReflect.Descriptor instead.
 func (*StatusServiceWatchResponse) Descriptor() ([]byte, []int) {
-	return file_status_v1_status_proto_rawDescGZIP(), []int{3}
+	return file_status_v1_status_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *StatusServiceWatchResponse) GetHealth() *v1.Health {
@@ -246,23 +136,15 @@ var File_status_v1_status_proto protoreflect.FileDescriptor
 
 const file_status_v1_status_proto_rawDesc = "" +
 	"\n" +
-	"\x16status/v1/status.proto\x12\tstatus.v1\x1a\x13api/v1/common.proto\x1a\x13api/v1/health.proto\"\x19\n" +
-	"\x17StatusServiceGetRequest\"\xce\x01\n" +
-	"\x18StatusServiceGetResponse\x12&\n" +
-	"\x06health\x18\x01 \x01(\v2\x0e.api.v1.HealthR\x06health\x12<\n" +
-	"\x0eoverall_status\x18\x02 \x01(\x0e2\x15.api.v1.ServiceStatusR\roverallStatus\x12+\n" +
-	"\x11connection_broken\x18\x03 \x01(\bR\x10connectionBroken\x12\x1f\n" +
-	"\vapi_version\x18\x04 \x01(\tR\n" +
-	"apiVersion\"\x1b\n" +
+	"\x16status/v1/status.proto\x12\tstatus.v1\x1a\x13api/v1/common.proto\x1a\x13api/v1/health.proto\"\x1b\n" +
 	"\x19StatusServiceWatchRequest\"\xd0\x01\n" +
 	"\x1aStatusServiceWatchResponse\x12&\n" +
 	"\x06health\x18\x01 \x01(\v2\x0e.api.v1.HealthR\x06health\x12<\n" +
 	"\x0eoverall_status\x18\x02 \x01(\x0e2\x15.api.v1.ServiceStatusR\roverallStatus\x12+\n" +
 	"\x11connection_broken\x18\x03 \x01(\bR\x10connectionBroken\x12\x1f\n" +
 	"\vapi_version\x18\x04 \x01(\tR\n" +
-	"apiVersion2\xc3\x01\n" +
-	"\rStatusService\x12T\n" +
-	"\x03Get\x12\".status.v1.StatusServiceGetRequest\x1a#.status.v1.StatusServiceGetResponse\"\x04\xd8\xf3\x18\x01\x12\\\n" +
+	"apiVersion2m\n" +
+	"\rStatusService\x12\\\n" +
 	"\x05Watch\x12$.status.v1.StatusServiceWatchRequest\x1a%.status.v1.StatusServiceWatchResponse\"\x04\xd8\xf3\x18\x010\x01B\x99\x01\n" +
 	"\rcom.status.v1B\vStatusProtoP\x01Z6github.com/metal-stack-cloud/api/go/status/v1;statusv1\xa2\x02\x03SXX\xaa\x02\tStatus.V1\xca\x02\tStatus\\V1\xe2\x02\x15Status\\V1\\GPBMetadata\xea\x02\n" +
 	"Status::V1b\x06proto3"
@@ -279,29 +161,23 @@ func file_status_v1_status_proto_rawDescGZIP() []byte {
 	return file_status_v1_status_proto_rawDescData
 }
 
-var file_status_v1_status_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
+var file_status_v1_status_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
 var file_status_v1_status_proto_goTypes = []any{
-	(*StatusServiceGetRequest)(nil),    // 0: status.v1.StatusServiceGetRequest
-	(*StatusServiceGetResponse)(nil),   // 1: status.v1.StatusServiceGetResponse
-	(*StatusServiceWatchRequest)(nil),  // 2: status.v1.StatusServiceWatchRequest
-	(*StatusServiceWatchResponse)(nil), // 3: status.v1.StatusServiceWatchResponse
-	(*v1.Health)(nil),                  // 4: api.v1.Health
-	(v1.ServiceStatus)(0),              // 5: api.v1.ServiceStatus
+	(*StatusServiceWatchRequest)(nil),  // 0: status.v1.StatusServiceWatchRequest
+	(*StatusServiceWatchResponse)(nil), // 1: status.v1.StatusServiceWatchResponse
+	(*v1.Health)(nil),                  // 2: api.v1.Health
+	(v1.ServiceStatus)(0),              // 3: api.v1.ServiceStatus
 }
 var file_status_v1_status_proto_depIdxs = []int32{
-	4, // 0: status.v1.StatusServiceGetResponse.health:type_name -> api.v1.Health
-	5, // 1: status.v1.StatusServiceGetResponse.overall_status:type_name -> api.v1.ServiceStatus
-	4, // 2: status.v1.StatusServiceWatchResponse.health:type_name -> api.v1.Health
-	5, // 3: status.v1.StatusServiceWatchResponse.overall_status:type_name -> api.v1.ServiceStatus
-	0, // 4: status.v1.StatusService.Get:input_type -> status.v1.StatusServiceGetRequest
-	2, // 5: status.v1.StatusService.Watch:input_type -> status.v1.StatusServiceWatchRequest
-	1, // 6: status.v1.StatusService.Get:output_type -> status.v1.StatusServiceGetResponse
-	3, // 7: status.v1.StatusService.Watch:output_type -> status.v1.StatusServiceWatchResponse
-	6, // [6:8] is the sub-list for method output_type
-	4, // [4:6] is the sub-list for method input_type
-	4, // [4:4] is the sub-list for extension type_name
-	4, // [4:4] is the sub-list for extension extendee
-	0, // [0:4] is the sub-list for field type_name
+	2, // 0: status.v1.StatusServiceWatchResponse.health:type_name -> api.v1.Health
+	3, // 1: status.v1.StatusServiceWatchResponse.overall_status:type_name -> api.v1.ServiceStatus
+	0, // 2: status.v1.StatusService.Watch:input_type -> status.v1.StatusServiceWatchRequest
+	1, // 3: status.v1.StatusService.Watch:output_type -> status.v1.StatusServiceWatchResponse
+	3, // [3:4] is the sub-list for method output_type
+	2, // [2:3] is the sub-list for method input_type
+	2, // [2:2] is the sub-list for extension type_name
+	2, // [2:2] is the sub-list for extension extendee
+	0, // [0:2] is the sub-list for field type_name
 }
 
 func init() { file_status_v1_status_proto_init() }
@@ -315,7 +191,7 @@ func file_status_v1_status_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_status_v1_status_proto_rawDesc), len(file_status_v1_status_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   4,
+			NumMessages:   2,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

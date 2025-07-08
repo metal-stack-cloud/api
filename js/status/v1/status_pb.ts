@@ -13,64 +13,7 @@ import type { Message } from "@bufbuild/protobuf";
  * Describes the file status/v1/status.proto.
  */
 export const file_status_v1_status: GenFile = /*@__PURE__*/
-  fileDesc("ChZzdGF0dXMvdjEvc3RhdHVzLnByb3RvEglzdGF0dXMudjEiGQoXU3RhdHVzU2VydmljZUdldFJlcXVlc3QimQEKGFN0YXR1c1NlcnZpY2VHZXRSZXNwb25zZRIeCgZoZWFsdGgYASABKAsyDi5hcGkudjEuSGVhbHRoEi0KDm92ZXJhbGxfc3RhdHVzGAIgASgOMhUuYXBpLnYxLlNlcnZpY2VTdGF0dXMSGQoRY29ubmVjdGlvbl9icm9rZW4YAyABKAgSEwoLYXBpX3ZlcnNpb24YBCABKAkiGwoZU3RhdHVzU2VydmljZVdhdGNoUmVxdWVzdCKbAQoaU3RhdHVzU2VydmljZVdhdGNoUmVzcG9uc2USHgoGaGVhbHRoGAEgASgLMg4uYXBpLnYxLkhlYWx0aBItCg5vdmVyYWxsX3N0YXR1cxgCIAEoDjIVLmFwaS52MS5TZXJ2aWNlU3RhdHVzEhkKEWNvbm5lY3Rpb25fYnJva2VuGAMgASgIEhMKC2FwaV92ZXJzaW9uGAQgASgJMsMBCg1TdGF0dXNTZXJ2aWNlElQKA0dldBIiLnN0YXR1cy52MS5TdGF0dXNTZXJ2aWNlR2V0UmVxdWVzdBojLnN0YXR1cy52MS5TdGF0dXNTZXJ2aWNlR2V0UmVzcG9uc2UiBNjzGAESXAoFV2F0Y2gSJC5zdGF0dXMudjEuU3RhdHVzU2VydmljZVdhdGNoUmVxdWVzdBolLnN0YXR1cy52MS5TdGF0dXNTZXJ2aWNlV2F0Y2hSZXNwb25zZSIE2PMYATABQpkBCg1jb20uc3RhdHVzLnYxQgtTdGF0dXNQcm90b1ABWjZnaXRodWIuY29tL21ldGFsLXN0YWNrLWNsb3VkL2FwaS9nby9zdGF0dXMvdjE7c3RhdHVzdjGiAgNTWFiqAglTdGF0dXMuVjHKAglTdGF0dXNcVjHiAhVTdGF0dXNcVjFcR1BCTWV0YWRhdGHqAgpTdGF0dXM6OlYxYgZwcm90bzM", [file_api_v1_common, file_api_v1_health]);
-
-/**
- * StatusServiceGetRequest is the request payload to get the status
- *
- * @generated from message status.v1.StatusServiceGetRequest
- */
-export type StatusServiceGetRequest = Message<"status.v1.StatusServiceGetRequest"> & {
-};
-
-/**
- * Describes the message status.v1.StatusServiceGetRequest.
- * Use `create(StatusServiceGetRequestSchema)` to create a new message.
- */
-export const StatusServiceGetRequestSchema: GenMessage<StatusServiceGetRequest> = /*@__PURE__*/
-  messageDesc(file_status_v1_status, 0);
-
-/**
- * StatusServiceGetResponse is the response payload which describes the system status
- *
- * @generated from message status.v1.StatusServiceGetResponse
- */
-export type StatusServiceGetResponse = Message<"status.v1.StatusServiceGetResponse"> & {
-  /**
-   * Health of the individual services
-   *
-   * @generated from field: api.v1.Health health = 1;
-   */
-  health?: Health;
-
-  /**
-   * OverallStatus is the status of the system
-   *
-   * @generated from field: api.v1.ServiceStatus overall_status = 2;
-   */
-  overallStatus: ServiceStatus;
-
-  /**
-   * ConnectionBroken shows if the connection to the system is broken
-   *
-   * @generated from field: bool connection_broken = 3;
-   */
-  connectionBroken: boolean;
-
-  /**
-   * ApiVersion of the system
-   *
-   * @generated from field: string api_version = 4;
-   */
-  apiVersion: string;
-};
-
-/**
- * Describes the message status.v1.StatusServiceGetResponse.
- * Use `create(StatusServiceGetResponseSchema)` to create a new message.
- */
-export const StatusServiceGetResponseSchema: GenMessage<StatusServiceGetResponse> = /*@__PURE__*/
-  messageDesc(file_status_v1_status, 1);
+  fileDesc("ChZzdGF0dXMvdjEvc3RhdHVzLnByb3RvEglzdGF0dXMudjEiGwoZU3RhdHVzU2VydmljZVdhdGNoUmVxdWVzdCKbAQoaU3RhdHVzU2VydmljZVdhdGNoUmVzcG9uc2USHgoGaGVhbHRoGAEgASgLMg4uYXBpLnYxLkhlYWx0aBItCg5vdmVyYWxsX3N0YXR1cxgCIAEoDjIVLmFwaS52MS5TZXJ2aWNlU3RhdHVzEhkKEWNvbm5lY3Rpb25fYnJva2VuGAMgASgIEhMKC2FwaV92ZXJzaW9uGAQgASgJMm0KDVN0YXR1c1NlcnZpY2USXAoFV2F0Y2gSJC5zdGF0dXMudjEuU3RhdHVzU2VydmljZVdhdGNoUmVxdWVzdBolLnN0YXR1cy52MS5TdGF0dXNTZXJ2aWNlV2F0Y2hSZXNwb25zZSIE2PMYATABQpkBCg1jb20uc3RhdHVzLnYxQgtTdGF0dXNQcm90b1ABWjZnaXRodWIuY29tL21ldGFsLXN0YWNrLWNsb3VkL2FwaS9nby9zdGF0dXMvdjE7c3RhdHVzdjGiAgNTWFiqAglTdGF0dXMuVjHKAglTdGF0dXNcVjHiAhVTdGF0dXNcVjFcR1BCTWV0YWRhdGHqAgpTdGF0dXM6OlYxYgZwcm90bzM", [file_api_v1_common, file_api_v1_health]);
 
 /**
  * StatusServiceWatchRequest is the request payload to get the status
@@ -85,7 +28,7 @@ export type StatusServiceWatchRequest = Message<"status.v1.StatusServiceWatchReq
  * Use `create(StatusServiceWatchRequestSchema)` to create a new message.
  */
 export const StatusServiceWatchRequestSchema: GenMessage<StatusServiceWatchRequest> = /*@__PURE__*/
-  messageDesc(file_status_v1_status, 2);
+  messageDesc(file_status_v1_status, 0);
 
 /**
  * StatusServiceWatchResponse is the response payload which describes the system status
@@ -127,7 +70,7 @@ export type StatusServiceWatchResponse = Message<"status.v1.StatusServiceWatchRe
  * Use `create(StatusServiceWatchResponseSchema)` to create a new message.
  */
 export const StatusServiceWatchResponseSchema: GenMessage<StatusServiceWatchResponse> = /*@__PURE__*/
-  messageDesc(file_status_v1_status, 3);
+  messageDesc(file_status_v1_status, 1);
 
 /**
  * StatusService serves status related functions
@@ -136,16 +79,6 @@ export const StatusServiceWatchResponseSchema: GenMessage<StatusServiceWatchResp
  * @generated from service status.v1.StatusService
  */
 export const StatusService: GenService<{
-  /**
-   * Get the system status
-   *
-   * @generated from rpc status.v1.StatusService.Get
-   */
-  get: {
-    methodKind: "unary";
-    input: typeof StatusServiceGetRequestSchema;
-    output: typeof StatusServiceGetResponseSchema;
-  },
   /**
    * Watch the system status
    *

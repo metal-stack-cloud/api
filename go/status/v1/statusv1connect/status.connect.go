@@ -33,16 +33,12 @@ const (
 // reflection-formatted method names, remove the leading slash and convert the remaining slash to a
 // period.
 const (
-	// StatusServiceGetProcedure is the fully-qualified name of the StatusService's Get RPC.
-	StatusServiceGetProcedure = "/status.v1.StatusService/Get"
 	// StatusServiceWatchProcedure is the fully-qualified name of the StatusService's Watch RPC.
 	StatusServiceWatchProcedure = "/status.v1.StatusService/Watch"
 )
 
 // StatusServiceClient is a client for the status.v1.StatusService service.
 type StatusServiceClient interface {
-	// Get the system status
-	Get(context.Context, *connect.Request[v1.StatusServiceGetRequest]) (*connect.Response[v1.StatusServiceGetResponse], error)
 	// Watch the system status
 	Watch(context.Context, *connect.Request[v1.StatusServiceWatchRequest]) (*connect.ServerStreamForClient[v1.StatusServiceWatchResponse], error)
 }
@@ -58,12 +54,6 @@ func NewStatusServiceClient(httpClient connect.HTTPClient, baseURL string, opts 
 	baseURL = strings.TrimRight(baseURL, "/")
 	statusServiceMethods := v1.File_status_v1_status_proto.Services().ByName("StatusService").Methods()
 	return &statusServiceClient{
-		get: connect.NewClient[v1.StatusServiceGetRequest, v1.StatusServiceGetResponse](
-			httpClient,
-			baseURL+StatusServiceGetProcedure,
-			connect.WithSchema(statusServiceMethods.ByName("Get")),
-			connect.WithClientOptions(opts...),
-		),
 		watch: connect.NewClient[v1.StatusServiceWatchRequest, v1.StatusServiceWatchResponse](
 			httpClient,
 			baseURL+StatusServiceWatchProcedure,
@@ -75,13 +65,7 @@ func NewStatusServiceClient(httpClient connect.HTTPClient, baseURL string, opts 
 
 // statusServiceClient implements StatusServiceClient.
 type statusServiceClient struct {
-	get   *connect.Client[v1.StatusServiceGetRequest, v1.StatusServiceGetResponse]
 	watch *connect.Client[v1.StatusServiceWatchRequest, v1.StatusServiceWatchResponse]
-}
-
-// Get calls status.v1.StatusService.Get.
-func (c *statusServiceClient) Get(ctx context.Context, req *connect.Request[v1.StatusServiceGetRequest]) (*connect.Response[v1.StatusServiceGetResponse], error) {
-	return c.get.CallUnary(ctx, req)
 }
 
 // Watch calls status.v1.StatusService.Watch.
@@ -91,8 +75,6 @@ func (c *statusServiceClient) Watch(ctx context.Context, req *connect.Request[v1
 
 // StatusServiceHandler is an implementation of the status.v1.StatusService service.
 type StatusServiceHandler interface {
-	// Get the system status
-	Get(context.Context, *connect.Request[v1.StatusServiceGetRequest]) (*connect.Response[v1.StatusServiceGetResponse], error)
 	// Watch the system status
 	Watch(context.Context, *connect.Request[v1.StatusServiceWatchRequest], *connect.ServerStream[v1.StatusServiceWatchResponse]) error
 }
@@ -104,12 +86,6 @@ type StatusServiceHandler interface {
 // and JSON codecs. They also support gzip compression.
 func NewStatusServiceHandler(svc StatusServiceHandler, opts ...connect.HandlerOption) (string, http.Handler) {
 	statusServiceMethods := v1.File_status_v1_status_proto.Services().ByName("StatusService").Methods()
-	statusServiceGetHandler := connect.NewUnaryHandler(
-		StatusServiceGetProcedure,
-		svc.Get,
-		connect.WithSchema(statusServiceMethods.ByName("Get")),
-		connect.WithHandlerOptions(opts...),
-	)
 	statusServiceWatchHandler := connect.NewServerStreamHandler(
 		StatusServiceWatchProcedure,
 		svc.Watch,
@@ -118,8 +94,6 @@ func NewStatusServiceHandler(svc StatusServiceHandler, opts ...connect.HandlerOp
 	)
 	return "/status.v1.StatusService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
-		case StatusServiceGetProcedure:
-			statusServiceGetHandler.ServeHTTP(w, r)
 		case StatusServiceWatchProcedure:
 			statusServiceWatchHandler.ServeHTTP(w, r)
 		default:
@@ -130,10 +104,6 @@ func NewStatusServiceHandler(svc StatusServiceHandler, opts ...connect.HandlerOp
 
 // UnimplementedStatusServiceHandler returns CodeUnimplemented from all methods.
 type UnimplementedStatusServiceHandler struct{}
-
-func (UnimplementedStatusServiceHandler) Get(context.Context, *connect.Request[v1.StatusServiceGetRequest]) (*connect.Response[v1.StatusServiceGetResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("status.v1.StatusService.Get is not implemented"))
-}
 
 func (UnimplementedStatusServiceHandler) Watch(context.Context, *connect.Request[v1.StatusServiceWatchRequest], *connect.ServerStream[v1.StatusServiceWatchResponse]) error {
 	return connect.NewError(connect.CodeUnimplemented, errors.New("status.v1.StatusService.Watch is not implemented"))

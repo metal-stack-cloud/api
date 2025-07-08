@@ -7,27 +7,17 @@ import { file_api_v1_health } from "../../api/v1/health_pb";
 /**
  * Describes the file status/v1/status.proto.
  */
-export const file_status_v1_status = /*@__PURE__*/ fileDesc("ChZzdGF0dXMvdjEvc3RhdHVzLnByb3RvEglzdGF0dXMudjEiGQoXU3RhdHVzU2VydmljZUdldFJlcXVlc3QimQEKGFN0YXR1c1NlcnZpY2VHZXRSZXNwb25zZRIeCgZoZWFsdGgYASABKAsyDi5hcGkudjEuSGVhbHRoEi0KDm92ZXJhbGxfc3RhdHVzGAIgASgOMhUuYXBpLnYxLlNlcnZpY2VTdGF0dXMSGQoRY29ubmVjdGlvbl9icm9rZW4YAyABKAgSEwoLYXBpX3ZlcnNpb24YBCABKAkiGwoZU3RhdHVzU2VydmljZVdhdGNoUmVxdWVzdCKbAQoaU3RhdHVzU2VydmljZVdhdGNoUmVzcG9uc2USHgoGaGVhbHRoGAEgASgLMg4uYXBpLnYxLkhlYWx0aBItCg5vdmVyYWxsX3N0YXR1cxgCIAEoDjIVLmFwaS52MS5TZXJ2aWNlU3RhdHVzEhkKEWNvbm5lY3Rpb25fYnJva2VuGAMgASgIEhMKC2FwaV92ZXJzaW9uGAQgASgJMsMBCg1TdGF0dXNTZXJ2aWNlElQKA0dldBIiLnN0YXR1cy52MS5TdGF0dXNTZXJ2aWNlR2V0UmVxdWVzdBojLnN0YXR1cy52MS5TdGF0dXNTZXJ2aWNlR2V0UmVzcG9uc2UiBNjzGAESXAoFV2F0Y2gSJC5zdGF0dXMudjEuU3RhdHVzU2VydmljZVdhdGNoUmVxdWVzdBolLnN0YXR1cy52MS5TdGF0dXNTZXJ2aWNlV2F0Y2hSZXNwb25zZSIE2PMYATABQpkBCg1jb20uc3RhdHVzLnYxQgtTdGF0dXNQcm90b1ABWjZnaXRodWIuY29tL21ldGFsLXN0YWNrLWNsb3VkL2FwaS9nby9zdGF0dXMvdjE7c3RhdHVzdjGiAgNTWFiqAglTdGF0dXMuVjHKAglTdGF0dXNcVjHiAhVTdGF0dXNcVjFcR1BCTWV0YWRhdGHqAgpTdGF0dXM6OlYxYgZwcm90bzM", [file_api_v1_common, file_api_v1_health]);
-/**
- * Describes the message status.v1.StatusServiceGetRequest.
- * Use `create(StatusServiceGetRequestSchema)` to create a new message.
- */
-export const StatusServiceGetRequestSchema = /*@__PURE__*/ messageDesc(file_status_v1_status, 0);
-/**
- * Describes the message status.v1.StatusServiceGetResponse.
- * Use `create(StatusServiceGetResponseSchema)` to create a new message.
- */
-export const StatusServiceGetResponseSchema = /*@__PURE__*/ messageDesc(file_status_v1_status, 1);
+export const file_status_v1_status = /*@__PURE__*/ fileDesc("ChZzdGF0dXMvdjEvc3RhdHVzLnByb3RvEglzdGF0dXMudjEiGwoZU3RhdHVzU2VydmljZVdhdGNoUmVxdWVzdCKbAQoaU3RhdHVzU2VydmljZVdhdGNoUmVzcG9uc2USHgoGaGVhbHRoGAEgASgLMg4uYXBpLnYxLkhlYWx0aBItCg5vdmVyYWxsX3N0YXR1cxgCIAEoDjIVLmFwaS52MS5TZXJ2aWNlU3RhdHVzEhkKEWNvbm5lY3Rpb25fYnJva2VuGAMgASgIEhMKC2FwaV92ZXJzaW9uGAQgASgJMm0KDVN0YXR1c1NlcnZpY2USXAoFV2F0Y2gSJC5zdGF0dXMudjEuU3RhdHVzU2VydmljZVdhdGNoUmVxdWVzdBolLnN0YXR1cy52MS5TdGF0dXNTZXJ2aWNlV2F0Y2hSZXNwb25zZSIE2PMYATABQpkBCg1jb20uc3RhdHVzLnYxQgtTdGF0dXNQcm90b1ABWjZnaXRodWIuY29tL21ldGFsLXN0YWNrLWNsb3VkL2FwaS9nby9zdGF0dXMvdjE7c3RhdHVzdjGiAgNTWFiqAglTdGF0dXMuVjHKAglTdGF0dXNcVjHiAhVTdGF0dXNcVjFcR1BCTWV0YWRhdGHqAgpTdGF0dXM6OlYxYgZwcm90bzM", [file_api_v1_common, file_api_v1_health]);
 /**
  * Describes the message status.v1.StatusServiceWatchRequest.
  * Use `create(StatusServiceWatchRequestSchema)` to create a new message.
  */
-export const StatusServiceWatchRequestSchema = /*@__PURE__*/ messageDesc(file_status_v1_status, 2);
+export const StatusServiceWatchRequestSchema = /*@__PURE__*/ messageDesc(file_status_v1_status, 0);
 /**
  * Describes the message status.v1.StatusServiceWatchResponse.
  * Use `create(StatusServiceWatchResponseSchema)` to create a new message.
  */
-export const StatusServiceWatchResponseSchema = /*@__PURE__*/ messageDesc(file_status_v1_status, 3);
+export const StatusServiceWatchResponseSchema = /*@__PURE__*/ messageDesc(file_status_v1_status, 1);
 /**
  * StatusService serves status related functions
  * this service is used as backend for the status dashboard

@@ -13,50 +13,7 @@ import type { Message as Message$1 } from "@bufbuild/protobuf";
  * Describes the file status/v1/message.proto.
  */
 export const file_status_v1_message: GenFile = /*@__PURE__*/
-  fileDesc("ChdzdGF0dXMvdjEvbWVzc2FnZS5wcm90bxIJc3RhdHVzLnYxIhsKGU1lc3NhZ2VTZXJ2aWNlTGlzdFJlcXVlc3QiaQoaTWVzc2FnZVNlcnZpY2VMaXN0UmVzcG9uc2USIQoFaXRlbXMYASADKAsyEi5zdGF0dXMudjEuTWVzc2FnZRIoCgxwaW5uZWRfaXRlbXMYAiADKAsyEi5zdGF0dXMudjEuTWVzc2FnZSIcChpNZXNzYWdlU2VydmljZVdhdGNoUmVxdWVzdCJqChtNZXNzYWdlU2VydmljZVdhdGNoUmVzcG9uc2USIQoFaXRlbXMYASADKAsyEi5zdGF0dXMudjEuTWVzc2FnZRIoCgxwaW5uZWRfaXRlbXMYAiADKAsyEi5zdGF0dXMudjEuTWVzc2FnZSKiAQoHTWVzc2FnZRIKCgJpZBgBIAEoCRIMCgR0ZXh0GAIgASgJEiQKBGtpbmQYAyABKA4yFi5zdGF0dXMudjEuTWVzc2FnZUtpbmQSLQoJdGltZXN0YW1wGAQgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcBIoCgdyZXBsaWVzGAUgAygLMhcuc3RhdHVzLnYxLlJlcGx5TWVzc2FnZSJ9CgxSZXBseU1lc3NhZ2USCgoCaWQYASABKAkSDAoEdGV4dBgCIAEoCRIkCgRraW5kGAMgASgOMhYuc3RhdHVzLnYxLk1lc3NhZ2VLaW5kEi0KCXRpbWVzdGFtcBgEIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXAqqgEKC01lc3NhZ2VLaW5kEhwKGE1FU1NBR0VfS0lORF9VTlNQRUNJRklFRBAAEhUKEU1FU1NBR0VfS0lORF9JTkZPEAESGQoVTUVTU0FHRV9LSU5EX0lOQ0lERU5UEAISFwoTTUVTU0FHRV9LSU5EX0NIQU5HRRADEhkKFU1FU1NBR0VfS0lORF9SRVNPTFZFRBAEEhcKE01FU1NBR0VfS0lORF9VUERBVEUQBTLLAQoOTWVzc2FnZVNlcnZpY2USWQoETGlzdBIkLnN0YXR1cy52MS5NZXNzYWdlU2VydmljZUxpc3RSZXF1ZXN0GiUuc3RhdHVzLnYxLk1lc3NhZ2VTZXJ2aWNlTGlzdFJlc3BvbnNlIgTY8xgBEl4KBVdhdGNoEiUuc3RhdHVzLnYxLk1lc3NhZ2VTZXJ2aWNlV2F0Y2hSZXF1ZXN0GiYuc3RhdHVzLnYxLk1lc3NhZ2VTZXJ2aWNlV2F0Y2hSZXNwb25zZSIE2PMYATABQpoBCg1jb20uc3RhdHVzLnYxQgxNZXNzYWdlUHJvdG9QAVo2Z2l0aHViLmNvbS9tZXRhbC1zdGFjay1jbG91ZC9hcGkvZ28vc3RhdHVzL3YxO3N0YXR1c3YxogIDU1hYqgIJU3RhdHVzLlYxygIJU3RhdHVzXFYx4gIVU3RhdHVzXFYxXEdQQk1ldGFkYXRh6gIKU3RhdHVzOjpWMWIGcHJvdG8z", [file_api_v1_common, file_google_protobuf_timestamp]);
-
-/**
- * MessageServiceListRequest is the request payload to get the messages
- *
- * @generated from message status.v1.MessageServiceListRequest
- */
-export type MessageServiceListRequest = Message$1<"status.v1.MessageServiceListRequest"> & {
-};
-
-/**
- * Describes the message status.v1.MessageServiceListRequest.
- * Use `create(MessageServiceListRequestSchema)` to create a new message.
- */
-export const MessageServiceListRequestSchema: GenMessage<MessageServiceListRequest> = /*@__PURE__*/
-  messageDesc(file_status_v1_message, 0);
-
-/**
- * MessageServiceListResponse is the response payload with the messages
- *
- * @generated from message status.v1.MessageServiceListResponse
- */
-export type MessageServiceListResponse = Message$1<"status.v1.MessageServiceListResponse"> & {
-  /**
-   * Items is a slice of all messages
-   *
-   * @generated from field: repeated status.v1.Message items = 1;
-   */
-  items: Message[];
-
-  /**
-   * PinnedItems are messages which are of special interest
-   *
-   * @generated from field: repeated status.v1.Message pinned_items = 2;
-   */
-  pinnedItems: Message[];
-};
-
-/**
- * Describes the message status.v1.MessageServiceListResponse.
- * Use `create(MessageServiceListResponseSchema)` to create a new message.
- */
-export const MessageServiceListResponseSchema: GenMessage<MessageServiceListResponse> = /*@__PURE__*/
-  messageDesc(file_status_v1_message, 1);
+  fileDesc("ChdzdGF0dXMvdjEvbWVzc2FnZS5wcm90bxIJc3RhdHVzLnYxIhwKGk1lc3NhZ2VTZXJ2aWNlV2F0Y2hSZXF1ZXN0ImoKG01lc3NhZ2VTZXJ2aWNlV2F0Y2hSZXNwb25zZRIhCgVpdGVtcxgBIAMoCzISLnN0YXR1cy52MS5NZXNzYWdlEigKDHBpbm5lZF9pdGVtcxgCIAMoCzISLnN0YXR1cy52MS5NZXNzYWdlIqIBCgdNZXNzYWdlEgoKAmlkGAEgASgJEgwKBHRleHQYAiABKAkSJAoEa2luZBgDIAEoDjIWLnN0YXR1cy52MS5NZXNzYWdlS2luZBItCgl0aW1lc3RhbXAYBCABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wEigKB3JlcGxpZXMYBSADKAsyFy5zdGF0dXMudjEuUmVwbHlNZXNzYWdlIn0KDFJlcGx5TWVzc2FnZRIKCgJpZBgBIAEoCRIMCgR0ZXh0GAIgASgJEiQKBGtpbmQYAyABKA4yFi5zdGF0dXMudjEuTWVzc2FnZUtpbmQSLQoJdGltZXN0YW1wGAQgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcCqqAQoLTWVzc2FnZUtpbmQSHAoYTUVTU0FHRV9LSU5EX1VOU1BFQ0lGSUVEEAASFQoRTUVTU0FHRV9LSU5EX0lORk8QARIZChVNRVNTQUdFX0tJTkRfSU5DSURFTlQQAhIXChNNRVNTQUdFX0tJTkRfQ0hBTkdFEAMSGQoVTUVTU0FHRV9LSU5EX1JFU09MVkVEEAQSFwoTTUVTU0FHRV9LSU5EX1VQREFURRAFMnAKDk1lc3NhZ2VTZXJ2aWNlEl4KBVdhdGNoEiUuc3RhdHVzLnYxLk1lc3NhZ2VTZXJ2aWNlV2F0Y2hSZXF1ZXN0GiYuc3RhdHVzLnYxLk1lc3NhZ2VTZXJ2aWNlV2F0Y2hSZXNwb25zZSIE2PMYATABQpoBCg1jb20uc3RhdHVzLnYxQgxNZXNzYWdlUHJvdG9QAVo2Z2l0aHViLmNvbS9tZXRhbC1zdGFjay1jbG91ZC9hcGkvZ28vc3RhdHVzL3YxO3N0YXR1c3YxogIDU1hYqgIJU3RhdHVzLlYxygIJU3RhdHVzXFYx4gIVU3RhdHVzXFYxXEdQQk1ldGFkYXRh6gIKU3RhdHVzOjpWMWIGcHJvdG8z", [file_api_v1_common, file_google_protobuf_timestamp]);
 
 /**
  * MessageServiceWatchRequest is the request payload to watch the messages
@@ -71,7 +28,7 @@ export type MessageServiceWatchRequest = Message$1<"status.v1.MessageServiceWatc
  * Use `create(MessageServiceWatchRequestSchema)` to create a new message.
  */
 export const MessageServiceWatchRequestSchema: GenMessage<MessageServiceWatchRequest> = /*@__PURE__*/
-  messageDesc(file_status_v1_message, 2);
+  messageDesc(file_status_v1_message, 0);
 
 /**
  * MessageServiceWatchResponse is the response payload with the messages
@@ -99,7 +56,7 @@ export type MessageServiceWatchResponse = Message$1<"status.v1.MessageServiceWat
  * Use `create(MessageServiceWatchResponseSchema)` to create a new message.
  */
 export const MessageServiceWatchResponseSchema: GenMessage<MessageServiceWatchResponse> = /*@__PURE__*/
-  messageDesc(file_status_v1_message, 3);
+  messageDesc(file_status_v1_message, 1);
 
 /**
  * Message is a test message to be displayed in the status
@@ -148,7 +105,7 @@ export type Message = Message$1<"status.v1.Message"> & {
  * Use `create(MessageSchema)` to create a new message.
  */
 export const MessageSchema: GenMessage<Message> = /*@__PURE__*/
-  messageDesc(file_status_v1_message, 4);
+  messageDesc(file_status_v1_message, 2);
 
 /**
  * ReplyMessage is a message as a followup of a initial message
@@ -190,7 +147,7 @@ export type ReplyMessage = Message$1<"status.v1.ReplyMessage"> & {
  * Use `create(ReplyMessageSchema)` to create a new message.
  */
 export const ReplyMessageSchema: GenMessage<ReplyMessage> = /*@__PURE__*/
-  messageDesc(file_status_v1_message, 5);
+  messageDesc(file_status_v1_message, 3);
 
 /**
  * MessageKind defines what type of message it is
@@ -254,16 +211,6 @@ export const MessageKindSchema: GenEnum<MessageKind> = /*@__PURE__*/
  * @generated from service status.v1.MessageService
  */
 export const MessageService: GenService<{
-  /**
-   * List returns all messages of interest
-   *
-   * @generated from rpc status.v1.MessageService.List
-   */
-  list: {
-    methodKind: "unary";
-    input: typeof MessageServiceListRequestSchema;
-    output: typeof MessageServiceListResponseSchema;
-  },
   /**
    * Watch returns all messages of interest
    *

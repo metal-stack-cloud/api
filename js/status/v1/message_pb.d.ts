@@ -6,41 +6,6 @@ import type { Message as Message$1 } from "@bufbuild/protobuf";
  */
 export declare const file_status_v1_message: GenFile;
 /**
- * MessageServiceListRequest is the request payload to get the messages
- *
- * @generated from message status.v1.MessageServiceListRequest
- */
-export type MessageServiceListRequest = Message$1<"status.v1.MessageServiceListRequest"> & {};
-/**
- * Describes the message status.v1.MessageServiceListRequest.
- * Use `create(MessageServiceListRequestSchema)` to create a new message.
- */
-export declare const MessageServiceListRequestSchema: GenMessage<MessageServiceListRequest>;
-/**
- * MessageServiceListResponse is the response payload with the messages
- *
- * @generated from message status.v1.MessageServiceListResponse
- */
-export type MessageServiceListResponse = Message$1<"status.v1.MessageServiceListResponse"> & {
-    /**
-     * Items is a slice of all messages
-     *
-     * @generated from field: repeated status.v1.Message items = 1;
-     */
-    items: Message[];
-    /**
-     * PinnedItems are messages which are of special interest
-     *
-     * @generated from field: repeated status.v1.Message pinned_items = 2;
-     */
-    pinnedItems: Message[];
-};
-/**
- * Describes the message status.v1.MessageServiceListResponse.
- * Use `create(MessageServiceListResponseSchema)` to create a new message.
- */
-export declare const MessageServiceListResponseSchema: GenMessage<MessageServiceListResponse>;
-/**
  * MessageServiceWatchRequest is the request payload to watch the messages
  *
  * @generated from message status.v1.MessageServiceWatchRequest
@@ -207,16 +172,6 @@ export declare const MessageKindSchema: GenEnum<MessageKind>;
  * @generated from service status.v1.MessageService
  */
 export declare const MessageService: GenService<{
-    /**
-     * List returns all messages of interest
-     *
-     * @generated from rpc status.v1.MessageService.List
-     */
-    list: {
-        methodKind: "unary";
-        input: typeof MessageServiceListRequestSchema;
-        output: typeof MessageServiceListResponseSchema;
-    };
     /**
      * Watch returns all messages of interest
      *

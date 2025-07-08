@@ -260,9 +260,7 @@ func GetServicePermissions() *ServicePermissions {
 			"/api.v1.VolumeService/Get":                     true,
 			"/api.v1.VolumeService/List":                    true,
 			"/api.v1.VolumeService/Update":                  true,
-			"/status.v1.MessageService/List":                true,
 			"/status.v1.MessageService/Watch":               true,
-			"/status.v1.StatusService/Get":                  true,
 			"/status.v1.StatusService/Watch":                true,
 		},
 		Visibility: Visibility{
@@ -274,9 +272,7 @@ func GetServicePermissions() *ServicePermissions {
 				"/api.v1.VersionService/Get":                                     true,
 				"/grpc.reflection.v1.ServerReflection/ServerReflectionInfo":      true,
 				"/grpc.reflection.v1alpha.ServerReflection/ServerReflectionInfo": true,
-				"/status.v1.MessageService/List":                                 true,
 				"/status.v1.MessageService/Watch":                                true,
-				"/status.v1.StatusService/Get":                                   true,
 				"/status.v1.StatusService/Watch":                                 true,
 			},
 			Self: map[string]bool{
@@ -454,9 +450,7 @@ func GetServicePermissions() *ServicePermissions {
 			"/api.v1.VolumeService/Get":                     false,
 			"/api.v1.VolumeService/List":                    false,
 			"/api.v1.VolumeService/Update":                  true,
-			"/status.v1.MessageService/List":                true,
 			"/status.v1.MessageService/Watch":               true,
-			"/status.v1.StatusService/Get":                  true,
 			"/status.v1.StatusService/Watch":                true,
 		},
 	}
