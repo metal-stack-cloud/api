@@ -17,34 +17,22 @@ type StatusServiceHandler struct {
 	mock.Mock
 }
 
-// Get provides a mock function with given fields: _a0, _a1
-func (_m *StatusServiceHandler) Get(_a0 context.Context, _a1 *connect.Request[statusv1.StatusServiceGetRequest]) (*connect.Response[statusv1.StatusServiceGetResponse], error) {
-	ret := _m.Called(_a0, _a1)
+// Watch provides a mock function with given fields: _a0, _a1, _a2
+func (_m *StatusServiceHandler) Watch(_a0 context.Context, _a1 *connect.Request[statusv1.StatusServiceWatchRequest], _a2 *connect.ServerStream[statusv1.StatusServiceWatchResponse]) error {
+	ret := _m.Called(_a0, _a1, _a2)
 
 	if len(ret) == 0 {
-		panic("no return value specified for Get")
+		panic("no return value specified for Watch")
 	}
 
-	var r0 *connect.Response[statusv1.StatusServiceGetResponse]
-	var r1 error
-	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[statusv1.StatusServiceGetRequest]) (*connect.Response[statusv1.StatusServiceGetResponse], error)); ok {
-		return rf(_a0, _a1)
-	}
-	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[statusv1.StatusServiceGetRequest]) *connect.Response[statusv1.StatusServiceGetResponse]); ok {
-		r0 = rf(_a0, _a1)
+	var r0 error
+	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[statusv1.StatusServiceWatchRequest], *connect.ServerStream[statusv1.StatusServiceWatchResponse]) error); ok {
+		r0 = rf(_a0, _a1, _a2)
 	} else {
-		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*connect.Response[statusv1.StatusServiceGetResponse])
-		}
+		r0 = ret.Error(0)
 	}
 
-	if rf, ok := ret.Get(1).(func(context.Context, *connect.Request[statusv1.StatusServiceGetRequest]) error); ok {
-		r1 = rf(_a0, _a1)
-	} else {
-		r1 = ret.Error(1)
-	}
-
-	return r0, r1
+	return r0
 }
 
 // NewStatusServiceHandler creates a new instance of StatusServiceHandler. It also registers a testing interface on the mock and a cleanup function to assert the mocks expectations.

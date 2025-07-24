@@ -6,22 +6,22 @@ import type { Message as Message$1 } from "@bufbuild/protobuf";
  */
 export declare const file_status_v1_message: GenFile;
 /**
- * MessageServiceListRequest is the request payload to get the messages
+ * MessageServiceWatchRequest is the request payload to watch the messages
  *
- * @generated from message status.v1.MessageServiceListRequest
+ * @generated from message status.v1.MessageServiceWatchRequest
  */
-export type MessageServiceListRequest = Message$1<"status.v1.MessageServiceListRequest"> & {};
+export type MessageServiceWatchRequest = Message$1<"status.v1.MessageServiceWatchRequest"> & {};
 /**
- * Describes the message status.v1.MessageServiceListRequest.
- * Use `create(MessageServiceListRequestSchema)` to create a new message.
+ * Describes the message status.v1.MessageServiceWatchRequest.
+ * Use `create(MessageServiceWatchRequestSchema)` to create a new message.
  */
-export declare const MessageServiceListRequestSchema: GenMessage<MessageServiceListRequest>;
+export declare const MessageServiceWatchRequestSchema: GenMessage<MessageServiceWatchRequest>;
 /**
- * MessageServiceListResponse is the response payload with the messages
+ * MessageServiceWatchResponse is the response payload with the messages
  *
- * @generated from message status.v1.MessageServiceListResponse
+ * @generated from message status.v1.MessageServiceWatchResponse
  */
-export type MessageServiceListResponse = Message$1<"status.v1.MessageServiceListResponse"> & {
+export type MessageServiceWatchResponse = Message$1<"status.v1.MessageServiceWatchResponse"> & {
     /**
      * Items is a slice of all messages
      *
@@ -36,10 +36,10 @@ export type MessageServiceListResponse = Message$1<"status.v1.MessageServiceList
     pinnedItems: Message[];
 };
 /**
- * Describes the message status.v1.MessageServiceListResponse.
- * Use `create(MessageServiceListResponseSchema)` to create a new message.
+ * Describes the message status.v1.MessageServiceWatchResponse.
+ * Use `create(MessageServiceWatchResponseSchema)` to create a new message.
  */
-export declare const MessageServiceListResponseSchema: GenMessage<MessageServiceListResponse>;
+export declare const MessageServiceWatchResponseSchema: GenMessage<MessageServiceWatchResponse>;
 /**
  * Message is a test message to be displayed in the status
  *
@@ -173,13 +173,13 @@ export declare const MessageKindSchema: GenEnum<MessageKind>;
  */
 export declare const MessageService: GenService<{
     /**
-     * List returns all messages of interest
+     * Watch returns all messages of interest
      *
-     * @generated from rpc status.v1.MessageService.List
+     * @generated from rpc status.v1.MessageService.Watch
      */
-    list: {
-        methodKind: "unary";
-        input: typeof MessageServiceListRequestSchema;
-        output: typeof MessageServiceListResponseSchema;
+    watch: {
+        methodKind: "server_streaming";
+        input: typeof MessageServiceWatchRequestSchema;
+        output: typeof MessageServiceWatchResponseSchema;
     };
 }>;
