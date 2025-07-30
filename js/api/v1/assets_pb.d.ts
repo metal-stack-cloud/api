@@ -299,21 +299,27 @@ export type Environment = Message<"api.v1.Environment"> & {
     /**
      * ConsoleURL is the URL to the metalstack.cloud cloud console (aka frontend).
      *
-     * @generated from field: string console_url = 1;
+     * @generated from field: optional string console_url = 1;
      */
-    consoleUrl: string;
+    consoleUrl?: string;
     /**
      * AfterLoginURL is the URL to redirect clients to after successful login.
      *
-     * @generated from field: string after_login_url = 2;
+     * @generated from field: optional string after_login_url = 2;
      */
-    afterLoginUrl: string;
+    afterLoginUrl?: string;
     /**
      * StripePublicToken can be used by clients to use certain endpoints of the payment service api.
      *
-     * @generated from field: string stripe_public_token = 3;
+     * @generated from field: optional string stripe_public_token = 3;
      */
-    stripePublicToken: string;
+    stripePublicToken?: string;
+    /**
+     * TermsAndConditionsURL is the URL to the terms and conditions.
+     *
+     * @generated from field: optional string terms_and_conditions_url = 4;
+     */
+    termsAndConditionsUrl?: string;
 };
 /**
  * Describes the message api.v1.Environment.

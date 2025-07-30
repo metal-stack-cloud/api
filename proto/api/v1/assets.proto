@@ -111,12 +111,14 @@ message AssetServiceListResponse {
 // Environment defines information on the installation environment of the metalstack.cloud installation.
 message Environment {
   // ConsoleURL is the URL to the metalstack.cloud cloud console (aka frontend).
-  string console_url = 1 [(buf.validate.field).string.uri = true];
+  optional string console_url = 1 [(buf.validate.field).string.uri = true];
   // AfterLoginURL is the URL to redirect clients to after successful login.
-  string after_login_url = 2 [(buf.validate.field).string.uri = true];
+  optional string after_login_url = 2 [(buf.validate.field).string.uri = true];
   // StripePublicToken can be used by clients to use certain endpoints of the payment service api.
-  string stripe_public_token = 3 [
+  optional string stripe_public_token = 3 [
     (buf.validate.field).string = {min_len: 3},
     (buf.validate.field).string.pattern = "pk_[a-zA-Z0-9]*$"
   ];
+  // TermsAndConditionsURL is the URL to the terms and conditions.
+  optional string terms_and_conditions_url = 4 [(buf.validate.field).string.uri = true];
 }

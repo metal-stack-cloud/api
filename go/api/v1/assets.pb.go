@@ -602,13 +602,15 @@ func (x *AssetServiceListResponse) GetEnvironment() *Environment {
 type Environment struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// ConsoleURL is the URL to the metalstack.cloud cloud console (aka frontend).
-	ConsoleUrl string `protobuf:"bytes,1,opt,name=console_url,json=consoleUrl,proto3" json:"console_url,omitempty"`
+	ConsoleUrl *string `protobuf:"bytes,1,opt,name=console_url,json=consoleUrl,proto3,oneof" json:"console_url,omitempty"`
 	// AfterLoginURL is the URL to redirect clients to after successful login.
-	AfterLoginUrl string `protobuf:"bytes,2,opt,name=after_login_url,json=afterLoginUrl,proto3" json:"after_login_url,omitempty"`
+	AfterLoginUrl *string `protobuf:"bytes,2,opt,name=after_login_url,json=afterLoginUrl,proto3,oneof" json:"after_login_url,omitempty"`
 	// StripePublicToken can be used by clients to use certain endpoints of the payment service api.
-	StripePublicToken string `protobuf:"bytes,3,opt,name=stripe_public_token,json=stripePublicToken,proto3" json:"stripe_public_token,omitempty"`
-	unknownFields     protoimpl.UnknownFields
-	sizeCache         protoimpl.SizeCache
+	StripePublicToken *string `protobuf:"bytes,3,opt,name=stripe_public_token,json=stripePublicToken,proto3,oneof" json:"stripe_public_token,omitempty"`
+	// TermsAndConditionsURL is the URL to the terms and conditions.
+	TermsAndConditionsUrl *string `protobuf:"bytes,4,opt,name=terms_and_conditions_url,json=termsAndConditionsUrl,proto3,oneof" json:"terms_and_conditions_url,omitempty"`
+	unknownFields         protoimpl.UnknownFields
+	sizeCache             protoimpl.SizeCache
 }
 
 func (x *Environment) Reset() {
@@ -642,22 +644,29 @@ func (*Environment) Descriptor() ([]byte, []int) {
 }
 
 func (x *Environment) GetConsoleUrl() string {
-	if x != nil {
-		return x.ConsoleUrl
+	if x != nil && x.ConsoleUrl != nil {
+		return *x.ConsoleUrl
 	}
 	return ""
 }
 
 func (x *Environment) GetAfterLoginUrl() string {
-	if x != nil {
-		return x.AfterLoginUrl
+	if x != nil && x.AfterLoginUrl != nil {
+		return *x.AfterLoginUrl
 	}
 	return ""
 }
 
 func (x *Environment) GetStripePublicToken() string {
-	if x != nil {
-		return x.StripePublicToken
+	if x != nil && x.StripePublicToken != nil {
+		return *x.StripePublicToken
+	}
+	return ""
+}
+
+func (x *Environment) GetTermsAndConditionsUrl() string {
+	if x != nil && x.TermsAndConditionsUrl != nil {
+		return *x.TermsAndConditionsUrl
 	}
 	return ""
 }
@@ -720,12 +729,17 @@ const file_api_v1_assets_proto_rawDesc = "" +
 	"\x17AssetServiceListRequest\"x\n" +
 	"\x18AssetServiceListResponse\x12%\n" +
 	"\x06assets\x18\x02 \x03(\v2\r.api.v1.AssetR\x06assets\x125\n" +
-	"\venvironment\x18\x03 \x01(\v2\x13.api.v1.EnvironmentR\venvironment\"\xb5\x01\n" +
-	"\vEnvironment\x12)\n" +
-	"\vconsole_url\x18\x01 \x01(\tB\b\xbaH\x05r\x03\x88\x01\x01R\n" +
-	"consoleUrl\x120\n" +
-	"\x0fafter_login_url\x18\x02 \x01(\tB\b\xbaH\x05r\x03\x88\x01\x01R\rafterLoginUrl\x12I\n" +
-	"\x13stripe_public_token\x18\x03 \x01(\tB\x19\xbaH\x16r\x14\x10\x032\x10pk_[a-zA-Z0-9]*$R\x11stripePublicToken2c\n" +
+	"\venvironment\x18\x03 \x01(\v2\x13.api.v1.EnvironmentR\venvironment\"\xe5\x02\n" +
+	"\vEnvironment\x12.\n" +
+	"\vconsole_url\x18\x01 \x01(\tB\b\xbaH\x05r\x03\x88\x01\x01H\x00R\n" +
+	"consoleUrl\x88\x01\x01\x125\n" +
+	"\x0fafter_login_url\x18\x02 \x01(\tB\b\xbaH\x05r\x03\x88\x01\x01H\x01R\rafterLoginUrl\x88\x01\x01\x12N\n" +
+	"\x13stripe_public_token\x18\x03 \x01(\tB\x19\xbaH\x16r\x14\x10\x032\x10pk_[a-zA-Z0-9]*$H\x02R\x11stripePublicToken\x88\x01\x01\x12F\n" +
+	"\x18terms_and_conditions_url\x18\x04 \x01(\tB\b\xbaH\x05r\x03\x88\x01\x01H\x03R\x15termsAndConditionsUrl\x88\x01\x01B\x0e\n" +
+	"\f_console_urlB\x12\n" +
+	"\x10_after_login_urlB\x16\n" +
+	"\x14_stripe_public_tokenB\x1b\n" +
+	"\x19_terms_and_conditions_url2c\n" +
 	"\fAssetService\x12S\n" +
 	"\x04List\x12\x1f.api.v1.AssetServiceListRequest\x1a .api.v1.AssetServiceListResponse\"\b\xd8\xf3\x18\x01\xe8\xf3\x18\x02B\x84\x01\n" +
 	"\n" +
@@ -784,6 +798,7 @@ func file_api_v1_assets_proto_init() {
 		return
 	}
 	file_api_v1_common_proto_init()
+	file_api_v1_assets_proto_msgTypes[8].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
