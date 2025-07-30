@@ -8194,30 +8194,6 @@
           ]
         },
         {
-          "name": "TenantServiceCreateOrUpdateRequest",
-          "longName": "TenantServiceCreateOrUpdateRequest",
-          "fullName": "api.v1.TenantServiceCreateOrUpdateRequest",
-          "description": "TenantServiceCreateOrUpdateRequest is the request payload of the tenant create or update request",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "tenant",
-              "description": "Tenant the tenant to create or update",
-              "label": "",
-              "type": "Tenant",
-              "longType": "Tenant",
-              "fullType": "api.v1.Tenant",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            }
-          ]
-        },
-        {
           "name": "TenantServiceCreateOrUpdateResponse",
           "longName": "TenantServiceCreateOrUpdateResponse",
           "fullName": "api.v1.TenantServiceCreateOrUpdateResponse",
