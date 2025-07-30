@@ -33,14 +33,14 @@ const (
 // reflection-formatted method names, remove the leading slash and convert the remaining slash to a
 // period.
 const (
-	// MessageServiceListProcedure is the fully-qualified name of the MessageService's List RPC.
-	MessageServiceListProcedure = "/status.v1.MessageService/List"
+	// MessageServiceWatchProcedure is the fully-qualified name of the MessageService's Watch RPC.
+	MessageServiceWatchProcedure = "/status.v1.MessageService/Watch"
 )
 
 // MessageServiceClient is a client for the status.v1.MessageService service.
 type MessageServiceClient interface {
-	// List returns all messages of interest
-	List(context.Context, *connect.Request[v1.MessageServiceListRequest]) (*connect.Response[v1.MessageServiceListResponse], error)
+	// Watch returns all messages of interest
+	Watch(context.Context, *connect.Request[v1.MessageServiceWatchRequest]) (*connect.ServerStreamForClient[v1.MessageServiceWatchResponse], error)
 }
 
 // NewMessageServiceClient constructs a client for the status.v1.MessageService service. By default,
@@ -54,10 +54,10 @@ func NewMessageServiceClient(httpClient connect.HTTPClient, baseURL string, opts
 	baseURL = strings.TrimRight(baseURL, "/")
 	messageServiceMethods := v1.File_status_v1_message_proto.Services().ByName("MessageService").Methods()
 	return &messageServiceClient{
-		list: connect.NewClient[v1.MessageServiceListRequest, v1.MessageServiceListResponse](
+		watch: connect.NewClient[v1.MessageServiceWatchRequest, v1.MessageServiceWatchResponse](
 			httpClient,
-			baseURL+MessageServiceListProcedure,
-			connect.WithSchema(messageServiceMethods.ByName("List")),
+			baseURL+MessageServiceWatchProcedure,
+			connect.WithSchema(messageServiceMethods.ByName("Watch")),
 			connect.WithClientOptions(opts...),
 		),
 	}
@@ -65,18 +65,18 @@ func NewMessageServiceClient(httpClient connect.HTTPClient, baseURL string, opts
 
 // messageServiceClient implements MessageServiceClient.
 type messageServiceClient struct {
-	list *connect.Client[v1.MessageServiceListRequest, v1.MessageServiceListResponse]
+	watch *connect.Client[v1.MessageServiceWatchRequest, v1.MessageServiceWatchResponse]
 }
 
-// List calls status.v1.MessageService.List.
-func (c *messageServiceClient) List(ctx context.Context, req *connect.Request[v1.MessageServiceListRequest]) (*connect.Response[v1.MessageServiceListResponse], error) {
-	return c.list.CallUnary(ctx, req)
+// Watch calls status.v1.MessageService.Watch.
+func (c *messageServiceClient) Watch(ctx context.Context, req *connect.Request[v1.MessageServiceWatchRequest]) (*connect.ServerStreamForClient[v1.MessageServiceWatchResponse], error) {
+	return c.watch.CallServerStream(ctx, req)
 }
 
 // MessageServiceHandler is an implementation of the status.v1.MessageService service.
 type MessageServiceHandler interface {
-	// List returns all messages of interest
-	List(context.Context, *connect.Request[v1.MessageServiceListRequest]) (*connect.Response[v1.MessageServiceListResponse], error)
+	// Watch returns all messages of interest
+	Watch(context.Context, *connect.Request[v1.MessageServiceWatchRequest], *connect.ServerStream[v1.MessageServiceWatchResponse]) error
 }
 
 // NewMessageServiceHandler builds an HTTP handler from the service implementation. It returns the
@@ -86,16 +86,16 @@ type MessageServiceHandler interface {
 // and JSON codecs. They also support gzip compression.
 func NewMessageServiceHandler(svc MessageServiceHandler, opts ...connect.HandlerOption) (string, http.Handler) {
 	messageServiceMethods := v1.File_status_v1_message_proto.Services().ByName("MessageService").Methods()
-	messageServiceListHandler := connect.NewUnaryHandler(
-		MessageServiceListProcedure,
-		svc.List,
-		connect.WithSchema(messageServiceMethods.ByName("List")),
+	messageServiceWatchHandler := connect.NewServerStreamHandler(
+		MessageServiceWatchProcedure,
+		svc.Watch,
+		connect.WithSchema(messageServiceMethods.ByName("Watch")),
 		connect.WithHandlerOptions(opts...),
 	)
 	return "/status.v1.MessageService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
-		case MessageServiceListProcedure:
-			messageServiceListHandler.ServeHTTP(w, r)
+		case MessageServiceWatchProcedure:
+			messageServiceWatchHandler.ServeHTTP(w, r)
 		default:
 			http.NotFound(w, r)
 		}
@@ -105,6 +105,6 @@ func NewMessageServiceHandler(svc MessageServiceHandler, opts ...connect.Handler
 // UnimplementedMessageServiceHandler returns CodeUnimplemented from all methods.
 type UnimplementedMessageServiceHandler struct{}
 
-func (UnimplementedMessageServiceHandler) List(context.Context, *connect.Request[v1.MessageServiceListRequest]) (*connect.Response[v1.MessageServiceListResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("status.v1.MessageService.List is not implemented"))
+func (UnimplementedMessageServiceHandler) Watch(context.Context, *connect.Request[v1.MessageServiceWatchRequest], *connect.ServerStream[v1.MessageServiceWatchResponse]) error {
+	return connect.NewError(connect.CodeUnimplemented, errors.New("status.v1.MessageService.Watch is not implemented"))
 }

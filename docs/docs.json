@@ -13222,10 +13222,10 @@
           ]
         },
         {
-          "name": "MessageServiceListRequest",
-          "longName": "MessageServiceListRequest",
-          "fullName": "status.v1.MessageServiceListRequest",
-          "description": "MessageServiceListRequest is the request payload to get the messages",
+          "name": "MessageServiceWatchRequest",
+          "longName": "MessageServiceWatchRequest",
+          "fullName": "status.v1.MessageServiceWatchRequest",
+          "description": "MessageServiceWatchRequest is the request payload to watch the messages",
           "hasExtensions": false,
           "hasFields": false,
           "hasOneofs": false,
@@ -13233,10 +13233,10 @@
           "fields": []
         },
         {
-          "name": "MessageServiceListResponse",
-          "longName": "MessageServiceListResponse",
-          "fullName": "status.v1.MessageServiceListResponse",
-          "description": "MessageServiceListResponse is the response payload with the messages",
+          "name": "MessageServiceWatchResponse",
+          "longName": "MessageServiceWatchResponse",
+          "fullName": "status.v1.MessageServiceWatchResponse",
+          "description": "MessageServiceWatchResponse is the response payload with the messages",
           "hasExtensions": false,
           "hasFields": true,
           "hasOneofs": false,
@@ -13337,16 +13337,16 @@
           "description": "MessageService serves status message related functions\nthis service is used as backend for the status dashboard",
           "methods": [
             {
-              "name": "List",
-              "description": "List returns all messages of interest",
-              "requestType": "MessageServiceListRequest",
-              "requestLongType": "MessageServiceListRequest",
-              "requestFullType": "status.v1.MessageServiceListRequest",
+              "name": "Watch",
+              "description": "Watch returns all messages of interest",
+              "requestType": "MessageServiceWatchRequest",
+              "requestLongType": "MessageServiceWatchRequest",
+              "requestFullType": "status.v1.MessageServiceWatchRequest",
               "requestStreaming": false,
-              "responseType": "MessageServiceListResponse",
-              "responseLongType": "MessageServiceListResponse",
-              "responseFullType": "status.v1.MessageServiceListResponse",
-              "responseStreaming": false
+              "responseType": "MessageServiceWatchResponse",
+              "responseLongType": "MessageServiceWatchResponse",
+              "responseFullType": "status.v1.MessageServiceWatchResponse",
+              "responseStreaming": true
             }
           ]
         }
@@ -13364,10 +13364,10 @@
       "extensions": [],
       "messages": [
         {
-          "name": "StatusServiceGetRequest",
-          "longName": "StatusServiceGetRequest",
-          "fullName": "status.v1.StatusServiceGetRequest",
-          "description": "StatusServiceGetRequest is the request payload to get the status",
+          "name": "StatusServiceWatchRequest",
+          "longName": "StatusServiceWatchRequest",
+          "fullName": "status.v1.StatusServiceWatchRequest",
+          "description": "StatusServiceWatchRequest is the request payload to get the status",
           "hasExtensions": false,
           "hasFields": false,
           "hasOneofs": false,
@@ -13375,10 +13375,10 @@
           "fields": []
         },
         {
-          "name": "StatusServiceGetResponse",
-          "longName": "StatusServiceGetResponse",
-          "fullName": "status.v1.StatusServiceGetResponse",
-          "description": "StatusServiceGetResponse is the response payload which describes the system status",
+          "name": "StatusServiceWatchResponse",
+          "longName": "StatusServiceWatchResponse",
+          "fullName": "status.v1.StatusServiceWatchResponse",
+          "description": "StatusServiceWatchResponse is the response payload which describes the system status",
           "hasExtensions": false,
           "hasFields": true,
           "hasOneofs": false,
@@ -13443,16 +13443,16 @@
           "description": "StatusService serves status related functions\nthis service is used as backend for the status dashboard",
           "methods": [
             {
-              "name": "Get",
-              "description": "Get the system status",
-              "requestType": "StatusServiceGetRequest",
-              "requestLongType": "StatusServiceGetRequest",
-              "requestFullType": "status.v1.StatusServiceGetRequest",
+              "name": "Watch",
+              "description": "Watch the system status",
+              "requestType": "StatusServiceWatchRequest",
+              "requestLongType": "StatusServiceWatchRequest",
+              "requestFullType": "status.v1.StatusServiceWatchRequest",
               "requestStreaming": false,
-              "responseType": "StatusServiceGetResponse",
-              "responseLongType": "StatusServiceGetResponse",
-              "responseFullType": "status.v1.StatusServiceGetResponse",
-              "responseStreaming": false
+              "responseType": "StatusServiceWatchResponse",
+              "responseLongType": "StatusServiceWatchResponse",
+              "responseFullType": "status.v1.StatusServiceWatchResponse",
+              "responseStreaming": true
             }
           ]
         }
