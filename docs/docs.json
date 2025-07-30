@@ -12543,6 +12543,188 @@
       ]
     },
     {
+      "name": "api/v1/mail.proto",
+      "description": "",
+      "package": "api.v1",
+      "hasEnums": true,
+      "hasExtensions": false,
+      "hasMessages": true,
+      "hasServices": false,
+      "enums": [
+        {
+          "name": "MailFunction",
+          "longName": "MailFunction",
+          "fullName": "api.v1.MailFunction",
+          "description": "MailFunction specifies how a mail should be send",
+          "values": [
+            {
+              "name": "MAIL_FUNCTION_UNSPECIFIED",
+              "number": "0",
+              "description": "MAIL_FUNCTION_UNSPECIFIED the function is unspecified"
+            },
+            {
+              "name": "MAIL_FUNCTION_SEND",
+              "number": "1",
+              "description": "MAIL_FUNCTION_SEND send a mail with a message from code"
+            },
+            {
+              "name": "MAIL_FUNCTION_SEND_TEMPLATE",
+              "number": "2",
+              "description": "MAIL_FUNCTION_SEND_TEMPLATE send a mail template"
+            },
+            {
+              "name": "MAIL_FUNCTION_NOTIFY",
+              "number": "3",
+              "description": "MAIL_FUNCTION_NOTIFY send a mail to our support address"
+            }
+          ]
+        },
+        {
+          "name": "MailType",
+          "longName": "MailType",
+          "fullName": "api.v1.MailType",
+          "description": "MailType specifies the different mail types we send",
+          "values": [
+            {
+              "name": "MAIL_TYPE_UNSPECIFIED",
+              "number": "0",
+              "description": "MAIL_TYPE_UNSPECIFIED the mail is unspecified"
+            },
+            {
+              "name": "MAIL_TYPE_ADMITTED",
+              "number": "1",
+              "description": "MAIL_TYPE_ADMITTED mail send to users when they are admitted"
+            },
+            {
+              "name": "MAIL_TYPE_COUPON_PERCENTAGE_USED_WARNING",
+              "number": "2",
+              "description": "MAIL_TYPE_COUPON_PERCENTAGE_USED_WARNING mail send to users when they used a certain amount of their coupon"
+            },
+            {
+              "name": "MAIL_TYPE_COUPON_COMPLETELY_USED_WARNING",
+              "number": "3",
+              "description": "MAIL_TYPE_COUPON_COMPLETELY_USED_WARNING mail send to users when the used their coupon completely"
+            },
+            {
+              "name": "MAIL_TYPE_PAYMENT_UPDATED",
+              "number": "4",
+              "description": "MAIL_TYPE_PAYMENT_UPDATED mail send to user when he updates the payment information"
+            },
+            {
+              "name": "MAIL_TYPE_ADMISSION_REQUESTED",
+              "number": "5",
+              "description": "MAIL_TYPE_ADMISSION_REQUESTED mail send to support if a user requests the admission"
+            },
+            {
+              "name": "MAIL_TYPE_WELCOME",
+              "number": "6",
+              "description": "MAIL_TYPE_WELCOME welcome mail if a user registers"
+            }
+          ]
+        }
+      ],
+      "extensions": [],
+      "messages": [
+        {
+          "name": "Email",
+          "longName": "Email",
+          "fullName": "api.v1.Email",
+          "description": "Email is an email we can send from the api-server",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": true,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "to",
+              "description": "to is the destination email address(es)",
+              "label": "repeated",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": "",
+              "options": {
+                "validate.rules": [
+                  {
+                    "name": "repeated.min_items",
+                    "value": 1
+                  },
+                  {
+                    "name": "repeated.unique",
+                    "value": true
+                  }
+                ]
+              }
+            },
+            {
+              "name": "subject",
+              "description": "subject is the the title of the mail",
+              "label": "optional",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "_subject",
+              "defaultValue": ""
+            },
+            {
+              "name": "mail_type",
+              "description": "mail_type is what mail is send",
+              "label": "",
+              "type": "MailType",
+              "longType": "MailType",
+              "fullType": "api.v1.MailType",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "values",
+              "description": "values is used in templates",
+              "label": "",
+              "type": "Struct",
+              "longType": "google.protobuf.Struct",
+              "fullType": "google.protobuf.Struct",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "msg",
+              "description": "msg is used if the mail text is specified directly in code",
+              "label": "optional",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "_msg",
+              "defaultValue": ""
+            },
+            {
+              "name": "mail_function",
+              "description": "mail_function is how the mail is send",
+              "label": "",
+              "type": "MailFunction",
+              "longType": "MailFunction",
+              "fullType": "api.v1.MailFunction",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        }
+      ],
+      "services": []
+    },
+    {
       "name": "api/v1/methods.proto",
       "description": "",
       "package": "api.v1",
