@@ -5,6 +5,7 @@
 import type { GenFile, GenMessage, GenService } from "@bufbuild/protobuf/codegenv2";
 import { fileDesc, messageDesc, serviceDesc } from "@bufbuild/protobuf/codegenv2";
 import { file_api_v1_common } from "./common_pb";
+import { file_buf_validate_validate } from "../../buf/validate/validate_pb";
 import type { Timestamp } from "@bufbuild/protobuf/wkt";
 import { file_google_protobuf_timestamp } from "@bufbuild/protobuf/wkt";
 import type { Message } from "@bufbuild/protobuf";
@@ -13,7 +14,7 @@ import type { Message } from "@bufbuild/protobuf";
  * Describes the file api/v1/assets.proto.
  */
 export const file_api_v1_assets: GenFile = /*@__PURE__*/
-  fileDesc("ChNhcGkvdjEvYXNzZXRzLnByb3RvEgZhcGkudjEi0QEKBUFzc2V0Eh4KBnJlZ2lvbhgBIAEoCzIOLmFwaS52MS5SZWdpb24SNgoNbWFjaGluZV90eXBlcxgCIAMoCzIfLmFwaS52MS5Bc3NldC5NYWNoaW5lVHlwZXNFbnRyeRImCgprdWJlcm5ldGVzGAMgAygLMhIuYXBpLnYxLkt1YmVybmV0ZXMaSAoRTWFjaGluZVR5cGVzRW50cnkSCwoDa2V5GAEgASgJEiIKBXZhbHVlGAIgASgLMhMuYXBpLnYxLk1hY2hpbmVUeXBlOgI4ASL7AQoGUmVnaW9uEgoKAmlkGAEgASgJEgwKBG5hbWUYAiABKAkSDwoHYWRkcmVzcxgDIAEoCRIOCgZhY3RpdmUYBCABKAgSMgoKcGFydGl0aW9ucxgFIAMoCzIeLmFwaS52MS5SZWdpb24uUGFydGl0aW9uc0VudHJ5EicKCGRlZmF1bHRzGAYgASgLMhUuYXBpLnYxLkFzc2V0RGVmYXVsdHMSEwoLZGVzY3JpcHRpb24YByABKAkaRAoPUGFydGl0aW9uc0VudHJ5EgsKA2tleRgBIAEoCRIgCgV2YWx1ZRgCIAEoCzIRLmFwaS52MS5QYXJ0aXRpb246AjgBIlsKCVBhcnRpdGlvbhIKCgJpZBgBIAEoCRIMCgRuYW1lGAIgASgJEg8KB2FkZHJlc3MYAyABKAkSDgoGYWN0aXZlGAQgASgIEhMKC2Rlc2NyaXB0aW9uGAUgASgJIowBCgtNYWNoaW5lVHlwZRIKCgJpZBgBIAEoCRIMCgRuYW1lGAIgASgJEgwKBGNwdXMYAyABKA0SDgoGbWVtb3J5GAQgASgEEg8KB3N0b3JhZ2UYBSABKAQSFwoPY3B1X2Rlc2NyaXB0aW9uGAYgASgJEhsKE3N0b3JhZ2VfZGVzY3JpcHRpb24YByABKAkiTQoKS3ViZXJuZXRlcxIPCgd2ZXJzaW9uGAEgASgJEi4KCmV4cGlyYXRpb24YAiABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wInwKDUFzc2V0RGVmYXVsdHMSFAoMbWFjaGluZV90eXBlGAEgASgJEhoKEmt1YmVybmV0ZXNfdmVyc2lvbhgCIAEoCRISCgp3b3JrZXJfbWluGAMgASgNEhIKCndvcmtlcl9tYXgYBCABKA0SEQoJcGFydGl0aW9uGAcgASgJIhkKF0Fzc2V0U2VydmljZUxpc3RSZXF1ZXN0IjkKGEFzc2V0U2VydmljZUxpc3RSZXNwb25zZRIdCgZhc3NldHMYAiADKAsyDS5hcGkudjEuQXNzZXQyYwoMQXNzZXRTZXJ2aWNlElMKBExpc3QSHy5hcGkudjEuQXNzZXRTZXJ2aWNlTGlzdFJlcXVlc3QaIC5hcGkudjEuQXNzZXRTZXJ2aWNlTGlzdFJlc3BvbnNlIgjY8xgB6PMYAkKEAQoKY29tLmFwaS52MUILQXNzZXRzUHJvdG9QAVowZ2l0aHViLmNvbS9tZXRhbC1zdGFjay1jbG91ZC9hcGkvZ28vYXBpL3YxO2FwaXYxogIDQVhYqgIGQXBpLlYxygIGQXBpXFYx4gISQXBpXFYxXEdQQk1ldGFkYXRh6gIHQXBpOjpWMWIGcHJvdG8z", [file_api_v1_common, file_google_protobuf_timestamp]);
+  fileDesc("ChNhcGkvdjEvYXNzZXRzLnByb3RvEgZhcGkudjEi0QEKBUFzc2V0Eh4KBnJlZ2lvbhgBIAEoCzIOLmFwaS52MS5SZWdpb24SNgoNbWFjaGluZV90eXBlcxgCIAMoCzIfLmFwaS52MS5Bc3NldC5NYWNoaW5lVHlwZXNFbnRyeRImCgprdWJlcm5ldGVzGAMgAygLMhIuYXBpLnYxLkt1YmVybmV0ZXMaSAoRTWFjaGluZVR5cGVzRW50cnkSCwoDa2V5GAEgASgJEiIKBXZhbHVlGAIgASgLMhMuYXBpLnYxLk1hY2hpbmVUeXBlOgI4ASL7AQoGUmVnaW9uEgoKAmlkGAEgASgJEgwKBG5hbWUYAiABKAkSDwoHYWRkcmVzcxgDIAEoCRIOCgZhY3RpdmUYBCABKAgSMgoKcGFydGl0aW9ucxgFIAMoCzIeLmFwaS52MS5SZWdpb24uUGFydGl0aW9uc0VudHJ5EicKCGRlZmF1bHRzGAYgASgLMhUuYXBpLnYxLkFzc2V0RGVmYXVsdHMSEwoLZGVzY3JpcHRpb24YByABKAkaRAoPUGFydGl0aW9uc0VudHJ5EgsKA2tleRgBIAEoCRIgCgV2YWx1ZRgCIAEoCzIRLmFwaS52MS5QYXJ0aXRpb246AjgBIlsKCVBhcnRpdGlvbhIKCgJpZBgBIAEoCRIMCgRuYW1lGAIgASgJEg8KB2FkZHJlc3MYAyABKAkSDgoGYWN0aXZlGAQgASgIEhMKC2Rlc2NyaXB0aW9uGAUgASgJIowBCgtNYWNoaW5lVHlwZRIKCgJpZBgBIAEoCRIMCgRuYW1lGAIgASgJEgwKBGNwdXMYAyABKA0SDgoGbWVtb3J5GAQgASgEEg8KB3N0b3JhZ2UYBSABKAQSFwoPY3B1X2Rlc2NyaXB0aW9uGAYgASgJEhsKE3N0b3JhZ2VfZGVzY3JpcHRpb24YByABKAkiTQoKS3ViZXJuZXRlcxIPCgd2ZXJzaW9uGAEgASgJEi4KCmV4cGlyYXRpb24YAiABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wInwKDUFzc2V0RGVmYXVsdHMSFAoMbWFjaGluZV90eXBlGAEgASgJEhoKEmt1YmVybmV0ZXNfdmVyc2lvbhgCIAEoCRISCgp3b3JrZXJfbWluGAMgASgNEhIKCndvcmtlcl9tYXgYBCABKA0SEQoJcGFydGl0aW9uGAcgASgJIhkKF0Fzc2V0U2VydmljZUxpc3RSZXF1ZXN0ImMKGEFzc2V0U2VydmljZUxpc3RSZXNwb25zZRIdCgZhc3NldHMYAiADKAsyDS5hcGkudjEuQXNzZXQSKAoLZW52aXJvbm1lbnQYAyABKAsyEy5hcGkudjEuRW52aXJvbm1lbnQioAIKC0Vudmlyb25tZW50EiIKC2NvbnNvbGVfdXJsGAEgASgJQgi6SAVyA4gBAUgAiAEBEiYKD2FmdGVyX2xvZ2luX3VybBgCIAEoCUIIukgFcgOIAQFIAYgBARI7ChNzdHJpcGVfcHVibGljX3Rva2VuGAMgASgJQhm6SBZyFBADMhBwa19bYS16QS1aMC05XSokSAKIAQESLwoYdGVybXNfYW5kX2NvbmRpdGlvbnNfdXJsGAQgASgJQgi6SAVyA4gBAUgDiAEBQg4KDF9jb25zb2xlX3VybEISChBfYWZ0ZXJfbG9naW5fdXJsQhYKFF9zdHJpcGVfcHVibGljX3Rva2VuQhsKGV90ZXJtc19hbmRfY29uZGl0aW9uc191cmwyYwoMQXNzZXRTZXJ2aWNlElMKBExpc3QSHy5hcGkudjEuQXNzZXRTZXJ2aWNlTGlzdFJlcXVlc3QaIC5hcGkudjEuQXNzZXRTZXJ2aWNlTGlzdFJlc3BvbnNlIgjY8xgB6PMYAkKEAQoKY29tLmFwaS52MUILQXNzZXRzUHJvdG9QAVowZ2l0aHViLmNvbS9tZXRhbC1zdGFjay1jbG91ZC9hcGkvZ28vYXBpL3YxO2FwaXYxogIDQVhYqgIGQXBpLlYxygIGQXBpXFYx4gISQXBpXFYxXEdQQk1ldGFkYXRh6gIHQXBpOjpWMWIGcHJvdG8z", [file_api_v1_common, file_buf_validate_validate, file_google_protobuf_timestamp]);
 
 /**
  * Asset defines the available resources which can be used
@@ -329,6 +330,13 @@ export type AssetServiceListResponse = Message<"api.v1.AssetServiceListResponse"
    * @generated from field: repeated api.v1.Asset assets = 2;
    */
   assets: Asset[];
+
+  /**
+   * Environment contains information on the environment.
+   *
+   * @generated from field: api.v1.Environment environment = 3;
+   */
+  environment?: Environment;
 };
 
 /**
@@ -337,6 +345,48 @@ export type AssetServiceListResponse = Message<"api.v1.AssetServiceListResponse"
  */
 export const AssetServiceListResponseSchema: GenMessage<AssetServiceListResponse> = /*@__PURE__*/
   messageDesc(file_api_v1_assets, 7);
+
+/**
+ * Environment defines information on the installation environment of the metalstack.cloud installation.
+ *
+ * @generated from message api.v1.Environment
+ */
+export type Environment = Message<"api.v1.Environment"> & {
+  /**
+   * ConsoleURL is the URL to the metalstack.cloud cloud console (aka frontend).
+   *
+   * @generated from field: optional string console_url = 1;
+   */
+  consoleUrl?: string;
+
+  /**
+   * AfterLoginURL is the URL to redirect clients to after successful login.
+   *
+   * @generated from field: optional string after_login_url = 2;
+   */
+  afterLoginUrl?: string;
+
+  /**
+   * StripePublicToken can be used by clients to use certain endpoints of the payment service api.
+   *
+   * @generated from field: optional string stripe_public_token = 3;
+   */
+  stripePublicToken?: string;
+
+  /**
+   * TermsAndConditionsURL is the URL to the terms and conditions.
+   *
+   * @generated from field: optional string terms_and_conditions_url = 4;
+   */
+  termsAndConditionsUrl?: string;
+};
+
+/**
+ * Describes the message api.v1.Environment.
+ * Use `create(EnvironmentSchema)` to create a new message.
+ */
+export const EnvironmentSchema: GenMessage<Environment> = /*@__PURE__*/
+  messageDesc(file_api_v1_assets, 8);
 
 /**
  * AssetService serves asset related functions
