@@ -88,6 +88,8 @@ message PaymentCustomer {
   optional string phone_number = 12;
   // Balance actual balance of the customer
   optional int64 balance = 13;
+  // Tier describes the state in which the customer is using the products.
+  ProductTier tier = 14;
 }
 
 // Card is the payment card the customer pays with
@@ -147,6 +149,16 @@ enum UsageType {
   USAGE_TYPE_METERED = 1;
   // USAGE_TYPE_LICENSED price is set in invoice (s3 for example)
   USAGE_TYPE_LICENSED = 2;
+}
+
+// ProductTier is an explicit indicator for the state in which the customer is using the products.
+enum ProductTier {
+  // PRODUCT_TIER_UNSPECIFIED is unspecified
+  PRODUCT_TIER_UNSPECIFIED = 0;
+  // PRODUCT_TIER_TRIAL indicates a customer that is in trial phase without having to provide payment information.
+  PRODUCT_TIER_TRIAL = 1;
+  // PRODUCT_TIER_PAID indicates a customer that has provided payment information.
+  PRODUCT_TIER_PAID = 2;
 }
 
 // Address postal address of a customer

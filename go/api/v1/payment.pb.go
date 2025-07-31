@@ -137,6 +137,59 @@ func (UsageType) EnumDescriptor() ([]byte, []int) {
 	return file_api_v1_payment_proto_rawDescGZIP(), []int{1}
 }
 
+// ProductTier is an explicit indicator for the state in which the customer is using the products.
+type ProductTier int32
+
+const (
+	// PRODUCT_TIER_UNSPECIFIED is unspecified
+	ProductTier_PRODUCT_TIER_UNSPECIFIED ProductTier = 0
+	// PRODUCT_TIER_TRIAL indicates a customer that is in trial phase without having to provide payment information.
+	ProductTier_PRODUCT_TIER_TRIAL ProductTier = 1
+	// PRODUCT_TIER_PAID indicates a customer that has provided payment information.
+	ProductTier_PRODUCT_TIER_PAID ProductTier = 2
+)
+
+// Enum value maps for ProductTier.
+var (
+	ProductTier_name = map[int32]string{
+		0: "PRODUCT_TIER_UNSPECIFIED",
+		1: "PRODUCT_TIER_TRIAL",
+		2: "PRODUCT_TIER_PAID",
+	}
+	ProductTier_value = map[string]int32{
+		"PRODUCT_TIER_UNSPECIFIED": 0,
+		"PRODUCT_TIER_TRIAL":       1,
+		"PRODUCT_TIER_PAID":        2,
+	}
+)
+
+func (x ProductTier) Enum() *ProductTier {
+	p := new(ProductTier)
+	*p = x
+	return p
+}
+
+func (x ProductTier) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (ProductTier) Descriptor() protoreflect.EnumDescriptor {
+	return file_api_v1_payment_proto_enumTypes[2].Descriptor()
+}
+
+func (ProductTier) Type() protoreflect.EnumType {
+	return &file_api_v1_payment_proto_enumTypes[2]
+}
+
+func (x ProductTier) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use ProductTier.Descriptor instead.
+func (ProductTier) EnumDescriptor() ([]byte, []int) {
+	return file_api_v1_payment_proto_rawDescGZIP(), []int{2}
+}
+
 // PaymentCustomer is a customer at the payment processor
 type PaymentCustomer struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
@@ -165,7 +218,9 @@ type PaymentCustomer struct {
 	// PhoneNumber of the customer
 	PhoneNumber *string `protobuf:"bytes,12,opt,name=phone_number,json=phoneNumber,proto3,oneof" json:"phone_number,omitempty"`
 	// Balance actual balance of the customer
-	Balance       *int64 `protobuf:"varint,13,opt,name=balance,proto3,oneof" json:"balance,omitempty"`
+	Balance *int64 `protobuf:"varint,13,opt,name=balance,proto3,oneof" json:"balance,omitempty"`
+	// Tier describes the state in which the customer is using the products.
+	Tier          ProductTier `protobuf:"varint,14,opt,name=tier,proto3,enum=api.v1.ProductTier" json:"tier,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -289,6 +344,13 @@ func (x *PaymentCustomer) GetBalance() int64 {
 		return *x.Balance
 	}
 	return 0
+}
+
+func (x *PaymentCustomer) GetTier() ProductTier {
+	if x != nil {
+		return x.Tier
+	}
+	return ProductTier_PRODUCT_TIER_UNSPECIFIED
 }
 
 // Card is the payment card the customer pays with
@@ -1795,7 +1857,7 @@ var File_api_v1_payment_proto protoreflect.FileDescriptor
 
 const file_api_v1_payment_proto_rawDesc = "" +
 	"\n" +
-	"\x14api/v1/payment.proto\x12\x06api.v1\x1a\x13api/v1/common.proto\x1a\x1bbuf/validate/validate.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\xda\x04\n" +
+	"\x14api/v1/payment.proto\x12\x06api.v1\x1a\x13api/v1/common.proto\x1a\x1bbuf/validate/validate.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\x83\x05\n" +
 	"\x0fPaymentCustomer\x12\x14\n" +
 	"\x05login\x18\x01 \x01(\tR\x05login\x12\x17\n" +
 	"\x04name\x18\x02 \x01(\tH\x00R\x04name\x88\x01\x01\x12$\n" +
@@ -1811,7 +1873,8 @@ const file_api_v1_payment_proto_rawDesc = "" +
 	" \x01(\v2\x0e.api.v1.CouponH\x05R\x06coupon\x88\x01\x01\x12\x15\n" +
 	"\x03vat\x18\v \x01(\tH\x06R\x03vat\x88\x01\x01\x12&\n" +
 	"\fphone_number\x18\f \x01(\tH\aR\vphoneNumber\x88\x01\x01\x12\x1d\n" +
-	"\abalance\x18\r \x01(\x03H\bR\abalance\x88\x01\x01B\a\n" +
+	"\abalance\x18\r \x01(\x03H\bR\abalance\x88\x01\x01\x12'\n" +
+	"\x04tier\x18\x0e \x01(\x0e2\x13.api.v1.ProductTierR\x04tierB\a\n" +
 	"\x05_nameB\x0e\n" +
 	"\f_customer_idB\x14\n" +
 	"\x12_payment_method_idB\b\n" +
@@ -1950,7 +2013,11 @@ const file_api_v1_payment_proto_rawDesc = "" +
 	"\tUsageType\x12\x1a\n" +
 	"\x16USAGE_TYPE_UNSPECIFIED\x10\x00\x12\x16\n" +
 	"\x12USAGE_TYPE_METERED\x10\x01\x12\x17\n" +
-	"\x13USAGE_TYPE_LICENSED\x10\x022\x87\b\n" +
+	"\x13USAGE_TYPE_LICENSED\x10\x02*Z\n" +
+	"\vProductTier\x12\x1c\n" +
+	"\x18PRODUCT_TIER_UNSPECIFIED\x10\x00\x12\x16\n" +
+	"\x12PRODUCT_TIER_TRIAL\x10\x01\x12\x15\n" +
+	"\x11PRODUCT_TIER_PAID\x10\x022\x87\b\n" +
 	"\x0ePaymentService\x12Z\n" +
 	"\x06Create\x12#.api.v1.PaymentServiceCreateRequest\x1a$.api.v1.PaymentServiceCreateResponse\"\x05\xc2\xf3\x18\x01\x01\x12Z\n" +
 	"\x06Update\x12#.api.v1.PaymentServiceUpdateRequest\x1a$.api.v1.PaymentServiceUpdateResponse\"\x05\xc2\xf3\x18\x01\x01\x12Z\n" +
@@ -1976,82 +2043,84 @@ func file_api_v1_payment_proto_rawDescGZIP() []byte {
 	return file_api_v1_payment_proto_rawDescData
 }
 
-var file_api_v1_payment_proto_enumTypes = make([]protoimpl.EnumInfo, 2)
+var file_api_v1_payment_proto_enumTypes = make([]protoimpl.EnumInfo, 3)
 var file_api_v1_payment_proto_msgTypes = make([]protoimpl.MessageInfo, 25)
 var file_api_v1_payment_proto_goTypes = []any{
 	(ProductType)(0),                                     // 0: api.v1.ProductType
 	(UsageType)(0),                                       // 1: api.v1.UsageType
-	(*PaymentCustomer)(nil),                              // 2: api.v1.PaymentCustomer
-	(*Card)(nil),                                         // 3: api.v1.Card
-	(*Price)(nil),                                        // 4: api.v1.Price
-	(*Address)(nil),                                      // 5: api.v1.Address
-	(*SubscriptionUsageItem)(nil),                        // 6: api.v1.SubscriptionUsageItem
-	(*Invoice)(nil),                                      // 7: api.v1.Invoice
-	(*Coupon)(nil),                                       // 8: api.v1.Coupon
-	(*PaymentServiceCreateRequest)(nil),                  // 9: api.v1.PaymentServiceCreateRequest
-	(*PaymentServiceCreateResponse)(nil),                 // 10: api.v1.PaymentServiceCreateResponse
-	(*PaymentServiceUpdateRequest)(nil),                  // 11: api.v1.PaymentServiceUpdateRequest
-	(*PaymentServiceUpdateResponse)(nil),                 // 12: api.v1.PaymentServiceUpdateResponse
-	(*PaymentServiceGetRequest)(nil),                     // 13: api.v1.PaymentServiceGetRequest
-	(*PaymentServiceGetResponse)(nil),                    // 14: api.v1.PaymentServiceGetResponse
-	(*PaymentServiceHasPaymentMethodRequest)(nil),        // 15: api.v1.PaymentServiceHasPaymentMethodRequest
-	(*PaymentServiceHasPaymentMethodResponse)(nil),       // 16: api.v1.PaymentServiceHasPaymentMethodResponse
-	(*PaymentServiceDeleteRequest)(nil),                  // 17: api.v1.PaymentServiceDeleteRequest
-	(*PaymentServiceDeleteResponse)(nil),                 // 18: api.v1.PaymentServiceDeleteResponse
-	(*PaymentServiceGetSubscriptionUsageRequest)(nil),    // 19: api.v1.PaymentServiceGetSubscriptionUsageRequest
-	(*PaymentServiceGetSubscriptionUsageResponse)(nil),   // 20: api.v1.PaymentServiceGetSubscriptionUsageResponse
-	(*PaymentServiceGetInvoicesRequest)(nil),             // 21: api.v1.PaymentServiceGetInvoicesRequest
-	(*PaymentServiceGetInvoicesResponse)(nil),            // 22: api.v1.PaymentServiceGetInvoicesResponse
-	(*PaymentServiceGetDefaultPricesRequest)(nil),        // 23: api.v1.PaymentServiceGetDefaultPricesRequest
-	(*PaymentServiceGetDefaultPricesResponse)(nil),       // 24: api.v1.PaymentServiceGetDefaultPricesResponse
-	(*PaymentServiceHasChargeableResourcesRequest)(nil),  // 25: api.v1.PaymentServiceHasChargeableResourcesRequest
-	(*PaymentServiceHasChargeableResourcesResponse)(nil), // 26: api.v1.PaymentServiceHasChargeableResourcesResponse
-	(*timestamppb.Timestamp)(nil),                        // 27: google.protobuf.Timestamp
+	(ProductTier)(0),                                     // 2: api.v1.ProductTier
+	(*PaymentCustomer)(nil),                              // 3: api.v1.PaymentCustomer
+	(*Card)(nil),                                         // 4: api.v1.Card
+	(*Price)(nil),                                        // 5: api.v1.Price
+	(*Address)(nil),                                      // 6: api.v1.Address
+	(*SubscriptionUsageItem)(nil),                        // 7: api.v1.SubscriptionUsageItem
+	(*Invoice)(nil),                                      // 8: api.v1.Invoice
+	(*Coupon)(nil),                                       // 9: api.v1.Coupon
+	(*PaymentServiceCreateRequest)(nil),                  // 10: api.v1.PaymentServiceCreateRequest
+	(*PaymentServiceCreateResponse)(nil),                 // 11: api.v1.PaymentServiceCreateResponse
+	(*PaymentServiceUpdateRequest)(nil),                  // 12: api.v1.PaymentServiceUpdateRequest
+	(*PaymentServiceUpdateResponse)(nil),                 // 13: api.v1.PaymentServiceUpdateResponse
+	(*PaymentServiceGetRequest)(nil),                     // 14: api.v1.PaymentServiceGetRequest
+	(*PaymentServiceGetResponse)(nil),                    // 15: api.v1.PaymentServiceGetResponse
+	(*PaymentServiceHasPaymentMethodRequest)(nil),        // 16: api.v1.PaymentServiceHasPaymentMethodRequest
+	(*PaymentServiceHasPaymentMethodResponse)(nil),       // 17: api.v1.PaymentServiceHasPaymentMethodResponse
+	(*PaymentServiceDeleteRequest)(nil),                  // 18: api.v1.PaymentServiceDeleteRequest
+	(*PaymentServiceDeleteResponse)(nil),                 // 19: api.v1.PaymentServiceDeleteResponse
+	(*PaymentServiceGetSubscriptionUsageRequest)(nil),    // 20: api.v1.PaymentServiceGetSubscriptionUsageRequest
+	(*PaymentServiceGetSubscriptionUsageResponse)(nil),   // 21: api.v1.PaymentServiceGetSubscriptionUsageResponse
+	(*PaymentServiceGetInvoicesRequest)(nil),             // 22: api.v1.PaymentServiceGetInvoicesRequest
+	(*PaymentServiceGetInvoicesResponse)(nil),            // 23: api.v1.PaymentServiceGetInvoicesResponse
+	(*PaymentServiceGetDefaultPricesRequest)(nil),        // 24: api.v1.PaymentServiceGetDefaultPricesRequest
+	(*PaymentServiceGetDefaultPricesResponse)(nil),       // 25: api.v1.PaymentServiceGetDefaultPricesResponse
+	(*PaymentServiceHasChargeableResourcesRequest)(nil),  // 26: api.v1.PaymentServiceHasChargeableResourcesRequest
+	(*PaymentServiceHasChargeableResourcesResponse)(nil), // 27: api.v1.PaymentServiceHasChargeableResourcesResponse
+	(*timestamppb.Timestamp)(nil),                        // 28: google.protobuf.Timestamp
 }
 var file_api_v1_payment_proto_depIdxs = []int32{
-	3,  // 0: api.v1.PaymentCustomer.card:type_name -> api.v1.Card
-	4,  // 1: api.v1.PaymentCustomer.prices:type_name -> api.v1.Price
-	5,  // 2: api.v1.PaymentCustomer.address:type_name -> api.v1.Address
-	8,  // 3: api.v1.PaymentCustomer.coupon:type_name -> api.v1.Coupon
-	0,  // 4: api.v1.Price.product_type:type_name -> api.v1.ProductType
-	1,  // 5: api.v1.Price.usage_type:type_name -> api.v1.UsageType
-	27, // 6: api.v1.SubscriptionUsageItem.period_start:type_name -> google.protobuf.Timestamp
-	27, // 7: api.v1.SubscriptionUsageItem.period_end:type_name -> google.protobuf.Timestamp
-	27, // 8: api.v1.Invoice.period_start:type_name -> google.protobuf.Timestamp
-	27, // 9: api.v1.Invoice.period_end:type_name -> google.protobuf.Timestamp
-	27, // 10: api.v1.Coupon.created_at:type_name -> google.protobuf.Timestamp
-	27, // 11: api.v1.Coupon.redeem_by:type_name -> google.protobuf.Timestamp
-	5,  // 12: api.v1.PaymentServiceCreateRequest.address:type_name -> api.v1.Address
-	2,  // 13: api.v1.PaymentServiceCreateResponse.customer:type_name -> api.v1.PaymentCustomer
-	5,  // 14: api.v1.PaymentServiceUpdateRequest.address:type_name -> api.v1.Address
-	2,  // 15: api.v1.PaymentServiceUpdateResponse.customer:type_name -> api.v1.PaymentCustomer
-	2,  // 16: api.v1.PaymentServiceGetResponse.customer:type_name -> api.v1.PaymentCustomer
-	6,  // 17: api.v1.PaymentServiceGetSubscriptionUsageResponse.subscription_usage_items:type_name -> api.v1.SubscriptionUsageItem
-	7,  // 18: api.v1.PaymentServiceGetInvoicesResponse.invoices:type_name -> api.v1.Invoice
-	4,  // 19: api.v1.PaymentServiceGetDefaultPricesResponse.prices:type_name -> api.v1.Price
-	9,  // 20: api.v1.PaymentService.Create:input_type -> api.v1.PaymentServiceCreateRequest
-	11, // 21: api.v1.PaymentService.Update:input_type -> api.v1.PaymentServiceUpdateRequest
-	17, // 22: api.v1.PaymentService.Delete:input_type -> api.v1.PaymentServiceDeleteRequest
-	13, // 23: api.v1.PaymentService.Get:input_type -> api.v1.PaymentServiceGetRequest
-	15, // 24: api.v1.PaymentService.HasPaymentMethod:input_type -> api.v1.PaymentServiceHasPaymentMethodRequest
-	19, // 25: api.v1.PaymentService.GetSubscriptionUsage:input_type -> api.v1.PaymentServiceGetSubscriptionUsageRequest
-	21, // 26: api.v1.PaymentService.GetInvoices:input_type -> api.v1.PaymentServiceGetInvoicesRequest
-	23, // 27: api.v1.PaymentService.GetDefaultPrices:input_type -> api.v1.PaymentServiceGetDefaultPricesRequest
-	25, // 28: api.v1.PaymentService.HasChargeableResources:input_type -> api.v1.PaymentServiceHasChargeableResourcesRequest
-	10, // 29: api.v1.PaymentService.Create:output_type -> api.v1.PaymentServiceCreateResponse
-	12, // 30: api.v1.PaymentService.Update:output_type -> api.v1.PaymentServiceUpdateResponse
-	18, // 31: api.v1.PaymentService.Delete:output_type -> api.v1.PaymentServiceDeleteResponse
-	14, // 32: api.v1.PaymentService.Get:output_type -> api.v1.PaymentServiceGetResponse
-	16, // 33: api.v1.PaymentService.HasPaymentMethod:output_type -> api.v1.PaymentServiceHasPaymentMethodResponse
-	20, // 34: api.v1.PaymentService.GetSubscriptionUsage:output_type -> api.v1.PaymentServiceGetSubscriptionUsageResponse
-	22, // 35: api.v1.PaymentService.GetInvoices:output_type -> api.v1.PaymentServiceGetInvoicesResponse
-	24, // 36: api.v1.PaymentService.GetDefaultPrices:output_type -> api.v1.PaymentServiceGetDefaultPricesResponse
-	26, // 37: api.v1.PaymentService.HasChargeableResources:output_type -> api.v1.PaymentServiceHasChargeableResourcesResponse
-	29, // [29:38] is the sub-list for method output_type
-	20, // [20:29] is the sub-list for method input_type
-	20, // [20:20] is the sub-list for extension type_name
-	20, // [20:20] is the sub-list for extension extendee
-	0,  // [0:20] is the sub-list for field type_name
+	4,  // 0: api.v1.PaymentCustomer.card:type_name -> api.v1.Card
+	5,  // 1: api.v1.PaymentCustomer.prices:type_name -> api.v1.Price
+	6,  // 2: api.v1.PaymentCustomer.address:type_name -> api.v1.Address
+	9,  // 3: api.v1.PaymentCustomer.coupon:type_name -> api.v1.Coupon
+	2,  // 4: api.v1.PaymentCustomer.tier:type_name -> api.v1.ProductTier
+	0,  // 5: api.v1.Price.product_type:type_name -> api.v1.ProductType
+	1,  // 6: api.v1.Price.usage_type:type_name -> api.v1.UsageType
+	28, // 7: api.v1.SubscriptionUsageItem.period_start:type_name -> google.protobuf.Timestamp
+	28, // 8: api.v1.SubscriptionUsageItem.period_end:type_name -> google.protobuf.Timestamp
+	28, // 9: api.v1.Invoice.period_start:type_name -> google.protobuf.Timestamp
+	28, // 10: api.v1.Invoice.period_end:type_name -> google.protobuf.Timestamp
+	28, // 11: api.v1.Coupon.created_at:type_name -> google.protobuf.Timestamp
+	28, // 12: api.v1.Coupon.redeem_by:type_name -> google.protobuf.Timestamp
+	6,  // 13: api.v1.PaymentServiceCreateRequest.address:type_name -> api.v1.Address
+	3,  // 14: api.v1.PaymentServiceCreateResponse.customer:type_name -> api.v1.PaymentCustomer
+	6,  // 15: api.v1.PaymentServiceUpdateRequest.address:type_name -> api.v1.Address
+	3,  // 16: api.v1.PaymentServiceUpdateResponse.customer:type_name -> api.v1.PaymentCustomer
+	3,  // 17: api.v1.PaymentServiceGetResponse.customer:type_name -> api.v1.PaymentCustomer
+	7,  // 18: api.v1.PaymentServiceGetSubscriptionUsageResponse.subscription_usage_items:type_name -> api.v1.SubscriptionUsageItem
+	8,  // 19: api.v1.PaymentServiceGetInvoicesResponse.invoices:type_name -> api.v1.Invoice
+	5,  // 20: api.v1.PaymentServiceGetDefaultPricesResponse.prices:type_name -> api.v1.Price
+	10, // 21: api.v1.PaymentService.Create:input_type -> api.v1.PaymentServiceCreateRequest
+	12, // 22: api.v1.PaymentService.Update:input_type -> api.v1.PaymentServiceUpdateRequest
+	18, // 23: api.v1.PaymentService.Delete:input_type -> api.v1.PaymentServiceDeleteRequest
+	14, // 24: api.v1.PaymentService.Get:input_type -> api.v1.PaymentServiceGetRequest
+	16, // 25: api.v1.PaymentService.HasPaymentMethod:input_type -> api.v1.PaymentServiceHasPaymentMethodRequest
+	20, // 26: api.v1.PaymentService.GetSubscriptionUsage:input_type -> api.v1.PaymentServiceGetSubscriptionUsageRequest
+	22, // 27: api.v1.PaymentService.GetInvoices:input_type -> api.v1.PaymentServiceGetInvoicesRequest
+	24, // 28: api.v1.PaymentService.GetDefaultPrices:input_type -> api.v1.PaymentServiceGetDefaultPricesRequest
+	26, // 29: api.v1.PaymentService.HasChargeableResources:input_type -> api.v1.PaymentServiceHasChargeableResourcesRequest
+	11, // 30: api.v1.PaymentService.Create:output_type -> api.v1.PaymentServiceCreateResponse
+	13, // 31: api.v1.PaymentService.Update:output_type -> api.v1.PaymentServiceUpdateResponse
+	19, // 32: api.v1.PaymentService.Delete:output_type -> api.v1.PaymentServiceDeleteResponse
+	15, // 33: api.v1.PaymentService.Get:output_type -> api.v1.PaymentServiceGetResponse
+	17, // 34: api.v1.PaymentService.HasPaymentMethod:output_type -> api.v1.PaymentServiceHasPaymentMethodResponse
+	21, // 35: api.v1.PaymentService.GetSubscriptionUsage:output_type -> api.v1.PaymentServiceGetSubscriptionUsageResponse
+	23, // 36: api.v1.PaymentService.GetInvoices:output_type -> api.v1.PaymentServiceGetInvoicesResponse
+	25, // 37: api.v1.PaymentService.GetDefaultPrices:output_type -> api.v1.PaymentServiceGetDefaultPricesResponse
+	27, // 38: api.v1.PaymentService.HasChargeableResources:output_type -> api.v1.PaymentServiceHasChargeableResourcesResponse
+	30, // [30:39] is the sub-list for method output_type
+	21, // [21:30] is the sub-list for method input_type
+	21, // [21:21] is the sub-list for extension type_name
+	21, // [21:21] is the sub-list for extension extendee
+	0,  // [0:21] is the sub-list for field type_name
 }
 
 func init() { file_api_v1_payment_proto_init() }
@@ -2069,7 +2138,7 @@ func file_api_v1_payment_proto_init() {
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_api_v1_payment_proto_rawDesc), len(file_api_v1_payment_proto_rawDesc)),
-			NumEnums:      2,
+			NumEnums:      3,
 			NumMessages:   25,
 			NumExtensions: 0,
 			NumServices:   1,

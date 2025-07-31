@@ -89,6 +89,12 @@ export type PaymentCustomer = Message<"api.v1.PaymentCustomer"> & {
      * @generated from field: optional int64 balance = 13;
      */
     balance?: bigint;
+    /**
+     * Tier describes the state in which the customer is using the products.
+     *
+     * @generated from field: api.v1.ProductTier tier = 14;
+     */
+    tier: ProductTier;
 };
 /**
  * Describes the message api.v1.PaymentCustomer.
@@ -859,6 +865,35 @@ export declare enum UsageType {
  * Describes the enum api.v1.UsageType.
  */
 export declare const UsageTypeSchema: GenEnum<UsageType>;
+/**
+ * ProductTier is an explicit indicator for the state in which the customer is using the products.
+ *
+ * @generated from enum api.v1.ProductTier
+ */
+export declare enum ProductTier {
+    /**
+     * PRODUCT_TIER_UNSPECIFIED is unspecified
+     *
+     * @generated from enum value: PRODUCT_TIER_UNSPECIFIED = 0;
+     */
+    UNSPECIFIED = 0,
+    /**
+     * PRODUCT_TIER_TRIAL indicates a customer that is in trial phase without having to provide payment information.
+     *
+     * @generated from enum value: PRODUCT_TIER_TRIAL = 1;
+     */
+    TRIAL = 1,
+    /**
+     * PRODUCT_TIER_PAID indicates a customer that has provided payment information.
+     *
+     * @generated from enum value: PRODUCT_TIER_PAID = 2;
+     */
+    PAID = 2
+}
+/**
+ * Describes the enum api.v1.ProductTier.
+ */
+export declare const ProductTierSchema: GenEnum<ProductTier>;
 /**
  * PaymentService serves payment related functions
  *

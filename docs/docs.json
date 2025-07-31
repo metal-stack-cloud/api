@@ -2690,6 +2690,29 @@
       "hasServices": true,
       "enums": [
         {
+          "name": "ProductTier",
+          "longName": "ProductTier",
+          "fullName": "api.v1.ProductTier",
+          "description": "ProductTier is an explicit indicator for the state in which the customer is using the products.",
+          "values": [
+            {
+              "name": "PRODUCT_TIER_UNSPECIFIED",
+              "number": "0",
+              "description": "PRODUCT_TIER_UNSPECIFIED is unspecified"
+            },
+            {
+              "name": "PRODUCT_TIER_TRIAL",
+              "number": "1",
+              "description": "PRODUCT_TIER_TRIAL indicates a customer that is in trial phase without having to provide payment information."
+            },
+            {
+              "name": "PRODUCT_TIER_PAID",
+              "number": "2",
+              "description": "PRODUCT_TIER_PAID indicates a customer that has provided payment information."
+            }
+          ]
+        },
+        {
           "name": "ProductType",
           "longName": "ProductType",
           "fullName": "api.v1.ProductType",
@@ -3260,6 +3283,18 @@
               "ismap": false,
               "isoneof": true,
               "oneofdecl": "_balance",
+              "defaultValue": ""
+            },
+            {
+              "name": "tier",
+              "description": "Tier describes the state in which the customer is using the products.",
+              "label": "",
+              "type": "ProductTier",
+              "longType": "ProductTier",
+              "fullType": "api.v1.ProductTier",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
               "defaultValue": ""
             }
           ]
