@@ -8230,30 +8230,6 @@
           ]
         },
         {
-          "name": "TenantServiceCreateOrUpdateRequest",
-          "longName": "TenantServiceCreateOrUpdateRequest",
-          "fullName": "api.v1.TenantServiceCreateOrUpdateRequest",
-          "description": "TenantServiceCreateOrUpdateRequest is the request payload of the tenant create or update request",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "tenant",
-              "description": "Tenant the tenant to create or update",
-              "label": "",
-              "type": "Tenant",
-              "longType": "Tenant",
-              "fullType": "api.v1.Tenant",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            }
-          ]
-        },
-        {
           "name": "TenantServiceCreateOrUpdateResponse",
           "longName": "TenantServiceCreateOrUpdateResponse",
           "fullName": "api.v1.TenantServiceCreateOrUpdateResponse",
@@ -10854,6 +10830,78 @@
               "isoneof": false,
               "oneofdecl": "",
               "defaultValue": ""
+            },
+            {
+              "name": "environment",
+              "description": "Environment contains information on the environment.",
+              "label": "",
+              "type": "Environment",
+              "longType": "Environment",
+              "fullType": "api.v1.Environment",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "Environment",
+          "longName": "Environment",
+          "fullName": "api.v1.Environment",
+          "description": "Environment defines information on the installation environment of the metalstack.cloud installation.",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": true,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "console_url",
+              "description": "ConsoleURL is the URL to the metalstack.cloud cloud console (aka frontend).",
+              "label": "optional",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "_console_url",
+              "defaultValue": ""
+            },
+            {
+              "name": "after_login_url",
+              "description": "AfterLoginURL is the URL to redirect clients to after successful login.",
+              "label": "optional",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "_after_login_url",
+              "defaultValue": ""
+            },
+            {
+              "name": "stripe_public_token",
+              "description": "StripePublicToken can be used by clients to use certain endpoints of the payment service api.",
+              "label": "optional",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "_stripe_public_token",
+              "defaultValue": ""
+            },
+            {
+              "name": "terms_and_conditions_url",
+              "description": "TermsAndConditionsURL is the URL to the terms and conditions.",
+              "label": "optional",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "_terms_and_conditions_url",
+              "defaultValue": ""
             }
           ]
         },
@@ -13198,10 +13246,10 @@
           ]
         },
         {
-          "name": "MessageServiceListRequest",
-          "longName": "MessageServiceListRequest",
-          "fullName": "status.v1.MessageServiceListRequest",
-          "description": "MessageServiceListRequest is the request payload to get the messages",
+          "name": "MessageServiceWatchRequest",
+          "longName": "MessageServiceWatchRequest",
+          "fullName": "status.v1.MessageServiceWatchRequest",
+          "description": "MessageServiceWatchRequest is the request payload to watch the messages",
           "hasExtensions": false,
           "hasFields": false,
           "hasOneofs": false,
@@ -13209,10 +13257,10 @@
           "fields": []
         },
         {
-          "name": "MessageServiceListResponse",
-          "longName": "MessageServiceListResponse",
-          "fullName": "status.v1.MessageServiceListResponse",
-          "description": "MessageServiceListResponse is the response payload with the messages",
+          "name": "MessageServiceWatchResponse",
+          "longName": "MessageServiceWatchResponse",
+          "fullName": "status.v1.MessageServiceWatchResponse",
+          "description": "MessageServiceWatchResponse is the response payload with the messages",
           "hasExtensions": false,
           "hasFields": true,
           "hasOneofs": false,
@@ -13313,16 +13361,16 @@
           "description": "MessageService serves status message related functions\nthis service is used as backend for the status dashboard",
           "methods": [
             {
-              "name": "List",
-              "description": "List returns all messages of interest",
-              "requestType": "MessageServiceListRequest",
-              "requestLongType": "MessageServiceListRequest",
-              "requestFullType": "status.v1.MessageServiceListRequest",
+              "name": "Watch",
+              "description": "Watch returns all messages of interest",
+              "requestType": "MessageServiceWatchRequest",
+              "requestLongType": "MessageServiceWatchRequest",
+              "requestFullType": "status.v1.MessageServiceWatchRequest",
               "requestStreaming": false,
-              "responseType": "MessageServiceListResponse",
-              "responseLongType": "MessageServiceListResponse",
-              "responseFullType": "status.v1.MessageServiceListResponse",
-              "responseStreaming": false
+              "responseType": "MessageServiceWatchResponse",
+              "responseLongType": "MessageServiceWatchResponse",
+              "responseFullType": "status.v1.MessageServiceWatchResponse",
+              "responseStreaming": true
             }
           ]
         }
@@ -13340,10 +13388,10 @@
       "extensions": [],
       "messages": [
         {
-          "name": "StatusServiceGetRequest",
-          "longName": "StatusServiceGetRequest",
-          "fullName": "status.v1.StatusServiceGetRequest",
-          "description": "StatusServiceGetRequest is the request payload to get the status",
+          "name": "StatusServiceWatchRequest",
+          "longName": "StatusServiceWatchRequest",
+          "fullName": "status.v1.StatusServiceWatchRequest",
+          "description": "StatusServiceWatchRequest is the request payload to get the status",
           "hasExtensions": false,
           "hasFields": false,
           "hasOneofs": false,
@@ -13351,10 +13399,10 @@
           "fields": []
         },
         {
-          "name": "StatusServiceGetResponse",
-          "longName": "StatusServiceGetResponse",
-          "fullName": "status.v1.StatusServiceGetResponse",
-          "description": "StatusServiceGetResponse is the response payload which describes the system status",
+          "name": "StatusServiceWatchResponse",
+          "longName": "StatusServiceWatchResponse",
+          "fullName": "status.v1.StatusServiceWatchResponse",
+          "description": "StatusServiceWatchResponse is the response payload which describes the system status",
           "hasExtensions": false,
           "hasFields": true,
           "hasOneofs": false,
@@ -13419,16 +13467,16 @@
           "description": "StatusService serves status related functions\nthis service is used as backend for the status dashboard",
           "methods": [
             {
-              "name": "Get",
-              "description": "Get the system status",
-              "requestType": "StatusServiceGetRequest",
-              "requestLongType": "StatusServiceGetRequest",
-              "requestFullType": "status.v1.StatusServiceGetRequest",
+              "name": "Watch",
+              "description": "Watch the system status",
+              "requestType": "StatusServiceWatchRequest",
+              "requestLongType": "StatusServiceWatchRequest",
+              "requestFullType": "status.v1.StatusServiceWatchRequest",
               "requestStreaming": false,
-              "responseType": "StatusServiceGetResponse",
-              "responseLongType": "StatusServiceGetResponse",
-              "responseFullType": "status.v1.StatusServiceGetResponse",
-              "responseStreaming": false
+              "responseType": "StatusServiceWatchResponse",
+              "responseLongType": "StatusServiceWatchResponse",
+              "responseFullType": "status.v1.StatusServiceWatchResponse",
+              "responseStreaming": true
             }
           ]
         }

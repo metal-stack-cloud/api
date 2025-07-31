@@ -368,24 +368,6 @@ export type TenantServiceCreateRequest = Message<"api.v1.TenantServiceCreateRequ
  */
 export declare const TenantServiceCreateRequestSchema: GenMessage<TenantServiceCreateRequest>;
 /**
- * TenantServiceCreateOrUpdateRequest is the request payload of the tenant create or update request
- *
- * @generated from message api.v1.TenantServiceCreateOrUpdateRequest
- */
-export type TenantServiceCreateOrUpdateRequest = Message<"api.v1.TenantServiceCreateOrUpdateRequest"> & {
-    /**
-     * Tenant the tenant to create or update
-     *
-     * @generated from field: api.v1.Tenant tenant = 1;
-     */
-    tenant?: Tenant;
-};
-/**
- * Describes the message api.v1.TenantServiceCreateOrUpdateRequest.
- * Use `create(TenantServiceCreateOrUpdateRequestSchema)` to create a new message.
- */
-export declare const TenantServiceCreateOrUpdateRequestSchema: GenMessage<TenantServiceCreateOrUpdateRequest>;
-/**
  * TenantServiceUpdateRequest is the request payload of the tenant update request
  *
  * @generated from message api.v1.TenantServiceUpdateRequest

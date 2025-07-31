@@ -209,15 +209,9 @@ message TenantServiceCreateRequest {
   // Email of the tenant, if not set will be inherited from the creator
   optional string email = 3 [(buf.validate.field).string.email = true];
   // AvatarUrl of the tenant
-  optional string avatar_url = 4;
+  optional string avatar_url = 4 [(buf.validate.field).string.uri = true];
   // PhoneNumber of the tenant
   optional string phone_number = 5;
-}
-
-// TenantServiceCreateOrUpdateRequest is the request payload of the tenant create or update request
-message TenantServiceCreateOrUpdateRequest {
-  // Tenant the tenant to create or update
-  Tenant tenant = 1;
 }
 
 // TenantServiceUpdateRequest is the request payload of the tenant update request
@@ -242,7 +236,7 @@ message TenantServiceUpdateRequest {
     max_len: 512
   }];
   // AvatarUrl of the tenant
-  optional string avatar_url = 5;
+  optional string avatar_url = 5 [(buf.validate.field).string.uri = true];
   // Onboarded checks if the tenant was asked to be onboarded
   optional bool onboarded = 13;
   // AcceptTermsAndConditions can be used to accept the terms and conditions

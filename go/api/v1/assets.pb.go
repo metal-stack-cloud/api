@@ -7,6 +7,7 @@
 package apiv1
 
 import (
+	_ "buf.build/gen/go/bufbuild/protovalidate/protocolbuffers/go/buf/validate"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
@@ -546,7 +547,9 @@ func (*AssetServiceListRequest) Descriptor() ([]byte, []int) {
 type AssetServiceListResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Assets defines a list of assets
-	Assets        []*Asset `protobuf:"bytes,2,rep,name=assets,proto3" json:"assets,omitempty"`
+	Assets []*Asset `protobuf:"bytes,2,rep,name=assets,proto3" json:"assets,omitempty"`
+	// Environment contains information on the environment.
+	Environment   *Environment `protobuf:"bytes,3,opt,name=environment,proto3" json:"environment,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -588,11 +591,91 @@ func (x *AssetServiceListResponse) GetAssets() []*Asset {
 	return nil
 }
 
+func (x *AssetServiceListResponse) GetEnvironment() *Environment {
+	if x != nil {
+		return x.Environment
+	}
+	return nil
+}
+
+// Environment defines information on the installation environment of the metalstack.cloud installation.
+type Environment struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// ConsoleURL is the URL to the metalstack.cloud cloud console (aka frontend).
+	ConsoleUrl *string `protobuf:"bytes,1,opt,name=console_url,json=consoleUrl,proto3,oneof" json:"console_url,omitempty"`
+	// AfterLoginURL is the URL to redirect clients to after successful login.
+	AfterLoginUrl *string `protobuf:"bytes,2,opt,name=after_login_url,json=afterLoginUrl,proto3,oneof" json:"after_login_url,omitempty"`
+	// StripePublicToken can be used by clients to use certain endpoints of the payment service api.
+	StripePublicToken *string `protobuf:"bytes,3,opt,name=stripe_public_token,json=stripePublicToken,proto3,oneof" json:"stripe_public_token,omitempty"`
+	// TermsAndConditionsURL is the URL to the terms and conditions.
+	TermsAndConditionsUrl *string `protobuf:"bytes,4,opt,name=terms_and_conditions_url,json=termsAndConditionsUrl,proto3,oneof" json:"terms_and_conditions_url,omitempty"`
+	unknownFields         protoimpl.UnknownFields
+	sizeCache             protoimpl.SizeCache
+}
+
+func (x *Environment) Reset() {
+	*x = Environment{}
+	mi := &file_api_v1_assets_proto_msgTypes[8]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *Environment) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Environment) ProtoMessage() {}
+
+func (x *Environment) ProtoReflect() protoreflect.Message {
+	mi := &file_api_v1_assets_proto_msgTypes[8]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Environment.ProtoReflect.Descriptor instead.
+func (*Environment) Descriptor() ([]byte, []int) {
+	return file_api_v1_assets_proto_rawDescGZIP(), []int{8}
+}
+
+func (x *Environment) GetConsoleUrl() string {
+	if x != nil && x.ConsoleUrl != nil {
+		return *x.ConsoleUrl
+	}
+	return ""
+}
+
+func (x *Environment) GetAfterLoginUrl() string {
+	if x != nil && x.AfterLoginUrl != nil {
+		return *x.AfterLoginUrl
+	}
+	return ""
+}
+
+func (x *Environment) GetStripePublicToken() string {
+	if x != nil && x.StripePublicToken != nil {
+		return *x.StripePublicToken
+	}
+	return ""
+}
+
+func (x *Environment) GetTermsAndConditionsUrl() string {
+	if x != nil && x.TermsAndConditionsUrl != nil {
+		return *x.TermsAndConditionsUrl
+	}
+	return ""
+}
+
 var File_api_v1_assets_proto protoreflect.FileDescriptor
 
 const file_api_v1_assets_proto_rawDesc = "" +
 	"\n" +
-	"\x13api/v1/assets.proto\x12\x06api.v1\x1a\x13api/v1/common.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\xff\x01\n" +
+	"\x13api/v1/assets.proto\x12\x06api.v1\x1a\x13api/v1/common.proto\x1a\x1bbuf/validate/validate.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\xff\x01\n" +
 	"\x05Asset\x12&\n" +
 	"\x06region\x18\x01 \x01(\v2\x0e.api.v1.RegionR\x06region\x12D\n" +
 	"\rmachine_types\x18\x02 \x03(\v2\x1f.api.v1.Asset.MachineTypesEntryR\fmachineTypes\x122\n" +
@@ -643,9 +726,20 @@ const file_api_v1_assets_proto_rawDesc = "" +
 	"\n" +
 	"worker_max\x18\x04 \x01(\rR\tworkerMax\x12\x1c\n" +
 	"\tpartition\x18\a \x01(\tR\tpartition\"\x19\n" +
-	"\x17AssetServiceListRequest\"A\n" +
+	"\x17AssetServiceListRequest\"x\n" +
 	"\x18AssetServiceListResponse\x12%\n" +
-	"\x06assets\x18\x02 \x03(\v2\r.api.v1.AssetR\x06assets2c\n" +
+	"\x06assets\x18\x02 \x03(\v2\r.api.v1.AssetR\x06assets\x125\n" +
+	"\venvironment\x18\x03 \x01(\v2\x13.api.v1.EnvironmentR\venvironment\"\xe5\x02\n" +
+	"\vEnvironment\x12.\n" +
+	"\vconsole_url\x18\x01 \x01(\tB\b\xbaH\x05r\x03\x88\x01\x01H\x00R\n" +
+	"consoleUrl\x88\x01\x01\x125\n" +
+	"\x0fafter_login_url\x18\x02 \x01(\tB\b\xbaH\x05r\x03\x88\x01\x01H\x01R\rafterLoginUrl\x88\x01\x01\x12N\n" +
+	"\x13stripe_public_token\x18\x03 \x01(\tB\x19\xbaH\x16r\x14\x10\x032\x10pk_[a-zA-Z0-9]*$H\x02R\x11stripePublicToken\x88\x01\x01\x12F\n" +
+	"\x18terms_and_conditions_url\x18\x04 \x01(\tB\b\xbaH\x05r\x03\x88\x01\x01H\x03R\x15termsAndConditionsUrl\x88\x01\x01B\x0e\n" +
+	"\f_console_urlB\x12\n" +
+	"\x10_after_login_urlB\x16\n" +
+	"\x14_stripe_public_tokenB\x1b\n" +
+	"\x19_terms_and_conditions_url2c\n" +
 	"\fAssetService\x12S\n" +
 	"\x04List\x12\x1f.api.v1.AssetServiceListRequest\x1a .api.v1.AssetServiceListResponse\"\b\xd8\xf3\x18\x01\xe8\xf3\x18\x02B\x84\x01\n" +
 	"\n" +
@@ -663,7 +757,7 @@ func file_api_v1_assets_proto_rawDescGZIP() []byte {
 	return file_api_v1_assets_proto_rawDescData
 }
 
-var file_api_v1_assets_proto_msgTypes = make([]protoimpl.MessageInfo, 10)
+var file_api_v1_assets_proto_msgTypes = make([]protoimpl.MessageInfo, 11)
 var file_api_v1_assets_proto_goTypes = []any{
 	(*Asset)(nil),                    // 0: api.v1.Asset
 	(*Region)(nil),                   // 1: api.v1.Region
@@ -673,27 +767,29 @@ var file_api_v1_assets_proto_goTypes = []any{
 	(*AssetDefaults)(nil),            // 5: api.v1.AssetDefaults
 	(*AssetServiceListRequest)(nil),  // 6: api.v1.AssetServiceListRequest
 	(*AssetServiceListResponse)(nil), // 7: api.v1.AssetServiceListResponse
-	nil,                              // 8: api.v1.Asset.MachineTypesEntry
-	nil,                              // 9: api.v1.Region.PartitionsEntry
-	(*timestamppb.Timestamp)(nil),    // 10: google.protobuf.Timestamp
+	(*Environment)(nil),              // 8: api.v1.Environment
+	nil,                              // 9: api.v1.Asset.MachineTypesEntry
+	nil,                              // 10: api.v1.Region.PartitionsEntry
+	(*timestamppb.Timestamp)(nil),    // 11: google.protobuf.Timestamp
 }
 var file_api_v1_assets_proto_depIdxs = []int32{
 	1,  // 0: api.v1.Asset.region:type_name -> api.v1.Region
-	8,  // 1: api.v1.Asset.machine_types:type_name -> api.v1.Asset.MachineTypesEntry
+	9,  // 1: api.v1.Asset.machine_types:type_name -> api.v1.Asset.MachineTypesEntry
 	4,  // 2: api.v1.Asset.kubernetes:type_name -> api.v1.Kubernetes
-	9,  // 3: api.v1.Region.partitions:type_name -> api.v1.Region.PartitionsEntry
+	10, // 3: api.v1.Region.partitions:type_name -> api.v1.Region.PartitionsEntry
 	5,  // 4: api.v1.Region.defaults:type_name -> api.v1.AssetDefaults
-	10, // 5: api.v1.Kubernetes.expiration:type_name -> google.protobuf.Timestamp
+	11, // 5: api.v1.Kubernetes.expiration:type_name -> google.protobuf.Timestamp
 	0,  // 6: api.v1.AssetServiceListResponse.assets:type_name -> api.v1.Asset
-	3,  // 7: api.v1.Asset.MachineTypesEntry.value:type_name -> api.v1.MachineType
-	2,  // 8: api.v1.Region.PartitionsEntry.value:type_name -> api.v1.Partition
-	6,  // 9: api.v1.AssetService.List:input_type -> api.v1.AssetServiceListRequest
-	7,  // 10: api.v1.AssetService.List:output_type -> api.v1.AssetServiceListResponse
-	10, // [10:11] is the sub-list for method output_type
-	9,  // [9:10] is the sub-list for method input_type
-	9,  // [9:9] is the sub-list for extension type_name
-	9,  // [9:9] is the sub-list for extension extendee
-	0,  // [0:9] is the sub-list for field type_name
+	8,  // 7: api.v1.AssetServiceListResponse.environment:type_name -> api.v1.Environment
+	3,  // 8: api.v1.Asset.MachineTypesEntry.value:type_name -> api.v1.MachineType
+	2,  // 9: api.v1.Region.PartitionsEntry.value:type_name -> api.v1.Partition
+	6,  // 10: api.v1.AssetService.List:input_type -> api.v1.AssetServiceListRequest
+	7,  // 11: api.v1.AssetService.List:output_type -> api.v1.AssetServiceListResponse
+	11, // [11:12] is the sub-list for method output_type
+	10, // [10:11] is the sub-list for method input_type
+	10, // [10:10] is the sub-list for extension type_name
+	10, // [10:10] is the sub-list for extension extendee
+	0,  // [0:10] is the sub-list for field type_name
 }
 
 func init() { file_api_v1_assets_proto_init() }
@@ -702,13 +798,14 @@ func file_api_v1_assets_proto_init() {
 		return
 	}
 	file_api_v1_common_proto_init()
+	file_api_v1_assets_proto_msgTypes[8].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_api_v1_assets_proto_rawDesc), len(file_api_v1_assets_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   10,
+			NumMessages:   11,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
