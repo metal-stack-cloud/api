@@ -34,6 +34,8 @@ var (
 	mockClientTpl string
 	//go:embed go_client.tpl
 	clientTpl string
+	//go:embed python_client.tpl
+	pythonClientTpl string
 )
 
 type api struct {
@@ -80,6 +82,10 @@ func main() {
 	}
 
 	err = writeTemplate("../go/tests/mock_clients.go", mockClientTpl, svcs)
+	if err != nil {
+		panic(err)
+	}
+	err = writePythonTemplate("../python/client/client.py", pythonClientTpl, svcs)
 	if err != nil {
 		panic(err)
 	}
@@ -294,4 +300,20 @@ func writeTemplate(dest, text string, data any) error {
 	fmt.Println("wrote " + dest)
 
 	return os.WriteFile(dest, p, 0755) // nolint:gosec
+}
+
+func writePythonTemplate(dest, text string, data any) error {
+	t, err := template.New("").Funcs(sprig.FuncMap()).Parse(text)
+	if err != nil {
+		return err
+	}
+
+	var buf bytes.Buffer
+	if err := t.Execute(&buf, data); err != nil {
+		return err
+	}
+
+	fmt.Println("wrote " + dest)
+
+	return os.WriteFile(dest, buf.Bytes(), 0755) // nolint:gosec
 }

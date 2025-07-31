@@ -10,8 +10,6 @@ import (
 	_ "buf.build/gen/go/bufbuild/protovalidate/protocolbuffers/go/buf/validate"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
-	durationpb "google.golang.org/protobuf/types/known/durationpb"
-	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 	reflect "reflect"
 	sync "sync"
 	unsafe "unsafe"
@@ -547,279 +545,6 @@ func (x *VolumeStatistics) GetRecoverableDataIntegrityErrors() uint32 {
 	return 0
 }
 
-// Snapshot is a unit of block storage create as a point in time block copy of a volume
-type Snapshot struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// Uuid is the unique identifier of the snapshot
-	Uuid string `protobuf:"bytes,1,opt,name=uuid,proto3" json:"uuid,omitempty"`
-	// Name of the snapshot
-	Name string `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
-	// Description of this snapshot
-	Description string `protobuf:"bytes,3,opt,name=description,proto3" json:"description,omitempty"`
-	// Project this snapshot belongs to
-	Project string `protobuf:"bytes,4,opt,name=project,proto3" json:"project,omitempty"`
-	// Partition where this snapshot resides
-	Partition string `protobuf:"bytes,5,opt,name=partition,proto3" json:"partition,omitempty"`
-	// StorageClass where this snapshot is created
-	StorageClass string `protobuf:"bytes,6,opt,name=storage_class,json=storageClass,proto3" json:"storage_class,omitempty"`
-	// Size in bytes of the snapshot
-	Size uint64 `protobuf:"varint,7,opt,name=size,proto3" json:"size,omitempty"`
-	// Usage in bytes of the snapshot
-	Usage uint64 `protobuf:"varint,8,opt,name=usage,proto3" json:"usage,omitempty"`
-	// State of the snapshot
-	State string `protobuf:"bytes,9,opt,name=state,proto3" json:"state,omitempty"`
-	// SourceVolumeUuid is the uuid of the snapshot this snapshot was created from
-	SourceVolumeUuid string `protobuf:"bytes,10,opt,name=source_volume_uuid,json=sourceVolumeUuid,proto3" json:"source_volume_uuid,omitempty"`
-	// SourceVolumeName is the name of the snapshot this snapshot was created from
-	SourceVolumeName string `protobuf:"bytes,11,opt,name=source_volume_name,json=sourceVolumeName,proto3" json:"source_volume_name,omitempty"`
-	// ReplicaCount shows how many replicas of this snapshot exist
-	ReplicaCount uint32 `protobuf:"varint,12,opt,name=replica_count,json=replicaCount,proto3" json:"replica_count,omitempty"`
-	// PrimaryNodeUuid is the uuid of the storage server node where the primary replica of this snapshot resides
-	PrimaryNodeUuid string `protobuf:"bytes,13,opt,name=primary_node_uuid,json=primaryNodeUuid,proto3" json:"primary_node_uuid,omitempty"`
-	// Retention is the duration after creation, after which this snapshot will be deleted
-	Retention *durationpb.Duration `protobuf:"bytes,14,opt,name=retention,proto3" json:"retention,omitempty"`
-	// SnapshotStatistics are only visible to admins
-	Statistics *SnapshotStatistics `protobuf:"bytes,15,opt,name=statistics,proto3" json:"statistics,omitempty"`
-	// CreatedAt is the date when this snapshot was created
-	CreatedAt     *timestamppb.Timestamp `protobuf:"bytes,20,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *Snapshot) Reset() {
-	*x = Snapshot{}
-	mi := &file_api_v1_volume_proto_msgTypes[4]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *Snapshot) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*Snapshot) ProtoMessage() {}
-
-func (x *Snapshot) ProtoReflect() protoreflect.Message {
-	mi := &file_api_v1_volume_proto_msgTypes[4]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use Snapshot.ProtoReflect.Descriptor instead.
-func (*Snapshot) Descriptor() ([]byte, []int) {
-	return file_api_v1_volume_proto_rawDescGZIP(), []int{4}
-}
-
-func (x *Snapshot) GetUuid() string {
-	if x != nil {
-		return x.Uuid
-	}
-	return ""
-}
-
-func (x *Snapshot) GetName() string {
-	if x != nil {
-		return x.Name
-	}
-	return ""
-}
-
-func (x *Snapshot) GetDescription() string {
-	if x != nil {
-		return x.Description
-	}
-	return ""
-}
-
-func (x *Snapshot) GetProject() string {
-	if x != nil {
-		return x.Project
-	}
-	return ""
-}
-
-func (x *Snapshot) GetPartition() string {
-	if x != nil {
-		return x.Partition
-	}
-	return ""
-}
-
-func (x *Snapshot) GetStorageClass() string {
-	if x != nil {
-		return x.StorageClass
-	}
-	return ""
-}
-
-func (x *Snapshot) GetSize() uint64 {
-	if x != nil {
-		return x.Size
-	}
-	return 0
-}
-
-func (x *Snapshot) GetUsage() uint64 {
-	if x != nil {
-		return x.Usage
-	}
-	return 0
-}
-
-func (x *Snapshot) GetState() string {
-	if x != nil {
-		return x.State
-	}
-	return ""
-}
-
-func (x *Snapshot) GetSourceVolumeUuid() string {
-	if x != nil {
-		return x.SourceVolumeUuid
-	}
-	return ""
-}
-
-func (x *Snapshot) GetSourceVolumeName() string {
-	if x != nil {
-		return x.SourceVolumeName
-	}
-	return ""
-}
-
-func (x *Snapshot) GetReplicaCount() uint32 {
-	if x != nil {
-		return x.ReplicaCount
-	}
-	return 0
-}
-
-func (x *Snapshot) GetPrimaryNodeUuid() string {
-	if x != nil {
-		return x.PrimaryNodeUuid
-	}
-	return ""
-}
-
-func (x *Snapshot) GetRetention() *durationpb.Duration {
-	if x != nil {
-		return x.Retention
-	}
-	return nil
-}
-
-func (x *Snapshot) GetStatistics() *SnapshotStatistics {
-	if x != nil {
-		return x.Statistics
-	}
-	return nil
-}
-
-func (x *Snapshot) GetCreatedAt() *timestamppb.Timestamp {
-	if x != nil {
-		return x.CreatedAt
-	}
-	return nil
-}
-
-// SnapshotStatistics are all detailed statistics of a snapshot
-type SnapshotStatistics struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// PhysicalCapacity
-	//
-	// The physical capacity that exists in this snapshot layer
-	PhysicalCapacity uint64 `protobuf:"varint,1,opt,name=physical_capacity,json=physicalCapacity,proto3" json:"physical_capacity,omitempty"`
-	// PhysicalOwnedStorageCapacity
-	//
-	// The capacity that would be freed when snapshot is deleted
-	PhysicalOwnedCapacity uint64 `protobuf:"varint,2,opt,name=physical_owned_capacity,json=physicalOwnedCapacity,proto3" json:"physical_owned_capacity,omitempty"`
-	// PhysicalOwnedMemory
-	//
-	// The memory that would be freed when snapshot is deleted
-	PhysicalOwnedMemory uint64 `protobuf:"varint,3,opt,name=physical_owned_memory,json=physicalOwnedMemory,proto3" json:"physical_owned_memory,omitempty"`
-	// PhysicalMemory
-	//
-	// The memory that exists for this snapshot
-	PhysicalMemory uint64 `protobuf:"varint,4,opt,name=physical_memory,json=physicalMemory,proto3" json:"physical_memory,omitempty"`
-	// UserWritten
-	//
-	// The amount of bytes written to this snapshot by the user
-	UserWritten   uint64 `protobuf:"varint,5,opt,name=user_written,json=userWritten,proto3" json:"user_written,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *SnapshotStatistics) Reset() {
-	*x = SnapshotStatistics{}
-	mi := &file_api_v1_volume_proto_msgTypes[5]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *SnapshotStatistics) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*SnapshotStatistics) ProtoMessage() {}
-
-func (x *SnapshotStatistics) ProtoReflect() protoreflect.Message {
-	mi := &file_api_v1_volume_proto_msgTypes[5]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use SnapshotStatistics.ProtoReflect.Descriptor instead.
-func (*SnapshotStatistics) Descriptor() ([]byte, []int) {
-	return file_api_v1_volume_proto_rawDescGZIP(), []int{5}
-}
-
-func (x *SnapshotStatistics) GetPhysicalCapacity() uint64 {
-	if x != nil {
-		return x.PhysicalCapacity
-	}
-	return 0
-}
-
-func (x *SnapshotStatistics) GetPhysicalOwnedCapacity() uint64 {
-	if x != nil {
-		return x.PhysicalOwnedCapacity
-	}
-	return 0
-}
-
-func (x *SnapshotStatistics) GetPhysicalOwnedMemory() uint64 {
-	if x != nil {
-		return x.PhysicalOwnedMemory
-	}
-	return 0
-}
-
-func (x *SnapshotStatistics) GetPhysicalMemory() uint64 {
-	if x != nil {
-		return x.PhysicalMemory
-	}
-	return 0
-}
-
-func (x *SnapshotStatistics) GetUserWritten() uint64 {
-	if x != nil {
-		return x.UserWritten
-	}
-	return 0
-}
-
 // VolumeServiceGetRequest is the request payload of the volume get request
 type VolumeServiceGetRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
@@ -833,7 +558,7 @@ type VolumeServiceGetRequest struct {
 
 func (x *VolumeServiceGetRequest) Reset() {
 	*x = VolumeServiceGetRequest{}
-	mi := &file_api_v1_volume_proto_msgTypes[6]
+	mi := &file_api_v1_volume_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -845,7 +570,7 @@ func (x *VolumeServiceGetRequest) String() string {
 func (*VolumeServiceGetRequest) ProtoMessage() {}
 
 func (x *VolumeServiceGetRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_api_v1_volume_proto_msgTypes[6]
+	mi := &file_api_v1_volume_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -858,7 +583,7 @@ func (x *VolumeServiceGetRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use VolumeServiceGetRequest.ProtoReflect.Descriptor instead.
 func (*VolumeServiceGetRequest) Descriptor() ([]byte, []int) {
-	return file_api_v1_volume_proto_rawDescGZIP(), []int{6}
+	return file_api_v1_volume_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *VolumeServiceGetRequest) GetUuid() string {
@@ -892,7 +617,7 @@ type VolumeServiceListRequest struct {
 
 func (x *VolumeServiceListRequest) Reset() {
 	*x = VolumeServiceListRequest{}
-	mi := &file_api_v1_volume_proto_msgTypes[7]
+	mi := &file_api_v1_volume_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -904,7 +629,7 @@ func (x *VolumeServiceListRequest) String() string {
 func (*VolumeServiceListRequest) ProtoMessage() {}
 
 func (x *VolumeServiceListRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_api_v1_volume_proto_msgTypes[7]
+	mi := &file_api_v1_volume_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -917,7 +642,7 @@ func (x *VolumeServiceListRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use VolumeServiceListRequest.ProtoReflect.Descriptor instead.
 func (*VolumeServiceListRequest) Descriptor() ([]byte, []int) {
-	return file_api_v1_volume_proto_rawDescGZIP(), []int{7}
+	return file_api_v1_volume_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *VolumeServiceListRequest) GetUuid() string {
@@ -961,7 +686,7 @@ type VolumeServiceDeleteRequest struct {
 
 func (x *VolumeServiceDeleteRequest) Reset() {
 	*x = VolumeServiceDeleteRequest{}
-	mi := &file_api_v1_volume_proto_msgTypes[8]
+	mi := &file_api_v1_volume_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -973,7 +698,7 @@ func (x *VolumeServiceDeleteRequest) String() string {
 func (*VolumeServiceDeleteRequest) ProtoMessage() {}
 
 func (x *VolumeServiceDeleteRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_api_v1_volume_proto_msgTypes[8]
+	mi := &file_api_v1_volume_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -986,7 +711,7 @@ func (x *VolumeServiceDeleteRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use VolumeServiceDeleteRequest.ProtoReflect.Descriptor instead.
 func (*VolumeServiceDeleteRequest) Descriptor() ([]byte, []int) {
-	return file_api_v1_volume_proto_rawDescGZIP(), []int{8}
+	return file_api_v1_volume_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *VolumeServiceDeleteRequest) GetUuid() string {
@@ -1018,7 +743,7 @@ type VolumeServiceUpdateRequest struct {
 
 func (x *VolumeServiceUpdateRequest) Reset() {
 	*x = VolumeServiceUpdateRequest{}
-	mi := &file_api_v1_volume_proto_msgTypes[9]
+	mi := &file_api_v1_volume_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1030,7 +755,7 @@ func (x *VolumeServiceUpdateRequest) String() string {
 func (*VolumeServiceUpdateRequest) ProtoMessage() {}
 
 func (x *VolumeServiceUpdateRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_api_v1_volume_proto_msgTypes[9]
+	mi := &file_api_v1_volume_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1043,7 +768,7 @@ func (x *VolumeServiceUpdateRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use VolumeServiceUpdateRequest.ProtoReflect.Descriptor instead.
 func (*VolumeServiceUpdateRequest) Descriptor() ([]byte, []int) {
-	return file_api_v1_volume_proto_rawDescGZIP(), []int{9}
+	return file_api_v1_volume_proto_rawDescGZIP(), []int{7}
 }
 
 func (x *VolumeServiceUpdateRequest) GetUuid() string {
@@ -1067,189 +792,6 @@ func (x *VolumeServiceUpdateRequest) GetLabels() *UpdateVolumeLabels {
 	return nil
 }
 
-// SnapshotServiceGetRequest is the request payload of a snapshot list request
-type SnapshotServiceGetRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// Uuid of the snapshot
-	Uuid string `protobuf:"bytes,1,opt,name=uuid,proto3" json:"uuid,omitempty"`
-	// Project of the snapshot
-	Project       string `protobuf:"bytes,2,opt,name=project,proto3" json:"project,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *SnapshotServiceGetRequest) Reset() {
-	*x = SnapshotServiceGetRequest{}
-	mi := &file_api_v1_volume_proto_msgTypes[10]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *SnapshotServiceGetRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*SnapshotServiceGetRequest) ProtoMessage() {}
-
-func (x *SnapshotServiceGetRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_api_v1_volume_proto_msgTypes[10]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use SnapshotServiceGetRequest.ProtoReflect.Descriptor instead.
-func (*SnapshotServiceGetRequest) Descriptor() ([]byte, []int) {
-	return file_api_v1_volume_proto_rawDescGZIP(), []int{10}
-}
-
-func (x *SnapshotServiceGetRequest) GetUuid() string {
-	if x != nil {
-		return x.Uuid
-	}
-	return ""
-}
-
-func (x *SnapshotServiceGetRequest) GetProject() string {
-	if x != nil {
-		return x.Project
-	}
-	return ""
-}
-
-// SnapshotServiceListRequest is the request payload of a snapshot list request
-type SnapshotServiceListRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// Uuid of the snapshot
-	Uuid *string `protobuf:"bytes,1,opt,name=uuid,proto3,oneof" json:"uuid,omitempty"`
-	// Project of the snapshot
-	Project string `protobuf:"bytes,2,opt,name=project,proto3" json:"project,omitempty"`
-	// Partition where the snapshots should be listed
-	Partition *string `protobuf:"bytes,3,opt,name=partition,proto3,oneof" json:"partition,omitempty"`
-	// Name of the snapshot
-	Name          *string `protobuf:"bytes,4,opt,name=name,proto3,oneof" json:"name,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *SnapshotServiceListRequest) Reset() {
-	*x = SnapshotServiceListRequest{}
-	mi := &file_api_v1_volume_proto_msgTypes[11]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *SnapshotServiceListRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*SnapshotServiceListRequest) ProtoMessage() {}
-
-func (x *SnapshotServiceListRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_api_v1_volume_proto_msgTypes[11]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use SnapshotServiceListRequest.ProtoReflect.Descriptor instead.
-func (*SnapshotServiceListRequest) Descriptor() ([]byte, []int) {
-	return file_api_v1_volume_proto_rawDescGZIP(), []int{11}
-}
-
-func (x *SnapshotServiceListRequest) GetUuid() string {
-	if x != nil && x.Uuid != nil {
-		return *x.Uuid
-	}
-	return ""
-}
-
-func (x *SnapshotServiceListRequest) GetProject() string {
-	if x != nil {
-		return x.Project
-	}
-	return ""
-}
-
-func (x *SnapshotServiceListRequest) GetPartition() string {
-	if x != nil && x.Partition != nil {
-		return *x.Partition
-	}
-	return ""
-}
-
-func (x *SnapshotServiceListRequest) GetName() string {
-	if x != nil && x.Name != nil {
-		return *x.Name
-	}
-	return ""
-}
-
-// SnapshotServiceDeleteRequest is the request payload of a snapshot delete request
-type SnapshotServiceDeleteRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// Uuid of the snapshot
-	Uuid string `protobuf:"bytes,1,opt,name=uuid,proto3" json:"uuid,omitempty"`
-	// Project of the snapshot
-	Project       string `protobuf:"bytes,2,opt,name=project,proto3" json:"project,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *SnapshotServiceDeleteRequest) Reset() {
-	*x = SnapshotServiceDeleteRequest{}
-	mi := &file_api_v1_volume_proto_msgTypes[12]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *SnapshotServiceDeleteRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*SnapshotServiceDeleteRequest) ProtoMessage() {}
-
-func (x *SnapshotServiceDeleteRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_api_v1_volume_proto_msgTypes[12]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use SnapshotServiceDeleteRequest.ProtoReflect.Descriptor instead.
-func (*SnapshotServiceDeleteRequest) Descriptor() ([]byte, []int) {
-	return file_api_v1_volume_proto_rawDescGZIP(), []int{12}
-}
-
-func (x *SnapshotServiceDeleteRequest) GetUuid() string {
-	if x != nil {
-		return x.Uuid
-	}
-	return ""
-}
-
-func (x *SnapshotServiceDeleteRequest) GetProject() string {
-	if x != nil {
-		return x.Project
-	}
-	return ""
-}
-
 // VolumeServiceGetResponse is the response payload of a volume get request
 type VolumeServiceGetResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
@@ -1261,7 +803,7 @@ type VolumeServiceGetResponse struct {
 
 func (x *VolumeServiceGetResponse) Reset() {
 	*x = VolumeServiceGetResponse{}
-	mi := &file_api_v1_volume_proto_msgTypes[13]
+	mi := &file_api_v1_volume_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1273,7 +815,7 @@ func (x *VolumeServiceGetResponse) String() string {
 func (*VolumeServiceGetResponse) ProtoMessage() {}
 
 func (x *VolumeServiceGetResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_api_v1_volume_proto_msgTypes[13]
+	mi := &file_api_v1_volume_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1286,7 +828,7 @@ func (x *VolumeServiceGetResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use VolumeServiceGetResponse.ProtoReflect.Descriptor instead.
 func (*VolumeServiceGetResponse) Descriptor() ([]byte, []int) {
-	return file_api_v1_volume_proto_rawDescGZIP(), []int{13}
+	return file_api_v1_volume_proto_rawDescGZIP(), []int{8}
 }
 
 func (x *VolumeServiceGetResponse) GetVolume() *Volume {
@@ -1307,7 +849,7 @@ type VolumeServiceListResponse struct {
 
 func (x *VolumeServiceListResponse) Reset() {
 	*x = VolumeServiceListResponse{}
-	mi := &file_api_v1_volume_proto_msgTypes[14]
+	mi := &file_api_v1_volume_proto_msgTypes[9]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1319,7 +861,7 @@ func (x *VolumeServiceListResponse) String() string {
 func (*VolumeServiceListResponse) ProtoMessage() {}
 
 func (x *VolumeServiceListResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_api_v1_volume_proto_msgTypes[14]
+	mi := &file_api_v1_volume_proto_msgTypes[9]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1332,7 +874,7 @@ func (x *VolumeServiceListResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use VolumeServiceListResponse.ProtoReflect.Descriptor instead.
 func (*VolumeServiceListResponse) Descriptor() ([]byte, []int) {
-	return file_api_v1_volume_proto_rawDescGZIP(), []int{14}
+	return file_api_v1_volume_proto_rawDescGZIP(), []int{9}
 }
 
 func (x *VolumeServiceListResponse) GetVolumes() []*Volume {
@@ -1353,7 +895,7 @@ type VolumeServiceDeleteResponse struct {
 
 func (x *VolumeServiceDeleteResponse) Reset() {
 	*x = VolumeServiceDeleteResponse{}
-	mi := &file_api_v1_volume_proto_msgTypes[15]
+	mi := &file_api_v1_volume_proto_msgTypes[10]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1365,7 +907,7 @@ func (x *VolumeServiceDeleteResponse) String() string {
 func (*VolumeServiceDeleteResponse) ProtoMessage() {}
 
 func (x *VolumeServiceDeleteResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_api_v1_volume_proto_msgTypes[15]
+	mi := &file_api_v1_volume_proto_msgTypes[10]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1378,7 +920,7 @@ func (x *VolumeServiceDeleteResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use VolumeServiceDeleteResponse.ProtoReflect.Descriptor instead.
 func (*VolumeServiceDeleteResponse) Descriptor() ([]byte, []int) {
-	return file_api_v1_volume_proto_rawDescGZIP(), []int{15}
+	return file_api_v1_volume_proto_rawDescGZIP(), []int{10}
 }
 
 func (x *VolumeServiceDeleteResponse) GetVolume() *Volume {
@@ -1399,7 +941,7 @@ type VolumeServiceUpdateResponse struct {
 
 func (x *VolumeServiceUpdateResponse) Reset() {
 	*x = VolumeServiceUpdateResponse{}
-	mi := &file_api_v1_volume_proto_msgTypes[16]
+	mi := &file_api_v1_volume_proto_msgTypes[11]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1411,7 +953,7 @@ func (x *VolumeServiceUpdateResponse) String() string {
 func (*VolumeServiceUpdateResponse) ProtoMessage() {}
 
 func (x *VolumeServiceUpdateResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_api_v1_volume_proto_msgTypes[16]
+	mi := &file_api_v1_volume_proto_msgTypes[11]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1424,7 +966,7 @@ func (x *VolumeServiceUpdateResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use VolumeServiceUpdateResponse.ProtoReflect.Descriptor instead.
 func (*VolumeServiceUpdateResponse) Descriptor() ([]byte, []int) {
-	return file_api_v1_volume_proto_rawDescGZIP(), []int{16}
+	return file_api_v1_volume_proto_rawDescGZIP(), []int{11}
 }
 
 func (x *VolumeServiceUpdateResponse) GetVolume() *Volume {
@@ -1434,149 +976,11 @@ func (x *VolumeServiceUpdateResponse) GetVolume() *Volume {
 	return nil
 }
 
-// SnapshotServiceGetResponse is the response payload of a snapshot get request
-type SnapshotServiceGetResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// Snapshot the snapshot
-	Snapshot      *Snapshot `protobuf:"bytes,1,opt,name=snapshot,proto3" json:"snapshot,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *SnapshotServiceGetResponse) Reset() {
-	*x = SnapshotServiceGetResponse{}
-	mi := &file_api_v1_volume_proto_msgTypes[17]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *SnapshotServiceGetResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*SnapshotServiceGetResponse) ProtoMessage() {}
-
-func (x *SnapshotServiceGetResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_api_v1_volume_proto_msgTypes[17]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use SnapshotServiceGetResponse.ProtoReflect.Descriptor instead.
-func (*SnapshotServiceGetResponse) Descriptor() ([]byte, []int) {
-	return file_api_v1_volume_proto_rawDescGZIP(), []int{17}
-}
-
-func (x *SnapshotServiceGetResponse) GetSnapshot() *Snapshot {
-	if x != nil {
-		return x.Snapshot
-	}
-	return nil
-}
-
-// SnapshotServiceListResponse is the response payload of a snapshot list request
-type SnapshotServiceListResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// Snapshots the snapshots
-	Snapshots     []*Snapshot `protobuf:"bytes,1,rep,name=snapshots,proto3" json:"snapshots,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *SnapshotServiceListResponse) Reset() {
-	*x = SnapshotServiceListResponse{}
-	mi := &file_api_v1_volume_proto_msgTypes[18]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *SnapshotServiceListResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*SnapshotServiceListResponse) ProtoMessage() {}
-
-func (x *SnapshotServiceListResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_api_v1_volume_proto_msgTypes[18]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use SnapshotServiceListResponse.ProtoReflect.Descriptor instead.
-func (*SnapshotServiceListResponse) Descriptor() ([]byte, []int) {
-	return file_api_v1_volume_proto_rawDescGZIP(), []int{18}
-}
-
-func (x *SnapshotServiceListResponse) GetSnapshots() []*Snapshot {
-	if x != nil {
-		return x.Snapshots
-	}
-	return nil
-}
-
-// SnapshotServiceDeleteResponse is the response payload of a snapshot delete request
-type SnapshotServiceDeleteResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// Snapshot the snapshot
-	Snapshot      *Snapshot `protobuf:"bytes,1,opt,name=snapshot,proto3" json:"snapshot,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *SnapshotServiceDeleteResponse) Reset() {
-	*x = SnapshotServiceDeleteResponse{}
-	mi := &file_api_v1_volume_proto_msgTypes[19]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *SnapshotServiceDeleteResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*SnapshotServiceDeleteResponse) ProtoMessage() {}
-
-func (x *SnapshotServiceDeleteResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_api_v1_volume_proto_msgTypes[19]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use SnapshotServiceDeleteResponse.ProtoReflect.Descriptor instead.
-func (*SnapshotServiceDeleteResponse) Descriptor() ([]byte, []int) {
-	return file_api_v1_volume_proto_rawDescGZIP(), []int{19}
-}
-
-func (x *SnapshotServiceDeleteResponse) GetSnapshot() *Snapshot {
-	if x != nil {
-		return x.Snapshot
-	}
-	return nil
-}
-
 var File_api_v1_volume_proto protoreflect.FileDescriptor
 
 const file_api_v1_volume_proto_rawDesc = "" +
 	"\n" +
-	"\x13api/v1/volume.proto\x12\x06api.v1\x1a\x13api/v1/common.proto\x1a\x1bbuf/validate/validate.proto\x1a\x1egoogle/protobuf/duration.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\xe4\x06\n" +
+	"\x13api/v1/volume.proto\x12\x06api.v1\x1a\x13api/v1/common.proto\x1a\x1bbuf/validate/validate.proto\"\xe4\x06\n" +
 	"\x06Volume\x12\x12\n" +
 	"\x04uuid\x18\x01 \x01(\tR\x04uuid\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x18\n" +
@@ -1627,34 +1031,7 @@ const file_api_v1_volume_proto_rawDesc = "" +
 	"\fuser_written\x18\t \x01(\x04R\vuserWritten\x12M\n" +
 	"#unrecoverable_data_integrity_errors\x18\n" +
 	" \x01(\rR unrecoverableDataIntegrityErrors\x12I\n" +
-	"!recoverable_data_integrity_errors\x18\f \x01(\rR\x1erecoverableDataIntegrityErrors\"\xce\x04\n" +
-	"\bSnapshot\x12\x12\n" +
-	"\x04uuid\x18\x01 \x01(\tR\x04uuid\x12\x12\n" +
-	"\x04name\x18\x02 \x01(\tR\x04name\x12 \n" +
-	"\vdescription\x18\x03 \x01(\tR\vdescription\x12\x18\n" +
-	"\aproject\x18\x04 \x01(\tR\aproject\x12\x1c\n" +
-	"\tpartition\x18\x05 \x01(\tR\tpartition\x12#\n" +
-	"\rstorage_class\x18\x06 \x01(\tR\fstorageClass\x12\x12\n" +
-	"\x04size\x18\a \x01(\x04R\x04size\x12\x14\n" +
-	"\x05usage\x18\b \x01(\x04R\x05usage\x12\x14\n" +
-	"\x05state\x18\t \x01(\tR\x05state\x12,\n" +
-	"\x12source_volume_uuid\x18\n" +
-	" \x01(\tR\x10sourceVolumeUuid\x12,\n" +
-	"\x12source_volume_name\x18\v \x01(\tR\x10sourceVolumeName\x12#\n" +
-	"\rreplica_count\x18\f \x01(\rR\freplicaCount\x12*\n" +
-	"\x11primary_node_uuid\x18\r \x01(\tR\x0fprimaryNodeUuid\x127\n" +
-	"\tretention\x18\x0e \x01(\v2\x19.google.protobuf.DurationR\tretention\x12:\n" +
-	"\n" +
-	"statistics\x18\x0f \x01(\v2\x1a.api.v1.SnapshotStatisticsR\n" +
-	"statistics\x129\n" +
-	"\n" +
-	"created_at\x18\x14 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\"\xf9\x01\n" +
-	"\x12SnapshotStatistics\x12+\n" +
-	"\x11physical_capacity\x18\x01 \x01(\x04R\x10physicalCapacity\x126\n" +
-	"\x17physical_owned_capacity\x18\x02 \x01(\x04R\x15physicalOwnedCapacity\x122\n" +
-	"\x15physical_owned_memory\x18\x03 \x01(\x04R\x13physicalOwnedMemory\x12'\n" +
-	"\x0fphysical_memory\x18\x04 \x01(\x04R\x0ephysicalMemory\x12!\n" +
-	"\fuser_written\x18\x05 \x01(\x04R\vuserWritten\"]\n" +
+	"!recoverable_data_integrity_errors\x18\f \x01(\rR\x1erecoverableDataIntegrityErrors\"]\n" +
 	"\x17VolumeServiceGetRequest\x12\x1c\n" +
 	"\x04uuid\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x04uuid\x12$\n" +
 	"\aproject\x18\x02 \x01(\tB\n" +
@@ -1678,25 +1055,7 @@ const file_api_v1_volume_proto_rawDesc = "" +
 	"\aproject\x18\x02 \x01(\tB\n" +
 	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\aproject\x127\n" +
 	"\x06labels\x18\x18 \x01(\v2\x1a.api.v1.UpdateVolumeLabelsH\x00R\x06labels\x88\x01\x01B\t\n" +
-	"\a_labels\"_\n" +
-	"\x19SnapshotServiceGetRequest\x12\x1c\n" +
-	"\x04uuid\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x04uuid\x12$\n" +
-	"\aproject\x18\x02 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\aproject\"\xc1\x01\n" +
-	"\x1aSnapshotServiceListRequest\x12!\n" +
-	"\x04uuid\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01H\x00R\x04uuid\x88\x01\x01\x12$\n" +
-	"\aproject\x18\x02 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\aproject\x12!\n" +
-	"\tpartition\x18\x03 \x01(\tH\x01R\tpartition\x88\x01\x01\x12\x17\n" +
-	"\x04name\x18\x04 \x01(\tH\x02R\x04name\x88\x01\x01B\a\n" +
-	"\x05_uuidB\f\n" +
-	"\n" +
-	"_partitionB\a\n" +
-	"\x05_name\"b\n" +
-	"\x1cSnapshotServiceDeleteRequest\x12\x1c\n" +
-	"\x04uuid\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x04uuid\x12$\n" +
-	"\aproject\x18\x02 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\aproject\"B\n" +
+	"\a_labels\"B\n" +
 	"\x18VolumeServiceGetResponse\x12&\n" +
 	"\x06volume\x18\x01 \x01(\v2\x0e.api.v1.VolumeR\x06volume\"E\n" +
 	"\x19VolumeServiceListResponse\x12(\n" +
@@ -1704,22 +1063,12 @@ const file_api_v1_volume_proto_rawDesc = "" +
 	"\x1bVolumeServiceDeleteResponse\x12&\n" +
 	"\x06volume\x18\x01 \x01(\v2\x0e.api.v1.VolumeR\x06volume\"E\n" +
 	"\x1bVolumeServiceUpdateResponse\x12&\n" +
-	"\x06volume\x18\x01 \x01(\v2\x0e.api.v1.VolumeR\x06volume\"J\n" +
-	"\x1aSnapshotServiceGetResponse\x12,\n" +
-	"\bsnapshot\x18\x01 \x01(\v2\x10.api.v1.SnapshotR\bsnapshot\"M\n" +
-	"\x1bSnapshotServiceListResponse\x12.\n" +
-	"\tsnapshots\x18\x01 \x03(\v2\x10.api.v1.SnapshotR\tsnapshots\"M\n" +
-	"\x1dSnapshotServiceDeleteResponse\x12,\n" +
-	"\bsnapshot\x18\x01 \x01(\v2\x10.api.v1.SnapshotR\bsnapshot2\xf6\x02\n" +
+	"\x06volume\x18\x01 \x01(\v2\x0e.api.v1.VolumeR\x06volume2\xf6\x02\n" +
 	"\rVolumeService\x12U\n" +
 	"\x03Get\x12\x1f.api.v1.VolumeServiceGetRequest\x1a .api.v1.VolumeServiceGetResponse\"\v\xca\xf3\x18\x03\x01\x02\x03\xe8\xf3\x18\x02\x12X\n" +
 	"\x04List\x12 .api.v1.VolumeServiceListRequest\x1a!.api.v1.VolumeServiceListResponse\"\v\xca\xf3\x18\x03\x01\x02\x03\xe8\xf3\x18\x02\x12Y\n" +
 	"\x06Delete\x12\".api.v1.VolumeServiceDeleteRequest\x1a#.api.v1.VolumeServiceDeleteResponse\"\x06\xca\xf3\x18\x02\x01\x02\x12Y\n" +
-	"\x06Update\x12\".api.v1.VolumeServiceUpdateRequest\x1a#.api.v1.VolumeServiceUpdateResponse\"\x06\xca\xf3\x18\x02\x01\x022\xa9\x02\n" +
-	"\x0fSnapshotService\x12Y\n" +
-	"\x03Get\x12!.api.v1.SnapshotServiceGetRequest\x1a\".api.v1.SnapshotServiceGetResponse\"\v\xca\xf3\x18\x03\x01\x02\x03\xe8\xf3\x18\x02\x12\\\n" +
-	"\x04List\x12\".api.v1.SnapshotServiceListRequest\x1a#.api.v1.SnapshotServiceListResponse\"\v\xca\xf3\x18\x03\x01\x02\x03\xe8\xf3\x18\x02\x12]\n" +
-	"\x06Delete\x12$.api.v1.SnapshotServiceDeleteRequest\x1a%.api.v1.SnapshotServiceDeleteResponse\"\x06\xca\xf3\x18\x02\x01\x02B\x84\x01\n" +
+	"\x06Update\x12\".api.v1.VolumeServiceUpdateRequest\x1a#.api.v1.VolumeServiceUpdateResponse\"\x06\xca\xf3\x18\x02\x01\x02B\x84\x01\n" +
 	"\n" +
 	"com.api.v1B\vVolumeProtoP\x01Z0github.com/metal-stack-cloud/api/go/api/v1;apiv1\xa2\x02\x03AXX\xaa\x02\x06Api.V1\xca\x02\x06Api\\V1\xe2\x02\x12Api\\V1\\GPBMetadata\xea\x02\aApi::V1b\x06proto3"
 
@@ -1735,65 +1084,43 @@ func file_api_v1_volume_proto_rawDescGZIP() []byte {
 	return file_api_v1_volume_proto_rawDescData
 }
 
-var file_api_v1_volume_proto_msgTypes = make([]protoimpl.MessageInfo, 20)
+var file_api_v1_volume_proto_msgTypes = make([]protoimpl.MessageInfo, 12)
 var file_api_v1_volume_proto_goTypes = []any{
-	(*Volume)(nil),                        // 0: api.v1.Volume
-	(*VolumeLabel)(nil),                   // 1: api.v1.VolumeLabel
-	(*UpdateVolumeLabels)(nil),            // 2: api.v1.UpdateVolumeLabels
-	(*VolumeStatistics)(nil),              // 3: api.v1.VolumeStatistics
-	(*Snapshot)(nil),                      // 4: api.v1.Snapshot
-	(*SnapshotStatistics)(nil),            // 5: api.v1.SnapshotStatistics
-	(*VolumeServiceGetRequest)(nil),       // 6: api.v1.VolumeServiceGetRequest
-	(*VolumeServiceListRequest)(nil),      // 7: api.v1.VolumeServiceListRequest
-	(*VolumeServiceDeleteRequest)(nil),    // 8: api.v1.VolumeServiceDeleteRequest
-	(*VolumeServiceUpdateRequest)(nil),    // 9: api.v1.VolumeServiceUpdateRequest
-	(*SnapshotServiceGetRequest)(nil),     // 10: api.v1.SnapshotServiceGetRequest
-	(*SnapshotServiceListRequest)(nil),    // 11: api.v1.SnapshotServiceListRequest
-	(*SnapshotServiceDeleteRequest)(nil),  // 12: api.v1.SnapshotServiceDeleteRequest
-	(*VolumeServiceGetResponse)(nil),      // 13: api.v1.VolumeServiceGetResponse
-	(*VolumeServiceListResponse)(nil),     // 14: api.v1.VolumeServiceListResponse
-	(*VolumeServiceDeleteResponse)(nil),   // 15: api.v1.VolumeServiceDeleteResponse
-	(*VolumeServiceUpdateResponse)(nil),   // 16: api.v1.VolumeServiceUpdateResponse
-	(*SnapshotServiceGetResponse)(nil),    // 17: api.v1.SnapshotServiceGetResponse
-	(*SnapshotServiceListResponse)(nil),   // 18: api.v1.SnapshotServiceListResponse
-	(*SnapshotServiceDeleteResponse)(nil), // 19: api.v1.SnapshotServiceDeleteResponse
-	(*durationpb.Duration)(nil),           // 20: google.protobuf.Duration
-	(*timestamppb.Timestamp)(nil),         // 21: google.protobuf.Timestamp
+	(*Volume)(nil),                      // 0: api.v1.Volume
+	(*VolumeLabel)(nil),                 // 1: api.v1.VolumeLabel
+	(*UpdateVolumeLabels)(nil),          // 2: api.v1.UpdateVolumeLabels
+	(*VolumeStatistics)(nil),            // 3: api.v1.VolumeStatistics
+	(*VolumeServiceGetRequest)(nil),     // 4: api.v1.VolumeServiceGetRequest
+	(*VolumeServiceListRequest)(nil),    // 5: api.v1.VolumeServiceListRequest
+	(*VolumeServiceDeleteRequest)(nil),  // 6: api.v1.VolumeServiceDeleteRequest
+	(*VolumeServiceUpdateRequest)(nil),  // 7: api.v1.VolumeServiceUpdateRequest
+	(*VolumeServiceGetResponse)(nil),    // 8: api.v1.VolumeServiceGetResponse
+	(*VolumeServiceListResponse)(nil),   // 9: api.v1.VolumeServiceListResponse
+	(*VolumeServiceDeleteResponse)(nil), // 10: api.v1.VolumeServiceDeleteResponse
+	(*VolumeServiceUpdateResponse)(nil), // 11: api.v1.VolumeServiceUpdateResponse
 }
 var file_api_v1_volume_proto_depIdxs = []int32{
 	3,  // 0: api.v1.Volume.statistics:type_name -> api.v1.VolumeStatistics
 	1,  // 1: api.v1.Volume.labels:type_name -> api.v1.VolumeLabel
 	1,  // 2: api.v1.UpdateVolumeLabels.update:type_name -> api.v1.VolumeLabel
-	20, // 3: api.v1.Snapshot.retention:type_name -> google.protobuf.Duration
-	5,  // 4: api.v1.Snapshot.statistics:type_name -> api.v1.SnapshotStatistics
-	21, // 5: api.v1.Snapshot.created_at:type_name -> google.protobuf.Timestamp
-	2,  // 6: api.v1.VolumeServiceUpdateRequest.labels:type_name -> api.v1.UpdateVolumeLabels
-	0,  // 7: api.v1.VolumeServiceGetResponse.volume:type_name -> api.v1.Volume
-	0,  // 8: api.v1.VolumeServiceListResponse.volumes:type_name -> api.v1.Volume
-	0,  // 9: api.v1.VolumeServiceDeleteResponse.volume:type_name -> api.v1.Volume
-	0,  // 10: api.v1.VolumeServiceUpdateResponse.volume:type_name -> api.v1.Volume
-	4,  // 11: api.v1.SnapshotServiceGetResponse.snapshot:type_name -> api.v1.Snapshot
-	4,  // 12: api.v1.SnapshotServiceListResponse.snapshots:type_name -> api.v1.Snapshot
-	4,  // 13: api.v1.SnapshotServiceDeleteResponse.snapshot:type_name -> api.v1.Snapshot
-	6,  // 14: api.v1.VolumeService.Get:input_type -> api.v1.VolumeServiceGetRequest
-	7,  // 15: api.v1.VolumeService.List:input_type -> api.v1.VolumeServiceListRequest
-	8,  // 16: api.v1.VolumeService.Delete:input_type -> api.v1.VolumeServiceDeleteRequest
-	9,  // 17: api.v1.VolumeService.Update:input_type -> api.v1.VolumeServiceUpdateRequest
-	10, // 18: api.v1.SnapshotService.Get:input_type -> api.v1.SnapshotServiceGetRequest
-	11, // 19: api.v1.SnapshotService.List:input_type -> api.v1.SnapshotServiceListRequest
-	12, // 20: api.v1.SnapshotService.Delete:input_type -> api.v1.SnapshotServiceDeleteRequest
-	13, // 21: api.v1.VolumeService.Get:output_type -> api.v1.VolumeServiceGetResponse
-	14, // 22: api.v1.VolumeService.List:output_type -> api.v1.VolumeServiceListResponse
-	15, // 23: api.v1.VolumeService.Delete:output_type -> api.v1.VolumeServiceDeleteResponse
-	16, // 24: api.v1.VolumeService.Update:output_type -> api.v1.VolumeServiceUpdateResponse
-	17, // 25: api.v1.SnapshotService.Get:output_type -> api.v1.SnapshotServiceGetResponse
-	18, // 26: api.v1.SnapshotService.List:output_type -> api.v1.SnapshotServiceListResponse
-	19, // 27: api.v1.SnapshotService.Delete:output_type -> api.v1.SnapshotServiceDeleteResponse
-	21, // [21:28] is the sub-list for method output_type
-	14, // [14:21] is the sub-list for method input_type
-	14, // [14:14] is the sub-list for extension type_name
-	14, // [14:14] is the sub-list for extension extendee
-	0,  // [0:14] is the sub-list for field type_name
+	2,  // 3: api.v1.VolumeServiceUpdateRequest.labels:type_name -> api.v1.UpdateVolumeLabels
+	0,  // 4: api.v1.VolumeServiceGetResponse.volume:type_name -> api.v1.Volume
+	0,  // 5: api.v1.VolumeServiceListResponse.volumes:type_name -> api.v1.Volume
+	0,  // 6: api.v1.VolumeServiceDeleteResponse.volume:type_name -> api.v1.Volume
+	0,  // 7: api.v1.VolumeServiceUpdateResponse.volume:type_name -> api.v1.Volume
+	4,  // 8: api.v1.VolumeService.Get:input_type -> api.v1.VolumeServiceGetRequest
+	5,  // 9: api.v1.VolumeService.List:input_type -> api.v1.VolumeServiceListRequest
+	6,  // 10: api.v1.VolumeService.Delete:input_type -> api.v1.VolumeServiceDeleteRequest
+	7,  // 11: api.v1.VolumeService.Update:input_type -> api.v1.VolumeServiceUpdateRequest
+	8,  // 12: api.v1.VolumeService.Get:output_type -> api.v1.VolumeServiceGetResponse
+	9,  // 13: api.v1.VolumeService.List:output_type -> api.v1.VolumeServiceListResponse
+	10, // 14: api.v1.VolumeService.Delete:output_type -> api.v1.VolumeServiceDeleteResponse
+	11, // 15: api.v1.VolumeService.Update:output_type -> api.v1.VolumeServiceUpdateResponse
+	12, // [12:16] is the sub-list for method output_type
+	8,  // [8:12] is the sub-list for method input_type
+	8,  // [8:8] is the sub-list for extension type_name
+	8,  // [8:8] is the sub-list for extension extendee
+	0,  // [0:8] is the sub-list for field type_name
 }
 
 func init() { file_api_v1_volume_proto_init() }
@@ -1802,18 +1129,17 @@ func file_api_v1_volume_proto_init() {
 		return
 	}
 	file_api_v1_common_proto_init()
+	file_api_v1_volume_proto_msgTypes[5].OneofWrappers = []any{}
 	file_api_v1_volume_proto_msgTypes[7].OneofWrappers = []any{}
-	file_api_v1_volume_proto_msgTypes[9].OneofWrappers = []any{}
-	file_api_v1_volume_proto_msgTypes[11].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_api_v1_volume_proto_rawDesc), len(file_api_v1_volume_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   20,
+			NumMessages:   12,
 			NumExtensions: 0,
-			NumServices:   2,
+			NumServices:   1,
 		},
 		GoTypes:           file_api_v1_volume_proto_goTypes,
 		DependencyIndexes: file_api_v1_volume_proto_depIdxs,

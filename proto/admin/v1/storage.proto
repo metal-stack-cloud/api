@@ -3,6 +3,7 @@ syntax = "proto3";
 package admin.v1;
 
 import "api/v1/common.proto";
+import "api/v1/snapshot.proto";
 import "api/v1/volume.proto";
 import "buf/validate/validate.proto";
 

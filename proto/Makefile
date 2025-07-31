@@ -16,4 +16,4 @@ protolint:
 
 .PHONY: protoc
 protoc:
-	@$(MAKE)	_buf	CMD="generate -v"
+	@$(MAKE)	_buf	CMD="generate -v --include-imports"

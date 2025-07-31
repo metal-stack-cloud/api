@@ -1,0 +1,198 @@
+# Code generated generate_clients.go. DO NOT EDIT.
+
+from contextlib import contextmanager
+from connecpy.context import ClientContext
+from connecpy.exceptions import ConnecpyServerException
+
+import admin.v1.cluster_connecpy as admin_cluster_connecpy
+import admin.v1.payment_connecpy as admin_payment_connecpy
+import admin.v1.project_connecpy as admin_project_connecpy
+import admin.v1.storage_connecpy as admin_storage_connecpy
+import admin.v1.tenant_connecpy as admin_tenant_connecpy
+import admin.v1.token_connecpy as admin_token_connecpy
+
+import api.v1.asset_connecpy as api_asset_connecpy
+import api.v1.audit_connecpy as api_audit_connecpy
+import api.v1.cluster_connecpy as api_cluster_connecpy
+import api.v1.health_connecpy as api_health_connecpy
+import api.v1.ip_connecpy as api_ip_connecpy
+import api.v1.method_connecpy as api_method_connecpy
+import api.v1.payment_connecpy as api_payment_connecpy
+import api.v1.project_connecpy as api_project_connecpy
+import api.v1.snapshot_connecpy as api_snapshot_connecpy
+import api.v1.tenant_connecpy as api_tenant_connecpy
+import api.v1.token_connecpy as api_token_connecpy
+import api.v1.user_connecpy as api_user_connecpy
+import api.v1.version_connecpy as api_version_connecpy
+import api.v1.volume_connecpy as api_volume_connecpy
+
+import status.v1.message_connecpy as status_message_connecpy
+import status.v1.status_connecpy as status_status_connecpy
+
+
+
+class Driver:
+    def __init__(self, baseurl: str, token: str, timeout: int = 10):
+        self.baseurl = baseurl
+        self.token = token
+        self.timeout = timeout
+
+    def admin(self):
+        return AdminDriver(baseurl=self.baseurl, token=self.token, timeout=self.timeout)
+
+    def api(self):
+        return ApiDriver(baseurl=self.baseurl, token=self.token, timeout=self.timeout)
+
+    def status(self):
+        return StatusDriver(baseurl=self.baseurl, token=self.token, timeout=self.timeout)
+
+
+class AdminDriver:
+    def __init__(self, baseurl: str, token: str, timeout: int = 10):
+        self.baseurl = baseurl
+        self.token = token
+        self.timeout = timeout
+
+
+    @contextmanager
+    def cluster(self):
+        with admin_cluster_connecpy.ClusterServiceClient(self.baseurl, timeout=self.timeout) as client:
+           yield ClientWrapper(client, self.token)
+
+    @contextmanager
+    def payment(self):
+        with admin_payment_connecpy.PaymentServiceClient(self.baseurl, timeout=self.timeout) as client:
+           yield ClientWrapper(client, self.token)
+
+    @contextmanager
+    def project(self):
+        with admin_project_connecpy.ProjectServiceClient(self.baseurl, timeout=self.timeout) as client:
+           yield ClientWrapper(client, self.token)
+
+    @contextmanager
+    def storage(self):
+        with admin_storage_connecpy.StorageServiceClient(self.baseurl, timeout=self.timeout) as client:
+           yield ClientWrapper(client, self.token)
+
+    @contextmanager
+    def tenant(self):
+        with admin_tenant_connecpy.TenantServiceClient(self.baseurl, timeout=self.timeout) as client:
+           yield ClientWrapper(client, self.token)
+
+    @contextmanager
+    def token(self):
+        with admin_token_connecpy.TokenServiceClient(self.baseurl, timeout=self.timeout) as client:
+           yield ClientWrapper(client, self.token)
+
+class ApiDriver:
+    def __init__(self, baseurl: str, token: str, timeout: int = 10):
+        self.baseurl = baseurl
+        self.token = token
+        self.timeout = timeout
+
+
+    @contextmanager
+    def asset(self):
+        with api_asset_connecpy.AssetServiceClient(self.baseurl, timeout=self.timeout) as client:
+           yield ClientWrapper(client, self.token)
+
+    @contextmanager
+    def audit(self):
+        with api_audit_connecpy.AuditServiceClient(self.baseurl, timeout=self.timeout) as client:
+           yield ClientWrapper(client, self.token)
+
+    @contextmanager
+    def cluster(self):
+        with api_cluster_connecpy.ClusterServiceClient(self.baseurl, timeout=self.timeout) as client:
+           yield ClientWrapper(client, self.token)
+
+    @contextmanager
+    def health(self):
+        with api_health_connecpy.HealthServiceClient(self.baseurl, timeout=self.timeout) as client:
+           yield ClientWrapper(client, self.token)
+
+    @contextmanager
+    def ip(self):
+        with api_ip_connecpy.IPServiceClient(self.baseurl, timeout=self.timeout) as client:
+           yield ClientWrapper(client, self.token)
+
+    @contextmanager
+    def method(self):
+        with api_method_connecpy.MethodServiceClient(self.baseurl, timeout=self.timeout) as client:
+           yield ClientWrapper(client, self.token)
+
+    @contextmanager
+    def payment(self):
+        with api_payment_connecpy.PaymentServiceClient(self.baseurl, timeout=self.timeout) as client:
+           yield ClientWrapper(client, self.token)
+
+    @contextmanager
+    def project(self):
+        with api_project_connecpy.ProjectServiceClient(self.baseurl, timeout=self.timeout) as client:
+           yield ClientWrapper(client, self.token)
+
+    @contextmanager
+    def snapshot(self):
+        with api_snapshot_connecpy.SnapshotServiceClient(self.baseurl, timeout=self.timeout) as client:
+           yield ClientWrapper(client, self.token)
+
+    @contextmanager
+    def tenant(self):
+        with api_tenant_connecpy.TenantServiceClient(self.baseurl, timeout=self.timeout) as client:
+           yield ClientWrapper(client, self.token)
+
+    @contextmanager
+    def token(self):
+        with api_token_connecpy.TokenServiceClient(self.baseurl, timeout=self.timeout) as client:
+           yield ClientWrapper(client, self.token)
+
+    @contextmanager
+    def user(self):
+        with api_user_connecpy.UserServiceClient(self.baseurl, timeout=self.timeout) as client:
+           yield ClientWrapper(client, self.token)
+
+    @contextmanager
+    def version(self):
+        with api_version_connecpy.VersionServiceClient(self.baseurl, timeout=self.timeout) as client:
+           yield ClientWrapper(client, self.token)
+
+    @contextmanager
+    def volume(self):
+        with api_volume_connecpy.VolumeServiceClient(self.baseurl, timeout=self.timeout) as client:
+           yield ClientWrapper(client, self.token)
+
+class StatusDriver:
+    def __init__(self, baseurl: str, token: str, timeout: int = 10):
+        self.baseurl = baseurl
+        self.token = token
+        self.timeout = timeout
+
+
+    @contextmanager
+    def message(self):
+        with status_message_connecpy.MessageServiceClient(self.baseurl, timeout=self.timeout) as client:
+           yield ClientWrapper(client, self.token)
+
+    @contextmanager
+    def status(self):
+        with status_status_connecpy.StatusServiceClient(self.baseurl, timeout=self.timeout) as client:
+           yield ClientWrapper(client, self.token)
+
+
+
+class ClientWrapper:
+    def __init__(self, client, token):
+        self._client = client
+        self._token = token
+
+    def __getattr__(self, name):
+        attr = getattr(self._client, name)
+        if callable(attr):
+            def wrapper(*args, **kwargs):
+                kwargs.setdefault("ctx", ClientContext())
+                headers = kwargs.get("headers", {})
+                headers.setdefault("Authorization", "Bearer " + self._token)
+                kwargs["headers"] = headers
+                return attr(*args, **kwargs)
+            return wrapper
+        return attr

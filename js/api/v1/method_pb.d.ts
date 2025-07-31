@@ -3,9 +3,9 @@ import type { AdminRole, ProjectRole, TenantRole } from "./common_pb";
 import type { MethodPermission } from "./token_pb";
 import type { Message } from "@bufbuild/protobuf";
 /**
- * Describes the file api/v1/methods.proto.
+ * Describes the file api/v1/method.proto.
  */
-export declare const file_api_v1_methods: GenFile;
+export declare const file_api_v1_method: GenFile;
 /**
  * MethodServiceListRequest is the request payload to list all public methods
  *

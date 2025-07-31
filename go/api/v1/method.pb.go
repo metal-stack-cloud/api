@@ -2,7 +2,7 @@
 // versions:
 // 	protoc-gen-go v1.36.6
 // 	protoc        (unknown)
-// source: api/v1/methods.proto
+// source: api/v1/method.proto
 
 package apiv1
 
@@ -31,7 +31,7 @@ type MethodServiceListRequest struct {
 
 func (x *MethodServiceListRequest) Reset() {
 	*x = MethodServiceListRequest{}
-	mi := &file_api_v1_methods_proto_msgTypes[0]
+	mi := &file_api_v1_method_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -43,7 +43,7 @@ func (x *MethodServiceListRequest) String() string {
 func (*MethodServiceListRequest) ProtoMessage() {}
 
 func (x *MethodServiceListRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_api_v1_methods_proto_msgTypes[0]
+	mi := &file_api_v1_method_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -56,7 +56,7 @@ func (x *MethodServiceListRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MethodServiceListRequest.ProtoReflect.Descriptor instead.
 func (*MethodServiceListRequest) Descriptor() ([]byte, []int) {
-	return file_api_v1_methods_proto_rawDescGZIP(), []int{0}
+	return file_api_v1_method_proto_rawDescGZIP(), []int{0}
 }
 
 // MethodServiceListResponse is the response payload with all public visible methods
@@ -70,7 +70,7 @@ type MethodServiceListResponse struct {
 
 func (x *MethodServiceListResponse) Reset() {
 	*x = MethodServiceListResponse{}
-	mi := &file_api_v1_methods_proto_msgTypes[1]
+	mi := &file_api_v1_method_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -82,7 +82,7 @@ func (x *MethodServiceListResponse) String() string {
 func (*MethodServiceListResponse) ProtoMessage() {}
 
 func (x *MethodServiceListResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_api_v1_methods_proto_msgTypes[1]
+	mi := &file_api_v1_method_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -95,7 +95,7 @@ func (x *MethodServiceListResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MethodServiceListResponse.ProtoReflect.Descriptor instead.
 func (*MethodServiceListResponse) Descriptor() ([]byte, []int) {
-	return file_api_v1_methods_proto_rawDescGZIP(), []int{1}
+	return file_api_v1_method_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *MethodServiceListResponse) GetMethods() []string {
@@ -114,7 +114,7 @@ type MethodServiceTokenScopedListRequest struct {
 
 func (x *MethodServiceTokenScopedListRequest) Reset() {
 	*x = MethodServiceTokenScopedListRequest{}
-	mi := &file_api_v1_methods_proto_msgTypes[2]
+	mi := &file_api_v1_method_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -126,7 +126,7 @@ func (x *MethodServiceTokenScopedListRequest) String() string {
 func (*MethodServiceTokenScopedListRequest) ProtoMessage() {}
 
 func (x *MethodServiceTokenScopedListRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_api_v1_methods_proto_msgTypes[2]
+	mi := &file_api_v1_method_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -139,7 +139,7 @@ func (x *MethodServiceTokenScopedListRequest) ProtoReflect() protoreflect.Messag
 
 // Deprecated: Use MethodServiceTokenScopedListRequest.ProtoReflect.Descriptor instead.
 func (*MethodServiceTokenScopedListRequest) Descriptor() ([]byte, []int) {
-	return file_api_v1_methods_proto_rawDescGZIP(), []int{2}
+	return file_api_v1_method_proto_rawDescGZIP(), []int{2}
 }
 
 // MethodServiceTokenScopedListResponse is the response payload which contains all methods which are callable with the given token
@@ -159,7 +159,7 @@ type MethodServiceTokenScopedListResponse struct {
 
 func (x *MethodServiceTokenScopedListResponse) Reset() {
 	*x = MethodServiceTokenScopedListResponse{}
-	mi := &file_api_v1_methods_proto_msgTypes[3]
+	mi := &file_api_v1_method_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -171,7 +171,7 @@ func (x *MethodServiceTokenScopedListResponse) String() string {
 func (*MethodServiceTokenScopedListResponse) ProtoMessage() {}
 
 func (x *MethodServiceTokenScopedListResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_api_v1_methods_proto_msgTypes[3]
+	mi := &file_api_v1_method_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -184,7 +184,7 @@ func (x *MethodServiceTokenScopedListResponse) ProtoReflect() protoreflect.Messa
 
 // Deprecated: Use MethodServiceTokenScopedListResponse.ProtoReflect.Descriptor instead.
 func (*MethodServiceTokenScopedListResponse) Descriptor() ([]byte, []int) {
-	return file_api_v1_methods_proto_rawDescGZIP(), []int{3}
+	return file_api_v1_method_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *MethodServiceTokenScopedListResponse) GetPermissions() []*MethodPermission {
@@ -215,11 +215,11 @@ func (x *MethodServiceTokenScopedListResponse) GetAdminRole() AdminRole {
 	return AdminRole_ADMIN_ROLE_UNSPECIFIED
 }
 
-var File_api_v1_methods_proto protoreflect.FileDescriptor
+var File_api_v1_method_proto protoreflect.FileDescriptor
 
-const file_api_v1_methods_proto_rawDesc = "" +
+const file_api_v1_method_proto_rawDesc = "" +
 	"\n" +
-	"\x14api/v1/methods.proto\x12\x06api.v1\x1a\x13api/v1/common.proto\x1a\x12api/v1/token.proto\x1a\x1bbuf/validate/validate.proto\"\x1a\n" +
+	"\x13api/v1/method.proto\x12\x06api.v1\x1a\x13api/v1/common.proto\x1a\x12api/v1/token.proto\x1a\x1bbuf/validate/validate.proto\"\x1a\n" +
 	"\x18MethodServiceListRequest\"5\n" +
 	"\x19MethodServiceListResponse\x12\x18\n" +
 	"\amethods\x18\x01 \x03(\tR\amethods\"%\n" +
@@ -239,24 +239,24 @@ const file_api_v1_methods_proto_rawDesc = "" +
 	"\v_admin_roleJ\x04\b\x02\x10\x03R\x05roles2\xd6\x01\n" +
 	"\rMethodService\x12Q\n" +
 	"\x04List\x12 .api.v1.MethodServiceListRequest\x1a!.api.v1.MethodServiceListResponse\"\x04\xd8\xf3\x18\x01\x12r\n" +
-	"\x0fTokenScopedList\x12+.api.v1.MethodServiceTokenScopedListRequest\x1a,.api.v1.MethodServiceTokenScopedListResponse\"\x04\xd8\xf3\x18\x03B\x85\x01\n" +
+	"\x0fTokenScopedList\x12+.api.v1.MethodServiceTokenScopedListRequest\x1a,.api.v1.MethodServiceTokenScopedListResponse\"\x04\xd8\xf3\x18\x03B\x84\x01\n" +
 	"\n" +
-	"com.api.v1B\fMethodsProtoP\x01Z0github.com/metal-stack-cloud/api/go/api/v1;apiv1\xa2\x02\x03AXX\xaa\x02\x06Api.V1\xca\x02\x06Api\\V1\xe2\x02\x12Api\\V1\\GPBMetadata\xea\x02\aApi::V1b\x06proto3"
+	"com.api.v1B\vMethodProtoP\x01Z0github.com/metal-stack-cloud/api/go/api/v1;apiv1\xa2\x02\x03AXX\xaa\x02\x06Api.V1\xca\x02\x06Api\\V1\xe2\x02\x12Api\\V1\\GPBMetadata\xea\x02\aApi::V1b\x06proto3"
 
 var (
-	file_api_v1_methods_proto_rawDescOnce sync.Once
-	file_api_v1_methods_proto_rawDescData []byte
+	file_api_v1_method_proto_rawDescOnce sync.Once
+	file_api_v1_method_proto_rawDescData []byte
 )
 
-func file_api_v1_methods_proto_rawDescGZIP() []byte {
-	file_api_v1_methods_proto_rawDescOnce.Do(func() {
-		file_api_v1_methods_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_api_v1_methods_proto_rawDesc), len(file_api_v1_methods_proto_rawDesc)))
+func file_api_v1_method_proto_rawDescGZIP() []byte {
+	file_api_v1_method_proto_rawDescOnce.Do(func() {
+		file_api_v1_method_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_api_v1_method_proto_rawDesc), len(file_api_v1_method_proto_rawDesc)))
 	})
-	return file_api_v1_methods_proto_rawDescData
+	return file_api_v1_method_proto_rawDescData
 }
 
-var file_api_v1_methods_proto_msgTypes = make([]protoimpl.MessageInfo, 6)
-var file_api_v1_methods_proto_goTypes = []any{
+var file_api_v1_method_proto_msgTypes = make([]protoimpl.MessageInfo, 6)
+var file_api_v1_method_proto_goTypes = []any{
 	(*MethodServiceListRequest)(nil),             // 0: api.v1.MethodServiceListRequest
 	(*MethodServiceListResponse)(nil),            // 1: api.v1.MethodServiceListResponse
 	(*MethodServiceTokenScopedListRequest)(nil),  // 2: api.v1.MethodServiceTokenScopedListRequest
@@ -268,7 +268,7 @@ var file_api_v1_methods_proto_goTypes = []any{
 	(ProjectRole)(0),         // 8: api.v1.ProjectRole
 	(TenantRole)(0),          // 9: api.v1.TenantRole
 }
-var file_api_v1_methods_proto_depIdxs = []int32{
+var file_api_v1_method_proto_depIdxs = []int32{
 	6, // 0: api.v1.MethodServiceTokenScopedListResponse.permissions:type_name -> api.v1.MethodPermission
 	4, // 1: api.v1.MethodServiceTokenScopedListResponse.project_roles:type_name -> api.v1.MethodServiceTokenScopedListResponse.ProjectRolesEntry
 	5, // 2: api.v1.MethodServiceTokenScopedListResponse.tenant_roles:type_name -> api.v1.MethodServiceTokenScopedListResponse.TenantRolesEntry
@@ -286,29 +286,29 @@ var file_api_v1_methods_proto_depIdxs = []int32{
 	0, // [0:6] is the sub-list for field type_name
 }
 
-func init() { file_api_v1_methods_proto_init() }
-func file_api_v1_methods_proto_init() {
-	if File_api_v1_methods_proto != nil {
+func init() { file_api_v1_method_proto_init() }
+func file_api_v1_method_proto_init() {
+	if File_api_v1_method_proto != nil {
 		return
 	}
 	file_api_v1_common_proto_init()
 	file_api_v1_token_proto_init()
-	file_api_v1_methods_proto_msgTypes[3].OneofWrappers = []any{}
+	file_api_v1_method_proto_msgTypes[3].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: unsafe.Slice(unsafe.StringData(file_api_v1_methods_proto_rawDesc), len(file_api_v1_methods_proto_rawDesc)),
+			RawDescriptor: unsafe.Slice(unsafe.StringData(file_api_v1_method_proto_rawDesc), len(file_api_v1_method_proto_rawDesc)),
 			NumEnums:      0,
 			NumMessages:   6,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
-		GoTypes:           file_api_v1_methods_proto_goTypes,
-		DependencyIndexes: file_api_v1_methods_proto_depIdxs,
-		MessageInfos:      file_api_v1_methods_proto_msgTypes,
+		GoTypes:           file_api_v1_method_proto_goTypes,
+		DependencyIndexes: file_api_v1_method_proto_depIdxs,
+		MessageInfos:      file_api_v1_method_proto_msgTypes,
 	}.Build()
-	File_api_v1_methods_proto = out.File
-	file_api_v1_methods_proto_goTypes = nil
-	file_api_v1_methods_proto_depIdxs = nil
+	File_api_v1_method_proto = out.File
+	file_api_v1_method_proto_goTypes = nil
+	file_api_v1_method_proto_depIdxs = nil
 }
