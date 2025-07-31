@@ -7,20 +7,19 @@ import "api/v1/common.proto";
 import "buf/validate/validate.proto";
 import "google/protobuf/timestamp.proto";
 
-// AdminAuditService serves audit related functions
-service AdminAuditService {
+// AuditService serves audit related functions
+service AuditService {
   // List all audit traces
-  rpc List(AdminAuditServiceListRequest)
-      returns (AdminAuditServiceListResponse) {
+  rpc List(AuditServiceListRequest) returns (AuditServiceListResponse) {
     option (api.v1.admin_roles) = ADMIN_ROLE_EDITOR;
     option (api.v1.admin_roles) = ADMIN_ROLE_VIEWER;
   }
 }
 
-// AdminAuditServiceListRequest is the request payload to list audits
-message AdminAuditServiceListRequest {
+// AuditServiceListRequest is the request payload to list audits
+message AuditServiceListRequest {
   // Uuid of the audit trace
-  optional string uuid = 2 [ (buf.validate.field).string.uuid = true ];
+  optional string uuid = 2 [(buf.validate.field).string.uuid = true];
   // From describes the start of the time window in which to list audit traces.
   // Defaults to the last eight hours
   optional google.protobuf.Timestamp from = 3;
@@ -28,31 +27,38 @@ message AdminAuditServiceListRequest {
   // Defaults to the time the request was issued
   optional google.protobuf.Timestamp to = 4;
   // User is the user who called the api method
-  optional string user = 5
-      [ (buf.validate.field).string = {min_len : 2 max_len : 128} ];
+  optional string user = 5 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
+  }];
   // Project is the project targeted by the api call
-  optional string project = 6 [ (buf.validate.field).string.uuid = true ];
+  optional string project = 6 [(buf.validate.field).string.uuid = true];
   // Method is the api method that was called
-  optional string method = 7
-      [ (buf.validate.field).string = {min_len : 2 max_len : 256} ];
+  optional string method = 7 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 256
+  }];
   // Source IP contains the ip address of the caller
-  optional string source_ip = 8 [ (buf.validate.field).string.ip = true ];
+  optional string source_ip = 8 [(buf.validate.field).string.ip = true];
   // Result Code is a string describing the result of the api call
-  optional int32 result_code = 9 [ (buf.validate.field).int32 = {gte : 0} ];
+  optional int32 result_code = 9 [(buf.validate.field).int32 = {gte: 0}];
   // Body is a string providing text-search of the body field
-  optional string body = 10
-      [ (buf.validate.field).string = {min_len : 2 max_len : 256} ];
+  optional string body = 10 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 256
+  }];
   // Limit is a number limiting the length of the response (min: 1, max: 1000,
   // defaults to 200)
-  optional int32 limit = 11
-      [ (buf.validate.field).int32 = {gt : 0 lte : 1000} ];
+  optional int32 limit = 11 [(buf.validate.field).int32 = {
+    gt: 0
+    lte: 1000
+  }];
   // Phase specifies the audit phase
-  optional api.v1.AuditPhase phase = 12
-      [ (buf.validate.field).enum.defined_only = true ];
+  optional api.v1.AuditPhase phase = 12 [(buf.validate.field).enum.defined_only = true];
 }
 
-// AdminAuditServiceListResponse is the response payload of a audit list request
-message AdminAuditServiceListResponse {
+// AuditServiceListResponse is the response payload of a audit list request
+message AuditServiceListResponse {
   // Traces is a list of audit traces
   repeated api.v1.AuditTrace traces = 1;
 }

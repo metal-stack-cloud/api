@@ -7,6 +7,7 @@ import (
 
 func GetServices() []string {
 	return []string{
+		"admin.v1.AuditService",
 		"admin.v1.ClusterService",
 		"admin.v1.PaymentService",
 		"admin.v1.ProjectService",
@@ -37,6 +38,7 @@ func GetServicePermissions() *ServicePermissions {
 		Roles: Roles{
 			Admin: Admin{
 				"ADMIN_ROLE_EDITOR": []string{
+					"/admin.v1.AuditService/List",
 					"/admin.v1.ClusterService/Get",
 					"/admin.v1.ClusterService/List",
 					"/admin.v1.ClusterService/Credentials",
@@ -54,6 +56,7 @@ func GetServicePermissions() *ServicePermissions {
 					"/admin.v1.TokenService/Revoke",
 				},
 				"ADMIN_ROLE_VIEWER": []string{
+					"/admin.v1.AuditService/List",
 					"/admin.v1.ClusterService/Get",
 					"/admin.v1.ClusterService/List",
 					"/admin.v1.PaymentService/ListCoupons",
@@ -178,6 +181,7 @@ func GetServicePermissions() *ServicePermissions {
 			},
 		},
 		Methods: map[string]bool{
+			"/admin.v1.AuditService/List":                   true,
 			"/admin.v1.ClusterService/Credentials":          true,
 			"/admin.v1.ClusterService/Get":                  true,
 			"/admin.v1.ClusterService/List":                 true,
@@ -292,6 +296,7 @@ func GetServicePermissions() *ServicePermissions {
 				"/api.v1.UserService/Get":               true,
 			},
 			Admin: map[string]bool{
+				"/admin.v1.AuditService/List":                   true,
 				"/admin.v1.ClusterService/Credentials":          true,
 				"/admin.v1.ClusterService/Get":                  true,
 				"/admin.v1.ClusterService/List":                 true,
@@ -368,6 +373,7 @@ func GetServicePermissions() *ServicePermissions {
 			"/api.v1.IPService/Update":      true,
 		},
 		Auditable: map[string]bool{
+			"/admin.v1.AuditService/List":                   true,
 			"/admin.v1.ClusterService/Credentials":          true,
 			"/admin.v1.ClusterService/Get":                  true,
 			"/admin.v1.ClusterService/List":                 true,
