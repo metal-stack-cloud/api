@@ -2,6 +2,7 @@
 
 import httpx
 
+import metalstackcloud.admin.v1.audit_connecpy as admin_audit_connecpy
 import metalstackcloud.admin.v1.cluster_connecpy as admin_cluster_connecpy
 import metalstackcloud.admin.v1.payment_connecpy as admin_payment_connecpy
 import metalstackcloud.admin.v1.project_connecpy as admin_project_connecpy
@@ -56,6 +57,9 @@ class Client:
             self._baseurl = baseurl
             self._session = session
 
+
+        def audit(self):
+            return admin_audit_connecpy.AuditServiceClient(address=self._baseurl, session=self._session)
 
         def cluster(self):
             return admin_cluster_connecpy.ClusterServiceClient(address=self._baseurl, session=self._session)

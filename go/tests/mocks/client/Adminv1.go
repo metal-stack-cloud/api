@@ -13,6 +13,26 @@ type Adminv1 struct {
 	mock.Mock
 }
 
+// Audit provides a mock function with no fields
+func (_m *Adminv1) Audit() adminv1connect.AuditServiceClient {
+	ret := _m.Called()
+
+	if len(ret) == 0 {
+		panic("no return value specified for Audit")
+	}
+
+	var r0 adminv1connect.AuditServiceClient
+	if rf, ok := ret.Get(0).(func() adminv1connect.AuditServiceClient); ok {
+		r0 = rf()
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(adminv1connect.AuditServiceClient)
+		}
+	}
+
+	return r0
+}
+
 // Cluster provides a mock function with no fields
 func (_m *Adminv1) Cluster() adminv1connect.ClusterServiceClient {
 	ret := _m.Called()
