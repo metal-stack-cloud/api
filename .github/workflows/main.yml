@@ -54,3 +54,45 @@ jobs:
         access: public
         package: js/package.json
       if: github.event_name == 'release'
+
+  python:
+    name: Python
+    runs-on: ubuntu-latest
+    steps:
+    - name: Check out code
+      uses: actions/checkout@v4
+
+    - name: Set up Python 3.13
+      uses: actions/setup-python@v5
+      with:
+        python-version: "3.13"
+
+    - name: Make tag
+      run: |
+        [ "${GITHUB_EVENT_NAME}" == 'pull_request' ] && echo "tag=v0.0.0.dev-${{ github.event.number }}" >> $GITHUB_ENV || true
+        [ "${GITHUB_EVENT_NAME}" == 'release' ] && echo "tag=${GITHUB_REF##*/}" >> $GITHUB_ENV || true
+        [ "${GITHUB_EVENT_NAME}" == 'push' ] && echo "tag=v0.0.0-rc0" >> $GITHUB_ENV || true
+
+    - name: Package
+      run: |
+        cd python
+        python -m pip install setuptools wheel
+        python setup.py sdist bdist_wheel
+      env:
+        VERSION: ${{ env.tag }}
+
+    - name: Publish to Test PyPI
+      uses: pypa/gh-action-pypi-publish@release/v1
+      with:
+        password: ${{ secrets.test_pypi_password }}
+        repository-url: https://test.pypi.org/legacy/
+        skip-existing: true
+        packages-dir: python/dist
+      if: ${{ github.event_name != 'release' }}
+
+    - name: Publish to PyPI
+      uses: pypa/gh-action-pypi-publish@release/v1
+      with:
+        password: ${{ secrets.pypi_password }}
+        packages-dir: python/dist
+      if: ${{ github.event_name == 'release' }}
