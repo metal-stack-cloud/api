@@ -19,6 +19,7 @@ type (
 		config DialConfig
 	}
 	Adminv1 interface {
+		Audit() adminv1connect.AuditServiceClient
 		Cluster() adminv1connect.ClusterServiceClient
 		Payment() adminv1connect.PaymentServiceClient
 		Project() adminv1connect.ProjectServiceClient
@@ -28,6 +29,7 @@ type (
 	}
 
 	adminv1 struct {
+		auditservice   adminv1connect.AuditServiceClient
 		clusterservice adminv1connect.ClusterServiceClient
 		paymentservice adminv1connect.PaymentServiceClient
 		projectservice adminv1connect.ProjectServiceClient
@@ -89,6 +91,11 @@ func New(config DialConfig) Client {
 
 func (c client) Adminv1() Adminv1 {
 	a := &adminv1{
+		auditservice: adminv1connect.NewAuditServiceClient(
+			c.config.HttpClient(),
+			c.config.BaseURL,
+			compress.WithAll(compress.LevelBalanced),
+		),
 		clusterservice: adminv1connect.NewClusterServiceClient(
 			c.config.HttpClient(),
 			c.config.BaseURL,
@@ -123,6 +130,9 @@ func (c client) Adminv1() Adminv1 {
 	return a
 }
 
+func (c *adminv1) Audit() adminv1connect.AuditServiceClient {
+	return c.auditservice
+}
 func (c *adminv1) Cluster() adminv1connect.ClusterServiceClient {
 	return c.clusterservice
 }
