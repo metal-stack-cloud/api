@@ -22,7 +22,7 @@ _runtime_version.ValidateProtobufRuntimeVersion(
 _sym_db = _symbol_database.Default()
 
 
-from api.v1 import common_pb2 as api_dot_v1_dot_common__pb2
+from metalstackcloud.api.v1 import common_pb2 as api_dot_v1_dot_common__pb2
 
 
 DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x14\x61pi/v1/version.proto\x12\x06\x61pi.v1\x1a\x13\x61pi/v1/common.proto\"y\n\x07Version\x12\x18\n\x07version\x18\x01 \x01(\tR\x07version\x12\x1a\n\x08revision\x18\x02 \x01(\tR\x08revision\x12\x19\n\x08git_sha1\x18\x03 \x01(\tR\x07gitSha1\x12\x1d\n\nbuild_date\x18\x04 \x01(\tR\tbuildDate\"\x1a\n\x18VersionServiceGetRequest\"F\n\x19VersionServiceGetResponse\x12)\n\x07version\x18\x01 \x01(\x0b\x32\x0f.api.v1.VersionR\x07version2f\n\x0eVersionService\x12T\n\x03Get\x12 .api.v1.VersionServiceGetRequest\x1a!.api.v1.VersionServiceGetResponse\"\x08\xd8\xf3\x18\x01\xe8\xf3\x18\x02\x42\x85\x01\n\ncom.api.v1B\x0cVersionProtoP\x01Z0github.com/metal-stack-cloud/api/go/api/v1;apiv1\xa2\x02\x03\x41XX\xaa\x02\x06\x41pi.V1\xca\x02\x06\x41pi\\V1\xe2\x02\x12\x41pi\\V1\\GPBMetadata\xea\x02\x07\x41pi::V1b\x06proto3')

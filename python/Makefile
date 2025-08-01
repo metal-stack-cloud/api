@@ -8,4 +8,8 @@ clean:
 .PHONY: generate
 generate:
 	@find . -type d -exec touch {}/__init__.py \;
-	mv metalstackcloud/buf .
+	mv metalstackcloud/buf . || true
+
+	find . -name "*.py" -exec sed -i 's/^from admin.v1/from metalstackcloud.admin.v1/g' {} +
+	find . -name "*.py" -exec sed -i 's/^from api.v1/from metalstackcloud.api.v1/g' {} +
+	find . -name "*.py" -exec sed -i 's/^from status.v1/from metalstackcloud.status.v1/g' {} +

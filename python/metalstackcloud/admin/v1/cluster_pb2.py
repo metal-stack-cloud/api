@@ -22,9 +22,9 @@ _runtime_version.ValidateProtobufRuntimeVersion(
 _sym_db = _symbol_database.Default()
 
 
-from admin.v1 import machine_pb2 as admin_dot_v1_dot_machine__pb2
-from api.v1 import cluster_pb2 as api_dot_v1_dot_cluster__pb2
-from api.v1 import common_pb2 as api_dot_v1_dot_common__pb2
+from metalstackcloud.admin.v1 import machine_pb2 as admin_dot_v1_dot_machine__pb2
+from metalstackcloud.api.v1 import cluster_pb2 as api_dot_v1_dot_cluster__pb2
+from metalstackcloud.api.v1 import common_pb2 as api_dot_v1_dot_common__pb2
 from buf.validate import validate_pb2 as buf_dot_validate_dot_validate__pb2
 from google.protobuf import duration_pb2 as google_dot_protobuf_dot_duration__pb2
 

@@ -22,8 +22,8 @@ _runtime_version.ValidateProtobufRuntimeVersion(
 _sym_db = _symbol_database.Default()
 
 
-from api.v1 import common_pb2 as api_dot_v1_dot_common__pb2
-from api.v1 import health_pb2 as api_dot_v1_dot_health__pb2
+from metalstackcloud.api.v1 import common_pb2 as api_dot_v1_dot_common__pb2
+from metalstackcloud.api.v1 import health_pb2 as api_dot_v1_dot_health__pb2
 
 
 DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x16status/v1/status.proto\x12\tstatus.v1\x1a\x13\x61pi/v1/common.proto\x1a\x13\x61pi/v1/health.proto\"\x1b\n\x19StatusServiceWatchRequest\"\xd0\x01\n\x1aStatusServiceWatchResponse\x12&\n\x06health\x18\x01 \x01(\x0b\x32\x0e.api.v1.HealthR\x06health\x12<\n\x0eoverall_status\x18\x02 \x01(\x0e\x32\x15.api.v1.ServiceStatusR\roverallStatus\x12+\n\x11\x63onnection_broken\x18\x03 \x01(\x08R\x10\x63onnectionBroken\x12\x1f\n\x0b\x61pi_version\x18\x04 \x01(\tR\napiVersion2m\n\rStatusService\x12\\\n\x05Watch\x12$.status.v1.StatusServiceWatchRequest\x1a%.status.v1.StatusServiceWatchResponse\"\x04\xd8\xf3\x18\x01\x30\x01\x42\x99\x01\n\rcom.status.v1B\x0bStatusProtoP\x01Z6github.com/metal-stack-cloud/api/go/status/v1;statusv1\xa2\x02\x03SXX\xaa\x02\tStatus.V1\xca\x02\tStatus\\V1\xe2\x02\x15Status\\V1\\GPBMetadata\xea\x02\nStatus::V1b\x06proto3')

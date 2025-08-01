@@ -2,7 +2,7 @@
 """Client and server classes corresponding to protobuf-defined services."""
 import grpc
 
-from api.v1 import asset_pb2 as api_dot_v1_dot_asset__pb2
+from metalstackcloud.api.v1 import asset_pb2 as api_dot_v1_dot_asset__pb2
 
 
 class AssetServiceStub(object):
