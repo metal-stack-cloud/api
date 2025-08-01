@@ -11,7 +11,7 @@ from connecpy.base import Endpoint
 from connecpy.server import ConnecpyServer
 from connecpy.client import ConnecpyClient
 from connecpy.context import ClientContext, ServiceContext
-import status.v1.status_pb2 as status_dot_v1_dot_status__pb2
+import metalstackcloud.status.v1.status_pb2 as status_dot_v1_dot_status__pb2
 
 
 class StatusService(Protocol):

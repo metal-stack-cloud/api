@@ -11,7 +11,7 @@ from connecpy.base import Endpoint
 from connecpy.server import ConnecpyServer
 from connecpy.client import ConnecpyClient
 from connecpy.context import ClientContext, ServiceContext
-import admin.v1.tenant_pb2 as admin_dot_v1_dot_tenant__pb2
+import metalstackcloud.admin.v1.tenant_pb2 as admin_dot_v1_dot_tenant__pb2
 
 
 class TenantService(Protocol):

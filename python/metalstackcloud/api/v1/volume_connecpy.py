@@ -11,7 +11,7 @@ from connecpy.base import Endpoint
 from connecpy.server import ConnecpyServer
 from connecpy.client import ConnecpyClient
 from connecpy.context import ClientContext, ServiceContext
-import api.v1.volume_pb2 as api_dot_v1_dot_volume__pb2
+import metalstackcloud.api.v1.volume_pb2 as api_dot_v1_dot_volume__pb2
 
 
 class VolumeService(Protocol):
