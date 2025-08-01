@@ -2,7 +2,7 @@
 """Client and server classes corresponding to protobuf-defined services."""
 import grpc
 
-from admin.v1 import storage_pb2 as admin_dot_v1_dot_storage__pb2
+from metalstackcloud.admin.v1 import storage_pb2 as admin_dot_v1_dot_storage__pb2
 
 
 class StorageServiceStub(object):

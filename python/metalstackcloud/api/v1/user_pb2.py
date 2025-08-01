@@ -22,9 +22,9 @@ _runtime_version.ValidateProtobufRuntimeVersion(
 _sym_db = _symbol_database.Default()
 
 
-from api.v1 import common_pb2 as api_dot_v1_dot_common__pb2
-from api.v1 import project_pb2 as api_dot_v1_dot_project__pb2
-from api.v1 import tenant_pb2 as api_dot_v1_dot_tenant__pb2
+from metalstackcloud.api.v1 import common_pb2 as api_dot_v1_dot_common__pb2
+from metalstackcloud.api.v1 import project_pb2 as api_dot_v1_dot_project__pb2
+from metalstackcloud.api.v1 import tenant_pb2 as api_dot_v1_dot_tenant__pb2
 
 
 DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x11\x61pi/v1/user.proto\x12\x06\x61pi.v1\x1a\x13\x61pi/v1/common.proto\x1a\x14\x61pi/v1/project.proto\x1a\x13\x61pi/v1/tenant.proto\"\x80\x03\n\x04User\x12\x14\n\x05login\x18\x01 \x01(\tR\x05login\x12\x12\n\x04name\x18\x02 \x01(\tR\x04name\x12\x14\n\x05\x65mail\x18\x03 \x01(\tR\x05\x65mail\x12\x1d\n\navatar_url\x18\x05 \x01(\tR\tavatarUrl\x12<\n\x0eoauth_provider\x18\x06 \x01(\x0e\x32\x15.api.v1.OAuthProviderR\roauthProvider\x12(\n\x07tenants\x18\x08 \x03(\x0b\x32\x0e.api.v1.TenantR\x07tenants\x12+\n\x08projects\x18\t \x03(\x0b\x32\x0f.api.v1.ProjectR\x08projects\x12\x35\n\x0e\x64\x65\x66\x61ult_tenant\x18\n \x01(\x0b\x32\x0e.api.v1.TenantR\rdefaultTenant\x12\x38\n\x0f\x64\x65\x66\x61ult_project\x18\x0b \x01(\x0b\x32\x0f.api.v1.ProjectR\x0e\x64\x65\x66\x61ultProjectJ\x04\x08\x07\x10\x08R\rorganizations\"\x17\n\x15UserServiceGetRequest\":\n\x16UserServiceGetResponse\x12 \n\x04user\x18\x01 \x01(\x0b\x32\x0c.api.v1.UserR\x04user2]\n\x0bUserService\x12N\n\x03Get\x12\x1d.api.v1.UserServiceGetRequest\x1a\x1e.api.v1.UserServiceGetResponse\"\x08\xd8\xf3\x18\x03\xe8\xf3\x18\x01\x42\x82\x01\n\ncom.api.v1B\tUserProtoP\x01Z0github.com/metal-stack-cloud/api/go/api/v1;apiv1\xa2\x02\x03\x41XX\xaa\x02\x06\x41pi.V1\xca\x02\x06\x41pi\\V1\xe2\x02\x12\x41pi\\V1\\GPBMetadata\xea\x02\x07\x41pi::V1b\x06proto3')

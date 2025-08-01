@@ -2,7 +2,7 @@
 """Client and server classes corresponding to protobuf-defined services."""
 import grpc
 
-from admin.v1 import payment_pb2 as admin_dot_v1_dot_payment__pb2
+from metalstackcloud.admin.v1 import payment_pb2 as admin_dot_v1_dot_payment__pb2
 
 
 class PaymentServiceStub(object):

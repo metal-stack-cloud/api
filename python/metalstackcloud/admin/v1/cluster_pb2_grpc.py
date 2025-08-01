@@ -2,7 +2,7 @@
 """Client and server classes corresponding to protobuf-defined services."""
 import grpc
 
-from admin.v1 import cluster_pb2 as admin_dot_v1_dot_cluster__pb2
+from metalstackcloud.admin.v1 import cluster_pb2 as admin_dot_v1_dot_cluster__pb2
 
 
 class ClusterServiceStub(object):

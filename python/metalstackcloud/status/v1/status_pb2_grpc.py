@@ -2,7 +2,7 @@
 """Client and server classes corresponding to protobuf-defined services."""
 import grpc
 
-from status.v1 import status_pb2 as status_dot_v1_dot_status__pb2
+from metalstackcloud.status.v1 import status_pb2 as status_dot_v1_dot_status__pb2
 
 
 class StatusServiceStub(object):
