@@ -2,30 +2,30 @@
 
 import httpx
 
-import admin.v1.cluster_connecpy as admin_cluster_connecpy
-import admin.v1.payment_connecpy as admin_payment_connecpy
-import admin.v1.project_connecpy as admin_project_connecpy
-import admin.v1.storage_connecpy as admin_storage_connecpy
-import admin.v1.tenant_connecpy as admin_tenant_connecpy
-import admin.v1.token_connecpy as admin_token_connecpy
+import metalstackcloud.admin.v1.cluster_connecpy as admin_cluster_connecpy
+import metalstackcloud.admin.v1.payment_connecpy as admin_payment_connecpy
+import metalstackcloud.admin.v1.project_connecpy as admin_project_connecpy
+import metalstackcloud.admin.v1.storage_connecpy as admin_storage_connecpy
+import metalstackcloud.admin.v1.tenant_connecpy as admin_tenant_connecpy
+import metalstackcloud.admin.v1.token_connecpy as admin_token_connecpy
 
-import api.v1.asset_connecpy as api_asset_connecpy
-import api.v1.audit_connecpy as api_audit_connecpy
-import api.v1.cluster_connecpy as api_cluster_connecpy
-import api.v1.health_connecpy as api_health_connecpy
-import api.v1.ip_connecpy as api_ip_connecpy
-import api.v1.method_connecpy as api_method_connecpy
-import api.v1.payment_connecpy as api_payment_connecpy
-import api.v1.project_connecpy as api_project_connecpy
-import api.v1.snapshot_connecpy as api_snapshot_connecpy
-import api.v1.tenant_connecpy as api_tenant_connecpy
-import api.v1.token_connecpy as api_token_connecpy
-import api.v1.user_connecpy as api_user_connecpy
-import api.v1.version_connecpy as api_version_connecpy
-import api.v1.volume_connecpy as api_volume_connecpy
+import metalstackcloud.api.v1.asset_connecpy as api_asset_connecpy
+import metalstackcloud.api.v1.audit_connecpy as api_audit_connecpy
+import metalstackcloud.api.v1.cluster_connecpy as api_cluster_connecpy
+import metalstackcloud.api.v1.health_connecpy as api_health_connecpy
+import metalstackcloud.api.v1.ip_connecpy as api_ip_connecpy
+import metalstackcloud.api.v1.method_connecpy as api_method_connecpy
+import metalstackcloud.api.v1.payment_connecpy as api_payment_connecpy
+import metalstackcloud.api.v1.project_connecpy as api_project_connecpy
+import metalstackcloud.api.v1.snapshot_connecpy as api_snapshot_connecpy
+import metalstackcloud.api.v1.tenant_connecpy as api_tenant_connecpy
+import metalstackcloud.api.v1.token_connecpy as api_token_connecpy
+import metalstackcloud.api.v1.user_connecpy as api_user_connecpy
+import metalstackcloud.api.v1.version_connecpy as api_version_connecpy
+import metalstackcloud.api.v1.volume_connecpy as api_volume_connecpy
 
-import status.v1.message_connecpy as status_message_connecpy
-import status.v1.status_connecpy as status_status_connecpy
+import metalstackcloud.status.v1.message_connecpy as status_message_connecpy
+import metalstackcloud.status.v1.status_connecpy as status_status_connecpy
 
 
 

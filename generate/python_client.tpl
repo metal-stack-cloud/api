@@ -4,7 +4,7 @@ import httpx
 
 {{ range $name, $api := . -}}
 {{ range $svc := $api.Services -}}
-import {{ $name | trimSuffix "v1" }}.v1.{{ $svc | trimSuffix "Service" | lower }}_connecpy as {{ $name | trimSuffix "v1" }}_{{ $svc | trimSuffix "Service" | lower }}_connecpy
+import metalstackcloud.{{ $name | trimSuffix "v1" }}.v1.{{ $svc | trimSuffix "Service" | lower }}_connecpy as {{ $name | trimSuffix "v1" }}_{{ $svc | trimSuffix "Service" | lower }}_connecpy
 {{ end }}
 {{ end }}
 

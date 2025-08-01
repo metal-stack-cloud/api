@@ -5,8 +5,8 @@ import sys
 
 from connecpy.exceptions import ConnecpyServerException
 
-from api.v1 import ip_pb2
-from client import client as apiclient
+from metalstackcloud.api.v1 import ip_pb2
+from metalstackcloud.client import client as apiclient
 
 
 timeout_s = 5
