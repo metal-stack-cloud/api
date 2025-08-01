@@ -134,22 +134,17 @@ func servicePermissions(root string) (*permissions.ServicePermissions, error) {
 	}
 
 	for _, filename := range files {
-		filename := filename
 		fd, err := protoparser.Parse(filename)
 		if err != nil {
 			return nil, err
 		}
 		for _, serviceDesc := range fd.GetService() {
-			serviceDesc := serviceDesc
 			services = append(services, fmt.Sprintf("%s.%s", *fd.Package, *serviceDesc.Name))
 			for _, method := range serviceDesc.GetMethod() {
-				method := method
 				methodName := fmt.Sprintf("/%s.%s/%s", *fd.Package, *serviceDesc.Name, *method.Name)
 				methodOpts := method.Options.GetUninterpretedOption()
 				for _, methodOpt := range methodOpts {
-					methodOpt := methodOpt
 					for _, namePart := range methodOpt.Name {
-						namePart := namePart
 						if !*namePart.IsExtension {
 							continue
 						}
