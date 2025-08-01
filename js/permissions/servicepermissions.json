@@ -90,13 +90,13 @@
         "/api.v1.IPService/Delete",
         "/api.v1.ProjectService/Get",
         "/api.v1.ProjectService/Update",
+        "/api.v1.SnapshotService/Get",
+        "/api.v1.SnapshotService/List",
+        "/api.v1.SnapshotService/Delete",
         "/api.v1.VolumeService/Get",
         "/api.v1.VolumeService/List",
         "/api.v1.VolumeService/Delete",
-        "/api.v1.VolumeService/Update",
-        "/api.v1.SnapshotService/Get",
-        "/api.v1.SnapshotService/List",
-        "/api.v1.SnapshotService/Delete"
+        "/api.v1.VolumeService/Update"
       ],
       "PROJECT_ROLE_OWNER": [
         "/api.v1.ClusterService/Create",
@@ -120,13 +120,13 @@
         "/api.v1.ProjectService/Invite",
         "/api.v1.ProjectService/InviteDelete",
         "/api.v1.ProjectService/InvitesList",
+        "/api.v1.SnapshotService/Get",
+        "/api.v1.SnapshotService/List",
+        "/api.v1.SnapshotService/Delete",
         "/api.v1.VolumeService/Get",
         "/api.v1.VolumeService/List",
         "/api.v1.VolumeService/Delete",
-        "/api.v1.VolumeService/Update",
-        "/api.v1.SnapshotService/Get",
-        "/api.v1.SnapshotService/List",
-        "/api.v1.SnapshotService/Delete"
+        "/api.v1.VolumeService/Update"
       ],
       "PROJECT_ROLE_VIEWER": [
         "/api.v1.ClusterService/Get",
@@ -135,10 +135,10 @@
         "/api.v1.IPService/Get",
         "/api.v1.IPService/List",
         "/api.v1.ProjectService/Get",
-        "/api.v1.VolumeService/Get",
-        "/api.v1.VolumeService/List",
         "/api.v1.SnapshotService/Get",
-        "/api.v1.SnapshotService/List"
+        "/api.v1.SnapshotService/List",
+        "/api.v1.VolumeService/Get",
+        "/api.v1.VolumeService/List"
       ]
     }
   },

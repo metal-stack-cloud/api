@@ -45,12 +45,12 @@ type (
 		Method() apiv1connect.MethodServiceClient
 		Payment() apiv1connect.PaymentServiceClient
 		Project() apiv1connect.ProjectServiceClient
+		Snapshot() apiv1connect.SnapshotServiceClient
 		Tenant() apiv1connect.TenantServiceClient
 		Token() apiv1connect.TokenServiceClient
 		User() apiv1connect.UserServiceClient
 		Version() apiv1connect.VersionServiceClient
 		Volume() apiv1connect.VolumeServiceClient
-		Snapshot() apiv1connect.SnapshotServiceClient
 	}
 
 	apiv1 struct {
@@ -62,12 +62,12 @@ type (
 		methodservice   apiv1connect.MethodServiceClient
 		paymentservice  apiv1connect.PaymentServiceClient
 		projectservice  apiv1connect.ProjectServiceClient
+		snapshotservice apiv1connect.SnapshotServiceClient
 		tenantservice   apiv1connect.TenantServiceClient
 		tokenservice    apiv1connect.TokenServiceClient
 		userservice     apiv1connect.UserServiceClient
 		versionservice  apiv1connect.VersionServiceClient
 		volumeservice   apiv1connect.VolumeServiceClient
-		snapshotservice apiv1connect.SnapshotServiceClient
 	}
 
 	Statusv1 interface {
@@ -184,6 +184,11 @@ func (c client) Apiv1() Apiv1 {
 			c.config.BaseURL,
 			compress.WithAll(compress.LevelBalanced),
 		),
+		snapshotservice: apiv1connect.NewSnapshotServiceClient(
+			c.config.HttpClient(),
+			c.config.BaseURL,
+			compress.WithAll(compress.LevelBalanced),
+		),
 		tenantservice: apiv1connect.NewTenantServiceClient(
 			c.config.HttpClient(),
 			c.config.BaseURL,
@@ -205,11 +210,6 @@ func (c client) Apiv1() Apiv1 {
 			compress.WithAll(compress.LevelBalanced),
 		),
 		volumeservice: apiv1connect.NewVolumeServiceClient(
-			c.config.HttpClient(),
-			c.config.BaseURL,
-			compress.WithAll(compress.LevelBalanced),
-		),
-		snapshotservice: apiv1connect.NewSnapshotServiceClient(
 			c.config.HttpClient(),
 			c.config.BaseURL,
 			compress.WithAll(compress.LevelBalanced),
@@ -242,6 +242,9 @@ func (c *apiv1) Payment() apiv1connect.PaymentServiceClient {
 func (c *apiv1) Project() apiv1connect.ProjectServiceClient {
 	return c.projectservice
 }
+func (c *apiv1) Snapshot() apiv1connect.SnapshotServiceClient {
+	return c.snapshotservice
+}
 func (c *apiv1) Tenant() apiv1connect.TenantServiceClient {
 	return c.tenantservice
 }
@@ -256,9 +259,6 @@ func (c *apiv1) Version() apiv1connect.VersionServiceClient {
 }
 func (c *apiv1) Volume() apiv1connect.VolumeServiceClient {
 	return c.volumeservice
-}
-func (c *apiv1) Snapshot() apiv1connect.SnapshotServiceClient {
-	return c.snapshotservice
 }
 
 func (c client) Statusv1() Statusv1 {

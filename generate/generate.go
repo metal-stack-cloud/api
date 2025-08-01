@@ -34,6 +34,8 @@ var (
 	mockClientTpl string
 	//go:embed go_client.tpl
 	clientTpl string
+	//go:embed python_client.tpl
+	pythonClientTpl string
 )
 
 type api struct {
@@ -83,6 +85,10 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
+	err = writePythonTemplate("../python/metalstackcloud/client.py", pythonClientTpl, svcs)
+	if err != nil {
+		panic(err)
+	}
 }
 
 func servicePermissions(root string) (*permissions.ServicePermissions, error) {
@@ -128,22 +134,17 @@ func servicePermissions(root string) (*permissions.ServicePermissions, error) {
 	}
 
 	for _, filename := range files {
-		filename := filename
 		fd, err := protoparser.Parse(filename)
 		if err != nil {
 			return nil, err
 		}
 		for _, serviceDesc := range fd.GetService() {
-			serviceDesc := serviceDesc
 			services = append(services, fmt.Sprintf("%s.%s", *fd.Package, *serviceDesc.Name))
 			for _, method := range serviceDesc.GetMethod() {
-				method := method
 				methodName := fmt.Sprintf("/%s.%s/%s", *fd.Package, *serviceDesc.Name, *method.Name)
 				methodOpts := method.Options.GetUninterpretedOption()
 				for _, methodOpt := range methodOpts {
-					methodOpt := methodOpt
 					for _, namePart := range methodOpt.Name {
-						namePart := namePart
 						if !*namePart.IsExtension {
 							continue
 						}
@@ -294,4 +295,20 @@ func writeTemplate(dest, text string, data any) error {
 	fmt.Println("wrote " + dest)
 
 	return os.WriteFile(dest, p, 0755) // nolint:gosec
+}
+
+func writePythonTemplate(dest, text string, data any) error {
+	t, err := template.New("").Funcs(sprig.FuncMap()).Parse(text)
+	if err != nil {
+		return err
+	}
+
+	var buf bytes.Buffer
+	if err := t.Execute(&buf, data); err != nil {
+		return err
+	}
+
+	fmt.Println("wrote " + dest)
+
+	return os.WriteFile(dest, buf.Bytes(), 0755) // nolint:gosec
 }

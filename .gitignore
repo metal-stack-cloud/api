@@ -18,3 +18,8 @@
 proto/google/api/*.proto
 **/node_modules
 .vscode
+bin
+
+# see python README.md why this is required:
+go/buf/
+go/tests/mocks/buf

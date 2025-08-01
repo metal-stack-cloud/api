@@ -860,7 +860,7 @@ var File_admin_v1_storage_proto protoreflect.FileDescriptor
 
 const file_admin_v1_storage_proto_rawDesc = "" +
 	"\n" +
-	"\x16admin/v1/storage.proto\x12\badmin.v1\x1a\x13api/v1/common.proto\x1a\x13api/v1/volume.proto\x1a\x1bbuf/validate/validate.proto\"S\n" +
+	"\x16admin/v1/storage.proto\x12\badmin.v1\x1a\x13api/v1/common.proto\x1a\x15api/v1/snapshot.proto\x1a\x13api/v1/volume.proto\x1a\x1bbuf/validate/validate.proto\"S\n" +
 	" StorageServiceClusterInfoRequest\x12!\n" +
 	"\tpartition\x18\x01 \x01(\tH\x00R\tpartition\x88\x01\x01B\f\n" +
 	"\n" +

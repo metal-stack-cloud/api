@@ -57,12 +57,12 @@ type (
 		methodservice   *apiv1mocks.MethodServiceClient
 		paymentservice  *apiv1mocks.PaymentServiceClient
 		projectservice  *apiv1mocks.ProjectServiceClient
+		snapshotservice *apiv1mocks.SnapshotServiceClient
 		tenantservice   *apiv1mocks.TenantServiceClient
 		tokenservice    *apiv1mocks.TokenServiceClient
 		userservice     *apiv1mocks.UserServiceClient
 		versionservice  *apiv1mocks.VersionServiceClient
 		volumeservice   *apiv1mocks.VolumeServiceClient
-		snapshotservice *apiv1mocks.SnapshotServiceClient
 	}
 
 	Apiv1MockFns struct {
@@ -74,12 +74,12 @@ type (
 		Method   func(m *mock.Mock)
 		Payment  func(m *mock.Mock)
 		Project  func(m *mock.Mock)
+		Snapshot func(m *mock.Mock)
 		Tenant   func(m *mock.Mock)
 		Token    func(m *mock.Mock)
 		User     func(m *mock.Mock)
 		Version  func(m *mock.Mock)
 		Volume   func(m *mock.Mock)
-		Snapshot func(m *mock.Mock)
 	}
 	statusv1 struct {
 		messageservice *statusv1mocks.MessageServiceClient
@@ -186,12 +186,12 @@ func newapiv1(t *testing.T, fns *Apiv1MockFns) *apiv1 {
 		methodservice:   apiv1mocks.NewMethodServiceClient(t),
 		paymentservice:  apiv1mocks.NewPaymentServiceClient(t),
 		projectservice:  apiv1mocks.NewProjectServiceClient(t),
+		snapshotservice: apiv1mocks.NewSnapshotServiceClient(t),
 		tenantservice:   apiv1mocks.NewTenantServiceClient(t),
 		tokenservice:    apiv1mocks.NewTokenServiceClient(t),
 		userservice:     apiv1mocks.NewUserServiceClient(t),
 		versionservice:  apiv1mocks.NewVersionServiceClient(t),
 		volumeservice:   apiv1mocks.NewVolumeServiceClient(t),
-		snapshotservice: apiv1mocks.NewSnapshotServiceClient(t),
 	}
 
 	if fns != nil {
@@ -219,6 +219,9 @@ func newapiv1(t *testing.T, fns *Apiv1MockFns) *apiv1 {
 		if fns.Project != nil {
 			fns.Project(&a.projectservice.Mock)
 		}
+		if fns.Snapshot != nil {
+			fns.Snapshot(&a.snapshotservice.Mock)
+		}
 		if fns.Tenant != nil {
 			fns.Tenant(&a.tenantservice.Mock)
 		}
@@ -233,9 +236,6 @@ func newapiv1(t *testing.T, fns *Apiv1MockFns) *apiv1 {
 		}
 		if fns.Volume != nil {
 			fns.Volume(&a.volumeservice.Mock)
-		}
-		if fns.Snapshot != nil {
-			fns.Snapshot(&a.snapshotservice.Mock)
 		}
 
 	}
@@ -267,6 +267,9 @@ func (c *apiv1) Payment() apiv1connect.PaymentServiceClient {
 func (c *apiv1) Project() apiv1connect.ProjectServiceClient {
 	return c.projectservice
 }
+func (c *apiv1) Snapshot() apiv1connect.SnapshotServiceClient {
+	return c.snapshotservice
+}
 func (c *apiv1) Tenant() apiv1connect.TenantServiceClient {
 	return c.tenantservice
 }
@@ -281,9 +284,6 @@ func (c *apiv1) Version() apiv1connect.VersionServiceClient {
 }
 func (c *apiv1) Volume() apiv1connect.VolumeServiceClient {
 	return c.volumeservice
-}
-func (c *apiv1) Snapshot() apiv1connect.SnapshotServiceClient {
-	return c.snapshotservice
 }
 
 func (w wrapper) Statusv1(fns *Statusv1MockFns) *statusv1 {
