@@ -69,7 +69,7 @@ jobs:
 
     - name: Make tag
       run: |
-        [ "${GITHUB_EVENT_NAME}" == 'pull_request' ] && echo "tag=v0.0.0.dev.${{ github.event.number }}-${{github.run_number}}" >> $GITHUB_ENV || true
+        [ "${GITHUB_EVENT_NAME}" == 'pull_request' ] && echo "tag=v0.0.0.dev${{ github.event.number }}-${{github.run_number}}" >> $GITHUB_ENV || true
         [ "${GITHUB_EVENT_NAME}" == 'release' ] && echo "tag=${GITHUB_REF##*/}" >> $GITHUB_ENV || true
         [ "${GITHUB_EVENT_NAME}" == 'push' ] && echo "tag=v0.0.0" >> $GITHUB_ENV || true
 
