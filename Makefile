@@ -43,6 +43,6 @@ npm-build-tagged:
 	$(MAKE)	npm-build
 
 .PHONY: protoc-gen-connecpy
-protoc-gen-connecpy: $(PROTOC_GEN_CONNECPY)
+protoc-gen-connecpy:
 	mkdir -p $(LOCALBIN)
 	GOBIN=$(LOCALBIN) go install github.com/i2y/connecpy/protoc-gen-connecpy@$(PROTOC_GEN_CONNECPY_VERSION)
