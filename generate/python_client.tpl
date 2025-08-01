@@ -2,7 +2,6 @@
 
 from contextlib import contextmanager
 from connecpy.context import ClientContext
-from connecpy.exceptions import ConnecpyServerException
 
 {{ range $name, $api := . -}}
 {{ range $svc := $api.Services -}}

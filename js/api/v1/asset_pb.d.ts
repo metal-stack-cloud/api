@@ -2,9 +2,9 @@ import type { GenFile, GenMessage, GenService } from "@bufbuild/protobuf/codegen
 import type { Timestamp } from "@bufbuild/protobuf/wkt";
 import type { Message } from "@bufbuild/protobuf";
 /**
- * Describes the file api/v1/assets.proto.
+ * Describes the file api/v1/asset.proto.
  */
-export declare const file_api_v1_assets: GenFile;
+export declare const file_api_v1_asset: GenFile;
 /**
  * Asset defines the available resources which can be used
  *

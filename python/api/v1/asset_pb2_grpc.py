@@ -2,7 +2,7 @@
 """Client and server classes corresponding to protobuf-defined services."""
 import grpc
 
-from api.v1 import assets_pb2 as api_dot_v1_dot_assets__pb2
+from api.v1 import asset_pb2 as api_dot_v1_dot_asset__pb2
 
 
 class AssetServiceStub(object):
@@ -17,8 +17,8 @@ class AssetServiceStub(object):
         """
         self.List = channel.unary_unary(
                 '/api.v1.AssetService/List',
-                request_serializer=api_dot_v1_dot_assets__pb2.AssetServiceListRequest.SerializeToString,
-                response_deserializer=api_dot_v1_dot_assets__pb2.AssetServiceListResponse.FromString,
+                request_serializer=api_dot_v1_dot_asset__pb2.AssetServiceListRequest.SerializeToString,
+                response_deserializer=api_dot_v1_dot_asset__pb2.AssetServiceListResponse.FromString,
                 _registered_method=True)
 
 
@@ -38,8 +38,8 @@ def add_AssetServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
             'List': grpc.unary_unary_rpc_method_handler(
                     servicer.List,
-                    request_deserializer=api_dot_v1_dot_assets__pb2.AssetServiceListRequest.FromString,
-                    response_serializer=api_dot_v1_dot_assets__pb2.AssetServiceListResponse.SerializeToString,
+                    request_deserializer=api_dot_v1_dot_asset__pb2.AssetServiceListRequest.FromString,
+                    response_serializer=api_dot_v1_dot_asset__pb2.AssetServiceListResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -68,8 +68,8 @@ class AssetService(object):
             request,
             target,
             '/api.v1.AssetService/List',
-            api_dot_v1_dot_assets__pb2.AssetServiceListRequest.SerializeToString,
-            api_dot_v1_dot_assets__pb2.AssetServiceListResponse.FromString,
+            api_dot_v1_dot_asset__pb2.AssetServiceListRequest.SerializeToString,
+            api_dot_v1_dot_asset__pb2.AssetServiceListResponse.FromString,
             options,
             channel_credentials,
             insecure,

@@ -2,7 +2,7 @@
 // versions:
 // 	protoc-gen-go v1.36.6
 // 	protoc        (unknown)
-// source: api/v1/assets.proto
+// source: api/v1/asset.proto
 
 package apiv1
 
@@ -38,7 +38,7 @@ type Asset struct {
 
 func (x *Asset) Reset() {
 	*x = Asset{}
-	mi := &file_api_v1_assets_proto_msgTypes[0]
+	mi := &file_api_v1_asset_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -50,7 +50,7 @@ func (x *Asset) String() string {
 func (*Asset) ProtoMessage() {}
 
 func (x *Asset) ProtoReflect() protoreflect.Message {
-	mi := &file_api_v1_assets_proto_msgTypes[0]
+	mi := &file_api_v1_asset_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -63,7 +63,7 @@ func (x *Asset) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Asset.ProtoReflect.Descriptor instead.
 func (*Asset) Descriptor() ([]byte, []int) {
-	return file_api_v1_assets_proto_rawDescGZIP(), []int{0}
+	return file_api_v1_asset_proto_rawDescGZIP(), []int{0}
 }
 
 func (x *Asset) GetRegion() *Region {
@@ -110,7 +110,7 @@ type Region struct {
 
 func (x *Region) Reset() {
 	*x = Region{}
-	mi := &file_api_v1_assets_proto_msgTypes[1]
+	mi := &file_api_v1_asset_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -122,7 +122,7 @@ func (x *Region) String() string {
 func (*Region) ProtoMessage() {}
 
 func (x *Region) ProtoReflect() protoreflect.Message {
-	mi := &file_api_v1_assets_proto_msgTypes[1]
+	mi := &file_api_v1_asset_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -135,7 +135,7 @@ func (x *Region) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Region.ProtoReflect.Descriptor instead.
 func (*Region) Descriptor() ([]byte, []int) {
-	return file_api_v1_assets_proto_rawDescGZIP(), []int{1}
+	return file_api_v1_asset_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *Region) GetId() string {
@@ -206,7 +206,7 @@ type Partition struct {
 
 func (x *Partition) Reset() {
 	*x = Partition{}
-	mi := &file_api_v1_assets_proto_msgTypes[2]
+	mi := &file_api_v1_asset_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -218,7 +218,7 @@ func (x *Partition) String() string {
 func (*Partition) ProtoMessage() {}
 
 func (x *Partition) ProtoReflect() protoreflect.Message {
-	mi := &file_api_v1_assets_proto_msgTypes[2]
+	mi := &file_api_v1_asset_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -231,7 +231,7 @@ func (x *Partition) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Partition.ProtoReflect.Descriptor instead.
 func (*Partition) Descriptor() ([]byte, []int) {
-	return file_api_v1_assets_proto_rawDescGZIP(), []int{2}
+	return file_api_v1_asset_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *Partition) GetId() string {
@@ -292,7 +292,7 @@ type MachineType struct {
 
 func (x *MachineType) Reset() {
 	*x = MachineType{}
-	mi := &file_api_v1_assets_proto_msgTypes[3]
+	mi := &file_api_v1_asset_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -304,7 +304,7 @@ func (x *MachineType) String() string {
 func (*MachineType) ProtoMessage() {}
 
 func (x *MachineType) ProtoReflect() protoreflect.Message {
-	mi := &file_api_v1_assets_proto_msgTypes[3]
+	mi := &file_api_v1_asset_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -317,7 +317,7 @@ func (x *MachineType) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MachineType.ProtoReflect.Descriptor instead.
 func (*MachineType) Descriptor() ([]byte, []int) {
-	return file_api_v1_assets_proto_rawDescGZIP(), []int{3}
+	return file_api_v1_asset_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *MachineType) GetId() string {
@@ -382,7 +382,7 @@ type Kubernetes struct {
 
 func (x *Kubernetes) Reset() {
 	*x = Kubernetes{}
-	mi := &file_api_v1_assets_proto_msgTypes[4]
+	mi := &file_api_v1_asset_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -394,7 +394,7 @@ func (x *Kubernetes) String() string {
 func (*Kubernetes) ProtoMessage() {}
 
 func (x *Kubernetes) ProtoReflect() protoreflect.Message {
-	mi := &file_api_v1_assets_proto_msgTypes[4]
+	mi := &file_api_v1_asset_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -407,7 +407,7 @@ func (x *Kubernetes) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Kubernetes.ProtoReflect.Descriptor instead.
 func (*Kubernetes) Descriptor() ([]byte, []int) {
-	return file_api_v1_assets_proto_rawDescGZIP(), []int{4}
+	return file_api_v1_asset_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *Kubernetes) GetVersion() string {
@@ -443,7 +443,7 @@ type AssetDefaults struct {
 
 func (x *AssetDefaults) Reset() {
 	*x = AssetDefaults{}
-	mi := &file_api_v1_assets_proto_msgTypes[5]
+	mi := &file_api_v1_asset_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -455,7 +455,7 @@ func (x *AssetDefaults) String() string {
 func (*AssetDefaults) ProtoMessage() {}
 
 func (x *AssetDefaults) ProtoReflect() protoreflect.Message {
-	mi := &file_api_v1_assets_proto_msgTypes[5]
+	mi := &file_api_v1_asset_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -468,7 +468,7 @@ func (x *AssetDefaults) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AssetDefaults.ProtoReflect.Descriptor instead.
 func (*AssetDefaults) Descriptor() ([]byte, []int) {
-	return file_api_v1_assets_proto_rawDescGZIP(), []int{5}
+	return file_api_v1_asset_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *AssetDefaults) GetMachineType() string {
@@ -515,7 +515,7 @@ type AssetServiceListRequest struct {
 
 func (x *AssetServiceListRequest) Reset() {
 	*x = AssetServiceListRequest{}
-	mi := &file_api_v1_assets_proto_msgTypes[6]
+	mi := &file_api_v1_asset_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -527,7 +527,7 @@ func (x *AssetServiceListRequest) String() string {
 func (*AssetServiceListRequest) ProtoMessage() {}
 
 func (x *AssetServiceListRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_api_v1_assets_proto_msgTypes[6]
+	mi := &file_api_v1_asset_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -540,7 +540,7 @@ func (x *AssetServiceListRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AssetServiceListRequest.ProtoReflect.Descriptor instead.
 func (*AssetServiceListRequest) Descriptor() ([]byte, []int) {
-	return file_api_v1_assets_proto_rawDescGZIP(), []int{6}
+	return file_api_v1_asset_proto_rawDescGZIP(), []int{6}
 }
 
 // AssetServiceListResponse is the response payload which contains the the Asset list
@@ -556,7 +556,7 @@ type AssetServiceListResponse struct {
 
 func (x *AssetServiceListResponse) Reset() {
 	*x = AssetServiceListResponse{}
-	mi := &file_api_v1_assets_proto_msgTypes[7]
+	mi := &file_api_v1_asset_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -568,7 +568,7 @@ func (x *AssetServiceListResponse) String() string {
 func (*AssetServiceListResponse) ProtoMessage() {}
 
 func (x *AssetServiceListResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_api_v1_assets_proto_msgTypes[7]
+	mi := &file_api_v1_asset_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -581,7 +581,7 @@ func (x *AssetServiceListResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AssetServiceListResponse.ProtoReflect.Descriptor instead.
 func (*AssetServiceListResponse) Descriptor() ([]byte, []int) {
-	return file_api_v1_assets_proto_rawDescGZIP(), []int{7}
+	return file_api_v1_asset_proto_rawDescGZIP(), []int{7}
 }
 
 func (x *AssetServiceListResponse) GetAssets() []*Asset {
@@ -615,7 +615,7 @@ type Environment struct {
 
 func (x *Environment) Reset() {
 	*x = Environment{}
-	mi := &file_api_v1_assets_proto_msgTypes[8]
+	mi := &file_api_v1_asset_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -627,7 +627,7 @@ func (x *Environment) String() string {
 func (*Environment) ProtoMessage() {}
 
 func (x *Environment) ProtoReflect() protoreflect.Message {
-	mi := &file_api_v1_assets_proto_msgTypes[8]
+	mi := &file_api_v1_asset_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -640,7 +640,7 @@ func (x *Environment) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Environment.ProtoReflect.Descriptor instead.
 func (*Environment) Descriptor() ([]byte, []int) {
-	return file_api_v1_assets_proto_rawDescGZIP(), []int{8}
+	return file_api_v1_asset_proto_rawDescGZIP(), []int{8}
 }
 
 func (x *Environment) GetConsoleUrl() string {
@@ -671,11 +671,11 @@ func (x *Environment) GetTermsAndConditionsUrl() string {
 	return ""
 }
 
-var File_api_v1_assets_proto protoreflect.FileDescriptor
+var File_api_v1_asset_proto protoreflect.FileDescriptor
 
-const file_api_v1_assets_proto_rawDesc = "" +
+const file_api_v1_asset_proto_rawDesc = "" +
 	"\n" +
-	"\x13api/v1/assets.proto\x12\x06api.v1\x1a\x13api/v1/common.proto\x1a\x1bbuf/validate/validate.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\xff\x01\n" +
+	"\x12api/v1/asset.proto\x12\x06api.v1\x1a\x13api/v1/common.proto\x1a\x1bbuf/validate/validate.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\xff\x01\n" +
 	"\x05Asset\x12&\n" +
 	"\x06region\x18\x01 \x01(\v2\x0e.api.v1.RegionR\x06region\x12D\n" +
 	"\rmachine_types\x18\x02 \x03(\v2\x1f.api.v1.Asset.MachineTypesEntryR\fmachineTypes\x122\n" +
@@ -741,24 +741,25 @@ const file_api_v1_assets_proto_rawDesc = "" +
 	"\x14_stripe_public_tokenB\x1b\n" +
 	"\x19_terms_and_conditions_url2c\n" +
 	"\fAssetService\x12S\n" +
-	"\x04List\x12\x1f.api.v1.AssetServiceListRequest\x1a .api.v1.AssetServiceListResponse\"\b\xd8\xf3\x18\x01\xe8\xf3\x18\x02B\x84\x01\n" +
+	"\x04List\x12\x1f.api.v1.AssetServiceListRequest\x1a .api.v1.AssetServiceListResponse\"\b\xd8\xf3\x18\x01\xe8\xf3\x18\x02B\x83\x01\n" +
 	"\n" +
-	"com.api.v1B\vAssetsProtoP\x01Z0github.com/metal-stack-cloud/api/go/api/v1;apiv1\xa2\x02\x03AXX\xaa\x02\x06Api.V1\xca\x02\x06Api\\V1\xe2\x02\x12Api\\V1\\GPBMetadata\xea\x02\aApi::V1b\x06proto3"
+	"com.api.v1B\n" +
+	"AssetProtoP\x01Z0github.com/metal-stack-cloud/api/go/api/v1;apiv1\xa2\x02\x03AXX\xaa\x02\x06Api.V1\xca\x02\x06Api\\V1\xe2\x02\x12Api\\V1\\GPBMetadata\xea\x02\aApi::V1b\x06proto3"
 
 var (
-	file_api_v1_assets_proto_rawDescOnce sync.Once
-	file_api_v1_assets_proto_rawDescData []byte
+	file_api_v1_asset_proto_rawDescOnce sync.Once
+	file_api_v1_asset_proto_rawDescData []byte
 )
 
-func file_api_v1_assets_proto_rawDescGZIP() []byte {
-	file_api_v1_assets_proto_rawDescOnce.Do(func() {
-		file_api_v1_assets_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_api_v1_assets_proto_rawDesc), len(file_api_v1_assets_proto_rawDesc)))
+func file_api_v1_asset_proto_rawDescGZIP() []byte {
+	file_api_v1_asset_proto_rawDescOnce.Do(func() {
+		file_api_v1_asset_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_api_v1_asset_proto_rawDesc), len(file_api_v1_asset_proto_rawDesc)))
 	})
-	return file_api_v1_assets_proto_rawDescData
+	return file_api_v1_asset_proto_rawDescData
 }
 
-var file_api_v1_assets_proto_msgTypes = make([]protoimpl.MessageInfo, 11)
-var file_api_v1_assets_proto_goTypes = []any{
+var file_api_v1_asset_proto_msgTypes = make([]protoimpl.MessageInfo, 11)
+var file_api_v1_asset_proto_goTypes = []any{
 	(*Asset)(nil),                    // 0: api.v1.Asset
 	(*Region)(nil),                   // 1: api.v1.Region
 	(*Partition)(nil),                // 2: api.v1.Partition
@@ -772,7 +773,7 @@ var file_api_v1_assets_proto_goTypes = []any{
 	nil,                              // 10: api.v1.Region.PartitionsEntry
 	(*timestamppb.Timestamp)(nil),    // 11: google.protobuf.Timestamp
 }
-var file_api_v1_assets_proto_depIdxs = []int32{
+var file_api_v1_asset_proto_depIdxs = []int32{
 	1,  // 0: api.v1.Asset.region:type_name -> api.v1.Region
 	9,  // 1: api.v1.Asset.machine_types:type_name -> api.v1.Asset.MachineTypesEntry
 	4,  // 2: api.v1.Asset.kubernetes:type_name -> api.v1.Kubernetes
@@ -792,28 +793,28 @@ var file_api_v1_assets_proto_depIdxs = []int32{
 	0,  // [0:10] is the sub-list for field type_name
 }
 
-func init() { file_api_v1_assets_proto_init() }
-func file_api_v1_assets_proto_init() {
-	if File_api_v1_assets_proto != nil {
+func init() { file_api_v1_asset_proto_init() }
+func file_api_v1_asset_proto_init() {
+	if File_api_v1_asset_proto != nil {
 		return
 	}
 	file_api_v1_common_proto_init()
-	file_api_v1_assets_proto_msgTypes[8].OneofWrappers = []any{}
+	file_api_v1_asset_proto_msgTypes[8].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: unsafe.Slice(unsafe.StringData(file_api_v1_assets_proto_rawDesc), len(file_api_v1_assets_proto_rawDesc)),
+			RawDescriptor: unsafe.Slice(unsafe.StringData(file_api_v1_asset_proto_rawDesc), len(file_api_v1_asset_proto_rawDesc)),
 			NumEnums:      0,
 			NumMessages:   11,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
-		GoTypes:           file_api_v1_assets_proto_goTypes,
-		DependencyIndexes: file_api_v1_assets_proto_depIdxs,
-		MessageInfos:      file_api_v1_assets_proto_msgTypes,
+		GoTypes:           file_api_v1_asset_proto_goTypes,
+		DependencyIndexes: file_api_v1_asset_proto_depIdxs,
+		MessageInfos:      file_api_v1_asset_proto_msgTypes,
 	}.Build()
-	File_api_v1_assets_proto = out.File
-	file_api_v1_assets_proto_goTypes = nil
-	file_api_v1_assets_proto_depIdxs = nil
+	File_api_v1_asset_proto = out.File
+	file_api_v1_asset_proto_goTypes = nil
+	file_api_v1_asset_proto_depIdxs = nil
 }

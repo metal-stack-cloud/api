@@ -2,7 +2,6 @@
 
 from contextlib import contextmanager
 from connecpy.context import ClientContext
-from connecpy.exceptions import ConnecpyServerException
 
 import admin.v1.cluster_connecpy as admin_cluster_connecpy
 import admin.v1.payment_connecpy as admin_payment_connecpy
