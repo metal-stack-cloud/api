@@ -13,16 +13,19 @@ service StorageService {
   rpc ClusterInfo(StorageServiceClusterInfoRequest) returns (StorageServiceClusterInfoResponse) {
     option (api.v1.admin_roles) = ADMIN_ROLE_EDITOR;
     option (api.v1.admin_roles) = ADMIN_ROLE_VIEWER;
+    option (api.v1.auditing) = AUDITING_EXCLUDED;
   }
   // ListVolumes list all volumes
   rpc ListVolumes(StorageServiceListVolumesRequest) returns (StorageServiceListVolumesResponse) {
     option (api.v1.admin_roles) = ADMIN_ROLE_EDITOR;
     option (api.v1.admin_roles) = ADMIN_ROLE_VIEWER;
+    option (api.v1.auditing) = AUDITING_EXCLUDED;
   }
   // ListSnapshots list all snapshots
   rpc ListSnapshots(StorageServiceListSnapshotsRequest) returns (StorageServiceListSnapshotsResponse) {
     option (api.v1.admin_roles) = ADMIN_ROLE_EDITOR;
     option (api.v1.admin_roles) = ADMIN_ROLE_VIEWER;
+    option (api.v1.auditing) = AUDITING_EXCLUDED;
   }
 }
 

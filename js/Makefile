@@ -1,6 +1,5 @@
 .PHONY: install
 install:
-	bun upgrade
 	bun install -dd
 
 .PHONY: clean

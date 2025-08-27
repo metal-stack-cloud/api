@@ -488,9 +488,10 @@ const file_admin_v1_tenant_proto_rawDesc = "" +
 	"\ttenant_id\x18\x01 \x01(\tR\btenantId\x12\x1b\n" +
 	"\tmember_id\x18\x02 \x01(\tR\bmemberId\x120\n" +
 	"\x04role\x18\x03 \x01(\x0e2\x12.api.v1.TenantRoleB\b\xbaH\x05\x82\x01\x02\x10\x01R\x04role\" \n" +
-	"\x1eTenantServiceAddMemberResponse2\x88\x03\n" +
-	"\rTenantService\x12W\n" +
-	"\x04List\x12\".admin.v1.TenantServiceListRequest\x1a#.admin.v1.TenantServiceListResponse\"\x06\xd2\xf3\x18\x02\x01\x02\x12Y\n" +
+	"\x1eTenantServiceAddMemberResponse2\x8c\x03\n" +
+	"\rTenantService\x12[\n" +
+	"\x04List\x12\".admin.v1.TenantServiceListRequest\x1a#.admin.v1.TenantServiceListResponse\"\n" +
+	"\xd2\xf3\x18\x02\x01\x02\xe8\xf3\x18\x02\x12Y\n" +
 	"\x05Admit\x12#.admin.v1.TenantServiceAdmitRequest\x1a$.admin.v1.TenantServiceAdmitResponse\"\x05\xd2\xf3\x18\x01\x01\x12\\\n" +
 	"\x06Revoke\x12$.admin.v1.TenantServiceRevokeRequest\x1a%.admin.v1.TenantServiceRevokeResponse\"\x05\xd2\xf3\x18\x01\x01\x12e\n" +
 	"\tAddMember\x12'.admin.v1.TenantServiceAddMemberRequest\x1a(.admin.v1.TenantServiceAddMemberResponse\"\x05\xd2\xf3\x18\x01\x01B\x92\x01\n" +

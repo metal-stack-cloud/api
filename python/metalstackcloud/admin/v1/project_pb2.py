@@ -26,7 +26,7 @@ from metalstackcloud.api.v1 import common_pb2 as api_dot_v1_dot_common__pb2
 from metalstackcloud.api.v1 import project_pb2 as api_dot_v1_dot_project__pb2
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x16\x61\x64min/v1/project.proto\x12\x08\x61\x64min.v1\x1a\x13\x61pi/v1/common.proto\x1a\x14\x61pi/v1/project.proto\"\x8b\x02\n\x19ProjectServiceListRequest\x12&\n\x06paging\x18\x01 \x01(\x0b\x32\x0e.api.v1.PagingR\x06paging\x12 \n\ttenant_id\x18\x02 \x01(\tH\x00R\x08tenantId\x88\x01\x01\x12V\n\x0b\x61nnotations\x18\x03 \x03(\x0b\x32\x34.admin.v1.ProjectServiceListRequest.AnnotationsEntryR\x0b\x61nnotations\x1a>\n\x10\x41nnotationsEntry\x12\x10\n\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n\x05value\x18\x02 \x01(\tR\x05value:\x02\x38\x01\x42\x0c\n\n_tenant_id\"y\n\x1aProjectServiceListResponse\x12+\n\x08projects\x18\x01 \x03(\x0b\x32\x0f.api.v1.ProjectR\x08projects\x12 \n\tnext_page\x18\x02 \x01(\x04H\x00R\x08nextPage\x88\x01\x01\x42\x0c\n\n_next_page2k\n\x0eProjectService\x12Y\n\x04List\x12#.admin.v1.ProjectServiceListRequest\x1a$.admin.v1.ProjectServiceListResponse\"\x06\xd2\xf3\x18\x02\x01\x02\x42\x93\x01\n\x0c\x63om.admin.v1B\x0cProjectProtoP\x01Z4github.com/metal-stack-cloud/api/go/admin/v1;adminv1\xa2\x02\x03\x41XX\xaa\x02\x08\x41\x64min.V1\xca\x02\x08\x41\x64min\\V1\xe2\x02\x14\x41\x64min\\V1\\GPBMetadata\xea\x02\tAdmin::V1b\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x16\x61\x64min/v1/project.proto\x12\x08\x61\x64min.v1\x1a\x13\x61pi/v1/common.proto\x1a\x14\x61pi/v1/project.proto\"\x8b\x02\n\x19ProjectServiceListRequest\x12&\n\x06paging\x18\x01 \x01(\x0b\x32\x0e.api.v1.PagingR\x06paging\x12 \n\ttenant_id\x18\x02 \x01(\tH\x00R\x08tenantId\x88\x01\x01\x12V\n\x0b\x61nnotations\x18\x03 \x03(\x0b\x32\x34.admin.v1.ProjectServiceListRequest.AnnotationsEntryR\x0b\x61nnotations\x1a>\n\x10\x41nnotationsEntry\x12\x10\n\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n\x05value\x18\x02 \x01(\tR\x05value:\x02\x38\x01\x42\x0c\n\n_tenant_id\"y\n\x1aProjectServiceListResponse\x12+\n\x08projects\x18\x01 \x03(\x0b\x32\x0f.api.v1.ProjectR\x08projects\x12 \n\tnext_page\x18\x02 \x01(\x04H\x00R\x08nextPage\x88\x01\x01\x42\x0c\n\n_next_page2o\n\x0eProjectService\x12]\n\x04List\x12#.admin.v1.ProjectServiceListRequest\x1a$.admin.v1.ProjectServiceListResponse\"\n\xd2\xf3\x18\x02\x01\x02\xe8\xf3\x18\x02\x42\x93\x01\n\x0c\x63om.admin.v1B\x0cProjectProtoP\x01Z4github.com/metal-stack-cloud/api/go/admin/v1;adminv1\xa2\x02\x03\x41XX\xaa\x02\x08\x41\x64min.V1\xca\x02\x08\x41\x64min\\V1\xe2\x02\x14\x41\x64min\\V1\\GPBMetadata\xea\x02\tAdmin::V1b\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
@@ -37,7 +37,7 @@ if not _descriptor._USE_C_DESCRIPTORS:
   _globals['_PROJECTSERVICELISTREQUEST_ANNOTATIONSENTRY']._loaded_options = None
   _globals['_PROJECTSERVICELISTREQUEST_ANNOTATIONSENTRY']._serialized_options = b'8\001'
   _globals['_PROJECTSERVICE'].methods_by_name['List']._loaded_options = None
-  _globals['_PROJECTSERVICE'].methods_by_name['List']._serialized_options = b'\322\363\030\002\001\002'
+  _globals['_PROJECTSERVICE'].methods_by_name['List']._serialized_options = b'\322\363\030\002\001\002\350\363\030\002'
   _globals['_PROJECTSERVICELISTREQUEST']._serialized_start=80
   _globals['_PROJECTSERVICELISTREQUEST']._serialized_end=347
   _globals['_PROJECTSERVICELISTREQUEST_ANNOTATIONSENTRY']._serialized_start=271
@@ -45,5 +45,5 @@ if not _descriptor._USE_C_DESCRIPTORS:
   _globals['_PROJECTSERVICELISTRESPONSE']._serialized_start=349
   _globals['_PROJECTSERVICELISTRESPONSE']._serialized_end=470
   _globals['_PROJECTSERVICE']._serialized_start=472
-  _globals['_PROJECTSERVICE']._serialized_end=579
+  _globals['_PROJECTSERVICE']._serialized_end=583
 # @@protoc_insertion_point(module_scope)

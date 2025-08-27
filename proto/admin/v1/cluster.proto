@@ -14,11 +14,13 @@ service ClusterService {
   rpc Get(ClusterServiceGetRequest) returns (ClusterServiceGetResponse) {
     option (api.v1.admin_roles) = ADMIN_ROLE_EDITOR;
     option (api.v1.admin_roles) = ADMIN_ROLE_VIEWER;
+    option (api.v1.auditing) = AUDITING_EXCLUDED;
   }
   // List clusters
   rpc List(ClusterServiceListRequest) returns (ClusterServiceListResponse) {
     option (api.v1.admin_roles) = ADMIN_ROLE_EDITOR;
     option (api.v1.admin_roles) = ADMIN_ROLE_VIEWER;
+    option (api.v1.auditing) = AUDITING_EXCLUDED;
   }
   // Credentials of a cluster
   rpc Credentials(ClusterServiceCredentialsRequest) returns (ClusterServiceCredentialsResponse) {

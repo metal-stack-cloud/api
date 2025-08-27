@@ -536,10 +536,12 @@ const file_admin_v1_cluster_proto_rawDesc = "" +
 	"\tpublickey\x18\x01 \x01(\fR\tpublickey\x12\x1e\n" +
 	"\n" +
 	"privatekey\x18\x02 \x01(\fR\n" +
-	"privatekey2\xb2\x02\n" +
-	"\x0eClusterService\x12V\n" +
-	"\x03Get\x12\".admin.v1.ClusterServiceGetRequest\x1a#.admin.v1.ClusterServiceGetResponse\"\x06\xd2\xf3\x18\x02\x01\x02\x12Y\n" +
-	"\x04List\x12#.admin.v1.ClusterServiceListRequest\x1a$.admin.v1.ClusterServiceListResponse\"\x06\xd2\xf3\x18\x02\x01\x02\x12m\n" +
+	"privatekey2\xba\x02\n" +
+	"\x0eClusterService\x12Z\n" +
+	"\x03Get\x12\".admin.v1.ClusterServiceGetRequest\x1a#.admin.v1.ClusterServiceGetResponse\"\n" +
+	"\xd2\xf3\x18\x02\x01\x02\xe8\xf3\x18\x02\x12]\n" +
+	"\x04List\x12#.admin.v1.ClusterServiceListRequest\x1a$.admin.v1.ClusterServiceListResponse\"\n" +
+	"\xd2\xf3\x18\x02\x01\x02\xe8\xf3\x18\x02\x12m\n" +
 	"\vCredentials\x12*.admin.v1.ClusterServiceCredentialsRequest\x1a+.admin.v1.ClusterServiceCredentialsResponse\"\x05\xd2\xf3\x18\x01\x01B\x93\x01\n" +
 	"\fcom.admin.v1B\fClusterProtoP\x01Z4github.com/metal-stack-cloud/api/go/admin/v1;adminv1\xa2\x02\x03AXX\xaa\x02\bAdmin.V1\xca\x02\bAdmin\\V1\xe2\x02\x14Admin\\V1\\GPBMetadata\xea\x02\tAdmin::V1b\x06proto3"
 

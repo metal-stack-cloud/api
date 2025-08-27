@@ -218,9 +218,10 @@ const file_admin_v1_payment_proto_rawDesc = "" +
 	"\ttenant_id\x18\x01 \x01(\tR\btenantId\x12$\n" +
 	"\x0ebalance_to_add\x18\x02 \x01(\x04R\fbalanceToAdd\"a\n" +
 	"*PaymentServiceAddBalanceToCustomerResponse\x123\n" +
-	"\bcustomer\x18\x01 \x01(\v2\x17.api.v1.PaymentCustomerR\bcustomer2\x8b\x02\n" +
-	"\x0ePaymentService\x12n\n" +
-	"\vListCoupons\x12*.admin.v1.PaymentServiceListCouponsRequest\x1a+.admin.v1.PaymentServiceListCouponsResponse\"\x06\xd2\xf3\x18\x02\x01\x02\x12\x88\x01\n" +
+	"\bcustomer\x18\x01 \x01(\v2\x17.api.v1.PaymentCustomerR\bcustomer2\x8f\x02\n" +
+	"\x0ePaymentService\x12r\n" +
+	"\vListCoupons\x12*.admin.v1.PaymentServiceListCouponsRequest\x1a+.admin.v1.PaymentServiceListCouponsResponse\"\n" +
+	"\xd2\xf3\x18\x02\x01\x02\xe8\xf3\x18\x02\x12\x88\x01\n" +
 	"\x14AddBalanceToCustomer\x123.admin.v1.PaymentServiceAddBalanceToCustomerRequest\x1a4.admin.v1.PaymentServiceAddBalanceToCustomerResponse\"\x05\xd2\xf3\x18\x01\x01B\x93\x01\n" +
 	"\fcom.admin.v1B\fPaymentProtoP\x01Z4github.com/metal-stack-cloud/api/go/admin/v1;adminv1\xa2\x02\x03AXX\xaa\x02\bAdmin.V1\xca\x02\bAdmin\\V1\xe2\x02\x14Admin\\V1\\GPBMetadata\xea\x02\tAdmin::V1b\x06proto3"
 
