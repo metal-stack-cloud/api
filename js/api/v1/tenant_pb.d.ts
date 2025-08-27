@@ -319,6 +319,12 @@ export type TenantServiceGetRequest = Message<"api.v1.TenantServiceGetRequest"> 
      * @generated from field: string login = 1;
      */
     login: string;
+    /**
+     * Get Request for payment validation
+     *
+     * @generated from field: optional bool is_payment_validation = 2;
+     */
+    isPaymentValidation?: boolean;
 };
 /**
  * Describes the message api.v1.TenantServiceGetRequest.

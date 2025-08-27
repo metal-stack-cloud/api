@@ -591,9 +591,11 @@ func (x *TenantServiceListRequest) GetName() string {
 type TenantServiceGetRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Login of the tenant
-	Login         string `protobuf:"bytes,1,opt,name=login,proto3" json:"login,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
+	Login string `protobuf:"bytes,1,opt,name=login,proto3" json:"login,omitempty"`
+	// Get Request for payment validation
+	IsPaymentValidation *bool `protobuf:"varint,2,opt,name=is_payment_validation,json=isPaymentValidation,proto3,oneof" json:"is_payment_validation,omitempty"`
+	unknownFields       protoimpl.UnknownFields
+	sizeCache           protoimpl.SizeCache
 }
 
 func (x *TenantServiceGetRequest) Reset() {
@@ -631,6 +633,13 @@ func (x *TenantServiceGetRequest) GetLogin() string {
 		return x.Login
 	}
 	return ""
+}
+
+func (x *TenantServiceGetRequest) GetIsPaymentValidation() bool {
+	if x != nil && x.IsPaymentValidation != nil {
+		return *x.IsPaymentValidation
+	}
+	return false
 }
 
 // TenantServiceCreateRequest is the request payload of the tenant create request
@@ -2011,9 +2020,11 @@ const file_api_v1_tenant_proto_rawDesc = "" +
 	"\x02id\x18\x01 \x01(\tH\x00R\x02id\x88\x01\x01\x12\"\n" +
 	"\x04name\x18\x02 \x01(\tB\t\xbaH\x06r\x04\x10\x02\x18@H\x01R\x04name\x88\x01\x01B\x05\n" +
 	"\x03_idB\a\n" +
-	"\x05_name\"/\n" +
+	"\x05_name\"\x82\x01\n" +
 	"\x17TenantServiceGetRequest\x12\x14\n" +
-	"\x05login\x18\x01 \x01(\tR\x05login\"\xa2\x02\n" +
+	"\x05login\x18\x01 \x01(\tR\x05login\x127\n" +
+	"\x15is_payment_validation\x18\x02 \x01(\bH\x00R\x13isPaymentValidation\x88\x01\x01B\x18\n" +
+	"\x16_is_payment_validation\"\xa2\x02\n" +
 	"\x1aTenantServiceCreateRequest\x12\x1d\n" +
 	"\x04name\x18\x01 \x01(\tB\t\xbaH\x06r\x04\x10\x02\x18@R\x04name\x121\n" +
 	"\vdescription\x18\x02 \x01(\tB\n" +
@@ -2240,6 +2251,7 @@ func file_api_v1_tenant_proto_init() {
 	file_api_v1_payment_proto_init()
 	file_api_v1_tenant_proto_msgTypes[3].OneofWrappers = []any{}
 	file_api_v1_tenant_proto_msgTypes[5].OneofWrappers = []any{}
+	file_api_v1_tenant_proto_msgTypes[6].OneofWrappers = []any{}
 	file_api_v1_tenant_proto_msgTypes[7].OneofWrappers = []any{}
 	file_api_v1_tenant_proto_msgTypes[8].OneofWrappers = []any{}
 	type x struct{}

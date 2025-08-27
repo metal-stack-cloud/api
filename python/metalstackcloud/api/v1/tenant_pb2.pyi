@@ -113,10 +113,12 @@ class TenantServiceListRequest(_message.Message):
     def __init__(self, id: _Optional[str] = ..., name: _Optional[str] = ...) -> None: ...
 
 class TenantServiceGetRequest(_message.Message):
-    __slots__ = ("login",)
+    __slots__ = ("login", "is_payment_validation")
     LOGIN_FIELD_NUMBER: _ClassVar[int]
+    IS_PAYMENT_VALIDATION_FIELD_NUMBER: _ClassVar[int]
     login: str
-    def __init__(self, login: _Optional[str] = ...) -> None: ...
+    is_payment_validation: bool
+    def __init__(self, login: _Optional[str] = ..., is_payment_validation: bool = ...) -> None: ...
 
 class TenantServiceCreateRequest(_message.Message):
     __slots__ = ("name", "description", "email", "avatar_url", "phone_number")

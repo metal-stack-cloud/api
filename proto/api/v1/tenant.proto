@@ -192,6 +192,8 @@ message TenantServiceListRequest {
 message TenantServiceGetRequest {
   // Login of the tenant
   string login = 1;
+  // Get Request for payment validation
+  optional bool is_payment_validation = 2;
 }
 
 // TenantServiceCreateRequest is the request payload of the tenant create request

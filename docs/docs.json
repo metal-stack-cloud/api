@@ -11654,7 +11654,7 @@
           "description": "TenantServiceGetRequest is the request payload of the tenant get request",
           "hasExtensions": false,
           "hasFields": true,
-          "hasOneofs": false,
+          "hasOneofs": true,
           "extensions": [],
           "fields": [
             {
@@ -11667,6 +11667,18 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "is_payment_validation",
+              "description": "Get Request for payment validation",
+              "label": "optional",
+              "type": "bool",
+              "longType": "bool",
+              "fullType": "bool",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "_is_payment_validation",
               "defaultValue": ""
             }
           ]
