@@ -941,11 +941,14 @@ const file_admin_v1_storage_proto_rawDesc = "" +
 	"\x05_nameB\t\n" +
 	"\a_tenant\"U\n" +
 	"#StorageServiceListSnapshotsResponse\x12.\n" +
-	"\tsnapshots\x18\x01 \x03(\v2\x10.api.v1.SnapshotR\tsnapshots2\xe6\x02\n" +
-	"\x0eStorageService\x12n\n" +
-	"\vClusterInfo\x12*.admin.v1.StorageServiceClusterInfoRequest\x1a+.admin.v1.StorageServiceClusterInfoResponse\"\x06\xd2\xf3\x18\x02\x01\x02\x12n\n" +
-	"\vListVolumes\x12*.admin.v1.StorageServiceListVolumesRequest\x1a+.admin.v1.StorageServiceListVolumesResponse\"\x06\xd2\xf3\x18\x02\x01\x02\x12t\n" +
-	"\rListSnapshots\x12,.admin.v1.StorageServiceListSnapshotsRequest\x1a-.admin.v1.StorageServiceListSnapshotsResponse\"\x06\xd2\xf3\x18\x02\x01\x02B\x93\x01\n" +
+	"\tsnapshots\x18\x01 \x03(\v2\x10.api.v1.SnapshotR\tsnapshots2\xf2\x02\n" +
+	"\x0eStorageService\x12r\n" +
+	"\vClusterInfo\x12*.admin.v1.StorageServiceClusterInfoRequest\x1a+.admin.v1.StorageServiceClusterInfoResponse\"\n" +
+	"\xd2\xf3\x18\x02\x01\x02\xe8\xf3\x18\x02\x12r\n" +
+	"\vListVolumes\x12*.admin.v1.StorageServiceListVolumesRequest\x1a+.admin.v1.StorageServiceListVolumesResponse\"\n" +
+	"\xd2\xf3\x18\x02\x01\x02\xe8\xf3\x18\x02\x12x\n" +
+	"\rListSnapshots\x12,.admin.v1.StorageServiceListSnapshotsRequest\x1a-.admin.v1.StorageServiceListSnapshotsResponse\"\n" +
+	"\xd2\xf3\x18\x02\x01\x02\xe8\xf3\x18\x02B\x93\x01\n" +
 	"\fcom.admin.v1B\fStorageProtoP\x01Z4github.com/metal-stack-cloud/api/go/admin/v1;adminv1\xa2\x02\x03AXX\xaa\x02\bAdmin.V1\xca\x02\bAdmin\\V1\xe2\x02\x14Admin\\V1\\GPBMetadata\xea\x02\tAdmin::V1b\x06proto3"
 
 var (

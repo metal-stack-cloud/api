@@ -26,7 +26,7 @@ from metalstackcloud.api.v1 import common_pb2 as api_dot_v1_dot_common__pb2
 from metalstackcloud.api.v1 import payment_pb2 as api_dot_v1_dot_payment__pb2
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x16\x61\x64min/v1/payment.proto\x12\x08\x61\x64min.v1\x1a\x13\x61pi/v1/common.proto\x1a\x14\x61pi/v1/payment.proto\"\"\n PaymentServiceListCouponsRequest\"M\n!PaymentServiceListCouponsResponse\x12(\n\x07\x63oupons\x18\x01 \x03(\x0b\x32\x0e.api.v1.CouponR\x07\x63oupons\"n\n)PaymentServiceAddBalanceToCustomerRequest\x12\x1b\n\ttenant_id\x18\x01 \x01(\tR\x08tenantId\x12$\n\x0e\x62\x61lance_to_add\x18\x02 \x01(\x04R\x0c\x62\x61lanceToAdd\"a\n*PaymentServiceAddBalanceToCustomerResponse\x12\x33\n\x08\x63ustomer\x18\x01 \x01(\x0b\x32\x17.api.v1.PaymentCustomerR\x08\x63ustomer2\x8b\x02\n\x0ePaymentService\x12n\n\x0bListCoupons\x12*.admin.v1.PaymentServiceListCouponsRequest\x1a+.admin.v1.PaymentServiceListCouponsResponse\"\x06\xd2\xf3\x18\x02\x01\x02\x12\x88\x01\n\x14\x41\x64\x64\x42\x61lanceToCustomer\x12\x33.admin.v1.PaymentServiceAddBalanceToCustomerRequest\x1a\x34.admin.v1.PaymentServiceAddBalanceToCustomerResponse\"\x05\xd2\xf3\x18\x01\x01\x42\x93\x01\n\x0c\x63om.admin.v1B\x0cPaymentProtoP\x01Z4github.com/metal-stack-cloud/api/go/admin/v1;adminv1\xa2\x02\x03\x41XX\xaa\x02\x08\x41\x64min.V1\xca\x02\x08\x41\x64min\\V1\xe2\x02\x14\x41\x64min\\V1\\GPBMetadata\xea\x02\tAdmin::V1b\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x16\x61\x64min/v1/payment.proto\x12\x08\x61\x64min.v1\x1a\x13\x61pi/v1/common.proto\x1a\x14\x61pi/v1/payment.proto\"\"\n PaymentServiceListCouponsRequest\"M\n!PaymentServiceListCouponsResponse\x12(\n\x07\x63oupons\x18\x01 \x03(\x0b\x32\x0e.api.v1.CouponR\x07\x63oupons\"n\n)PaymentServiceAddBalanceToCustomerRequest\x12\x1b\n\ttenant_id\x18\x01 \x01(\tR\x08tenantId\x12$\n\x0e\x62\x61lance_to_add\x18\x02 \x01(\x04R\x0c\x62\x61lanceToAdd\"a\n*PaymentServiceAddBalanceToCustomerResponse\x12\x33\n\x08\x63ustomer\x18\x01 \x01(\x0b\x32\x17.api.v1.PaymentCustomerR\x08\x63ustomer2\x8f\x02\n\x0ePaymentService\x12r\n\x0bListCoupons\x12*.admin.v1.PaymentServiceListCouponsRequest\x1a+.admin.v1.PaymentServiceListCouponsResponse\"\n\xd2\xf3\x18\x02\x01\x02\xe8\xf3\x18\x02\x12\x88\x01\n\x14\x41\x64\x64\x42\x61lanceToCustomer\x12\x33.admin.v1.PaymentServiceAddBalanceToCustomerRequest\x1a\x34.admin.v1.PaymentServiceAddBalanceToCustomerResponse\"\x05\xd2\xf3\x18\x01\x01\x42\x93\x01\n\x0c\x63om.admin.v1B\x0cPaymentProtoP\x01Z4github.com/metal-stack-cloud/api/go/admin/v1;adminv1\xa2\x02\x03\x41XX\xaa\x02\x08\x41\x64min.V1\xca\x02\x08\x41\x64min\\V1\xe2\x02\x14\x41\x64min\\V1\\GPBMetadata\xea\x02\tAdmin::V1b\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
@@ -35,7 +35,7 @@ if not _descriptor._USE_C_DESCRIPTORS:
   _globals['DESCRIPTOR']._loaded_options = None
   _globals['DESCRIPTOR']._serialized_options = b'\n\014com.admin.v1B\014PaymentProtoP\001Z4github.com/metal-stack-cloud/api/go/admin/v1;adminv1\242\002\003AXX\252\002\010Admin.V1\312\002\010Admin\\V1\342\002\024Admin\\V1\\GPBMetadata\352\002\tAdmin::V1'
   _globals['_PAYMENTSERVICE'].methods_by_name['ListCoupons']._loaded_options = None
-  _globals['_PAYMENTSERVICE'].methods_by_name['ListCoupons']._serialized_options = b'\322\363\030\002\001\002'
+  _globals['_PAYMENTSERVICE'].methods_by_name['ListCoupons']._serialized_options = b'\322\363\030\002\001\002\350\363\030\002'
   _globals['_PAYMENTSERVICE'].methods_by_name['AddBalanceToCustomer']._loaded_options = None
   _globals['_PAYMENTSERVICE'].methods_by_name['AddBalanceToCustomer']._serialized_options = b'\322\363\030\001\001'
   _globals['_PAYMENTSERVICELISTCOUPONSREQUEST']._serialized_start=79
@@ -47,5 +47,5 @@ if not _descriptor._USE_C_DESCRIPTORS:
   _globals['_PAYMENTSERVICEADDBALANCETOCUSTOMERRESPONSE']._serialized_start=306
   _globals['_PAYMENTSERVICEADDBALANCETOCUSTOMERRESPONSE']._serialized_end=403
   _globals['_PAYMENTSERVICE']._serialized_start=406
-  _globals['_PAYMENTSERVICE']._serialized_end=673
+  _globals['_PAYMENTSERVICE']._serialized_end=677
 # @@protoc_insertion_point(module_scope)

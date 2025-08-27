@@ -159,9 +159,10 @@ const file_admin_v1_project_proto_rawDesc = "" +
 	"\bprojects\x18\x01 \x03(\v2\x0f.api.v1.ProjectR\bprojects\x12 \n" +
 	"\tnext_page\x18\x02 \x01(\x04H\x00R\bnextPage\x88\x01\x01B\f\n" +
 	"\n" +
-	"_next_page2k\n" +
-	"\x0eProjectService\x12Y\n" +
-	"\x04List\x12#.admin.v1.ProjectServiceListRequest\x1a$.admin.v1.ProjectServiceListResponse\"\x06\xd2\xf3\x18\x02\x01\x02B\x93\x01\n" +
+	"_next_page2o\n" +
+	"\x0eProjectService\x12]\n" +
+	"\x04List\x12#.admin.v1.ProjectServiceListRequest\x1a$.admin.v1.ProjectServiceListResponse\"\n" +
+	"\xd2\xf3\x18\x02\x01\x02\xe8\xf3\x18\x02B\x93\x01\n" +
 	"\fcom.admin.v1B\fProjectProtoP\x01Z4github.com/metal-stack-cloud/api/go/admin/v1;adminv1\xa2\x02\x03AXX\xaa\x02\bAdmin.V1\xca\x02\bAdmin\\V1\xe2\x02\x14Admin\\V1\\GPBMetadata\xea\x02\tAdmin::V1b\x06proto3"
 
 var (
