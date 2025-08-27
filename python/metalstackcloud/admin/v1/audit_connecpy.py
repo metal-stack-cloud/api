@@ -15,6 +15,7 @@ import metalstackcloud.admin.v1.audit_pb2 as admin_dot_v1_dot_audit__pb2
 
 
 class AuditService(Protocol):
+    async def Get(self, req: admin_dot_v1_dot_audit__pb2.AuditServiceGetRequest, ctx: ServiceContext) -> admin_dot_v1_dot_audit__pb2.AuditServiceGetResponse: ...
     async def List(self, req: admin_dot_v1_dot_audit__pb2.AuditServiceListRequest, ctx: ServiceContext) -> admin_dot_v1_dot_audit__pb2.AuditServiceListResponse: ...
 
 
@@ -23,6 +24,14 @@ class AuditServiceServer(ConnecpyServer):
         super().__init__()
         self._prefix = f"{server_path_prefix}/admin.v1.AuditService"
         self._endpoints = {
+            "Get": Endpoint[admin_dot_v1_dot_audit__pb2.AuditServiceGetRequest, admin_dot_v1_dot_audit__pb2.AuditServiceGetResponse](
+                service_name="AuditService",
+                name="Get",
+                function=getattr(service, "Get"),
+                input=admin_dot_v1_dot_audit__pb2.AuditServiceGetRequest,
+                output=admin_dot_v1_dot_audit__pb2.AuditServiceGetResponse,
+                allowed_methods=("POST",),
+            ),
             "List": Endpoint[admin_dot_v1_dot_audit__pb2.AuditServiceListRequest, admin_dot_v1_dot_audit__pb2.AuditServiceListResponse](
                 service_name="AuditService",
                 name="List",
@@ -38,6 +47,7 @@ class AuditServiceServer(ConnecpyServer):
 
 
 class AuditServiceSync(Protocol):
+    def Get(self, req: admin_dot_v1_dot_audit__pb2.AuditServiceGetRequest, ctx: ServiceContext) -> admin_dot_v1_dot_audit__pb2.AuditServiceGetResponse: ...
     def List(self, req: admin_dot_v1_dot_audit__pb2.AuditServiceListRequest, ctx: ServiceContext) -> admin_dot_v1_dot_audit__pb2.AuditServiceListResponse: ...
 
 
@@ -46,6 +56,14 @@ class AuditServiceServerSync(ConnecpyServer):
         super().__init__()
         self._prefix = f"{server_path_prefix}/admin.v1.AuditService"
         self._endpoints = {
+            "Get": Endpoint[admin_dot_v1_dot_audit__pb2.AuditServiceGetRequest, admin_dot_v1_dot_audit__pb2.AuditServiceGetResponse](
+                service_name="AuditService",
+                name="Get",
+                function=getattr(service, "Get"),
+                input=admin_dot_v1_dot_audit__pb2.AuditServiceGetRequest,
+                output=admin_dot_v1_dot_audit__pb2.AuditServiceGetResponse,
+                allowed_methods=("POST",),
+            ),
             "List": Endpoint[admin_dot_v1_dot_audit__pb2.AuditServiceListRequest, admin_dot_v1_dot_audit__pb2.AuditServiceListResponse](
                 service_name="AuditService",
                 name="List",
@@ -61,6 +79,24 @@ class AuditServiceServerSync(ConnecpyServer):
 
 
 class AuditServiceClient(ConnecpyClient):
+    def Get(
+        self,
+        request: admin_dot_v1_dot_audit__pb2.AuditServiceGetRequest,
+        *,
+        ctx: Optional[ClientContext] = None,
+        server_path_prefix: str = "",
+        **kwargs,
+    ) -> admin_dot_v1_dot_audit__pb2.AuditServiceGetResponse:
+        method = "POST"
+        return self._make_request(
+            url=f"{server_path_prefix}/admin.v1.AuditService/Get",
+            ctx=ctx,
+            request=request,
+            response_class=admin_dot_v1_dot_audit__pb2.AuditServiceGetResponse,
+            method=method,
+            **kwargs,
+        )
+
     def List(
         self,
         request: admin_dot_v1_dot_audit__pb2.AuditServiceListRequest,
@@ -81,6 +117,26 @@ class AuditServiceClient(ConnecpyClient):
 
 
 class AsyncAuditServiceClient(AsyncConnecpyClient):
+    async def Get(
+        self,
+        request: admin_dot_v1_dot_audit__pb2.AuditServiceGetRequest,
+        *,
+        ctx: Optional[ClientContext] = None,
+        server_path_prefix: str = "",
+        session: Union[httpx.AsyncClient, None] = None,
+        **kwargs,
+    ) -> admin_dot_v1_dot_audit__pb2.AuditServiceGetResponse:
+        method = "POST"
+        return await self._make_request(
+            url=f"{server_path_prefix}/admin.v1.AuditService/Get",
+            ctx=ctx,
+            request=request,
+            response_class=admin_dot_v1_dot_audit__pb2.AuditServiceGetResponse,
+            method=method,
+            session=session,
+            **kwargs,
+        )
+
     async def List(
         self,
         request: admin_dot_v1_dot_audit__pb2.AuditServiceListRequest,

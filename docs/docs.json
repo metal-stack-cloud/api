@@ -4061,6 +4061,66 @@
       "extensions": [],
       "messages": [
         {
+          "name": "AuditServiceGetRequest",
+          "longName": "AuditServiceGetRequest",
+          "fullName": "admin.v1.AuditServiceGetRequest",
+          "description": "AuditServiceGetRequest is the request payload of a audit get request",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": true,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "uuid",
+              "description": "Uuid of the audit trace",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "phase",
+              "description": "Phase specifies the audit phase. Defaults to request",
+              "label": "optional",
+              "type": "AuditPhase",
+              "longType": "api.v1.AuditPhase",
+              "fullType": "api.v1.AuditPhase",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "_phase",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "AuditServiceGetResponse",
+          "longName": "AuditServiceGetResponse",
+          "fullName": "admin.v1.AuditServiceGetResponse",
+          "description": "AuditServiceGetResponse is the response payload of a audit get request",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "trace",
+              "description": "Trace is the audit trace",
+              "label": "",
+              "type": "AuditTrace",
+              "longType": "api.v1.AuditTrace",
+              "fullType": "api.v1.AuditTrace",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
           "name": "AuditServiceListRequest",
           "longName": "AuditServiceListRequest",
           "fullName": "admin.v1.AuditServiceListRequest",
@@ -4236,6 +4296,18 @@
           "fullName": "admin.v1.AuditService",
           "description": "AuditService serves audit related functions",
           "methods": [
+            {
+              "name": "Get",
+              "description": "Get an audit trace",
+              "requestType": "AuditServiceGetRequest",
+              "requestLongType": "AuditServiceGetRequest",
+              "requestFullType": "admin.v1.AuditServiceGetRequest",
+              "requestStreaming": false,
+              "responseType": "AuditServiceGetResponse",
+              "responseLongType": "AuditServiceGetResponse",
+              "responseFullType": "admin.v1.AuditServiceGetResponse",
+              "responseStreaming": false
+            },
             {
               "name": "List",
               "description": "List all audit traces",

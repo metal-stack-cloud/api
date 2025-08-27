@@ -16,7 +16,7 @@ import type { Message } from "@bufbuild/protobuf";
  * Describes the file admin/v1/audit.proto.
  */
 export const file_admin_v1_audit: GenFile = /*@__PURE__*/
-  fileDesc("ChRhZG1pbi92MS9hdWRpdC5wcm90bxIIYWRtaW4udjEimwQKF0F1ZGl0U2VydmljZUxpc3RSZXF1ZXN0EhsKBHV1aWQYAiABKAlCCLpIBXIDsAEBSACIAQESLQoEZnJvbRgDIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXBIAYgBARIrCgJ0bxgEIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXBIAogBARIdCgR1c2VyGAUgASgJQgq6SAdyBRACGIABSAOIAQESHgoHcHJvamVjdBgGIAEoCUIIukgFcgOwAQFIBIgBARIfCgZtZXRob2QYByABKAlCCrpIB3IFEAIYgAJIBYgBARIfCglzb3VyY2VfaXAYCCABKAlCB7pIBHICcAFIBogBARIhCgtyZXN1bHRfY29kZRgJIAEoBUIHukgEGgIoAEgHiAEBEh0KBGJvZHkYCiABKAlCCrpIB3IFEAIYgAJICIgBARIeCgVsaW1pdBgLIAEoBUIKukgHGgUY6AcgAEgJiAEBEjAKBXBoYXNlGAwgASgOMhIuYXBpLnYxLkF1ZGl0UGhhc2VCCLpIBYIBAhABSAqIAQFCBwoFX3V1aWRCBwoFX2Zyb21CBQoDX3RvQgcKBV91c2VyQgoKCF9wcm9qZWN0QgkKB19tZXRob2RCDAoKX3NvdXJjZV9pcEIOCgxfcmVzdWx0X2NvZGVCBwoFX2JvZHlCCAoGX2xpbWl0QggKBl9waGFzZSI+ChhBdWRpdFNlcnZpY2VMaXN0UmVzcG9uc2USIgoGdHJhY2VzGAEgAygLMhIuYXBpLnYxLkF1ZGl0VHJhY2UyZQoMQXVkaXRTZXJ2aWNlElUKBExpc3QSIS5hZG1pbi52MS5BdWRpdFNlcnZpY2VMaXN0UmVxdWVzdBoiLmFkbWluLnYxLkF1ZGl0U2VydmljZUxpc3RSZXNwb25zZSIG0vMYAgECQpEBCgxjb20uYWRtaW4udjFCCkF1ZGl0UHJvdG9QAVo0Z2l0aHViLmNvbS9tZXRhbC1zdGFjay1jbG91ZC9hcGkvZ28vYWRtaW4vdjE7YWRtaW52MaICA0FYWKoCCEFkbWluLlYxygIIQWRtaW5cVjHiAhRBZG1pblxWMVxHUEJNZXRhZGF0YeoCCUFkbWluOjpWMWIGcHJvdG8z", [file_api_v1_audit, file_api_v1_common, file_buf_validate_validate, file_google_protobuf_timestamp]);
+  fileDesc("ChRhZG1pbi92MS9hdWRpdC5wcm90bxIIYWRtaW4udjEimwQKF0F1ZGl0U2VydmljZUxpc3RSZXF1ZXN0EhsKBHV1aWQYAiABKAlCCLpIBXIDsAEBSACIAQESLQoEZnJvbRgDIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXBIAYgBARIrCgJ0bxgEIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXBIAogBARIdCgR1c2VyGAUgASgJQgq6SAdyBRACGIABSAOIAQESHgoHcHJvamVjdBgGIAEoCUIIukgFcgOwAQFIBIgBARIfCgZtZXRob2QYByABKAlCCrpIB3IFEAIYgAJIBYgBARIfCglzb3VyY2VfaXAYCCABKAlCB7pIBHICcAFIBogBARIhCgtyZXN1bHRfY29kZRgJIAEoBUIHukgEGgIoAEgHiAEBEh0KBGJvZHkYCiABKAlCCrpIB3IFEAIYgAJICIgBARIeCgVsaW1pdBgLIAEoBUIKukgHGgUY6AcgAEgJiAEBEjAKBXBoYXNlGAwgASgOMhIuYXBpLnYxLkF1ZGl0UGhhc2VCCLpIBYIBAhABSAqIAQFCBwoFX3V1aWRCBwoFX2Zyb21CBQoDX3RvQgcKBV91c2VyQgoKCF9wcm9qZWN0QgkKB19tZXRob2RCDAoKX3NvdXJjZV9pcEIOCgxfcmVzdWx0X2NvZGVCBwoFX2JvZHlCCAoGX2xpbWl0QggKBl9waGFzZSI+ChhBdWRpdFNlcnZpY2VMaXN0UmVzcG9uc2USIgoGdHJhY2VzGAEgAygLMhIuYXBpLnYxLkF1ZGl0VHJhY2UibAoWQXVkaXRTZXJ2aWNlR2V0UmVxdWVzdBIWCgR1dWlkGAEgASgJQgi6SAVyA7ABARIwCgVwaGFzZRgCIAEoDjISLmFwaS52MS5BdWRpdFBoYXNlQgi6SAWCAQIQAUgAiAEBQggKBl9waGFzZSI8ChdBdWRpdFNlcnZpY2VHZXRSZXNwb25zZRIhCgV0cmFjZRgBIAEoCzISLmFwaS52MS5BdWRpdFRyYWNlMrkBCgxBdWRpdFNlcnZpY2USUgoDR2V0EiAuYWRtaW4udjEuQXVkaXRTZXJ2aWNlR2V0UmVxdWVzdBohLmFkbWluLnYxLkF1ZGl0U2VydmljZUdldFJlc3BvbnNlIgbS8xgCAQISVQoETGlzdBIhLmFkbWluLnYxLkF1ZGl0U2VydmljZUxpc3RSZXF1ZXN0GiIuYWRtaW4udjEuQXVkaXRTZXJ2aWNlTGlzdFJlc3BvbnNlIgbS8xgCAQJCkQEKDGNvbS5hZG1pbi52MUIKQXVkaXRQcm90b1ABWjRnaXRodWIuY29tL21ldGFsLXN0YWNrLWNsb3VkL2FwaS9nby9hZG1pbi92MTthZG1pbnYxogIDQVhYqgIIQWRtaW4uVjHKAghBZG1pblxWMeICFEFkbWluXFYxXEdQQk1ldGFkYXRh6gIJQWRtaW46OlYxYgZwcm90bzM", [file_api_v1_audit, file_api_v1_common, file_buf_validate_validate, file_google_protobuf_timestamp]);
 
 /**
  * AuditServiceListRequest is the request payload to list audits
@@ -134,11 +134,70 @@ export const AuditServiceListResponseSchema: GenMessage<AuditServiceListResponse
   messageDesc(file_admin_v1_audit, 1);
 
 /**
+ * AuditServiceGetRequest is the request payload of a audit get request
+ *
+ * @generated from message admin.v1.AuditServiceGetRequest
+ */
+export type AuditServiceGetRequest = Message<"admin.v1.AuditServiceGetRequest"> & {
+  /**
+   * Uuid of the audit trace
+   *
+   * @generated from field: string uuid = 1;
+   */
+  uuid: string;
+
+  /**
+   * Phase specifies the audit phase. Defaults to request
+   *
+   * @generated from field: optional api.v1.AuditPhase phase = 2;
+   */
+  phase?: AuditPhase;
+};
+
+/**
+ * Describes the message admin.v1.AuditServiceGetRequest.
+ * Use `create(AuditServiceGetRequestSchema)` to create a new message.
+ */
+export const AuditServiceGetRequestSchema: GenMessage<AuditServiceGetRequest> = /*@__PURE__*/
+  messageDesc(file_admin_v1_audit, 2);
+
+/**
+ * AuditServiceGetResponse is the response payload of a audit get request
+ *
+ * @generated from message admin.v1.AuditServiceGetResponse
+ */
+export type AuditServiceGetResponse = Message<"admin.v1.AuditServiceGetResponse"> & {
+  /**
+   * Trace is the audit trace
+   *
+   * @generated from field: api.v1.AuditTrace trace = 1;
+   */
+  trace?: AuditTrace;
+};
+
+/**
+ * Describes the message admin.v1.AuditServiceGetResponse.
+ * Use `create(AuditServiceGetResponseSchema)` to create a new message.
+ */
+export const AuditServiceGetResponseSchema: GenMessage<AuditServiceGetResponse> = /*@__PURE__*/
+  messageDesc(file_admin_v1_audit, 3);
+
+/**
  * AuditService serves audit related functions
  *
  * @generated from service admin.v1.AuditService
  */
 export const AuditService: GenService<{
+  /**
+   * Get an audit trace
+   *
+   * @generated from rpc admin.v1.AuditService.Get
+   */
+  get: {
+    methodKind: "unary";
+    input: typeof AuditServiceGetRequestSchema;
+    output: typeof AuditServiceGetResponseSchema;
+  },
   /**
    * List all audit traces
    *

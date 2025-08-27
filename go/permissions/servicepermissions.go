@@ -38,6 +38,7 @@ func GetServicePermissions() *ServicePermissions {
 		Roles: Roles{
 			Admin: Admin{
 				"ADMIN_ROLE_EDITOR": []string{
+					"/admin.v1.AuditService/Get",
 					"/admin.v1.AuditService/List",
 					"/admin.v1.ClusterService/Get",
 					"/admin.v1.ClusterService/List",
@@ -56,6 +57,7 @@ func GetServicePermissions() *ServicePermissions {
 					"/admin.v1.TokenService/Revoke",
 				},
 				"ADMIN_ROLE_VIEWER": []string{
+					"/admin.v1.AuditService/Get",
 					"/admin.v1.AuditService/List",
 					"/admin.v1.ClusterService/Get",
 					"/admin.v1.ClusterService/List",
@@ -181,6 +183,7 @@ func GetServicePermissions() *ServicePermissions {
 			},
 		},
 		Methods: map[string]bool{
+			"/admin.v1.AuditService/Get":                    true,
 			"/admin.v1.AuditService/List":                   true,
 			"/admin.v1.ClusterService/Credentials":          true,
 			"/admin.v1.ClusterService/Get":                  true,
@@ -296,6 +299,7 @@ func GetServicePermissions() *ServicePermissions {
 				"/api.v1.UserService/Get":               true,
 			},
 			Admin: map[string]bool{
+				"/admin.v1.AuditService/Get":                    true,
 				"/admin.v1.AuditService/List":                   true,
 				"/admin.v1.ClusterService/Credentials":          true,
 				"/admin.v1.ClusterService/Get":                  true,
@@ -373,6 +377,7 @@ func GetServicePermissions() *ServicePermissions {
 			"/api.v1.IPService/Update":      true,
 		},
 		Auditable: map[string]bool{
+			"/admin.v1.AuditService/Get":                    true,
 			"/admin.v1.AuditService/List":                   true,
 			"/admin.v1.ClusterService/Credentials":          true,
 			"/admin.v1.ClusterService/Get":                  false,

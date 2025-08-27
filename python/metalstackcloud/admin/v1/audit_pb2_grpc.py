@@ -15,6 +15,11 @@ class AuditServiceStub(object):
         Args:
             channel: A grpc.Channel.
         """
+        self.Get = channel.unary_unary(
+                '/admin.v1.AuditService/Get',
+                request_serializer=admin_dot_v1_dot_audit__pb2.AuditServiceGetRequest.SerializeToString,
+                response_deserializer=admin_dot_v1_dot_audit__pb2.AuditServiceGetResponse.FromString,
+                _registered_method=True)
         self.List = channel.unary_unary(
                 '/admin.v1.AuditService/List',
                 request_serializer=admin_dot_v1_dot_audit__pb2.AuditServiceListRequest.SerializeToString,
@@ -26,6 +31,13 @@ class AuditServiceServicer(object):
     """AuditService serves audit related functions
     """
 
+    def Get(self, request, context):
+        """Get an audit trace
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
     def List(self, request, context):
         """List all audit traces
         """
@@ -36,6 +48,11 @@ class AuditServiceServicer(object):
 
 def add_AuditServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
+            'Get': grpc.unary_unary_rpc_method_handler(
+                    servicer.Get,
+                    request_deserializer=admin_dot_v1_dot_audit__pb2.AuditServiceGetRequest.FromString,
+                    response_serializer=admin_dot_v1_dot_audit__pb2.AuditServiceGetResponse.SerializeToString,
+            ),
             'List': grpc.unary_unary_rpc_method_handler(
                     servicer.List,
                     request_deserializer=admin_dot_v1_dot_audit__pb2.AuditServiceListRequest.FromString,
@@ -52,6 +69,33 @@ def add_AuditServiceServicer_to_server(servicer, server):
 class AuditService(object):
     """AuditService serves audit related functions
     """
+
+    @staticmethod
+    def Get(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/admin.v1.AuditService/Get',
+            admin_dot_v1_dot_audit__pb2.AuditServiceGetRequest.SerializeToString,
+            admin_dot_v1_dot_audit__pb2.AuditServiceGetResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
 
     @staticmethod
     def List(request,
