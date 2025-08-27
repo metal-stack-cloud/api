@@ -33,12 +33,16 @@ const (
 // reflection-formatted method names, remove the leading slash and convert the remaining slash to a
 // period.
 const (
+	// AuditServiceGetProcedure is the fully-qualified name of the AuditService's Get RPC.
+	AuditServiceGetProcedure = "/admin.v1.AuditService/Get"
 	// AuditServiceListProcedure is the fully-qualified name of the AuditService's List RPC.
 	AuditServiceListProcedure = "/admin.v1.AuditService/List"
 )
 
 // AuditServiceClient is a client for the admin.v1.AuditService service.
 type AuditServiceClient interface {
+	// Get an audit trace
+	Get(context.Context, *connect.Request[v1.AuditServiceGetRequest]) (*connect.Response[v1.AuditServiceGetResponse], error)
 	// List all audit traces
 	List(context.Context, *connect.Request[v1.AuditServiceListRequest]) (*connect.Response[v1.AuditServiceListResponse], error)
 }
@@ -54,6 +58,12 @@ func NewAuditServiceClient(httpClient connect.HTTPClient, baseURL string, opts .
 	baseURL = strings.TrimRight(baseURL, "/")
 	auditServiceMethods := v1.File_admin_v1_audit_proto.Services().ByName("AuditService").Methods()
 	return &auditServiceClient{
+		get: connect.NewClient[v1.AuditServiceGetRequest, v1.AuditServiceGetResponse](
+			httpClient,
+			baseURL+AuditServiceGetProcedure,
+			connect.WithSchema(auditServiceMethods.ByName("Get")),
+			connect.WithClientOptions(opts...),
+		),
 		list: connect.NewClient[v1.AuditServiceListRequest, v1.AuditServiceListResponse](
 			httpClient,
 			baseURL+AuditServiceListProcedure,
@@ -65,7 +75,13 @@ func NewAuditServiceClient(httpClient connect.HTTPClient, baseURL string, opts .
 
 // auditServiceClient implements AuditServiceClient.
 type auditServiceClient struct {
+	get  *connect.Client[v1.AuditServiceGetRequest, v1.AuditServiceGetResponse]
 	list *connect.Client[v1.AuditServiceListRequest, v1.AuditServiceListResponse]
+}
+
+// Get calls admin.v1.AuditService.Get.
+func (c *auditServiceClient) Get(ctx context.Context, req *connect.Request[v1.AuditServiceGetRequest]) (*connect.Response[v1.AuditServiceGetResponse], error) {
+	return c.get.CallUnary(ctx, req)
 }
 
 // List calls admin.v1.AuditService.List.
@@ -75,6 +91,8 @@ func (c *auditServiceClient) List(ctx context.Context, req *connect.Request[v1.A
 
 // AuditServiceHandler is an implementation of the admin.v1.AuditService service.
 type AuditServiceHandler interface {
+	// Get an audit trace
+	Get(context.Context, *connect.Request[v1.AuditServiceGetRequest]) (*connect.Response[v1.AuditServiceGetResponse], error)
 	// List all audit traces
 	List(context.Context, *connect.Request[v1.AuditServiceListRequest]) (*connect.Response[v1.AuditServiceListResponse], error)
 }
@@ -86,6 +104,12 @@ type AuditServiceHandler interface {
 // and JSON codecs. They also support gzip compression.
 func NewAuditServiceHandler(svc AuditServiceHandler, opts ...connect.HandlerOption) (string, http.Handler) {
 	auditServiceMethods := v1.File_admin_v1_audit_proto.Services().ByName("AuditService").Methods()
+	auditServiceGetHandler := connect.NewUnaryHandler(
+		AuditServiceGetProcedure,
+		svc.Get,
+		connect.WithSchema(auditServiceMethods.ByName("Get")),
+		connect.WithHandlerOptions(opts...),
+	)
 	auditServiceListHandler := connect.NewUnaryHandler(
 		AuditServiceListProcedure,
 		svc.List,
@@ -94,6 +118,8 @@ func NewAuditServiceHandler(svc AuditServiceHandler, opts ...connect.HandlerOpti
 	)
 	return "/admin.v1.AuditService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
+		case AuditServiceGetProcedure:
+			auditServiceGetHandler.ServeHTTP(w, r)
 		case AuditServiceListProcedure:
 			auditServiceListHandler.ServeHTTP(w, r)
 		default:
@@ -104,6 +130,10 @@ func NewAuditServiceHandler(svc AuditServiceHandler, opts ...connect.HandlerOpti
 
 // UnimplementedAuditServiceHandler returns CodeUnimplemented from all methods.
 type UnimplementedAuditServiceHandler struct{}
+
+func (UnimplementedAuditServiceHandler) Get(context.Context, *connect.Request[v1.AuditServiceGetRequest]) (*connect.Response[v1.AuditServiceGetResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("admin.v1.AuditService.Get is not implemented"))
+}
 
 func (UnimplementedAuditServiceHandler) List(context.Context, *connect.Request[v1.AuditServiceListRequest]) (*connect.Response[v1.AuditServiceListResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("admin.v1.AuditService.List is not implemented"))

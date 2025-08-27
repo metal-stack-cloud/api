@@ -106,11 +106,63 @@ export type AuditServiceListResponse = Message<"admin.v1.AuditServiceListRespons
  */
 export declare const AuditServiceListResponseSchema: GenMessage<AuditServiceListResponse>;
 /**
+ * AuditServiceGetRequest is the request payload of a audit get request
+ *
+ * @generated from message admin.v1.AuditServiceGetRequest
+ */
+export type AuditServiceGetRequest = Message<"admin.v1.AuditServiceGetRequest"> & {
+    /**
+     * Uuid of the audit trace
+     *
+     * @generated from field: string uuid = 1;
+     */
+    uuid: string;
+    /**
+     * Phase specifies the audit phase. Defaults to request
+     *
+     * @generated from field: optional api.v1.AuditPhase phase = 2;
+     */
+    phase?: AuditPhase;
+};
+/**
+ * Describes the message admin.v1.AuditServiceGetRequest.
+ * Use `create(AuditServiceGetRequestSchema)` to create a new message.
+ */
+export declare const AuditServiceGetRequestSchema: GenMessage<AuditServiceGetRequest>;
+/**
+ * AuditServiceGetResponse is the response payload of a audit get request
+ *
+ * @generated from message admin.v1.AuditServiceGetResponse
+ */
+export type AuditServiceGetResponse = Message<"admin.v1.AuditServiceGetResponse"> & {
+    /**
+     * Trace is the audit trace
+     *
+     * @generated from field: api.v1.AuditTrace trace = 1;
+     */
+    trace?: AuditTrace;
+};
+/**
+ * Describes the message admin.v1.AuditServiceGetResponse.
+ * Use `create(AuditServiceGetResponseSchema)` to create a new message.
+ */
+export declare const AuditServiceGetResponseSchema: GenMessage<AuditServiceGetResponse>;
+/**
  * AuditService serves audit related functions
  *
  * @generated from service admin.v1.AuditService
  */
 export declare const AuditService: GenService<{
+    /**
+     * Get an audit trace
+     *
+     * @generated from rpc admin.v1.AuditService.Get
+     */
+    get: {
+        methodKind: "unary";
+        input: typeof AuditServiceGetRequestSchema;
+        output: typeof AuditServiceGetResponseSchema;
+    };
     /**
      * List all audit traces
      *

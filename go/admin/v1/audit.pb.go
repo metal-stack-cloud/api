@@ -209,6 +209,107 @@ func (x *AuditServiceListResponse) GetTraces() []*v1.AuditTrace {
 	return nil
 }
 
+// AuditServiceGetRequest is the request payload of a audit get request
+type AuditServiceGetRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Uuid of the audit trace
+	Uuid string `protobuf:"bytes,1,opt,name=uuid,proto3" json:"uuid,omitempty"`
+	// Phase specifies the audit phase. Defaults to request
+	Phase         *v1.AuditPhase `protobuf:"varint,2,opt,name=phase,proto3,enum=api.v1.AuditPhase,oneof" json:"phase,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *AuditServiceGetRequest) Reset() {
+	*x = AuditServiceGetRequest{}
+	mi := &file_admin_v1_audit_proto_msgTypes[2]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *AuditServiceGetRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*AuditServiceGetRequest) ProtoMessage() {}
+
+func (x *AuditServiceGetRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_admin_v1_audit_proto_msgTypes[2]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use AuditServiceGetRequest.ProtoReflect.Descriptor instead.
+func (*AuditServiceGetRequest) Descriptor() ([]byte, []int) {
+	return file_admin_v1_audit_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *AuditServiceGetRequest) GetUuid() string {
+	if x != nil {
+		return x.Uuid
+	}
+	return ""
+}
+
+func (x *AuditServiceGetRequest) GetPhase() v1.AuditPhase {
+	if x != nil && x.Phase != nil {
+		return *x.Phase
+	}
+	return v1.AuditPhase(0)
+}
+
+// AuditServiceGetResponse is the response payload of a audit get request
+type AuditServiceGetResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Trace is the audit trace
+	Trace         *v1.AuditTrace `protobuf:"bytes,1,opt,name=trace,proto3" json:"trace,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *AuditServiceGetResponse) Reset() {
+	*x = AuditServiceGetResponse{}
+	mi := &file_admin_v1_audit_proto_msgTypes[3]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *AuditServiceGetResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*AuditServiceGetResponse) ProtoMessage() {}
+
+func (x *AuditServiceGetResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_admin_v1_audit_proto_msgTypes[3]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use AuditServiceGetResponse.ProtoReflect.Descriptor instead.
+func (*AuditServiceGetResponse) Descriptor() ([]byte, []int) {
+	return file_admin_v1_audit_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *AuditServiceGetResponse) GetTrace() *v1.AuditTrace {
+	if x != nil {
+		return x.Trace
+	}
+	return nil
+}
+
 var File_admin_v1_audit_proto protoreflect.FileDescriptor
 
 const file_admin_v1_audit_proto_rawDesc = "" +
@@ -247,8 +348,15 @@ const file_admin_v1_audit_proto_rawDesc = "" +
 	"\x06_limitB\b\n" +
 	"\x06_phase\"F\n" +
 	"\x18AuditServiceListResponse\x12*\n" +
-	"\x06traces\x18\x01 \x03(\v2\x12.api.v1.AuditTraceR\x06traces2e\n" +
-	"\fAuditService\x12U\n" +
+	"\x06traces\x18\x01 \x03(\v2\x12.api.v1.AuditTraceR\x06traces\"y\n" +
+	"\x16AuditServiceGetRequest\x12\x1c\n" +
+	"\x04uuid\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x04uuid\x127\n" +
+	"\x05phase\x18\x02 \x01(\x0e2\x12.api.v1.AuditPhaseB\b\xbaH\x05\x82\x01\x02\x10\x01H\x00R\x05phase\x88\x01\x01B\b\n" +
+	"\x06_phase\"C\n" +
+	"\x17AuditServiceGetResponse\x12(\n" +
+	"\x05trace\x18\x01 \x01(\v2\x12.api.v1.AuditTraceR\x05trace2\xb9\x01\n" +
+	"\fAuditService\x12R\n" +
+	"\x03Get\x12 .admin.v1.AuditServiceGetRequest\x1a!.admin.v1.AuditServiceGetResponse\"\x06\xd2\xf3\x18\x02\x01\x02\x12U\n" +
 	"\x04List\x12!.admin.v1.AuditServiceListRequest\x1a\".admin.v1.AuditServiceListResponse\"\x06\xd2\xf3\x18\x02\x01\x02B\x91\x01\n" +
 	"\fcom.admin.v1B\n" +
 	"AuditProtoP\x01Z4github.com/metal-stack-cloud/api/go/admin/v1;adminv1\xa2\x02\x03AXX\xaa\x02\bAdmin.V1\xca\x02\bAdmin\\V1\xe2\x02\x14Admin\\V1\\GPBMetadata\xea\x02\tAdmin::V1b\x06proto3"
@@ -265,26 +373,32 @@ func file_admin_v1_audit_proto_rawDescGZIP() []byte {
 	return file_admin_v1_audit_proto_rawDescData
 }
 
-var file_admin_v1_audit_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
+var file_admin_v1_audit_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
 var file_admin_v1_audit_proto_goTypes = []any{
 	(*AuditServiceListRequest)(nil),  // 0: admin.v1.AuditServiceListRequest
 	(*AuditServiceListResponse)(nil), // 1: admin.v1.AuditServiceListResponse
-	(*timestamppb.Timestamp)(nil),    // 2: google.protobuf.Timestamp
-	(v1.AuditPhase)(0),               // 3: api.v1.AuditPhase
-	(*v1.AuditTrace)(nil),            // 4: api.v1.AuditTrace
+	(*AuditServiceGetRequest)(nil),   // 2: admin.v1.AuditServiceGetRequest
+	(*AuditServiceGetResponse)(nil),  // 3: admin.v1.AuditServiceGetResponse
+	(*timestamppb.Timestamp)(nil),    // 4: google.protobuf.Timestamp
+	(v1.AuditPhase)(0),               // 5: api.v1.AuditPhase
+	(*v1.AuditTrace)(nil),            // 6: api.v1.AuditTrace
 }
 var file_admin_v1_audit_proto_depIdxs = []int32{
-	2, // 0: admin.v1.AuditServiceListRequest.from:type_name -> google.protobuf.Timestamp
-	2, // 1: admin.v1.AuditServiceListRequest.to:type_name -> google.protobuf.Timestamp
-	3, // 2: admin.v1.AuditServiceListRequest.phase:type_name -> api.v1.AuditPhase
-	4, // 3: admin.v1.AuditServiceListResponse.traces:type_name -> api.v1.AuditTrace
-	0, // 4: admin.v1.AuditService.List:input_type -> admin.v1.AuditServiceListRequest
-	1, // 5: admin.v1.AuditService.List:output_type -> admin.v1.AuditServiceListResponse
-	5, // [5:6] is the sub-list for method output_type
-	4, // [4:5] is the sub-list for method input_type
-	4, // [4:4] is the sub-list for extension type_name
-	4, // [4:4] is the sub-list for extension extendee
-	0, // [0:4] is the sub-list for field type_name
+	4, // 0: admin.v1.AuditServiceListRequest.from:type_name -> google.protobuf.Timestamp
+	4, // 1: admin.v1.AuditServiceListRequest.to:type_name -> google.protobuf.Timestamp
+	5, // 2: admin.v1.AuditServiceListRequest.phase:type_name -> api.v1.AuditPhase
+	6, // 3: admin.v1.AuditServiceListResponse.traces:type_name -> api.v1.AuditTrace
+	5, // 4: admin.v1.AuditServiceGetRequest.phase:type_name -> api.v1.AuditPhase
+	6, // 5: admin.v1.AuditServiceGetResponse.trace:type_name -> api.v1.AuditTrace
+	2, // 6: admin.v1.AuditService.Get:input_type -> admin.v1.AuditServiceGetRequest
+	0, // 7: admin.v1.AuditService.List:input_type -> admin.v1.AuditServiceListRequest
+	3, // 8: admin.v1.AuditService.Get:output_type -> admin.v1.AuditServiceGetResponse
+	1, // 9: admin.v1.AuditService.List:output_type -> admin.v1.AuditServiceListResponse
+	8, // [8:10] is the sub-list for method output_type
+	6, // [6:8] is the sub-list for method input_type
+	6, // [6:6] is the sub-list for extension type_name
+	6, // [6:6] is the sub-list for extension extendee
+	0, // [0:6] is the sub-list for field type_name
 }
 
 func init() { file_admin_v1_audit_proto_init() }
@@ -293,13 +407,14 @@ func file_admin_v1_audit_proto_init() {
 		return
 	}
 	file_admin_v1_audit_proto_msgTypes[0].OneofWrappers = []any{}
+	file_admin_v1_audit_proto_msgTypes[2].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_admin_v1_audit_proto_rawDesc), len(file_admin_v1_audit_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   2,
+			NumMessages:   4,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

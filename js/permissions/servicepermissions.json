@@ -2,6 +2,7 @@
   "roles": {
     "admin": {
       "ADMIN_ROLE_EDITOR": [
+        "/admin.v1.AuditService/Get",
         "/admin.v1.AuditService/List",
         "/admin.v1.ClusterService/Get",
         "/admin.v1.ClusterService/List",
@@ -20,6 +21,7 @@
         "/admin.v1.TokenService/Revoke"
       ],
       "ADMIN_ROLE_VIEWER": [
+        "/admin.v1.AuditService/Get",
         "/admin.v1.AuditService/List",
         "/admin.v1.ClusterService/Get",
         "/admin.v1.ClusterService/List",
@@ -145,6 +147,7 @@
     }
   },
   "methods": {
+    "/admin.v1.AuditService/Get": true,
     "/admin.v1.AuditService/List": true,
     "/admin.v1.ClusterService/Credentials": true,
     "/admin.v1.ClusterService/Get": true,
@@ -260,6 +263,7 @@
       "/api.v1.UserService/Get": true
     },
     "admin": {
+      "/admin.v1.AuditService/Get": true,
       "/admin.v1.AuditService/List": true,
       "/admin.v1.ClusterService/Credentials": true,
       "/admin.v1.ClusterService/Get": true,
@@ -337,6 +341,7 @@
     "/api.v1.IPService/Update": true
   },
   "auditable": {
+    "/admin.v1.AuditService/Get": true,
     "/admin.v1.AuditService/List": true,
     "/admin.v1.ClusterService/Credentials": true,
     "/admin.v1.ClusterService/Get": false,
