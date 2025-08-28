@@ -14,7 +14,7 @@ import type { Message } from "@bufbuild/protobuf";
  * Describes the file api/v1/payment.proto.
  */
 export const file_api_v1_payment: GenFile = /*@__PURE__*/
-  fileDesc("ChRhcGkvdjEvcGF5bWVudC5wcm90bxIGYXBpLnYxIt8DCg9QYXltZW50Q3VzdG9tZXISDQoFbG9naW4YASABKAkSEQoEbmFtZRgCIAEoCUgAiAEBEhgKC2N1c3RvbWVyX2lkGAMgASgJSAGIAQESHgoRcGF5bWVudF9tZXRob2RfaWQYBCABKAlIAogBARIXCg9zdWJzY3JpcHRpb25faWQYBSABKAkSGwoFZW1haWwYBiABKAlCB7pIBHICYAFIA4gBARIfCgRjYXJkGAcgASgLMgwuYXBpLnYxLkNhcmRIBIgBARIdCgZwcmljZXMYCCADKAsyDS5hcGkudjEuUHJpY2USIAoHYWRkcmVzcxgJIAEoCzIPLmFwaS52MS5BZGRyZXNzEiMKBmNvdXBvbhgKIAEoCzIOLmFwaS52MS5Db3Vwb25IBYgBARIQCgN2YXQYCyABKAlIBogBARIZCgxwaG9uZV9udW1iZXIYDCABKAlIB4gBARIUCgdiYWxhbmNlGA0gASgDSAiIAQFCBwoFX25hbWVCDgoMX2N1c3RvbWVyX2lkQhQKEl9wYXltZW50X21ldGhvZF9pZEIICgZfZW1haWxCBwoFX2NhcmRCCQoHX2NvdXBvbkIGCgRfdmF0Qg8KDV9waG9uZV9udW1iZXJCCgoIX2JhbGFuY2UiWwoEQ2FyZBINCgVicmFuZBgBIAEoCRIPCgdjb3VudHJ5GAIgASgJEhEKCWV4cF9tb250aBgDIAEoAxIQCghleHBfeWVhchgEIAEoAxIOCgZsYXN0XzQYBSABKAki4AEKBVByaWNlEgwKBG5hbWUYASABKAkSGwoTdW5pdF9hbW91bnRfZGVjaW1hbBgCIAEoARIQCghjdXJyZW5jeRgDIAEoCRISCgp1bml0X2xhYmVsGAQgASgJEikKDHByb2R1Y3RfdHlwZRgFIAEoDjITLmFwaS52MS5Qcm9kdWN0VHlwZRIkCgtkZXNjcmlwdGlvbhgGIAEoCUIKukgHcgUQAhj0A0gAiAEBEiUKCnVzYWdlX3R5cGUYByABKA4yES5hcGkudjEuVXNhZ2VUeXBlQg4KDF9kZXNjcmlwdGlvbiJqCgdBZGRyZXNzEg0KBWxpbmUxGAEgASgJEg0KBWxpbmUyGAIgASgJEhMKC3Bvc3RhbF9jb2RlGAMgASgJEgwKBGNpdHkYBCABKAkSDQoFc3RhdGUYBSABKAkSDwoHY291bnRyeRgGIAEoCSLMAQoVU3Vic2NyaXB0aW9uVXNhZ2VJdGVtEhwKFHN1YnNjcmlwdGlvbl9pdGVtX2lkGAEgASgJEh4KFnN1YnNjcmlwdGlvbl9pdGVtX25hbWUYAiABKAkSEwoLdG90YWxfdXNhZ2UYAyABKAMSMAoMcGVyaW9kX3N0YXJ0GAQgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcBIuCgpwZXJpb2RfZW5kGAUgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcCKRAQoHSW52b2ljZRIKCgJpZBgBIAEoCRIYChBwZGZfZG93bmxvYWRfdXJsGAIgASgJEjAKDHBlcmlvZF9zdGFydBgEIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXASLgoKcGVyaW9kX2VuZBgFIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXAiiAIKBkNvdXBvbhIKCgJpZBgBIAEoCRIMCgRuYW1lGAIgASgJEhIKCmFtb3VudF9vZmYYAyABKAMSEAoIY3VycmVuY3kYBCABKAkSGQoRZHVyYXRpb25faW5fbW9udGgYBSABKAMSLgoKY3JlYXRlZF9hdBgGIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXASLQoJcmVkZWVtX2J5GAcgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcBIWCg50aW1lc19yZWRlZW1lZBgIIAEoAxIXCg9tYXhfcmVkZW1wdGlvbnMYCSABKAMSEwoLYW1vdW50X2xlZnQYCiABKAMiiAMKK1BheW1lbnRTZXJ2aWNlQ3JlYXRlT3JVcGRhdGVDdXN0b21lclJlcXVlc3QSGQoFbG9naW4YASABKAlCCrpIB3IFEAIYgAESEQoEbmFtZRgEIAEoCUgAiAEBEh4KEXBheW1lbnRfbWV0aG9kX2lkGAUgASgJSAGIAQESGwoFZW1haWwYBiABKAlCB7pIBHICYAFIAogBARIfCgRjYXJkGAcgASgLMgwuYXBpLnYxLkNhcmRIA4gBARIgCgdhZGRyZXNzGAggASgLMg8uYXBpLnYxLkFkZHJlc3MSEAoDdmF0GAkgASgJSASIAQESGQoMcGhvbmVfbnVtYmVyGAogASgJSAWIAQFCBwoFX25hbWVCFAoSX3BheW1lbnRfbWV0aG9kX2lkQggKBl9lbWFpbEIHCgVfY2FyZEIGCgRfdmF0Qg8KDV9waG9uZV9udW1iZXJKBAgCEANKBAgDEARSCGN1c3RvbWVyUh1hY2NlcHRlZF90ZXJtc19hbmRfY29uZGl0aW9ucyJZCixQYXltZW50U2VydmljZUNyZWF0ZU9yVXBkYXRlQ3VzdG9tZXJSZXNwb25zZRIpCghjdXN0b21lchgBIAEoCzIXLmFwaS52MS5QYXltZW50Q3VzdG9tZXIiUgogUGF5bWVudFNlcnZpY2VHZXRDdXN0b21lclJlcXVlc3QSGQoFbG9naW4YASABKAlCCrpIB3IFEAIYgAESEwoLY3VzdG9tZXJfaWQYAiABKAkiTgohUGF5bWVudFNlcnZpY2VHZXRDdXN0b21lclJlc3BvbnNlEikKCGN1c3RvbWVyGAEgASgLMhcuYXBpLnYxLlBheW1lbnRDdXN0b21lciJHCipQYXltZW50U2VydmljZUNoZWNrSWZDdXN0b21lckV4aXN0c1JlcXVlc3QSGQoFbG9naW4YASABKAlCCrpIB3IFEAIYgAEiaAorUGF5bWVudFNlcnZpY2VDaGVja0lmQ3VzdG9tZXJFeGlzdHNSZXNwb25zZRIpCghjdXN0b21lchgBIAEoCzIXLmFwaS52MS5QYXltZW50Q3VzdG9tZXISDgoGZXhpc3RzGAIgASgIIkIKJVBheW1lbnRTZXJ2aWNlSGFzUGF5bWVudE1ldGhvZFJlcXVlc3QSGQoFbG9naW4YASABKAlCCrpIB3IFEAIYgAEiZwomUGF5bWVudFNlcnZpY2VIYXNQYXltZW50TWV0aG9kUmVzcG9uc2USDgoGZXhpc3RzGAEgASgIEhMKC2NvdXBvbl9sZWZ0GAIgASgIEhgKEHBvc2l0aXZlX2JhbGFuY2UYAyABKAgiRQooUGF5bWVudFNlcnZpY2VEZWxldGVQYXltZW50TWV0aG9kUmVxdWVzdBIZCgVsb2dpbhgBIAEoCUIKukgHcgUQAhiAASIrCilQYXltZW50U2VydmljZURlbGV0ZVBheW1lbnRNZXRob2RSZXNwb25zZSJGCilQYXltZW50U2VydmljZUdldFN1YnNjcmlwdGlvblVzYWdlUmVxdWVzdBIZCgVsb2dpbhgBIAEoCUIKukgHcgUQAhiAASJtCipQYXltZW50U2VydmljZUdldFN1YnNjcmlwdGlvblVzYWdlUmVzcG9uc2USPwoYc3Vic2NyaXB0aW9uX3VzYWdlX2l0ZW1zGAEgAygLMh0uYXBpLnYxLlN1YnNjcmlwdGlvblVzYWdlSXRlbSJcCiBQYXltZW50U2VydmljZUdldEludm9pY2VzUmVxdWVzdBIZCgVsb2dpbhgBIAEoCUIKukgHcgUQAhiAARIdCgtjdXN0b21lcl9pZBgCIAEoCUIIukgFcgOYARIiRgohUGF5bWVudFNlcnZpY2VHZXRJbnZvaWNlc1Jlc3BvbnNlEiEKCGludm9pY2VzGAEgAygLMg8uYXBpLnYxLkludm9pY2UiJwolUGF5bWVudFNlcnZpY2VHZXREZWZhdWx0UHJpY2VzUmVxdWVzdCJHCiZQYXltZW50U2VydmljZUdldERlZmF1bHRQcmljZXNSZXNwb25zZRIdCgZwcmljZXMYASADKAsyDS5hcGkudjEuUHJpY2UiPAorUGF5bWVudFNlcnZpY2VIYXNDaGFyZ2VhYmxlUmVzb3VyY2VzUmVxdWVzdBINCgVsb2dpbhgBIAEoCSJFCixQYXltZW50U2VydmljZUhhc0NoYXJnZWFibGVSZXNvdXJjZXNSZXNwb25zZRIVCg1oYXNfcmVzb3VyY2VzGAEgASgIKpYBCgtQcm9kdWN0VHlwZRIcChhQUk9EVUNUX1RZUEVfVU5TUEVDSUZJRUQQABIYChRQUk9EVUNUX1RZUEVfU1RPUkFHRRABEhgKFFBST0RVQ1RfVFlQRV9DT01QVVRFEAISGAoUUFJPRFVDVF9UWVBFX05FVFdPUksQAxIbChdQUk9EVUNUX1RZUEVfS1VCRVJORVRFUxAFKlgKCVVzYWdlVHlwZRIaChZVU0FHRV9UWVBFX1VOU1BFQ0lGSUVEEAASFgoSVVNBR0VfVFlQRV9NRVRFUkVEEAESFwoTVVNBR0VfVFlQRV9MSUNFTlNFRBACMqoJCg5QYXltZW50U2VydmljZRKKAQoWQ3JlYXRlT3JVcGRhdGVDdXN0b21lchIzLmFwaS52MS5QYXltZW50U2VydmljZUNyZWF0ZU9yVXBkYXRlQ3VzdG9tZXJSZXF1ZXN0GjQuYXBpLnYxLlBheW1lbnRTZXJ2aWNlQ3JlYXRlT3JVcGRhdGVDdXN0b21lclJlc3BvbnNlIgXC8xgBARJtCgtHZXRDdXN0b21lchIoLmFwaS52MS5QYXltZW50U2VydmljZUdldEN1c3RvbWVyUmVxdWVzdBopLmFwaS52MS5QYXltZW50U2VydmljZUdldEN1c3RvbWVyUmVzcG9uc2UiCcLzGAEB6PMYAhKLAQoVQ2hlY2tJZkN1c3RvbWVyRXhpc3RzEjIuYXBpLnYxLlBheW1lbnRTZXJ2aWNlQ2hlY2tJZkN1c3RvbWVyRXhpc3RzUmVxdWVzdBozLmFwaS52MS5QYXltZW50U2VydmljZUNoZWNrSWZDdXN0b21lckV4aXN0c1Jlc3BvbnNlIgnC8xgBAejzGAISfwoQSGFzUGF5bWVudE1ldGhvZBItLmFwaS52MS5QYXltZW50U2VydmljZUhhc1BheW1lbnRNZXRob2RSZXF1ZXN0Gi4uYXBpLnYxLlBheW1lbnRTZXJ2aWNlSGFzUGF5bWVudE1ldGhvZFJlc3BvbnNlIgzC8xgEAQIDBOjzGAISgQEKE0RlbGV0ZVBheW1lbnRNZXRob2QSMC5hcGkudjEuUGF5bWVudFNlcnZpY2VEZWxldGVQYXltZW50TWV0aG9kUmVxdWVzdBoxLmFwaS52MS5QYXltZW50U2VydmljZURlbGV0ZVBheW1lbnRNZXRob2RSZXNwb25zZSIFwvMYAQESiAEKFEdldFN1YnNjcmlwdGlvblVzYWdlEjEuYXBpLnYxLlBheW1lbnRTZXJ2aWNlR2V0U3Vic2NyaXB0aW9uVXNhZ2VSZXF1ZXN0GjIuYXBpLnYxLlBheW1lbnRTZXJ2aWNlR2V0U3Vic2NyaXB0aW9uVXNhZ2VSZXNwb25zZSIJwvMYAQHo8xgCEm0KC0dldEludm9pY2VzEiguYXBpLnYxLlBheW1lbnRTZXJ2aWNlR2V0SW52b2ljZXNSZXF1ZXN0GikuYXBpLnYxLlBheW1lbnRTZXJ2aWNlR2V0SW52b2ljZXNSZXNwb25zZSIJwvMYAQHo8xgCEnsKEEdldERlZmF1bHRQcmljZXMSLS5hcGkudjEuUGF5bWVudFNlcnZpY2VHZXREZWZhdWx0UHJpY2VzUmVxdWVzdBouLmFwaS52MS5QYXltZW50U2VydmljZUdldERlZmF1bHRQcmljZXNSZXNwb25zZSII2PMYAejzGAISkQEKFkhhc0NoYXJnZWFibGVSZXNvdXJjZXMSMy5hcGkudjEuUGF5bWVudFNlcnZpY2VIYXNDaGFyZ2VhYmxlUmVzb3VyY2VzUmVxdWVzdBo0LmFwaS52MS5QYXltZW50U2VydmljZUhhc0NoYXJnZWFibGVSZXNvdXJjZXNSZXNwb25zZSIMwvMYBAECAwTo8xgCQoUBCgpjb20uYXBpLnYxQgxQYXltZW50UHJvdG9QAVowZ2l0aHViLmNvbS9tZXRhbC1zdGFjay1jbG91ZC9hcGkvZ28vYXBpL3YxO2FwaXYxogIDQVhYqgIGQXBpLlYxygIGQXBpXFYx4gISQXBpXFYxXEdQQk1ldGFkYXRh6gIHQXBpOjpWMWIGcHJvdG8z", [file_api_v1_common, file_buf_validate_validate, file_google_protobuf_timestamp]);
+  fileDesc("ChRhcGkvdjEvcGF5bWVudC5wcm90bxIGYXBpLnYxIt8DCg9QYXltZW50Q3VzdG9tZXISDQoFbG9naW4YASABKAkSEQoEbmFtZRgCIAEoCUgAiAEBEhgKC2N1c3RvbWVyX2lkGAMgASgJSAGIAQESHgoRcGF5bWVudF9tZXRob2RfaWQYBCABKAlIAogBARIXCg9zdWJzY3JpcHRpb25faWQYBSABKAkSGwoFZW1haWwYBiABKAlCB7pIBHICYAFIA4gBARIfCgRjYXJkGAcgASgLMgwuYXBpLnYxLkNhcmRIBIgBARIdCgZwcmljZXMYCCADKAsyDS5hcGkudjEuUHJpY2USIAoHYWRkcmVzcxgJIAEoCzIPLmFwaS52MS5BZGRyZXNzEiMKBmNvdXBvbhgKIAEoCzIOLmFwaS52MS5Db3Vwb25IBYgBARIQCgN2YXQYCyABKAlIBogBARIZCgxwaG9uZV9udW1iZXIYDCABKAlIB4gBARIUCgdiYWxhbmNlGA0gASgDSAiIAQFCBwoFX25hbWVCDgoMX2N1c3RvbWVyX2lkQhQKEl9wYXltZW50X21ldGhvZF9pZEIICgZfZW1haWxCBwoFX2NhcmRCCQoHX2NvdXBvbkIGCgRfdmF0Qg8KDV9waG9uZV9udW1iZXJCCgoIX2JhbGFuY2UiWwoEQ2FyZBINCgVicmFuZBgBIAEoCRIPCgdjb3VudHJ5GAIgASgJEhEKCWV4cF9tb250aBgDIAEoAxIQCghleHBfeWVhchgEIAEoAxIOCgZsYXN0XzQYBSABKAki4AEKBVByaWNlEgwKBG5hbWUYASABKAkSGwoTdW5pdF9hbW91bnRfZGVjaW1hbBgCIAEoARIQCghjdXJyZW5jeRgDIAEoCRISCgp1bml0X2xhYmVsGAQgASgJEikKDHByb2R1Y3RfdHlwZRgFIAEoDjITLmFwaS52MS5Qcm9kdWN0VHlwZRIkCgtkZXNjcmlwdGlvbhgGIAEoCUIKukgHcgUQAhj0A0gAiAEBEiUKCnVzYWdlX3R5cGUYByABKA4yES5hcGkudjEuVXNhZ2VUeXBlQg4KDF9kZXNjcmlwdGlvbiJqCgdBZGRyZXNzEg0KBWxpbmUxGAEgASgJEg0KBWxpbmUyGAIgASgJEhMKC3Bvc3RhbF9jb2RlGAMgASgJEgwKBGNpdHkYBCABKAkSDQoFc3RhdGUYBSABKAkSDwoHY291bnRyeRgGIAEoCSLMAQoVU3Vic2NyaXB0aW9uVXNhZ2VJdGVtEhwKFHN1YnNjcmlwdGlvbl9pdGVtX2lkGAEgASgJEh4KFnN1YnNjcmlwdGlvbl9pdGVtX25hbWUYAiABKAkSEwoLdG90YWxfdXNhZ2UYAyABKAMSMAoMcGVyaW9kX3N0YXJ0GAQgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcBIuCgpwZXJpb2RfZW5kGAUgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcCKRAQoHSW52b2ljZRIKCgJpZBgBIAEoCRIYChBwZGZfZG93bmxvYWRfdXJsGAIgASgJEjAKDHBlcmlvZF9zdGFydBgEIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXASLgoKcGVyaW9kX2VuZBgFIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXAiiAIKBkNvdXBvbhIKCgJpZBgBIAEoCRIMCgRuYW1lGAIgASgJEhIKCmFtb3VudF9vZmYYAyABKAMSEAoIY3VycmVuY3kYBCABKAkSGQoRZHVyYXRpb25faW5fbW9udGgYBSABKAMSLgoKY3JlYXRlZF9hdBgGIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXASLQoJcmVkZWVtX2J5GAcgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcBIWCg50aW1lc19yZWRlZW1lZBgIIAEoAxIXCg9tYXhfcmVkZW1wdGlvbnMYCSABKAMSEwoLYW1vdW50X2xlZnQYCiABKAMiiAMKK1BheW1lbnRTZXJ2aWNlQ3JlYXRlT3JVcGRhdGVDdXN0b21lclJlcXVlc3QSGQoFbG9naW4YASABKAlCCrpIB3IFEAIYgAESEQoEbmFtZRgEIAEoCUgAiAEBEh4KEXBheW1lbnRfbWV0aG9kX2lkGAUgASgJSAGIAQESGwoFZW1haWwYBiABKAlCB7pIBHICYAFIAogBARIfCgRjYXJkGAcgASgLMgwuYXBpLnYxLkNhcmRIA4gBARIgCgdhZGRyZXNzGAggASgLMg8uYXBpLnYxLkFkZHJlc3MSEAoDdmF0GAkgASgJSASIAQESGQoMcGhvbmVfbnVtYmVyGAogASgJSAWIAQFCBwoFX25hbWVCFAoSX3BheW1lbnRfbWV0aG9kX2lkQggKBl9lbWFpbEIHCgVfY2FyZEIGCgRfdmF0Qg8KDV9waG9uZV9udW1iZXJKBAgCEANKBAgDEARSCGN1c3RvbWVyUh1hY2NlcHRlZF90ZXJtc19hbmRfY29uZGl0aW9ucyJZCixQYXltZW50U2VydmljZUNyZWF0ZU9yVXBkYXRlQ3VzdG9tZXJSZXNwb25zZRIpCghjdXN0b21lchgBIAEoCzIXLmFwaS52MS5QYXltZW50Q3VzdG9tZXIiUgogUGF5bWVudFNlcnZpY2VHZXRDdXN0b21lclJlcXVlc3QSGQoFbG9naW4YASABKAlCCrpIB3IFEAIYgAESEwoLY3VzdG9tZXJfaWQYAiABKAkiTgohUGF5bWVudFNlcnZpY2VHZXRDdXN0b21lclJlc3BvbnNlEikKCGN1c3RvbWVyGAEgASgLMhcuYXBpLnYxLlBheW1lbnRDdXN0b21lciJCCiVQYXltZW50U2VydmljZUhhc1BheW1lbnRNZXRob2RSZXF1ZXN0EhkKBWxvZ2luGAEgASgJQgq6SAdyBRACGIABImcKJlBheW1lbnRTZXJ2aWNlSGFzUGF5bWVudE1ldGhvZFJlc3BvbnNlEg4KBmV4aXN0cxgBIAEoCBITCgtjb3Vwb25fbGVmdBgCIAEoCBIYChBwb3NpdGl2ZV9iYWxhbmNlGAMgASgIIkUKKFBheW1lbnRTZXJ2aWNlRGVsZXRlUGF5bWVudE1ldGhvZFJlcXVlc3QSGQoFbG9naW4YASABKAlCCrpIB3IFEAIYgAEiKwopUGF5bWVudFNlcnZpY2VEZWxldGVQYXltZW50TWV0aG9kUmVzcG9uc2UiRgopUGF5bWVudFNlcnZpY2VHZXRTdWJzY3JpcHRpb25Vc2FnZVJlcXVlc3QSGQoFbG9naW4YASABKAlCCrpIB3IFEAIYgAEibQoqUGF5bWVudFNlcnZpY2VHZXRTdWJzY3JpcHRpb25Vc2FnZVJlc3BvbnNlEj8KGHN1YnNjcmlwdGlvbl91c2FnZV9pdGVtcxgBIAMoCzIdLmFwaS52MS5TdWJzY3JpcHRpb25Vc2FnZUl0ZW0iXAogUGF5bWVudFNlcnZpY2VHZXRJbnZvaWNlc1JlcXVlc3QSGQoFbG9naW4YASABKAlCCrpIB3IFEAIYgAESHQoLY3VzdG9tZXJfaWQYAiABKAlCCLpIBXIDmAESIkYKIVBheW1lbnRTZXJ2aWNlR2V0SW52b2ljZXNSZXNwb25zZRIhCghpbnZvaWNlcxgBIAMoCzIPLmFwaS52MS5JbnZvaWNlIicKJVBheW1lbnRTZXJ2aWNlR2V0RGVmYXVsdFByaWNlc1JlcXVlc3QiRwomUGF5bWVudFNlcnZpY2VHZXREZWZhdWx0UHJpY2VzUmVzcG9uc2USHQoGcHJpY2VzGAEgAygLMg0uYXBpLnYxLlByaWNlKpYBCgtQcm9kdWN0VHlwZRIcChhQUk9EVUNUX1RZUEVfVU5TUEVDSUZJRUQQABIYChRQUk9EVUNUX1RZUEVfU1RPUkFHRRABEhgKFFBST0RVQ1RfVFlQRV9DT01QVVRFEAISGAoUUFJPRFVDVF9UWVBFX05FVFdPUksQAxIbChdQUk9EVUNUX1RZUEVfS1VCRVJORVRFUxAFKlgKCVVzYWdlVHlwZRIaChZVU0FHRV9UWVBFX1VOU1BFQ0lGSUVEEAASFgoSVVNBR0VfVFlQRV9NRVRFUkVEEAESFwoTVVNBR0VfVFlQRV9MSUNFTlNFRBACMogHCg5QYXltZW50U2VydmljZRKKAQoWQ3JlYXRlT3JVcGRhdGVDdXN0b21lchIzLmFwaS52MS5QYXltZW50U2VydmljZUNyZWF0ZU9yVXBkYXRlQ3VzdG9tZXJSZXF1ZXN0GjQuYXBpLnYxLlBheW1lbnRTZXJ2aWNlQ3JlYXRlT3JVcGRhdGVDdXN0b21lclJlc3BvbnNlIgXC8xgBARJtCgtHZXRDdXN0b21lchIoLmFwaS52MS5QYXltZW50U2VydmljZUdldEN1c3RvbWVyUmVxdWVzdBopLmFwaS52MS5QYXltZW50U2VydmljZUdldEN1c3RvbWVyUmVzcG9uc2UiCcLzGAEB6PMYAhJ/ChBIYXNQYXltZW50TWV0aG9kEi0uYXBpLnYxLlBheW1lbnRTZXJ2aWNlSGFzUGF5bWVudE1ldGhvZFJlcXVlc3QaLi5hcGkudjEuUGF5bWVudFNlcnZpY2VIYXNQYXltZW50TWV0aG9kUmVzcG9uc2UiDMLzGAQBAgME6PMYAhKBAQoTRGVsZXRlUGF5bWVudE1ldGhvZBIwLmFwaS52MS5QYXltZW50U2VydmljZURlbGV0ZVBheW1lbnRNZXRob2RSZXF1ZXN0GjEuYXBpLnYxLlBheW1lbnRTZXJ2aWNlRGVsZXRlUGF5bWVudE1ldGhvZFJlc3BvbnNlIgXC8xgBARKIAQoUR2V0U3Vic2NyaXB0aW9uVXNhZ2USMS5hcGkudjEuUGF5bWVudFNlcnZpY2VHZXRTdWJzY3JpcHRpb25Vc2FnZVJlcXVlc3QaMi5hcGkudjEuUGF5bWVudFNlcnZpY2VHZXRTdWJzY3JpcHRpb25Vc2FnZVJlc3BvbnNlIgnC8xgBAejzGAISbQoLR2V0SW52b2ljZXMSKC5hcGkudjEuUGF5bWVudFNlcnZpY2VHZXRJbnZvaWNlc1JlcXVlc3QaKS5hcGkudjEuUGF5bWVudFNlcnZpY2VHZXRJbnZvaWNlc1Jlc3BvbnNlIgnC8xgBAejzGAISewoQR2V0RGVmYXVsdFByaWNlcxItLmFwaS52MS5QYXltZW50U2VydmljZUdldERlZmF1bHRQcmljZXNSZXF1ZXN0Gi4uYXBpLnYxLlBheW1lbnRTZXJ2aWNlR2V0RGVmYXVsdFByaWNlc1Jlc3BvbnNlIgjY8xgB6PMYAkKFAQoKY29tLmFwaS52MUIMUGF5bWVudFByb3RvUAFaMGdpdGh1Yi5jb20vbWV0YWwtc3RhY2stY2xvdWQvYXBpL2dvL2FwaS92MTthcGl2MaICA0FYWKoCBkFwaS5WMcoCBkFwaVxWMeICEkFwaVxWMVxHUEJNZXRhZGF0YeoCB0FwaTo6VjFiBnByb3RvMw", [file_api_v1_common, file_buf_validate_validate, file_google_protobuf_timestamp]);
 
 /**
  * PaymentCustomer is a customer at the payment processor
@@ -605,55 +605,6 @@ export const PaymentServiceGetCustomerResponseSchema: GenMessage<PaymentServiceG
   messageDesc(file_api_v1_payment, 10);
 
 /**
- * PaymentServiceCheckIfCustomerExistsRequest is the request payload for a payment check if customer exists request
- *
- * @generated from message api.v1.PaymentServiceCheckIfCustomerExistsRequest
- */
-export type PaymentServiceCheckIfCustomerExistsRequest = Message<"api.v1.PaymentServiceCheckIfCustomerExistsRequest"> & {
-  /**
-   * Login of the customer
-   *
-   * @generated from field: string login = 1;
-   */
-  login: string;
-};
-
-/**
- * Describes the message api.v1.PaymentServiceCheckIfCustomerExistsRequest.
- * Use `create(PaymentServiceCheckIfCustomerExistsRequestSchema)` to create a new message.
- */
-export const PaymentServiceCheckIfCustomerExistsRequestSchema: GenMessage<PaymentServiceCheckIfCustomerExistsRequest> = /*@__PURE__*/
-  messageDesc(file_api_v1_payment, 11);
-
-/**
- * PaymentServiceCheckIfCustomerExistsResponse is the response payload for a payment check if customer exists request
- *
- * @generated from message api.v1.PaymentServiceCheckIfCustomerExistsResponse
- */
-export type PaymentServiceCheckIfCustomerExistsResponse = Message<"api.v1.PaymentServiceCheckIfCustomerExistsResponse"> & {
-  /**
-   * Customer is the customer
-   *
-   * @generated from field: api.v1.PaymentCustomer customer = 1;
-   */
-  customer?: PaymentCustomer;
-
-  /**
-   * Exists indicates if this customer exists
-   *
-   * @generated from field: bool exists = 2;
-   */
-  exists: boolean;
-};
-
-/**
- * Describes the message api.v1.PaymentServiceCheckIfCustomerExistsResponse.
- * Use `create(PaymentServiceCheckIfCustomerExistsResponseSchema)` to create a new message.
- */
-export const PaymentServiceCheckIfCustomerExistsResponseSchema: GenMessage<PaymentServiceCheckIfCustomerExistsResponse> = /*@__PURE__*/
-  messageDesc(file_api_v1_payment, 12);
-
-/**
  * PaymentServiceHasPaymentMethodRequest is the request payload for a has payment request
  *
  * @generated from message api.v1.PaymentServiceHasPaymentMethodRequest
@@ -672,7 +623,7 @@ export type PaymentServiceHasPaymentMethodRequest = Message<"api.v1.PaymentServi
  * Use `create(PaymentServiceHasPaymentMethodRequestSchema)` to create a new message.
  */
 export const PaymentServiceHasPaymentMethodRequestSchema: GenMessage<PaymentServiceHasPaymentMethodRequest> = /*@__PURE__*/
-  messageDesc(file_api_v1_payment, 13);
+  messageDesc(file_api_v1_payment, 11);
 
 /**
  * PaymentServiceHasPaymentMethodResponse is the response payload for a has payment request
@@ -707,7 +658,7 @@ export type PaymentServiceHasPaymentMethodResponse = Message<"api.v1.PaymentServ
  * Use `create(PaymentServiceHasPaymentMethodResponseSchema)` to create a new message.
  */
 export const PaymentServiceHasPaymentMethodResponseSchema: GenMessage<PaymentServiceHasPaymentMethodResponse> = /*@__PURE__*/
-  messageDesc(file_api_v1_payment, 14);
+  messageDesc(file_api_v1_payment, 12);
 
 /**
  * PaymentServiceDeletePaymentMethodRequest is the request payload for a delete payment request
@@ -728,7 +679,7 @@ export type PaymentServiceDeletePaymentMethodRequest = Message<"api.v1.PaymentSe
  * Use `create(PaymentServiceDeletePaymentMethodRequestSchema)` to create a new message.
  */
 export const PaymentServiceDeletePaymentMethodRequestSchema: GenMessage<PaymentServiceDeletePaymentMethodRequest> = /*@__PURE__*/
-  messageDesc(file_api_v1_payment, 15);
+  messageDesc(file_api_v1_payment, 13);
 
 /**
  * PaymentServiceDeletePaymentMethodResponse is the response payload for a delete payment request
@@ -743,7 +694,7 @@ export type PaymentServiceDeletePaymentMethodResponse = Message<"api.v1.PaymentS
  * Use `create(PaymentServiceDeletePaymentMethodResponseSchema)` to create a new message.
  */
 export const PaymentServiceDeletePaymentMethodResponseSchema: GenMessage<PaymentServiceDeletePaymentMethodResponse> = /*@__PURE__*/
-  messageDesc(file_api_v1_payment, 16);
+  messageDesc(file_api_v1_payment, 14);
 
 /**
  * PaymentServiceGetSubscriptionUsageRequest is the request payload for a get subscription usage request
@@ -764,7 +715,7 @@ export type PaymentServiceGetSubscriptionUsageRequest = Message<"api.v1.PaymentS
  * Use `create(PaymentServiceGetSubscriptionUsageRequestSchema)` to create a new message.
  */
 export const PaymentServiceGetSubscriptionUsageRequestSchema: GenMessage<PaymentServiceGetSubscriptionUsageRequest> = /*@__PURE__*/
-  messageDesc(file_api_v1_payment, 17);
+  messageDesc(file_api_v1_payment, 15);
 
 /**
  * PaymentServiceGetSubscriptionUsageResponse is the response payload for a get subscription usage request
@@ -785,7 +736,7 @@ export type PaymentServiceGetSubscriptionUsageResponse = Message<"api.v1.Payment
  * Use `create(PaymentServiceGetSubscriptionUsageResponseSchema)` to create a new message.
  */
 export const PaymentServiceGetSubscriptionUsageResponseSchema: GenMessage<PaymentServiceGetSubscriptionUsageResponse> = /*@__PURE__*/
-  messageDesc(file_api_v1_payment, 18);
+  messageDesc(file_api_v1_payment, 16);
 
 /**
  * PaymentServiceHasPaymentMethodRequest is the request payload for a get invoices request
@@ -813,7 +764,7 @@ export type PaymentServiceGetInvoicesRequest = Message<"api.v1.PaymentServiceGet
  * Use `create(PaymentServiceGetInvoicesRequestSchema)` to create a new message.
  */
 export const PaymentServiceGetInvoicesRequestSchema: GenMessage<PaymentServiceGetInvoicesRequest> = /*@__PURE__*/
-  messageDesc(file_api_v1_payment, 19);
+  messageDesc(file_api_v1_payment, 17);
 
 /**
  * PaymentServiceGetInvoicesResponse is the response payload for a get invoices request
@@ -834,7 +785,7 @@ export type PaymentServiceGetInvoicesResponse = Message<"api.v1.PaymentServiceGe
  * Use `create(PaymentServiceGetInvoicesResponseSchema)` to create a new message.
  */
 export const PaymentServiceGetInvoicesResponseSchema: GenMessage<PaymentServiceGetInvoicesResponse> = /*@__PURE__*/
-  messageDesc(file_api_v1_payment, 20);
+  messageDesc(file_api_v1_payment, 18);
 
 /**
  * PaymentServiceGetDefaultPricesRequest is the request payload for a get default prices request
@@ -849,7 +800,7 @@ export type PaymentServiceGetDefaultPricesRequest = Message<"api.v1.PaymentServi
  * Use `create(PaymentServiceGetDefaultPricesRequestSchema)` to create a new message.
  */
 export const PaymentServiceGetDefaultPricesRequestSchema: GenMessage<PaymentServiceGetDefaultPricesRequest> = /*@__PURE__*/
-  messageDesc(file_api_v1_payment, 21);
+  messageDesc(file_api_v1_payment, 19);
 
 /**
  * PaymentServiceGetDefaultPricesResponse is the response payload for a get default prices request
@@ -870,49 +821,7 @@ export type PaymentServiceGetDefaultPricesResponse = Message<"api.v1.PaymentServ
  * Use `create(PaymentServiceGetDefaultPricesResponseSchema)` to create a new message.
  */
 export const PaymentServiceGetDefaultPricesResponseSchema: GenMessage<PaymentServiceGetDefaultPricesResponse> = /*@__PURE__*/
-  messageDesc(file_api_v1_payment, 22);
-
-/**
- * PaymentServiceHasChargeableResourcesRequest is the request payload for a has chargeable request
- *
- * @generated from message api.v1.PaymentServiceHasChargeableResourcesRequest
- */
-export type PaymentServiceHasChargeableResourcesRequest = Message<"api.v1.PaymentServiceHasChargeableResourcesRequest"> & {
-  /**
-   * Login of the customer
-   *
-   * @generated from field: string login = 1;
-   */
-  login: string;
-};
-
-/**
- * Describes the message api.v1.PaymentServiceHasChargeableResourcesRequest.
- * Use `create(PaymentServiceHasChargeableResourcesRequestSchema)` to create a new message.
- */
-export const PaymentServiceHasChargeableResourcesRequestSchema: GenMessage<PaymentServiceHasChargeableResourcesRequest> = /*@__PURE__*/
-  messageDesc(file_api_v1_payment, 23);
-
-/**
- * PaymentServiceHasChargeableResourcesResponse is the response payload for a has chargeable request
- *
- * @generated from message api.v1.PaymentServiceHasChargeableResourcesResponse
- */
-export type PaymentServiceHasChargeableResourcesResponse = Message<"api.v1.PaymentServiceHasChargeableResourcesResponse"> & {
-  /**
-   * HasResources indicates if the customer has actually chargable resources
-   *
-   * @generated from field: bool has_resources = 1;
-   */
-  hasResources: boolean;
-};
-
-/**
- * Describes the message api.v1.PaymentServiceHasChargeableResourcesResponse.
- * Use `create(PaymentServiceHasChargeableResourcesResponseSchema)` to create a new message.
- */
-export const PaymentServiceHasChargeableResourcesResponseSchema: GenMessage<PaymentServiceHasChargeableResourcesResponse> = /*@__PURE__*/
-  messageDesc(file_api_v1_payment, 24);
+  messageDesc(file_api_v1_payment, 20);
 
 /**
  * ProductType defines for which type of product a price applies
@@ -1023,16 +932,6 @@ export const PaymentService: GenService<{
     output: typeof PaymentServiceGetCustomerResponseSchema;
   },
   /**
-   * CheckIfCustomerExists at the payment processor
-   *
-   * @generated from rpc api.v1.PaymentService.CheckIfCustomerExists
-   */
-  checkIfCustomerExists: {
-    methodKind: "unary";
-    input: typeof PaymentServiceCheckIfCustomerExistsRequestSchema;
-    output: typeof PaymentServiceCheckIfCustomerExistsResponseSchema;
-  },
-  /**
    * HasPaymentMethod check if the customer has a payment method provided
    *
    * @generated from rpc api.v1.PaymentService.HasPaymentMethod
@@ -1081,16 +980,6 @@ export const PaymentService: GenService<{
     methodKind: "unary";
     input: typeof PaymentServiceGetDefaultPricesRequestSchema;
     output: typeof PaymentServiceGetDefaultPricesResponseSchema;
-  },
-  /**
-   * HasChargeableResources checks if the customer has resources actually consumed which are chargeable
-   *
-   * @generated from rpc api.v1.PaymentService.HasChargeableResources
-   */
-  hasChargeableResources: {
-    methodKind: "unary";
-    input: typeof PaymentServiceHasChargeableResourcesRequestSchema;
-    output: typeof PaymentServiceHasChargeableResourcesResponseSchema;
   },
 }> = /*@__PURE__*/
   serviceDesc(file_api_v1_payment, 0);

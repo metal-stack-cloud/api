@@ -17,11 +17,6 @@ service PaymentService {
     option (tenant_roles) = TENANT_ROLE_OWNER;
     option (auditing) = AUDITING_EXCLUDED;
   }
-  // CheckIfCustomerExists at the payment processor
-  rpc CheckIfCustomerExists(PaymentServiceCheckIfCustomerExistsRequest) returns (PaymentServiceCheckIfCustomerExistsResponse) {
-    option (tenant_roles) = TENANT_ROLE_OWNER;
-    option (auditing) = AUDITING_EXCLUDED;
-  }
   // HasPaymentMethod check if the customer has a payment method provided
   rpc HasPaymentMethod(PaymentServiceHasPaymentMethodRequest) returns (PaymentServiceHasPaymentMethodResponse) {
     option (tenant_roles) = TENANT_ROLE_OWNER;
@@ -47,14 +42,6 @@ service PaymentService {
   // GetDefaultPrices of the products on the platform
   rpc GetDefaultPrices(PaymentServiceGetDefaultPricesRequest) returns (PaymentServiceGetDefaultPricesResponse) {
     option (visibility) = VISIBILITY_PUBLIC;
-    option (auditing) = AUDITING_EXCLUDED;
-  }
-  // HasChargeableResources checks if the customer has resources actually consumed which are chargeable
-  rpc HasChargeableResources(PaymentServiceHasChargeableResourcesRequest) returns (PaymentServiceHasChargeableResourcesResponse) {
-    option (tenant_roles) = TENANT_ROLE_OWNER;
-    option (tenant_roles) = TENANT_ROLE_EDITOR;
-    option (tenant_roles) = TENANT_ROLE_VIEWER;
-    option (tenant_roles) = TENANT_ROLE_GUEST;
     option (auditing) = AUDITING_EXCLUDED;
   }
 }
@@ -266,23 +253,6 @@ message PaymentServiceGetCustomerResponse {
   PaymentCustomer customer = 1;
 }
 
-// PaymentServiceCheckIfCustomerExistsRequest is the request payload for a payment check if customer exists request
-message PaymentServiceCheckIfCustomerExistsRequest {
-  // Login of the customer
-  string login = 1 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
-}
-
-// PaymentServiceCheckIfCustomerExistsResponse is the response payload for a payment check if customer exists request
-message PaymentServiceCheckIfCustomerExistsResponse {
-  // Customer is the customer
-  PaymentCustomer customer = 1;
-  // Exists indicates if this customer exists
-  bool exists = 2;
-}
-
 // PaymentServiceHasPaymentMethodRequest is the request payload for a has payment request
 message PaymentServiceHasPaymentMethodRequest {
   // Login of the customer
@@ -353,16 +323,4 @@ message PaymentServiceGetDefaultPricesRequest {}
 message PaymentServiceGetDefaultPricesResponse {
   // Prices is the list of default prices
   repeated Price prices = 1;
-}
-
-// PaymentServiceHasChargeableResourcesRequest is the request payload for a has chargeable request
-message PaymentServiceHasChargeableResourcesRequest {
-  // Login of the customer
-  string login = 1;
-}
-
-// PaymentServiceHasChargeableResourcesResponse is the response payload for a has chargeable request
-message PaymentServiceHasChargeableResourcesResponse {
-  // HasResources indicates if the customer has actually chargable resources
-  bool has_resources = 1;
 }
