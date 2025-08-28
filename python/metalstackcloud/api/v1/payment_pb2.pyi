@@ -202,20 +202,6 @@ class PaymentServiceGetCustomerResponse(_message.Message):
     customer: PaymentCustomer
     def __init__(self, customer: _Optional[_Union[PaymentCustomer, _Mapping]] = ...) -> None: ...
 
-class PaymentServiceCheckIfCustomerExistsRequest(_message.Message):
-    __slots__ = ("login",)
-    LOGIN_FIELD_NUMBER: _ClassVar[int]
-    login: str
-    def __init__(self, login: _Optional[str] = ...) -> None: ...
-
-class PaymentServiceCheckIfCustomerExistsResponse(_message.Message):
-    __slots__ = ("customer", "exists")
-    CUSTOMER_FIELD_NUMBER: _ClassVar[int]
-    EXISTS_FIELD_NUMBER: _ClassVar[int]
-    customer: PaymentCustomer
-    exists: bool
-    def __init__(self, customer: _Optional[_Union[PaymentCustomer, _Mapping]] = ..., exists: bool = ...) -> None: ...
-
 class PaymentServiceHasPaymentMethodRequest(_message.Message):
     __slots__ = ("login",)
     LOGIN_FIELD_NUMBER: _ClassVar[int]
@@ -277,15 +263,3 @@ class PaymentServiceGetDefaultPricesResponse(_message.Message):
     PRICES_FIELD_NUMBER: _ClassVar[int]
     prices: _containers.RepeatedCompositeFieldContainer[Price]
     def __init__(self, prices: _Optional[_Iterable[_Union[Price, _Mapping]]] = ...) -> None: ...
-
-class PaymentServiceHasChargeableResourcesRequest(_message.Message):
-    __slots__ = ("login",)
-    LOGIN_FIELD_NUMBER: _ClassVar[int]
-    login: str
-    def __init__(self, login: _Optional[str] = ...) -> None: ...
-
-class PaymentServiceHasChargeableResourcesResponse(_message.Message):
-    __slots__ = ("has_resources",)
-    HAS_RESOURCES_FIELD_NUMBER: _ClassVar[int]
-    has_resources: bool
-    def __init__(self, has_resources: bool = ...) -> None: ...
