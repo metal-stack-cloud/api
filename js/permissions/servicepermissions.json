@@ -234,7 +234,7 @@
     "/status.v1.MessageService/Watch": true,
     "/status.v1.StatusService/Watch": true
   },
-  "visibility": {
+  "scope": {
     "public": {
       "/api.v1.AssetService/List": true,
       "/api.v1.HealthService/Get": true,

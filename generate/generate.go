@@ -111,8 +111,8 @@ func servicePermissions(root string) (*permissions.ServicePermissions, error) {
 			Tenant:  permissions.Tenant{},
 			Project: permissions.Project{},
 		}
-		methods    = permissions.Methods{}
-		visibility = permissions.Visibility{
+		methods = permissions.Methods{}
+		scope   = permissions.Scope{
 			Public: map[string]bool{
 				// Allow service reflection to list available methods
 				serverReflectionInfov1alpha1: true,
@@ -153,44 +153,44 @@ func servicePermissions(root string) (*permissions.ServicePermissions, error) {
 						switch *methodOpt.IdentifierValue {
 						case v1.TenantRole_TENANT_ROLE_OWNER.String():
 							roles.Tenant[v1.TenantRole_TENANT_ROLE_OWNER.String()] = append(roles.Tenant[v1.TenantRole_TENANT_ROLE_OWNER.String()], methodName)
-							visibility.Tenant[methodName] = true
+							scope.Tenant[methodName] = true
 						case v1.TenantRole_TENANT_ROLE_EDITOR.String():
 							roles.Tenant[v1.TenantRole_TENANT_ROLE_EDITOR.String()] = append(roles.Tenant[v1.TenantRole_TENANT_ROLE_EDITOR.String()], methodName)
-							visibility.Tenant[methodName] = true
+							scope.Tenant[methodName] = true
 						case v1.TenantRole_TENANT_ROLE_VIEWER.String():
 							roles.Tenant[v1.TenantRole_TENANT_ROLE_VIEWER.String()] = append(roles.Tenant[v1.TenantRole_TENANT_ROLE_VIEWER.String()], methodName)
-							visibility.Tenant[methodName] = true
+							scope.Tenant[methodName] = true
 						case v1.TenantRole_TENANT_ROLE_GUEST.String():
 							roles.Tenant[v1.TenantRole_TENANT_ROLE_GUEST.String()] = append(roles.Tenant[v1.TenantRole_TENANT_ROLE_GUEST.String()], methodName)
-							visibility.Tenant[methodName] = true
+							scope.Tenant[methodName] = true
 						case v1.TenantRole_TENANT_ROLE_UNSPECIFIED.String():
 							// noop
 						// Project
 						case v1.ProjectRole_PROJECT_ROLE_OWNER.String():
 							roles.Project[v1.ProjectRole_PROJECT_ROLE_OWNER.String()] = append(roles.Project[v1.ProjectRole_PROJECT_ROLE_OWNER.String()], methodName)
-							visibility.Project[methodName] = true
+							scope.Project[methodName] = true
 						case v1.ProjectRole_PROJECT_ROLE_EDITOR.String():
 							roles.Project[v1.ProjectRole_PROJECT_ROLE_EDITOR.String()] = append(roles.Project[v1.ProjectRole_PROJECT_ROLE_EDITOR.String()], methodName)
-							visibility.Project[methodName] = true
+							scope.Project[methodName] = true
 						case v1.ProjectRole_PROJECT_ROLE_VIEWER.String():
 							roles.Project[v1.ProjectRole_PROJECT_ROLE_VIEWER.String()] = append(roles.Project[v1.ProjectRole_PROJECT_ROLE_VIEWER.String()], methodName)
-							visibility.Project[methodName] = true
+							scope.Project[methodName] = true
 						case v1.ProjectRole_PROJECT_ROLE_UNSPECIFIED.String():
 							// noop
 						// Admin
 						case v1.AdminRole_ADMIN_ROLE_EDITOR.String():
 							roles.Admin[v1.AdminRole_ADMIN_ROLE_EDITOR.String()] = append(roles.Admin[v1.AdminRole_ADMIN_ROLE_EDITOR.String()], methodName)
-							visibility.Admin[methodName] = true
+							scope.Admin[methodName] = true
 						case v1.AdminRole_ADMIN_ROLE_VIEWER.String():
 							roles.Admin[v1.AdminRole_ADMIN_ROLE_VIEWER.String()] = append(roles.Admin[v1.AdminRole_ADMIN_ROLE_VIEWER.String()], methodName)
-							visibility.Admin[methodName] = true
+							scope.Admin[methodName] = true
 						case v1.AdminRole_ADMIN_ROLE_UNSPECIFIED.String():
 							// noop
 						// Visibility
 						case v1.Visibility_VISIBILITY_PUBLIC.String():
-							visibility.Public[methodName] = true
+							scope.Public[methodName] = true
 						case v1.Visibility_VISIBILITY_SELF.String():
-							visibility.Self[methodName] = true
+							scope.Self[methodName] = true
 						case v1.Visibility_VISIBILITY_UNSPECIFIED.String():
 							// noop
 						// Chargeable
@@ -222,7 +222,7 @@ func servicePermissions(root string) (*permissions.ServicePermissions, error) {
 	sp := &permissions.ServicePermissions{
 		Roles:      roles,
 		Methods:    methods,
-		Visibility: visibility,
+		Scope:      scope,
 		Chargeable: chargeable,
 		Auditable:  auditable,
 		Services:   services,

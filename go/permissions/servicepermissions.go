@@ -270,7 +270,7 @@ func GetServicePermissions() *ServicePermissions {
 			"/status.v1.MessageService/Watch":               true,
 			"/status.v1.StatusService/Watch":                true,
 		},
-		Visibility: Visibility{
+		Scope: Scope{
 			Public: map[string]bool{
 				"/api.v1.AssetService/List":                                      true,
 				"/api.v1.HealthService/Get":                                      true,
@@ -468,27 +468,27 @@ func GetServicePermissions() *ServicePermissions {
 }
 
 func IsPublicScope(req connect.AnyRequest) bool {
-	_, ok := GetServicePermissions().Visibility.Public[req.Spec().Procedure]
+	_, ok := GetServicePermissions().Scope.Public[req.Spec().Procedure]
 	return ok
 }
 
 func IsSelfScope(req connect.AnyRequest) bool {
-	_, ok := GetServicePermissions().Visibility.Self[req.Spec().Procedure]
+	_, ok := GetServicePermissions().Scope.Self[req.Spec().Procedure]
 	return ok
 }
 
 func IsAdminScope(req connect.AnyRequest) bool {
-	_, ok := GetServicePermissions().Visibility.Admin[req.Spec().Procedure]
+	_, ok := GetServicePermissions().Scope.Admin[req.Spec().Procedure]
 	return ok
 }
 
 func IsTenantScope(req connect.AnyRequest) bool {
-	_, ok := GetServicePermissions().Visibility.Tenant[req.Spec().Procedure]
+	_, ok := GetServicePermissions().Scope.Tenant[req.Spec().Procedure]
 	return ok
 }
 
 func IsProjectScope(req connect.AnyRequest) bool {
-	_, ok := GetServicePermissions().Visibility.Project[req.Spec().Procedure]
+	_, ok := GetServicePermissions().Scope.Project[req.Spec().Procedure]
 	return ok
 }
 

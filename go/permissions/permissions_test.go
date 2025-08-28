@@ -10,5 +10,5 @@ func TestGetServicePermissions(t *testing.T) {
 	perms := GetServicePermissions()
 	require.NotNil(t, perms)
 	require.Contains(t, perms.Methods, "/api.v1.AssetService/List")
-	require.Contains(t, perms.Visibility.Self, "/api.v1.TokenService/Create")
+	require.Contains(t, perms.Scope.Self, "/api.v1.TokenService/Create")
 }
