@@ -149,40 +149,24 @@ func servicePermissions(root string) (*permissions.ServicePermissions, error) {
 							continue
 						}
 						auditable[methodName] = true
+
+						role := *methodOpt.IdentifierValue
 						// Tenant
-						switch *methodOpt.IdentifierValue {
-						case v1.TenantRole_TENANT_ROLE_OWNER.String():
-							roles.Tenant[v1.TenantRole_TENANT_ROLE_OWNER.String()] = append(roles.Tenant[v1.TenantRole_TENANT_ROLE_OWNER.String()], methodName)
-							visibility.Tenant[methodName] = true
-						case v1.TenantRole_TENANT_ROLE_EDITOR.String():
-							roles.Tenant[v1.TenantRole_TENANT_ROLE_EDITOR.String()] = append(roles.Tenant[v1.TenantRole_TENANT_ROLE_EDITOR.String()], methodName)
-							visibility.Tenant[methodName] = true
-						case v1.TenantRole_TENANT_ROLE_VIEWER.String():
-							roles.Tenant[v1.TenantRole_TENANT_ROLE_VIEWER.String()] = append(roles.Tenant[v1.TenantRole_TENANT_ROLE_VIEWER.String()], methodName)
-							visibility.Tenant[methodName] = true
-						case v1.TenantRole_TENANT_ROLE_GUEST.String():
-							roles.Tenant[v1.TenantRole_TENANT_ROLE_GUEST.String()] = append(roles.Tenant[v1.TenantRole_TENANT_ROLE_GUEST.String()], methodName)
+						switch role {
+						case v1.TenantRole_TENANT_ROLE_OWNER.String(), v1.TenantRole_TENANT_ROLE_EDITOR.String(), v1.TenantRole_TENANT_ROLE_VIEWER.String(), v1.TenantRole_TENANT_ROLE_GUEST.String():
+							roles.Tenant[role] = append(roles.Tenant[role], methodName)
 							visibility.Tenant[methodName] = true
 						case v1.TenantRole_TENANT_ROLE_UNSPECIFIED.String():
 							// noop
 						// Project
-						case v1.ProjectRole_PROJECT_ROLE_OWNER.String():
-							roles.Project[v1.ProjectRole_PROJECT_ROLE_OWNER.String()] = append(roles.Project[v1.ProjectRole_PROJECT_ROLE_OWNER.String()], methodName)
-							visibility.Project[methodName] = true
-						case v1.ProjectRole_PROJECT_ROLE_EDITOR.String():
-							roles.Project[v1.ProjectRole_PROJECT_ROLE_EDITOR.String()] = append(roles.Project[v1.ProjectRole_PROJECT_ROLE_EDITOR.String()], methodName)
-							visibility.Project[methodName] = true
-						case v1.ProjectRole_PROJECT_ROLE_VIEWER.String():
-							roles.Project[v1.ProjectRole_PROJECT_ROLE_VIEWER.String()] = append(roles.Project[v1.ProjectRole_PROJECT_ROLE_VIEWER.String()], methodName)
+						case v1.ProjectRole_PROJECT_ROLE_OWNER.String(), v1.ProjectRole_PROJECT_ROLE_EDITOR.String(), v1.ProjectRole_PROJECT_ROLE_VIEWER.String():
+							roles.Project[role] = append(roles.Project[role], methodName)
 							visibility.Project[methodName] = true
 						case v1.ProjectRole_PROJECT_ROLE_UNSPECIFIED.String():
 							// noop
 						// Admin
-						case v1.AdminRole_ADMIN_ROLE_EDITOR.String():
-							roles.Admin[v1.AdminRole_ADMIN_ROLE_EDITOR.String()] = append(roles.Admin[v1.AdminRole_ADMIN_ROLE_EDITOR.String()], methodName)
-							visibility.Admin[methodName] = true
-						case v1.AdminRole_ADMIN_ROLE_VIEWER.String():
-							roles.Admin[v1.AdminRole_ADMIN_ROLE_VIEWER.String()] = append(roles.Admin[v1.AdminRole_ADMIN_ROLE_VIEWER.String()], methodName)
+						case v1.AdminRole_ADMIN_ROLE_EDITOR.String(), v1.AdminRole_ADMIN_ROLE_VIEWER.String():
+							roles.Admin[role] = append(roles.Admin[role], methodName)
 							visibility.Admin[methodName] = true
 						case v1.AdminRole_ADMIN_ROLE_UNSPECIFIED.String():
 							// noop
