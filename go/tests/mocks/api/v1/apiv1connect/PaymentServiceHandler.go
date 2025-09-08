@@ -16,28 +16,28 @@ type PaymentServiceHandler struct {
 	mock.Mock
 }
 
-// CheckIfCustomerExists provides a mock function with given fields: _a0, _a1
-func (_m *PaymentServiceHandler) CheckIfCustomerExists(_a0 context.Context, _a1 *connect.Request[apiv1.PaymentServiceCheckIfCustomerExistsRequest]) (*connect.Response[apiv1.PaymentServiceCheckIfCustomerExistsResponse], error) {
+// Create provides a mock function with given fields: _a0, _a1
+func (_m *PaymentServiceHandler) Create(_a0 context.Context, _a1 *connect.Request[apiv1.PaymentServiceCreateRequest]) (*connect.Response[apiv1.PaymentServiceCreateResponse], error) {
 	ret := _m.Called(_a0, _a1)
 
 	if len(ret) == 0 {
-		panic("no return value specified for CheckIfCustomerExists")
+		panic("no return value specified for Create")
 	}
 
-	var r0 *connect.Response[apiv1.PaymentServiceCheckIfCustomerExistsResponse]
+	var r0 *connect.Response[apiv1.PaymentServiceCreateResponse]
 	var r1 error
-	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[apiv1.PaymentServiceCheckIfCustomerExistsRequest]) (*connect.Response[apiv1.PaymentServiceCheckIfCustomerExistsResponse], error)); ok {
+	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[apiv1.PaymentServiceCreateRequest]) (*connect.Response[apiv1.PaymentServiceCreateResponse], error)); ok {
 		return rf(_a0, _a1)
 	}
-	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[apiv1.PaymentServiceCheckIfCustomerExistsRequest]) *connect.Response[apiv1.PaymentServiceCheckIfCustomerExistsResponse]); ok {
+	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[apiv1.PaymentServiceCreateRequest]) *connect.Response[apiv1.PaymentServiceCreateResponse]); ok {
 		r0 = rf(_a0, _a1)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*connect.Response[apiv1.PaymentServiceCheckIfCustomerExistsResponse])
+			r0 = ret.Get(0).(*connect.Response[apiv1.PaymentServiceCreateResponse])
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(context.Context, *connect.Request[apiv1.PaymentServiceCheckIfCustomerExistsRequest]) error); ok {
+	if rf, ok := ret.Get(1).(func(context.Context, *connect.Request[apiv1.PaymentServiceCreateRequest]) error); ok {
 		r1 = rf(_a0, _a1)
 	} else {
 		r1 = ret.Error(1)
@@ -46,28 +46,28 @@ func (_m *PaymentServiceHandler) CheckIfCustomerExists(_a0 context.Context, _a1 
 	return r0, r1
 }
 
-// CreateOrUpdateCustomer provides a mock function with given fields: _a0, _a1
-func (_m *PaymentServiceHandler) CreateOrUpdateCustomer(_a0 context.Context, _a1 *connect.Request[apiv1.PaymentServiceCreateOrUpdateCustomerRequest]) (*connect.Response[apiv1.PaymentServiceCreateOrUpdateCustomerResponse], error) {
+// Delete provides a mock function with given fields: _a0, _a1
+func (_m *PaymentServiceHandler) Delete(_a0 context.Context, _a1 *connect.Request[apiv1.PaymentServiceDeleteRequest]) (*connect.Response[apiv1.PaymentServiceDeleteResponse], error) {
 	ret := _m.Called(_a0, _a1)
 
 	if len(ret) == 0 {
-		panic("no return value specified for CreateOrUpdateCustomer")
+		panic("no return value specified for Delete")
 	}
 
-	var r0 *connect.Response[apiv1.PaymentServiceCreateOrUpdateCustomerResponse]
+	var r0 *connect.Response[apiv1.PaymentServiceDeleteResponse]
 	var r1 error
-	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[apiv1.PaymentServiceCreateOrUpdateCustomerRequest]) (*connect.Response[apiv1.PaymentServiceCreateOrUpdateCustomerResponse], error)); ok {
+	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[apiv1.PaymentServiceDeleteRequest]) (*connect.Response[apiv1.PaymentServiceDeleteResponse], error)); ok {
 		return rf(_a0, _a1)
 	}
-	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[apiv1.PaymentServiceCreateOrUpdateCustomerRequest]) *connect.Response[apiv1.PaymentServiceCreateOrUpdateCustomerResponse]); ok {
+	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[apiv1.PaymentServiceDeleteRequest]) *connect.Response[apiv1.PaymentServiceDeleteResponse]); ok {
 		r0 = rf(_a0, _a1)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*connect.Response[apiv1.PaymentServiceCreateOrUpdateCustomerResponse])
+			r0 = ret.Get(0).(*connect.Response[apiv1.PaymentServiceDeleteResponse])
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(context.Context, *connect.Request[apiv1.PaymentServiceCreateOrUpdateCustomerRequest]) error); ok {
+	if rf, ok := ret.Get(1).(func(context.Context, *connect.Request[apiv1.PaymentServiceDeleteRequest]) error); ok {
 		r1 = rf(_a0, _a1)
 	} else {
 		r1 = ret.Error(1)
@@ -76,58 +76,28 @@ func (_m *PaymentServiceHandler) CreateOrUpdateCustomer(_a0 context.Context, _a1
 	return r0, r1
 }
 
-// DeletePaymentMethod provides a mock function with given fields: _a0, _a1
-func (_m *PaymentServiceHandler) DeletePaymentMethod(_a0 context.Context, _a1 *connect.Request[apiv1.PaymentServiceDeletePaymentMethodRequest]) (*connect.Response[apiv1.PaymentServiceDeletePaymentMethodResponse], error) {
+// Get provides a mock function with given fields: _a0, _a1
+func (_m *PaymentServiceHandler) Get(_a0 context.Context, _a1 *connect.Request[apiv1.PaymentServiceGetRequest]) (*connect.Response[apiv1.PaymentServiceGetResponse], error) {
 	ret := _m.Called(_a0, _a1)
 
 	if len(ret) == 0 {
-		panic("no return value specified for DeletePaymentMethod")
+		panic("no return value specified for Get")
 	}
 
-	var r0 *connect.Response[apiv1.PaymentServiceDeletePaymentMethodResponse]
+	var r0 *connect.Response[apiv1.PaymentServiceGetResponse]
 	var r1 error
-	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[apiv1.PaymentServiceDeletePaymentMethodRequest]) (*connect.Response[apiv1.PaymentServiceDeletePaymentMethodResponse], error)); ok {
+	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[apiv1.PaymentServiceGetRequest]) (*connect.Response[apiv1.PaymentServiceGetResponse], error)); ok {
 		return rf(_a0, _a1)
 	}
-	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[apiv1.PaymentServiceDeletePaymentMethodRequest]) *connect.Response[apiv1.PaymentServiceDeletePaymentMethodResponse]); ok {
+	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[apiv1.PaymentServiceGetRequest]) *connect.Response[apiv1.PaymentServiceGetResponse]); ok {
 		r0 = rf(_a0, _a1)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*connect.Response[apiv1.PaymentServiceDeletePaymentMethodResponse])
+			r0 = ret.Get(0).(*connect.Response[apiv1.PaymentServiceGetResponse])
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(context.Context, *connect.Request[apiv1.PaymentServiceDeletePaymentMethodRequest]) error); ok {
-		r1 = rf(_a0, _a1)
-	} else {
-		r1 = ret.Error(1)
-	}
-
-	return r0, r1
-}
-
-// GetCustomer provides a mock function with given fields: _a0, _a1
-func (_m *PaymentServiceHandler) GetCustomer(_a0 context.Context, _a1 *connect.Request[apiv1.PaymentServiceGetCustomerRequest]) (*connect.Response[apiv1.PaymentServiceGetCustomerResponse], error) {
-	ret := _m.Called(_a0, _a1)
-
-	if len(ret) == 0 {
-		panic("no return value specified for GetCustomer")
-	}
-
-	var r0 *connect.Response[apiv1.PaymentServiceGetCustomerResponse]
-	var r1 error
-	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[apiv1.PaymentServiceGetCustomerRequest]) (*connect.Response[apiv1.PaymentServiceGetCustomerResponse], error)); ok {
-		return rf(_a0, _a1)
-	}
-	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[apiv1.PaymentServiceGetCustomerRequest]) *connect.Response[apiv1.PaymentServiceGetCustomerResponse]); ok {
-		r0 = rf(_a0, _a1)
-	} else {
-		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*connect.Response[apiv1.PaymentServiceGetCustomerResponse])
-		}
-	}
-
-	if rf, ok := ret.Get(1).(func(context.Context, *connect.Request[apiv1.PaymentServiceGetCustomerRequest]) error); ok {
+	if rf, ok := ret.Get(1).(func(context.Context, *connect.Request[apiv1.PaymentServiceGetRequest]) error); ok {
 		r1 = rf(_a0, _a1)
 	} else {
 		r1 = ret.Error(1)
@@ -278,6 +248,36 @@ func (_m *PaymentServiceHandler) HasPaymentMethod(_a0 context.Context, _a1 *conn
 	}
 
 	if rf, ok := ret.Get(1).(func(context.Context, *connect.Request[apiv1.PaymentServiceHasPaymentMethodRequest]) error); ok {
+		r1 = rf(_a0, _a1)
+	} else {
+		r1 = ret.Error(1)
+	}
+
+	return r0, r1
+}
+
+// Update provides a mock function with given fields: _a0, _a1
+func (_m *PaymentServiceHandler) Update(_a0 context.Context, _a1 *connect.Request[apiv1.PaymentServiceUpdateRequest]) (*connect.Response[apiv1.PaymentServiceUpdateResponse], error) {
+	ret := _m.Called(_a0, _a1)
+
+	if len(ret) == 0 {
+		panic("no return value specified for Update")
+	}
+
+	var r0 *connect.Response[apiv1.PaymentServiceUpdateResponse]
+	var r1 error
+	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[apiv1.PaymentServiceUpdateRequest]) (*connect.Response[apiv1.PaymentServiceUpdateResponse], error)); ok {
+		return rf(_a0, _a1)
+	}
+	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[apiv1.PaymentServiceUpdateRequest]) *connect.Response[apiv1.PaymentServiceUpdateResponse]); ok {
+		r0 = rf(_a0, _a1)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*connect.Response[apiv1.PaymentServiceUpdateResponse])
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(context.Context, *connect.Request[apiv1.PaymentServiceUpdateRequest]) error); ok {
 		r1 = rf(_a0, _a1)
 	} else {
 		r1 = ret.Error(1)

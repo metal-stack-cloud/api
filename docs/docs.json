@@ -6691,6 +6691,29 @@
       "hasServices": true,
       "enums": [
         {
+          "name": "ProductTier",
+          "longName": "ProductTier",
+          "fullName": "api.v1.ProductTier",
+          "description": "ProductTier is an explicit indicator for the state in which the customer is using the products.",
+          "values": [
+            {
+              "name": "PRODUCT_TIER_UNSPECIFIED",
+              "number": "0",
+              "description": "PRODUCT_TIER_UNSPECIFIED is unspecified"
+            },
+            {
+              "name": "PRODUCT_TIER_TRIAL",
+              "number": "1",
+              "description": "PRODUCT_TIER_TRIAL indicates a customer that is in trial phase without having to provide payment information."
+            },
+            {
+              "name": "PRODUCT_TIER_PAID",
+              "number": "2",
+              "description": "PRODUCT_TIER_PAID indicates a customer that has provided payment information."
+            }
+          ]
+        },
+        {
           "name": "ProductType",
           "longName": "ProductType",
           "fullName": "api.v1.ProductType",
@@ -7262,62 +7285,14 @@
               "isoneof": true,
               "oneofdecl": "_balance",
               "defaultValue": ""
-            }
-          ]
-        },
-        {
-          "name": "PaymentServiceCheckIfCustomerExistsRequest",
-          "longName": "PaymentServiceCheckIfCustomerExistsRequest",
-          "fullName": "api.v1.PaymentServiceCheckIfCustomerExistsRequest",
-          "description": "PaymentServiceCheckIfCustomerExistsRequest is the request payload for a payment check if customer exists request",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "login",
-              "description": "Login of the customer",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            }
-          ]
-        },
-        {
-          "name": "PaymentServiceCheckIfCustomerExistsResponse",
-          "longName": "PaymentServiceCheckIfCustomerExistsResponse",
-          "fullName": "api.v1.PaymentServiceCheckIfCustomerExistsResponse",
-          "description": "PaymentServiceCheckIfCustomerExistsResponse is the response payload for a payment check if customer exists request",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "customer",
-              "description": "Customer is the customer",
-              "label": "",
-              "type": "PaymentCustomer",
-              "longType": "PaymentCustomer",
-              "fullType": "api.v1.PaymentCustomer",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
             },
             {
-              "name": "exists",
-              "description": "Exists indicates if this customer exists",
+              "name": "tier",
+              "description": "Tier describes the state in which the customer is using the products.",
               "label": "",
-              "type": "bool",
-              "longType": "bool",
-              "fullType": "bool",
+              "type": "ProductTier",
+              "longType": "ProductTier",
+              "fullType": "api.v1.ProductTier",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
@@ -7326,10 +7301,10 @@
           ]
         },
         {
-          "name": "PaymentServiceCreateOrUpdateCustomerRequest",
-          "longName": "PaymentServiceCreateOrUpdateCustomerRequest",
-          "fullName": "api.v1.PaymentServiceCreateOrUpdateCustomerRequest",
-          "description": "PaymentServiceCreateOrUpdateCustomerRequest is the request payload for a payment create or update customer request",
+          "name": "PaymentServiceCreateRequest",
+          "longName": "PaymentServiceCreateRequest",
+          "fullName": "api.v1.PaymentServiceCreateRequest",
+          "description": "PaymentServiceCreateRequest is the request payload for providing payment data",
           "hasExtensions": false,
           "hasFields": true,
           "hasOneofs": true,
@@ -7337,7 +7312,7 @@
           "fields": [
             {
               "name": "login",
-              "description": "Login of the customer",
+              "description": "Login of the tenant",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -7350,49 +7325,37 @@
             {
               "name": "name",
               "description": "Name of the customer to be billed",
-              "label": "optional",
+              "label": "",
               "type": "string",
               "longType": "string",
               "fullType": "string",
               "ismap": false,
-              "isoneof": true,
-              "oneofdecl": "_name",
+              "isoneof": false,
+              "oneofdecl": "",
               "defaultValue": ""
             },
             {
               "name": "payment_method_id",
               "description": "PaymentMethodId at the payment provider, the client receives this from the payment provider and passes it on to the api",
-              "label": "optional",
+              "label": "",
               "type": "string",
               "longType": "string",
               "fullType": "string",
               "ismap": false,
-              "isoneof": true,
-              "oneofdecl": "_payment_method_id",
+              "isoneof": false,
+              "oneofdecl": "",
               "defaultValue": ""
             },
             {
               "name": "email",
               "description": "Email of the customer to be billed",
-              "label": "optional",
+              "label": "",
               "type": "string",
               "longType": "string",
               "fullType": "string",
               "ismap": false,
-              "isoneof": true,
-              "oneofdecl": "_email",
-              "defaultValue": ""
-            },
-            {
-              "name": "card",
-              "description": "Card the customer to be billed",
-              "label": "optional",
-              "type": "Card",
-              "longType": "Card",
-              "fullType": "api.v1.Card",
-              "ismap": false,
-              "isoneof": true,
-              "oneofdecl": "_card",
+              "isoneof": false,
+              "oneofdecl": "",
               "defaultValue": ""
             },
             {
@@ -7410,13 +7373,13 @@
             {
               "name": "vat",
               "description": "Vat which applies to the customer to be billed",
-              "label": "optional",
+              "label": "",
               "type": "string",
               "longType": "string",
               "fullType": "string",
               "ismap": false,
-              "isoneof": true,
-              "oneofdecl": "_vat",
+              "isoneof": false,
+              "oneofdecl": "",
               "defaultValue": ""
             },
             {
@@ -7434,10 +7397,10 @@
           ]
         },
         {
-          "name": "PaymentServiceCreateOrUpdateCustomerResponse",
-          "longName": "PaymentServiceCreateOrUpdateCustomerResponse",
-          "fullName": "api.v1.PaymentServiceCreateOrUpdateCustomerResponse",
-          "description": "PaymentServiceCreateOrUpdateCustomerResponse is the response payload for a payment create or update customer request",
+          "name": "PaymentServiceCreateResponse",
+          "longName": "PaymentServiceCreateResponse",
+          "fullName": "api.v1.PaymentServiceCreateResponse",
+          "description": "PaymentServiceCreateResponse is the response payload for a payment create request",
           "hasExtensions": false,
           "hasFields": true,
           "hasOneofs": false,
@@ -7445,7 +7408,7 @@
           "fields": [
             {
               "name": "customer",
-              "description": "Customer is the customer",
+              "description": "Customer is the created customer",
               "label": "",
               "type": "PaymentCustomer",
               "longType": "PaymentCustomer",
@@ -7458,10 +7421,10 @@
           ]
         },
         {
-          "name": "PaymentServiceDeletePaymentMethodRequest",
-          "longName": "PaymentServiceDeletePaymentMethodRequest",
-          "fullName": "api.v1.PaymentServiceDeletePaymentMethodRequest",
-          "description": "PaymentServiceDeletePaymentMethodRequest is the request payload for a delete payment request",
+          "name": "PaymentServiceDeleteRequest",
+          "longName": "PaymentServiceDeleteRequest",
+          "fullName": "api.v1.PaymentServiceDeleteRequest",
+          "description": "PaymentServiceDeleteRequest is the request payload for a delete payment request",
           "hasExtensions": false,
           "hasFields": true,
           "hasOneofs": false,
@@ -7469,7 +7432,7 @@
           "fields": [
             {
               "name": "login",
-              "description": "Login of the customer",
+              "description": "Login of the tenant",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -7482,75 +7445,15 @@
           ]
         },
         {
-          "name": "PaymentServiceDeletePaymentMethodResponse",
-          "longName": "PaymentServiceDeletePaymentMethodResponse",
-          "fullName": "api.v1.PaymentServiceDeletePaymentMethodResponse",
-          "description": "PaymentServiceDeletePaymentMethodResponse is the response payload for a delete payment request",
+          "name": "PaymentServiceDeleteResponse",
+          "longName": "PaymentServiceDeleteResponse",
+          "fullName": "api.v1.PaymentServiceDeleteResponse",
+          "description": "PaymentServiceDeleteResponse is the response payload for a delete payment request",
           "hasExtensions": false,
           "hasFields": false,
           "hasOneofs": false,
           "extensions": [],
           "fields": []
-        },
-        {
-          "name": "PaymentServiceGetCustomerRequest",
-          "longName": "PaymentServiceGetCustomerRequest",
-          "fullName": "api.v1.PaymentServiceGetCustomerRequest",
-          "description": "PaymentServiceGetCustomerRequest is the request payload for a payment get customer request",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "login",
-              "description": "Login of the customer",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "customer_id",
-              "description": "CustomerId of the customer",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            }
-          ]
-        },
-        {
-          "name": "PaymentServiceGetCustomerResponse",
-          "longName": "PaymentServiceGetCustomerResponse",
-          "fullName": "api.v1.PaymentServiceGetCustomerResponse",
-          "description": "PaymentServiceGetCustomerResponse is the response payload for a payment get customer request",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "customer",
-              "description": "Customer is the customer",
-              "label": "",
-              "type": "PaymentCustomer",
-              "longType": "PaymentCustomer",
-              "fullType": "api.v1.PaymentCustomer",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            }
-          ]
         },
         {
           "name": "PaymentServiceGetDefaultPricesRequest",
@@ -7599,7 +7502,7 @@
           "fields": [
             {
               "name": "login",
-              "description": "Login of the customer",
+              "description": "Login of the tenant",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -7648,6 +7551,54 @@
           ]
         },
         {
+          "name": "PaymentServiceGetRequest",
+          "longName": "PaymentServiceGetRequest",
+          "fullName": "api.v1.PaymentServiceGetRequest",
+          "description": "PaymentServiceGetRequest is the request payload for getting the payment data",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "login",
+              "description": "Login of the tenant",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "PaymentServiceGetResponse",
+          "longName": "PaymentServiceGetResponse",
+          "fullName": "api.v1.PaymentServiceGetResponse",
+          "description": "PaymentServiceGetResponse is the response payload for a payment get request",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "customer",
+              "description": "Customer is the payment customer",
+              "label": "",
+              "type": "PaymentCustomer",
+              "longType": "PaymentCustomer",
+              "fullType": "api.v1.PaymentCustomer",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
           "name": "PaymentServiceGetSubscriptionUsageRequest",
           "longName": "PaymentServiceGetSubscriptionUsageRequest",
           "fullName": "api.v1.PaymentServiceGetSubscriptionUsageRequest",
@@ -7659,7 +7610,7 @@
           "fields": [
             {
               "name": "login",
-              "description": "Login of the customer",
+              "description": "Login of the tenant",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -7707,7 +7658,7 @@
           "fields": [
             {
               "name": "login",
-              "description": "Login of the customer",
+              "description": "Login of the tenant",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -7755,7 +7706,7 @@
           "fields": [
             {
               "name": "login",
-              "description": "Login of the customer",
+              "description": "Login of the tenant",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -7808,6 +7759,126 @@
               "type": "bool",
               "longType": "bool",
               "fullType": "bool",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "PaymentServiceUpdateRequest",
+          "longName": "PaymentServiceUpdateRequest",
+          "fullName": "api.v1.PaymentServiceUpdateRequest",
+          "description": "PaymentServiceUpdateRequest is the request payload for updating payment data",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": true,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "login",
+              "description": "Login of the tenant",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "name",
+              "description": "Name of the customer to be billed",
+              "label": "optional",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "_name",
+              "defaultValue": ""
+            },
+            {
+              "name": "payment_method_id",
+              "description": "PaymentMethodId at the payment provider, the client receives this from the payment provider and passes it on to the api",
+              "label": "optional",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "_payment_method_id",
+              "defaultValue": ""
+            },
+            {
+              "name": "email",
+              "description": "Email of the customer to be billed",
+              "label": "optional",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "_email",
+              "defaultValue": ""
+            },
+            {
+              "name": "address",
+              "description": "Address is the postal address of the customer to be billed",
+              "label": "",
+              "type": "Address",
+              "longType": "Address",
+              "fullType": "api.v1.Address",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "vat",
+              "description": "Vat which applies to the customer to be billed",
+              "label": "optional",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "_vat",
+              "defaultValue": ""
+            },
+            {
+              "name": "phone_number",
+              "description": "PhoneNumber of the customer to be billed",
+              "label": "optional",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "_phone_number",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "PaymentServiceUpdateResponse",
+          "longName": "PaymentServiceUpdateResponse",
+          "fullName": "api.v1.PaymentServiceUpdateResponse",
+          "description": "PaymentServiceUpdateResponse is the response payload for a payment update request",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "customer",
+              "description": "Customer is the updated customer",
+              "label": "",
+              "type": "PaymentCustomer",
+              "longType": "PaymentCustomer",
+              "fullType": "api.v1.PaymentCustomer",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
@@ -7992,39 +8063,51 @@
           "description": "PaymentService serves payment related functions",
           "methods": [
             {
-              "name": "CreateOrUpdateCustomer",
-              "description": "CreateOrUpdateCustomer the payment data on the payment processor",
-              "requestType": "PaymentServiceCreateOrUpdateCustomerRequest",
-              "requestLongType": "PaymentServiceCreateOrUpdateCustomerRequest",
-              "requestFullType": "api.v1.PaymentServiceCreateOrUpdateCustomerRequest",
+              "name": "Create",
+              "description": "Create the payment data used for billing api resources",
+              "requestType": "PaymentServiceCreateRequest",
+              "requestLongType": "PaymentServiceCreateRequest",
+              "requestFullType": "api.v1.PaymentServiceCreateRequest",
               "requestStreaming": false,
-              "responseType": "PaymentServiceCreateOrUpdateCustomerResponse",
-              "responseLongType": "PaymentServiceCreateOrUpdateCustomerResponse",
-              "responseFullType": "api.v1.PaymentServiceCreateOrUpdateCustomerResponse",
+              "responseType": "PaymentServiceCreateResponse",
+              "responseLongType": "PaymentServiceCreateResponse",
+              "responseFullType": "api.v1.PaymentServiceCreateResponse",
               "responseStreaming": false
             },
             {
-              "name": "GetCustomer",
-              "description": "GetCustomer from the payment processor",
-              "requestType": "PaymentServiceGetCustomerRequest",
-              "requestLongType": "PaymentServiceGetCustomerRequest",
-              "requestFullType": "api.v1.PaymentServiceGetCustomerRequest",
+              "name": "Update",
+              "description": "Update the payment data",
+              "requestType": "PaymentServiceUpdateRequest",
+              "requestLongType": "PaymentServiceUpdateRequest",
+              "requestFullType": "api.v1.PaymentServiceUpdateRequest",
               "requestStreaming": false,
-              "responseType": "PaymentServiceGetCustomerResponse",
-              "responseLongType": "PaymentServiceGetCustomerResponse",
-              "responseFullType": "api.v1.PaymentServiceGetCustomerResponse",
+              "responseType": "PaymentServiceUpdateResponse",
+              "responseLongType": "PaymentServiceUpdateResponse",
+              "responseFullType": "api.v1.PaymentServiceUpdateResponse",
               "responseStreaming": false
             },
             {
-              "name": "CheckIfCustomerExists",
-              "description": "CheckIfCustomerExists at the payment processor",
-              "requestType": "PaymentServiceCheckIfCustomerExistsRequest",
-              "requestLongType": "PaymentServiceCheckIfCustomerExistsRequest",
-              "requestFullType": "api.v1.PaymentServiceCheckIfCustomerExistsRequest",
+              "name": "Delete",
+              "description": "Delete the payment data",
+              "requestType": "PaymentServiceDeleteRequest",
+              "requestLongType": "PaymentServiceDeleteRequest",
+              "requestFullType": "api.v1.PaymentServiceDeleteRequest",
               "requestStreaming": false,
-              "responseType": "PaymentServiceCheckIfCustomerExistsResponse",
-              "responseLongType": "PaymentServiceCheckIfCustomerExistsResponse",
-              "responseFullType": "api.v1.PaymentServiceCheckIfCustomerExistsResponse",
+              "responseType": "PaymentServiceDeleteResponse",
+              "responseLongType": "PaymentServiceDeleteResponse",
+              "responseFullType": "api.v1.PaymentServiceDeleteResponse",
+              "responseStreaming": false
+            },
+            {
+              "name": "Get",
+              "description": "Get the payment data",
+              "requestType": "PaymentServiceGetRequest",
+              "requestLongType": "PaymentServiceGetRequest",
+              "requestFullType": "api.v1.PaymentServiceGetRequest",
+              "requestStreaming": false,
+              "responseType": "PaymentServiceGetResponse",
+              "responseLongType": "PaymentServiceGetResponse",
+              "responseFullType": "api.v1.PaymentServiceGetResponse",
               "responseStreaming": false
             },
             {
@@ -8037,18 +8120,6 @@
               "responseType": "PaymentServiceHasPaymentMethodResponse",
               "responseLongType": "PaymentServiceHasPaymentMethodResponse",
               "responseFullType": "api.v1.PaymentServiceHasPaymentMethodResponse",
-              "responseStreaming": false
-            },
-            {
-              "name": "DeletePaymentMethod",
-              "description": "DeletePaymentMethod of the customer",
-              "requestType": "PaymentServiceDeletePaymentMethodRequest",
-              "requestLongType": "PaymentServiceDeletePaymentMethodRequest",
-              "requestFullType": "api.v1.PaymentServiceDeletePaymentMethodRequest",
-              "requestStreaming": false,
-              "responseType": "PaymentServiceDeletePaymentMethodResponse",
-              "responseLongType": "PaymentServiceDeletePaymentMethodResponse",
-              "responseFullType": "api.v1.PaymentServiceDeletePaymentMethodResponse",
               "responseStreaming": false
             },
             {
