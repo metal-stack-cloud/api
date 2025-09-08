@@ -37,7 +37,6 @@
     "tenant": {
       "TENANT_ROLE_EDITOR": [
         "/api.v1.PaymentService/HasPaymentMethod",
-        "/api.v1.PaymentService/HasChargeableResources",
         "/api.v1.ProjectService/Create",
         "/api.v1.TenantService/Get",
         "/api.v1.TenantService/Update",
@@ -46,7 +45,6 @@
       ],
       "TENANT_ROLE_GUEST": [
         "/api.v1.PaymentService/HasPaymentMethod",
-        "/api.v1.PaymentService/HasChargeableResources",
         "/api.v1.TenantService/Get"
       ],
       "TENANT_ROLE_OWNER": [
@@ -54,12 +52,10 @@
         "/api.v1.AuditService/List",
         "/api.v1.PaymentService/CreateOrUpdateCustomer",
         "/api.v1.PaymentService/GetCustomer",
-        "/api.v1.PaymentService/CheckIfCustomerExists",
         "/api.v1.PaymentService/HasPaymentMethod",
         "/api.v1.PaymentService/DeletePaymentMethod",
         "/api.v1.PaymentService/GetSubscriptionUsage",
         "/api.v1.PaymentService/GetInvoices",
-        "/api.v1.PaymentService/HasChargeableResources",
         "/api.v1.ProjectService/Create",
         "/api.v1.TenantService/Get",
         "/api.v1.TenantService/Update",
@@ -73,7 +69,6 @@
       ],
       "TENANT_ROLE_VIEWER": [
         "/api.v1.PaymentService/HasPaymentMethod",
-        "/api.v1.PaymentService/HasChargeableResources",
         "/api.v1.TenantService/Get"
       ]
     },
@@ -183,14 +178,12 @@
     "/api.v1.IPService/Update": true,
     "/api.v1.MethodService/List": true,
     "/api.v1.MethodService/TokenScopedList": true,
-    "/api.v1.PaymentService/CheckIfCustomerExists": true,
     "/api.v1.PaymentService/CreateOrUpdateCustomer": true,
     "/api.v1.PaymentService/DeletePaymentMethod": true,
     "/api.v1.PaymentService/GetCustomer": true,
     "/api.v1.PaymentService/GetDefaultPrices": true,
     "/api.v1.PaymentService/GetInvoices": true,
     "/api.v1.PaymentService/GetSubscriptionUsage": true,
-    "/api.v1.PaymentService/HasChargeableResources": true,
     "/api.v1.PaymentService/HasPaymentMethod": true,
     "/api.v1.ProjectService/Create": true,
     "/api.v1.ProjectService/Delete": true,
@@ -284,13 +277,11 @@
     "tenant": {
       "/api.v1.AuditService/Get": true,
       "/api.v1.AuditService/List": true,
-      "/api.v1.PaymentService/CheckIfCustomerExists": true,
       "/api.v1.PaymentService/CreateOrUpdateCustomer": true,
       "/api.v1.PaymentService/DeletePaymentMethod": true,
       "/api.v1.PaymentService/GetCustomer": true,
       "/api.v1.PaymentService/GetInvoices": true,
       "/api.v1.PaymentService/GetSubscriptionUsage": true,
-      "/api.v1.PaymentService/HasChargeableResources": true,
       "/api.v1.PaymentService/HasPaymentMethod": true,
       "/api.v1.ProjectService/Create": true,
       "/api.v1.TenantService/Delete": true,
@@ -377,14 +368,12 @@
     "/api.v1.IPService/Update": true,
     "/api.v1.MethodService/List": true,
     "/api.v1.MethodService/TokenScopedList": true,
-    "/api.v1.PaymentService/CheckIfCustomerExists": false,
     "/api.v1.PaymentService/CreateOrUpdateCustomer": true,
     "/api.v1.PaymentService/DeletePaymentMethod": true,
     "/api.v1.PaymentService/GetCustomer": false,
     "/api.v1.PaymentService/GetDefaultPrices": false,
     "/api.v1.PaymentService/GetInvoices": false,
     "/api.v1.PaymentService/GetSubscriptionUsage": false,
-    "/api.v1.PaymentService/HasChargeableResources": false,
     "/api.v1.PaymentService/HasPaymentMethod": false,
     "/api.v1.ProjectService/Create": true,
     "/api.v1.ProjectService/Delete": true,

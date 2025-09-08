@@ -25,11 +25,6 @@ class PaymentServiceStub(object):
                 request_serializer=api_dot_v1_dot_payment__pb2.PaymentServiceGetCustomerRequest.SerializeToString,
                 response_deserializer=api_dot_v1_dot_payment__pb2.PaymentServiceGetCustomerResponse.FromString,
                 _registered_method=True)
-        self.CheckIfCustomerExists = channel.unary_unary(
-                '/api.v1.PaymentService/CheckIfCustomerExists',
-                request_serializer=api_dot_v1_dot_payment__pb2.PaymentServiceCheckIfCustomerExistsRequest.SerializeToString,
-                response_deserializer=api_dot_v1_dot_payment__pb2.PaymentServiceCheckIfCustomerExistsResponse.FromString,
-                _registered_method=True)
         self.HasPaymentMethod = channel.unary_unary(
                 '/api.v1.PaymentService/HasPaymentMethod',
                 request_serializer=api_dot_v1_dot_payment__pb2.PaymentServiceHasPaymentMethodRequest.SerializeToString,
@@ -55,11 +50,6 @@ class PaymentServiceStub(object):
                 request_serializer=api_dot_v1_dot_payment__pb2.PaymentServiceGetDefaultPricesRequest.SerializeToString,
                 response_deserializer=api_dot_v1_dot_payment__pb2.PaymentServiceGetDefaultPricesResponse.FromString,
                 _registered_method=True)
-        self.HasChargeableResources = channel.unary_unary(
-                '/api.v1.PaymentService/HasChargeableResources',
-                request_serializer=api_dot_v1_dot_payment__pb2.PaymentServiceHasChargeableResourcesRequest.SerializeToString,
-                response_deserializer=api_dot_v1_dot_payment__pb2.PaymentServiceHasChargeableResourcesResponse.FromString,
-                _registered_method=True)
 
 
 class PaymentServiceServicer(object):
@@ -75,13 +65,6 @@ class PaymentServiceServicer(object):
 
     def GetCustomer(self, request, context):
         """GetCustomer from the payment processor
-        """
-        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
-
-    def CheckIfCustomerExists(self, request, context):
-        """CheckIfCustomerExists at the payment processor
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -122,13 +105,6 @@ class PaymentServiceServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
-    def HasChargeableResources(self, request, context):
-        """HasChargeableResources checks if the customer has resources actually consumed which are chargeable
-        """
-        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
-
 
 def add_PaymentServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
@@ -141,11 +117,6 @@ def add_PaymentServiceServicer_to_server(servicer, server):
                     servicer.GetCustomer,
                     request_deserializer=api_dot_v1_dot_payment__pb2.PaymentServiceGetCustomerRequest.FromString,
                     response_serializer=api_dot_v1_dot_payment__pb2.PaymentServiceGetCustomerResponse.SerializeToString,
-            ),
-            'CheckIfCustomerExists': grpc.unary_unary_rpc_method_handler(
-                    servicer.CheckIfCustomerExists,
-                    request_deserializer=api_dot_v1_dot_payment__pb2.PaymentServiceCheckIfCustomerExistsRequest.FromString,
-                    response_serializer=api_dot_v1_dot_payment__pb2.PaymentServiceCheckIfCustomerExistsResponse.SerializeToString,
             ),
             'HasPaymentMethod': grpc.unary_unary_rpc_method_handler(
                     servicer.HasPaymentMethod,
@@ -171,11 +142,6 @@ def add_PaymentServiceServicer_to_server(servicer, server):
                     servicer.GetDefaultPrices,
                     request_deserializer=api_dot_v1_dot_payment__pb2.PaymentServiceGetDefaultPricesRequest.FromString,
                     response_serializer=api_dot_v1_dot_payment__pb2.PaymentServiceGetDefaultPricesResponse.SerializeToString,
-            ),
-            'HasChargeableResources': grpc.unary_unary_rpc_method_handler(
-                    servicer.HasChargeableResources,
-                    request_deserializer=api_dot_v1_dot_payment__pb2.PaymentServiceHasChargeableResourcesRequest.FromString,
-                    response_serializer=api_dot_v1_dot_payment__pb2.PaymentServiceHasChargeableResourcesResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -233,33 +199,6 @@ class PaymentService(object):
             '/api.v1.PaymentService/GetCustomer',
             api_dot_v1_dot_payment__pb2.PaymentServiceGetCustomerRequest.SerializeToString,
             api_dot_v1_dot_payment__pb2.PaymentServiceGetCustomerResponse.FromString,
-            options,
-            channel_credentials,
-            insecure,
-            call_credentials,
-            compression,
-            wait_for_ready,
-            timeout,
-            metadata,
-            _registered_method=True)
-
-    @staticmethod
-    def CheckIfCustomerExists(request,
-            target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(
-            request,
-            target,
-            '/api.v1.PaymentService/CheckIfCustomerExists',
-            api_dot_v1_dot_payment__pb2.PaymentServiceCheckIfCustomerExistsRequest.SerializeToString,
-            api_dot_v1_dot_payment__pb2.PaymentServiceCheckIfCustomerExistsResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -395,33 +334,6 @@ class PaymentService(object):
             '/api.v1.PaymentService/GetDefaultPrices',
             api_dot_v1_dot_payment__pb2.PaymentServiceGetDefaultPricesRequest.SerializeToString,
             api_dot_v1_dot_payment__pb2.PaymentServiceGetDefaultPricesResponse.FromString,
-            options,
-            channel_credentials,
-            insecure,
-            call_credentials,
-            compression,
-            wait_for_ready,
-            timeout,
-            metadata,
-            _registered_method=True)
-
-    @staticmethod
-    def HasChargeableResources(request,
-            target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(
-            request,
-            target,
-            '/api.v1.PaymentService/HasChargeableResources',
-            api_dot_v1_dot_payment__pb2.PaymentServiceHasChargeableResourcesRequest.SerializeToString,
-            api_dot_v1_dot_payment__pb2.PaymentServiceHasChargeableResourcesResponse.FromString,
             options,
             channel_credentials,
             insecure,

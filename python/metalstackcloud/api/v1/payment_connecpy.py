@@ -17,13 +17,11 @@ import metalstackcloud.api.v1.payment_pb2 as api_dot_v1_dot_payment__pb2
 class PaymentService(Protocol):
     async def CreateOrUpdateCustomer(self, req: api_dot_v1_dot_payment__pb2.PaymentServiceCreateOrUpdateCustomerRequest, ctx: ServiceContext) -> api_dot_v1_dot_payment__pb2.PaymentServiceCreateOrUpdateCustomerResponse: ...
     async def GetCustomer(self, req: api_dot_v1_dot_payment__pb2.PaymentServiceGetCustomerRequest, ctx: ServiceContext) -> api_dot_v1_dot_payment__pb2.PaymentServiceGetCustomerResponse: ...
-    async def CheckIfCustomerExists(self, req: api_dot_v1_dot_payment__pb2.PaymentServiceCheckIfCustomerExistsRequest, ctx: ServiceContext) -> api_dot_v1_dot_payment__pb2.PaymentServiceCheckIfCustomerExistsResponse: ...
     async def HasPaymentMethod(self, req: api_dot_v1_dot_payment__pb2.PaymentServiceHasPaymentMethodRequest, ctx: ServiceContext) -> api_dot_v1_dot_payment__pb2.PaymentServiceHasPaymentMethodResponse: ...
     async def DeletePaymentMethod(self, req: api_dot_v1_dot_payment__pb2.PaymentServiceDeletePaymentMethodRequest, ctx: ServiceContext) -> api_dot_v1_dot_payment__pb2.PaymentServiceDeletePaymentMethodResponse: ...
     async def GetSubscriptionUsage(self, req: api_dot_v1_dot_payment__pb2.PaymentServiceGetSubscriptionUsageRequest, ctx: ServiceContext) -> api_dot_v1_dot_payment__pb2.PaymentServiceGetSubscriptionUsageResponse: ...
     async def GetInvoices(self, req: api_dot_v1_dot_payment__pb2.PaymentServiceGetInvoicesRequest, ctx: ServiceContext) -> api_dot_v1_dot_payment__pb2.PaymentServiceGetInvoicesResponse: ...
     async def GetDefaultPrices(self, req: api_dot_v1_dot_payment__pb2.PaymentServiceGetDefaultPricesRequest, ctx: ServiceContext) -> api_dot_v1_dot_payment__pb2.PaymentServiceGetDefaultPricesResponse: ...
-    async def HasChargeableResources(self, req: api_dot_v1_dot_payment__pb2.PaymentServiceHasChargeableResourcesRequest, ctx: ServiceContext) -> api_dot_v1_dot_payment__pb2.PaymentServiceHasChargeableResourcesResponse: ...
 
 
 class PaymentServiceServer(ConnecpyServer):
@@ -47,14 +45,6 @@ class PaymentServiceServer(ConnecpyServer):
                 output=api_dot_v1_dot_payment__pb2.PaymentServiceGetCustomerResponse,
                 allowed_methods=("POST",),
             ),
-            "CheckIfCustomerExists": Endpoint[api_dot_v1_dot_payment__pb2.PaymentServiceCheckIfCustomerExistsRequest, api_dot_v1_dot_payment__pb2.PaymentServiceCheckIfCustomerExistsResponse](
-                service_name="PaymentService",
-                name="CheckIfCustomerExists",
-                function=getattr(service, "CheckIfCustomerExists"),
-                input=api_dot_v1_dot_payment__pb2.PaymentServiceCheckIfCustomerExistsRequest,
-                output=api_dot_v1_dot_payment__pb2.PaymentServiceCheckIfCustomerExistsResponse,
-                allowed_methods=("POST",),
-            ),
             "HasPaymentMethod": Endpoint[api_dot_v1_dot_payment__pb2.PaymentServiceHasPaymentMethodRequest, api_dot_v1_dot_payment__pb2.PaymentServiceHasPaymentMethodResponse](
                 service_name="PaymentService",
                 name="HasPaymentMethod",
@@ -95,14 +85,6 @@ class PaymentServiceServer(ConnecpyServer):
                 output=api_dot_v1_dot_payment__pb2.PaymentServiceGetDefaultPricesResponse,
                 allowed_methods=("POST",),
             ),
-            "HasChargeableResources": Endpoint[api_dot_v1_dot_payment__pb2.PaymentServiceHasChargeableResourcesRequest, api_dot_v1_dot_payment__pb2.PaymentServiceHasChargeableResourcesResponse](
-                service_name="PaymentService",
-                name="HasChargeableResources",
-                function=getattr(service, "HasChargeableResources"),
-                input=api_dot_v1_dot_payment__pb2.PaymentServiceHasChargeableResourcesRequest,
-                output=api_dot_v1_dot_payment__pb2.PaymentServiceHasChargeableResourcesResponse,
-                allowed_methods=("POST",),
-            ),
         }
 
     def serviceName(self):
@@ -112,13 +94,11 @@ class PaymentServiceServer(ConnecpyServer):
 class PaymentServiceSync(Protocol):
     def CreateOrUpdateCustomer(self, req: api_dot_v1_dot_payment__pb2.PaymentServiceCreateOrUpdateCustomerRequest, ctx: ServiceContext) -> api_dot_v1_dot_payment__pb2.PaymentServiceCreateOrUpdateCustomerResponse: ...
     def GetCustomer(self, req: api_dot_v1_dot_payment__pb2.PaymentServiceGetCustomerRequest, ctx: ServiceContext) -> api_dot_v1_dot_payment__pb2.PaymentServiceGetCustomerResponse: ...
-    def CheckIfCustomerExists(self, req: api_dot_v1_dot_payment__pb2.PaymentServiceCheckIfCustomerExistsRequest, ctx: ServiceContext) -> api_dot_v1_dot_payment__pb2.PaymentServiceCheckIfCustomerExistsResponse: ...
     def HasPaymentMethod(self, req: api_dot_v1_dot_payment__pb2.PaymentServiceHasPaymentMethodRequest, ctx: ServiceContext) -> api_dot_v1_dot_payment__pb2.PaymentServiceHasPaymentMethodResponse: ...
     def DeletePaymentMethod(self, req: api_dot_v1_dot_payment__pb2.PaymentServiceDeletePaymentMethodRequest, ctx: ServiceContext) -> api_dot_v1_dot_payment__pb2.PaymentServiceDeletePaymentMethodResponse: ...
     def GetSubscriptionUsage(self, req: api_dot_v1_dot_payment__pb2.PaymentServiceGetSubscriptionUsageRequest, ctx: ServiceContext) -> api_dot_v1_dot_payment__pb2.PaymentServiceGetSubscriptionUsageResponse: ...
     def GetInvoices(self, req: api_dot_v1_dot_payment__pb2.PaymentServiceGetInvoicesRequest, ctx: ServiceContext) -> api_dot_v1_dot_payment__pb2.PaymentServiceGetInvoicesResponse: ...
     def GetDefaultPrices(self, req: api_dot_v1_dot_payment__pb2.PaymentServiceGetDefaultPricesRequest, ctx: ServiceContext) -> api_dot_v1_dot_payment__pb2.PaymentServiceGetDefaultPricesResponse: ...
-    def HasChargeableResources(self, req: api_dot_v1_dot_payment__pb2.PaymentServiceHasChargeableResourcesRequest, ctx: ServiceContext) -> api_dot_v1_dot_payment__pb2.PaymentServiceHasChargeableResourcesResponse: ...
 
 
 class PaymentServiceServerSync(ConnecpyServer):
@@ -142,14 +122,6 @@ class PaymentServiceServerSync(ConnecpyServer):
                 output=api_dot_v1_dot_payment__pb2.PaymentServiceGetCustomerResponse,
                 allowed_methods=("POST",),
             ),
-            "CheckIfCustomerExists": Endpoint[api_dot_v1_dot_payment__pb2.PaymentServiceCheckIfCustomerExistsRequest, api_dot_v1_dot_payment__pb2.PaymentServiceCheckIfCustomerExistsResponse](
-                service_name="PaymentService",
-                name="CheckIfCustomerExists",
-                function=getattr(service, "CheckIfCustomerExists"),
-                input=api_dot_v1_dot_payment__pb2.PaymentServiceCheckIfCustomerExistsRequest,
-                output=api_dot_v1_dot_payment__pb2.PaymentServiceCheckIfCustomerExistsResponse,
-                allowed_methods=("POST",),
-            ),
             "HasPaymentMethod": Endpoint[api_dot_v1_dot_payment__pb2.PaymentServiceHasPaymentMethodRequest, api_dot_v1_dot_payment__pb2.PaymentServiceHasPaymentMethodResponse](
                 service_name="PaymentService",
                 name="HasPaymentMethod",
@@ -188,14 +160,6 @@ class PaymentServiceServerSync(ConnecpyServer):
                 function=getattr(service, "GetDefaultPrices"),
                 input=api_dot_v1_dot_payment__pb2.PaymentServiceGetDefaultPricesRequest,
                 output=api_dot_v1_dot_payment__pb2.PaymentServiceGetDefaultPricesResponse,
-                allowed_methods=("POST",),
-            ),
-            "HasChargeableResources": Endpoint[api_dot_v1_dot_payment__pb2.PaymentServiceHasChargeableResourcesRequest, api_dot_v1_dot_payment__pb2.PaymentServiceHasChargeableResourcesResponse](
-                service_name="PaymentService",
-                name="HasChargeableResources",
-                function=getattr(service, "HasChargeableResources"),
-                input=api_dot_v1_dot_payment__pb2.PaymentServiceHasChargeableResourcesRequest,
-                output=api_dot_v1_dot_payment__pb2.PaymentServiceHasChargeableResourcesResponse,
                 allowed_methods=("POST",),
             ),
         }
@@ -237,24 +201,6 @@ class PaymentServiceClient(ConnecpyClient):
             ctx=ctx,
             request=request,
             response_class=api_dot_v1_dot_payment__pb2.PaymentServiceGetCustomerResponse,
-            method=method,
-            **kwargs,
-        )
-
-    def CheckIfCustomerExists(
-        self,
-        request: api_dot_v1_dot_payment__pb2.PaymentServiceCheckIfCustomerExistsRequest,
-        *,
-        ctx: Optional[ClientContext] = None,
-        server_path_prefix: str = "",
-        **kwargs,
-    ) -> api_dot_v1_dot_payment__pb2.PaymentServiceCheckIfCustomerExistsResponse:
-        method = "POST"
-        return self._make_request(
-            url=f"{server_path_prefix}/api.v1.PaymentService/CheckIfCustomerExists",
-            ctx=ctx,
-            request=request,
-            response_class=api_dot_v1_dot_payment__pb2.PaymentServiceCheckIfCustomerExistsResponse,
             method=method,
             **kwargs,
         )
@@ -349,24 +295,6 @@ class PaymentServiceClient(ConnecpyClient):
             **kwargs,
         )
 
-    def HasChargeableResources(
-        self,
-        request: api_dot_v1_dot_payment__pb2.PaymentServiceHasChargeableResourcesRequest,
-        *,
-        ctx: Optional[ClientContext] = None,
-        server_path_prefix: str = "",
-        **kwargs,
-    ) -> api_dot_v1_dot_payment__pb2.PaymentServiceHasChargeableResourcesResponse:
-        method = "POST"
-        return self._make_request(
-            url=f"{server_path_prefix}/api.v1.PaymentService/HasChargeableResources",
-            ctx=ctx,
-            request=request,
-            response_class=api_dot_v1_dot_payment__pb2.PaymentServiceHasChargeableResourcesResponse,
-            method=method,
-            **kwargs,
-        )
-
 
 class AsyncPaymentServiceClient(AsyncConnecpyClient):
     async def CreateOrUpdateCustomer(
@@ -404,26 +332,6 @@ class AsyncPaymentServiceClient(AsyncConnecpyClient):
             ctx=ctx,
             request=request,
             response_class=api_dot_v1_dot_payment__pb2.PaymentServiceGetCustomerResponse,
-            method=method,
-            session=session,
-            **kwargs,
-        )
-
-    async def CheckIfCustomerExists(
-        self,
-        request: api_dot_v1_dot_payment__pb2.PaymentServiceCheckIfCustomerExistsRequest,
-        *,
-        ctx: Optional[ClientContext] = None,
-        server_path_prefix: str = "",
-        session: Union[httpx.AsyncClient, None] = None,
-        **kwargs,
-    ) -> api_dot_v1_dot_payment__pb2.PaymentServiceCheckIfCustomerExistsResponse:
-        method = "POST"
-        return await self._make_request(
-            url=f"{server_path_prefix}/api.v1.PaymentService/CheckIfCustomerExists",
-            ctx=ctx,
-            request=request,
-            response_class=api_dot_v1_dot_payment__pb2.PaymentServiceCheckIfCustomerExistsResponse,
             method=method,
             session=session,
             **kwargs,
@@ -524,26 +432,6 @@ class AsyncPaymentServiceClient(AsyncConnecpyClient):
             ctx=ctx,
             request=request,
             response_class=api_dot_v1_dot_payment__pb2.PaymentServiceGetDefaultPricesResponse,
-            method=method,
-            session=session,
-            **kwargs,
-        )
-
-    async def HasChargeableResources(
-        self,
-        request: api_dot_v1_dot_payment__pb2.PaymentServiceHasChargeableResourcesRequest,
-        *,
-        ctx: Optional[ClientContext] = None,
-        server_path_prefix: str = "",
-        session: Union[httpx.AsyncClient, None] = None,
-        **kwargs,
-    ) -> api_dot_v1_dot_payment__pb2.PaymentServiceHasChargeableResourcesResponse:
-        method = "POST"
-        return await self._make_request(
-            url=f"{server_path_prefix}/api.v1.PaymentService/HasChargeableResources",
-            ctx=ctx,
-            request=request,
-            response_class=api_dot_v1_dot_payment__pb2.PaymentServiceHasChargeableResourcesResponse,
             method=method,
             session=session,
             **kwargs,
