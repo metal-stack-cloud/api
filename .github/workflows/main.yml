@@ -52,7 +52,7 @@ jobs:
       with:
         token: ${{ secrets.NPMJS_PUBLISH_TOKEN }}
         access: public
-        package: js/package.json
+        package: package.json
       if: github.event_name == 'release'
 
   python:
