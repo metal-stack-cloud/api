@@ -19,7 +19,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Check out code
-      uses: actions/checkout@v4
+      uses: actions/checkout@v5
 
     - name: Check spelling
       uses: crate-ci/typos@master
@@ -52,7 +52,7 @@ jobs:
       with:
         token: ${{ secrets.NPMJS_PUBLISH_TOKEN }}
         access: public
-        package: js/package.json
+        package: package.json
       if: github.event_name == 'release'
 
   python:
@@ -60,7 +60,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Check out code
-      uses: actions/checkout@v4
+      uses: actions/checkout@v5
 
     - name: Set up Python 3.13
       uses: actions/setup-python@v5

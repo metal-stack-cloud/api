@@ -7,9 +7,9 @@ LOCALBIN ?= $(shell pwd)/bin
 PROTOC_GEN_CONNECPY ?= $(LOCALBIN)/protoc-gen-connecpy
 PROTOC_GEN_CONNECPY_VERSION ?= latest
 
-all: proto generate test npm-build
+all: proto generate test build
 
-release: proto generate test npm-build-tagged
+release: proto generate test build
 
 .PHONY: proto
 proto: protolint protoc-gen-connecpy
@@ -31,16 +31,9 @@ generate:
 test:
 	$(MAKE) -C go test
 
-# TODO: this target should be moved to the js dir:
-.PHONY: npm-build
-npm-build:
-	make -C js build
-
-.PHONY: npm-build-tagged
-npm-build-tagged:
-	yq e -i -o=json ".version=\"$(shell version=$$(git describe --tags `git rev-list --tags --max-count=1`); echo $${version#v})\"" js/package.json
-	yq e -o=json '.version' js/package.json
-	$(MAKE)	npm-build
+.PHONY: build
+build:
+	make -C js build VERSION=$(VERSION)
 
 .PHONY: protoc-gen-connecpy
 protoc-gen-connecpy:
