@@ -7266,66 +7266,6 @@
           ]
         },
         {
-          "name": "PaymentServiceCheckIfCustomerExistsRequest",
-          "longName": "PaymentServiceCheckIfCustomerExistsRequest",
-          "fullName": "api.v1.PaymentServiceCheckIfCustomerExistsRequest",
-          "description": "PaymentServiceCheckIfCustomerExistsRequest is the request payload for a payment check if customer exists request",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "login",
-              "description": "Login of the customer",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            }
-          ]
-        },
-        {
-          "name": "PaymentServiceCheckIfCustomerExistsResponse",
-          "longName": "PaymentServiceCheckIfCustomerExistsResponse",
-          "fullName": "api.v1.PaymentServiceCheckIfCustomerExistsResponse",
-          "description": "PaymentServiceCheckIfCustomerExistsResponse is the response payload for a payment check if customer exists request",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "customer",
-              "description": "Customer is the customer",
-              "label": "",
-              "type": "PaymentCustomer",
-              "longType": "PaymentCustomer",
-              "fullType": "api.v1.PaymentCustomer",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "exists",
-              "description": "Exists indicates if this customer exists",
-              "label": "",
-              "type": "bool",
-              "longType": "bool",
-              "fullType": "bool",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            }
-          ]
-        },
-        {
           "name": "PaymentServiceCreateOrUpdateCustomerRequest",
           "longName": "PaymentServiceCreateOrUpdateCustomerRequest",
           "fullName": "api.v1.PaymentServiceCreateOrUpdateCustomerRequest",
@@ -7696,54 +7636,6 @@
           ]
         },
         {
-          "name": "PaymentServiceHasChargeableResourcesRequest",
-          "longName": "PaymentServiceHasChargeableResourcesRequest",
-          "fullName": "api.v1.PaymentServiceHasChargeableResourcesRequest",
-          "description": "PaymentServiceHasChargeableResourcesRequest is the request payload for a has chargeable request",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "login",
-              "description": "Login of the customer",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            }
-          ]
-        },
-        {
-          "name": "PaymentServiceHasChargeableResourcesResponse",
-          "longName": "PaymentServiceHasChargeableResourcesResponse",
-          "fullName": "api.v1.PaymentServiceHasChargeableResourcesResponse",
-          "description": "PaymentServiceHasChargeableResourcesResponse is the response payload for a has chargeable request",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "has_resources",
-              "description": "HasResources indicates if the customer has actually chargable resources",
-              "label": "",
-              "type": "bool",
-              "longType": "bool",
-              "fullType": "bool",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            }
-          ]
-        },
-        {
           "name": "PaymentServiceHasPaymentMethodRequest",
           "longName": "PaymentServiceHasPaymentMethodRequest",
           "fullName": "api.v1.PaymentServiceHasPaymentMethodRequest",
@@ -8016,18 +7908,6 @@
               "responseStreaming": false
             },
             {
-              "name": "CheckIfCustomerExists",
-              "description": "CheckIfCustomerExists at the payment processor",
-              "requestType": "PaymentServiceCheckIfCustomerExistsRequest",
-              "requestLongType": "PaymentServiceCheckIfCustomerExistsRequest",
-              "requestFullType": "api.v1.PaymentServiceCheckIfCustomerExistsRequest",
-              "requestStreaming": false,
-              "responseType": "PaymentServiceCheckIfCustomerExistsResponse",
-              "responseLongType": "PaymentServiceCheckIfCustomerExistsResponse",
-              "responseFullType": "api.v1.PaymentServiceCheckIfCustomerExistsResponse",
-              "responseStreaming": false
-            },
-            {
               "name": "HasPaymentMethod",
               "description": "HasPaymentMethod check if the customer has a payment method provided",
               "requestType": "PaymentServiceHasPaymentMethodRequest",
@@ -8085,18 +7965,6 @@
               "responseType": "PaymentServiceGetDefaultPricesResponse",
               "responseLongType": "PaymentServiceGetDefaultPricesResponse",
               "responseFullType": "api.v1.PaymentServiceGetDefaultPricesResponse",
-              "responseStreaming": false
-            },
-            {
-              "name": "HasChargeableResources",
-              "description": "HasChargeableResources checks if the customer has resources actually consumed which are chargeable",
-              "requestType": "PaymentServiceHasChargeableResourcesRequest",
-              "requestLongType": "PaymentServiceHasChargeableResourcesRequest",
-              "requestFullType": "api.v1.PaymentServiceHasChargeableResourcesRequest",
-              "requestStreaming": false,
-              "responseType": "PaymentServiceHasChargeableResourcesResponse",
-              "responseLongType": "PaymentServiceHasChargeableResourcesResponse",
-              "responseFullType": "api.v1.PaymentServiceHasChargeableResourcesResponse",
               "responseStreaming": false
             }
           ]

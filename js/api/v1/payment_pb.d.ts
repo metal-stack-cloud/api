@@ -510,48 +510,6 @@ export type PaymentServiceGetCustomerResponse = Message<"api.v1.PaymentServiceGe
  */
 export declare const PaymentServiceGetCustomerResponseSchema: GenMessage<PaymentServiceGetCustomerResponse>;
 /**
- * PaymentServiceCheckIfCustomerExistsRequest is the request payload for a payment check if customer exists request
- *
- * @generated from message api.v1.PaymentServiceCheckIfCustomerExistsRequest
- */
-export type PaymentServiceCheckIfCustomerExistsRequest = Message<"api.v1.PaymentServiceCheckIfCustomerExistsRequest"> & {
-    /**
-     * Login of the customer
-     *
-     * @generated from field: string login = 1;
-     */
-    login: string;
-};
-/**
- * Describes the message api.v1.PaymentServiceCheckIfCustomerExistsRequest.
- * Use `create(PaymentServiceCheckIfCustomerExistsRequestSchema)` to create a new message.
- */
-export declare const PaymentServiceCheckIfCustomerExistsRequestSchema: GenMessage<PaymentServiceCheckIfCustomerExistsRequest>;
-/**
- * PaymentServiceCheckIfCustomerExistsResponse is the response payload for a payment check if customer exists request
- *
- * @generated from message api.v1.PaymentServiceCheckIfCustomerExistsResponse
- */
-export type PaymentServiceCheckIfCustomerExistsResponse = Message<"api.v1.PaymentServiceCheckIfCustomerExistsResponse"> & {
-    /**
-     * Customer is the customer
-     *
-     * @generated from field: api.v1.PaymentCustomer customer = 1;
-     */
-    customer?: PaymentCustomer;
-    /**
-     * Exists indicates if this customer exists
-     *
-     * @generated from field: bool exists = 2;
-     */
-    exists: boolean;
-};
-/**
- * Describes the message api.v1.PaymentServiceCheckIfCustomerExistsResponse.
- * Use `create(PaymentServiceCheckIfCustomerExistsResponseSchema)` to create a new message.
- */
-export declare const PaymentServiceCheckIfCustomerExistsResponseSchema: GenMessage<PaymentServiceCheckIfCustomerExistsResponse>;
-/**
  * PaymentServiceHasPaymentMethodRequest is the request payload for a has payment request
  *
  * @generated from message api.v1.PaymentServiceHasPaymentMethodRequest
@@ -736,42 +694,6 @@ export type PaymentServiceGetDefaultPricesResponse = Message<"api.v1.PaymentServ
  */
 export declare const PaymentServiceGetDefaultPricesResponseSchema: GenMessage<PaymentServiceGetDefaultPricesResponse>;
 /**
- * PaymentServiceHasChargeableResourcesRequest is the request payload for a has chargeable request
- *
- * @generated from message api.v1.PaymentServiceHasChargeableResourcesRequest
- */
-export type PaymentServiceHasChargeableResourcesRequest = Message<"api.v1.PaymentServiceHasChargeableResourcesRequest"> & {
-    /**
-     * Login of the customer
-     *
-     * @generated from field: string login = 1;
-     */
-    login: string;
-};
-/**
- * Describes the message api.v1.PaymentServiceHasChargeableResourcesRequest.
- * Use `create(PaymentServiceHasChargeableResourcesRequestSchema)` to create a new message.
- */
-export declare const PaymentServiceHasChargeableResourcesRequestSchema: GenMessage<PaymentServiceHasChargeableResourcesRequest>;
-/**
- * PaymentServiceHasChargeableResourcesResponse is the response payload for a has chargeable request
- *
- * @generated from message api.v1.PaymentServiceHasChargeableResourcesResponse
- */
-export type PaymentServiceHasChargeableResourcesResponse = Message<"api.v1.PaymentServiceHasChargeableResourcesResponse"> & {
-    /**
-     * HasResources indicates if the customer has actually chargable resources
-     *
-     * @generated from field: bool has_resources = 1;
-     */
-    hasResources: boolean;
-};
-/**
- * Describes the message api.v1.PaymentServiceHasChargeableResourcesResponse.
- * Use `create(PaymentServiceHasChargeableResourcesResponseSchema)` to create a new message.
- */
-export declare const PaymentServiceHasChargeableResourcesResponseSchema: GenMessage<PaymentServiceHasChargeableResourcesResponse>;
-/**
  * ProductType defines for which type of product a price applies
  *
  * @generated from enum api.v1.ProductType
@@ -868,16 +790,6 @@ export declare const PaymentService: GenService<{
         output: typeof PaymentServiceGetCustomerResponseSchema;
     };
     /**
-     * CheckIfCustomerExists at the payment processor
-     *
-     * @generated from rpc api.v1.PaymentService.CheckIfCustomerExists
-     */
-    checkIfCustomerExists: {
-        methodKind: "unary";
-        input: typeof PaymentServiceCheckIfCustomerExistsRequestSchema;
-        output: typeof PaymentServiceCheckIfCustomerExistsResponseSchema;
-    };
-    /**
      * HasPaymentMethod check if the customer has a payment method provided
      *
      * @generated from rpc api.v1.PaymentService.HasPaymentMethod
@@ -926,15 +838,5 @@ export declare const PaymentService: GenService<{
         methodKind: "unary";
         input: typeof PaymentServiceGetDefaultPricesRequestSchema;
         output: typeof PaymentServiceGetDefaultPricesResponseSchema;
-    };
-    /**
-     * HasChargeableResources checks if the customer has resources actually consumed which are chargeable
-     *
-     * @generated from rpc api.v1.PaymentService.HasChargeableResources
-     */
-    hasChargeableResources: {
-        methodKind: "unary";
-        input: typeof PaymentServiceHasChargeableResourcesRequestSchema;
-        output: typeof PaymentServiceHasChargeableResourcesResponseSchema;
     };
 }>;
