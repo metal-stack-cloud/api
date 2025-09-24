@@ -8,4 +8,9 @@ clean:
 
 .PHONY: build
 build: install
-	bun run build
+ifeq ($(CI),true)
+	cd .. &&\
+	yq e -i -o=json ".version=\"$(VERSION)\"" package.json &&\
+	yq e -o=json ".version" package.json
+endif
+	cd .. && bun run build
