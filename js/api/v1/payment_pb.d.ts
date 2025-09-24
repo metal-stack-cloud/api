@@ -89,6 +89,12 @@ export type PaymentCustomer = Message<"api.v1.PaymentCustomer"> & {
      * @generated from field: optional int64 balance = 13;
      */
     balance?: bigint;
+    /**
+     * Tier describes the state in which the customer is using the products.
+     *
+     * @generated from field: api.v1.ProductTier tier = 14;
+     */
+    tier: ProductTier;
 };
 /**
  * Describes the message api.v1.PaymentCustomer.
@@ -390,13 +396,13 @@ export type Coupon = Message<"api.v1.Coupon"> & {
  */
 export declare const CouponSchema: GenMessage<Coupon>;
 /**
- * PaymentServiceCreateOrUpdateCustomerRequest is the request payload for a payment create or update customer request
+ * PaymentServiceCreateRequest is the request payload for providing payment data
  *
- * @generated from message api.v1.PaymentServiceCreateOrUpdateCustomerRequest
+ * @generated from message api.v1.PaymentServiceCreateRequest
  */
-export type PaymentServiceCreateOrUpdateCustomerRequest = Message<"api.v1.PaymentServiceCreateOrUpdateCustomerRequest"> & {
+export type PaymentServiceCreateRequest = Message<"api.v1.PaymentServiceCreateRequest"> & {
     /**
-     * Login of the customer
+     * Login of the tenant
      *
      * @generated from field: string login = 1;
      */
@@ -404,153 +410,171 @@ export type PaymentServiceCreateOrUpdateCustomerRequest = Message<"api.v1.Paymen
     /**
      * Name of the customer to be billed
      *
-     * @generated from field: optional string name = 4;
+     * @generated from field: string name = 2;
      */
-    name?: string;
+    name: string;
     /**
      * PaymentMethodId at the payment provider, the client receives this from the payment provider and passes it on to the api
      *
-     * @generated from field: optional string payment_method_id = 5;
+     * @generated from field: string payment_method_id = 3;
      */
-    paymentMethodId?: string;
+    paymentMethodId: string;
     /**
      * Email of the customer to be billed
      *
-     * @generated from field: optional string email = 6;
+     * @generated from field: string email = 4;
      */
-    email?: string;
-    /**
-     * Card the customer to be billed
-     *
-     * @generated from field: optional api.v1.Card card = 7;
-     */
-    card?: Card;
+    email: string;
     /**
      * Address is the postal address of the customer to be billed
      *
-     * @generated from field: api.v1.Address address = 8;
+     * @generated from field: api.v1.Address address = 5;
      */
     address?: Address;
     /**
      * Vat which applies to the customer to be billed
      *
-     * @generated from field: optional string vat = 9;
+     * @generated from field: string vat = 6;
+     */
+    vat: string;
+    /**
+     * PhoneNumber of the customer to be billed
+     *
+     * @generated from field: optional string phone_number = 7;
+     */
+    phoneNumber?: string;
+};
+/**
+ * Describes the message api.v1.PaymentServiceCreateRequest.
+ * Use `create(PaymentServiceCreateRequestSchema)` to create a new message.
+ */
+export declare const PaymentServiceCreateRequestSchema: GenMessage<PaymentServiceCreateRequest>;
+/**
+ * PaymentServiceCreateResponse is the response payload for a payment create request
+ *
+ * @generated from message api.v1.PaymentServiceCreateResponse
+ */
+export type PaymentServiceCreateResponse = Message<"api.v1.PaymentServiceCreateResponse"> & {
+    /**
+     * Customer is the created customer
+     *
+     * @generated from field: api.v1.PaymentCustomer customer = 1;
+     */
+    customer?: PaymentCustomer;
+};
+/**
+ * Describes the message api.v1.PaymentServiceCreateResponse.
+ * Use `create(PaymentServiceCreateResponseSchema)` to create a new message.
+ */
+export declare const PaymentServiceCreateResponseSchema: GenMessage<PaymentServiceCreateResponse>;
+/**
+ * PaymentServiceUpdateRequest is the request payload for updating payment data
+ *
+ * @generated from message api.v1.PaymentServiceUpdateRequest
+ */
+export type PaymentServiceUpdateRequest = Message<"api.v1.PaymentServiceUpdateRequest"> & {
+    /**
+     * Login of the tenant
+     *
+     * @generated from field: string login = 1;
+     */
+    login: string;
+    /**
+     * Name of the customer to be billed
+     *
+     * @generated from field: optional string name = 2;
+     */
+    name?: string;
+    /**
+     * PaymentMethodId at the payment provider, the client receives this from the payment provider and passes it on to the api
+     *
+     * @generated from field: optional string payment_method_id = 3;
+     */
+    paymentMethodId?: string;
+    /**
+     * Email of the customer to be billed
+     *
+     * @generated from field: optional string email = 4;
+     */
+    email?: string;
+    /**
+     * Address is the postal address of the customer to be billed
+     *
+     * @generated from field: api.v1.Address address = 5;
+     */
+    address?: Address;
+    /**
+     * Vat which applies to the customer to be billed
+     *
+     * @generated from field: optional string vat = 6;
      */
     vat?: string;
     /**
      * PhoneNumber of the customer to be billed
      *
-     * @generated from field: optional string phone_number = 10;
+     * @generated from field: optional string phone_number = 7;
      */
     phoneNumber?: string;
 };
 /**
- * Describes the message api.v1.PaymentServiceCreateOrUpdateCustomerRequest.
- * Use `create(PaymentServiceCreateOrUpdateCustomerRequestSchema)` to create a new message.
+ * Describes the message api.v1.PaymentServiceUpdateRequest.
+ * Use `create(PaymentServiceUpdateRequestSchema)` to create a new message.
  */
-export declare const PaymentServiceCreateOrUpdateCustomerRequestSchema: GenMessage<PaymentServiceCreateOrUpdateCustomerRequest>;
+export declare const PaymentServiceUpdateRequestSchema: GenMessage<PaymentServiceUpdateRequest>;
 /**
- * PaymentServiceCreateOrUpdateCustomerResponse is the response payload for a payment create or update customer request
+ * PaymentServiceUpdateResponse is the response payload for a payment update request
  *
- * @generated from message api.v1.PaymentServiceCreateOrUpdateCustomerResponse
+ * @generated from message api.v1.PaymentServiceUpdateResponse
  */
-export type PaymentServiceCreateOrUpdateCustomerResponse = Message<"api.v1.PaymentServiceCreateOrUpdateCustomerResponse"> & {
+export type PaymentServiceUpdateResponse = Message<"api.v1.PaymentServiceUpdateResponse"> & {
     /**
-     * Customer is the customer
+     * Customer is the updated customer
      *
      * @generated from field: api.v1.PaymentCustomer customer = 1;
      */
     customer?: PaymentCustomer;
 };
 /**
- * Describes the message api.v1.PaymentServiceCreateOrUpdateCustomerResponse.
- * Use `create(PaymentServiceCreateOrUpdateCustomerResponseSchema)` to create a new message.
+ * Describes the message api.v1.PaymentServiceUpdateResponse.
+ * Use `create(PaymentServiceUpdateResponseSchema)` to create a new message.
  */
-export declare const PaymentServiceCreateOrUpdateCustomerResponseSchema: GenMessage<PaymentServiceCreateOrUpdateCustomerResponse>;
+export declare const PaymentServiceUpdateResponseSchema: GenMessage<PaymentServiceUpdateResponse>;
 /**
- * PaymentServiceGetCustomerRequest is the request payload for a payment get customer request
+ * PaymentServiceGetRequest is the request payload for getting the payment data
  *
- * @generated from message api.v1.PaymentServiceGetCustomerRequest
+ * @generated from message api.v1.PaymentServiceGetRequest
  */
-export type PaymentServiceGetCustomerRequest = Message<"api.v1.PaymentServiceGetCustomerRequest"> & {
+export type PaymentServiceGetRequest = Message<"api.v1.PaymentServiceGetRequest"> & {
     /**
-     * Login of the customer
-     *
-     * @generated from field: string login = 1;
-     */
-    login: string;
-    /**
-     * CustomerId of the customer
-     *
-     * @generated from field: string customer_id = 2;
-     */
-    customerId: string;
-};
-/**
- * Describes the message api.v1.PaymentServiceGetCustomerRequest.
- * Use `create(PaymentServiceGetCustomerRequestSchema)` to create a new message.
- */
-export declare const PaymentServiceGetCustomerRequestSchema: GenMessage<PaymentServiceGetCustomerRequest>;
-/**
- * PaymentServiceGetCustomerResponse is the response payload for a payment get customer request
- *
- * @generated from message api.v1.PaymentServiceGetCustomerResponse
- */
-export type PaymentServiceGetCustomerResponse = Message<"api.v1.PaymentServiceGetCustomerResponse"> & {
-    /**
-     * Customer is the customer
-     *
-     * @generated from field: api.v1.PaymentCustomer customer = 1;
-     */
-    customer?: PaymentCustomer;
-};
-/**
- * Describes the message api.v1.PaymentServiceGetCustomerResponse.
- * Use `create(PaymentServiceGetCustomerResponseSchema)` to create a new message.
- */
-export declare const PaymentServiceGetCustomerResponseSchema: GenMessage<PaymentServiceGetCustomerResponse>;
-/**
- * PaymentServiceCheckIfCustomerExistsRequest is the request payload for a payment check if customer exists request
- *
- * @generated from message api.v1.PaymentServiceCheckIfCustomerExistsRequest
- */
-export type PaymentServiceCheckIfCustomerExistsRequest = Message<"api.v1.PaymentServiceCheckIfCustomerExistsRequest"> & {
-    /**
-     * Login of the customer
+     * Login of the tenant
      *
      * @generated from field: string login = 1;
      */
     login: string;
 };
 /**
- * Describes the message api.v1.PaymentServiceCheckIfCustomerExistsRequest.
- * Use `create(PaymentServiceCheckIfCustomerExistsRequestSchema)` to create a new message.
+ * Describes the message api.v1.PaymentServiceGetRequest.
+ * Use `create(PaymentServiceGetRequestSchema)` to create a new message.
  */
-export declare const PaymentServiceCheckIfCustomerExistsRequestSchema: GenMessage<PaymentServiceCheckIfCustomerExistsRequest>;
+export declare const PaymentServiceGetRequestSchema: GenMessage<PaymentServiceGetRequest>;
 /**
- * PaymentServiceCheckIfCustomerExistsResponse is the response payload for a payment check if customer exists request
+ * PaymentServiceGetResponse is the response payload for a payment get request
  *
- * @generated from message api.v1.PaymentServiceCheckIfCustomerExistsResponse
+ * @generated from message api.v1.PaymentServiceGetResponse
  */
-export type PaymentServiceCheckIfCustomerExistsResponse = Message<"api.v1.PaymentServiceCheckIfCustomerExistsResponse"> & {
+export type PaymentServiceGetResponse = Message<"api.v1.PaymentServiceGetResponse"> & {
     /**
-     * Customer is the customer
+     * Customer is the payment customer
      *
      * @generated from field: api.v1.PaymentCustomer customer = 1;
      */
     customer?: PaymentCustomer;
-    /**
-     * Exists indicates if this customer exists
-     *
-     * @generated from field: bool exists = 2;
-     */
-    exists: boolean;
 };
 /**
- * Describes the message api.v1.PaymentServiceCheckIfCustomerExistsResponse.
- * Use `create(PaymentServiceCheckIfCustomerExistsResponseSchema)` to create a new message.
+ * Describes the message api.v1.PaymentServiceGetResponse.
+ * Use `create(PaymentServiceGetResponseSchema)` to create a new message.
  */
-export declare const PaymentServiceCheckIfCustomerExistsResponseSchema: GenMessage<PaymentServiceCheckIfCustomerExistsResponse>;
+export declare const PaymentServiceGetResponseSchema: GenMessage<PaymentServiceGetResponse>;
 /**
  * PaymentServiceHasPaymentMethodRequest is the request payload for a has payment request
  *
@@ -558,7 +582,7 @@ export declare const PaymentServiceCheckIfCustomerExistsResponseSchema: GenMessa
  */
 export type PaymentServiceHasPaymentMethodRequest = Message<"api.v1.PaymentServiceHasPaymentMethodRequest"> & {
     /**
-     * Login of the customer
+     * Login of the tenant
      *
      * @generated from field: string login = 1;
      */
@@ -600,34 +624,34 @@ export type PaymentServiceHasPaymentMethodResponse = Message<"api.v1.PaymentServ
  */
 export declare const PaymentServiceHasPaymentMethodResponseSchema: GenMessage<PaymentServiceHasPaymentMethodResponse>;
 /**
- * PaymentServiceDeletePaymentMethodRequest is the request payload for a delete payment request
+ * PaymentServiceDeleteRequest is the request payload for a delete payment request
  *
- * @generated from message api.v1.PaymentServiceDeletePaymentMethodRequest
+ * @generated from message api.v1.PaymentServiceDeleteRequest
  */
-export type PaymentServiceDeletePaymentMethodRequest = Message<"api.v1.PaymentServiceDeletePaymentMethodRequest"> & {
+export type PaymentServiceDeleteRequest = Message<"api.v1.PaymentServiceDeleteRequest"> & {
     /**
-     * Login of the customer
+     * Login of the tenant
      *
      * @generated from field: string login = 1;
      */
     login: string;
 };
 /**
- * Describes the message api.v1.PaymentServiceDeletePaymentMethodRequest.
- * Use `create(PaymentServiceDeletePaymentMethodRequestSchema)` to create a new message.
+ * Describes the message api.v1.PaymentServiceDeleteRequest.
+ * Use `create(PaymentServiceDeleteRequestSchema)` to create a new message.
  */
-export declare const PaymentServiceDeletePaymentMethodRequestSchema: GenMessage<PaymentServiceDeletePaymentMethodRequest>;
+export declare const PaymentServiceDeleteRequestSchema: GenMessage<PaymentServiceDeleteRequest>;
 /**
- * PaymentServiceDeletePaymentMethodResponse is the response payload for a delete payment request
+ * PaymentServiceDeleteResponse is the response payload for a delete payment request
  *
- * @generated from message api.v1.PaymentServiceDeletePaymentMethodResponse
+ * @generated from message api.v1.PaymentServiceDeleteResponse
  */
-export type PaymentServiceDeletePaymentMethodResponse = Message<"api.v1.PaymentServiceDeletePaymentMethodResponse"> & {};
+export type PaymentServiceDeleteResponse = Message<"api.v1.PaymentServiceDeleteResponse"> & {};
 /**
- * Describes the message api.v1.PaymentServiceDeletePaymentMethodResponse.
- * Use `create(PaymentServiceDeletePaymentMethodResponseSchema)` to create a new message.
+ * Describes the message api.v1.PaymentServiceDeleteResponse.
+ * Use `create(PaymentServiceDeleteResponseSchema)` to create a new message.
  */
-export declare const PaymentServiceDeletePaymentMethodResponseSchema: GenMessage<PaymentServiceDeletePaymentMethodResponse>;
+export declare const PaymentServiceDeleteResponseSchema: GenMessage<PaymentServiceDeleteResponse>;
 /**
  * PaymentServiceGetSubscriptionUsageRequest is the request payload for a get subscription usage request
  *
@@ -635,7 +659,7 @@ export declare const PaymentServiceDeletePaymentMethodResponseSchema: GenMessage
  */
 export type PaymentServiceGetSubscriptionUsageRequest = Message<"api.v1.PaymentServiceGetSubscriptionUsageRequest"> & {
     /**
-     * Login of the customer
+     * Login of the tenant
      *
      * @generated from field: string login = 1;
      */
@@ -671,7 +695,7 @@ export declare const PaymentServiceGetSubscriptionUsageResponseSchema: GenMessag
  */
 export type PaymentServiceGetInvoicesRequest = Message<"api.v1.PaymentServiceGetInvoicesRequest"> & {
     /**
-     * Login of the customer
+     * Login of the tenant
      *
      * @generated from field: string login = 1;
      */
@@ -742,7 +766,7 @@ export declare const PaymentServiceGetDefaultPricesResponseSchema: GenMessage<Pa
  */
 export type PaymentServiceHasChargeableResourcesRequest = Message<"api.v1.PaymentServiceHasChargeableResourcesRequest"> & {
     /**
-     * Login of the customer
+     * Login of the tenant
      *
      * @generated from field: string login = 1;
      */
@@ -842,40 +866,79 @@ export declare enum UsageType {
  */
 export declare const UsageTypeSchema: GenEnum<UsageType>;
 /**
+ * ProductTier is an explicit indicator for the state in which the customer is using the products.
+ *
+ * @generated from enum api.v1.ProductTier
+ */
+export declare enum ProductTier {
+    /**
+     * PRODUCT_TIER_UNSPECIFIED is unspecified
+     *
+     * @generated from enum value: PRODUCT_TIER_UNSPECIFIED = 0;
+     */
+    UNSPECIFIED = 0,
+    /**
+     * PRODUCT_TIER_TRIAL indicates a customer that is in trial phase without having to provide payment information.
+     *
+     * @generated from enum value: PRODUCT_TIER_TRIAL = 1;
+     */
+    TRIAL = 1,
+    /**
+     * PRODUCT_TIER_PAID indicates a customer that has provided payment information.
+     *
+     * @generated from enum value: PRODUCT_TIER_PAID = 2;
+     */
+    PAID = 2
+}
+/**
+ * Describes the enum api.v1.ProductTier.
+ */
+export declare const ProductTierSchema: GenEnum<ProductTier>;
+/**
  * PaymentService serves payment related functions
  *
  * @generated from service api.v1.PaymentService
  */
 export declare const PaymentService: GenService<{
     /**
-     * CreateOrUpdateCustomer the payment data on the payment processor
+     * Create the payment data used for billing api resources
      *
-     * @generated from rpc api.v1.PaymentService.CreateOrUpdateCustomer
+     * @generated from rpc api.v1.PaymentService.Create
      */
-    createOrUpdateCustomer: {
+    create: {
         methodKind: "unary";
-        input: typeof PaymentServiceCreateOrUpdateCustomerRequestSchema;
-        output: typeof PaymentServiceCreateOrUpdateCustomerResponseSchema;
+        input: typeof PaymentServiceCreateRequestSchema;
+        output: typeof PaymentServiceCreateResponseSchema;
     };
     /**
-     * GetCustomer from the payment processor
+     * Update the payment data
      *
-     * @generated from rpc api.v1.PaymentService.GetCustomer
+     * @generated from rpc api.v1.PaymentService.Update
      */
-    getCustomer: {
+    update: {
         methodKind: "unary";
-        input: typeof PaymentServiceGetCustomerRequestSchema;
-        output: typeof PaymentServiceGetCustomerResponseSchema;
+        input: typeof PaymentServiceUpdateRequestSchema;
+        output: typeof PaymentServiceUpdateResponseSchema;
     };
     /**
-     * CheckIfCustomerExists at the payment processor
+     * Delete the payment data
      *
-     * @generated from rpc api.v1.PaymentService.CheckIfCustomerExists
+     * @generated from rpc api.v1.PaymentService.Delete
      */
-    checkIfCustomerExists: {
+    delete: {
         methodKind: "unary";
-        input: typeof PaymentServiceCheckIfCustomerExistsRequestSchema;
-        output: typeof PaymentServiceCheckIfCustomerExistsResponseSchema;
+        input: typeof PaymentServiceDeleteRequestSchema;
+        output: typeof PaymentServiceDeleteResponseSchema;
+    };
+    /**
+     * Get the payment data
+     *
+     * @generated from rpc api.v1.PaymentService.Get
+     */
+    get: {
+        methodKind: "unary";
+        input: typeof PaymentServiceGetRequestSchema;
+        output: typeof PaymentServiceGetResponseSchema;
     };
     /**
      * HasPaymentMethod check if the customer has a payment method provided
@@ -886,16 +949,6 @@ export declare const PaymentService: GenService<{
         methodKind: "unary";
         input: typeof PaymentServiceHasPaymentMethodRequestSchema;
         output: typeof PaymentServiceHasPaymentMethodResponseSchema;
-    };
-    /**
-     * DeletePaymentMethod of the customer
-     *
-     * @generated from rpc api.v1.PaymentService.DeletePaymentMethod
-     */
-    deletePaymentMethod: {
-        methodKind: "unary";
-        input: typeof PaymentServiceDeletePaymentMethodRequestSchema;
-        output: typeof PaymentServiceDeletePaymentMethodResponseSchema;
     };
     /**
      * GetSubscriptionUsage of the customer
