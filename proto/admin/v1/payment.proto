@@ -7,25 +7,10 @@ import "api/v1/payment.proto";
 
 // PaymentService serves payment related functions
 service PaymentService {
-  // ListCoupons list all available coupons
-  rpc ListCoupons(PaymentServiceListCouponsRequest) returns (PaymentServiceListCouponsResponse) {
-    option (api.v1.admin_roles) = ADMIN_ROLE_EDITOR;
-    option (api.v1.admin_roles) = ADMIN_ROLE_VIEWER;
-    option (api.v1.auditing) = AUDITING_EXCLUDED;
-  }
   // AddBalanceToCustomer adds balance to a customer
   rpc AddBalanceToCustomer(PaymentServiceAddBalanceToCustomerRequest) returns (PaymentServiceAddBalanceToCustomerResponse) {
     option (api.v1.admin_roles) = ADMIN_ROLE_EDITOR;
   }
-}
-
-// PaymentServiceListCouponsRequest is the request payload for the coupons list request
-message PaymentServiceListCouponsRequest {}
-
-// PaymentServiceListCouponsResponse is the response payload for the coupons list request
-message PaymentServiceListCouponsResponse {
-  // Coupons is the list of all coupons
-  repeated api.v1.Coupon coupons = 1;
 }
 
 // PaymentServiceAddBalanceToCustomerRequest is the request payload for the balance to customer request

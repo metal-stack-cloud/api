@@ -1,6 +1,5 @@
 import type { GenFile, GenMessage, GenService } from "@bufbuild/protobuf/codegenv2";
 import type { OAuthProvider, TenantRole } from "./common_pb";
-import type { Coupon } from "./payment_pb";
 import type { Timestamp } from "@bufbuild/protobuf/wkt";
 import type { Message } from "@bufbuild/protobuf";
 /**
@@ -241,12 +240,6 @@ export type PaymentDetails = Message<"api.v1.PaymentDetails"> & {
      * @generated from field: string subscription_id = 3;
      */
     subscriptionId: string;
-    /**
-     * Coupons a list of coupons the tenant has
-     *
-     * @generated from field: repeated api.v1.Coupon coupons = 4;
-     */
-    coupons: Coupon[];
     /**
      * Vat which applies to this tenant
      *

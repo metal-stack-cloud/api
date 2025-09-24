@@ -3,7 +3,6 @@ syntax = "proto3";
 package api.v1;
 
 import "api/v1/common.proto";
-import "api/v1/payment.proto";
 import "buf/validate/validate.proto";
 import "google/protobuf/timestamp.proto";
 
@@ -157,14 +156,15 @@ message TenantInvite {
 
 // PaymentDetails of a tenant
 message PaymentDetails {
+  reserved 4;
+  reserved "coupons";
+
   // CustomerId at the payment processor
   string customer_id = 1;
   // PaymentMethodId of the tenant at the payment processor
   optional string payment_method_id = 2;
   // SubscriptionId at the payment processor
   string subscription_id = 3;
-  // Coupons a list of coupons the tenant has
-  repeated Coupon coupons = 4;
   // Vat which applies to this tenant
   string vat = 5;
 }

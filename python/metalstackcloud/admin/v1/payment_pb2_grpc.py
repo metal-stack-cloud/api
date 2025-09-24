@@ -15,11 +15,6 @@ class PaymentServiceStub(object):
         Args:
             channel: A grpc.Channel.
         """
-        self.ListCoupons = channel.unary_unary(
-                '/admin.v1.PaymentService/ListCoupons',
-                request_serializer=admin_dot_v1_dot_payment__pb2.PaymentServiceListCouponsRequest.SerializeToString,
-                response_deserializer=admin_dot_v1_dot_payment__pb2.PaymentServiceListCouponsResponse.FromString,
-                _registered_method=True)
         self.AddBalanceToCustomer = channel.unary_unary(
                 '/admin.v1.PaymentService/AddBalanceToCustomer',
                 request_serializer=admin_dot_v1_dot_payment__pb2.PaymentServiceAddBalanceToCustomerRequest.SerializeToString,
@@ -31,13 +26,6 @@ class PaymentServiceServicer(object):
     """PaymentService serves payment related functions
     """
 
-    def ListCoupons(self, request, context):
-        """ListCoupons list all available coupons
-        """
-        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
-
     def AddBalanceToCustomer(self, request, context):
         """AddBalanceToCustomer adds balance to a customer
         """
@@ -48,11 +36,6 @@ class PaymentServiceServicer(object):
 
 def add_PaymentServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
-            'ListCoupons': grpc.unary_unary_rpc_method_handler(
-                    servicer.ListCoupons,
-                    request_deserializer=admin_dot_v1_dot_payment__pb2.PaymentServiceListCouponsRequest.FromString,
-                    response_serializer=admin_dot_v1_dot_payment__pb2.PaymentServiceListCouponsResponse.SerializeToString,
-            ),
             'AddBalanceToCustomer': grpc.unary_unary_rpc_method_handler(
                     servicer.AddBalanceToCustomer,
                     request_deserializer=admin_dot_v1_dot_payment__pb2.PaymentServiceAddBalanceToCustomerRequest.FromString,
@@ -69,33 +52,6 @@ def add_PaymentServiceServicer_to_server(servicer, server):
 class PaymentService(object):
     """PaymentService serves payment related functions
     """
-
-    @staticmethod
-    def ListCoupons(request,
-            target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(
-            request,
-            target,
-            '/admin.v1.PaymentService/ListCoupons',
-            admin_dot_v1_dot_payment__pb2.PaymentServiceListCouponsRequest.SerializeToString,
-            admin_dot_v1_dot_payment__pb2.PaymentServiceListCouponsResponse.FromString,
-            options,
-            channel_credentials,
-            insecure,
-            call_credentials,
-            compression,
-            wait_for_ready,
-            timeout,
-            metadata,
-            _registered_method=True)
 
     @staticmethod
     def AddBalanceToCustomer(request,

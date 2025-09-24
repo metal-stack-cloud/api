@@ -1,7 +1,6 @@
 import datetime
 
 from api.v1 import common_pb2 as _common_pb2
-from api.v1 import payment_pb2 as _payment_pb2
 from buf.validate import validate_pb2 as _validate_pb2
 from google.protobuf import timestamp_pb2 as _timestamp_pb2
 from google.protobuf.internal import containers as _containers
@@ -83,18 +82,16 @@ class TenantInvite(_message.Message):
     def __init__(self, secret: _Optional[str] = ..., target_tenant: _Optional[str] = ..., role: _Optional[_Union[_common_pb2.TenantRole, str]] = ..., joined: bool = ..., target_tenant_name: _Optional[str] = ..., tenant: _Optional[str] = ..., tenant_name: _Optional[str] = ..., expires_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., joined_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ...) -> None: ...
 
 class PaymentDetails(_message.Message):
-    __slots__ = ("customer_id", "payment_method_id", "subscription_id", "coupons", "vat")
+    __slots__ = ("customer_id", "payment_method_id", "subscription_id", "vat")
     CUSTOMER_ID_FIELD_NUMBER: _ClassVar[int]
     PAYMENT_METHOD_ID_FIELD_NUMBER: _ClassVar[int]
     SUBSCRIPTION_ID_FIELD_NUMBER: _ClassVar[int]
-    COUPONS_FIELD_NUMBER: _ClassVar[int]
     VAT_FIELD_NUMBER: _ClassVar[int]
     customer_id: str
     payment_method_id: str
     subscription_id: str
-    coupons: _containers.RepeatedCompositeFieldContainer[_payment_pb2.Coupon]
     vat: str
-    def __init__(self, customer_id: _Optional[str] = ..., payment_method_id: _Optional[str] = ..., subscription_id: _Optional[str] = ..., coupons: _Optional[_Iterable[_Union[_payment_pb2.Coupon, _Mapping]]] = ..., vat: _Optional[str] = ...) -> None: ...
+    def __init__(self, customer_id: _Optional[str] = ..., payment_method_id: _Optional[str] = ..., subscription_id: _Optional[str] = ..., vat: _Optional[str] = ...) -> None: ...
 
 class TermsAndConditions(_message.Message):
     __slots__ = ("accepted", "when")

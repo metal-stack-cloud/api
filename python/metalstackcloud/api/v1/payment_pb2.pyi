@@ -35,7 +35,7 @@ USAGE_TYPE_METERED: UsageType
 USAGE_TYPE_LICENSED: UsageType
 
 class PaymentCustomer(_message.Message):
-    __slots__ = ("login", "name", "customer_id", "payment_method_id", "subscription_id", "email", "card", "prices", "address", "coupon", "vat", "phone_number", "balance")
+    __slots__ = ("login", "name", "customer_id", "payment_method_id", "subscription_id", "email", "card", "prices", "address", "vat", "phone_number", "balance")
     LOGIN_FIELD_NUMBER: _ClassVar[int]
     NAME_FIELD_NUMBER: _ClassVar[int]
     CUSTOMER_ID_FIELD_NUMBER: _ClassVar[int]
@@ -45,7 +45,6 @@ class PaymentCustomer(_message.Message):
     CARD_FIELD_NUMBER: _ClassVar[int]
     PRICES_FIELD_NUMBER: _ClassVar[int]
     ADDRESS_FIELD_NUMBER: _ClassVar[int]
-    COUPON_FIELD_NUMBER: _ClassVar[int]
     VAT_FIELD_NUMBER: _ClassVar[int]
     PHONE_NUMBER_FIELD_NUMBER: _ClassVar[int]
     BALANCE_FIELD_NUMBER: _ClassVar[int]
@@ -58,11 +57,10 @@ class PaymentCustomer(_message.Message):
     card: Card
     prices: _containers.RepeatedCompositeFieldContainer[Price]
     address: Address
-    coupon: Coupon
     vat: str
     phone_number: str
     balance: int
-    def __init__(self, login: _Optional[str] = ..., name: _Optional[str] = ..., customer_id: _Optional[str] = ..., payment_method_id: _Optional[str] = ..., subscription_id: _Optional[str] = ..., email: _Optional[str] = ..., card: _Optional[_Union[Card, _Mapping]] = ..., prices: _Optional[_Iterable[_Union[Price, _Mapping]]] = ..., address: _Optional[_Union[Address, _Mapping]] = ..., coupon: _Optional[_Union[Coupon, _Mapping]] = ..., vat: _Optional[str] = ..., phone_number: _Optional[str] = ..., balance: _Optional[int] = ...) -> None: ...
+    def __init__(self, login: _Optional[str] = ..., name: _Optional[str] = ..., customer_id: _Optional[str] = ..., payment_method_id: _Optional[str] = ..., subscription_id: _Optional[str] = ..., email: _Optional[str] = ..., card: _Optional[_Union[Card, _Mapping]] = ..., prices: _Optional[_Iterable[_Union[Price, _Mapping]]] = ..., address: _Optional[_Union[Address, _Mapping]] = ..., vat: _Optional[str] = ..., phone_number: _Optional[str] = ..., balance: _Optional[int] = ...) -> None: ...
 
 class Card(_message.Message):
     __slots__ = ("brand", "country", "exp_month", "exp_year", "last_4")
@@ -138,30 +136,6 @@ class Invoice(_message.Message):
     period_end: _timestamp_pb2.Timestamp
     def __init__(self, id: _Optional[str] = ..., pdf_download_url: _Optional[str] = ..., period_start: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., period_end: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ...) -> None: ...
 
-class Coupon(_message.Message):
-    __slots__ = ("id", "name", "amount_off", "currency", "duration_in_month", "created_at", "redeem_by", "times_redeemed", "max_redemptions", "amount_left")
-    ID_FIELD_NUMBER: _ClassVar[int]
-    NAME_FIELD_NUMBER: _ClassVar[int]
-    AMOUNT_OFF_FIELD_NUMBER: _ClassVar[int]
-    CURRENCY_FIELD_NUMBER: _ClassVar[int]
-    DURATION_IN_MONTH_FIELD_NUMBER: _ClassVar[int]
-    CREATED_AT_FIELD_NUMBER: _ClassVar[int]
-    REDEEM_BY_FIELD_NUMBER: _ClassVar[int]
-    TIMES_REDEEMED_FIELD_NUMBER: _ClassVar[int]
-    MAX_REDEMPTIONS_FIELD_NUMBER: _ClassVar[int]
-    AMOUNT_LEFT_FIELD_NUMBER: _ClassVar[int]
-    id: str
-    name: str
-    amount_off: int
-    currency: str
-    duration_in_month: int
-    created_at: _timestamp_pb2.Timestamp
-    redeem_by: _timestamp_pb2.Timestamp
-    times_redeemed: int
-    max_redemptions: int
-    amount_left: int
-    def __init__(self, id: _Optional[str] = ..., name: _Optional[str] = ..., amount_off: _Optional[int] = ..., currency: _Optional[str] = ..., duration_in_month: _Optional[int] = ..., created_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., redeem_by: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., times_redeemed: _Optional[int] = ..., max_redemptions: _Optional[int] = ..., amount_left: _Optional[int] = ...) -> None: ...
-
 class PaymentServiceCreateOrUpdateCustomerRequest(_message.Message):
     __slots__ = ("login", "name", "payment_method_id", "email", "card", "address", "vat", "phone_number")
     LOGIN_FIELD_NUMBER: _ClassVar[int]
@@ -209,14 +183,12 @@ class PaymentServiceHasPaymentMethodRequest(_message.Message):
     def __init__(self, login: _Optional[str] = ...) -> None: ...
 
 class PaymentServiceHasPaymentMethodResponse(_message.Message):
-    __slots__ = ("exists", "coupon_left", "positive_balance")
+    __slots__ = ("exists", "positive_balance")
     EXISTS_FIELD_NUMBER: _ClassVar[int]
-    COUPON_LEFT_FIELD_NUMBER: _ClassVar[int]
     POSITIVE_BALANCE_FIELD_NUMBER: _ClassVar[int]
     exists: bool
-    coupon_left: bool
     positive_balance: bool
-    def __init__(self, exists: bool = ..., coupon_left: bool = ..., positive_balance: bool = ...) -> None: ...
+    def __init__(self, exists: bool = ..., positive_balance: bool = ...) -> None: ...
 
 class PaymentServiceDeletePaymentMethodRequest(_message.Message):
     __slots__ = ("login",)

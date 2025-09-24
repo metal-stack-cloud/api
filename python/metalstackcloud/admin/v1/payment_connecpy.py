@@ -15,7 +15,6 @@ import metalstackcloud.admin.v1.payment_pb2 as admin_dot_v1_dot_payment__pb2
 
 
 class PaymentService(Protocol):
-    async def ListCoupons(self, req: admin_dot_v1_dot_payment__pb2.PaymentServiceListCouponsRequest, ctx: ServiceContext) -> admin_dot_v1_dot_payment__pb2.PaymentServiceListCouponsResponse: ...
     async def AddBalanceToCustomer(self, req: admin_dot_v1_dot_payment__pb2.PaymentServiceAddBalanceToCustomerRequest, ctx: ServiceContext) -> admin_dot_v1_dot_payment__pb2.PaymentServiceAddBalanceToCustomerResponse: ...
 
 
@@ -24,14 +23,6 @@ class PaymentServiceServer(ConnecpyServer):
         super().__init__()
         self._prefix = f"{server_path_prefix}/admin.v1.PaymentService"
         self._endpoints = {
-            "ListCoupons": Endpoint[admin_dot_v1_dot_payment__pb2.PaymentServiceListCouponsRequest, admin_dot_v1_dot_payment__pb2.PaymentServiceListCouponsResponse](
-                service_name="PaymentService",
-                name="ListCoupons",
-                function=getattr(service, "ListCoupons"),
-                input=admin_dot_v1_dot_payment__pb2.PaymentServiceListCouponsRequest,
-                output=admin_dot_v1_dot_payment__pb2.PaymentServiceListCouponsResponse,
-                allowed_methods=("POST",),
-            ),
             "AddBalanceToCustomer": Endpoint[admin_dot_v1_dot_payment__pb2.PaymentServiceAddBalanceToCustomerRequest, admin_dot_v1_dot_payment__pb2.PaymentServiceAddBalanceToCustomerResponse](
                 service_name="PaymentService",
                 name="AddBalanceToCustomer",
@@ -47,7 +38,6 @@ class PaymentServiceServer(ConnecpyServer):
 
 
 class PaymentServiceSync(Protocol):
-    def ListCoupons(self, req: admin_dot_v1_dot_payment__pb2.PaymentServiceListCouponsRequest, ctx: ServiceContext) -> admin_dot_v1_dot_payment__pb2.PaymentServiceListCouponsResponse: ...
     def AddBalanceToCustomer(self, req: admin_dot_v1_dot_payment__pb2.PaymentServiceAddBalanceToCustomerRequest, ctx: ServiceContext) -> admin_dot_v1_dot_payment__pb2.PaymentServiceAddBalanceToCustomerResponse: ...
 
 
@@ -56,14 +46,6 @@ class PaymentServiceServerSync(ConnecpyServer):
         super().__init__()
         self._prefix = f"{server_path_prefix}/admin.v1.PaymentService"
         self._endpoints = {
-            "ListCoupons": Endpoint[admin_dot_v1_dot_payment__pb2.PaymentServiceListCouponsRequest, admin_dot_v1_dot_payment__pb2.PaymentServiceListCouponsResponse](
-                service_name="PaymentService",
-                name="ListCoupons",
-                function=getattr(service, "ListCoupons"),
-                input=admin_dot_v1_dot_payment__pb2.PaymentServiceListCouponsRequest,
-                output=admin_dot_v1_dot_payment__pb2.PaymentServiceListCouponsResponse,
-                allowed_methods=("POST",),
-            ),
             "AddBalanceToCustomer": Endpoint[admin_dot_v1_dot_payment__pb2.PaymentServiceAddBalanceToCustomerRequest, admin_dot_v1_dot_payment__pb2.PaymentServiceAddBalanceToCustomerResponse](
                 service_name="PaymentService",
                 name="AddBalanceToCustomer",
@@ -79,24 +61,6 @@ class PaymentServiceServerSync(ConnecpyServer):
 
 
 class PaymentServiceClient(ConnecpyClient):
-    def ListCoupons(
-        self,
-        request: admin_dot_v1_dot_payment__pb2.PaymentServiceListCouponsRequest,
-        *,
-        ctx: Optional[ClientContext] = None,
-        server_path_prefix: str = "",
-        **kwargs,
-    ) -> admin_dot_v1_dot_payment__pb2.PaymentServiceListCouponsResponse:
-        method = "POST"
-        return self._make_request(
-            url=f"{server_path_prefix}/admin.v1.PaymentService/ListCoupons",
-            ctx=ctx,
-            request=request,
-            response_class=admin_dot_v1_dot_payment__pb2.PaymentServiceListCouponsResponse,
-            method=method,
-            **kwargs,
-        )
-
     def AddBalanceToCustomer(
         self,
         request: admin_dot_v1_dot_payment__pb2.PaymentServiceAddBalanceToCustomerRequest,
@@ -117,26 +81,6 @@ class PaymentServiceClient(ConnecpyClient):
 
 
 class AsyncPaymentServiceClient(AsyncConnecpyClient):
-    async def ListCoupons(
-        self,
-        request: admin_dot_v1_dot_payment__pb2.PaymentServiceListCouponsRequest,
-        *,
-        ctx: Optional[ClientContext] = None,
-        server_path_prefix: str = "",
-        session: Union[httpx.AsyncClient, None] = None,
-        **kwargs,
-    ) -> admin_dot_v1_dot_payment__pb2.PaymentServiceListCouponsResponse:
-        method = "POST"
-        return await self._make_request(
-            url=f"{server_path_prefix}/admin.v1.PaymentService/ListCoupons",
-            ctx=ctx,
-            request=request,
-            response_class=admin_dot_v1_dot_payment__pb2.PaymentServiceListCouponsResponse,
-            method=method,
-            session=session,
-            **kwargs,
-        )
-
     async def AddBalanceToCustomer(
         self,
         request: admin_dot_v1_dot_payment__pb2.PaymentServiceAddBalanceToCustomerRequest,

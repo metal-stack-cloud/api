@@ -1,39 +1,10 @@
 import type { GenFile, GenMessage, GenService } from "@bufbuild/protobuf/codegenv2";
-import type { Coupon, PaymentCustomer } from "../../api/v1/payment_pb";
+import type { PaymentCustomer } from "../../api/v1/payment_pb";
 import type { Message } from "@bufbuild/protobuf";
 /**
  * Describes the file admin/v1/payment.proto.
  */
 export declare const file_admin_v1_payment: GenFile;
-/**
- * PaymentServiceListCouponsRequest is the request payload for the coupons list request
- *
- * @generated from message admin.v1.PaymentServiceListCouponsRequest
- */
-export type PaymentServiceListCouponsRequest = Message<"admin.v1.PaymentServiceListCouponsRequest"> & {};
-/**
- * Describes the message admin.v1.PaymentServiceListCouponsRequest.
- * Use `create(PaymentServiceListCouponsRequestSchema)` to create a new message.
- */
-export declare const PaymentServiceListCouponsRequestSchema: GenMessage<PaymentServiceListCouponsRequest>;
-/**
- * PaymentServiceListCouponsResponse is the response payload for the coupons list request
- *
- * @generated from message admin.v1.PaymentServiceListCouponsResponse
- */
-export type PaymentServiceListCouponsResponse = Message<"admin.v1.PaymentServiceListCouponsResponse"> & {
-    /**
-     * Coupons is the list of all coupons
-     *
-     * @generated from field: repeated api.v1.Coupon coupons = 1;
-     */
-    coupons: Coupon[];
-};
-/**
- * Describes the message admin.v1.PaymentServiceListCouponsResponse.
- * Use `create(PaymentServiceListCouponsResponseSchema)` to create a new message.
- */
-export declare const PaymentServiceListCouponsResponseSchema: GenMessage<PaymentServiceListCouponsResponse>;
 /**
  * PaymentServiceAddBalanceToCustomerRequest is the request payload for the balance to customer request
  *
@@ -82,16 +53,6 @@ export declare const PaymentServiceAddBalanceToCustomerResponseSchema: GenMessag
  * @generated from service admin.v1.PaymentService
  */
 export declare const PaymentService: GenService<{
-    /**
-     * ListCoupons list all available coupons
-     *
-     * @generated from rpc admin.v1.PaymentService.ListCoupons
-     */
-    listCoupons: {
-        methodKind: "unary";
-        input: typeof PaymentServiceListCouponsRequestSchema;
-        output: typeof PaymentServiceListCouponsResponseSchema;
-    };
     /**
      * AddBalanceToCustomer adds balance to a customer
      *

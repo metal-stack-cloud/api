@@ -22,89 +22,6 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-// PaymentServiceListCouponsRequest is the request payload for the coupons list request
-type PaymentServiceListCouponsRequest struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *PaymentServiceListCouponsRequest) Reset() {
-	*x = PaymentServiceListCouponsRequest{}
-	mi := &file_admin_v1_payment_proto_msgTypes[0]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *PaymentServiceListCouponsRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*PaymentServiceListCouponsRequest) ProtoMessage() {}
-
-func (x *PaymentServiceListCouponsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_admin_v1_payment_proto_msgTypes[0]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use PaymentServiceListCouponsRequest.ProtoReflect.Descriptor instead.
-func (*PaymentServiceListCouponsRequest) Descriptor() ([]byte, []int) {
-	return file_admin_v1_payment_proto_rawDescGZIP(), []int{0}
-}
-
-// PaymentServiceListCouponsResponse is the response payload for the coupons list request
-type PaymentServiceListCouponsResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// Coupons is the list of all coupons
-	Coupons       []*v1.Coupon `protobuf:"bytes,1,rep,name=coupons,proto3" json:"coupons,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *PaymentServiceListCouponsResponse) Reset() {
-	*x = PaymentServiceListCouponsResponse{}
-	mi := &file_admin_v1_payment_proto_msgTypes[1]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *PaymentServiceListCouponsResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*PaymentServiceListCouponsResponse) ProtoMessage() {}
-
-func (x *PaymentServiceListCouponsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_admin_v1_payment_proto_msgTypes[1]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use PaymentServiceListCouponsResponse.ProtoReflect.Descriptor instead.
-func (*PaymentServiceListCouponsResponse) Descriptor() ([]byte, []int) {
-	return file_admin_v1_payment_proto_rawDescGZIP(), []int{1}
-}
-
-func (x *PaymentServiceListCouponsResponse) GetCoupons() []*v1.Coupon {
-	if x != nil {
-		return x.Coupons
-	}
-	return nil
-}
-
 // PaymentServiceAddBalanceToCustomerRequest is the request payload for the balance to customer request
 type PaymentServiceAddBalanceToCustomerRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
@@ -118,7 +35,7 @@ type PaymentServiceAddBalanceToCustomerRequest struct {
 
 func (x *PaymentServiceAddBalanceToCustomerRequest) Reset() {
 	*x = PaymentServiceAddBalanceToCustomerRequest{}
-	mi := &file_admin_v1_payment_proto_msgTypes[2]
+	mi := &file_admin_v1_payment_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -130,7 +47,7 @@ func (x *PaymentServiceAddBalanceToCustomerRequest) String() string {
 func (*PaymentServiceAddBalanceToCustomerRequest) ProtoMessage() {}
 
 func (x *PaymentServiceAddBalanceToCustomerRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_admin_v1_payment_proto_msgTypes[2]
+	mi := &file_admin_v1_payment_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -143,7 +60,7 @@ func (x *PaymentServiceAddBalanceToCustomerRequest) ProtoReflect() protoreflect.
 
 // Deprecated: Use PaymentServiceAddBalanceToCustomerRequest.ProtoReflect.Descriptor instead.
 func (*PaymentServiceAddBalanceToCustomerRequest) Descriptor() ([]byte, []int) {
-	return file_admin_v1_payment_proto_rawDescGZIP(), []int{2}
+	return file_admin_v1_payment_proto_rawDescGZIP(), []int{0}
 }
 
 func (x *PaymentServiceAddBalanceToCustomerRequest) GetTenantId() string {
@@ -171,7 +88,7 @@ type PaymentServiceAddBalanceToCustomerResponse struct {
 
 func (x *PaymentServiceAddBalanceToCustomerResponse) Reset() {
 	*x = PaymentServiceAddBalanceToCustomerResponse{}
-	mi := &file_admin_v1_payment_proto_msgTypes[3]
+	mi := &file_admin_v1_payment_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -183,7 +100,7 @@ func (x *PaymentServiceAddBalanceToCustomerResponse) String() string {
 func (*PaymentServiceAddBalanceToCustomerResponse) ProtoMessage() {}
 
 func (x *PaymentServiceAddBalanceToCustomerResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_admin_v1_payment_proto_msgTypes[3]
+	mi := &file_admin_v1_payment_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -196,7 +113,7 @@ func (x *PaymentServiceAddBalanceToCustomerResponse) ProtoReflect() protoreflect
 
 // Deprecated: Use PaymentServiceAddBalanceToCustomerResponse.ProtoReflect.Descriptor instead.
 func (*PaymentServiceAddBalanceToCustomerResponse) Descriptor() ([]byte, []int) {
-	return file_admin_v1_payment_proto_rawDescGZIP(), []int{3}
+	return file_admin_v1_payment_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *PaymentServiceAddBalanceToCustomerResponse) GetCustomer() *v1.PaymentCustomer {
@@ -210,18 +127,13 @@ var File_admin_v1_payment_proto protoreflect.FileDescriptor
 
 const file_admin_v1_payment_proto_rawDesc = "" +
 	"\n" +
-	"\x16admin/v1/payment.proto\x12\badmin.v1\x1a\x13api/v1/common.proto\x1a\x14api/v1/payment.proto\"\"\n" +
-	" PaymentServiceListCouponsRequest\"M\n" +
-	"!PaymentServiceListCouponsResponse\x12(\n" +
-	"\acoupons\x18\x01 \x03(\v2\x0e.api.v1.CouponR\acoupons\"n\n" +
+	"\x16admin/v1/payment.proto\x12\badmin.v1\x1a\x13api/v1/common.proto\x1a\x14api/v1/payment.proto\"n\n" +
 	")PaymentServiceAddBalanceToCustomerRequest\x12\x1b\n" +
 	"\ttenant_id\x18\x01 \x01(\tR\btenantId\x12$\n" +
 	"\x0ebalance_to_add\x18\x02 \x01(\x04R\fbalanceToAdd\"a\n" +
 	"*PaymentServiceAddBalanceToCustomerResponse\x123\n" +
-	"\bcustomer\x18\x01 \x01(\v2\x17.api.v1.PaymentCustomerR\bcustomer2\x8f\x02\n" +
-	"\x0ePaymentService\x12r\n" +
-	"\vListCoupons\x12*.admin.v1.PaymentServiceListCouponsRequest\x1a+.admin.v1.PaymentServiceListCouponsResponse\"\n" +
-	"\xd2\xf3\x18\x02\x01\x02\xe8\xf3\x18\x02\x12\x88\x01\n" +
+	"\bcustomer\x18\x01 \x01(\v2\x17.api.v1.PaymentCustomerR\bcustomer2\x9b\x01\n" +
+	"\x0ePaymentService\x12\x88\x01\n" +
 	"\x14AddBalanceToCustomer\x123.admin.v1.PaymentServiceAddBalanceToCustomerRequest\x1a4.admin.v1.PaymentServiceAddBalanceToCustomerResponse\"\x05\xd2\xf3\x18\x01\x01B\x93\x01\n" +
 	"\fcom.admin.v1B\fPaymentProtoP\x01Z4github.com/metal-stack-cloud/api/go/admin/v1;adminv1\xa2\x02\x03AXX\xaa\x02\bAdmin.V1\xca\x02\bAdmin\\V1\xe2\x02\x14Admin\\V1\\GPBMetadata\xea\x02\tAdmin::V1b\x06proto3"
 
@@ -237,27 +149,21 @@ func file_admin_v1_payment_proto_rawDescGZIP() []byte {
 	return file_admin_v1_payment_proto_rawDescData
 }
 
-var file_admin_v1_payment_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
+var file_admin_v1_payment_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
 var file_admin_v1_payment_proto_goTypes = []any{
-	(*PaymentServiceListCouponsRequest)(nil),           // 0: admin.v1.PaymentServiceListCouponsRequest
-	(*PaymentServiceListCouponsResponse)(nil),          // 1: admin.v1.PaymentServiceListCouponsResponse
-	(*PaymentServiceAddBalanceToCustomerRequest)(nil),  // 2: admin.v1.PaymentServiceAddBalanceToCustomerRequest
-	(*PaymentServiceAddBalanceToCustomerResponse)(nil), // 3: admin.v1.PaymentServiceAddBalanceToCustomerResponse
-	(*v1.Coupon)(nil),          // 4: api.v1.Coupon
-	(*v1.PaymentCustomer)(nil), // 5: api.v1.PaymentCustomer
+	(*PaymentServiceAddBalanceToCustomerRequest)(nil),  // 0: admin.v1.PaymentServiceAddBalanceToCustomerRequest
+	(*PaymentServiceAddBalanceToCustomerResponse)(nil), // 1: admin.v1.PaymentServiceAddBalanceToCustomerResponse
+	(*v1.PaymentCustomer)(nil),                         // 2: api.v1.PaymentCustomer
 }
 var file_admin_v1_payment_proto_depIdxs = []int32{
-	4, // 0: admin.v1.PaymentServiceListCouponsResponse.coupons:type_name -> api.v1.Coupon
-	5, // 1: admin.v1.PaymentServiceAddBalanceToCustomerResponse.customer:type_name -> api.v1.PaymentCustomer
-	0, // 2: admin.v1.PaymentService.ListCoupons:input_type -> admin.v1.PaymentServiceListCouponsRequest
-	2, // 3: admin.v1.PaymentService.AddBalanceToCustomer:input_type -> admin.v1.PaymentServiceAddBalanceToCustomerRequest
-	1, // 4: admin.v1.PaymentService.ListCoupons:output_type -> admin.v1.PaymentServiceListCouponsResponse
-	3, // 5: admin.v1.PaymentService.AddBalanceToCustomer:output_type -> admin.v1.PaymentServiceAddBalanceToCustomerResponse
-	4, // [4:6] is the sub-list for method output_type
-	2, // [2:4] is the sub-list for method input_type
-	2, // [2:2] is the sub-list for extension type_name
-	2, // [2:2] is the sub-list for extension extendee
-	0, // [0:2] is the sub-list for field type_name
+	2, // 0: admin.v1.PaymentServiceAddBalanceToCustomerResponse.customer:type_name -> api.v1.PaymentCustomer
+	0, // 1: admin.v1.PaymentService.AddBalanceToCustomer:input_type -> admin.v1.PaymentServiceAddBalanceToCustomerRequest
+	1, // 2: admin.v1.PaymentService.AddBalanceToCustomer:output_type -> admin.v1.PaymentServiceAddBalanceToCustomerResponse
+	2, // [2:3] is the sub-list for method output_type
+	1, // [1:2] is the sub-list for method input_type
+	1, // [1:1] is the sub-list for extension type_name
+	1, // [1:1] is the sub-list for extension extendee
+	0, // [0:1] is the sub-list for field type_name
 }
 
 func init() { file_admin_v1_payment_proto_init() }
@@ -271,7 +177,7 @@ func file_admin_v1_payment_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_admin_v1_payment_proto_rawDesc), len(file_admin_v1_payment_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   4,
+			NumMessages:   2,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

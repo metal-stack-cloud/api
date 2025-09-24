@@ -6906,138 +6906,6 @@
           ]
         },
         {
-          "name": "Coupon",
-          "longName": "Coupon",
-          "fullName": "api.v1.Coupon",
-          "description": "Coupon is a amount of free usage which can be granted to a customer",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "id",
-              "description": "Id of the coupon",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "name",
-              "description": "Name of this coupon",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "amount_off",
-              "description": "AmountOff is th amount the customer can use for free",
-              "label": "",
-              "type": "int64",
-              "longType": "int64",
-              "fullType": "int64",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "currency",
-              "description": "Currency of the free usage amount",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "duration_in_month",
-              "description": "DurationInMonth defines how many month this coupon is valid for",
-              "label": "",
-              "type": "int64",
-              "longType": "int64",
-              "fullType": "int64",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "created_at",
-              "description": "CreatedAt is the date the coupon was created",
-              "label": "",
-              "type": "Timestamp",
-              "longType": "google.protobuf.Timestamp",
-              "fullType": "google.protobuf.Timestamp",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "redeem_by",
-              "description": "RedeemBy is the date when this coupon can no longer be used",
-              "label": "",
-              "type": "Timestamp",
-              "longType": "google.protobuf.Timestamp",
-              "fullType": "google.protobuf.Timestamp",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "times_redeemed",
-              "description": "TimesRedeemed how often this coupon was already consumed",
-              "label": "",
-              "type": "int64",
-              "longType": "int64",
-              "fullType": "int64",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "max_redemptions",
-              "description": "MaxRedemptions defines how often this coupon can be consumed",
-              "label": "",
-              "type": "int64",
-              "longType": "int64",
-              "fullType": "int64",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "amount_left",
-              "description": "AmountLeft how many usages are left for this coupon",
-              "label": "",
-              "type": "int64",
-              "longType": "int64",
-              "fullType": "int64",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            }
-          ]
-        },
-        {
           "name": "Invoice",
           "longName": "Invoice",
           "fullName": "api.v1.Invoice",
@@ -7213,18 +7081,6 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "coupon",
-              "description": "Coupon details of granted coupon if any",
-              "label": "optional",
-              "type": "Coupon",
-              "longType": "Coupon",
-              "fullType": "api.v1.Coupon",
-              "ismap": false,
-              "isoneof": true,
-              "oneofdecl": "_coupon",
               "defaultValue": ""
             },
             {
@@ -7682,18 +7538,6 @@
               "defaultValue": ""
             },
             {
-              "name": "coupon_left",
-              "description": "CouponLeft is true if there is still free amount on the coupon left",
-              "label": "",
-              "type": "bool",
-              "longType": "bool",
-              "fullType": "bool",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
               "name": "positive_balance",
               "description": "PositiveBalance indicates if the customer still has positive balance",
               "label": "",
@@ -8041,41 +7885,6 @@
               "defaultValue": ""
             }
           ]
-        },
-        {
-          "name": "PaymentServiceListCouponsRequest",
-          "longName": "PaymentServiceListCouponsRequest",
-          "fullName": "admin.v1.PaymentServiceListCouponsRequest",
-          "description": "PaymentServiceListCouponsRequest is the request payload for the coupons list request",
-          "hasExtensions": false,
-          "hasFields": false,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": []
-        },
-        {
-          "name": "PaymentServiceListCouponsResponse",
-          "longName": "PaymentServiceListCouponsResponse",
-          "fullName": "admin.v1.PaymentServiceListCouponsResponse",
-          "description": "PaymentServiceListCouponsResponse is the response payload for the coupons list request",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "coupons",
-              "description": "Coupons is the list of all coupons",
-              "label": "repeated",
-              "type": "Coupon",
-              "longType": "api.v1.Coupon",
-              "fullType": "api.v1.Coupon",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            }
-          ]
         }
       ],
       "services": [
@@ -8085,18 +7894,6 @@
           "fullName": "admin.v1.PaymentService",
           "description": "PaymentService serves payment related functions",
           "methods": [
-            {
-              "name": "ListCoupons",
-              "description": "ListCoupons list all available coupons",
-              "requestType": "PaymentServiceListCouponsRequest",
-              "requestLongType": "PaymentServiceListCouponsRequest",
-              "requestFullType": "admin.v1.PaymentServiceListCouponsRequest",
-              "requestStreaming": false,
-              "responseType": "PaymentServiceListCouponsResponse",
-              "responseLongType": "PaymentServiceListCouponsResponse",
-              "responseFullType": "admin.v1.PaymentServiceListCouponsResponse",
-              "responseStreaming": false
-            },
             {
               "name": "AddBalanceToCustomer",
               "description": "AddBalanceToCustomer adds balance to a customer",
@@ -11662,18 +11459,6 @@
               "type": "string",
               "longType": "string",
               "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "coupons",
-              "description": "Coupons a list of coupons the tenant has",
-              "label": "repeated",
-              "type": "Coupon",
-              "longType": "Coupon",
-              "fullType": "api.v1.Coupon",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
