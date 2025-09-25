@@ -404,8 +404,6 @@ type PaymentDetails struct {
 	PaymentMethodId *string `protobuf:"bytes,2,opt,name=payment_method_id,json=paymentMethodId,proto3,oneof" json:"payment_method_id,omitempty"`
 	// SubscriptionId at the payment processor
 	SubscriptionId string `protobuf:"bytes,3,opt,name=subscription_id,json=subscriptionId,proto3" json:"subscription_id,omitempty"`
-	// Coupons a list of coupons the tenant has
-	Coupons []*Coupon `protobuf:"bytes,4,rep,name=coupons,proto3" json:"coupons,omitempty"`
 	// Vat which applies to this tenant
 	Vat           string `protobuf:"bytes,5,opt,name=vat,proto3" json:"vat,omitempty"`
 	unknownFields protoimpl.UnknownFields
@@ -461,13 +459,6 @@ func (x *PaymentDetails) GetSubscriptionId() string {
 		return x.SubscriptionId
 	}
 	return ""
-}
-
-func (x *PaymentDetails) GetCoupons() []*Coupon {
-	if x != nil {
-		return x.Coupons
-	}
-	return nil
 }
 
 func (x *PaymentDetails) GetVat() string {
@@ -1951,7 +1942,7 @@ var File_api_v1_tenant_proto protoreflect.FileDescriptor
 
 const file_api_v1_tenant_proto_rawDesc = "" +
 	"\n" +
-	"\x13api/v1/tenant.proto\x12\x06api.v1\x1a\x13api/v1/common.proto\x1a\x14api/v1/payment.proto\x1a\x1bbuf/validate/validate.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\xa8\x05\n" +
+	"\x13api/v1/tenant.proto\x12\x06api.v1\x1a\x13api/v1/common.proto\x1a\x1bbuf/validate/validate.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\xa8\x05\n" +
 	"\x06Tenant\x12\x14\n" +
 	"\x05login\x18\x01 \x01(\tR\x05login\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x14\n" +
@@ -1995,15 +1986,14 @@ const file_api_v1_tenant_proto_rawDesc = "" +
 	"\n" +
 	"expires_at\x18\n" +
 	" \x01(\v2\x1a.google.protobuf.TimestampR\texpiresAt\x127\n" +
-	"\tjoined_at\x18\v \x01(\v2\x1a.google.protobuf.TimestampR\bjoinedAt\"\xdd\x01\n" +
+	"\tjoined_at\x18\v \x01(\v2\x1a.google.protobuf.TimestampR\bjoinedAt\"\xc2\x01\n" +
 	"\x0ePaymentDetails\x12\x1f\n" +
 	"\vcustomer_id\x18\x01 \x01(\tR\n" +
 	"customerId\x12/\n" +
 	"\x11payment_method_id\x18\x02 \x01(\tH\x00R\x0fpaymentMethodId\x88\x01\x01\x12'\n" +
-	"\x0fsubscription_id\x18\x03 \x01(\tR\x0esubscriptionId\x12(\n" +
-	"\acoupons\x18\x04 \x03(\v2\x0e.api.v1.CouponR\acoupons\x12\x10\n" +
+	"\x0fsubscription_id\x18\x03 \x01(\tR\x0esubscriptionId\x12\x10\n" +
 	"\x03vat\x18\x05 \x01(\tR\x03vatB\x14\n" +
-	"\x12_payment_method_id\"`\n" +
+	"\x12_payment_method_idJ\x04\b\x04\x10\x05R\acoupons\"`\n" +
 	"\x12TermsAndConditions\x12\x1a\n" +
 	"\baccepted\x18\x01 \x01(\bR\baccepted\x12.\n" +
 	"\x04when\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampR\x04when\"c\n" +
@@ -2169,7 +2159,6 @@ var file_api_v1_tenant_proto_goTypes = []any{
 	(OAuthProvider)(0),                            // 32: api.v1.OAuthProvider
 	(*timestamppb.Timestamp)(nil),                 // 33: google.protobuf.Timestamp
 	(TenantRole)(0),                               // 34: api.v1.TenantRole
-	(*Coupon)(nil),                                // 35: api.v1.Coupon
 }
 var file_api_v1_tenant_proto_depIdxs = []int32{
 	32, // 0: api.v1.Tenant.oauth_provider:type_name -> api.v1.OAuthProvider
@@ -2183,52 +2172,51 @@ var file_api_v1_tenant_proto_depIdxs = []int32{
 	34, // 8: api.v1.TenantInvite.role:type_name -> api.v1.TenantRole
 	33, // 9: api.v1.TenantInvite.expires_at:type_name -> google.protobuf.Timestamp
 	33, // 10: api.v1.TenantInvite.joined_at:type_name -> google.protobuf.Timestamp
-	35, // 11: api.v1.PaymentDetails.coupons:type_name -> api.v1.Coupon
-	33, // 12: api.v1.TermsAndConditions.when:type_name -> google.protobuf.Timestamp
-	0,  // 13: api.v1.TenantServiceGetResponse.tenant:type_name -> api.v1.Tenant
-	1,  // 14: api.v1.TenantServiceGetResponse.tenant_members:type_name -> api.v1.TenantMember
-	0,  // 15: api.v1.TenantServiceListResponse.tenants:type_name -> api.v1.Tenant
-	0,  // 16: api.v1.TenantServiceCreateResponse.tenant:type_name -> api.v1.Tenant
-	0,  // 17: api.v1.TenantServiceCreateOrUpdateResponse.tenant:type_name -> api.v1.Tenant
-	0,  // 18: api.v1.TenantServiceUpdateResponse.tenant:type_name -> api.v1.Tenant
-	0,  // 19: api.v1.TenantServiceDeleteResponse.tenant:type_name -> api.v1.Tenant
-	34, // 20: api.v1.TenantServiceInviteRequest.role:type_name -> api.v1.TenantRole
-	2,  // 21: api.v1.TenantServiceInviteResponse.invite:type_name -> api.v1.TenantInvite
-	2,  // 22: api.v1.TenantServiceInvitesListResponse.invites:type_name -> api.v1.TenantInvite
-	2,  // 23: api.v1.TenantServiceInviteGetResponse.invite:type_name -> api.v1.TenantInvite
-	34, // 24: api.v1.TenantServiceUpdateMemberRequest.role:type_name -> api.v1.TenantRole
-	1,  // 25: api.v1.TenantServiceUpdateMemberResponse.tenant_member:type_name -> api.v1.TenantMember
-	7,  // 26: api.v1.TenantService.Create:input_type -> api.v1.TenantServiceCreateRequest
-	5,  // 27: api.v1.TenantService.List:input_type -> api.v1.TenantServiceListRequest
-	6,  // 28: api.v1.TenantService.Get:input_type -> api.v1.TenantServiceGetRequest
-	8,  // 29: api.v1.TenantService.Update:input_type -> api.v1.TenantServiceUpdateRequest
-	9,  // 30: api.v1.TenantService.Delete:input_type -> api.v1.TenantServiceDeleteRequest
-	22, // 31: api.v1.TenantService.RemoveMember:input_type -> api.v1.TenantServiceRemoveMemberRequest
-	28, // 32: api.v1.TenantService.UpdateMember:input_type -> api.v1.TenantServiceUpdateMemberRequest
-	16, // 33: api.v1.TenantService.Invite:input_type -> api.v1.TenantServiceInviteRequest
-	24, // 34: api.v1.TenantService.InviteAccept:input_type -> api.v1.TenantServiceInviteAcceptRequest
-	26, // 35: api.v1.TenantService.InviteDelete:input_type -> api.v1.TenantServiceInviteDeleteRequest
-	18, // 36: api.v1.TenantService.InvitesList:input_type -> api.v1.TenantServiceInvitesListRequest
-	20, // 37: api.v1.TenantService.InviteGet:input_type -> api.v1.TenantServiceInviteGetRequest
-	30, // 38: api.v1.TenantService.RequestAdmission:input_type -> api.v1.TenantServiceRequestAdmissionRequest
-	12, // 39: api.v1.TenantService.Create:output_type -> api.v1.TenantServiceCreateResponse
-	11, // 40: api.v1.TenantService.List:output_type -> api.v1.TenantServiceListResponse
-	10, // 41: api.v1.TenantService.Get:output_type -> api.v1.TenantServiceGetResponse
-	14, // 42: api.v1.TenantService.Update:output_type -> api.v1.TenantServiceUpdateResponse
-	15, // 43: api.v1.TenantService.Delete:output_type -> api.v1.TenantServiceDeleteResponse
-	23, // 44: api.v1.TenantService.RemoveMember:output_type -> api.v1.TenantServiceRemoveMemberResponse
-	29, // 45: api.v1.TenantService.UpdateMember:output_type -> api.v1.TenantServiceUpdateMemberResponse
-	17, // 46: api.v1.TenantService.Invite:output_type -> api.v1.TenantServiceInviteResponse
-	25, // 47: api.v1.TenantService.InviteAccept:output_type -> api.v1.TenantServiceInviteAcceptResponse
-	27, // 48: api.v1.TenantService.InviteDelete:output_type -> api.v1.TenantServiceInviteDeleteResponse
-	19, // 49: api.v1.TenantService.InvitesList:output_type -> api.v1.TenantServiceInvitesListResponse
-	21, // 50: api.v1.TenantService.InviteGet:output_type -> api.v1.TenantServiceInviteGetResponse
-	31, // 51: api.v1.TenantService.RequestAdmission:output_type -> api.v1.TenantServiceRequestAdmissionResponse
-	39, // [39:52] is the sub-list for method output_type
-	26, // [26:39] is the sub-list for method input_type
-	26, // [26:26] is the sub-list for extension type_name
-	26, // [26:26] is the sub-list for extension extendee
-	0,  // [0:26] is the sub-list for field type_name
+	33, // 11: api.v1.TermsAndConditions.when:type_name -> google.protobuf.Timestamp
+	0,  // 12: api.v1.TenantServiceGetResponse.tenant:type_name -> api.v1.Tenant
+	1,  // 13: api.v1.TenantServiceGetResponse.tenant_members:type_name -> api.v1.TenantMember
+	0,  // 14: api.v1.TenantServiceListResponse.tenants:type_name -> api.v1.Tenant
+	0,  // 15: api.v1.TenantServiceCreateResponse.tenant:type_name -> api.v1.Tenant
+	0,  // 16: api.v1.TenantServiceCreateOrUpdateResponse.tenant:type_name -> api.v1.Tenant
+	0,  // 17: api.v1.TenantServiceUpdateResponse.tenant:type_name -> api.v1.Tenant
+	0,  // 18: api.v1.TenantServiceDeleteResponse.tenant:type_name -> api.v1.Tenant
+	34, // 19: api.v1.TenantServiceInviteRequest.role:type_name -> api.v1.TenantRole
+	2,  // 20: api.v1.TenantServiceInviteResponse.invite:type_name -> api.v1.TenantInvite
+	2,  // 21: api.v1.TenantServiceInvitesListResponse.invites:type_name -> api.v1.TenantInvite
+	2,  // 22: api.v1.TenantServiceInviteGetResponse.invite:type_name -> api.v1.TenantInvite
+	34, // 23: api.v1.TenantServiceUpdateMemberRequest.role:type_name -> api.v1.TenantRole
+	1,  // 24: api.v1.TenantServiceUpdateMemberResponse.tenant_member:type_name -> api.v1.TenantMember
+	7,  // 25: api.v1.TenantService.Create:input_type -> api.v1.TenantServiceCreateRequest
+	5,  // 26: api.v1.TenantService.List:input_type -> api.v1.TenantServiceListRequest
+	6,  // 27: api.v1.TenantService.Get:input_type -> api.v1.TenantServiceGetRequest
+	8,  // 28: api.v1.TenantService.Update:input_type -> api.v1.TenantServiceUpdateRequest
+	9,  // 29: api.v1.TenantService.Delete:input_type -> api.v1.TenantServiceDeleteRequest
+	22, // 30: api.v1.TenantService.RemoveMember:input_type -> api.v1.TenantServiceRemoveMemberRequest
+	28, // 31: api.v1.TenantService.UpdateMember:input_type -> api.v1.TenantServiceUpdateMemberRequest
+	16, // 32: api.v1.TenantService.Invite:input_type -> api.v1.TenantServiceInviteRequest
+	24, // 33: api.v1.TenantService.InviteAccept:input_type -> api.v1.TenantServiceInviteAcceptRequest
+	26, // 34: api.v1.TenantService.InviteDelete:input_type -> api.v1.TenantServiceInviteDeleteRequest
+	18, // 35: api.v1.TenantService.InvitesList:input_type -> api.v1.TenantServiceInvitesListRequest
+	20, // 36: api.v1.TenantService.InviteGet:input_type -> api.v1.TenantServiceInviteGetRequest
+	30, // 37: api.v1.TenantService.RequestAdmission:input_type -> api.v1.TenantServiceRequestAdmissionRequest
+	12, // 38: api.v1.TenantService.Create:output_type -> api.v1.TenantServiceCreateResponse
+	11, // 39: api.v1.TenantService.List:output_type -> api.v1.TenantServiceListResponse
+	10, // 40: api.v1.TenantService.Get:output_type -> api.v1.TenantServiceGetResponse
+	14, // 41: api.v1.TenantService.Update:output_type -> api.v1.TenantServiceUpdateResponse
+	15, // 42: api.v1.TenantService.Delete:output_type -> api.v1.TenantServiceDeleteResponse
+	23, // 43: api.v1.TenantService.RemoveMember:output_type -> api.v1.TenantServiceRemoveMemberResponse
+	29, // 44: api.v1.TenantService.UpdateMember:output_type -> api.v1.TenantServiceUpdateMemberResponse
+	17, // 45: api.v1.TenantService.Invite:output_type -> api.v1.TenantServiceInviteResponse
+	25, // 46: api.v1.TenantService.InviteAccept:output_type -> api.v1.TenantServiceInviteAcceptResponse
+	27, // 47: api.v1.TenantService.InviteDelete:output_type -> api.v1.TenantServiceInviteDeleteResponse
+	19, // 48: api.v1.TenantService.InvitesList:output_type -> api.v1.TenantServiceInvitesListResponse
+	21, // 49: api.v1.TenantService.InviteGet:output_type -> api.v1.TenantServiceInviteGetResponse
+	31, // 50: api.v1.TenantService.RequestAdmission:output_type -> api.v1.TenantServiceRequestAdmissionResponse
+	38, // [38:51] is the sub-list for method output_type
+	25, // [25:38] is the sub-list for method input_type
+	25, // [25:25] is the sub-list for extension type_name
+	25, // [25:25] is the sub-list for extension extendee
+	0,  // [0:25] is the sub-list for field type_name
 }
 
 func init() { file_api_v1_tenant_proto_init() }
@@ -2237,7 +2225,6 @@ func file_api_v1_tenant_proto_init() {
 		return
 	}
 	file_api_v1_common_proto_init()
-	file_api_v1_payment_proto_init()
 	file_api_v1_tenant_proto_msgTypes[3].OneofWrappers = []any{}
 	file_api_v1_tenant_proto_msgTypes[5].OneofWrappers = []any{}
 	file_api_v1_tenant_proto_msgTypes[7].OneofWrappers = []any{}

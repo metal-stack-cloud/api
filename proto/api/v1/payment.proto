@@ -48,6 +48,9 @@ service PaymentService {
 
 // PaymentCustomer is a customer at the payment processor
 message PaymentCustomer {
+  reserved 10;
+  reserved "coupon";
+
   // Login of the customer
   string login = 1;
   // Name of the customer
@@ -66,8 +69,6 @@ message PaymentCustomer {
   repeated Price prices = 8;
   // Address is the postal address of the customer
   Address address = 9;
-  // Coupon details of granted coupon if any
-  optional Coupon coupon = 10;
   // Vat which applies to the customer
   optional string vat = 11;
   // PhoneNumber of the customer
@@ -177,30 +178,6 @@ message Invoice {
   google.protobuf.Timestamp period_end = 5;
 }
 
-// Coupon is a amount of free usage which can be granted to a customer
-message Coupon {
-  // Id of the coupon
-  string id = 1;
-  // Name of this coupon
-  string name = 2;
-  // AmountOff is th amount the customer can use for free
-  int64 amount_off = 3;
-  // Currency of the free usage amount
-  string currency = 4;
-  // DurationInMonth defines how many month this coupon is valid for
-  int64 duration_in_month = 5;
-  // CreatedAt is the date the coupon was created
-  google.protobuf.Timestamp created_at = 6;
-  // RedeemBy is the date when this coupon can no longer be used
-  google.protobuf.Timestamp redeem_by = 7;
-  // TimesRedeemed how often this coupon was already consumed
-  int64 times_redeemed = 8;
-  // MaxRedemptions defines how often this coupon can be consumed
-  int64 max_redemptions = 9;
-  // AmountLeft how many usages are left for this coupon
-  int64 amount_left = 10;
-}
-
 // PaymentServiceCreateOrUpdateCustomerRequest is the request payload for a payment create or update customer request
 message PaymentServiceCreateOrUpdateCustomerRequest {
   reserved 2;
@@ -264,10 +241,11 @@ message PaymentServiceHasPaymentMethodRequest {
 
 // PaymentServiceHasPaymentMethodResponse is the response payload for a has payment request
 message PaymentServiceHasPaymentMethodResponse {
+  reserved 2;
+  reserved "coupon_left";
+
   // Exists indicates if this customer has a payment method
   bool exists = 1;
-  // CouponLeft is true if there is still free amount on the coupon left
-  bool coupon_left = 2;
   // PositiveBalance indicates if the customer still has positive balance
   bool positive_balance = 3;
 }

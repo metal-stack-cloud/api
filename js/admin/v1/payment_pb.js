@@ -7,27 +7,17 @@ import { file_api_v1_payment } from "../../api/v1/payment_pb";
 /**
  * Describes the file admin/v1/payment.proto.
  */
-export const file_admin_v1_payment = /*@__PURE__*/ fileDesc("ChZhZG1pbi92MS9wYXltZW50LnByb3RvEghhZG1pbi52MSIiCiBQYXltZW50U2VydmljZUxpc3RDb3Vwb25zUmVxdWVzdCJECiFQYXltZW50U2VydmljZUxpc3RDb3Vwb25zUmVzcG9uc2USHwoHY291cG9ucxgBIAMoCzIOLmFwaS52MS5Db3Vwb24iVgopUGF5bWVudFNlcnZpY2VBZGRCYWxhbmNlVG9DdXN0b21lclJlcXVlc3QSEQoJdGVuYW50X2lkGAEgASgJEhYKDmJhbGFuY2VfdG9fYWRkGAIgASgEIlcKKlBheW1lbnRTZXJ2aWNlQWRkQmFsYW5jZVRvQ3VzdG9tZXJSZXNwb25zZRIpCghjdXN0b21lchgBIAEoCzIXLmFwaS52MS5QYXltZW50Q3VzdG9tZXIyjwIKDlBheW1lbnRTZXJ2aWNlEnIKC0xpc3RDb3Vwb25zEiouYWRtaW4udjEuUGF5bWVudFNlcnZpY2VMaXN0Q291cG9uc1JlcXVlc3QaKy5hZG1pbi52MS5QYXltZW50U2VydmljZUxpc3RDb3Vwb25zUmVzcG9uc2UiCtLzGAIBAujzGAISiAEKFEFkZEJhbGFuY2VUb0N1c3RvbWVyEjMuYWRtaW4udjEuUGF5bWVudFNlcnZpY2VBZGRCYWxhbmNlVG9DdXN0b21lclJlcXVlc3QaNC5hZG1pbi52MS5QYXltZW50U2VydmljZUFkZEJhbGFuY2VUb0N1c3RvbWVyUmVzcG9uc2UiBdLzGAEBQpMBCgxjb20uYWRtaW4udjFCDFBheW1lbnRQcm90b1ABWjRnaXRodWIuY29tL21ldGFsLXN0YWNrLWNsb3VkL2FwaS9nby9hZG1pbi92MTthZG1pbnYxogIDQVhYqgIIQWRtaW4uVjHKAghBZG1pblxWMeICFEFkbWluXFYxXEdQQk1ldGFkYXRh6gIJQWRtaW46OlYxYgZwcm90bzM", [file_api_v1_common, file_api_v1_payment]);
-/**
- * Describes the message admin.v1.PaymentServiceListCouponsRequest.
- * Use `create(PaymentServiceListCouponsRequestSchema)` to create a new message.
- */
-export const PaymentServiceListCouponsRequestSchema = /*@__PURE__*/ messageDesc(file_admin_v1_payment, 0);
-/**
- * Describes the message admin.v1.PaymentServiceListCouponsResponse.
- * Use `create(PaymentServiceListCouponsResponseSchema)` to create a new message.
- */
-export const PaymentServiceListCouponsResponseSchema = /*@__PURE__*/ messageDesc(file_admin_v1_payment, 1);
+export const file_admin_v1_payment = /*@__PURE__*/ fileDesc("ChZhZG1pbi92MS9wYXltZW50LnByb3RvEghhZG1pbi52MSJWCilQYXltZW50U2VydmljZUFkZEJhbGFuY2VUb0N1c3RvbWVyUmVxdWVzdBIRCgl0ZW5hbnRfaWQYASABKAkSFgoOYmFsYW5jZV90b19hZGQYAiABKAQiVwoqUGF5bWVudFNlcnZpY2VBZGRCYWxhbmNlVG9DdXN0b21lclJlc3BvbnNlEikKCGN1c3RvbWVyGAEgASgLMhcuYXBpLnYxLlBheW1lbnRDdXN0b21lcjKbAQoOUGF5bWVudFNlcnZpY2USiAEKFEFkZEJhbGFuY2VUb0N1c3RvbWVyEjMuYWRtaW4udjEuUGF5bWVudFNlcnZpY2VBZGRCYWxhbmNlVG9DdXN0b21lclJlcXVlc3QaNC5hZG1pbi52MS5QYXltZW50U2VydmljZUFkZEJhbGFuY2VUb0N1c3RvbWVyUmVzcG9uc2UiBdLzGAEBQpMBCgxjb20uYWRtaW4udjFCDFBheW1lbnRQcm90b1ABWjRnaXRodWIuY29tL21ldGFsLXN0YWNrLWNsb3VkL2FwaS9nby9hZG1pbi92MTthZG1pbnYxogIDQVhYqgIIQWRtaW4uVjHKAghBZG1pblxWMeICFEFkbWluXFYxXEdQQk1ldGFkYXRh6gIJQWRtaW46OlYxYgZwcm90bzM", [file_api_v1_common, file_api_v1_payment]);
 /**
  * Describes the message admin.v1.PaymentServiceAddBalanceToCustomerRequest.
  * Use `create(PaymentServiceAddBalanceToCustomerRequestSchema)` to create a new message.
  */
-export const PaymentServiceAddBalanceToCustomerRequestSchema = /*@__PURE__*/ messageDesc(file_admin_v1_payment, 2);
+export const PaymentServiceAddBalanceToCustomerRequestSchema = /*@__PURE__*/ messageDesc(file_admin_v1_payment, 0);
 /**
  * Describes the message admin.v1.PaymentServiceAddBalanceToCustomerResponse.
  * Use `create(PaymentServiceAddBalanceToCustomerResponseSchema)` to create a new message.
  */
-export const PaymentServiceAddBalanceToCustomerResponseSchema = /*@__PURE__*/ messageDesc(file_admin_v1_payment, 3);
+export const PaymentServiceAddBalanceToCustomerResponseSchema = /*@__PURE__*/ messageDesc(file_admin_v1_payment, 1);
 /**
  * PaymentService serves payment related functions
  *

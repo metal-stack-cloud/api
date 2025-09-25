@@ -66,12 +66,6 @@ export type PaymentCustomer = Message<"api.v1.PaymentCustomer"> & {
      */
     address?: Address;
     /**
-     * Coupon details of granted coupon if any
-     *
-     * @generated from field: optional api.v1.Coupon coupon = 10;
-     */
-    coupon?: Coupon;
-    /**
      * Vat which applies to the customer
      *
      * @generated from field: optional string vat = 11;
@@ -318,78 +312,6 @@ export type Invoice = Message<"api.v1.Invoice"> & {
  */
 export declare const InvoiceSchema: GenMessage<Invoice>;
 /**
- * Coupon is a amount of free usage which can be granted to a customer
- *
- * @generated from message api.v1.Coupon
- */
-export type Coupon = Message<"api.v1.Coupon"> & {
-    /**
-     * Id of the coupon
-     *
-     * @generated from field: string id = 1;
-     */
-    id: string;
-    /**
-     * Name of this coupon
-     *
-     * @generated from field: string name = 2;
-     */
-    name: string;
-    /**
-     * AmountOff is th amount the customer can use for free
-     *
-     * @generated from field: int64 amount_off = 3;
-     */
-    amountOff: bigint;
-    /**
-     * Currency of the free usage amount
-     *
-     * @generated from field: string currency = 4;
-     */
-    currency: string;
-    /**
-     * DurationInMonth defines how many month this coupon is valid for
-     *
-     * @generated from field: int64 duration_in_month = 5;
-     */
-    durationInMonth: bigint;
-    /**
-     * CreatedAt is the date the coupon was created
-     *
-     * @generated from field: google.protobuf.Timestamp created_at = 6;
-     */
-    createdAt?: Timestamp;
-    /**
-     * RedeemBy is the date when this coupon can no longer be used
-     *
-     * @generated from field: google.protobuf.Timestamp redeem_by = 7;
-     */
-    redeemBy?: Timestamp;
-    /**
-     * TimesRedeemed how often this coupon was already consumed
-     *
-     * @generated from field: int64 times_redeemed = 8;
-     */
-    timesRedeemed: bigint;
-    /**
-     * MaxRedemptions defines how often this coupon can be consumed
-     *
-     * @generated from field: int64 max_redemptions = 9;
-     */
-    maxRedemptions: bigint;
-    /**
-     * AmountLeft how many usages are left for this coupon
-     *
-     * @generated from field: int64 amount_left = 10;
-     */
-    amountLeft: bigint;
-};
-/**
- * Describes the message api.v1.Coupon.
- * Use `create(CouponSchema)` to create a new message.
- */
-export declare const CouponSchema: GenMessage<Coupon>;
-/**
  * PaymentServiceCreateOrUpdateCustomerRequest is the request payload for a payment create or update customer request
  *
  * @generated from message api.v1.PaymentServiceCreateOrUpdateCustomerRequest
@@ -539,12 +461,6 @@ export type PaymentServiceHasPaymentMethodResponse = Message<"api.v1.PaymentServ
      * @generated from field: bool exists = 1;
      */
     exists: boolean;
-    /**
-     * CouponLeft is true if there is still free amount on the coupon left
-     *
-     * @generated from field: bool coupon_left = 2;
-     */
-    couponLeft: boolean;
     /**
      * PositiveBalance indicates if the customer still has positive balance
      *

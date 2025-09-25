@@ -5,7 +5,7 @@
 import type { GenFile, GenMessage, GenService } from "@bufbuild/protobuf/codegenv2";
 import { fileDesc, messageDesc, serviceDesc } from "@bufbuild/protobuf/codegenv2";
 import { file_api_v1_common } from "../../api/v1/common_pb";
-import type { Coupon, PaymentCustomer } from "../../api/v1/payment_pb";
+import type { PaymentCustomer } from "../../api/v1/payment_pb";
 import { file_api_v1_payment } from "../../api/v1/payment_pb";
 import type { Message } from "@bufbuild/protobuf";
 
@@ -13,43 +13,7 @@ import type { Message } from "@bufbuild/protobuf";
  * Describes the file admin/v1/payment.proto.
  */
 export const file_admin_v1_payment: GenFile = /*@__PURE__*/
-  fileDesc("ChZhZG1pbi92MS9wYXltZW50LnByb3RvEghhZG1pbi52MSIiCiBQYXltZW50U2VydmljZUxpc3RDb3Vwb25zUmVxdWVzdCJECiFQYXltZW50U2VydmljZUxpc3RDb3Vwb25zUmVzcG9uc2USHwoHY291cG9ucxgBIAMoCzIOLmFwaS52MS5Db3Vwb24iVgopUGF5bWVudFNlcnZpY2VBZGRCYWxhbmNlVG9DdXN0b21lclJlcXVlc3QSEQoJdGVuYW50X2lkGAEgASgJEhYKDmJhbGFuY2VfdG9fYWRkGAIgASgEIlcKKlBheW1lbnRTZXJ2aWNlQWRkQmFsYW5jZVRvQ3VzdG9tZXJSZXNwb25zZRIpCghjdXN0b21lchgBIAEoCzIXLmFwaS52MS5QYXltZW50Q3VzdG9tZXIyjwIKDlBheW1lbnRTZXJ2aWNlEnIKC0xpc3RDb3Vwb25zEiouYWRtaW4udjEuUGF5bWVudFNlcnZpY2VMaXN0Q291cG9uc1JlcXVlc3QaKy5hZG1pbi52MS5QYXltZW50U2VydmljZUxpc3RDb3Vwb25zUmVzcG9uc2UiCtLzGAIBAujzGAISiAEKFEFkZEJhbGFuY2VUb0N1c3RvbWVyEjMuYWRtaW4udjEuUGF5bWVudFNlcnZpY2VBZGRCYWxhbmNlVG9DdXN0b21lclJlcXVlc3QaNC5hZG1pbi52MS5QYXltZW50U2VydmljZUFkZEJhbGFuY2VUb0N1c3RvbWVyUmVzcG9uc2UiBdLzGAEBQpMBCgxjb20uYWRtaW4udjFCDFBheW1lbnRQcm90b1ABWjRnaXRodWIuY29tL21ldGFsLXN0YWNrLWNsb3VkL2FwaS9nby9hZG1pbi92MTthZG1pbnYxogIDQVhYqgIIQWRtaW4uVjHKAghBZG1pblxWMeICFEFkbWluXFYxXEdQQk1ldGFkYXRh6gIJQWRtaW46OlYxYgZwcm90bzM", [file_api_v1_common, file_api_v1_payment]);
-
-/**
- * PaymentServiceListCouponsRequest is the request payload for the coupons list request
- *
- * @generated from message admin.v1.PaymentServiceListCouponsRequest
- */
-export type PaymentServiceListCouponsRequest = Message<"admin.v1.PaymentServiceListCouponsRequest"> & {
-};
-
-/**
- * Describes the message admin.v1.PaymentServiceListCouponsRequest.
- * Use `create(PaymentServiceListCouponsRequestSchema)` to create a new message.
- */
-export const PaymentServiceListCouponsRequestSchema: GenMessage<PaymentServiceListCouponsRequest> = /*@__PURE__*/
-  messageDesc(file_admin_v1_payment, 0);
-
-/**
- * PaymentServiceListCouponsResponse is the response payload for the coupons list request
- *
- * @generated from message admin.v1.PaymentServiceListCouponsResponse
- */
-export type PaymentServiceListCouponsResponse = Message<"admin.v1.PaymentServiceListCouponsResponse"> & {
-  /**
-   * Coupons is the list of all coupons
-   *
-   * @generated from field: repeated api.v1.Coupon coupons = 1;
-   */
-  coupons: Coupon[];
-};
-
-/**
- * Describes the message admin.v1.PaymentServiceListCouponsResponse.
- * Use `create(PaymentServiceListCouponsResponseSchema)` to create a new message.
- */
-export const PaymentServiceListCouponsResponseSchema: GenMessage<PaymentServiceListCouponsResponse> = /*@__PURE__*/
-  messageDesc(file_admin_v1_payment, 1);
+  fileDesc("ChZhZG1pbi92MS9wYXltZW50LnByb3RvEghhZG1pbi52MSJWCilQYXltZW50U2VydmljZUFkZEJhbGFuY2VUb0N1c3RvbWVyUmVxdWVzdBIRCgl0ZW5hbnRfaWQYASABKAkSFgoOYmFsYW5jZV90b19hZGQYAiABKAQiVwoqUGF5bWVudFNlcnZpY2VBZGRCYWxhbmNlVG9DdXN0b21lclJlc3BvbnNlEikKCGN1c3RvbWVyGAEgASgLMhcuYXBpLnYxLlBheW1lbnRDdXN0b21lcjKbAQoOUGF5bWVudFNlcnZpY2USiAEKFEFkZEJhbGFuY2VUb0N1c3RvbWVyEjMuYWRtaW4udjEuUGF5bWVudFNlcnZpY2VBZGRCYWxhbmNlVG9DdXN0b21lclJlcXVlc3QaNC5hZG1pbi52MS5QYXltZW50U2VydmljZUFkZEJhbGFuY2VUb0N1c3RvbWVyUmVzcG9uc2UiBdLzGAEBQpMBCgxjb20uYWRtaW4udjFCDFBheW1lbnRQcm90b1ABWjRnaXRodWIuY29tL21ldGFsLXN0YWNrLWNsb3VkL2FwaS9nby9hZG1pbi92MTthZG1pbnYxogIDQVhYqgIIQWRtaW4uVjHKAghBZG1pblxWMeICFEFkbWluXFYxXEdQQk1ldGFkYXRh6gIJQWRtaW46OlYxYgZwcm90bzM", [file_api_v1_common, file_api_v1_payment]);
 
 /**
  * PaymentServiceAddBalanceToCustomerRequest is the request payload for the balance to customer request
@@ -77,7 +41,7 @@ export type PaymentServiceAddBalanceToCustomerRequest = Message<"admin.v1.Paymen
  * Use `create(PaymentServiceAddBalanceToCustomerRequestSchema)` to create a new message.
  */
 export const PaymentServiceAddBalanceToCustomerRequestSchema: GenMessage<PaymentServiceAddBalanceToCustomerRequest> = /*@__PURE__*/
-  messageDesc(file_admin_v1_payment, 2);
+  messageDesc(file_admin_v1_payment, 0);
 
 /**
  * PaymentServiceAddBalanceToCustomerResponse is the response payload for the balance to customer request
@@ -98,7 +62,7 @@ export type PaymentServiceAddBalanceToCustomerResponse = Message<"admin.v1.Payme
  * Use `create(PaymentServiceAddBalanceToCustomerResponseSchema)` to create a new message.
  */
 export const PaymentServiceAddBalanceToCustomerResponseSchema: GenMessage<PaymentServiceAddBalanceToCustomerResponse> = /*@__PURE__*/
-  messageDesc(file_admin_v1_payment, 3);
+  messageDesc(file_admin_v1_payment, 1);
 
 /**
  * PaymentService serves payment related functions
@@ -106,16 +70,6 @@ export const PaymentServiceAddBalanceToCustomerResponseSchema: GenMessage<Paymen
  * @generated from service admin.v1.PaymentService
  */
 export const PaymentService: GenService<{
-  /**
-   * ListCoupons list all available coupons
-   *
-   * @generated from rpc admin.v1.PaymentService.ListCoupons
-   */
-  listCoupons: {
-    methodKind: "unary";
-    input: typeof PaymentServiceListCouponsRequestSchema;
-    output: typeof PaymentServiceListCouponsResponseSchema;
-  },
   /**
    * AddBalanceToCustomer adds balance to a customer
    *
