@@ -9,6 +9,10 @@ import (
 	"github.com/metal-stack-cloud/api/go/status/v1/statusv1connect"
 )
 
+const (
+	DefaultApiURL = "https://api.metalstack.cloud"
+)
+
 type (
 	Client interface {
 		Adminv1() Adminv1
@@ -84,6 +88,10 @@ type (
 )
 
 func New(config DialConfig) Client {
+	if config.BaseURL == "" {
+		config.BaseURL = DefaultApiURL
+	}
+
 	return &client{
 		config: config,
 	}
