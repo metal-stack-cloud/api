@@ -644,9 +644,9 @@ type Invoice struct {
 	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 	// PdfDownloadUrl is the url where the customer can download this invoice in pdf format
 	PdfDownloadUrl string `protobuf:"bytes,2,opt,name=pdf_download_url,json=pdfDownloadUrl,proto3" json:"pdf_download_url,omitempty"`
-	// PeriodStart is the start date of this subscription
+	// PeriodStart is the start date of the time frame covered by this invoice
 	PeriodStart *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=period_start,json=periodStart,proto3" json:"period_start,omitempty"`
-	// PeriodEnd is the end date of this subscription
+	// PeriodEnd is the end date of the time frame covered by this invoice
 	PeriodEnd     *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=period_end,json=periodEnd,proto3" json:"period_end,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache

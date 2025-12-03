@@ -294,13 +294,13 @@ export type Invoice = Message<"api.v1.Invoice"> & {
      */
     pdfDownloadUrl: string;
     /**
-     * PeriodStart is the start date of this subscription
+     * PeriodStart is the start date of the time frame covered by this invoice
      *
      * @generated from field: google.protobuf.Timestamp period_start = 4;
      */
     periodStart?: Timestamp;
     /**
-     * PeriodEnd is the end date of this subscription
+     * PeriodEnd is the end date of the time frame covered by this invoice
      *
      * @generated from field: google.protobuf.Timestamp period_end = 5;
      */

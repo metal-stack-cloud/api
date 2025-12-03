@@ -172,9 +172,9 @@ message Invoice {
   string id = 1;
   // PdfDownloadUrl is the url where the customer can download this invoice in pdf format
   string pdf_download_url = 2;
-  // PeriodStart is the start date of this subscription
+  // PeriodStart is the start date of the time frame covered by this invoice
   google.protobuf.Timestamp period_start = 4;
-  // PeriodEnd is the end date of this subscription
+  // PeriodEnd is the end date of the time frame covered by this invoice
   google.protobuf.Timestamp period_end = 5;
 }
 
