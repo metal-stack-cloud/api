@@ -6941,7 +6941,7 @@
             },
             {
               "name": "period_start",
-              "description": "PeriodStart is the start date of this subscription",
+              "description": "PeriodStart is the start date of the time frame covered by this invoice",
               "label": "",
               "type": "Timestamp",
               "longType": "google.protobuf.Timestamp",
@@ -6953,7 +6953,7 @@
             },
             {
               "name": "period_end",
-              "description": "PeriodEnd is the end date of this subscription",
+              "description": "PeriodEnd is the end date of the time frame covered by this invoice",
               "label": "",
               "type": "Timestamp",
               "longType": "google.protobuf.Timestamp",
