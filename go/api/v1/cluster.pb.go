@@ -1189,9 +1189,11 @@ type ClusterStatus struct {
 	// LastErrors is a list of the last known errors occurred during the cluster reconciliation
 	LastErrors []*ClusterStatusLastError `protobuf:"bytes,14,rep,name=last_errors,json=lastErrors,proto3" json:"last_errors,omitempty"`
 	// ClusterStatusConditions is a list of status conditions of the cluster
-	Conditions    []*ClusterStatusCondition `protobuf:"bytes,15,rep,name=conditions,proto3" json:"conditions,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
+	Conditions []*ClusterStatusCondition `protobuf:"bytes,15,rep,name=conditions,proto3" json:"conditions,omitempty"`
+	// AdvertisedAddresses is a list of status conditions of the cluster
+	AdvertisedAddresses []*AdvertisedAddress `protobuf:"bytes,16,rep,name=advertised_addresses,json=advertisedAddresses,proto3" json:"advertised_addresses,omitempty"`
+	unknownFields       protoimpl.UnknownFields
+	sizeCache           protoimpl.SizeCache
 }
 
 func (x *ClusterStatus) Reset() {
@@ -1294,6 +1296,68 @@ func (x *ClusterStatus) GetConditions() []*ClusterStatusCondition {
 	return nil
 }
 
+func (x *ClusterStatus) GetAdvertisedAddresses() []*AdvertisedAddress {
+	if x != nil {
+		return x.AdvertisedAddresses
+	}
+	return nil
+}
+
+// AdvertisedAddress is a list of relevant addresses
+type AdvertisedAddress struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Name of the advertised address. e.g. external
+	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	// The URL of the API Server. e.g. https://api.foo.bar or https://1.2.3.4
+	Url           string `protobuf:"bytes,2,opt,name=url,proto3" json:"url,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *AdvertisedAddress) Reset() {
+	*x = AdvertisedAddress{}
+	mi := &file_api_v1_cluster_proto_msgTypes[16]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *AdvertisedAddress) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*AdvertisedAddress) ProtoMessage() {}
+
+func (x *AdvertisedAddress) ProtoReflect() protoreflect.Message {
+	mi := &file_api_v1_cluster_proto_msgTypes[16]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use AdvertisedAddress.ProtoReflect.Descriptor instead.
+func (*AdvertisedAddress) Descriptor() ([]byte, []int) {
+	return file_api_v1_cluster_proto_rawDescGZIP(), []int{16}
+}
+
+func (x *AdvertisedAddress) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+func (x *AdvertisedAddress) GetUrl() string {
+	if x != nil {
+		return x.Url
+	}
+	return ""
+}
+
 // ClusterStatusLastError is the last known cluster status error
 type ClusterStatusLastError struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
@@ -1309,7 +1373,7 @@ type ClusterStatusLastError struct {
 
 func (x *ClusterStatusLastError) Reset() {
 	*x = ClusterStatusLastError{}
-	mi := &file_api_v1_cluster_proto_msgTypes[16]
+	mi := &file_api_v1_cluster_proto_msgTypes[17]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1321,7 +1385,7 @@ func (x *ClusterStatusLastError) String() string {
 func (*ClusterStatusLastError) ProtoMessage() {}
 
 func (x *ClusterStatusLastError) ProtoReflect() protoreflect.Message {
-	mi := &file_api_v1_cluster_proto_msgTypes[16]
+	mi := &file_api_v1_cluster_proto_msgTypes[17]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1334,7 +1398,7 @@ func (x *ClusterStatusLastError) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ClusterStatusLastError.ProtoReflect.Descriptor instead.
 func (*ClusterStatusLastError) Descriptor() ([]byte, []int) {
-	return file_api_v1_cluster_proto_rawDescGZIP(), []int{16}
+	return file_api_v1_cluster_proto_rawDescGZIP(), []int{17}
 }
 
 func (x *ClusterStatusLastError) GetDescription() string {
@@ -1379,7 +1443,7 @@ type ClusterStatusCondition struct {
 
 func (x *ClusterStatusCondition) Reset() {
 	*x = ClusterStatusCondition{}
-	mi := &file_api_v1_cluster_proto_msgTypes[17]
+	mi := &file_api_v1_cluster_proto_msgTypes[18]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1391,7 +1455,7 @@ func (x *ClusterStatusCondition) String() string {
 func (*ClusterStatusCondition) ProtoMessage() {}
 
 func (x *ClusterStatusCondition) ProtoReflect() protoreflect.Message {
-	mi := &file_api_v1_cluster_proto_msgTypes[17]
+	mi := &file_api_v1_cluster_proto_msgTypes[18]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1404,7 +1468,7 @@ func (x *ClusterStatusCondition) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ClusterStatusCondition.ProtoReflect.Descriptor instead.
 func (*ClusterStatusCondition) Descriptor() ([]byte, []int) {
-	return file_api_v1_cluster_proto_rawDescGZIP(), []int{17}
+	return file_api_v1_cluster_proto_rawDescGZIP(), []int{18}
 }
 
 func (x *ClusterStatusCondition) GetType() string {
@@ -1464,7 +1528,7 @@ type ClusterMonitoring struct {
 
 func (x *ClusterMonitoring) Reset() {
 	*x = ClusterMonitoring{}
-	mi := &file_api_v1_cluster_proto_msgTypes[18]
+	mi := &file_api_v1_cluster_proto_msgTypes[19]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1476,7 +1540,7 @@ func (x *ClusterMonitoring) String() string {
 func (*ClusterMonitoring) ProtoMessage() {}
 
 func (x *ClusterMonitoring) ProtoReflect() protoreflect.Message {
-	mi := &file_api_v1_cluster_proto_msgTypes[18]
+	mi := &file_api_v1_cluster_proto_msgTypes[19]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1489,7 +1553,7 @@ func (x *ClusterMonitoring) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ClusterMonitoring.ProtoReflect.Descriptor instead.
 func (*ClusterMonitoring) Descriptor() ([]byte, []int) {
-	return file_api_v1_cluster_proto_rawDescGZIP(), []int{18}
+	return file_api_v1_cluster_proto_rawDescGZIP(), []int{19}
 }
 
 func (x *ClusterMonitoring) GetUsername() string {
@@ -1524,7 +1588,7 @@ type ClusterServiceCreateResponse struct {
 
 func (x *ClusterServiceCreateResponse) Reset() {
 	*x = ClusterServiceCreateResponse{}
-	mi := &file_api_v1_cluster_proto_msgTypes[19]
+	mi := &file_api_v1_cluster_proto_msgTypes[20]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1536,7 +1600,7 @@ func (x *ClusterServiceCreateResponse) String() string {
 func (*ClusterServiceCreateResponse) ProtoMessage() {}
 
 func (x *ClusterServiceCreateResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_api_v1_cluster_proto_msgTypes[19]
+	mi := &file_api_v1_cluster_proto_msgTypes[20]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1549,7 +1613,7 @@ func (x *ClusterServiceCreateResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ClusterServiceCreateResponse.ProtoReflect.Descriptor instead.
 func (*ClusterServiceCreateResponse) Descriptor() ([]byte, []int) {
-	return file_api_v1_cluster_proto_rawDescGZIP(), []int{19}
+	return file_api_v1_cluster_proto_rawDescGZIP(), []int{20}
 }
 
 func (x *ClusterServiceCreateResponse) GetCluster() *Cluster {
@@ -1570,7 +1634,7 @@ type ClusterServiceGetResponse struct {
 
 func (x *ClusterServiceGetResponse) Reset() {
 	*x = ClusterServiceGetResponse{}
-	mi := &file_api_v1_cluster_proto_msgTypes[20]
+	mi := &file_api_v1_cluster_proto_msgTypes[21]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1582,7 +1646,7 @@ func (x *ClusterServiceGetResponse) String() string {
 func (*ClusterServiceGetResponse) ProtoMessage() {}
 
 func (x *ClusterServiceGetResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_api_v1_cluster_proto_msgTypes[20]
+	mi := &file_api_v1_cluster_proto_msgTypes[21]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1595,7 +1659,7 @@ func (x *ClusterServiceGetResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ClusterServiceGetResponse.ProtoReflect.Descriptor instead.
 func (*ClusterServiceGetResponse) Descriptor() ([]byte, []int) {
-	return file_api_v1_cluster_proto_rawDescGZIP(), []int{20}
+	return file_api_v1_cluster_proto_rawDescGZIP(), []int{21}
 }
 
 func (x *ClusterServiceGetResponse) GetCluster() *Cluster {
@@ -1616,7 +1680,7 @@ type ClusterServiceGetCredentialsResponse struct {
 
 func (x *ClusterServiceGetCredentialsResponse) Reset() {
 	*x = ClusterServiceGetCredentialsResponse{}
-	mi := &file_api_v1_cluster_proto_msgTypes[21]
+	mi := &file_api_v1_cluster_proto_msgTypes[22]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1628,7 +1692,7 @@ func (x *ClusterServiceGetCredentialsResponse) String() string {
 func (*ClusterServiceGetCredentialsResponse) ProtoMessage() {}
 
 func (x *ClusterServiceGetCredentialsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_api_v1_cluster_proto_msgTypes[21]
+	mi := &file_api_v1_cluster_proto_msgTypes[22]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1641,7 +1705,7 @@ func (x *ClusterServiceGetCredentialsResponse) ProtoReflect() protoreflect.Messa
 
 // Deprecated: Use ClusterServiceGetCredentialsResponse.ProtoReflect.Descriptor instead.
 func (*ClusterServiceGetCredentialsResponse) Descriptor() ([]byte, []int) {
-	return file_api_v1_cluster_proto_rawDescGZIP(), []int{21}
+	return file_api_v1_cluster_proto_rawDescGZIP(), []int{22}
 }
 
 func (x *ClusterServiceGetCredentialsResponse) GetKubeconfig() string {
@@ -1662,7 +1726,7 @@ type ClusterServiceDeleteResponse struct {
 
 func (x *ClusterServiceDeleteResponse) Reset() {
 	*x = ClusterServiceDeleteResponse{}
-	mi := &file_api_v1_cluster_proto_msgTypes[22]
+	mi := &file_api_v1_cluster_proto_msgTypes[23]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1674,7 +1738,7 @@ func (x *ClusterServiceDeleteResponse) String() string {
 func (*ClusterServiceDeleteResponse) ProtoMessage() {}
 
 func (x *ClusterServiceDeleteResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_api_v1_cluster_proto_msgTypes[22]
+	mi := &file_api_v1_cluster_proto_msgTypes[23]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1687,7 +1751,7 @@ func (x *ClusterServiceDeleteResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ClusterServiceDeleteResponse.ProtoReflect.Descriptor instead.
 func (*ClusterServiceDeleteResponse) Descriptor() ([]byte, []int) {
-	return file_api_v1_cluster_proto_rawDescGZIP(), []int{22}
+	return file_api_v1_cluster_proto_rawDescGZIP(), []int{23}
 }
 
 func (x *ClusterServiceDeleteResponse) GetCluster() *Cluster {
@@ -1708,7 +1772,7 @@ type ClusterServiceUpdateResponse struct {
 
 func (x *ClusterServiceUpdateResponse) Reset() {
 	*x = ClusterServiceUpdateResponse{}
-	mi := &file_api_v1_cluster_proto_msgTypes[23]
+	mi := &file_api_v1_cluster_proto_msgTypes[24]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1720,7 +1784,7 @@ func (x *ClusterServiceUpdateResponse) String() string {
 func (*ClusterServiceUpdateResponse) ProtoMessage() {}
 
 func (x *ClusterServiceUpdateResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_api_v1_cluster_proto_msgTypes[23]
+	mi := &file_api_v1_cluster_proto_msgTypes[24]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1733,7 +1797,7 @@ func (x *ClusterServiceUpdateResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ClusterServiceUpdateResponse.ProtoReflect.Descriptor instead.
 func (*ClusterServiceUpdateResponse) Descriptor() ([]byte, []int) {
-	return file_api_v1_cluster_proto_rawDescGZIP(), []int{23}
+	return file_api_v1_cluster_proto_rawDescGZIP(), []int{24}
 }
 
 func (x *ClusterServiceUpdateResponse) GetCluster() *Cluster {
@@ -1754,7 +1818,7 @@ type ClusterServiceListResponse struct {
 
 func (x *ClusterServiceListResponse) Reset() {
 	*x = ClusterServiceListResponse{}
-	mi := &file_api_v1_cluster_proto_msgTypes[24]
+	mi := &file_api_v1_cluster_proto_msgTypes[25]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1766,7 +1830,7 @@ func (x *ClusterServiceListResponse) String() string {
 func (*ClusterServiceListResponse) ProtoMessage() {}
 
 func (x *ClusterServiceListResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_api_v1_cluster_proto_msgTypes[24]
+	mi := &file_api_v1_cluster_proto_msgTypes[25]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1779,7 +1843,7 @@ func (x *ClusterServiceListResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ClusterServiceListResponse.ProtoReflect.Descriptor instead.
 func (*ClusterServiceListResponse) Descriptor() ([]byte, []int) {
-	return file_api_v1_cluster_proto_rawDescGZIP(), []int{24}
+	return file_api_v1_cluster_proto_rawDescGZIP(), []int{25}
 }
 
 func (x *ClusterServiceListResponse) GetClusters() []*Cluster {
@@ -1800,7 +1864,7 @@ type ClusterServiceWatchStatusResponse struct {
 
 func (x *ClusterServiceWatchStatusResponse) Reset() {
 	*x = ClusterServiceWatchStatusResponse{}
-	mi := &file_api_v1_cluster_proto_msgTypes[25]
+	mi := &file_api_v1_cluster_proto_msgTypes[26]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1812,7 +1876,7 @@ func (x *ClusterServiceWatchStatusResponse) String() string {
 func (*ClusterServiceWatchStatusResponse) ProtoMessage() {}
 
 func (x *ClusterServiceWatchStatusResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_api_v1_cluster_proto_msgTypes[25]
+	mi := &file_api_v1_cluster_proto_msgTypes[26]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1825,7 +1889,7 @@ func (x *ClusterServiceWatchStatusResponse) ProtoReflect() protoreflect.Message 
 
 // Deprecated: Use ClusterServiceWatchStatusResponse.ProtoReflect.Descriptor instead.
 func (*ClusterServiceWatchStatusResponse) Descriptor() ([]byte, []int) {
-	return file_api_v1_cluster_proto_rawDescGZIP(), []int{25}
+	return file_api_v1_cluster_proto_rawDescGZIP(), []int{26}
 }
 
 func (x *ClusterServiceWatchStatusResponse) GetStatus() *ClusterStatus {
@@ -1846,7 +1910,7 @@ type ClusterServiceOperateResponse struct {
 
 func (x *ClusterServiceOperateResponse) Reset() {
 	*x = ClusterServiceOperateResponse{}
-	mi := &file_api_v1_cluster_proto_msgTypes[26]
+	mi := &file_api_v1_cluster_proto_msgTypes[27]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1858,7 +1922,7 @@ func (x *ClusterServiceOperateResponse) String() string {
 func (*ClusterServiceOperateResponse) ProtoMessage() {}
 
 func (x *ClusterServiceOperateResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_api_v1_cluster_proto_msgTypes[26]
+	mi := &file_api_v1_cluster_proto_msgTypes[27]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1871,7 +1935,7 @@ func (x *ClusterServiceOperateResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ClusterServiceOperateResponse.ProtoReflect.Descriptor instead.
 func (*ClusterServiceOperateResponse) Descriptor() ([]byte, []int) {
-	return file_api_v1_cluster_proto_rawDescGZIP(), []int{26}
+	return file_api_v1_cluster_proto_rawDescGZIP(), []int{27}
 }
 
 func (x *ClusterServiceOperateResponse) GetCluster() *Cluster {
@@ -2003,7 +2067,7 @@ const file_api_v1_cluster_proto_rawDesc = "" +
 	"\x04uuid\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01H\x00R\x04uuid\x88\x01\x01\x12$\n" +
 	"\aproject\x18\x02 \x01(\tB\n" +
 	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\aprojectB\a\n" +
-	"\x05_uuid\"\x9d\x03\n" +
+	"\x05_uuid\"\xeb\x03\n" +
 	"\rClusterStatus\x12\x12\n" +
 	"\x04uuid\x18\x01 \x01(\tR\x04uuid\x12\x1a\n" +
 	"\bprogress\x18\x02 \x01(\rR\bprogress\x12\x14\n" +
@@ -2019,7 +2083,11 @@ const file_api_v1_cluster_proto_rawDesc = "" +
 	"lastErrors\x12>\n" +
 	"\n" +
 	"conditions\x18\x0f \x03(\v2\x1e.api.v1.ClusterStatusConditionR\n" +
-	"conditions\"\xaa\x01\n" +
+	"conditions\x12L\n" +
+	"\x14advertised_addresses\x18\x10 \x03(\v2\x19.api.v1.AdvertisedAddressR\x13advertisedAddresses\"9\n" +
+	"\x11AdvertisedAddress\x12\x12\n" +
+	"\x04name\x18\x01 \x01(\tR\x04name\x12\x10\n" +
+	"\x03url\x18\x02 \x01(\tR\x03url\"\xaa\x01\n" +
 	"\x16ClusterStatusLastError\x12 \n" +
 	"\vdescription\x18\x01 \x01(\tR\vdescription\x12\x1c\n" +
 	"\atask_id\x18\x02 \x01(\tH\x00R\x06taskId\x88\x01\x01\x12D\n" +
@@ -2087,7 +2155,7 @@ func file_api_v1_cluster_proto_rawDescGZIP() []byte {
 }
 
 var file_api_v1_cluster_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
-var file_api_v1_cluster_proto_msgTypes = make([]protoimpl.MessageInfo, 27)
+var file_api_v1_cluster_proto_msgTypes = make([]protoimpl.MessageInfo, 28)
 var file_api_v1_cluster_proto_goTypes = []any{
 	(Operate)(0),                                 // 0: api.v1.Operate
 	(*Cluster)(nil),                              // 1: api.v1.Cluster
@@ -2106,73 +2174,75 @@ var file_api_v1_cluster_proto_goTypes = []any{
 	(*ClusterServiceDeleteRequest)(nil),          // 14: api.v1.ClusterServiceDeleteRequest
 	(*ClusterServiceWatchStatusRequest)(nil),     // 15: api.v1.ClusterServiceWatchStatusRequest
 	(*ClusterStatus)(nil),                        // 16: api.v1.ClusterStatus
-	(*ClusterStatusLastError)(nil),               // 17: api.v1.ClusterStatusLastError
-	(*ClusterStatusCondition)(nil),               // 18: api.v1.ClusterStatusCondition
-	(*ClusterMonitoring)(nil),                    // 19: api.v1.ClusterMonitoring
-	(*ClusterServiceCreateResponse)(nil),         // 20: api.v1.ClusterServiceCreateResponse
-	(*ClusterServiceGetResponse)(nil),            // 21: api.v1.ClusterServiceGetResponse
-	(*ClusterServiceGetCredentialsResponse)(nil), // 22: api.v1.ClusterServiceGetCredentialsResponse
-	(*ClusterServiceDeleteResponse)(nil),         // 23: api.v1.ClusterServiceDeleteResponse
-	(*ClusterServiceUpdateResponse)(nil),         // 24: api.v1.ClusterServiceUpdateResponse
-	(*ClusterServiceListResponse)(nil),           // 25: api.v1.ClusterServiceListResponse
-	(*ClusterServiceWatchStatusResponse)(nil),    // 26: api.v1.ClusterServiceWatchStatusResponse
-	(*ClusterServiceOperateResponse)(nil),        // 27: api.v1.ClusterServiceOperateResponse
-	(*timestamppb.Timestamp)(nil),                // 28: google.protobuf.Timestamp
-	(*durationpb.Duration)(nil),                  // 29: google.protobuf.Duration
+	(*AdvertisedAddress)(nil),                    // 17: api.v1.AdvertisedAddress
+	(*ClusterStatusLastError)(nil),               // 18: api.v1.ClusterStatusLastError
+	(*ClusterStatusCondition)(nil),               // 19: api.v1.ClusterStatusCondition
+	(*ClusterMonitoring)(nil),                    // 20: api.v1.ClusterMonitoring
+	(*ClusterServiceCreateResponse)(nil),         // 21: api.v1.ClusterServiceCreateResponse
+	(*ClusterServiceGetResponse)(nil),            // 22: api.v1.ClusterServiceGetResponse
+	(*ClusterServiceGetCredentialsResponse)(nil), // 23: api.v1.ClusterServiceGetCredentialsResponse
+	(*ClusterServiceDeleteResponse)(nil),         // 24: api.v1.ClusterServiceDeleteResponse
+	(*ClusterServiceUpdateResponse)(nil),         // 25: api.v1.ClusterServiceUpdateResponse
+	(*ClusterServiceListResponse)(nil),           // 26: api.v1.ClusterServiceListResponse
+	(*ClusterServiceWatchStatusResponse)(nil),    // 27: api.v1.ClusterServiceWatchStatusResponse
+	(*ClusterServiceOperateResponse)(nil),        // 28: api.v1.ClusterServiceOperateResponse
+	(*timestamppb.Timestamp)(nil),                // 29: google.protobuf.Timestamp
+	(*durationpb.Duration)(nil),                  // 30: google.protobuf.Duration
 }
 var file_api_v1_cluster_proto_depIdxs = []int32{
 	2,  // 0: api.v1.Cluster.kubernetes:type_name -> api.v1.KubernetesSpec
 	6,  // 1: api.v1.Cluster.workers:type_name -> api.v1.Worker
 	3,  // 2: api.v1.Cluster.maintenance:type_name -> api.v1.Maintenance
-	28, // 3: api.v1.Cluster.created_at:type_name -> google.protobuf.Timestamp
-	28, // 4: api.v1.Cluster.updated_at:type_name -> google.protobuf.Timestamp
-	28, // 5: api.v1.Cluster.deleted_at:type_name -> google.protobuf.Timestamp
+	29, // 3: api.v1.Cluster.created_at:type_name -> google.protobuf.Timestamp
+	29, // 4: api.v1.Cluster.updated_at:type_name -> google.protobuf.Timestamp
+	29, // 5: api.v1.Cluster.deleted_at:type_name -> google.protobuf.Timestamp
 	16, // 6: api.v1.Cluster.status:type_name -> api.v1.ClusterStatus
-	19, // 7: api.v1.Cluster.monitoring:type_name -> api.v1.ClusterMonitoring
+	20, // 7: api.v1.Cluster.monitoring:type_name -> api.v1.ClusterMonitoring
 	4,  // 8: api.v1.Maintenance.time_window:type_name -> api.v1.MaintenanceTimeWindow
 	5,  // 9: api.v1.MaintenanceTimeWindow.begin:type_name -> api.v1.Time
-	29, // 10: api.v1.MaintenanceTimeWindow.duration:type_name -> google.protobuf.Duration
+	30, // 10: api.v1.MaintenanceTimeWindow.duration:type_name -> google.protobuf.Duration
 	0,  // 11: api.v1.ClusterServiceOperateRequest.operate:type_name -> api.v1.Operate
-	29, // 12: api.v1.ClusterServiceGetCredentialsRequest.expiration:type_name -> google.protobuf.Duration
+	30, // 12: api.v1.ClusterServiceGetCredentialsRequest.expiration:type_name -> google.protobuf.Duration
 	2,  // 13: api.v1.ClusterServiceCreateRequest.kubernetes:type_name -> api.v1.KubernetesSpec
 	6,  // 14: api.v1.ClusterServiceCreateRequest.workers:type_name -> api.v1.Worker
 	3,  // 15: api.v1.ClusterServiceCreateRequest.maintenance:type_name -> api.v1.Maintenance
 	2,  // 16: api.v1.ClusterServiceUpdateRequest.kubernetes:type_name -> api.v1.KubernetesSpec
 	7,  // 17: api.v1.ClusterServiceUpdateRequest.workers:type_name -> api.v1.WorkerUpdate
 	3,  // 18: api.v1.ClusterServiceUpdateRequest.maintenance:type_name -> api.v1.Maintenance
-	17, // 19: api.v1.ClusterStatus.last_errors:type_name -> api.v1.ClusterStatusLastError
-	18, // 20: api.v1.ClusterStatus.conditions:type_name -> api.v1.ClusterStatusCondition
-	28, // 21: api.v1.ClusterStatusLastError.last_update_time:type_name -> google.protobuf.Timestamp
-	28, // 22: api.v1.ClusterStatusCondition.last_transition_time:type_name -> google.protobuf.Timestamp
-	28, // 23: api.v1.ClusterStatusCondition.last_update_time:type_name -> google.protobuf.Timestamp
-	1,  // 24: api.v1.ClusterServiceCreateResponse.cluster:type_name -> api.v1.Cluster
-	1,  // 25: api.v1.ClusterServiceGetResponse.cluster:type_name -> api.v1.Cluster
-	1,  // 26: api.v1.ClusterServiceDeleteResponse.cluster:type_name -> api.v1.Cluster
-	1,  // 27: api.v1.ClusterServiceUpdateResponse.cluster:type_name -> api.v1.Cluster
-	1,  // 28: api.v1.ClusterServiceListResponse.clusters:type_name -> api.v1.Cluster
-	16, // 29: api.v1.ClusterServiceWatchStatusResponse.status:type_name -> api.v1.ClusterStatus
-	1,  // 30: api.v1.ClusterServiceOperateResponse.cluster:type_name -> api.v1.Cluster
-	12, // 31: api.v1.ClusterService.Create:input_type -> api.v1.ClusterServiceCreateRequest
-	8,  // 32: api.v1.ClusterService.Get:input_type -> api.v1.ClusterServiceGetRequest
-	11, // 33: api.v1.ClusterService.List:input_type -> api.v1.ClusterServiceListRequest
-	15, // 34: api.v1.ClusterService.WatchStatus:input_type -> api.v1.ClusterServiceWatchStatusRequest
-	14, // 35: api.v1.ClusterService.Delete:input_type -> api.v1.ClusterServiceDeleteRequest
-	13, // 36: api.v1.ClusterService.Update:input_type -> api.v1.ClusterServiceUpdateRequest
-	10, // 37: api.v1.ClusterService.GetCredentials:input_type -> api.v1.ClusterServiceGetCredentialsRequest
-	9,  // 38: api.v1.ClusterService.Operate:input_type -> api.v1.ClusterServiceOperateRequest
-	20, // 39: api.v1.ClusterService.Create:output_type -> api.v1.ClusterServiceCreateResponse
-	21, // 40: api.v1.ClusterService.Get:output_type -> api.v1.ClusterServiceGetResponse
-	25, // 41: api.v1.ClusterService.List:output_type -> api.v1.ClusterServiceListResponse
-	26, // 42: api.v1.ClusterService.WatchStatus:output_type -> api.v1.ClusterServiceWatchStatusResponse
-	23, // 43: api.v1.ClusterService.Delete:output_type -> api.v1.ClusterServiceDeleteResponse
-	24, // 44: api.v1.ClusterService.Update:output_type -> api.v1.ClusterServiceUpdateResponse
-	22, // 45: api.v1.ClusterService.GetCredentials:output_type -> api.v1.ClusterServiceGetCredentialsResponse
-	27, // 46: api.v1.ClusterService.Operate:output_type -> api.v1.ClusterServiceOperateResponse
-	39, // [39:47] is the sub-list for method output_type
-	31, // [31:39] is the sub-list for method input_type
-	31, // [31:31] is the sub-list for extension type_name
-	31, // [31:31] is the sub-list for extension extendee
-	0,  // [0:31] is the sub-list for field type_name
+	18, // 19: api.v1.ClusterStatus.last_errors:type_name -> api.v1.ClusterStatusLastError
+	19, // 20: api.v1.ClusterStatus.conditions:type_name -> api.v1.ClusterStatusCondition
+	17, // 21: api.v1.ClusterStatus.advertised_addresses:type_name -> api.v1.AdvertisedAddress
+	29, // 22: api.v1.ClusterStatusLastError.last_update_time:type_name -> google.protobuf.Timestamp
+	29, // 23: api.v1.ClusterStatusCondition.last_transition_time:type_name -> google.protobuf.Timestamp
+	29, // 24: api.v1.ClusterStatusCondition.last_update_time:type_name -> google.protobuf.Timestamp
+	1,  // 25: api.v1.ClusterServiceCreateResponse.cluster:type_name -> api.v1.Cluster
+	1,  // 26: api.v1.ClusterServiceGetResponse.cluster:type_name -> api.v1.Cluster
+	1,  // 27: api.v1.ClusterServiceDeleteResponse.cluster:type_name -> api.v1.Cluster
+	1,  // 28: api.v1.ClusterServiceUpdateResponse.cluster:type_name -> api.v1.Cluster
+	1,  // 29: api.v1.ClusterServiceListResponse.clusters:type_name -> api.v1.Cluster
+	16, // 30: api.v1.ClusterServiceWatchStatusResponse.status:type_name -> api.v1.ClusterStatus
+	1,  // 31: api.v1.ClusterServiceOperateResponse.cluster:type_name -> api.v1.Cluster
+	12, // 32: api.v1.ClusterService.Create:input_type -> api.v1.ClusterServiceCreateRequest
+	8,  // 33: api.v1.ClusterService.Get:input_type -> api.v1.ClusterServiceGetRequest
+	11, // 34: api.v1.ClusterService.List:input_type -> api.v1.ClusterServiceListRequest
+	15, // 35: api.v1.ClusterService.WatchStatus:input_type -> api.v1.ClusterServiceWatchStatusRequest
+	14, // 36: api.v1.ClusterService.Delete:input_type -> api.v1.ClusterServiceDeleteRequest
+	13, // 37: api.v1.ClusterService.Update:input_type -> api.v1.ClusterServiceUpdateRequest
+	10, // 38: api.v1.ClusterService.GetCredentials:input_type -> api.v1.ClusterServiceGetCredentialsRequest
+	9,  // 39: api.v1.ClusterService.Operate:input_type -> api.v1.ClusterServiceOperateRequest
+	21, // 40: api.v1.ClusterService.Create:output_type -> api.v1.ClusterServiceCreateResponse
+	22, // 41: api.v1.ClusterService.Get:output_type -> api.v1.ClusterServiceGetResponse
+	26, // 42: api.v1.ClusterService.List:output_type -> api.v1.ClusterServiceListResponse
+	27, // 43: api.v1.ClusterService.WatchStatus:output_type -> api.v1.ClusterServiceWatchStatusResponse
+	24, // 44: api.v1.ClusterService.Delete:output_type -> api.v1.ClusterServiceDeleteResponse
+	25, // 45: api.v1.ClusterService.Update:output_type -> api.v1.ClusterServiceUpdateResponse
+	23, // 46: api.v1.ClusterService.GetCredentials:output_type -> api.v1.ClusterServiceGetCredentialsResponse
+	28, // 47: api.v1.ClusterService.Operate:output_type -> api.v1.ClusterServiceOperateResponse
+	40, // [40:48] is the sub-list for method output_type
+	32, // [32:40] is the sub-list for method input_type
+	32, // [32:32] is the sub-list for extension type_name
+	32, // [32:32] is the sub-list for extension extendee
+	0,  // [0:32] is the sub-list for field type_name
 }
 
 func init() { file_api_v1_cluster_proto_init() }
@@ -2187,14 +2257,14 @@ func file_api_v1_cluster_proto_init() {
 	file_api_v1_cluster_proto_msgTypes[9].OneofWrappers = []any{}
 	file_api_v1_cluster_proto_msgTypes[12].OneofWrappers = []any{}
 	file_api_v1_cluster_proto_msgTypes[14].OneofWrappers = []any{}
-	file_api_v1_cluster_proto_msgTypes[16].OneofWrappers = []any{}
+	file_api_v1_cluster_proto_msgTypes[17].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_api_v1_cluster_proto_rawDesc), len(file_api_v1_cluster_proto_rawDesc)),
 			NumEnums:      1,
-			NumMessages:   27,
+			NumMessages:   28,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

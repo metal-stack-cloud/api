@@ -4739,6 +4739,42 @@
       "extensions": [],
       "messages": [
         {
+          "name": "AdvertisedAddress",
+          "longName": "AdvertisedAddress",
+          "fullName": "api.v1.AdvertisedAddress",
+          "description": "AdvertisedAddress is a list of relevant addresses",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "name",
+              "description": "Name of the advertised address. e.g. external",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "url",
+              "description": "The URL of the API Server. e.g. https://api.foo.bar or https://1.2.3.4",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
           "name": "Cluster",
           "longName": "Cluster",
           "fullName": "api.v1.Cluster",
@@ -5667,6 +5703,18 @@
               "type": "ClusterStatusCondition",
               "longType": "ClusterStatusCondition",
               "fullType": "api.v1.ClusterStatusCondition",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "advertised_addresses",
+              "description": "AdvertisedAddresses is a list of status conditions of the cluster",
+              "label": "repeated",
+              "type": "AdvertisedAddress",
+              "longType": "AdvertisedAddress",
+              "fullType": "api.v1.AdvertisedAddress",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
