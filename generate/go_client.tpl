@@ -9,6 +9,10 @@ import (
 {{ end }}
 )
 
+const (
+	DefaultApiURL = "https://api.metalstack.cloud"
+)
+
 type (
 	Client interface {
 {{ range $name, $api := . -}}
@@ -35,6 +39,10 @@ type (
 )
 
 func New(config DialConfig) Client {
+	if config.BaseURL == "" {
+		config.BaseURL = DefaultApiURL
+	}
+
 	return &client{
 		config: config,
 	}
