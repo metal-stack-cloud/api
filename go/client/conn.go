@@ -1,59 +1,34 @@
 package client
 
 import (
-	"fmt"
+	"log/slog"
 	"net/http"
-	"net/http/httputil"
+
+	"connectrpc.com/connect"
 )
 
 // DialConfig is the configuration to create a api-server connection
 type DialConfig struct {
 	BaseURL string
 	Token   string
-	Debug   bool
 
 	UserAgent string
+
+	Transport http.RoundTripper
+
+	// Optional client Interceptors
+	Interceptors []connect.Interceptor
+
+	Log *slog.Logger
 }
 
 func (d *DialConfig) HttpClient() *http.Client {
+	transport := http.DefaultTransport
+	if d.Transport != nil {
+		transport = d.Transport
+	}
+
 	return &http.Client{
-		Transport: &AddHeaderTransport{
-			debug: d.Debug,
-			T:     http.DefaultTransport,
-			Token: d.Token,
-		},
+		Transport: transport,
 	}
-}
-
-type AddHeaderTransport struct {
-	debug bool
-
-	Token string
-	T     http.RoundTripper
-}
-
-func (a *AddHeaderTransport) RoundTrip(req *http.Request) (*http.Response, error) {
-	req.Header.Add("Authorization", "Bearer "+a.Token)
-
-	if a.debug {
-		reqDump, err := httputil.DumpRequestOut(req, true)
-		if err != nil {
-			fmt.Printf("DEBUG ERROR: %s\n", err)
-		} else {
-			fmt.Printf("DEBUG REQUEST:\n%s\n", string(reqDump))
-		}
-	}
-
-	resp, err := a.T.RoundTrip(req)
-
-	if a.debug && resp != nil {
-		respDump, err := httputil.DumpResponse(resp, true)
-		if err != nil {
-			fmt.Printf("DEBUG ERROR: %s\n", err)
-		} else {
-			fmt.Printf("DEBUG RESPONSE:\n%s\n", string(respDump))
-		}
-	}
-
-	return resp, err
 }

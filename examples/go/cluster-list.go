@@ -15,7 +15,7 @@ func main() {
 	token := os.Getenv("API_TOKEN")
 	project := os.Getenv("PROJECT_ID")
 
-	c := client.New(client.DialConfig{
+	c := client.New(&client.DialConfig{
 		BaseURL: "https://api.metalstack.cloud",
 		Token:   token,
 	})

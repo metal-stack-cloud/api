@@ -2,6 +2,7 @@
 package client
 
 import (
+	"connectrpc.com/connect"
 	compress "github.com/klauspost/connect-compress/v2"
 
 	"github.com/metal-stack-cloud/api/go/admin/v1/adminv1connect"
@@ -16,7 +17,8 @@ type (
 		Statusv1() Statusv1
 	}
 	client struct {
-		config DialConfig
+		config       *DialConfig
+		interceptors []connect.Interceptor
 	}
 	Adminv1 interface {
 		Audit() adminv1connect.AuditServiceClient
@@ -83,10 +85,25 @@ type (
 	}
 )
 
-func New(config DialConfig) Client {
-	return &client{
-		config: config,
+func New(config *DialConfig) Client {
+	c := &client{
+		config:       config,
+		interceptors: []connect.Interceptor{},
 	}
+
+	if config.Token != "" {
+		authInterceptor := &authInterceptor{config: config}
+		c.interceptors = append(c.interceptors, authInterceptor)
+	}
+
+	if config.Log != nil {
+		loggingInterceptor := &loggingInterceptor{config: config}
+		c.interceptors = append(c.interceptors, loggingInterceptor)
+	}
+
+	c.interceptors = append(c.interceptors, config.Interceptors...)
+
+	return c
 }
 
 func (c client) Adminv1() Adminv1 {
