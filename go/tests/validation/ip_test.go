@@ -24,5 +24,5 @@ func TestValidateIP(t *testing.T) {
 
 	err = validator.Validate(ip)
 	require.Error(t, err)
-	require.EqualError(t, err, "validation error:\n - uuid: value must be a valid UUID [string.uuid]")
+	require.EqualError(t, err, "validation error: uuid: value must be a valid UUID")
 }
