@@ -2,6 +2,7 @@ import datetime
 
 from google.protobuf import descriptor_pb2 as _descriptor_pb2
 from google.protobuf import duration_pb2 as _duration_pb2
+from google.protobuf import field_mask_pb2 as _field_mask_pb2
 from google.protobuf import timestamp_pb2 as _timestamp_pb2
 from google.protobuf.internal import containers as _containers
 from google.protobuf.internal import enum_type_wrapper as _enum_type_wrapper
@@ -16,8 +17,7 @@ DESCRIPTOR: _descriptor.FileDescriptor
 class Ignore(int, metaclass=_enum_type_wrapper.EnumTypeWrapper):
     __slots__ = ()
     IGNORE_UNSPECIFIED: _ClassVar[Ignore]
-    IGNORE_IF_UNPOPULATED: _ClassVar[Ignore]
-    IGNORE_IF_DEFAULT_VALUE: _ClassVar[Ignore]
+    IGNORE_IF_ZERO_VALUE: _ClassVar[Ignore]
     IGNORE_ALWAYS: _ClassVar[Ignore]
 
 class KnownRegex(int, metaclass=_enum_type_wrapper.EnumTypeWrapper):
@@ -26,8 +26,7 @@ class KnownRegex(int, metaclass=_enum_type_wrapper.EnumTypeWrapper):
     KNOWN_REGEX_HTTP_HEADER_NAME: _ClassVar[KnownRegex]
     KNOWN_REGEX_HTTP_HEADER_VALUE: _ClassVar[KnownRegex]
 IGNORE_UNSPECIFIED: Ignore
-IGNORE_IF_UNPOPULATED: Ignore
-IGNORE_IF_DEFAULT_VALUE: Ignore
+IGNORE_IF_ZERO_VALUE: Ignore
 IGNORE_ALWAYS: Ignore
 KNOWN_REGEX_UNSPECIFIED: KnownRegex
 KNOWN_REGEX_HTTP_HEADER_NAME: KnownRegex
@@ -52,14 +51,14 @@ class Rule(_message.Message):
     def __init__(self, id: _Optional[str] = ..., message: _Optional[str] = ..., expression: _Optional[str] = ...) -> None: ...
 
 class MessageRules(_message.Message):
-    __slots__ = ("disabled", "cel", "oneof")
-    DISABLED_FIELD_NUMBER: _ClassVar[int]
+    __slots__ = ("cel_expression", "cel", "oneof")
+    CEL_EXPRESSION_FIELD_NUMBER: _ClassVar[int]
     CEL_FIELD_NUMBER: _ClassVar[int]
     ONEOF_FIELD_NUMBER: _ClassVar[int]
-    disabled: bool
+    cel_expression: _containers.RepeatedScalarFieldContainer[str]
     cel: _containers.RepeatedCompositeFieldContainer[Rule]
     oneof: _containers.RepeatedCompositeFieldContainer[MessageOneofRule]
-    def __init__(self, disabled: bool = ..., cel: _Optional[_Iterable[_Union[Rule, _Mapping]]] = ..., oneof: _Optional[_Iterable[_Union[MessageOneofRule, _Mapping]]] = ...) -> None: ...
+    def __init__(self, cel_expression: _Optional[_Iterable[str]] = ..., cel: _Optional[_Iterable[_Union[Rule, _Mapping]]] = ..., oneof: _Optional[_Iterable[_Union[MessageOneofRule, _Mapping]]] = ...) -> None: ...
 
 class MessageOneofRule(_message.Message):
     __slots__ = ("fields", "required")
@@ -76,7 +75,8 @@ class OneofRules(_message.Message):
     def __init__(self, required: bool = ...) -> None: ...
 
 class FieldRules(_message.Message):
-    __slots__ = ("cel", "required", "ignore", "float", "double", "int32", "int64", "uint32", "uint64", "sint32", "sint64", "fixed32", "fixed64", "sfixed32", "sfixed64", "bool", "string", "bytes", "enum", "repeated", "map", "any", "duration", "timestamp")
+    __slots__ = ("cel_expression", "cel", "required", "ignore", "float", "double", "int32", "int64", "uint32", "uint64", "sint32", "sint64", "fixed32", "fixed64", "sfixed32", "sfixed64", "bool", "string", "bytes", "enum", "repeated", "map", "any", "duration", "field_mask", "timestamp")
+    CEL_EXPRESSION_FIELD_NUMBER: _ClassVar[int]
     CEL_FIELD_NUMBER: _ClassVar[int]
     REQUIRED_FIELD_NUMBER: _ClassVar[int]
     IGNORE_FIELD_NUMBER: _ClassVar[int]
@@ -100,7 +100,9 @@ class FieldRules(_message.Message):
     MAP_FIELD_NUMBER: _ClassVar[int]
     ANY_FIELD_NUMBER: _ClassVar[int]
     DURATION_FIELD_NUMBER: _ClassVar[int]
+    FIELD_MASK_FIELD_NUMBER: _ClassVar[int]
     TIMESTAMP_FIELD_NUMBER: _ClassVar[int]
+    cel_expression: _containers.RepeatedScalarFieldContainer[str]
     cel: _containers.RepeatedCompositeFieldContainer[Rule]
     required: bool
     ignore: Ignore
@@ -124,8 +126,9 @@ class FieldRules(_message.Message):
     map: MapRules
     any: AnyRules
     duration: DurationRules
+    field_mask: FieldMaskRules
     timestamp: TimestampRules
-    def __init__(self, cel: _Optional[_Iterable[_Union[Rule, _Mapping]]] = ..., required: bool = ..., ignore: _Optional[_Union[Ignore, str]] = ..., float: _Optional[_Union[FloatRules, _Mapping]] = ..., double: _Optional[_Union[DoubleRules, _Mapping]] = ..., int32: _Optional[_Union[Int32Rules, _Mapping]] = ..., int64: _Optional[_Union[Int64Rules, _Mapping]] = ..., uint32: _Optional[_Union[UInt32Rules, _Mapping]] = ..., uint64: _Optional[_Union[UInt64Rules, _Mapping]] = ..., sint32: _Optional[_Union[SInt32Rules, _Mapping]] = ..., sint64: _Optional[_Union[SInt64Rules, _Mapping]] = ..., fixed32: _Optional[_Union[Fixed32Rules, _Mapping]] = ..., fixed64: _Optional[_Union[Fixed64Rules, _Mapping]] = ..., sfixed32: _Optional[_Union[SFixed32Rules, _Mapping]] = ..., sfixed64: _Optional[_Union[SFixed64Rules, _Mapping]] = ..., bool: _Optional[_Union[BoolRules, _Mapping]] = ..., string: _Optional[_Union[StringRules, _Mapping]] = ..., bytes: _Optional[_Union[BytesRules, _Mapping]] = ..., enum: _Optional[_Union[EnumRules, _Mapping]] = ..., repeated: _Optional[_Union[RepeatedRules, _Mapping]] = ..., map: _Optional[_Union[MapRules, _Mapping]] = ..., any: _Optional[_Union[AnyRules, _Mapping]] = ..., duration: _Optional[_Union[DurationRules, _Mapping]] = ..., timestamp: _Optional[_Union[TimestampRules, _Mapping]] = ...) -> None: ...
+    def __init__(self, cel_expression: _Optional[_Iterable[str]] = ..., cel: _Optional[_Iterable[_Union[Rule, _Mapping]]] = ..., required: bool = ..., ignore: _Optional[_Union[Ignore, str]] = ..., float: _Optional[_Union[FloatRules, _Mapping]] = ..., double: _Optional[_Union[DoubleRules, _Mapping]] = ..., int32: _Optional[_Union[Int32Rules, _Mapping]] = ..., int64: _Optional[_Union[Int64Rules, _Mapping]] = ..., uint32: _Optional[_Union[UInt32Rules, _Mapping]] = ..., uint64: _Optional[_Union[UInt64Rules, _Mapping]] = ..., sint32: _Optional[_Union[SInt32Rules, _Mapping]] = ..., sint64: _Optional[_Union[SInt64Rules, _Mapping]] = ..., fixed32: _Optional[_Union[Fixed32Rules, _Mapping]] = ..., fixed64: _Optional[_Union[Fixed64Rules, _Mapping]] = ..., sfixed32: _Optional[_Union[SFixed32Rules, _Mapping]] = ..., sfixed64: _Optional[_Union[SFixed64Rules, _Mapping]] = ..., bool: _Optional[_Union[BoolRules, _Mapping]] = ..., string: _Optional[_Union[StringRules, _Mapping]] = ..., bytes: _Optional[_Union[BytesRules, _Mapping]] = ..., enum: _Optional[_Union[EnumRules, _Mapping]] = ..., repeated: _Optional[_Union[RepeatedRules, _Mapping]] = ..., map: _Optional[_Union[MapRules, _Mapping]] = ..., any: _Optional[_Union[AnyRules, _Mapping]] = ..., duration: _Optional[_Union[DurationRules, _Mapping]] = ..., field_mask: _Optional[_Union[FieldMaskRules, _Mapping]] = ..., timestamp: _Optional[_Union[TimestampRules, _Mapping]] = ...) -> None: ...
 
 class PredefinedRules(_message.Message):
     __slots__ = ("cel",)
@@ -387,7 +390,7 @@ class BoolRules(_message.Message):
     def __init__(self, const: bool = ..., example: _Optional[_Iterable[bool]] = ...) -> None: ...
 
 class StringRules(_message.Message):
-    __slots__ = ("const", "len", "min_len", "max_len", "len_bytes", "min_bytes", "max_bytes", "pattern", "prefix", "suffix", "contains", "not_contains", "not_in", "email", "hostname", "ip", "ipv4", "ipv6", "uri", "uri_ref", "address", "uuid", "tuuid", "ip_with_prefixlen", "ipv4_with_prefixlen", "ipv6_with_prefixlen", "ip_prefix", "ipv4_prefix", "ipv6_prefix", "host_and_port", "well_known_regex", "strict", "example")
+    __slots__ = ("const", "len", "min_len", "max_len", "len_bytes", "min_bytes", "max_bytes", "pattern", "prefix", "suffix", "contains", "not_contains", "not_in", "email", "hostname", "ip", "ipv4", "ipv6", "uri", "uri_ref", "address", "uuid", "tuuid", "ip_with_prefixlen", "ipv4_with_prefixlen", "ipv6_with_prefixlen", "ip_prefix", "ipv4_prefix", "ipv6_prefix", "host_and_port", "ulid", "well_known_regex", "strict", "example")
     Extensions: _python_message._ExtensionDict
     CONST_FIELD_NUMBER: _ClassVar[int]
     LEN_FIELD_NUMBER: _ClassVar[int]
@@ -420,6 +423,7 @@ class StringRules(_message.Message):
     IPV4_PREFIX_FIELD_NUMBER: _ClassVar[int]
     IPV6_PREFIX_FIELD_NUMBER: _ClassVar[int]
     HOST_AND_PORT_FIELD_NUMBER: _ClassVar[int]
+    ULID_FIELD_NUMBER: _ClassVar[int]
     WELL_KNOWN_REGEX_FIELD_NUMBER: _ClassVar[int]
     STRICT_FIELD_NUMBER: _ClassVar[int]
     EXAMPLE_FIELD_NUMBER: _ClassVar[int]
@@ -453,13 +457,14 @@ class StringRules(_message.Message):
     ipv4_prefix: bool
     ipv6_prefix: bool
     host_and_port: bool
+    ulid: bool
     well_known_regex: KnownRegex
     strict: bool
     example: _containers.RepeatedScalarFieldContainer[str]
-    def __init__(self, const: _Optional[str] = ..., len: _Optional[int] = ..., min_len: _Optional[int] = ..., max_len: _Optional[int] = ..., len_bytes: _Optional[int] = ..., min_bytes: _Optional[int] = ..., max_bytes: _Optional[int] = ..., pattern: _Optional[str] = ..., prefix: _Optional[str] = ..., suffix: _Optional[str] = ..., contains: _Optional[str] = ..., not_contains: _Optional[str] = ..., not_in: _Optional[_Iterable[str]] = ..., email: bool = ..., hostname: bool = ..., ip: bool = ..., ipv4: bool = ..., ipv6: bool = ..., uri: bool = ..., uri_ref: bool = ..., address: bool = ..., uuid: bool = ..., tuuid: bool = ..., ip_with_prefixlen: bool = ..., ipv4_with_prefixlen: bool = ..., ipv6_with_prefixlen: bool = ..., ip_prefix: bool = ..., ipv4_prefix: bool = ..., ipv6_prefix: bool = ..., host_and_port: bool = ..., well_known_regex: _Optional[_Union[KnownRegex, str]] = ..., strict: bool = ..., example: _Optional[_Iterable[str]] = ..., **kwargs) -> None: ...
+    def __init__(self, const: _Optional[str] = ..., len: _Optional[int] = ..., min_len: _Optional[int] = ..., max_len: _Optional[int] = ..., len_bytes: _Optional[int] = ..., min_bytes: _Optional[int] = ..., max_bytes: _Optional[int] = ..., pattern: _Optional[str] = ..., prefix: _Optional[str] = ..., suffix: _Optional[str] = ..., contains: _Optional[str] = ..., not_contains: _Optional[str] = ..., not_in: _Optional[_Iterable[str]] = ..., email: bool = ..., hostname: bool = ..., ip: bool = ..., ipv4: bool = ..., ipv6: bool = ..., uri: bool = ..., uri_ref: bool = ..., address: bool = ..., uuid: bool = ..., tuuid: bool = ..., ip_with_prefixlen: bool = ..., ipv4_with_prefixlen: bool = ..., ipv6_with_prefixlen: bool = ..., ip_prefix: bool = ..., ipv4_prefix: bool = ..., ipv6_prefix: bool = ..., host_and_port: bool = ..., ulid: bool = ..., well_known_regex: _Optional[_Union[KnownRegex, str]] = ..., strict: bool = ..., example: _Optional[_Iterable[str]] = ..., **kwargs) -> None: ...
 
 class BytesRules(_message.Message):
-    __slots__ = ("const", "len", "min_len", "max_len", "pattern", "prefix", "suffix", "contains", "not_in", "ip", "ipv4", "ipv6", "example")
+    __slots__ = ("const", "len", "min_len", "max_len", "pattern", "prefix", "suffix", "contains", "not_in", "ip", "ipv4", "ipv6", "uuid", "example")
     Extensions: _python_message._ExtensionDict
     CONST_FIELD_NUMBER: _ClassVar[int]
     LEN_FIELD_NUMBER: _ClassVar[int]
@@ -474,6 +479,7 @@ class BytesRules(_message.Message):
     IP_FIELD_NUMBER: _ClassVar[int]
     IPV4_FIELD_NUMBER: _ClassVar[int]
     IPV6_FIELD_NUMBER: _ClassVar[int]
+    UUID_FIELD_NUMBER: _ClassVar[int]
     EXAMPLE_FIELD_NUMBER: _ClassVar[int]
     const: bytes
     len: int
@@ -487,8 +493,9 @@ class BytesRules(_message.Message):
     ip: bool
     ipv4: bool
     ipv6: bool
+    uuid: bool
     example: _containers.RepeatedScalarFieldContainer[bytes]
-    def __init__(self, const: _Optional[bytes] = ..., len: _Optional[int] = ..., min_len: _Optional[int] = ..., max_len: _Optional[int] = ..., pattern: _Optional[str] = ..., prefix: _Optional[bytes] = ..., suffix: _Optional[bytes] = ..., contains: _Optional[bytes] = ..., not_in: _Optional[_Iterable[bytes]] = ..., ip: bool = ..., ipv4: bool = ..., ipv6: bool = ..., example: _Optional[_Iterable[bytes]] = ..., **kwargs) -> None: ...
+    def __init__(self, const: _Optional[bytes] = ..., len: _Optional[int] = ..., min_len: _Optional[int] = ..., max_len: _Optional[int] = ..., pattern: _Optional[str] = ..., prefix: _Optional[bytes] = ..., suffix: _Optional[bytes] = ..., contains: _Optional[bytes] = ..., not_in: _Optional[_Iterable[bytes]] = ..., ip: bool = ..., ipv4: bool = ..., ipv6: bool = ..., uuid: bool = ..., example: _Optional[_Iterable[bytes]] = ..., **kwargs) -> None: ...
 
 class EnumRules(_message.Message):
     __slots__ = ("const", "defined_only", "not_in", "example")
@@ -556,6 +563,18 @@ class DurationRules(_message.Message):
     not_in: _containers.RepeatedCompositeFieldContainer[_duration_pb2.Duration]
     example: _containers.RepeatedCompositeFieldContainer[_duration_pb2.Duration]
     def __init__(self, const: _Optional[_Union[datetime.timedelta, _duration_pb2.Duration, _Mapping]] = ..., lt: _Optional[_Union[datetime.timedelta, _duration_pb2.Duration, _Mapping]] = ..., lte: _Optional[_Union[datetime.timedelta, _duration_pb2.Duration, _Mapping]] = ..., gt: _Optional[_Union[datetime.timedelta, _duration_pb2.Duration, _Mapping]] = ..., gte: _Optional[_Union[datetime.timedelta, _duration_pb2.Duration, _Mapping]] = ..., not_in: _Optional[_Iterable[_Union[datetime.timedelta, _duration_pb2.Duration, _Mapping]]] = ..., example: _Optional[_Iterable[_Union[datetime.timedelta, _duration_pb2.Duration, _Mapping]]] = ..., **kwargs) -> None: ...
+
+class FieldMaskRules(_message.Message):
+    __slots__ = ("const", "not_in", "example")
+    Extensions: _python_message._ExtensionDict
+    CONST_FIELD_NUMBER: _ClassVar[int]
+    IN_FIELD_NUMBER: _ClassVar[int]
+    NOT_IN_FIELD_NUMBER: _ClassVar[int]
+    EXAMPLE_FIELD_NUMBER: _ClassVar[int]
+    const: _field_mask_pb2.FieldMask
+    not_in: _containers.RepeatedScalarFieldContainer[str]
+    example: _containers.RepeatedCompositeFieldContainer[_field_mask_pb2.FieldMask]
+    def __init__(self, const: _Optional[_Union[_field_mask_pb2.FieldMask, _Mapping]] = ..., not_in: _Optional[_Iterable[str]] = ..., example: _Optional[_Iterable[_Union[_field_mask_pb2.FieldMask, _Mapping]]] = ..., **kwargs) -> None: ...
 
 class TimestampRules(_message.Message):
     __slots__ = ("const", "lt", "lte", "lt_now", "gt", "gte", "gt_now", "within", "example")

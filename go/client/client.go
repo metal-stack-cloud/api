@@ -2,6 +2,7 @@
 package client
 
 import (
+	"connectrpc.com/connect"
 	compress "github.com/klauspost/connect-compress/v2"
 
 	"github.com/metal-stack-cloud/api/go/admin/v1/adminv1connect"
@@ -16,7 +17,8 @@ type (
 		Statusv1() Statusv1
 	}
 	client struct {
-		config DialConfig
+		config       *DialConfig
+		interceptors []connect.Interceptor
 	}
 	Adminv1 interface {
 		Audit() adminv1connect.AuditServiceClient
@@ -83,10 +85,25 @@ type (
 	}
 )
 
-func New(config DialConfig) Client {
-	return &client{
-		config: config,
+func New(config *DialConfig) Client {
+	c := &client{
+		config:       config,
+		interceptors: []connect.Interceptor{},
 	}
+
+	if config.Token != "" {
+		authInterceptor := &authInterceptor{config: config}
+		c.interceptors = append(c.interceptors, authInterceptor)
+	}
+
+	if config.Log != nil {
+		loggingInterceptor := &loggingInterceptor{config: config}
+		c.interceptors = append(c.interceptors, loggingInterceptor)
+	}
+
+	c.interceptors = append(c.interceptors, config.Interceptors...)
+
+	return c
 }
 
 func (c client) Adminv1() Adminv1 {
@@ -94,36 +111,43 @@ func (c client) Adminv1() Adminv1 {
 		auditservice: adminv1connect.NewAuditServiceClient(
 			c.config.HttpClient(),
 			c.config.BaseURL,
+			connect.WithInterceptors(c.interceptors...),
 			compress.WithAll(compress.LevelBalanced),
 		),
 		clusterservice: adminv1connect.NewClusterServiceClient(
 			c.config.HttpClient(),
 			c.config.BaseURL,
+			connect.WithInterceptors(c.interceptors...),
 			compress.WithAll(compress.LevelBalanced),
 		),
 		paymentservice: adminv1connect.NewPaymentServiceClient(
 			c.config.HttpClient(),
 			c.config.BaseURL,
+			connect.WithInterceptors(c.interceptors...),
 			compress.WithAll(compress.LevelBalanced),
 		),
 		projectservice: adminv1connect.NewProjectServiceClient(
 			c.config.HttpClient(),
 			c.config.BaseURL,
+			connect.WithInterceptors(c.interceptors...),
 			compress.WithAll(compress.LevelBalanced),
 		),
 		storageservice: adminv1connect.NewStorageServiceClient(
 			c.config.HttpClient(),
 			c.config.BaseURL,
+			connect.WithInterceptors(c.interceptors...),
 			compress.WithAll(compress.LevelBalanced),
 		),
 		tenantservice: adminv1connect.NewTenantServiceClient(
 			c.config.HttpClient(),
 			c.config.BaseURL,
+			connect.WithInterceptors(c.interceptors...),
 			compress.WithAll(compress.LevelBalanced),
 		),
 		tokenservice: adminv1connect.NewTokenServiceClient(
 			c.config.HttpClient(),
 			c.config.BaseURL,
+			connect.WithInterceptors(c.interceptors...),
 			compress.WithAll(compress.LevelBalanced),
 		),
 	}
@@ -157,71 +181,85 @@ func (c client) Apiv1() Apiv1 {
 		assetservice: apiv1connect.NewAssetServiceClient(
 			c.config.HttpClient(),
 			c.config.BaseURL,
+			connect.WithInterceptors(c.interceptors...),
 			compress.WithAll(compress.LevelBalanced),
 		),
 		auditservice: apiv1connect.NewAuditServiceClient(
 			c.config.HttpClient(),
 			c.config.BaseURL,
+			connect.WithInterceptors(c.interceptors...),
 			compress.WithAll(compress.LevelBalanced),
 		),
 		clusterservice: apiv1connect.NewClusterServiceClient(
 			c.config.HttpClient(),
 			c.config.BaseURL,
+			connect.WithInterceptors(c.interceptors...),
 			compress.WithAll(compress.LevelBalanced),
 		),
 		healthservice: apiv1connect.NewHealthServiceClient(
 			c.config.HttpClient(),
 			c.config.BaseURL,
+			connect.WithInterceptors(c.interceptors...),
 			compress.WithAll(compress.LevelBalanced),
 		),
 		ipservice: apiv1connect.NewIPServiceClient(
 			c.config.HttpClient(),
 			c.config.BaseURL,
+			connect.WithInterceptors(c.interceptors...),
 			compress.WithAll(compress.LevelBalanced),
 		),
 		methodservice: apiv1connect.NewMethodServiceClient(
 			c.config.HttpClient(),
 			c.config.BaseURL,
+			connect.WithInterceptors(c.interceptors...),
 			compress.WithAll(compress.LevelBalanced),
 		),
 		paymentservice: apiv1connect.NewPaymentServiceClient(
 			c.config.HttpClient(),
 			c.config.BaseURL,
+			connect.WithInterceptors(c.interceptors...),
 			compress.WithAll(compress.LevelBalanced),
 		),
 		projectservice: apiv1connect.NewProjectServiceClient(
 			c.config.HttpClient(),
 			c.config.BaseURL,
+			connect.WithInterceptors(c.interceptors...),
 			compress.WithAll(compress.LevelBalanced),
 		),
 		snapshotservice: apiv1connect.NewSnapshotServiceClient(
 			c.config.HttpClient(),
 			c.config.BaseURL,
+			connect.WithInterceptors(c.interceptors...),
 			compress.WithAll(compress.LevelBalanced),
 		),
 		tenantservice: apiv1connect.NewTenantServiceClient(
 			c.config.HttpClient(),
 			c.config.BaseURL,
+			connect.WithInterceptors(c.interceptors...),
 			compress.WithAll(compress.LevelBalanced),
 		),
 		tokenservice: apiv1connect.NewTokenServiceClient(
 			c.config.HttpClient(),
 			c.config.BaseURL,
+			connect.WithInterceptors(c.interceptors...),
 			compress.WithAll(compress.LevelBalanced),
 		),
 		userservice: apiv1connect.NewUserServiceClient(
 			c.config.HttpClient(),
 			c.config.BaseURL,
+			connect.WithInterceptors(c.interceptors...),
 			compress.WithAll(compress.LevelBalanced),
 		),
 		versionservice: apiv1connect.NewVersionServiceClient(
 			c.config.HttpClient(),
 			c.config.BaseURL,
+			connect.WithInterceptors(c.interceptors...),
 			compress.WithAll(compress.LevelBalanced),
 		),
 		volumeservice: apiv1connect.NewVolumeServiceClient(
 			c.config.HttpClient(),
 			c.config.BaseURL,
+			connect.WithInterceptors(c.interceptors...),
 			compress.WithAll(compress.LevelBalanced),
 		),
 	}
@@ -276,11 +314,13 @@ func (c client) Statusv1() Statusv1 {
 		messageservice: statusv1connect.NewMessageServiceClient(
 			c.config.HttpClient(),
 			c.config.BaseURL,
+			connect.WithInterceptors(c.interceptors...),
 			compress.WithAll(compress.LevelBalanced),
 		),
 		statusservice: statusv1connect.NewStatusServiceClient(
 			c.config.HttpClient(),
 			c.config.BaseURL,
+			connect.WithInterceptors(c.interceptors...),
 			compress.WithAll(compress.LevelBalanced),
 		),
 	}
