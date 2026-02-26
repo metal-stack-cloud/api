@@ -64,6 +64,7 @@ func (c client) {{ $name | title }}() {{ $name | title }} {
 	{{ $svc | lower }}:  {{ $name }}connect.New{{ $svc }}Client(
 		c.config.HttpClient(),
 		c.config.BaseURL,
+		connect.WithInterceptors(c.interceptors...),
 		compress.WithAll(compress.LevelBalanced),
 	),
 {{ end }}
