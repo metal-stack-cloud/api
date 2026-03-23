@@ -313,6 +313,16 @@ message ClusterStatus {
   repeated ClusterStatusLastError last_errors = 14;
   // ClusterStatusConditions is a list of status conditions of the cluster
   repeated ClusterStatusCondition conditions = 15;
+  // AdvertisedAddresses is a list of status conditions of the cluster
+  repeated AdvertisedAddress advertised_addresses = 16;
+}
+
+// AdvertisedAddress is a list of relevant addresses
+message AdvertisedAddress {
+  // Name of the advertised address. e.g. external
+  string name = 1;
+  // The URL of the API Server. e.g. https://api.foo.bar or https://1.2.3.4
+  string url = 2;
 }
 
 // ClusterStatusLastError is the last known cluster status error

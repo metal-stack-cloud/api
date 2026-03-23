@@ -203,7 +203,7 @@ class ClusterServiceWatchStatusRequest(_message.Message):
     def __init__(self, uuid: _Optional[str] = ..., project: _Optional[str] = ...) -> None: ...
 
 class ClusterStatus(_message.Message):
-    __slots__ = ("uuid", "progress", "state", "type", "api_server_ready", "control_plane_ready", "nodes_ready", "system_components_ready", "last_errors", "conditions")
+    __slots__ = ("uuid", "progress", "state", "type", "api_server_ready", "control_plane_ready", "nodes_ready", "system_components_ready", "last_errors", "conditions", "advertised_addresses")
     UUID_FIELD_NUMBER: _ClassVar[int]
     PROGRESS_FIELD_NUMBER: _ClassVar[int]
     STATE_FIELD_NUMBER: _ClassVar[int]
@@ -214,6 +214,7 @@ class ClusterStatus(_message.Message):
     SYSTEM_COMPONENTS_READY_FIELD_NUMBER: _ClassVar[int]
     LAST_ERRORS_FIELD_NUMBER: _ClassVar[int]
     CONDITIONS_FIELD_NUMBER: _ClassVar[int]
+    ADVERTISED_ADDRESSES_FIELD_NUMBER: _ClassVar[int]
     uuid: str
     progress: int
     state: str
@@ -224,7 +225,16 @@ class ClusterStatus(_message.Message):
     system_components_ready: str
     last_errors: _containers.RepeatedCompositeFieldContainer[ClusterStatusLastError]
     conditions: _containers.RepeatedCompositeFieldContainer[ClusterStatusCondition]
-    def __init__(self, uuid: _Optional[str] = ..., progress: _Optional[int] = ..., state: _Optional[str] = ..., type: _Optional[str] = ..., api_server_ready: _Optional[str] = ..., control_plane_ready: _Optional[str] = ..., nodes_ready: _Optional[str] = ..., system_components_ready: _Optional[str] = ..., last_errors: _Optional[_Iterable[_Union[ClusterStatusLastError, _Mapping]]] = ..., conditions: _Optional[_Iterable[_Union[ClusterStatusCondition, _Mapping]]] = ...) -> None: ...
+    advertised_addresses: _containers.RepeatedCompositeFieldContainer[AdvertisedAddress]
+    def __init__(self, uuid: _Optional[str] = ..., progress: _Optional[int] = ..., state: _Optional[str] = ..., type: _Optional[str] = ..., api_server_ready: _Optional[str] = ..., control_plane_ready: _Optional[str] = ..., nodes_ready: _Optional[str] = ..., system_components_ready: _Optional[str] = ..., last_errors: _Optional[_Iterable[_Union[ClusterStatusLastError, _Mapping]]] = ..., conditions: _Optional[_Iterable[_Union[ClusterStatusCondition, _Mapping]]] = ..., advertised_addresses: _Optional[_Iterable[_Union[AdvertisedAddress, _Mapping]]] = ...) -> None: ...
+
+class AdvertisedAddress(_message.Message):
+    __slots__ = ("name", "url")
+    NAME_FIELD_NUMBER: _ClassVar[int]
+    URL_FIELD_NUMBER: _ClassVar[int]
+    name: str
+    url: str
+    def __init__(self, name: _Optional[str] = ..., url: _Optional[str] = ...) -> None: ...
 
 class ClusterStatusLastError(_message.Message):
     __slots__ = ("description", "task_id", "last_update_time")
