@@ -567,7 +567,9 @@ type SubscriptionUsageItem struct {
 	// PeriodStart is the start date of this subscription
 	PeriodStart *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=period_start,json=periodStart,proto3" json:"period_start,omitempty"`
 	// PeriodEnd is the end date of this subscription
-	PeriodEnd     *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=period_end,json=periodEnd,proto3" json:"period_end,omitempty"`
+	PeriodEnd *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=period_end,json=periodEnd,proto3" json:"period_end,omitempty"`
+	// A subscription discounts
+	Discounts     []*Discount `protobuf:"bytes,6,rep,name=discounts,proto3" json:"discounts,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -637,6 +639,95 @@ func (x *SubscriptionUsageItem) GetPeriodEnd() *timestamppb.Timestamp {
 	return nil
 }
 
+func (x *SubscriptionUsageItem) GetDiscounts() []*Discount {
+	if x != nil {
+		return x.Discounts
+	}
+	return nil
+}
+
+// Discount details that can be applied to subscriptions or SubscriptionUsageItems
+type Discount struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// DiscountId is the id of the discount
+	DiscountId string `protobuf:"bytes,1,opt,name=discount_id,json=discountId,proto3" json:"discount_id,omitempty"`
+	// DiscountName is the name of the discount
+	DiscountName string `protobuf:"bytes,2,opt,name=discount_name,json=discountName,proto3" json:"discount_name,omitempty"`
+	// The discounts amount in a given currency
+	AmountOff int64 `protobuf:"varint,3,opt,name=amount_off,json=amountOff,proto3" json:"amount_off,omitempty"`
+	// The discount amount in percent
+	PercentageOff float64 `protobuf:"fixed64,4,opt,name=percentage_off,json=percentageOff,proto3" json:"percentage_off,omitempty"`
+	// Order the discounts need to be applied in
+	DiscountOrder float64 `protobuf:"fixed64,5,opt,name=discount_order,json=discountOrder,proto3" json:"discount_order,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *Discount) Reset() {
+	*x = Discount{}
+	mi := &file_api_v1_payment_proto_msgTypes[5]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *Discount) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Discount) ProtoMessage() {}
+
+func (x *Discount) ProtoReflect() protoreflect.Message {
+	mi := &file_api_v1_payment_proto_msgTypes[5]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Discount.ProtoReflect.Descriptor instead.
+func (*Discount) Descriptor() ([]byte, []int) {
+	return file_api_v1_payment_proto_rawDescGZIP(), []int{5}
+}
+
+func (x *Discount) GetDiscountId() string {
+	if x != nil {
+		return x.DiscountId
+	}
+	return ""
+}
+
+func (x *Discount) GetDiscountName() string {
+	if x != nil {
+		return x.DiscountName
+	}
+	return ""
+}
+
+func (x *Discount) GetAmountOff() int64 {
+	if x != nil {
+		return x.AmountOff
+	}
+	return 0
+}
+
+func (x *Discount) GetPercentageOff() float64 {
+	if x != nil {
+		return x.PercentageOff
+	}
+	return 0
+}
+
+func (x *Discount) GetDiscountOrder() float64 {
+	if x != nil {
+		return x.DiscountOrder
+	}
+	return 0
+}
+
 // Invoice a customer has to pay for subscription usage
 type Invoice struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
@@ -647,14 +738,16 @@ type Invoice struct {
 	// PeriodStart is the start date of the time frame covered by this invoice
 	PeriodStart *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=period_start,json=periodStart,proto3" json:"period_start,omitempty"`
 	// PeriodEnd is the end date of the time frame covered by this invoice
-	PeriodEnd     *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=period_end,json=periodEnd,proto3" json:"period_end,omitempty"`
+	PeriodEnd *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=period_end,json=periodEnd,proto3" json:"period_end,omitempty"`
+	// Invoice discounts
+	Discounts     []*Discount `protobuf:"bytes,6,rep,name=discounts,proto3" json:"discounts,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
 func (x *Invoice) Reset() {
 	*x = Invoice{}
-	mi := &file_api_v1_payment_proto_msgTypes[5]
+	mi := &file_api_v1_payment_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -666,7 +759,7 @@ func (x *Invoice) String() string {
 func (*Invoice) ProtoMessage() {}
 
 func (x *Invoice) ProtoReflect() protoreflect.Message {
-	mi := &file_api_v1_payment_proto_msgTypes[5]
+	mi := &file_api_v1_payment_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -679,7 +772,7 @@ func (x *Invoice) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Invoice.ProtoReflect.Descriptor instead.
 func (*Invoice) Descriptor() ([]byte, []int) {
-	return file_api_v1_payment_proto_rawDescGZIP(), []int{5}
+	return file_api_v1_payment_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *Invoice) GetId() string {
@@ -710,6 +803,13 @@ func (x *Invoice) GetPeriodEnd() *timestamppb.Timestamp {
 	return nil
 }
 
+func (x *Invoice) GetDiscounts() []*Discount {
+	if x != nil {
+		return x.Discounts
+	}
+	return nil
+}
+
 // PaymentServiceCreateOrUpdateCustomerRequest is the request payload for a payment create or update customer request
 type PaymentServiceCreateOrUpdateCustomerRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
@@ -735,7 +835,7 @@ type PaymentServiceCreateOrUpdateCustomerRequest struct {
 
 func (x *PaymentServiceCreateOrUpdateCustomerRequest) Reset() {
 	*x = PaymentServiceCreateOrUpdateCustomerRequest{}
-	mi := &file_api_v1_payment_proto_msgTypes[6]
+	mi := &file_api_v1_payment_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -747,7 +847,7 @@ func (x *PaymentServiceCreateOrUpdateCustomerRequest) String() string {
 func (*PaymentServiceCreateOrUpdateCustomerRequest) ProtoMessage() {}
 
 func (x *PaymentServiceCreateOrUpdateCustomerRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_api_v1_payment_proto_msgTypes[6]
+	mi := &file_api_v1_payment_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -760,7 +860,7 @@ func (x *PaymentServiceCreateOrUpdateCustomerRequest) ProtoReflect() protoreflec
 
 // Deprecated: Use PaymentServiceCreateOrUpdateCustomerRequest.ProtoReflect.Descriptor instead.
 func (*PaymentServiceCreateOrUpdateCustomerRequest) Descriptor() ([]byte, []int) {
-	return file_api_v1_payment_proto_rawDescGZIP(), []int{6}
+	return file_api_v1_payment_proto_rawDescGZIP(), []int{7}
 }
 
 func (x *PaymentServiceCreateOrUpdateCustomerRequest) GetLogin() string {
@@ -830,7 +930,7 @@ type PaymentServiceCreateOrUpdateCustomerResponse struct {
 
 func (x *PaymentServiceCreateOrUpdateCustomerResponse) Reset() {
 	*x = PaymentServiceCreateOrUpdateCustomerResponse{}
-	mi := &file_api_v1_payment_proto_msgTypes[7]
+	mi := &file_api_v1_payment_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -842,7 +942,7 @@ func (x *PaymentServiceCreateOrUpdateCustomerResponse) String() string {
 func (*PaymentServiceCreateOrUpdateCustomerResponse) ProtoMessage() {}
 
 func (x *PaymentServiceCreateOrUpdateCustomerResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_api_v1_payment_proto_msgTypes[7]
+	mi := &file_api_v1_payment_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -855,7 +955,7 @@ func (x *PaymentServiceCreateOrUpdateCustomerResponse) ProtoReflect() protorefle
 
 // Deprecated: Use PaymentServiceCreateOrUpdateCustomerResponse.ProtoReflect.Descriptor instead.
 func (*PaymentServiceCreateOrUpdateCustomerResponse) Descriptor() ([]byte, []int) {
-	return file_api_v1_payment_proto_rawDescGZIP(), []int{7}
+	return file_api_v1_payment_proto_rawDescGZIP(), []int{8}
 }
 
 func (x *PaymentServiceCreateOrUpdateCustomerResponse) GetCustomer() *PaymentCustomer {
@@ -878,7 +978,7 @@ type PaymentServiceGetCustomerRequest struct {
 
 func (x *PaymentServiceGetCustomerRequest) Reset() {
 	*x = PaymentServiceGetCustomerRequest{}
-	mi := &file_api_v1_payment_proto_msgTypes[8]
+	mi := &file_api_v1_payment_proto_msgTypes[9]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -890,7 +990,7 @@ func (x *PaymentServiceGetCustomerRequest) String() string {
 func (*PaymentServiceGetCustomerRequest) ProtoMessage() {}
 
 func (x *PaymentServiceGetCustomerRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_api_v1_payment_proto_msgTypes[8]
+	mi := &file_api_v1_payment_proto_msgTypes[9]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -903,7 +1003,7 @@ func (x *PaymentServiceGetCustomerRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PaymentServiceGetCustomerRequest.ProtoReflect.Descriptor instead.
 func (*PaymentServiceGetCustomerRequest) Descriptor() ([]byte, []int) {
-	return file_api_v1_payment_proto_rawDescGZIP(), []int{8}
+	return file_api_v1_payment_proto_rawDescGZIP(), []int{9}
 }
 
 func (x *PaymentServiceGetCustomerRequest) GetLogin() string {
@@ -931,7 +1031,7 @@ type PaymentServiceGetCustomerResponse struct {
 
 func (x *PaymentServiceGetCustomerResponse) Reset() {
 	*x = PaymentServiceGetCustomerResponse{}
-	mi := &file_api_v1_payment_proto_msgTypes[9]
+	mi := &file_api_v1_payment_proto_msgTypes[10]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -943,7 +1043,7 @@ func (x *PaymentServiceGetCustomerResponse) String() string {
 func (*PaymentServiceGetCustomerResponse) ProtoMessage() {}
 
 func (x *PaymentServiceGetCustomerResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_api_v1_payment_proto_msgTypes[9]
+	mi := &file_api_v1_payment_proto_msgTypes[10]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -956,7 +1056,7 @@ func (x *PaymentServiceGetCustomerResponse) ProtoReflect() protoreflect.Message 
 
 // Deprecated: Use PaymentServiceGetCustomerResponse.ProtoReflect.Descriptor instead.
 func (*PaymentServiceGetCustomerResponse) Descriptor() ([]byte, []int) {
-	return file_api_v1_payment_proto_rawDescGZIP(), []int{9}
+	return file_api_v1_payment_proto_rawDescGZIP(), []int{10}
 }
 
 func (x *PaymentServiceGetCustomerResponse) GetCustomer() *PaymentCustomer {
@@ -977,7 +1077,7 @@ type PaymentServiceHasPaymentMethodRequest struct {
 
 func (x *PaymentServiceHasPaymentMethodRequest) Reset() {
 	*x = PaymentServiceHasPaymentMethodRequest{}
-	mi := &file_api_v1_payment_proto_msgTypes[10]
+	mi := &file_api_v1_payment_proto_msgTypes[11]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -989,7 +1089,7 @@ func (x *PaymentServiceHasPaymentMethodRequest) String() string {
 func (*PaymentServiceHasPaymentMethodRequest) ProtoMessage() {}
 
 func (x *PaymentServiceHasPaymentMethodRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_api_v1_payment_proto_msgTypes[10]
+	mi := &file_api_v1_payment_proto_msgTypes[11]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1002,7 +1102,7 @@ func (x *PaymentServiceHasPaymentMethodRequest) ProtoReflect() protoreflect.Mess
 
 // Deprecated: Use PaymentServiceHasPaymentMethodRequest.ProtoReflect.Descriptor instead.
 func (*PaymentServiceHasPaymentMethodRequest) Descriptor() ([]byte, []int) {
-	return file_api_v1_payment_proto_rawDescGZIP(), []int{10}
+	return file_api_v1_payment_proto_rawDescGZIP(), []int{11}
 }
 
 func (x *PaymentServiceHasPaymentMethodRequest) GetLogin() string {
@@ -1025,7 +1125,7 @@ type PaymentServiceHasPaymentMethodResponse struct {
 
 func (x *PaymentServiceHasPaymentMethodResponse) Reset() {
 	*x = PaymentServiceHasPaymentMethodResponse{}
-	mi := &file_api_v1_payment_proto_msgTypes[11]
+	mi := &file_api_v1_payment_proto_msgTypes[12]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1037,7 +1137,7 @@ func (x *PaymentServiceHasPaymentMethodResponse) String() string {
 func (*PaymentServiceHasPaymentMethodResponse) ProtoMessage() {}
 
 func (x *PaymentServiceHasPaymentMethodResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_api_v1_payment_proto_msgTypes[11]
+	mi := &file_api_v1_payment_proto_msgTypes[12]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1050,7 +1150,7 @@ func (x *PaymentServiceHasPaymentMethodResponse) ProtoReflect() protoreflect.Mes
 
 // Deprecated: Use PaymentServiceHasPaymentMethodResponse.ProtoReflect.Descriptor instead.
 func (*PaymentServiceHasPaymentMethodResponse) Descriptor() ([]byte, []int) {
-	return file_api_v1_payment_proto_rawDescGZIP(), []int{11}
+	return file_api_v1_payment_proto_rawDescGZIP(), []int{12}
 }
 
 func (x *PaymentServiceHasPaymentMethodResponse) GetExists() bool {
@@ -1078,7 +1178,7 @@ type PaymentServiceDeletePaymentMethodRequest struct {
 
 func (x *PaymentServiceDeletePaymentMethodRequest) Reset() {
 	*x = PaymentServiceDeletePaymentMethodRequest{}
-	mi := &file_api_v1_payment_proto_msgTypes[12]
+	mi := &file_api_v1_payment_proto_msgTypes[13]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1090,7 +1190,7 @@ func (x *PaymentServiceDeletePaymentMethodRequest) String() string {
 func (*PaymentServiceDeletePaymentMethodRequest) ProtoMessage() {}
 
 func (x *PaymentServiceDeletePaymentMethodRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_api_v1_payment_proto_msgTypes[12]
+	mi := &file_api_v1_payment_proto_msgTypes[13]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1103,7 +1203,7 @@ func (x *PaymentServiceDeletePaymentMethodRequest) ProtoReflect() protoreflect.M
 
 // Deprecated: Use PaymentServiceDeletePaymentMethodRequest.ProtoReflect.Descriptor instead.
 func (*PaymentServiceDeletePaymentMethodRequest) Descriptor() ([]byte, []int) {
-	return file_api_v1_payment_proto_rawDescGZIP(), []int{12}
+	return file_api_v1_payment_proto_rawDescGZIP(), []int{13}
 }
 
 func (x *PaymentServiceDeletePaymentMethodRequest) GetLogin() string {
@@ -1122,7 +1222,7 @@ type PaymentServiceDeletePaymentMethodResponse struct {
 
 func (x *PaymentServiceDeletePaymentMethodResponse) Reset() {
 	*x = PaymentServiceDeletePaymentMethodResponse{}
-	mi := &file_api_v1_payment_proto_msgTypes[13]
+	mi := &file_api_v1_payment_proto_msgTypes[14]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1134,7 +1234,7 @@ func (x *PaymentServiceDeletePaymentMethodResponse) String() string {
 func (*PaymentServiceDeletePaymentMethodResponse) ProtoMessage() {}
 
 func (x *PaymentServiceDeletePaymentMethodResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_api_v1_payment_proto_msgTypes[13]
+	mi := &file_api_v1_payment_proto_msgTypes[14]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1147,7 +1247,7 @@ func (x *PaymentServiceDeletePaymentMethodResponse) ProtoReflect() protoreflect.
 
 // Deprecated: Use PaymentServiceDeletePaymentMethodResponse.ProtoReflect.Descriptor instead.
 func (*PaymentServiceDeletePaymentMethodResponse) Descriptor() ([]byte, []int) {
-	return file_api_v1_payment_proto_rawDescGZIP(), []int{13}
+	return file_api_v1_payment_proto_rawDescGZIP(), []int{14}
 }
 
 // PaymentServiceGetSubscriptionUsageRequest is the request payload for a get subscription usage request
@@ -1161,7 +1261,7 @@ type PaymentServiceGetSubscriptionUsageRequest struct {
 
 func (x *PaymentServiceGetSubscriptionUsageRequest) Reset() {
 	*x = PaymentServiceGetSubscriptionUsageRequest{}
-	mi := &file_api_v1_payment_proto_msgTypes[14]
+	mi := &file_api_v1_payment_proto_msgTypes[15]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1173,7 +1273,7 @@ func (x *PaymentServiceGetSubscriptionUsageRequest) String() string {
 func (*PaymentServiceGetSubscriptionUsageRequest) ProtoMessage() {}
 
 func (x *PaymentServiceGetSubscriptionUsageRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_api_v1_payment_proto_msgTypes[14]
+	mi := &file_api_v1_payment_proto_msgTypes[15]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1186,7 +1286,7 @@ func (x *PaymentServiceGetSubscriptionUsageRequest) ProtoReflect() protoreflect.
 
 // Deprecated: Use PaymentServiceGetSubscriptionUsageRequest.ProtoReflect.Descriptor instead.
 func (*PaymentServiceGetSubscriptionUsageRequest) Descriptor() ([]byte, []int) {
-	return file_api_v1_payment_proto_rawDescGZIP(), []int{14}
+	return file_api_v1_payment_proto_rawDescGZIP(), []int{15}
 }
 
 func (x *PaymentServiceGetSubscriptionUsageRequest) GetLogin() string {
@@ -1207,7 +1307,7 @@ type PaymentServiceGetSubscriptionUsageResponse struct {
 
 func (x *PaymentServiceGetSubscriptionUsageResponse) Reset() {
 	*x = PaymentServiceGetSubscriptionUsageResponse{}
-	mi := &file_api_v1_payment_proto_msgTypes[15]
+	mi := &file_api_v1_payment_proto_msgTypes[16]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1219,7 +1319,7 @@ func (x *PaymentServiceGetSubscriptionUsageResponse) String() string {
 func (*PaymentServiceGetSubscriptionUsageResponse) ProtoMessage() {}
 
 func (x *PaymentServiceGetSubscriptionUsageResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_api_v1_payment_proto_msgTypes[15]
+	mi := &file_api_v1_payment_proto_msgTypes[16]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1232,7 +1332,7 @@ func (x *PaymentServiceGetSubscriptionUsageResponse) ProtoReflect() protoreflect
 
 // Deprecated: Use PaymentServiceGetSubscriptionUsageResponse.ProtoReflect.Descriptor instead.
 func (*PaymentServiceGetSubscriptionUsageResponse) Descriptor() ([]byte, []int) {
-	return file_api_v1_payment_proto_rawDescGZIP(), []int{15}
+	return file_api_v1_payment_proto_rawDescGZIP(), []int{16}
 }
 
 func (x *PaymentServiceGetSubscriptionUsageResponse) GetSubscriptionUsageItems() []*SubscriptionUsageItem {
@@ -1255,7 +1355,7 @@ type PaymentServiceGetInvoicesRequest struct {
 
 func (x *PaymentServiceGetInvoicesRequest) Reset() {
 	*x = PaymentServiceGetInvoicesRequest{}
-	mi := &file_api_v1_payment_proto_msgTypes[16]
+	mi := &file_api_v1_payment_proto_msgTypes[17]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1267,7 +1367,7 @@ func (x *PaymentServiceGetInvoicesRequest) String() string {
 func (*PaymentServiceGetInvoicesRequest) ProtoMessage() {}
 
 func (x *PaymentServiceGetInvoicesRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_api_v1_payment_proto_msgTypes[16]
+	mi := &file_api_v1_payment_proto_msgTypes[17]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1280,7 +1380,7 @@ func (x *PaymentServiceGetInvoicesRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PaymentServiceGetInvoicesRequest.ProtoReflect.Descriptor instead.
 func (*PaymentServiceGetInvoicesRequest) Descriptor() ([]byte, []int) {
-	return file_api_v1_payment_proto_rawDescGZIP(), []int{16}
+	return file_api_v1_payment_proto_rawDescGZIP(), []int{17}
 }
 
 func (x *PaymentServiceGetInvoicesRequest) GetLogin() string {
@@ -1308,7 +1408,7 @@ type PaymentServiceGetInvoicesResponse struct {
 
 func (x *PaymentServiceGetInvoicesResponse) Reset() {
 	*x = PaymentServiceGetInvoicesResponse{}
-	mi := &file_api_v1_payment_proto_msgTypes[17]
+	mi := &file_api_v1_payment_proto_msgTypes[18]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1320,7 +1420,7 @@ func (x *PaymentServiceGetInvoicesResponse) String() string {
 func (*PaymentServiceGetInvoicesResponse) ProtoMessage() {}
 
 func (x *PaymentServiceGetInvoicesResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_api_v1_payment_proto_msgTypes[17]
+	mi := &file_api_v1_payment_proto_msgTypes[18]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1333,7 +1433,7 @@ func (x *PaymentServiceGetInvoicesResponse) ProtoReflect() protoreflect.Message 
 
 // Deprecated: Use PaymentServiceGetInvoicesResponse.ProtoReflect.Descriptor instead.
 func (*PaymentServiceGetInvoicesResponse) Descriptor() ([]byte, []int) {
-	return file_api_v1_payment_proto_rawDescGZIP(), []int{17}
+	return file_api_v1_payment_proto_rawDescGZIP(), []int{18}
 }
 
 func (x *PaymentServiceGetInvoicesResponse) GetInvoices() []*Invoice {
@@ -1352,7 +1452,7 @@ type PaymentServiceGetDefaultPricesRequest struct {
 
 func (x *PaymentServiceGetDefaultPricesRequest) Reset() {
 	*x = PaymentServiceGetDefaultPricesRequest{}
-	mi := &file_api_v1_payment_proto_msgTypes[18]
+	mi := &file_api_v1_payment_proto_msgTypes[19]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1364,7 +1464,7 @@ func (x *PaymentServiceGetDefaultPricesRequest) String() string {
 func (*PaymentServiceGetDefaultPricesRequest) ProtoMessage() {}
 
 func (x *PaymentServiceGetDefaultPricesRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_api_v1_payment_proto_msgTypes[18]
+	mi := &file_api_v1_payment_proto_msgTypes[19]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1377,7 +1477,7 @@ func (x *PaymentServiceGetDefaultPricesRequest) ProtoReflect() protoreflect.Mess
 
 // Deprecated: Use PaymentServiceGetDefaultPricesRequest.ProtoReflect.Descriptor instead.
 func (*PaymentServiceGetDefaultPricesRequest) Descriptor() ([]byte, []int) {
-	return file_api_v1_payment_proto_rawDescGZIP(), []int{18}
+	return file_api_v1_payment_proto_rawDescGZIP(), []int{19}
 }
 
 // PaymentServiceGetDefaultPricesResponse is the response payload for a get default prices request
@@ -1391,7 +1491,7 @@ type PaymentServiceGetDefaultPricesResponse struct {
 
 func (x *PaymentServiceGetDefaultPricesResponse) Reset() {
 	*x = PaymentServiceGetDefaultPricesResponse{}
-	mi := &file_api_v1_payment_proto_msgTypes[19]
+	mi := &file_api_v1_payment_proto_msgTypes[20]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1403,7 +1503,7 @@ func (x *PaymentServiceGetDefaultPricesResponse) String() string {
 func (*PaymentServiceGetDefaultPricesResponse) ProtoMessage() {}
 
 func (x *PaymentServiceGetDefaultPricesResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_api_v1_payment_proto_msgTypes[19]
+	mi := &file_api_v1_payment_proto_msgTypes[20]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1416,12 +1516,104 @@ func (x *PaymentServiceGetDefaultPricesResponse) ProtoReflect() protoreflect.Mes
 
 // Deprecated: Use PaymentServiceGetDefaultPricesResponse.ProtoReflect.Descriptor instead.
 func (*PaymentServiceGetDefaultPricesResponse) Descriptor() ([]byte, []int) {
-	return file_api_v1_payment_proto_rawDescGZIP(), []int{19}
+	return file_api_v1_payment_proto_rawDescGZIP(), []int{20}
 }
 
 func (x *PaymentServiceGetDefaultPricesResponse) GetPrices() []*Price {
 	if x != nil {
 		return x.Prices
+	}
+	return nil
+}
+
+// PaymentServiceGetSubscriptionDiscountsRequest is the request payload for a get subscription discounts request
+type PaymentServiceGetSubscriptionDiscountsRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Login of the customer
+	Login         string `protobuf:"bytes,1,opt,name=login,proto3" json:"login,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *PaymentServiceGetSubscriptionDiscountsRequest) Reset() {
+	*x = PaymentServiceGetSubscriptionDiscountsRequest{}
+	mi := &file_api_v1_payment_proto_msgTypes[21]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *PaymentServiceGetSubscriptionDiscountsRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*PaymentServiceGetSubscriptionDiscountsRequest) ProtoMessage() {}
+
+func (x *PaymentServiceGetSubscriptionDiscountsRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_api_v1_payment_proto_msgTypes[21]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use PaymentServiceGetSubscriptionDiscountsRequest.ProtoReflect.Descriptor instead.
+func (*PaymentServiceGetSubscriptionDiscountsRequest) Descriptor() ([]byte, []int) {
+	return file_api_v1_payment_proto_rawDescGZIP(), []int{21}
+}
+
+func (x *PaymentServiceGetSubscriptionDiscountsRequest) GetLogin() string {
+	if x != nil {
+		return x.Login
+	}
+	return ""
+}
+
+// PaymentServiceGetSubscriptionUsageResponse is the response payload for a get subscription usage request
+type PaymentServiceGetSubscriptionDiscountsResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Discounts is a list with all discounts for one subscription
+	Discounts     []*Discount `protobuf:"bytes,1,rep,name=discounts,proto3" json:"discounts,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *PaymentServiceGetSubscriptionDiscountsResponse) Reset() {
+	*x = PaymentServiceGetSubscriptionDiscountsResponse{}
+	mi := &file_api_v1_payment_proto_msgTypes[22]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *PaymentServiceGetSubscriptionDiscountsResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*PaymentServiceGetSubscriptionDiscountsResponse) ProtoMessage() {}
+
+func (x *PaymentServiceGetSubscriptionDiscountsResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_api_v1_payment_proto_msgTypes[22]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use PaymentServiceGetSubscriptionDiscountsResponse.ProtoReflect.Descriptor instead.
+func (*PaymentServiceGetSubscriptionDiscountsResponse) Descriptor() ([]byte, []int) {
+	return file_api_v1_payment_proto_rawDescGZIP(), []int{22}
+}
+
+func (x *PaymentServiceGetSubscriptionDiscountsResponse) GetDiscounts() []*Discount {
+	if x != nil {
+		return x.Discounts
 	}
 	return nil
 }
@@ -1480,7 +1672,7 @@ const file_api_v1_payment_proto_rawDesc = "" +
 	"postalCode\x12\x12\n" +
 	"\x04city\x18\x04 \x01(\tR\x04city\x12\x14\n" +
 	"\x05state\x18\x05 \x01(\tR\x05state\x12\x18\n" +
-	"\acountry\x18\x06 \x01(\tR\acountry\"\x9a\x02\n" +
+	"\acountry\x18\x06 \x01(\tR\acountry\"\xca\x02\n" +
 	"\x15SubscriptionUsageItem\x120\n" +
 	"\x14subscription_item_id\x18\x01 \x01(\tR\x12subscriptionItemId\x124\n" +
 	"\x16subscription_item_name\x18\x02 \x01(\tR\x14subscriptionItemName\x12\x1f\n" +
@@ -1488,13 +1680,23 @@ const file_api_v1_payment_proto_rawDesc = "" +
 	"totalUsage\x12=\n" +
 	"\fperiod_start\x18\x04 \x01(\v2\x1a.google.protobuf.TimestampR\vperiodStart\x129\n" +
 	"\n" +
-	"period_end\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampR\tperiodEnd\"\xbd\x01\n" +
+	"period_end\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampR\tperiodEnd\x12.\n" +
+	"\tdiscounts\x18\x06 \x03(\v2\x10.api.v1.DiscountR\tdiscounts\"\xbd\x01\n" +
+	"\bDiscount\x12\x1f\n" +
+	"\vdiscount_id\x18\x01 \x01(\tR\n" +
+	"discountId\x12#\n" +
+	"\rdiscount_name\x18\x02 \x01(\tR\fdiscountName\x12\x1d\n" +
+	"\n" +
+	"amount_off\x18\x03 \x01(\x03R\tamountOff\x12%\n" +
+	"\x0epercentage_off\x18\x04 \x01(\x01R\rpercentageOff\x12%\n" +
+	"\x0ediscount_order\x18\x05 \x01(\x01R\rdiscountOrder\"\xed\x01\n" +
 	"\aInvoice\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12(\n" +
 	"\x10pdf_download_url\x18\x02 \x01(\tR\x0epdfDownloadUrl\x12=\n" +
 	"\fperiod_start\x18\x04 \x01(\v2\x1a.google.protobuf.TimestampR\vperiodStart\x129\n" +
 	"\n" +
-	"period_end\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampR\tperiodEnd\"\xce\x03\n" +
+	"period_end\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampR\tperiodEnd\x12.\n" +
+	"\tdiscounts\x18\x06 \x03(\v2\x10.api.v1.DiscountR\tdiscounts\"\xce\x03\n" +
 	"+PaymentServiceCreateOrUpdateCustomerRequest\x12 \n" +
 	"\x05login\x18\x01 \x01(\tB\n" +
 	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\x05login\x12\x17\n" +
@@ -1545,7 +1747,12 @@ const file_api_v1_payment_proto_rawDesc = "" +
 	"\binvoices\x18\x01 \x03(\v2\x0f.api.v1.InvoiceR\binvoices\"'\n" +
 	"%PaymentServiceGetDefaultPricesRequest\"O\n" +
 	"&PaymentServiceGetDefaultPricesResponse\x12%\n" +
-	"\x06prices\x18\x01 \x03(\v2\r.api.v1.PriceR\x06prices*\x96\x01\n" +
+	"\x06prices\x18\x01 \x03(\v2\r.api.v1.PriceR\x06prices\"Q\n" +
+	"-PaymentServiceGetSubscriptionDiscountsRequest\x12 \n" +
+	"\x05login\x18\x01 \x01(\tB\n" +
+	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\x05login\"`\n" +
+	".PaymentServiceGetSubscriptionDiscountsResponse\x12.\n" +
+	"\tdiscounts\x18\x01 \x03(\v2\x10.api.v1.DiscountR\tdiscounts*\x96\x01\n" +
 	"\vProductType\x12\x1c\n" +
 	"\x18PRODUCT_TYPE_UNSPECIFIED\x10\x00\x12\x18\n" +
 	"\x14PRODUCT_TYPE_STORAGE\x10\x01\x12\x18\n" +
@@ -1555,7 +1762,7 @@ const file_api_v1_payment_proto_rawDesc = "" +
 	"\tUsageType\x12\x1a\n" +
 	"\x16USAGE_TYPE_UNSPECIFIED\x10\x00\x12\x16\n" +
 	"\x12USAGE_TYPE_METERED\x10\x01\x12\x17\n" +
-	"\x13USAGE_TYPE_LICENSED\x10\x022\x88\a\n" +
+	"\x13USAGE_TYPE_LICENSED\x10\x022\x9f\b\n" +
 	"\x0ePaymentService\x12\x8a\x01\n" +
 	"\x16CreateOrUpdateCustomer\x123.api.v1.PaymentServiceCreateOrUpdateCustomerRequest\x1a4.api.v1.PaymentServiceCreateOrUpdateCustomerResponse\"\x05\xc2\xf3\x18\x01\x01\x12m\n" +
 	"\vGetCustomer\x12(.api.v1.PaymentServiceGetCustomerRequest\x1a).api.v1.PaymentServiceGetCustomerResponse\"\t\xc2\xf3\x18\x01\x01\xe8\xf3\x18\x02\x12\x7f\n" +
@@ -1563,7 +1770,8 @@ const file_api_v1_payment_proto_rawDesc = "" +
 	"\x13DeletePaymentMethod\x120.api.v1.PaymentServiceDeletePaymentMethodRequest\x1a1.api.v1.PaymentServiceDeletePaymentMethodResponse\"\x05\xc2\xf3\x18\x01\x01\x12\x88\x01\n" +
 	"\x14GetSubscriptionUsage\x121.api.v1.PaymentServiceGetSubscriptionUsageRequest\x1a2.api.v1.PaymentServiceGetSubscriptionUsageResponse\"\t\xc2\xf3\x18\x01\x01\xe8\xf3\x18\x02\x12m\n" +
 	"\vGetInvoices\x12(.api.v1.PaymentServiceGetInvoicesRequest\x1a).api.v1.PaymentServiceGetInvoicesResponse\"\t\xc2\xf3\x18\x01\x01\xe8\xf3\x18\x02\x12{\n" +
-	"\x10GetDefaultPrices\x12-.api.v1.PaymentServiceGetDefaultPricesRequest\x1a..api.v1.PaymentServiceGetDefaultPricesResponse\"\b\xd8\xf3\x18\x01\xe8\xf3\x18\x02B\x85\x01\n" +
+	"\x10GetDefaultPrices\x12-.api.v1.PaymentServiceGetDefaultPricesRequest\x1a..api.v1.PaymentServiceGetDefaultPricesResponse\"\b\xd8\xf3\x18\x01\xe8\xf3\x18\x02\x12\x94\x01\n" +
+	"\x18GetSubscriptionDiscounts\x125.api.v1.PaymentServiceGetSubscriptionDiscountsRequest\x1a6.api.v1.PaymentServiceGetSubscriptionDiscountsResponse\"\t\xc2\xf3\x18\x01\x01\xe8\xf3\x18\x02B\x85\x01\n" +
 	"\n" +
 	"com.api.v1B\fPaymentProtoP\x01Z0github.com/metal-stack-cloud/api/go/api/v1;apiv1\xa2\x02\x03AXX\xaa\x02\x06Api.V1\xca\x02\x06Api\\V1\xe2\x02\x12Api\\V1\\GPBMetadata\xea\x02\aApi::V1b\x06proto3"
 
@@ -1580,7 +1788,7 @@ func file_api_v1_payment_proto_rawDescGZIP() []byte {
 }
 
 var file_api_v1_payment_proto_enumTypes = make([]protoimpl.EnumInfo, 2)
-var file_api_v1_payment_proto_msgTypes = make([]protoimpl.MessageInfo, 20)
+var file_api_v1_payment_proto_msgTypes = make([]protoimpl.MessageInfo, 23)
 var file_api_v1_payment_proto_goTypes = []any{
 	(ProductType)(0),              // 0: api.v1.ProductType
 	(UsageType)(0),                // 1: api.v1.UsageType
@@ -1589,22 +1797,25 @@ var file_api_v1_payment_proto_goTypes = []any{
 	(*Price)(nil),                 // 4: api.v1.Price
 	(*Address)(nil),               // 5: api.v1.Address
 	(*SubscriptionUsageItem)(nil), // 6: api.v1.SubscriptionUsageItem
-	(*Invoice)(nil),               // 7: api.v1.Invoice
-	(*PaymentServiceCreateOrUpdateCustomerRequest)(nil),  // 8: api.v1.PaymentServiceCreateOrUpdateCustomerRequest
-	(*PaymentServiceCreateOrUpdateCustomerResponse)(nil), // 9: api.v1.PaymentServiceCreateOrUpdateCustomerResponse
-	(*PaymentServiceGetCustomerRequest)(nil),             // 10: api.v1.PaymentServiceGetCustomerRequest
-	(*PaymentServiceGetCustomerResponse)(nil),            // 11: api.v1.PaymentServiceGetCustomerResponse
-	(*PaymentServiceHasPaymentMethodRequest)(nil),        // 12: api.v1.PaymentServiceHasPaymentMethodRequest
-	(*PaymentServiceHasPaymentMethodResponse)(nil),       // 13: api.v1.PaymentServiceHasPaymentMethodResponse
-	(*PaymentServiceDeletePaymentMethodRequest)(nil),     // 14: api.v1.PaymentServiceDeletePaymentMethodRequest
-	(*PaymentServiceDeletePaymentMethodResponse)(nil),    // 15: api.v1.PaymentServiceDeletePaymentMethodResponse
-	(*PaymentServiceGetSubscriptionUsageRequest)(nil),    // 16: api.v1.PaymentServiceGetSubscriptionUsageRequest
-	(*PaymentServiceGetSubscriptionUsageResponse)(nil),   // 17: api.v1.PaymentServiceGetSubscriptionUsageResponse
-	(*PaymentServiceGetInvoicesRequest)(nil),             // 18: api.v1.PaymentServiceGetInvoicesRequest
-	(*PaymentServiceGetInvoicesResponse)(nil),            // 19: api.v1.PaymentServiceGetInvoicesResponse
-	(*PaymentServiceGetDefaultPricesRequest)(nil),        // 20: api.v1.PaymentServiceGetDefaultPricesRequest
-	(*PaymentServiceGetDefaultPricesResponse)(nil),       // 21: api.v1.PaymentServiceGetDefaultPricesResponse
-	(*timestamppb.Timestamp)(nil),                        // 22: google.protobuf.Timestamp
+	(*Discount)(nil),              // 7: api.v1.Discount
+	(*Invoice)(nil),               // 8: api.v1.Invoice
+	(*PaymentServiceCreateOrUpdateCustomerRequest)(nil),    // 9: api.v1.PaymentServiceCreateOrUpdateCustomerRequest
+	(*PaymentServiceCreateOrUpdateCustomerResponse)(nil),   // 10: api.v1.PaymentServiceCreateOrUpdateCustomerResponse
+	(*PaymentServiceGetCustomerRequest)(nil),               // 11: api.v1.PaymentServiceGetCustomerRequest
+	(*PaymentServiceGetCustomerResponse)(nil),              // 12: api.v1.PaymentServiceGetCustomerResponse
+	(*PaymentServiceHasPaymentMethodRequest)(nil),          // 13: api.v1.PaymentServiceHasPaymentMethodRequest
+	(*PaymentServiceHasPaymentMethodResponse)(nil),         // 14: api.v1.PaymentServiceHasPaymentMethodResponse
+	(*PaymentServiceDeletePaymentMethodRequest)(nil),       // 15: api.v1.PaymentServiceDeletePaymentMethodRequest
+	(*PaymentServiceDeletePaymentMethodResponse)(nil),      // 16: api.v1.PaymentServiceDeletePaymentMethodResponse
+	(*PaymentServiceGetSubscriptionUsageRequest)(nil),      // 17: api.v1.PaymentServiceGetSubscriptionUsageRequest
+	(*PaymentServiceGetSubscriptionUsageResponse)(nil),     // 18: api.v1.PaymentServiceGetSubscriptionUsageResponse
+	(*PaymentServiceGetInvoicesRequest)(nil),               // 19: api.v1.PaymentServiceGetInvoicesRequest
+	(*PaymentServiceGetInvoicesResponse)(nil),              // 20: api.v1.PaymentServiceGetInvoicesResponse
+	(*PaymentServiceGetDefaultPricesRequest)(nil),          // 21: api.v1.PaymentServiceGetDefaultPricesRequest
+	(*PaymentServiceGetDefaultPricesResponse)(nil),         // 22: api.v1.PaymentServiceGetDefaultPricesResponse
+	(*PaymentServiceGetSubscriptionDiscountsRequest)(nil),  // 23: api.v1.PaymentServiceGetSubscriptionDiscountsRequest
+	(*PaymentServiceGetSubscriptionDiscountsResponse)(nil), // 24: api.v1.PaymentServiceGetSubscriptionDiscountsResponse
+	(*timestamppb.Timestamp)(nil),                          // 25: google.protobuf.Timestamp
 }
 var file_api_v1_payment_proto_depIdxs = []int32{
 	3,  // 0: api.v1.PaymentCustomer.card:type_name -> api.v1.Card
@@ -1612,36 +1823,41 @@ var file_api_v1_payment_proto_depIdxs = []int32{
 	5,  // 2: api.v1.PaymentCustomer.address:type_name -> api.v1.Address
 	0,  // 3: api.v1.Price.product_type:type_name -> api.v1.ProductType
 	1,  // 4: api.v1.Price.usage_type:type_name -> api.v1.UsageType
-	22, // 5: api.v1.SubscriptionUsageItem.period_start:type_name -> google.protobuf.Timestamp
-	22, // 6: api.v1.SubscriptionUsageItem.period_end:type_name -> google.protobuf.Timestamp
-	22, // 7: api.v1.Invoice.period_start:type_name -> google.protobuf.Timestamp
-	22, // 8: api.v1.Invoice.period_end:type_name -> google.protobuf.Timestamp
-	3,  // 9: api.v1.PaymentServiceCreateOrUpdateCustomerRequest.card:type_name -> api.v1.Card
-	5,  // 10: api.v1.PaymentServiceCreateOrUpdateCustomerRequest.address:type_name -> api.v1.Address
-	2,  // 11: api.v1.PaymentServiceCreateOrUpdateCustomerResponse.customer:type_name -> api.v1.PaymentCustomer
-	2,  // 12: api.v1.PaymentServiceGetCustomerResponse.customer:type_name -> api.v1.PaymentCustomer
-	6,  // 13: api.v1.PaymentServiceGetSubscriptionUsageResponse.subscription_usage_items:type_name -> api.v1.SubscriptionUsageItem
-	7,  // 14: api.v1.PaymentServiceGetInvoicesResponse.invoices:type_name -> api.v1.Invoice
-	4,  // 15: api.v1.PaymentServiceGetDefaultPricesResponse.prices:type_name -> api.v1.Price
-	8,  // 16: api.v1.PaymentService.CreateOrUpdateCustomer:input_type -> api.v1.PaymentServiceCreateOrUpdateCustomerRequest
-	10, // 17: api.v1.PaymentService.GetCustomer:input_type -> api.v1.PaymentServiceGetCustomerRequest
-	12, // 18: api.v1.PaymentService.HasPaymentMethod:input_type -> api.v1.PaymentServiceHasPaymentMethodRequest
-	14, // 19: api.v1.PaymentService.DeletePaymentMethod:input_type -> api.v1.PaymentServiceDeletePaymentMethodRequest
-	16, // 20: api.v1.PaymentService.GetSubscriptionUsage:input_type -> api.v1.PaymentServiceGetSubscriptionUsageRequest
-	18, // 21: api.v1.PaymentService.GetInvoices:input_type -> api.v1.PaymentServiceGetInvoicesRequest
-	20, // 22: api.v1.PaymentService.GetDefaultPrices:input_type -> api.v1.PaymentServiceGetDefaultPricesRequest
-	9,  // 23: api.v1.PaymentService.CreateOrUpdateCustomer:output_type -> api.v1.PaymentServiceCreateOrUpdateCustomerResponse
-	11, // 24: api.v1.PaymentService.GetCustomer:output_type -> api.v1.PaymentServiceGetCustomerResponse
-	13, // 25: api.v1.PaymentService.HasPaymentMethod:output_type -> api.v1.PaymentServiceHasPaymentMethodResponse
-	15, // 26: api.v1.PaymentService.DeletePaymentMethod:output_type -> api.v1.PaymentServiceDeletePaymentMethodResponse
-	17, // 27: api.v1.PaymentService.GetSubscriptionUsage:output_type -> api.v1.PaymentServiceGetSubscriptionUsageResponse
-	19, // 28: api.v1.PaymentService.GetInvoices:output_type -> api.v1.PaymentServiceGetInvoicesResponse
-	21, // 29: api.v1.PaymentService.GetDefaultPrices:output_type -> api.v1.PaymentServiceGetDefaultPricesResponse
-	23, // [23:30] is the sub-list for method output_type
-	16, // [16:23] is the sub-list for method input_type
-	16, // [16:16] is the sub-list for extension type_name
-	16, // [16:16] is the sub-list for extension extendee
-	0,  // [0:16] is the sub-list for field type_name
+	25, // 5: api.v1.SubscriptionUsageItem.period_start:type_name -> google.protobuf.Timestamp
+	25, // 6: api.v1.SubscriptionUsageItem.period_end:type_name -> google.protobuf.Timestamp
+	7,  // 7: api.v1.SubscriptionUsageItem.discounts:type_name -> api.v1.Discount
+	25, // 8: api.v1.Invoice.period_start:type_name -> google.protobuf.Timestamp
+	25, // 9: api.v1.Invoice.period_end:type_name -> google.protobuf.Timestamp
+	7,  // 10: api.v1.Invoice.discounts:type_name -> api.v1.Discount
+	3,  // 11: api.v1.PaymentServiceCreateOrUpdateCustomerRequest.card:type_name -> api.v1.Card
+	5,  // 12: api.v1.PaymentServiceCreateOrUpdateCustomerRequest.address:type_name -> api.v1.Address
+	2,  // 13: api.v1.PaymentServiceCreateOrUpdateCustomerResponse.customer:type_name -> api.v1.PaymentCustomer
+	2,  // 14: api.v1.PaymentServiceGetCustomerResponse.customer:type_name -> api.v1.PaymentCustomer
+	6,  // 15: api.v1.PaymentServiceGetSubscriptionUsageResponse.subscription_usage_items:type_name -> api.v1.SubscriptionUsageItem
+	8,  // 16: api.v1.PaymentServiceGetInvoicesResponse.invoices:type_name -> api.v1.Invoice
+	4,  // 17: api.v1.PaymentServiceGetDefaultPricesResponse.prices:type_name -> api.v1.Price
+	7,  // 18: api.v1.PaymentServiceGetSubscriptionDiscountsResponse.discounts:type_name -> api.v1.Discount
+	9,  // 19: api.v1.PaymentService.CreateOrUpdateCustomer:input_type -> api.v1.PaymentServiceCreateOrUpdateCustomerRequest
+	11, // 20: api.v1.PaymentService.GetCustomer:input_type -> api.v1.PaymentServiceGetCustomerRequest
+	13, // 21: api.v1.PaymentService.HasPaymentMethod:input_type -> api.v1.PaymentServiceHasPaymentMethodRequest
+	15, // 22: api.v1.PaymentService.DeletePaymentMethod:input_type -> api.v1.PaymentServiceDeletePaymentMethodRequest
+	17, // 23: api.v1.PaymentService.GetSubscriptionUsage:input_type -> api.v1.PaymentServiceGetSubscriptionUsageRequest
+	19, // 24: api.v1.PaymentService.GetInvoices:input_type -> api.v1.PaymentServiceGetInvoicesRequest
+	21, // 25: api.v1.PaymentService.GetDefaultPrices:input_type -> api.v1.PaymentServiceGetDefaultPricesRequest
+	23, // 26: api.v1.PaymentService.GetSubscriptionDiscounts:input_type -> api.v1.PaymentServiceGetSubscriptionDiscountsRequest
+	10, // 27: api.v1.PaymentService.CreateOrUpdateCustomer:output_type -> api.v1.PaymentServiceCreateOrUpdateCustomerResponse
+	12, // 28: api.v1.PaymentService.GetCustomer:output_type -> api.v1.PaymentServiceGetCustomerResponse
+	14, // 29: api.v1.PaymentService.HasPaymentMethod:output_type -> api.v1.PaymentServiceHasPaymentMethodResponse
+	16, // 30: api.v1.PaymentService.DeletePaymentMethod:output_type -> api.v1.PaymentServiceDeletePaymentMethodResponse
+	18, // 31: api.v1.PaymentService.GetSubscriptionUsage:output_type -> api.v1.PaymentServiceGetSubscriptionUsageResponse
+	20, // 32: api.v1.PaymentService.GetInvoices:output_type -> api.v1.PaymentServiceGetInvoicesResponse
+	22, // 33: api.v1.PaymentService.GetDefaultPrices:output_type -> api.v1.PaymentServiceGetDefaultPricesResponse
+	24, // 34: api.v1.PaymentService.GetSubscriptionDiscounts:output_type -> api.v1.PaymentServiceGetSubscriptionDiscountsResponse
+	27, // [27:35] is the sub-list for method output_type
+	19, // [19:27] is the sub-list for method input_type
+	19, // [19:19] is the sub-list for extension type_name
+	19, // [19:19] is the sub-list for extension extendee
+	0,  // [0:19] is the sub-list for field type_name
 }
 
 func init() { file_api_v1_payment_proto_init() }
@@ -1652,14 +1868,14 @@ func file_api_v1_payment_proto_init() {
 	file_api_v1_common_proto_init()
 	file_api_v1_payment_proto_msgTypes[0].OneofWrappers = []any{}
 	file_api_v1_payment_proto_msgTypes[2].OneofWrappers = []any{}
-	file_api_v1_payment_proto_msgTypes[6].OneofWrappers = []any{}
+	file_api_v1_payment_proto_msgTypes[7].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_api_v1_payment_proto_rawDesc), len(file_api_v1_payment_proto_rawDesc)),
 			NumEnums:      2,
-			NumMessages:   20,
+			NumMessages:   23,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

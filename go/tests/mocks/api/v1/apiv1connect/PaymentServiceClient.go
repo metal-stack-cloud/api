@@ -379,6 +379,74 @@ func (_c *PaymentServiceClient_GetInvoices_Call) RunAndReturn(run func(context1 
 	return _c
 }
 
+// GetSubscriptionDiscounts provides a mock function for the type PaymentServiceClient
+func (_mock *PaymentServiceClient) GetSubscriptionDiscounts(context1 context.Context, request *connect.Request[apiv1.PaymentServiceGetSubscriptionDiscountsRequest]) (*connect.Response[apiv1.PaymentServiceGetSubscriptionDiscountsResponse], error) {
+	ret := _mock.Called(context1, request)
+
+	if len(ret) == 0 {
+		panic("no return value specified for GetSubscriptionDiscounts")
+	}
+
+	var r0 *connect.Response[apiv1.PaymentServiceGetSubscriptionDiscountsResponse]
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, *connect.Request[apiv1.PaymentServiceGetSubscriptionDiscountsRequest]) (*connect.Response[apiv1.PaymentServiceGetSubscriptionDiscountsResponse], error)); ok {
+		return returnFunc(context1, request)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, *connect.Request[apiv1.PaymentServiceGetSubscriptionDiscountsRequest]) *connect.Response[apiv1.PaymentServiceGetSubscriptionDiscountsResponse]); ok {
+		r0 = returnFunc(context1, request)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*connect.Response[apiv1.PaymentServiceGetSubscriptionDiscountsResponse])
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, *connect.Request[apiv1.PaymentServiceGetSubscriptionDiscountsRequest]) error); ok {
+		r1 = returnFunc(context1, request)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// PaymentServiceClient_GetSubscriptionDiscounts_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetSubscriptionDiscounts'
+type PaymentServiceClient_GetSubscriptionDiscounts_Call struct {
+	*mock.Call
+}
+
+// GetSubscriptionDiscounts is a helper method to define mock.On call
+//   - context1 context.Context
+//   - request *connect.Request[apiv1.PaymentServiceGetSubscriptionDiscountsRequest]
+func (_e *PaymentServiceClient_Expecter) GetSubscriptionDiscounts(context1 interface{}, request interface{}) *PaymentServiceClient_GetSubscriptionDiscounts_Call {
+	return &PaymentServiceClient_GetSubscriptionDiscounts_Call{Call: _e.mock.On("GetSubscriptionDiscounts", context1, request)}
+}
+
+func (_c *PaymentServiceClient_GetSubscriptionDiscounts_Call) Run(run func(context1 context.Context, request *connect.Request[apiv1.PaymentServiceGetSubscriptionDiscountsRequest])) *PaymentServiceClient_GetSubscriptionDiscounts_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 *connect.Request[apiv1.PaymentServiceGetSubscriptionDiscountsRequest]
+		if args[1] != nil {
+			arg1 = args[1].(*connect.Request[apiv1.PaymentServiceGetSubscriptionDiscountsRequest])
+		}
+		run(
+			arg0,
+			arg1,
+		)
+	})
+	return _c
+}
+
+func (_c *PaymentServiceClient_GetSubscriptionDiscounts_Call) Return(response *connect.Response[apiv1.PaymentServiceGetSubscriptionDiscountsResponse], err error) *PaymentServiceClient_GetSubscriptionDiscounts_Call {
+	_c.Call.Return(response, err)
+	return _c
+}
+
+func (_c *PaymentServiceClient_GetSubscriptionDiscounts_Call) RunAndReturn(run func(context1 context.Context, request *connect.Request[apiv1.PaymentServiceGetSubscriptionDiscountsRequest]) (*connect.Response[apiv1.PaymentServiceGetSubscriptionDiscountsResponse], error)) *PaymentServiceClient_GetSubscriptionDiscounts_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
 // GetSubscriptionUsage provides a mock function for the type PaymentServiceClient
 func (_mock *PaymentServiceClient) GetSubscriptionUsage(context1 context.Context, request *connect.Request[apiv1.PaymentServiceGetSubscriptionUsageRequest]) (*connect.Response[apiv1.PaymentServiceGetSubscriptionUsageResponse], error) {
 	ret := _mock.Called(context1, request)

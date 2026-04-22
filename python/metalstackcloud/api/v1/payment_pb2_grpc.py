@@ -50,6 +50,11 @@ class PaymentServiceStub(object):
                 request_serializer=api_dot_v1_dot_payment__pb2.PaymentServiceGetDefaultPricesRequest.SerializeToString,
                 response_deserializer=api_dot_v1_dot_payment__pb2.PaymentServiceGetDefaultPricesResponse.FromString,
                 _registered_method=True)
+        self.GetSubscriptionDiscounts = channel.unary_unary(
+                '/api.v1.PaymentService/GetSubscriptionDiscounts',
+                request_serializer=api_dot_v1_dot_payment__pb2.PaymentServiceGetSubscriptionDiscountsRequest.SerializeToString,
+                response_deserializer=api_dot_v1_dot_payment__pb2.PaymentServiceGetSubscriptionDiscountsResponse.FromString,
+                _registered_method=True)
 
 
 class PaymentServiceServicer(object):
@@ -105,6 +110,13 @@ class PaymentServiceServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def GetSubscriptionDiscounts(self, request, context):
+        """GetSubscriptionDiscounts gets all discounts for a subscription
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
 
 def add_PaymentServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
@@ -142,6 +154,11 @@ def add_PaymentServiceServicer_to_server(servicer, server):
                     servicer.GetDefaultPrices,
                     request_deserializer=api_dot_v1_dot_payment__pb2.PaymentServiceGetDefaultPricesRequest.FromString,
                     response_serializer=api_dot_v1_dot_payment__pb2.PaymentServiceGetDefaultPricesResponse.SerializeToString,
+            ),
+            'GetSubscriptionDiscounts': grpc.unary_unary_rpc_method_handler(
+                    servicer.GetSubscriptionDiscounts,
+                    request_deserializer=api_dot_v1_dot_payment__pb2.PaymentServiceGetSubscriptionDiscountsRequest.FromString,
+                    response_serializer=api_dot_v1_dot_payment__pb2.PaymentServiceGetSubscriptionDiscountsResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -334,6 +351,33 @@ class PaymentService(object):
             '/api.v1.PaymentService/GetDefaultPrices',
             api_dot_v1_dot_payment__pb2.PaymentServiceGetDefaultPricesRequest.SerializeToString,
             api_dot_v1_dot_payment__pb2.PaymentServiceGetDefaultPricesResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def GetSubscriptionDiscounts(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/api.v1.PaymentService/GetSubscriptionDiscounts',
+            api_dot_v1_dot_payment__pb2.PaymentServiceGetSubscriptionDiscountsRequest.SerializeToString,
+            api_dot_v1_dot_payment__pb2.PaymentServiceGetSubscriptionDiscountsResponse.FromString,
             options,
             channel_credentials,
             insecure,

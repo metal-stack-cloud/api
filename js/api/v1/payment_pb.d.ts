@@ -269,12 +269,60 @@ export type SubscriptionUsageItem = Message<"api.v1.SubscriptionUsageItem"> & {
      * @generated from field: google.protobuf.Timestamp period_end = 5;
      */
     periodEnd?: Timestamp;
+    /**
+     * A subscription discounts
+     *
+     * @generated from field: repeated api.v1.Discount discounts = 6;
+     */
+    discounts: Discount[];
 };
 /**
  * Describes the message api.v1.SubscriptionUsageItem.
  * Use `create(SubscriptionUsageItemSchema)` to create a new message.
  */
 export declare const SubscriptionUsageItemSchema: GenMessage<SubscriptionUsageItem>;
+/**
+ * Discount details that can be applied to subscriptions or SubscriptionUsageItems
+ *
+ * @generated from message api.v1.Discount
+ */
+export type Discount = Message<"api.v1.Discount"> & {
+    /**
+     * DiscountId is the id of the discount
+     *
+     * @generated from field: string discount_id = 1;
+     */
+    discountId: string;
+    /**
+     * DiscountName is the name of the discount
+     *
+     * @generated from field: string discount_name = 2;
+     */
+    discountName: string;
+    /**
+     * The discounts amount in a given currency
+     *
+     * @generated from field: int64 amount_off = 3;
+     */
+    amountOff: bigint;
+    /**
+     * The discount amount in percent
+     *
+     * @generated from field: double percentage_off = 4;
+     */
+    percentageOff: number;
+    /**
+     * Order the discounts need to be applied in
+     *
+     * @generated from field: double discount_order = 5;
+     */
+    discountOrder: number;
+};
+/**
+ * Describes the message api.v1.Discount.
+ * Use `create(DiscountSchema)` to create a new message.
+ */
+export declare const DiscountSchema: GenMessage<Discount>;
 /**
  * Invoice a customer has to pay for subscription usage
  *
@@ -305,6 +353,12 @@ export type Invoice = Message<"api.v1.Invoice"> & {
      * @generated from field: google.protobuf.Timestamp period_end = 5;
      */
     periodEnd?: Timestamp;
+    /**
+     * Invoice discounts
+     *
+     * @generated from field: repeated api.v1.Discount discounts = 6;
+     */
+    discounts: Discount[];
 };
 /**
  * Describes the message api.v1.Invoice.
@@ -610,6 +664,42 @@ export type PaymentServiceGetDefaultPricesResponse = Message<"api.v1.PaymentServ
  */
 export declare const PaymentServiceGetDefaultPricesResponseSchema: GenMessage<PaymentServiceGetDefaultPricesResponse>;
 /**
+ * PaymentServiceGetSubscriptionDiscountsRequest is the request payload for a get subscription discounts request
+ *
+ * @generated from message api.v1.PaymentServiceGetSubscriptionDiscountsRequest
+ */
+export type PaymentServiceGetSubscriptionDiscountsRequest = Message<"api.v1.PaymentServiceGetSubscriptionDiscountsRequest"> & {
+    /**
+     * Login of the customer
+     *
+     * @generated from field: string login = 1;
+     */
+    login: string;
+};
+/**
+ * Describes the message api.v1.PaymentServiceGetSubscriptionDiscountsRequest.
+ * Use `create(PaymentServiceGetSubscriptionDiscountsRequestSchema)` to create a new message.
+ */
+export declare const PaymentServiceGetSubscriptionDiscountsRequestSchema: GenMessage<PaymentServiceGetSubscriptionDiscountsRequest>;
+/**
+ * PaymentServiceGetSubscriptionUsageResponse is the response payload for a get subscription usage request
+ *
+ * @generated from message api.v1.PaymentServiceGetSubscriptionDiscountsResponse
+ */
+export type PaymentServiceGetSubscriptionDiscountsResponse = Message<"api.v1.PaymentServiceGetSubscriptionDiscountsResponse"> & {
+    /**
+     * Discounts is a list with all discounts for one subscription
+     *
+     * @generated from field: repeated api.v1.Discount discounts = 1;
+     */
+    discounts: Discount[];
+};
+/**
+ * Describes the message api.v1.PaymentServiceGetSubscriptionDiscountsResponse.
+ * Use `create(PaymentServiceGetSubscriptionDiscountsResponseSchema)` to create a new message.
+ */
+export declare const PaymentServiceGetSubscriptionDiscountsResponseSchema: GenMessage<PaymentServiceGetSubscriptionDiscountsResponse>;
+/**
  * ProductType defines for which type of product a price applies
  *
  * @generated from enum api.v1.ProductType
@@ -754,5 +844,15 @@ export declare const PaymentService: GenService<{
         methodKind: "unary";
         input: typeof PaymentServiceGetDefaultPricesRequestSchema;
         output: typeof PaymentServiceGetDefaultPricesResponseSchema;
+    };
+    /**
+     * GetSubscriptionDiscounts gets all discounts for a subscription
+     *
+     * @generated from rpc api.v1.PaymentService.GetSubscriptionDiscounts
+     */
+    getSubscriptionDiscounts: {
+        methodKind: "unary";
+        input: typeof PaymentServiceGetSubscriptionDiscountsRequestSchema;
+        output: typeof PaymentServiceGetSubscriptionDiscountsResponseSchema;
     };
 }>;

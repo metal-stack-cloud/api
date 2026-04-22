@@ -111,30 +111,48 @@ class Address(_message.Message):
     def __init__(self, line1: _Optional[str] = ..., line2: _Optional[str] = ..., postal_code: _Optional[str] = ..., city: _Optional[str] = ..., state: _Optional[str] = ..., country: _Optional[str] = ...) -> None: ...
 
 class SubscriptionUsageItem(_message.Message):
-    __slots__ = ("subscription_item_id", "subscription_item_name", "total_usage", "period_start", "period_end")
+    __slots__ = ("subscription_item_id", "subscription_item_name", "total_usage", "period_start", "period_end", "discounts")
     SUBSCRIPTION_ITEM_ID_FIELD_NUMBER: _ClassVar[int]
     SUBSCRIPTION_ITEM_NAME_FIELD_NUMBER: _ClassVar[int]
     TOTAL_USAGE_FIELD_NUMBER: _ClassVar[int]
     PERIOD_START_FIELD_NUMBER: _ClassVar[int]
     PERIOD_END_FIELD_NUMBER: _ClassVar[int]
+    DISCOUNTS_FIELD_NUMBER: _ClassVar[int]
     subscription_item_id: str
     subscription_item_name: str
     total_usage: int
     period_start: _timestamp_pb2.Timestamp
     period_end: _timestamp_pb2.Timestamp
-    def __init__(self, subscription_item_id: _Optional[str] = ..., subscription_item_name: _Optional[str] = ..., total_usage: _Optional[int] = ..., period_start: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., period_end: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ...) -> None: ...
+    discounts: _containers.RepeatedCompositeFieldContainer[Discount]
+    def __init__(self, subscription_item_id: _Optional[str] = ..., subscription_item_name: _Optional[str] = ..., total_usage: _Optional[int] = ..., period_start: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., period_end: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., discounts: _Optional[_Iterable[_Union[Discount, _Mapping]]] = ...) -> None: ...
+
+class Discount(_message.Message):
+    __slots__ = ("discount_id", "discount_name", "amount_off", "percentage_off", "discount_order")
+    DISCOUNT_ID_FIELD_NUMBER: _ClassVar[int]
+    DISCOUNT_NAME_FIELD_NUMBER: _ClassVar[int]
+    AMOUNT_OFF_FIELD_NUMBER: _ClassVar[int]
+    PERCENTAGE_OFF_FIELD_NUMBER: _ClassVar[int]
+    DISCOUNT_ORDER_FIELD_NUMBER: _ClassVar[int]
+    discount_id: str
+    discount_name: str
+    amount_off: int
+    percentage_off: float
+    discount_order: float
+    def __init__(self, discount_id: _Optional[str] = ..., discount_name: _Optional[str] = ..., amount_off: _Optional[int] = ..., percentage_off: _Optional[float] = ..., discount_order: _Optional[float] = ...) -> None: ...
 
 class Invoice(_message.Message):
-    __slots__ = ("id", "pdf_download_url", "period_start", "period_end")
+    __slots__ = ("id", "pdf_download_url", "period_start", "period_end", "discounts")
     ID_FIELD_NUMBER: _ClassVar[int]
     PDF_DOWNLOAD_URL_FIELD_NUMBER: _ClassVar[int]
     PERIOD_START_FIELD_NUMBER: _ClassVar[int]
     PERIOD_END_FIELD_NUMBER: _ClassVar[int]
+    DISCOUNTS_FIELD_NUMBER: _ClassVar[int]
     id: str
     pdf_download_url: str
     period_start: _timestamp_pb2.Timestamp
     period_end: _timestamp_pb2.Timestamp
-    def __init__(self, id: _Optional[str] = ..., pdf_download_url: _Optional[str] = ..., period_start: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., period_end: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ...) -> None: ...
+    discounts: _containers.RepeatedCompositeFieldContainer[Discount]
+    def __init__(self, id: _Optional[str] = ..., pdf_download_url: _Optional[str] = ..., period_start: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., period_end: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., discounts: _Optional[_Iterable[_Union[Discount, _Mapping]]] = ...) -> None: ...
 
 class PaymentServiceCreateOrUpdateCustomerRequest(_message.Message):
     __slots__ = ("login", "name", "payment_method_id", "email", "card", "address", "vat", "phone_number")
@@ -235,3 +253,15 @@ class PaymentServiceGetDefaultPricesResponse(_message.Message):
     PRICES_FIELD_NUMBER: _ClassVar[int]
     prices: _containers.RepeatedCompositeFieldContainer[Price]
     def __init__(self, prices: _Optional[_Iterable[_Union[Price, _Mapping]]] = ...) -> None: ...
+
+class PaymentServiceGetSubscriptionDiscountsRequest(_message.Message):
+    __slots__ = ("login",)
+    LOGIN_FIELD_NUMBER: _ClassVar[int]
+    login: str
+    def __init__(self, login: _Optional[str] = ...) -> None: ...
+
+class PaymentServiceGetSubscriptionDiscountsResponse(_message.Message):
+    __slots__ = ("discounts",)
+    DISCOUNTS_FIELD_NUMBER: _ClassVar[int]
+    discounts: _containers.RepeatedCompositeFieldContainer[Discount]
+    def __init__(self, discounts: _Optional[_Iterable[_Union[Discount, _Mapping]]] = ...) -> None: ...

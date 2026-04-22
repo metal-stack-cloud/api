@@ -22,6 +22,7 @@ class PaymentService(Protocol):
     async def GetSubscriptionUsage(self, req: api_dot_v1_dot_payment__pb2.PaymentServiceGetSubscriptionUsageRequest, ctx: ServiceContext) -> api_dot_v1_dot_payment__pb2.PaymentServiceGetSubscriptionUsageResponse: ...
     async def GetInvoices(self, req: api_dot_v1_dot_payment__pb2.PaymentServiceGetInvoicesRequest, ctx: ServiceContext) -> api_dot_v1_dot_payment__pb2.PaymentServiceGetInvoicesResponse: ...
     async def GetDefaultPrices(self, req: api_dot_v1_dot_payment__pb2.PaymentServiceGetDefaultPricesRequest, ctx: ServiceContext) -> api_dot_v1_dot_payment__pb2.PaymentServiceGetDefaultPricesResponse: ...
+    async def GetSubscriptionDiscounts(self, req: api_dot_v1_dot_payment__pb2.PaymentServiceGetSubscriptionDiscountsRequest, ctx: ServiceContext) -> api_dot_v1_dot_payment__pb2.PaymentServiceGetSubscriptionDiscountsResponse: ...
 
 
 class PaymentServiceServer(ConnecpyServer):
@@ -85,6 +86,14 @@ class PaymentServiceServer(ConnecpyServer):
                 output=api_dot_v1_dot_payment__pb2.PaymentServiceGetDefaultPricesResponse,
                 allowed_methods=("POST",),
             ),
+            "GetSubscriptionDiscounts": Endpoint[api_dot_v1_dot_payment__pb2.PaymentServiceGetSubscriptionDiscountsRequest, api_dot_v1_dot_payment__pb2.PaymentServiceGetSubscriptionDiscountsResponse](
+                service_name="PaymentService",
+                name="GetSubscriptionDiscounts",
+                function=getattr(service, "GetSubscriptionDiscounts"),
+                input=api_dot_v1_dot_payment__pb2.PaymentServiceGetSubscriptionDiscountsRequest,
+                output=api_dot_v1_dot_payment__pb2.PaymentServiceGetSubscriptionDiscountsResponse,
+                allowed_methods=("POST",),
+            ),
         }
 
     def serviceName(self):
@@ -99,6 +108,7 @@ class PaymentServiceSync(Protocol):
     def GetSubscriptionUsage(self, req: api_dot_v1_dot_payment__pb2.PaymentServiceGetSubscriptionUsageRequest, ctx: ServiceContext) -> api_dot_v1_dot_payment__pb2.PaymentServiceGetSubscriptionUsageResponse: ...
     def GetInvoices(self, req: api_dot_v1_dot_payment__pb2.PaymentServiceGetInvoicesRequest, ctx: ServiceContext) -> api_dot_v1_dot_payment__pb2.PaymentServiceGetInvoicesResponse: ...
     def GetDefaultPrices(self, req: api_dot_v1_dot_payment__pb2.PaymentServiceGetDefaultPricesRequest, ctx: ServiceContext) -> api_dot_v1_dot_payment__pb2.PaymentServiceGetDefaultPricesResponse: ...
+    def GetSubscriptionDiscounts(self, req: api_dot_v1_dot_payment__pb2.PaymentServiceGetSubscriptionDiscountsRequest, ctx: ServiceContext) -> api_dot_v1_dot_payment__pb2.PaymentServiceGetSubscriptionDiscountsResponse: ...
 
 
 class PaymentServiceServerSync(ConnecpyServer):
@@ -160,6 +170,14 @@ class PaymentServiceServerSync(ConnecpyServer):
                 function=getattr(service, "GetDefaultPrices"),
                 input=api_dot_v1_dot_payment__pb2.PaymentServiceGetDefaultPricesRequest,
                 output=api_dot_v1_dot_payment__pb2.PaymentServiceGetDefaultPricesResponse,
+                allowed_methods=("POST",),
+            ),
+            "GetSubscriptionDiscounts": Endpoint[api_dot_v1_dot_payment__pb2.PaymentServiceGetSubscriptionDiscountsRequest, api_dot_v1_dot_payment__pb2.PaymentServiceGetSubscriptionDiscountsResponse](
+                service_name="PaymentService",
+                name="GetSubscriptionDiscounts",
+                function=getattr(service, "GetSubscriptionDiscounts"),
+                input=api_dot_v1_dot_payment__pb2.PaymentServiceGetSubscriptionDiscountsRequest,
+                output=api_dot_v1_dot_payment__pb2.PaymentServiceGetSubscriptionDiscountsResponse,
                 allowed_methods=("POST",),
             ),
         }
@@ -291,6 +309,24 @@ class PaymentServiceClient(ConnecpyClient):
             ctx=ctx,
             request=request,
             response_class=api_dot_v1_dot_payment__pb2.PaymentServiceGetDefaultPricesResponse,
+            method=method,
+            **kwargs,
+        )
+
+    def GetSubscriptionDiscounts(
+        self,
+        request: api_dot_v1_dot_payment__pb2.PaymentServiceGetSubscriptionDiscountsRequest,
+        *,
+        ctx: Optional[ClientContext] = None,
+        server_path_prefix: str = "",
+        **kwargs,
+    ) -> api_dot_v1_dot_payment__pb2.PaymentServiceGetSubscriptionDiscountsResponse:
+        method = "POST"
+        return self._make_request(
+            url=f"{server_path_prefix}/api.v1.PaymentService/GetSubscriptionDiscounts",
+            ctx=ctx,
+            request=request,
+            response_class=api_dot_v1_dot_payment__pb2.PaymentServiceGetSubscriptionDiscountsResponse,
             method=method,
             **kwargs,
         )
@@ -432,6 +468,26 @@ class AsyncPaymentServiceClient(AsyncConnecpyClient):
             ctx=ctx,
             request=request,
             response_class=api_dot_v1_dot_payment__pb2.PaymentServiceGetDefaultPricesResponse,
+            method=method,
+            session=session,
+            **kwargs,
+        )
+
+    async def GetSubscriptionDiscounts(
+        self,
+        request: api_dot_v1_dot_payment__pb2.PaymentServiceGetSubscriptionDiscountsRequest,
+        *,
+        ctx: Optional[ClientContext] = None,
+        server_path_prefix: str = "",
+        session: Union[httpx.AsyncClient, None] = None,
+        **kwargs,
+    ) -> api_dot_v1_dot_payment__pb2.PaymentServiceGetSubscriptionDiscountsResponse:
+        method = "POST"
+        return await self._make_request(
+            url=f"{server_path_prefix}/api.v1.PaymentService/GetSubscriptionDiscounts",
+            ctx=ctx,
+            request=request,
+            response_class=api_dot_v1_dot_payment__pb2.PaymentServiceGetSubscriptionDiscountsResponse,
             method=method,
             session=session,
             **kwargs,
