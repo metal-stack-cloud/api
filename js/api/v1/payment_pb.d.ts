@@ -290,15 +290,15 @@ export type Discount = Message<"api.v1.Discount"> & {
     /**
      * DiscountId is the id of the discount
      *
-     * @generated from field: string discount_id = 1;
+     * @generated from field: string id = 1;
      */
-    discountId: string;
+    id: string;
     /**
      * DiscountName is the name of the discount
      *
-     * @generated from field: string discount_name = 2;
+     * @generated from field: string name = 2;
      */
-    discountName: string;
+    name: string;
     /**
      * The discounts amount in a given currency
      *

@@ -7019,7 +7019,7 @@
           "extensions": [],
           "fields": [
             {
-              "name": "discount_id",
+              "name": "id",
               "description": "DiscountId is the id of the discount",
               "label": "",
               "type": "string",
@@ -7031,7 +7031,7 @@
               "defaultValue": ""
             },
             {
-              "name": "discount_name",
+              "name": "name",
               "description": "DiscountName is the name of the discount",
               "label": "",
               "type": "string",

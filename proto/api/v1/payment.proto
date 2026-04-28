@@ -176,9 +176,9 @@ message SubscriptionUsageItem {
 // Discount details that can be applied to subscriptions or SubscriptionUsageItems
 message Discount {
   // DiscountId is the id of the discount
-  string discount_id = 1;
+  string id = 1;
   // DiscountName is the name of the discount
-  string discount_name = 2;
+  string name = 2;
   // The discounts amount in a given currency
   int64 amount_off = 3;
   // The discount amount in percent

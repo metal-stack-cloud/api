@@ -650,9 +650,9 @@ func (x *SubscriptionUsageItem) GetDiscounts() []*Discount {
 type Discount struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// DiscountId is the id of the discount
-	DiscountId string `protobuf:"bytes,1,opt,name=discount_id,json=discountId,proto3" json:"discount_id,omitempty"`
+	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 	// DiscountName is the name of the discount
-	DiscountName string `protobuf:"bytes,2,opt,name=discount_name,json=discountName,proto3" json:"discount_name,omitempty"`
+	Name string `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
 	// The discounts amount in a given currency
 	AmountOff int64 `protobuf:"varint,3,opt,name=amount_off,json=amountOff,proto3" json:"amount_off,omitempty"`
 	// The discount amount in percent
@@ -693,16 +693,16 @@ func (*Discount) Descriptor() ([]byte, []int) {
 	return file_api_v1_payment_proto_rawDescGZIP(), []int{5}
 }
 
-func (x *Discount) GetDiscountId() string {
+func (x *Discount) GetId() string {
 	if x != nil {
-		return x.DiscountId
+		return x.Id
 	}
 	return ""
 }
 
-func (x *Discount) GetDiscountName() string {
+func (x *Discount) GetName() string {
 	if x != nil {
-		return x.DiscountName
+		return x.Name
 	}
 	return ""
 }
@@ -1681,11 +1681,10 @@ const file_api_v1_payment_proto_rawDesc = "" +
 	"\fperiod_start\x18\x04 \x01(\v2\x1a.google.protobuf.TimestampR\vperiodStart\x129\n" +
 	"\n" +
 	"period_end\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampR\tperiodEnd\x12.\n" +
-	"\tdiscounts\x18\x06 \x03(\v2\x10.api.v1.DiscountR\tdiscounts\"\xbd\x01\n" +
-	"\bDiscount\x12\x1f\n" +
-	"\vdiscount_id\x18\x01 \x01(\tR\n" +
-	"discountId\x12#\n" +
-	"\rdiscount_name\x18\x02 \x01(\tR\fdiscountName\x12\x1d\n" +
+	"\tdiscounts\x18\x06 \x03(\v2\x10.api.v1.DiscountR\tdiscounts\"\x9b\x01\n" +
+	"\bDiscount\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
+	"\x04name\x18\x02 \x01(\tR\x04name\x12\x1d\n" +
 	"\n" +
 	"amount_off\x18\x03 \x01(\x03R\tamountOff\x12%\n" +
 	"\x0epercentage_off\x18\x04 \x01(\x01R\rpercentageOff\x12%\n" +

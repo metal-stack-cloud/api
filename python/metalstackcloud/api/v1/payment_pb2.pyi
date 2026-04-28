@@ -127,18 +127,18 @@ class SubscriptionUsageItem(_message.Message):
     def __init__(self, subscription_item_id: _Optional[str] = ..., subscription_item_name: _Optional[str] = ..., total_usage: _Optional[int] = ..., period_start: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., period_end: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., discounts: _Optional[_Iterable[_Union[Discount, _Mapping]]] = ...) -> None: ...
 
 class Discount(_message.Message):
-    __slots__ = ("discount_id", "discount_name", "amount_off", "percentage_off", "discount_order")
-    DISCOUNT_ID_FIELD_NUMBER: _ClassVar[int]
-    DISCOUNT_NAME_FIELD_NUMBER: _ClassVar[int]
+    __slots__ = ("id", "name", "amount_off", "percentage_off", "discount_order")
+    ID_FIELD_NUMBER: _ClassVar[int]
+    NAME_FIELD_NUMBER: _ClassVar[int]
     AMOUNT_OFF_FIELD_NUMBER: _ClassVar[int]
     PERCENTAGE_OFF_FIELD_NUMBER: _ClassVar[int]
     DISCOUNT_ORDER_FIELD_NUMBER: _ClassVar[int]
-    discount_id: str
-    discount_name: str
+    id: str
+    name: str
     amount_off: int
     percentage_off: float
     discount_order: float
-    def __init__(self, discount_id: _Optional[str] = ..., discount_name: _Optional[str] = ..., amount_off: _Optional[int] = ..., percentage_off: _Optional[float] = ..., discount_order: _Optional[float] = ...) -> None: ...
+    def __init__(self, id: _Optional[str] = ..., name: _Optional[str] = ..., amount_off: _Optional[int] = ..., percentage_off: _Optional[float] = ..., discount_order: _Optional[float] = ...) -> None: ...
 
 class Invoice(_message.Message):
     __slots__ = ("id", "pdf_download_url", "period_start", "period_end", "discounts")
