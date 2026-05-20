@@ -7137,18 +7137,6 @@
               "isoneof": false,
               "oneofdecl": "",
               "defaultValue": ""
-            },
-            {
-              "name": "discounts",
-              "description": "Invoice discounts",
-              "label": "repeated",
-              "type": "Discount",
-              "longType": "Discount",
-              "fullType": "api.v1.Discount",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
             }
           ]
         },

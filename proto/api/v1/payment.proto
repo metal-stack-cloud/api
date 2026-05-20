@@ -197,8 +197,6 @@ message Invoice {
   google.protobuf.Timestamp period_start = 4;
   // PeriodEnd is the end date of the time frame covered by this invoice
   google.protobuf.Timestamp period_end = 5;
-  // Invoice discounts
-  repeated Discount discounts = 6;
 }
 
 // PaymentServiceCreateOrUpdateCustomerRequest is the request payload for a payment create or update customer request

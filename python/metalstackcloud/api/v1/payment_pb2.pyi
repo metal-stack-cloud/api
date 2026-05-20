@@ -141,18 +141,16 @@ class Discount(_message.Message):
     def __init__(self, id: _Optional[str] = ..., name: _Optional[str] = ..., amount_off: _Optional[int] = ..., percentage_off: _Optional[float] = ..., discount_order: _Optional[float] = ...) -> None: ...
 
 class Invoice(_message.Message):
-    __slots__ = ("id", "pdf_download_url", "period_start", "period_end", "discounts")
+    __slots__ = ("id", "pdf_download_url", "period_start", "period_end")
     ID_FIELD_NUMBER: _ClassVar[int]
     PDF_DOWNLOAD_URL_FIELD_NUMBER: _ClassVar[int]
     PERIOD_START_FIELD_NUMBER: _ClassVar[int]
     PERIOD_END_FIELD_NUMBER: _ClassVar[int]
-    DISCOUNTS_FIELD_NUMBER: _ClassVar[int]
     id: str
     pdf_download_url: str
     period_start: _timestamp_pb2.Timestamp
     period_end: _timestamp_pb2.Timestamp
-    discounts: _containers.RepeatedCompositeFieldContainer[Discount]
-    def __init__(self, id: _Optional[str] = ..., pdf_download_url: _Optional[str] = ..., period_start: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., period_end: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., discounts: _Optional[_Iterable[_Union[Discount, _Mapping]]] = ...) -> None: ...
+    def __init__(self, id: _Optional[str] = ..., pdf_download_url: _Optional[str] = ..., period_start: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., period_end: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ...) -> None: ...
 
 class PaymentServiceCreateOrUpdateCustomerRequest(_message.Message):
     __slots__ = ("login", "name", "payment_method_id", "email", "card", "address", "vat", "phone_number")

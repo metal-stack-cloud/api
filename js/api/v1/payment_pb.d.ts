@@ -353,12 +353,6 @@ export type Invoice = Message<"api.v1.Invoice"> & {
      * @generated from field: google.protobuf.Timestamp period_end = 5;
      */
     periodEnd?: Timestamp;
-    /**
-     * Invoice discounts
-     *
-     * @generated from field: repeated api.v1.Discount discounts = 6;
-     */
-    discounts: Discount[];
 };
 /**
  * Describes the message api.v1.Invoice.
