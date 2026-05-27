@@ -18,81 +18,78 @@ jobs:
     name: Build
     runs-on: ubuntu-latest
     steps:
-    - name: Check out code
-      uses: actions/checkout@v6
+      - name: Check out code
+        uses: actions/checkout@v6
 
-    - name: Check spelling
-      uses: crate-ci/typos@master
+      - name: Check spelling
+        uses: crate-ci/typos@master
 
-    - name: Set up Go
-      uses: actions/setup-go@v6
-      with:
-        go-version-file: 'go.mod'
-        cache: false
+      - name: Set up Go
+        uses: actions/setup-go@v6
+        with:
+          go-version-file: 'go.mod'
+          cache: false
 
-    - name: build and push npm package
-      uses: oven-sh/setup-bun@v2
+      - name: build and push npm package
+        uses: oven-sh/setup-bun@v2
 
-    - name: Lint
-      uses: golangci/golangci-lint-action@v9
-      with:
-        args: --timeout=5m
+      - name: Lint
+        uses: golangci/golangci-lint-action@v9
+        with:
+          args: --timeout=5m
 
-    - name: Build
-      run: |
-        go install github.com/mikefarah/yq/v4@latest
-        make release
+      - name: Build
+        run: |
+          go install github.com/mikefarah/yq/v4@latest
+          make release
 
-    - run: |
-        cd js
-        bun install typescript
-        bun install
+      - run: |
+          cd js
+          bun install typescript
+          bun install
 
-    - uses: JS-DevTools/npm-publish@v3
-      with:
-        token: ${{ secrets.NPMJS_PUBLISH_TOKEN }}
-        access: public
-        package: package.json
-      if: github.event_name == 'release'
+      - name: Publish to npm
+        run: bunx npm@11.8.0 publish --provenance # workaround for bun not supporting trusted publishing of npm (https://github.com/oven-sh/bun/issues/15601)
+        if: github.event_name == 'release'
 
   python:
     name: Python
     runs-on: ubuntu-latest
     steps:
-    - name: Check out code
-      uses: actions/checkout@v6
+      - name: Check out code
+        uses: actions/checkout@v6
 
-    - name: Set up Python 3.13
-      uses: actions/setup-python@v5
-      with:
-        python-version: "3.13"
+      - name: Set up Python 3.13
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
 
-    - name: Make tag
-      run: |
-        [ "${GITHUB_EVENT_NAME}" == 'pull_request' ] && echo "tag=v0.${{ github.event.number }}a${{github.run_number}}" >> $GITHUB_ENV || true
-        [ "${GITHUB_EVENT_NAME}" == 'release' ] && echo "tag=${GITHUB_REF##*/}" >> $GITHUB_ENV || true
-        [ "${GITHUB_EVENT_NAME}" == 'push' ] && echo "tag=v0rc${{github.run_number}}" >> $GITHUB_ENV || true
+      - name: Make tag
+        run: |
+          [ "${GITHUB_EVENT_NAME}" == 'pull_request' ] && echo "tag=v0.${{ github.event.number }}a${{github.run_number}}" >> $GITHUB_ENV || true
+          [ "${GITHUB_EVENT_NAME}" == 'release' ] && echo "tag=${GITHUB_REF##*/}" >> $GITHUB_ENV || true
+          [ "${GITHUB_EVENT_NAME}" == 'push' ] && echo "tag=v0rc${{github.run_number}}" >> $GITHUB_ENV || true
 
-    - name: Package
-      run: |
-        cd python
-        python -m pip install setuptools wheel
-        python setup.py sdist bdist_wheel
-      env:
-        VERSION: ${{ env.tag }}
+      - name: Package
+        run: |
+          cd python
+          python -m pip install setuptools wheel
+          python setup.py sdist bdist_wheel
+        env:
+          VERSION: ${{ env.tag }}
 
-    - name: Publish to Test PyPI
-      uses: pypa/gh-action-pypi-publish@release/v1
-      with:
-        password: ${{ secrets.test_pypi_password }}
-        repository-url: https://test.pypi.org/legacy/
-        skip-existing: true
-        packages-dir: python/dist
-      if: ${{ github.event_name != 'release' }}
+      - name: Publish to Test PyPI
+        uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          password: ${{ secrets.test_pypi_password }}
+          repository-url: https://test.pypi.org/legacy/
+          skip-existing: true
+          packages-dir: python/dist
+        if: ${{ github.event_name != 'release' }}
 
-    - name: Publish to PyPI
-      uses: pypa/gh-action-pypi-publish@release/v1
-      with:
-        password: ${{ secrets.pypi_password }}
-        packages-dir: python/dist
-      if: ${{ github.event_name == 'release' }}
+      - name: Publish to PyPI
+        uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          password: ${{ secrets.pypi_password }}
+          packages-dir: python/dist
+        if: ${{ github.event_name == 'release' }}
