@@ -54,6 +54,9 @@ const (
 	// PaymentServiceGetDefaultPricesProcedure is the fully-qualified name of the PaymentService's
 	// GetDefaultPrices RPC.
 	PaymentServiceGetDefaultPricesProcedure = "/api.v1.PaymentService/GetDefaultPrices"
+	// PaymentServiceGetSubscriptionDiscountsProcedure is the fully-qualified name of the
+	// PaymentService's GetSubscriptionDiscounts RPC.
+	PaymentServiceGetSubscriptionDiscountsProcedure = "/api.v1.PaymentService/GetSubscriptionDiscounts"
 )
 
 // PaymentServiceClient is a client for the api.v1.PaymentService service.
@@ -72,6 +75,8 @@ type PaymentServiceClient interface {
 	GetInvoices(context.Context, *connect.Request[v1.PaymentServiceGetInvoicesRequest]) (*connect.Response[v1.PaymentServiceGetInvoicesResponse], error)
 	// GetDefaultPrices of the products on the platform
 	GetDefaultPrices(context.Context, *connect.Request[v1.PaymentServiceGetDefaultPricesRequest]) (*connect.Response[v1.PaymentServiceGetDefaultPricesResponse], error)
+	// GetSubscriptionDiscounts gets all discounts for a subscription
+	GetSubscriptionDiscounts(context.Context, *connect.Request[v1.PaymentServiceGetSubscriptionDiscountsRequest]) (*connect.Response[v1.PaymentServiceGetSubscriptionDiscountsResponse], error)
 }
 
 // NewPaymentServiceClient constructs a client for the api.v1.PaymentService service. By default, it
@@ -127,18 +132,25 @@ func NewPaymentServiceClient(httpClient connect.HTTPClient, baseURL string, opts
 			connect.WithSchema(paymentServiceMethods.ByName("GetDefaultPrices")),
 			connect.WithClientOptions(opts...),
 		),
+		getSubscriptionDiscounts: connect.NewClient[v1.PaymentServiceGetSubscriptionDiscountsRequest, v1.PaymentServiceGetSubscriptionDiscountsResponse](
+			httpClient,
+			baseURL+PaymentServiceGetSubscriptionDiscountsProcedure,
+			connect.WithSchema(paymentServiceMethods.ByName("GetSubscriptionDiscounts")),
+			connect.WithClientOptions(opts...),
+		),
 	}
 }
 
 // paymentServiceClient implements PaymentServiceClient.
 type paymentServiceClient struct {
-	createOrUpdateCustomer *connect.Client[v1.PaymentServiceCreateOrUpdateCustomerRequest, v1.PaymentServiceCreateOrUpdateCustomerResponse]
-	getCustomer            *connect.Client[v1.PaymentServiceGetCustomerRequest, v1.PaymentServiceGetCustomerResponse]
-	hasPaymentMethod       *connect.Client[v1.PaymentServiceHasPaymentMethodRequest, v1.PaymentServiceHasPaymentMethodResponse]
-	deletePaymentMethod    *connect.Client[v1.PaymentServiceDeletePaymentMethodRequest, v1.PaymentServiceDeletePaymentMethodResponse]
-	getSubscriptionUsage   *connect.Client[v1.PaymentServiceGetSubscriptionUsageRequest, v1.PaymentServiceGetSubscriptionUsageResponse]
-	getInvoices            *connect.Client[v1.PaymentServiceGetInvoicesRequest, v1.PaymentServiceGetInvoicesResponse]
-	getDefaultPrices       *connect.Client[v1.PaymentServiceGetDefaultPricesRequest, v1.PaymentServiceGetDefaultPricesResponse]
+	createOrUpdateCustomer   *connect.Client[v1.PaymentServiceCreateOrUpdateCustomerRequest, v1.PaymentServiceCreateOrUpdateCustomerResponse]
+	getCustomer              *connect.Client[v1.PaymentServiceGetCustomerRequest, v1.PaymentServiceGetCustomerResponse]
+	hasPaymentMethod         *connect.Client[v1.PaymentServiceHasPaymentMethodRequest, v1.PaymentServiceHasPaymentMethodResponse]
+	deletePaymentMethod      *connect.Client[v1.PaymentServiceDeletePaymentMethodRequest, v1.PaymentServiceDeletePaymentMethodResponse]
+	getSubscriptionUsage     *connect.Client[v1.PaymentServiceGetSubscriptionUsageRequest, v1.PaymentServiceGetSubscriptionUsageResponse]
+	getInvoices              *connect.Client[v1.PaymentServiceGetInvoicesRequest, v1.PaymentServiceGetInvoicesResponse]
+	getDefaultPrices         *connect.Client[v1.PaymentServiceGetDefaultPricesRequest, v1.PaymentServiceGetDefaultPricesResponse]
+	getSubscriptionDiscounts *connect.Client[v1.PaymentServiceGetSubscriptionDiscountsRequest, v1.PaymentServiceGetSubscriptionDiscountsResponse]
 }
 
 // CreateOrUpdateCustomer calls api.v1.PaymentService.CreateOrUpdateCustomer.
@@ -176,6 +188,11 @@ func (c *paymentServiceClient) GetDefaultPrices(ctx context.Context, req *connec
 	return c.getDefaultPrices.CallUnary(ctx, req)
 }
 
+// GetSubscriptionDiscounts calls api.v1.PaymentService.GetSubscriptionDiscounts.
+func (c *paymentServiceClient) GetSubscriptionDiscounts(ctx context.Context, req *connect.Request[v1.PaymentServiceGetSubscriptionDiscountsRequest]) (*connect.Response[v1.PaymentServiceGetSubscriptionDiscountsResponse], error) {
+	return c.getSubscriptionDiscounts.CallUnary(ctx, req)
+}
+
 // PaymentServiceHandler is an implementation of the api.v1.PaymentService service.
 type PaymentServiceHandler interface {
 	// CreateOrUpdateCustomer the payment data on the payment processor
@@ -192,6 +209,8 @@ type PaymentServiceHandler interface {
 	GetInvoices(context.Context, *connect.Request[v1.PaymentServiceGetInvoicesRequest]) (*connect.Response[v1.PaymentServiceGetInvoicesResponse], error)
 	// GetDefaultPrices of the products on the platform
 	GetDefaultPrices(context.Context, *connect.Request[v1.PaymentServiceGetDefaultPricesRequest]) (*connect.Response[v1.PaymentServiceGetDefaultPricesResponse], error)
+	// GetSubscriptionDiscounts gets all discounts for a subscription
+	GetSubscriptionDiscounts(context.Context, *connect.Request[v1.PaymentServiceGetSubscriptionDiscountsRequest]) (*connect.Response[v1.PaymentServiceGetSubscriptionDiscountsResponse], error)
 }
 
 // NewPaymentServiceHandler builds an HTTP handler from the service implementation. It returns the
@@ -243,6 +262,12 @@ func NewPaymentServiceHandler(svc PaymentServiceHandler, opts ...connect.Handler
 		connect.WithSchema(paymentServiceMethods.ByName("GetDefaultPrices")),
 		connect.WithHandlerOptions(opts...),
 	)
+	paymentServiceGetSubscriptionDiscountsHandler := connect.NewUnaryHandler(
+		PaymentServiceGetSubscriptionDiscountsProcedure,
+		svc.GetSubscriptionDiscounts,
+		connect.WithSchema(paymentServiceMethods.ByName("GetSubscriptionDiscounts")),
+		connect.WithHandlerOptions(opts...),
+	)
 	return "/api.v1.PaymentService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
 		case PaymentServiceCreateOrUpdateCustomerProcedure:
@@ -259,6 +284,8 @@ func NewPaymentServiceHandler(svc PaymentServiceHandler, opts ...connect.Handler
 			paymentServiceGetInvoicesHandler.ServeHTTP(w, r)
 		case PaymentServiceGetDefaultPricesProcedure:
 			paymentServiceGetDefaultPricesHandler.ServeHTTP(w, r)
+		case PaymentServiceGetSubscriptionDiscountsProcedure:
+			paymentServiceGetSubscriptionDiscountsHandler.ServeHTTP(w, r)
 		default:
 			http.NotFound(w, r)
 		}
@@ -294,4 +321,8 @@ func (UnimplementedPaymentServiceHandler) GetInvoices(context.Context, *connect.
 
 func (UnimplementedPaymentServiceHandler) GetDefaultPrices(context.Context, *connect.Request[v1.PaymentServiceGetDefaultPricesRequest]) (*connect.Response[v1.PaymentServiceGetDefaultPricesResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("api.v1.PaymentService.GetDefaultPrices is not implemented"))
+}
+
+func (UnimplementedPaymentServiceHandler) GetSubscriptionDiscounts(context.Context, *connect.Request[v1.PaymentServiceGetSubscriptionDiscountsRequest]) (*connect.Response[v1.PaymentServiceGetSubscriptionDiscountsResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("api.v1.PaymentService.GetSubscriptionDiscounts is not implemented"))
 }

@@ -44,6 +44,11 @@ service PaymentService {
     option (visibility) = VISIBILITY_PUBLIC;
     option (auditing) = AUDITING_EXCLUDED;
   }
+  // GetSubscriptionDiscounts gets all discounts for a subscription
+  rpc GetSubscriptionDiscounts(PaymentServiceGetSubscriptionDiscountsRequest) returns (PaymentServiceGetSubscriptionDiscountsResponse) {
+    option (tenant_roles) = TENANT_ROLE_OWNER;
+    option (auditing) = AUDITING_EXCLUDED;
+  }
 }
 
 // PaymentCustomer is a customer at the payment processor
@@ -164,6 +169,22 @@ message SubscriptionUsageItem {
   google.protobuf.Timestamp period_start = 4;
   // PeriodEnd is the end date of this subscription
   google.protobuf.Timestamp period_end = 5;
+  // A subscription discounts
+  repeated Discount discounts = 6;
+}
+
+// Discount details that can be applied to subscriptions or SubscriptionUsageItems
+message Discount {
+  // DiscountId is the id of the discount
+  string id = 1;
+  // DiscountName is the name of the discount
+  string name = 2;
+  // The discounts amount in a given currency
+  int64 amount_off = 3;
+  // The discount amount in percent
+  double percentage_off = 4;
+  // Order the discounts need to be applied in
+  double discount_order = 5;
 }
 
 // Invoice a customer has to pay for subscription usage
@@ -301,4 +322,19 @@ message PaymentServiceGetDefaultPricesRequest {}
 message PaymentServiceGetDefaultPricesResponse {
   // Prices is the list of default prices
   repeated Price prices = 1;
+}
+
+// PaymentServiceGetSubscriptionDiscountsRequest is the request payload for a get subscription discounts request
+message PaymentServiceGetSubscriptionDiscountsRequest {
+  // Login of the customer
+  string login = 1 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
+  }];
+}
+
+// PaymentServiceGetSubscriptionUsageResponse is the response payload for a get subscription usage request
+message PaymentServiceGetSubscriptionDiscountsResponse {
+  // Discounts is a list with all discounts for one subscription
+  repeated Discount discounts = 1;
 }

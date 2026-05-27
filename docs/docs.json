@@ -7009,6 +7009,78 @@
           ]
         },
         {
+          "name": "Discount",
+          "longName": "Discount",
+          "fullName": "api.v1.Discount",
+          "description": "Discount details that can be applied to subscriptions or SubscriptionUsageItems",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "id",
+              "description": "DiscountId is the id of the discount",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "name",
+              "description": "DiscountName is the name of the discount",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "amount_off",
+              "description": "The discounts amount in a given currency",
+              "label": "",
+              "type": "int64",
+              "longType": "int64",
+              "fullType": "int64",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "percentage_off",
+              "description": "The discount amount in percent",
+              "label": "",
+              "type": "double",
+              "longType": "double",
+              "fullType": "double",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "discount_order",
+              "description": "Order the discounts need to be applied in",
+              "label": "",
+              "type": "double",
+              "longType": "double",
+              "fullType": "double",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
           "name": "Invoice",
           "longName": "Invoice",
           "fullName": "api.v1.Invoice",
@@ -7547,6 +7619,54 @@
           ]
         },
         {
+          "name": "PaymentServiceGetSubscriptionDiscountsRequest",
+          "longName": "PaymentServiceGetSubscriptionDiscountsRequest",
+          "fullName": "api.v1.PaymentServiceGetSubscriptionDiscountsRequest",
+          "description": "PaymentServiceGetSubscriptionDiscountsRequest is the request payload for a get subscription discounts request",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "login",
+              "description": "Login of the customer",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "PaymentServiceGetSubscriptionDiscountsResponse",
+          "longName": "PaymentServiceGetSubscriptionDiscountsResponse",
+          "fullName": "api.v1.PaymentServiceGetSubscriptionDiscountsResponse",
+          "description": "PaymentServiceGetSubscriptionUsageResponse is the response payload for a get subscription usage request",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "discounts",
+              "description": "Discounts is a list with all discounts for one subscription",
+              "label": "repeated",
+              "type": "Discount",
+              "longType": "Discount",
+              "fullType": "api.v1.Discount",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
           "name": "PaymentServiceGetSubscriptionUsageRequest",
           "longName": "PaymentServiceGetSubscriptionUsageRequest",
           "fullName": "api.v1.PaymentServiceGetSubscriptionUsageRequest",
@@ -7819,6 +7939,18 @@
               "isoneof": false,
               "oneofdecl": "",
               "defaultValue": ""
+            },
+            {
+              "name": "discounts",
+              "description": "A subscription discounts",
+              "label": "repeated",
+              "type": "Discount",
+              "longType": "Discount",
+              "fullType": "api.v1.Discount",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
             }
           ]
         }
@@ -7912,6 +8044,18 @@
               "responseType": "PaymentServiceGetDefaultPricesResponse",
               "responseLongType": "PaymentServiceGetDefaultPricesResponse",
               "responseFullType": "api.v1.PaymentServiceGetDefaultPricesResponse",
+              "responseStreaming": false
+            },
+            {
+              "name": "GetSubscriptionDiscounts",
+              "description": "GetSubscriptionDiscounts gets all discounts for a subscription",
+              "requestType": "PaymentServiceGetSubscriptionDiscountsRequest",
+              "requestLongType": "PaymentServiceGetSubscriptionDiscountsRequest",
+              "requestFullType": "api.v1.PaymentServiceGetSubscriptionDiscountsRequest",
+              "requestStreaming": false,
+              "responseType": "PaymentServiceGetSubscriptionDiscountsResponse",
+              "responseLongType": "PaymentServiceGetSubscriptionDiscountsResponse",
+              "responseFullType": "api.v1.PaymentServiceGetSubscriptionDiscountsResponse",
               "responseStreaming": false
             }
           ]
