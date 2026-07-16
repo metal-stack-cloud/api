@@ -171,6 +171,8 @@ message SubscriptionUsageItem {
   google.protobuf.Timestamp period_end = 5;
   // A subscription discounts
   repeated Discount discounts = 6;
+  // Product id of the subscription item
+  string product_item_id = 7;
 }
 
 // Discount details that can be applied to subscriptions or SubscriptionUsageItems
@@ -185,6 +187,8 @@ message Discount {
   double percentage_off = 4;
   // Order the discounts need to be applied in
   double discount_order = 5;
+  // ProductIds this discount applies to
+  repeated string applies_to = 6;
 }
 
 // Invoice a customer has to pay for subscription usage
