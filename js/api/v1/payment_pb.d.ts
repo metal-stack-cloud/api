@@ -275,6 +275,12 @@ export type SubscriptionUsageItem = Message<"api.v1.SubscriptionUsageItem"> & {
      * @generated from field: repeated api.v1.Discount discounts = 6;
      */
     discounts: Discount[];
+    /**
+     * Product id of the subscription item
+     *
+     * @generated from field: string product_item_id = 7;
+     */
+    productItemId: string;
 };
 /**
  * Describes the message api.v1.SubscriptionUsageItem.
@@ -317,6 +323,12 @@ export type Discount = Message<"api.v1.Discount"> & {
      * @generated from field: double discount_order = 5;
      */
     discountOrder: number;
+    /**
+     * ProductIds this discount applies to
+     *
+     * @generated from field: repeated string applies_to = 6;
+     */
+    appliesTo: string[];
 };
 /**
  * Describes the message api.v1.Discount.
