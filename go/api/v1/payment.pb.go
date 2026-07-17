@@ -569,7 +569,9 @@ type SubscriptionUsageItem struct {
 	// PeriodEnd is the end date of this subscription
 	PeriodEnd *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=period_end,json=periodEnd,proto3" json:"period_end,omitempty"`
 	// A subscription discounts
-	Discounts     []*Discount `protobuf:"bytes,6,rep,name=discounts,proto3" json:"discounts,omitempty"`
+	Discounts []*Discount `protobuf:"bytes,6,rep,name=discounts,proto3" json:"discounts,omitempty"`
+	// Product id of the subscription item
+	ProductItemId string `protobuf:"bytes,7,opt,name=product_item_id,json=productItemId,proto3" json:"product_item_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -646,6 +648,13 @@ func (x *SubscriptionUsageItem) GetDiscounts() []*Discount {
 	return nil
 }
 
+func (x *SubscriptionUsageItem) GetProductItemId() string {
+	if x != nil {
+		return x.ProductItemId
+	}
+	return ""
+}
+
 // Discount details that can be applied to subscriptions or SubscriptionUsageItems
 type Discount struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
@@ -659,6 +668,8 @@ type Discount struct {
 	PercentageOff float64 `protobuf:"fixed64,4,opt,name=percentage_off,json=percentageOff,proto3" json:"percentage_off,omitempty"`
 	// Order the discounts need to be applied in
 	DiscountOrder float64 `protobuf:"fixed64,5,opt,name=discount_order,json=discountOrder,proto3" json:"discount_order,omitempty"`
+	// ProductIds this discount applies to
+	AppliesTo     []string `protobuf:"bytes,6,rep,name=applies_to,json=appliesTo,proto3" json:"applies_to,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -726,6 +737,13 @@ func (x *Discount) GetDiscountOrder() float64 {
 		return x.DiscountOrder
 	}
 	return 0
+}
+
+func (x *Discount) GetAppliesTo() []string {
+	if x != nil {
+		return x.AppliesTo
+	}
+	return nil
 }
 
 // Invoice a customer has to pay for subscription usage
@@ -1663,7 +1681,7 @@ const file_api_v1_payment_proto_rawDesc = "" +
 	"postalCode\x12\x12\n" +
 	"\x04city\x18\x04 \x01(\tR\x04city\x12\x14\n" +
 	"\x05state\x18\x05 \x01(\tR\x05state\x12\x18\n" +
-	"\acountry\x18\x06 \x01(\tR\acountry\"\xca\x02\n" +
+	"\acountry\x18\x06 \x01(\tR\acountry\"\xf2\x02\n" +
 	"\x15SubscriptionUsageItem\x120\n" +
 	"\x14subscription_item_id\x18\x01 \x01(\tR\x12subscriptionItemId\x124\n" +
 	"\x16subscription_item_name\x18\x02 \x01(\tR\x14subscriptionItemName\x12\x1f\n" +
@@ -1672,14 +1690,17 @@ const file_api_v1_payment_proto_rawDesc = "" +
 	"\fperiod_start\x18\x04 \x01(\v2\x1a.google.protobuf.TimestampR\vperiodStart\x129\n" +
 	"\n" +
 	"period_end\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampR\tperiodEnd\x12.\n" +
-	"\tdiscounts\x18\x06 \x03(\v2\x10.api.v1.DiscountR\tdiscounts\"\x9b\x01\n" +
+	"\tdiscounts\x18\x06 \x03(\v2\x10.api.v1.DiscountR\tdiscounts\x12&\n" +
+	"\x0fproduct_item_id\x18\a \x01(\tR\rproductItemId\"\xba\x01\n" +
 	"\bDiscount\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x1d\n" +
 	"\n" +
 	"amount_off\x18\x03 \x01(\x03R\tamountOff\x12%\n" +
 	"\x0epercentage_off\x18\x04 \x01(\x01R\rpercentageOff\x12%\n" +
-	"\x0ediscount_order\x18\x05 \x01(\x01R\rdiscountOrder\"\xbd\x01\n" +
+	"\x0ediscount_order\x18\x05 \x01(\x01R\rdiscountOrder\x12\x1d\n" +
+	"\n" +
+	"applies_to\x18\x06 \x03(\tR\tappliesTo\"\xbd\x01\n" +
 	"\aInvoice\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12(\n" +
 	"\x10pdf_download_url\x18\x02 \x01(\tR\x0epdfDownloadUrl\x12=\n" +
