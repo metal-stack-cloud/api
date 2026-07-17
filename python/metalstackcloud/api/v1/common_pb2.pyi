@@ -12,6 +12,7 @@ class OAuthProvider(int, metaclass=_enum_type_wrapper.EnumTypeWrapper):
     O_AUTH_PROVIDER_GITHUB: _ClassVar[OAuthProvider]
     O_AUTH_PROVIDER_AZURE: _ClassVar[OAuthProvider]
     O_AUTH_PROVIDER_GOOGLE: _ClassVar[OAuthProvider]
+    O_AUTH_PROVIDER_OIDC: _ClassVar[OAuthProvider]
 
 class TenantRole(int, metaclass=_enum_type_wrapper.EnumTypeWrapper):
     __slots__ = ()
@@ -55,6 +56,7 @@ O_AUTH_PROVIDER_UNSPECIFIED: OAuthProvider
 O_AUTH_PROVIDER_GITHUB: OAuthProvider
 O_AUTH_PROVIDER_AZURE: OAuthProvider
 O_AUTH_PROVIDER_GOOGLE: OAuthProvider
+O_AUTH_PROVIDER_OIDC: OAuthProvider
 TENANT_ROLE_UNSPECIFIED: TenantRole
 TENANT_ROLE_OWNER: TenantRole
 TENANT_ROLE_EDITOR: TenantRole

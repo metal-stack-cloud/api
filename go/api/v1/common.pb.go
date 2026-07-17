@@ -34,6 +34,8 @@ const (
 	OAuthProvider_O_AUTH_PROVIDER_AZURE OAuthProvider = 2
 	// O_AUTH_PROVIDER_GOOGLE specifies google as oauth login provider
 	OAuthProvider_O_AUTH_PROVIDER_GOOGLE OAuthProvider = 3
+	// O_AUTH_PROVIDER_OIDC specifies a generic OIDC as oauth login provider
+	OAuthProvider_O_AUTH_PROVIDER_OIDC OAuthProvider = 4
 )
 
 // Enum value maps for OAuthProvider.
@@ -43,12 +45,14 @@ var (
 		1: "O_AUTH_PROVIDER_GITHUB",
 		2: "O_AUTH_PROVIDER_AZURE",
 		3: "O_AUTH_PROVIDER_GOOGLE",
+		4: "O_AUTH_PROVIDER_OIDC",
 	}
 	OAuthProvider_value = map[string]int32{
 		"O_AUTH_PROVIDER_UNSPECIFIED": 0,
 		"O_AUTH_PROVIDER_GITHUB":      1,
 		"O_AUTH_PROVIDER_AZURE":       2,
 		"O_AUTH_PROVIDER_GOOGLE":      3,
+		"O_AUTH_PROVIDER_OIDC":        4,
 	}
 )
 
@@ -557,12 +561,13 @@ const file_api_v1_common_proto_rawDesc = "" +
 	"\x04page\x18\x01 \x01(\x04H\x00R\x04page\x88\x01\x01\x12\x19\n" +
 	"\x05count\x18\x02 \x01(\x04H\x01R\x05count\x88\x01\x01B\a\n" +
 	"\x05_pageB\b\n" +
-	"\x06_count*\x83\x01\n" +
+	"\x06_count*\x9d\x01\n" +
 	"\rOAuthProvider\x12\x1f\n" +
 	"\x1bO_AUTH_PROVIDER_UNSPECIFIED\x10\x00\x12\x1a\n" +
 	"\x16O_AUTH_PROVIDER_GITHUB\x10\x01\x12\x19\n" +
 	"\x15O_AUTH_PROVIDER_AZURE\x10\x02\x12\x1a\n" +
-	"\x16O_AUTH_PROVIDER_GOOGLE\x10\x03*\x87\x01\n" +
+	"\x16O_AUTH_PROVIDER_GOOGLE\x10\x03\x12\x18\n" +
+	"\x14O_AUTH_PROVIDER_OIDC\x10\x04*\x87\x01\n" +
 	"\n" +
 	"TenantRole\x12\x1b\n" +
 	"\x17TENANT_ROLE_UNSPECIFIED\x10\x00\x12\x15\n" +
