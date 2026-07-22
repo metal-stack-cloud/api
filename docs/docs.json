@@ -103,6 +103,11 @@
               "name": "O_AUTH_PROVIDER_GOOGLE",
               "number": "3",
               "description": "O_AUTH_PROVIDER_GOOGLE specifies google as oauth login provider"
+            },
+            {
+              "name": "O_AUTH_PROVIDER_OIDC",
+              "number": "4",
+              "description": "O_AUTH_PROVIDER_OIDC specifies a generic OIDC as oauth login provider"
             }
           ]
         },

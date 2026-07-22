@@ -59,7 +59,13 @@ export declare enum OAuthProvider {
      *
      * @generated from enum value: O_AUTH_PROVIDER_GOOGLE = 3;
      */
-    GOOGLE = 3
+    GOOGLE = 3,
+    /**
+     * O_AUTH_PROVIDER_OIDC specifies a generic OIDC as oauth login provider
+     *
+     * @generated from enum value: O_AUTH_PROVIDER_OIDC = 4;
+     */
+    OIDC = 4
 }
 /**
  * Describes the enum api.v1.OAuthProvider.
