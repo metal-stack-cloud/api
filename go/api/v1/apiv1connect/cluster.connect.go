@@ -51,6 +51,9 @@ const (
 	ClusterServiceGetCredentialsProcedure = "/api.v1.ClusterService/GetCredentials"
 	// ClusterServiceOperateProcedure is the fully-qualified name of the ClusterService's Operate RPC.
 	ClusterServiceOperateProcedure = "/api.v1.ClusterService/Operate"
+	// ClusterServiceGetMonitoringCredentialsProcedure is the fully-qualified name of the
+	// ClusterService's GetMonitoringCredentials RPC.
+	ClusterServiceGetMonitoringCredentialsProcedure = "/api.v1.ClusterService/GetMonitoringCredentials"
 )
 
 // ClusterServiceClient is a client for the api.v1.ClusterService service.
@@ -71,6 +74,8 @@ type ClusterServiceClient interface {
 	GetCredentials(context.Context, *connect.Request[v1.ClusterServiceGetCredentialsRequest]) (*connect.Response[v1.ClusterServiceGetCredentialsResponse], error)
 	// Operate on a cluster
 	Operate(context.Context, *connect.Request[v1.ClusterServiceOperateRequest]) (*connect.Response[v1.ClusterServiceOperateResponse], error)
+	// GetMonitoringCredentials returns monitoring credentials for a cluster
+	GetMonitoringCredentials(context.Context, *connect.Request[v1.ClusterServiceGetMonitoringCredentialsRequest]) (*connect.Response[v1.ClusterServiceGetMonitoringCredentialsResponse], error)
 }
 
 // NewClusterServiceClient constructs a client for the api.v1.ClusterService service. By default, it
@@ -132,19 +137,26 @@ func NewClusterServiceClient(httpClient connect.HTTPClient, baseURL string, opts
 			connect.WithSchema(clusterServiceMethods.ByName("Operate")),
 			connect.WithClientOptions(opts...),
 		),
+		getMonitoringCredentials: connect.NewClient[v1.ClusterServiceGetMonitoringCredentialsRequest, v1.ClusterServiceGetMonitoringCredentialsResponse](
+			httpClient,
+			baseURL+ClusterServiceGetMonitoringCredentialsProcedure,
+			connect.WithSchema(clusterServiceMethods.ByName("GetMonitoringCredentials")),
+			connect.WithClientOptions(opts...),
+		),
 	}
 }
 
 // clusterServiceClient implements ClusterServiceClient.
 type clusterServiceClient struct {
-	create         *connect.Client[v1.ClusterServiceCreateRequest, v1.ClusterServiceCreateResponse]
-	get            *connect.Client[v1.ClusterServiceGetRequest, v1.ClusterServiceGetResponse]
-	list           *connect.Client[v1.ClusterServiceListRequest, v1.ClusterServiceListResponse]
-	watchStatus    *connect.Client[v1.ClusterServiceWatchStatusRequest, v1.ClusterServiceWatchStatusResponse]
-	delete         *connect.Client[v1.ClusterServiceDeleteRequest, v1.ClusterServiceDeleteResponse]
-	update         *connect.Client[v1.ClusterServiceUpdateRequest, v1.ClusterServiceUpdateResponse]
-	getCredentials *connect.Client[v1.ClusterServiceGetCredentialsRequest, v1.ClusterServiceGetCredentialsResponse]
-	operate        *connect.Client[v1.ClusterServiceOperateRequest, v1.ClusterServiceOperateResponse]
+	create                   *connect.Client[v1.ClusterServiceCreateRequest, v1.ClusterServiceCreateResponse]
+	get                      *connect.Client[v1.ClusterServiceGetRequest, v1.ClusterServiceGetResponse]
+	list                     *connect.Client[v1.ClusterServiceListRequest, v1.ClusterServiceListResponse]
+	watchStatus              *connect.Client[v1.ClusterServiceWatchStatusRequest, v1.ClusterServiceWatchStatusResponse]
+	delete                   *connect.Client[v1.ClusterServiceDeleteRequest, v1.ClusterServiceDeleteResponse]
+	update                   *connect.Client[v1.ClusterServiceUpdateRequest, v1.ClusterServiceUpdateResponse]
+	getCredentials           *connect.Client[v1.ClusterServiceGetCredentialsRequest, v1.ClusterServiceGetCredentialsResponse]
+	operate                  *connect.Client[v1.ClusterServiceOperateRequest, v1.ClusterServiceOperateResponse]
+	getMonitoringCredentials *connect.Client[v1.ClusterServiceGetMonitoringCredentialsRequest, v1.ClusterServiceGetMonitoringCredentialsResponse]
 }
 
 // Create calls api.v1.ClusterService.Create.
@@ -187,6 +199,11 @@ func (c *clusterServiceClient) Operate(ctx context.Context, req *connect.Request
 	return c.operate.CallUnary(ctx, req)
 }
 
+// GetMonitoringCredentials calls api.v1.ClusterService.GetMonitoringCredentials.
+func (c *clusterServiceClient) GetMonitoringCredentials(ctx context.Context, req *connect.Request[v1.ClusterServiceGetMonitoringCredentialsRequest]) (*connect.Response[v1.ClusterServiceGetMonitoringCredentialsResponse], error) {
+	return c.getMonitoringCredentials.CallUnary(ctx, req)
+}
+
 // ClusterServiceHandler is an implementation of the api.v1.ClusterService service.
 type ClusterServiceHandler interface {
 	// Create a cluster
@@ -205,6 +222,8 @@ type ClusterServiceHandler interface {
 	GetCredentials(context.Context, *connect.Request[v1.ClusterServiceGetCredentialsRequest]) (*connect.Response[v1.ClusterServiceGetCredentialsResponse], error)
 	// Operate on a cluster
 	Operate(context.Context, *connect.Request[v1.ClusterServiceOperateRequest]) (*connect.Response[v1.ClusterServiceOperateResponse], error)
+	// GetMonitoringCredentials returns monitoring credentials for a cluster
+	GetMonitoringCredentials(context.Context, *connect.Request[v1.ClusterServiceGetMonitoringCredentialsRequest]) (*connect.Response[v1.ClusterServiceGetMonitoringCredentialsResponse], error)
 }
 
 // NewClusterServiceHandler builds an HTTP handler from the service implementation. It returns the
@@ -262,6 +281,12 @@ func NewClusterServiceHandler(svc ClusterServiceHandler, opts ...connect.Handler
 		connect.WithSchema(clusterServiceMethods.ByName("Operate")),
 		connect.WithHandlerOptions(opts...),
 	)
+	clusterServiceGetMonitoringCredentialsHandler := connect.NewUnaryHandler(
+		ClusterServiceGetMonitoringCredentialsProcedure,
+		svc.GetMonitoringCredentials,
+		connect.WithSchema(clusterServiceMethods.ByName("GetMonitoringCredentials")),
+		connect.WithHandlerOptions(opts...),
+	)
 	return "/api.v1.ClusterService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
 		case ClusterServiceCreateProcedure:
@@ -280,6 +305,8 @@ func NewClusterServiceHandler(svc ClusterServiceHandler, opts ...connect.Handler
 			clusterServiceGetCredentialsHandler.ServeHTTP(w, r)
 		case ClusterServiceOperateProcedure:
 			clusterServiceOperateHandler.ServeHTTP(w, r)
+		case ClusterServiceGetMonitoringCredentialsProcedure:
+			clusterServiceGetMonitoringCredentialsHandler.ServeHTTP(w, r)
 		default:
 			http.NotFound(w, r)
 		}
@@ -319,4 +346,8 @@ func (UnimplementedClusterServiceHandler) GetCredentials(context.Context, *conne
 
 func (UnimplementedClusterServiceHandler) Operate(context.Context, *connect.Request[v1.ClusterServiceOperateRequest]) (*connect.Response[v1.ClusterServiceOperateResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("api.v1.ClusterService.Operate is not implemented"))
+}
+
+func (UnimplementedClusterServiceHandler) GetMonitoringCredentials(context.Context, *connect.Request[v1.ClusterServiceGetMonitoringCredentialsRequest]) (*connect.Response[v1.ClusterServiceGetMonitoringCredentialsResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("api.v1.ClusterService.GetMonitoringCredentials is not implemented"))
 }

@@ -55,6 +55,11 @@ class ClusterServiceStub(object):
                 request_serializer=api_dot_v1_dot_cluster__pb2.ClusterServiceOperateRequest.SerializeToString,
                 response_deserializer=api_dot_v1_dot_cluster__pb2.ClusterServiceOperateResponse.FromString,
                 _registered_method=True)
+        self.GetMonitoringCredentials = channel.unary_unary(
+                '/api.v1.ClusterService/GetMonitoringCredentials',
+                request_serializer=api_dot_v1_dot_cluster__pb2.ClusterServiceGetMonitoringCredentialsRequest.SerializeToString,
+                response_deserializer=api_dot_v1_dot_cluster__pb2.ClusterServiceGetMonitoringCredentialsResponse.FromString,
+                _registered_method=True)
 
 
 class ClusterServiceServicer(object):
@@ -117,6 +122,13 @@ class ClusterServiceServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def GetMonitoringCredentials(self, request, context):
+        """GetMonitoringCredentials returns monitoring credentials for a cluster
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
 
 def add_ClusterServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
@@ -159,6 +171,11 @@ def add_ClusterServiceServicer_to_server(servicer, server):
                     servicer.Operate,
                     request_deserializer=api_dot_v1_dot_cluster__pb2.ClusterServiceOperateRequest.FromString,
                     response_serializer=api_dot_v1_dot_cluster__pb2.ClusterServiceOperateResponse.SerializeToString,
+            ),
+            'GetMonitoringCredentials': grpc.unary_unary_rpc_method_handler(
+                    servicer.GetMonitoringCredentials,
+                    request_deserializer=api_dot_v1_dot_cluster__pb2.ClusterServiceGetMonitoringCredentialsRequest.FromString,
+                    response_serializer=api_dot_v1_dot_cluster__pb2.ClusterServiceGetMonitoringCredentialsResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -378,6 +395,33 @@ class ClusterService(object):
             '/api.v1.ClusterService/Operate',
             api_dot_v1_dot_cluster__pb2.ClusterServiceOperateRequest.SerializeToString,
             api_dot_v1_dot_cluster__pb2.ClusterServiceOperateResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def GetMonitoringCredentials(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/api.v1.ClusterService/GetMonitoringCredentials',
+            api_dot_v1_dot_cluster__pb2.ClusterServiceGetMonitoringCredentialsRequest.SerializeToString,
+            api_dot_v1_dot_cluster__pb2.ClusterServiceGetMonitoringCredentialsResponse.FromString,
             options,
             channel_credentials,
             insecure,

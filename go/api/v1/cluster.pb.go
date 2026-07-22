@@ -1881,6 +1881,107 @@ func (x *ClusterServiceOperateResponse) GetCluster() *Cluster {
 	return nil
 }
 
+// ClusterServiceGetMonitoringCredentialsRequest is the request payload for the cluster monitoring credentials request
+type ClusterServiceGetMonitoringCredentialsRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Uuid of the cluster
+	Uuid string `protobuf:"bytes,1,opt,name=uuid,proto3" json:"uuid,omitempty"`
+	// Project of the cluster
+	Project       string `protobuf:"bytes,2,opt,name=project,proto3" json:"project,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ClusterServiceGetMonitoringCredentialsRequest) Reset() {
+	*x = ClusterServiceGetMonitoringCredentialsRequest{}
+	mi := &file_api_v1_cluster_proto_msgTypes[27]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ClusterServiceGetMonitoringCredentialsRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ClusterServiceGetMonitoringCredentialsRequest) ProtoMessage() {}
+
+func (x *ClusterServiceGetMonitoringCredentialsRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_api_v1_cluster_proto_msgTypes[27]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ClusterServiceGetMonitoringCredentialsRequest.ProtoReflect.Descriptor instead.
+func (*ClusterServiceGetMonitoringCredentialsRequest) Descriptor() ([]byte, []int) {
+	return file_api_v1_cluster_proto_rawDescGZIP(), []int{27}
+}
+
+func (x *ClusterServiceGetMonitoringCredentialsRequest) GetUuid() string {
+	if x != nil {
+		return x.Uuid
+	}
+	return ""
+}
+
+func (x *ClusterServiceGetMonitoringCredentialsRequest) GetProject() string {
+	if x != nil {
+		return x.Project
+	}
+	return ""
+}
+
+// ClusterServiceGetMonitoringCredentialsResponse is the response payload for the cluster monitoring credentials request
+type ClusterServiceGetMonitoringCredentialsResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Monitoring returns the monitoring credentials and endpoint
+	Monitoring    *ClusterMonitoring `protobuf:"bytes,1,opt,name=monitoring,proto3" json:"monitoring,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ClusterServiceGetMonitoringCredentialsResponse) Reset() {
+	*x = ClusterServiceGetMonitoringCredentialsResponse{}
+	mi := &file_api_v1_cluster_proto_msgTypes[28]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ClusterServiceGetMonitoringCredentialsResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ClusterServiceGetMonitoringCredentialsResponse) ProtoMessage() {}
+
+func (x *ClusterServiceGetMonitoringCredentialsResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_api_v1_cluster_proto_msgTypes[28]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ClusterServiceGetMonitoringCredentialsResponse.ProtoReflect.Descriptor instead.
+func (*ClusterServiceGetMonitoringCredentialsResponse) Descriptor() ([]byte, []int) {
+	return file_api_v1_cluster_proto_rawDescGZIP(), []int{28}
+}
+
+func (x *ClusterServiceGetMonitoringCredentialsResponse) GetMonitoring() *ClusterMonitoring {
+	if x != nil {
+		return x.Monitoring
+	}
+	return nil
+}
+
 var File_api_v1_cluster_proto protoreflect.FileDescriptor
 
 const file_api_v1_cluster_proto_rawDesc = "" +
@@ -2054,12 +2155,20 @@ const file_api_v1_cluster_proto_rawDesc = "" +
 	"!ClusterServiceWatchStatusResponse\x12-\n" +
 	"\x06status\x18\x01 \x01(\v2\x15.api.v1.ClusterStatusR\x06status\"J\n" +
 	"\x1dClusterServiceOperateResponse\x12)\n" +
-	"\acluster\x18\x01 \x01(\v2\x0f.api.v1.ClusterR\acluster*b\n" +
+	"\acluster\x18\x01 \x01(\v2\x0f.api.v1.ClusterR\acluster\"s\n" +
+	"-ClusterServiceGetMonitoringCredentialsRequest\x12\x1c\n" +
+	"\x04uuid\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x04uuid\x12$\n" +
+	"\aproject\x18\x02 \x01(\tB\n" +
+	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\aproject\"k\n" +
+	".ClusterServiceGetMonitoringCredentialsResponse\x129\n" +
+	"\n" +
+	"monitoring\x18\x01 \x01(\v2\x19.api.v1.ClusterMonitoringR\n" +
+	"monitoring*b\n" +
 	"\aOperate\x12\x17\n" +
 	"\x13OPERATE_UNSPECIFIED\x10\x00\x12\x15\n" +
 	"\x11OPERATE_RECONCILE\x10\x01\x12\x14\n" +
 	"\x10OPERATE_MAINTAIN\x10\x02\x12\x11\n" +
-	"\rOPERATE_RETRY\x10\x032\xac\x06\n" +
+	"\rOPERATE_RETRY\x10\x032\xc4\a\n" +
 	"\x0eClusterService\x12_\n" +
 	"\x06Create\x12#.api.v1.ClusterServiceCreateRequest\x1a$.api.v1.ClusterServiceCreateResponse\"\n" +
 	"\xca\xf3\x18\x02\x01\x02\xe0\xf3\x18\x01\x12W\n" +
@@ -2070,7 +2179,9 @@ const file_api_v1_cluster_proto_rawDesc = "" +
 	"\x06Update\x12#.api.v1.ClusterServiceUpdateRequest\x1a$.api.v1.ClusterServiceUpdateResponse\"\n" +
 	"\xca\xf3\x18\x02\x01\x02\xe0\xf3\x18\x01\x12s\n" +
 	"\x0eGetCredentials\x12+.api.v1.ClusterServiceGetCredentialsRequest\x1a,.api.v1.ClusterServiceGetCredentialsResponse\"\x06\xca\xf3\x18\x02\x01\x02\x12^\n" +
-	"\aOperate\x12$.api.v1.ClusterServiceOperateRequest\x1a%.api.v1.ClusterServiceOperateResponse\"\x06\xca\xf3\x18\x02\x01\x02B\x85\x01\n" +
+	"\aOperate\x12$.api.v1.ClusterServiceOperateRequest\x1a%.api.v1.ClusterServiceOperateResponse\"\x06\xca\xf3\x18\x02\x01\x02\x12\x95\x01\n" +
+	"\x18GetMonitoringCredentials\x125.api.v1.ClusterServiceGetMonitoringCredentialsRequest\x1a6.api.v1.ClusterServiceGetMonitoringCredentialsResponse\"\n" +
+	"\xca\xf3\x18\x02\x01\x02\xe8\xf3\x18\x02B\x85\x01\n" +
 	"\n" +
 	"com.api.v1B\fClusterProtoP\x01Z0github.com/metal-stack-cloud/api/go/api/v1;apiv1\xa2\x02\x03AXX\xaa\x02\x06Api.V1\xca\x02\x06Api\\V1\xe2\x02\x12Api\\V1\\GPBMetadata\xea\x02\aApi::V1b\x06proto3"
 
@@ -2087,53 +2198,55 @@ func file_api_v1_cluster_proto_rawDescGZIP() []byte {
 }
 
 var file_api_v1_cluster_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
-var file_api_v1_cluster_proto_msgTypes = make([]protoimpl.MessageInfo, 27)
+var file_api_v1_cluster_proto_msgTypes = make([]protoimpl.MessageInfo, 29)
 var file_api_v1_cluster_proto_goTypes = []any{
-	(Operate)(0),                                 // 0: api.v1.Operate
-	(*Cluster)(nil),                              // 1: api.v1.Cluster
-	(*KubernetesSpec)(nil),                       // 2: api.v1.KubernetesSpec
-	(*Maintenance)(nil),                          // 3: api.v1.Maintenance
-	(*MaintenanceTimeWindow)(nil),                // 4: api.v1.MaintenanceTimeWindow
-	(*Time)(nil),                                 // 5: api.v1.Time
-	(*Worker)(nil),                               // 6: api.v1.Worker
-	(*WorkerUpdate)(nil),                         // 7: api.v1.WorkerUpdate
-	(*ClusterServiceGetRequest)(nil),             // 8: api.v1.ClusterServiceGetRequest
-	(*ClusterServiceOperateRequest)(nil),         // 9: api.v1.ClusterServiceOperateRequest
-	(*ClusterServiceGetCredentialsRequest)(nil),  // 10: api.v1.ClusterServiceGetCredentialsRequest
-	(*ClusterServiceListRequest)(nil),            // 11: api.v1.ClusterServiceListRequest
-	(*ClusterServiceCreateRequest)(nil),          // 12: api.v1.ClusterServiceCreateRequest
-	(*ClusterServiceUpdateRequest)(nil),          // 13: api.v1.ClusterServiceUpdateRequest
-	(*ClusterServiceDeleteRequest)(nil),          // 14: api.v1.ClusterServiceDeleteRequest
-	(*ClusterServiceWatchStatusRequest)(nil),     // 15: api.v1.ClusterServiceWatchStatusRequest
-	(*ClusterStatus)(nil),                        // 16: api.v1.ClusterStatus
-	(*ClusterStatusLastError)(nil),               // 17: api.v1.ClusterStatusLastError
-	(*ClusterStatusCondition)(nil),               // 18: api.v1.ClusterStatusCondition
-	(*ClusterMonitoring)(nil),                    // 19: api.v1.ClusterMonitoring
-	(*ClusterServiceCreateResponse)(nil),         // 20: api.v1.ClusterServiceCreateResponse
-	(*ClusterServiceGetResponse)(nil),            // 21: api.v1.ClusterServiceGetResponse
-	(*ClusterServiceGetCredentialsResponse)(nil), // 22: api.v1.ClusterServiceGetCredentialsResponse
-	(*ClusterServiceDeleteResponse)(nil),         // 23: api.v1.ClusterServiceDeleteResponse
-	(*ClusterServiceUpdateResponse)(nil),         // 24: api.v1.ClusterServiceUpdateResponse
-	(*ClusterServiceListResponse)(nil),           // 25: api.v1.ClusterServiceListResponse
-	(*ClusterServiceWatchStatusResponse)(nil),    // 26: api.v1.ClusterServiceWatchStatusResponse
-	(*ClusterServiceOperateResponse)(nil),        // 27: api.v1.ClusterServiceOperateResponse
-	(*timestamppb.Timestamp)(nil),                // 28: google.protobuf.Timestamp
-	(*durationpb.Duration)(nil),                  // 29: google.protobuf.Duration
+	(Operate)(0),                                           // 0: api.v1.Operate
+	(*Cluster)(nil),                                        // 1: api.v1.Cluster
+	(*KubernetesSpec)(nil),                                 // 2: api.v1.KubernetesSpec
+	(*Maintenance)(nil),                                    // 3: api.v1.Maintenance
+	(*MaintenanceTimeWindow)(nil),                          // 4: api.v1.MaintenanceTimeWindow
+	(*Time)(nil),                                           // 5: api.v1.Time
+	(*Worker)(nil),                                         // 6: api.v1.Worker
+	(*WorkerUpdate)(nil),                                   // 7: api.v1.WorkerUpdate
+	(*ClusterServiceGetRequest)(nil),                       // 8: api.v1.ClusterServiceGetRequest
+	(*ClusterServiceOperateRequest)(nil),                   // 9: api.v1.ClusterServiceOperateRequest
+	(*ClusterServiceGetCredentialsRequest)(nil),            // 10: api.v1.ClusterServiceGetCredentialsRequest
+	(*ClusterServiceListRequest)(nil),                      // 11: api.v1.ClusterServiceListRequest
+	(*ClusterServiceCreateRequest)(nil),                    // 12: api.v1.ClusterServiceCreateRequest
+	(*ClusterServiceUpdateRequest)(nil),                    // 13: api.v1.ClusterServiceUpdateRequest
+	(*ClusterServiceDeleteRequest)(nil),                    // 14: api.v1.ClusterServiceDeleteRequest
+	(*ClusterServiceWatchStatusRequest)(nil),               // 15: api.v1.ClusterServiceWatchStatusRequest
+	(*ClusterStatus)(nil),                                  // 16: api.v1.ClusterStatus
+	(*ClusterStatusLastError)(nil),                         // 17: api.v1.ClusterStatusLastError
+	(*ClusterStatusCondition)(nil),                         // 18: api.v1.ClusterStatusCondition
+	(*ClusterMonitoring)(nil),                              // 19: api.v1.ClusterMonitoring
+	(*ClusterServiceCreateResponse)(nil),                   // 20: api.v1.ClusterServiceCreateResponse
+	(*ClusterServiceGetResponse)(nil),                      // 21: api.v1.ClusterServiceGetResponse
+	(*ClusterServiceGetCredentialsResponse)(nil),           // 22: api.v1.ClusterServiceGetCredentialsResponse
+	(*ClusterServiceDeleteResponse)(nil),                   // 23: api.v1.ClusterServiceDeleteResponse
+	(*ClusterServiceUpdateResponse)(nil),                   // 24: api.v1.ClusterServiceUpdateResponse
+	(*ClusterServiceListResponse)(nil),                     // 25: api.v1.ClusterServiceListResponse
+	(*ClusterServiceWatchStatusResponse)(nil),              // 26: api.v1.ClusterServiceWatchStatusResponse
+	(*ClusterServiceOperateResponse)(nil),                  // 27: api.v1.ClusterServiceOperateResponse
+	(*ClusterServiceGetMonitoringCredentialsRequest)(nil),  // 28: api.v1.ClusterServiceGetMonitoringCredentialsRequest
+	(*ClusterServiceGetMonitoringCredentialsResponse)(nil), // 29: api.v1.ClusterServiceGetMonitoringCredentialsResponse
+	(*timestamppb.Timestamp)(nil),                          // 30: google.protobuf.Timestamp
+	(*durationpb.Duration)(nil),                            // 31: google.protobuf.Duration
 }
 var file_api_v1_cluster_proto_depIdxs = []int32{
 	2,  // 0: api.v1.Cluster.kubernetes:type_name -> api.v1.KubernetesSpec
 	6,  // 1: api.v1.Cluster.workers:type_name -> api.v1.Worker
 	3,  // 2: api.v1.Cluster.maintenance:type_name -> api.v1.Maintenance
-	28, // 3: api.v1.Cluster.created_at:type_name -> google.protobuf.Timestamp
-	28, // 4: api.v1.Cluster.updated_at:type_name -> google.protobuf.Timestamp
-	28, // 5: api.v1.Cluster.deleted_at:type_name -> google.protobuf.Timestamp
+	30, // 3: api.v1.Cluster.created_at:type_name -> google.protobuf.Timestamp
+	30, // 4: api.v1.Cluster.updated_at:type_name -> google.protobuf.Timestamp
+	30, // 5: api.v1.Cluster.deleted_at:type_name -> google.protobuf.Timestamp
 	16, // 6: api.v1.Cluster.status:type_name -> api.v1.ClusterStatus
 	19, // 7: api.v1.Cluster.monitoring:type_name -> api.v1.ClusterMonitoring
 	4,  // 8: api.v1.Maintenance.time_window:type_name -> api.v1.MaintenanceTimeWindow
 	5,  // 9: api.v1.MaintenanceTimeWindow.begin:type_name -> api.v1.Time
-	29, // 10: api.v1.MaintenanceTimeWindow.duration:type_name -> google.protobuf.Duration
+	31, // 10: api.v1.MaintenanceTimeWindow.duration:type_name -> google.protobuf.Duration
 	0,  // 11: api.v1.ClusterServiceOperateRequest.operate:type_name -> api.v1.Operate
-	29, // 12: api.v1.ClusterServiceGetCredentialsRequest.expiration:type_name -> google.protobuf.Duration
+	31, // 12: api.v1.ClusterServiceGetCredentialsRequest.expiration:type_name -> google.protobuf.Duration
 	2,  // 13: api.v1.ClusterServiceCreateRequest.kubernetes:type_name -> api.v1.KubernetesSpec
 	6,  // 14: api.v1.ClusterServiceCreateRequest.workers:type_name -> api.v1.Worker
 	3,  // 15: api.v1.ClusterServiceCreateRequest.maintenance:type_name -> api.v1.Maintenance
@@ -2142,9 +2255,9 @@ var file_api_v1_cluster_proto_depIdxs = []int32{
 	3,  // 18: api.v1.ClusterServiceUpdateRequest.maintenance:type_name -> api.v1.Maintenance
 	17, // 19: api.v1.ClusterStatus.last_errors:type_name -> api.v1.ClusterStatusLastError
 	18, // 20: api.v1.ClusterStatus.conditions:type_name -> api.v1.ClusterStatusCondition
-	28, // 21: api.v1.ClusterStatusLastError.last_update_time:type_name -> google.protobuf.Timestamp
-	28, // 22: api.v1.ClusterStatusCondition.last_transition_time:type_name -> google.protobuf.Timestamp
-	28, // 23: api.v1.ClusterStatusCondition.last_update_time:type_name -> google.protobuf.Timestamp
+	30, // 21: api.v1.ClusterStatusLastError.last_update_time:type_name -> google.protobuf.Timestamp
+	30, // 22: api.v1.ClusterStatusCondition.last_transition_time:type_name -> google.protobuf.Timestamp
+	30, // 23: api.v1.ClusterStatusCondition.last_update_time:type_name -> google.protobuf.Timestamp
 	1,  // 24: api.v1.ClusterServiceCreateResponse.cluster:type_name -> api.v1.Cluster
 	1,  // 25: api.v1.ClusterServiceGetResponse.cluster:type_name -> api.v1.Cluster
 	1,  // 26: api.v1.ClusterServiceDeleteResponse.cluster:type_name -> api.v1.Cluster
@@ -2152,27 +2265,30 @@ var file_api_v1_cluster_proto_depIdxs = []int32{
 	1,  // 28: api.v1.ClusterServiceListResponse.clusters:type_name -> api.v1.Cluster
 	16, // 29: api.v1.ClusterServiceWatchStatusResponse.status:type_name -> api.v1.ClusterStatus
 	1,  // 30: api.v1.ClusterServiceOperateResponse.cluster:type_name -> api.v1.Cluster
-	12, // 31: api.v1.ClusterService.Create:input_type -> api.v1.ClusterServiceCreateRequest
-	8,  // 32: api.v1.ClusterService.Get:input_type -> api.v1.ClusterServiceGetRequest
-	11, // 33: api.v1.ClusterService.List:input_type -> api.v1.ClusterServiceListRequest
-	15, // 34: api.v1.ClusterService.WatchStatus:input_type -> api.v1.ClusterServiceWatchStatusRequest
-	14, // 35: api.v1.ClusterService.Delete:input_type -> api.v1.ClusterServiceDeleteRequest
-	13, // 36: api.v1.ClusterService.Update:input_type -> api.v1.ClusterServiceUpdateRequest
-	10, // 37: api.v1.ClusterService.GetCredentials:input_type -> api.v1.ClusterServiceGetCredentialsRequest
-	9,  // 38: api.v1.ClusterService.Operate:input_type -> api.v1.ClusterServiceOperateRequest
-	20, // 39: api.v1.ClusterService.Create:output_type -> api.v1.ClusterServiceCreateResponse
-	21, // 40: api.v1.ClusterService.Get:output_type -> api.v1.ClusterServiceGetResponse
-	25, // 41: api.v1.ClusterService.List:output_type -> api.v1.ClusterServiceListResponse
-	26, // 42: api.v1.ClusterService.WatchStatus:output_type -> api.v1.ClusterServiceWatchStatusResponse
-	23, // 43: api.v1.ClusterService.Delete:output_type -> api.v1.ClusterServiceDeleteResponse
-	24, // 44: api.v1.ClusterService.Update:output_type -> api.v1.ClusterServiceUpdateResponse
-	22, // 45: api.v1.ClusterService.GetCredentials:output_type -> api.v1.ClusterServiceGetCredentialsResponse
-	27, // 46: api.v1.ClusterService.Operate:output_type -> api.v1.ClusterServiceOperateResponse
-	39, // [39:47] is the sub-list for method output_type
-	31, // [31:39] is the sub-list for method input_type
-	31, // [31:31] is the sub-list for extension type_name
-	31, // [31:31] is the sub-list for extension extendee
-	0,  // [0:31] is the sub-list for field type_name
+	19, // 31: api.v1.ClusterServiceGetMonitoringCredentialsResponse.monitoring:type_name -> api.v1.ClusterMonitoring
+	12, // 32: api.v1.ClusterService.Create:input_type -> api.v1.ClusterServiceCreateRequest
+	8,  // 33: api.v1.ClusterService.Get:input_type -> api.v1.ClusterServiceGetRequest
+	11, // 34: api.v1.ClusterService.List:input_type -> api.v1.ClusterServiceListRequest
+	15, // 35: api.v1.ClusterService.WatchStatus:input_type -> api.v1.ClusterServiceWatchStatusRequest
+	14, // 36: api.v1.ClusterService.Delete:input_type -> api.v1.ClusterServiceDeleteRequest
+	13, // 37: api.v1.ClusterService.Update:input_type -> api.v1.ClusterServiceUpdateRequest
+	10, // 38: api.v1.ClusterService.GetCredentials:input_type -> api.v1.ClusterServiceGetCredentialsRequest
+	9,  // 39: api.v1.ClusterService.Operate:input_type -> api.v1.ClusterServiceOperateRequest
+	28, // 40: api.v1.ClusterService.GetMonitoringCredentials:input_type -> api.v1.ClusterServiceGetMonitoringCredentialsRequest
+	20, // 41: api.v1.ClusterService.Create:output_type -> api.v1.ClusterServiceCreateResponse
+	21, // 42: api.v1.ClusterService.Get:output_type -> api.v1.ClusterServiceGetResponse
+	25, // 43: api.v1.ClusterService.List:output_type -> api.v1.ClusterServiceListResponse
+	26, // 44: api.v1.ClusterService.WatchStatus:output_type -> api.v1.ClusterServiceWatchStatusResponse
+	23, // 45: api.v1.ClusterService.Delete:output_type -> api.v1.ClusterServiceDeleteResponse
+	24, // 46: api.v1.ClusterService.Update:output_type -> api.v1.ClusterServiceUpdateResponse
+	22, // 47: api.v1.ClusterService.GetCredentials:output_type -> api.v1.ClusterServiceGetCredentialsResponse
+	27, // 48: api.v1.ClusterService.Operate:output_type -> api.v1.ClusterServiceOperateResponse
+	29, // 49: api.v1.ClusterService.GetMonitoringCredentials:output_type -> api.v1.ClusterServiceGetMonitoringCredentialsResponse
+	41, // [41:50] is the sub-list for method output_type
+	32, // [32:41] is the sub-list for method input_type
+	32, // [32:32] is the sub-list for extension type_name
+	32, // [32:32] is the sub-list for extension extendee
+	0,  // [0:32] is the sub-list for field type_name
 }
 
 func init() { file_api_v1_cluster_proto_init() }
@@ -2194,7 +2310,7 @@ func file_api_v1_cluster_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_api_v1_cluster_proto_rawDesc), len(file_api_v1_cluster_proto_rawDesc)),
 			NumEnums:      1,
-			NumMessages:   27,
+			NumMessages:   29,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
