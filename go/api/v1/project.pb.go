@@ -144,6 +144,8 @@ type ProjectMember struct {
 	// This member does not have direct project membership but gains permissions on this project from the role he has in the tenant.
 	// Inherited memberships are not included in member lists for users with guest permission but only for direct tenant members.
 	InheritedMembership bool `protobuf:"varint,3,opt,name=inherited_membership,json=inheritedMembership,proto3" json:"inherited_membership,omitempty"`
+	// Name is the name of the member
+	Name string `protobuf:"bytes,4,opt,name=name,proto3" json:"name,omitempty"`
 	// CreatedAt the date when the member was added to the project
 	CreatedAt     *timestamppb.Timestamp `protobuf:"bytes,10,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
 	unknownFields protoimpl.UnknownFields
@@ -199,6 +201,13 @@ func (x *ProjectMember) GetInheritedMembership() bool {
 		return x.InheritedMembership
 	}
 	return false
+}
+
+func (x *ProjectMember) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
 }
 
 func (x *ProjectMember) GetCreatedAt() *timestamppb.Timestamp {
@@ -1559,11 +1568,12 @@ const file_api_v1_project_proto_rawDesc = "" +
 	"updated_at\x18\v \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\x12\"\n" +
 	"\n" +
 	"avatar_url\x18\f \x01(\tH\x00R\tavatarUrl\x88\x01\x01B\r\n" +
-	"\v_avatar_url\"\xc0\x01\n" +
+	"\v_avatar_url\"\xd4\x01\n" +
 	"\rProjectMember\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x121\n" +
 	"\x04role\x18\x02 \x01(\x0e2\x13.api.v1.ProjectRoleB\b\xbaH\x05\x82\x01\x02\x10\x01R\x04role\x121\n" +
-	"\x14inherited_membership\x18\x03 \x01(\bR\x13inheritedMembership\x129\n" +
+	"\x14inherited_membership\x18\x03 \x01(\bR\x13inheritedMembership\x12\x12\n" +
+	"\x04name\x18\x04 \x01(\tR\x04name\x129\n" +
 	"\n" +
 	"created_at\x18\n" +
 	" \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\"\xdc\x02\n" +

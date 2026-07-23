@@ -128,6 +128,8 @@ message TenantMember {
   TenantRole role = 2 [(buf.validate.field).enum.defined_only = true];
   // ProjectIds for the projects in which a user is a direct member
   repeated string project_ids = 4;
+  // Name is the name of the member
+  string name = 5;
   // CreatedAt the date when the member was added to the tenant
   google.protobuf.Timestamp created_at = 10;
 }
