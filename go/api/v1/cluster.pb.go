@@ -2168,7 +2168,7 @@ const file_api_v1_cluster_proto_rawDesc = "" +
 	"\x13OPERATE_UNSPECIFIED\x10\x00\x12\x15\n" +
 	"\x11OPERATE_RECONCILE\x10\x01\x12\x14\n" +
 	"\x10OPERATE_MAINTAIN\x10\x02\x12\x11\n" +
-	"\rOPERATE_RETRY\x10\x032\xc4\a\n" +
+	"\rOPERATE_RETRY\x10\x032\xc5\a\n" +
 	"\x0eClusterService\x12_\n" +
 	"\x06Create\x12#.api.v1.ClusterServiceCreateRequest\x1a$.api.v1.ClusterServiceCreateResponse\"\n" +
 	"\xca\xf3\x18\x02\x01\x02\xe0\xf3\x18\x01\x12W\n" +
@@ -2179,9 +2179,8 @@ const file_api_v1_cluster_proto_rawDesc = "" +
 	"\x06Update\x12#.api.v1.ClusterServiceUpdateRequest\x1a$.api.v1.ClusterServiceUpdateResponse\"\n" +
 	"\xca\xf3\x18\x02\x01\x02\xe0\xf3\x18\x01\x12s\n" +
 	"\x0eGetCredentials\x12+.api.v1.ClusterServiceGetCredentialsRequest\x1a,.api.v1.ClusterServiceGetCredentialsResponse\"\x06\xca\xf3\x18\x02\x01\x02\x12^\n" +
-	"\aOperate\x12$.api.v1.ClusterServiceOperateRequest\x1a%.api.v1.ClusterServiceOperateResponse\"\x06\xca\xf3\x18\x02\x01\x02\x12\x95\x01\n" +
-	"\x18GetMonitoringCredentials\x125.api.v1.ClusterServiceGetMonitoringCredentialsRequest\x1a6.api.v1.ClusterServiceGetMonitoringCredentialsResponse\"\n" +
-	"\xca\xf3\x18\x02\x01\x02\xe8\xf3\x18\x02B\x85\x01\n" +
+	"\aOperate\x12$.api.v1.ClusterServiceOperateRequest\x1a%.api.v1.ClusterServiceOperateResponse\"\x06\xca\xf3\x18\x02\x01\x02\x12\x96\x01\n" +
+	"\x18GetMonitoringCredentials\x125.api.v1.ClusterServiceGetMonitoringCredentialsRequest\x1a6.api.v1.ClusterServiceGetMonitoringCredentialsResponse\"\v\xca\xf3\x18\x03\x01\x02\x03\xe8\xf3\x18\x02B\x85\x01\n" +
 	"\n" +
 	"com.api.v1B\fClusterProtoP\x01Z0github.com/metal-stack-cloud/api/go/api/v1;apiv1\xa2\x02\x03AXX\xaa\x02\x06Api.V1\xca\x02\x06Api\\V1\xe2\x02\x12Api\\V1\\GPBMetadata\xea\x02\aApi::V1b\x06proto3"
 

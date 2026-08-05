@@ -168,6 +168,7 @@ func GetServicePermissions() *ServicePermissions {
 					"/api.v1.ClusterService/Get",
 					"/api.v1.ClusterService/List",
 					"/api.v1.ClusterService/WatchStatus",
+					"/api.v1.ClusterService/GetMonitoringCredentials",
 					"/api.v1.IPService/Get",
 					"/api.v1.IPService/List",
 					"/api.v1.ProjectService/Get",

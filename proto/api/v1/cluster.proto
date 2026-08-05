@@ -61,6 +61,7 @@ service ClusterService {
   rpc GetMonitoringCredentials(ClusterServiceGetMonitoringCredentialsRequest) returns (ClusterServiceGetMonitoringCredentialsResponse) {
     option (project_roles) = PROJECT_ROLE_OWNER;
     option (project_roles) = PROJECT_ROLE_EDITOR;
+    option (project_roles) = PROJECT_ROLE_VIEWER;
     option (auditing) = AUDITING_EXCLUDED;
   }
 }
