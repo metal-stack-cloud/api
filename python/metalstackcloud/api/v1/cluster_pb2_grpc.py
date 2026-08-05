@@ -50,6 +50,16 @@ class ClusterServiceStub(object):
                 request_serializer=api_dot_v1_dot_cluster__pb2.ClusterServiceGetCredentialsRequest.SerializeToString,
                 response_deserializer=api_dot_v1_dot_cluster__pb2.ClusterServiceGetCredentialsResponse.FromString,
                 _registered_method=True)
+        self.GetAdminKubeconfig = channel.unary_unary(
+                '/api.v1.ClusterService/GetAdminKubeconfig',
+                request_serializer=api_dot_v1_dot_cluster__pb2.ClusterServiceGetAdminKubeconfigRequest.SerializeToString,
+                response_deserializer=api_dot_v1_dot_cluster__pb2.ClusterServiceGetAdminKubeconfigResponse.FromString,
+                _registered_method=True)
+        self.GetViewerKubeconfig = channel.unary_unary(
+                '/api.v1.ClusterService/GetViewerKubeconfig',
+                request_serializer=api_dot_v1_dot_cluster__pb2.ClusterServiceGetViewerKubeconfigRequest.SerializeToString,
+                response_deserializer=api_dot_v1_dot_cluster__pb2.ClusterServiceGetViewerKubeconfigResponse.FromString,
+                _registered_method=True)
         self.Operate = channel.unary_unary(
                 '/api.v1.ClusterService/Operate',
                 request_serializer=api_dot_v1_dot_cluster__pb2.ClusterServiceOperateRequest.SerializeToString,
@@ -110,6 +120,20 @@ class ClusterServiceServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def GetAdminKubeconfig(self, request, context):
+        """GetAdminKubeconfig of a cluster
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def GetViewerKubeconfig(self, request, context):
+        """GetViewerKubeconfig of a cluster
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
     def Operate(self, request, context):
         """Operate on a cluster
         """
@@ -154,6 +178,16 @@ def add_ClusterServiceServicer_to_server(servicer, server):
                     servicer.GetCredentials,
                     request_deserializer=api_dot_v1_dot_cluster__pb2.ClusterServiceGetCredentialsRequest.FromString,
                     response_serializer=api_dot_v1_dot_cluster__pb2.ClusterServiceGetCredentialsResponse.SerializeToString,
+            ),
+            'GetAdminKubeconfig': grpc.unary_unary_rpc_method_handler(
+                    servicer.GetAdminKubeconfig,
+                    request_deserializer=api_dot_v1_dot_cluster__pb2.ClusterServiceGetAdminKubeconfigRequest.FromString,
+                    response_serializer=api_dot_v1_dot_cluster__pb2.ClusterServiceGetAdminKubeconfigResponse.SerializeToString,
+            ),
+            'GetViewerKubeconfig': grpc.unary_unary_rpc_method_handler(
+                    servicer.GetViewerKubeconfig,
+                    request_deserializer=api_dot_v1_dot_cluster__pb2.ClusterServiceGetViewerKubeconfigRequest.FromString,
+                    response_serializer=api_dot_v1_dot_cluster__pb2.ClusterServiceGetViewerKubeconfigResponse.SerializeToString,
             ),
             'Operate': grpc.unary_unary_rpc_method_handler(
                     servicer.Operate,
@@ -351,6 +385,60 @@ class ClusterService(object):
             '/api.v1.ClusterService/GetCredentials',
             api_dot_v1_dot_cluster__pb2.ClusterServiceGetCredentialsRequest.SerializeToString,
             api_dot_v1_dot_cluster__pb2.ClusterServiceGetCredentialsResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def GetAdminKubeconfig(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/api.v1.ClusterService/GetAdminKubeconfig',
+            api_dot_v1_dot_cluster__pb2.ClusterServiceGetAdminKubeconfigRequest.SerializeToString,
+            api_dot_v1_dot_cluster__pb2.ClusterServiceGetAdminKubeconfigResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def GetViewerKubeconfig(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/api.v1.ClusterService/GetViewerKubeconfig',
+            api_dot_v1_dot_cluster__pb2.ClusterServiceGetViewerKubeconfigRequest.SerializeToString,
+            api_dot_v1_dot_cluster__pb2.ClusterServiceGetViewerKubeconfigResponse.FromString,
             options,
             channel_credentials,
             insecure,

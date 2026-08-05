@@ -14,7 +14,7 @@ import type { Message } from "@bufbuild/protobuf";
  * Describes the file api/v1/cluster.proto.
  */
 export const file_api_v1_cluster: GenFile = /*@__PURE__*/
-  fileDesc("ChRhcGkvdjEvY2x1c3Rlci5wcm90bxIGYXBpLnYxIvkDCgdDbHVzdGVyEhYKBHV1aWQYASABKAlCCLpIBXIDsAEBEhcKBG5hbWUYAiABKAlCCbpIBnIEEAIYDBIbCgdwcm9qZWN0GAMgASgJQgq6SAdyBRACGIABEhEKCXBhcnRpdGlvbhgEIAEoCRIqCgprdWJlcm5ldGVzGAUgASgLMhYuYXBpLnYxLkt1YmVybmV0ZXNTcGVjEh8KB3dvcmtlcnMYBiADKAsyDi5hcGkudjEuV29ya2VyEigKC21haW50ZW5hbmNlGAcgASgLMhMuYXBpLnYxLk1haW50ZW5hbmNlEg4KBnRlbmFudBgIIAEoCRIuCgpjcmVhdGVkX2F0GAogASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcBIuCgp1cGRhdGVkX2F0GAsgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcBIuCgpkZWxldGVkX2F0GAwgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcBIlCgZzdGF0dXMYFCABKAsyFS5hcGkudjEuQ2x1c3RlclN0YXR1cxIUCgdwdXJwb3NlGBUgASgJSACIAQESLQoKbW9uaXRvcmluZxgWIAEoCzIZLmFwaS52MS5DbHVzdGVyTW9uaXRvcmluZ0IKCghfcHVycG9zZSI/Cg5LdWJlcm5ldGVzU3BlYxItCgd2ZXJzaW9uGAEgASgJQhy6SBlyFygIMhNbMC05XSsuWzAtOV0rLlswLTldIsEBCgtNYWludGVuYW5jZRIiChVrdWJlcm5ldGVzX2F1dG91cGRhdGUYASABKAhIAIgBARIkChdtYWNoaW5laW1hZ2VfYXV0b3VwZGF0ZRgCIAEoCEgBiAEBEjIKC3RpbWVfd2luZG93GAMgASgLMh0uYXBpLnYxLk1haW50ZW5hbmNlVGltZVdpbmRvd0IYChZfa3ViZXJuZXRlc19hdXRvdXBkYXRlQhoKGF9tYWNoaW5laW1hZ2VfYXV0b3VwZGF0ZSJzChVNYWludGVuYW5jZVRpbWVXaW5kb3cSGwoFYmVnaW4YASABKAsyDC5hcGkudjEuVGltZRI9CghkdXJhdGlvbhgCIAEoCzIZLmdvb2dsZS5wcm90b2J1Zi5EdXJhdGlvbkIQukgNqgEKGgMIwHAyAwiQHCJICgRUaW1lEhUKBGhvdXIYASABKA1CB7pIBCoCGBgSFwoGbWludXRlGAIgASgNQge6SAQqAhg8EhAKCHRpbWV6b25lGAMgASgJIrQBCgZXb3JrZXISGAoEbmFtZRgBIAEoCUIKukgHcgUQAhiAARIgCgxtYWNoaW5lX3R5cGUYAiABKAlCCrpIB3IFEAIYgAESGAoHbWluc2l6ZRgDIAEoDUIHukgEKgIYIBIYCgdtYXhzaXplGAQgASgNQge6SAQqAhhAEhkKCG1heHN1cmdlGAUgASgNQge6SAQqAhhAEh8KDm1heHVuYXZhaWxhYmxlGAYgASgNQge6SAQqAhhAIpwCCgxXb3JrZXJVcGRhdGUSGAoEbmFtZRgBIAEoCUIKukgHcgUQAhiAARIlCgxtYWNoaW5lX3R5cGUYAiABKAlCCrpIB3IFEAIYgAFIAIgBARIdCgdtaW5zaXplGAMgASgNQge6SAQqAhggSAGIAQESHQoHbWF4c2l6ZRgEIAEoDUIHukgEKgIYQEgCiAEBEh4KCG1heHN1cmdlGAUgASgNQge6SAQqAhhASAOIAQESJAoObWF4dW5hdmFpbGFibGUYBiABKA1CB7pIBCoCGEBIBIgBAUIPCg1fbWFjaGluZV90eXBlQgoKCF9taW5zaXplQgoKCF9tYXhzaXplQgsKCV9tYXhzdXJnZUIRCg9fbWF4dW5hdmFpbGFibGUiTwoYQ2x1c3RlclNlcnZpY2VHZXRSZXF1ZXN0EhYKBHV1aWQYASABKAlCCLpIBXIDsAEBEhsKB3Byb2plY3QYAiABKAlCCrpIB3IFEAIYgAEifwocQ2x1c3RlclNlcnZpY2VPcGVyYXRlUmVxdWVzdBIWCgR1dWlkGAEgASgJQgi6SAVyA7ABARIbCgdwcm9qZWN0GAIgASgJQgq6SAdyBRACGIABEioKB29wZXJhdGUYAyABKA4yDy5hcGkudjEuT3BlcmF0ZUIIukgFggECEAEinQEKI0NsdXN0ZXJTZXJ2aWNlR2V0Q3JlZGVudGlhbHNSZXF1ZXN0EhYKBHV1aWQYASABKAlCCLpIBXIDsAEBEhsKB3Byb2plY3QYAiABKAlCCrpIB3IFEAIYgAESMgoKZXhwaXJhdGlvbhgEIAEoCzIZLmdvb2dsZS5wcm90b2J1Zi5EdXJhdGlvbkgAiAEBQg0KC19leHBpcmF0aW9uIjgKGUNsdXN0ZXJTZXJ2aWNlTGlzdFJlcXVlc3QSGwoHcHJvamVjdBgCIAEoCUIKukgHcgUQAhiAASLfAQobQ2x1c3RlclNlcnZpY2VDcmVhdGVSZXF1ZXN0EhkKBG5hbWUYAiABKAlCC7pICHIGEAIYDGgBEhsKB3Byb2plY3QYAyABKAlCCrpIB3IFEAIYgAESEQoJcGFydGl0aW9uGAQgASgJEioKCmt1YmVybmV0ZXMYBiABKAsyFi5hcGkudjEuS3ViZXJuZXRlc1NwZWMSHwoHd29ya2VycxgHIAMoCzIOLmFwaS52MS5Xb3JrZXISKAoLbWFpbnRlbmFuY2UYCCABKAsyEy5hcGkudjEuTWFpbnRlbmFuY2Ui+AEKG0NsdXN0ZXJTZXJ2aWNlVXBkYXRlUmVxdWVzdBIWCgR1dWlkGAEgASgJQgi6SAVyA7ABARIbCgdwcm9qZWN0GAIgASgJQgq6SAdyBRACGIABEi8KCmt1YmVybmV0ZXMYAyABKAsyFi5hcGkudjEuS3ViZXJuZXRlc1NwZWNIAIgBARIlCgd3b3JrZXJzGAQgAygLMhQuYXBpLnYxLldvcmtlclVwZGF0ZRItCgttYWludGVuYW5jZRgFIAEoCzITLmFwaS52MS5NYWludGVuYW5jZUgBiAEBQg0KC19rdWJlcm5ldGVzQg4KDF9tYWludGVuYW5jZSJSChtDbHVzdGVyU2VydmljZURlbGV0ZVJlcXVlc3QSFgoEdXVpZBgBIAEoCUIIukgFcgOwAQESGwoHcHJvamVjdBgCIAEoCUIKukgHcgUQAhiAASJlCiBDbHVzdGVyU2VydmljZVdhdGNoU3RhdHVzUmVxdWVzdBIbCgR1dWlkGAEgASgJQgi6SAVyA7ABAUgAiAEBEhsKB3Byb2plY3QYAiABKAlCCrpIB3IFEAIYgAFCBwoFX3V1aWQiogIKDUNsdXN0ZXJTdGF0dXMSDAoEdXVpZBgBIAEoCRIQCghwcm9ncmVzcxgCIAEoDRINCgVzdGF0ZRgDIAEoCRIMCgR0eXBlGAQgASgJEhgKEGFwaV9zZXJ2ZXJfcmVhZHkYCiABKAkSGwoTY29udHJvbF9wbGFuZV9yZWFkeRgLIAEoCRITCgtub2Rlc19yZWFkeRgMIAEoCRIfChdzeXN0ZW1fY29tcG9uZW50c19yZWFkeRgNIAEoCRIzCgtsYXN0X2Vycm9ycxgOIAMoCzIeLmFwaS52MS5DbHVzdGVyU3RhdHVzTGFzdEVycm9yEjIKCmNvbmRpdGlvbnMYDyADKAsyHi5hcGkudjEuQ2x1c3RlclN0YXR1c0NvbmRpdGlvbiKFAQoWQ2x1c3RlclN0YXR1c0xhc3RFcnJvchITCgtkZXNjcmlwdGlvbhgBIAEoCRIUCgd0YXNrX2lkGAIgASgJSACIAQESNAoQbGFzdF91cGRhdGVfdGltZRgEIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXBCCgoIX3Rhc2tfaWQizgEKFkNsdXN0ZXJTdGF0dXNDb25kaXRpb24SDAoEdHlwZRgBIAEoCRIOCgZzdGF0dXMYAiABKAkSDgoGcmVhc29uGAMgASgJEhYKDnN0YXR1c19tZXNzYWdlGAQgASgJEjgKFGxhc3RfdHJhbnNpdGlvbl90aW1lGAUgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcBI0ChBsYXN0X3VwZGF0ZV90aW1lGAYgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcCJJChFDbHVzdGVyTW9uaXRvcmluZxIQCgh1c2VybmFtZRgBIAEoCRIQCghwYXNzd29yZBgCIAEoCRIQCghlbmRwb2ludBgDIAEoCSJAChxDbHVzdGVyU2VydmljZUNyZWF0ZVJlc3BvbnNlEiAKB2NsdXN0ZXIYASABKAsyDy5hcGkudjEuQ2x1c3RlciI9ChlDbHVzdGVyU2VydmljZUdldFJlc3BvbnNlEiAKB2NsdXN0ZXIYASABKAsyDy5hcGkudjEuQ2x1c3RlciI6CiRDbHVzdGVyU2VydmljZUdldENyZWRlbnRpYWxzUmVzcG9uc2USEgoKa3ViZWNvbmZpZxgBIAEoCSJAChxDbHVzdGVyU2VydmljZURlbGV0ZVJlc3BvbnNlEiAKB2NsdXN0ZXIYASABKAsyDy5hcGkudjEuQ2x1c3RlciJAChxDbHVzdGVyU2VydmljZVVwZGF0ZVJlc3BvbnNlEiAKB2NsdXN0ZXIYASABKAsyDy5hcGkudjEuQ2x1c3RlciI/ChpDbHVzdGVyU2VydmljZUxpc3RSZXNwb25zZRIhCghjbHVzdGVycxgBIAMoCzIPLmFwaS52MS5DbHVzdGVyIkoKIUNsdXN0ZXJTZXJ2aWNlV2F0Y2hTdGF0dXNSZXNwb25zZRIlCgZzdGF0dXMYASABKAsyFS5hcGkudjEuQ2x1c3RlclN0YXR1cyJBCh1DbHVzdGVyU2VydmljZU9wZXJhdGVSZXNwb25zZRIgCgdjbHVzdGVyGAEgASgLMg8uYXBpLnYxLkNsdXN0ZXIqYgoHT3BlcmF0ZRIXChNPUEVSQVRFX1VOU1BFQ0lGSUVEEAASFQoRT1BFUkFURV9SRUNPTkNJTEUQARIUChBPUEVSQVRFX01BSU5UQUlOEAISEQoNT1BFUkFURV9SRVRSWRADMqwGCg5DbHVzdGVyU2VydmljZRJfCgZDcmVhdGUSIy5hcGkudjEuQ2x1c3RlclNlcnZpY2VDcmVhdGVSZXF1ZXN0GiQuYXBpLnYxLkNsdXN0ZXJTZXJ2aWNlQ3JlYXRlUmVzcG9uc2UiCsrzGAIBAuDzGAESVwoDR2V0EiAuYXBpLnYxLkNsdXN0ZXJTZXJ2aWNlR2V0UmVxdWVzdBohLmFwaS52MS5DbHVzdGVyU2VydmljZUdldFJlc3BvbnNlIgvK8xgDAQID6PMYAhJaCgRMaXN0EiEuYXBpLnYxLkNsdXN0ZXJTZXJ2aWNlTGlzdFJlcXVlc3QaIi5hcGkudjEuQ2x1c3RlclNlcnZpY2VMaXN0UmVzcG9uc2UiC8rzGAMBAgPo8xgCEnEKC1dhdGNoU3RhdHVzEiguYXBpLnYxLkNsdXN0ZXJTZXJ2aWNlV2F0Y2hTdGF0dXNSZXF1ZXN0GikuYXBpLnYxLkNsdXN0ZXJTZXJ2aWNlV2F0Y2hTdGF0dXNSZXNwb25zZSILyvMYAwECA+jzGAIwARJbCgZEZWxldGUSIy5hcGkudjEuQ2x1c3RlclNlcnZpY2VEZWxldGVSZXF1ZXN0GiQuYXBpLnYxLkNsdXN0ZXJTZXJ2aWNlRGVsZXRlUmVzcG9uc2UiBsrzGAIBAhJfCgZVcGRhdGUSIy5hcGkudjEuQ2x1c3RlclNlcnZpY2VVcGRhdGVSZXF1ZXN0GiQuYXBpLnYxLkNsdXN0ZXJTZXJ2aWNlVXBkYXRlUmVzcG9uc2UiCsrzGAIBAuDzGAEScwoOR2V0Q3JlZGVudGlhbHMSKy5hcGkudjEuQ2x1c3RlclNlcnZpY2VHZXRDcmVkZW50aWFsc1JlcXVlc3QaLC5hcGkudjEuQ2x1c3RlclNlcnZpY2VHZXRDcmVkZW50aWFsc1Jlc3BvbnNlIgbK8xgCAQISXgoHT3BlcmF0ZRIkLmFwaS52MS5DbHVzdGVyU2VydmljZU9wZXJhdGVSZXF1ZXN0GiUuYXBpLnYxLkNsdXN0ZXJTZXJ2aWNlT3BlcmF0ZVJlc3BvbnNlIgbK8xgCAQJChQEKCmNvbS5hcGkudjFCDENsdXN0ZXJQcm90b1ABWjBnaXRodWIuY29tL21ldGFsLXN0YWNrLWNsb3VkL2FwaS9nby9hcGkvdjE7YXBpdjGiAgNBWFiqAgZBcGkuVjHKAgZBcGlcVjHiAhJBcGlcVjFcR1BCTWV0YWRhdGHqAgdBcGk6OlYxYgZwcm90bzM", [file_api_v1_common, file_buf_validate_validate, file_google_protobuf_duration, file_google_protobuf_timestamp]);
+  fileDesc("ChRhcGkvdjEvY2x1c3Rlci5wcm90bxIGYXBpLnYxIvkDCgdDbHVzdGVyEhYKBHV1aWQYASABKAlCCLpIBXIDsAEBEhcKBG5hbWUYAiABKAlCCbpIBnIEEAIYDBIbCgdwcm9qZWN0GAMgASgJQgq6SAdyBRACGIABEhEKCXBhcnRpdGlvbhgEIAEoCRIqCgprdWJlcm5ldGVzGAUgASgLMhYuYXBpLnYxLkt1YmVybmV0ZXNTcGVjEh8KB3dvcmtlcnMYBiADKAsyDi5hcGkudjEuV29ya2VyEigKC21haW50ZW5hbmNlGAcgASgLMhMuYXBpLnYxLk1haW50ZW5hbmNlEg4KBnRlbmFudBgIIAEoCRIuCgpjcmVhdGVkX2F0GAogASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcBIuCgp1cGRhdGVkX2F0GAsgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcBIuCgpkZWxldGVkX2F0GAwgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcBIlCgZzdGF0dXMYFCABKAsyFS5hcGkudjEuQ2x1c3RlclN0YXR1cxIUCgdwdXJwb3NlGBUgASgJSACIAQESLQoKbW9uaXRvcmluZxgWIAEoCzIZLmFwaS52MS5DbHVzdGVyTW9uaXRvcmluZ0IKCghfcHVycG9zZSI/Cg5LdWJlcm5ldGVzU3BlYxItCgd2ZXJzaW9uGAEgASgJQhy6SBlyFygIMhNbMC05XSsuWzAtOV0rLlswLTldIsEBCgtNYWludGVuYW5jZRIiChVrdWJlcm5ldGVzX2F1dG91cGRhdGUYASABKAhIAIgBARIkChdtYWNoaW5laW1hZ2VfYXV0b3VwZGF0ZRgCIAEoCEgBiAEBEjIKC3RpbWVfd2luZG93GAMgASgLMh0uYXBpLnYxLk1haW50ZW5hbmNlVGltZVdpbmRvd0IYChZfa3ViZXJuZXRlc19hdXRvdXBkYXRlQhoKGF9tYWNoaW5laW1hZ2VfYXV0b3VwZGF0ZSJzChVNYWludGVuYW5jZVRpbWVXaW5kb3cSGwoFYmVnaW4YASABKAsyDC5hcGkudjEuVGltZRI9CghkdXJhdGlvbhgCIAEoCzIZLmdvb2dsZS5wcm90b2J1Zi5EdXJhdGlvbkIQukgNqgEKGgMIwHAyAwiQHCJICgRUaW1lEhUKBGhvdXIYASABKA1CB7pIBCoCGBgSFwoGbWludXRlGAIgASgNQge6SAQqAhg8EhAKCHRpbWV6b25lGAMgASgJIrQBCgZXb3JrZXISGAoEbmFtZRgBIAEoCUIKukgHcgUQAhiAARIgCgxtYWNoaW5lX3R5cGUYAiABKAlCCrpIB3IFEAIYgAESGAoHbWluc2l6ZRgDIAEoDUIHukgEKgIYIBIYCgdtYXhzaXplGAQgASgNQge6SAQqAhhAEhkKCG1heHN1cmdlGAUgASgNQge6SAQqAhhAEh8KDm1heHVuYXZhaWxhYmxlGAYgASgNQge6SAQqAhhAIpwCCgxXb3JrZXJVcGRhdGUSGAoEbmFtZRgBIAEoCUIKukgHcgUQAhiAARIlCgxtYWNoaW5lX3R5cGUYAiABKAlCCrpIB3IFEAIYgAFIAIgBARIdCgdtaW5zaXplGAMgASgNQge6SAQqAhggSAGIAQESHQoHbWF4c2l6ZRgEIAEoDUIHukgEKgIYQEgCiAEBEh4KCG1heHN1cmdlGAUgASgNQge6SAQqAhhASAOIAQESJAoObWF4dW5hdmFpbGFibGUYBiABKA1CB7pIBCoCGEBIBIgBAUIPCg1fbWFjaGluZV90eXBlQgoKCF9taW5zaXplQgoKCF9tYXhzaXplQgsKCV9tYXhzdXJnZUIRCg9fbWF4dW5hdmFpbGFibGUiTwoYQ2x1c3RlclNlcnZpY2VHZXRSZXF1ZXN0EhYKBHV1aWQYASABKAlCCLpIBXIDsAEBEhsKB3Byb2plY3QYAiABKAlCCrpIB3IFEAIYgAEifwocQ2x1c3RlclNlcnZpY2VPcGVyYXRlUmVxdWVzdBIWCgR1dWlkGAEgASgJQgi6SAVyA7ABARIbCgdwcm9qZWN0GAIgASgJQgq6SAdyBRACGIABEioKB29wZXJhdGUYAyABKA4yDy5hcGkudjEuT3BlcmF0ZUIIukgFggECEAEinQEKI0NsdXN0ZXJTZXJ2aWNlR2V0Q3JlZGVudGlhbHNSZXF1ZXN0EhYKBHV1aWQYASABKAlCCLpIBXIDsAEBEhsKB3Byb2plY3QYAiABKAlCCrpIB3IFEAIYgAESMgoKZXhwaXJhdGlvbhgEIAEoCzIZLmdvb2dsZS5wcm90b2J1Zi5EdXJhdGlvbkgAiAEBQg0KC19leHBpcmF0aW9uIqEBCidDbHVzdGVyU2VydmljZUdldEFkbWluS3ViZWNvbmZpZ1JlcXVlc3QSFgoEdXVpZBgBIAEoCUIIukgFcgOwAQESGwoHcHJvamVjdBgCIAEoCUIKukgHcgUQAhiAARIyCgpleHBpcmF0aW9uGAQgASgLMhkuZ29vZ2xlLnByb3RvYnVmLkR1cmF0aW9uSACIAQFCDQoLX2V4cGlyYXRpb24iogEKKENsdXN0ZXJTZXJ2aWNlR2V0Vmlld2VyS3ViZWNvbmZpZ1JlcXVlc3QSFgoEdXVpZBgBIAEoCUIIukgFcgOwAQESGwoHcHJvamVjdBgCIAEoCUIKukgHcgUQAhiAARIyCgpleHBpcmF0aW9uGAQgASgLMhkuZ29vZ2xlLnByb3RvYnVmLkR1cmF0aW9uSACIAQFCDQoLX2V4cGlyYXRpb24iOAoZQ2x1c3RlclNlcnZpY2VMaXN0UmVxdWVzdBIbCgdwcm9qZWN0GAIgASgJQgq6SAdyBRACGIABIt8BChtDbHVzdGVyU2VydmljZUNyZWF0ZVJlcXVlc3QSGQoEbmFtZRgCIAEoCUILukgIcgYQAhgMaAESGwoHcHJvamVjdBgDIAEoCUIKukgHcgUQAhiAARIRCglwYXJ0aXRpb24YBCABKAkSKgoKa3ViZXJuZXRlcxgGIAEoCzIWLmFwaS52MS5LdWJlcm5ldGVzU3BlYxIfCgd3b3JrZXJzGAcgAygLMg4uYXBpLnYxLldvcmtlchIoCgttYWludGVuYW5jZRgIIAEoCzITLmFwaS52MS5NYWludGVuYW5jZSL4AQobQ2x1c3RlclNlcnZpY2VVcGRhdGVSZXF1ZXN0EhYKBHV1aWQYASABKAlCCLpIBXIDsAEBEhsKB3Byb2plY3QYAiABKAlCCrpIB3IFEAIYgAESLwoKa3ViZXJuZXRlcxgDIAEoCzIWLmFwaS52MS5LdWJlcm5ldGVzU3BlY0gAiAEBEiUKB3dvcmtlcnMYBCADKAsyFC5hcGkudjEuV29ya2VyVXBkYXRlEi0KC21haW50ZW5hbmNlGAUgASgLMhMuYXBpLnYxLk1haW50ZW5hbmNlSAGIAQFCDQoLX2t1YmVybmV0ZXNCDgoMX21haW50ZW5hbmNlIlIKG0NsdXN0ZXJTZXJ2aWNlRGVsZXRlUmVxdWVzdBIWCgR1dWlkGAEgASgJQgi6SAVyA7ABARIbCgdwcm9qZWN0GAIgASgJQgq6SAdyBRACGIABImUKIENsdXN0ZXJTZXJ2aWNlV2F0Y2hTdGF0dXNSZXF1ZXN0EhsKBHV1aWQYASABKAlCCLpIBXIDsAEBSACIAQESGwoHcHJvamVjdBgCIAEoCUIKukgHcgUQAhiAAUIHCgVfdXVpZCKiAgoNQ2x1c3RlclN0YXR1cxIMCgR1dWlkGAEgASgJEhAKCHByb2dyZXNzGAIgASgNEg0KBXN0YXRlGAMgASgJEgwKBHR5cGUYBCABKAkSGAoQYXBpX3NlcnZlcl9yZWFkeRgKIAEoCRIbChNjb250cm9sX3BsYW5lX3JlYWR5GAsgASgJEhMKC25vZGVzX3JlYWR5GAwgASgJEh8KF3N5c3RlbV9jb21wb25lbnRzX3JlYWR5GA0gASgJEjMKC2xhc3RfZXJyb3JzGA4gAygLMh4uYXBpLnYxLkNsdXN0ZXJTdGF0dXNMYXN0RXJyb3ISMgoKY29uZGl0aW9ucxgPIAMoCzIeLmFwaS52MS5DbHVzdGVyU3RhdHVzQ29uZGl0aW9uIoUBChZDbHVzdGVyU3RhdHVzTGFzdEVycm9yEhMKC2Rlc2NyaXB0aW9uGAEgASgJEhQKB3Rhc2tfaWQYAiABKAlIAIgBARI0ChBsYXN0X3VwZGF0ZV90aW1lGAQgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcEIKCghfdGFza19pZCLOAQoWQ2x1c3RlclN0YXR1c0NvbmRpdGlvbhIMCgR0eXBlGAEgASgJEg4KBnN0YXR1cxgCIAEoCRIOCgZyZWFzb24YAyABKAkSFgoOc3RhdHVzX21lc3NhZ2UYBCABKAkSOAoUbGFzdF90cmFuc2l0aW9uX3RpbWUYBSABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wEjQKEGxhc3RfdXBkYXRlX3RpbWUYBiABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wIkkKEUNsdXN0ZXJNb25pdG9yaW5nEhAKCHVzZXJuYW1lGAEgASgJEhAKCHBhc3N3b3JkGAIgASgJEhAKCGVuZHBvaW50GAMgASgJIkAKHENsdXN0ZXJTZXJ2aWNlQ3JlYXRlUmVzcG9uc2USIAoHY2x1c3RlchgBIAEoCzIPLmFwaS52MS5DbHVzdGVyIj0KGUNsdXN0ZXJTZXJ2aWNlR2V0UmVzcG9uc2USIAoHY2x1c3RlchgBIAEoCzIPLmFwaS52MS5DbHVzdGVyIjoKJENsdXN0ZXJTZXJ2aWNlR2V0Q3JlZGVudGlhbHNSZXNwb25zZRISCgprdWJlY29uZmlnGAEgASgJIj4KKENsdXN0ZXJTZXJ2aWNlR2V0QWRtaW5LdWJlY29uZmlnUmVzcG9uc2USEgoKa3ViZWNvbmZpZxgBIAEoCSI/CilDbHVzdGVyU2VydmljZUdldFZpZXdlckt1YmVjb25maWdSZXNwb25zZRISCgprdWJlY29uZmlnGAEgASgJIkAKHENsdXN0ZXJTZXJ2aWNlRGVsZXRlUmVzcG9uc2USIAoHY2x1c3RlchgBIAEoCzIPLmFwaS52MS5DbHVzdGVyIkAKHENsdXN0ZXJTZXJ2aWNlVXBkYXRlUmVzcG9uc2USIAoHY2x1c3RlchgBIAEoCzIPLmFwaS52MS5DbHVzdGVyIj8KGkNsdXN0ZXJTZXJ2aWNlTGlzdFJlc3BvbnNlEiEKCGNsdXN0ZXJzGAEgAygLMg8uYXBpLnYxLkNsdXN0ZXIiSgohQ2x1c3RlclNlcnZpY2VXYXRjaFN0YXR1c1Jlc3BvbnNlEiUKBnN0YXR1cxgBIAEoCzIVLmFwaS52MS5DbHVzdGVyU3RhdHVzIkEKHUNsdXN0ZXJTZXJ2aWNlT3BlcmF0ZVJlc3BvbnNlEiAKB2NsdXN0ZXIYASABKAsyDy5hcGkudjEuQ2x1c3RlcipiCgdPcGVyYXRlEhcKE09QRVJBVEVfVU5TUEVDSUZJRUQQABIVChFPUEVSQVRFX1JFQ09OQ0lMRRABEhQKEE9QRVJBVEVfTUFJTlRBSU4QAhIRCg1PUEVSQVRFX1JFVFJZEAMyswgKDkNsdXN0ZXJTZXJ2aWNlEl8KBkNyZWF0ZRIjLmFwaS52MS5DbHVzdGVyU2VydmljZUNyZWF0ZVJlcXVlc3QaJC5hcGkudjEuQ2x1c3RlclNlcnZpY2VDcmVhdGVSZXNwb25zZSIKyvMYAgEC4PMYARJXCgNHZXQSIC5hcGkudjEuQ2x1c3RlclNlcnZpY2VHZXRSZXF1ZXN0GiEuYXBpLnYxLkNsdXN0ZXJTZXJ2aWNlR2V0UmVzcG9uc2UiC8rzGAMBAgPo8xgCEloKBExpc3QSIS5hcGkudjEuQ2x1c3RlclNlcnZpY2VMaXN0UmVxdWVzdBoiLmFwaS52MS5DbHVzdGVyU2VydmljZUxpc3RSZXNwb25zZSILyvMYAwECA+jzGAIScQoLV2F0Y2hTdGF0dXMSKC5hcGkudjEuQ2x1c3RlclNlcnZpY2VXYXRjaFN0YXR1c1JlcXVlc3QaKS5hcGkudjEuQ2x1c3RlclNlcnZpY2VXYXRjaFN0YXR1c1Jlc3BvbnNlIgvK8xgDAQID6PMYAjABElsKBkRlbGV0ZRIjLmFwaS52MS5DbHVzdGVyU2VydmljZURlbGV0ZVJlcXVlc3QaJC5hcGkudjEuQ2x1c3RlclNlcnZpY2VEZWxldGVSZXNwb25zZSIGyvMYAgECEl8KBlVwZGF0ZRIjLmFwaS52MS5DbHVzdGVyU2VydmljZVVwZGF0ZVJlcXVlc3QaJC5hcGkudjEuQ2x1c3RlclNlcnZpY2VVcGRhdGVSZXNwb25zZSIKyvMYAgEC4PMYARJzCg5HZXRDcmVkZW50aWFscxIrLmFwaS52MS5DbHVzdGVyU2VydmljZUdldENyZWRlbnRpYWxzUmVxdWVzdBosLmFwaS52MS5DbHVzdGVyU2VydmljZUdldENyZWRlbnRpYWxzUmVzcG9uc2UiBsrzGAIBAhJ/ChJHZXRBZG1pbkt1YmVjb25maWcSLy5hcGkudjEuQ2x1c3RlclNlcnZpY2VHZXRBZG1pbkt1YmVjb25maWdSZXF1ZXN0GjAuYXBpLnYxLkNsdXN0ZXJTZXJ2aWNlR2V0QWRtaW5LdWJlY29uZmlnUmVzcG9uc2UiBsrzGAIBAhKDAQoTR2V0Vmlld2VyS3ViZWNvbmZpZxIwLmFwaS52MS5DbHVzdGVyU2VydmljZUdldFZpZXdlckt1YmVjb25maWdSZXF1ZXN0GjEuYXBpLnYxLkNsdXN0ZXJTZXJ2aWNlR2V0Vmlld2VyS3ViZWNvbmZpZ1Jlc3BvbnNlIgfK8xgDAQIDEl4KB09wZXJhdGUSJC5hcGkudjEuQ2x1c3RlclNlcnZpY2VPcGVyYXRlUmVxdWVzdBolLmFwaS52MS5DbHVzdGVyU2VydmljZU9wZXJhdGVSZXNwb25zZSIGyvMYAgECQoUBCgpjb20uYXBpLnYxQgxDbHVzdGVyUHJvdG9QAVowZ2l0aHViLmNvbS9tZXRhbC1zdGFjay1jbG91ZC9hcGkvZ28vYXBpL3YxO2FwaXYxogIDQVhYqgIGQXBpLlYxygIGQXBpXFYx4gISQXBpXFYxXEdQQk1ldGFkYXRh6gIHQXBpOjpWMWIGcHJvdG8z", [file_api_v1_common, file_buf_validate_validate, file_google_protobuf_duration, file_google_protobuf_timestamp]);
 
 /**
  * Cluster describes a kubernetes cluster
@@ -423,7 +423,7 @@ export const ClusterServiceOperateRequestSchema: GenMessage<ClusterServiceOperat
   messageDesc(file_api_v1_cluster, 8);
 
 /**
- * ClusterServiceGetRequest is the request payload for a cluster get request
+ * ClusterServiceGetCredentialsRequest is the request payload for a cluster get request
  *
  * @generated from message api.v1.ClusterServiceGetCredentialsRequest
  */
@@ -458,6 +458,76 @@ export const ClusterServiceGetCredentialsRequestSchema: GenMessage<ClusterServic
   messageDesc(file_api_v1_cluster, 9);
 
 /**
+ * ClusterServiceGetAdminKubeconfigRequest is the request payload for a cluster get admin kubeconfig request
+ *
+ * @generated from message api.v1.ClusterServiceGetAdminKubeconfigRequest
+ */
+export type ClusterServiceGetAdminKubeconfigRequest = Message<"api.v1.ClusterServiceGetAdminKubeconfigRequest"> & {
+  /**
+   * Uuid of the cluster
+   *
+   * @generated from field: string uuid = 1;
+   */
+  uuid: string;
+
+  /**
+   * Project of the cluster
+   *
+   * @generated from field: string project = 2;
+   */
+  project: string;
+
+  /**
+   * Expiration defines the duration after which the requested kubernetes access token can not be used anymore
+   *
+   * @generated from field: optional google.protobuf.Duration expiration = 4;
+   */
+  expiration?: Duration;
+};
+
+/**
+ * Describes the message api.v1.ClusterServiceGetAdminKubeconfigRequest.
+ * Use `create(ClusterServiceGetAdminKubeconfigRequestSchema)` to create a new message.
+ */
+export const ClusterServiceGetAdminKubeconfigRequestSchema: GenMessage<ClusterServiceGetAdminKubeconfigRequest> = /*@__PURE__*/
+  messageDesc(file_api_v1_cluster, 10);
+
+/**
+ * ClusterServiceGetViewerKubeconfigRequest is the request payload for a cluster get viewer kubeconfig request
+ *
+ * @generated from message api.v1.ClusterServiceGetViewerKubeconfigRequest
+ */
+export type ClusterServiceGetViewerKubeconfigRequest = Message<"api.v1.ClusterServiceGetViewerKubeconfigRequest"> & {
+  /**
+   * Uuid of the cluster
+   *
+   * @generated from field: string uuid = 1;
+   */
+  uuid: string;
+
+  /**
+   * Project of the cluster
+   *
+   * @generated from field: string project = 2;
+   */
+  project: string;
+
+  /**
+   * Expiration defines the duration after which the requested kubernetes access token can not be used anymore
+   *
+   * @generated from field: optional google.protobuf.Duration expiration = 4;
+   */
+  expiration?: Duration;
+};
+
+/**
+ * Describes the message api.v1.ClusterServiceGetViewerKubeconfigRequest.
+ * Use `create(ClusterServiceGetViewerKubeconfigRequestSchema)` to create a new message.
+ */
+export const ClusterServiceGetViewerKubeconfigRequestSchema: GenMessage<ClusterServiceGetViewerKubeconfigRequest> = /*@__PURE__*/
+  messageDesc(file_api_v1_cluster, 11);
+
+/**
  * ClusterServiceListRequest is the request payload for a cluster list request
  *
  * @generated from message api.v1.ClusterServiceListRequest
@@ -476,7 +546,7 @@ export type ClusterServiceListRequest = Message<"api.v1.ClusterServiceListReques
  * Use `create(ClusterServiceListRequestSchema)` to create a new message.
  */
 export const ClusterServiceListRequestSchema: GenMessage<ClusterServiceListRequest> = /*@__PURE__*/
-  messageDesc(file_api_v1_cluster, 10);
+  messageDesc(file_api_v1_cluster, 12);
 
 /**
  * ClusterServiceCreateRequest is the request payload for a cluster create request
@@ -532,7 +602,7 @@ export type ClusterServiceCreateRequest = Message<"api.v1.ClusterServiceCreateRe
  * Use `create(ClusterServiceCreateRequestSchema)` to create a new message.
  */
 export const ClusterServiceCreateRequestSchema: GenMessage<ClusterServiceCreateRequest> = /*@__PURE__*/
-  messageDesc(file_api_v1_cluster, 11);
+  messageDesc(file_api_v1_cluster, 13);
 
 /**
  * ClusterServiceUpdateRequest is the request payload for a cluster update request
@@ -581,7 +651,7 @@ export type ClusterServiceUpdateRequest = Message<"api.v1.ClusterServiceUpdateRe
  * Use `create(ClusterServiceUpdateRequestSchema)` to create a new message.
  */
 export const ClusterServiceUpdateRequestSchema: GenMessage<ClusterServiceUpdateRequest> = /*@__PURE__*/
-  messageDesc(file_api_v1_cluster, 12);
+  messageDesc(file_api_v1_cluster, 14);
 
 /**
  * ClusterServiceDeleteRequest is the request payload for a cluster delete request
@@ -609,7 +679,7 @@ export type ClusterServiceDeleteRequest = Message<"api.v1.ClusterServiceDeleteRe
  * Use `create(ClusterServiceDeleteRequestSchema)` to create a new message.
  */
 export const ClusterServiceDeleteRequestSchema: GenMessage<ClusterServiceDeleteRequest> = /*@__PURE__*/
-  messageDesc(file_api_v1_cluster, 13);
+  messageDesc(file_api_v1_cluster, 15);
 
 /**
  * ClusterServiceWatchStatusRequest is the request payload for a cluster watch status request
@@ -637,7 +707,7 @@ export type ClusterServiceWatchStatusRequest = Message<"api.v1.ClusterServiceWat
  * Use `create(ClusterServiceWatchStatusRequestSchema)` to create a new message.
  */
 export const ClusterServiceWatchStatusRequestSchema: GenMessage<ClusterServiceWatchStatusRequest> = /*@__PURE__*/
-  messageDesc(file_api_v1_cluster, 14);
+  messageDesc(file_api_v1_cluster, 16);
 
 /**
  * ClusterStatus
@@ -721,7 +791,7 @@ export type ClusterStatus = Message<"api.v1.ClusterStatus"> & {
  * Use `create(ClusterStatusSchema)` to create a new message.
  */
 export const ClusterStatusSchema: GenMessage<ClusterStatus> = /*@__PURE__*/
-  messageDesc(file_api_v1_cluster, 15);
+  messageDesc(file_api_v1_cluster, 17);
 
 /**
  * ClusterStatusLastError is the last known cluster status error
@@ -756,7 +826,7 @@ export type ClusterStatusLastError = Message<"api.v1.ClusterStatusLastError"> & 
  * Use `create(ClusterStatusLastErrorSchema)` to create a new message.
  */
 export const ClusterStatusLastErrorSchema: GenMessage<ClusterStatusLastError> = /*@__PURE__*/
-  messageDesc(file_api_v1_cluster, 16);
+  messageDesc(file_api_v1_cluster, 18);
 
 /**
  * ClusterStatusCondition contains status conditions of a cluster
@@ -812,7 +882,7 @@ export type ClusterStatusCondition = Message<"api.v1.ClusterStatusCondition"> & 
  * Use `create(ClusterStatusConditionSchema)` to create a new message.
  */
 export const ClusterStatusConditionSchema: GenMessage<ClusterStatusCondition> = /*@__PURE__*/
-  messageDesc(file_api_v1_cluster, 17);
+  messageDesc(file_api_v1_cluster, 19);
 
 /**
  * ClusterMonitoring contains details howto access the cluster monitoring
@@ -847,7 +917,7 @@ export type ClusterMonitoring = Message<"api.v1.ClusterMonitoring"> & {
  * Use `create(ClusterMonitoringSchema)` to create a new message.
  */
 export const ClusterMonitoringSchema: GenMessage<ClusterMonitoring> = /*@__PURE__*/
-  messageDesc(file_api_v1_cluster, 18);
+  messageDesc(file_api_v1_cluster, 20);
 
 /**
  * ClusterServiceCreateResponse is the response payload of a cluster create request
@@ -868,7 +938,7 @@ export type ClusterServiceCreateResponse = Message<"api.v1.ClusterServiceCreateR
  * Use `create(ClusterServiceCreateResponseSchema)` to create a new message.
  */
 export const ClusterServiceCreateResponseSchema: GenMessage<ClusterServiceCreateResponse> = /*@__PURE__*/
-  messageDesc(file_api_v1_cluster, 19);
+  messageDesc(file_api_v1_cluster, 21);
 
 /**
  * ClusterServiceGetResponse is the response payload of a cluster get request
@@ -889,7 +959,7 @@ export type ClusterServiceGetResponse = Message<"api.v1.ClusterServiceGetRespons
  * Use `create(ClusterServiceGetResponseSchema)` to create a new message.
  */
 export const ClusterServiceGetResponseSchema: GenMessage<ClusterServiceGetResponse> = /*@__PURE__*/
-  messageDesc(file_api_v1_cluster, 20);
+  messageDesc(file_api_v1_cluster, 22);
 
 /**
  * ClusterServiceGetCredentialsResponse is the response payload of a cluster get credentials request
@@ -910,7 +980,49 @@ export type ClusterServiceGetCredentialsResponse = Message<"api.v1.ClusterServic
  * Use `create(ClusterServiceGetCredentialsResponseSchema)` to create a new message.
  */
 export const ClusterServiceGetCredentialsResponseSchema: GenMessage<ClusterServiceGetCredentialsResponse> = /*@__PURE__*/
-  messageDesc(file_api_v1_cluster, 21);
+  messageDesc(file_api_v1_cluster, 23);
+
+/**
+ * ClusterServiceGetAdminKubeconfigResponse is the response payload of a cluster get admin kubeconfig request
+ *
+ * @generated from message api.v1.ClusterServiceGetAdminKubeconfigResponse
+ */
+export type ClusterServiceGetAdminKubeconfigResponse = Message<"api.v1.ClusterServiceGetAdminKubeconfigResponse"> & {
+  /**
+   * Cluster is the cluster
+   *
+   * @generated from field: string kubeconfig = 1;
+   */
+  kubeconfig: string;
+};
+
+/**
+ * Describes the message api.v1.ClusterServiceGetAdminKubeconfigResponse.
+ * Use `create(ClusterServiceGetAdminKubeconfigResponseSchema)` to create a new message.
+ */
+export const ClusterServiceGetAdminKubeconfigResponseSchema: GenMessage<ClusterServiceGetAdminKubeconfigResponse> = /*@__PURE__*/
+  messageDesc(file_api_v1_cluster, 24);
+
+/**
+ * ClusterServiceGetViewerKubeconfigResponse is the response payload of a cluster get viewer kubeconfig request
+ *
+ * @generated from message api.v1.ClusterServiceGetViewerKubeconfigResponse
+ */
+export type ClusterServiceGetViewerKubeconfigResponse = Message<"api.v1.ClusterServiceGetViewerKubeconfigResponse"> & {
+  /**
+   * Cluster is the cluster
+   *
+   * @generated from field: string kubeconfig = 1;
+   */
+  kubeconfig: string;
+};
+
+/**
+ * Describes the message api.v1.ClusterServiceGetViewerKubeconfigResponse.
+ * Use `create(ClusterServiceGetViewerKubeconfigResponseSchema)` to create a new message.
+ */
+export const ClusterServiceGetViewerKubeconfigResponseSchema: GenMessage<ClusterServiceGetViewerKubeconfigResponse> = /*@__PURE__*/
+  messageDesc(file_api_v1_cluster, 25);
 
 /**
  * ClusterServiceDeleteResponse is the response payload of a cluster delete request
@@ -931,7 +1043,7 @@ export type ClusterServiceDeleteResponse = Message<"api.v1.ClusterServiceDeleteR
  * Use `create(ClusterServiceDeleteResponseSchema)` to create a new message.
  */
 export const ClusterServiceDeleteResponseSchema: GenMessage<ClusterServiceDeleteResponse> = /*@__PURE__*/
-  messageDesc(file_api_v1_cluster, 22);
+  messageDesc(file_api_v1_cluster, 26);
 
 /**
  * ClusterServiceUpdateResponse is the response payload of a cluster update request
@@ -952,7 +1064,7 @@ export type ClusterServiceUpdateResponse = Message<"api.v1.ClusterServiceUpdateR
  * Use `create(ClusterServiceUpdateResponseSchema)` to create a new message.
  */
 export const ClusterServiceUpdateResponseSchema: GenMessage<ClusterServiceUpdateResponse> = /*@__PURE__*/
-  messageDesc(file_api_v1_cluster, 23);
+  messageDesc(file_api_v1_cluster, 27);
 
 /**
  * ClusterServiceListResponse is the response payload of a cluster list request
@@ -973,7 +1085,7 @@ export type ClusterServiceListResponse = Message<"api.v1.ClusterServiceListRespo
  * Use `create(ClusterServiceListResponseSchema)` to create a new message.
  */
 export const ClusterServiceListResponseSchema: GenMessage<ClusterServiceListResponse> = /*@__PURE__*/
-  messageDesc(file_api_v1_cluster, 24);
+  messageDesc(file_api_v1_cluster, 28);
 
 /**
  * ClusterServiceWatchStatusResponse is the response payload of a cluster watch status request
@@ -994,7 +1106,7 @@ export type ClusterServiceWatchStatusResponse = Message<"api.v1.ClusterServiceWa
  * Use `create(ClusterServiceWatchStatusResponseSchema)` to create a new message.
  */
 export const ClusterServiceWatchStatusResponseSchema: GenMessage<ClusterServiceWatchStatusResponse> = /*@__PURE__*/
-  messageDesc(file_api_v1_cluster, 25);
+  messageDesc(file_api_v1_cluster, 29);
 
 /**
  * ClusterServiceOperateResponse is the response payload for the cluster operate request
@@ -1015,7 +1127,7 @@ export type ClusterServiceOperateResponse = Message<"api.v1.ClusterServiceOperat
  * Use `create(ClusterServiceOperateResponseSchema)` to create a new message.
  */
 export const ClusterServiceOperateResponseSchema: GenMessage<ClusterServiceOperateResponse> = /*@__PURE__*/
-  messageDesc(file_api_v1_cluster, 26);
+  messageDesc(file_api_v1_cluster, 30);
 
 /**
  * Operate defines the types of reconciliation to be triggered
@@ -1133,6 +1245,26 @@ export const ClusterService: GenService<{
     methodKind: "unary";
     input: typeof ClusterServiceGetCredentialsRequestSchema;
     output: typeof ClusterServiceGetCredentialsResponseSchema;
+  },
+  /**
+   * GetAdminKubeconfig of a cluster
+   *
+   * @generated from rpc api.v1.ClusterService.GetAdminKubeconfig
+   */
+  getAdminKubeconfig: {
+    methodKind: "unary";
+    input: typeof ClusterServiceGetAdminKubeconfigRequestSchema;
+    output: typeof ClusterServiceGetAdminKubeconfigResponseSchema;
+  },
+  /**
+   * GetViewerKubeconfig of a cluster
+   *
+   * @generated from rpc api.v1.ClusterService.GetViewerKubeconfig
+   */
+  getViewerKubeconfig: {
+    methodKind: "unary";
+    input: typeof ClusterServiceGetViewerKubeconfigRequestSchema;
+    output: typeof ClusterServiceGetViewerKubeconfigResponseSchema;
   },
   /**
    * Operate on a cluster

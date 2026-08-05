@@ -49,6 +49,12 @@ const (
 	// ClusterServiceGetCredentialsProcedure is the fully-qualified name of the ClusterService's
 	// GetCredentials RPC.
 	ClusterServiceGetCredentialsProcedure = "/api.v1.ClusterService/GetCredentials"
+	// ClusterServiceGetAdminKubeconfigProcedure is the fully-qualified name of the ClusterService's
+	// GetAdminKubeconfig RPC.
+	ClusterServiceGetAdminKubeconfigProcedure = "/api.v1.ClusterService/GetAdminKubeconfig"
+	// ClusterServiceGetViewerKubeconfigProcedure is the fully-qualified name of the ClusterService's
+	// GetViewerKubeconfig RPC.
+	ClusterServiceGetViewerKubeconfigProcedure = "/api.v1.ClusterService/GetViewerKubeconfig"
 	// ClusterServiceOperateProcedure is the fully-qualified name of the ClusterService's Operate RPC.
 	ClusterServiceOperateProcedure = "/api.v1.ClusterService/Operate"
 )
@@ -69,6 +75,10 @@ type ClusterServiceClient interface {
 	Update(context.Context, *connect.Request[v1.ClusterServiceUpdateRequest]) (*connect.Response[v1.ClusterServiceUpdateResponse], error)
 	// GetCredentials of a cluster
 	GetCredentials(context.Context, *connect.Request[v1.ClusterServiceGetCredentialsRequest]) (*connect.Response[v1.ClusterServiceGetCredentialsResponse], error)
+	// GetAdminKubeconfig of a cluster
+	GetAdminKubeconfig(context.Context, *connect.Request[v1.ClusterServiceGetAdminKubeconfigRequest]) (*connect.Response[v1.ClusterServiceGetAdminKubeconfigResponse], error)
+	// GetViewerKubeconfig of a cluster
+	GetViewerKubeconfig(context.Context, *connect.Request[v1.ClusterServiceGetViewerKubeconfigRequest]) (*connect.Response[v1.ClusterServiceGetViewerKubeconfigResponse], error)
 	// Operate on a cluster
 	Operate(context.Context, *connect.Request[v1.ClusterServiceOperateRequest]) (*connect.Response[v1.ClusterServiceOperateResponse], error)
 }
@@ -126,6 +136,18 @@ func NewClusterServiceClient(httpClient connect.HTTPClient, baseURL string, opts
 			connect.WithSchema(clusterServiceMethods.ByName("GetCredentials")),
 			connect.WithClientOptions(opts...),
 		),
+		getAdminKubeconfig: connect.NewClient[v1.ClusterServiceGetAdminKubeconfigRequest, v1.ClusterServiceGetAdminKubeconfigResponse](
+			httpClient,
+			baseURL+ClusterServiceGetAdminKubeconfigProcedure,
+			connect.WithSchema(clusterServiceMethods.ByName("GetAdminKubeconfig")),
+			connect.WithClientOptions(opts...),
+		),
+		getViewerKubeconfig: connect.NewClient[v1.ClusterServiceGetViewerKubeconfigRequest, v1.ClusterServiceGetViewerKubeconfigResponse](
+			httpClient,
+			baseURL+ClusterServiceGetViewerKubeconfigProcedure,
+			connect.WithSchema(clusterServiceMethods.ByName("GetViewerKubeconfig")),
+			connect.WithClientOptions(opts...),
+		),
 		operate: connect.NewClient[v1.ClusterServiceOperateRequest, v1.ClusterServiceOperateResponse](
 			httpClient,
 			baseURL+ClusterServiceOperateProcedure,
@@ -137,14 +159,16 @@ func NewClusterServiceClient(httpClient connect.HTTPClient, baseURL string, opts
 
 // clusterServiceClient implements ClusterServiceClient.
 type clusterServiceClient struct {
-	create         *connect.Client[v1.ClusterServiceCreateRequest, v1.ClusterServiceCreateResponse]
-	get            *connect.Client[v1.ClusterServiceGetRequest, v1.ClusterServiceGetResponse]
-	list           *connect.Client[v1.ClusterServiceListRequest, v1.ClusterServiceListResponse]
-	watchStatus    *connect.Client[v1.ClusterServiceWatchStatusRequest, v1.ClusterServiceWatchStatusResponse]
-	delete         *connect.Client[v1.ClusterServiceDeleteRequest, v1.ClusterServiceDeleteResponse]
-	update         *connect.Client[v1.ClusterServiceUpdateRequest, v1.ClusterServiceUpdateResponse]
-	getCredentials *connect.Client[v1.ClusterServiceGetCredentialsRequest, v1.ClusterServiceGetCredentialsResponse]
-	operate        *connect.Client[v1.ClusterServiceOperateRequest, v1.ClusterServiceOperateResponse]
+	create              *connect.Client[v1.ClusterServiceCreateRequest, v1.ClusterServiceCreateResponse]
+	get                 *connect.Client[v1.ClusterServiceGetRequest, v1.ClusterServiceGetResponse]
+	list                *connect.Client[v1.ClusterServiceListRequest, v1.ClusterServiceListResponse]
+	watchStatus         *connect.Client[v1.ClusterServiceWatchStatusRequest, v1.ClusterServiceWatchStatusResponse]
+	delete              *connect.Client[v1.ClusterServiceDeleteRequest, v1.ClusterServiceDeleteResponse]
+	update              *connect.Client[v1.ClusterServiceUpdateRequest, v1.ClusterServiceUpdateResponse]
+	getCredentials      *connect.Client[v1.ClusterServiceGetCredentialsRequest, v1.ClusterServiceGetCredentialsResponse]
+	getAdminKubeconfig  *connect.Client[v1.ClusterServiceGetAdminKubeconfigRequest, v1.ClusterServiceGetAdminKubeconfigResponse]
+	getViewerKubeconfig *connect.Client[v1.ClusterServiceGetViewerKubeconfigRequest, v1.ClusterServiceGetViewerKubeconfigResponse]
+	operate             *connect.Client[v1.ClusterServiceOperateRequest, v1.ClusterServiceOperateResponse]
 }
 
 // Create calls api.v1.ClusterService.Create.
@@ -182,6 +206,16 @@ func (c *clusterServiceClient) GetCredentials(ctx context.Context, req *connect.
 	return c.getCredentials.CallUnary(ctx, req)
 }
 
+// GetAdminKubeconfig calls api.v1.ClusterService.GetAdminKubeconfig.
+func (c *clusterServiceClient) GetAdminKubeconfig(ctx context.Context, req *connect.Request[v1.ClusterServiceGetAdminKubeconfigRequest]) (*connect.Response[v1.ClusterServiceGetAdminKubeconfigResponse], error) {
+	return c.getAdminKubeconfig.CallUnary(ctx, req)
+}
+
+// GetViewerKubeconfig calls api.v1.ClusterService.GetViewerKubeconfig.
+func (c *clusterServiceClient) GetViewerKubeconfig(ctx context.Context, req *connect.Request[v1.ClusterServiceGetViewerKubeconfigRequest]) (*connect.Response[v1.ClusterServiceGetViewerKubeconfigResponse], error) {
+	return c.getViewerKubeconfig.CallUnary(ctx, req)
+}
+
 // Operate calls api.v1.ClusterService.Operate.
 func (c *clusterServiceClient) Operate(ctx context.Context, req *connect.Request[v1.ClusterServiceOperateRequest]) (*connect.Response[v1.ClusterServiceOperateResponse], error) {
 	return c.operate.CallUnary(ctx, req)
@@ -203,6 +237,10 @@ type ClusterServiceHandler interface {
 	Update(context.Context, *connect.Request[v1.ClusterServiceUpdateRequest]) (*connect.Response[v1.ClusterServiceUpdateResponse], error)
 	// GetCredentials of a cluster
 	GetCredentials(context.Context, *connect.Request[v1.ClusterServiceGetCredentialsRequest]) (*connect.Response[v1.ClusterServiceGetCredentialsResponse], error)
+	// GetAdminKubeconfig of a cluster
+	GetAdminKubeconfig(context.Context, *connect.Request[v1.ClusterServiceGetAdminKubeconfigRequest]) (*connect.Response[v1.ClusterServiceGetAdminKubeconfigResponse], error)
+	// GetViewerKubeconfig of a cluster
+	GetViewerKubeconfig(context.Context, *connect.Request[v1.ClusterServiceGetViewerKubeconfigRequest]) (*connect.Response[v1.ClusterServiceGetViewerKubeconfigResponse], error)
 	// Operate on a cluster
 	Operate(context.Context, *connect.Request[v1.ClusterServiceOperateRequest]) (*connect.Response[v1.ClusterServiceOperateResponse], error)
 }
@@ -256,6 +294,18 @@ func NewClusterServiceHandler(svc ClusterServiceHandler, opts ...connect.Handler
 		connect.WithSchema(clusterServiceMethods.ByName("GetCredentials")),
 		connect.WithHandlerOptions(opts...),
 	)
+	clusterServiceGetAdminKubeconfigHandler := connect.NewUnaryHandler(
+		ClusterServiceGetAdminKubeconfigProcedure,
+		svc.GetAdminKubeconfig,
+		connect.WithSchema(clusterServiceMethods.ByName("GetAdminKubeconfig")),
+		connect.WithHandlerOptions(opts...),
+	)
+	clusterServiceGetViewerKubeconfigHandler := connect.NewUnaryHandler(
+		ClusterServiceGetViewerKubeconfigProcedure,
+		svc.GetViewerKubeconfig,
+		connect.WithSchema(clusterServiceMethods.ByName("GetViewerKubeconfig")),
+		connect.WithHandlerOptions(opts...),
+	)
 	clusterServiceOperateHandler := connect.NewUnaryHandler(
 		ClusterServiceOperateProcedure,
 		svc.Operate,
@@ -278,6 +328,10 @@ func NewClusterServiceHandler(svc ClusterServiceHandler, opts ...connect.Handler
 			clusterServiceUpdateHandler.ServeHTTP(w, r)
 		case ClusterServiceGetCredentialsProcedure:
 			clusterServiceGetCredentialsHandler.ServeHTTP(w, r)
+		case ClusterServiceGetAdminKubeconfigProcedure:
+			clusterServiceGetAdminKubeconfigHandler.ServeHTTP(w, r)
+		case ClusterServiceGetViewerKubeconfigProcedure:
+			clusterServiceGetViewerKubeconfigHandler.ServeHTTP(w, r)
 		case ClusterServiceOperateProcedure:
 			clusterServiceOperateHandler.ServeHTTP(w, r)
 		default:
@@ -315,6 +369,14 @@ func (UnimplementedClusterServiceHandler) Update(context.Context, *connect.Reque
 
 func (UnimplementedClusterServiceHandler) GetCredentials(context.Context, *connect.Request[v1.ClusterServiceGetCredentialsRequest]) (*connect.Response[v1.ClusterServiceGetCredentialsResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("api.v1.ClusterService.GetCredentials is not implemented"))
+}
+
+func (UnimplementedClusterServiceHandler) GetAdminKubeconfig(context.Context, *connect.Request[v1.ClusterServiceGetAdminKubeconfigRequest]) (*connect.Response[v1.ClusterServiceGetAdminKubeconfigResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("api.v1.ClusterService.GetAdminKubeconfig is not implemented"))
+}
+
+func (UnimplementedClusterServiceHandler) GetViewerKubeconfig(context.Context, *connect.Request[v1.ClusterServiceGetViewerKubeconfigRequest]) (*connect.Response[v1.ClusterServiceGetViewerKubeconfigResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("api.v1.ClusterService.GetViewerKubeconfig is not implemented"))
 }
 
 func (UnimplementedClusterServiceHandler) Operate(context.Context, *connect.Request[v1.ClusterServiceOperateRequest]) (*connect.Response[v1.ClusterServiceOperateResponse], error) {

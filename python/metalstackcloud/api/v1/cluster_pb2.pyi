@@ -150,6 +150,26 @@ class ClusterServiceGetCredentialsRequest(_message.Message):
     expiration: _duration_pb2.Duration
     def __init__(self, uuid: _Optional[str] = ..., project: _Optional[str] = ..., expiration: _Optional[_Union[datetime.timedelta, _duration_pb2.Duration, _Mapping]] = ...) -> None: ...
 
+class ClusterServiceGetAdminKubeconfigRequest(_message.Message):
+    __slots__ = ("uuid", "project", "expiration")
+    UUID_FIELD_NUMBER: _ClassVar[int]
+    PROJECT_FIELD_NUMBER: _ClassVar[int]
+    EXPIRATION_FIELD_NUMBER: _ClassVar[int]
+    uuid: str
+    project: str
+    expiration: _duration_pb2.Duration
+    def __init__(self, uuid: _Optional[str] = ..., project: _Optional[str] = ..., expiration: _Optional[_Union[datetime.timedelta, _duration_pb2.Duration, _Mapping]] = ...) -> None: ...
+
+class ClusterServiceGetViewerKubeconfigRequest(_message.Message):
+    __slots__ = ("uuid", "project", "expiration")
+    UUID_FIELD_NUMBER: _ClassVar[int]
+    PROJECT_FIELD_NUMBER: _ClassVar[int]
+    EXPIRATION_FIELD_NUMBER: _ClassVar[int]
+    uuid: str
+    project: str
+    expiration: _duration_pb2.Duration
+    def __init__(self, uuid: _Optional[str] = ..., project: _Optional[str] = ..., expiration: _Optional[_Union[datetime.timedelta, _duration_pb2.Duration, _Mapping]] = ...) -> None: ...
+
 class ClusterServiceListRequest(_message.Message):
     __slots__ = ("project",)
     PROJECT_FIELD_NUMBER: _ClassVar[int]
@@ -275,6 +295,18 @@ class ClusterServiceGetResponse(_message.Message):
     def __init__(self, cluster: _Optional[_Union[Cluster, _Mapping]] = ...) -> None: ...
 
 class ClusterServiceGetCredentialsResponse(_message.Message):
+    __slots__ = ("kubeconfig",)
+    KUBECONFIG_FIELD_NUMBER: _ClassVar[int]
+    kubeconfig: str
+    def __init__(self, kubeconfig: _Optional[str] = ...) -> None: ...
+
+class ClusterServiceGetAdminKubeconfigResponse(_message.Message):
+    __slots__ = ("kubeconfig",)
+    KUBECONFIG_FIELD_NUMBER: _ClassVar[int]
+    kubeconfig: str
+    def __init__(self, kubeconfig: _Optional[str] = ...) -> None: ...
+
+class ClusterServiceGetViewerKubeconfigResponse(_message.Message):
     __slots__ = ("kubeconfig",)
     KUBECONFIG_FIELD_NUMBER: _ClassVar[int]
     kubeconfig: str
