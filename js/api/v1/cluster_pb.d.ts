@@ -605,12 +605,42 @@ export type ClusterStatus = Message<"api.v1.ClusterStatus"> & {
      * @generated from field: repeated api.v1.ClusterStatusCondition conditions = 15;
      */
     conditions: ClusterStatusCondition[];
+    /**
+     * AdvertisedAddresses is a list of status conditions of the cluster
+     *
+     * @generated from field: repeated api.v1.AdvertisedAddress advertised_addresses = 16;
+     */
+    advertisedAddresses: AdvertisedAddress[];
 };
 /**
  * Describes the message api.v1.ClusterStatus.
  * Use `create(ClusterStatusSchema)` to create a new message.
  */
 export declare const ClusterStatusSchema: GenMessage<ClusterStatus>;
+/**
+ * AdvertisedAddress is a list of relevant addresses
+ *
+ * @generated from message api.v1.AdvertisedAddress
+ */
+export type AdvertisedAddress = Message<"api.v1.AdvertisedAddress"> & {
+    /**
+     * Name of the advertised address. e.g. external
+     *
+     * @generated from field: string name = 1;
+     */
+    name: string;
+    /**
+     * The URL of the API Server. e.g. https://api.foo.bar or https://1.2.3.4
+     *
+     * @generated from field: string url = 2;
+     */
+    url: string;
+};
+/**
+ * Describes the message api.v1.AdvertisedAddress.
+ * Use `create(AdvertisedAddressSchema)` to create a new message.
+ */
+export declare const AdvertisedAddressSchema: GenMessage<AdvertisedAddress>;
 /**
  * ClusterStatusLastError is the last known cluster status error
  *
