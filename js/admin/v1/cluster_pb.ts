@@ -18,7 +18,7 @@ import type { Message } from "@bufbuild/protobuf";
  * Describes the file admin/v1/cluster.proto.
  */
 export const file_admin_v1_cluster: GenFile = /*@__PURE__*/
-  fileDesc("ChZhZG1pbi92MS9jbHVzdGVyLnByb3RvEghhZG1pbi52MSJJChhDbHVzdGVyU2VydmljZUdldFJlcXVlc3QSFgoEdXVpZBgBIAEoCUIIukgFcgOwAQESFQoNd2l0aF9tYWNoaW5lcxgCIAEoCCLpAgoZQ2x1c3RlclNlcnZpY2VMaXN0UmVxdWVzdBIRCgR1dWlkGAEgASgJSACIAQESFAoHcHJvamVjdBgCIAEoCUgBiAEBEhMKBnRlbmFudBgDIAEoCUgCiAEBEhYKCXBhcnRpdGlvbhgEIAEoCUgDiAEBEhEKBHNlZWQYBSABKAlIBIgBARIRCgRuYW1lGAYgASgJSAWIAQESFAoHcHVycG9zZRgHIAEoCUgGiAEBEj8KBmxhYmVscxgIIAMoCzIvLmFkbWluLnYxLkNsdXN0ZXJTZXJ2aWNlTGlzdFJlcXVlc3QuTGFiZWxzRW50cnkaLQoLTGFiZWxzRW50cnkSCwoDa2V5GAEgASgJEg0KBXZhbHVlGAIgASgJOgI4AUIHCgVfdXVpZEIKCghfcHJvamVjdEIJCgdfdGVuYW50QgwKCl9wYXJ0aXRpb25CBwoFX3NlZWRCBwoFX25hbWVCCgoIX3B1cnBvc2UioQEKIENsdXN0ZXJTZXJ2aWNlQ3JlZGVudGlhbHNSZXF1ZXN0EhYKBHV1aWQYASABKAlCCLpIBXIDsAEBEhAKCHdpdGhfdnBuGAIgASgIEhAKCHdpdGhfc3NoGAMgASgIEjIKCmV4cGlyYXRpb24YBCABKAsyGS5nb29nbGUucHJvdG9idWYuRHVyYXRpb25IAIgBAUINCgtfZXhwaXJhdGlvbiJiChlDbHVzdGVyU2VydmljZUdldFJlc3BvbnNlEiAKB2NsdXN0ZXIYASABKAsyDy5hcGkudjEuQ2x1c3RlchIjCghtYWNoaW5lcxgCIAMoCzIRLmFkbWluLnYxLk1hY2hpbmUiPwoaQ2x1c3RlclNlcnZpY2VMaXN0UmVzcG9uc2USIQoIY2x1c3RlcnMYASADKAsyDy5hcGkudjEuQ2x1c3RlciJ+CiFDbHVzdGVyU2VydmljZUNyZWRlbnRpYWxzUmVzcG9uc2USEgoKa3ViZWNvbmZpZxgBIAEoCRIpCgtzc2hfa2V5cGFpchgCIAEoCzIULmFkbWluLnYxLlNTSEtleVBhaXISGgoDdnBuGAMgASgLMg0uYWRtaW4udjEuVlBOIjMKClNTSEtleVBhaXISEQoJcHVibGlja2V5GAEgASgMEhIKCnByaXZhdGVrZXkYAiABKAwyugIKDkNsdXN0ZXJTZXJ2aWNlEloKA0dldBIiLmFkbWluLnYxLkNsdXN0ZXJTZXJ2aWNlR2V0UmVxdWVzdBojLmFkbWluLnYxLkNsdXN0ZXJTZXJ2aWNlR2V0UmVzcG9uc2UiCtLzGAIBAujzGAISXQoETGlzdBIjLmFkbWluLnYxLkNsdXN0ZXJTZXJ2aWNlTGlzdFJlcXVlc3QaJC5hZG1pbi52MS5DbHVzdGVyU2VydmljZUxpc3RSZXNwb25zZSIK0vMYAgEC6PMYAhJtCgtDcmVkZW50aWFscxIqLmFkbWluLnYxLkNsdXN0ZXJTZXJ2aWNlQ3JlZGVudGlhbHNSZXF1ZXN0GisuYWRtaW4udjEuQ2x1c3RlclNlcnZpY2VDcmVkZW50aWFsc1Jlc3BvbnNlIgXS8xgBAUKTAQoMY29tLmFkbWluLnYxQgxDbHVzdGVyUHJvdG9QAVo0Z2l0aHViLmNvbS9tZXRhbC1zdGFjay1jbG91ZC9hcGkvZ28vYWRtaW4vdjE7YWRtaW52MaICA0FYWKoCCEFkbWluLlYxygIIQWRtaW5cVjHiAhRBZG1pblxWMVxHUEJNZXRhZGF0YeoCCUFkbWluOjpWMWIGcHJvdG8z", [file_admin_v1_machine, file_api_v1_cluster, file_api_v1_common, file_buf_validate_validate, file_google_protobuf_duration]);
+  fileDesc("ChZhZG1pbi92MS9jbHVzdGVyLnByb3RvEghhZG1pbi52MSJJChhDbHVzdGVyU2VydmljZUdldFJlcXVlc3QSFgoEdXVpZBgBIAEoCUIIukgFcgOwAQESFQoNd2l0aF9tYWNoaW5lcxgCIAEoCCLpAgoZQ2x1c3RlclNlcnZpY2VMaXN0UmVxdWVzdBIRCgR1dWlkGAEgASgJSACIAQESFAoHcHJvamVjdBgCIAEoCUgBiAEBEhMKBnRlbmFudBgDIAEoCUgCiAEBEhYKCXBhcnRpdGlvbhgEIAEoCUgDiAEBEhEKBHNlZWQYBSABKAlIBIgBARIRCgRuYW1lGAYgASgJSAWIAQESFAoHcHVycG9zZRgHIAEoCUgGiAEBEj8KBmxhYmVscxgIIAMoCzIvLmFkbWluLnYxLkNsdXN0ZXJTZXJ2aWNlTGlzdFJlcXVlc3QuTGFiZWxzRW50cnkaLQoLTGFiZWxzRW50cnkSCwoDa2V5GAEgASgJEg0KBXZhbHVlGAIgASgJOgI4AUIHCgVfdXVpZEIKCghfcHJvamVjdEIJCgdfdGVuYW50QgwKCl9wYXJ0aXRpb25CBwoFX3NlZWRCBwoFX25hbWVCCgoIX3B1cnBvc2UioQEKIENsdXN0ZXJTZXJ2aWNlQ3JlZGVudGlhbHNSZXF1ZXN0EhYKBHV1aWQYASABKAlCCLpIBXIDsAEBEhAKCHdpdGhfdnBuGAIgASgIEhAKCHdpdGhfc3NoGAMgASgIEjIKCmV4cGlyYXRpb24YBCABKAsyGS5nb29nbGUucHJvdG9idWYuRHVyYXRpb25IAIgBAUINCgtfZXhwaXJhdGlvbiKhAQonQ2x1c3RlclNlcnZpY2VHZXRBZG1pbkt1YmVjb25maWdSZXF1ZXN0EhYKBHV1aWQYASABKAlCCLpIBXIDsAEBEhsKB3Byb2plY3QYAiABKAlCCrpIB3IFEAIYgAESMgoKZXhwaXJhdGlvbhgEIAEoCzIZLmdvb2dsZS5wcm90b2J1Zi5EdXJhdGlvbkgAiAEBQg0KC19leHBpcmF0aW9uIqIBCihDbHVzdGVyU2VydmljZUdldFZpZXdlckt1YmVjb25maWdSZXF1ZXN0EhYKBHV1aWQYASABKAlCCLpIBXIDsAEBEhsKB3Byb2plY3QYAiABKAlCCrpIB3IFEAIYgAESMgoKZXhwaXJhdGlvbhgEIAEoCzIZLmdvb2dsZS5wcm90b2J1Zi5EdXJhdGlvbkgAiAEBQg0KC19leHBpcmF0aW9uImIKGUNsdXN0ZXJTZXJ2aWNlR2V0UmVzcG9uc2USIAoHY2x1c3RlchgBIAEoCzIPLmFwaS52MS5DbHVzdGVyEiMKCG1hY2hpbmVzGAIgAygLMhEuYWRtaW4udjEuTWFjaGluZSI/ChpDbHVzdGVyU2VydmljZUxpc3RSZXNwb25zZRIhCghjbHVzdGVycxgBIAMoCzIPLmFwaS52MS5DbHVzdGVyIn4KIUNsdXN0ZXJTZXJ2aWNlQ3JlZGVudGlhbHNSZXNwb25zZRISCgprdWJlY29uZmlnGAEgASgJEikKC3NzaF9rZXlwYWlyGAIgASgLMhQuYWRtaW4udjEuU1NIS2V5UGFpchIaCgN2cG4YAyABKAsyDS5hZG1pbi52MS5WUE4iPgooQ2x1c3RlclNlcnZpY2VHZXRBZG1pbkt1YmVjb25maWdSZXNwb25zZRISCgprdWJlY29uZmlnGAEgASgJIj8KKUNsdXN0ZXJTZXJ2aWNlR2V0Vmlld2VyS3ViZWNvbmZpZ1Jlc3BvbnNlEhIKCmt1YmVjb25maWcYASABKAkiMwoKU1NIS2V5UGFpchIRCglwdWJsaWNrZXkYASABKAwSEgoKcHJpdmF0ZWtleRgCIAEoDDLIBAoOQ2x1c3RlclNlcnZpY2USWgoDR2V0EiIuYWRtaW4udjEuQ2x1c3RlclNlcnZpY2VHZXRSZXF1ZXN0GiMuYWRtaW4udjEuQ2x1c3RlclNlcnZpY2VHZXRSZXNwb25zZSIK0vMYAgEC6PMYAhJdCgRMaXN0EiMuYWRtaW4udjEuQ2x1c3RlclNlcnZpY2VMaXN0UmVxdWVzdBokLmFkbWluLnYxLkNsdXN0ZXJTZXJ2aWNlTGlzdFJlc3BvbnNlIgrS8xgCAQLo8xgCEm0KC0NyZWRlbnRpYWxzEiouYWRtaW4udjEuQ2x1c3RlclNlcnZpY2VDcmVkZW50aWFsc1JlcXVlc3QaKy5hZG1pbi52MS5DbHVzdGVyU2VydmljZUNyZWRlbnRpYWxzUmVzcG9uc2UiBdLzGAEBEoIBChJHZXRBZG1pbkt1YmVjb25maWcSMS5hZG1pbi52MS5DbHVzdGVyU2VydmljZUdldEFkbWluS3ViZWNvbmZpZ1JlcXVlc3QaMi5hZG1pbi52MS5DbHVzdGVyU2VydmljZUdldEFkbWluS3ViZWNvbmZpZ1Jlc3BvbnNlIgXS8xgBARKGAQoTR2V0Vmlld2VyS3ViZWNvbmZpZxIyLmFkbWluLnYxLkNsdXN0ZXJTZXJ2aWNlR2V0Vmlld2VyS3ViZWNvbmZpZ1JlcXVlc3QaMy5hZG1pbi52MS5DbHVzdGVyU2VydmljZUdldFZpZXdlckt1YmVjb25maWdSZXNwb25zZSIG0vMYAgECQpMBCgxjb20uYWRtaW4udjFCDENsdXN0ZXJQcm90b1ABWjRnaXRodWIuY29tL21ldGFsLXN0YWNrLWNsb3VkL2FwaS9nby9hZG1pbi92MTthZG1pbnYxogIDQVhYqgIIQWRtaW4uVjHKAghBZG1pblxWMeICFEFkbWluXFYxXEdQQk1ldGFkYXRh6gIJQWRtaW46OlYxYgZwcm90bzM", [file_admin_v1_machine, file_api_v1_cluster, file_api_v1_common, file_buf_validate_validate, file_google_protobuf_duration]);
 
 /**
  * ClusterServiceGetRequest is the request payload for the cluster get request
@@ -161,6 +161,76 @@ export const ClusterServiceCredentialsRequestSchema: GenMessage<ClusterServiceCr
   messageDesc(file_admin_v1_cluster, 2);
 
 /**
+ * ClusterServiceGetAdminKubeconfigRequest is the request payload for a cluster get admin kubeconfig request
+ *
+ * @generated from message admin.v1.ClusterServiceGetAdminKubeconfigRequest
+ */
+export type ClusterServiceGetAdminKubeconfigRequest = Message<"admin.v1.ClusterServiceGetAdminKubeconfigRequest"> & {
+  /**
+   * Uuid of the cluster
+   *
+   * @generated from field: string uuid = 1;
+   */
+  uuid: string;
+
+  /**
+   * Project of the cluster
+   *
+   * @generated from field: string project = 2;
+   */
+  project: string;
+
+  /**
+   * Expiration defines the duration after which the requested kubernetes access token can not be used anymore
+   *
+   * @generated from field: optional google.protobuf.Duration expiration = 4;
+   */
+  expiration?: Duration;
+};
+
+/**
+ * Describes the message admin.v1.ClusterServiceGetAdminKubeconfigRequest.
+ * Use `create(ClusterServiceGetAdminKubeconfigRequestSchema)` to create a new message.
+ */
+export const ClusterServiceGetAdminKubeconfigRequestSchema: GenMessage<ClusterServiceGetAdminKubeconfigRequest> = /*@__PURE__*/
+  messageDesc(file_admin_v1_cluster, 3);
+
+/**
+ * ClusterServiceGetViewerKubeconfigRequest is the request payload for a cluster get viewer kubeconfig request
+ *
+ * @generated from message admin.v1.ClusterServiceGetViewerKubeconfigRequest
+ */
+export type ClusterServiceGetViewerKubeconfigRequest = Message<"admin.v1.ClusterServiceGetViewerKubeconfigRequest"> & {
+  /**
+   * Uuid of the cluster
+   *
+   * @generated from field: string uuid = 1;
+   */
+  uuid: string;
+
+  /**
+   * Project of the cluster
+   *
+   * @generated from field: string project = 2;
+   */
+  project: string;
+
+  /**
+   * Expiration defines the duration after which the requested kubernetes access token can not be used anymore
+   *
+   * @generated from field: optional google.protobuf.Duration expiration = 4;
+   */
+  expiration?: Duration;
+};
+
+/**
+ * Describes the message admin.v1.ClusterServiceGetViewerKubeconfigRequest.
+ * Use `create(ClusterServiceGetViewerKubeconfigRequestSchema)` to create a new message.
+ */
+export const ClusterServiceGetViewerKubeconfigRequestSchema: GenMessage<ClusterServiceGetViewerKubeconfigRequest> = /*@__PURE__*/
+  messageDesc(file_admin_v1_cluster, 4);
+
+/**
  * ClusterServiceGetResponse is the response payload for the cluster get request
  *
  * @generated from message admin.v1.ClusterServiceGetResponse
@@ -186,7 +256,7 @@ export type ClusterServiceGetResponse = Message<"admin.v1.ClusterServiceGetRespo
  * Use `create(ClusterServiceGetResponseSchema)` to create a new message.
  */
 export const ClusterServiceGetResponseSchema: GenMessage<ClusterServiceGetResponse> = /*@__PURE__*/
-  messageDesc(file_admin_v1_cluster, 3);
+  messageDesc(file_admin_v1_cluster, 5);
 
 /**
  * ClusterServiceListResponse is the response payload for the cluster list request
@@ -207,7 +277,7 @@ export type ClusterServiceListResponse = Message<"admin.v1.ClusterServiceListRes
  * Use `create(ClusterServiceListResponseSchema)` to create a new message.
  */
 export const ClusterServiceListResponseSchema: GenMessage<ClusterServiceListResponse> = /*@__PURE__*/
-  messageDesc(file_admin_v1_cluster, 4);
+  messageDesc(file_admin_v1_cluster, 6);
 
 /**
  * ClusterServiceCredentialsResponse is the response payload for the cluster credentials request
@@ -242,7 +312,49 @@ export type ClusterServiceCredentialsResponse = Message<"admin.v1.ClusterService
  * Use `create(ClusterServiceCredentialsResponseSchema)` to create a new message.
  */
 export const ClusterServiceCredentialsResponseSchema: GenMessage<ClusterServiceCredentialsResponse> = /*@__PURE__*/
-  messageDesc(file_admin_v1_cluster, 5);
+  messageDesc(file_admin_v1_cluster, 7);
+
+/**
+ * ClusterServiceGetAdminKubeconfigResponse is the response payload of a cluster get admin kubeconfig request
+ *
+ * @generated from message admin.v1.ClusterServiceGetAdminKubeconfigResponse
+ */
+export type ClusterServiceGetAdminKubeconfigResponse = Message<"admin.v1.ClusterServiceGetAdminKubeconfigResponse"> & {
+  /**
+   * Cluster is the cluster
+   *
+   * @generated from field: string kubeconfig = 1;
+   */
+  kubeconfig: string;
+};
+
+/**
+ * Describes the message admin.v1.ClusterServiceGetAdminKubeconfigResponse.
+ * Use `create(ClusterServiceGetAdminKubeconfigResponseSchema)` to create a new message.
+ */
+export const ClusterServiceGetAdminKubeconfigResponseSchema: GenMessage<ClusterServiceGetAdminKubeconfigResponse> = /*@__PURE__*/
+  messageDesc(file_admin_v1_cluster, 8);
+
+/**
+ * ClusterServiceGetViewerKubeconfigResponse is the response payload of a cluster get viewer kubeconfig request
+ *
+ * @generated from message admin.v1.ClusterServiceGetViewerKubeconfigResponse
+ */
+export type ClusterServiceGetViewerKubeconfigResponse = Message<"admin.v1.ClusterServiceGetViewerKubeconfigResponse"> & {
+  /**
+   * Cluster is the cluster
+   *
+   * @generated from field: string kubeconfig = 1;
+   */
+  kubeconfig: string;
+};
+
+/**
+ * Describes the message admin.v1.ClusterServiceGetViewerKubeconfigResponse.
+ * Use `create(ClusterServiceGetViewerKubeconfigResponseSchema)` to create a new message.
+ */
+export const ClusterServiceGetViewerKubeconfigResponseSchema: GenMessage<ClusterServiceGetViewerKubeconfigResponse> = /*@__PURE__*/
+  messageDesc(file_admin_v1_cluster, 9);
 
 /**
  * SSHKeyPair details to access a firewall via ssh
@@ -270,7 +382,7 @@ export type SSHKeyPair = Message<"admin.v1.SSHKeyPair"> & {
  * Use `create(SSHKeyPairSchema)` to create a new message.
  */
 export const SSHKeyPairSchema: GenMessage<SSHKeyPair> = /*@__PURE__*/
-  messageDesc(file_admin_v1_cluster, 6);
+  messageDesc(file_admin_v1_cluster, 10);
 
 /**
  * ClusterService serves cluster related functions
@@ -307,6 +419,27 @@ export const ClusterService: GenService<{
     methodKind: "unary";
     input: typeof ClusterServiceCredentialsRequestSchema;
     output: typeof ClusterServiceCredentialsResponseSchema;
+  },
+  /**
+   * TODO Change necessary permissions
+   * GetAdminKubeconfig of a cluster
+   *
+   * @generated from rpc admin.v1.ClusterService.GetAdminKubeconfig
+   */
+  getAdminKubeconfig: {
+    methodKind: "unary";
+    input: typeof ClusterServiceGetAdminKubeconfigRequestSchema;
+    output: typeof ClusterServiceGetAdminKubeconfigResponseSchema;
+  },
+  /**
+   * GetViewerKubeconfig of a cluster
+   *
+   * @generated from rpc admin.v1.ClusterService.GetViewerKubeconfig
+   */
+  getViewerKubeconfig: {
+    methodKind: "unary";
+    input: typeof ClusterServiceGetViewerKubeconfigRequestSchema;
+    output: typeof ClusterServiceGetViewerKubeconfigResponseSchema;
   },
 }> = /*@__PURE__*/
   serviceDesc(file_admin_v1_cluster, 0);

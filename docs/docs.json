@@ -6634,6 +6634,78 @@
           ]
         },
         {
+          "name": "ClusterServiceGetAdminKubeconfigRequest",
+          "longName": "ClusterServiceGetAdminKubeconfigRequest",
+          "fullName": "admin.v1.ClusterServiceGetAdminKubeconfigRequest",
+          "description": "ClusterServiceGetAdminKubeconfigRequest is the request payload for a cluster get admin kubeconfig request",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": true,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "uuid",
+              "description": "Uuid of the cluster",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "project",
+              "description": "Project of the cluster",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "expiration",
+              "description": "Expiration defines the duration after which the requested kubernetes access token can not be used anymore",
+              "label": "optional",
+              "type": "Duration",
+              "longType": "google.protobuf.Duration",
+              "fullType": "google.protobuf.Duration",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "_expiration",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "ClusterServiceGetAdminKubeconfigResponse",
+          "longName": "ClusterServiceGetAdminKubeconfigResponse",
+          "fullName": "admin.v1.ClusterServiceGetAdminKubeconfigResponse",
+          "description": "ClusterServiceGetAdminKubeconfigResponse is the response payload of a cluster get admin kubeconfig request",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "kubeconfig",
+              "description": "Cluster is the cluster",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
           "name": "ClusterServiceGetRequest",
           "longName": "ClusterServiceGetRequest",
           "fullName": "admin.v1.ClusterServiceGetRequest",
@@ -6698,6 +6770,78 @@
               "type": "Machine",
               "longType": "Machine",
               "fullType": "admin.v1.Machine",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "ClusterServiceGetViewerKubeconfigRequest",
+          "longName": "ClusterServiceGetViewerKubeconfigRequest",
+          "fullName": "admin.v1.ClusterServiceGetViewerKubeconfigRequest",
+          "description": "ClusterServiceGetViewerKubeconfigRequest is the request payload for a cluster get viewer kubeconfig request",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": true,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "uuid",
+              "description": "Uuid of the cluster",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "project",
+              "description": "Project of the cluster",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "expiration",
+              "description": "Expiration defines the duration after which the requested kubernetes access token can not be used anymore",
+              "label": "optional",
+              "type": "Duration",
+              "longType": "google.protobuf.Duration",
+              "fullType": "google.protobuf.Duration",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "_expiration",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "ClusterServiceGetViewerKubeconfigResponse",
+          "longName": "ClusterServiceGetViewerKubeconfigResponse",
+          "fullName": "admin.v1.ClusterServiceGetViewerKubeconfigResponse",
+          "description": "ClusterServiceGetViewerKubeconfigResponse is the response payload of a cluster get viewer kubeconfig request",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "kubeconfig",
+              "description": "Cluster is the cluster",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
@@ -6951,6 +7095,30 @@
               "responseType": "ClusterServiceCredentialsResponse",
               "responseLongType": "ClusterServiceCredentialsResponse",
               "responseFullType": "admin.v1.ClusterServiceCredentialsResponse",
+              "responseStreaming": false
+            },
+            {
+              "name": "GetAdminKubeconfig",
+              "description": "TODO Change necessary permissions\nGetAdminKubeconfig of a cluster",
+              "requestType": "ClusterServiceGetAdminKubeconfigRequest",
+              "requestLongType": "ClusterServiceGetAdminKubeconfigRequest",
+              "requestFullType": "admin.v1.ClusterServiceGetAdminKubeconfigRequest",
+              "requestStreaming": false,
+              "responseType": "ClusterServiceGetAdminKubeconfigResponse",
+              "responseLongType": "ClusterServiceGetAdminKubeconfigResponse",
+              "responseFullType": "admin.v1.ClusterServiceGetAdminKubeconfigResponse",
+              "responseStreaming": false
+            },
+            {
+              "name": "GetViewerKubeconfig",
+              "description": "GetViewerKubeconfig of a cluster",
+              "requestType": "ClusterServiceGetViewerKubeconfigRequest",
+              "requestLongType": "ClusterServiceGetViewerKubeconfigRequest",
+              "requestFullType": "admin.v1.ClusterServiceGetViewerKubeconfigRequest",
+              "requestStreaming": false,
+              "responseType": "ClusterServiceGetViewerKubeconfigResponse",
+              "responseLongType": "ClusterServiceGetViewerKubeconfigResponse",
+              "responseFullType": "admin.v1.ClusterServiceGetViewerKubeconfigResponse",
               "responseStreaming": false
             }
           ]
