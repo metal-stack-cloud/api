@@ -26,6 +26,12 @@ service ClusterService {
   rpc Credentials(ClusterServiceCredentialsRequest) returns (ClusterServiceCredentialsResponse) {
     option (api.v1.admin_roles) = ADMIN_ROLE_EDITOR;
   }
+  // GetMonitoringCredentials returns monitoring credentials for a cluster
+  rpc GetMonitoringCredentials(ClusterServiceGetMonitoringCredentialsRequest) returns (ClusterServiceGetMonitoringCredentialsResponse) {
+    option (api.v1.admin_roles) = ADMIN_ROLE_EDITOR;
+    option (api.v1.admin_roles) = ADMIN_ROLE_VIEWER;
+    option (auditing) = AUDITING_EXCLUDED;
+  }
 }
 
 // ClusterServiceGetRequest is the request payload for the cluster get request
@@ -68,6 +74,12 @@ message ClusterServiceCredentialsRequest {
   optional google.protobuf.Duration expiration = 4;
 }
 
+// ClusterServiceGetMonitoringCredentialsRequest is the request payload for the cluster monitoring credentials request
+message ClusterServiceGetMonitoringCredentialsRequest {
+  // Uuid of the cluster
+  string uuid = 1 [(buf.validate.field).string.uuid = true];
+}
+
 // ClusterServiceGetResponse is the response payload for the cluster get request
 message ClusterServiceGetResponse {
   // Cluster is the cluster
@@ -90,6 +102,12 @@ message ClusterServiceCredentialsResponse {
   SSHKeyPair ssh_keypair = 2;
   // Vpn are the VPN access details
   admin.v1.VPN vpn = 3;
+}
+
+// ClusterServiceGetMonitoringCredentialsResponse is the response payload for the cluster monitoring credentials request
+message ClusterServiceGetMonitoringCredentialsResponse {
+  // Monitoring returns the monitoring credentials and endpoint
+  ClusterMonitoring monitoring = 1;
 }
 
 // SSHKeyPair details to access a firewall via ssh

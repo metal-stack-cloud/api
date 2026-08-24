@@ -298,6 +298,17 @@ message ClusterServiceWatchStatusRequest {
   }];
 }
 
+// ClusterServiceGetMonitoringCredentialsRequest is the request payload for the cluster monitoring credentials request
+message ClusterServiceGetMonitoringCredentialsRequest {
+  // Uuid of the cluster
+  string uuid = 1 [(buf.validate.field).string.uuid = true];
+  // Project of the cluster
+  string project = 2 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
+  }];
+}
+
 // ClusterStatus
 message ClusterStatus {
   // Uuid of the cluster
@@ -404,17 +415,6 @@ message ClusterServiceWatchStatusResponse {
 message ClusterServiceOperateResponse {
   // Cluster is the cluster
   Cluster cluster = 1;
-}
-
-// ClusterServiceGetMonitoringCredentialsRequest is the request payload for the cluster monitoring credentials request
-message ClusterServiceGetMonitoringCredentialsRequest {
-  // Uuid of the cluster
-  string uuid = 1 [(buf.validate.field).string.uuid = true];
-  // Project of the cluster
-  string project = 2 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
 }
 
 // ClusterServiceGetMonitoringCredentialsResponse is the response payload for the cluster monitoring credentials request
