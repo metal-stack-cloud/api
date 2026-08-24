@@ -6,7 +6,7 @@ import type { GenFile, GenMessage, GenService } from "@bufbuild/protobuf/codegen
 import { fileDesc, messageDesc, serviceDesc } from "@bufbuild/protobuf/codegenv2";
 import type { Machine, VPN } from "./machine_pb";
 import { file_admin_v1_machine } from "./machine_pb";
-import type { Cluster } from "../../api/v1/cluster_pb";
+import type { Cluster, ClusterMonitoring } from "../../api/v1/cluster_pb";
 import { file_api_v1_cluster } from "../../api/v1/cluster_pb";
 import { file_api_v1_common } from "../../api/v1/common_pb";
 import { file_buf_validate_validate } from "../../buf/validate/validate_pb";
@@ -18,7 +18,7 @@ import type { Message } from "@bufbuild/protobuf";
  * Describes the file admin/v1/cluster.proto.
  */
 export const file_admin_v1_cluster: GenFile = /*@__PURE__*/
-  fileDesc("ChZhZG1pbi92MS9jbHVzdGVyLnByb3RvEghhZG1pbi52MSJJChhDbHVzdGVyU2VydmljZUdldFJlcXVlc3QSFgoEdXVpZBgBIAEoCUIIukgFcgOwAQESFQoNd2l0aF9tYWNoaW5lcxgCIAEoCCLpAgoZQ2x1c3RlclNlcnZpY2VMaXN0UmVxdWVzdBIRCgR1dWlkGAEgASgJSACIAQESFAoHcHJvamVjdBgCIAEoCUgBiAEBEhMKBnRlbmFudBgDIAEoCUgCiAEBEhYKCXBhcnRpdGlvbhgEIAEoCUgDiAEBEhEKBHNlZWQYBSABKAlIBIgBARIRCgRuYW1lGAYgASgJSAWIAQESFAoHcHVycG9zZRgHIAEoCUgGiAEBEj8KBmxhYmVscxgIIAMoCzIvLmFkbWluLnYxLkNsdXN0ZXJTZXJ2aWNlTGlzdFJlcXVlc3QuTGFiZWxzRW50cnkaLQoLTGFiZWxzRW50cnkSCwoDa2V5GAEgASgJEg0KBXZhbHVlGAIgASgJOgI4AUIHCgVfdXVpZEIKCghfcHJvamVjdEIJCgdfdGVuYW50QgwKCl9wYXJ0aXRpb25CBwoFX3NlZWRCBwoFX25hbWVCCgoIX3B1cnBvc2UioQEKIENsdXN0ZXJTZXJ2aWNlQ3JlZGVudGlhbHNSZXF1ZXN0EhYKBHV1aWQYASABKAlCCLpIBXIDsAEBEhAKCHdpdGhfdnBuGAIgASgIEhAKCHdpdGhfc3NoGAMgASgIEjIKCmV4cGlyYXRpb24YBCABKAsyGS5nb29nbGUucHJvdG9idWYuRHVyYXRpb25IAIgBAUINCgtfZXhwaXJhdGlvbiJHCi1DbHVzdGVyU2VydmljZUdldE1vbml0b3JpbmdDcmVkZW50aWFsc1JlcXVlc3QSFgoEdXVpZBgBIAEoCUIIukgFcgOwAQEiSQoRQ2x1c3Rlck1vbml0b3JpbmcSEAoIdXNlcm5hbWUYASABKAkSEAoIcGFzc3dvcmQYAiABKAkSEAoIZW5kcG9pbnQYAyABKAkiYgoZQ2x1c3RlclNlcnZpY2VHZXRSZXNwb25zZRIgCgdjbHVzdGVyGAEgASgLMg8uYXBpLnYxLkNsdXN0ZXISIwoIbWFjaGluZXMYAiADKAsyES5hZG1pbi52MS5NYWNoaW5lIj8KGkNsdXN0ZXJTZXJ2aWNlTGlzdFJlc3BvbnNlEiEKCGNsdXN0ZXJzGAEgAygLMg8uYXBpLnYxLkNsdXN0ZXIifgohQ2x1c3RlclNlcnZpY2VDcmVkZW50aWFsc1Jlc3BvbnNlEhIKCmt1YmVjb25maWcYASABKAkSKQoLc3NoX2tleXBhaXIYAiABKAsyFC5hZG1pbi52MS5TU0hLZXlQYWlyEhoKA3ZwbhgDIAEoCzINLmFkbWluLnYxLlZQTiJhCi5DbHVzdGVyU2VydmljZUdldE1vbml0b3JpbmdDcmVkZW50aWFsc1Jlc3BvbnNlEi8KCm1vbml0b3JpbmcYASABKAsyGy5hZG1pbi52MS5DbHVzdGVyTW9uaXRvcmluZyIzCgpTU0hLZXlQYWlyEhEKCXB1YmxpY2tleRgBIAEoDBISCgpwcml2YXRla2V5GAIgASgMMtYDCg5DbHVzdGVyU2VydmljZRJaCgNHZXQSIi5hZG1pbi52MS5DbHVzdGVyU2VydmljZUdldFJlcXVlc3QaIy5hZG1pbi52MS5DbHVzdGVyU2VydmljZUdldFJlc3BvbnNlIgrS8xgCAQLo8xgCEl0KBExpc3QSIy5hZG1pbi52MS5DbHVzdGVyU2VydmljZUxpc3RSZXF1ZXN0GiQuYWRtaW4udjEuQ2x1c3RlclNlcnZpY2VMaXN0UmVzcG9uc2UiCtLzGAIBAujzGAISbQoLQ3JlZGVudGlhbHMSKi5hZG1pbi52MS5DbHVzdGVyU2VydmljZUNyZWRlbnRpYWxzUmVxdWVzdBorLmFkbWluLnYxLkNsdXN0ZXJTZXJ2aWNlQ3JlZGVudGlhbHNSZXNwb25zZSIF0vMYAQESmQEKGEdldE1vbml0b3JpbmdDcmVkZW50aWFscxI3LmFkbWluLnYxLkNsdXN0ZXJTZXJ2aWNlR2V0TW9uaXRvcmluZ0NyZWRlbnRpYWxzUmVxdWVzdBo4LmFkbWluLnYxLkNsdXN0ZXJTZXJ2aWNlR2V0TW9uaXRvcmluZ0NyZWRlbnRpYWxzUmVzcG9uc2UiCtLzGAIBAujzGAJCkwEKDGNvbS5hZG1pbi52MUIMQ2x1c3RlclByb3RvUAFaNGdpdGh1Yi5jb20vbWV0YWwtc3RhY2stY2xvdWQvYXBpL2dvL2FkbWluL3YxO2FkbWludjGiAgNBWFiqAghBZG1pbi5WMcoCCEFkbWluXFYx4gIUQWRtaW5cVjFcR1BCTWV0YWRhdGHqAglBZG1pbjo6VjFiBnByb3RvMw", [file_admin_v1_machine, file_api_v1_cluster, file_api_v1_common, file_buf_validate_validate, file_google_protobuf_duration]);
+  fileDesc("ChZhZG1pbi92MS9jbHVzdGVyLnByb3RvEghhZG1pbi52MSJJChhDbHVzdGVyU2VydmljZUdldFJlcXVlc3QSFgoEdXVpZBgBIAEoCUIIukgFcgOwAQESFQoNd2l0aF9tYWNoaW5lcxgCIAEoCCLpAgoZQ2x1c3RlclNlcnZpY2VMaXN0UmVxdWVzdBIRCgR1dWlkGAEgASgJSACIAQESFAoHcHJvamVjdBgCIAEoCUgBiAEBEhMKBnRlbmFudBgDIAEoCUgCiAEBEhYKCXBhcnRpdGlvbhgEIAEoCUgDiAEBEhEKBHNlZWQYBSABKAlIBIgBARIRCgRuYW1lGAYgASgJSAWIAQESFAoHcHVycG9zZRgHIAEoCUgGiAEBEj8KBmxhYmVscxgIIAMoCzIvLmFkbWluLnYxLkNsdXN0ZXJTZXJ2aWNlTGlzdFJlcXVlc3QuTGFiZWxzRW50cnkaLQoLTGFiZWxzRW50cnkSCwoDa2V5GAEgASgJEg0KBXZhbHVlGAIgASgJOgI4AUIHCgVfdXVpZEIKCghfcHJvamVjdEIJCgdfdGVuYW50QgwKCl9wYXJ0aXRpb25CBwoFX3NlZWRCBwoFX25hbWVCCgoIX3B1cnBvc2UioQEKIENsdXN0ZXJTZXJ2aWNlQ3JlZGVudGlhbHNSZXF1ZXN0EhYKBHV1aWQYASABKAlCCLpIBXIDsAEBEhAKCHdpdGhfdnBuGAIgASgIEhAKCHdpdGhfc3NoGAMgASgIEjIKCmV4cGlyYXRpb24YBCABKAsyGS5nb29nbGUucHJvdG9idWYuRHVyYXRpb25IAIgBAUINCgtfZXhwaXJhdGlvbiJHCi1DbHVzdGVyU2VydmljZUdldE1vbml0b3JpbmdDcmVkZW50aWFsc1JlcXVlc3QSFgoEdXVpZBgBIAEoCUIIukgFcgOwAQEiYgoZQ2x1c3RlclNlcnZpY2VHZXRSZXNwb25zZRIgCgdjbHVzdGVyGAEgASgLMg8uYXBpLnYxLkNsdXN0ZXISIwoIbWFjaGluZXMYAiADKAsyES5hZG1pbi52MS5NYWNoaW5lIj8KGkNsdXN0ZXJTZXJ2aWNlTGlzdFJlc3BvbnNlEiEKCGNsdXN0ZXJzGAEgAygLMg8uYXBpLnYxLkNsdXN0ZXIifgohQ2x1c3RlclNlcnZpY2VDcmVkZW50aWFsc1Jlc3BvbnNlEhIKCmt1YmVjb25maWcYASABKAkSKQoLc3NoX2tleXBhaXIYAiABKAsyFC5hZG1pbi52MS5TU0hLZXlQYWlyEhoKA3ZwbhgDIAEoCzINLmFkbWluLnYxLlZQTiJfCi5DbHVzdGVyU2VydmljZUdldE1vbml0b3JpbmdDcmVkZW50aWFsc1Jlc3BvbnNlEi0KCm1vbml0b3JpbmcYASABKAsyGS5hcGkudjEuQ2x1c3Rlck1vbml0b3JpbmciMwoKU1NIS2V5UGFpchIRCglwdWJsaWNrZXkYASABKAwSEgoKcHJpdmF0ZWtleRgCIAEoDDLWAwoOQ2x1c3RlclNlcnZpY2USWgoDR2V0EiIuYWRtaW4udjEuQ2x1c3RlclNlcnZpY2VHZXRSZXF1ZXN0GiMuYWRtaW4udjEuQ2x1c3RlclNlcnZpY2VHZXRSZXNwb25zZSIK0vMYAgEC6PMYAhJdCgRMaXN0EiMuYWRtaW4udjEuQ2x1c3RlclNlcnZpY2VMaXN0UmVxdWVzdBokLmFkbWluLnYxLkNsdXN0ZXJTZXJ2aWNlTGlzdFJlc3BvbnNlIgrS8xgCAQLo8xgCEm0KC0NyZWRlbnRpYWxzEiouYWRtaW4udjEuQ2x1c3RlclNlcnZpY2VDcmVkZW50aWFsc1JlcXVlc3QaKy5hZG1pbi52MS5DbHVzdGVyU2VydmljZUNyZWRlbnRpYWxzUmVzcG9uc2UiBdLzGAEBEpkBChhHZXRNb25pdG9yaW5nQ3JlZGVudGlhbHMSNy5hZG1pbi52MS5DbHVzdGVyU2VydmljZUdldE1vbml0b3JpbmdDcmVkZW50aWFsc1JlcXVlc3QaOC5hZG1pbi52MS5DbHVzdGVyU2VydmljZUdldE1vbml0b3JpbmdDcmVkZW50aWFsc1Jlc3BvbnNlIgrS8xgCAQLo8xgCQpMBCgxjb20uYWRtaW4udjFCDENsdXN0ZXJQcm90b1ABWjRnaXRodWIuY29tL21ldGFsLXN0YWNrLWNsb3VkL2FwaS9nby9hZG1pbi92MTthZG1pbnYxogIDQVhYqgIIQWRtaW4uVjHKAghBZG1pblxWMeICFEFkbWluXFYxXEdQQk1ldGFkYXRh6gIJQWRtaW46OlYxYgZwcm90bzM", [file_admin_v1_machine, file_api_v1_cluster, file_api_v1_common, file_buf_validate_validate, file_google_protobuf_duration]);
 
 /**
  * ClusterServiceGetRequest is the request payload for the cluster get request
@@ -182,41 +182,6 @@ export const ClusterServiceGetMonitoringCredentialsRequestSchema: GenMessage<Clu
   messageDesc(file_admin_v1_cluster, 3);
 
 /**
- * ClusterMonitoring contains details how to access the cluster monitoring
- *
- * @generated from message admin.v1.ClusterMonitoring
- */
-export type ClusterMonitoring = Message<"admin.v1.ClusterMonitoring"> & {
-  /**
-   * Username to access the monitoring
-   *
-   * @generated from field: string username = 1;
-   */
-  username: string;
-
-  /**
-   * Password to access the monitoring
-   *
-   * @generated from field: string password = 2;
-   */
-  password: string;
-
-  /**
-   * Endpoint is the url to access the monitoring
-   *
-   * @generated from field: string endpoint = 3;
-   */
-  endpoint: string;
-};
-
-/**
- * Describes the message admin.v1.ClusterMonitoring.
- * Use `create(ClusterMonitoringSchema)` to create a new message.
- */
-export const ClusterMonitoringSchema: GenMessage<ClusterMonitoring> = /*@__PURE__*/
-  messageDesc(file_admin_v1_cluster, 4);
-
-/**
  * ClusterServiceGetResponse is the response payload for the cluster get request
  *
  * @generated from message admin.v1.ClusterServiceGetResponse
@@ -242,7 +207,7 @@ export type ClusterServiceGetResponse = Message<"admin.v1.ClusterServiceGetRespo
  * Use `create(ClusterServiceGetResponseSchema)` to create a new message.
  */
 export const ClusterServiceGetResponseSchema: GenMessage<ClusterServiceGetResponse> = /*@__PURE__*/
-  messageDesc(file_admin_v1_cluster, 5);
+  messageDesc(file_admin_v1_cluster, 4);
 
 /**
  * ClusterServiceListResponse is the response payload for the cluster list request
@@ -263,7 +228,7 @@ export type ClusterServiceListResponse = Message<"admin.v1.ClusterServiceListRes
  * Use `create(ClusterServiceListResponseSchema)` to create a new message.
  */
 export const ClusterServiceListResponseSchema: GenMessage<ClusterServiceListResponse> = /*@__PURE__*/
-  messageDesc(file_admin_v1_cluster, 6);
+  messageDesc(file_admin_v1_cluster, 5);
 
 /**
  * ClusterServiceCredentialsResponse is the response payload for the cluster credentials request
@@ -298,7 +263,7 @@ export type ClusterServiceCredentialsResponse = Message<"admin.v1.ClusterService
  * Use `create(ClusterServiceCredentialsResponseSchema)` to create a new message.
  */
 export const ClusterServiceCredentialsResponseSchema: GenMessage<ClusterServiceCredentialsResponse> = /*@__PURE__*/
-  messageDesc(file_admin_v1_cluster, 7);
+  messageDesc(file_admin_v1_cluster, 6);
 
 /**
  * ClusterServiceGetMonitoringCredentialsResponse is the response payload for the cluster monitoring credentials request
@@ -309,7 +274,7 @@ export type ClusterServiceGetMonitoringCredentialsResponse = Message<"admin.v1.C
   /**
    * Monitoring returns the monitoring credentials and endpoint
    *
-   * @generated from field: admin.v1.ClusterMonitoring monitoring = 1;
+   * @generated from field: api.v1.ClusterMonitoring monitoring = 1;
    */
   monitoring?: ClusterMonitoring;
 };
@@ -319,7 +284,7 @@ export type ClusterServiceGetMonitoringCredentialsResponse = Message<"admin.v1.C
  * Use `create(ClusterServiceGetMonitoringCredentialsResponseSchema)` to create a new message.
  */
 export const ClusterServiceGetMonitoringCredentialsResponseSchema: GenMessage<ClusterServiceGetMonitoringCredentialsResponse> = /*@__PURE__*/
-  messageDesc(file_admin_v1_cluster, 8);
+  messageDesc(file_admin_v1_cluster, 7);
 
 /**
  * SSHKeyPair details to access a firewall via ssh
@@ -347,7 +312,7 @@ export type SSHKeyPair = Message<"admin.v1.SSHKeyPair"> & {
  * Use `create(SSHKeyPairSchema)` to create a new message.
  */
 export const SSHKeyPairSchema: GenMessage<SSHKeyPair> = /*@__PURE__*/
-  messageDesc(file_admin_v1_cluster, 9);
+  messageDesc(file_admin_v1_cluster, 8);
 
 /**
  * ClusterService serves cluster related functions

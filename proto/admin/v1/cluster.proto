@@ -80,16 +80,6 @@ message ClusterServiceGetMonitoringCredentialsRequest {
   string uuid = 1 [(buf.validate.field).string.uuid = true];
 }
 
-// ClusterMonitoring contains details how to access the cluster monitoring
-message ClusterMonitoring {
-  // Username to access the monitoring
-  string username = 1;
-  // Password to access the monitoring
-  string password = 2;
-  // Endpoint is the url to access the monitoring
-  string endpoint = 3;
-}
-
 // ClusterServiceGetResponse is the response payload for the cluster get request
 message ClusterServiceGetResponse {
   // Cluster is the cluster
@@ -117,7 +107,7 @@ message ClusterServiceCredentialsResponse {
 // ClusterServiceGetMonitoringCredentialsResponse is the response payload for the cluster monitoring credentials request
 message ClusterServiceGetMonitoringCredentialsResponse {
   // Monitoring returns the monitoring credentials and endpoint
-  ClusterMonitoring monitoring = 1;
+  api.v1.ClusterMonitoring monitoring = 1;
 }
 
 // SSHKeyPair details to access a firewall via ssh

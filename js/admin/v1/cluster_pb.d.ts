@@ -1,6 +1,6 @@
 import type { GenFile, GenMessage, GenService } from "@bufbuild/protobuf/codegenv2";
 import type { Machine, VPN } from "./machine_pb";
-import type { Cluster } from "../../api/v1/cluster_pb";
+import type { Cluster, ClusterMonitoring } from "../../api/v1/cluster_pb";
 import type { Duration } from "@bufbuild/protobuf/wkt";
 import type { Message } from "@bufbuild/protobuf";
 /**
@@ -148,36 +148,6 @@ export type ClusterServiceGetMonitoringCredentialsRequest = Message<"admin.v1.Cl
  */
 export declare const ClusterServiceGetMonitoringCredentialsRequestSchema: GenMessage<ClusterServiceGetMonitoringCredentialsRequest>;
 /**
- * ClusterMonitoring contains details how to access the cluster monitoring
- *
- * @generated from message admin.v1.ClusterMonitoring
- */
-export type ClusterMonitoring = Message<"admin.v1.ClusterMonitoring"> & {
-    /**
-     * Username to access the monitoring
-     *
-     * @generated from field: string username = 1;
-     */
-    username: string;
-    /**
-     * Password to access the monitoring
-     *
-     * @generated from field: string password = 2;
-     */
-    password: string;
-    /**
-     * Endpoint is the url to access the monitoring
-     *
-     * @generated from field: string endpoint = 3;
-     */
-    endpoint: string;
-};
-/**
- * Describes the message admin.v1.ClusterMonitoring.
- * Use `create(ClusterMonitoringSchema)` to create a new message.
- */
-export declare const ClusterMonitoringSchema: GenMessage<ClusterMonitoring>;
-/**
  * ClusterServiceGetResponse is the response payload for the cluster get request
  *
  * @generated from message admin.v1.ClusterServiceGetResponse
@@ -258,7 +228,7 @@ export type ClusterServiceGetMonitoringCredentialsResponse = Message<"admin.v1.C
     /**
      * Monitoring returns the monitoring credentials and endpoint
      *
-     * @generated from field: admin.v1.ClusterMonitoring monitoring = 1;
+     * @generated from field: api.v1.ClusterMonitoring monitoring = 1;
      */
     monitoring?: ClusterMonitoring;
 };

@@ -66,16 +66,6 @@ class ClusterServiceGetMonitoringCredentialsRequest(_message.Message):
     uuid: str
     def __init__(self, uuid: _Optional[str] = ...) -> None: ...
 
-class ClusterMonitoring(_message.Message):
-    __slots__ = ("username", "password", "endpoint")
-    USERNAME_FIELD_NUMBER: _ClassVar[int]
-    PASSWORD_FIELD_NUMBER: _ClassVar[int]
-    ENDPOINT_FIELD_NUMBER: _ClassVar[int]
-    username: str
-    password: str
-    endpoint: str
-    def __init__(self, username: _Optional[str] = ..., password: _Optional[str] = ..., endpoint: _Optional[str] = ...) -> None: ...
-
 class ClusterServiceGetResponse(_message.Message):
     __slots__ = ("cluster", "machines")
     CLUSTER_FIELD_NUMBER: _ClassVar[int]
@@ -103,8 +93,8 @@ class ClusterServiceCredentialsResponse(_message.Message):
 class ClusterServiceGetMonitoringCredentialsResponse(_message.Message):
     __slots__ = ("monitoring",)
     MONITORING_FIELD_NUMBER: _ClassVar[int]
-    monitoring: ClusterMonitoring
-    def __init__(self, monitoring: _Optional[_Union[ClusterMonitoring, _Mapping]] = ...) -> None: ...
+    monitoring: _cluster_pb2.ClusterMonitoring
+    def __init__(self, monitoring: _Optional[_Union[_cluster_pb2.ClusterMonitoring, _Mapping]] = ...) -> None: ...
 
 class SSHKeyPair(_message.Message):
     __slots__ = ("publickey", "privatekey")
