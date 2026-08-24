@@ -5278,7 +5278,7 @@
             },
             {
               "name": "expiration",
-              "description": "Expiration defines the duration after which the requested kubernetes access token can not be used anymore",
+              "description": "Expiration defines the duration after which the requested kubernetes access token cannot be used anymore",
               "label": "optional",
               "type": "Duration",
               "longType": "google.protobuf.Duration",
@@ -5482,7 +5482,7 @@
             },
             {
               "name": "expiration",
-              "description": "Expiration defines the duration after which the requested kubernetes access token can not be used anymore",
+              "description": "Expiration defines the duration after which the requested kubernetes access token cannot be used anymore",
               "label": "optional",
               "type": "Duration",
               "longType": "google.protobuf.Duration",
@@ -6657,7 +6657,7 @@
             },
             {
               "name": "expiration",
-              "description": "Expiration defines the duration after which the requested kubernetes access token can not be used anymore",
+              "description": "Expiration defines the duration after which the requested kubernetes access token cannot be used anymore",
               "label": "optional",
               "type": "Duration",
               "longType": "google.protobuf.Duration",
@@ -6789,7 +6789,7 @@
             },
             {
               "name": "expiration",
-              "description": "Expiration defines the duration after which the requested kubernetes access token can not be used anymore",
+              "description": "Expiration defines the duration after which the requested kubernetes access token cannot be used anymore",
               "label": "optional",
               "type": "Duration",
               "longType": "google.protobuf.Duration",

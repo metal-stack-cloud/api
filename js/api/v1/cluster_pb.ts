@@ -478,7 +478,7 @@ export type ClusterServiceGetAdminKubeconfigRequest = Message<"api.v1.ClusterSer
   project: string;
 
   /**
-   * Expiration defines the duration after which the requested kubernetes access token can not be used anymore
+   * Expiration defines the duration after which the requested kubernetes access token cannot be used anymore
    *
    * @generated from field: optional google.protobuf.Duration expiration = 4;
    */
@@ -513,7 +513,7 @@ export type ClusterServiceGetViewerKubeconfigRequest = Message<"api.v1.ClusterSe
   project: string;
 
   /**
-   * Expiration defines the duration after which the requested kubernetes access token can not be used anymore
+   * Expiration defines the duration after which the requested kubernetes access token cannot be used anymore
    *
    * @generated from field: optional google.protobuf.Duration expiration = 4;
    */

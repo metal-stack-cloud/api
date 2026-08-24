@@ -845,7 +845,7 @@ type ClusterServiceGetAdminKubeconfigRequest struct {
 	Uuid string `protobuf:"bytes,1,opt,name=uuid,proto3" json:"uuid,omitempty"`
 	// Project of the cluster
 	Project string `protobuf:"bytes,2,opt,name=project,proto3" json:"project,omitempty"`
-	// Expiration defines the duration after which the requested kubernetes access token can not be used anymore
+	// Expiration defines the duration after which the requested kubernetes access token cannot be used anymore
 	Expiration    *durationpb.Duration `protobuf:"bytes,4,opt,name=expiration,proto3,oneof" json:"expiration,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -909,7 +909,7 @@ type ClusterServiceGetViewerKubeconfigRequest struct {
 	Uuid string `protobuf:"bytes,1,opt,name=uuid,proto3" json:"uuid,omitempty"`
 	// Project of the cluster
 	Project string `protobuf:"bytes,2,opt,name=project,proto3" json:"project,omitempty"`
-	// Expiration defines the duration after which the requested kubernetes access token can not be used anymore
+	// Expiration defines the duration after which the requested kubernetes access token cannot be used anymore
 	Expiration    *durationpb.Duration `protobuf:"bytes,4,opt,name=expiration,proto3,oneof" json:"expiration,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache

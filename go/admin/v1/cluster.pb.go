@@ -266,7 +266,7 @@ type ClusterServiceGetAdminKubeconfigRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Uuid of the cluster
 	Uuid string `protobuf:"bytes,1,opt,name=uuid,proto3" json:"uuid,omitempty"`
-	// Expiration defines the duration after which the requested kubernetes access token can not be used anymore
+	// Expiration defines the duration after which the requested kubernetes access token cannot be used anymore
 	Expiration    *durationpb.Duration `protobuf:"bytes,4,opt,name=expiration,proto3,oneof" json:"expiration,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -321,7 +321,7 @@ type ClusterServiceGetViewerKubeconfigRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Uuid of the cluster
 	Uuid string `protobuf:"bytes,1,opt,name=uuid,proto3" json:"uuid,omitempty"`
-	// Expiration defines the duration after which the requested kubernetes access token can not be used anymore
+	// Expiration defines the duration after which the requested kubernetes access token cannot be used anymore
 	Expiration    *durationpb.Duration `protobuf:"bytes,4,opt,name=expiration,proto3,oneof" json:"expiration,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
