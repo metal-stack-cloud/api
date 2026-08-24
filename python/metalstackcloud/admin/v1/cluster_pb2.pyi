@@ -60,6 +60,22 @@ class ClusterServiceCredentialsRequest(_message.Message):
     expiration: _duration_pb2.Duration
     def __init__(self, uuid: _Optional[str] = ..., with_vpn: bool = ..., with_ssh: bool = ..., expiration: _Optional[_Union[datetime.timedelta, _duration_pb2.Duration, _Mapping]] = ...) -> None: ...
 
+class ClusterServiceGetAdminKubeconfigRequest(_message.Message):
+    __slots__ = ("uuid", "expiration")
+    UUID_FIELD_NUMBER: _ClassVar[int]
+    EXPIRATION_FIELD_NUMBER: _ClassVar[int]
+    uuid: str
+    expiration: _duration_pb2.Duration
+    def __init__(self, uuid: _Optional[str] = ..., expiration: _Optional[_Union[datetime.timedelta, _duration_pb2.Duration, _Mapping]] = ...) -> None: ...
+
+class ClusterServiceGetViewerKubeconfigRequest(_message.Message):
+    __slots__ = ("uuid", "expiration")
+    UUID_FIELD_NUMBER: _ClassVar[int]
+    EXPIRATION_FIELD_NUMBER: _ClassVar[int]
+    uuid: str
+    expiration: _duration_pb2.Duration
+    def __init__(self, uuid: _Optional[str] = ..., expiration: _Optional[_Union[datetime.timedelta, _duration_pb2.Duration, _Mapping]] = ...) -> None: ...
+
 class ClusterServiceGetResponse(_message.Message):
     __slots__ = ("cluster", "machines")
     CLUSTER_FIELD_NUMBER: _ClassVar[int]
@@ -83,6 +99,18 @@ class ClusterServiceCredentialsResponse(_message.Message):
     ssh_keypair: SSHKeyPair
     vpn: _machine_pb2.VPN
     def __init__(self, kubeconfig: _Optional[str] = ..., ssh_keypair: _Optional[_Union[SSHKeyPair, _Mapping]] = ..., vpn: _Optional[_Union[_machine_pb2.VPN, _Mapping]] = ...) -> None: ...
+
+class ClusterServiceGetAdminKubeconfigResponse(_message.Message):
+    __slots__ = ("kubeconfig",)
+    KUBECONFIG_FIELD_NUMBER: _ClassVar[int]
+    kubeconfig: str
+    def __init__(self, kubeconfig: _Optional[str] = ...) -> None: ...
+
+class ClusterServiceGetViewerKubeconfigResponse(_message.Message):
+    __slots__ = ("kubeconfig",)
+    KUBECONFIG_FIELD_NUMBER: _ClassVar[int]
+    kubeconfig: str
+    def __init__(self, kubeconfig: _Optional[str] = ...) -> None: ...
 
 class SSHKeyPair(_message.Message):
     __slots__ = ("publickey", "privatekey")
