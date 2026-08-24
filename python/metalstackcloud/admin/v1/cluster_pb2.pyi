@@ -60,6 +60,22 @@ class ClusterServiceCredentialsRequest(_message.Message):
     expiration: _duration_pb2.Duration
     def __init__(self, uuid: _Optional[str] = ..., with_vpn: bool = ..., with_ssh: bool = ..., expiration: _Optional[_Union[datetime.timedelta, _duration_pb2.Duration, _Mapping]] = ...) -> None: ...
 
+class ClusterServiceGetMonitoringCredentialsRequest(_message.Message):
+    __slots__ = ("uuid",)
+    UUID_FIELD_NUMBER: _ClassVar[int]
+    uuid: str
+    def __init__(self, uuid: _Optional[str] = ...) -> None: ...
+
+class ClusterMonitoring(_message.Message):
+    __slots__ = ("username", "password", "endpoint")
+    USERNAME_FIELD_NUMBER: _ClassVar[int]
+    PASSWORD_FIELD_NUMBER: _ClassVar[int]
+    ENDPOINT_FIELD_NUMBER: _ClassVar[int]
+    username: str
+    password: str
+    endpoint: str
+    def __init__(self, username: _Optional[str] = ..., password: _Optional[str] = ..., endpoint: _Optional[str] = ...) -> None: ...
+
 class ClusterServiceGetResponse(_message.Message):
     __slots__ = ("cluster", "machines")
     CLUSTER_FIELD_NUMBER: _ClassVar[int]
@@ -83,6 +99,12 @@ class ClusterServiceCredentialsResponse(_message.Message):
     ssh_keypair: SSHKeyPair
     vpn: _machine_pb2.VPN
     def __init__(self, kubeconfig: _Optional[str] = ..., ssh_keypair: _Optional[_Union[SSHKeyPair, _Mapping]] = ..., vpn: _Optional[_Union[_machine_pb2.VPN, _Mapping]] = ...) -> None: ...
+
+class ClusterServiceGetMonitoringCredentialsResponse(_message.Message):
+    __slots__ = ("monitoring",)
+    MONITORING_FIELD_NUMBER: _ClassVar[int]
+    monitoring: ClusterMonitoring
+    def __init__(self, monitoring: _Optional[_Union[ClusterMonitoring, _Mapping]] = ...) -> None: ...
 
 class SSHKeyPair(_message.Message):
     __slots__ = ("publickey", "privatekey")

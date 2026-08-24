@@ -130,6 +130,54 @@ export type ClusterServiceCredentialsRequest = Message<"admin.v1.ClusterServiceC
  */
 export declare const ClusterServiceCredentialsRequestSchema: GenMessage<ClusterServiceCredentialsRequest>;
 /**
+ * ClusterServiceGetMonitoringCredentialsRequest is the request payload for the cluster monitoring credentials request
+ *
+ * @generated from message admin.v1.ClusterServiceGetMonitoringCredentialsRequest
+ */
+export type ClusterServiceGetMonitoringCredentialsRequest = Message<"admin.v1.ClusterServiceGetMonitoringCredentialsRequest"> & {
+    /**
+     * Uuid of the cluster
+     *
+     * @generated from field: string uuid = 1;
+     */
+    uuid: string;
+};
+/**
+ * Describes the message admin.v1.ClusterServiceGetMonitoringCredentialsRequest.
+ * Use `create(ClusterServiceGetMonitoringCredentialsRequestSchema)` to create a new message.
+ */
+export declare const ClusterServiceGetMonitoringCredentialsRequestSchema: GenMessage<ClusterServiceGetMonitoringCredentialsRequest>;
+/**
+ * ClusterMonitoring contains details how to access the cluster monitoring
+ *
+ * @generated from message admin.v1.ClusterMonitoring
+ */
+export type ClusterMonitoring = Message<"admin.v1.ClusterMonitoring"> & {
+    /**
+     * Username to access the monitoring
+     *
+     * @generated from field: string username = 1;
+     */
+    username: string;
+    /**
+     * Password to access the monitoring
+     *
+     * @generated from field: string password = 2;
+     */
+    password: string;
+    /**
+     * Endpoint is the url to access the monitoring
+     *
+     * @generated from field: string endpoint = 3;
+     */
+    endpoint: string;
+};
+/**
+ * Describes the message admin.v1.ClusterMonitoring.
+ * Use `create(ClusterMonitoringSchema)` to create a new message.
+ */
+export declare const ClusterMonitoringSchema: GenMessage<ClusterMonitoring>;
+/**
  * ClusterServiceGetResponse is the response payload for the cluster get request
  *
  * @generated from message admin.v1.ClusterServiceGetResponse
@@ -202,6 +250,24 @@ export type ClusterServiceCredentialsResponse = Message<"admin.v1.ClusterService
  */
 export declare const ClusterServiceCredentialsResponseSchema: GenMessage<ClusterServiceCredentialsResponse>;
 /**
+ * ClusterServiceGetMonitoringCredentialsResponse is the response payload for the cluster monitoring credentials request
+ *
+ * @generated from message admin.v1.ClusterServiceGetMonitoringCredentialsResponse
+ */
+export type ClusterServiceGetMonitoringCredentialsResponse = Message<"admin.v1.ClusterServiceGetMonitoringCredentialsResponse"> & {
+    /**
+     * Monitoring returns the monitoring credentials and endpoint
+     *
+     * @generated from field: admin.v1.ClusterMonitoring monitoring = 1;
+     */
+    monitoring?: ClusterMonitoring;
+};
+/**
+ * Describes the message admin.v1.ClusterServiceGetMonitoringCredentialsResponse.
+ * Use `create(ClusterServiceGetMonitoringCredentialsResponseSchema)` to create a new message.
+ */
+export declare const ClusterServiceGetMonitoringCredentialsResponseSchema: GenMessage<ClusterServiceGetMonitoringCredentialsResponse>;
+/**
  * SSHKeyPair details to access a firewall via ssh
  *
  * @generated from message admin.v1.SSHKeyPair
@@ -260,5 +326,15 @@ export declare const ClusterService: GenService<{
         methodKind: "unary";
         input: typeof ClusterServiceCredentialsRequestSchema;
         output: typeof ClusterServiceCredentialsResponseSchema;
+    };
+    /**
+     * GetMonitoringCredentials returns monitoring credentials for a cluster
+     *
+     * @generated from rpc admin.v1.ClusterService.GetMonitoringCredentials
+     */
+    getMonitoringCredentials: {
+        methodKind: "unary";
+        input: typeof ClusterServiceGetMonitoringCredentialsRequestSchema;
+        output: typeof ClusterServiceGetMonitoringCredentialsResponseSchema;
     };
 }>;

@@ -540,6 +540,30 @@ export type ClusterServiceWatchStatusRequest = Message<"api.v1.ClusterServiceWat
  */
 export declare const ClusterServiceWatchStatusRequestSchema: GenMessage<ClusterServiceWatchStatusRequest>;
 /**
+ * ClusterServiceGetMonitoringCredentialsRequest is the request payload for the cluster monitoring credentials request
+ *
+ * @generated from message api.v1.ClusterServiceGetMonitoringCredentialsRequest
+ */
+export type ClusterServiceGetMonitoringCredentialsRequest = Message<"api.v1.ClusterServiceGetMonitoringCredentialsRequest"> & {
+    /**
+     * Uuid of the cluster
+     *
+     * @generated from field: string uuid = 1;
+     */
+    uuid: string;
+    /**
+     * Project of the cluster
+     *
+     * @generated from field: string project = 2;
+     */
+    project: string;
+};
+/**
+ * Describes the message api.v1.ClusterServiceGetMonitoringCredentialsRequest.
+ * Use `create(ClusterServiceGetMonitoringCredentialsRequestSchema)` to create a new message.
+ */
+export declare const ClusterServiceGetMonitoringCredentialsRequestSchema: GenMessage<ClusterServiceGetMonitoringCredentialsRequest>;
+/**
  * ClusterStatus
  *
  * @generated from message api.v1.ClusterStatus
@@ -690,7 +714,7 @@ export type ClusterStatusCondition = Message<"api.v1.ClusterStatusCondition"> & 
  */
 export declare const ClusterStatusConditionSchema: GenMessage<ClusterStatusCondition>;
 /**
- * ClusterMonitoring contains details howto access the cluster monitoring
+ * ClusterMonitoring contains details how to access the cluster monitoring
  *
  * @generated from message api.v1.ClusterMonitoring
  */
@@ -863,30 +887,6 @@ export type ClusterServiceOperateResponse = Message<"api.v1.ClusterServiceOperat
  * Use `create(ClusterServiceOperateResponseSchema)` to create a new message.
  */
 export declare const ClusterServiceOperateResponseSchema: GenMessage<ClusterServiceOperateResponse>;
-/**
- * ClusterServiceGetMonitoringCredentialsRequest is the request payload for the cluster monitoring credentials request
- *
- * @generated from message api.v1.ClusterServiceGetMonitoringCredentialsRequest
- */
-export type ClusterServiceGetMonitoringCredentialsRequest = Message<"api.v1.ClusterServiceGetMonitoringCredentialsRequest"> & {
-    /**
-     * Uuid of the cluster
-     *
-     * @generated from field: string uuid = 1;
-     */
-    uuid: string;
-    /**
-     * Project of the cluster
-     *
-     * @generated from field: string project = 2;
-     */
-    project: string;
-};
-/**
- * Describes the message api.v1.ClusterServiceGetMonitoringCredentialsRequest.
- * Use `create(ClusterServiceGetMonitoringCredentialsRequestSchema)` to create a new message.
- */
-export declare const ClusterServiceGetMonitoringCredentialsRequestSchema: GenMessage<ClusterServiceGetMonitoringCredentialsRequest>;
 /**
  * ClusterServiceGetMonitoringCredentialsResponse is the response payload for the cluster monitoring credentials request
  *

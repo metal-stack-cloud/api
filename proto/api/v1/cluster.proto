@@ -359,7 +359,7 @@ message ClusterStatusCondition {
   google.protobuf.Timestamp last_update_time = 6;
 }
 
-// ClusterMonitoring contains details howto access the cluster monitoring
+// ClusterMonitoring contains details how to access the cluster monitoring
 message ClusterMonitoring {
   // Username to access the monitoring
   string username = 1;
