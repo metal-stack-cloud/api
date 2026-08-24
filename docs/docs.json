@@ -6656,18 +6656,6 @@
               "defaultValue": ""
             },
             {
-              "name": "project",
-              "description": "Project of the cluster",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
               "name": "expiration",
               "description": "Expiration defines the duration after which the requested kubernetes access token can not be used anymore",
               "label": "optional",
@@ -6790,18 +6778,6 @@
             {
               "name": "uuid",
               "description": "Uuid of the cluster",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "project",
-              "description": "Project of the cluster",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -7099,7 +7075,7 @@
             },
             {
               "name": "GetAdminKubeconfig",
-              "description": "TODO Change necessary permissions\nGetAdminKubeconfig of a cluster",
+              "description": "GetAdminKubeconfig of a cluster",
               "requestType": "ClusterServiceGetAdminKubeconfigRequest",
               "requestLongType": "ClusterServiceGetAdminKubeconfigRequest",
               "requestFullType": "admin.v1.ClusterServiceGetAdminKubeconfigRequest",

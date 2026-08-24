@@ -68,8 +68,7 @@ class ClusterServiceServicer(object):
         raise NotImplementedError('Method not implemented!')
 
     def GetAdminKubeconfig(self, request, context):
-        """TODO Change necessary permissions
-        GetAdminKubeconfig of a cluster
+        """GetAdminKubeconfig of a cluster
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')

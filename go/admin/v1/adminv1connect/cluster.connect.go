@@ -56,7 +56,6 @@ type ClusterServiceClient interface {
 	List(context.Context, *connect.Request[v1.ClusterServiceListRequest]) (*connect.Response[v1.ClusterServiceListResponse], error)
 	// Credentials of a cluster
 	Credentials(context.Context, *connect.Request[v1.ClusterServiceCredentialsRequest]) (*connect.Response[v1.ClusterServiceCredentialsResponse], error)
-	// TODO Change necessary permissions
 	// GetAdminKubeconfig of a cluster
 	GetAdminKubeconfig(context.Context, *connect.Request[v1.ClusterServiceGetAdminKubeconfigRequest]) (*connect.Response[v1.ClusterServiceGetAdminKubeconfigResponse], error)
 	// GetViewerKubeconfig of a cluster
@@ -149,7 +148,6 @@ type ClusterServiceHandler interface {
 	List(context.Context, *connect.Request[v1.ClusterServiceListRequest]) (*connect.Response[v1.ClusterServiceListResponse], error)
 	// Credentials of a cluster
 	Credentials(context.Context, *connect.Request[v1.ClusterServiceCredentialsRequest]) (*connect.Response[v1.ClusterServiceCredentialsResponse], error)
-	// TODO Change necessary permissions
 	// GetAdminKubeconfig of a cluster
 	GetAdminKubeconfig(context.Context, *connect.Request[v1.ClusterServiceGetAdminKubeconfigRequest]) (*connect.Response[v1.ClusterServiceGetAdminKubeconfigResponse], error)
 	// GetViewerKubeconfig of a cluster

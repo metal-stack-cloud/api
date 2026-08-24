@@ -61,24 +61,20 @@ class ClusterServiceCredentialsRequest(_message.Message):
     def __init__(self, uuid: _Optional[str] = ..., with_vpn: bool = ..., with_ssh: bool = ..., expiration: _Optional[_Union[datetime.timedelta, _duration_pb2.Duration, _Mapping]] = ...) -> None: ...
 
 class ClusterServiceGetAdminKubeconfigRequest(_message.Message):
-    __slots__ = ("uuid", "project", "expiration")
+    __slots__ = ("uuid", "expiration")
     UUID_FIELD_NUMBER: _ClassVar[int]
-    PROJECT_FIELD_NUMBER: _ClassVar[int]
     EXPIRATION_FIELD_NUMBER: _ClassVar[int]
     uuid: str
-    project: str
     expiration: _duration_pb2.Duration
-    def __init__(self, uuid: _Optional[str] = ..., project: _Optional[str] = ..., expiration: _Optional[_Union[datetime.timedelta, _duration_pb2.Duration, _Mapping]] = ...) -> None: ...
+    def __init__(self, uuid: _Optional[str] = ..., expiration: _Optional[_Union[datetime.timedelta, _duration_pb2.Duration, _Mapping]] = ...) -> None: ...
 
 class ClusterServiceGetViewerKubeconfigRequest(_message.Message):
-    __slots__ = ("uuid", "project", "expiration")
+    __slots__ = ("uuid", "expiration")
     UUID_FIELD_NUMBER: _ClassVar[int]
-    PROJECT_FIELD_NUMBER: _ClassVar[int]
     EXPIRATION_FIELD_NUMBER: _ClassVar[int]
     uuid: str
-    project: str
     expiration: _duration_pb2.Duration
-    def __init__(self, uuid: _Optional[str] = ..., project: _Optional[str] = ..., expiration: _Optional[_Union[datetime.timedelta, _duration_pb2.Duration, _Mapping]] = ...) -> None: ...
+    def __init__(self, uuid: _Optional[str] = ..., expiration: _Optional[_Union[datetime.timedelta, _duration_pb2.Duration, _Mapping]] = ...) -> None: ...
 
 class ClusterServiceGetResponse(_message.Message):
     __slots__ = ("cluster", "machines")

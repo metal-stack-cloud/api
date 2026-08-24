@@ -266,8 +266,6 @@ type ClusterServiceGetAdminKubeconfigRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Uuid of the cluster
 	Uuid string `protobuf:"bytes,1,opt,name=uuid,proto3" json:"uuid,omitempty"`
-	// Project of the cluster
-	Project string `protobuf:"bytes,2,opt,name=project,proto3" json:"project,omitempty"`
 	// Expiration defines the duration after which the requested kubernetes access token can not be used anymore
 	Expiration    *durationpb.Duration `protobuf:"bytes,4,opt,name=expiration,proto3,oneof" json:"expiration,omitempty"`
 	unknownFields protoimpl.UnknownFields
@@ -311,13 +309,6 @@ func (x *ClusterServiceGetAdminKubeconfigRequest) GetUuid() string {
 	return ""
 }
 
-func (x *ClusterServiceGetAdminKubeconfigRequest) GetProject() string {
-	if x != nil {
-		return x.Project
-	}
-	return ""
-}
-
 func (x *ClusterServiceGetAdminKubeconfigRequest) GetExpiration() *durationpb.Duration {
 	if x != nil {
 		return x.Expiration
@@ -330,8 +321,6 @@ type ClusterServiceGetViewerKubeconfigRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Uuid of the cluster
 	Uuid string `protobuf:"bytes,1,opt,name=uuid,proto3" json:"uuid,omitempty"`
-	// Project of the cluster
-	Project string `protobuf:"bytes,2,opt,name=project,proto3" json:"project,omitempty"`
 	// Expiration defines the duration after which the requested kubernetes access token can not be used anymore
 	Expiration    *durationpb.Duration `protobuf:"bytes,4,opt,name=expiration,proto3,oneof" json:"expiration,omitempty"`
 	unknownFields protoimpl.UnknownFields
@@ -371,13 +360,6 @@ func (*ClusterServiceGetViewerKubeconfigRequest) Descriptor() ([]byte, []int) {
 func (x *ClusterServiceGetViewerKubeconfigRequest) GetUuid() string {
 	if x != nil {
 		return x.Uuid
-	}
-	return ""
-}
-
-func (x *ClusterServiceGetViewerKubeconfigRequest) GetProject() string {
-	if x != nil {
-		return x.Project
 	}
 	return ""
 }
@@ -738,19 +720,15 @@ const file_admin_v1_cluster_proto_rawDesc = "" +
 	"\n" +
 	"expiration\x18\x04 \x01(\v2\x19.google.protobuf.DurationH\x00R\n" +
 	"expiration\x88\x01\x01B\r\n" +
-	"\v_expiration\"\xbc\x01\n" +
+	"\v_expiration\"\x96\x01\n" +
 	"'ClusterServiceGetAdminKubeconfigRequest\x12\x1c\n" +
-	"\x04uuid\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x04uuid\x12$\n" +
-	"\aproject\x18\x02 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\aproject\x12>\n" +
+	"\x04uuid\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x04uuid\x12>\n" +
 	"\n" +
 	"expiration\x18\x04 \x01(\v2\x19.google.protobuf.DurationH\x00R\n" +
 	"expiration\x88\x01\x01B\r\n" +
-	"\v_expiration\"\xbd\x01\n" +
+	"\v_expiration\"\x97\x01\n" +
 	"(ClusterServiceGetViewerKubeconfigRequest\x12\x1c\n" +
-	"\x04uuid\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x04uuid\x12$\n" +
-	"\aproject\x18\x02 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\aproject\x12>\n" +
+	"\x04uuid\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x04uuid\x12>\n" +
 	"\n" +
 	"expiration\x18\x04 \x01(\v2\x19.google.protobuf.DurationH\x00R\n" +
 	"expiration\x88\x01\x01B\r\n" +

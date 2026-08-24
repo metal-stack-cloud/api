@@ -81,11 +81,6 @@ message ClusterServiceCredentialsRequest {
 message ClusterServiceGetAdminKubeconfigRequest {
   // Uuid of the cluster
   string uuid = 1 [(buf.validate.field).string.uuid = true];
-  // Project of the cluster
-  string project = 2 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
   // Expiration defines the duration after which the requested kubernetes access token can not be used anymore
   optional google.protobuf.Duration expiration = 4;
 }
@@ -94,11 +89,6 @@ message ClusterServiceGetAdminKubeconfigRequest {
 message ClusterServiceGetViewerKubeconfigRequest {
   // Uuid of the cluster
   string uuid = 1 [(buf.validate.field).string.uuid = true];
-  // Project of the cluster
-  string project = 2 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
   // Expiration defines the duration after which the requested kubernetes access token can not be used anymore
   optional google.protobuf.Duration expiration = 4;
 }

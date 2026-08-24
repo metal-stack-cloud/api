@@ -142,12 +142,6 @@ export type ClusterServiceGetAdminKubeconfigRequest = Message<"admin.v1.ClusterS
      */
     uuid: string;
     /**
-     * Project of the cluster
-     *
-     * @generated from field: string project = 2;
-     */
-    project: string;
-    /**
      * Expiration defines the duration after which the requested kubernetes access token can not be used anymore
      *
      * @generated from field: optional google.protobuf.Duration expiration = 4;
@@ -171,12 +165,6 @@ export type ClusterServiceGetViewerKubeconfigRequest = Message<"admin.v1.Cluster
      * @generated from field: string uuid = 1;
      */
     uuid: string;
-    /**
-     * Project of the cluster
-     *
-     * @generated from field: string project = 2;
-     */
-    project: string;
     /**
      * Expiration defines the duration after which the requested kubernetes access token can not be used anymore
      *
@@ -358,7 +346,6 @@ export declare const ClusterService: GenService<{
         output: typeof ClusterServiceCredentialsResponseSchema;
     };
     /**
-     * TODO Change necessary permissions
      * GetAdminKubeconfig of a cluster
      *
      * @generated from rpc admin.v1.ClusterService.GetAdminKubeconfig
