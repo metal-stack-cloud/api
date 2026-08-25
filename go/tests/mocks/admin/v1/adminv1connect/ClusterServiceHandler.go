@@ -175,6 +175,74 @@ func (_c *ClusterServiceHandler_Get_Call) RunAndReturn(run func(context1 context
 	return _c
 }
 
+// GetAdminKubeconfig provides a mock function for the type ClusterServiceHandler
+func (_mock *ClusterServiceHandler) GetAdminKubeconfig(context1 context.Context, request *connect.Request[adminv1.ClusterServiceGetAdminKubeconfigRequest]) (*connect.Response[adminv1.ClusterServiceGetAdminKubeconfigResponse], error) {
+	ret := _mock.Called(context1, request)
+
+	if len(ret) == 0 {
+		panic("no return value specified for GetAdminKubeconfig")
+	}
+
+	var r0 *connect.Response[adminv1.ClusterServiceGetAdminKubeconfigResponse]
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, *connect.Request[adminv1.ClusterServiceGetAdminKubeconfigRequest]) (*connect.Response[adminv1.ClusterServiceGetAdminKubeconfigResponse], error)); ok {
+		return returnFunc(context1, request)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, *connect.Request[adminv1.ClusterServiceGetAdminKubeconfigRequest]) *connect.Response[adminv1.ClusterServiceGetAdminKubeconfigResponse]); ok {
+		r0 = returnFunc(context1, request)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*connect.Response[adminv1.ClusterServiceGetAdminKubeconfigResponse])
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, *connect.Request[adminv1.ClusterServiceGetAdminKubeconfigRequest]) error); ok {
+		r1 = returnFunc(context1, request)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// ClusterServiceHandler_GetAdminKubeconfig_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetAdminKubeconfig'
+type ClusterServiceHandler_GetAdminKubeconfig_Call struct {
+	*mock.Call
+}
+
+// GetAdminKubeconfig is a helper method to define mock.On call
+//   - context1 context.Context
+//   - request *connect.Request[adminv1.ClusterServiceGetAdminKubeconfigRequest]
+func (_e *ClusterServiceHandler_Expecter) GetAdminKubeconfig(context1 interface{}, request interface{}) *ClusterServiceHandler_GetAdminKubeconfig_Call {
+	return &ClusterServiceHandler_GetAdminKubeconfig_Call{Call: _e.mock.On("GetAdminKubeconfig", context1, request)}
+}
+
+func (_c *ClusterServiceHandler_GetAdminKubeconfig_Call) Run(run func(context1 context.Context, request *connect.Request[adminv1.ClusterServiceGetAdminKubeconfigRequest])) *ClusterServiceHandler_GetAdminKubeconfig_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 *connect.Request[adminv1.ClusterServiceGetAdminKubeconfigRequest]
+		if args[1] != nil {
+			arg1 = args[1].(*connect.Request[adminv1.ClusterServiceGetAdminKubeconfigRequest])
+		}
+		run(
+			arg0,
+			arg1,
+		)
+	})
+	return _c
+}
+
+func (_c *ClusterServiceHandler_GetAdminKubeconfig_Call) Return(response *connect.Response[adminv1.ClusterServiceGetAdminKubeconfigResponse], err error) *ClusterServiceHandler_GetAdminKubeconfig_Call {
+	_c.Call.Return(response, err)
+	return _c
+}
+
+func (_c *ClusterServiceHandler_GetAdminKubeconfig_Call) RunAndReturn(run func(context1 context.Context, request *connect.Request[adminv1.ClusterServiceGetAdminKubeconfigRequest]) (*connect.Response[adminv1.ClusterServiceGetAdminKubeconfigResponse], error)) *ClusterServiceHandler_GetAdminKubeconfig_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
 // GetMonitoringCredentials provides a mock function for the type ClusterServiceHandler
 func (_mock *ClusterServiceHandler) GetMonitoringCredentials(context1 context.Context, request *connect.Request[adminv1.ClusterServiceGetMonitoringCredentialsRequest]) (*connect.Response[adminv1.ClusterServiceGetMonitoringCredentialsResponse], error) {
 	ret := _mock.Called(context1, request)
@@ -239,6 +307,74 @@ func (_c *ClusterServiceHandler_GetMonitoringCredentials_Call) Return(response *
 }
 
 func (_c *ClusterServiceHandler_GetMonitoringCredentials_Call) RunAndReturn(run func(context1 context.Context, request *connect.Request[adminv1.ClusterServiceGetMonitoringCredentialsRequest]) (*connect.Response[adminv1.ClusterServiceGetMonitoringCredentialsResponse], error)) *ClusterServiceHandler_GetMonitoringCredentials_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// GetViewerKubeconfig provides a mock function for the type ClusterServiceHandler
+func (_mock *ClusterServiceHandler) GetViewerKubeconfig(context1 context.Context, request *connect.Request[adminv1.ClusterServiceGetViewerKubeconfigRequest]) (*connect.Response[adminv1.ClusterServiceGetViewerKubeconfigResponse], error) {
+	ret := _mock.Called(context1, request)
+
+	if len(ret) == 0 {
+		panic("no return value specified for GetViewerKubeconfig")
+	}
+
+	var r0 *connect.Response[adminv1.ClusterServiceGetViewerKubeconfigResponse]
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, *connect.Request[adminv1.ClusterServiceGetViewerKubeconfigRequest]) (*connect.Response[adminv1.ClusterServiceGetViewerKubeconfigResponse], error)); ok {
+		return returnFunc(context1, request)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, *connect.Request[adminv1.ClusterServiceGetViewerKubeconfigRequest]) *connect.Response[adminv1.ClusterServiceGetViewerKubeconfigResponse]); ok {
+		r0 = returnFunc(context1, request)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*connect.Response[adminv1.ClusterServiceGetViewerKubeconfigResponse])
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, *connect.Request[adminv1.ClusterServiceGetViewerKubeconfigRequest]) error); ok {
+		r1 = returnFunc(context1, request)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// ClusterServiceHandler_GetViewerKubeconfig_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetViewerKubeconfig'
+type ClusterServiceHandler_GetViewerKubeconfig_Call struct {
+	*mock.Call
+}
+
+// GetViewerKubeconfig is a helper method to define mock.On call
+//   - context1 context.Context
+//   - request *connect.Request[adminv1.ClusterServiceGetViewerKubeconfigRequest]
+func (_e *ClusterServiceHandler_Expecter) GetViewerKubeconfig(context1 interface{}, request interface{}) *ClusterServiceHandler_GetViewerKubeconfig_Call {
+	return &ClusterServiceHandler_GetViewerKubeconfig_Call{Call: _e.mock.On("GetViewerKubeconfig", context1, request)}
+}
+
+func (_c *ClusterServiceHandler_GetViewerKubeconfig_Call) Run(run func(context1 context.Context, request *connect.Request[adminv1.ClusterServiceGetViewerKubeconfigRequest])) *ClusterServiceHandler_GetViewerKubeconfig_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 *connect.Request[adminv1.ClusterServiceGetViewerKubeconfigRequest]
+		if args[1] != nil {
+			arg1 = args[1].(*connect.Request[adminv1.ClusterServiceGetViewerKubeconfigRequest])
+		}
+		run(
+			arg0,
+			arg1,
+		)
+	})
+	return _c
+}
+
+func (_c *ClusterServiceHandler_GetViewerKubeconfig_Call) Return(response *connect.Response[adminv1.ClusterServiceGetViewerKubeconfigResponse], err error) *ClusterServiceHandler_GetViewerKubeconfig_Call {
+	_c.Call.Return(response, err)
+	return _c
+}
+
+func (_c *ClusterServiceHandler_GetViewerKubeconfig_Call) RunAndReturn(run func(context1 context.Context, request *connect.Request[adminv1.ClusterServiceGetViewerKubeconfigRequest]) (*connect.Response[adminv1.ClusterServiceGetViewerKubeconfigResponse], error)) *ClusterServiceHandler_GetViewerKubeconfig_Call {
 	_c.Call.Return(run)
 	return _c
 }

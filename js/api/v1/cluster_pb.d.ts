@@ -354,7 +354,7 @@ export type ClusterServiceOperateRequest = Message<"api.v1.ClusterServiceOperate
  */
 export declare const ClusterServiceOperateRequestSchema: GenMessage<ClusterServiceOperateRequest>;
 /**
- * ClusterServiceGetRequest is the request payload for a cluster get request
+ * ClusterServiceGetCredentialsRequest is the request payload for a cluster get request
  *
  * @generated from message api.v1.ClusterServiceGetCredentialsRequest
  */
@@ -383,6 +383,66 @@ export type ClusterServiceGetCredentialsRequest = Message<"api.v1.ClusterService
  * Use `create(ClusterServiceGetCredentialsRequestSchema)` to create a new message.
  */
 export declare const ClusterServiceGetCredentialsRequestSchema: GenMessage<ClusterServiceGetCredentialsRequest>;
+/**
+ * ClusterServiceGetAdminKubeconfigRequest is the request payload for a cluster get admin kubeconfig request
+ *
+ * @generated from message api.v1.ClusterServiceGetAdminKubeconfigRequest
+ */
+export type ClusterServiceGetAdminKubeconfigRequest = Message<"api.v1.ClusterServiceGetAdminKubeconfigRequest"> & {
+    /**
+     * Uuid of the cluster
+     *
+     * @generated from field: string uuid = 1;
+     */
+    uuid: string;
+    /**
+     * Project of the cluster
+     *
+     * @generated from field: string project = 2;
+     */
+    project: string;
+    /**
+     * Expiration defines the duration after which the requested kubernetes access token cannot be used anymore
+     *
+     * @generated from field: optional google.protobuf.Duration expiration = 4;
+     */
+    expiration?: Duration;
+};
+/**
+ * Describes the message api.v1.ClusterServiceGetAdminKubeconfigRequest.
+ * Use `create(ClusterServiceGetAdminKubeconfigRequestSchema)` to create a new message.
+ */
+export declare const ClusterServiceGetAdminKubeconfigRequestSchema: GenMessage<ClusterServiceGetAdminKubeconfigRequest>;
+/**
+ * ClusterServiceGetViewerKubeconfigRequest is the request payload for a cluster get viewer kubeconfig request
+ *
+ * @generated from message api.v1.ClusterServiceGetViewerKubeconfigRequest
+ */
+export type ClusterServiceGetViewerKubeconfigRequest = Message<"api.v1.ClusterServiceGetViewerKubeconfigRequest"> & {
+    /**
+     * Uuid of the cluster
+     *
+     * @generated from field: string uuid = 1;
+     */
+    uuid: string;
+    /**
+     * Project of the cluster
+     *
+     * @generated from field: string project = 2;
+     */
+    project: string;
+    /**
+     * Expiration defines the duration after which the requested kubernetes access token cannot be used anymore
+     *
+     * @generated from field: optional google.protobuf.Duration expiration = 4;
+     */
+    expiration?: Duration;
+};
+/**
+ * Describes the message api.v1.ClusterServiceGetViewerKubeconfigRequest.
+ * Use `create(ClusterServiceGetViewerKubeconfigRequestSchema)` to create a new message.
+ */
+export declare const ClusterServiceGetViewerKubeconfigRequestSchema: GenMessage<ClusterServiceGetViewerKubeconfigRequest>;
 /**
  * ClusterServiceListRequest is the request payload for a cluster list request
  *
@@ -798,6 +858,42 @@ export type ClusterServiceGetCredentialsResponse = Message<"api.v1.ClusterServic
  */
 export declare const ClusterServiceGetCredentialsResponseSchema: GenMessage<ClusterServiceGetCredentialsResponse>;
 /**
+ * ClusterServiceGetAdminKubeconfigResponse is the response payload of a cluster get admin kubeconfig request
+ *
+ * @generated from message api.v1.ClusterServiceGetAdminKubeconfigResponse
+ */
+export type ClusterServiceGetAdminKubeconfigResponse = Message<"api.v1.ClusterServiceGetAdminKubeconfigResponse"> & {
+    /**
+     * Cluster is the cluster
+     *
+     * @generated from field: string kubeconfig = 1;
+     */
+    kubeconfig: string;
+};
+/**
+ * Describes the message api.v1.ClusterServiceGetAdminKubeconfigResponse.
+ * Use `create(ClusterServiceGetAdminKubeconfigResponseSchema)` to create a new message.
+ */
+export declare const ClusterServiceGetAdminKubeconfigResponseSchema: GenMessage<ClusterServiceGetAdminKubeconfigResponse>;
+/**
+ * ClusterServiceGetViewerKubeconfigResponse is the response payload of a cluster get viewer kubeconfig request
+ *
+ * @generated from message api.v1.ClusterServiceGetViewerKubeconfigResponse
+ */
+export type ClusterServiceGetViewerKubeconfigResponse = Message<"api.v1.ClusterServiceGetViewerKubeconfigResponse"> & {
+    /**
+     * Cluster is the cluster
+     *
+     * @generated from field: string kubeconfig = 1;
+     */
+    kubeconfig: string;
+};
+/**
+ * Describes the message api.v1.ClusterServiceGetViewerKubeconfigResponse.
+ * Use `create(ClusterServiceGetViewerKubeconfigResponseSchema)` to create a new message.
+ */
+export declare const ClusterServiceGetViewerKubeconfigResponseSchema: GenMessage<ClusterServiceGetViewerKubeconfigResponse>;
+/**
  * ClusterServiceDeleteResponse is the response payload of a cluster delete request
  *
  * @generated from message api.v1.ClusterServiceDeleteResponse
@@ -1015,6 +1111,26 @@ export declare const ClusterService: GenService<{
         methodKind: "unary";
         input: typeof ClusterServiceGetCredentialsRequestSchema;
         output: typeof ClusterServiceGetCredentialsResponseSchema;
+    };
+    /**
+     * GetAdminKubeconfig of a cluster
+     *
+     * @generated from rpc api.v1.ClusterService.GetAdminKubeconfig
+     */
+    getAdminKubeconfig: {
+        methodKind: "unary";
+        input: typeof ClusterServiceGetAdminKubeconfigRequestSchema;
+        output: typeof ClusterServiceGetAdminKubeconfigResponseSchema;
+    };
+    /**
+     * GetViewerKubeconfig of a cluster
+     *
+     * @generated from rpc api.v1.ClusterService.GetViewerKubeconfig
+     */
+    getViewerKubeconfig: {
+        methodKind: "unary";
+        input: typeof ClusterServiceGetViewerKubeconfigRequestSchema;
+        output: typeof ClusterServiceGetViewerKubeconfigResponseSchema;
     };
     /**
      * Operate on a cluster

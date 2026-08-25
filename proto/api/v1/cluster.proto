@@ -52,6 +52,17 @@ service ClusterService {
     option (project_roles) = PROJECT_ROLE_OWNER;
     option (project_roles) = PROJECT_ROLE_EDITOR;
   }
+  // GetAdminKubeconfig of a cluster
+  rpc GetAdminKubeconfig(ClusterServiceGetAdminKubeconfigRequest) returns (ClusterServiceGetAdminKubeconfigResponse) {
+    option (project_roles) = PROJECT_ROLE_OWNER;
+    option (project_roles) = PROJECT_ROLE_EDITOR;
+  }
+  // GetViewerKubeconfig of a cluster
+  rpc GetViewerKubeconfig(ClusterServiceGetViewerKubeconfigRequest) returns (ClusterServiceGetViewerKubeconfigResponse) {
+    option (project_roles) = PROJECT_ROLE_OWNER;
+    option (project_roles) = PROJECT_ROLE_EDITOR;
+    option (project_roles) = PROJECT_ROLE_VIEWER;
+  }
   // Operate on a cluster
   rpc Operate(ClusterServiceOperateRequest) returns (ClusterServiceOperateResponse) {
     option (project_roles) = PROJECT_ROLE_OWNER;
@@ -212,7 +223,7 @@ message ClusterServiceOperateRequest {
   Operate operate = 3 [(buf.validate.field).enum.defined_only = true];
 }
 
-// ClusterServiceGetRequest is the request payload for a cluster get request
+// ClusterServiceGetCredentialsRequest is the request payload for a cluster get request
 message ClusterServiceGetCredentialsRequest {
   // Uuid of the cluster
   string uuid = 1 [(buf.validate.field).string.uuid = true];
@@ -222,6 +233,32 @@ message ClusterServiceGetCredentialsRequest {
     max_len: 128
   }];
   // Expiration defines the duration after which the requested kubernetes access token can not be used anymore
+  optional google.protobuf.Duration expiration = 4;
+}
+
+// ClusterServiceGetAdminKubeconfigRequest is the request payload for a cluster get admin kubeconfig request
+message ClusterServiceGetAdminKubeconfigRequest {
+  // Uuid of the cluster
+  string uuid = 1 [(buf.validate.field).string.uuid = true];
+  // Project of the cluster
+  string project = 2 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
+  }];
+  // Expiration defines the duration after which the requested kubernetes access token cannot be used anymore
+  optional google.protobuf.Duration expiration = 4;
+}
+
+// ClusterServiceGetViewerKubeconfigRequest is the request payload for a cluster get viewer kubeconfig request
+message ClusterServiceGetViewerKubeconfigRequest {
+  // Uuid of the cluster
+  string uuid = 1 [(buf.validate.field).string.uuid = true];
+  // Project of the cluster
+  string project = 2 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
+  }];
+  // Expiration defines the duration after which the requested kubernetes access token cannot be used anymore
   optional google.protobuf.Duration expiration = 4;
 }
 
@@ -383,6 +420,18 @@ message ClusterServiceGetResponse {
 
 // ClusterServiceGetCredentialsResponse is the response payload of a cluster get credentials request
 message ClusterServiceGetCredentialsResponse {
+  // Cluster is the cluster
+  string kubeconfig = 1;
+}
+
+// ClusterServiceGetAdminKubeconfigResponse is the response payload of a cluster get admin kubeconfig request
+message ClusterServiceGetAdminKubeconfigResponse {
+  // Cluster is the cluster
+  string kubeconfig = 1;
+}
+
+// ClusterServiceGetViewerKubeconfigResponse is the response payload of a cluster get viewer kubeconfig request
+message ClusterServiceGetViewerKubeconfigResponse {
   // Cluster is the cluster
   string kubeconfig = 1;
 }

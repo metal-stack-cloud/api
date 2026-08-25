@@ -18,6 +18,8 @@ class ClusterService(Protocol):
     async def Get(self, req: admin_dot_v1_dot_cluster__pb2.ClusterServiceGetRequest, ctx: ServiceContext) -> admin_dot_v1_dot_cluster__pb2.ClusterServiceGetResponse: ...
     async def List(self, req: admin_dot_v1_dot_cluster__pb2.ClusterServiceListRequest, ctx: ServiceContext) -> admin_dot_v1_dot_cluster__pb2.ClusterServiceListResponse: ...
     async def Credentials(self, req: admin_dot_v1_dot_cluster__pb2.ClusterServiceCredentialsRequest, ctx: ServiceContext) -> admin_dot_v1_dot_cluster__pb2.ClusterServiceCredentialsResponse: ...
+    async def GetAdminKubeconfig(self, req: admin_dot_v1_dot_cluster__pb2.ClusterServiceGetAdminKubeconfigRequest, ctx: ServiceContext) -> admin_dot_v1_dot_cluster__pb2.ClusterServiceGetAdminKubeconfigResponse: ...
+    async def GetViewerKubeconfig(self, req: admin_dot_v1_dot_cluster__pb2.ClusterServiceGetViewerKubeconfigRequest, ctx: ServiceContext) -> admin_dot_v1_dot_cluster__pb2.ClusterServiceGetViewerKubeconfigResponse: ...
     async def GetMonitoringCredentials(self, req: admin_dot_v1_dot_cluster__pb2.ClusterServiceGetMonitoringCredentialsRequest, ctx: ServiceContext) -> admin_dot_v1_dot_cluster__pb2.ClusterServiceGetMonitoringCredentialsResponse: ...
 
 
@@ -50,6 +52,22 @@ class ClusterServiceServer(ConnecpyServer):
                 output=admin_dot_v1_dot_cluster__pb2.ClusterServiceCredentialsResponse,
                 allowed_methods=("POST",),
             ),
+            "GetAdminKubeconfig": Endpoint[admin_dot_v1_dot_cluster__pb2.ClusterServiceGetAdminKubeconfigRequest, admin_dot_v1_dot_cluster__pb2.ClusterServiceGetAdminKubeconfigResponse](
+                service_name="ClusterService",
+                name="GetAdminKubeconfig",
+                function=getattr(service, "GetAdminKubeconfig"),
+                input=admin_dot_v1_dot_cluster__pb2.ClusterServiceGetAdminKubeconfigRequest,
+                output=admin_dot_v1_dot_cluster__pb2.ClusterServiceGetAdminKubeconfigResponse,
+                allowed_methods=("POST",),
+            ),
+            "GetViewerKubeconfig": Endpoint[admin_dot_v1_dot_cluster__pb2.ClusterServiceGetViewerKubeconfigRequest, admin_dot_v1_dot_cluster__pb2.ClusterServiceGetViewerKubeconfigResponse](
+                service_name="ClusterService",
+                name="GetViewerKubeconfig",
+                function=getattr(service, "GetViewerKubeconfig"),
+                input=admin_dot_v1_dot_cluster__pb2.ClusterServiceGetViewerKubeconfigRequest,
+                output=admin_dot_v1_dot_cluster__pb2.ClusterServiceGetViewerKubeconfigResponse,
+                allowed_methods=("POST",),
+            ),
             "GetMonitoringCredentials": Endpoint[admin_dot_v1_dot_cluster__pb2.ClusterServiceGetMonitoringCredentialsRequest, admin_dot_v1_dot_cluster__pb2.ClusterServiceGetMonitoringCredentialsResponse](
                 service_name="ClusterService",
                 name="GetMonitoringCredentials",
@@ -68,6 +86,8 @@ class ClusterServiceSync(Protocol):
     def Get(self, req: admin_dot_v1_dot_cluster__pb2.ClusterServiceGetRequest, ctx: ServiceContext) -> admin_dot_v1_dot_cluster__pb2.ClusterServiceGetResponse: ...
     def List(self, req: admin_dot_v1_dot_cluster__pb2.ClusterServiceListRequest, ctx: ServiceContext) -> admin_dot_v1_dot_cluster__pb2.ClusterServiceListResponse: ...
     def Credentials(self, req: admin_dot_v1_dot_cluster__pb2.ClusterServiceCredentialsRequest, ctx: ServiceContext) -> admin_dot_v1_dot_cluster__pb2.ClusterServiceCredentialsResponse: ...
+    def GetAdminKubeconfig(self, req: admin_dot_v1_dot_cluster__pb2.ClusterServiceGetAdminKubeconfigRequest, ctx: ServiceContext) -> admin_dot_v1_dot_cluster__pb2.ClusterServiceGetAdminKubeconfigResponse: ...
+    def GetViewerKubeconfig(self, req: admin_dot_v1_dot_cluster__pb2.ClusterServiceGetViewerKubeconfigRequest, ctx: ServiceContext) -> admin_dot_v1_dot_cluster__pb2.ClusterServiceGetViewerKubeconfigResponse: ...
     def GetMonitoringCredentials(self, req: admin_dot_v1_dot_cluster__pb2.ClusterServiceGetMonitoringCredentialsRequest, ctx: ServiceContext) -> admin_dot_v1_dot_cluster__pb2.ClusterServiceGetMonitoringCredentialsResponse: ...
 
 
@@ -98,6 +118,22 @@ class ClusterServiceServerSync(ConnecpyServer):
                 function=getattr(service, "Credentials"),
                 input=admin_dot_v1_dot_cluster__pb2.ClusterServiceCredentialsRequest,
                 output=admin_dot_v1_dot_cluster__pb2.ClusterServiceCredentialsResponse,
+                allowed_methods=("POST",),
+            ),
+            "GetAdminKubeconfig": Endpoint[admin_dot_v1_dot_cluster__pb2.ClusterServiceGetAdminKubeconfigRequest, admin_dot_v1_dot_cluster__pb2.ClusterServiceGetAdminKubeconfigResponse](
+                service_name="ClusterService",
+                name="GetAdminKubeconfig",
+                function=getattr(service, "GetAdminKubeconfig"),
+                input=admin_dot_v1_dot_cluster__pb2.ClusterServiceGetAdminKubeconfigRequest,
+                output=admin_dot_v1_dot_cluster__pb2.ClusterServiceGetAdminKubeconfigResponse,
+                allowed_methods=("POST",),
+            ),
+            "GetViewerKubeconfig": Endpoint[admin_dot_v1_dot_cluster__pb2.ClusterServiceGetViewerKubeconfigRequest, admin_dot_v1_dot_cluster__pb2.ClusterServiceGetViewerKubeconfigResponse](
+                service_name="ClusterService",
+                name="GetViewerKubeconfig",
+                function=getattr(service, "GetViewerKubeconfig"),
+                input=admin_dot_v1_dot_cluster__pb2.ClusterServiceGetViewerKubeconfigRequest,
+                output=admin_dot_v1_dot_cluster__pb2.ClusterServiceGetViewerKubeconfigResponse,
                 allowed_methods=("POST",),
             ),
             "GetMonitoringCredentials": Endpoint[admin_dot_v1_dot_cluster__pb2.ClusterServiceGetMonitoringCredentialsRequest, admin_dot_v1_dot_cluster__pb2.ClusterServiceGetMonitoringCredentialsResponse](
@@ -165,6 +201,42 @@ class ClusterServiceClient(ConnecpyClient):
             ctx=ctx,
             request=request,
             response_class=admin_dot_v1_dot_cluster__pb2.ClusterServiceCredentialsResponse,
+            method=method,
+            **kwargs,
+        )
+
+    def GetAdminKubeconfig(
+        self,
+        request: admin_dot_v1_dot_cluster__pb2.ClusterServiceGetAdminKubeconfigRequest,
+        *,
+        ctx: Optional[ClientContext] = None,
+        server_path_prefix: str = "",
+        **kwargs,
+    ) -> admin_dot_v1_dot_cluster__pb2.ClusterServiceGetAdminKubeconfigResponse:
+        method = "POST"
+        return self._make_request(
+            url=f"{server_path_prefix}/admin.v1.ClusterService/GetAdminKubeconfig",
+            ctx=ctx,
+            request=request,
+            response_class=admin_dot_v1_dot_cluster__pb2.ClusterServiceGetAdminKubeconfigResponse,
+            method=method,
+            **kwargs,
+        )
+
+    def GetViewerKubeconfig(
+        self,
+        request: admin_dot_v1_dot_cluster__pb2.ClusterServiceGetViewerKubeconfigRequest,
+        *,
+        ctx: Optional[ClientContext] = None,
+        server_path_prefix: str = "",
+        **kwargs,
+    ) -> admin_dot_v1_dot_cluster__pb2.ClusterServiceGetViewerKubeconfigResponse:
+        method = "POST"
+        return self._make_request(
+            url=f"{server_path_prefix}/admin.v1.ClusterService/GetViewerKubeconfig",
+            ctx=ctx,
+            request=request,
+            response_class=admin_dot_v1_dot_cluster__pb2.ClusterServiceGetViewerKubeconfigResponse,
             method=method,
             **kwargs,
         )
@@ -244,6 +316,46 @@ class AsyncClusterServiceClient(AsyncConnecpyClient):
             ctx=ctx,
             request=request,
             response_class=admin_dot_v1_dot_cluster__pb2.ClusterServiceCredentialsResponse,
+            method=method,
+            session=session,
+            **kwargs,
+        )
+
+    async def GetAdminKubeconfig(
+        self,
+        request: admin_dot_v1_dot_cluster__pb2.ClusterServiceGetAdminKubeconfigRequest,
+        *,
+        ctx: Optional[ClientContext] = None,
+        server_path_prefix: str = "",
+        session: Union[httpx.AsyncClient, None] = None,
+        **kwargs,
+    ) -> admin_dot_v1_dot_cluster__pb2.ClusterServiceGetAdminKubeconfigResponse:
+        method = "POST"
+        return await self._make_request(
+            url=f"{server_path_prefix}/admin.v1.ClusterService/GetAdminKubeconfig",
+            ctx=ctx,
+            request=request,
+            response_class=admin_dot_v1_dot_cluster__pb2.ClusterServiceGetAdminKubeconfigResponse,
+            method=method,
+            session=session,
+            **kwargs,
+        )
+
+    async def GetViewerKubeconfig(
+        self,
+        request: admin_dot_v1_dot_cluster__pb2.ClusterServiceGetViewerKubeconfigRequest,
+        *,
+        ctx: Optional[ClientContext] = None,
+        server_path_prefix: str = "",
+        session: Union[httpx.AsyncClient, None] = None,
+        **kwargs,
+    ) -> admin_dot_v1_dot_cluster__pb2.ClusterServiceGetViewerKubeconfigResponse:
+        method = "POST"
+        return await self._make_request(
+            url=f"{server_path_prefix}/admin.v1.ClusterService/GetViewerKubeconfig",
+            ctx=ctx,
+            request=request,
+            response_class=admin_dot_v1_dot_cluster__pb2.ClusterServiceGetViewerKubeconfigResponse,
             method=method,
             session=session,
             **kwargs,

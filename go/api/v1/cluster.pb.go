@@ -774,7 +774,7 @@ func (x *ClusterServiceOperateRequest) GetOperate() Operate {
 	return Operate_OPERATE_UNSPECIFIED
 }
 
-// ClusterServiceGetRequest is the request payload for a cluster get request
+// ClusterServiceGetCredentialsRequest is the request payload for a cluster get request
 type ClusterServiceGetCredentialsRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Uuid of the cluster
@@ -838,6 +838,134 @@ func (x *ClusterServiceGetCredentialsRequest) GetExpiration() *durationpb.Durati
 	return nil
 }
 
+// ClusterServiceGetAdminKubeconfigRequest is the request payload for a cluster get admin kubeconfig request
+type ClusterServiceGetAdminKubeconfigRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Uuid of the cluster
+	Uuid string `protobuf:"bytes,1,opt,name=uuid,proto3" json:"uuid,omitempty"`
+	// Project of the cluster
+	Project string `protobuf:"bytes,2,opt,name=project,proto3" json:"project,omitempty"`
+	// Expiration defines the duration after which the requested kubernetes access token cannot be used anymore
+	Expiration    *durationpb.Duration `protobuf:"bytes,4,opt,name=expiration,proto3,oneof" json:"expiration,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ClusterServiceGetAdminKubeconfigRequest) Reset() {
+	*x = ClusterServiceGetAdminKubeconfigRequest{}
+	mi := &file_api_v1_cluster_proto_msgTypes[10]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ClusterServiceGetAdminKubeconfigRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ClusterServiceGetAdminKubeconfigRequest) ProtoMessage() {}
+
+func (x *ClusterServiceGetAdminKubeconfigRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_api_v1_cluster_proto_msgTypes[10]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ClusterServiceGetAdminKubeconfigRequest.ProtoReflect.Descriptor instead.
+func (*ClusterServiceGetAdminKubeconfigRequest) Descriptor() ([]byte, []int) {
+	return file_api_v1_cluster_proto_rawDescGZIP(), []int{10}
+}
+
+func (x *ClusterServiceGetAdminKubeconfigRequest) GetUuid() string {
+	if x != nil {
+		return x.Uuid
+	}
+	return ""
+}
+
+func (x *ClusterServiceGetAdminKubeconfigRequest) GetProject() string {
+	if x != nil {
+		return x.Project
+	}
+	return ""
+}
+
+func (x *ClusterServiceGetAdminKubeconfigRequest) GetExpiration() *durationpb.Duration {
+	if x != nil {
+		return x.Expiration
+	}
+	return nil
+}
+
+// ClusterServiceGetViewerKubeconfigRequest is the request payload for a cluster get viewer kubeconfig request
+type ClusterServiceGetViewerKubeconfigRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Uuid of the cluster
+	Uuid string `protobuf:"bytes,1,opt,name=uuid,proto3" json:"uuid,omitempty"`
+	// Project of the cluster
+	Project string `protobuf:"bytes,2,opt,name=project,proto3" json:"project,omitempty"`
+	// Expiration defines the duration after which the requested kubernetes access token cannot be used anymore
+	Expiration    *durationpb.Duration `protobuf:"bytes,4,opt,name=expiration,proto3,oneof" json:"expiration,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ClusterServiceGetViewerKubeconfigRequest) Reset() {
+	*x = ClusterServiceGetViewerKubeconfigRequest{}
+	mi := &file_api_v1_cluster_proto_msgTypes[11]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ClusterServiceGetViewerKubeconfigRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ClusterServiceGetViewerKubeconfigRequest) ProtoMessage() {}
+
+func (x *ClusterServiceGetViewerKubeconfigRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_api_v1_cluster_proto_msgTypes[11]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ClusterServiceGetViewerKubeconfigRequest.ProtoReflect.Descriptor instead.
+func (*ClusterServiceGetViewerKubeconfigRequest) Descriptor() ([]byte, []int) {
+	return file_api_v1_cluster_proto_rawDescGZIP(), []int{11}
+}
+
+func (x *ClusterServiceGetViewerKubeconfigRequest) GetUuid() string {
+	if x != nil {
+		return x.Uuid
+	}
+	return ""
+}
+
+func (x *ClusterServiceGetViewerKubeconfigRequest) GetProject() string {
+	if x != nil {
+		return x.Project
+	}
+	return ""
+}
+
+func (x *ClusterServiceGetViewerKubeconfigRequest) GetExpiration() *durationpb.Duration {
+	if x != nil {
+		return x.Expiration
+	}
+	return nil
+}
+
 // ClusterServiceListRequest is the request payload for a cluster list request
 type ClusterServiceListRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
@@ -849,7 +977,7 @@ type ClusterServiceListRequest struct {
 
 func (x *ClusterServiceListRequest) Reset() {
 	*x = ClusterServiceListRequest{}
-	mi := &file_api_v1_cluster_proto_msgTypes[10]
+	mi := &file_api_v1_cluster_proto_msgTypes[12]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -861,7 +989,7 @@ func (x *ClusterServiceListRequest) String() string {
 func (*ClusterServiceListRequest) ProtoMessage() {}
 
 func (x *ClusterServiceListRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_api_v1_cluster_proto_msgTypes[10]
+	mi := &file_api_v1_cluster_proto_msgTypes[12]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -874,7 +1002,7 @@ func (x *ClusterServiceListRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ClusterServiceListRequest.ProtoReflect.Descriptor instead.
 func (*ClusterServiceListRequest) Descriptor() ([]byte, []int) {
-	return file_api_v1_cluster_proto_rawDescGZIP(), []int{10}
+	return file_api_v1_cluster_proto_rawDescGZIP(), []int{12}
 }
 
 func (x *ClusterServiceListRequest) GetProject() string {
@@ -905,7 +1033,7 @@ type ClusterServiceCreateRequest struct {
 
 func (x *ClusterServiceCreateRequest) Reset() {
 	*x = ClusterServiceCreateRequest{}
-	mi := &file_api_v1_cluster_proto_msgTypes[11]
+	mi := &file_api_v1_cluster_proto_msgTypes[13]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -917,7 +1045,7 @@ func (x *ClusterServiceCreateRequest) String() string {
 func (*ClusterServiceCreateRequest) ProtoMessage() {}
 
 func (x *ClusterServiceCreateRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_api_v1_cluster_proto_msgTypes[11]
+	mi := &file_api_v1_cluster_proto_msgTypes[13]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -930,7 +1058,7 @@ func (x *ClusterServiceCreateRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ClusterServiceCreateRequest.ProtoReflect.Descriptor instead.
 func (*ClusterServiceCreateRequest) Descriptor() ([]byte, []int) {
-	return file_api_v1_cluster_proto_rawDescGZIP(), []int{11}
+	return file_api_v1_cluster_proto_rawDescGZIP(), []int{13}
 }
 
 func (x *ClusterServiceCreateRequest) GetName() string {
@@ -994,7 +1122,7 @@ type ClusterServiceUpdateRequest struct {
 
 func (x *ClusterServiceUpdateRequest) Reset() {
 	*x = ClusterServiceUpdateRequest{}
-	mi := &file_api_v1_cluster_proto_msgTypes[12]
+	mi := &file_api_v1_cluster_proto_msgTypes[14]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1006,7 +1134,7 @@ func (x *ClusterServiceUpdateRequest) String() string {
 func (*ClusterServiceUpdateRequest) ProtoMessage() {}
 
 func (x *ClusterServiceUpdateRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_api_v1_cluster_proto_msgTypes[12]
+	mi := &file_api_v1_cluster_proto_msgTypes[14]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1019,7 +1147,7 @@ func (x *ClusterServiceUpdateRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ClusterServiceUpdateRequest.ProtoReflect.Descriptor instead.
 func (*ClusterServiceUpdateRequest) Descriptor() ([]byte, []int) {
-	return file_api_v1_cluster_proto_rawDescGZIP(), []int{12}
+	return file_api_v1_cluster_proto_rawDescGZIP(), []int{14}
 }
 
 func (x *ClusterServiceUpdateRequest) GetUuid() string {
@@ -1070,7 +1198,7 @@ type ClusterServiceDeleteRequest struct {
 
 func (x *ClusterServiceDeleteRequest) Reset() {
 	*x = ClusterServiceDeleteRequest{}
-	mi := &file_api_v1_cluster_proto_msgTypes[13]
+	mi := &file_api_v1_cluster_proto_msgTypes[15]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1082,7 +1210,7 @@ func (x *ClusterServiceDeleteRequest) String() string {
 func (*ClusterServiceDeleteRequest) ProtoMessage() {}
 
 func (x *ClusterServiceDeleteRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_api_v1_cluster_proto_msgTypes[13]
+	mi := &file_api_v1_cluster_proto_msgTypes[15]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1095,7 +1223,7 @@ func (x *ClusterServiceDeleteRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ClusterServiceDeleteRequest.ProtoReflect.Descriptor instead.
 func (*ClusterServiceDeleteRequest) Descriptor() ([]byte, []int) {
-	return file_api_v1_cluster_proto_rawDescGZIP(), []int{13}
+	return file_api_v1_cluster_proto_rawDescGZIP(), []int{15}
 }
 
 func (x *ClusterServiceDeleteRequest) GetUuid() string {
@@ -1125,7 +1253,7 @@ type ClusterServiceWatchStatusRequest struct {
 
 func (x *ClusterServiceWatchStatusRequest) Reset() {
 	*x = ClusterServiceWatchStatusRequest{}
-	mi := &file_api_v1_cluster_proto_msgTypes[14]
+	mi := &file_api_v1_cluster_proto_msgTypes[16]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1137,7 +1265,7 @@ func (x *ClusterServiceWatchStatusRequest) String() string {
 func (*ClusterServiceWatchStatusRequest) ProtoMessage() {}
 
 func (x *ClusterServiceWatchStatusRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_api_v1_cluster_proto_msgTypes[14]
+	mi := &file_api_v1_cluster_proto_msgTypes[16]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1150,7 +1278,7 @@ func (x *ClusterServiceWatchStatusRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ClusterServiceWatchStatusRequest.ProtoReflect.Descriptor instead.
 func (*ClusterServiceWatchStatusRequest) Descriptor() ([]byte, []int) {
-	return file_api_v1_cluster_proto_rawDescGZIP(), []int{14}
+	return file_api_v1_cluster_proto_rawDescGZIP(), []int{16}
 }
 
 func (x *ClusterServiceWatchStatusRequest) GetUuid() string {
@@ -1180,7 +1308,7 @@ type ClusterServiceGetMonitoringCredentialsRequest struct {
 
 func (x *ClusterServiceGetMonitoringCredentialsRequest) Reset() {
 	*x = ClusterServiceGetMonitoringCredentialsRequest{}
-	mi := &file_api_v1_cluster_proto_msgTypes[15]
+	mi := &file_api_v1_cluster_proto_msgTypes[17]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1192,7 +1320,7 @@ func (x *ClusterServiceGetMonitoringCredentialsRequest) String() string {
 func (*ClusterServiceGetMonitoringCredentialsRequest) ProtoMessage() {}
 
 func (x *ClusterServiceGetMonitoringCredentialsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_api_v1_cluster_proto_msgTypes[15]
+	mi := &file_api_v1_cluster_proto_msgTypes[17]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1205,7 +1333,7 @@ func (x *ClusterServiceGetMonitoringCredentialsRequest) ProtoReflect() protorefl
 
 // Deprecated: Use ClusterServiceGetMonitoringCredentialsRequest.ProtoReflect.Descriptor instead.
 func (*ClusterServiceGetMonitoringCredentialsRequest) Descriptor() ([]byte, []int) {
-	return file_api_v1_cluster_proto_rawDescGZIP(), []int{15}
+	return file_api_v1_cluster_proto_rawDescGZIP(), []int{17}
 }
 
 func (x *ClusterServiceGetMonitoringCredentialsRequest) GetUuid() string {
@@ -1251,7 +1379,7 @@ type ClusterStatus struct {
 
 func (x *ClusterStatus) Reset() {
 	*x = ClusterStatus{}
-	mi := &file_api_v1_cluster_proto_msgTypes[16]
+	mi := &file_api_v1_cluster_proto_msgTypes[18]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1263,7 +1391,7 @@ func (x *ClusterStatus) String() string {
 func (*ClusterStatus) ProtoMessage() {}
 
 func (x *ClusterStatus) ProtoReflect() protoreflect.Message {
-	mi := &file_api_v1_cluster_proto_msgTypes[16]
+	mi := &file_api_v1_cluster_proto_msgTypes[18]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1276,7 +1404,7 @@ func (x *ClusterStatus) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ClusterStatus.ProtoReflect.Descriptor instead.
 func (*ClusterStatus) Descriptor() ([]byte, []int) {
-	return file_api_v1_cluster_proto_rawDescGZIP(), []int{16}
+	return file_api_v1_cluster_proto_rawDescGZIP(), []int{18}
 }
 
 func (x *ClusterStatus) GetUuid() string {
@@ -1364,7 +1492,7 @@ type ClusterStatusLastError struct {
 
 func (x *ClusterStatusLastError) Reset() {
 	*x = ClusterStatusLastError{}
-	mi := &file_api_v1_cluster_proto_msgTypes[17]
+	mi := &file_api_v1_cluster_proto_msgTypes[19]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1376,7 +1504,7 @@ func (x *ClusterStatusLastError) String() string {
 func (*ClusterStatusLastError) ProtoMessage() {}
 
 func (x *ClusterStatusLastError) ProtoReflect() protoreflect.Message {
-	mi := &file_api_v1_cluster_proto_msgTypes[17]
+	mi := &file_api_v1_cluster_proto_msgTypes[19]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1389,7 +1517,7 @@ func (x *ClusterStatusLastError) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ClusterStatusLastError.ProtoReflect.Descriptor instead.
 func (*ClusterStatusLastError) Descriptor() ([]byte, []int) {
-	return file_api_v1_cluster_proto_rawDescGZIP(), []int{17}
+	return file_api_v1_cluster_proto_rawDescGZIP(), []int{19}
 }
 
 func (x *ClusterStatusLastError) GetDescription() string {
@@ -1434,7 +1562,7 @@ type ClusterStatusCondition struct {
 
 func (x *ClusterStatusCondition) Reset() {
 	*x = ClusterStatusCondition{}
-	mi := &file_api_v1_cluster_proto_msgTypes[18]
+	mi := &file_api_v1_cluster_proto_msgTypes[20]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1446,7 +1574,7 @@ func (x *ClusterStatusCondition) String() string {
 func (*ClusterStatusCondition) ProtoMessage() {}
 
 func (x *ClusterStatusCondition) ProtoReflect() protoreflect.Message {
-	mi := &file_api_v1_cluster_proto_msgTypes[18]
+	mi := &file_api_v1_cluster_proto_msgTypes[20]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1459,7 +1587,7 @@ func (x *ClusterStatusCondition) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ClusterStatusCondition.ProtoReflect.Descriptor instead.
 func (*ClusterStatusCondition) Descriptor() ([]byte, []int) {
-	return file_api_v1_cluster_proto_rawDescGZIP(), []int{18}
+	return file_api_v1_cluster_proto_rawDescGZIP(), []int{20}
 }
 
 func (x *ClusterStatusCondition) GetType() string {
@@ -1519,7 +1647,7 @@ type ClusterMonitoring struct {
 
 func (x *ClusterMonitoring) Reset() {
 	*x = ClusterMonitoring{}
-	mi := &file_api_v1_cluster_proto_msgTypes[19]
+	mi := &file_api_v1_cluster_proto_msgTypes[21]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1531,7 +1659,7 @@ func (x *ClusterMonitoring) String() string {
 func (*ClusterMonitoring) ProtoMessage() {}
 
 func (x *ClusterMonitoring) ProtoReflect() protoreflect.Message {
-	mi := &file_api_v1_cluster_proto_msgTypes[19]
+	mi := &file_api_v1_cluster_proto_msgTypes[21]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1544,7 +1672,7 @@ func (x *ClusterMonitoring) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ClusterMonitoring.ProtoReflect.Descriptor instead.
 func (*ClusterMonitoring) Descriptor() ([]byte, []int) {
-	return file_api_v1_cluster_proto_rawDescGZIP(), []int{19}
+	return file_api_v1_cluster_proto_rawDescGZIP(), []int{21}
 }
 
 func (x *ClusterMonitoring) GetUsername() string {
@@ -1579,7 +1707,7 @@ type ClusterServiceCreateResponse struct {
 
 func (x *ClusterServiceCreateResponse) Reset() {
 	*x = ClusterServiceCreateResponse{}
-	mi := &file_api_v1_cluster_proto_msgTypes[20]
+	mi := &file_api_v1_cluster_proto_msgTypes[22]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1591,7 +1719,7 @@ func (x *ClusterServiceCreateResponse) String() string {
 func (*ClusterServiceCreateResponse) ProtoMessage() {}
 
 func (x *ClusterServiceCreateResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_api_v1_cluster_proto_msgTypes[20]
+	mi := &file_api_v1_cluster_proto_msgTypes[22]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1604,7 +1732,7 @@ func (x *ClusterServiceCreateResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ClusterServiceCreateResponse.ProtoReflect.Descriptor instead.
 func (*ClusterServiceCreateResponse) Descriptor() ([]byte, []int) {
-	return file_api_v1_cluster_proto_rawDescGZIP(), []int{20}
+	return file_api_v1_cluster_proto_rawDescGZIP(), []int{22}
 }
 
 func (x *ClusterServiceCreateResponse) GetCluster() *Cluster {
@@ -1625,7 +1753,7 @@ type ClusterServiceGetResponse struct {
 
 func (x *ClusterServiceGetResponse) Reset() {
 	*x = ClusterServiceGetResponse{}
-	mi := &file_api_v1_cluster_proto_msgTypes[21]
+	mi := &file_api_v1_cluster_proto_msgTypes[23]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1637,7 +1765,7 @@ func (x *ClusterServiceGetResponse) String() string {
 func (*ClusterServiceGetResponse) ProtoMessage() {}
 
 func (x *ClusterServiceGetResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_api_v1_cluster_proto_msgTypes[21]
+	mi := &file_api_v1_cluster_proto_msgTypes[23]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1650,7 +1778,7 @@ func (x *ClusterServiceGetResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ClusterServiceGetResponse.ProtoReflect.Descriptor instead.
 func (*ClusterServiceGetResponse) Descriptor() ([]byte, []int) {
-	return file_api_v1_cluster_proto_rawDescGZIP(), []int{21}
+	return file_api_v1_cluster_proto_rawDescGZIP(), []int{23}
 }
 
 func (x *ClusterServiceGetResponse) GetCluster() *Cluster {
@@ -1671,7 +1799,7 @@ type ClusterServiceGetCredentialsResponse struct {
 
 func (x *ClusterServiceGetCredentialsResponse) Reset() {
 	*x = ClusterServiceGetCredentialsResponse{}
-	mi := &file_api_v1_cluster_proto_msgTypes[22]
+	mi := &file_api_v1_cluster_proto_msgTypes[24]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1683,7 +1811,7 @@ func (x *ClusterServiceGetCredentialsResponse) String() string {
 func (*ClusterServiceGetCredentialsResponse) ProtoMessage() {}
 
 func (x *ClusterServiceGetCredentialsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_api_v1_cluster_proto_msgTypes[22]
+	mi := &file_api_v1_cluster_proto_msgTypes[24]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1696,10 +1824,102 @@ func (x *ClusterServiceGetCredentialsResponse) ProtoReflect() protoreflect.Messa
 
 // Deprecated: Use ClusterServiceGetCredentialsResponse.ProtoReflect.Descriptor instead.
 func (*ClusterServiceGetCredentialsResponse) Descriptor() ([]byte, []int) {
-	return file_api_v1_cluster_proto_rawDescGZIP(), []int{22}
+	return file_api_v1_cluster_proto_rawDescGZIP(), []int{24}
 }
 
 func (x *ClusterServiceGetCredentialsResponse) GetKubeconfig() string {
+	if x != nil {
+		return x.Kubeconfig
+	}
+	return ""
+}
+
+// ClusterServiceGetAdminKubeconfigResponse is the response payload of a cluster get admin kubeconfig request
+type ClusterServiceGetAdminKubeconfigResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Cluster is the cluster
+	Kubeconfig    string `protobuf:"bytes,1,opt,name=kubeconfig,proto3" json:"kubeconfig,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ClusterServiceGetAdminKubeconfigResponse) Reset() {
+	*x = ClusterServiceGetAdminKubeconfigResponse{}
+	mi := &file_api_v1_cluster_proto_msgTypes[25]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ClusterServiceGetAdminKubeconfigResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ClusterServiceGetAdminKubeconfigResponse) ProtoMessage() {}
+
+func (x *ClusterServiceGetAdminKubeconfigResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_api_v1_cluster_proto_msgTypes[25]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ClusterServiceGetAdminKubeconfigResponse.ProtoReflect.Descriptor instead.
+func (*ClusterServiceGetAdminKubeconfigResponse) Descriptor() ([]byte, []int) {
+	return file_api_v1_cluster_proto_rawDescGZIP(), []int{25}
+}
+
+func (x *ClusterServiceGetAdminKubeconfigResponse) GetKubeconfig() string {
+	if x != nil {
+		return x.Kubeconfig
+	}
+	return ""
+}
+
+// ClusterServiceGetViewerKubeconfigResponse is the response payload of a cluster get viewer kubeconfig request
+type ClusterServiceGetViewerKubeconfigResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Cluster is the cluster
+	Kubeconfig    string `protobuf:"bytes,1,opt,name=kubeconfig,proto3" json:"kubeconfig,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ClusterServiceGetViewerKubeconfigResponse) Reset() {
+	*x = ClusterServiceGetViewerKubeconfigResponse{}
+	mi := &file_api_v1_cluster_proto_msgTypes[26]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ClusterServiceGetViewerKubeconfigResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ClusterServiceGetViewerKubeconfigResponse) ProtoMessage() {}
+
+func (x *ClusterServiceGetViewerKubeconfigResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_api_v1_cluster_proto_msgTypes[26]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ClusterServiceGetViewerKubeconfigResponse.ProtoReflect.Descriptor instead.
+func (*ClusterServiceGetViewerKubeconfigResponse) Descriptor() ([]byte, []int) {
+	return file_api_v1_cluster_proto_rawDescGZIP(), []int{26}
+}
+
+func (x *ClusterServiceGetViewerKubeconfigResponse) GetKubeconfig() string {
 	if x != nil {
 		return x.Kubeconfig
 	}
@@ -1717,7 +1937,7 @@ type ClusterServiceDeleteResponse struct {
 
 func (x *ClusterServiceDeleteResponse) Reset() {
 	*x = ClusterServiceDeleteResponse{}
-	mi := &file_api_v1_cluster_proto_msgTypes[23]
+	mi := &file_api_v1_cluster_proto_msgTypes[27]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1729,7 +1949,7 @@ func (x *ClusterServiceDeleteResponse) String() string {
 func (*ClusterServiceDeleteResponse) ProtoMessage() {}
 
 func (x *ClusterServiceDeleteResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_api_v1_cluster_proto_msgTypes[23]
+	mi := &file_api_v1_cluster_proto_msgTypes[27]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1742,7 +1962,7 @@ func (x *ClusterServiceDeleteResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ClusterServiceDeleteResponse.ProtoReflect.Descriptor instead.
 func (*ClusterServiceDeleteResponse) Descriptor() ([]byte, []int) {
-	return file_api_v1_cluster_proto_rawDescGZIP(), []int{23}
+	return file_api_v1_cluster_proto_rawDescGZIP(), []int{27}
 }
 
 func (x *ClusterServiceDeleteResponse) GetCluster() *Cluster {
@@ -1763,7 +1983,7 @@ type ClusterServiceUpdateResponse struct {
 
 func (x *ClusterServiceUpdateResponse) Reset() {
 	*x = ClusterServiceUpdateResponse{}
-	mi := &file_api_v1_cluster_proto_msgTypes[24]
+	mi := &file_api_v1_cluster_proto_msgTypes[28]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1775,7 +1995,7 @@ func (x *ClusterServiceUpdateResponse) String() string {
 func (*ClusterServiceUpdateResponse) ProtoMessage() {}
 
 func (x *ClusterServiceUpdateResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_api_v1_cluster_proto_msgTypes[24]
+	mi := &file_api_v1_cluster_proto_msgTypes[28]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1788,7 +2008,7 @@ func (x *ClusterServiceUpdateResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ClusterServiceUpdateResponse.ProtoReflect.Descriptor instead.
 func (*ClusterServiceUpdateResponse) Descriptor() ([]byte, []int) {
-	return file_api_v1_cluster_proto_rawDescGZIP(), []int{24}
+	return file_api_v1_cluster_proto_rawDescGZIP(), []int{28}
 }
 
 func (x *ClusterServiceUpdateResponse) GetCluster() *Cluster {
@@ -1809,7 +2029,7 @@ type ClusterServiceListResponse struct {
 
 func (x *ClusterServiceListResponse) Reset() {
 	*x = ClusterServiceListResponse{}
-	mi := &file_api_v1_cluster_proto_msgTypes[25]
+	mi := &file_api_v1_cluster_proto_msgTypes[29]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1821,7 +2041,7 @@ func (x *ClusterServiceListResponse) String() string {
 func (*ClusterServiceListResponse) ProtoMessage() {}
 
 func (x *ClusterServiceListResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_api_v1_cluster_proto_msgTypes[25]
+	mi := &file_api_v1_cluster_proto_msgTypes[29]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1834,7 +2054,7 @@ func (x *ClusterServiceListResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ClusterServiceListResponse.ProtoReflect.Descriptor instead.
 func (*ClusterServiceListResponse) Descriptor() ([]byte, []int) {
-	return file_api_v1_cluster_proto_rawDescGZIP(), []int{25}
+	return file_api_v1_cluster_proto_rawDescGZIP(), []int{29}
 }
 
 func (x *ClusterServiceListResponse) GetClusters() []*Cluster {
@@ -1855,7 +2075,7 @@ type ClusterServiceWatchStatusResponse struct {
 
 func (x *ClusterServiceWatchStatusResponse) Reset() {
 	*x = ClusterServiceWatchStatusResponse{}
-	mi := &file_api_v1_cluster_proto_msgTypes[26]
+	mi := &file_api_v1_cluster_proto_msgTypes[30]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1867,7 +2087,7 @@ func (x *ClusterServiceWatchStatusResponse) String() string {
 func (*ClusterServiceWatchStatusResponse) ProtoMessage() {}
 
 func (x *ClusterServiceWatchStatusResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_api_v1_cluster_proto_msgTypes[26]
+	mi := &file_api_v1_cluster_proto_msgTypes[30]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1880,7 +2100,7 @@ func (x *ClusterServiceWatchStatusResponse) ProtoReflect() protoreflect.Message 
 
 // Deprecated: Use ClusterServiceWatchStatusResponse.ProtoReflect.Descriptor instead.
 func (*ClusterServiceWatchStatusResponse) Descriptor() ([]byte, []int) {
-	return file_api_v1_cluster_proto_rawDescGZIP(), []int{26}
+	return file_api_v1_cluster_proto_rawDescGZIP(), []int{30}
 }
 
 func (x *ClusterServiceWatchStatusResponse) GetStatus() *ClusterStatus {
@@ -1901,7 +2121,7 @@ type ClusterServiceOperateResponse struct {
 
 func (x *ClusterServiceOperateResponse) Reset() {
 	*x = ClusterServiceOperateResponse{}
-	mi := &file_api_v1_cluster_proto_msgTypes[27]
+	mi := &file_api_v1_cluster_proto_msgTypes[31]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1913,7 +2133,7 @@ func (x *ClusterServiceOperateResponse) String() string {
 func (*ClusterServiceOperateResponse) ProtoMessage() {}
 
 func (x *ClusterServiceOperateResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_api_v1_cluster_proto_msgTypes[27]
+	mi := &file_api_v1_cluster_proto_msgTypes[31]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1926,7 +2146,7 @@ func (x *ClusterServiceOperateResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ClusterServiceOperateResponse.ProtoReflect.Descriptor instead.
 func (*ClusterServiceOperateResponse) Descriptor() ([]byte, []int) {
-	return file_api_v1_cluster_proto_rawDescGZIP(), []int{27}
+	return file_api_v1_cluster_proto_rawDescGZIP(), []int{31}
 }
 
 func (x *ClusterServiceOperateResponse) GetCluster() *Cluster {
@@ -1947,7 +2167,7 @@ type ClusterServiceGetMonitoringCredentialsResponse struct {
 
 func (x *ClusterServiceGetMonitoringCredentialsResponse) Reset() {
 	*x = ClusterServiceGetMonitoringCredentialsResponse{}
-	mi := &file_api_v1_cluster_proto_msgTypes[28]
+	mi := &file_api_v1_cluster_proto_msgTypes[32]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1959,7 +2179,7 @@ func (x *ClusterServiceGetMonitoringCredentialsResponse) String() string {
 func (*ClusterServiceGetMonitoringCredentialsResponse) ProtoMessage() {}
 
 func (x *ClusterServiceGetMonitoringCredentialsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_api_v1_cluster_proto_msgTypes[28]
+	mi := &file_api_v1_cluster_proto_msgTypes[32]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1972,7 +2192,7 @@ func (x *ClusterServiceGetMonitoringCredentialsResponse) ProtoReflect() protoref
 
 // Deprecated: Use ClusterServiceGetMonitoringCredentialsResponse.ProtoReflect.Descriptor instead.
 func (*ClusterServiceGetMonitoringCredentialsResponse) Descriptor() ([]byte, []int) {
-	return file_api_v1_cluster_proto_rawDescGZIP(), []int{28}
+	return file_api_v1_cluster_proto_rawDescGZIP(), []int{32}
 }
 
 func (x *ClusterServiceGetMonitoringCredentialsResponse) GetMonitoring() *ClusterMonitoring {
@@ -2071,6 +2291,22 @@ const file_api_v1_cluster_proto_rawDesc = "" +
 	"\n" +
 	"expiration\x18\x04 \x01(\v2\x19.google.protobuf.DurationH\x00R\n" +
 	"expiration\x88\x01\x01B\r\n" +
+	"\v_expiration\"\xbc\x01\n" +
+	"'ClusterServiceGetAdminKubeconfigRequest\x12\x1c\n" +
+	"\x04uuid\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x04uuid\x12$\n" +
+	"\aproject\x18\x02 \x01(\tB\n" +
+	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\aproject\x12>\n" +
+	"\n" +
+	"expiration\x18\x04 \x01(\v2\x19.google.protobuf.DurationH\x00R\n" +
+	"expiration\x88\x01\x01B\r\n" +
+	"\v_expiration\"\xbd\x01\n" +
+	"(ClusterServiceGetViewerKubeconfigRequest\x12\x1c\n" +
+	"\x04uuid\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x04uuid\x12$\n" +
+	"\aproject\x18\x02 \x01(\tB\n" +
+	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\aproject\x12>\n" +
+	"\n" +
+	"expiration\x18\x04 \x01(\v2\x19.google.protobuf.DurationH\x00R\n" +
+	"expiration\x88\x01\x01B\r\n" +
 	"\v_expiration\"A\n" +
 	"\x19ClusterServiceListRequest\x12$\n" +
 	"\aproject\x18\x02 \x01(\tB\n" +
@@ -2149,6 +2385,14 @@ const file_api_v1_cluster_proto_rawDesc = "" +
 	"$ClusterServiceGetCredentialsResponse\x12\x1e\n" +
 	"\n" +
 	"kubeconfig\x18\x01 \x01(\tR\n" +
+	"kubeconfig\"J\n" +
+	"(ClusterServiceGetAdminKubeconfigResponse\x12\x1e\n" +
+	"\n" +
+	"kubeconfig\x18\x01 \x01(\tR\n" +
+	"kubeconfig\"K\n" +
+	")ClusterServiceGetViewerKubeconfigResponse\x12\x1e\n" +
+	"\n" +
+	"kubeconfig\x18\x01 \x01(\tR\n" +
 	"kubeconfig\"I\n" +
 	"\x1cClusterServiceDeleteResponse\x12)\n" +
 	"\acluster\x18\x01 \x01(\v2\x0f.api.v1.ClusterR\acluster\"I\n" +
@@ -2168,7 +2412,7 @@ const file_api_v1_cluster_proto_rawDesc = "" +
 	"\x13OPERATE_UNSPECIFIED\x10\x00\x12\x15\n" +
 	"\x11OPERATE_RECONCILE\x10\x01\x12\x14\n" +
 	"\x10OPERATE_MAINTAIN\x10\x02\x12\x11\n" +
-	"\rOPERATE_RETRY\x10\x032\xc5\a\n" +
+	"\rOPERATE_RETRY\x10\x032\xcc\t\n" +
 	"\x0eClusterService\x12_\n" +
 	"\x06Create\x12#.api.v1.ClusterServiceCreateRequest\x1a$.api.v1.ClusterServiceCreateResponse\"\n" +
 	"\xca\xf3\x18\x02\x01\x02\xe0\xf3\x18\x01\x12W\n" +
@@ -2178,7 +2422,9 @@ const file_api_v1_cluster_proto_rawDesc = "" +
 	"\x06Delete\x12#.api.v1.ClusterServiceDeleteRequest\x1a$.api.v1.ClusterServiceDeleteResponse\"\x06\xca\xf3\x18\x02\x01\x02\x12_\n" +
 	"\x06Update\x12#.api.v1.ClusterServiceUpdateRequest\x1a$.api.v1.ClusterServiceUpdateResponse\"\n" +
 	"\xca\xf3\x18\x02\x01\x02\xe0\xf3\x18\x01\x12s\n" +
-	"\x0eGetCredentials\x12+.api.v1.ClusterServiceGetCredentialsRequest\x1a,.api.v1.ClusterServiceGetCredentialsResponse\"\x06\xca\xf3\x18\x02\x01\x02\x12^\n" +
+	"\x0eGetCredentials\x12+.api.v1.ClusterServiceGetCredentialsRequest\x1a,.api.v1.ClusterServiceGetCredentialsResponse\"\x06\xca\xf3\x18\x02\x01\x02\x12\x7f\n" +
+	"\x12GetAdminKubeconfig\x12/.api.v1.ClusterServiceGetAdminKubeconfigRequest\x1a0.api.v1.ClusterServiceGetAdminKubeconfigResponse\"\x06\xca\xf3\x18\x02\x01\x02\x12\x83\x01\n" +
+	"\x13GetViewerKubeconfig\x120.api.v1.ClusterServiceGetViewerKubeconfigRequest\x1a1.api.v1.ClusterServiceGetViewerKubeconfigResponse\"\a\xca\xf3\x18\x03\x01\x02\x03\x12^\n" +
 	"\aOperate\x12$.api.v1.ClusterServiceOperateRequest\x1a%.api.v1.ClusterServiceOperateResponse\"\x06\xca\xf3\x18\x02\x01\x02\x12\x96\x01\n" +
 	"\x18GetMonitoringCredentials\x125.api.v1.ClusterServiceGetMonitoringCredentialsRequest\x1a6.api.v1.ClusterServiceGetMonitoringCredentialsResponse\"\v\xca\xf3\x18\x03\x01\x02\x03\xe8\xf3\x18\x02B\x85\x01\n" +
 	"\n" +
@@ -2197,7 +2443,7 @@ func file_api_v1_cluster_proto_rawDescGZIP() []byte {
 }
 
 var file_api_v1_cluster_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
-var file_api_v1_cluster_proto_msgTypes = make([]protoimpl.MessageInfo, 29)
+var file_api_v1_cluster_proto_msgTypes = make([]protoimpl.MessageInfo, 33)
 var file_api_v1_cluster_proto_goTypes = []any{
 	(Operate)(0),                                           // 0: api.v1.Operate
 	(*Cluster)(nil),                                        // 1: api.v1.Cluster
@@ -2210,84 +2456,94 @@ var file_api_v1_cluster_proto_goTypes = []any{
 	(*ClusterServiceGetRequest)(nil),                       // 8: api.v1.ClusterServiceGetRequest
 	(*ClusterServiceOperateRequest)(nil),                   // 9: api.v1.ClusterServiceOperateRequest
 	(*ClusterServiceGetCredentialsRequest)(nil),            // 10: api.v1.ClusterServiceGetCredentialsRequest
-	(*ClusterServiceListRequest)(nil),                      // 11: api.v1.ClusterServiceListRequest
-	(*ClusterServiceCreateRequest)(nil),                    // 12: api.v1.ClusterServiceCreateRequest
-	(*ClusterServiceUpdateRequest)(nil),                    // 13: api.v1.ClusterServiceUpdateRequest
-	(*ClusterServiceDeleteRequest)(nil),                    // 14: api.v1.ClusterServiceDeleteRequest
-	(*ClusterServiceWatchStatusRequest)(nil),               // 15: api.v1.ClusterServiceWatchStatusRequest
-	(*ClusterServiceGetMonitoringCredentialsRequest)(nil),  // 16: api.v1.ClusterServiceGetMonitoringCredentialsRequest
-	(*ClusterStatus)(nil),                                  // 17: api.v1.ClusterStatus
-	(*ClusterStatusLastError)(nil),                         // 18: api.v1.ClusterStatusLastError
-	(*ClusterStatusCondition)(nil),                         // 19: api.v1.ClusterStatusCondition
-	(*ClusterMonitoring)(nil),                              // 20: api.v1.ClusterMonitoring
-	(*ClusterServiceCreateResponse)(nil),                   // 21: api.v1.ClusterServiceCreateResponse
-	(*ClusterServiceGetResponse)(nil),                      // 22: api.v1.ClusterServiceGetResponse
-	(*ClusterServiceGetCredentialsResponse)(nil),           // 23: api.v1.ClusterServiceGetCredentialsResponse
-	(*ClusterServiceDeleteResponse)(nil),                   // 24: api.v1.ClusterServiceDeleteResponse
-	(*ClusterServiceUpdateResponse)(nil),                   // 25: api.v1.ClusterServiceUpdateResponse
-	(*ClusterServiceListResponse)(nil),                     // 26: api.v1.ClusterServiceListResponse
-	(*ClusterServiceWatchStatusResponse)(nil),              // 27: api.v1.ClusterServiceWatchStatusResponse
-	(*ClusterServiceOperateResponse)(nil),                  // 28: api.v1.ClusterServiceOperateResponse
-	(*ClusterServiceGetMonitoringCredentialsResponse)(nil), // 29: api.v1.ClusterServiceGetMonitoringCredentialsResponse
-	(*timestamppb.Timestamp)(nil),                          // 30: google.protobuf.Timestamp
-	(*durationpb.Duration)(nil),                            // 31: google.protobuf.Duration
+	(*ClusterServiceGetAdminKubeconfigRequest)(nil),        // 11: api.v1.ClusterServiceGetAdminKubeconfigRequest
+	(*ClusterServiceGetViewerKubeconfigRequest)(nil),       // 12: api.v1.ClusterServiceGetViewerKubeconfigRequest
+	(*ClusterServiceListRequest)(nil),                      // 13: api.v1.ClusterServiceListRequest
+	(*ClusterServiceCreateRequest)(nil),                    // 14: api.v1.ClusterServiceCreateRequest
+	(*ClusterServiceUpdateRequest)(nil),                    // 15: api.v1.ClusterServiceUpdateRequest
+	(*ClusterServiceDeleteRequest)(nil),                    // 16: api.v1.ClusterServiceDeleteRequest
+	(*ClusterServiceWatchStatusRequest)(nil),               // 17: api.v1.ClusterServiceWatchStatusRequest
+	(*ClusterServiceGetMonitoringCredentialsRequest)(nil),  // 18: api.v1.ClusterServiceGetMonitoringCredentialsRequest
+	(*ClusterStatus)(nil),                                  // 19: api.v1.ClusterStatus
+	(*ClusterStatusLastError)(nil),                         // 20: api.v1.ClusterStatusLastError
+	(*ClusterStatusCondition)(nil),                         // 21: api.v1.ClusterStatusCondition
+	(*ClusterMonitoring)(nil),                              // 22: api.v1.ClusterMonitoring
+	(*ClusterServiceCreateResponse)(nil),                   // 23: api.v1.ClusterServiceCreateResponse
+	(*ClusterServiceGetResponse)(nil),                      // 24: api.v1.ClusterServiceGetResponse
+	(*ClusterServiceGetCredentialsResponse)(nil),           // 25: api.v1.ClusterServiceGetCredentialsResponse
+	(*ClusterServiceGetAdminKubeconfigResponse)(nil),       // 26: api.v1.ClusterServiceGetAdminKubeconfigResponse
+	(*ClusterServiceGetViewerKubeconfigResponse)(nil),      // 27: api.v1.ClusterServiceGetViewerKubeconfigResponse
+	(*ClusterServiceDeleteResponse)(nil),                   // 28: api.v1.ClusterServiceDeleteResponse
+	(*ClusterServiceUpdateResponse)(nil),                   // 29: api.v1.ClusterServiceUpdateResponse
+	(*ClusterServiceListResponse)(nil),                     // 30: api.v1.ClusterServiceListResponse
+	(*ClusterServiceWatchStatusResponse)(nil),              // 31: api.v1.ClusterServiceWatchStatusResponse
+	(*ClusterServiceOperateResponse)(nil),                  // 32: api.v1.ClusterServiceOperateResponse
+	(*ClusterServiceGetMonitoringCredentialsResponse)(nil), // 33: api.v1.ClusterServiceGetMonitoringCredentialsResponse
+	(*timestamppb.Timestamp)(nil),                          // 34: google.protobuf.Timestamp
+	(*durationpb.Duration)(nil),                            // 35: google.protobuf.Duration
 }
 var file_api_v1_cluster_proto_depIdxs = []int32{
 	2,  // 0: api.v1.Cluster.kubernetes:type_name -> api.v1.KubernetesSpec
 	6,  // 1: api.v1.Cluster.workers:type_name -> api.v1.Worker
 	3,  // 2: api.v1.Cluster.maintenance:type_name -> api.v1.Maintenance
-	30, // 3: api.v1.Cluster.created_at:type_name -> google.protobuf.Timestamp
-	30, // 4: api.v1.Cluster.updated_at:type_name -> google.protobuf.Timestamp
-	30, // 5: api.v1.Cluster.deleted_at:type_name -> google.protobuf.Timestamp
-	17, // 6: api.v1.Cluster.status:type_name -> api.v1.ClusterStatus
-	20, // 7: api.v1.Cluster.monitoring:type_name -> api.v1.ClusterMonitoring
+	34, // 3: api.v1.Cluster.created_at:type_name -> google.protobuf.Timestamp
+	34, // 4: api.v1.Cluster.updated_at:type_name -> google.protobuf.Timestamp
+	34, // 5: api.v1.Cluster.deleted_at:type_name -> google.protobuf.Timestamp
+	19, // 6: api.v1.Cluster.status:type_name -> api.v1.ClusterStatus
+	22, // 7: api.v1.Cluster.monitoring:type_name -> api.v1.ClusterMonitoring
 	4,  // 8: api.v1.Maintenance.time_window:type_name -> api.v1.MaintenanceTimeWindow
 	5,  // 9: api.v1.MaintenanceTimeWindow.begin:type_name -> api.v1.Time
-	31, // 10: api.v1.MaintenanceTimeWindow.duration:type_name -> google.protobuf.Duration
+	35, // 10: api.v1.MaintenanceTimeWindow.duration:type_name -> google.protobuf.Duration
 	0,  // 11: api.v1.ClusterServiceOperateRequest.operate:type_name -> api.v1.Operate
-	31, // 12: api.v1.ClusterServiceGetCredentialsRequest.expiration:type_name -> google.protobuf.Duration
-	2,  // 13: api.v1.ClusterServiceCreateRequest.kubernetes:type_name -> api.v1.KubernetesSpec
-	6,  // 14: api.v1.ClusterServiceCreateRequest.workers:type_name -> api.v1.Worker
-	3,  // 15: api.v1.ClusterServiceCreateRequest.maintenance:type_name -> api.v1.Maintenance
-	2,  // 16: api.v1.ClusterServiceUpdateRequest.kubernetes:type_name -> api.v1.KubernetesSpec
-	7,  // 17: api.v1.ClusterServiceUpdateRequest.workers:type_name -> api.v1.WorkerUpdate
-	3,  // 18: api.v1.ClusterServiceUpdateRequest.maintenance:type_name -> api.v1.Maintenance
-	18, // 19: api.v1.ClusterStatus.last_errors:type_name -> api.v1.ClusterStatusLastError
-	19, // 20: api.v1.ClusterStatus.conditions:type_name -> api.v1.ClusterStatusCondition
-	30, // 21: api.v1.ClusterStatusLastError.last_update_time:type_name -> google.protobuf.Timestamp
-	30, // 22: api.v1.ClusterStatusCondition.last_transition_time:type_name -> google.protobuf.Timestamp
-	30, // 23: api.v1.ClusterStatusCondition.last_update_time:type_name -> google.protobuf.Timestamp
-	1,  // 24: api.v1.ClusterServiceCreateResponse.cluster:type_name -> api.v1.Cluster
-	1,  // 25: api.v1.ClusterServiceGetResponse.cluster:type_name -> api.v1.Cluster
-	1,  // 26: api.v1.ClusterServiceDeleteResponse.cluster:type_name -> api.v1.Cluster
-	1,  // 27: api.v1.ClusterServiceUpdateResponse.cluster:type_name -> api.v1.Cluster
-	1,  // 28: api.v1.ClusterServiceListResponse.clusters:type_name -> api.v1.Cluster
-	17, // 29: api.v1.ClusterServiceWatchStatusResponse.status:type_name -> api.v1.ClusterStatus
-	1,  // 30: api.v1.ClusterServiceOperateResponse.cluster:type_name -> api.v1.Cluster
-	20, // 31: api.v1.ClusterServiceGetMonitoringCredentialsResponse.monitoring:type_name -> api.v1.ClusterMonitoring
-	12, // 32: api.v1.ClusterService.Create:input_type -> api.v1.ClusterServiceCreateRequest
-	8,  // 33: api.v1.ClusterService.Get:input_type -> api.v1.ClusterServiceGetRequest
-	11, // 34: api.v1.ClusterService.List:input_type -> api.v1.ClusterServiceListRequest
-	15, // 35: api.v1.ClusterService.WatchStatus:input_type -> api.v1.ClusterServiceWatchStatusRequest
-	14, // 36: api.v1.ClusterService.Delete:input_type -> api.v1.ClusterServiceDeleteRequest
-	13, // 37: api.v1.ClusterService.Update:input_type -> api.v1.ClusterServiceUpdateRequest
-	10, // 38: api.v1.ClusterService.GetCredentials:input_type -> api.v1.ClusterServiceGetCredentialsRequest
-	9,  // 39: api.v1.ClusterService.Operate:input_type -> api.v1.ClusterServiceOperateRequest
-	16, // 40: api.v1.ClusterService.GetMonitoringCredentials:input_type -> api.v1.ClusterServiceGetMonitoringCredentialsRequest
-	21, // 41: api.v1.ClusterService.Create:output_type -> api.v1.ClusterServiceCreateResponse
-	22, // 42: api.v1.ClusterService.Get:output_type -> api.v1.ClusterServiceGetResponse
-	26, // 43: api.v1.ClusterService.List:output_type -> api.v1.ClusterServiceListResponse
-	27, // 44: api.v1.ClusterService.WatchStatus:output_type -> api.v1.ClusterServiceWatchStatusResponse
-	24, // 45: api.v1.ClusterService.Delete:output_type -> api.v1.ClusterServiceDeleteResponse
-	25, // 46: api.v1.ClusterService.Update:output_type -> api.v1.ClusterServiceUpdateResponse
-	23, // 47: api.v1.ClusterService.GetCredentials:output_type -> api.v1.ClusterServiceGetCredentialsResponse
-	28, // 48: api.v1.ClusterService.Operate:output_type -> api.v1.ClusterServiceOperateResponse
-	29, // 49: api.v1.ClusterService.GetMonitoringCredentials:output_type -> api.v1.ClusterServiceGetMonitoringCredentialsResponse
-	41, // [41:50] is the sub-list for method output_type
-	32, // [32:41] is the sub-list for method input_type
-	32, // [32:32] is the sub-list for extension type_name
-	32, // [32:32] is the sub-list for extension extendee
-	0,  // [0:32] is the sub-list for field type_name
+	35, // 12: api.v1.ClusterServiceGetCredentialsRequest.expiration:type_name -> google.protobuf.Duration
+	35, // 13: api.v1.ClusterServiceGetAdminKubeconfigRequest.expiration:type_name -> google.protobuf.Duration
+	35, // 14: api.v1.ClusterServiceGetViewerKubeconfigRequest.expiration:type_name -> google.protobuf.Duration
+	2,  // 15: api.v1.ClusterServiceCreateRequest.kubernetes:type_name -> api.v1.KubernetesSpec
+	6,  // 16: api.v1.ClusterServiceCreateRequest.workers:type_name -> api.v1.Worker
+	3,  // 17: api.v1.ClusterServiceCreateRequest.maintenance:type_name -> api.v1.Maintenance
+	2,  // 18: api.v1.ClusterServiceUpdateRequest.kubernetes:type_name -> api.v1.KubernetesSpec
+	7,  // 19: api.v1.ClusterServiceUpdateRequest.workers:type_name -> api.v1.WorkerUpdate
+	3,  // 20: api.v1.ClusterServiceUpdateRequest.maintenance:type_name -> api.v1.Maintenance
+	20, // 21: api.v1.ClusterStatus.last_errors:type_name -> api.v1.ClusterStatusLastError
+	21, // 22: api.v1.ClusterStatus.conditions:type_name -> api.v1.ClusterStatusCondition
+	34, // 23: api.v1.ClusterStatusLastError.last_update_time:type_name -> google.protobuf.Timestamp
+	34, // 24: api.v1.ClusterStatusCondition.last_transition_time:type_name -> google.protobuf.Timestamp
+	34, // 25: api.v1.ClusterStatusCondition.last_update_time:type_name -> google.protobuf.Timestamp
+	1,  // 26: api.v1.ClusterServiceCreateResponse.cluster:type_name -> api.v1.Cluster
+	1,  // 27: api.v1.ClusterServiceGetResponse.cluster:type_name -> api.v1.Cluster
+	1,  // 28: api.v1.ClusterServiceDeleteResponse.cluster:type_name -> api.v1.Cluster
+	1,  // 29: api.v1.ClusterServiceUpdateResponse.cluster:type_name -> api.v1.Cluster
+	1,  // 30: api.v1.ClusterServiceListResponse.clusters:type_name -> api.v1.Cluster
+	19, // 31: api.v1.ClusterServiceWatchStatusResponse.status:type_name -> api.v1.ClusterStatus
+	1,  // 32: api.v1.ClusterServiceOperateResponse.cluster:type_name -> api.v1.Cluster
+	22, // 33: api.v1.ClusterServiceGetMonitoringCredentialsResponse.monitoring:type_name -> api.v1.ClusterMonitoring
+	14, // 34: api.v1.ClusterService.Create:input_type -> api.v1.ClusterServiceCreateRequest
+	8,  // 35: api.v1.ClusterService.Get:input_type -> api.v1.ClusterServiceGetRequest
+	13, // 36: api.v1.ClusterService.List:input_type -> api.v1.ClusterServiceListRequest
+	17, // 37: api.v1.ClusterService.WatchStatus:input_type -> api.v1.ClusterServiceWatchStatusRequest
+	16, // 38: api.v1.ClusterService.Delete:input_type -> api.v1.ClusterServiceDeleteRequest
+	15, // 39: api.v1.ClusterService.Update:input_type -> api.v1.ClusterServiceUpdateRequest
+	10, // 40: api.v1.ClusterService.GetCredentials:input_type -> api.v1.ClusterServiceGetCredentialsRequest
+	11, // 41: api.v1.ClusterService.GetAdminKubeconfig:input_type -> api.v1.ClusterServiceGetAdminKubeconfigRequest
+	12, // 42: api.v1.ClusterService.GetViewerKubeconfig:input_type -> api.v1.ClusterServiceGetViewerKubeconfigRequest
+	9,  // 43: api.v1.ClusterService.Operate:input_type -> api.v1.ClusterServiceOperateRequest
+	18, // 44: api.v1.ClusterService.GetMonitoringCredentials:input_type -> api.v1.ClusterServiceGetMonitoringCredentialsRequest
+	23, // 45: api.v1.ClusterService.Create:output_type -> api.v1.ClusterServiceCreateResponse
+	24, // 46: api.v1.ClusterService.Get:output_type -> api.v1.ClusterServiceGetResponse
+	30, // 47: api.v1.ClusterService.List:output_type -> api.v1.ClusterServiceListResponse
+	31, // 48: api.v1.ClusterService.WatchStatus:output_type -> api.v1.ClusterServiceWatchStatusResponse
+	28, // 49: api.v1.ClusterService.Delete:output_type -> api.v1.ClusterServiceDeleteResponse
+	29, // 50: api.v1.ClusterService.Update:output_type -> api.v1.ClusterServiceUpdateResponse
+	25, // 51: api.v1.ClusterService.GetCredentials:output_type -> api.v1.ClusterServiceGetCredentialsResponse
+	26, // 52: api.v1.ClusterService.GetAdminKubeconfig:output_type -> api.v1.ClusterServiceGetAdminKubeconfigResponse
+	27, // 53: api.v1.ClusterService.GetViewerKubeconfig:output_type -> api.v1.ClusterServiceGetViewerKubeconfigResponse
+	32, // 54: api.v1.ClusterService.Operate:output_type -> api.v1.ClusterServiceOperateResponse
+	33, // 55: api.v1.ClusterService.GetMonitoringCredentials:output_type -> api.v1.ClusterServiceGetMonitoringCredentialsResponse
+	45, // [45:56] is the sub-list for method output_type
+	34, // [34:45] is the sub-list for method input_type
+	34, // [34:34] is the sub-list for extension type_name
+	34, // [34:34] is the sub-list for extension extendee
+	0,  // [0:34] is the sub-list for field type_name
 }
 
 func init() { file_api_v1_cluster_proto_init() }
@@ -2300,16 +2556,18 @@ func file_api_v1_cluster_proto_init() {
 	file_api_v1_cluster_proto_msgTypes[2].OneofWrappers = []any{}
 	file_api_v1_cluster_proto_msgTypes[6].OneofWrappers = []any{}
 	file_api_v1_cluster_proto_msgTypes[9].OneofWrappers = []any{}
-	file_api_v1_cluster_proto_msgTypes[12].OneofWrappers = []any{}
+	file_api_v1_cluster_proto_msgTypes[10].OneofWrappers = []any{}
+	file_api_v1_cluster_proto_msgTypes[11].OneofWrappers = []any{}
 	file_api_v1_cluster_proto_msgTypes[14].OneofWrappers = []any{}
-	file_api_v1_cluster_proto_msgTypes[17].OneofWrappers = []any{}
+	file_api_v1_cluster_proto_msgTypes[16].OneofWrappers = []any{}
+	file_api_v1_cluster_proto_msgTypes[19].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_api_v1_cluster_proto_rawDesc), len(file_api_v1_cluster_proto_rawDesc)),
 			NumEnums:      1,
-			NumMessages:   29,
+			NumMessages:   33,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
