@@ -75,7 +75,7 @@ type VolumeServiceHandler_Delete_Call struct {
 // Delete is a helper method to define mock.On call
 //   - context1 context.Context
 //   - request *connect.Request[apiv1.VolumeServiceDeleteRequest]
-func (_e *VolumeServiceHandler_Expecter) Delete(context1 interface{}, request interface{}) *VolumeServiceHandler_Delete_Call {
+func (_e *VolumeServiceHandler_Expecter) Delete(context1 any, request any) *VolumeServiceHandler_Delete_Call {
 	return &VolumeServiceHandler_Delete_Call{Call: _e.mock.On("Delete", context1, request)}
 }
 
@@ -143,7 +143,7 @@ type VolumeServiceHandler_Get_Call struct {
 // Get is a helper method to define mock.On call
 //   - context1 context.Context
 //   - request *connect.Request[apiv1.VolumeServiceGetRequest]
-func (_e *VolumeServiceHandler_Expecter) Get(context1 interface{}, request interface{}) *VolumeServiceHandler_Get_Call {
+func (_e *VolumeServiceHandler_Expecter) Get(context1 any, request any) *VolumeServiceHandler_Get_Call {
 	return &VolumeServiceHandler_Get_Call{Call: _e.mock.On("Get", context1, request)}
 }
 
@@ -211,7 +211,7 @@ type VolumeServiceHandler_List_Call struct {
 // List is a helper method to define mock.On call
 //   - context1 context.Context
 //   - request *connect.Request[apiv1.VolumeServiceListRequest]
-func (_e *VolumeServiceHandler_Expecter) List(context1 interface{}, request interface{}) *VolumeServiceHandler_List_Call {
+func (_e *VolumeServiceHandler_Expecter) List(context1 any, request any) *VolumeServiceHandler_List_Call {
 	return &VolumeServiceHandler_List_Call{Call: _e.mock.On("List", context1, request)}
 }
 
@@ -279,7 +279,7 @@ type VolumeServiceHandler_Update_Call struct {
 // Update is a helper method to define mock.On call
 //   - context1 context.Context
 //   - request *connect.Request[apiv1.VolumeServiceUpdateRequest]
-func (_e *VolumeServiceHandler_Expecter) Update(context1 interface{}, request interface{}) *VolumeServiceHandler_Update_Call {
+func (_e *VolumeServiceHandler_Expecter) Update(context1 any, request any) *VolumeServiceHandler_Update_Call {
 	return &VolumeServiceHandler_Update_Call{Call: _e.mock.On("Update", context1, request)}
 }
 

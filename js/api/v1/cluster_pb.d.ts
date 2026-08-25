@@ -40,7 +40,7 @@ export type Cluster = Message<"api.v1.Cluster"> & {
      *
      * @generated from field: api.v1.KubernetesSpec kubernetes = 5;
      */
-    kubernetes?: KubernetesSpec;
+    kubernetes?: KubernetesSpec | undefined;
     /**
      * Workers defines the list of worker groups with their specification
      *
@@ -52,7 +52,7 @@ export type Cluster = Message<"api.v1.Cluster"> & {
      *
      * @generated from field: api.v1.Maintenance maintenance = 7;
      */
-    maintenance?: Maintenance;
+    maintenance?: Maintenance | undefined;
     /**
      * Tenant where this cluster belongs to
      *
@@ -64,37 +64,37 @@ export type Cluster = Message<"api.v1.Cluster"> & {
      *
      * @generated from field: google.protobuf.Timestamp created_at = 10;
      */
-    createdAt?: Timestamp;
+    createdAt?: Timestamp | undefined;
     /**
      * UpdatedAt defines the date when this cluster was updated
      *
      * @generated from field: google.protobuf.Timestamp updated_at = 11;
      */
-    updatedAt?: Timestamp;
+    updatedAt?: Timestamp | undefined;
     /**
      * DeletedAt defines the date when this cluster was deleted
      *
      * @generated from field: google.protobuf.Timestamp deleted_at = 12;
      */
-    deletedAt?: Timestamp;
+    deletedAt?: Timestamp | undefined;
     /**
      * Status of this cluster
      *
      * @generated from field: api.v1.ClusterStatus status = 20;
      */
-    status?: ClusterStatus;
+    status?: ClusterStatus | undefined;
     /**
      * Purpose of this cluster, can be for example production, development or evaluation
      *
      * @generated from field: optional string purpose = 21;
      */
-    purpose?: string;
+    purpose?: string | undefined;
     /**
      * Monitoring details for this cluster
      *
      * @generated from field: api.v1.ClusterMonitoring monitoring = 22;
      */
-    monitoring?: ClusterMonitoring;
+    monitoring?: ClusterMonitoring | undefined;
 };
 /**
  * Describes the message api.v1.Cluster.
@@ -130,19 +130,19 @@ export type Maintenance = Message<"api.v1.Maintenance"> & {
      *
      * @generated from field: optional bool kubernetes_autoupdate = 1;
      */
-    kubernetesAutoupdate?: boolean;
+    kubernetesAutoupdate?: boolean | undefined;
     /**
      * MachineimageAutoupdate if set to true, machine images will be automatically update by rolling nodes in the maintenance window
      *
      * @generated from field: optional bool machineimage_autoupdate = 2;
      */
-    machineimageAutoupdate?: boolean;
+    machineimageAutoupdate?: boolean | undefined;
     /**
      * TimeWindow defines the start time and duration during which automatic actions will be performed
      *
      * @generated from field: api.v1.MaintenanceTimeWindow time_window = 3;
      */
-    timeWindow?: MaintenanceTimeWindow;
+    timeWindow?: MaintenanceTimeWindow | undefined;
 };
 /**
  * Describes the message api.v1.Maintenance.
@@ -160,13 +160,13 @@ export type MaintenanceTimeWindow = Message<"api.v1.MaintenanceTimeWindow"> & {
      *
      * @generated from field: api.v1.Time begin = 1;
      */
-    begin?: Time;
+    begin?: Time | undefined;
     /**
      * Duration of the MaintenanceTimeWindow
      *
      * @generated from field: google.protobuf.Duration duration = 2;
      */
-    duration?: Duration;
+    duration?: Duration | undefined;
 };
 /**
  * Describes the message api.v1.MaintenanceTimeWindow.
@@ -268,31 +268,31 @@ export type WorkerUpdate = Message<"api.v1.WorkerUpdate"> & {
      *
      * @generated from field: optional string machine_type = 2;
      */
-    machineType?: string;
+    machineType?: string | undefined;
     /**
      * Minsize defines the minimum amount of machines present in this worker group
      *
      * @generated from field: optional uint32 minsize = 3;
      */
-    minsize?: number;
+    minsize?: number | undefined;
     /**
      * Maxsize defines the maximum amount of machines present in this worker group
      *
      * @generated from field: optional uint32 maxsize = 4;
      */
-    maxsize?: number;
+    maxsize?: number | undefined;
     /**
      * Maxsurge defines the maximum amount of machines which are spun up in this worker group during a rolling upgrade
      *
      * @generated from field: optional uint32 maxsurge = 5;
      */
-    maxsurge?: number;
+    maxsurge?: number | undefined;
     /**
      * Maxunavailable defines the maximum amount of not available machines in this worker group during a rolling upgrade
      *
      * @generated from field: optional uint32 maxunavailable = 6;
      */
-    maxunavailable?: number;
+    maxunavailable?: number | undefined;
 };
 /**
  * Describes the message api.v1.WorkerUpdate.
@@ -376,7 +376,7 @@ export type ClusterServiceGetCredentialsRequest = Message<"api.v1.ClusterService
      *
      * @generated from field: optional google.protobuf.Duration expiration = 4;
      */
-    expiration?: Duration;
+    expiration?: Duration | undefined;
 };
 /**
  * Describes the message api.v1.ClusterServiceGetCredentialsRequest.
@@ -406,7 +406,7 @@ export type ClusterServiceGetAdminKubeconfigRequest = Message<"api.v1.ClusterSer
      *
      * @generated from field: optional google.protobuf.Duration expiration = 4;
      */
-    expiration?: Duration;
+    expiration?: Duration | undefined;
 };
 /**
  * Describes the message api.v1.ClusterServiceGetAdminKubeconfigRequest.
@@ -436,7 +436,7 @@ export type ClusterServiceGetViewerKubeconfigRequest = Message<"api.v1.ClusterSe
      *
      * @generated from field: optional google.protobuf.Duration expiration = 4;
      */
-    expiration?: Duration;
+    expiration?: Duration | undefined;
 };
 /**
  * Describes the message api.v1.ClusterServiceGetViewerKubeconfigRequest.
@@ -490,7 +490,7 @@ export type ClusterServiceCreateRequest = Message<"api.v1.ClusterServiceCreateRe
      *
      * @generated from field: api.v1.KubernetesSpec kubernetes = 6;
      */
-    kubernetes?: KubernetesSpec;
+    kubernetes?: KubernetesSpec | undefined;
     /**
      * Worker specification of the cluster
      *
@@ -502,7 +502,7 @@ export type ClusterServiceCreateRequest = Message<"api.v1.ClusterServiceCreateRe
      *
      * @generated from field: api.v1.Maintenance maintenance = 8;
      */
-    maintenance?: Maintenance;
+    maintenance?: Maintenance | undefined;
 };
 /**
  * Describes the message api.v1.ClusterServiceCreateRequest.
@@ -532,7 +532,7 @@ export type ClusterServiceUpdateRequest = Message<"api.v1.ClusterServiceUpdateRe
      *
      * @generated from field: optional api.v1.KubernetesSpec kubernetes = 3;
      */
-    kubernetes?: KubernetesSpec;
+    kubernetes?: KubernetesSpec | undefined;
     /**
      * Worker specification of the cluster
      *
@@ -544,7 +544,7 @@ export type ClusterServiceUpdateRequest = Message<"api.v1.ClusterServiceUpdateRe
      *
      * @generated from field: optional api.v1.Maintenance maintenance = 5;
      */
-    maintenance?: Maintenance;
+    maintenance?: Maintenance | undefined;
 };
 /**
  * Describes the message api.v1.ClusterServiceUpdateRequest.
@@ -586,7 +586,7 @@ export type ClusterServiceWatchStatusRequest = Message<"api.v1.ClusterServiceWat
      *
      * @generated from field: optional string uuid = 1;
      */
-    uuid?: string;
+    uuid?: string | undefined;
     /**
      * Project of the cluster
      *
@@ -688,13 +688,13 @@ export type ClusterStatusLastError = Message<"api.v1.ClusterStatusLastError"> & 
      *
      * @generated from field: optional string task_id = 2;
      */
-    taskId?: string;
+    taskId?: string | undefined;
     /**
      * LastUpdateTime last time the error was reported
      *
      * @generated from field: google.protobuf.Timestamp last_update_time = 4;
      */
-    lastUpdateTime?: Timestamp;
+    lastUpdateTime?: Timestamp | undefined;
 };
 /**
  * Describes the message api.v1.ClusterStatusLastError.
@@ -736,13 +736,13 @@ export type ClusterStatusCondition = Message<"api.v1.ClusterStatusCondition"> & 
      *
      * @generated from field: google.protobuf.Timestamp last_transition_time = 5;
      */
-    lastTransitionTime?: Timestamp;
+    lastTransitionTime?: Timestamp | undefined;
     /**
      * LastUpdateTime last time the condition was updated
      *
      * @generated from field: google.protobuf.Timestamp last_update_time = 6;
      */
-    lastUpdateTime?: Timestamp;
+    lastUpdateTime?: Timestamp | undefined;
 };
 /**
  * Describes the message api.v1.ClusterStatusCondition.
@@ -790,7 +790,7 @@ export type ClusterServiceCreateResponse = Message<"api.v1.ClusterServiceCreateR
      *
      * @generated from field: api.v1.Cluster cluster = 1;
      */
-    cluster?: Cluster;
+    cluster?: Cluster | undefined;
 };
 /**
  * Describes the message api.v1.ClusterServiceCreateResponse.
@@ -808,7 +808,7 @@ export type ClusterServiceGetResponse = Message<"api.v1.ClusterServiceGetRespons
      *
      * @generated from field: api.v1.Cluster cluster = 1;
      */
-    cluster?: Cluster;
+    cluster?: Cluster | undefined;
 };
 /**
  * Describes the message api.v1.ClusterServiceGetResponse.
@@ -880,7 +880,7 @@ export type ClusterServiceDeleteResponse = Message<"api.v1.ClusterServiceDeleteR
      *
      * @generated from field: api.v1.Cluster cluster = 1;
      */
-    cluster?: Cluster;
+    cluster?: Cluster | undefined;
 };
 /**
  * Describes the message api.v1.ClusterServiceDeleteResponse.
@@ -898,7 +898,7 @@ export type ClusterServiceUpdateResponse = Message<"api.v1.ClusterServiceUpdateR
      *
      * @generated from field: api.v1.Cluster cluster = 1;
      */
-    cluster?: Cluster;
+    cluster?: Cluster | undefined;
 };
 /**
  * Describes the message api.v1.ClusterServiceUpdateResponse.
@@ -934,7 +934,7 @@ export type ClusterServiceWatchStatusResponse = Message<"api.v1.ClusterServiceWa
      *
      * @generated from field: api.v1.ClusterStatus status = 1;
      */
-    status?: ClusterStatus;
+    status?: ClusterStatus | undefined;
 };
 /**
  * Describes the message api.v1.ClusterServiceWatchStatusResponse.
@@ -952,7 +952,7 @@ export type ClusterServiceOperateResponse = Message<"api.v1.ClusterServiceOperat
      *
      * @generated from field: api.v1.Cluster cluster = 1;
      */
-    cluster?: Cluster;
+    cluster?: Cluster | undefined;
 };
 /**
  * Describes the message api.v1.ClusterServiceOperateResponse.

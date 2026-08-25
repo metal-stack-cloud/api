@@ -27,7 +27,7 @@ export type StatusServiceWatchResponse = Message<"status.v1.StatusServiceWatchRe
      *
      * @generated from field: api.v1.Health health = 1;
      */
-    health?: Health;
+    health?: Health | undefined;
     /**
      * OverallStatus is the status of the system
      *

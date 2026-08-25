@@ -64,19 +64,19 @@ export type IP = Message<"api.v1.IP"> & {
      *
      * @generated from field: google.protobuf.Timestamp created_at = 10;
      */
-    createdAt?: Timestamp;
+    createdAt?: Timestamp | undefined;
     /**
      * UpdatedAt is the date when this ip was updated
      *
      * @generated from field: google.protobuf.Timestamp updated_at = 11;
      */
-    updatedAt?: Timestamp;
+    updatedAt?: Timestamp | undefined;
     /**
      * DeletedAt is the date when this ip was deleted
      *
      * @generated from field: google.protobuf.Timestamp deleted_at = 12;
      */
-    deletedAt?: Timestamp;
+    deletedAt?: Timestamp | undefined;
 };
 /**
  * Describes the message api.v1.IP.
@@ -166,7 +166,7 @@ export type IPServiceUpdateRequest = Message<"api.v1.IPServiceUpdateRequest"> & 
      *
      * @generated from field: api.v1.IP ip = 2;
      */
-    ip?: IP;
+    ip?: IP | undefined;
 };
 /**
  * Describes the message api.v1.IPServiceUpdateRequest.
@@ -226,7 +226,7 @@ export type IPServiceGetResponse = Message<"api.v1.IPServiceGetResponse"> & {
      *
      * @generated from field: api.v1.IP ip = 1;
      */
-    ip?: IP;
+    ip?: IP | undefined;
 };
 /**
  * Describes the message api.v1.IPServiceGetResponse.
@@ -244,7 +244,7 @@ export type IPServiceUpdateResponse = Message<"api.v1.IPServiceUpdateResponse"> 
      *
      * @generated from field: api.v1.IP ip = 1;
      */
-    ip?: IP;
+    ip?: IP | undefined;
 };
 /**
  * Describes the message api.v1.IPServiceUpdateResponse.
@@ -262,7 +262,7 @@ export type IPServiceAllocateResponse = Message<"api.v1.IPServiceAllocateRespons
      *
      * @generated from field: api.v1.IP ip = 1;
      */
-    ip?: IP;
+    ip?: IP | undefined;
 };
 /**
  * Describes the message api.v1.IPServiceAllocateResponse.
@@ -298,7 +298,7 @@ export type IPServiceDeleteResponse = Message<"api.v1.IPServiceDeleteResponse"> 
      *
      * @generated from field: api.v1.IP ip = 1;
      */
-    ip?: IP;
+    ip?: IP | undefined;
 };
 /**
  * Describes the message api.v1.IPServiceDeleteResponse.

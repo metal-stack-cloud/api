@@ -75,7 +75,7 @@ type PaymentServiceClient_AddBalanceToCustomer_Call struct {
 // AddBalanceToCustomer is a helper method to define mock.On call
 //   - context1 context.Context
 //   - request *connect.Request[adminv1.PaymentServiceAddBalanceToCustomerRequest]
-func (_e *PaymentServiceClient_Expecter) AddBalanceToCustomer(context1 interface{}, request interface{}) *PaymentServiceClient_AddBalanceToCustomer_Call {
+func (_e *PaymentServiceClient_Expecter) AddBalanceToCustomer(context1 any, request any) *PaymentServiceClient_AddBalanceToCustomer_Call {
 	return &PaymentServiceClient_AddBalanceToCustomer_Call{Call: _e.mock.On("AddBalanceToCustomer", context1, request)}
 }
 

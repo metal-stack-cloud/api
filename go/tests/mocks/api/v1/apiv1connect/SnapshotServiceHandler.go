@@ -75,7 +75,7 @@ type SnapshotServiceHandler_Delete_Call struct {
 // Delete is a helper method to define mock.On call
 //   - context1 context.Context
 //   - request *connect.Request[apiv1.SnapshotServiceDeleteRequest]
-func (_e *SnapshotServiceHandler_Expecter) Delete(context1 interface{}, request interface{}) *SnapshotServiceHandler_Delete_Call {
+func (_e *SnapshotServiceHandler_Expecter) Delete(context1 any, request any) *SnapshotServiceHandler_Delete_Call {
 	return &SnapshotServiceHandler_Delete_Call{Call: _e.mock.On("Delete", context1, request)}
 }
 
@@ -143,7 +143,7 @@ type SnapshotServiceHandler_Get_Call struct {
 // Get is a helper method to define mock.On call
 //   - context1 context.Context
 //   - request *connect.Request[apiv1.SnapshotServiceGetRequest]
-func (_e *SnapshotServiceHandler_Expecter) Get(context1 interface{}, request interface{}) *SnapshotServiceHandler_Get_Call {
+func (_e *SnapshotServiceHandler_Expecter) Get(context1 any, request any) *SnapshotServiceHandler_Get_Call {
 	return &SnapshotServiceHandler_Get_Call{Call: _e.mock.On("Get", context1, request)}
 }
 
@@ -211,7 +211,7 @@ type SnapshotServiceHandler_List_Call struct {
 // List is a helper method to define mock.On call
 //   - context1 context.Context
 //   - request *connect.Request[apiv1.SnapshotServiceListRequest]
-func (_e *SnapshotServiceHandler_Expecter) List(context1 interface{}, request interface{}) *SnapshotServiceHandler_List_Call {
+func (_e *SnapshotServiceHandler_Expecter) List(context1 any, request any) *SnapshotServiceHandler_List_Call {
 	return &SnapshotServiceHandler_List_Call{Call: _e.mock.On("List", context1, request)}
 }
 

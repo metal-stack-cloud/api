@@ -75,7 +75,7 @@ type TenantServiceHandler_AddMember_Call struct {
 // AddMember is a helper method to define mock.On call
 //   - context1 context.Context
 //   - request *connect.Request[adminv1.TenantServiceAddMemberRequest]
-func (_e *TenantServiceHandler_Expecter) AddMember(context1 interface{}, request interface{}) *TenantServiceHandler_AddMember_Call {
+func (_e *TenantServiceHandler_Expecter) AddMember(context1 any, request any) *TenantServiceHandler_AddMember_Call {
 	return &TenantServiceHandler_AddMember_Call{Call: _e.mock.On("AddMember", context1, request)}
 }
 
@@ -143,7 +143,7 @@ type TenantServiceHandler_Admit_Call struct {
 // Admit is a helper method to define mock.On call
 //   - context1 context.Context
 //   - request *connect.Request[adminv1.TenantServiceAdmitRequest]
-func (_e *TenantServiceHandler_Expecter) Admit(context1 interface{}, request interface{}) *TenantServiceHandler_Admit_Call {
+func (_e *TenantServiceHandler_Expecter) Admit(context1 any, request any) *TenantServiceHandler_Admit_Call {
 	return &TenantServiceHandler_Admit_Call{Call: _e.mock.On("Admit", context1, request)}
 }
 
@@ -211,7 +211,7 @@ type TenantServiceHandler_List_Call struct {
 // List is a helper method to define mock.On call
 //   - context1 context.Context
 //   - request *connect.Request[adminv1.TenantServiceListRequest]
-func (_e *TenantServiceHandler_Expecter) List(context1 interface{}, request interface{}) *TenantServiceHandler_List_Call {
+func (_e *TenantServiceHandler_Expecter) List(context1 any, request any) *TenantServiceHandler_List_Call {
 	return &TenantServiceHandler_List_Call{Call: _e.mock.On("List", context1, request)}
 }
 
@@ -279,7 +279,7 @@ type TenantServiceHandler_Revoke_Call struct {
 // Revoke is a helper method to define mock.On call
 //   - context1 context.Context
 //   - request *connect.Request[adminv1.TenantServiceRevokeRequest]
-func (_e *TenantServiceHandler_Expecter) Revoke(context1 interface{}, request interface{}) *TenantServiceHandler_Revoke_Call {
+func (_e *TenantServiceHandler_Expecter) Revoke(context1 any, request any) *TenantServiceHandler_Revoke_Call {
 	return &TenantServiceHandler_Revoke_Call{Call: _e.mock.On("Revoke", context1, request)}
 }
 

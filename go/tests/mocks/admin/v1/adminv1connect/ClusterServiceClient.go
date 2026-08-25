@@ -75,7 +75,7 @@ type ClusterServiceClient_Credentials_Call struct {
 // Credentials is a helper method to define mock.On call
 //   - context1 context.Context
 //   - request *connect.Request[adminv1.ClusterServiceCredentialsRequest]
-func (_e *ClusterServiceClient_Expecter) Credentials(context1 interface{}, request interface{}) *ClusterServiceClient_Credentials_Call {
+func (_e *ClusterServiceClient_Expecter) Credentials(context1 any, request any) *ClusterServiceClient_Credentials_Call {
 	return &ClusterServiceClient_Credentials_Call{Call: _e.mock.On("Credentials", context1, request)}
 }
 
@@ -143,7 +143,7 @@ type ClusterServiceClient_Get_Call struct {
 // Get is a helper method to define mock.On call
 //   - context1 context.Context
 //   - request *connect.Request[adminv1.ClusterServiceGetRequest]
-func (_e *ClusterServiceClient_Expecter) Get(context1 interface{}, request interface{}) *ClusterServiceClient_Get_Call {
+func (_e *ClusterServiceClient_Expecter) Get(context1 any, request any) *ClusterServiceClient_Get_Call {
 	return &ClusterServiceClient_Get_Call{Call: _e.mock.On("Get", context1, request)}
 }
 
@@ -211,7 +211,7 @@ type ClusterServiceClient_GetAdminKubeconfig_Call struct {
 // GetAdminKubeconfig is a helper method to define mock.On call
 //   - context1 context.Context
 //   - request *connect.Request[adminv1.ClusterServiceGetAdminKubeconfigRequest]
-func (_e *ClusterServiceClient_Expecter) GetAdminKubeconfig(context1 interface{}, request interface{}) *ClusterServiceClient_GetAdminKubeconfig_Call {
+func (_e *ClusterServiceClient_Expecter) GetAdminKubeconfig(context1 any, request any) *ClusterServiceClient_GetAdminKubeconfig_Call {
 	return &ClusterServiceClient_GetAdminKubeconfig_Call{Call: _e.mock.On("GetAdminKubeconfig", context1, request)}
 }
 
@@ -279,7 +279,7 @@ type ClusterServiceClient_GetViewerKubeconfig_Call struct {
 // GetViewerKubeconfig is a helper method to define mock.On call
 //   - context1 context.Context
 //   - request *connect.Request[adminv1.ClusterServiceGetViewerKubeconfigRequest]
-func (_e *ClusterServiceClient_Expecter) GetViewerKubeconfig(context1 interface{}, request interface{}) *ClusterServiceClient_GetViewerKubeconfig_Call {
+func (_e *ClusterServiceClient_Expecter) GetViewerKubeconfig(context1 any, request any) *ClusterServiceClient_GetViewerKubeconfig_Call {
 	return &ClusterServiceClient_GetViewerKubeconfig_Call{Call: _e.mock.On("GetViewerKubeconfig", context1, request)}
 }
 
@@ -347,7 +347,7 @@ type ClusterServiceClient_List_Call struct {
 // List is a helper method to define mock.On call
 //   - context1 context.Context
 //   - request *connect.Request[adminv1.ClusterServiceListRequest]
-func (_e *ClusterServiceClient_Expecter) List(context1 interface{}, request interface{}) *ClusterServiceClient_List_Call {
+func (_e *ClusterServiceClient_Expecter) List(context1 any, request any) *ClusterServiceClient_List_Call {
 	return &ClusterServiceClient_List_Call{Call: _e.mock.On("List", context1, request)}
 }
 

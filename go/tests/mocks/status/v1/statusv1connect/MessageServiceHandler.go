@@ -65,7 +65,7 @@ type MessageServiceHandler_Watch_Call struct {
 //   - context1 context.Context
 //   - request *connect.Request[statusv1.MessageServiceWatchRequest]
 //   - serverStream *connect.ServerStream[statusv1.MessageServiceWatchResponse]
-func (_e *MessageServiceHandler_Expecter) Watch(context1 interface{}, request interface{}, serverStream interface{}) *MessageServiceHandler_Watch_Call {
+func (_e *MessageServiceHandler_Expecter) Watch(context1 any, request any, serverStream any) *MessageServiceHandler_Watch_Call {
 	return &MessageServiceHandler_Watch_Call{Call: _e.mock.On("Watch", context1, request, serverStream)}
 }
 

@@ -94,19 +94,19 @@ export type Snapshot = Message<"api.v1.Snapshot"> & {
      *
      * @generated from field: google.protobuf.Duration retention = 14;
      */
-    retention?: Duration;
+    retention?: Duration | undefined;
     /**
      * SnapshotStatistics are only visible to admins
      *
      * @generated from field: api.v1.SnapshotStatistics statistics = 15;
      */
-    statistics?: SnapshotStatistics;
+    statistics?: SnapshotStatistics | undefined;
     /**
      * CreatedAt is the date when this snapshot was created
      *
      * @generated from field: google.protobuf.Timestamp created_at = 20;
      */
-    createdAt?: Timestamp;
+    createdAt?: Timestamp | undefined;
 };
 /**
  * Describes the message api.v1.Snapshot.
@@ -200,7 +200,7 @@ export type SnapshotServiceListRequest = Message<"api.v1.SnapshotServiceListRequ
      *
      * @generated from field: optional string uuid = 1;
      */
-    uuid?: string;
+    uuid?: string | undefined;
     /**
      * Project of the snapshot
      *
@@ -212,13 +212,13 @@ export type SnapshotServiceListRequest = Message<"api.v1.SnapshotServiceListRequ
      *
      * @generated from field: optional string partition = 3;
      */
-    partition?: string;
+    partition?: string | undefined;
     /**
      * Name of the snapshot
      *
      * @generated from field: optional string name = 4;
      */
-    name?: string;
+    name?: string | undefined;
 };
 /**
  * Describes the message api.v1.SnapshotServiceListRequest.
@@ -260,7 +260,7 @@ export type SnapshotServiceGetResponse = Message<"api.v1.SnapshotServiceGetRespo
      *
      * @generated from field: api.v1.Snapshot snapshot = 1;
      */
-    snapshot?: Snapshot;
+    snapshot?: Snapshot | undefined;
 };
 /**
  * Describes the message api.v1.SnapshotServiceGetResponse.
@@ -296,7 +296,7 @@ export type SnapshotServiceDeleteResponse = Message<"api.v1.SnapshotServiceDelet
      *
      * @generated from field: api.v1.Snapshot snapshot = 1;
      */
-    snapshot?: Snapshot;
+    snapshot?: Snapshot | undefined;
 };
 /**
  * Describes the message api.v1.SnapshotServiceDeleteResponse.

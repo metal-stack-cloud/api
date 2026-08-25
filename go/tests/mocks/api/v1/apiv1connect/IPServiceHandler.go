@@ -75,7 +75,7 @@ type IPServiceHandler_Allocate_Call struct {
 // Allocate is a helper method to define mock.On call
 //   - context1 context.Context
 //   - request *connect.Request[apiv1.IPServiceAllocateRequest]
-func (_e *IPServiceHandler_Expecter) Allocate(context1 interface{}, request interface{}) *IPServiceHandler_Allocate_Call {
+func (_e *IPServiceHandler_Expecter) Allocate(context1 any, request any) *IPServiceHandler_Allocate_Call {
 	return &IPServiceHandler_Allocate_Call{Call: _e.mock.On("Allocate", context1, request)}
 }
 
@@ -143,7 +143,7 @@ type IPServiceHandler_Delete_Call struct {
 // Delete is a helper method to define mock.On call
 //   - context1 context.Context
 //   - request *connect.Request[apiv1.IPServiceDeleteRequest]
-func (_e *IPServiceHandler_Expecter) Delete(context1 interface{}, request interface{}) *IPServiceHandler_Delete_Call {
+func (_e *IPServiceHandler_Expecter) Delete(context1 any, request any) *IPServiceHandler_Delete_Call {
 	return &IPServiceHandler_Delete_Call{Call: _e.mock.On("Delete", context1, request)}
 }
 
@@ -211,7 +211,7 @@ type IPServiceHandler_Get_Call struct {
 // Get is a helper method to define mock.On call
 //   - context1 context.Context
 //   - request *connect.Request[apiv1.IPServiceGetRequest]
-func (_e *IPServiceHandler_Expecter) Get(context1 interface{}, request interface{}) *IPServiceHandler_Get_Call {
+func (_e *IPServiceHandler_Expecter) Get(context1 any, request any) *IPServiceHandler_Get_Call {
 	return &IPServiceHandler_Get_Call{Call: _e.mock.On("Get", context1, request)}
 }
 
@@ -279,7 +279,7 @@ type IPServiceHandler_List_Call struct {
 // List is a helper method to define mock.On call
 //   - context1 context.Context
 //   - request *connect.Request[apiv1.IPServiceListRequest]
-func (_e *IPServiceHandler_Expecter) List(context1 interface{}, request interface{}) *IPServiceHandler_List_Call {
+func (_e *IPServiceHandler_Expecter) List(context1 any, request any) *IPServiceHandler_List_Call {
 	return &IPServiceHandler_List_Call{Call: _e.mock.On("List", context1, request)}
 }
 
@@ -347,7 +347,7 @@ type IPServiceHandler_Update_Call struct {
 // Update is a helper method to define mock.On call
 //   - context1 context.Context
 //   - request *connect.Request[apiv1.IPServiceUpdateRequest]
-func (_e *IPServiceHandler_Expecter) Update(context1 interface{}, request interface{}) *IPServiceHandler_Update_Call {
+func (_e *IPServiceHandler_Expecter) Update(context1 any, request any) *IPServiceHandler_Update_Call {
 	return &IPServiceHandler_Update_Call{Call: _e.mock.On("Update", context1, request)}
 }
 
