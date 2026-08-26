@@ -17,13 +17,13 @@ export type Paging = Message<"api.v1.Paging"> & {
      *
      * @generated from field: optional uint64 page = 1;
      */
-    page?: bigint;
+    page?: bigint | undefined;
     /**
      * Count is the number of results returned per page, if not given server side defaults apply
      *
      * @generated from field: optional uint64 count = 2;
      */
-    count?: bigint;
+    count?: bigint | undefined;
 };
 /**
  * Describes the message api.v1.Paging.

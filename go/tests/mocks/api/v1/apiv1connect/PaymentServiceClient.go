@@ -75,7 +75,7 @@ type PaymentServiceClient_CreateOrUpdateCustomer_Call struct {
 // CreateOrUpdateCustomer is a helper method to define mock.On call
 //   - context1 context.Context
 //   - request *connect.Request[apiv1.PaymentServiceCreateOrUpdateCustomerRequest]
-func (_e *PaymentServiceClient_Expecter) CreateOrUpdateCustomer(context1 interface{}, request interface{}) *PaymentServiceClient_CreateOrUpdateCustomer_Call {
+func (_e *PaymentServiceClient_Expecter) CreateOrUpdateCustomer(context1 any, request any) *PaymentServiceClient_CreateOrUpdateCustomer_Call {
 	return &PaymentServiceClient_CreateOrUpdateCustomer_Call{Call: _e.mock.On("CreateOrUpdateCustomer", context1, request)}
 }
 
@@ -143,7 +143,7 @@ type PaymentServiceClient_DeletePaymentMethod_Call struct {
 // DeletePaymentMethod is a helper method to define mock.On call
 //   - context1 context.Context
 //   - request *connect.Request[apiv1.PaymentServiceDeletePaymentMethodRequest]
-func (_e *PaymentServiceClient_Expecter) DeletePaymentMethod(context1 interface{}, request interface{}) *PaymentServiceClient_DeletePaymentMethod_Call {
+func (_e *PaymentServiceClient_Expecter) DeletePaymentMethod(context1 any, request any) *PaymentServiceClient_DeletePaymentMethod_Call {
 	return &PaymentServiceClient_DeletePaymentMethod_Call{Call: _e.mock.On("DeletePaymentMethod", context1, request)}
 }
 
@@ -211,7 +211,7 @@ type PaymentServiceClient_GetCustomer_Call struct {
 // GetCustomer is a helper method to define mock.On call
 //   - context1 context.Context
 //   - request *connect.Request[apiv1.PaymentServiceGetCustomerRequest]
-func (_e *PaymentServiceClient_Expecter) GetCustomer(context1 interface{}, request interface{}) *PaymentServiceClient_GetCustomer_Call {
+func (_e *PaymentServiceClient_Expecter) GetCustomer(context1 any, request any) *PaymentServiceClient_GetCustomer_Call {
 	return &PaymentServiceClient_GetCustomer_Call{Call: _e.mock.On("GetCustomer", context1, request)}
 }
 
@@ -279,7 +279,7 @@ type PaymentServiceClient_GetDefaultPrices_Call struct {
 // GetDefaultPrices is a helper method to define mock.On call
 //   - context1 context.Context
 //   - request *connect.Request[apiv1.PaymentServiceGetDefaultPricesRequest]
-func (_e *PaymentServiceClient_Expecter) GetDefaultPrices(context1 interface{}, request interface{}) *PaymentServiceClient_GetDefaultPrices_Call {
+func (_e *PaymentServiceClient_Expecter) GetDefaultPrices(context1 any, request any) *PaymentServiceClient_GetDefaultPrices_Call {
 	return &PaymentServiceClient_GetDefaultPrices_Call{Call: _e.mock.On("GetDefaultPrices", context1, request)}
 }
 
@@ -347,7 +347,7 @@ type PaymentServiceClient_GetInvoices_Call struct {
 // GetInvoices is a helper method to define mock.On call
 //   - context1 context.Context
 //   - request *connect.Request[apiv1.PaymentServiceGetInvoicesRequest]
-func (_e *PaymentServiceClient_Expecter) GetInvoices(context1 interface{}, request interface{}) *PaymentServiceClient_GetInvoices_Call {
+func (_e *PaymentServiceClient_Expecter) GetInvoices(context1 any, request any) *PaymentServiceClient_GetInvoices_Call {
 	return &PaymentServiceClient_GetInvoices_Call{Call: _e.mock.On("GetInvoices", context1, request)}
 }
 
@@ -415,7 +415,7 @@ type PaymentServiceClient_GetSubscriptionDiscounts_Call struct {
 // GetSubscriptionDiscounts is a helper method to define mock.On call
 //   - context1 context.Context
 //   - request *connect.Request[apiv1.PaymentServiceGetSubscriptionDiscountsRequest]
-func (_e *PaymentServiceClient_Expecter) GetSubscriptionDiscounts(context1 interface{}, request interface{}) *PaymentServiceClient_GetSubscriptionDiscounts_Call {
+func (_e *PaymentServiceClient_Expecter) GetSubscriptionDiscounts(context1 any, request any) *PaymentServiceClient_GetSubscriptionDiscounts_Call {
 	return &PaymentServiceClient_GetSubscriptionDiscounts_Call{Call: _e.mock.On("GetSubscriptionDiscounts", context1, request)}
 }
 
@@ -483,7 +483,7 @@ type PaymentServiceClient_GetSubscriptionUsage_Call struct {
 // GetSubscriptionUsage is a helper method to define mock.On call
 //   - context1 context.Context
 //   - request *connect.Request[apiv1.PaymentServiceGetSubscriptionUsageRequest]
-func (_e *PaymentServiceClient_Expecter) GetSubscriptionUsage(context1 interface{}, request interface{}) *PaymentServiceClient_GetSubscriptionUsage_Call {
+func (_e *PaymentServiceClient_Expecter) GetSubscriptionUsage(context1 any, request any) *PaymentServiceClient_GetSubscriptionUsage_Call {
 	return &PaymentServiceClient_GetSubscriptionUsage_Call{Call: _e.mock.On("GetSubscriptionUsage", context1, request)}
 }
 
@@ -551,7 +551,7 @@ type PaymentServiceClient_HasPaymentMethod_Call struct {
 // HasPaymentMethod is a helper method to define mock.On call
 //   - context1 context.Context
 //   - request *connect.Request[apiv1.PaymentServiceHasPaymentMethodRequest]
-func (_e *PaymentServiceClient_Expecter) HasPaymentMethod(context1 interface{}, request interface{}) *PaymentServiceClient_HasPaymentMethod_Call {
+func (_e *PaymentServiceClient_Expecter) HasPaymentMethod(context1 any, request any) *PaymentServiceClient_HasPaymentMethod_Call {
 	return &PaymentServiceClient_HasPaymentMethod_Call{Call: _e.mock.On("HasPaymentMethod", context1, request)}
 }
 

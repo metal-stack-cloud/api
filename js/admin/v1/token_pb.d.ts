@@ -16,7 +16,7 @@ export type TokenServiceListRequest = Message<"admin.v1.TokenServiceListRequest"
      *
      * @generated from field: optional string user_id = 1;
      */
-    userId?: string;
+    userId?: string | undefined;
 };
 /**
  * Describes the message admin.v1.TokenServiceListRequest.

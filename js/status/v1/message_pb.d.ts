@@ -69,7 +69,7 @@ export type Message = Message$1<"status.v1.Message"> & {
      *
      * @generated from field: google.protobuf.Timestamp timestamp = 4;
      */
-    timestamp?: Timestamp;
+    timestamp?: Timestamp | undefined;
     /**
      * Replies are messages which are followups to the initial message
      *
@@ -111,7 +111,7 @@ export type ReplyMessage = Message$1<"status.v1.ReplyMessage"> & {
      *
      * @generated from field: google.protobuf.Timestamp timestamp = 4;
      */
-    timestamp?: Timestamp;
+    timestamp?: Timestamp | undefined;
 };
 /**
  * Describes the message status.v1.ReplyMessage.

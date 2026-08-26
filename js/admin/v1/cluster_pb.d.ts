@@ -42,43 +42,43 @@ export type ClusterServiceListRequest = Message<"admin.v1.ClusterServiceListRequ
      *
      * @generated from field: optional string uuid = 1;
      */
-    uuid?: string;
+    uuid?: string | undefined;
     /**
      * Project of the cluster
      *
      * @generated from field: optional string project = 2;
      */
-    project?: string;
+    project?: string | undefined;
     /**
      * Tenant of the cluster
      *
      * @generated from field: optional string tenant = 3;
      */
-    tenant?: string;
+    tenant?: string | undefined;
     /**
      * Partition of the cluster
      *
      * @generated from field: optional string partition = 4;
      */
-    partition?: string;
+    partition?: string | undefined;
     /**
      * Seed of the cluster
      *
      * @generated from field: optional string seed = 5;
      */
-    seed?: string;
+    seed?: string | undefined;
     /**
      * Name of the cluster
      *
      * @generated from field: optional string name = 6;
      */
-    name?: string;
+    name?: string | undefined;
     /**
      * Purpose of the cluster
      *
      * @generated from field: optional string purpose = 7;
      */
-    purpose?: string;
+    purpose?: string | undefined;
     /**
      * Labels of the cluster
      *
@@ -122,7 +122,7 @@ export type ClusterServiceCredentialsRequest = Message<"admin.v1.ClusterServiceC
      *
      * @generated from field: optional google.protobuf.Duration expiration = 4;
      */
-    expiration?: Duration;
+    expiration?: Duration | undefined;
 };
 /**
  * Describes the message admin.v1.ClusterServiceCredentialsRequest.
@@ -146,7 +146,7 @@ export type ClusterServiceGetAdminKubeconfigRequest = Message<"admin.v1.ClusterS
      *
      * @generated from field: optional google.protobuf.Duration expiration = 4;
      */
-    expiration?: Duration;
+    expiration?: Duration | undefined;
 };
 /**
  * Describes the message admin.v1.ClusterServiceGetAdminKubeconfigRequest.
@@ -170,7 +170,7 @@ export type ClusterServiceGetViewerKubeconfigRequest = Message<"admin.v1.Cluster
      *
      * @generated from field: optional google.protobuf.Duration expiration = 4;
      */
-    expiration?: Duration;
+    expiration?: Duration | undefined;
 };
 /**
  * Describes the message admin.v1.ClusterServiceGetViewerKubeconfigRequest.
@@ -188,7 +188,7 @@ export type ClusterServiceGetResponse = Message<"admin.v1.ClusterServiceGetRespo
      *
      * @generated from field: api.v1.Cluster cluster = 1;
      */
-    cluster?: Cluster;
+    cluster?: Cluster | undefined;
     /**
      * Machines is a list of all machines in all worker groups
      *
@@ -236,13 +236,13 @@ export type ClusterServiceCredentialsResponse = Message<"admin.v1.ClusterService
      *
      * @generated from field: admin.v1.SSHKeyPair ssh_keypair = 2;
      */
-    sshKeypair?: SSHKeyPair;
+    sshKeypair?: SSHKeyPair | undefined;
     /**
      * Vpn are the VPN access details
      *
      * @generated from field: admin.v1.VPN vpn = 3;
      */
-    vpn?: VPN;
+    vpn?: VPN | undefined;
 };
 /**
  * Describes the message admin.v1.ClusterServiceCredentialsResponse.

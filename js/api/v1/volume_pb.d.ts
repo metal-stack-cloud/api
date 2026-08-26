@@ -135,7 +135,7 @@ export type Volume = Message<"api.v1.Volume"> & {
      *
      * @generated from field: api.v1.VolumeStatistics statistics = 21;
      */
-    statistics?: VolumeStatistics;
+    statistics?: VolumeStatistics | undefined;
     /**
      * ClusterName if set points to the cluster this volume is attached to
      *
@@ -345,7 +345,7 @@ export type VolumeServiceListRequest = Message<"api.v1.VolumeServiceListRequest"
      *
      * @generated from field: optional string uuid = 1;
      */
-    uuid?: string;
+    uuid?: string | undefined;
     /**
      * Project of the volume
      *
@@ -357,13 +357,13 @@ export type VolumeServiceListRequest = Message<"api.v1.VolumeServiceListRequest"
      *
      * @generated from field: optional string partition = 3;
      */
-    partition?: string;
+    partition?: string | undefined;
     /**
      * Name of the volume
      *
      * @generated from field: optional string name = 4;
      */
-    name?: string;
+    name?: string | undefined;
 };
 /**
  * Describes the message api.v1.VolumeServiceListRequest.
@@ -417,7 +417,7 @@ export type VolumeServiceUpdateRequest = Message<"api.v1.VolumeServiceUpdateRequ
      *
      * @generated from field: optional api.v1.UpdateVolumeLabels labels = 24;
      */
-    labels?: UpdateVolumeLabels;
+    labels?: UpdateVolumeLabels | undefined;
 };
 /**
  * Describes the message api.v1.VolumeServiceUpdateRequest.
@@ -435,7 +435,7 @@ export type VolumeServiceGetResponse = Message<"api.v1.VolumeServiceGetResponse"
      *
      * @generated from field: api.v1.Volume volume = 1;
      */
-    volume?: Volume;
+    volume?: Volume | undefined;
 };
 /**
  * Describes the message api.v1.VolumeServiceGetResponse.
@@ -471,7 +471,7 @@ export type VolumeServiceDeleteResponse = Message<"api.v1.VolumeServiceDeleteRes
      *
      * @generated from field: api.v1.Volume volume = 1;
      */
-    volume?: Volume;
+    volume?: Volume | undefined;
 };
 /**
  * Describes the message api.v1.VolumeServiceDeleteResponse.
@@ -489,7 +489,7 @@ export type VolumeServiceUpdateResponse = Message<"api.v1.VolumeServiceUpdateRes
      *
      * @generated from field: api.v1.Volume volume = 1;
      */
-    volume?: Volume;
+    volume?: Volume | undefined;
 };
 /**
  * Describes the message api.v1.VolumeServiceUpdateResponse.

@@ -75,7 +75,7 @@ type MessageServiceClient_Watch_Call struct {
 // Watch is a helper method to define mock.On call
 //   - context1 context.Context
 //   - request *connect.Request[statusv1.MessageServiceWatchRequest]
-func (_e *MessageServiceClient_Expecter) Watch(context1 interface{}, request interface{}) *MessageServiceClient_Watch_Call {
+func (_e *MessageServiceClient_Expecter) Watch(context1 any, request any) *MessageServiceClient_Watch_Call {
 	return &MessageServiceClient_Watch_Call{Call: _e.mock.On("Watch", context1, request)}
 }
 

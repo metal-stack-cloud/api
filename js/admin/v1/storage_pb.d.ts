@@ -17,7 +17,7 @@ export type StorageServiceClusterInfoRequest = Message<"admin.v1.StorageServiceC
      *
      * @generated from field: optional string partition = 1;
      */
-    partition?: string;
+    partition?: string | undefined;
 };
 /**
  * Describes the message admin.v1.StorageServiceClusterInfoRequest.
@@ -83,13 +83,13 @@ export type StorageClusterInfo = Message<"admin.v1.StorageClusterInfo"> & {
      *
      * @generated from field: admin.v1.ClusterStatisticsApi statistics = 6;
      */
-    statistics?: ClusterStatisticsApi;
+    statistics?: ClusterStatisticsApi | undefined;
     /**
      * Health of the storage system
      *
      * @generated from field: admin.v1.ClusterHealth health = 7;
      */
-    health?: ClusterHealth;
+    health?: ClusterHealth | undefined;
     /**
      * MinVersionInCluster is the minimum server version in this cluster
      *
@@ -333,31 +333,31 @@ export type StorageServiceListVolumesRequest = Message<"admin.v1.StorageServiceL
      *
      * @generated from field: optional string uuid = 1;
      */
-    uuid?: string;
+    uuid?: string | undefined;
     /**
      * Project is the project of the volume to list
      *
      * @generated from field: optional string project = 2;
      */
-    project?: string;
+    project?: string | undefined;
     /**
      * Partition is the partition of the volume to list
      *
      * @generated from field: optional string partition = 3;
      */
-    partition?: string;
+    partition?: string | undefined;
     /**
      * Name is the name of the volume to list
      *
      * @generated from field: optional string name = 4;
      */
-    name?: string;
+    name?: string | undefined;
     /**
      * Tenant is the tenant of the volume to list
      *
      * @generated from field: optional string tenant = 5;
      */
-    tenant?: string;
+    tenant?: string | undefined;
 };
 /**
  * Describes the message admin.v1.StorageServiceListVolumesRequest.
@@ -393,31 +393,31 @@ export type StorageServiceListSnapshotsRequest = Message<"admin.v1.StorageServic
      *
      * @generated from field: optional string uuid = 1;
      */
-    uuid?: string;
+    uuid?: string | undefined;
     /**
      * Project is the project of the snapshot to list
      *
      * @generated from field: optional string project = 2;
      */
-    project?: string;
+    project?: string | undefined;
     /**
      * Partition is the partition of the snapshot to list
      *
      * @generated from field: optional string partition = 3;
      */
-    partition?: string;
+    partition?: string | undefined;
     /**
      * Name is the name of the snapshot to list
      *
      * @generated from field: optional string name = 4;
      */
-    name?: string;
+    name?: string | undefined;
     /**
      * Tenant is the tenant of the snapshot to list
      *
      * @generated from field: optional string tenant = 5;
      */
-    tenant?: string;
+    tenant?: string | undefined;
 };
 /**
  * Describes the message admin.v1.StorageServiceListSnapshotsRequest.
