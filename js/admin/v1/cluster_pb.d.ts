@@ -1,6 +1,6 @@
 import type { GenFile, GenMessage, GenService } from "@bufbuild/protobuf/codegenv2";
 import type { Machine, VPN } from "./machine_pb";
-import type { Cluster } from "../../api/v1/cluster_pb";
+import type { Cluster, ClusterMonitoring } from "../../api/v1/cluster_pb";
 import type { Duration } from "@bufbuild/protobuf/wkt";
 import type { Message } from "@bufbuild/protobuf";
 /**
@@ -178,6 +178,24 @@ export type ClusterServiceGetViewerKubeconfigRequest = Message<"admin.v1.Cluster
  */
 export declare const ClusterServiceGetViewerKubeconfigRequestSchema: GenMessage<ClusterServiceGetViewerKubeconfigRequest>;
 /**
+ * ClusterServiceGetMonitoringCredentialsRequest is the request payload for the cluster monitoring credentials request
+ *
+ * @generated from message admin.v1.ClusterServiceGetMonitoringCredentialsRequest
+ */
+export type ClusterServiceGetMonitoringCredentialsRequest = Message<"admin.v1.ClusterServiceGetMonitoringCredentialsRequest"> & {
+    /**
+     * Uuid of the cluster
+     *
+     * @generated from field: string uuid = 1;
+     */
+    uuid: string;
+};
+/**
+ * Describes the message admin.v1.ClusterServiceGetMonitoringCredentialsRequest.
+ * Use `create(ClusterServiceGetMonitoringCredentialsRequestSchema)` to create a new message.
+ */
+export declare const ClusterServiceGetMonitoringCredentialsRequestSchema: GenMessage<ClusterServiceGetMonitoringCredentialsRequest>;
+/**
  * ClusterServiceGetResponse is the response payload for the cluster get request
  *
  * @generated from message admin.v1.ClusterServiceGetResponse
@@ -286,6 +304,24 @@ export type ClusterServiceGetViewerKubeconfigResponse = Message<"admin.v1.Cluste
  */
 export declare const ClusterServiceGetViewerKubeconfigResponseSchema: GenMessage<ClusterServiceGetViewerKubeconfigResponse>;
 /**
+ * ClusterServiceGetMonitoringCredentialsResponse is the response payload for the cluster monitoring credentials request
+ *
+ * @generated from message admin.v1.ClusterServiceGetMonitoringCredentialsResponse
+ */
+export type ClusterServiceGetMonitoringCredentialsResponse = Message<"admin.v1.ClusterServiceGetMonitoringCredentialsResponse"> & {
+    /**
+     * Monitoring returns the monitoring credentials and endpoint
+     *
+     * @generated from field: api.v1.ClusterMonitoring monitoring = 1;
+     */
+    monitoring?: ClusterMonitoring;
+};
+/**
+ * Describes the message admin.v1.ClusterServiceGetMonitoringCredentialsResponse.
+ * Use `create(ClusterServiceGetMonitoringCredentialsResponseSchema)` to create a new message.
+ */
+export declare const ClusterServiceGetMonitoringCredentialsResponseSchema: GenMessage<ClusterServiceGetMonitoringCredentialsResponse>;
+/**
  * SSHKeyPair details to access a firewall via ssh
  *
  * @generated from message admin.v1.SSHKeyPair
@@ -364,5 +400,15 @@ export declare const ClusterService: GenService<{
         methodKind: "unary";
         input: typeof ClusterServiceGetViewerKubeconfigRequestSchema;
         output: typeof ClusterServiceGetViewerKubeconfigResponseSchema;
+    };
+    /**
+     * GetMonitoringCredentials returns monitoring credentials for a cluster
+     *
+     * @generated from rpc admin.v1.ClusterService.GetMonitoringCredentials
+     */
+    getMonitoringCredentials: {
+        methodKind: "unary";
+        input: typeof ClusterServiceGetMonitoringCredentialsRequestSchema;
+        output: typeof ClusterServiceGetMonitoringCredentialsResponseSchema;
     };
 }>;

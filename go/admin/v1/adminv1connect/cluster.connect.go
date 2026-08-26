@@ -46,6 +46,9 @@ const (
 	// ClusterServiceGetViewerKubeconfigProcedure is the fully-qualified name of the ClusterService's
 	// GetViewerKubeconfig RPC.
 	ClusterServiceGetViewerKubeconfigProcedure = "/admin.v1.ClusterService/GetViewerKubeconfig"
+	// ClusterServiceGetMonitoringCredentialsProcedure is the fully-qualified name of the
+	// ClusterService's GetMonitoringCredentials RPC.
+	ClusterServiceGetMonitoringCredentialsProcedure = "/admin.v1.ClusterService/GetMonitoringCredentials"
 )
 
 // ClusterServiceClient is a client for the admin.v1.ClusterService service.
@@ -60,6 +63,8 @@ type ClusterServiceClient interface {
 	GetAdminKubeconfig(context.Context, *connect.Request[v1.ClusterServiceGetAdminKubeconfigRequest]) (*connect.Response[v1.ClusterServiceGetAdminKubeconfigResponse], error)
 	// GetViewerKubeconfig of a cluster
 	GetViewerKubeconfig(context.Context, *connect.Request[v1.ClusterServiceGetViewerKubeconfigRequest]) (*connect.Response[v1.ClusterServiceGetViewerKubeconfigResponse], error)
+	// GetMonitoringCredentials returns monitoring credentials for a cluster
+	GetMonitoringCredentials(context.Context, *connect.Request[v1.ClusterServiceGetMonitoringCredentialsRequest]) (*connect.Response[v1.ClusterServiceGetMonitoringCredentialsResponse], error)
 }
 
 // NewClusterServiceClient constructs a client for the admin.v1.ClusterService service. By default,
@@ -103,16 +108,23 @@ func NewClusterServiceClient(httpClient connect.HTTPClient, baseURL string, opts
 			connect.WithSchema(clusterServiceMethods.ByName("GetViewerKubeconfig")),
 			connect.WithClientOptions(opts...),
 		),
+		getMonitoringCredentials: connect.NewClient[v1.ClusterServiceGetMonitoringCredentialsRequest, v1.ClusterServiceGetMonitoringCredentialsResponse](
+			httpClient,
+			baseURL+ClusterServiceGetMonitoringCredentialsProcedure,
+			connect.WithSchema(clusterServiceMethods.ByName("GetMonitoringCredentials")),
+			connect.WithClientOptions(opts...),
+		),
 	}
 }
 
 // clusterServiceClient implements ClusterServiceClient.
 type clusterServiceClient struct {
-	get                 *connect.Client[v1.ClusterServiceGetRequest, v1.ClusterServiceGetResponse]
-	list                *connect.Client[v1.ClusterServiceListRequest, v1.ClusterServiceListResponse]
-	credentials         *connect.Client[v1.ClusterServiceCredentialsRequest, v1.ClusterServiceCredentialsResponse]
-	getAdminKubeconfig  *connect.Client[v1.ClusterServiceGetAdminKubeconfigRequest, v1.ClusterServiceGetAdminKubeconfigResponse]
-	getViewerKubeconfig *connect.Client[v1.ClusterServiceGetViewerKubeconfigRequest, v1.ClusterServiceGetViewerKubeconfigResponse]
+	get                      *connect.Client[v1.ClusterServiceGetRequest, v1.ClusterServiceGetResponse]
+	list                     *connect.Client[v1.ClusterServiceListRequest, v1.ClusterServiceListResponse]
+	credentials              *connect.Client[v1.ClusterServiceCredentialsRequest, v1.ClusterServiceCredentialsResponse]
+	getAdminKubeconfig       *connect.Client[v1.ClusterServiceGetAdminKubeconfigRequest, v1.ClusterServiceGetAdminKubeconfigResponse]
+	getViewerKubeconfig      *connect.Client[v1.ClusterServiceGetViewerKubeconfigRequest, v1.ClusterServiceGetViewerKubeconfigResponse]
+	getMonitoringCredentials *connect.Client[v1.ClusterServiceGetMonitoringCredentialsRequest, v1.ClusterServiceGetMonitoringCredentialsResponse]
 }
 
 // Get calls admin.v1.ClusterService.Get.
@@ -140,6 +152,11 @@ func (c *clusterServiceClient) GetViewerKubeconfig(ctx context.Context, req *con
 	return c.getViewerKubeconfig.CallUnary(ctx, req)
 }
 
+// GetMonitoringCredentials calls admin.v1.ClusterService.GetMonitoringCredentials.
+func (c *clusterServiceClient) GetMonitoringCredentials(ctx context.Context, req *connect.Request[v1.ClusterServiceGetMonitoringCredentialsRequest]) (*connect.Response[v1.ClusterServiceGetMonitoringCredentialsResponse], error) {
+	return c.getMonitoringCredentials.CallUnary(ctx, req)
+}
+
 // ClusterServiceHandler is an implementation of the admin.v1.ClusterService service.
 type ClusterServiceHandler interface {
 	// Get a cluster
@@ -152,6 +169,8 @@ type ClusterServiceHandler interface {
 	GetAdminKubeconfig(context.Context, *connect.Request[v1.ClusterServiceGetAdminKubeconfigRequest]) (*connect.Response[v1.ClusterServiceGetAdminKubeconfigResponse], error)
 	// GetViewerKubeconfig of a cluster
 	GetViewerKubeconfig(context.Context, *connect.Request[v1.ClusterServiceGetViewerKubeconfigRequest]) (*connect.Response[v1.ClusterServiceGetViewerKubeconfigResponse], error)
+	// GetMonitoringCredentials returns monitoring credentials for a cluster
+	GetMonitoringCredentials(context.Context, *connect.Request[v1.ClusterServiceGetMonitoringCredentialsRequest]) (*connect.Response[v1.ClusterServiceGetMonitoringCredentialsResponse], error)
 }
 
 // NewClusterServiceHandler builds an HTTP handler from the service implementation. It returns the
@@ -191,6 +210,12 @@ func NewClusterServiceHandler(svc ClusterServiceHandler, opts ...connect.Handler
 		connect.WithSchema(clusterServiceMethods.ByName("GetViewerKubeconfig")),
 		connect.WithHandlerOptions(opts...),
 	)
+	clusterServiceGetMonitoringCredentialsHandler := connect.NewUnaryHandler(
+		ClusterServiceGetMonitoringCredentialsProcedure,
+		svc.GetMonitoringCredentials,
+		connect.WithSchema(clusterServiceMethods.ByName("GetMonitoringCredentials")),
+		connect.WithHandlerOptions(opts...),
+	)
 	return "/admin.v1.ClusterService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
 		case ClusterServiceGetProcedure:
@@ -203,6 +228,8 @@ func NewClusterServiceHandler(svc ClusterServiceHandler, opts ...connect.Handler
 			clusterServiceGetAdminKubeconfigHandler.ServeHTTP(w, r)
 		case ClusterServiceGetViewerKubeconfigProcedure:
 			clusterServiceGetViewerKubeconfigHandler.ServeHTTP(w, r)
+		case ClusterServiceGetMonitoringCredentialsProcedure:
+			clusterServiceGetMonitoringCredentialsHandler.ServeHTTP(w, r)
 		default:
 			http.NotFound(w, r)
 		}
@@ -230,4 +257,8 @@ func (UnimplementedClusterServiceHandler) GetAdminKubeconfig(context.Context, *c
 
 func (UnimplementedClusterServiceHandler) GetViewerKubeconfig(context.Context, *connect.Request[v1.ClusterServiceGetViewerKubeconfigRequest]) (*connect.Response[v1.ClusterServiceGetViewerKubeconfigResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("admin.v1.ClusterService.GetViewerKubeconfig is not implemented"))
+}
+
+func (UnimplementedClusterServiceHandler) GetMonitoringCredentials(context.Context, *connect.Request[v1.ClusterServiceGetMonitoringCredentialsRequest]) (*connect.Response[v1.ClusterServiceGetMonitoringCredentialsResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("admin.v1.ClusterService.GetMonitoringCredentials is not implemented"))
 }

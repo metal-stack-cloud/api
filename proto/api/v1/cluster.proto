@@ -68,6 +68,13 @@ service ClusterService {
     option (project_roles) = PROJECT_ROLE_OWNER;
     option (project_roles) = PROJECT_ROLE_EDITOR;
   }
+  // GetMonitoringCredentials returns monitoring credentials for a cluster
+  rpc GetMonitoringCredentials(ClusterServiceGetMonitoringCredentialsRequest) returns (ClusterServiceGetMonitoringCredentialsResponse) {
+    option (project_roles) = PROJECT_ROLE_OWNER;
+    option (project_roles) = PROJECT_ROLE_EDITOR;
+    option (project_roles) = PROJECT_ROLE_VIEWER;
+    option (auditing) = AUDITING_EXCLUDED;
+  }
 }
 
 // Cluster describes a kubernetes cluster
@@ -328,6 +335,17 @@ message ClusterServiceWatchStatusRequest {
   }];
 }
 
+// ClusterServiceGetMonitoringCredentialsRequest is the request payload for the cluster monitoring credentials request
+message ClusterServiceGetMonitoringCredentialsRequest {
+  // Uuid of the cluster
+  string uuid = 1 [(buf.validate.field).string.uuid = true];
+  // Project of the cluster
+  string project = 2 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
+  }];
+}
+
 // ClusterStatus
 message ClusterStatus {
   // Uuid of the cluster
@@ -378,7 +396,7 @@ message ClusterStatusCondition {
   google.protobuf.Timestamp last_update_time = 6;
 }
 
-// ClusterMonitoring contains details howto access the cluster monitoring
+// ClusterMonitoring contains details how to access the cluster monitoring
 message ClusterMonitoring {
   // Username to access the monitoring
   string username = 1;
@@ -446,6 +464,12 @@ message ClusterServiceWatchStatusResponse {
 message ClusterServiceOperateResponse {
   // Cluster is the cluster
   Cluster cluster = 1;
+}
+
+// ClusterServiceGetMonitoringCredentialsResponse is the response payload for the cluster monitoring credentials request
+message ClusterServiceGetMonitoringCredentialsResponse {
+  // Monitoring returns the monitoring credentials and endpoint
+  ClusterMonitoring monitoring = 1;
 }
 
 // Operate defines the types of reconciliation to be triggered

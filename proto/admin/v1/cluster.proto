@@ -35,6 +35,12 @@ service ClusterService {
     option (api.v1.admin_roles) = ADMIN_ROLE_EDITOR;
     option (api.v1.admin_roles) = ADMIN_ROLE_VIEWER;
   }
+  // GetMonitoringCredentials returns monitoring credentials for a cluster
+  rpc GetMonitoringCredentials(ClusterServiceGetMonitoringCredentialsRequest) returns (ClusterServiceGetMonitoringCredentialsResponse) {
+    option (api.v1.admin_roles) = ADMIN_ROLE_EDITOR;
+    option (api.v1.admin_roles) = ADMIN_ROLE_VIEWER;
+    option (api.v1.auditing) = AUDITING_EXCLUDED;
+  }
 }
 
 // ClusterServiceGetRequest is the request payload for the cluster get request
@@ -93,6 +99,12 @@ message ClusterServiceGetViewerKubeconfigRequest {
   optional google.protobuf.Duration expiration = 4;
 }
 
+// ClusterServiceGetMonitoringCredentialsRequest is the request payload for the cluster monitoring credentials request
+message ClusterServiceGetMonitoringCredentialsRequest {
+  // Uuid of the cluster
+  string uuid = 1 [(buf.validate.field).string.uuid = true];
+}
+
 // ClusterServiceGetResponse is the response payload for the cluster get request
 message ClusterServiceGetResponse {
   // Cluster is the cluster
@@ -127,6 +139,12 @@ message ClusterServiceGetAdminKubeconfigResponse {
 message ClusterServiceGetViewerKubeconfigResponse {
   // Cluster is the cluster
   string kubeconfig = 1;
+}
+
+// ClusterServiceGetMonitoringCredentialsResponse is the response payload for the cluster monitoring credentials request
+message ClusterServiceGetMonitoringCredentialsResponse {
+  // Monitoring returns the monitoring credentials and endpoint
+  api.v1.ClusterMonitoring monitoring = 1;
 }
 
 // SSHKeyPair details to access a firewall via ssh

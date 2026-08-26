@@ -5030,7 +5030,7 @@
           "name": "ClusterMonitoring",
           "longName": "ClusterMonitoring",
           "fullName": "api.v1.ClusterMonitoring",
-          "description": "ClusterMonitoring contains details howto access the cluster monitoring",
+          "description": "ClusterMonitoring contains details how to access the cluster monitoring",
           "hasExtensions": false,
           "hasFields": true,
           "hasOneofs": false,
@@ -5379,6 +5379,66 @@
               "type": "string",
               "longType": "string",
               "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "ClusterServiceGetMonitoringCredentialsRequest",
+          "longName": "ClusterServiceGetMonitoringCredentialsRequest",
+          "fullName": "api.v1.ClusterServiceGetMonitoringCredentialsRequest",
+          "description": "ClusterServiceGetMonitoringCredentialsRequest is the request payload for the cluster monitoring credentials request",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "uuid",
+              "description": "Uuid of the cluster",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "project",
+              "description": "Project of the cluster",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "ClusterServiceGetMonitoringCredentialsResponse",
+          "longName": "ClusterServiceGetMonitoringCredentialsResponse",
+          "fullName": "api.v1.ClusterServiceGetMonitoringCredentialsResponse",
+          "description": "ClusterServiceGetMonitoringCredentialsResponse is the response payload for the cluster monitoring credentials request",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "monitoring",
+              "description": "Monitoring returns the monitoring credentials and endpoint",
+              "label": "",
+              "type": "ClusterMonitoring",
+              "longType": "ClusterMonitoring",
+              "fullType": "api.v1.ClusterMonitoring",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
@@ -6509,6 +6569,18 @@
               "responseLongType": "ClusterServiceOperateResponse",
               "responseFullType": "api.v1.ClusterServiceOperateResponse",
               "responseStreaming": false
+            },
+            {
+              "name": "GetMonitoringCredentials",
+              "description": "GetMonitoringCredentials returns monitoring credentials for a cluster",
+              "requestType": "ClusterServiceGetMonitoringCredentialsRequest",
+              "requestLongType": "ClusterServiceGetMonitoringCredentialsRequest",
+              "requestFullType": "api.v1.ClusterServiceGetMonitoringCredentialsRequest",
+              "requestStreaming": false,
+              "responseType": "ClusterServiceGetMonitoringCredentialsResponse",
+              "responseLongType": "ClusterServiceGetMonitoringCredentialsResponse",
+              "responseFullType": "api.v1.ClusterServiceGetMonitoringCredentialsResponse",
+              "responseStreaming": false
             }
           ]
         }
@@ -6686,6 +6758,54 @@
               "type": "string",
               "longType": "string",
               "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "ClusterServiceGetMonitoringCredentialsRequest",
+          "longName": "ClusterServiceGetMonitoringCredentialsRequest",
+          "fullName": "admin.v1.ClusterServiceGetMonitoringCredentialsRequest",
+          "description": "ClusterServiceGetMonitoringCredentialsRequest is the request payload for the cluster monitoring credentials request",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "uuid",
+              "description": "Uuid of the cluster",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "ClusterServiceGetMonitoringCredentialsResponse",
+          "longName": "ClusterServiceGetMonitoringCredentialsResponse",
+          "fullName": "admin.v1.ClusterServiceGetMonitoringCredentialsResponse",
+          "description": "ClusterServiceGetMonitoringCredentialsResponse is the response payload for the cluster monitoring credentials request",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "monitoring",
+              "description": "Monitoring returns the monitoring credentials and endpoint",
+              "label": "",
+              "type": "ClusterMonitoring",
+              "longType": "api.v1.ClusterMonitoring",
+              "fullType": "api.v1.ClusterMonitoring",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
@@ -7095,6 +7215,18 @@
               "responseType": "ClusterServiceGetViewerKubeconfigResponse",
               "responseLongType": "ClusterServiceGetViewerKubeconfigResponse",
               "responseFullType": "admin.v1.ClusterServiceGetViewerKubeconfigResponse",
+              "responseStreaming": false
+            },
+            {
+              "name": "GetMonitoringCredentials",
+              "description": "GetMonitoringCredentials returns monitoring credentials for a cluster",
+              "requestType": "ClusterServiceGetMonitoringCredentialsRequest",
+              "requestLongType": "ClusterServiceGetMonitoringCredentialsRequest",
+              "requestFullType": "admin.v1.ClusterServiceGetMonitoringCredentialsRequest",
+              "requestStreaming": false,
+              "responseType": "ClusterServiceGetMonitoringCredentialsResponse",
+              "responseLongType": "ClusterServiceGetMonitoringCredentialsResponse",
+              "responseFullType": "admin.v1.ClusterServiceGetMonitoringCredentialsResponse",
               "responseStreaming": false
             }
           ]

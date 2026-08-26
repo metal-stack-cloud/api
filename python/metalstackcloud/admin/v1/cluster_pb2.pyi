@@ -76,6 +76,12 @@ class ClusterServiceGetViewerKubeconfigRequest(_message.Message):
     expiration: _duration_pb2.Duration
     def __init__(self, uuid: _Optional[str] = ..., expiration: _Optional[_Union[datetime.timedelta, _duration_pb2.Duration, _Mapping]] = ...) -> None: ...
 
+class ClusterServiceGetMonitoringCredentialsRequest(_message.Message):
+    __slots__ = ("uuid",)
+    UUID_FIELD_NUMBER: _ClassVar[int]
+    uuid: str
+    def __init__(self, uuid: _Optional[str] = ...) -> None: ...
+
 class ClusterServiceGetResponse(_message.Message):
     __slots__ = ("cluster", "machines")
     CLUSTER_FIELD_NUMBER: _ClassVar[int]
@@ -111,6 +117,12 @@ class ClusterServiceGetViewerKubeconfigResponse(_message.Message):
     KUBECONFIG_FIELD_NUMBER: _ClassVar[int]
     kubeconfig: str
     def __init__(self, kubeconfig: _Optional[str] = ...) -> None: ...
+
+class ClusterServiceGetMonitoringCredentialsResponse(_message.Message):
+    __slots__ = ("monitoring",)
+    MONITORING_FIELD_NUMBER: _ClassVar[int]
+    monitoring: _cluster_pb2.ClusterMonitoring
+    def __init__(self, monitoring: _Optional[_Union[_cluster_pb2.ClusterMonitoring, _Mapping]] = ...) -> None: ...
 
 class SSHKeyPair(_message.Message):
     __slots__ = ("publickey", "privatekey")

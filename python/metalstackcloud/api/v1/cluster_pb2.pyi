@@ -222,6 +222,14 @@ class ClusterServiceWatchStatusRequest(_message.Message):
     project: str
     def __init__(self, uuid: _Optional[str] = ..., project: _Optional[str] = ...) -> None: ...
 
+class ClusterServiceGetMonitoringCredentialsRequest(_message.Message):
+    __slots__ = ("uuid", "project")
+    UUID_FIELD_NUMBER: _ClassVar[int]
+    PROJECT_FIELD_NUMBER: _ClassVar[int]
+    uuid: str
+    project: str
+    def __init__(self, uuid: _Optional[str] = ..., project: _Optional[str] = ...) -> None: ...
+
 class ClusterStatus(_message.Message):
     __slots__ = ("uuid", "progress", "state", "type", "api_server_ready", "control_plane_ready", "nodes_ready", "system_components_ready", "last_errors", "conditions")
     UUID_FIELD_NUMBER: _ClassVar[int]
@@ -341,3 +349,9 @@ class ClusterServiceOperateResponse(_message.Message):
     CLUSTER_FIELD_NUMBER: _ClassVar[int]
     cluster: Cluster
     def __init__(self, cluster: _Optional[_Union[Cluster, _Mapping]] = ...) -> None: ...
+
+class ClusterServiceGetMonitoringCredentialsResponse(_message.Message):
+    __slots__ = ("monitoring",)
+    MONITORING_FIELD_NUMBER: _ClassVar[int]
+    monitoring: ClusterMonitoring
+    def __init__(self, monitoring: _Optional[_Union[ClusterMonitoring, _Mapping]] = ...) -> None: ...

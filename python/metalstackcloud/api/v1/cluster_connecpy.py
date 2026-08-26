@@ -25,6 +25,7 @@ class ClusterService(Protocol):
     async def GetAdminKubeconfig(self, req: api_dot_v1_dot_cluster__pb2.ClusterServiceGetAdminKubeconfigRequest, ctx: ServiceContext) -> api_dot_v1_dot_cluster__pb2.ClusterServiceGetAdminKubeconfigResponse: ...
     async def GetViewerKubeconfig(self, req: api_dot_v1_dot_cluster__pb2.ClusterServiceGetViewerKubeconfigRequest, ctx: ServiceContext) -> api_dot_v1_dot_cluster__pb2.ClusterServiceGetViewerKubeconfigResponse: ...
     async def Operate(self, req: api_dot_v1_dot_cluster__pb2.ClusterServiceOperateRequest, ctx: ServiceContext) -> api_dot_v1_dot_cluster__pb2.ClusterServiceOperateResponse: ...
+    async def GetMonitoringCredentials(self, req: api_dot_v1_dot_cluster__pb2.ClusterServiceGetMonitoringCredentialsRequest, ctx: ServiceContext) -> api_dot_v1_dot_cluster__pb2.ClusterServiceGetMonitoringCredentialsResponse: ...
 
 
 class ClusterServiceServer(ConnecpyServer):
@@ -112,6 +113,14 @@ class ClusterServiceServer(ConnecpyServer):
                 output=api_dot_v1_dot_cluster__pb2.ClusterServiceOperateResponse,
                 allowed_methods=("POST",),
             ),
+            "GetMonitoringCredentials": Endpoint[api_dot_v1_dot_cluster__pb2.ClusterServiceGetMonitoringCredentialsRequest, api_dot_v1_dot_cluster__pb2.ClusterServiceGetMonitoringCredentialsResponse](
+                service_name="ClusterService",
+                name="GetMonitoringCredentials",
+                function=getattr(service, "GetMonitoringCredentials"),
+                input=api_dot_v1_dot_cluster__pb2.ClusterServiceGetMonitoringCredentialsRequest,
+                output=api_dot_v1_dot_cluster__pb2.ClusterServiceGetMonitoringCredentialsResponse,
+                allowed_methods=("POST",),
+            ),
         }
 
     def serviceName(self):
@@ -129,6 +138,7 @@ class ClusterServiceSync(Protocol):
     def GetAdminKubeconfig(self, req: api_dot_v1_dot_cluster__pb2.ClusterServiceGetAdminKubeconfigRequest, ctx: ServiceContext) -> api_dot_v1_dot_cluster__pb2.ClusterServiceGetAdminKubeconfigResponse: ...
     def GetViewerKubeconfig(self, req: api_dot_v1_dot_cluster__pb2.ClusterServiceGetViewerKubeconfigRequest, ctx: ServiceContext) -> api_dot_v1_dot_cluster__pb2.ClusterServiceGetViewerKubeconfigResponse: ...
     def Operate(self, req: api_dot_v1_dot_cluster__pb2.ClusterServiceOperateRequest, ctx: ServiceContext) -> api_dot_v1_dot_cluster__pb2.ClusterServiceOperateResponse: ...
+    def GetMonitoringCredentials(self, req: api_dot_v1_dot_cluster__pb2.ClusterServiceGetMonitoringCredentialsRequest, ctx: ServiceContext) -> api_dot_v1_dot_cluster__pb2.ClusterServiceGetMonitoringCredentialsResponse: ...
 
 
 class ClusterServiceServerSync(ConnecpyServer):
@@ -214,6 +224,14 @@ class ClusterServiceServerSync(ConnecpyServer):
                 function=getattr(service, "Operate"),
                 input=api_dot_v1_dot_cluster__pb2.ClusterServiceOperateRequest,
                 output=api_dot_v1_dot_cluster__pb2.ClusterServiceOperateResponse,
+                allowed_methods=("POST",),
+            ),
+            "GetMonitoringCredentials": Endpoint[api_dot_v1_dot_cluster__pb2.ClusterServiceGetMonitoringCredentialsRequest, api_dot_v1_dot_cluster__pb2.ClusterServiceGetMonitoringCredentialsResponse](
+                service_name="ClusterService",
+                name="GetMonitoringCredentials",
+                function=getattr(service, "GetMonitoringCredentials"),
+                input=api_dot_v1_dot_cluster__pb2.ClusterServiceGetMonitoringCredentialsRequest,
+                output=api_dot_v1_dot_cluster__pb2.ClusterServiceGetMonitoringCredentialsResponse,
                 allowed_methods=("POST",),
             ),
         }
@@ -399,6 +417,24 @@ class ClusterServiceClient(ConnecpyClient):
             ctx=ctx,
             request=request,
             response_class=api_dot_v1_dot_cluster__pb2.ClusterServiceOperateResponse,
+            method=method,
+            **kwargs,
+        )
+
+    def GetMonitoringCredentials(
+        self,
+        request: api_dot_v1_dot_cluster__pb2.ClusterServiceGetMonitoringCredentialsRequest,
+        *,
+        ctx: Optional[ClientContext] = None,
+        server_path_prefix: str = "",
+        **kwargs,
+    ) -> api_dot_v1_dot_cluster__pb2.ClusterServiceGetMonitoringCredentialsResponse:
+        method = "POST"
+        return self._make_request(
+            url=f"{server_path_prefix}/api.v1.ClusterService/GetMonitoringCredentials",
+            ctx=ctx,
+            request=request,
+            response_class=api_dot_v1_dot_cluster__pb2.ClusterServiceGetMonitoringCredentialsResponse,
             method=method,
             **kwargs,
         )
@@ -600,6 +636,26 @@ class AsyncClusterServiceClient(AsyncConnecpyClient):
             ctx=ctx,
             request=request,
             response_class=api_dot_v1_dot_cluster__pb2.ClusterServiceOperateResponse,
+            method=method,
+            session=session,
+            **kwargs,
+        )
+
+    async def GetMonitoringCredentials(
+        self,
+        request: api_dot_v1_dot_cluster__pb2.ClusterServiceGetMonitoringCredentialsRequest,
+        *,
+        ctx: Optional[ClientContext] = None,
+        server_path_prefix: str = "",
+        session: Union[httpx.AsyncClient, None] = None,
+        **kwargs,
+    ) -> api_dot_v1_dot_cluster__pb2.ClusterServiceGetMonitoringCredentialsResponse:
+        method = "POST"
+        return await self._make_request(
+            url=f"{server_path_prefix}/api.v1.ClusterService/GetMonitoringCredentials",
+            ctx=ctx,
+            request=request,
+            response_class=api_dot_v1_dot_cluster__pb2.ClusterServiceGetMonitoringCredentialsResponse,
             method=method,
             session=session,
             **kwargs,
