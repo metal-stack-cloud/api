@@ -62,7 +62,7 @@ export type VersionServiceGetResponse = Message<"api.v1.VersionServiceGetRespons
      *
      * @generated from field: api.v1.Version version = 1;
      */
-    version?: Version;
+    version?: Version | undefined;
 };
 /**
  * Describes the message api.v1.VersionServiceGetResponse.

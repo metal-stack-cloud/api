@@ -48,19 +48,19 @@ export type Project = Message<"api.v1.Project"> & {
      *
      * @generated from field: google.protobuf.Timestamp created_at = 10;
      */
-    createdAt?: Timestamp;
+    createdAt?: Timestamp | undefined;
     /**
      * UpdatedAt the date when this project was updated
      *
      * @generated from field: google.protobuf.Timestamp updated_at = 11;
      */
-    updatedAt?: Timestamp;
+    updatedAt?: Timestamp | undefined;
     /**
      * AvatarUrl of the Project
      *
      * @generated from field: optional string avatar_url = 12;
      */
-    avatarUrl?: string;
+    avatarUrl?: string | undefined;
 };
 /**
  * Describes the message api.v1.Project.
@@ -98,7 +98,7 @@ export type ProjectMember = Message<"api.v1.ProjectMember"> & {
      *
      * @generated from field: google.protobuf.Timestamp created_at = 10;
      */
-    createdAt?: Timestamp;
+    createdAt?: Timestamp | undefined;
 };
 /**
  * Describes the message api.v1.ProjectMember.
@@ -158,13 +158,13 @@ export type ProjectInvite = Message<"api.v1.ProjectInvite"> & {
      *
      * @generated from field: google.protobuf.Timestamp expires_at = 10;
      */
-    expiresAt?: Timestamp;
+    expiresAt?: Timestamp | undefined;
     /**
      * JoinedAt the date when the member accepted this invite
      *
      * @generated from field: google.protobuf.Timestamp joined_at = 11;
      */
-    joinedAt?: Timestamp;
+    joinedAt?: Timestamp | undefined;
 };
 /**
  * Describes the message api.v1.ProjectInvite.
@@ -182,13 +182,13 @@ export type ProjectServiceListRequest = Message<"api.v1.ProjectServiceListReques
      *
      * @generated from field: optional string name = 1;
      */
-    name?: string;
+    name?: string | undefined;
     /**
      * Tenant list only projects of this tenant
      *
      * @generated from field: optional string tenant = 2;
      */
-    tenant?: string;
+    tenant?: string | undefined;
 };
 /**
  * Describes the message api.v1.ProjectServiceListRequest.
@@ -242,7 +242,7 @@ export type ProjectServiceGetResponse = Message<"api.v1.ProjectServiceGetRespons
      *
      * @generated from field: api.v1.Project project = 1;
      */
-    project?: Project;
+    project?: Project | undefined;
     /**
      * ProjectMembers in this project, projects guests will only see direct project members and not implicit memberships from tenant permissions
      *
@@ -285,7 +285,7 @@ export type ProjectServiceCreateRequest = Message<"api.v1.ProjectServiceCreateRe
      *
      * @generated from field: optional string avatar_url = 4;
      */
-    avatarUrl?: string;
+    avatarUrl?: string | undefined;
 };
 /**
  * Describes the message api.v1.ProjectServiceCreateRequest.
@@ -303,7 +303,7 @@ export type ProjectServiceCreateResponse = Message<"api.v1.ProjectServiceCreateR
      *
      * @generated from field: api.v1.Project project = 1;
      */
-    project?: Project;
+    project?: Project | undefined;
 };
 /**
  * Describes the message api.v1.ProjectServiceCreateResponse.
@@ -339,7 +339,7 @@ export type ProjectServiceDeleteResponse = Message<"api.v1.ProjectServiceDeleteR
      *
      * @generated from field: api.v1.Project project = 1;
      */
-    project?: Project;
+    project?: Project | undefined;
 };
 /**
  * Describes the message api.v1.ProjectServiceDeleteResponse.
@@ -363,19 +363,19 @@ export type ProjectServiceUpdateRequest = Message<"api.v1.ProjectServiceUpdateRe
      *
      * @generated from field: optional string name = 2;
      */
-    name?: string;
+    name?: string | undefined;
     /**
      * Description of this project
      *
      * @generated from field: optional string description = 3;
      */
-    description?: string;
+    description?: string | undefined;
     /**
      * Avatar URL of the project
      *
      * @generated from field: optional string avatar_url = 4;
      */
-    avatarUrl?: string;
+    avatarUrl?: string | undefined;
 };
 /**
  * Describes the message api.v1.ProjectServiceUpdateRequest.
@@ -393,7 +393,7 @@ export type ProjectServiceUpdateResponse = Message<"api.v1.ProjectServiceUpdateR
      *
      * @generated from field: api.v1.Project project = 1;
      */
-    project?: Project;
+    project?: Project | undefined;
 };
 /**
  * Describes the message api.v1.ProjectServiceUpdateResponse.
@@ -437,7 +437,7 @@ export type ProjectServiceInviteResponse = Message<"api.v1.ProjectServiceInviteR
      *
      * @generated from field: api.v1.ProjectInvite invite = 1;
      */
-    invite?: ProjectInvite;
+    invite?: ProjectInvite | undefined;
 };
 /**
  * Describes the message api.v1.ProjectServiceInviteResponse.
@@ -509,7 +509,7 @@ export type ProjectServiceInviteGetResponse = Message<"api.v1.ProjectServiceInvi
      *
      * @generated from field: api.v1.ProjectInvite invite = 1;
      */
-    invite?: ProjectInvite;
+    invite?: ProjectInvite | undefined;
 };
 /**
  * Describes the message api.v1.ProjectServiceInviteGetResponse.
@@ -592,7 +592,7 @@ export type ProjectServiceUpdateMemberResponse = Message<"api.v1.ProjectServiceU
      *
      * @generated from field: api.v1.ProjectMember project_member = 5;
      */
-    projectMember?: ProjectMember;
+    projectMember?: ProjectMember | undefined;
 };
 /**
  * Describes the message api.v1.ProjectServiceUpdateMemberResponse.

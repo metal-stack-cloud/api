@@ -75,7 +75,7 @@ type StorageServiceClient_ClusterInfo_Call struct {
 // ClusterInfo is a helper method to define mock.On call
 //   - context1 context.Context
 //   - request *connect.Request[adminv1.StorageServiceClusterInfoRequest]
-func (_e *StorageServiceClient_Expecter) ClusterInfo(context1 interface{}, request interface{}) *StorageServiceClient_ClusterInfo_Call {
+func (_e *StorageServiceClient_Expecter) ClusterInfo(context1 any, request any) *StorageServiceClient_ClusterInfo_Call {
 	return &StorageServiceClient_ClusterInfo_Call{Call: _e.mock.On("ClusterInfo", context1, request)}
 }
 
@@ -143,7 +143,7 @@ type StorageServiceClient_ListSnapshots_Call struct {
 // ListSnapshots is a helper method to define mock.On call
 //   - context1 context.Context
 //   - request *connect.Request[adminv1.StorageServiceListSnapshotsRequest]
-func (_e *StorageServiceClient_Expecter) ListSnapshots(context1 interface{}, request interface{}) *StorageServiceClient_ListSnapshots_Call {
+func (_e *StorageServiceClient_Expecter) ListSnapshots(context1 any, request any) *StorageServiceClient_ListSnapshots_Call {
 	return &StorageServiceClient_ListSnapshots_Call{Call: _e.mock.On("ListSnapshots", context1, request)}
 }
 
@@ -211,7 +211,7 @@ type StorageServiceClient_ListVolumes_Call struct {
 // ListVolumes is a helper method to define mock.On call
 //   - context1 context.Context
 //   - request *connect.Request[adminv1.StorageServiceListVolumesRequest]
-func (_e *StorageServiceClient_Expecter) ListVolumes(context1 interface{}, request interface{}) *StorageServiceClient_ListVolumes_Call {
+func (_e *StorageServiceClient_Expecter) ListVolumes(context1 any, request any) *StorageServiceClient_ListVolumes_Call {
 	return &StorageServiceClient_ListVolumes_Call{Call: _e.mock.On("ListVolumes", context1, request)}
 }
 

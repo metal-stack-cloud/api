@@ -17,70 +17,70 @@ export type AuditServiceListRequest = Message<"admin.v1.AuditServiceListRequest"
      *
      * @generated from field: optional string uuid = 2;
      */
-    uuid?: string;
+    uuid?: string | undefined;
     /**
      * From describes the start of the time window in which to list audit traces.
      * Defaults to the last eight hours
      *
      * @generated from field: optional google.protobuf.Timestamp from = 3;
      */
-    from?: Timestamp;
+    from?: Timestamp | undefined;
     /**
      * To describes the end of the time window in which to list audit traces.
      * Defaults to the time the request was issued
      *
      * @generated from field: optional google.protobuf.Timestamp to = 4;
      */
-    to?: Timestamp;
+    to?: Timestamp | undefined;
     /**
      * User is the user who called the api method
      *
      * @generated from field: optional string user = 5;
      */
-    user?: string;
+    user?: string | undefined;
     /**
      * Project is the project targeted by the api call
      *
      * @generated from field: optional string project = 6;
      */
-    project?: string;
+    project?: string | undefined;
     /**
      * Method is the api method that was called
      *
      * @generated from field: optional string method = 7;
      */
-    method?: string;
+    method?: string | undefined;
     /**
      * Source IP contains the ip address of the caller
      *
      * @generated from field: optional string source_ip = 8;
      */
-    sourceIp?: string;
+    sourceIp?: string | undefined;
     /**
      * Result Code is a string describing the result of the api call
      *
      * @generated from field: optional int32 result_code = 9;
      */
-    resultCode?: number;
+    resultCode?: number | undefined;
     /**
      * Body is a string providing text-search of the body field
      *
      * @generated from field: optional string body = 10;
      */
-    body?: string;
+    body?: string | undefined;
     /**
      * Limit is a number limiting the length of the response (min: 1, max: 1000,
      * defaults to 200)
      *
      * @generated from field: optional int32 limit = 11;
      */
-    limit?: number;
+    limit?: number | undefined;
     /**
      * Phase specifies the audit phase
      *
      * @generated from field: optional api.v1.AuditPhase phase = 12;
      */
-    phase?: AuditPhase;
+    phase?: AuditPhase | undefined;
 };
 /**
  * Describes the message admin.v1.AuditServiceListRequest.
@@ -122,7 +122,7 @@ export type AuditServiceGetRequest = Message<"admin.v1.AuditServiceGetRequest"> 
      *
      * @generated from field: optional api.v1.AuditPhase phase = 2;
      */
-    phase?: AuditPhase;
+    phase?: AuditPhase | undefined;
 };
 /**
  * Describes the message admin.v1.AuditServiceGetRequest.
@@ -140,7 +140,7 @@ export type AuditServiceGetResponse = Message<"admin.v1.AuditServiceGetResponse"
      *
      * @generated from field: api.v1.AuditTrace trace = 1;
      */
-    trace?: AuditTrace;
+    trace?: AuditTrace | undefined;
 };
 /**
  * Describes the message admin.v1.AuditServiceGetResponse.

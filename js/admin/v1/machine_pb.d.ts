@@ -82,7 +82,7 @@ export type Machine = Message<"admin.v1.Machine"> & {
      *
      * @generated from field: google.protobuf.Timestamp created = 12;
      */
-    created?: Timestamp;
+    created?: Timestamp | undefined;
     /**
      * Partition where this machine resides
      *
@@ -118,7 +118,7 @@ export type Machine = Message<"admin.v1.Machine"> & {
      *
      * @generated from field: admin.v1.VPN vpn = 18;
      */
-    vpn?: VPN;
+    vpn?: VPN | undefined;
 };
 /**
  * Describes the message admin.v1.Machine.

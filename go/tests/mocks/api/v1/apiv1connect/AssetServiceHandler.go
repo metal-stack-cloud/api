@@ -75,7 +75,7 @@ type AssetServiceHandler_List_Call struct {
 // List is a helper method to define mock.On call
 //   - context1 context.Context
 //   - request *connect.Request[apiv1.AssetServiceListRequest]
-func (_e *AssetServiceHandler_Expecter) List(context1 interface{}, request interface{}) *AssetServiceHandler_List_Call {
+func (_e *AssetServiceHandler_Expecter) List(context1 any, request any) *AssetServiceHandler_List_Call {
 	return &AssetServiceHandler_List_Call{Call: _e.mock.On("List", context1, request)}
 }
 

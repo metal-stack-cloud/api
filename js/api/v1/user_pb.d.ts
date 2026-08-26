@@ -60,13 +60,13 @@ export type User = Message<"api.v1.User"> & {
      *
      * @generated from field: api.v1.Tenant default_tenant = 10;
      */
-    defaultTenant?: Tenant;
+    defaultTenant?: Tenant | undefined;
     /**
      * DefaultProject this user belongs to
      *
      * @generated from field: api.v1.Project default_project = 11;
      */
-    defaultProject?: Project;
+    defaultProject?: Project | undefined;
 };
 /**
  * Describes the message api.v1.User.
@@ -95,7 +95,7 @@ export type UserServiceGetResponse = Message<"api.v1.UserServiceGetResponse"> & 
      *
      * @generated from field: api.v1.User user = 1;
      */
-    user?: User;
+    user?: User | undefined;
 };
 /**
  * Describes the message api.v1.UserServiceGetResponse.

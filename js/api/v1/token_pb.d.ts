@@ -41,13 +41,13 @@ export type Token = Message<"api.v1.Token"> & {
      *
      * @generated from field: google.protobuf.Timestamp expires = 6;
      */
-    expires?: Timestamp;
+    expires?: Timestamp | undefined;
     /**
      * IssuedAt gives the date when this token was created
      *
      * @generated from field: google.protobuf.Timestamp issued_at = 7;
      */
-    issuedAt?: Timestamp;
+    issuedAt?: Timestamp | undefined;
     /**
      * TokenType describes the type of this token
      *
@@ -75,7 +75,7 @@ export type Token = Message<"api.v1.Token"> & {
      *
      * @generated from field: optional api.v1.AdminRole admin_role = 11;
      */
-    adminRole?: AdminRole;
+    adminRole?: AdminRole | undefined;
 };
 /**
  * Describes the message api.v1.Token.
@@ -105,7 +105,7 @@ export type TokenServiceCreateRequest = Message<"api.v1.TokenServiceCreateReques
      *
      * @generated from field: google.protobuf.Duration expires = 4;
      */
-    expires?: Duration;
+    expires?: Duration | undefined;
     /**
      * ProjectRoles associates a project id with the corresponding role of the token owner
      *
@@ -127,7 +127,7 @@ export type TokenServiceCreateRequest = Message<"api.v1.TokenServiceCreateReques
      *
      * @generated from field: optional api.v1.AdminRole admin_role = 7;
      */
-    adminRole?: AdminRole;
+    adminRole?: AdminRole | undefined;
 };
 /**
  * Describes the message api.v1.TokenServiceCreateRequest.
@@ -170,7 +170,7 @@ export type TokenServiceCreateResponse = Message<"api.v1.TokenServiceCreateRespo
      *
      * @generated from field: api.v1.Token token = 1;
      */
-    token?: Token;
+    token?: Token | undefined;
     /**
      * Secret is the body if the jwt token, should be used in api requests as bearer token
      *
@@ -258,7 +258,7 @@ export type TokenServiceUpdateRequest = Message<"api.v1.TokenServiceUpdateReques
      *
      * @generated from field: optional string description = 2;
      */
-    description?: string;
+    description?: string | undefined;
     /**
      * Permissions is a list of service methods this token can be used for
      *
@@ -286,7 +286,7 @@ export type TokenServiceUpdateRequest = Message<"api.v1.TokenServiceUpdateReques
      *
      * @generated from field: optional api.v1.AdminRole admin_role = 6;
      */
-    adminRole?: AdminRole;
+    adminRole?: AdminRole | undefined;
 };
 /**
  * Describes the message api.v1.TokenServiceUpdateRequest.
@@ -304,7 +304,7 @@ export type TokenServiceUpdateResponse = Message<"api.v1.TokenServiceUpdateRespo
      *
      * @generated from field: api.v1.Token token = 1;
      */
-    token?: Token;
+    token?: Token | undefined;
 };
 /**
  * Describes the message api.v1.TokenServiceUpdateResponse.
@@ -340,7 +340,7 @@ export type TokenServiceGetResponse = Message<"api.v1.TokenServiceGetResponse"> 
      *
      * @generated from field: api.v1.Token token = 1;
      */
-    token?: Token;
+    token?: Token | undefined;
 };
 /**
  * Describes the message api.v1.TokenServiceGetResponse.

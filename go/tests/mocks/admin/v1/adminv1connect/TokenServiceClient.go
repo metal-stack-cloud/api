@@ -75,7 +75,7 @@ type TokenServiceClient_List_Call struct {
 // List is a helper method to define mock.On call
 //   - context1 context.Context
 //   - request *connect.Request[adminv1.TokenServiceListRequest]
-func (_e *TokenServiceClient_Expecter) List(context1 interface{}, request interface{}) *TokenServiceClient_List_Call {
+func (_e *TokenServiceClient_Expecter) List(context1 any, request any) *TokenServiceClient_List_Call {
 	return &TokenServiceClient_List_Call{Call: _e.mock.On("List", context1, request)}
 }
 
@@ -143,7 +143,7 @@ type TokenServiceClient_Revoke_Call struct {
 // Revoke is a helper method to define mock.On call
 //   - context1 context.Context
 //   - request *connect.Request[adminv1.TokenServiceRevokeRequest]
-func (_e *TokenServiceClient_Expecter) Revoke(context1 interface{}, request interface{}) *TokenServiceClient_Revoke_Call {
+func (_e *TokenServiceClient_Expecter) Revoke(context1 any, request any) *TokenServiceClient_Revoke_Call {
 	return &TokenServiceClient_Revoke_Call{Call: _e.mock.On("Revoke", context1, request)}
 }
 

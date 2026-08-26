@@ -16,7 +16,7 @@ export type Asset = Message<"api.v1.Asset"> & {
      *
      * @generated from field: api.v1.Region region = 1;
      */
-    region?: Region;
+    region?: Region | undefined;
     /**
      * MachineTypes available by region
      *
@@ -80,7 +80,7 @@ export type Region = Message<"api.v1.Region"> & {
      *
      * @generated from field: api.v1.AssetDefaults defaults = 6;
      */
-    defaults?: AssetDefaults;
+    defaults?: AssetDefaults | undefined;
     /**
      * Description of the region
      *
@@ -206,7 +206,7 @@ export type Kubernetes = Message<"api.v1.Kubernetes"> & {
      *
      * @generated from field: google.protobuf.Timestamp expiration = 2;
      */
-    expiration?: Timestamp;
+    expiration?: Timestamp | undefined;
 };
 /**
  * Describes the message api.v1.Kubernetes.
@@ -283,7 +283,7 @@ export type AssetServiceListResponse = Message<"api.v1.AssetServiceListResponse"
      *
      * @generated from field: api.v1.Environment environment = 3;
      */
-    environment?: Environment;
+    environment?: Environment | undefined;
 };
 /**
  * Describes the message api.v1.AssetServiceListResponse.
@@ -301,25 +301,25 @@ export type Environment = Message<"api.v1.Environment"> & {
      *
      * @generated from field: optional string console_url = 1;
      */
-    consoleUrl?: string;
+    consoleUrl?: string | undefined;
     /**
      * AfterLoginURL is the URL to redirect clients to after successful login.
      *
      * @generated from field: optional string after_login_url = 2;
      */
-    afterLoginUrl?: string;
+    afterLoginUrl?: string | undefined;
     /**
      * StripePublicToken can be used by clients to use certain endpoints of the payment service api.
      *
      * @generated from field: optional string stripe_public_token = 3;
      */
-    stripePublicToken?: string;
+    stripePublicToken?: string | undefined;
     /**
      * TermsAndConditionsURL is the URL to the terms and conditions.
      *
      * @generated from field: optional string terms_and_conditions_url = 4;
      */
-    termsAndConditionsUrl?: string;
+    termsAndConditionsUrl?: string | undefined;
 };
 /**
  * Describes the message api.v1.Environment.
