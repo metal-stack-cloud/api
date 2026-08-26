@@ -8055,30 +8055,6 @@
           ]
         },
         {
-          "name": "PaymentServiceHasChargeableResourcesRequest",
-          "longName": "PaymentServiceHasChargeableResourcesRequest",
-          "fullName": "api.v1.PaymentServiceHasChargeableResourcesRequest",
-          "description": "PaymentServiceHasChargeableResourcesRequest is the request payload for a has chargeable request",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "login",
-              "description": "Login of the tenant",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            }
-          ]
-        },
-        {
           "name": "PaymentServiceHasPaymentMethodRequest",
           "longName": "PaymentServiceHasPaymentMethodRequest",
           "fullName": "api.v1.PaymentServiceHasPaymentMethodRequest",

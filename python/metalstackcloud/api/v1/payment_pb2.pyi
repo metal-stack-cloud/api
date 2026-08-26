@@ -287,12 +287,6 @@ class PaymentServiceGetDefaultPricesResponse(_message.Message):
     prices: _containers.RepeatedCompositeFieldContainer[Price]
     def __init__(self, prices: _Optional[_Iterable[_Union[Price, _Mapping]]] = ...) -> None: ...
 
-class PaymentServiceHasChargeableResourcesRequest(_message.Message):
-    __slots__ = ("login",)
-    LOGIN_FIELD_NUMBER: _ClassVar[int]
-    login: str
-    def __init__(self, login: _Optional[str] = ...) -> None: ...
-
 class PaymentServiceGetSubscriptionDiscountsRequest(_message.Message):
     __slots__ = ("login",)
     LOGIN_FIELD_NUMBER: _ClassVar[int]

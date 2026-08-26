@@ -371,15 +371,6 @@ message PaymentServiceGetDefaultPricesResponse {
   repeated Price prices = 1;
 }
 
-// PaymentServiceHasChargeableResourcesRequest is the request payload for a has chargeable request
-message PaymentServiceHasChargeableResourcesRequest {
-  // Login of the tenant
-  string login = 1 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
-}
-
 // PaymentServiceGetSubscriptionDiscountsRequest is the request payload for a get subscription discounts request
 message PaymentServiceGetSubscriptionDiscountsRequest {
   // Login of the customer

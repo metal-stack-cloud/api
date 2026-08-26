@@ -736,24 +736,6 @@ export type PaymentServiceGetDefaultPricesResponse = Message<"api.v1.PaymentServ
  */
 export declare const PaymentServiceGetDefaultPricesResponseSchema: GenMessage<PaymentServiceGetDefaultPricesResponse>;
 /**
- * PaymentServiceHasChargeableResourcesRequest is the request payload for a has chargeable request
- *
- * @generated from message api.v1.PaymentServiceHasChargeableResourcesRequest
- */
-export type PaymentServiceHasChargeableResourcesRequest = Message<"api.v1.PaymentServiceHasChargeableResourcesRequest"> & {
-    /**
-     * Login of the tenant
-     *
-     * @generated from field: string login = 1;
-     */
-    login: string;
-};
-/**
- * Describes the message api.v1.PaymentServiceHasChargeableResourcesRequest.
- * Use `create(PaymentServiceHasChargeableResourcesRequestSchema)` to create a new message.
- */
-export declare const PaymentServiceHasChargeableResourcesRequestSchema: GenMessage<PaymentServiceHasChargeableResourcesRequest>;
-/**
  * PaymentServiceGetSubscriptionDiscountsRequest is the request payload for a get subscription discounts request
  *
  * @generated from message api.v1.PaymentServiceGetSubscriptionDiscountsRequest
