@@ -2,6 +2,7 @@
 package client
 
 import (
+	"connectrpc.com/connect"
 	compress "github.com/klauspost/connect-compress/v2"
 
 {{ range $name, $api := . -}}
@@ -16,7 +17,8 @@ type (
 {{ end }}
 	}
 	client struct {
-		config DialConfig
+		config *DialConfig
+		interceptors []connect.Interceptor
 	}
 {{ range $name, $api := . -}}
 	{{ $name | title }} interface {
@@ -34,10 +36,25 @@ type (
 {{ end }}
 )
 
-func New(config DialConfig) Client {
-	return &client{
-		config: config,
+func New(config *DialConfig) Client {
+	c := &client{
+		config:       config,
+		interceptors: []connect.Interceptor{},
 	}
+
+	if config.Token != "" {
+		authInterceptor := &authInterceptor{config: config}
+		c.interceptors = append(c.interceptors, authInterceptor)
+	}
+
+	if config.Log != nil {
+		loggingInterceptor := &loggingInterceptor{config: config}
+		c.interceptors = append(c.interceptors, loggingInterceptor)
+	}
+
+	c.interceptors = append(c.interceptors, config.Interceptors...)
+
+	return c
 }
 
 {{ range $name, $api := . -}}
@@ -47,6 +64,7 @@ func (c client) {{ $name | title }}() {{ $name | title }} {
 	{{ $svc | lower }}:  {{ $name }}connect.New{{ $svc }}Client(
 		c.config.HttpClient(),
 		c.config.BaseURL,
+		connect.WithInterceptors(c.interceptors...),
 		compress.WithAll(compress.LevelBalanced),
 	),
 {{ end }}

@@ -23,8 +23,6 @@ const _ = connect.IsAtLeastVersion1_13_0
 const (
 	// VolumeServiceName is the fully-qualified name of the VolumeService service.
 	VolumeServiceName = "api.v1.VolumeService"
-	// SnapshotServiceName is the fully-qualified name of the SnapshotService service.
-	SnapshotServiceName = "api.v1.SnapshotService"
 )
 
 // These constants are the fully-qualified names of the RPCs defined in this package. They're
@@ -43,12 +41,6 @@ const (
 	VolumeServiceDeleteProcedure = "/api.v1.VolumeService/Delete"
 	// VolumeServiceUpdateProcedure is the fully-qualified name of the VolumeService's Update RPC.
 	VolumeServiceUpdateProcedure = "/api.v1.VolumeService/Update"
-	// SnapshotServiceGetProcedure is the fully-qualified name of the SnapshotService's Get RPC.
-	SnapshotServiceGetProcedure = "/api.v1.SnapshotService/Get"
-	// SnapshotServiceListProcedure is the fully-qualified name of the SnapshotService's List RPC.
-	SnapshotServiceListProcedure = "/api.v1.SnapshotService/List"
-	// SnapshotServiceDeleteProcedure is the fully-qualified name of the SnapshotService's Delete RPC.
-	SnapshotServiceDeleteProcedure = "/api.v1.SnapshotService/Delete"
 )
 
 // VolumeServiceClient is a client for the api.v1.VolumeService service.
@@ -205,132 +197,4 @@ func (UnimplementedVolumeServiceHandler) Delete(context.Context, *connect.Reques
 
 func (UnimplementedVolumeServiceHandler) Update(context.Context, *connect.Request[v1.VolumeServiceUpdateRequest]) (*connect.Response[v1.VolumeServiceUpdateResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("api.v1.VolumeService.Update is not implemented"))
-}
-
-// SnapshotServiceClient is a client for the api.v1.SnapshotService service.
-type SnapshotServiceClient interface {
-	// Get a snapshot
-	Get(context.Context, *connect.Request[v1.SnapshotServiceGetRequest]) (*connect.Response[v1.SnapshotServiceGetResponse], error)
-	// List snapshots
-	List(context.Context, *connect.Request[v1.SnapshotServiceListRequest]) (*connect.Response[v1.SnapshotServiceListResponse], error)
-	// Delete a snapshot
-	Delete(context.Context, *connect.Request[v1.SnapshotServiceDeleteRequest]) (*connect.Response[v1.SnapshotServiceDeleteResponse], error)
-}
-
-// NewSnapshotServiceClient constructs a client for the api.v1.SnapshotService service. By default,
-// it uses the Connect protocol with the binary Protobuf Codec, asks for gzipped responses, and
-// sends uncompressed requests. To use the gRPC or gRPC-Web protocols, supply the connect.WithGRPC()
-// or connect.WithGRPCWeb() options.
-//
-// The URL supplied here should be the base URL for the Connect or gRPC server (for example,
-// http://api.acme.com or https://acme.com/grpc).
-func NewSnapshotServiceClient(httpClient connect.HTTPClient, baseURL string, opts ...connect.ClientOption) SnapshotServiceClient {
-	baseURL = strings.TrimRight(baseURL, "/")
-	snapshotServiceMethods := v1.File_api_v1_volume_proto.Services().ByName("SnapshotService").Methods()
-	return &snapshotServiceClient{
-		get: connect.NewClient[v1.SnapshotServiceGetRequest, v1.SnapshotServiceGetResponse](
-			httpClient,
-			baseURL+SnapshotServiceGetProcedure,
-			connect.WithSchema(snapshotServiceMethods.ByName("Get")),
-			connect.WithClientOptions(opts...),
-		),
-		list: connect.NewClient[v1.SnapshotServiceListRequest, v1.SnapshotServiceListResponse](
-			httpClient,
-			baseURL+SnapshotServiceListProcedure,
-			connect.WithSchema(snapshotServiceMethods.ByName("List")),
-			connect.WithClientOptions(opts...),
-		),
-		delete: connect.NewClient[v1.SnapshotServiceDeleteRequest, v1.SnapshotServiceDeleteResponse](
-			httpClient,
-			baseURL+SnapshotServiceDeleteProcedure,
-			connect.WithSchema(snapshotServiceMethods.ByName("Delete")),
-			connect.WithClientOptions(opts...),
-		),
-	}
-}
-
-// snapshotServiceClient implements SnapshotServiceClient.
-type snapshotServiceClient struct {
-	get    *connect.Client[v1.SnapshotServiceGetRequest, v1.SnapshotServiceGetResponse]
-	list   *connect.Client[v1.SnapshotServiceListRequest, v1.SnapshotServiceListResponse]
-	delete *connect.Client[v1.SnapshotServiceDeleteRequest, v1.SnapshotServiceDeleteResponse]
-}
-
-// Get calls api.v1.SnapshotService.Get.
-func (c *snapshotServiceClient) Get(ctx context.Context, req *connect.Request[v1.SnapshotServiceGetRequest]) (*connect.Response[v1.SnapshotServiceGetResponse], error) {
-	return c.get.CallUnary(ctx, req)
-}
-
-// List calls api.v1.SnapshotService.List.
-func (c *snapshotServiceClient) List(ctx context.Context, req *connect.Request[v1.SnapshotServiceListRequest]) (*connect.Response[v1.SnapshotServiceListResponse], error) {
-	return c.list.CallUnary(ctx, req)
-}
-
-// Delete calls api.v1.SnapshotService.Delete.
-func (c *snapshotServiceClient) Delete(ctx context.Context, req *connect.Request[v1.SnapshotServiceDeleteRequest]) (*connect.Response[v1.SnapshotServiceDeleteResponse], error) {
-	return c.delete.CallUnary(ctx, req)
-}
-
-// SnapshotServiceHandler is an implementation of the api.v1.SnapshotService service.
-type SnapshotServiceHandler interface {
-	// Get a snapshot
-	Get(context.Context, *connect.Request[v1.SnapshotServiceGetRequest]) (*connect.Response[v1.SnapshotServiceGetResponse], error)
-	// List snapshots
-	List(context.Context, *connect.Request[v1.SnapshotServiceListRequest]) (*connect.Response[v1.SnapshotServiceListResponse], error)
-	// Delete a snapshot
-	Delete(context.Context, *connect.Request[v1.SnapshotServiceDeleteRequest]) (*connect.Response[v1.SnapshotServiceDeleteResponse], error)
-}
-
-// NewSnapshotServiceHandler builds an HTTP handler from the service implementation. It returns the
-// path on which to mount the handler and the handler itself.
-//
-// By default, handlers support the Connect, gRPC, and gRPC-Web protocols with the binary Protobuf
-// and JSON codecs. They also support gzip compression.
-func NewSnapshotServiceHandler(svc SnapshotServiceHandler, opts ...connect.HandlerOption) (string, http.Handler) {
-	snapshotServiceMethods := v1.File_api_v1_volume_proto.Services().ByName("SnapshotService").Methods()
-	snapshotServiceGetHandler := connect.NewUnaryHandler(
-		SnapshotServiceGetProcedure,
-		svc.Get,
-		connect.WithSchema(snapshotServiceMethods.ByName("Get")),
-		connect.WithHandlerOptions(opts...),
-	)
-	snapshotServiceListHandler := connect.NewUnaryHandler(
-		SnapshotServiceListProcedure,
-		svc.List,
-		connect.WithSchema(snapshotServiceMethods.ByName("List")),
-		connect.WithHandlerOptions(opts...),
-	)
-	snapshotServiceDeleteHandler := connect.NewUnaryHandler(
-		SnapshotServiceDeleteProcedure,
-		svc.Delete,
-		connect.WithSchema(snapshotServiceMethods.ByName("Delete")),
-		connect.WithHandlerOptions(opts...),
-	)
-	return "/api.v1.SnapshotService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		switch r.URL.Path {
-		case SnapshotServiceGetProcedure:
-			snapshotServiceGetHandler.ServeHTTP(w, r)
-		case SnapshotServiceListProcedure:
-			snapshotServiceListHandler.ServeHTTP(w, r)
-		case SnapshotServiceDeleteProcedure:
-			snapshotServiceDeleteHandler.ServeHTTP(w, r)
-		default:
-			http.NotFound(w, r)
-		}
-	})
-}
-
-// UnimplementedSnapshotServiceHandler returns CodeUnimplemented from all methods.
-type UnimplementedSnapshotServiceHandler struct{}
-
-func (UnimplementedSnapshotServiceHandler) Get(context.Context, *connect.Request[v1.SnapshotServiceGetRequest]) (*connect.Response[v1.SnapshotServiceGetResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("api.v1.SnapshotService.Get is not implemented"))
-}
-
-func (UnimplementedSnapshotServiceHandler) List(context.Context, *connect.Request[v1.SnapshotServiceListRequest]) (*connect.Response[v1.SnapshotServiceListResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("api.v1.SnapshotService.List is not implemented"))
-}
-
-func (UnimplementedSnapshotServiceHandler) Delete(context.Context, *connect.Request[v1.SnapshotServiceDeleteRequest]) (*connect.Response[v1.SnapshotServiceDeleteResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("api.v1.SnapshotService.Delete is not implemented"))
 }

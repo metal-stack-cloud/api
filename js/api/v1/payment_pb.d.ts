@@ -66,12 +66,6 @@ export type PaymentCustomer = Message<"api.v1.PaymentCustomer"> & {
      */
     address?: Address;
     /**
-     * Coupon details of granted coupon if any
-     *
-     * @generated from field: optional api.v1.Coupon coupon = 10;
-     */
-    coupon?: Coupon;
-    /**
      * Vat which applies to the customer
      *
      * @generated from field: optional string vat = 11;
@@ -281,12 +275,72 @@ export type SubscriptionUsageItem = Message<"api.v1.SubscriptionUsageItem"> & {
      * @generated from field: google.protobuf.Timestamp period_end = 5;
      */
     periodEnd?: Timestamp;
+    /**
+     * A subscription discounts
+     *
+     * @generated from field: repeated api.v1.Discount discounts = 6;
+     */
+    discounts: Discount[];
+    /**
+     * Product id of the subscription item
+     *
+     * @generated from field: string product_item_id = 7;
+     */
+    productItemId: string;
 };
 /**
  * Describes the message api.v1.SubscriptionUsageItem.
  * Use `create(SubscriptionUsageItemSchema)` to create a new message.
  */
 export declare const SubscriptionUsageItemSchema: GenMessage<SubscriptionUsageItem>;
+/**
+ * Discount details that can be applied to subscriptions or SubscriptionUsageItems
+ *
+ * @generated from message api.v1.Discount
+ */
+export type Discount = Message<"api.v1.Discount"> & {
+    /**
+     * DiscountId is the id of the discount
+     *
+     * @generated from field: string id = 1;
+     */
+    id: string;
+    /**
+     * DiscountName is the name of the discount
+     *
+     * @generated from field: string name = 2;
+     */
+    name: string;
+    /**
+     * The discounts amount in a given currency
+     *
+     * @generated from field: int64 amount_off = 3;
+     */
+    amountOff: bigint;
+    /**
+     * The discount amount in percent
+     *
+     * @generated from field: double percentage_off = 4;
+     */
+    percentageOff: number;
+    /**
+     * Order the discounts need to be applied in
+     *
+     * @generated from field: double discount_order = 5;
+     */
+    discountOrder: number;
+    /**
+     * ProductIds this discount applies to
+     *
+     * @generated from field: repeated string applies_to = 6;
+     */
+    appliesTo: string[];
+};
+/**
+ * Describes the message api.v1.Discount.
+ * Use `create(DiscountSchema)` to create a new message.
+ */
+export declare const DiscountSchema: GenMessage<Discount>;
 /**
  * Invoice a customer has to pay for subscription usage
  *
@@ -306,13 +360,13 @@ export type Invoice = Message<"api.v1.Invoice"> & {
      */
     pdfDownloadUrl: string;
     /**
-     * PeriodStart is the start date of this subscription
+     * PeriodStart is the start date of the time frame covered by this invoice
      *
      * @generated from field: google.protobuf.Timestamp period_start = 4;
      */
     periodStart?: Timestamp;
     /**
-     * PeriodEnd is the end date of this subscription
+     * PeriodEnd is the end date of the time frame covered by this invoice
      *
      * @generated from field: google.protobuf.Timestamp period_end = 5;
      */
@@ -323,78 +377,6 @@ export type Invoice = Message<"api.v1.Invoice"> & {
  * Use `create(InvoiceSchema)` to create a new message.
  */
 export declare const InvoiceSchema: GenMessage<Invoice>;
-/**
- * Coupon is a amount of free usage which can be granted to a customer
- *
- * @generated from message api.v1.Coupon
- */
-export type Coupon = Message<"api.v1.Coupon"> & {
-    /**
-     * Id of the coupon
-     *
-     * @generated from field: string id = 1;
-     */
-    id: string;
-    /**
-     * Name of this coupon
-     *
-     * @generated from field: string name = 2;
-     */
-    name: string;
-    /**
-     * AmountOff is th amount the customer can use for free
-     *
-     * @generated from field: int64 amount_off = 3;
-     */
-    amountOff: bigint;
-    /**
-     * Currency of the free usage amount
-     *
-     * @generated from field: string currency = 4;
-     */
-    currency: string;
-    /**
-     * DurationInMonth defines how many month this coupon is valid for
-     *
-     * @generated from field: int64 duration_in_month = 5;
-     */
-    durationInMonth: bigint;
-    /**
-     * CreatedAt is the date the coupon was created
-     *
-     * @generated from field: google.protobuf.Timestamp created_at = 6;
-     */
-    createdAt?: Timestamp;
-    /**
-     * RedeemBy is the date when this coupon can no longer be used
-     *
-     * @generated from field: google.protobuf.Timestamp redeem_by = 7;
-     */
-    redeemBy?: Timestamp;
-    /**
-     * TimesRedeemed how often this coupon was already consumed
-     *
-     * @generated from field: int64 times_redeemed = 8;
-     */
-    timesRedeemed: bigint;
-    /**
-     * MaxRedemptions defines how often this coupon can be consumed
-     *
-     * @generated from field: int64 max_redemptions = 9;
-     */
-    maxRedemptions: bigint;
-    /**
-     * AmountLeft how many usages are left for this coupon
-     *
-     * @generated from field: int64 amount_left = 10;
-     */
-    amountLeft: bigint;
-};
-/**
- * Describes the message api.v1.Coupon.
- * Use `create(CouponSchema)` to create a new message.
- */
-export declare const CouponSchema: GenMessage<Coupon>;
 /**
  * PaymentServiceCreateRequest is the request payload for providing payment data
  *
@@ -606,12 +588,6 @@ export type PaymentServiceHasPaymentMethodResponse = Message<"api.v1.PaymentServ
      */
     exists: boolean;
     /**
-     * CouponLeft is true if there is still free amount on the coupon left
-     *
-     * @generated from field: bool coupon_left = 2;
-     */
-    couponLeft: boolean;
-    /**
      * PositiveBalance indicates if the customer still has positive balance
      *
      * @generated from field: bool positive_balance = 3;
@@ -778,23 +754,41 @@ export type PaymentServiceHasChargeableResourcesRequest = Message<"api.v1.Paymen
  */
 export declare const PaymentServiceHasChargeableResourcesRequestSchema: GenMessage<PaymentServiceHasChargeableResourcesRequest>;
 /**
- * PaymentServiceHasChargeableResourcesResponse is the response payload for a has chargeable request
+ * PaymentServiceGetSubscriptionDiscountsRequest is the request payload for a get subscription discounts request
  *
- * @generated from message api.v1.PaymentServiceHasChargeableResourcesResponse
+ * @generated from message api.v1.PaymentServiceGetSubscriptionDiscountsRequest
  */
-export type PaymentServiceHasChargeableResourcesResponse = Message<"api.v1.PaymentServiceHasChargeableResourcesResponse"> & {
+export type PaymentServiceGetSubscriptionDiscountsRequest = Message<"api.v1.PaymentServiceGetSubscriptionDiscountsRequest"> & {
     /**
-     * HasResources indicates if the customer has actually chargable resources
+     * Login of the customer
      *
-     * @generated from field: bool has_resources = 1;
+     * @generated from field: string login = 1;
      */
-    hasResources: boolean;
+    login: string;
 };
 /**
- * Describes the message api.v1.PaymentServiceHasChargeableResourcesResponse.
- * Use `create(PaymentServiceHasChargeableResourcesResponseSchema)` to create a new message.
+ * Describes the message api.v1.PaymentServiceGetSubscriptionDiscountsRequest.
+ * Use `create(PaymentServiceGetSubscriptionDiscountsRequestSchema)` to create a new message.
  */
-export declare const PaymentServiceHasChargeableResourcesResponseSchema: GenMessage<PaymentServiceHasChargeableResourcesResponse>;
+export declare const PaymentServiceGetSubscriptionDiscountsRequestSchema: GenMessage<PaymentServiceGetSubscriptionDiscountsRequest>;
+/**
+ * PaymentServiceGetSubscriptionUsageResponse is the response payload for a get subscription usage request
+ *
+ * @generated from message api.v1.PaymentServiceGetSubscriptionDiscountsResponse
+ */
+export type PaymentServiceGetSubscriptionDiscountsResponse = Message<"api.v1.PaymentServiceGetSubscriptionDiscountsResponse"> & {
+    /**
+     * Discounts is a list with all discounts for one subscription
+     *
+     * @generated from field: repeated api.v1.Discount discounts = 1;
+     */
+    discounts: Discount[];
+};
+/**
+ * Describes the message api.v1.PaymentServiceGetSubscriptionDiscountsResponse.
+ * Use `create(PaymentServiceGetSubscriptionDiscountsResponseSchema)` to create a new message.
+ */
+export declare const PaymentServiceGetSubscriptionDiscountsResponseSchema: GenMessage<PaymentServiceGetSubscriptionDiscountsResponse>;
 /**
  * ProductType defines for which type of product a price applies
  *
@@ -981,13 +975,13 @@ export declare const PaymentService: GenService<{
         output: typeof PaymentServiceGetDefaultPricesResponseSchema;
     };
     /**
-     * HasChargeableResources checks if the customer has resources actually consumed which are chargeable
+     * GetSubscriptionDiscounts gets all discounts for a subscription
      *
-     * @generated from rpc api.v1.PaymentService.HasChargeableResources
+     * @generated from rpc api.v1.PaymentService.GetSubscriptionDiscounts
      */
-    hasChargeableResources: {
+    getSubscriptionDiscounts: {
         methodKind: "unary";
-        input: typeof PaymentServiceHasChargeableResourcesRequestSchema;
-        output: typeof PaymentServiceHasChargeableResourcesResponseSchema;
+        input: typeof PaymentServiceGetSubscriptionDiscountsRequestSchema;
+        output: typeof PaymentServiceGetSubscriptionDiscountsResponseSchema;
     };
 }>;

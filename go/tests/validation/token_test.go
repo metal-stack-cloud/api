@@ -26,7 +26,7 @@ func TestValidateTenantServiceAddMemberRequest(t *testing.T) {
 
 	err = validator.Validate(tsamr)
 	require.Error(t, err)
-	require.EqualError(t, err, "validation error:\n - role: value must be one of the defined enum values [enum.defined_only]")
+	require.EqualError(t, err, "validation error: role: value must be one of the defined enum values")
 
 	tsamr = &adminv1.TenantServiceAddMemberRequest{
 		TenantId: "t1",
@@ -80,7 +80,7 @@ func TestValidateTokenServiceCreateRequest(t *testing.T) {
 
 	err = validator.Validate(tscr)
 	require.Error(t, err)
-	require.EqualError(t, err, "validation error:\n - project_roles[\"project-3\"]: project role must be specified [role-specified]")
+	require.EqualError(t, err, "validation error: project_roles[\"project-3\"]: project role must be specified")
 
 	tscr = &apiv1.TokenServiceCreateRequest{
 		Description: "New Token",

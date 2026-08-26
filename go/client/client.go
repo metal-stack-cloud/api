@@ -2,6 +2,7 @@
 package client
 
 import (
+	"connectrpc.com/connect"
 	compress "github.com/klauspost/connect-compress/v2"
 
 	"github.com/metal-stack-cloud/api/go/admin/v1/adminv1connect"
@@ -16,9 +17,11 @@ type (
 		Statusv1() Statusv1
 	}
 	client struct {
-		config DialConfig
+		config       *DialConfig
+		interceptors []connect.Interceptor
 	}
 	Adminv1 interface {
+		Audit() adminv1connect.AuditServiceClient
 		Cluster() adminv1connect.ClusterServiceClient
 		Payment() adminv1connect.PaymentServiceClient
 		Project() adminv1connect.ProjectServiceClient
@@ -28,6 +31,7 @@ type (
 	}
 
 	adminv1 struct {
+		auditservice   adminv1connect.AuditServiceClient
 		clusterservice adminv1connect.ClusterServiceClient
 		paymentservice adminv1connect.PaymentServiceClient
 		projectservice adminv1connect.ProjectServiceClient
@@ -45,12 +49,12 @@ type (
 		Method() apiv1connect.MethodServiceClient
 		Payment() apiv1connect.PaymentServiceClient
 		Project() apiv1connect.ProjectServiceClient
+		Snapshot() apiv1connect.SnapshotServiceClient
 		Tenant() apiv1connect.TenantServiceClient
 		Token() apiv1connect.TokenServiceClient
 		User() apiv1connect.UserServiceClient
 		Version() apiv1connect.VersionServiceClient
 		Volume() apiv1connect.VolumeServiceClient
-		Snapshot() apiv1connect.SnapshotServiceClient
 	}
 
 	apiv1 struct {
@@ -62,12 +66,12 @@ type (
 		methodservice   apiv1connect.MethodServiceClient
 		paymentservice  apiv1connect.PaymentServiceClient
 		projectservice  apiv1connect.ProjectServiceClient
+		snapshotservice apiv1connect.SnapshotServiceClient
 		tenantservice   apiv1connect.TenantServiceClient
 		tokenservice    apiv1connect.TokenServiceClient
 		userservice     apiv1connect.UserServiceClient
 		versionservice  apiv1connect.VersionServiceClient
 		volumeservice   apiv1connect.VolumeServiceClient
-		snapshotservice apiv1connect.SnapshotServiceClient
 	}
 
 	Statusv1 interface {
@@ -81,48 +85,78 @@ type (
 	}
 )
 
-func New(config DialConfig) Client {
-	return &client{
-		config: config,
+func New(config *DialConfig) Client {
+	c := &client{
+		config:       config,
+		interceptors: []connect.Interceptor{},
 	}
+
+	if config.Token != "" {
+		authInterceptor := &authInterceptor{config: config}
+		c.interceptors = append(c.interceptors, authInterceptor)
+	}
+
+	if config.Log != nil {
+		loggingInterceptor := &loggingInterceptor{config: config}
+		c.interceptors = append(c.interceptors, loggingInterceptor)
+	}
+
+	c.interceptors = append(c.interceptors, config.Interceptors...)
+
+	return c
 }
 
 func (c client) Adminv1() Adminv1 {
 	a := &adminv1{
+		auditservice: adminv1connect.NewAuditServiceClient(
+			c.config.HttpClient(),
+			c.config.BaseURL,
+			connect.WithInterceptors(c.interceptors...),
+			compress.WithAll(compress.LevelBalanced),
+		),
 		clusterservice: adminv1connect.NewClusterServiceClient(
 			c.config.HttpClient(),
 			c.config.BaseURL,
+			connect.WithInterceptors(c.interceptors...),
 			compress.WithAll(compress.LevelBalanced),
 		),
 		paymentservice: adminv1connect.NewPaymentServiceClient(
 			c.config.HttpClient(),
 			c.config.BaseURL,
+			connect.WithInterceptors(c.interceptors...),
 			compress.WithAll(compress.LevelBalanced),
 		),
 		projectservice: adminv1connect.NewProjectServiceClient(
 			c.config.HttpClient(),
 			c.config.BaseURL,
+			connect.WithInterceptors(c.interceptors...),
 			compress.WithAll(compress.LevelBalanced),
 		),
 		storageservice: adminv1connect.NewStorageServiceClient(
 			c.config.HttpClient(),
 			c.config.BaseURL,
+			connect.WithInterceptors(c.interceptors...),
 			compress.WithAll(compress.LevelBalanced),
 		),
 		tenantservice: adminv1connect.NewTenantServiceClient(
 			c.config.HttpClient(),
 			c.config.BaseURL,
+			connect.WithInterceptors(c.interceptors...),
 			compress.WithAll(compress.LevelBalanced),
 		),
 		tokenservice: adminv1connect.NewTokenServiceClient(
 			c.config.HttpClient(),
 			c.config.BaseURL,
+			connect.WithInterceptors(c.interceptors...),
 			compress.WithAll(compress.LevelBalanced),
 		),
 	}
 	return a
 }
 
+func (c *adminv1) Audit() adminv1connect.AuditServiceClient {
+	return c.auditservice
+}
 func (c *adminv1) Cluster() adminv1connect.ClusterServiceClient {
 	return c.clusterservice
 }
@@ -147,71 +181,85 @@ func (c client) Apiv1() Apiv1 {
 		assetservice: apiv1connect.NewAssetServiceClient(
 			c.config.HttpClient(),
 			c.config.BaseURL,
+			connect.WithInterceptors(c.interceptors...),
 			compress.WithAll(compress.LevelBalanced),
 		),
 		auditservice: apiv1connect.NewAuditServiceClient(
 			c.config.HttpClient(),
 			c.config.BaseURL,
+			connect.WithInterceptors(c.interceptors...),
 			compress.WithAll(compress.LevelBalanced),
 		),
 		clusterservice: apiv1connect.NewClusterServiceClient(
 			c.config.HttpClient(),
 			c.config.BaseURL,
+			connect.WithInterceptors(c.interceptors...),
 			compress.WithAll(compress.LevelBalanced),
 		),
 		healthservice: apiv1connect.NewHealthServiceClient(
 			c.config.HttpClient(),
 			c.config.BaseURL,
+			connect.WithInterceptors(c.interceptors...),
 			compress.WithAll(compress.LevelBalanced),
 		),
 		ipservice: apiv1connect.NewIPServiceClient(
 			c.config.HttpClient(),
 			c.config.BaseURL,
+			connect.WithInterceptors(c.interceptors...),
 			compress.WithAll(compress.LevelBalanced),
 		),
 		methodservice: apiv1connect.NewMethodServiceClient(
 			c.config.HttpClient(),
 			c.config.BaseURL,
+			connect.WithInterceptors(c.interceptors...),
 			compress.WithAll(compress.LevelBalanced),
 		),
 		paymentservice: apiv1connect.NewPaymentServiceClient(
 			c.config.HttpClient(),
 			c.config.BaseURL,
+			connect.WithInterceptors(c.interceptors...),
 			compress.WithAll(compress.LevelBalanced),
 		),
 		projectservice: apiv1connect.NewProjectServiceClient(
 			c.config.HttpClient(),
 			c.config.BaseURL,
-			compress.WithAll(compress.LevelBalanced),
-		),
-		tenantservice: apiv1connect.NewTenantServiceClient(
-			c.config.HttpClient(),
-			c.config.BaseURL,
-			compress.WithAll(compress.LevelBalanced),
-		),
-		tokenservice: apiv1connect.NewTokenServiceClient(
-			c.config.HttpClient(),
-			c.config.BaseURL,
-			compress.WithAll(compress.LevelBalanced),
-		),
-		userservice: apiv1connect.NewUserServiceClient(
-			c.config.HttpClient(),
-			c.config.BaseURL,
-			compress.WithAll(compress.LevelBalanced),
-		),
-		versionservice: apiv1connect.NewVersionServiceClient(
-			c.config.HttpClient(),
-			c.config.BaseURL,
-			compress.WithAll(compress.LevelBalanced),
-		),
-		volumeservice: apiv1connect.NewVolumeServiceClient(
-			c.config.HttpClient(),
-			c.config.BaseURL,
+			connect.WithInterceptors(c.interceptors...),
 			compress.WithAll(compress.LevelBalanced),
 		),
 		snapshotservice: apiv1connect.NewSnapshotServiceClient(
 			c.config.HttpClient(),
 			c.config.BaseURL,
+			connect.WithInterceptors(c.interceptors...),
+			compress.WithAll(compress.LevelBalanced),
+		),
+		tenantservice: apiv1connect.NewTenantServiceClient(
+			c.config.HttpClient(),
+			c.config.BaseURL,
+			connect.WithInterceptors(c.interceptors...),
+			compress.WithAll(compress.LevelBalanced),
+		),
+		tokenservice: apiv1connect.NewTokenServiceClient(
+			c.config.HttpClient(),
+			c.config.BaseURL,
+			connect.WithInterceptors(c.interceptors...),
+			compress.WithAll(compress.LevelBalanced),
+		),
+		userservice: apiv1connect.NewUserServiceClient(
+			c.config.HttpClient(),
+			c.config.BaseURL,
+			connect.WithInterceptors(c.interceptors...),
+			compress.WithAll(compress.LevelBalanced),
+		),
+		versionservice: apiv1connect.NewVersionServiceClient(
+			c.config.HttpClient(),
+			c.config.BaseURL,
+			connect.WithInterceptors(c.interceptors...),
+			compress.WithAll(compress.LevelBalanced),
+		),
+		volumeservice: apiv1connect.NewVolumeServiceClient(
+			c.config.HttpClient(),
+			c.config.BaseURL,
+			connect.WithInterceptors(c.interceptors...),
 			compress.WithAll(compress.LevelBalanced),
 		),
 	}
@@ -242,6 +290,9 @@ func (c *apiv1) Payment() apiv1connect.PaymentServiceClient {
 func (c *apiv1) Project() apiv1connect.ProjectServiceClient {
 	return c.projectservice
 }
+func (c *apiv1) Snapshot() apiv1connect.SnapshotServiceClient {
+	return c.snapshotservice
+}
 func (c *apiv1) Tenant() apiv1connect.TenantServiceClient {
 	return c.tenantservice
 }
@@ -257,20 +308,19 @@ func (c *apiv1) Version() apiv1connect.VersionServiceClient {
 func (c *apiv1) Volume() apiv1connect.VolumeServiceClient {
 	return c.volumeservice
 }
-func (c *apiv1) Snapshot() apiv1connect.SnapshotServiceClient {
-	return c.snapshotservice
-}
 
 func (c client) Statusv1() Statusv1 {
 	a := &statusv1{
 		messageservice: statusv1connect.NewMessageServiceClient(
 			c.config.HttpClient(),
 			c.config.BaseURL,
+			connect.WithInterceptors(c.interceptors...),
 			compress.WithAll(compress.LevelBalanced),
 		),
 		statusservice: statusv1connect.NewStatusServiceClient(
 			c.config.HttpClient(),
 			c.config.BaseURL,
+			connect.WithInterceptors(c.interceptors...),
 			compress.WithAll(compress.LevelBalanced),
 		),
 	}

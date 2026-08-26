@@ -12,10 +12,10 @@ managed:
     - file_option: go_package_prefix
       value: github.com/metal-stack-cloud/api/go
 plugins:
-  - remote: buf.build/protocolbuffers/go:v1.36.6
+  - remote: buf.build/protocolbuffers/go:v1.36.11
     out: ../go
     opt: paths=source_relative
-  - remote: buf.build/connectrpc/go:v1.18.1
+  - remote: buf.build/connectrpc/go:v1.19.1
     out: ../go
     opt: paths=source_relative
   - remote: buf.build/bufbuild/es:v2.5.0
@@ -25,13 +25,17 @@ plugins:
   - remote: buf.build/community/pseudomuto-doc:v1.5.1
     out: ../docs
     opt: json,docs.json
+  # Create python client
+  - remote: buf.build/protocolbuffers/python:v31.1
+    out: ../python/metalstackcloud
+  - remote: buf.build/grpc/python:v1.74.0
+    out: ../python/metalstackcloud
+  - remote: buf.build/protocolbuffers/pyi:v31.1
+    out: ../python/metalstackcloud
+  - local: ../bin/protoc-gen-connecpy
+    out: ../python/metalstackcloud
   # generate rust client
   # - remote: buf.build/community/neoeinstein-prost:v0.4.0
   #   out: ../rs
   # - remote: buf.build/community/neoeinstein-tonic:v0.4.1
   #   out: ../rs
-  # Create python client
-  # - remote: buf.build/protocolbuffers/python:v28.3
-  #   out: ../python
-  # - remote: buf.build/grpc/python:v1.67.1
-  #   out: ../python

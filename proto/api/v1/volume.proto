@@ -4,8 +4,6 @@ package api.v1;
 
 import "api/v1/common.proto";
 import "buf/validate/validate.proto";
-import "google/protobuf/duration.proto";
-import "google/protobuf/timestamp.proto";
 
 // VolumeService serves volume related functions
 service VolumeService {
@@ -30,29 +28,6 @@ service VolumeService {
   }
   // Update a volume
   rpc Update(VolumeServiceUpdateRequest) returns (VolumeServiceUpdateResponse) {
-    option (project_roles) = PROJECT_ROLE_OWNER;
-    option (project_roles) = PROJECT_ROLE_EDITOR;
-  }
-}
-
-// SnapshotService serves snapshot related functions
-service SnapshotService {
-  // Get a snapshot
-  rpc Get(SnapshotServiceGetRequest) returns (SnapshotServiceGetResponse) {
-    option (project_roles) = PROJECT_ROLE_OWNER;
-    option (project_roles) = PROJECT_ROLE_EDITOR;
-    option (project_roles) = PROJECT_ROLE_VIEWER;
-    option (auditing) = AUDITING_EXCLUDED;
-  }
-  // List snapshots
-  rpc List(SnapshotServiceListRequest) returns (SnapshotServiceListResponse) {
-    option (project_roles) = PROJECT_ROLE_OWNER;
-    option (project_roles) = PROJECT_ROLE_EDITOR;
-    option (project_roles) = PROJECT_ROLE_VIEWER;
-    option (auditing) = AUDITING_EXCLUDED;
-  }
-  // Delete a snapshot
-  rpc Delete(SnapshotServiceDeleteRequest) returns (SnapshotServiceDeleteResponse) {
     option (project_roles) = PROJECT_ROLE_OWNER;
     option (project_roles) = PROJECT_ROLE_EDITOR;
   }
@@ -182,66 +157,6 @@ message VolumeStatistics {
   uint32 recoverable_data_integrity_errors = 12;
 }
 
-// Snapshot is a unit of block storage create as a point in time block copy of a volume
-message Snapshot {
-  // Uuid is the unique identifier of the snapshot
-  string uuid = 1;
-  // Name of the snapshot
-  string name = 2;
-  // Description of this snapshot
-  string description = 3;
-  // Project this snapshot belongs to
-  string project = 4;
-  // Partition where this snapshot resides
-  string partition = 5;
-  // StorageClass where this snapshot is created
-  string storage_class = 6;
-  // Size in bytes of the snapshot
-  uint64 size = 7;
-  // Usage in bytes of the snapshot
-  uint64 usage = 8;
-  // State of the snapshot
-  string state = 9;
-  // SourceVolumeUuid is the uuid of the snapshot this snapshot was created from
-  string source_volume_uuid = 10;
-  // SourceVolumeName is the name of the snapshot this snapshot was created from
-  string source_volume_name = 11;
-  // ReplicaCount shows how many replicas of this snapshot exist
-  uint32 replica_count = 12;
-  // PrimaryNodeUuid is the uuid of the storage server node where the primary replica of this snapshot resides
-  string primary_node_uuid = 13;
-  // Retention is the duration after creation, after which this snapshot will be deleted
-  google.protobuf.Duration retention = 14;
-  // SnapshotStatistics are only visible to admins
-  SnapshotStatistics statistics = 15;
-  // CreatedAt is the date when this snapshot was created
-  google.protobuf.Timestamp created_at = 20;
-}
-
-// SnapshotStatistics are all detailed statistics of a snapshot
-message SnapshotStatistics {
-  // PhysicalCapacity
-  //
-  // The physical capacity that exists in this snapshot layer
-  uint64 physical_capacity = 1;
-  // PhysicalOwnedStorageCapacity
-  //
-  // The capacity that would be freed when snapshot is deleted
-  uint64 physical_owned_capacity = 2;
-  // PhysicalOwnedMemory
-  //
-  // The memory that would be freed when snapshot is deleted
-  uint64 physical_owned_memory = 3;
-  // PhysicalMemory
-  //
-  // The memory that exists for this snapshot
-  uint64 physical_memory = 4;
-  // UserWritten
-  //
-  // The amount of bytes written to this snapshot by the user
-  uint64 user_written = 5;
-}
-
 // VolumeServiceGetRequest is the request payload of the volume get request
 message VolumeServiceGetRequest {
   // Uuid of the volume
@@ -292,43 +207,6 @@ message VolumeServiceUpdateRequest {
   optional UpdateVolumeLabels labels = 24;
 }
 
-// SnapshotServiceGetRequest is the request payload of a snapshot list request
-message SnapshotServiceGetRequest {
-  // Uuid of the snapshot
-  string uuid = 1 [(buf.validate.field).string.uuid = true];
-  // Project of the snapshot
-  string project = 2 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
-}
-
-// SnapshotServiceListRequest is the request payload of a snapshot list request
-message SnapshotServiceListRequest {
-  // Uuid of the snapshot
-  optional string uuid = 1 [(buf.validate.field).string.uuid = true];
-  // Project of the snapshot
-  string project = 2 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
-  // Partition where the snapshots should be listed
-  optional string partition = 3;
-  // Name of the snapshot
-  optional string name = 4;
-}
-
-// SnapshotServiceDeleteRequest is the request payload of a snapshot delete request
-message SnapshotServiceDeleteRequest {
-  // Uuid of the snapshot
-  string uuid = 1 [(buf.validate.field).string.uuid = true];
-  // Project of the snapshot
-  string project = 2 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
-}
-
 // VolumeServiceGetResponse is the response payload of a volume get request
 message VolumeServiceGetResponse {
   // Volume the volume
@@ -351,22 +229,4 @@ message VolumeServiceDeleteResponse {
 message VolumeServiceUpdateResponse {
   // Volume the volume
   Volume volume = 1;
-}
-
-// SnapshotServiceGetResponse is the response payload of a snapshot get request
-message SnapshotServiceGetResponse {
-  // Snapshot the snapshot
-  Snapshot snapshot = 1;
-}
-
-// SnapshotServiceListResponse is the response payload of a snapshot list request
-message SnapshotServiceListResponse {
-  // Snapshots the snapshots
-  repeated Snapshot snapshots = 1;
-}
-
-// SnapshotServiceDeleteResponse is the response payload of a snapshot delete request
-message SnapshotServiceDeleteResponse {
-  // Snapshot the snapshot
-  Snapshot snapshot = 1;
 }

@@ -1,0 +1,13 @@
+---
+all: true
+recursive: true
+include-auto-generated: true
+dir: 'go/tests/mocks/{{.InterfaceDirRelative | trimPrefix "go/"}}'
+filename: "{{.InterfaceName}}.go"
+pkgname: '{{.SrcPackageName}}'
+structname: '{{.InterfaceName}}'
+packages:
+  github.com/metal-stack-cloud/api/go/admin/v1:
+  github.com/metal-stack-cloud/api/go/api/v1:
+  github.com/metal-stack-cloud/api/go/status/v1:
+  github.com/metal-stack-cloud/api/go/client:

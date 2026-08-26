@@ -1,0 +1,306 @@
+import datetime
+
+from api.v1 import common_pb2 as _common_pb2
+from buf.validate import validate_pb2 as _validate_pb2
+from google.protobuf import timestamp_pb2 as _timestamp_pb2
+from google.protobuf.internal import containers as _containers
+from google.protobuf.internal import enum_type_wrapper as _enum_type_wrapper
+from google.protobuf import descriptor as _descriptor
+from google.protobuf import message as _message
+from collections.abc import Iterable as _Iterable, Mapping as _Mapping
+from typing import ClassVar as _ClassVar, Optional as _Optional, Union as _Union
+
+DESCRIPTOR: _descriptor.FileDescriptor
+
+class ProductType(int, metaclass=_enum_type_wrapper.EnumTypeWrapper):
+    __slots__ = ()
+    PRODUCT_TYPE_UNSPECIFIED: _ClassVar[ProductType]
+    PRODUCT_TYPE_STORAGE: _ClassVar[ProductType]
+    PRODUCT_TYPE_COMPUTE: _ClassVar[ProductType]
+    PRODUCT_TYPE_NETWORK: _ClassVar[ProductType]
+    PRODUCT_TYPE_KUBERNETES: _ClassVar[ProductType]
+
+class UsageType(int, metaclass=_enum_type_wrapper.EnumTypeWrapper):
+    __slots__ = ()
+    USAGE_TYPE_UNSPECIFIED: _ClassVar[UsageType]
+    USAGE_TYPE_METERED: _ClassVar[UsageType]
+    USAGE_TYPE_LICENSED: _ClassVar[UsageType]
+
+class ProductTier(int, metaclass=_enum_type_wrapper.EnumTypeWrapper):
+    __slots__ = ()
+    PRODUCT_TIER_UNSPECIFIED: _ClassVar[ProductTier]
+    PRODUCT_TIER_TRIAL: _ClassVar[ProductTier]
+    PRODUCT_TIER_PAID: _ClassVar[ProductTier]
+PRODUCT_TYPE_UNSPECIFIED: ProductType
+PRODUCT_TYPE_STORAGE: ProductType
+PRODUCT_TYPE_COMPUTE: ProductType
+PRODUCT_TYPE_NETWORK: ProductType
+PRODUCT_TYPE_KUBERNETES: ProductType
+USAGE_TYPE_UNSPECIFIED: UsageType
+USAGE_TYPE_METERED: UsageType
+USAGE_TYPE_LICENSED: UsageType
+PRODUCT_TIER_UNSPECIFIED: ProductTier
+PRODUCT_TIER_TRIAL: ProductTier
+PRODUCT_TIER_PAID: ProductTier
+
+class PaymentCustomer(_message.Message):
+    __slots__ = ("login", "name", "customer_id", "payment_method_id", "subscription_id", "email", "card", "prices", "address", "vat", "phone_number", "balance", "tier")
+    LOGIN_FIELD_NUMBER: _ClassVar[int]
+    NAME_FIELD_NUMBER: _ClassVar[int]
+    CUSTOMER_ID_FIELD_NUMBER: _ClassVar[int]
+    PAYMENT_METHOD_ID_FIELD_NUMBER: _ClassVar[int]
+    SUBSCRIPTION_ID_FIELD_NUMBER: _ClassVar[int]
+    EMAIL_FIELD_NUMBER: _ClassVar[int]
+    CARD_FIELD_NUMBER: _ClassVar[int]
+    PRICES_FIELD_NUMBER: _ClassVar[int]
+    ADDRESS_FIELD_NUMBER: _ClassVar[int]
+    VAT_FIELD_NUMBER: _ClassVar[int]
+    PHONE_NUMBER_FIELD_NUMBER: _ClassVar[int]
+    BALANCE_FIELD_NUMBER: _ClassVar[int]
+    TIER_FIELD_NUMBER: _ClassVar[int]
+    login: str
+    name: str
+    customer_id: str
+    payment_method_id: str
+    subscription_id: str
+    email: str
+    card: Card
+    prices: _containers.RepeatedCompositeFieldContainer[Price]
+    address: Address
+    vat: str
+    phone_number: str
+    balance: int
+    tier: ProductTier
+    def __init__(self, login: _Optional[str] = ..., name: _Optional[str] = ..., customer_id: _Optional[str] = ..., payment_method_id: _Optional[str] = ..., subscription_id: _Optional[str] = ..., email: _Optional[str] = ..., card: _Optional[_Union[Card, _Mapping]] = ..., prices: _Optional[_Iterable[_Union[Price, _Mapping]]] = ..., address: _Optional[_Union[Address, _Mapping]] = ..., vat: _Optional[str] = ..., phone_number: _Optional[str] = ..., balance: _Optional[int] = ..., tier: _Optional[_Union[ProductTier, str]] = ...) -> None: ...
+
+class Card(_message.Message):
+    __slots__ = ("brand", "country", "exp_month", "exp_year", "last_4")
+    BRAND_FIELD_NUMBER: _ClassVar[int]
+    COUNTRY_FIELD_NUMBER: _ClassVar[int]
+    EXP_MONTH_FIELD_NUMBER: _ClassVar[int]
+    EXP_YEAR_FIELD_NUMBER: _ClassVar[int]
+    LAST_4_FIELD_NUMBER: _ClassVar[int]
+    brand: str
+    country: str
+    exp_month: int
+    exp_year: int
+    last_4: str
+    def __init__(self, brand: _Optional[str] = ..., country: _Optional[str] = ..., exp_month: _Optional[int] = ..., exp_year: _Optional[int] = ..., last_4: _Optional[str] = ...) -> None: ...
+
+class Price(_message.Message):
+    __slots__ = ("name", "unit_amount_decimal", "currency", "unit_label", "product_type", "description", "usage_type")
+    NAME_FIELD_NUMBER: _ClassVar[int]
+    UNIT_AMOUNT_DECIMAL_FIELD_NUMBER: _ClassVar[int]
+    CURRENCY_FIELD_NUMBER: _ClassVar[int]
+    UNIT_LABEL_FIELD_NUMBER: _ClassVar[int]
+    PRODUCT_TYPE_FIELD_NUMBER: _ClassVar[int]
+    DESCRIPTION_FIELD_NUMBER: _ClassVar[int]
+    USAGE_TYPE_FIELD_NUMBER: _ClassVar[int]
+    name: str
+    unit_amount_decimal: float
+    currency: str
+    unit_label: str
+    product_type: ProductType
+    description: str
+    usage_type: UsageType
+    def __init__(self, name: _Optional[str] = ..., unit_amount_decimal: _Optional[float] = ..., currency: _Optional[str] = ..., unit_label: _Optional[str] = ..., product_type: _Optional[_Union[ProductType, str]] = ..., description: _Optional[str] = ..., usage_type: _Optional[_Union[UsageType, str]] = ...) -> None: ...
+
+class Address(_message.Message):
+    __slots__ = ("line1", "line2", "postal_code", "city", "state", "country")
+    LINE1_FIELD_NUMBER: _ClassVar[int]
+    LINE2_FIELD_NUMBER: _ClassVar[int]
+    POSTAL_CODE_FIELD_NUMBER: _ClassVar[int]
+    CITY_FIELD_NUMBER: _ClassVar[int]
+    STATE_FIELD_NUMBER: _ClassVar[int]
+    COUNTRY_FIELD_NUMBER: _ClassVar[int]
+    line1: str
+    line2: str
+    postal_code: str
+    city: str
+    state: str
+    country: str
+    def __init__(self, line1: _Optional[str] = ..., line2: _Optional[str] = ..., postal_code: _Optional[str] = ..., city: _Optional[str] = ..., state: _Optional[str] = ..., country: _Optional[str] = ...) -> None: ...
+
+class SubscriptionUsageItem(_message.Message):
+    __slots__ = ("subscription_item_id", "subscription_item_name", "total_usage", "period_start", "period_end", "discounts", "product_item_id")
+    SUBSCRIPTION_ITEM_ID_FIELD_NUMBER: _ClassVar[int]
+    SUBSCRIPTION_ITEM_NAME_FIELD_NUMBER: _ClassVar[int]
+    TOTAL_USAGE_FIELD_NUMBER: _ClassVar[int]
+    PERIOD_START_FIELD_NUMBER: _ClassVar[int]
+    PERIOD_END_FIELD_NUMBER: _ClassVar[int]
+    DISCOUNTS_FIELD_NUMBER: _ClassVar[int]
+    PRODUCT_ITEM_ID_FIELD_NUMBER: _ClassVar[int]
+    subscription_item_id: str
+    subscription_item_name: str
+    total_usage: int
+    period_start: _timestamp_pb2.Timestamp
+    period_end: _timestamp_pb2.Timestamp
+    discounts: _containers.RepeatedCompositeFieldContainer[Discount]
+    product_item_id: str
+    def __init__(self, subscription_item_id: _Optional[str] = ..., subscription_item_name: _Optional[str] = ..., total_usage: _Optional[int] = ..., period_start: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., period_end: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., discounts: _Optional[_Iterable[_Union[Discount, _Mapping]]] = ..., product_item_id: _Optional[str] = ...) -> None: ...
+
+class Discount(_message.Message):
+    __slots__ = ("id", "name", "amount_off", "percentage_off", "discount_order", "applies_to")
+    ID_FIELD_NUMBER: _ClassVar[int]
+    NAME_FIELD_NUMBER: _ClassVar[int]
+    AMOUNT_OFF_FIELD_NUMBER: _ClassVar[int]
+    PERCENTAGE_OFF_FIELD_NUMBER: _ClassVar[int]
+    DISCOUNT_ORDER_FIELD_NUMBER: _ClassVar[int]
+    APPLIES_TO_FIELD_NUMBER: _ClassVar[int]
+    id: str
+    name: str
+    amount_off: int
+    percentage_off: float
+    discount_order: float
+    applies_to: _containers.RepeatedScalarFieldContainer[str]
+    def __init__(self, id: _Optional[str] = ..., name: _Optional[str] = ..., amount_off: _Optional[int] = ..., percentage_off: _Optional[float] = ..., discount_order: _Optional[float] = ..., applies_to: _Optional[_Iterable[str]] = ...) -> None: ...
+
+class Invoice(_message.Message):
+    __slots__ = ("id", "pdf_download_url", "period_start", "period_end")
+    ID_FIELD_NUMBER: _ClassVar[int]
+    PDF_DOWNLOAD_URL_FIELD_NUMBER: _ClassVar[int]
+    PERIOD_START_FIELD_NUMBER: _ClassVar[int]
+    PERIOD_END_FIELD_NUMBER: _ClassVar[int]
+    id: str
+    pdf_download_url: str
+    period_start: _timestamp_pb2.Timestamp
+    period_end: _timestamp_pb2.Timestamp
+    def __init__(self, id: _Optional[str] = ..., pdf_download_url: _Optional[str] = ..., period_start: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., period_end: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ...) -> None: ...
+
+class PaymentServiceCreateRequest(_message.Message):
+    __slots__ = ("login", "name", "payment_method_id", "email", "address", "vat", "phone_number")
+    LOGIN_FIELD_NUMBER: _ClassVar[int]
+    NAME_FIELD_NUMBER: _ClassVar[int]
+    PAYMENT_METHOD_ID_FIELD_NUMBER: _ClassVar[int]
+    EMAIL_FIELD_NUMBER: _ClassVar[int]
+    ADDRESS_FIELD_NUMBER: _ClassVar[int]
+    VAT_FIELD_NUMBER: _ClassVar[int]
+    PHONE_NUMBER_FIELD_NUMBER: _ClassVar[int]
+    login: str
+    name: str
+    payment_method_id: str
+    email: str
+    address: Address
+    vat: str
+    phone_number: str
+    def __init__(self, login: _Optional[str] = ..., name: _Optional[str] = ..., payment_method_id: _Optional[str] = ..., email: _Optional[str] = ..., address: _Optional[_Union[Address, _Mapping]] = ..., vat: _Optional[str] = ..., phone_number: _Optional[str] = ...) -> None: ...
+
+class PaymentServiceCreateResponse(_message.Message):
+    __slots__ = ("customer",)
+    CUSTOMER_FIELD_NUMBER: _ClassVar[int]
+    customer: PaymentCustomer
+    def __init__(self, customer: _Optional[_Union[PaymentCustomer, _Mapping]] = ...) -> None: ...
+
+class PaymentServiceUpdateRequest(_message.Message):
+    __slots__ = ("login", "name", "payment_method_id", "email", "address", "vat", "phone_number")
+    LOGIN_FIELD_NUMBER: _ClassVar[int]
+    NAME_FIELD_NUMBER: _ClassVar[int]
+    PAYMENT_METHOD_ID_FIELD_NUMBER: _ClassVar[int]
+    EMAIL_FIELD_NUMBER: _ClassVar[int]
+    ADDRESS_FIELD_NUMBER: _ClassVar[int]
+    VAT_FIELD_NUMBER: _ClassVar[int]
+    PHONE_NUMBER_FIELD_NUMBER: _ClassVar[int]
+    login: str
+    name: str
+    payment_method_id: str
+    email: str
+    address: Address
+    vat: str
+    phone_number: str
+    def __init__(self, login: _Optional[str] = ..., name: _Optional[str] = ..., payment_method_id: _Optional[str] = ..., email: _Optional[str] = ..., address: _Optional[_Union[Address, _Mapping]] = ..., vat: _Optional[str] = ..., phone_number: _Optional[str] = ...) -> None: ...
+
+class PaymentServiceUpdateResponse(_message.Message):
+    __slots__ = ("customer",)
+    CUSTOMER_FIELD_NUMBER: _ClassVar[int]
+    customer: PaymentCustomer
+    def __init__(self, customer: _Optional[_Union[PaymentCustomer, _Mapping]] = ...) -> None: ...
+
+class PaymentServiceGetRequest(_message.Message):
+    __slots__ = ("login",)
+    LOGIN_FIELD_NUMBER: _ClassVar[int]
+    login: str
+    def __init__(self, login: _Optional[str] = ...) -> None: ...
+
+class PaymentServiceGetResponse(_message.Message):
+    __slots__ = ("customer",)
+    CUSTOMER_FIELD_NUMBER: _ClassVar[int]
+    customer: PaymentCustomer
+    def __init__(self, customer: _Optional[_Union[PaymentCustomer, _Mapping]] = ...) -> None: ...
+
+class PaymentServiceHasPaymentMethodRequest(_message.Message):
+    __slots__ = ("login",)
+    LOGIN_FIELD_NUMBER: _ClassVar[int]
+    login: str
+    def __init__(self, login: _Optional[str] = ...) -> None: ...
+
+class PaymentServiceHasPaymentMethodResponse(_message.Message):
+    __slots__ = ("exists", "positive_balance")
+    EXISTS_FIELD_NUMBER: _ClassVar[int]
+    POSITIVE_BALANCE_FIELD_NUMBER: _ClassVar[int]
+    exists: bool
+    positive_balance: bool
+    def __init__(self, exists: bool = ..., positive_balance: bool = ...) -> None: ...
+
+class PaymentServiceDeleteRequest(_message.Message):
+    __slots__ = ("login",)
+    LOGIN_FIELD_NUMBER: _ClassVar[int]
+    login: str
+    def __init__(self, login: _Optional[str] = ...) -> None: ...
+
+class PaymentServiceDeleteResponse(_message.Message):
+    __slots__ = ()
+    def __init__(self) -> None: ...
+
+class PaymentServiceGetSubscriptionUsageRequest(_message.Message):
+    __slots__ = ("login",)
+    LOGIN_FIELD_NUMBER: _ClassVar[int]
+    login: str
+    def __init__(self, login: _Optional[str] = ...) -> None: ...
+
+class PaymentServiceGetSubscriptionUsageResponse(_message.Message):
+    __slots__ = ("subscription_usage_items",)
+    SUBSCRIPTION_USAGE_ITEMS_FIELD_NUMBER: _ClassVar[int]
+    subscription_usage_items: _containers.RepeatedCompositeFieldContainer[SubscriptionUsageItem]
+    def __init__(self, subscription_usage_items: _Optional[_Iterable[_Union[SubscriptionUsageItem, _Mapping]]] = ...) -> None: ...
+
+class PaymentServiceGetInvoicesRequest(_message.Message):
+    __slots__ = ("login", "customer_id")
+    LOGIN_FIELD_NUMBER: _ClassVar[int]
+    CUSTOMER_ID_FIELD_NUMBER: _ClassVar[int]
+    login: str
+    customer_id: str
+    def __init__(self, login: _Optional[str] = ..., customer_id: _Optional[str] = ...) -> None: ...
+
+class PaymentServiceGetInvoicesResponse(_message.Message):
+    __slots__ = ("invoices",)
+    INVOICES_FIELD_NUMBER: _ClassVar[int]
+    invoices: _containers.RepeatedCompositeFieldContainer[Invoice]
+    def __init__(self, invoices: _Optional[_Iterable[_Union[Invoice, _Mapping]]] = ...) -> None: ...
+
+class PaymentServiceGetDefaultPricesRequest(_message.Message):
+    __slots__ = ()
+    def __init__(self) -> None: ...
+
+class PaymentServiceGetDefaultPricesResponse(_message.Message):
+    __slots__ = ("prices",)
+    PRICES_FIELD_NUMBER: _ClassVar[int]
+    prices: _containers.RepeatedCompositeFieldContainer[Price]
+    def __init__(self, prices: _Optional[_Iterable[_Union[Price, _Mapping]]] = ...) -> None: ...
+
+class PaymentServiceHasChargeableResourcesRequest(_message.Message):
+    __slots__ = ("login",)
+    LOGIN_FIELD_NUMBER: _ClassVar[int]
+    login: str
+    def __init__(self, login: _Optional[str] = ...) -> None: ...
+
+class PaymentServiceGetSubscriptionDiscountsRequest(_message.Message):
+    __slots__ = ("login",)
+    LOGIN_FIELD_NUMBER: _ClassVar[int]
+    login: str
+    def __init__(self, login: _Optional[str] = ...) -> None: ...
+
+class PaymentServiceGetSubscriptionDiscountsResponse(_message.Message):
+    __slots__ = ("discounts",)
+    DISCOUNTS_FIELD_NUMBER: _ClassVar[int]
+    discounts: _containers.RepeatedCompositeFieldContainer[Discount]
+    def __init__(self, discounts: _Optional[_Iterable[_Union[Discount, _Mapping]]] = ...) -> None: ...

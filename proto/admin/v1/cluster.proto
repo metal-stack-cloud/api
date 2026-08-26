@@ -14,15 +14,26 @@ service ClusterService {
   rpc Get(ClusterServiceGetRequest) returns (ClusterServiceGetResponse) {
     option (api.v1.admin_roles) = ADMIN_ROLE_EDITOR;
     option (api.v1.admin_roles) = ADMIN_ROLE_VIEWER;
+    option (api.v1.auditing) = AUDITING_EXCLUDED;
   }
   // List clusters
   rpc List(ClusterServiceListRequest) returns (ClusterServiceListResponse) {
     option (api.v1.admin_roles) = ADMIN_ROLE_EDITOR;
     option (api.v1.admin_roles) = ADMIN_ROLE_VIEWER;
+    option (api.v1.auditing) = AUDITING_EXCLUDED;
   }
   // Credentials of a cluster
   rpc Credentials(ClusterServiceCredentialsRequest) returns (ClusterServiceCredentialsResponse) {
     option (api.v1.admin_roles) = ADMIN_ROLE_EDITOR;
+  }
+  // GetAdminKubeconfig of a cluster
+  rpc GetAdminKubeconfig(ClusterServiceGetAdminKubeconfigRequest) returns (ClusterServiceGetAdminKubeconfigResponse) {
+    option (api.v1.admin_roles) = ADMIN_ROLE_EDITOR;
+  }
+  // GetViewerKubeconfig of a cluster
+  rpc GetViewerKubeconfig(ClusterServiceGetViewerKubeconfigRequest) returns (ClusterServiceGetViewerKubeconfigResponse) {
+    option (api.v1.admin_roles) = ADMIN_ROLE_EDITOR;
+    option (api.v1.admin_roles) = ADMIN_ROLE_VIEWER;
   }
 }
 
@@ -66,6 +77,22 @@ message ClusterServiceCredentialsRequest {
   optional google.protobuf.Duration expiration = 4;
 }
 
+// ClusterServiceGetAdminKubeconfigRequest is the request payload for a cluster get admin kubeconfig request
+message ClusterServiceGetAdminKubeconfigRequest {
+  // Uuid of the cluster
+  string uuid = 1 [(buf.validate.field).string.uuid = true];
+  // Expiration defines the duration after which the requested kubernetes access token cannot be used anymore
+  optional google.protobuf.Duration expiration = 4;
+}
+
+// ClusterServiceGetViewerKubeconfigRequest is the request payload for a cluster get viewer kubeconfig request
+message ClusterServiceGetViewerKubeconfigRequest {
+  // Uuid of the cluster
+  string uuid = 1 [(buf.validate.field).string.uuid = true];
+  // Expiration defines the duration after which the requested kubernetes access token cannot be used anymore
+  optional google.protobuf.Duration expiration = 4;
+}
+
 // ClusterServiceGetResponse is the response payload for the cluster get request
 message ClusterServiceGetResponse {
   // Cluster is the cluster
@@ -88,6 +115,18 @@ message ClusterServiceCredentialsResponse {
   SSHKeyPair ssh_keypair = 2;
   // Vpn are the VPN access details
   admin.v1.VPN vpn = 3;
+}
+
+// ClusterServiceGetAdminKubeconfigResponse is the response payload of a cluster get admin kubeconfig request
+message ClusterServiceGetAdminKubeconfigResponse {
+  // Cluster is the cluster
+  string kubeconfig = 1;
+}
+
+// ClusterServiceGetViewerKubeconfigResponse is the response payload of a cluster get viewer kubeconfig request
+message ClusterServiceGetViewerKubeconfigResponse {
+  // Cluster is the cluster
+  string kubeconfig = 1;
 }
 
 // SSHKeyPair details to access a firewall via ssh

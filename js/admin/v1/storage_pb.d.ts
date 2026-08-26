@@ -1,5 +1,6 @@
 import type { GenFile, GenMessage, GenService } from "@bufbuild/protobuf/codegenv2";
-import type { Snapshot, Volume } from "../../api/v1/volume_pb";
+import type { Snapshot } from "../../api/v1/snapshot_pb";
+import type { Volume } from "../../api/v1/volume_pb";
 import type { Message } from "@bufbuild/protobuf";
 /**
  * Describes the file admin/v1/storage.proto.
