@@ -15,10 +15,11 @@ import metalstackcloud.api.v1.payment_pb2 as api_dot_v1_dot_payment__pb2
 
 
 class PaymentService(Protocol):
-    async def CreateOrUpdateCustomer(self, req: api_dot_v1_dot_payment__pb2.PaymentServiceCreateOrUpdateCustomerRequest, ctx: ServiceContext) -> api_dot_v1_dot_payment__pb2.PaymentServiceCreateOrUpdateCustomerResponse: ...
-    async def GetCustomer(self, req: api_dot_v1_dot_payment__pb2.PaymentServiceGetCustomerRequest, ctx: ServiceContext) -> api_dot_v1_dot_payment__pb2.PaymentServiceGetCustomerResponse: ...
+    async def Create(self, req: api_dot_v1_dot_payment__pb2.PaymentServiceCreateRequest, ctx: ServiceContext) -> api_dot_v1_dot_payment__pb2.PaymentServiceCreateResponse: ...
+    async def Update(self, req: api_dot_v1_dot_payment__pb2.PaymentServiceUpdateRequest, ctx: ServiceContext) -> api_dot_v1_dot_payment__pb2.PaymentServiceUpdateResponse: ...
+    async def Delete(self, req: api_dot_v1_dot_payment__pb2.PaymentServiceDeleteRequest, ctx: ServiceContext) -> api_dot_v1_dot_payment__pb2.PaymentServiceDeleteResponse: ...
+    async def Get(self, req: api_dot_v1_dot_payment__pb2.PaymentServiceGetRequest, ctx: ServiceContext) -> api_dot_v1_dot_payment__pb2.PaymentServiceGetResponse: ...
     async def HasPaymentMethod(self, req: api_dot_v1_dot_payment__pb2.PaymentServiceHasPaymentMethodRequest, ctx: ServiceContext) -> api_dot_v1_dot_payment__pb2.PaymentServiceHasPaymentMethodResponse: ...
-    async def DeletePaymentMethod(self, req: api_dot_v1_dot_payment__pb2.PaymentServiceDeletePaymentMethodRequest, ctx: ServiceContext) -> api_dot_v1_dot_payment__pb2.PaymentServiceDeletePaymentMethodResponse: ...
     async def GetSubscriptionUsage(self, req: api_dot_v1_dot_payment__pb2.PaymentServiceGetSubscriptionUsageRequest, ctx: ServiceContext) -> api_dot_v1_dot_payment__pb2.PaymentServiceGetSubscriptionUsageResponse: ...
     async def GetInvoices(self, req: api_dot_v1_dot_payment__pb2.PaymentServiceGetInvoicesRequest, ctx: ServiceContext) -> api_dot_v1_dot_payment__pb2.PaymentServiceGetInvoicesResponse: ...
     async def GetDefaultPrices(self, req: api_dot_v1_dot_payment__pb2.PaymentServiceGetDefaultPricesRequest, ctx: ServiceContext) -> api_dot_v1_dot_payment__pb2.PaymentServiceGetDefaultPricesResponse: ...
@@ -30,20 +31,36 @@ class PaymentServiceServer(ConnecpyServer):
         super().__init__()
         self._prefix = f"{server_path_prefix}/api.v1.PaymentService"
         self._endpoints = {
-            "CreateOrUpdateCustomer": Endpoint[api_dot_v1_dot_payment__pb2.PaymentServiceCreateOrUpdateCustomerRequest, api_dot_v1_dot_payment__pb2.PaymentServiceCreateOrUpdateCustomerResponse](
+            "Create": Endpoint[api_dot_v1_dot_payment__pb2.PaymentServiceCreateRequest, api_dot_v1_dot_payment__pb2.PaymentServiceCreateResponse](
                 service_name="PaymentService",
-                name="CreateOrUpdateCustomer",
-                function=getattr(service, "CreateOrUpdateCustomer"),
-                input=api_dot_v1_dot_payment__pb2.PaymentServiceCreateOrUpdateCustomerRequest,
-                output=api_dot_v1_dot_payment__pb2.PaymentServiceCreateOrUpdateCustomerResponse,
+                name="Create",
+                function=getattr(service, "Create"),
+                input=api_dot_v1_dot_payment__pb2.PaymentServiceCreateRequest,
+                output=api_dot_v1_dot_payment__pb2.PaymentServiceCreateResponse,
                 allowed_methods=("POST",),
             ),
-            "GetCustomer": Endpoint[api_dot_v1_dot_payment__pb2.PaymentServiceGetCustomerRequest, api_dot_v1_dot_payment__pb2.PaymentServiceGetCustomerResponse](
+            "Update": Endpoint[api_dot_v1_dot_payment__pb2.PaymentServiceUpdateRequest, api_dot_v1_dot_payment__pb2.PaymentServiceUpdateResponse](
                 service_name="PaymentService",
-                name="GetCustomer",
-                function=getattr(service, "GetCustomer"),
-                input=api_dot_v1_dot_payment__pb2.PaymentServiceGetCustomerRequest,
-                output=api_dot_v1_dot_payment__pb2.PaymentServiceGetCustomerResponse,
+                name="Update",
+                function=getattr(service, "Update"),
+                input=api_dot_v1_dot_payment__pb2.PaymentServiceUpdateRequest,
+                output=api_dot_v1_dot_payment__pb2.PaymentServiceUpdateResponse,
+                allowed_methods=("POST",),
+            ),
+            "Delete": Endpoint[api_dot_v1_dot_payment__pb2.PaymentServiceDeleteRequest, api_dot_v1_dot_payment__pb2.PaymentServiceDeleteResponse](
+                service_name="PaymentService",
+                name="Delete",
+                function=getattr(service, "Delete"),
+                input=api_dot_v1_dot_payment__pb2.PaymentServiceDeleteRequest,
+                output=api_dot_v1_dot_payment__pb2.PaymentServiceDeleteResponse,
+                allowed_methods=("POST",),
+            ),
+            "Get": Endpoint[api_dot_v1_dot_payment__pb2.PaymentServiceGetRequest, api_dot_v1_dot_payment__pb2.PaymentServiceGetResponse](
+                service_name="PaymentService",
+                name="Get",
+                function=getattr(service, "Get"),
+                input=api_dot_v1_dot_payment__pb2.PaymentServiceGetRequest,
+                output=api_dot_v1_dot_payment__pb2.PaymentServiceGetResponse,
                 allowed_methods=("POST",),
             ),
             "HasPaymentMethod": Endpoint[api_dot_v1_dot_payment__pb2.PaymentServiceHasPaymentMethodRequest, api_dot_v1_dot_payment__pb2.PaymentServiceHasPaymentMethodResponse](
@@ -52,14 +69,6 @@ class PaymentServiceServer(ConnecpyServer):
                 function=getattr(service, "HasPaymentMethod"),
                 input=api_dot_v1_dot_payment__pb2.PaymentServiceHasPaymentMethodRequest,
                 output=api_dot_v1_dot_payment__pb2.PaymentServiceHasPaymentMethodResponse,
-                allowed_methods=("POST",),
-            ),
-            "DeletePaymentMethod": Endpoint[api_dot_v1_dot_payment__pb2.PaymentServiceDeletePaymentMethodRequest, api_dot_v1_dot_payment__pb2.PaymentServiceDeletePaymentMethodResponse](
-                service_name="PaymentService",
-                name="DeletePaymentMethod",
-                function=getattr(service, "DeletePaymentMethod"),
-                input=api_dot_v1_dot_payment__pb2.PaymentServiceDeletePaymentMethodRequest,
-                output=api_dot_v1_dot_payment__pb2.PaymentServiceDeletePaymentMethodResponse,
                 allowed_methods=("POST",),
             ),
             "GetSubscriptionUsage": Endpoint[api_dot_v1_dot_payment__pb2.PaymentServiceGetSubscriptionUsageRequest, api_dot_v1_dot_payment__pb2.PaymentServiceGetSubscriptionUsageResponse](
@@ -101,10 +110,11 @@ class PaymentServiceServer(ConnecpyServer):
 
 
 class PaymentServiceSync(Protocol):
-    def CreateOrUpdateCustomer(self, req: api_dot_v1_dot_payment__pb2.PaymentServiceCreateOrUpdateCustomerRequest, ctx: ServiceContext) -> api_dot_v1_dot_payment__pb2.PaymentServiceCreateOrUpdateCustomerResponse: ...
-    def GetCustomer(self, req: api_dot_v1_dot_payment__pb2.PaymentServiceGetCustomerRequest, ctx: ServiceContext) -> api_dot_v1_dot_payment__pb2.PaymentServiceGetCustomerResponse: ...
+    def Create(self, req: api_dot_v1_dot_payment__pb2.PaymentServiceCreateRequest, ctx: ServiceContext) -> api_dot_v1_dot_payment__pb2.PaymentServiceCreateResponse: ...
+    def Update(self, req: api_dot_v1_dot_payment__pb2.PaymentServiceUpdateRequest, ctx: ServiceContext) -> api_dot_v1_dot_payment__pb2.PaymentServiceUpdateResponse: ...
+    def Delete(self, req: api_dot_v1_dot_payment__pb2.PaymentServiceDeleteRequest, ctx: ServiceContext) -> api_dot_v1_dot_payment__pb2.PaymentServiceDeleteResponse: ...
+    def Get(self, req: api_dot_v1_dot_payment__pb2.PaymentServiceGetRequest, ctx: ServiceContext) -> api_dot_v1_dot_payment__pb2.PaymentServiceGetResponse: ...
     def HasPaymentMethod(self, req: api_dot_v1_dot_payment__pb2.PaymentServiceHasPaymentMethodRequest, ctx: ServiceContext) -> api_dot_v1_dot_payment__pb2.PaymentServiceHasPaymentMethodResponse: ...
-    def DeletePaymentMethod(self, req: api_dot_v1_dot_payment__pb2.PaymentServiceDeletePaymentMethodRequest, ctx: ServiceContext) -> api_dot_v1_dot_payment__pb2.PaymentServiceDeletePaymentMethodResponse: ...
     def GetSubscriptionUsage(self, req: api_dot_v1_dot_payment__pb2.PaymentServiceGetSubscriptionUsageRequest, ctx: ServiceContext) -> api_dot_v1_dot_payment__pb2.PaymentServiceGetSubscriptionUsageResponse: ...
     def GetInvoices(self, req: api_dot_v1_dot_payment__pb2.PaymentServiceGetInvoicesRequest, ctx: ServiceContext) -> api_dot_v1_dot_payment__pb2.PaymentServiceGetInvoicesResponse: ...
     def GetDefaultPrices(self, req: api_dot_v1_dot_payment__pb2.PaymentServiceGetDefaultPricesRequest, ctx: ServiceContext) -> api_dot_v1_dot_payment__pb2.PaymentServiceGetDefaultPricesResponse: ...
@@ -116,20 +126,36 @@ class PaymentServiceServerSync(ConnecpyServer):
         super().__init__()
         self._prefix = f"{server_path_prefix}/api.v1.PaymentService"
         self._endpoints = {
-            "CreateOrUpdateCustomer": Endpoint[api_dot_v1_dot_payment__pb2.PaymentServiceCreateOrUpdateCustomerRequest, api_dot_v1_dot_payment__pb2.PaymentServiceCreateOrUpdateCustomerResponse](
+            "Create": Endpoint[api_dot_v1_dot_payment__pb2.PaymentServiceCreateRequest, api_dot_v1_dot_payment__pb2.PaymentServiceCreateResponse](
                 service_name="PaymentService",
-                name="CreateOrUpdateCustomer",
-                function=getattr(service, "CreateOrUpdateCustomer"),
-                input=api_dot_v1_dot_payment__pb2.PaymentServiceCreateOrUpdateCustomerRequest,
-                output=api_dot_v1_dot_payment__pb2.PaymentServiceCreateOrUpdateCustomerResponse,
+                name="Create",
+                function=getattr(service, "Create"),
+                input=api_dot_v1_dot_payment__pb2.PaymentServiceCreateRequest,
+                output=api_dot_v1_dot_payment__pb2.PaymentServiceCreateResponse,
                 allowed_methods=("POST",),
             ),
-            "GetCustomer": Endpoint[api_dot_v1_dot_payment__pb2.PaymentServiceGetCustomerRequest, api_dot_v1_dot_payment__pb2.PaymentServiceGetCustomerResponse](
+            "Update": Endpoint[api_dot_v1_dot_payment__pb2.PaymentServiceUpdateRequest, api_dot_v1_dot_payment__pb2.PaymentServiceUpdateResponse](
                 service_name="PaymentService",
-                name="GetCustomer",
-                function=getattr(service, "GetCustomer"),
-                input=api_dot_v1_dot_payment__pb2.PaymentServiceGetCustomerRequest,
-                output=api_dot_v1_dot_payment__pb2.PaymentServiceGetCustomerResponse,
+                name="Update",
+                function=getattr(service, "Update"),
+                input=api_dot_v1_dot_payment__pb2.PaymentServiceUpdateRequest,
+                output=api_dot_v1_dot_payment__pb2.PaymentServiceUpdateResponse,
+                allowed_methods=("POST",),
+            ),
+            "Delete": Endpoint[api_dot_v1_dot_payment__pb2.PaymentServiceDeleteRequest, api_dot_v1_dot_payment__pb2.PaymentServiceDeleteResponse](
+                service_name="PaymentService",
+                name="Delete",
+                function=getattr(service, "Delete"),
+                input=api_dot_v1_dot_payment__pb2.PaymentServiceDeleteRequest,
+                output=api_dot_v1_dot_payment__pb2.PaymentServiceDeleteResponse,
+                allowed_methods=("POST",),
+            ),
+            "Get": Endpoint[api_dot_v1_dot_payment__pb2.PaymentServiceGetRequest, api_dot_v1_dot_payment__pb2.PaymentServiceGetResponse](
+                service_name="PaymentService",
+                name="Get",
+                function=getattr(service, "Get"),
+                input=api_dot_v1_dot_payment__pb2.PaymentServiceGetRequest,
+                output=api_dot_v1_dot_payment__pb2.PaymentServiceGetResponse,
                 allowed_methods=("POST",),
             ),
             "HasPaymentMethod": Endpoint[api_dot_v1_dot_payment__pb2.PaymentServiceHasPaymentMethodRequest, api_dot_v1_dot_payment__pb2.PaymentServiceHasPaymentMethodResponse](
@@ -138,14 +164,6 @@ class PaymentServiceServerSync(ConnecpyServer):
                 function=getattr(service, "HasPaymentMethod"),
                 input=api_dot_v1_dot_payment__pb2.PaymentServiceHasPaymentMethodRequest,
                 output=api_dot_v1_dot_payment__pb2.PaymentServiceHasPaymentMethodResponse,
-                allowed_methods=("POST",),
-            ),
-            "DeletePaymentMethod": Endpoint[api_dot_v1_dot_payment__pb2.PaymentServiceDeletePaymentMethodRequest, api_dot_v1_dot_payment__pb2.PaymentServiceDeletePaymentMethodResponse](
-                service_name="PaymentService",
-                name="DeletePaymentMethod",
-                function=getattr(service, "DeletePaymentMethod"),
-                input=api_dot_v1_dot_payment__pb2.PaymentServiceDeletePaymentMethodRequest,
-                output=api_dot_v1_dot_payment__pb2.PaymentServiceDeletePaymentMethodResponse,
                 allowed_methods=("POST",),
             ),
             "GetSubscriptionUsage": Endpoint[api_dot_v1_dot_payment__pb2.PaymentServiceGetSubscriptionUsageRequest, api_dot_v1_dot_payment__pb2.PaymentServiceGetSubscriptionUsageResponse](
@@ -187,38 +205,74 @@ class PaymentServiceServerSync(ConnecpyServer):
 
 
 class PaymentServiceClient(ConnecpyClient):
-    def CreateOrUpdateCustomer(
+    def Create(
         self,
-        request: api_dot_v1_dot_payment__pb2.PaymentServiceCreateOrUpdateCustomerRequest,
+        request: api_dot_v1_dot_payment__pb2.PaymentServiceCreateRequest,
         *,
         ctx: Optional[ClientContext] = None,
         server_path_prefix: str = "",
         **kwargs,
-    ) -> api_dot_v1_dot_payment__pb2.PaymentServiceCreateOrUpdateCustomerResponse:
+    ) -> api_dot_v1_dot_payment__pb2.PaymentServiceCreateResponse:
         method = "POST"
         return self._make_request(
-            url=f"{server_path_prefix}/api.v1.PaymentService/CreateOrUpdateCustomer",
+            url=f"{server_path_prefix}/api.v1.PaymentService/Create",
             ctx=ctx,
             request=request,
-            response_class=api_dot_v1_dot_payment__pb2.PaymentServiceCreateOrUpdateCustomerResponse,
+            response_class=api_dot_v1_dot_payment__pb2.PaymentServiceCreateResponse,
             method=method,
             **kwargs,
         )
 
-    def GetCustomer(
+    def Update(
         self,
-        request: api_dot_v1_dot_payment__pb2.PaymentServiceGetCustomerRequest,
+        request: api_dot_v1_dot_payment__pb2.PaymentServiceUpdateRequest,
         *,
         ctx: Optional[ClientContext] = None,
         server_path_prefix: str = "",
         **kwargs,
-    ) -> api_dot_v1_dot_payment__pb2.PaymentServiceGetCustomerResponse:
+    ) -> api_dot_v1_dot_payment__pb2.PaymentServiceUpdateResponse:
         method = "POST"
         return self._make_request(
-            url=f"{server_path_prefix}/api.v1.PaymentService/GetCustomer",
+            url=f"{server_path_prefix}/api.v1.PaymentService/Update",
             ctx=ctx,
             request=request,
-            response_class=api_dot_v1_dot_payment__pb2.PaymentServiceGetCustomerResponse,
+            response_class=api_dot_v1_dot_payment__pb2.PaymentServiceUpdateResponse,
+            method=method,
+            **kwargs,
+        )
+
+    def Delete(
+        self,
+        request: api_dot_v1_dot_payment__pb2.PaymentServiceDeleteRequest,
+        *,
+        ctx: Optional[ClientContext] = None,
+        server_path_prefix: str = "",
+        **kwargs,
+    ) -> api_dot_v1_dot_payment__pb2.PaymentServiceDeleteResponse:
+        method = "POST"
+        return self._make_request(
+            url=f"{server_path_prefix}/api.v1.PaymentService/Delete",
+            ctx=ctx,
+            request=request,
+            response_class=api_dot_v1_dot_payment__pb2.PaymentServiceDeleteResponse,
+            method=method,
+            **kwargs,
+        )
+
+    def Get(
+        self,
+        request: api_dot_v1_dot_payment__pb2.PaymentServiceGetRequest,
+        *,
+        ctx: Optional[ClientContext] = None,
+        server_path_prefix: str = "",
+        **kwargs,
+    ) -> api_dot_v1_dot_payment__pb2.PaymentServiceGetResponse:
+        method = "POST"
+        return self._make_request(
+            url=f"{server_path_prefix}/api.v1.PaymentService/Get",
+            ctx=ctx,
+            request=request,
+            response_class=api_dot_v1_dot_payment__pb2.PaymentServiceGetResponse,
             method=method,
             **kwargs,
         )
@@ -237,24 +291,6 @@ class PaymentServiceClient(ConnecpyClient):
             ctx=ctx,
             request=request,
             response_class=api_dot_v1_dot_payment__pb2.PaymentServiceHasPaymentMethodResponse,
-            method=method,
-            **kwargs,
-        )
-
-    def DeletePaymentMethod(
-        self,
-        request: api_dot_v1_dot_payment__pb2.PaymentServiceDeletePaymentMethodRequest,
-        *,
-        ctx: Optional[ClientContext] = None,
-        server_path_prefix: str = "",
-        **kwargs,
-    ) -> api_dot_v1_dot_payment__pb2.PaymentServiceDeletePaymentMethodResponse:
-        method = "POST"
-        return self._make_request(
-            url=f"{server_path_prefix}/api.v1.PaymentService/DeletePaymentMethod",
-            ctx=ctx,
-            request=request,
-            response_class=api_dot_v1_dot_payment__pb2.PaymentServiceDeletePaymentMethodResponse,
             method=method,
             **kwargs,
         )
@@ -333,41 +369,81 @@ class PaymentServiceClient(ConnecpyClient):
 
 
 class AsyncPaymentServiceClient(AsyncConnecpyClient):
-    async def CreateOrUpdateCustomer(
+    async def Create(
         self,
-        request: api_dot_v1_dot_payment__pb2.PaymentServiceCreateOrUpdateCustomerRequest,
+        request: api_dot_v1_dot_payment__pb2.PaymentServiceCreateRequest,
         *,
         ctx: Optional[ClientContext] = None,
         server_path_prefix: str = "",
         session: Union[httpx.AsyncClient, None] = None,
         **kwargs,
-    ) -> api_dot_v1_dot_payment__pb2.PaymentServiceCreateOrUpdateCustomerResponse:
+    ) -> api_dot_v1_dot_payment__pb2.PaymentServiceCreateResponse:
         method = "POST"
         return await self._make_request(
-            url=f"{server_path_prefix}/api.v1.PaymentService/CreateOrUpdateCustomer",
+            url=f"{server_path_prefix}/api.v1.PaymentService/Create",
             ctx=ctx,
             request=request,
-            response_class=api_dot_v1_dot_payment__pb2.PaymentServiceCreateOrUpdateCustomerResponse,
+            response_class=api_dot_v1_dot_payment__pb2.PaymentServiceCreateResponse,
             method=method,
             session=session,
             **kwargs,
         )
 
-    async def GetCustomer(
+    async def Update(
         self,
-        request: api_dot_v1_dot_payment__pb2.PaymentServiceGetCustomerRequest,
+        request: api_dot_v1_dot_payment__pb2.PaymentServiceUpdateRequest,
         *,
         ctx: Optional[ClientContext] = None,
         server_path_prefix: str = "",
         session: Union[httpx.AsyncClient, None] = None,
         **kwargs,
-    ) -> api_dot_v1_dot_payment__pb2.PaymentServiceGetCustomerResponse:
+    ) -> api_dot_v1_dot_payment__pb2.PaymentServiceUpdateResponse:
         method = "POST"
         return await self._make_request(
-            url=f"{server_path_prefix}/api.v1.PaymentService/GetCustomer",
+            url=f"{server_path_prefix}/api.v1.PaymentService/Update",
             ctx=ctx,
             request=request,
-            response_class=api_dot_v1_dot_payment__pb2.PaymentServiceGetCustomerResponse,
+            response_class=api_dot_v1_dot_payment__pb2.PaymentServiceUpdateResponse,
+            method=method,
+            session=session,
+            **kwargs,
+        )
+
+    async def Delete(
+        self,
+        request: api_dot_v1_dot_payment__pb2.PaymentServiceDeleteRequest,
+        *,
+        ctx: Optional[ClientContext] = None,
+        server_path_prefix: str = "",
+        session: Union[httpx.AsyncClient, None] = None,
+        **kwargs,
+    ) -> api_dot_v1_dot_payment__pb2.PaymentServiceDeleteResponse:
+        method = "POST"
+        return await self._make_request(
+            url=f"{server_path_prefix}/api.v1.PaymentService/Delete",
+            ctx=ctx,
+            request=request,
+            response_class=api_dot_v1_dot_payment__pb2.PaymentServiceDeleteResponse,
+            method=method,
+            session=session,
+            **kwargs,
+        )
+
+    async def Get(
+        self,
+        request: api_dot_v1_dot_payment__pb2.PaymentServiceGetRequest,
+        *,
+        ctx: Optional[ClientContext] = None,
+        server_path_prefix: str = "",
+        session: Union[httpx.AsyncClient, None] = None,
+        **kwargs,
+    ) -> api_dot_v1_dot_payment__pb2.PaymentServiceGetResponse:
+        method = "POST"
+        return await self._make_request(
+            url=f"{server_path_prefix}/api.v1.PaymentService/Get",
+            ctx=ctx,
+            request=request,
+            response_class=api_dot_v1_dot_payment__pb2.PaymentServiceGetResponse,
             method=method,
             session=session,
             **kwargs,
@@ -388,26 +464,6 @@ class AsyncPaymentServiceClient(AsyncConnecpyClient):
             ctx=ctx,
             request=request,
             response_class=api_dot_v1_dot_payment__pb2.PaymentServiceHasPaymentMethodResponse,
-            method=method,
-            session=session,
-            **kwargs,
-        )
-
-    async def DeletePaymentMethod(
-        self,
-        request: api_dot_v1_dot_payment__pb2.PaymentServiceDeletePaymentMethodRequest,
-        *,
-        ctx: Optional[ClientContext] = None,
-        server_path_prefix: str = "",
-        session: Union[httpx.AsyncClient, None] = None,
-        **kwargs,
-    ) -> api_dot_v1_dot_payment__pb2.PaymentServiceDeletePaymentMethodResponse:
-        method = "POST"
-        return await self._make_request(
-            url=f"{server_path_prefix}/api.v1.PaymentService/DeletePaymentMethod",
-            ctx=ctx,
-            request=request,
-            response_class=api_dot_v1_dot_payment__pb2.PaymentServiceDeletePaymentMethodResponse,
             method=method,
             session=session,
             **kwargs,

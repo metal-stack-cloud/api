@@ -15,25 +15,30 @@ class PaymentServiceStub(object):
         Args:
             channel: A grpc.Channel.
         """
-        self.CreateOrUpdateCustomer = channel.unary_unary(
-                '/api.v1.PaymentService/CreateOrUpdateCustomer',
-                request_serializer=api_dot_v1_dot_payment__pb2.PaymentServiceCreateOrUpdateCustomerRequest.SerializeToString,
-                response_deserializer=api_dot_v1_dot_payment__pb2.PaymentServiceCreateOrUpdateCustomerResponse.FromString,
+        self.Create = channel.unary_unary(
+                '/api.v1.PaymentService/Create',
+                request_serializer=api_dot_v1_dot_payment__pb2.PaymentServiceCreateRequest.SerializeToString,
+                response_deserializer=api_dot_v1_dot_payment__pb2.PaymentServiceCreateResponse.FromString,
                 _registered_method=True)
-        self.GetCustomer = channel.unary_unary(
-                '/api.v1.PaymentService/GetCustomer',
-                request_serializer=api_dot_v1_dot_payment__pb2.PaymentServiceGetCustomerRequest.SerializeToString,
-                response_deserializer=api_dot_v1_dot_payment__pb2.PaymentServiceGetCustomerResponse.FromString,
+        self.Update = channel.unary_unary(
+                '/api.v1.PaymentService/Update',
+                request_serializer=api_dot_v1_dot_payment__pb2.PaymentServiceUpdateRequest.SerializeToString,
+                response_deserializer=api_dot_v1_dot_payment__pb2.PaymentServiceUpdateResponse.FromString,
+                _registered_method=True)
+        self.Delete = channel.unary_unary(
+                '/api.v1.PaymentService/Delete',
+                request_serializer=api_dot_v1_dot_payment__pb2.PaymentServiceDeleteRequest.SerializeToString,
+                response_deserializer=api_dot_v1_dot_payment__pb2.PaymentServiceDeleteResponse.FromString,
+                _registered_method=True)
+        self.Get = channel.unary_unary(
+                '/api.v1.PaymentService/Get',
+                request_serializer=api_dot_v1_dot_payment__pb2.PaymentServiceGetRequest.SerializeToString,
+                response_deserializer=api_dot_v1_dot_payment__pb2.PaymentServiceGetResponse.FromString,
                 _registered_method=True)
         self.HasPaymentMethod = channel.unary_unary(
                 '/api.v1.PaymentService/HasPaymentMethod',
                 request_serializer=api_dot_v1_dot_payment__pb2.PaymentServiceHasPaymentMethodRequest.SerializeToString,
                 response_deserializer=api_dot_v1_dot_payment__pb2.PaymentServiceHasPaymentMethodResponse.FromString,
-                _registered_method=True)
-        self.DeletePaymentMethod = channel.unary_unary(
-                '/api.v1.PaymentService/DeletePaymentMethod',
-                request_serializer=api_dot_v1_dot_payment__pb2.PaymentServiceDeletePaymentMethodRequest.SerializeToString,
-                response_deserializer=api_dot_v1_dot_payment__pb2.PaymentServiceDeletePaymentMethodResponse.FromString,
                 _registered_method=True)
         self.GetSubscriptionUsage = channel.unary_unary(
                 '/api.v1.PaymentService/GetSubscriptionUsage',
@@ -61,15 +66,29 @@ class PaymentServiceServicer(object):
     """PaymentService serves payment related functions
     """
 
-    def CreateOrUpdateCustomer(self, request, context):
-        """CreateOrUpdateCustomer the payment data on the payment processor
+    def Create(self, request, context):
+        """Create the payment data used for billing api resources
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
-    def GetCustomer(self, request, context):
-        """GetCustomer from the payment processor
+    def Update(self, request, context):
+        """Update the payment data
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def Delete(self, request, context):
+        """Delete the payment data
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def Get(self, request, context):
+        """Get the payment data
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -77,13 +96,6 @@ class PaymentServiceServicer(object):
 
     def HasPaymentMethod(self, request, context):
         """HasPaymentMethod check if the customer has a payment method provided
-        """
-        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
-
-    def DeletePaymentMethod(self, request, context):
-        """DeletePaymentMethod of the customer
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -120,25 +132,30 @@ class PaymentServiceServicer(object):
 
 def add_PaymentServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
-            'CreateOrUpdateCustomer': grpc.unary_unary_rpc_method_handler(
-                    servicer.CreateOrUpdateCustomer,
-                    request_deserializer=api_dot_v1_dot_payment__pb2.PaymentServiceCreateOrUpdateCustomerRequest.FromString,
-                    response_serializer=api_dot_v1_dot_payment__pb2.PaymentServiceCreateOrUpdateCustomerResponse.SerializeToString,
+            'Create': grpc.unary_unary_rpc_method_handler(
+                    servicer.Create,
+                    request_deserializer=api_dot_v1_dot_payment__pb2.PaymentServiceCreateRequest.FromString,
+                    response_serializer=api_dot_v1_dot_payment__pb2.PaymentServiceCreateResponse.SerializeToString,
             ),
-            'GetCustomer': grpc.unary_unary_rpc_method_handler(
-                    servicer.GetCustomer,
-                    request_deserializer=api_dot_v1_dot_payment__pb2.PaymentServiceGetCustomerRequest.FromString,
-                    response_serializer=api_dot_v1_dot_payment__pb2.PaymentServiceGetCustomerResponse.SerializeToString,
+            'Update': grpc.unary_unary_rpc_method_handler(
+                    servicer.Update,
+                    request_deserializer=api_dot_v1_dot_payment__pb2.PaymentServiceUpdateRequest.FromString,
+                    response_serializer=api_dot_v1_dot_payment__pb2.PaymentServiceUpdateResponse.SerializeToString,
+            ),
+            'Delete': grpc.unary_unary_rpc_method_handler(
+                    servicer.Delete,
+                    request_deserializer=api_dot_v1_dot_payment__pb2.PaymentServiceDeleteRequest.FromString,
+                    response_serializer=api_dot_v1_dot_payment__pb2.PaymentServiceDeleteResponse.SerializeToString,
+            ),
+            'Get': grpc.unary_unary_rpc_method_handler(
+                    servicer.Get,
+                    request_deserializer=api_dot_v1_dot_payment__pb2.PaymentServiceGetRequest.FromString,
+                    response_serializer=api_dot_v1_dot_payment__pb2.PaymentServiceGetResponse.SerializeToString,
             ),
             'HasPaymentMethod': grpc.unary_unary_rpc_method_handler(
                     servicer.HasPaymentMethod,
                     request_deserializer=api_dot_v1_dot_payment__pb2.PaymentServiceHasPaymentMethodRequest.FromString,
                     response_serializer=api_dot_v1_dot_payment__pb2.PaymentServiceHasPaymentMethodResponse.SerializeToString,
-            ),
-            'DeletePaymentMethod': grpc.unary_unary_rpc_method_handler(
-                    servicer.DeletePaymentMethod,
-                    request_deserializer=api_dot_v1_dot_payment__pb2.PaymentServiceDeletePaymentMethodRequest.FromString,
-                    response_serializer=api_dot_v1_dot_payment__pb2.PaymentServiceDeletePaymentMethodResponse.SerializeToString,
             ),
             'GetSubscriptionUsage': grpc.unary_unary_rpc_method_handler(
                     servicer.GetSubscriptionUsage,
@@ -173,7 +190,7 @@ class PaymentService(object):
     """
 
     @staticmethod
-    def CreateOrUpdateCustomer(request,
+    def Create(request,
             target,
             options=(),
             channel_credentials=None,
@@ -186,9 +203,9 @@ class PaymentService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/api.v1.PaymentService/CreateOrUpdateCustomer',
-            api_dot_v1_dot_payment__pb2.PaymentServiceCreateOrUpdateCustomerRequest.SerializeToString,
-            api_dot_v1_dot_payment__pb2.PaymentServiceCreateOrUpdateCustomerResponse.FromString,
+            '/api.v1.PaymentService/Create',
+            api_dot_v1_dot_payment__pb2.PaymentServiceCreateRequest.SerializeToString,
+            api_dot_v1_dot_payment__pb2.PaymentServiceCreateResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -200,7 +217,7 @@ class PaymentService(object):
             _registered_method=True)
 
     @staticmethod
-    def GetCustomer(request,
+    def Update(request,
             target,
             options=(),
             channel_credentials=None,
@@ -213,9 +230,63 @@ class PaymentService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/api.v1.PaymentService/GetCustomer',
-            api_dot_v1_dot_payment__pb2.PaymentServiceGetCustomerRequest.SerializeToString,
-            api_dot_v1_dot_payment__pb2.PaymentServiceGetCustomerResponse.FromString,
+            '/api.v1.PaymentService/Update',
+            api_dot_v1_dot_payment__pb2.PaymentServiceUpdateRequest.SerializeToString,
+            api_dot_v1_dot_payment__pb2.PaymentServiceUpdateResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def Delete(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/api.v1.PaymentService/Delete',
+            api_dot_v1_dot_payment__pb2.PaymentServiceDeleteRequest.SerializeToString,
+            api_dot_v1_dot_payment__pb2.PaymentServiceDeleteResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def Get(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/api.v1.PaymentService/Get',
+            api_dot_v1_dot_payment__pb2.PaymentServiceGetRequest.SerializeToString,
+            api_dot_v1_dot_payment__pb2.PaymentServiceGetResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -243,33 +314,6 @@ class PaymentService(object):
             '/api.v1.PaymentService/HasPaymentMethod',
             api_dot_v1_dot_payment__pb2.PaymentServiceHasPaymentMethodRequest.SerializeToString,
             api_dot_v1_dot_payment__pb2.PaymentServiceHasPaymentMethodResponse.FromString,
-            options,
-            channel_credentials,
-            insecure,
-            call_credentials,
-            compression,
-            wait_for_ready,
-            timeout,
-            metadata,
-            _registered_method=True)
-
-    @staticmethod
-    def DeletePaymentMethod(request,
-            target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(
-            request,
-            target,
-            '/api.v1.PaymentService/DeletePaymentMethod',
-            api_dot_v1_dot_payment__pb2.PaymentServiceDeletePaymentMethodRequest.SerializeToString,
-            api_dot_v1_dot_payment__pb2.PaymentServiceDeletePaymentMethodResponse.FromString,
             options,
             channel_credentials,
             insecure,

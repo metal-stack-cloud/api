@@ -14,7 +14,7 @@ import type { Message } from "@bufbuild/protobuf";
  * Describes the file api/v1/payment.proto.
  */
 export const file_api_v1_payment: GenFile = /*@__PURE__*/
-  fileDesc("ChRhcGkvdjEvcGF5bWVudC5wcm90bxIGYXBpLnYxIr0DCg9QYXltZW50Q3VzdG9tZXISDQoFbG9naW4YASABKAkSEQoEbmFtZRgCIAEoCUgAiAEBEhgKC2N1c3RvbWVyX2lkGAMgASgJSAGIAQESHgoRcGF5bWVudF9tZXRob2RfaWQYBCABKAlIAogBARIXCg9zdWJzY3JpcHRpb25faWQYBSABKAkSGwoFZW1haWwYBiABKAlCB7pIBHICYAFIA4gBARIfCgRjYXJkGAcgASgLMgwuYXBpLnYxLkNhcmRIBIgBARIdCgZwcmljZXMYCCADKAsyDS5hcGkudjEuUHJpY2USIAoHYWRkcmVzcxgJIAEoCzIPLmFwaS52MS5BZGRyZXNzEhAKA3ZhdBgLIAEoCUgFiAEBEhkKDHBob25lX251bWJlchgMIAEoCUgGiAEBEhQKB2JhbGFuY2UYDSABKANIB4gBAUIHCgVfbmFtZUIOCgxfY3VzdG9tZXJfaWRCFAoSX3BheW1lbnRfbWV0aG9kX2lkQggKBl9lbWFpbEIHCgVfY2FyZEIGCgRfdmF0Qg8KDV9waG9uZV9udW1iZXJCCgoIX2JhbGFuY2VKBAgKEAtSBmNvdXBvbiJbCgRDYXJkEg0KBWJyYW5kGAEgASgJEg8KB2NvdW50cnkYAiABKAkSEQoJZXhwX21vbnRoGAMgASgDEhAKCGV4cF95ZWFyGAQgASgDEg4KBmxhc3RfNBgFIAEoCSLgAQoFUHJpY2USDAoEbmFtZRgBIAEoCRIbChN1bml0X2Ftb3VudF9kZWNpbWFsGAIgASgBEhAKCGN1cnJlbmN5GAMgASgJEhIKCnVuaXRfbGFiZWwYBCABKAkSKQoMcHJvZHVjdF90eXBlGAUgASgOMhMuYXBpLnYxLlByb2R1Y3RUeXBlEiQKC2Rlc2NyaXB0aW9uGAYgASgJQgq6SAdyBRACGPQDSACIAQESJQoKdXNhZ2VfdHlwZRgHIAEoDjIRLmFwaS52MS5Vc2FnZVR5cGVCDgoMX2Rlc2NyaXB0aW9uImoKB0FkZHJlc3MSDQoFbGluZTEYASABKAkSDQoFbGluZTIYAiABKAkSEwoLcG9zdGFsX2NvZGUYAyABKAkSDAoEY2l0eRgEIAEoCRINCgVzdGF0ZRgFIAEoCRIPCgdjb3VudHJ5GAYgASgJIooCChVTdWJzY3JpcHRpb25Vc2FnZUl0ZW0SHAoUc3Vic2NyaXB0aW9uX2l0ZW1faWQYASABKAkSHgoWc3Vic2NyaXB0aW9uX2l0ZW1fbmFtZRgCIAEoCRITCgt0b3RhbF91c2FnZRgDIAEoAxIwCgxwZXJpb2Rfc3RhcnQYBCABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wEi4KCnBlcmlvZF9lbmQYBSABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wEiMKCWRpc2NvdW50cxgGIAMoCzIQLmFwaS52MS5EaXNjb3VudBIXCg9wcm9kdWN0X2l0ZW1faWQYByABKAkifAoIRGlzY291bnQSCgoCaWQYASABKAkSDAoEbmFtZRgCIAEoCRISCgphbW91bnRfb2ZmGAMgASgDEhYKDnBlcmNlbnRhZ2Vfb2ZmGAQgASgBEhYKDmRpc2NvdW50X29yZGVyGAUgASgBEhIKCmFwcGxpZXNfdG8YBiADKAkikQEKB0ludm9pY2USCgoCaWQYASABKAkSGAoQcGRmX2Rvd25sb2FkX3VybBgCIAEoCRIwCgxwZXJpb2Rfc3RhcnQYBCABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wEi4KCnBlcmlvZF9lbmQYBSABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wIogDCitQYXltZW50U2VydmljZUNyZWF0ZU9yVXBkYXRlQ3VzdG9tZXJSZXF1ZXN0EhkKBWxvZ2luGAEgASgJQgq6SAdyBRACGIABEhEKBG5hbWUYBCABKAlIAIgBARIeChFwYXltZW50X21ldGhvZF9pZBgFIAEoCUgBiAEBEhsKBWVtYWlsGAYgASgJQge6SARyAmABSAKIAQESHwoEY2FyZBgHIAEoCzIMLmFwaS52MS5DYXJkSAOIAQESIAoHYWRkcmVzcxgIIAEoCzIPLmFwaS52MS5BZGRyZXNzEhAKA3ZhdBgJIAEoCUgEiAEBEhkKDHBob25lX251bWJlchgKIAEoCUgFiAEBQgcKBV9uYW1lQhQKEl9wYXltZW50X21ldGhvZF9pZEIICgZfZW1haWxCBwoFX2NhcmRCBgoEX3ZhdEIPCg1fcGhvbmVfbnVtYmVySgQIAhADSgQIAxAEUghjdXN0b21lclIdYWNjZXB0ZWRfdGVybXNfYW5kX2NvbmRpdGlvbnMiWQosUGF5bWVudFNlcnZpY2VDcmVhdGVPclVwZGF0ZUN1c3RvbWVyUmVzcG9uc2USKQoIY3VzdG9tZXIYASABKAsyFy5hcGkudjEuUGF5bWVudEN1c3RvbWVyIlIKIFBheW1lbnRTZXJ2aWNlR2V0Q3VzdG9tZXJSZXF1ZXN0EhkKBWxvZ2luGAEgASgJQgq6SAdyBRACGIABEhMKC2N1c3RvbWVyX2lkGAIgASgJIk4KIVBheW1lbnRTZXJ2aWNlR2V0Q3VzdG9tZXJSZXNwb25zZRIpCghjdXN0b21lchgBIAEoCzIXLmFwaS52MS5QYXltZW50Q3VzdG9tZXIiQgolUGF5bWVudFNlcnZpY2VIYXNQYXltZW50TWV0aG9kUmVxdWVzdBIZCgVsb2dpbhgBIAEoCUIKukgHcgUQAhiAASJlCiZQYXltZW50U2VydmljZUhhc1BheW1lbnRNZXRob2RSZXNwb25zZRIOCgZleGlzdHMYASABKAgSGAoQcG9zaXRpdmVfYmFsYW5jZRgDIAEoCEoECAIQA1ILY291cG9uX2xlZnQiRQooUGF5bWVudFNlcnZpY2VEZWxldGVQYXltZW50TWV0aG9kUmVxdWVzdBIZCgVsb2dpbhgBIAEoCUIKukgHcgUQAhiAASIrCilQYXltZW50U2VydmljZURlbGV0ZVBheW1lbnRNZXRob2RSZXNwb25zZSJGCilQYXltZW50U2VydmljZUdldFN1YnNjcmlwdGlvblVzYWdlUmVxdWVzdBIZCgVsb2dpbhgBIAEoCUIKukgHcgUQAhiAASJtCipQYXltZW50U2VydmljZUdldFN1YnNjcmlwdGlvblVzYWdlUmVzcG9uc2USPwoYc3Vic2NyaXB0aW9uX3VzYWdlX2l0ZW1zGAEgAygLMh0uYXBpLnYxLlN1YnNjcmlwdGlvblVzYWdlSXRlbSJcCiBQYXltZW50U2VydmljZUdldEludm9pY2VzUmVxdWVzdBIZCgVsb2dpbhgBIAEoCUIKukgHcgUQAhiAARIdCgtjdXN0b21lcl9pZBgCIAEoCUIIukgFcgOYARIiRgohUGF5bWVudFNlcnZpY2VHZXRJbnZvaWNlc1Jlc3BvbnNlEiEKCGludm9pY2VzGAEgAygLMg8uYXBpLnYxLkludm9pY2UiJwolUGF5bWVudFNlcnZpY2VHZXREZWZhdWx0UHJpY2VzUmVxdWVzdCJHCiZQYXltZW50U2VydmljZUdldERlZmF1bHRQcmljZXNSZXNwb25zZRIdCgZwcmljZXMYASADKAsyDS5hcGkudjEuUHJpY2UiSgotUGF5bWVudFNlcnZpY2VHZXRTdWJzY3JpcHRpb25EaXNjb3VudHNSZXF1ZXN0EhkKBWxvZ2luGAEgASgJQgq6SAdyBRACGIABIlUKLlBheW1lbnRTZXJ2aWNlR2V0U3Vic2NyaXB0aW9uRGlzY291bnRzUmVzcG9uc2USIwoJZGlzY291bnRzGAEgAygLMhAuYXBpLnYxLkRpc2NvdW50KpYBCgtQcm9kdWN0VHlwZRIcChhQUk9EVUNUX1RZUEVfVU5TUEVDSUZJRUQQABIYChRQUk9EVUNUX1RZUEVfU1RPUkFHRRABEhgKFFBST0RVQ1RfVFlQRV9DT01QVVRFEAISGAoUUFJPRFVDVF9UWVBFX05FVFdPUksQAxIbChdQUk9EVUNUX1RZUEVfS1VCRVJORVRFUxAFKlgKCVVzYWdlVHlwZRIaChZVU0FHRV9UWVBFX1VOU1BFQ0lGSUVEEAASFgoSVVNBR0VfVFlQRV9NRVRFUkVEEAESFwoTVVNBR0VfVFlQRV9MSUNFTlNFRBACMp8ICg5QYXltZW50U2VydmljZRKKAQoWQ3JlYXRlT3JVcGRhdGVDdXN0b21lchIzLmFwaS52MS5QYXltZW50U2VydmljZUNyZWF0ZU9yVXBkYXRlQ3VzdG9tZXJSZXF1ZXN0GjQuYXBpLnYxLlBheW1lbnRTZXJ2aWNlQ3JlYXRlT3JVcGRhdGVDdXN0b21lclJlc3BvbnNlIgXC8xgBARJtCgtHZXRDdXN0b21lchIoLmFwaS52MS5QYXltZW50U2VydmljZUdldEN1c3RvbWVyUmVxdWVzdBopLmFwaS52MS5QYXltZW50U2VydmljZUdldEN1c3RvbWVyUmVzcG9uc2UiCcLzGAEB6PMYAhJ/ChBIYXNQYXltZW50TWV0aG9kEi0uYXBpLnYxLlBheW1lbnRTZXJ2aWNlSGFzUGF5bWVudE1ldGhvZFJlcXVlc3QaLi5hcGkudjEuUGF5bWVudFNlcnZpY2VIYXNQYXltZW50TWV0aG9kUmVzcG9uc2UiDMLzGAQBAgME6PMYAhKBAQoTRGVsZXRlUGF5bWVudE1ldGhvZBIwLmFwaS52MS5QYXltZW50U2VydmljZURlbGV0ZVBheW1lbnRNZXRob2RSZXF1ZXN0GjEuYXBpLnYxLlBheW1lbnRTZXJ2aWNlRGVsZXRlUGF5bWVudE1ldGhvZFJlc3BvbnNlIgXC8xgBARKIAQoUR2V0U3Vic2NyaXB0aW9uVXNhZ2USMS5hcGkudjEuUGF5bWVudFNlcnZpY2VHZXRTdWJzY3JpcHRpb25Vc2FnZVJlcXVlc3QaMi5hcGkudjEuUGF5bWVudFNlcnZpY2VHZXRTdWJzY3JpcHRpb25Vc2FnZVJlc3BvbnNlIgnC8xgBAejzGAISbQoLR2V0SW52b2ljZXMSKC5hcGkudjEuUGF5bWVudFNlcnZpY2VHZXRJbnZvaWNlc1JlcXVlc3QaKS5hcGkudjEuUGF5bWVudFNlcnZpY2VHZXRJbnZvaWNlc1Jlc3BvbnNlIgnC8xgBAejzGAISewoQR2V0RGVmYXVsdFByaWNlcxItLmFwaS52MS5QYXltZW50U2VydmljZUdldERlZmF1bHRQcmljZXNSZXF1ZXN0Gi4uYXBpLnYxLlBheW1lbnRTZXJ2aWNlR2V0RGVmYXVsdFByaWNlc1Jlc3BvbnNlIgjY8xgB6PMYAhKUAQoYR2V0U3Vic2NyaXB0aW9uRGlzY291bnRzEjUuYXBpLnYxLlBheW1lbnRTZXJ2aWNlR2V0U3Vic2NyaXB0aW9uRGlzY291bnRzUmVxdWVzdBo2LmFwaS52MS5QYXltZW50U2VydmljZUdldFN1YnNjcmlwdGlvbkRpc2NvdW50c1Jlc3BvbnNlIgnC8xgBAejzGAJChQEKCmNvbS5hcGkudjFCDFBheW1lbnRQcm90b1ABWjBnaXRodWIuY29tL21ldGFsLXN0YWNrLWNsb3VkL2FwaS9nby9hcGkvdjE7YXBpdjGiAgNBWFiqAgZBcGkuVjHKAgZBcGlcVjHiAhJBcGlcVjFcR1BCTWV0YWRhdGHqAgdBcGk6OlYxYgZwcm90bzM", [file_api_v1_common, file_buf_validate_validate, file_google_protobuf_timestamp]);
+  fileDesc("ChRhcGkvdjEvcGF5bWVudC5wcm90bxIGYXBpLnYxIuADCg9QYXltZW50Q3VzdG9tZXISDQoFbG9naW4YASABKAkSEQoEbmFtZRgCIAEoCUgAiAEBEhgKC2N1c3RvbWVyX2lkGAMgASgJSAGIAQESHgoRcGF5bWVudF9tZXRob2RfaWQYBCABKAlIAogBARIXCg9zdWJzY3JpcHRpb25faWQYBSABKAkSGwoFZW1haWwYBiABKAlCB7pIBHICYAFIA4gBARIfCgRjYXJkGAcgASgLMgwuYXBpLnYxLkNhcmRIBIgBARIdCgZwcmljZXMYCCADKAsyDS5hcGkudjEuUHJpY2USIAoHYWRkcmVzcxgJIAEoCzIPLmFwaS52MS5BZGRyZXNzEhAKA3ZhdBgLIAEoCUgFiAEBEhkKDHBob25lX251bWJlchgMIAEoCUgGiAEBEhQKB2JhbGFuY2UYDSABKANIB4gBARIhCgR0aWVyGA4gASgOMhMuYXBpLnYxLlByb2R1Y3RUaWVyQgcKBV9uYW1lQg4KDF9jdXN0b21lcl9pZEIUChJfcGF5bWVudF9tZXRob2RfaWRCCAoGX2VtYWlsQgcKBV9jYXJkQgYKBF92YXRCDwoNX3Bob25lX251bWJlckIKCghfYmFsYW5jZUoECAoQC1IGY291cG9uIlsKBENhcmQSDQoFYnJhbmQYASABKAkSDwoHY291bnRyeRgCIAEoCRIRCglleHBfbW9udGgYAyABKAMSEAoIZXhwX3llYXIYBCABKAMSDgoGbGFzdF80GAUgASgJIuABCgVQcmljZRIMCgRuYW1lGAEgASgJEhsKE3VuaXRfYW1vdW50X2RlY2ltYWwYAiABKAESEAoIY3VycmVuY3kYAyABKAkSEgoKdW5pdF9sYWJlbBgEIAEoCRIpCgxwcm9kdWN0X3R5cGUYBSABKA4yEy5hcGkudjEuUHJvZHVjdFR5cGUSJAoLZGVzY3JpcHRpb24YBiABKAlCCrpIB3IFEAIY9ANIAIgBARIlCgp1c2FnZV90eXBlGAcgASgOMhEuYXBpLnYxLlVzYWdlVHlwZUIOCgxfZGVzY3JpcHRpb24iagoHQWRkcmVzcxINCgVsaW5lMRgBIAEoCRINCgVsaW5lMhgCIAEoCRITCgtwb3N0YWxfY29kZRgDIAEoCRIMCgRjaXR5GAQgASgJEg0KBXN0YXRlGAUgASgJEg8KB2NvdW50cnkYBiABKAkiigIKFVN1YnNjcmlwdGlvblVzYWdlSXRlbRIcChRzdWJzY3JpcHRpb25faXRlbV9pZBgBIAEoCRIeChZzdWJzY3JpcHRpb25faXRlbV9uYW1lGAIgASgJEhMKC3RvdGFsX3VzYWdlGAMgASgDEjAKDHBlcmlvZF9zdGFydBgEIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXASLgoKcGVyaW9kX2VuZBgFIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXASIwoJZGlzY291bnRzGAYgAygLMhAuYXBpLnYxLkRpc2NvdW50EhcKD3Byb2R1Y3RfaXRlbV9pZBgHIAEoCSJ8CghEaXNjb3VudBIKCgJpZBgBIAEoCRIMCgRuYW1lGAIgASgJEhIKCmFtb3VudF9vZmYYAyABKAMSFgoOcGVyY2VudGFnZV9vZmYYBCABKAESFgoOZGlzY291bnRfb3JkZXIYBSABKAESEgoKYXBwbGllc190bxgGIAMoCSKRAQoHSW52b2ljZRIKCgJpZBgBIAEoCRIYChBwZGZfZG93bmxvYWRfdXJsGAIgASgJEjAKDHBlcmlvZF9zdGFydBgEIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXASLgoKcGVyaW9kX2VuZBgFIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXAiiAIKG1BheW1lbnRTZXJ2aWNlQ3JlYXRlUmVxdWVzdBIZCgVsb2dpbhgBIAEoCUIKukgHcgUQAhiAARIUCgRuYW1lGAIgASgJQga6SAPIAQESNAoRcGF5bWVudF9tZXRob2RfaWQYAyABKAlCGbpIFnIUEAMyEHBtX1thLXpBLVowLTldKiQSFgoFZW1haWwYBCABKAlCB7pIBHICYAESIAoHYWRkcmVzcxgFIAEoCzIPLmFwaS52MS5BZGRyZXNzEhMKA3ZhdBgGIAEoCUIGukgDyAEBEiIKDHBob25lX251bWJlchgHIAEoCUIHukgEcgIQAUgAiAEBQg8KDV9waG9uZV9udW1iZXIiSQocUGF5bWVudFNlcnZpY2VDcmVhdGVSZXNwb25zZRIpCghjdXN0b21lchgBIAEoCzIXLmFwaS52MS5QYXltZW50Q3VzdG9tZXIizwIKG1BheW1lbnRTZXJ2aWNlVXBkYXRlUmVxdWVzdBIZCgVsb2dpbhgBIAEoCUIKukgHcgUQAhiAARIaCgRuYW1lGAIgASgJQge6SARyAhABSACIAQESOQoRcGF5bWVudF9tZXRob2RfaWQYAyABKAlCGbpIFnIUEAMyEHBtX1thLXpBLVowLTldKiRIAYgBARIbCgVlbWFpbBgEIAEoCUIHukgEcgJgAUgCiAEBEiAKB2FkZHJlc3MYBSABKAsyDy5hcGkudjEuQWRkcmVzcxIZCgN2YXQYBiABKAlCB7pIBHICEAFIA4gBARIiCgxwaG9uZV9udW1iZXIYByABKAlCB7pIBHICEAFIBIgBAUIHCgVfbmFtZUIUChJfcGF5bWVudF9tZXRob2RfaWRCCAoGX2VtYWlsQgYKBF92YXRCDwoNX3Bob25lX251bWJlciJJChxQYXltZW50U2VydmljZVVwZGF0ZVJlc3BvbnNlEikKCGN1c3RvbWVyGAEgASgLMhcuYXBpLnYxLlBheW1lbnRDdXN0b21lciI1ChhQYXltZW50U2VydmljZUdldFJlcXVlc3QSGQoFbG9naW4YASABKAlCCrpIB3IFEAIYgAEiRgoZUGF5bWVudFNlcnZpY2VHZXRSZXNwb25zZRIpCghjdXN0b21lchgBIAEoCzIXLmFwaS52MS5QYXltZW50Q3VzdG9tZXIiQgolUGF5bWVudFNlcnZpY2VIYXNQYXltZW50TWV0aG9kUmVxdWVzdBIZCgVsb2dpbhgBIAEoCUIKukgHcgUQAhiAASJlCiZQYXltZW50U2VydmljZUhhc1BheW1lbnRNZXRob2RSZXNwb25zZRIOCgZleGlzdHMYASABKAgSGAoQcG9zaXRpdmVfYmFsYW5jZRgDIAEoCEoECAIQA1ILY291cG9uX2xlZnQiOAobUGF5bWVudFNlcnZpY2VEZWxldGVSZXF1ZXN0EhkKBWxvZ2luGAEgASgJQgq6SAdyBRACGIABIh4KHFBheW1lbnRTZXJ2aWNlRGVsZXRlUmVzcG9uc2UiRgopUGF5bWVudFNlcnZpY2VHZXRTdWJzY3JpcHRpb25Vc2FnZVJlcXVlc3QSGQoFbG9naW4YASABKAlCCrpIB3IFEAIYgAEibQoqUGF5bWVudFNlcnZpY2VHZXRTdWJzY3JpcHRpb25Vc2FnZVJlc3BvbnNlEj8KGHN1YnNjcmlwdGlvbl91c2FnZV9pdGVtcxgBIAMoCzIdLmFwaS52MS5TdWJzY3JpcHRpb25Vc2FnZUl0ZW0iXAogUGF5bWVudFNlcnZpY2VHZXRJbnZvaWNlc1JlcXVlc3QSGQoFbG9naW4YASABKAlCCrpIB3IFEAIYgAESHQoLY3VzdG9tZXJfaWQYAiABKAlCCLpIBXIDmAESIkYKIVBheW1lbnRTZXJ2aWNlR2V0SW52b2ljZXNSZXNwb25zZRIhCghpbnZvaWNlcxgBIAMoCzIPLmFwaS52MS5JbnZvaWNlIicKJVBheW1lbnRTZXJ2aWNlR2V0RGVmYXVsdFByaWNlc1JlcXVlc3QiRwomUGF5bWVudFNlcnZpY2VHZXREZWZhdWx0UHJpY2VzUmVzcG9uc2USHQoGcHJpY2VzGAEgAygLMg0uYXBpLnYxLlByaWNlIkoKLVBheW1lbnRTZXJ2aWNlR2V0U3Vic2NyaXB0aW9uRGlzY291bnRzUmVxdWVzdBIZCgVsb2dpbhgBIAEoCUIKukgHcgUQAhiAASJVCi5QYXltZW50U2VydmljZUdldFN1YnNjcmlwdGlvbkRpc2NvdW50c1Jlc3BvbnNlEiMKCWRpc2NvdW50cxgBIAMoCzIQLmFwaS52MS5EaXNjb3VudCqWAQoLUHJvZHVjdFR5cGUSHAoYUFJPRFVDVF9UWVBFX1VOU1BFQ0lGSUVEEAASGAoUUFJPRFVDVF9UWVBFX1NUT1JBR0UQARIYChRQUk9EVUNUX1RZUEVfQ09NUFVURRACEhgKFFBST0RVQ1RfVFlQRV9ORVRXT1JLEAMSGwoXUFJPRFVDVF9UWVBFX0tVQkVSTkVURVMQBSpYCglVc2FnZVR5cGUSGgoWVVNBR0VfVFlQRV9VTlNQRUNJRklFRBAAEhYKElVTQUdFX1RZUEVfTUVURVJFRBABEhcKE1VTQUdFX1RZUEVfTElDRU5TRUQQAipaCgtQcm9kdWN0VGllchIcChhQUk9EVUNUX1RJRVJfVU5TUEVDSUZJRUQQABIWChJQUk9EVUNUX1RJRVJfVFJJQUwQARIVChFQUk9EVUNUX1RJRVJfUEFJRBACMooICg5QYXltZW50U2VydmljZRJaCgZDcmVhdGUSIy5hcGkudjEuUGF5bWVudFNlcnZpY2VDcmVhdGVSZXF1ZXN0GiQuYXBpLnYxLlBheW1lbnRTZXJ2aWNlQ3JlYXRlUmVzcG9uc2UiBcLzGAEBEloKBlVwZGF0ZRIjLmFwaS52MS5QYXltZW50U2VydmljZVVwZGF0ZVJlcXVlc3QaJC5hcGkudjEuUGF5bWVudFNlcnZpY2VVcGRhdGVSZXNwb25zZSIFwvMYAQESWgoGRGVsZXRlEiMuYXBpLnYxLlBheW1lbnRTZXJ2aWNlRGVsZXRlUmVxdWVzdBokLmFwaS52MS5QYXltZW50U2VydmljZURlbGV0ZVJlc3BvbnNlIgXC8xgBARJVCgNHZXQSIC5hcGkudjEuUGF5bWVudFNlcnZpY2VHZXRSZXF1ZXN0GiEuYXBpLnYxLlBheW1lbnRTZXJ2aWNlR2V0UmVzcG9uc2UiCcLzGAEB6PMYAhJ/ChBIYXNQYXltZW50TWV0aG9kEi0uYXBpLnYxLlBheW1lbnRTZXJ2aWNlSGFzUGF5bWVudE1ldGhvZFJlcXVlc3QaLi5hcGkudjEuUGF5bWVudFNlcnZpY2VIYXNQYXltZW50TWV0aG9kUmVzcG9uc2UiDMLzGAQBAgME6PMYAhKIAQoUR2V0U3Vic2NyaXB0aW9uVXNhZ2USMS5hcGkudjEuUGF5bWVudFNlcnZpY2VHZXRTdWJzY3JpcHRpb25Vc2FnZVJlcXVlc3QaMi5hcGkudjEuUGF5bWVudFNlcnZpY2VHZXRTdWJzY3JpcHRpb25Vc2FnZVJlc3BvbnNlIgnC8xgBAejzGAISbQoLR2V0SW52b2ljZXMSKC5hcGkudjEuUGF5bWVudFNlcnZpY2VHZXRJbnZvaWNlc1JlcXVlc3QaKS5hcGkudjEuUGF5bWVudFNlcnZpY2VHZXRJbnZvaWNlc1Jlc3BvbnNlIgnC8xgBAejzGAISewoQR2V0RGVmYXVsdFByaWNlcxItLmFwaS52MS5QYXltZW50U2VydmljZUdldERlZmF1bHRQcmljZXNSZXF1ZXN0Gi4uYXBpLnYxLlBheW1lbnRTZXJ2aWNlR2V0RGVmYXVsdFByaWNlc1Jlc3BvbnNlIgjY8xgB6PMYAhKUAQoYR2V0U3Vic2NyaXB0aW9uRGlzY291bnRzEjUuYXBpLnYxLlBheW1lbnRTZXJ2aWNlR2V0U3Vic2NyaXB0aW9uRGlzY291bnRzUmVxdWVzdBo2LmFwaS52MS5QYXltZW50U2VydmljZUdldFN1YnNjcmlwdGlvbkRpc2NvdW50c1Jlc3BvbnNlIgnC8xgBAejzGAJChQEKCmNvbS5hcGkudjFCDFBheW1lbnRQcm90b1ABWjBnaXRodWIuY29tL21ldGFsLXN0YWNrLWNsb3VkL2FwaS9nby9hcGkvdjE7YXBpdjGiAgNBWFiqAgZBcGkuVjHKAgZBcGlcVjHiAhJBcGlcVjFcR1BCTWV0YWRhdGHqAgdBcGk6OlYxYgZwcm90bzM", [file_api_v1_common, file_buf_validate_validate, file_google_protobuf_timestamp]);
 
 /**
  * PaymentCustomer is a customer at the payment processor
@@ -105,6 +105,13 @@ export type PaymentCustomer = Message<"api.v1.PaymentCustomer"> & {
    * @generated from field: optional int64 balance = 13;
    */
   balance?: bigint | undefined;
+
+  /**
+   * Tier describes the state in which the customer is using the products.
+   *
+   * @generated from field: api.v1.ProductTier tier = 14;
+   */
+  tier: ProductTier;
 };
 
 /**
@@ -444,13 +451,13 @@ export const InvoiceSchema: GenMessage<Invoice> = /*@__PURE__*/
   messageDesc(file_api_v1_payment, 6);
 
 /**
- * PaymentServiceCreateOrUpdateCustomerRequest is the request payload for a payment create or update customer request
+ * PaymentServiceCreateRequest is the request payload for providing payment data
  *
- * @generated from message api.v1.PaymentServiceCreateOrUpdateCustomerRequest
+ * @generated from message api.v1.PaymentServiceCreateRequest
  */
-export type PaymentServiceCreateOrUpdateCustomerRequest = Message<"api.v1.PaymentServiceCreateOrUpdateCustomerRequest"> & {
+export type PaymentServiceCreateRequest = Message<"api.v1.PaymentServiceCreateRequest"> & {
   /**
-   * Login of the customer
+   * Login of the tenant
    *
    * @generated from field: string login = 1;
    */
@@ -459,68 +466,61 @@ export type PaymentServiceCreateOrUpdateCustomerRequest = Message<"api.v1.Paymen
   /**
    * Name of the customer to be billed
    *
-   * @generated from field: optional string name = 4;
+   * @generated from field: string name = 2;
    */
-  name?: string | undefined;
+  name: string;
 
   /**
    * PaymentMethodId at the payment provider, the client receives this from the payment provider and passes it on to the api
    *
-   * @generated from field: optional string payment_method_id = 5;
+   * @generated from field: string payment_method_id = 3;
    */
-  paymentMethodId?: string | undefined;
+  paymentMethodId: string;
 
   /**
    * Email of the customer to be billed
    *
-   * @generated from field: optional string email = 6;
+   * @generated from field: string email = 4;
    */
-  email?: string | undefined;
-
-  /**
-   * Card the customer to be billed
-   *
-   * @generated from field: optional api.v1.Card card = 7;
-   */
-  card?: Card | undefined;
+  email: string;
 
   /**
    * Address is the postal address of the customer to be billed
    *
-   * @generated from field: api.v1.Address address = 8;
+   * @generated from field: api.v1.Address address = 5;
    */
   address?: Address | undefined;
 
   /**
    * Vat which applies to the customer to be billed
    *
-   * @generated from field: optional string vat = 9;
+   * @generated from field: string vat = 6;
    */
-  vat?: string | undefined;
+  vat: string;
 
   /**
    * PhoneNumber of the customer to be billed
    *
-   * @generated from field: optional string phone_number = 10;
+   * @generated from field: optional string phone_number = 7;
    */
   phoneNumber?: string | undefined;
 };
 
 /**
- * Describes the message api.v1.PaymentServiceCreateOrUpdateCustomerRequest.
- * Use `create(PaymentServiceCreateOrUpdateCustomerRequestSchema)` to create a new message.
+ * Describes the message api.v1.PaymentServiceCreateRequest.
+ * Use `create(PaymentServiceCreateRequestSchema)` to create a new message.
  */
-export const PaymentServiceCreateOrUpdateCustomerRequestSchema: GenMessage<PaymentServiceCreateOrUpdateCustomerRequest> = /*@__PURE__*/
+export const PaymentServiceCreateRequestSchema: GenMessage<PaymentServiceCreateRequest> = /*@__PURE__*/
   messageDesc(file_api_v1_payment, 7);
 
 /**
- * PaymentServiceCreateOrUpdateCustomerResponse is the response payload for a payment create or update customer request
+ * PaymentServiceCreateResponse is the response payload for a payment create request
  *
- * @generated from message api.v1.PaymentServiceCreateOrUpdateCustomerResponse
+ * @generated from message api.v1.PaymentServiceCreateResponse
  */
-export type PaymentServiceCreateOrUpdateCustomerResponse = Message<"api.v1.PaymentServiceCreateOrUpdateCustomerResponse"> & {
+export type PaymentServiceCreateResponse = Message<"api.v1.PaymentServiceCreateResponse"> & {
   /**
-   * Customer is the customer
+   * Customer is the created customer
    *
    * @generated from field: api.v1.PaymentCustomer customer = 1;
    */
@@ -528,48 +528,83 @@ export type PaymentServiceCreateOrUpdateCustomerResponse = Message<"api.v1.Payme
 };
 
 /**
- * Describes the message api.v1.PaymentServiceCreateOrUpdateCustomerResponse.
- * Use `create(PaymentServiceCreateOrUpdateCustomerResponseSchema)` to create a new message.
+ * Describes the message api.v1.PaymentServiceCreateResponse.
+ * Use `create(PaymentServiceCreateResponseSchema)` to create a new message.
  */
-export const PaymentServiceCreateOrUpdateCustomerResponseSchema: GenMessage<PaymentServiceCreateOrUpdateCustomerResponse> = /*@__PURE__*/
+export const PaymentServiceCreateResponseSchema: GenMessage<PaymentServiceCreateResponse> = /*@__PURE__*/
   messageDesc(file_api_v1_payment, 8);
 
 /**
- * PaymentServiceGetCustomerRequest is the request payload for a payment get customer request
+ * PaymentServiceUpdateRequest is the request payload for updating payment data
  *
- * @generated from message api.v1.PaymentServiceGetCustomerRequest
+ * @generated from message api.v1.PaymentServiceUpdateRequest
  */
-export type PaymentServiceGetCustomerRequest = Message<"api.v1.PaymentServiceGetCustomerRequest"> & {
+export type PaymentServiceUpdateRequest = Message<"api.v1.PaymentServiceUpdateRequest"> & {
   /**
-   * Login of the customer
+   * Login of the tenant
    *
    * @generated from field: string login = 1;
    */
   login: string;
 
   /**
-   * CustomerId of the customer
+   * Name of the customer to be billed
    *
-   * @generated from field: string customer_id = 2;
+   * @generated from field: optional string name = 2;
    */
-  customerId: string;
+  name?: string | undefined;
+
+  /**
+   * PaymentMethodId at the payment provider, the client receives this from the payment provider and passes it on to the api
+   *
+   * @generated from field: optional string payment_method_id = 3;
+   */
+  paymentMethodId?: string | undefined;
+
+  /**
+   * Email of the customer to be billed
+   *
+   * @generated from field: optional string email = 4;
+   */
+  email?: string | undefined;
+
+  /**
+   * Address is the postal address of the customer to be billed
+   *
+   * @generated from field: api.v1.Address address = 5;
+   */
+  address?: Address | undefined;
+
+  /**
+   * Vat which applies to the customer to be billed
+   *
+   * @generated from field: optional string vat = 6;
+   */
+  vat?: string | undefined;
+
+  /**
+   * PhoneNumber of the customer to be billed
+   *
+   * @generated from field: optional string phone_number = 7;
+   */
+  phoneNumber?: string | undefined;
 };
 
 /**
- * Describes the message api.v1.PaymentServiceGetCustomerRequest.
- * Use `create(PaymentServiceGetCustomerRequestSchema)` to create a new message.
+ * Describes the message api.v1.PaymentServiceUpdateRequest.
+ * Use `create(PaymentServiceUpdateRequestSchema)` to create a new message.
  */
-export const PaymentServiceGetCustomerRequestSchema: GenMessage<PaymentServiceGetCustomerRequest> = /*@__PURE__*/
+export const PaymentServiceUpdateRequestSchema: GenMessage<PaymentServiceUpdateRequest> = /*@__PURE__*/
   messageDesc(file_api_v1_payment, 9);
 
 /**
- * PaymentServiceGetCustomerResponse is the response payload for a payment get customer request
+ * PaymentServiceUpdateResponse is the response payload for a payment update request
  *
- * @generated from message api.v1.PaymentServiceGetCustomerResponse
+ * @generated from message api.v1.PaymentServiceUpdateResponse
  */
-export type PaymentServiceGetCustomerResponse = Message<"api.v1.PaymentServiceGetCustomerResponse"> & {
+export type PaymentServiceUpdateResponse = Message<"api.v1.PaymentServiceUpdateResponse"> & {
   /**
-   * Customer is the customer
+   * Customer is the updated customer
    *
    * @generated from field: api.v1.PaymentCustomer customer = 1;
    */
@@ -577,11 +612,53 @@ export type PaymentServiceGetCustomerResponse = Message<"api.v1.PaymentServiceGe
 };
 
 /**
- * Describes the message api.v1.PaymentServiceGetCustomerResponse.
- * Use `create(PaymentServiceGetCustomerResponseSchema)` to create a new message.
+ * Describes the message api.v1.PaymentServiceUpdateResponse.
+ * Use `create(PaymentServiceUpdateResponseSchema)` to create a new message.
  */
-export const PaymentServiceGetCustomerResponseSchema: GenMessage<PaymentServiceGetCustomerResponse> = /*@__PURE__*/
+export const PaymentServiceUpdateResponseSchema: GenMessage<PaymentServiceUpdateResponse> = /*@__PURE__*/
   messageDesc(file_api_v1_payment, 10);
+
+/**
+ * PaymentServiceGetRequest is the request payload for getting the payment data
+ *
+ * @generated from message api.v1.PaymentServiceGetRequest
+ */
+export type PaymentServiceGetRequest = Message<"api.v1.PaymentServiceGetRequest"> & {
+  /**
+   * Login of the tenant
+   *
+   * @generated from field: string login = 1;
+   */
+  login: string;
+};
+
+/**
+ * Describes the message api.v1.PaymentServiceGetRequest.
+ * Use `create(PaymentServiceGetRequestSchema)` to create a new message.
+ */
+export const PaymentServiceGetRequestSchema: GenMessage<PaymentServiceGetRequest> = /*@__PURE__*/
+  messageDesc(file_api_v1_payment, 11);
+
+/**
+ * PaymentServiceGetResponse is the response payload for a payment get request
+ *
+ * @generated from message api.v1.PaymentServiceGetResponse
+ */
+export type PaymentServiceGetResponse = Message<"api.v1.PaymentServiceGetResponse"> & {
+  /**
+   * Customer is the payment customer
+   *
+   * @generated from field: api.v1.PaymentCustomer customer = 1;
+   */
+  customer?: PaymentCustomer | undefined;
+};
+
+/**
+ * Describes the message api.v1.PaymentServiceGetResponse.
+ * Use `create(PaymentServiceGetResponseSchema)` to create a new message.
+ */
+export const PaymentServiceGetResponseSchema: GenMessage<PaymentServiceGetResponse> = /*@__PURE__*/
+  messageDesc(file_api_v1_payment, 12);
 
 /**
  * PaymentServiceHasPaymentMethodRequest is the request payload for a has payment request
@@ -590,7 +667,7 @@ export const PaymentServiceGetCustomerResponseSchema: GenMessage<PaymentServiceG
  */
 export type PaymentServiceHasPaymentMethodRequest = Message<"api.v1.PaymentServiceHasPaymentMethodRequest"> & {
   /**
-   * Login of the customer
+   * Login of the tenant
    *
    * @generated from field: string login = 1;
    */
@@ -602,7 +679,7 @@ export type PaymentServiceHasPaymentMethodRequest = Message<"api.v1.PaymentServi
  * Use `create(PaymentServiceHasPaymentMethodRequestSchema)` to create a new message.
  */
 export const PaymentServiceHasPaymentMethodRequestSchema: GenMessage<PaymentServiceHasPaymentMethodRequest> = /*@__PURE__*/
-  messageDesc(file_api_v1_payment, 11);
+  messageDesc(file_api_v1_payment, 13);
 
 /**
  * PaymentServiceHasPaymentMethodResponse is the response payload for a has payment request
@@ -630,16 +707,16 @@ export type PaymentServiceHasPaymentMethodResponse = Message<"api.v1.PaymentServ
  * Use `create(PaymentServiceHasPaymentMethodResponseSchema)` to create a new message.
  */
 export const PaymentServiceHasPaymentMethodResponseSchema: GenMessage<PaymentServiceHasPaymentMethodResponse> = /*@__PURE__*/
-  messageDesc(file_api_v1_payment, 12);
+  messageDesc(file_api_v1_payment, 14);
 
 /**
- * PaymentServiceDeletePaymentMethodRequest is the request payload for a delete payment request
+ * PaymentServiceDeleteRequest is the request payload for a delete payment request
  *
- * @generated from message api.v1.PaymentServiceDeletePaymentMethodRequest
+ * @generated from message api.v1.PaymentServiceDeleteRequest
  */
-export type PaymentServiceDeletePaymentMethodRequest = Message<"api.v1.PaymentServiceDeletePaymentMethodRequest"> & {
+export type PaymentServiceDeleteRequest = Message<"api.v1.PaymentServiceDeleteRequest"> & {
   /**
-   * Login of the customer
+   * Login of the tenant
    *
    * @generated from field: string login = 1;
    */
@@ -647,26 +724,26 @@ export type PaymentServiceDeletePaymentMethodRequest = Message<"api.v1.PaymentSe
 };
 
 /**
- * Describes the message api.v1.PaymentServiceDeletePaymentMethodRequest.
- * Use `create(PaymentServiceDeletePaymentMethodRequestSchema)` to create a new message.
+ * Describes the message api.v1.PaymentServiceDeleteRequest.
+ * Use `create(PaymentServiceDeleteRequestSchema)` to create a new message.
  */
-export const PaymentServiceDeletePaymentMethodRequestSchema: GenMessage<PaymentServiceDeletePaymentMethodRequest> = /*@__PURE__*/
-  messageDesc(file_api_v1_payment, 13);
+export const PaymentServiceDeleteRequestSchema: GenMessage<PaymentServiceDeleteRequest> = /*@__PURE__*/
+  messageDesc(file_api_v1_payment, 15);
 
 /**
- * PaymentServiceDeletePaymentMethodResponse is the response payload for a delete payment request
+ * PaymentServiceDeleteResponse is the response payload for a delete payment request
  *
- * @generated from message api.v1.PaymentServiceDeletePaymentMethodResponse
+ * @generated from message api.v1.PaymentServiceDeleteResponse
  */
-export type PaymentServiceDeletePaymentMethodResponse = Message<"api.v1.PaymentServiceDeletePaymentMethodResponse"> & {
+export type PaymentServiceDeleteResponse = Message<"api.v1.PaymentServiceDeleteResponse"> & {
 };
 
 /**
- * Describes the message api.v1.PaymentServiceDeletePaymentMethodResponse.
- * Use `create(PaymentServiceDeletePaymentMethodResponseSchema)` to create a new message.
+ * Describes the message api.v1.PaymentServiceDeleteResponse.
+ * Use `create(PaymentServiceDeleteResponseSchema)` to create a new message.
  */
-export const PaymentServiceDeletePaymentMethodResponseSchema: GenMessage<PaymentServiceDeletePaymentMethodResponse> = /*@__PURE__*/
-  messageDesc(file_api_v1_payment, 14);
+export const PaymentServiceDeleteResponseSchema: GenMessage<PaymentServiceDeleteResponse> = /*@__PURE__*/
+  messageDesc(file_api_v1_payment, 16);
 
 /**
  * PaymentServiceGetSubscriptionUsageRequest is the request payload for a get subscription usage request
@@ -675,7 +752,7 @@ export const PaymentServiceDeletePaymentMethodResponseSchema: GenMessage<Payment
  */
 export type PaymentServiceGetSubscriptionUsageRequest = Message<"api.v1.PaymentServiceGetSubscriptionUsageRequest"> & {
   /**
-   * Login of the customer
+   * Login of the tenant
    *
    * @generated from field: string login = 1;
    */
@@ -687,7 +764,7 @@ export type PaymentServiceGetSubscriptionUsageRequest = Message<"api.v1.PaymentS
  * Use `create(PaymentServiceGetSubscriptionUsageRequestSchema)` to create a new message.
  */
 export const PaymentServiceGetSubscriptionUsageRequestSchema: GenMessage<PaymentServiceGetSubscriptionUsageRequest> = /*@__PURE__*/
-  messageDesc(file_api_v1_payment, 15);
+  messageDesc(file_api_v1_payment, 17);
 
 /**
  * PaymentServiceGetSubscriptionUsageResponse is the response payload for a get subscription usage request
@@ -708,7 +785,7 @@ export type PaymentServiceGetSubscriptionUsageResponse = Message<"api.v1.Payment
  * Use `create(PaymentServiceGetSubscriptionUsageResponseSchema)` to create a new message.
  */
 export const PaymentServiceGetSubscriptionUsageResponseSchema: GenMessage<PaymentServiceGetSubscriptionUsageResponse> = /*@__PURE__*/
-  messageDesc(file_api_v1_payment, 16);
+  messageDesc(file_api_v1_payment, 18);
 
 /**
  * PaymentServiceHasPaymentMethodRequest is the request payload for a get invoices request
@@ -717,7 +794,7 @@ export const PaymentServiceGetSubscriptionUsageResponseSchema: GenMessage<Paymen
  */
 export type PaymentServiceGetInvoicesRequest = Message<"api.v1.PaymentServiceGetInvoicesRequest"> & {
   /**
-   * Login of the customer
+   * Login of the tenant
    *
    * @generated from field: string login = 1;
    */
@@ -736,7 +813,7 @@ export type PaymentServiceGetInvoicesRequest = Message<"api.v1.PaymentServiceGet
  * Use `create(PaymentServiceGetInvoicesRequestSchema)` to create a new message.
  */
 export const PaymentServiceGetInvoicesRequestSchema: GenMessage<PaymentServiceGetInvoicesRequest> = /*@__PURE__*/
-  messageDesc(file_api_v1_payment, 17);
+  messageDesc(file_api_v1_payment, 19);
 
 /**
  * PaymentServiceGetInvoicesResponse is the response payload for a get invoices request
@@ -757,7 +834,7 @@ export type PaymentServiceGetInvoicesResponse = Message<"api.v1.PaymentServiceGe
  * Use `create(PaymentServiceGetInvoicesResponseSchema)` to create a new message.
  */
 export const PaymentServiceGetInvoicesResponseSchema: GenMessage<PaymentServiceGetInvoicesResponse> = /*@__PURE__*/
-  messageDesc(file_api_v1_payment, 18);
+  messageDesc(file_api_v1_payment, 20);
 
 /**
  * PaymentServiceGetDefaultPricesRequest is the request payload for a get default prices request
@@ -772,7 +849,7 @@ export type PaymentServiceGetDefaultPricesRequest = Message<"api.v1.PaymentServi
  * Use `create(PaymentServiceGetDefaultPricesRequestSchema)` to create a new message.
  */
 export const PaymentServiceGetDefaultPricesRequestSchema: GenMessage<PaymentServiceGetDefaultPricesRequest> = /*@__PURE__*/
-  messageDesc(file_api_v1_payment, 19);
+  messageDesc(file_api_v1_payment, 21);
 
 /**
  * PaymentServiceGetDefaultPricesResponse is the response payload for a get default prices request
@@ -793,7 +870,7 @@ export type PaymentServiceGetDefaultPricesResponse = Message<"api.v1.PaymentServ
  * Use `create(PaymentServiceGetDefaultPricesResponseSchema)` to create a new message.
  */
 export const PaymentServiceGetDefaultPricesResponseSchema: GenMessage<PaymentServiceGetDefaultPricesResponse> = /*@__PURE__*/
-  messageDesc(file_api_v1_payment, 20);
+  messageDesc(file_api_v1_payment, 22);
 
 /**
  * PaymentServiceGetSubscriptionDiscountsRequest is the request payload for a get subscription discounts request
@@ -814,7 +891,7 @@ export type PaymentServiceGetSubscriptionDiscountsRequest = Message<"api.v1.Paym
  * Use `create(PaymentServiceGetSubscriptionDiscountsRequestSchema)` to create a new message.
  */
 export const PaymentServiceGetSubscriptionDiscountsRequestSchema: GenMessage<PaymentServiceGetSubscriptionDiscountsRequest> = /*@__PURE__*/
-  messageDesc(file_api_v1_payment, 21);
+  messageDesc(file_api_v1_payment, 23);
 
 /**
  * PaymentServiceGetSubscriptionUsageResponse is the response payload for a get subscription usage request
@@ -835,7 +912,7 @@ export type PaymentServiceGetSubscriptionDiscountsResponse = Message<"api.v1.Pay
  * Use `create(PaymentServiceGetSubscriptionDiscountsResponseSchema)` to create a new message.
  */
 export const PaymentServiceGetSubscriptionDiscountsResponseSchema: GenMessage<PaymentServiceGetSubscriptionDiscountsResponse> = /*@__PURE__*/
-  messageDesc(file_api_v1_payment, 22);
+  messageDesc(file_api_v1_payment, 24);
 
 /**
  * ProductType defines for which type of product a price applies
@@ -920,30 +997,84 @@ export const UsageTypeSchema: GenEnum<UsageType> = /*@__PURE__*/
   enumDesc(file_api_v1_payment, 1);
 
 /**
+ * ProductTier is an explicit indicator for the state in which the customer is using the products.
+ *
+ * @generated from enum api.v1.ProductTier
+ */
+export enum ProductTier {
+  /**
+   * PRODUCT_TIER_UNSPECIFIED is unspecified
+   *
+   * @generated from enum value: PRODUCT_TIER_UNSPECIFIED = 0;
+   */
+  UNSPECIFIED = 0,
+
+  /**
+   * PRODUCT_TIER_TRIAL indicates a customer that is in trial phase without having to provide payment information.
+   *
+   * @generated from enum value: PRODUCT_TIER_TRIAL = 1;
+   */
+  TRIAL = 1,
+
+  /**
+   * PRODUCT_TIER_PAID indicates a customer that has provided payment information.
+   *
+   * @generated from enum value: PRODUCT_TIER_PAID = 2;
+   */
+  PAID = 2,
+}
+
+/**
+ * Describes the enum api.v1.ProductTier.
+ */
+export const ProductTierSchema: GenEnum<ProductTier> = /*@__PURE__*/
+  enumDesc(file_api_v1_payment, 2);
+
+/**
  * PaymentService serves payment related functions
  *
  * @generated from service api.v1.PaymentService
  */
 export const PaymentService: GenService<{
   /**
-   * CreateOrUpdateCustomer the payment data on the payment processor
+   * Create the payment data used for billing api resources
    *
-   * @generated from rpc api.v1.PaymentService.CreateOrUpdateCustomer
+   * @generated from rpc api.v1.PaymentService.Create
    */
-  createOrUpdateCustomer: {
+  create: {
     methodKind: "unary";
-    input: typeof PaymentServiceCreateOrUpdateCustomerRequestSchema;
-    output: typeof PaymentServiceCreateOrUpdateCustomerResponseSchema;
+    input: typeof PaymentServiceCreateRequestSchema;
+    output: typeof PaymentServiceCreateResponseSchema;
   },
   /**
-   * GetCustomer from the payment processor
+   * Update the payment data
    *
-   * @generated from rpc api.v1.PaymentService.GetCustomer
+   * @generated from rpc api.v1.PaymentService.Update
    */
-  getCustomer: {
+  update: {
     methodKind: "unary";
-    input: typeof PaymentServiceGetCustomerRequestSchema;
-    output: typeof PaymentServiceGetCustomerResponseSchema;
+    input: typeof PaymentServiceUpdateRequestSchema;
+    output: typeof PaymentServiceUpdateResponseSchema;
+  },
+  /**
+   * Delete the payment data
+   *
+   * @generated from rpc api.v1.PaymentService.Delete
+   */
+  delete: {
+    methodKind: "unary";
+    input: typeof PaymentServiceDeleteRequestSchema;
+    output: typeof PaymentServiceDeleteResponseSchema;
+  },
+  /**
+   * Get the payment data
+   *
+   * @generated from rpc api.v1.PaymentService.Get
+   */
+  get: {
+    methodKind: "unary";
+    input: typeof PaymentServiceGetRequestSchema;
+    output: typeof PaymentServiceGetResponseSchema;
   },
   /**
    * HasPaymentMethod check if the customer has a payment method provided
@@ -954,16 +1085,6 @@ export const PaymentService: GenService<{
     methodKind: "unary";
     input: typeof PaymentServiceHasPaymentMethodRequestSchema;
     output: typeof PaymentServiceHasPaymentMethodResponseSchema;
-  },
-  /**
-   * DeletePaymentMethod of the customer
-   *
-   * @generated from rpc api.v1.PaymentService.DeletePaymentMethod
-   */
-  deletePaymentMethod: {
-    methodKind: "unary";
-    input: typeof PaymentServiceDeletePaymentMethodRequestSchema;
-    output: typeof PaymentServiceDeletePaymentMethodResponseSchema;
   },
   /**
    * GetSubscriptionUsage of the customer

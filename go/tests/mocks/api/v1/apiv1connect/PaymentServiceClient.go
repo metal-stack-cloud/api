@@ -39,27 +39,27 @@ func (_m *PaymentServiceClient) EXPECT() *PaymentServiceClient_Expecter {
 	return &PaymentServiceClient_Expecter{mock: &_m.Mock}
 }
 
-// CreateOrUpdateCustomer provides a mock function for the type PaymentServiceClient
-func (_mock *PaymentServiceClient) CreateOrUpdateCustomer(context1 context.Context, request *connect.Request[apiv1.PaymentServiceCreateOrUpdateCustomerRequest]) (*connect.Response[apiv1.PaymentServiceCreateOrUpdateCustomerResponse], error) {
+// Create provides a mock function for the type PaymentServiceClient
+func (_mock *PaymentServiceClient) Create(context1 context.Context, request *connect.Request[apiv1.PaymentServiceCreateRequest]) (*connect.Response[apiv1.PaymentServiceCreateResponse], error) {
 	ret := _mock.Called(context1, request)
 
 	if len(ret) == 0 {
-		panic("no return value specified for CreateOrUpdateCustomer")
+		panic("no return value specified for Create")
 	}
 
-	var r0 *connect.Response[apiv1.PaymentServiceCreateOrUpdateCustomerResponse]
+	var r0 *connect.Response[apiv1.PaymentServiceCreateResponse]
 	var r1 error
-	if returnFunc, ok := ret.Get(0).(func(context.Context, *connect.Request[apiv1.PaymentServiceCreateOrUpdateCustomerRequest]) (*connect.Response[apiv1.PaymentServiceCreateOrUpdateCustomerResponse], error)); ok {
+	if returnFunc, ok := ret.Get(0).(func(context.Context, *connect.Request[apiv1.PaymentServiceCreateRequest]) (*connect.Response[apiv1.PaymentServiceCreateResponse], error)); ok {
 		return returnFunc(context1, request)
 	}
-	if returnFunc, ok := ret.Get(0).(func(context.Context, *connect.Request[apiv1.PaymentServiceCreateOrUpdateCustomerRequest]) *connect.Response[apiv1.PaymentServiceCreateOrUpdateCustomerResponse]); ok {
+	if returnFunc, ok := ret.Get(0).(func(context.Context, *connect.Request[apiv1.PaymentServiceCreateRequest]) *connect.Response[apiv1.PaymentServiceCreateResponse]); ok {
 		r0 = returnFunc(context1, request)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*connect.Response[apiv1.PaymentServiceCreateOrUpdateCustomerResponse])
+			r0 = ret.Get(0).(*connect.Response[apiv1.PaymentServiceCreateResponse])
 		}
 	}
-	if returnFunc, ok := ret.Get(1).(func(context.Context, *connect.Request[apiv1.PaymentServiceCreateOrUpdateCustomerRequest]) error); ok {
+	if returnFunc, ok := ret.Get(1).(func(context.Context, *connect.Request[apiv1.PaymentServiceCreateRequest]) error); ok {
 		r1 = returnFunc(context1, request)
 	} else {
 		r1 = ret.Error(1)
@@ -67,27 +67,27 @@ func (_mock *PaymentServiceClient) CreateOrUpdateCustomer(context1 context.Conte
 	return r0, r1
 }
 
-// PaymentServiceClient_CreateOrUpdateCustomer_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateOrUpdateCustomer'
-type PaymentServiceClient_CreateOrUpdateCustomer_Call struct {
+// PaymentServiceClient_Create_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'Create'
+type PaymentServiceClient_Create_Call struct {
 	*mock.Call
 }
 
-// CreateOrUpdateCustomer is a helper method to define mock.On call
+// Create is a helper method to define mock.On call
 //   - context1 context.Context
-//   - request *connect.Request[apiv1.PaymentServiceCreateOrUpdateCustomerRequest]
-func (_e *PaymentServiceClient_Expecter) CreateOrUpdateCustomer(context1 any, request any) *PaymentServiceClient_CreateOrUpdateCustomer_Call {
-	return &PaymentServiceClient_CreateOrUpdateCustomer_Call{Call: _e.mock.On("CreateOrUpdateCustomer", context1, request)}
+//   - request *connect.Request[apiv1.PaymentServiceCreateRequest]
+func (_e *PaymentServiceClient_Expecter) Create(context1 any, request any) *PaymentServiceClient_Create_Call {
+	return &PaymentServiceClient_Create_Call{Call: _e.mock.On("Create", context1, request)}
 }
 
-func (_c *PaymentServiceClient_CreateOrUpdateCustomer_Call) Run(run func(context1 context.Context, request *connect.Request[apiv1.PaymentServiceCreateOrUpdateCustomerRequest])) *PaymentServiceClient_CreateOrUpdateCustomer_Call {
+func (_c *PaymentServiceClient_Create_Call) Run(run func(context1 context.Context, request *connect.Request[apiv1.PaymentServiceCreateRequest])) *PaymentServiceClient_Create_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		var arg0 context.Context
 		if args[0] != nil {
 			arg0 = args[0].(context.Context)
 		}
-		var arg1 *connect.Request[apiv1.PaymentServiceCreateOrUpdateCustomerRequest]
+		var arg1 *connect.Request[apiv1.PaymentServiceCreateRequest]
 		if args[1] != nil {
-			arg1 = args[1].(*connect.Request[apiv1.PaymentServiceCreateOrUpdateCustomerRequest])
+			arg1 = args[1].(*connect.Request[apiv1.PaymentServiceCreateRequest])
 		}
 		run(
 			arg0,
@@ -97,37 +97,37 @@ func (_c *PaymentServiceClient_CreateOrUpdateCustomer_Call) Run(run func(context
 	return _c
 }
 
-func (_c *PaymentServiceClient_CreateOrUpdateCustomer_Call) Return(response *connect.Response[apiv1.PaymentServiceCreateOrUpdateCustomerResponse], err error) *PaymentServiceClient_CreateOrUpdateCustomer_Call {
+func (_c *PaymentServiceClient_Create_Call) Return(response *connect.Response[apiv1.PaymentServiceCreateResponse], err error) *PaymentServiceClient_Create_Call {
 	_c.Call.Return(response, err)
 	return _c
 }
 
-func (_c *PaymentServiceClient_CreateOrUpdateCustomer_Call) RunAndReturn(run func(context1 context.Context, request *connect.Request[apiv1.PaymentServiceCreateOrUpdateCustomerRequest]) (*connect.Response[apiv1.PaymentServiceCreateOrUpdateCustomerResponse], error)) *PaymentServiceClient_CreateOrUpdateCustomer_Call {
+func (_c *PaymentServiceClient_Create_Call) RunAndReturn(run func(context1 context.Context, request *connect.Request[apiv1.PaymentServiceCreateRequest]) (*connect.Response[apiv1.PaymentServiceCreateResponse], error)) *PaymentServiceClient_Create_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// DeletePaymentMethod provides a mock function for the type PaymentServiceClient
-func (_mock *PaymentServiceClient) DeletePaymentMethod(context1 context.Context, request *connect.Request[apiv1.PaymentServiceDeletePaymentMethodRequest]) (*connect.Response[apiv1.PaymentServiceDeletePaymentMethodResponse], error) {
+// Delete provides a mock function for the type PaymentServiceClient
+func (_mock *PaymentServiceClient) Delete(context1 context.Context, request *connect.Request[apiv1.PaymentServiceDeleteRequest]) (*connect.Response[apiv1.PaymentServiceDeleteResponse], error) {
 	ret := _mock.Called(context1, request)
 
 	if len(ret) == 0 {
-		panic("no return value specified for DeletePaymentMethod")
+		panic("no return value specified for Delete")
 	}
 
-	var r0 *connect.Response[apiv1.PaymentServiceDeletePaymentMethodResponse]
+	var r0 *connect.Response[apiv1.PaymentServiceDeleteResponse]
 	var r1 error
-	if returnFunc, ok := ret.Get(0).(func(context.Context, *connect.Request[apiv1.PaymentServiceDeletePaymentMethodRequest]) (*connect.Response[apiv1.PaymentServiceDeletePaymentMethodResponse], error)); ok {
+	if returnFunc, ok := ret.Get(0).(func(context.Context, *connect.Request[apiv1.PaymentServiceDeleteRequest]) (*connect.Response[apiv1.PaymentServiceDeleteResponse], error)); ok {
 		return returnFunc(context1, request)
 	}
-	if returnFunc, ok := ret.Get(0).(func(context.Context, *connect.Request[apiv1.PaymentServiceDeletePaymentMethodRequest]) *connect.Response[apiv1.PaymentServiceDeletePaymentMethodResponse]); ok {
+	if returnFunc, ok := ret.Get(0).(func(context.Context, *connect.Request[apiv1.PaymentServiceDeleteRequest]) *connect.Response[apiv1.PaymentServiceDeleteResponse]); ok {
 		r0 = returnFunc(context1, request)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*connect.Response[apiv1.PaymentServiceDeletePaymentMethodResponse])
+			r0 = ret.Get(0).(*connect.Response[apiv1.PaymentServiceDeleteResponse])
 		}
 	}
-	if returnFunc, ok := ret.Get(1).(func(context.Context, *connect.Request[apiv1.PaymentServiceDeletePaymentMethodRequest]) error); ok {
+	if returnFunc, ok := ret.Get(1).(func(context.Context, *connect.Request[apiv1.PaymentServiceDeleteRequest]) error); ok {
 		r1 = returnFunc(context1, request)
 	} else {
 		r1 = ret.Error(1)
@@ -135,27 +135,27 @@ func (_mock *PaymentServiceClient) DeletePaymentMethod(context1 context.Context,
 	return r0, r1
 }
 
-// PaymentServiceClient_DeletePaymentMethod_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeletePaymentMethod'
-type PaymentServiceClient_DeletePaymentMethod_Call struct {
+// PaymentServiceClient_Delete_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'Delete'
+type PaymentServiceClient_Delete_Call struct {
 	*mock.Call
 }
 
-// DeletePaymentMethod is a helper method to define mock.On call
+// Delete is a helper method to define mock.On call
 //   - context1 context.Context
-//   - request *connect.Request[apiv1.PaymentServiceDeletePaymentMethodRequest]
-func (_e *PaymentServiceClient_Expecter) DeletePaymentMethod(context1 any, request any) *PaymentServiceClient_DeletePaymentMethod_Call {
-	return &PaymentServiceClient_DeletePaymentMethod_Call{Call: _e.mock.On("DeletePaymentMethod", context1, request)}
+//   - request *connect.Request[apiv1.PaymentServiceDeleteRequest]
+func (_e *PaymentServiceClient_Expecter) Delete(context1 any, request any) *PaymentServiceClient_Delete_Call {
+	return &PaymentServiceClient_Delete_Call{Call: _e.mock.On("Delete", context1, request)}
 }
 
-func (_c *PaymentServiceClient_DeletePaymentMethod_Call) Run(run func(context1 context.Context, request *connect.Request[apiv1.PaymentServiceDeletePaymentMethodRequest])) *PaymentServiceClient_DeletePaymentMethod_Call {
+func (_c *PaymentServiceClient_Delete_Call) Run(run func(context1 context.Context, request *connect.Request[apiv1.PaymentServiceDeleteRequest])) *PaymentServiceClient_Delete_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		var arg0 context.Context
 		if args[0] != nil {
 			arg0 = args[0].(context.Context)
 		}
-		var arg1 *connect.Request[apiv1.PaymentServiceDeletePaymentMethodRequest]
+		var arg1 *connect.Request[apiv1.PaymentServiceDeleteRequest]
 		if args[1] != nil {
-			arg1 = args[1].(*connect.Request[apiv1.PaymentServiceDeletePaymentMethodRequest])
+			arg1 = args[1].(*connect.Request[apiv1.PaymentServiceDeleteRequest])
 		}
 		run(
 			arg0,
@@ -165,37 +165,37 @@ func (_c *PaymentServiceClient_DeletePaymentMethod_Call) Run(run func(context1 c
 	return _c
 }
 
-func (_c *PaymentServiceClient_DeletePaymentMethod_Call) Return(response *connect.Response[apiv1.PaymentServiceDeletePaymentMethodResponse], err error) *PaymentServiceClient_DeletePaymentMethod_Call {
+func (_c *PaymentServiceClient_Delete_Call) Return(response *connect.Response[apiv1.PaymentServiceDeleteResponse], err error) *PaymentServiceClient_Delete_Call {
 	_c.Call.Return(response, err)
 	return _c
 }
 
-func (_c *PaymentServiceClient_DeletePaymentMethod_Call) RunAndReturn(run func(context1 context.Context, request *connect.Request[apiv1.PaymentServiceDeletePaymentMethodRequest]) (*connect.Response[apiv1.PaymentServiceDeletePaymentMethodResponse], error)) *PaymentServiceClient_DeletePaymentMethod_Call {
+func (_c *PaymentServiceClient_Delete_Call) RunAndReturn(run func(context1 context.Context, request *connect.Request[apiv1.PaymentServiceDeleteRequest]) (*connect.Response[apiv1.PaymentServiceDeleteResponse], error)) *PaymentServiceClient_Delete_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// GetCustomer provides a mock function for the type PaymentServiceClient
-func (_mock *PaymentServiceClient) GetCustomer(context1 context.Context, request *connect.Request[apiv1.PaymentServiceGetCustomerRequest]) (*connect.Response[apiv1.PaymentServiceGetCustomerResponse], error) {
+// Get provides a mock function for the type PaymentServiceClient
+func (_mock *PaymentServiceClient) Get(context1 context.Context, request *connect.Request[apiv1.PaymentServiceGetRequest]) (*connect.Response[apiv1.PaymentServiceGetResponse], error) {
 	ret := _mock.Called(context1, request)
 
 	if len(ret) == 0 {
-		panic("no return value specified for GetCustomer")
+		panic("no return value specified for Get")
 	}
 
-	var r0 *connect.Response[apiv1.PaymentServiceGetCustomerResponse]
+	var r0 *connect.Response[apiv1.PaymentServiceGetResponse]
 	var r1 error
-	if returnFunc, ok := ret.Get(0).(func(context.Context, *connect.Request[apiv1.PaymentServiceGetCustomerRequest]) (*connect.Response[apiv1.PaymentServiceGetCustomerResponse], error)); ok {
+	if returnFunc, ok := ret.Get(0).(func(context.Context, *connect.Request[apiv1.PaymentServiceGetRequest]) (*connect.Response[apiv1.PaymentServiceGetResponse], error)); ok {
 		return returnFunc(context1, request)
 	}
-	if returnFunc, ok := ret.Get(0).(func(context.Context, *connect.Request[apiv1.PaymentServiceGetCustomerRequest]) *connect.Response[apiv1.PaymentServiceGetCustomerResponse]); ok {
+	if returnFunc, ok := ret.Get(0).(func(context.Context, *connect.Request[apiv1.PaymentServiceGetRequest]) *connect.Response[apiv1.PaymentServiceGetResponse]); ok {
 		r0 = returnFunc(context1, request)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*connect.Response[apiv1.PaymentServiceGetCustomerResponse])
+			r0 = ret.Get(0).(*connect.Response[apiv1.PaymentServiceGetResponse])
 		}
 	}
-	if returnFunc, ok := ret.Get(1).(func(context.Context, *connect.Request[apiv1.PaymentServiceGetCustomerRequest]) error); ok {
+	if returnFunc, ok := ret.Get(1).(func(context.Context, *connect.Request[apiv1.PaymentServiceGetRequest]) error); ok {
 		r1 = returnFunc(context1, request)
 	} else {
 		r1 = ret.Error(1)
@@ -203,27 +203,27 @@ func (_mock *PaymentServiceClient) GetCustomer(context1 context.Context, request
 	return r0, r1
 }
 
-// PaymentServiceClient_GetCustomer_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetCustomer'
-type PaymentServiceClient_GetCustomer_Call struct {
+// PaymentServiceClient_Get_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'Get'
+type PaymentServiceClient_Get_Call struct {
 	*mock.Call
 }
 
-// GetCustomer is a helper method to define mock.On call
+// Get is a helper method to define mock.On call
 //   - context1 context.Context
-//   - request *connect.Request[apiv1.PaymentServiceGetCustomerRequest]
-func (_e *PaymentServiceClient_Expecter) GetCustomer(context1 any, request any) *PaymentServiceClient_GetCustomer_Call {
-	return &PaymentServiceClient_GetCustomer_Call{Call: _e.mock.On("GetCustomer", context1, request)}
+//   - request *connect.Request[apiv1.PaymentServiceGetRequest]
+func (_e *PaymentServiceClient_Expecter) Get(context1 any, request any) *PaymentServiceClient_Get_Call {
+	return &PaymentServiceClient_Get_Call{Call: _e.mock.On("Get", context1, request)}
 }
 
-func (_c *PaymentServiceClient_GetCustomer_Call) Run(run func(context1 context.Context, request *connect.Request[apiv1.PaymentServiceGetCustomerRequest])) *PaymentServiceClient_GetCustomer_Call {
+func (_c *PaymentServiceClient_Get_Call) Run(run func(context1 context.Context, request *connect.Request[apiv1.PaymentServiceGetRequest])) *PaymentServiceClient_Get_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		var arg0 context.Context
 		if args[0] != nil {
 			arg0 = args[0].(context.Context)
 		}
-		var arg1 *connect.Request[apiv1.PaymentServiceGetCustomerRequest]
+		var arg1 *connect.Request[apiv1.PaymentServiceGetRequest]
 		if args[1] != nil {
-			arg1 = args[1].(*connect.Request[apiv1.PaymentServiceGetCustomerRequest])
+			arg1 = args[1].(*connect.Request[apiv1.PaymentServiceGetRequest])
 		}
 		run(
 			arg0,
@@ -233,12 +233,12 @@ func (_c *PaymentServiceClient_GetCustomer_Call) Run(run func(context1 context.C
 	return _c
 }
 
-func (_c *PaymentServiceClient_GetCustomer_Call) Return(response *connect.Response[apiv1.PaymentServiceGetCustomerResponse], err error) *PaymentServiceClient_GetCustomer_Call {
+func (_c *PaymentServiceClient_Get_Call) Return(response *connect.Response[apiv1.PaymentServiceGetResponse], err error) *PaymentServiceClient_Get_Call {
 	_c.Call.Return(response, err)
 	return _c
 }
 
-func (_c *PaymentServiceClient_GetCustomer_Call) RunAndReturn(run func(context1 context.Context, request *connect.Request[apiv1.PaymentServiceGetCustomerRequest]) (*connect.Response[apiv1.PaymentServiceGetCustomerResponse], error)) *PaymentServiceClient_GetCustomer_Call {
+func (_c *PaymentServiceClient_Get_Call) RunAndReturn(run func(context1 context.Context, request *connect.Request[apiv1.PaymentServiceGetRequest]) (*connect.Response[apiv1.PaymentServiceGetResponse], error)) *PaymentServiceClient_Get_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -579,6 +579,74 @@ func (_c *PaymentServiceClient_HasPaymentMethod_Call) Return(response *connect.R
 }
 
 func (_c *PaymentServiceClient_HasPaymentMethod_Call) RunAndReturn(run func(context1 context.Context, request *connect.Request[apiv1.PaymentServiceHasPaymentMethodRequest]) (*connect.Response[apiv1.PaymentServiceHasPaymentMethodResponse], error)) *PaymentServiceClient_HasPaymentMethod_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// Update provides a mock function for the type PaymentServiceClient
+func (_mock *PaymentServiceClient) Update(context1 context.Context, request *connect.Request[apiv1.PaymentServiceUpdateRequest]) (*connect.Response[apiv1.PaymentServiceUpdateResponse], error) {
+	ret := _mock.Called(context1, request)
+
+	if len(ret) == 0 {
+		panic("no return value specified for Update")
+	}
+
+	var r0 *connect.Response[apiv1.PaymentServiceUpdateResponse]
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, *connect.Request[apiv1.PaymentServiceUpdateRequest]) (*connect.Response[apiv1.PaymentServiceUpdateResponse], error)); ok {
+		return returnFunc(context1, request)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, *connect.Request[apiv1.PaymentServiceUpdateRequest]) *connect.Response[apiv1.PaymentServiceUpdateResponse]); ok {
+		r0 = returnFunc(context1, request)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*connect.Response[apiv1.PaymentServiceUpdateResponse])
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, *connect.Request[apiv1.PaymentServiceUpdateRequest]) error); ok {
+		r1 = returnFunc(context1, request)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// PaymentServiceClient_Update_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'Update'
+type PaymentServiceClient_Update_Call struct {
+	*mock.Call
+}
+
+// Update is a helper method to define mock.On call
+//   - context1 context.Context
+//   - request *connect.Request[apiv1.PaymentServiceUpdateRequest]
+func (_e *PaymentServiceClient_Expecter) Update(context1 any, request any) *PaymentServiceClient_Update_Call {
+	return &PaymentServiceClient_Update_Call{Call: _e.mock.On("Update", context1, request)}
+}
+
+func (_c *PaymentServiceClient_Update_Call) Run(run func(context1 context.Context, request *connect.Request[apiv1.PaymentServiceUpdateRequest])) *PaymentServiceClient_Update_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 *connect.Request[apiv1.PaymentServiceUpdateRequest]
+		if args[1] != nil {
+			arg1 = args[1].(*connect.Request[apiv1.PaymentServiceUpdateRequest])
+		}
+		run(
+			arg0,
+			arg1,
+		)
+	})
+	return _c
+}
+
+func (_c *PaymentServiceClient_Update_Call) Return(response *connect.Response[apiv1.PaymentServiceUpdateResponse], err error) *PaymentServiceClient_Update_Call {
+	_c.Call.Return(response, err)
+	return _c
+}
+
+func (_c *PaymentServiceClient_Update_Call) RunAndReturn(run func(context1 context.Context, request *connect.Request[apiv1.PaymentServiceUpdateRequest]) (*connect.Response[apiv1.PaymentServiceUpdateResponse], error)) *PaymentServiceClient_Update_Call {
 	_c.Call.Return(run)
 	return _c
 }

@@ -25,6 +25,12 @@ class UsageType(int, metaclass=_enum_type_wrapper.EnumTypeWrapper):
     USAGE_TYPE_UNSPECIFIED: _ClassVar[UsageType]
     USAGE_TYPE_METERED: _ClassVar[UsageType]
     USAGE_TYPE_LICENSED: _ClassVar[UsageType]
+
+class ProductTier(int, metaclass=_enum_type_wrapper.EnumTypeWrapper):
+    __slots__ = ()
+    PRODUCT_TIER_UNSPECIFIED: _ClassVar[ProductTier]
+    PRODUCT_TIER_TRIAL: _ClassVar[ProductTier]
+    PRODUCT_TIER_PAID: _ClassVar[ProductTier]
 PRODUCT_TYPE_UNSPECIFIED: ProductType
 PRODUCT_TYPE_STORAGE: ProductType
 PRODUCT_TYPE_COMPUTE: ProductType
@@ -33,9 +39,12 @@ PRODUCT_TYPE_KUBERNETES: ProductType
 USAGE_TYPE_UNSPECIFIED: UsageType
 USAGE_TYPE_METERED: UsageType
 USAGE_TYPE_LICENSED: UsageType
+PRODUCT_TIER_UNSPECIFIED: ProductTier
+PRODUCT_TIER_TRIAL: ProductTier
+PRODUCT_TIER_PAID: ProductTier
 
 class PaymentCustomer(_message.Message):
-    __slots__ = ("login", "name", "customer_id", "payment_method_id", "subscription_id", "email", "card", "prices", "address", "vat", "phone_number", "balance")
+    __slots__ = ("login", "name", "customer_id", "payment_method_id", "subscription_id", "email", "card", "prices", "address", "vat", "phone_number", "balance", "tier")
     LOGIN_FIELD_NUMBER: _ClassVar[int]
     NAME_FIELD_NUMBER: _ClassVar[int]
     CUSTOMER_ID_FIELD_NUMBER: _ClassVar[int]
@@ -48,6 +57,7 @@ class PaymentCustomer(_message.Message):
     VAT_FIELD_NUMBER: _ClassVar[int]
     PHONE_NUMBER_FIELD_NUMBER: _ClassVar[int]
     BALANCE_FIELD_NUMBER: _ClassVar[int]
+    TIER_FIELD_NUMBER: _ClassVar[int]
     login: str
     name: str
     customer_id: str
@@ -60,7 +70,8 @@ class PaymentCustomer(_message.Message):
     vat: str
     phone_number: str
     balance: int
-    def __init__(self, login: _Optional[str] = ..., name: _Optional[str] = ..., customer_id: _Optional[str] = ..., payment_method_id: _Optional[str] = ..., subscription_id: _Optional[str] = ..., email: _Optional[str] = ..., card: _Optional[_Union[Card, _Mapping]] = ..., prices: _Optional[_Iterable[_Union[Price, _Mapping]]] = ..., address: _Optional[_Union[Address, _Mapping]] = ..., vat: _Optional[str] = ..., phone_number: _Optional[str] = ..., balance: _Optional[int] = ...) -> None: ...
+    tier: ProductTier
+    def __init__(self, login: _Optional[str] = ..., name: _Optional[str] = ..., customer_id: _Optional[str] = ..., payment_method_id: _Optional[str] = ..., subscription_id: _Optional[str] = ..., email: _Optional[str] = ..., card: _Optional[_Union[Card, _Mapping]] = ..., prices: _Optional[_Iterable[_Union[Price, _Mapping]]] = ..., address: _Optional[_Union[Address, _Mapping]] = ..., vat: _Optional[str] = ..., phone_number: _Optional[str] = ..., balance: _Optional[int] = ..., tier: _Optional[_Union[ProductTier, str]] = ...) -> None: ...
 
 class Card(_message.Message):
     __slots__ = ("brand", "country", "exp_month", "exp_year", "last_4")
@@ -156,13 +167,12 @@ class Invoice(_message.Message):
     period_end: _timestamp_pb2.Timestamp
     def __init__(self, id: _Optional[str] = ..., pdf_download_url: _Optional[str] = ..., period_start: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., period_end: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ...) -> None: ...
 
-class PaymentServiceCreateOrUpdateCustomerRequest(_message.Message):
-    __slots__ = ("login", "name", "payment_method_id", "email", "card", "address", "vat", "phone_number")
+class PaymentServiceCreateRequest(_message.Message):
+    __slots__ = ("login", "name", "payment_method_id", "email", "address", "vat", "phone_number")
     LOGIN_FIELD_NUMBER: _ClassVar[int]
     NAME_FIELD_NUMBER: _ClassVar[int]
     PAYMENT_METHOD_ID_FIELD_NUMBER: _ClassVar[int]
     EMAIL_FIELD_NUMBER: _ClassVar[int]
-    CARD_FIELD_NUMBER: _ClassVar[int]
     ADDRESS_FIELD_NUMBER: _ClassVar[int]
     VAT_FIELD_NUMBER: _ClassVar[int]
     PHONE_NUMBER_FIELD_NUMBER: _ClassVar[int]
@@ -170,27 +180,48 @@ class PaymentServiceCreateOrUpdateCustomerRequest(_message.Message):
     name: str
     payment_method_id: str
     email: str
-    card: Card
     address: Address
     vat: str
     phone_number: str
-    def __init__(self, login: _Optional[str] = ..., name: _Optional[str] = ..., payment_method_id: _Optional[str] = ..., email: _Optional[str] = ..., card: _Optional[_Union[Card, _Mapping]] = ..., address: _Optional[_Union[Address, _Mapping]] = ..., vat: _Optional[str] = ..., phone_number: _Optional[str] = ...) -> None: ...
+    def __init__(self, login: _Optional[str] = ..., name: _Optional[str] = ..., payment_method_id: _Optional[str] = ..., email: _Optional[str] = ..., address: _Optional[_Union[Address, _Mapping]] = ..., vat: _Optional[str] = ..., phone_number: _Optional[str] = ...) -> None: ...
 
-class PaymentServiceCreateOrUpdateCustomerResponse(_message.Message):
+class PaymentServiceCreateResponse(_message.Message):
     __slots__ = ("customer",)
     CUSTOMER_FIELD_NUMBER: _ClassVar[int]
     customer: PaymentCustomer
     def __init__(self, customer: _Optional[_Union[PaymentCustomer, _Mapping]] = ...) -> None: ...
 
-class PaymentServiceGetCustomerRequest(_message.Message):
-    __slots__ = ("login", "customer_id")
+class PaymentServiceUpdateRequest(_message.Message):
+    __slots__ = ("login", "name", "payment_method_id", "email", "address", "vat", "phone_number")
     LOGIN_FIELD_NUMBER: _ClassVar[int]
-    CUSTOMER_ID_FIELD_NUMBER: _ClassVar[int]
+    NAME_FIELD_NUMBER: _ClassVar[int]
+    PAYMENT_METHOD_ID_FIELD_NUMBER: _ClassVar[int]
+    EMAIL_FIELD_NUMBER: _ClassVar[int]
+    ADDRESS_FIELD_NUMBER: _ClassVar[int]
+    VAT_FIELD_NUMBER: _ClassVar[int]
+    PHONE_NUMBER_FIELD_NUMBER: _ClassVar[int]
     login: str
-    customer_id: str
-    def __init__(self, login: _Optional[str] = ..., customer_id: _Optional[str] = ...) -> None: ...
+    name: str
+    payment_method_id: str
+    email: str
+    address: Address
+    vat: str
+    phone_number: str
+    def __init__(self, login: _Optional[str] = ..., name: _Optional[str] = ..., payment_method_id: _Optional[str] = ..., email: _Optional[str] = ..., address: _Optional[_Union[Address, _Mapping]] = ..., vat: _Optional[str] = ..., phone_number: _Optional[str] = ...) -> None: ...
 
-class PaymentServiceGetCustomerResponse(_message.Message):
+class PaymentServiceUpdateResponse(_message.Message):
+    __slots__ = ("customer",)
+    CUSTOMER_FIELD_NUMBER: _ClassVar[int]
+    customer: PaymentCustomer
+    def __init__(self, customer: _Optional[_Union[PaymentCustomer, _Mapping]] = ...) -> None: ...
+
+class PaymentServiceGetRequest(_message.Message):
+    __slots__ = ("login",)
+    LOGIN_FIELD_NUMBER: _ClassVar[int]
+    login: str
+    def __init__(self, login: _Optional[str] = ...) -> None: ...
+
+class PaymentServiceGetResponse(_message.Message):
     __slots__ = ("customer",)
     CUSTOMER_FIELD_NUMBER: _ClassVar[int]
     customer: PaymentCustomer
@@ -210,13 +241,13 @@ class PaymentServiceHasPaymentMethodResponse(_message.Message):
     positive_balance: bool
     def __init__(self, exists: bool = ..., positive_balance: bool = ...) -> None: ...
 
-class PaymentServiceDeletePaymentMethodRequest(_message.Message):
+class PaymentServiceDeleteRequest(_message.Message):
     __slots__ = ("login",)
     LOGIN_FIELD_NUMBER: _ClassVar[int]
     login: str
     def __init__(self, login: _Optional[str] = ...) -> None: ...
 
-class PaymentServiceDeletePaymentMethodResponse(_message.Message):
+class PaymentServiceDeleteResponse(_message.Message):
     __slots__ = ()
     def __init__(self) -> None: ...
 
