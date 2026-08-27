@@ -40,7 +40,7 @@ export type PaymentServiceAddBalanceToCustomerResponse = Message<"admin.v1.Payme
      *
      * @generated from field: api.v1.PaymentCustomer customer = 1;
      */
-    customer?: PaymentCustomer;
+    customer?: PaymentCustomer | undefined;
 };
 /**
  * Describes the message admin.v1.PaymentServiceAddBalanceToCustomerResponse.

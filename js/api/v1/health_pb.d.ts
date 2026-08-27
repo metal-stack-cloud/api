@@ -106,7 +106,7 @@ export type HealthServiceGetResponse = Message<"api.v1.HealthServiceGetResponse"
      *
      * @generated from field: api.v1.Health health = 1;
      */
-    health?: Health;
+    health?: Health | undefined;
 };
 /**
  * Describes the message api.v1.HealthServiceGetResponse.

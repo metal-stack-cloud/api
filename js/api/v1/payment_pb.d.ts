@@ -22,19 +22,19 @@ export type PaymentCustomer = Message<"api.v1.PaymentCustomer"> & {
      *
      * @generated from field: optional string name = 2;
      */
-    name?: string;
+    name?: string | undefined;
     /**
      * CustomerId id of the customer
      *
      * @generated from field: optional string customer_id = 3;
      */
-    customerId?: string;
+    customerId?: string | undefined;
     /**
      * PaymentMethodId at the payment processor
      *
      * @generated from field: optional string payment_method_id = 4;
      */
-    paymentMethodId?: string;
+    paymentMethodId?: string | undefined;
     /**
      * SubscriptionId of the customer
      *
@@ -46,13 +46,13 @@ export type PaymentCustomer = Message<"api.v1.PaymentCustomer"> & {
      *
      * @generated from field: optional string email = 6;
      */
-    email?: string;
+    email?: string | undefined;
     /**
      * Card the customer supplied
      *
      * @generated from field: optional api.v1.Card card = 7;
      */
-    card?: Card;
+    card?: Card | undefined;
     /**
      * Prices which apply to customer resources
      *
@@ -64,25 +64,25 @@ export type PaymentCustomer = Message<"api.v1.PaymentCustomer"> & {
      *
      * @generated from field: api.v1.Address address = 9;
      */
-    address?: Address;
+    address?: Address | undefined;
     /**
      * Vat which applies to the customer
      *
      * @generated from field: optional string vat = 11;
      */
-    vat?: string;
+    vat?: string | undefined;
     /**
      * PhoneNumber of the customer
      *
      * @generated from field: optional string phone_number = 12;
      */
-    phoneNumber?: string;
+    phoneNumber?: string | undefined;
     /**
      * Balance actual balance of the customer
      *
      * @generated from field: optional int64 balance = 13;
      */
-    balance?: bigint;
+    balance?: bigint | undefined;
     /**
      * Tier describes the state in which the customer is using the products.
      *
@@ -178,7 +178,7 @@ export type Price = Message<"api.v1.Price"> & {
      *
      * @generated from field: optional string description = 6;
      */
-    description?: string;
+    description?: string | undefined;
     /**
      * UsageType indicates how a price is measured
      *
@@ -268,13 +268,13 @@ export type SubscriptionUsageItem = Message<"api.v1.SubscriptionUsageItem"> & {
      *
      * @generated from field: google.protobuf.Timestamp period_start = 4;
      */
-    periodStart?: Timestamp;
+    periodStart?: Timestamp | undefined;
     /**
      * PeriodEnd is the end date of this subscription
      *
      * @generated from field: google.protobuf.Timestamp period_end = 5;
      */
-    periodEnd?: Timestamp;
+    periodEnd?: Timestamp | undefined;
     /**
      * A subscription discounts
      *
@@ -364,13 +364,13 @@ export type Invoice = Message<"api.v1.Invoice"> & {
      *
      * @generated from field: google.protobuf.Timestamp period_start = 4;
      */
-    periodStart?: Timestamp;
+    periodStart?: Timestamp | undefined;
     /**
      * PeriodEnd is the end date of the time frame covered by this invoice
      *
      * @generated from field: google.protobuf.Timestamp period_end = 5;
      */
-    periodEnd?: Timestamp;
+    periodEnd?: Timestamp | undefined;
 };
 /**
  * Describes the message api.v1.Invoice.
@@ -412,7 +412,7 @@ export type PaymentServiceCreateRequest = Message<"api.v1.PaymentServiceCreateRe
      *
      * @generated from field: api.v1.Address address = 5;
      */
-    address?: Address;
+    address?: Address | undefined;
     /**
      * Vat which applies to the customer to be billed
      *
@@ -424,7 +424,7 @@ export type PaymentServiceCreateRequest = Message<"api.v1.PaymentServiceCreateRe
      *
      * @generated from field: optional string phone_number = 7;
      */
-    phoneNumber?: string;
+    phoneNumber?: string | undefined;
 };
 /**
  * Describes the message api.v1.PaymentServiceCreateRequest.
@@ -442,7 +442,7 @@ export type PaymentServiceCreateResponse = Message<"api.v1.PaymentServiceCreateR
      *
      * @generated from field: api.v1.PaymentCustomer customer = 1;
      */
-    customer?: PaymentCustomer;
+    customer?: PaymentCustomer | undefined;
 };
 /**
  * Describes the message api.v1.PaymentServiceCreateResponse.
@@ -466,37 +466,37 @@ export type PaymentServiceUpdateRequest = Message<"api.v1.PaymentServiceUpdateRe
      *
      * @generated from field: optional string name = 2;
      */
-    name?: string;
+    name?: string | undefined;
     /**
      * PaymentMethodId at the payment provider, the client receives this from the payment provider and passes it on to the api
      *
      * @generated from field: optional string payment_method_id = 3;
      */
-    paymentMethodId?: string;
+    paymentMethodId?: string | undefined;
     /**
      * Email of the customer to be billed
      *
      * @generated from field: optional string email = 4;
      */
-    email?: string;
+    email?: string | undefined;
     /**
      * Address is the postal address of the customer to be billed
      *
      * @generated from field: api.v1.Address address = 5;
      */
-    address?: Address;
+    address?: Address | undefined;
     /**
      * Vat which applies to the customer to be billed
      *
      * @generated from field: optional string vat = 6;
      */
-    vat?: string;
+    vat?: string | undefined;
     /**
      * PhoneNumber of the customer to be billed
      *
      * @generated from field: optional string phone_number = 7;
      */
-    phoneNumber?: string;
+    phoneNumber?: string | undefined;
 };
 /**
  * Describes the message api.v1.PaymentServiceUpdateRequest.
@@ -514,7 +514,7 @@ export type PaymentServiceUpdateResponse = Message<"api.v1.PaymentServiceUpdateR
      *
      * @generated from field: api.v1.PaymentCustomer customer = 1;
      */
-    customer?: PaymentCustomer;
+    customer?: PaymentCustomer | undefined;
 };
 /**
  * Describes the message api.v1.PaymentServiceUpdateResponse.
@@ -550,7 +550,7 @@ export type PaymentServiceGetResponse = Message<"api.v1.PaymentServiceGetRespons
      *
      * @generated from field: api.v1.PaymentCustomer customer = 1;
      */
-    customer?: PaymentCustomer;
+    customer?: PaymentCustomer | undefined;
 };
 /**
  * Describes the message api.v1.PaymentServiceGetResponse.

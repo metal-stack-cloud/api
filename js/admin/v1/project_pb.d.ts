@@ -17,13 +17,13 @@ export type ProjectServiceListRequest = Message<"admin.v1.ProjectServiceListRequ
      *
      * @generated from field: api.v1.Paging paging = 1;
      */
-    paging?: Paging;
+    paging?: Paging | undefined;
     /**
      * TenantId to filter for all projects
      *
      * @generated from field: optional string tenant_id = 2;
      */
-    tenantId?: string;
+    tenantId?: string | undefined;
     /**
      * Annotations to filter for
      *
@@ -55,7 +55,7 @@ export type ProjectServiceListResponse = Message<"admin.v1.ProjectServiceListRes
      *
      * @generated from field: optional uint64 next_page = 2;
      */
-    nextPage?: bigint;
+    nextPage?: bigint | undefined;
 };
 /**
  * Describes the message admin.v1.ProjectServiceListResponse.

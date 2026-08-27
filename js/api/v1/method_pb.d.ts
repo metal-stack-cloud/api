@@ -79,7 +79,7 @@ export type MethodServiceTokenScopedListResponse = Message<"api.v1.MethodService
      *
      * @generated from field: optional api.v1.AdminRole admin_role = 5;
      */
-    adminRole?: AdminRole;
+    adminRole?: AdminRole | undefined;
 };
 /**
  * Describes the message api.v1.MethodServiceTokenScopedListResponse.

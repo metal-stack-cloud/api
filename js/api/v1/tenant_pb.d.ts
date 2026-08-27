@@ -53,7 +53,7 @@ export type Tenant = Message<"api.v1.Tenant"> & {
      *
      * @generated from field: api.v1.PaymentDetails payment_details = 8;
      */
-    paymentDetails?: PaymentDetails;
+    paymentDetails?: PaymentDetails | undefined;
     /**
      * Admitted indicates if this tenant is allowed to use the platform
      *
@@ -71,7 +71,7 @@ export type Tenant = Message<"api.v1.Tenant"> & {
      *
      * @generated from field: api.v1.TermsAndConditions terms_and_conditions = 11;
      */
-    termsAndConditions?: TermsAndConditions;
+    termsAndConditions?: TermsAndConditions | undefined;
     /**
      * EmailConsent the tenant made
      *
@@ -95,19 +95,19 @@ export type Tenant = Message<"api.v1.Tenant"> & {
      *
      * @generated from field: google.protobuf.Timestamp created_at = 20;
      */
-    createdAt?: Timestamp;
+    createdAt?: Timestamp | undefined;
     /**
      * UpdatedAt the date when this tenant was updated
      *
      * @generated from field: google.protobuf.Timestamp updated_at = 21;
      */
-    updatedAt?: Timestamp;
+    updatedAt?: Timestamp | undefined;
     /**
      * DeletedAt the date when this tenant was deleted
      *
      * @generated from field: google.protobuf.Timestamp deleted_at = 22;
      */
-    deletedAt?: Timestamp;
+    deletedAt?: Timestamp | undefined;
 };
 /**
  * Describes the message api.v1.Tenant.
@@ -143,7 +143,7 @@ export type TenantMember = Message<"api.v1.TenantMember"> & {
      *
      * @generated from field: google.protobuf.Timestamp created_at = 10;
      */
-    createdAt?: Timestamp;
+    createdAt?: Timestamp | undefined;
 };
 /**
  * Describes the message api.v1.TenantMember.
@@ -203,13 +203,13 @@ export type TenantInvite = Message<"api.v1.TenantInvite"> & {
      *
      * @generated from field: google.protobuf.Timestamp expires_at = 10;
      */
-    expiresAt?: Timestamp;
+    expiresAt?: Timestamp | undefined;
     /**
      * JoinedAt the date when the member accepted this invite
      *
      * @generated from field: google.protobuf.Timestamp joined_at = 11;
      */
-    joinedAt?: Timestamp;
+    joinedAt?: Timestamp | undefined;
 };
 /**
  * Describes the message api.v1.TenantInvite.
@@ -233,7 +233,7 @@ export type PaymentDetails = Message<"api.v1.PaymentDetails"> & {
      *
      * @generated from field: optional string payment_method_id = 2;
      */
-    paymentMethodId?: string;
+    paymentMethodId?: string | undefined;
     /**
      * SubscriptionId at the payment processor
      *
@@ -269,7 +269,7 @@ export type TermsAndConditions = Message<"api.v1.TermsAndConditions"> & {
      *
      * @generated from field: google.protobuf.Timestamp when = 2;
      */
-    when?: Timestamp;
+    when?: Timestamp | undefined;
 };
 /**
  * Describes the message api.v1.TermsAndConditions.
@@ -287,13 +287,13 @@ export type TenantServiceListRequest = Message<"api.v1.TenantServiceListRequest"
      *
      * @generated from field: optional string id = 1;
      */
-    id?: string;
+    id?: string | undefined;
     /**
      * Name filters tenants by name
      *
      * @generated from field: optional string name = 2;
      */
-    name?: string;
+    name?: string | undefined;
 };
 /**
  * Describes the message api.v1.TenantServiceListRequest.
@@ -335,25 +335,25 @@ export type TenantServiceCreateRequest = Message<"api.v1.TenantServiceCreateRequ
      *
      * @generated from field: optional string description = 2;
      */
-    description?: string;
+    description?: string | undefined;
     /**
      * Email of the tenant, if not set will be inherited from the creator
      *
      * @generated from field: optional string email = 3;
      */
-    email?: string;
+    email?: string | undefined;
     /**
      * AvatarUrl of the tenant
      *
      * @generated from field: optional string avatar_url = 4;
      */
-    avatarUrl?: string;
+    avatarUrl?: string | undefined;
     /**
      * PhoneNumber of the tenant
      *
      * @generated from field: optional string phone_number = 5;
      */
-    phoneNumber?: string;
+    phoneNumber?: string | undefined;
 };
 /**
  * Describes the message api.v1.TenantServiceCreateRequest.
@@ -377,37 +377,37 @@ export type TenantServiceUpdateRequest = Message<"api.v1.TenantServiceUpdateRequ
      *
      * @generated from field: optional string name = 2;
      */
-    name?: string;
+    name?: string | undefined;
     /**
      * Email of the tenant
      *
      * @generated from field: optional string email = 3;
      */
-    email?: string;
+    email?: string | undefined;
     /**
      * Description of this tenant
      *
      * @generated from field: optional string description = 4;
      */
-    description?: string;
+    description?: string | undefined;
     /**
      * AvatarUrl of the tenant
      *
      * @generated from field: optional string avatar_url = 5;
      */
-    avatarUrl?: string;
+    avatarUrl?: string | undefined;
     /**
      * Onboarded checks if the tenant was asked to be onboarded
      *
      * @generated from field: optional bool onboarded = 13;
      */
-    onboarded?: boolean;
+    onboarded?: boolean | undefined;
     /**
      * AcceptTermsAndConditions can be used to accept the terms and conditions
      *
      * @generated from field: optional bool accept_terms_and_conditions = 14;
      */
-    acceptTermsAndConditions?: boolean;
+    acceptTermsAndConditions?: boolean | undefined;
 };
 /**
  * Describes the message api.v1.TenantServiceUpdateRequest.
@@ -443,7 +443,7 @@ export type TenantServiceGetResponse = Message<"api.v1.TenantServiceGetResponse"
      *
      * @generated from field: api.v1.Tenant tenant = 1;
      */
-    tenant?: Tenant;
+    tenant?: Tenant | undefined;
     /**
      * TenantMembers of this tenant
      *
@@ -485,7 +485,7 @@ export type TenantServiceCreateResponse = Message<"api.v1.TenantServiceCreateRes
      *
      * @generated from field: api.v1.Tenant tenant = 1;
      */
-    tenant?: Tenant;
+    tenant?: Tenant | undefined;
 };
 /**
  * Describes the message api.v1.TenantServiceCreateResponse.
@@ -503,7 +503,7 @@ export type TenantServiceCreateOrUpdateResponse = Message<"api.v1.TenantServiceC
      *
      * @generated from field: api.v1.Tenant tenant = 1;
      */
-    tenant?: Tenant;
+    tenant?: Tenant | undefined;
 };
 /**
  * Describes the message api.v1.TenantServiceCreateOrUpdateResponse.
@@ -521,7 +521,7 @@ export type TenantServiceUpdateResponse = Message<"api.v1.TenantServiceUpdateRes
      *
      * @generated from field: api.v1.Tenant tenant = 1;
      */
-    tenant?: Tenant;
+    tenant?: Tenant | undefined;
 };
 /**
  * Describes the message api.v1.TenantServiceUpdateResponse.
@@ -539,7 +539,7 @@ export type TenantServiceDeleteResponse = Message<"api.v1.TenantServiceDeleteRes
      *
      * @generated from field: api.v1.Tenant tenant = 1;
      */
-    tenant?: Tenant;
+    tenant?: Tenant | undefined;
 };
 /**
  * Describes the message api.v1.TenantServiceDeleteResponse.
@@ -583,7 +583,7 @@ export type TenantServiceInviteResponse = Message<"api.v1.TenantServiceInviteRes
      *
      * @generated from field: api.v1.TenantInvite invite = 1;
      */
-    invite?: TenantInvite;
+    invite?: TenantInvite | undefined;
 };
 /**
  * Describes the message api.v1.TenantServiceInviteResponse.
@@ -655,7 +655,7 @@ export type TenantServiceInviteGetResponse = Message<"api.v1.TenantServiceInvite
      *
      * @generated from field: api.v1.TenantInvite invite = 1;
      */
-    invite?: TenantInvite;
+    invite?: TenantInvite | undefined;
 };
 /**
  * Describes the message api.v1.TenantServiceInviteGetResponse.
@@ -815,7 +815,7 @@ export type TenantServiceUpdateMemberResponse = Message<"api.v1.TenantServiceUpd
      *
      * @generated from field: api.v1.TenantMember tenant_member = 1;
      */
-    tenantMember?: TenantMember;
+    tenantMember?: TenantMember | undefined;
 };
 /**
  * Describes the message api.v1.TenantServiceUpdateMemberResponse.

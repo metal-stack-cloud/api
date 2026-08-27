@@ -75,7 +75,7 @@ type ProjectServiceHandler_Create_Call struct {
 // Create is a helper method to define mock.On call
 //   - context1 context.Context
 //   - request *connect.Request[apiv1.ProjectServiceCreateRequest]
-func (_e *ProjectServiceHandler_Expecter) Create(context1 interface{}, request interface{}) *ProjectServiceHandler_Create_Call {
+func (_e *ProjectServiceHandler_Expecter) Create(context1 any, request any) *ProjectServiceHandler_Create_Call {
 	return &ProjectServiceHandler_Create_Call{Call: _e.mock.On("Create", context1, request)}
 }
 
@@ -143,7 +143,7 @@ type ProjectServiceHandler_Delete_Call struct {
 // Delete is a helper method to define mock.On call
 //   - context1 context.Context
 //   - request *connect.Request[apiv1.ProjectServiceDeleteRequest]
-func (_e *ProjectServiceHandler_Expecter) Delete(context1 interface{}, request interface{}) *ProjectServiceHandler_Delete_Call {
+func (_e *ProjectServiceHandler_Expecter) Delete(context1 any, request any) *ProjectServiceHandler_Delete_Call {
 	return &ProjectServiceHandler_Delete_Call{Call: _e.mock.On("Delete", context1, request)}
 }
 
@@ -211,7 +211,7 @@ type ProjectServiceHandler_Get_Call struct {
 // Get is a helper method to define mock.On call
 //   - context1 context.Context
 //   - request *connect.Request[apiv1.ProjectServiceGetRequest]
-func (_e *ProjectServiceHandler_Expecter) Get(context1 interface{}, request interface{}) *ProjectServiceHandler_Get_Call {
+func (_e *ProjectServiceHandler_Expecter) Get(context1 any, request any) *ProjectServiceHandler_Get_Call {
 	return &ProjectServiceHandler_Get_Call{Call: _e.mock.On("Get", context1, request)}
 }
 
@@ -279,7 +279,7 @@ type ProjectServiceHandler_Invite_Call struct {
 // Invite is a helper method to define mock.On call
 //   - context1 context.Context
 //   - request *connect.Request[apiv1.ProjectServiceInviteRequest]
-func (_e *ProjectServiceHandler_Expecter) Invite(context1 interface{}, request interface{}) *ProjectServiceHandler_Invite_Call {
+func (_e *ProjectServiceHandler_Expecter) Invite(context1 any, request any) *ProjectServiceHandler_Invite_Call {
 	return &ProjectServiceHandler_Invite_Call{Call: _e.mock.On("Invite", context1, request)}
 }
 
@@ -347,7 +347,7 @@ type ProjectServiceHandler_InviteAccept_Call struct {
 // InviteAccept is a helper method to define mock.On call
 //   - context1 context.Context
 //   - request *connect.Request[apiv1.ProjectServiceInviteAcceptRequest]
-func (_e *ProjectServiceHandler_Expecter) InviteAccept(context1 interface{}, request interface{}) *ProjectServiceHandler_InviteAccept_Call {
+func (_e *ProjectServiceHandler_Expecter) InviteAccept(context1 any, request any) *ProjectServiceHandler_InviteAccept_Call {
 	return &ProjectServiceHandler_InviteAccept_Call{Call: _e.mock.On("InviteAccept", context1, request)}
 }
 
@@ -415,7 +415,7 @@ type ProjectServiceHandler_InviteDelete_Call struct {
 // InviteDelete is a helper method to define mock.On call
 //   - context1 context.Context
 //   - request *connect.Request[apiv1.ProjectServiceInviteDeleteRequest]
-func (_e *ProjectServiceHandler_Expecter) InviteDelete(context1 interface{}, request interface{}) *ProjectServiceHandler_InviteDelete_Call {
+func (_e *ProjectServiceHandler_Expecter) InviteDelete(context1 any, request any) *ProjectServiceHandler_InviteDelete_Call {
 	return &ProjectServiceHandler_InviteDelete_Call{Call: _e.mock.On("InviteDelete", context1, request)}
 }
 
@@ -483,7 +483,7 @@ type ProjectServiceHandler_InviteGet_Call struct {
 // InviteGet is a helper method to define mock.On call
 //   - context1 context.Context
 //   - request *connect.Request[apiv1.ProjectServiceInviteGetRequest]
-func (_e *ProjectServiceHandler_Expecter) InviteGet(context1 interface{}, request interface{}) *ProjectServiceHandler_InviteGet_Call {
+func (_e *ProjectServiceHandler_Expecter) InviteGet(context1 any, request any) *ProjectServiceHandler_InviteGet_Call {
 	return &ProjectServiceHandler_InviteGet_Call{Call: _e.mock.On("InviteGet", context1, request)}
 }
 
@@ -551,7 +551,7 @@ type ProjectServiceHandler_InvitesList_Call struct {
 // InvitesList is a helper method to define mock.On call
 //   - context1 context.Context
 //   - request *connect.Request[apiv1.ProjectServiceInvitesListRequest]
-func (_e *ProjectServiceHandler_Expecter) InvitesList(context1 interface{}, request interface{}) *ProjectServiceHandler_InvitesList_Call {
+func (_e *ProjectServiceHandler_Expecter) InvitesList(context1 any, request any) *ProjectServiceHandler_InvitesList_Call {
 	return &ProjectServiceHandler_InvitesList_Call{Call: _e.mock.On("InvitesList", context1, request)}
 }
 
@@ -619,7 +619,7 @@ type ProjectServiceHandler_List_Call struct {
 // List is a helper method to define mock.On call
 //   - context1 context.Context
 //   - request *connect.Request[apiv1.ProjectServiceListRequest]
-func (_e *ProjectServiceHandler_Expecter) List(context1 interface{}, request interface{}) *ProjectServiceHandler_List_Call {
+func (_e *ProjectServiceHandler_Expecter) List(context1 any, request any) *ProjectServiceHandler_List_Call {
 	return &ProjectServiceHandler_List_Call{Call: _e.mock.On("List", context1, request)}
 }
 
@@ -687,7 +687,7 @@ type ProjectServiceHandler_RemoveMember_Call struct {
 // RemoveMember is a helper method to define mock.On call
 //   - context1 context.Context
 //   - request *connect.Request[apiv1.ProjectServiceRemoveMemberRequest]
-func (_e *ProjectServiceHandler_Expecter) RemoveMember(context1 interface{}, request interface{}) *ProjectServiceHandler_RemoveMember_Call {
+func (_e *ProjectServiceHandler_Expecter) RemoveMember(context1 any, request any) *ProjectServiceHandler_RemoveMember_Call {
 	return &ProjectServiceHandler_RemoveMember_Call{Call: _e.mock.On("RemoveMember", context1, request)}
 }
 
@@ -755,7 +755,7 @@ type ProjectServiceHandler_Update_Call struct {
 // Update is a helper method to define mock.On call
 //   - context1 context.Context
 //   - request *connect.Request[apiv1.ProjectServiceUpdateRequest]
-func (_e *ProjectServiceHandler_Expecter) Update(context1 interface{}, request interface{}) *ProjectServiceHandler_Update_Call {
+func (_e *ProjectServiceHandler_Expecter) Update(context1 any, request any) *ProjectServiceHandler_Update_Call {
 	return &ProjectServiceHandler_Update_Call{Call: _e.mock.On("Update", context1, request)}
 }
 
@@ -823,7 +823,7 @@ type ProjectServiceHandler_UpdateMember_Call struct {
 // UpdateMember is a helper method to define mock.On call
 //   - context1 context.Context
 //   - request *connect.Request[apiv1.ProjectServiceUpdateMemberRequest]
-func (_e *ProjectServiceHandler_Expecter) UpdateMember(context1 interface{}, request interface{}) *ProjectServiceHandler_UpdateMember_Call {
+func (_e *ProjectServiceHandler_Expecter) UpdateMember(context1 any, request any) *ProjectServiceHandler_UpdateMember_Call {
 	return &ProjectServiceHandler_UpdateMember_Call{Call: _e.mock.On("UpdateMember", context1, request)}
 }
 

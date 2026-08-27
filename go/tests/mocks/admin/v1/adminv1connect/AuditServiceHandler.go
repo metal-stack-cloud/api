@@ -75,7 +75,7 @@ type AuditServiceHandler_Get_Call struct {
 // Get is a helper method to define mock.On call
 //   - context1 context.Context
 //   - request *connect.Request[adminv1.AuditServiceGetRequest]
-func (_e *AuditServiceHandler_Expecter) Get(context1 interface{}, request interface{}) *AuditServiceHandler_Get_Call {
+func (_e *AuditServiceHandler_Expecter) Get(context1 any, request any) *AuditServiceHandler_Get_Call {
 	return &AuditServiceHandler_Get_Call{Call: _e.mock.On("Get", context1, request)}
 }
 
@@ -143,7 +143,7 @@ type AuditServiceHandler_List_Call struct {
 // List is a helper method to define mock.On call
 //   - context1 context.Context
 //   - request *connect.Request[adminv1.AuditServiceListRequest]
-func (_e *AuditServiceHandler_Expecter) List(context1 interface{}, request interface{}) *AuditServiceHandler_List_Call {
+func (_e *AuditServiceHandler_Expecter) List(context1 any, request any) *AuditServiceHandler_List_Call {
 	return &AuditServiceHandler_List_Call{Call: _e.mock.On("List", context1, request)}
 }
 

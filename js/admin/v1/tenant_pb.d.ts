@@ -17,37 +17,37 @@ export type TenantServiceListRequest = Message<"admin.v1.TenantServiceListReques
      *
      * @generated from field: optional string tenant = 9;
      */
-    tenant?: string;
+    tenant?: string | undefined;
     /**
      * Name filters the result list by the given tenant name
      *
      * @generated from field: optional string name = 2;
      */
-    name?: string;
+    name?: string | undefined;
     /**
      * Email of the tenant to list
      *
      * @generated from field: optional string email = 3;
      */
-    email?: string;
+    email?: string | undefined;
     /**
      * OauthProvide of the tenant to list
      *
      * @generated from field: optional api.v1.OAuthProvider oauth_provider = 5;
      */
-    oauthProvider?: OAuthProvider;
+    oauthProvider?: OAuthProvider | undefined;
     /**
      * Admitted on show admitted tenants
      *
      * @generated from field: optional bool admitted = 6;
      */
-    admitted?: boolean;
+    admitted?: boolean | undefined;
     /**
      * Paging details for the list request
      *
      * @generated from field: api.v1.Paging paging = 7;
      */
-    paging?: Paging;
+    paging?: Paging | undefined;
 };
 /**
  * Describes the message admin.v1.TenantServiceListRequest.
@@ -71,7 +71,7 @@ export type TenantServiceListResponse = Message<"admin.v1.TenantServiceListRespo
      *
      * @generated from field: optional uint64 next_page = 2;
      */
-    nextPage?: bigint;
+    nextPage?: bigint | undefined;
 };
 /**
  * Describes the message admin.v1.TenantServiceListResponse.
@@ -107,7 +107,7 @@ export type TenantServiceAdmitResponse = Message<"admin.v1.TenantServiceAdmitRes
      *
      * @generated from field: api.v1.Tenant tenant = 1;
      */
-    tenant?: Tenant;
+    tenant?: Tenant | undefined;
 };
 /**
  * Describes the message admin.v1.TenantServiceAdmitResponse.
@@ -143,7 +143,7 @@ export type TenantServiceRevokeResponse = Message<"admin.v1.TenantServiceRevokeR
      *
      * @generated from field: api.v1.Tenant tenant = 1;
      */
-    tenant?: Tenant;
+    tenant?: Tenant | undefined;
 };
 /**
  * Describes the message admin.v1.TenantServiceRevokeResponse.
