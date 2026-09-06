@@ -213,6 +213,8 @@ type TenantMember struct {
 	Role TenantRole `protobuf:"varint,2,opt,name=role,proto3,enum=api.v1.TenantRole" json:"role,omitempty"`
 	// ProjectIds for the projects in which a user is a direct member
 	ProjectIds []string `protobuf:"bytes,4,rep,name=project_ids,json=projectIds,proto3" json:"project_ids,omitempty"`
+	// Name is the name of the member
+	Name string `protobuf:"bytes,5,opt,name=name,proto3" json:"name,omitempty"`
 	// CreatedAt the date when the member was added to the tenant
 	CreatedAt     *timestamppb.Timestamp `protobuf:"bytes,10,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
 	unknownFields protoimpl.UnknownFields
@@ -268,6 +270,13 @@ func (x *TenantMember) GetProjectIds() []string {
 		return x.ProjectIds
 	}
 	return nil
+}
+
+func (x *TenantMember) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
 }
 
 func (x *TenantMember) GetCreatedAt() *timestamppb.Timestamp {
@@ -1965,12 +1974,13 @@ const file_api_v1_tenant_proto_rawDesc = "" +
 	"\n" +
 	"updated_at\x18\x15 \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\x129\n" +
 	"\n" +
-	"deleted_at\x18\x16 \x01(\v2\x1a.google.protobuf.TimestampR\tdeletedAt\"\xac\x01\n" +
+	"deleted_at\x18\x16 \x01(\v2\x1a.google.protobuf.TimestampR\tdeletedAt\"\xc0\x01\n" +
 	"\fTenantMember\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x120\n" +
 	"\x04role\x18\x02 \x01(\x0e2\x12.api.v1.TenantRoleB\b\xbaH\x05\x82\x01\x02\x10\x01R\x04role\x12\x1f\n" +
 	"\vproject_ids\x18\x04 \x03(\tR\n" +
-	"projectIds\x129\n" +
+	"projectIds\x12\x12\n" +
+	"\x04name\x18\x05 \x01(\tR\x04name\x129\n" +
 	"\n" +
 	"created_at\x18\n" +
 	" \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\"\xf0\x02\n" +

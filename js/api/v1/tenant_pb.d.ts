@@ -139,6 +139,12 @@ export type TenantMember = Message<"api.v1.TenantMember"> & {
      */
     projectIds: string[];
     /**
+     * Name is the name of the member
+     *
+     * @generated from field: string name = 5;
+     */
+    name: string;
+    /**
      * CreatedAt the date when the member was added to the tenant
      *
      * @generated from field: google.protobuf.Timestamp created_at = 10;

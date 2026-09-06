@@ -94,6 +94,12 @@ export type ProjectMember = Message<"api.v1.ProjectMember"> & {
      */
     inheritedMembership: boolean;
     /**
+     * Name is the name of the member
+     *
+     * @generated from field: string name = 4;
+     */
+    name: string;
+    /**
      * CreatedAt the date when the member was added to the project
      *
      * @generated from field: google.protobuf.Timestamp created_at = 10;
