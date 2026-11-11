@@ -366,10 +366,12 @@ const file_admin_v1_audit_proto_rawDesc = "" +
 	"\x05phase\x18\x02 \x01(\x0e2\x12.api.v1.AuditPhaseB\b\xbaH\x05\x82\x01\x02\x10\x01H\x00R\x05phase\x88\x01\x01B\b\n" +
 	"\x06_phase\"C\n" +
 	"\x17AuditServiceGetResponse\x12(\n" +
-	"\x05trace\x18\x01 \x01(\v2\x12.api.v1.AuditTraceR\x05trace2\xb9\x01\n" +
-	"\fAuditService\x12R\n" +
-	"\x03Get\x12 .admin.v1.AuditServiceGetRequest\x1a!.admin.v1.AuditServiceGetResponse\"\x06\xd2\xf3\x18\x02\x01\x02\x12U\n" +
-	"\x04List\x12!.admin.v1.AuditServiceListRequest\x1a\".admin.v1.AuditServiceListResponse\"\x06\xd2\xf3\x18\x02\x01\x02B\x91\x01\n" +
+	"\x05trace\x18\x01 \x01(\v2\x12.api.v1.AuditTraceR\x05trace2\xc1\x01\n" +
+	"\fAuditService\x12V\n" +
+	"\x03Get\x12 .admin.v1.AuditServiceGetRequest\x1a!.admin.v1.AuditServiceGetResponse\"\n" +
+	"\xd2\xf3\x18\x02\x01\x02\xe8\xf3\x18\x02\x12Y\n" +
+	"\x04List\x12!.admin.v1.AuditServiceListRequest\x1a\".admin.v1.AuditServiceListResponse\"\n" +
+	"\xd2\xf3\x18\x02\x01\x02\xe8\xf3\x18\x02B\x91\x01\n" +
 	"\fcom.admin.v1B\n" +
 	"AuditProtoP\x01Z4github.com/metal-stack-cloud/api/go/admin/v1;adminv1\xa2\x02\x03AXX\xaa\x02\bAdmin.V1\xca\x02\bAdmin\\V1\xe2\x02\x14Admin\\V1\\GPBMetadata\xea\x02\tAdmin::V1b\x06proto3"
 
