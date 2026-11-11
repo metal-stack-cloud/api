@@ -236,10 +236,10 @@ const file_api_v1_method_proto_rawDesc = "" +
 	"\x10TenantRolesEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12(\n" +
 	"\x05value\x18\x02 \x01(\x0e2\x12.api.v1.TenantRoleR\x05value:\x028\x01B\r\n" +
-	"\v_admin_roleJ\x04\b\x02\x10\x03R\x05roles2\xd6\x01\n" +
-	"\rMethodService\x12Q\n" +
-	"\x04List\x12 .api.v1.MethodServiceListRequest\x1a!.api.v1.MethodServiceListResponse\"\x04\xd8\xf3\x18\x01\x12r\n" +
-	"\x0fTokenScopedList\x12+.api.v1.MethodServiceTokenScopedListRequest\x1a,.api.v1.MethodServiceTokenScopedListResponse\"\x04\xd8\xf3\x18\x03B\x84\x01\n" +
+	"\v_admin_roleJ\x04\b\x02\x10\x03R\x05roles2\xde\x01\n" +
+	"\rMethodService\x12U\n" +
+	"\x04List\x12 .api.v1.MethodServiceListRequest\x1a!.api.v1.MethodServiceListResponse\"\b\xd8\xf3\x18\x01\xe8\xf3\x18\x02\x12v\n" +
+	"\x0fTokenScopedList\x12+.api.v1.MethodServiceTokenScopedListRequest\x1a,.api.v1.MethodServiceTokenScopedListResponse\"\b\xd8\xf3\x18\x03\xe8\xf3\x18\x02B\x84\x01\n" +
 	"\n" +
 	"com.api.v1B\vMethodProtoP\x01Z0github.com/metal-stack-cloud/api/go/api/v1;apiv1\xa2\x02\x03AXX\xaa\x02\x06Api.V1\xca\x02\x06Api\\V1\xe2\x02\x12Api\\V1\\GPBMetadata\xea\x02\aApi::V1b\x06proto3"
 

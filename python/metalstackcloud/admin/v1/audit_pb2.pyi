@@ -13,7 +13,7 @@ from typing import ClassVar as _ClassVar, Optional as _Optional, Union as _Union
 DESCRIPTOR: _descriptor.FileDescriptor
 
 class AuditServiceListRequest(_message.Message):
-    __slots__ = ("uuid", "to", "user", "project", "method", "source_ip", "result_code", "body", "limit", "phase")
+    __slots__ = ("uuid", "to", "user", "project", "method", "source_ip", "result_code", "body", "limit", "phase", "tenant")
     UUID_FIELD_NUMBER: _ClassVar[int]
     FROM_FIELD_NUMBER: _ClassVar[int]
     TO_FIELD_NUMBER: _ClassVar[int]
@@ -25,6 +25,7 @@ class AuditServiceListRequest(_message.Message):
     BODY_FIELD_NUMBER: _ClassVar[int]
     LIMIT_FIELD_NUMBER: _ClassVar[int]
     PHASE_FIELD_NUMBER: _ClassVar[int]
+    TENANT_FIELD_NUMBER: _ClassVar[int]
     uuid: str
     to: _timestamp_pb2.Timestamp
     user: str
@@ -35,7 +36,8 @@ class AuditServiceListRequest(_message.Message):
     body: str
     limit: int
     phase: _audit_pb2.AuditPhase
-    def __init__(self, uuid: _Optional[str] = ..., to: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., user: _Optional[str] = ..., project: _Optional[str] = ..., method: _Optional[str] = ..., source_ip: _Optional[str] = ..., result_code: _Optional[int] = ..., body: _Optional[str] = ..., limit: _Optional[int] = ..., phase: _Optional[_Union[_audit_pb2.AuditPhase, str]] = ..., **kwargs) -> None: ...
+    tenant: str
+    def __init__(self, uuid: _Optional[str] = ..., to: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., user: _Optional[str] = ..., project: _Optional[str] = ..., method: _Optional[str] = ..., source_ip: _Optional[str] = ..., result_code: _Optional[int] = ..., body: _Optional[str] = ..., limit: _Optional[int] = ..., phase: _Optional[_Union[_audit_pb2.AuditPhase, str]] = ..., tenant: _Optional[str] = ..., **kwargs) -> None: ...
 
 class AuditServiceListResponse(_message.Message):
     __slots__ = ("traces",)

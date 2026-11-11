@@ -12,10 +12,12 @@ service MethodService {
   // List all public visible methods
   rpc List(MethodServiceListRequest) returns (MethodServiceListResponse) {
     option (visibility) = VISIBILITY_PUBLIC;
+    option (api.v1.auditing) = AUDITING_EXCLUDED;
   }
   // TokenScopedList all methods callable with the token present in the request
   rpc TokenScopedList(MethodServiceTokenScopedListRequest) returns (MethodServiceTokenScopedListResponse) {
     option (visibility) = VISIBILITY_SELF;
+    option (api.v1.auditing) = AUDITING_EXCLUDED;
   }
 }
 

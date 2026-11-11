@@ -27,7 +27,7 @@ from metalstackcloud.api.v1 import token_pb2 as api_dot_v1_dot_token__pb2
 from buf.validate import validate_pb2 as buf_dot_validate_dot_validate__pb2
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x13\x61pi/v1/method.proto\x12\x06\x61pi.v1\x1a\x13\x61pi/v1/common.proto\x1a\x12\x61pi/v1/token.proto\x1a\x1b\x62uf/validate/validate.proto\"\x1a\n\x18MethodServiceListRequest\"5\n\x19MethodServiceListResponse\x12\x18\n\x07methods\x18\x01 \x03(\tR\x07methods\"%\n#MethodServiceTokenScopedListRequest\"\xb0\x04\n$MethodServiceTokenScopedListResponse\x12:\n\x0bpermissions\x18\x01 \x03(\x0b\x32\x18.api.v1.MethodPermissionR\x0bpermissions\x12\x63\n\rproject_roles\x18\x03 \x03(\x0b\x32>.api.v1.MethodServiceTokenScopedListResponse.ProjectRolesEntryR\x0cprojectRoles\x12`\n\x0ctenant_roles\x18\x04 \x03(\x0b\x32=.api.v1.MethodServiceTokenScopedListResponse.TenantRolesEntryR\x0btenantRoles\x12?\n\nadmin_role\x18\x05 \x01(\x0e\x32\x11.api.v1.AdminRoleB\x08\xbaH\x05\x82\x01\x02\x10\x01H\x00R\tadminRole\x88\x01\x01\x1aT\n\x11ProjectRolesEntry\x12\x10\n\x03key\x18\x01 \x01(\tR\x03key\x12)\n\x05value\x18\x02 \x01(\x0e\x32\x13.api.v1.ProjectRoleR\x05value:\x02\x38\x01\x1aR\n\x10TenantRolesEntry\x12\x10\n\x03key\x18\x01 \x01(\tR\x03key\x12(\n\x05value\x18\x02 \x01(\x0e\x32\x12.api.v1.TenantRoleR\x05value:\x02\x38\x01\x42\r\n\x0b_admin_roleJ\x04\x08\x02\x10\x03R\x05roles2\xd6\x01\n\rMethodService\x12Q\n\x04List\x12 .api.v1.MethodServiceListRequest\x1a!.api.v1.MethodServiceListResponse\"\x04\xd8\xf3\x18\x01\x12r\n\x0fTokenScopedList\x12+.api.v1.MethodServiceTokenScopedListRequest\x1a,.api.v1.MethodServiceTokenScopedListResponse\"\x04\xd8\xf3\x18\x03\x42\x84\x01\n\ncom.api.v1B\x0bMethodProtoP\x01Z0github.com/metal-stack-cloud/api/go/api/v1;apiv1\xa2\x02\x03\x41XX\xaa\x02\x06\x41pi.V1\xca\x02\x06\x41pi\\V1\xe2\x02\x12\x41pi\\V1\\GPBMetadata\xea\x02\x07\x41pi::V1b\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x13\x61pi/v1/method.proto\x12\x06\x61pi.v1\x1a\x13\x61pi/v1/common.proto\x1a\x12\x61pi/v1/token.proto\x1a\x1b\x62uf/validate/validate.proto\"\x1a\n\x18MethodServiceListRequest\"5\n\x19MethodServiceListResponse\x12\x18\n\x07methods\x18\x01 \x03(\tR\x07methods\"%\n#MethodServiceTokenScopedListRequest\"\xb0\x04\n$MethodServiceTokenScopedListResponse\x12:\n\x0bpermissions\x18\x01 \x03(\x0b\x32\x18.api.v1.MethodPermissionR\x0bpermissions\x12\x63\n\rproject_roles\x18\x03 \x03(\x0b\x32>.api.v1.MethodServiceTokenScopedListResponse.ProjectRolesEntryR\x0cprojectRoles\x12`\n\x0ctenant_roles\x18\x04 \x03(\x0b\x32=.api.v1.MethodServiceTokenScopedListResponse.TenantRolesEntryR\x0btenantRoles\x12?\n\nadmin_role\x18\x05 \x01(\x0e\x32\x11.api.v1.AdminRoleB\x08\xbaH\x05\x82\x01\x02\x10\x01H\x00R\tadminRole\x88\x01\x01\x1aT\n\x11ProjectRolesEntry\x12\x10\n\x03key\x18\x01 \x01(\tR\x03key\x12)\n\x05value\x18\x02 \x01(\x0e\x32\x13.api.v1.ProjectRoleR\x05value:\x02\x38\x01\x1aR\n\x10TenantRolesEntry\x12\x10\n\x03key\x18\x01 \x01(\tR\x03key\x12(\n\x05value\x18\x02 \x01(\x0e\x32\x12.api.v1.TenantRoleR\x05value:\x02\x38\x01\x42\r\n\x0b_admin_roleJ\x04\x08\x02\x10\x03R\x05roles2\xde\x01\n\rMethodService\x12U\n\x04List\x12 .api.v1.MethodServiceListRequest\x1a!.api.v1.MethodServiceListResponse\"\x08\xd8\xf3\x18\x01\xe8\xf3\x18\x02\x12v\n\x0fTokenScopedList\x12+.api.v1.MethodServiceTokenScopedListRequest\x1a,.api.v1.MethodServiceTokenScopedListResponse\"\x08\xd8\xf3\x18\x03\xe8\xf3\x18\x02\x42\x84\x01\n\ncom.api.v1B\x0bMethodProtoP\x01Z0github.com/metal-stack-cloud/api/go/api/v1;apiv1\xa2\x02\x03\x41XX\xaa\x02\x06\x41pi.V1\xca\x02\x06\x41pi\\V1\xe2\x02\x12\x41pi\\V1\\GPBMetadata\xea\x02\x07\x41pi::V1b\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
@@ -42,9 +42,9 @@ if not _descriptor._USE_C_DESCRIPTORS:
   _globals['_METHODSERVICETOKENSCOPEDLISTRESPONSE'].fields_by_name['admin_role']._loaded_options = None
   _globals['_METHODSERVICETOKENSCOPEDLISTRESPONSE'].fields_by_name['admin_role']._serialized_options = b'\272H\005\202\001\002\020\001'
   _globals['_METHODSERVICE'].methods_by_name['List']._loaded_options = None
-  _globals['_METHODSERVICE'].methods_by_name['List']._serialized_options = b'\330\363\030\001'
+  _globals['_METHODSERVICE'].methods_by_name['List']._serialized_options = b'\330\363\030\001\350\363\030\002'
   _globals['_METHODSERVICE'].methods_by_name['TokenScopedList']._loaded_options = None
-  _globals['_METHODSERVICE'].methods_by_name['TokenScopedList']._serialized_options = b'\330\363\030\003'
+  _globals['_METHODSERVICE'].methods_by_name['TokenScopedList']._serialized_options = b'\330\363\030\003\350\363\030\002'
   _globals['_METHODSERVICELISTREQUEST']._serialized_start=101
   _globals['_METHODSERVICELISTREQUEST']._serialized_end=127
   _globals['_METHODSERVICELISTRESPONSE']._serialized_start=129
@@ -58,5 +58,5 @@ if not _descriptor._USE_C_DESCRIPTORS:
   _globals['_METHODSERVICETOKENSCOPEDLISTRESPONSE_TENANTROLESENTRY']._serialized_start=674
   _globals['_METHODSERVICETOKENSCOPEDLISTRESPONSE_TENANTROLESENTRY']._serialized_end=756
   _globals['_METHODSERVICE']._serialized_start=787
-  _globals['_METHODSERVICE']._serialized_end=1001
+  _globals['_METHODSERVICE']._serialized_end=1009
 # @@protoc_insertion_point(module_scope)

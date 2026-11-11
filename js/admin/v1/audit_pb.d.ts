@@ -81,6 +81,12 @@ export type AuditServiceListRequest = Message<"admin.v1.AuditServiceListRequest"
      * @generated from field: optional api.v1.AuditPhase phase = 12;
      */
     phase?: AuditPhase | undefined;
+    /**
+     * Tenant filters for a specific tenant
+     *
+     * @generated from field: optional string tenant = 13;
+     */
+    tenant?: string | undefined;
 };
 /**
  * Describes the message admin.v1.AuditServiceListRequest.

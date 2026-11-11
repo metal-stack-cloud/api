@@ -4369,6 +4369,18 @@
               "isoneof": true,
               "oneofdecl": "_phase",
               "defaultValue": ""
+            },
+            {
+              "name": "tenant",
+              "description": "Tenant filters for a specific tenant",
+              "label": "optional",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "_tenant",
+              "defaultValue": ""
             }
           ]
         },
