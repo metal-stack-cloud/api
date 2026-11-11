@@ -60,6 +60,11 @@ message AuditServiceListRequest {
   }];
   // Phase specifies the audit phase
   optional api.v1.AuditPhase phase = 12 [(buf.validate.field).enum.defined_only = true];
+  // Tenant filters for a specific tenant
+  optional string tenant = 13 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
+  }];
 }
 
 // AuditServiceListResponse is the response payload of a audit list request

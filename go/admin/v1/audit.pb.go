@@ -51,7 +51,9 @@ type AuditServiceListRequest struct {
 	// defaults to 200)
 	Limit *int32 `protobuf:"varint,11,opt,name=limit,proto3,oneof" json:"limit,omitempty"`
 	// Phase specifies the audit phase
-	Phase         *v1.AuditPhase `protobuf:"varint,12,opt,name=phase,proto3,enum=api.v1.AuditPhase,oneof" json:"phase,omitempty"`
+	Phase *v1.AuditPhase `protobuf:"varint,12,opt,name=phase,proto3,enum=api.v1.AuditPhase,oneof" json:"phase,omitempty"`
+	// Tenant filters for a specific tenant
+	Tenant        *string `protobuf:"bytes,13,opt,name=tenant,proto3,oneof" json:"tenant,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -161,6 +163,13 @@ func (x *AuditServiceListRequest) GetPhase() v1.AuditPhase {
 		return *x.Phase
 	}
 	return v1.AuditPhase(0)
+}
+
+func (x *AuditServiceListRequest) GetTenant() string {
+	if x != nil && x.Tenant != nil {
+		return *x.Tenant
+	}
+	return ""
 }
 
 // AuditServiceListResponse is the response payload of a audit list request
@@ -314,7 +323,7 @@ var File_admin_v1_audit_proto protoreflect.FileDescriptor
 
 const file_admin_v1_audit_proto_rawDesc = "" +
 	"\n" +
-	"\x14admin/v1/audit.proto\x12\badmin.v1\x1a\x12api/v1/audit.proto\x1a\x13api/v1/common.proto\x1a\x1bbuf/validate/validate.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\xec\x04\n" +
+	"\x14admin/v1/audit.proto\x12\badmin.v1\x1a\x12api/v1/audit.proto\x1a\x13api/v1/common.proto\x1a\x1bbuf/validate/validate.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\xa0\x05\n" +
 	"\x17AuditServiceListRequest\x12!\n" +
 	"\x04uuid\x18\x02 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01H\x00R\x04uuid\x88\x01\x01\x123\n" +
 	"\x04from\x18\x03 \x01(\v2\x1a.google.protobuf.TimestampH\x01R\x04from\x88\x01\x01\x12/\n" +
@@ -333,7 +342,9 @@ const file_admin_v1_audit_proto_rawDesc = "" +
 	"\x05limit\x18\v \x01(\x05B\n" +
 	"\xbaH\a\x1a\x05\x18\xe8\a \x00H\tR\x05limit\x88\x01\x01\x127\n" +
 	"\x05phase\x18\f \x01(\x0e2\x12.api.v1.AuditPhaseB\b\xbaH\x05\x82\x01\x02\x10\x01H\n" +
-	"R\x05phase\x88\x01\x01B\a\n" +
+	"R\x05phase\x88\x01\x01\x12'\n" +
+	"\x06tenant\x18\r \x01(\tB\n" +
+	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\vR\x06tenant\x88\x01\x01B\a\n" +
 	"\x05_uuidB\a\n" +
 	"\x05_fromB\x05\n" +
 	"\x03_toB\a\n" +
@@ -346,7 +357,8 @@ const file_admin_v1_audit_proto_rawDesc = "" +
 	"\f_result_codeB\a\n" +
 	"\x05_bodyB\b\n" +
 	"\x06_limitB\b\n" +
-	"\x06_phase\"F\n" +
+	"\x06_phaseB\t\n" +
+	"\a_tenant\"F\n" +
 	"\x18AuditServiceListResponse\x12*\n" +
 	"\x06traces\x18\x01 \x03(\v2\x12.api.v1.AuditTraceR\x06traces\"y\n" +
 	"\x16AuditServiceGetRequest\x12\x1c\n" +
