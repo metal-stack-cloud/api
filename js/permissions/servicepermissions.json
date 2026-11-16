@@ -347,8 +347,8 @@
     "/api.v1.IPService/Update": true
   },
   "auditable": {
-    "/admin.v1.AuditService/Get": true,
-    "/admin.v1.AuditService/List": true,
+    "/admin.v1.AuditService/Get": false,
+    "/admin.v1.AuditService/List": false,
     "/admin.v1.ClusterService/Credentials": true,
     "/admin.v1.ClusterService/Get": false,
     "/admin.v1.ClusterService/GetAdminKubeconfig": true,
@@ -384,8 +384,8 @@
     "/api.v1.IPService/Get": false,
     "/api.v1.IPService/List": false,
     "/api.v1.IPService/Update": true,
-    "/api.v1.MethodService/List": true,
-    "/api.v1.MethodService/TokenScopedList": true,
+    "/api.v1.MethodService/List": false,
+    "/api.v1.MethodService/TokenScopedList": false,
     "/api.v1.PaymentService/CreateOrUpdateCustomer": true,
     "/api.v1.PaymentService/DeletePaymentMethod": true,
     "/api.v1.PaymentService/GetCustomer": false,
